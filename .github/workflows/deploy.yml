@@ -43,9 +43,9 @@ jobs:
           # choose the build output directory (common options)
           PUBLISH_DIR=""
           if [ -d build ]; then PUBLISH_DIR=build; fi
-          if [ -d dist ]; then PUBLISH_DIR=dist; fi
-          if [ -d out ]; then PUBLISH_DIR=out; fi
-          if [ -d public ]; then PUBLISH_DIR=public; fi
+          if [ -d dist ] && [ -z "$PUBLISH_DIR" ]; then PUBLISH_DIR=dist; fi
+          if [ -d out ] && [ -z "$PUBLISH_DIR" ]; then PUBLISH_DIR=out; fi
+          if [ -d public ] && [ -z "$PUBLISH_DIR" ]; then PUBLISH_DIR=public; fi
           echo "Using publish dir: $PUBLISH_DIR"
           mkdir -p publish
           if [ -n "$PUBLISH_DIR" ]; then cp -a "$PUBLISH_DIR/." publish/ || true; fi
@@ -53,14 +53,10 @@ jobs:
           if [ -f publish/index.html ]; then cp publish/index.html publish/404.html || true; fi
           ls -la publish || true
 
-      - name: Upload artifact to GitHub Pages
-        uses: actions/upload-pages-artifact@v1
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: publish
-
-  deploy:
-    needs: build-and-deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./publish
+          # optional: set user name/email for the commit
+          # commit_message: 'Deploy site via GitHub Actions'
