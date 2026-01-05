@@ -1,0 +1,331 @@
+# M Platform: Implementation Cross-Reference Checklist
+
+## Instructions for Replit Agent
+
+This document lists ALL planned improvements for the M Platform. Please verify each item and mark its status. After verification, implement any items marked as NOT DONE.
+
+---
+
+## SECTION 1: DATABASE SCHEMA (shared/schema.ts)
+
+### 1.1 New Enums Required
+
+Check if these enums exist in `/shared/schema.ts`:
+
+| Enum Name | Values | Status |
+|-----------|--------|--------|
+| `playbookPhaseEnum` | `['prepare', 'monitor', 'execute', 'learn']` | ☐ Done / ☐ Not Done |
+| `executeSubphaseEnum` | `['immediate', 'coordinate', 'resolve', 'close']` | ☐ Done / ☐ Not Done |
+| `prepareItemTypeEnum` | `['stakeholder_assignment', 'document_template', 'resource_staging', 'communication_template', 'training_completion', 'system_access', 'vendor_contract', 'budget_approval', 'checklist_item']` | ☐ Done / ☐ Not Done |
+| `prepareItemStatusEnum` | `['not_started', 'in_progress', 'completed', 'needs_review', 'blocked']` | ☐ Done / ☐ Not Done |
+| `signalTypeEnum` | `['competitive', 'regulatory', 'market', 'operational', 'financial', 'security', 'reputation', 'talent', 'supply_chain', 'technology']` | ☐ Done / ☐ Not Done |
+| `triggerTypeEnum` | `['threshold', 'pattern', 'event', 'manual', 'scheduled']` | ☐ Done / ☐ Not Done |
+| `learnItemTypeEnum` | `['debrief_meeting', 'survey', 'metrics_review', 'documentation', 'playbook_update', 'training_update', 'process_improvement']` | ☐ Done / ☐ Not Done |
+
+### 1.2 New Tables Required
+
+Check if these tables exist in `/shared/schema.ts`:
+
+| Table Name | Purpose | Status |
+|------------|---------|--------|
+| `playbookPrepareItems` | Stores PREPARE phase checklist items | ☐ Done / ☐ Not Done |
+| `playbookMonitorItems` | Stores MONITOR phase signals/triggers | ☐ Done / ☐ Not Done |
+| `playbookLearnItems` | Stores LEARN phase debrief config | ☐ Done / ☐ Not Done |
+| `executionLearnings` | Stores captured learnings from executions | ☐ Done / ☐ Not Done |
+| `playbookReadinessScores` | Stores calculated readiness percentages | ☐ Done / ☐ Not Done |
+
+### 1.3 Columns Added to Existing Tables
+
+Check if `playbook_library` table has these new columns:
+
+| Column | Type | Default | Status |
+|--------|------|---------|--------|
+| `prepare_config` | JSONB | `'{}'` | ☐ Done / ☐ Not Done |
+| `monitor_config` | JSONB | `'{}'` | ☐ Done / ☐ Not Done |
+| `execute_config` | JSONB | `'{}'` | ☐ Done / ☐ Not Done |
+| `learn_config` | JSONB | `'{}'` | ☐ Done / ☐ Not Done |
+| `readiness_score` | INTEGER | `0` | ☐ Done / ☐ Not Done |
+| `approval_status` | VARCHAR(50) | `'draft'` | ☐ Done / ☐ Not Done |
+
+Check if `execution_plan_tasks` table has:
+
+| Column | Type | Default | Status |
+|--------|------|---------|--------|
+| `execute_subphase` | execute_subphase enum | `'immediate'` | ☐ Done / ☐ Not Done |
+
+---
+
+## SECTION 2: API ROUTES (server/routes.ts)
+
+### 2.1 PREPARE Phase Endpoints
+
+| Endpoint | Method | Purpose | Status |
+|----------|--------|---------|--------|
+| `/api/playbook-library/:id/prepare-items` | GET | List prepare items | ☐ Done / ☐ Not Done |
+| `/api/playbook-library/:id/prepare-items` | POST | Create prepare item | ☐ Done / ☐ Not Done |
+| `/api/playbook-library/:id/prepare-items/:itemId` | PUT | Update prepare item | ☐ Done / ☐ Not Done |
+| `/api/playbook-library/:id/prepare-items/:itemId` | DELETE | Delete prepare item | ☐ Done / ☐ Not Done |
+
+### 2.2 MONITOR Phase Endpoints
+
+| Endpoint | Method | Purpose | Status |
+|----------|--------|---------|--------|
+| `/api/playbook-library/:id/monitor-items` | GET | List monitor items | ☐ Done / ☐ Not Done |
+| `/api/playbook-library/:id/monitor-items` | POST | Create monitor item | ☐ Done / ☐ Not Done |
+| `/api/playbook-library/:id/monitor-items/:itemId` | PUT | Update monitor item | ☐ Done / ☐ Not Done |
+| `/api/playbook-library/:id/monitor-items/:itemId` | DELETE | Delete monitor item | ☐ Done / ☐ Not Done |
+
+### 2.3 LEARN Phase Endpoints
+
+| Endpoint | Method | Purpose | Status |
+|----------|--------|---------|--------|
+| `/api/playbook-library/:id/learn-items` | GET | List learn items | ☐ Done / ☐ Not Done |
+| `/api/playbook-library/:id/learn-items` | POST | Create learn item | ☐ Done / ☐ Not Done |
+| `/api/playbook-library/:id/learn-items/:itemId` | PUT | Update learn item | ☐ Done / ☐ Not Done |
+| `/api/playbook-library/:id/learn-items/:itemId` | DELETE | Delete learn item | ☐ Done / ☐ Not Done |
+
+### 2.4 Readiness Score Endpoints
+
+| Endpoint | Method | Purpose | Status |
+|----------|--------|---------|--------|
+| `/api/playbook-library/:id/readiness` | GET | Get readiness score | ☐ Done / ☐ Not Done |
+| `/api/playbook-library/:id/readiness/recalculate` | POST | Force recalculation | ☐ Done / ☐ Not Done |
+
+---
+
+## SECTION 3: FRONTEND COMPONENTS
+
+### 3.1 New Components Required
+
+| Component Path | Purpose | Status |
+|----------------|---------|--------|
+| `client/src/components/playbook/PhaseProgressBar.tsx` | Visual 4-phase progress indicator | ☐ Done / ☐ Not Done |
+| `client/src/components/playbook/wizard/PrepareOverviewStep.tsx` | PREPARE phase wizard step | ☐ Done / ☐ Not Done |
+| `client/src/components/playbook/wizard/MonitorTriggersStep.tsx` | MONITOR phase wizard step | ☐ Done / ☐ Not Done |
+| `client/src/components/playbook/wizard/ExecuteTasksStep.tsx` | EXECUTE phase wizard step | ☐ Done / ☐ Not Done |
+| `client/src/components/playbook/wizard/LearnConfigStep.tsx` | LEARN phase wizard step | ☐ Done / ☐ Not Done |
+
+### 3.2 Modified Components
+
+| Component | Change Required | Status |
+|-----------|-----------------|--------|
+| `PlaybookLibrary.tsx` | Add phase progress indicators to playbook cards | ☐ Done / ☐ Not Done |
+| `PlaybookCustomizationWizard.tsx` | Restructure steps to follow 4-phase model | ☐ Done / ☐ Not Done |
+| Playbook detail page | Add PREPARE/MONITOR/EXECUTE/LEARN tabs | ☐ Done / ☐ Not Done |
+
+### 3.3 Playbook Card Display
+
+Each playbook card in the library should show:
+
+| Element | Description | Status |
+|---------|-------------|--------|
+| 4-phase progress bar | Shows PREPARE/MONITOR/EXECUTE/LEARN completion | ☐ Done / ☐ Not Done |
+| Readiness score badge | Shows overall % readiness | ☐ Done / ☐ Not Done |
+| Phase icons with status colors | Green (complete), Yellow (partial), Red (not started) | ☐ Done / ☐ Not Done |
+
+---
+
+## SECTION 4: NAVIGATION & UX FIXES
+
+### 4.1 Dead Link Audit
+
+Verify these footer links actually work (not 404):
+
+| Link | Path | Status |
+|------|------|--------|
+| Foresight Radar | `/foresight-radar` | ☐ Works / ☐ 404 |
+| What-If Analyzer | `/what-if-analyzer` | ☐ Works / ☐ 404 |
+| Practice Drills | `/practice-drills` | ☐ Works / ☐ 404 |
+| Research | `/research` | ☐ Works / ☐ 404 |
+| Product Tour | `/product-tour` | ☐ Works / ☐ 404 |
+| Integrations | `/integrations` | ☐ Works / ☐ 404 |
+| ROI Calculator | `/calculator` | ☐ Works / ☐ 404 |
+| Why M | `/why-m` | ☐ Works / ☐ 404 |
+| Sitemap | `/sitemap` | ☐ Works / ☐ 404 |
+
+**Action**: For any 404 pages, either create the page or remove from footer.
+
+### 4.2 Investor Demo Improvements
+
+| Improvement | Description | Status |
+|-------------|-------------|--------|
+| Skip to Results button | Allow investors to fast-forward demo | ☐ Done / ☐ Not Done |
+| 60-second compressed version | Shorter option for busy investors | ☐ Done / ☐ Not Done |
+| Click-through mode | Let users advance stages manually | ☐ Done / ☐ Not Done |
+
+### 4.3 Demo Router Clarity
+
+| Issue | Fix | Status |
+|-------|-----|--------|
+| Two demo entry points confuse users | Ensure "See Demo" and "Investors" lead to appropriate experiences | ☐ Done / ☐ Not Done |
+
+---
+
+## SECTION 5: MESSAGING & CONTENT
+
+### 5.1 Landing Page Hero Section
+
+Verify Landing.tsx contains this approved hero copy:
+
+```
+"Growth favors the prepared. M is the Strategic Execution Operating System 
+that fundamentally changes how Fortune 1000 leaders work—replacing reactive 
+scrambles with coordinated precision, turning emerging opportunities into 
+decisive action, and transforming risk into competitive advantage. Born from 
+the split-second discipline that wins championships, built for the moments 
+that define companies."
+```
+
+| Status | ☐ Implemented / ☐ Different copy / ☐ Not found |
+
+### 5.2 Consistent Statistics
+
+Verify these numbers appear consistently across all pages:
+
+| Metric | Correct Value | Verify In |
+|--------|---------------|-----------|
+| Response time transformation | 72 hours → 12 minutes | Landing, InvestorDemo, Footer |
+| Playbook count | 148 | PlaybookLibrary, DemoRouter, marketing copy |
+| Strategic domains | 8 | Throughout |
+| Speed improvement | 360x (72h=4320min ÷ 12min) | InvestorDemo shows 240x - INCORRECT? |
+| Pilot price | $75,000 | RoadshowResources |
+| Contract range | $250K - $1.5M | RoadshowResources |
+
+**Note**: 72 hours = 4,320 minutes. 4,320 ÷ 12 = 360x improvement, not 240x. Verify and correct.
+
+---
+
+## SECTION 6: INVESTOR MATERIALS (client/src/data/)
+
+### 6.1 Required Markdown Files
+
+| File | Purpose | Status |
+|------|---------|--------|
+| `M-Investor-FAQ.md` | 20 Q&As for investors | ☐ Exists / ☐ Missing |
+| `M-Pilot-Program-OnePager.md` | $75K, 90-day structure | ☐ Exists / ☐ Missing |
+| `M-Demo-Script-3min.md` | Exact talking points | ☐ Exists / ☐ Missing |
+| `M-WhyNow-SlideContent.md` | 3 market timing slides | ☐ Exists / ☐ Missing |
+| `M-Competitive-Moat-TalkingPoints.md` | 5 moats | ☐ Exists / ☐ Missing |
+| `M-PreRoadshow-Checklist.md` | 75 tasks | ☐ Exists / ☐ Missing |
+
+### 6.2 RoadshowResources.tsx Integration
+
+| Check | Status |
+|-------|--------|
+| All 6 markdown files load correctly | ☐ Yes / ☐ No |
+| Document selector works | ☐ Yes / ☐ No |
+| Markdown renders properly | ☐ Yes / ☐ No |
+| KEY_STATS array matches approved numbers | ☐ Yes / ☐ No |
+
+---
+
+## SECTION 7: DATABASE MIGRATION
+
+### 7.1 Migration File
+
+| Check | Status |
+|-------|--------|
+| Migration file exists in `/migrations/` | ☐ Yes / ☐ No |
+| Migration has been run | ☐ Yes / ☐ No |
+| New tables exist in database | ☐ Yes / ☐ No |
+
+### 7.2 Seed Data
+
+| Check | Status |
+|-------|--------|
+| At least 3 playbooks have PREPARE items | ☐ Yes / ☐ No |
+| At least 3 playbooks have MONITOR triggers | ☐ Yes / ☐ No |
+| At least 3 playbooks have LEARN config | ☐ Yes / ☐ No |
+| Readiness scores calculated for seeded playbooks | ☐ Yes / ☐ No |
+
+---
+
+## SECTION 8: VERIFICATION COMMANDS
+
+Run these commands to verify implementation:
+
+```bash
+# Check for new enums in schema
+grep -c "playbookPhaseEnum" shared/schema.ts
+# Expected: 1 or more
+
+# Check for new tables
+grep -c "playbookPrepareItems" shared/schema.ts
+grep -c "playbookMonitorItems" shared/schema.ts
+grep -c "playbookLearnItems" shared/schema.ts
+# Expected: 1 or more each
+
+# Check for new API routes
+grep -c "prepare-items" server/routes.ts
+grep -c "monitor-items" server/routes.ts
+grep -c "learn-items" server/routes.ts
+grep -c "/readiness" server/routes.ts
+# Expected: Multiple matches each
+
+# Check for PhaseProgressBar component
+ls -la client/src/components/playbook/PhaseProgressBar.tsx
+# Expected: File exists
+
+# Check for wizard step components
+ls -la client/src/components/playbook/wizard/
+# Expected: PrepareOverviewStep.tsx, MonitorTriggersStep.tsx, etc.
+
+# Check investor markdown files
+ls -la client/src/data/M-*.md
+# Expected: 6 files
+
+# Test API endpoints (if server running)
+curl http://localhost:5000/api/playbook-library/1/readiness
+# Expected: JSON with readiness score
+```
+
+---
+
+## SECTION 9: IMPLEMENTATION PRIORITY
+
+If items are NOT DONE, implement in this order:
+
+### Priority 1: Foundation (Do First)
+1. Schema enums and tables
+2. Database migration
+3. Basic CRUD API routes
+
+### Priority 2: Core UI
+4. PhaseProgressBar component
+5. Playbook card updates to show phases
+6. Wizard restructure
+
+### Priority 3: Polish
+7. Investor demo improvements
+8. Dead link fixes
+9. Messaging consistency
+
+### Priority 4: Content
+10. Verify/create markdown files
+11. Seed data for demo playbooks
+
+---
+
+## SECTION 10: QUICK FIXES (Can Do Immediately)
+
+These are small changes that can be done right now:
+
+| Fix | File | Change |
+|-----|------|--------|
+| Math error | InvestorDemo.tsx | Change "240x" to "360x" |
+| Footer cleanup | Footer.tsx | Remove links to non-existent pages OR create placeholder pages |
+| Hero copy | Landing.tsx | Ensure approved copy is in place |
+
+---
+
+## SUMMARY
+
+After completing this checklist, reply with:
+
+1. **Schema Status**: X of 7 enums done, X of 5 tables done
+2. **API Status**: X of 14 endpoints done
+3. **Components Status**: X of 5 new components done
+4. **Content Status**: X of 6 markdown files exist
+5. **Fixes Needed**: List any items marked NOT DONE
+
+Then proceed to implement missing items in priority order.

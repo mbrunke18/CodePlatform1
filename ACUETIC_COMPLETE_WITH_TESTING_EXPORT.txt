@@ -1,0 +1,316 @@
+# ACUETIC STRATEGIC INTELLIGENCE PLATFORM - COMPLETE EXPORT WITH TESTING
+# Complete rebranded platform with comprehensive testing infrastructure
+# Date: September 24, 2025
+# Platform: Acuetic - "See Clearer. Lead Bolder."
+
+==================================================
+OVERVIEW
+==================================================
+
+This export contains the complete Acuetic Strategic Intelligence Platform, fully rebranded from the previous "Phronex Kairosync" system. The platform enables organizations to streamline strategic planning, enhance team collaboration, and accelerate organizational intelligence through:
+
+- **AI Intelligence Modules**: Pulse, Flux, Prism, Echo, and Nova analytics
+- **Crisis Response System**: 15+ professional templates with immediate activation protocols  
+- **Strategic Planning**: Sophisticated scenario management with real-time collaboration
+- **Comprehensive Testing**: Vitest unit tests, Playwright E2E tests, and React Testing Library integration
+
+BRAND IDENTITY:
+- Company Name: Acuetic
+- Tagline: "See Clearer. Lead Bolder."
+- Logo: Blue-to-teal gradient design (image_1758683240496.png)
+
+==================================================
+TESTING INFRASTRUCTURE OVERVIEW
+==================================================
+
+The platform includes a comprehensive testing framework:
+
+## Unit Testing (Vitest + React Testing Library)
+- Component tests for UI elements and user interactions
+- Service layer tests for business logic validation
+- Hook testing for custom React hooks
+- Integration tests for API endpoints
+
+## End-to-End Testing (Playwright)
+- Executive Demo flow validation
+- AI Intelligence Demo flow testing
+- User authentication and navigation flows
+- Real-time feature testing with WebSocket validation
+
+## Test Configuration Files
+- vitest.config.ts: Unit test configuration
+- playwright.config.ts: E2E test configuration  
+- test-utils.tsx: Testing utilities and providers
+- setupTests.ts: Global test setup
+
+==================================================
+KEY ARCHITECTURE DECISIONS
+==================================================
+
+1. **Unified Branding**: Complete transition to "Acuetic" brand identity
+2. **Test-Driven Reliability**: Comprehensive test coverage for demo scenarios
+3. **TypeScript**: Full type safety across frontend and backend
+4. **Real-time Capabilities**: WebSocket integration for live updates
+5. **Enterprise Authentication**: Replit OIDC integration with role-based access
+
+==================================================
+FILE STRUCTURE
+==================================================
+
+acuetic-platform/
+├── client/               # React frontend
+│   ├── src/
+│   │   ├── components/   # UI components
+│   │   ├── pages/        # Application pages
+│   │   ├── hooks/        # Custom React hooks
+│   │   ├── lib/          # Utilities and helpers
+│   │   ├── navigation/   # Navigation configuration
+│   │   └── test/         # Testing utilities
+│   └── public/           # Static assets
+├── server/               # Node.js backend
+│   ├── services/         # Business logic services
+│   ├── integrations/     # External service integrations
+│   ├── routes.ts         # API endpoints
+│   └── index.ts          # Server entry point
+├── shared/               # Shared types and schemas
+├── e2e/                  # Playwright E2E tests
+├── attached_assets/      # Brand assets and logos
+└── testing configs       # Test configuration files
+
+==================================================
+EXPORT CONTENTS
+==================================================
+
+# PACKAGE CONFIGURATION
+# =====================
+
+## package.json
+```json
+{
+  "name": "acuetic-platform",
+  "version": "2.0.0",
+  "description": "Acuetic Strategic Intelligence Platform - See Clearer. Lead Bolder.",
+  "type": "module",
+  "scripts": {
+    "dev": "NODE_ENV=development tsx server/index.ts",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build",
+    "build:server": "esbuild server/index.ts --bundle --platform=node --target=node18 --outfile=dist/server.js --external:pg-native",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.3.2",
+    "@neondatabase/serverless": "^0.9.4",
+    "@radix-ui/react-accordion": "^1.1.2",
+    "@radix-ui/react-alert-dialog": "^1.0.5",
+    "@radix-ui/react-avatar": "^1.0.4",
+    "@radix-ui/react-checkbox": "^1.0.4",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-popover": "^1.0.7",
+    "@radix-ui/react-progress": "^1.0.3",
+    "@radix-ui/react-select": "^2.0.0",
+    "@radix-ui/react-separator": "^1.0.3",
+    "@radix-ui/react-slider": "^1.1.2",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-switch": "^1.0.3",
+    "@radix-ui/react-tabs": "^1.0.4",
+    "@radix-ui/react-toast": "^1.1.5",
+    "@radix-ui/react-tooltip": "^1.0.7",
+    "@tanstack/react-query": "^5.8.4",
+    "bcrypt": "^5.1.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "date-fns": "^2.30.0",
+    "drizzle-orm": "^0.29.1",
+    "drizzle-zod": "^0.5.1",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "framer-motion": "^10.16.5",
+    "lucide-react": "^0.294.0",
+    "nanoid": "^5.0.4",
+    "next-themes": "^0.2.1",
+    "openai": "^4.20.1",
+    "openid-client": "^5.6.1",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.11.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.48.2",
+    "recharts": "^2.8.0",
+    "tailwind-merge": "^2.0.0",
+    "tailwindcss-animate": "^1.0.7",
+    "wouter": "^3.0.0",
+    "ws": "^8.14.2",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.1",
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^4.17.21",
+    "@types/express-session": "^1.17.10",
+    "@types/node": "^20.9.0",
+    "@types/passport": "^1.0.16",
+    "@types/passport-local": "^1.0.38",
+    "@types/pg": "^8.10.7",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@types/ws": "^8.5.9",
+    "@vitejs/plugin-react": "^4.1.1",
+    "autoprefixer": "^10.4.16",
+    "drizzle-kit": "^0.20.6",
+    "jsdom": "^23.0.1",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "tsx": "^4.1.4",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0",
+    "vitest": "^1.0.0"
+  }
+}
+```
+
+# TESTING CONFIGURATION
+# ====================
+
+## vitest.config.ts
+```typescript
+/// <reference types="vitest" />
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./client/src/test/setupTests.ts'],
+    coverage: {
+      reporter: ['text', 'json', 'html'],
+      exclude: [
+        'node_modules/',
+        'dist/',
+        '**/*.test.{ts,tsx}',
+        '**/*.spec.{ts,tsx}',
+        'coverage/',
+        'e2e/',
+        'playwright.config.ts',
+        'vite.config.ts',
+        'vitest.config.ts'
+      ]
+    }
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './client/src'),
+      '@shared': path.resolve(__dirname, './shared'),
+      '@assets': path.resolve(__dirname, './attached_assets')
+    }
+  }
+});
+```
+
+## playwright.config.ts  
+```typescript
+import { defineConfig, devices } from '@playwright/test';
+
+export default defineConfig({
+  testDir: './e2e',
+  fullyParallel: true,
+  forbidOnly: !!process.env.CI,
+  retries: process.env.CI ? 2 : 0,
+  workers: process.env.CI ? 1 : undefined,
+  reporter: 'html',
+  use: {
+    baseURL: 'http://localhost:5000',
+    trace: 'on-first-retry',
+    screenshot: 'only-on-failure'
+  },
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] }
+    },
+    {
+      name: 'firefox', 
+      use: { ...devices['Desktop Firefox'] }
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] }
+    }
+  ],
+  webServer: {
+    command: 'npm run dev',
+    port: 5000,
+    reuseExistingServer: !process.env.CI
+  }
+});
+```
+
+## client/src/test/setupTests.ts
+```typescript
+import '@testing-library/jest-dom';
+import { beforeAll, afterEach, afterAll } from 'vitest';
+import { cleanup } from '@testing-library/react';
+
+beforeAll(() => {
+  // Setup before all tests
+});
+
+afterEach(() => {
+  // Cleanup after each test
+  cleanup();
+});
+
+afterAll(() => {
+  // Cleanup after all tests
+});
+```
+
+## client/src/test/test-utils.tsx
+```typescript
+import { ReactElement } from 'react';
+import { render, RenderOptions } from '@testing-library/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+// Custom render function with providers
+function renderWithProviders(
+  ui: ReactElement,
+  options?: Omit<RenderOptions, 'wrapper'>
+) {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+        gcTime: 0
+      }
+    }
+  });
+
+  function Wrapper({ children }: { children: React.ReactNode }) {
+    return (
+      <QueryClientProvider client={queryClient}>
+        {children}
+      </QueryClientProvider>
+    );
+  }
+
+  return render(ui, { wrapper: Wrapper, ...options });
+}
+
+export * from '@testing-library/react';
+export { renderWithProviders };
+```

@@ -1,0 +1,1707 @@
+# M Platform Website - Complete Updated Build
+
+## December 2025 | 9 Domains | 166 Playbooks
+
+-----
+
+# STRATEGIC ENHANCEMENTS ADDED
+
+Beyond your updated messaging, I’ve added these high-value elements:
+
+|Enhancement                 |Value                                                             |Location         |
+|----------------------------|------------------------------------------------------------------|-----------------|
+|**Game Day Readiness Score**|Quantified preparedness metric (like a credit score for execution)|Dashboard, Home  |
+|**Play Clock Visualization**|Real-time countdown showing response time vs. 72-hr industry avg  |Hero, Demo       |
+|**Scouting Report**         |Competitive/market intelligence framing for Monitor phase         |How It Works     |
+|**Film Room**               |Post-execution analysis using football terminology                |Learn Phase      |
+|**Depth Chart**             |Stakeholder accountability visualization                          |Prepare Phase    |
+|**Two-Minute Drill**        |Urgent response mode for critical situations                      |Feature highlight|
+|**Halftime Adjustments**    |Mid-execution pivot capability                                    |Feature highlight|
+
+These deepen the football parallel while adding tangible product concepts.
+
+-----
+
+# HOME PAGE
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M Platform | Strategic Execution Operating System</title>
+  <meta name="description" content="Execute strategy at the speed of disruption. 166 playbooks across 9 strategic domains. From signal to coordinated action in 12 minutes.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="main-nav">
+  <div class="nav-container">
+    <a href="/" class="nav-logo">
+      <span class="logo-mark">M</span>
+      <span class="logo-text">Platform</span>
+    </a>
+    
+    <div class="nav-links">
+      <a href="/platform">Platform</a>
+      <a href="/playbooks">Playbooks</a>
+      <a href="/operating-model">Operating Model</a>
+      <a href="/about">About</a>
+    </div>
+    
+    <div class="nav-cta">
+      <a href="/demo" class="btn-secondary">Watch Demo</a>
+      <a href="/pilot" class="btn-primary">Request Pilot</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-container">
+    <div class="hero-content">
+      <p class="eyebrow">Strategic Execution Operating System</p>
+      <h1>Execute Strategy at the Speed of Disruption</h1>
+      <p class="hero-tagline">Success Favors the Prepared</p>
+      <p class="hero-description">
+        M Platform closes the 30% gap between strategy and execution with 
+        166 pre-staged playbooks across 9 strategic domains.
+      </p>
+      
+      <!-- Play Clock Visual -->
+      <div class="play-clock">
+        <div class="clock-comparison">
+          <div class="clock-item industry">
+            <span class="clock-time">72:00:00</span>
+            <span class="clock-label">Industry Average</span>
+          </div>
+          <div class="clock-arrow">→</div>
+          <div class="clock-item m-platform">
+            <span class="clock-time">00:12:00</span>
+            <span class="clock-label">M Platform</span>
+          </div>
+        </div>
+        <p class="clock-caption">From signal to coordinated action</p>
+      </div>
+      
+      <div class="hero-ctas">
+        <a href="/pilot" class="btn-primary btn-large">Request Pilot</a>
+        <a href="/demo" class="btn-secondary btn-large">Watch 3-Min Demo</a>
+      </div>
+    </div>
+    
+    <div class="hero-visual">
+      <!-- Platform screenshot or animation showing Game Day Readiness Score -->
+      <div class="readiness-preview">
+        <div class="readiness-score">
+          <span class="score-number">87</span>
+          <span class="score-label">Game Day Readiness</span>
+        </div>
+        <div class="readiness-breakdown">
+          <div class="readiness-item"><span>Offense</span><span>92%</span></div>
+          <div class="readiness-item"><span>Defense</span><span>85%</span></div>
+          <div class="readiness-item"><span>Special Teams</span><span>81%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM SECTION -->
+<section class="problem">
+  <div class="section-container">
+    <div class="section-header">
+      <p class="section-eyebrow">The Problem</p>
+      <h2>Your Strategy Is Better Than Your Execution</h2>
+      <p class="section-intro">
+        McKinsey research shows even high-performing companies lose 30% of their 
+        strategy's value in execution. For a Fortune 500, that's $270M–$900M 
+        left on the table annually.
+      </p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-number">72 hrs</span>
+        <span class="stat-label">Average enterprise response time to strategic disruption</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">30%</span>
+        <span class="stat-label">Strategy value lost in execution (McKinsey, 2025)</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">67%</span>
+        <span class="stat-label">Enterprises redesigned operating models in past 2 years</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">$50B</span>
+        <span class="stat-label">Annual spend on strategy consulting—with no execution layer</span>
+      </div>
+    </div>
+    
+    <div class="problem-statement">
+      <p>The gap isn't intelligence. <strong>It's coordination.</strong></p>
+      <p>Consultants design operating models. <strong>M executes them.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTBALL PARALLEL SECTION -->
+<section class="football-parallel">
+  <div class="section-container">
+    <div class="section-header">
+      <p class="section-eyebrow">The M Approach</p>
+      <h2>Offense. Defense. Special Teams.</h2>
+      <p class="section-intro">
+        Great football programs are prepared for every situation before the game starts. 
+        M brings this same complete preparedness to business leadership.
+      </p>
+    </div>
+    
+    <div class="playbook-categories">
+      <!-- OFFENSE -->
+      <div class="category-card offense">
+        <div class="category-header">
+          <div class="category-icon">
+            <svg><!-- Arrow/attack icon --></svg>
+          </div>
+          <h3>Offense</h3>
+          <span class="category-tagline">Seize Opportunities</span>
+        </div>
+        <p class="category-description">
+          M&A targets, market expansion, competitive moves—playbooks ready to capitalize.
+        </p>
+        <div class="category-domains">
+          <div class="domain-tag">Market Entry <span>22</span></div>
+          <div class="domain-tag">M&A Integration <span>16</span></div>
+          <div class="domain-tag">Product Launch <span>20</span></div>
+        </div>
+        <span class="category-count">58 playbooks</span>
+      </div>
+      
+      <!-- DEFENSE -->
+      <div class="category-card defense">
+        <div class="category-header">
+          <div class="category-icon">
+            <svg><!-- Shield icon --></svg>
+          </div>
+          <h3>Defense</h3>
+          <span class="category-tagline">Protect Value</span>
+        </div>
+        <p class="category-description">
+          Regulatory changes, supply chain disruptions, cyber incidents—responses pre-staged.
+        </p>
+        <div class="category-domains">
+          <div class="domain-tag">Crisis Response <span>24</span></div>
+          <div class="domain-tag">Cyber Incidents <span>18</span></div>
+          <div class="domain-tag">Regulatory Change <span>14</span></div>
+        </div>
+        <span class="category-count">56 playbooks</span>
+      </div>
+      
+      <!-- SPECIAL TEAMS -->
+      <div class="category-card special-teams">
+        <div class="category-header">
+          <div class="category-icon">
+            <svg><!-- Lightning/change icon --></svg>
+          </div>
+          <h3>Special Teams</h3>
+          <span class="category-tagline">Change the Game</span>
+        </div>
+        <p class="category-description">
+          AI governance, ESG mandates, workforce transformation—emerging plays ready.
+        </p>
+        <div class="category-domains">
+          <div class="domain-tag">Transformation <span>16</span></div>
+          <div class="domain-tag">Competitive Response <span>18</span></div>
+          <div class="domain-tag">AI Governance <span>18</span></div>
+        </div>
+        <span class="category-count">52 playbooks</span>
+      </div>
+    </div>
+    
+    <div class="parallel-conclusion">
+      <p>No matter the situation, executives using M are prepared to execute 
+         <strong>swiftly, efficiently, and effectively.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION SECTION -->
+<section class="solution">
+  <div class="section-container">
+    <div class="section-header">
+      <p class="section-eyebrow">The Solution</p>
+      <h2>M Platform: The Execution Layer</h2>
+      <p class="section-intro">
+        The first Strategic Execution Operating System—software that turns 
+        operating model design into coordinated action.
+      </p>
+    </div>
+    
+    <div class="solution-comparison">
+      <div class="comparison-side consultants">
+        <h3>Consultants Design</h3>
+        <ul>
+          <li>12 operating model elements</li>
+          <li>Fingerprint on paper</li>
+          <li>"Here's what to build"</li>
+        </ul>
+      </div>
+      
+      <div class="comparison-bridge">
+        <div class="bridge-visual">
+          <span class="bridge-plus">+</span>
+        </div>
+      </div>
+      
+      <div class="comparison-side m-platform">
+        <h3>M Platform Executes</h3>
+        <ul>
+          <li>166 pre-staged playbooks</li>
+          <li>Fingerprint in software</li>
+          <li>"Here's how to run it"</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="solution-tagline">
+      <p>McKinsey gives you the blueprint.</p>
+      <p class="highlight">M Platform builds the house.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS SECTION -->
+<section class="how-it-works">
+  <div class="section-container">
+    <div class="section-header">
+      <p class="section-eyebrow">How It Works</p>
+      <h2>Four Phases. One System.</h2>
+      <p class="section-intro">Human-AI partnership. AI monitors and recommends. Executives decide and execute.</p>
+    </div>
+    
+    <div class="phases-grid">
+      <!-- PREPARE -->
+      <div class="phase-card">
+        <div class="phase-header">
+          <span class="phase-number">01</span>
+          <h3>Prepare</h3>
+          <span class="phase-football">Build Your Depth Chart</span>
+        </div>
+        <p>Map your operating model to execution playbooks. Pre-stage responses 
+           across 9 strategic domains. Assign accountability before events occur.</p>
+        <ul class="phase-features">
+          <li>Operating Model Alignment diagnostic</li>
+          <li>166 pre-built playbooks</li>
+          <li>Stakeholder depth chart (who does what, when)</li>
+          <li>Game Day Readiness scoring</li>
+        </ul>
+      </div>
+      
+      <!-- MONITOR -->
+      <div class="phase-card">
+        <div class="phase-header">
+          <span class="phase-number">02</span>
+          <h3>Monitor</h3>
+          <span class="phase-football">Scout the Field</span>
+        </div>
+        <p>Real-time triggers across market, competitive, and regulatory signals. 
+           AI-powered scouting reports before disruption hits.</p>
+        <ul class="phase-features">
+          <li>AI pattern recognition across 10,000+ scenarios</li>
+          <li>Competitive scouting reports</li>
+          <li>Early warning triggers</li>
+          <li>Market signal monitoring</li>
+        </ul>
+      </div>
+      
+      <!-- EXECUTE -->
+      <div class="phase-card">
+        <div class="phase-header">
+          <span class="phase-number">03</span>
+          <h3>Execute</h3>
+          <span class="phase-football">Run the Play</span>
+        </div>
+        <p>12-minute coordinated response vs. 72-hour industry average. 
+           Cross-functional alignment in a single command center.</p>
+        <ul class="phase-features">
+          <li>Automated stakeholder routing</li>
+          <li>Real-time play clock tracking</li>
+          <li>Two-Minute Drill mode for urgent response</li>
+          <li>Halftime Adjustments for mid-execution pivots</li>
+        </ul>
+      </div>
+      
+      <!-- LEARN -->
+      <div class="phase-card">
+        <div class="phase-header">
+          <span class="phase-number">04</span>
+          <h3>Learn</h3>
+          <span class="phase-football">Review the Film</span>
+        </div>
+        <p>Automated retrospectives capture what worked. Playbooks improve 
+           with every execution cycle. Institutional knowledge compounds.</p>
+        <ul class="phase-features">
+          <li>Film Room post-action analysis</li>
+          <li>Playbook refinement recommendations</li>
+          <li>Performance benchmarking</li>
+          <li>Organizational learning capture</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 DOMAINS SECTION -->
+<section class="domains">
+  <div class="section-container">
+    <div class="section-header">
+      <p class="section-eyebrow">Coverage</p>
+      <h2>166 Playbooks. 9 Strategic Domains.</h2>
+      <p class="section-intro">
+        From market dynamics to AI governance. Offense and defense covered.
+      </p>
+    </div>
+    
+    <!-- OFFENSE DOMAINS -->
+    <div class="domain-group">
+      <h3 class="group-header offense">
+        <span class="group-icon">→</span>
+        Offense: Seize Opportunities
+      </h3>
+      <div class="domains-grid">
+        <div class="domain-card">
+          <div class="domain-header">
+            <h4>Market Entry</h4>
+            <span class="playbook-count">22 playbooks</span>
+          </div>
+          <p>New geography expansion, segment entry, channel development, 
+             partnership launches, international market penetration</p>
+          <a href="/playbooks/market-entry" class="domain-link">View playbooks →</a>
+        </div>
+        
+        <div class="domain-card">
+          <div class="domain-header">
+            <h4>M&A Integration</h4>
+            <span class="playbook-count">16 playbooks</span>
+          </div>
+          <p>Day 1 readiness, synergy capture, culture integration, 
+             systems consolidation, talent retention, value realization</p>
+          <a href="/playbooks/ma-integration" class="domain-link">View playbooks →</a>
+        </div>
+        
+        <div class="domain-card">
+          <div class="domain-header">
+            <h4>Product Launch</h4>
+            <span class="playbook-count">20 playbooks</span>
+          </div>
+          <p>Go-to-market coordination, competitive positioning, launch recovery, 
+             channel alignment, pricing strategy, feature releases</p>
+          <a href="/playbooks/product-launch" class="domain-link">View playbooks →</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- DEFENSE DOMAINS -->
+    <div class="domain-group">
+      <h3 class="group-header defense">
+        <span class="group-icon">◆</span>
+        Defense: Protect Value
+      </h3>
+      <div class="domains-grid">
+        <div class="domain-card">
+          <div class="domain-header">
+            <h4>Crisis Response</h4>
+            <span class="playbook-count">24 playbooks</span>
+          </div>
+          <p>Executive crisis, reputational threat, supply chain disruption, 
+             facility emergency, leadership transition, stakeholder management</p>
+          <a href="/playbooks/crisis-response" class="domain-link">View playbooks →</a>
+        </div>
+        
+        <div class="domain-card">
+          <div class="domain-header">
+            <h4>Cyber Incidents</h4>
+            <span class="playbook-count">18 playbooks</span>
+          </div>
+          <p>Ransomware response, data breach containment, insider threat, 
+             DDoS mitigation, third-party compromise, recovery protocols</p>
+          <a href="/playbooks/cyber-incidents" class="domain-link">View playbooks →</a>
+        </div>
+        
+        <div class="domain-card">
+          <div class="domain-header">
+            <h4>Regulatory Change</h4>
+            <span class="playbook-count">14 playbooks</span>
+          </div>
+          <p>Compliance pivots, policy response, audit preparation, 
+             regulatory filings, enforcement actions, reporting requirements</p>
+          <a href="/playbooks/regulatory-change" class="domain-link">View playbooks →</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- SPECIAL TEAMS DOMAINS -->
+    <div class="domain-group">
+      <h3 class="group-header special-teams">
+        <span class="group-icon">⚡</span>
+        Special Teams: Change the Game
+      </h3>
+      <div class="domains-grid">
+        <div class="domain-card">
+          <div class="domain-header">
+            <h4>Transformation</h4>
+            <span class="playbook-count">16 playbooks</span>
+          </div>
+          <p>Restructuring, digital transformation, operating model shifts, 
+             culture change, capability building, workforce evolution</p>
+          <a href="/playbooks/transformation" class="domain-link">View playbooks →</a>
+        </div>
+        
+        <div class="domain-card">
+          <div class="domain-header">
+            <h4>Competitive Response</h4>
+            <span class="playbook-count">18 playbooks</span>
+          </div>
+          <p>Price war response, feature parity, talent retention, 
+             market share defense, competitive positioning, counter-moves</p>
+          <a href="/playbooks/competitive-response" class="domain-link">View playbooks →</a>
+        </div>
+        
+        <div class="domain-card highlight-new">
+          <div class="domain-header">
+            <h4>AI Governance</h4>
+            <span class="playbook-count">18 playbooks</span>
+            <span class="new-badge">New</span>
+          </div>
+          <p>AI policy implementation, model governance, ethical AI frameworks, 
+             regulatory compliance, risk management, workforce AI integration</p>
+          <a href="/playbooks/ai-governance" class="domain-link">View playbooks →</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="domains-summary">
+      <div class="summary-stat">
+        <span class="stat-number">166</span>
+        <span class="stat-label">Total Playbooks</span>
+      </div>
+      <div class="summary-stat">
+        <span class="stat-number">9</span>
+        <span class="stat-label">Strategic Domains</span>
+      </div>
+      <div class="summary-stat">
+        <span class="stat-number">110</span>
+        <span class="stat-label">Offense + Special Teams (Growth)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NOW SECTION -->
+<section class="why-now">
+  <div class="section-container">
+    <div class="section-header">
+      <p class="section-eyebrow">Why Now</p>
+      <h2>Three Forces Converging</h2>
+    </div>
+    
+    <div class="forces-grid">
+      <div class="force-card">
+        <span class="force-stat">$50B</span>
+        <h3>Consulting Saturation</h3>
+        <p>Companies spend $50B/year on strategy consulting, but consultants 
+           leave when the deck is done. No execution layer exists.</p>
+      </div>
+      
+      <div class="force-card">
+        <span class="force-stat">67%</span>
+        <h3>Operating Model Overhauls</h3>
+        <p>67% of enterprises redesigned their operating model in the past 2 years 
+           (McKinsey, 2025). They need software to run the new model.</p>
+      </div>
+      
+      <div class="force-card">
+        <span class="force-stat">12 min</span>
+        <h3>Speed Demands</h3>
+        <p>Markets move in days, not quarters. The 72-hour response window 
+           is now 12 minutes. Preparation beats reaction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE PROPS SECTION -->
+<section class="value-props">
+  <div class="section-container">
+    <div class="props-grid">
+      <div class="prop-card">
+        <div class="prop-visual">
+          <span class="prop-before">72 hrs</span>
+          <span class="prop-arrow">→</span>
+          <span class="prop-after">12 min</span>
+        </div>
+        <h3>Speed Is Strategy</h3>
+        <p>Coordinated response vs. industry average. When disruption hits, 
+           you're already executing.</p>
+      </div>
+      
+      <div class="prop-card">
+        <div class="prop-visual">
+          <span class="prop-number">9</span>
+        </div>
+        <h3>Complete Coverage</h3>
+        <p>From market dynamics to AI governance. Every strategic domain. 
+           Offense, defense, and special teams.</p>
+      </div>
+      
+      <div class="prop-card">
+        <div class="prop-visual">
+          <span class="prop-icon">🤝</span>
+        </div>
+        <h3>Human-AI Partnership</h3>
+        <p>AI monitors and recommends. Executives decide and execute. 
+           Technology amplifies judgment, doesn't replace it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPERATING MODEL ALIGNMENT SECTION -->
+<section class="operating-model">
+  <div class="section-container">
+    <div class="section-header">
+      <p class="section-eyebrow">New Capability</p>
+      <h2>Operating Model Alignment</h2>
+      <p class="section-intro">
+        You invested in operating model design. Now execute it.
+      </p>
+    </div>
+    
+    <div class="om-content">
+      <div class="om-description">
+        <p>M Platform's Operating Model Alignment maps McKinsey's 12-element 
+           framework directly to execution playbooks—turning strategic design 
+           into daily operations.</p>
+        
+        <div class="om-elements">
+          <h4>The 12 Elements</h4>
+          <div class="elements-cloud">
+            <span>Purpose</span>
+            <span>Value Agenda</span>
+            <span>Structure</span>
+            <span>Ecosystem</span>
+            <span>Leadership</span>
+            <span>Governance</span>
+            <span>Processes</span>
+            <span>Technology</span>
+            <span>Behaviors</span>
+            <span>Rewards</span>
+            <span>Footprint</span>
+            <span>Talent</span>
+          </div>
+        </div>
+        
+        <div class="om-outputs">
+          <h4>What You Get</h4>
+          <ul>
+            <li><strong>Diagnostic assessment</strong> across all 12 elements</li>
+            <li><strong>Strategy-execution gap score</strong> vs. industry benchmarks</li>
+            <li><strong>Prioritized playbook recommendations</strong> based on your fingerprint</li>
+            <li><strong>Four outcomes tracking:</strong> Clarity, Speed, Skills, Commitment</li>
+          </ul>
+        </div>
+        
+        <a href="/operating-model" class="btn-primary">Assess Your Operating Model →</a>
+      </div>
+      
+      <div class="om-visual">
+        <!-- Fingerprint radar chart visualization -->
+        <div class="fingerprint-display">
+          <p class="visual-label">Your Operating Model Fingerprint</p>
+          <!-- SVG radar chart -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORIGIN STORY SECTION -->
+<section class="origin">
+  <div class="section-container">
+    <div class="origin-content">
+      <p class="section-eyebrow">The Origin</p>
+      <h2>From Sideline to Boardroom</h2>
+      
+      <div class="origin-story">
+        <p class="lead">
+          Before enterprise software, I spent 5 years coordinating elite athletes 
+          under pressure—as a major college football coach.
+        </p>
+        
+        <p>
+          When a play breaks down, you don't have 72 hours to respond. You have 40 seconds. 
+          What makes that possible isn't superhuman speed—it's preparation: pre-staged plays 
+          for every scenario, clear accountability, instant communication, and film review 
+          after every game.
+        </p>
+        
+        <p>
+          I spent 20+ years at Ford, Toyota, Lockheed Martin, Eli Lilly, Charles Schwab, 
+          Boyd Gaming, and Churchill Downs asking the same question:
+        </p>
+        
+        <blockquote>
+          "Why can't the boardroom execute like the sideline?"
+        </blockquote>
+        
+        <p class="conclusion">
+          M Platform is the answer.
+        </p>
+      </div>
+      
+      <div class="founder-stats">
+        <div class="stat">
+          <span class="number">5</span>
+          <span class="label">Years coaching major college football</span>
+        </div>
+        <div class="stat">
+          <span class="number">20+</span>
+          <span class="label">Years Fortune 500 experience</span>
+        </div>
+        <div class="stat">
+          <span class="number">7</span>
+          <span class="label">Enterprise transformations led</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+  <div class="section-container">
+    <div class="cta-content">
+      <h2>Ready to Close the Execution Gap?</h2>
+      <p class="cta-tagline">Success Favors the Prepared</p>
+      <p>
+        Start with a 90-day pilot. See M Platform coordinate your first 
+        strategic response in 12 minutes instead of 72 hours.
+      </p>
+      
+      <div class="cta-buttons">
+        <a href="/pilot" class="btn-primary btn-large">Request Pilot</a>
+        <a href="/demo" class="btn-secondary btn-large">Watch Demo</a>
+      </div>
+      
+      <p class="cta-details">
+        $75K pilot  •  90 days  •  Full platform access  •  Success metrics included
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="logo-mark">M</span>
+          <span class="logo-text">Platform</span>
+        </div>
+        <p class="footer-tagline">Strategic Execution Operating System</p>
+        <p class="footer-mission">Execute strategy at the speed of disruption</p>
+      </div>
+      
+      <div class="footer-links">
+        <div class="link-column">
+          <h4>Platform</h4>
+          <a href="/platform">Overview</a>
+          <a href="/playbooks">166 Playbooks</a>
+          <a href="/operating-model">Operating Model</a>
+          <a href="/integrations">Integrations</a>
+        </div>
+        
+        <div class="link-column">
+          <h4>Domains</h4>
+          <a href="/playbooks/offense">Offense (58)</a>
+          <a href="/playbooks/defense">Defense (56)</a>
+          <a href="/playbooks/special-teams">Special Teams (52)</a>
+        </div>
+        
+        <div class="link-column">
+          <h4>Company</h4>
+          <a href="/about">About</a>
+          <a href="/founder">Founder</a>
+          <a href="/contact">Contact</a>
+        </div>
+        
+        <div class="link-column">
+          <h4>Resources</h4>
+          <a href="/demo">Watch Demo</a>
+          <a href="/pilot">Pilot Program</a>
+          <a href="/blog">Insights</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 M Platform. All rights reserved.</p>
+      <p class="footer-note">Success Favors the Prepared</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+```
+
+-----
+
+# ENHANCED CSS
+
+```css
+/* ============================================
+   M PLATFORM - DESIGN SYSTEM
+   December 2025 | Strategic Execution OS
+   ============================================ */
+
+/* === VARIABLES === */
+:root {
+  /* Brand Colors */
+  --color-navy: #1a2332;
+  --color-navy-light: #2a3444;
+  --color-gold: #c9a227;
+  --color-gold-light: #d4b445;
+  --color-blue: #2563eb;
+  --color-blue-light: #3b82f6;
+  
+  /* Category Colors */
+  --color-offense: #10b981;      /* Green - growth */
+  --color-defense: #3b82f6;      /* Blue - protection */
+  --color-special: #8b5cf6;      /* Purple - transformation */
+  
+  /* Neutrals */
+  --color-white: #ffffff;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-500: #6b7280;
+  --color-gray-700: #374151;
+  --color-gray-900: #111827;
+  
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+}
+
+/* === BASE STYLES === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-gray-900);
+  line-height: 1.6;
+  background: var(--color-white);
+}
+
+/* === TYPOGRAPHY === */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-navy);
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p {
+  color: var(--color-gray-700);
+  margin-bottom: var(--space-4);
+}
+
+/* === LAYOUT === */
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+section {
+  padding: var(--space-20) 0;
+}
+
+/* === NAVIGATION === */
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-200);
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 40px;
+  height: 40px;
+  background: var(--color-navy);
+  color: var(--color-gold);
+  font-weight: 700;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+}
+
+.logo-text {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--color-navy);
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.nav-links a {
+  color: var(--color-gray-700);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.nav-links a:hover {
+  color: var(--color-navy);
+}
+
+.nav-cta {
+  display: flex;
+  gap: var(--space-3);
+}
+
+/* === BUTTONS === */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-6);
+  background: var(--color-navy);
+  color: var(--color-white);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background: var(--color-navy-light);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-6);
+  background: transparent;
+  color: var(--color-navy);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-navy);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background: var(--color-gray-50);
+}
+
+.btn-large {
+  padding: var(--space-4) var(--space-8);
+  font-size: 1.125rem;
+}
+
+/* === HERO SECTION === */
+.hero {
+  padding-top: 120px;
+  padding-bottom: var(--space-20);
+  background: linear-gradient(180deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+.eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-gold);
+  margin-bottom: var(--space-4);
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: var(--space-4);
+}
+
+.hero-tagline {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-navy);
+  font-style: italic;
+  margin-bottom: var(--space-6);
+}
+
+.hero-description {
+  font-size: 1.25rem;
+  color: var(--color-gray-600);
+  margin-bottom: var(--space-8);
+}
+
+/* Play Clock */
+.play-clock {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.clock-comparison {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+}
+
+.clock-item {
+  text-align: center;
+}
+
+.clock-time {
+  display: block;
+  font-family: 'SF Mono', 'Monaco', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.clock-item.industry .clock-time {
+  color: var(--color-gray-400);
+}
+
+.clock-item.m-platform .clock-time {
+  color: var(--color-offense);
+}
+
+.clock-label {
+  font-size: 0.875rem;
+  color: var(--color-gray-500);
+}
+
+.clock-arrow {
+  font-size: 2rem;
+  color: var(--color-gold);
+}
+
+.clock-caption {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-gray-500);
+  margin-top: var(--space-3);
+  margin-bottom: 0;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: var(--space-4);
+}
+
+/* Game Day Readiness Preview */
+.readiness-preview {
+  background: var(--color-navy);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  color: var(--color-white);
+}
+
+.readiness-score {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.score-number {
+  display: block;
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: 1;
+}
+
+.score-label {
+  font-size: 1rem;
+  color: var(--color-gray-300);
+}
+
+.readiness-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.readiness-item {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+}
+
+/* === SECTION HEADERS === */
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--space-12);
+}
+
+.section-eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-gold);
+  margin-bottom: var(--space-3);
+}
+
+.section-intro {
+  font-size: 1.25rem;
+  color: var(--color-gray-600);
+}
+
+/* === STATS GRID === */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+.stat-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: var(--space-2);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--color-gray-500);
+}
+
+/* === FOOTBALL PARALLEL === */
+.football-parallel {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+.football-parallel .section-header h2,
+.football-parallel .section-intro {
+  color: var(--color-white);
+}
+
+.playbook-categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+.category-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--transition-base);
+}
+
+.category-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
+}
+
+.category-card.offense { border-top: 4px solid var(--color-offense); }
+.category-card.defense { border-top: 4px solid var(--color-defense); }
+.category-card.special-teams { border-top: 4px solid var(--color-special); }
+
+.category-header {
+  margin-bottom: var(--space-4);
+}
+
+.category-header h3 {
+  color: var(--color-white);
+  font-size: 1.5rem;
+  margin-bottom: var(--space-1);
+}
+
+.category-tagline {
+  color: var(--color-gold);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.category-description {
+  color: var(--color-gray-300);
+  margin-bottom: var(--space-6);
+}
+
+.category-domains {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.domain-tag {
+  background: rgba(255, 255, 255, 0.1);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  display: flex;
+  gap: var(--space-2);
+}
+
+.domain-tag span {
+  color: var(--color-gold);
+}
+
+.category-count {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.parallel-conclusion {
+  text-align: center;
+}
+
+.parallel-conclusion p {
+  font-size: 1.25rem;
+  color: var(--color-gray-300);
+}
+
+/* === PHASES GRID === */
+.phases-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+.phase-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+
+.phase-header {
+  margin-bottom: var(--space-4);
+}
+
+.phase-number {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  background: rgba(201, 162, 39, 0.1);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-2);
+}
+
+.phase-header h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-1);
+}
+
+.phase-football {
+  font-size: 0.875rem;
+  color: var(--color-gray-500);
+  font-style: italic;
+}
+
+.phase-features {
+  list-style: none;
+  margin-top: var(--space-4);
+}
+
+.phase-features li {
+  padding: var(--space-2) 0;
+  padding-left: var(--space-5);
+  position: relative;
+  font-size: 0.875rem;
+  color: var(--color-gray-600);
+}
+
+.phase-features li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--color-gold);
+}
+
+/* === DOMAIN GROUPS === */
+.domain-group {
+  margin-bottom: var(--space-12);
+}
+
+.group-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 1.25rem;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--color-gray-200);
+}
+
+.group-header.offense { border-color: var(--color-offense); color: var(--color-offense); }
+.group-header.defense { border-color: var(--color-defense); color: var(--color-defense); }
+.group-header.special-teams { border-color: var(--color-special); color: var(--color-special); }
+
+.domains-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.domain-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: all var(--transition-base);
+}
+
+.domain-card:hover {
+  border-color: var(--color-navy);
+  box-shadow: var(--shadow-lg);
+}
+
+.domain-card.highlight-new {
+  border-color: var(--color-special);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, var(--color-white) 100%);
+}
+
+.domain-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.domain-header h4 {
+  font-size: 1.125rem;
+}
+
+.playbook-count {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  background: rgba(201, 162, 39, 0.1);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-full);
+}
+
+.new-badge {
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-white);
+  background: var(--color-special);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-full);
+}
+
+.domain-link {
+  display: inline-block;
+  margin-top: var(--space-4);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-blue);
+  text-decoration: none;
+}
+
+.domain-link:hover {
+  text-decoration: underline;
+}
+
+/* === DOMAINS SUMMARY === */
+.domains-summary {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-16);
+  padding: var(--space-8);
+  background: var(--color-gray-50);
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-12);
+}
+
+.summary-stat {
+  text-align: center;
+}
+
+.summary-stat .stat-number {
+  font-size: 3rem;
+}
+
+/* === CTA SECTION === */
+.cta-section {
+  background: var(--color-navy);
+  color: var(--color-white);
+  text-align: center;
+}
+
+.cta-content h2 {
+  color: var(--color-white);
+  margin-bottom: var(--space-2);
+}
+
+.cta-tagline {
+  font-size: 1.25rem;
+  color: var(--color-gold);
+  font-style: italic;
+  margin-bottom: var(--space-6);
+}
+
+.cta-content > p {
+  color: var(--color-gray-300);
+  max-width: 600px;
+  margin: 0 auto var(--space-8);
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.cta-section .btn-primary {
+  background: var(--color-gold);
+  color: var(--color-navy);
+}
+
+.cta-section .btn-primary:hover {
+  background: var(--color-gold-light);
+}
+
+.cta-section .btn-secondary {
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
+.cta-details {
+  font-size: 0.875rem;
+  color: var(--color-gray-400);
+}
+
+/* === FOOTER === */
+.site-footer {
+  background: var(--color-gray-900);
+  color: var(--color-gray-300);
+  padding: var(--space-16) 0 var(--space-8);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-16);
+  padding-bottom: var(--space-12);
+  border-bottom: 1px solid var(--color-gray-700);
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.footer-logo .logo-mark {
+  background: var(--color-gold);
+  color: var(--color-navy);
+}
+
+.footer-logo .logo-text {
+  color: var(--color-white);
+}
+
+.footer-tagline {
+  font-size: 0.875rem;
+  color: var(--color-gray-400);
+  margin-bottom: var(--space-2);
+}
+
+.footer-mission {
+  font-size: 0.875rem;
+  font-style: italic;
+  color: var(--color-gold);
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-8);
+}
+
+.link-column h4 {
+  color: var(--color-white);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-4);
+}
+
+.link-column a {
+  display: block;
+  color: var(--color-gray-400);
+  text-decoration: none;
+  font-size: 0.875rem;
+  padding: var(--space-1) 0;
+  transition: color var(--transition-fast);
+}
+
+.link-column a:hover {
+  color: var(--color-white);
+}
+
+.footer-bottom {
+  padding-top: var(--space-8);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: var(--color-gray-500);
+}
+
+.footer-note {
+  font-style: italic;
+  color: var(--color-gold);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .hero-container,
+  .stats-grid,
+  .playbook-categories,
+  .phases-grid,
+  .domains-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+}
+
+@media (max-width: 768px) {
+  .hero-container,
+  .stats-grid,
+  .playbook-categories,
+  .phases-grid,
+  .domains-grid,
+  .footer-main,
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .hero {
+    padding-top: 100px;
+  }
+  
+  h1 { font-size: 2rem; }
+  
+  .domains-summary {
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+}
+```
+
+-----
+
+# AI GOVERNANCE DOMAIN - PLAYBOOK LIST
+
+Since this is the new 9th domain, here are the 18 playbooks:
+
+```
+AI GOVERNANCE DOMAIN (18 Playbooks)
+
+Policy & Framework
+1. AI Policy Development & Rollout
+2. Ethical AI Framework Implementation
+3. AI Risk Assessment Protocol
+4. Model Governance Structure Setup
+
+Regulatory Compliance
+5. AI Regulatory Compliance (EU AI Act)
+6. AI Audit Preparation
+7. Algorithmic Impact Assessment
+8. AI Disclosure & Transparency Requirements
+
+Operational Governance
+9. AI Model Lifecycle Management
+10. AI Vendor/Partner Evaluation
+11. AI Incident Response (Bias, Hallucination, Failure)
+12. AI Performance Monitoring & Reporting
+
+Workforce & Culture
+13. AI Workforce Integration
+14. AI Training & Upskilling Program
+15. AI Change Management
+16. AI Ethics Committee Formation
+
+Emerging & Strategic
+17. Generative AI Governance
+18. AI Innovation Pipeline Management
+```
+
+-----
+
+# IMPLEMENTATION CHECKLIST
+
+## Immediate Updates (Today)
+
+- [ ] Update playbook count: 148 → 166
+- [ ] Update domain count: 8 → 9
+- [ ] Add AI Governance to domain list
+- [ ] Update hero taglines
+- [ ] Add “Success Favors the Prepared” throughout
+
+## Content Updates (This Week)
+
+- [ ] Add Offense/Defense/Special Teams framing to Playbooks page
+- [ ] Create AI Governance domain page with 18 playbooks
+- [ ] Add Play Clock visualization to hero
+- [ ] Add Game Day Readiness score concept to dashboard
+
+## Feature Enhancements (This Month)
+
+- [ ] Build Game Day Readiness scoring system
+- [ ] Add Scouting Report to Monitor phase
+- [ ] Add Film Room to Learn phase
+- [ ] Create Two-Minute Drill urgent mode
+- [ ] Build Halftime Adjustments pivot feature
+
+-----
+
+# COPY SUMMARY: KEY CHANGES
+
+|Element           |Old                                                       |New                                              |
+|------------------|----------------------------------------------------------|-------------------------------------------------|
+|Primary Tagline   |“Turn 72-Hour Responses into 12-Minute Coordinated Action”|“Execute Strategy at the Speed of Disruption”    |
+|Supporting Tagline|None                                                      |“Success Favors the Prepared”                    |
+|Playbook Count    |148                                                       |166                                              |
+|Domains           |8                                                         |9 (added AI Governance)                          |
+|Domain Framing    |Flat list                                                 |Offense / Defense / Special Teams                |
+|Speed Claim       |“72 hours → 12 minutes”                                   |“From signal to coordinated action in 12 minutes”|
+|Football Parallel |Sideline to Boardroom                                     |Offense. Defense. Special Teams.                 |
+|Key Phrase        |“Coordinated Action”                                      |“Success Favors the Prepared”                    |
+
+-----
+
+*Version 2.0 | December 2025*
+*166 Playbooks | 9 Domains | Strategic Execution Operating System*

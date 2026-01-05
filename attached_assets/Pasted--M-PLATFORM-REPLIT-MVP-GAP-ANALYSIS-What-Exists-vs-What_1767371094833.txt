@@ -1,0 +1,496 @@
+# M PLATFORM: REPLIT MVP GAP ANALYSIS
+## What Exists vs. What's Needed for First Customer Pilot
+
+---
+
+## CURRENT STATE SUMMARY
+
+Based on your Replit codebase analysis:
+
+| Area | Status | Notes |
+|------|--------|-------|
+| **Database Schema** | ✅ 85% Complete | 22 tables, all enums, phase configs exist |
+| **API Routes** | ⚠️ 60% Complete | Phase-item routes exist, need full CRUD verification |
+| **Frontend Components** | ⚠️ 50% Complete | PhaseProgressBar exists, wizard steps missing |
+| **Navigation/Routing** | ✅ Complete | All footer links work |
+| **Demo/Investor Materials** | ✅ Complete | 6 investor docs, demo exists |
+| **Authentication** | ⚠️ Unknown | Need to verify customer login works |
+| **Multi-tenancy** | ⚠️ Unknown | Need org isolation for real customers |
+| **Notifications** | ❌ Missing | Critical for pilot — stakeholders need alerts |
+
+---
+
+## MVP REQUIREMENTS BY PRIORITY
+
+### 🔴 PRIORITY 1: MUST HAVE FOR PILOT (Blocks Customer Use)
+
+These are **non-negotiable** for a real customer to use M Platform:
+
+#### 1.1 Customer Authentication & Organization Setup
+**Status:** ⚠️ Needs Verification/Work
+**Why Critical:** Customer team needs to log in, see only their data
+
+**What to Build:**
+```
+□ Customer can create account with email/password
+□ Customer belongs to an Organization
+□ All data filtered by organizationId
+□ Admin can invite team members
+□ Password reset flow works
+```
+
+**Replit Prompt:**
+```
+Check if authentication is working for real customers (not just demo mode).
+
+I need:
+1. A registration flow where a customer can create an account
+2. The account creates an Organization record
+3. All playbooks, executions, stakeholders are filtered by organizationId
+4. An invite system so the admin can add team members
+5. Basic password reset via email
+
+If any of this is missing, implement it. Use simple email/password auth 
+(not OAuth/SSO for now). Store sessions in the database or use JWT.
+
+Show me the auth flow end-to-end when done.
+```
+
+---
+
+#### 1.2 Playbook CRUD (Create, Read, Update, Delete)
+**Status:** ⚠️ Partial — needs verification
+**Why Critical:** Customer needs to create and edit their own playbooks
+
+**What to Build:**
+```
+□ Create new playbook with name, domain, category
+□ Edit playbook details
+□ Delete playbook (with confirmation)
+□ Duplicate playbook (as template)
+□ List all playbooks for organization
+□ Filter playbooks by domain/category
+```
+
+**Replit Prompt:**
+```
+Verify the playbook CRUD operations work end-to-end:
+
+1. Can I create a new playbook from the UI? Show me where.
+2. Can I edit a playbook's name, description, domain, category?
+3. Can I delete a playbook? Is there a confirmation?
+4. Can I duplicate a playbook to use as a template?
+
+Test each operation and fix any that don't work.
+Then show me the playbook list page and creation flow.
+```
+
+---
+
+#### 1.3 Task Management Within Playbooks
+**Status:** ⚠️ Partial — wizard steps missing
+**Why Critical:** The whole point is coordinating tasks across stakeholders
+
+**What to Build:**
+```
+□ Add tasks to a playbook
+□ Set task order/sequence
+□ Assign task to a role or specific person
+□ Set estimated duration for each task
+□ Set dependencies (Task B waits for Task A)
+□ Mark tasks as requiring approval
+□ Edit and delete tasks
+```
+
+**Replit Prompt:**
+```
+I need a complete task management system within playbooks.
+
+Currently missing: The wizard step components for building playbooks 
+(PrepareOverviewStep, MonitorTriggersStep, ExecuteTasksStep, LearnConfigStep)
+
+Build a task editor that lets me:
+1. Add tasks to a playbook (title, description, estimated minutes)
+2. Assign each task to a role (e.g., "Legal Counsel", "PR Lead", "CISO")
+3. Set task order (drag-and-drop or up/down arrows)
+4. Mark dependencies (Task 3 requires Task 1 and 2 to complete first)
+5. Mark if task requires approval before moving forward
+6. Edit and delete existing tasks
+
+This can be a simple list interface — doesn't need to be fancy.
+Show me the working task editor when done.
+```
+
+---
+
+#### 1.4 Stakeholder Management
+**Status:** ❌ Unknown
+**Why Critical:** Need to know WHO does each task and HOW to reach them
+
+**What to Build:**
+```
+□ Add stakeholders to organization
+□ Stakeholder has: name, email, role, phone (optional)
+□ Assign stakeholders to specific playbooks
+□ Map stakeholders to task roles
+□ View all stakeholders in organization
+□ Edit and remove stakeholders
+```
+
+**Replit Prompt:**
+```
+Build a stakeholder management system:
+
+1. Organization-level stakeholder directory
+   - Add stakeholder: name, email, role/title, phone (optional)
+   - List all stakeholders in the organization
+   - Edit and delete stakeholders
+
+2. Playbook-level stakeholder assignment
+   - When building a playbook, assign stakeholders to roles
+   - Example: "Legal Counsel" role → "Jane Smith" stakeholder
+   - Same stakeholder can have different roles in different playbooks
+
+3. Show stakeholder details when viewing a playbook
+
+Create the UI for managing stakeholders and show me the flow.
+```
+
+---
+
+#### 1.5 Playbook Execution Flow
+**Status:** ⚠️ Partial — demo exists, real execution unclear
+**Why Critical:** This IS the product — running a playbook when triggered
+
+**What to Build:**
+```
+□ "Activate Playbook" button starts execution
+□ Execution record created with timestamp
+□ Tasks appear in order based on dependencies
+□ Each task shows: title, assignee, status, time elapsed
+□ Stakeholder can mark their task complete
+□ Next tasks unlock when dependencies met
+□ Timer shows elapsed time vs. target
+□ Execution can be paused/cancelled
+□ Completion screen shows summary
+```
+
+**Replit Prompt:**
+```
+Build the real playbook execution flow (not just the demo simulation).
+
+When a user clicks "Activate Playbook":
+1. Create an execution record (playbookId, startedAt, status='active')
+2. Load all tasks for this playbook
+3. Show a real-time dashboard with:
+   - List of all tasks with status (pending/in-progress/complete)
+   - Who's assigned to each task
+   - Time elapsed since execution started
+   - Visual indicator of which tasks are "unblocked" (dependencies met)
+
+4. Allow stakeholders to mark tasks complete:
+   - Click "Complete" on their assigned task
+   - Records completedAt timestamp
+   - Unlocks dependent tasks
+
+5. When all tasks complete:
+   - Set execution status='completed'
+   - Record completedAt
+   - Calculate actual duration
+   - Show completion summary
+
+This should work for a REAL scenario, not just a timed demo.
+Show me the execution flow working end-to-end.
+```
+
+---
+
+#### 1.6 Email Notifications
+**Status:** ❌ Missing
+**Why Critical:** Stakeholders need to know when it's their turn
+
+**What to Build:**
+```
+□ Send email when playbook activated (to all stakeholders)
+□ Send email when task assigned to stakeholder
+□ Send email reminder if task overdue
+□ Send email when execution completes
+□ Include link to M Platform in all emails
+□ Basic email templates (doesn't need to be pretty)
+```
+
+**Replit Prompt:**
+```
+Add email notifications to M Platform.
+
+Use a simple email service. Options:
+- Resend (recommended, easy setup)
+- SendGrid
+- Nodemailer with SMTP
+
+Implement these notifications:
+1. When playbook activated → Email all stakeholders
+   Subject: "[URGENT] {Playbook Name} Activated - Action Required"
+   Body: Playbook has been activated. Click here to view your tasks.
+
+2. When task becomes available → Email assigned stakeholder
+   Subject: "Task Ready: {Task Name}"
+   Body: Your task is ready. Click here to complete it.
+
+3. When task overdue (optional, nice-to-have)
+   Subject: "Reminder: {Task Name} is overdue"
+   
+4. When execution completes → Email all stakeholders
+   Subject: "{Playbook Name} Complete - {Duration}"
+   Body: Summary of execution with timing.
+
+Create simple HTML email templates. Show me a test email being sent.
+```
+
+---
+
+### 🟡 PRIORITY 2: SHOULD HAVE (Makes Pilot Better)
+
+These improve the experience but pilot can technically work without them:
+
+#### 2.1 Four-Phase Wizard Steps
+**Status:** ❌ Not Found
+**Why Important:** Guides user through IDEA framework when building playbooks
+
+**Replit Prompt:**
+```
+Build the 4-phase wizard for creating/editing playbooks.
+
+The wizard should have 4 steps matching the IDEA framework:
+1. IDENTIFY (Prepare) - Basic playbook info, stakeholder mapping
+2. DETECT (Monitor) - Trigger conditions (what activates this playbook)
+3. EXECUTE - Task list and dependencies
+4. ADVANCE (Learn) - Success criteria, what to measure
+
+Each step should save progress. User can navigate between steps.
+Final step shows summary and "Save Playbook" button.
+
+Use the existing PhaseProgressBar component to show progress.
+```
+
+---
+
+#### 2.2 Dashboard with Metrics
+**Status:** ⚠️ Partial
+**Why Important:** Customer needs to see value (response time improvement)
+
+**Replit Prompt:**
+```
+Build a dashboard showing key metrics:
+
+1. Game Day Readiness Score (0-100)
+   - Based on: playbook count, stakeholders mapped, recent activity
+
+2. Execution History
+   - List of past executions with duration and outcome
+   - Average response time
+
+3. Before/After Comparison
+   - "Without M Platform: ~72 hours"
+   - "With M Platform: [actual average] minutes"
+   - Show the improvement multiplier
+
+4. Quick Actions
+   - "Create Playbook" button
+   - "View Active Executions" link
+
+This is the first thing customers see when they log in.
+```
+
+---
+
+#### 2.3 Fix 240x → 360x Inconsistency
+**Status:** 🔴 4 Files Have Wrong Value
+**Why Important:** Credibility — math must be right
+
+**Replit Prompt:**
+```
+Fix the speed multiplier in these 4 files:
+
+1. InvestorDemo.tsx - Change 240x to 360x
+2. DemoLiveActivation.tsx - Change 240x to 360x
+3. McKinseyIntelligenceCenter.tsx - Change 240x to 360x
+4. DemoCompletionScreen.tsx - Change 240x to 360x
+
+The correct math: 72 hours = 4,320 minutes. 4,320 ÷ 12 = 360x
+
+Search for "240" in the codebase and fix any other occurrences.
+```
+
+---
+
+### 🟢 PRIORITY 3: NICE TO HAVE (Polish for Later)
+
+These are enhancements that can wait until after first pilot:
+
+| Feature | Notes |
+|---------|-------|
+| Slack/Teams integration | Can manually post for now |
+| AI signal detection | You trigger playbooks manually for pilot |
+| Skip to Results button | Investor demo convenience |
+| 60-second compressed demo | Investor demo convenience |
+| SSO/SAML authentication | Enterprise requirement, not pilot |
+| Advanced analytics | Google Sheets can supplement |
+| Mobile optimization | Desktop-first is fine for pilot |
+
+---
+
+## IMPLEMENTATION ORDER FOR REPLIT
+
+### Week 1: Foundation (Days 1-5)
+```
+Day 1: Authentication & Organization
+Day 2: Stakeholder Management
+Day 3: Playbook CRUD
+Day 4: Task Management
+Day 5: Test & Fix
+```
+
+### Week 2: Execution (Days 6-10)
+```
+Day 6: Execution Flow (Part 1 - Start & Track)
+Day 7: Execution Flow (Part 2 - Complete & Report)
+Day 8: Email Notifications
+Day 9: Dashboard
+Day 10: Test & Fix
+```
+
+### Week 3: Polish (Days 11-15)
+```
+Day 11: Four-Phase Wizard
+Day 12: Fix 240x inconsistency + messaging
+Day 13: End-to-end testing
+Day 14: Bug fixes
+Day 15: Final testing with sample scenario
+```
+
+---
+
+## TESTING CHECKLIST
+
+Before declaring MVP ready, test this entire flow:
+
+### As Admin (You / Customer Admin):
+```
+□ Create new account
+□ Organization created automatically
+□ Add 3 stakeholders (different emails)
+□ Create a playbook with 5 tasks
+□ Assign stakeholders to tasks
+□ Set task dependencies (Task 3 needs 1 & 2)
+□ Save playbook
+□ Activate playbook
+□ Verify all stakeholders received email
+```
+
+### As Stakeholder 1:
+```
+□ Click link in email
+□ Log in (or view without login?)
+□ See my assigned task
+□ Mark task complete
+□ Verify Task 3 is still locked
+```
+
+### As Stakeholder 2:
+```
+□ Log in and complete my task
+□ Verify Task 3 is now unlocked
+```
+
+### As Stakeholder 3:
+```
+□ Complete Task 3
+□ Complete remaining tasks
+□ Verify execution marked complete
+□ Verify completion email sent
+```
+
+### As Admin:
+```
+□ View completed execution
+□ See total duration
+□ See before/after comparison
+□ Export or view summary
+```
+
+---
+
+## QUICK REFERENCE: COPY/PASTE TO REPLIT
+
+### Start Here - Full Audit:
+```
+Analyze the current codebase for pilot readiness.
+
+I need to run a real customer pilot in the next 30 days.
+A pilot requires:
+1. Customer can log in with their own account
+2. Customer sees only their organization's data
+3. Customer can create playbooks with tasks
+4. Customer can add stakeholders
+5. Customer can activate a playbook
+6. Stakeholders receive email notifications
+7. Stakeholders can mark tasks complete
+8. Dashboard shows execution history and metrics
+
+For each of these 8 requirements:
+- Tell me if it EXISTS and WORKS today
+- If partial, tell me what's missing
+- If missing, estimate hours to build
+
+Give me a clear status report I can act on.
+```
+
+### Then Work Through Priority 1 Items:
+(Use the individual prompts from Section 1.1 - 1.6 above)
+
+---
+
+## ESTIMATED EFFORT
+
+| Priority | Items | Estimated Hours |
+|----------|-------|-----------------|
+| P1 (Must Have) | Auth, CRUD, Tasks, Stakeholders, Execution, Email | 40-60 hours |
+| P2 (Should Have) | Wizard, Dashboard, Fix 240x | 15-20 hours |
+| P3 (Nice to Have) | Slack, AI, Mobile, SSO | 40+ hours (defer) |
+
+**Total for Pilot-Ready MVP: 55-80 hours of dev work**
+
+---
+
+## DECISION POINT
+
+You have options:
+
+### Option A: Do It Yourself in Replit
+- Time: 2-3 weeks of focused work
+- Cost: $0 (just your time)
+- Risk: Learning curve, may take longer
+
+### Option B: Hire Contractor + Replit
+- Time: 1-2 weeks
+- Cost: $3,000-6,000
+- Risk: Need to find good contractor
+
+### Option C: Hybrid
+- You do P1 items 1.1-1.4 (structure)
+- Contractor does 1.5-1.6 (execution flow, email)
+- Time: 2 weeks
+- Cost: $1,500-3,000
+
+**Recommendation:** Start with Option A, use the prompts above, and see how far you get in Week 1. If you're stuck, escalate to Option C.
+
+---
+
+## NEXT STEP
+
+Copy the "Start Here - Full Audit" prompt into Replit right now.
+
+Get the actual status, then work through Priority 1 items one by one.
+
+Report back on what Replit finds and I'll help you troubleshoot.

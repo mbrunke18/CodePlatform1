@@ -1,0 +1,124 @@
+# VEXOR Customer Demo Script (15 minutes)
+
+## Pre-Demo Setup (5 minutes before call)
+- [ ] Open /playbook-library in browser
+- [ ] Have Ransomware playbook customized and ready
+- [ ] Clear browser console
+- [ ] Test WebSocket connection
+- [ ] Have activation ready to trigger
+- [ ] Rehearse once
+
+## MINUTE 0-2: THE HOOK
+"Thank you for joining. In the next 15 minutes, I'm going to show you 
+something that will change how your company executes strategy.
+
+The problem: When your CEO decides to launch a product, integrate an 
+acquisition, or respond to a crisis—how long does it take to coordinate 
+everyone? 48 hours? 72 hours? 
+
+VEXOR coordinates your entire organization in 12 minutes. And I'm going 
+to prove it to you live, right now."
+
+## MINUTE 2-5: THE LIBRARY
+[Share screen: /playbook-library]
+
+"We've pre-built 148 strategic playbooks based on real Fortune 1000 scenarios.
+
+Let me show you one: Ransomware Response. [Click]
+
+You see 8 sections—all 80% pre-filled with best practices from companies 
+like Microsoft, Bank of America, Toyota.
+
+The genius: You customize 20% to your organization—just add your people's 
+names. Takes 2 hours, not 2 months."
+
+[Show Stakeholder Matrix section with pre-filled roles]
+
+## MINUTE 5-7: THE CUSTOMIZATION
+"When we work together, we'll customize this for [Customer Company].
+
+You'd just map your executives to these roles:
+- CEO → [Customer CEO Name]
+- CISO → [Customer CISO Name]
+- CFO → [Customer CFO Name]
+
+Takes one afternoon. Then you have a playbook ready to activate."
+
+## MINUTE 7-9: THE ACTIVATION
+"Now here's where it gets powerful. Let me show you what happens when 
+you activate.
+
+[Click "Activate Playbook"]
+
+Watch the timer. This is REAL—not a simulation. Right now:
+- 30 stakeholders are being notified [show console logs]
+- Tasks are being distributed
+- Coordination is starting
+
+[WebSocket updates start appearing]
+
+See them acknowledging in real-time?
+- Sarah CFO acknowledged after 47 seconds
+- Marcus CTO acknowledged after 1 minute
+
+This is actual organizational coordination happening."
+
+## MINUTE 9-12: THE WAIT (FILL TIME)
+While coordination is running:
+
+"Let me tell you what's happening behind the scenes:
+
+Each stakeholder received:
+- Email with their role and tasks
+- Slack message with acknowledge button  
+- SMS if configured
+
+They click one button to acknowledge. That's it.
+
+Compare this to your current process:
+- Email sent
+- Wait for calendar availability
+- Schedule meeting
+- Half the people miss it
+- Follow-up emails
+- 48-72 hours later, maybe everyone's aligned
+
+VEXOR does this in minutes, not days."
+
+[Check progress - should be near completion]
+
+## MINUTE 12-14: THE PROOF
+[Coordination completes]
+
+"There it is. 11 minutes, 47 seconds. 28 out of 30 acknowledged.
+
+Let me show you what this means: [Pull up comparison]
+
+WITHOUT VEXOR: 
+- 48-72 hours to coordinate
+- By then, ransomware has spread
+- Data is exfiltrated  
+- $27M in recovery costs [real LoanDepot example]
+
+WITH VEXOR:
+- 12 minutes to coordinate
+- Response begins while threat is containable
+- $283,000 saved in executive time alone
+- Crisis prevented, not just managed
+
+The ROI is obvious. But the real value? Speed is the competitive advantage."
+
+## MINUTE 14-15: THE CLOSE
+"This is VEXOR. You've already invested millions in AI detection systems.
+
+We're the execution layer that makes those investments deliver ROI.
+
+We don't replace your technology. We're how you ACT on what you detect—
+at the speed your business actually moves.
+
+Three questions:
+1. Do you have strategic decisions that take days to coordinate?
+2. Do those delays cost you opportunities or increase your risk?
+3. Would 10x faster coordination create competitive advantage?
+
+If you answered yes to any of these, we should talk about a pilot.

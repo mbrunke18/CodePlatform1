@@ -1,0 +1,557 @@
+Create an automated verification script that tests all 7 demo components are built correctly and functional.
+
+═══════════════════════════════════════════════════════════════════════════════
+FILE: /scripts/verify-all-demos.ts
+═══════════════════════════════════════════════════════════════════════════════
+
+import { existsSync, readFileSync, readdirSync } from 'fs';
+import { resolve, join } from 'path';
+
+interface DemoTest {
+  name: string;
+  status: 'PASS' | 'FAIL' | 'WARN';
+  message: string;
+  details?: any;
+}
+
+const results: DemoTest[] = [];
+
+function pass(name: string, message: string, details?: any) {
+  results.push({ name, status: 'PASS', message, details });
+  console.log(`✅ ${name}: ${message}`);
+}
+
+function fail(name: string, message: string, details?: any) {
+  results.push({ name, status: 'FAIL', message, details });
+  console.log(`❌ ${name}: ${message}`);
+}
+
+function warn(name: string, message: string, details?: any) {
+  results.push({ name, status: 'WARN', message, details });
+  console.log(`⚠️  ${name}: ${message}`);
+}
+
+// Define expected demos
+const EXPECTED_DEMOS = [
+  {
+    name: 'Ransomware Response',
+    fileName: 'RansomwareDemo',
+    route: '/demo/ransomware',
+    stakeholderCount: 30,
+    impact: '$22M',
+    audience: 'CISO, CIO, CTO',
+    coordinationTime: '11:47',
+    icon: '🔒'
+  },
+  {
+    name: 'M&A Integration',
+    fileName: 'MaIntegrationDemo',
+    route: '/demo/ma-integration',
+    stakeholderCount: 45,
+    impact: '$500M',
+    audience: 'CEO, CFO, Board',
+    coordinationTime: '11:47',
+    icon: '🤝'
+  },
+  {
+    name: 'Product Launch',
+    fileName: 'ProductLaunchDemo',
+    route: '/demo/product-launch',
+    stakeholderCount: 50,
+    impact: '$200M',
+    audience: 'CEO, CMO, CPO',
+    coordinationTime: '11:47',
+    icon: '🚀'
+  },
+  {
+    name: 'Supplier Crisis',
+    fileName: 'SupplierCrisisDemo',
+    route: '/demo/supplier-crisis',
+    stakeholderCount: 35,
+    impact: '$150M',
+    audience: 'COO, CPO, Supply Chain',
+    coordinationTime: '11:47',
+    icon: '⚠️'
+  },
+  {
+    name: 'Competitive Response',
+    fileName: 'CompetitiveResponseDemo',
+    route: '/demo/competitive-response',
+    stakeholderCount: 28,
+    impact: '$300M',
+    audience: 'CEO, CMO, Strategy',
+    coordinationTime: '11:47',
+    icon: '⚔️'
+  },
+  {
+    name: 'Regulatory Crisis',
+    fileName: 'RegulatoryCrisisDemo',
+    route: '/demo/regulatory-crisis',
+    stakeholderCount: 32,
+    impact: '$50M',
+    audience: 'CEO, Legal, Compliance',
+    coordinationTime: '11:47',
+    icon: '⚖️'
+  },
+  {
+    name: 'Customer Crisis',
+    fileName: 'CustomerCrisisDemo',
+    route: '/demo/customer-crisis',
+    stakeholderCount: 24,
+    impact: '$120M',
+    audience: 'CEO, CRO, Customer Success',
+    coordinationTime: '11:47',
+    icon: '🚨'
+  }
+];
+
+async function verifyAllDemos() {
+  console.log('╔═══════════════════════════════════════════════════════════════╗');
+  console.log('║           VEXOR DEMO PORTFOLIO VERIFICATION                   ║');
+  console.log('╚═══════════════════════════════════════════════════════════════╝\n');
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 1: FILE EXISTENCE CHECK
+  // ═══════════════════════════════════════════════════════════════════════════
+  
+  console.log('\n📁 PART 1: DEMO COMPONENT FILES\n');
+  console.log('─'.repeat(70));
+  
+  const srcDirs = ['src', 'client', 'app', 'frontend'];
+  let srcDir = '';
+  
+  for (const dir of srcDirs) {
+    if (existsSync(resolve(process.cwd(), dir))) {
+      srcDir = dir;
+      break;
+    }
+  }
+  
+  if (!srcDir) {
+    fail('Setup', 'No source directory found (src/client/app)');
+    console.log('\n❌ CRITICAL: Cannot proceed without source directory\n');
+    return;
+  }
+  
+  pass('Setup', `Source directory found: /${srcDir}`);
+  
+  // Check each demo component
+  for (const demo of EXPECTED_DEMOS) {
+    let found = false;
+    let foundPath = '';
+    
+    // Common locations for demo components
+    const possiblePaths = [
+      join(srcDir, 'pages', demo.fileName + '.tsx'),
+      join(srcDir, 'pages', demo.fileName + '.jsx'),
+      join(srcDir, 'components', demo.fileName + '.tsx'),
+      join(srcDir, 'components', demo.fileName + '.jsx'),
+      join(srcDir, 'pages', 'demos', demo.fileName + '.tsx'),
+      join(srcDir, 'components', 'demos', demo.fileName + '.tsx'),
+      join(srcDir, 'routes', demo.fileName + '.tsx')
+    ];
+    
+    for (const path of possiblePaths) {
+      const fullPath = resolve(process.cwd(), path);
+      if (existsSync(fullPath)) {
+        found = true;
+        foundPath = path;
+        break;
+      }
+    }
+    
+    if (found) {
+      pass(`File: ${demo.name}`, `Found at ${foundPath}`);
+      
+      // Check file content
+      const content = readFileSync(resolve(process.cwd(), foundPath), 'utf-8');
+      
+      // Check for TODO/placeholder
+      const hasTodo = content.includes('TODO') || content.includes('FIXME') || content.includes('PLACEHOLDER');
+      if (hasTodo) {
+        warn(`Content: ${demo.name}`, 'Contains TODO/FIXME/PLACEHOLDER comments');
+      } else {
+        pass(`Content: ${demo.name}`, 'No placeholder comments');
+      }
+      
+      // Check for key elements
+      const hasStakeholders = content.includes('stakeholder') || content.includes('Stakeholder');
+      const hasTimer = content.includes('timer') || content.includes('Timer') || content.includes('elapsed');
+      const hasMetrics = content.includes('metrics') || content.includes('Metrics') || content.includes('coordination');
+      const hasConfetti = content.includes('confetti') || content.includes('Confetti');
+      
+      if (hasStakeholders && hasTimer && hasMetrics) {
+        pass(`Structure: ${demo.name}`, 'Contains core demo elements');
+      } else {
+        const missing = [];
+        if (!hasStakeholders) missing.push('stakeholders');
+        if (!hasTimer) missing.push('timer');
+        if (!hasMetrics) missing.push('metrics');
+        fail(`Structure: ${demo.name}`, `Missing: ${missing.join(', ')}`);
+      }
+      
+      if (hasConfetti) {
+        pass(`Animation: ${demo.name}`, 'Includes celebration/confetti');
+      } else {
+        warn(`Animation: ${demo.name}`, 'May be missing celebration animation');
+      }
+      
+      // Check for specific demo data
+      const hasSpecificData = content.includes(demo.stakeholderCount.toString()) || 
+                               content.includes(demo.impact) ||
+                               content.includes(demo.name);
+      
+      if (hasSpecificData) {
+        pass(`Data: ${demo.name}`, 'Contains demo-specific data');
+      } else {
+        warn(`Data: ${demo.name}`, 'May be using generic/template data');
+      }
+      
+    } else {
+      fail(`File: ${demo.name}`, `Component file not found (searched ${possiblePaths.length} locations)`);
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 2: ROUTING CHECK
+  // ═══════════════════════════════════════════════════════════════════════════
+  
+  console.log('\n🛣️  PART 2: ROUTING CONFIGURATION\n');
+  console.log('─'.repeat(70));
+  
+  const routingFiles = [
+    join(srcDir, 'App.tsx'),
+    join(srcDir, 'App.jsx'),
+    join(srcDir, 'routes.tsx'),
+    join(srcDir, 'routes.ts'),
+    join(srcDir, 'router.tsx'),
+    join(srcDir, 'main.tsx')
+  ];
+  
+  let routingContent = '';
+  let routingFile = '';
+  
+  for (const file of routingFiles) {
+    const fullPath = resolve(process.cwd(), file);
+    if (existsSync(fullPath)) {
+      routingContent = readFileSync(fullPath, 'utf-8');
+      routingFile = file;
+      break;
+    }
+  }
+  
+  if (routingContent) {
+    pass('Routing', `Found routing file: ${routingFile}`);
+    
+    // Check each demo route
+    for (const demo of EXPECTED_DEMOS) {
+      const hasRoute = routingContent.includes(demo.route) || 
+                       routingContent.includes(demo.fileName);
+      
+      if (hasRoute) {
+        pass(`Route: ${demo.name}`, `${demo.route} registered`);
+      } else {
+        fail(`Route: ${demo.name}`, `${demo.route} NOT registered`);
+      }
+    }
+  } else {
+    warn('Routing', 'No routing file found - routes may be configured elsewhere');
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 3: DEMO SELECTOR CHECK
+  // ═══════════════════════════════════════════════════════════════════════════
+  
+  console.log('\n🎯 PART 3: DEMO SELECTOR PAGE\n');
+  console.log('─'.repeat(70));
+  
+  const selectorPaths = [
+    join(srcDir, 'pages', 'DemoSelector.tsx'),
+    join(srcDir, 'pages', 'Demos.tsx'),
+    join(srcDir, 'pages', 'demos', 'index.tsx'),
+    join(srcDir, 'components', 'DemoSelector.tsx'),
+    join(srcDir, 'pages', 'demo-selector.tsx'),
+    join(srcDir, 'pages', 'LiveDemo.tsx')
+  ];
+  
+  let selectorFound = false;
+  let selectorContent = '';
+  
+  for (const path of selectorPaths) {
+    const fullPath = resolve(process.cwd(), path);
+    if (existsSync(fullPath)) {
+      selectorFound = true;
+      selectorContent = readFileSync(fullPath, 'utf-8');
+      pass('Demo Selector', `Found at ${path}`);
+      break;
+    }
+  }
+  
+  if (selectorFound) {
+    // Check if all 7 demos are listed
+    let demosListed = 0;
+    for (const demo of EXPECTED_DEMOS) {
+      if (selectorContent.includes(demo.name) || selectorContent.includes(demo.route)) {
+        demosListed++;
+      }
+    }
+    
+    if (demosListed === 7) {
+      pass('Demo Selector', 'All 7 demos listed');
+    } else if (demosListed >= 4) {
+      warn('Demo Selector', `Only ${demosListed}/7 demos listed`);
+    } else {
+      fail('Demo Selector', `Only ${demosListed}/7 demos listed`);
+    }
+    
+    // Check for demo metadata (icons, audience, impact)
+    const hasIcons = selectorContent.includes('icon') || selectorContent.includes('🔒') || selectorContent.includes('🤝');
+    const hasAudience = selectorContent.includes('audience') || selectorContent.includes('CEO') || selectorContent.includes('CISO');
+    const hasImpact = selectorContent.includes('impact') || selectorContent.includes('$') || selectorContent.includes('revenue');
+    
+    if (hasIcons && hasAudience && hasImpact) {
+      pass('Demo Selector', 'Contains rich metadata (icons, audience, impact)');
+    } else {
+      warn('Demo Selector', 'May be missing rich metadata');
+    }
+    
+  } else {
+    warn('Demo Selector', 'No demo selector page found - users may need to navigate directly to routes');
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 4: CONSISTENCY CHECK
+  // ═══════════════════════════════════════════════════════════════════════════
+  
+  console.log('\n🔄 PART 4: DEMO CONSISTENCY\n');
+  console.log('─'.repeat(70));
+  
+  // Check that all demos have similar structure
+  const demoContents: { [key: string]: string } = {};
+  
+  for (const demo of EXPECTED_DEMOS) {
+    const possiblePaths = [
+      join(srcDir, 'pages', demo.fileName + '.tsx'),
+      join(srcDir, 'components', demo.fileName + '.tsx'),
+      join(srcDir, 'pages', 'demos', demo.fileName + '.tsx')
+    ];
+    
+    for (const path of possiblePaths) {
+      const fullPath = resolve(process.cwd(), path);
+      if (existsSync(fullPath)) {
+        demoContents[demo.name] = readFileSync(fullPath, 'utf-8');
+        break;
+      }
+    }
+  }
+  
+  // Check for common patterns
+  const patterns = {
+    timer: /timer|Timer|elapsed|duration/gi,
+    stakeholders: /stakeholder|Stakeholder/gi,
+    metrics: /metrics|Metrics|coordination/gi,
+    threshold: /threshold|80%/gi,
+    completion: /complete|Complete|finish/gi,
+    celebration: /confetti|Confetti|celebration/gi,
+    comparison: /comparison|Compare|without.*VEXOR/gi,
+    value: /value.*created|savings|ROI/gi
+  };
+  
+  for (const [patternName, regex] of Object.entries(patterns)) {
+    let matchCount = 0;
+    for (const [demoName, content] of Object.entries(demoContents)) {
+      if (regex.test(content)) {
+        matchCount++;
+      }
+    }
+    
+    if (matchCount === Object.keys(demoContents).length) {
+      pass(`Consistency: ${patternName}`, `Present in all ${matchCount} demos`);
+    } else if (matchCount >= 4) {
+      warn(`Consistency: ${patternName}`, `Present in ${matchCount}/${Object.keys(demoContents).length} demos`);
+    } else {
+      fail(`Consistency: ${patternName}`, `Only present in ${matchCount}/${Object.keys(demoContents).length} demos`);
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 5: DATA VALIDATION
+  // ═══════════════════════════════════════════════════════════════════════════
+  
+  console.log('\n📊 PART 5: DEMO DATA VALIDATION\n');
+  console.log('─'.repeat(70));
+  
+  for (const demo of EXPECTED_DEMOS) {
+    if (demoContents[demo.name]) {
+      const content = demoContents[demo.name];
+      
+      // Check for stakeholder count
+      const hasStakeholderCount = content.includes(demo.stakeholderCount.toString());
+      if (hasStakeholderCount) {
+        pass(`Data: ${demo.name}`, `Stakeholder count (${demo.stakeholderCount}) present`);
+      } else {
+        warn(`Data: ${demo.name}`, `Stakeholder count (${demo.stakeholderCount}) may not be configured`);
+      }
+      
+      // Check for coordination time
+      const hasCoordinationTime = content.includes('11:47') || content.includes('11:') || content.includes('12:');
+      if (hasCoordinationTime) {
+        pass(`Timing: ${demo.name}`, 'Coordination time configured');
+      } else {
+        warn(`Timing: ${demo.name}`, 'Coordination time may not be set');
+      }
+      
+      // Check for impact metrics
+      const hasImpact = content.includes('$') && (content.includes('M') || content.includes('million'));
+      if (hasImpact) {
+        pass(`Impact: ${demo.name}`, 'Financial impact metrics present');
+      } else {
+        warn(`Impact: ${demo.name}`, 'Financial impact metrics may be missing');
+      }
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // SUMMARY
+  // ═══════════════════════════════════════════════════════════════════════════
+  
+  console.log('\n╔═══════════════════════════════════════════════════════════════╗');
+  console.log('║                        SUMMARY                                ║');
+  console.log('╚═══════════════════════════════════════════════════════════════╝\n');
+  
+  const passCount = results.filter(r => r.status === 'PASS').length;
+  const failCount = results.filter(r => r.status === 'FAIL').length;
+  const warnCount = results.filter(r => r.status === 'WARN').length;
+  const total = results.length;
+  
+  console.log(`✅ Passed:   ${passCount}/${total}`);
+  console.log(`❌ Failed:   ${failCount}/${total}`);
+  console.log(`⚠️  Warnings: ${warnCount}/${total}`);
+  console.log(`📊 Success Rate: ${((passCount / total) * 100).toFixed(1)}%\n`);
+  
+  // Demo-specific summary
+  console.log('📋 Demo-by-Demo Status:\n');
+  
+  for (const demo of EXPECTED_DEMOS) {
+    const demoResults = results.filter(r => r.name.includes(demo.name));
+    const demoPasses = demoResults.filter(r => r.status === 'PASS').length;
+    const demoFails = demoResults.filter(r => r.status === 'FAIL').length;
+    
+    const emoji = demoFails > 0 ? '❌' : demoPasses >= 3 ? '✅' : '⚠️';
+    console.log(`${emoji} ${demo.name}: ${demoPasses} checks passed, ${demoFails} failed`);
+  }
+  
+  console.log('\n🎯 OVERALL ASSESSMENT:\n');
+  
+  const demosFound = results.filter(r => r.name.startsWith('File:') && r.status === 'PASS').length;
+  const routesFound = results.filter(r => r.name.startsWith('Route:') && r.status === 'PASS').length;
+  
+  if (demosFound === 7 && routesFound === 7 && failCount === 0) {
+    console.log('🎉 PERFECT! All 7 demos built and configured correctly.\n');
+    console.log('✓ All demo components exist');
+    console.log('✓ All routes registered');
+    console.log('✓ Consistent structure across demos');
+    console.log('✓ Ready for customer demonstrations\n');
+  } else if (demosFound >= 6 && failCount <= 5) {
+    console.log('✅ GOOD! Most demos built, minor issues to address.\n');
+    console.log(`✓ ${demosFound}/7 demo components found`);
+    console.log(`✓ ${routesFound}/7 routes registered`);
+    console.log(`⚠️  ${warnCount} warnings to review`);
+    console.log(`❌ ${failCount} issues to fix\n`);
+  } else if (demosFound >= 4) {
+    console.log('⚠️  PARTIAL BUILD: Some demos missing or incomplete.\n');
+    console.log(`✓ ${demosFound}/7 demos found`);
+    console.log(`❌ ${7 - demosFound} demos missing`);
+    console.log('→ Review failures and rebuild missing demos\n');
+  } else {
+    console.log('❌ INCOMPLETE: Most demos not built.\n');
+    console.log(`✓ Only ${demosFound}/7 demos found`);
+    console.log('→ Replit Agent may not have completed the work');
+    console.log('→ Re-run the demo build prompts\n');
+  }
+  
+  // Critical failures
+  const criticalFailures = results.filter(r => 
+    r.status === 'FAIL' && 
+    (r.name.startsWith('File:') || r.name.startsWith('Route:') || r.name.startsWith('Structure:'))
+  );
+  
+  if (criticalFailures.length > 0) {
+    console.log('🔴 CRITICAL ISSUES TO FIX:\n');
+    for (const failure of criticalFailures) {
+      console.log(`   ${failure.name}`);
+      console.log(`   → ${failure.message}\n`);
+    }
+  }
+  
+  console.log('📝 NEXT STEPS:\n');
+  
+  if (failCount === 0 && warnCount === 0) {
+    console.log('1. Test each demo manually in browser');
+    console.log('2. Verify timer completes to 11:47');
+    console.log('3. Check final metrics display');
+    console.log('4. Practice presenting all 7 demos\n');
+  } else if (failCount === 0) {
+    console.log('1. Review warnings (non-critical)');
+    console.log('2. Test demos manually');
+    console.log('3. Address warnings for polish\n');
+  } else {
+    console.log('1. Review critical failures above');
+    console.log('2. Re-run build prompts for missing demos');
+    console.log('3. Re-run this verification');
+    console.log('4. Proceed to manual testing once all pass\n');
+  }
+  
+  // Export report
+  const fs = await import('fs');
+  fs.writeFileSync(
+    resolve(process.cwd(), 'demo-verification-report.json'),
+    JSON.stringify({
+      timestamp: new Date().toISOString(),
+      summary: { total, passed: passCount, failed: failCount, warnings: warnCount },
+      demosFound,
+      routesFound,
+      results
+    }, null, 2)
+  );
+  
+  console.log('📄 Full report saved to: demo-verification-report.json\n');
+}
+
+verifyAllDemos().catch(error => {
+  console.error('\n❌ VERIFICATION FAILED:\n');
+  console.error(error);
+  process.exit(1);
+});
+
+═══════════════════════════════════════════════════════════════════════════════
+FILE: Update package.json
+═══════════════════════════════════════════════════════════════════════════════
+
+Add to "scripts" section:
+
+{
+  "scripts": {
+    "verify:demos": "tsx scripts/verify-all-demos.ts"
+  }
+}
+
+═══════════════════════════════════════════════════════════════════════════════
+DONE
+═══════════════════════════════════════════════════════════════════════════════
+
+After creating the file, run:
+
+npm run verify:demos
+
+This will:
+✅ Check all 7 demo component files exist
+✅ Verify each contains core elements (timer, stakeholders, metrics, celebration)
+✅ Check for TODO/placeholder comments
+✅ Validate routes are registered
+✅ Check demo selector page exists
+✅ Verify consistency across all demos
+✅ Validate demo-specific data is present
+✅ Generate comprehensive report
+
+Show the complete output.

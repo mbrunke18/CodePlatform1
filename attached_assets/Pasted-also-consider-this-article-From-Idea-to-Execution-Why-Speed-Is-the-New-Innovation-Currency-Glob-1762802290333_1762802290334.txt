@@ -1,0 +1,32 @@
+also consider this article:   From Idea to Execution: Why Speed Is the New Innovation Currency
+
+Global GTM AI Strategist & Advisor @ Salesforce | Keynote Speaker | Top 50 AI Leader (Center for Public Sector) | Hack to the Future Newsletter
+
+
+October 19, 2025
+We're moving so fast, last year's 'future of work' articles are already outdated. At Dreamforce this week, Salesforce didn't just demo voice AI agents..they showed companies already using them in production. The gap between 'wow, imagine if' and 'here's how we did it' has collapsed to months, not years.
+I've been covering tech long enough to remember when innovation cycles were measured in years. You'd hear about a breakthrough at a conference, then wait 18-24 months to see it in beta, then another year before it was reliable enough for real business use. That timeline is dead.
+What I Saw This Week
+At Dreamforce, the standout wasn't just the technology; it was the timeline. Voice AI agents that can handle actual phone conversations. Not scripted demos with perfect conditions, but real customer service calls where the AI navigates complaints, solves problems, and even handles the messy human moments when someone's frustrated or changes their mind mid-conversation.
+The kicker? Companies are already running these in production. Not pilots. Not proof-of-concepts. Real customers are calling in, talking to AI agents, and hanging up satisfied without ever knowing they weren't speaking to a human.
+But here's what really got my attention: Salesforce positioned Slack as the "conversational interface for everything"—the single place where people, AI agents, data, and apps all come together. Instead of jumping between tabs and tools, you're having conversations with your CRM, your analytics, your entire tech stack, right where you already work.
+The Real-World Impact Is Already Here
+Let me give you some concrete examples that aren't hypothetical—they're happening right now:
+The City of Kyle, TX implemented an AI-driven 311 system that's processed more than 12,000 service requests since March. Nearly 90% of residents get their issues resolved on the first call. When I reported a pothole? Fixed the next morning. Average resolution time: under 2.5 days—twice as fast as they expected.
+Williams-Sonoma, Inc. built an AI sous chef they named "Olive." She helps customers plan Thanksgiving dinner, suggests recipes based on what you already own, and recommends the right kitchen tools for your meal. They're expecting to autonomously resolve over 60% of customer inquiries. It feels like talking to that helpful store associate who actually knows their stuff.
+OpenTable is resolving 70% of diner and restaurant questions autonomously, maintaining that white-glove service feeling their industry demands.
+Reddit, Inc. cut their average support response time from 8.9 minutes to 1.4 minutes; an 84% reduction. They're deflecting 46% of support cases entirely, which means their human team can focus on the complex problems that actually need human judgment.
+Why This Matters to Your Monday Morning
+Here's what this speed means practically:
+At work, those repetitive tasks everyone complains about in meetings? They're being automated in real-time. An AI agent can now handle scheduling conflicts, answer policy questions, process routine requests, and escalate the complex stuff to humans; all while you're focused on work that actually requires human judgment and creativity. And increasingly, you're doing this through a single conversational interface rather than clicking through five different apps.
+As a customer, you're already experiencing this shift. That surprisingly helpful chat that resolved your issue at 11 PM? Probably AI. The restaurant reservation system that knew exactly what you needed? AI agent. The follow-up call that actually knew your history and didn't make you repeat yourself? Increasingly, that's an AI agent too. The difference is, you can't tell anymore—and that's precisely the point.
+The 1-2 Year Horizon
+Here's where it gets interesting. If we've gone from concept to production this fast with voice AI agents, what's 12-24 months from now?
+I'm watching for the convergence. Right now, these AI agents are specialized, one handles customer service, another does scheduling, another manages data entry. But they're learning to work together, to hand off context seamlessly, to anticipate what you need before you ask. And they're all living in platforms like Slack where you're already working.
+Imagine your workday starting with an AI that's already triaged your emails, prepped briefs for your meetings, identified the three decisions that actually need your attention, and handled everything else. Not sometime in the distant future. Based on what I'm seeing now, that's 2026-2027.
+The really transformative part? This isn't about replacing jobs—it's about redefining them. When the mundane disappears, what's left is the work that makes you human: strategy, creativity, relationship-building, judgment calls in grey areas. The stuff that actually matters.
+The Speed Lesson
+The biggest takeaway from Dreamforce isn't any single innovation. It's the velocity. The time from "here's a cool idea" to "here's how 500 companies are using it" has compressed so dramatically that our mental models can't keep up.
+This changes how we should think about planning. Your 5-year strategic plan? It probably needs to be a 2-year hypothesis. That technology you're evaluating for next year? It might be outdated by the time you finish the vendor selection process.
+The companies winning right now aren't the ones with the best plans—they're the ones who can execute and adapt faster than the technology evolves. They're the ones moving from idea to production in months, not years. They're the ones treating AI agents not as a future project but as teammates they're deploying today.
+Here's what keeps me up at night in the best way: If this is the pace of change we're seeing in 2025, and it's only accelerating, what does work even look like when today's college freshmen graduate? They won't be entering the workforce as it is now; they'll be entering the workforce as it's becoming. The organizations that survive won't be the ones clinging to "the way we've always done it." They'll be the ones who figured out how to learn, adapt, and move at the speed of innovation itself. And based on what I saw this week, that speed is only getting faster.

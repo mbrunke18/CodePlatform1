@@ -1,0 +1,366 @@
+# M Platform: 6-Week Implementation Roadmap
+
+## The Goal
+
+Ship a complete, demonstrable product that shows the full PREPARE → MONITOR → EXECUTE → LEARN lifecycle with one real integration. This is what gets you funding conversations, not feature lists.
+
+---
+
+## Week 1: Foundation (4-Phase Schema + API)
+
+### Objective
+Get the database and API layer working for all 4 phases.
+
+### Tasks
+
+| Day | Task | Hours | Deliverable |
+|-----|------|-------|-------------|
+| Mon | Add schema to `/shared/schema.ts` | 2 | 6 new enums, 5 new tables |
+| Mon | Run database migration | 1 | Tables created in PostgreSQL |
+| Tue | Add PREPARE phase API routes | 3 | CRUD for `/prepare-items` |
+| Tue | Add MONITOR phase API routes | 2 | CRUD for `/monitor-items` |
+| Wed | Add LEARN phase API routes | 2 | CRUD for `/learn-items` |
+| Wed | Add readiness score calculation | 2 | `/readiness` endpoint working |
+| Thu | Test all endpoints with Postman/curl | 2 | All 15 endpoints verified |
+| Thu | Seed sample data for 3 playbooks | 2 | Playbooks 1, 6, 12 have phase data |
+| Fri | Bug fixes and edge cases | 4 | Stable API |
+
+### Definition of Done
+- `GET /api/playbook-library/[id]/readiness` returns calculated score
+- `POST /api/playbook-library/[id]/prepare-items` creates items
+- All CRUD operations work for all 3 new phase tables
+
+### Code to Deploy
+Use the implementation file I already created: `M-4Phase-Implementation-For-Replit.md` Parts 1-3
+
+---
+
+## Week 2: Core UI (Phase Progress + Wizard Update)
+
+### Objective
+Users can see and interact with the 4-phase system in the UI.
+
+### Tasks
+
+| Day | Task | Hours | Deliverable |
+|-----|------|-------|-------------|
+| Mon | Create `PhaseProgressBar` component | 2 | Compact + full versions |
+| Mon | Add to PlaybookLibrary page | 2 | Cards show readiness |
+| Tue | Update wizard STEPS with phase grouping | 3 | 8 steps → 4 phases visual |
+| Tue | Add phase indicator bar to wizard | 2 | Shows PREPARE/MONITOR/EXECUTE/LEARN progress |
+| Wed | Create PREPARE phase summary view | 4 | List of items with status toggles |
+| Thu | Create MONITOR phase trigger editor | 4 | Add/edit signals and conditions |
+| Fri | Create LEARN phase config view | 3 | Debrief and survey setup |
+| Fri | Polish and responsive fixes | 1 | Works on tablet |
+
+### Definition of Done
+- PlaybookLibrary shows readiness scores on each card
+- Clicking "Customize" opens wizard with phase grouping
+- Can add/complete PREPARE items through UI
+- Can configure MONITOR triggers through UI
+
+### Key Component Structure
+```
+/client/src/components/playbook/
+├── PhaseProgressBar.tsx (new)
+├── PlaybookCustomizationWizard.tsx (updated)
+└── wizard/
+    ├── PreparePhaseView.tsx (new)
+    ├── MonitorPhaseView.tsx (new)
+    ├── ExecutePhaseView.tsx (existing, enhanced)
+    └── LearnPhaseView.tsx (new)
+```
+
+---
+
+## Week 3: Interactive Playbook Preview
+
+### Objective
+Click any playbook to see full details with 4-phase breakdown before activation.
+
+### Tasks
+
+| Day | Task | Hours | Deliverable |
+|-----|------|-------|-------------|
+| Mon | Design playbook detail page layout | 2 | Figma/sketch of layout |
+| Mon | Create `/playbook/[id]` route | 2 | Basic page shell |
+| Tue | Build PREPARE tab content | 4 | Stakeholders, docs, resources lists |
+| Wed | Build MONITOR tab content | 4 | Triggers with conditions displayed |
+| Thu | Build EXECUTE tab content | 4 | Task timeline with sub-phases |
+| Thu | Build LEARN tab content | 2 | Configured debrief/survey info |
+| Fri | Add "Activate" button with readiness gate | 2 | Can't activate if score < 50% |
+| Fri | Add "Run Drill" button | 2 | Links to existing drill system |
+
+### Definition of Done
+- `/playbook/[id]` shows comprehensive 4-phase view
+- Each phase has expandable sections
+- Readiness score prominently displayed
+- Activation blocked if not ready (with explanation)
+
+### Page Layout
+```
+┌─────────────────────────────────────────────────────────────┐
+│ Playbook: Ransomware Attack Response                        │
+│ Domain: Technology & Innovation | Readiness: 78%            │
+├─────────────────────────────────────────────────────────────┤
+│ [🎯 PREPARE] [📡 MONITOR] [⚡ EXECUTE] [📚 LEARN]           │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  PREPARE Phase (85% Complete)                               │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │ ✅ CISO assigned as primary owner                    │   │
+│  │ ✅ Board memo template ready                         │   │
+│  │ ⬜ PR agency on standby contract                     │   │
+│  │ ✅ $500K budget pre-approved                         │   │
+│  └─────────────────────────────────────────────────────┘   │
+│                                                             │
+│  [Activate Playbook]  [Run Practice Drill]  [Edit Config]   │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Week 4: One Real Integration (Jira)
+
+### Objective
+When a playbook activates, it creates a real Jira project with tasks.
+
+### Tasks
+
+| Day | Task | Hours | Deliverable |
+|-----|------|-------|-------------|
+| Mon | Set up Jira Cloud developer account | 1 | API access configured |
+| Mon | Create Jira integration service | 3 | `/server/integrations/jira.ts` |
+| Tue | Build "Create Project" function | 4 | Creates Jira project from playbook |
+| Wed | Build "Create Tasks" function | 4 | Maps EXECUTE tasks to Jira issues |
+| Wed | Add webhook for status updates | 2 | Jira → M sync |
+| Thu | Integration settings UI | 4 | Connect Jira in Settings page |
+| Fri | Test end-to-end flow | 3 | Activate playbook → Jira project appears |
+| Fri | Error handling and retry logic | 1 | Graceful failures |
+
+### Definition of Done
+- Settings page has "Connect Jira" button
+- OAuth flow completes and stores credentials
+- Activating a playbook creates Jira project
+- Tasks appear as Jira issues with correct assignees
+- Status changes in Jira reflect in M
+
+### Integration Architecture
+```
+M Platform                          Jira Cloud
+    │                                   │
+    │  POST /api/playbook/activate      │
+    │  ─────────────────────────────►   │
+    │  Creates Project + Issues         │
+    │                                   │
+    │  Webhook: Issue Updated           │
+    │  ◄─────────────────────────────   │
+    │  Updates task status in M         │
+    │                                   │
+```
+
+### Why Jira First?
+- Most Fortune 500 companies use it
+- Well-documented API
+- OAuth is straightforward
+- Proves the "auto-create project" value prop
+
+---
+
+## Week 5: Mobile + Demo Scenarios
+
+### Objective
+Executives can view on mobile. Multiple demo scenarios ready for roadshow.
+
+### Tasks
+
+| Day | Task | Hours | Deliverable |
+|-----|------|-------|-------------|
+| Mon | Audit all pages for mobile breakpoints | 2 | List of issues |
+| Mon | Fix PlaybookLibrary mobile layout | 2 | Cards stack properly |
+| Tue | Fix playbook detail page mobile | 3 | Tabs work on touch |
+| Tue | Fix wizard mobile experience | 3 | Steps navigable on phone |
+| Wed | Create 3 additional demo scenarios | 4 | Seed data ready |
+| Thu | Build demo selector UI | 3 | Switch between scenarios |
+| Thu | Create demo reset function | 2 | One-click reset to clean state |
+| Fri | End-to-end mobile testing | 3 | Test on real iPhone/Android |
+| Fri | Polish animations and transitions | 1 | Feels premium |
+
+### Demo Scenarios to Create
+
+| # | Scenario | Domain | Trigger |
+|---|----------|--------|---------|
+| 1 | Competitor Acquisition Response | Market Dynamics | M&A announcement detected |
+| 2 | Ransomware Attack | Technology | Security alert triggered |
+| 3 | Key Executive Departure | Talent & Leadership | Resignation announced |
+| 4 | Regulatory Investigation | Compliance | SEC notice received |
+| 5 | Supply Chain Disruption | Operations | Supplier bankruptcy |
+
+### Definition of Done
+- All core pages usable on iPhone 12 and newer
+- Demo selector in header allows switching scenarios
+- Each scenario has full 4-phase configuration
+- "Reset Demo" returns to clean state in < 5 seconds
+
+---
+
+## Week 6: Polish + Investor Demo
+
+### Objective
+Product is investor-demo ready with clear value narrative.
+
+### Tasks
+
+| Day | Task | Hours | Deliverable |
+|-----|------|-------|-------------|
+| Mon | Create guided demo flow | 4 | Step-by-step walkthrough mode |
+| Tue | Add timing displays | 3 | "12-minute execution" prominently shown |
+| Tue | Add before/after comparison | 3 | "72 hours → 12 minutes" visual |
+| Wed | Performance optimization | 4 | Page loads < 2 seconds |
+| Thu | Bug bash and fixes | 4 | All P1 bugs resolved |
+| Fri | Record demo video | 2 | 3-minute product walkthrough |
+| Fri | Create one-pager PDF | 2 | Leave-behind for investors |
+
+### Investor Demo Script (3 minutes)
+
+```
+0:00 - "What if your company could respond to strategic 
+       disruptions in 12 minutes instead of 72 hours?"
+
+0:30 - Show signal detection (MONITOR phase)
+       "M continuously monitors 92 data points..."
+
+1:00 - Show playbook readiness (PREPARE phase)
+       "148 pre-built playbooks, customized for your org..."
+
+1:30 - Trigger activation (EXECUTE phase)
+       "One click activates coordinated response..."
+       Show Jira project auto-created
+
+2:15 - Show post-execution (LEARN phase)
+       "Every execution improves the next one..."
+
+2:45 - Readiness score dashboard
+       "Know your readiness before crises hit."
+
+3:00 - "This is M. Strategic execution at the speed 
+        of disruption."
+```
+
+### Definition of Done
+- Complete demo can run without internet hiccups
+- No console errors during demo
+- Guided mode highlights key features
+- Video recorded and uploaded
+- One-pager PDF exported
+
+---
+
+## What's NOT in This Roadmap
+
+Explicitly deferred to post-funding:
+
+| Feature | Why Deferred |
+|---------|--------------|
+| AI Pattern Recognition | Requires ML infrastructure, real data |
+| Weak Signal Visualization | Needs actual signal sources |
+| Multi-integration dashboard | One working integration > dashboard of none |
+| Competitive benchmarking | Requires customer data you don't have |
+| ServiceNow integration | Jira proves the pattern first |
+| Slack/Teams notifications | Can add quickly once core works |
+| Role-based views | One good view > many partial views |
+
+---
+
+## Resource Requirements
+
+### For Replit Agent
+- Share this document
+- Work through week by week
+- Test each week's deliverables before moving on
+
+### For Human Developer
+- ~25 hours/week for 6 weeks = 150 hours total
+- Full-stack TypeScript experience required
+- Jira API familiarity helpful
+
+### For Contractor
+- Fixed bid: $15,000-20,000 for complete implementation
+- Milestone payments at end of each week
+- Week 6 payment contingent on working demo
+
+---
+
+## Success Metrics
+
+At the end of 6 weeks:
+
+| Metric | Target |
+|--------|--------|
+| Playbooks with 4-phase config | 5+ |
+| API endpoints working | 20+ |
+| Mobile usability score | 90+ |
+| Demo scenarios ready | 5 |
+| Real integrations working | 1 (Jira) |
+| Page load time | < 2 sec |
+| Demo video length | 3 min |
+| Investor conversations booked | Your job |
+
+---
+
+## Week-by-Week Checklist
+
+### Week 1 Checklist
+- [ ] Schema added to codebase
+- [ ] Migration run successfully
+- [ ] All API endpoints return 200
+- [ ] Sample data seeded
+- [ ] Postman collection created
+
+### Week 2 Checklist
+- [ ] PhaseProgressBar component working
+- [ ] Wizard shows phase grouping
+- [ ] Can add PREPARE items via UI
+- [ ] Can configure MONITOR triggers via UI
+- [ ] Readiness score updates live
+
+### Week 3 Checklist
+- [ ] Playbook detail page created
+- [ ] All 4 phase tabs populated
+- [ ] Activation gate working
+- [ ] Drill button links correctly
+- [ ] Page loads in < 2 seconds
+
+### Week 4 Checklist
+- [ ] Jira OAuth flow works
+- [ ] Project created on activation
+- [ ] Tasks appear as issues
+- [ ] Webhook receives updates
+- [ ] Status syncs both directions
+
+### Week 5 Checklist
+- [ ] All pages work on mobile
+- [ ] 5 demo scenarios seeded
+- [ ] Demo selector in UI
+- [ ] Reset function works
+- [ ] No layout breaks on any screen size
+
+### Week 6 Checklist
+- [ ] Guided demo mode works
+- [ ] Performance optimized
+- [ ] All P1 bugs fixed
+- [ ] Video recorded
+- [ ] One-pager created
+- [ ] Ready for investor meetings
+
+---
+
+## Final Note
+
+This roadmap gets you from "promising prototype" to "fundable product demo" in 6 weeks. It's aggressive but achievable.
+
+The key insight: **You don't need more features. You need fewer features that work completely.**
+
+The 4-phase lifecycle IS your product. Everything else is either proof it works (Jira integration) or packaging (mobile, demo scenarios).
+
+Ship the loop. Then raise.

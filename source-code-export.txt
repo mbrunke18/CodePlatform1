@@ -1,0 +1,643 @@
+================================================================================
+M PLATFORM - SOURCE CODE EXPORT
+Generated: December 8, 2025
+================================================================================
+Key Files Updated for Roadshow Readiness
+================================================================================
+
+================================================================================
+FILE: client/src/components/layout/StandardNav.tsx (Simplified 8-element header)
+================================================================================
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Play, Menu, X, LogIn, LogOut, User } from "lucide-react";
+import { useLocation } from "wouter";
+import { useAuth } from "@/hooks/useAuth";
+
+export default function StandardNav() {
+  const [location, setLocation] = useLocation();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, isAuthenticated, isLoading, login, logout } = useAuth();
+
+  const navigateTo = (path: string) => {
+    setLocation(path);
+    setMobileMenuOpen(false);
+  };
+
+  const navLinks = [
+    { label: "How It Works", path: "/how-it-works" },
+    { label: "Playbooks", path: "/playbook-library" },
+    { label: "Our Story", path: "/our-story" },
+    { label: "Pricing", path: "/pricing" },
+  ];
+
+  const isActivePath = (path: string) => {
+    if (path === "/") return location === "/";
+    return location.startsWith(path);
+  };
+
+  return (
+    <nav className="border-b border-slate-800 bg-slate-950 sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-16">
+          
+          {/* Logo */}
+          <div 
+            className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity" 
+            onClick={() => navigateTo('/')}
+            data-testid="nav-logo"
+          >
+            <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+              <span className="text-white font-bold text-lg">M</span>
+            </div>
+            <div className="hidden sm:block">
+              <span className="font-bold text-white text-lg">M</span>
+              <span className="text-slate-500 text-xs ml-1.5 hidden lg:inline">Strategic Execution OS</span>
+            </div>
+          </div>
+
+          {/* Desktop Navigation Links */}
+          <div className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <button
+                key={link.path}
+                onClick={() => navigateTo(link.path)}
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                  isActivePath(link.path) 
+                    ? 'text-white bg-slate-800' 
+                    : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+                }`}
+                data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+              >
+                {link.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Desktop CTAs */}
+          <div className="hidden md:flex items-center gap-3">
+            <Button 
+              onClick={() => navigateTo("/demo")}
+              className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold h-9 px-4"
+              data-testid="nav-see-demo"
+            >
+              <Play className="h-4 w-4 mr-1.5" />
+              See Demo
+            </Button>
+            
+            <Button 
+              variant="outline"
+              onClick={() => navigateTo("/investor-demo")}
+              className="border-purple-500/50 text-purple-300 hover:bg-purple-950 hover:text-purple-200 h-9 px-4"
+              data-testid="nav-investors"
+            >
+              Investors
+            </Button>
+
+            {/* Auth */}
+            {isLoading ? (
+              <div className="h-9 w-20 bg-slate-800 animate-pulse rounded-lg" />
+            ) : isAuthenticated && user ? (
+              <div className="flex items-center gap-2">
+                <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 bg-slate-800 rounded-lg">
+                  <User className="h-4 w-4 text-slate-400" />
+                  <span className="text-sm text-slate-300">{user.firstName || user.email?.split('@')[0]}</span>
+                </div>
+                <Button 
+                  variant="ghost" 
+                  onClick={logout}
+                  className="text-slate-400 hover:text-white hover:bg-slate-800 h-9 px-3"
+                  data-testid="nav-logout"
+                >
+                  <LogOut className="h-4 w-4 lg:mr-1.5" />
+                  <span className="hidden lg:inline">Sign Out</span>
+                </Button>
+              </div>
+            ) : (
+              <Button 
+                variant="ghost" 
+                onClick={login}
+                className="text-slate-400 hover:text-white hover:bg-slate-800 h-9 px-3"
+                data-testid="nav-login"
+              >
+                <LogIn className="h-4 w-4 lg:mr-1.5" />
+                <span className="hidden lg:inline">Sign In</span>
+              </Button>
+            )}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="flex md:hidden items-center gap-2">
+            <Button 
+              onClick={() => navigateTo("/demo")}
+              size="sm"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white"
+              data-testid="nav-mobile-demo"
+            >
+              <Play className="h-4 w-4" />
+            </Button>
+            <button
+              className="p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              data-testid="nav-mobile-menu-toggle"
+            >
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden py-4 border-t border-slate-800 animate-in slide-in-from-top-2 duration-200">
+            <div className="flex flex-col gap-1">
+              {/* Main Links */}
+              {navLinks.map((link) => (
+                <button
+                  key={link.path}
+                  onClick={() => navigateTo(link.path)}
+                  className={`text-left py-3 px-4 rounded-lg transition-colors ${
+                    isActivePath(link.path)
+                      ? 'text-white bg-slate-800'
+                      : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                  }`}
+                  data-testid={`nav-mobile-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+                >
+                  {link.label}
+                </button>
+              ))}
+              
+              {/* Divider */}
+              <div className="border-t border-slate-800 my-2" />
+              
+              {/* CTAs */}
+              <Button 
+                onClick={() => navigateTo("/demo")}
+                className="bg-emerald-600 hover:bg-emerald-700 text-white w-full justify-center h-11"
+                data-testid="nav-mobile-see-demo-full"
+              >
+                <Play className="h-4 w-4 mr-2" />
+                See Demo
+              </Button>
+              
+              <Button 
+                variant="outline"
+                onClick={() => navigateTo("/investor-demo")}
+                className="border-purple-500/50 text-purple-300 hover:bg-purple-950 w-full justify-center h-11 mt-2"
+                data-testid="nav-mobile-investors"
+              >
+                Investors
+              </Button>
+              
+              {/* Divider */}
+              <div className="border-t border-slate-800 my-2" />
+              
+              {/* Secondary Links */}
+              <div className="grid grid-cols-2 gap-1">
+                <button
+                  onClick={() => navigateTo("/our-story")}
+                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
+                >
+                  Our Story
+                </button>
+                <button
+                  onClick={() => navigateTo("/contact")}
+                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
+                >
+                  Contact
+                </button>
+                <button
+                  onClick={() => navigateTo("/executive-dashboard")}
+                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
+                >
+                  Dashboard
+                </button>
+                <button
+                  onClick={() => navigateTo("/roadshow-resources")}
+                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
+                >
+                  Resources
+                </button>
+              </div>
+              
+              {/* Auth */}
+              <div className="border-t border-slate-800 my-2" />
+              {isAuthenticated && user ? (
+                <div className="flex items-center justify-between px-3 py-2">
+                  <div className="flex items-center gap-2">
+                    <User className="h-4 w-4 text-slate-400" />
+                    <span className="text-sm text-slate-300">{user.firstName || user.email}</span>
+                  </div>
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    onClick={logout}
+                    className="text-slate-400 hover:text-white"
+                  >
+                    Sign Out
+                  </Button>
+                </div>
+              ) : (
+                <Button 
+                  variant="ghost" 
+                  onClick={login}
+                  className="text-slate-300 hover:text-white hover:bg-slate-800 w-full justify-center h-10"
+                >
+                  <LogIn className="h-4 w-4 mr-2" />
+                  Sign In
+                </Button>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
+}
+
+================================================================================
+FILE: client/src/components/layout/Footer.tsx (4-column navigation footer)
+================================================================================
+import { useLocation } from "wouter";
+
+export default function Footer() {
+  const [, setLocation] = useLocation();
+
+  const navigateTo = (path: string) => {
+    setLocation(path);
+    window.scrollTo(0, 0);
+  };
+
+  const footerSections = [
+    {
+      title: "Platform",
+      links: [
+        { label: "Executive Dashboard", path: "/executive-dashboard" },
+        { label: "Playbook Library", path: "/playbook-library" },
+        { label: "Command Center", path: "/command-center" },
+        { label: "Foresight Radar", path: "/foresight-radar" },
+        { label: "Integrations", path: "/integrations" },
+      ]
+    },
+    {
+      title: "Demos",
+      links: [
+        { label: "See Demo", path: "/demo" },
+        { label: "Investor Demo", path: "/investor-demo" },
+        { label: "Executive Simulation", path: "/executive-simulation" },
+        { label: "Industry Demos", path: "/industry-demos" },
+        { label: "Product Tour", path: "/product-tour" },
+      ]
+    },
+    {
+      title: "Company",
+      links: [
+        { label: "How It Works", path: "/how-it-works" },
+        { label: "Our Story", path: "/our-story" },
+        { label: "Why M", path: "/why-m" },
+        { label: "Pricing", path: "/pricing" },
+        { label: "Contact", path: "/contact" },
+      ]
+    },
+    {
+      title: "Resources",
+      links: [
+        { label: "Roadshow Resources", path: "/roadshow-resources" },
+        { label: "Research", path: "/research" },
+        { label: "ROI Calculator", path: "/calculator" },
+        { label: "What-If Analyzer", path: "/what-if-analyzer" },
+        { label: "Practice Drills", path: "/practice-drills" },
+      ]
+    },
+  ];
+
+  return (
+    <footer className="bg-slate-950 border-t border-slate-800">
+      {/* Main Footer */}
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12">
+          {/* Brand Column */}
+          <div className="col-span-2 md:col-span-4 lg:col-span-1 mb-8 lg:mb-0">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                <span className="text-white font-bold text-xl">M</span>
+              </div>
+              <div>
+                <div className="font-bold text-white">M</div>
+                <div className="text-xs text-slate-500">Strategic Execution OS</div>
+              </div>
+            </div>
+            <p className="text-sm text-slate-400 mb-4 max-w-xs">
+              Cut strategic response time from 72 hours to 12 minutes with pre-staged playbooks and coordinated execution.
+            </p>
+            <p className="text-xs text-slate-500">
+              Success favors the prepared.
+            </p>
+          </div>
+
+          {/* Link Columns */}
+          {footerSections.map((section) => (
+            <div key={section.title}>
+              <h4 className="font-semibold text-white mb-4 text-sm">
+                {section.title}
+              </h4>
+              <ul className="space-y-2">
+                {section.links.map((link) => (
+                  <li key={link.path}>
+                    <button
+                      onClick={() => navigateTo(link.path)}
+                      className="text-sm text-slate-400 hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-slate-800">
+        <div className="max-w-7xl mx-auto px-6 py-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-slate-500">
+              © {new Date().getFullYear()} M Strategic Execution Operating System. All rights reserved.
+            </p>
+            <div className="flex items-center gap-6">
+              <button 
+                onClick={() => navigateTo("/contact")}
+                className="text-sm text-slate-400 hover:text-white transition-colors"
+              >
+                Contact
+              </button>
+              <span className="text-slate-700">•</span>
+              <button 
+                onClick={() => navigateTo("/sitemap")}
+                className="text-sm text-slate-400 hover:text-white transition-colors"
+              >
+                Sitemap
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+================================================================================
+FILE: client/src/pages/DemoRouter.tsx ("First time here?" callout + clean layout)
+================================================================================
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Clock, Zap, Briefcase, ArrowRight, Play, Building2, Sparkles, FileText } from "lucide-react";
+import { useLocation } from "wouter";
+import StandardNav from "@/components/layout/StandardNav";
+import Footer from "@/components/layout/Footer";
+
+export default function DemoRouter() {
+  const [, setLocation] = useLocation();
+
+  const demoOptions = [
+    {
+      id: 'quick',
+      title: 'Quick Demo',
+      duration: '3 minutes',
+      description: 'See a playbook activate and tasks deploy in real-time. Perfect for a quick overview.',
+      icon: Zap,
+      color: 'from-emerald-500 to-teal-500',
+      borderColor: 'border-emerald-500/30 hover:border-emerald-500',
+      iconBg: 'bg-emerald-500/20',
+      path: '/demo/live-activation',
+      badge: 'Most Popular',
+      badgeColor: 'bg-emerald-500',
+      recommended: true
+    },
+    {
+      id: 'simulation',
+      title: 'Executive Simulation',
+      duration: '12 minutes',
+      description: 'Step into the role of a Fortune 500 CSO. Experience signal detection, playbook activation, and coordinated response.',
+      icon: Briefcase,
+      color: 'from-purple-500 to-violet-500',
+      borderColor: 'border-purple-500/30 hover:border-purple-500',
+      iconBg: 'bg-purple-500/20',
+      path: '/executive-simulation',
+      badge: 'Full Experience',
+      badgeColor: 'bg-purple-500',
+      recommended: false
+    },
+    {
+      id: 'industry',
+      title: 'Industry Demos',
+      duration: '10-15 minutes',
+      description: 'See M configured for your industry: Financial Services, Healthcare, Manufacturing, Retail, Energy, and Luxury.',
+      icon: Building2,
+      color: 'from-blue-500 to-cyan-500',
+      borderColor: 'border-blue-500/30 hover:border-blue-500',
+      iconBg: 'bg-blue-500/20',
+      path: '/industry-demos',
+      badge: '6 Industries',
+      badgeColor: 'bg-blue-500',
+      recommended: false
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-slate-950 flex flex-col">
+      <StandardNav />
+      
+      <main className="flex-1">
+        <div className="max-w-3xl mx-auto px-6 py-16 md:py-20">
+          {/* Header */}
+          <div className="text-center mb-10">
+            <Badge className="mb-4 bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
+              Interactive Experience
+            </Badge>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4" data-testid="heading-demo-router">
+              Experience M
+            </h1>
+            <p className="text-xl text-slate-400">
+              Choose the demo that fits your schedule
+            </p>
+          </div>
+
+          {/* First Time Callout */}
+          <div className="mb-8 p-4 bg-gradient-to-r from-emerald-950/50 to-teal-950/50 border border-emerald-500/30 rounded-xl">
+            <div className="flex items-start gap-4">
+              <div className="p-2 bg-emerald-500/20 rounded-lg">
+                <Sparkles className="h-5 w-5 text-emerald-400" />
+              </div>
+              <div className="flex-1">
+                <p className="text-white font-medium mb-1">First time here?</p>
+                <p className="text-sm text-slate-400 mb-3">
+                  Start with the Quick Demo — you'll understand M in 3 minutes.
+                </p>
+                <Button
+                  onClick={() => setLocation('/demo/live-activation')}
+                  size="sm"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white"
+                  data-testid="button-first-time-demo"
+                >
+                  <Play className="h-4 w-4 mr-1.5" />
+                  Start Quick Demo
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Demo Options */}
+          <div className="space-y-4 mb-10">
+            {demoOptions.map((demo) => {
+              const IconComponent = demo.icon;
+              return (
+                <Card 
+                  key={demo.id}
+                  className={`bg-slate-900/50 border-2 ${demo.borderColor} cursor-pointer transition-all hover:shadow-xl group`}
+                  onClick={() => setLocation(demo.path)}
+                  data-testid={`card-demo-${demo.id}`}
+                >
+                  <CardContent className="p-5 md:p-6 flex items-center gap-4 md:gap-6">
+                    {/* Icon */}
+                    <div className={`p-3 md:p-4 rounded-2xl bg-gradient-to-br ${demo.color} flex-shrink-0`}>
+                      <IconComponent className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 md:gap-3 mb-1 flex-wrap">
+                        <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+                          {demo.title}
+                        </h3>
+                        <Badge className={`${demo.badgeColor} text-white text-xs`}>
+                          {demo.badge}
+                        </Badge>
+                      </div>
+                      <p className="text-slate-400 mb-2 text-sm md:text-base line-clamp-2">{demo.description}</p>
+                      <div className="flex items-center gap-2 text-sm text-slate-500">
+                        <Clock className="h-4 w-4" />
+                        <span>{demo.duration}</span>
+                      </div>
+                    </div>
+                    
+                    {/* Arrow */}
+                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-slate-500 group-hover:text-white group-hover:translate-x-1 transition-all flex-shrink-0" />
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+
+          {/* Alternative Path */}
+          <div className="text-center mb-10">
+            <p className="text-slate-500 mb-4">
+              Want to explore on your own?
+            </p>
+            <Button
+              variant="outline"
+              onClick={() => setLocation('/playbook-library')}
+              className="text-slate-300 border-slate-700 hover:bg-slate-800"
+              data-testid="button-explore-playbooks"
+            >
+              Browse 148 Playbooks →
+            </Button>
+          </div>
+
+          {/* Investor/Roadshow Resources */}
+          <div className="p-5 bg-purple-950/30 border border-purple-500/30 rounded-xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="flex items-start gap-3">
+                <div className="p-2 bg-purple-500/20 rounded-lg">
+                  <FileText className="h-5 w-5 text-purple-400" />
+                </div>
+                <div>
+                  <p className="text-white font-medium">Investor?</p>
+                  <p className="text-sm text-slate-400">Locked demo, FAQ, and roadshow materials</p>
+                </div>
+              </div>
+              <div className="flex gap-2 w-full sm:w-auto">
+                <Button
+                  variant="outline"
+                  onClick={() => setLocation('/investor-demo')}
+                  className="border-purple-500/50 text-purple-300 hover:bg-purple-950 flex-1 sm:flex-initial"
+                  data-testid="button-investor-demo"
+                >
+                  Investor Demo
+                </Button>
+                <Button
+                  variant="ghost"
+                  onClick={() => setLocation('/roadshow-resources')}
+                  className="text-purple-300 hover:bg-purple-950 flex-1 sm:flex-initial"
+                  data-testid="button-roadshow-resources"
+                >
+                  Resources
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
+
+================================================================================
+NAVIGATION SUMMARY (December 8, 2025)
+================================================================================
+
+BEFORE (10 elements, cluttered):
+[Logo] [←] [Home] [About M ▼] [Platform ▼] [Pricing] [▶ Live Demo] [Dashboard] [Scores] [Sign In]
+
+AFTER (8 elements, clean):
+[Logo]     How It Works | Playbooks | Our Story | Pricing     [See Demo] [Investors]     [Sign In]
+
+User Paths:
+- Prospect → "See Demo" → Choose path → Experience M
+- Investor → "Investors" → Locked 3-min demo → Roadshow resources
+- Evaluator → "Playbooks" → Browse 148 playbooks
+- Founder Story → "Our Story" → Credibility narrative
+
+Key Messaging:
+- Demo runtime: 3 minutes (how long investor watched)
+- Real-world claim: 12 minutes (how long M delivers in production)
+- Comparison point: 72 hours (how long competitors take)
+
+================================================================================
+KEY STATISTICS (Standardized Across Platform)
+================================================================================
+
+| Metric              | Value           | Usage                     |
+|---------------------|-----------------|---------------------------|
+| Response Time       | 72h → 12min     | Hero metric               |
+| Playbooks           | 148             | Library count             |
+| Strategic Domains   | 8               | Playbook categories       |
+| Intelligence Sources| 12              | Signal monitoring         |
+| Data Points         | 92              | Trigger conditions        |
+| Signal Categories   | 16              | Organizational structure  |
+| Pilot Price         | $75K            | 90-day engagement         |
+| Contract Range      | $250K-$1.5M     | Annual enterprise         |
+| Seed Target         | $2.6M           | Funding round             |
+
+================================================================================
+ROUTES
+================================================================================
+
+/demo               - Demo selection router
+/demo/live-activation - Quick 3-minute demo
+/investor-demo      - Locked 3-minute investor demo
+/roadshow-resources - 6 investor documents with full content
+/roadshow           - Alias for /roadshow-resources
+/executive-simulation - Full 12-minute simulation
+/industry-demos     - 6 industry-specific demos
+/playbook-library   - Browse 148 playbooks
+/our-story          - Founder credibility story
+/how-it-works       - Platform overview
+/pricing            - Pricing tiers
+
+================================================================================
+END OF EXPORT
+================================================================================

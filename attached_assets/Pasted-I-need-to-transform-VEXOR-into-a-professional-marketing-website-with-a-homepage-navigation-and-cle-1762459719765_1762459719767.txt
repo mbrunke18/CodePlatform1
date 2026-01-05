@@ -1,0 +1,359 @@
+I need to transform VEXOR into a professional marketing website with a homepage, navigation, and clear user flows - WITHOUT losing any existing functionality.
+
+CRITICAL REQUIREMENTS:
+- Keep ALL existing demos (7 live demos)
+- Keep ALL existing pages (playbook library, dashboards, etc.)
+- Keep ALL backend APIs and services
+- Keep ALL database functionality
+- Just ADD a professional homepage and navigation wrapper around everything
+
+═══════════════════════════════════════════════════════════════════════════════
+PART 1: CREATE PROFESSIONAL HOMEPAGE
+═══════════════════════════════════════════════════════════════════════════════
+
+CREATE FILE: client/src/pages/Homepage.tsx
+
+A modern, professional homepage with:
+
+SECTION 1: HERO (Above the fold)
+- Large headline: "Execute Strategy at 10x Speed"
+- Subheadline: "VEXOR coordinates your entire organization in 12 minutes—from decision to execution"
+- Two CTA buttons:
+  * "Watch Live Demo" (primary, blue, large) → /demo-selector
+  * "Browse 148 Playbooks" (secondary, outlined) → /playbook-library
+- Background: Subtle gradient, modern design
+- Image/illustration: Abstract organizational network or dashboard preview
+
+SECTION 2: THE PROBLEM (Why VEXOR exists)
+- Headline: "Strategic Decisions Take Days to Coordinate"
+- 3 pain points in cards:
+  1. 📧 "Email chains with 100+ messages"
+  2. 📅 "Calendar Tetris to find alignment"
+  3. ⏰ "48-72 hours wasted on coordination"
+- Stat highlight: "By the time you coordinate, the opportunity has closed"
+
+SECTION 3: THE SOLUTION (How VEXOR works)
+- Headline: "From Decision to Execution in 12 Minutes"
+- 4 steps with icons:
+  1. 🎯 "Choose Playbook" - 148 pre-built scenarios
+  2. ⚡ "One-Click Activation" - Trigger when needed
+  3. 👥 "Instant Coordination" - All stakeholders notified
+  4. ✅ "Execute Immediately" - Everyone aligned, ready to act
+
+SECTION 4: LIVE DEMO SHOWCASE
+- Headline: "See VEXOR In Action"
+- Subheadline: "Watch organizational coordination happen in real-time"
+- 7 demo cards in grid (3 columns):
+
+Each card shows:
+- Icon (🔒 🤝 🚀 ⚠️ ⚔️ ⚖️ 🚨)
+- Demo name
+- Target audience (e.g., "For: CISO, CIO, CTO")
+- Impact metric (e.g., "$22M crisis contained")
+- "Watch Demo →" button
+
+Cards:
+1. Ransomware Response - CISO, CIO - $22M
+2. M&A Integration - CEO, CFO - $500M deal
+3. Product Launch - CMO, CPO - 15 countries
+4. Supplier Crisis - COO, CPO - $150M protected
+5. Competitive Response - CEO, CMO - $300M defended
+6. Regulatory Crisis - GC, CCO - $50M penalties avoided
+7. Customer Crisis - CRO, CS - $120M ARR saved
+
+Click any card → Navigate to that specific demo
+
+SECTION 5: KEY FEATURES
+- Headline: "Built for Fortune 1000 Execution"
+- 6 feature cards in 2 rows:
+
+1. 📚 148 Pre-Built Playbooks
+   "M&A, product launches, crisis response, competitive moves—ready to activate"
+
+2. ⚡ 12-Minute Coordination
+   "From trigger to full stakeholder alignment in minutes, not days"
+
+3. 🤖 AI-Powered Intelligence
+   "Monitor for trigger conditions, recommend playbook activation automatically"
+
+4. 🔗 Enterprise Integration
+   "Slack, Email, SMS, ServiceNow, Salesforce—works with your stack"
+
+5. 📊 Real-Time Dashboards
+   "Track coordination status, acknowledgments, task completion live"
+
+6. 🔒 Enterprise Security
+   "SOC 2, GDPR compliant—built for regulated industries"
+
+SECTION 6: ROI PROOF
+- Headline: "The Numbers Don't Lie"
+- 4 large stat cards:
+  * "10x Faster" - Coordination speed
+  * "$500K+ Saved" - Annual executive time value
+  * "93% Success Rate" - Stakeholder coordination
+  * "12 Minutes" - Average coordination time
+
+- ROI Calculator CTA:
+  "Calculate your ROI" button → /calculator
+
+SECTION 7: USE CASES BY ROLE
+- Headline: "Built for Every Executive"
+- Tabs or pills to switch between roles:
+
+Tabs: CEO | CFO | COO | CTO | CMO | CRO
+
+Content for each (example for CEO):
+"CEOs Use VEXOR For:"
+- M&A integration coordination
+- Competitive response strategy
+- Board-level crisis management
+- Strategic initiative execution
+
+"See CEO Demos →" button → Filter demos for that role
+
+SECTION 8: SOCIAL PROOF (Placeholder for now)
+- Headline: "Trusted by Enterprise Leaders"
+- 6 placeholder logos (use generic company shapes)
+- Testimonial quote (generic for now):
+  "VEXOR transformed how we execute strategy. What took 3 days now takes 12 minutes."
+  - Fortune 500 CEO
+
+SECTION 9: FINAL CTA
+- Headline: "Ready to Execute at 10x Speed?"
+- Two large buttons:
+  * "Schedule Demo" (primary)
+  * "Start Free Trial" (secondary)
+- Contact form (optional):
+  - Name, Email, Company, Role
+  - "Get Started" button
+
+FOOTER:
+- VEXOR logo
+- Links to:
+  * Product > Playbook Library, Live Demos, Features
+  * Solutions > By Role, By Industry, By Use Case
+  * Resources > Documentation, Blog, Case Studies
+  * Company > About, Careers, Contact
+- Social media icons (placeholder)
+- Copyright © 2024 VEXOR
+
+STYLING:
+- Modern, clean design
+- Professional color scheme:
+  * Primary: Blue (#3B82F6)
+  * Accent: Green (#10B981)
+  * Neutral: Gray (#6B7280)
+- Smooth animations on scroll (fade in, slide up)
+- Responsive: Desktop, tablet, mobile
+- Use Tailwind CSS
+- Use shadcn/ui components where applicable
+- Professional typography (Inter or similar)
+
+═══════════════════════════════════════════════════════════════════════════════
+PART 2: CREATE GLOBAL NAVIGATION BAR
+═══════════════════════════════════════════════════════════════════════════════
+
+CREATE FILE: client/src/components/NavigationBar.tsx
+
+A sticky header navigation that appears on ALL pages:
+
+NAVIGATION BAR LAYOUT:
+
+Left Side:
+- VEXOR logo (clickable → /)
+- Company name in bold
+
+Center:
+- Nav menu items with dropdowns:
+
+1. "Product" dropdown:
+   - Playbook Library
+   - Live Demos
+   - Features
+   - Pricing
+
+2. "Solutions" dropdown:
+   - By Role (CEO, CFO, COO, etc.)
+   - By Industry (Financial, Healthcare, etc.)
+   - By Use Case (M&A, Crisis, Launch, etc.)
+
+3. "Resources" dropdown:
+   - Documentation
+   - Case Studies
+   - Blog
+   - Support
+
+4. "Company" dropdown:
+   - About Us
+   - Careers
+   - Contact
+
+Right Side:
+- "Sign In" button (secondary, outlined)
+- "Get Started" button (primary, blue, prominent)
+
+STYLING:
+- Sticky (stays at top on scroll)
+- Background: White with subtle shadow
+- Height: 64px
+- Logo: 40px height
+- Menu items: Hover shows dropdown
+- Dropdown: White card with shadow
+- Mobile: Hamburger menu (collapsible)
+
+BEHAVIOR:
+- Always visible on all pages (except maybe full-screen demos)
+- Smooth transitions
+- Dropdowns appear on hover (desktop)
+- Mobile: Click to expand menu
+
+═══════════════════════════════════════════════════════════════════════════════
+PART 3: UPDATE APP ROUTING
+═══════════════════════════════════════════════════════════════════════════════
+
+UPDATE FILE: client/src/App.tsx
+
+Keep ALL existing routes, just ADD homepage as default:
+
+import Homepage from './pages/Homepage';
+import NavigationBar from './components/NavigationBar';
+
+function App() {
+  return (
+    <Router>
+      {/* Global Navigation - appears on all pages */}
+      <NavigationBar />
+      
+      <Routes>
+        {/* NEW: Homepage as default */}
+        <Route path="/" element={<Homepage />} />
+        
+        {/* EXISTING: Keep ALL these routes */}
+        <Route path="/demo-selector" element={<DemoSelector />} />
+        <Route path="/playbook-library" element={<PlaybookLibrary />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/executive-suite" element={<ExecutiveSuite />} />
+        <Route path="/calculator" element={<ROICalculator />} />
+        
+        {/* EXISTING: All 7 demo routes */}
+        <Route path="/demo/live-activation" element={<DemoLiveActivation />} />
+        <Route path="/demo/ma-integration" element={<DemoMaIntegration />} />
+        <Route path="/demo/product-launch" element={<DemoProductLaunch />} />
+        <Route path="/demo/supplier-crisis" element={<DemoSupplierCrisis />} />
+        <Route path="/demo/competitive-response" element={<DemoCompetitiveResponse />} />
+        <Route path="/demo/regulatory-crisis" element={<DemoRegulatoryCrisis />} />
+        <Route path="/demo/customer-crisis" element={<DemoCustomerCrisis />} />
+        
+        {/* EXISTING: All other pages - keep as is */}
+        <Route path="/strategic-monitoring" element={<StrategicMonitoring />} />
+        <Route path="/command-center" element={<CommandCenter />} />
+        {/* ... all other existing routes ... */}
+        
+        {/* Catch-all */}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </Router>
+  );
+}
+
+CRITICAL: Do NOT remove or modify ANY existing routes. Just add homepage at "/" and navigation bar.
+
+═══════════════════════════════════════════════════════════════════════════════
+PART 4: ADD NAVIGATION TO EXISTING PAGES (OPTIONAL)
+═══════════════════════════════════════════════════════════════════════════════
+
+OPTIONAL: If some pages already have their own navigation, you can:
+
+1. Hide NavigationBar on specific pages:
+   - Add a prop: <NavigationBar showOn={['/', '/demo-selector', '/playbook-library']} />
+   - Or: Add logic to hide on full-screen demo pages
+
+2. Or: Keep NavigationBar on all pages for consistency
+
+3. Or: Add a "Back to Home" button on demo pages that don't have navigation
+
+Your choice - keeping navigation everywhere is cleanest for now.
+
+═══════════════════════════════════════════════════════════════════════════════
+PART 5: CREATE SITEMAP PAGE (OPTIONAL BUT RECOMMENDED)
+═══════════════════════════════════════════════════════════════════════════════
+
+CREATE FILE: client/src/pages/Sitemap.tsx
+
+A page that lists ALL available pages/features:
+
+SITEMAP LAYOUT:
+
+"VEXOR Sitemap"
+
+CORE PAGES:
+- Home
+- Demo Selector
+- Playbook Library
+- Dashboard
+- Executive Suite
+- ROI Calculator
+
+LIVE DEMOS:
+- Ransomware Response
+- M&A Integration
+- Product Launch
+- Supplier Crisis
+- Competitive Response
+- Regulatory Crisis
+- Customer Crisis
+
+INDUSTRY DEMOS:
+- Luxury
+- Financial Services
+- Pharmaceutical
+- Manufacturing
+- Retail
+- Energy
+- (Plus 3 offensive demos)
+
+ALL OTHER PAGES:
+[List all 74 pages from your structure]
+
+This helps users (and you) see everything that exists.
+
+═══════════════════════════════════════════════════════════════════════════════
+TESTING CHECKLIST
+═══════════════════════════════════════════════════════════════════════════════
+
+After Replit builds this, verify:
+
+1. Navigate to root: https://your-app.repl.co/
+   ✓ See new professional homepage
+   ✓ See navigation bar at top
+   ✓ Can click "Watch Live Demo" → goes to /demo-selector
+   ✓ Can click "Browse Playbooks" → goes to /playbook-library
+
+2. Navigation bar works:
+   ✓ Appears on every page
+   ✓ Dropdowns work
+   ✓ Logo clicks back to homepage
+   ✓ "Get Started" button visible
+
+3. Demo selector still works:
+   ✓ /demo-selector loads
+   ✓ See all 7 demos
+   ✓ Click demo → goes to that demo
+   ✓ Demo runs correctly
+
+4. All existing pages still work:
+   ✓ /playbook-library loads
+   ✓ /dashboard loads
+   ✓ /executive-suite loads
+   ✓ All 7 demo routes load
+   ✓ Nothing is broken
+
+5. Homepage links work:
+   ✓ All CTA buttons navigate correctly
+   ✓ Demo cards link to correct demos
+   ✓ Footer links work (or show coming soon)
+
+SUMMARY:
+This adds a professional website wrapper around VEXOR without changing ANY existing functionality. Everything you have now still works - we're just adding a homepage and navigation to make it look like a real product website.
+
+Build this now.

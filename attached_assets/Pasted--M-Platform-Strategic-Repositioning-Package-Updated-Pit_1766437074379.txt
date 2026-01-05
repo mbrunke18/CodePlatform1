@@ -1,0 +1,1033 @@
+# M Platform: Strategic Repositioning Package
+
+## Updated Pitch Deck Messaging + Web Page Content
+
+-----
+
+# PART 1: PITCH DECK MESSAGING
+
+## The Core Shift
+
+|Element        |OLD                                                     |NEW                                                        |
+|---------------|--------------------------------------------------------|-----------------------------------------------------------|
+|**Category**   |Crisis Management Platform                              |Strategic Execution Operating System (SEOS)                |
+|**Tagline**    |Turn 72-Hour Responses into 12-Minute Coordinated Action|Execute Strategy at the Speed of Disruption                |
+|**Problem**    |Enterprises respond too slowly to crises                |Enterprises lose 30% of their strategy’s value in execution|
+|**Solution**   |Pre-staged crisis playbooks                             |Operating model execution layer                            |
+|**Buyer**      |CISO, Crisis Management                                 |CEO, COO, Chief Strategy Officer                           |
+|**Competition**|ServiceNow, Splunk                                      |McKinsey, BCG (complement, not compete)                    |
+
+-----
+
+## Slide-by-Slide Messaging
+
+### Slide 1: Title
+
+**M Platform**
+The Strategic Execution Operating System
+
+*Execute strategy at the speed of disruption*
+
+-----
+
+### Slide 2: The Problem
+
+**The $2.7 Trillion Execution Gap**
+
+McKinsey research reveals that even high-performing companies capture only 70% of their strategy’s potential value.
+
+For a Fortune 500 company, that’s **$270M-$900M left on the table annually**—not from bad strategy, but from failed execution.
+
+The gap isn’t intelligence. It’s coordination.
+
+-----
+
+### Slide 3: Why Now
+
+**Three forces are converging:**
+
+1. **Consulting saturation** — Companies spend $50B/year on strategy consulting, but consultants leave when the deck is done
+1. **Operating model overhauls** — 67% of enterprises redesigned their operating model in the past 2 years (McKinsey, 2025)
+1. **Execution speed demands** — Markets move in days, not quarters. The 72-hour response window is now 12 minutes.
+
+**The result:** A massive gap between *designed* operating models and *executed* strategy.
+
+-----
+
+### Slide 4: The Solution
+
+**M Platform: The Execution Layer**
+
+We built the first Strategic Execution Operating System—the software that turns operating model design into coordinated action.
+
+|Consultants Design         |M Platform Executes     |
+|---------------------------|------------------------|
+|12 operating model elements|148 pre-staged playbooks|
+|Fingerprint on paper       |Fingerprint in software |
+|“Here’s what to build”     |“Here’s how to run it”  |
+
+**McKinsey gives you the blueprint. M Platform builds the house.**
+
+-----
+
+### Slide 5: How It Works
+
+**PREPARE → MONITOR → EXECUTE → LEARN**
+
+**PREPARE**
+
+- Map your operating model to execution playbooks
+- Pre-stage responses across 8 strategic domains
+- Assign accountability before events occur
+
+**MONITOR**
+
+- Real-time triggers across market, competitive, regulatory signals
+- AI pattern recognition from 10,000+ scenarios
+- Early warning before disruption hits
+
+**EXECUTE**
+
+- 12-minute coordinated response (vs. 72-hour industry average)
+- Automated stakeholder routing and escalation
+- Cross-functional alignment in a single command center
+
+**LEARN**
+
+- Automated retrospectives capture what worked
+- Playbooks improve with every execution cycle
+- Institutional knowledge compounds, not walks out the door
+
+-----
+
+### Slide 6: The 8 Strategic Domains
+
+**148 Playbooks. Every Strategic Scenario.**
+
+|Domain              |Playbooks|Example                                                       |
+|--------------------|---------|--------------------------------------------------------------|
+|Crisis Response     |24       |Executive crisis, reputational threat, supply chain disruption|
+|Cyber Incidents     |18       |Ransomware, data breach, insider threat                       |
+|Market Entry        |22       |New geography, new segment, channel expansion                 |
+|M&A Integration     |16       |Day 1 readiness, synergy capture, culture integration         |
+|Product Launch      |20       |Go-to-market, competitive positioning, launch recovery        |
+|Competitive Response|18       |Price war, feature parity, talent poaching                    |
+|Regulatory Change   |14       |Compliance pivot, policy response, audit preparation          |
+|Transformation      |16       |Restructuring, digital transformation, operating model shift  |
+
+**Not just defense. Offense too.**
+
+-----
+
+### Slide 7: Operating Model Alignment (NEW FEATURE)
+
+**From Fingerprint to Execution**
+
+M Platform’s Operating Model Alignment maps your organizational design choices to specific execution playbooks.
+
+**The 12 Elements:**
+Purpose • Value Agenda • Structure • Ecosystem • Leadership • Governance • Processes • Technology • Behaviors • Rewards • Footprint • Talent
+
+**The Output:**
+
+- Diagnostic assessment across all 12 elements
+- Strategy-execution gap score vs. industry benchmarks
+- Prioritized playbook recommendations
+- Four outcomes tracking: Clarity, Speed, Skills, Commitment
+
+**“You’ve invested $2M in operating model design. Now execute it.”**
+
+-----
+
+### Slide 8: The Origin Story
+
+**From Sideline to Boardroom**
+
+Before enterprise software, I spent 5 years coordinating elite athletes under pressure—as a major college football coach.
+
+When a play breaks down, you don’t have 72 hours. You have 40 seconds.
+
+**What makes that possible:**
+
+- Pre-staged plays for every scenario
+- Clear accountability (11 players, 11 assignments)
+- Instant communication (signals, not meetings)
+- Continuous improvement (film review after every game)
+
+I spent 20 years at Ford, Toyota, Lockheed Martin, Eli Lilly, and Churchill Downs wondering: **Why doesn’t the boardroom work like the sideline?**
+
+M Platform is the answer.
+
+-----
+
+### Slide 9: Market Opportunity
+
+**Creating a New Category: SEOS**
+
+|Market                            |Size          |M Platform Position           |
+|----------------------------------|--------------|------------------------------|
+|Adjacent: GRC, Incident Management|$825M         |Not competing here            |
+|Strategy Consulting               |$50B          |Execution layer for this spend|
+|**Strategic Execution OS**        |**$5B+ (new)**|**Category creator**          |
+
+**Comparable category creations:**
+
+- Salesforce: CRM ($250B market cap)
+- ServiceNow: IT Service Management ($150B market cap)
+- Workday: HCM ($60B market cap)
+
+**Each created a category. Each captured the majority of it.**
+
+-----
+
+### Slide 10: Business Model
+
+**Land, Expand, Compound**
+
+|Phase       |Model                          |Revenue        |
+|------------|-------------------------------|---------------|
+|**Pilot**   |90-day proof of value          |$75K           |
+|**Land**    |Single domain (e.g., Cyber)    |$250K ARR      |
+|**Expand**  |Multi-domain enterprise license|$750K-$1.5M ARR|
+|**Compound**|Platform + playbook marketplace|TBD            |
+
+**Unit Economics Target:**
+
+- CAC: $50K (pilot-led, no enterprise sales team at scale)
+- ACV: $500K (blended)
+- LTV: $2.5M (5-year, expansion-driven)
+- Payback: <6 months
+
+-----
+
+### Slide 11: Traction & Roadmap
+
+**Where We Are**
+
+✓ MVP live with full 148-playbook library
+✓ Operating Model Alignment feature in development
+✓ 3 pilot conversations in progress
+✓ Patent applications filed on 8 core innovations
+
+**18-Month Roadmap**
+
+|Quarter|Milestone                                        |
+|-------|-------------------------------------------------|
+|Q1 2026|3 pilot customers, Operating Model Alignment live|
+|Q2 2026|First $250K ARR contract                         |
+|Q3 2026|5 customers, $1M ARR run rate                    |
+|Q4 2026|Series A  preparation, $2.5M ARR                 |
+|Q2 2027|$5.4M ARR, market leader position                |
+
+-----
+
+### Slide 12: The Ask
+
+**$2.6M Seed Round**
+
+|Use of Funds         |Allocation|
+|---------------------|----------|
+|Product & Engineering|50%       |
+|Go-to-Market (Pilots)|30%       |
+|Operations           |20%       |
+
+**What This Buys:**
+
+- 18 months runway
+- 5+ enterprise pilots converted to ARR
+- Series A  positioned at $15-20M
+
+**Why Now:**
+
+- MVP is live
+- McKinsey just validated the market (June 2025)
+- First-mover advantage in SEOS category
+- Founder with unique credibility (coaching + Fortune 500)
+
+-----
+
+### Slide 13: Team
+
+**Marty [Last Name]**
+Founder & CEO
+
+- Director of PMO, Churchill Downs Incorporated
+- 20+ years Fortune 500 (Ford, Toyota, Lockheed Martin, Eli Lilly, Charles Schwab, Boyd Gaming)
+- 5 years major college football coaching
+- The only founder who’s called plays under pressure on both the sideline and in the boardroom
+
+**Advisory Board:** [TBD]
+
+**Hiring Plan:**
+
+- CTO (Q1 2026)
+- VP Sales (Q2 2026)
+- Customer Success Lead (Q2 2026)
+
+-----
+
+### Slide 14: Vision
+
+**The Future of Strategic Execution**
+
+Every enterprise has:
+
+- An ERP for operations (SAP)
+- A CRM for customers (Salesforce)
+- An HCM for people (Workday)
+
+None of them have an **execution system for strategy**.
+
+M Platform will be the operating system that turns strategic intent into coordinated action—across every domain, for every company, at the speed of disruption.
+
+**We’re not building a better crisis tool. We’re building the central nervous system of the enterprise.**
+
+-----
+
+### Slide 15: Contact
+
+**M Platform**
+Strategic Execution Operating System
+
+[Email]
+[Phone]
+[Website]
+
+*“Execute strategy at the speed of disruption”*
+
+-----
+
+-----
+
+# PART 2: WEBSITE CONTENT
+
+## Page Structure
+
+```
+Home
+├── Hero Section
+├── Problem Section
+├── Solution Section
+├── How It Works
+├── 8 Domains
+├── Operating Model Alignment (NEW)
+├── Origin Story
+├── Social Proof / Logos (placeholder)
+├── CTA: Request Pilot
+│
+About
+├── Company Story
+├── Founder Bio
+├── Vision
+│
+Product
+├── Platform Overview
+├── 8 Domains Detail
+├── 148 Playbooks
+├── Operating Model Alignment
+├── Integrations
+│
+Resources
+├── ROI Calculator (future)
+├── Case Studies (future)
+├── Blog (future)
+│
+Contact / Request Pilot
+```
+
+-----
+
+## HOME PAGE CONTENT
+
+### Hero Section
+
+```html
+<section class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">Strategic Execution Operating System</p>
+    <h1>Execute Strategy at the Speed of Disruption</h1>
+    <p class="hero-subtitle">
+      M Platform closes the 30% gap between strategy and execution 
+      with 148 pre-staged playbooks across 8 strategic domains.
+    </p>
+    <div class="hero-ctas">
+      <a href="/request-pilot" class="btn-primary">Request Pilot</a>
+      <a href="/demo" class="btn-secondary">Watch Demo</a>
+    </div>
+    <p class="hero-proof">
+      From the boardrooms of Ford, Toyota, and Lockheed Martin 
+      to the sidelines of major college football.
+    </p>
+  </div>
+  <div class="hero-visual">
+    <!-- Platform screenshot or animation -->
+  </div>
+</section>
+```
+
+**Copy:**
+
+- Eyebrow: `Strategic Execution Operating System`
+- H1: `Execute Strategy at the Speed of Disruption`
+- Subtitle: `M Platform closes the 30% gap between strategy and execution with 148 pre-staged playbooks across 8 strategic domains.`
+- CTA Primary: `Request Pilot`
+- CTA Secondary: `Watch Demo`
+
+-----
+
+### Problem Section
+
+```html
+<section class="problem">
+  <div class="problem-header">
+    <p class="section-eyebrow">The Problem</p>
+    <h2>Your Strategy Is Better Than Your Execution</h2>
+    <p class="section-intro">
+      McKinsey research shows even high-performing companies lose 30% of their 
+      strategy's value in execution. For a Fortune 500, that's $270M–$900M annually.
+    </p>
+  </div>
+  
+  <div class="problem-grid">
+    <div class="problem-card">
+      <span class="problem-stat">72 hrs</span>
+      <p>Average enterprise response time to strategic disruption</p>
+    </div>
+    <div class="problem-card">
+      <span class="problem-stat">30%</span>
+      <p>Strategy value lost in execution (McKinsey, 2025)</p>
+    </div>
+    <div class="problem-card">
+      <span class="problem-stat">67%</span>
+      <p>Enterprises redesigned operating models in past 2 years</p>
+    </div>
+    <div class="problem-card">
+      <span class="problem-stat">$50B</span>
+      <p>Annual spend on strategy consulting—with no execution layer</p>
+    </div>
+  </div>
+  
+  <div class="problem-statement">
+    <p>
+      The gap isn't intelligence. It's coordination.<br>
+      <strong>M Platform closes that gap.</strong>
+    </p>
+  </div>
+</section>
+```
+
+-----
+
+### Solution Section
+
+```html
+<section class="solution">
+  <div class="solution-header">
+    <p class="section-eyebrow">The Solution</p>
+    <h2>The Execution Layer for Your Operating Model</h2>
+    <p class="section-intro">
+      M Platform is the first Strategic Execution Operating System—software that 
+      turns operating model design into coordinated action.
+    </p>
+  </div>
+  
+  <div class="solution-comparison">
+    <div class="comparison-column">
+      <h3>Consultants Design</h3>
+      <ul>
+        <li>12 operating model elements</li>
+        <li>Fingerprint on paper</li>
+        <li>"Here's what to build"</li>
+        <li>Engagement ends</li>
+      </ul>
+    </div>
+    <div class="comparison-divider">
+      <span class="plus-icon">+</span>
+    </div>
+    <div class="comparison-column highlight">
+      <h3>M Platform Executes</h3>
+      <ul>
+        <li>148 pre-staged playbooks</li>
+        <li>Fingerprint in software</li>
+        <li>"Here's how to run it"</li>
+        <li>Continuous improvement</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="solution-tagline">
+    <p>McKinsey gives you the blueprint.<br><strong>M Platform builds the house.</strong></p>
+  </div>
+</section>
+```
+
+-----
+
+### How It Works Section
+
+```html
+<section class="how-it-works">
+  <div class="section-header">
+    <p class="section-eyebrow">How It Works</p>
+    <h2>Four Phases. One System.</h2>
+  </div>
+  
+  <div class="phases-grid">
+    <div class="phase-card">
+      <span class="phase-number">01</span>
+      <h3>Prepare</h3>
+      <p>Map your operating model to execution playbooks. Pre-stage responses 
+         across 8 strategic domains. Assign accountability before events occur.</p>
+      <ul class="phase-features">
+        <li>Operating Model Alignment diagnostic</li>
+        <li>148 pre-built playbooks</li>
+        <li>Stakeholder accountability matrices</li>
+      </ul>
+    </div>
+    
+    <div class="phase-card">
+      <span class="phase-number">02</span>
+      <h3>Monitor</h3>
+      <p>Real-time triggers across market, competitive, and regulatory signals. 
+         Early warning before disruption hits.</p>
+      <ul class="phase-features">
+        <li>AI pattern recognition</li>
+        <li>10,000+ scenario library</li>
+        <li>Custom trigger configuration</li>
+      </ul>
+    </div>
+    
+    <div class="phase-card">
+      <span class="phase-number">03</span>
+      <h3>Execute</h3>
+      <p>12-minute coordinated response vs. 72-hour industry average. 
+         Cross-functional alignment in a single command center.</p>
+      <ul class="phase-features">
+        <li>Automated stakeholder routing</li>
+        <li>Real-time status tracking</li>
+        <li>Decision escalation paths</li>
+      </ul>
+    </div>
+    
+    <div class="phase-card">
+      <span class="phase-number">04</span>
+      <h3>Learn</h3>
+      <p>Automated retrospectives capture what worked. Playbooks improve 
+         with every execution cycle.</p>
+      <ul class="phase-features">
+        <li>Post-action analysis</li>
+        <li>Playbook refinement</li>
+        <li>Benchmark tracking</li>
+      </ul>
+    </div>
+  </div>
+</section>
+```
+
+-----
+
+### 8 Domains Section
+
+```html
+<section class="domains">
+  <div class="section-header">
+    <p class="section-eyebrow">Coverage</p>
+    <h2>148 Playbooks. 8 Strategic Domains.</h2>
+    <p class="section-intro">
+      Not just crisis response. Strategic execution across every scenario 
+      that matters to your business.
+    </p>
+  </div>
+  
+  <div class="domains-grid">
+    <div class="domain-card">
+      <div class="domain-icon crisis"></div>
+      <h3>Crisis Response</h3>
+      <span class="playbook-count">24 playbooks</span>
+      <p>Executive crisis, reputational threat, supply chain disruption, 
+         facility emergency, leadership transition</p>
+    </div>
+    
+    <div class="domain-card">
+      <div class="domain-icon cyber"></div>
+      <h3>Cyber Incidents</h3>
+      <span class="playbook-count">18 playbooks</span>
+      <p>Ransomware, data breach, insider threat, DDoS attack, 
+         third-party compromise</p>
+    </div>
+    
+    <div class="domain-card">
+      <div class="domain-icon market"></div>
+      <h3>Market Entry</h3>
+      <span class="playbook-count">22 playbooks</span>
+      <p>New geography, new segment, channel expansion, partnership launch, 
+         international expansion</p>
+    </div>
+    
+    <div class="domain-card">
+      <div class="domain-icon ma"></div>
+      <h3>M&A Integration</h3>
+      <span class="playbook-count">16 playbooks</span>
+      <p>Day 1 readiness, synergy capture, culture integration, 
+         systems consolidation, talent retention</p>
+    </div>
+    
+    <div class="domain-card">
+      <div class="domain-icon product"></div>
+      <h3>Product Launch</h3>
+      <span class="playbook-count">20 playbooks</span>
+      <p>Go-to-market, competitive positioning, launch recovery, 
+         channel coordination, pricing response</p>
+    </div>
+    
+    <div class="domain-card">
+      <div class="domain-icon competitive"></div>
+      <h3>Competitive Response</h3>
+      <span class="playbook-count">18 playbooks</span>
+      <p>Price war, feature parity, talent poaching, market share defense, 
+         competitive positioning</p>
+    </div>
+    
+    <div class="domain-card">
+      <div class="domain-icon regulatory"></div>
+      <h3>Regulatory Change</h3>
+      <span class="playbook-count">14 playbooks</span>
+      <p>Compliance pivot, policy response, audit preparation, 
+         regulatory filing, enforcement action</p>
+    </div>
+    
+    <div class="domain-card">
+      <div class="domain-icon transformation"></div>
+      <h3>Transformation</h3>
+      <span class="playbook-count">16 playbooks</span>
+      <p>Restructuring, digital transformation, operating model shift, 
+         culture change, capability building</p>
+    </div>
+  </div>
+  
+  <div class="domains-cta">
+    <p><strong>106 of 148 playbooks are growth-oriented.</strong> This isn't just defense. It's offense.</p>
+    <a href="/playbooks" class="btn-secondary">Explore All Playbooks →</a>
+  </div>
+</section>
+```
+
+-----
+
+### Operating Model Alignment Section (NEW)
+
+```html
+<section class="operating-model">
+  <div class="section-header">
+    <p class="section-eyebrow">New Feature</p>
+    <h2>Operating Model Alignment</h2>
+    <p class="section-intro">
+      You invested $2M in operating model design. Now execute it.
+    </p>
+  </div>
+  
+  <div class="om-content">
+    <div class="om-description">
+      <p>
+        M Platform's Operating Model Alignment maps McKinsey's 12-element 
+        framework directly to execution playbooks—turning strategic design 
+        into daily operations.
+      </p>
+      
+      <div class="om-elements">
+        <h4>The 12 Elements</h4>
+        <div class="elements-grid">
+          <span class="element-tag">Purpose</span>
+          <span class="element-tag">Value Agenda</span>
+          <span class="element-tag">Structure</span>
+          <span class="element-tag">Ecosystem</span>
+          <span class="element-tag">Leadership</span>
+          <span class="element-tag">Governance</span>
+          <span class="element-tag">Processes</span>
+          <span class="element-tag">Technology</span>
+          <span class="element-tag">Behaviors</span>
+          <span class="element-tag">Rewards</span>
+          <span class="element-tag">Footprint</span>
+          <span class="element-tag">Talent</span>
+        </div>
+      </div>
+      
+      <div class="om-outputs">
+        <h4>What You Get</h4>
+        <ul>
+          <li><strong>Diagnostic assessment</strong> across all 12 elements</li>
+          <li><strong>Gap score</strong> vs. industry benchmarks</li>
+          <li><strong>Prioritized playbook recommendations</strong> based on your fingerprint</li>
+          <li><strong>Four outcomes tracking:</strong> Clarity, Speed, Skills, Commitment</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="om-visual">
+      <!-- Radar chart / fingerprint visualization -->
+      <div class="fingerprint-preview">
+        <p class="visual-label">Your Operating Model Fingerprint</p>
+        <!-- SVG radar chart here -->
+      </div>
+    </div>
+  </div>
+  
+  <div class="om-cta">
+    <a href="/request-pilot" class="btn-primary">Assess Your Operating Model →</a>
+  </div>
+</section>
+```
+
+-----
+
+### Origin Story Section
+
+```html
+<section class="origin">
+  <div class="origin-content">
+    <p class="section-eyebrow">The Origin</p>
+    <h2>From Sideline to Boardroom</h2>
+    
+    <div class="origin-story">
+      <p class="story-lead">
+        Before enterprise software, I spent 5 years coordinating elite athletes 
+        under pressure—as a major college football coach.
+      </p>
+      
+      <p>
+        When a play breaks down, you don't have 72 hours. You have 40 seconds. 
+        What makes that possible isn't superhuman speed—it's pre-staged plays, 
+        clear accountability, instant communication, and continuous improvement.
+      </p>
+      
+      <p>
+        I spent 20 years at Ford, Toyota, Lockheed Martin, Eli Lilly, and 
+        Churchill Downs asking the same question: <strong>Why doesn't the 
+        boardroom work like the sideline?</strong>
+      </p>
+      
+      <p class="story-conclusion">
+        M Platform is the answer.
+      </p>
+    </div>
+    
+    <div class="founder-credentials">
+      <div class="credential">
+        <span class="number">5</span>
+        <span class="label">Years coaching major college football</span>
+      </div>
+      <div class="credential">
+        <span class="number">20+</span>
+        <span class="label">Years Fortune 500 experience</span>
+      </div>
+      <div class="credential">
+        <span class="number">6</span>
+        <span class="label">Enterprise transformations led</span>
+      </div>
+    </div>
+  </div>
+</section>
+```
+
+-----
+
+### CTA Section
+
+```html
+<section class="cta-section">
+  <div class="cta-content">
+    <h2>Ready to Close the Execution Gap?</h2>
+    <p>
+      Start with a 90-day pilot. See M Platform coordinate your first 
+      strategic response in 12 minutes instead of 72 hours.
+    </p>
+    <div class="cta-buttons">
+      <a href="/request-pilot" class="btn-primary">Request Pilot</a>
+      <a href="/contact" class="btn-secondary">Talk to Us</a>
+    </div>
+    <p class="cta-note">
+      $75K pilot  •  90 days  •  Full platform access  •  Success metrics included
+    </p>
+  </div>
+</section>
+```
+
+-----
+
+### Footer
+
+```html
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <div class="logo">M</div>
+      <p>Strategic Execution Operating System</p>
+      <p class="tagline">Execute strategy at the speed of disruption</p>
+    </div>
+    
+    <div class="footer-links">
+      <div class="link-group">
+        <h4>Product</h4>
+        <a href="/platform">Platform Overview</a>
+        <a href="/playbooks">148 Playbooks</a>
+        <a href="/operating-model">Operating Model Alignment</a>
+        <a href="/integrations">Integrations</a>
+      </div>
+      
+      <div class="link-group">
+        <h4>Company</h4>
+        <a href="/about">About</a>
+        <a href="/founder">Founder</a>
+        <a href="/contact">Contact</a>
+      </div>
+      
+      <div class="link-group">
+        <h4>Resources</h4>
+        <a href="/demo">Watch Demo</a>
+        <a href="/pilot">Pilot Program</a>
+        <a href="/blog">Blog</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2025 M Platform. All rights reserved.</p>
+  </div>
+</footer>
+```
+
+-----
+
+## PAGE-SPECIFIC CONTENT
+
+### About Page
+
+```html
+<section class="about-hero">
+  <h1>Building the Execution Layer for Strategy</h1>
+  <p class="lead">
+    M Platform is creating a new category: the Strategic Execution Operating System. 
+    We're the software that turns operating model design into coordinated action.
+  </p>
+</section>
+
+<section class="about-vision">
+  <h2>The Vision</h2>
+  <p>
+    Every enterprise has an ERP for operations, a CRM for customers, and an 
+    HCM for people. None of them have an execution system for strategy.
+  </p>
+  <p>
+    M Platform will be the operating system that turns strategic intent into 
+    coordinated action—across every domain, for every company, at the speed 
+    of disruption.
+  </p>
+  <p class="vision-statement">
+    <strong>We're not building a better crisis tool. We're building the 
+    central nervous system of the enterprise.</strong>
+  </p>
+</section>
+
+<section class="about-founder">
+  <h2>The Founder</h2>
+  <div class="founder-profile">
+    <div class="founder-image">
+      <!-- Photo -->
+    </div>
+    <div class="founder-bio">
+      <h3>Marty [Last Name]</h3>
+      <p class="title">Founder & CEO</p>
+      <p>
+        Marty brings a unique combination of elite sports coordination and 
+        Fortune 500 transformation experience to M Platform.
+      </p>
+      <p>
+        After 5 years as a major college football coach—where 40-second 
+        decisions are the norm—he spent 20+ years leading strategic execution 
+        at Ford, Toyota, Lockheed Martin, Eli Lilly, Charles Schwab, Boyd Gaming, 
+        and Churchill Downs.
+      </p>
+      <p>
+        Currently serving as Director of PMO at Churchill Downs Incorporated, 
+        Marty built M Platform to answer the question that defined his career: 
+        <strong>Why can't the boardroom coordinate like the sideline?</strong>
+      </p>
+    </div>
+  </div>
+</section>
+```
+
+-----
+
+### Request Pilot Page
+
+```html
+<section class="pilot-hero">
+  <h1>Start Your 90-Day Pilot</h1>
+  <p class="lead">
+    See M Platform in action. Coordinate your first strategic response 
+    in 12 minutes instead of 72 hours.
+  </p>
+</section>
+
+<section class="pilot-details">
+  <h2>What's Included</h2>
+  <div class="pilot-features">
+    <div class="feature">
+      <h3>Full Platform Access</h3>
+      <p>All 148 playbooks across 8 strategic domains</p>
+    </div>
+    <div class="feature">
+      <h3>Operating Model Alignment</h3>
+      <p>Diagnostic assessment mapping your organization to playbooks</p>
+    </div>
+    <div class="feature">
+      <h3>Implementation Support</h3>
+      <p>Dedicated onboarding and configuration assistance</p>
+    </div>
+    <div class="feature">
+      <h3>Success Metrics</h3>
+      <p>Before/after measurement of response times and coordination</p>
+    </div>
+  </div>
+  
+  <div class="pilot-pricing">
+    <span class="price">$75,000</span>
+    <span class="term">90-day pilot</span>
+    <p>Credited toward annual contract upon conversion</p>
+  </div>
+</section>
+
+<section class="pilot-form">
+  <h2>Request Information</h2>
+  <form>
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" name="name" required>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label>Company</label>
+      <input type="text" name="company" required>
+    </div>
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" name="title">
+    </div>
+    <div class="form-group">
+      <label>Primary Interest</label>
+      <select name="interest">
+        <option>Crisis Response</option>
+        <option>Cyber Incidents</option>
+        <option>M&A Integration</option>
+        <option>Product Launch</option>
+        <option>Transformation</option>
+        <option>Operating Model Alignment</option>
+        <option>Full Platform</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Message (optional)</label>
+      <textarea name="message"></textarea>
+    </div>
+    <button type="submit" class="btn-primary">Request Pilot</button>
+  </form>
+</section>
+```
+
+-----
+
+## CSS VARIABLES (for consistent styling)
+
+```css
+:root {
+  /* Brand Colors */
+  --color-primary: #1a2332;      /* Navy - primary background/text */
+  --color-accent: #c9a227;       /* Gold - accents, CTAs */
+  --color-blue: #2563eb;         /* Blue - links, interactive */
+  --color-white: #ffffff;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-500: #6b7280;
+  --color-gray-900: #111827;
+  
+  /* Status Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+}
+```
+
+-----
+
+## KEY MESSAGING CHANGES SUMMARY
+
+|Location        |Old Copy                                                  |New Copy                                                      |
+|----------------|----------------------------------------------------------|--------------------------------------------------------------|
+|Hero H1         |“Turn 72-Hour Responses into 12-Minute Coordinated Action”|“Execute Strategy at the Speed of Disruption”                 |
+|Hero Subtitle   |Crisis-focused                                            |“M Platform closes the 30% gap between strategy and execution”|
+|Eyebrow         |“Crisis Management Platform”                              |“Strategic Execution Operating System”                        |
+|Problem Framing |“Slow crisis response”                                    |“$2.7 Trillion execution gap”                                 |
+|Solution Framing|“Pre-staged crisis playbooks”                             |“Execution layer for your operating model”                    |
+|Domain Emphasis |Led with Crisis/Cyber                                     |“106 of 148 playbooks are growth-oriented”                    |
+|CTA             |“See Demo”                                                |“Request Pilot”                                               |
+|Tagline         |“Coordinated Action”                                      |“Execute strategy at the speed of disruption”                 |
+
+-----
+
+## IMPLEMENTATION CHECKLIST
+
+### Immediate (Copy Changes)
+
+- [ ] Update hero section copy
+- [ ] Update navigation labels
+- [ ] Add “Operating Model” to nav
+- [ ] Update footer tagline
+- [ ] Change all CTAs to “Request Pilot”
+
+### This Week (New Sections)
+
+- [ ] Add Operating Model Alignment section to home
+- [ ] Create /operating-model page
+- [ ] Update About page with new vision
+- [ ] Create /request-pilot page with form
+
+### This Month (Feature Build)
+
+- [ ] Build Operating Model Assessment flow
+- [ ] Create Fingerprint visualization
+- [ ] Connect to playbook recommendations
+- [ ] Add Gap Analysis component
+
+-----
+
+*Package Version: 1.0*
+*Last Updated: December 2025*

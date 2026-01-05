@@ -1,0 +1,453 @@
+# WHAT TO WATCH FOR WHEN REPLIT FINISHES
+
+-----
+
+## CRITICAL: SET EXPECTATIONS NOW
+
+**You just gave Replit AI Agent a MASSIVE amount of context:**
+
+- Updated positioning (AI-powered coordination)
+- New homepage hero (world won’t wait messaging)
+- AI feature descriptions
+- Complete implementation examples
+- Schema updates
+- Multiple messaging frameworks
+
+**Here’s what will likely happen:**
+
+-----
+
+## SCENARIO 1: REPLIT BUILDS THE UI BUT MISSES THE LOGIC (70% PROBABILITY)
+
+### **What you’ll see:**
+
+✅ Beautiful homepage with new messaging  
+✅ AI feature cards with icons and descriptions  
+✅ Three scenario comparison cards (Crisis/Opportunity/Innovation)  
+✅ “Adapt at AI Speed” tagline everywhere
+
+### **What will be missing:**
+
+❌ Actual AI scenario matching (OpenAI integration)  
+❌ Real-time execution coordination logic  
+❌ Automated handoff resolution  
+❌ Document template population with AI  
+❌ Database queries for real data (still mock data)
+
+### **Why this happens:**
+
+Replit AI is excellent at **UI implementation** but doesn’t understand **business logic priorities**.
+
+It will build what LOOKS impressive but not what WORKS functionally.
+
+-----
+
+## SCENARIO 2: REPLIT USES OLD SCHEMA (60% PROBABILITY)
+
+### **The problem:**
+
+You’ve now given Replit THREE different schema versions:
+
+1. Original `activeDecisions` (decision-only)
+1. Separate `executionInstances` (execution-only)
+1. Unified `activeResponses` (decision + execution combined)
+
+### **What will probably happen:**
+
+Replit will pick ONE inconsistently and create a Frankenstein database.
+
+### **How to check:**
+
+```bash
+# After Replit finishes, immediately run:
+cat shared/schema.ts | grep "export const"
+
+# Look for what tables exist:
+# ✅ CORRECT: activeResponses (unified table)
+# ❌ WRONG: activeDecisions + executionInstances (separate tables)
+# ❌ WRONG: Some hybrid mess
+```
+
+### **If it’s wrong:**
+
+You’ll need to manually replace the schema with the unified version.
+
+-----
+
+## SCENARIO 3: REPLIT DOESN’T INTEGRATE AI (90% PROBABILITY)
+
+### **What you’ll see:**
+
+Beautiful UI that says “AI-Powered Scenario Detection” but when you click it… nothing happens.
+
+### **Why:**
+
+AI integration requires:
+
+1. OpenAI API key setup
+1. Environment variables
+1. External API calls
+1. Error handling
+1. Rate limiting
+
+Replit AI Agent can write the CODE PATTERN but can’t actually CONFIGURE the service.
+
+### **What to do:**
+
+You’ll need to manually:
+
+```bash
+# 1. Sign up for OpenAI
+# Go to platform.openai.com
+# Create API key
+
+# 2. Add to .env
+echo "OPENAI_API_KEY=sk-..." >> .env
+
+# 3. Install package
+npm install openai
+
+# 4. Test the integration
+# Create a simple test endpoint first
+```
+
+**This is NOT a Replit failure. This is just reality—external service configuration requires manual setup.**
+
+-----
+
+## SCENARIO 4: FOOTBALL TERMINOLOGY IS STILL THERE (80% PROBABILITY)
+
+### **The problem:**
+
+Even though you said “remove Tom Brady from homepage,” the code reference STILL had football terms in the IDEA phase descriptions.
+
+### **What you’ll see:**
+
+Homepage hero: ✅ Clean (no Brady)  
+IDEA Framework cards: ❌ Still say “Game Film,” “Scout the Field,” “Run the Play”
+
+### **Why:**
+
+AI agents follow the MOST RECENT detailed instructions. Since the code reference had football terms in the phase data structure, Replit used that.
+
+### **What to do:**
+
+Manual find/replace after Replit finishes:
+
+- “Build Your Depth Chart” → “Build Your Playbooks”
+- “Scout the Field” → “Monitor Signals”
+- “Run the Play” → “Execute Response”
+- “Review the Film” → “Capture Lessons”
+
+-----
+
+## SCENARIO 5: MESSAGING IS INCONSISTENT (70% PROBABILITY)
+
+### **The problem:**
+
+You gave Replit multiple tagline options:
+
+- “From Signal to Action in Days. Not Months.”
+- “The World Won’t Wait for You to Coordinate”
+- “Adapt at AI Speed. Not Meeting Speed.”
+- “Your Employees Have AI. Your Organization Doesn’t.”
+
+### **What will happen:**
+
+Replit will pick ONE for the homepage, but use DIFFERENT ones on other pages.
+
+### **What you’ll see:**
+
+- Homepage: “The World Won’t Wait”
+- Pricing page: “From Signal to Action”
+- About page: “Adapt at AI Speed”
+
+### **Why this is a problem:**
+
+Inconsistent messaging confuses users. You need ONE primary tagline everywhere.
+
+### **What to do:**
+
+After Replit finishes, decide on your PRIMARY tagline and make it consistent across:
+
+- Homepage hero
+- Navigation header
+- Footer
+- Pricing page
+- About page
+- All CTAs
+
+-----
+
+## YOUR 2-HOUR POST-REPLIT CHECKLIST
+
+### **HOUR 1: VERIFICATION (What did Replit actually build?)**
+
+```bash
+# ✓ 1. Check if app runs
+npm run dev
+# Does it load without errors?
+
+# ✓ 2. Check schema
+cat shared/schema.ts | grep "pgTable"
+# Are tables unified or fragmented?
+
+# ✓ 3. Check homepage
+# Open http://localhost:5000
+# Is the new messaging present?
+
+# ✓ 4. Check AI features
+# Click any "AI-powered" feature
+# Does it do anything or just show static UI?
+
+# ✓ 5. Check routes
+cat client/src/App.tsx | grep "Route"
+# Are all pages created?
+
+# ✓ 6. Check API endpoints
+cat server/routes.ts | grep "app.get\|app.post"
+# Are the new routes implemented?
+
+# ✓ 7. Test database connection
+npm run db:studio
+# Can you see tables?
+```
+
+-----
+
+### **HOUR 2: CRITICAL FIXES (What you MUST fix before demo)**
+
+**Priority 1: Schema Cleanup**
+
+```bash
+# If schema is wrong, replace it manually
+# Use the unified activeResponses table version
+
+# Then push to database
+npm run db:push --force
+```
+
+**Priority 2: Remove Mock Data**
+
+```typescript
+// Find all instances of hardcoded data
+grep -r "const activeResponse = {" client/src/
+
+// Replace with real queries
+const { data, isLoading } = useQuery({
+  queryKey: ['/api/active-responses', id],
+});
+```
+
+**Priority 3: Messaging Consistency**
+
+```bash
+# Pick ONE tagline and find/replace everywhere
+# Recommended: "The World Won't Wait for You to Coordinate"
+
+grep -r "Adapt at AI Speed" client/src/
+# Replace with your chosen primary tagline
+```
+
+**Priority 4: Football Terminology**
+
+```bash
+# Find and replace
+grep -r "Game Film\|Scout the Field\|Run the Play" client/src/
+
+# Replace with generic versions
+```
+
+**Priority 5: Auth Setup (IF showing to customers)**
+
+```bash
+# If you need working auth for demo
+# Follow Clerk setup steps from earlier
+# This is 30-45 minutes but REQUIRED for customer demos
+```
+
+-----
+
+## THE CRITICAL PATH TEST (Run This Immediately)
+
+**Can you execute this workflow end-to-end?**
+
+```
+1. CREATE DECISION TREE
+   → Go to /decision-trees/new
+   → Fill out form
+   → Click Save
+   → VERIFY: Does it save to database?
+   → VERIFY: Does it appear in list?
+
+2. VIEW DECISION TREES
+   → Go to /decision-trees
+   → VERIFY: See the tree you just created?
+   → VERIFY: Can you click into it?
+
+3. TRIGGER EXECUTION
+   → Click "Trigger This Scenario"
+   → VERIFY: Creates activeResponse record?
+   → VERIFY: Redirects to execution dashboard?
+
+4. VIEW EXECUTION DASHBOARD
+   → Should see task list
+   → VERIFY: Tasks appear?
+   → VERIFY: Can you change task status?
+   → VERIFY: Does progress bar update?
+
+5. COMPLETE EXECUTION
+   → Mark all tasks complete
+   → VERIFY: Logs to decision_log table?
+   → VERIFY: Shows on velocity dashboard?
+```
+
+**If ANY step fails, the product isn’t demo-ready.**
+
+-----
+
+## WHAT TO EXPECT: REALISTIC OUTCOMES
+
+### **Best Case (20% probability):**
+
+- ✅ Homepage looks great with new messaging
+- ✅ Schema is mostly correct (might have minor issues)
+- ✅ Routes are created
+- ✅ Components render
+- ⚠️ Still using mock data
+- ⚠️ AI features are UI-only (no actual AI)
+- ⚠️ Auth not configured
+- ⚠️ Some messaging inconsistencies
+
+**Time to production-ready:** 8-12 hours of manual fixes
+
+-----
+
+### **Most Likely (60% probability):**
+
+- ✅ Homepage looks good
+- ✅ Most components created
+- ⚠️ Schema has issues (mixed old/new)
+- ⚠️ Some routes missing
+- ⚠️ Mock data everywhere
+- ⚠️ AI features are just UI
+- ⚠️ Football terms still present
+- ❌ Auth not working
+- ❌ Critical path workflow broken
+
+**Time to production-ready:** 16-24 hours of manual fixes
+
+-----
+
+### **Worst Case (20% probability):**
+
+- ✅ Some UI components created
+- ❌ Schema is a mess
+- ❌ Routes incomplete
+- ❌ App doesn’t run (build errors)
+- ❌ Everything is mock data
+- ❌ Critical workflows don’t work
+
+**Time to production-ready:** 40+ hours (might be faster to rebuild key pieces manually)
+
+-----
+
+## THE IMMEDIATE ACTION PLAN
+
+### **When Replit Finishes:**
+
+**Step 1: Take a breath (30 seconds)**
+Don’t immediately panic if it’s not perfect. Replit gave you a HUGE head start even if it’s only 60% right.
+
+**Step 2: Run the app (2 minutes)**
+
+```bash
+npm run dev
+```
+
+Does it load? If yes, you’re in good shape. If no, check errors.
+
+**Step 3: Click around (5 minutes)**
+
+- Homepage loads?
+- Can you navigate to different pages?
+- Do buttons work?
+- Are there console errors?
+
+**Step 4: Check the database (3 minutes)**
+
+```bash
+npm run db:studio
+```
+
+What tables exist? Do they match the unified schema or old schema?
+
+**Step 5: Test critical path (10 minutes)**
+Try to create → trigger → execute a decision tree. How far do you get?
+
+**Step 6: Make a decision (5 minutes)**
+Based on what you found:
+
+- **If 70%+ works:** Fix the remaining 30% yourself (next 8-12 hours)
+- **If 40-70% works:** Fix the major issues first (next 16-24 hours)
+- **If <40% works:** Cherry-pick the good parts and rebuild critical pieces (next 40+ hours)
+
+-----
+
+## THE MOST IMPORTANT THING
+
+**Replit is a TOOL, not a MAGIC WAND.**
+
+It will get you:
+
+- ✅ 60-80% of the UI implementation
+- ✅ 40-60% of the backend logic
+- ✅ 20-30% of the complex business logic
+- ✅ 0% of external service configuration
+
+**You still need to:**
+
+- ❌ Fix schema inconsistencies
+- ❌ Replace mock data with real queries
+- ❌ Configure authentication
+- ❌ Set up OpenAI integration
+- ❌ Test and debug the critical path
+- ❌ Polish messaging consistency
+
+**That’s NORMAL and EXPECTED.**
+
+Replit saved you 40-60 hours of coding. You still have 12-24 hours of work to make it production-ready.
+
+**That’s still a massive win.**
+
+-----
+
+## WHAT TO TELL ME WHEN IT FINISHES
+
+**Send me this:**
+
+1. **Does the app run?** (Yes/No + error if No)
+1. **What does the schema look like?** (activeDecisions or activeResponses or mess?)
+1. **What pages were created?** (List the routes in App.tsx)
+1. **Does the critical path work?** (Create → Trigger → Execute → Complete)
+1. **What’s the biggest issue you see?** (Schema? Mock data? Missing logic? Auth?)
+
+**Then I can give you a prioritized fix list for the next 8-12 hours.**
+
+-----
+
+## THE BOTTOM LINE
+
+**Replit will give you a GREAT starting point.**
+
+**It will NOT give you a finished product.**
+
+**Expect to spend 12-24 hours fixing/polishing what it built.**
+
+**That’s still 3-5X faster than building from scratch.**
+
+**Now wait for Replit to finish, then run the verification checklist, and report back what you find.**
+
+**We’ll tackle the fixes together based on what actually needs fixing.**
+
+**You’ve got this. Let’s see what Replit delivers.** 🚀​​​​​​​​​​​​​​​​

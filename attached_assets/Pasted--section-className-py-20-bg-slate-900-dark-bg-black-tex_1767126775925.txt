@@ -1,0 +1,78 @@
+<section className="py-20 bg-slate-900 dark:bg-black text-white">
+  <div className="container mx-auto px-4">
+    <div className="max-w-4xl mx-auto text-center">
+      
+      <h2 className="text-4xl font-bold mb-6">
+        The Question Isn't "Do We Need This?"
+      </h2>
+      <p className="text-3xl font-bold text-red-400 mb-8">
+        The Question Is "Can We Survive Without It?"
+      </p>
+      
+      <div className="grid md:grid-cols-2 gap-8 mb-12 text-left">
+        
+        {/* Without */}
+        <div className="p-6 bg-red-950/30 border-2 border-red-800 rounded-lg">
+          <h3 className="text-xl font-bold text-red-400 mb-4">
+            Without M Platform
+          </h3>
+          <ul className="space-y-3 text-slate-300">
+            <li className="flex items-start gap-2">
+              <AlertTriangle className="h-5 w-5 text-red-500 shrink-0 mt-0.5" />
+              <span>Markets shift while you align stakeholders (6 weeks)</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <AlertTriangle className="h-5 w-5 text-red-500 shrink-0 mt-0.5" />
+              <span>Crises spread while you coordinate response (17 days)</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <AlertTriangle className="h-5 w-5 text-red-500 shrink-0 mt-0.5" />
+              <span>Competitors capture opportunities while you schedule meetings</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <AlertTriangle className="h-5 w-5 text-red-500 shrink-0 mt-0.5" />
+              <span>Innovation stalls in coordination hell (9 months)</span>
+            </li>
+          </ul>
+        </div>
+        
+        {/* With */}
+        <div className="p-6 bg-emerald-950/30 border-2 border-emerald-800 rounded-lg">
+          <h3 className="text-xl font-bold text-emerald-400 mb-4">
+            With M Platform
+          </h3>
+          <ul className="space-y-3 text-slate-300">
+            <li className="flex items-start gap-2">
+              <CheckCircle className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
+              <span>Execute market moves in 1 week (pre-staged playbooks)</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
+              <span>Resolve crises in 90 minutes (automated coordination)</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
+              <span>Capture opportunities before competitors see them</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
+              <span>Deploy innovation in 6 weeks (coordinated rollout)</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div className="p-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl">
+        <p className="text-2xl font-bold mb-4">
+          The answer gets clearer every day the world moves faster
+          <br />
+          and your organization still coordinates at the speed of meetings.
+        </p>
+        <Button size="lg" className="text-lg px-8 py-4 bg-white text-slate-900 hover:bg-slate-100">
+          Make Your Organization Adaptation-Proof
+          <ArrowRight className="ml-2 h-5 w-5" />
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+Understood. If you're focusing on a pre-selected customer or an internal team and don't need self-service sign-up, we can adapt the plan to a "white-glove" onboarding model.
+This approach focuses the test entirely on the core product experience.
+Here is the revised UAT plan.
+## Revised UAT Plan: White-Glove Onboarding
+✅ Stage 1: Manual Customer Provisioning (Your Team's Task)
+Instead of the customer signing up, your team will set up their environment manually.
+ * Create the Organization: An engineer on your team directly inserts a new record for the customer into the organizations table in the production database.
+ * Provision User Accounts: Manually create accounts for each of the customer's testers in the users table, ensuring they are all correctly linked to the new organizationId.
+ * Securely Share Credentials: Share the initial login credentials with each tester through a secure method (like a password manager or a one-time secret sharing link).
+ * First Login Confirmation: The customer's first task is simple: log in successfully and confirm they see their company's dashboard, ready for use. This validates that the manual setup was successful.
+✅ Stage 2: Core Workflow Simulation (Customer's Task)
+This stage is the most critical and remains the same. The customer team will run a complete, real-time decision-making process.
+Scenario: A "Sudden Supply Chain Disruption."
+Execution Steps:
+ * Initiate the "War Room": The customer's team lead starts the scenario from the appropriate template.
+ * Test Real-time Collaboration: All customer testers join the session. They must confirm that updates made by one user are seen instantly by all other participants, validating the real-time experience.
+ * Validate AI-Powered Insight: A user must ask the AI Co-pilot a relevant question based on their company's (pre-loaded or historical) data, like: "What were the lessons learned from our last product recall?" The team validates if the answer is relevant, accurate, and valuable.
+ * Confirm Decision Logging: The team makes a formal decision within the platform. Your technical lead immediately queries the decisionOutcomes table in the database to confirm the record was created correctly and is tied to the right organization.
+✅ Stage 3: Value & Outcome Validation (Joint Task)
+This stage confirms the platform delivered the expected value.
+ * Test Automated Reporting: The customer tests the "Board-Ready Reporting" feature to ensure it generates a useful, accurate summary of their simulation.
+ * Verify the Learning Loop: Your team confirms that the outcomes of the simulation have correctly updated the institutionalMemory, making the platform smarter for the customer's next session.
+ * Conduct Qualitative Debrief: Hold a feedback session with the customer testers, asking key questions:
+   * "Did this process feel significantly more efficient than your current method?"
+   * "Was the AI's insight something that would have been difficult to find on your own?"
+   * "Did the platform help you feel more confident in your final decision?"
+This revised approach bypasses the commercial aspects and focuses squarely on validating the core product experience and its ability to deliver tangible value.

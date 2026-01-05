@@ -1,0 +1,398 @@
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import StandardNav from "@/components/layout/StandardNav";
+import Footer from "@/components/layout/Footer";
+import { Clock, CheckCircle, TrendingDown, TrendingUp, Trophy, ArrowRight } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { useLocation } from "wouter";
+
+export default function DecisionVelocityDashboard() {
+  const [, setLocation] = useLocation();
+  
+  // Mock data - in production, fetch from API
+  const decisions = [
+    {
+      id: '1',
+      scenario: 'Customer Data Breach Response',
+      question: 'Should we disclose publicly immediately?',
+      decisionMaker: 'John Smith (CEO)',
+      optionChosen: 'Option A: Disclose immediately',
+      decisionTimeMinutes: 18,
+      outcome: 'Positive - Regulatory compliance met, customer trust maintained (87% retention)',
+      lessons: 'Transparency paid off long-term despite short-term media negativity',
+      timestamp: '2024-11-15T09:23:00'
+    },
+    {
+      id: '2',
+      scenario: 'Competitor Pricing Response',
+      question: 'Should we match competitor price cut?',
+      decisionMaker: 'Sarah Johnson (CFO)',
+      optionChosen: 'Option B: Hold pricing, emphasize value proposition',
+      decisionTimeMinutes: 11,
+      outcome: 'Positive - Maintained margins (92%), minimal customer loss (3% churn)',
+      lessons: 'Value messaging resonated with target customers',
+      timestamp: '2024-11-20T14:45:00'
+    },
+    {
+      id: '3',
+      scenario: 'Regulatory Audit Response',
+      question: 'Which compliance approach to take?',
+      decisionMaker: 'Lisa Chen (General Counsel)',
+      optionChosen: 'Option C: Full disclosure with remediation plan',
+      decisionTimeMinutes: 14,
+      outcome: 'Positive - Audit closed favorably, no fines assessed',
+      lessons: 'Proactive disclosure builds regulatory goodwill',
+      timestamp: '2024-12-02T11:12:00'
+    },
+    {
+      id: '4',
+      scenario: 'M&A Target Valuation',
+      question: 'Approve preliminary bid?',
+      decisionMaker: 'Sarah Johnson (CFO)',
+      optionChosen: 'Option A: Proceed with bid at $425M',
+      decisionTimeMinutes: 24,
+      outcome: 'In Progress - Bid submitted, awaiting response',
+      lessons: 'TBD - Decision still playing out',
+      timestamp: '2024-12-10T16:30:00'
+    },
+    {
+      id: '5',
+      scenario: 'Cybersecurity Vendor Selection',
+      question: 'Which vendor to contract?',
+      decisionMaker: 'Mike Davis (CISO)',
+      optionChosen: 'Option B: Vendor B (higher cost, better integration)',
+      decisionTimeMinutes: 9,
+      outcome: 'Positive - Implementation ahead of schedule, reduced incidents by 40%',
+      lessons: 'Investment in integration capabilities was worth premium',
+      timestamp: '2024-12-15T10:05:00'
+    }
+  ];
+  
+  const avgDecisionTime = decisions.reduce((sum, d) => sum + d.decisionTimeMinutes, 0) / decisions.length;
+  const baselineTimeMinutes = 72 * 60; // 72 hours
+  const improvement = Math.round(((baselineTimeMinutes - avgDecisionTime) / baselineTimeMinutes) * 100);
+  const speedMultiplier = Math.round(baselineTimeMinutes / avgDecisionTime);
+  
+  // Decision maker leaderboard
+  const decisionMakers = [
+    { name: 'Sarah Johnson', role: 'CFO', decisions: 12, avgTime: 11.2, rank: 1 },
+    { name: 'John Smith', role: 'CEO', decisions: 18, avgTime: 14.7, rank: 2 },
+    { name: 'Mike Davis', role: 'CISO', decisions: 9, avgTime: 16.3, rank: 3 },
+    { name: 'Lisa Chen', role: 'General Counsel', decisions: 8, avgTime: 19.4, rank: 4 }
+  ];
+  
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
+      <StandardNav />
+      
+      <div className="container mx-auto px-4 py-20">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-5xl font-bold text-slate-900 dark:text-white mb-4">
+            Decision Velocity Dashboard
+          </h1>
+          <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+            Head coaches make 80+ decisions in 3 hours. Track how fast your executive team is deciding.
+          </p>
+        </div>
+        
+        {/* Key Metrics */}
+        <div className="grid md:grid-cols-4 gap-6 mb-12">
+          <Card className="border-2 border-emerald-200 dark:border-emerald-800">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-lg">
+                <Clock className="h-5 w-5 text-emerald-600" />
+                Avg Decision Time
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-4xl font-bold text-emerald-600">
+                {avgDecisionTime.toFixed(1)} min
+              </div>
+              <p className="text-sm text-slate-500 mt-2">
+                vs. 4,320 min baseline (72 hrs)
+              </p>
+              <div className="mt-3 flex items-center gap-2 text-sm font-medium text-emerald-600">
+                <TrendingDown className="h-4 w-4" />
+                {speedMultiplier}X faster
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-lg">
+                <TrendingUp className="h-5 w-5 text-blue-600" />
+                Improvement
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-4xl font-bold text-blue-600">
+                {improvement}%
+              </div>
+              <p className="text-sm text-slate-500 mt-2">
+                faster than pre-M Platform
+              </p>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-lg">
+                <CheckCircle className="h-5 w-5 text-purple-600" />
+                Decisions Made
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-4xl font-bold text-slate-900 dark:text-white">
+                {decisions.length}
+              </div>
+              <p className="text-sm text-slate-500 mt-2">
+                this quarter
+              </p>
+              <div className="mt-3 text-sm text-slate-600 dark:text-slate-400">
+                vs. 11 pre-M Platform
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-lg">
+                <Trophy className="h-5 w-5 text-amber-600" />
+                On-Time Rate
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-4xl font-bold text-amber-600">
+                94%
+              </div>
+              <p className="text-sm text-slate-500 mt-2">
+                decisions made within target window
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+        
+        {/* Comparison Section */}
+        <Card className="mb-12 bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900">
+          <CardHeader>
+            <CardTitle className="text-2xl">The Decision Velocity Gap</CardTitle>
+            <CardDescription className="text-base">
+              Head coaches make 80+ critical decisions in 3 hours. Your team now makes decisions at head coach speed.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-4">
+                  Before M Platform
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center p-3 bg-red-50 dark:bg-red-900/20 rounded">
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Avg Decision Time</span>
+                    <span className="text-lg font-bold text-red-600">72 hours</span>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-red-50 dark:bg-red-900/20 rounded">
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Decisions Per Quarter</span>
+                    <span className="text-lg font-bold text-red-600">11</span>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-red-50 dark:bg-red-900/20 rounded">
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">On-Time Rate</span>
+                    <span className="text-lg font-bold text-red-600">47%</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-4">
+                  With M Platform
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded">
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Avg Decision Time</span>
+                    <span className="text-lg font-bold text-emerald-600">{avgDecisionTime.toFixed(1)} min</span>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded">
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Decisions Per Quarter</span>
+                    <span className="text-lg font-bold text-emerald-600">{decisions.length}</span>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded">
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">On-Time Rate</span>
+                    <span className="text-lg font-bold text-emerald-600">94%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-center">
+              <p className="text-lg font-bold text-blue-900 dark:text-blue-200">
+                {speedMultiplier}X faster decisions • {((decisions.length / 11) * 100 - 100).toFixed(0)}% more decisions made • {(94 - 47).toFixed(0)}% improvement in on-time rate
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+        
+        {/* Decision Maker Leaderboard */}
+        <Card className="mb-12">
+          <CardHeader>
+            <CardTitle className="text-2xl flex items-center gap-2">
+              <Trophy className="h-6 w-6 text-amber-500" />
+              Decision Maker Leaderboard
+            </CardTitle>
+            <CardDescription>
+              Executives ranked by average decision velocity
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              {decisionMakers.map((maker) => (
+                <div 
+                  key={maker.name}
+                  className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800 rounded-lg"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold">
+                      {maker.rank}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-slate-900 dark:text-white">{maker.name}</div>
+                      <div className="text-sm text-slate-500">{maker.role}</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-6">
+                    <div className="text-right">
+                      <div className="text-sm text-slate-500">Decisions</div>
+                      <div className="font-bold text-slate-900 dark:text-white">{maker.decisions}</div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-sm text-slate-500">Avg Time</div>
+                      <div className="font-bold text-emerald-600">{maker.avgTime} min</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+        
+        {/* Recent Decisions */}
+        <Card>
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle className="text-2xl">Recent Decisions</CardTitle>
+                <CardDescription>Decision history with outcomes and lessons learned</CardDescription>
+              </div>
+              <Button variant="outline" onClick={() => setLocation('/decision-trees')}>
+                View Decision Trees
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {decisions.map((decision) => (
+                <div 
+                  key={decision.id} 
+                  className="p-6 border-2 border-slate-200 dark:border-slate-700 rounded-lg hover:shadow-lg transition-shadow"
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <h3 className="font-bold text-lg text-slate-900 dark:text-white">
+                          {decision.scenario}
+                        </h3>
+                        <Badge className="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30">
+                          {decision.decisionTimeMinutes} min
+                        </Badge>
+                      </div>
+                      <p className="text-slate-600 dark:text-slate-400 mb-3">
+                        <span className="font-medium">Question:</span> {decision.question}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-4 mb-4">
+                    <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
+                      <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                        Decision Maker
+                      </div>
+                      <div className="text-slate-900 dark:text-white">
+                        {decision.decisionMaker}
+                      </div>
+                    </div>
+                    <div className="p-3 bg-purple-50 dark:bg-purple-900/20 rounded">
+                      <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                        Decision Made
+                      </div>
+                      <div className="text-slate-900 dark:text-white">
+                        {decision.optionChosen}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg">
+                      <div className="flex items-start gap-2">
+                        <CheckCircle className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
+                        <div>
+                          <div className="font-medium text-emerald-900 dark:text-emerald-200 mb-1">
+                            Outcome
+                          </div>
+                          <div className="text-sm text-slate-700 dark:text-slate-300">
+                            {decision.outcome}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+                      <div className="flex items-start gap-2">
+                        <TrendingUp className="h-5 w-5 text-amber-600 shrink-0 mt-0.5" />
+                        <div>
+                          <div className="font-medium text-amber-900 dark:text-amber-200 mb-1">
+                            Lessons Learned
+                          </div>
+                          <div className="text-sm text-slate-700 dark:text-slate-300">
+                            {decision.lessons}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+        
+        {/* CTA Section */}
+        <div className="mt-12 text-center">
+          <Card className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950 dark:to-purple-950 border-2 border-blue-200 dark:border-blue-800">
+            <CardContent className="p-12">
+              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
+                Ready to Accelerate Your Decision Velocity?
+              </h2>
+              <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
+                Head coaches make 80+ decisions in 3 hours. Your executive team can too. Pre-stage your decision trees and execute at game speed.
+              </p>
+              <div className="flex gap-4 justify-center">
+                <Button size="lg" onClick={() => setLocation('/decision-trees')}>
+                  Create Decision Tree
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <Button size="lg" variant="outline" onClick={() => setLocation('/playbooks')}>
+                  Browse Playbooks
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+      
+      <Footer />
+    </div>
+  );
+}

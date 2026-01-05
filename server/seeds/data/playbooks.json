@@ -1,0 +1,2201 @@
+{
+  "playbooks": [
+    {
+      "number": 1,
+      "name": "New Market Entrant (Funded Startup)",
+      "trigger": "VC-backed competitor enters your core market segment",
+      "stakeholders": [
+        "CEO",
+        "CMO",
+        "CPO",
+        "Strategy"
+      ],
+      "response": "Competitive positioning, pricing strategy, product acceleration",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 2,
+      "name": "New Market Entrant (Established Player)",
+      "trigger": "Fortune 500 company announces entry into your market",
+      "stakeholders": [
+        "CEO",
+        "Board",
+        "CFO",
+        "Strategy"
+      ],
+      "response": "Partnership exploration, differentiation strategy, market defense",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 3,
+      "name": "Competitor Product Launch (Feature Parity)",
+      "trigger": "Competitor releases product matching your core capabilities",
+      "stakeholders": [
+        "CPO",
+        "CTO",
+        "CMO",
+        "Sales"
+      ],
+      "response": "Feature acceleration, messaging pivot, customer retention",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 4,
+      "name": "Competitor Product Launch (Breakthrough Innovation)",
+      "trigger": "Competitor announces technology that leapfrogs your offerings",
+      "stakeholders": [
+        "CEO",
+        "CTO",
+        "CPO",
+        "Board"
+      ],
+      "response": "Technology assessment, R&D pivot, market repositioning",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 5,
+      "name": "Aggressive Pricing Disruption",
+      "trigger": "Competitor cuts prices 30%+ or introduces disruptive pricing model",
+      "stakeholders": [
+        "CFO",
+        "CMO",
+        "Sales",
+        "Pricing"
+      ],
+      "response": "Value proposition reinforcement, pricing analysis, margin defense",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 6,
+      "name": "Patent Infringement Claim (Incoming)",
+      "trigger": "Competitor alleges your product infringes their patents",
+      "stakeholders": [
+        "CEO",
+        "CLO",
+        "CTO",
+        "Board"
+      ],
+      "response": "Legal defense, product review, prior art search",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 7,
+      "name": "Patent Infringement Claim (Outgoing)",
+      "trigger": "Discovery that competitor may be infringing your patents",
+      "stakeholders": [
+        "CLO",
+        "CEO",
+        "CPO",
+        "Board"
+      ],
+      "response": "Legal assessment, enforcement strategy, licensing negotiation",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 8,
+      "name": "Key Talent Poaching Campaign",
+      "trigger": "Competitor systematically recruiting your top talent (5+ departures)",
+      "stakeholders": [
+        "CHRO",
+        "CEO",
+        "Business Unit Leads"
+      ],
+      "response": "Retention offers, culture reinforcement, talent pipeline acceleration",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 9,
+      "name": "Competitor M&A (Consolidation)",
+      "trigger": "Two competitors merge, creating larger rival",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "Strategy",
+        "Board"
+      ],
+      "response": "Competitive reassessment, partnership exploration, market positioning",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 10,
+      "name": "Competitor Acquires Strategic Asset",
+      "trigger": "Competitor buys key supplier, distributor, or technology company",
+      "stakeholders": [
+        "CEO",
+        "COO",
+        "Strategy"
+      ],
+      "response": "Supply chain security, alternative partnerships, M&A response",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 11,
+      "name": "Channel Conflict (Direct vs. Partner)",
+      "trigger": "Channel partners threaten to drop your product",
+      "stakeholders": [
+        "COO",
+        "Sales",
+        "Channel Management"
+      ],
+      "response": "Partner negotiation, channel strategy revision, conflict resolution",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 12,
+      "name": "Customer Consolidation to Competitor",
+      "trigger": "Major customer announces switch to competitor (>$5M ARR)",
+      "stakeholders": [
+        "CEO",
+        "Sales",
+        "Customer Success"
+      ],
+      "response": "Save campaign, relationship repair, product gap analysis",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 13,
+      "name": "Sales Team Defection",
+      "trigger": "Competitor hires your top sales reps (3+ in quarter)",
+      "stakeholders": [
+        "CRO",
+        "CHRO",
+        "CEO"
+      ],
+      "response": "Client relationship protection, pipeline recovery, compensation review",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 14,
+      "name": "Geographic Market Entry by Competitor",
+      "trigger": "Competitor enters your stronghold geography",
+      "stakeholders": [
+        "CEO",
+        "GM (Region)",
+        "Sales"
+      ],
+      "response": "Regional defense, local partnerships, market protection",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 15,
+      "name": "Negative Comparison Campaign",
+      "trigger": "Competitor launches marketing attacking your product",
+      "stakeholders": [
+        "CMO",
+        "CLO",
+        "CEO"
+      ],
+      "response": "Counter-messaging, factual correction, legal assessment",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 16,
+      "name": "Customer Advisory Board Defection",
+      "trigger": "Strategic advisory board members join competitor board",
+      "stakeholders": [
+        "CEO",
+        "Strategy",
+        "Customer Success"
+      ],
+      "response": "Relationship repair, board reconstitution, loyalty reinforcement",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 17,
+      "name": "Competitor Launches Free/Freemium Tier",
+      "trigger": "Competitor introduces free version of paid product",
+      "stakeholders": [
+        "CPO",
+        "CMO",
+        "CFO",
+        "Pricing"
+      ],
+      "response": "Business model assessment, value differentiation, customer communication",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 18,
+      "name": "Industry Standards Battle",
+      "trigger": "Competitor attempts to establish incompatible industry standard",
+      "stakeholders": [
+        "CTO",
+        "Strategy",
+        "Standards Team"
+      ],
+      "response": "Coalition building, standards participation, interoperability strategy",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 19,
+      "name": "Primary Supplier Failure",
+      "trigger": "Main supplier experiences bankruptcy, fire, or production halt",
+      "stakeholders": [
+        "COO",
+        "Procurement",
+        "Manufacturing"
+      ],
+      "response": "Alternative supplier activation, inventory management, production continuity",
+      "domain": 2,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 20,
+      "name": "Critical Component Shortage",
+      "trigger": "Industry-wide shortage of essential component (chips, raw materials)",
+      "stakeholders": [
+        "COO",
+        "CFO",
+        "Manufacturing",
+        "Procurement"
+      ],
+      "response": "Substitute sourcing, production prioritization, customer allocation",
+      "domain": 2,
+      "frequency": "medium",
+      "budget": 500000
+    },
+    {
+      "number": 21,
+      "name": "Transportation/Logistics Disruption",
+      "trigger": "Strike, natural disaster, or infrastructure failure blocks distribution",
+      "stakeholders": [
+        "COO",
+        "Logistics",
+        "Customer Service"
+      ],
+      "response": "Alternative routing, customer communication, fulfillment workarounds",
+      "domain": 2,
+      "frequency": "medium",
+      "budget": 750000
+    },
+    {
+      "number": 22,
+      "name": "Quality Defect Discovery (Pre-Ship)",
+      "trigger": "Critical quality issue found before product ships",
+      "stakeholders": [
+        "COO",
+        "Quality",
+        "Manufacturing",
+        "Sales"
+      ],
+      "response": "Production halt, root cause analysis, customer communication",
+      "domain": 2,
+      "frequency": "medium",
+      "budget": 750000
+    },
+    {
+      "number": 23,
+      "name": "Quality Defect Discovery (Post-Ship)",
+      "trigger": "Critical quality issue discovered in field/customer site",
+      "stakeholders": [
+        "COO",
+        "Quality",
+        "Customer Success",
+        "CLO"
+      ],
+      "response": "Field remediation, customer notification, regulatory reporting",
+      "domain": 2,
+      "frequency": "medium",
+      "budget": 750000
+    },
+    {
+      "number": 24,
+      "name": "Supplier Price Shock",
+      "trigger": "Supplier increases prices 20%+ due to force majeure",
+      "stakeholders": [
+        "CFO",
+        "COO",
+        "Procurement"
+      ],
+      "response": "Cost absorption analysis, pricing adjustment, alternative sourcing",
+      "domain": 2,
+      "frequency": "medium",
+      "budget": 750000
+    },
+    {
+      "number": 25,
+      "name": "Manufacturing Facility Disruption",
+      "trigger": "Fire, flood, equipment failure halts production facility",
+      "stakeholders": [
+        "COO",
+        "Manufacturing",
+        "Safety",
+        "Insurance"
+      ],
+      "response": "Production rerouting, capacity reallocation, recovery planning",
+      "domain": 2,
+      "frequency": "medium",
+      "budget": 750000
+    },
+    {
+      "number": 26,
+      "name": "Warehouse/Distribution Center Failure",
+      "trigger": "Primary distribution center becomes inoperable",
+      "stakeholders": [
+        "COO",
+        "Logistics",
+        "Customer Service"
+      ],
+      "response": "Inventory redistribution, alternative fulfillment, delivery recovery",
+      "domain": 2,
+      "frequency": "medium",
+      "budget": 750000
+    },
+    {
+      "number": 27,
+      "name": "Data Center Outage",
+      "trigger": "Primary data center experiences extended outage",
+      "stakeholders": [
+        "CTO",
+        "COO",
+        "Customer Success"
+      ],
+      "response": "Failover execution, customer communication, service restoration",
+      "domain": 2,
+      "frequency": "medium",
+      "budget": 750000
+    },
+    {
+      "number": 28,
+      "name": "Office Evacuation (Safety Threat)",
+      "trigger": "Bomb threat, gas leak, or safety issue requires building evacuation",
+      "stakeholders": [
+        "Facilities",
+        "Safety",
+        "CHRO",
+        "Crisis Management"
+      ],
+      "response": "Employee safety, remote work activation, facility security",
+      "domain": 2,
+      "frequency": "medium",
+      "budget": 750000
+    },
+    {
+      "number": 29,
+      "name": "Natural Disaster (Facility Impact)",
+      "trigger": "Hurricane, earthquake, flood impacts primary operations",
+      "stakeholders": [
+        "COO",
+        "Facilities",
+        "Safety",
+        "Insurance"
+      ],
+      "response": "Employee safety, operations continuity, recovery coordination",
+      "domain": 2,
+      "frequency": "medium",
+      "budget": 750000
+    },
+    {
+      "number": 30,
+      "name": "Pandemic/Health Crisis",
+      "trigger": "Infectious disease outbreak impacts workforce/operations",
+      "stakeholders": [
+        "CEO",
+        "CHRO",
+        "Facilities",
+        "Safety"
+      ],
+      "response": "Remote work activation, safety protocols, business continuity",
+      "domain": 2,
+      "frequency": "medium",
+      "budget": 750000
+    },
+    {
+      "number": 31,
+      "name": "Critical Vendor Service Interruption",
+      "trigger": "Essential SaaS provider, cloud host, or service experiences outage",
+      "stakeholders": [
+        "CTO",
+        "Vendor Management",
+        "Operations"
+      ],
+      "response": "Backup activation, vendor escalation, customer notification",
+      "domain": 2,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 32,
+      "name": "Technology Partner Bankruptcy",
+      "trigger": "Critical technology partner files bankruptcy/ceases operations",
+      "stakeholders": [
+        "CTO",
+        "CLO",
+        "Procurement"
+      ],
+      "response": "Technology migration, intellectual property protection, alternative sourcing",
+      "domain": 2,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 33,
+      "name": "Payment Processor Disruption",
+      "trigger": "Payment gateway, merchant services, or banking disruption",
+      "stakeholders": [
+        "CFO",
+        "Finance",
+        "Customer Service"
+      ],
+      "response": "Alternative payment activation, customer communication, transaction recovery",
+      "domain": 2,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 34,
+      "name": "Critical API/Integration Failure",
+      "trigger": "Essential third-party API service fails or changes unexpectedly",
+      "stakeholders": [
+        "CTO",
+        "Engineering",
+        "Product"
+      ],
+      "response": "Integration repair, fallback mode, customer impact mitigation",
+      "domain": 2,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 35,
+      "name": "Cash Flow Crisis",
+      "trigger": "Cash runway drops below 6 months, unexpected burn spike",
+      "stakeholders": [
+        "CFO",
+        "CEO",
+        "Board"
+      ],
+      "response": "Cost reduction, fundraising acceleration, bridge financing",
+      "domain": 3,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 36,
+      "name": "Failed Fundraising Round",
+      "trigger": "Expected investment round falls through or significantly delayed",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "Board"
+      ],
+      "response": "Alternative financing, burn reduction, strategic options",
+      "domain": 3,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 37,
+      "name": "Bank Credit Line Revocation",
+      "trigger": "Bank reduces or eliminates line of credit",
+      "stakeholders": [
+        "CFO",
+        "CEO",
+        "Treasury"
+      ],
+      "response": "Alternative lender sourcing, liquidity preservation, covenant negotiation",
+      "domain": 3,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 38,
+      "name": "Major Customer Payment Default",
+      "trigger": "Large customer fails to pay invoice (>$1M outstanding)",
+      "stakeholders": [
+        "CFO",
+        "Sales",
+        "Collections",
+        "CLO"
+      ],
+      "response": "Payment recovery, credit policy revision, cash flow management",
+      "domain": 3,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 39,
+      "name": "Currency Crisis (FX Exposure)",
+      "trigger": "Significant currency devaluation impacts international revenue/costs",
+      "stakeholders": [
+        "CFO",
+        "Treasury",
+        "International Operations"
+      ],
+      "response": "Hedging strategy, pricing adjustment, expense management",
+      "domain": 3,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 40,
+      "name": "Stock Price Crash (Public Company)",
+      "trigger": "Stock price drops 30%+ in single session or week",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "IR",
+        "Board"
+      ],
+      "response": "Investor communication, analyst briefing, stability messaging",
+      "domain": 3,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 41,
+      "name": "Activist Investor Campaign",
+      "trigger": "Activist shareholder takes significant position, demands changes",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "Board",
+        "CLO"
+      ],
+      "response": "Investor engagement, defense strategy, board communication",
+      "domain": 3,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 42,
+      "name": "Hostile Takeover Attempt",
+      "trigger": "Unsolicited acquisition offer or proxy fight initiated",
+      "stakeholders": [
+        "CEO",
+        "Board",
+        "CLO",
+        "Investment Bankers"
+      ],
+      "response": "Defense activation, shareholder communication, strategic alternatives",
+      "domain": 3,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 43,
+      "name": "Credit Rating Downgrade",
+      "trigger": "Rating agency lowers credit rating, impacts borrowing costs",
+      "stakeholders": [
+        "CFO",
+        "Treasury",
+        "CEO",
+        "IR"
+      ],
+      "response": "Investor communication, capital structure optimization, rating agency engagement",
+      "domain": 3,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 44,
+      "name": "Revenue Shortfall (Miss Guidance)",
+      "trigger": "Quarter tracking significantly below public guidance",
+      "stakeholders": [
+        "CFO",
+        "CEO",
+        "IR",
+        "Board"
+      ],
+      "response": "Guidance revision, investor communication, recovery plan",
+      "domain": 3,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 45,
+      "name": "Accounting Irregularity Discovery",
+      "trigger": "Internal audit discovers material accounting error or policy violation",
+      "stakeholders": [
+        "CFO",
+        "CEO",
+        "Audit Committee",
+        "CLO"
+      ],
+      "response": "Investigation, restatement assessment, disclosure planning",
+      "domain": 3,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 46,
+      "name": "Auditor Disagreement",
+      "trigger": "External auditor challenges accounting treatment or control",
+      "stakeholders": [
+        "CFO",
+        "Audit Committee",
+        "CLO"
+      ],
+      "response": "Resolution negotiation, documentation, potential restatement",
+      "domain": 3,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 47,
+      "name": "Financial Control Failure",
+      "trigger": "Material weakness in internal controls discovered",
+      "stakeholders": [
+        "CFO",
+        "Audit Committee",
+        "Controller"
+      ],
+      "response": "Remediation plan, disclosure, control enhancement",
+      "domain": 3,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 48,
+      "name": "Unexpected Tax Liability",
+      "trigger": "Tax authority assessment or audit findings create material liability",
+      "stakeholders": [
+        "CFO",
+        "Tax",
+        "CLO"
+      ],
+      "response": "Assessment challenge, settlement negotiation, reserve establishment",
+      "domain": 3,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 49,
+      "name": "SEC Investigation Notice",
+      "trigger": "Securities and Exchange Commission opens investigation",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "CLO",
+        "Board"
+      ],
+      "response": "External counsel engagement, document preservation, cooperation strategy",
+      "domain": 4,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 50,
+      "name": "DOJ/Criminal Investigation",
+      "trigger": "Department of Justice initiates criminal investigation",
+      "stakeholders": [
+        "CEO",
+        "CLO",
+        "Board"
+      ],
+      "response": "Criminal defense counsel, privilege protection, crisis management",
+      "domain": 4,
+      "frequency": "low",
+      "budget": 750000
+    },
+    {
+      "number": 51,
+      "name": "FTC Antitrust Investigation",
+      "trigger": "Federal Trade Commission investigates competitive practices",
+      "stakeholders": [
+        "CEO",
+        "CLO",
+        "Strategy"
+      ],
+      "response": "Antitrust defense, practice review, regulator cooperation",
+      "domain": 4,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 52,
+      "name": "State Attorney General Investigation",
+      "trigger": "State AG launches consumer protection or business practice investigation",
+      "stakeholders": [
+        "CLO",
+        "CEO",
+        "State Operations"
+      ],
+      "response": "Legal response, practice assessment, settlement exploration",
+      "domain": 4,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 53,
+      "name": "Congressional Investigation/Hearing",
+      "trigger": "Congressional committee requests testimony or documents",
+      "stakeholders": [
+        "CEO",
+        "CLO",
+        "Government Affairs",
+        "Board"
+      ],
+      "response": "Testimony preparation, document production, public affairs strategy",
+      "domain": 4,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 54,
+      "name": "Data Privacy Violation (GDPR/CCPA)",
+      "trigger": "Discovery of data protection law violation or regulatory complaint",
+      "stakeholders": [
+        "CLO",
+        "CTO",
+        "Privacy Officer",
+        "Board"
+      ],
+      "response": "Regulatory notification, remediation, affected party communication",
+      "domain": 4,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 55,
+      "name": "Export Control Violation",
+      "trigger": "Discovery of unauthorized export of controlled technology",
+      "stakeholders": [
+        "CLO",
+        "Trade Compliance",
+        "CEO"
+      ],
+      "response": "Voluntary disclosure, shipment investigation, license application",
+      "domain": 4,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 56,
+      "name": "Environmental Compliance Violation",
+      "trigger": "EPA or state environmental agency violation notice",
+      "stakeholders": [
+        "CLO",
+        "Operations",
+        "Environmental Health & Safety"
+      ],
+      "response": "Compliance restoration, agency negotiation, remediation plan",
+      "domain": 4,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 57,
+      "name": "Workplace Safety Violation (OSHA)",
+      "trigger": "OSHA citation or serious workplace injury investigation",
+      "stakeholders": [
+        "CLO",
+        "CHRO",
+        "Safety",
+        "Operations"
+      ],
+      "response": "Safety remediation, worker protection, OSHA negotiation",
+      "domain": 4,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 58,
+      "name": "Financial Services Compliance Breach",
+      "trigger": "Banking, securities, or financial regulation violation",
+      "stakeholders": [
+        "CLO",
+        "CFO",
+        "Compliance Officer"
+      ],
+      "response": "Regulatory notification, remediation, penalty negotiation",
+      "domain": 4,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 59,
+      "name": "Class Action Lawsuit Filed",
+      "trigger": "Class action complaint filed (securities, consumer, employment)",
+      "stakeholders": [
+        "CLO",
+        "CEO",
+        "Board",
+        "Insurance"
+      ],
+      "response": "Defense counsel engagement, motion to dismiss, settlement assessment",
+      "domain": 4,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 60,
+      "name": "Intellectual Property Litigation",
+      "trigger": "Patent, trademark, or copyright lawsuit filed",
+      "stakeholders": [
+        "CLO",
+        "CTO",
+        "CFO"
+      ],
+      "response": "IP counsel engagement, validity assessment, defense or settlement",
+      "domain": 4,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 61,
+      "name": "Major Contract Dispute",
+      "trigger": "Customer or partner files breach of contract lawsuit",
+      "stakeholders": [
+        "CLO",
+        "Business Unit Lead",
+        "CFO"
+      ],
+      "response": "Legal defense, commercial negotiation, relationship management",
+      "domain": 4,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 62,
+      "name": "Employment Discrimination Lawsuit",
+      "trigger": "Employee or EEOC files discrimination claim",
+      "stakeholders": [
+        "CLO",
+        "CHRO",
+        "CEO"
+      ],
+      "response": "Legal defense, investigation, policy review",
+      "domain": 4,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 63,
+      "name": "Product Liability Lawsuit",
+      "trigger": "Customer injury or property damage attributed to product",
+      "stakeholders": [
+        "CLO",
+        "COO",
+        "Quality",
+        "Insurance"
+      ],
+      "response": "Legal defense, investigation, recall assessment",
+      "domain": 4,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 64,
+      "name": "Data Breach (Customer Data)",
+      "trigger": "Unauthorized access to customer PII, payment, or sensitive data",
+      "stakeholders": [
+        "CISO",
+        "CTO",
+        "CLO",
+        "CEO",
+        "Board"
+      ],
+      "response": "Containment, forensics, customer notification, regulatory reporting",
+      "domain": 5,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 65,
+      "name": "Ransomware Attack",
+      "trigger": "Ransomware encrypts critical systems, ransom demanded",
+      "stakeholders": [
+        "CISO",
+        "CTO",
+        "CEO",
+        "CLO"
+      ],
+      "response": "Isolation, recovery from backup, law enforcement notification, ransom evaluation",
+      "domain": 5,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 66,
+      "name": "DDoS Attack",
+      "trigger": "Distributed denial of service attack disrupts services",
+      "stakeholders": [
+        "CISO",
+        "CTO",
+        "Operations"
+      ],
+      "response": "Traffic mitigation, ISP coordination, customer communication",
+      "domain": 5,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 67,
+      "name": "Insider Threat (Malicious Employee)",
+      "trigger": "Employee discovered stealing data, sabotaging systems, or fraud",
+      "stakeholders": [
+        "CISO",
+        "CHRO",
+        "CLO",
+        "CEO"
+      ],
+      "response": "Access termination, forensic investigation, legal action, damage assessment",
+      "domain": 5,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 68,
+      "name": "Third-Party Data Breach (Vendor)",
+      "trigger": "Vendor breach exposes your company or customer data",
+      "stakeholders": [
+        "CISO",
+        "CLO",
+        "Vendor Management"
+      ],
+      "response": "Impact assessment, vendor accountability, customer notification",
+      "domain": 5,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 69,
+      "name": "Vulnerability Disclosure (Zero-Day)",
+      "trigger": "Critical security vulnerability discovered in your product",
+      "stakeholders": [
+        "CISO",
+        "CTO",
+        "CPO",
+        "Customer Success"
+      ],
+      "response": "Patch development, customer notification, coordinated disclosure",
+      "domain": 5,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 70,
+      "name": "Critical System Outage (SaaS)",
+      "trigger": "Primary application experiences extended downtime",
+      "stakeholders": [
+        "CTO",
+        "COO",
+        "Customer Success",
+        "CEO"
+      ],
+      "response": "Incident response, customer communication, root cause analysis, SLA credits",
+      "domain": 5,
+      "frequency": "low",
+      "budget": 1000000
+    },
+    {
+      "number": 71,
+      "name": "Database Corruption/Loss",
+      "trigger": "Database corruption or data loss affects operations or customer data",
+      "stakeholders": [
+        "CTO",
+        "CIO",
+        "Engineering"
+      ],
+      "response": "Data recovery, integrity verification, backup restoration, customer notification",
+      "domain": 5,
+      "frequency": "rare",
+      "budget": 1000000
+    },
+    {
+      "number": 72,
+      "name": "Cloud Provider Outage",
+      "trigger": "AWS, Azure, or GCP region failure impacts services",
+      "stakeholders": [
+        "CTO",
+        "Engineering",
+        "Customer Success"
+      ],
+      "response": "Failover execution, provider escalation, customer communication",
+      "domain": 5,
+      "frequency": "rare",
+      "budget": 1000000
+    },
+    {
+      "number": 73,
+      "name": "Software Update/Release Failure",
+      "trigger": "New software release causes critical bugs or system instability",
+      "stakeholders": [
+        "CTO",
+        "CPO",
+        "Engineering"
+      ],
+      "response": "Rollback, hotfix, customer communication, quality process review",
+      "domain": 5,
+      "frequency": "rare",
+      "budget": 1000000
+    },
+    {
+      "number": 74,
+      "name": "Integration/API Breaking Change",
+      "trigger": "System integration or API change breaks customer workflows",
+      "stakeholders": [
+        "CTO",
+        "CPO",
+        "Customer Success"
+      ],
+      "response": "Fix deployment, customer support, migration assistance",
+      "domain": 5,
+      "frequency": "rare",
+      "budget": 1000000
+    },
+    {
+      "number": 75,
+      "name": "End-of-Life Technology Dependency",
+      "trigger": "Critical technology stack component reaches EOL, vendor discontinues support",
+      "stakeholders": [
+        "CTO",
+        "Engineering",
+        "Architecture"
+      ],
+      "response": "Migration planning, alternative evaluation, timeline communication",
+      "domain": 5,
+      "frequency": "rare",
+      "budget": 1000000
+    },
+    {
+      "number": 76,
+      "name": "Technology Standards Shift",
+      "trigger": "Industry adopts new standard making your technology approach obsolete",
+      "stakeholders": [
+        "CTO",
+        "CPO",
+        "Strategy"
+      ],
+      "response": "Roadmap pivot, standards adoption, customer migration support",
+      "domain": 5,
+      "frequency": "rare",
+      "budget": 1000000
+    },
+    {
+      "number": 77,
+      "name": "CEO Sudden Departure",
+      "trigger": "CEO resignation, termination, illness, or death",
+      "stakeholders": [
+        "Board",
+        "Executive Team",
+        "CHRO"
+      ],
+      "response": "Succession activation, stakeholder communication, interim leadership",
+      "domain": 6,
+      "frequency": "rare",
+      "budget": 1000000
+    },
+    {
+      "number": 78,
+      "name": "Executive Team Member Departure (Unexpected)",
+      "trigger": "C-level executive sudden resignation or termination",
+      "stakeholders": [
+        "CEO",
+        "CHRO",
+        "Board"
+      ],
+      "response": "Interim coverage, transition plan, external/internal search",
+      "domain": 6,
+      "frequency": "rare",
+      "budget": 1000000
+    },
+    {
+      "number": 79,
+      "name": "Board Member Resignation",
+      "trigger": "Board member resigns unexpectedly or amid controversy",
+      "stakeholders": [
+        "Board Chair",
+        "CEO",
+        "Nominating Committee"
+      ],
+      "response": "Board composition assessment, replacement search, governance continuity",
+      "domain": 6,
+      "frequency": "rare",
+      "budget": 1000000
+    },
+    {
+      "number": 80,
+      "name": "Mass Layoff/RIF Execution",
+      "trigger": "Company announces significant workforce reduction",
+      "stakeholders": [
+        "CEO",
+        "CHRO",
+        "CFO",
+        "Communications"
+      ],
+      "response": "Legal compliance, employee communication, morale management, media handling",
+      "domain": 6,
+      "frequency": "rare",
+      "budget": 1000000
+    },
+    {
+      "number": 81,
+      "name": "Key Talent Attrition Spike",
+      "trigger": "Abnormal increase in voluntary departures (>20% above baseline)",
+      "stakeholders": [
+        "CHRO",
+        "CEO",
+        "Business Unit Leads"
+      ],
+      "response": "Stay interviews, compensation review, culture assessment, retention plan",
+      "domain": 6,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 82,
+      "name": "Critical Role Vacancy (Unfillable)",
+      "trigger": "Unable to fill essential technical or leadership role for 6+ months",
+      "stakeholders": [
+        "CHRO",
+        "Hiring Manager",
+        "CEO"
+      ],
+      "response": "Recruiting strategy pivot, compensation adjustment, contractor/interim solution",
+      "domain": 6,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 83,
+      "name": "Unionization Campaign",
+      "trigger": "Union begins organizing campaign at non-union facility",
+      "stakeholders": [
+        "CHRO",
+        "CLO",
+        "CEO",
+        "Operations"
+      ],
+      "response": "Labor counsel engagement, supervisor training, employee communication",
+      "domain": 6,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 84,
+      "name": "Workplace Violence Threat",
+      "trigger": "Credible threat of violence from employee or external party",
+      "stakeholders": [
+        "CHRO",
+        "Security",
+        "Facilities",
+        "CLO"
+      ],
+      "response": "Threat assessment, law enforcement notification, protective measures",
+      "domain": 6,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 85,
+      "name": "Employee Misconduct (Senior Leader)",
+      "trigger": "Allegations of harassment, discrimination, or ethical violation by senior leader",
+      "stakeholders": [
+        "CHRO",
+        "CLO",
+        "CEO",
+        "Board"
+      ],
+      "response": "Investigation, suspension, legal counsel, stakeholder communication",
+      "domain": 6,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 86,
+      "name": "Glassdoor/Public Review Crisis",
+      "trigger": "Wave of negative employee reviews damages employer brand",
+      "stakeholders": [
+        "CHRO",
+        "CEO",
+        "Communications"
+      ],
+      "response": "Internal listening, issue remediation, employer brand recovery",
+      "domain": 6,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 87,
+      "name": "Strike or Work Stoppage",
+      "trigger": "Union authorizes strike or employees stage walkout",
+      "stakeholders": [
+        "CHRO",
+        "CLO",
+        "COO",
+        "CEO"
+      ],
+      "response": "Operations continuity, negotiation, employee communication",
+      "domain": 6,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 88,
+      "name": "Diversity & Inclusion Crisis",
+      "trigger": "Public allegations of systemic discrimination or hostile culture",
+      "stakeholders": [
+        "CEO",
+        "CHRO",
+        "D&I Leadership",
+        "Board"
+      ],
+      "response": "Investigation, remediation plan, transparency, stakeholder communication",
+      "domain": 6,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 89,
+      "name": "Negative Investigative Journalism",
+      "trigger": "Major media outlet publishes damaging investigative piece",
+      "stakeholders": [
+        "CEO",
+        "Communications",
+        "CLO"
+      ],
+      "response": "Fact correction, media statement, stakeholder briefing",
+      "domain": 7,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 90,
+      "name": "Social Media Firestorm",
+      "trigger": "Viral negative social media campaign against company",
+      "stakeholders": [
+        "CMO",
+        "Communications",
+        "CEO"
+      ],
+      "response": "Social monitoring, response strategy, influencer engagement",
+      "domain": 7,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 91,
+      "name": "Boycott Campaign",
+      "trigger": "Organized consumer boycott of products/services",
+      "stakeholders": [
+        "CEO",
+        "CMO",
+        "Communications",
+        "Sales"
+      ],
+      "response": "Issue assessment, dialogue, stakeholder engagement, positioning",
+      "domain": 7,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 92,
+      "name": "Executive Personal Scandal",
+      "trigger": "CEO or senior executive personal conduct becomes public scandal",
+      "stakeholders": [
+        "Board",
+        "Communications",
+        "CLO"
+      ],
+      "response": "Executive status assessment, crisis communication, separation if necessary",
+      "domain": 7,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 93,
+      "name": "Misinformation/Fake News Attack",
+      "trigger": "False information about company spreads virally",
+      "stakeholders": [
+        "Communications",
+        "CMO",
+        "CLO"
+      ],
+      "response": "Fact verification, correction campaign, platform notification",
+      "domain": 7,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 94,
+      "name": "Viral Customer Complaint",
+      "trigger": "Customer service failure becomes viral sensation",
+      "stakeholders": [
+        "Customer Success",
+        "Communications",
+        "CEO"
+      ],
+      "response": "Individual resolution, systemic fix, public apology, policy change",
+      "domain": 7,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 95,
+      "name": "Product Recall (Safety)",
+      "trigger": "Product safety issue requires voluntary or mandated recall",
+      "stakeholders": [
+        "COO",
+        "Quality",
+        "CLO",
+        "Communications",
+        "CEO"
+      ],
+      "response": "Recall execution, customer notification, regulatory compliance, replacement program",
+      "domain": 7,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 96,
+      "name": "Service Level Agreement Mass Breach",
+      "trigger": "Widespread SLA violations trigger contractual penalties",
+      "stakeholders": [
+        "COO",
+        "CFO",
+        "Customer Success",
+        "CLO"
+      ],
+      "response": "Customer communication, credit processing, service restoration, root cause",
+      "domain": 7,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 97,
+      "name": "Major Customer Public Criticism",
+      "trigger": "Prominent customer publicly criticizes company/product",
+      "stakeholders": [
+        "CEO",
+        "Sales",
+        "Customer Success",
+        "Communications"
+      ],
+      "response": "Relationship repair, issue resolution, narrative management",
+      "domain": 7,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 98,
+      "name": "ESG Rating Downgrade",
+      "trigger": "Environmental, social, governance rating significantly drops",
+      "stakeholders": [
+        "CEO",
+        "Sustainability",
+        "IR",
+        "Board"
+      ],
+      "response": "Issue remediation, investor communication, ESG improvement plan",
+      "domain": 7,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 99,
+      "name": "Short Seller Report",
+      "trigger": "Short seller publishes research alleging fraud or business problems",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "IR",
+        "CLO",
+        "Board"
+      ],
+      "response": "Fact rebuttal, investor communication, legal assessment",
+      "domain": 7,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 100,
+      "name": "Partner Relationship Termination",
+      "trigger": "Strategic partner publicly ends relationship amid controversy",
+      "stakeholders": [
+        "CEO",
+        "Business Development",
+        "Communications"
+      ],
+      "response": "Relationship salvage attempt, alternative partnerships, market communication",
+      "domain": 7,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 101,
+      "name": "Industry Award/Certification Revocation",
+      "trigger": "Industry body revokes certification, ranking, or award",
+      "stakeholders": [
+        "CEO",
+        "Communications",
+        "Quality/Compliance"
+      ],
+      "response": "Remediation, reinstatement effort, alternative recognition",
+      "domain": 7,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 102,
+      "name": "Recession/Economic Downturn",
+      "trigger": "Economic indicators signal recession, demand collapse anticipated",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "Board",
+        "Business Unit Leads"
+      ],
+      "response": "Cost structure optimization, scenario planning, customer retention focus",
+      "domain": 8,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 103,
+      "name": "Interest Rate Shock",
+      "trigger": "Rapid interest rate increases impact capital costs, customer buying",
+      "stakeholders": [
+        "CFO",
+        "Treasury",
+        "Strategy",
+        "Board"
+      ],
+      "response": "Capital structure adjustment, pricing strategy, demand management",
+      "domain": 8,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 104,
+      "name": "Trade War/Tariff Imposition",
+      "trigger": "New tariffs or trade restrictions impact supply chain or markets",
+      "stakeholders": [
+        "CFO",
+        "COO",
+        "Trade Compliance",
+        "Strategy"
+      ],
+      "response": "Supply chain adjustment, pricing strategy, geographic diversification",
+      "domain": 8,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 105,
+      "name": "AI/Automation Disrupts Business Model",
+      "trigger": "AI technology enables competitors to deliver service at fraction of cost",
+      "stakeholders": [
+        "CEO",
+        "CTO",
+        "Strategy",
+        "Board"
+      ],
+      "response": "Technology adoption, business model evolution, workforce transition",
+      "domain": 8,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 106,
+      "name": "Platform Shift (Cloud, Mobile, etc.)",
+      "trigger": "Market rapidly adopts new platform, rendering current approach obsolete",
+      "stakeholders": [
+        "CTO",
+        "CPO",
+        "Strategy"
+      ],
+      "response": "Platform migration, product roadmap pivot, go-to-market adjustment",
+      "domain": 8,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 107,
+      "name": "Disintermediation Threat",
+      "trigger": "Technology enables customers to bypass your value chain position",
+      "stakeholders": [
+        "CEO",
+        "Strategy",
+        "Product"
+      ],
+      "response": "Value proposition evolution, direct channel, business model innovation",
+      "domain": 8,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 108,
+      "name": "New Regulation Impacts Business Model",
+      "trigger": "New law or regulation makes current business model illegal or uneconomical",
+      "stakeholders": [
+        "CEO",
+        "CLO",
+        "Strategy",
+        "Board"
+      ],
+      "response": "Compliance strategy, business model adaptation, advocacy/lobbying",
+      "domain": 8,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 109,
+      "name": "Geographic Market Regulatory Change",
+      "trigger": "Key market implements regulations restricting operations",
+      "stakeholders": [
+        "CEO",
+        "CLO",
+        "Geographic GM",
+        "Strategy"
+      ],
+      "response": "Compliance assessment, market exit/adaptation, geographic diversification",
+      "domain": 8,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 110,
+      "name": "Industry Consolidation Wave",
+      "trigger": "Multiple competitors merge, fundamentally changing industry structure",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "Strategy",
+        "Board"
+      ],
+      "response": "Strategic positioning, M&A consideration, partnership strategy",
+      "domain": 8,
+      "frequency": "rare",
+      "budget": 1500000
+    },
+    {
+      "number": 145,
+      "name": "Strategic Market Entry - Multi-Brand Launch",
+      "trigger": "Major market rebound creates strategic window for simultaneous multi-brand expansion",
+      "stakeholders": [
+        "CEO",
+        "CMO",
+        "CFO",
+        "Geographic GM",
+        "Strategy"
+      ],
+      "response": "Coordinate 10+ brand launches across multiple cities, retail real estate activation, capital deployment, Golden Week timing",
+      "domain": 8,
+      "frequency": "rare",
+      "budget": 50000000
+    },
+    {
+      "number": 146,
+      "name": "Trend Capitalization - Viral Fashion Response",
+      "trigger": "Viral social media trend (47M+ views) with 21-day lifecycle and $180M+ revenue potential detected",
+      "stakeholders": [
+        "CEO",
+        "CMO",
+        "CPO",
+        "Supply Chain",
+        "Strategy"
+      ],
+      "response": "Coordinate 5000+ suppliers, design 200 SKUs, launch in 7 days to capture 65% market share before competitors",
+      "domain": 8,
+      "frequency": "medium",
+      "budget": 15000000
+    },
+    {
+      "number": 155,
+      "name": "Launch Schedule Acceleration",
+      "trigger": "Favorable orbital window opens 3 days early with vacant slot from competitor delay",
+      "stakeholders": [
+        "CEO",
+        "CTO",
+        "COO",
+        "Government Relations",
+        "Mission Control"
+      ],
+      "response": "Accelerate launch by 72 hours, coordinate FAA/Space Force approvals, payload preparation, ground operations",
+      "domain": 8,
+      "frequency": "rare",
+      "budget": 5000000
+    },
+    {
+      "number": 115,
+      "name": "SWIFT/Payment System Disruption",
+      "trigger": "International payment rails fail or experience cyberattack",
+      "stakeholders": [
+        "CFO",
+        "Treasury",
+        "Fed Relations",
+        "Corporate Clients"
+      ],
+      "response": "Alternative payment routing, Fed coordination, customer notification, transaction recovery",
+      "domain": 3,
+      "frequency": "rare",
+      "budget": 10000000
+    },
+    {
+      "number": 116,
+      "name": "Algorithmic Trading Malfunction",
+      "trigger": "Trading algorithm goes rogue or executes unauthorized trades",
+      "stakeholders": [
+        "CTO",
+        "CFO",
+        "Trading Desk",
+        "Compliance",
+        "SEC"
+      ],
+      "response": "Circuit breaker activation, market maker notifications, regulatory filing, client protection",
+      "domain": 3,
+      "frequency": "medium",
+      "budget": 5000000
+    },
+    {
+      "number": 117,
+      "name": "Liquidity Crisis / Bank Run",
+      "trigger": "Bank run begins (digital or physical) threatening solvency",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "Fed",
+        "FDIC",
+        "Board"
+      ],
+      "response": "Fed liquidity line activation, customer reassurance, regulatory coordination, media management",
+      "domain": 3,
+      "frequency": "rare",
+      "budget": 50000000
+    },
+    {
+      "number": 118,
+      "name": "Correspondent Bank Failure",
+      "trigger": "Key banking partner collapses or ceases operations",
+      "stakeholders": [
+        "CFO",
+        "Treasury",
+        "Operations",
+        "Corporate Clients"
+      ],
+      "response": "Payment rerouting, alternative correspondent activation, client notification, transaction continuity",
+      "domain": 3,
+      "frequency": "rare",
+      "budget": 3000000
+    },
+    {
+      "number": 119,
+      "name": "Crypto/Digital Asset Incident",
+      "trigger": "Digital custody breach or crypto platform failure",
+      "stakeholders": [
+        "CTO",
+        "CFO",
+        "Compliance",
+        "SEC",
+        "Crypto Forensics"
+      ],
+      "response": "Blockchain forensics, regulatory notification, customer protection, insurance claim",
+      "domain": 5,
+      "frequency": "medium",
+      "budget": 8000000
+    },
+    {
+      "number": 125,
+      "name": "Tier 2 Supplier Cascade Failure",
+      "trigger": "Supplier's supplier fails, invisible to OEM until production halt",
+      "stakeholders": [
+        "COO",
+        "Procurement",
+        "Engineering",
+        "Manufacturing"
+      ],
+      "response": "Supply chain mapping, alternative sourcing, production prioritization, customer allocation",
+      "domain": 2,
+      "frequency": "medium",
+      "budget": 5000000
+    },
+    {
+      "number": 126,
+      "name": "Critical Tooling Failure",
+      "trigger": "Specialized manufacturing equipment breaks with long lead time for replacement",
+      "stakeholders": [
+        "COO",
+        "Manufacturing",
+        "Engineering",
+        "Finance"
+      ],
+      "response": "Production rerouting, emergency tooling procurement, capacity reallocation, delivery delays",
+      "domain": 2,
+      "frequency": "medium",
+      "budget": 3000000
+    },
+    {
+      "number": 127,
+      "name": "Labor Strike/Walkout",
+      "trigger": "UAW or key facility workers strike, halting production",
+      "stakeholders": [
+        "CEO",
+        "CHRO",
+        "COO",
+        "Legal",
+        "PR"
+      ],
+      "response": "Negotiation strategy, production continuity, alternative facilities, customer communication",
+      "domain": 6,
+      "frequency": "medium",
+      "budget": 10000000
+    },
+    {
+      "number": 128,
+      "name": "Commodity Price Spike",
+      "trigger": "Steel, aluminum, or critical commodity prices surge 40%+ overnight",
+      "stakeholders": [
+        "CFO",
+        "COO",
+        "Procurement",
+        "Pricing"
+      ],
+      "response": "Hedging strategy, pricing adjustment, supplier renegotiation, margin protection",
+      "domain": 3,
+      "frequency": "medium",
+      "budget": 2000000
+    },
+    {
+      "number": 129,
+      "name": "Sustainability/ESG Crisis",
+      "trigger": "Environmental audit finds violations or sustainability commitments at risk",
+      "stakeholders": [
+        "CEO",
+        "Sustainability",
+        "Legal",
+        "PR",
+        "Board"
+      ],
+      "response": "Compliance remediation, stakeholder communication, sustainability program overhaul, reporting",
+      "domain": 7,
+      "frequency": "medium",
+      "budget": 4000000
+    },
+    {
+      "number": 135,
+      "name": "Pipeline Rupture/Environmental Release",
+      "trigger": "Oil spill, gas leak, or major environmental contamination event",
+      "stakeholders": [
+        "CEO",
+        "Safety",
+        "EPA",
+        "State Regulators",
+        "Emergency Response"
+      ],
+      "response": "Emergency containment, evacuation coordination, regulatory notification, cleanup mobilization",
+      "domain": 2,
+      "frequency": "rare",
+      "budget": 50000000
+    },
+    {
+      "number": 136,
+      "name": "Renewable Integration Failure",
+      "trigger": "Wind/solar integration causes grid instability or cascading failures",
+      "stakeholders": [
+        "CTO",
+        "Grid Operations",
+        "NERC",
+        "State Regulators"
+      ],
+      "response": "Load balancing, backup generation activation, grid stabilization, regulatory coordination",
+      "domain": 5,
+      "frequency": "medium",
+      "budget": 5000000
+    },
+    {
+      "number": 137,
+      "name": "Commodity Trading Desk Rogue Trader",
+      "trigger": "Trader exceeds limits causing massive losses or market manipulation",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "Legal",
+        "CFTC",
+        "Board"
+      ],
+      "response": "Position liquidation, regulatory self-reporting, internal investigation, market stabilization",
+      "domain": 3,
+      "frequency": "rare",
+      "budget": 25000000
+    },
+    {
+      "number": 138,
+      "name": "Major Customer Bankruptcy",
+      "trigger": "Largest industrial customer files Chapter 11, threatening revenue",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "Sales",
+        "Legal",
+        "Credit"
+      ],
+      "response": "Credit protection, alternative customer development, capacity reallocation, financial hedging",
+      "domain": 3,
+      "frequency": "medium",
+      "budget": 3000000
+    },
+    {
+      "number": 139,
+      "name": "Climate Protest/Facility Occupation",
+      "trigger": "Activists block operations or occupy facilities",
+      "stakeholders": [
+        "CEO",
+        "Security",
+        "Legal",
+        "PR",
+        "Local Authorities"
+      ],
+      "response": "Safety protocols, legal action, stakeholder communication, operational continuity",
+      "domain": 7,
+      "frequency": "medium",
+      "budget": 2000000
+    },
+    {
+      "number": 140,
+      "name": "API Deprecation Crisis",
+      "trigger": "Breaking API change affects major customers, causing integration failures",
+      "stakeholders": [
+        "CTO",
+        "Product",
+        "Customer Success",
+        "Engineering"
+      ],
+      "response": "Rollback decision, migration support, customer communication, compatibility fixes",
+      "domain": 5,
+      "frequency": "medium",
+      "budget": 2000000
+    },
+    {
+      "number": 141,
+      "name": "Viral Bug/Feature Backfire",
+      "trigger": "New feature causes user outrage or viral negative reaction",
+      "stakeholders": [
+        "CEO",
+        "CPO",
+        "Engineering",
+        "PR",
+        "Customer Success"
+      ],
+      "response": "Feature rollback, user communication, damage control, product adjustment",
+      "domain": 7,
+      "frequency": "medium",
+      "budget": 1000000
+    },
+    {
+      "number": 142,
+      "name": "Acquisition Integration Failure",
+      "trigger": "M&A integration goes wrong, customers fleeing, culture clash",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "CHRO",
+        "Integration Lead",
+        "Board"
+      ],
+      "response": "Customer retention, culture intervention, integration reset, stakeholder management",
+      "domain": 1,
+      "frequency": "rare",
+      "budget": 15000000
+    },
+    {
+      "number": 143,
+      "name": "Developer Exodus",
+      "trigger": "Key engineers quit en masse, threatening product roadmap",
+      "stakeholders": [
+        "CEO",
+        "CTO",
+        "CHRO",
+        "Engineering Leads"
+      ],
+      "response": "Retention campaign, hiring acceleration, roadmap adjustment, knowledge transfer",
+      "domain": 6,
+      "frequency": "medium",
+      "budget": 5000000
+    },
+    {
+      "number": 144,
+      "name": "Open Source Controversy",
+      "trigger": "OSS community revolts against licensing change or corporate action",
+      "stakeholders": [
+        "CEO",
+        "CTO",
+        "Legal",
+        "PR",
+        "Community Relations"
+      ],
+      "response": "Community engagement, licensing clarification, relationship repair, fork management",
+      "domain": 7,
+      "frequency": "rare",
+      "budget": 2000000
+    },
+    {
+      "number": 147,
+      "name": "Strategic Partnership Formation",
+      "trigger": "Major partnership opportunity requires rapid joint venture or alliance formation",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "Strategy",
+        "Legal",
+        "Board"
+      ],
+      "response": "Deal structuring, due diligence, legal documentation, integration planning, announcement coordination",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 5000000
+    },
+    {
+      "number": 148,
+      "name": "Competitive Acquisition",
+      "trigger": "Opportunity to acquire competitor and consolidate market position",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "Strategy",
+        "Board",
+        "M&A Advisors"
+      ],
+      "response": "Acquisition strategy, valuation, financing, regulatory approval, integration planning",
+      "domain": 1,
+      "frequency": "rare",
+      "budget": 100000000
+    },
+    {
+      "number": 149,
+      "name": "Aggressive Price Disruption (Offensive)",
+      "trigger": "Strategic decision to undercut market and gain share through pricing",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "CMO",
+        "Sales",
+        "Strategy"
+      ],
+      "response": "Pricing strategy rollout, competitive messaging, sales enablement, margin management",
+      "domain": 1,
+      "frequency": "medium",
+      "budget": 3000000
+    },
+    {
+      "number": 150,
+      "name": "Strategic Fundraising (IPO/Series)",
+      "trigger": "Market window opens for major fundraising round or IPO",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "Board",
+        "Investment Banks",
+        "Legal"
+      ],
+      "response": "Roadshow coordination, financial preparation, regulatory filing, investor relations, media strategy",
+      "domain": 3,
+      "frequency": "rare",
+      "budget": 10000000
+    },
+    {
+      "number": 151,
+      "name": "M&A Target Acquisition (Offensive)",
+      "trigger": "Perfect acquisition target becomes available, need to move in 48 hours",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "Strategy",
+        "Board",
+        "M&A Team"
+      ],
+      "response": "Rapid due diligence, offer preparation, financing activation, exclusivity negotiation",
+      "domain": 3,
+      "frequency": "rare",
+      "budget": 50000000
+    },
+    {
+      "number": 152,
+      "name": "Market Timing Play",
+      "trigger": "Market conditions perfect for bold strategic move (expansion, pivot, launch)",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "Strategy",
+        "Board",
+        "Operations"
+      ],
+      "response": "Strategic execution, capital deployment, operational scaling, market positioning",
+      "domain": 8,
+      "frequency": "rare",
+      "budget": 20000000
+    },
+    {
+      "number": 153,
+      "name": "Portfolio Rebalancing",
+      "trigger": "Strategic decision to divest underperformers and double down on winners",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "Strategy",
+        "Board",
+        "Business Unit Leads"
+      ],
+      "response": "Divestiture execution, capital reallocation, organizational restructuring, stakeholder communication",
+      "domain": 3,
+      "frequency": "medium",
+      "budget": 15000000
+    },
+    {
+      "number": 154,
+      "name": "Platform Migration (Offensive)",
+      "trigger": "Strategic decision to migrate to new tech stack with coordinated cutover",
+      "stakeholders": [
+        "CTO",
+        "Engineering",
+        "Product",
+        "Customer Success",
+        "Operations"
+      ],
+      "response": "Migration planning, customer communication, parallel operations, cutover execution, rollback readiness",
+      "domain": 5,
+      "frequency": "medium",
+      "budget": 8000000
+    },
+    {
+      "number": 156,
+      "name": "API Ecosystem Expansion",
+      "trigger": "Strategic decision to open platform to developers and partners",
+      "stakeholders": [
+        "CTO",
+        "Product",
+        "Business Development",
+        "Legal",
+        "Developer Relations"
+      ],
+      "response": "API launch, developer documentation, partnership onboarding, ecosystem management",
+      "domain": 5,
+      "frequency": "medium",
+      "budget": 5000000
+    },
+    {
+      "number": 157,
+      "name": "Technical Standard Setting",
+      "trigger": "Opportunity to establish industry standard or protocol adoption",
+      "stakeholders": [
+        "CTO",
+        "Strategy",
+        "Standards Team",
+        "Legal",
+        "Industry Relations"
+      ],
+      "response": "Coalition building, standards participation, interoperability strategy, adoption campaign",
+      "domain": 5,
+      "frequency": "rare",
+      "budget": 3000000
+    },
+    {
+      "number": 158,
+      "name": "Acquisition Target Emerges",
+      "trigger": "Perfect company suddenly available for acquisition",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "Strategy",
+        "Board",
+        "M&A Advisors"
+      ],
+      "response": "Rapid assessment, offer preparation, financing, due diligence, negotiation",
+      "domain": 8,
+      "frequency": "rare",
+      "budget": 75000000
+    },
+    {
+      "number": 159,
+      "name": "Regulatory Change Opens Market",
+      "trigger": "New law or regulation creates market opportunity",
+      "stakeholders": [
+        "CEO",
+        "Strategy",
+        "Legal",
+        "Business Development",
+        "Operations"
+      ],
+      "response": "Market entry strategy, regulatory compliance, competitive positioning, go-to-market execution",
+      "domain": 8,
+      "frequency": "medium",
+      "budget": 10000000
+    },
+    {
+      "number": 160,
+      "name": "Competitor Weakness Exploitation",
+      "trigger": "Rival stumbles, opportunity to steal market share",
+      "stakeholders": [
+        "CEO",
+        "CMO",
+        "Sales",
+        "Product",
+        "Strategy"
+      ],
+      "response": "Competitive campaign, customer acquisition, messaging offensive, market capture",
+      "domain": 8,
+      "frequency": "medium",
+      "budget": 5000000
+    },
+    {
+      "number": 161,
+      "name": "Technology Breakthrough Deployment",
+      "trigger": "Internal innovation ready to deploy, first-mover advantage available",
+      "stakeholders": [
+        "CEO",
+        "CTO",
+        "Product",
+        "Marketing",
+        "Engineering"
+      ],
+      "response": "Launch coordination, IP protection, market positioning, customer onboarding, competitive defense",
+      "domain": 8,
+      "frequency": "rare",
+      "budget": 12000000
+    },
+    {
+      "number": 162,
+      "name": "Strategic Alliance Opportunity",
+      "trigger": "Partnership offer from major player requiring rapid decision",
+      "stakeholders": [
+        "CEO",
+        "CFO",
+        "Strategy",
+        "Legal",
+        "Board"
+      ],
+      "response": "Partnership evaluation, deal structuring, integration planning, announcement coordination",
+      "domain": 8,
+      "frequency": "medium",
+      "budget": 8000000
+    }
+  ],
+  "total": 148
+}

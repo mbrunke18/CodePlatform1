@@ -1,0 +1,130 @@
+I want to build a web app that should take into consideration all details provided below, please create the complete web app for me including front end and back end code, database setup if necessary and deployment instructions so I can host the app online.  
+
+Assume I have no coding experience, and you are to act as a senior developer with strong UI/UX experience eand  Generate the code, explain how to run it, and recommend beginner friendly tools for editing and deploying the app.
+
+Purpose:
+Build an enterprise web app that provides executives the ability to make strategic decisions around change management situations, where the end use can identify critical situations, ability to customize what if analysis situations and develop prepared response plans, roadmaps, and execution plans for each scenario along with analytics, track progress and provide oversight.  This stems from an approach NFL and elite college football coaches use to make critical decisions in less than minute. They prepare for every and all situations and scenarios they may face and create a playbook to execute from if and when a situation arises.  They practice the plays so they can execute with the right work, roles and team members to deliver upon. There is more to it than what I’ve shared but it’s the basis for this web app
+
+
+Key design and layout consideration:
+	1. Home page
+	2. Executive Dashboard
+	3. Situation Page
+	4. What if scenario page
+	5. Prepared Response page
+	6. Implementation page
+	7. Go / Execution plan page
+
+Key situations to have built in to web app:
+	Executive directors face a broad range of decision making around change management scenarios, each 			requiring tailored approaches to ensure success. These situations  often arise due to shifts in strategy, market demands, organizational goals, or external forces. Here’s a comprehensive overview:
+1. Mergers and Acquisitions (M&A)
+* Integrating two or more organizational cultures.
+* Aligning leadership, processes, and technology.
+* Retaining critical talent and managing redundancies.
+* Reassuring stakeholders and mitigating resistance to change.
+2. Digital Transformation
+* Adopting new technologies to streamline operations.
+* Redefining business models to embrace innovation.
+* Upskilling or reskilling employees for digital tools.
+* Ensuring system integration without disrupting operations.
+3. Strategic Realignments
+* Revisiting organizational vision, mission, and goals.
+* Changing priorities to stay competitive.
+* Streamlining operations and eliminating inefficiencies.
+* Engaging employees to support new strategic directions.
+4. Organizational Restructuring
+* Downsizing, rightsizing, or expanding workforce.
+* Flattening hierarchies or creating new organizational structures.
+* Clarifying roles and responsibilities during transitions.
+* Managing morale and preventing disengagement.
+5. Process Improvement and Efficiency Initiatives
+* Redesigning workflows for higher productivity.
+* Implementing Lean, Six Sigma, or Agile methodologies.
+* Monitoring progress and sustaining improvements.
+* Overcoming resistance to changes in routines.
+6. Cultural Transformation
+* Shifting towards collaboration, inclusion, or innovation.
+* Addressing diversity, equity, and inclusion gaps.
+* Combatting entrenched behaviors and mindsets.
+* Reinforcing desired behaviors through leadership modeling.
+7. Compliance and Regulatory Changes
+* Adapting to new laws, regulations, or industry standards.
+* Training employees to meet compliance expectations.
+* Auditing and revising policies, procedures, and systems.
+* Managing risks associated with non-compliance.
+8. Crisis or Risk Management
+* Addressing economic downturns or market instability.
+* Managing PR crises or brand reputation recovery.
+* Responding to cyberattacks or data breaches.
+* Maintaining employee engagement during uncertain times.
+9. Workforce Transformations
+* Adapting to hybrid or remote work environments.
+* Building skills for emerging roles and industries.
+* Managing generational shifts in the workforce.
+* Retaining institutional knowledge as older employees retire.
+10. Project Portfolio Reprioritization
+* Allocating resources to the most critical initiatives.
+* Reassessing projects based on new strategic goals.
+* Balancing innovation with operational stability.
+* Managing stakeholders impacted by shifting priorities.
+11. Globalization and Market Expansion
+* Adapting operations to new regions or markets.
+* Navigating cultural and regulatory differences.
+* Scaling infrastructure to meet global demands.
+* Addressing supply chain and logistical challenges.
+12. Sustainability and ESG Initiatives
+* Reducing environmental impact through operational changes.
+* Adopting socially responsible practices.
+* Meeting stakeholder demands for transparency and accountability.
+* Measuring and communicating progress on ESG goals.
+Each scenario requires a structured framework focusing on strategy alignment, communication, resource planning, and adaptability to navigate complexities and ensure sustainable outcomes.
+
+
+	For each situation, consider specific details around:
+		Triggers and thresholds
+		Impact levels and probability scores
+		Key metrics and KPIs to monitor
+		Required resources and capabilities
+Data Integration & Monitoring System
+		Establish data collection mechanisms for trigger indicators
+		Create dashboards for real-time monitoring	
+		Set up automated alerts when triggers reach warning levels
+		Integrate with existing business intelligence tools
+Response Planning
+	Develop detailed execution plans for each scenario
+	Create resource allocation models
+		Define clear roles and responsibilities
+		Establish communication protocols
+		Document dependencies between scenarios	
+
+
+Key features or functionality:
+	-Mock data for all 12 situations
+	-Form for user to conduct what if scenario analysis to use for potential situational prepared response plans
+	-Forms for user to engage and build prepared response plans
+	-forms for user to build road maps and game plans
+	-forms for user to build execution plans
+	-specific data fields for each scenario that are relevant and of value towards decision making and all of the 		forms listed above
+	-Analytics and reporting (possible page dedicated if makes sense)
+
+	ExecutiveDashboard with overview metrics
+	ScenarioManagement with CRUD operations
+	Basic scenario creation/editing
+	Risk level indicators
+	Status tracking
+	UI components (Tabs, Cards)
+	Planned Features
+	WhatIf Analysis engine
+	Implementation Planning module
+	Full execution tracking
+	Resource management
+	Timeline visualization
+	Risk assessment tools
+	Stakeholder management
+	Detailed metrics & analytics
+	
+1. Core Features • Situation Analysis Module o SWOT Analysis Tool: Interactive templates for conducting SWOT analyses. o Stakeholder Input: Surveys and feedback forms to gather insights from employees and stakeholders. o Data Visualization: Dashboards to present key performance metrics and market research findings. • Prioritization Tool o Prioritization Matrix: An interface for ranking initiatives based on impact, feasibility, and strategic alignment. o Impact Assessment: Tools to evaluate potential outcomes of proposed changes. • Resource Management o Team Structure Assessment: Features to map current team roles and skills. o Resource Allocation: Tools for realigning responsibilities and tracking team member assignments. o Training Module: Resources and training management for skill development. • Prepared Responses o Response Planning Templates: Standardized templates for developing strategies and action plans. o Risk Assessment Tools: Functionality to identify and evaluate potential risks associated with changes. • Implementation Tracker o Action Plan Dashboard: Visual project management tools (e.g., Gantt charts) to monitor implementation timelines. o Real-Time Updates: Notifications and updates for team members on progress and milestones. • Feedback and Evaluation o Success Metrics Tracking: Ability to set and monitor KPIs to evaluate the effectiveness of changes. o Feedback Collection: Tools for continuous feedback from users post-implementation. 
+2. User Roles and Access • Admin: Oversee the entire platform, manage user roles, and configure settings. • Managers: Create and manage initiatives, access analytics, and generate reports. • Team Members: Input data, track progress, and provide feedback. 
+3. Integration Capabilities • APIs for Existing Tools: Integration with other software (e.g., project management tools, HR systems) for seamless data flow. • Data Import/Export: Capabilities to import existing data and export reports. 
+4. Deployment Options • Cloud-Based Solution: Accessible from anywhere, supporting remote teams. • On-Premise Option: For organizations that prefer to host the software internally. 
+5. Benefits for Organizations • Structured Approach: Streamlines the change management process using the SPRING framework. • Improved Communication: Facilitates better communication and collaboration among stakeholders. • Enhanced Agility: Enables organizations to respond swiftly to changes and challenges.

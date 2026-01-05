@@ -1,0 +1,772 @@
+These files configure the Replit environment.
+
+./.replit
+
+This file tells Replit how to run the project.
+
+# .replit
+language = "typescript"
+entrypoint = "server/index.ts"
+run = "npm run dev"
+
+[nix]
+channel = "stable-23_11"
+./replit.nix
+
+This file installs all necessary system packages, including Node.js and the PostgreSQL client for database commands.
+
+Nix
+# replit.nix
+{ pkgs }: {
+  deps = [
+    pkgs.nodejs_20
+    pkgs.nodePackages.typescript-language-server
+    pkgs.postgresql
+    pkgs.nodePackages.pnpm
+  ];
+}
+📦 Root Directory
+./package.json
+
+JSON
+{
+  "name": "veridius-platform-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "postinstall": "npm install --workspaces",
+    "dev": "npm run dev --workspace=server",
+    "build": "npm run build --workspace=client",
+    "start": "npm start --workspace=server",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "db:seed": "tsx scripts/seed.ts",
+    "lint": "eslint . --ext .ts,.tsx",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.23.0",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.3",
+    "uuid": "^10.0.0"
+  }
+}
+./README.md
+
+Markdown
+# Veridius Platform - Replit Deployment
+
+This is the complete code for the Veridius Enterprise Agility Operating System, configured for Replit.
+
+## 🚀 How to Run
+
+1.  **Configure Secrets**:
+    * Go to the "Secrets" tab in the left sidebar.
+    * Add a secret for `DATABASE_URL` with your PostgreSQL connection string.
+    * Add a secret for `SESSION_SECRET` with a long, random string.
+
+2.  **Install Dependencies**:
+    * The project should install dependencies automatically when you open it. If not, open the "Shell" tab and run `npm install`.
+
+3.  **Prepare the Database**:
+    * Open the "Shell" tab and run the following commands one by one:
+        ```bash
+        npm run db:push
+        npm run db:seed
+        ```
+
+4.  **Run the Application**:
+    * Click the big "Run ▶" button at the top.
+    * A webview will open with the running application.
+
+##  Journey
+
+1.  **Sign Up** for a new account.
+2.  **Assign a Role**: Use the "Shell" to run `npm run db:studio`. In the Drizzle Studio, manually assign a `roleId` to your new user (copy it from the `roles` table).
+3.  **Log In** and explore the platform!
+./scripts/seed.ts
+
+TypeScript
+import 'dotenv/config';
+import { db } from '../server/db.js';
+import { roles, permissions, rolePermissions } from '../shared/schema.js';
+
+async function seed() {
+    console.log('🌱 Starting database seed...');
+    await db.delete(rolePermissions);
+    await db.delete(roles);
+    await db.delete(permissions);
+
+    // 1. Create Permissions
+    const p = await db.insert(permissions).values([
+        { action: 'create_organization', description: 'Allows user to create a new organization.' },
+        { action: 'create_scenario', description: 'Allows user to create a strategic scenario.' },
+        { action: 'view_users', description: 'Allows user to view all users in the system.' },
+    ]).returning();
+
+    // 2. Create Roles
+    const r = await db.insert(roles).values([
+        { name: 'Admin' },
+        { name: 'Executive' },
+        { name: 'Analyst' },
+    ]).returning();
+
+    // 3. Assign Permissions to Roles
+    const adminRole = r.find(role => role.name === 'Admin');
+    const execRole = r.find(role => role.name === 'Executive');
+
+    if (adminRole && execRole) {
+      const adminPermissions = p.map(perm => perm.id);
+      const execPermissions = p.filter(perm => perm.action !== 'view_users').map(perm => perm.id);
+
+      await db.insert(rolePermissions).values(
+          adminPermissions.map(permId => ({ roleId: adminRole.id, permissionId: permId }))
+      );
+      await db.insert(rolePermissions).values(
+          execPermissions.map(permId => ({ roleId: execRole.id, permissionId: permId }))
+      );
+    }
+    
+    console.log('\n✅ Seed complete!');
+    console.log('🚀 IMPORTANT: After you sign up, manually assign a `roleId` to your user in the database to enable permissions.');
+    process.exit(0);
+}
+
+seed().catch((e) => {
+    console.error('❌ Seed failed:', e);
+    process.exit(1);
+});
+🔗 Shared Directory
+./shared/schema.ts
+
+TypeScript
+import { pgTable, text, timestamp, uuid, varchar, primaryKey } from 'drizzle-orm/pg-core';
+
+// --- Core Tables ---
+export const users = pgTable('users', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  email: varchar('email', { length: 255 }).unique().notNull(),
+  name: varchar('name', { length: 255 }),
+  passwordHash: text('password_hash').notNull(),
+  roleId: uuid('role_id').references(() => roles.id),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+export const organizations = pgTable('organizations', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  name: varchar('name', { length: 255 }).notNull(),
+  ownerId: uuid('owner_id').references(() => users.id).notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+export const strategicScenarios = pgTable('strategic_scenarios', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  title: varchar('title', { length: 255 }).notNull(),
+  description: text('description'),
+  createdBy: uuid('user_id').references(() => users.id).notNull(),
+  organizationId: uuid('organization_id').references(() => organizations.id).notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+export const tasks = pgTable('tasks', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  scenarioId: uuid('scenario_id').references(() => strategicScenarios.id).notNull(),
+  description: text('description').notNull(),
+  priority: varchar('priority', { length: 50 }),
+  status: varchar('status', { length: 50 }).default('To Do'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+// --- RBAC Tables ---
+export const roles = pgTable('roles', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  name: varchar('name', { length: 50 }).unique().notNull(),
+});
+
+export const permissions = pgTable('permissions', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  action: varchar('action', { length: 50 }).unique().notNull(),
+  description: text('description'),
+});
+
+export const rolePermissions = pgTable('role_permissions', {
+    roleId: uuid('role_id').references(() => roles.id, { onDelete: 'cascade' }).notNull(),
+    permissionId: uuid('permission_id').references(() => permissions.id, { onDelete: 'cascade' }).notNull(),
+  }, (table) => {
+    return {
+      pk: primaryKey({ columns: [table.roleId, table.permissionId] }),
+    }
+  }
+);
+
+// --- System Tables ---
+export const sessionStorage = pgTable("session_storage", {
+	sid: varchar("sid", { length: 255 }).primaryKey(),
+	sess: text("sess").notNull(),
+	expire: timestamp("expire", { mode: 'date' }).notNull(),
+});
+🏗️ Server Directory
+./server/package.json
+
+JSON
+{
+  "name": "server",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "NODE_ENV=development tsx watch index.ts",
+    "start": "NODE_ENV=production node dist/index.js",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.0",
+    "bcrypt": "^5.1.1",
+    "connect-pg-simple": "^9.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.33.0",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "helmet": "^7.1.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "ws": "^8.18.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/connect-pg-simple": "^7.0.3",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/express-session": "^1.18.0",
+    "@types/node": "^20.14.9",
+    "@types/passport": "^1.0.16",
+    "@types/passport-local": "^1.0.38",
+    "@types/ws": "^8.5.10"
+  }
+}
+./server/index.ts
+
+TypeScript
+import 'dotenv/config';
+import express from 'express';
+import http from 'http';
+import { WebSocketServer } from 'ws';
+import session from 'express-session';
+import ConnectPgSimple from 'connect-pg-simple';
+import cors from 'cors';
+import helmet from 'helmet';
+import passport from 'passport';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+import { pool } from './db.js';
+import apiRoutes from './routes.js';
+import './auth.js';
+import { initializeWorkers } from './worker.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+const server = http.createServer(app);
+const PORT = process.env.PORT || 3000;
+const PgSession = ConnectPgSimple(session);
+
+const wss = new WebSocketServer({ server, path: '/ws' });
+app.set('wss', wss);
+
+const userConnections = new Map();
+
+// --- Enterprise Middleware Stack ---
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+      "script-src": ["'self'", "'unsafe-inline'"],
+      "connect-src": ["'self'", "wss:", "ws:"],
+    },
+  },
+}));
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
+app.use(express.json({ limit: '10mb' }));
+
+const sessionMiddleware = session({
+  store: new PgSession({
+    pool: pool,
+    tableName: 'session_storage'
+  }),
+  secret: process.env.SESSION_SECRET!,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    httpOnly: true,
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+  }
+});
+
+app.use(sessionMiddleware);
+app.use(passport.initialize());
+app.use(passport.session());
+
+// --- API Routes ---
+app.use('/api', apiRoutes);
+
+// --- Serve Frontend ---
+const clientPath = path.join(__dirname, '..', 'client', 'dist');
+app.use(express.static(clientPath));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(clientPath, 'index.html'));
+});
+
+
+// --- WebSocket for Real-time Features ---
+wss.on('connection', (ws, req) => {
+    const sessionCookie = req.headers.cookie;
+    if (sessionCookie) {
+      // Re-use session parser
+      // @ts-ignore
+      sessionMiddleware(req, {}, () => {
+        // @ts-ignore
+        const userId = req.session?.passport?.user;
+        if (userId) {
+          userConnections.set(userId, ws);
+          console.log(`User ${userId} connected and mapped for real-time updates.`);
+        }
+
+        ws.on('close', () => {
+          if (userId) {
+            userConnections.delete(userId);
+            console.log(`User ${userId} disconnected.`);
+          }
+        });
+      });
+    }
+});
+
+
+initializeWorkers(wss, userConnections);
+
+// --- Start Server ---
+server.listen(PORT, () => {
+  console.log(`🚀 Veridius server running on http://localhost:${PORT}`);
+});
+./server/db.ts
+
+TypeScript
+import { Pool } from 'pg';
+import { drizzle } from 'drizzle-orm/node-postgres';
+import * as schema from '../shared/schema.js';
+
+if (!process.env.DATABASE_URL) {
+  throw new Error('DATABASE_URL environment variable is not set');
+}
+
+export const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
+
+export const db = drizzle(pool, { schema });
+./server/routes.ts
+
+TypeScript
+import { Router } from 'express';
+import passport from 'passport';
+import bcrypt from 'bcrypt';
+import { db } from './db.js';
+import { organizations, users, strategicScenarios, tasks } from '../shared/schema.js';
+import { isAuthenticated, hasPermission } from './auth.js';
+import { AIEngine } from './ai.js';
+import { publish } from './queue.js';
+
+const router = Router();
+const saltRounds = 10;
+
+// --- Authentication Routes ---
+router.post('/auth/signup', async (req, res, next) => {
+  const { email, password, name } = req.body;
+  if (!email || !password || !name) {
+    return res.status(400).json({ message: 'All fields are required.' });
+  }
+
+  try {
+    const passwordHash = await bcrypt.hash(password, saltRounds);
+    const newUser = await db.insert(users).values({ email, name, passwordHash }).returning({
+      id: users.id, email: users.email, name: users.name
+    });
+    res.status(201).json(newUser[0]);
+  } catch (err) {
+    res.status(500).json({ message: 'Error creating user. Email may already exist.' });
+  }
+});
+
+router.post('/auth/login', passport.authenticate('local'), (req, res) => {
+  const user = req.user as any;
+  res.json({ id: user.id, email: user.email, name: user.name });
+});
+
+router.post('/auth/logout', (req, res, next) => {
+  req.logout((err) => {
+    if (err) { return next(err); }
+    req.session.destroy(() => {
+        res.clearCookie('connect.sid');
+        res.json({ message: 'Logged out successfully.' });
+    });
+  });
+});
+
+router.get('/auth/user', (req, res) => {
+  if (req.isAuthenticated()) {
+    const user = req.user as any;
+    res.json({ id: user.id, email: user.email, name: user.name });
+  } else {
+    res.json(null);
+  }
+});
+
+
+// --- AI Co-pilot Route ---
+router.post('/strategies/analyze', isAuthenticated, async (req, res) => {
+    const { threat } = req.body;
+    if (!threat) return res.status(400).json({ message: 'Threat description is required.' });
+    const analysis = await AIEngine.analyzeThreat(threat);
+    res.json(analysis);
+});
+
+
+// --- Core Feature Routes ---
+router.post('/organizations', hasPermission('create_organization'), async (req, res) => {
+  const { name } = req.body;
+  const user = req.user as any;
+  const newOrg = await db.insert(organizations).values({ name, ownerId: user.id }).returning();
+  const wss = req.app.get('wss');
+  wss.clients.forEach(client => {
+    client.send(JSON.stringify({
+      type: 'NEW_ORGANIZATION', payload: { ...newOrg[0], ownerName: user.name }
+    }));
+  });
+  res.status(201).json(newOrg[0]);
+});
+
+router.post('/scenarios', hasPermission('create_scenario'), async (req, res) => {
+    const { title, description, organizationId, actionableSteps } = req.body;
+    const user = req.user as any;
+    const [newScenario] = await db.insert(strategicScenarios).values({
+        title, description, organizationId, createdBy: user.id
+    }).returning();
+
+    if (actionableSteps && actionableSteps.length > 0) {
+        const tasksToInsert = actionableSteps.map(step => ({
+            scenarioId: newScenario.id, description: step.description, priority: step.priority,
+        }));
+        await db.insert(tasks).values(tasksToInsert);
+    }
+    res.status(201).json(newScenario);
+});
+
+
+router.post('/reports/generate', isAuthenticated, (req, res) => {
+    const user = req.user as any;
+    const { reportParams } = req.body;
+    publish('generate_report', { userId: user.id, reportParams });
+    res.status(202).json({ message: 'Your report is being generated.' });
+});
+
+router.get('/users', hasPermission('view_users'), async (req, res) => {
+    const allUsers = await db.query.users.findMany({
+        columns: { id: true, name: true, email: true }
+    });
+    res.json(allUsers);
+});
+
+export default router;
+./server/auth.ts
+
+TypeScript
+import passport from 'passport';
+import { Strategy as LocalStrategy } from 'passport-local';
+import bcrypt from 'bcrypt';
+import { db } from './db.js';
+import { users, roles, rolePermissions, permissions } from '../shared/schema.js';
+import { eq, and } from 'drizzle-orm';
+
+passport.use(new LocalStrategy(
+  { usernameField: 'email' },
+  async (email, password, done) => {
+    try {
+      const user = await db.query.users.findFirst({ where: eq(users.email, email) });
+      if (!user) {
+        return done(null, false, { message: 'Incorrect email or password.' });
+      }
+
+      const isMatch = await bcrypt.compare(password, user.passwordHash);
+      if (!isMatch) {
+        return done(null, false, { message: 'Incorrect email or password.' });
+      }
+
+      return done(null, user);
+    } catch (err) {
+      return done(err);
+    }
+  }
+));
+
+passport.serializeUser((user: any, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async (id: string, done) => {
+  try {
+    const user = await db.query.users.findFirst({ where: eq(users.id, id) });
+    done(null, user);
+  } catch (err) {
+    done(err);
+  }
+});
+
+export const isAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.status(401).json({ message: 'Unauthorized' });
+};
+
+export const hasPermission = (action: string) => {
+  return async (req, res, next) => {
+    if (!req.isAuthenticated()) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+    const user = req.user as any;
+    if (!user.roleId) {
+       return res.status(403).json({ message: 'Forbidden: No role assigned.' });
+    }
+
+    const permission = await db.query.permissions.findFirst({ where: eq(permissions.action, action) });
+    if (!permission) {
+      return res.status(403).json({ message: 'Forbidden: Invalid permission.' });
+    }
+
+    const rolePermission = await db.query.rolePermissions.findFirst({
+        where: and(
+            eq(rolePermissions.roleId, user.roleId),
+            eq(rolePermissions.permissionId, permission.id)
+        )
+    });
+
+    if (!rolePermission) {
+      return res.status(403).json({ message: 'Forbidden: You do not have permission.' });
+    }
+
+    return next();
+  };
+};
+./server/ai.ts
+
+TypeScript
+export interface AIAnalysis {
+  summary: string;
+  impactAssessment: { score: number; reasoning: string; };
+  suggestedResources: string[];
+  actionableSteps: { step: number; description: string; priority: 'High' | 'Medium' | 'Low'; }[];
+}
+
+export const AIEngine = {
+  analyzeThreat: async (threatText: string): Promise<AIAnalysis> => {
+    await new Promise(res => setTimeout(res, 1500));
+    return {
+      summary: `The threat '${threatText}' represents a significant market disruption risk.`,
+      impactAssessment: {
+        score: 8.5,
+        reasoning: "High likelihood of impacting Q4 revenue targets."
+      },
+      suggestedResources: ["Logistics Team", "Financial Analyst"],
+      actionableSteps: [
+        { step: 1, description: "Assemble a cross-functional crisis response team.", priority: 'High' },
+        { step: 2, description: "Model financial impact under three scenarios.", priority: 'High' },
+        { step: 3, description: "Identify and vet alternative suppliers.", priority: 'Medium' },
+      ],
+    };
+  }
+};
+./server/queue.ts
+
+TypeScript
+import EventEmitter from 'events';
+
+class JobQueue extends EventEmitter {}
+export const queue = new JobQueue();
+
+export const publish = (jobName: string, data: any) => {
+  console.log(`[QUEUE] Publishing job: ${jobName}`);
+  queue.emit(jobName, data);
+};
+./server/worker.ts
+
+TypeScript
+import { queue } from './queue.js';
+import type { WebSocketServer, WebSocket } from 'ws';
+
+export const initializeWorkers = (wss: WebSocketServer, userConnections: Map<string, WebSocket>) => {
+  queue.on('generate_report', async (data) => {
+    const { userId, reportParams } = data;
+    console.log(`[WORKER] Starting 'generate_report' for user ${userId}`);
+
+    const userSocket = userConnections.get(userId);
+    const sendProgress = (progress: number) => {
+        if (userSocket) {
+            userSocket.send(JSON.stringify({
+                type: 'REPORT_PROGRESS', payload: { progress }
+            }));
+        }
+    };
+
+    await new Promise(res => setTimeout(res, 1000));
+    sendProgress(25);
+    await new Promise(res => setTimeout(res, 1500));
+    sendProgress(60);
+    await new Promise(res => setTimeout(res, 2000));
+    sendProgress(90);
+    
+    const reportUrl = `/reports/report-${Date.now()}.pdf`;
+    console.log(`[WORKER] Finished 'generate_report'.`);
+    
+    if (userSocket) {
+      userSocket.send(JSON.stringify({
+        type: 'REPORT_COMPLETE',
+        payload: { url: reportUrl, params: reportParams },
+      }));
+    }
+  });
+
+  console.log('👷‍♂️ Workers initialized and listening for jobs.');
+};
+🌐 Client Directory
+(Due to length constraints, I will provide the most critical client files. A full response would include all of them.)
+
+./client/package.json
+
+JSON
+{
+  "name": "client",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@tanstack/react-query": "^5.50.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "cmdk": "^1.0.0",
+    "lucide-react": "^0.400.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.52.1",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7",
+    "wouter": "^3.3.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.4",
+    "vite": "^5.3.1"
+  }
+}
+./client/vite.config.ts
+
+TypeScript
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    // Replit handles proxying automatically, so this is for local dev
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      }
+    }
+  }
+})
+./client/src/main.tsx
+
+TypeScript
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import './index.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
+  </React.StrictMode>,
+);
+./client/src/App.tsx
+
+TypeScript
+import { useQuery } from '@tanstack/react-query';
+import { apiClient, User } from './lib/api';
+import { LoginPage } from './pages/LoginPage';
+import { DashboardPage } from './pages/DashboardPage';
+import { AdminPage } from './pages/AdminPage';
+import { CommandPalette } from './components/CommandPalette';
+import { VeridiusPremiumLogo } from './components/consolidated/LogoComponents';
+import { Route, Switch, Link } from 'wouter';
+
+function App() {
+  const { data: user, isLoading } = useQuery<User | null>({
+    queryKey: ['user'],
+    queryFn: apiClient.getAuthUser,
+    retry: false,
+  });
+
+  return (
+    <main className="min-h-screen w-full bg-gradient-backdrop text-gray-800 flex flex-col items-center p-8 font-sans">
+      <CommandPalette />
+      <header className="w-full max-w-6xl mb-12 self-start">
+        <Link href="/"><a><VeridiusPremiumLogo /></a></Link>
+      </header>
+      <div className="w-full max-w-6xl">
+        <Switch>
+          <Route path="/admin">
+            {isLoading ? <p>Loading...</p> : user ? <AdminPage /> : <LoginPage />}
+          </Route>
+          <Route path="/">
+            {isLoading ? <p>Loading...</p> : user ? <DashboardPage user={user} /> : <LoginPage />}
+          </Route>
+        </Switch>
+      </div>
+    </main>
+  );
+}
+
+export default App;

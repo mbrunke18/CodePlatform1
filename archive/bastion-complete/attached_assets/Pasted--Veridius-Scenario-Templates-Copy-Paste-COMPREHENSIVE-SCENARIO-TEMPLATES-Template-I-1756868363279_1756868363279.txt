@@ -1,0 +1,446 @@
+# Veridius Scenario Templates - Copy & Paste
+
+## 📋 COMPREHENSIVE SCENARIO TEMPLATES
+
+### Template Interface Definition
+
+```typescript
+export interface ComprehensiveScenarioTemplate {
+  id: string;
+  name: string;
+  category: 'operational' | 'security' | 'financial' | 'regulatory' | 'human-capital' | 'market' | 'supply-chain' | 'technology' | 'strategic';
+  description: string;
+  likelihood: 'low' | 'medium' | 'high';
+  severity: 'minimal' | 'moderate' | 'significant' | 'severe' | 'catastrophic';
+  typicalTimeframe: 'immediate' | 'hours' | 'days' | 'weeks' | 'months';
+  
+  // Enhanced data capture fields
+  requiredDataPoints: EnhancedDataPoint[];
+  criticalDecisionPoints: string[];
+  stakeholderMapping: StakeholderRole[];
+  resourceRequirements: ResourceRequirement[];
+  successMetrics: string[];
+  industrySpecific: boolean;
+  applicableIndustries: string[];
+  
+  // Crisis execution specifics
+  responsePhases: ResponsePhase[];
+  escalationTriggers: string[];
+  communicationPlan: CommunicationStep[];
+  recoveryMetrics: string[];
+}
+
+export interface EnhancedDataPoint {
+  fieldName: string;
+  label: string;
+  fieldType: 'text' | 'number' | 'select' | 'multiselect' | 'date' | 'currency' | 'percentage' | 'textarea';
+  required: boolean;
+  placeholder?: string;
+  options?: string[];
+  validationRules?: string[];
+  helpText?: string;
+  category: 'situation' | 'organization' | 'resources' | 'timeline' | 'stakeholders' | 'financial' | 'regulatory';
+}
+
+export interface StakeholderRole {
+  role: string;
+  department: string;
+  responsibility: string;
+  decisionAuthority: 'low' | 'medium' | 'high' | 'critical';
+  communicationPriority: 'immediate' | 'hourly' | 'daily';
+}
+
+export interface ResourceRequirement {
+  resourceType: 'personnel' | 'technology' | 'financial' | 'external' | 'facilities';
+  description: string;
+  urgency: 'immediate' | 'hours' | 'days' | 'weeks';
+  estimatedCost: string;
+  alternatives: string[];
+}
+
+export interface ResponsePhase {
+  phase: 'immediate' | 'short-term' | 'long-term';
+  timeline: string;
+  objectives: string[];
+  keyActions: string[];
+  successCriteria: string[];
+}
+
+export interface CommunicationStep {
+  audience: string;
+  timing: string;
+  channel: string;
+  keyMessages: string[];
+  responsibleParty: string;
+}
+```
+
+### Template Collection Array
+
+```typescript
+export const COMPREHENSIVE_SCENARIO_TEMPLATES: ComprehensiveScenarioTemplate[] = [
+  
+  // === CRISIS RESPONSE TEMPLATES ===
+  
+  {
+    id: 'supply-chain-crisis',
+    name: 'Supply Chain Disruption Crisis',
+    category: 'supply-chain',
+    description: 'Complete supply chain disruption requiring immediate intervention and alternative sourcing strategies',
+    likelihood: 'high',
+    severity: 'severe',
+    typicalTimeframe: 'immediate',
+    requiredDataPoints: [
+      {
+        fieldName: 'disruption_type',
+        label: 'Type of Disruption',
+        fieldType: 'select',
+        required: true,
+        options: ['Natural disaster', 'Supplier bankruptcy', 'Geopolitical', 'Quality issue', 'Transportation', 'Other'],
+        category: 'situation'
+      },
+      {
+        fieldName: 'affected_suppliers',
+        label: 'Number of Affected Suppliers',
+        fieldType: 'number',
+        required: true,
+        category: 'situation'
+      },
+      {
+        fieldName: 'revenue_at_risk',
+        label: 'Monthly Revenue at Risk',
+        fieldType: 'currency',
+        required: true,
+        category: 'financial'
+      },
+      {
+        fieldName: 'inventory_days',
+        label: 'Current Inventory Days Available',
+        fieldType: 'number',
+        required: true,
+        category: 'resources'
+      }
+    ],
+    criticalDecisionPoints: [
+      'Activate alternative suppliers immediately',
+      'Communicate with customers about delays',
+      'Implement rationing of existing inventory',
+      'Evaluate production capacity adjustments',
+      'Consider expedited shipping options'
+    ],
+    stakeholderMapping: [
+      {
+        role: 'Chief Operating Officer',
+        department: 'Operations',
+        responsibility: 'Overall crisis coordination and supplier relationship management',
+        decisionAuthority: 'critical',
+        communicationPriority: 'immediate'
+      },
+      {
+        role: 'Procurement Manager',
+        department: 'Supply Chain',
+        responsibility: 'Alternative supplier activation and contract negotiation',
+        decisionAuthority: 'high',
+        communicationPriority: 'immediate'
+      },
+      {
+        role: 'Customer Success Manager',
+        department: 'Sales',
+        responsibility: 'Customer communication and expectation management',
+        decisionAuthority: 'medium',
+        communicationPriority: 'hourly'
+      }
+    ],
+    resourceRequirements: [
+      {
+        resourceType: 'financial',
+        description: 'Emergency procurement budget for alternative suppliers',
+        urgency: 'immediate',
+        estimatedCost: '$100K-500K depending on disruption scale',
+        alternatives: ['Credit line activation', 'Supplier financing', 'Emergency reserves']
+      },
+      {
+        resourceType: 'personnel',
+        description: 'Crisis management team and emergency procurement specialists',
+        urgency: 'immediate',
+        estimatedCost: 'Internal resource reallocation',
+        alternatives: ['External consulting', 'Contractor specialists', 'Overtime authorization']
+      }
+    ],
+    successMetrics: [
+      'Time to activate alternative suppliers',
+      'Percentage of customer orders fulfilled on time',
+      'Cost increase vs. normal operations',
+      'Customer satisfaction during crisis',
+      'Inventory days maintained above critical threshold'
+    ],
+    industrySpecific: false,
+    applicableIndustries: ['Manufacturing', 'Retail', 'Healthcare', 'Automotive', 'Technology', 'Food & Beverage'],
+    responsePhases: [
+      {
+        phase: 'immediate',
+        timeline: '0-4 hours',
+        objectives: ['Assess disruption scope', 'Activate crisis team', 'Secure existing inventory'],
+        keyActions: ['Confirm disruption details', 'Contact alternative suppliers', 'Implement inventory controls'],
+        successCriteria: ['Crisis team assembled', 'Initial supplier contacts made', 'Inventory secured']
+      },
+      {
+        phase: 'short-term',
+        timeline: '4-72 hours',
+        objectives: ['Establish alternative supply sources', 'Communicate with stakeholders', 'Adjust production plans'],
+        keyActions: ['Negotiate with backup suppliers', 'Issue customer communications', 'Modify production schedules'],
+        successCriteria: ['Alternative suppliers confirmed', 'Customer notifications sent', 'Production adjusted']
+      },
+      {
+        phase: 'long-term',
+        timeline: '3-30 days',
+        objectives: ['Restore normal operations', 'Conduct lessons learned', 'Strengthen supply chain resilience'],
+        keyActions: ['Monitor supplier performance', 'Document crisis response', 'Update contingency plans'],
+        successCriteria: ['Operations normalized', 'Lessons documented', 'Improved contingency plans']
+      }
+    ],
+    escalationTriggers: [
+      'Inventory drops below 7 days',
+      'Alternative suppliers unavailable',
+      'Customer order fulfillment below 80%',
+      'Cost increase exceeds 50% of normal operations'
+    ],
+    communicationPlan: [
+      {
+        audience: 'Executive Leadership',
+        timing: 'Within 1 hour',
+        channel: 'Emergency phone call',
+        keyMessages: ['Disruption scope', 'Initial response actions', 'Resource requirements'],
+        responsibleParty: 'Chief Operating Officer'
+      },
+      {
+        audience: 'Key Customers',
+        timing: 'Within 4 hours',
+        channel: 'Personal call/email',
+        keyMessages: ['Service impact assessment', 'Mitigation measures', 'Updated timelines'],
+        responsibleParty: 'Customer Success Manager'
+      },
+      {
+        audience: 'All Employees',
+        timing: 'Within 8 hours',
+        channel: 'Internal announcement',
+        keyMessages: ['Situation overview', 'Company response', 'Employee expectations'],
+        responsibleParty: 'Chief Operating Officer'
+      }
+    ],
+    recoveryMetrics: [
+      'Supplier diversity index improvement',
+      'Inventory buffer days increased',
+      'Alternative supplier qualification time',
+      'Crisis response time improvement',
+      'Supply chain risk assessment score'
+    ]
+  },
+
+  {
+    id: 'cybersecurity-incident',
+    name: 'Cybersecurity Incident Response',
+    category: 'security',
+    description: 'Major cybersecurity breach requiring immediate containment and comprehensive response strategy',
+    likelihood: 'high',
+    severity: 'severe',
+    typicalTimeframe: 'immediate',
+    requiredDataPoints: [
+      {
+        fieldName: 'incident_type',
+        label: 'Type of Security Incident',
+        fieldType: 'select',
+        required: true,
+        options: ['Data breach', 'Ransomware', 'DDoS attack', 'Insider threat', 'Phishing', 'System intrusion', 'Other'],
+        category: 'situation'
+      },
+      {
+        fieldName: 'affected_systems',
+        label: 'Number of Affected Systems',
+        fieldType: 'number',
+        required: true,
+        category: 'situation'
+      },
+      {
+        fieldName: 'data_at_risk',
+        label: 'Records/Data at Risk',
+        fieldType: 'number',
+        required: true,
+        helpText: 'Number of customer records, financial records, or sensitive data points potentially compromised',
+        category: 'situation'
+      },
+      {
+        fieldName: 'business_impact',
+        label: 'Estimated Business Impact per Hour',
+        fieldType: 'currency',
+        required: true,
+        category: 'financial'
+      }
+    ],
+    criticalDecisionPoints: [
+      'Isolate affected systems immediately',
+      'Determine if law enforcement should be contacted',
+      'Decide on external forensics team engagement',
+      'Evaluate need for public disclosure',
+      'Consider cyber insurance claim activation'
+    ],
+    stakeholderMapping: [
+      {
+        role: 'Chief Information Security Officer',
+        department: 'IT Security',
+        responsibility: 'Incident response coordination and technical containment',
+        decisionAuthority: 'critical',
+        communicationPriority: 'immediate'
+      },
+      {
+        role: 'Chief Legal Officer',
+        department: 'Legal',
+        responsibility: 'Regulatory compliance and legal implications management',
+        decisionAuthority: 'critical',
+        communicationPriority: 'immediate'
+      },
+      {
+        role: 'Chief Executive Officer',
+        department: 'Executive',
+        responsibility: 'Strategic decision making and external communications',
+        decisionAuthority: 'critical',
+        communicationPriority: 'immediate'
+      }
+    ],
+    resourceRequirements: [
+      {
+        resourceType: 'external',
+        description: 'Cybersecurity forensics and incident response specialists',
+        urgency: 'immediate',
+        estimatedCost: '$50K-200K for comprehensive incident response',
+        alternatives: ['Internal IT team', 'Cyber insurance resources', 'FBI/law enforcement assistance']
+      },
+      {
+        resourceType: 'technology',
+        description: 'Emergency IT infrastructure for business continuity',
+        urgency: 'hours',
+        estimatedCost: '$25K-100K for temporary systems',
+        alternatives: ['Cloud services', 'Partner system access', 'Manual processes']
+      }
+    ],
+    successMetrics: [
+      'Time to containment',
+      'Systems restored within 24-72 hours',
+      'Zero additional data compromise',
+      'Regulatory compliance maintained',
+      'Customer trust retention above 85%'
+    ],
+    industrySpecific: false,
+    applicableIndustries: ['Financial Services', 'Healthcare', 'Technology', 'Retail', 'Government', 'Education'],
+    responsePhases: [
+      {
+        phase: 'immediate',
+        timeline: '0-1 hour',
+        objectives: ['Contain the incident', 'Assess the scope', 'Activate response team'],
+        keyActions: ['Isolate affected systems', 'Preserve evidence', 'Contact key stakeholders'],
+        successCriteria: ['Incident contained', 'Response team activated', 'Evidence preserved']
+      },
+      {
+        phase: 'short-term',
+        timeline: '1-24 hours',
+        objectives: ['Investigate the incident', 'Communicate with stakeholders', 'Begin recovery'],
+        keyActions: ['Conduct forensics', 'Notify authorities if required', 'Start system restoration'],
+        successCriteria: ['Root cause identified', 'Stakeholders notified', 'Recovery initiated']
+      },
+      {
+        phase: 'long-term',
+        timeline: '1-30 days',
+        objectives: ['Full system recovery', 'Prevent recurrence', 'Restore stakeholder confidence'],
+        keyActions: ['Complete system restoration', 'Implement security improvements', 'Conduct lessons learned'],
+        successCriteria: ['Systems fully operational', 'Security enhanced', 'Stakeholder confidence restored']
+      }
+    ],
+    escalationTriggers: [
+      'Data exfiltration confirmed',
+      'Ransom demand received',
+      'Media attention or public exposure',
+      'Regulatory investigation initiated',
+      'Business operations halted for >4 hours'
+    ],
+    communicationPlan: [
+      {
+        audience: 'Board of Directors',
+        timing: 'Within 2 hours',
+        channel: 'Secure emergency call',
+        keyMessages: ['Incident overview', 'Containment status', 'Business impact assessment'],
+        responsibleParty: 'Chief Executive Officer'
+      },
+      {
+        audience: 'Regulatory Bodies',
+        timing: 'Within 24-72 hours (as required)',
+        channel: 'Official notification',
+        keyMessages: ['Incident details', 'Affected data/customers', 'Remediation steps'],
+        responsibleParty: 'Chief Legal Officer'
+      },
+      {
+        audience: 'Affected Customers',
+        timing: 'Within 72 hours',
+        channel: 'Direct communication',
+        keyMessages: ['Incident disclosure', 'Personal impact', 'Protective measures'],
+        responsibleParty: 'Chief Marketing Officer'
+      }
+    ],
+    recoveryMetrics: [
+      'Security posture improvement score',
+      'Incident detection time reduction',
+      'Employee security awareness increase',
+      'Cyber insurance premium impact',
+      'Customer trust and retention metrics'
+    ]
+  }
+
+  // === MORE TEMPLATES CONTINUE ===
+  // Add additional templates for:
+  // - Financial Liquidity Crisis
+  // - Market Disruption Response
+  // - Regulatory Change Management
+  // - Natural Disaster Response
+  // - HR Crisis Management
+  // - Operational Emergency Response
+  // - Mass Customer Churn
+  // - Product Quality Crisis
+  // - Strategic Opportunity Templates
+  // etc.
+  
+];
+```
+
+## 📋 USAGE EXAMPLE
+
+```typescript
+// Import the templates
+import { COMPREHENSIVE_SCENARIO_TEMPLATES, type ComprehensiveScenarioTemplate } from './comprehensive-scenario-templates';
+
+// Find a specific template
+const supplyChainTemplate = COMPREHENSIVE_SCENARIO_TEMPLATES.find(t => t.id === 'supply-chain-crisis');
+
+// Get all crisis response templates
+const crisisTemplates = COMPREHENSIVE_SCENARIO_TEMPLATES.filter(t => 
+  ['supply-chain', 'security', 'operational', 'financial'].includes(t.category)
+);
+
+// Get templates by severity
+const severeTemplates = COMPREHENSIVE_SCENARIO_TEMPLATES.filter(t => 
+  t.severity === 'severe' || t.severity === 'catastrophic'
+);
+
+// Generate form fields from template
+function generateFormFields(template: ComprehensiveScenarioTemplate) {
+  return template.requiredDataPoints.map(field => ({
+    name: field.fieldName,
+    label: field.label,
+    type: field.fieldType,
+    required: field.required,
+    options: field.options,
+    placeholder: field.placeholder,
+    helpText: field.helpText
+  }));
+}
+```
+
+This provides you with the complete scenario template system that powers the Veridius crisis response and strategic planning capabilities. Copy these interfaces and templates to get the full scenario planning engine!

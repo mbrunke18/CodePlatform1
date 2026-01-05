@@ -1,0 +1,505 @@
+Build 3 MORE interactive live demos using the same template as ransomware, M&A, product launch, and supplier crisis.
+
+These 3 new demos target different C-suite personas:
+4. Competitive Response (CEO, CMO, VP Strategy, Head of Pricing)
+5. Regulatory Crisis (CEO, General Counsel, CCO, Head of Compliance)
+6. Customer Crisis (CEO, CRO, VP Customer Success, Head of Sales)
+
+Follow the exact same structure, timing, and UX as the previous demos.
+
+═══════════════════════════════════════════════════════════════════════════════
+DEMO 4: COMPETITIVE RESPONSE
+═══════════════════════════════════════════════════════════════════════════════
+
+SCENARIO DETAILS:
+- Name: "Competitive Response - Market Share Defense"
+- Trigger: "Competitor announced 40% price cut + 12-month promo"
+- Context: "TechRival just announced aggressive pricing: 40% price reduction plus 12-month free premium features. Targeting our top 3 verticals. Threatens $300M in annual revenue. Sales team reporting prospect pipeline freeze. Need immediate counter-strategy."
+
+STAKEHOLDERS (28 total):
+
+Tier 1 - Decision Makers (6):
+- CEO
+- CMO (Chief Marketing Officer)
+- CRO (Chief Revenue Officer)
+- CFO
+- VP Strategy
+- VP Product
+
+Tier 2 - Execution Team (16):
+- VP Pricing
+- VP Competitive Intelligence
+- VP Sales (Enterprise)
+- VP Sales (Mid-Market)
+- VP Sales (SMB)
+- VP Marketing (Demand Gen)
+- VP Marketing (Product Marketing)
+- VP Customer Success (Retention)
+- VP Customer Success (Expansion)
+- Director Analyst Relations
+- Director Sales Enablement
+- Director Revenue Operations
+- Director Product Strategy
+- Director Finance (Deal Desk)
+- Director Legal (Contracts)
+- Head of Partnerships
+
+Tier 3 - Communication (6):
+- PR Director
+- Internal Communications
+- Investor Relations
+- Executive Communications
+- Plus 2 Regional Sales Directors
+
+EVENT TIMELINE:
+
+Minute 0:00 - "Competitive response playbook activated"
+Minute 0:15 - "URGENT: 28 stakeholders alerted"
+Minute 0:30 - "Competitor analysis report distributed"
+Minute 0:45 - "CEO acknowledged: 'All hands on deck'"
+Minute 1:10 - "CMO acknowledged"
+Minute 1:30 - "CRO acknowledged: 'Pipeline impact confirmed'"
+Minute 1:50 - "CFO acknowledged: 'Budget authority granted'"
+Minute 2:10 - "VP Strategy acknowledged"
+Minute 2:30 - "C-suite aligned (6/6 = 100%)"
+Minute 2:50 - "Competitive war room established"
+Minute 3:15 - "VP Pricing acknowledged: 'Analyzing options'"
+Minute 3:45 - "Sales VPs coordinated (3/3)"
+Minute 4:15 - "Current deal impact assessment: 47 deals at risk"
+Minute 4:45 - "VP Customer Success: 'Top 20 accounts briefed'"
+Minute 5:15 - "15 stakeholders acknowledged"
+Minute 5:45 - "Counter-pricing strategy drafted"
+Minute 6:15 - "Value proposition refresh initiated"
+Minute 6:45 - "Competitive battle cards distributed"
+Minute 7:15 - "Sales enablement materials updated"
+Minute 7:45 - "20 stakeholders acknowledged"
+Minute 8:15 - "Deal approval thresholds adjusted"
+Minute 8:45 - "Win-back campaign designed"
+Minute 9:15 - "Partnership bundle strategy approved"
+Minute 9:45 - "23 stakeholders acknowledged"
+Minute 10:15 - "Analyst briefings scheduled"
+Minute 10:30 - "Customer FAQ prepared"
+Minute 10:50 - "80% threshold reached (22/28)"
+Minute 11:20 - "Sales team armed with counter-strategy"
+Minute 11:35 - "All-hands call scheduled for EOD"
+Minute 11:47 - "Counter-strategy coordinated (26/28 = 93%)"
+
+FINAL METRICS:
+- Coordination Time: 11:47
+- Stakeholders: 26/28 acknowledged (93%)
+- At-Risk Revenue: $300M
+- Deals Protected: 47 active opportunities
+- Average Response Time: 2.5 minutes
+- Counter-Strategy: Active within 12 hours
+
+COMPARISON CARD:
+Without VEXOR:
+- Coordination Time: 3-5 days
+- Lost deals while coordinating: 12-15 deals
+- Sales team confusion: High
+- Revenue loss: $45M+ (from delayed response)
+- Market perception: Slow, reactive
+
+With VEXOR:
+- Coordination Time: 11:47 minutes
+- Lost deals: 0 (immediate counter-strategy)
+- Sales team: Armed and ready
+- Revenue defended: $300M protected
+- Market perception: Fast, confident
+
+VALUE CREATED:
+- Time Saved: 72 hours → 12 minutes (360x faster)
+- Executive Time Value: $302,400 (72 hours × 28 people × $150/hour)
+- Revenue Protected: $300M (competitive threat neutralized)
+- Deals Saved: 47 opportunities ($32M pipeline)
+- Total Value: $302M+ from single activation
+
+HEADLINE: "From competitive threat to counter-strategy in 12 minutes"
+
+KEY TALKING POINTS FOR THIS DEMO:
+"Your competitor moves fast. By the time you schedule meetings to 
+discuss a response, they've already stolen 10 deals worth $5M+.
+
+VEXOR gives you competitive velocity. 
+
+From threat detection to coordinated counter-strategy in 12 minutes. 
+Your sales team is armed, your pricing is adjusted, your messaging 
+is aligned—before your competitor finishes their press tour."
+
+═══════════════════════════════════════════════════════════════════════════════
+DEMO 5: REGULATORY CRISIS
+═══════════════════════════════════════════════════════════════════════════════
+
+SCENARIO DETAILS:
+- Name: "Regulatory Crisis - FDA Warning Letter"
+- Trigger: "FDA Warning Letter received: 15-day response deadline"
+- Context: "FDA issued Warning Letter citing GMP violations at primary manufacturing facility. Requires comprehensive response within 15 business days. Threatens $250M product line. Potential consent decree and plant shutdown if response inadequate. Need immediate cross-functional coordination."
+
+STAKEHOLDERS (32 total):
+
+Tier 1 - Decision Makers (7):
+- CEO
+- General Counsel
+- Chief Compliance Officer
+- Chief Quality Officer
+- Chief Medical Officer
+- CFO
+- EVP Operations
+
+Tier 2 - Execution Team (18):
+- VP Regulatory Affairs
+- VP Quality Assurance
+- VP Manufacturing
+- VP Regulatory Strategy
+- Director FDA Relations
+- Director Compliance
+- Director Quality Systems
+- Director Manufacturing Operations
+- Director Validation
+- Director Training
+- Director Documentation
+- Plant Manager (Primary Facility)
+- Plant Manager (Secondary Facility)
+- QA Managers (3 facilities)
+- Regulatory Counsel (External)
+- Quality Consultant (External)
+- Crisis Communications Consultant
+
+Tier 3 - Support (7):
+- VP Investor Relations
+- VP Corporate Communications
+- VP Government Affairs
+- Director Risk Management
+- Director Internal Audit
+- Medical Affairs Director
+- Plus 1 Board Liaison
+
+EVENT TIMELINE:
+
+Minute 0:00 - "Regulatory crisis playbook activated"
+Minute 0:15 - "CRITICAL: 32 stakeholders alerted"
+Minute 0:30 - "FDA Warning Letter distributed (CONFIDENTIAL)"
+Minute 0:45 - "CEO acknowledged: 'Priority #1'"
+Minute 1:00 - "General Counsel acknowledged"
+Minute 1:15 - "Chief Compliance Officer acknowledged"
+Minute 1:30 - "Chief Quality Officer acknowledged"
+Minute 1:50 - "Chief Medical Officer acknowledged"
+Minute 2:10 - "CFO acknowledged: 'Impact assessment underway'"
+Minute 2:30 - "Leadership coordinated (7/7 = 100%)"
+Minute 2:50 - "Regulatory war room established"
+Minute 3:15 - "VP Regulatory Affairs acknowledged"
+Minute 3:45 - "External regulatory counsel engaged"
+Minute 4:15 - "Plant Manager acknowledged: 'Corrective actions starting'"
+Minute 4:45 - "FDA citations reviewed: 12 observations"
+Minute 5:15 - "15 stakeholders acknowledged"
+Minute 5:45 - "Response team structure finalized"
+Minute 6:15 - "Root cause analysis initiated"
+Minute 6:45 - "Corrective action plan drafted"
+Minute 7:15 - "Documentation review team assembled"
+Minute 7:45 - "20 stakeholders acknowledged"
+Minute 8:15 - "Validation study gaps identified"
+Minute 8:45 - "Training program enhancement planned"
+Minute 9:15 - "Manufacturing SOP updates initiated"
+Minute 9:45 - "25 stakeholders acknowledged"
+Minute 10:15 - "Response timeline established: 10 business days"
+Minute 10:30 - "Board notification prepared"
+Minute 10:50 - "80% threshold reached (26/32)"
+Minute 11:20 - "FDA response workstreams assigned"
+Minute 11:35 - "External consultant briefings scheduled"
+Minute 11:47 - "Regulatory response coordinated (30/32 = 94%)"
+
+FINAL METRICS:
+- Coordination Time: 11:47
+- Stakeholders: 30/32 acknowledged (94%)
+- FDA Citations: 12 observations to address
+- Response Deadline: 15 business days
+- Average Response Time: 2.3 minutes
+- At-Risk Revenue: $250M product line
+
+COMPARISON CARD:
+Without VEXOR:
+- Coordination Time: 5-7 days
+- Response time lost: 30% of deadline
+- Documentation chaos: High
+- Quality of response: Rushed, incomplete
+- Risk of consent decree: Elevated
+- Potential penalties: $50M+
+
+With VEXOR:
+- Coordination Time: 11:47 minutes
+- Response time available: Full 15 days
+- Documentation: Systematic, thorough
+- Quality of response: Comprehensive
+- Risk mitigation: Proactive
+- Penalty avoidance: $50M+
+
+VALUE CREATED:
+- Time Saved: 120 hours → 12 minutes (600x faster)
+- Executive Time Value: $576,000 (120 hours × 32 people × $150/hour)
+- Penalties Avoided: $50M (from adequate response)
+- Product Line Protected: $250M (continued manufacturing)
+- Consent Decree Avoided: Priceless (maintains operations)
+- Total Value: $300M+ from single activation
+
+HEADLINE: "From FDA Warning Letter to coordinated response in 12 minutes"
+
+KEY TALKING POINTS FOR THIS DEMO:
+"When the FDA sends a Warning Letter, the clock starts immediately. 
+You have 15 business days—but most companies waste the first 5 days 
+just coordinating who's responsible for what.
+
+By the time they start the actual work, they're rushing. The response 
+is incomplete. The FDA comes back harder. Consent decree. Plant shutdown.
+
+VEXOR coordinates your entire regulatory response team in 12 minutes. 
+
+Day 1: You have your team aligned, work streams assigned, external 
+counsel engaged, and a comprehensive response plan.
+
+You use the full 15 days for quality work—not coordination meetings."
+
+═══════════════════════════════════════════════════════════════════════════════
+DEMO 6: CUSTOMER CRISIS (MAJOR ACCOUNT AT RISK)
+═══════════════════════════════════════════════════════════════════════════════
+
+SCENARIO DETAILS:
+- Name: "Customer Crisis - Enterprise Account Escalation"
+- Trigger: "Tier 1 customer threatens churn: $120M ARR at risk"
+- Context: "GlobalBank (largest customer, $120M ARR, 45% of revenue) escalated to CEO. Critical issues: 3 major outages in 60 days, slow support response, product roadmap misalignment. Executive sponsor meeting scheduled in 48 hours. Need immediate save plan coordination."
+
+STAKEHOLDERS (24 total):
+
+Tier 1 - Decision Makers (5):
+- CEO
+- CRO (Chief Revenue Officer)
+- CPO (Chief Product Officer)
+- CTO (Chief Technology Officer)
+- CFO
+
+Tier 2 - Account Team (12):
+- VP Customer Success
+- VP Sales (Enterprise)
+- VP Professional Services
+- VP Product Management
+- VP Engineering
+- Strategic Account Executive (GlobalBank)
+- Customer Success Manager (GlobalBank)
+- Solutions Architect (GlobalBank)
+- Technical Account Manager (GlobalBank)
+- Product Manager (Banking)
+- Engineering Manager (Reliability)
+- VP Support
+
+Tier 3 - Support (7):
+- Director Customer Marketing
+- Director Executive Briefing Center
+- Director Product Strategy
+- Director Legal (Contracts)
+- Director Finance (Deal Desk)
+- VP Operations
+- Executive Communications
+
+EVENT TIMELINE:
+
+Minute 0:00 - "Customer crisis playbook activated"
+Minute 0:15 - "URGENT: 24 stakeholders alerted"
+Minute 0:30 - "Account situation report distributed"
+Minute 0:45 - "CEO acknowledged: 'Save this account'"
+Minute 1:00 - "CRO acknowledged: '$120M at risk'"
+Minute 1:20 - "CPO acknowledged"
+Minute 1:40 - "CTO acknowledged: 'Technical root cause analysis starting'"
+Minute 2:00 - "CFO acknowledged: 'Any concessions authorized'"
+Minute 2:20 - "Leadership aligned (5/5 = 100%)"
+Minute 2:40 - "Customer save war room launched"
+Minute 3:00 - "Account team coordinated"
+Minute 3:30 - "Root cause analysis: 3 outages reviewed"
+Minute 4:00 - "Strategic Account Exec: 'Customer demands documented'"
+Minute 4:30 - "Customer Success Manager: 'Relationship history compiled'"
+Minute 5:00 - "12 stakeholders acknowledged"
+Minute 5:30 - "Product roadmap alignment analysis complete"
+Minute 6:00 - "Engineering: 'Reliability improvements prioritized'"
+Minute 6:30 - "Support escalation process redesigned"
+Minute 7:00 - "Custom SLA drafted"
+Minute 7:30 - "15 stakeholders acknowledged"
+Minute 8:00 - "Executive sponsor engagement plan finalized"
+Minute 8:30 - "Product roadmap commitments identified"
+Minute 9:00 - "Technical remediation plan drafted"
+Minute 9:30 - "Financial concessions approved: $2M credit"
+Minute 10:00 - "20 stakeholders acknowledged"
+Minute 10:30 - "Save plan presentation deck created"
+Minute 10:50 - "80% threshold reached (19/24)"
+Minute 11:15 - "Executive meeting agenda finalized"
+Minute 11:35 - "Team prep session scheduled"
+Minute 11:47 - "Customer save plan coordinated (22/24 = 92%)"
+
+FINAL METRICS:
+- Coordination Time: 11:47
+- Stakeholders: 22/24 acknowledged (92%)
+- Account Value: $120M ARR (45% of company revenue)
+- Meeting Deadline: 48 hours
+- Average Response Time: 2.6 minutes
+- Save Plan: Comprehensive 90-day recovery plan
+
+COMPARISON CARD:
+Without VEXOR:
+- Coordination Time: 2-3 days
+- Meeting preparation: Rushed, last-minute
+- Root cause clarity: Partial, unclear
+- Executive alignment: Weak
+- Save plan quality: Incomplete
+- Churn risk: 60-70%
+- Revenue loss: $120M
+
+With VEXOR:
+- Coordination Time: 11:47 minutes
+- Meeting preparation: Thorough, confident
+- Root cause clarity: Complete analysis
+- Executive alignment: Total
+- Save plan quality: Comprehensive
+- Churn risk: <10%
+- Revenue saved: $120M
+
+VALUE CREATED:
+- Time Saved: 48 hours → 12 minutes (240x faster)
+- Executive Time Value: $172,800 (48 hours × 24 people × $150/hour)
+- ARR Protected: $120M (prevented churn)
+- Lifetime Value: $600M+ (5-year customer value)
+- Company Impact: 45% of revenue protected
+- Total Value: $120M+ from single activation
+
+HEADLINE: "From customer crisis to save plan in 12 minutes"
+
+KEY TALKING POINTS FOR THIS DEMO:
+"When your largest customer escalates to the CEO, you have maybe 
+48 hours to save the relationship.
+
+But coordination takes 24-36 hours:
+- Who owns the relationship? 
+- What went wrong technically?
+- What's the save plan?
+- Who's in the executive meeting?
+
+By the time you're aligned, you're walking into that meeting 
+unprepared. And you lose the $120M customer.
+
+VEXOR coordinates your save plan in 12 minutes.
+
+Within an hour, you have:
+- Complete root cause analysis
+- Technical remediation plan
+- Product roadmap commitments
+- Financial concessions approved
+- Executive presentation ready
+
+You spend 47 hours perfecting the save plan—not scheduling 
+meetings to create it."
+
+═══════════════════════════════════════════════════════════════════════════════
+IMPLEMENTATION INSTRUCTIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+1. CREATE 3 NEW DEMO COMPONENTS:
+   - CompetitiveResponseDemo.tsx
+   - RegulatoryCrisisDemo.tsx  
+   - CustomerCrisisDemo.tsx
+
+2. CLONE EXISTING DEMO STRUCTURE:
+   Use ransomware/M&A/product launch demos as template
+   Preserve all timing, animations, celebration sequences
+
+3. UPDATE DEMO SELECTOR:
+   Add these 3 new demo cards to the selector page:
+   
+   <DemoCard
+     title="Competitive Response"
+     icon="⚔️"
+     audience="CEO, CMO, Strategy"
+     impact="$300M revenue defended"
+     path="/demo/competitive-response"
+     color="red"
+   />
+   
+   <DemoCard
+     title="Regulatory Crisis"
+     icon="⚖️"
+     audience="CEO, Legal, Compliance"
+     impact="$50M penalties avoided"
+     path="/demo/regulatory-crisis"
+     color="purple"
+   />
+   
+   <DemoCard
+     title="Customer Crisis"
+     icon="🚨"
+     audience="CEO, CRO, Customer Success"
+     impact="$120M ARR saved"
+     path="/demo/customer-crisis"
+     color="orange"
+   />
+
+4. ADD ROUTES:
+   - /demo/competitive-response
+   - /demo/regulatory-crisis
+   - /demo/customer-crisis
+
+5. ENSURE CONSISTENCY ACROSS ALL 7 DEMOS:
+   Now you have:
+   1. Ransomware Response (Security)
+   2. M&A Integration (Corporate Strategy)
+   3. Product Launch (Go-to-Market)
+   4. Supplier Crisis (Operations)
+   5. Competitive Response (Strategy/Marketing)
+   6. Regulatory Crisis (Legal/Compliance)
+   7. Customer Crisis (Sales/Customer Success)
+   
+   All should:
+   - Run 11:45 - 11:50 minutes total
+   - Hit 80% at ~10:50
+   - Complete at ~11:47
+   - Show identical celebration/confetti
+   - Use same metrics card layout
+   - Have same final CTAs
+   - Be mobile responsive
+
+6. DEMO SELECTOR ORGANIZATION:
+   Organize by persona/function:
+   
+   STRATEGIC:
+   - M&A Integration (CEO, CFO, Board)
+   - Competitive Response (CEO, CMO, Strategy)
+   
+   OPERATIONAL:
+   - Product Launch (CEO, CMO, CPO)
+   - Supplier Crisis (COO, CPO, Ops)
+   - Customer Crisis (CEO, CRO, CS)
+   
+   RISK/COMPLIANCE:
+   - Ransomware Response (CISO, CIO, CTO)
+   - Regulatory Crisis (CEO, GC, Compliance)
+
+7. TESTING CHECKLIST:
+   For each new demo:
+   ✓ Timer runs correctly
+   ✓ Stakeholder acknowledgments appear
+   ✓ 80% threshold triggers properly
+   ✓ Completion celebration fires
+   ✓ Final metrics display correctly
+   ✓ Comparison card shows proper values
+   ✓ Value calculations are accurate
+   ✓ "Start New Demo" resets properly
+   ✓ Mobile responsive
+
+8. SALES ENABLEMENT:
+   Create demo selection guide for sales team:
+   
+   "Match the demo to your prospect:
+   
+   - Meeting with CEO/CFO about growth? → M&A Integration
+   - Meeting with CMO about competition? → Competitive Response
+   - Meeting with CPO about launches? → Product Launch
+   - Meeting with COO about operations? → Supplier Crisis
+   - Meeting with CRO about retention? → Customer Crisis
+   - Meeting with CISO about security? → Ransomware Response
+   - Meeting with GC about compliance? → Regulatory Crisis"
+
+This completes your 7-demo portfolio, covering all C-suite personas and major enterprise use cases.

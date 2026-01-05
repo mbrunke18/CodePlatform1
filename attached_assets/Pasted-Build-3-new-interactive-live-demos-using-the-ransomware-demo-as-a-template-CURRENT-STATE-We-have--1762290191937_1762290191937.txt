@@ -1,0 +1,405 @@
+Build 3 new interactive live demos using the ransomware demo as a template.
+
+CURRENT STATE:
+We have 1 working demo (Ransomware Response) with:
+- 12-minute timer
+- Stakeholder coordination tracking
+- 80% threshold detection
+- Final metrics and celebration
+- Located at: [INSERT PATH TO CURRENT DEMO COMPONENT]
+
+OBJECTIVE:
+Create 3 NEW demos that follow the exact same pattern but with different scenarios:
+1. M&A Integration
+2. Product Launch (Multi-Country)
+3. Supplier Crisis
+
+Each demo should have identical UX/flow but different:
+- Scenario name and description
+- Stakeholder list (different roles/titles)
+- Event timeline (what happens during coordination)
+- Final impact metrics (financial value)
+
+═══════════════════════════════════════════════════════════════════════════════
+DEMO 1: M&A INTEGRATION
+═══════════════════════════════════════════════════════════════════════════════
+
+SCENARIO DETAILS:
+- Name: "M&A Integration - CloudTech Acquisition"
+- Trigger: "Deal closed: $500M acquisition"
+- Context: "Just closed acquisition of CloudTech. 100-day integration plan must begin immediately. Need to coordinate 45 stakeholders across both companies for Day 1 execution."
+
+STAKEHOLDERS (45 total):
+
+Tier 1 - Decision Makers (8):
+- CEO (Acquiring Co)
+- CEO (Acquired Co) 
+- CFO (Acquiring Co)
+- General Counsel (Acquiring Co)
+- Head of Corporate Dev
+- Chief Integration Officer
+- Board Chair
+- Lead M&A Advisor (External)
+
+Tier 2 - Execution Team (25):
+- CFO (Acquired Co)
+- CTO (Both companies) - 2 people
+- CHRO (Both companies) - 2 people
+- VP Operations (Both companies) - 2 people
+- VP Sales (Both companies) - 2 people
+- VP Marketing (Both companies) - 2 people
+- VP Product (Both companies) - 2 people
+- VP Engineering (Both companies) - 2 people
+- VP Customer Success (Both companies) - 2 people
+- VP Finance (Both companies) - 2 people
+- VP Legal (Both companies) - 2 people
+- Integration PMO (3 people)
+
+Tier 3 - Notification Only (12):
+- Department heads from both companies
+
+EVENT TIMELINE (what appears in activity feed):
+
+Minute 0:00 - "Integration playbook activated by CEO"
+Minute 0:15 - "Email sent to 45 stakeholders"
+Minute 0:30 - "Slack notifications distributed"
+Minute 1:00 - "CEO (Acquiring) acknowledged"
+Minute 1:20 - "General Counsel acknowledged"
+Minute 1:45 - "CFO (Acquiring) acknowledged"
+Minute 2:10 - "Head of Corp Dev acknowledged"
+Minute 2:30 - "8 Tier 1 stakeholders coordinated"
+Minute 3:00 - "Integration war room URL shared"
+Minute 3:30 - "CTO (Acquiring) acknowledged"
+Minute 4:00 - "CHRO (Both) acknowledged"
+Minute 4:45 - "VP Operations teams coordinated"
+Minute 5:30 - "Day 1 task list distributed"
+Minute 6:00 - "15 stakeholders acknowledged"
+Minute 6:30 - "Financial systems integration team ready"
+Minute 7:00 - "IT integration team ready"
+Minute 7:45 - "20 stakeholders acknowledged"
+Minute 8:00 - "HR integration team ready"
+Minute 8:30 - "Sales team coordination complete"
+Minute 9:00 - "25 stakeholders acknowledged"
+Minute 9:45 - "Customer success handoff plan active"
+Minute 10:00 - "30 stakeholders acknowledged"
+Minute 10:30 - "Legal integration checklist shared"
+Minute 10:50 - "80% coordination threshold reached (36/45)"
+Minute 11:15 - "Product roadmap alignment complete"
+Minute 11:47 - "All critical stakeholders coordinated (42/45 = 93%)"
+
+FINAL METRICS:
+- Coordination Time: 11:47
+- Stakeholders: 42/45 acknowledged (93%)
+- Average Response Time: 2.4 minutes
+- Deal Value: $500M
+- Integration Timeline: 100 days
+- Synergy Target: $50M annually
+
+COMPARISON CARD:
+Without VEXOR:
+- Coordination Time: 3-5 days
+- Email chains: 200+ messages
+- Meetings scheduled: 15+ calls
+- Integration delay: 2-3 weeks
+- Value leakage: $20M+ (from delayed synergies)
+
+With VEXOR:
+- Coordination Time: 11:47 minutes
+- Single activation: Instant distribution
+- Everyone aligned: Day 1 ready
+- Integration on schedule: 100-day plan active
+- Value preserved: $20M saved
+
+VALUE CREATED:
+- Time Saved: 72 hours → 12 minutes (360x faster)
+- Executive Time Value: $504,000 (72 hours × 45 people × $200/hour)
+- Synergy Acceleration: $4.2M (3 weeks faster = 3/52 × $50M annual synergies)
+- Total Value: $4.7M from single activation
+
+HEADLINE: "From deal close to Day 1 execution in 12 minutes"
+
+═══════════════════════════════════════════════════════════════════════════════
+DEMO 2: PRODUCT LAUNCH (MULTI-COUNTRY)
+═══════════════════════════════════════════════════════════════════════════════
+
+SCENARIO DETAILS:
+- Name: "Global Product Launch - NexGen Platform"
+- Trigger: "Launch date confirmed: 15 countries, 30 days"
+- Context: "Launching NexGen Platform across 15 countries simultaneously. Need to coordinate 50 stakeholders across regions, functions, and time zones for synchronized go-to-market."
+
+STAKEHOLDERS (50 total):
+
+Tier 1 - Decision Makers (7):
+- CEO
+- CMO (Chief Marketing Officer)
+- CPO (Chief Product Officer)
+- CRO (Chief Revenue Officer)
+- VP International
+- VP Operations
+- Launch Executive Sponsor
+
+Tier 2 - Regional Leaders (15):
+- GM North America
+- GM Europe (3 regions: UK, DACH, Southern Europe)
+- GM Asia Pacific (4 regions: Japan, China, India, Southeast Asia)
+- GM Latin America (2 regions: Brazil, Rest of LATAM)
+- GM Middle East & Africa
+- Regional Marketing Directors (15 people)
+
+Tier 3 - Functional Leads (28):
+- VP Product Marketing
+- VP Demand Gen
+- VP Sales Enablement
+- VP Channel Partnerships
+- VP Customer Success
+- VP Supply Chain
+- VP Legal (Product Counsel)
+- VP Finance (Pricing)
+- Director Product Management
+- Director Engineering (Launch Readiness)
+- Plus 18 regional functional leads
+
+EVENT TIMELINE:
+
+Minute 0:00 - "Global launch playbook activated"
+Minute 0:15 - "50 stakeholders notified across 12 time zones"
+Minute 0:45 - "CEO acknowledged: 'All systems go'"
+Minute 1:10 - "CMO acknowledged"
+Minute 1:30 - "CPO acknowledged"
+Minute 2:00 - "C-suite aligned (7/7 = 100%)"
+Minute 2:30 - "North America GM acknowledged"
+Minute 3:00 - "Europe GMs coordinated (3/3)"
+Minute 3:45 - "Launch war room activated"
+Minute 4:15 - "APAC GMs acknowledged (4/4)"
+Minute 4:45 - "15 regional GMs coordinated"
+Minute 5:30 - "Marketing directors ready (15/15)"
+Minute 6:00 - "30 stakeholders acknowledged"
+Minute 6:30 - "Go-to-market playbooks distributed"
+Minute 7:00 - "Sales enablement materials shared"
+Minute 7:30 - "Product launch kits distributed"
+Minute 8:00 - "Channel partner briefings scheduled"
+Minute 8:30 - "35 stakeholders acknowledged"
+Minute 9:00 - "Regional pricing confirmed"
+Minute 9:30 - "Inventory allocation finalized"
+Minute 10:00 - "Legal compliance verified (15 countries)"
+Minute 10:30 - "40 stakeholders acknowledged"
+Minute 10:50 - "80% threshold reached (40/50)"
+Minute 11:20 - "Media embargoes coordinated"
+Minute 11:47 - "All regions ready for launch (47/50 = 94%)"
+
+FINAL METRICS:
+- Coordination Time: 11:47
+- Stakeholders: 47/50 acknowledged (94%)
+- Regions: 15 countries synchronized
+- Average Response Time: 2.1 minutes
+- Launch Timeline: 30 days
+- First Year Revenue Target: $200M
+
+COMPARISON CARD:
+Without VEXOR:
+- Coordination Time: 5-7 days
+- Regional calls: 30+ meetings
+- Time zone conflicts: Endless
+- Launch delays: 2-4 weeks common
+- Lost revenue: $15M+ (from delayed launch)
+
+With VEXOR:
+- Coordination Time: 11:47 minutes
+- Single activation: All regions aligned
+- Synchronized launch: All 15 countries ready
+- Timeline preserved: Launch on schedule
+- Revenue captured: Full $200M target
+
+VALUE CREATED:
+- Time Saved: 120 hours → 12 minutes (600x faster)
+- Executive Time Value: $600,000 (120 hours × 50 people × $200/hour)
+- Launch Acceleration: $10M (2 weeks faster = 2/52 × $200M)
+- Total Value: $10.6M from single activation
+
+HEADLINE: "15 countries coordinated for launch in 12 minutes"
+
+═══════════════════════════════════════════════════════════════════════════════
+DEMO 3: SUPPLIER CRISIS
+═══════════════════════════════════════════════════════════════════════════════
+
+SCENARIO DETAILS:
+- Name: "Supplier Crisis - Tier 1 Failure"
+- Trigger: "Critical supplier bankruptcy filed"
+- Context: "ChipTech (Tier 1 semiconductor supplier) filed Chapter 11. Supplies 40% of our components. Manufacturing stops in 48 hours without alternative source. Need immediate supply chain response."
+
+STAKEHOLDERS (35 total):
+
+Tier 1 - Decision Makers (6):
+- CEO
+- COO (Chief Operating Officer)
+- CPO (Chief Procurement Officer)
+- CFO
+- VP Manufacturing
+- VP Supply Chain
+
+Tier 2 - Execution Team (20):
+- Director Procurement (Semiconductors)
+- Director Manufacturing Operations
+- Director Quality Assurance
+- Director Supplier Relations
+- Director Logistics
+- Plant Managers (5 facilities)
+- Category Managers (3 for components)
+- Manufacturing Engineers (3)
+- Supply Chain Analysts (2)
+- Finance (Budget/Contracts) (2)
+
+Tier 3 - Support (9):
+- Legal (Contracts)
+- Legal (Bankruptcy)
+- Risk Management
+- Customer Success (Impact Communication)
+- Investor Relations
+- PR/Communications
+- Plus 3 regional coordinators
+
+EVENT TIMELINE:
+
+Minute 0:00 - "Supplier crisis playbook activated"
+Minute 0:15 - "35 stakeholders alerted: URGENT"
+Minute 0:30 - "CEO acknowledged"
+Minute 0:45 - "COO acknowledged"
+Minute 1:00 - "CPO acknowledged: Activating contingency"
+Minute 1:20 - "CFO acknowledged: Emergency budget approved"
+Minute 1:45 - "C-suite coordinated (6/6 = 100%)"
+Minute 2:00 - "Crisis war room established"
+Minute 2:30 - "Alternative supplier list distributed"
+Minute 3:00 - "Director Procurement acknowledged"
+Minute 3:30 - "Manufacturing Operations ready"
+Minute 4:00 - "5 plant managers coordinated"
+Minute 4:30 - "Inventory assessment: 48 hours supply"
+Minute 5:00 - "15 stakeholders acknowledged"
+Minute 5:30 - "Alternative supplier #1 contacted"
+Minute 6:00 - "Alternative supplier #2 contacted"
+Minute 6:30 - "Alternative supplier #3 contacted"
+Minute 7:00 - "Quality team reviewing alternatives"
+Minute 7:30 - "20 stakeholders acknowledged"
+Minute 8:00 - "Expedited procurement authorized"
+Minute 8:30 - "Production rescheduling underway"
+Minute 9:00 - "Customer impact assessment complete"
+Minute 9:30 - "25 stakeholders acknowledged"
+Minute 10:00 - "Air freight arranged for emergency supply"
+Minute 10:30 - "28 stakeholders acknowledged"
+Minute 10:50 - "80% threshold reached (28/35)"
+Minute 11:20 - "Alternative supplier commitments secured"
+Minute 11:47 - "Supply chain response coordinated (33/35 = 94%)"
+
+FINAL METRICS:
+- Coordination Time: 11:47
+- Stakeholders: 33/35 acknowledged (94%)
+- Critical Path: Supply secured within 36 hours
+- Average Response Time: 2.2 minutes
+- Manufacturing Impact: $0 (crisis averted)
+- Revenue Protected: $150M
+
+COMPARISON CARD:
+Without VEXOR:
+- Coordination Time: 24-48 hours
+- Emergency meetings: 8-12 calls
+- Production halt: 2-5 days
+- Revenue loss: $25M+
+- Customer impact: Severe
+
+With VEXOR:
+- Coordination Time: 11:47 minutes
+- Single activation: Instant response
+- Production continuity: Maintained
+- Revenue loss: $0 (crisis averted)
+- Customer impact: None
+
+VALUE CREATED:
+- Time Saved: 36 hours → 12 minutes (180x faster)
+- Executive Time Value: $252,000 (36 hours × 35 people × $200/hour)
+- Production Loss Avoided: $10M (2 days × $5M/day)
+- Revenue Protected: $150M (prevented customer churn)
+- Total Value: $160M+ from single activation
+
+HEADLINE: "Supply chain crisis resolved in 12 minutes"
+
+═══════════════════════════════════════════════════════════════════════════════
+IMPLEMENTATION INSTRUCTIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+1. CLONE THE RANSOMWARE DEMO:
+   - Copy the existing ransomware demo component
+   - Create 3 new files:
+     * MaIntegrationDemo.tsx
+     * ProductLaunchDemo.tsx
+     * SupplierCrisisDemo.tsx
+
+2. REPLACE SCENARIO DATA:
+   - Update scenario name, trigger, context
+   - Replace stakeholder list (preserve tier structure)
+   - Replace event timeline (preserve timing pattern)
+   - Update final metrics
+   - Update comparison card values
+   - Update value created calculations
+
+3. UPDATE ROUTES:
+   Add to router:
+   - /demo/ma-integration
+   - /demo/product-launch
+   - /demo/supplier-crisis
+
+4. CREATE DEMO SELECTOR:
+   Add to homepage or demo page:
+   
+   <div className="demo-selector">
+     <h2>Choose Your Demo Scenario</h2>
+     
+     <div className="demo-cards">
+       <DemoCard
+         title="Ransomware Response"
+         icon="🔒"
+         audience="CISO, CIO, CTO"
+         impact="$22M crisis contained"
+         path="/demo/ransomware"
+       />
+       
+       <DemoCard
+         title="M&A Integration"
+         icon="🤝"
+         audience="CEO, CFO, Corp Dev"
+         impact="$500M deal, Day 1 ready"
+         path="/demo/ma-integration"
+       />
+       
+       <DemoCard
+         title="Product Launch"
+         icon="🚀"
+         audience="CEO, CMO, CPO"
+         impact="15 countries synchronized"
+         path="/demo/product-launch"
+       />
+       
+       <DemoCard
+         title="Supplier Crisis"
+         icon="⚠️"
+         audience="COO, CPO, Supply Chain"
+         impact="$150M revenue protected"
+         path="/demo/supplier-crisis"
+       />
+     </div>
+   </div>
+
+5. ENSURE CONSISTENCY:
+   - All demos run exactly 11:45 - 11:50 minutes
+   - All reach 80% at ~10:50
+   - All complete at ~11:47
+   - All show same celebration/confetti
+   - All use same metrics card layout
+   - All have same final CTAs
+
+6. TESTING:
+   - Run each demo end-to-end
+   - Verify timer completes
+   - Check final metrics display
+   - Test "Start New Demo" reset
+   - Ensure mobile responsive
+
+This creates 4 total interactive demos (including ransomware) that appeal to different C-suite personas and demonstrate VEXOR's versatility across use cases.

@@ -1,0 +1,1998 @@
+# M PLATFORM - IDEA FRAMEWORK INTEGRATION
+
+## Complete Replit-Ready Code Package
+
+## December 2025
+
+-----
+
+# QUICK REFERENCE
+
+**Framework:** IDEA™ (Identify, Detect, Execute, Advance)
+**Tagline:** “That’s the IDEA.”
+**Playbooks:** 166 across 9 domains
+**Categories:** Offense (58) | Defense (56) | Special Teams (52)
+**Speed Claim:** 72 hours → 12 minutes
+
+-----
+
+# FILE STRUCTURE FOR REPLIT
+
+```
+/m-platform
+├── index.html              # Home page
+├── idea-framework.html     # IDEA Framework dedicated page
+├── playbooks.html          # Playbook library
+├── about.html              # About/Origin story
+├── pilot.html              # Request pilot page
+├── css/
+│   └── styles.css          # Complete stylesheet
+├── js/
+│   └── main.js             # Interactions
+└── assets/
+    └── images/             # Icons, logos
+```
+
+-----
+
+# FILE 1: index.html (HOME PAGE)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M Platform | Strategic Execution Operating System</title>
+  <meta name="description" content="Execute strategy at the speed of disruption. The IDEA Framework: Identify, Detect, Execute, Advance. 166 playbooks across 9 strategic domains.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+  <div class="nav-container">
+    <a href="/" class="nav-logo">
+      <span class="logo-mark">M</span>
+      <span class="logo-text">Platform</span>
+    </a>
+    <div class="nav-links">
+      <a href="/idea-framework">IDEA Framework</a>
+      <a href="/playbooks">Playbooks</a>
+      <a href="/about">About</a>
+    </div>
+    <div class="nav-cta">
+      <a href="/pilot" class="btn btn-primary">Request Pilot</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <p class="eyebrow">Strategic Execution Operating System</p>
+        <h1>Execute Strategy at the Speed of Disruption</h1>
+        <p class="tagline">Success Favors the Prepared</p>
+        <p class="hero-text">
+          M Platform closes the 30% gap between strategy and execution 
+          with 166 pre-staged playbooks across 9 strategic domains.
+        </p>
+        
+        <!-- IDEA Teaser -->
+        <div class="idea-badge">
+          <p class="idea-label">The IDEA Framework™</p>
+          <div class="idea-letters">
+            <span><strong>I</strong>dentify</span>
+            <span class="dot">·</span>
+            <span><strong>D</strong>etect</span>
+            <span class="dot">·</span>
+            <span><strong>E</strong>xecute</span>
+            <span class="dot">·</span>
+            <span><strong>A</strong>dvance</span>
+          </div>
+        </div>
+        
+        <div class="hero-ctas">
+          <a href="/pilot" class="btn btn-primary btn-lg">Request Pilot</a>
+          <a href="#idea" class="btn btn-secondary btn-lg">See How It Works</a>
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="speed-comparison">
+          <div class="speed-item old">
+            <span class="speed-time">72:00:00</span>
+            <span class="speed-label">Industry Average</span>
+          </div>
+          <div class="speed-arrow">→</div>
+          <div class="speed-item new">
+            <span class="speed-time">00:12:00</span>
+            <span class="speed-label">M Platform</span>
+          </div>
+        </div>
+        <p class="speed-caption">From signal to coordinated action</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">The Problem</p>
+      <h2>Your Strategy Is Better Than Your Execution</h2>
+      <p class="section-intro">
+        McKinsey research shows even high-performing companies lose 30% of their 
+        strategy's value in execution. For a Fortune 500, that's $270M–$900M annually.
+      </p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-number">72 hrs</span>
+        <p class="stat-label">Average enterprise response time to strategic disruption</p>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">30%</span>
+        <p class="stat-label">Strategy value lost in execution (McKinsey, 2025)</p>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">67%</span>
+        <p class="stat-label">Enterprises redesigned operating models in past 2 years</p>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">$50B</span>
+        <p class="stat-label">Annual spend on strategy consulting—with no execution layer</p>
+      </div>
+    </div>
+    
+    <div class="problem-conclusion">
+      <p>The gap isn't intelligence. <strong>It's coordination.</strong></p>
+      <p>Consultants design operating models. <strong>M executes them.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- IDEA FRAMEWORK -->
+<section class="idea-section" id="idea">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">The Methodology</p>
+      <h2>The IDEA Framework™</h2>
+      <p class="section-intro">
+        Four phases. One system. Prepared to execute—no matter the situation.
+      </p>
+    </div>
+    
+    <div class="idea-grid">
+      <!-- IDENTIFY -->
+      <div class="idea-phase" data-phase="I">
+        <div class="phase-icon">I</div>
+        <div class="phase-content">
+          <h3>Identify</h3>
+          <p class="phase-subtitle">Build Your Depth Chart</p>
+          <p>Map your operating model to execution playbooks. Pre-stage responses 
+             across 9 strategic domains. Know who does what before anything happens.</p>
+          <ul class="phase-list">
+            <li>Operating Model Alignment diagnostic</li>
+            <li>166 pre-built playbooks ready to deploy</li>
+            <li>Stakeholder accountability mapping</li>
+            <li>Game Day Readiness scoring</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- DETECT -->
+      <div class="idea-phase" data-phase="D">
+        <div class="phase-icon">D</div>
+        <div class="phase-content">
+          <h3>Detect</h3>
+          <p class="phase-subtitle">Scout the Field</p>
+          <p>AI-powered monitoring spots signals early. Real-time triggers across 
+             market, competitive, and regulatory landscapes. Scouting reports, not surprises.</p>
+          <ul class="phase-list">
+            <li>AI pattern recognition across 10,000+ scenarios</li>
+            <li>Competitive intelligence scouting</li>
+            <li>Early warning trigger system</li>
+            <li>Market signal monitoring</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- EXECUTE -->
+      <div class="idea-phase" data-phase="E">
+        <div class="phase-icon">E</div>
+        <div class="phase-content">
+          <h3>Execute</h3>
+          <p class="phase-subtitle">Run the Play</p>
+          <p>Coordinated action in 12 minutes vs. 72-hour industry average. 
+             Everyone aligned, nothing lost in translation.</p>
+          <ul class="phase-list">
+            <li>Automated stakeholder routing</li>
+            <li>Real-time play clock tracking</li>
+            <li>Two-Minute Drill mode for urgent response</li>
+            <li>Halftime Adjustments for mid-execution pivots</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- ADVANCE -->
+      <div class="idea-phase" data-phase="A">
+        <div class="phase-icon">A</div>
+        <div class="phase-content">
+          <h3>Advance</h3>
+          <p class="phase-subtitle">Review the Film</p>
+          <p>Every execution makes you stronger. Automated retrospectives capture 
+             what worked. Institutional knowledge compounds, not walks out the door.</p>
+          <ul class="phase-list">
+            <li>Film Room post-action analysis</li>
+            <li>Playbook refinement recommendations</li>
+            <li>Performance benchmarking</li>
+            <li>Organizational learning capture</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="idea-conclusion">
+      <p class="idea-tagline">That's the IDEA.</p>
+      <p class="idea-subtext">Prepared to execute. No matter the situation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OFFENSE / DEFENSE / SPECIAL TEAMS -->
+<section class="coverage">
+  <div class="container">
+    <div class="section-header light">
+      <p class="eyebrow">Complete Coverage</p>
+      <h2>Offense. Defense. Special Teams.</h2>
+      <p class="section-intro">
+        Great football programs are prepared for every situation before the game starts. 
+        M brings this same complete preparedness to business leadership.
+      </p>
+    </div>
+    
+    <div class="coverage-grid">
+      <!-- OFFENSE -->
+      <div class="coverage-card offense">
+        <div class="coverage-header">
+          <span class="coverage-icon">→</span>
+          <h3>Offense</h3>
+          <p class="coverage-tagline">Seize Opportunities</p>
+        </div>
+        <p>M&A targets, market expansion, competitive moves—playbooks ready to capitalize.</p>
+        <div class="domain-tags">
+          <span>Market Entry <em>22</em></span>
+          <span>M&A Integration <em>16</em></span>
+          <span>Product Launch <em>20</em></span>
+        </div>
+        <p class="coverage-count">58 playbooks</p>
+      </div>
+      
+      <!-- DEFENSE -->
+      <div class="coverage-card defense">
+        <div class="coverage-header">
+          <span class="coverage-icon">◆</span>
+          <h3>Defense</h3>
+          <p class="coverage-tagline">Protect Value</p>
+        </div>
+        <p>Regulatory changes, supply chain disruptions, cyber incidents—responses pre-staged.</p>
+        <div class="domain-tags">
+          <span>Crisis Response <em>24</em></span>
+          <span>Cyber Incidents <em>18</em></span>
+          <span>Regulatory Change <em>14</em></span>
+        </div>
+        <p class="coverage-count">56 playbooks</p>
+      </div>
+      
+      <!-- SPECIAL TEAMS -->
+      <div class="coverage-card special">
+        <div class="coverage-header">
+          <span class="coverage-icon">⚡</span>
+          <h3>Special Teams</h3>
+          <p class="coverage-tagline">Change the Game</p>
+        </div>
+        <p>AI governance, ESG mandates, workforce transformation—emerging plays ready.</p>
+        <div class="domain-tags">
+          <span>Transformation <em>16</em></span>
+          <span>Competitive Response <em>18</em></span>
+          <span>AI Governance <em>18</em></span>
+        </div>
+        <p class="coverage-count">52 playbooks</p>
+      </div>
+    </div>
+    
+    <div class="coverage-summary">
+      <p>No matter the situation, executives using M are prepared to execute 
+         <strong>swiftly, efficiently, and effectively.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">The Solution</p>
+      <h2>M Platform: The Execution Layer</h2>
+      <p class="section-intro">
+        The first Strategic Execution Operating System—software that turns 
+        operating model design into coordinated action.
+      </p>
+    </div>
+    
+    <div class="comparison">
+      <div class="comparison-side">
+        <h3>Consultants Design</h3>
+        <ul>
+          <li>12 operating model elements</li>
+          <li>Fingerprint on paper</li>
+          <li>"Here's what to build"</li>
+        </ul>
+      </div>
+      <div class="comparison-plus">+</div>
+      <div class="comparison-side highlight">
+        <h3>M Platform Executes</h3>
+        <ul>
+          <li>166 pre-staged playbooks</li>
+          <li>Fingerprint in software</li>
+          <li>"Here's how to run it"</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="solution-tagline">
+      <p>McKinsey gives you the blueprint.</p>
+      <p class="highlight">M Platform builds the house.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section class="why-now">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Why Now</p>
+      <h2>Three Forces Converging</h2>
+    </div>
+    
+    <div class="forces-grid">
+      <div class="force-card">
+        <span class="force-stat">$50B</span>
+        <h3>Consulting Saturation</h3>
+        <p>Companies spend $50B/year on strategy consulting, but consultants 
+           leave when the deck is done. No execution layer exists.</p>
+      </div>
+      <div class="force-card">
+        <span class="force-stat">67%</span>
+        <h3>Operating Model Overhauls</h3>
+        <p>67% of enterprises redesigned their operating model in the past 2 years 
+           (McKinsey, 2025). They need software to run the new model.</p>
+      </div>
+      <div class="force-card">
+        <span class="force-stat">12 min</span>
+        <h3>Speed Demands</h3>
+        <p>Markets move in days, not quarters. The 72-hour response window 
+           is now 12 minutes. Preparation beats reaction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE PROPS -->
+<section class="value-props">
+  <div class="container">
+    <div class="props-grid">
+      <div class="prop-card">
+        <div class="prop-visual">
+          <span class="before">72 hrs</span>
+          <span class="arrow">→</span>
+          <span class="after">12 min</span>
+        </div>
+        <h3>Speed Is Strategy</h3>
+        <p>Coordinated response vs. industry average. When disruption hits, 
+           you're already executing.</p>
+      </div>
+      <div class="prop-card">
+        <div class="prop-visual">
+          <span class="number">9</span>
+        </div>
+        <h3>Complete Coverage</h3>
+        <p>From market dynamics to AI governance. Every strategic domain. 
+           Offense, defense, and special teams.</p>
+      </div>
+      <div class="prop-card">
+        <div class="prop-visual">
+          <span class="icon">⚡</span>
+        </div>
+        <h3>Human-AI Partnership</h3>
+        <p>AI monitors and recommends. Executives decide and execute. 
+           Technology amplifies judgment, doesn't replace it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORIGIN -->
+<section class="origin">
+  <div class="container">
+    <div class="origin-grid">
+      <div class="origin-content">
+        <p class="eyebrow">The Origin</p>
+        <h2>From Sideline to Boardroom</h2>
+        <p class="lead">
+          Before enterprise software, I spent 5 years coordinating elite athletes 
+          under pressure—as a major college football coach.
+        </p>
+        <p>
+          When a play breaks down, you don't have 72 hours. You have 40 seconds. 
+          What makes that possible isn't superhuman speed—it's preparation.
+        </p>
+        <p>
+          I spent 20+ years at Ford, Toyota, Lockheed Martin, Eli Lilly, and 
+          Churchill Downs asking the same question:
+        </p>
+        <blockquote>
+          "Why can't the boardroom execute like the sideline?"
+        </blockquote>
+        <p class="conclusion">M Platform is the answer. <strong>That's the IDEA.</strong></p>
+      </div>
+      <div class="origin-stats">
+        <div class="origin-stat">
+          <span class="number">5</span>
+          <span class="label">Years coaching major college football</span>
+        </div>
+        <div class="origin-stat">
+          <span class="number">20+</span>
+          <span class="label">Years Fortune 500 experience</span>
+        </div>
+        <div class="origin-stat">
+          <span class="number">7</span>
+          <span class="label">Enterprise transformations led</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <h2>Ready to Close the Execution Gap?</h2>
+    <p class="cta-tagline">Success Favors the Prepared</p>
+    <p>Start with a 90-day pilot. See M Platform coordinate your first 
+       strategic response in 12 minutes instead of 72 hours.</p>
+    <div class="cta-buttons">
+      <a href="/pilot" class="btn btn-gold btn-lg">Request Pilot</a>
+      <a href="/demo" class="btn btn-outline btn-lg">Watch Demo</a>
+    </div>
+    <p class="cta-details">$75K pilot · 90 days · Full platform access · Success metrics included</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="logo-mark">M</span>
+          <span class="logo-text">Platform</span>
+        </div>
+        <p class="footer-tagline">Strategic Execution Operating System</p>
+        <p class="footer-mission">That's the IDEA.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="/idea-framework">IDEA Framework</a>
+          <a href="/playbooks">166 Playbooks</a>
+          <a href="/integrations">Integrations</a>
+        </div>
+        <div class="footer-col">
+          <h4>Playbooks</h4>
+          <a href="/playbooks#offense">Offense (58)</a>
+          <a href="/playbooks#defense">Defense (56)</a>
+          <a href="/playbooks#special">Special Teams (52)</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="/about">About</a>
+          <a href="/pilot">Request Pilot</a>
+          <a href="/contact">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 M Platform. All rights reserved.</p>
+      <p class="footer-note">Success Favors the Prepared</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+```
+
+-----
+
+# FILE 2: css/styles.css
+
+```css
+/* ================================================
+   M PLATFORM DESIGN SYSTEM
+   IDEA Framework Edition | December 2025
+   ================================================ */
+
+/* === VARIABLES === */
+:root {
+  /* Brand Colors */
+  --navy: #1a2332;
+  --navy-light: #2a3444;
+  --navy-dark: #0f1219;
+  --gold: #c9a227;
+  --gold-light: #d4b445;
+  --blue: #2563eb;
+  
+  /* Category Colors */
+  --offense: #10b981;
+  --defense: #3b82f6;
+  --special: #8b5cf6;
+  
+  /* Neutrals */
+  --white: #ffffff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  
+  /* Typography */
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1);
+}
+
+/* === RESET === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--gray-900);
+  line-height: 1.6;
+  background: var(--white);
+}
+
+/* === TYPOGRAPHY === */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--navy);
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p { margin-bottom: var(--space-4); }
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+ul { list-style: none; }
+
+/* === LAYOUT === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+section {
+  padding: var(--space-20) 0;
+}
+
+/* === COMPONENTS === */
+
+/* Navigation */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 40px;
+  height: 40px;
+  background: var(--navy);
+  color: var(--gold);
+  font-weight: 800;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--navy);
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.nav-links a {
+  color: var(--gray-600);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--navy);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-6);
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--navy-light);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--navy);
+  border-color: var(--navy);
+}
+
+.btn-secondary:hover {
+  background: var(--gray-50);
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.btn-gold:hover {
+  background: var(--gold-light);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border-color: var(--white);
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.btn-lg {
+  padding: var(--space-4) var(--space-8);
+  font-size: 1.125rem;
+}
+
+/* Eyebrow */
+.eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  margin-bottom: var(--space-3);
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--space-12);
+}
+
+.section-header.light h2,
+.section-header.light .section-intro {
+  color: var(--white);
+}
+
+.section-intro {
+  font-size: 1.25rem;
+  color: var(--gray-600);
+}
+
+/* === HERO === */
+.hero {
+  padding: 140px 0 var(--space-20);
+  background: linear-gradient(180deg, var(--gray-50) 0%, var(--white) 100%);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+.hero h1 {
+  margin-bottom: var(--space-4);
+}
+
+.tagline {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--navy);
+  font-style: italic;
+  margin-bottom: var(--space-6);
+}
+
+.hero-text {
+  font-size: 1.25rem;
+  color: var(--gray-600);
+  margin-bottom: var(--space-8);
+}
+
+/* IDEA Badge */
+.idea-badge {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.idea-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: var(--space-3);
+}
+
+.idea-letters {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 1.125rem;
+  color: var(--navy);
+}
+
+.idea-letters strong {
+  color: var(--gold);
+  font-size: 1.25rem;
+}
+
+.idea-letters .dot {
+  color: var(--gray-300);
+}
+
+.hero-ctas {
+  display: flex;
+  gap: var(--space-4);
+}
+
+/* Speed Comparison */
+.speed-comparison {
+  background: var(--navy);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+}
+
+.speed-item {
+  text-align: center;
+}
+
+.speed-time {
+  display: block;
+  font-family: 'SF Mono', Monaco, monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+
+.speed-item.old .speed-time {
+  color: var(--gray-400);
+}
+
+.speed-item.new .speed-time {
+  color: var(--offense);
+}
+
+.speed-label {
+  font-size: 0.875rem;
+  color: var(--gray-400);
+}
+
+.speed-arrow {
+  font-size: 2rem;
+  color: var(--gold);
+}
+
+.speed-caption {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--gray-500);
+  margin-top: var(--space-4);
+}
+
+/* === STATS === */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: var(--space-2);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+  margin: 0;
+}
+
+.problem-conclusion {
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.problem-conclusion p {
+  margin-bottom: var(--space-2);
+}
+
+/* === IDEA FRAMEWORK === */
+.idea-section {
+  background: var(--gray-50);
+}
+
+.idea-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+.idea-phase {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  display: flex;
+  gap: var(--space-6);
+  border: 1px solid var(--gray-200);
+  transition: all 0.3s;
+}
+
+.idea-phase:hover {
+  border-color: var(--gold);
+  box-shadow: var(--shadow-lg);
+}
+
+.phase-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--navy);
+  color: var(--gold);
+  font-size: 2rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  flex-shrink: 0;
+}
+
+.phase-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-1);
+}
+
+.phase-subtitle {
+  font-size: 0.875rem;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: var(--space-3);
+}
+
+.phase-content > p {
+  color: var(--gray-600);
+  margin-bottom: var(--space-4);
+}
+
+.phase-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.phase-list li {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  padding-left: var(--space-5);
+  position: relative;
+}
+
+.phase-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+
+.idea-conclusion {
+  text-align: center;
+  margin-top: var(--space-12);
+}
+
+.idea-tagline {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: var(--space-2);
+}
+
+.idea-subtext {
+  font-size: 1.25rem;
+  color: var(--gray-500);
+}
+
+/* === COVERAGE (Offense/Defense/Special) === */
+.coverage {
+  background: var(--navy);
+}
+
+.coverage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.coverage-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  transition: all 0.3s;
+}
+
+.coverage-card:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-4px);
+}
+
+.coverage-card.offense { border-top: 4px solid var(--offense); }
+.coverage-card.defense { border-top: 4px solid var(--defense); }
+.coverage-card.special { border-top: 4px solid var(--special); }
+
+.coverage-header {
+  margin-bottom: var(--space-4);
+}
+
+.coverage-icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.coverage-card.offense .coverage-icon { color: var(--offense); }
+.coverage-card.defense .coverage-icon { color: var(--defense); }
+.coverage-card.special .coverage-icon { color: var(--special); }
+
+.coverage-card h3 {
+  color: var(--white);
+  font-size: 1.5rem;
+  margin-bottom: var(--space-1);
+}
+
+.coverage-tagline {
+  color: var(--gold);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.coverage-card > p {
+  color: var(--gray-300);
+  margin-bottom: var(--space-6);
+}
+
+.domain-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.domain-tags span {
+  background: rgba(255,255,255,0.1);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  color: var(--white);
+}
+
+.domain-tags em {
+  color: var(--gold);
+  font-style: normal;
+  margin-left: var(--space-1);
+}
+
+.coverage-count {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0;
+}
+
+.coverage-summary {
+  text-align: center;
+  margin-top: var(--space-12);
+}
+
+.coverage-summary p {
+  font-size: 1.25rem;
+  color: var(--gray-300);
+}
+
+/* === SOLUTION === */
+.comparison {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-6);
+  max-width: 900px;
+  margin: 0 auto var(--space-12);
+}
+
+.comparison-side {
+  flex: 1;
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+}
+
+.comparison-side.highlight {
+  background: var(--navy);
+}
+
+.comparison-side h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-4);
+}
+
+.comparison-side.highlight h3 {
+  color: var(--white);
+}
+
+.comparison-side ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.comparison-side li {
+  color: var(--gray-600);
+  padding-left: var(--space-5);
+  position: relative;
+}
+
+.comparison-side li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+}
+
+.comparison-side.highlight li {
+  color: var(--gray-300);
+}
+
+.comparison-side.highlight li::before {
+  color: var(--gold);
+}
+
+.comparison-plus {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.solution-tagline {
+  text-align: center;
+}
+
+.solution-tagline p {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-2);
+}
+
+.solution-tagline .highlight {
+  font-weight: 700;
+  color: var(--navy);
+}
+
+/* === WHY NOW === */
+.why-now {
+  background: var(--gray-50);
+}
+
+.forces-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.force-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  text-align: center;
+  border: 1px solid var(--gray-200);
+}
+
+.force-stat {
+  display: block;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--gold);
+  margin-bottom: var(--space-4);
+}
+
+.force-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-3);
+}
+
+.force-card p {
+  color: var(--gray-600);
+  margin: 0;
+}
+
+/* === VALUE PROPS === */
+.props-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.prop-card {
+  text-align: center;
+  padding: var(--space-8);
+}
+
+.prop-visual {
+  margin-bottom: var(--space-6);
+}
+
+.prop-visual .before {
+  font-size: 1.5rem;
+  color: var(--gray-400);
+  text-decoration: line-through;
+}
+
+.prop-visual .arrow {
+  margin: 0 var(--space-3);
+  color: var(--gold);
+}
+
+.prop-visual .after {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--offense);
+}
+
+.prop-visual .number {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.prop-visual .icon {
+  font-size: 3rem;
+}
+
+.prop-card h3 {
+  margin-bottom: var(--space-3);
+}
+
+.prop-card p {
+  color: var(--gray-600);
+  margin: 0;
+}
+
+/* === ORIGIN === */
+.origin {
+  background: var(--gray-50);
+}
+
+.origin-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+.origin-content .lead {
+  font-size: 1.25rem;
+  color: var(--navy);
+  margin-bottom: var(--space-6);
+}
+
+.origin-content blockquote {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--navy);
+  padding-left: var(--space-6);
+  border-left: 4px solid var(--gold);
+  margin: var(--space-6) 0;
+}
+
+.origin-content .conclusion {
+  font-size: 1.125rem;
+}
+
+.origin-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.origin-stat {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: center;
+  border: 1px solid var(--gray-200);
+}
+
+.origin-stat .number {
+  display: block;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+
+.origin-stat .label {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+}
+
+/* === CTA === */
+.cta {
+  background: var(--navy);
+  text-align: center;
+}
+
+.cta h2 {
+  color: var(--white);
+  margin-bottom: var(--space-2);
+}
+
+.cta-tagline {
+  font-size: 1.25rem;
+  color: var(--gold);
+  font-style: italic;
+  margin-bottom: var(--space-6);
+}
+
+.cta > .container > p {
+  color: var(--gray-300);
+  max-width: 600px;
+  margin: 0 auto var(--space-8);
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.cta-details {
+  font-size: 0.875rem;
+  color: var(--gray-400);
+}
+
+/* === FOOTER === */
+.footer {
+  background: var(--gray-900);
+  color: var(--gray-300);
+  padding: var(--space-16) 0 var(--space-8);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-16);
+  padding-bottom: var(--space-12);
+  border-bottom: 1px solid var(--gray-700);
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.footer-logo .logo-mark {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.footer-logo .logo-text {
+  color: var(--white);
+}
+
+.footer-tagline {
+  font-size: 0.875rem;
+  color: var(--gray-400);
+  margin-bottom: var(--space-2);
+}
+
+.footer-mission {
+  font-size: 0.875rem;
+  font-style: italic;
+  color: var(--gold);
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+}
+
+.footer-col h4 {
+  color: var(--white);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-4);
+}
+
+.footer-col a {
+  display: block;
+  color: var(--gray-400);
+  font-size: 0.875rem;
+  padding: var(--space-1) 0;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover {
+  color: var(--white);
+}
+
+.footer-bottom {
+  padding-top: var(--space-8);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: var(--gray-500);
+}
+
+.footer-note {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  
+  .hero-grid,
+  .stats-grid,
+  .idea-grid,
+  .coverage-grid,
+  .forces-grid,
+  .props-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .origin-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .origin-stats {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  
+  .hero { padding-top: 100px; }
+  
+  h1 { font-size: 2rem; }
+  
+  .hero-grid,
+  .stats-grid,
+  .idea-grid,
+  .coverage-grid,
+  .forces-grid,
+  .props-grid,
+  .footer-grid,
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
+  
+  .comparison {
+    flex-direction: column;
+  }
+  
+  .comparison-plus {
+    justify-content: center;
+    padding: var(--space-4) 0;
+  }
+  
+  .hero-ctas,
+  .cta-buttons {
+    flex-direction: column;
+  }
+  
+  .origin-stats {
+    flex-direction: column;
+  }
+  
+  .idea-phase {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .phase-icon {
+    margin: 0 auto;
+  }
+  
+  .phase-list li {
+    text-align: left;
+  }
+}
+```
+
+-----
+
+# FILE 3: idea-framework.html (DEDICATED PAGE)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The IDEA Framework | M Platform</title>
+  <meta name="description" content="Identify, Detect, Execute, Advance. The IDEA Framework is M Platform's methodology for strategic execution. That's the IDEA.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAV (same as index.html) -->
+<nav class="nav">
+  <div class="nav-container">
+    <a href="/" class="nav-logo">
+      <span class="logo-mark">M</span>
+      <span class="logo-text">Platform</span>
+    </a>
+    <div class="nav-links">
+      <a href="/idea-framework" class="active">IDEA Framework</a>
+      <a href="/playbooks">Playbooks</a>
+      <a href="/about">About</a>
+    </div>
+    <div class="nav-cta">
+      <a href="/pilot" class="btn btn-primary">Request Pilot</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="idea-hero">
+  <div class="container">
+    <p class="eyebrow">The Methodology</p>
+    <h1>The IDEA Framework™</h1>
+    <p class="idea-hero-subtitle">
+      <span><strong>I</strong>dentify</span>
+      <span class="dot">·</span>
+      <span><strong>D</strong>etect</span>
+      <span class="dot">·</span>
+      <span><strong>E</strong>xecute</span>
+      <span class="dot">·</span>
+      <span><strong>A</strong>dvance</span>
+    </p>
+    <p class="idea-hero-text">
+      Four phases. One system. Prepared to execute—no matter the situation.
+    </p>
+  </div>
+</section>
+
+<!-- DETAILED PHASES -->
+<section class="idea-detail">
+  <div class="container">
+    
+    <!-- IDENTIFY -->
+    <div class="idea-detail-phase" id="identify">
+      <div class="idea-detail-header">
+        <span class="idea-detail-letter">I</span>
+        <div>
+          <h2>Identify</h2>
+          <p class="idea-detail-subtitle">Build Your Depth Chart</p>
+        </div>
+      </div>
+      <div class="idea-detail-content">
+        <div class="idea-detail-description">
+          <p>Before the game starts, great teams know exactly who does what in every scenario. 
+             The Identify phase maps your operating model to execution playbooks, pre-stages 
+             responses across 9 strategic domains, and assigns accountability before anything happens.</p>
+          <p>This is where preparation becomes your competitive advantage. When disruption hits, 
+             you're not scrambling to figure out who's responsible—you already know.</p>
+        </div>
+        <div class="idea-detail-features">
+          <h4>Key Capabilities</h4>
+          <ul>
+            <li><strong>Operating Model Alignment</strong> — Map McKinsey's 12 elements to execution playbooks</li>
+            <li><strong>166 Pre-Built Playbooks</strong> — Ready to deploy across 9 strategic domains</li>
+            <li><strong>Stakeholder Depth Chart</strong> — Who does what, when, in every scenario</li>
+            <li><strong>Game Day Readiness Score</strong> — Quantified preparedness metric</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- DETECT -->
+    <div class="idea-detail-phase" id="detect">
+      <div class="idea-detail-header">
+        <span class="idea-detail-letter">D</span>
+        <div>
+          <h2>Detect</h2>
+          <p class="idea-detail-subtitle">Scout the Field</p>
+        </div>
+      </div>
+      <div class="idea-detail-content">
+        <div class="idea-detail-description">
+          <p>Great coaches don't wait for the play to develop—they read the formation before the snap. 
+             The Detect phase provides AI-powered monitoring across market, competitive, and regulatory 
+             landscapes, spotting signals early so you can act before disruption hits.</p>
+          <p>This is your scouting report delivered in real-time. No surprises, just intelligence.</p>
+        </div>
+        <div class="idea-detail-features">
+          <h4>Key Capabilities</h4>
+          <ul>
+            <li><strong>AI Pattern Recognition</strong> — Trained on 10,000+ scenarios across industries</li>
+            <li><strong>Competitive Scouting Reports</strong> — Real-time intelligence on market moves</li>
+            <li><strong>Early Warning Triggers</strong> — Custom alerts for your specific risk profile</li>
+            <li><strong>Signal Monitoring</strong> — Market, regulatory, and operational indicators</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- EXECUTE -->
+    <div class="idea-detail-phase" id="execute">
+      <div class="idea-detail-header">
+        <span class="idea-detail-letter">E</span>
+        <div>
+          <h2>Execute</h2>
+          <p class="idea-detail-subtitle">Run the Play</p>
+        </div>
+      </div>
+      <div class="idea-detail-content">
+        <div class="idea-detail-description">
+          <p>When the play is called, everyone moves in coordination. No confusion, no miscommunication. 
+             The Execute phase delivers coordinated action in 12 minutes vs. the 72-hour industry average, 
+             with automated stakeholder routing and real-time status tracking.</p>
+          <p>This is where preparation meets performance. Cross-functional alignment in a single command center.</p>
+        </div>
+        <div class="idea-detail-features">
+          <h4>Key Capabilities</h4>
+          <ul>
+            <li><strong>Automated Stakeholder Routing</strong> — Right people, right information, right time</li>
+            <li><strong>Real-Time Play Clock</strong> — Track response time against benchmarks</li>
+            <li><strong>Two-Minute Drill Mode</strong> — Accelerated protocols for urgent situations</li>
+            <li><strong>Halftime Adjustments</strong> — Mid-execution pivots when conditions change</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- ADVANCE -->
+    <div class="idea-detail-phase" id="advance">
+      <div class="idea-detail-header">
+        <span class="idea-detail-letter">A</span>
+        <div>
+          <h2>Advance</h2>
+          <p class="idea-detail-subtitle">Review the Film</p>
+        </div>
+      </div>
+      <div class="idea-detail-content">
+        <div class="idea-detail-description">
+          <p>Championship teams watch film after every game. What worked? What didn't? How do we get better? 
+             The Advance phase captures institutional knowledge automatically, improves playbooks with every 
+             execution cycle, and ensures your organization gets stronger over time.</p>
+          <p>This is how preparation compounds. Every execution makes the next one better.</p>
+        </div>
+        <div class="idea-detail-features">
+          <h4>Key Capabilities</h4>
+          <ul>
+            <li><strong>Film Room Analysis</strong> — Automated post-action retrospectives</li>
+            <li><strong>Playbook Refinement</strong> — AI-recommended improvements based on outcomes</li>
+            <li><strong>Performance Benchmarking</strong> — Track improvement against industry standards</li>
+            <li><strong>Knowledge Capture</strong> — Institutional memory that doesn't walk out the door</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section class="idea-conclusion-section">
+  <div class="container">
+    <div class="idea-conclusion-content">
+      <p class="idea-tagline-large">That's the IDEA.</p>
+      <p class="idea-subtext-large">Prepared to execute. No matter the situation.</p>
+      <a href="/pilot" class="btn btn-gold btn-lg">See It In Action</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER (same as index.html) -->
+<footer class="footer">
+  <!-- ... same footer content ... -->
+</footer>
+
+</body>
+</html>
+```
+
+-----
+
+# FILE 4: ADDITIONAL CSS FOR IDEA FRAMEWORK PAGE
+
+Add to styles.css:
+
+```css
+/* === IDEA FRAMEWORK PAGE === */
+.idea-hero {
+  padding: 160px 0 var(--space-16);
+  background: var(--navy);
+  text-align: center;
+}
+
+.idea-hero h1 {
+  color: var(--white);
+  font-size: 4rem;
+  margin-bottom: var(--space-6);
+}
+
+.idea-hero-subtitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: 1.5rem;
+  color: var(--white);
+  margin-bottom: var(--space-6);
+}
+
+.idea-hero-subtitle strong {
+  color: var(--gold);
+  font-size: 1.75rem;
+}
+
+.idea-hero-subtitle .dot {
+  color: var(--gray-500);
+}
+
+.idea-hero-text {
+  font-size: 1.25rem;
+  color: var(--gray-300);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Detail Phases */
+.idea-detail {
+  padding: var(--space-20) 0;
+}
+
+.idea-detail-phase {
+  margin-bottom: var(--space-20);
+  padding-bottom: var(--space-20);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.idea-detail-phase:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.idea-detail-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.idea-detail-letter {
+  width: 80px;
+  height: 80px;
+  background: var(--navy);
+  color: var(--gold);
+  font-size: 3rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-xl);
+  flex-shrink: 0;
+}
+
+.idea-detail-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-1);
+}
+
+.idea-detail-subtitle {
+  font-size: 1.125rem;
+  color: var(--gold);
+  font-weight: 500;
+  margin: 0;
+}
+
+.idea-detail-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  padding-left: calc(80px + var(--space-6));
+}
+
+.idea-detail-description p {
+  font-size: 1.125rem;
+  color: var(--gray-600);
+  line-height: 1.7;
+}
+
+.idea-detail-features h4 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  margin-bottom: var(--space-4);
+}
+
+.idea-detail-features ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.idea-detail-features li {
+  padding: var(--space-4);
+  background: var(--gray-50);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+}
+
+.idea-detail-features li strong {
+  color: var(--navy);
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+/* Conclusion Section */
+.idea-conclusion-section {
+  background: var(--gray-50);
+  padding: var(--space-20) 0;
+  text-align: center;
+}
+
+.idea-tagline-large {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: var(--space-4);
+}
+
+.idea-subtext-large {
+  font-size: 1.5rem;
+  color: var(--gray-500);
+  margin-bottom: var(--space-8);
+}
+
+@media (max-width: 768px) {
+  .idea-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .idea-hero-subtitle {
+    flex-wrap: wrap;
+    font-size: 1.125rem;
+  }
+  
+  .idea-detail-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .idea-detail-content {
+    grid-template-columns: 1fr;
+    padding-left: 0;
+  }
+  
+  .idea-tagline-large {
+    font-size: 2.5rem;
+  }
+}
+```
+
+-----
+
+# IMPLEMENTATION CHECKLIST
+
+## Immediate (Today)
+
+- [ ] Create file structure in Replit
+- [ ] Copy index.html
+- [ ] Copy styles.css
+- [ ] Test responsive design
+
+## This Week
+
+- [ ] Create idea-framework.html page
+- [ ] Create playbooks.html with domain filtering
+- [ ] Create about.html with origin story
+- [ ] Create pilot.html with request form
+
+## Product Updates
+
+- [ ] Rename phases in product UI: Prepare→Identify, Monitor→Detect, Execute→Execute, Learn→Advance
+- [ ] Add IDEA branding to dashboard
+- [ ] Update playbook library headers
+- [ ] Add “Game Day Readiness Score” widget
+
+## Marketing Updates
+
+- [ ] Update pitch deck with IDEA Framework
+- [ ] Create IDEA Framework one-pager
+- [ ] Update LinkedIn/social profiles
+- [ ] Register trademark for “IDEA Framework” + specific words
+
+-----
+
+# KEY COPY REFERENCE
+
+**Framework Name:** The IDEA Framework™
+
+**Full Expansion:** Identify · Detect · Execute · Advance
+
+**Tagline:** That’s the IDEA.
+
+**Supporting Tagline:** Success Favors the Prepared
+
+**Phase Subtitles (Football):**
+
+- Identify = Build Your Depth Chart
+- Detect = Scout the Field
+- Execute = Run the Play
+- Advance = Review the Film
+
+**Speed Claim:** 72 hours → 12 minutes
+
+**Playbook Count:** 166 across 9 domains
+
+**Domain Categories:**
+
+- Offense (58): Market Entry, M&A Integration, Product Launch
+- Defense (56): Crisis Response, Cyber Incidents, Regulatory Change
+- Special Teams (52): Transformation, Competitive Response, AI Governance
+
+-----
+
+*Package Version: 1.0*
+*IDEA Framework Edition*
+*December 2025*

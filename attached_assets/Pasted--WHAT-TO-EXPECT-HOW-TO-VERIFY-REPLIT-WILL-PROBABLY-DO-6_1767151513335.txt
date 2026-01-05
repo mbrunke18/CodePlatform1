@@ -1,0 +1,500 @@
+# WHAT TO EXPECT & HOW TO VERIFY
+
+-----
+
+## REPLIT WILL PROBABLY DO 60-70% CORRECTLY
+
+Here’s what you should see happen over the next 10-30 minutes:
+
+### **What Replit AI Will Likely Build Successfully:**
+
+✅ **Homepage hero updates** with new AI-focused messaging  
+✅ **Basic component structure** for AI features section  
+✅ **Updated badges and taglines** with AI positioning  
+✅ **Three scenario cards** (Crisis/Opportunity/Innovation) with speed stats  
+✅ **Styling and layout** (it’s good at UI)
+
+### **What Replit AI Will Likely Miss or Break:**
+
+❌ **Real API integration** (will use mock data)  
+❌ **AI feature implementation** (will show UI, but no actual AI)  
+❌ **Database schema updates** (might not update properly)  
+❌ **Complex state management** (real-time updates, coordination logic)  
+❌ **Authentication flow** (will reference it but not actually work)
+
+-----
+
+## YOUR VERIFICATION CHECKLIST (Next 1 Hour)
+
+### **STEP 1: Let Replit Finish (10-20 minutes)**
+
+Watch the Replit terminal for:
+
+```bash
+✓ Installing dependencies...
+✓ Building client...
+✓ Building server...
+✓ Starting development server...
+```
+
+**Don’t interrupt** while it’s working. Let it complete.
+
+-----
+
+### **STEP 2: Check What Got Built (5 minutes)**
+
+Once Replit finishes, open the preview and check:
+
+#### **Homepage Hero:**
+
+- [ ] Does headline say “The World Won’t Wait for You to Coordinate”?
+- [ ] Does it have the three scenario cards (Crisis/Opportunity/Innovation)?
+- [ ] Do the speed stats show (90 min vs 17 days, etc.)?
+- [ ] Is there an AI badge or AI messaging?
+
+#### **AI Features Section:**
+
+- [ ] Is there a section about “AI That Orchestrates”?
+- [ ] Does it show the 4 AI capabilities (Detection, Structuring, Orchestration, Learning)?
+- [ ] Is it styled properly?
+
+#### **Overall Design:**
+
+- [ ] Does it look professional?
+- [ ] Are colors consistent with your brand?
+- [ ] Is it responsive (resize browser to mobile width)?
+
+-----
+
+### **STEP 3: Test Basic Navigation (5 minutes)**
+
+Click around and verify:
+
+```bash
+# Test these routes
+✓ Homepage (/) - Does it load?
+✓ /playbooks - Does it exist?
+✓ /decisions - Does it exist?
+✓ /execution/demo - Does it exist?
+
+# Common errors you might see
+❌ "404 Not Found" - Route doesn't exist yet
+❌ Blank page - Component crashed
+❌ Loading spinner forever - API call failing
+```
+
+-----
+
+### **STEP 4: Open Browser DevTools (Critical)**
+
+**Mac:** `Cmd + Option + J`  
+**Windows:** `Ctrl + Shift + J`
+
+Look for errors in Console tab:
+
+#### **Good signs:**
+
+```
+✓ No red error messages
+✓ API calls showing in Network tab
+✓ React components rendering
+```
+
+#### **Bad signs (common issues):**
+
+```
+❌ "Cannot read property 'map' of undefined"
+   → Means data isn't loading properly
+
+❌ "Failed to fetch /api/playbooks"
+   → API route doesn't exist or crashed
+
+❌ "Unexpected token < in JSON"
+   → Server returning HTML instead of JSON (route misconfigured)
+
+❌ "Module not found: '@/components/...'
+   → Import path is wrong
+```
+
+-----
+
+### **STEP 5: Check Database Schema (10 minutes)**
+
+**This is critical.** Verify Replit updated your schema correctly.
+
+```bash
+# In Replit terminal, run:
+npm run db:push
+```
+
+**Expected output:**
+
+```
+✓ Pulling schema from database...
+✓ Changes detected:
+  - Added column: executionTimeMinutes to activeResponses
+  - Added column: taskStatuses to activeResponses
+✓ Applying changes...
+✓ Done!
+```
+
+**If you see errors:**
+
+```
+❌ "Relation 'activeDecisions' already exists"
+   → Old table name conflict, need to manually fix
+
+❌ "Data loss warning: dropping column..."
+   → Schema change will delete data, add --force flag if OK
+
+❌ "Connection refused"
+   → Database isn't running or credentials wrong
+```
+
+**If schema update fails, you’ll need to manually fix it.**
+
+-----
+
+### **STEP 6: Test a Simple Data Flow (15 minutes)**
+
+Try to create a playbook or decision tree:
+
+```bash
+# 1. Navigate to /playbooks or /decisions
+# 2. Try to create a new item
+# 3. Fill out the form
+# 4. Click "Save" or "Create"
+
+# What to watch for:
+✓ Form validates input
+✓ "Creating..." loading state shows
+✓ Success message appears
+✓ New item appears in list
+
+# Common failures:
+❌ Nothing happens when you click Save
+   → Event handler not connected
+
+❌ Error toast appears immediately
+   → API route crashed or validation failed
+
+❌ Loading spinner never stops
+   → API call hanging (check Network tab)
+
+❌ Success message but item doesn't appear
+   → Database write succeeded but query refresh failed
+```
+
+-----
+
+## WHAT TO DO WHEN THINGS BREAK (They Will)
+
+### **Issue 1: Homepage Loads But Looks Broken**
+
+**Symptoms:**
+
+- Layout is weird
+- Text overlapping
+- Cards misaligned
+
+**Fix:**
+
+```typescript
+// Check client/src/pages/HomePage.tsx
+// Look for missing closing tags or div wrappers
+
+// Common mistake Replit makes:
+<Card>
+  <CardHeader>
+  <CardContent>  // ❌ Missing </CardHeader>
+  
+// Should be:
+<Card>
+  <CardHeader>
+  </CardHeader>
+  <CardContent>
+```
+
+-----
+
+### **Issue 2: “Cannot GET /api/playbooks”**
+
+**Symptoms:**
+
+- Page shows loading spinner forever
+- Console error: “Failed to fetch”
+- Network tab shows 404 for API call
+
+**Fix:**
+
+```typescript
+// Check server/routes.ts
+// Make sure route exists:
+
+app.get('/api/playbooks', optionalAuth, async (req, res) => {
+  // ... route handler
+});
+
+// If missing, add it manually
+// If present but still failing, check for:
+// - Typo in route path
+// - Missing 'optionalAuth' or 'requireAuth' import
+// - Async/await error in handler
+```
+
+-----
+
+### **Issue 3: Data Shows But It’s Mock Data**
+
+**Symptoms:**
+
+- Page displays perfectly
+- Data looks reasonable
+- But it’s the same every time (hardcoded)
+
+**Fix:**
+
+```typescript
+// Check the component file
+// Look for hardcoded data:
+
+// ❌ WRONG (mock data)
+const playbooks = [
+  { id: '1', name: 'Data Breach Response' },
+  { id: '2', name: 'Market Entry' }
+];
+
+// ✅ RIGHT (real query)
+const { data: playbooks, isLoading } = useQuery({
+  queryKey: ['/api/playbooks'],
+});
+
+// Replace mock arrays with real useQuery calls
+```
+
+-----
+
+### **Issue 4: Authentication Errors**
+
+**Symptoms:**
+
+- “Unauthorized” errors on every API call
+- Can’t access any data
+- Console shows 401 errors
+
+**Fix (Temporary Workaround):**
+
+```typescript
+// In server/routes.ts, temporarily disable auth:
+
+// Change this:
+app.get('/api/playbooks', requireAuth, async (req, res) => {
+
+// To this (TEMPORARY):
+app.get('/api/playbooks', async (req, res) => {
+  const organizationId = 'demo-org-id'; // Hardcode for testing
+  
+// This lets you test without auth
+// But YOU MUST FIX AUTH before customer demo
+```
+
+-----
+
+### **Issue 5: Database Schema Mismatch**
+
+**Symptoms:**
+
+- “Column does not exist” errors
+- “Table does not exist” errors
+- API calls return empty data
+
+**Fix:**
+
+```bash
+# Force push schema (WARNING: May lose data)
+npm run db:push --force
+
+# If that fails, manually drop tables:
+npm run db:studio
+
+# In Drizzle Studio UI:
+# - Navigate to each table
+# - Click "Delete table"
+# - Then run: npm run db:push
+```
+
+-----
+
+## THE CRITICAL PATH TEST (30 minutes)
+
+**After Replit finishes and you’ve verified basics, test this workflow:**
+
+### **Test 1: Can You View the Homepage?**
+
+```
+1. Navigate to /
+2. ✓ Homepage loads without errors
+3. ✓ All sections visible (hero, AI features, scenarios)
+4. ✓ No console errors
+```
+
+### **Test 2: Can You View Mock Execution Dashboard?**
+
+```
+1. Navigate to /execution/demo
+2. ✓ Dashboard loads
+3. ✓ Shows tasks with status
+4. ✓ Shows progress indicators
+5. ⚠️ It's probably mock data (that's OK for now)
+```
+
+### **Test 3: Can You Create a Simple Playbook?**
+
+```
+1. Navigate to /playbooks/new (or wherever Replit put it)
+2. Fill out form (name, domain, description)
+3. Click Save
+4. ✓ Success message appears
+5. ✓ New playbook appears in list
+6. ⚠️ If this fails, auth or database issue
+```
+
+-----
+
+## WHAT TO SHARE WITH ME AFTER VERIFICATION
+
+**In your next message, tell me:**
+
+### **1. What Works:**
+
+```
+✓ Homepage hero loaded with new messaging
+✓ Three scenario cards visible
+✓ AI features section present
+✓ Routing works (/playbooks, /decisions exist)
+```
+
+### **2. What’s Broken:**
+
+```
+❌ API calls return 404
+❌ Database schema didn't update
+❌ Auth is blocking everything
+❌ Mock data showing instead of real data
+```
+
+### **3. Console Errors:**
+
+```
+Copy/paste the top 3-5 errors from browser console
+```
+
+### **4. What You Want to Fix First:**
+
+```
+Priority 1: Get database working
+Priority 2: Remove mock data
+Priority 3: Build real AI features
+etc.
+```
+
+-----
+
+## MY PREDICTION: WHAT YOU’LL SEE
+
+### **70% Probability:**
+
+- ✅ Homepage looks great (Replit is good at UI)
+- ✅ New messaging and AI positioning present
+- ⚠️ Everything uses mock data (not connected to real API)
+- ❌ Database schema partially updated (some tables missing)
+- ❌ Auth references present but not working
+- ❌ Real-time updates not implemented
+
+### **What This Means:**
+
+You’ll have a **beautiful demo UI** but the **backend plumbing** will need manual fixes.
+
+**That’s actually good progress.** UI is 40% of the work. You can now:
+
+1. Show the vision to prospects (even with mock data)
+1. Use it for fundraising deck screenshots
+1. Manually wire up the backend over next few days
+
+-----
+
+## TIME ALLOCATION FOR FIXES (Next 3 Days)
+
+### **Day 1 (Today): Assess & Prioritize**
+
+- 1 hour: Full verification of what Replit built
+- 2 hours: Fix any breaking errors (can’t load pages, console crashes)
+- 1 hour: Replace most obvious mock data with real queries
+- **Goal:** Working demo (even if partially mock data)
+
+### **Day 2: Database & APIs**
+
+- 2 hours: Fix database schema (consolidate to activeResponses)
+- 2 hours: Wire up real API routes for playbooks and decisions
+- 2 hours: Replace remaining mock data with real queries
+- **Goal:** All data comes from database, no mock data
+
+### **Day 3: Real-Time & Polish**
+
+- 3 hours: Implement polling for execution dashboard
+- 2 hours: Add error handling and loading states
+- 1 hour: Test critical path end-to-end
+- **Goal:** Production-ready for pilot customer demo
+
+-----
+
+## THE MOST IMPORTANT THING
+
+**Don’t get discouraged if things are broken.**
+
+Replit is a tool. AI agents are assistants. They get you 60-70% there.
+
+**The last 30-40% is always manual.**
+
+That’s true whether you use Replit, or hire a developer, or build it yourself.
+
+**You’re not looking for perfection today. You’re looking for:**
+
+1. ✅ Visual proof of concept (can show to prospects)
+1. ✅ Architectural foundation (schema, routes, components exist)
+1. ✅ Clear list of what needs fixing (prioritized backlog)
+
+**If you have those three things after Replit finishes, you’re in great shape.**
+
+-----
+
+## WHEN REPLIT FINISHES
+
+**Screenshot these for me:**
+
+1. Homepage hero section
+1. AI features section
+1. One of the scenario cards (Crisis/Opportunity/Innovation)
+1. Browser console (showing any errors)
+1. File structure (left sidebar in Replit showing what files were created)
+
+**And tell me:**
+
+- What route loads successfully?
+- What route crashes?
+- What data is real vs mock?
+- What’s your biggest concern?
+
+**Then we’ll prioritize fixes and get you to a working demo.**
+
+-----
+
+## THE BOTTOM LINE
+
+**Replit will give you a head start. Not a finished product.**
+
+**Expect 60-70% done, 30-40% manual fixes needed.**
+
+**That’s still way better than starting from scratch.**
+
+**Now let it cook and let’s see what we get.** 🚀​​​​​​​​​​​​​​​​

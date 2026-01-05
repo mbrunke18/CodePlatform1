@@ -1,0 +1,786 @@
+# M Platform: Product Updates Based on Competitive Intelligence
+
+## Context
+Analysis of ServiceNow's "Work AI" strategy reveals market validation of M's approach and opportunities to strengthen positioning. These updates incorporate enterprise vocabulary, sharpen differentiation, and enhance customer-facing messaging.
+
+---
+
+## SECTION 1: MESSAGING UPDATES (Copy Changes)
+
+### 1.1 Update Landing Page Hero Section
+
+**File:** `client/src/pages/Landing.tsx`
+
+**Find the hero section and update to:**
+
+```tsx
+{/* Hero Section */}
+<section className="relative py-20 md:py-32">
+  <div className="max-w-4xl mx-auto text-center px-6">
+    {/* Badge */}
+    <Badge className="mb-6 bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
+      Strategic Execution Operating System
+    </Badge>
+    
+    {/* Main Headline */}
+    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+      From 72 Hours to 12 Minutes.{" "}
+      <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">
+        Deterministic Strategic Execution.
+      </span>
+    </h1>
+    
+    {/* Subheadline */}
+    <p className="text-xl md:text-2xl text-slate-300 mb-4 max-w-3xl mx-auto">
+      Pre-staged playbooks. Coordinated stakeholders. Instant activation.
+    </p>
+    
+    {/* Differentiator Statement */}
+    <p className="text-lg text-slate-400 mb-8 max-w-2xl mx-auto">
+      No fragmented tools. No experimental AI. Just battle-tested playbooks 
+      that transform how Fortune 1000 companies respond to the moments that matter.
+    </p>
+    
+    {/* CTA Buttons */}
+    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <Button 
+        size="lg"
+        onClick={() => navigateTo('/demo')}
+        className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 h-12"
+      >
+        <Play className="mr-2 h-5 w-5" />
+        See It In Action
+      </Button>
+      <Button 
+        size="lg"
+        variant="outline"
+        onClick={() => navigateTo('/how-it-works')}
+        className="border-slate-600 text-slate-300 hover:bg-slate-800 px-8 h-12"
+      >
+        How It Works
+      </Button>
+    </div>
+    
+    {/* Trust Indicators */}
+    <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-slate-500">
+      <span className="flex items-center gap-2">
+        <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+        148 Pre-Built Playbooks
+      </span>
+      <span className="flex items-center gap-2">
+        <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+        8 Strategic Domains
+      </span>
+      <span className="flex items-center gap-2">
+        <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+        Enterprise Integrations
+      </span>
+    </div>
+  </div>
+</section>
+```
+
+### 1.2 Add "Strategic Control Tower" Positioning
+
+**File:** `client/src/pages/Landing.tsx` or `client/src/pages/HowItWorks.tsx`
+
+**Add new section after hero:**
+
+```tsx
+{/* Control Tower Section */}
+<section className="py-20 bg-slate-900/50">
+  <div className="max-w-6xl mx-auto px-6">
+    <div className="text-center mb-12">
+      <Badge className="mb-4 bg-blue-500/20 text-blue-300 border-blue-500/30">
+        Command & Control
+      </Badge>
+      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+        The Strategic Control Tower
+      </h2>
+      <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+        Real-time visibility into every active playbook, stakeholder status, 
+        and execution metric — with full audit trail for compliance.
+      </p>
+    </div>
+    
+    <div className="grid md:grid-cols-4 gap-6">
+      {[
+        {
+          phase: "PREPARE",
+          icon: Target,
+          color: "blue",
+          description: "Pre-stage stakeholders, documents, and resources before crisis hits"
+        },
+        {
+          phase: "MONITOR", 
+          icon: Radio,
+          color: "amber",
+          description: "Continuous signal detection across 12 intelligence sources"
+        },
+        {
+          phase: "EXECUTE",
+          icon: Zap,
+          color: "emerald", 
+          description: "Coordinated task deployment with dependency management"
+        },
+        {
+          phase: "LEARN",
+          icon: BookOpen,
+          color: "purple",
+          description: "Structured debrief and continuous playbook improvement"
+        }
+      ].map((item) => (
+        <Card key={item.phase} className={`bg-slate-800/50 border-${item.color}-500/30`}>
+          <CardContent className="p-6 text-center">
+            <div className={`w-12 h-12 mx-auto mb-4 rounded-xl bg-${item.color}-500/20 flex items-center justify-center`}>
+              <item.icon className={`h-6 w-6 text-${item.color}-400`} />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2">{item.phase}</h3>
+            <p className="text-sm text-slate-400">{item.description}</p>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>
+```
+
+### 1.3 Add "Deterministic Execution" Differentiation Block
+
+**File:** `client/src/pages/Landing.tsx`
+
+**Add section to differentiate from "experimental AI":**
+
+```tsx
+{/* Deterministic Execution Section */}
+<section className="py-20">
+  <div className="max-w-6xl mx-auto px-6">
+    <div className="grid md:grid-cols-2 gap-12 items-center">
+      {/* Left: Problem */}
+      <div>
+        <Badge className="mb-4 bg-red-500/20 text-red-300 border-red-500/30">
+          The Problem
+        </Badge>
+        <h2 className="text-3xl font-bold text-white mb-4">
+          Experimental AI Fails When Stakes Are High
+        </h2>
+        <div className="space-y-4 text-slate-400">
+          <p>
+            Fragmented copilots. Consumer-grade chatbots. AI that hallucinates 
+            when you need certainty.
+          </p>
+          <p>
+            When ransomware hits at 2 AM or a competitor announces a market move, 
+            you can't wait for AI to "figure it out."
+          </p>
+          <ul className="space-y-2">
+            <li className="flex items-start gap-2">
+              <X className="h-5 w-5 text-red-400 mt-0.5 flex-shrink-0" />
+              <span>72+ hours of scrambling across disconnected tools</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <X className="h-5 w-5 text-red-400 mt-0.5 flex-shrink-0" />
+              <span>Stakeholders unclear on their responsibilities</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <X className="h-5 w-5 text-red-400 mt-0.5 flex-shrink-0" />
+              <span>No audit trail for board or regulatory review</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      {/* Right: Solution */}
+      <div>
+        <Badge className="mb-4 bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
+          The M Difference
+        </Badge>
+        <h2 className="text-3xl font-bold text-white mb-4">
+          Deterministic Strategic Execution
+        </h2>
+        <div className="space-y-4 text-slate-400">
+          <p>
+            M delivers predictable outcomes. The same trigger activates the same 
+            coordinated response, every time.
+          </p>
+          <p>
+            No hallucinations. No randomness. Just battle-tested playbooks 
+            executed with precision.
+          </p>
+          <ul className="space-y-2">
+            <li className="flex items-start gap-2">
+              <CheckCircle2 className="h-5 w-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+              <span>12-minute coordinated response across all stakeholders</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle2 className="h-5 w-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+              <span>Pre-assigned roles with task-level accountability</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle2 className="h-5 w-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+              <span>Complete audit trail with timestamp and ownership</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+```
+
+### 1.4 Update Footer Tagline
+
+**File:** `client/src/components/layout/Footer.tsx`
+
+**Find and update the tagline:**
+
+```tsx
+// Change from:
+<p className="text-xs text-slate-500">
+  Success favors the prepared.
+</p>
+
+// Change to:
+<p className="text-xs text-slate-500">
+  Deterministic execution for the moments that matter.
+</p>
+```
+
+---
+
+## SECTION 2: INTEGRATION MESSAGING
+
+### 2.1 Create/Update Integrations Page
+
+**File:** `client/src/pages/Integrations.tsx`
+
+**Update or create with ServiceNow prominently featured:**
+
+```tsx
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { CheckCircle2, ArrowRight } from "lucide-react";
+import StandardNav from "@/components/layout/StandardNav";
+import Footer from "@/components/layout/Footer";
+
+const INTEGRATION_CATEGORIES = [
+  {
+    category: "Workflow Platforms",
+    description: "M orchestrates your existing workflow tools",
+    integrations: [
+      { 
+        name: "ServiceNow", 
+        logo: "/logos/servicenow.svg",
+        status: "Available",
+        description: "Auto-create incidents, route tasks, sync resolution status"
+      },
+      { 
+        name: "Jira", 
+        logo: "/logos/jira.svg",
+        status: "Available",
+        description: "Deploy tasks as tickets, track progress, manage dependencies"
+      },
+      { 
+        name: "Asana", 
+        logo: "/logos/asana.svg",
+        status: "Coming Soon",
+        description: "Project-based playbook execution tracking"
+      }
+    ]
+  },
+  {
+    category: "Communication",
+    description: "Instant stakeholder notifications",
+    integrations: [
+      { 
+        name: "Slack", 
+        logo: "/logos/slack.svg",
+        status: "Available",
+        description: "Role-based alerts, acknowledgment tracking, status updates"
+      },
+      { 
+        name: "Microsoft Teams", 
+        logo: "/logos/teams.svg",
+        status: "Available",
+        description: "Channel notifications, task assignments, executive briefings"
+      },
+      { 
+        name: "Email", 
+        logo: "/logos/email.svg",
+        status: "Available",
+        description: "Templated communications with tracking"
+      }
+    ]
+  },
+  {
+    category: "CRM & Sales",
+    description: "Customer-impacting playbooks",
+    integrations: [
+      { 
+        name: "Salesforce", 
+        logo: "/logos/salesforce.svg",
+        status: "Available",
+        description: "Customer notification triggers, account status sync"
+      },
+      { 
+        name: "HubSpot", 
+        logo: "/logos/hubspot.svg",
+        status: "Coming Soon",
+        description: "Customer communication workflows"
+      }
+    ]
+  },
+  {
+    category: "Security & Monitoring",
+    description: "Threat-triggered playbook activation",
+    integrations: [
+      { 
+        name: "Splunk", 
+        logo: "/logos/splunk.svg",
+        status: "Available",
+        description: "Security event triggers, log correlation"
+      },
+      { 
+        name: "PagerDuty", 
+        logo: "/logos/pagerduty.svg",
+        status: "Available",
+        description: "Incident escalation, on-call coordination"
+      },
+      { 
+        name: "CrowdStrike", 
+        logo: "/logos/crowdstrike.svg",
+        status: "Coming Soon",
+        description: "Threat detection triggers"
+      }
+    ]
+  }
+];
+
+export default function Integrations() {
+  return (
+    <div className="min-h-screen bg-slate-950">
+      <StandardNav />
+      
+      <main className="max-w-6xl mx-auto px-6 py-16">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <Badge className="mb-4 bg-blue-500/20 text-blue-300 border-blue-500/30">
+            Enterprise Integrations
+          </Badge>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            M Orchestrates Your Stack
+          </h1>
+          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+            M doesn't replace your workflow tools — it coordinates them. When a playbook 
+            activates, M tells each system exactly what to do.
+          </p>
+        </div>
+        
+        {/* Key Message */}
+        <Card className="bg-gradient-to-r from-emerald-950/50 to-teal-950/50 border-emerald-500/30 mb-16">
+          <CardContent className="p-8">
+            <div className="flex items-start gap-6">
+              <div className="p-4 bg-emerald-500/20 rounded-xl">
+                <ArrowRight className="h-8 w-8 text-emerald-400" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  The Strategic Layer
+                </h3>
+                <p className="text-slate-300">
+                  ServiceNow handles your IT tickets. Jira manages your sprints. 
+                  Slack delivers your messages. <strong className="text-white">M coordinates all of them</strong> — 
+                  ensuring the right task reaches the right system at the right time, 
+                  with full visibility in your Strategic Control Tower.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        
+        {/* Integration Categories */}
+        <div className="space-y-12">
+          {INTEGRATION_CATEGORIES.map((category) => (
+            <div key={category.category}>
+              <div className="mb-6">
+                <h2 className="text-2xl font-bold text-white mb-2">{category.category}</h2>
+                <p className="text-slate-400">{category.description}</p>
+              </div>
+              <div className="grid md:grid-cols-3 gap-4">
+                {category.integrations.map((integration) => (
+                  <Card key={integration.name} className="bg-slate-900/50 border-slate-700 hover:border-slate-600 transition-colors">
+                    <CardContent className="p-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center">
+                          {/* Placeholder for logo */}
+                          <span className="text-lg font-bold text-white">
+                            {integration.name.charAt(0)}
+                          </span>
+                        </div>
+                        <Badge 
+                          className={integration.status === "Available" 
+                            ? "bg-emerald-500/20 text-emerald-300" 
+                            : "bg-slate-500/20 text-slate-400"
+                          }
+                        >
+                          {integration.status}
+                        </Badge>
+                      </div>
+                      <h3 className="text-lg font-semibold text-white mb-2">
+                        {integration.name}
+                      </h3>
+                      <p className="text-sm text-slate-400">
+                        {integration.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {/* Zero-Copy Message */}
+        <Card className="bg-slate-900 border-slate-700 mt-16">
+          <CardContent className="p-8 text-center">
+            <h3 className="text-xl font-bold text-white mb-4">
+              Zero Infrastructure Changes Required
+            </h3>
+            <p className="text-slate-400 max-w-2xl mx-auto">
+              M connects via secure APIs and webhooks. No data migration. 
+              No infrastructure overhaul. Deploy in days, not months.
+            </p>
+          </CardContent>
+        </Card>
+      </main>
+      
+      <Footer />
+    </div>
+  );
+}
+```
+
+---
+
+## SECTION 3: EXECUTIVE DASHBOARD UPDATES
+
+### 3.1 Rename to "Strategic Control Tower"
+
+**File:** `client/src/pages/ExecutiveDashboard.tsx` (or ExecutiveScorecard.tsx)
+
+**Update the header:**
+
+```tsx
+{/* Page Header */}
+<div className="mb-8">
+  <div className="flex items-center gap-3 mb-2">
+    <div className="p-2 bg-blue-500/20 rounded-lg">
+      <Radio className="h-6 w-6 text-blue-400" />
+    </div>
+    <div>
+      <h1 className="text-3xl font-bold text-white">Strategic Control Tower</h1>
+      <p className="text-slate-400">Real-time visibility across all strategic operations</p>
+    </div>
+  </div>
+</div>
+```
+
+### 3.2 Add Governance/Audit Section
+
+**Add to ExecutiveDashboard.tsx:**
+
+```tsx
+{/* Governance & Audit Card */}
+<Card className="bg-slate-900 border-slate-700">
+  <CardHeader>
+    <CardTitle className="text-white flex items-center gap-2">
+      <Shield className="h-5 w-5 text-purple-400" />
+      Governance & Audit
+    </CardTitle>
+  </CardHeader>
+  <CardContent>
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <span className="text-slate-400">Active Playbooks</span>
+        <Badge className="bg-emerald-500/20 text-emerald-300">3 Running</Badge>
+      </div>
+      <div className="flex items-center justify-between">
+        <span className="text-slate-400">Pending Approvals</span>
+        <Badge className="bg-amber-500/20 text-amber-300">2 Waiting</Badge>
+      </div>
+      <div className="flex items-center justify-between">
+        <span className="text-slate-400">Compliance Status</span>
+        <Badge className="bg-emerald-500/20 text-emerald-300">All Clear</Badge>
+      </div>
+      <div className="flex items-center justify-between">
+        <span className="text-slate-400">Audit Trail</span>
+        <span className="text-slate-300 text-sm">1,247 events logged</span>
+      </div>
+      <Button variant="outline" className="w-full mt-4 border-slate-600 text-slate-300">
+        View Full Audit Log →
+      </Button>
+    </div>
+  </CardContent>
+</Card>
+```
+
+---
+
+## SECTION 4: PLAYBOOK LIBRARY POSITIONING
+
+### 4.1 Update Playbook Library Header
+
+**File:** `client/src/pages/PlaybookLibrary.tsx`
+
+**Update the header to emphasize pre-built advantage:**
+
+```tsx
+{/* Header */}
+<div className="text-center mb-12">
+  <Badge className="mb-4 bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
+    Ready Day One
+  </Badge>
+  <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+    148 Battle-Tested Playbooks
+  </h1>
+  <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-6">
+    Don't build from scratch. Activate proven playbooks developed from 
+    20+ years of Fortune 500 strategic execution experience.
+  </p>
+  <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-500">
+    <span className="flex items-center gap-2">
+      <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+      8 Strategic Domains
+    </span>
+    <span className="flex items-center gap-2">
+      <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+      Pre-Assigned Stakeholders
+    </span>
+    <span className="flex items-center gap-2">
+      <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+      Customizable Templates
+    </span>
+  </div>
+</div>
+```
+
+### 4.2 Add Comparison Callout
+
+**Add after the playbook grid:**
+
+```tsx
+{/* Comparison Callout */}
+<Card className="bg-gradient-to-r from-blue-950/50 to-purple-950/50 border-blue-500/30 mt-12">
+  <CardContent className="p-8">
+    <div className="grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h3 className="text-xl font-bold text-white mb-4">
+          Build vs. Buy: The Math
+        </h3>
+        <div className="space-y-3 text-slate-300">
+          <div className="flex items-center justify-between">
+            <span>Building one playbook internally</span>
+            <span className="text-red-400 font-semibold">4-6 weeks</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span>Building 148 playbooks internally</span>
+            <span className="text-red-400 font-semibold">11+ years</span>
+          </div>
+          <div className="flex items-center justify-between border-t border-slate-700 pt-3">
+            <span>Activating M's playbook library</span>
+            <span className="text-emerald-400 font-semibold">Day 1</span>
+          </div>
+        </div>
+      </div>
+      <div className="text-center">
+        <div className="text-5xl font-bold text-emerald-400 mb-2">360x</div>
+        <div className="text-slate-400">Faster than building from scratch</div>
+      </div>
+    </div>
+  </CardContent>
+</Card>
+```
+
+---
+
+## SECTION 5: INVESTOR DEMO COPY UPDATES
+
+### 5.1 Update InvestorDemo Completion Message
+
+**File:** `client/src/pages/InvestorDemo.tsx`
+
+**Find the completion card and update:**
+
+```tsx
+{isComplete && (
+  <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
+    <Card className="bg-gradient-to-br from-emerald-950 to-teal-950 border-emerald-500/50">
+      <CardContent className="p-6">
+        <div className="text-center mb-6">
+          <CheckCircle2 className="h-12 w-12 text-emerald-400 mx-auto mb-3" />
+          <h3 className="text-2xl font-bold text-white">Deterministic Execution Complete</h3>
+          <p className="text-emerald-300">
+            What you just saw in {formatTime(elapsedTime)} is what M delivers in 12 minutes.
+          </p>
+          <p className="text-slate-400 text-sm mt-1">
+            No experimental AI. No fragmented tools. Just coordinated precision.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-3 gap-4 mb-6">
+          <div className="text-center">
+            <div className="text-3xl font-bold text-emerald-400">12:00</div>
+            <div className="text-sm text-slate-400">Response Time</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-blue-400">47</div>
+            <div className="text-sm text-slate-400">Stakeholders Aligned</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-purple-400">360x</div>
+            <div className="text-sm text-slate-400">Faster Than Traditional</div>
+          </div>
+        </div>
+        
+        {/* New: Audit Trail Callout */}
+        <div className="bg-slate-800/50 rounded-lg p-4 mb-6">
+          <p className="text-sm text-slate-300 text-center">
+            <Shield className="h-4 w-4 inline mr-2 text-purple-400" />
+            Full audit trail captured: {acknowledgedStakeholders.length} acknowledgments, 
+            6 phase transitions, complete timestamp history for compliance.
+          </p>
+        </div>
+        
+        <div className="flex items-center justify-center gap-4">
+          <Button className="bg-white text-slate-900 hover:bg-slate-100" onClick={() => setLocation('/contact')}>
+            <Calendar className="mr-2 h-4 w-4" />
+            Schedule a Call
+          </Button>
+          <Button variant="outline" className="border-emerald-500 text-emerald-400 hover:bg-emerald-500/20" onClick={() => setLocation('/demo')}>
+            Try Interactive Demo
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  </motion.div>
+)}
+```
+
+---
+
+## SECTION 6: NAVIGATION UPDATES
+
+### 6.1 Update Nav Labels
+
+**File:** `client/src/components/layout/StandardNav.tsx`
+
+**Consider renaming for clarity:**
+
+```tsx
+const navLinks = [
+  { label: "How It Works", path: "/how-it-works" },
+  { label: "Playbook Library", path: "/playbook-library" }, // Keep as is - clear
+  { label: "Our Story", path: "/our-story" },
+  { label: "Pricing", path: "/pricing" },
+];
+
+// Optional: Add "Integrations" to nav if space permits
+```
+
+### 6.2 Update Footer with "Control Tower" Language
+
+**File:** `client/src/components/layout/Footer.tsx`
+
+**Update Platform section:**
+
+```tsx
+{
+  title: "Platform",
+  links: [
+    { label: "Strategic Control Tower", path: "/executive-dashboard" }, // Renamed
+    { label: "Playbook Library", path: "/playbook-library" },
+    { label: "Command Center", path: "/command-center" },
+    { label: "Signal Monitor", path: "/foresight-radar" }, // Clearer name
+    { label: "Integrations", path: "/integrations" },
+  ]
+}
+```
+
+---
+
+## SECTION 7: SEO & META UPDATES
+
+### 7.1 Update Page Titles
+
+**File:** `index.html` or individual page components
+
+**Update title tag:**
+
+```html
+<title>M - Strategic Execution Operating System | 72 Hours → 12 Minutes</title>
+<meta name="description" content="M transforms Fortune 1000 strategic response from 72 hours to 12 minutes with 148 pre-built playbooks. Deterministic execution for ransomware, M&A, product launch, and crisis scenarios.">
+```
+
+### 7.2 Add Open Graph Tags
+
+```html
+<meta property="og:title" content="M - Strategic Execution Operating System">
+<meta property="og:description" content="From 72 hours to 12 minutes. Deterministic strategic execution for Fortune 1000 companies.">
+<meta property="og:type" content="website">
+```
+
+---
+
+## SECTION 8: QUICK COPY CHANGES (Find & Replace)
+
+Run these find/replace operations across the codebase:
+
+| Find | Replace | Reason |
+|------|---------|--------|
+| `Executive Dashboard` | `Strategic Control Tower` | Enterprise vocabulary |
+| `Foresight Radar` | `Signal Monitor` | Clearer purpose |
+| `240x` | `360x` | Math correction |
+| `experimental AI` | `deterministic execution` | Positioning (where appropriate) |
+
+---
+
+## VERIFICATION CHECKLIST
+
+After implementing all updates:
+
+```bash
+# 1. Verify 360x everywhere
+grep -r "360x" client/src/ --include="*.tsx" | wc -l
+# Should find multiple instances
+
+# 2. Verify no 240x remaining  
+grep -r "240x" client/src/ --include="*.tsx"
+# Should return 0 results
+
+# 3. Verify "Control Tower" language
+grep -r "Control Tower" client/src/ --include="*.tsx"
+# Should find multiple instances
+
+# 4. Verify "deterministic" language
+grep -r "deterministic" client/src/ --include="*.tsx"
+# Should find in Landing and InvestorDemo
+
+# 5. Build check
+npm run build
+# Should complete with no errors
+```
+
+---
+
+## SUMMARY OF KEY MESSAGING CHANGES
+
+| Before | After |
+|--------|-------|
+| Executive Dashboard | Strategic Control Tower |
+| Foresight Radar | Signal Monitor |
+| 240x faster | 360x faster |
+| Generic AI language | "Deterministic execution" |
+| "Success favors the prepared" | "Deterministic execution for the moments that matter" |
+| Workflow automation | Strategic orchestration layer |
+
+These updates position M as enterprise-grade, governance-ready, and clearly differentiated from both experimental AI tools and operational workflow platforms like ServiceNow.

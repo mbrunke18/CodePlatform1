@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Bastion Brand Colors - Light Theme */
+  --background: hsl(210, 45%, 98%);
+  --foreground: hsl(215, 25%, 15%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(215, 25%, 15%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(215, 25%, 15%);
+  --primary: hsl(200, 85%, 45%); /* Bastion Blue-Teal */
+  --primary-foreground: hsl(210, 45%, 98%);
+  --secondary: hsl(195, 30%, 92%);
+  --secondary-foreground: hsl(215, 25%, 25%);
+  --muted: hsl(200, 20%, 95%);
+  --muted-foreground: hsl(215, 15%, 55%);
+  --accent: hsl(185, 60%, 85%); /* Light Teal Accent */
+  --accent-foreground: hsl(215, 25%, 25%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(210, 45%, 98%);
+  --border: hsl(200, 15%, 90%);
+  --input: hsl(200, 15%, 90%);
+  --ring: hsl(200, 85%, 45%);
+  /* Bastion Chart Colors */
+  --chart-1: hsl(200, 85%, 45%); /* Primary Blue-Teal */
+  --chart-2: hsl(175, 70%, 40%); /* Deep Teal */
+  --chart-3: hsl(220, 80%, 55%); /* Vibrant Blue */
+  --chart-4: hsl(190, 60%, 50%); /* Ocean Blue */
+  --chart-5: hsl(165, 65%, 45%); /* Emerald Teal */
+  /* Bastion Sidebar Colors */
+  --sidebar-background: hsl(205, 15%, 97%);
+  --sidebar-foreground: hsl(215, 25%, 20%);
+  --sidebar-primary: hsl(200, 85%, 45%);
+  --sidebar-primary-foreground: hsl(210, 45%, 98%);
+  --sidebar-accent: hsl(195, 25%, 90%);
+  --sidebar-accent-foreground: hsl(215, 25%, 25%);
+  --sidebar-border: hsl(200, 15%, 85%);
+  --sidebar-ring: hsl(200, 85%, 45%);
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+  --radius: 0.5rem;
+}
+
+.dark {
+  /* Bastion Brand Colors - Dark Theme */
+  --background: hsl(215, 30%, 8%);
+  --foreground: hsl(200, 20%, 95%);
+  --card: hsl(215, 25%, 12%);
+  --card-foreground: hsl(200, 20%, 95%);
+  --popover: hsl(215, 25%, 12%);
+  --popover-foreground: hsl(200, 20%, 95%);
+  --primary: hsl(185, 80%, 60%); /* Bright Teal for dark mode */
+  --primary-foreground: hsl(215, 30%, 8%);
+  --secondary: hsl(205, 20%, 18%);
+  --secondary-foreground: hsl(200, 20%, 90%);
+  --muted: hsl(205, 15%, 15%);
+  --muted-foreground: hsl(200, 10%, 70%);
+  --accent: hsl(185, 40%, 25%); /* Dark Teal Accent */
+  --accent-foreground: hsl(200, 20%, 95%);
+  --destructive: hsl(0, 70%, 55%);
+  --destructive-foreground: hsl(200, 20%, 95%);
+  --border: hsl(205, 15%, 20%);
+  --input: hsl(205, 15%, 20%);
+  --ring: hsl(185, 80%, 60%);
+  /* Dark Theme Sidebar */
+  --sidebar-background: hsl(210, 25%, 10%);
+  --sidebar-foreground: hsl(200, 20%, 90%);
+  --sidebar-primary: hsl(185, 80%, 60%);
+  --sidebar-primary-foreground: hsl(215, 30%, 8%);
+  --sidebar-accent: hsl(205, 20%, 18%);
+  --sidebar-accent-foreground: hsl(200, 20%, 90%);
+  --sidebar-border: hsl(205, 15%, 18%);
+  --sidebar-ring: hsl(185, 80%, 60%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+.sidebar-nav-item:hover {
+  background-color: hsl(var(--accent));
+}
+
+.real-time-indicator {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

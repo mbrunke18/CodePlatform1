@@ -1,0 +1,837 @@
+# M Platform: UX Fix Implementation for Replit Agent
+
+## OVERVIEW
+
+This document contains specific code changes to fix critical UX issues identified in the platform review. Copy this entire document to Replit agent to implement.
+
+**Priority Order:**
+1. Fix broken `/start` route (CRITICAL)
+2. Simplify Homepage hero
+3. Create single demo entry point
+4. Simplify navigation
+5. Add phase indicator component
+
+---
+
+## TASK 1: Fix Broken Route (CRITICAL - DO THIS FIRST)
+
+### Problem
+The "Get Started Free" button on the homepage links to `/start` which doesn't exist.
+
+### Solution
+Update Homepage.tsx to link to a working route.
+
+**File:** `client/src/pages/Homepage.tsx`
+
+**Find this code (around line 127-132):**
+```jsx
+<Button 
+  size="lg"
+  onClick={() => setLocation('/start')}
+  className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold px-8 py-6 text-lg shadow-xl hover:shadow-2xl transition-all"
+  data-testid="button-get-started"
+>
+  <Zap className="mr-2 h-5 w-5" />
+  Get Started Free
+</Button>
+```
+
+**Replace with:**
+```jsx
+<Button 
+  size="lg"
+  onClick={() => setLocation('/executive-simulation')}
+  className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold px-8 py-6 text-lg shadow-xl hover:shadow-2xl transition-all"
+  data-testid="button-get-started"
+>
+  <Play className="mr-2 h-5 w-5" />
+  See It In Action
+</Button>
+```
+
+**Also update the import at the top of the file to include Play:**
+```jsx
+import { 
+  ArrowRight, 
+  Play,  // Make sure this is imported
+  Clock,
+  // ... rest of imports
+} from "lucide-react";
+```
+
+---
+
+## TASK 2: Simplify Homepage Hero Section
+
+### Problem
+The hero has too many CTAs and the subtitle is too long (54 words).
+
+### Solution
+Replace the hero section with a cleaner, more focused version.
+
+**File:** `client/src/pages/Homepage.tsx`
+
+**Find the Hero Section (lines ~103-165) and replace the entire section with:**
+
+```jsx
+{/* Hero Section - Simplified */}
+<section className="relative py-20 md:py-32 px-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+  <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div>
+  
+  <div className="max-w-4xl mx-auto text-center relative z-10">
+    {/* Badge */}
+    <Badge className="mb-6 bg-white/10 text-white border-white/20 px-4 py-1.5">
+      <Sparkles className="w-4 h-4 mr-2" />
+      Strategic Execution Operating System
+    </Badge>
+    
+    {/* Main Headline - The Key Metric */}
+    <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+      <span className="text-slate-400">72 hours</span>
+      <span className="mx-4">→</span>
+      <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">12 minutes</span>
+    </h1>
+    
+    {/* Simple Subtitle */}
+    <p className="text-xl md:text-2xl text-slate-300 mb-10 max-w-2xl mx-auto">
+      Cut strategic response time from days to minutes with pre-staged playbooks and coordinated execution.
+    </p>
+    
+    {/* Single Primary CTA */}
+    <div className="flex flex-col items-center gap-4">
+      <Button 
+        size="lg"
+        onClick={() => setLocation('/executive-simulation')}
+        className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold px-10 py-7 text-xl shadow-xl hover:shadow-2xl transition-all"
+      >
+        <Play className="mr-2 h-6 w-6" />
+        See It In Action
+      </Button>
+      <p className="text-sm text-slate-400">
+        3-minute interactive demo · No signup required
+      </p>
+    </div>
+    
+    {/* Social Proof - Research Validation */}
+    <div className="mt-16 pt-8 border-t border-slate-700/50">
+      <p className="text-sm text-slate-500 mb-4">Methodology validated by research from</p>
+      <div className="flex items-center justify-center gap-8 text-slate-400">
+        <span className="text-sm font-medium">McKinsey</span>
+        <span className="text-slate-600">•</span>
+        <span className="text-sm font-medium">PwC</span>
+        <span className="text-slate-600">•</span>
+        <span className="text-sm font-medium">IBM Security</span>
+      </div>
+    </div>
+  </div>
+</section>
+```
+
+---
+
+## TASK 3: Create New Demo Router Page
+
+### Problem
+There are 20+ demo routes causing confusion. Users don't know which demo to try.
+
+### Solution
+Create a single demo entry point at `/demo` that guides users to the right experience.
+
+**Create new file:** `client/src/pages/DemoRouter.tsx`
+
+```tsx
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Clock, Zap, Briefcase, ArrowRight, Play } from "lucide-react";
+import { useLocation } from "wouter";
+import StandardNav from "@/components/layout/StandardNav";
+
+export default function DemoRouter() {
+  const [, setLocation] = useLocation();
+
+  const demoOptions = [
+    {
+      id: 'quick',
+      title: 'Quick Demo',
+      duration: '3 minutes',
+      description: 'See a playbook activate and tasks deploy in real-time.',
+      icon: Zap,
+      color: 'from-emerald-500 to-teal-500',
+      borderColor: 'border-emerald-500/30 hover:border-emerald-500',
+      path: '/demo/live-activation',
+      badge: 'Most Popular',
+      badgeColor: 'bg-emerald-500'
+    },
+    {
+      id: 'simulation',
+      title: 'Executive Simulation',
+      duration: '12 minutes',
+      description: 'Step into the role of a Fortune 500 CSO. Experience the full 4-phase cycle.',
+      icon: Briefcase,
+      color: 'from-purple-500 to-violet-500',
+      borderColor: 'border-purple-500/30 hover:border-purple-500',
+      path: '/executive-simulation',
+      badge: 'Full Experience',
+      badgeColor: 'bg-purple-500'
+    },
+    {
+      id: 'industry',
+      title: 'Industry Demos',
+      duration: '10-15 minutes',
+      description: 'See M in action for your specific industry: Financial, Healthcare, Manufacturing, and more.',
+      icon: Play,
+      color: 'from-blue-500 to-cyan-500',
+      borderColor: 'border-blue-500/30 hover:border-blue-500',
+      path: '/industry-demos',
+      badge: '6 Industries',
+      badgeColor: 'bg-blue-500'
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-slate-950">
+      <StandardNav />
+      
+      <div className="max-w-4xl mx-auto px-6 py-20">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Experience M
+          </h1>
+          <p className="text-xl text-slate-400">
+            Choose the demo that fits your schedule
+          </p>
+        </div>
+
+        {/* Demo Options */}
+        <div className="space-y-4">
+          {demoOptions.map((demo) => {
+            const IconComponent = demo.icon;
+            return (
+              <Card 
+                key={demo.id}
+                className={`bg-slate-900/50 border-2 ${demo.borderColor} cursor-pointer transition-all hover:shadow-xl hover:shadow-${demo.id === 'quick' ? 'emerald' : demo.id === 'simulation' ? 'purple' : 'blue'}-500/10 group`}
+                onClick={() => setLocation(demo.path)}
+              >
+                <CardContent className="p-6 flex items-center gap-6">
+                  {/* Icon */}
+                  <div className={`p-4 rounded-2xl bg-gradient-to-br ${demo.color} bg-opacity-20`}>
+                    <IconComponent className="h-8 w-8 text-white" />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-1">
+                      <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+                        {demo.title}
+                      </h3>
+                      <Badge className={`${demo.badgeColor} text-white text-xs`}>
+                        {demo.badge}
+                      </Badge>
+                    </div>
+                    <p className="text-slate-400 mb-2">{demo.description}</p>
+                    <div className="flex items-center gap-2 text-sm text-slate-500">
+                      <Clock className="h-4 w-4" />
+                      <span>{demo.duration}</span>
+                    </div>
+                  </div>
+                  
+                  {/* Arrow */}
+                  <ArrowRight className="h-6 w-6 text-slate-500 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="mt-12 text-center">
+          <p className="text-slate-500 mb-4">
+            Not sure which to choose? Start with the Quick Demo.
+          </p>
+          <Button
+            variant="outline"
+            onClick={() => setLocation('/playbook-library')}
+            className="text-slate-300 border-slate-700 hover:bg-slate-800"
+          >
+            Or explore the 148 playbooks directly →
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+**Then update App.tsx to use this new component:**
+
+**File:** `client/src/App.tsx`
+
+**Add import at top:**
+```jsx
+import DemoRouter from "./pages/DemoRouter";
+```
+
+**Find these lines (around 321-325):**
+```jsx
+{/* Unified Demo Hub - Primary Entry Point */}
+<Route path="/demo-hub" component={UnifiedDemoHub} />
+<Route path="/demo" component={UnifiedDemoHub} />
+<Route path="/demo-selector" component={UnifiedDemoHub} />
+<Route path="/demo/selector" component={UnifiedDemoHub} />
+```
+
+**Replace with:**
+```jsx
+{/* Demo Entry Point - Single clear path */}
+<Route path="/demo" component={DemoRouter} />
+<Route path="/demo-hub" component={DemoRouter} />
+<Route path="/demo-selector" component={DemoRouter} />
+<Route path="/demo/selector" component={DemoRouter} />
+```
+
+---
+
+## TASK 4: Simplify Navigation Menu
+
+### Problem
+The Platform mega-menu shows 30+ items at once, causing decision paralysis.
+
+### Solution
+Create a simplified navigation structure.
+
+**File:** `client/src/components/layout/StandardNav.tsx`
+
+**Replace the fourPillars, configurationSection, and demosSection constants (lines ~19-97) with:**
+
+```jsx
+// Simplified navigation - focused on key actions
+const mainNavItems = [
+  {
+    label: 'Platform',
+    icon: Layers,
+    color: 'text-blue-400',
+    items: [
+      { label: 'Executive Dashboard', path: '/executive-dashboard', badge: 'HOME' },
+      { label: 'Playbook Library', path: '/playbook-library', badge: '148' },
+      { label: 'Command Center', path: '/command-center' },
+      { label: 'Integrations', path: '/integrations' },
+    ]
+  },
+  {
+    label: 'Prepare',
+    icon: Target,
+    color: 'text-violet-400',
+    items: [
+      { label: 'Browse Playbooks', path: '/playbook-library' },
+      { label: 'What-If Analyzer', path: '/what-if-analyzer' },
+      { label: 'Practice Drills', path: '/practice-drills' },
+    ]
+  },
+  {
+    label: 'Monitor',
+    icon: Radio,
+    color: 'text-cyan-400',
+    items: [
+      { label: 'Foresight Radar', path: '/foresight-radar' },
+      { label: 'AI Intelligence', path: '/ai' },
+      { label: 'Trigger Management', path: '/triggers-management' },
+    ]
+  },
+  {
+    label: 'Demos',
+    icon: Play,
+    color: 'text-emerald-400',
+    items: [
+      { label: 'Quick Demo (3 min)', path: '/demo/live-activation', badge: 'START HERE' },
+      { label: 'Executive Simulation', path: '/executive-simulation' },
+      { label: 'Industry Demos', path: '/industry-demos' },
+      { label: 'How It Works', path: '/how-it-works' },
+    ]
+  },
+];
+```
+
+**Then update the mega-menu rendering section (around lines 340-440) to use the new simplified structure:**
+
+```jsx
+{/* Mega Menu - Simplified */}
+<div className="fixed left-0 right-0 top-[60px] z-50 bg-slate-900 border-b border-slate-700 shadow-2xl">
+  <div className="max-w-5xl mx-auto px-6 py-6">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {mainNavItems.map((section) => (
+        <div key={section.label}>
+          <div className={`flex items-center gap-2 mb-4 ${section.color}`}>
+            <section.icon className="h-5 w-5" />
+            <span className="font-bold text-sm tracking-wide">{section.label}</span>
+          </div>
+          <ul className="space-y-1">
+            {section.items.map((item) => (
+              <li key={item.path}>
+                <button
+                  onClick={() => navigateTo(item.path)}
+                  className="w-full text-left py-2 px-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors text-sm flex items-center justify-between"
+                >
+                  <span>{item.label}</span>
+                  {item.badge && (
+                    <span className={`text-xs px-1.5 py-0.5 rounded ${
+                      item.badge === 'START HERE' 
+                        ? 'bg-emerald-500 text-white' 
+                        : 'bg-slate-700 text-slate-300'
+                    }`}>
+                      {item.badge}
+                    </span>
+                  )}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+    
+    {/* Quick Action Bar */}
+    <div className="mt-6 pt-4 border-t border-slate-700 flex items-center justify-between">
+      <div className="text-sm text-slate-500">
+        148 playbooks · 8 strategic domains · Enterprise-ready
+      </div>
+      <Button
+        size="sm"
+        onClick={() => navigateTo('/demo')}
+        className="bg-emerald-600 hover:bg-emerald-700 text-white"
+      >
+        Try Demo →
+      </Button>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+## TASK 5: Add Global Phase Progress Indicator
+
+### Problem
+The 4-phase framework (PREPARE → MONITOR → EXECUTE → LEARN) is not visible enough throughout the platform.
+
+### Solution
+Create a minimal phase indicator component and add it to key pages.
+
+**Create new file:** `client/src/components/GlobalPhaseIndicator.tsx`
+
+```tsx
+import { Target, Radio, Zap, BookOpen } from 'lucide-react';
+import { useLocation } from 'wouter';
+
+interface PhaseIndicatorProps {
+  scores?: {
+    prepare: number;
+    monitor: number;
+    execute: number;
+    learn: number;
+  };
+  compact?: boolean;
+}
+
+export default function GlobalPhaseIndicator({ 
+  scores = { prepare: 0, monitor: 0, execute: 0, learn: 0 },
+  compact = false 
+}: PhaseIndicatorProps) {
+  const [, setLocation] = useLocation();
+  
+  const phases = [
+    { 
+      id: 'prepare', 
+      label: 'PREPARE', 
+      icon: Target, 
+      color: 'text-violet-400', 
+      bgColor: 'bg-violet-500',
+      score: scores.prepare,
+      path: '/playbook-library'
+    },
+    { 
+      id: 'monitor', 
+      label: 'MONITOR', 
+      icon: Radio, 
+      color: 'text-cyan-400', 
+      bgColor: 'bg-cyan-500',
+      score: scores.monitor,
+      path: '/foresight-radar'
+    },
+    { 
+      id: 'execute', 
+      label: 'EXECUTE', 
+      icon: Zap, 
+      color: 'text-emerald-400', 
+      bgColor: 'bg-emerald-500',
+      score: scores.execute,
+      path: '/command-center'
+    },
+    { 
+      id: 'learn', 
+      label: 'LEARN', 
+      icon: BookOpen, 
+      color: 'text-amber-400', 
+      bgColor: 'bg-amber-500',
+      score: scores.learn,
+      path: '/executive-dashboard'
+    },
+  ];
+
+  if (compact) {
+    return (
+      <div className="flex items-center gap-1 text-xs">
+        {phases.map((phase, index) => {
+          const Icon = phase.icon;
+          return (
+            <div key={phase.id} className="flex items-center">
+              <button
+                onClick={() => setLocation(phase.path)}
+                className={`flex items-center gap-1 px-2 py-1 rounded hover:bg-slate-800 transition-colors ${phase.color}`}
+                title={`${phase.label}: ${phase.score}%`}
+              >
+                <Icon className="h-3 w-3" />
+                <span className="hidden sm:inline">{phase.score}%</span>
+              </button>
+              {index < phases.length - 1 && (
+                <span className="text-slate-600 mx-1">→</span>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4">
+      <div className="flex items-center justify-between mb-3">
+        <span className="text-sm font-medium text-slate-400">4-Phase Readiness</span>
+        <span className="text-sm text-slate-500">
+          Overall: {Math.round((scores.prepare + scores.monitor + scores.execute + scores.learn) / 4)}%
+        </span>
+      </div>
+      <div className="flex items-center gap-2">
+        {phases.map((phase, index) => {
+          const Icon = phase.icon;
+          return (
+            <div key={phase.id} className="flex items-center flex-1">
+              <button
+                onClick={() => setLocation(phase.path)}
+                className="flex-1 group"
+              >
+                <div className="flex items-center gap-2 mb-1">
+                  <Icon className={`h-4 w-4 ${phase.color}`} />
+                  <span className={`text-xs font-medium ${phase.color}`}>{phase.label}</span>
+                </div>
+                <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
+                  <div 
+                    className={`h-full ${phase.bgColor} transition-all`}
+                    style={{ width: `${phase.score}%` }}
+                  />
+                </div>
+                <div className="text-xs text-slate-500 mt-1">{phase.score}%</div>
+              </button>
+              {index < phases.length - 1 && (
+                <div className="text-slate-700 mx-2">→</div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+```
+
+**Add to key pages like ExecutiveDashboard, PlaybookLibrary, etc.**
+
+Example usage in a page:
+```jsx
+import GlobalPhaseIndicator from '@/components/GlobalPhaseIndicator';
+
+// In the component:
+<GlobalPhaseIndicator 
+  scores={{ prepare: 82, monitor: 45, execute: 0, learn: 30 }} 
+/>
+
+// Or compact version for headers:
+<GlobalPhaseIndicator compact />
+```
+
+---
+
+## TASK 6: Remove Homepage Clutter
+
+### Problem
+The homepage has too many sections competing for attention.
+
+### Solution
+Remove or consolidate redundant sections.
+
+**File:** `client/src/pages/Homepage.tsx`
+
+**Remove the "Quick Access to Key Features" section entirely (the section with 5 cards: Full Simulation, Signals Demo, Future Gym, What-If Analyzer, Living Playbooks).**
+
+This is lines ~330-425 approximately. Delete the entire `<section className="py-16 px-6 bg-white dark:bg-slate-950">` block that contains these cards.
+
+**Keep only:**
+1. Hero section (simplified per Task 2)
+2. 4-Phase cards section
+3. Executive Simulation featured card
+4. Final CTA section
+5. Footer
+
+---
+
+## TASK 7: Update 4-Phase Section to be Interactive
+
+**File:** `client/src/pages/Homepage.tsx`
+
+**Find the 4-phase cards section and update the cards to be more actionable:**
+
+Replace the phase card rendering with clickable cards:
+
+```jsx
+{/* 4-Phase Lifecycle - Interactive */}
+<section className="py-20 px-6 bg-slate-50 dark:bg-slate-900">
+  <div className="max-w-6xl mx-auto">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+        The 4-Phase Lifecycle
+      </h2>
+      <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+        Every strategic response flows through four phases. M ensures you're ready at each stage.
+      </p>
+    </div>
+    
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {phases.map((phase, index) => {
+        const PhaseIcon = phase.icon;
+        return (
+          <Card 
+            key={phase.id}
+            className={`${phase.bgColor} ${phase.borderColor} border-2 cursor-pointer transition-all hover:shadow-xl hover:-translate-y-1 group`}
+            onClick={() => setLocation(phase.primaryLink)}
+          >
+            <CardContent className="p-6">
+              {/* Phase Number */}
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                  PHASE {index + 1}
+                </span>
+                <div className={`p-2 rounded-xl ${phase.iconBg}`}>
+                  <PhaseIcon className={`w-5 h-5 ${phase.iconColor}`} />
+                </div>
+              </div>
+              
+              {/* Phase Name */}
+              <h3 className={`text-lg font-bold mb-2 bg-gradient-to-r ${phase.color} bg-clip-text text-transparent`}>
+                {phase.phase}
+              </h3>
+              
+              {/* Title */}
+              <h4 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
+                {phase.title}
+              </h4>
+              
+              {/* Description */}
+              <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                {phase.description}
+              </p>
+              
+              {/* Features */}
+              <ul className="space-y-1 mb-4">
+                {phase.features.map((feature) => (
+                  <li key={feature} className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                    <div className="w-1 h-1 rounded-full bg-slate-400" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              
+              {/* CTA */}
+              <div className="flex items-center text-sm font-medium group-hover:translate-x-1 transition-transform">
+                <span className={phase.iconColor}>{phase.primaryLabel}</span>
+                <ArrowRight className={`w-4 h-4 ml-1 ${phase.iconColor}`} />
+              </div>
+            </CardContent>
+          </Card>
+        );
+      })}
+    </div>
+  </div>
+</section>
+```
+
+---
+
+## TASK 8: Add Validated Statistics to Research Page
+
+**File:** `client/src/pages/Research.tsx`
+
+**Add or update the Research page with validated third-party statistics:**
+
+```tsx
+import StandardNav from '@/components/layout/StandardNav';
+import Footer from '@/components/layout/Footer';
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ExternalLink } from "lucide-react";
+
+export default function Research() {
+  const stats = [
+    {
+      value: '72 hours',
+      label: 'Standard crisis response window',
+      source: 'McKinsey Crisis Framework',
+      url: 'https://www.mckinsey.com/capabilities/risk-and-resilience/how-we-help-clients/crisis-response'
+    },
+    {
+      value: '91%',
+      label: 'of organizations faced major disruption',
+      source: 'PwC Global Crisis Survey 2023',
+      url: 'https://www.pwc.com/gx/en/issues/crisis-solutions/global-crisis-survey.html'
+    },
+    {
+      value: '$4.88M',
+      label: 'Average cost per incident',
+      source: 'IBM Cost of Data Breach 2024',
+      url: 'https://newsroom.ibm.com/2024-07-30-ibm-report-escalating-data-breach-disruption-pushes-costs-to-new-highs'
+    },
+    {
+      value: '$1.76M',
+      label: 'Saved by containing incidents within 30 days',
+      source: 'IBM/Ponemon Institute 2024',
+      url: 'https://www.ibm.com/reports/data-breach'
+    },
+    {
+      value: '35%',
+      label: 'Cost reduction with pre-defined response teams',
+      source: 'IBM/Ponemon Institute 2024',
+      url: 'https://www.ibm.com/reports/data-breach'
+    },
+    {
+      value: '89%',
+      label: 'Say resilience is a top strategic priority',
+      source: 'PwC Global Crisis Survey 2023',
+      url: 'https://www.pwc.com/gx/en/issues/crisis-solutions/global-crisis-survey.html'
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-white dark:bg-slate-950">
+      <StandardNav />
+      
+      <div className="max-w-4xl mx-auto px-6 py-20">
+        <div className="text-center mb-16">
+          <Badge className="mb-4 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">
+            Research & Validation
+          </Badge>
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+            The Data Behind M
+          </h1>
+          <p className="text-xl text-slate-600 dark:text-slate-400">
+            Our methodology is grounded in research from leading global firms.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
+          {stats.map((stat, index) => (
+            <Card key={index} className="bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800">
+              <CardContent className="p-6">
+                <div className="text-4xl font-bold text-slate-900 dark:text-white mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-slate-600 dark:text-slate-400 mb-4">
+                  {stat.label}
+                </div>
+                <a 
+                  href={stat.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  {stat.source}
+                  <ExternalLink className="w-3 h-3 ml-1" />
+                </a>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+            Sources
+          </h2>
+          <div className="flex flex-wrap justify-center gap-4 text-slate-500 dark:text-slate-400">
+            <span>McKinsey & Company</span>
+            <span>•</span>
+            <span>PwC</span>
+            <span>•</span>
+            <span>IBM Security</span>
+            <span>•</span>
+            <span>Ponemon Institute</span>
+          </div>
+        </div>
+      </div>
+      
+      <Footer />
+    </div>
+  );
+}
+```
+
+---
+
+## VERIFICATION CHECKLIST
+
+After implementing all tasks, verify:
+
+- [ ] Homepage "See It In Action" button navigates to `/executive-simulation`
+- [ ] Homepage hero shows "72 hours → 12 minutes" prominently
+- [ ] Homepage has only ONE primary CTA above the fold
+- [ ] `/demo` route shows the new DemoRouter page
+- [ ] Navigation mega-menu has 4 sections (not 6)
+- [ ] Navigation shows ~16 items total (not 30+)
+- [ ] Research page shows validated statistics with sources
+- [ ] No console errors on any page
+- [ ] Mobile navigation works correctly
+
+---
+
+## TESTING COMMANDS
+
+After implementation, test these user flows:
+
+1. **New User Flow:**
+   - Go to homepage
+   - Click "See It In Action"
+   - Should arrive at executive simulation
+   
+2. **Demo Flow:**
+   - Go to `/demo`
+   - See 3 clear options
+   - Click "Quick Demo"
+   - Should start the demo
+
+3. **Navigation Flow:**
+   - Click Platform dropdown
+   - Should see 4 sections, ~16 items
+   - Each link should work
+
+---
+
+## NOTES FOR REPLIT AGENT
+
+1. **Do tasks in order** - Task 1 (fix broken route) is critical
+2. **Test after each task** - Make sure the app still runs
+3. **Keep backups** - If something breaks, you may need to revert
+4. **Check imports** - Make sure all new components are properly imported
+5. **Mobile testing** - Check that changes work on mobile viewport
+
+If you encounter any issues with these implementations, the key files to check are:
+- `client/src/pages/Homepage.tsx`
+- `client/src/App.tsx`
+- `client/src/components/layout/StandardNav.tsx`

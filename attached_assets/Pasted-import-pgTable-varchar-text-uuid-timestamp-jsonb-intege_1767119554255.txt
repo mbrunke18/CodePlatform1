@@ -1,0 +1,159 @@
+import { pgTable, varchar, text, uuid, timestamp, jsonb, integer, boolean } from "drizzle-orm/pg-core";
+import { createInsertSchema } from "drizzle-zod";
+import { z } from "zod";
+
+export const users = pgTable('users', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  username: varchar('username', { length: 255 }).notNull().unique(),
+  password: varchar('password', { length: 255 }).notNull(),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const organizations = pgTable('organizations', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  name: varchar('name', { length: 255 }).notNull(),
+  pilotTier: varchar('pilot_tier', { length: 50 }),
+  pilotStartDate: timestamp('pilot_start_date'),
+  pilotEndDate: timestamp('pilot_end_date'),
+  pilotValue: integer('pilot_value'),
+  industry: varchar('industry', { length: 100 }),
+  isBeachheadCustomer: boolean('is_beachhead_customer').default(false),
+  avgResponseTimeSeconds: integer('avg_response_time_seconds'),
+  totalExecutions: integer('total_executions').default(0),
+  gameDayReadinessScore: integer('game_day_readiness_score'),
+  dedicatedCsmId: uuid('dedicated_csm_id'),
+  avgDecisionTimeMinutes: integer('avg_decision_time_minutes'),
+  totalDecisionsMade: integer('total_decisions_made').default(0),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+export const playbooks = pgTable('playbooks', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull(),
+  name: varchar('name', { length: 255 }).notNull(),
+  domain: varchar('domain', { length: 100 }).notNull(),
+  category: varchar('category', { length: 50 }),
+  description: text('description'),
+  sourceType: varchar('source_type', { length: 50 }).notNull().default('custom'),
+  templateId: uuid('template_id'),
+  timesUsed: integer('times_used').default(0),
+  avgResponseTimeSeconds: integer('avg_response_time_seconds'),
+  triggerConditions: jsonb('trigger_conditions').$type<Array<{id: string; description: string; source: string;}>>(),
+  stakeholders: jsonb('stakeholders').$type<Array<{role: string; userId?: string; responsibility: string; notificationChannels: string[];}>>(),
+  executionSteps: jsonb('execution_steps').$type<Array<{id: string; order: number; title: string; description: string; ownerId?: string; timeTargetMinutes: number; isParallel: boolean;}>>(),
+  successMetrics: jsonb('success_metrics').$type<{responseTimeTarget: number; stakeholdersTarget: number; customMetrics: Array<{name: string; target: string;}>}>(),
+  tasks: jsonb('tasks').$type<Array<{id: string; title: string; assignee?: string; completed: boolean;}>>(),
+  isActive: boolean('is_active').default(true),
+  isTemplate: boolean('is_template').default(false),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+export const milestoneTracking = pgTable('milestone_tracking', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  quarter: varchar('quarter', { length: 10 }).notNull(),
+  metric: varchar('metric', { length: 100 }).notNull(),
+  goal: integer('goal').notNull(),
+  current: integer('current').default(0),
+  unit: varchar('unit', { length: 10 }),
+  updatedAt: timestamp('updated_at').defaultNow(),
+  notes: text('notes')
+});
+
+export const decisionTrees = pgTable('decision_trees', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull(),
+  name: varchar('name', { length: 255 }).notNull(),
+  scenario: varchar('scenario', { length: 255 }).notNull(),
+  domain: varchar('domain', { length: 100 }).notNull(),
+  category: varchar('category', { length: 50 }),
+  decisionPoints: jsonb('decision_points').$type<Array<{
+    id: string;
+    order: number;
+    question: string;
+    decisionMaker: string;
+    mustWeighIn: string[];
+    timeWindowMinutes: number;
+    options: Array<{
+      id: string;
+      label: string;
+      description: string;
+      pros: string[];
+      cons: string[];
+      triggersPlaybookId?: string;
+      criteria: Array<{condition: string; met: boolean | null;}>;
+    }>;
+    historicalDecisions: Array<{
+      timestamp: string;
+      optionChosen: string;
+      decisionTimeMinutes: number;
+      outcome: string;
+      lessons: string;
+    }>;
+  }>>(),
+  isActive: boolean('is_active').default(true),
+  timesUsed: integer('times_used').default(0),
+  avgDecisionTimeMinutes: integer('avg_decision_time_minutes'),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+export const activeDecisions = pgTable('active_decisions', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull(),
+  decisionTreeId: uuid('decision_tree_id').notNull(),
+  triggeredAt: timestamp('triggered_at').defaultNow(),
+  currentDecisionPointId: varchar('current_decision_point_id', { length: 255 }),
+  decisionMaker: varchar('decision_maker', { length: 255 }),
+  stakeholderInputs: jsonb('stakeholder_inputs').$type<Array<{
+    userId: string;
+    role: string;
+    input: string;
+    timestamp: string;
+    recommendedOption: string;
+  }>>(),
+  status: varchar('status', { length: 50 }).default('pending'),
+  optionChosen: varchar('option_chosen', { length: 255 }),
+  decidedAt: timestamp('decided_at'),
+  decisionTimeMinutes: integer('decision_time_minutes'),
+  outcome: text('outcome'),
+  lessons: text('lessons'),
+});
+
+export const decisionLog = pgTable('decision_log', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull(),
+  scenario: varchar('scenario', { length: 255 }).notNull(),
+  question: text('question').notNull(),
+  decisionMaker: varchar('decision_maker', { length: 255 }).notNull(),
+  optionChosen: text('option_chosen').notNull(),
+  decisionTimeMinutes: integer('decision_time_minutes').notNull(),
+  outcome: text('outcome'),
+  lessons: text('lessons'),
+  timestamp: timestamp('timestamp').defaultNow(),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const insertUserSchema = createInsertSchema(users).omit({id: true, createdAt: true});
+export const insertOrganizationSchema = createInsertSchema(organizations).omit({id: true, createdAt: true, updatedAt: true});
+export const insertPlaybookSchema = createInsertSchema(playbooks).omit({id: true, createdAt: true, updatedAt: true});
+export const insertMilestoneSchema = createInsertSchema(milestoneTracking).omit({id: true, updatedAt: true});
+export const insertDecisionTreeSchema = createInsertSchema(decisionTrees).omit({id: true, createdAt: true, updatedAt: true});
+export const insertActiveDecisionSchema = createInsertSchema(activeDecisions).omit({id: true, triggeredAt: true});
+export const insertDecisionLogSchema = createInsertSchema(decisionLog).omit({id: true, timestamp: true, createdAt: true});
+
+export type User = typeof users.$inferSelect;
+export type InsertUser = z.infer<typeof insertUserSchema>;
+export type Organization = typeof organizations.$inferSelect;
+export type InsertOrganization = z.infer<typeof insertOrganizationSchema>;
+export type Playbook = typeof playbooks.$inferSelect;
+export type InsertPlaybook = z.infer<typeof insertPlaybookSchema>;
+export type MilestoneTracking = typeof milestoneTracking.$inferSelect;
+export type InsertMilestone = z.infer<typeof insertMilestoneSchema>;
+export type DecisionTree = typeof decisionTrees.$inferSelect;
+export type InsertDecisionTree = z.infer<typeof insertDecisionTreeSchema>;
+export type ActiveDecision = typeof activeDecisions.$inferSelect;
+export type InsertActiveDecision = z.infer<typeof insertActiveDecisionSchema>;
+export type DecisionLog = typeof decisionLog.$inferSelect;
+export type InsertDecisionLog = z.infer<typeof insertDecisionLogSchema>;

@@ -1,0 +1,2469 @@
+# M Platform - Developer Code Reference
+
+Copy-paste patterns for developers building on M Platform.
+
+---
+
+## Quick Start Imports
+
+### Frontend Page Template
+```tsx
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { useLocation } from "wouter";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { queryClient, apiRequest } from "@/lib/queryClient";
+import StandardNav from "@/components/layout/StandardNav";
+import Footer from "@/components/layout/Footer";
+```
+
+### Common Icons (lucide-react)
+```tsx
+import { 
+  ArrowRight, Play, Clock, Target, Zap, BookOpen, 
+  Radar, Radio, BarChart3, Shield, Users, CheckCircle,
+  Sparkles, Briefcase, Layers, AlertTriangle
+} from "lucide-react";
+```
+
+---
+
+## IDEA Framework Phase Colors
+
+Use these consistently across all phase-related components:
+
+```tsx
+const phaseColors = {
+  identify: {
+    color: 'from-violet-500 to-purple-600',
+    borderColor: 'border-violet-200 hover:border-violet-400',
+    bgColor: 'bg-violet-50 dark:bg-violet-950/20',
+    iconBg: 'bg-violet-100 dark:bg-violet-900/30',
+    iconColor: 'text-violet-600 dark:text-violet-400',
+  },
+  detect: {
+    color: 'from-blue-500 to-cyan-600',
+    borderColor: 'border-blue-200 hover:border-blue-400',
+    bgColor: 'bg-blue-50 dark:bg-blue-950/20',
+    iconBg: 'bg-blue-100 dark:bg-blue-900/30',
+    iconColor: 'text-blue-600 dark:text-blue-400',
+  },
+  execute: {
+    color: 'from-emerald-500 to-green-600',
+    borderColor: 'border-emerald-200 hover:border-emerald-400',
+    bgColor: 'bg-emerald-50 dark:bg-emerald-950/20',
+    iconBg: 'bg-emerald-100 dark:bg-emerald-900/30',
+    iconColor: 'text-emerald-600 dark:text-emerald-400',
+  },
+  advance: {
+    color: 'from-amber-500 to-orange-600',
+    borderColor: 'border-amber-200 hover:border-amber-400',
+    bgColor: 'bg-amber-50 dark:bg-amber-950/20',
+    iconBg: 'bg-amber-100 dark:bg-amber-900/30',
+    iconColor: 'text-amber-600 dark:text-amber-400',
+  }
+};
+```
+
+### IDEA Phase Data Structure
+```tsx
+const phases = [
+  {
+    id: 'identify',
+    phase: 'I',
+    phaseName: 'Identify',
+    title: 'Build Your Depth Chart',
+    description: 'Map your operating model to 166 pre-staged playbooks across 9 strategic domains.',
+    icon: BookOpen,
+    ...phaseColors.identify,
+    features: ['Operating Model Alignment', '166 Pre-built Playbooks', 'Stakeholder Accountability Mapping', 'Readiness Scoring'],
+    primaryLink: '/playbook-library',
+    primaryLabel: 'Browse Playbooks',
+    mindsetQuote: 'Know every scenario before it happens.'
+  },
+  {
+    id: 'detect',
+    phase: 'D',
+    phaseName: 'Detect',
+    title: 'Scout the Field',
+    description: 'AI-powered pattern matching monitors signals in real-time. Human insight amplified by machine intelligence.',
+    icon: Radar,
+    ...phaseColors.detect,
+    features: ['Scenario Pattern Library', 'Competitive Intelligence Aggregation', 'Early Warning Dashboards', 'Human-Triggered Activation'],
+    primaryLink: '/foresight-radar',
+    primaryLabel: 'View Radar',
+    mindsetQuote: 'See it coming before it arrives.'
+  },
+  {
+    id: 'execute',
+    phase: 'E',
+    phaseName: 'Execute',
+    title: 'Run the Play',
+    description: 'Coordinated response in 15 minutes. 47 tasks across 12 stakeholders, automatically sequenced.',
+    icon: Radio,
+    ...phaseColors.execute,
+    features: ['Automated Stakeholder Routing', 'Real-time Play Clock', 'Two-Minute Drill Mode', 'Halftime Adjustments'],
+    primaryLink: '/command-center',
+    primaryLabel: 'Launch Command Center',
+    mindsetQuote: 'No thinking. Just execution.'
+  },
+  {
+    id: 'advance',
+    phase: 'A',
+    phaseName: 'Advance',
+    title: 'Review the Film',
+    description: 'Capture lessons learned. Refine playbooks. Get better each time a scenario occurs.',
+    icon: BarChart3,
+    ...phaseColors.advance,
+    features: ['Post-action Analysis', 'Playbook Refinement', 'Performance Benchmarking', 'Organizational Learning Capture'],
+    primaryLink: '/executive-dashboard',
+    primaryLabel: 'View Dashboard',
+    mindsetQuote: 'Get better every time.'
+  }
+];
+```
+
+---
+
+## 9 Strategic Domains (166 Playbooks)
+
+```tsx
+const strategicDomains = {
+  offense: {
+    label: 'OFFENSE',
+    tagline: 'Seize Opportunities',
+    total: 58,
+    color: 'emerald',
+    domains: [
+      { name: 'Market Entry & Expansion', count: 22 },
+      { name: 'M&A Integration', count: 16 },
+      { name: 'Product Launch', count: 20 }
+    ]
+  },
+  defense: {
+    label: 'DEFENSE',
+    tagline: 'Protect Value',
+    total: 56,
+    color: 'blue',
+    domains: [
+      { name: 'Crisis Response', count: 24 },
+      { name: 'Cyber Incidents', count: 18 },
+      { name: 'Regulatory Compliance', count: 14 }
+    ]
+  },
+  specialTeams: {
+    label: 'SPECIAL TEAMS',
+    tagline: 'Change the Game',
+    total: 52,
+    color: 'purple',
+    domains: [
+      { name: 'Digital Transformation', count: 16 },
+      { name: 'Competitive Response', count: 18 },
+      { name: 'AI Governance', count: 18 }
+    ]
+  }
+};
+```
+
+---
+
+## Data Fetching Patterns
+
+### Query with TanStack Query v5
+```tsx
+const { data: playbooks, isLoading } = useQuery<PlaybookType[]>({
+  queryKey: ['/api/playbooks'],
+});
+
+// With variable key
+const { data: playbook } = useQuery<PlaybookType>({
+  queryKey: ['/api/playbooks', id],
+});
+```
+
+### Mutation Pattern
+```tsx
+import { queryClient, apiRequest } from "@/lib/queryClient";
+
+const createPlaybook = useMutation({
+  mutationFn: async (data: InsertPlaybook) => {
+    const res = await apiRequest('POST', '/api/playbooks', data);
+    return res.json();
+  },
+  onSuccess: () => {
+    queryClient.invalidateQueries({ queryKey: ['/api/playbooks'] });
+  }
+});
+
+// Usage
+createPlaybook.mutate({ name: 'New Playbook', domain: 'crisis' });
+```
+
+---
+
+## Form Pattern with react-hook-form
+
+```tsx
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { insertPlaybookSchema } from "@shared/schema";
+
+export function PlaybookForm() {
+  const form = useForm({
+    resolver: zodResolver(insertPlaybookSchema),
+    defaultValues: {
+      name: '',
+      domain: '',
+      description: ''
+    }
+  });
+
+  const onSubmit = (data: z.infer<typeof insertPlaybookSchema>) => {
+    createPlaybook.mutate(data);
+  };
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Playbook Name</FormLabel>
+              <FormControl>
+                <Input placeholder="Enter playbook name" {...field} data-testid="input-name" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit" data-testid="button-submit">Create Playbook</Button>
+      </form>
+    </Form>
+  );
+}
+```
+
+---
+
+## Schema Pattern (shared/schema.ts)
+
+```typescript
+import { pgTable, varchar, text, uuid, timestamp, jsonb, integer, boolean } from "drizzle-orm/pg-core";
+import { createInsertSchema } from "drizzle-zod";
+import { z } from "zod";
+import { sql } from 'drizzle-orm';
+
+// Table definition
+export const playbooks = pgTable('playbooks', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull(),
+  name: varchar('name', { length: 255 }).notNull(),
+  domain: varchar('domain', { length: 100 }).notNull(),
+  category: varchar('category', { length: 50 }), // offense, defense, special_teams
+  description: text('description'),
+  tasks: jsonb('tasks'), // Array of task objects
+  isActive: boolean('is_active').default(true),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+// Insert schema (omit auto-generated fields)
+export const insertPlaybookSchema = createInsertSchema(playbooks).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+// Types
+export type InsertPlaybook = z.infer<typeof insertPlaybookSchema>;
+export type Playbook = typeof playbooks.$inferSelect;
+```
+
+---
+
+## API Route Pattern (server/routes.ts)
+
+```typescript
+import { storage } from "./storage";
+import { insertPlaybookSchema } from "@shared/schema";
+
+// GET all
+app.get('/api/playbooks', optionalAuth, async (req, res) => {
+  try {
+    const playbooks = await storage.getPlaybooks(req.userId);
+    res.json(playbooks);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to fetch playbooks' });
+  }
+});
+
+// GET by ID
+app.get('/api/playbooks/:id', optionalAuth, async (req, res) => {
+  try {
+    const playbook = await storage.getPlaybook(req.params.id);
+    if (!playbook) {
+      return res.status(404).json({ message: 'Playbook not found' });
+    }
+    res.json(playbook);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to fetch playbook' });
+  }
+});
+
+// POST create
+app.post('/api/playbooks', requireAuth, async (req, res) => {
+  try {
+    const parsed = insertPlaybookSchema.safeParse(req.body);
+    if (!parsed.success) {
+      return res.status(400).json({ message: 'Invalid data', errors: parsed.error.errors });
+    }
+    const playbook = await storage.createPlaybook(parsed.data);
+    res.status(201).json(playbook);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to create playbook' });
+  }
+});
+```
+
+---
+
+## Component Patterns
+
+### Phase Card Component
+```tsx
+<Card 
+  className={`${phase.borderColor} ${phase.bgColor} cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1`}
+  onClick={() => setLocation(phase.primaryLink)}
+  data-testid={`card-phase-${phase.id}`}
+>
+  <CardContent className="p-6">
+    <div className={`w-12 h-12 ${phase.iconBg} rounded-xl flex items-center justify-center mb-4`}>
+      <phase.icon className={`h-6 w-6 ${phase.iconColor}`} />
+    </div>
+    <Badge className="mb-2">{phase.phase} - {phase.phaseName}</Badge>
+    <h3 className="text-xl font-bold text-slate-900 dark:text-white">{phase.title}</h3>
+    <p className="text-slate-600 dark:text-slate-400 mb-4">{phase.description}</p>
+    <p className="text-sm font-semibold italic ${phase.iconColor}">{phase.mindsetQuote}</p>
+    <Button variant="ghost" className={`w-full justify-between ${phase.iconColor}`}>
+      {phase.primaryLabel}
+      <ArrowRight className="h-4 w-4" />
+    </Button>
+  </CardContent>
+</Card>
+```
+
+### Category Overview Cards (OFFENSE/DEFENSE/SPECIAL TEAMS)
+```tsx
+<div className="grid grid-cols-1 md:grid-cols-3 gap-4" data-testid="category-overview">
+  {/* OFFENSE */}
+  <Card className="bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950/40 dark:to-emerald-900/30 border-emerald-200 dark:border-emerald-800 hover:shadow-lg transition-all cursor-pointer"
+    data-testid="category-card-offense"
+  >
+    <CardHeader className="pb-2">
+      <div className="flex items-center justify-between">
+        <CardTitle className="text-emerald-700 dark:text-emerald-400 flex items-center gap-2">
+          <div className="w-8 h-8 bg-emerald-500/20 rounded-lg flex items-center justify-center">
+            <Target className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+          </div>
+          OFFENSE
+        </CardTitle>
+        <Badge className="bg-emerald-500 text-white">58</Badge>
+      </div>
+      <CardDescription className="text-emerald-600 dark:text-emerald-400">Seize Opportunities</CardDescription>
+    </CardHeader>
+    <CardContent className="pt-0 space-y-1 text-sm">
+      <div className="flex justify-between text-slate-600 dark:text-slate-400">
+        <span>Market Entry & Expansion</span>
+        <span className="text-emerald-600 dark:text-emerald-400 font-medium">22</span>
+      </div>
+      <div className="flex justify-between text-slate-600 dark:text-slate-400">
+        <span>M&A Integration</span>
+        <span className="text-emerald-600 dark:text-emerald-400 font-medium">16</span>
+      </div>
+      <div className="flex justify-between text-slate-600 dark:text-slate-400">
+        <span>Product Launch</span>
+        <span className="text-emerald-600 dark:text-emerald-400 font-medium">20</span>
+      </div>
+    </CardContent>
+  </Card>
+
+  {/* DEFENSE - use blue-* classes */}
+  {/* SPECIAL TEAMS - use purple-* classes */}
+</div>
+```
+
+### Stats Bar
+```tsx
+const stats = [
+  { value: '30%', label: 'Strategy Value Recovered', icon: Target },
+  { value: '12 Min', label: 'Signal to Action', icon: Clock },
+  { value: '166', label: 'Pre-Staged Playbooks', icon: BookOpen },
+  { value: '9', label: 'Strategic Domains', icon: Shield }
+];
+
+<div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+  {stats.map((stat, index) => (
+    <div key={index} className="text-center" data-testid={`stat-${index}`}>
+      <div className="flex items-center justify-center gap-2 mb-1">
+        <stat.icon className="h-5 w-5 text-slate-500" />
+        <span className="text-2xl font-bold text-slate-900 dark:text-white">{stat.value}</span>
+      </div>
+      <span className="text-sm text-slate-600 dark:text-slate-400">{stat.label}</span>
+    </div>
+  ))}
+</div>
+```
+
+---
+
+## Key Messaging Copy
+
+### Primary Mindset (Hero)
+"Comfortable and confident that we are prepared to execute. No matter the situation."
+
+### Taglines
+- Primary: "That's the IDEA."
+- Secondary: "Success Favors the Prepared"
+- Category: "Strategic Execution Operating System"
+- Value Prop: "Pre-staged decisions. Coordinated execution. 15 minutes from trigger to completion."
+
+### Strategic Triad (Equal Weight)
+- OFFENSE: "Seize Opportunities" (58 playbooks - M&A, market expansion, product launch)
+- DEFENSE: "Protect Value" (56 playbooks - crisis response, cyber incidents, regulatory)
+- SPECIAL TEAMS: "Drive Innovation" (52 playbooks - AI governance, digital transformation, competitive response)
+
+### Value Props
+- Speed: "72 hours + 2 weeks → 15 min + 90 min"
+- Scope: "166 playbooks across 9 strategic domains"
+- Partnership: "Human-AI Partnership—AI monitors, executives decide"
+- Multiplier: "233X faster response from signal to complete coordinated execution"
+
+### Problem Statement
+"McKinsey says even high-performing companies lose 30% of their strategy's value in execution. For a Fortune 500, that's $270M–$900M annually. The gap isn't intelligence—it's coordination."
+
+### Solution
+"Consultants design operating models. M executes them."
+
+### Note on Football Terminology
+Football-inspired terminology (Film Room, Two-Minute Drill, Depth Chart, etc.) is used **internally** for product features but not as celebrity-focused positioning. The homepage and marketing copy lead with the **preparation mindset** rather than celebrity references.
+
+---
+
+## File Structure
+
+```
+client/
+├── src/
+│   ├── pages/           # Route pages
+│   ├── components/
+│   │   ├── ui/          # shadcn components
+│   │   ├── layout/      # StandardNav, Footer, Sidebar
+│   │   └── playbook/    # Playbook-specific components
+│   ├── hooks/           # Custom hooks (use-toast, use-mobile)
+│   └── lib/             # queryClient, utils
+server/
+├── routes.ts            # API endpoints
+├── storage.ts           # Database interface
+├── db.ts                # Drizzle connection
+└── services/            # Business logic services
+shared/
+└── schema.ts            # Drizzle schemas & Zod types
+```
+
+---
+
+## Database Commands
+
+```bash
+# Push schema changes to database
+npm run db:push
+
+# Force push (if data-loss warning)
+npm run db:push --force
+
+# Open Drizzle Studio
+npm run db:studio
+```
+
+---
+
+## Testing Attributes
+
+Always add `data-testid` to interactive elements:
+```tsx
+<Button data-testid="button-submit">Submit</Button>
+<Input data-testid="input-email" />
+<Card data-testid={`card-playbook-${playbook.id}`}>
+```
+
+Pattern: `{element-type}-{action/content}-{id?}`
+
+---
+
+## Decision Velocity Feature
+
+### Schema (shared/schema.ts)
+
+```typescript
+// Decision Trees - Pre-staged decision frameworks
+export const decisionTrees = pgTable('decision_trees', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull(),
+  name: varchar('name', { length: 255 }).notNull(),
+  scenario: varchar('scenario', { length: 255 }).notNull(),
+  domain: varchar('domain', { length: 100 }),
+  category: varchar('category', { length: 50 }), // offense, defense, special_teams
+  decisionPoints: jsonb('decision_points').notNull().default([]),
+  isActive: boolean('is_active').default(true),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+// ============================================
+// UNIFIED ACTIVE RESPONSES TABLE
+// Tracks BOTH decision AND execution in one workflow
+// This replaces the old separate activeDecisions table
+// ============================================
+export const activeResponses = pgTable('active_responses', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull(),
+  decisionTreeId: uuid('decision_tree_id').references(() => decisionTrees.id),
+  executionPlanId: uuid('execution_plan_id').references(() => scenarioExecutionPlans.id),
+  scenarioId: uuid('scenario_id'),
+  scenarioName: varchar('scenario_name', { length: 255 }),
+  
+  // PHASE 1: Trigger
+  triggeredAt: timestamp('triggered_at').defaultNow(),
+  triggeredBy: varchar('triggered_by', { length: 255 }),
+  triggerSource: varchar('trigger_source', { length: 100 }), // 'manual' | 'ai_detected' | 'signal'
+  
+  // PHASE 2: Decision
+  currentPointId: varchar('current_point_id', { length: 100 }),
+  decisionMaker: varchar('decision_maker', { length: 255 }),
+  weighInsCollected: jsonb('weigh_ins_collected').default([]),
+  decisionMadeAt: timestamp('decision_made_at'),
+  decisionTimeMinutes: integer('decision_time_minutes'),
+  optionChosen: varchar('option_chosen', { length: 255 }),
+  
+  // PHASE 3: Execution (the 80% of value)
+  executionStartedAt: timestamp('execution_started_at'),
+  executionCompletedAt: timestamp('execution_completed_at'),
+  executionTimeMinutes: integer('execution_time_minutes'),
+  taskStatuses: jsonb('task_statuses').default([]), // Array of task status objects
+  tasksCompleted: integer('tasks_completed').default(0),
+  totalTasks: integer('total_tasks'),
+  
+  // PHASE 4: Complete
+  totalResponseTimeMinutes: integer('total_response_time_minutes'),
+  status: varchar('status', { length: 50 }).default('triggered'), // triggered | deciding | executing | completed | failed
+  outcome: varchar('outcome', { length: 50 }), // positive | neutral | negative
+  lessons: text('lessons'),
+  
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+// Decision Log - Historical record of all decisions
+export const decisionLog = pgTable('decision_log', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull(),
+  decisionTreeId: uuid('decision_tree_id').references(() => decisionTrees.id),
+  scenario: varchar('scenario', { length: 255 }),
+  question: text('question'),
+  decisionMaker: varchar('decision_maker', { length: 255 }),
+  optionChosen: varchar('option_chosen', { length: 255 }),
+  decisionTimeMinutes: integer('decision_time_minutes'),
+  outcome: varchar('outcome', { length: 100 }), // positive, neutral, negative
+  lessons: text('lessons'),
+  timestamp: timestamp('timestamp').defaultNow(),
+});
+
+// Insert schemas
+export const insertDecisionTreeSchema = createInsertSchema(decisionTrees).omit({
+  id: true, createdAt: true, updatedAt: true,
+});
+export const insertDecisionLogSchema = createInsertSchema(decisionLog).omit({
+  id: true, timestamp: true,
+});
+export const insertActiveResponseSchema = createInsertSchema(activeResponses).omit({
+  id: true, createdAt: true, updatedAt: true,
+});
+export const insertResponseTaskSchema = createInsertSchema(responseTasks).omit({
+  id: true, createdAt: true, updatedAt: true,
+});
+
+// Types
+export type DecisionTree = typeof decisionTrees.$inferSelect;
+export type InsertDecisionTree = z.infer<typeof insertDecisionTreeSchema>;
+export type DecisionLogEntry = typeof decisionLog.$inferSelect;
+export type InsertDecisionLog = z.infer<typeof insertDecisionLogSchema>;
+export type ActiveResponse = typeof activeResponses.$inferSelect;
+export type InsertActiveResponse = z.infer<typeof insertActiveResponseSchema>;
+export type ResponseTask = typeof responseTasks.$inferSelect;
+export type InsertResponseTask = z.infer<typeof insertResponseTaskSchema>;
+```
+
+### Decision Point Type Structure
+
+```typescript
+interface DecisionOption {
+  id: string;
+  label: string;
+  description: string;
+  pros: string[];
+  cons: string[];
+  criteria: { condition: string; met: boolean | null }[];
+  triggersPlaybookId?: string;
+}
+
+interface DecisionPoint {
+  id: string;
+  order: number;
+  question: string;
+  decisionMaker: string;
+  mustWeighIn: string[];
+  timeWindowMinutes: number;
+  options: DecisionOption[];
+  historicalDecisions: {
+    date: string;
+    chosen: string;
+    outcome: 'positive' | 'neutral' | 'negative';
+  }[];
+}
+```
+
+### API Routes (server/routes.ts)
+
+```typescript
+// Decision Trees CRUD
+app.get('/api/decision-trees', optionalAuth, async (req, res) => {
+  const organizationId = req.query.organizationId || 'default-org-id';
+  const trees = await db.select()
+    .from(decisionTrees)
+    .where(eq(decisionTrees.organizationId, organizationId))
+    .orderBy(desc(decisionTrees.createdAt));
+  res.json(trees);
+});
+
+app.get('/api/decision-trees/:id', optionalAuth, async (req, res) => {
+  const [tree] = await db.select()
+    .from(decisionTrees)
+    .where(eq(decisionTrees.id, req.params.id));
+  if (!tree) return res.status(404).json({ error: 'Not found' });
+  res.json(tree);
+});
+
+app.post('/api/decision-trees', optionalAuth, async (req, res) => {
+  const [newTree] = await db.insert(decisionTrees)
+    .values({
+      organizationId: req.body.organizationId || 'default-org-id',
+      name: req.body.name,
+      scenario: req.body.scenario,
+      domain: req.body.domain,
+      category: req.body.category,
+      decisionPoints: req.body.decisionPoints || [],
+      isActive: true,
+    })
+    .returning();
+  res.status(201).json(newTree);
+});
+
+app.patch('/api/decision-trees/:id', optionalAuth, async (req, res) => {
+  const [updated] = await db.update(decisionTrees)
+    .set({ ...req.body, updatedAt: new Date() })
+    .where(eq(decisionTrees.id, req.params.id))
+    .returning();
+  res.json(updated);
+});
+
+// Decision Log
+app.get('/api/decision-log', optionalAuth, async (req, res) => {
+  const logs = await db.select()
+    .from(decisionLog)
+    .where(eq(decisionLog.organizationId, req.query.organizationId || 'default-org-id'))
+    .orderBy(desc(decisionLog.timestamp))
+    .limit(50);
+  res.json(logs);
+});
+
+app.post('/api/decision-log', optionalAuth, async (req, res) => {
+  const [newLog] = await db.insert(decisionLog).values(req.body).returning();
+  res.status(201).json(newLog);
+});
+
+// Velocity Metrics
+app.get('/api/decision-velocity/metrics', optionalAuth, async (req, res) => {
+  const logs = await db.select().from(decisionLog)
+    .where(eq(decisionLog.organizationId, req.query.organizationId || 'default-org-id'));
+  
+  const totalDecisions = logs.length;
+  const avgDecisionTime = totalDecisions > 0 
+    ? logs.reduce((sum, d) => sum + (d.decisionTimeMinutes || 0), 0) / totalDecisions 
+    : 0;
+  const onTimeRate = totalDecisions > 0 
+    ? (logs.filter(d => (d.decisionTimeMinutes || 0) <= 20).length / totalDecisions) * 100 
+    : 0;
+  const baselineMinutes = 4320; // 72 hours
+  const speedMultiplier = avgDecisionTime > 0 ? Math.round(baselineMinutes / avgDecisionTime) : 0;
+  
+  res.json({ totalDecisions, avgDecisionTimeMinutes: avgDecisionTime, onTimeRate, speedMultiplier, baselineMinutes });
+});
+```
+
+### DecisionTreeBuilder Component Pattern
+
+```tsx
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
+import { useLocation } from "wouter";
+
+export default function DecisionTreeBuilder() {
+  const { toast } = useToast();
+  const [, setLocation] = useLocation();
+  
+  // Form state
+  const [scenario, setScenario] = useState('');
+  const [question, setQuestion] = useState('');
+  const [decisionMaker, setDecisionMaker] = useState('CEO');
+  const [options, setOptions] = useState<DecisionOption[]>([{ id: '1', label: '', description: '', pros: [], cons: [], criteria: [], triggersPlaybook: '' }]);
+  
+  const createTreeMutation = useMutation({
+    mutationFn: async (data: any) => {
+      return apiRequest('POST', '/api/decision-trees', data);
+    },
+    onSuccess: () => {
+      toast({ title: "Decision Tree Saved", description: "Your pre-staged decision tree has been created." });
+      setLocation('/decisions');
+    },
+    onError: () => {
+      toast({ title: "Save Failed", variant: "destructive" });
+    }
+  });
+  
+  const handleSave = () => {
+    if (!scenario || !question) {
+      toast({ title: "Missing fields", variant: "destructive" });
+      return;
+    }
+    
+    const decisionPoint = {
+      id: '1',
+      order: 1,
+      question,
+      decisionMaker,
+      mustWeighIn: ['General Counsel', 'CISO'],
+      timeWindowMinutes: 15,
+      options: options.map((opt, idx) => ({
+        id: opt.id,
+        label: opt.label || `Option ${String.fromCharCode(65 + idx)}`,
+        description: opt.description,
+        pros: opt.pros,
+        cons: opt.cons,
+        criteria: opt.criteria.map(c => ({ condition: c, met: null })),
+        triggersPlaybookId: opt.triggersPlaybook || undefined,
+      })),
+      historicalDecisions: [],
+    };
+    
+    createTreeMutation.mutate({
+      name: scenario,
+      scenario,
+      domain: 'crisis',
+      category: 'defense',
+      decisionPoints: [decisionPoint],
+    });
+  };
+  
+  return (
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+      <StandardNav />
+      {/* Form content */}
+      <Button onClick={handleSave} disabled={createTreeMutation.isPending} data-testid="button-save">
+        <Save className="mr-2 h-5 w-5" />
+        Save Decision Tree
+      </Button>
+    </div>
+  );
+}
+```
+
+### Decision Velocity Dashboard Metrics
+
+```tsx
+// Key metrics to display
+const metrics = {
+  avgDecisionTime: { label: 'Avg. Decision Time', value: '15 min', comparison: '72 hours baseline' },
+  decisionsThisMonth: { label: 'Decisions Made', value: 24 },
+  onTimeRate: { label: 'On-Time Rate', value: '87%' },
+  speedMultiplier: { label: 'Speed vs Baseline', value: '288x faster' },
+};
+
+// Leaderboard structure
+interface DecisionMaker {
+  name: string;
+  role: string;
+  decisionsCount: number;
+  avgTime: string;
+  onTimeRate: number;
+}
+
+// Decision history entry
+interface DecisionRecord {
+  id: string;
+  scenario: string;
+  question: string;
+  decisionMaker: string;
+  optionChosen: string;
+  decisionTime: string;
+  outcome: 'positive' | 'neutral' | 'negative';
+  date: string;
+}
+```
+
+### Key Messaging for Decision Velocity
+
+```tsx
+// Hero section messaging
+const heroContent = {
+  headline: "Head coaches make 80+ decisions in 3 hours",
+  subheadline: "Your CEO takes 72 hours to make one",
+  valueProposition: "Pre-stage your critical decisions. When scenarios trigger, your teams execute at game-speed.",
+  cta: "Build Your Decision Trees",
+  comparison: {
+    before: { label: "Industry Average", value: "72 hours", sublabel: "to coordinate a strategic response" },
+    after: { label: "With M Platform", value: "12-15 minutes", sublabel: "from signal to coordinated action" }
+  }
+};
+
+// Football analogy
+const footballAnalogy = {
+  insight: "Head coaches don't create plays during the game—they call plays they prepared all week.",
+  application: "Pre-stage your critical decision trees before scenarios occur. Define the options, criteria, and who must weigh in.",
+};
+```
+
+### Navigation Links
+
+```tsx
+// Add to StandardNav or sidebar
+const decisionVelocityLinks = [
+  { href: '/decisions', label: 'Decision Velocity', icon: Zap },
+  { href: '/decision-trees', label: 'Build Decision Tree', icon: GitBranch },
+  { href: '/execution-coordination', label: 'Execution Coordination', icon: Radio },
+];
+```
+
+---
+
+## Execution Coordination Feature
+
+> **⚠️ MIGRATION NOTE**: The old `executionInstances` table has been **deprecated** in favor of the unified `activeResponses` table (see Decision Velocity section). The `activeResponses` table tracks both decision AND execution in a single workflow. Use `/api/active-responses` routes instead of the legacy `/api/execution-runs` routes.
+
+### Schema Migration Guide
+
+**Tables REMOVED (deprecated):**
+- `executionInstances` → replaced by `activeResponses`
+- `executionInstanceTasks` → replaced by `responseTasks`
+
+**Tables UPDATED:**
+- `checkpointValidations.executionInstanceId` → now `checkpointValidations.activeResponseId`
+
+**New Unified Tables:**
+- `activeResponses` - tracks complete 4-phase workflow (trigger → decision → execution → verify)
+- `responseTasks` - individual tasks within an active response
+
+**API Route Migration:**
+| Old Route | New Route |
+|-----------|-----------|
+| `GET /api/execution-runs` | `GET /api/active-responses` |
+| `GET /api/execution-runs/:id` | `GET /api/active-responses/:id` |
+| `POST /api/execution-runs` | `POST /api/active-responses` |
+| `PATCH /api/execution-runs/:id/tasks/:taskId` | `PATCH /api/active-responses/:id/tasks/:taskId` |
+
+**Migration Steps:**
+1. Add `activeResponses` and `responseTasks` tables to `shared/schema.ts`
+2. Update `checkpointValidations` to reference `activeResponseId`
+3. Update API routes to use new endpoints
+4. Update frontend to use `useQuery({ queryKey: ['/api/active-responses', id] })`
+5. Remove legacy `executionInstances` and `executionInstanceTasks` tables after migration
+
+### Supporting Tables (shared/schema.ts)
+
+These tables support the unified `activeResponses` workflow:
+
+```typescript
+// Execution Checkpoints - Validation gates that must pass before proceeding
+export const executionCheckpoints = pgTable('execution_checkpoints', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  executionPlanId: uuid('execution_plan_id').references(() => scenarioExecutionPlans.id, { onDelete: 'cascade' }).notNull(),
+  name: varchar('name', { length: 255 }).notNull(),
+  description: text('description'),
+  phaseId: uuid('phase_id').references(() => executionPlanPhases.id, { onDelete: 'cascade' }),
+  sequence: integer('sequence').notNull(),
+  requiredTaskIds: jsonb('required_task_ids').notNull().default([]),
+  validationRules: jsonb('validation_rules'),
+  approverRoleId: uuid('approver_role_id').references(() => roles.id),
+  isRequired: boolean('is_required').default(true),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+// Document Templates - Pre-written templates with merge fields for auto-population
+export const documentTemplates = pgTable('document_templates', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').references(() => organizations.id).notNull(),
+  name: varchar('name', { length: 255 }).notNull(),
+  category: varchar('category', { length: 100 }), // breach_disclosure, regulatory_filing
+  domain: varchar('domain', { length: 100 }), // crisis, compliance, m_and_a
+  templateContent: text('template_content').notNull(), // Content with {{variable}} placeholders
+  mergeFields: jsonb('merge_fields').notNull().default([]),
+  format: varchar('format', { length: 50 }).default('markdown'),
+  isActive: boolean('is_active').default(true),
+  version: integer('version').default(1),
+  createdBy: varchar('created_by').references(() => users.id),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+// Checkpoint Validations - Runtime tracking of checkpoint passage
+// NOTE: References activeResponses.id (the unified workflow table)
+export const checkpointValidations = pgTable('checkpoint_validations', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  activeResponseId: uuid('active_response_id').references(() => activeResponses.id, { onDelete: 'cascade' }).notNull(),
+  checkpointId: uuid('checkpoint_id').references(() => executionCheckpoints.id).notNull(),
+  status: varchar('status', { length: 50 }).default('pending'), // pending, passed, failed, bypassed
+  validatedBy: varchar('validated_by').references(() => users.id),
+  validatedAt: timestamp('validated_at'),
+  notes: text('notes'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+// Response Tasks - Individual tasks within an active response
+// NOTE: References activeResponses.id (the unified workflow table)
+export const responseTasks = pgTable('response_tasks', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  activeResponseId: uuid('active_response_id').references(() => activeResponses.id, { onDelete: 'cascade' }).notNull(),
+  planTaskId: uuid('plan_task_id').references(() => executionPlanTasks.id),
+  title: varchar('title', { length: 255 }).notNull(),
+  assignee: varchar('assignee', { length: 255 }),
+  role: varchar('role', { length: 100 }),
+  status: varchar('status', { length: 50 }).default('pending'), // pending, blocked, ready, in_progress, completed, failed
+  isParallel: boolean('is_parallel').default(true),
+  parallelGroup: integer('parallel_group'),
+  dependencies: jsonb('dependencies').default([]), // Task IDs that must complete first
+  estimatedMinutes: integer('estimated_minutes'),
+  actualMinutes: integer('actual_minutes'),
+  startedAt: timestamp('started_at'),
+  completedAt: timestamp('completed_at'),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+```
+
+### Execution Task Type Structure
+
+```typescript
+interface ExecutionTask {
+  id: string;
+  title: string;
+  assignee: string;
+  role: string;
+  status: 'pending' | 'blocked' | 'ready' | 'in_progress' | 'completed' | 'failed';
+  isParallel: boolean;
+  parallelGroup?: number;
+  estimatedMinutes: number;
+  actualMinutes?: number;
+  startedAt?: string;
+  completedAt?: string;
+  dependencies: string[]; // Task IDs that must complete first
+}
+
+interface ExecutionPhase {
+  id: string;
+  name: string; // 'IMMEDIATE (0-2 min)', 'COORDINATION (2-5 min)', 'EXTERNAL (5-12 min)'
+  startMinute: number;
+  endMinute: number;
+  tasks: ExecutionTask[];
+}
+```
+
+### API Routes - Use `/api/active-responses` (see Active Responses API section)
+
+```typescript
+// ⚠️ DEPRECATED ROUTES - Use /api/active-responses instead
+// The legacy /api/execution-runs routes have been removed.
+// All execution tracking now uses the unified activeResponses table.
+
+// ❌ OLD: app.get('/api/execution-runs', ...)           → ✅ NEW: app.get('/api/active-responses', ...)
+// ❌ OLD: app.get('/api/execution-runs/:id', ...)       → ✅ NEW: app.get('/api/active-responses/:id', ...)
+// ❌ OLD: app.post('/api/execution-runs', ...)          → ✅ NEW: app.post('/api/active-responses', ...)
+// ❌ OLD: app.patch('/api/execution-runs/:id/tasks', ...)→ ✅ NEW: app.patch('/api/active-responses/:id/tasks/:taskId', ...)
+
+// See "Active Responses API Routes" section for complete implementation
+
+// Document Template population (still valid)
+app.post('/api/document-templates/:id/populate', optionalAuth, async (req, res) => {
+  const [template] = await db.select().from(documentTemplates).where(eq(documentTemplates.id, req.params.id));
+  let populatedContent = template.templateContent;
+  for (const [key, value] of Object.entries(req.body.context || {})) {
+    populatedContent = populatedContent.replace(new RegExp(`\\{\\{${key}\\}\\}`, 'g'), String(value));
+  }
+  res.json({ templateId: req.params.id, populatedContent, populatedAt: new Date() });
+});
+```
+
+### Execution Coordination Dashboard Pattern
+
+Uses the unified `activeResponses` + `responseTasks` model:
+
+```tsx
+import { useRealTimeExecution } from '@/hooks/useRealTimeExecution';
+import { useQuery } from '@tanstack/react-query';
+import type { ActiveResponse, ResponseTask } from '@shared/schema';
+
+// Status configuration for task visualization
+const statusConfig = {
+  pending: { color: 'bg-slate-200 text-slate-600', icon: Circle, label: 'Pending' },
+  blocked: { color: 'bg-red-100 text-red-600', icon: AlertCircle, label: 'Blocked' },
+  ready: { color: 'bg-blue-100 text-blue-600', icon: Play, label: 'Ready' },
+  in_progress: { color: 'bg-amber-100 text-amber-600', icon: Pause, label: 'In Progress' },
+  completed: { color: 'bg-emerald-100 text-emerald-600', icon: CheckCircle, label: 'Completed' },
+  failed: { color: 'bg-red-100 text-red-600', icon: AlertCircle, label: 'Failed' },
+};
+
+export function ExecutionCoordinationDashboard({ responseId }: { responseId: string }) {
+  const { completeTask, startTask } = useRealTimeExecution(responseId);
+  
+  // Fetch active response with tasks (auto-refreshes via WebSocket)
+  const { data, isLoading, error } = useQuery<{ 
+    response: ActiveResponse; 
+    tasks: ResponseTask[]; 
+    checkpoints: CheckpointValidation[];
+  }>({
+    queryKey: ['/api/active-responses', responseId],
+  });
+  
+  if (isLoading) return <LoadingSpinner />;
+  if (error || !data) return <ErrorMessage />;
+  
+  const { response, tasks, checkpoints } = data;
+  
+  // Group tasks by parallel group for timeline visualization
+  const tasksByGroup = tasks.reduce((acc, task) => {
+    const group = task.parallelGroup || 0;
+    if (!acc[group]) acc[group] = [];
+    acc[group].push(task);
+    return acc;
+  }, {} as Record<number, ResponseTask[]>);
+  
+  return (
+    <div className="space-y-6">
+      {/* Response Header */}
+      <Card>
+        <CardHeader>
+          <CardTitle>{response.scenarioName}</CardTitle>
+          <CardDescription>
+            Status: {response.status} | {response.tasksCompleted}/{response.totalTasks} tasks
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Progress value={(response.tasksCompleted / response.totalTasks) * 100} />
+        </CardContent>
+      </Card>
+      
+      {/* Task Groups */}
+      {Object.entries(tasksByGroup).map(([groupId, groupTasks]) => (
+        <Card key={groupId}>
+          <CardHeader>
+            <CardTitle>Phase {Number(groupId) + 1}</CardTitle>
+            <CardDescription>
+              {groupTasks.filter(t => t.status === 'completed').length}/{groupTasks.length} complete
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {groupTasks.map((task) => (
+              <div key={task.id} className="flex items-center justify-between p-3 rounded-lg border">
+                <div className="flex items-center gap-3">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${statusConfig[task.status].color}`}>
+                    {/* Icon based on status */}
+                  </div>
+                  <div>
+                    <div className="font-medium">{task.title}</div>
+                    <div className="text-sm text-slate-500">{task.assignee} • {task.role}</div>
+                  </div>
+                </div>
+                {task.status === 'ready' && (
+                  <Button size="sm" onClick={() => startTask(task.id)}>Start</Button>
+                )}
+                {task.status === 'in_progress' && (
+                  <Button size="sm" variant="outline" onClick={() => completeTask(task.id)}>Complete</Button>
+                )}
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}
+```
+
+### Updated Key Messaging
+
+```tsx
+// Updated positioning - Decision + Execution
+const heroContent = {
+  headline: "Head coaches call the play in 40 seconds. Execute it in 40 more.",
+  subheadline: "Your CEO takes 72 hours to decide. Then 2 weeks to coordinate execution.",
+  valueProposition: "M Platform does both in 15 minutes.",
+  cta: "See Coordinated Execution",
+  comparison: {
+    before: { 
+      label: "Industry Average", 
+      decision: "72 hours to decide",
+      execution: "2 weeks to coordinate execution"
+    },
+    after: { 
+      label: "With M Platform", 
+      decision: "15 minutes from signal to decision",
+      execution: "+ 30-45 minutes for complete coordinated response"
+    }
+  }
+};
+
+// The complete workflow
+const executionWorkflow = {
+  phase1_trigger: {
+    name: 'TRIGGER',
+    duration: '0-1 min',
+    description: 'Scenario detected → M Platform identifies decision tree → Notifies stakeholders'
+  },
+  phase2_decision: {
+    name: 'DECISION',
+    duration: '1-15 min',
+    description: 'CEO reviews pre-staged options → Stakeholders weigh in → Decision made'
+  },
+  phase3_execute: {
+    name: 'EXECUTE',
+    duration: '15-60 min',
+    description: 'Playbook auto-triggers → Tasks assigned in parallel → Real-time progress tracking'
+  },
+  phase4_verify: {
+    name: 'VERIFY',
+    duration: '60-90 min',
+    description: 'All tasks validated → Checkpoints passed → Lessons captured → Film room review'
+  }
+};
+```
+
+---
+
+## Enterprise API Patterns
+
+### Enhanced API Routes with Filtering, Pagination, and Error Handling
+
+```typescript
+// Enterprise-grade playbooks API with filtering, pagination, sorting
+app.get('/api/playbooks', async (req: any, res) => {
+  try {
+    const { 
+      organizationId, 
+      domain,
+      category,
+      search,
+      page = '1',
+      limit = '20',
+      sortBy = 'createdAt',
+      sortOrder = 'desc'
+    } = req.query;
+    
+    // Build conditions array for filtering
+    const conditions: any[] = [];
+    
+    if (organizationId) conditions.push(eq(playbooks.organizationId, organizationId));
+    if (domain) conditions.push(eq(playbooks.domain, domain));
+    if (category) conditions.push(eq(playbooks.category, category));
+    if (search) conditions.push(like(playbooks.name, `%${search}%`));
+    
+    // Build query with conditions
+    let query = db.select().from(playbooks);
+    if (conditions.length > 0) {
+      query = query.where(and(...conditions)) as any;
+    }
+    
+    // Apply sorting
+    const validSortFields = ['createdAt', 'name', 'timesUsed'];
+    const sortField = validSortFields.includes(sortBy) ? sortBy : 'createdAt';
+    query = sortOrder === 'asc' 
+      ? query.orderBy(asc(playbooks[sortField])) 
+      : query.orderBy(desc(playbooks[sortField]));
+    
+    // Apply pagination
+    const pageNum = Math.max(1, parseInt(page));
+    const limitNum = Math.min(100, Math.max(1, parseInt(limit)));
+    const offset = (pageNum - 1) * limitNum;
+    
+    const results = await query.limit(limitNum).offset(offset);
+    
+    // Get total count for pagination metadata
+    const [{ count: totalCount }] = await db.select({ count: count() }).from(playbooks).where(and(...conditions));
+    
+    res.json({
+      data: results,
+      pagination: {
+        page: pageNum,
+        limit: limitNum,
+        total: totalCount,
+        totalPages: Math.ceil(Number(totalCount) / limitNum)
+      }
+    });
+  } catch (error) {
+    console.error("Error fetching playbooks:", error);
+    res.status(500).json({ 
+      error: 'Failed to fetch playbooks', 
+      message: error instanceof Error ? error.message : 'Unknown error' 
+    });
+  }
+});
+```
+
+### Proper Mutation Error Handling Pattern
+
+```tsx
+// ✅ CORRECT: Full error handling with toast notifications
+const createPlaybook = useMutation({
+  mutationFn: async (data: InsertPlaybook) => {
+    const res = await apiRequest('POST', '/api/playbooks', data);
+    if (!res.ok) {
+      const error = await res.json();
+      throw new Error(error.message || 'Failed to create playbook');
+    }
+    return res.json();
+  },
+  onSuccess: () => {
+    toast({ title: "Success", description: "Playbook created successfully" });
+    queryClient.invalidateQueries({ queryKey: ['/api/playbooks'] });
+  },
+  onError: (error: Error) => {
+    toast({ 
+      title: "Error", 
+      description: error.message,
+      variant: "destructive" 
+    });
+  }
+});
+
+// ❌ WRONG: No error handling - user sees nothing when it fails
+const createPlaybook = useMutation({
+  mutationFn: async (data) => {
+    return apiRequest('POST', '/api/playbooks', data);
+  }
+});
+```
+
+### Loading and Error States Pattern
+
+```tsx
+// ✅ CORRECT: Complete loading/error handling
+const { data: playbooks, isLoading, error } = useQuery<PlaybookType[]>({ 
+  queryKey: ['/api/playbooks'] 
+});
+
+if (isLoading) {
+  return (
+    <div className="flex items-center justify-center h-64">
+      <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
+      <span className="ml-2">Loading playbooks...</span>
+    </div>
+  );
+}
+
+if (error) {
+  return (
+    <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+      <AlertCircle className="h-5 w-5 text-red-500" />
+      <span>Error loading playbooks. Please try again.</span>
+    </div>
+  );
+}
+
+if (!playbooks || playbooks.length === 0) {
+  return (
+    <div className="text-center py-12">
+      <p className="text-slate-500">No playbooks yet. Create your first one.</p>
+      <Button onClick={() => setLocation('/playbooks/new')}>Create Playbook</Button>
+    </div>
+  );
+}
+
+return <div>{playbooks.map(p => <PlaybookCard key={p.id} playbook={p} />)}</div>;
+
+// ❌ WRONG: No loading/error states - crashes on undefined
+return <div>{playbooks.map(p => <Card>{p.name}</Card>)}</div>;
+```
+
+---
+
+## Response Data Structure (Decision + Execution)
+
+```typescript
+// The unified response structure showing the COMPLETE value proposition
+interface ResponseRecord {
+  id: string;
+  scenario: string;
+  question: string;
+  decisionMaker: string;
+  optionChosen: string;
+  
+  // Decision Phase
+  decisionTimeMinutes: number;
+  
+  // Execution Phase (the 80% of value)
+  executionTimeMinutes: number;
+  tasksCompleted: number;
+  totalTasks: number;
+  
+  // Total Response (the complete story)
+  totalResponseTimeMinutes: number; // decision + execution
+  
+  outcome: 'positive' | 'neutral' | 'negative' | 'in_progress';
+  lessons: string;
+  timestamp: string;
+}
+
+// Calculate metrics for DECISION + EXECUTION
+const avgDecisionTime = responses.reduce((sum, d) => sum + d.decisionTimeMinutes, 0) / responses.length;
+const avgExecutionTime = responses.reduce((sum, d) => sum + d.executionTimeMinutes, 0) / responses.length;
+const avgTotalResponseTime = responses.reduce((sum, d) => sum + d.totalResponseTimeMinutes, 0) / responses.length;
+
+// Industry baselines
+const baselineDecisionMinutes = 72 * 60; // 72 hours to decide
+const baselineExecutionMinutes = 14 * 24 * 60; // 2 weeks to execute
+const baselineTotalMinutes = baselineDecisionMinutes + baselineExecutionMinutes;
+
+// Speed multipliers for value messaging
+const decisionSpeedMultiplier = Math.round(baselineDecisionMinutes / avgDecisionTime); // ~280X
+const totalSpeedMultiplier = Math.round(baselineTotalMinutes / avgTotalResponseTime); // ~180X
+```
+
+---
+
+## ⚠️ CRITICAL: Mock Data Warning
+
+**Mock data is ONLY for initial UI development. Replace with real API integration immediately.**
+
+```tsx
+// ⚠️ CRITICAL: This mock data is ONLY for initial UI development.
+// Replace with real API integration within 24-48 hours.
+// DO NOT ship mock data to customers.
+
+// ❌ WRONG - Mock data (use ONLY during initial build)
+const activeResponse = { 
+  id: '1', 
+  scenarioName: 'Data Breach Response',
+  status: 'executing',
+  tasksCompleted: 12,
+  totalTasks: 47,
+};
+
+// ✅ CORRECT - Real API integration
+const { data: activeResponse, isLoading, error } = useQuery<ActiveResponse>({
+  queryKey: ['/api/active-responses', id],
+  refetchInterval: 5000, // Poll every 5 seconds for real-time updates
+});
+
+if (isLoading) return <LoadingSpinner />;
+if (error) return <ErrorMessage error={error} />;
+if (!activeResponse) return <NotFound message="Response not found" />;
+
+// Now render with REAL data
+return <ExecutionDashboard response={activeResponse} />;
+```
+
+**Why this matters:**
+- Mock data breaks when users expect real persistence
+- Demos fail when "saved" data disappears on refresh
+- Enterprise buyers immediately notice fake data
+- Technical due diligence catches hardcoded values
+
+---
+
+## Real-Time Updates (Socket.IO WebSocket Patterns)
+
+M Platform uses Socket.IO for real-time updates during active execution.
+
+### Server Setup (server/index.ts)
+
+```typescript
+import { Server as SocketIOServer } from 'socket.io';
+import { createServer } from 'http';
+
+const httpServer = createServer(app);
+const io = new SocketIOServer(httpServer, {
+  cors: { origin: "*", methods: ["GET", "POST"] }
+});
+
+// Store io instance for use in routes
+app.set('io', io);
+
+io.on('connection', (socket) => {
+  console.log('Client connected:', socket.id);
+  
+  // Join organization room for targeted updates
+  socket.on('join-organization', (organizationId: string) => {
+    socket.join(`org:${organizationId}`);
+    console.log(`Socket ${socket.id} joined org:${organizationId}`);
+  });
+  
+  // Join specific response room for execution updates
+  socket.on('join-response', (responseId: string) => {
+    socket.join(`response:${responseId}`);
+    console.log(`Socket ${socket.id} joined response:${responseId}`);
+  });
+  
+  socket.on('disconnect', () => {
+    console.log('Client disconnected:', socket.id);
+  });
+});
+```
+
+### Emitting Updates from Routes
+
+```typescript
+// When a task status changes, emit to all connected clients
+app.patch('/api/active-responses/:id/tasks/:taskId', optionalAuth, async (req, res) => {
+  const { id: responseId, taskId } = req.params;
+  const { status } = req.body;
+  
+  // Build update data based on status
+  const updateData: any = { status, updatedAt: new Date() };
+  if (status === 'in_progress') updateData.startedAt = new Date();
+  if (status === 'completed') updateData.completedAt = new Date();
+  
+  // Update task in the responseTasks table
+  const [updatedTask] = await db.update(responseTasks)
+    .set(updateData)
+    .where(eq(responseTasks.id, taskId))
+    .returning();
+  
+  // Update completed count on the response
+  const allTasks = await db.select()
+    .from(responseTasks)
+    .where(eq(responseTasks.activeResponseId, responseId));
+  const completedCount = allTasks.filter(t => t.status === 'completed').length;
+  
+  await db.update(activeResponses).set({
+    tasksCompleted: completedCount,
+    updatedAt: new Date(),
+  }).where(eq(activeResponses.id, responseId));
+  
+  // Get updated response
+  const [response] = await db.select()
+    .from(activeResponses)
+    .where(eq(activeResponses.id, responseId));
+  
+  // Emit real-time update to all clients watching this response
+  const io: SocketIOServer = req.app.get('io');
+  io.to(`response:${responseId}`).emit('task-updated', {
+    responseId,
+    taskId,
+    status,
+    updatedAt: new Date(),
+    tasksCompleted: response.tasksCompleted,
+    totalTasks: response.totalTasks,
+  });
+  
+  // If execution is complete, emit completion event
+  if (response.status === 'completed') {
+    io.to(`response:${responseId}`).emit('execution-completed', {
+      responseId,
+      totalResponseTimeMinutes: response.totalResponseTimeMinutes,
+      outcome: response.outcome,
+    });
+  }
+  
+  res.json(updatedTask);
+});
+```
+
+### Client Hook (useRealTimeExecution)
+
+```tsx
+import { useEffect, useCallback } from 'react';
+import { io, Socket } from 'socket.io-client';
+import { useQueryClient } from '@tanstack/react-query';
+
+let socket: Socket | null = null;
+
+export function useRealTimeExecution(responseId: string) {
+  const queryClient = useQueryClient();
+  
+  useEffect(() => {
+    // Connect to Socket.IO server
+    if (!socket) {
+      socket = io(window.location.origin, {
+        transports: ['websocket', 'polling'],
+      });
+    }
+    
+    // Join the response room
+    socket.emit('join-response', responseId);
+    
+    // Listen for task updates
+    socket.on('task-updated', (data) => {
+      console.log('Task updated:', data);
+      // Invalidate queries to refetch fresh data
+      queryClient.invalidateQueries({ queryKey: ['/api/active-responses', responseId] });
+    });
+    
+    // Listen for execution completion
+    socket.on('execution-completed', (data) => {
+      console.log('Execution completed:', data);
+      queryClient.invalidateQueries({ queryKey: ['/api/active-responses', responseId] });
+      // Show success toast or confetti
+    });
+    
+    return () => {
+      socket?.off('task-updated');
+      socket?.off('execution-completed');
+    };
+  }, [responseId, queryClient]);
+  
+  // Method to manually trigger task completion
+  const completeTask = useCallback(async (taskId: string) => {
+    await fetch(`/api/active-responses/${responseId}/tasks/${taskId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status: 'completed' }),
+    });
+  }, [responseId]);
+  
+  return { completeTask };
+}
+```
+
+### Usage in Execution Dashboard
+
+```tsx
+import { useRealTimeExecution } from '@/hooks/useRealTimeExecution';
+
+export default function ExecutionDashboard({ responseId }: { responseId: string }) {
+  const { completeTask } = useRealTimeExecution(responseId);
+  
+  // Data auto-refreshes when Socket.IO emits updates
+  const { data: response, isLoading } = useQuery<ActiveResponse>({
+    queryKey: ['/api/active-responses', responseId],
+  });
+  
+  if (isLoading || !response) return <LoadingSpinner />;
+  
+  return (
+    <div>
+      <h1>{response.scenarioName}</h1>
+      <Progress value={(response.tasksCompleted / response.totalTasks) * 100} />
+      <p>{response.tasksCompleted} of {response.totalTasks} tasks complete</p>
+      
+      {response.taskStatuses.map((task) => (
+        <TaskCard 
+          key={task.id} 
+          task={task}
+          onComplete={() => completeTask(task.id)}
+        />
+      ))}
+    </div>
+  );
+}
+```
+
+### Event Types Reference
+
+```typescript
+// Server → Client events
+interface ServerToClientEvents {
+  'task-updated': (data: { 
+    responseId: string; 
+    taskId: string; 
+    status: string; 
+    tasksCompleted: number;
+    totalTasks: number;
+  }) => void;
+  
+  'execution-completed': (data: { 
+    responseId: string; 
+    totalResponseTimeMinutes: number;
+    outcome: 'positive' | 'neutral' | 'negative';
+  }) => void;
+  
+  'checkpoint-validated': (data: {
+    responseId: string;
+    checkpointId: string;
+    validatedBy: string;
+    status: 'passed' | 'failed';
+  }) => void;
+}
+
+// Client → Server events
+interface ClientToServerEvents {
+  'join-organization': (organizationId: string) => void;
+  'join-response': (responseId: string) => void;
+}
+```
+
+---
+
+## Active Responses API Routes
+
+```typescript
+// Get all active responses for an organization
+app.get('/api/active-responses', optionalAuth, async (req, res) => {
+  const organizationId = req.query.organizationId || 'default-org-id';
+  const responses = await db.select()
+    .from(activeResponses)
+    .where(eq(activeResponses.organizationId, organizationId))
+    .orderBy(desc(activeResponses.triggeredAt));
+  res.json(responses);
+});
+
+// Get single active response with full details
+app.get('/api/active-responses/:id', optionalAuth, async (req, res) => {
+  const [response] = await db.select()
+    .from(activeResponses)
+    .where(eq(activeResponses.id, req.params.id));
+  
+  if (!response) return res.status(404).json({ error: 'Not found' });
+  
+  // Get associated tasks from the responseTasks table
+  const tasks = await db.select()
+    .from(responseTasks)
+    .where(eq(responseTasks.activeResponseId, response.id))
+    .orderBy(asc(responseTasks.createdAt));
+  
+  // Get checkpoint validations
+  const checkpoints = await db.select()
+    .from(checkpointValidations)
+    .where(eq(checkpointValidations.activeResponseId, response.id));
+  
+  res.json({ ...response, tasks, checkpoints });
+});
+
+// Trigger a new response (PHASE 1)
+app.post('/api/active-responses', optionalAuth, async (req, res) => {
+  const { decisionTreeId, executionPlanId, scenarioName, triggeredBy } = req.body;
+  
+  const [newResponse] = await db.insert(activeResponses).values({
+    organizationId: req.body.organizationId || 'default-org-id',
+    decisionTreeId,
+    executionPlanId,
+    scenarioName,
+    triggeredBy,
+    triggerSource: 'manual',
+    status: 'triggered',
+    triggeredAt: new Date(),
+  }).returning();
+  
+  // Emit real-time notification
+  const io: SocketIOServer = req.app.get('io');
+  io.to(`org:${newResponse.organizationId}`).emit('response-triggered', newResponse);
+  
+  res.status(201).json(newResponse);
+});
+
+// Record decision (PHASE 2 → PHASE 3 transition)
+app.patch('/api/active-responses/:id/decision', optionalAuth, async (req, res) => {
+  const { optionChosen, decisionMaker } = req.body;
+  const responseId = req.params.id;
+  
+  const [response] = await db.select()
+    .from(activeResponses)
+    .where(eq(activeResponses.id, responseId));
+  
+  const decisionTimeMinutes = Math.round(
+    (Date.now() - new Date(response.triggeredAt).getTime()) / 60000
+  );
+  
+  const [updated] = await db.update(activeResponses).set({
+    status: 'executing',
+    optionChosen,
+    decisionMaker,
+    decisionMadeAt: new Date(),
+    decisionTimeMinutes,
+    executionStartedAt: new Date(),
+    updatedAt: new Date(),
+  }).where(eq(activeResponses.id, responseId)).returning();
+  
+  // Create response tasks from the execution plan
+  if (response.executionPlanId) {
+    const planTasks = await db.select()
+      .from(executionPlanTasks)
+      .where(eq(executionPlanTasks.executionPlanId, response.executionPlanId));
+    
+    const createdTasks = await Promise.all(planTasks.map(async (planTask) => {
+      const [task] = await db.insert(responseTasks).values({
+        activeResponseId: responseId,
+        planTaskId: planTask.id,
+        title: planTask.title,
+        assignee: planTask.assignee,
+        role: planTask.role,
+        status: planTask.isParallel ? 'ready' : 'pending',
+        isParallel: planTask.isParallel,
+        parallelGroup: planTask.parallelGroup,
+        dependencies: planTask.dependencies || [],
+        estimatedMinutes: planTask.estimatedMinutes,
+      }).returning();
+      return task;
+    }));
+    
+    // Update total tasks count
+    await db.update(activeResponses).set({ 
+      totalTasks: createdTasks.length 
+    }).where(eq(activeResponses.id, responseId));
+  }
+  
+  const io: SocketIOServer = req.app.get('io');
+  io.to(`response:${responseId}`).emit('decision-made', {
+    responseId,
+    optionChosen,
+    decisionTimeMinutes,
+  });
+  
+  res.json(updated);
+});
+
+// Complete response (PHASE 4)
+app.patch('/api/active-responses/:id/complete', optionalAuth, async (req, res) => {
+  const { outcome, lessons } = req.body;
+  const responseId = req.params.id;
+  
+  const [response] = await db.select()
+    .from(activeResponses)
+    .where(eq(activeResponses.id, responseId));
+  
+  const executionTimeMinutes = Math.round(
+    (Date.now() - new Date(response.executionStartedAt).getTime()) / 60000
+  );
+  const totalResponseTimeMinutes = response.decisionTimeMinutes + executionTimeMinutes;
+  
+  const [updated] = await db.update(activeResponses).set({
+    status: 'completed',
+    executionCompletedAt: new Date(),
+    executionTimeMinutes,
+    totalResponseTimeMinutes,
+    outcome,
+    lessons,
+    updatedAt: new Date(),
+  }).where(eq(activeResponses.id, responseId)).returning();
+  
+  const io: SocketIOServer = req.app.get('io');
+  io.to(`response:${responseId}`).emit('execution-completed', {
+    responseId,
+    totalResponseTimeMinutes,
+    outcome,
+  });
+  
+  res.json(updated);
+});
+```
+
+---
+
+## Management Pages
+
+### Playbook Management (/playbook-management)
+Full CRUD for organization playbooks with search, filter by status/category, and actions dropdown.
+```tsx
+// Route: /playbook-management
+// Key features:
+// - Table view with status, priority, category, budget, usage count
+// - Stats cards: total, active, ready, draft counts  
+// - Search by name/domain
+// - Filter by status (draft/ready/active/archived) and category (offense/defense/special_teams)
+// - Actions: View, Edit, Duplicate, Delete
+// - Links to PlaybookCustomize for create/edit
+
+// To activate a playbook: Edit it, configure all required fields, then change status to "active"
+// Playbooks require configuration before activation - this is by design for the 166 templates
+```
+
+### Task Management (/task-management)
+Execution task editor with visual timeline, dependencies, and approval gates.
+```tsx
+// Route: /task-management
+// Key features:
+// - Visual timeline with numbered steps and connecting lines
+// - Stats: total, pending, in-progress, completed, total duration
+// - Full CRUD with dialog form
+// - Fields: title, description, assigned role, duration, priority, status
+// - Dependency management (tasks can depend on other tasks)
+// - Approval gates: none, manager, executive, board
+```
+
+### Stakeholder Management (/stakeholder-management)
+Organization directory for crisis response stakeholders.
+```tsx
+// Route: /stakeholder-management
+// Key features:
+// - Directory table with avatar, role, department, level, contact info
+// - Stats: total, C-Suite, executives, active
+// - Filter by level and department
+// - Full CRUD with comprehensive form
+// - Contact: name, email, phone
+// - Role selection with auto-level assignment based on role type
+// - Notification channels: email, SMS, phone, Slack, in-app
+// - Backup contact designation
+```
+
+### Navigation Access
+Management pages are accessible via:
+- Desktop: "Manage" link in nav bar (when logged in)
+- Mobile: Management section in hamburger menu (when logged in)
+- Direct URLs: /playbook-management, /task-management, /stakeholder-management, /triggers-management
+
+---
+
+## Sandbox Demo (/sandbox-demo)
+
+Interactive 6-step configuration wizard demonstrating M Platform capabilities.
+
+### Steps Flow
+```tsx
+type Step = 'domain' | 'configure' | 'tasks' | 'triggers' | 'simulate' | 'results';
+
+const steps = [
+  { id: 'domain', label: 'Domain', icon: Target, description: 'Select strategic domain' },
+  { id: 'configure', label: 'Configure', icon: Users, description: 'Team, decisions, communications' },
+  { id: 'tasks', label: 'Tasks', icon: ListChecks, description: 'Assignments & dependencies' },
+  { id: 'triggers', label: 'Triggers', icon: Zap, description: 'Detection & activation' },
+  { id: 'simulate', label: 'Execute', icon: Play, description: 'Run simulation' },
+  { id: 'results', label: 'Results', icon: Award, description: 'ROI & summary' },
+];
+```
+
+### Configuration Interfaces
+```tsx
+interface PlaybookConfig {
+  domain: string;
+  domainName: string;
+  companyName: string;
+  industry: string;
+  stakeholders: string[];
+  responseTimeTarget: number;
+  budgetPreApproved: number;
+  notificationChannels: string[];
+  aiAssistEnabled: boolean;
+  autoEscalation: boolean;
+  escalationPath: EscalationLevel[];
+  decisionPoints: DecisionPoint[];
+  communicationTemplates: CommunicationTemplate[];
+}
+
+interface TaskAssignment {
+  id: string;
+  name: string;
+  description: string;
+  assignedRole: string;
+  estimatedMinutes: number;
+  dependencies: string[];
+  requiresApproval: boolean;
+  priority: 'critical' | 'high' | 'medium' | 'low';
+}
+
+interface TriggerConfig {
+  triggerType: string;
+  severity: string;
+  autoActivate: boolean;
+  confirmationRequired: boolean;
+  signalSources: string[];
+  thresholds: TriggerThreshold[];
+  detectionCriteria: string[];
+}
+
+interface SimulationEvent {
+  time: string;
+  event: string;
+  type: 'trigger' | 'ai' | 'stakeholder' | 'decision' | 'task' | 'escalation' | 'complete';
+  stakeholder?: string;
+  explanation?: string;
+}
+```
+
+### Enterprise Configuration Constants
+```tsx
+// Stakeholder options with hierarchical levels
+const STAKEHOLDER_OPTIONS = [
+  { id: "ceo", label: "CEO", icon: Building2, level: 1 },
+  { id: "cfo", label: "CFO", icon: DollarSign, level: 2 },
+  { id: "ciso", label: "CISO", icon: Shield, level: 2 },
+  { id: "clo", label: "General Counsel", icon: Scale, level: 2 },
+  { id: "cmo", label: "CMO", icon: Target, level: 2 },
+  { id: "coo", label: "COO", icon: Users, level: 2 },
+  { id: "hr", label: "HR Director", icon: Users, level: 3 },
+  { id: "comms", label: "VP Communications", icon: MessageSquare, level: 3 },
+  { id: "ir", label: "Investor Relations", icon: TrendingUp, level: 3 },
+  { id: "legal", label: "Senior Legal Counsel", icon: Scale, level: 3 },
+];
+
+// Signal detection sources
+const SIGNAL_SOURCES = [
+  { id: "siem", label: "SIEM/Security Logs", category: "security" },
+  { id: "news", label: "News & Media Monitoring", category: "market" },
+  { id: "social", label: "Social Media Signals", category: "market" },
+  { id: "regulatory", label: "Regulatory Filings", category: "compliance" },
+  { id: "competitor", label: "Competitor Intelligence", category: "market" },
+  { id: "internal", label: "Internal Systems", category: "operations" },
+  { id: "vendor", label: "Vendor/Supply Chain", category: "operations" },
+  { id: "financial", label: "Financial Data Feeds", category: "market" },
+];
+
+// Enterprise integration connections
+const ENTERPRISE_INTEGRATIONS = [
+  { id: "jira", label: "Jira", category: "project", description: "Auto-create issues & assign tasks", connected: true },
+  { id: "servicenow", label: "ServiceNow", category: "itsm", description: "Incident management & workflows", connected: true },
+  { id: "slack", label: "Slack", category: "comms", description: "Real-time notifications & channels", connected: true },
+  { id: "teams", label: "Microsoft Teams", category: "comms", description: "Team alerts & collaboration", connected: false },
+  { id: "salesforce", label: "Salesforce", category: "crm", description: "Customer impact tracking", connected: false },
+  { id: "pagerduty", label: "PagerDuty", category: "oncall", description: "Escalation & on-call routing", connected: true },
+  { id: "confluence", label: "Confluence", category: "docs", description: "Auto-generate runbooks", connected: true },
+  { id: "okta", label: "Okta", category: "identity", description: "Access control & SSO", connected: true },
+];
+
+// Budget allocation categories
+const BUDGET_CATEGORIES = [
+  { id: "legal", label: "Legal & Compliance", icon: Scale, defaultPercent: 25 },
+  { id: "pr", label: "PR & Communications", icon: MessageSquare, defaultPercent: 20 },
+  { id: "consulting", label: "External Consulting", icon: Users, defaultPercent: 15 },
+  { id: "operations", label: "Operations & IT", icon: Cpu, defaultPercent: 25 },
+  { id: "contingency", label: "Contingency Reserve", icon: Shield, defaultPercent: 15 },
+];
+
+// Success metrics with targets
+const SUCCESS_METRICS = [
+  { id: "response_time", label: "Response Time", unit: "minutes", target: 12, description: "Time from trigger to coordinated response" },
+  { id: "stakeholder_alignment", label: "Stakeholder Alignment", unit: "%", target: 95, description: "Percentage of stakeholders briefed and aligned" },
+  { id: "task_completion", label: "Task Completion Rate", unit: "%", target: 100, description: "Critical tasks completed within target window" },
+  { id: "decision_velocity", label: "Decision Velocity", unit: "min/decision", target: 3, description: "Average time per approval gate" },
+  { id: "communication_coverage", label: "Communication Coverage", unit: "%", target: 100, description: "Stakeholders receiving timely updates" },
+];
+
+// Scenario severity branches
+const SCENARIO_BRANCHES = [
+  { severity: "critical", label: "Critical - Full Activation", color: "bg-red-500", actions: ["Immediate full team mobilization", "All escalation paths active", "Board notification triggered"] },
+  { severity: "high", label: "High - Elevated Response", color: "bg-orange-500", actions: ["Core team activation", "Management notification", "External counsel on standby"] },
+  { severity: "medium", label: "Medium - Monitoring Mode", color: "bg-yellow-500", actions: ["Primary owner notified", "Situation monitoring enabled", "Escalation paths ready"] },
+  { severity: "low", label: "Low - Awareness Only", color: "bg-blue-500", actions: ["Log for tracking", "Weekly digest inclusion", "No immediate action required"] },
+];
+```
+
+### Simulation Event Explanations
+```tsx
+const EVENT_EXPLANATIONS: Record<string, string> = {
+  trigger: "M detected this event through connected monitoring systems. In production, this would come from your SIEM, news feeds, or internal alerts.",
+  ai: "The AI assistant is processing the situation and taking automated actions based on your pre-configured playbook rules.",
+  stakeholder: "Notifications are being sent through your selected channels (Slack, email, SMS) to the right people automatically.",
+  decision: "A decision point has been reached. In production, executives receive mobile alerts with pre-staged options to choose from.",
+  task: "Tasks are being assigned to team members with clear instructions, deadlines, and dependencies already mapped out.",
+  escalation: "The escalation path you configured is now active. If responses aren't received in time, M will automatically escalate.",
+  complete: "The coordinated response is complete. All stakeholders were aligned, tasks assigned, and decisions made in record time."
+};
+```
+
+### RACI Matrix Derivation (Data-Driven)
+```tsx
+// In Tasks step, RACI assignments are derived from configuration, not hard-coded
+{tasks.map((task, taskIndex) => {
+  // Accountable: Find decision point approver matching task
+  const approverStakeholder = config.decisionPoints.find(
+    dp => dp.requiredFor.toLowerCase().includes(task.name.toLowerCase().split(' ')[0])
+  )?.approver;
+  
+  // Consulted: Roles from dependency tasks
+  const dependencyRoles = tasks.filter(t => task.dependencies.includes(t.id)).map(t => t.assignedRole);
+  
+  return (
+    <tr key={task.id} data-testid={`raci-row-${task.id}`}>
+      <td>{task.name}</td>
+      {config.stakeholders.slice(0, 5).map(id => {
+        const isResponsible = task.assignedRole === id;
+        const isAccountable = task.requiresApproval && approverStakeholder === id;
+        const isConsulted = dependencyRoles.includes(id) && !isResponsible;
+        
+        let role = 'I';
+        if (isResponsible) role = 'R';
+        else if (isAccountable) role = 'A';
+        else if (isConsulted) role = 'C';
+        
+        return (
+          <td key={id} data-testid={`raci-cell-${task.id}-${id}-${role}`}>
+            <Badge>{role}</Badge>
+          </td>
+        );
+      })}
+    </tr>
+  );
+})}
+```
+
+### Configuration Tabs (Configure Step)
+```tsx
+// 6 tabs for comprehensive configuration
+<Tabs value={configTab} onValueChange={setConfigTab}>
+  <TabsList>
+    <TabsTrigger value="team">Team</TabsTrigger>
+    <TabsTrigger value="escalation">Escalation</TabsTrigger>
+    <TabsTrigger value="decisions">Decisions</TabsTrigger>
+    <TabsTrigger value="communications">Communications</TabsTrigger>
+    <TabsTrigger value="budget">Budget</TabsTrigger>
+    <TabsTrigger value="integrations">Integrations</TabsTrigger>
+    <TabsTrigger value="metrics">KPIs</TabsTrigger>
+  </TabsList>
+  {/* Tab content for each */}
+</Tabs>
+
+// State for enterprise features
+const [budgetBreakdown, setBudgetBreakdown] = useState<Record<string, number>>({
+  legal: 25, pr: 20, consulting: 15, operations: 25, contingency: 15
+});
+
+const [enabledIntegrations, setEnabledIntegrations] = useState<string[]>(
+  ['jira', 'servicenow', 'slack', 'pagerduty', 'confluence', 'okta']
+);
+
+const [successTargets, setSuccessTargets] = useState<Record<string, number>>({
+  response_time: 12, stakeholder_alignment: 95, task_completion: 100, 
+  decision_velocity: 3, communication_coverage: 100
+});
+```
+
+### Data-TestId Patterns
+```tsx
+// All interactive elements must have data-testid for test automation
+// Budget sliders
+<Slider data-testid={`slider-budget-${category.id}`} />
+
+// KPI sliders and values
+<Slider data-testid={`slider-kpi-${metric.id}`} />
+<span data-testid={`value-kpi-${metric.id}`}>{value}</span>
+
+// Integration toggles
+<div data-testid={`integration-${integration.id}`} onClick={toggle}>
+
+// Scenario branches (clickable to change severity)
+<div 
+  data-testid={`scenario-branch-${branch.severity}`}
+  onClick={() => setTriggerConfig({ ...triggerConfig, severity: branch.severity })}
+>
+
+// Switches
+<Switch data-testid="switch-confirmation-required" />
+<Switch data-testid="switch-auto-activate" />
+
+// RACI matrix cells
+<tr data-testid={`raci-row-${task.id}`}>
+<td data-testid={`raci-cell-${task.id}-${stakeholderId}-${role}`}>
+
+// Signal source toggles
+<div data-testid={`signal-${source.id}`}>
+```
+
+### Results Page Expandable Sections
+```tsx
+// Use Accordion for detailed breakdowns
+<Accordion type="multiple" className="w-full">
+  <AccordionItem value="team">
+    <AccordionTrigger>Response Team Details</AccordionTrigger>
+    <AccordionContent>
+      {/* Full stakeholder list with roles and contact methods */}
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="tasks">
+    <AccordionTrigger>Execution Tasks</AccordionTrigger>
+    <AccordionContent>
+      {/* Task breakdown with assignments, durations, dependencies */}
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="triggers">
+    <AccordionTrigger>Trigger Configuration</AccordionTrigger>
+    <AccordionContent>
+      {/* Signal sources, thresholds, detection criteria */}
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+---
+
+## Enterprise Task Library
+
+The Enterprise Task Library provides 42 pre-defined tasks organized by IDEA Framework phases and cross-functional categories. This ensures playbooks come pre-loaded with critical stakeholders and tasks so everyone knows their role when triggered.
+
+### Task Library Imports
+```tsx
+import { 
+  ENTERPRISE_TASK_LIBRARY, 
+  TASK_CATEGORIES, 
+  IDEA_PHASES,
+  type TaskTemplate,
+  type TaskCategory,
+  type IdeaPhase,
+  getTaskLibraryStats,
+} from "@shared/constants/taskLibrary";
+```
+
+### Task Template Interface (shared/constants/taskLibrary.ts)
+```typescript
+export type TaskPriority = 'critical' | 'high' | 'medium' | 'low';
+export type TaskCategory = 
+  | 'program_management' 
+  | 'communications' 
+  | 'risk_compliance' 
+  | 'finance' 
+  | 'technology' 
+  | 'hr_change' 
+  | 'legal' 
+  | 'operations'
+  | 'strategy';
+
+export type IdeaPhase = 'identify' | 'detect' | 'execute' | 'advance';
+
+export interface TaskTemplate {
+  id: string;
+  title: string;
+  description: string;
+  suggestedOwner: string;
+  estimatedMinutes: number;
+  priority: TaskPriority;
+  category: TaskCategory;
+  phase: IdeaPhase;
+  approvalRequired: 'none' | 'manager' | 'director' | 'vp' | 'c_suite' | 'board';
+  deliverables: string;
+  integrations?: string[];
+  slaMinutes?: number;
+}
+```
+
+### Task Categories Configuration
+```tsx
+export const TASK_CATEGORIES: Record<TaskCategory, { label: string; description: string; color: string }> = {
+  program_management: { 
+    label: 'Program Management', 
+    description: 'PMO, project coordination, and milestone tracking',
+    color: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400'
+  },
+  communications: { 
+    label: 'Communications', 
+    description: 'Internal and external messaging',
+    color: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400'
+  },
+  risk_compliance: { 
+    label: 'Risk & Compliance', 
+    description: 'Risk management and regulatory compliance',
+    color: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
+  },
+  finance: { 
+    label: 'Finance', 
+    description: 'Budget, forecasting, and financial controls',
+    color: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+  },
+  technology: { 
+    label: 'Technology', 
+    description: 'IT infrastructure and system changes',
+    color: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
+  },
+  hr_change: { 
+    label: 'HR & Change Management', 
+    description: 'People, training, and organizational change',
+    color: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'
+  },
+  legal: { 
+    label: 'Legal', 
+    description: 'Legal review, contracts, and regulatory filings',
+    color: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300'
+  },
+  operations: { 
+    label: 'Operations', 
+    description: 'Operational execution and process changes',
+    color: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400'
+  },
+  strategy: { 
+    label: 'Strategy', 
+    description: 'Strategic planning and executive decisions',
+    color: 'bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400'
+  },
+};
+```
+
+### IDEA Phases Configuration
+```tsx
+export const IDEA_PHASES: Record<IdeaPhase, { label: string; description: string; color: string }> = {
+  identify: {
+    label: 'IDENTIFY',
+    description: 'Build and customize playbooks',
+    color: 'text-blue-600 dark:text-blue-400'
+  },
+  detect: {
+    label: 'DETECT',
+    description: 'Monitor triggers and signals',
+    color: 'text-amber-600 dark:text-amber-400'
+  },
+  execute: {
+    label: 'EXECUTE',
+    description: 'Coordinate response actions',
+    color: 'text-green-600 dark:text-green-400'
+  },
+  advance: {
+    label: 'ADVANCE',
+    description: 'Learn and improve',
+    color: 'text-purple-600 dark:text-purple-400'
+  },
+};
+```
+
+### Task Library Stats Helper
+```tsx
+export function getTaskLibraryStats() {
+  const phases = { identify: 0, detect: 0, execute: 0, advance: 0 };
+  const categories: Record<TaskCategory, number> = {
+    program_management: 0, communications: 0, risk_compliance: 0,
+    finance: 0, technology: 0, hr_change: 0, legal: 0, operations: 0, strategy: 0
+  };
+  
+  ENTERPRISE_TASK_LIBRARY.forEach(task => {
+    phases[task.phase]++;
+    categories[task.category]++;
+  });
+  
+  return { total: ENTERPRISE_TASK_LIBRARY.length, phases, categories };
+}
+```
+
+### Converting Library Template to Playbook Task
+```tsx
+// Task interface with templateId for duplicate detection
+interface Task {
+  id: string;
+  templateId?: string; // Original template ID from library for duplicate detection
+  title: string;
+  description: string;
+  assignedRole: string;
+  estimatedMinutes: number;
+  priority: 'critical' | 'high' | 'medium' | 'low';
+  status: 'pending' | 'in_progress' | 'completed' | 'blocked';
+  dependsOn: string[];
+  approvalRequired: string;
+  deliverables: string;
+}
+
+// Convert library template to playbook task format
+const templateToTask = (template: TaskTemplate): Task => ({
+  id: template.id,
+  templateId: template.id, // Preserve original template ID for duplicate detection
+  title: template.title,
+  description: template.description,
+  assignedRole: template.suggestedOwner,
+  estimatedMinutes: template.estimatedMinutes,
+  priority: template.priority,
+  status: 'pending',
+  dependsOn: [],
+  approvalRequired: template.approvalRequired,
+  deliverables: template.deliverables,
+});
+```
+
+### Pre-loading Critical Tasks from Library
+```tsx
+// Pre-load critical tasks from the library - these are the essential tasks everyone needs
+const CRITICAL_PRELOADED_TASKS = ENTERPRISE_TASK_LIBRARY
+  .filter(t => t.priority === 'critical' || (t.priority === 'high' && t.phase === 'detect'))
+  .slice(0, 12)
+  .map(templateToTask);
+
+// Build dependency chain for critical tasks - preserve templateId for duplicate detection
+const DEFAULT_TASKS: Task[] = CRITICAL_PRELOADED_TASKS.map((task, index) => ({
+  ...task,
+  id: String(index + 1),
+  templateId: task.templateId, // Keep original template ID
+  dependsOn: index === 0 ? [] : [String(index)],
+}));
+```
+
+### Duplicate Detection Using templateId
+```tsx
+// Track which library tasks have been added (by templateId for proper duplicate detection)
+const addedLibraryIds = useMemo(() => 
+  new Set(tasks.map(t => t.templateId).filter(Boolean)), 
+  [tasks]
+);
+
+// Prevent duplicates when adding from library
+const handleAddFromLibrary = (template: TaskTemplate) => {
+  if (addedLibraryIds.has(template.id)) {
+    toast({
+      title: "Already Added",
+      description: `"${template.title}" is already in your playbook.`,
+      variant: "destructive",
+    });
+    return;
+  }
+  
+  const newTask: Task = {
+    ...templateToTask(template),
+    id: String(nextId),
+    templateId: template.id, // Preserve for duplicate detection
+    dependsOn: tasks.length > 0 ? [tasks[tasks.length - 1].id] : [],
+  };
+  
+  setTasks([...tasks, newTask]);
+};
+```
+
+### Filtering Library Tasks
+```tsx
+const [librarySearch, setLibrarySearch] = useState("");
+const [selectedPhase, setSelectedPhase] = useState<IdeaPhase | "all">("all");
+const [selectedCategory, setSelectedCategory] = useState<TaskCategory | "all">("all");
+
+const filteredLibraryTasks = useMemo(() => {
+  return ENTERPRISE_TASK_LIBRARY.filter(task => {
+    const matchesSearch = !librarySearch || 
+      task.title.toLowerCase().includes(librarySearch.toLowerCase()) ||
+      task.description.toLowerCase().includes(librarySearch.toLowerCase()) ||
+      task.suggestedOwner.toLowerCase().includes(librarySearch.toLowerCase());
+    
+    const matchesPhase = selectedPhase === "all" || task.phase === selectedPhase;
+    const matchesCategory = selectedCategory === "all" || task.category === selectedCategory;
+    
+    return matchesSearch && matchesPhase && matchesCategory;
+  });
+}, [librarySearch, selectedPhase, selectedCategory]);
+```
+
+### Quick Add by Phase Button Pattern
+```tsx
+const handleAddPhaseTasksFromLibrary = (phase: IdeaPhase) => {
+  const phaseTasks = ENTERPRISE_TASK_LIBRARY.filter(
+    t => t.phase === phase && !addedLibraryIds.has(t.id)
+  );
+  
+  if (phaseTasks.length === 0) {
+    toast({
+      title: "No New Tasks",
+      description: `All ${IDEA_PHASES[phase].label} tasks are already in your playbook.`,
+    });
+    return;
+  }
+  
+  const newTasks = phaseTasks.map((template, index) => ({
+    ...templateToTask(template),
+    id: String(lastId + index + 1),
+    templateId: template.id,
+    dependsOn: index === 0 && tasks.length > 0 
+      ? [tasks[tasks.length - 1].id] 
+      : index > 0 ? [String(lastId + index)] : [],
+  }));
+  
+  setTasks([...tasks, ...newTasks]);
+};
+```
+
+### Task Library UI Components
+```tsx
+// Phase filter buttons
+<div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+  {(Object.keys(IDEA_PHASES) as IdeaPhase[]).map((phase) => (
+    <Button
+      key={phase}
+      variant="outline"
+      className="h-auto py-3 flex flex-col items-center gap-1"
+      onClick={() => handleAddPhaseTasksFromLibrary(phase)}
+      data-testid={`button-add-phase-${phase}`}
+    >
+      <span className={`text-xs font-bold ${IDEA_PHASES[phase].color}`}>
+        {IDEA_PHASES[phase].label}
+      </span>
+      <span className="text-xs text-slate-500">Add all tasks</span>
+    </Button>
+  ))}
+</div>
+
+// Library task card with Added state
+<Card 
+  className={`transition-all ${isAdded ? 'opacity-60 bg-green-50' : 'hover:shadow-md'}`}
+  data-testid={`card-library-task-${template.id}`}
+>
+  <CardContent className="p-4">
+    <div className="flex items-start justify-between gap-3">
+      <div className="flex-1">
+        <span className={`text-xs font-bold ${phaseConfig.color}`}>
+          {phaseConfig.label}
+        </span>
+        <Badge className={categoryConfig.color}>{categoryConfig.label}</Badge>
+        <h3 className="font-semibold">{template.title}</h3>
+        <p className="text-xs text-slate-500">{template.description}</p>
+        <div className="flex gap-1.5">
+          <Badge variant="outline">
+            <Users className="h-3 w-3 mr-1" />
+            {template.suggestedOwner}
+          </Badge>
+          <Badge variant="outline">
+            <Clock className="h-3 w-3 mr-1" />
+            {template.estimatedMinutes}m
+          </Badge>
+        </div>
+      </div>
+      <Button
+        size="sm"
+        variant={isAdded ? "ghost" : "default"}
+        disabled={isAdded}
+        onClick={() => handleAddFromLibrary(template)}
+        data-testid={`button-add-library-task-${template.id}`}
+      >
+        {isAdded ? (
+          <><CheckCircle2 className="h-4 w-4 mr-1" />Added</>
+        ) : (
+          <><Plus className="h-4 w-4 mr-1" />Add</>
+        )}
+      </Button>
+    </div>
+  </CardContent>
+</Card>
+```
+
+### Task Library Data-TestId Patterns
+```tsx
+// Tab navigation
+<TabsTrigger data-testid="tab-playbook-tasks" />
+<TabsTrigger data-testid="tab-task-library" />
+
+// Library search and filters
+<Input data-testid="input-library-search" />
+<SelectTrigger data-testid="select-filter-phase" />
+<SelectTrigger data-testid="select-filter-category" />
+
+// Phase quick-add buttons
+<Button data-testid={`button-add-phase-${phase}`} />
+
+// Library task cards and add buttons
+<Card data-testid={`card-library-task-${template.id}`}>
+<Button data-testid={`button-add-library-task-${template.id}`} />
+```
+
+### Task Distribution by Phase
+- **IDENTIFY (7 tasks)**: Strategic preparation, PMO setup, stakeholder mapping
+- **DETECT (6 tasks)**: Signal monitoring, alert triage, threat assessment
+- **EXECUTE (18 tasks)**: Core execution work, stakeholder coordination, operational delivery
+- **ADVANCE (10 tasks)**: Post-action review, lessons learned, playbook refinement
+
+### Task Distribution by Category
+- Program Management: 7 tasks
+- Communications: 5 tasks
+- Risk & Compliance: 5 tasks
+- Finance: 4 tasks
+- Technology: 6 tasks
+- HR & Change Management: 4 tasks
+- Legal: 4 tasks
+- Operations: 5 tasks
+- Strategy: 2 tasks

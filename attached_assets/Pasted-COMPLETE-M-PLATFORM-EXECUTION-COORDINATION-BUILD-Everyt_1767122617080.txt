@@ -1,0 +1,726 @@
+COMPLETE M PLATFORM EXECUTION COORDINATION BUILD
+Everything You Need to Build Decision + Execution System
+
+WHAT WE'RE BUILDING: THE COMPLETE PICTURE
+TRIGGER → DECISION → EXECUTION → VERIFICATION
+(0-60s)   (1-15min)   (15-90min)    (90-120min)
+
+Example: Data Breach Detected
+├─ TRIGGER: Breach alert fires → System identifies scenario
+├─ DECISION: CEO chooses "Disclose immediately" (14 min)
+├─ EXECUTION: 47 tasks coordinated across 12 stakeholders (60 min)
+└─ VERIFICATION: All tasks complete, outcome logged, lessons captured
+
+STEP 1: UPDATE DATABASE SCHEMA shared/schema.ts
+REPLACE ENTIRE FILE:
+typescriptimport { pgTable, varchar, text, uuid, timestamp, jsonb, integer, boolean } from "drizzle-orm/pg-core";
+import { createInsertSchema } from "drizzle-zod";
+import { z } from "zod";
+
+export const users = pgTable('users', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  username: varchar('username', { length: 255 }).notNull().unique(),
+  password: varchar('password', { length: 255 }).notNull(),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const organizations = pgTable('organizations', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  name: varchar('name', { length: 255 }).notNull(),
+  pilotTier: varchar('pilot_tier', { length: 50 }),
+  pilotStartDate: timestamp('pilot_start_date'),
+  pilotEndDate: timestamp('pilot_end_date'),
+  pilotValue: integer('pilot_value'),
+  industry: varchar('industry', { length: 100 }),
+  isBeachheadCustomer: boolean('is_beachhead_customer').default(false),
+  avgResponseTimeSeconds: integer('avg_response_time_seconds'),
+  totalExecutions: integer('total_executions').default(0),
+  gameDayReadinessScore: integer('game_day_readiness_score'),
+  dedicatedCsmId: uuid('dedicated_csm_id'),
+  avgDecisionTimeMinutes: integer('avg_decision_time_minutes'),
+  totalDecisionsMade: integer('total_decisions_made').default(0),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+export const playbooks = pgTable('playbooks', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull(),
+  name: varchar('name', { length: 255 }).notNull(),
+  domain: varchar('domain', { length: 100 }).notNull(),
+  category: varchar('category', { length: 50 }),
+  description: text('description'),
+  sourceType: varchar('source_type', { length: 50 }).notNull().default('custom'),
+  templateId: uuid('template_id'),
+  timesUsed: integer('times_used').default(0),
+  avgExecutionTimeMinutes: integer('avg_execution_time_minutes'),
+  
+  // Task structure for execution
+  tasks: jsonb('tasks').$type<Array<{
+    id: string;
+    title: string;
+    description: string;
+    assignee: string; // email or role
+    timeTargetMinutes: number;
+    order: number;
+    isParallel: boolean; // Can execute simultaneously with others
+    dependencies: string[]; // Task IDs that must complete first
+    template?: string; // Pre-written template for this task
+    validationRequired: boolean; // Needs approval before proceeding
+  }>>(),
+  
+  isActive: boolean('is_active').default(true),
+  isTemplate: boolean('is_template').default(false),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+export const decisionTrees = pgTable('decision_trees', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull(),
+  name: varchar('name', { length: 255 }).notNull(),
+  scenario: varchar('scenario', { length: 255 }).notNull(),
+  domain: varchar('domain', { length: 100 }).notNull(),
+  category: varchar('category', { length: 50 }),
+  
+  decisionPoints: jsonb('decision_points').$type<Array<{
+    id: string;
+    order: number;
+    question: string;
+    decisionMaker: string;
+    mustWeighIn: string[];
+    timeWindowMinutes: number;
+    options: Array<{
+      id: string;
+      label: string;
+      description: string;
+      pros: string[];
+      cons: string[];
+      criteria: Array<{condition: string; met: boolean | null;}>;
+      triggersPlaybookId?: string; // Links to playbook for execution
+    }>;
+  }>>(),
+  
+  isActive: boolean('is_active').default(true),
+  timesUsed: integer('times_used').default(0),
+  avgDecisionTimeMinutes: integer('avg_decision_time_minutes'),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+// Active coordinated response (decision + execution)
+export const activeResponses = pgTable('active_responses', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull(),
+  decisionTreeId: uuid('decision_tree_id').references(() => decisionTrees.id),
+  
+  // PHASE 1: TRIGGER
+  scenarioName: varchar('scenario_name', { length: 255 }).notNull(),
+  triggeredAt: timestamp('triggered_at').defaultNow(),
+  triggeredBy: varchar('triggered_by', { length: 255 }),
+  
+  // PHASE 2: DECISION
+  currentPhase: varchar('current_phase', { length: 50 }).default('decision'), // decision | execution | complete
+  decisionMaker: varchar('decision_maker', { length: 255 }),
+  decisionQuestion: text('decision_question'),
+  decisionMadeAt: timestamp('decision_made_at'),
+  decisionTimeMinutes: integer('decision_time_minutes'),
+  optionChosen: varchar('option_chosen', { length: 255 }),
+  
+  stakeholderInputs: jsonb('stakeholder_inputs').$type<Array<{
+    userId: string;
+    role: string;
+    input: string;
+    timestamp: string;
+    recommendedOption: string;
+  }>>(),
+  
+  // PHASE 3: EXECUTION
+  playbookId: uuid('playbook_id').references(() => playbooks.id),
+  executionStartedAt: timestamp('execution_started_at'),
+  executionCompletedAt: timestamp('execution_completed_at'),
+  executionTimeMinutes: integer('execution_time_minutes'),
+  
+  taskStatuses: jsonb('task_statuses').$type<Array<{
+    taskId: string;
+    status: 'pending' | 'in_progress' | 'completed' | 'blocked';
+    assignee: string;
+    startedAt?: string;
+    completedAt?: string;
+    timeSpentMinutes?: number;
+    output?: string; // What was produced (e.g., draft statement)
+  }>>(),
+  
+  // PHASE 4: VERIFICATION
+  status: varchar('status', { length: 50 }).default('active'), // active | completed | failed
+  totalResponseTimeMinutes: integer('total_response_time_minutes'),
+  outcome: varchar('outcome', { length: 100 }), // positive | neutral | negative
+  lessons: text('lessons'),
+  completedAt: timestamp('completed_at'),
+});
+
+export const decisionLog = pgTable('decision_log', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull(),
+  activeResponseId: uuid('active_response_id').references(() => activeResponses.id),
+  scenario: varchar('scenario', { length: 255 }).notNull(),
+  question: text('question').notNull(),
+  decisionMaker: varchar('decision_maker', { length: 255 }).notNull(),
+  optionChosen: text('option_chosen').notNull(),
+  decisionTimeMinutes: integer('decision_time_minutes').notNull(),
+  executionTimeMinutes: integer('execution_time_minutes'),
+  totalResponseTimeMinutes: integer('total_response_time_minutes'),
+  outcome: varchar('outcome', { length: 100 }),
+  lessons: text('lessons'),
+  timestamp: timestamp('timestamp').defaultNow(),
+});
+
+export const milestoneTracking = pgTable('milestone_tracking', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  quarter: varchar('quarter', { length: 10 }).notNull(),
+  metric: varchar('metric', { length: 100 }).notNull(),
+  goal: integer('goal').notNull(),
+  current: integer('current').default(0),
+  unit: varchar('unit', { length: 10 }),
+  updatedAt: timestamp('updated_at').defaultNow(),
+  notes: text('notes')
+});
+
+export const insertUserSchema = createInsertSchema(users).omit({id: true, createdAt: true});
+export const insertOrganizationSchema = createInsertSchema(organizations).omit({id: true, createdAt: true, updatedAt: true});
+export const insertPlaybookSchema = createInsertSchema(playbooks).omit({id: true, createdAt: true, updatedAt: true});
+export const insertDecisionTreeSchema = createInsertSchema(decisionTrees).omit({id: true, createdAt: true, updatedAt: true});
+export const insertActiveResponseSchema = createInsertSchema(activeResponses).omit({id: true, triggeredAt: true});
+export const insertDecisionLogSchema = createInsertSchema(decisionLog).omit({id: true, timestamp: true});
+export const insertMilestoneSchema = createInsertSchema(milestoneTracking).omit({id: true, updatedAt: true});
+
+export type User = typeof users.$inferSelect;
+export type InsertUser = z.infer<typeof insertUserSchema>;
+export type Organization = typeof organizations.$inferSelect;
+export type InsertOrganization = z.infer<typeof insertOrganizationSchema>;
+export type Playbook = typeof playbooks.$inferSelect;
+export type InsertPlaybook = z.infer<typeof insertPlaybookSchema>;
+export type DecisionTree = typeof decisionTrees.$inferSelect;
+export type InsertDecisionTree = z.infer<typeof insertDecisionTreeSchema>;
+export type ActiveResponse = typeof activeResponses.$inferSelect;
+export type InsertActiveResponse = z.infer<typeof insertActiveResponseSchema>;
+export type DecisionLog = typeof decisionLog.$inferSelect;
+export type InsertDecisionLog = z.infer<typeof insertDecisionLogSchema>;
+export type MilestoneTracking = typeof milestoneTracking.$inferSelect;
+export type InsertMilestone = z.infer<typeof insertMilestoneSchema>;
+Run: npm run db:push
+
+STEP 2: CREATE EXECUTION COORDINATION DASHBOARD
+File: client/src/pages/ExecutionCoordinationDashboard.tsx
+typescriptimport { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import StandardNav from "@/components/layout/StandardNav";
+import Footer from "@/components/layout/Footer";
+import { Clock, CheckCircle, AlertCircle, Play, Pause, Target, Users, ArrowRight } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { useLocation } from "wouter";
+
+export default function ExecutionCoordinationDashboard() {
+  const [, setLocation] = useLocation();
+  
+  // In production, fetch from API
+  const activeResponse = {
+    id: '1',
+    scenarioName: 'Customer Data Breach Response',
+    triggeredAt: new Date(Date.now() - 23 * 60 * 1000), // 23 minutes ago
+    currentPhase: 'execution',
+    decisionTimeMinutes: 14,
+    optionChosen: 'Option A: Disclose Immediately',
+    totalTasks: 47,
+    completedTasks: 18,
+    inProgressTasks: 6,
+    blockedTasks: 8,
+    upcomingTasks: 15,
+    targetCompletionMinutes: 90,
+    activeTasks: [
+      { id: '1', title: 'Legal: Reviewing disclosure statement', assignee: 'legal@company.com', progress: 60, timeRemaining: 2 },
+      { id: '2', title: 'IT: Notifying vendor partners', assignee: 'it@company.com', progress: 40, timeRemaining: 5 },
+      { id: '3', title: 'Customer Success: Briefing support team', assignee: 'cs@company.com', progress: 20, timeRemaining: 8 },
+      { id: '4', title: 'HR: Drafting employee communication', assignee: 'hr@company.com', progress: 50, timeRemaining: 7 },
+      { id: '5', title: 'CISO: Coordinating with forensics firm', assignee: 'ciso@company.com', progress: 70, timeRemaining: 8 },
+      { id: '6', title: 'Board Relations: Preparing board brief', assignee: 'board@company.com', progress: 30, timeRemaining: 9 },
+    ],
+    blockedTasks: [
+      { id: 'b1', title: 'CEO: Approve statement', reason: 'Waiting on Legal review', blockedBy: 'Task 1' },
+      { id: 'b2', title: 'Comms: Publish statement', reason: 'Waiting on CEO approval', blockedBy: 'Task B1' },
+      { id: 'b3', title: 'Legal: File regulatory notice', reason: 'Waiting on approval', blockedBy: 'Task B1' },
+    ],
+    completedTasks: [
+      { id: 'c1', title: 'CISO: Contain breach', completedInMinutes: 4 },
+      { id: 'c2', title: 'CISO: Preserve forensics', completedInMinutes: 6 },
+      { id: 'c3', title: 'Comms: Draft statement', completedInMinutes: 11 },
+      { id: 'c4', title: 'Legal: Pull compliance templates', completedInMinutes: 2 },
+    ]
+  };
+  
+  const elapsedMinutes = Math.floor((Date.now() - activeResponse.triggeredAt.getTime()) / 60000);
+  const progressPercent = Math.round((activeResponse.completedTasks / activeResponse.totalTasks) * 100);
+  const isOnTrack = elapsedMinutes <= activeResponse.targetCompletionMinutes;
+  
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
+      <StandardNav />
+      
+      <div className="container mx-auto px-4 py-20">
+        {/* Header */}
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-2">
+                Live Execution: {activeResponse.scenarioName}
+              </h1>
+              <p className="text-lg text-slate-600 dark:text-slate-400">
+                Real-time coordination dashboard - All stakeholders can see progress
+              </p>
+            </div>
+            <Badge className={`text-lg px-4 py-2 ${isOnTrack ? 'bg-emerald-500' : 'bg-amber-500'}`}>
+              {isOnTrack ? 'On Track' : 'Behind Schedule'}
+            </Badge>
+          </div>
+        </div>
+        
+        {/* Key Metrics */}
+        <div className="grid md:grid-cols-4 gap-6 mb-8">
+          <Card className="border-2 border-blue-200 dark:border-blue-800">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between mb-2">
+                <Clock className="h-6 w-6 text-blue-600" />
+                <span className="text-sm text-slate-500">Elapsed</span>
+              </div>
+              <div className="text-3xl font-bold text-blue-600">{elapsedMinutes} min</div>
+              <div className="text-sm text-slate-500 mt-1">
+                Target: {activeResponse.targetCompletionMinutes} min
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card className="border-2 border-emerald-200 dark:border-emerald-800">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between mb-2">
+                <Target className="h-6 w-6 text-emerald-600" />
+                <span className="text-sm text-slate-500">Progress</span>
+              </div>
+              <div className="text-3xl font-bold text-emerald-600">{progressPercent}%</div>
+              <div className="text-sm text-slate-500 mt-1">
+                {activeResponse.completedTasks}/{activeResponse.totalTasks} tasks
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card className="border-2 border-purple-200 dark:border-purple-800">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between mb-2">
+                <Users className="h-6 w-6 text-purple-600" />
+                <span className="text-sm text-slate-500">Active Now</span>
+              </div>
+              <div className="text-3xl font-bold text-purple-600">{activeResponse.inProgressTasks}</div>
+              <div className="text-sm text-slate-500 mt-1">
+                tasks in progress
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card className="border-2 border-amber-200 dark:border-amber-800">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between mb-2">
+                <AlertCircle className="h-6 w-6 text-amber-600" />
+                <span className="text-sm text-slate-500">Blocked</span>
+              </div>
+              <div className="text-3xl font-bold text-amber-600">{activeResponse.blockedTasks}</div>
+              <div className="text-sm text-slate-500 mt-1">
+                waiting on dependencies
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+        
+        {/* Overall Progress Bar */}
+        <Card className="mb-8">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                Overall Execution Progress
+              </h3>
+              <span className="text-sm text-slate-500">
+                {elapsedMinutes} of {activeResponse.targetCompletionMinutes} minutes elapsed
+              </span>
+            </div>
+            <Progress value={progressPercent} className="h-4 mb-2" />
+            <div className="flex justify-between text-sm text-slate-500">
+              <span>Decision made in {activeResponse.decisionTimeMinutes} min</span>
+              <span>Execution in progress</span>
+              <span>Target: {activeResponse.targetCompletionMinutes} min total</span>
+            </div>
+          </CardContent>
+        </Card>
+        
+        {/* Active Tasks */}
+        <Card className="mb-8">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Play className="h-6 w-6 text-emerald-600" />
+                Active Now ({activeResponse.inProgressTasks} tasks)
+              </CardTitle>
+              <Badge className="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30">
+                In Progress
+              </Badge>
+            </div>
+            <CardDescription>
+              Tasks currently being executed by stakeholders
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {activeResponse.activeTasks.map((task) => (
+                <div 
+                  key={task.id}
+                  className="p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border-2 border-emerald-200 dark:border-emerald-800"
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                        <h4 className="font-semibold text-slate-900 dark:text-white">
+                          {task.title}
+                        </h4>
+                      </div>
+                      <p className="text-sm text-slate-600 dark:text-slate-400">
+                        Assignee: {task.assignee}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                        {task.progress}% complete
+                      </div>
+                      <div className="text-xs text-slate-500">
+                        ~{task.timeRemaining} min remaining
+                      </div>
+                    </div>
+                  </div>
+                  <Progress value={task.progress} className="h-2" />
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+        
+        {/* Blocked Tasks */}
+        <Card className="mb-8 border-2 border-amber-200 dark:border-amber-800">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Pause className="h-6 w-6 text-amber-600" />
+                Waiting ({activeResponse.blockedTasks} tasks)
+              </CardTitle>
+              <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30">
+                Blocked by Dependencies
+              </Badge>
+            </div>
+            <CardDescription>
+              Tasks that can't start until dependencies complete
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              {activeResponse.blockedTasks.map((task) => (
+                <div 
+                  key={task.id}
+                  className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg flex items-center justify-between"
+                >
+                  <div>
+                    <h4 className="font-medium text-slate-900 dark:text-white mb-1">
+                      {task.title}
+                    </h4>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
+                      ⏸️ {task.reason}
+                    </p>
+                  </div>
+                  <Badge variant="outline" className="text-amber-700 border-amber-300">
+                    Waiting on {task.blockedBy}
+                  </Badge>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+        
+        {/* Completed Tasks */}
+        <Card>
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <CheckCircle className="h-6 w-6 text-slate-600" />
+                Completed ({activeResponse.completedTasks} tasks)
+              </CardTitle>
+              <Button variant="outline" size="sm">
+                View All
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-2">
+              {activeResponse.completedTasks.slice(0, 4).map((task) => (
+                <div 
+                  key={task.id}
+                  className="p-3 bg-slate-50 dark:bg-slate-800 rounded flex items-center justify-between"
+                >
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-emerald-500" />
+                    <span className="text-slate-700 dark:text-slate-300">{task.title}</span>
+                  </div>
+                  <Badge variant="outline" className="text-emerald-600 border-emerald-300">
+                    {task.completedInMinutes} min
+                  </Badge>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+      
+      <Footer />
+    </div>
+  );
+}
+
+STEP 3: UPDATE APP ROUTES
+In client/src/App.tsx, add:
+typescriptimport ExecutionCoordinationDashboard from "@/pages/ExecutionCoordinationDashboard";
+
+// Inside <Switch>:
+<Route path="/execution/:id" component={ExecutionCoordinationDashboard} />
+
+STEP 4: UPDATE HOMEPAGE HERO
+In client/src/pages/HomePage.tsx, replace hero section:
+typescript<section className="relative py-24 md:py-32 overflow-hidden">
+  <div className="container mx-auto px-4">
+    <div className="max-w-5xl mx-auto text-center">
+      <h1 className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
+        Head Coaches Call the Play in 40 Seconds.
+        <br />
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-600">
+          Execute It in 40 More.
+        </span>
+      </h1>
+      
+      <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-4">
+        Your CEO takes 72 hours to decide.
+      </p>
+      <p className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">
+        Then 2 weeks to coordinate execution.
+      </p>
+      
+      <p className="text-lg text-slate-600 dark:text-slate-400 mb-12 max-w-3xl mx-auto">
+        M Platform does both in 15 minutes—from trigger to complete coordinated response.
+        <br />
+        <span className="font-semibold text-emerald-600">Pre-staged decisions + automated execution coordination.</span>
+      </p>
+      
+      <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+        <Button size="lg" className="text-lg px-8 py-6" onClick={() => setLocation('/execution/demo')}>
+          Watch Live Execution Demo
+          <ArrowRight className="ml-2 h-5 w-5" />
+        </Button>
+        <Button size="lg" variant="outline" className="text-lg px-8 py-6" onClick={() => setLocation('/pricing')}>
+          View Pricing
+        </Button>
+      </div>
+      
+      {/* Before & After Comparison */}
+      <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-16">
+        <Card className="border-2 border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/10">
+          <CardHeader>
+            <CardTitle className="text-red-700 dark:text-red-400">Before M Platform</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <div className="flex justify-between">
+              <span className="text-slate-700 dark:text-slate-300">Decision Time</span>
+              <span className="font-bold text-red-700">72 hours</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-slate-700 dark:text-slate-300">Execution Time</span>
+              <span className="font-bold text-red-700">2 weeks</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-slate-700 dark:text-slate-300">Coordination</span>
+              <span className="font-bold text-red-700">Email chaos</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-slate-700 dark:text-slate-300">Total Response</span>
+              <span className="font-bold text-red-700 text-xl">17 days</span>
+            </div>
+          </CardContent>
+        </Card>
+        
+        <Card className="border-2 border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/10">
+          <CardHeader>
+            <CardTitle className="text-emerald-700 dark:text-emerald-400">With M Platform</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <div className="flex justify-between">
+              <span className="text-slate-700 dark:text-slate-300">Decision Time</span>
+              <span className="font-bold text-emerald-700">15 minutes</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-slate-700 dark:text-slate-300">Execution Time</span>
+              <span className="font-bold text-emerald-700">90 minutes</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-slate-700 dark:text-slate-300">Coordination</span>
+              <span className="font-bold text-emerald-700">Automated</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-slate-700 dark:text-slate-300">Total Response</span>
+              <span className="font-bold text-emerald-700 text-xl">105 minutes</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+      
+      <div className="mt-8 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg max-w-4xl mx-auto">
+        <p className="text-xl font-bold text-blue-900 dark:text-blue-200">
+          233X faster response • From signal to complete execution
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+STEP 5: UPDATE PRICING PAGE VALUE PROP
+In client/src/pages/PricingPage.tsx, update Domain Pilot description:
+typescript{
+  id: 'domain',
+  name: 'Domain Pilot',
+  price: 250000,
+  priceFormatted: '$250K',
+  duration: 90,
+  description: 'Complete coordinated response—decision + execution—in 15 minutes',
+  features: [
+    'Pre-stage 30 decision trees across 3 strategic domains',
+    'Automated execution coordination with 56 playbooks',
+    'Real-time progress tracking for all stakeholders',
+    'Three live scenario executions (end-to-end)',
+    'Success metric: Complete response in 15 minutes vs. 2-week baseline'
+  ],
+  // ... rest of config
+}
+
+STEP 6: CREATE API ROUTES FOR EXECUTION
+In server/routes.ts, add:
+typescript// Get active response
+app.get('/api/active-responses/:id', optionalAuth, async (req, res) => {
+  try {
+    const [response] = await db.select()
+      .from(activeResponses)
+      .where(eq(activeResponses.id, req.params.id));
+    
+    if (!response) {
+      return res.status(404).json({ error: 'Response not found' });
+    }
+    
+    res.json(response);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch response' });
+  }
+});
+
+// Update task status
+app.patch('/api/active-responses/:id/tasks/:taskId', optionalAuth, async (req, res) => {
+  try {
+    const { status, output, completedAt } = req.body;
+    
+    // Fetch current response
+    const [response] = await db.select()
+      .from(activeResponses)
+      .where(eq(activeResponses.id, req.params.id));
+    
+    if (!response) {
+      return res.status(404).json({ error: 'Response not found' });
+    }
+    
+    // Update task status in JSONB
+    const taskStatuses = response.taskStatuses as any[] || [];
+    const taskIndex = taskStatuses.findIndex(t => t.taskId === req.params.taskId);
+    
+    if (taskIndex === -1) {
+      return res.status(404).json({ error: 'Task not found' });
+    }
+    
+    taskStatuses[taskIndex] = {
+      ...taskStatuses[taskIndex],
+      status,
+      output,
+      completedAt,
+      timeSpentMinutes: completedAt 
+        ? Math.round((new Date(completedAt).getTime() - new Date(taskStatuses[taskIndex].startedAt).getTime()) / 60000)
+        : undefined
+    };
+    
+    // Update database
+    const [updated] = await db.update(activeResponses)
+      .set({ taskStatuses })
+      .where(eq(activeResponses.id, req.params.id))
+      .returning();
+    
+    res.json(updated);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to update task' });
+  }
+});
+
+WHAT YOU NOW HAVE
+✅ Complete schema for decision + execution tracking
+✅ Real-time execution coordination dashboard
+✅ Task dependency and sequencing architecture
+✅ Progress tracking across all stakeholders
+✅ Updated positioning emphasizing both decision AND execution
+✅ API routes for updating execution state
+
+WHAT'S STILL NEEDED (Next 6-8 Weeks)
+Week 1-2:
+
+Build playbook execution trigger (when decision made → start execution)
+Implement automated task assignment
+Add email/Slack notifications for task handoffs
+
+Week 3-4:
+
+Build individual task view (assignee sees their task with template)
+Implement validation checkpoints (can't proceed until X approves)
+Add task completion workflow
+
+Week 5-6:
+
+Real-time updates (WebSocket or polling)
+Critical path visualization
+Bottleneck detection and alerts
+
+Week 7-8:
+
+Film Room review interface
+Outcome tracking and lessons learned
+Playbook refinement based on execution data
+
+
+THE BOTTOM LINE
+You now understand what you're really building:
+NOT: "Decision support tool"
+YES: "Real-time strategic response coordination platform"
+The complete workflow:
+
+Trigger (0-60s): Scenario detected → System identifies decision tree
+Decision (1-15min): Exec chooses from pre-staged options
+Execution (15-90min): 47 tasks coordinated across 12 stakeholders automatically
+Verification (90-120min): All tasks complete, outcome logged, lessons captured
+
+This is worth $500K/year because you're not just helping them decide—you're coordinating their entire organization to execute at speeds they've never experienced.
+Now go build the execution engine. That's where 80% of the value is.

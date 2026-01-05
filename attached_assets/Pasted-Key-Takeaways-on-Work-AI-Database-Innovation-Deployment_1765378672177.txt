@@ -1,0 +1,79 @@
+Key Takeaways on Work AI, Database Innovation, Deployment Acceleration, and Competitive Positioning
+I recently participated in the ServiceNow Global Analyst briefing (November 2025). ServiceNow has become a behemoth among cloud-based platforms that digitize and automate enterprise workflows. While originally established for IT service management (ITSM), ServiceNow has evolved into a broader organizational platform that now connects disparately managed departments, including HR, customer service, security, and operations.
+
+Feedback from organizations utilizing ServiceNow often highlights the unification of processes and seamless integration with legacy systems without necessitating a complete infrastructure overhaul. By centralizing data throughout an enterprise, leadership gains real-time visibility into service delivery and resource allocation across the entire organization.
+
+ServiceNow CEO Bill McDermott urged leaders to prioritize AI investments with high returns and shift from pilot projects to full-scale production that delivers measurable ROI. He emphasized the importance of abandoning fragmented copilots and consumer-grade experiments in favor of building a unified, governed, and deterministic Work AI platform. According to McDermott, organizations should measure success by tangible returns on investment, effective governance, and accelerated deployment timelines.
+
+Announcements at the Briefing
+Work AI Vision
+
+Amit Zavery, President, CPO, and COO of ServiceNow spoke about the “AI Platform Vision and Innovations for 2026,” focused on defining the next generation of ServiceNow’s platform and setting priorities for both the product organization and customers.
+
+ServiceNow has introduced “Work AI,” a comprehensive system designed to integrate generative AI with deterministic workflows. The framework is structured around four key pillars: Sense, Decide, Act, and Govern. Central to this vision is the AI Control Tower, which ensures oversight for governance and auditability, maintaining transparency and manageability of AI-driven processes.
+
+Database Innovation
+
+The briefing featured Raptor DB and Raptor DB Pro, new database engines that unify transactional and analytical operations. These engines are specifically optimized for ServiceNow workloads, prioritizing substantial performance enhancements to meet complex enterprise needs.
+
+Data & Analytics Roadmap
+
+ServiceNow presented an expanded Data & Analytics roadmap, highlighting ongoing advancements such as the Workflow Data Fabric, the scheduled release of the Data Control Tower in Q1 2026, and an AI-centric analytics engine planned for H2 2026. The company also emphasized the availability of over 220 connectors and the adoption of zero-copy integration with major data lakes.
+
+Deployment Acceleration
+
+A major initiative that was outlined was the transition toward “autonomous deployment,” targeting a reduction in implementation timelines from several months to a matter of weeks, thereby accelerating organizational time-to-value.
+
+CRM Reinvention
+
+A specialized session focused on the transformation of CRM in the era of AI. ServiceNow positioned itself as a unified lead-to-cash platform, leveraging Work AI to optimize and enhance the entire CRM lifecycle.
+
+Efficient Onboarding to Retire
+
+Bill McDermott highlighted the importance of efficient onboarding as part of the broader employee experience and AI-driven business processes. He pointed out that many CEOs struggle with slow and inefficient onboarding processes, stating, "Every time I talk to CEOs they say, 'Man, I can’t recruit people, but when I do recruit them and I onboard them, it’s a fiasco, and it takes 6, 7, 8 weeks, we do it in four minutes, as you know.'"
+
+He used this as an example to demonstrate how ServiceNow’s AI capabilities can drastically accelerate and improve onboarding, reducing the process from several weeks to just minutes, and making the recruitment-to-retire cycle much more effective.
+
+Forward Deployment
+
+Forward deployment is a strategic approach ServiceNow is using to accelerate AI innovation and customer implementation. This is the second company this week that mentioned using this approach. Amit Zaveri described it as, "One key investment we have made this year ... is establishing a team of forward deployed engineers to work hand in hand with the customers, innovating for the unique use cases, but also maintaining ServiceNow IP that can then be built directly into the platform and leverage for future customers."
+
+Summary of Key Processes ServiceNow is Streamlining With AI
+IT Service Desk Operations
+
+AI-powered agents handle ticket triage, resolution, and proactive issue detection, reducing resolution times and manual workload.
+
+Customer Service and CRM
+
+End-to-end workflows automate service request intake, routing, and fulfillment through AI-driven orchestration, enhancing customer satisfaction and reducing cycle times.
+
+Onboarding (Recruitment to Retire)
+
+Automated onboarding processes truncate multi-week tasks to just minutes, streamlining employee journeys from hire to retire.
+
+Field Service Management
+
+AI optimizes dispatch, task assignment, and in-field problem resolution for technicians, as demonstrated by Bell Canada running 100% of field operations on ServiceNow.
+
+Data Management & Analytics
+
+Autonomous data quality checks, compliance monitoring, and workflow-based governance reduce the risk of errors and ensure data readiness for AI applications.
+
+Case Management and Incident Resolution
+
+AI agents autonomously monitor, prioritize, and resolve cases for HR, customer support, and IT, decreasing time to resolution.
+
+Autonomous Workflow Automation
+
+Pre-packaged and customizable workflows span sales, HR, security, and operations, minimizing manual intervention across business processes.
+
+Security, Compliance & Risk
+
+AI control towers monitor AI activities, manage risk, enforce policies, and trigger corrective actions across workflows and models.
+
+Each of these automations was tied to tangible business outcomes in the meeting, such as cost reduction, improved efficiency, and higher customer and employee satisfaction.
+
+CRM Focus
+ServiceNow emphasized their push into CRM by aiming to replace fragmented CRM ecosystems with a single architecture that covers the entire process, from prospecting and quoting to order management, service, and cash collection. The platform embeds AI to enhance lead scoring, predict churn, detect anomalies, and optimize service routing. Integration with ITSM and HR workflows is emphasized to ensure consistent customer experience. The overarching objective is to reduce quote cycles from weeks to minutes and eliminate disconnected CPQ/ordering solutions.
+
+“We have steadily expanded our role across many industries in both B2B and B2C. We've moved beyond customer and field service into sales and order management, and we're advancing further by acquiring AI for top-tier CPQ solutions. Our momentum with AI gives us distinct advantages over traditional competitors,” said John Ball, EVP & GM of CRM Workflows at ServiceNow.

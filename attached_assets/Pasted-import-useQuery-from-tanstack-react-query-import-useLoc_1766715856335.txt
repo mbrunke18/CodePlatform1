@@ -1,0 +1,155 @@
+import { useQuery } from "@tanstack/react-query";
+import { useLocation } from "wouter";
+
+import StandardNav from "@/components/layout/StandardNav";
+import Footer from "@/components/layout/Footer";
+
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+
+import { ArrowRight, Layers } from "lucide-react";
+import type { Playbook } from "@shared/schema";
+
+/**
+ * Canonical Playbook Library
+ * - TanStack Query v5
+ * - Category grouping
+ * - data-testid enforced
+ */
+
+const CATEGORIES = {
+  offense: {
+    label: "OFFENSE",
+    tagline: "Seize Opportunities",
+  },
+  defense: {
+    label: "DEFENSE",
+    tagline: "Protect Value",
+  },
+  special_teams: {
+    label: "SPECIAL TEAMS",
+    tagline: "Change the Game",
+  },
+} as const;
+
+type Category = keyof typeof CATEGORIES;
+
+export default function PlaybookLibrary() {
+  const [, setLocation] = useLocation();
+
+  const { data, isLoading } = useQuery<Playbook[]>({
+    queryKey: ["/api/playbooks"],
+  });
+
+  const grouped: Record<Category, Playbook[]> = {
+    offense: [],
+    defense: [],
+    special_teams: [],
+  };
+
+  (data ?? []).forEach((pb) => {
+    if (!pb.category) return;
+    if (pb.category in grouped) {
+      grouped[pb.category as Category].push(pb);
+    }
+  });
+
+  return (
+    <>
+      <StandardNav />
+
+      <main className="max-w-7xl mx-auto px-6 py-12">
+        <header className="mb-12" data-testid="playbook-library-header">
+          <h1 className="text-4xl font-bold text-slate-900 dark:text-white">
+            Playbook Library
+          </h1>
+          <p className="text-slate-600 dark:text-slate-400 mt-2">
+            166 pre-staged playbooks across 9 strategic domains.
+          </p>
+        </header>
+
+        {isLoading && (
+          <div
+            className="py-20 text-center text-slate-500"
+            data-testid="loading-state"
+          >
+            <Layers className="h-8 w-8 mx-auto mb-3 animate-pulse" />
+            Loading playbooks…
+          </div>
+        )}
+
+        {!isLoading &&
+          (Object.keys(CATEGORIES) as Category[]).map((category) => {
+            const meta = CATEGORIES[category];
+            const playbooks = grouped[category];
+
+            if (playbooks.length === 0) return null;
+
+            return (
+              <section
+                key={category}
+                className="mb-16"
+                data-testid={`section-${category}`}
+              >
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+                      {meta.label}
+                    </h2>
+                    <p className="text-slate-500">{meta.tagline}</p>
+                  </div>
+
+                  <Badge
+                    variant="secondary"
+                    data-testid={`count-${category}`}
+                  >
+                    {playbooks.length} Playbooks
+                  </Badge>
+                </div>
+
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {playbooks.map((playbook) => (
+                    <Card
+                      key={playbook.id}
+                      className="cursor-pointer transition hover:shadow-lg"
+                      onClick={() =>
+                        setLocation(`/playbooks/${playbook.id}`)
+                      }
+                      data-testid={`card-playbook-${playbook.id}`}
+                    >
+                      <CardHeader>
+                        <CardTitle>{playbook.name}</CardTitle>
+                        <CardDescription>
+                          {playbook.domain}
+                        </CardDescription>
+                      </CardHeader>
+
+                      <CardContent className="space-y-4">
+                        {playbook.description && (
+                          <p className="text-sm text-slate-600 dark:text-slate-400">
+                            {playbook.description}
+                          </p>
+                        )}
+
+                        <Button
+                          variant="ghost"
+                          className="w-full justify-between"
+                          data-testid={`button-open-${playbook.id}`}
+                        >
+                          Open Playbook
+                          <ArrowRight className="h-4 w-4" />
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </section>
+            );
+          })}
+      </main>
+
+      <Footer />
+    </>
+  );
+}

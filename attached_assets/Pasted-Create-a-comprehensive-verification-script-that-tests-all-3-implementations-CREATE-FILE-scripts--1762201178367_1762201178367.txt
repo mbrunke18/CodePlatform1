@@ -1,0 +1,300 @@
+Create a comprehensive verification script that tests all 3 implementations:
+
+CREATE FILE: /scripts/verify-implementation.ts
+
+import { db } from '../db/client';
+import { existsSync } from 'fs';
+import { resolve } from 'path';
+
+async function verifyImplementation() {
+  console.log('🔍 VEXOR Implementation Verification\n');
+  console.log('=' .repeat(60));
+  
+  const results = {
+    passed: 0,
+    failed: 0,
+    warnings: 0
+  };
+  
+  function pass(message: string) {
+    console.log(`✅ ${message}`);
+    results.passed++;
+  }
+  
+  function fail(message: string) {
+    console.log(`❌ ${message}`);
+    results.failed++;
+  }
+  
+  function warn(message: string) {
+    console.log(`⚠️  ${message}`);
+    results.warnings++;
+  }
+  
+  console.log('\n📋 PART 1: ACTIVATION ORCHESTRATION ENGINE\n');
+  
+  // Check 1: Orchestration endpoint file exists
+  const orchestrateFiles = [
+    '/api/activations/orchestrate.ts',
+    '/api/activations/orchestrate.js',
+    '/api/routes/activations.ts',
+    '/api/routes/activations.js'
+  ];
+  
+  let orchestrateFileFound = false;
+  for (const file of orchestrateFiles) {
+    if (existsSync(resolve(process.cwd(), '.' + file))) {
+      pass(`Orchestration file exists: ${file}`);
+      orchestrateFileFound = true;
+      break;
+    }
+  }
+  
+  if (!orchestrateFileFound) {
+    fail('Orchestration endpoint file not found');
+  }
+  
+  // Check 2: Test orchestration endpoint
+  try {
+    const response = await fetch('http://localhost:3000/api/activations/orchestrate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        playbookId: 'test-verification',
+        triggerId: 'verify-test',
+        executedBy: '7cd941d8-5c5f-461e-87ea-9d2b1d81cb59',
+        context: { verification: true }
+      })
+    });
+    
+    if (response.status === 404) {
+      fail('Orchestration endpoint not registered (404)');
+    } else if (response.status === 501) {
+      fail('Orchestration endpoint returns "Not Implemented"');
+    } else if (response.ok) {
+      const data = await response.json();
+      
+      if (data.executionInstanceId) {
+        pass('Orchestration endpoint returns executionInstanceId');
+      } else {
+        warn('Orchestration endpoint responds but missing executionInstanceId');
+      }
+      
+      if (data.coordinationStartTime) {
+        pass('Orchestration tracks coordination start time');
+      } else {
+        warn('Orchestration missing coordinationStartTime');
+      }
+      
+      // Check database
+      const execution = await db.query.executionInstances.findFirst({
+        where: eq(executionInstances.id, data.executionInstanceId)
+      });
+      
+      if (execution) {
+        pass('Execution instance created in database');
+      } else {
+        fail('Execution instance NOT created in database');
+      }
+      
+      // Check notifications
+      const notifs = await db.query.notifications.findMany({
+        where: eq(notifications.metadata.executionInstanceId, data.executionInstanceId)
+      });
+      
+      if (notifs.length > 0) {
+        pass(`Notifications created: ${notifs.length} records`);
+      } else {
+        fail('No notifications created');
+      }
+      
+    } else {
+      fail(`Orchestration endpoint error: ${response.status}`);
+    }
+  } catch (error) {
+    fail(`Orchestration endpoint unreachable: ${error.message}`);
+  }
+  
+  console.log('\n📧 PART 2: NOTIFICATION SERVICE\n');
+  
+  // Check 3: NotificationService file exists
+  const notificationServiceFiles = [
+    '/services/NotificationService.ts',
+    '/services/NotificationService.js',
+    '/lib/NotificationService.ts',
+    '/lib/notifications.ts'
+  ];
+  
+  let notificationServiceFound = false;
+  for (const file of notificationServiceFiles) {
+    if (existsSync(resolve(process.cwd(), '.' + file))) {
+      pass(`NotificationService exists: ${file}`);
+      notificationServiceFound = true;
+      break;
+    }
+  }
+  
+  if (!notificationServiceFound) {
+    fail('NotificationService file not found');
+  }
+  
+  // Check 4: Dependencies installed
+  try {
+    require('nodemailer');
+    pass('nodemailer package installed');
+  } catch {
+    try {
+      require('@sendgrid/mail');
+      pass('@sendgrid/mail package installed');
+    } catch {
+      fail('No email library installed (nodemailer or sendgrid)');
+    }
+  }
+  
+  // Check 5: Environment variables
+  const requiredEnvVars = ['SMTP_HOST', 'SMTP_USER', 'SMTP_PASS', 'APP_URL'];
+  let envVarsSet = 0;
+  
+  for (const envVar of requiredEnvVars) {
+    if (process.env[envVar]) {
+      envVarsSet++;
+    }
+  }
+  
+  if (envVarsSet === requiredEnvVars.length) {
+    pass('All SMTP environment variables set');
+  } else if (envVarsSet > 0) {
+    warn(`Only ${envVarsSet}/${requiredEnvVars.length} SMTP env vars set`);
+  } else {
+    warn('No SMTP env vars set (emails will fail or use demo mode)');
+  }
+  
+  console.log('\n🔌 PART 3: WEBSOCKET INTEGRATION\n');
+  
+  // Check 6: WebSocketService exists
+  const wsServiceFiles = [
+    '/services/WebSocketService.ts',
+    '/services/WebSocketService.js',
+    '/lib/websocket.ts'
+  ];
+  
+  let wsServiceFound = false;
+  for (const file of wsServiceFiles) {
+    if (existsSync(resolve(process.cwd(), '.' + file))) {
+      pass(`WebSocketService exists: ${file}`);
+      wsServiceFound = true;
+      break;
+    }
+  }
+  
+  if (!wsServiceFound) {
+    fail('WebSocketService file not found');
+  }
+  
+  // Check 7: Socket.io installed
+  try {
+    require('socket.io');
+    pass('socket.io package installed');
+  } catch {
+    fail('socket.io package not installed');
+  }
+  
+  try {
+    require('socket.io-client');
+    pass('socket.io-client package installed');
+  } catch {
+    fail('socket.io-client package not installed');
+  }
+  
+  // Check 8: Frontend WebSocket hook
+  const wsHookFiles = [
+    '/src/hooks/useExecutionWebSocket.ts',
+    '/src/hooks/useExecutionWebSocket.tsx',
+    '/src/hooks/useWebSocket.ts'
+  ];
+  
+  let wsHookFound = false;
+  for (const file of wsHookFiles) {
+    if (existsSync(resolve(process.cwd(), '.' + file))) {
+      pass(`WebSocket hook exists: ${file}`);
+      wsHookFound = true;
+      break;
+    }
+  }
+  
+  if (!wsHookFound) {
+    warn('WebSocket hook not found in /src/hooks');
+  }
+  
+  // Check 9: WebSocket connection test
+  try {
+    const { io } = require('socket.io-client');
+    const socket = io('http://localhost:3000', {
+      transports: ['websocket'],
+      timeout: 5000
+    });
+    
+    await new Promise((resolve, reject) => {
+      const timeout = setTimeout(() => {
+        socket.disconnect();
+        reject(new Error('Connection timeout'));
+      }, 5000);
+      
+      socket.on('connect', () => {
+        clearTimeout(timeout);
+        pass('WebSocket server accepts connections');
+        socket.disconnect();
+        resolve(true);
+      });
+      
+      socket.on('connect_error', (error) => {
+        clearTimeout(timeout);
+        reject(error);
+      });
+    });
+  } catch (error) {
+    fail(`WebSocket connection failed: ${error.message}`);
+  }
+  
+  console.log('\n' + '='.repeat(60));
+  console.log('\n📊 VERIFICATION SUMMARY\n');
+  console.log(`✅ Passed: ${results.passed}`);
+  console.log(`❌ Failed: ${results.failed}`);
+  console.log(`⚠️  Warnings: ${results.warnings}`);
+  
+  console.log('\n🎯 VERDICT:\n');
+  
+  if (results.failed === 0 && results.warnings === 0) {
+    console.log('🎉 PERFECT! All implementations working correctly.');
+    console.log('   Ready for customer demos.\n');
+  } else if (results.failed === 0 && results.warnings > 0) {
+    console.log('✅ GOOD! Core functionality works.');
+    console.log(`   ${results.warnings} warnings to address for production.\n`);
+  } else if (results.failed <= 3) {
+    console.log('⚠️  PARTIAL IMPLEMENTATION');
+    console.log(`   ${results.failed} critical issues to fix.\n`);
+  } else {
+    console.log('❌ INCOMPLETE IMPLEMENTATION');
+    console.log(`   ${results.failed} major issues. Replit Agent did not complete the work.\n`);
+  }
+  
+  console.log('Next steps:');
+  if (results.failed > 0) {
+    console.log('1. Review failed checks above');
+    console.log('2. Share results with developer for targeted fixes');
+    console.log('3. Re-run verification after fixes\n');
+  } else {
+    console.log('1. Run end-to-end demo test');
+    console.log('2. Polish UI for customer demos');
+    console.log('3. Schedule first customer demo\n');
+  }
+}
+
+verifyImplementation().catch(console.error);
+
+Add to package.json:
+{
+  "scripts": {
+    "verify": "tsx scripts/verify-implementation.ts"
+  }
+}

@@ -1,0 +1,174 @@
+import { useMemo, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useLocation } from "wouter";
+
+import StandardNav from "@/components/layout/StandardNav";
+import Footer from "@/components/layout/Footer";
+
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Switch } from "@/components/ui/switch";
+
+import {
+  ArrowRight,
+  Layers,
+  Clock,
+  Users,
+  Sparkles,
+  AlertTriangle,
+  TrendingUp,
+} from "lucide-react";
+
+import type { Playbook } from "@shared/schema";
+
+type Telemetry = {
+  lastUsedAt: string | null;
+  avgOutcome: number | null;
+  executions: number;
+};
+
+export default function PlaybookLibrary() {
+  const [, setLocation] = useLocation();
+  const [search, setSearch] = useState("");
+  const [actNow, setActNow] = useState(true);
+
+  const { data: playbooks, isLoading } = useQuery<Playbook[]>({
+    queryKey: ["/api/playbooks"],
+  });
+
+  const { data: telemetry } = useQuery<Record<string, Telemetry>>({
+    queryKey: ["/api/playbooks/telemetry"],
+    enabled: !!playbooks,
+  });
+
+  const enriched = useMemo(() => {
+    if (!playbooks) return [];
+
+    return playbooks.map((pb) => {
+      const t = telemetry?.[pb.id];
+      const daysAgo = t?.lastUsedAt
+        ? Math.floor(
+            (Date.now() - new Date(t.lastUsedAt).getTime()) / 86400000
+          )
+        : 999;
+
+      const urgency =
+        daysAgo > 30 || (t?.avgOutcome ?? 100) < 70 ? "high" : "normal";
+
+      return {
+        ...pb,
+        executions: t?.executions ?? 0,
+        avgOutcome: t?.avgOutcome,
+        daysAgo,
+        urgency,
+      };
+    });
+  }, [playbooks, telemetry]);
+
+  const filtered = useMemo(() => {
+    const q = search.toLowerCase();
+    return enriched.filter(
+      (pb) =>
+        pb.name.toLowerCase().includes(q) ||
+        pb.domain.toLowerCase().includes(q)
+    );
+  }, [enriched, search]);
+
+  const sorted = useMemo(() => {
+    if (!actNow) return filtered;
+    return [...filtered].sort((a, b) => {
+      if (a.urgency !== b.urgency) return a.urgency === "high" ? -1 : 1;
+      return a.daysAgo - b.daysAgo;
+    });
+  }, [filtered, actNow]);
+
+  return (
+    <>
+      <StandardNav />
+
+      <main className="max-w-7xl mx-auto px-6 py-12">
+        <header className="mb-10">
+          <h1 className="text-4xl font-bold">Act Now</h1>
+          <p className="text-slate-600">
+            Prioritized plays based on real execution data.
+          </p>
+        </header>
+
+        <div className="flex flex-wrap items-center gap-6 mb-10">
+          <Input
+            placeholder="Search scenarios or domains…"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="max-w-md"
+          />
+
+          <div className="flex items-center gap-3">
+            <Switch checked={actNow} onCheckedChange={setActNow} />
+            <span className="text-sm">Act Now priority</span>
+          </div>
+        </div>
+
+        {isLoading && (
+          <div className="py-24 text-center text-slate-500">
+            <Layers className="h-8 w-8 mx-auto mb-3 animate-pulse" />
+            Analyzing execution history…
+          </div>
+        )}
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {sorted.map((pb) => (
+            <Card
+              key={pb.id}
+              className="cursor-pointer hover:shadow-xl transition"
+              onClick={() => setLocation(`/command-center/${pb.id}`)}
+            >
+              <CardHeader className="space-y-2">
+                <CardTitle>{pb.name}</CardTitle>
+                <CardDescription>{pb.domain}</CardDescription>
+
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline">
+                    <Clock className="h-3 w-3 mr-1" />
+                    ~12 min
+                  </Badge>
+
+                  {pb.urgency === "high" && (
+                    <Badge className="bg-red-100 text-red-700">
+                      <AlertTriangle className="h-3 w-3 mr-1" />
+                      Act now
+                    </Badge>
+                  )}
+                </div>
+              </CardHeader>
+
+              <CardContent className="space-y-3">
+                <div className="text-sm text-slate-500 space-y-1">
+                  <div>
+                    Last used:{" "}
+                    {pb.daysAgo === 999 ? "Never" : `${pb.daysAgo} days ago`}
+                  </div>
+                  <div>Executions: {pb.executions}</div>
+                  {pb.avgOutcome !== null && (
+                    <div className="flex items-center gap-1">
+                      <TrendingUp className="h-4 w-4" />
+                      Avg outcome: {Math.round(pb.avgOutcome)}%
+                    </div>
+                  )}
+                </div>
+
+                <Button variant="ghost" className="w-full justify-between">
+                  Execute
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </main>
+
+      <Footer />
+    </>
+  );
+}

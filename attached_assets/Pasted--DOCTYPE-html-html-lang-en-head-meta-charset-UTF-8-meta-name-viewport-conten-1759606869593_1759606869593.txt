@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Strategic Command Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(to right, #1e40af, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .pulse-dot {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        .alert-flash {
+            animation: flash 1s ease-in-out infinite alternate;
+        }
+        @keyframes flash {
+            from { background-color: #ef4444; }
+            to { background-color: #dc2626; }
+        }
+        .market-ticker {
+            animation: scroll 30s linear infinite;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white min-h-screen">
+    <!-- Strategic Intelligence Header -->
+    <div class="bg-gradient-to-r from-blue-900 via-purple-900 to-indigo-900 p-4 border-b border-gray-700">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center mb-4">
+                <div>
+                    <h1 class="text-3xl font-bold gradient-text mb-2">Executive Strategic Command Center</h1>
+                    <div class="flex items-center gap-6 text-sm">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full pulse-dot"></div>
+                            <span class="text-gray-300">Live Intelligence Active</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="clock" class="w-4 h-4"></i>
+                            <span class="text-gray-300" id="current-time"></span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="globe" class="w-4 h-4"></i>
+                            <span class="text-gray-300">Global Markets: <span id="market-status">Open</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="toggleAlerts()" class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg flex items-center gap-2">
+                        <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                        <span id="alert-count">3</span> Alerts
+                    </button>
+                    <button onclick="exportReport()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center gap-2">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        Export
+                    </button>
+                </div>
+            </div>
+
+```
+        <!-- Real-Time Market Intelligence Ticker -->
+        <div class="bg-black bg-opacity-30 rounded-lg p-3 overflow-hidden">
+            <div class="market-ticker whitespace-nowrap text-yellow-300">
+                <span class="inline-block mx-8">📈 S&P 500: +1.2% | Tech sector outperforming | AI chip demand surge continues</span>
+                <span class="inline-block mx-8">🔴 CRITICAL: Major competitor announces $2B AI investment - Response required</span>
+                <span class="inline-block mx-8">📊 Industry Alert: 67% of peers accelerating digital transformation budgets</span>
+                <span class="inline-block mx-8">⚡ Breaking: New EU AI regulations effective Q2 2025 - Compliance assessment needed</span>
+                <span class="inline-block mx-8">💡 Opportunity: Talent acquisition window open - 34% increase in AI specialist availability</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="max-w-7xl mx-auto p-6">
+    <!-- Executive Dashboard Navigation -->
+    <div class="mb-8">
+        <div class="flex space-x-1 bg-gray-800 rounded-lg p-1">
+            <button onclick="switchTab('intelligence')" id="tab-intelligence" class="tab-button active px-6 py-3 rounded-lg font-medium transition-all">
+                <i data-lucide="brain" class="w-4 h-4 inline mr-2"></i>Strategic Intelligence
+            </button>
+            <button onclick="switchTab('scenarios')" id="tab-scenarios" class="tab-button px-6 py-3 rounded-lg font-medium transition-all">
+                <i data-lucide="target" class="w-4 h-4 inline mr-2"></i>Scenario Planning
+            </button>
+            <button onclick="switchTab('execution')" id="tab-execution" class="tab-button px-6 py-3 rounded-lg font-medium transition-all">
+                <i data-lucide="activity" class="w-4 h-4 inline mr-2"></i>Execution Tracking
+            </button>
+            <button onclick="switchTab('crisis')" id="tab-crisis" class="tab-button px-6 py-3 rounded-lg font-medium transition-all">
+                <i data-lucide="shield" class="w-4 h-4 inline mr-2"></i>Crisis Management
+            </button>
+        </div>
+    </div>
+
+    <!-- Strategic Intelligence Tab -->
+    <div id="content-intelligence" class="tab-content">
+        <!-- Critical Alerts Section -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                <i data-lucide="alert-circle" class="w-6 h-6 text-red-500"></i>
+                Critical Strategic Alerts
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- High Priority Alert -->
+                <div class="bg-red-900 bg-opacity-50 border border-red-500 rounded-lg p-6 alert-flash">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="trending-up" class="w-5 h-5 text-red-400"></i>
+                            <span class="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">CRITICAL</span>
+                        </div>
+                        <span class="text-gray-400 text-sm">2 min ago</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Competitor AI Investment</h3>
+                    <p class="text-gray-300 mb-4">Microsoft announces $3B AI infrastructure investment. Market expects 25% productivity gains. Your current AI budget may be insufficient to maintain competitive position.</p>
+                    <div class="flex gap-2">
+                        <button onclick="createResponseScenario('competitor-ai')" class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded text-sm font-medium">
+                            Create Response Scenario
+                        </button>
+                        <button class="px-4 py-2 bg-gray-600 hover:bg-gray-700 rounded text-sm font-medium">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Medium Priority Alert -->
+                <div class="bg-yellow-900 bg-opacity-50 border border-yellow-500 rounded-lg p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="users" class="w-5 h-5 text-yellow-400"></i>
+                            <span class="bg-yellow-500 text-black px-2 py-1 rounded-full text-xs font-bold">HIGH</span>
+                        </div>
+                        <span class="text-gray-400 text-sm">15 min ago</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Talent Market Shift</h3>
+                    <p class="text-gray-300 mb-4">AI talent salaries up 34% YoY. Key competitors offering 40% premium for senior ML engineers. Risk of losing critical talent to competition.</p>
+                    <div class="flex gap-2">
+                        <button onclick="createResponseScenario('talent-retention')" class="px-4 py-2 bg-yellow-600 hover:bg-yellow-700 rounded text-sm font-medium">
+                            Model Retention Strategy
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Opportunity Alert -->
+                <div class="bg-green-900 bg-opacity-50 border border-green-500 rounded-lg p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="trending-up" class="w-5 h-5 text-green-400"></i>
+                            <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">OPPORTUNITY</span>
+                        </div>
+                        <span class="text-gray-400 text-sm">1 hour ago</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">M&A Window Opening</h3>
+                    <p class="text-gray-300 mb-4">3 AI startups showing distress signals. Valuations down 40% from peak. Strategic acquisition opportunity for AI capabilities.</p>
+                    <div class="flex gap-2">
+                        <button onclick="createResponseScenario('acquisition')" class="px-4 py-2 bg-green-600 hover:bg-green-700 rounded text-sm font-medium">
+                            Model Acquisition
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Market Intelligence Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Competitive Intelligence -->
+            <div class="bg-gray-800 rounded-lg p-6">
+                <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <i data-lucide="eye" class="w-5 h-5"></i>
+                    Competitive Intelligence
+                </h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center p-4 bg-gray-700 rounded-lg">
+                        <div>
+                            <h4 class="font-bold">Amazon</h4>
+                            <p class="text-gray-400 text-sm">AI Investment: $12B | Cloud Market Share: 32%</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-red-400 font-bold">↑ Threat Level: High</span>
+                            <p class="text-gray-400 text-sm">Recent: AI chip partnership</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center p-4 bg-gray-700 rounded-lg">
+                        <div>
+                            <h4 class="font-bold">Google</h4>
+                            <p class="text-gray-400 text-sm">AI Investment: $8B | Workspace Users: 3B</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-yellow-400 font-bold">↗ Threat Level: Medium</span>
+                            <p class="text-gray-400 text-sm">Recent: Bard enterprise launch</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center p-4 bg-gray-700 rounded-lg">
+                        <div>
+                            <h4 class="font-bold">Microsoft</h4>
+                            <p class="text-gray-400 text-sm">AI Investment: $10B | Office 365: 400M users</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-red-400 font-bold">↑ Threat Level: Critical</span>
+                            <p class="text-gray-400 text-sm">Recent: Copilot expansion</p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="viewCompetitorDetails()" class="w-full mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg">
+                    View Detailed Analysis
+                </button>
+            </div>
+
+            <!-- Market Trends -->
+            <div class="bg-gray-800 rounded-lg p-6">
+                <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <i data-lucide="trending-up" class="w-5 h-5"></i>
+                    Market Trends & Signals
+                </h3>
+                <div class="space-y-4">
+                    <div class="p-4 bg-blue-900 bg-opacity-50 rounded-lg">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-bold">AI Adoption Acceleration</h4>
+                            <span class="text-green-400">+87% YoY</span>
+                        </div>
+                        <p class="text-gray-300 text-sm">Enterprise AI spending projected to reach $154B by 2025. Early movers capturing 3x market share growth.</p>
+                    </div>
+                    <div class="p-4 bg-purple-900 bg-opacity-50 rounded-lg">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-bold">Remote Work Plateau</h4>
+                            <span class="text-yellow-400">Stable</span>
+                        </div>
+                        <p class="text-gray-300 text-sm">Hybrid work models stabilizing at 3.2 days office average. Digital workplace investment focus shifting to productivity tools.</p>
+                    </div>
+                    <div class="p-4 bg-green-900 bg-opacity-50 rounded-lg">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-bold">ESG Compliance Demand</h4>
+                            <span class="text-green-400">+156% Investor Focus</span>
+                        </div>
+                        <p class="text-gray-300 text-sm">New SEC climate disclosure rules driving $2.3T in ESG-compliant investments. Carbon-neutral commitments now table stakes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Strategic Recommendations -->
+        <div class="bg-gradient-to-r from-purple-900 to-blue-900 rounded-lg p-6">
+            <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <i data-lucide="lightbulb" class="w-5 h-5"></i>
+                AI-Generated Strategic Recommendations
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white bg-opacity-10 rounded-lg p-4">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-red-500 px-2 py-1 rounded-full text-xs font-bold">URGENT</span>
+                        <span class="text-sm text-gray-300">72-hour window</span>
+                    </div>
+                    <h4 class="font-bold mb-2">Accelerate AI Investment</h4>
+                    <p class="text-gray-300 text-sm mb-3">Competitor moves require immediate $25M AI budget increase to maintain market position. Recommend emergency board approval.</p>
+                    <button onclick="createUrgentScenario()" class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded text-sm font-medium">
+                        Model Emergency Response
+                    </button>
+                </div>
+                <div class="bg-white bg-opacity-10 rounded-lg p-4">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-blue-500 px-2 py-1 rounded-full text-xs font-bold">STRATEGIC</span>
+                        <span class="text-sm text-gray-300">Q2 2025 timeline</span>
+                    </div>
+                    <h4 class="font-bold mb-2">Platform Consolidation</h4>
+                    <p class="text-gray-300 text-sm mb-3">Opportunity to acquire 3 distressed AI startups for combined $180M - 60% below peak valuations.</p>
+                    <button onclick="createAcquisitionScenario()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded text-sm font-medium">
+                        Model M&A Strategy
+                    </button>
+                </div>
+                <div class="bg-white bg-opacity-10 rounded-lg p-4">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-green-500 px-2 py-1 rounded-full text-xs font-bold">OPPORTUNITY</span>
+                        <span class="text-sm text-gray-300">Market window</span>
+                    </div>
+                    <h4 class="font-bold mb-2">ESG Leadership</h4>
+                    <p class="text-gray-300 text-sm mb-3">First-mover advantage in AI-powered sustainability. $50M investment could capture $500M market opportunity.</p>
+                    <button onclick="createESGScenario()" class="px-4 py-2 bg-green-600 hover:bg-green-700 rounded text-sm font-medium">
+                        Model ESG Initiative
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario Planning Tab -->
+    <div id="content-scenarios" class="tab-content hidden">
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-6">Advanced Scenario Planning</h2>
+            
+            <!-- Scenario Builder -->
+            <div class="bg-gray-800 rounded-lg p-6 mb-8">
+                <h3 class="text-xl font-bold mb-4">Intelligent Scenario Generator</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Scenario Trigger</label>
+                        <select id="scenario-trigger" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg">
+                            <option>Competitor Move</option>
+                            <option>Market Disruption</option>
+                            <option>Regulatory Change</option>
+                            <option>Technology Breakthrough</option>
+                            <option>Economic Shift</option>
+                            <option>Crisis Event</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Response Timeline</label>
+                        <select id="response-timeline" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg">
+                            <option>Immediate (0-30 days)</option>
+                            <option>Short-term (1-6 months)</option>
+                            <option>Medium-term (6-18 months)</option>
+                            <option>Long-term (18+ months)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Investment Scale</label>
+                        <select id="investment-scale" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg">
+                            <option>Tactical ($1-10M)</option>
+                            <option>Significant ($10-50M)</option>
+                            <option>Major ($50-200M)</option>
+                            <option>Transformational ($200M+)</option>
+                        </select>
+                    </div>
+                </div>
+                <button onclick="generateScenario()" class="mt-4 px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-medium">
+                    Generate AI-Powered Scenario
+                </button>
+            </div>
+
+            <!-- Active Scenarios -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-gray-800 rounded-lg p-6">
+                    <h3 class="text-lg font-bold mb-4">Active Scenarios</h3>
+                    <div id="active-scenarios" class="space-y-4">
+                        <!-- Scenarios will be populated here -->
+                    </div>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6">
+                    <h3 class="text-lg font-bold mb-4">Scenario Performance</h3>
+                    <canvas id="scenario-chart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Execution Tracking Tab -->
+    <div id="content-execution" class="tab-content hidden">
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-6">Transformation Execution Dashboard</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-blue-900 rounded-lg p-6">
+                    <h3 class="text-lg font-bold mb-2">Active Initiatives</h3>
+                    <div class="text-3xl font-bold text-blue-400">7</div>
+                    <p class="text-gray-400">$185M Total Investment</p>
+                </div>
+                <div class="bg-green-900 rounded-lg p-6">
+                    <h3 class="text-lg font-bold mb-2">On Track</h3>
+                    <div class="text-3xl font-bold text-green-400">5</div>
+                    <p class="text-gray-400">71% Success Rate</p>
+                </div>
+                <div class="bg-yellow-900 rounded-lg p-6">
+                    <h3 class="text-lg font-bold mb-2">At Risk</h3>
+                    <div class="text-3xl font-bold text-yellow-400">1</div>
+                    <p class="text-gray-400">Needs Attention</p>
+                </div>
+                <div class="bg-red-900 rounded-lg p-6">
+                    <h3 class="text-lg font-bold mb-2">Critical</h3>
+                    <div class="text-3xl font-bold text-red-400">1</div>
+                    <p class="text-gray-400">Intervention Required</p>
+                </div>
+            </div>
+
+            <!-- Initiative Tracking -->
+            <div class="bg-gray-800 rounded-lg p-6">
+                <h3 class="text-xl font-bold mb-4">Initiative Performance Tracking</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b border-gray-600">
+                                <th class="text-left py-3">Initiative</th>
+                                <th class="text-left py-3">Progress</th>
+                                <th class="text-left py-3">Budget</th>
+                                <th class="text-left py-3">ROI</th>
+                                <th class="text-left py-3">Status</th>
+                                <th class="text-left py-3">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="initiatives-table">
+                            <!-- Table rows will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crisis Management Tab -->
+    <div id="content-crisis" class="tab-content hidden">
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-6">Crisis Management & War Gaming</h2>
+            
+            <!-- Crisis Simulation -->
+            <div class="bg-red-900 bg-opacity-30 border border-red-500 rounded-lg p-6 mb-8">
+                <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <i data-lucide="shield-alert" class="w-5 h-5"></i>
+                    Active Crisis Simulation
+                </h3>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold mb-2">Scenario: Major Cybersecurity Breach</h4>
+                        <p class="text-gray-300 mb-4">Customer data compromised. Estimated impact: $50M in immediate costs, potential $200M in long-term brand damage.</p>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Time to containment:</span>
+                                <span class="font-bold text-red-400">4 hours remaining</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Media response window:</span>
+                                <span class="font-bold text-yellow-400">2 hours</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Regulatory notification:</span>
+                                <span class="font-bold text-red-400">72 hours</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-2">Response Options</h4>
+                        <div class="space-y-3">
+                            <button onclick="selectCrisisResponse('immediate')" class="w-full p-3 bg-red-600 hover:bg-red-700 rounded-lg text-left">
+                                <div class="font-bold">Immediate Public Disclosure</div>
+                                <div class="text-sm text-gray-300">High transparency, potential short-term damage</div>
+                            </button>
+                            <button onclick="selectCrisisResponse('controlled')" class="w-full p-3 bg-yellow-600 hover:bg-yellow-700 rounded-lg text-left">
+                                <div class="font-bold">Controlled Information Release</div>
+                                <div class="text-sm text-gray-300">Managed communication, moderate risk</div>
+                            </button>
+                            <button onclick="selectCrisisResponse('minimal')" class="w-full p-3 bg-gray-600 hover:bg-gray-700 rounded-lg text-left">
+                                <div class="font-bold">Minimal Disclosure</div>
+                                <div class="text-sm text-gray-300">Legal compliance only, high long-term risk</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- War Gaming Scenarios -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="bg-gray-800 rounded-lg p-6">
+                    <h3 class="text-lg font-bold mb-4">Economic Downturn</h3>
+                    <p class="text-gray-400 mb-4">Model responses to 20% market decline and recession scenario.</p>
+                    <button onclick="startWarGame('economic')" class="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg">
+                        Start Simulation
+                    </button>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6">
+                    <h3 class="text-lg font-bold mb-4">Regulatory Disruption</h3>
+                    <p class="text-gray-400 mb-4">Navigate new AI regulations and compliance requirements.</p>
+                    <button onclick="startWarGame('regulatory')" class="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg">
+                        Start Simulation
+                    </button>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6">
+                    <h3 class="text-lg font-bold mb-4">Talent Exodus</h3>
+                    <p class="text-gray-400 mb-4">Response to 40% of key AI talent leaving for competitors.</p>
+                    <button onclick="startWarGame('talent')" class="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg">
+                        Start Simulation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AI Assistant Chat -->
+<div id="ai-assistant" class="fixed bottom-6 right-6">
+    <button onclick="toggleAssistant()" class="bg-purple-600 hover:bg-purple-700 rounded-full p-4 shadow-lg">
+        <i data-lucide="message-circle" class="w-6 h-6 text-white"></i>
+    </button>
+    <div id="assistant-panel" class="hidden absolute bottom-16 right-0 w-80 h-96 bg-gray-800 rounded-lg shadow-xl border border-gray-600">
+        <div class="p-4 border-b border-gray-600">
+            <h3 class="font-bold">AI Strategic Assistant</h3>
+            <p class="text-gray-400 text-sm">Ask about scenarios, market trends, or strategic recommendations</p>
+        </div>
+        <div class="flex-1 p-4 overflow-y-auto" id="chat-messages">
+            <div class="bg-purple-900 bg-opacity-50 rounded-lg p-3 mb-3">
+                <p class="text-sm">Hello! I'm your AI strategic assistant. I can help you analyze market conditions, model scenarios, or provide competitive intelligence. What would you like to explore?</p>
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-600">
+            <div class="flex gap-2">
+                <input type="text" id="chat-input" placeholder="Ask me anything..." class="flex-1 px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-sm">
+                <button onclick="sendMessage()" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Initialize the application
+    document.addEventListener('DOMContentLoaded', function() {
+        lucide.createIcons();
+        updateTime();
+        setInterval(updateTime, 1000);
+        initializeCharts();
+        loadInitiativeData();
+        loadScenarioData();
+    });
+
+    // Time and status updates
+    function updateTime() {
+        const now = new Date();
+        document.getElementById('current-time').textContent = now.toLocaleString();
+        
+        const hour = now.getHours();
+        const isMarketHours = hour >= 9 && hour <= 16;
+        document.getElementById('market-status').textContent = isMarketHours ? 'Open' : 'Closed';
+    }
+
+    // Tab switching functionality
+    function switchTab(tabName) {
+        // Hide all tab contents
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(content => content.classList.add('hidden'));
+        
+        // Remove active class from all buttons
+        const buttons = document.querySelectorAll('.tab-button');
+        buttons.forEach(button => {
+            button.classList.remove('active', 'bg-blue-600', 'text-white');
+            button.classList.add('text-gray-400');
+        });
+        
+        // Show selected tab content
+        document.getElementById(`content-${tabName}`).classList.remove('hidden');
+        
+        // Add active class to selected button
+        const activeButton = document.getElementById(`tab-${tabName}`);
+        activeButton.classList.add('active', 'bg-blue-600', 'text-white');
+        activeButton.classList.remove('text-gray-400');
+    }
+
+    // Crisis response scenarios
+    function createResponseScenario(type) {
+        const scenarios = {
+            'competitor-ai': {
+                title: 'Competitive AI Response',
+                description: 'Accelerated AI investment to match competitor capabilities',
+                budget: '$25M',
+                timeline: '6 months',
+                roi: '35%'
+            },
+            'talent-retention': {
+                title: 'Talent Retention Strategy',
+                description: 'Enhanced compensation and equity packages for key AI talent',
+                budget: '$8M',
+                timeline: '3 months',
+                roi: '450%'
+            },
+            'acquisition': {
+                title: 'Strategic Acquisition',
+                description: 'Acquire distressed AI startups for capabilities and talent',
+                budget: '$180M',
+                timeline: '12 months',
+                roi: '25%'
+            }
+        };
+        
+        const scenario = scenarios[type];
+        alert(`Creating ${scenario.title} scenario:\n\nBudget: ${scenario.budget}\nTimeline: ${scenario.timeline}\nExpected ROI: ${scenario.roi}\n\nScenario added to planning queue.`);
+        addScenarioToList(scenario);
+    }
+
+    function addScenarioToList(scenario) {
+        const container = document.getElementById('active-scenarios');
+        if (!container) return;
+        
+        const scenarioDiv = document.createElement('div');
+        scenarioDiv.className = 'p-4 bg-gray-700 rounded-lg';
+        scenarioDiv.innerHTML = `
+            <h4 class="font-bold mb-2">${scenario.title}</h4>
+            <p class="text-gray-400 text-sm mb-2">${scenario.description}</p>
+            <div class="flex justify-between text-sm">
+                <span>Budget: ${scenario.budget}</span>
+                <span>ROI: ${scenario.roi}</span>
+            </div>
+        `;
+        container.appendChild(scenarioDiv);
+    }
+
+    // Initialize charts
+    function initializeCharts() {
+        // Scenario performance chart
+        const ctx = document.getElementById('scenario-chart');
+        if (ctx) {
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'ROI Performance',
+                        data: [12, 19, 15, 25, 32, 28],
+                        borderColor: 'rgb(147, 51, 234)',
+                        backgroundColor: 'rgba(147, 51, 234, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'white'
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                color: 'white'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: 'white'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    // Load initiative data
+    function loadInitiativeData() {
+        const initiatives = [
+            {
+                name: 'AI Implementation',
+                progress: 75,
+                budget: '$25M',
+                roi: '35%',
+                status: 'On Track',
+                statusColor: 'text-green-400'
+            },
+            {
+                name: 'Digital Workplace',
+                progress: 90,
+                budget: '$12M',
+                roi: '28%',
+                status: 'On Track',
+                statusColor: 'text-green-400'
+            },
+            {
+                name: 'Cybersecurity Enhancement',
+                progress: 45,
+                budget: '$8M',
+                roi: '15%',
+                status: 'At Risk',
+                statusColor: 'text-yellow-400'
+            },
+            {
+                name: 'ESG Compliance',
+                progress: 30,
+                budget: '$15M',
+                roi: '12%',
+                status: 'Critical',
+                statusColor: 'text-red-400'
+            }
+        ];
+
+        const tableBody = document.getElementById('initiatives-table');
+        if (tableBody) {
+            tableBody.innerHTML = initiatives.map(initiative => `
+                <tr class="border-b border-gray-700">
+                    <td class="py-3">${initiative.name}</td>
+                    <td class="py-3">
+                        <div class="w-full bg-gray-600 rounded-full h-2">
+                            <div class="bg-blue-600 h-2 rounded-full" style="width: ${initiative.progress}%"></div>
+                        </div>
+                        <span class="text-sm text-gray-400">${initiative.progress}%</span>
+                    </td>
+                    <td class="py-3">${initiative.budget}</td>
+                    <td class="py-3">${initiative.roi}</td>
+                    <td class="py-3 ${initiative.statusColor}">${initiative.status}</td>
+                    <td class="py-3">
+                        <button class="px-3 py-1 bg-blue-600 hover:bg-blue-700 rounded text-sm">View</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+    }
+
+    // Load scenario data
+    function loadScenarioData() {
+        const scenarios = [
+            {
+                title: 'AI Investment Acceleration',
+                description: 'Response to competitive pressure',
+                progress: 'Modeling',
+                impact: 'High'
+            },
+            {
+                title: 'Talent Retention Strategy',
+                description: 'Counter-offer competitive packages',
+                progress: 'Active',
+                impact: 'Critical'
+            }
+        ];
+
+        const container = document.getElementById('active-scenarios');
+        if (container) {
+            container.innerHTML = scenarios.map(scenario => `
+                <div class="p-4 bg-gray-700 rounded-lg">
+                    <h4 class="font-bold mb-2">${scenario.title}</h4>
+                    <p class="text-gray-400 text-sm mb-2">${scenario.description}</p>
+                    <div class="flex justify-between text-sm">
+                        <span>Status: ${scenario.progress}</span>
+                        <span>Impact: ${scenario.impact}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+
+    // Scenario generation
+    function generateScenario() {
+        const trigger = document.getElementById('scenario-trigger').value;
+        const timeline = document.getElementById('response-timeline').value;
+        const scale = document.getElementById('investment-scale').value;
+        
+        alert(`Generating AI-powered scenario:\n\nTrigger: ${trigger}\nTimeline: ${timeline}\nScale: ${scale}\n\nAnalyzing market conditions and generating strategic options...`);
+    }
+
+    // Crisis management functions
+    function selectCrisisResponse(response) {
+        const responses = {
+            'immediate': 'Immediate disclosure selected. Preparing crisis communication plan...',
+            'controlled': 'Controlled release selected. Developing stakeholder communication strategy...',
+            'minimal': 'Minimal disclosure selected. Legal compliance plan activated...'
+        };
+        alert(responses[response]);
+    }
+
+    function startWarGame(type) {
+        const games = {
+            'economic': 'Economic downturn simulation starting...',
+            'regulatory': 'Regulatory disruption simulation starting...',
+            'talent': 'Talent exodus simulation starting...'
+        };
+        alert(games[type]);
+    }
+
+    // AI Assistant functionality
+    let assistantOpen = false;
+
+    function toggleAssistant() {
+        const panel = document.getElementById('assistant-panel');
+        assistantOpen = !assistantOpen;
+        panel.classList.toggle('hidden', !assistantOpen);
+    }
+
+    function sendMessage() {
+        const input = document.getElementById('chat-input');
+        const message = input.value.trim();
+        if (!message) return;
+
+        const chatMessages = document.getElementById('chat-messages');
+        
+        // Add user message
+        const userMessage = document.createElement('div');
+        userMessage.className = 'bg-blue-900 bg-opacity-50 rounded-lg p-3 mb-3 ml-8';
+        userMessage.innerHTML = `<p class="text-sm">${message}</p>`;
+        chatMessages.appendChild(userMessage);
+
+        // Generate AI response
+        setTimeout(() => {
+            const aiResponse = generateAIResponse(message);
+            const aiMessage = document.createElement('div');
+            aiMessage.className = 'bg-purple-900 bg-opacity-50 rounded-lg p-3 mb-3';
+            aiMessage.innerHTML = `<p class="text-sm">${aiResponse}</p>`;
+            chatMessages.appendChild(aiMessage);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 1000);
+
+        input.value = '';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function generateAIResponse(message) {
+        const responses = {
+            'market': 'Based on current market analysis, I see three key trends: AI adoption acceleration (+87% YoY), hybrid work stabilization, and ESG compliance demand surge. Which area would you like me to analyze deeper?',
+            'competitor': 'Competitive intelligence shows Microsoft and Amazon making significant AI investments. I recommend immediate scenario modeling for accelerated AI implementation. Shall I create a response scenario?',
+            'roi': 'Current ROI projections show strong returns on AI initiatives (35%+ IRR) but ESG investments lag (12% IRR). Consider portfolio rebalancing for optimal returns.',
+            'risk': 'Top strategic risks: 1) AI talent shortage (73% skills gap), 2) Regulatory uncertainty, 3) Competitive response speed. Recommend immediate talent retention strategy.',
+            'default': 'I can help analyze market conditions, model strategic scenarios, assess competitive threats, or provide ROI projections. What specific strategic challenge can I assist with?'
+        };
+
+        const lowerMessage = message.toLowerCase();
+        if (lowerMessage.includes('market') || lowerMessage.includes('trend')) return responses.market;
+        if (lowerMessage.includes('competitor') || lowerMessage.includes('competition')) return responses.competitor;
+        if (lowerMessage.includes('roi') || lowerMessage.includes('return')) return responses.roi;
+        if (lowerMessage.includes('risk') || lowerMessage.includes('threat')) return responses.risk;
+        return responses.default;
+    }
+
+    // Utility functions
+    function toggleAlerts() {
+        alert('Alert management panel would open here with detailed crisis and opportunity alerts.');
+    }
+
+    function exportReport() {
+        alert('Generating executive summary report...\n\n• Market intelligence summary\n• Strategic recommendations\n• Initiative performance\n• Risk assessment\n\nReport will be available for download in 30 seconds.');
+    }
+
+    function viewCompetitorDetails() {
+        alert('Opening detailed competitive intelligence dashboard...\n\nFeatures:\n• Real-time competitor tracking\n• Investment analysis\n• Market share monitoring\n• Strategic move predictions');
+    }
+
+    function createUrgentScenario() {
+        createResponseScenario('competitor-ai');
+    }
+
+    function createAcquisitionScenario() {
+        createResponseScenario('acquisition');
+    }
+
+    function createESGScenario() {
+        alert('Creating ESG Leadership scenario:\n\nInvestment: $50M\nTimeline: 18 months\nMarket Opportunity: $500M\nFirst-mover advantage in AI-powered sustainability\n\nScenario added to planning queue.');
+    }
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey || e.metaKey) {
+            switch(e.key) {
+                case '1':
+                    e.preventDefault();
+                    switchTab('intelligence');
+                    break;
+                case '2':
+                    e.preventDefault();
+                    switchTab('scenarios');
+                    break;
+                case '3':
+                    e.preventDefault();
+                    switchTab('execution');
+                    break;
+                case '4':
+                    e.preventDefault();
+                    switchTab('crisis');
+                    break;
+            }
+        }
+        
+        if (e.key === 'Enter' && document.getElementById('chat-input') === document.activeElement) {
+            sendMessage();
+        }
+    });
+
+    // Auto-refresh market data every 30 seconds
+    setInterval(function() {
+        // In production, this would fetch real market data
+        console.log('Refreshing market intelligence...');
+    }, 30000);
+
+    // Initialize active tab
+    switchTab('intelligence');
+</script>
+```
+
+</body>
+</html>
