@@ -21,7 +21,7 @@ import {
   STANDARD_RESOURCE_ROSTER,
   getSuccessMetrics,
   STANDARD_LEARNING_METRICS,
-} from '../../scripts/enhancedPlaybookData';
+} from '../../scripts/enhancedPlaybookData.js;
 import { playbooksData } from './data/playbooksData';
 
 // Strategic Category Assignment Logic
