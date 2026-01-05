@@ -158,9 +158,31 @@ export default function ROICalculator() {
             <h1 className="text-4xl font-bold text-white mb-4">
               Calculate Your Strategic Velocity ROI
             </h1>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-6">
               See how M Platform transforms coordination time from 72 hours to 12 minutes—and what that means for your bottom line.
             </p>
+            
+            {/* BAI Report Stat Highlight */}
+            <Card className="bg-gradient-to-r from-emerald-900/30 to-cyan-900/30 border-emerald-500/30 max-w-2xl mx-auto">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-center gap-8 flex-wrap">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-emerald-400">10.3%</div>
+                    <p className="text-sm text-slate-400">Revenue/Employee Growth</p>
+                    <p className="text-xs text-slate-500">Organizations that improved agility</p>
+                  </div>
+                  <div className="text-2xl text-slate-500">vs</div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-red-400">3.5%</div>
+                    <p className="text-sm text-slate-400">Revenue/Employee Growth</p>
+                    <p className="text-xs text-slate-500">Organizations that didn't improve</p>
+                  </div>
+                </div>
+                <p className="text-center text-sm text-slate-400 mt-4">
+                  Source: 2025 Business Agility Report (244 organizations)
+                </p>
+              </CardContent>
+            </Card>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">

@@ -36,12 +36,29 @@ import CinematicHero from "@/components/marketing/CinematicHero";
 
 const INTRO_SEEN_KEY = "m_platform_intro_seen";
 
+const ROTATING_TAGLINES = [
+  "Adapt at the Speed of Change.",
+  "Quarters, not years.",
+  "The playbook for pressure.",
+  "Prepared response beats reactive scramble.",
+  "166 playbooks. 12-minute activation.",
+  "Business agility, operationalized."
+];
+
 export default function Homepage() {
   const [, setLocation] = useLocation();
   const [showIntro, setShowIntro] = useState(() => {
     if (typeof window === "undefined") return true;
     return !localStorage.getItem(INTRO_SEEN_KEY);
   });
+  const [taglineIndex, setTaglineIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTaglineIndex((prev) => (prev + 1) % ROTATING_TAGLINES.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSkipIntro = () => {
     localStorage.setItem(INTRO_SEEN_KEY, "true");
@@ -339,7 +356,7 @@ export default function Homepage() {
             </Card>
           </div>
           
-          {/* The Closing Punch */}
+          {/* The Closing Punch with Rotating Tagline */}
           <Card className="p-8 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 border-2 border-slate-700 max-w-4xl mx-auto" data-testid="closing-punch">
             <div className="text-center space-y-4">
               <p className="text-3xl font-bold text-white">
@@ -351,8 +368,11 @@ export default function Homepage() {
                 and companies that become case studies of what not to do.
               </p>
               <div className="pt-4">
-                <p className="text-2xl font-bold text-emerald-400 mb-2">
-                  M Platform. Adapt at the Speed of Change.
+                <p 
+                  className="text-2xl font-bold text-emerald-400 mb-2 transition-opacity duration-500"
+                  data-testid="rotating-tagline"
+                >
+                  M Platform. {ROTATING_TAGLINES[taglineIndex]}
                 </p>
                 <p className="text-slate-400">
                   166 pre-staged playbooks • 9 strategic domains • Execution in days, not months
@@ -377,6 +397,95 @@ export default function Homepage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* 2025 Business Agility Report Section */}
+      <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900" data-testid="bai-report-section">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-amber-500/20 text-amber-400 border-amber-500/30" data-testid="badge-bai-report">
+              2025 Business Agility Report
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              The Industry Is Moving Slowly.
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">
+                You Don't Have To.
+              </span>
+            </h2>
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+              Data from 244 organizations reveals the gap between agile leaders and laggards.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {/* Time to Improve */}
+            <Card className="bg-slate-800/50 border-slate-700 text-center" data-testid="bai-stat-time">
+              <CardContent className="p-8">
+                <div className="text-5xl font-bold text-red-400 mb-2">3.8 Years</div>
+                <p className="text-slate-400 mb-4">Industry average to see just 10% agility improvement</p>
+                <div className="border-t border-slate-700 pt-4 mt-4">
+                  <div className="text-2xl font-bold text-emerald-400">Quarters</div>
+                  <p className="text-sm text-slate-500">With M Platform</p>
+                </div>
+              </CardContent>
+            </Card>
+            
+            {/* Revenue Growth */}
+            <Card className="bg-slate-800/50 border-slate-700 text-center" data-testid="bai-stat-revenue">
+              <CardContent className="p-8">
+                <div className="text-5xl font-bold text-emerald-400 mb-2">10.3%</div>
+                <p className="text-slate-400 mb-4">Revenue per employee growth for organizations that improved</p>
+                <div className="border-t border-slate-700 pt-4 mt-4">
+                  <div className="text-2xl font-bold text-red-400">3.5%</div>
+                  <p className="text-sm text-slate-500">Those that didn't improve</p>
+                </div>
+              </CardContent>
+            </Card>
+            
+            {/* Governance Gap */}
+            <Card className="bg-slate-800/50 border-slate-700 text-center" data-testid="bai-stat-governance">
+              <CardContent className="p-8">
+                <div className="text-5xl font-bold text-amber-400 mb-2">22%</div>
+                <p className="text-slate-400 mb-4">Have governance that actually supports speed</p>
+                <div className="border-t border-slate-700 pt-4 mt-4">
+                  <div className="text-2xl font-bold text-emerald-400">100%</div>
+                  <p className="text-sm text-slate-500">M Platform embeds governance into execution</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <Card className="bg-gradient-to-r from-amber-900/30 to-orange-900/30 border-amber-500/30" data-testid="bai-insight-card">
+            <CardContent className="p-8 text-center">
+              <p className="text-2xl font-bold text-white mb-4">
+                "Pressure exposes cracks in the system."
+              </p>
+              <p className="text-lg text-slate-300 mb-6">
+                The question isn't "how do we avoid pressure?" It's "how do we build systems that perform UNDER pressure?"
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Button 
+                  onClick={() => setLocation('/agility-assessment')}
+                  className="bg-amber-600 hover:bg-amber-700 text-white"
+                  data-testid="button-take-assessment"
+                >
+                  <Target className="mr-2 h-4 w-4" />
+                  Take the Agility Assessment
+                </Button>
+                <Button 
+                  onClick={() => setLocation('/roi-calculator')}
+                  variant="outline"
+                  className="border-amber-500/50 text-amber-400 hover:bg-amber-500/10"
+                  data-testid="button-calculate-roi"
+                >
+                  <TrendingUp className="mr-2 h-4 w-4" />
+                  Calculate Your ROI
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 

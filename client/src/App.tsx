@@ -114,6 +114,7 @@ import PilotProgram from "./pages/PilotProgram";
 import HowItWorks from "./pages/HowItWorks";
 import OneClickDemo from "./pages/OneClickDemo";
 import ROICalculator from "./pages/ROICalculator";
+import AgilityAssessment from "./pages/AgilityAssessment";
 import BoardExport from "./pages/BoardExport";
 import SandboxDemo from "./pages/SandboxDemo";
 import VideoLanding from "./pages/VideoLanding";
@@ -355,6 +356,7 @@ function Router() {
         <Route path="/audit-logging-center" component={AuditLoggingCenter} />
         <Route path="/calculator" component={ComprehensiveROIBreakdown} />
         <Route path="/roi-calculator" component={ROICalculator} />
+        <Route path="/agility-assessment" component={AgilityAssessment} />
         
         {/* Sales & Demo Tools */}
         <Route path="/live-demo" component={OneClickDemo} />
