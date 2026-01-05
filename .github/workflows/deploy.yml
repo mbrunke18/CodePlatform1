@@ -1,0 +1,66 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install || true
+          fi
+
+      - name: Build
+        run: |
+          if npm run | grep -q " build"; then
+            npm run build
+          else
+            echo "No build script found, skipping build step."
+          fi
+
+      - name: Prepare publish directory
+        run: |
+          # choose the build output directory (common options)
+          PUBLISH_DIR=""
+          if [ -d build ]; then PUBLISH_DIR=build; fi
+          if [ -d dist ]; then PUBLISH_DIR=dist; fi
+          if [ -d out ]; then PUBLISH_DIR=out; fi
+          if [ -d public ]; then PUBLISH_DIR=public; fi
+          echo "Using publish dir: $PUBLISH_DIR"
+          mkdir -p publish
+          if [ -n "$PUBLISH_DIR" ]; then cp -a "$PUBLISH_DIR/." publish/ || true; fi
+          # SPA fallback for client-side routing
+          if [ -f publish/index.html ]; then cp publish/index.html publish/404.html || true; fi
+          ls -la publish || true
+
+      - name: Upload artifact to GitHub Pages
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: publish
+
+  deploy:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
