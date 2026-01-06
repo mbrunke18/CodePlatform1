@@ -8,12 +8,15 @@ import memoize from "memoizee";
 import connectPg from "connect-pg-simple";
 import { storage } from "./storage";
 
-if (!process.env.REPLIT_DOMAINS) {
-  throw new Error("Environment variable REPLIT_DOMAINS not provided");
-}
+// Check if Replit auth is configured
+const isReplitAuthEnabled = !!(
+  process.env.REPLIT_DOMAINS &&
+  process.env.REPL_ID
+);
 
 const getOidcConfig = memoize(
   async () => {
+    if (!isReplitAuthEnabled) return null;
     return await client.discovery(
       new URL(process.env.ISSUER_URL ?? "https://replit.com/oidc"),
       process.env.REPL_ID!
@@ -27,18 +30,18 @@ export function getSession() {
   const pgStore = connectPg(session);
   const sessionStore = new pgStore({
     conString: process.env.DATABASE_URL,
-    createTableIfMissing: false,
+    createTableIfMissing: true,
     ttl: sessionTtl,
-    tableName: "sessions",
+    tableName: "session",
   });
   return session({
-    secret: process.env.SESSION_SECRET!,
+    secret: process.env.SESSION_SECRET || "m-platform-secret-key-change-in-production",
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      secure: true,
+      secure: process.env.NODE_ENV === "production",
       maxAge: sessionTtl,
     },
   });
@@ -54,9 +57,7 @@ function updateUserSession(
   user.expires_at = user.claims?.exp;
 }
 
-async function upsertUser(
-  claims: any,
-) {
+async function upsertUser(claims: any) {
   await storage.upsertUser({
     id: claims["sub"],
     email: claims["email"],
@@ -72,7 +73,29 @@ export async function setupAuth(app: Express) {
   app.use(passport.initialize());
   app.use(passport.session());
 
+  // If Replit auth is not configured, skip OIDC setup
+  if (!isReplitAuthEnabled) {
+    console.log("⚠️ Replit auth not configured - running in demo mode");
+    
+    passport.serializeUser((user: Express.User, cb) => cb(null, user));
+    passport.deserializeUser((user: Express.User, cb) => cb(null, user));
+    
+    // Provide stub routes
+    app.get("/api/login", (req, res) => {
+      res.json({ message: "Auth not configured - running in demo mode" });
+    });
+    app.get("/api/callback", (req, res) => {
+      res.redirect("/");
+    });
+    app.get("/api/logout", (req, res) => {
+      res.redirect("/");
+    });
+    
+    return;
+  }
+
   const config = await getOidcConfig();
+  if (!config) return;
 
   const verify: VerifyFunction = async (
     tokens: client.TokenEndpointResponse & client.TokenEndpointResponseHelpers,
@@ -84,8 +107,7 @@ export async function setupAuth(app: Express) {
     verified(null, user);
   };
 
-  for (const domain of process.env
-    .REPLIT_DOMAINS!.split(",")) {
+  for (const domain of process.env.REPLIT_DOMAINS!.split(",")) {
     const strategy = new Strategy(
       {
         name: `replitauth:${domain}`,
@@ -93,7 +115,7 @@ export async function setupAuth(app: Express) {
         scope: "openid email profile offline_access",
         callbackURL: `https://${domain}/api/callback`,
       },
-      verify,
+      verify
     );
     passport.use(strategy);
   }
@@ -128,6 +150,11 @@ export async function setupAuth(app: Express) {
 }
 
 export const isAuthenticated: RequestHandler = async (req, res, next) => {
+  // If auth is not enabled, allow all requests
+  if (!isReplitAuthEnabled) {
+    return next();
+  }
+
   const user = req.user as any;
 
   if (!req.isAuthenticated() || !user.expires_at) {
@@ -147,6 +174,7 @@ export const isAuthenticated: RequestHandler = async (req, res, next) => {
 
   try {
     const config = await getOidcConfig();
+    if (!config) return next();
     const tokenResponse = await client.refreshTokenGrant(config, refreshToken);
     updateUserSession(user, tokenResponse);
     return next();
@@ -158,15 +186,20 @@ export const isAuthenticated: RequestHandler = async (req, res, next) => {
 
 export const hasPermission = (action: string) => {
   return async (req: any, res: any, next: any) => {
+    // If auth is not enabled, allow all requests
+    if (!isReplitAuthEnabled) {
+      return next();
+    }
+
     if (!req.isAuthenticated()) {
-      return res.status(401).json({ message: 'Unauthorized' });
+      return res.status(401).json({ message: "Unauthorized" });
     }
 
     const userId = req.user.claims.sub;
     const hasAccess = await storage.hasPermission(userId, action);
-    
+
     if (!hasAccess) {
-      return res.status(403).json({ message: 'Forbidden: You do not have permission.' });
+      return res.status(403).json({ message: "Forbidden: You do not have permission." });
     }
 
     return next();
