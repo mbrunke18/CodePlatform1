@@ -14,6 +14,8 @@ import { playbookLibrary, executiveTriggers } from "@shared/schema";
 import { count, eq, sql } from "drizzle-orm";
 import pino from "pino";
 import pinoHttp from "pino-http";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
 
 // Configure production-grade logger with sensitive data redaction
 const logger = pino({
@@ -83,6 +85,52 @@ import { rawBodyParser } from "./middleware/rawBodyParser";
 // CRITICAL: Raw body parser must come BEFORE express.json() for webhook signature verification
 app.use(rawBodyParser);
 
+// Production Security: Helmet for secure HTTP headers
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com"],
+      imgSrc: ["'self'", "data:", "https:", "blob:"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://replit.com"],
+      connectSrc: ["'self'", "https:", "wss:"],
+      frameSrc: ["'self'"],
+      objectSrc: ["'none'"],
+      upgradeInsecureRequests: [],
+    },
+  },
+  crossOriginEmbedderPolicy: false,
+  crossOriginResourcePolicy: { policy: "cross-origin" },
+}));
+
+// Production Security: API Rate Limiting
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 1000, // Limit each IP to 1000 requests per 15 minutes
+  message: { error: 'Too many requests, please try again later.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+  skip: (req) => {
+    // Skip rate limiting for health checks
+    return req.path === '/health' || req.path === '/_health';
+  },
+});
+
+// Stricter rate limit for authentication endpoints
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 20, // Limit each IP to 20 auth attempts per 15 minutes
+  message: { error: 'Too many authentication attempts, please try again later.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// Apply rate limiters
+app.use('/api/', apiLimiter);
+app.use('/api/login', authLimiter);
+app.use('/api/callback', authLimiter);
+
 // Security: Add request size limits for enterprise security
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: false }));
@@ -91,11 +139,20 @@ app.use(express.urlencoded({ limit: '10mb', extended: false }));
 app.use(httpLogger);
 app.use(auditLogger as any);
 
-// CORS middleware for development
+// CORS middleware - configured for production with allowed origins
+const allowedOrigins = process.env.REPLIT_DOMAINS 
+  ? process.env.REPLIT_DOMAINS.split(',').map(d => `https://${d}`)
+  : ['http://localhost:5000'];
+
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
+  const origin = req.headers.origin;
+  // Allow requests from allowed origins or same-origin requests (no origin header)
+  if (!origin || allowedOrigins.some(allowed => origin.startsWith(allowed.replace('https://', 'https://').split('.')[0]))) {
+    res.header('Access-Control-Allow-Origin', origin || '*');
+  }
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+  res.header('Access-Control-Allow-Credentials', 'true');
   if (req.method === 'OPTIONS') {
     res.sendStatus(200);
   } else {
