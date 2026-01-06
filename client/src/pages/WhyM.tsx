@@ -453,7 +453,7 @@ export default function WhyM() {
             <CardContent className="p-8 text-center">
               <AlertTriangle className="h-12 w-12 text-red-500 mx-auto mb-4" />
               <blockquote className="text-xl md:text-2xl font-medium text-foreground mb-4">
-                "Drift doesn't look like failure. It looks like work... until the quarter closes."
+                "Drift doesn't look like failure. It looks like productivity—until results come in."
               </blockquote>
               <p className="text-muted-foreground max-w-2xl mx-auto">
                 Without Strategic Architecture, teams stay incredibly busy—burning through budgets and talent—yet don't move the needle. "Busyness" becomes a false proxy for progress.
