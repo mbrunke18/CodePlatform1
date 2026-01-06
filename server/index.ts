@@ -93,8 +93,8 @@ app.use(helmet({
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
       imgSrc: ["'self'", "data:", "https:", "blob:"],
-      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://replit.com"],
-      connectSrc: ["'self'", "https:", "wss:"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://replit.com", "https://www.googletagmanager.com", "https://www.google-analytics.com"],
+      connectSrc: ["'self'", "https:", "wss:", "https://www.google-analytics.com", "https://analytics.google.com"],
       frameSrc: ["'self'"],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
@@ -142,14 +142,21 @@ app.use(auditLogger as any);
 // CORS middleware - configured for production with allowed origins
 const allowedOrigins = process.env.REPLIT_DOMAINS 
   ? process.env.REPLIT_DOMAINS.split(',').map(d => `https://${d}`)
-  : ['http://localhost:5000'];
+  : ['http://localhost:5000', 'http://0.0.0.0:5000'];
 
 app.use((req, res, next) => {
   const origin = req.headers.origin;
-  // Allow requests from allowed origins or same-origin requests (no origin header)
-  if (!origin || allowedOrigins.some(allowed => origin.startsWith(allowed.replace('https://', 'https://').split('.')[0]))) {
-    res.header('Access-Control-Allow-Origin', origin || '*');
+  
+  // Allow same-origin requests (no origin header) or exact match from allowed list
+  if (!origin) {
+    // Same-origin request, allow it
+    res.header('Access-Control-Allow-Origin', '*');
+  } else if (allowedOrigins.includes(origin)) {
+    // Exact match from allowed origins
+    res.header('Access-Control-Allow-Origin', origin);
   }
+  // If origin doesn't match, don't set CORS headers (request will be blocked)
+  
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
   res.header('Access-Control-Allow-Credentials', 'true');

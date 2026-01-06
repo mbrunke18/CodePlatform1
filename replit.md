@@ -81,3 +81,51 @@ M operates on the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE), facilitat
 - **Database Services**: Neon PostgreSQL
 - **Authentication**: Replit OIDC
 - **Enterprise Integrations**: Salesforce, HubSpot, ServiceNow, Jira, Slack, Microsoft Teams, Google Workspace, Outlook/Exchange, AWS CloudWatch, Workday, Okta, Microsoft Active Directory
+
+## Production Readiness (Jan 2026)
+
+### Security Measures Implemented
+- **Helmet Security Headers**: CSP, XSS protection, frame guards, HSTS
+- **API Rate Limiting**: 1000 requests/15min for general API, 20 requests/15min for auth endpoints
+- **CORS Configuration**: Restricted to allowed Replit domains in production
+- **Request Size Limits**: 10MB max payload
+- **Sensitive Data Redaction**: Passwords, emails, API keys, tokens redacted from logs
+- **Session Security**: HTTP-only, secure cookies with PostgreSQL session store
+
+### Deployment Configuration
+- **Deployment Type**: Autoscale (recommended for variable traffic)
+- **Health Checks**: `/health` and `/_health` endpoints return 503 until seeding complete
+- **Database**: Separate development and production databases (Replit-managed)
+
+### Environment Variables Required
+**Secrets (already configured):**
+- `SESSION_SECRET` - Express session encryption
+- `DATABASE_URL` - PostgreSQL connection string
+- `AI_INTEGRATIONS_OPENAI_API_KEY` - OpenAI API access
+
+**Optional for Analytics:**
+- `VITE_GA_MEASUREMENT_ID` - Google Analytics 4 tracking ID (format: G-XXXXXXXXXX)
+
+### Database Seeding Strategy
+The application auto-seeds on startup:
+1. **Playbook Library**: 166 pre-built playbooks across 9 domains (from `server/seeds/playbookLibrarySeed.ts`)
+2. **Executive Triggers**: Sample triggers for demo purposes (from `server/seeds/triggersSeed.ts`)
+3. **Demo Scenarios**: Interactive demo data (from `server/seeds/demoScenariosSeed.ts`)
+
+For production:
+- Seeding runs automatically on first deployment
+- Health check returns 503 until seeding completes (prevents empty database traffic)
+- To reset, clear database and redeploy
+
+### Custom Domain Setup
+1. Purchase domain from registrar (e.g., Namecheap, GoDaddy, Cloudflare)
+2. In Replit: Publishing → Settings → Custom Domain
+3. Add DNS records as instructed:
+   - CNAME record pointing to your `.replit.app` domain
+   - Or A/AAAA records as provided
+4. Wait for SSL certificate provisioning (automatic)
+
+### Monitoring
+- **Replit Dashboard**: Publishing → Monitoring for metrics and logs
+- **Application Logs**: Structured JSON logging with Pino
+- **Audit Trail**: All API requests logged with timing and response codes
