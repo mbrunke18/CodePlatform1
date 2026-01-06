@@ -170,6 +170,182 @@ export default function WhyM() {
         </div>
       </section>
 
+      {/* The Strategic Architecture Gap */}
+      <section className="py-16 px-6 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-blue-600 text-white border-0">
+              <Building2 className="w-4 h-4 mr-2" />
+              The Problem
+            </Badge>
+            <h2 className="text-3xl font-bold text-foreground mb-4" data-testid="heading-strategic-architecture">
+              Most Enterprises Confuse Strategy with Strategic Architecture
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              A strategy is a statement. Strategic Architecture is the system that keeps strategy alive when reality hits.
+            </p>
+          </div>
+
+          {/* The Drift Insight */}
+          <Card className="bg-gradient-to-r from-red-500/10 to-orange-500/10 border-red-500/30 mb-12">
+            <CardContent className="p-8 text-center">
+              <AlertTriangle className="h-12 w-12 text-red-500 mx-auto mb-4" />
+              <blockquote className="text-xl md:text-2xl font-medium text-foreground mb-4">
+                "Drift doesn't look like failure. It looks like work... until the quarter closes."
+              </blockquote>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Without Strategic Architecture, teams stay incredibly busy—burning through budgets and talent—yet don't move the needle. "Busyness" becomes a false proxy for progress.
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Comparison Table */}
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <Card className="border-red-500/30 bg-red-50/50 dark:bg-red-950/20">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center">
+                    <XCircle className="h-5 w-5 text-red-500" />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground">Having a Strategy</h3>
+                </div>
+                <p className="text-sm text-red-600 dark:text-red-400 font-medium mb-4">Static — The "Deck"</p>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-2 text-muted-foreground">
+                    <XCircle className="h-4 w-4 text-red-400 mt-1 shrink-0" />
+                    <span>PowerPoint vision, lives in executive decks</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-muted-foreground">
+                    <XCircle className="h-4 w-4 text-red-400 mt-1 shrink-0" />
+                    <span>Annual planning cycles with minimal learning</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-muted-foreground">
+                    <XCircle className="h-4 w-4 text-red-400 mt-1 shrink-0" />
+                    <span>Top-down communication, teams guess at priorities</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-muted-foreground">
+                    <XCircle className="h-4 w-4 text-red-400 mt-1 shrink-0" />
+                    <span>Success = "executed the plan" (fixed budgets)</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-muted-foreground">
+                    <XCircle className="h-4 w-4 text-red-400 mt-1 shrink-0" />
+                    <span>Change seen as "pivot" or "failure"</span>
+                  </li>
+                </ul>
+                <div className="mt-6 p-4 bg-red-100 dark:bg-red-900/30 rounded-lg">
+                  <p className="text-sm font-medium text-red-700 dark:text-red-300">
+                    You can do all this and still lose the market. The market doesn't care about your plan—it cares about your learning speed.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-emerald-500/30 bg-emerald-50/50 dark:bg-emerald-950/20">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-500" />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground">Strategic Architecture</h3>
+                </div>
+                <p className="text-sm text-emerald-600 dark:text-emerald-400 font-medium mb-4">Dynamic — The "System" (M Platform)</p>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-2 text-muted-foreground">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-500 mt-1 shrink-0" />
+                    <span>Alignment systems (daily work tied to outcomes)</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-muted-foreground">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-500 mt-1 shrink-0" />
+                    <span>Evidence-based direction (data beats politics)</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-muted-foreground">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-500 mt-1 shrink-0" />
+                    <span>Learning loops (signals → decisions → capacity moves)</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-muted-foreground">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-500 mt-1 shrink-0" />
+                    <span>Success = evolving toward optimal outcomes</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-muted-foreground">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-500 mt-1 shrink-0" />
+                    <span>Weekly/bi-weekly cadence with dynamic capacity</span>
+                  </li>
+                </ul>
+                <div className="mt-6 p-4 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg">
+                  <p className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
+                    Strategic Architecture isn't "better strategy." It's the operating system that makes strategy smarter over time.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* What People Whisper */}
+          <div className="text-center mb-8">
+            <h3 className="text-xl font-bold text-foreground mb-4">
+              Strategic Architecture Answers What Your Best People Whisper
+            </h3>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            <Card className="bg-white dark:bg-slate-800 border-blue-500/30">
+              <CardContent className="p-4 text-center">
+                <Lightbulb className="h-6 w-6 text-blue-500 mx-auto mb-2" />
+                <p className="text-sm font-medium text-foreground">"Why are we doing this?"</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-white dark:bg-slate-800 border-emerald-500/30">
+              <CardContent className="p-4 text-center">
+                <Target className="h-6 w-6 text-emerald-500 mx-auto mb-2" />
+                <p className="text-sm font-medium text-foreground">"What wins?"</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-white dark:bg-slate-800 border-amber-500/30">
+              <CardContent className="p-4 text-center">
+                <XCircle className="h-6 w-6 text-amber-500 mx-auto mb-2" />
+                <p className="text-sm font-medium text-foreground">"What stops?"</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-white dark:bg-slate-800 border-purple-500/30">
+              <CardContent className="p-4 text-center">
+                <Brain className="h-6 w-6 text-purple-500 mx-auto mb-2" />
+                <p className="text-sm font-medium text-foreground">"What changes with evidence?"</p>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Board-Level Tell */}
+          <Card className="border-2 border-primary/30 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-900">
+            <CardContent className="p-8">
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                <div className="shrink-0">
+                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                    <BarChart3 className="h-10 w-10 text-white" />
+                  </div>
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="text-xl font-bold text-foreground mb-2">The Board-Level Tell</h3>
+                  <p className="text-lg text-muted-foreground mb-4">
+                    If you can't answer <span className="font-bold text-foreground">"what are we stopping this month?"</span> you're not governing strategy. You're narrating it.
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    M's Stop Rules ensure that when a new bet enters, something exits. Always. That's how you move from narrating strategy to governing it.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="flex justify-center mt-8">
+            <Link href="/demo-selector">
+              <Button size="lg" className="bg-primary text-white hover:bg-primary/90" data-testid="button-strategic-architecture-demo">
+                <Play className="mr-2 h-5 w-5" />
+                See Strategic Architecture in Action
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Why Now - Market Timing with Icons & Citations */}
       <section className="py-16 px-6 bg-gradient-to-br from-amber-500/5 to-orange-500/5">
         <div className="max-w-5xl mx-auto">
