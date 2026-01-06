@@ -36,9 +36,9 @@ COPY package*.json ./
 # Install production dependencies only
 RUN npm ci
 
-# Copy built application from builder
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/dist/public ./dist/public
+COPY --from=builder /app/drizzle.config.ts ./drizzle.config.ts
+COPY --from=builder /app/shared ./shared
+COPY --from=builder /app/node_modules ./node_modules
 # COPY --from=builder /app/public ./public
 
 # Create non-root user for security
@@ -58,4 +58,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
 # Start application
-CMD ["node", "dist/index.js"]
+CMD ["sh", "-c", "npx drizzle-kit push && node dist/index.js"]
