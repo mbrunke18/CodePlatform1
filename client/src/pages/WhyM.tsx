@@ -443,8 +443,8 @@ export default function WhyM() {
               Most Enterprises Confuse Strategy with Strategic Architecture
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              A strategy is a statement. Strategic Architecture is the system that keeps strategy alive when reality hits. 
-              M Platform is that system—166 pre-built playbooks, the IDEA Framework, and 12-minute activation.
+              A strategy is a statement. Strategic Architecture is the operating system that keeps strategy alive when reality hits. 
+              M is that system—166 pre-staged playbooks across 9 strategic domains, coordinated response in 12 minutes vs. the 72-hour industry average.
             </p>
           </div>
 
@@ -510,32 +510,28 @@ export default function WhyM() {
                   </div>
                   <h3 className="text-xl font-bold text-foreground">Strategic Architecture</h3>
                 </div>
-                <p className="text-sm text-emerald-600 dark:text-emerald-400 font-medium mb-4">Dynamic — The "System" (M Platform)</p>
+                <p className="text-sm text-emerald-600 dark:text-emerald-400 font-medium mb-4">Dynamic — The Strategic Execution Operating System (M)</p>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2 text-muted-foreground">
                     <CheckCircle2 className="h-4 w-4 text-emerald-500 mt-1 shrink-0" />
-                    <span><strong>IDENTIFY:</strong> 166 playbooks with pre-staged stakeholders and tasks</span>
+                    <span><strong>IDENTIFY:</strong> Build your playbook library. Pre-stage responses. Know who does what before anything happens.</span>
                   </li>
                   <li className="flex items-start gap-2 text-muted-foreground">
                     <CheckCircle2 className="h-4 w-4 text-emerald-500 mt-1 shrink-0" />
-                    <span><strong>DETECT:</strong> AI pattern matching triggers the right playbook</span>
+                    <span><strong>DETECT:</strong> Monitor signals. AI matches patterns to playbooks and triggers execution.</span>
                   </li>
                   <li className="flex items-start gap-2 text-muted-foreground">
                     <CheckCircle2 className="h-4 w-4 text-emerald-500 mt-1 shrink-0" />
-                    <span><strong>EXECUTE:</strong> 12-minute activation with coordinated response</span>
+                    <span><strong>EXECUTE:</strong> Coordinate response. Decision in 12 minutes. Everyone aligned, nothing lost in translation.</span>
                   </li>
                   <li className="flex items-start gap-2 text-muted-foreground">
                     <CheckCircle2 className="h-4 w-4 text-emerald-500 mt-1 shrink-0" />
-                    <span><strong>ADVANCE:</strong> AI captures lessons and refines playbooks</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-muted-foreground">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-500 mt-1 shrink-0" />
-                    <span>Evidence-based direction (data beats politics)</span>
+                    <span><strong>ADVANCE:</strong> Capture learning. Every execution makes you stronger. Get smarter every time.</span>
                   </li>
                 </ul>
                 <div className="mt-6 p-4 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg">
                   <p className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
-                    M Platform is the Strategic Architecture your organization is missing—the operating system that makes strategy smarter with every execution.
+                    M is the Strategic Architecture your organization is missing—adapt at the speed of change.
                   </p>
                 </div>
               </CardContent>
@@ -590,7 +586,7 @@ export default function WhyM() {
                     If you can't answer <span className="font-bold text-foreground">"what are we stopping this month?"</span> you're not governing strategy. You're narrating it.
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    M Platform's ADVANCE phase captures what worked, what didn't, and automatically refines your playbook library. Every execution makes your organization smarter. That's Strategic Architecture in action.
+                    M's ADVANCE phase captures what worked, what didn't, and automatically refines your playbook library. Institutional knowledge compounds—it doesn't walk out the door. That's Strategic Architecture in action.
                   </p>
                 </div>
               </div>
