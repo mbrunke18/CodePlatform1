@@ -129,6 +129,11 @@ export const PUBLIC_ROUTES = [
   '/api/pilot-monitoring/pilot-metrics',
   '/api/pilot-monitoring/recent-activity',
   
+  // Pilot Demo - public demo execution for prospects
+  '/api/pilot/execute',
+  '/api/pilot/scenarios',
+  '/api/pilot/playbooks',
+  
   // Configuration - needed for CustomerContext and landing page
   '/api/config/departments',
   '/api/config/success-metrics',
