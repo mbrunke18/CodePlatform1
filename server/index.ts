@@ -144,6 +144,18 @@ const allowedOrigins = process.env.REPLIT_DOMAINS
   ? process.env.REPLIT_DOMAINS.split(',').map(d => `https://${d}`)
   : ['http://localhost:5000', 'http://0.0.0.0:5000'];
 
+// Helper to check if origin is a valid Replit domain
+const isReplitDomain = (origin: string): boolean => {
+  try {
+    const url = new URL(origin);
+    return url.hostname.endsWith('.replit.app') || 
+           url.hostname.endsWith('.replit.dev') ||
+           url.hostname.endsWith('.repl.co');
+  } catch {
+    return false;
+  }
+};
+
 app.use((req, res, next) => {
   const origin = req.headers.origin;
   
@@ -151,8 +163,8 @@ app.use((req, res, next) => {
   if (!origin) {
     // Same-origin request, allow it
     res.header('Access-Control-Allow-Origin', '*');
-  } else if (allowedOrigins.includes(origin)) {
-    // Exact match from allowed origins
+  } else if (allowedOrigins.includes(origin) || isReplitDomain(origin)) {
+    // Exact match from allowed origins OR valid Replit domain
     res.header('Access-Control-Allow-Origin', origin);
   }
   // If origin doesn't match, don't set CORS headers (request will be blocked)
