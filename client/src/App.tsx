@@ -224,6 +224,17 @@ function RedirectToTriggersManagement() {
   return null;
 }
 
+// Redirect command-center to Mission Control (Executive War Room)
+function RedirectToMissionControl() {
+  const [, setLocation] = useLocation();
+  
+  useEffect(() => {
+    setLocation('/mission-control');
+  }, [setLocation]);
+  
+  return null;
+}
+
 function Router() {
   const [location] = useLocation();
   
@@ -247,7 +258,7 @@ function Router() {
         {/* Strategic Operations */}
         <Route path="/strategic-monitoring" component={CrisisResponseCenter} />
         <Route path="/strategic-monitoring/:id" component={CrisisDetail} />
-        <Route path="/command-center" component={ExecutiveWarRoomPage} />
+        <Route path="/command-center" component={RedirectToMissionControl} />
         <Route path="/collaboration" component={RealTimeCollaboration} />
         <Route path="/playbook-activation/:triggerId/:playbookId" component={PlaybookActivationConsole} />
         
@@ -298,7 +309,7 @@ function Router() {
         {/* Dynamic Strategy - Future Readiness (redirected to Executive Dashboard) */}
         <Route path="/future-readiness" component={RedirectToExecutiveDashboard} />
         <Route path="/readiness" component={RedirectToExecutiveDashboard} />
-        <Route path="/command-center-dynamic" component={CommandCenter} />
+        <Route path="/command-center-dynamic" component={RedirectToMissionControl} />
         <Route path="/scenario-library" component={RedirectToPlaybookLibrary} />
         <Route path="/scenario-gallery" component={RedirectToPlaybookLibrary} />
         <Route path="/comprehensive-scenarios" component={RedirectToPlaybookLibrary} />
