@@ -27,11 +27,15 @@ import {
   Network,
   Activity,
   Check,
-  X
+  X,
+  SkipForward
 } from "lucide-react";
 import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
+import CinematicHero from "@/components/marketing/CinematicHero";
+
+const INTRO_SEEN_KEY = "m_platform_intro_seen";
 
 const ROTATING_TAGLINES = [
   "Adapt at the Speed of Change.",
@@ -44,6 +48,10 @@ const ROTATING_TAGLINES = [
 
 export default function Homepage() {
   const [, setLocation] = useLocation();
+  const [showIntro, setShowIntro] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return !localStorage.getItem(INTRO_SEEN_KEY);
+  });
   const [taglineIndex, setTaglineIndex] = useState(0);
 
   useEffect(() => {
@@ -52,6 +60,32 @@ export default function Homepage() {
     }, 4000);
     return () => clearInterval(interval);
   }, []);
+
+  const handleSkipIntro = () => {
+    localStorage.setItem(INTRO_SEEN_KEY, "true");
+    setShowIntro(false);
+  };
+
+  if (showIntro) {
+    return (
+      <div className="relative min-h-screen bg-slate-950" data-testid="cinematic-intro">
+        <StandardNav />
+        <CinematicHero onSkip={handleSkipIntro} />
+        <div className="fixed bottom-8 right-8 z-50">
+          <Button
+            variant="ghost"
+            size="lg"
+            onClick={handleSkipIntro}
+            className="text-slate-400 hover:text-white hover:bg-slate-800/50 gap-2"
+            data-testid="button-skip-intro"
+          >
+            <SkipForward className="h-5 w-5" />
+            Skip to Site
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   const phases = [
     {

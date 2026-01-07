@@ -35,11 +35,11 @@ M operates on the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE), facilitat
 - **Design System:** Established with 60+ utility classes.
 
 **Homepage Executive-Readiness (Jan 2026):**
-- **Immediate Value Proposition:** No intro gate - visitors see "12 minutes vs 72 hours" problem→solution instantly
+- **Cinematic Video Intro:** First-time visitors see an immersive cinematic experience that builds excitement for the product value before revealing the full homepage
 - **AI Era Positioning:** "Your Employees Have AI. Your Organization Doesn't." with visual cards showing Individual Work (SOLVED), Coordination (BROKEN), With M (NOW SOLVED)
 - **M at a Glance Section:** Executive summary with 4 capabilities (Monitor, Activate, Orchestrate, Learn) and 4 key metrics (340X faster, 12 min, 166 playbooks, 10.3% revenue impact)
 - **Research-backed Trust Bar:** IBM/Ponemon ($4.88M breach cost), McKinsey (340X faster), BAI 2025 (10.3% growth) citations
-- **30-Second Comprehension Goal:** Above-the-fold content designed for executives to understand value proposition immediately
+- **Skip Option:** Users can skip the intro via button in bottom-right corner
 
 **Technical Implementations & Feature Specifications:**
 - **IDEA Framework Phases:**
