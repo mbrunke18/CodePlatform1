@@ -21,10 +21,10 @@ export default function StandardNav() {
   };
 
   const navLinks = [
-    { label: "Mission Control", path: "/mission-control", featured: true },
     { label: "Why M", path: "/why-m" },
     { label: "How It Works", path: "/how-it-works" },
     { label: "Playbooks", path: "/playbooks" },
+    { label: "Mission Control", path: "/mission-control", featured: true },
     { label: "Pricing", path: "/pricing" },
   ];
 
