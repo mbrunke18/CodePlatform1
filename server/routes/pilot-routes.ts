@@ -1,8 +1,49 @@
 import { Router } from 'express';
-import nodemailer from 'nodemailer';
+import sgMail from '@sendgrid/mail';
 import { z } from 'zod';
 
 const router = Router();
+
+// SendGrid integration via Replit Connectors
+async function getSendGridClient() {
+  const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
+  const xReplitToken = process.env.REPL_IDENTITY 
+    ? 'repl ' + process.env.REPL_IDENTITY 
+    : process.env.WEB_REPL_RENEWAL 
+    ? 'depl ' + process.env.WEB_REPL_RENEWAL 
+    : null;
+
+  if (!xReplitToken || !hostname) {
+    return null;
+  }
+
+  try {
+    const response = await fetch(
+      'https://' + hostname + '/api/v2/connection?include_secrets=true&connector_names=sendgrid',
+      {
+        headers: {
+          'Accept': 'application/json',
+          'X_REPLIT_TOKEN': xReplitToken
+        }
+      }
+    );
+    const data = await response.json();
+    const connectionSettings = data.items?.[0];
+
+    if (!connectionSettings || !connectionSettings.settings?.api_key || !connectionSettings.settings?.from_email) {
+      return null;
+    }
+    
+    sgMail.setApiKey(connectionSettings.settings.api_key);
+    return {
+      client: sgMail,
+      fromEmail: connectionSettings.settings.from_email
+    };
+  } catch (error) {
+    console.error('Failed to get SendGrid client:', error);
+    return null;
+  }
+}
 
 const TRIGGER_SCENARIOS: Record<string, { name: string; signal: string; type: string }> = {
   competitor_launch: {
@@ -258,31 +299,24 @@ router.post('/execute', async (req, res) => {
 
     const executionId = `PILOT-${Date.now().toString(36).toUpperCase()}`;
 
-    const smtpHost = process.env.SMTP_HOST;
-    const smtpUser = process.env.SMTP_USER;
-    const smtpPass = process.env.SMTP_PASSWORD || process.env.SMTP_PASS;
-
-    if (smtpHost && smtpUser && smtpPass) {
-      const transporter = nodemailer.createTransport({
-        host: smtpHost,
-        port: parseInt(process.env.SMTP_PORT || '587'),
-        secure: process.env.SMTP_SECURE === 'true',
-        auth: {
-          user: smtpUser,
-          pass: smtpPass,
-        },
-      });
-
-      await transporter.sendMail({
-        from: process.env.SMTP_FROM || '"M Platform" <alerts@m-platform.ai>',
-        to: email,
-        subject: `⚡ PLAYBOOK ACTIVATED: ${trigger.name}`,
-        html: generateEmailHTML(trigger, playbook, executionId),
-      });
-
-      console.log(`✓ Pilot email sent to ${email}`);
+    // Try SendGrid first (Replit integration)
+    const sendgrid = await getSendGridClient();
+    
+    if (sendgrid) {
+      try {
+        await sendgrid.client.send({
+          to: email,
+          from: sendgrid.fromEmail,
+          subject: `⚡ PLAYBOOK ACTIVATED: ${trigger.name}`,
+          html: generateEmailHTML(trigger, playbook, executionId),
+        });
+        console.log(`✓ Pilot email sent via SendGrid to ${email}`);
+      } catch (emailError: any) {
+        console.error('SendGrid email error:', emailError);
+        // Don't fail the whole request if email fails
+      }
     } else {
-      console.log(`[PILOT DEMO - SIMULATED EMAIL]`);
+      console.log(`[PILOT DEMO - EMAIL SIMULATED (SendGrid not configured)]`);
       console.log(`To: ${email}`);
       console.log(`Subject: ⚡ PLAYBOOK ACTIVATED: ${trigger.name}`);
       console.log(`Trigger: ${trigger.signal}`);
