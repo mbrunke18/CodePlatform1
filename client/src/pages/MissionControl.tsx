@@ -575,12 +575,12 @@ export default function MissionControl() {
                     <TabsTrigger value="defense" className="text-red-600 data-[state=active]:bg-red-50 dark:data-[state=active]:bg-red-900/30">
                       DEFENSE (56)
                     </TabsTrigger>
-                    <TabsTrigger value="special-teams" className="text-purple-600 data-[state=active]:bg-purple-50 dark:data-[state=active]:bg-purple-900/30">
+                    <TabsTrigger value="special_teams" className="text-purple-600 data-[state=active]:bg-purple-50 dark:data-[state=active]:bg-purple-900/30">
                       SPECIAL TEAMS (52)
                     </TabsTrigger>
                   </TabsList>
                   
-                  {['offense', 'defense', 'special-teams'].map(category => (
+                  {['offense', 'defense', 'special_teams'].map(category => (
                     <TabsContent key={category} value={category} className="mt-0">
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                         {playbookSummary
