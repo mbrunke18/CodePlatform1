@@ -21,6 +21,7 @@ export default function StandardNav() {
   };
 
   const navLinks = [
+    { label: "Mission Control", path: "/mission-control", featured: true },
     { label: "Why M", path: "/why-m" },
     { label: "How It Works", path: "/how-it-works" },
     { label: "Playbooks", path: "/playbooks" },
@@ -59,9 +60,11 @@ export default function StandardNav() {
                 key={link.path}
                 onClick={() => navigateTo(link.path)}
                 className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                  isActivePath(link.path) 
-                    ? 'text-white bg-slate-800' 
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+                  (link as any).featured
+                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700'
+                    : isActivePath(link.path) 
+                      ? 'text-white bg-slate-800' 
+                      : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
                 }`}
                 data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
               >
@@ -178,9 +181,11 @@ export default function StandardNav() {
                   key={link.path}
                   onClick={() => navigateTo(link.path)}
                   className={`text-left py-3 px-4 rounded-lg transition-colors ${
-                    isActivePath(link.path)
-                      ? 'text-white bg-slate-800'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    (link as any).featured
+                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium'
+                      : isActivePath(link.path)
+                        ? 'text-white bg-slate-800'
+                        : 'text-slate-300 hover:text-white hover:bg-slate-800'
                   }`}
                   data-testid={`nav-mobile-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
                 >

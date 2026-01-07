@@ -103,6 +103,7 @@ import PlaybookReadinessAudit from "./pages/PlaybookReadinessAudit";
 import ExecutiveSimulationDemo from "./pages/ExecutiveSimulationDemo";
 import ProductTour from "./pages/ProductTour";
 import InvestorPresentation from "./pages/InvestorPresentation";
+import MissionControl from "./pages/MissionControl";
 import OrganizationSetup from "./pages/OrganizationSetup";
 import PlaybookCustomization from "./pages/PlaybookCustomization";
 import PlaybookCustomize from "./pages/PlaybookCustomize";
@@ -234,6 +235,7 @@ function Router() {
         {/* Primary Routes - Simplified Executive Experience */}
         <Route path="/" component={Homepage} />
         <Route path="/home" component={Homepage} />
+        <Route path="/mission-control" component={MissionControl} />
         <Route path="/executive-dashboard" component={ExecutiveDashboard} />
         <Route path="/scorecard" component={RedirectToExecutiveDashboard} />
         <Route path="/executive-scorecard" component={RedirectToExecutiveDashboard} />
