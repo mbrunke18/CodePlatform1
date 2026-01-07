@@ -508,6 +508,263 @@ export default function MissionControl() {
             </motion.div>
           </div>
 
+          {/* COMMAND CENTER HUB - Unified Trigger & Execution View */}
+          <div id="active-triggers" />
+          <Card className={`border-2 overflow-hidden ${
+            activeExecutions.length > 0 
+              ? 'border-amber-300 dark:border-amber-700 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30'
+              : pendingTriggers.length > 0
+                ? 'border-red-300 dark:border-red-700 bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30'
+                : 'border-slate-200 dark:border-slate-700'
+          }`}>
+            <CardHeader className="pb-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className={`p-2 rounded-lg ${
+                    activeExecutions.length > 0 
+                      ? 'bg-amber-500 animate-pulse'
+                      : pendingTriggers.length > 0 
+                        ? 'bg-red-500 animate-pulse' 
+                        : 'bg-slate-500'
+                  }`}>
+                    {activeExecutions.length > 0 
+                      ? <Play className="h-5 w-5 text-white" />
+                      : <AlertTriangle className="h-5 w-5 text-white" />
+                    }
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">
+                      {activeExecutions.length > 0 
+                        ? 'Live Execution in Progress'
+                        : pendingTriggers.length > 0 
+                          ? 'Active Triggers Requiring Decision'
+                          : 'Command Center'
+                      }
+                    </CardTitle>
+                    <CardDescription>
+                      {activeExecutions.length > 0 
+                        ? 'Playbook executing - stakeholders coordinating in real-time'
+                        : pendingTriggers.length > 0 
+                          ? 'AI has detected events matching your trigger conditions'
+                          : 'No active triggers or executions - system monitoring'
+                      }
+                    </CardDescription>
+                  </div>
+                </div>
+                {activeExecutions.length > 0 && (
+                  <Badge className="bg-amber-500 text-white text-lg px-3 py-1">
+                    <Timer className="h-4 w-4 mr-1" />
+                    Active
+                  </Badge>
+                )}
+                {pendingTriggers.length > 0 && activeExecutions.length === 0 && (
+                  <Badge variant="destructive" className="text-lg px-3 py-1">
+                    {pendingTriggers.length} Pending
+                  </Badge>
+                )}
+              </div>
+            </CardHeader>
+            <CardContent>
+              {/* LIVE EXECUTION MODE */}
+              {activeExecutions.length > 0 ? (
+                <div className="space-y-6">
+                  {activeExecutions.map(execution => (
+                    <div key={execution.id}>
+                      {/* Execution Header */}
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 rounded-full bg-amber-500 animate-pulse" />
+                            <span className="text-xl font-bold text-slate-900 dark:text-white">
+                              {execution.name}
+                            </span>
+                          </div>
+                          <div className="text-sm text-slate-500 mt-1">
+                            Playbook: {execution.playbook}
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-3xl font-bold text-amber-600">
+                            {Math.floor((Date.now() - new Date(execution.startedAt).getTime()) / 60000)}m
+                          </div>
+                          <div className="text-xs text-slate-500">Elapsed</div>
+                        </div>
+                      </div>
+
+                      {/* Progress Bar */}
+                      <div className="mb-6">
+                        <div className="flex justify-between text-sm mb-2">
+                          <span className="font-medium text-slate-700 dark:text-slate-300">Execution Progress</span>
+                          <span className="font-bold text-amber-600">{execution.progress}%</span>
+                        </div>
+                        <Progress value={execution.progress} className="h-3" />
+                      </div>
+
+                      {/* Metrics Row */}
+                      <div className="grid grid-cols-3 gap-4 mb-6">
+                        <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                          <div className="text-3xl font-bold text-slate-900 dark:text-white">
+                            {execution.stakeholdersEngaged}/5
+                          </div>
+                          <div className="text-sm text-slate-500">Stakeholders Engaged</div>
+                        </div>
+                        <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                          <div className="text-3xl font-bold text-slate-900 dark:text-white">
+                            {execution.tasksCompleted}/{execution.totalTasks}
+                          </div>
+                          <div className="text-sm text-slate-500">Tasks Completed</div>
+                        </div>
+                        <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                          <div className="text-3xl font-bold text-emerald-600">
+                            {Math.round(execution.progress * 0.12)}
+                          </div>
+                          <div className="text-sm text-slate-500">Est. Minutes Left</div>
+                        </div>
+                      </div>
+
+                      {/* Stakeholder Matrix */}
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                          <h4 className="font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                            <Users className="h-4 w-4 text-blue-600" />
+                            Stakeholder Status
+                          </h4>
+                          <div className="space-y-2">
+                            {stakeholderStatuses.map(stakeholder => (
+                              <div key={stakeholder.id} className="flex items-center justify-between p-2 rounded-lg bg-slate-50 dark:bg-slate-700/50">
+                                <div className="flex items-center gap-2">
+                                  <div className={`w-2 h-2 rounded-full ${
+                                    stakeholder.status === 'completed' ? 'bg-emerald-500' :
+                                    stakeholder.status === 'engaged' ? 'bg-amber-500 animate-pulse' :
+                                    'bg-slate-300'
+                                  }`} />
+                                  <span className="font-medium text-sm">{stakeholder.name}</span>
+                                  <span className="text-xs text-slate-500">({stakeholder.role})</span>
+                                </div>
+                                <Badge className={`text-xs ${
+                                  stakeholder.status === 'completed' ? 'bg-emerald-100 text-emerald-700' :
+                                  stakeholder.status === 'engaged' ? 'bg-amber-100 text-amber-700' :
+                                  'bg-slate-100 text-slate-600'
+                                }`}>
+                                  {stakeholder.status}
+                                </Badge>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Timeline */}
+                        <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                          <h4 className="font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                            <Clock className="h-4 w-4 text-purple-600" />
+                            Execution Timeline
+                          </h4>
+                          <ScrollArea className="h-[200px]">
+                            <div className="space-y-2">
+                              {executionTimeline.map(event => (
+                                <div key={event.id} className="flex gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                                  <div className={`w-2 h-2 rounded-full mt-1.5 ${
+                                    event.type === 'completion' ? 'bg-emerald-500' :
+                                    event.type === 'task' ? 'bg-blue-500' :
+                                    event.type === 'stakeholder' ? 'bg-purple-500' :
+                                    'bg-amber-500'
+                                  }`} />
+                                  <div className="flex-1">
+                                    <div className="flex items-center justify-between">
+                                      <span className="font-medium text-sm">{event.title}</span>
+                                      <span className="text-xs text-slate-500">
+                                        {new Date(event.timestamp).toLocaleTimeString()}
+                                      </span>
+                                    </div>
+                                    <p className="text-xs text-slate-500">{event.description}</p>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </ScrollArea>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : pendingTriggers.length > 0 ? (
+                /* PENDING TRIGGERS MODE */
+                <div className="space-y-4">
+                  {pendingTriggers.map(trigger => (
+                    <motion.div
+                      key={trigger.id}
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-red-200 dark:border-red-800 shadow-sm"
+                    >
+                      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-2">
+                            <Badge className={getSeverityColor(trigger.severity)}>
+                              {trigger.severity.toUpperCase()}
+                            </Badge>
+                            <span className="font-semibold text-slate-900 dark:text-white">
+                              {trigger.name}
+                            </span>
+                          </div>
+                          <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500">
+                            <span className="flex items-center gap-1">
+                              <Clock className="h-3.5 w-3.5" />
+                              Detected {Math.floor((Date.now() - new Date(trigger.detectedAt).getTime()) / 60000)} min ago
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Radar className="h-3.5 w-3.5" />
+                              {trigger.source}
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Target className="h-3.5 w-3.5" />
+                              Confidence: {trigger.confidence}%
+                            </span>
+                          </div>
+                          <div className="mt-2 p-2 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
+                            <span className="text-sm text-blue-700 dark:text-blue-300">
+                              <strong>Suggested:</strong> {trigger.suggestedPlaybook}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex gap-2">
+                          <Button
+                            onClick={() => handleActivatePlaybook(trigger)}
+                            className="bg-emerald-600 hover:bg-emerald-700 text-white"
+                          >
+                            <PlayCircle className="h-4 w-4 mr-2" />
+                            Activate Playbook
+                          </Button>
+                          <Button
+                            variant="outline"
+                            onClick={() => handleDismissTrigger(trigger.id)}
+                            className="border-slate-300 dark:border-slate-600"
+                          >
+                            <X className="h-4 w-4 mr-2" />
+                            Dismiss
+                          </Button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              ) : (
+                /* EMPTY STATE */
+                <div className="text-center py-12 text-slate-500">
+                  <Shield className="h-12 w-12 mx-auto mb-3 text-slate-300 dark:text-slate-600" />
+                  <p className="font-medium">All Clear - No Active Triggers</p>
+                  <p className="text-sm mt-1">AI is continuously monitoring for strategic events</p>
+                  <Link href="/pilot-demo">
+                    <Button variant="outline" className="mt-4">
+                      <PlayCircle className="h-4 w-4 mr-2" />
+                      Try Pilot Demo
+                    </Button>
+                  </Link>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+
           {/* IDEA Runway - Operational Journey */}
           <Card className="border-2 border-slate-200 dark:border-slate-700 overflow-hidden">
             <CardHeader className="bg-gradient-to-r from-blue-50 via-purple-50 to-emerald-50 dark:from-slate-800/80 dark:via-slate-800/60 dark:to-slate-800/80 border-b border-slate-200 dark:border-slate-700">
@@ -764,236 +1021,6 @@ export default function MissionControl() {
             </CardContent>
           </Card>
 
-          {/* ACTIVE TRIGGERS - Requires Executive Decision */}
-          <div id="active-triggers" />
-          {pendingTriggers.length > 0 && (
-            <Card className="border-2 border-red-200 dark:border-red-900 bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30">
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-red-500 animate-pulse">
-                      <AlertTriangle className="h-5 w-5 text-white" />
-                    </div>
-                    <div>
-                      <CardTitle className="text-lg text-red-700 dark:text-red-400">
-                        Active Triggers Requiring Decision
-                      </CardTitle>
-                      <CardDescription className="text-red-600/70 dark:text-red-400/70">
-                        AI has detected events matching your trigger conditions
-                      </CardDescription>
-                    </div>
-                  </div>
-                  <Badge variant="destructive" className="text-lg px-3 py-1">
-                    {pendingTriggers.length} Pending
-                  </Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {pendingTriggers.map(trigger => (
-                    <motion.div
-                      key={trigger.id}
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-red-200 dark:border-red-800 shadow-sm"
-                    >
-                      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-2">
-                            <Badge className={getSeverityColor(trigger.severity)}>
-                              {trigger.severity.toUpperCase()}
-                            </Badge>
-                            <span className="font-semibold text-slate-900 dark:text-white">
-                              {trigger.name}
-                            </span>
-                          </div>
-                          <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500">
-                            <span className="flex items-center gap-1">
-                              <Clock className="h-3.5 w-3.5" />
-                              Detected {Math.floor((Date.now() - new Date(trigger.detectedAt).getTime()) / 60000)} min ago
-                            </span>
-                            <span className="flex items-center gap-1">
-                              <Radar className="h-3.5 w-3.5" />
-                              {trigger.source}
-                            </span>
-                            <span className="flex items-center gap-1">
-                              <Target className="h-3.5 w-3.5" />
-                              {trigger.confidence}% confidence
-                            </span>
-                          </div>
-                        </div>
-                        <div className="flex flex-col sm:flex-row gap-2">
-                          <div className="text-right mr-4 hidden lg:block">
-                            <div className="text-xs text-slate-500">Suggested Playbook</div>
-                            <div className="font-medium text-slate-900 dark:text-white">{trigger.suggestedPlaybook}</div>
-                          </div>
-                          <Button
-                            onClick={() => handleActivatePlaybook(trigger)}
-                            className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white"
-                          >
-                            <Zap className="h-4 w-4 mr-2" />
-                            Activate Playbook
-                          </Button>
-                          <Button
-                            variant="outline"
-                            onClick={() => handleDismissTrigger(trigger.id)}
-                            className="border-slate-300 dark:border-slate-600"
-                          >
-                            <X className="h-4 w-4 mr-2" />
-                            Dismiss
-                          </Button>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          )}
-
-          {/* LIVE EXECUTION - Command Center */}
-          {activeExecutions.length > 0 && (
-            <Card className="border-2 border-emerald-200 dark:border-emerald-900 bg-gradient-to-r from-emerald-50 to-cyan-50 dark:from-emerald-950/30 dark:to-cyan-950/30">
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-emerald-500">
-                      <Radio className="h-5 w-5 text-white animate-pulse" />
-                    </div>
-                    <div>
-                      <CardTitle className="text-lg text-emerald-700 dark:text-emerald-400">
-                        Live Execution in Progress
-                      </CardTitle>
-                      <CardDescription className="text-emerald-600/70 dark:text-emerald-400/70">
-                        Playbook activated • Stakeholders being coordinated
-                      </CardDescription>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="font-semibold text-emerald-600 dark:text-emerald-400">LIVE</span>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                  {/* Execution Progress */}
-                  <div className="lg:col-span-2 space-y-4">
-                    {activeExecutions.map(execution => (
-                      <div key={execution.id} className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-emerald-200 dark:border-emerald-800">
-                        <div className="flex items-center justify-between mb-4">
-                          <div>
-                            <h4 className="font-semibold text-slate-900 dark:text-white">{execution.playbook}</h4>
-                            <p className="text-sm text-slate-500">{execution.name}</p>
-                          </div>
-                          <div className="text-right">
-                            <div className="text-3xl font-bold text-emerald-600">
-                              {Math.floor((Date.now() - new Date(execution.startedAt).getTime()) / 60000)}m
-                            </div>
-                            <div className="text-xs text-slate-500">elapsed</div>
-                          </div>
-                        </div>
-                        
-                        <div className="grid grid-cols-3 gap-4 mb-4">
-                          <div className="text-center p-3 rounded-lg bg-slate-50 dark:bg-slate-900">
-                            <div className="text-2xl font-bold text-slate-900 dark:text-white">
-                              {execution.stakeholdersEngaged}/5
-                            </div>
-                            <div className="text-xs text-slate-500">Stakeholders</div>
-                          </div>
-                          <div className="text-center p-3 rounded-lg bg-slate-50 dark:bg-slate-900">
-                            <div className="text-2xl font-bold text-slate-900 dark:text-white">
-                              {execution.tasksCompleted}/{execution.totalTasks}
-                            </div>
-                            <div className="text-xs text-slate-500">Tasks Done</div>
-                          </div>
-                          <div className="text-center p-3 rounded-lg bg-slate-50 dark:bg-slate-900">
-                            <div className="text-2xl font-bold text-emerald-600">
-                              {execution.progress}%
-                            </div>
-                            <div className="text-xs text-slate-500">Complete</div>
-                          </div>
-                        </div>
-                        
-                        <Progress value={execution.progress} className="h-3" />
-                      </div>
-                    ))}
-                    
-                    {/* Stakeholder Matrix */}
-                    {stakeholderStatuses.length > 0 && (
-                      <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                        <h4 className="font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                          <Users className="h-4 w-4" />
-                          Stakeholder Coordination
-                        </h4>
-                        <div className="space-y-2">
-                          {stakeholderStatuses.map(stakeholder => (
-                            <div 
-                              key={stakeholder.id}
-                              className="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-slate-900"
-                            >
-                              <div className="flex items-center gap-3">
-                                <div className={`w-2.5 h-2.5 rounded-full ${getStakeholderStatusColor(stakeholder.status)}`} />
-                                <div>
-                                  <div className="font-medium text-slate-900 dark:text-white text-sm">
-                                    {stakeholder.name}
-                                  </div>
-                                  <div className="text-xs text-slate-500">{stakeholder.role}</div>
-                                </div>
-                              </div>
-                              <div className="text-right">
-                                <Badge variant="outline" className="text-xs">
-                                  {stakeholder.status}
-                                </Badge>
-                                {stakeholder.currentTask && (
-                                  <div className="text-xs text-slate-500 mt-1">{stakeholder.currentTask}</div>
-                                )}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  
-                  {/* Timeline */}
-                  <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                    <h4 className="font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                      <Timer className="h-4 w-4" />
-                      Execution Timeline
-                    </h4>
-                    <div className="space-y-3">
-                      {executionTimeline.map((event, index) => (
-                        <div key={event.id} className="flex gap-3">
-                          <div className="flex flex-col items-center">
-                            <div className={`w-3 h-3 rounded-full ${
-                              event.type === 'trigger' ? 'bg-red-500' :
-                              event.type === 'activation' ? 'bg-emerald-500' :
-                              event.type === 'milestone' ? 'bg-blue-500' :
-                              'bg-slate-400'
-                            }`} />
-                            {index < executionTimeline.length - 1 && (
-                              <div className="w-0.5 h-8 bg-slate-200 dark:bg-slate-700" />
-                            )}
-                          </div>
-                          <div className="flex-1 pb-3">
-                            <div className="font-medium text-slate-900 dark:text-white text-sm">
-                              {event.title}
-                            </div>
-                            <div className="text-xs text-slate-500">{event.description}</div>
-                            <div className="text-xs text-slate-400 mt-1">
-                              {new Date(event.timestamp).toLocaleTimeString()} • {event.actor}
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          )}
-
           {/* Main Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             
@@ -1142,112 +1169,9 @@ export default function MissionControl() {
             </Card>
           </div>
 
-          {/* Active Executions & Quick Actions */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            
-            {/* Command Center Preview */}
-            <Card className="lg:col-span-2">
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Play className="h-5 w-5 text-amber-600" />
-                    <CardTitle className="text-lg">Command Center</CardTitle>
-                  </div>
-                  <Button 
-                    variant="ghost" 
-                    size="sm"
-                    onClick={() => document.getElementById('active-triggers')?.scrollIntoView({ behavior: 'smooth' })}
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                  </Button>
-                </div>
-                <CardDescription>Active playbook executions and coordination status</CardDescription>
-              </CardHeader>
-              <CardContent>
-                {activeExecutions.length > 0 ? (
-                  <div className="space-y-4">
-                    {activeExecutions.map(execution => (
-                      <div 
-                        key={execution.id}
-                        className="p-4 rounded-xl border-2 border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-900/20"
-                      >
-                        <div className="flex items-start justify-between mb-3">
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <div className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-                              <span className="font-semibold text-slate-900 dark:text-white">
-                                {execution.name}
-                              </span>
-                            </div>
-                            <div className="text-sm text-slate-500 mt-1">
-                              Playbook: {execution.playbook}
-                            </div>
-                          </div>
-                          <Badge className="bg-amber-500 text-white">
-                            <Timer className="h-3 w-3 mr-1" />
-                            Active
-                          </Badge>
-                        </div>
-                        
-                        <div className="grid grid-cols-3 gap-4 mb-4">
-                          <div className="text-center p-3 rounded-lg bg-white dark:bg-slate-800">
-                            <div className="text-2xl font-bold text-slate-900 dark:text-white">
-                              {execution.stakeholdersEngaged}
-                            </div>
-                            <div className="text-xs text-slate-500">Stakeholders</div>
-                          </div>
-                          <div className="text-center p-3 rounded-lg bg-white dark:bg-slate-800">
-                            <div className="text-2xl font-bold text-slate-900 dark:text-white">
-                              {execution.tasksCompleted}/{execution.totalTasks}
-                            </div>
-                            <div className="text-xs text-slate-500">Tasks Done</div>
-                          </div>
-                          <div className="text-center p-3 rounded-lg bg-white dark:bg-slate-800">
-                            <div className="text-2xl font-bold text-amber-600">
-                              {Math.floor((Date.now() - new Date(execution.startedAt).getTime()) / 60000)}m
-                            </div>
-                            <div className="text-xs text-slate-500">Elapsed</div>
-                          </div>
-                        </div>
-                        
-                        <div className="space-y-1.5">
-                          <div className="flex justify-between text-sm">
-                            <span className="text-slate-500">Execution Progress</span>
-                            <span className="font-medium">{execution.progress}%</span>
-                          </div>
-                          <Progress value={execution.progress} className="h-2" />
-                        </div>
-                        
-                        <div className="mt-4 flex gap-2">
-                          <Button 
-                            className="flex-1 bg-amber-600 hover:bg-amber-700"
-                            onClick={() => document.getElementById('active-triggers')?.scrollIntoView({ behavior: 'smooth' })}
-                          >
-                            <Eye className="h-4 w-4 mr-2" />
-                            View Command Center
-                          </Button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="text-center py-12 text-slate-500">
-                    <Play className="h-12 w-12 mx-auto mb-3 text-slate-300 dark:text-slate-600" />
-                    <p className="font-medium">No Active Executions</p>
-                    <p className="text-sm mt-1">Playbooks will appear here when triggered</p>
-                    <Link href="/pilot-demo">
-                      <Button variant="outline" className="mt-4">
-                        <PlayCircle className="h-4 w-4 mr-2" />
-                        Try Pilot Demo
-                      </Button>
-                    </Link>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-
-            {/* Quick Actions */}
-            <Card>
+          {/* Quick Actions */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            <Card className="lg:col-span-1">
               <CardHeader className="pb-3">
                 <div className="flex items-center gap-2">
                   <Zap className="h-5 w-5 text-purple-600" />
