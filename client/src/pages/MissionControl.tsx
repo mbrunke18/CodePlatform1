@@ -45,7 +45,8 @@ import {
   RefreshCw,
   Settings,
   ExternalLink,
-  Layers
+  Layers,
+  X
 } from 'lucide-react';
 
 const phaseIcons: Record<string, any> = {
@@ -98,6 +99,36 @@ interface ActiveExecution {
   totalTasks: number;
 }
 
+interface PendingTrigger {
+  id: string;
+  name: string;
+  category: string;
+  severity: 'critical' | 'high' | 'medium';
+  detectedAt: string;
+  source: string;
+  suggestedPlaybook: string;
+  suggestedPlaybookId: string;
+  confidence: number;
+}
+
+interface StakeholderStatus {
+  id: string;
+  name: string;
+  role: string;
+  status: 'engaged' | 'pending' | 'blocked' | 'completed';
+  currentTask?: string;
+  responseTime?: number;
+}
+
+interface TimelineEvent {
+  id: string;
+  timestamp: string;
+  type: 'trigger' | 'activation' | 'task' | 'stakeholder' | 'milestone' | 'completion';
+  title: string;
+  description: string;
+  actor?: string;
+}
+
 export default function MissionControl() {
   const [, setLocation] = useLocation();
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -146,19 +177,125 @@ export default function MissionControl() {
     color: domain.color
   }));
 
-  const activeExecutions: ActiveExecution[] = [
+  const [pendingTriggers, setPendingTriggers] = useState<PendingTrigger[]>([
     {
-      id: '1',
-      name: 'Competitor Response - TechCorp Product Launch',
-      playbook: 'Competitive Counter-Positioning',
-      startedAt: new Date(Date.now() - 45 * 60000).toISOString(),
-      progress: 65,
-      status: 'active',
-      stakeholdersEngaged: 8,
-      tasksCompleted: 7,
-      totalTasks: 12
+      id: 'pt-1',
+      name: 'Competitor Product Launch Detected',
+      category: 'competitive',
+      severity: 'critical',
+      detectedAt: new Date(Date.now() - 12 * 60000).toISOString(),
+      source: 'Market Intelligence',
+      suggestedPlaybook: 'Competitive Counter-Positioning',
+      suggestedPlaybookId: 'playbook-1',
+      confidence: 94
+    },
+    {
+      id: 'pt-2',
+      name: 'Regulatory Filing Deadline Approaching',
+      category: 'regulatory',
+      severity: 'high',
+      detectedAt: new Date(Date.now() - 45 * 60000).toISOString(),
+      source: 'Compliance Monitoring',
+      suggestedPlaybook: 'Regulatory Response Protocol',
+      suggestedPlaybookId: 'playbook-2',
+      confidence: 87
     }
-  ];
+  ]);
+
+  const [activeExecutions, setActiveExecutions] = useState<ActiveExecution[]>([]);
+  
+  const [executionTimeline, setExecutionTimeline] = useState<TimelineEvent[]>([]);
+
+  const [stakeholderStatuses, setStakeholderStatuses] = useState<StakeholderStatus[]>([]);
+
+  const handleActivatePlaybook = (trigger: PendingTrigger) => {
+    // Remove from pending
+    setPendingTriggers(prev => prev.filter(t => t.id !== trigger.id));
+    
+    // Create new execution
+    const newExecution: ActiveExecution = {
+      id: `exec-${Date.now()}`,
+      name: trigger.name,
+      playbook: trigger.suggestedPlaybook,
+      startedAt: new Date().toISOString(),
+      progress: 0,
+      status: 'active',
+      stakeholdersEngaged: 0,
+      tasksCompleted: 0,
+      totalTasks: 12
+    };
+    setActiveExecutions(prev => [...prev, newExecution]);
+    
+    // Initialize timeline
+    setExecutionTimeline([
+      {
+        id: `tl-${Date.now()}-1`,
+        timestamp: new Date().toISOString(),
+        type: 'trigger',
+        title: 'Trigger Detected',
+        description: trigger.name,
+        actor: 'AI Monitoring System'
+      },
+      {
+        id: `tl-${Date.now()}-2`,
+        timestamp: new Date().toISOString(),
+        type: 'activation',
+        title: 'Playbook Activated',
+        description: `${trigger.suggestedPlaybook} initiated`,
+        actor: 'Executive Decision'
+      }
+    ]);
+    
+    // Initialize stakeholders
+    setStakeholderStatuses([
+      { id: 's1', name: 'Sarah Chen', role: 'Chief Strategy Officer', status: 'engaged', currentTask: 'Reviewing response strategy' },
+      { id: 's2', name: 'Michael Torres', role: 'VP Marketing', status: 'pending', currentTask: 'Awaiting briefing' },
+      { id: 's3', name: 'Jennifer Walsh', role: 'Legal Counsel', status: 'pending', currentTask: 'Contract review' },
+      { id: 's4', name: 'David Kim', role: 'Product Director', status: 'pending', currentTask: 'Feature comparison analysis' },
+      { id: 's5', name: 'Amanda Foster', role: 'Communications Lead', status: 'pending', currentTask: 'Press release draft' }
+    ]);
+
+    // Simulate progress
+    let progress = 0;
+    const progressInterval = setInterval(() => {
+      progress += Math.floor(Math.random() * 15) + 5;
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(progressInterval);
+      }
+      setActiveExecutions(prev => prev.map(e => 
+        e.id === newExecution.id 
+          ? { 
+              ...e, 
+              progress,
+              stakeholdersEngaged: Math.min(5, Math.floor(progress / 20)),
+              tasksCompleted: Math.floor((progress / 100) * 12)
+            } 
+          : e
+      ));
+    }, 3000);
+  };
+
+  const handleDismissTrigger = (triggerId: string) => {
+    setPendingTriggers(prev => prev.filter(t => t.id !== triggerId));
+  };
+
+  const getSeverityColor = (severity: 'critical' | 'high' | 'medium') => {
+    switch (severity) {
+      case 'critical': return 'bg-red-500 text-white';
+      case 'high': return 'bg-amber-500 text-white';
+      case 'medium': return 'bg-blue-500 text-white';
+    }
+  };
+
+  const getStakeholderStatusColor = (status: StakeholderStatus['status']) => {
+    switch (status) {
+      case 'engaged': return 'bg-emerald-500';
+      case 'pending': return 'bg-amber-500';
+      case 'blocked': return 'bg-red-500';
+      case 'completed': return 'bg-blue-500';
+    }
+  };
 
   const totalPlaybooks = 166;
   const totalSignals = SIGNAL_CATEGORIES.reduce((sum, cat) => sum + cat.dataPoints.length, 0);
@@ -547,6 +684,235 @@ export default function MissionControl() {
               </div>
             </CardContent>
           </Card>
+
+          {/* ACTIVE TRIGGERS - Requires Executive Decision */}
+          {pendingTriggers.length > 0 && (
+            <Card className="border-2 border-red-200 dark:border-red-900 bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30">
+              <CardHeader className="pb-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-red-500 animate-pulse">
+                      <AlertTriangle className="h-5 w-5 text-white" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-lg text-red-700 dark:text-red-400">
+                        Active Triggers Requiring Decision
+                      </CardTitle>
+                      <CardDescription className="text-red-600/70 dark:text-red-400/70">
+                        AI has detected events matching your trigger conditions
+                      </CardDescription>
+                    </div>
+                  </div>
+                  <Badge variant="destructive" className="text-lg px-3 py-1">
+                    {pendingTriggers.length} Pending
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {pendingTriggers.map(trigger => (
+                    <motion.div
+                      key={trigger.id}
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-red-200 dark:border-red-800 shadow-sm"
+                    >
+                      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-2">
+                            <Badge className={getSeverityColor(trigger.severity)}>
+                              {trigger.severity.toUpperCase()}
+                            </Badge>
+                            <span className="font-semibold text-slate-900 dark:text-white">
+                              {trigger.name}
+                            </span>
+                          </div>
+                          <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500">
+                            <span className="flex items-center gap-1">
+                              <Clock className="h-3.5 w-3.5" />
+                              Detected {Math.floor((Date.now() - new Date(trigger.detectedAt).getTime()) / 60000)} min ago
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Radar className="h-3.5 w-3.5" />
+                              {trigger.source}
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Target className="h-3.5 w-3.5" />
+                              {trigger.confidence}% confidence
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex flex-col sm:flex-row gap-2">
+                          <div className="text-right mr-4 hidden lg:block">
+                            <div className="text-xs text-slate-500">Suggested Playbook</div>
+                            <div className="font-medium text-slate-900 dark:text-white">{trigger.suggestedPlaybook}</div>
+                          </div>
+                          <Button
+                            onClick={() => handleActivatePlaybook(trigger)}
+                            className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white"
+                          >
+                            <Zap className="h-4 w-4 mr-2" />
+                            Activate Playbook
+                          </Button>
+                          <Button
+                            variant="outline"
+                            onClick={() => handleDismissTrigger(trigger.id)}
+                            className="border-slate-300 dark:border-slate-600"
+                          >
+                            <X className="h-4 w-4 mr-2" />
+                            Dismiss
+                          </Button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* LIVE EXECUTION - Command Center */}
+          {activeExecutions.length > 0 && (
+            <Card className="border-2 border-emerald-200 dark:border-emerald-900 bg-gradient-to-r from-emerald-50 to-cyan-50 dark:from-emerald-950/30 dark:to-cyan-950/30">
+              <CardHeader className="pb-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-emerald-500">
+                      <Radio className="h-5 w-5 text-white animate-pulse" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-lg text-emerald-700 dark:text-emerald-400">
+                        Live Execution in Progress
+                      </CardTitle>
+                      <CardDescription className="text-emerald-600/70 dark:text-emerald-400/70">
+                        Playbook activated • Stakeholders being coordinated
+                      </CardDescription>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="font-semibold text-emerald-600 dark:text-emerald-400">LIVE</span>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                  {/* Execution Progress */}
+                  <div className="lg:col-span-2 space-y-4">
+                    {activeExecutions.map(execution => (
+                      <div key={execution.id} className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-emerald-200 dark:border-emerald-800">
+                        <div className="flex items-center justify-between mb-4">
+                          <div>
+                            <h4 className="font-semibold text-slate-900 dark:text-white">{execution.playbook}</h4>
+                            <p className="text-sm text-slate-500">{execution.name}</p>
+                          </div>
+                          <div className="text-right">
+                            <div className="text-3xl font-bold text-emerald-600">
+                              {Math.floor((Date.now() - new Date(execution.startedAt).getTime()) / 60000)}m
+                            </div>
+                            <div className="text-xs text-slate-500">elapsed</div>
+                          </div>
+                        </div>
+                        
+                        <div className="grid grid-cols-3 gap-4 mb-4">
+                          <div className="text-center p-3 rounded-lg bg-slate-50 dark:bg-slate-900">
+                            <div className="text-2xl font-bold text-slate-900 dark:text-white">
+                              {execution.stakeholdersEngaged}/5
+                            </div>
+                            <div className="text-xs text-slate-500">Stakeholders</div>
+                          </div>
+                          <div className="text-center p-3 rounded-lg bg-slate-50 dark:bg-slate-900">
+                            <div className="text-2xl font-bold text-slate-900 dark:text-white">
+                              {execution.tasksCompleted}/{execution.totalTasks}
+                            </div>
+                            <div className="text-xs text-slate-500">Tasks Done</div>
+                          </div>
+                          <div className="text-center p-3 rounded-lg bg-slate-50 dark:bg-slate-900">
+                            <div className="text-2xl font-bold text-emerald-600">
+                              {execution.progress}%
+                            </div>
+                            <div className="text-xs text-slate-500">Complete</div>
+                          </div>
+                        </div>
+                        
+                        <Progress value={execution.progress} className="h-3" />
+                      </div>
+                    ))}
+                    
+                    {/* Stakeholder Matrix */}
+                    {stakeholderStatuses.length > 0 && (
+                      <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                        <h4 className="font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                          <Users className="h-4 w-4" />
+                          Stakeholder Coordination
+                        </h4>
+                        <div className="space-y-2">
+                          {stakeholderStatuses.map(stakeholder => (
+                            <div 
+                              key={stakeholder.id}
+                              className="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-slate-900"
+                            >
+                              <div className="flex items-center gap-3">
+                                <div className={`w-2.5 h-2.5 rounded-full ${getStakeholderStatusColor(stakeholder.status)}`} />
+                                <div>
+                                  <div className="font-medium text-slate-900 dark:text-white text-sm">
+                                    {stakeholder.name}
+                                  </div>
+                                  <div className="text-xs text-slate-500">{stakeholder.role}</div>
+                                </div>
+                              </div>
+                              <div className="text-right">
+                                <Badge variant="outline" className="text-xs">
+                                  {stakeholder.status}
+                                </Badge>
+                                {stakeholder.currentTask && (
+                                  <div className="text-xs text-slate-500 mt-1">{stakeholder.currentTask}</div>
+                                )}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Timeline */}
+                  <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                    <h4 className="font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                      <Timer className="h-4 w-4" />
+                      Execution Timeline
+                    </h4>
+                    <div className="space-y-3">
+                      {executionTimeline.map((event, index) => (
+                        <div key={event.id} className="flex gap-3">
+                          <div className="flex flex-col items-center">
+                            <div className={`w-3 h-3 rounded-full ${
+                              event.type === 'trigger' ? 'bg-red-500' :
+                              event.type === 'activation' ? 'bg-emerald-500' :
+                              event.type === 'milestone' ? 'bg-blue-500' :
+                              'bg-slate-400'
+                            }`} />
+                            {index < executionTimeline.length - 1 && (
+                              <div className="w-0.5 h-8 bg-slate-200 dark:bg-slate-700" />
+                            )}
+                          </div>
+                          <div className="flex-1 pb-3">
+                            <div className="font-medium text-slate-900 dark:text-white text-sm">
+                              {event.title}
+                            </div>
+                            <div className="text-xs text-slate-500">{event.description}</div>
+                            <div className="text-xs text-slate-400 mt-1">
+                              {new Date(event.timestamp).toLocaleTimeString()} • {event.actor}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
 
           {/* Main Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
