@@ -199,46 +199,47 @@ export default function Homepage() {
         
         <div className="max-w-5xl mx-auto relative z-10">
           
-          {/* THE HOOK - Make them feel the problem */}
+          {/* THE HOOK - The Disruption */}
           <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 mb-8">
-              <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-              <span className="text-red-400 text-sm font-medium">The Hidden Cost of Slow Coordination</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 mb-8">
+              <Sparkles className="h-4 w-4 text-blue-400" />
+              <span className="text-blue-300 text-sm font-medium">The AI Operating System for Strategic Execution</span>
             </div>
             
-            {/* The Pain - WHY M Exists */}
+            {/* The Disruption - What's Changing */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tight" data-testid="heading-main">
-              While You're Still in Meetings<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-orange-400 to-amber-400">
-                The Window is Closing.
+              AI Changed How People Work.<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+                Now It's Time for Organizations.
               </span>
             </h1>
             
-            {/* The Insight */}
+            {/* The Gap */}
             <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-4 leading-relaxed" data-testid="text-insight">
-              Every strategic event—competitor move, crisis, market shift—triggers the same chaos:
+              Your employees are 10X faster with AI. But when a strategic event hits—
+              competitor move, crisis, opportunity—your organization still coordinates at 
+              <span className="text-white font-semibold"> meeting speed</span>.
             </p>
             <p className="text-2xl md:text-3xl font-semibold text-white max-w-3xl mx-auto mb-8">
-              <span className="text-red-400">20-50 hours</span> spent getting organized before anyone executes.
+              <span className="text-amber-400">20-50 hours</span> lost to coordination chaos. Every. Single. Time.
             </p>
           </div>
 
-          {/* THE TURN - What M Does */}
+          {/* THE TURN - M as the New Operating System */}
           <div className="bg-gradient-to-r from-slate-800/50 via-slate-800/80 to-slate-800/50 rounded-2xl border border-slate-700/50 p-8 mb-10 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 mb-4">
-                <Sparkles className="h-4 w-4 text-emerald-400" />
+                <Zap className="h-4 w-4 text-emerald-400" />
                 <span className="text-emerald-400 text-sm font-medium">M Platform</span>
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                What If Everyone Already Knew Their Role?
+                The Operating System Organizations Have Been Missing.
               </h2>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-6">
-                M pre-stages your response: <span className="text-white font-semibold">stakeholders assigned</span>, 
-                <span className="text-white font-semibold"> tasks queued</span>, 
-                <span className="text-white font-semibold"> budgets unlocked</span>, 
-                <span className="text-white font-semibold"> communications drafted</span>—ready to activate 
-                the moment a trigger fires.
+                M is the AI-native command layer that synchronizes your entire organization. 
+                <span className="text-white font-semibold"> 166 pre-staged playbooks</span> with 
+                stakeholders, tasks, budgets, and communications—ready to activate 
+                the moment a trigger fires. <span className="text-emerald-400 font-medium">Everyone knows their role. Zero scrambling.</span>
               </p>
               
               {/* The Outcome - Value Delivered */}
