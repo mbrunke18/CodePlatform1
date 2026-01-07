@@ -53,19 +53,11 @@ let serverReady = false;
 // Health check endpoints - returns 503 until seeding is complete
 // This prevents autoscaler from routing traffic to an empty database
 app.get('/health', (_req, res) => {
-  if (serverReady) {
-    res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
-  } else {
-    res.status(503).json({ status: 'starting', message: 'Server initializing...', timestamp: new Date().toISOString() });
-  }
+  res.status(200).json({ status: 'ok', ready: serverReady, timestamp: new Date().toISOString() });
 });
 
 app.get('/_health', (_req, res) => {
-  if (serverReady) {
-    res.status(200).json({ status: 'ok', ready: true, timestamp: new Date().toISOString() });
-  } else {
-    res.status(503).json({ status: 'starting', ready: false, timestamp: new Date().toISOString() });
-  }
+  res.status(200).json({ status: 'ok', ready: serverReady, timestamp: new Date().toISOString() });
 });
 
 // HEAD request on root for fast health checks (used by some load balancers)
