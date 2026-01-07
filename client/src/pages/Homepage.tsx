@@ -191,112 +191,110 @@ export default function Homepage() {
     <div className="min-h-screen bg-white dark:bg-slate-950">
       <StandardNav />
       
-      {/* Hero Section - Clear Value Proposition */}
-      <section className="relative py-16 md:py-24 px-6 overflow-hidden bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900">
-        <div className="max-w-6xl mx-auto relative z-10">
+      {/* Hero Section - High-Impact First Impression */}
+      <section className="relative py-16 md:py-28 px-6 overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.08),transparent_50%)]" />
+        
+        <div className="max-w-5xl mx-auto relative z-10">
           
-          {/* What is M - Above the Fold */}
-          <div className="text-center mb-12">
-            <Badge className="text-sm px-4 py-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mb-6" data-testid="badge-category">
-              Strategic Execution Operating System
-            </Badge>
+          {/* THE HOOK - Make them feel the problem */}
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 mb-8">
+              <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+              <span className="text-red-400 text-sm font-medium">The Hidden Cost of Slow Coordination</span>
+            </div>
             
-            {/* Clear Product Statement */}
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight" data-testid="heading-product">
-              Coordinated Response in
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400"> 12 Minutes</span>
-              <br />
-              <span className="text-slate-400">Not 72 Hours.</span>
+            {/* The Pain - WHY M Exists */}
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tight" data-testid="heading-main">
+              While You're Still in Meetings<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-orange-400 to-amber-400">
+                The Window is Closing.
+              </span>
             </h1>
             
-            {/* Plain Language Explainer */}
-            <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto mb-8" data-testid="text-hero-explainer">
-              M is the operating system for strategic execution. 
-              <span className="text-white font-semibold"> 166 pre-staged playbooks</span> across 9 domains, 
-              AI-powered detection, and <span className="text-white font-semibold">instant coordination</span> when 
-              opportunity or crisis hits.
+            {/* The Insight */}
+            <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-4 leading-relaxed" data-testid="text-insight">
+              Every strategic event—competitor move, crisis, market shift—triggers the same chaos:
+            </p>
+            <p className="text-2xl md:text-3xl font-semibold text-white max-w-3xl mx-auto mb-8">
+              <span className="text-red-400">20-50 hours</span> spent getting organized before anyone executes.
             </p>
           </div>
 
-          {/* The Problem→Solution Bridge - Visual */}
-          <div className="grid md:grid-cols-3 gap-4 mb-12 max-w-5xl mx-auto" data-testid="problem-solution-bridge">
-            {/* Today */}
-            <Card className="bg-red-950/30 border-red-800/50 text-center">
-              <CardContent className="p-6">
-                <div className="text-red-400 text-sm font-medium mb-2">TODAY</div>
-                <div className="text-3xl font-bold text-white mb-1">72 Hours</div>
-                <p className="text-slate-400 text-sm">to coordinate response</p>
-                <div className="mt-4 space-y-2 text-left">
-                  <div className="flex items-center gap-2 text-red-300 text-xs">
-                    <X className="h-3 w-3" /> Ad-hoc meetings
+          {/* THE TURN - What M Does */}
+          <div className="bg-gradient-to-r from-slate-800/50 via-slate-800/80 to-slate-800/50 rounded-2xl border border-slate-700/50 p-8 mb-10 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 mb-4">
+                <Sparkles className="h-4 w-4 text-emerald-400" />
+                <span className="text-emerald-400 text-sm font-medium">M Platform</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                What If Everyone Already Knew Their Role?
+              </h2>
+              <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-6">
+                M pre-stages your response: <span className="text-white font-semibold">stakeholders assigned</span>, 
+                <span className="text-white font-semibold"> tasks queued</span>, 
+                <span className="text-white font-semibold"> budgets unlocked</span>, 
+                <span className="text-white font-semibold"> communications drafted</span>—ready to activate 
+                the moment a trigger fires.
+              </p>
+              
+              {/* The Outcome - Value Delivered */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4 border-t border-slate-700">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center">
+                    <Clock className="h-6 w-6 text-white" />
                   </div>
-                  <div className="flex items-center gap-2 text-red-300 text-xs">
-                    <X className="h-3 w-3" /> Email chains
-                  </div>
-                  <div className="flex items-center gap-2 text-red-300 text-xs">
-                    <X className="h-3 w-3" /> Improvised response
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Arrow/Bridge - M Platform */}
-            <Card className="bg-gradient-to-br from-blue-600 to-purple-700 border-0 text-center flex flex-col justify-center">
-              <CardContent className="p-6">
-                <div className="text-blue-200 text-sm font-medium mb-2">WITH M PLATFORM</div>
-                <div className="w-16 h-16 mx-auto mb-3 bg-white/20 rounded-2xl flex items-center justify-center">
-                  <Zap className="h-8 w-8 text-white" />
-                </div>
-                <div className="text-white font-bold mb-2">IDEA Framework™</div>
-                <div className="grid grid-cols-4 gap-1 text-xs">
-                  <div className="bg-white/20 rounded px-1 py-0.5 text-white">Identify</div>
-                  <div className="bg-white/20 rounded px-1 py-0.5 text-white">Detect</div>
-                  <div className="bg-white/20 rounded px-1 py-0.5 text-white">Execute</div>
-                  <div className="bg-white/20 rounded px-1 py-0.5 text-white">Advance</div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* With M */}
-            <Card className="bg-emerald-950/30 border-emerald-800/50 text-center">
-              <CardContent className="p-6">
-                <div className="text-emerald-400 text-sm font-medium mb-2">WITH M</div>
-                <div className="text-3xl font-bold text-white mb-1">12 Minutes</div>
-                <p className="text-slate-400 text-sm">to coordinated response</p>
-                <div className="mt-4 space-y-2 text-left">
-                  <div className="flex items-center gap-2 text-emerald-300 text-xs">
-                    <Check className="h-3 w-3" /> Pre-staged playbooks
-                  </div>
-                  <div className="flex items-center gap-2 text-emerald-300 text-xs">
-                    <Check className="h-3 w-3" /> Auto-assigned tasks
-                  </div>
-                  <div className="flex items-center gap-2 text-emerald-300 text-xs">
-                    <Check className="h-3 w-3" /> Everyone aligned
+                  <div className="text-left">
+                    <div className="text-3xl font-bold text-white">12 min</div>
+                    <div className="text-sm text-slate-400">to coordinated response</div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+                <div className="hidden sm:block w-px h-12 bg-slate-700" />
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                    <BookOpen className="h-6 w-6 text-white" />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-3xl font-bold text-white">166</div>
+                    <div className="text-sm text-slate-400">pre-staged playbooks</div>
+                  </div>
+                </div>
+                <div className="hidden sm:block w-px h-12 bg-slate-700" />
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center">
+                    <Users className="h-6 w-6 text-white" />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-3xl font-bold text-white">Everyone</div>
+                    <div className="text-sm text-slate-400">aligned instantly</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          {/* CTA Buttons - Prominent */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
             <Button 
               size="lg" 
-              onClick={() => setLocation('/sandbox')}
-              className="text-lg px-8 py-6 bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700"
+              onClick={() => setLocation('/pilot-demo')}
+              className="text-lg px-10 py-7 bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 shadow-lg shadow-emerald-500/25"
               data-testid="button-try-demo"
             >
               <Play className="mr-2 h-5 w-5" />
-              Try Interactive Demo
+              See It In Action
             </Button>
             <Button 
               size="lg" 
-              onClick={() => setLocation('/how-it-works')}
+              onClick={() => setLocation('/mission-control')}
               variant="outline"
-              className="text-lg px-8 py-6 border-slate-500 text-white hover:bg-slate-800"
-              data-testid="button-how-it-works"
+              className="text-lg px-10 py-7 border-slate-500 text-white hover:bg-slate-800"
+              data-testid="button-explore"
             >
-              See How It Works
+              Explore the Platform
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
