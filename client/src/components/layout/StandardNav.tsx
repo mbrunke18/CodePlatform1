@@ -100,7 +100,7 @@ export default function StandardNav() {
           {/* Desktop CTAs - Simplified */}
           <div className="hidden md:flex items-center gap-3">
             <Button 
-              onClick={() => navigateTo("/sandbox")}
+              onClick={() => navigateTo("/pilot-demo")}
               className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white font-semibold h-9 px-4"
               data-testid="nav-try-demo"
             >
@@ -151,7 +151,7 @@ export default function StandardNav() {
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-2">
             <Button 
-              onClick={() => navigateTo("/sandbox")}
+              onClick={() => navigateTo("/pilot-demo")}
               size="sm"
               className="bg-gradient-to-r from-emerald-600 to-cyan-600 text-white"
               data-testid="nav-mobile-try-demo"
@@ -193,7 +193,7 @@ export default function StandardNav() {
               
               {/* Primary CTAs */}
               <Button 
-                onClick={() => navigateTo("/sandbox")}
+                onClick={() => navigateTo("/pilot-demo")}
                 className="bg-gradient-to-r from-emerald-600 to-cyan-600 text-white w-full justify-center h-11"
                 data-testid="nav-mobile-try-demo"
               >

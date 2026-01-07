@@ -8,6 +8,7 @@ import { nlqService, type NLQRequest } from "./nlq-service";
 // import { proactiveAIRadar } from "./proactive-ai-radar";
 import { preparednessScoring } from "./preparedness-scoring";
 import intelligenceRoutes from "./routes/intelligence-routes";
+import pilotRoutes from "./routes/pilot-routes";
 import { setupAuth, isAuthenticated, hasPermission } from "./replitAuth";
 import { conditionalAuth } from "./authConfig";
 import { generateFullPlaybookData } from "./seeds/samplePlaybookData";
@@ -116,6 +117,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Intelligence Signals API routes
   app.use('/api/intelligence', intelligenceRoutes);
+
+  // Pilot Demo routes (no auth required)
+  app.use('/api/pilot', pilotRoutes);
 
   // Comprehensive Scenario Template routes (auth temporarily disabled for development)
   

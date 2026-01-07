@@ -121,6 +121,7 @@ import VideoLanding from "./pages/VideoLanding";
 import PlaybookManagement from "./pages/PlaybookManagement";
 import TaskManagement from "./pages/TaskManagement";
 import StakeholderManagement from "./pages/StakeholderManagement";
+import PilotDemo from "./pages/PilotDemo";
 import { DemoControllerProvider } from "./contexts/DemoController";
 import { DemoTimelineProvider } from "./contexts/DemoTimelineContext";
 import { DynamicStrategyProvider } from "./contexts/DynamicStrategyContext";
@@ -363,6 +364,7 @@ function Router() {
         <Route path="/board-export" component={BoardExport} />
         <Route path="/sandbox-demo" component={SandboxDemo} />
         <Route path="/try-it" component={SandboxDemo} />
+        <Route path="/pilot-demo" component={PilotDemo} />
         <Route path="/video" component={VideoLanding} />
         <Route path="/cinematic" component={VideoLanding} />
         <Route path="/sizzle" component={VideoLanding} />

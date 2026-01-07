@@ -41,6 +41,13 @@ M operates on the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE), facilitat
 - **Research-backed Trust Bar:** IBM/Ponemon ($4.88M breach cost), McKinsey (340X faster), BAI 2025 (10.3% growth) citations
 - **Skip Option:** Users can skip the intro via button in bottom-right corner
 
+**Pilot Demo (Jan 2026):**
+- **Live Proof-of-Concept:** /pilot-demo route with 5-step guided flow demonstrating full trigger→execution loop
+- **Real Email Notifications:** Sends actual stakeholder email via SMTP (or simulates if not configured)
+- **Command Center Timeline:** Real-time visualization of execution steps with timestamps
+- **Trigger Scenarios:** 4 pre-built scenarios (Competitor Launch, Regulatory Change, Market Opportunity, Crisis)
+- **Playbook Options:** 4 matching playbooks with task/stakeholder counts and activation times
+
 **Technical Implementations & Feature Specifications:**
 - **IDEA Framework Phases:**
     - **IDENTIFY:** Build and customize playbooks from 166 templates across 9 strategic domains.
