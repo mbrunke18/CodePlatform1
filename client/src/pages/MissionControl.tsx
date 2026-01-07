@@ -673,12 +673,16 @@ export default function MissionControl() {
                     </div>
                     
                     <div className="space-y-2">
-                      <Link href="/command-center">
-                        <Button size="sm" className="w-full bg-amber-600 hover:bg-amber-700 text-white">
-                          <PlayCircle className="h-4 w-4 mr-2" />
-                          Open Command Center
-                        </Button>
-                      </Link>
+                      <Button 
+                        size="sm" 
+                        className="w-full bg-amber-600 hover:bg-amber-700 text-white"
+                        onClick={() => {
+                          document.getElementById('active-triggers')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                      >
+                        <PlayCircle className="h-4 w-4 mr-2" />
+                        Open Command Center
+                      </Button>
                       <Link href="/stakeholder-management">
                         <Button variant="outline" size="sm" className="w-full border-amber-300 text-amber-700 hover:bg-amber-50 dark:border-amber-700 dark:text-amber-400 dark:hover:bg-amber-900/30">
                           View Stakeholder Roles
@@ -761,6 +765,7 @@ export default function MissionControl() {
           </Card>
 
           {/* ACTIVE TRIGGERS - Requires Executive Decision */}
+          <div id="active-triggers" />
           {pendingTriggers.length > 0 && (
             <Card className="border-2 border-red-200 dark:border-red-900 bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30">
               <CardHeader className="pb-3">
@@ -1148,11 +1153,13 @@ export default function MissionControl() {
                     <Play className="h-5 w-5 text-amber-600" />
                     <CardTitle className="text-lg">Command Center</CardTitle>
                   </div>
-                  <Link href="/command-center">
-                    <Button variant="ghost" size="sm">
-                      <ExternalLink className="h-4 w-4" />
-                    </Button>
-                  </Link>
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    onClick={() => document.getElementById('active-triggers')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                  </Button>
                 </div>
                 <CardDescription>Active playbook executions and coordination status</CardDescription>
               </CardHeader>
@@ -1212,12 +1219,13 @@ export default function MissionControl() {
                         </div>
                         
                         <div className="mt-4 flex gap-2">
-                          <Link href="/command-center" className="flex-1">
-                            <Button className="w-full bg-amber-600 hover:bg-amber-700">
-                              <Eye className="h-4 w-4 mr-2" />
-                              View Command Center
-                            </Button>
-                          </Link>
+                          <Button 
+                            className="flex-1 bg-amber-600 hover:bg-amber-700"
+                            onClick={() => document.getElementById('active-triggers')?.scrollIntoView({ behavior: 'smooth' })}
+                          >
+                            <Eye className="h-4 w-4 mr-2" />
+                            View Command Center
+                          </Button>
                         </div>
                       </div>
                     ))}
