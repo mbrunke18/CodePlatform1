@@ -30,9 +30,16 @@ M operates on the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE), facilitat
 **UI/UX Decisions:**
 - **Design:** Modern, enterprise-grade interface focused on decision velocity and human-AI collaboration.
 - **Theme:** Full dark/light mode support with localStorage persistence and WCAG AAA contrast compliance.
-- **Navigation:** Sidebar with collapsible 4-phase sections for platform pages and a light topbar for marketing pages.
+- **Navigation:** Simplified 4-item navigation (Why M, How It Works, Playbooks, Pricing) with "More" dropdown for secondary pages. CTAs consolidated to "Try Demo" and "Start Pilot".
 - **Branding:** Consistent "M - Strategic Execution Operating System" branding.
 - **Design System:** Established with 60+ utility classes.
+
+**Homepage Executive-Readiness (Jan 2026):**
+- **Immediate Value Proposition:** No intro gate - visitors see "12 minutes vs 72 hours" problem→solution instantly
+- **AI Era Positioning:** "Your Employees Have AI. Your Organization Doesn't." with visual cards showing Individual Work (SOLVED), Coordination (BROKEN), With M (NOW SOLVED)
+- **M at a Glance Section:** Executive summary with 4 capabilities (Monitor, Activate, Orchestrate, Learn) and 4 key metrics (340X faster, 12 min, 166 playbooks, 10.3% revenue impact)
+- **Research-backed Trust Bar:** IBM/Ponemon ($4.88M breach cost), McKinsey (340X faster), BAI 2025 (10.3% growth) citations
+- **30-Second Comprehension Goal:** Above-the-fold content designed for executives to understand value proposition immediately
 
 **Technical Implementations & Feature Specifications:**
 - **IDEA Framework Phases:**
