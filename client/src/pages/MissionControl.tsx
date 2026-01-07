@@ -208,6 +208,39 @@ export default function MissionControl() {
 
   const [stakeholderStatuses, setStakeholderStatuses] = useState<StakeholderStatus[]>([]);
 
+  // ADVANCE phase - completed executions and lessons learned
+  const [completedExecutions, setCompletedExecutions] = useState<{
+    id: string;
+    name: string;
+    playbook: string;
+    completedAt: string;
+    duration: number;
+    status: 'success' | 'partial';
+    lessonsLearned?: string;
+  }[]>([]);
+
+  const [institutionalLessons, setInstitutionalLessons] = useState<{
+    id: string;
+    insight: string;
+    source: string;
+    appliedTo: number;
+  }[]>([
+    { id: 'l1', insight: 'Early stakeholder notification reduced coordination time by 40%', source: 'Competitor Response', appliedTo: 3 },
+    { id: 'l2', insight: 'Pre-drafted communications saved 15 min per execution', source: 'Crisis Response', appliedTo: 5 }
+  ]);
+
+  // Computed analytics from completed executions
+  const analyticsMetrics = {
+    avgResponseTime: completedExecutions.length > 0 
+      ? (completedExecutions.reduce((sum, e) => sum + e.duration, 0) / completedExecutions.length).toFixed(1)
+      : '8.3',
+    executionsThisMonth: completedExecutions.length + 12, // Include historical
+    successRate: completedExecutions.length > 0 
+      ? Math.round((completedExecutions.filter(e => e.status === 'success').length / completedExecutions.length) * 100)
+      : 94,
+    stakeholderEngagement: 89 + completedExecutions.length * 2 // Improves with more executions
+  };
+
   const handleActivatePlaybook = (trigger: PendingTrigger) => {
     // Remove from pending
     setPendingTriggers(prev => prev.filter(t => t.id !== trigger.id));
@@ -255,25 +288,67 @@ export default function MissionControl() {
       { id: 's5', name: 'Amanda Foster', role: 'Communications Lead', status: 'pending', currentTask: 'Press release draft' }
     ]);
 
-    // Simulate progress
+    // Simulate progress with completion transition
     let progress = 0;
+    const startTime = Date.now();
     const progressInterval = setInterval(() => {
       progress += Math.floor(Math.random() * 15) + 5;
       if (progress >= 100) {
         progress = 100;
         clearInterval(progressInterval);
+        
+        // Move to completed executions (ADVANCE phase)
+        const duration = Math.floor((Date.now() - startTime) / 60000) || 1;
+        setActiveExecutions(prev => prev.filter(e => e.id !== newExecution.id));
+        setCompletedExecutions(prev => [{
+          id: newExecution.id,
+          name: trigger.name,
+          playbook: trigger.suggestedPlaybook,
+          completedAt: new Date().toISOString(),
+          duration,
+          status: 'success'
+        }, ...prev]);
+        
+        // Add completion to timeline
+        setExecutionTimeline(prev => [...prev, {
+          id: `tl-${Date.now()}-complete`,
+          timestamp: new Date().toISOString(),
+          type: 'completion',
+          title: 'Execution Complete',
+          description: `${trigger.suggestedPlaybook} completed successfully in ${duration} min`,
+          actor: 'System'
+        }]);
+        
+        // Add a lesson learned
+        setInstitutionalLessons(prev => [{
+          id: `lesson-${Date.now()}`,
+          insight: `Coordination velocity improved - response completed in ${duration} min`,
+          source: trigger.suggestedPlaybook,
+          appliedTo: 0
+        }, ...prev]);
+        
+        // Update stakeholder statuses to completed
+        setStakeholderStatuses(prev => prev.map(s => ({ ...s, status: 'completed' as const })));
+      } else {
+        setActiveExecutions(prev => prev.map(e => 
+          e.id === newExecution.id 
+            ? { 
+                ...e, 
+                progress,
+                stakeholdersEngaged: Math.min(5, Math.floor(progress / 20)),
+                tasksCompleted: Math.floor((progress / 100) * 12)
+              } 
+            : e
+        ));
+        
+        // Update some stakeholders as they engage
+        if (progress > 20) {
+          setStakeholderStatuses(prev => prev.map((s, i) => 
+            i < Math.floor(progress / 20) ? { ...s, status: 'engaged' as const } : s
+          ));
+        }
       }
-      setActiveExecutions(prev => prev.map(e => 
-        e.id === newExecution.id 
-          ? { 
-              ...e, 
-              progress,
-              stakeholdersEngaged: Math.min(5, Math.floor(progress / 20)),
-              tasksCompleted: Math.floor((progress / 100) * 12)
-            } 
-          : e
-      ));
-    }, 3000);
+    }, 2000); // Faster for demo
   };
 
   const handleDismissTrigger = (triggerId: string) => {
@@ -1265,6 +1340,131 @@ export default function MissionControl() {
               </CardContent>
             </Card>
           </div>
+
+          {/* ADVANCE Phase - Analytics & Lessons Learned */}
+          <Card className="border border-purple-200 dark:border-purple-900">
+            <CardHeader className="pb-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500">
+                    <TrendingUp className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">ADVANCE Analytics</CardTitle>
+                    <CardDescription>Performance insights and institutional learning</CardDescription>
+                  </div>
+                </div>
+                <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">
+                  IDEA Phase 4
+                </Badge>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* Performance Metrics - Dynamic */}
+                <div className="p-4 rounded-xl bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-800">
+                  <h4 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                    <BarChart3 className="h-4 w-4 text-purple-600" />
+                    Performance Trends
+                  </h4>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-slate-600 dark:text-slate-400">Avg Response Time</span>
+                      <span className="font-bold text-emerald-600">{analyticsMetrics.avgResponseTime} min</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-slate-600 dark:text-slate-400">Executions This Month</span>
+                      <span className="font-bold text-slate-900 dark:text-white">{analyticsMetrics.executionsThisMonth}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-slate-600 dark:text-slate-400">Success Rate</span>
+                      <span className="font-bold text-emerald-600">{analyticsMetrics.successRate}%</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-slate-600 dark:text-slate-400">Stakeholder Engagement</span>
+                      <span className="font-bold text-blue-600">{Math.min(analyticsMetrics.stakeholderEngagement, 98)}%</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Recent Completions - Dynamic */}
+                <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                  <h4 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-emerald-600" />
+                    Recent Completions
+                  </h4>
+                  <div className="space-y-3">
+                    {completedExecutions.length > 0 ? (
+                      completedExecutions.slice(0, 3).map(exec => (
+                        <div key={exec.id} className="p-3 rounded-lg bg-white dark:bg-slate-800 border border-emerald-200 dark:border-emerald-800">
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="font-medium text-sm text-slate-900 dark:text-white">{exec.playbook}</span>
+                            <Badge className="bg-emerald-100 text-emerald-700 text-xs">
+                              {exec.status === 'success' ? 'Success' : 'Partial'}
+                            </Badge>
+                          </div>
+                          <div className="text-xs text-slate-500">
+                            Completed in {exec.duration} min • Just now
+                          </div>
+                        </div>
+                      ))
+                    ) : (
+                      <>
+                        <div className="p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="font-medium text-sm text-slate-900 dark:text-white">Market Entry Response</span>
+                            <Badge className="bg-emerald-100 text-emerald-700 text-xs">Success</Badge>
+                          </div>
+                          <div className="text-xs text-slate-500">Completed in 11 min • 2 days ago</div>
+                        </div>
+                        <div className="p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="font-medium text-sm text-slate-900 dark:text-white">Regulatory Filing</span>
+                            <Badge className="bg-emerald-100 text-emerald-700 text-xs">Success</Badge>
+                          </div>
+                          <div className="text-xs text-slate-500">Completed in 9 min • 5 days ago</div>
+                        </div>
+                        <div className="p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="font-medium text-sm text-slate-900 dark:text-white">Crisis Communication</span>
+                            <Badge className="bg-emerald-100 text-emerald-700 text-xs">Success</Badge>
+                          </div>
+                          <div className="text-xs text-slate-500">Completed in 7 min • 1 week ago</div>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                {/* Lessons Learned - Dynamic */}
+                <div className="p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
+                  <h4 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                    <Lightbulb className="h-4 w-4 text-amber-600" />
+                    Lessons Learned ({institutionalLessons.length})
+                  </h4>
+                  <div className="space-y-3">
+                    {institutionalLessons.slice(0, 2).map(lesson => (
+                      <div key={lesson.id} className="p-3 rounded-lg bg-white dark:bg-slate-800 border border-amber-200 dark:border-amber-800">
+                        <p className="text-sm text-slate-700 dark:text-slate-300 mb-2">
+                          "{lesson.insight}"
+                        </p>
+                        <div className="flex items-center gap-2 text-xs text-slate-500">
+                          <span>From: {lesson.source}</span>
+                          <span>•</span>
+                          <span>Applied to {lesson.appliedTo} playbooks</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <Link href="/institutional-memory">
+                    <Button variant="outline" size="sm" className="w-full mt-4 border-amber-300 text-amber-700 hover:bg-amber-100 dark:border-amber-700 dark:text-amber-400 dark:hover:bg-amber-900/30">
+                      View All Learnings
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Value Proposition Footer */}
           <Card className="bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-800 dark:to-slate-900 text-white border-0">
