@@ -550,63 +550,7 @@ export default function MissionControl() {
           {/* Main Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             
-            {/* Signal Intelligence Panel */}
-            <Card className="lg:col-span-1">
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Radar className="h-5 w-5 text-emerald-600" />
-                    <CardTitle className="text-lg">Signal Intelligence</CardTitle>
-                  </div>
-                  <Link href="/signal-intelligence">
-                    <Button variant="ghost" size="sm">
-                      <ExternalLink className="h-4 w-4" />
-                    </Button>
-                  </Link>
-                </div>
-                <CardDescription>16 categories • {totalSignals} data points monitored</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ScrollArea className="h-[400px]">
-                  <div className="space-y-2 pr-2">
-                    {signalSummary.map((signal) => (
-                      <div 
-                        key={signal.category}
-                        className="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
-                      >
-                        <div className="flex items-center gap-3">
-                          <div className={`w-2 h-2 rounded-full ${getStatusColor(signal.status)}`} />
-                          <span className="font-medium text-slate-900 dark:text-white">{signal.name}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          {signal.criticalCount > 0 && (
-                            <Badge variant="destructive" className="text-xs">
-                              {signal.criticalCount} critical
-                            </Badge>
-                          )}
-                          {signal.warningCount > 0 && signal.criticalCount === 0 && (
-                            <Badge variant="outline" className="text-xs text-amber-600 border-amber-300">
-                              {signal.warningCount} warning
-                            </Badge>
-                          )}
-                          <span className="text-sm text-slate-500">{signal.activeCount} active</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </ScrollArea>
-                <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700">
-                  <Link href="/triggers-management">
-                    <Button variant="outline" className="w-full">
-                      <Settings className="h-4 w-4 mr-2" />
-                      Configure Triggers
-                    </Button>
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Playbook Readiness by Strategic Triad */}
+            {/* Playbook Library - First (aligns with IDENTIFY phase) */}
             <Card className="lg:col-span-2">
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
@@ -687,6 +631,62 @@ export default function MissionControl() {
                     </TabsContent>
                   ))}
                 </Tabs>
+              </CardContent>
+            </Card>
+
+            {/* Signal Intelligence Panel - Second (aligns with DETECT phase) */}
+            <Card className="lg:col-span-1">
+              <CardHeader className="pb-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Radar className="h-5 w-5 text-emerald-600" />
+                    <CardTitle className="text-lg">Signal Intelligence</CardTitle>
+                  </div>
+                  <Link href="/signal-intelligence">
+                    <Button variant="ghost" size="sm">
+                      <ExternalLink className="h-4 w-4" />
+                    </Button>
+                  </Link>
+                </div>
+                <CardDescription>16 categories • {totalSignals} data points monitored</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ScrollArea className="h-[400px]">
+                  <div className="space-y-2 pr-2">
+                    {signalSummary.map((signal) => (
+                      <div 
+                        key={signal.category}
+                        className="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className={`w-2 h-2 rounded-full ${getStatusColor(signal.status)}`} />
+                          <span className="font-medium text-slate-900 dark:text-white">{signal.name}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          {signal.criticalCount > 0 && (
+                            <Badge variant="destructive" className="text-xs">
+                              {signal.criticalCount} critical
+                            </Badge>
+                          )}
+                          {signal.warningCount > 0 && signal.criticalCount === 0 && (
+                            <Badge variant="outline" className="text-xs text-amber-600 border-amber-300">
+                              {signal.warningCount} warning
+                            </Badge>
+                          )}
+                          <span className="text-sm text-slate-500">{signal.activeCount} active</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </ScrollArea>
+                <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+                  <Link href="/triggers-management">
+                    <Button variant="outline" className="w-full">
+                      <Settings className="h-4 w-4 mr-2" />
+                      Configure Triggers
+                    </Button>
+                  </Link>
+                </div>
               </CardContent>
             </Card>
           </div>
