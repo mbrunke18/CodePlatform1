@@ -83,7 +83,10 @@ export default function StandardNav() {
                   <ChevronDown className="h-3 w-3" />
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-48">
+              <DropdownMenuContent align="start" className="w-56">
+                <DropdownMenuItem onClick={() => navigateTo("/competitive-positioning")} data-testid="nav-competitive-positioning">
+                  Why M Wins (vs. Competitors)
+                </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => navigateTo("/pilot-program")} data-testid="nav-pilot-program">
                   Pilot Program
                 </DropdownMenuItem>
@@ -221,6 +224,13 @@ export default function StandardNav() {
               {/* More Links - Collapsed section */}
               <p className="px-4 py-2 text-xs text-slate-500 uppercase tracking-wide">More</p>
               <div className="grid grid-cols-2 gap-1">
+                <button
+                  onClick={() => navigateTo("/competitive-positioning")}
+                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg col-span-2"
+                  data-testid="nav-mobile-competitive-positioning"
+                >
+                  Why M Wins (vs. Competitors)
+                </button>
                 <button
                   onClick={() => navigateTo("/research")}
                   className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
