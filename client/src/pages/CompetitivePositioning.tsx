@@ -67,6 +67,78 @@ const crisisNotificationTools = [
   }
 ];
 
+const strategyOKRTools = [
+  {
+    name: 'Workboard',
+    category: 'Strategy Execution',
+    marketPosition: 'OKR and strategy execution platform',
+    focus: 'OKRs, strategic planning, alignment tracking, business reviews',
+    strengths: ['OKR methodology', 'Executive dashboards', 'Alignment visibility', 'Business reviews'],
+    gaps: ['No real-time triggers', 'No crisis playbooks', 'No auto-orchestration', 'No signal detection'],
+    color: 'bg-indigo-500',
+    whenTheyWin: 'Quarterly OKR cadence, strategy alignment reporting',
+    trapQuestion: '"Workboard helps track goals. But when a competitor launches, can it instantly mobilize 6 departments with pre-assigned tasks?"'
+  },
+  {
+    name: 'Quantive (Gtmhub)',
+    category: 'Strategy Execution',
+    marketPosition: 'OKR and goal management',
+    focus: 'OKRs, KPIs, strategic alignment, performance tracking',
+    strengths: ['Goal tracking', 'Integrations', 'Analytics', 'Alignment cascades'],
+    gaps: ['No event-driven activation', 'No playbook library', 'No cross-functional coordination', 'Quarterly not real-time'],
+    color: 'bg-cyan-500',
+    whenTheyWin: 'Data-driven OKR programs, enterprise goal tracking',
+    trapQuestion: '"Quantive tracks whether you hit goals. M ensures you react to threats before they derail those goals."'
+  },
+  {
+    name: 'Perdoo',
+    category: 'OKR Platform',
+    marketPosition: 'Simple OKR software',
+    focus: 'OKRs, KPIs, strategy alignment for mid-market',
+    strengths: ['Ease of use', 'Clean interface', 'Affordable', 'Quick deployment'],
+    gaps: ['No execution orchestration', 'No external signals', 'No crisis response', 'No institutional learning'],
+    color: 'bg-teal-500',
+    whenTheyWin: 'Mid-market OKR adoption, simplicity-first teams',
+    trapQuestion: '"OKRs measure progress. M drives action when that progress is threatened."'
+  }
+];
+
+const automationTools = [
+  {
+    name: 'Zapier',
+    category: 'Workflow Automation',
+    marketPosition: 'No-code automation leader',
+    focus: 'App integrations, trigger-based workflows, task automation',
+    strengths: ['5000+ app connections', 'No-code', 'Quick setup', 'Affordable'],
+    gaps: ['No strategic context', 'No playbook library', 'No human decision points', 'No institutional memory'],
+    color: 'bg-orange-500',
+    whenTheyWin: 'Simple task automation, individual productivity',
+    trapQuestion: '"Zapier automates tasks. Can it orchestrate a 50-task, 6-department response with human approval gates and budget unlocks?"'
+  },
+  {
+    name: 'Make (Integromat)',
+    category: 'Workflow Automation',
+    marketPosition: 'Visual automation platform',
+    focus: 'Complex workflows, data transformation, API integrations',
+    strengths: ['Visual builder', 'Complex logic', 'Data manipulation', 'Affordable'],
+    gaps: ['No strategic intelligence', 'No enterprise playbooks', 'No stakeholder coordination', 'No decision velocity'],
+    color: 'bg-violet-500',
+    whenTheyWin: 'Technical teams, complex data workflows',
+    trapQuestion: '"Make connects systems. M coordinates humans with pre-defined strategic responses."'
+  },
+  {
+    name: 'Workato',
+    category: 'Enterprise Automation',
+    marketPosition: 'Enterprise integration platform',
+    focus: 'Enterprise iPaaS, workflow automation, data integration',
+    strengths: ['Enterprise-grade', 'AI features', 'Security/compliance', 'Deep integrations'],
+    gaps: ['IT-centric', 'No strategic playbooks', 'No signal monitoring', 'No cross-functional execution'],
+    color: 'bg-rose-500',
+    whenTheyWin: 'IT-led automation, enterprise integration projects',
+    trapQuestion: '"Workato integrates systems. But when a cyber breach hits, can it activate Legal, Comms, IT, and HR with pre-staged documents in 12 minutes?"'
+  }
+];
+
 const projectManagementTools = [
   {
     name: 'Jira',
@@ -115,16 +187,18 @@ const projectManagementTools = [
 ];
 
 const categoryComparison = [
-  { capability: 'Detects strategic triggers proactively', crisisTools: 'partial', pmTools: false, m: true },
-  { capability: 'Pre-built playbooks with assigned tasks', crisisTools: false, pmTools: false, m: true },
-  { capability: 'Auto-creates project on activation', crisisTools: false, pmTools: false, m: true },
-  { capability: 'Assigns tasks to specific owners', crisisTools: false, pmTools: 'manual', m: true },
-  { capability: 'Stages required documents', crisisTools: false, pmTools: 'manual', m: true },
-  { capability: 'Unlocks pre-approved budgets', crisisTools: false, pmTools: false, m: true },
-  { capability: 'Syncs to existing PM tools (Jira, etc.)', crisisTools: false, pmTools: 'native', m: true },
-  { capability: '12-minute coordinated response', crisisTools: false, pmTools: false, m: true },
-  { capability: 'AI-powered recommendations', crisisTools: 'partial', pmTools: false, m: true },
-  { capability: 'Institutional learning loop', crisisTools: false, pmTools: false, m: true },
+  { capability: 'Detects strategic triggers proactively', crisisTools: 'partial', pmTools: false, okrTools: false, automationTools: 'partial', m: true },
+  { capability: 'Pre-built playbooks with assigned tasks', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, m: true },
+  { capability: 'Auto-creates project on activation', crisisTools: false, pmTools: false, okrTools: false, automationTools: 'partial', m: true },
+  { capability: 'Assigns tasks to specific owners', crisisTools: false, pmTools: 'manual', okrTools: 'manual', automationTools: false, m: true },
+  { capability: 'Stages required documents', crisisTools: false, pmTools: 'manual', okrTools: false, automationTools: false, m: true },
+  { capability: 'Unlocks pre-approved budgets', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, m: true },
+  { capability: 'Syncs to existing PM tools (Jira, etc.)', crisisTools: false, pmTools: 'native', okrTools: 'partial', automationTools: true, m: true },
+  { capability: '12-minute coordinated response', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, m: true },
+  { capability: 'AI-powered recommendations', crisisTools: 'partial', pmTools: false, okrTools: false, automationTools: 'partial', m: true },
+  { capability: 'Human decision gates', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, m: true },
+  { capability: 'Cross-functional coordination', crisisTools: 'partial', pmTools: 'partial', okrTools: 'partial', automationTools: false, m: true },
+  { capability: 'Institutional learning loop', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, m: true },
 ];
 
 const objections = [
@@ -157,6 +231,16 @@ const objections = [
     objection: '"How is this different from AI agents?"',
     response: 'AI agents introduce unpredictability—you don\'t know what they\'ll do. M provides deterministic execution: pre-defined playbooks where AI recommends and humans decide. You get speed without surprises.',
     category: 'Technology'
+  },
+  {
+    objection: '"We use Workboard/Quantive for strategy execution."',
+    response: 'OKR tools measure progress on a quarterly cadence. M activates responses in minutes when strategic events threaten those goals. Workboard tells you if you\'re on track; M ensures threats don\'t derail you.',
+    category: 'OKR Tools'
+  },
+  {
+    objection: '"Can\'t we just build this with Zapier/Make?"',
+    response: 'Automation tools connect apps. M orchestrates humans. You can\'t Zap your way to cross-functional coordination with human decision gates, pre-approved budgets, and institutional learning. M is the strategic layer above automation.',
+    category: 'Automation'
   }
 ];
 
@@ -337,14 +421,22 @@ export default function CompetitivePositioning() {
             </div>
 
             <Tabs defaultValue="crisis" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 mb-8" data-testid="tabs-competitor-categories">
-                <TabsTrigger value="crisis" className="flex items-center gap-2" data-testid="tab-crisis-tools">
+              <TabsList className="grid w-full grid-cols-4 mb-8" data-testid="tabs-competitor-categories">
+                <TabsTrigger value="crisis" className="flex items-center gap-2 text-xs sm:text-sm" data-testid="tab-crisis-tools">
                   <Bell className="w-4 h-4" />
-                  Crisis Notification Tools
+                  <span className="hidden sm:inline">Crisis Tools</span>
                 </TabsTrigger>
-                <TabsTrigger value="pm" className="flex items-center gap-2" data-testid="tab-pm-tools">
+                <TabsTrigger value="pm" className="flex items-center gap-2 text-xs sm:text-sm" data-testid="tab-pm-tools">
                   <Settings className="w-4 h-4" />
-                  Project Management Tools
+                  <span className="hidden sm:inline">PM Tools</span>
+                </TabsTrigger>
+                <TabsTrigger value="okr" className="flex items-center gap-2 text-xs sm:text-sm" data-testid="tab-okr-tools">
+                  <Target className="w-4 h-4" />
+                  <span className="hidden sm:inline">OKR/Strategy</span>
+                </TabsTrigger>
+                <TabsTrigger value="automation" className="flex items-center gap-2 text-xs sm:text-sm" data-testid="tab-automation-tools">
+                  <Zap className="w-4 h-4" />
+                  <span className="hidden sm:inline">Automation</span>
                 </TabsTrigger>
               </TabsList>
 
@@ -455,6 +547,108 @@ export default function CompetitivePositioning() {
                   ))}
                 </div>
               </TabsContent>
+
+              <TabsContent value="okr">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                  {strategyOKRTools.map((tool) => (
+                    <Card key={tool.name} className="border-t-4 hover:shadow-lg transition-shadow" style={{ borderTopColor: tool.color.includes('indigo') ? '#6366f1' : tool.color.includes('cyan') ? '#06b6d4' : '#14b8a6' }} data-testid={`card-competitor-${tool.name.toLowerCase().replace(/[()]/g, '')}`}>
+                      <CardHeader className="pb-3">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className={`w-10 h-10 rounded-full ${tool.color} flex items-center justify-center`}>
+                              <span className="text-white font-bold">{tool.name.charAt(0)}</span>
+                            </div>
+                            <div>
+                              <CardTitle className="text-lg">{tool.name}</CardTitle>
+                              <Badge variant="outline" className="text-xs">{tool.category}</Badge>
+                            </div>
+                          </div>
+                        </div>
+                        <CardDescription className="mt-2">{tool.marketPosition}</CardDescription>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div>
+                          <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">Their Strengths</div>
+                          <ul className="space-y-1">
+                            {tool.strengths.map((s, i) => (
+                              <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" /> {s}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps M Fills</div>
+                          <ul className="space-y-1">
+                            {tool.gaps.map((g, i) => (
+                              <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                                <Zap className="w-3 h-3 text-blue-500 flex-shrink-0" /> {g}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
+                          <div className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 flex items-center gap-1">
+                            <MessageSquare className="w-3 h-3" /> Trap Question
+                          </div>
+                          <p className="text-xs text-blue-600 dark:text-blue-400 italic">{tool.trapQuestion}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="automation">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                  {automationTools.map((tool) => (
+                    <Card key={tool.name} className="border-t-4 hover:shadow-lg transition-shadow" style={{ borderTopColor: tool.color.includes('orange') ? '#f97316' : tool.color.includes('violet') ? '#8b5cf6' : '#f43f5e' }} data-testid={`card-competitor-${tool.name.toLowerCase().replace(/[()]/g, '')}`}>
+                      <CardHeader className="pb-3">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className={`w-10 h-10 rounded-full ${tool.color} flex items-center justify-center`}>
+                              <span className="text-white font-bold">{tool.name.charAt(0)}</span>
+                            </div>
+                            <div>
+                              <CardTitle className="text-lg">{tool.name}</CardTitle>
+                              <Badge variant="outline" className="text-xs">{tool.category}</Badge>
+                            </div>
+                          </div>
+                        </div>
+                        <CardDescription className="mt-2">{tool.marketPosition}</CardDescription>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div>
+                          <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">Their Strengths</div>
+                          <ul className="space-y-1">
+                            {tool.strengths.map((s, i) => (
+                              <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" /> {s}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps M Fills</div>
+                          <ul className="space-y-1">
+                            {tool.gaps.map((g, i) => (
+                              <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                                <Zap className="w-3 h-3 text-blue-500 flex-shrink-0" /> {g}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
+                          <div className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 flex items-center gap-1">
+                            <MessageSquare className="w-3 h-3" /> Trap Question
+                          </div>
+                          <p className="text-xs text-blue-600 dark:text-blue-400 italic">{tool.trapQuestion}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
             </Tabs>
           </div>
         </section>
@@ -464,10 +658,10 @@ export default function CompetitivePositioning() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-category-comparison">
-                Three Categories, One Gap
+                Four Categories, One Gap
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400">
-                M is the only platform that bridges detection and execution
+                M is the only platform that bridges detection, coordination, and execution
               </p>
             </div>
 
@@ -477,22 +671,34 @@ export default function CompetitivePositioning() {
                   <thead>
                     <tr className="border-b bg-slate-50 dark:bg-slate-800/50">
                       <th className="text-left p-4 font-semibold text-slate-900 dark:text-white">Capability</th>
-                      <th className="text-center p-4">
+                      <th className="text-center p-3">
                         <div className="flex flex-col items-center">
-                          <Bell className="w-5 h-5 text-red-500 mb-1" />
-                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Crisis Tools</span>
+                          <Bell className="w-4 h-4 text-red-500 mb-1" />
+                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Crisis</span>
                         </div>
                       </th>
-                      <th className="text-center p-4">
+                      <th className="text-center p-3">
                         <div className="flex flex-col items-center">
-                          <Settings className="w-5 h-5 text-green-500 mb-1" />
-                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">PM Tools</span>
+                          <Settings className="w-4 h-4 text-green-500 mb-1" />
+                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">PM</span>
                         </div>
                       </th>
-                      <th className="text-center p-4 bg-blue-50 dark:bg-blue-900/20">
+                      <th className="text-center p-3">
                         <div className="flex flex-col items-center">
-                          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mb-1">
-                            <span className="text-white font-bold text-sm">M</span>
+                          <Target className="w-4 h-4 text-indigo-500 mb-1" />
+                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">OKR</span>
+                        </div>
+                      </th>
+                      <th className="text-center p-3">
+                        <div className="flex flex-col items-center">
+                          <Zap className="w-4 h-4 text-orange-500 mb-1" />
+                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Automation</span>
+                        </div>
+                      </th>
+                      <th className="text-center p-3 bg-blue-50 dark:bg-blue-900/20">
+                        <div className="flex flex-col items-center">
+                          <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mb-1">
+                            <span className="text-white font-bold text-xs">M</span>
                           </div>
                           <span className="text-xs font-bold text-blue-600 dark:text-blue-400">M</span>
                         </div>
@@ -503,22 +709,33 @@ export default function CompetitivePositioning() {
                     {categoryComparison.map((row, i) => (
                       <tr key={i} className="border-b last:border-0 hover:bg-slate-50 dark:hover:bg-slate-800/30">
                         <td className="p-4 text-sm text-slate-700 dark:text-slate-300">{row.capability}</td>
-                        <td className="p-4 text-center">
-                          {row.crisisTools === true && <CheckCircle className="w-5 h-5 text-emerald-500 mx-auto" />}
-                          {row.crisisTools === false && <XCircle className="w-5 h-5 text-slate-300 dark:text-slate-600 mx-auto" />}
-                          {row.crisisTools === 'partial' && <Minus className="w-5 h-5 text-amber-500 mx-auto" />}
+                        <td className="p-3 text-center">
+                          {row.crisisTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
+                          {row.crisisTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-600 mx-auto" />}
+                          {row.crisisTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
                           {row.crisisTools === 'manual' && <span className="text-xs text-slate-500">Manual</span>}
                           {row.crisisTools === 'native' && <span className="text-xs text-slate-500">N/A</span>}
                         </td>
-                        <td className="p-4 text-center">
-                          {row.pmTools === true && <CheckCircle className="w-5 h-5 text-emerald-500 mx-auto" />}
-                          {row.pmTools === false && <XCircle className="w-5 h-5 text-slate-300 dark:text-slate-600 mx-auto" />}
-                          {row.pmTools === 'partial' && <Minus className="w-5 h-5 text-amber-500 mx-auto" />}
+                        <td className="p-3 text-center">
+                          {row.pmTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
+                          {row.pmTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-600 mx-auto" />}
+                          {row.pmTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
                           {row.pmTools === 'manual' && <span className="text-xs text-slate-500">Manual</span>}
                           {row.pmTools === 'native' && <span className="text-xs text-slate-500">N/A</span>}
                         </td>
-                        <td className="p-4 text-center bg-blue-50/50 dark:bg-blue-900/10">
-                          {row.m === true && <CheckCircle className="w-5 h-5 text-blue-500 mx-auto" />}
+                        <td className="p-3 text-center">
+                          {row.okrTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
+                          {row.okrTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-600 mx-auto" />}
+                          {row.okrTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
+                          {row.okrTools === 'manual' && <span className="text-xs text-slate-500">Manual</span>}
+                        </td>
+                        <td className="p-3 text-center">
+                          {row.automationTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
+                          {row.automationTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-600 mx-auto" />}
+                          {row.automationTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
+                        </td>
+                        <td className="p-3 text-center bg-blue-50/50 dark:bg-blue-900/10">
+                          {row.m === true && <CheckCircle className="w-4 h-4 text-blue-500 mx-auto" />}
                         </td>
                       </tr>
                     ))}
