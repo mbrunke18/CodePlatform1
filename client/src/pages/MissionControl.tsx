@@ -295,115 +295,254 @@ export default function MissionControl() {
             </motion.div>
           </div>
 
-          {/* IDEA Framework Visual */}
+          {/* IDEA Runway - Operational Journey */}
           <Card className="border-2 border-slate-200 dark:border-slate-700 overflow-hidden">
-            <CardHeader className="bg-gradient-to-r from-slate-50 to-white dark:from-slate-800/50 dark:to-slate-800 border-b border-slate-200 dark:border-slate-700">
+            <CardHeader className="bg-gradient-to-r from-blue-50 via-purple-50 to-emerald-50 dark:from-slate-800/80 dark:via-slate-800/60 dark:to-slate-800/80 border-b border-slate-200 dark:border-slate-700">
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle className="text-xl">IDEA Framework</CardTitle>
-                  <CardDescription>Your 4-phase strategic execution lifecycle</CardDescription>
+                  <CardTitle className="text-xl flex items-center gap-2">
+                    <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent">
+                      IDEA Runway
+                    </span>
+                    <span className="text-slate-600 dark:text-slate-300">— Your Operational Journey</span>
+                  </CardTitle>
+                  <CardDescription className="mt-1">
+                    Follow this path to achieve 12-minute coordinated response to any strategic event
+                  </CardDescription>
                 </div>
                 <Badge variant="outline" className="bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-700">
                   <Sparkles className="h-3 w-3 mr-1" />
-                  AI-Powered
+                  AI-Assisted
                 </Badge>
               </div>
             </CardHeader>
             <CardContent className="p-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {Object.values(IDEA_PHASES).map((phase, index) => {
-                  const PhaseIcon = phaseIcons[phase.icon] || Radio;
-                  const isActive = activePhase === phase.id;
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                {/* Phase 1: IDENTIFY - Build Playbooks */}
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  className="relative rounded-xl border-2 border-blue-200 dark:border-blue-800 bg-gradient-to-b from-blue-50 to-white dark:from-blue-950/30 dark:to-slate-900"
+                >
+                  <div className="hidden lg:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10">
+                    <ArrowRight className="h-7 w-7 text-slate-300 dark:text-slate-600" />
+                  </div>
                   
-                  return (
-                    <motion.div
-                      key={phase.id}
-                      whileHover={{ y: -4, scale: 1.02 }}
-                      onClick={() => setActivePhase(isActive ? null : phase.id)}
-                      className={`relative cursor-pointer rounded-xl border-2 transition-all duration-300 ${
-                        isActive 
-                          ? `border-[${phase.color}] shadow-lg` 
-                          : 'border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600'
-                      }`}
-                      style={{
-                        borderColor: isActive ? phase.color : undefined,
-                        boxShadow: isActive ? `0 10px 40px -15px ${phase.color}40` : undefined
-                      }}
-                    >
-                      {/* Connection Arrow */}
-                      {index < 3 && (
-                        <div className="hidden lg:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10">
-                          <ArrowRight className="h-6 w-6 text-slate-300 dark:text-slate-600" />
-                        </div>
-                      )}
-                      
-                      <div className="p-5">
-                        <div className="flex items-start justify-between mb-4">
-                          <div 
-                            className="p-3 rounded-xl"
-                            style={{ backgroundColor: `${phase.color}15` }}
-                          >
-                            <PhaseIcon 
-                              className="h-6 w-6"
-                              style={{ color: phase.color }}
-                            />
-                          </div>
-                          <Badge 
-                            variant="outline" 
-                            className="text-xs font-mono"
-                            style={{ 
-                              borderColor: phase.color,
-                              color: phase.color
-                            }}
-                          >
-                            Phase {index + 1}
-                          </Badge>
-                        </div>
-                        
-                        <h3 
-                          className="text-lg font-bold mb-1"
-                          style={{ color: phase.color }}
-                        >
-                          {phase.name}
-                        </h3>
-                        <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                          {phase.subtitle}
-                        </p>
-                        
-                        <div className="space-y-2 mb-4">
-                          <div className="flex items-center justify-between text-sm">
-                            <span className="text-slate-500 dark:text-slate-400">{phase.metrics.primary}</span>
-                            <span className="font-semibold text-slate-900 dark:text-white">
-                              {phase.id === 'identify' ? '166' : 
-                               phase.id === 'detect' ? '120+' : 
-                               phase.id === 'execute' ? '12 min' : '94%'}
-                            </span>
-                          </div>
-                          <Progress 
-                            value={phase.id === 'identify' ? 100 : phase.id === 'detect' ? 85 : phase.id === 'execute' ? 100 : 94} 
-                            className="h-1.5"
-                          />
-                        </div>
-
-                        <Link href={
-                          phase.id === 'identify' ? '/playbook-library' :
-                          phase.id === 'detect' ? '/signal-intelligence' :
-                          phase.id === 'execute' ? '/command-center' :
-                          '/institutional-memory'
-                        }>
-                          <Button 
-                            variant="ghost" 
-                            size="sm" 
-                            className="w-full justify-between hover:bg-slate-100 dark:hover:bg-slate-700"
-                          >
-                            <span>Open {phase.name}</span>
-                            <ChevronRight className="h-4 w-4" />
-                          </Button>
-                        </Link>
+                  <div className="p-5">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2.5 rounded-xl bg-blue-100 dark:bg-blue-900/50">
+                        <ClipboardList className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                       </div>
-                    </motion.div>
-                  );
-                })}
+                      <div>
+                        <Badge variant="outline" className="text-xs font-mono text-blue-600 border-blue-300">Step 1</Badge>
+                        <h3 className="text-lg font-bold text-blue-700 dark:text-blue-400">IDENTIFY</h3>
+                      </div>
+                    </div>
+                    
+                    <p className="text-sm font-medium text-slate-800 dark:text-slate-200 mb-2">
+                      Build or Choose Playbooks
+                    </p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                      Pre-stage stakeholders, tasks, budgets, and communication templates for instant activation.
+                    </p>
+                    
+                    <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-3 mb-4">
+                      <div className="flex justify-between text-sm mb-2">
+                        <span className="text-slate-600 dark:text-slate-400">Playbooks Ready</span>
+                        <span className="font-bold text-blue-700 dark:text-blue-300">{playbooks.length || 166}</span>
+                      </div>
+                      <Progress value={85} className="h-1.5 bg-blue-100 dark:bg-blue-900" />
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">85% with full stakeholder assignments</p>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Link href="/playbook-library">
+                        <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                          <BookOpen className="h-4 w-4 mr-2" />
+                          Browse 166 Playbooks
+                        </Button>
+                      </Link>
+                      <Link href="/playbooks/create">
+                        <Button variant="outline" size="sm" className="w-full border-blue-300 text-blue-700 hover:bg-blue-50 dark:border-blue-700 dark:text-blue-400 dark:hover:bg-blue-900/30">
+                          Build Custom Playbook
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Phase 2: DETECT - Configure Triggers */}
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  className="relative rounded-xl border-2 border-emerald-200 dark:border-emerald-800 bg-gradient-to-b from-emerald-50 to-white dark:from-emerald-950/30 dark:to-slate-900"
+                >
+                  <div className="hidden lg:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10">
+                    <ArrowRight className="h-7 w-7 text-slate-300 dark:text-slate-600" />
+                  </div>
+                  
+                  <div className="p-5">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2.5 rounded-xl bg-emerald-100 dark:bg-emerald-900/50">
+                        <Radar className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
+                      </div>
+                      <div>
+                        <Badge variant="outline" className="text-xs font-mono text-emerald-600 border-emerald-300">Step 2</Badge>
+                        <h3 className="text-lg font-bold text-emerald-700 dark:text-emerald-400">DETECT</h3>
+                      </div>
+                    </div>
+                    
+                    <p className="text-sm font-medium text-slate-800 dark:text-slate-200 mb-2">
+                      Configure Activation Triggers
+                    </p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                      Define which signals auto-activate your playbooks so you never miss a critical event.
+                    </p>
+                    
+                    <div className="bg-emerald-50 dark:bg-emerald-900/30 rounded-lg p-3 mb-4">
+                      <div className="flex justify-between text-sm mb-2">
+                        <span className="text-slate-600 dark:text-slate-400">Active Triggers</span>
+                        <span className="font-bold text-emerald-700 dark:text-emerald-300">{activeTriggers}</span>
+                      </div>
+                      <Progress value={75} className="h-1.5 bg-emerald-100 dark:bg-emerald-900" />
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Monitoring {totalSignals}+ data points</p>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Link href="/triggers-management">
+                        <Button size="sm" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white">
+                          <Bell className="h-4 w-4 mr-2" />
+                          Manage Triggers
+                        </Button>
+                      </Link>
+                      <Link href="/signal-intelligence">
+                        <Button variant="outline" size="sm" className="w-full border-emerald-300 text-emerald-700 hover:bg-emerald-50 dark:border-emerald-700 dark:text-emerald-400 dark:hover:bg-emerald-900/30">
+                          View Signal Categories
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Phase 3: EXECUTE - Coordinate Response */}
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  className="relative rounded-xl border-2 border-amber-200 dark:border-amber-800 bg-gradient-to-b from-amber-50 to-white dark:from-amber-950/30 dark:to-slate-900"
+                >
+                  <div className="hidden lg:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10">
+                    <ArrowRight className="h-7 w-7 text-slate-300 dark:text-slate-600" />
+                  </div>
+                  
+                  <div className="p-5">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2.5 rounded-xl bg-amber-100 dark:bg-amber-900/50">
+                        <Play className="h-6 w-6 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <div>
+                        <Badge variant="outline" className="text-xs font-mono text-amber-600 border-amber-300">Step 3</Badge>
+                        <h3 className="text-lg font-bold text-amber-700 dark:text-amber-400">EXECUTE</h3>
+                      </div>
+                    </div>
+                    
+                    <p className="text-sm font-medium text-slate-800 dark:text-slate-200 mb-2">
+                      Coordinate Response
+                    </p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                      When triggered, everyone knows their role. Tasks assigned, budgets unlocked, comms staged.
+                    </p>
+                    
+                    <div className="bg-amber-50 dark:bg-amber-900/30 rounded-lg p-3 mb-4">
+                      <div className="flex justify-between text-sm mb-2">
+                        <span className="text-slate-600 dark:text-slate-400">Response Time</span>
+                        <span className="font-bold text-amber-700 dark:text-amber-300">12 minutes</span>
+                      </div>
+                      <Progress value={100} className="h-1.5 bg-amber-100 dark:bg-amber-900" />
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">vs. 72-hour industry average</p>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Link href="/command-center">
+                        <Button size="sm" className="w-full bg-amber-600 hover:bg-amber-700 text-white">
+                          <PlayCircle className="h-4 w-4 mr-2" />
+                          Open Command Center
+                        </Button>
+                      </Link>
+                      <Link href="/stakeholder-management">
+                        <Button variant="outline" size="sm" className="w-full border-amber-300 text-amber-700 hover:bg-amber-50 dark:border-amber-700 dark:text-amber-400 dark:hover:bg-amber-900/30">
+                          View Stakeholder Roles
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Phase 4: ADVANCE - Learn & Improve */}
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  className="relative rounded-xl border-2 border-purple-200 dark:border-purple-800 bg-gradient-to-b from-purple-50 to-white dark:from-purple-950/30 dark:to-slate-900"
+                >
+                  <div className="p-5">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2.5 rounded-xl bg-purple-100 dark:bg-purple-900/50">
+                        <TrendingUp className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                      </div>
+                      <div>
+                        <Badge variant="outline" className="text-xs font-mono text-purple-600 border-purple-300">Step 4</Badge>
+                        <h3 className="text-lg font-bold text-purple-700 dark:text-purple-400">ADVANCE</h3>
+                      </div>
+                    </div>
+                    
+                    <p className="text-sm font-medium text-slate-800 dark:text-slate-200 mb-2">
+                      Review & Improve
+                    </p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                      Capture lessons learned. AI analyzes patterns and suggests playbook refinements.
+                    </p>
+                    
+                    <div className="bg-purple-50 dark:bg-purple-900/30 rounded-lg p-3 mb-4">
+                      <div className="flex justify-between text-sm mb-2">
+                        <span className="text-slate-600 dark:text-slate-400">Improvement Rate</span>
+                        <span className="font-bold text-purple-700 dark:text-purple-300">94%</span>
+                      </div>
+                      <Progress value={94} className="h-1.5 bg-purple-100 dark:bg-purple-900" />
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Playbooks refined from learnings</p>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Link href="/institutional-memory">
+                        <Button size="sm" className="w-full bg-purple-600 hover:bg-purple-700 text-white">
+                          <Lightbulb className="h-4 w-4 mr-2" />
+                          View Lessons Learned
+                        </Button>
+                      </Link>
+                      <Link href="/playbook-readiness-audit">
+                        <Button variant="outline" size="sm" className="w-full border-purple-300 text-purple-700 hover:bg-purple-50 dark:border-purple-700 dark:text-purple-400 dark:hover:bg-purple-900/30">
+                          Run Readiness Audit
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+              
+              {/* Quick Start CTA */}
+              <div className="mt-6 p-4 bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600">
+                      <Zap className="h-5 w-5 text-white" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-slate-900 dark:text-white">Ready to see it in action?</p>
+                      <p className="text-sm text-slate-500 dark:text-slate-400">Experience a live trigger→execution flow in 3 minutes</p>
+                    </div>
+                  </div>
+                  <Link href="/pilot-demo">
+                    <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
+                      <Play className="h-4 w-4 mr-2" />
+                      Try Live Demo
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </CardContent>
           </Card>
