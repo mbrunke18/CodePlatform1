@@ -14,6 +14,7 @@ async function getSendGridClient() {
     : null;
 
   if (!xReplitToken || !hostname) {
+    console.log('[SendGrid] Missing connector credentials (hostname or token)');
     return null;
   }
 
@@ -31,16 +32,18 @@ async function getSendGridClient() {
     const connectionSettings = data.items?.[0];
 
     if (!connectionSettings || !connectionSettings.settings?.api_key || !connectionSettings.settings?.from_email) {
+      console.log('[SendGrid] Connection settings not found or incomplete');
       return null;
     }
     
+    console.log('[SendGrid] Credentials retrieved, from email:', connectionSettings.settings.from_email);
     sgMail.setApiKey(connectionSettings.settings.api_key);
     return {
       client: sgMail,
       fromEmail: connectionSettings.settings.from_email
     };
   } catch (error) {
-    console.error('Failed to get SendGrid client:', error);
+    console.error('[SendGrid] Failed to get client:', error);
     return null;
   }
 }
