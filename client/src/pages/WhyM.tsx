@@ -216,56 +216,15 @@ export default function WhyM() {
             </Card>
           </div>
 
-          <div className="text-center mb-12">
-            <h3 className="text-2xl font-bold text-foreground mb-4">The Market Evidence</h3>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <Card className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border-amber-500/20">
-              <CardContent className="p-6 text-center">
-                <TrendingUp className="h-8 w-8 text-amber-500 mx-auto mb-3" />
-                <div className="text-4xl font-bold text-amber-500 mb-2">89%</div>
-                <p className="text-sm text-muted-foreground">Say resilience is a top strategic priority</p>
-                <p className="text-xs text-muted-foreground/60 mt-2">Source: PwC 2023</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-gradient-to-br from-red-500/10 to-red-600/5 border-red-500/20">
-              <CardContent className="p-6 text-center">
-                <AlertTriangle className="h-8 w-8 text-red-500 mx-auto mb-3" />
-                <div className="text-4xl font-bold text-red-500 mb-2">91%</div>
-                <p className="text-sm text-muted-foreground">Experienced major disruption beyond COVID</p>
-                <p className="text-xs text-muted-foreground/60 mt-2">Source: PwC 2023</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-gradient-to-br from-orange-500/10 to-orange-600/5 border-orange-500/20">
-              <CardContent className="p-6 text-center">
-                <Timer className="h-8 w-8 text-orange-500 mx-auto mb-3" />
-                <div className="text-4xl font-bold text-orange-500 mb-2">3.5</div>
-                <p className="text-sm text-muted-foreground">Average disruptions every 2 years</p>
-                <p className="text-xs text-muted-foreground/60 mt-2">Source: PwC 2023</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-gradient-to-br from-purple-500/10 to-purple-600/5 border-purple-500/20">
-              <CardContent className="p-6 text-center">
-                <DollarSign className="h-8 w-8 text-purple-500 mx-auto mb-3" />
-                <div className="text-4xl font-bold text-purple-500 mb-2">70%</div>
-                <p className="text-sm text-muted-foreground">Report significant business impact</p>
-                <p className="text-xs text-muted-foreground/60 mt-2">Source: PwC 2023</p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="flex justify-center gap-4">
-            <Link href="/research">
-              <Button variant="outline" className="border-amber-500 text-amber-600 hover:bg-amber-500/10">
-                View Full Research
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </div>
+          <Card className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-amber-500/30">
+            <CardContent className="p-6 text-center">
+              <Lightbulb className="h-10 w-10 text-amber-500 mx-auto mb-3" />
+              <p className="text-lg font-semibold text-foreground max-w-2xl mx-auto">
+                The gap between strategic intent and operational reality has never been wider. 
+                M was built to close it.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -801,64 +760,171 @@ export default function WhyM() {
         </div>
       </section>
 
-      {/* What The Research Shows */}
+      {/* Research Foundation */}
       <section className="py-16 px-6 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-blue-500 text-white border-0">
               <BarChart3 className="w-4 h-4 mr-2" />
-              Industry Research
+              Research Foundation
             </Badge>
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              What the Research Proves
+              The Evidence Behind M
             </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Independent research validates every principle M is built on.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            <Card className="border-2 hover:border-primary/30 transition-colors">
-              <CardContent className="p-6">
-                <Quote className="h-8 w-8 text-primary mb-4 opacity-40" />
-                <p className="text-foreground mb-4 italic">
-                  "Organizations with pre-defined incident response teams save 35% more on 
-                  breach-related costs than those that improvise."
+          {/* The AI Amplification Effect */}
+          <div className="mb-12">
+            <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+              <Brain className="h-6 w-6 text-purple-500" />
+              The AI Amplification Effect
+            </h3>
+            <Card className="border-2 border-purple-500/30 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-950/20 dark:to-blue-950/20">
+              <CardContent className="p-8">
+                <Quote className="h-10 w-10 text-purple-500 mb-4 opacity-60" />
+                <blockquote className="text-lg md:text-xl text-foreground mb-4 italic">
+                  "AI does not create an advantage on its own. It amplifies the organization in which it is embedded. 
+                  In companies with strong business agility, AI accelerates learning, innovation, and value creation. 
+                  In those without it, AI exposes structural friction, leadership gaps, and brittle decision systems at speed."
+                </blockquote>
+                <p className="text-sm text-muted-foreground font-medium mb-4">
+                  — Business Agility Institute, 2025 Business Agility Report
                 </p>
-                <p className="text-sm text-muted-foreground font-medium">
-                  — IBM/Ponemon Institute, 2024
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 hover:border-primary/30 transition-colors">
-              <CardContent className="p-6">
-                <Quote className="h-8 w-8 text-primary mb-4 opacity-40" />
-                <p className="text-foreground mb-4 italic">
-                  "The first 72 hours of a crisis are critical. Organizations that contain incidents 
-                  quickly save an average of $1.76M."
-                </p>
-                <p className="text-sm text-muted-foreground font-medium">
-                  — McKinsey / IBM 2024
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 hover:border-primary/30 transition-colors">
-              <CardContent className="p-6">
-                <Quote className="h-8 w-8 text-primary mb-4 opacity-40" />
-                <p className="text-foreground mb-4 italic">
-                  "89% of business leaders say resilience is one of their most important 
-                  strategic organizational priorities."
-                </p>
-                <p className="text-sm text-muted-foreground font-medium">
-                  — PwC Global Crisis Survey, 2023
-                </p>
+                <div className="p-4 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
+                  <p className="text-sm font-medium text-purple-700 dark:text-purple-300">
+                    This is exactly M's thesis: "Your Employees Have AI. Your Organization Doesn't." 
+                    Individual AI productivity doesn't help if organizational coordination is still broken.
+                  </p>
+                </div>
               </CardContent>
             </Card>
           </div>
+
+          {/* The Adaptability Imperative */}
+          <div className="mb-12">
+            <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+              <TrendingUp className="h-6 w-6 text-emerald-500" />
+              The Adaptability Imperative
+            </h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card className="border-2 border-emerald-500/30">
+                <CardContent className="p-6">
+                  <Quote className="h-8 w-8 text-emerald-500 mb-4 opacity-40" />
+                  <p className="text-foreground mb-4 italic">
+                    "The future will not reward the fastest organizations; only the most adaptable ones will."
+                  </p>
+                  <p className="text-sm text-muted-foreground font-medium">
+                    — Business Agility Institute, 2025
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className="border-2 border-emerald-500/30">
+                <CardContent className="p-6">
+                  <div className="text-4xl font-bold text-emerald-500 mb-2">10.3%</div>
+                  <p className="text-foreground mb-2">
+                    Revenue per employee increase for organizations that improved their business agility capabilities.
+                  </p>
+                  <p className="text-sm text-muted-foreground font-medium">
+                    — Business Agility Institute, 2025
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* The Coordination Gap */}
+          <div className="mb-12">
+            <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+              <Clock className="h-6 w-6 text-amber-500" />
+              The Coordination Gap
+            </h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card className="border-2 hover:border-primary/30 transition-colors">
+                <CardContent className="p-6">
+                  <Quote className="h-8 w-8 text-primary mb-4 opacity-40" />
+                  <p className="text-foreground mb-4 italic">
+                    "Organizations with pre-defined incident response teams save 35% more on 
+                    breach-related costs than those that improvise."
+                  </p>
+                  <p className="text-sm text-muted-foreground font-medium">
+                    — IBM/Ponemon Institute, 2024
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className="border-2 hover:border-primary/30 transition-colors">
+                <CardContent className="p-6">
+                  <Quote className="h-8 w-8 text-primary mb-4 opacity-40" />
+                  <p className="text-foreground mb-4 italic">
+                    "The first 72 hours of a crisis are critical. Organizations that contain incidents 
+                    quickly save an average of $1.76M."
+                  </p>
+                  <p className="text-sm text-muted-foreground font-medium">
+                    — McKinsey / IBM, 2024
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* The Disruption Reality */}
+          <div className="mb-12">
+            <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+              <AlertTriangle className="h-6 w-6 text-red-500" />
+              The Disruption Reality
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <Card className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border-amber-500/20">
+                <CardContent className="p-6 text-center">
+                  <div className="text-3xl font-bold text-amber-500 mb-2">89%</div>
+                  <p className="text-sm text-muted-foreground">Say resilience is a top strategic priority</p>
+                  <p className="text-xs text-muted-foreground/60 mt-2">PwC 2023</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-gradient-to-br from-red-500/10 to-red-600/5 border-red-500/20">
+                <CardContent className="p-6 text-center">
+                  <div className="text-3xl font-bold text-red-500 mb-2">91%</div>
+                  <p className="text-sm text-muted-foreground">Experienced major disruption beyond COVID</p>
+                  <p className="text-xs text-muted-foreground/60 mt-2">PwC 2023</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-gradient-to-br from-orange-500/10 to-orange-600/5 border-orange-500/20">
+                <CardContent className="p-6 text-center">
+                  <div className="text-3xl font-bold text-orange-500 mb-2">3.5</div>
+                  <p className="text-sm text-muted-foreground">Average disruptions every 2 years</p>
+                  <p className="text-xs text-muted-foreground/60 mt-2">PwC 2023</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-gradient-to-br from-purple-500/10 to-purple-600/5 border-purple-500/20">
+                <CardContent className="p-6 text-center">
+                  <div className="text-3xl font-bold text-purple-500 mb-2">67%</div>
+                  <p className="text-sm text-muted-foreground">Redesigned operating model in past 2 years</p>
+                  <p className="text-xs text-muted-foreground/60 mt-2">McKinsey 2025</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* The Bottom Line */}
+          <Card className="border-2 border-primary/30 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-900 mb-8">
+            <CardContent className="p-8 text-center">
+              <h3 className="text-xl font-bold text-foreground mb-4">The Bottom Line</h3>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-4">
+                Organizations need pre-staged responses, AI-powered coordination, and continuous learning—not more meetings and slide decks. 
+                The research is clear: <span className="font-bold text-foreground">preparation beats improvisation every time.</span>
+              </p>
+              <p className="text-sm text-muted-foreground">
+                M brings all of this together in one Strategic Execution Operating System.
+              </p>
+            </CardContent>
+          </Card>
 
           <div className="text-center">
             <Link href="/research">
               <Button className="bg-primary text-white hover:bg-primary/90">
-                Explore Full Research
+                Explore Full Research Library
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
