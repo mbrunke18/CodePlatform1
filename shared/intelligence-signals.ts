@@ -1029,6 +1029,99 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         defaultThreshold: { operator: 'gt', value: 10, urgency: 'high' }
       }
     ]
+  },
+  {
+    id: 'cyber',
+    name: 'Cybersecurity & Threats',
+    shortName: 'Cyber',
+    description: 'Monitor cyber threats, breach indicators, ransomware activity, and security posture',
+    icon: 'Shield',
+    color: '#dc2626', // red
+    phase: 'internal',
+    refreshInterval: 300, // 5 minutes - critical category
+    recommendedPlaybooks: ['cyber-incident-response', 'ransomware-playbook', 'data-breach-response'],
+    dataPoints: [
+      {
+        id: 'cyber_threat_level',
+        name: 'Threat Level Index',
+        description: 'Overall cyber threat level from aggregated feeds',
+        metricType: 'score',
+        sources: ['threat-intel-feeds', 'cisa-alerts', 'isac-reports'],
+        defaultThreshold: { operator: 'gte', value: 8, urgency: 'critical' }
+      },
+      {
+        id: 'cyber_ransomware_activity',
+        name: 'Ransomware Activity',
+        description: 'Industry-targeted ransomware campaigns detected',
+        metricType: 'count',
+        sources: ['darkweb-monitoring', 'threat-intel', 'fbi-flash'],
+        defaultThreshold: { operator: 'gte', value: 1, urgency: 'critical' }
+      },
+      {
+        id: 'cyber_vulnerability_critical',
+        name: 'Critical Vulnerabilities',
+        description: 'Unpatched critical CVEs in your environment',
+        metricType: 'count',
+        sources: ['vulnerability-scanner', 'nist-nvd', 'cisa-kev'],
+        defaultThreshold: { operator: 'gte', value: 1, urgency: 'critical' }
+      },
+      {
+        id: 'cyber_phishing_volume',
+        name: 'Phishing Attempts',
+        description: 'Phishing emails targeting organization',
+        metricType: 'count',
+        sources: ['email-security', 'proofpoint', 'mimecast'],
+        defaultThreshold: { operator: 'spike', value: 200, urgency: 'high' }
+      },
+      {
+        id: 'cyber_anomaly_detection',
+        name: 'Behavioral Anomalies',
+        description: 'Unusual network or user behavior detected',
+        metricType: 'count',
+        sources: ['siem', 'ueba', 'ndr'],
+        defaultThreshold: { operator: 'gte', value: 5, urgency: 'high' }
+      },
+      {
+        id: 'cyber_breach_indicators',
+        name: 'Breach Indicators',
+        description: 'Indicators of compromise detected in environment',
+        metricType: 'count',
+        sources: ['edr', 'threat-intel', 'siem'],
+        defaultThreshold: { operator: 'gte', value: 1, urgency: 'critical' }
+      },
+      {
+        id: 'cyber_third_party_risk',
+        name: 'Third-Party Risk Score',
+        description: 'Vendor/supplier cybersecurity risk rating',
+        metricType: 'score',
+        sources: ['security-scorecard', 'bitsight', 'riskrecon'],
+        defaultThreshold: { operator: 'lt', value: 70, urgency: 'high' }
+      },
+      {
+        id: 'cyber_dark_web_mentions',
+        name: 'Dark Web Mentions',
+        description: 'Company/employee data found on dark web',
+        metricType: 'count',
+        sources: ['darkweb-monitoring', 'recorded-future', 'flashpoint'],
+        defaultThreshold: { operator: 'gte', value: 1, urgency: 'critical' }
+      },
+      {
+        id: 'cyber_ddos_risk',
+        name: 'DDoS Attack Risk',
+        description: 'Elevated DDoS threat indicators',
+        metricType: 'boolean',
+        sources: ['cloudflare', 'akamai', 'aws-shield'],
+        defaultThreshold: { operator: 'eq', value: true, urgency: 'high' }
+      },
+      {
+        id: 'cyber_compliance_gap',
+        name: 'Security Compliance Gaps',
+        description: 'Failed security controls or audit findings',
+        metricType: 'count',
+        sources: ['grc-platform', 'audit-reports'],
+        defaultThreshold: { operator: 'gte', value: 3, urgency: 'high' }
+      }
+    ]
   }
 ];
 
@@ -1165,5 +1258,33 @@ export const TRIGGER_TEMPLATES: TriggerTemplate[] = [
     dataPointIds: ['tal_attrition', 'tal_key_departures', 'tal_enps'],
     logic: 'any',
     recommendedPlaybooks: ['talent-retention', 'counter-offer']
+  },
+  {
+    id: 'cyber_incident',
+    name: 'Cyber Incident Alert',
+    description: 'Alert when cyber threat indicators are detected',
+    signalCategoryId: 'cyber',
+    dataPointIds: ['cyber_threat_level', 'cyber_ransomware_activity', 'cyber_breach_indicators', 'cyber_dark_web_mentions'],
+    logic: 'any',
+    recommendedPlaybooks: ['cyber-incident-response', 'ransomware-playbook', 'data-breach-response']
+  },
+  {
+    id: 'cyber_vulnerability',
+    name: 'Critical Vulnerability Alert',
+    description: 'Alert when critical unpatched vulnerabilities are detected',
+    signalCategoryId: 'cyber',
+    dataPointIds: ['cyber_vulnerability_critical', 'cyber_compliance_gap'],
+    logic: 'any',
+    recommendedPlaybooks: ['vulnerability-remediation', 'security-sprint']
+  },
+  {
+    id: 'cyber_attack_imminent',
+    name: 'Attack Imminent Warning',
+    description: 'Alert when multiple threat indicators suggest active targeting',
+    signalCategoryId: 'cyber',
+    dataPointIds: ['cyber_threat_level', 'cyber_phishing_volume', 'cyber_anomaly_detection', 'cyber_ddos_risk'],
+    logic: 'threshold',
+    thresholdCount: 2,
+    recommendedPlaybooks: ['cyber-incident-response', 'crisis-communication']
   }
 ];
