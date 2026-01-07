@@ -23,8 +23,7 @@ export default function StandardNav() {
   const navLinks = [
     { label: "Why M", path: "/why-m" },
     { label: "How It Works", path: "/how-it-works" },
-    { label: "Decision Velocity", path: "/decisions" },
-    { label: "Pilot Program", path: "/pilot-program" },
+    { label: "Playbooks", path: "/playbooks" },
     { label: "Pricing", path: "/pricing" },
   ];
 
@@ -53,123 +52,68 @@ export default function StandardNav() {
             </div>
           </div>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation Links - Simplified Journey */}
           <div className="hidden md:flex items-center gap-1">
-            <button
-              onClick={() => navigateTo("/why-m")}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                isActivePath("/why-m") 
-                  ? 'text-white bg-slate-800' 
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-              }`}
-              data-testid="nav-why-m"
-            >
-              Why M
-            </button>
-            <button
-              onClick={() => navigateTo("/how-it-works")}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                isActivePath("/how-it-works") 
-                  ? 'text-white bg-slate-800' 
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-              }`}
-              data-testid="nav-how-it-works"
-            >
-              How It Works
-            </button>
+            {navLinks.map((link) => (
+              <button
+                key={link.path}
+                onClick={() => navigateTo(link.path)}
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                  isActivePath(link.path) 
+                    ? 'text-white bg-slate-800' 
+                    : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+                }`}
+                data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+              >
+                {link.label}
+              </button>
+            ))}
             
-            {/* Playbooks Dropdown */}
+            {/* More Dropdown for secondary items */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button
-                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 ${
-                    isActivePath("/playbook") 
-                      ? 'text-white bg-slate-800' 
-                      : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-                  }`}
-                  data-testid="nav-playbooks-dropdown"
+                  className="px-4 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 text-slate-400 hover:text-white hover:bg-slate-800/50"
+                  data-testid="nav-more-dropdown"
                 >
-                  Playbooks
+                  More
                   <ChevronDown className="h-3 w-3" />
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-48">
-                <DropdownMenuItem onClick={() => navigateTo("/playbooks")} data-testid="nav-playbooks-library">
-                  Library (166 Templates)
+                <DropdownMenuItem onClick={() => navigateTo("/pilot-program")} data-testid="nav-pilot-program">
+                  Pilot Program
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/playbook-management")} data-testid="nav-playbooks-manage">
-                  Manage Playbooks
+                <DropdownMenuItem onClick={() => navigateTo("/research")} data-testid="nav-research">
+                  Research
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/task-management")} data-testid="nav-task-manage">
-                  Task Management
+                <DropdownMenuItem onClick={() => navigateTo("/our-story")} data-testid="nav-our-story">
+                  Our Story
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/stakeholder-management")} data-testid="nav-stakeholder-manage">
-                  Stakeholder Directory
+                <DropdownMenuItem onClick={() => navigateTo("/contact")} data-testid="nav-contact">
+                  Contact
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-
-            <button
-              onClick={() => navigateTo("/decisions")}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                isActivePath("/decisions") 
-                  ? 'text-white bg-slate-800' 
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-              }`}
-              data-testid="nav-decision-velocity"
-            >
-              Decision Velocity
-            </button>
-            <button
-              onClick={() => navigateTo("/pilot-program")}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                isActivePath("/pilot-program") 
-                  ? 'text-white bg-slate-800' 
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-              }`}
-              data-testid="nav-pilot-program"
-            >
-              Pilot Program
-            </button>
-            <button
-              onClick={() => navigateTo("/pricing")}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                isActivePath("/pricing") 
-                  ? 'text-white bg-slate-800' 
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-              }`}
-              data-testid="nav-pricing"
-            >
-              Pricing
-            </button>
           </div>
 
-          {/* Desktop CTAs */}
+          {/* Desktop CTAs - Simplified */}
           <div className="hidden md:flex items-center gap-3">
             <Button 
-              onClick={() => navigateTo("/sandbox-demo")}
-              className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold h-9 px-4"
-              data-testid="nav-try-it"
+              onClick={() => navigateTo("/sandbox")}
+              className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white font-semibold h-9 px-4"
+              data-testid="nav-try-demo"
             >
               <Play className="h-4 w-4 mr-1.5" />
-              Try It
+              Try Demo
             </Button>
             <Button 
-              onClick={() => navigateTo("/demo")}
+              onClick={() => navigateTo("/pilot-program")}
               variant="outline"
-              className="border-emerald-500/50 text-emerald-400 hover:bg-emerald-950 hover:text-emerald-300 h-9 px-4"
-              data-testid="nav-see-demo"
+              className="border-blue-500/50 text-blue-400 hover:bg-blue-950 hover:text-blue-300 h-9 px-4"
+              data-testid="nav-start-pilot"
             >
-              Watch Demo
-            </Button>
-            
-            <Button 
-              variant="outline"
-              onClick={() => navigateTo("/investor-demo")}
-              className="border-purple-500/50 text-purple-300 hover:bg-purple-950 hover:text-purple-200 h-9 px-4"
-              data-testid="nav-investors"
-            >
-              Investors
+              Start Pilot
             </Button>
 
             {/* Auth */}
@@ -207,10 +151,10 @@ export default function StandardNav() {
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-2">
             <Button 
-              onClick={() => navigateTo("/sandbox-demo")}
+              onClick={() => navigateTo("/sandbox")}
               size="sm"
-              className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white"
-              data-testid="nav-mobile-try-it"
+              className="bg-gradient-to-r from-emerald-600 to-cyan-600 text-white"
+              data-testid="nav-mobile-try-demo"
             >
               <Play className="h-4 w-4" />
             </Button>
@@ -224,11 +168,11 @@ export default function StandardNav() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Simplified to match desktop journey */}
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-slate-800 animate-in slide-in-from-top-2 duration-200">
             <div className="flex flex-col gap-1">
-              {/* Main Links */}
+              {/* Main Links - Guided Journey */}
               {navLinks.map((link) => (
                 <button
                   key={link.path}
@@ -247,39 +191,38 @@ export default function StandardNav() {
               {/* Divider */}
               <div className="border-t border-slate-800 my-2" />
               
-              {/* CTAs */}
+              {/* Primary CTAs */}
               <Button 
-                onClick={() => navigateTo("/sandbox-demo")}
-                className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white w-full justify-center h-11"
-                data-testid="nav-mobile-try-it-full"
+                onClick={() => navigateTo("/sandbox")}
+                className="bg-gradient-to-r from-emerald-600 to-cyan-600 text-white w-full justify-center h-11"
+                data-testid="nav-mobile-try-demo"
               >
                 <Play className="h-4 w-4 mr-2" />
-                Try It Yourself
+                Try Demo
               </Button>
               
               <Button 
-                onClick={() => navigateTo("/demo")}
+                onClick={() => navigateTo("/pilot-program")}
                 variant="outline"
-                className="border-emerald-500/50 text-emerald-400 hover:bg-emerald-950 w-full justify-center h-11 mt-2"
-                data-testid="nav-mobile-see-demo-full"
+                className="border-blue-500/50 text-blue-400 hover:bg-blue-950 w-full justify-center h-11 mt-2"
+                data-testid="nav-mobile-start-pilot"
               >
-                Watch Demo
-              </Button>
-              
-              <Button 
-                variant="outline"
-                onClick={() => navigateTo("/investor-demo")}
-                className="border-purple-500/50 text-purple-300 hover:bg-purple-950 w-full justify-center h-11 mt-2"
-                data-testid="nav-mobile-investors"
-              >
-                Investors
+                Start Pilot
               </Button>
               
               {/* Divider */}
               <div className="border-t border-slate-800 my-2" />
               
-              {/* Secondary Links */}
+              {/* More Links - Collapsed section */}
+              <p className="px-4 py-2 text-xs text-slate-500 uppercase tracking-wide">More</p>
               <div className="grid grid-cols-2 gap-1">
+                <button
+                  onClick={() => navigateTo("/research")}
+                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
+                  data-testid="nav-mobile-research"
+                >
+                  Research
+                </button>
                 <button
                   onClick={() => navigateTo("/our-story")}
                   className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
@@ -293,20 +236,6 @@ export default function StandardNav() {
                   data-testid="nav-mobile-contact"
                 >
                   Contact
-                </button>
-                <button
-                  onClick={() => navigateTo("/executive-dashboard")}
-                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-dashboard"
-                >
-                  Dashboard
-                </button>
-                <button
-                  onClick={() => navigateTo("/roadshow-resources")}
-                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-resources"
-                >
-                  Resources
                 </button>
               </div>
               

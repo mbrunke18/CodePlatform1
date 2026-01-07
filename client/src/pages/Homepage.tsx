@@ -15,6 +15,7 @@ import {
   Shield,
   Users,
   CheckCircle,
+  CheckCircle2,
   Sparkles,
   Briefcase,
   Layers,
@@ -26,15 +27,11 @@ import {
   Network,
   Activity,
   Check,
-  X,
-  SkipForward
+  X
 } from "lucide-react";
 import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
-import CinematicHero from "@/components/marketing/CinematicHero";
-
-const INTRO_SEEN_KEY = "m_platform_intro_seen";
 
 const ROTATING_TAGLINES = [
   "Adapt at the Speed of Change.",
@@ -47,10 +44,6 @@ const ROTATING_TAGLINES = [
 
 export default function Homepage() {
   const [, setLocation] = useLocation();
-  const [showIntro, setShowIntro] = useState(() => {
-    if (typeof window === "undefined") return true;
-    return !localStorage.getItem(INTRO_SEEN_KEY);
-  });
   const [taglineIndex, setTaglineIndex] = useState(0);
 
   useEffect(() => {
@@ -59,37 +52,6 @@ export default function Homepage() {
     }, 4000);
     return () => clearInterval(interval);
   }, []);
-
-  const handleSkipIntro = () => {
-    localStorage.setItem(INTRO_SEEN_KEY, "true");
-    setShowIntro(false);
-  };
-
-  const handleIntroComplete = () => {
-    localStorage.setItem(INTRO_SEEN_KEY, "true");
-    setShowIntro(false);
-  };
-
-  if (showIntro) {
-    return (
-      <div className="relative min-h-screen bg-slate-950" data-testid="cinematic-intro">
-        <StandardNav />
-        <CinematicHero onSkip={handleSkipIntro} />
-        <div className="fixed bottom-8 right-8 z-50">
-          <Button
-            variant="ghost"
-            size="lg"
-            onClick={handleSkipIntro}
-            className="text-slate-400 hover:text-white hover:bg-slate-800/50 gap-2"
-            data-testid="button-skip-intro"
-          >
-            <SkipForward className="h-5 w-5" />
-            Skip to Site
-          </Button>
-        </div>
-      </div>
-    );
-  }
 
   const phases = [
     {
@@ -195,191 +157,186 @@ export default function Homepage() {
     <div className="min-h-screen bg-white dark:bg-slate-950">
       <StandardNav />
       
-      {/* Hero Section - Survival-Level Stakes */}
-      <section className="relative py-24 md:py-32 px-6 overflow-hidden bg-white dark:bg-slate-950">
-        <div className="max-w-5xl mx-auto text-center relative z-10">
+      {/* Hero Section - Clear Value Proposition */}
+      <section className="relative py-16 md:py-24 px-6 overflow-hidden bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900">
+        <div className="max-w-6xl mx-auto relative z-10">
           
-          {/* Urgency Badge */}
-          <div className="mb-8 inline-block">
-            <Badge className="text-lg px-6 py-2 bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300 border-2 border-red-300 dark:border-red-700 animate-pulse" data-testid="badge-urgency">
-              The pace of change is accelerating
+          {/* What is M - Above the Fold */}
+          <div className="text-center mb-12">
+            <Badge className="text-sm px-4 py-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mb-6" data-testid="badge-category">
+              Strategic Execution Operating System
             </Badge>
-          </div>
-          
-          {/* Main Headline */}
-          <h1 className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6 leading-tight" data-testid="heading-mindset">
-            The World Won't Wait
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600">
-              for You to Coordinate.
-            </span>
-          </h1>
-          
-          {/* Subheadline - Three Pain Points */}
-          <div className="space-y-4 text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-3xl mx-auto" data-testid="text-pain-points">
-            <p>Markets shift while you're aligning stakeholders.</p>
-            <p>Crises spread while you're scheduling meetings.</p>
-            <p>Opportunities close while you're coordinating via email.</p>
-          </div>
-          
-          {/* The Fatal Gap */}
-          <div className="p-6 bg-slate-100 dark:bg-slate-800 rounded-xl max-w-3xl mx-auto mb-12" data-testid="fatal-gap">
-            <p className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-              The pace of change is accelerating. Your coordination speed isn't.
-            </p>
-            <p className="text-lg text-red-600 dark:text-red-400 font-semibold">
-              That gap is fatal.
+            
+            {/* Clear Product Statement */}
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight" data-testid="heading-product">
+              Coordinated Response in
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400"> 12 Minutes</span>
+              <br />
+              <span className="text-slate-400">Not 72 Hours.</span>
+            </h1>
+            
+            {/* Plain Language Explainer */}
+            <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto mb-8" data-testid="text-hero-explainer">
+              M is the operating system for strategic execution. 
+              <span className="text-white font-semibold"> 166 pre-staged playbooks</span> across 9 domains, 
+              AI-powered detection, and <span className="text-white font-semibold">instant coordination</span> when 
+              opportunity or crisis hits.
             </p>
           </div>
-          
-          {/* Solution Statement */}
-          <p className="text-xl text-slate-600 dark:text-slate-400 mb-12 max-w-3xl mx-auto" data-testid="text-hero-description">
-            <span className="font-bold text-slate-900 dark:text-white">
-              M Platform closes it—
-            </span>
-            giving you pre-staged responses for every strategic scenario.
-            <br /><br />
-            When change hits (and it will), you adapt at the speed it happens.
-            <br />
-            <span className="font-semibold text-emerald-600 dark:text-emerald-400">
-              Not because you predicted it. Because you prepared for it.
-            </span>
-          </p>
-          
+
+          {/* The Problem→Solution Bridge - Visual */}
+          <div className="grid md:grid-cols-3 gap-4 mb-12 max-w-5xl mx-auto" data-testid="problem-solution-bridge">
+            {/* Today */}
+            <Card className="bg-red-950/30 border-red-800/50 text-center">
+              <CardContent className="p-6">
+                <div className="text-red-400 text-sm font-medium mb-2">TODAY</div>
+                <div className="text-3xl font-bold text-white mb-1">72 Hours</div>
+                <p className="text-slate-400 text-sm">to coordinate response</p>
+                <div className="mt-4 space-y-2 text-left">
+                  <div className="flex items-center gap-2 text-red-300 text-xs">
+                    <X className="h-3 w-3" /> Ad-hoc meetings
+                  </div>
+                  <div className="flex items-center gap-2 text-red-300 text-xs">
+                    <X className="h-3 w-3" /> Email chains
+                  </div>
+                  <div className="flex items-center gap-2 text-red-300 text-xs">
+                    <X className="h-3 w-3" /> Improvised response
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Arrow/Bridge - M Platform */}
+            <Card className="bg-gradient-to-br from-blue-600 to-purple-700 border-0 text-center flex flex-col justify-center">
+              <CardContent className="p-6">
+                <div className="text-blue-200 text-sm font-medium mb-2">WITH M PLATFORM</div>
+                <div className="w-16 h-16 mx-auto mb-3 bg-white/20 rounded-2xl flex items-center justify-center">
+                  <Zap className="h-8 w-8 text-white" />
+                </div>
+                <div className="text-white font-bold mb-2">IDEA Framework™</div>
+                <div className="grid grid-cols-4 gap-1 text-xs">
+                  <div className="bg-white/20 rounded px-1 py-0.5 text-white">Identify</div>
+                  <div className="bg-white/20 rounded px-1 py-0.5 text-white">Detect</div>
+                  <div className="bg-white/20 rounded px-1 py-0.5 text-white">Execute</div>
+                  <div className="bg-white/20 rounded px-1 py-0.5 text-white">Advance</div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* With M */}
+            <Card className="bg-emerald-950/30 border-emerald-800/50 text-center">
+              <CardContent className="p-6">
+                <div className="text-emerald-400 text-sm font-medium mb-2">WITH M</div>
+                <div className="text-3xl font-bold text-white mb-1">12 Minutes</div>
+                <p className="text-slate-400 text-sm">to coordinated response</p>
+                <div className="mt-4 space-y-2 text-left">
+                  <div className="flex items-center gap-2 text-emerald-300 text-xs">
+                    <Check className="h-3 w-3" /> Pre-staged playbooks
+                  </div>
+                  <div className="flex items-center gap-2 text-emerald-300 text-xs">
+                    <Check className="h-3 w-3" /> Auto-assigned tasks
+                  </div>
+                  <div className="flex items-center gap-2 text-emerald-300 text-xs">
+                    <Check className="h-3 w-3" /> Everyone aligned
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Button 
-              size="lg" 
-              onClick={() => setLocation('/video')}
-              className="text-lg px-8 py-6 bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700"
-              data-testid="button-watch-video"
-            >
-              <Play className="mr-2 h-5 w-5" />
-              Watch Video
-            </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button 
               size="lg" 
               onClick={() => setLocation('/sandbox')}
-              className="text-lg px-8 py-6 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700"
+              className="text-lg px-8 py-6 bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700"
               data-testid="button-try-demo"
             >
-              Try Demo
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <Play className="mr-2 h-5 w-5" />
+              Try Interactive Demo
             </Button>
             <Button 
               size="lg" 
-              variant="outline" 
               onClick={() => setLocation('/how-it-works')}
-              className="text-lg px-8 py-6 border-slate-300 dark:border-slate-600"
+              variant="outline"
+              className="text-lg px-8 py-6 border-slate-500 text-white hover:bg-slate-800"
               data-testid="button-how-it-works"
             >
-              How It Works
+              See How It Works
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
+
+          {/* Trust Bar - Research Validation */}
+          <div className="bg-slate-800/50 rounded-2xl p-6 max-w-4xl mx-auto" data-testid="trust-bar">
+            <div className="text-center text-slate-400 text-sm mb-4">Validated by Independent Research</div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              <div>
+                <div className="text-2xl font-bold text-white">35%</div>
+                <div className="text-xs text-slate-400">Cost savings with pre-defined response</div>
+                <div className="text-xs text-slate-500">IBM/Ponemon 2024</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-white">$1.76M</div>
+                <div className="text-xs text-slate-400">Saved with fast containment</div>
+                <div className="text-xs text-slate-500">McKinsey 2024</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-white">10.3%</div>
+                <div className="text-xs text-slate-400">Revenue growth with agility</div>
+                <div className="text-xs text-slate-500">BAI 2025</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-white">166</div>
+                <div className="text-xs text-slate-400">Pre-built playbooks</div>
+                <div className="text-xs text-slate-500">9 Domains</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* The AI Era Reality - Moved Up */}
+      <section className="py-16 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <Badge className="mb-4 bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300" data-testid="badge-ai-insight">
+            The 2025 Reality
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+            Your Employees Have AI.
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600"> Your Organization Doesn't.</span>
+          </h2>
+          <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-8">
+            AI made individual work 10X faster. But organizational coordination? Still at meeting speed.
+            <span className="font-semibold text-slate-900 dark:text-white"> M Platform fixes that.</span>
+          </p>
           
-          {/* The Three Scenarios with Speed Stats */}
-          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12" data-testid="speed-scenarios">
-            
-            {/* Crisis */}
-            <Card className="border-2 border-red-200 dark:border-red-800 bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/20 dark:to-orange-950/20" data-testid="scenario-crisis">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <Badge className="bg-red-600 text-white">CRISIS</Badge>
-                  <Shield className="h-6 w-6 text-red-600" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">When Crisis Hits</h3>
-                <div className="space-y-3">
-                  <div className="p-3 bg-white dark:bg-slate-900 rounded">
-                    <div className="text-sm text-slate-500 mb-1">World moves at:</div>
-                    <div className="text-2xl font-bold text-slate-900 dark:text-white">Minutes</div>
-                  </div>
-                  <div className="p-3 bg-red-100 dark:bg-red-900/30 rounded">
-                    <div className="text-sm text-red-700 dark:text-red-400 mb-1">You respond in:</div>
-                    <div className="text-2xl font-bold text-red-600">17 Days</div>
-                  </div>
-                  <div className="p-3 bg-emerald-100 dark:bg-emerald-900/30 rounded">
-                    <div className="text-sm text-emerald-700 dark:text-emerald-400 mb-1">With M Platform:</div>
-                    <div className="text-2xl font-bold text-emerald-600">90 Minutes</div>
-                  </div>
-                </div>
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <Card className="border-2 border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/20">
+              <CardContent className="p-6 text-center">
+                <Bot className="h-10 w-10 text-emerald-600 mx-auto mb-3" />
+                <div className="text-2xl font-bold text-emerald-600 mb-1">10X Faster</div>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Individual Work</p>
+                <Badge className="mt-2 bg-emerald-600 text-white text-xs">SOLVED</Badge>
               </CardContent>
             </Card>
-            
-            {/* Opportunity */}
-            <Card className="border-2 border-emerald-200 dark:border-emerald-800 bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/20 dark:to-green-950/20" data-testid="scenario-opportunity">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <Badge className="bg-emerald-600 text-white">OPPORTUNITY</Badge>
-                  <Target className="h-6 w-6 text-emerald-600" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">When Opportunity Appears</h3>
-                <div className="space-y-3">
-                  <div className="p-3 bg-white dark:bg-slate-900 rounded">
-                    <div className="text-sm text-slate-500 mb-1">Window closes in:</div>
-                    <div className="text-2xl font-bold text-slate-900 dark:text-white">Days</div>
-                  </div>
-                  <div className="p-3 bg-red-100 dark:bg-red-900/30 rounded">
-                    <div className="text-sm text-red-700 dark:text-red-400 mb-1">You mobilize in:</div>
-                    <div className="text-2xl font-bold text-red-600">6 Weeks</div>
-                  </div>
-                  <div className="p-3 bg-emerald-100 dark:bg-emerald-900/30 rounded">
-                    <div className="text-sm text-emerald-700 dark:text-emerald-400 mb-1">With M Platform:</div>
-                    <div className="text-2xl font-bold text-emerald-600">1 Week</div>
-                  </div>
-                </div>
+            <Card className="border-2 border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950/20">
+              <CardContent className="p-6 text-center">
+                <Network className="h-10 w-10 text-red-600 mx-auto mb-3" />
+                <div className="text-2xl font-bold text-red-600 mb-1">Same Speed</div>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Coordination</p>
+                <Badge className="mt-2 bg-red-600 text-white text-xs">BROKEN</Badge>
               </CardContent>
             </Card>
-            
-            {/* Innovation */}
-            <Card className="border-2 border-purple-200 dark:border-purple-800 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20" data-testid="scenario-innovation">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <Badge className="bg-purple-600 text-white">INNOVATION</Badge>
-                  <Sparkles className="h-6 w-6 text-purple-600" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">When Change Disrupts</h3>
-                <div className="space-y-3">
-                  <div className="p-3 bg-white dark:bg-slate-900 rounded">
-                    <div className="text-sm text-slate-500 mb-1">Competitors deploy in:</div>
-                    <div className="text-2xl font-bold text-slate-900 dark:text-white">Weeks</div>
-                  </div>
-                  <div className="p-3 bg-red-100 dark:bg-red-900/30 rounded">
-                    <div className="text-sm text-red-700 dark:text-red-400 mb-1">You deploy in:</div>
-                    <div className="text-2xl font-bold text-red-600">9 Months</div>
-                  </div>
-                  <div className="p-3 bg-emerald-100 dark:bg-emerald-900/30 rounded">
-                    <div className="text-sm text-emerald-700 dark:text-emerald-400 mb-1">With M Platform:</div>
-                    <div className="text-2xl font-bold text-emerald-600">6 Weeks</div>
-                  </div>
-                </div>
+            <Card className="border-2 border-purple-200 dark:border-purple-800 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950/20 dark:to-blue-950/20">
+              <CardContent className="p-6 text-center">
+                <Sparkles className="h-10 w-10 text-purple-600 mx-auto mb-3" />
+                <div className="text-2xl font-bold text-purple-600 mb-1">AI Speed</div>
+                <p className="text-sm text-slate-600 dark:text-slate-400">With M Platform</p>
+                <Badge className="mt-2 bg-purple-600 text-white text-xs">NOW SOLVED</Badge>
               </CardContent>
             </Card>
           </div>
-          
-          {/* The Closing Punch with Rotating Tagline */}
-          <Card className="p-8 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 border-2 border-slate-700 max-w-4xl mx-auto" data-testid="closing-punch">
-            <div className="text-center space-y-4">
-              <p className="text-3xl font-bold text-white">
-                Adaptive Execution Is No Longer Optional.
-              </p>
-              <p className="text-xl text-slate-300">
-                It's the difference between companies that survive disruption
-                <br />
-                and companies that become case studies of what not to do.
-              </p>
-              <div className="pt-4">
-                <p 
-                  className="text-2xl font-bold text-emerald-400 mb-2 transition-opacity duration-500"
-                  data-testid="rotating-tagline"
-                >
-                  M Platform. {ROTATING_TAGLINES[taglineIndex]}
-                </p>
-                <p className="text-slate-400">
-                  166 pre-staged playbooks • 9 strategic domains • Execution in days, not months
-                </p>
-              </div>
-            </div>
-          </Card>
         </div>
       </section>
 
@@ -396,6 +353,91 @@ export default function Homepage() {
                 <span className="text-sm text-slate-600 dark:text-slate-400">{stat.label}</span>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* M at a Glance - Executive Summary */}
+      <section className="py-16 bg-white dark:bg-slate-950" data-testid="executive-summary">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-3">M at a Glance</h2>
+            <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+              Everything you need to know in 30 seconds
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* What M Does */}
+            <Card className="border-2 border-slate-200 dark:border-slate-700" data-testid="glance-what">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                  <Target className="h-5 w-5 text-blue-600" />
+                  What M Does
+                </h3>
+                <ul className="space-y-3 text-slate-700 dark:text-slate-300">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <span><strong>Monitors</strong> for strategic triggers (market shifts, crises, opportunities)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <span><strong>Activates</strong> pre-built playbooks when events occur</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <span><strong>Orchestrates</strong> cross-team response with tasks, budgets, stakeholders</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <span><strong>Learns</strong> from every execution to improve future responses</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+            
+            {/* Key Metrics */}
+            <Card className="border-2 border-slate-200 dark:border-slate-700" data-testid="glance-metrics">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                  <TrendingUp className="h-5 w-5 text-emerald-600" />
+                  Key Results
+                </h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-lg text-center">
+                    <div className="text-3xl font-bold text-blue-600 mb-1">340X</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Faster Response</div>
+                  </div>
+                  <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-lg text-center">
+                    <div className="text-3xl font-bold text-emerald-600 mb-1">12 min</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">To First Action</div>
+                  </div>
+                  <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-lg text-center">
+                    <div className="text-3xl font-bold text-purple-600 mb-1">166</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Ready Playbooks</div>
+                  </div>
+                  <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-lg text-center">
+                    <div className="text-3xl font-bold text-amber-600 mb-1">10.3%</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Revenue Impact</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Quick Demo CTA */}
+          <div className="mt-8 text-center">
+            <div className="inline-flex items-center gap-4 p-4 bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-900 dark:to-blue-950/50 rounded-xl border border-slate-200 dark:border-slate-700">
+              <span className="text-slate-700 dark:text-slate-300">See it in action:</span>
+              <Button 
+                onClick={() => setLocation('/sandbox')}
+                className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700"
+                data-testid="button-glance-demo"
+              >
+                <Play className="mr-2 h-4 w-4" />
+                Try the Demo
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -486,100 +528,6 @@ export default function Homepage() {
               </div>
             </CardContent>
           </Card>
-        </div>
-      </section>
-
-      {/* AI Coordination Gap Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30" data-testid="ai-coordination-gap">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300 border-purple-300 dark:border-purple-700" data-testid="badge-ai-era">
-                The AI Era Reality
-              </Badge>
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6" data-testid="heading-ai-gap">
-                Your Employees Have AI.
-                <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600">
-                  Your Organization Doesn't.
-                </span>
-              </h2>
-              <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-                AI gave your team superhuman speed for individual tasks.
-                But your organization still coordinates at meeting speed.
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-3 gap-6 mb-12">
-              {/* Individual Work - Solved */}
-              <Card className="border-2 border-emerald-300 dark:border-emerald-700 bg-white dark:bg-slate-900" data-testid="ai-gap-individual">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-emerald-100 dark:bg-emerald-900/30 rounded-2xl flex items-center justify-center">
-                    <Bot className="h-8 w-8 text-emerald-600 dark:text-emerald-400" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Individual Work</h3>
-                  <div className="mb-4">
-                    <span className="text-3xl font-bold text-emerald-600">10X Faster</span>
-                    <p className="text-sm text-slate-500">with AI assistants</p>
-                  </div>
-                  <div className="flex items-center justify-center gap-2 text-emerald-600">
-                    <Check className="h-5 w-5" />
-                    <span className="font-semibold">SOLVED</span>
-                  </div>
-                </CardContent>
-              </Card>
-              
-              {/* Organizational Coordination - Broken */}
-              <Card className="border-2 border-red-300 dark:border-red-700 bg-white dark:bg-slate-900" data-testid="ai-gap-coordination">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-red-100 dark:bg-red-900/30 rounded-2xl flex items-center justify-center">
-                    <Network className="h-8 w-8 text-red-600 dark:text-red-400" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Organizational Coordination</h3>
-                  <div className="mb-4">
-                    <span className="text-3xl font-bold text-red-600">Same Speed</span>
-                    <p className="text-sm text-slate-500">as before AI</p>
-                  </div>
-                  <div className="flex items-center justify-center gap-2 text-red-600">
-                    <X className="h-5 w-5" />
-                    <span className="font-semibold">STILL BROKEN</span>
-                  </div>
-                </CardContent>
-              </Card>
-              
-              {/* M Platform - Now Solved */}
-              <Card className="border-2 border-purple-300 dark:border-purple-700 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950/50 dark:to-blue-950/50" data-testid="ai-gap-m-platform">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center">
-                    <Sparkles className="h-8 w-8 text-purple-600 dark:text-purple-400" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">M Platform</h3>
-                  <div className="mb-4">
-                    <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">AI Speed</span>
-                    <p className="text-sm text-slate-500">for coordination</p>
-                  </div>
-                  <div className="flex items-center justify-center gap-2 text-purple-600">
-                    <Sparkles className="h-5 w-5" />
-                    <span className="font-semibold">NOW SOLVED</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-            
-            <Card className="p-8 bg-slate-900 dark:bg-black border-2 border-slate-700" data-testid="ai-bottleneck-insight">
-              <div className="text-center">
-                <p className="text-2xl font-bold text-white mb-4">
-                  AI made the work faster.
-                </p>
-                <p className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 mb-4">
-                  M Platform makes the COORDINATION faster.
-                </p>
-                <p className="text-xl text-slate-400">
-                  That's where 95% of the time is wasted.
-                </p>
-              </div>
-            </Card>
-          </div>
         </div>
       </section>
 
