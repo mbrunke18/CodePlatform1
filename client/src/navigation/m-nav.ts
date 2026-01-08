@@ -1,5 +1,6 @@
-// M Strategic Execution Operating System Navigation
-// Based on 7-Component Ecosystem
+// POISE - Strategic Execution OS Navigation
+// "Composure in every decision."
+// Based on IDEA Framework with POISE Modules
 
 import { IconName } from './config';
 

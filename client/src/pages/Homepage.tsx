@@ -36,7 +36,7 @@ import Footer from "@/components/layout/Footer";
 import CinematicHero from "@/components/marketing/CinematicHero";
 import { StrategyReality, StrategyToIDEA } from "@/components/marketing/StrategyReality";
 
-const INTRO_SEEN_KEY = "m_platform_intro_seen";
+const INTRO_SEEN_KEY = "poise_intro_seen";
 
 const ROTATING_TAGLINES = [
   "Adapt at the Speed of Change.",
@@ -231,13 +231,13 @@ export default function Homepage() {
             <div className="text-center">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 mb-4">
                 <Zap className="h-4 w-4 text-emerald-400" />
-                <span className="text-emerald-400 text-sm font-medium">M Platform</span>
+                <span className="text-emerald-400 text-sm font-medium">POISE</span>
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 The Operating System Organizations Have Been Missing.
               </h2>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-6">
-                M is the AI-native command layer that synchronizes your entire organization. 
+                POISE is the AI-native command layer that synchronizes your entire organization. 
                 <span className="text-white font-semibold"> 166 pre-staged playbooks</span> with 
                 stakeholders, tasks, budgets, and communications—ready to activate 
                 the moment a trigger fires. <span className="text-emerald-400 font-medium">Everyone knows their role. Zero scrambling.</span>
@@ -342,7 +342,7 @@ export default function Homepage() {
           </h2>
           <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-8">
             AI made individual work 10X faster. But organizational coordination? Still at meeting speed.
-            <span className="font-semibold text-slate-900 dark:text-white"> M Platform fixes that.</span>
+            <span className="font-semibold text-slate-900 dark:text-white"> POISE fixes that.</span>
           </p>
           
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -366,7 +366,7 @@ export default function Homepage() {
               <CardContent className="p-6 text-center">
                 <Sparkles className="h-10 w-10 text-purple-600 mx-auto mb-3" />
                 <div className="text-2xl font-bold text-purple-600 mb-1">AI Speed</div>
-                <p className="text-sm text-slate-600 dark:text-slate-400">With M Platform</p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">With POISE</p>
                 <Badge className="mt-2 bg-purple-600 text-white text-xs">NOW SOLVED</Badge>
               </CardContent>
             </Card>
@@ -395,7 +395,7 @@ export default function Homepage() {
       <section className="py-16 bg-white dark:bg-slate-950" data-testid="executive-summary">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-3">M at a Glance</h2>
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-3">POISE at a Glance</h2>
             <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
               Everything you need to know in 30 seconds
             </p>
@@ -503,7 +503,7 @@ export default function Homepage() {
                 <p className="text-slate-400 mb-4">Industry average to see just 10% agility improvement</p>
                 <div className="border-t border-slate-700 pt-4 mt-4">
                   <div className="text-2xl font-bold text-emerald-400">Quarters</div>
-                  <p className="text-sm text-slate-500">With M Platform</p>
+                  <p className="text-sm text-slate-500">With POISE</p>
                 </div>
               </CardContent>
             </Card>
@@ -527,7 +527,7 @@ export default function Homepage() {
                 <p className="text-slate-400 mb-4">Have governance that actually supports speed</p>
                 <div className="border-t border-slate-700 pt-4 mt-4">
                   <div className="text-2xl font-bold text-emerald-400">100%</div>
-                  <p className="text-sm text-slate-500">M Platform embeds governance into execution</p>
+                  <p className="text-sm text-slate-500">POISE embeds governance into execution</p>
                 </div>
               </CardContent>
             </Card>
@@ -582,7 +582,7 @@ export default function Homepage() {
               {/* Without */}
               <div className="p-6 bg-red-950/30 border-2 border-red-800 rounded-lg" data-testid="without-m">
                 <h3 className="text-xl font-bold text-red-400 mb-4">
-                  Without M Platform
+                  Without POISE
                 </h3>
                 <ul className="space-y-3 text-slate-300">
                   <li className="flex items-start gap-2">
@@ -607,7 +607,7 @@ export default function Homepage() {
               {/* With */}
               <div className="p-6 bg-emerald-950/30 border-2 border-emerald-800 rounded-lg" data-testid="with-m">
                 <h3 className="text-xl font-bold text-emerald-400 mb-4">
-                  With M Platform
+                  With POISE
                 </h3>
                 <ul className="space-y-3 text-slate-300">
                   <li className="flex items-start gap-2">
@@ -974,7 +974,7 @@ export default function Homepage() {
               Three Angles for the AI-Hungry Enterprise
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-              Every Fortune 500 is deploying AI. Here's why M Platform is the missing piece.
+              Every Fortune 500 is deploying AI. Here's why POISE is the missing piece.
             </p>
           </div>
           
@@ -1028,7 +1028,7 @@ export default function Homepage() {
                   </p>
                 </div>
                 <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                  M Platform is the coordination layer that makes your AI investment pay off.
+                  POISE is the coordination layer that makes your AI investment pay off.
                 </p>
               </CardContent>
             </Card>
@@ -1059,7 +1059,7 @@ export default function Homepage() {
                   </div>
                 </div>
                 <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                  M Platform makes you AI-native—where AI doesn't just assist, it orchestrates.
+                  POISE makes you AI-native—where AI doesn't just assist, it orchestrates.
                 </p>
               </CardContent>
             </Card>
@@ -1074,7 +1074,7 @@ export default function Homepage() {
             The Solution
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-value">
-            M Platform: The Execution Layer
+            POISE: The Execution Layer
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-8">
             The first Strategic Execution Operating System—software that turns operating model design into coordinated action.
@@ -1100,7 +1100,7 @@ export default function Homepage() {
                 </ul>
               </div>
               <div className="text-left">
-                <h3 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-4">M Platform Executes</h3>
+                <h3 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-4">POISE Executes</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3 text-slate-700 dark:text-slate-200">
                     <CheckCircle className="w-5 h-5 mt-0.5 text-emerald-500 flex-shrink-0" />
@@ -1118,7 +1118,7 @@ export default function Homepage() {
               </div>
             </div>
             <p className="mt-8 text-lg font-medium text-slate-700 dark:text-slate-300">
-              McKinsey gives you the blueprint. <span className="text-emerald-600 dark:text-emerald-400 font-bold">M Platform builds the house.</span>
+              McKinsey gives you the blueprint. <span className="text-emerald-600 dark:text-emerald-400 font-bold">POISE builds the house.</span>
             </p>
           </div>
           
@@ -1236,7 +1236,7 @@ export default function Homepage() {
                 <Badge className="mb-2 bg-white/20 text-white border-white/30">Try It Yourself</Badge>
                 <h3 className="text-2xl font-bold text-white mb-2">Interactive Sandbox Demo</h3>
                 <p className="text-white/80">
-                  Configure your own playbook, set triggers, define stakeholders, and watch your personalized scenario execute in real-time. See exactly how M Platform would work for your organization.
+                  Configure your own playbook, set triggers, define stakeholders, and watch your personalized scenario execute in real-time. See exactly how POISE would work for your organization.
                 </p>
               </div>
               <Button 
@@ -1361,7 +1361,7 @@ export default function Homepage() {
                 </p>
               </blockquote>
               <p className="text-lg font-semibold text-slate-900 dark:text-white">
-                M Platform is the answer. <span className="text-amber-600 dark:text-amber-400">That's the IDEA.</span>
+                POISE is the answer. <span className="text-amber-600 dark:text-amber-400">That's the IDEA.</span>
               </p>
             </div>
             <div className="grid grid-cols-1 gap-6">
@@ -1390,7 +1390,7 @@ export default function Homepage() {
           </h2>
           <p className="text-lg text-emerald-400 font-semibold mb-2">Success Favors the Prepared</p>
           <p className="text-xl text-slate-300 mb-8">
-            Start with a 90-day pilot. See M Platform coordinate your first strategic response in 12 minutes instead of 72 hours.
+            Start with a 90-day pilot. See POISE coordinate your first strategic response in 12 minutes instead of 72 hours.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 

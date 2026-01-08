@@ -64,7 +64,7 @@ export default function Footer() {
       links: [
         { label: "How It Works", path: "/how-it-works" },
         { label: "Our Story", path: "/our-story" },
-        { label: "Why M", path: "/why-m" },
+        { label: "Why POISE", path: "/why-m" },
         { label: "Integrations", path: "/integrations" },
         { label: "Pricing", path: "/pricing" },
         { label: "Contact", path: "/contact" },
@@ -79,8 +79,8 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div>
-              <h3 className="text-white font-semibold">M Strategic Execution Operating System</h3>
-              <p className="text-sm text-slate-400">Explore the complete platform capabilities below</p>
+              <h3 className="text-white font-semibold">POISE - Strategic Execution OS</h3>
+              <p className="text-sm text-slate-400">Composure in every decision</p>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-xs font-medium px-3 py-1 rounded-full bg-violet-500/20 text-violet-400">IDENTIFY</span>
@@ -172,14 +172,14 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">M</span>
+              <div className="w-10 h-10 bg-[#1A2B3D] rounded-lg flex items-center justify-center border border-[#00A8A8]/30">
+                <span className="text-[#D4AF37] font-bold text-lg tracking-tight">P</span>
               </div>
               <div>
                 <p className="text-sm text-slate-400">
-                  © {new Date().getFullYear()} M Strategic Execution Operating System
+                  © {new Date().getFullYear()} POISE - Strategic Execution OS
                 </p>
-                <p className="text-xs text-slate-600">The preparation mindset of elite teams, systematized for enterprise execution.</p>
+                <p className="text-xs text-slate-600">Calm, Precise, Instant Execution</p>
               </div>
             </div>
             <div className="flex items-center gap-6">

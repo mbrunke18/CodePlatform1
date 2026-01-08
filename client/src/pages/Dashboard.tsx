@@ -208,10 +208,10 @@ export default function Dashboard() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Dashboard | M Strategic Execution OS",
+      title: "Dashboard | POISE - Strategic Execution OS",
       description: "Your strategic execution command center. Monitor readiness, track triggers, and coordinate responses in real-time.",
-      ogTitle: "M Dashboard",
-      ogDescription: "Strategic Execution Operating System for Fortune 1000 executives.",
+      ogTitle: "POISE Dashboard",
+      ogDescription: "Strategic Execution OS for Fortune 1000 executives. Composure in every decision.",
     });
   }, []);
 

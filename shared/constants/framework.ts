@@ -1,7 +1,35 @@
 // ============================================================================
-// M PLATFORM - IDEA FRAMEWORK CONSTANTS
+// POISE - STRATEGIC EXECUTION OPERATING SYSTEM
 // Centralized definitions for the 4-phase IDEA Framework and 9 Strategic Domains
+// "Composure in every decision."
 // ============================================================================
+
+// ----- POISE BRAND CONSTANTS -----
+
+export const POISE_BRAND = {
+  name: 'POISE',
+  fullName: 'POISE - Strategic Execution OS',
+  tagline: 'Composure in every decision.',
+  extendedTagline: 'Calm, Precise, Instant Execution',
+  alternateTaglines: [
+    'Adapt at the Speed of Change',
+    'Your Employees Have AI. Your Organization Doesn\'t.'
+  ],
+  colors: {
+    primary: '#1A2B3D',
+    accentGold: '#D4AF37',
+    accentTeal: '#00A8A8',
+    textLight: '#FFFFFF',
+    textMuted: '#94A3B8'
+  },
+  modules: {
+    identify: { name: 'POISE Playbook™', description: 'Build and customize strategic playbooks' },
+    detect: { name: 'POISE Signal™', description: 'AI-powered signal monitoring and detection' },
+    execute: { name: 'POISE Compass™', description: 'Coordinated response and execution' },
+    advance: { name: 'POISE Retrospect™', description: 'Institutional learning and improvement' },
+    executive: { name: 'POISE One™', description: 'Single-pane executive view' }
+  }
+} as const;
 
 // ----- IDEA FRAMEWORK PHASE DEFINITIONS -----
 
@@ -9,6 +37,7 @@ export const IDEA_PHASES = {
   IDENTIFY: {
     id: 'identify',
     name: 'IDENTIFY',
+    moduleName: 'POISE Playbook™',
     subtitle: 'Build Your Playbook Library',
     description: 'Map your operating model to execution playbooks. Pre-stage responses across 9 strategic domains. Know who does what before anything happens.',
     icon: 'ClipboardList',
@@ -32,6 +61,7 @@ export const IDEA_PHASES = {
   DETECT: {
     id: 'detect',
     name: 'DETECT',
+    moduleName: 'POISE Signal™',
     subtitle: 'Monitor Signals',
     description: 'AI-powered monitoring spots signals early. Real-time triggers across market, competitive, and regulatory landscapes. Intelligence reports, not surprises.',
     icon: 'Radar',
@@ -55,6 +85,7 @@ export const IDEA_PHASES = {
   EXECUTE: {
     id: 'execute',
     name: 'EXECUTE',
+    moduleName: 'POISE Compass™',
     subtitle: 'Coordinate Response',
     description: 'Coordinated action in 12 minutes vs. 72-hour industry average. Everyone aligned, nothing lost in translation.',
     icon: 'Play',
@@ -78,6 +109,7 @@ export const IDEA_PHASES = {
   ADVANCE: {
     id: 'advance',
     name: 'ADVANCE',
+    moduleName: 'POISE Retrospect™',
     subtitle: 'Capture Learning',
     description: 'Every execution makes you stronger. Automated retrospectives capture what worked. Institutional knowledge compounds, not walks out the door.',
     icon: 'TrendingUp',
@@ -250,13 +282,15 @@ export const STRATEGIC_CATEGORIES_ARRAY = Object.values(STRATEGIC_CATEGORIES);
 // ----- EXECUTION TIMING BENCHMARKS -----
 
 export const TIMING_BENCHMARKS = {
-  M_PLATFORM: {
+  POISE: {
     decisionTime: 12,
     decisionUnit: 'minutes',
     executionTime: 90,
     executionUnit: 'minutes',
-    description: 'M Platform enables 12-minute decision start and 90-minute full execution'
+    description: 'POISE enables 12-minute decision start and 90-minute full execution'
   },
+  // Backward compatibility alias
+  get M_PLATFORM() { return this.POISE; },
   INDUSTRY_AVERAGE: {
     decisionTime: 72,
     decisionUnit: 'hours',

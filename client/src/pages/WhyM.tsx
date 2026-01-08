@@ -33,10 +33,10 @@ import { updatePageMetadata } from "@/lib/seo";
 export default function WhyM() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Why M - The Founder Story | Strategic Execution Operating System",
-      description: "Discover how 5 years of elite football coaching and 20+ years of Fortune 500 strategic execution led to M—the first Strategic Execution Operating System.",
-      ogTitle: "Why M Exists - Creating a New Category",
-      ogDescription: "The insight that created M: Business has no operating system for coordinated response. We're changing that.",
+      title: "Why POISE - The Founder Story | Strategic Execution OS",
+      description: "Discover how 5 years of elite football coaching and 20+ years of Fortune 500 strategic execution led to POISE—the first Strategic Execution OS.",
+      ogTitle: "Why POISE Exists - Creating a New Category",
+      ogDescription: "The insight that created POISE: Business has no operating system for coordinated response. We're changing that.",
     });
   }, []);
 
@@ -54,8 +54,8 @@ export default function WhyM() {
                 The Origin Story
               </Badge>
               
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight" data-testid="heading-why-m">
-                Why M Exists
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight" data-testid="heading-why-poise">
+                Why POISE Exists
               </h1>
               
               <p className="text-xl text-blue-100 mb-8">
@@ -91,7 +91,7 @@ export default function WhyM() {
                   </div>
                   <div>
                     <p className="font-bold text-white">Marty Brunke</p>
-                    <p className="text-blue-200 text-sm">Founder & CEO, M</p>
+                    <p className="text-blue-200 text-sm">Founder & CEO, POISE</p>
                   </div>
                 </div>
               </CardContent>
@@ -145,7 +145,7 @@ export default function WhyM() {
                   </div>
                   <div>
                     <p className="font-bold text-foreground text-lg">Marty Brunke</p>
-                    <p className="text-muted-foreground">Founder & CEO, M</p>
+                    <p className="text-muted-foreground">Founder & CEO, POISE</p>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2">
