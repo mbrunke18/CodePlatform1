@@ -47,6 +47,7 @@ import {
 } from 'lucide-react';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
+import ScenarioVarianceAlert from '@/components/predictive/ScenarioVarianceAlert';
 
 interface TestCondition {
   id: string;
@@ -1437,6 +1438,9 @@ export default function WhatIfAnalyzer() {
                           </div>
                         </CardContent>
                       </Card>
+
+                      {/* Scenario Variance Alerts */}
+                      <ScenarioVarianceAlert analysisResult={analysisResult} />
 
                       {/* Analysis Confidence */}
                       <Card className="border-2 border-blue-200 dark:border-blue-800">

@@ -37,8 +37,10 @@ import {
   PlayCircle,
   ArrowLeft,
   Home,
-  Plus
+  Plus,
+  Sparkles
 } from 'lucide-react';
+import TriggerProbabilityForecast from '@/components/predictive/TriggerProbabilityForecast';
 
 interface TriggerCondition {
   id: string;
@@ -447,6 +449,9 @@ export default function TriggersManagement() {
               </AlertDescription>
             </Alert>
           )}
+
+          {/* AI Trigger Probability Forecast */}
+          <TriggerProbabilityForecast triggers={allTriggers} compact={false} />
 
           {/* Signal Categories Overview */}
           <Card className="border-blue-500/30 bg-blue-950/20">

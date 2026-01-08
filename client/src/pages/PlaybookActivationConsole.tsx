@@ -26,6 +26,7 @@ import DecisionConfidenceScore from "@/components/DecisionConfidenceScore";
 import StakeholderAlignmentDashboard from "@/components/StakeholderAlignmentDashboard";
 import ExecutionValidationReport from "@/components/ExecutionValidationReport";
 import PlaybookLearningsPanel from "@/components/playbook/PlaybookLearningsPanel";
+import PreActivationImpactPreview from "@/components/predictive/PreActivationImpactPreview";
 
 interface ExecutionCheckpoint {
   id: string;
@@ -40,10 +41,11 @@ interface ExecutionCheckpoint {
 export default function PlaybookActivationConsole() {
   const [, params] = useRoute("/playbook-activation/:triggerId/:playbookId");
   const { toast } = useToast();
-  const [executionStartTime] = useState(new Date());
+  const [activationConfirmed, setActivationConfirmed] = useState(false);
+  const [executionStartTime, setExecutionStartTime] = useState<Date | null>(null);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [notes, setNotes] = useState("");
-  const [executionStatus, setExecutionStatus] = useState<'active' | 'paused' | 'completed'>('active');
+  const [executionStatus, setExecutionStatus] = useState<'pending' | 'active' | 'paused' | 'completed'>('pending');
   const [executionId] = useState(`exec-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`);
 
   // Fetch trigger details (skip for manual executions)
@@ -65,9 +67,9 @@ export default function PlaybookActivationConsole() {
     enabled: !!params?.playbookId,
   });
 
-  // Countdown timer
+  // Countdown timer - only starts after activation is confirmed
   useEffect(() => {
-    if (executionStatus !== 'active') return;
+    if (executionStatus !== 'active' || !executionStartTime) return;
     
     const interval = setInterval(() => {
       setElapsedSeconds(Math.floor((new Date().getTime() - executionStartTime.getTime()) / 1000));
@@ -75,6 +77,21 @@ export default function PlaybookActivationConsole() {
 
     return () => clearInterval(interval);
   }, [executionStartTime, executionStatus]);
+
+  // Handle activation confirmation
+  const handleConfirmActivation = () => {
+    setActivationConfirmed(true);
+    setExecutionStartTime(new Date());
+    setExecutionStatus('active');
+    toast({
+      title: "Playbook Activated",
+      description: "Execution timer started. Rally your team!",
+    });
+  };
+
+  const handleCancelActivation = () => {
+    window.history.back();
+  };
 
   // Complete execution mutation
   const completeExecutionMutation = useMutation({
@@ -148,6 +165,62 @@ export default function PlaybookActivationConsole() {
     return <div className="p-6">Loading activation console...</div>;
   }
 
+  // Show Pre-Activation Impact Preview if not yet confirmed
+  if (!activationConfirmed) {
+    return (
+      <div className="page-background min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        <div className="container mx-auto p-6 space-y-6 max-w-4xl">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+                <Target className="h-8 w-8 text-blue-600" />
+                Pre-Activation Review
+              </h1>
+              <p className="text-gray-600 dark:text-gray-300 mt-1">
+                Review projected impact before activating playbook
+              </p>
+            </div>
+            <Link href="/triggers-management">
+              <Button variant="outline" data-testid="button-back-triggers-preview">
+                Back to Triggers
+              </Button>
+            </Link>
+          </div>
+
+          {/* Playbook Summary Card */}
+          <Card className="border-2 border-purple-200 dark:border-purple-800">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <PlayCircle className="h-5 w-5 text-purple-600" />
+                Playbook: {playbook?.name || 'Loading...'}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                {playbook?.description || 'Strategic response playbook ready for activation.'}
+              </p>
+              {!isManualExecution && trigger && (
+                <div className="mt-4 p-3 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
+                  <div className="flex items-center gap-2 text-red-700 dark:text-red-300 font-medium">
+                    <AlertTriangle className="h-4 w-4" />
+                    Triggered by: {trigger.name}
+                  </div>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* Pre-Activation Impact Preview */}
+          <PreActivationImpactPreview 
+            playbook={playbook}
+            onConfirmActivation={handleConfirmActivation}
+            onCancel={handleCancelActivation}
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="page-background min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="container mx-auto p-6 space-y-6">
@@ -205,7 +278,7 @@ export default function PlaybookActivationConsole() {
                 {formatTime(elapsedSeconds)}
               </div>
               <p className="text-xs mt-1 opacity-90">
-                {executionStatus === 'active' ? 'In Progress' : executionStatus === 'paused' ? 'Paused' : 'Completed'}
+                {executionStatus === 'active' ? 'In Progress' : executionStatus === 'paused' ? 'Paused' : executionStatus === 'pending' ? 'Ready' : 'Completed'}
               </p>
             </CardContent>
           </Card>
