@@ -271,9 +271,9 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
               </div>
             </div>
 
-            {(isExpanded || !compact) && (
+            {isExpanded && (
               <>
-                <div className="mb-3">
+                <div className="mb-3 pt-3 border-t border-slate-200 dark:border-slate-600">
                   <div className="text-xs font-semibold text-slate-600 dark:text-slate-400 mb-2">Contributing Factors</div>
                   <div className="flex flex-wrap gap-2">
                     {forecast.contributingFactors.map((factor, idx) => (
