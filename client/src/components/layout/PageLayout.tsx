@@ -17,7 +17,7 @@ export default function PageLayout({ children, className = "" }: PageLayoutProps
       <StandardNav />
       
       {/* Full-Width Content Area */}
-      <main className="flex-1 w-full overflow-auto">
+      <main className="flex-1 w-full">
         {children}
       </main>
     </div>
