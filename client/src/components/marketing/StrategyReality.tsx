@@ -235,11 +235,9 @@ export function StrategyReality() {
               Optimize for the execution ecosystem around it.
             </span>
           </p>
-          <Link href="/how-it-works">
-            <a className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-lg transition-colors" data-testid="link-see-how-it-works">
-              See How M Platform Works
-              <ArrowRight className="w-5 h-5" />
-            </a>
+          <Link href="/how-it-works" className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-lg transition-colors" data-testid="link-see-how-it-works">
+            See How M Platform Works
+            <ArrowRight className="w-5 h-5" />
           </Link>
         </motion.div>
       </div>
@@ -355,16 +353,12 @@ export function StrategyRealityHero() {
           transition={{ delay: 0.4 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <Link href="/how-it-works">
-            <a className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-lg transition-colors text-lg" data-testid="button-see-how-it-works">
-              See How It Works
-              <ArrowRight className="w-5 h-5" />
-            </a>
+          <Link href="/how-it-works" className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-lg transition-colors text-lg" data-testid="button-see-how-it-works">
+            See How It Works
+            <ArrowRight className="w-5 h-5" />
           </Link>
-          <Link href="/demo">
-            <a className="inline-flex items-center gap-2 text-slate-400 hover:text-white font-medium px-8 py-4 transition-colors" data-testid="link-watch-demo">
-              Watch Demo
-            </a>
+          <Link href="/demo" className="inline-flex items-center gap-2 text-slate-400 hover:text-white font-medium px-8 py-4 transition-colors" data-testid="link-watch-demo">
+            Watch Demo
           </Link>
         </motion.div>
       </div>
