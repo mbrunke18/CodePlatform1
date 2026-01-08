@@ -26,7 +26,8 @@ import {
   Settings,
   MessageSquare,
   Building2,
-  HelpCircle
+  HelpCircle,
+  Calculator
 } from 'lucide-react';
 import { useEffect } from 'react';
 import { updatePageMetadata } from '@/lib/seo';
@@ -139,6 +140,35 @@ const automationTools = [
   }
 ];
 
+const planningModelingTools = [
+  {
+    name: 'Anaplan',
+    category: 'Connected Planning',
+    marketPosition: 'Enterprise planning & modeling platform',
+    focus: 'FP&A, scenario modeling, supply chain planning, workforce planning',
+    strengths: ['Multi-dimensional modeling', 'Real-time calculation engine', 'AI/ML forecasting (PlanIQ)', 'Cross-functional planning', 'What-if scenarios'],
+    gaps: ['Plans scenarios but doesn\'t execute responses', 'No trigger-based activation', 'No playbook library', 'No stakeholder coordination', '16+ week implementation'],
+    color: 'bg-sky-500',
+    whenTheyWin: 'Complex FP&A requirements, multi-dimensional budgeting, supply chain modeling',
+    trapQuestion: '"Anaplan helps you model what happens if a competitor enters your market. But when they actually do, can Anaplan mobilize 6 departments with pre-assigned tasks in 12 minutes?"',
+    pricing: '$100K-$1M+/year',
+    relationship: 'Complementary - Anaplan models scenarios, M executes the response'
+  },
+  {
+    name: 'Pigment',
+    category: 'Business Planning',
+    marketPosition: 'Modern business planning platform',
+    focus: 'Financial planning, revenue operations, workforce planning',
+    strengths: ['Modern UI/UX', 'Fast implementation', 'Collaborative', 'Real-time data'],
+    gaps: ['No execution orchestration', 'No signal monitoring', 'No pre-built responses', 'No event-driven activation'],
+    color: 'bg-fuchsia-500',
+    whenTheyWin: 'Mid-market finance teams, Anaplan alternative seekers',
+    trapQuestion: '"Pigment plans your numbers. M plans your response. When a risk materializes, can Pigment activate your crisis team?"',
+    pricing: 'Contact for pricing',
+    relationship: 'Complementary - Planning data can inform M trigger thresholds'
+  }
+];
+
 const projectManagementTools = [
   {
     name: 'Jira',
@@ -187,18 +217,20 @@ const projectManagementTools = [
 ];
 
 const categoryComparison = [
-  { capability: 'Detects strategic triggers proactively', crisisTools: 'partial', pmTools: false, okrTools: false, automationTools: 'partial', m: true },
-  { capability: 'Pre-built playbooks with assigned tasks', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, m: true },
-  { capability: 'Auto-creates project on activation', crisisTools: false, pmTools: false, okrTools: false, automationTools: 'partial', m: true },
-  { capability: 'Assigns tasks to specific owners', crisisTools: false, pmTools: 'manual', okrTools: 'manual', automationTools: false, m: true },
-  { capability: 'Stages required documents', crisisTools: false, pmTools: 'manual', okrTools: false, automationTools: false, m: true },
-  { capability: 'Unlocks pre-approved budgets', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, m: true },
-  { capability: 'Syncs to existing PM tools (Jira, etc.)', crisisTools: false, pmTools: 'native', okrTools: 'partial', automationTools: true, m: true },
-  { capability: '12-minute coordinated response', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, m: true },
-  { capability: 'AI-powered recommendations', crisisTools: 'partial', pmTools: false, okrTools: false, automationTools: 'partial', m: true },
-  { capability: 'Human decision gates', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, m: true },
-  { capability: 'Cross-functional coordination', crisisTools: 'partial', pmTools: 'partial', okrTools: 'partial', automationTools: false, m: true },
-  { capability: 'Institutional learning loop', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, m: true },
+  { capability: 'Detects strategic triggers proactively', crisisTools: 'partial', pmTools: false, okrTools: false, automationTools: 'partial', planningTools: false, m: true },
+  { capability: 'Pre-built playbooks with assigned tasks', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, planningTools: false, m: true },
+  { capability: 'Auto-creates project on activation', crisisTools: false, pmTools: false, okrTools: false, automationTools: 'partial', planningTools: false, m: true },
+  { capability: 'Assigns tasks to specific owners', crisisTools: false, pmTools: 'manual', okrTools: 'manual', automationTools: false, planningTools: false, m: true },
+  { capability: 'Stages required documents', crisisTools: false, pmTools: 'manual', okrTools: false, automationTools: false, planningTools: false, m: true },
+  { capability: 'Unlocks pre-approved budgets', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, planningTools: false, m: true },
+  { capability: 'Syncs to existing PM tools (Jira, etc.)', crisisTools: false, pmTools: 'native', okrTools: 'partial', automationTools: true, planningTools: 'partial', m: true },
+  { capability: '12-minute coordinated response', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, planningTools: false, m: true },
+  { capability: 'AI-powered recommendations', crisisTools: 'partial', pmTools: false, okrTools: false, automationTools: 'partial', planningTools: true, m: true },
+  { capability: 'Human decision gates', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, planningTools: false, m: true },
+  { capability: 'Cross-functional coordination', crisisTools: 'partial', pmTools: 'partial', okrTools: 'partial', automationTools: false, planningTools: 'partial', m: true },
+  { capability: 'Institutional learning loop', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, planningTools: false, m: true },
+  { capability: 'What-if scenario modeling', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, planningTools: true, m: 'partial' },
+  { capability: 'Real-time execution tracking', crisisTools: 'partial', pmTools: true, okrTools: 'partial', automationTools: false, planningTools: false, m: true },
 ];
 
 const objections = [
@@ -241,6 +273,11 @@ const objections = [
     objection: '"Can\'t we just build this with Zapier/Make?"',
     response: 'Automation tools connect apps. M orchestrates humans. You can\'t Zap your way to cross-functional coordination with human decision gates, pre-approved budgets, and institutional learning. M is the strategic layer above automation.',
     category: 'Automation'
+  },
+  {
+    objection: '"We use Anaplan for strategic planning."',
+    response: 'Excellent! Anaplan models scenarios—what happens if a competitor enters your market. M completes the loop: when that actually happens, M activates the response in 12 minutes. Anaplan plans, M executes. They\'re complementary, not competing.',
+    category: 'Planning Tools'
   }
 ];
 
@@ -421,18 +458,22 @@ export default function CompetitivePositioning() {
             </div>
 
             <Tabs defaultValue="crisis" className="w-full">
-              <TabsList className="grid w-full grid-cols-4 mb-8" data-testid="tabs-competitor-categories">
+              <TabsList className="grid w-full grid-cols-5 mb-8" data-testid="tabs-competitor-categories">
                 <TabsTrigger value="crisis" className="flex items-center gap-2 text-xs sm:text-sm" data-testid="tab-crisis-tools">
                   <Bell className="w-4 h-4" />
-                  <span className="hidden sm:inline">Crisis Tools</span>
+                  <span className="hidden sm:inline">Crisis</span>
                 </TabsTrigger>
                 <TabsTrigger value="pm" className="flex items-center gap-2 text-xs sm:text-sm" data-testid="tab-pm-tools">
                   <Settings className="w-4 h-4" />
-                  <span className="hidden sm:inline">PM Tools</span>
+                  <span className="hidden sm:inline">PM</span>
+                </TabsTrigger>
+                <TabsTrigger value="planning" className="flex items-center gap-2 text-xs sm:text-sm" data-testid="tab-planning-tools">
+                  <Calculator className="w-4 h-4" />
+                  <span className="hidden sm:inline">Planning</span>
                 </TabsTrigger>
                 <TabsTrigger value="okr" className="flex items-center gap-2 text-xs sm:text-sm" data-testid="tab-okr-tools">
                   <Target className="w-4 h-4" />
-                  <span className="hidden sm:inline">OKR/Strategy</span>
+                  <span className="hidden sm:inline">OKR</span>
                 </TabsTrigger>
                 <TabsTrigger value="automation" className="flex items-center gap-2 text-xs sm:text-sm" data-testid="tab-automation-tools">
                   <Zap className="w-4 h-4" />
@@ -535,6 +576,80 @@ export default function CompetitivePositioning() {
                               ))}
                             </ul>
                           </div>
+                        </div>
+                        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
+                          <div className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 flex items-center gap-1">
+                            <MessageSquare className="w-3 h-3" /> Trap Question
+                          </div>
+                          <p className="text-xs text-blue-600 dark:text-blue-400 italic">{tool.trapQuestion}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="planning">
+                <div className="mb-6 bg-sky-50 dark:bg-sky-900/20 border border-sky-200 dark:border-sky-800 rounded-lg p-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-full bg-sky-500 flex items-center justify-center flex-shrink-0">
+                      <Calculator className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-sky-900 dark:text-sky-100 mb-1">Complementary, Not Competing</h3>
+                      <p className="text-sm text-sky-700 dark:text-sky-300">
+                        Planning tools like Anaplan model "what if" scenarios. M executes the "when it happens" response. 
+                        Together, they complete the strategic loop: <strong>Plan → Trigger → Execute → Learn</strong>.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {planningModelingTools.map((tool) => (
+                    <Card key={tool.name} className="border-t-4 hover:shadow-lg transition-shadow" style={{ borderTopColor: tool.color.includes('sky') ? '#0ea5e9' : '#d946ef' }} data-testid={`card-competitor-${tool.name.toLowerCase()}`}>
+                      <CardHeader className="pb-3">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className={`w-10 h-10 rounded-full ${tool.color} flex items-center justify-center`}>
+                              <span className="text-white font-bold">{tool.name.charAt(0)}</span>
+                            </div>
+                            <div>
+                              <CardTitle className="text-lg">{tool.name}</CardTitle>
+                              <Badge variant="outline" className="text-xs">{tool.category}</Badge>
+                            </div>
+                          </div>
+                          <Badge className="bg-sky-100 text-sky-800 dark:bg-sky-900 dark:text-sky-200">
+                            {tool.pricing}
+                          </Badge>
+                        </div>
+                        <CardDescription className="mt-2">{tool.marketPosition}</CardDescription>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">Their Strengths</div>
+                            <ul className="space-y-1">
+                              {tool.strengths.map((s, i) => (
+                                <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                                  <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" /> {s}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps M Fills</div>
+                            <ul className="space-y-1">
+                              {tool.gaps.map((g, i) => (
+                                <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                                  <Zap className="w-3 h-3 text-blue-500 flex-shrink-0" /> {g}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                        <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
+                          <div className="text-xs font-semibold text-sky-600 dark:text-sky-400 mb-1">Relationship with M</div>
+                          <p className="text-xs text-slate-500 dark:text-slate-500">{tool.relationship}</p>
                         </div>
                         <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
                           <div className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 flex items-center gap-1">
@@ -658,10 +773,10 @@ export default function CompetitivePositioning() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-category-comparison">
-                Four Categories, One Gap
+                Five Categories, One Gap
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400">
-                M is the only platform that bridges detection, coordination, and execution
+                M is the only platform that bridges planning, detection, coordination, and execution
               </p>
             </div>
 
@@ -693,6 +808,12 @@ export default function CompetitivePositioning() {
                         <div className="flex flex-col items-center">
                           <Zap className="w-4 h-4 text-orange-500 mb-1" />
                           <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Automation</span>
+                        </div>
+                      </th>
+                      <th className="text-center p-3">
+                        <div className="flex flex-col items-center">
+                          <Calculator className="w-4 h-4 text-sky-500 mb-1" />
+                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Planning</span>
                         </div>
                       </th>
                       <th className="text-center p-3 bg-blue-50 dark:bg-blue-900/20">
@@ -734,8 +855,14 @@ export default function CompetitivePositioning() {
                           {row.automationTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-600 mx-auto" />}
                           {row.automationTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
                         </td>
+                        <td className="p-3 text-center">
+                          {row.planningTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
+                          {row.planningTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-600 mx-auto" />}
+                          {row.planningTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
+                        </td>
                         <td className="p-3 text-center bg-blue-50/50 dark:bg-blue-900/10">
                           {row.m === true && <CheckCircle className="w-4 h-4 text-blue-500 mx-auto" />}
+                          {row.m === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
                         </td>
                       </tr>
                     ))}
