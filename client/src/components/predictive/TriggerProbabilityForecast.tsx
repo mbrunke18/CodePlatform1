@@ -102,7 +102,16 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
       };
     };
 
-    return triggers.slice(0, compact ? 3 : 10).map(generateForecast);
+    const uniqueCategories = Array.from(new Set(triggers.map(t => t.category || 'general')));
+    const selectedTriggers: TriggerInput[] = [];
+    
+    uniqueCategories.forEach(category => {
+      const categoryTriggers = triggers.filter(t => (t.category || 'general') === category);
+      selectedTriggers.push(...categoryTriggers.slice(0, compact ? 1 : 2));
+    });
+    
+    const maxItems = compact ? 3 : 12;
+    return selectedTriggers.slice(0, maxItems).map(generateForecast);
   }, [triggers, compact]);
 
   const getProbabilityColor = (prob: number) => {

@@ -442,7 +442,12 @@ export default function TriggersManagement() {
                     <div className="font-semibold">⚠️ Critical Triggers Activated</div>
                     <div className="mt-1">{triggeredCount} scenario triggers require immediate attention</div>
                   </div>
-                  <Button variant="destructive" size="sm">
+                  <Button 
+                    variant="destructive" 
+                    size="sm"
+                    onClick={() => setFilterStatus('triggered')}
+                    data-testid="button-view-all-alerts"
+                  >
                     View All Alerts
                   </Button>
                 </div>
