@@ -163,7 +163,7 @@ export default function InvestorLanding() {
                 <CardContent>
                   <div className="text-4xl font-bold text-green-600 mb-2" data-testid="text-som-value">$1.9B</div>
                   <p className="text-slate-600 dark:text-slate-400" data-testid="text-som-description">
-                    5% market capture in Year 5 (50 Fortune 500 + 200 mid-market at $250K-$2M ACV)
+                    5% market capture in Year 5 (50 Fortune 500 + 200 mid-market at $250K-$1.5M ACV)
                   </p>
                 </CardContent>
               </Card>
@@ -342,16 +342,16 @@ export default function InvestorLanding() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-3xl font-bold text-green-600 mb-2" data-testid="text-price-enterprise">$250K-$2M</div>
+                  <div className="text-3xl font-bold text-green-600 mb-2" data-testid="text-price-enterprise">$250K</div>
                   <div className="text-sm text-slate-600 dark:text-slate-400 mb-4">Annual Contract Value</div>
                   <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-green-600" />
-                      Unlimited users
+                      Single domain
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-green-600" />
-                      Custom integrations
+                      Standard integrations
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-green-600" />
@@ -365,24 +365,24 @@ export default function InvestorLanding() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
                     <Users className="h-6 w-6 text-blue-600" />
-                    Team
+                    Enterprise Plus
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-3xl font-bold text-blue-600 mb-2" data-testid="text-price-team">$48K-$120K</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400 mb-4">Annual ($4K-$10K/mo)</div>
+                  <div className="text-3xl font-bold text-blue-600 mb-2" data-testid="text-price-team">$450K</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-400 mb-4">Annual Contract Value</div>
                   <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-blue-600" />
-                      Up to 50 users
+                      Multi-domain
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-blue-600" />
-                      Standard integrations
+                      Full integration suite
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-blue-600" />
-                      Email support
+                      Priority support
                     </li>
                   </ul>
                 </CardContent>
@@ -392,24 +392,24 @@ export default function InvestorLanding() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
                     <TrendingUp className="h-6 w-6 text-purple-600" />
-                    Executive
+                    Global
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-3xl font-bold text-purple-600 mb-2" data-testid="text-price-executive">$12K-$24K</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400 mb-4">Annual ($1K-$2K/mo)</div>
+                  <div className="text-3xl font-bold text-purple-600 mb-2" data-testid="text-price-executive">$750K-$1.5M</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-400 mb-4">Custom Annual Contract</div>
                   <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-purple-600" />
-                      1-5 executives
+                      Multi-region orchestration
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-purple-600" />
-                      Core features
+                      White-glove implementation
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-purple-600" />
-                      Self-serve
+                      Dedicated account team
                     </li>
                   </ul>
                 </CardContent>
