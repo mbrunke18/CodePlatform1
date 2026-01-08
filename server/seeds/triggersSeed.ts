@@ -109,16 +109,50 @@ export async function seedTriggers() {
   const totalDataPoints = getTotalDataPointCount();
   console.log(`   Found ${totalDataPoints} data points across ${SIGNAL_CATEGORIES.length} signal categories`);
 
-  const [org] = await db.select().from(organizations).limit(1);
-  if (!org) {
-    console.log('   ⚠️ No organization found, skipping trigger seed');
-    return { triggersCreated: 0, associationsCreated: 0 };
-  }
+  // Demo tenant constants - always seed to this specific tenant only
+  const DEMO_USER_EMAIL = 'system@m-platform.io';
+  const DEMO_ORG_NAME = 'Innovate Dynamics';
 
-  const [user] = await db.select().from(users).limit(1);
+  // Step 1: Get or create the demo system user (strictly by email)
+  let [user] = await db.select().from(users).where(eq(users.email, DEMO_USER_EMAIL));
   if (!user) {
-    console.log('   ⚠️ No user found, skipping trigger seed');
-    return { triggersCreated: 0, associationsCreated: 0 };
+    console.log('   📦 Creating demo system user for trigger seeding...');
+    const [newUser] = await db.insert(users).values({
+      email: DEMO_USER_EMAIL,
+      firstName: 'M Platform',
+      lastName: 'System',
+      accessLevel: 'admin'
+    }).returning();
+    user = newUser;
+    console.log(`   ✅ Created demo user: ${user.email} (${user.id})`);
+  }
+  
+  // Step 2: Get or create the demo organization (strictly by name)
+  let [org] = await db.select().from(organizations).where(eq(organizations.name, DEMO_ORG_NAME));
+  if (!org) {
+    console.log('   📦 Creating demo organization for trigger seeding...');
+    const [newOrg] = await db.insert(organizations).values({
+      name: DEMO_ORG_NAME,
+      description: 'Leading cloud-native enterprise platform company focused on strategic execution and operational excellence. Demo organization for M Platform.',
+      ownerId: user.id,
+      industry: 'Technology',
+      size: 5000,
+      type: 'enterprise',
+      settings: {
+        timezone: 'America/New_York',
+        currency: 'USD',
+        fiscalYearStart: 'January',
+        defaultPlaybookReviewCycle: 90
+      }
+    }).returning();
+    org = newOrg;
+    console.log(`   ✅ Created organization: ${org.name} (${org.id})`);
+  }
+  
+  // Step 3: Ensure demo user is linked to demo org
+  if (user.organizationId !== org.id) {
+    console.log(`   🔗 Linking demo user to demo organization...`);
+    await db.update(users).set({ organizationId: org.id }).where(eq(users.id, user.id));
   }
 
   return seedTriggersForOrg(org.id, user.id, allDataPoints);
