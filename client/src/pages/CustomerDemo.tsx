@@ -574,22 +574,23 @@ export default function CustomerDemo() {
                           
                           {/* Pilot Program Options */}
                           <div className="bg-slate-800/50 rounded-lg p-4">
-                            <p className="text-white font-medium mb-3">Start With a Pilot</p>
+                            <p className="text-white font-medium mb-3">Start With a Founding Partner Pilot</p>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                              <div className="p-3 bg-slate-700/50 rounded-lg border border-slate-600">
-                                <div className="text-sm font-medium text-white mb-1">90-Day POC</div>
-                                <div className="text-xs text-slate-400 mb-2">Single domain, 20 playbooks</div>
-                                <div className="text-emerald-400 text-sm font-medium">$125K</div>
+                              <div className="p-3 bg-emerald-900/30 rounded-lg border border-emerald-500/30">
+                                <div className="text-sm font-medium text-white mb-1">90-Day Pilot</div>
+                                <div className="text-xs text-slate-400 mb-2">5 playbooks, 25 users</div>
+                                <div className="text-emerald-400 text-sm font-medium">$75K</div>
+                                <div className="text-xs text-emerald-400/70">100% credited to Year 1</div>
                               </div>
                               <div className="p-3 bg-slate-700/50 rounded-lg border border-slate-600">
-                                <div className="text-sm font-medium text-white mb-1">Domain Pilot</div>
-                                <div className="text-xs text-slate-400 mb-2">Full domain, 3 executions</div>
-                                <div className="text-emerald-400 text-sm font-medium">$250K</div>
+                                <div className="text-sm font-medium text-white mb-1">Enterprise</div>
+                                <div className="text-xs text-slate-400 mb-2">Single domain</div>
+                                <div className="text-blue-400 text-sm font-medium">$250K/yr</div>
                               </div>
                               <div className="p-3 bg-violet-900/30 rounded-lg border border-violet-500/30">
-                                <div className="text-sm font-medium text-white mb-1">Enterprise</div>
+                                <div className="text-sm font-medium text-white mb-1">Global</div>
                                 <div className="text-xs text-slate-400 mb-2">All 166 playbooks</div>
-                                <div className="text-violet-400 text-sm font-medium">$500K</div>
+                                <div className="text-violet-400 text-sm font-medium">$750K+/yr</div>
                               </div>
                             </div>
                           </div>
