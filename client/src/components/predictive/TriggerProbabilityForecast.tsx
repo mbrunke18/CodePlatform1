@@ -1,7 +1,8 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
+import { Button } from '@/components/ui/button';
 import { 
   TrendingUp, 
   TrendingDown, 
@@ -11,7 +12,10 @@ import {
   Target,
   Brain,
   Sparkles,
-  Calendar
+  Calendar,
+  ChevronDown,
+  ChevronUp,
+  Info
 } from 'lucide-react';
 
 interface TriggerInput {
@@ -65,7 +69,9 @@ const allFactors: Array<{ factor: string; impact: 'high' | 'medium' | 'low'; dir
 ];
 
 export default function TriggerProbabilityForecast({ triggers = [], compact = false }: TriggerProbabilityForecastProps) {
-  const forecasts = useMemo(() => {
+  const [showAll, setShowAll] = useState(false);
+  
+  const allForecasts = useMemo(() => {
     const generateForecast = (trigger: TriggerInput): TriggerForecast => {
       const seed = trigger.id || 'default';
       const rand1 = seededRandom(seed + '1');
@@ -102,17 +108,19 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
       };
     };
 
-    const uniqueCategories = Array.from(new Set(triggers.map(t => t.category || 'general')));
-    const selectedTriggers: TriggerInput[] = [];
-    
-    uniqueCategories.forEach(category => {
-      const categoryTriggers = triggers.filter(t => (t.category || 'general') === category);
-      selectedTriggers.push(...categoryTriggers.slice(0, compact ? 1 : 2));
-    });
-    
-    const maxItems = compact ? 3 : 12;
-    return selectedTriggers.slice(0, maxItems).map(generateForecast);
-  }, [triggers, compact]);
+    const allForecastData = triggers.map(generateForecast);
+    return allForecastData.sort((a, b) => b.probability30Days - a.probability30Days);
+  }, [triggers]);
+
+  const displayedForecasts = useMemo(() => {
+    if (compact) return allForecasts.slice(0, 3);
+    if (showAll) return allForecasts;
+    return allForecasts.slice(0, 10);
+  }, [allForecasts, compact, showAll]);
+
+  const totalTriggers = triggers.length;
+  const displayedCount = displayedForecasts.length;
+  const hasMore = totalTriggers > displayedCount && !showAll;
 
   const getProbabilityColor = (prob: number) => {
     if (prob >= 70) return 'text-red-600 dark:text-red-400';
@@ -134,7 +142,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
     return <Minus className="w-4 h-4 text-slate-500" />;
   };
 
-  if (forecasts.length === 0) {
+  if (allForecasts.length === 0) {
     return (
       <Card className="border-dashed border-2 border-slate-300 dark:border-slate-700">
         <CardContent className="p-6 text-center">
@@ -156,7 +164,9 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
             </div>
             <div>
               <CardTitle className="text-lg">Trigger Probability Forecast</CardTitle>
-              <p className="text-xs text-slate-500">AI-powered predictions for next 30/60/90 days</p>
+              <p className="text-xs text-slate-500">
+                Showing top {displayedCount} of {totalTriggers} triggers ranked by 30-day probability
+              </p>
             </div>
           </div>
           <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300">
@@ -166,7 +176,14 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        {forecasts.map((forecast) => (
+        <div className="flex items-center gap-2 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-sm">
+          <Info className="w-4 h-4 text-blue-600 dark:text-blue-400 flex-shrink-0" />
+          <span className="text-blue-800 dark:text-blue-200">
+            Triggers ranked by highest 30-day firing probability. Higher probability = higher priority for review.
+          </span>
+        </div>
+        
+        {displayedForecasts.map((forecast) => (
           <div 
             key={forecast.triggerId} 
             className="border border-slate-200 dark:border-slate-700 rounded-lg p-4 hover:shadow-md transition-shadow"
@@ -273,6 +290,30 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
             )}
           </div>
         ))}
+        
+        {/* View All / Show Less Button */}
+        {!compact && totalTriggers > 10 && (
+          <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
+            <Button
+              variant="outline"
+              className="w-full"
+              onClick={() => setShowAll(!showAll)}
+              data-testid="button-toggle-all-forecasts"
+            >
+              {showAll ? (
+                <>
+                  <ChevronUp className="w-4 h-4 mr-2" />
+                  Show Less (Top 10)
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="w-4 h-4 mr-2" />
+                  View All {totalTriggers} Triggers
+                </>
+              )}
+            </Button>
+          </div>
+        )}
       </CardContent>
     </Card>
   );
