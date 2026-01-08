@@ -15,7 +15,9 @@ import {
   Calendar,
   ChevronDown,
   ChevronUp,
-  Info
+  Info,
+  Settings,
+  ExternalLink
 } from 'lucide-react';
 
 interface TriggerInput {
@@ -304,6 +306,51 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
                       </li>
                     ))}
                   </ul>
+                </div>
+
+                <div className="flex gap-2 mt-3 pt-3 border-t border-slate-200 dark:border-slate-600">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="flex-1"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const triggerCard = document.querySelector(`[data-trigger-id="${forecast.triggerId}"]`);
+                      if (triggerCard) {
+                        triggerCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        triggerCard.classList.add('ring-2', 'ring-purple-500', 'ring-offset-2');
+                        setTimeout(() => {
+                          triggerCard.classList.remove('ring-2', 'ring-purple-500', 'ring-offset-2');
+                        }, 3000);
+                      } else {
+                        document.getElementById('triggers-list-section')?.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    data-testid={`button-view-trigger-${forecast.triggerId}`}
+                  >
+                    <ExternalLink className="w-3 h-3 mr-1" />
+                    View in List
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="default"
+                    className="flex-1 bg-purple-600 hover:bg-purple-700"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const triggerCard = document.querySelector(`[data-trigger-id="${forecast.triggerId}"]`);
+                      if (triggerCard) {
+                        triggerCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        const editButton = triggerCard.querySelector('[data-testid^="button-edit-trigger"]') as HTMLButtonElement;
+                        if (editButton) {
+                          setTimeout(() => editButton.click(), 500);
+                        }
+                      }
+                    }}
+                    data-testid={`button-edit-trigger-${forecast.triggerId}`}
+                  >
+                    <Settings className="w-3 h-3 mr-1" />
+                    Edit Trigger
+                  </Button>
                 </div>
               </>
             )}

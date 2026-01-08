@@ -570,7 +570,10 @@ export default function TriggersManagement() {
                 {!isLoading && !isError && filteredTriggers.map((trigger) => {
                   const rawData = getRawTrigger(trigger.id);
                   return (
-                  <Card key={trigger.id} className={`transition-all hover:shadow-md ${
+                  <Card 
+                    key={trigger.id} 
+                    data-trigger-id={trigger.id}
+                    className={`transition-all hover:shadow-md ${
                     trigger.status === 'triggered' ? 'border-red-500 bg-red-50 dark:bg-red-900/20' : 
                     trigger.status === 'active' ? 'border-green-300' : 'border-gray-200'
                   }`}>
@@ -612,6 +615,19 @@ export default function TriggersManagement() {
                               data-testid={`switch-trigger-${trigger.id}`}
                             />
                           </div>
+                          
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => {
+                              setSelectedTrigger(rawData);
+                              setIsWizardOpen(true);
+                            }}
+                            data-testid={`button-edit-trigger-${trigger.id}`}
+                          >
+                            <Settings className="h-4 w-4 mr-1" />
+                            Edit
+                          </Button>
                           
                           <div className="flex items-center space-x-2">
                             {getStatusIcon(trigger.status)}
