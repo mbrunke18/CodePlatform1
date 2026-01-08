@@ -125,6 +125,7 @@ export const PUBLIC_ROUTES = [
   // Health & Status - for monitoring/uptime checks
   '/api/health',
   '/api/status',
+  '/api/diagnostics/db-stats',
   '/api/pilot-monitoring/system-health',
   '/api/pilot-monitoring/pilot-metrics',
   '/api/pilot-monitoring/recent-activity',

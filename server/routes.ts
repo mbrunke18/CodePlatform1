@@ -5751,6 +5751,46 @@ SUCCESS METRICS:
     }
   });
 
+  // Database diagnostics endpoint - shows counts of key tables
+  app.get('/api/diagnostics/db-stats', async (req, res) => {
+    try {
+      const schema = await import('@shared/schema');
+      const [triggersResult] = await db.select({ count: count() }).from(schema.executiveTriggers);
+      const [playbooksResult] = await db.select({ count: count() }).from(schema.playbookLibrary);
+      const [orgsResult] = await db.select({ count: count() }).from(schema.organizations);
+      const [usersResult] = await db.select({ count: count() }).from(schema.users);
+      const [domainsResult] = await db.select({ count: count() }).from(schema.playbookDomains);
+      const [signalsResult] = await db.select({ count: count() }).from(schema.triggerSignals);
+      const [associationsResult] = await db.select({ count: count() }).from(schema.playbookTriggerAssociations);
+      
+      res.status(200).json({
+        status: 'ok',
+        timestamp: new Date().toISOString(),
+        counts: {
+          executiveTriggers: triggersResult?.count || 0,
+          playbookLibrary: playbooksResult?.count || 0,
+          organizations: orgsResult?.count || 0,
+          users: usersResult?.count || 0,
+          playbookDomains: domainsResult?.count || 0,
+          triggerSignals: signalsResult?.count || 0,
+          playbookTriggerAssociations: associationsResult?.count || 0
+        },
+        expected: {
+          executiveTriggers: 178,
+          playbookLibrary: 166,
+          playbookDomains: 9
+        }
+      });
+    } catch (error) {
+      console.error('Diagnostics failed:', error);
+      res.status(500).json({
+        status: 'error',
+        timestamp: new Date().toISOString(),
+        error: error instanceof Error ? error.message : 'Unknown error'
+      });
+    }
+  });
+
   // Global error handling middleware
   app.use((err: any, req: any, res: any, next: any) => {
     console.error('Unhandled error:', {
