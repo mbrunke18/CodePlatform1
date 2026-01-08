@@ -688,7 +688,7 @@ export default function InvestorDemo() {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-slate-400">Target ACV</span>
-                      <span className="text-sm font-medium text-white">$500K-$2M</span>
+                      <span className="text-sm font-medium text-white">$250K-$1.5M</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-slate-400">Beachhead</span>
