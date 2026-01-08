@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Play, Menu, X, LogIn, LogOut, User, ChevronDown } from "lucide-react";
+import { Play, Menu, X, LogIn, LogOut, User, ChevronDown, Brain, Target, Lightbulb } from "lucide-react";
 import { useLocation } from "wouter";
 import { useAuth } from "@/hooks/useAuth";
 import {
@@ -8,6 +8,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
+  DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
 
 export default function StandardNav() {
@@ -84,6 +86,19 @@ export default function StandardNav() {
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-56">
+                <DropdownMenuLabel className="flex items-center gap-2 text-blue-400">
+                  <Brain className="h-3 w-3" />
+                  Predictive Intelligence
+                </DropdownMenuLabel>
+                <DropdownMenuItem onClick={() => navigateTo("/triggers-management")} data-testid="nav-trigger-forecasting">
+                  <Target className="h-4 w-4 mr-2 text-purple-400" />
+                  Trigger Forecasting
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigateTo("/what-if-analyzer")} data-testid="nav-what-if-analyzer">
+                  <Lightbulb className="h-4 w-4 mr-2 text-amber-400" />
+                  What-If Analyzer
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={() => navigateTo("/competitive-positioning")} data-testid="nav-competitive-positioning">
                   Why M Wins (vs. Competitors)
                 </DropdownMenuItem>
@@ -217,6 +232,33 @@ export default function StandardNav() {
               >
                 Start Pilot
               </Button>
+              
+              {/* Divider */}
+              <div className="border-t border-slate-800 my-2" />
+              
+              {/* Predictive Intelligence Links */}
+              <p className="px-4 py-2 text-xs text-blue-400 uppercase tracking-wide flex items-center gap-2">
+                <Brain className="h-3 w-3" />
+                Predictive Intelligence
+              </p>
+              <div className="grid grid-cols-2 gap-1">
+                <button
+                  onClick={() => navigateTo("/triggers-management")}
+                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg flex items-center gap-2"
+                  data-testid="nav-mobile-trigger-forecasting"
+                >
+                  <Target className="h-4 w-4 text-purple-400" />
+                  Trigger Forecasting
+                </button>
+                <button
+                  onClick={() => navigateTo("/what-if-analyzer")}
+                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg flex items-center gap-2"
+                  data-testid="nav-mobile-what-if-analyzer"
+                >
+                  <Lightbulb className="h-4 w-4 text-amber-400" />
+                  What-If Analyzer
+                </button>
+              </div>
               
               {/* Divider */}
               <div className="border-t border-slate-800 my-2" />
