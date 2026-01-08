@@ -262,6 +262,10 @@ export default function PilotProgram() {
             {/* Key Stats */}
             <div className="flex flex-wrap justify-center gap-6 mb-8">
               <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 text-center">
+                <div className="text-2xl font-bold text-emerald-400">$75K</div>
+                <div className="text-xs text-slate-300">Pilot Investment</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 text-center">
                 <div className="text-2xl font-bold text-white">90</div>
                 <div className="text-xs text-slate-300">Days</div>
               </div>
@@ -275,7 +279,7 @@ export default function PilotProgram() {
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 text-center">
                 <div className="text-2xl font-bold text-white">100%</div>
-                <div className="text-xs text-slate-300">Credit Applied</div>
+                <div className="text-xs text-slate-300">Credit to Year 1</div>
               </div>
             </div>
 
