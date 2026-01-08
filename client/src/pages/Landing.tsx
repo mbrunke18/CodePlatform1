@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Radio, Radar, Sparkles, BookMarked, Dumbbell, RefreshCw, Zap, Play, ArrowRight, Clock, Timer, ChevronRight, Users, Brain, Target, DollarSign, AlertTriangle, TrendingUp, Shield, Building2, CheckCircle2, X } from "lucide-react";
 import { Link } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
+import { StrategyReality, StrategyToIDEA } from "@/components/marketing/StrategyReality";
 
 export default function Landing() {
   return (
@@ -561,6 +562,12 @@ export default function Landing() {
                 </CardContent>
               </Card>
             </div>
+          </div>
+
+          {/* Strategy Reality - Why 5% Strategy, 95% Ecosystem */}
+          <div className="mb-16 -mx-4">
+            <StrategyReality />
+            <StrategyToIDEA />
           </div>
 
           {/* Category Creation */}
