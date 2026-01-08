@@ -136,8 +136,8 @@ export default function MissionControl() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: 'Mission Control | POISE',
-      description: 'Your strategic command center for the IDEA Framework - Monitor signals, manage playbooks, and execute with precision.'
+      title: 'POISE One™ | Strategic Command Center',
+      description: 'Single-pane executive overview of strategic readiness and execution status. Monitor signals, manage playbooks, and execute with precision.'
     });
   }, []);
 
@@ -406,10 +406,10 @@ export default function MissionControl() {
                 <div className="p-2 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600">
                   <Radio className="h-7 w-7 text-white" />
                 </div>
-                Mission Control
+                POISE One™
               </h1>
               <p className="text-slate-500 dark:text-slate-400 mt-1">
-                Strategic Execution Operating System • IDEA Framework Command Center
+                Single-pane executive overview of strategic readiness and execution status
               </p>
             </div>
             <div className="flex items-center gap-4">

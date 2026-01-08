@@ -26,7 +26,7 @@ export default function StandardNav() {
     { label: "Why POISE", path: "/why-poise" },
     { label: "How It Works", path: "/how-it-works" },
     { label: "Playbooks", path: "/playbooks" },
-    { label: "Mission Control", path: "/mission-control", featured: true },
+    { label: "POISE One™", path: "/mission-control", featured: true },
     { label: "Pricing", path: "/pricing" },
   ];
 

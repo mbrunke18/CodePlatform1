@@ -15,7 +15,7 @@ The platform uses trademarked module names aligned to the IDEA Framework:
 - **POISE Signal™** (DETECT): AI-powered signal monitoring and detection
 - **POISE Compass™** (EXECUTE): Coordinated response and execution
 - **POISE Retrospect™** (ADVANCE): Institutional learning and improvement
-- **POISE One™** (Optional): Single-pane executive view
+- **POISE One™** (/mission-control): Single-pane executive overview of strategic readiness and execution status
 
 ## Brand Colors
 - **Primary (Dark Navy):** #1A2B3D
@@ -36,7 +36,7 @@ POISE operates on the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE), facil
 **UI/UX Decisions:**
 - **Design:** Modern, enterprise-grade interface focused on decision velocity and human-AI collaboration.
 - **Theme:** Full dark/light mode support with localStorage persistence and WCAG AAA contrast compliance.
-- **Navigation:** Simplified 4-item navigation (Why POISE, How It Works, Playbooks, Pricing) with "More" dropdown for secondary pages. CTAs consolidated to "Try Demo" and "Start Pilot".
+- **Navigation:** Simplified 5-item navigation (Why POISE, How It Works, Playbooks, POISE One™, Pricing) with "More" dropdown for secondary pages. CTAs consolidated to "Try Demo" and "Start Pilot".
 - **Branding:** Consistent "POISE - Strategic Execution OS" branding with compass needle logo.
 - **Design System:** Established with 60+ utility classes.
 
