@@ -199,7 +199,7 @@ export default function AgilityAssessment() {
                   </div>
                   <div className="bg-emerald-900/30 rounded-lg p-6 border border-emerald-500/30" data-testid="result-potential-growth">
                     <div className="text-3xl font-bold text-emerald-400 mb-2">+{revenueImpact.potentialGrowth}%</div>
-                    <p className="text-slate-400 text-sm">Potential Additional Growth with M Platform</p>
+                    <p className="text-slate-400 text-sm">Potential Additional Growth with POISE</p>
                   </div>
                   <div className="bg-slate-800/50 rounded-lg p-6" data-testid="result-benchmark">
                     <div className="text-3xl font-bold text-amber-400 mb-2">10.3%</div>
@@ -219,7 +219,7 @@ export default function AgilityAssessment() {
                           Based on the 2025 BAI Report, organizations at your level see approximately <span className="text-amber-400 font-semibold">{revenueImpact.currentGrowth}% revenue per employee growth</span>.
                         </p>
                         <p className="text-slate-300">
-                          With M Platform, you could close the gap to top performers and capture an additional <span className="text-emerald-400 font-semibold">{revenueImpact.potentialGrowth}% growth potential</span>.
+                          With POISE, you could close the gap to top performers and capture an additional <span className="text-emerald-400 font-semibold">{revenueImpact.potentialGrowth}% growth potential</span>.
                         </p>
                       </div>
                     ) : (
@@ -231,7 +231,7 @@ export default function AgilityAssessment() {
                           However, there's still room to reach the <span className="text-emerald-400 font-semibold">10.3% benchmark</span> that top performers achieve.
                         </p>
                         <p className="text-slate-300">
-                          M Platform can help you close the remaining gap with <span className="text-emerald-400 font-semibold">pre-staged playbooks and 12-minute execution</span>.
+                          POISE can help you close the remaining gap with <span className="text-emerald-400 font-semibold">pre-staged playbooks and 12-minute execution</span>.
                         </p>
                       </div>
                     )}

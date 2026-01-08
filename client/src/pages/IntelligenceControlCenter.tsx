@@ -34,7 +34,7 @@ export default function IntelligenceControlCenter() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Intelligence Control Center - M Strategic Execution OS",
+      title: "Intelligence Control Center - POISE Strategic Execution OS",
       description: "Monitor 92+ data points across 16 signal categories. AI-powered pattern detection, trigger management, and strategic intelligence.",
       ogTitle: "M Intelligence Control Center",
       ogDescription: "Real-time strategic intelligence with AI-powered pattern detection and 12-minute response coordination.",

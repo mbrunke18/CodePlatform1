@@ -136,7 +136,7 @@ export default function MissionControl() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: 'Mission Control | M Platform',
+      title: 'Mission Control | POISE',
       description: 'Your strategic command center for the IDEA Framework - Monitor signals, manage playbooks, and execute with precision.'
     });
   }, []);
@@ -1156,7 +1156,7 @@ export default function MissionControl() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold">12 Minutes vs. 72 Hours</h3>
-                    <p className="text-slate-300">M Platform delivers 340x faster coordinated response</p>
+                    <p className="text-slate-300">POISE delivers 340x faster coordinated response</p>
                   </div>
                 </div>
                 <div className="flex gap-3">

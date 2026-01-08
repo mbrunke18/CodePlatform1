@@ -276,6 +276,7 @@ function Router() {
         <Route path="/roi-breakdown" component={ComprehensiveROIBreakdown} />
         <Route path="/our-story" component={OurStory} />
         <Route path="/why-m" component={WhyM} />
+        <Route path="/why-poise" component={WhyM} />
         <Route path="/research" component={Research} />
         <Route path="/how-it-works" component={HowItWorks} />
         <Route path="/pricing" component={Pricing} />

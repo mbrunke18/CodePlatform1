@@ -29,7 +29,7 @@ export default function VideoLanding() {
     updatePageMetadata({
       title: "M - Strategic Execution Operating System | 72 Hours → 12 Minutes",
       description: "Watch how M transforms strategic coordination from 72 hours to 12 minutes. Pre-staged playbooks, coordinated stakeholders, instant activation for Fortune 1000 companies.",
-      ogTitle: "M Platform - The Speed to Execute",
+      ogTitle: "POISE - The Speed to Execute",
       ogDescription: "166 playbooks. 12 minutes to coordinated execution. The Strategic Execution Operating System.",
     });
   }, []);
@@ -49,7 +49,7 @@ export default function VideoLanding() {
                 </Button>
               </Link>
               <h1 className="text-3xl md:text-4xl font-bold text-white mb-2" data-testid="heading-video-hub">
-                M Platform Brand Films
+                POISE Brand Films
               </h1>
               <p className="text-slate-400">
                 Cinematic presentations for trade shows, conferences, and broadcast
@@ -242,7 +242,7 @@ export default function VideoLanding() {
       <footer className="py-8 px-6 bg-slate-950 border-t border-slate-800">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-slate-500 text-sm">
-            M Platform - Strategic Execution Operating System
+            POISE - Strategic Execution Operating System
           </p>
         </div>
       </footer>

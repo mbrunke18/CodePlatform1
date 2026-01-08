@@ -64,7 +64,7 @@ export default function Footer() {
       links: [
         { label: "How It Works", path: "/how-it-works" },
         { label: "Our Story", path: "/our-story" },
-        { label: "Why POISE", path: "/why-m" },
+        { label: "Why POISE", path: "/why-poise" },
         { label: "Integrations", path: "/integrations" },
         { label: "Pricing", path: "/pricing" },
         { label: "Contact", path: "/contact" },

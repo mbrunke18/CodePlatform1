@@ -127,7 +127,7 @@ export default function ScenarioGallery() {
   useEffect(() => {
     updatePageMetadata({
       title: "Strategic Playbook Library | M Executive Decision Platform",
-      description: "Explore M's 166 strategic playbooks across 9 domains: digital transformation, M&A integration, crisis management, new product launches, global expansion, AI governance, and more. See the human-AI partnership in action.",
+      description: "Explore POISE's 166 strategic playbooks across 9 domains: digital transformation, M&A integration, crisis management, new product launches, global expansion, AI governance, and more. See the human-AI partnership in action.",
       ogTitle: "Experience M Strategic Playbook Library",
       ogDescription: "From culture transformation to new product launches - see how executives prepare, AI monitors, and teams execute across 166 strategic playbooks.",
     });

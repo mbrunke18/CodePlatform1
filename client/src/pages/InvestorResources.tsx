@@ -25,7 +25,7 @@ import { updatePageMetadata } from "@/lib/seo";
 export default function InvestorResources() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Investor Resources | M Strategic Execution Operating System",
+      title: "Investor Resources | POISE Strategic Execution OS",
       description: "Investment overview for M, the first Strategic Execution Operating System. Creating a new $5B+ software category for Fortune 1000 strategic execution.",
       ogTitle: "Invest in M - Category-Defining Opportunity",
       ogDescription: "Transform 72-hour strategic coordination into 12-minute execution. First-mover in Strategic Execution Operating System (SEOS) category.",

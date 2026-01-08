@@ -23,7 +23,7 @@ export default function StandardNav() {
   };
 
   const navLinks = [
-    { label: "Why M", path: "/why-m" },
+    { label: "Why POISE", path: "/why-poise" },
     { label: "How It Works", path: "/how-it-works" },
     { label: "Playbooks", path: "/playbooks" },
     { label: "Mission Control", path: "/mission-control", featured: true },
@@ -47,10 +47,10 @@ export default function StandardNav() {
             data-testid="nav-logo"
           >
             <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-lg">M</span>
+              <span className="text-white font-bold text-lg">P</span>
             </div>
             <div className="hidden sm:block">
-              <span className="font-bold text-white text-lg">M</span>
+              <span className="font-bold text-white text-lg">POISE</span>
               <span className="text-slate-500 text-xs ml-1.5 hidden lg:inline">Strategic Execution OS</span>
             </div>
           </div>
@@ -100,7 +100,7 @@ export default function StandardNav() {
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={() => navigateTo("/competitive-positioning")} data-testid="nav-competitive-positioning">
-                  Why M Wins (vs. Competitors)
+                  Why POISE Wins (vs. Competitors)
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => navigateTo("/pilot-program")} data-testid="nav-pilot-program">
                   Pilot Program

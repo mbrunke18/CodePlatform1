@@ -509,8 +509,8 @@ export default function ExecutionCoordination() {
                   Industry Comparison
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400">
-                  Without M Platform, this coordinated response would take <span className="font-bold text-red-600">72 hours to decide + 2 weeks to execute</span>. 
-                  With M Platform, you're on track to complete in <span className="font-bold text-emerald-600">~45 minutes total</span>.
+                  Without POISE, this coordinated response would take <span className="font-bold text-red-600">72 hours to decide + 2 weeks to execute</span>. 
+                  With POISE, you're on track to complete in <span className="font-bold text-emerald-600">~45 minutes total</span>.
                 </p>
               </div>
             </div>

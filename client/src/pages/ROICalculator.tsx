@@ -83,7 +83,7 @@ export default function ROICalculator() {
     // Regulatory/compliance risk cost
     const complianceRiskCost = inputs.annualRevenue * 0.001 * industryData.regulatoryFactor;
     
-    // With M Platform (12-minute decision, 90-minute full execution)
+    // With POISE (12-minute decision, 90-minute full execution)
     const mResponseTimeHours = 0.2 + 1.5; // 12 min decision + 90 min execution = ~1.7 hours
     const mTotalExecutiveHoursPerYear = mResponseTimeHours * inputs.executivesInvolved * inputs.strategicEventsPerYear;
     const mCoordinationCostPerYear = mTotalExecutiveHoursPerYear * hourlyExecutiveCost;
@@ -159,7 +159,7 @@ export default function ROICalculator() {
               Calculate Your Strategic Velocity ROI
             </h1>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-6">
-              See how M Platform transforms coordination time from 72 hours to 12 minutes—and what that means for your bottom line.
+              See how POISE transforms coordination time from 72 hours to 12 minutes—and what that means for your bottom line.
             </p>
             
             {/* BAI Report Stat Highlight */}
@@ -399,7 +399,7 @@ export default function ROICalculator() {
                       <div className="text-2xl font-bold text-white">{inputs.avgResponseTimeHours} hours</div>
                     </div>
                     <div className="bg-green-950/30 rounded-lg p-4 border border-green-500/20">
-                      <div className="text-sm text-green-400 mb-1">With M Platform</div>
+                      <div className="text-sm text-green-400 mb-1">With POISE</div>
                       <div className="text-2xl font-bold text-white">~2 hours</div>
                       <div className="text-xs text-slate-500">12 min decision + 90 min execution</div>
                     </div>

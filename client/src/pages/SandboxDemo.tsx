@@ -1133,7 +1133,7 @@ export default function SandboxDemo() {
                 <Plug className="h-5 w-5 text-purple-600" />
                 Enterprise Integrations
               </CardTitle>
-              <CardDescription>Connect M Platform to your existing tools for seamless execution</CardDescription>
+              <CardDescription>Connect POISE to your existing tools for seamless execution</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-2 gap-4">
@@ -1526,7 +1526,7 @@ export default function SandboxDemo() {
               <Network className="h-5 w-5 text-blue-600" />
               Signal Sources
             </CardTitle>
-            <CardDescription>Where should M Platform monitor for signals?</CardDescription>
+            <CardDescription>Where should POISE monitor for signals?</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 gap-3">
@@ -1807,7 +1807,7 @@ export default function SandboxDemo() {
           </div>
           <div className="mt-4 p-4 bg-purple-50 dark:bg-purple-950/30 rounded-lg">
             <p className="text-sm text-purple-700 dark:text-purple-400">
-              <strong>Dynamic Routing:</strong> M Platform automatically routes to the appropriate response path based on detected signal severity. Change severity above to see different response configurations.
+              <strong>Dynamic Routing:</strong> POISE automatically routes to the appropriate response path based on detected signal severity. Change severity above to see different response configurations.
             </p>
           </div>
         </CardContent>
@@ -2185,7 +2185,7 @@ export default function SandboxDemo() {
 
         <div className="text-center">
           <p className="text-slate-600 dark:text-slate-400 mb-4">
-            Ready to see M Platform with your real scenarios?
+            Ready to see POISE with your real scenarios?
           </p>
           <div className="flex justify-center gap-4">
             <Button variant="outline" onClick={() => {

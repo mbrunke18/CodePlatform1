@@ -403,7 +403,7 @@ export default function ComprehensiveROIBreakdown() {
                   {/* M Approach */}
                   <div className="bg-green-50 dark:bg-green-950/30 rounded-lg p-6 border-2 border-green-200 dark:border-green-800">
                     <h3 className="text-xl font-bold text-green-900 dark:text-green-100 mb-4">
-                      ✅ M Platform
+                      ✅ POISE
                     </h3>
                     <div className="space-y-4">
                       <div>

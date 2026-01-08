@@ -40,7 +40,7 @@ const SAMPLE_DATA = {
   organization: 'Meridian Industries',
   reportDate: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
   quarter: 'Q4 2025',
-  preparedBy: 'M Strategic Execution Platform',
+  preparedBy: 'POISE Strategic Execution Platform',
   
   executiveSummary: {
     overallReadiness: 87,
