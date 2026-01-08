@@ -445,7 +445,13 @@ export default function TriggersManagement() {
                   <Button 
                     variant="destructive" 
                     size="sm"
-                    onClick={() => setFilterStatus('triggered')}
+                    onClick={() => {
+                      setFilterStatus('triggered');
+                      setSelectedCategory('all');
+                      setTimeout(() => {
+                        document.getElementById('triggers-list-section')?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    }}
                     data-testid="button-view-all-alerts"
                   >
                     View All Alerts
@@ -487,7 +493,7 @@ export default function TriggersManagement() {
             </CardContent>
           </Card>
 
-          <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="space-y-6">
+          <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="space-y-6" id="triggers-list-section">
             <div className="flex items-center justify-between">
               <TabsList className="bg-white dark:bg-gray-800 flex-wrap h-auto gap-1 p-1">
                 <TabsTrigger value="all">All ({allTriggers.length})</TabsTrigger>
