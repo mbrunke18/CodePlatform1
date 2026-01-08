@@ -1177,57 +1177,56 @@ export default function MissionControl() {
                   <Bell className="h-5 w-5 text-amber-600" />
                   <CardTitle className="text-lg">Active Triggers</CardTitle>
                   <Badge className="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
-                    {triggers.length || 178} Total
+                    {triggers.length} Total
                   </Badge>
                 </div>
                 <Link href="/triggers-management">
                   <Button variant="outline" size="sm">
-                    View All {triggers.length || 178} Triggers
+                    View All {triggers.length} Triggers
                     <ChevronRight className="h-4 w-4 ml-1" />
                   </Button>
                 </Link>
               </div>
-              <CardDescription>Top 10 most recent triggers across all signal categories</CardDescription>
+              <CardDescription>Top 10 triggers across all signal categories</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {(triggers.length > 0 ? triggers.slice(0, 10) : [
-                  { id: '1', name: 'Competitor Product Launch', status: 'active', severity: 'critical', category: 'competitive', detectedAt: new Date().toISOString() },
-                  { id: '2', name: 'Regulatory Filing Deadline', status: 'active', severity: 'high', category: 'regulatory', detectedAt: new Date().toISOString() },
-                  { id: '3', name: 'M&A Opportunity Detected', status: 'active', severity: 'high', category: 'market', detectedAt: new Date().toISOString() },
-                  { id: '4', name: 'Cybersecurity Threat Alert', status: 'active', severity: 'critical', category: 'cyber', detectedAt: new Date().toISOString() },
-                  { id: '5', name: 'Market Share Shift Signal', status: 'active', severity: 'medium', category: 'competitive', detectedAt: new Date().toISOString() },
-                  { id: '6', name: 'Supply Chain Disruption', status: 'active', severity: 'high', category: 'operational', detectedAt: new Date().toISOString() },
-                  { id: '7', name: 'Key Personnel Change', status: 'active', severity: 'medium', category: 'talent', detectedAt: new Date().toISOString() },
-                  { id: '8', name: 'Patent Filing Activity', status: 'active', severity: 'medium', category: 'innovation', detectedAt: new Date().toISOString() },
-                  { id: '9', name: 'Customer Churn Risk', status: 'active', severity: 'high', category: 'customer', detectedAt: new Date().toISOString() },
-                  { id: '10', name: 'Economic Indicator Shift', status: 'active', severity: 'medium', category: 'macro', detectedAt: new Date().toISOString() }
-                ]).map((trigger: any) => (
-                  <div 
-                    key={trigger.id}
-                    className="flex items-center justify-between p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 transition-colors"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className={`w-2 h-2 rounded-full ${
-                        trigger.severity === 'critical' ? 'bg-red-500' :
-                        trigger.severity === 'high' ? 'bg-amber-500' :
-                        'bg-emerald-500'
-                      }`} />
-                      <div>
-                        <div className="font-medium text-slate-900 dark:text-white text-sm">{trigger.name}</div>
-                        <div className="text-xs text-slate-500 capitalize">{trigger.category}</div>
+              {triggers.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {triggers.slice(0, 10).map((trigger: any) => (
+                    <div 
+                      key={trigger.id}
+                      className="flex items-center justify-between p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 transition-colors"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className={`w-2 h-2 rounded-full ${
+                          trigger.severity === 'critical' ? 'bg-red-500' :
+                          trigger.severity === 'high' ? 'bg-amber-500' :
+                          trigger.severity === 'medium' ? 'bg-yellow-500' :
+                          'bg-emerald-500'
+                        }`} />
+                        <div>
+                          <div className="font-medium text-slate-900 dark:text-white text-sm">{trigger.name}</div>
+                          <div className="text-xs text-slate-500 capitalize">{trigger.category}</div>
+                        </div>
                       </div>
+                      <Badge className={`text-xs ${
+                        trigger.severity === 'critical' ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300' :
+                        trigger.severity === 'high' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300' :
+                        trigger.severity === 'medium' ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300' :
+                        'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
+                      }`}>
+                        {trigger.severity}
+                      </Badge>
                     </div>
-                    <Badge className={`text-xs ${
-                      trigger.severity === 'critical' ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300' :
-                      trigger.severity === 'high' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300' :
-                      'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
-                    }`}>
-                      {trigger.severity}
-                    </Badge>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-8 text-slate-500">
+                  <Bell className="h-10 w-10 mx-auto mb-3 text-slate-300 dark:text-slate-600" />
+                  <p className="font-medium">Loading triggers...</p>
+                  <p className="text-sm mt-1">Fetching data from signal categories</p>
+                </div>
+              )}
             </CardContent>
           </Card>
 
