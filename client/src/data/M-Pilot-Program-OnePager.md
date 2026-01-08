@@ -81,7 +81,7 @@ We measure pilot success on four dimensions:
 
 ### Conversion Terms
 - Pilot fee credited 100% toward Year 1 contract if signed within 30 days of pilot completion
-- Full contract pricing: $250,000 - $500,000 annually (based on scope)
+- Enterprise: $250,000/year | Enterprise Plus: $450,000/year | Global: Custom ($750K-$1.5M/year)
 - Multi-year discounts available
 
 ---

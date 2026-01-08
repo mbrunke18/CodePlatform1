@@ -155,13 +155,13 @@ We're not trying to boil the ocean—we're starting with the largest, most sophi
 
 | Tier | Annual Contract | Target Customer |
 |------|-----------------|-----------------|
-| **Foundation** | $250K | Fortune 1000, single domain |
-| **Professional** | $500K | Fortune 500, multi-domain |
-| **Enterprise** | $1M+ | Global 500, full platform |
+| **Enterprise** | $250K | Fortune 1000, single domain |
+| **Enterprise Plus** | $450K | Fortune 500, multi-domain |
+| **Global** | $750K-$1.5M | Global 500, full platform |
 
 Pricing is based on: number of playbook domains, number of active users, integration complexity, and support level.
 
-**Unit economics target:** 80%+ gross margin (SaaS delivery), $150K+ ACV, 18-month payback.
+**Unit economics target:** 80%+ gross margin (SaaS delivery), $250K+ ACV, 18-month payback.
 
 ---
 
