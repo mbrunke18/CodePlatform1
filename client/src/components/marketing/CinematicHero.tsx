@@ -526,7 +526,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.8, type: "spring" }}
                   className="mb-6"
                 >
-                  <span className="text-7xl md:text-9xl font-bold text-white">M</span>
+                  <span className="text-7xl md:text-9xl font-bold text-white">POISE</span>
                 </motion.div>
                 
                 <motion.div
