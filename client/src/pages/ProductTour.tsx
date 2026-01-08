@@ -55,9 +55,9 @@ const TOUR_SCENES: Scene[] = [
     id: 'intro',
     type: 'cinematic',
     duration: 6000,
-    title: 'M',
+    title: 'POISE',
     subtitle: 'Strategic Execution Operating System',
-    narration: 'Welcome to M — the operating system that transforms how Fortune 1000 companies execute strategy.',
+    narration: 'Welcome to POISE — the operating system that transforms how Fortune 1000 companies execute strategy.',
     visual: 'solution'
   },
   {
@@ -82,7 +82,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 6000,
     title: 'The Solution',
     subtitle: 'Compress 72 hours into 12 minutes',
-    narration: 'M connects intelligence signals directly to pre-built playbooks, enabling coordinated response in minutes — not days.',
+    narration: 'POISE connects intelligence signals directly to pre-built playbooks, enabling coordinated response in minutes — not days.',
     visual: 'solution'
   },
   {
@@ -136,7 +136,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 7000,
     title: 'Critical Signal Detected',
     subtitle: 'Competitor Acquisition',
-    narration: 'A competitor announces a major acquisition. M detects it instantly and recommends immediate response.',
+    narration: 'A competitor announces a major acquisition. POISE detects it instantly and recommends immediate response.',
     visual: 'detect'
   },
   {
@@ -154,16 +154,16 @@ const TOUR_SCENES: Scene[] = [
     duration: 8000,
     title: 'The Results',
     subtitle: '3,180x Faster Response',
-    narration: 'What traditionally takes 72 hours, M coordinates in under 2 minutes. That\'s strategic velocity.',
+    narration: 'What traditionally takes 72 hours, POISE coordinates in under 2 minutes. That\'s strategic velocity.',
     visual: 'metrics'
   },
   {
     id: 'comparison',
     type: 'proof',
     duration: 8000,
-    title: 'Why M?',
+    title: 'Why POISE?',
     subtitle: 'The Only Closed-Loop Platform',
-    narration: 'Unlike Palantir, Anaplan, or Dataminr — M connects signals to playbooks to execution to learning. One platform.',
+    narration: 'Unlike Palantir, Anaplan, or Dataminr — POISE connects signals to playbooks to execution to learning. One platform.',
     visual: 'comparison'
   },
   {

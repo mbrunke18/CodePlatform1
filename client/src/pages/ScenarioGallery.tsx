@@ -126,9 +126,9 @@ export default function ScenarioGallery() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Strategic Playbook Library | M Executive Decision Platform",
+      title: "Strategic Playbook Library | POISE Strategic Execution OS",
       description: "Explore POISE's 166 strategic playbooks across 9 domains: digital transformation, M&A integration, crisis management, new product launches, global expansion, AI governance, and more. See the human-AI partnership in action.",
-      ogTitle: "Experience M Strategic Playbook Library",
+      ogTitle: "Experience POISE Strategic Playbook Library",
       ogDescription: "From culture transformation to new product launches - see how executives prepare, AI monitors, and teams execute across 166 strategic playbooks.",
     });
   }, []);
@@ -165,7 +165,7 @@ export default function ScenarioGallery() {
           </div>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-8 leading-tight max-w-5xl mx-auto" data-testid="heading-hero">
-            Experience How M Handles Real Business Situations
+            Experience How POISE Handles Real Business Situations
           </h1>
           
           <p className="text-xl md:text-2xl text-blue-100 mb-10 max-w-4xl mx-auto" data-testid="text-subtitle">

@@ -173,7 +173,7 @@ export default function DemoCompletionScreen({
                 <div className="text-2xl text-emerald-400 md:hidden">→</div>
                 <div>
                   <div className="text-3xl md:text-4xl font-bold text-emerald-400">{formatTime(elapsedTime)}</div>
-                  <div className="text-sm text-emerald-300">With M Platform</div>
+                  <div className="text-sm text-emerald-300">With POISE</div>
                 </div>
               </div>
             </div>

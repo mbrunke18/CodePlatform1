@@ -313,7 +313,7 @@ export default function InvestorLanding() {
                     First mover defining "Strategic Execution Operating System" category (like Salesforce for CRM). Category creators capture 76% of market value (Gartner research).
                   </p>
                   <div className="text-sm font-semibold text-primary" data-testid="text-moat-category-advantage">
-                    Advantage: Brand moat—"M" becomes verb for strategic execution
+                    Advantage: Brand moat—"POISE" becomes verb for strategic execution
                   </div>
                 </CardContent>
               </Card>

@@ -82,7 +82,7 @@ export function BeforeAfterComparison() {
             {/* M Coordination */}
             <div className="space-y-4">
               <div className="text-center pb-3 border-b border-emerald-500/30">
-                <div className="text-lg font-bold text-emerald-400">M Platform</div>
+                <div className="text-lg font-bold text-emerald-400">POISE</div>
                 <div className="text-sm text-emerald-300/70">12-Minute Orchestrated Response</div>
               </div>
               
@@ -102,7 +102,7 @@ export function BeforeAfterComparison() {
 
               <div className="text-center pt-3 border-t border-emerald-500/30">
                 <div className="text-3xl font-bold text-emerald-400">12min</div>
-                <div className="text-xs text-emerald-300/70">M Response Time</div>
+                <div className="text-xs text-emerald-300/70">POISE Response Time</div>
               </div>
             </div>
           </div>

@@ -271,7 +271,7 @@ export default function StandardNav() {
                   className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg col-span-2"
                   data-testid="nav-mobile-competitive-positioning"
                 >
-                  Why M Wins (vs. Competitors)
+                  Why POISE Wins (vs. Competitors)
                 </button>
                 <button
                   onClick={() => navigateTo("/research")}
