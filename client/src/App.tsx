@@ -472,11 +472,11 @@ function Router() {
         <Route path="/pilot-monitoring" component={PilotMonitoring} />
         <Route path="/sitemap" component={Sitemap} />
         
-        {/* Landing Page */}
-        <Route path="/landing" component={Landing} />
+        {/* Landing Page - Redirects to Homepage for consistency */}
+        <Route path="/landing">{() => { window.location.href = '/'; return null; }}</Route>
         
         {/* Legacy Routes - Redirects for backwards compatibility */}
-        <Route path="/login" component={Landing} />
+        <Route path="/login">{() => { window.location.href = '/'; return null; }}</Route>
         <Route path="/comprehensive-homepage" component={ExecutiveScorecard} />
         <Route path="/templates" component={RedirectToPlaybookLibrary} />
         <Route path="/crisis" component={CrisisResponseCenter} />

@@ -34,6 +34,7 @@ import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
 import CinematicHero from "@/components/marketing/CinematicHero";
+import { StrategyReality, StrategyToIDEA } from "@/components/marketing/StrategyReality";
 
 const INTRO_SEEN_KEY = "m_platform_intro_seen";
 
@@ -1329,6 +1330,10 @@ export default function Homepage() {
           </div>
         </div>
       </section>
+
+      {/* Strategy Reality - Why 5% Strategy, 95% Ecosystem */}
+      <StrategyReality />
+      <StrategyToIDEA />
 
       {/* Origin Story */}
       <section className="py-20 px-6 bg-white dark:bg-slate-950">
