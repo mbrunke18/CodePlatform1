@@ -73,6 +73,7 @@ const allFactors: Array<{ factor: string; impact: 'high' | 'medium' | 'low'; dir
 export default function TriggerProbabilityForecast({ triggers = [], compact = false }: TriggerProbabilityForecastProps) {
   const [showAll, setShowAll] = useState(false);
   const [expandedTriggerId, setExpandedTriggerId] = useState<string | null>(null);
+
   
   const allForecasts = useMemo(() => {
     const generateForecast = (trigger: TriggerInput): TriggerForecast => {

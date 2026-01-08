@@ -215,7 +215,10 @@ export default function TriggersManagement() {
   // Fetch real triggers from the API
   const { data: triggersData, isLoading, isError, error } = useQuery<any[]>({
     queryKey: ['/api/executive-triggers'],
+    staleTime: 30000, // Cache for 30 seconds
+    refetchOnWindowFocus: true,
   });
+
 
   // Mutation to toggle trigger active status
   const toggleTriggerMutation = useMutation({
