@@ -400,17 +400,11 @@ app.use((req, res, next) => {
         }
         
         // Seed triggers and signal-to-playbook associations
-        const [triggerResult] = await db.select({ count: count() }).from(executiveTriggers);
-        const triggerCount = Number(triggerResult?.count || 0);
-        
-        if (triggerCount < 80) {
-          logger.info('🎯 Seeding intelligence triggers...');
-          await seedTriggers();
-          const stats = await getTriggerStats();
-          logger.info(`✅ Trigger seeding completed: ${stats.triggers} triggers, ${stats.associations} associations, ${stats.signals} signals`);
-        } else {
-          logger.info(`✅ Already have ${triggerCount} triggers configured`);
-        }
+        // Always run seedTriggers - it internally checks if demo org has triggers and creates them if needed
+        logger.info('🎯 Checking/seeding intelligence triggers for demo organization...');
+        await seedTriggers();
+        const stats = await getTriggerStats();
+        logger.info(`✅ Trigger seeding check completed: ${stats.triggers} triggers, ${stats.associations} associations, ${stats.signals} signals`);
         
         // Seed demo scenarios for investor/customer presentations
         logger.info('🎭 Checking demo scenarios...');
