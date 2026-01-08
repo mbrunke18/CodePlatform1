@@ -70,6 +70,7 @@ const allFactors: Array<{ factor: string; impact: 'high' | 'medium' | 'low'; dir
 
 export default function TriggerProbabilityForecast({ triggers = [], compact = false }: TriggerProbabilityForecastProps) {
   const [showAll, setShowAll] = useState(false);
+  const [expandedTriggerId, setExpandedTriggerId] = useState<string | null>(null);
   
   const allForecasts = useMemo(() => {
     const generateForecast = (trigger: TriggerInput): TriggerForecast => {
@@ -183,15 +184,29 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
           </span>
         </div>
         
-        {displayedForecasts.map((forecast) => (
+        {displayedForecasts.map((forecast, index) => {
+          const isExpanded = expandedTriggerId === forecast.triggerId;
+          return (
           <div 
             key={forecast.triggerId} 
-            className="border border-slate-200 dark:border-slate-700 rounded-lg p-4 hover:shadow-md transition-shadow"
+            className={`border rounded-lg p-4 transition-all cursor-pointer ${
+              isExpanded 
+                ? 'border-purple-400 dark:border-purple-600 shadow-lg ring-2 ring-purple-200 dark:ring-purple-800' 
+                : 'border-slate-200 dark:border-slate-700 hover:shadow-md hover:border-purple-300 dark:hover:border-purple-700'
+            }`}
+            onClick={() => setExpandedTriggerId(isExpanded ? null : forecast.triggerId)}
             data-testid={`forecast-${forecast.triggerId}`}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === 'Enter' && setExpandedTriggerId(isExpanded ? null : forecast.triggerId)}
+            aria-expanded={isExpanded}
           >
             <div className="flex items-start justify-between mb-3">
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
+                  <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300 text-xs">
+                    #{index + 1}
+                  </Badge>
                   <h4 className="font-semibold text-slate-900 dark:text-white">{forecast.triggerName}</h4>
                   {getTrendIcon(forecast.trend)}
                 </div>
@@ -200,13 +215,17 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
                   <span className="text-xs text-slate-500">
                     Confidence: {forecast.confidenceScore}%
                   </span>
+                  <span className="text-xs text-purple-600 dark:text-purple-400">
+                    {isExpanded ? '(click to collapse)' : '(click for details)'}
+                  </span>
                 </div>
               </div>
-              <div className="text-right">
+              <div className="text-right flex items-center gap-2">
                 <div className="flex items-center gap-1 text-xs text-slate-500">
                   <Clock className="w-3 h-3" />
                   Updated {forecast.lastUpdated}
                 </div>
+                {isExpanded ? <ChevronUp className="w-4 h-4 text-purple-500" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
               </div>
             </div>
 
@@ -252,7 +271,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
               </div>
             </div>
 
-            {!compact && (
+            {(isExpanded || !compact) && (
               <>
                 <div className="mb-3">
                   <div className="text-xs font-semibold text-slate-600 dark:text-slate-400 mb-2">Contributing Factors</div>
@@ -289,7 +308,8 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
               </>
             )}
           </div>
-        ))}
+        );
+        })}
         
         {/* View All / Show Less Button */}
         {!compact && totalTriggers > 10 && (
