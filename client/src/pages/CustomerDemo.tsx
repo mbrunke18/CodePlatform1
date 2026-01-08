@@ -108,7 +108,7 @@ const IDEA_STORY = [
     icon: Radar,
     color: "text-blue-400",
     bgColor: "bg-blue-500/20",
-    time: 60,
+    time: 50,
     description: "M's AI monitors competitive intelligence, regulatory filings, supply chain signals, and internal alerts. When it detects something relevant, it recommends the right playbook. You stay in control—AI recommends, you decide.",
     roleWins: [
       { role: "Chief Strategy Officer", benefit: "Competitive moves flagged before they hit the news" },
@@ -124,6 +124,37 @@ const IDEA_STORY = [
   },
   {
     id: 4,
+    beat: "PREDICT",
+    title: "See The Future. Run What-If Scenarios.",
+    subtitle: "Predictive intelligence for proactive leadership",
+    phase: "PREDICT",
+    phaseColor: "bg-purple-500",
+    icon: TrendingUp,
+    color: "text-purple-400",
+    bgColor: "bg-purple-500/20",
+    time: 75,
+    description: "M forecasts which triggers are most likely to fire in the next 30, 60, and 90 days. Run what-if scenarios to see how your organization would respond. Get your team aligned BEFORE the crisis—not during it.",
+    roleWins: [
+      { role: "CEO", benefit: "Board-ready forecasts of strategic risks and opportunities" },
+      { role: "CFO", benefit: "Budget impact modeling across multiple scenarios" },
+      { role: "Chief Strategy Officer", benefit: "Test strategy resilience before market moves" }
+    ],
+    metrics: [
+      { label: "Forecast Horizon", value: "90 days" },
+      { label: "Scenario Planning", value: "Unlimited" },
+      { label: "Proactive vs Reactive", value: "10x better" }
+    ],
+    smartDefaults: {
+      title: "What-If Scenario Planning",
+      items: [
+        { domain: "Risk Modeling", defaults: "See probability changes with different assumptions" },
+        { domain: "Resource Planning", defaults: "Test if your teams are ready before you need them" },
+        { domain: "Budget Stress-Test", defaults: "Model financial impact across scenarios" }
+      ]
+    }
+  },
+  {
+    id: 5,
     beat: "EXECUTE",
     title: "One Click. 12 Minutes. Everyone Aligned.",
     subtitle: "M handles the coordination so you handle the crisis",
@@ -132,7 +163,7 @@ const IDEA_STORY = [
     icon: Zap,
     color: "text-emerald-400",
     bgColor: "bg-emerald-500/20",
-    time: 100,
+    time: 120,
     description: "When you activate a playbook, M instantly notifies all stakeholders, creates tasks in your existing PM tools (Jira, Asana, etc.), stages all documents, and unlocks pre-approved budgets. Your team sees their role-specific dashboard—they know exactly what to do.",
     roleWins: [
       { role: "CEO", benefit: "Board notification happens automatically at thresholds" },
@@ -154,7 +185,7 @@ const IDEA_STORY = [
     }
   },
   {
-    id: 5,
+    id: 6,
     beat: "ADVANCE",
     title: "Every Execution Makes You Stronger",
     subtitle: "Institutional learning that stays with the company",
@@ -163,7 +194,7 @@ const IDEA_STORY = [
     icon: Brain,
     color: "text-amber-400",
     bgColor: "bg-amber-500/20",
-    time: 150,
+    time: 160,
     description: "After each execution, M captures what worked, what didn't, and suggests improvements. This knowledge stays with your organization—not in the head of the executive who might leave. Your playbooks get better every time.",
     roleWins: [
       { role: "CEO", benefit: "Institutional knowledge survives leadership changes" },
@@ -194,7 +225,8 @@ const VALUE_RECOVERED = [
   { icon: Timer, title: "Executive Time", value: "50+ hours", description: "per major event" },
   { icon: DollarSign, title: "Planning Cost", value: "$10K-25K", description: "eliminated" },
   { icon: Shield, title: "Value Protected", value: "$500K-2M", description: "per event" },
-  { icon: Award, title: "Response Speed", value: "360x", description: "faster than industry" }
+  { icon: Award, title: "Response Speed", value: "360x", description: "faster than industry" },
+  { icon: TrendingUp, title: "Predictive Power", value: "90 days", description: "forecasting horizon" }
 ];
 
 export default function CustomerDemo() {

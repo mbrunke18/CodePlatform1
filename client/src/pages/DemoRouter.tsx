@@ -13,8 +13,8 @@ export default function DemoRouter() {
     {
       id: 'customer',
       title: 'Executive Demo',
-      duration: '5 minutes',
-      description: 'See how M transforms 72-hour coordination into 12-minute execution. Role-specific wins for CEO, COO, CISO, and more.',
+      duration: '6 minutes',
+      description: 'See predictive AI, what-if scenarios, and 12-minute execution. Role-specific wins for CEO, COO, CISO, and more.',
       icon: Users,
       color: 'from-blue-500 to-cyan-500',
       borderColor: 'border-blue-500/30 hover:border-blue-500',
@@ -96,7 +96,7 @@ export default function DemoRouter() {
               <div className="flex-1">
                 <p className="text-white font-medium mb-1">Recommended for executives</p>
                 <p className="text-sm text-slate-400 mb-3">
-                  See how M delivers 12-minute coordinated response with role-specific wins.
+                  See how M delivers 12-minute coordinated response with predictive AI and role-specific wins.
                 </p>
                 <Button
                   onClick={() => setLocation('/customer-demo')}
@@ -107,6 +107,21 @@ export default function DemoRouter() {
                   <Play className="h-4 w-4 mr-1.5" />
                   Start Executive Demo
                 </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* AI-Native Differentiator */}
+          <div className="mb-8 p-4 bg-gradient-to-r from-purple-950/40 to-violet-950/40 border border-purple-500/30 rounded-xl">
+            <div className="flex items-start gap-4">
+              <div className="p-2 bg-purple-500/20 rounded-lg">
+                <TrendingUp className="h-5 w-5 text-purple-400" />
+              </div>
+              <div className="flex-1">
+                <p className="text-white font-medium mb-1">NEW: Predictive Intelligence</p>
+                <p className="text-sm text-slate-400">
+                  M forecasts trigger probabilities 90 days out. Run what-if scenarios. Know which playbooks you'll need before you need them.
+                </p>
               </div>
             </div>
           </div>

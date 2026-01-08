@@ -101,7 +101,7 @@ const IDEA_STORY = [
     icon: Radar,
     color: "text-blue-400",
     bgColor: "bg-blue-500/20",
-    time: 60,
+    time: 50,
     description: "M's AI continuously monitors for strategic signals—competitive moves, regulatory changes, supply chain disruptions, cyber threats. When it detects a pattern, it recommends the right playbook with confidence scoring. AI monitors and recommends. Executives decide.",
     investorHighlight: "The human-AI partnership is key to enterprise adoption. We augment executives, we don't replace them. This is how you sell to Fortune 1000 C-suites.",
     metrics: [
@@ -114,6 +114,34 @@ const IDEA_STORY = [
   },
   {
     id: 4,
+    beat: "PREDICT",
+    title: "Predictive Intelligence. Before It Happens.",
+    subtitle: "Anaplan PlanIQ-style forecasting for strategic triggers",
+    phase: "PREDICT",
+    phaseColor: "bg-purple-500",
+    icon: LineChart,
+    color: "text-purple-400",
+    bgColor: "bg-purple-500/20",
+    time: 80,
+    description: "M doesn't just react—it predicts. Our AI forecasts trigger probabilities at 30, 60, and 90-day horizons. Executives see which threats are accelerating and run what-if scenarios to stress-test playbook readiness. Like Anaplan PlanIQ, but for strategic execution.",
+    investorHighlight: "This is our AI differentiation. We're not just workflow—we're predictive intelligence for the C-suite. No competitor has this capability.",
+    metrics: [
+      { label: "Forecast Accuracy", value: "94%" },
+      { label: "Prediction Horizon", value: "90 days" },
+      { label: "What-If Scenarios", value: "Unlimited" }
+    ],
+    smartDefaults: {
+      title: "Predictive Capabilities",
+      items: [
+        { domain: "Trigger Forecasting", defaults: "30/60/90-day probability with confidence scoring" },
+        { domain: "What-If Analyzer", defaults: "Stress-test playbooks against multiple scenarios" },
+        { domain: "Pre-Activation Preview", defaults: "See impact before you execute" }
+      ]
+    },
+    pmSync: null
+  },
+  {
+    id: 5,
     beat: "EXECUTE",
     title: "12 Minutes. Not 72 Hours.",
     subtitle: "One-click activation with 15-section executive data",
@@ -122,7 +150,7 @@ const IDEA_STORY = [
     icon: Zap,
     color: "text-emerald-400",
     bgColor: "bg-emerald-500/20",
-    time: 100,
+    time: 120,
     description: "When the CISO approves, M auto-creates your Jira project, assigns every task, stages every document, and unlocks pre-approved budgets—all in 12 minutes. 47 stakeholders notified instantly. Teams don't learn M—M comes to them in tools they already use.",
     investorHighlight: "The integration layer IS the moat. Once 50 playbooks are syncing to Jira with bi-directional updates, switching costs are massive.",
     metrics: [
@@ -150,7 +178,7 @@ const IDEA_STORY = [
     }
   },
   {
-    id: 5,
+    id: 6,
     beat: "ADVANCE",
     title: "Institutional Learning Captured",
     subtitle: "Every execution makes the next one better",
@@ -159,7 +187,7 @@ const IDEA_STORY = [
     icon: Brain,
     color: "text-amber-400",
     bgColor: "bg-amber-500/20",
-    time: 150,
+    time: 160,
     description: "After resolution, M captures what worked, what didn't, and suggests playbook refinements. This institutional knowledge stays with the organization—not in someone's head who might leave. The playbook library becomes a strategic asset.",
     investorHighlight: "Historical execution data + playbook refinements = recurring value that compounds. This is how we achieve 150%+ net revenue retention.",
     metrics: [
@@ -185,6 +213,7 @@ const STAKEHOLDER_ACKNOWLEDGMENTS = [
 
 const MOAT_COMPONENTS = [
   { icon: BookOpen, title: "166 Playbooks", description: "20+ years encoded" },
+  { icon: LineChart, title: "Predictive AI", description: "90-day forecasting" },
   { icon: GitBranch, title: "Integration Layer", description: "Bi-directional PM sync" },
   { icon: Brain, title: "Institutional Data", description: "Execution history" },
   { icon: Lock, title: "Switching Costs", description: "Deep workflow embed" }
