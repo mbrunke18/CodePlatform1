@@ -12,7 +12,7 @@ import { Switch } from '@/components/ui/switch';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { queryClient, apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
-import { Link } from 'wouter';
+import { Link, useSearch } from 'wouter';
 import PageLayout from '@/components/layout/PageLayout';
 import OnboardingTrigger from '@/components/onboarding/OnboardingTrigger';
 import TriggerConfigurationWizard from '@/components/configuration/TriggerConfigurationWizard';
@@ -208,9 +208,11 @@ const mockTriggers: TriggerCondition[] = [
 export default function TriggersManagement() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedTrigger, setSelectedTrigger] = useState<TriggerCondition | null>(null);
+  const [editTriggerData, setEditTriggerData] = useState<any>(null);
   const [isWizardOpen, setIsWizardOpen] = useState(false);
   const [filterStatus, setFilterStatus] = useState<string>('all');
   const { toast } = useToast();
+  const searchString = useSearch();
 
   // Fetch real triggers from the API
   const { data: triggersData, isLoading, isError, error } = useQuery<any[]>({
@@ -218,6 +220,36 @@ export default function TriggersManagement() {
     staleTime: 30000, // Cache for 30 seconds
     refetchOnWindowFocus: true,
   });
+
+  // Handle URL parameters to auto-open edit dialog
+  useEffect(() => {
+    if (!triggersData || triggersData.length === 0) return;
+    
+    const params = new URLSearchParams(searchString);
+    const triggerId = params.get('id');
+    const action = params.get('action');
+    
+    if (triggerId) {
+      const triggerToEdit = triggersData.find((t: any) => t.id === triggerId || t.id === parseInt(triggerId));
+      if (triggerToEdit) {
+        if (action === 'edit') {
+          setEditTriggerData(triggerToEdit);
+          setIsWizardOpen(true);
+        }
+        // Scroll to the trigger in the list
+        setTimeout(() => {
+          const triggerElement = document.querySelector(`[data-trigger-id="${triggerId}"]`);
+          if (triggerElement) {
+            triggerElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            triggerElement.classList.add('ring-2', 'ring-poise-teal', 'ring-offset-2');
+            setTimeout(() => {
+              triggerElement.classList.remove('ring-2', 'ring-poise-teal', 'ring-offset-2');
+            }, 3000);
+          }
+        }, 500);
+      }
+    }
+  }, [triggersData, searchString]);
 
 
   // Mutation to toggle trigger active status
@@ -623,7 +655,7 @@ export default function TriggersManagement() {
                             variant="outline"
                             size="sm"
                             onClick={() => {
-                              setSelectedTrigger(rawData);
+                              setEditTriggerData(rawData);
                               setIsWizardOpen(true);
                             }}
                             data-testid={`button-edit-trigger-${trigger.id}`}
@@ -948,10 +980,15 @@ export default function TriggersManagement() {
       {/* Trigger Configuration Wizard */}
       <TriggerConfigurationWizard 
         isOpen={isWizardOpen}
-        onClose={() => setIsWizardOpen(false)}
+        onClose={() => {
+          setIsWizardOpen(false);
+          setEditTriggerData(null);
+        }}
         onSuccess={() => {
           setIsWizardOpen(false);
+          setEditTriggerData(null);
         }}
+        editTrigger={editTriggerData}
       />
     </PageLayout>
   );

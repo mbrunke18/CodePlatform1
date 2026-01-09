@@ -223,22 +223,50 @@ export default function TriggerConfigurationWizard({
   // Playbook mapping
   const [selectedPlaybooks, setSelectedPlaybooks] = useState<string[]>([]);
   
+  // Pre-populate form when editing an existing trigger
+  useEffect(() => {
+    if (editTrigger && isOpen) {
+      setTriggerName(editTrigger.name || '');
+      setDescription(editTrigger.description || '');
+      setSelectedCategory(editTrigger.category || '');
+      setSelectedField(editTrigger.conditions?.field || '');
+      setOperator(editTrigger.conditions?.operator || 'gt');
+      setThresholdValue(String(editTrigger.conditions?.value || ''));
+      setSeverity(editTrigger.severity || 'medium');
+      setMonitoringFrequency(editTrigger.monitoringFrequency || 'realtime');
+      setAutoActivatePlaybook(editTrigger.autoActivatePlaybook || false);
+      setEmailEnabled(editTrigger.notificationSettings?.email ?? true);
+      setSlackEnabled(editTrigger.notificationSettings?.slack ?? false);
+      setInAppEnabled(editTrigger.notificationSettings?.inApp ?? true);
+      setWebhookEnabled(editTrigger.notificationSettings?.webhook ?? false);
+      setEscalationEnabled(editTrigger.notificationSettings?.escalation ?? true);
+      setEscalationTimeout(String(editTrigger.escalationTimeout || '30'));
+      setSelectedPlaybooks(editTrigger.recommendedPlaybooks || []);
+    }
+  }, [editTrigger, isOpen]);
+  
   // Fetch available playbooks
   const { data: playbooks } = useQuery({
     queryKey: ['/api/playbooks'],
   });
   
-  // Create trigger mutation
-  const createTriggerMutation = useMutation({
+  // Create/Update trigger mutation
+  const saveTriggerMutation = useMutation({
     mutationFn: async (triggerData: any) => {
+      if (editTrigger?.id) {
+        return apiRequest('PUT', `/api/executive-triggers/${editTrigger.id}`, triggerData);
+      }
       return apiRequest('POST', '/api/config/triggers', triggerData);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/config/triggers'] });
       queryClient.invalidateQueries({ queryKey: ['/api/triggers'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/executive-triggers'] });
       toast({
-        title: 'Trigger Created',
-        description: 'Your custom trigger has been configured successfully.',
+        title: editTrigger ? 'Trigger Updated' : 'Trigger Created',
+        description: editTrigger 
+          ? 'Your trigger has been updated successfully.'
+          : 'Your custom trigger has been configured successfully.',
       });
       onSuccess?.();
       handleClose();
@@ -246,7 +274,7 @@ export default function TriggerConfigurationWizard({
     onError: (error: any) => {
       toast({
         title: 'Error',
-        description: error.message || 'Failed to create trigger',
+        description: error.message || `Failed to ${editTrigger ? 'update' : 'create'} trigger`,
         variant: 'destructive',
       });
     },
@@ -328,7 +356,7 @@ export default function TriggerConfigurationWizard({
       recommendedPlaybooks: selectedPlaybooks,
     };
     
-    createTriggerMutation.mutate(triggerData);
+    saveTriggerMutation.mutate(triggerData);
   };
   
   const getFieldUnit = () => {
@@ -864,15 +892,15 @@ export default function TriggerConfigurationWizard({
             </Button>
             <Button 
               onClick={handleNext}
-              disabled={!canProceed() || createTriggerMutation.isPending}
+              disabled={!canProceed() || saveTriggerMutation.isPending}
               data-testid="button-next"
             >
-              {createTriggerMutation.isPending ? (
-                'Creating...'
+              {saveTriggerMutation.isPending ? (
+                editTrigger ? 'Updating...' : 'Creating...'
               ) : step === totalSteps ? (
                 <>
                   <Check className="h-4 w-4 mr-2" />
-                  Create Trigger
+                  {editTrigger ? 'Save Changes' : 'Create Trigger'}
                 </>
               ) : (
                 <>
