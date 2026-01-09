@@ -248,6 +248,7 @@ export default function PilotDemo() {
 
     const addNextEvent = () => {
       if (currentIndex >= totalEvents) {
+        setExecutionEvents(prev => prev.map(e => ({ ...e, status: "complete" as const })));
         setStep("complete");
         executePilotMutation.mutate({
           email,
@@ -623,8 +624,8 @@ export default function PilotDemo() {
                     </CardTitle>
                     <CardDescription>
                       {step === "complete" 
-                        ? `Completed in ${executionStartTime ? Math.round((new Date().getTime() - executionStartTime.getTime()) / 1000) : 0} seconds`
-                        : "Watch the 12-minute activation in action"
+                        ? "12-minute activation simulated successfully"
+                        : "Simulating 12-minute production activation (compressed for demo)"
                       }
                     </CardDescription>
                   </CardHeader>
@@ -717,6 +718,12 @@ export default function PilotDemo() {
                             </p>
                           </div>
 
+                          <div className="bg-blue-50 dark:bg-blue-950/30 rounded-lg p-3 mb-4 border border-blue-200 dark:border-blue-800 text-center">
+                            <p className="text-sm text-blue-700 dark:text-blue-300">
+                              <span className="font-semibold">Demo Mode:</span> This {executionStartTime ? Math.round((new Date().getTime() - executionStartTime.getTime()) / 1000) : 0}-second simulation represents the full 12-minute production activation, compressed for demonstration.
+                            </p>
+                          </div>
+
                           <div className="grid md:grid-cols-2 gap-4 mb-6">
                             <div className="bg-red-50 dark:bg-red-950/30 rounded-lg p-4 border border-red-200 dark:border-red-800">
                               <div className="flex items-center gap-2 mb-3">
@@ -733,11 +740,9 @@ export default function PilotDemo() {
                                 <Zap className="w-5 h-5 text-emerald-500" />
                                 <span className="font-semibold text-emerald-900 dark:text-emerald-200">With POISE</span>
                               </div>
-                              <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-1">
-                                {executionStartTime ? Math.round((new Date().getTime() - executionStartTime.getTime()) / 1000) : 0} seconds
-                              </div>
+                              <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-1">12 minutes</div>
                               <p className="text-sm text-emerald-700 dark:text-emerald-300">
-                                Automated detection, AI analysis, instant coordination
+                                Full coordination: detection, analysis, playbook activation, stakeholder alignment
                               </p>
                             </div>
                           </div>
