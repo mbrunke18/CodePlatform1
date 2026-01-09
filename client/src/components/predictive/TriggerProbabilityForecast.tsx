@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { Link, useLocation } from 'wouter';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -17,7 +18,9 @@ import {
   ChevronUp,
   Info,
   Settings,
-  ExternalLink
+  ExternalLink,
+  Eye,
+  Edit
 } from 'lucide-react';
 
 interface TriggerInput {
@@ -310,48 +313,36 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
                 </div>
 
                 <div className="flex gap-2 mt-3 pt-3 border-t border-slate-200 dark:border-slate-600">
-                  <Button
-                    size="sm"
-                    variant="outline"
+                  <Link 
+                    href={`/triggers-management?id=${forecast.triggerId}`}
+                    onClick={(e) => e.stopPropagation()}
                     className="flex-1"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      const triggerCard = document.querySelector(`[data-trigger-id="${forecast.triggerId}"]`);
-                      if (triggerCard) {
-                        triggerCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        triggerCard.classList.add('ring-2', 'ring-purple-500', 'ring-offset-2');
-                        setTimeout(() => {
-                          triggerCard.classList.remove('ring-2', 'ring-purple-500', 'ring-offset-2');
-                        }, 3000);
-                      } else {
-                        document.getElementById('triggers-list-section')?.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
-                    data-testid={`button-view-trigger-${forecast.triggerId}`}
                   >
-                    <ExternalLink className="w-3 h-3 mr-1" />
-                    View in List
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="default"
-                    className="flex-1 bg-purple-600 hover:bg-purple-700"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      const triggerCard = document.querySelector(`[data-trigger-id="${forecast.triggerId}"]`);
-                      if (triggerCard) {
-                        triggerCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        const editButton = triggerCard.querySelector('[data-testid^="button-edit-trigger"]') as HTMLButtonElement;
-                        if (editButton) {
-                          setTimeout(() => editButton.click(), 500);
-                        }
-                      }
-                    }}
-                    data-testid={`button-edit-trigger-${forecast.triggerId}`}
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="w-full"
+                      data-testid={`button-view-trigger-${forecast.triggerId}`}
+                    >
+                      <Eye className="w-3 h-3 mr-1" />
+                      View Trigger
+                    </Button>
+                  </Link>
+                  <Link 
+                    href={`/triggers-management?id=${forecast.triggerId}&action=edit`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex-1"
                   >
-                    <Settings className="w-3 h-3 mr-1" />
-                    Edit Trigger
-                  </Button>
+                    <Button
+                      size="sm"
+                      variant="default"
+                      className="w-full bg-poise-teal hover:bg-poise-teal/90"
+                      data-testid={`button-edit-trigger-${forecast.triggerId}`}
+                    >
+                      <Edit className="w-3 h-3 mr-1" />
+                      Edit Trigger
+                    </Button>
+                  </Link>
                 </div>
               </>
             )}
