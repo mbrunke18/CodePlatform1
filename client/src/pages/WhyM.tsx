@@ -29,6 +29,7 @@ import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
 import { useEffect } from "react";
 import { updatePageMetadata } from "@/lib/seo";
+import poiseLogoPath from "@assets/poise-logo-official.png";
 
 export default function WhyM() {
   useEffect(() => {
@@ -49,6 +50,11 @@ export default function WhyM() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
+              <img 
+                src={poiseLogoPath} 
+                alt="POISE - Composure in every decision" 
+                className="h-14 w-auto object-contain mb-6"
+              />
               <Badge className="mb-6 bg-primary text-white border-0">
                 <Lightbulb className="w-4 h-4 mr-2" />
                 The Origin Story

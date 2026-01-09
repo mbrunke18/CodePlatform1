@@ -28,6 +28,7 @@ import {
 } from 'lucide-react';
 import { useEffect } from 'react';
 import { updatePageMetadata } from '@/lib/seo';
+import poiseLogoPath from "@assets/poise-logo-official.png";
 
 const pilotPhases = [
   {
@@ -178,28 +179,28 @@ const roiCalculator = [
   {
     metric: 'Hours Saved per Event',
     baseline: '20-50 hours',
-    withM: '0 hours (pre-planned)',
+    withPOISE: '0 hours (pre-planned)',
     calculation: '20-50 × $500/hr executive time',
     value: '$10,000-$25,000'
   },
   {
     metric: 'Response Time',
     baseline: '72+ hours to full coordination',
-    withM: '12 minutes to full coordination',
+    withPOISE: '12 minutes to full coordination',
     calculation: 'Revenue protected by faster response',
     value: '$500K-$2M per major event'
   },
   {
     metric: 'C-Suite Time Recovery',
     baseline: '50+ hours per event',
-    withM: '5 hours oversight only',
+    withPOISE: '5 hours oversight only',
     calculation: '45 hours × $1,000/hr',
     value: '$45,000+ per event'
   },
   {
     metric: 'Tool Consolidation',
     baseline: 'Multiple point solutions',
-    withM: 'Single execution platform',
+    withPOISE: 'Single execution platform',
     calculation: 'Reduced platform licensing',
     value: '$50-100K annually'
   }
@@ -247,6 +248,11 @@ export default function PilotProgram() {
         {/* Hero Section */}
         <section className="py-16 px-6 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
           <div className="max-w-6xl mx-auto text-center">
+            <img 
+              src={poiseLogoPath} 
+              alt="POISE - Composure in every decision" 
+              className="h-14 md:h-16 w-auto object-contain mx-auto mb-6"
+            />
             <Badge className="mb-6 bg-emerald-600/20 text-emerald-300 border-emerald-500/30" data-testid="badge-pilot">
               Fortune 1000 Design Partner Program
             </Badge>
@@ -462,7 +468,7 @@ export default function PilotProgram() {
                       <tr key={i} className="border-b border-white/10 last:border-0">
                         <td className="p-4 text-white font-medium">{row.metric}</td>
                         <td className="p-4 text-red-200">{row.baseline}</td>
-                        <td className="p-4 text-emerald-200">{row.withM}</td>
+                        <td className="p-4 text-emerald-200">{row.withPOISE}</td>
                         <td className="p-4 text-blue-200 text-sm">{row.calculation}</td>
                         <td className="p-4 text-amber-300 font-bold text-right">{row.value}</td>
                       </tr>

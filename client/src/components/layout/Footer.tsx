@@ -1,4 +1,5 @@
 import { useLocation } from "wouter";
+import poiseLogoPath from "@assets/poise-logo-official.png";
 
 export default function Footer() {
   const [, setLocation] = useLocation();
@@ -78,9 +79,12 @@ export default function Footer() {
       <div className="border-b border-slate-800 bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div>
-              <h3 className="text-white font-semibold">POISE - Strategic Execution OS</h3>
-              <p className="text-sm text-slate-400">Composure in every decision</p>
+            <div className="flex items-center gap-4">
+              <img 
+                src={poiseLogoPath} 
+                alt="POISE - Composure in every decision" 
+                className="h-12 w-auto object-contain"
+              />
             </div>
             <div className="flex items-center gap-3">
               <span className="text-xs font-medium px-3 py-1 rounded-full bg-violet-500/20 text-violet-400">IDENTIFY</span>

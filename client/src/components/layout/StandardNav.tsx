@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Play, Menu, X, LogIn, LogOut, User, ChevronDown, Brain, Target, Lightbulb } from "lucide-react";
+import poiseLogoPath from "@assets/poise-logo-official.png";
 import { useLocation } from "wouter";
 import { useAuth } from "@/hooks/useAuth";
 import {
@@ -42,17 +43,15 @@ export default function StandardNav() {
           
           {/* Logo */}
           <div 
-            className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity" 
+            className="flex items-center cursor-pointer hover:opacity-80 transition-opacity" 
             onClick={() => navigateTo('/')}
             data-testid="nav-logo"
           >
-            <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-lg">P</span>
-            </div>
-            <div className="hidden sm:block">
-              <span className="font-bold text-white text-lg">POISE</span>
-              <span className="text-slate-500 text-xs ml-1.5 hidden lg:inline">Strategic Execution OS</span>
-            </div>
+            <img 
+              src={poiseLogoPath} 
+              alt="POISE - Composure in every decision" 
+              className="h-10 w-auto object-contain"
+            />
           </div>
 
           {/* Desktop Navigation Links - Simplified Journey */}
