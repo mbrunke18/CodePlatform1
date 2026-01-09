@@ -137,7 +137,7 @@ export default function HowItWorks() {
               The 4-Phase Methodology
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              How M Works
+              How POISE Works
             </h1>
             <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed max-w-3xl mx-auto">
               A continuous cycle that transforms how Fortune 1000 companies detect, decide, and execute on strategic opportunities and threats.
