@@ -27,8 +27,25 @@ export default function StandardNav() {
     { label: "Why POISE", path: "/why-poise" },
     { label: "How It Works", path: "/how-it-works" },
     { label: "Playbooks", path: "/playbooks" },
+    { label: "Demos", path: "/demo-gallery" },
     { label: "POISE One™", path: "/mission-control", featured: true },
     { label: "Pricing", path: "/pricing" },
+  ];
+
+  const workspaceLinks = [
+    { label: "Playbook Factory", path: "/workspaces/identify", phase: "IDENTIFY", module: "Playbook™", icon: ClipboardList, color: "text-poise-gold" },
+    { label: "Signal Ops", path: "/workspaces/detect", phase: "DETECT", module: "Signal™", icon: Radar, color: "text-poise-teal" },
+    { label: "Compass Command", path: "/workspaces/execute", phase: "EXECUTE", module: "Compass™", icon: Compass, color: "text-poise-teal" },
+    { label: "Retrospect Lab", path: "/workspaces/advance", phase: "ADVANCE", module: "Retrospect™", icon: TrendingUp, color: "text-poise-gold" },
+  ];
+
+  const dashboardLinks = [
+    { label: "Executive Dashboard", path: "/executive-dashboard", icon: BarChart3, color: "text-poise-gold" },
+    { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, color: "text-poise-teal" },
+    { label: "Command Center", path: "/mission-control", icon: Compass, color: "text-poise-teal" },
+    { label: "AI Radar", path: "/ai-radar", icon: Brain, color: "text-purple-500" },
+    { label: "Decision Velocity", path: "/decision-velocity", icon: Zap, color: "text-blue-500" },
+    { label: "Analytics", path: "/analytics", icon: TrendingUp, color: "text-emerald-500" },
   ];
 
   const isActivePath = (path: string) => {
@@ -63,7 +80,7 @@ export default function StandardNav() {
               <button
                 key={link.path}
                 onClick={() => navigateTo(link.path)}
-                className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                   (link as any).featured
                     ? 'bg-gradient-to-r from-poise-gold to-amber-500 text-poise-navy font-semibold hover:from-amber-500 hover:to-poise-gold shadow-lg shadow-poise-gold/20'
                     : isActivePath(link.path) 
@@ -75,6 +92,57 @@ export default function StandardNav() {
                 {link.label}
               </button>
             ))}
+            
+            {/* Workspaces Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  className="px-3 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 text-slate-300 hover:text-white hover:bg-poise-teal/10 border border-poise-teal/30"
+                  data-testid="nav-workspaces-dropdown"
+                >
+                  <Compass className="h-4 w-4 text-poise-teal" />
+                  Workspaces
+                  <ChevronDown className="h-3 w-3" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-64">
+                <DropdownMenuLabel className="text-slate-400">IDEA Framework Workspaces</DropdownMenuLabel>
+                {workspaceLinks.map((ws) => (
+                  <DropdownMenuItem key={ws.path} onClick={() => navigateTo(ws.path)} className="flex items-center gap-3">
+                    <ws.icon className={`h-4 w-4 ${ws.color}`} />
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="font-medium">{ws.label}</span>
+                      </div>
+                      <span className="text-xs text-slate-500">{ws.phase} • {ws.module}</span>
+                    </div>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {/* Dashboards Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  className="px-3 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 text-poise-gold hover:text-amber-300 hover:bg-poise-gold/10 border border-poise-gold/30"
+                  data-testid="nav-dashboards-dropdown"
+                >
+                  <BarChart3 className="h-4 w-4" />
+                  Dashboards
+                  <ChevronDown className="h-3 w-3" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-56">
+                <DropdownMenuLabel className="text-poise-gold">Executive Dashboards</DropdownMenuLabel>
+                {dashboardLinks.map((db) => (
+                  <DropdownMenuItem key={db.path} onClick={() => navigateTo(db.path)} className="flex items-center gap-3">
+                    <db.icon className={`h-4 w-4 ${db.color}`} />
+                    <span>{db.label}</span>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
             
             {/* More Dropdown for secondary items */}
             <DropdownMenu>

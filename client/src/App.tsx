@@ -103,6 +103,11 @@ import ExecutiveSimulationDemo from "./pages/ExecutiveSimulationDemo";
 import ProductTour from "./pages/ProductTour";
 import InvestorPresentation from "./pages/InvestorPresentation";
 import MissionControl from "./pages/MissionControl";
+import WorkspaceIdentify from "./pages/WorkspaceIdentify";
+import WorkspaceDetect from "./pages/WorkspaceDetect";
+import WorkspaceExecute from "./pages/WorkspaceExecute";
+import WorkspaceAdvance from "./pages/WorkspaceAdvance";
+import DemoGallery from "./pages/DemoGallery";
 import OrganizationSetup from "./pages/OrganizationSetup";
 import PlaybookCustomization from "./pages/PlaybookCustomization";
 import PlaybookCustomize from "./pages/PlaybookCustomize";
@@ -246,6 +251,11 @@ function Router() {
         <Route path="/" component={Homepage} />
         <Route path="/home" component={Homepage} />
         <Route path="/mission-control" component={MissionControl} />
+        <Route path="/workspaces/identify" component={WorkspaceIdentify} />
+        <Route path="/workspaces/detect" component={WorkspaceDetect} />
+        <Route path="/workspaces/execute" component={WorkspaceExecute} />
+        <Route path="/workspaces/advance" component={WorkspaceAdvance} />
+        <Route path="/demo-gallery" component={DemoGallery} />
         <Route path="/executive-dashboard" component={ExecutiveDashboard} />
         <Route path="/scorecard" component={RedirectToExecutiveDashboard} />
         <Route path="/executive-scorecard" component={RedirectToExecutiveDashboard} />
