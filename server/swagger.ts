@@ -6,10 +6,10 @@ const options: swaggerJsdoc.Options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'M Strategic Intelligence Platform API',
+      title: 'POISE Strategic Execution Platform API',
       version: '2.0.0',
       description: `
-        M is a comprehensive Strategic Intelligence Platform that enables organizations to:
+        POISE is a comprehensive Strategic Execution Platform that enables organizations to:
         
         - **Strategic Planning**: Manage complex scenarios and strategic initiatives
         - **Crisis Response**: Execute automated crisis response protocols with 15+ templates
@@ -28,13 +28,13 @@ const options: swaggerJsdoc.Options = {
         This API uses Replit's OpenID Connect (OIDC) authentication for secure access.
       `,
       contact: {
-        name: 'M Platform Team',
-        email: 'platform@m-exec.ai'
+        name: 'POISE Platform Team',
+        email: 'platform@poise.app'
       }
     },
     servers: [
       {
-        url: process.env.NODE_ENV === 'production' ? 'https://api.m-exec.ai' : 'http://localhost:5000',
+        url: process.env.NODE_ENV === 'production' ? 'https://api.poise.app' : 'http://localhost:5000',
         description: process.env.NODE_ENV === 'production' ? 'Production server' : 'Development server'
       }
     ],

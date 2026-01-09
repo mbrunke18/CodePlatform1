@@ -404,7 +404,7 @@ export default function InvestorResources() {
             Ready to Learn More?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            See M in action and explore the category-defining opportunity.
+            See POISE in action and explore the category-defining opportunity.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link href="/investor-presentation">

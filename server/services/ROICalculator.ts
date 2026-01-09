@@ -1,5 +1,5 @@
 /**
- * Calculate M platform ROI for executives
+ * Calculate POISE platform ROI for executives
  */
 export function calculateROI(executionData: any) {
   const {
@@ -24,7 +24,7 @@ export function calculateROI(executionData: any) {
   const automationValue = tasksCompleted * 5000; // $5K per task automated
 
   const totalValue = timeSavingsValue + riskMitigationValue + opportunityValue + automationValue;
-  const totalCost = 50000; // Annual M platform cost estimate
+  const totalCost = 50000; // Annual POISE platform cost estimate
   const roi = ((totalValue - totalCost) / totalCost) * 100;
 
   return {

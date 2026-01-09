@@ -117,7 +117,7 @@ function generateEmailHTML(trigger: typeof TRIGGER_SCENARIOS[string], playbook: 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>M Platform - Playbook Activated</title>
+  <title>POISE Platform - Playbook Activated</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f8fafc;">
   <table role="presentation" style="width: 100%; border-collapse: collapse;">
@@ -131,8 +131,8 @@ function generateEmailHTML(trigger: typeof TRIGGER_SCENARIOS[string], playbook: 
               <table role="presentation" style="width: 100%;">
                 <tr>
                   <td>
-                    <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 700;">M</h1>
-                    <p style="margin: 8px 0 0; color: #94a3b8; font-size: 14px;">Strategic Execution Operating System</p>
+                    <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 700;">POISE</h1>
+                    <p style="margin: 8px 0 0; color: #94a3b8; font-size: 14px;">Strategic Execution OS</p>
                   </td>
                   <td align="right">
                     <span style="display: inline-block; background-color: #ef4444; color: white; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase;">

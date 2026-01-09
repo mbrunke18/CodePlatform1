@@ -188,7 +188,7 @@ router.post('/test-notification', async (req, res) => {
     await notificationManager.sendScenarioAlert(
       scenarioType || 'test',
       severity || 'medium',
-      message || 'Test notification from M Executive System',
+      message || 'Test notification from POISE Executive System',
       { source: 'api-test', timestamp: new Date().toISOString() }
     );
 

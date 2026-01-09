@@ -307,14 +307,14 @@ export function SplitScreenComparison() {
             </div>
           </div>
 
-          {/* M SIDE - POWER */}
+          {/* POISE SIDE - POWER */}
           <div className="p-6 bg-gradient-to-br from-blue-950/40 to-teal-950/40">
             <div className="space-y-4">
               {/* Header */}
               <div className="flex items-center justify-between">
                 <div>
                   <Badge variant="outline" className="bg-blue-600/20 text-blue-300 border-blue-500/50">
-                    M Response
+                    POISE Response
                   </Badge>
                   <h3 className="text-lg font-bold text-blue-100 mt-2">{data.mState}</h3>
                 </div>

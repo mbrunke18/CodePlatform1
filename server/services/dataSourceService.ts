@@ -435,7 +435,7 @@ export class DataSourceService {
   }
   
   /**
-   * Transform external data to M format
+   * Transform external data to POISE format
    * This is where we handle different data structures from various sources
    */
   transformData(rawData: any, transformFunction: string): any {

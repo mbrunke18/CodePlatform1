@@ -108,7 +108,7 @@ export function PersonalReputationRiskOverlay() {
           {/* CTA Hint */}
           <div className="text-center">
             <p className="text-red-300/70 text-sm">
-              M executives answer these questions with data, not excuses
+              POISE executives answer these questions with data, not excuses
             </p>
           </div>
         </div>

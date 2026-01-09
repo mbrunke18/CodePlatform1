@@ -1,5 +1,5 @@
 /**
- * M Enterprise Data Schemas
+ * POISE Enterprise Data Schemas
  * Comprehensive TypeScript interfaces for 12 enterprise system integrations
  * Used for real-time trigger monitoring and bi-directional playbook execution
  */

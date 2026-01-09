@@ -338,7 +338,7 @@ class NotificationService {
       <body>
         <div class="container">
           <div class="header">
-            <h1>🚨 M ALERT</h1>
+            <h1>🚨 POISE ALERT</h1>
             <div class="priority-badge">${notification.priority?.toUpperCase() || 'HIGH'} PRIORITY</div>
           </div>
           <div class="content">
@@ -361,7 +361,7 @@ class NotificationService {
             </center>
           </div>
           <div class="footer">
-            <p><strong>M Strategic Execution Platform</strong></p>
+            <p><strong>POISE Strategic Execution Platform</strong></p>
             <p>This is an automated alert. Please acknowledge immediately.</p>
           </div>
         </div>

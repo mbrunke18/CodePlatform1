@@ -44,7 +44,7 @@ export interface ProactiveAlert {
 }
 
 /**
- * The Proactive AI Radar - Core of M Strategic Intelligence
+ * The Proactive AI Radar - Core of POISE Strategic Intelligence
  * 
  * This system continuously scans data streams and generates intelligent alerts
  * that transform executives from reactive to proactively intelligent.
