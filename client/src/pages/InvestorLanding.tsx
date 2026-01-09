@@ -79,11 +79,11 @@ export default function InvestorLanding() {
             </h1>
             
             <p className="text-2xl md:text-3xl text-cyan-200 font-semibold mb-6" data-testid="text-tagline">
-              M: First Strategic Execution Operating System
+              POISE: First Strategic Execution Operating System
             </p>
             
             <p className="text-lg md:text-xl text-blue-100 mb-8 max-w-4xl" data-testid="text-description">
-              Fortune 1000 companies spend $847B annually on strategic initiatives—83% fail due to execution gaps. M creates a new software category worth $127B TAM, delivering 500x faster execution with complete 7-component ecosystem.
+              Fortune 1000 companies spend $847B annually on strategic initiatives—83% fail due to execution gaps. POISE creates a new software category worth $127B TAM, delivering 500x faster execution with complete 7-component ecosystem.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -259,7 +259,7 @@ export default function InvestorLanding() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-slate-600 dark:text-slate-400 mb-4">
-                    Competitors offer point solutions (BI tools, project management, chatbots). M integrates entire strategic execution workflow—massive switching costs once embedded.
+                    Competitors offer point solutions (BI tools, project management, chatbots). POISE integrates entire strategic execution workflow—massive switching costs once embedded.
                   </p>
                   <div className="text-sm font-semibold text-primary" data-testid="text-moat-ecosystem-advantage">
                     Advantage: 18-24 month integration lead vs. competitors
@@ -595,7 +595,7 @@ export default function InvestorLanding() {
               Join Us in Creating a New Software Category
             </h2>
             <p className="text-xl mb-8 text-blue-100" data-testid="text-cta-description">
-              M is defining the Strategic Execution Operating System category—a $127B market opportunity with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
+              POISE is defining the Strategic Execution Operating System category—a $127B market opportunity with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button

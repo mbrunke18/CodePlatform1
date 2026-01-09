@@ -221,7 +221,7 @@ export default function WhyM() {
               <Lightbulb className="h-10 w-10 text-amber-500 mx-auto mb-3" />
               <p className="text-lg font-semibold text-foreground max-w-2xl mx-auto">
                 The gap between strategic intent and operational reality has never been wider. 
-                M was built to close it.
+                POISE was built to close it.
               </p>
             </CardContent>
           </Card>
@@ -241,7 +241,7 @@ export default function WhyM() {
             </h2>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
               Great football programs are prepared for every situation before the game starts. 
-              M brings this same complete preparedness to business leadership.
+              POISE brings this same complete preparedness to business leadership.
             </p>
           </div>
 
@@ -288,7 +288,7 @@ export default function WhyM() {
 
           <div className="text-center p-8 bg-white/5 rounded-2xl border border-white/10">
             <p className="text-xl font-medium text-blue-50 max-w-2xl mx-auto">
-              No matter the situation, executives using M are prepared to execute 
+              No matter the situation, executives using POISE are prepared to execute 
               <span className="font-bold text-white"> swiftly, efficiently, and effectively.</span>
             </p>
           </div>
@@ -403,7 +403,7 @@ export default function WhyM() {
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               A strategy is a statement. Strategic Architecture is the operating system that keeps strategy alive when reality hits. 
-              M is that system—166 pre-staged playbooks across 9 strategic domains, coordinated response in 12 minutes vs. the 72-hour industry average.
+              POISE is that system—166 pre-staged playbooks across 9 strategic domains, coordinated response in 12 minutes vs. the 72-hour industry average.
             </p>
           </div>
 
@@ -469,7 +469,7 @@ export default function WhyM() {
                   </div>
                   <h3 className="text-xl font-bold text-foreground">Strategic Architecture</h3>
                 </div>
-                <p className="text-sm text-emerald-600 dark:text-emerald-400 font-medium mb-4">Dynamic — The Strategic Execution Operating System (M)</p>
+                <p className="text-sm text-emerald-600 dark:text-emerald-400 font-medium mb-4">Dynamic — The Strategic Execution Operating System (POISE)</p>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2 text-muted-foreground">
                     <CheckCircle2 className="h-4 w-4 text-emerald-500 mt-1 shrink-0" />
@@ -490,7 +490,7 @@ export default function WhyM() {
                 </ul>
                 <div className="mt-6 p-4 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg">
                   <p className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
-                    M is the Strategic Architecture your organization is missing—adapt at the speed of change.
+                    POISE is the Strategic Architecture your organization is missing—adapt at the speed of change.
                   </p>
                 </div>
               </CardContent>
@@ -545,7 +545,7 @@ export default function WhyM() {
                     If you can't answer <span className="font-bold text-foreground">"what are we stopping this month?"</span> you're not governing strategy. You're narrating it.
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    M's ADVANCE phase captures what worked, what didn't, and automatically refines your playbook library. Institutional knowledge compounds—it doesn't walk out the door. That's Strategic Architecture in action.
+                    POISE's ADVANCE phase captures what worked, what didn't, and automatically refines your playbook library. Institutional knowledge compounds—it doesn't walk out the door. That's Strategic Architecture in action.
                   </p>
                 </div>
               </div>
@@ -612,7 +612,7 @@ export default function WhyM() {
               <CardContent className="p-8">
                 <h3 className="text-xl font-bold text-green-500 mb-6 flex items-center gap-2">
                   <Zap className="h-6 w-6" />
-                  With M: 12-Minute Activation
+                  With POISE: 12-Minute Activation
                 </h3>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 p-3 bg-green-500/5 rounded-lg">
@@ -660,7 +660,7 @@ export default function WhyM() {
               We're Creating a New Category
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              M isn't entering an existing market—we're defining a new one.
+              POISE isn't entering an existing market—we're defining a new one.
             </p>
           </div>
 
@@ -795,7 +795,7 @@ export default function WhyM() {
                 </p>
                 <div className="p-4 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
                   <p className="text-sm font-medium text-purple-700 dark:text-purple-300">
-                    This is exactly M's thesis: "Your Employees Have AI. Your Organization Doesn't." 
+                    This is exactly POISE's thesis: "Your Employees Have AI. Your Organization Doesn't." 
                     Individual AI productivity doesn't help if organizational coordination is still broken.
                   </p>
                 </div>
@@ -916,7 +916,7 @@ export default function WhyM() {
                 The research is clear: <span className="font-bold text-foreground">preparation beats improvisation every time.</span>
               </p>
               <p className="text-sm text-muted-foreground">
-                M brings all of this together in one Strategic Execution Operating System.
+                POISE brings all of this together in one Strategic Execution Operating System.
               </p>
             </CardContent>
           </Card>
@@ -939,7 +939,7 @@ export default function WhyM() {
             Ready to Transform How Your Organization Responds?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            See M in action and discover what 12-minute strategic coordination looks like.
+            See POISE in action and discover what 12-minute strategic coordination looks like.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link href="/demo-selector">

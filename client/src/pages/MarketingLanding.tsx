@@ -33,9 +33,9 @@ export default function MarketingLanding() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "M - Strategic Execution Operating System | Transform Strategy into 12-Minute Execution",
-      description: "Your competitor just launched. Your board meeting is in 3 days. M is the first Strategic Execution Operating System that transforms 72-hour strategic coordination into 12-minute coordinated execution. 166 playbooks, 5 AI modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
-      ogTitle: "M - When Your Competitor Moves, Will You Be Ready?",
+      title: "POISE - Strategic Execution Operating System | Transform Strategy into 12-Minute Execution",
+      description: "Your competitor just launched. Your board meeting is in 3 days. POISE is the first Strategic Execution Operating System that transforms 72-hour strategic coordination into 12-minute coordinated execution. 166 playbooks, 5 AI modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
+      ogTitle: "POISE - When Your Competitor Moves, Will You Be Ready?",
       ogDescription: "The category-defining Strategic Execution Operating System. Limited Q1 2025 pilot: 10 Fortune 1000 design partners. Prepare → Monitor → Execute → Learn.",
     });
   }, []);
@@ -624,7 +624,7 @@ export default function MarketingLanding() {
                   Elite organizations succeed through preparation, not improvisation.
                 </p>
                 <p className="text-xl text-blue-200">
-                  M brings championship-level preparation to Fortune 1000 strategic operations: transforming 72-hour coordination into 12-minute execution.
+                  POISE brings championship-level preparation to Fortune 1000 strategic operations: transforming 72-hour coordination into 12-minute execution.
                 </p>
               </CardContent>
             </Card>
@@ -754,7 +754,7 @@ export default function MarketingLanding() {
               Complete Playbook: Competitive Response
             </h2>
             <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-              When your competitor launches a 15% price cut, here's how M coordinates your entire response team in 12 minutes—instead of the 72-hour industry standard.
+              When your competitor launches a 15% price cut, here's how POISE coordinates your entire response team in 12 minutes—instead of the 72-hour industry standard.
             </p>
           </div>
 
@@ -826,7 +826,7 @@ export default function MarketingLanding() {
             <Card data-testid="card-stat-vexor-target">
               <CardContent className="pt-6 text-center">
                 <div className="text-5xl font-bold text-green-600 mb-2">12 min</div>
-                <div className="text-lg font-semibold mb-2 text-slate-900 dark:text-white">M Target</div>
+                <div className="text-lg font-semibold mb-2 text-slate-900 dark:text-white">POISE Target</div>
                 <div className="text-sm text-slate-600 dark:text-slate-400">
                   Design goal: Coordinated execution with pre-built playbooks and AI orchestration
                 </div>
@@ -837,10 +837,10 @@ export default function MarketingLanding() {
           <Card className="bg-blue-50 dark:bg-blue-950/30 border-2 border-blue-200 dark:border-blue-800" data-testid="card-founding-vision">
             <CardContent className="pt-8 pb-8">
               <p className="text-xl italic text-slate-700 dark:text-slate-300 mb-4 text-center max-w-3xl mx-auto">
-                "When strategic opportunities emerge, the companies that execute in days beat the companies that plan in weeks. M is purpose-built to close that gap."
+                "When strategic opportunities emerge, the companies that execute in days beat the companies that plan in weeks. POISE is purpose-built to close that gap."
               </p>
               <div className="text-center">
-                <div className="font-semibold text-slate-900 dark:text-white">M Founding Team</div>
+                <div className="font-semibold text-slate-900 dark:text-white">POISE Founding Team</div>
                 <div className="text-sm text-slate-600 dark:text-slate-400">Bringing championship-level execution to enterprise strategy</div>
               </div>
             </CardContent>

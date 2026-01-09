@@ -177,7 +177,7 @@ const STEPS = [
   { id: 'playbooks', title: 'Select Playbooks', icon: Layers },
   { id: 'signals', title: 'Configure Signals', icon: Radio },
   { id: 'metrics', title: 'Success Metrics', icon: BarChart3 },
-  { id: 'preview', title: 'See M in Action', icon: Play },
+  { id: 'preview', title: 'See POISE in Action', icon: Play },
   { id: 'activated', title: 'System Active', icon: CheckCircle },
 ];
 
@@ -414,7 +414,7 @@ export default function NewUserJourney() {
                       Success Favors the Prepared
                     </h2>
                     <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-                      M replaces reactive scrambles with coordinated precision, turning emerging opportunities 
+                      POISE replaces reactive scrambles with coordinated precision, turning emerging opportunities 
                       into decisive action in <span className="text-indigo-400 font-semibold">12 minutes, not 72 hours</span>
                     </p>
                   </div>
@@ -453,7 +453,7 @@ export default function NewUserJourney() {
                         <ul className="text-sm text-slate-300 space-y-1">
                           <li className="flex items-center gap-2">
                             <Check className="h-4 w-4 text-green-400" />
-                            Configure M for your industry and role
+                            Configure POISE for your industry and role
                           </li>
                           <li className="flex items-center gap-2">
                             <Check className="h-4 w-4 text-green-400" />
@@ -465,7 +465,7 @@ export default function NewUserJourney() {
                           </li>
                           <li className="flex items-center gap-2">
                             <Check className="h-4 w-4 text-green-400" />
-                            See a live simulation of M in action
+                            See a live simulation of POISE in action
                           </li>
                         </ul>
                       </div>
@@ -911,7 +911,7 @@ export default function NewUserJourney() {
                   <div className="text-center mb-6">
                     <h2 className="text-3xl font-bold text-white mb-2">Your Command Center is Ready</h2>
                     <p className="text-slate-400">
-                      Here's what M will monitor and execute for {state.organizationName || 'your organization'}
+                      Here's what POISE will monitor and execute for {state.organizationName || 'your organization'}
                     </p>
                   </div>
 
@@ -1116,7 +1116,7 @@ export default function NewUserJourney() {
                       transition={{ delay: 0.3 }}
                       className="text-3xl font-bold text-white mb-2"
                     >
-                      M is Now Active
+                      POISE is Now Active
                     </motion.h2>
                     <motion.p 
                       initial={{ opacity: 0, y: 20 }}

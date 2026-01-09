@@ -236,47 +236,47 @@ const categoryComparison = [
 const objections = [
   {
     objection: '"We already have Everbridge for crisis management."',
-    response: 'Everbridge excels at notification—telling people something happened. M picks up where Everbridge stops: the 20-50 hours of coordination after the alert goes out. M can actually receive Everbridge alerts as triggers, then auto-orchestrate your response.',
+    response: 'Everbridge excels at notification—telling people something happened. POISE picks up where Everbridge stops: the 20-50 hours of coordination after the alert goes out. POISE can actually receive Everbridge alerts as triggers, then auto-orchestrate your response.',
     category: 'Crisis Tools'
   },
   {
     objection: '"We use Jira/Asana for all our project management."',
-    response: 'Perfect—M syncs directly to Jira and Asana. When M activates a playbook, it creates the project in your existing PM tool with all tasks assigned. Your teams work where they\'re comfortable; M just eliminates the 20-50 hours of setup.',
+    response: 'Perfect—POISE syncs directly to Jira and Asana. When POISE activates a playbook, it creates the project in your existing PM tool with all tasks assigned. Your teams work where they\'re comfortable; POISE just eliminates the 20-50 hours of setup.',
     category: 'PM Tools'
   },
   {
     objection: '"This sounds like another tool to adopt."',
-    response: 'M is the opposite—it reduces tools. Teams don\'t learn M; M comes to them via the tools they already use (Slack, Teams, Jira, email). The playbook library and signal monitoring are invisible to end users.',
+    response: 'POISE is the opposite—it reduces tools. Teams don\'t learn POISE; POISE comes to them via the tools they already use (Slack, Teams, Jira, email). The playbook library and signal monitoring are invisible to end users.',
     category: 'Adoption'
   },
   {
     objection: '"We have crisis playbooks in SharePoint."',
-    response: 'Static playbooks become stale and require manual activation. When did you last update them? Who activates them? M turns static documents into living, self-improving execution engines that activate automatically.',
+    response: 'Static playbooks become stale and require manual activation. When did you last update them? Who activates them? POISE turns static documents into living, self-improving execution engines that activate automatically.',
     category: 'Process'
   },
   {
     objection: '"Our teams can coordinate in 72 hours."',
-    response: 'What\'s the cost of those 72 hours? For a cyber breach, every hour is $150K+ in damages. For M&A response, competitors who react in 12 minutes gain insurmountable advantages. M captures the value of speed.',
+    response: 'What\'s the cost of those 72 hours? For a cyber breach, every hour is $150K+ in damages. For M&A response, competitors who react in 12 minutes gain insurmountable advantages. POISE captures the value of speed.',
     category: 'Urgency'
   },
   {
     objection: '"How is this different from AI agents?"',
-    response: 'AI agents introduce unpredictability—you don\'t know what they\'ll do. M provides deterministic execution: pre-defined playbooks where AI recommends and humans decide. You get speed without surprises.',
+    response: 'AI agents introduce unpredictability—you don\'t know what they\'ll do. POISE provides deterministic execution: pre-defined playbooks where AI recommends and humans decide. You get speed without surprises.',
     category: 'Technology'
   },
   {
     objection: '"We use Workboard/Quantive for strategy execution."',
-    response: 'OKR tools measure progress on a quarterly cadence. M activates responses in minutes when strategic events threaten those goals. Workboard tells you if you\'re on track; M ensures threats don\'t derail you.',
+    response: 'OKR tools measure progress on a quarterly cadence. POISE activates responses in minutes when strategic events threaten those goals. Workboard tells you if you\'re on track; POISE ensures threats don\'t derail you.',
     category: 'OKR Tools'
   },
   {
     objection: '"Can\'t we just build this with Zapier/Make?"',
-    response: 'Automation tools connect apps. M orchestrates humans. You can\'t Zap your way to cross-functional coordination with human decision gates, pre-approved budgets, and institutional learning. M is the strategic layer above automation.',
+    response: 'Automation tools connect apps. POISE orchestrates humans. You can\'t Zap your way to cross-functional coordination with human decision gates, pre-approved budgets, and institutional learning. POISE is the strategic layer above automation.',
     category: 'Automation'
   },
   {
     objection: '"We use Anaplan for strategic planning."',
-    response: 'Excellent! Anaplan models scenarios—what happens if a competitor enters your market. M completes the loop: when that actually happens, M activates the response in 12 minutes. Anaplan plans, M executes. They\'re complementary, not competing.',
+    response: 'Excellent! Anaplan models scenarios—what happens if a competitor enters your market. POISE completes the loop: when that actually happens, POISE activates the response in 12 minutes. Anaplan plans, POISE executes. They\'re complementary, not competing.',
     category: 'Planning Tools'
   }
 ];
@@ -298,10 +298,10 @@ export default function CompetitivePositioning() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Competitive Positioning - M | Strategic Execution OS",
-      description: "See how M creates a new category between crisis notification tools (Everbridge, OnSolve) and project management (Jira, Asana). The execution layer Fortune 1000 companies need.",
-      ogTitle: "M vs. Crisis Tools vs. PM Tools | Category of One",
-      ogDescription: "M isn't competing with Everbridge or Jira. M owns the strategic execution layer between them.",
+      title: "Competitive Positioning - POISE | Strategic Execution OS",
+      description: "See how POISE creates a new category between crisis notification tools (Everbridge, OnSolve) and project management (Jira, Asana). The execution layer Fortune 1000 companies need.",
+      ogTitle: "POISE vs. Crisis Tools vs. PM Tools | Category of One",
+      ogDescription: "POISE isn't competing with Everbridge or Jira. POISE owns the strategic execution layer between them.",
     });
   }, []);
 
@@ -320,7 +320,7 @@ export default function CompetitivePositioning() {
               <span className="block text-blue-400 mt-2">Category of One</span>
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
-              Crisis tools notify. PM tools track. M executes. We're not competing with Everbridge or Jira—we own the 
+              Crisis tools notify. PM tools track. POISE executes. We're not competing with Everbridge or Jira—we own the 
               <span className="text-blue-300 font-semibold"> 20-50 hours of coordination </span> 
               that happens between alert and action.
             </p>
@@ -335,7 +335,7 @@ export default function CompetitivePositioning() {
               <div className="bg-blue-500/30 border-2 border-blue-400 rounded-lg px-6 py-3 ring-2 ring-blue-400/50">
                 <Zap className="w-5 h-5 text-blue-300 inline mr-2" />
                 <span className="text-blue-200 font-bold">Strategic Execution</span>
-                <div className="text-xs text-blue-300 mt-1">M (Category of One)</div>
+                <div className="text-xs text-blue-300 mt-1">POISE (Category of One)</div>
               </div>
               <div className="bg-green-500/20 border border-green-500/40 rounded-lg px-6 py-3">
                 <Settings className="w-5 h-5 text-green-400 inline mr-2" />
@@ -376,7 +376,7 @@ export default function CompetitivePositioning() {
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
                 When a strategic event hits, organizations spend 20-50 hours getting organized. 
-                That's $60K-$2M in lost value per major event. M eliminates that gap entirely.
+                That's $60K-$2M in lost value per major event. POISE eliminates that gap entirely.
               </p>
             </div>
 
@@ -384,9 +384,9 @@ export default function CompetitivePositioning() {
             <Card className="mb-12 overflow-hidden" data-testid="card-timeline">
               <CardContent className="p-8">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                  {/* Without M */}
+                  {/* Without POISE */}
                   <div className="flex-1 text-center">
-                    <div className="text-red-500 font-bold text-lg mb-2">Without M</div>
+                    <div className="text-red-500 font-bold text-lg mb-2">Without POISE</div>
                     <div className="flex items-center justify-center gap-2 flex-wrap">
                       <div className="bg-red-100 dark:bg-red-900/30 rounded-lg p-3 text-center">
                         <div className="text-xs text-red-600 dark:text-red-400">Alert</div>
@@ -419,9 +419,9 @@ export default function CompetitivePositioning() {
                   <div className="hidden md:block w-px h-24 bg-slate-300 dark:bg-slate-700"></div>
                   <div className="md:hidden h-px w-full bg-slate-300 dark:bg-slate-700"></div>
 
-                  {/* With M */}
+                  {/* With POISE */}
                   <div className="flex-1 text-center">
-                    <div className="text-emerald-500 font-bold text-lg mb-2">With M</div>
+                    <div className="text-emerald-500 font-bold text-lg mb-2">With POISE</div>
                     <div className="flex items-center justify-center gap-2 flex-wrap">
                       <div className="bg-emerald-100 dark:bg-emerald-900/30 rounded-lg p-3 text-center">
                         <div className="text-xs text-emerald-600 dark:text-emerald-400">Trigger Detected</div>
@@ -453,7 +453,7 @@ export default function CompetitivePositioning() {
                 Competitive Battle Cards
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400">
-                How M positions against each category of competitor
+                How POISE positions against each category of competitor
               </p>
             </div>
 
@@ -598,7 +598,7 @@ export default function CompetitivePositioning() {
                     <div>
                       <h3 className="font-semibold text-sky-900 dark:text-sky-100 mb-1">Complementary, Not Competing</h3>
                       <p className="text-sm text-sky-700 dark:text-sky-300">
-                        Planning tools like Anaplan model "what if" scenarios. M executes the "when it happens" response. 
+                        Planning tools like Anaplan model "what if" scenarios. POISE executes the "when it happens" response. 
                         Together, they complete the strategic loop: <strong>Plan → Trigger → Execute → Learn</strong>.
                       </p>
                     </div>
@@ -776,7 +776,7 @@ export default function CompetitivePositioning() {
                 Five Categories, One Gap
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400">
-                M is the only platform that bridges planning, detection, coordination, and execution
+                POISE is the only platform that bridges planning, detection, coordination, and execution
               </p>
             </div>
 
@@ -967,7 +967,7 @@ export default function CompetitivePositioning() {
                     <h3 className="text-2xl font-bold mb-4">The Enterprise Moat</h3>
                     <p className="text-blue-200 mb-6">
                       Once a Fortune 1000 company has 50+ playbooks syncing to Jira with bi-directional updates, 
-                      historical execution data, and months of organizational knowledge encoded in M—switching 
+                      historical execution data, and months of organizational knowledge encoded in POISE—switching 
                       becomes nearly impossible.
                     </p>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -1002,7 +1002,7 @@ export default function CompetitivePositioning() {
               Ready to Own Strategic Execution?
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
-              See how M eliminates the 20-50 hours between alert and action
+              See how POISE eliminates the 20-50 hours between alert and action
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button 
