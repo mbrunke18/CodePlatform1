@@ -80,12 +80,14 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              <img 
-                src={poiseLogoPath} 
-                alt="POISE - Composure in every decision" 
-                className="h-10 sm:h-12 lg:h-14 w-auto max-w-[220px] object-contain"
-                style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.45))' }}
-              />
+              <div className="px-4 py-2 rounded-xl bg-gradient-to-r from-slate-800/90 to-slate-900/70 border border-slate-700/60">
+                <img 
+                  src={poiseLogoPath} 
+                  alt="POISE - Composure in every decision" 
+                  className="h-12 sm:h-14 lg:h-16 w-auto max-w-[260px] object-contain brightness-110 contrast-105"
+                  style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.5))' }}
+                />
+              </div>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-xs font-medium px-3 py-1 rounded-full bg-violet-500/20 text-violet-400">IDENTIFY</span>

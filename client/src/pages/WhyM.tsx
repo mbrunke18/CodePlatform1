@@ -50,12 +50,14 @@ export default function WhyM() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <img 
-                src={poiseLogoPath} 
-                alt="POISE - Composure in every decision" 
-                className="h-12 sm:h-14 md:h-16 w-auto max-w-[280px] object-contain mb-6"
-                style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.55))' }}
-              />
+              <div className="inline-block px-4 py-2 rounded-xl bg-gradient-to-r from-slate-800/80 to-slate-900/70 border border-slate-600/50 backdrop-blur-sm mb-6">
+                <img 
+                  src={poiseLogoPath} 
+                  alt="POISE - Composure in every decision" 
+                  className="h-14 sm:h-16 md:h-18 w-auto max-w-[280px] object-contain brightness-110 contrast-105"
+                  style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.55))' }}
+                />
+              </div>
               <Badge className="mb-6 bg-primary text-white border-0">
                 <Lightbulb className="w-4 h-4 mr-2" />
                 The Origin Story

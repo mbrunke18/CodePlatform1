@@ -43,16 +43,18 @@ export default function StandardNav() {
           
           {/* Logo */}
           <div 
-            className="flex items-center cursor-pointer hover:opacity-80 transition-opacity" 
+            className="flex items-center cursor-pointer hover:opacity-90 transition-opacity" 
             onClick={() => navigateTo('/')}
             data-testid="nav-logo"
           >
-            <img 
-              src={poiseLogoPath} 
-              alt="POISE - Composure in every decision" 
-              className="h-8 sm:h-9 md:h-10 w-auto object-contain"
-              style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.35))' }}
-            />
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-slate-800/80 to-slate-900/60 border border-slate-700/50">
+              <img 
+                src={poiseLogoPath} 
+                alt="POISE - Composure in every decision" 
+                className="h-9 sm:h-10 md:h-11 w-auto object-contain brightness-110 contrast-105"
+                style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))' }}
+              />
+            </div>
           </div>
 
           {/* Desktop Navigation Links - Simplified Journey */}

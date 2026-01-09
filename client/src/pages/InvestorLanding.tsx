@@ -71,13 +71,15 @@ export default function InvestorLanding() {
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-20"></div>
           
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="mb-8">
-              <img 
-                src={poiseLogoPath} 
-                alt="POISE - Composure in every decision" 
-                className="h-16 sm:h-20 lg:h-24 w-auto object-contain mx-auto mb-6"
-                style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.55))' }}
-              />
+            <div className="mb-8 flex justify-center">
+              <div className="inline-block px-6 py-3 rounded-2xl bg-gradient-to-r from-slate-800/80 to-slate-900/70 border border-slate-600/50 backdrop-blur-sm">
+                <img 
+                  src={poiseLogoPath} 
+                  alt="POISE - Composure in every decision" 
+                  className="h-20 sm:h-24 lg:h-28 w-auto object-contain brightness-110 contrast-105"
+                  style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.55))' }}
+                />
+              </div>
             </div>
             <Badge className="mb-6 bg-blue-600 text-white border-0 text-sm px-4 py-1.5" data-testid="badge-category">
               Category-Defining Opportunity

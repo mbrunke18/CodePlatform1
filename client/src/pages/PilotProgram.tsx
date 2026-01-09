@@ -248,12 +248,14 @@ export default function PilotProgram() {
         {/* Hero Section */}
         <section className="py-16 px-6 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
           <div className="max-w-6xl mx-auto text-center">
-            <img 
-              src={poiseLogoPath} 
-              alt="POISE - Composure in every decision" 
-              className="h-12 sm:h-16 lg:h-20 w-auto object-contain mx-auto mb-6"
-              style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.55))' }}
-            />
+            <div className="inline-block px-6 py-3 rounded-2xl bg-gradient-to-r from-slate-800/80 to-slate-900/70 border border-slate-600/50 backdrop-blur-sm mb-6">
+              <img 
+                src={poiseLogoPath} 
+                alt="POISE - Composure in every decision" 
+                className="h-16 sm:h-20 lg:h-24 w-auto object-contain brightness-110 contrast-105"
+                style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.55))' }}
+              />
+            </div>
             <Badge className="mb-6 bg-emerald-600/20 text-emerald-300 border-emerald-500/30" data-testid="badge-pilot">
               Fortune 1000 Design Partner Program
             </Badge>
