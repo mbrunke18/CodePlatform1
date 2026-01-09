@@ -17,7 +17,8 @@ import {
   FileText,
   Layers,
   Plug,
-  Users
+  Users,
+  Play
 } from "lucide-react";
 import { useLocation } from "wouter";
 import { useEffect, useState } from "react";
@@ -169,134 +170,74 @@ export default function MarketingLanding() {
             <InteractiveROICalculator persona="general" industry="general" />
           </div>
 
-          {/* Urgency & Exclusivity - Pilot Slots */}
-          <div className="mb-10 max-w-5xl mx-auto">
-            <Card className="bg-gradient-to-br from-red-900/40 to-orange-900/40 border-3 border-yellow-400/70 backdrop-blur-sm shadow-2xl" data-testid="card-pilot-urgency">
-              <CardContent className="p-8">
-                <div className="text-center mb-6">
-                  <Badge className="mb-4 bg-yellow-500 text-black font-bold text-base px-6 py-2 animate-pulse">
-                    ⚡ LIMITED AVAILABILITY
-                  </Badge>
-                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-3">
-                    Q1 2026 Design Partner Program
-                  </h3>
-                  <p className="text-xl text-yellow-200 mb-6">
-                    Join 10 Fortune 1000 companies building the future of executive decision operations
-                  </p>
-                  
-                  {/* Urgency Counter */}
-                  <div className="bg-black/40 rounded-lg p-6 mb-6 border-2 border-yellow-500/50">
-                    <div className="flex items-center justify-center gap-8 mb-4">
-                      <div>
-                        <div className="text-5xl font-bold text-red-400">7</div>
-                        <div className="text-sm text-gray-300">Slots Filled</div>
-                      </div>
-                      <div className="text-4xl text-yellow-400">/</div>
-                      <div>
-                        <div className="text-5xl font-bold text-green-400">10</div>
-                        <div className="text-sm text-gray-300">Total Slots</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-center gap-2 text-yellow-200 text-sm">
-                      <Clock className="h-4 w-4" />
-                      <span className="font-semibold">Only 3 design partner slots remaining</span>
-                    </div>
-                  </div>
-
-                  {/* What Design Partners Get */}
-                  <div className="grid md:grid-cols-3 gap-4 mb-8 text-left">
-                    <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                      <CheckCircle2 className="h-6 w-6 text-green-400 mb-2" />
-                      <div className="font-semibold text-white mb-1">90-Day Validation</div>
-                      <div className="text-sm text-gray-300">Full platform access with dedicated success team</div>
-                    </div>
-                    <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                      <CheckCircle2 className="h-6 w-6 text-green-400 mb-2" />
-                      <div className="font-semibold text-white mb-1">Priority Roadmap</div>
-                      <div className="text-sm text-gray-300">Shape product features for your industry</div>
-                    </div>
-                    <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                      <CheckCircle2 className="h-6 w-6 text-green-400 mb-2" />
-                      <div className="font-semibold text-white mb-1">Founding Pricing</div>
-                      <div className="text-sm text-gray-300">Lock in lifetime partnership rates</div>
-                    </div>
-                  </div>
-
-                  {/* Single Exclusive CTA */}
-                  <Button 
-                    size="lg"
-                    onClick={() => setLocation("/contact")}
-                    className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-black font-bold text-xl px-12 py-8 shadow-2xl transform hover:scale-105 transition-all"
-                    data-testid="button-design-partner"
-                  >
-                    <Target className="mr-3 h-6 w-6" />
-                    Apply for Design Partner Program
-                    <ArrowRight className="ml-3 h-6 w-6" />
-                  </Button>
-                  
-                  <p className="text-sm text-gray-300 mt-4">
-                    Executive intake form • 72-hour response • No commitment required
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Prominent Demo and Playbook Links */}
-          <div className="text-center mb-8">
-            {/* Featured: Live Demo Selector */}
-            <div className="mb-6">
-              <Button 
-                onClick={() => setLocation("/demo/selector")}
-                size="lg"
-                className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white font-bold text-lg px-10 py-6 shadow-2xl transform hover:scale-105 transition-all border-2 border-green-300"
-                data-testid="button-live-demo-selector"
-              >
-                <Radio className="mr-3 h-6 w-6 animate-pulse" />
-                Choose Your Live Demo
-                <ArrowRight className="ml-3 h-6 w-6" />
-              </Button>
-              <p className="text-xs text-green-300 mt-2 font-semibold">
-                🎬 7 Interactive Scenarios • 12-minute live coordination • Perfect for presentations
-              </p>
-            </div>
-
+          {/* Primary Conversion Funnel - Try Demo + Start Pilot */}
+          <div className="text-center mb-10">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
               <Button 
-                onClick={() => setLocation("/industry-demos")}
-                variant="outline"
+                onClick={() => setLocation("/demo-gallery")}
                 size="lg"
-                className="border-2 border-cyan-400 text-cyan-300 hover:bg-cyan-400/10 font-semibold px-8"
-                data-testid="button-view-demos"
+                className="bg-gradient-to-r from-poise-teal to-cyan-500 hover:from-cyan-500 hover:to-poise-teal text-white font-bold text-lg px-10 py-6 shadow-2xl transform hover:scale-105 transition-all"
+                data-testid="button-try-demo"
               >
-                <Rocket className="mr-2 h-5 w-5" />
-                View 9 Industry Demos
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <Play className="mr-3 h-6 w-6" />
+                Try Interactive Demo
               </Button>
               
               <Button 
-                onClick={() => setLocation("/playbook-library")}
-                variant="outline"
+                onClick={() => setLocation("/contact")}
                 size="lg"
-                className="border-2 border-purple-400 text-purple-300 hover:bg-purple-400/10 font-semibold px-8"
-                data-testid="button-view-playbooks"
+                className="bg-poise-gold hover:bg-amber-500 text-poise-navy font-bold text-lg px-10 py-6 shadow-xl transform hover:scale-105 transition-all"
+                data-testid="button-start-pilot"
               >
-                <FileText className="mr-2 h-5 w-5" />
-                Explore 166 Playbooks
-                <ArrowRight className="ml-2 h-5 w-5" />
+                Start Pilot Program
+                <ArrowRight className="ml-3 h-6 w-6" />
               </Button>
             </div>
             
-            <p className="text-sm text-blue-400">
-              Or{" "}
+            <p className="text-sm text-blue-300 mb-4">
+              See the platform in action or{" "}
               <button 
-                onClick={() => setLocation("/demo")}
+                onClick={() => setLocation("/playbooks")}
+                className="underline hover:text-cyan-300 transition-colors"
+                data-testid="link-explore-playbooks"
+              >
+                explore 166 playbooks
+              </button>
+              {" "}•{" "}
+              <button 
+                onClick={() => setLocation("/how-it-works")}
                 className="underline hover:text-cyan-300 transition-colors"
                 data-testid="link-watch-demo"
               >
-                watch the 12-minute execution demo
+                learn how it works
               </button>
             </p>
+          </div>
+
+          {/* Q1 2026 Founding Partner Program - Supporting Info */}
+          <div className="max-w-4xl mx-auto mb-8">
+            <Card className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-poise-gold/30 backdrop-blur-sm" data-testid="card-pilot-info">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between flex-wrap gap-4">
+                  <div className="flex items-center gap-3">
+                    <Badge className="bg-poise-gold/20 text-poise-gold border-poise-gold/30 font-semibold">
+                      Q1 2026 Founding Partners
+                    </Badge>
+                    <span className="text-white/80 text-sm">
+                      90-day validation • $75K (100% credited to Year 1) • Only 3 slots remaining
+                    </span>
+                  </div>
+                  <div className="flex gap-2 text-xs text-slate-400">
+                    <CheckCircle2 className="h-4 w-4 text-green-400" />
+                    <span>Full platform access</span>
+                    <span>•</span>
+                    <span>Priority roadmap input</span>
+                    <span>•</span>
+                    <span>Founding pricing locked</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -873,34 +814,38 @@ export default function MarketingLanding() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-24 px-6 bg-gradient-to-br from-blue-600 via-cyan-600 to-teal-600 text-white">
+      {/* Final CTA - Unified Conversion Funnel */}
+      <section className="py-24 px-6 bg-gradient-to-br from-poise-navy via-slate-900 to-poise-navy text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Ready to Transform Strategic Execution?
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Join 10 Fortune 1000 pilot companies in Q1 2026. 90-day validation partnership. Risk-free strategic implementation support.
+          <p className="text-xl text-slate-300 mb-8">
+            See how POISE transforms 72-hour coordination into 12-minute response.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <Button 
+              size="lg"
+              onClick={() => setLocation("/demo-gallery")}
+              className="bg-poise-teal hover:bg-cyan-500 text-white text-lg px-10 py-6 font-semibold"
+              data-testid="button-cta-demo"
+            >
+              <Play className="h-5 w-5 mr-2" />
+              Try Interactive Demo
+            </Button>
             <Button 
               size="lg"
               onClick={() => setLocation("/contact")}
-              className="bg-white text-blue-600 hover:bg-blue-50 text-lg px-10 py-6 font-semibold"
-              data-testid="button-cta-contact"
+              className="bg-poise-gold hover:bg-amber-500 text-poise-navy text-lg px-10 py-6 font-semibold"
+              data-testid="button-cta-pilot"
             >
-              Request Early Access
-            </Button>
-            <Button 
-              size="lg"
-              onClick={() => setLocation("/executive-demo")}
-              variant="outline"
-              className="border-2 border-white text-white hover:bg-white/10 text-lg px-10 py-6"
-              data-testid="button-cta-demo"
-            >
-              Experience Full Demo
+              Start Pilot Program
+              <ArrowRight className="h-5 w-5 ml-2" />
             </Button>
           </div>
+          <p className="text-sm text-slate-400">
+            Q1 2026 Founding Partner Program • 90-day validation • $75K (100% credited to Year 1)
+          </p>
         </div>
       </section>
     </div>

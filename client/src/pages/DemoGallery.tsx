@@ -11,7 +11,8 @@ import {
   Users, 
   Building2,
   Briefcase,
-  ChevronRight, 
+  ChevronRight,
+  ArrowRight,
   Clock,
   Star,
   Zap,
@@ -34,7 +35,8 @@ const demos = [
     color: "text-poise-teal",
     bgColor: "bg-poise-teal/10",
     featured: true,
-    tags: ["Full Experience", "Live Execution"]
+    tags: ["Full Experience", "Live Execution"],
+    journeyPhase: "Discovery"
   },
   {
     id: "executive-simulation",
@@ -48,7 +50,8 @@ const demos = [
     color: "text-poise-gold",
     bgColor: "bg-poise-gold/10",
     featured: true,
-    tags: ["Decision Making", "Crisis Response"]
+    tags: ["Decision Making", "Crisis Response"],
+    journeyPhase: "EXECUTE"
   },
   {
     id: "sandbox",
@@ -61,7 +64,8 @@ const demos = [
     icon: Zap,
     color: "text-pink-500",
     bgColor: "bg-pink-500/10",
-    tags: ["Self-Guided", "Exploration"]
+    tags: ["Self-Guided", "Exploration"],
+    journeyPhase: "Onboarding"
   },
   {
     id: "investor-demo",
@@ -74,7 +78,8 @@ const demos = [
     icon: Building2,
     color: "text-purple-500",
     bgColor: "bg-purple-500/10",
-    tags: ["Market Size", "ROI Metrics"]
+    tags: ["Market Size", "ROI Metrics"],
+    journeyPhase: "Discovery"
   },
   {
     id: "product-tour",
@@ -87,7 +92,8 @@ const demos = [
     icon: Eye,
     color: "text-blue-500",
     bgColor: "bg-blue-500/10",
-    tags: ["Feature Overview", "Modules"]
+    tags: ["Feature Overview", "Modules"],
+    journeyPhase: "IDENTIFY"
   },
   {
     id: "live-demo",
@@ -100,7 +106,8 @@ const demos = [
     icon: Play,
     color: "text-emerald-500",
     bgColor: "bg-emerald-500/10",
-    tags: ["Quick Start", "No Setup"]
+    tags: ["Quick Start", "No Setup"],
+    journeyPhase: "Discovery"
   }
 ];
 
@@ -156,17 +163,42 @@ export default function DemoGallery() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           
           {/* Header */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <Badge className="mb-4 bg-poise-teal/20 text-poise-teal border-poise-teal/30">
               Experience POISE
             </Badge>
             <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
               Demo Gallery
             </h1>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
               Choose your experience: interactive simulations, guided tours, or industry-specific scenarios
             </p>
           </div>
+
+          {/* North Star Journey Connection */}
+          <Card className="mb-10 bg-gradient-to-r from-poise-teal/10 to-cyan-500/10 border-poise-teal/30">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between flex-wrap gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 rounded-xl bg-poise-teal/20">
+                    <Rocket className="h-6 w-6 text-poise-teal" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-slate-900 dark:text-white">Your Journey Starts Here</h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
+                      These demos map to Phase 1 of your POISE North Star™ journey — Discovery to 12-minute execution
+                    </p>
+                  </div>
+                </div>
+                <Link href="/north-star">
+                  <Button variant="outline" className="border-poise-teal text-poise-teal hover:bg-poise-teal hover:text-white">
+                    View Full Journey
+                    <ChevronRight className="h-4 w-4 ml-1" />
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Featured Demos */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
@@ -179,12 +211,17 @@ export default function DemoGallery() {
                         <demo.icon className={`h-8 w-8 ${demo.color}`} />
                       </div>
                       <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-2">
+                        <div className="flex items-center gap-2 mb-2 flex-wrap">
                           <Badge variant="secondary" className="text-xs">Featured</Badge>
                           <Badge variant="outline" className="text-xs">
                             <Clock className="h-3 w-3 mr-1" />
                             {demo.duration}
                           </Badge>
+                          {(demo as any).journeyPhase && (
+                            <Badge className="text-xs bg-poise-teal/20 text-poise-teal border-poise-teal/30">
+                              {(demo as any).journeyPhase}
+                            </Badge>
+                          )}
                         </div>
                         <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-poise-teal transition-colors mb-2">
                           {demo.title}
@@ -242,11 +279,16 @@ export default function DemoGallery() {
                         <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 mb-3">
                           {demo.description}
                         </p>
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 flex-wrap">
                           <Badge variant="outline" className="text-xs">
                             <Clock className="h-3 w-3 mr-1" />
                             {demo.duration}
                           </Badge>
+                          {(demo as any).journeyPhase && (
+                            <Badge className="text-xs bg-poise-teal/20 text-poise-teal border-poise-teal/30">
+                              {(demo as any).journeyPhase}
+                            </Badge>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -282,25 +324,30 @@ export default function DemoGallery() {
             </div>
           </div>
 
-          {/* CTA */}
+          {/* CTA - Unified Conversion Funnel: Try Demo + Start Pilot */}
           <Card className="bg-gradient-to-r from-poise-navy to-slate-800 text-white border-0">
             <CardContent className="p-8 text-center">
-              <h3 className="text-2xl font-bold mb-4">Ready to see POISE in your environment?</h3>
+              <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Strategic Execution?</h3>
               <p className="text-slate-300 mb-6 max-w-xl mx-auto">
-                Schedule a personalized demo with our team to see how POISE can transform your strategic execution
+                Join Fortune 1000 companies achieving 12-minute coordinated response with POISE
               </p>
-              <div className="flex justify-center gap-4">
-                <Link href="/pilot-program">
-                  <Button size="lg" className="bg-poise-gold hover:bg-amber-500 text-poise-navy">
-                    Start 30-Day Pilot
+              <div className="flex justify-center gap-4 flex-wrap">
+                <Link href="/pilot-demo">
+                  <Button size="lg" className="bg-poise-teal hover:bg-cyan-500 text-white font-semibold">
+                    <Play className="h-4 w-4 mr-2" />
+                    Try Interactive Demo
                   </Button>
                 </Link>
                 <Link href="/contact">
-                  <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10">
-                    Schedule Custom Demo
+                  <Button size="lg" className="bg-poise-gold hover:bg-amber-500 text-poise-navy font-semibold">
+                    Start Pilot Program
+                    <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>
                 </Link>
               </div>
+              <p className="text-sm text-slate-400 mt-4">
+                Q1 2026 Founding Partner Program • 90-day validation • $75K (100% credited to Year 1)
+              </p>
             </CardContent>
           </Card>
         </div>

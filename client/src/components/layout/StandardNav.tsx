@@ -40,12 +40,10 @@ export default function StandardNav() {
   ];
 
   const dashboardLinks = [
-    { label: "Executive Dashboard", path: "/executive-dashboard", icon: BarChart3, color: "text-poise-gold" },
+    { label: "POISE One™ Overview", path: "/mission-control", icon: Compass, color: "text-poise-gold", featured: true },
     { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, color: "text-poise-teal" },
-    { label: "Command Center", path: "/mission-control", icon: Compass, color: "text-poise-teal" },
-    { label: "AI Radar", path: "/ai-radar", icon: Brain, color: "text-purple-500" },
+    { label: "Executive Dashboard", path: "/executive-dashboard", icon: BarChart3, color: "text-poise-gold" },
     { label: "Decision Velocity", path: "/decision-velocity", icon: Zap, color: "text-blue-500" },
-    { label: "Analytics", path: "/analytics", icon: TrendingUp, color: "text-emerald-500" },
   ];
 
   const isActivePath = (path: string) => {

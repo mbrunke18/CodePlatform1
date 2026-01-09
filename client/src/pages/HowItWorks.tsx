@@ -285,34 +285,36 @@ export default function HowItWorks() {
         </div>
       </div>
 
-      {/* CTA Section */}
-      <div className="container mx-auto px-6 py-20">
+      {/* CTA Section - Unified Conversion Funnel */}
+      <div className="container mx-auto px-6 py-20 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-blue-950/30">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
             Ready to See It in Action?
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
-            Watch how POISE transforms a competitive threat into a coordinated 12-minute response.
+            Experience how POISE transforms a competitive threat into a coordinated 12-minute response.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
-              onClick={() => setLocation("/demo/live-activation")}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg"
-              data-testid="button-watch-demo"
+              onClick={() => setLocation("/demo-gallery")}
+              className="bg-poise-teal hover:bg-cyan-600 text-white px-8 py-6 text-lg"
+              data-testid="button-try-demo"
             >
               <Play className="h-5 w-5 mr-2" />
-              Watch Live Demo
+              Try Interactive Demo
             </Button>
             <Button 
-              onClick={() => setLocation("/playbook-library")}
-              variant="outline"
-              className="border-slate-300 dark:border-slate-600 px-8 py-6 text-lg"
-              data-testid="button-explore-playbooks"
+              onClick={() => setLocation("/contact")}
+              className="bg-poise-gold hover:bg-amber-500 text-poise-navy px-8 py-6 text-lg"
+              data-testid="button-start-pilot"
             >
-              Explore 166 Playbooks
+              Start Pilot Program
               <ArrowRight className="h-5 w-5 ml-2" />
             </Button>
           </div>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-6">
+            Q1 2026 Founding Partner Program • 90-day validation • $75K (100% credited to Year 1)
+          </p>
         </div>
       </div>
 
