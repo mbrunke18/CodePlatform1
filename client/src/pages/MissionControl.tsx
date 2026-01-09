@@ -136,8 +136,8 @@ export default function MissionControl() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: 'POISE One™ | Strategic Command Center',
-      description: 'Single-pane executive overview of strategic readiness and execution status. Monitor signals, manage playbooks, and execute with precision.'
+      title: 'POISE One™ | POISE Strategic Execution OS',
+      description: 'Your strategic command center for the IDEA Framework - Monitor signals, manage playbooks, and execute with precision.'
     });
   }, []);
 
@@ -409,7 +409,7 @@ export default function MissionControl() {
                 POISE One™
               </h1>
               <p className="text-slate-500 dark:text-slate-400 mt-1">
-                Single-pane executive overview of strategic readiness and execution status
+                Strategic Execution Operating System • Executive Command Center
               </p>
             </div>
             <div className="flex items-center gap-4">
@@ -1018,215 +1018,6 @@ export default function MissionControl() {
                   </Link>
                 </div>
               </div>
-            </CardContent>
-          </Card>
-
-          {/* Main Content Grid - Playbook Library, Triggers & Signal Intelligence */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            
-            {/* Playbook Library - Aligns with IDENTIFY phase */}
-            <Card className="lg:col-span-2">
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <BookOpen className="h-5 w-5 text-blue-600" />
-                    <CardTitle className="text-lg">Playbook Library</CardTitle>
-                  </div>
-                  <Link href="/playbook-library">
-                    <Button variant="ghost" size="sm">
-                      <ExternalLink className="h-4 w-4" />
-                    </Button>
-                  </Link>
-                </div>
-                <CardDescription>166 pre-staged playbooks across 9 strategic domains</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Tabs defaultValue="offense" className="w-full">
-                  <TabsList className="grid w-full grid-cols-3 mb-4">
-                    <TabsTrigger value="offense" className="text-emerald-600 data-[state=active]:bg-emerald-50 dark:data-[state=active]:bg-emerald-900/30">
-                      OFFENSE (58)
-                    </TabsTrigger>
-                    <TabsTrigger value="defense" className="text-red-600 data-[state=active]:bg-red-50 dark:data-[state=active]:bg-red-900/30">
-                      DEFENSE (56)
-                    </TabsTrigger>
-                    <TabsTrigger value="special-teams" className="text-purple-600 data-[state=active]:bg-purple-50 dark:data-[state=active]:bg-purple-900/30">
-                      SPECIAL TEAMS (52)
-                    </TabsTrigger>
-                  </TabsList>
-                  
-                  {['offense', 'defense', 'special-teams'].map(category => (
-                    <TabsContent key={category} value={category} className="mt-0">
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        {playbookSummary
-                          .filter(p => p.category === category)
-                          .map(domain => {
-                            const DomainIcon = domainIcons[domain.icon] || Target;
-                            return (
-                              <motion.div
-                                key={domain.domain}
-                                whileHover={{ scale: 1.02 }}
-                                onClick={() => setLocation(`/playbooks?domain=${domain.domain}`)}
-                                className="p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 transition-all cursor-pointer group"
-                              >
-                                <div className="flex items-center justify-between mb-3">
-                                  <div className="flex items-center gap-3">
-                                    <div 
-                                      className="p-2 rounded-lg"
-                                      style={{ backgroundColor: `${domain.color}15` }}
-                                    >
-                                      <DomainIcon 
-                                        className="h-5 w-5"
-                                        style={{ color: domain.color }}
-                                      />
-                                    </div>
-                                    <div>
-                                      <div className="font-semibold text-slate-900 dark:text-white text-sm">
-                                        {domain.name}
-                                      </div>
-                                      <div className="text-xs text-slate-500">
-                                        {domain.count} playbooks
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <ChevronRight className="h-4 w-4 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                </div>
-                                <div className="space-y-1.5">
-                                  <div className="flex justify-between text-xs">
-                                    <span className="text-slate-500">Readiness</span>
-                                    <span className="font-medium text-emerald-600">
-                                      {Math.round((domain.readyCount / domain.count) * 100)}%
-                                    </span>
-                                  </div>
-                                  <Progress 
-                                    value={(domain.readyCount / domain.count) * 100} 
-                                    className="h-1.5"
-                                  />
-                                </div>
-                              </motion.div>
-                            );
-                          })}
-                      </div>
-                    </TabsContent>
-                  ))}
-                </Tabs>
-              </CardContent>
-            </Card>
-
-            {/* Signal Intelligence Panel - Aligns with DETECT phase */}
-            <Card className="lg:col-span-1">
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Radar className="h-5 w-5 text-emerald-600" />
-                    <CardTitle className="text-lg">Signal Intelligence</CardTitle>
-                  </div>
-                  <Link href="/signal-intelligence">
-                    <Button variant="ghost" size="sm">
-                      <ExternalLink className="h-4 w-4" />
-                    </Button>
-                  </Link>
-                </div>
-                <CardDescription>16 categories • {totalSignals} data points monitored</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ScrollArea className="h-[300px]">
-                  <div className="space-y-2 pr-2">
-                    {signalSummary.map((signal) => (
-                      <div 
-                        key={signal.category}
-                        className="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
-                      >
-                        <div className="flex items-center gap-3">
-                          <div className={`w-2 h-2 rounded-full ${getStatusColor(signal.status)}`} />
-                          <span className="font-medium text-slate-900 dark:text-white text-sm">{signal.name}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          {signal.criticalCount > 0 && (
-                            <Badge variant="destructive" className="text-xs">
-                              {signal.criticalCount}
-                            </Badge>
-                          )}
-                          {signal.warningCount > 0 && signal.criticalCount === 0 && (
-                            <Badge variant="outline" className="text-xs text-amber-600 border-amber-300">
-                              {signal.warningCount}
-                            </Badge>
-                          )}
-                          <span className="text-xs text-slate-500">{signal.activeCount}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </ScrollArea>
-                <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700">
-                  <Link href="/triggers-management">
-                    <Button variant="outline" className="w-full">
-                      <Settings className="h-4 w-4 mr-2" />
-                      Configure Triggers
-                    </Button>
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Top 10 Triggers + All Triggers Access */}
-          <Card>
-            <CardHeader className="pb-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <Bell className="h-5 w-5 text-amber-600" />
-                  <CardTitle className="text-lg">Active Triggers</CardTitle>
-                  <Badge className="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
-                    {triggers.length} Total
-                  </Badge>
-                </div>
-                <Link href="/triggers-management">
-                  <Button variant="outline" size="sm">
-                    View All {triggers.length} Triggers
-                    <ChevronRight className="h-4 w-4 ml-1" />
-                  </Button>
-                </Link>
-              </div>
-              <CardDescription>Top 10 triggers across all signal categories</CardDescription>
-            </CardHeader>
-            <CardContent>
-              {triggers.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {triggers.slice(0, 10).map((trigger: any) => (
-                    <div 
-                      key={trigger.id}
-                      className="flex items-center justify-between p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 transition-colors"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className={`w-2 h-2 rounded-full ${
-                          trigger.severity === 'critical' ? 'bg-red-500' :
-                          trigger.severity === 'high' ? 'bg-amber-500' :
-                          trigger.severity === 'medium' ? 'bg-yellow-500' :
-                          'bg-emerald-500'
-                        }`} />
-                        <div>
-                          <div className="font-medium text-slate-900 dark:text-white text-sm">{trigger.name}</div>
-                          <div className="text-xs text-slate-500 capitalize">{trigger.category}</div>
-                        </div>
-                      </div>
-                      <Badge className={`text-xs ${
-                        trigger.severity === 'critical' ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300' :
-                        trigger.severity === 'high' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300' :
-                        trigger.severity === 'medium' ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300' :
-                        'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
-                      }`}>
-                        {trigger.severity}
-                      </Badge>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-8 text-slate-500">
-                  <Bell className="h-10 w-10 mx-auto mb-3 text-slate-300 dark:text-slate-600" />
-                  <p className="font-medium">Loading triggers...</p>
-                  <p className="text-sm mt-1">Fetching data from signal categories</p>
-                </div>
-              )}
             </CardContent>
           </Card>
 
