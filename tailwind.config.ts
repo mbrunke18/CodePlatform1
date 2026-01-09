@@ -11,6 +11,13 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        poise: {
+          navy: '#1A2B3D',
+          gold: '#D4AF37',
+          teal: '#00A8A8',
+          white: '#FFFFFF',
+          'dark-gray': '#0F1620',
+        },
         background: "var(--background)",
         foreground: "var(--foreground)",
         card: {

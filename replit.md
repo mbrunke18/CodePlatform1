@@ -84,8 +84,14 @@ POISE operates on the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE), facil
 - `shared/constants/framework.ts`: Centralized POISE_BRAND, IDEA_PHASES, STRATEGIC_DOMAINS, TIMING_BENCHMARKS, and UI constants (colors, icons, capabilities for each phase/domain).
 - `shared/constants/taskLibrary.ts`: Enterprise Task Library with 42 pre-defined tasks organized by IDEA phases and 9 functional categories (Program Management, Communications, Risk/Compliance, Finance, Technology, HR/Change, Legal, Operations, Strategy).
 - `shared/schema.ts`: Database schema with TypeScript interfaces for TriggerCondition, PlaybookTask, DecisionPoint, LessonLearned, StakeholderMapping.
-- `client/src/assets/poise-logo.png`: POISE logo with compass needle integrated into the "I"
+- `client/src/components/PoiseLogo.tsx`: SVG logo component with 3 variants (full, icon-only, text-only), compass needle in "I", wave lines, and tagline. Supports darkMode prop.
+- `attached_assets/poise-logo-official.png`: Official PNG logo used in nav and footer.
 - `client/src/pages/TaskManagement.tsx`: Task Management page with dual-tab UI for Playbook Tasks and Task Library browsing.
+
+**POISE Logo Usage:**
+- PNG (`poise-logo-official.png`): Main navigation, footer, hero sections
+- SVG (`PoiseLogo` component): Dashboard headers (icon-only), internal pages where variants are needed
+- Variants: `full` (text + compass + waves), `icon-only` (compass only), `text-only` (POISE text)
 
 **Enterprise Task Library (Jan 2026):**
 - 42 pre-defined enterprise tasks organized by IDEA Framework phases (Identify: 7, Detect: 6, Execute: 18, Advance: 10)

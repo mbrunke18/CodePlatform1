@@ -49,6 +49,7 @@ import {
   Layers,
   X
 } from 'lucide-react';
+import PoiseLogo from '@/components/PoiseLogo';
 
 const phaseIcons: Record<string, any> = {
   ClipboardList,
@@ -404,8 +405,8 @@ export default function MissionControl() {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div>
               <h1 className="text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-                <div className="p-2 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600">
-                  <Radio className="h-7 w-7 text-white" />
+                <div className="p-1 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600">
+                  <PoiseLogo width={40} variant="icon-only" />
                 </div>
                 POISE One™
               </h1>
