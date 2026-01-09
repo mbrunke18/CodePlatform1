@@ -439,83 +439,91 @@ export default function MissionControl() {
             </div>
           </div>
 
-          {/* Key Metrics Strip */}
+          {/* Key Metrics Strip - Clickable Quick Access */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700 shadow-sm"
-            >
-              <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-lg bg-blue-100 dark:bg-blue-900/40">
-                  <BookOpen className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+            <Link href="/playbook-library">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700 shadow-sm cursor-pointer hover:border-blue-300 dark:hover:border-blue-700 transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 rounded-lg bg-blue-100 dark:bg-blue-900/40">
+                    <BookOpen className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-slate-900 dark:text-white">{totalPlaybooks}</div>
+                    <div className="text-sm text-slate-500 dark:text-slate-400">Playbooks Ready</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-slate-900 dark:text-white">{totalPlaybooks}</div>
-                  <div className="text-sm text-slate-500 dark:text-slate-400">Playbooks Ready</div>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </Link>
 
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700 shadow-sm"
-            >
-              <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-lg bg-emerald-100 dark:bg-emerald-900/40">
-                  <Activity className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+            <Link href="/triggers-management">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700 shadow-sm cursor-pointer hover:border-emerald-300 dark:hover:border-emerald-700 transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 rounded-lg bg-emerald-100 dark:bg-emerald-900/40">
+                    <Activity className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-slate-900 dark:text-white">{activeTriggers}</div>
+                    <div className="text-sm text-slate-500 dark:text-slate-400">Active Triggers</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-slate-900 dark:text-white">{activeTriggers}</div>
-                  <div className="text-sm text-slate-500 dark:text-slate-400">Active Triggers</div>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </Link>
 
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700 shadow-sm"
-            >
-              <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-lg bg-purple-100 dark:bg-purple-900/40">
-                  <Radar className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+            <Link href="/signal-intelligence">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700 shadow-sm cursor-pointer hover:border-purple-300 dark:hover:border-purple-700 transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 rounded-lg bg-purple-100 dark:bg-purple-900/40">
+                    <Radar className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-slate-900 dark:text-white">{totalSignals}</div>
+                    <div className="text-sm text-slate-500 dark:text-slate-400">Signal Points</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-slate-900 dark:text-white">{totalSignals}</div>
-                  <div className="text-sm text-slate-500 dark:text-slate-400">Signal Points</div>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </Link>
 
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className={`bg-white dark:bg-slate-800 rounded-xl p-4 border shadow-sm ${
-                criticalAlerts > 0 
-                  ? 'border-red-300 dark:border-red-700' 
-                  : 'border-slate-200 dark:border-slate-700'
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <div className={`p-2.5 rounded-lg ${
+            <Link href="/signal-intelligence?filter=critical">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className={`bg-white dark:bg-slate-800 rounded-xl p-4 border shadow-sm cursor-pointer transition-colors ${
                   criticalAlerts > 0 
-                    ? 'bg-red-100 dark:bg-red-900/40' 
-                    : 'bg-slate-100 dark:bg-slate-700'
-                }`}>
-                  <AlertTriangle className={`h-5 w-5 ${
+                    ? 'border-red-300 dark:border-red-700 hover:border-red-400 dark:hover:border-red-600' 
+                    : 'border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <div className={`p-2.5 rounded-lg ${
                     criticalAlerts > 0 
-                      ? 'text-red-600 dark:text-red-400' 
-                      : 'text-slate-500 dark:text-slate-400'
-                  }`} />
+                      ? 'bg-red-100 dark:bg-red-900/40' 
+                      : 'bg-slate-100 dark:bg-slate-700'
+                  }`}>
+                    <AlertTriangle className={`h-5 w-5 ${
+                      criticalAlerts > 0 
+                        ? 'text-red-600 dark:text-red-400' 
+                        : 'text-slate-500 dark:text-slate-400'
+                    }`} />
+                  </div>
+                  <div>
+                    <div className={`text-2xl font-bold ${
+                      criticalAlerts > 0 
+                        ? 'text-red-600 dark:text-red-400' 
+                        : 'text-slate-900 dark:text-white'
+                    }`}>{criticalAlerts}</div>
+                    <div className="text-sm text-slate-500 dark:text-slate-400">Critical Alerts</div>
+                  </div>
                 </div>
-                <div>
-                  <div className={`text-2xl font-bold ${
-                    criticalAlerts > 0 
-                      ? 'text-red-600 dark:text-red-400' 
-                      : 'text-slate-900 dark:text-white'
-                  }`}>{criticalAlerts}</div>
-                  <div className="text-sm text-slate-500 dark:text-slate-400">Critical Alerts</div>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </Link>
           </div>
 
           {/* Trigger Probability Forecast */}
@@ -1145,28 +1153,33 @@ export default function MissionControl() {
                 <ScrollArea className="h-[300px]">
                   <div className="space-y-2 pr-2">
                     {signalSummary.map((signal) => (
-                      <div 
+                      <Link 
                         key={signal.category}
-                        className="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                        href={`/signal-intelligence?category=${encodeURIComponent(signal.category)}`}
                       >
-                        <div className="flex items-center gap-3">
-                          <div className={`w-2 h-2 rounded-full ${getStatusColor(signal.status)}`} />
-                          <span className="font-medium text-slate-900 dark:text-white text-sm">{signal.name}</span>
+                        <div 
+                          className="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer group"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className={`w-2 h-2 rounded-full ${getStatusColor(signal.status)}`} />
+                            <span className="font-medium text-slate-900 dark:text-white text-sm group-hover:text-poise-teal transition-colors">{signal.name}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            {signal.criticalCount > 0 && (
+                              <Badge variant="destructive" className="text-xs">
+                                {signal.criticalCount}
+                              </Badge>
+                            )}
+                            {signal.warningCount > 0 && signal.criticalCount === 0 && (
+                              <Badge variant="outline" className="text-xs text-amber-600 border-amber-300">
+                                {signal.warningCount}
+                              </Badge>
+                            )}
+                            <span className="text-xs text-slate-500">{signal.activeCount}</span>
+                            <ChevronRight className="h-4 w-4 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </div>
                         </div>
-                        <div className="flex items-center gap-2">
-                          {signal.criticalCount > 0 && (
-                            <Badge variant="destructive" className="text-xs">
-                              {signal.criticalCount}
-                            </Badge>
-                          )}
-                          {signal.warningCount > 0 && signal.criticalCount === 0 && (
-                            <Badge variant="outline" className="text-xs text-amber-600 border-amber-300">
-                              {signal.warningCount}
-                            </Badge>
-                          )}
-                          <span className="text-xs text-slate-500">{signal.activeCount}</span>
-                        </div>
-                      </div>
+                      </Link>
                     ))}
                   </div>
                 </ScrollArea>
@@ -1206,22 +1219,25 @@ export default function MissionControl() {
               {triggers.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {triggers.slice(0, 10).map((trigger: any) => (
-                    <div 
+                    <Link 
                       key={trigger.id}
-                      className="flex items-center justify-between p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 transition-colors"
+                      href={`/triggers-management?id=${trigger.id}`}
                     >
-                      <div className="flex items-center gap-3">
-                        <div className={`w-2 h-2 rounded-full ${
-                          trigger.severity === 'critical' ? 'bg-red-500' :
-                          trigger.severity === 'high' ? 'bg-amber-500' :
-                          trigger.severity === 'medium' ? 'bg-yellow-500' :
-                          'bg-emerald-500'
-                        }`} />
-                        <div>
-                          <div className="font-medium text-slate-900 dark:text-white text-sm">{trigger.name}</div>
-                          <div className="text-xs text-slate-500 capitalize">{trigger.category}</div>
+                      <div 
+                        className="flex items-center justify-between p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-poise-teal dark:hover:border-poise-teal transition-colors cursor-pointer group"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className={`w-2 h-2 rounded-full ${
+                            trigger.severity === 'critical' ? 'bg-red-500' :
+                            trigger.severity === 'high' ? 'bg-amber-500' :
+                            trigger.severity === 'medium' ? 'bg-yellow-500' :
+                            'bg-emerald-500'
+                          }`} />
+                          <div>
+                            <div className="font-medium text-slate-900 dark:text-white text-sm group-hover:text-poise-teal transition-colors">{trigger.name}</div>
+                            <div className="text-xs text-slate-500 capitalize">{trigger.category}</div>
+                          </div>
                         </div>
-                      </div>
                       <Badge className={`text-xs ${
                         trigger.severity === 'critical' ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300' :
                         trigger.severity === 'high' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300' :
@@ -1230,7 +1246,8 @@ export default function MissionControl() {
                       }`}>
                         {trigger.severity}
                       </Badge>
-                    </div>
+                      </div>
+                    </Link>
                   ))}
                 </div>
               ) : (
