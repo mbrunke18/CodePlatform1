@@ -12,6 +12,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { updatePageMetadata } from '@/lib/seo';
 import { IDEA_PHASES, STRATEGIC_DOMAINS } from '@shared/constants/framework';
 import { SIGNAL_CATEGORIES } from '@shared/intelligence-signals';
+import TriggerProbabilityForecast from '@/components/predictive/TriggerProbabilityForecast';
 import {
   ClipboardList,
   Radar,
@@ -507,6 +508,9 @@ export default function MissionControl() {
               </div>
             </motion.div>
           </div>
+
+          {/* Trigger Probability Forecast */}
+          <TriggerProbabilityForecast triggers={triggers} compact={false} />
 
           {/* IDEA Runway - Operational Journey */}
           <Card className="border-2 border-slate-200 dark:border-slate-700 overflow-hidden">
