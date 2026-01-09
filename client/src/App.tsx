@@ -108,6 +108,7 @@ import WorkspaceDetect from "./pages/WorkspaceDetect";
 import WorkspaceExecute from "./pages/WorkspaceExecute";
 import WorkspaceAdvance from "./pages/WorkspaceAdvance";
 import DemoGallery from "./pages/DemoGallery";
+import CustomerJourney from "./pages/CustomerJourney";
 import OrganizationSetup from "./pages/OrganizationSetup";
 import PlaybookCustomization from "./pages/PlaybookCustomization";
 import PlaybookCustomize from "./pages/PlaybookCustomize";
@@ -256,6 +257,8 @@ function Router() {
         <Route path="/workspaces/execute" component={WorkspaceExecute} />
         <Route path="/workspaces/advance" component={WorkspaceAdvance} />
         <Route path="/demo-gallery" component={DemoGallery} />
+        <Route path="/north-star" component={CustomerJourney} />
+        <Route path="/customer-journey" component={CustomerJourney} />
         <Route path="/executive-dashboard" component={ExecutiveDashboard} />
         <Route path="/scorecard" component={RedirectToExecutiveDashboard} />
         <Route path="/executive-scorecard" component={RedirectToExecutiveDashboard} />

@@ -224,6 +224,29 @@ export default function HowItWorks() {
             </div>
           ))}
         </div>
+
+        {/* North Star CTA */}
+        <div className="max-w-3xl mx-auto mt-16 text-center">
+          <div className="bg-gradient-to-r from-poise-teal/10 via-cyan-500/10 to-poise-gold/10 rounded-2xl p-8 border border-poise-teal/30">
+            <Badge className="mb-4 bg-poise-teal/20 text-poise-teal border-poise-teal/30">
+              POISE North Star™
+            </Badge>
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
+              Your Complete Implementation Roadmap
+            </h3>
+            <p className="text-slate-600 dark:text-slate-400 mb-6 max-w-xl mx-auto">
+              Follow our 7-phase journey from discovery to continuous strategic excellence—with detailed milestones, timelines, and success metrics for every step.
+            </p>
+            <Button 
+              onClick={() => setLocation("/north-star")}
+              className="bg-gradient-to-r from-poise-teal to-cyan-500 hover:from-cyan-500 hover:to-poise-teal text-white px-8 py-3 text-lg shadow-lg shadow-poise-teal/30"
+              data-testid="button-north-star"
+            >
+              Launch POISE North Star™
+              <ArrowRight className="h-5 w-5 ml-2" />
+            </Button>
+          </div>
+        </div>
       </div>
 
       {/* Differentiators Section */}

@@ -53,6 +53,7 @@ import {
   FileText
 } from 'lucide-react';
 import PoiseLogo from '@/components/PoiseLogo';
+import JourneyNavigator from '@/components/JourneyNavigator';
 
 const phaseIcons: Record<string, any> = {
   ClipboardList,
@@ -1387,6 +1388,9 @@ export default function MissionControl() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Customer Journey Navigator */}
+          <JourneyNavigator variant="card" />
 
           {/* Executive Tools - Surfaced from Homepage */}
           <Card className="border-2 border-poise-gold/30 bg-gradient-to-br from-amber-50/50 to-white dark:from-poise-navy/50 dark:to-slate-900">
