@@ -380,6 +380,14 @@ export default function StandardNav() {
                   <Zap className="h-4 w-4 text-pink-400" />
                   Sandbox Demo
                 </button>
+                <button
+                  onClick={() => navigateTo("/live-demo")}
+                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg flex items-center gap-2 col-span-2"
+                  data-testid="nav-mobile-live-demo"
+                >
+                  <Play className="h-4 w-4 text-blue-400" />
+                  One-Click Live Demo
+                </button>
               </div>
               
               {/* Divider */}
