@@ -485,7 +485,7 @@ function InvestorPresentation() {
             >
               {slide.id === 'title' && (
                 <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center mb-8 mx-auto shadow-2xl">
-                  <span className="text-6xl font-bold text-white">M</span>
+                  <span className="text-5xl font-bold text-white">POISE</span>
                 </div>
               )}
               <h1 className="text-6xl md:text-8xl font-bold text-white mb-6">{slide.title}</h1>
@@ -665,7 +665,7 @@ function InvestorPresentation() {
               className="flex items-center gap-4 mb-4"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center">
-                <span className="text-3xl font-bold text-white">M</span>
+                <span className="text-2xl font-bold text-white">POISE</span>
               </div>
               <h2 className="text-5xl font-bold text-white">{slide.title}</h2>
             </motion.div>

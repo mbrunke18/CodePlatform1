@@ -291,7 +291,7 @@ export default function ScenarioGallery() {
                           How It Works: Human Preparation + AI Intelligence
                         </h3>
                         <p className="text-slate-700 dark:text-slate-300 mb-4">
-                          Each playbook demonstrates the M partnership model: <strong>You and your team prepare the playbook</strong> (define triggers, map stakeholders, sequence tasks). <strong>AI monitors 24/7</strong> (watches signals, detects patterns, triggers alerts). <strong>You decide and execute</strong> (activate your plan, coordinate your team). <strong>AI learns</strong> (captures outcomes, improves recommendations).
+                          Each playbook demonstrates the POISE partnership model: <strong>You and your team prepare the playbook</strong> (define triggers, map stakeholders, sequence tasks). <strong>AI monitors 24/7</strong> (watches signals, detects patterns, triggers alerts). <strong>You decide and execute</strong> (activate your plan, coordinate your team). <strong>AI learns</strong> (captures outcomes, improves recommendations).
                         </p>
                         <p className="text-sm text-blue-700 dark:text-blue-400 italic">
                           The platform is only as good as your preparation. Strong inputs → Smarter AI → Better outcomes.
@@ -310,7 +310,7 @@ export default function ScenarioGallery() {
                       Ready to Operationalize Your Playbooks?
                     </h3>
                     <p className="text-lg text-slate-700 dark:text-slate-300 mb-6 max-w-2xl mx-auto">
-                      Join M's Q1 2025 pilot program and transform your strategic execution from 72-hour coordination to 12-minute response. Limited to 10 Fortune 1000 companies.
+                      Join POISE's Q1 2025 pilot program and transform your strategic execution from 72-hour coordination to 12-minute response. Limited to 10 Fortune 1000 companies.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
                       <Button 

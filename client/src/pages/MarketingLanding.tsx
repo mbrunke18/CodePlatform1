@@ -69,7 +69,7 @@ export default function MarketingLanding() {
               </div>
               <p className="text-xl md:text-2xl text-yellow-200 font-bold">
                 By then, you'll have lost market share.<br />
-                <span className="text-white">Unless you have M.</span>
+                <span className="text-white">Unless you have POISE.</span>
               </p>
             </div>
           </div>

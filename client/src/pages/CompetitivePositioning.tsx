@@ -819,9 +819,9 @@ export default function CompetitivePositioning() {
                       <th className="text-center p-3 bg-blue-50 dark:bg-blue-900/20">
                         <div className="flex flex-col items-center">
                           <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mb-1">
-                            <span className="text-white font-bold text-xs">M</span>
+                            <span className="text-white font-bold text-[8px]">P</span>
                           </div>
-                          <span className="text-xs font-bold text-blue-600 dark:text-blue-400">M</span>
+                          <span className="text-xs font-bold text-blue-600 dark:text-blue-400">POISE</span>
                         </div>
                       </th>
                     </tr>

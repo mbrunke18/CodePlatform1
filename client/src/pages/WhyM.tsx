@@ -751,7 +751,7 @@ export default function WhyM() {
                 </div>
                 <div className="text-center p-4 bg-primary/10 rounded-lg border-2 border-primary/30">
                   <div className="text-3xl font-bold text-primary mb-2">$5B+</div>
-                  <p className="font-medium text-foreground">M</p>
+                  <p className="font-medium text-foreground">POISE</p>
                   <p className="text-sm text-muted-foreground">Creating SEOS</p>
                 </div>
               </div>
@@ -769,10 +769,10 @@ export default function WhyM() {
               Research Foundation
             </Badge>
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              The Evidence Behind M
+              The Evidence Behind POISE
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Independent research validates every principle M is built on.
+              Independent research validates every principle POISE is built on.
             </p>
           </div>
 

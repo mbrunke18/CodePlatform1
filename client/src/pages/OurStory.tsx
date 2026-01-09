@@ -387,7 +387,7 @@ export default function OurStory() {
               </span>
             </h2>
             <p className="text-xl text-slate-300 mb-10">
-              Replace reactive scrambles with coordinated precision. See how M transforms 
+              Replace reactive scrambles with coordinated precision. See how POISE transforms 
               strategic response from 72 hours to 12 minutes.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -418,7 +418,7 @@ export default function OurStory() {
         <div className="container mx-auto px-6 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-              <span className="text-white font-bold text-xl">M</span>
+              <span className="text-white font-bold text-lg">POISE</span>
             </div>
             <span className="font-bold text-lg">Strategic Execution OS</span>
           </div>

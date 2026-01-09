@@ -339,10 +339,10 @@ export default function NewUserJourney() {
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                <span className="text-white font-bold text-lg">M</span>
+                <span className="text-white font-bold text-sm">POISE</span>
               </div>
               <div>
-                <h1 className="text-lg font-semibold text-white">Getting Started with M</h1>
+                <h1 className="text-lg font-semibold text-white">Getting Started with POISE</h1>
                 <p className="text-xs text-slate-400">Your first playbook will be ready in under 15 minutes</p>
               </div>
             </div>
@@ -1308,11 +1308,11 @@ export default function NewUserJourney() {
                 {completeJourneyMutation.isPending ? (
                   <>
                     <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-                    Activating M...
+                    Activating POISE...
                   </>
                 ) : (
                   <>
-                    Activate M
+                    Activate POISE
                     <Zap className="h-4 w-4 ml-2" />
                   </>
                 )}

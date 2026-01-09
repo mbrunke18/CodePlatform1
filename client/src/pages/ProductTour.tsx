@@ -326,7 +326,7 @@ function ProductTour() {
           }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <span className="text-6xl font-bold text-white">M</span>
+          <span className="text-5xl font-bold text-white">POISE</span>
         </motion.div>
         <div className="flex items-center justify-center gap-8 mt-8">
           <motion.div 
@@ -539,7 +539,7 @@ function ProductTour() {
             <p className="text-slate-400 text-sm">Anaplan</p>
           </motion.div>
           <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="text-center p-3 bg-gradient-to-r from-blue-600 to-teal-500 rounded-lg">
-            <p className="text-white font-bold text-sm">M</p>
+            <p className="text-white font-bold text-sm">POISE</p>
           </motion.div>
           
           {[
@@ -580,7 +580,7 @@ function ProductTour() {
         <motion.div 
           className="w-24 h-24 mx-auto mb-8 bg-gradient-to-br from-blue-500 to-teal-500 rounded-2xl flex items-center justify-center"
         >
-          <span className="text-5xl font-bold text-white">M</span>
+          <span className="text-4xl font-bold text-white">POISE</span>
         </motion.div>
         <div className="space-y-6">
           <motion.div

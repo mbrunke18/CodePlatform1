@@ -295,7 +295,7 @@ export default function InvestorResources() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">Competitive Differentiation</h2>
             <p className="text-muted-foreground">
-              M owns the category between strategic preparation and operational execution
+              POISE owns the category between strategic preparation and operational execution
             </p>
           </div>
 
@@ -308,7 +308,7 @@ export default function InvestorResources() {
                       <th className="text-left py-4 px-6 font-semibold">Capability</th>
                       <th className="text-center py-4 px-4 font-semibold">Crisis Tools</th>
                       <th className="text-center py-4 px-4 font-semibold">PM Tools</th>
-                      <th className="text-center py-4 px-4 font-semibold text-primary">M</th>
+                      <th className="text-center py-4 px-4 font-semibold text-primary">POISE</th>
                     </tr>
                   </thead>
                   <tbody className="text-muted-foreground">

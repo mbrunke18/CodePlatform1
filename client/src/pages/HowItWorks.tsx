@@ -69,7 +69,7 @@ export default function HowItWorks() {
       borderColor: "border-emerald-500",
       bgLight: "bg-emerald-50 dark:bg-emerald-950/30",
       textColor: "text-emerald-600 dark:text-emerald-400",
-      description: "When triggers fire, M orchestrates your entire response—stakeholders, resources, and communications—in minutes, not weeks.",
+      description: "When triggers fire, POISE orchestrates your entire response—stakeholders, resources, and communications—in minutes, not weeks.",
       capabilities: [
         "Automatic stakeholder notification and task assignment",
         "Pre-approved budget release for rapid resource deployment",
@@ -103,7 +103,7 @@ export default function HowItWorks() {
     {
       icon: Clock,
       title: "12-Minute Execution",
-      description: "Industry average: 6-8 weeks. M delivers coordinated response in 12 minutes."
+      description: "Industry average: 6-8 weeks. POISE delivers coordinated response in 12 minutes."
     },
     {
       icon: Brain,
@@ -289,7 +289,7 @@ export default function HowItWorks() {
         <div className="container mx-auto px-6 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-              <span className="text-white font-bold text-xl">M</span>
+              <span className="text-white font-bold text-lg">POISE</span>
             </div>
             <span className="font-bold text-lg">Strategic Execution OS</span>
           </div>
