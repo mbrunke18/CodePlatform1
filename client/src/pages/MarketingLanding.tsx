@@ -55,7 +55,8 @@ export default function MarketingLanding() {
             <img 
               src={poiseLogoPath} 
               alt="POISE - Composure in every decision" 
-              className="h-14 md:h-16 w-auto object-contain mx-auto mb-6"
+              className="h-16 sm:h-20 lg:h-24 w-auto object-contain mx-auto mb-6"
+              style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.55))' }}
             />
           </div>
           {/* High-Stakes Competitive Scenario */}

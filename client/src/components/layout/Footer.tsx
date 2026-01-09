@@ -83,7 +83,8 @@ export default function Footer() {
               <img 
                 src={poiseLogoPath} 
                 alt="POISE - Composure in every decision" 
-                className="h-12 w-auto object-contain"
+                className="h-10 sm:h-12 lg:h-14 w-auto max-w-[220px] object-contain"
+                style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.45))' }}
               />
             </div>
             <div className="flex items-center gap-3">

@@ -50,7 +50,8 @@ export default function StandardNav() {
             <img 
               src={poiseLogoPath} 
               alt="POISE - Composure in every decision" 
-              className="h-10 w-auto object-contain"
+              className="h-8 sm:h-9 md:h-10 w-auto object-contain"
+              style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.35))' }}
             />
           </div>
 

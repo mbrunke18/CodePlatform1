@@ -53,7 +53,8 @@ export default function WhyM() {
               <img 
                 src={poiseLogoPath} 
                 alt="POISE - Composure in every decision" 
-                className="h-14 w-auto object-contain mb-6"
+                className="h-12 sm:h-14 md:h-16 w-auto max-w-[280px] object-contain mb-6"
+                style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.55))' }}
               />
               <Badge className="mb-6 bg-primary text-white border-0">
                 <Lightbulb className="w-4 h-4 mr-2" />

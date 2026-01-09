@@ -75,7 +75,8 @@ export default function InvestorLanding() {
               <img 
                 src={poiseLogoPath} 
                 alt="POISE - Composure in every decision" 
-                className="h-16 md:h-20 w-auto object-contain mx-auto mb-6"
+                className="h-16 sm:h-20 lg:h-24 w-auto object-contain mx-auto mb-6"
+                style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.55))' }}
               />
             </div>
             <Badge className="mb-6 bg-blue-600 text-white border-0 text-sm px-4 py-1.5" data-testid="badge-category">
