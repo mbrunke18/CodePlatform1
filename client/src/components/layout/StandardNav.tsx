@@ -37,7 +37,7 @@ export default function StandardNav() {
   };
 
   return (
-    <nav className="border-b border-slate-800 bg-slate-950 sticky top-0 z-50">
+    <nav className="border-b border-poise-navy/50 bg-poise-navy sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
           
@@ -47,7 +47,7 @@ export default function StandardNav() {
             onClick={() => navigateTo('/')}
             data-testid="nav-logo"
           >
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-slate-800/80 to-slate-900/60 border border-slate-700/50">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-poise-navy/80 to-poise-dark-gray/60 border border-poise-gold/30">
               <img 
                 src={poiseLogoPath} 
                 alt="POISE - Composure in every decision" 
@@ -65,10 +65,10 @@ export default function StandardNav() {
                 onClick={() => navigateTo(link.path)}
                 className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                   (link as any).featured
-                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700'
+                    ? 'bg-gradient-to-r from-poise-gold to-amber-500 text-poise-navy font-semibold hover:from-amber-500 hover:to-poise-gold shadow-lg shadow-poise-gold/20'
                     : isActivePath(link.path) 
-                      ? 'text-white bg-slate-800' 
-                      : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+                      ? 'text-white bg-poise-teal/20 border border-poise-teal/40' 
+                      : 'text-slate-300 hover:text-white hover:bg-poise-teal/10'
                 }`}
                 data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
               >
@@ -124,7 +124,7 @@ export default function StandardNav() {
           <div className="hidden md:flex items-center gap-3">
             <Button 
               onClick={() => navigateTo("/pilot-demo")}
-              className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white font-semibold h-9 px-4"
+              className="bg-gradient-to-r from-poise-teal to-cyan-600 hover:from-cyan-600 hover:to-poise-teal text-white font-semibold h-9 px-4 shadow-lg shadow-poise-teal/20"
               data-testid="nav-try-demo"
             >
               <Play className="h-4 w-4 mr-1.5" />
@@ -133,7 +133,7 @@ export default function StandardNav() {
             <Button 
               onClick={() => navigateTo("/pilot-program")}
               variant="outline"
-              className="border-blue-500/50 text-blue-400 hover:bg-blue-950 hover:text-blue-300 h-9 px-4"
+              className="border-poise-gold/50 text-poise-gold hover:bg-poise-gold/10 hover:text-amber-300 h-9 px-4"
               data-testid="nav-start-pilot"
             >
               Start Pilot

@@ -272,10 +272,12 @@ export default function CommandCenter() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <Badge className="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800 text-xs font-semibold">
+                <Badge className="bg-poise-teal/20 text-poise-teal dark:bg-poise-teal/30 dark:text-poise-teal border border-poise-teal/40 text-xs font-semibold">
                   POISE Compass™
                 </Badge>
-                <span className="text-xs text-slate-500 dark:text-slate-400">EXECUTE Phase</span>
+                <Badge variant="outline" className="border-poise-gold/40 text-poise-gold text-xs">
+                  EXECUTE Phase
+                </Badge>
               </div>
               <div className="flex items-center gap-3 mb-2">
                 <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white">

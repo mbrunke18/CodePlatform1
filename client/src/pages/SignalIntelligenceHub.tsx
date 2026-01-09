@@ -1192,10 +1192,12 @@ export default function SignalIntelligenceHub() {
               )}
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 border-blue-200 dark:border-blue-800 text-xs font-semibold">
+                  <Badge className="bg-poise-teal/20 text-poise-teal dark:bg-poise-teal/30 dark:text-poise-teal border border-poise-teal/40 text-xs font-semibold">
                     POISE Signal™
                   </Badge>
-                  <span className="text-xs text-slate-500 dark:text-slate-400">DETECT Phase</span>
+                  <Badge variant="outline" className="border-poise-gold/40 text-poise-gold text-xs">
+                    DETECT Phase
+                  </Badge>
                 </div>
                 <h1 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
                   <Radio className="h-6 w-6 text-blue-500" />

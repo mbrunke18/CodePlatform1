@@ -131,14 +131,14 @@ export default function HowItWorks() {
       <StandardNav />
       
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,92,246,0.1),transparent_50%)]" />
+      <div className="relative overflow-hidden bg-gradient-to-br from-poise-navy via-poise-dark-gray to-poise-navy text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(212,175,55,0.08),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(0,168,168,0.08),transparent_50%)]" />
         
         <div className="container mx-auto px-6 py-20 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-blue-500/20 text-blue-300 border-blue-500/30 text-sm px-4 py-2">
-              The 4-Phase Methodology
+            <Badge className="mb-6 bg-poise-gold/20 text-poise-gold border-poise-gold/40 text-sm px-4 py-2">
+              The IDEA Framework™
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               How POISE Works

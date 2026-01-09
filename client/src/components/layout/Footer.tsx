@@ -74,13 +74,13 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-slate-950 border-t border-slate-800">
+    <footer className="bg-poise-navy border-t border-poise-gold/20">
       {/* 4-Phase Methodology Header */}
-      <div className="border-b border-slate-800 bg-slate-900/50">
+      <div className="border-b border-poise-gold/10 bg-poise-dark-gray/50">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              <div className="px-4 py-2 rounded-xl bg-gradient-to-r from-slate-800/90 to-slate-900/70 border border-slate-700/60">
+              <div className="px-4 py-2 rounded-xl bg-gradient-to-r from-poise-navy/90 to-poise-dark-gray/70 border border-poise-gold/30">
                 <img 
                   src={poiseLogoPath} 
                   alt="POISE - Composure in every decision" 
@@ -90,13 +90,13 @@ export default function Footer() {
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-xs font-medium px-3 py-1 rounded-full bg-violet-500/20 text-violet-400">IDENTIFY</span>
-              <span className="text-slate-600">→</span>
-              <span className="text-xs font-medium px-3 py-1 rounded-full bg-blue-500/20 text-blue-400">DETECT</span>
-              <span className="text-slate-600">→</span>
-              <span className="text-xs font-medium px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400">EXECUTE</span>
-              <span className="text-slate-600">→</span>
-              <span className="text-xs font-medium px-3 py-1 rounded-full bg-amber-500/20 text-amber-400">ADVANCE</span>
+              <span className="text-xs font-medium px-3 py-1 rounded-full bg-poise-gold/20 text-poise-gold border border-poise-gold/30">IDENTIFY</span>
+              <span className="text-poise-gold/40">→</span>
+              <span className="text-xs font-medium px-3 py-1 rounded-full bg-poise-teal/20 text-poise-teal border border-poise-teal/30">DETECT</span>
+              <span className="text-poise-gold/40">→</span>
+              <span className="text-xs font-medium px-3 py-1 rounded-full bg-poise-teal/20 text-poise-teal border border-poise-teal/30">EXECUTE</span>
+              <span className="text-poise-gold/40">→</span>
+              <span className="text-xs font-medium px-3 py-1 rounded-full bg-poise-gold/20 text-poise-gold border border-poise-gold/30">ADVANCE</span>
             </div>
           </div>
         </div>
@@ -128,54 +128,54 @@ export default function Footer() {
       </div>
 
       {/* Key Stats Bar */}
-      <div className="border-t border-slate-800 bg-slate-900/30">
+      <div className="border-t border-poise-gold/10 bg-poise-dark-gray/30">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 text-center">
             <div>
-              <div className="text-xl font-bold text-white">166</div>
-              <div className="text-xs text-slate-500">Strategic Playbooks</div>
+              <div className="text-xl font-bold text-poise-gold">166</div>
+              <div className="text-xs text-slate-400">Strategic Playbooks</div>
             </div>
             <div>
               <div className="text-xl font-bold text-white">9</div>
-              <div className="text-xs text-slate-500">Executive Domains</div>
+              <div className="text-xs text-slate-400">Executive Domains</div>
             </div>
             <div>
-              <div className="text-xl font-bold text-emerald-400">15 min</div>
-              <div className="text-xs text-slate-500">Decision Time</div>
+              <div className="text-xl font-bold text-poise-teal">12 min</div>
+              <div className="text-xs text-slate-400">Decision Time</div>
             </div>
             <div>
               <div className="text-xl font-bold text-white">24/7</div>
-              <div className="text-xs text-slate-500">AI Monitoring</div>
+              <div className="text-xs text-slate-400">AI Monitoring</div>
             </div>
             <div>
               <div className="text-xl font-bold text-white">16</div>
-              <div className="text-xs text-slate-500">Signal Categories</div>
+              <div className="text-xs text-slate-400">Signal Categories</div>
             </div>
             <div>
               <div className="text-xl font-bold text-white">92</div>
-              <div className="text-xs text-slate-500">Data Points</div>
+              <div className="text-xs text-slate-400">Data Points</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* That's the IDEA Tagline */}
-      <div className="border-t border-slate-800 bg-gradient-to-r from-slate-900 via-blue-950/30 to-slate-900">
+      <div className="border-t border-poise-gold/10 bg-gradient-to-r from-poise-navy via-poise-dark-gray/50 to-poise-navy">
         <div className="max-w-7xl mx-auto px-6 py-8 text-center">
-          <p className="text-2xl font-bold text-white mb-2" data-testid="footer-idea-tagline">
+          <p className="text-2xl font-bold text-poise-gold mb-2" data-testid="footer-idea-tagline">
             That's the IDEA.
           </p>
-          <p className="text-lg text-slate-400 italic mb-4">
+          <p className="text-lg text-slate-300 italic mb-4">
             "Comfortable and confident that we are prepared to execute. No matter the situation."
           </p>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-poise-teal">
             Success Favors the Prepared
           </p>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-slate-800">
+      <div className="border-t border-poise-gold/10">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">

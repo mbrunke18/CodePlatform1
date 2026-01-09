@@ -404,11 +404,19 @@ export default function MissionControl() {
           {/* Header */}
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div>
+              <div className="flex items-center gap-2 mb-2">
+                <Badge className="bg-poise-gold/20 text-poise-gold dark:bg-poise-gold/30 dark:text-poise-gold border border-poise-gold/40 text-xs font-semibold">
+                  POISE One™
+                </Badge>
+                <Badge variant="outline" className="border-poise-teal/40 text-poise-teal text-xs">
+                  Executive Overview
+                </Badge>
+              </div>
               <h1 className="text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-                <div className="p-1 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600">
+                <div className="p-1 rounded-xl bg-gradient-to-br from-poise-gold/80 to-poise-teal">
                   <PoiseLogo width={40} variant="icon-only" />
                 </div>
-                POISE One™
+                Strategic Command Center
               </h1>
               <p className="text-slate-500 dark:text-slate-400 mt-1">
                 Single-pane executive overview of strategic readiness and execution status
