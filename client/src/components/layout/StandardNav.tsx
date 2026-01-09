@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Play, Menu, X, LogIn, LogOut, User, ChevronDown, Brain, Target, Lightbulb } from "lucide-react";
+import { Play, Menu, X, LogIn, LogOut, User, ChevronDown, Brain, Target, Lightbulb, BarChart3, Layers, TrendingUp, Briefcase, Zap, BookOpen, GraduationCap } from "lucide-react";
 import poiseLogoPath from "@assets/poise-logo-official.png";
 import { useLocation } from "wouter";
 import { useAuth } from "@/hooks/useAuth";
@@ -87,10 +87,34 @@ export default function StandardNav() {
                   <ChevronDown className="h-3 w-3" />
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-56">
+              <DropdownMenuContent align="start" className="w-64">
+                {/* Executive Intelligence - HIGH VALUE */}
+                <DropdownMenuLabel className="flex items-center gap-2 text-poise-gold">
+                  <BarChart3 className="h-3 w-3" />
+                  Executive Intelligence
+                </DropdownMenuLabel>
+                <DropdownMenuItem onClick={() => navigateTo("/executive-dashboard")} data-testid="nav-executive-dashboard">
+                  <Briefcase className="h-4 w-4 mr-2 text-poise-gold" />
+                  Executive Dashboard
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigateTo("/operating-model")} data-testid="nav-operating-model">
+                  <Layers className="h-4 w-4 mr-2 text-indigo-400" />
+                  Operating Model Alignment
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigateTo("/roi-calculator")} data-testid="nav-roi-calculator">
+                  <TrendingUp className="h-4 w-4 mr-2 text-emerald-400" />
+                  ROI Calculator
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigateTo("/board-export")} data-testid="nav-board-export">
+                  <Briefcase className="h-4 w-4 mr-2 text-purple-400" />
+                  Board-Ready Export
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                
+                {/* Predictive Tools */}
                 <DropdownMenuLabel className="flex items-center gap-2 text-blue-400">
                   <Brain className="h-3 w-3" />
-                  Predictive Intelligence
+                  Predictive Tools
                 </DropdownMenuLabel>
                 <DropdownMenuItem onClick={() => navigateTo("/triggers-management")} data-testid="nav-trigger-forecasting">
                   <Target className="h-4 w-4 mr-2 text-purple-400" />
@@ -101,11 +125,37 @@ export default function StandardNav() {
                   What-If Analyzer
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => navigateTo("/competitive-positioning")} data-testid="nav-competitive-positioning">
-                  Why POISE Wins (vs. Competitors)
+                
+                {/* Interactive Demos */}
+                <DropdownMenuLabel className="flex items-center gap-2 text-poise-teal">
+                  <Zap className="h-3 w-3" />
+                  Interactive Demos
+                </DropdownMenuLabel>
+                <DropdownMenuItem onClick={() => navigateTo("/executive-simulation")} data-testid="nav-executive-simulation">
+                  <Play className="h-4 w-4 mr-2 text-poise-teal" />
+                  Executive Simulation
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/pilot-program")} data-testid="nav-pilot-program">
-                  Pilot Program
+                <DropdownMenuItem onClick={() => navigateTo("/sandbox-demo")} data-testid="nav-sandbox-demo">
+                  <Zap className="h-4 w-4 mr-2 text-pink-400" />
+                  Interactive Sandbox
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigateTo("/live-demo")} data-testid="nav-live-demo">
+                  <Play className="h-4 w-4 mr-2 text-blue-400" />
+                  One-Click Live Demo
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                
+                {/* Learn & About */}
+                <DropdownMenuLabel className="flex items-center gap-2 text-slate-400">
+                  <GraduationCap className="h-3 w-3" />
+                  Learn & About
+                </DropdownMenuLabel>
+                <DropdownMenuItem onClick={() => navigateTo("/how-it-works")} data-testid="nav-how-it-works">
+                  <BookOpen className="h-4 w-4 mr-2 text-slate-400" />
+                  How It Works
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigateTo("/competitive-positioning")} data-testid="nav-competitive-positioning">
+                  Why POISE Wins
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => navigateTo("/research")} data-testid="nav-research">
                   Research
@@ -238,10 +288,53 @@ export default function StandardNav() {
               {/* Divider */}
               <div className="border-t border-slate-800 my-2" />
               
-              {/* Predictive Intelligence Links */}
+              {/* Executive Intelligence - HIGH VALUE */}
+              <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide flex items-center gap-2">
+                <BarChart3 className="h-3 w-3" />
+                Executive Intelligence
+              </p>
+              <div className="grid grid-cols-2 gap-1">
+                <button
+                  onClick={() => navigateTo("/executive-dashboard")}
+                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg flex items-center gap-2"
+                  data-testid="nav-mobile-executive-dashboard"
+                >
+                  <Briefcase className="h-4 w-4 text-poise-gold" />
+                  Executive Dashboard
+                </button>
+                <button
+                  onClick={() => navigateTo("/operating-model")}
+                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg flex items-center gap-2"
+                  data-testid="nav-mobile-operating-model"
+                >
+                  <Layers className="h-4 w-4 text-indigo-400" />
+                  Operating Model
+                </button>
+                <button
+                  onClick={() => navigateTo("/roi-calculator")}
+                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg flex items-center gap-2"
+                  data-testid="nav-mobile-roi-calculator"
+                >
+                  <TrendingUp className="h-4 w-4 text-emerald-400" />
+                  ROI Calculator
+                </button>
+                <button
+                  onClick={() => navigateTo("/board-export")}
+                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg flex items-center gap-2"
+                  data-testid="nav-mobile-board-export"
+                >
+                  <Briefcase className="h-4 w-4 text-purple-400" />
+                  Board Export
+                </button>
+              </div>
+              
+              {/* Divider */}
+              <div className="border-t border-slate-800 my-2" />
+              
+              {/* Predictive Tools */}
               <p className="px-4 py-2 text-xs text-blue-400 uppercase tracking-wide flex items-center gap-2">
                 <Brain className="h-3 w-3" />
-                Predictive Intelligence
+                Predictive Tools
               </p>
               <div className="grid grid-cols-2 gap-1">
                 <button
@@ -265,15 +358,52 @@ export default function StandardNav() {
               {/* Divider */}
               <div className="border-t border-slate-800 my-2" />
               
-              {/* More Links - Collapsed section */}
-              <p className="px-4 py-2 text-xs text-slate-500 uppercase tracking-wide">More</p>
+              {/* Interactive Demos */}
+              <p className="px-4 py-2 text-xs text-poise-teal uppercase tracking-wide flex items-center gap-2">
+                <Zap className="h-3 w-3" />
+                Interactive Demos
+              </p>
               <div className="grid grid-cols-2 gap-1">
                 <button
+                  onClick={() => navigateTo("/executive-simulation")}
+                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg flex items-center gap-2"
+                  data-testid="nav-mobile-exec-simulation"
+                >
+                  <Play className="h-4 w-4 text-poise-teal" />
+                  Executive Simulation
+                </button>
+                <button
+                  onClick={() => navigateTo("/sandbox-demo")}
+                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg flex items-center gap-2"
+                  data-testid="nav-mobile-sandbox"
+                >
+                  <Zap className="h-4 w-4 text-pink-400" />
+                  Sandbox Demo
+                </button>
+              </div>
+              
+              {/* Divider */}
+              <div className="border-t border-slate-800 my-2" />
+              
+              {/* Learn & About */}
+              <p className="px-4 py-2 text-xs text-slate-500 uppercase tracking-wide flex items-center gap-2">
+                <GraduationCap className="h-3 w-3" />
+                Learn & About
+              </p>
+              <div className="grid grid-cols-2 gap-1">
+                <button
+                  onClick={() => navigateTo("/how-it-works")}
+                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
+                  data-testid="nav-mobile-how-it-works"
+                >
+                  How It Works
+                </button>
+                <button
                   onClick={() => navigateTo("/competitive-positioning")}
-                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg col-span-2"
+                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
                   data-testid="nav-mobile-competitive-positioning"
                 >
-                  Why POISE Wins (vs. Competitors)
+                  Why POISE Wins
                 </button>
                 <button
                   onClick={() => navigateTo("/research")}
@@ -291,7 +421,7 @@ export default function StandardNav() {
                 </button>
                 <button
                   onClick={() => navigateTo("/contact")}
-                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
+                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg col-span-2"
                   data-testid="nav-mobile-contact"
                 >
                   Contact

@@ -47,7 +47,10 @@ import {
   Settings,
   ExternalLink,
   Layers,
-  X
+  X,
+  Briefcase,
+  Calculator,
+  FileText
 } from 'lucide-react';
 import PoiseLogo from '@/components/PoiseLogo';
 
@@ -1381,6 +1384,105 @@ export default function MissionControl() {
                     </Button>
                   </Link>
                 </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Executive Tools - Surfaced from Homepage */}
+          <Card className="border-2 border-poise-gold/30 bg-gradient-to-br from-amber-50/50 to-white dark:from-poise-navy/50 dark:to-slate-900">
+            <CardHeader className="pb-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-gradient-to-br from-poise-gold to-amber-500">
+                    <Briefcase className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Executive Tools</CardTitle>
+                    <CardDescription>Strategic analysis, reporting, and decision support</CardDescription>
+                  </div>
+                </div>
+                <Badge className="bg-poise-gold/20 text-poise-gold border-poise-gold/30">
+                  High Value
+                </Badge>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {/* Executive Dashboard */}
+                <Link href="/executive-dashboard">
+                  <div className="group p-4 rounded-xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 hover:border-poise-gold dark:hover:border-poise-gold transition-all cursor-pointer hover:shadow-lg">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="p-2 rounded-lg bg-poise-gold/20">
+                        <BarChart3 className="h-5 w-5 text-poise-gold" />
+                      </div>
+                      <h4 className="font-semibold text-slate-900 dark:text-white group-hover:text-poise-gold transition-colors">Executive Dashboard</h4>
+                    </div>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                      Strategic readiness metrics, decision velocity, and organizational health at a glance.
+                    </p>
+                    <div className="flex items-center text-xs text-poise-gold opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span>Open Dashboard</span>
+                      <ChevronRight className="h-3 w-3 ml-1" />
+                    </div>
+                  </div>
+                </Link>
+
+                {/* Operating Model Alignment */}
+                <Link href="/operating-model">
+                  <div className="group p-4 rounded-xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 hover:border-indigo-500 dark:hover:border-indigo-400 transition-all cursor-pointer hover:shadow-lg">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30">
+                        <Layers className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
+                      </div>
+                      <h4 className="font-semibold text-slate-900 dark:text-white group-hover:text-indigo-500 transition-colors">Operating Model</h4>
+                    </div>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                      McKinsey 12-element framework alignment and personalized playbook recommendations.
+                    </p>
+                    <div className="flex items-center text-xs text-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span>Start Assessment</span>
+                      <ChevronRight className="h-3 w-3 ml-1" />
+                    </div>
+                  </div>
+                </Link>
+
+                {/* ROI Calculator */}
+                <Link href="/roi-calculator">
+                  <div className="group p-4 rounded-xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-400 transition-all cursor-pointer hover:shadow-lg">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/30">
+                        <Calculator className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                      </div>
+                      <h4 className="font-semibold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">ROI Calculator</h4>
+                    </div>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                      Personalized time and cost savings projections based on your organization.
+                    </p>
+                    <div className="flex items-center text-xs text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span>Calculate ROI</span>
+                      <ChevronRight className="h-3 w-3 ml-1" />
+                    </div>
+                  </div>
+                </Link>
+
+                {/* Board Export */}
+                <Link href="/board-export">
+                  <div className="group p-4 rounded-xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 hover:border-purple-500 dark:hover:border-purple-400 transition-all cursor-pointer hover:shadow-lg">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30">
+                        <FileText className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                      </div>
+                      <h4 className="font-semibold text-slate-900 dark:text-white group-hover:text-purple-500 transition-colors">Board Export</h4>
+                    </div>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                      Generate executive briefings with active scenarios and financial summaries.
+                    </p>
+                    <div className="flex items-center text-xs text-purple-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span>Generate Report</span>
+                      <ChevronRight className="h-3 w-3 ml-1" />
+                    </div>
+                  </div>
+                </Link>
               </div>
             </CardContent>
           </Card>
