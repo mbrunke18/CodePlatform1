@@ -27,8 +27,8 @@ export default function VideoLanding() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "M - Strategic Execution Operating System | 72 Hours → 12 Minutes",
-      description: "Watch how M transforms strategic coordination from 72 hours to 12 minutes. Pre-staged playbooks, coordinated stakeholders, instant activation for Fortune 1000 companies.",
+      title: "POISE - Strategic Execution Operating System | 72 Hours → 12 Minutes",
+      description: "Watch how POISE transforms strategic coordination from 72 hours to 12 minutes. Pre-staged playbooks, coordinated stakeholders, instant activation for Fortune 1000 companies.",
       ogTitle: "POISE - The Speed to Execute",
       ogDescription: "166 playbooks. 12 minutes to coordinated execution. The Strategic Execution Operating System.",
     });
@@ -163,10 +163,10 @@ export default function VideoLanding() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
-              The M Advantage
+              The POISE Advantage
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Why Fortune 1000 Leaders Choose M
+              Why Fortune 1000 Leaders Choose POISE
             </h2>
             <p className="text-slate-400 max-w-2xl mx-auto">
               Transform how your organization responds to the moments that matter

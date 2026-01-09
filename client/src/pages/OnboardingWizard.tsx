@@ -172,14 +172,14 @@ export default function OnboardingWizard() {
     onSuccess: () => {
       toast({
         title: 'Onboarding Complete!',
-        description: 'Your M platform is now configured and ready to use.',
+        description: 'Your POISE platform is now configured and ready to use.',
       });
       setLocation('/dashboard');
     },
     onError: () => {
       toast({
         title: 'Setup Complete',
-        description: 'Your configuration has been saved. Welcome to M!',
+        description: 'Your configuration has been saved. Welcome to POISE!',
       });
       setLocation('/dashboard');
     },

@@ -226,7 +226,7 @@ export default function HowItWorks() {
                 What Makes This Different
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                M isn't just another planning tool. It's a complete operating system for strategic execution.
+                POISE isn't just another planning tool. It's a complete operating system for strategic execution.
               </p>
             </div>
             
@@ -260,7 +260,7 @@ export default function HowItWorks() {
             Ready to See It in Action?
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
-            Watch how M transforms a competitive threat into a coordinated 12-minute response.
+            Watch how POISE transforms a competitive threat into a coordinated 12-minute response.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 

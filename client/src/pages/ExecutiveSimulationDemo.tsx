@@ -359,7 +359,7 @@ export default function ExecutiveSimulationDemo() {
                 Welcome to Your Day as CSO
               </CardTitle>
               <CardDescription className="text-lg text-slate-300">
-                Experience M from the perspective of a Fortune 500 executive
+                Experience POISE from the perspective of a Fortune 500 executive
               </CardDescription>
             </CardHeader>
             
@@ -465,7 +465,7 @@ export default function ExecutiveSimulationDemo() {
                 Response Successfully Coordinated
               </CardTitle>
               <CardDescription className="text-lg text-slate-300">
-                You just experienced the power of M
+                You just experienced the power of POISE
               </CardDescription>
             </CardHeader>
             
@@ -489,7 +489,7 @@ export default function ExecutiveSimulationDemo() {
               </div>
 
               <div className="bg-gradient-to-r from-emerald-900/50 to-green-900/50 rounded-xl p-6 border border-emerald-700/30">
-                <h3 className="text-lg font-semibold text-white mb-4">Traditional vs M Response</h3>
+                <h3 className="text-lg font-semibold text-white mb-4">Traditional vs POISE Response</h3>
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between text-sm mb-1">
@@ -502,7 +502,7 @@ export default function ExecutiveSimulationDemo() {
                   </div>
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <span className="text-slate-400">With M</span>
+                      <span className="text-slate-400">With POISE</span>
                       <span className="text-emerald-400">{formatTime(elapsedTime)}</span>
                     </div>
                     <div className="h-3 bg-slate-700 rounded-full overflow-hidden">
@@ -522,7 +522,7 @@ export default function ExecutiveSimulationDemo() {
                     <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-blue-400 text-xs font-bold">1</span>
                     </div>
-                    <span>M detected competitor acquisition via Reuters and SEC filing monitoring</span>
+                    <span>POISE detected competitor acquisition via Reuters and SEC filing monitoring</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -604,7 +604,7 @@ export default function ExecutiveSimulationDemo() {
                 <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
                   <p className="text-amber-400 font-medium flex items-center gap-2">
                     <Zap className="w-4 h-4" />
-                    M Recommendation: Activate "Competitor M&A Response" playbook immediately
+                    POISE Recommendation: Activate "Competitor M&A Response" playbook immediately
                   </p>
                 </div>
               </CardContent>
@@ -882,7 +882,7 @@ export default function ExecutiveSimulationDemo() {
                   <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4">
                     <p className="text-amber-800 dark:text-amber-200 flex items-center gap-2">
                       <Zap className="w-5 h-5" />
-                      <strong>M Recommendation:</strong> Based on the detected signal, the following playbook is recommended
+                      <strong>POISE Recommendation:</strong> Based on the detected signal, the following playbook is recommended
                     </p>
                   </div>
                   

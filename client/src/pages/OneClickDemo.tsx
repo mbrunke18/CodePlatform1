@@ -215,7 +215,7 @@ export default function OneClickDemo() {
             </Badge>
             
             <h1 className="text-5xl font-bold text-white mb-6">
-              See M in Action
+              See POISE in Action
             </h1>
             
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">

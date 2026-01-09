@@ -89,7 +89,7 @@ const strategyOKRTools = [
     gaps: ['No event-driven activation', 'No playbook library', 'No cross-functional coordination', 'Quarterly not real-time'],
     color: 'bg-cyan-500',
     whenTheyWin: 'Data-driven OKR programs, enterprise goal tracking',
-    trapQuestion: '"Quantive tracks whether you hit goals. M ensures you react to threats before they derail those goals."'
+    trapQuestion: '"Quantive tracks whether you hit goals. POISE ensures you react to threats before they derail those goals."'
   },
   {
     name: 'Perdoo',
@@ -100,7 +100,7 @@ const strategyOKRTools = [
     gaps: ['No execution orchestration', 'No external signals', 'No crisis response', 'No institutional learning'],
     color: 'bg-teal-500',
     whenTheyWin: 'Mid-market OKR adoption, simplicity-first teams',
-    trapQuestion: '"OKRs measure progress. M drives action when that progress is threatened."'
+    trapQuestion: '"OKRs measure progress. POISE drives action when that progress is threatened."'
   }
 ];
 
@@ -125,7 +125,7 @@ const automationTools = [
     gaps: ['No strategic intelligence', 'No enterprise playbooks', 'No stakeholder coordination', 'No decision velocity'],
     color: 'bg-violet-500',
     whenTheyWin: 'Technical teams, complex data workflows',
-    trapQuestion: '"Make connects systems. M coordinates humans with pre-defined strategic responses."'
+    trapQuestion: '"Make connects systems. POISE coordinates humans with pre-defined strategic responses."'
   },
   {
     name: 'Workato',
@@ -152,7 +152,7 @@ const planningModelingTools = [
     whenTheyWin: 'Complex FP&A requirements, multi-dimensional budgeting, supply chain modeling',
     trapQuestion: '"Anaplan helps you model what happens if a competitor enters your market. But when they actually do, can Anaplan mobilize 6 departments with pre-assigned tasks in 12 minutes?"',
     pricing: '$100K-$1M+/year',
-    relationship: 'Complementary - Anaplan models scenarios, M executes the response'
+    relationship: 'Complementary - Anaplan models scenarios, POISE executes the response'
   },
   {
     name: 'Pigment',
@@ -163,9 +163,9 @@ const planningModelingTools = [
     gaps: ['No execution orchestration', 'No signal monitoring', 'No pre-built responses', 'No event-driven activation'],
     color: 'bg-fuchsia-500',
     whenTheyWin: 'Mid-market finance teams, Anaplan alternative seekers',
-    trapQuestion: '"Pigment plans your numbers. M plans your response. When a risk materializes, can Pigment activate your crisis team?"',
+    trapQuestion: '"Pigment plans your numbers. POISE plans your response. When a risk materializes, can Pigment activate your crisis team?"',
     pricing: 'Contact for pricing',
-    relationship: 'Complementary - Planning data can inform M trigger thresholds'
+    relationship: 'Complementary - Planning data can inform POISE trigger thresholds'
   }
 ];
 
@@ -511,7 +511,7 @@ export default function CompetitivePositioning() {
                           </ul>
                         </div>
                         <div>
-                          <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps M Fills</div>
+                          <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps POISE Fills</div>
                           <ul className="space-y-1">
                             {tool.gaps.map((g, i) => (
                               <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
@@ -567,7 +567,7 @@ export default function CompetitivePositioning() {
                             </ul>
                           </div>
                           <div>
-                            <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps M Fills</div>
+                            <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps POISE Fills</div>
                             <ul className="space-y-1">
                               {tool.gaps.map((g, i) => (
                                 <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
@@ -637,7 +637,7 @@ export default function CompetitivePositioning() {
                             </ul>
                           </div>
                           <div>
-                            <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps M Fills</div>
+                            <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps POISE Fills</div>
                             <ul className="space-y-1">
                               {tool.gaps.map((g, i) => (
                                 <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
@@ -648,7 +648,7 @@ export default function CompetitivePositioning() {
                           </div>
                         </div>
                         <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
-                          <div className="text-xs font-semibold text-sky-600 dark:text-sky-400 mb-1">Relationship with M</div>
+                          <div className="text-xs font-semibold text-sky-600 dark:text-sky-400 mb-1">Relationship with POISE</div>
                           <p className="text-xs text-slate-500 dark:text-slate-500">{tool.relationship}</p>
                         </div>
                         <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
@@ -693,7 +693,7 @@ export default function CompetitivePositioning() {
                           </ul>
                         </div>
                         <div>
-                          <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps M Fills</div>
+                          <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps POISE Fills</div>
                           <ul className="space-y-1">
                             {tool.gaps.map((g, i) => (
                               <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
@@ -744,7 +744,7 @@ export default function CompetitivePositioning() {
                           </ul>
                         </div>
                         <div>
-                          <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps M Fills</div>
+                          <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps POISE Fills</div>
                           <ul className="space-y-1">
                             {tool.gaps.map((g, i) => (
                               <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
