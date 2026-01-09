@@ -27,7 +27,7 @@ export default function FootballMethodologySection() {
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-methodology-description">
               Since the forward pass was legalized in 1906, football has continuously 
-              refined the art of rapid coordination under pressure. M brings that 
+              refined the art of rapid coordination under pressure. POISE brings that 
               battle-tested system to strategic execution.
             </p>
           </div>

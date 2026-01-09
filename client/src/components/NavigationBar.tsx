@@ -40,7 +40,7 @@ export default function NavigationBar() {
   const productLinks = [
     { title: "Executive Dashboard", href: "/executive-dashboard", description: "Unified command center: FRI, velocity, preparedness", featured: true },
     { title: "Playbook Library", href: "/playbook-library", description: "166 pre-built strategic playbooks" },
-    { title: "Live Demos", href: "/demo-hub", description: "Watch M in action" },
+    { title: "Live Demos", href: "/demo-hub", description: "Watch POISE in action" },
     { title: "Pricing", href: "/calculator", description: "ROI calculator" },
   ];
 
@@ -89,10 +89,10 @@ export default function NavigationBar() {
             data-testid="nav-logo"
           >
             <div className="w-10 h-10 bg-slate-900 dark:bg-slate-100 rounded-lg flex items-center justify-center">
-              <span className="text-white dark:text-slate-900 font-bold text-xl">M</span>
+              <span className="text-white dark:text-slate-900 font-bold text-xl">P</span>
             </div>
             <div>
-              <span className="text-xl font-bold text-slate-900 dark:text-white">M</span>
+              <span className="text-xl font-bold text-slate-900 dark:text-white">POISE</span>
               <span className="text-xs block text-slate-600 dark:text-slate-400">Strategic Execution OS</span>
             </div>
           </div>

@@ -317,7 +317,7 @@ export default function InvestorDemo() {
               Investor Demo — Market Creation Story
             </Badge>
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-2" data-testid="heading-investor-demo">
-              M: The Strategic Execution Operating System
+              POISE: The Strategic Execution Operating System
             </h1>
             <p className="text-lg text-slate-400">
               First mover in $15B+ SEOS category. 166 playbooks. 12-minute execution.

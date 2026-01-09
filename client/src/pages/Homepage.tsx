@@ -226,7 +226,7 @@ export default function Homepage() {
             </p>
           </div>
 
-          {/* THE TURN - M as the New Operating System */}
+          {/* THE TURN - POISE as the New Operating System */}
           <div className="bg-gradient-to-r from-slate-800/50 via-slate-800/80 to-slate-800/50 rounded-2xl border border-slate-700/50 p-8 mb-10 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 mb-4">
@@ -391,7 +391,7 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* M at a Glance - Executive Summary */}
+      {/* POISE at a Glance - Executive Summary */}
       <section className="py-16 bg-white dark:bg-slate-950" data-testid="executive-summary">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-10">
@@ -402,12 +402,12 @@ export default function Homepage() {
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
-            {/* What M Does */}
+            {/* What POISE Does */}
             <Card className="border-2 border-slate-200 dark:border-slate-700" data-testid="glance-what">
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
                   <Target className="h-5 w-5 text-blue-600" />
-                  What M Does
+                  What POISE Does
                 </h3>
                 <ul className="space-y-3 text-slate-700 dark:text-slate-300">
                   <li className="flex items-start gap-2">
@@ -754,7 +754,7 @@ export default function Homepage() {
             </h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
               Great football programs are prepared for every situation before the game starts. 
-              M brings this same complete preparedness to business leadership.
+              POISE brings this same complete preparedness to business leadership.
             </p>
           </div>
 
@@ -867,7 +867,7 @@ export default function Homepage() {
 
           <div className="mt-12 text-center">
             <p className="text-lg text-slate-400">
-              No matter the situation, executives using M are prepared to execute 
+              No matter the situation, executives using POISE are prepared to execute 
               <span className="text-white font-semibold"> swiftly, efficiently, and effectively.</span>
             </p>
           </div>
@@ -1172,7 +1172,7 @@ export default function Homepage() {
                 <Badge className="mb-2 bg-white/20 text-white border-white/30">McKinsey Framework</Badge>
                 <h3 className="text-2xl font-bold text-white mb-2">Operating Model Alignment</h3>
                 <p className="text-white/80">
-                  Map your organization's structure to M's 166 playbooks using McKinsey's "Organize to Value" 12-element framework. Get personalized playbook recommendations based on your unique operating model fingerprint.
+                  Map your organization's structure to POISE's 166 playbooks using McKinsey's "Organize to Value" 12-element framework. Get personalized playbook recommendations based on your unique operating model fingerprint.
                 </p>
               </div>
               <Button 
@@ -1204,7 +1204,7 @@ export default function Homepage() {
                 <Badge className="mb-2 bg-white/20 text-white border-white/30">Interactive Experience</Badge>
                 <h3 className="text-2xl font-bold text-white mb-2">Executive Simulation Demo</h3>
                 <p className="text-white/80">
-                  Step into the shoes of a Fortune 500 CSO. Experience real-time signal detection, playbook activation, and rapid coordinated response across your executive team. This is exactly how M works in production.
+                  Step into the shoes of a Fortune 500 CSO. Experience real-time signal detection, playbook activation, and rapid coordinated response across your executive team. This is exactly how POISE works in production.
                 </p>
               </div>
               <Button 

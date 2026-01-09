@@ -122,7 +122,7 @@ export default function MITCIOSection() {
                   <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
                     <Button size="lg" variant="default" asChild data-testid="button-see-vexor">
                       <a href="/demo-selector">
-                        See M in Action
+                        See POISE in Action
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </a>
                     </Button>
@@ -153,7 +153,7 @@ export default function MITCIOSection() {
           </Card>
 
           <FootballConnectionCallout 
-            text="MIT found CIOs expect 25-50%+ efficiency gains from AI within 2 years. Football achieved 360x coordination speed decades ago through systematic playbooks. M delivers both—AI technology powered by proven football methodology."
+            text="MIT found CIOs expect 25-50%+ efficiency gains from AI within 2 years. Football achieved 360x coordination speed decades ago through systematic playbooks. POISE delivers both—AI technology powered by proven football methodology."
             testId="callout-mit-connection"
           />
 
