@@ -271,6 +271,12 @@ export default function CommandCenter() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
+              <div className="flex items-center gap-2 mb-1">
+                <Badge className="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800 text-xs font-semibold">
+                  POISE Compass™
+                </Badge>
+                <span className="text-xs text-slate-500 dark:text-slate-400">EXECUTE Phase</span>
+              </div>
               <div className="flex items-center gap-3 mb-2">
                 <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white">
                   Command Center

@@ -112,38 +112,51 @@ export default function MarketingLanding() {
               </div>
             </div>
 
-            {/* Methodology Card - Rebranded */}
-            <Card className="max-w-4xl mx-auto bg-gradient-to-br from-blue-900/40 to-purple-900/40 backdrop-blur-sm border-2 border-blue-400/50">
+            {/* POISE Product Suite */}
+            <Card className="max-w-5xl mx-auto bg-gradient-to-br from-blue-900/40 to-purple-900/40 backdrop-blur-sm border-2 border-blue-400/50">
               <CardContent className="p-6">
-                <div className="text-center mb-4">
+                <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-white mb-2">
-                    Prepare → Monitor → Execute → Learn
+                    The POISE Product Suite
                   </h3>
                   <p className="text-blue-200 text-sm">
-                    Championship-level execution methodology proven at enterprise scale
+                    Four integrated modules powered by the IDEA Framework™
                   </p>
                 </div>
-                <div className="grid md:grid-cols-2 gap-6 text-left">
-                  <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <div className="text-cyan-300 font-semibold mb-2 flex items-center gap-2">
-                      <Shield className="h-5 w-5" />
-                      Preparation-Driven Execution
-                    </div>
-                    <p className="text-blue-100 text-sm">
-                      Pre-configured playbooks with 80% templates ready. When triggers fire, 
-                      stakeholders know exactly what to do—no meetings, no delays.
+                <div className="grid md:grid-cols-4 gap-4 text-left">
+                  <div className="bg-violet-500/20 rounded-lg p-4 border border-violet-400/30">
+                    <Badge className="mb-2 bg-violet-500 text-white border-0 text-xs">IDENTIFY</Badge>
+                    <div className="text-violet-200 font-bold text-lg mb-1">POISE Playbook™</div>
+                    <p className="text-violet-100/80 text-xs">
+                      166 pre-built playbooks across 9 strategic domains. Build your depth chart before events hit.
                     </p>
                   </div>
-                  <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <div className="text-cyan-300 font-semibold mb-2 flex items-center gap-2">
-                      <Brain className="h-5 w-5" />
-                      Dynamic Strategy Methodology
-                    </div>
-                    <p className="text-blue-100 text-sm">
-                      Living systems that sense market shifts, adapt playbooks, and learn from 
-                      every execution—building institutional memory that compounds over time.
+                  <div className="bg-blue-500/20 rounded-lg p-4 border border-blue-400/30">
+                    <Badge className="mb-2 bg-blue-500 text-white border-0 text-xs">DETECT</Badge>
+                    <div className="text-blue-200 font-bold text-lg mb-1">POISE Signal™</div>
+                    <p className="text-blue-100/80 text-xs">
+                      AI-powered monitoring across 92 data points. Detect threats and opportunities before competitors.
                     </p>
                   </div>
+                  <div className="bg-emerald-500/20 rounded-lg p-4 border border-emerald-400/30">
+                    <Badge className="mb-2 bg-emerald-500 text-white border-0 text-xs">EXECUTE</Badge>
+                    <div className="text-emerald-200 font-bold text-lg mb-1">POISE Compass™</div>
+                    <p className="text-emerald-100/80 text-xs">
+                      12-minute coordinated execution. Stakeholders, budgets, and actions—automatically orchestrated.
+                    </p>
+                  </div>
+                  <div className="bg-amber-500/20 rounded-lg p-4 border border-amber-400/30">
+                    <Badge className="mb-2 bg-amber-500 text-white border-0 text-xs">ADVANCE</Badge>
+                    <div className="text-amber-200 font-bold text-lg mb-1">POISE Retrospect™</div>
+                    <p className="text-amber-100/80 text-xs">
+                      Capture lessons, refine playbooks. Every execution makes your organization smarter.
+                    </p>
+                  </div>
+                </div>
+                <div className="text-center mt-4">
+                  <p className="text-blue-200 text-xs">
+                    Plus <span className="text-cyan-300 font-semibold">POISE One™</span> — the single-pane executive overview of your strategic readiness
+                  </p>
                 </div>
               </CardContent>
             </Card>

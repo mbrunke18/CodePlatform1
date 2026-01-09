@@ -24,6 +24,7 @@ export default function HowItWorks() {
     {
       number: "I",
       name: "IDENTIFY",
+      moduleName: "POISE Playbook™",
       tagline: "Build Your Depth Chart",
       icon: Target,
       color: "violet",
@@ -43,6 +44,7 @@ export default function HowItWorks() {
     {
       number: "D",
       name: "DETECT",
+      moduleName: "POISE Signal™",
       tagline: "Monitor Signals",
       icon: Radio,
       color: "blue",
@@ -62,6 +64,7 @@ export default function HowItWorks() {
     {
       number: "E",
       name: "EXECUTE",
+      moduleName: "POISE Compass™",
       tagline: "Execute Response",
       icon: CheckCircle,
       color: "emerald",
@@ -81,6 +84,7 @@ export default function HowItWorks() {
     {
       number: "A",
       name: "ADVANCE",
+      moduleName: "POISE Retrospect™",
       tagline: "Review the Film",
       icon: BookOpen,
       color: "amber",
@@ -180,7 +184,12 @@ export default function HowItWorks() {
                       <phase.icon className="h-8 w-8 text-white" />
                     </div>
                     <div>
-                      <div className="text-white/70 text-sm font-medium">Phase {phase.number}</div>
+                      <div className="flex items-center gap-3 mb-1">
+                        <span className="text-white/70 text-sm font-medium">Phase {phase.number}</span>
+                        <Badge className="bg-white/20 text-white border-white/30 text-xs font-semibold">
+                          {phase.moduleName}
+                        </Badge>
+                      </div>
                       <h2 className="text-2xl md:text-3xl font-bold text-white">{phase.name}</h2>
                       <p className="text-white/90 text-lg">{phase.tagline}</p>
                     </div>

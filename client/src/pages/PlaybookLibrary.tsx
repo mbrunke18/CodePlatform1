@@ -251,13 +251,19 @@ export default function PlaybookLibrary() {
 
       <main className="max-w-7xl mx-auto px-6 py-12">
         <header className="mb-10" data-testid="playbook-library-header">
+          <div className="flex items-center gap-3 mb-2">
+            <Badge className="bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300 border-violet-200 dark:border-violet-800 text-sm font-semibold px-3 py-1">
+              POISE Playbook™
+            </Badge>
+            <span className="text-sm text-slate-500 dark:text-slate-400">IDENTIFY Phase</span>
+          </div>
           <h1 className="text-4xl font-bold text-slate-900 dark:text-white">
-            {actNowMode ? "Act Now" : "Playbook Library"}
+            {actNowMode ? "Act Now" : "Strategic Playbook Library"}
           </h1>
           <p className="text-slate-600 dark:text-slate-400 mt-2">
             {actNowMode 
               ? "Prioritized plays based on real execution data."
-              : "From signal to coordinated action in minutes—not days. Success favors the prepared."
+              : "166 battle-tested playbooks across 9 domains. From signal to coordinated action in minutes—not days."
             }
           </p>
         </header>
