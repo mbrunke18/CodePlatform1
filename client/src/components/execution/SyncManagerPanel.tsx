@@ -510,7 +510,7 @@ export function SyncManagerPanel({
                   <div>
                     <Label htmlFor="bi-directional">Bi-directional Sync</Label>
                     <p className="text-sm text-muted-foreground">
-                      Pull updates from external platforms back into M
+                      Pull updates from external platforms back into POISE
                     </p>
                   </div>
                   <Switch id="bi-directional" data-testid="switch-bi-directional" />

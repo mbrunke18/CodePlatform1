@@ -19,12 +19,12 @@ import {
 import StandardNav from '@/components/layout/StandardNav';
 import { useLocation } from 'wouter';
 
-import investorFaqContent from '@/data/M-Investor-FAQ.md?raw';
-import pilotProgramContent from '@/data/M-Pilot-Program-OnePager.md?raw';
-import demoScriptContent from '@/data/M-Demo-Script-3min.md?raw';
-import whyNowContent from '@/data/M-WhyNow-SlideContent.md?raw';
-import competitiveMoatContent from '@/data/M-Competitive-Moat-TalkingPoints.md?raw';
-import checklistContent from '@/data/M-PreRoadshow-Checklist.md?raw';
+import investorFaqContent from '@/data/POISE-Investor-FAQ.md?raw';
+import pilotProgramContent from '@/data/POISE-Pilot-Program-OnePager.md?raw';
+import demoScriptContent from '@/data/POISE-Demo-Script-3min.md?raw';
+import whyNowContent from '@/data/POISE-WhyNow-SlideContent.md?raw';
+import competitiveMoatContent from '@/data/POISE-Competitive-Moat-TalkingPoints.md?raw';
+import checklistContent from '@/data/POISE-PreRoadshow-Checklist.md?raw';
 
 const KEY_STATS = [
   { label: "Response Time", value: "72h → 12min", color: "text-emerald-400" },

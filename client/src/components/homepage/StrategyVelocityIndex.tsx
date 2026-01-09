@@ -17,7 +17,7 @@ export default function StrategyVelocityIndex() {
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               They're the ones who execute and adapt faster than technology evolves. 
-              M delivers the execution velocity that separates leaders from laggards.
+              POISE delivers the execution velocity that separates leaders from laggards.
             </p>
           </div>
 
@@ -40,7 +40,7 @@ export default function StrategyVelocityIndex() {
                   </div>
                   <div className="h-px bg-border" />
                   <div>
-                    <p className="text-sm text-muted-foreground mb-1">M Performance:</p>
+                    <p className="text-sm text-muted-foreground mb-1">POISE Performance:</p>
                     <p className="text-3xl font-bold text-green-600" data-testid="value-vexor-time">12 minutes</p>
                     <p className="text-xs text-muted-foreground mt-1">Conversation → Coordination → Execution</p>
                   </div>
@@ -65,7 +65,7 @@ export default function StrategyVelocityIndex() {
                   </div>
                   <div className="h-px bg-border" />
                   <div>
-                    <p className="text-sm text-muted-foreground mb-1">M Performance:</p>
+                    <p className="text-sm text-muted-foreground mb-1">POISE Performance:</p>
                     <p className="text-3xl font-bold text-purple-600" data-testid="value-vexor-gap">95% Realized</p>
                     <p className="text-xs text-muted-foreground mt-1">Strategic value delivered to execution</p>
                   </div>
@@ -125,7 +125,7 @@ export default function StrategyVelocityIndex() {
               <div className="text-sm text-muted-foreground">
                 <strong>Sources:</strong> Time-to-execution metrics based on McKinsey research on strategy-to-execution gaps 
                 and MIT Technology Review CIO survey data. 
-                M performance data from live demo scenarios modeling Fortune 1000 use cases.
+                POISE performance data from live demo scenarios modeling Fortune 1000 use cases.
               </div>
             </div>
           </div>

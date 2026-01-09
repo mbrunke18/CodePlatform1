@@ -146,12 +146,12 @@ interface SimulationEvent {
 }
 
 const EVENT_EXPLANATIONS: Record<string, string> = {
-  trigger: "M detected this event through connected monitoring systems. In production, this would come from your SIEM, news feeds, or internal alerts.",
+  trigger: "POISE detected this event through connected monitoring systems. In production, this would come from your SIEM, news feeds, or internal alerts.",
   ai: "The AI assistant is processing the situation and taking automated actions based on your pre-configured playbook rules.",
   stakeholder: "Notifications are being sent through your selected channels (Slack, email, SMS) to the right people automatically.",
   decision: "A decision point has been reached. In production, executives receive mobile alerts with pre-staged options to choose from.",
   task: "Tasks are being assigned to team members with clear instructions, deadlines, and dependencies already mapped out.",
-  escalation: "The escalation path you configured is now active. If responses aren't received in time, M will automatically escalate.",
+  escalation: "The escalation path you configured is now active. If responses aren't received in time, POISE will automatically escalate.",
   complete: "The coordinated response is complete. All stakeholders were aligned, tasks assigned, and decisions made in record time."
 };
 
@@ -1171,7 +1171,7 @@ export default function SandboxDemo() {
               </div>
               <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-950/30 rounded-lg">
                 <p className="text-sm text-blue-700 dark:text-blue-400">
-                  <strong>{enabledIntegrations.length} integrations enabled.</strong> When triggered, M will automatically create tasks in Jira, send alerts via Slack, and update ServiceNow tickets.
+                  <strong>{enabledIntegrations.length} integrations enabled.</strong> When triggered, POISE will automatically create tasks in Jira, send alerts via Slack, and update ServiceNow tickets.
                 </p>
               </div>
             </CardContent>
@@ -1216,7 +1216,7 @@ export default function SandboxDemo() {
               ))}
               <div className="p-4 bg-green-50 dark:bg-green-950/30 rounded-lg">
                 <p className="text-sm text-green-700 dark:text-green-400">
-                  <strong>Automated Tracking:</strong> M will measure these KPIs in real-time during execution and include them in post-action reports for continuous improvement.
+                  <strong>Automated Tracking:</strong> POISE will measure these KPIs in real-time during execution and include them in post-action reports for continuous improvement.
                 </p>
               </div>
             </CardContent>

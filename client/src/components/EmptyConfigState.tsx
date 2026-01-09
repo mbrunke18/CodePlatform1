@@ -68,7 +68,7 @@ const configInfo = {
   general: {
     icon: Settings,
     title: 'Configuration Required',
-    description: 'Complete your M platform setup to unlock full strategic execution capabilities.',
+    description: 'Complete your POISE platform setup to unlock full strategic execution capabilities.',
     actionPath: '/onboarding',
     actionLabel: 'Start Setup',
     color: 'text-cyan-500',
@@ -120,7 +120,7 @@ export function QuickSetupBanner() {
           </div>
           <div>
             <h3 className="font-semibold text-white">Complete Your Setup</h3>
-            <p className="text-sm text-slate-300">Configure M for your organization in under 30 minutes</p>
+            <p className="text-sm text-slate-300">Configure POISE for your organization in under 30 minutes</p>
           </div>
         </div>
         <Link href="/onboarding">

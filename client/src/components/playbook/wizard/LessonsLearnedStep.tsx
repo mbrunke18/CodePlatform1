@@ -92,7 +92,7 @@ export default function LessonsLearnedStep({ data, onChange, playbook }: Lessons
       <Card className="p-4 bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800">
         <h4 className="font-semibold text-sm mb-2">AI-Powered Analysis</h4>
         <p className="text-xs text-muted-foreground">
-          After you complete lessons learned, M's AI will analyze patterns across all executions to generate:
+          After you complete lessons learned, POISE's AI will analyze patterns across all executions to generate:
         </p>
         <ul className="text-xs text-muted-foreground mt-2 space-y-1 list-disc list-inside">
           <li>Automated playbook optimization suggestions</li>

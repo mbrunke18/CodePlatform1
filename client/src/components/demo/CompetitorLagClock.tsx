@@ -66,7 +66,7 @@ export function CompetitorLagClock() {
           <div className="grid grid-cols-2 gap-4">
             <div className="text-center">
               <div className="text-xs text-emerald-400 font-medium mb-1">
-                M
+                POISE
               </div>
               <div className="text-3xl font-bold text-emerald-400 tabular-nums">
                 {vexorTime}

@@ -51,9 +51,9 @@ const pilotPhases = [
     duration: 'Weeks 3-6',
     color: 'bg-blue-600',
     activities: [
-      'Conduct 2-3 tabletop exercises with M',
+      'Conduct 2-3 tabletop exercises with POISE',
       'Measure activation time (target: <12 min)',
-      'Train response team leads on M workflow',
+      'Train response team leads on POISE workflow',
       'Refine playbooks based on dry run feedback',
       'Establish KPI tracking dashboard'
     ],
@@ -97,7 +97,7 @@ const pilotInclusions = [
     category: 'Platform Access',
     icon: Layers,
     items: [
-      'Full M platform access for pilot team (up to 25 users)',
+      'Full POISE platform access for pilot team (up to 25 users)',
       '5 customizable playbooks from 166 library',
       'Signal monitoring for 3 intelligence categories',
       'Command Center with real-time coordination'
@@ -233,9 +233,9 @@ export default function PilotProgram() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "90-Day Pilot Program - M | Strategic Execution OS",
-      description: "Validate M's 12-minute coordination claim with a structured 90-day pilot. Includes 5 playbooks, Jira integration, and dedicated success manager. 100% credit applies to enterprise contract.",
-      ogTitle: "M Pilot Program | 90 Days to Transform Strategic Execution",
+      title: "90-Day Pilot Program - POISE | Strategic Execution OS",
+      description: "Validate POISE's 12-minute coordination claim with a structured 90-day pilot. Includes 5 playbooks, Jira integration, and dedicated success manager. 100% credit applies to enterprise contract.",
+      ogTitle: "POISE Pilot Program | 90 Days to Transform Strategic Execution",
       ogDescription: "Fortune 1000 pilot program with ROI measurement, live activation, and clear conversion path.",
     });
   }, []);
@@ -255,7 +255,7 @@ export default function PilotProgram() {
               <span className="block text-emerald-400 mt-2">Validate Before You Commit</span>
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
-              Prove M's 12-minute coordination claim with real activations in your environment. 
+              Prove POISE's 12-minute coordination claim with real activations in your environment. 
               Structured phases, measurable outcomes, and a clear path to enterprise deployment.
             </p>
             
@@ -365,7 +365,7 @@ export default function PilotProgram() {
                 What's Included
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400">
-                Everything you need to validate M in your environment
+                Everything you need to validate POISE in your environment
               </p>
             </div>
 
@@ -451,8 +451,8 @@ export default function PilotProgram() {
                   <thead>
                     <tr className="border-b border-white/20">
                       <th className="text-left p-4 font-semibold text-white">Value Metric</th>
-                      <th className="text-left p-4 font-semibold text-red-300">Before M</th>
-                      <th className="text-left p-4 font-semibold text-emerald-300">With M</th>
+                      <th className="text-left p-4 font-semibold text-red-300">Before POISE</th>
+                      <th className="text-left p-4 font-semibold text-emerald-300">With POISE</th>
                       <th className="text-left p-4 font-semibold text-blue-300">Calculation</th>
                       <th className="text-right p-4 font-semibold text-amber-300">Value Captured</th>
                     </tr>

@@ -135,10 +135,10 @@ export default function Sitemap() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            M Sitemap
+            POISE Sitemap
           </h1>
           <p className="text-xl text-slate-400">
-            Complete directory of all pages and features available in M
+            Complete directory of all pages and features available in POISE
           </p>
         </div>
 

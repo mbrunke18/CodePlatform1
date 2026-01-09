@@ -64,7 +64,7 @@ export default function EnergyGridFailureDemo() {
             {energyDemoData.crisis.subtitle}
           </p>
           <p className="text-sm text-amber-300 max-w-3xl mx-auto">
-            Experience how M prevents catastrophic infrastructure failure through coordinated response—
+            Experience how POISE prevents catastrophic infrastructure failure through coordinated response—
             transforming a potential 3-5 day blackout affecting 8.2M customers into controlled 3-hour stabilization.
           </p>
         </div>
@@ -252,7 +252,7 @@ export default function EnergyGridFailureDemo() {
                 3-Hour Coordinated Response Across 2,500 Stakeholders
               </h2>
               <p className="text-lg text-amber-200 mb-4">
-                Watch M orchestrate grid stabilization across 247 substations, 47 hospitals, federal agencies, 
+                Watch POISE orchestrate grid stabilization across 247 substations, 47 hospitals, federal agencies, 
                 and 2,500 field personnel—executing load shedding and emergency repairs in parallel.
               </p>
               <div className="bg-slate-900/50 p-4 rounded grid md:grid-cols-3 gap-4">
@@ -368,7 +368,7 @@ export default function EnergyGridFailureDemo() {
             />
 
             <Card className="p-8 bg-slate-900 border-amber-500">
-              <h3 className="text-2xl font-bold mb-4 text-white">The M Difference</h3>
+              <h3 className="text-2xl font-bold mb-4 text-white">The POISE Difference</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="font-semibold text-red-400 mb-2">❌ Traditional Coordination</h4>
@@ -381,7 +381,7 @@ export default function EnergyGridFailureDemo() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-green-400 mb-2">✓ M Coordination</h4>
+                  <h4 className="font-semibold text-green-400 mb-2">✓ POISE Coordination</h4>
                   <ul className="text-sm text-slate-300 space-y-1">
                     <li>• 3-hour coordinated response across 2,500 stakeholders</li>
                     <li>• Controlled load shedding prevents cascading failures</li>

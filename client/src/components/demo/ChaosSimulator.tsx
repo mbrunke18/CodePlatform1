@@ -349,14 +349,14 @@ export function ChaosSimulator({ scenario, companyName = 'Meridian Industries', 
                     }`}
                   >
                     <p className="text-white font-semibold">{time}</p>
-                    {i === 0 && <p className="text-xs text-green-400 mt-1">With M</p>}
+                    {i === 0 && <p className="text-xs text-green-400 mt-1">With POISE</p>}
                   </div>
                 ))}
               </div>
               <p className="text-slate-400 text-sm">
                 The average Fortune 1000 company takes <span className="text-white font-semibold">4.2 hours</span> to coordinate a crisis response.
                 <br />
-                M reduces that to <span className="text-green-400 font-semibold">12 minutes</span>.
+                POISE reduces that to <span className="text-green-400 font-semibold">12 minutes</span>.
               </p>
             </div>
           </div>
@@ -367,7 +367,7 @@ export function ChaosSimulator({ scenario, companyName = 'Meridian Industries', 
             className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg"
             data-testid="button-continue-demo"
           >
-            See How M Changes Everything
+            See How POISE Changes Everything
           </Button>
         </div>
       </div>

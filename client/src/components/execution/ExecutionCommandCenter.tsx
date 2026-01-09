@@ -209,7 +209,7 @@ export function ExecutionCommandCenter({
               Ready for One-Click Activation
             </CardTitle>
             <CardDescription>
-              When triggered, M will execute this playbook in under 12 minutes
+              When triggered, POISE will execute this playbook in under 12 minutes
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -236,7 +236,7 @@ export function ExecutionCommandCenter({
                 72 hrs → 12 min
               </div>
               <p className="text-sm text-muted-foreground">
-                M eliminates the planning phase entirely
+                POISE eliminates the planning phase entirely
               </p>
             </div>
             <ActivationButton

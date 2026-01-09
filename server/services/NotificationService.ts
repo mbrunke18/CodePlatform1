@@ -150,7 +150,7 @@ class NotificationService {
       const htmlContent = this.renderEmailTemplate(notification);
 
       await this.transporter.sendMail({
-        from: process.env.SMTP_FROM || '"M" <alerts@vexor.ai>',
+        from: process.env.SMTP_FROM || '"POISE" <alerts@poise.app>',
         to: recipient.email,
         subject: notification.title,
         html: htmlContent,

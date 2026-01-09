@@ -132,7 +132,7 @@ export default function PharmaceuticalRecallDemo() {
                     <p className="text-red-100 leading-relaxed">
                       Glenmark had the technology to detect the dissolution problem. But coordinating 2,052 stakeholders 
                       across FDA, wholesalers, pharmacies, and patients took <strong>6 weeks</strong>. In that gap, 
-                      a patient died. This demo shows how M would have compressed that 6-week coordination into 12 minutes,
+                      a patient died. This demo shows how POISE would have compressed that 6-week coordination into 12 minutes,
                       ensuring the patient <strong>never received the deadly capsules</strong>.
                     </p>
                   </div>

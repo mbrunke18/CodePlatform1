@@ -220,7 +220,7 @@ export function DeterministicExecutionBadge() {
         </TooltipTrigger>
         <TooltipContent side="top" className="max-w-xs">
           <p className="text-sm">
-            Unlike autonomous AI agents, M delivers predictable, pre-defined playbook execution. 
+            Unlike autonomous AI agents, POISE delivers predictable, pre-defined playbook execution. 
             AI monitors and recommends—humans decide, playbooks execute exactly as designed.
           </p>
         </TooltipContent>

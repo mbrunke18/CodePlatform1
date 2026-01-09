@@ -1,13 +1,13 @@
-# M Strategic Execution Operating System
+# POISE Strategic Execution Operating System
 ## Enterprise Pilot Program
 
 ---
 
 ## Program Overview
 
-The M Pilot Program is a 90-day engagement designed to demonstrate measurable value in strategic response coordination. Pilot customers receive full platform access, dedicated implementation support, and executive-level partnership to ensure success.
+The POISE Pilot Program is a 90-day engagement designed to demonstrate measurable value in strategic response coordination. Pilot customers receive full platform access, dedicated implementation support, and executive-level partnership to ensure success.
 
-**Pilot Objective:** Prove that M reduces strategic response initiation time by 80%+ compared to current processes.
+**Pilot Objective:** Prove that POISE reduces strategic response initiation time by 80%+ compared to current processes.
 
 ---
 
@@ -89,7 +89,7 @@ We measure pilot success on four dimensions:
 ## What's Included
 
 ### Platform Access
-- Full M platform for up to 50 users
+- Full POISE platform for up to 50 users
 - 166 playbook templates across 9 domains (including AI Governance)
 - AI signal monitoring (12 intelligence sources)
 - Real-time coordination dashboard
@@ -110,14 +110,14 @@ We measure pilot success on four dimensions:
 ### Executive Partnership
 - Weekly check-ins with CSM
 - Bi-weekly executive sponsor updates
-- Direct access to M leadership
+- Direct access to POISE leadership
 - Priority feature consideration
 
 ---
 
 ## Ideal Pilot Candidate
 
-The M Pilot Program is designed for organizations that:
+The POISE Pilot Program is designed for organizations that:
 
 | Criteria | Description |
 |----------|-------------|
@@ -193,10 +193,10 @@ A: We recommend 90 days to get meaningful results, but can discuss 60-day option
 
 ## Contact
 
-**To discuss the M Pilot Program:**
+**To discuss the POISE Pilot Program:**
 
 [Your Name]  
-Founder & CEO, M Strategic Execution OS  
+Founder & CEO, POISE Strategic Execution OS  
 [Email]  
 [Phone]  
 [Calendar booking link]

@@ -539,7 +539,7 @@ export default function CommandCenter() {
                   Ready for Strategic Execution
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 max-w-md mx-auto mb-6">
-                  M monitors 12 intelligence signals continuously. When a trigger fires, 
+                  POISE monitors 12 intelligence signals continuously. When a trigger fires, 
                   your coordinated response activates in under 12 minutes.
                 </p>
                 <div className="flex items-center justify-center gap-4 mb-6">

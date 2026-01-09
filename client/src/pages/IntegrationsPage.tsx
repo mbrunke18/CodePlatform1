@@ -169,11 +169,11 @@ export default function IntegrationsPage() {
             Enterprise Integrations
           </Badge>
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
-            M Orchestrates Your Stack
+            POISE Orchestrates Your Stack
           </h1>
           <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
-            M doesn't replace your workflow tools — it coordinates them. When a playbook 
-            activates, M tells each system exactly what to do.
+            POISE doesn't replace your workflow tools — it coordinates them. When a playbook 
+            activates, POISE tells each system exactly what to do.
           </p>
         </div>
 
@@ -183,7 +183,7 @@ export default function IntegrationsPage() {
             <div className="w-12 h-12 mx-auto mb-4 bg-blue-500/20 rounded-xl flex items-center justify-center">
               <Zap className="w-6 h-6 text-blue-500" />
             </div>
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">M Orchestrates</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">POISE Orchestrates</h3>
             <p className="text-sm text-gray-600 dark:text-gray-400">Strategic playbooks trigger coordinated actions across your entire stack</p>
           </Card>
           <Card className="p-6 text-center">
@@ -198,7 +198,7 @@ export default function IntegrationsPage() {
               <CheckCircle2 className="w-6 h-6 text-emerald-500" />
             </div>
             <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Everything Syncs</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Bi-directional updates keep M and your tools in perfect alignment</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Bi-directional updates keep POISE and your tools in perfect alignment</p>
           </Card>
         </div>
 

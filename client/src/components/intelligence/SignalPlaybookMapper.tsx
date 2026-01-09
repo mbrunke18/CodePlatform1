@@ -278,7 +278,7 @@ export function SignalPlaybookMapper() {
                     <Switch data-testid="switch-auto-activation" />
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    When enabled, M will automatically recommend linked playbooks when any signal in this category triggers an alert.
+                    When enabled, POISE will automatically recommend linked playbooks when any signal in this category triggers an alert.
                   </div>
                 </div>
               </CardContent>

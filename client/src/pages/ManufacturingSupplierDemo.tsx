@@ -132,7 +132,7 @@ export default function ManufacturingSupplierDemo() {
                     <h3 className="font-bold text-white mb-2">Just-In-Time Manufacturing Needs Just-In-Time Coordination</h3>
                     <p className="text-orange-100 leading-relaxed">
                       Toyota pioneered Just-In-Time manufacturing to eliminate waste. But when suppliers fail, coordination still takes 
-                      <strong> 30 days</strong> of meetings, emails, and qualification delays. M brings Just-In-Time principles to 
+                      <strong> 30 days</strong> of meetings, emails, and qualification delays. POISE brings Just-In-Time principles to 
                       crisis coordination: pre-vetted backup suppliers, pre-negotiated contracts, pre-approved budgets. Result: 
                       <strong> 4-hour response</strong> instead of 30-day production halt.
                     </p>

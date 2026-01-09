@@ -111,7 +111,7 @@ export default function ROICalculator() {
       currentTotalExecutiveHoursPerYear,
       revenueAtRiskPerEvent,
       
-      // With M
+      // With POISE
       mCoordinationCostPerYear,
       mTotalExecutiveHoursPerYear,
       

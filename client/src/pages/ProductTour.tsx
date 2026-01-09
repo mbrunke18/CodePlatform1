@@ -109,7 +109,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 8000,
     title: 'EXECUTE',
     subtitle: 'Execute Response',
-    narration: 'When signals fire, M orchestrates your entire organization. Stakeholders align in parallel, not sequence.',
+    narration: 'When signals fire, POISE orchestrates your entire organization. Stakeholders align in parallel, not sequence.',
     visual: 'execute'
   },
   {
@@ -127,7 +127,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 6000,
     title: 'See It In Action',
     subtitle: 'Executive Simulation',
-    narration: 'Experience M through the eyes of Sarah Chen, Chief Strategy Officer at Meridian Industries.',
+    narration: 'Experience POISE through the eyes of Sarah Chen, Chief Strategy Officer at Meridian Industries.',
     visual: 'execute'
   },
   {

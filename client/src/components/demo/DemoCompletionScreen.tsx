@@ -113,15 +113,15 @@ export default function DemoCompletionScreen({
   ];
 
   const personaMessages: Record<NonNullable<typeof persona>, string> = {
-    ceo: "As CEO, you've seen how M delivers strategic advantage through rapid execution. From your strategic stronghold, you protect market share and accelerate competitive response.",
+    ceo: "As CEO, you've seen how POISE delivers strategic advantage through rapid execution. From your strategic stronghold, you protect market share and accelerate competitive response.",
     coo: "As COO, you've experienced operational excellence in action. Our playbook system reduces coordination overhead by 85%, freeing your teams to focus on execution.",
-    chro: "As CHRO, you've seen how M improves workforce stability and cultural health. Customers report 34% better retention during crisis situations.",
-    cto: "As CTO, you've experienced how M ensures technical resilience and accelerates innovation. Our platform protects your architecture while enabling rapid response.",
-    cio: "As CIO, you've seen how M ensures digital continuity and compliance. Our playbook system maintains operational reliability while reducing incident response time.",
-    cdo: "As CDO, you've experienced how M protects data integrity and accelerates analytics. Our platform ensures data governance while enabling rapid insight delivery.",
-    ciso: "As CISO, you've seen how M strengthens security posture and reduces risk. Our playbook system provides instant threat response while maintaining compliance.",
-    cfo: "As CFO, you've experienced how M protects financial stability and optimizes costs. Our platform reduces risk exposure while delivering measurable ROI.",
-    general: "You've experienced the M difference. Pre-configured playbooks executed in minutes, mobilizing entire organizations with coordinated precision."
+    chro: "As CHRO, you've seen how POISE improves workforce stability and cultural health. Customers report 34% better retention during crisis situations.",
+    cto: "As CTO, you've experienced how POISE ensures technical resilience and accelerates innovation. Our platform protects your architecture while enabling rapid response.",
+    cio: "As CIO, you've seen how POISE ensures digital continuity and compliance. Our playbook system maintains operational reliability while reducing incident response time.",
+    cdo: "As CDO, you've experienced how POISE protects data integrity and accelerates analytics. Our platform ensures data governance while enabling rapid insight delivery.",
+    ciso: "As CISO, you've seen how POISE strengthens security posture and reduces risk. Our playbook system provides instant threat response while maintaining compliance.",
+    cfo: "As CFO, you've experienced how POISE protects financial stability and optimizes costs. Our platform reduces risk exposure while delivering measurable ROI.",
+    general: "You've experienced the POISE difference. Pre-configured playbooks executed in minutes, mobilizing entire organizations with coordinated precision."
   };
 
   return (

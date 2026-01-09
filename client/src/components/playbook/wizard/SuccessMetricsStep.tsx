@@ -55,7 +55,7 @@ export default function SuccessMetricsStep({ data, onChange }: SuccessMetricsSte
               data-testid="input-response-speed"
             />
             <p className="text-xs text-muted-foreground">
-              M standard: 12 minutes to coordinated response
+              POISE standard: 12 minutes to coordinated response
             </p>
           </div>
 

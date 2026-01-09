@@ -20,7 +20,7 @@ export default function SalesforceSpeedSection() {
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Business execution timelines have collapsed from years to months as competitive 
               pressure intensifies. Football achieved instant execution decades ago: from coach's 
-              decision to coordinated action in under 60 seconds. M brings that velocity to business.
+              decision to coordinated action in under 60 seconds. POISE brings that velocity to business.
             </p>
           </div>
 
@@ -61,7 +61,7 @@ export default function SalesforceSpeedSection() {
               </div>
               <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">12 min</div>
               <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold">
-                M: Real-time strategic coordination
+                POISE: Real-time strategic coordination
               </p>
             </Card>
           </div>
@@ -189,7 +189,7 @@ export default function SalesforceSpeedSection() {
             <Card className="text-center p-6 bg-gradient-to-br from-orange-100 to-orange-50 dark:from-orange-900/40 dark:to-orange-900/20 border-2 border-orange-500" data-testid="card-stat-advantage">
               <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">99.7%</div>
               <p className="text-sm font-semibold text-orange-600 dark:text-orange-400">
-                faster with M (72h → 12min)
+                faster with POISE (72h → 12min)
               </p>
             </Card>
           </div>
@@ -230,7 +230,7 @@ export default function SalesforceSpeedSection() {
                 </p>
                 <Button size="lg" variant="secondary" asChild data-testid="button-speed-demo">
                   <a href="/demo-selector">
-                    See M's Speed in Action
+                    See POISE's Speed in Action
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </a>
                 </Button>
@@ -239,7 +239,7 @@ export default function SalesforceSpeedSection() {
           </Card>
 
           <FootballConnectionCallout 
-            text="Football perfected execution velocity through systematic playbooks and instant coordination. While business timelines collapsed from years to months, football had already achieved minutes. M applies football's proven methodology to close the gap."
+            text="Football perfected execution velocity through systematic playbooks and instant coordination. While business timelines collapsed from years to months, football had already achieved minutes. POISE applies football's proven methodology to close the gap."
             testId="callout-salesforce-speed-connection"
           />
 

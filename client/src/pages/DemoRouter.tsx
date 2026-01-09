@@ -56,7 +56,7 @@ export default function DemoRouter() {
       id: 'industry',
       title: 'Industry Demos',
       duration: '10-15 minutes',
-      description: 'See M configured for your industry: Financial Services, Healthcare, Manufacturing, Retail, Energy, and Luxury.',
+      description: 'See POISE configured for your industry: Financial Services, Healthcare, Manufacturing, Retail, Energy, and Luxury.',
       icon: Building2,
       color: 'from-amber-500 to-orange-500',
       borderColor: 'border-amber-500/30 hover:border-amber-500',
@@ -80,7 +80,7 @@ export default function DemoRouter() {
               Interactive Experience
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4" data-testid="heading-demo-router">
-              Experience M
+              Experience POISE
             </h1>
             <p className="text-xl text-slate-400">
               Choose the demo that fits your schedule
@@ -96,7 +96,7 @@ export default function DemoRouter() {
               <div className="flex-1">
                 <p className="text-white font-medium mb-1">Recommended for executives</p>
                 <p className="text-sm text-slate-400 mb-3">
-                  See how M delivers 12-minute coordinated response with predictive AI and role-specific wins.
+                  See how POISE delivers 12-minute coordinated response with predictive AI and role-specific wins.
                 </p>
                 <Button
                   onClick={() => setLocation('/customer-demo')}
@@ -120,7 +120,7 @@ export default function DemoRouter() {
               <div className="flex-1">
                 <p className="text-white font-medium mb-1">NEW: Predictive Intelligence</p>
                 <p className="text-sm text-slate-400">
-                  M forecasts trigger probabilities 90 days out. Run what-if scenarios. Know which playbooks you'll need before you need them.
+                  POISE forecasts trigger probabilities 90 days out. Run what-if scenarios. Know which playbooks you'll need before you need them.
                 </p>
               </div>
             </div>

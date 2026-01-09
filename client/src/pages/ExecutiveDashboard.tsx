@@ -252,7 +252,7 @@ export default function ExecutiveDashboard() {
               />
             </div>
             <p className="text-slate-500 dark:text-slate-400 text-sm">
-              Unified strategic command center for M
+              Unified strategic command center for POISE
             </p>
           </div>
           <div className="flex items-center gap-3">

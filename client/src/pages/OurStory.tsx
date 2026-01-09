@@ -284,7 +284,7 @@ export default function OurStory() {
           </TimelineChapter>
 
           {/* The Vision */}
-          <TimelineChapter number="Chapter 4" title="M Was Born" color="purple">
+          <TimelineChapter number="Chapter 4" title="POISE Was Born" color="purple">
             <p>
               We translated 15 years of research into a platform that gives every 
               Fortune 1000 executive the same strategic advantage as an NFL coach:
@@ -313,7 +313,7 @@ export default function OurStory() {
           {/* Enterprise Validation */}
           <TimelineChapter number="Chapter 5" title="Built on Proven Methodology" color="green">
             <p>
-              M isn't theoretical. It's built on <strong>Dynamic Strategy</strong>—the methodology 
+              POISE isn't theoretical. It's built on <strong>Dynamic Strategy</strong>—the methodology 
               trusted by the world's most demanding organizations:
             </p>
 
@@ -365,7 +365,7 @@ export default function OurStory() {
             </div>
           </TimelineChapter>
 
-          <PullQuote author="The M Philosophy">
+          <PullQuote author="The POISE Philosophy">
             Championship teams don't improvise under pressure. They execute prepared playbooks at competitive speed.
           </PullQuote>
         </div>

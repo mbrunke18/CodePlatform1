@@ -430,7 +430,7 @@ function DemoLiveActivation() {
 
   return (
     <div className="page-background min-h-screen bg-slate-950 text-white">
-      <DemoNavHeader title="M Live Activation Demo" showBackButton={true} />
+      <DemoNavHeader title="POISE Live Activation Demo" showBackButton={true} />
       <div className="pt-20 p-8">
       {/* Confetti Celebration */}
       {showConfetti && (
@@ -448,7 +448,7 @@ function DemoLiveActivation() {
         <div className="flex items-center justify-between mb-4">
           <div>
             <h1 className="text-5xl font-bold mb-2" data-testid="demo-title">
-              M Live Activation Demo
+              POISE Live Activation Demo
             </h1>
             <div className="flex items-center gap-3 mb-2">
               <Badge className="bg-green-600 text-white px-4 py-2 text-sm" data-testid="badge-human-in-loop">
@@ -584,7 +584,7 @@ function DemoLiveActivation() {
                   ✨ Augmented Execution in Action
                 </h3>
                 <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">
-                  Notice: M is coordinating stakeholders, but humans are making all decisions.
+                  Notice: POISE is coordinating stakeholders, but humans are making all decisions.
                 </p>
                 <ul className="space-y-1 text-sm text-slate-700 dark:text-slate-300">
                   <li className="flex items-center gap-2">
@@ -765,18 +765,18 @@ function DemoLiveActivation() {
                 </Card>
               </div>
 
-              {/* The M Advantage - Before/After */}
+              {/* The POISE Advantage - Before/After */}
               <Card className="bg-gradient-to-r from-slate-800/90 to-slate-700/90 border-purple-500/50 mb-12">
                 <CardHeader>
                   <CardTitle className="text-4xl text-center text-purple-300">
-                    The M Advantage
+                    The POISE Advantage
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-8">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                    {/* Without M */}
+                    {/* Without POISE */}
                     <div className="text-center p-6 bg-red-900/30 rounded-lg border-2 border-red-500/50">
-                      <div className="text-lg text-red-300 mb-3 font-semibold">WITHOUT M</div>
+                      <div className="text-lg text-red-300 mb-3 font-semibold">WITHOUT POISE</div>
                       <div className="text-7xl font-bold text-red-400 mb-3" data-testid="text-without-vexor">
                         48-72h
                       </div>
@@ -789,9 +789,9 @@ function DemoLiveActivation() {
                       <ArrowRight className="h-24 w-24 text-green-400 animate-pulse" />
                     </div>
 
-                    {/* With M */}
+                    {/* With POISE */}
                     <div className="text-center p-6 bg-green-900/30 rounded-lg border-2 border-green-500/50">
-                      <div className="text-lg text-green-300 mb-3 font-semibold">WITH M</div>
+                      <div className="text-lg text-green-300 mb-3 font-semibold">WITH POISE</div>
                       <div className="text-7xl font-bold text-green-400 mb-3 animate-pulse" data-testid="text-with-vexor">
                         {finalMetrics.coordinationTime}
                       </div>
@@ -1127,7 +1127,7 @@ function DemoLiveActivation() {
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
-                <div className="text-sm text-slate-400 mb-2">WITHOUT M</div>
+                <div className="text-sm text-slate-400 mb-2">WITHOUT POISE</div>
                 <div className="flex items-center gap-2">
                   <AlertCircle className="h-6 w-6 text-red-400" />
                   <div className="text-3xl font-bold text-red-400">48-72h</div>
@@ -1138,7 +1138,7 @@ function DemoLiveActivation() {
               </div>
 
               <div className="border-t border-slate-700 pt-4">
-                <div className="text-sm text-slate-400 mb-2">WITH M</div>
+                <div className="text-sm text-slate-400 mb-2">WITH POISE</div>
                 <div className="flex items-center gap-2">
                   <TrendingUp className="h-6 w-6 text-green-400" />
                   <div className="text-3xl font-bold text-green-400">~12min</div>

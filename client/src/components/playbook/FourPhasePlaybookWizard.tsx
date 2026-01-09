@@ -393,7 +393,7 @@ export default function FourPhasePlaybookWizard({
                 <div className="flex gap-2">
                   <Lightbulb className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
                   <div className="text-sm text-blue-900 dark:text-blue-100">
-                    <span className="font-semibold">Pro Tip:</span> Customize each section with your organization's specific context. M pre-fills 80%+ of content from best practices.
+                    <span className="font-semibold">Pro Tip:</span> Customize each section with your organization's specific context. POISE pre-fills 80%+ of content from best practices.
                   </div>
                 </div>
               </Card>

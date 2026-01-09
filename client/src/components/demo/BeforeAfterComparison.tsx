@@ -46,7 +46,7 @@ export function BeforeAfterComparison() {
         <div className="p-6">
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-white mb-2">
-              Traditional Response vs M
+              Traditional Response vs POISE
             </h3>
             <p className="text-slate-400">Same crisis. Radically different outcomes.</p>
           </div>
@@ -79,7 +79,7 @@ export function BeforeAfterComparison() {
               </div>
             </div>
 
-            {/* M Coordination */}
+            {/* POISE Coordination */}
             <div className="space-y-4">
               <div className="text-center pb-3 border-b border-emerald-500/30">
                 <div className="text-lg font-bold text-emerald-400">POISE</div>

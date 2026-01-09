@@ -174,12 +174,12 @@ export default function SalesforceTimeSection() {
                 Stop Wasting Time. Start Executing.
               </h3>
               <p className="text-lg mb-6 text-muted-foreground max-w-2xl mx-auto">
-                Watch how M eliminates coordination overhead and reclaims 70% 
+                Watch how POISE eliminates coordination overhead and reclaims 70% 
                 of your team's strategic execution time.
               </p>
               <Button size="lg" asChild data-testid="button-see-time-demo">
                 <a href="/demo-selector">
-                  See M Eliminate Coordination Friction
+                  See POISE Eliminate Coordination Friction
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </a>
               </Button>
@@ -187,7 +187,7 @@ export default function SalesforceTimeSection() {
           </Card>
 
           <FootballConnectionCallout 
-            text="Football eliminated coordination overhead by removing the huddle and using instant play-calling. No meetings required. M applies the same principle: from decision to execution in 12 minutes."
+            text="Football eliminated coordination overhead by removing the huddle and using instant play-calling. No meetings required. POISE applies the same principle: from decision to execution in 12 minutes."
             testId="callout-salesforce-connection"
           />
 

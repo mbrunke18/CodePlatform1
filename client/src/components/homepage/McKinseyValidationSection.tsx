@@ -54,7 +54,7 @@ export default function McKinseyValidationSection() {
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Button size="lg" asChild data-testid="button-see-demo">
                       <a href="/demo-selector">
-                        See How M Closes the Gap
+                        See How POISE Closes the Gap
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </a>
                     </Button>
@@ -103,12 +103,12 @@ export default function McKinseyValidationSection() {
           <Card className="bg-primary text-primary-foreground" data-testid="card-four-outcomes-callout">
             <CardContent className="p-8 text-center">
               <h3 className="text-2xl font-bold mb-4">
-                M Delivers McKinsey's Four Outcomes
+                POISE Delivers McKinsey's Four Outcomes
               </h3>
               <p className="text-lg mb-6 opacity-90">
                 McKinsey's research identified four measurable outcomes that drive 
                 organizational performance: <strong>Clarity, Speed, Skills, and Commitment</strong>. 
-                M is purpose-built to optimize all four.
+                POISE is purpose-built to optimize all four.
               </p>
               <p className="text-xl font-semibold">
                 From 30% execution gap to 95% strategic realization.
@@ -117,7 +117,7 @@ export default function McKinseyValidationSection() {
           </Card>
 
           <FootballConnectionCallout 
-            text="Football coaches close this gap by preparing playbooks before game day and coordinating execution in under 60 seconds. M brings that proven system to business strategy."
+            text="Football coaches close this gap by preparing playbooks before game day and coordinating execution in under 60 seconds. POISE brings that proven system to business strategy."
             testId="callout-mckinsey-connection"
           />
 
