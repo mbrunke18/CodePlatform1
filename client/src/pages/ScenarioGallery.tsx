@@ -310,7 +310,7 @@ export default function ScenarioGallery() {
                       Ready to Operationalize Your Playbooks?
                     </h3>
                     <p className="text-lg text-slate-700 dark:text-slate-300 mb-6 max-w-2xl mx-auto">
-                      Join POISE's Q1 2025 pilot program and transform your strategic execution from 72-hour coordination to 12-minute response. Limited to 10 Fortune 1000 companies.
+                      Join POISE's Q1 2026 pilot program and transform your strategic execution from 72-hour coordination to 12-minute response. Limited to 10 Fortune 1000 companies.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
                       <Button 

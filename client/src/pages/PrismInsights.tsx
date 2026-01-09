@@ -33,7 +33,7 @@ export default function PrismInsights() {
       dimension: 'strategic',
       confidence: 94,
       impact: 'high',
-      timeframe: 'Q4 2025',
+      timeframe: 'Q4 2026',
       description: 'Multi-dimensional analysis reveals optimal market positioning for competitive advantage',
       insights: [
         'Premium positioning in emerging markets shows 340% ROI potential',
@@ -54,7 +54,7 @@ export default function PrismInsights() {
       dimension: 'operational',
       confidence: 87,
       impact: 'high',
-      timeframe: 'Q1-Q2 2025',
+      timeframe: 'Q1-Q2 2026',
       description: 'Cross-functional analysis identifying efficiency optimization opportunities',
       insights: [
         'Process automation potential in 67% of current workflows',
@@ -96,7 +96,7 @@ export default function PrismInsights() {
       dimension: 'human',
       confidence: 83,
       impact: 'medium',
-      timeframe: 'Q2-Q3 2025',
+      timeframe: 'Q2-Q3 2026',
       description: 'Comprehensive analysis of human capital and organizational culture',
       insights: [
         'Employee engagement correlation with performance at 0.78',

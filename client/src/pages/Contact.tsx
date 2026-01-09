@@ -34,10 +34,10 @@ export default function Contact() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Request Early Access - POISE Q1 2025 Pilot Program",
-      description: "Join POISE's exclusive Q1 2025 pilot program. Limited to 10 Fortune 1000 companies for 90-day validation partnership. Transform strategic execution from days to minutes.",
+      title: "Request Early Access - POISE Q1 2026 Pilot Program",
+      description: "Join POISE's exclusive Q1 2026 pilot program. Limited to 10 Fortune 1000 companies for 90-day validation partnership. Transform strategic execution from days to minutes.",
       ogTitle: "Request Early Access - POISE Pilot Program",
-      ogDescription: "Limited pilot opportunity for Fortune 1000 companies. 90-day validation partnership starting Q1 2025.",
+      ogDescription: "Limited pilot opportunity for Fortune 1000 companies. 90-day validation partnership starting Q1 2026.",
     });
   }, []);
 
@@ -78,7 +78,7 @@ export default function Contact() {
       <section className="py-16 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
         <div className="max-w-5xl mx-auto text-center">
           <Badge className="mb-4 bg-purple-600 text-white border-0 text-base px-6 py-2" data-testid="badge-early-access">
-            Q1 2025 Pilot Program
+            Q1 2026 Pilot Program
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white" data-testid="heading-early-access">
             Request Early Access Interview
@@ -93,7 +93,7 @@ export default function Contact() {
             </div>
             <div className="flex items-center gap-2">
               <Zap className="h-5 w-5 text-cyan-400" />
-              <span>Q1 2025 Launch</span>
+              <span>Q1 2026 Launch</span>
             </div>
             <div className="flex items-center gap-2">
               <Target className="h-5 w-5 text-cyan-400" />

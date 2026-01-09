@@ -37,7 +37,7 @@ export default function MarketingLanding() {
       title: "POISE - Strategic Execution Operating System | Transform Strategy into 12-Minute Execution",
       description: "Your competitor just launched. Your board meeting is in 3 days. POISE is the first Strategic Execution Operating System that transforms 72-hour strategic coordination into 12-minute coordinated execution. 166 playbooks, 5 AI modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
       ogTitle: "POISE - When Your Competitor Moves, Will You Be Ready?",
-      ogDescription: "The category-defining Strategic Execution Operating System. Limited Q1 2025 pilot: 10 Fortune 1000 design partners. Prepare → Monitor → Execute → Learn.",
+      ogDescription: "The category-defining Strategic Execution Operating System. Limited Q1 2026 pilot: 10 Fortune 1000 design partners. Prepare → Monitor → Execute → Learn.",
     });
   }, []);
 
@@ -178,7 +178,7 @@ export default function MarketingLanding() {
                     ⚡ LIMITED AVAILABILITY
                   </Badge>
                   <h3 className="text-3xl md:text-4xl font-bold text-white mb-3">
-                    Q1 2025 Design Partner Program
+                    Q1 2026 Design Partner Program
                   </h3>
                   <p className="text-xl text-yellow-200 mb-6">
                     Join 10 Fortune 1000 companies building the future of executive decision operations
@@ -880,7 +880,7 @@ export default function MarketingLanding() {
             Ready to Transform Strategic Execution?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Join 10 Fortune 1000 pilot companies in Q1 2025. 90-day validation partnership. Risk-free strategic implementation support.
+            Join 10 Fortune 1000 pilot companies in Q1 2026. 90-day validation partnership. Risk-free strategic implementation support.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 

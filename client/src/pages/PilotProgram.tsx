@@ -565,7 +565,7 @@ export default function PilotProgram() {
               Ready to Validate Strategic Execution?
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
-              Limited to 5 design partners in Q1 2025. Priority given to organizations with recent strategic event pain.
+              Limited to 5 design partners in Q1 2026. Priority given to organizations with recent strategic event pain.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button 

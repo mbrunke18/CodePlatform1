@@ -24,7 +24,7 @@ export default function Pricing() {
   useEffect(() => {
     updatePageMetadata({
       title: "Enterprise Pricing - POISE | Strategic Execution Operating System",
-      description: "Premium tiered pricing for Fortune 1000 companies. Enterprise ($250K), Enterprise Plus ($450K), Global ($750K-$1.5M). Founding Partner Pilot Program ($75K, 100% credited to Year 1) available Q1 2025.",
+      description: "Premium tiered pricing for Fortune 1000 companies. Enterprise ($250K), Enterprise Plus ($450K), Global ($750K-$1.5M). Founding Partner Pilot Program ($75K, 100% credited to Year 1) available Q1 2026.",
       ogTitle: "POISE Enterprise Pricing - Built for Fortune 1000",
       ogDescription: "Category-defining Executive Decision Operations platform with value-aligned premium pricing. Three tiers from $250K-$1.5M annually.",
     });
@@ -57,7 +57,7 @@ export default function Pricing() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-emerald-600 text-white text-base px-4 py-2">
-              Q1 2025 Founding Partner Program
+              Q1 2026 Founding Partner Program
             </Badge>
             <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white">
               Join Our Founding Partners
@@ -468,7 +468,7 @@ export default function Pricing() {
             Ready to Transform Your Strategic Execution?
           </h2>
           <p className="text-xl text-slate-600 dark:text-slate-400 mb-8">
-            Join our Q1 2025 Founding Partner Pilot Program or schedule a personalized pricing consultation
+            Join our Q1 2026 Founding Partner Pilot Program or schedule a personalized pricing consultation
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button 

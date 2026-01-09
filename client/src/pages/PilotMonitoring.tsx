@@ -118,7 +118,7 @@ export default function PilotMonitoring() {
             </Badge>
           </div>
           <p className="text-lg text-slate-600 dark:text-slate-400">
-            Real-time monitoring for Q1 2025 Early Access Program
+            Real-time monitoring for Q1 2026 Early Access Program
           </p>
         </div>
 

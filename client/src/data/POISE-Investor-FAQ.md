@@ -171,7 +171,7 @@ We're pre-revenue, focused on product completion and design partner acquisition.
 
 - **Product:** MVP complete, 84.4% system verification pass rate
 - **Pipeline:** [X] qualified conversations with Fortune 500 prospects
-- **Design Partners:** Targeting 3-5 pilots launching Q1 2025
+- **Design Partners:** Targeting 3-5 pilots launching Q1 2026
 - **Team:** [X] FTEs plus advisory network
 
 We're raising to accelerate sales hiring and complete enterprise hardening.

@@ -160,7 +160,7 @@ export default function SimulationStudio() {
                   <Label htmlFor="sim-name">Simulation Name</Label>
                   <Input
                     id="sim-name"
-                    placeholder="Q4 2025 Crisis Drill"
+                    placeholder="Q4 2026 Crisis Drill"
                     value={simulationName}
                     onChange={(e) => setSimulationName(e.target.value)}
                     data-testid="input-simulation-name"

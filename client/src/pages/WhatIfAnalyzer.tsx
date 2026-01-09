@@ -853,7 +853,7 @@ export default function WhatIfAnalyzer() {
                         <Label htmlFor="scenario-name">Scenario Name</Label>
                         <Input
                           id="scenario-name"
-                          placeholder="e.g., Oil Price Spike Q4 2025"
+                          placeholder="e.g., Oil Price Spike Q4 2026"
                           value={analysisName}
                           onChange={(e) => setAnalysisName(e.target.value)}
                           data-testid="input-scenario-name"

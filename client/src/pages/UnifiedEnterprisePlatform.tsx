@@ -104,7 +104,7 @@ export default function UnifiedEnterprisePlatform() {
       priority: "high",
       confidence: 94,
       impact: "$2.4M projected revenue",
-      timeframe: "Q2-Q3 2025",
+      timeframe: "Q2-Q3 2026",
       mlModel: "Market Intelligence v2.1",
       dataPoints: 47392
     },
@@ -775,7 +775,7 @@ export default function UnifiedEnterprisePlatform() {
                   <CardContent className="space-y-3">
                     <div className="space-y-2">
                       <div className="p-2 bg-slate-800 rounded text-sm">
-                        <div className="text-white font-medium">Q1 2025 Strategy Review</div>
+                        <div className="text-white font-medium">Q1 2026 Strategy Review</div>
                         <div className="text-xs text-slate-200">Due in 14 days • High Priority</div>
                       </div>
                       <div className="p-2 bg-slate-800 rounded text-sm">
