@@ -631,11 +631,14 @@ export default function MissionControl() {
                           Manage Triggers
                         </Button>
                       </Link>
-                      <Link href="/signal-intelligence">
-                        <Button variant="outline" size="sm" className="w-full border-emerald-300 text-emerald-700 hover:bg-emerald-50 dark:border-emerald-700 dark:text-emerald-400 dark:hover:bg-emerald-900/30">
-                          View Signal Categories
-                        </Button>
-                      </Link>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="w-full border-emerald-300 text-emerald-700 hover:bg-emerald-50 dark:border-emerald-700 dark:text-emerald-400 dark:hover:bg-emerald-900/30"
+                        onClick={() => document.getElementById('signal-intelligence-panel')?.scrollIntoView({ behavior: 'smooth' })}
+                      >
+                        View Signal Categories
+                      </Button>
                     </div>
                   </div>
                 </motion.div>
@@ -1085,7 +1088,7 @@ export default function MissionControl() {
             </Card>
 
             {/* Signal Intelligence Panel - Second (aligns with DETECT phase) */}
-            <Card className="lg:col-span-1">
+            <Card id="signal-intelligence-panel" className="lg:col-span-1">
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
