@@ -264,7 +264,7 @@ export default function StandardNav() {
                 <DropdownMenuItem onClick={() => navigateTo("/our-story")} data-testid="nav-our-story">
                   Our Story
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/why-poise")} data-testid="nav-why-poise">
+                <DropdownMenuItem onClick={() => navigateTo("/why-executeiq")} data-testid="nav-why-executeiq">
                   Why ExecuteIQ
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => navigateTo("/integrations")} data-testid="nav-integrations">
@@ -615,9 +615,9 @@ export default function StandardNav() {
                   Our Story
                 </button>
                 <button
-                  onClick={() => navigateTo("/why-poise")}
+                  onClick={() => navigateTo("/why-executeiq")}
                   className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-why-poise"
+                  data-testid="nav-mobile-why-executeiq"
                 >
                   Why ExecuteIQ
                 </button>

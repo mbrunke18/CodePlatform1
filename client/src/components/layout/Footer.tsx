@@ -65,7 +65,7 @@ export default function Footer() {
       links: [
         { label: "How It Works", path: "/how-it-works" },
         { label: "Our Story", path: "/our-story" },
-        { label: "Why ExecuteIQ", path: "/why-poise" },
+        { label: "Why ExecuteIQ", path: "/why-executeiq" },
         { label: "Integrations", path: "/integrations" },
         { label: "Pricing", path: "/pricing" },
         { label: "Contact", path: "/contact" },

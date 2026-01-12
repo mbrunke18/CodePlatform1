@@ -292,6 +292,7 @@ function Router() {
         <Route path="/our-story" component={OurStory} />
         <Route path="/why-m" component={WhyM} />
         <Route path="/why-poise" component={WhyM} />
+        <Route path="/why-executeiq" component={WhyM} />
         <Route path="/research" component={Research} />
         <Route path="/how-it-works" component={HowItWorks} />
         <Route path="/pricing" component={Pricing} />
