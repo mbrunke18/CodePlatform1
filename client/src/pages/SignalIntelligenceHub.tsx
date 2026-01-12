@@ -15,10 +15,12 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { Textarea } from '@/components/ui/textarea';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { 
   Radio, 
   ChevronRight, 
   ChevronLeft,
+  ChevronDown,
   Search,
   Plus,
   Settings,
@@ -1814,79 +1816,86 @@ export default function SignalIntelligenceHub() {
                 </CardHeader>
                 <CardContent>
                   <ScrollArea className="h-[600px]">
-                    <div className="space-y-6">
+                    <div className="space-y-3">
                       {SIGNAL_CATEGORIES.map(category => (
-                        <div key={category.id} className="border rounded-lg overflow-hidden">
-                          <div 
-                            className="p-4 flex items-center justify-between"
-                            style={{ backgroundColor: `${category.color}15` }}
-                          >
-                            <div className="flex items-center gap-3">
-                              <div 
-                                className="w-10 h-10 rounded-lg flex items-center justify-center"
-                                style={{ backgroundColor: `${category.color}25` }}
-                              >
-                                <CategoryIcon 
-                                  iconName={category.icon} 
-                                  className="h-5 w-5"
-                                  style={{ color: category.color }}
-                                />
+                        <Collapsible key={category.id} className="border rounded-lg overflow-hidden">
+                          <CollapsibleTrigger className="w-full">
+                            <div 
+                              className="p-4 flex items-center justify-between cursor-pointer hover:opacity-90 transition-opacity"
+                              style={{ backgroundColor: `${category.color}15` }}
+                            >
+                              <div className="flex items-center gap-3">
+                                <div 
+                                  className="w-10 h-10 rounded-lg flex items-center justify-center"
+                                  style={{ backgroundColor: `${category.color}25` }}
+                                >
+                                  <CategoryIcon 
+                                    iconName={category.icon} 
+                                    className="h-5 w-5"
+                                    style={{ color: category.color }}
+                                  />
+                                </div>
+                                <div className="text-left">
+                                  <h3 className="font-semibold" style={{ color: category.color }}>{category.name}</h3>
+                                  <p className="text-xs text-muted-foreground">{category.description}</p>
+                                </div>
                               </div>
-                              <div>
-                                <h3 className="font-semibold" style={{ color: category.color }}>{category.name}</h3>
-                                <p className="text-xs text-muted-foreground">{category.description}</p>
+                              <div className="flex items-center gap-3">
+                                <Badge style={{ backgroundColor: category.color, color: 'white' }}>
+                                  {category.dataPoints.length} points
+                                </Badge>
+                                <ChevronDown className="h-5 w-5 text-muted-foreground transition-transform duration-200 group-data-[state=open]:rotate-180" style={{ color: category.color }} />
                               </div>
                             </div>
-                            <Badge style={{ backgroundColor: category.color, color: 'white' }}>
-                              {category.dataPoints.length} points
-                            </Badge>
-                          </div>
-                          <div className="divide-y">
-                            {category.dataPoints.map((dp, idx) => (
-                              <div key={dp.id} className="p-3 flex items-start gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50">
-                                <div className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xs font-medium text-slate-500">
-                                  {idx + 1}
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <div className="flex items-center gap-2">
-                                    <span className="font-medium text-sm">{dp.name}</span>
-                                    <Badge variant="outline" className="text-xs">
-                                      {dp.metricType}
-                                    </Badge>
+                          </CollapsibleTrigger>
+                          <CollapsibleContent>
+                            <div className="divide-y border-t">
+                              {category.dataPoints.map((dp, idx) => (
+                                <div key={dp.id} className="p-3 flex items-start gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                                  <div className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xs font-medium text-slate-500">
+                                    {idx + 1}
                                   </div>
-                                  <p className="text-xs text-muted-foreground mt-1">{dp.description}</p>
-                                  <div className="flex items-center gap-2 mt-2">
-                                    <span className="text-xs text-slate-400">Sources:</span>
-                                    {dp.sources.map((src, i) => (
-                                      <Badge key={i} variant="secondary" className="text-xs py-0">
-                                        {src}
+                                  <div className="flex-1 min-w-0">
+                                    <div className="flex items-center gap-2">
+                                      <span className="font-medium text-sm">{dp.name}</span>
+                                      <Badge variant="outline" className="text-xs">
+                                        {dp.metricType}
                                       </Badge>
-                                    ))}
-                                  </div>
-                                </div>
-                                {dp.defaultThreshold && (
-                                  <div className="text-right text-xs">
-                                    <div className="text-muted-foreground">Default Trigger</div>
-                                    <div className="font-medium">
-                                      {dp.defaultThreshold.operator} {String(dp.defaultThreshold.value)}
-                                      {dp.unit && ` ${dp.unit}`}
                                     </div>
-                                    <Badge 
-                                      className={`mt-1 ${
-                                        dp.defaultThreshold.urgency === 'critical' ? 'bg-red-500' :
-                                        dp.defaultThreshold.urgency === 'high' ? 'bg-amber-500' :
-                                        dp.defaultThreshold.urgency === 'medium' ? 'bg-blue-500' :
-                                        'bg-slate-500'
-                                      } text-white text-xs`}
-                                    >
-                                      {dp.defaultThreshold.urgency}
-                                    </Badge>
+                                    <p className="text-xs text-muted-foreground mt-1">{dp.description}</p>
+                                    <div className="flex items-center gap-2 mt-2">
+                                      <span className="text-xs text-slate-400">Sources:</span>
+                                      {dp.sources.map((src, i) => (
+                                        <Badge key={i} variant="secondary" className="text-xs py-0">
+                                          {src}
+                                        </Badge>
+                                      ))}
+                                    </div>
                                   </div>
-                                )}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
+                                  {dp.defaultThreshold && (
+                                    <div className="text-right text-xs">
+                                      <div className="text-muted-foreground">Default Trigger</div>
+                                      <div className="font-medium">
+                                        {getOperatorLabel(dp.defaultThreshold.operator)} {String(dp.defaultThreshold.value)}
+                                        {dp.unit && ` ${dp.unit}`}
+                                      </div>
+                                      <Badge 
+                                        className={`mt-1 ${
+                                          dp.defaultThreshold.urgency === 'critical' ? 'bg-red-500' :
+                                          dp.defaultThreshold.urgency === 'high' ? 'bg-amber-500' :
+                                          dp.defaultThreshold.urgency === 'medium' ? 'bg-blue-500' :
+                                          'bg-slate-500'
+                                        } text-white text-xs`}
+                                      >
+                                        {dp.defaultThreshold.urgency}
+                                      </Badge>
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          </CollapsibleContent>
+                        </Collapsible>
                       ))}
                       
                       {/* Custom Data Points Section */}
@@ -1908,93 +1917,103 @@ export default function SignalIntelligenceHub() {
                             const isCustomCategory = !systemCategory;
                             
                             return (
-                              <div key={categoryName} className="border rounded-lg overflow-hidden border-purple-200 dark:border-purple-800">
-                                <div 
-                                  className="p-4 flex items-center justify-between bg-purple-50 dark:bg-purple-900/20"
-                                >
-                                  <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-purple-100 dark:bg-purple-900/40">
-                                      {isCustomCategory ? (
-                                        <Sparkles className="h-5 w-5 text-purple-500" />
-                                      ) : (
-                                        <CategoryIcon 
-                                          iconName={systemCategory?.icon || 'Activity'} 
-                                          className="h-5 w-5"
-                                          style={{ color: systemCategory?.color || '#9333ea' }}
-                                        />
-                                      )}
+                              <Collapsible key={categoryName} defaultOpen className="border rounded-lg overflow-hidden border-purple-200 dark:border-purple-800">
+                                <CollapsibleTrigger className="w-full">
+                                  <div 
+                                    className="p-4 flex items-center justify-between bg-purple-50 dark:bg-purple-900/20 cursor-pointer hover:opacity-90 transition-opacity"
+                                  >
+                                    <div className="flex items-center gap-3">
+                                      <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-purple-100 dark:bg-purple-900/40">
+                                        {isCustomCategory ? (
+                                          <Sparkles className="h-5 w-5 text-purple-500" />
+                                        ) : (
+                                          <CategoryIcon 
+                                            iconName={systemCategory?.icon || 'Activity'} 
+                                            className="h-5 w-5"
+                                            style={{ color: systemCategory?.color || '#9333ea' }}
+                                          />
+                                        )}
+                                      </div>
+                                      <div className="text-left">
+                                        <h3 className="font-semibold text-purple-600">
+                                          {systemCategory?.name || categoryName}
+                                          {isCustomCategory && <Badge className="ml-2 bg-purple-100 text-purple-600 text-xs">Custom Category</Badge>}
+                                        </h3>
+                                        <p className="text-xs text-muted-foreground">
+                                          {isCustomCategory ? 'Custom category created by your organization' : 'Custom data points added to system category'}
+                                        </p>
+                                      </div>
                                     </div>
-                                    <div>
-                                      <h3 className="font-semibold text-purple-600">
-                                        {systemCategory?.name || categoryName}
-                                        {isCustomCategory && <Badge className="ml-2 bg-purple-100 text-purple-600 text-xs">Custom Category</Badge>}
-                                      </h3>
-                                      <p className="text-xs text-muted-foreground">
-                                        {isCustomCategory ? 'Custom category created by your organization' : 'Custom data points added to system category'}
-                                      </p>
+                                    <div className="flex items-center gap-3">
+                                      <Badge className="bg-purple-500 text-white">
+                                        {(dataPoints as any[]).length} custom
+                                      </Badge>
+                                      <ChevronDown className="h-5 w-5 text-purple-500 transition-transform duration-200" />
                                     </div>
                                   </div>
-                                  <Badge className="bg-purple-500 text-white">
-                                    {(dataPoints as any[]).length} custom
-                                  </Badge>
-                                </div>
-                                <div className="divide-y">
-                                  {(dataPoints as any[]).map((dp: any, idx: number) => (
-                                    <div key={dp.id} className="p-3 flex items-start gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50">
-                                      <div className="w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900/40 flex items-center justify-center text-xs font-medium text-purple-500">
-                                        {idx + 1}
-                                      </div>
-                                      <div className="flex-1 min-w-0">
-                                        <div className="flex items-center gap-2">
-                                          <span className="font-medium text-sm">{dp.name}</span>
-                                          <Badge variant="outline" className="text-xs border-purple-300 text-purple-600">
-                                            {dp.metricType}
-                                          </Badge>
-                                          <Badge className="bg-purple-100 text-purple-600 text-xs">
-                                            Custom
-                                          </Badge>
+                                </CollapsibleTrigger>
+                                <CollapsibleContent>
+                                  <div className="divide-y border-t">
+                                    {(dataPoints as any[]).map((dp: any, idx: number) => (
+                                      <div key={dp.id} className="p-3 flex items-start gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                                        <div className="w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900/40 flex items-center justify-center text-xs font-medium text-purple-500">
+                                          {idx + 1}
                                         </div>
-                                        <p className="text-xs text-muted-foreground mt-1">{dp.description || 'No description'}</p>
-                                        <div className="flex items-center gap-2 mt-2">
-                                          <span className="text-xs text-slate-400">Sources:</span>
-                                          {(dp.sources || ['manual-input']).map((src: string, i: number) => (
-                                            <Badge key={i} variant="secondary" className="text-xs py-0">
-                                              {src}
+                                        <div className="flex-1 min-w-0">
+                                          <div className="flex items-center gap-2">
+                                            <span className="font-medium text-sm">{dp.name}</span>
+                                            <Badge variant="outline" className="text-xs border-purple-300 text-purple-600">
+                                              {dp.metricType}
                                             </Badge>
-                                          ))}
-                                        </div>
-                                      </div>
-                                      {dp.defaultThreshold && (
-                                        <div className="text-right text-xs">
-                                          <div className="text-muted-foreground">Default Trigger</div>
-                                          <div className="font-medium">
-                                            {getOperatorLabel(dp.defaultThreshold.operator)} {String(dp.defaultThreshold.value)}
-                                            {dp.unit && ` ${dp.unit}`}
+                                            <Badge className="bg-purple-100 text-purple-600 text-xs">
+                                              Custom
+                                            </Badge>
                                           </div>
-                                          <Badge 
-                                            className={`mt-1 ${
-                                              dp.defaultThreshold.urgency === 'critical' ? 'bg-red-500' :
-                                              dp.defaultThreshold.urgency === 'high' ? 'bg-amber-500' :
-                                              dp.defaultThreshold.urgency === 'medium' ? 'bg-blue-500' :
-                                              'bg-slate-500'
-                                            } text-white text-xs`}
-                                          >
-                                            {dp.defaultThreshold.urgency}
-                                          </Badge>
+                                          <p className="text-xs text-muted-foreground mt-1">{dp.description || 'No description'}</p>
+                                          <div className="flex items-center gap-2 mt-2">
+                                            <span className="text-xs text-slate-400">Sources:</span>
+                                            {(dp.sources || ['manual-input']).map((src: string, i: number) => (
+                                              <Badge key={i} variant="secondary" className="text-xs py-0">
+                                                {src}
+                                              </Badge>
+                                            ))}
+                                          </div>
                                         </div>
-                                      )}
-                                      <Button 
-                                        variant="ghost" 
-                                        size="sm"
-                                        onClick={() => deleteCustomDataPointMutation.mutate(dp.id)}
-                                        className="text-red-500 hover:text-red-700"
-                                      >
-                                        <Trash2 className="h-4 w-4" />
-                                      </Button>
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
+                                        {dp.defaultThreshold && (
+                                          <div className="text-right text-xs">
+                                            <div className="text-muted-foreground">Default Trigger</div>
+                                            <div className="font-medium">
+                                              {getOperatorLabel(dp.defaultThreshold.operator)} {String(dp.defaultThreshold.value)}
+                                              {dp.unit && ` ${dp.unit}`}
+                                            </div>
+                                            <Badge 
+                                              className={`mt-1 ${
+                                                dp.defaultThreshold.urgency === 'critical' ? 'bg-red-500' :
+                                                dp.defaultThreshold.urgency === 'high' ? 'bg-amber-500' :
+                                                dp.defaultThreshold.urgency === 'medium' ? 'bg-blue-500' :
+                                                'bg-slate-500'
+                                              } text-white text-xs`}
+                                            >
+                                              {dp.defaultThreshold.urgency}
+                                            </Badge>
+                                          </div>
+                                        )}
+                                        <Button 
+                                          variant="ghost" 
+                                          size="sm"
+                                          onClick={(e) => {
+                                            e.stopPropagation();
+                                            deleteCustomDataPointMutation.mutate(dp.id);
+                                          }}
+                                          className="text-red-500 hover:text-red-700"
+                                        >
+                                          <Trash2 className="h-4 w-4" />
+                                        </Button>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </CollapsibleContent>
+                              </Collapsible>
                             );
                           })}
                         </>
