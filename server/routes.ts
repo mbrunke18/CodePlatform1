@@ -42,6 +42,7 @@ import {
   insertStakeholderAlignmentSchema,
   insertExecutionValidationReportSchema,
   insertDemoLeadSchema,
+  insertCustomDataPointSchema,
   organizations,
   organizationOnboarding,
   strategicScenarios,

@@ -237,6 +237,11 @@ export interface IStorage {
   getModuleUsageAnalytics(organizationId: string): Promise<ModuleUsageAnalytic[]>;
   getUserModuleUsage(userId: string): Promise<ModuleUsageAnalytic[]>;
   
+  // Custom Data Points operations
+  getCustomDataPoints(organizationId?: string): Promise<CustomDataPoint[]>;
+  createCustomDataPoint(dataPoint: InsertCustomDataPoint): Promise<CustomDataPoint>;
+  deleteCustomDataPoint(id: string): Promise<void>;
+  
   // Comprehensive Scenario Template operations
   getScenarioTemplates(): Promise<any[]>;
   getScenarioTemplateById(id: string): Promise<any>;
@@ -1097,6 +1102,30 @@ export class DatabaseStorage implements IStorage {
       .from(moduleUsageAnalytics)
       .where(eq(moduleUsageAnalytics.userId, userId))
       .orderBy(desc(moduleUsageAnalytics.timestamp));
+  }
+
+  // Custom Data Points operations
+  async getCustomDataPoints(organizationId?: string): Promise<CustomDataPoint[]> {
+    if (organizationId) {
+      return await db
+        .select()
+        .from(customDataPoints)
+        .where(eq(customDataPoints.organizationId, organizationId))
+        .orderBy(desc(customDataPoints.createdAt));
+    }
+    return await db
+      .select()
+      .from(customDataPoints)
+      .orderBy(desc(customDataPoints.createdAt));
+  }
+
+  async createCustomDataPoint(dataPoint: InsertCustomDataPoint): Promise<CustomDataPoint> {
+    const [newDataPoint] = await db.insert(customDataPoints).values(dataPoint).returning();
+    return newDataPoint;
+  }
+
+  async deleteCustomDataPoint(id: string): Promise<void> {
+    await db.delete(customDataPoints).where(eq(customDataPoints.id, id));
   }
 
   // Comprehensive Scenario Template operations
