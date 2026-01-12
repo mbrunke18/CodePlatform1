@@ -1,5 +1,5 @@
 import { useLocation } from "wouter";
-import executeiqLogoPath from "@assets/executeiq-logo-official.png";
+import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 
 export default function Footer() {
   const [, setLocation] = useLocation();
@@ -80,14 +80,13 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              <div className="px-4 py-2 rounded-xl bg-gradient-to-r from-poise-navy/90 to-poise-dark-gray/70 border border-poise-gold/30">
-                <img 
-                  src={executeiqLogoPath} 
-                  alt="ExecuteIQ - Composure in every decision" 
-                  className="h-12 sm:h-14 lg:h-16 w-auto max-w-[260px] object-contain brightness-110 contrast-105"
-                  style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.5))' }}
-                />
-              </div>
+              <ExecuteIQLogo 
+                width={220} 
+                height={66}
+                variant="full"
+                showTagline={true}
+                color="white"
+              />
             </div>
             <div className="flex items-center gap-3">
               <span className="text-xs font-medium px-3 py-1 rounded-full bg-poise-gold/20 text-poise-gold border border-poise-gold/30">IDENTIFY</span>

@@ -62,10 +62,16 @@ export default function StandardNav() {
             onClick={() => navigateTo('/')}
             data-testid="nav-logo"
           >
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-poise-navy/80 to-poise-dark-gray/60 border border-poise-gold/30">
-              <span className="text-xl sm:text-2xl font-bold tracking-tight">
+            <div className="flex items-center gap-2">
+              <ExecuteIQLogo 
+                width={32} 
+                height={32}
+                variant="icon-only"
+                color="white"
+              />
+              <span className="text-xl sm:text-2xl font-bold tracking-tight executeiq-heading" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                 <span className="text-white">Execute</span>
-                <span className="text-poise-gold">IQ</span>
+                <span className="text-executeiq-gold">IQ</span>
               </span>
             </div>
           </div>
