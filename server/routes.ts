@@ -7299,5 +7299,121 @@ SUCCESS METRICS:
 
   console.log('✅ Execution Coordination API endpoints registered');
 
+  // ============================================================================
+  // STRATEGIC OBJECTIVES API - Organization-level strategic goals (Fisk Leadership Model)
+  // ============================================================================
+
+  const { strategicObjectives } = await import('@shared/schema');
+
+  // Get all strategic objectives for an organization
+  app.get('/api/strategic-objectives', optionalAuth, async (req: any, res) => {
+    try {
+      const organizationId = req.query.organizationId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833';
+      
+      const objectives = await db.select()
+        .from(strategicObjectives)
+        .where(eq(strategicObjectives.organizationId, organizationId))
+        .orderBy(asc(strategicObjectives.priority));
+      
+      res.json(objectives);
+    } catch (error) {
+      console.error('Failed to fetch strategic objectives:', error);
+      res.status(500).json({ error: 'Failed to fetch strategic objectives' });
+    }
+  });
+
+  // Get a single strategic objective
+  app.get('/api/strategic-objectives/:id', optionalAuth, async (req: any, res) => {
+    try {
+      const { id } = req.params;
+      
+      const [objective] = await db.select()
+        .from(strategicObjectives)
+        .where(eq(strategicObjectives.id, id));
+      
+      if (!objective) {
+        return res.status(404).json({ error: 'Strategic objective not found' });
+      }
+      
+      res.json(objective);
+    } catch (error) {
+      console.error('Failed to fetch strategic objective:', error);
+      res.status(500).json({ error: 'Failed to fetch strategic objective' });
+    }
+  });
+
+  // Create a new strategic objective
+  app.post('/api/strategic-objectives', optionalAuth, async (req: any, res) => {
+    try {
+      const [objective] = await db.insert(strategicObjectives)
+        .values({
+          organizationId: req.body.organizationId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833',
+          name: req.body.name,
+          description: req.body.description,
+          targetDate: req.body.targetDate,
+          targetValue: req.body.targetValue,
+          currentValue: req.body.currentValue || '0',
+          valueUnit: req.body.valueUnit,
+          leadershipCapability: req.body.leadershipCapability,
+          priority: req.body.priority || 1,
+          status: req.body.status || 'active',
+          progress: req.body.progress || 0,
+          createdBy: req.userId,
+        })
+        .returning();
+      
+      res.status(201).json(objective);
+    } catch (error) {
+      console.error('Failed to create strategic objective:', error);
+      res.status(500).json({ error: 'Failed to create strategic objective' });
+    }
+  });
+
+  // Update a strategic objective
+  app.patch('/api/strategic-objectives/:id', optionalAuth, async (req: any, res) => {
+    try {
+      const { id } = req.params;
+      
+      const [updated] = await db.update(strategicObjectives)
+        .set({
+          ...req.body,
+          updatedAt: new Date(),
+        })
+        .where(eq(strategicObjectives.id, id))
+        .returning();
+      
+      if (!updated) {
+        return res.status(404).json({ error: 'Strategic objective not found' });
+      }
+      
+      res.json(updated);
+    } catch (error) {
+      console.error('Failed to update strategic objective:', error);
+      res.status(500).json({ error: 'Failed to update strategic objective' });
+    }
+  });
+
+  // Delete a strategic objective
+  app.delete('/api/strategic-objectives/:id', optionalAuth, async (req: any, res) => {
+    try {
+      const { id } = req.params;
+      
+      const [deleted] = await db.delete(strategicObjectives)
+        .where(eq(strategicObjectives.id, id))
+        .returning();
+      
+      if (!deleted) {
+        return res.status(404).json({ error: 'Strategic objective not found' });
+      }
+      
+      res.json({ message: 'Strategic objective deleted', id });
+    } catch (error) {
+      console.error('Failed to delete strategic objective:', error);
+      res.status(500).json({ error: 'Failed to delete strategic objective' });
+    }
+  });
+
+  console.log('✅ Strategic Objectives API endpoints registered');
+
   return httpServer;
 }
