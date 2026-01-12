@@ -1,4 +1,4 @@
-# POISE: Investor FAQ
+# ExecuteIQ: Investor FAQ
 ## 20 Anticipated Questions with Crisp Answers
 
 **Prepared for:** Roadshow Conversations  
@@ -8,9 +8,9 @@
 
 ## THE PRODUCT
 
-### 1. What exactly does POISE do?
+### 1. What exactly does ExecuteIQ do?
 
-POISE is a Strategic Execution Operating System that cuts enterprise response time from 72 hours to 12 minutes. When a strategic event happens—competitor move, crisis, M&A opportunity, regulatory change—POISE automatically activates pre-staged playbooks and coordinates response across all stakeholders simultaneously.
+ExecuteIQ is a Strategic Execution Operating System that cuts enterprise response time from 72 hours to 12 minutes. When a strategic event happens—competitor move, crisis, M&A opportunity, regulatory change—ExecuteIQ automatically activates pre-staged playbooks and coordinates response across all stakeholders simultaneously.
 
 **The elevator pitch:** "We give Fortune 1000 executives the same coordination advantage that NFL coaches have. When the trigger fires, everyone knows their play and executes immediately."
 
@@ -18,9 +18,9 @@ POISE is a Strategic Execution Operating System that cuts enterprise response ti
 
 ### 2. How is this different from project management tools like Asana or Monday?
 
-Project management tools track work after someone decides what to do. POISE handles the 72 hours *before* that—the signal detection, playbook selection, stakeholder notification, and coordinated launch.
+Project management tools track work after someone decides what to do. ExecuteIQ handles the 72 hours *before* that—the signal detection, playbook selection, stakeholder notification, and coordinated launch.
 
-| Asana/Monday | POISE |
+| Asana/Monday | ExecuteIQ |
 |--------------|---|
 | Tracks tasks after creation | Creates tasks automatically when triggers fire |
 | Reactive | Proactive (pre-staged playbooks) |
@@ -34,13 +34,13 @@ Different buyer (CSO vs. team leads), different budget (strategic vs. operationa
 
 ### 3. How is this different from ServiceNow or Salesforce?
 
-ServiceNow automates IT workflows. Salesforce manages customer relationships. POISE coordinates strategic execution across the C-suite.
+ServiceNow automates IT workflows. Salesforce manages customer relationships. ExecuteIQ coordinates strategic execution across the C-suite.
 
 **ServiceNow:** "Your laptop is broken → ticket created → IT fixes it"  
 **Salesforce:** "Lead comes in → sales process → deal closes"  
 **M:** "Competitor launches product → playbook activates → CFO, CMO, CPO, Legal all receive coordinated tasks → response launches in 12 minutes"
 
-These tools might be *downstream* of M—POISE can push tasks into ServiceNow or Salesforce—but they can't replace the strategic coordination layer.
+These tools might be *downstream* of M—ExecuteIQ can push tasks into ServiceNow or Salesforce—but they can't replace the strategic coordination layer.
 
 ---
 
@@ -68,7 +68,7 @@ Each playbook includes: trigger conditions, stakeholder assignments, decision tr
 
 The 12 minutes is time-to-first-coordinated-action, not time-to-resolution. Here's the breakdown:
 
-| Phase | Without POISE | With POISE |
+| Phase | Without ExecuteIQ | With ExecuteIQ |
 |-------|-----------|--------|
 | Signal detection | 4-24 hours | Real-time (AI monitoring) |
 | Leadership notification | 2-8 hours | Instant (automated alerts) |
@@ -81,7 +81,7 @@ We're not claiming the *crisis is resolved* in 12 minutes—we're claiming the *
 
 ---
 
-### 6. What integrations does POISE support?
+### 6. What integrations does ExecuteIQ support?
 
 Current integration architecture supports:
 
@@ -91,7 +91,7 @@ Current integration architecture supports:
 - **Data:** Snowflake, custom APIs
 - **Identity:** SSO (Okta, Azure AD)
 
-POISE is designed as a coordination layer that pushes tasks into existing tools—we don't ask customers to replace their stack.
+ExecuteIQ is designed as a coordination layer that pushes tasks into existing tools—we don't ask customers to replace their stack.
 
 ---
 
@@ -105,7 +105,7 @@ POISE is designed as a coordination layer that pushes tasks into existing tools�
 - Strategic Planning Software: $2.1B
 - Crisis Management Software: $12B (projected 2030)
 
-**Our thesis:** These are fragmented solutions to one problem—strategic execution speed. POISE creates a new category: Strategic Execution Operating Systems (SEOS).
+**Our thesis:** These are fragmented solutions to one problem—strategic execution speed. ExecuteIQ creates a new category: Strategic Execution Operating Systems (SEOS).
 
 **Bottom-up TAM:** 5,000 Global 2000 companies × $500K average contract = $2.5B addressable market for the platform alone.
 
@@ -133,7 +133,7 @@ The market is ready now in a way it wasn't 5 years ago.
 
 **Not the buyer:** CIO/CTO (this isn't an IT purchase), PMO (too tactical)
 
-POISE is sold top-down as a strategic capability, not bottom-up as a productivity tool.
+ExecuteIQ is sold top-down as a strategic capability, not bottom-up as a productivity tool.
 
 ---
 
@@ -215,7 +215,7 @@ We believe 3-5 design partners converting to full contracts plus 3-5 net-new cus
 
 **Adjacent players:**
 
-| Company | What They Do | Why They're Not POISE |
+| Company | What They Do | Why They're Not ExecuteIQ |
 |---------|--------------|-------------------|
 | **Fusion Risk Management** | Business continuity planning | Compliance-focused, not execution speed |
 | **Everbridge** | Mass notification | Single channel (alerts), not coordination |
@@ -233,9 +233,9 @@ They could build *features*—but they can't build the *system*.
 
 1. **Domain expertise:** Our 166 playbooks represent 20+ years of Fortune 500 strategic execution experience. A feature team at Salesforce doesn't have this knowledge.
 
-2. **Buyer mismatch:** Salesforce sells to CROs. ServiceNow sells to CIOs. POISE sells to CSOs and COOs. Different buyer, different requirements, different sales motion.
+2. **Buyer mismatch:** Salesforce sells to CROs. ServiceNow sells to CIOs. ExecuteIQ sells to CSOs and COOs. Different buyer, different requirements, different sales motion.
 
-3. **Platform architecture:** POISE is designed as an orchestration layer *above* these tools. We push tasks into Salesforce, ServiceNow, Jira. We're complementary, not competitive.
+3. **Platform architecture:** ExecuteIQ is designed as an orchestration layer *above* these tools. We push tasks into Salesforce, ServiceNow, Jira. We're complementary, not competitive.
 
 4. **Focus:** For Microsoft, this would be a rounding error. For us, it's everything. Startups win when they can out-focus incumbents.
 
@@ -312,4 +312,4 @@ For rapid-fire Q&A, memorize these:
 
 ---
 
-*Document prepared for POISE Strategic Execution Operating System roadshow. Confidential.*
+*Document prepared for ExecuteIQ Strategic Execution Operating System roadshow. Confidential.*

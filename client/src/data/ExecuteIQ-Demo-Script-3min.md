@@ -1,4 +1,4 @@
-# POISE: 3-Minute Investor Demo Script
+# ExecuteIQ: 3-Minute Investor Demo Script
 ## Exact Talking Points for Roadshow Presentations
 
 ---
@@ -6,7 +6,7 @@
 ## Before You Start
 
 ### Setup Checklist
-- [ ] Browser open to POISE homepage (https://code-platform-martybrunke.replit.app)
+- [ ] Browser open to ExecuteIQ homepage (https://code-platform-martybrunke.replit.app)
 - [ ] Logged in (if showing dashboard features)
 - [ ] Screen sharing ready
 - [ ] Backup: Screen recording saved locally in case of internet issues
@@ -23,13 +23,13 @@ You're not showing software. You're showing **what becomes possible** when strat
 
 **[Start on Homepage]**
 
-> "Let me show you what POISE does in practice.
+> "Let me show you what ExecuteIQ does in practice.
 >
 > Today, when a strategic event hits—a competitor launches, a crisis breaks, an acquisition opportunity appears—most Fortune 500 companies take 72 hours just to get the right people aligned on what to do.
 >
 > **[Point to the hero: 72 hours → 12 minutes]**
 >
-> POISE cuts that to 12 minutes. Let me show you how."
+> ExecuteIQ cuts that to 12 minutes. Let me show you how."
 
 **[Click "See It In Action" → Executive Simulation]**
 
@@ -39,13 +39,13 @@ You're not showing software. You're showing **what becomes possible** when strat
 
 **[As simulation loads or navigate to Foresight Radar]**
 
-> "First, POISE monitors for signals that matter to your business. We're watching 12 intelligence sources—news, social media, regulatory filings, competitor activity, internal systems.
+> "First, ExecuteIQ monitors for signals that matter to your business. We're watching 12 intelligence sources—news, social media, regulatory filings, competitor activity, internal systems.
 >
 > **[Point to a signal/alert on screen]**
 >
-> Right here, POISE detected [describe the signal — e.g., "a ransomware attack pattern matching our client's infrastructure" or "a competitor filing a patent in our core market"].
+> Right here, ExecuteIQ detected [describe the signal — e.g., "a ransomware attack pattern matching our client's infrastructure" or "a competitor filing a patent in our core market"].
 >
-> In a normal company, someone might see this tomorrow in a news alert. Maybe. POISE saw it in real-time and immediately assessed: does this match any of our trigger conditions?"
+> In a normal company, someone might see this tomorrow in a news alert. Maybe. ExecuteIQ saw it in real-time and immediately assessed: does this match any of our trigger conditions?"
 
 ---
 
@@ -53,7 +53,7 @@ You're not showing software. You're showing **what becomes possible** when strat
 
 **[Navigate to or show playbook activation]**
 
-> "It does match. So POISE automatically pulls up the relevant playbook.
+> "It does match. So ExecuteIQ automatically pulls up the relevant playbook.
 >
 > **[Show playbook — e.g., Ransomware Response or Competitive Response]**
 >
@@ -108,7 +108,7 @@ You're not showing software. You're showing **what becomes possible** when strat
 > **[If time, add one of these based on context:]**
 >
 > *For risk-focused investors:*
-> "IBM found that companies with pre-defined response teams save 35% on incident costs. POISE makes that pre-definition automatic."
+> "IBM found that companies with pre-defined response teams save 35% on incident costs. ExecuteIQ makes that pre-definition automatic."
 >
 > *For growth-focused investors:*
 > "This isn't just for crises. It's the same system for M&A execution, product launches, market entry—any strategic moment where speed matters."
@@ -140,7 +140,7 @@ If questions come during the demo, have these ready:
 
 After the 3 minutes, transition to conversation:
 
-> "That's the core of what POISE does. Happy to go deeper on any part—the playbook library, the AI monitoring, the integration architecture, or the business model.
+> "That's the core of what ExecuteIQ does. Happy to go deeper on any part—the playbook library, the AI monitoring, the integration architecture, or the business model.
 >
 > But first—what resonated with you? What questions came up?"
 
@@ -179,7 +179,7 @@ This opens dialogue instead of continuing to present.
 > [Play backup screen recording]
 
 **Page loads slowly:**
-> "While this loads—the key point is that POISE pre-stages everything. When the trigger fires, there's no waiting, no loading, no configuration. It's instant because the work was done in advance."
+> "While this loads—the key point is that ExecuteIQ pre-stages everything. When the trigger fires, there's no waiting, no loading, no configuration. It's instant because the work was done in advance."
 
 **Wrong data appears:**
 > "This is our demo environment, so the data is simulated—but the flow is exactly what happens in production. Signal detected, playbook matched, response deployed."
@@ -213,4 +213,4 @@ Before every roadshow meeting:
 
 ---
 
-*Demo script prepared for POISE Strategic Execution Operating System roadshow. Adapt talking points to specific investor focus.*
+*Demo script prepared for ExecuteIQ Strategic Execution Operating System roadshow. Adapt talking points to specific investor focus.*
