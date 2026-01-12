@@ -169,15 +169,15 @@ const PRESENTATION_SLIDES: Slide[] = [
     title: 'DETECT',
     subtitle: 'Monitor Signals',
     content: 'slide',
-    notes: 'Our AI continuously monitors 12 intelligence signal categories across 92 data points. It detects weak signals before they become crises and recommends the right playbook.',
+    notes: 'Our AI continuously monitors 16 intelligence signal categories across 216 data points. It detects weak signals before they become crises and recommends the right playbook.',
     visual: 'phase',
     data: {
       phase: 'DETECT',
       icon: 'eye',
       color: 'blue',
       features: [
-        '12 intelligence signal categories',
-        '92 monitored data points',
+        '16 intelligence signal categories',
+        '216 monitored data points',
         'Weak signal detection',
         'AI-powered playbook recommendations'
       ]

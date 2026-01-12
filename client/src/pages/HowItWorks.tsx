@@ -52,7 +52,7 @@ export default function HowItWorks() {
       borderColor: "border-blue-500",
       bgLight: "bg-blue-50 dark:bg-blue-950/30",
       textColor: "text-blue-600 dark:text-blue-400",
-      description: "Continuous AI monitoring across 16 intelligence categories and 92 data points to detect threats and opportunities.",
+      description: "Continuous AI monitoring across 16 intelligence categories and 216 data points to detect threats and opportunities.",
       capabilities: [
         "Real-time monitoring of market signals, competitor moves, and industry shifts",
         "AI pattern recognition identifies weak signals before they become crises",

@@ -133,7 +133,7 @@ export default function MarketingLanding() {
                     <Badge className="mb-2 bg-blue-500 text-white border-0 text-xs">DETECT</Badge>
                     <div className="text-blue-200 font-bold text-lg mb-1">ExecuteIQ Signal™</div>
                     <p className="text-blue-100/80 text-xs">
-                      AI-powered monitoring across 92 data points. Detect threats and opportunities before competitors.
+                      AI-powered monitoring across 216 data points. Detect threats and opportunities before competitors.
                     </p>
                   </div>
                   <div className="bg-emerald-500/20 rounded-lg p-4 border border-emerald-400/30">

@@ -191,7 +191,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
       {
         id: 'tm-categories',
         title: '16 Intelligence Categories',
-        description: 'Monitor 92+ data points across categories: Competitive, Market, Financial, Regulatory, Supply Chain, Customer, Talent, Technology, Cyber, and more.',
+        description: 'Monitor 216+ data points across categories: Competitive, Market, Financial, Regulatory, Supply Chain, Customer, Talent, Technology, Cyber, and more.',
         phase: 'DETECT'
       },
       {
