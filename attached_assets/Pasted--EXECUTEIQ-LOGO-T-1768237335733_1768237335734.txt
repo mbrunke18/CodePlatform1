@@ -1,0 +1,346 @@
+================================================================================
+EXECUTEIQ LOGO & TAGLINE - QUICK REPLIT INTEGRATION
+================================================================================
+
+TOTAL TIME: 15-20 MINUTES
+
+================================================================================
+STEP 1: ADD CSS VARIABLES (2 minutes)
+================================================================================
+
+1. Open: /src/styles/globals.css (or your main stylesheet)
+
+2. Find the :root { } section at the top
+
+3. Copy everything from EXECUTEIQ_CSS_VARIABLES.css into :root { }
+
+Example:
+:root {
+  --executeiq-navy: #1A2B3D;
+  --executeiq-gold: #D4AF37;
+  --executeiq-teal: #00A8A8;
+  --executeiq-white: #FFFFFF;
+  --executeiq-dark-gray: #0F1620;
+  --executeiq-light-gray: #F8F9FA;
+  
+  /* ... rest of variables ... */
+}
+
+✓ Done - CSS variables now available in your app
+
+================================================================================
+STEP 2: CREATE EXECUTEIQ COMPONENT (1 minute)
+================================================================================
+
+1. Navigate to: /src/components/
+
+2. Create new file: ExecuteIQLogo.tsx
+
+3. Copy entire content from ExecuteIQLogo_REPLIT_READY.tsx into this file
+
+✓ Done - Component ready to use
+
+================================================================================
+STEP 3: UPDATE DASHBOARD HEADER (3 minutes)
+================================================================================
+
+Find your dashboard/header component (e.g., DashboardHeader.tsx or Header.tsx)
+
+BEFORE:
+```jsx
+import { useContext } from 'react';
+import MIcon from '@/assets/m-icon.svg';
+
+export default function DashboardHeader() {
+  return (
+    <header className="border-b border-gray-200 bg-white px-6 py-4">
+      <div className="flex items-center gap-4">
+        <img src={MIcon} alt="M" className="w-8 h-8" />
+        <h1 className="text-2xl font-bold">Command Center</h1>
+      </div>
+    </header>
+  );
+}
+```
+
+AFTER:
+```jsx
+import ExecuteIQLogo from '@/components/ExecuteIQLogo';
+
+export default function DashboardHeader() {
+  return (
+    <header className="border-b border-gray-200 bg-white px-6 py-4">
+      <div className="flex items-center gap-4">
+        <ExecuteIQLogo 
+          width={100} 
+          height={30}
+          variant="icon-only"
+          showTagline={false}
+        />
+        <h1 className="text-2xl font-bold text-executeiq-navy">
+          Command Center
+        </h1>
+        <p className="text-executeiq-gold text-sm italic ml-auto">
+          Execute Decisions at Scale
+        </p>
+      </div>
+    </header>
+  );
+}
+```
+
+✓ Done - Header now shows ExecuteIQ branding
+
+================================================================================
+STEP 4: UPDATE SIDEBAR/NAV LOGO (2 minutes)
+================================================================================
+
+Find your sidebar/nav component (e.g., Sidebar.tsx or Navigation.tsx)
+
+BEFORE:
+```jsx
+<div className="px-6 py-4 border-b">
+  <img src={MIcon} alt="M Logo" className="h-6 w-auto" />
+</div>
+```
+
+AFTER:
+```jsx
+import ExecuteIQLogo from '@/components/ExecuteIQLogo';
+
+<div className="px-6 py-4 border-b border-executeiq-border">
+  <ExecuteIQLogo 
+    width={140} 
+    height={42}
+    variant="full"
+    showTagline={true}
+  />
+</div>
+```
+
+✓ Done - Sidebar shows ExecuteIQ full branding
+
+================================================================================
+STEP 5: UPDATE BUTTON COLORS (5 minutes)
+================================================================================
+
+Find your Button component (e.g., Button.tsx)
+
+Update primary button:
+BEFORE: className="bg-blue-600 text-white border border-blue-800"
+AFTER: className="bg-executeiq-navy text-white border-2 border-executeiq-gold hover:bg-executeiq-dark-gray"
+
+Update secondary button:
+BEFORE: className="bg-gray-200 text-black border border-gray-400"
+AFTER: className="bg-transparent text-executeiq-navy border-2 border-executeiq-navy hover:bg-executeiq-light-gray"
+
+Update success button:
+BEFORE: className="bg-green-600 text-white"
+AFTER: className="bg-executeiq-teal text-white hover:opacity-90"
+
+Update warning button:
+BEFORE: className="bg-yellow-600 text-white"
+AFTER: className="bg-executeiq-gold text-executeiq-navy hover:opacity-90"
+
+✓ Done - All buttons now use ExecuteIQ colors
+
+================================================================================
+STEP 6: UPDATE PLAYBOOK CARDS (2 minutes)
+================================================================================
+
+Find playbook card components
+
+BEFORE:
+```jsx
+<div className="bg-white p-4 rounded shadow">
+  <h3 className="font-bold">{playbook.name}</h3>
+</div>
+```
+
+AFTER:
+```jsx
+<div className="bg-white p-4 rounded shadow border-l-4 border-executeiq-gold">
+  <h3 className="font-bold text-executeiq-navy">
+    {playbook.name}
+  </h3>
+</div>
+```
+
+✓ Done - Playbook cards now have ExecuteIQ styling
+
+================================================================================
+STEP 7: VERIFY IN BROWSER (2 minutes)
+================================================================================
+
+1. Go to Replit and run your app
+
+2. Check:
+   ☐ Dashboard header shows ExecuteIQ icon + "Execute Decisions at Scale"
+   ☐ Sidebar shows ExecuteIQ full logo + tagline
+   ☐ Buttons are navy/gold/teal (not old colors)
+   ☐ No import errors in console
+   ☐ No "M" logo visible anywhere
+
+3. If you see errors:
+   - Check ExecuteIQLogo.tsx is in /src/components/
+   - Check CSS variables are in globals.css :root { }
+   - Check imports use correct path: @/components/ExecuteIQLogo
+
+✓ Done - ExecuteIQ branding is live!
+
+================================================================================
+COMPLETE COMPONENT USAGE EXAMPLES
+================================================================================
+
+FULL LOGO (with tagline):
+```jsx
+<ExecuteIQLogo 
+  width={240} 
+  height={72}
+  variant="full"
+  showTagline={true}
+/>
+```
+
+ICON ONLY (tight spaces):
+```jsx
+<ExecuteIQLogo 
+  width={100} 
+  height={30}
+  variant="icon-only"
+/>
+```
+
+TEXT ONLY (secondary):
+```jsx
+<ExecuteIQLogo 
+  variant="text-only"
+  showTagline={true}
+/>
+```
+
+WITH ANIMATION (pulsing rings):
+```jsx
+<ExecuteIQLogo 
+  width={120} 
+  height={120}
+  variant="icon-only"
+  animate={true}
+/>
+```
+
+DIFFERENT COLOR:
+```jsx
+<ExecuteIQLogo 
+  width={240} 
+  height={72}
+  variant="full"
+  color="white"  // navy | gold | teal | white
+/>
+```
+
+================================================================================
+QUICK COLOR REFERENCE
+================================================================================
+
+Navy (Primary text, buttons, borders):
+  var(--executeiq-navy) or #1A2B3D
+
+Gold (Accents, highlights, tagline):
+  var(--executeiq-gold) or #D4AF37
+
+Teal (Secondary accents, success):
+  var(--executeiq-teal) or #00A8A8
+
+Light Gray (Backgrounds):
+  var(--executeiq-light-gray) or #F8F9FA
+
+Dark Gray (Secondary text):
+  var(--executeiq-dark-gray) or #0F1620
+
+================================================================================
+COMMON STYLING SNIPPETS
+================================================================================
+
+HEADER WITH LOGO:
+className="border-b border-executeiq-border bg-white px-6 py-4"
+
+PRIMARY BUTTON:
+className="px-4 py-2 bg-executeiq-navy text-white border-2 border-executeiq-gold rounded hover:bg-executeiq-dark-gray"
+
+SECONDARY BUTTON:
+className="px-4 py-2 bg-transparent text-executeiq-navy border-2 border-executeiq-navy rounded hover:bg-executeiq-light-gray"
+
+CARD WITH ACCENT:
+className="bg-white p-4 rounded shadow border-l-4 border-executeiq-gold"
+
+METRIC CARD:
+className="bg-executeiq-light-gray p-6 rounded border-l-4 border-executeiq-teal"
+
+HEADING:
+className="text-executeiq-navy font-bold text-2xl font-executeiq-heading"
+
+TAGLINE:
+className="text-executeiq-gold font-semibold text-sm uppercase tracking-wide"
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+PROBLEM: Logo doesn't render (blank space)
+FIX: 
+  - Verify ExecuteIQLogo.tsx exists in /src/components/
+  - Check import: import ExecuteIQLogo from '@/components/ExecuteIQLogo'
+  - Look in browser console for errors
+
+PROBLEM: Colors don't show (looks gray/different)
+FIX:
+  - Verify CSS variables in globals.css :root { }
+  - Verify fonts loaded (check DevTools → Network)
+  - Clear browser cache (Ctrl+Shift+Delete)
+
+PROBLEM: Old M logo still showing
+FIX:
+  - Search for "MIcon" or "m-icon" in codebase
+  - Replace all instances with ExecuteIQLogo
+  - Remove old import statements
+
+PROBLEM: "Execute Decisions at Scale" tagline missing
+FIX:
+  - Verify ExecuteIQLogo has showTagline={true}
+  - Check variant is "full" not "icon-only"
+  - Verify CSS variables include executeiq-gold color
+
+PROBLEM: Component not found error
+FIX:
+  - Restart Replit after creating ExecuteIQLogo.tsx
+  - Verify file path: /src/components/ExecuteIQLogo.tsx
+  - Check for typos in import statement
+
+================================================================================
+NEXT STEPS AFTER INTEGRATION
+================================================================================
+
+Once ExecuteIQ branding is live in Replit:
+
+1. Screenshot dashboard with new logo
+2. Update sales deck (first 3 slides) with screenshot
+3. Update website homepage
+4. Brief team on new branding
+5. Reserve executeiq.ai, executeiq.com domains
+
+================================================================================
+FILES YOU NEED
+================================================================================
+
+From outputs folder, copy these to Replit:
+
+1. ExecuteIQLogo_REPLIT_READY.tsx
+   → Paste into /src/components/ExecuteIQLogo.tsx
+
+2. EXECUTEIQ_CSS_VARIABLES.css
+   → Paste the :root section into /src/styles/globals.css
+
+That's it! You're ready to integrate.
+
+================================================================================
