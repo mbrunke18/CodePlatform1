@@ -4,7 +4,10 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import StandardNav from '@/components/layout/StandardNav';
+import { Skeleton } from '@/components/ui/skeleton';
+import PageLayout from '@/components/layout/PageLayout';
+import { useQuery } from '@tanstack/react-query';
+import type { StrategicObjective } from '@shared/schema';
 import { 
   TrendingUp, 
   Target, 
@@ -20,7 +23,8 @@ import {
   ChevronRight,
   ArrowUp,
   ArrowDown,
-  Minus
+  Minus,
+  Plus
 } from 'lucide-react';
 import { LEADERSHIP_CAPABILITIES } from '@shared/constants/framework';
 
@@ -50,11 +54,11 @@ const mockCapabilityMetrics = [
   { id: 'orchestration', name: 'Orchestration', executions: 3, trend: 'up', domains: ['Cross-Domain'] },
 ];
 
-const mockStrategicObjectives = [
-  { id: '1', name: 'Revenue Growth 2026', progress: 68, executions: 14, capability: 'foresight' },
-  { id: '2', name: 'Market Leadership', progress: 45, executions: 8, capability: 'courage' },
-  { id: '3', name: 'Digital First', progress: 82, executions: 15, capability: 'agility' },
-  { id: '4', name: 'Regulatory Excellence', progress: 91, executions: 6, capability: 'purpose' },
+const fallbackStrategicObjectives = [
+  { id: '1', name: 'Revenue Growth 2026', progress: 68, executionCount: 14, leadershipCapability: 'foresight' },
+  { id: '2', name: 'Market Leadership', progress: 45, executionCount: 8, leadershipCapability: 'courage' },
+  { id: '3', name: 'Digital First', progress: 82, executionCount: 15, leadershipCapability: 'agility' },
+  { id: '4', name: 'Regulatory Excellence', progress: 91, executionCount: 6, leadershipCapability: 'purpose' },
 ];
 
 const mockAnticipationSignals = [
@@ -66,6 +70,12 @@ const mockAnticipationSignals = [
 export default function StrategyExecutionDashboard() {
   const [activeTab, setActiveTab] = useState('overview');
 
+  const { data: strategicObjectives, isLoading: objectivesLoading, refetch } = useQuery<StrategicObjective[]>({
+    queryKey: ['/api/strategic-objectives'],
+  });
+
+  const objectives = strategicObjectives?.length ? strategicObjectives : fallbackStrategicObjectives;
+
   const getTrendIcon = (trend: string) => {
     switch (trend) {
       case 'up': return <ArrowUp className="h-4 w-4 text-green-500" />;
@@ -75,30 +85,29 @@ export default function StrategyExecutionDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      <StandardNav />
-      
-      <div className="container mx-auto px-6 py-8">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
-              Strategy Execution Dashboard
-            </h1>
-            <p className="text-slate-600 dark:text-slate-400">
-              Track transformation progress, orchestration health, and anticipation insights
-            </p>
+    <PageLayout showBackButton={true}>
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+        <div className="container mx-auto px-6 py-8">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
+                Strategy Execution Dashboard
+              </h1>
+              <p className="text-slate-600 dark:text-slate-400">
+                Track transformation progress, orchestration health, and anticipation insights
+              </p>
+            </div>
+            <div className="flex gap-3">
+              <Button variant="outline" className="gap-2" onClick={() => refetch()}>
+                <RefreshCw className="h-4 w-4" />
+                Refresh
+              </Button>
+              <Button className="gap-2 bg-poise-teal hover:bg-cyan-600">
+                <Download className="h-4 w-4" />
+                Download Report
+              </Button>
+            </div>
           </div>
-          <div className="flex gap-3">
-            <Button variant="outline" className="gap-2">
-              <RefreshCw className="h-4 w-4" />
-              Refresh
-            </Button>
-            <Button className="gap-2 bg-poise-teal hover:bg-cyan-600">
-              <Download className="h-4 w-4" />
-              Download Report
-            </Button>
-          </div>
-        </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="mb-6">
@@ -182,8 +191,9 @@ export default function StrategyExecutionDashboard() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {mockStrategicObjectives.map((objective) => {
-                      const Icon = capabilityIcons[objective.capability] || Target;
+                    {objectives.map((objective) => {
+                      const capability = (objective as any).leadershipCapability || 'orchestration';
+                      const Icon = capabilityIcons[capability] || Target;
                       return (
                         <div key={objective.id} className="flex items-center gap-4">
                           <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">
@@ -192,11 +202,11 @@ export default function StrategyExecutionDashboard() {
                           <div className="flex-1">
                             <div className="flex items-center justify-between mb-1">
                               <span className="font-medium text-slate-900 dark:text-white">{objective.name}</span>
-                              <Badge variant="outline">{objective.executions} executions</Badge>
+                              <Badge variant="outline">{(objective as any).executionCount || 0} executions</Badge>
                             </div>
-                            <Progress value={objective.progress} className="h-2" />
+                            <Progress value={(objective as any).progress || 0} className="h-2" />
                           </div>
-                          <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{objective.progress}%</span>
+                          <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{(objective as any).progress || 0}%</span>
                         </div>
                       );
                     })}
@@ -290,36 +300,45 @@ export default function StrategyExecutionDashboard() {
                 <CardDescription>Track progress toward organization-level strategic goals</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-6">
-                  {mockStrategicObjectives.map((objective) => {
-                    const Icon = capabilityIcons[objective.capability] || Target;
-                    return (
-                      <div key={objective.id} className="p-4 rounded-lg border border-slate-200 dark:border-slate-700">
-                        <div className="flex items-start justify-between mb-4">
-                          <div className="flex items-center gap-3">
-                            <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">
-                              <Icon className="h-5 w-5 text-poise-teal" />
+                {objectivesLoading ? (
+                  <div className="space-y-6">
+                    {[1, 2, 3].map((i) => (
+                      <Skeleton key={i} className="h-28 w-full" />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="space-y-6">
+                    {objectives.map((objective) => {
+                      const capability = (objective as any).leadershipCapability || 'orchestration';
+                      const Icon = capabilityIcons[capability] || Target;
+                      return (
+                        <div key={objective.id} className="p-4 rounded-lg border border-slate-200 dark:border-slate-700">
+                          <div className="flex items-start justify-between mb-4">
+                            <div className="flex items-center gap-3">
+                              <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">
+                                <Icon className="h-5 w-5 text-poise-teal" />
+                              </div>
+                              <div>
+                                <h4 className="font-semibold text-slate-900 dark:text-white">{objective.name}</h4>
+                                <p className="text-sm text-slate-500">Aligned to {capability} capability</p>
+                              </div>
                             </div>
-                            <div>
-                              <h4 className="font-semibold text-slate-900 dark:text-white">{objective.name}</h4>
-                              <p className="text-sm text-slate-500">Aligned to {objective.capability} capability</p>
+                            <Badge className="bg-poise-teal/20 text-poise-teal">
+                              {(objective as any).executionCount || 0} playbook executions
+                            </Badge>
+                          </div>
+                          <div className="space-y-2">
+                            <div className="flex items-center justify-between text-sm">
+                              <span className="text-slate-600 dark:text-slate-400">Progress toward goal</span>
+                              <span className="font-semibold text-slate-900 dark:text-white">{(objective as any).progress || 0}%</span>
                             </div>
+                            <Progress value={(objective as any).progress || 0} className="h-3" />
                           </div>
-                          <Badge className="bg-poise-teal/20 text-poise-teal">
-                            {objective.executions} playbook executions
-                          </Badge>
                         </div>
-                        <div className="space-y-2">
-                          <div className="flex items-center justify-between text-sm">
-                            <span className="text-slate-600 dark:text-slate-400">Progress toward goal</span>
-                            <span className="font-semibold text-slate-900 dark:text-white">{objective.progress}%</span>
-                          </div>
-                          <Progress value={objective.progress} className="h-3" />
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+                      );
+                    })}
+                  </div>
+                )}
               </CardContent>
             </Card>
           </TabsContent>
@@ -409,7 +428,8 @@ export default function StrategyExecutionDashboard() {
             </div>
           </TabsContent>
         </Tabs>
+        </div>
       </div>
-    </div>
+    </PageLayout>
   );
 }
