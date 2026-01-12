@@ -1,4 +1,4 @@
-import StandardNav from '@/components/layout/StandardNav';
+import PageLayout from '@/components/layout/PageLayout';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { 
@@ -127,8 +127,8 @@ export default function HowItWorks() {
   ];
 
   return (
-    <div className="page-background min-h-screen">
-      <StandardNav />
+    <PageLayout showBackButton={true} backButtonLabel="Back">
+      <div className="page-background">
       
       {/* Hero Section */}
       <div className="relative overflow-hidden bg-gradient-to-br from-poise-navy via-poise-dark-gray to-poise-navy text-white">
@@ -318,20 +318,7 @@ export default function HowItWorks() {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12">
-        <div className="container mx-auto px-6 text-center">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-              <span className="text-white font-bold text-lg">ExecuteIQ</span>
-            </div>
-            <span className="font-bold text-lg">Strategic Execution OS</span>
-          </div>
-          <p className="text-slate-400">
-            Transforming how Fortune 1000 companies execute strategy.
-          </p>
-        </div>
-      </footer>
-    </div>
+      </div>
+    </PageLayout>
   );
 }

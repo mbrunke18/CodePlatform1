@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import StandardNav from "@/components/layout/StandardNav";
+import PageLayout from "@/components/layout/PageLayout";
 import { updatePageMetadata } from "@/lib/seo";
 import { CheckCircle2, Shield, Zap, Target } from "lucide-react";
 import { useLocation } from "wouter";
@@ -71,8 +71,8 @@ export default function Contact() {
   };
 
   return (
-    <div className="page-background min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
-      <StandardNav />
+    <PageLayout showBackButton={true} backButtonLabel="Back">
+      <div className="page-background min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
 
       {/* Hero Section */}
       <section className="py-16 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
@@ -371,6 +371,7 @@ export default function Contact() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </PageLayout>
   );
 }
