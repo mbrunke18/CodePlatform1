@@ -251,7 +251,7 @@ export default function PilotProgram() {
             <div className="inline-block px-6 py-3 rounded-2xl bg-gradient-to-r from-slate-800/80 to-slate-900/70 border border-slate-600/50 backdrop-blur-sm mb-6">
               <img 
                 src={executeiqLogoPath} 
-                alt="ExecuteIQ - Composure in every decision" 
+                alt="ExecuteIQ - Execute Decisions at Scale" 
                 className="h-16 sm:h-20 lg:h-24 w-auto object-contain brightness-110 contrast-105"
                 style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.55))' }}
               />

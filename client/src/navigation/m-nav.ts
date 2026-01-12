@@ -1,5 +1,5 @@
 // ExecuteIQ - Strategic Execution OS Navigation
-// "Composure in every decision."
+// "Execute Decisions at Scale"
 // Based on IDEA Framework with ExecuteIQ Modules
 
 import { IconName } from './config';
