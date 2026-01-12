@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import StandardNav from './StandardNav';
+import Footer from './Footer';
 import { BackButton } from '@/components/ui/back-button';
 
 interface PageLayoutProps {
@@ -37,6 +38,9 @@ export default function PageLayout({
       <main className="flex-1 w-full">
         {children}
       </main>
+      
+      {/* Footer with ExecuteIQ branding */}
+      <Footer />
     </div>
   );
 }
