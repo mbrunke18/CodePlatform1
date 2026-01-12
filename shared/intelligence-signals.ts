@@ -147,6 +147,22 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         metricType: 'boolean',
         sources: ['news-api', 'sec-filings', 'pitchbook'],
         defaultThreshold: { operator: 'eq', value: true, urgency: 'critical' }
+      },
+      {
+        id: 'comp_talent_poaching',
+        name: 'Talent Poaching Activity',
+        description: 'Competitors recruiting your employees',
+        metricType: 'count',
+        sources: ['linkedin', 'hr-systems'],
+        defaultThreshold: { operator: 'gte', value: 5, urgency: 'high' }
+      },
+      {
+        id: 'comp_brand_sentiment',
+        name: 'Competitor Brand Sentiment',
+        description: 'Shift in competitor brand perception',
+        metricType: 'score',
+        sources: ['brandwatch', 'social-listening'],
+        defaultThreshold: { operator: 'spike', value: 2, urgency: 'medium' }
       }
     ]
   },
@@ -267,6 +283,22 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         unit: '%',
         sources: ['crm-salesforce', 'partner-portal'],
         defaultThreshold: { operator: 'drop', value: 20, urgency: 'high' }
+      },
+      {
+        id: 'mkt_brand_equity',
+        name: 'Brand Equity Score',
+        description: 'Brand strength and recognition metrics',
+        metricType: 'score',
+        sources: ['brand-tracking', 'survey-platforms'],
+        defaultThreshold: { operator: 'drop', value: 10, urgency: 'high' }
+      },
+      {
+        id: 'mkt_market_volatility',
+        name: 'Market Volatility Index',
+        description: 'Industry-specific volatility indicators',
+        metricType: 'score',
+        sources: ['bloomberg', 'industry-indices'],
+        defaultThreshold: { operator: 'spike', value: 30, urgency: 'high' }
       }
     ]
   },
@@ -371,6 +403,24 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         metricType: 'boolean',
         sources: ['sec-form4', 'insidertrading-api'],
         defaultThreshold: { operator: 'eq', value: true, urgency: 'medium' }
+      },
+      {
+        id: 'fin_working_capital',
+        name: 'Working Capital Ratio',
+        description: 'Liquidity position changes',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['finance-systems', 'erp'],
+        defaultThreshold: { operator: 'drop', value: 20, urgency: 'high' }
+      },
+      {
+        id: 'fin_currency_exposure',
+        name: 'Currency Exposure Risk',
+        description: 'FX volatility impact on operations',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['treasury-systems', 'forex-data'],
+        defaultThreshold: { operator: 'spike', value: 15, urgency: 'high' }
       }
     ]
   },
@@ -591,6 +641,24 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         metricType: 'boolean',
         sources: ['news-api', 'labor-tracking'],
         defaultThreshold: { operator: 'eq', value: true, urgency: 'critical' }
+      },
+      {
+        id: 'sc_raw_material_prices',
+        name: 'Raw Material Price Index',
+        description: 'Key input material price changes',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['commodity-exchanges', 'procurement-systems'],
+        defaultThreshold: { operator: 'spike', value: 20, urgency: 'high' }
+      },
+      {
+        id: 'sc_fulfillment_rate',
+        name: 'Order Fulfillment Rate',
+        description: 'On-time, in-full delivery performance',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['wms-systems', 'erp'],
+        defaultThreshold: { operator: 'drop', value: 5, urgency: 'critical' }
       }
     ]
   },
@@ -705,6 +773,23 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         metricType: 'count',
         sources: ['productboard', 'canny', 'uservoice'],
         defaultThreshold: { operator: 'spike', value: 50, urgency: 'medium' }
+      },
+      {
+        id: 'cust_advocacy_score',
+        name: 'Customer Advocacy Score',
+        description: 'Customers willing to refer or advocate',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['gainsight', 'survey-platforms'],
+        defaultThreshold: { operator: 'drop', value: 15, urgency: 'high' }
+      },
+      {
+        id: 'cust_implementation_health',
+        name: 'Implementation Health',
+        description: 'Active implementation project status',
+        metricType: 'count',
+        sources: ['pmo-tools', 'customer-success'],
+        defaultThreshold: { operator: 'gte', value: 3, urgency: 'high' }
       }
     ]
   },
@@ -813,6 +898,24 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         unit: '%',
         sources: ['hris', 'succession-planning'],
         defaultThreshold: { operator: 'lt', value: 70, urgency: 'high' }
+      },
+      {
+        id: 'tal_training_completion',
+        name: 'Training Completion Rate',
+        description: 'Mandatory training compliance',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['lms', 'hris'],
+        defaultThreshold: { operator: 'lt', value: 90, urgency: 'medium' }
+      },
+      {
+        id: 'tal_remote_productivity',
+        name: 'Remote Work Productivity',
+        description: 'Remote vs office performance metrics',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['productivity-tools', 'hris'],
+        defaultThreshold: { operator: 'drop', value: 15, urgency: 'medium' }
       }
     ]
   },
@@ -910,6 +1013,32 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         metricType: 'count',
         sources: ['news-api', 'industry-reports'],
         defaultThreshold: { operator: 'gte', value: 3, urgency: 'medium' }
+      },
+      {
+        id: 'tech_automation_rate',
+        name: 'Process Automation Rate',
+        description: 'Percentage of processes automated',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['rpa-platforms', 'process-mining'],
+        defaultThreshold: { operator: 'lt', value: 30, urgency: 'medium' }
+      },
+      {
+        id: 'tech_data_quality',
+        name: 'Data Quality Score',
+        description: 'Enterprise data accuracy metrics',
+        metricType: 'score',
+        sources: ['data-quality-tools', 'master-data-management'],
+        defaultThreshold: { operator: 'lt', value: 85, urgency: 'high' }
+      },
+      {
+        id: 'tech_api_health',
+        name: 'API Health Score',
+        description: 'Critical API uptime and latency',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['api-monitoring', 'observability-platforms'],
+        defaultThreshold: { operator: 'lt', value: 99, urgency: 'critical' }
       }
     ]
   },
@@ -1118,6 +1247,23 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         metricType: 'score',
         sources: ['political-risk-services', 'news-api'],
         defaultThreshold: { operator: 'spike', value: 2, urgency: 'high' }
+      },
+      {
+        id: 'geo_climate_policy',
+        name: 'Climate Policy Changes',
+        description: 'Environmental regulations in key markets',
+        metricType: 'count',
+        sources: ['government-sources', 'climate-policy-tracking'],
+        defaultThreshold: { operator: 'gte', value: 2, urgency: 'medium' }
+      },
+      {
+        id: 'geo_infrastructure_invest',
+        name: 'Infrastructure Investment',
+        description: 'Major infrastructure spending announcements',
+        metricType: 'currency',
+        unit: 'USD',
+        sources: ['government-sources', 'news-api'],
+        defaultThreshold: { operator: 'gte', value: 1000000000, urgency: 'low' }
       }
     ]
   },
