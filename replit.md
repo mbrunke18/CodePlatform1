@@ -4,7 +4,7 @@
 ExecuteIQ is the Strategic Execution OS for Fortune 1000 companies—the orchestration layer that transforms how leaders balance transformation and stability across all 9 strategic domains simultaneously. It eliminates the 20-50 hours organizations spend getting organized after a strategic event hits, bridging the gap between strategic preparation and operational execution through AI-driven trigger monitoring and an extensive library of 166 strategic playbooks across 9 domains. ExecuteIQ integrates with existing tools like Jira, automatically creating projects, assigning tasks, staging documents, and unlocking pre-approved budgets within 12 minutes of a trigger. The platform operates on the IDEA Framework™ (IDENTIFY, DETECT, EXECUTE, ADVANCE), fostering a human-AI partnership where AI recommends and humans make final decisions.
 
 ## Core Messaging (Updated Jan 2026)
-- **Primary Tagline:** "Orchestration as a System."
+- **Primary Tagline:** "Execute Decisions at Scale"
 - **Extended Tagline:** "Detect Early. Execute Precisely. Advance Strategy."
 - **Alternate Taglines:** "Transform strategy into 12-minute execution" | "The orchestration layer for Fortune 1000 leaders"
 - **IDEA Framework Tagline:** "That's the IDEA."
@@ -45,7 +45,8 @@ ExecuteIQ operates on the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE), f
 - **Design:** Modern, enterprise-grade interface focused on decision velocity and human-AI collaboration.
 - **Theme:** Full dark/light mode support with localStorage persistence and WCAG AAA contrast compliance.
 - **Navigation:** Simplified 5-item navigation (Why ExecuteIQ, How It Works, Playbooks, ExecuteIQ One™, Pricing) with "More" dropdown for secondary pages. CTAs consolidated to "Try Demo" and "Start Pilot".
-- **Branding:** Consistent "ExecuteIQ - Strategic Execution OS" branding with compass needle logo.
+- **Branding:** Consistent "ExecuteIQ - Strategic Execution OS" branding with concentric rings icon.
+- **Layout:** PageLayout component includes StandardNav header and Footer with full logo + tagline on all pages.
 - **Design System:** Established with 60+ utility classes.
 
 **Homepage Executive-Readiness (Jan 2026):**
@@ -98,14 +99,14 @@ ExecuteIQ operates on the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE), f
 - `shared/constants/framework.ts`: Centralized EXECUTEIQ_BRAND, LEADERSHIP_CAPABILITIES, IDEA_PHASES, STRATEGIC_DOMAINS, TIMING_BENCHMARKS, and UI constants (colors, icons, capabilities for each phase/domain).
 - `shared/constants/taskLibrary.ts`: Enterprise Task Library with 42 pre-defined tasks organized by IDEA phases and 9 functional categories (Program Management, Communications, Risk/Compliance, Finance, Technology, HR/Change, Legal, Operations, Strategy).
 - `shared/schema.ts`: Database schema with TypeScript interfaces for TriggerCondition, PlaybookTask, DecisionPoint, LessonLearned, StakeholderMapping.
-- `client/src/components/ExecuteIQLogo.tsx`: SVG logo component with 3 variants (full, icon-only, text-only), compass needle in "I", wave lines, and tagline. Supports darkMode prop.
+- `client/src/components/ExecuteIQLogo.tsx`: SVG logo component with 3 variants (full, icon-only, text-only), concentric rings icon, and tagline. Supports darkMode prop.
 - `attached_assets/executeiq-logo-official.png`: Official PNG logo used in nav and footer.
 - `client/src/pages/TaskManagement.tsx`: Task Management page with dual-tab UI for Playbook Tasks and Task Library browsing.
 
 **ExecuteIQ Logo Usage:**
 - PNG (`executeiq-logo-official.png`): Main navigation, footer, hero sections
 - SVG (`ExecuteIQLogo` component): Dashboard headers (icon-only), internal pages where variants are needed
-- Variants: `full` (text + compass + waves), `icon-only` (compass only), `text-only` (ExecuteIQ text)
+- Variants: `full` (text + concentric rings + tagline), `icon-only` (concentric rings only), `text-only` (ExecuteIQ text)
 
 **Enterprise Task Library (Jan 2026):**
 - 42 pre-defined enterprise tasks organized by IDEA Framework phases (Identify: 7, Detect: 6, Execute: 18, Advance: 10)
