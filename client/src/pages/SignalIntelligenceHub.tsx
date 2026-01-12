@@ -986,6 +986,20 @@ export default function SignalIntelligenceHub() {
   const [compositeDialogOpen, setCompositeDialogOpen] = useState(false);
   const [selectedDataPoint, setSelectedDataPoint] = useState<DataPoint | null>(null);
   const [editingTrigger, setEditingTrigger] = useState<any>(null);
+  const [customDataPointDialogOpen, setCustomDataPointDialogOpen] = useState(false);
+  const [customDataPointForm, setCustomDataPointForm] = useState({
+    name: '',
+    description: '',
+    category: '',
+    newCategory: '',
+    isNewCategory: false,
+    metricType: 'count',
+    unit: '',
+    sources: ['manual-input'],
+    defaultThresholdOperator: 'gt',
+    defaultThresholdValue: '',
+    defaultThresholdUrgency: 'high'
+  });
 
   const { data: triggers = [], isLoading: triggersLoading } = useQuery<any[]>({
     queryKey: ['/api/executive-triggers'],
@@ -995,6 +1009,57 @@ export default function SignalIntelligenceHub() {
     queryKey: ['/api/organizations'],
   });
   const organizationId = organizations[0]?.id;
+
+  const { data: customDataPoints = [], isLoading: customDataPointsLoading } = useQuery<any[]>({
+    queryKey: ['/api/custom-data-points', organizationId],
+    enabled: !!organizationId,
+    queryFn: async () => {
+      const res = await fetch(`/api/custom-data-points?organizationId=${organizationId}`);
+      if (!res.ok) throw new Error('Failed to fetch custom data points');
+      return res.json();
+    }
+  });
+
+  const createCustomDataPointMutation = useMutation({
+    mutationFn: async (data: any) => {
+      return apiRequest('POST', '/api/custom-data-points', data);
+    },
+    onSuccess: () => {
+      queryClient.refetchQueries({ queryKey: ['/api/custom-data-points'] });
+      toast({ title: 'Custom data point created', description: 'Your data point is now available for triggers' });
+      setCustomDataPointDialogOpen(false);
+      setCustomDataPointForm({
+        name: '',
+        description: '',
+        category: '',
+        newCategory: '',
+        isNewCategory: false,
+        metricType: 'count',
+        unit: '',
+        sources: ['manual-input'],
+        defaultThresholdOperator: 'gt',
+        defaultThresholdValue: '',
+        defaultThresholdUrgency: 'high'
+      });
+    },
+    onError: (error: any) => {
+      console.error('Create custom data point error:', error);
+      toast({ title: 'Error', description: 'Failed to create custom data point', variant: 'destructive' });
+    }
+  });
+
+  const deleteCustomDataPointMutation = useMutation({
+    mutationFn: async (id: string) => {
+      return apiRequest('DELETE', `/api/custom-data-points/${id}`);
+    },
+    onSuccess: () => {
+      queryClient.refetchQueries({ queryKey: ['/api/custom-data-points'] });
+      toast({ title: 'Custom data point deleted' });
+    },
+    onError: () => {
+      toast({ title: 'Error', description: 'Failed to delete custom data point', variant: 'destructive' });
+    }
+  });
 
   const createTriggerMutation = useMutation({
     mutationFn: async (triggerData: any) => {
@@ -1170,6 +1235,53 @@ export default function SignalIntelligenceHub() {
       setConfigDialogOpen(true);
     }
   };
+
+  const handleCreateCustomDataPoint = () => {
+    if (!customDataPointForm.name.trim()) {
+      toast({ title: 'Name required', description: 'Please enter a name for the data point', variant: 'destructive' });
+      return;
+    }
+    
+    const category = customDataPointForm.isNewCategory 
+      ? customDataPointForm.newCategory.trim() 
+      : customDataPointForm.category;
+    
+    if (!category) {
+      toast({ title: 'Category required', description: 'Please select or create a category', variant: 'destructive' });
+      return;
+    }
+
+    const dataPointData = {
+      organizationId: organizationId,
+      name: customDataPointForm.name.trim(),
+      description: customDataPointForm.description.trim() || null,
+      category: category,
+      metricType: customDataPointForm.metricType,
+      unit: customDataPointForm.unit.trim() || null,
+      sources: customDataPointForm.sources,
+      defaultThreshold: customDataPointForm.defaultThresholdValue ? {
+        operator: customDataPointForm.defaultThresholdOperator,
+        value: customDataPointForm.defaultThresholdValue,
+        urgency: customDataPointForm.defaultThresholdUrgency
+      } : null,
+      isActive: true
+    };
+
+    createCustomDataPointMutation.mutate(dataPointData);
+  };
+
+  const customCategoriesWithDataPoints = customDataPoints.reduce((acc: Record<string, any[]>, dp: any) => {
+    if (!acc[dp.category]) {
+      acc[dp.category] = [];
+    }
+    acc[dp.category].push(dp);
+    return acc;
+  }, {});
+
+  const allCategories = [...new Set([
+    ...SIGNAL_CATEGORIES.map(c => c.id),
+    ...Object.keys(customCategoriesWithDataPoints)
+  ])];
 
   return (
     <PageLayout>
@@ -1686,12 +1798,18 @@ export default function SignalIntelligenceHub() {
                         Complete Data Points Library
                       </CardTitle>
                       <CardDescription>
-                        {totalDataPoints} data points across {SIGNAL_CATEGORIES.length} signal categories that ExecuteIQ monitors
+                        {totalDataPoints + customDataPoints.length} data points ({totalDataPoints} system + {customDataPoints.length} custom) that ExecuteIQ monitors
                       </CardDescription>
                     </div>
-                    <Badge variant="outline" className="text-emerald-600 border-emerald-600">
-                      {totalDataPoints} Total
-                    </Badge>
+                    <div className="flex items-center gap-3">
+                      <Badge variant="outline" className="text-emerald-600 border-emerald-600">
+                        {totalDataPoints + customDataPoints.length} Total
+                      </Badge>
+                      <Button onClick={() => setCustomDataPointDialogOpen(true)} size="sm">
+                        <Plus className="h-4 w-4 mr-1" />
+                        Add Custom Data Point
+                      </Button>
+                    </div>
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -1770,6 +1888,117 @@ export default function SignalIntelligenceHub() {
                           </div>
                         </div>
                       ))}
+                      
+                      {/* Custom Data Points Section */}
+                      {customDataPoints.length > 0 && (
+                        <>
+                          <Separator className="my-6" />
+                          <div className="mb-4">
+                            <h3 className="font-semibold text-lg flex items-center gap-2 text-purple-600">
+                              <Sparkles className="h-5 w-5" />
+                              Your Custom Data Points
+                            </h3>
+                            <p className="text-sm text-muted-foreground">
+                              Organization-specific data points you've created
+                            </p>
+                          </div>
+                          
+                          {Object.entries(customCategoriesWithDataPoints).map(([categoryName, dataPoints]) => {
+                            const systemCategory = SIGNAL_CATEGORIES.find(c => c.id === categoryName);
+                            const isCustomCategory = !systemCategory;
+                            
+                            return (
+                              <div key={categoryName} className="border rounded-lg overflow-hidden border-purple-200 dark:border-purple-800">
+                                <div 
+                                  className="p-4 flex items-center justify-between bg-purple-50 dark:bg-purple-900/20"
+                                >
+                                  <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-purple-100 dark:bg-purple-900/40">
+                                      {isCustomCategory ? (
+                                        <Sparkles className="h-5 w-5 text-purple-500" />
+                                      ) : (
+                                        <CategoryIcon 
+                                          iconName={systemCategory?.icon || 'Activity'} 
+                                          className="h-5 w-5"
+                                          style={{ color: systemCategory?.color || '#9333ea' }}
+                                        />
+                                      )}
+                                    </div>
+                                    <div>
+                                      <h3 className="font-semibold text-purple-600">
+                                        {systemCategory?.name || categoryName}
+                                        {isCustomCategory && <Badge className="ml-2 bg-purple-100 text-purple-600 text-xs">Custom Category</Badge>}
+                                      </h3>
+                                      <p className="text-xs text-muted-foreground">
+                                        {isCustomCategory ? 'Custom category created by your organization' : 'Custom data points added to system category'}
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <Badge className="bg-purple-500 text-white">
+                                    {(dataPoints as any[]).length} custom
+                                  </Badge>
+                                </div>
+                                <div className="divide-y">
+                                  {(dataPoints as any[]).map((dp: any, idx: number) => (
+                                    <div key={dp.id} className="p-3 flex items-start gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                                      <div className="w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900/40 flex items-center justify-center text-xs font-medium text-purple-500">
+                                        {idx + 1}
+                                      </div>
+                                      <div className="flex-1 min-w-0">
+                                        <div className="flex items-center gap-2">
+                                          <span className="font-medium text-sm">{dp.name}</span>
+                                          <Badge variant="outline" className="text-xs border-purple-300 text-purple-600">
+                                            {dp.metricType}
+                                          </Badge>
+                                          <Badge className="bg-purple-100 text-purple-600 text-xs">
+                                            Custom
+                                          </Badge>
+                                        </div>
+                                        <p className="text-xs text-muted-foreground mt-1">{dp.description || 'No description'}</p>
+                                        <div className="flex items-center gap-2 mt-2">
+                                          <span className="text-xs text-slate-400">Sources:</span>
+                                          {(dp.sources || ['manual-input']).map((src: string, i: number) => (
+                                            <Badge key={i} variant="secondary" className="text-xs py-0">
+                                              {src}
+                                            </Badge>
+                                          ))}
+                                        </div>
+                                      </div>
+                                      {dp.defaultThreshold && (
+                                        <div className="text-right text-xs">
+                                          <div className="text-muted-foreground">Default Trigger</div>
+                                          <div className="font-medium">
+                                            {getOperatorLabel(dp.defaultThreshold.operator)} {String(dp.defaultThreshold.value)}
+                                            {dp.unit && ` ${dp.unit}`}
+                                          </div>
+                                          <Badge 
+                                            className={`mt-1 ${
+                                              dp.defaultThreshold.urgency === 'critical' ? 'bg-red-500' :
+                                              dp.defaultThreshold.urgency === 'high' ? 'bg-amber-500' :
+                                              dp.defaultThreshold.urgency === 'medium' ? 'bg-blue-500' :
+                                              'bg-slate-500'
+                                            } text-white text-xs`}
+                                          >
+                                            {dp.defaultThreshold.urgency}
+                                          </Badge>
+                                        </div>
+                                      )}
+                                      <Button 
+                                        variant="ghost" 
+                                        size="sm"
+                                        onClick={() => deleteCustomDataPointMutation.mutate(dp.id)}
+                                        className="text-red-500 hover:text-red-700"
+                                      >
+                                        <Trash2 className="h-4 w-4" />
+                                      </Button>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </>
+                      )}
                     </div>
                   </ScrollArea>
                 </CardContent>
@@ -1805,6 +2034,165 @@ export default function SignalIntelligenceHub() {
             onOpenChange={setCompositeDialogOpen}
             onSave={handleSaveTrigger}
           />
+          
+          {/* Custom Data Point Dialog */}
+          <Dialog open={customDataPointDialogOpen} onOpenChange={setCustomDataPointDialogOpen}>
+            <DialogContent className="max-w-lg">
+              <DialogHeader>
+                <DialogTitle className="flex items-center gap-2">
+                  <Plus className="h-5 w-5 text-emerald-500" />
+                  Create Custom Data Point
+                </DialogTitle>
+                <DialogDescription>
+                  Add a custom data point to monitor your organization-specific metrics
+                </DialogDescription>
+              </DialogHeader>
+              
+              <div className="space-y-4 py-4">
+                <div className="space-y-2">
+                  <Label>Name *</Label>
+                  <Input 
+                    placeholder="e.g., Regional Sales Performance"
+                    value={customDataPointForm.name}
+                    onChange={(e) => setCustomDataPointForm(f => ({ ...f, name: e.target.value }))}
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label>Description</Label>
+                  <Textarea 
+                    placeholder="Describe what this data point tracks..."
+                    value={customDataPointForm.description}
+                    onChange={(e) => setCustomDataPointForm(f => ({ ...f, description: e.target.value }))}
+                    rows={2}
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label>Category *</Label>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Switch 
+                      checked={customDataPointForm.isNewCategory}
+                      onCheckedChange={(checked) => setCustomDataPointForm(f => ({ ...f, isNewCategory: checked }))}
+                    />
+                    <span className="text-sm text-muted-foreground">Create new category</span>
+                  </div>
+                  {customDataPointForm.isNewCategory ? (
+                    <Input 
+                      placeholder="Enter new category name"
+                      value={customDataPointForm.newCategory}
+                      onChange={(e) => setCustomDataPointForm(f => ({ ...f, newCategory: e.target.value }))}
+                    />
+                  ) : (
+                    <Select 
+                      value={customDataPointForm.category} 
+                      onValueChange={(v) => setCustomDataPointForm(f => ({ ...f, category: v }))}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select existing category" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {SIGNAL_CATEGORIES.map(cat => (
+                          <SelectItem key={cat.id} value={cat.id}>
+                            {cat.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  )}
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label>Metric Type</Label>
+                    <Select 
+                      value={customDataPointForm.metricType} 
+                      onValueChange={(v) => setCustomDataPointForm(f => ({ ...f, metricType: v }))}
+                    >
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="count">Count</SelectItem>
+                        <SelectItem value="percentage">Percentage</SelectItem>
+                        <SelectItem value="currency">Currency</SelectItem>
+                        <SelectItem value="score">Score</SelectItem>
+                        <SelectItem value="boolean">Yes/No</SelectItem>
+                        <SelectItem value="text">Text</SelectItem>
+                        <SelectItem value="trend">Trend</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label>Unit (optional)</Label>
+                    <Input 
+                      placeholder="e.g., %, USD, days"
+                      value={customDataPointForm.unit}
+                      onChange={(e) => setCustomDataPointForm(f => ({ ...f, unit: e.target.value }))}
+                    />
+                  </div>
+                </div>
+                
+                <Separator />
+                
+                <div className="space-y-2">
+                  <Label>Default Threshold (optional)</Label>
+                  <p className="text-xs text-muted-foreground mb-2">Set a default trigger threshold for this data point</p>
+                  <div className="grid grid-cols-3 gap-2">
+                    <Select 
+                      value={customDataPointForm.defaultThresholdOperator} 
+                      onValueChange={(v) => setCustomDataPointForm(f => ({ ...f, defaultThresholdOperator: v }))}
+                    >
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="gt">{'>'} Greater than</SelectItem>
+                        <SelectItem value="lt">{'<'} Less than</SelectItem>
+                        <SelectItem value="gte">{'≥'} Greater or equal</SelectItem>
+                        <SelectItem value="lte">{'≤'} Less or equal</SelectItem>
+                        <SelectItem value="eq">{'='} Equals</SelectItem>
+                        <SelectItem value="spike">↑ Spike</SelectItem>
+                        <SelectItem value="drop">↓ Drop</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <Input 
+                      placeholder="Value"
+                      value={customDataPointForm.defaultThresholdValue}
+                      onChange={(e) => setCustomDataPointForm(f => ({ ...f, defaultThresholdValue: e.target.value }))}
+                    />
+                    <Select 
+                      value={customDataPointForm.defaultThresholdUrgency} 
+                      onValueChange={(v) => setCustomDataPointForm(f => ({ ...f, defaultThresholdUrgency: v }))}
+                    >
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="critical">Critical</SelectItem>
+                        <SelectItem value="high">High</SelectItem>
+                        <SelectItem value="medium">Medium</SelectItem>
+                        <SelectItem value="low">Low</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+              </div>
+              
+              <DialogFooter>
+                <Button variant="outline" onClick={() => setCustomDataPointDialogOpen(false)}>
+                  Cancel
+                </Button>
+                <Button 
+                  onClick={handleCreateCustomDataPoint}
+                  disabled={createCustomDataPointMutation.isPending}
+                >
+                  {createCustomDataPointMutation.isPending ? 'Creating...' : 'Create Data Point'}
+                </Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </PageLayout>
