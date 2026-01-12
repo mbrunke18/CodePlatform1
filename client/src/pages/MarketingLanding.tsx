@@ -92,7 +92,13 @@ export default function MarketingLanding() {
                 The First Strategic Execution Operating System
               </h2>
               <p className="text-xl md:text-2xl text-white mb-4 leading-relaxed">
-                Transform 72-hour strategic coordination into <span className="text-cyan-300 font-bold">12-minute coordinated execution</span>
+                When a trigger hits—competitor launch, regulatory change, cyber threat, or market opportunity—organizations typically spend <span className="text-red-300">20-50 hours just getting organized</span>. ExecuteIQ compresses that to <span className="text-cyan-300 font-bold">12 minutes</span>.
+              </p>
+              <p className="text-lg text-slate-300 mb-4 leading-relaxed max-w-4xl mx-auto">
+                Our AI monitors 216 data points across 16 intelligence categories, detecting signals before they become crises. When a threshold is breached, ExecuteIQ automatically activates the right playbook from our library of 166 battle-tested responses—notifying stakeholders, assigning tasks, staging documents, and unlocking pre-approved budgets.
+              </p>
+              <p className="text-lg text-poise-gold font-semibold">
+                We turn the 72-hour scramble into a championship-level response.
               </p>
               <div className="flex items-center justify-center gap-6 text-lg text-blue-100 mb-6">
                 <div className="flex items-center gap-2">

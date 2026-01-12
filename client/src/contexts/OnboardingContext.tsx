@@ -47,7 +47,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
       {
         id: 'cc-welcome',
         title: 'Welcome to Command Center',
-        description: 'This is your real-time strategic execution hub. Monitor active scenarios, coordinate teams, and track execution progress across your organization.',
+        description: 'When a trigger hits—competitor launch, regulatory change, or crisis—organizations typically spend 20-50 hours getting organized. ExecuteIQ compresses that to 12 minutes. This is where the magic happens.',
         phase: 'EXECUTE'
       },
       {

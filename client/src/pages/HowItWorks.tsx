@@ -143,8 +143,11 @@ export default function HowItWorks() {
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               How ExecuteIQ Works
             </h1>
-            <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed max-w-3xl mx-auto">
-              A continuous cycle that transforms how Fortune 1000 companies detect, decide, and execute on strategic opportunities and threats.
+            <p className="text-xl md:text-2xl text-slate-300 mb-4 leading-relaxed max-w-3xl mx-auto">
+              When a trigger hits—competitor launch, regulatory change, or market opportunity—organizations typically spend 20-50 hours just getting organized. <span className="text-poise-gold font-semibold">ExecuteIQ compresses that to 12 minutes.</span>
+            </p>
+            <p className="text-lg text-slate-400 mb-8 leading-relaxed max-w-3xl mx-auto">
+              Our AI monitors 216 data points, detecting signals before they become crises. When a threshold is breached, we automatically activate the right playbook—notifying stakeholders, assigning tasks, staging documents, and unlocking pre-approved budgets. Think of it as the orchestration layer between strategy and execution.
             </p>
             
             {/* Visual Phase Flow */}

@@ -61,11 +61,11 @@ const PRESENTATION_SLIDES: Slide[] = [
     title: 'Success Favors the Prepared',
     subtitle: 'The Strategic Execution Operating System',
     content: 'slide',
-    notes: 'ExecuteIQ fundamentally changes how Fortune 1000 leaders work—replacing reactive scrambles with coordinated precision, turning emerging opportunities into decisive action, and transforming risk into competitive advantage.',
+    notes: 'When a trigger hits—competitor launch, regulatory change, or market opportunity—organizations typically spend 20-50 hours just getting organized. ExecuteIQ compresses that to 12 minutes. Our AI monitors 216 data points, detecting signals before they become crises. When a threshold is breached, we automatically activate the right playbook—notifying stakeholders, assigning tasks, staging documents, and unlocking pre-approved budgets. We turn the 72-hour scramble into a championship-level response.',
     visual: 'title',
     data: {
-      tagline: 'From days to minutes.',
-      description: 'Born from the split-second discipline that wins championships, built for the moments that define companies.'
+      tagline: 'From 72 hours to 12 minutes.',
+      description: 'When triggers hit, organizations scramble for 20-50 hours. ExecuteIQ turns that into championship-level execution—automatically.'
     }
   },
   
