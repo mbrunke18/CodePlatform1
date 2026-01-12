@@ -2312,6 +2312,41 @@ export const compositeTriggerLogic = pgTable('composite_trigger_logic', {
   updatedAt: timestamp('updated_at').defaultNow(),
 });
 
+// Custom Data Points - User-defined data points for triggers
+export const customDataPoints = pgTable('custom_data_points', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').references(() => organizations.id).notNull(),
+  
+  // Data Point Definition
+  name: varchar('name', { length: 255 }).notNull(),
+  description: text('description'),
+  category: varchar('category', { length: 100 }).notNull(), // Custom category name or existing like 'competitive', 'market'
+  
+  // Metric Configuration
+  metricType: varchar('metric_type', { length: 50 }).notNull(), // 'percentage', 'count', 'currency', 'score', 'boolean', 'text', 'trend'
+  unit: varchar('unit', { length: 50 }), // '%', 'USD', 'days', etc.
+  
+  // Data Sources - how this data point gets its values
+  sources: jsonb('sources'), // Array of source names e.g. ['manual-input', 'salesforce', 'internal-api']
+  dataSourceId: uuid('data_source_id').references(() => dataSources.id), // Optional link to integrated data source
+  
+  // Default Threshold Configuration
+  defaultThreshold: jsonb('default_threshold'), // { operator: 'gt'|'lt'|'spike'|etc., value: number, urgency: 'critical'|'high'|'medium'|'low' }
+  
+  // Current Value (for manual input data points)
+  currentValue: text('current_value'),
+  lastUpdatedAt: timestamp('last_updated_at'),
+  lastUpdatedBy: varchar('last_updated_by').references(() => users.id),
+  
+  // Status
+  isActive: boolean('is_active').default(true),
+  
+  // Metadata
+  createdBy: varchar('created_by').references(() => users.id),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
 // 8. Crisis Simulation & War Gaming
 export const crisisSimulations = pgTable('crisis_simulations', {
   id: uuid('id').primaryKey().defaultRandom(),
