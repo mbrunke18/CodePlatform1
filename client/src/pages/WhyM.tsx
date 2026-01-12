@@ -29,7 +29,7 @@ import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
 import { useEffect } from "react";
 import { updatePageMetadata } from "@/lib/seo";
-import poiseLogoPath from "@assets/executeiq-logo-official.png";
+import executeiqLogoPath from "@assets/executeiq-logo-official.png";
 
 export default function WhyM() {
   useEffect(() => {
@@ -52,7 +52,7 @@ export default function WhyM() {
             <div>
               <div className="inline-block px-4 py-2 rounded-xl bg-gradient-to-r from-slate-800/80 to-slate-900/70 border border-slate-600/50 backdrop-blur-sm mb-6">
                 <img 
-                  src={poiseLogoPath} 
+                  src={executeiqLogoPath} 
                   alt="ExecuteIQ - Composure in every decision" 
                   className="h-14 sm:h-16 md:h-18 w-auto max-w-[280px] object-contain brightness-110 contrast-105"
                   style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.55))' }}
@@ -63,7 +63,7 @@ export default function WhyM() {
                 The Origin Story
               </Badge>
               
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight" data-testid="heading-why-poise">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight" data-testid="heading-why-executeiq">
                 Why ExecuteIQ Exists
               </h1>
               

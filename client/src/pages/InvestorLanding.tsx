@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
-import poiseLogoPath from "@assets/executeiq-logo-official.png";
+import executeiqLogoPath from "@assets/executeiq-logo-official.png";
 import { 
   BarChart, 
   Bar, 
@@ -74,7 +74,7 @@ export default function InvestorLanding() {
             <div className="mb-8 flex justify-center">
               <div className="inline-block px-6 py-3 rounded-2xl bg-gradient-to-r from-slate-800/80 to-slate-900/70 border border-slate-600/50 backdrop-blur-sm">
                 <img 
-                  src={poiseLogoPath} 
+                  src={executeiqLogoPath} 
                   alt="ExecuteIQ - Composure in every decision" 
                   className="h-20 sm:h-24 lg:h-28 w-auto object-contain brightness-110 contrast-105"
                   style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.55))' }}

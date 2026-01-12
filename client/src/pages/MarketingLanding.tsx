@@ -24,7 +24,7 @@ import { useLocation } from "wouter";
 import { useEffect, useState } from "react";
 import { updatePageMetadata } from "@/lib/seo";
 import StandardNav from "@/components/layout/StandardNav";
-import poiseLogoPath from "@assets/executeiq-logo-official.png";
+import executeiqLogoPath from "@assets/executeiq-logo-official.png";
 import CreateScenarioButton from "@/components/scenario/CreateScenarioButton";
 import DemoWelcomeScreen from "@/components/demo/DemoWelcomeScreen";
 import ExecutionTimelineDemo from "@/components/demo/ExecutionTimelineDemo";
@@ -55,7 +55,7 @@ export default function MarketingLanding() {
           <div className="mb-8 flex justify-center">
             <div className="inline-block px-6 py-3 rounded-2xl bg-gradient-to-r from-slate-800/80 to-slate-900/70 border border-slate-600/50 backdrop-blur-sm">
               <img 
-                src={poiseLogoPath} 
+                src={executeiqLogoPath} 
                 alt="ExecuteIQ - Orchestration as a System" 
                 className="h-20 sm:h-24 lg:h-28 w-auto object-contain brightness-110 contrast-105"
                 style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.55))' }}

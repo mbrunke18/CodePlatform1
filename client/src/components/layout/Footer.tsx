@@ -1,5 +1,5 @@
 import { useLocation } from "wouter";
-import poiseLogoPath from "@assets/executeiq-logo-official.png";
+import executeiqLogoPath from "@assets/executeiq-logo-official.png";
 
 export default function Footer() {
   const [, setLocation] = useLocation();
@@ -82,7 +82,7 @@ export default function Footer() {
             <div className="flex items-center gap-4">
               <div className="px-4 py-2 rounded-xl bg-gradient-to-r from-poise-navy/90 to-poise-dark-gray/70 border border-poise-gold/30">
                 <img 
-                  src={poiseLogoPath} 
+                  src={executeiqLogoPath} 
                   alt="ExecuteIQ - Composure in every decision" 
                   className="h-12 sm:h-14 lg:h-16 w-auto max-w-[260px] object-contain brightness-110 contrast-105"
                   style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.5))' }}
