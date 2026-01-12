@@ -29,7 +29,7 @@ export default function VideoLanding() {
     updatePageMetadata({
       title: "ExecuteIQ - Strategic Execution Operating System | 72 Hours → 12 Minutes",
       description: "Watch how ExecuteIQ transforms strategic coordination from 72 hours to 12 minutes. Pre-staged playbooks, coordinated stakeholders, instant activation for Fortune 1000 companies.",
-      ogTitle: "POISE - The Speed to Execute",
+      ogTitle: "ExecuteIQ - The Speed to Execute",
       ogDescription: "166 playbooks. 12 minutes to coordinated execution. The Strategic Execution Operating System.",
     });
   }, []);
@@ -49,7 +49,7 @@ export default function VideoLanding() {
                 </Button>
               </Link>
               <h1 className="text-3xl md:text-4xl font-bold text-white mb-2" data-testid="heading-video-hub">
-                POISE Brand Films
+                ExecuteIQ Brand Films
               </h1>
               <p className="text-slate-400">
                 Cinematic presentations for trade shows, conferences, and broadcast
@@ -163,10 +163,10 @@ export default function VideoLanding() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
-              The POISE Advantage
+              The ExecuteIQ Advantage
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Why Fortune 1000 Leaders Choose POISE
+              Why Fortune 1000 Leaders Choose ExecuteIQ
             </h2>
             <p className="text-slate-400 max-w-2xl mx-auto">
               Transform how your organization responds to the moments that matter

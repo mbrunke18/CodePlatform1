@@ -127,8 +127,8 @@ export default function ScenarioGallery() {
   useEffect(() => {
     updatePageMetadata({
       title: "Strategic Playbook Library | ExecuteIQ Strategic Execution OS",
-      description: "Explore POISE's 166 strategic playbooks across 9 domains: digital transformation, M&A integration, crisis management, new product launches, global expansion, AI governance, and more. See the human-AI partnership in action.",
-      ogTitle: "Experience POISE Strategic Playbook Library",
+      description: "Explore ExecuteIQ's 166 strategic playbooks across 9 domains: digital transformation, M&A integration, crisis management, new product launches, global expansion, AI governance, and more. See the human-AI partnership in action.",
+      ogTitle: "Experience ExecuteIQ Strategic Playbook Library",
       ogDescription: "From culture transformation to new product launches - see how executives prepare, AI monitors, and teams execute across 166 strategic playbooks.",
     });
   }, []);
@@ -165,7 +165,7 @@ export default function ScenarioGallery() {
           </div>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-8 leading-tight max-w-5xl mx-auto" data-testid="heading-hero">
-            Experience How POISE Handles Real Business Situations
+            Experience How ExecuteIQ Handles Real Business Situations
           </h1>
           
           <p className="text-xl md:text-2xl text-blue-100 mb-10 max-w-4xl mx-auto" data-testid="text-subtitle">
@@ -310,7 +310,7 @@ export default function ScenarioGallery() {
                       Ready to Operationalize Your Playbooks?
                     </h3>
                     <p className="text-lg text-slate-700 dark:text-slate-300 mb-6 max-w-2xl mx-auto">
-                      Join POISE's Q1 2026 pilot program and transform your strategic execution from 72-hour coordination to 12-minute response. Limited to 10 Fortune 1000 companies.
+                      Join ExecuteIQ's Q1 2026 pilot program and transform your strategic execution from 72-hour coordination to 12-minute response. Limited to 10 Fortune 1000 companies.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
                       <Button 

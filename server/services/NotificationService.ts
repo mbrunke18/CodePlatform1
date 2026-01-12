@@ -150,7 +150,7 @@ class NotificationService {
       const htmlContent = this.renderEmailTemplate(notification);
 
       await this.transporter.sendMail({
-        from: process.env.SMTP_FROM || '"POISE" <alerts@poise.app>',
+        from: process.env.SMTP_FROM || '"ExecuteIQ" <alerts@poise.app>',
         to: recipient.email,
         subject: notification.title,
         html: htmlContent,
@@ -338,7 +338,7 @@ class NotificationService {
       <body>
         <div class="container">
           <div class="header">
-            <h1>🚨 POISE ALERT</h1>
+            <h1>🚨 ExecuteIQ ALERT</h1>
             <div class="priority-badge">${notification.priority?.toUpperCase() || 'HIGH'} PRIORITY</div>
           </div>
           <div class="content">
@@ -361,7 +361,7 @@ class NotificationService {
             </center>
           </div>
           <div class="footer">
-            <p><strong>POISE Strategic Execution Platform</strong></p>
+            <p><strong>ExecuteIQ Strategic Execution Platform</strong></p>
             <p>This is an automated alert. Please acknowledge immediately.</p>
           </div>
         </div>

@@ -32,7 +32,7 @@ export const EXECUTEIQ_BRAND = {
 } as const;
 
 // Backward compatibility alias
-export const POISE_BRAND = EXECUTEIQ_BRAND;
+export const ExecuteIQ_BRAND = EXECUTEIQ_BRAND;
 
 // ----- LEADERSHIP CAPABILITIES (Fisk Leadership Model) -----
 export const LEADERSHIP_CAPABILITIES = {
@@ -340,7 +340,7 @@ export const TIMING_BENCHMARKS = {
     description: 'ExecuteIQ enables 12-minute decision start and 90-minute full execution'
   },
   // Backward compatibility aliases
-  get POISE() { return this.EXECUTEIQ; },
+  get ExecuteIQ() { return this.EXECUTEIQ; },
   get M_PLATFORM() { return this.EXECUTEIQ; },
   INDUSTRY_AVERAGE: {
     decisionTime: 72,

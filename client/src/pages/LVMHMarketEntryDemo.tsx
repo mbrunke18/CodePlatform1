@@ -121,7 +121,7 @@ export default function LVMHMarketEntryDemo() {
                       This isn't a crisis—it's a strategic offensive move. China's luxury market rebounds 47%, creating 
                       a 90-day window to capture market leadership. But coordinating 10 brands (Louis Vuitton, Dior, Fendi, 
                       Givenchy, Celine, Loewe, Loro Piana, Rimowa, Berluti, Kenzo) across 15 cities traditionally takes 
-                      <strong> 6-9 months</strong>. POISE compresses coordination to <strong>12 minutes</strong>, enabling 
+                      <strong> 6-9 months</strong>. ExecuteIQ compresses coordination to <strong>12 minutes</strong>, enabling 
                       simultaneous launch during Golden Week while competitors are still planning.
                     </p>
                   </div>

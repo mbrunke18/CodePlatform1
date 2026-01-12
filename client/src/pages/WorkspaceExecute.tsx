@@ -197,7 +197,7 @@ export default function WorkspaceExecute() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">12 Minutes to Coordinated Response</h3>
-                  <p className="text-slate-300">POISE delivers 340x faster execution than traditional approaches (72 hours)</p>
+                  <p className="text-slate-300">ExecuteIQ delivers 340x faster execution than traditional approaches (72 hours)</p>
                 </div>
               </div>
             </CardContent>

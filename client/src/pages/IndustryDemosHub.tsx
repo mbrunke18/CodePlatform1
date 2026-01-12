@@ -257,7 +257,7 @@ export default function IndustryDemosHub() {
             </div>
             <div className="mt-4 max-w-3xl mx-auto">
               <p className="text-sm text-blue-300">
-                POISE isn't just crisis insurance—it's the execution layer for strategic velocity. When you detect an opportunity or threat, 
+                ExecuteIQ isn't just crisis insurance—it's the execution layer for strategic velocity. When you detect an opportunity or threat, 
                 coordinate your entire organization in minutes, not days.
               </p>
             </div>
@@ -345,7 +345,7 @@ export default function IndustryDemosHub() {
             <Badge className="bg-amber-600">6 Live Demos</Badge>
           </div>
           <p className="text-blue-200 mb-6 max-w-4xl">
-            When crises hit—ransomware, recalls, supplier failures—traditional coordination takes days. POISE compresses response to minutes, 
+            When crises hit—ransomware, recalls, supplier failures—traditional coordination takes days. ExecuteIQ compresses response to minutes, 
             minimizing damage and protecting value before the situation escalates.
           </p>
 
@@ -465,7 +465,7 @@ export default function IndustryDemosHub() {
             <h3 className="text-2xl font-bold text-white mb-4">The Detection-Execution Gap</h3>
             <p className="text-lg text-blue-100 mb-6 leading-relaxed">
               Every industry has invested billions in AI for detection—fraud monitoring, quality control, supply chain visibility, threat intelligence. 
-              But when crises hit, coordination still happens at email speed. POISE bridges that gap.
+              But when crises hit, coordination still happens at email speed. ExecuteIQ bridges that gap.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">

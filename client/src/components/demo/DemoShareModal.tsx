@@ -102,8 +102,8 @@ Best regards`
       body: `I wanted to share a demo showing how our Strategic Execution Operating System protects liquidity and optimizes costs with executive intelligence and institutional memory. Launch Demo: ${demoUrl}`
     },
     general: {
-      subject: "POISE - Strategic Execution Operating System Demo",
-      body: `I wanted to share this interactive demo of POISE's Strategic Execution Operating System.
+      subject: "ExecuteIQ - Strategic Execution Operating System Demo",
+      body: `I wanted to share this interactive demo of ExecuteIQ's Strategic Execution Operating System.
 
 See how Fortune 1000 companies achieve:
 • 12-minute execution (vs 72-hour standard)

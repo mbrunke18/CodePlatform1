@@ -407,10 +407,10 @@ export default function McKinseyIntelligenceCenter() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Zap className="h-5 w-5 text-primary" />
-            Transform with POISE + McKinsey
+            Transform with ExecuteIQ + McKinsey
           </CardTitle>
           <CardDescription>
-            Combine McKinsey's research-backed framework with POISE's 12-minute execution velocity to achieve sustainable transformation
+            Combine McKinsey's research-backed framework with ExecuteIQ's 12-minute execution velocity to achieve sustainable transformation
           </CardDescription>
         </CardHeader>
         <CardContent>

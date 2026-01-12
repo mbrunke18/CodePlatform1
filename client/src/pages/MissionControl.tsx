@@ -52,7 +52,7 @@ import {
   Calculator,
   FileText
 } from 'lucide-react';
-import PoiseLogo from '@/components/PoiseLogo';
+import ExecuteIQLogo from '@/components/ExecuteIQLogo';
 import JourneyNavigator from '@/components/JourneyNavigator';
 
 const phaseIcons: Record<string, any> = {
@@ -418,7 +418,7 @@ export default function MissionControl() {
               </div>
               <h1 className="text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
                 <div className="p-1 rounded-xl bg-gradient-to-br from-poise-gold/80 to-poise-teal">
-                  <PoiseLogo width={40} variant="icon-only" />
+                  <ExecuteIQLogo width={40} variant="icon-only" />
                 </div>
                 Strategic Command Center
               </h1>
@@ -1501,7 +1501,7 @@ export default function MissionControl() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold">12 Minutes vs. 72 Hours</h3>
-                    <p className="text-slate-300">POISE delivers 340x faster coordinated response</p>
+                    <p className="text-slate-300">ExecuteIQ delivers 340x faster coordinated response</p>
                   </div>
                 </div>
                 <div className="flex gap-3">

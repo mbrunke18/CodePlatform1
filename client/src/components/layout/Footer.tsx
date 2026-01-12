@@ -1,5 +1,5 @@
 import { useLocation } from "wouter";
-import poiseLogoPath from "@assets/poise-logo-official.png";
+import poiseLogoPath from "@assets/executeiq-logo-official.png";
 
 export default function Footer() {
   const [, setLocation] = useLocation();
@@ -65,7 +65,7 @@ export default function Footer() {
       links: [
         { label: "How It Works", path: "/how-it-works" },
         { label: "Our Story", path: "/our-story" },
-        { label: "Why POISE", path: "/why-poise" },
+        { label: "Why ExecuteIQ", path: "/why-poise" },
         { label: "Integrations", path: "/integrations" },
         { label: "Pricing", path: "/pricing" },
         { label: "Contact", path: "/contact" },
@@ -83,7 +83,7 @@ export default function Footer() {
               <div className="px-4 py-2 rounded-xl bg-gradient-to-r from-poise-navy/90 to-poise-dark-gray/70 border border-poise-gold/30">
                 <img 
                   src={poiseLogoPath} 
-                  alt="POISE - Composure in every decision" 
+                  alt="ExecuteIQ - Composure in every decision" 
                   className="h-12 sm:h-14 lg:h-16 w-auto max-w-[260px] object-contain brightness-110 contrast-105"
                   style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.5))' }}
                 />
@@ -184,7 +184,7 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-sm text-slate-400">
-                  © {new Date().getFullYear()} POISE - Strategic Execution OS
+                  © {new Date().getFullYear()} ExecuteIQ - Strategic Execution OS
                 </p>
                 <p className="text-xs text-slate-600">Calm, Precise, Instant Execution</p>
               </div>

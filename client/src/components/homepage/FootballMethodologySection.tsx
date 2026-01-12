@@ -27,7 +27,7 @@ export default function FootballMethodologySection() {
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-methodology-description">
               Since the forward pass was legalized in 1906, football has continuously 
-              refined the art of rapid coordination under pressure. POISE brings that 
+              refined the art of rapid coordination under pressure. ExecuteIQ brings that 
               battle-tested system to strategic execution.
             </p>
           </div>
@@ -116,7 +116,7 @@ export default function FootballMethodologySection() {
               <div className="flex gap-4 pt-4 border-t">
                 <div className="flex-shrink-0 w-24 font-bold text-green-600 text-lg">2025</div>
                 <div className="flex-1">
-                  <h4 className="font-semibold text-green-600 mb-1">POISE Brings It to Business</h4>
+                  <h4 className="font-semibold text-green-600 mb-1">ExecuteIQ Brings It to Business</h4>
                   <p className="text-sm text-muted-foreground">
                     For the first time, business executives can execute strategic decisions 
                     with the same systematic coordination that championship teams have used 
@@ -128,14 +128,14 @@ export default function FootballMethodologySection() {
             </CardContent>
           </Card>
 
-          {/* The 5 Principles (Football → POISE) */}
+          {/* The 5 Principles (Football → ExecuteIQ) */}
           <div className="mb-12">
             <h3 className="text-3xl font-bold text-center mb-8" data-testid="text-principles-headline">
               The 5 Principles Championship Teams Use
             </h3>
             <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
               These principles aren't theory—they're proven across 100+ years, 
-              thousands of teams, and millions of successful plays. POISE applies 
+              thousands of teams, and millions of successful plays. ExecuteIQ applies 
               them to business execution.
             </p>
 
@@ -156,7 +156,7 @@ export default function FootballMethodologySection() {
                     the season starts.
                   </p>
                   <p className="text-sm font-semibold text-primary">
-                    <strong>POISE:</strong> 166 pre-built strategic playbooks cover 
+                    <strong>ExecuteIQ:</strong> 166 pre-built strategic playbooks cover 
                     crisis response, M&A integration, product launches, competitive 
                     response, and more—prepared before you need them.
                   </p>
@@ -244,7 +244,7 @@ export default function FootballMethodologySection() {
                     learning is systematic.
                   </p>
                   <p className="text-sm font-semibold text-primary">
-                    <strong>POISE:</strong> Four Outcomes Scorecard tracks Clarity, 
+                    <strong>ExecuteIQ:</strong> Four Outcomes Scorecard tracks Clarity, 
                     Speed, Skills, and Commitment after every activation. Learn from 
                     each execution to improve the next one.
                   </p>
@@ -266,7 +266,7 @@ export default function FootballMethodologySection() {
                     players aligned). The coach stays in control.
                   </p>
                   <p className="text-sm font-semibold text-green-600">
-                    <strong>POISE:</strong> Executives make strategic decisions. POISE 
+                    <strong>ExecuteIQ:</strong> Executives make strategic decisions. ExecuteIQ 
                     handles coordination (aligning 30+ stakeholders). Human judgment + 
                     machine speed = Augmented Execution.
                   </p>

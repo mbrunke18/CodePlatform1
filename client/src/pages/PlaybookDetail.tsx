@@ -406,7 +406,7 @@ export default function PlaybookDetail() {
                           72 hrs → 12 min
                         </div>
                         <p className="text-sm text-muted-foreground">
-                          POISE eliminates the planning phase entirely
+                          ExecuteIQ eliminates the planning phase entirely
                         </p>
                       </div>
                     </CardContent>

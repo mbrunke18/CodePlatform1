@@ -61,7 +61,7 @@ const PRESENTATION_SLIDES: Slide[] = [
     title: 'Success Favors the Prepared',
     subtitle: 'The Strategic Execution Operating System',
     content: 'slide',
-    notes: 'POISE fundamentally changes how Fortune 1000 leaders work—replacing reactive scrambles with coordinated precision, turning emerging opportunities into decisive action, and transforming risk into competitive advantage.',
+    notes: 'ExecuteIQ fundamentally changes how Fortune 1000 leaders work—replacing reactive scrambles with coordinated precision, turning emerging opportunities into decisive action, and transforming risk into competitive advantage.',
     visual: 'title',
     data: {
       tagline: 'From days to minutes.',
@@ -130,7 +130,7 @@ const PRESENTATION_SLIDES: Slide[] = [
     id: 'solution',
     act: 3,
     actName: 'Product Deep Dive',
-    title: 'Introducing POISE',
+    title: 'Introducing ExecuteIQ',
     subtitle: 'The Strategic Execution Operating System',
     content: 'slide',
     notes: 'ExecuteIQ is the first platform that connects signals to playbooks to execution to learning. A complete closed-loop system.',
@@ -211,7 +211,7 @@ const PRESENTATION_SLIDES: Slide[] = [
     title: 'ADVANCE',
     subtitle: 'Review the Film',
     content: 'slide',
-    notes: 'After each execution, POISE captures outcomes and uses AI to analyze what worked. It suggests playbook refinements that make you smarter every cycle.',
+    notes: 'After each execution, ExecuteIQ captures outcomes and uses AI to analyze what worked. It suggests playbook refinements that make you smarter every cycle.',
     visual: 'phase',
     data: {
       phase: 'ADVANCE',
@@ -230,7 +230,7 @@ const PRESENTATION_SLIDES: Slide[] = [
     act: 3,
     actName: 'Product Deep Dive',
     title: 'Live Demo',
-    subtitle: 'See POISE in Action',
+    subtitle: 'See ExecuteIQ in Action',
     content: 'demo-transition',
     demoTarget: '/executive-simulation',
     notes: 'Now let me show you how this works in practice. I\'ll walk you through a real scenario where a competitor announces a major product launch.',
@@ -263,7 +263,7 @@ const PRESENTATION_SLIDES: Slide[] = [
     title: 'Why ExecuteIQ?',
     subtitle: 'The Only Closed-Loop Platform',
     content: 'slide',
-    notes: 'Unlike point solutions, ExecuteIQ is the only platform that connects all four phases. Palantir does analytics. Anaplan does planning. Dataminr does signals. Only POISE does execution.',
+    notes: 'Unlike point solutions, ExecuteIQ is the only platform that connects all four phases. Palantir does analytics. Anaplan does planning. Dataminr does signals. Only ExecuteIQ does execution.',
     visual: 'competitive',
     data: {
       competitors: [
@@ -485,7 +485,7 @@ function InvestorPresentation() {
             >
               {slide.id === 'title' && (
                 <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center mb-8 mx-auto shadow-2xl">
-                  <span className="text-5xl font-bold text-white">POISE</span>
+                  <span className="text-5xl font-bold text-white">ExecuteIQ</span>
                 </div>
               )}
               <h1 className="text-6xl md:text-8xl font-bold text-white mb-6">{slide.title}</h1>
@@ -665,7 +665,7 @@ function InvestorPresentation() {
               className="flex items-center gap-4 mb-4"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center">
-                <span className="text-2xl font-bold text-white">POISE</span>
+                <span className="text-2xl font-bold text-white">ExecuteIQ</span>
               </div>
               <h2 className="text-5xl font-bold text-white">{slide.title}</h2>
             </motion.div>

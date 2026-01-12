@@ -25,10 +25,10 @@ import { updatePageMetadata } from "@/lib/seo";
 export default function Research() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Research Behind POISE | Crisis Response Statistics & Industry Data",
-      description: "POISE was built on a foundation of industry research from McKinsey, PwC, IBM, and Ponemon Institute. See the data that proves faster response saves millions.",
-      ogTitle: "The Research Behind POISE - Industry Data & Statistics",
-      ogDescription: "IBM, McKinsey, PwC research proves the cost of slow response. See how POISE compresses 72 hours to 12 minutes.",
+      title: "Research Behind ExecuteIQ | Crisis Response Statistics & Industry Data",
+      description: "ExecuteIQ was built on a foundation of industry research from McKinsey, PwC, IBM, and Ponemon Institute. See the data that proves faster response saves millions.",
+      ogTitle: "The Research Behind ExecuteIQ - Industry Data & Statistics",
+      ogDescription: "IBM, McKinsey, PwC research proves the cost of slow response. See how ExecuteIQ compresses 72 hours to 12 minutes.",
     });
   }, []);
 
@@ -45,11 +45,11 @@ export default function Research() {
           </Badge>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight" data-testid="heading-research">
-            The Research Behind POISE
+            The Research Behind ExecuteIQ
           </h1>
           
           <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            POISE was built on a foundation of industry research and 20+ years of Fortune 500 
+            ExecuteIQ was built on a foundation of industry research and 20+ years of Fortune 500 
             operational experience. Here's the data that shaped our platform.
           </p>
         </div>
@@ -64,7 +64,7 @@ export default function Research() {
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Leading institutions have quantified the cost of slow, uncoordinated response. 
-              POISE was designed to solve these exact challenges.
+              ExecuteIQ was designed to solve these exact challenges.
             </p>
           </div>
 
@@ -94,7 +94,7 @@ export default function Research() {
                   <ArrowRight className="h-8 w-8 text-primary" />
                   <div className="text-center">
                     <div className="text-4xl font-bold text-primary">12 min</div>
-                    <p className="text-sm text-muted-foreground">POISE's coordinated response</p>
+                    <p className="text-sm text-muted-foreground">ExecuteIQ's coordinated response</p>
                   </div>
                 </div>
               </div>
@@ -244,7 +244,7 @@ export default function Research() {
                 
                 <div className="p-4 bg-blue-500/10 rounded-lg mb-4">
                   <p className="text-sm text-foreground font-medium">
-                    22% above global average cost. POISE cuts this timeline to minutes.
+                    22% above global average cost. ExecuteIQ cuts this timeline to minutes.
                   </p>
                 </div>
                 
@@ -282,7 +282,7 @@ export default function Research() {
                 
                 <div className="p-4 bg-red-500/10 rounded-lg mb-4">
                   <p className="text-sm text-foreground font-medium">
-                    Highest regulatory scrutiny of any industry. POISE ensures you're ready before the next incident.
+                    Highest regulatory scrutiny of any industry. ExecuteIQ ensures you're ready before the next incident.
                   </p>
                 </div>
                 
@@ -360,7 +360,7 @@ export default function Research() {
                 <Shield className="h-8 w-8 text-purple-500 mx-auto mb-3" />
                 <h4 className="font-bold text-foreground mb-2">Balance Governance & Risk</h4>
                 <p className="text-sm text-muted-foreground">
-                  Give people autonomy while maintaining safeguards. POISE's pre-approved resources do exactly this.
+                  Give people autonomy while maintaining safeguards. ExecuteIQ's pre-approved resources do exactly this.
                 </p>
               </CardContent>
             </Card>
@@ -369,7 +369,7 @@ export default function Research() {
                 <Users className="h-8 w-8 text-purple-500 mx-auto mb-3" />
                 <h4 className="font-bold text-foreground mb-2">Empower with Accountability</h4>
                 <p className="text-sm text-muted-foreground">
-                  Clear task ownership with defined acceptance criteria. POISE's playbooks assign both.
+                  Clear task ownership with defined acceptance criteria. ExecuteIQ's playbooks assign both.
                 </p>
               </CardContent>
             </Card>
@@ -378,7 +378,7 @@ export default function Research() {
                 <Zap className="h-8 w-8 text-purple-500 mx-auto mb-3" />
                 <h4 className="font-bold text-foreground mb-2">Fund Work Dynamically</h4>
                 <p className="text-sm text-muted-foreground">
-                  Shift resources to high-value activities without bureaucracy. POISE unlocks pre-approved budgets instantly.
+                  Shift resources to high-value activities without bureaucracy. ExecuteIQ unlocks pre-approved budgets instantly.
                 </p>
               </CardContent>
             </Card>
@@ -386,15 +386,15 @@ export default function Research() {
         </div>
       </section>
 
-      {/* How POISE Addresses These Findings */}
+      {/* How ExecuteIQ Addresses These Findings */}
       <section className="py-16 px-6 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              How POISE Addresses These Findings
+              How ExecuteIQ Addresses These Findings
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Every feature in POISE was designed to address a specific research finding about 
+              Every feature in ExecuteIQ was designed to address a specific research finding about 
               what makes organizations faster and more resilient.
             </p>
           </div>
@@ -407,7 +407,7 @@ export default function Research() {
                   <div>
                     <h4 className="font-bold text-foreground mb-2">Pre-Defined Response Teams</h4>
                     <p className="text-sm text-muted-foreground mb-3">
-                      IBM found 35% cost reduction with pre-assigned teams. POISE's playbooks 
+                      IBM found 35% cost reduction with pre-assigned teams. ExecuteIQ's playbooks 
                       include pre-assigned stakeholders for every scenario.
                     </p>
                     <Badge variant="outline" className="text-xs">166 Playbooks Ready</Badge>
@@ -423,7 +423,7 @@ export default function Research() {
                   <div>
                     <h4 className="font-bold text-foreground mb-2">Automated Orchestration</h4>
                     <p className="text-sm text-muted-foreground mb-3">
-                      $2.2M saved per incident with automation. POISE auto-creates Jira projects, 
+                      $2.2M saved per incident with automation. ExecuteIQ auto-creates Jira projects, 
                       notifies via Slack, and orchestrates execution.
                     </p>
                     <Badge variant="outline" className="text-xs">Enterprise Integrations</Badge>
@@ -439,7 +439,7 @@ export default function Research() {
                   <div>
                     <h4 className="font-bold text-foreground mb-2">Faster Containment</h4>
                     <p className="text-sm text-muted-foreground mb-3">
-                      $1.76M saved by containing within 30 days. POISE's pre-staged playbooks 
+                      $1.76M saved by containing within 30 days. ExecuteIQ's pre-staged playbooks 
                       get you to coordinated response in minutes.
                     </p>
                     <Badge variant="outline" className="text-xs">12-Minute Activation</Badge>
@@ -455,7 +455,7 @@ export default function Research() {
                   <div>
                     <h4 className="font-bold text-foreground mb-2">AI-Powered Detection</h4>
                     <p className="text-sm text-muted-foreground mb-3">
-                      98 days faster with AI. POISE's continuous monitoring detects weak signals 
+                      98 days faster with AI. ExecuteIQ's continuous monitoring detects weak signals 
                       before they become crises.
                     </p>
                     <Badge variant="outline" className="text-xs">24/7 Monitoring</Badge>

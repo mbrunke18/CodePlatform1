@@ -26,8 +26,8 @@ export default function InvestorResources() {
   useEffect(() => {
     updatePageMetadata({
       title: "Investor Resources | ExecuteIQ Strategic Execution OS",
-      description: "Investment overview for POISE, the first Strategic Execution Operating System. Creating a new $5B+ software category for Fortune 1000 strategic execution.",
-      ogTitle: "Invest in POISE - Category-Defining Opportunity",
+      description: "Investment overview for ExecuteIQ, the first Strategic Execution Operating System. Creating a new $5B+ software category for Fortune 1000 strategic execution.",
+      ogTitle: "Invest in ExecuteIQ - Category-Defining Opportunity",
       ogDescription: "Transform 72-hour strategic coordination into 12-minute execution. First-mover in Strategic Execution Operating System (SEOS) category.",
     });
   }, []);
@@ -52,7 +52,7 @@ export default function InvestorResources() {
           </p>
           
           <p className="text-lg text-blue-200 mb-8 max-w-2xl mx-auto">
-            What Salesforce did for customer relationships, POISE does for strategic execution.
+            What Salesforce did for customer relationships, ExecuteIQ does for strategic execution.
           </p>
 
           <div className="flex gap-4 justify-center flex-wrap">
@@ -124,12 +124,12 @@ export default function InvestorResources() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-green-500">
                   <Zap className="h-6 w-6" />
-                  POISE's Solution: 12-Minute Activation
+                  ExecuteIQ's Solution: 12-Minute Activation
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">
-                  POISE fundamentally changes the operating model:
+                  ExecuteIQ fundamentally changes the operating model:
                 </p>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
@@ -200,7 +200,7 @@ export default function InvestorResources() {
           {/* The 4-Phase Lifecycle */}
           <Card className="mb-12">
             <CardHeader>
-              <CardTitle>The POISE Framework: 4-Phase Lifecycle</CardTitle>
+              <CardTitle>The ExecuteIQ Framework: 4-Phase Lifecycle</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-4 gap-4">
@@ -252,7 +252,7 @@ export default function InvestorResources() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">ROI Per Strategic Event</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              POISE pays for itself on the first significant event
+              ExecuteIQ pays for itself on the first significant event
             </p>
           </div>
 
@@ -295,7 +295,7 @@ export default function InvestorResources() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">Competitive Differentiation</h2>
             <p className="text-muted-foreground">
-              POISE owns the category between strategic preparation and operational execution
+              ExecuteIQ owns the category between strategic preparation and operational execution
             </p>
           </div>
 
@@ -308,7 +308,7 @@ export default function InvestorResources() {
                       <th className="text-left py-4 px-6 font-semibold">Capability</th>
                       <th className="text-center py-4 px-4 font-semibold">Crisis Tools</th>
                       <th className="text-center py-4 px-4 font-semibold">PM Tools</th>
-                      <th className="text-center py-4 px-4 font-semibold text-primary">POISE</th>
+                      <th className="text-center py-4 px-4 font-semibold text-primary">ExecuteIQ</th>
                     </tr>
                   </thead>
                   <tbody className="text-muted-foreground">
@@ -404,7 +404,7 @@ export default function InvestorResources() {
             Ready to Learn More?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            See POISE in action and explore the category-defining opportunity.
+            See ExecuteIQ in action and explore the category-defining opportunity.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link href="/investor-presentation">

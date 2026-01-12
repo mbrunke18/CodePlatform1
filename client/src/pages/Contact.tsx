@@ -34,9 +34,9 @@ export default function Contact() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Request Early Access - POISE Q1 2026 Pilot Program",
-      description: "Join POISE's exclusive Q1 2026 pilot program. Limited to 10 Fortune 1000 companies for 90-day validation partnership. Transform strategic execution from days to minutes.",
-      ogTitle: "Request Early Access - POISE Pilot Program",
+      title: "Request Early Access - ExecuteIQ Q1 2026 Pilot Program",
+      description: "Join ExecuteIQ's exclusive Q1 2026 pilot program. Limited to 10 Fortune 1000 companies for 90-day validation partnership. Transform strategic execution from days to minutes.",
+      ogTitle: "Request Early Access - ExecuteIQ Pilot Program",
       ogDescription: "Limited pilot opportunity for Fortune 1000 companies. 90-day validation partnership starting Q1 2026.",
     });
   }, []);
@@ -84,7 +84,7 @@ export default function Contact() {
             Request Early Access Interview
           </h1>
           <p className="text-xl text-blue-200 max-w-3xl mx-auto mb-6">
-            Join an exclusive group of 10 Fortune 1000 companies transforming strategic execution through POISE's 90-day validation partnership.
+            Join an exclusive group of 10 Fortune 1000 companies transforming strategic execution through ExecuteIQ's 90-day validation partnership.
           </p>
           <div className="flex items-center justify-center gap-8 text-sm text-blue-300">
             <div className="flex items-center gap-2">
@@ -350,7 +350,7 @@ export default function Contact() {
               size="lg"
               data-testid="button-see-demo"
             >
-              See How POISE Works
+              See How ExecuteIQ Works
             </Button>
             <Button
               onClick={() => setLocation("/playbook-library")}

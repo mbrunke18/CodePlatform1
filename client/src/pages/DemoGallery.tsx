@@ -56,7 +56,7 @@ const demos = [
   {
     id: "sandbox",
     title: "Interactive Sandbox",
-    description: "Explore POISE features at your own pace in a guided environment",
+    description: "Explore ExecuteIQ features at your own pace in a guided environment",
     path: "/sandbox-demo",
     duration: "Self-paced",
     category: "interactive",
@@ -70,7 +70,7 @@ const demos = [
   {
     id: "investor-demo",
     title: "Investor Demo",
-    description: "Comprehensive overview of POISE value proposition and market opportunity",
+    description: "Comprehensive overview of ExecuteIQ value proposition and market opportunity",
     path: "/investor-demo",
     duration: "15 min",
     category: "presentation",
@@ -84,7 +84,7 @@ const demos = [
   {
     id: "product-tour",
     title: "Product Tour",
-    description: "Guided walkthrough of all POISE modules and capabilities",
+    description: "Guided walkthrough of all ExecuteIQ modules and capabilities",
     path: "/product-tour",
     duration: "8 min",
     category: "presentation",
@@ -165,7 +165,7 @@ export default function DemoGallery() {
           {/* Header */}
           <div className="text-center mb-8">
             <Badge className="mb-4 bg-poise-teal/20 text-poise-teal border-poise-teal/30">
-              Experience POISE
+              Experience ExecuteIQ
             </Badge>
             <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
               Demo Gallery
@@ -302,7 +302,7 @@ export default function DemoGallery() {
           <div className="mb-8">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Industry Scenarios</h2>
             <p className="text-slate-600 dark:text-slate-400 mb-6">
-              See POISE in action with scenarios tailored to your industry
+              See ExecuteIQ in action with scenarios tailored to your industry
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {industryDemos.map((demo) => (

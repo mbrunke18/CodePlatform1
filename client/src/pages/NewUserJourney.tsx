@@ -177,7 +177,7 @@ const STEPS = [
   { id: 'playbooks', title: 'Select Playbooks', icon: Layers },
   { id: 'signals', title: 'Configure Signals', icon: Radio },
   { id: 'metrics', title: 'Success Metrics', icon: BarChart3 },
-  { id: 'preview', title: 'See POISE in Action', icon: Play },
+  { id: 'preview', title: 'See ExecuteIQ in Action', icon: Play },
   { id: 'activated', title: 'System Active', icon: CheckCircle },
 ];
 
@@ -339,7 +339,7 @@ export default function NewUserJourney() {
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                <span className="text-white font-bold text-sm">POISE</span>
+                <span className="text-white font-bold text-sm">ExecuteIQ</span>
               </div>
               <div>
                 <h1 className="text-lg font-semibold text-white">Getting Started with ExecuteIQ</h1>
@@ -414,7 +414,7 @@ export default function NewUserJourney() {
                       Success Favors the Prepared
                     </h2>
                     <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-                      POISE replaces reactive scrambles with coordinated precision, turning emerging opportunities 
+                      ExecuteIQ replaces reactive scrambles with coordinated precision, turning emerging opportunities 
                       into decisive action in <span className="text-indigo-400 font-semibold">12 minutes, not 72 hours</span>
                     </p>
                   </div>
@@ -453,7 +453,7 @@ export default function NewUserJourney() {
                         <ul className="text-sm text-slate-300 space-y-1">
                           <li className="flex items-center gap-2">
                             <Check className="h-4 w-4 text-green-400" />
-                            Configure POISE for your industry and role
+                            Configure ExecuteIQ for your industry and role
                           </li>
                           <li className="flex items-center gap-2">
                             <Check className="h-4 w-4 text-green-400" />
@@ -465,7 +465,7 @@ export default function NewUserJourney() {
                           </li>
                           <li className="flex items-center gap-2">
                             <Check className="h-4 w-4 text-green-400" />
-                            See a live simulation of POISE in action
+                            See a live simulation of ExecuteIQ in action
                           </li>
                         </ul>
                       </div>
@@ -911,7 +911,7 @@ export default function NewUserJourney() {
                   <div className="text-center mb-6">
                     <h2 className="text-3xl font-bold text-white mb-2">Your Command Center is Ready</h2>
                     <p className="text-slate-400">
-                      Here's what POISE will monitor and execute for {state.organizationName || 'your organization'}
+                      Here's what ExecuteIQ will monitor and execute for {state.organizationName || 'your organization'}
                     </p>
                   </div>
 
@@ -1308,11 +1308,11 @@ export default function NewUserJourney() {
                 {completeJourneyMutation.isPending ? (
                   <>
                     <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-                    Activating POISE...
+                    Activating ExecuteIQ...
                   </>
                 ) : (
                   <>
-                    Activate POISE
+                    Activate ExecuteIQ
                     <Zap className="h-4 w-4 ml-2" />
                   </>
                 )}

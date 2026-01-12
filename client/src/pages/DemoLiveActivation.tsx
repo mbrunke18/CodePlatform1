@@ -430,7 +430,7 @@ function DemoLiveActivation() {
 
   return (
     <div className="page-background min-h-screen bg-slate-950 text-white">
-      <DemoNavHeader title="POISE Live Activation Demo" showBackButton={true} />
+      <DemoNavHeader title="ExecuteIQ Live Activation Demo" showBackButton={true} />
       <div className="pt-20 p-8">
       {/* Confetti Celebration */}
       {showConfetti && (
@@ -448,7 +448,7 @@ function DemoLiveActivation() {
         <div className="flex items-center justify-between mb-4">
           <div>
             <h1 className="text-5xl font-bold mb-2" data-testid="demo-title">
-              POISE Live Activation Demo
+              ExecuteIQ Live Activation Demo
             </h1>
             <div className="flex items-center gap-3 mb-2">
               <Badge className="bg-green-600 text-white px-4 py-2 text-sm" data-testid="badge-human-in-loop">
@@ -765,18 +765,18 @@ function DemoLiveActivation() {
                 </Card>
               </div>
 
-              {/* The POISE Advantage - Before/After */}
+              {/* The ExecuteIQ Advantage - Before/After */}
               <Card className="bg-gradient-to-r from-slate-800/90 to-slate-700/90 border-purple-500/50 mb-12">
                 <CardHeader>
                   <CardTitle className="text-4xl text-center text-purple-300">
-                    The POISE Advantage
+                    The ExecuteIQ Advantage
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-8">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                    {/* Without POISE */}
+                    {/* Without ExecuteIQ */}
                     <div className="text-center p-6 bg-red-900/30 rounded-lg border-2 border-red-500/50">
-                      <div className="text-lg text-red-300 mb-3 font-semibold">WITHOUT POISE</div>
+                      <div className="text-lg text-red-300 mb-3 font-semibold">WITHOUT ExecuteIQ</div>
                       <div className="text-7xl font-bold text-red-400 mb-3" data-testid="text-without-vexor">
                         48-72h
                       </div>
@@ -789,9 +789,9 @@ function DemoLiveActivation() {
                       <ArrowRight className="h-24 w-24 text-green-400 animate-pulse" />
                     </div>
 
-                    {/* With POISE */}
+                    {/* With ExecuteIQ */}
                     <div className="text-center p-6 bg-green-900/30 rounded-lg border-2 border-green-500/50">
-                      <div className="text-lg text-green-300 mb-3 font-semibold">WITH POISE</div>
+                      <div className="text-lg text-green-300 mb-3 font-semibold">WITH ExecuteIQ</div>
                       <div className="text-7xl font-bold text-green-400 mb-3 animate-pulse" data-testid="text-with-vexor">
                         {finalMetrics.coordinationTime}
                       </div>
@@ -1127,7 +1127,7 @@ function DemoLiveActivation() {
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
-                <div className="text-sm text-slate-400 mb-2">WITHOUT POISE</div>
+                <div className="text-sm text-slate-400 mb-2">WITHOUT ExecuteIQ</div>
                 <div className="flex items-center gap-2">
                   <AlertCircle className="h-6 w-6 text-red-400" />
                   <div className="text-3xl font-bold text-red-400">48-72h</div>
@@ -1138,7 +1138,7 @@ function DemoLiveActivation() {
               </div>
 
               <div className="border-t border-slate-700 pt-4">
-                <div className="text-sm text-slate-400 mb-2">WITH POISE</div>
+                <div className="text-sm text-slate-400 mb-2">WITH ExecuteIQ</div>
                 <div className="flex items-center gap-2">
                   <TrendingUp className="h-6 w-6 text-green-400" />
                   <div className="text-3xl font-bold text-green-400">~12min</div>

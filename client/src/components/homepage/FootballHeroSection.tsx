@@ -25,10 +25,10 @@ export default function FootballHeroSection() {
             </h1>
             <p className="text-xl md:text-2xl text-slate-700 dark:text-slate-300 max-w-4xl mx-auto mb-6 font-semibold" data-testid="text-hero-subtext-1">
               Every strategic decision delayed costs Fortune 1000 companies <strong>$5.8M annually</strong> in lost value. 
-              Competitors using POISE move 6x faster on market opportunities, crisis response, and M&A execution.
+              Competitors using ExecuteIQ move 6x faster on market opportunities, crisis response, and M&A execution.
             </p>
             <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-4xl mx-auto" data-testid="text-hero-subtext-2">
-              POISE is the only Strategic Execution Operating System that compresses 72-hour coordination into 12-minute action. 
+              ExecuteIQ is the only Strategic Execution Operating System that compresses 72-hour coordination into 12-minute action. 
               Not adopting it isn't an option—it's a competitive liability.
             </p>
           </div>
@@ -96,7 +96,7 @@ export default function FootballHeroSection() {
               </CardContent>
             </Card>
 
-            {/* Business Card - WITHOUT POISE */}
+            {/* Business Card - WITHOUT ExecuteIQ */}
             <Card className="border-2 border-red-600 bg-red-50 dark:bg-red-900/30 shadow-lg" data-testid="card-business-crisis">
               <CardHeader>
                 <div className="flex items-center gap-3 mb-3">
@@ -165,7 +165,7 @@ export default function FootballHeroSection() {
                 the same precision as championship football teams?
               </h3>
               <p className="text-lg text-muted-foreground mb-6 max-w-3xl mx-auto">
-                POISE is the Strategic Execution Operating System built on football's 
+                ExecuteIQ is the Strategic Execution Operating System built on football's 
                 proven coordination methodology—validated by modern research, adapted 
                 for business execution.
               </p>

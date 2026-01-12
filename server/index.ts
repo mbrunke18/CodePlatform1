@@ -310,7 +310,7 @@ app.use((req, res, next) => {
     reusePort: true,
   }, () => {
     log(`serving on port ${port}`);
-    logger.info({ port, env: app.get('env') }, 'POISE server started and ready for health checks');
+    logger.info({ port, env: app.get('env') }, 'ExecuteIQ server started and ready for health checks');
     
     // Minimal initialization - just seed database, no background jobs
     // Background services will be enabled after core stability is verified

@@ -1,5 +1,5 @@
 /**
- * Demo Data System for POISE
+ * Demo Data System for ExecuteIQ
  * 
  * Provides realistic sample data to populate empty states and demonstrate
  * platform capabilities across all pages. All metrics are based on actual

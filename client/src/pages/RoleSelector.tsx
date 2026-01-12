@@ -198,7 +198,7 @@ function RoleCard({ config }: { config: RoleConfig }) {
           </div>
           
           <div className="pt-4 border-t border-slate-300 dark:border-slate-700">
-            <div className="text-sm text-slate-600 dark:text-slate-400 mb-2">Your POISE Impact:</div>
+            <div className="text-sm text-slate-600 dark:text-slate-400 mb-2">Your ExecuteIQ Impact:</div>
             <div className="text-base font-bold text-green-600 dark:text-green-400" data-testid={`text-metric-${config.id.toLowerCase()}`}>
               {config.keyMetric}
             </div>
@@ -231,10 +231,10 @@ export default function RoleSelector() {
             <Sparkles className="h-12 w-12 text-blue-500 animate-pulse" />
           </div>
           <p className="text-2xl text-slate-700 dark:text-slate-400 mb-4">
-            See POISE from Your Perspective
+            See ExecuteIQ from Your Perspective
           </p>
           <p className="text-lg text-slate-600 dark:text-slate-500 max-w-3xl mx-auto">
-            Select your role below to see a personalized demo showing how POISE solves your specific coordination challenges and delivers measurable impact for Fortune 1000 executives like you.
+            Select your role below to see a personalized demo showing how ExecuteIQ solves your specific coordination challenges and delivers measurable impact for Fortune 1000 executives like you.
           </p>
         </div>
 
@@ -250,7 +250,7 @@ export default function RoleSelector() {
           <div className="bg-gradient-to-r .section-background dark:from-blue-900/20 dark:via-purple-900/20 dark:to-pink-900/20 rounded-lg p-8 border border-blue-200 dark:border-blue-800/50">
             <h3 className="text-2xl font-bold mb-4">Not Sure Which Demo to Try?</h3>
             <p className="text-lg text-slate-700 dark:text-slate-300 mb-6 max-w-2xl mx-auto">
-              Browse all 7 scenario-based demos to see POISE in action across different strategic situations.
+              Browse all 7 scenario-based demos to see ExecuteIQ in action across different strategic situations.
             </p>
             <Link href="/demo-selector">
               <Button 

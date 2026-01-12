@@ -160,11 +160,11 @@ export default function ConversationalCommandLayer() {
 
           <div className="mt-8 text-center">
             <p className="text-lg text-muted-foreground mb-6">
-              See how POISE's current execution orchestration capabilities lay the foundation for conversational command—watch our live demos
+              See how ExecuteIQ's current execution orchestration capabilities lay the foundation for conversational command—watch our live demos
             </p>
             <Button size="lg" asChild data-testid="button-see-conversational-demo">
               <a href="/demo-selector">
-                See POISE Execution in Action
+                See ExecuteIQ Execution in Action
                 <ArrowRight className="w-5 h-5 ml-2" />
               </a>
             </Button>

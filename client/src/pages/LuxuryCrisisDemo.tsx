@@ -301,7 +301,7 @@ export default function LuxuryCrisisDemo() {
               <div className="bg-white dark:bg-gray-900 p-6 rounded-lg border-2 border-blue-500 mb-8">
                 <p className="font-semibold mb-2">The Strategic Insight</p>
                 <p className="text-sm text-muted-foreground">
-                  Luxury brands are spending billions on AI for detection. But without POISE's 
+                  Luxury brands are spending billions on AI for detection. But without ExecuteIQ's 
                   execution layer, they're still losing 72 hours—and hundreds of millions—to 
                   coordination chaos. ExecuteIQ is the missing piece that turns AI insights into 
                   coordinated action at Fortune 1000 speed and scale.

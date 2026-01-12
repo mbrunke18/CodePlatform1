@@ -89,7 +89,7 @@ const strategyOKRTools = [
     gaps: ['No event-driven activation', 'No playbook library', 'No cross-functional coordination', 'Quarterly not real-time'],
     color: 'bg-cyan-500',
     whenTheyWin: 'Data-driven OKR programs, enterprise goal tracking',
-    trapQuestion: '"Quantive tracks whether you hit goals. POISE ensures you react to threats before they derail those goals."'
+    trapQuestion: '"Quantive tracks whether you hit goals. ExecuteIQ ensures you react to threats before they derail those goals."'
   },
   {
     name: 'Perdoo',
@@ -100,7 +100,7 @@ const strategyOKRTools = [
     gaps: ['No execution orchestration', 'No external signals', 'No crisis response', 'No institutional learning'],
     color: 'bg-teal-500',
     whenTheyWin: 'Mid-market OKR adoption, simplicity-first teams',
-    trapQuestion: '"OKRs measure progress. POISE drives action when that progress is threatened."'
+    trapQuestion: '"OKRs measure progress. ExecuteIQ drives action when that progress is threatened."'
   }
 ];
 
@@ -152,7 +152,7 @@ const planningModelingTools = [
     whenTheyWin: 'Complex FP&A requirements, multi-dimensional budgeting, supply chain modeling',
     trapQuestion: '"Anaplan helps you model what happens if a competitor enters your market. But when they actually do, can Anaplan mobilize 6 departments with pre-assigned tasks in 12 minutes?"',
     pricing: '$100K-$1M+/year',
-    relationship: 'Complementary - Anaplan models scenarios, POISE executes the response'
+    relationship: 'Complementary - Anaplan models scenarios, ExecuteIQ executes the response'
   },
   {
     name: 'Pigment',
@@ -163,9 +163,9 @@ const planningModelingTools = [
     gaps: ['No execution orchestration', 'No signal monitoring', 'No pre-built responses', 'No event-driven activation'],
     color: 'bg-fuchsia-500',
     whenTheyWin: 'Mid-market finance teams, Anaplan alternative seekers',
-    trapQuestion: '"Pigment plans your numbers. POISE plans your response. When a risk materializes, can Pigment activate your crisis team?"',
+    trapQuestion: '"Pigment plans your numbers. ExecuteIQ plans your response. When a risk materializes, can Pigment activate your crisis team?"',
     pricing: 'Contact for pricing',
-    relationship: 'Complementary - Planning data can inform POISE trigger thresholds'
+    relationship: 'Complementary - Planning data can inform ExecuteIQ trigger thresholds'
   }
 ];
 
@@ -236,27 +236,27 @@ const categoryComparison = [
 const objections = [
   {
     objection: '"We already have Everbridge for crisis management."',
-    response: 'Everbridge excels at notification—telling people something happened. POISE picks up where Everbridge stops: the 20-50 hours of coordination after the alert goes out. POISE can actually receive Everbridge alerts as triggers, then auto-orchestrate your response.',
+    response: 'Everbridge excels at notification—telling people something happened. ExecuteIQ picks up where Everbridge stops: the 20-50 hours of coordination after the alert goes out. ExecuteIQ can actually receive Everbridge alerts as triggers, then auto-orchestrate your response.',
     category: 'Crisis Tools'
   },
   {
     objection: '"We use Jira/Asana for all our project management."',
-    response: 'Perfect—POISE syncs directly to Jira and Asana. When POISE activates a playbook, it creates the project in your existing PM tool with all tasks assigned. Your teams work where they\'re comfortable; POISE just eliminates the 20-50 hours of setup.',
+    response: 'Perfect—ExecuteIQ syncs directly to Jira and Asana. When ExecuteIQ activates a playbook, it creates the project in your existing PM tool with all tasks assigned. Your teams work where they\'re comfortable; ExecuteIQ just eliminates the 20-50 hours of setup.',
     category: 'PM Tools'
   },
   {
     objection: '"This sounds like another tool to adopt."',
-    response: 'ExecuteIQ is the opposite—it reduces tools. Teams don\'t learn POISE; POISE comes to them via the tools they already use (Slack, Teams, Jira, email). The playbook library and signal monitoring are invisible to end users.',
+    response: 'ExecuteIQ is the opposite—it reduces tools. Teams don\'t learn ExecuteIQ; ExecuteIQ comes to them via the tools they already use (Slack, Teams, Jira, email). The playbook library and signal monitoring are invisible to end users.',
     category: 'Adoption'
   },
   {
     objection: '"We have crisis playbooks in SharePoint."',
-    response: 'Static playbooks become stale and require manual activation. When did you last update them? Who activates them? POISE turns static documents into living, self-improving execution engines that activate automatically.',
+    response: 'Static playbooks become stale and require manual activation. When did you last update them? Who activates them? ExecuteIQ turns static documents into living, self-improving execution engines that activate automatically.',
     category: 'Process'
   },
   {
     objection: '"Our teams can coordinate in 72 hours."',
-    response: 'What\'s the cost of those 72 hours? For a cyber breach, every hour is $150K+ in damages. For M&A response, competitors who react in 12 minutes gain insurmountable advantages. POISE captures the value of speed.',
+    response: 'What\'s the cost of those 72 hours? For a cyber breach, every hour is $150K+ in damages. For M&A response, competitors who react in 12 minutes gain insurmountable advantages. ExecuteIQ captures the value of speed.',
     category: 'Urgency'
   },
   {
@@ -266,7 +266,7 @@ const objections = [
   },
   {
     objection: '"We use Workboard/Quantive for strategy execution."',
-    response: 'OKR tools measure progress on a quarterly cadence. POISE activates responses in minutes when strategic events threaten those goals. Workboard tells you if you\'re on track; POISE ensures threats don\'t derail you.',
+    response: 'OKR tools measure progress on a quarterly cadence. ExecuteIQ activates responses in minutes when strategic events threaten those goals. Workboard tells you if you\'re on track; ExecuteIQ ensures threats don\'t derail you.',
     category: 'OKR Tools'
   },
   {
@@ -276,7 +276,7 @@ const objections = [
   },
   {
     objection: '"We use Anaplan for strategic planning."',
-    response: 'Excellent! Anaplan models scenarios—what happens if a competitor enters your market. POISE completes the loop: when that actually happens, POISE activates the response in 12 minutes. Anaplan plans, POISE executes. They\'re complementary, not competing.',
+    response: 'Excellent! Anaplan models scenarios—what happens if a competitor enters your market. ExecuteIQ completes the loop: when that actually happens, ExecuteIQ activates the response in 12 minutes. Anaplan plans, ExecuteIQ executes. They\'re complementary, not competing.',
     category: 'Planning Tools'
   }
 ];
@@ -298,10 +298,10 @@ export default function CompetitivePositioning() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Competitive Positioning - POISE | Strategic Execution OS",
-      description: "See how POISE creates a new category between crisis notification tools (Everbridge, OnSolve) and project management (Jira, Asana). The execution layer Fortune 1000 companies need.",
-      ogTitle: "POISE vs. Crisis Tools vs. PM Tools | Category of One",
-      ogDescription: "POISE isn't competing with Everbridge or Jira. POISE owns the strategic execution layer between them.",
+      title: "Competitive Positioning - ExecuteIQ | Strategic Execution OS",
+      description: "See how ExecuteIQ creates a new category between crisis notification tools (Everbridge, OnSolve) and project management (Jira, Asana). The execution layer Fortune 1000 companies need.",
+      ogTitle: "ExecuteIQ vs. Crisis Tools vs. PM Tools | Category of One",
+      ogDescription: "ExecuteIQ isn't competing with Everbridge or Jira. ExecuteIQ owns the strategic execution layer between them.",
     });
   }, []);
 
@@ -320,7 +320,7 @@ export default function CompetitivePositioning() {
               <span className="block text-blue-400 mt-2">Category of One</span>
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
-              Crisis tools notify. PM tools track. POISE executes. We're not competing with Everbridge or Jira—we own the 
+              Crisis tools notify. PM tools track. ExecuteIQ executes. We're not competing with Everbridge or Jira—we own the 
               <span className="text-blue-300 font-semibold"> 20-50 hours of coordination </span> 
               that happens between alert and action.
             </p>
@@ -335,7 +335,7 @@ export default function CompetitivePositioning() {
               <div className="bg-blue-500/30 border-2 border-blue-400 rounded-lg px-6 py-3 ring-2 ring-blue-400/50">
                 <Zap className="w-5 h-5 text-blue-300 inline mr-2" />
                 <span className="text-blue-200 font-bold">Strategic Execution</span>
-                <div className="text-xs text-blue-300 mt-1">POISE (Category of One)</div>
+                <div className="text-xs text-blue-300 mt-1">ExecuteIQ (Category of One)</div>
               </div>
               <div className="bg-green-500/20 border border-green-500/40 rounded-lg px-6 py-3">
                 <Settings className="w-5 h-5 text-green-400 inline mr-2" />
@@ -376,7 +376,7 @@ export default function CompetitivePositioning() {
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
                 When a strategic event hits, organizations spend 20-50 hours getting organized. 
-                That's $60K-$2M in lost value per major event. POISE eliminates that gap entirely.
+                That's $60K-$2M in lost value per major event. ExecuteIQ eliminates that gap entirely.
               </p>
             </div>
 
@@ -384,9 +384,9 @@ export default function CompetitivePositioning() {
             <Card className="mb-12 overflow-hidden" data-testid="card-timeline">
               <CardContent className="p-8">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                  {/* Without POISE */}
+                  {/* Without ExecuteIQ */}
                   <div className="flex-1 text-center">
-                    <div className="text-red-500 font-bold text-lg mb-2">Without POISE</div>
+                    <div className="text-red-500 font-bold text-lg mb-2">Without ExecuteIQ</div>
                     <div className="flex items-center justify-center gap-2 flex-wrap">
                       <div className="bg-red-100 dark:bg-red-900/30 rounded-lg p-3 text-center">
                         <div className="text-xs text-red-600 dark:text-red-400">Alert</div>
@@ -419,9 +419,9 @@ export default function CompetitivePositioning() {
                   <div className="hidden md:block w-px h-24 bg-slate-300 dark:bg-slate-700"></div>
                   <div className="md:hidden h-px w-full bg-slate-300 dark:bg-slate-700"></div>
 
-                  {/* With POISE */}
+                  {/* With ExecuteIQ */}
                   <div className="flex-1 text-center">
-                    <div className="text-emerald-500 font-bold text-lg mb-2">With POISE</div>
+                    <div className="text-emerald-500 font-bold text-lg mb-2">With ExecuteIQ</div>
                     <div className="flex items-center justify-center gap-2 flex-wrap">
                       <div className="bg-emerald-100 dark:bg-emerald-900/30 rounded-lg p-3 text-center">
                         <div className="text-xs text-emerald-600 dark:text-emerald-400">Trigger Detected</div>
@@ -453,7 +453,7 @@ export default function CompetitivePositioning() {
                 Competitive Battle Cards
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400">
-                How POISE positions against each category of competitor
+                How ExecuteIQ positions against each category of competitor
               </p>
             </div>
 
@@ -511,7 +511,7 @@ export default function CompetitivePositioning() {
                           </ul>
                         </div>
                         <div>
-                          <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps POISE Fills</div>
+                          <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps ExecuteIQ Fills</div>
                           <ul className="space-y-1">
                             {tool.gaps.map((g, i) => (
                               <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
@@ -567,7 +567,7 @@ export default function CompetitivePositioning() {
                             </ul>
                           </div>
                           <div>
-                            <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps POISE Fills</div>
+                            <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps ExecuteIQ Fills</div>
                             <ul className="space-y-1">
                               {tool.gaps.map((g, i) => (
                                 <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
@@ -598,7 +598,7 @@ export default function CompetitivePositioning() {
                     <div>
                       <h3 className="font-semibold text-sky-900 dark:text-sky-100 mb-1">Complementary, Not Competing</h3>
                       <p className="text-sm text-sky-700 dark:text-sky-300">
-                        Planning tools like Anaplan model "what if" scenarios. POISE executes the "when it happens" response. 
+                        Planning tools like Anaplan model "what if" scenarios. ExecuteIQ executes the "when it happens" response. 
                         Together, they complete the strategic loop: <strong>Plan → Trigger → Execute → Learn</strong>.
                       </p>
                     </div>
@@ -637,7 +637,7 @@ export default function CompetitivePositioning() {
                             </ul>
                           </div>
                           <div>
-                            <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps POISE Fills</div>
+                            <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps ExecuteIQ Fills</div>
                             <ul className="space-y-1">
                               {tool.gaps.map((g, i) => (
                                 <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
@@ -693,7 +693,7 @@ export default function CompetitivePositioning() {
                           </ul>
                         </div>
                         <div>
-                          <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps POISE Fills</div>
+                          <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps ExecuteIQ Fills</div>
                           <ul className="space-y-1">
                             {tool.gaps.map((g, i) => (
                               <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
@@ -744,7 +744,7 @@ export default function CompetitivePositioning() {
                           </ul>
                         </div>
                         <div>
-                          <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps POISE Fills</div>
+                          <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps ExecuteIQ Fills</div>
                           <ul className="space-y-1">
                             {tool.gaps.map((g, i) => (
                               <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
@@ -821,7 +821,7 @@ export default function CompetitivePositioning() {
                           <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mb-1">
                             <span className="text-white font-bold text-[8px]">P</span>
                           </div>
-                          <span className="text-xs font-bold text-blue-600 dark:text-blue-400">POISE</span>
+                          <span className="text-xs font-bold text-blue-600 dark:text-blue-400">ExecuteIQ</span>
                         </div>
                       </th>
                     </tr>
@@ -967,7 +967,7 @@ export default function CompetitivePositioning() {
                     <h3 className="text-2xl font-bold mb-4">The Enterprise Moat</h3>
                     <p className="text-blue-200 mb-6">
                       Once a Fortune 1000 company has 50+ playbooks syncing to Jira with bi-directional updates, 
-                      historical execution data, and months of organizational knowledge encoded in POISE—switching 
+                      historical execution data, and months of organizational knowledge encoded in ExecuteIQ—switching 
                       becomes nearly impossible.
                     </p>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -1002,7 +1002,7 @@ export default function CompetitivePositioning() {
               Ready to Own Strategic Execution?
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
-              See how POISE eliminates the 20-50 hours between alert and action
+              See how ExecuteIQ eliminates the 20-50 hours between alert and action
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button 

@@ -46,7 +46,7 @@ export function BeforeAfterComparison() {
         <div className="p-6">
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-white mb-2">
-              Traditional Response vs POISE
+              Traditional Response vs ExecuteIQ
             </h3>
             <p className="text-slate-400">Same crisis. Radically different outcomes.</p>
           </div>
@@ -79,10 +79,10 @@ export function BeforeAfterComparison() {
               </div>
             </div>
 
-            {/* POISE Coordination */}
+            {/* ExecuteIQ Coordination */}
             <div className="space-y-4">
               <div className="text-center pb-3 border-b border-emerald-500/30">
-                <div className="text-lg font-bold text-emerald-400">POISE</div>
+                <div className="text-lg font-bold text-emerald-400">ExecuteIQ</div>
                 <div className="text-sm text-emerald-300/70">12-Minute Orchestrated Response</div>
               </div>
               
@@ -102,7 +102,7 @@ export function BeforeAfterComparison() {
 
               <div className="text-center pt-3 border-t border-emerald-500/30">
                 <div className="text-3xl font-bold text-emerald-400">12min</div>
-                <div className="text-xs text-emerald-300/70">POISE Response Time</div>
+                <div className="text-xs text-emerald-300/70">ExecuteIQ Response Time</div>
               </div>
             </div>
           </div>

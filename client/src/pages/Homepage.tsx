@@ -226,12 +226,12 @@ export default function Homepage() {
             </p>
           </div>
 
-          {/* THE TURN - POISE as the New Operating System */}
+          {/* THE TURN - ExecuteIQ as the New Operating System */}
           <div className="bg-gradient-to-r from-slate-800/50 via-slate-800/80 to-slate-800/50 rounded-2xl border border-slate-700/50 p-8 mb-10 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 mb-4">
                 <Zap className="h-4 w-4 text-emerald-400" />
-                <span className="text-emerald-400 text-sm font-medium">POISE</span>
+                <span className="text-emerald-400 text-sm font-medium">ExecuteIQ</span>
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 The Operating System Organizations Have Been Missing.
@@ -342,7 +342,7 @@ export default function Homepage() {
           </h2>
           <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-8">
             AI made individual work 10X faster. But organizational coordination? Still at meeting speed.
-            <span className="font-semibold text-slate-900 dark:text-white"> POISE fixes that.</span>
+            <span className="font-semibold text-slate-900 dark:text-white"> ExecuteIQ fixes that.</span>
           </p>
           
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -366,7 +366,7 @@ export default function Homepage() {
               <CardContent className="p-6 text-center">
                 <Sparkles className="h-10 w-10 text-purple-600 mx-auto mb-3" />
                 <div className="text-2xl font-bold text-purple-600 mb-1">AI Speed</div>
-                <p className="text-sm text-slate-600 dark:text-slate-400">With POISE</p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">With ExecuteIQ</p>
                 <Badge className="mt-2 bg-purple-600 text-white text-xs">NOW SOLVED</Badge>
               </CardContent>
             </Card>
@@ -391,23 +391,23 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* POISE at a Glance - Executive Summary */}
+      {/* ExecuteIQ at a Glance - Executive Summary */}
       <section className="py-16 bg-white dark:bg-slate-950" data-testid="executive-summary">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-3">POISE at a Glance</h2>
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-3">ExecuteIQ at a Glance</h2>
             <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
               Everything you need to know in 30 seconds
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
-            {/* What POISE Does */}
+            {/* What ExecuteIQ Does */}
             <Card className="border-2 border-slate-200 dark:border-slate-700" data-testid="glance-what">
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
                   <Target className="h-5 w-5 text-blue-600" />
-                  What POISE Does
+                  What ExecuteIQ Does
                 </h3>
                 <ul className="space-y-3 text-slate-700 dark:text-slate-300">
                   <li className="flex items-start gap-2">
@@ -503,7 +503,7 @@ export default function Homepage() {
                 <p className="text-slate-400 mb-4">Industry average to see just 10% agility improvement</p>
                 <div className="border-t border-slate-700 pt-4 mt-4">
                   <div className="text-2xl font-bold text-emerald-400">Quarters</div>
-                  <p className="text-sm text-slate-500">With POISE</p>
+                  <p className="text-sm text-slate-500">With ExecuteIQ</p>
                 </div>
               </CardContent>
             </Card>
@@ -527,7 +527,7 @@ export default function Homepage() {
                 <p className="text-slate-400 mb-4">Have governance that actually supports speed</p>
                 <div className="border-t border-slate-700 pt-4 mt-4">
                   <div className="text-2xl font-bold text-emerald-400">100%</div>
-                  <p className="text-sm text-slate-500">POISE embeds governance into execution</p>
+                  <p className="text-sm text-slate-500">ExecuteIQ embeds governance into execution</p>
                 </div>
               </CardContent>
             </Card>
@@ -582,7 +582,7 @@ export default function Homepage() {
               {/* Without */}
               <div className="p-6 bg-red-950/30 border-2 border-red-800 rounded-lg" data-testid="without-m">
                 <h3 className="text-xl font-bold text-red-400 mb-4">
-                  Without POISE
+                  Without ExecuteIQ
                 </h3>
                 <ul className="space-y-3 text-slate-300">
                   <li className="flex items-start gap-2">
@@ -607,7 +607,7 @@ export default function Homepage() {
               {/* With */}
               <div className="p-6 bg-emerald-950/30 border-2 border-emerald-800 rounded-lg" data-testid="with-m">
                 <h3 className="text-xl font-bold text-emerald-400 mb-4">
-                  With POISE
+                  With ExecuteIQ
                 </h3>
                 <ul className="space-y-3 text-slate-300">
                   <li className="flex items-start gap-2">
@@ -754,7 +754,7 @@ export default function Homepage() {
             </h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
               Great football programs are prepared for every situation before the game starts. 
-              POISE brings this same complete preparedness to business leadership.
+              ExecuteIQ brings this same complete preparedness to business leadership.
             </p>
           </div>
 
@@ -1059,7 +1059,7 @@ export default function Homepage() {
                   </div>
                 </div>
                 <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                  POISE makes you AI-native—where AI doesn't just assist, it orchestrates.
+                  ExecuteIQ makes you AI-native—where AI doesn't just assist, it orchestrates.
                 </p>
               </CardContent>
             </Card>
@@ -1074,7 +1074,7 @@ export default function Homepage() {
             The Solution
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-value">
-            POISE: The Execution Layer
+            ExecuteIQ: The Execution Layer
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-8">
             The first Strategic Execution Operating System—software that turns operating model design into coordinated action.
@@ -1100,7 +1100,7 @@ export default function Homepage() {
                 </ul>
               </div>
               <div className="text-left">
-                <h3 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-4">POISE Executes</h3>
+                <h3 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-4">ExecuteIQ Executes</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3 text-slate-700 dark:text-slate-200">
                     <CheckCircle className="w-5 h-5 mt-0.5 text-emerald-500 flex-shrink-0" />
@@ -1118,7 +1118,7 @@ export default function Homepage() {
               </div>
             </div>
             <p className="mt-8 text-lg font-medium text-slate-700 dark:text-slate-300">
-              McKinsey gives you the blueprint. <span className="text-emerald-600 dark:text-emerald-400 font-bold">POISE builds the house.</span>
+              McKinsey gives you the blueprint. <span className="text-emerald-600 dark:text-emerald-400 font-bold">ExecuteIQ builds the house.</span>
             </p>
           </div>
           
@@ -1204,7 +1204,7 @@ export default function Homepage() {
                 <Badge className="mb-2 bg-white/20 text-white border-white/30">Interactive Experience</Badge>
                 <h3 className="text-2xl font-bold text-white mb-2">Executive Simulation Demo</h3>
                 <p className="text-white/80">
-                  Step into the shoes of a Fortune 500 CSO. Experience real-time signal detection, playbook activation, and rapid coordinated response across your executive team. This is exactly how POISE works in production.
+                  Step into the shoes of a Fortune 500 CSO. Experience real-time signal detection, playbook activation, and rapid coordinated response across your executive team. This is exactly how ExecuteIQ works in production.
                 </p>
               </div>
               <Button 
@@ -1236,7 +1236,7 @@ export default function Homepage() {
                 <Badge className="mb-2 bg-white/20 text-white border-white/30">Try It Yourself</Badge>
                 <h3 className="text-2xl font-bold text-white mb-2">Interactive Sandbox Demo</h3>
                 <p className="text-white/80">
-                  Configure your own playbook, set triggers, define stakeholders, and watch your personalized scenario execute in real-time. See exactly how POISE would work for your organization.
+                  Configure your own playbook, set triggers, define stakeholders, and watch your personalized scenario execute in real-time. See exactly how ExecuteIQ would work for your organization.
                 </p>
               </div>
               <Button 
@@ -1390,7 +1390,7 @@ export default function Homepage() {
           </h2>
           <p className="text-lg text-emerald-400 font-semibold mb-2">Success Favors the Prepared</p>
           <p className="text-xl text-slate-300 mb-8">
-            Start with a 90-day pilot. See POISE coordinate your first strategic response in 12 minutes instead of 72 hours.
+            Start with a 90-day pilot. See ExecuteIQ coordinate your first strategic response in 12 minutes instead of 72 hours.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 

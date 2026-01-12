@@ -28,7 +28,7 @@ import {
 } from 'lucide-react';
 import { useEffect } from 'react';
 import { updatePageMetadata } from '@/lib/seo';
-import poiseLogoPath from "@assets/poise-logo-official.png";
+import poiseLogoPath from "@assets/executeiq-logo-official.png";
 
 const pilotPhases = [
   {
@@ -54,7 +54,7 @@ const pilotPhases = [
     activities: [
       'Conduct 2-3 tabletop exercises with ExecuteIQ',
       'Measure activation time (target: <12 min)',
-      'Train response team leads on POISE workflow',
+      'Train response team leads on ExecuteIQ workflow',
       'Refine playbooks based on dry run feedback',
       'Establish KPI tracking dashboard'
     ],
@@ -179,28 +179,28 @@ const roiCalculator = [
   {
     metric: 'Hours Saved per Event',
     baseline: '20-50 hours',
-    withPOISE: '0 hours (pre-planned)',
+    withExecuteIQ: '0 hours (pre-planned)',
     calculation: '20-50 × $500/hr executive time',
     value: '$10,000-$25,000'
   },
   {
     metric: 'Response Time',
     baseline: '72+ hours to full coordination',
-    withPOISE: '12 minutes to full coordination',
+    withExecuteIQ: '12 minutes to full coordination',
     calculation: 'Revenue protected by faster response',
     value: '$500K-$2M per major event'
   },
   {
     metric: 'C-Suite Time Recovery',
     baseline: '50+ hours per event',
-    withPOISE: '5 hours oversight only',
+    withExecuteIQ: '5 hours oversight only',
     calculation: '45 hours × $1,000/hr',
     value: '$45,000+ per event'
   },
   {
     metric: 'Tool Consolidation',
     baseline: 'Multiple point solutions',
-    withPOISE: 'Single execution platform',
+    withExecuteIQ: 'Single execution platform',
     calculation: 'Reduced platform licensing',
     value: '$50-100K annually'
   }
@@ -234,9 +234,9 @@ export default function PilotProgram() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "90-Day Pilot Program - POISE | Strategic Execution OS",
-      description: "Validate POISE's 12-minute coordination claim with a structured 90-day pilot. Includes 5 playbooks, Jira integration, and dedicated success manager. 100% credit applies to enterprise contract.",
-      ogTitle: "POISE Pilot Program | 90 Days to Transform Strategic Execution",
+      title: "90-Day Pilot Program - ExecuteIQ | Strategic Execution OS",
+      description: "Validate ExecuteIQ's 12-minute coordination claim with a structured 90-day pilot. Includes 5 playbooks, Jira integration, and dedicated success manager. 100% credit applies to enterprise contract.",
+      ogTitle: "ExecuteIQ Pilot Program | 90 Days to Transform Strategic Execution",
       ogDescription: "Fortune 1000 pilot program with ROI measurement, live activation, and clear conversion path.",
     });
   }, []);
@@ -251,7 +251,7 @@ export default function PilotProgram() {
             <div className="inline-block px-6 py-3 rounded-2xl bg-gradient-to-r from-slate-800/80 to-slate-900/70 border border-slate-600/50 backdrop-blur-sm mb-6">
               <img 
                 src={poiseLogoPath} 
-                alt="POISE - Composure in every decision" 
+                alt="ExecuteIQ - Composure in every decision" 
                 className="h-16 sm:h-20 lg:h-24 w-auto object-contain brightness-110 contrast-105"
                 style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.55))' }}
               />
@@ -264,7 +264,7 @@ export default function PilotProgram() {
               <span className="block text-emerald-400 mt-2">Validate Before You Commit</span>
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
-              Prove POISE's 12-minute coordination claim with real activations in your environment. 
+              Prove ExecuteIQ's 12-minute coordination claim with real activations in your environment. 
               Structured phases, measurable outcomes, and a clear path to enterprise deployment.
             </p>
             
@@ -374,7 +374,7 @@ export default function PilotProgram() {
                 What's Included
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400">
-                Everything you need to validate POISE in your environment
+                Everything you need to validate ExecuteIQ in your environment
               </p>
             </div>
 
@@ -460,8 +460,8 @@ export default function PilotProgram() {
                   <thead>
                     <tr className="border-b border-white/20">
                       <th className="text-left p-4 font-semibold text-white">Value Metric</th>
-                      <th className="text-left p-4 font-semibold text-red-300">Before POISE</th>
-                      <th className="text-left p-4 font-semibold text-emerald-300">With POISE</th>
+                      <th className="text-left p-4 font-semibold text-red-300">Before ExecuteIQ</th>
+                      <th className="text-left p-4 font-semibold text-emerald-300">With ExecuteIQ</th>
                       <th className="text-left p-4 font-semibold text-blue-300">Calculation</th>
                       <th className="text-right p-4 font-semibold text-amber-300">Value Captured</th>
                     </tr>
@@ -471,7 +471,7 @@ export default function PilotProgram() {
                       <tr key={i} className="border-b border-white/10 last:border-0">
                         <td className="p-4 text-white font-medium">{row.metric}</td>
                         <td className="p-4 text-red-200">{row.baseline}</td>
-                        <td className="p-4 text-emerald-200">{row.withPOISE}</td>
+                        <td className="p-4 text-emerald-200">{row.withExecuteIQ}</td>
                         <td className="p-4 text-blue-200 text-sm">{row.calculation}</td>
                         <td className="p-4 text-amber-300 font-bold text-right">{row.value}</td>
                       </tr>

@@ -219,7 +219,7 @@ export default function AgilityAssessment() {
                           Based on the 2025 BAI Report, organizations at your level see approximately <span className="text-amber-400 font-semibold">{revenueImpact.currentGrowth}% revenue per employee growth</span>.
                         </p>
                         <p className="text-slate-300">
-                          With POISE, you could close the gap to top performers and capture an additional <span className="text-emerald-400 font-semibold">{revenueImpact.potentialGrowth}% growth potential</span>.
+                          With ExecuteIQ, you could close the gap to top performers and capture an additional <span className="text-emerald-400 font-semibold">{revenueImpact.potentialGrowth}% growth potential</span>.
                         </p>
                       </div>
                     ) : (
@@ -231,7 +231,7 @@ export default function AgilityAssessment() {
                           However, there's still room to reach the <span className="text-emerald-400 font-semibold">10.3% benchmark</span> that top performers achieve.
                         </p>
                         <p className="text-slate-300">
-                          POISE can help you close the remaining gap with <span className="text-emerald-400 font-semibold">pre-staged playbooks and 12-minute execution</span>.
+                          ExecuteIQ can help you close the remaining gap with <span className="text-emerald-400 font-semibold">pre-staged playbooks and 12-minute execution</span>.
                         </p>
                       </div>
                     )}

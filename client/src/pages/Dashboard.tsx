@@ -210,7 +210,7 @@ export default function Dashboard() {
     updatePageMetadata({
       title: "Dashboard | ExecuteIQ - Strategic Execution OS",
       description: "Your strategic execution command center. Monitor readiness, track triggers, and coordinate responses in real-time.",
-      ogTitle: "POISE Dashboard",
+      ogTitle: "ExecuteIQ Dashboard",
       ogDescription: "Strategic Execution OS for Fortune 1000 executives. Composure in every decision.",
     });
   }, []);

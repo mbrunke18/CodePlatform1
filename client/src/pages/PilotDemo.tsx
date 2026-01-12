@@ -167,7 +167,7 @@ export default function PilotDemo() {
         type: "signal", 
         title: "Signal Detected & Captured", 
         description: triggerData?.sampleSignal || "Business event detected",
-        valueCallout: "POISE monitors 50+ data sources 24/7 so you never miss a critical signal",
+        valueCallout: "ExecuteIQ monitors 50+ data sources 24/7 so you never miss a critical signal",
         traditionalTime: "Hours to days for manual discovery",
         icon: Radio 
       },
@@ -738,7 +738,7 @@ export default function PilotDemo() {
                             <div className="bg-emerald-50 dark:bg-emerald-950/30 rounded-lg p-4 border border-emerald-200 dark:border-emerald-800">
                               <div className="flex items-center gap-2 mb-3">
                                 <Zap className="w-5 h-5 text-emerald-500" />
-                                <span className="font-semibold text-emerald-900 dark:text-emerald-200">With POISE</span>
+                                <span className="font-semibold text-emerald-900 dark:text-emerald-200">With ExecuteIQ</span>
                               </div>
                               <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-1">12 minutes</div>
                               <p className="text-sm text-emerald-700 dark:text-emerald-300">
@@ -768,7 +768,7 @@ export default function PilotDemo() {
                           </div>
 
                           <p className="text-sm text-slate-600 dark:text-slate-400 text-center mb-6">
-                            In production, POISE also creates Jira tickets, notifies Slack channels, stages documents, and unlocks pre-approved budgets—all automatically.
+                            In production, ExecuteIQ also creates Jira tickets, notifies Slack channels, stages documents, and unlocks pre-approved budgets—all automatically.
                           </p>
 
                           <div className="flex justify-center gap-4">

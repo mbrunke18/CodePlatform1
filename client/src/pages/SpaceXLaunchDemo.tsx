@@ -120,7 +120,7 @@ export default function SpaceXLaunchDemo() {
                     <p className="text-blue-100 leading-relaxed">
                       SpaceX already moves faster than traditional aerospace—but even SpaceX faces coordination bottlenecks. 
                       When a favorable orbital window opens, coordinating 1,847 stakeholders (ground crews, FAA, Space Force, 
-                      payload teams, weather, range safety) traditionally takes <strong>5-7 days</strong>. POISE compresses 
+                      payload teams, weather, range safety) traditionally takes <strong>5-7 days</strong>. ExecuteIQ compresses 
                       it to <strong>12 minutes</strong>—enabling SpaceX to capture time-sensitive launch opportunities competitors cannot match.
                     </p>
                   </div>

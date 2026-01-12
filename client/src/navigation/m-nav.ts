@@ -1,6 +1,6 @@
-// POISE - Strategic Execution OS Navigation
+// ExecuteIQ - Strategic Execution OS Navigation
 // "Composure in every decision."
-// Based on IDEA Framework with POISE Modules
+// Based on IDEA Framework with ExecuteIQ Modules
 
 import { IconName } from './config';
 

@@ -267,7 +267,7 @@ export default function ExecutiveCommandCenter() {
             <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
               <Brain className="w-8 h-8 text-white" />
             </div>
-            <h2 className="text-2xl font-bold text-white mb-2">Initializing POISE</h2>
+            <h2 className="text-2xl font-bold text-white mb-2">Initializing ExecuteIQ</h2>
             <p className="text-gray-400">Loading enterprise intelligence systems...</p>
           </div>
         </div>
@@ -290,7 +290,7 @@ export default function ExecutiveCommandCenter() {
               </div>
               <div>
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-300 via-purple-400 to-emerald-300 bg-clip-text text-transparent">
-                  POISE
+                  ExecuteIQ
                 </h1>
                 <p className="text-sm text-gray-400 font-medium">Strategic Execution Operating System</p>
               </div>

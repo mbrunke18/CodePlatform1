@@ -133,7 +133,7 @@ export default function RetailFoodSafetyDemo() {
                       Walmart's AI supply chain saved $20M+ in transportation costs. Their QA testing detected the salmonella 
                       immediately. But coordinating 5,000 stakeholders across 847 stores, 12,847 customers, FDA, CDC, and 
                       23 state health departments took <strong>7 days</strong>. In that gap, 50+ people were hospitalized. 
-                      This demo shows how POISE compresses that 7-day coordination into <strong>1 hour</strong>, ensuring 
+                      This demo shows how ExecuteIQ compresses that 7-day coordination into <strong>1 hour</strong>, ensuring 
                       zero customers consume contaminated product after detection.
                     </p>
                   </div>
@@ -344,7 +344,7 @@ export default function RetailFoodSafetyDemo() {
               />
 
               <div className="mt-8 p-6 bg-gradient-to-r from-emerald-950/50 to-green-950/50 border border-emerald-600 rounded-lg">
-                <h3 className="font-bold text-white mb-4 text-center text-xl">The POISE Difference</h3>
+                <h3 className="font-bold text-white mb-4 text-center text-xl">The ExecuteIQ Difference</h3>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <h4 className="font-semibold text-emerald-300 mb-3">Traditional Crisis Response</h4>

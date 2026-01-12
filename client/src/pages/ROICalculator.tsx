@@ -83,7 +83,7 @@ export default function ROICalculator() {
     // Regulatory/compliance risk cost
     const complianceRiskCost = inputs.annualRevenue * 0.001 * industryData.regulatoryFactor;
     
-    // With POISE (12-minute decision, 90-minute full execution)
+    // With ExecuteIQ (12-minute decision, 90-minute full execution)
     const mResponseTimeHours = 0.2 + 1.5; // 12 min decision + 90 min execution = ~1.7 hours
     const mTotalExecutiveHoursPerYear = mResponseTimeHours * inputs.executivesInvolved * inputs.strategicEventsPerYear;
     const mCoordinationCostPerYear = mTotalExecutiveHoursPerYear * hourlyExecutiveCost;
@@ -111,7 +111,7 @@ export default function ROICalculator() {
       currentTotalExecutiveHoursPerYear,
       revenueAtRiskPerEvent,
       
-      // With POISE
+      // With ExecuteIQ
       mCoordinationCostPerYear,
       mTotalExecutiveHoursPerYear,
       
@@ -399,7 +399,7 @@ export default function ROICalculator() {
                       <div className="text-2xl font-bold text-white">{inputs.avgResponseTimeHours} hours</div>
                     </div>
                     <div className="bg-green-950/30 rounded-lg p-4 border border-green-500/20">
-                      <div className="text-sm text-green-400 mb-1">With POISE</div>
+                      <div className="text-sm text-green-400 mb-1">With ExecuteIQ</div>
                       <div className="text-2xl font-bold text-white">~2 hours</div>
                       <div className="text-xs text-slate-500">12 min decision + 90 min execution</div>
                     </div>

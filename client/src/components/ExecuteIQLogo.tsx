@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-interface PoiseLogoProps {
+interface ExecuteIQLogoProps {
   width?: number;
   height?: number;
   showTagline?: boolean;
@@ -9,7 +9,7 @@ interface PoiseLogoProps {
   darkMode?: boolean;
 }
 
-export const PoiseLogo: FC<PoiseLogoProps> = ({
+export const ExecuteIQLogo: FC<ExecuteIQLogoProps> = ({
   width = 400,
   height = 150,
   showTagline = true,
@@ -180,4 +180,4 @@ export const PoiseLogo: FC<PoiseLogoProps> = ({
   );
 };
 
-export default PoiseLogo;
+export default ExecuteIQLogo;

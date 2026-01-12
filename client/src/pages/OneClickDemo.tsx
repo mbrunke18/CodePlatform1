@@ -215,7 +215,7 @@ export default function OneClickDemo() {
             </Badge>
             
             <h1 className="text-5xl font-bold text-white mb-6">
-              See POISE in Action
+              See ExecuteIQ in Action
             </h1>
             
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
@@ -456,7 +456,7 @@ export default function OneClickDemo() {
               
               <h2 className="text-3xl font-bold text-white mb-2">Breach Contained in 12 Minutes</h2>
               <p className="text-slate-300 mb-6">
-                Traditional response time: 17 days. POISE response: 12 minutes.
+                Traditional response time: 17 days. ExecuteIQ response: 12 minutes.
               </p>
               
               <div className="grid md:grid-cols-4 gap-4 mb-8">

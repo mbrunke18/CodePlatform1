@@ -18,9 +18,9 @@ import { useQuery } from "@tanstack/react-query";
 export default function PilotMonitoring() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Pilot Program Monitoring - POISE | System Health Dashboard",
-      description: "Real-time monitoring dashboard for POISE Early Access Program. Track system health, pilot company activity, and platform performance.",
-      ogTitle: "POISE Pilot Monitoring Dashboard",
+      title: "Pilot Program Monitoring - ExecuteIQ | System Health Dashboard",
+      description: "Real-time monitoring dashboard for ExecuteIQ Early Access Program. Track system health, pilot company activity, and platform performance.",
+      ogTitle: "ExecuteIQ Pilot Monitoring Dashboard",
       ogDescription: "Monitor system health and pilot program success metrics in real-time.",
     });
   }, []);

@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
-import poiseLogoPath from "@assets/poise-logo-official.png";
+import poiseLogoPath from "@assets/executeiq-logo-official.png";
 import { 
   BarChart, 
   Bar, 
@@ -75,7 +75,7 @@ export default function InvestorLanding() {
               <div className="inline-block px-6 py-3 rounded-2xl bg-gradient-to-r from-slate-800/80 to-slate-900/70 border border-slate-600/50 backdrop-blur-sm">
                 <img 
                   src={poiseLogoPath} 
-                  alt="POISE - Composure in every decision" 
+                  alt="ExecuteIQ - Composure in every decision" 
                   className="h-20 sm:h-24 lg:h-28 w-auto object-contain brightness-110 contrast-105"
                   style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.55))' }}
                 />
@@ -94,7 +94,7 @@ export default function InvestorLanding() {
             </p>
             
             <p className="text-lg md:text-xl text-blue-100 mb-8 max-w-4xl" data-testid="text-description">
-              Fortune 1000 companies spend $847B annually on strategic initiatives—83% fail due to execution gaps. POISE creates a new software category worth $127B TAM, delivering 500x faster execution with complete 7-component ecosystem.
+              Fortune 1000 companies spend $847B annually on strategic initiatives—83% fail due to execution gaps. ExecuteIQ creates a new software category worth $127B TAM, delivering 500x faster execution with complete 7-component ecosystem.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -270,7 +270,7 @@ export default function InvestorLanding() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-slate-600 dark:text-slate-400 mb-4">
-                    Competitors offer point solutions (BI tools, project management, chatbots). POISE integrates entire strategic execution workflow—massive switching costs once embedded.
+                    Competitors offer point solutions (BI tools, project management, chatbots). ExecuteIQ integrates entire strategic execution workflow—massive switching costs once embedded.
                   </p>
                   <div className="text-sm font-semibold text-primary" data-testid="text-moat-ecosystem-advantage">
                     Advantage: 18-24 month integration lead vs. competitors

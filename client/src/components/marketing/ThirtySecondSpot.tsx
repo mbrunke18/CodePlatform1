@@ -133,7 +133,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3 }}
               className="text-lg text-slate-400 mb-6"
             >
-              POISE: 166 playbooks for offense, defense, and special teams.
+              ExecuteIQ: 166 playbooks for offense, defense, and special teams.
             </motion.p>
             
             <motion.div
@@ -280,7 +280,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               <ArrowRight className="h-8 w-8 text-emerald-400" />
               <div className="text-center">
                 <div className="text-4xl font-bold text-emerald-400">12 min</div>
-                <div className="text-sm text-emerald-300">With POISE</div>
+                <div className="text-sm text-emerald-300">With ExecuteIQ</div>
               </div>
             </motion.div>
           </div>
@@ -400,7 +400,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3, delay: 0.5 }}
               className="text-lg text-slate-400 mt-4"
             >
-              POISE.
+              ExecuteIQ.
             </motion.p>
           </div>
         </Scene>

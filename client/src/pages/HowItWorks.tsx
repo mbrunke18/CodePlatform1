@@ -107,7 +107,7 @@ export default function HowItWorks() {
     {
       icon: Clock,
       title: "12-Minute Execution",
-      description: "Industry average: 6-8 weeks. POISE delivers coordinated response in 12 minutes."
+      description: "Industry average: 6-8 weeks. ExecuteIQ delivers coordinated response in 12 minutes."
     },
     {
       icon: Brain,
@@ -141,7 +141,7 @@ export default function HowItWorks() {
               The IDEA Framework™
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              How POISE Works
+              How ExecuteIQ Works
             </h1>
             <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed max-w-3xl mx-auto">
               A continuous cycle that transforms how Fortune 1000 companies detect, decide, and execute on strategic opportunities and threats.
@@ -323,7 +323,7 @@ export default function HowItWorks() {
         <div className="container mx-auto px-6 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-              <span className="text-white font-bold text-lg">POISE</span>
+              <span className="text-white font-bold text-lg">ExecuteIQ</span>
             </div>
             <span className="font-bold text-lg">Strategic Execution OS</span>
           </div>

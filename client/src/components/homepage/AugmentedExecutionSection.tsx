@@ -17,7 +17,7 @@ export default function AugmentedExecutionSection() {
               Augmented Execution: Where Humans Stay in Control
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              POISE doesn't replace human judgment—we amplify it. By eliminating 
+              ExecuteIQ doesn't replace human judgment—we amplify it. By eliminating 
               coordination friction while maintaining human oversight, we deliver 
               the speed of automation with the wisdom of human decision-making.
             </p>
@@ -176,7 +176,7 @@ export default function AugmentedExecutionSection() {
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-sm font-semibold text-muted-foreground mb-2">POISE Model</div>
+                  <div className="text-sm font-semibold text-muted-foreground mb-2">ExecuteIQ Model</div>
                   <div className="bg-green-100 dark:bg-green-900/20 rounded-lg p-6 border-2 border-green-300">
                     <p className="text-4xl font-bold text-green-600 mb-2">2 Years</p>
                     <p className="text-sm text-muted-foreground">
@@ -188,14 +188,14 @@ export default function AugmentedExecutionSection() {
 
               <div className="mt-8 max-w-3xl mx-auto">
                 <p className="text-lg text-center mb-4">
-                  <strong>Speed of change demands speed of planning.</strong> POISE enables you to test 
+                  <strong>Speed of change demands speed of planning.</strong> ExecuteIQ enables you to test 
                   strategic hypotheses in 2-minute conversations instead of 6-month planning cycles—and when 
                   you're ready to execute, coordinate 30 stakeholders in 12 minutes instead of 72 hours.
                 </p>
                 <div className="bg-white dark:bg-gray-900 rounded-lg p-4 border border-orange-200">
                   <p className="text-sm text-muted-foreground text-center">
                     <strong>Example:</strong> "What if a competitor enters APAC with 50% lower pricing?" 
-                    → POISE runs the hypothesis through your Predictive Execution Engine, shows impact 
+                    → ExecuteIQ runs the hypothesis through your Predictive Execution Engine, shows impact 
                     on your playbooks/budgets/stakeholders in real-time, then executes your response in 12 minutes.
                   </p>
                 </div>
@@ -208,7 +208,7 @@ export default function AugmentedExecutionSection() {
               See Augmented Execution in Action
             </h3>
             <p className="text-lg text-muted-foreground mb-6">
-              Watch how POISE coordinates 30 stakeholders in 12 minutes while 
+              Watch how ExecuteIQ coordinates 30 stakeholders in 12 minutes while 
               keeping every human in full control.
             </p>
             <Button size="lg" asChild data-testid="button-view-demo">

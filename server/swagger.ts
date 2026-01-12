@@ -6,10 +6,10 @@ const options: swaggerJsdoc.Options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'POISE Strategic Execution Platform API',
+      title: 'ExecuteIQ Strategic Execution Platform API',
       version: '2.0.0',
       description: `
-        POISE is a comprehensive Strategic Execution Platform that enables organizations to:
+        ExecuteIQ is a comprehensive Strategic Execution Platform that enables organizations to:
         
         - **Strategic Planning**: Manage complex scenarios and strategic initiatives
         - **Crisis Response**: Execute automated crisis response protocols with 15+ templates
@@ -28,7 +28,7 @@ const options: swaggerJsdoc.Options = {
         This API uses Replit's OpenID Connect (OIDC) authentication for secure access.
       `,
       contact: {
-        name: 'POISE Platform Team',
+        name: 'ExecuteIQ Platform Team',
         email: 'platform@poise.app'
       }
     },

@@ -146,12 +146,12 @@ interface SimulationEvent {
 }
 
 const EVENT_EXPLANATIONS: Record<string, string> = {
-  trigger: "POISE detected this event through connected monitoring systems. In production, this would come from your SIEM, news feeds, or internal alerts.",
+  trigger: "ExecuteIQ detected this event through connected monitoring systems. In production, this would come from your SIEM, news feeds, or internal alerts.",
   ai: "The AI assistant is processing the situation and taking automated actions based on your pre-configured playbook rules.",
   stakeholder: "Notifications are being sent through your selected channels (Slack, email, SMS) to the right people automatically.",
   decision: "A decision point has been reached. In production, executives receive mobile alerts with pre-staged options to choose from.",
   task: "Tasks are being assigned to team members with clear instructions, deadlines, and dependencies already mapped out.",
-  escalation: "The escalation path you configured is now active. If responses aren't received in time, POISE will automatically escalate.",
+  escalation: "The escalation path you configured is now active. If responses aren't received in time, ExecuteIQ will automatically escalate.",
   complete: "The coordinated response is complete. All stakeholders were aligned, tasks assigned, and decisions made in record time."
 };
 
@@ -1133,7 +1133,7 @@ export default function SandboxDemo() {
                 <Plug className="h-5 w-5 text-purple-600" />
                 Enterprise Integrations
               </CardTitle>
-              <CardDescription>Connect POISE to your existing tools for seamless execution</CardDescription>
+              <CardDescription>Connect ExecuteIQ to your existing tools for seamless execution</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-2 gap-4">
@@ -1171,7 +1171,7 @@ export default function SandboxDemo() {
               </div>
               <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-950/30 rounded-lg">
                 <p className="text-sm text-blue-700 dark:text-blue-400">
-                  <strong>{enabledIntegrations.length} integrations enabled.</strong> When triggered, POISE will automatically create tasks in Jira, send alerts via Slack, and update ServiceNow tickets.
+                  <strong>{enabledIntegrations.length} integrations enabled.</strong> When triggered, ExecuteIQ will automatically create tasks in Jira, send alerts via Slack, and update ServiceNow tickets.
                 </p>
               </div>
             </CardContent>
@@ -1216,7 +1216,7 @@ export default function SandboxDemo() {
               ))}
               <div className="p-4 bg-green-50 dark:bg-green-950/30 rounded-lg">
                 <p className="text-sm text-green-700 dark:text-green-400">
-                  <strong>Automated Tracking:</strong> POISE will measure these KPIs in real-time during execution and include them in post-action reports for continuous improvement.
+                  <strong>Automated Tracking:</strong> ExecuteIQ will measure these KPIs in real-time during execution and include them in post-action reports for continuous improvement.
                 </p>
               </div>
             </CardContent>
@@ -1526,7 +1526,7 @@ export default function SandboxDemo() {
               <Network className="h-5 w-5 text-blue-600" />
               Signal Sources
             </CardTitle>
-            <CardDescription>Where should POISE monitor for signals?</CardDescription>
+            <CardDescription>Where should ExecuteIQ monitor for signals?</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 gap-3">
@@ -1807,7 +1807,7 @@ export default function SandboxDemo() {
           </div>
           <div className="mt-4 p-4 bg-purple-50 dark:bg-purple-950/30 rounded-lg">
             <p className="text-sm text-purple-700 dark:text-purple-400">
-              <strong>Dynamic Routing:</strong> POISE automatically routes to the appropriate response path based on detected signal severity. Change severity above to see different response configurations.
+              <strong>Dynamic Routing:</strong> ExecuteIQ automatically routes to the appropriate response path based on detected signal severity. Change severity above to see different response configurations.
             </p>
           </div>
         </CardContent>
@@ -2185,7 +2185,7 @@ export default function SandboxDemo() {
 
         <div className="text-center">
           <p className="text-slate-600 dark:text-slate-400 mb-4">
-            Ready to see POISE with your real scenarios?
+            Ready to see ExecuteIQ with your real scenarios?
           </p>
           <div className="flex justify-center gap-4">
             <Button variant="outline" onClick={() => {

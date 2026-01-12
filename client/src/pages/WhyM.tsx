@@ -29,7 +29,7 @@ import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
 import { useEffect } from "react";
 import { updatePageMetadata } from "@/lib/seo";
-import poiseLogoPath from "@assets/poise-logo-official.png";
+import poiseLogoPath from "@assets/executeiq-logo-official.png";
 
 export default function WhyM() {
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function WhyM() {
       title: "Why ExecuteIQ - The Founder Story | Strategic Execution OS",
       description: "Discover how 5 years of elite football coaching and 20+ years of Fortune 500 strategic execution led to ExecuteIQ—the first Strategic Execution OS.",
       ogTitle: "Why ExecuteIQ Exists - Creating a New Category",
-      ogDescription: "The insight that created POISE: Business has no operating system for coordinated response. We're changing that.",
+      ogDescription: "The insight that created ExecuteIQ: Business has no operating system for coordinated response. We're changing that.",
     });
   }, []);
 
@@ -53,7 +53,7 @@ export default function WhyM() {
               <div className="inline-block px-4 py-2 rounded-xl bg-gradient-to-r from-slate-800/80 to-slate-900/70 border border-slate-600/50 backdrop-blur-sm mb-6">
                 <img 
                   src={poiseLogoPath} 
-                  alt="POISE - Composure in every decision" 
+                  alt="ExecuteIQ - Composure in every decision" 
                   className="h-14 sm:h-16 md:h-18 w-auto max-w-[280px] object-contain brightness-110 contrast-105"
                   style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.55))' }}
                 />
@@ -100,7 +100,7 @@ export default function WhyM() {
                   </div>
                   <div>
                     <p className="font-bold text-white">Marty Brunke</p>
-                    <p className="text-blue-200 text-sm">Founder & CEO, POISE</p>
+                    <p className="text-blue-200 text-sm">Founder & CEO, ExecuteIQ</p>
                   </div>
                 </div>
               </CardContent>
@@ -154,7 +154,7 @@ export default function WhyM() {
                   </div>
                   <div>
                     <p className="font-bold text-foreground text-lg">Marty Brunke</p>
-                    <p className="text-muted-foreground">Founder & CEO, POISE</p>
+                    <p className="text-muted-foreground">Founder & CEO, ExecuteIQ</p>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -230,7 +230,7 @@ export default function WhyM() {
               <Lightbulb className="h-10 w-10 text-amber-500 mx-auto mb-3" />
               <p className="text-lg font-semibold text-foreground max-w-2xl mx-auto">
                 The gap between strategic intent and operational reality has never been wider. 
-                POISE was built to close it.
+                ExecuteIQ was built to close it.
               </p>
             </CardContent>
           </Card>
@@ -250,7 +250,7 @@ export default function WhyM() {
             </h2>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
               Great football programs are prepared for every situation before the game starts. 
-              POISE brings this same complete preparedness to business leadership.
+              ExecuteIQ brings this same complete preparedness to business leadership.
             </p>
           </div>
 
@@ -478,7 +478,7 @@ export default function WhyM() {
                   </div>
                   <h3 className="text-xl font-bold text-foreground">Strategic Architecture</h3>
                 </div>
-                <p className="text-sm text-emerald-600 dark:text-emerald-400 font-medium mb-4">Dynamic — The Strategic Execution Operating System (POISE)</p>
+                <p className="text-sm text-emerald-600 dark:text-emerald-400 font-medium mb-4">Dynamic — The Strategic Execution Operating System (ExecuteIQ)</p>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2 text-muted-foreground">
                     <CheckCircle2 className="h-4 w-4 text-emerald-500 mt-1 shrink-0" />
@@ -554,7 +554,7 @@ export default function WhyM() {
                     If you can't answer <span className="font-bold text-foreground">"what are we stopping this month?"</span> you're not governing strategy. You're narrating it.
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    POISE's ADVANCE phase captures what worked, what didn't, and automatically refines your playbook library. Institutional knowledge compounds—it doesn't walk out the door. That's Strategic Architecture in action.
+                    ExecuteIQ's ADVANCE phase captures what worked, what didn't, and automatically refines your playbook library. Institutional knowledge compounds—it doesn't walk out the door. That's Strategic Architecture in action.
                   </p>
                 </div>
               </div>
@@ -621,7 +621,7 @@ export default function WhyM() {
               <CardContent className="p-8">
                 <h3 className="text-xl font-bold text-green-500 mb-6 flex items-center gap-2">
                   <Zap className="h-6 w-6" />
-                  With POISE: 12-Minute Activation
+                  With ExecuteIQ: 12-Minute Activation
                 </h3>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 p-3 bg-green-500/5 rounded-lg">
@@ -669,7 +669,7 @@ export default function WhyM() {
               We're Creating a New Category
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              POISE isn't entering an existing market—we're defining a new one.
+              ExecuteIQ isn't entering an existing market—we're defining a new one.
             </p>
           </div>
 
@@ -760,7 +760,7 @@ export default function WhyM() {
                 </div>
                 <div className="text-center p-4 bg-primary/10 rounded-lg border-2 border-primary/30">
                   <div className="text-3xl font-bold text-primary mb-2">$5B+</div>
-                  <p className="font-medium text-foreground">POISE</p>
+                  <p className="font-medium text-foreground">ExecuteIQ</p>
                   <p className="text-sm text-muted-foreground">Creating SEOS</p>
                 </div>
               </div>
@@ -778,7 +778,7 @@ export default function WhyM() {
               Research Foundation
             </Badge>
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              The Evidence Behind POISE
+              The Evidence Behind ExecuteIQ
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Independent research validates every principle ExecuteIQ is built on.
@@ -804,7 +804,7 @@ export default function WhyM() {
                 </p>
                 <div className="p-4 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
                   <p className="text-sm font-medium text-purple-700 dark:text-purple-300">
-                    This is exactly POISE's thesis: "Your Employees Have AI. Your Organization Doesn't." 
+                    This is exactly ExecuteIQ's thesis: "Your Employees Have AI. Your Organization Doesn't." 
                     Individual AI productivity doesn't help if organizational coordination is still broken.
                   </p>
                 </div>
@@ -925,7 +925,7 @@ export default function WhyM() {
                 The research is clear: <span className="font-bold text-foreground">preparation beats improvisation every time.</span>
               </p>
               <p className="text-sm text-muted-foreground">
-                POISE brings all of this together in one Strategic Execution Operating System.
+                ExecuteIQ brings all of this together in one Strategic Execution Operating System.
               </p>
             </CardContent>
           </Card>
@@ -948,7 +948,7 @@ export default function WhyM() {
             Ready to Transform How Your Organization Responds?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            See POISE in action and discover what 12-minute strategic coordination looks like.
+            See ExecuteIQ in action and discover what 12-minute strategic coordination looks like.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link href="/demo-selector">

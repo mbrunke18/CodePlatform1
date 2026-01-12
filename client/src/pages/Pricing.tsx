@@ -23,9 +23,9 @@ export default function Pricing() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Enterprise Pricing - POISE | Strategic Execution Operating System",
+      title: "Enterprise Pricing - ExecuteIQ | Strategic Execution Operating System",
       description: "Premium tiered pricing for Fortune 1000 companies. Enterprise ($250K), Enterprise Plus ($450K), Global ($750K-$1.5M). Founding Partner Pilot Program ($75K, 100% credited to Year 1) available Q1 2026.",
-      ogTitle: "POISE Enterprise Pricing - Built for Fortune 1000",
+      ogTitle: "ExecuteIQ Enterprise Pricing - Built for Fortune 1000",
       ogDescription: "Category-defining Executive Decision Operations platform with value-aligned premium pricing. Three tiers from $250K-$1.5M annually.",
     });
   }, []);
@@ -379,7 +379,7 @@ export default function Pricing() {
               Return on Investment
             </h2>
             <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-              POISE typically delivers 79x ROI in the first year through faster execution and revenue preservation
+              ExecuteIQ typically delivers 79x ROI in the first year through faster execution and revenue preservation
             </p>
           </div>
 
@@ -431,7 +431,7 @@ export default function Pricing() {
                   <div className="text-sm font-semibold text-blue-100 mb-2">Total Annual Value</div>
                   <div className="text-6xl font-bold mb-2">$39.6M</div>
                   <div className="text-blue-100 mb-4">
-                    Average customer captures $39.6M in value annually through POISE
+                    Average customer captures $39.6M in value annually through ExecuteIQ
                   </div>
                   <div className="bg-white/10 rounded-lg p-4 border border-white/20">
                     <div className="text-sm text-blue-100 mb-1">Return on Investment</div>

@@ -127,7 +127,7 @@ export default function LearnConfigStep({ data, onChange, playbook }: LearnConfi
           <span className="text-lg">📚</span> ADVANCE Phase — Review the Film
         </h3>
         <p className="text-xs text-muted-foreground">
-          Configure post-execution learning activities. POISE will automatically schedule these after 
+          Configure post-execution learning activities. ExecuteIQ will automatically schedule these after 
           playbook completion to capture insights and improve future responses.
         </p>
       </div>
@@ -297,7 +297,7 @@ export default function LearnConfigStep({ data, onChange, playbook }: LearnConfi
 
           <div className="p-3 bg-muted/50 rounded-lg">
             <div className="text-xs text-muted-foreground">
-              After each playbook execution, POISE will analyze response metrics and stakeholder 
+              After each playbook execution, ExecuteIQ will analyze response metrics and stakeholder 
               feedback to identify patterns and recommend playbook improvements. This creates 
               a continuous learning loop that improves your organization's response capabilities.
             </div>

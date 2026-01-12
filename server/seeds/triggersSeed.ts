@@ -119,7 +119,7 @@ export async function seedTriggers() {
     console.log('   📦 Creating demo system user for trigger seeding...');
     const [newUser] = await db.insert(users).values({
       email: DEMO_USER_EMAIL,
-      firstName: 'POISE Platform',
+      firstName: 'ExecuteIQ Platform',
       lastName: 'System',
       accessLevel: 'admin'
     }).returning();
@@ -133,7 +133,7 @@ export async function seedTriggers() {
     console.log('   📦 Creating demo organization for trigger seeding...');
     const [newOrg] = await db.insert(organizations).values({
       name: DEMO_ORG_NAME,
-      description: 'Leading cloud-native enterprise platform company focused on strategic execution and operational excellence. Demo organization for POISE Platform.',
+      description: 'Leading cloud-native enterprise platform company focused on strategic execution and operational excellence. Demo organization for ExecuteIQ Platform.',
       ownerId: user.id,
       industry: 'Technology',
       size: 5000,

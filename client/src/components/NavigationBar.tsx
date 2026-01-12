@@ -92,7 +92,7 @@ export default function NavigationBar() {
               <span className="text-white dark:text-slate-900 font-bold text-xl">P</span>
             </div>
             <div>
-              <span className="text-xl font-bold text-slate-900 dark:text-white">POISE</span>
+              <span className="text-xl font-bold text-slate-900 dark:text-white">ExecuteIQ</span>
               <span className="text-xs block text-slate-600 dark:text-slate-400">Strategic Execution OS</span>
             </div>
           </div>

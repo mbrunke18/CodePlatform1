@@ -33,7 +33,7 @@ const phaseDetails = [
     id: 'discovery',
     title: 'Phase 1: Discovery & Evaluation',
     duration: 'Week 1-2',
-    objective: 'Experience POISE and secure executive sponsorship',
+    objective: 'Experience ExecuteIQ and secure executive sponsorship',
     activities: [
       { name: 'Explore Demo Gallery', path: '/demo-gallery', description: 'Interactive demos for prospects, executives, and investors' },
       { name: 'Calculate Your ROI', path: '/roi-calculator', description: 'Quantify potential value with industry benchmarks' },

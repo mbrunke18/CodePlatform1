@@ -195,10 +195,10 @@ export function StrategyReality() {
               <div className="p-2 bg-emerald-500/10 rounded-lg">
                 <Target className="w-6 h-6 text-emerald-500" />
               </div>
-              <h3 className="text-xl font-bold text-white">POISE: 12 Minutes</h3>
+              <h3 className="text-xl font-bold text-white">ExecuteIQ: 12 Minutes</h3>
             </div>
             <p className="text-slate-400 mb-6">
-              POISE pre-stages the ecosystem <span className="text-white font-semibold">before</span> situations 
+              ExecuteIQ pre-stages the ecosystem <span className="text-white font-semibold">before</span> situations 
               occur. When triggers fire, everyone knows their role and executes immediately.
             </p>
             <ul className="space-y-3 text-slate-400">
@@ -236,7 +236,7 @@ export function StrategyReality() {
             </span>
           </p>
           <Link href="/how-it-works" className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-lg transition-colors" data-testid="link-see-how-it-works">
-            See How POISE Works
+            See How ExecuteIQ Works
             <ArrowRight className="w-5 h-5" />
           </Link>
         </motion.div>
@@ -278,7 +278,7 @@ export function StrategyRealityCompact() {
           <span className="text-white font-bold">95%</span> execution ecosystem.
         </p>
         <p className="text-sm text-slate-500 mt-1">
-          That's the 72 hours POISE compresses to 12 minutes.
+          That's the 72 hours ExecuteIQ compresses to 12 minutes.
         </p>
       </div>
     </div>
@@ -343,7 +343,7 @@ export function StrategyRealityHero() {
           
           <div className="text-left">
             <p className="text-4xl md:text-5xl font-bold text-emerald-500">12m</p>
-            <p className="text-slate-500 text-sm">With POISE</p>
+            <p className="text-slate-500 text-sm">With ExecuteIQ</p>
           </div>
         </motion.div>
 
@@ -412,7 +412,7 @@ export function StrategyToIDEA() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            How POISE Handles the 95%
+            How ExecuteIQ Handles the 95%
           </h2>
           <p className="text-xl text-slate-400 max-w-2xl mx-auto">
             The IDEA Framework maps directly to the hidden work around every strategy
@@ -458,7 +458,7 @@ export function StrategyToIDEA() {
 
               <div>
                 <p className="text-xs text-slate-500 uppercase tracking-wide mb-2">
-                  POISE Solution
+                  ExecuteIQ Solution
                 </p>
                 <p className="text-sm text-slate-300">{item.mPlatform}</p>
               </div>

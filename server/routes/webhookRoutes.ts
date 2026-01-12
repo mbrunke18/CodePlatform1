@@ -1,5 +1,5 @@
 /**
- * POISE Webhook Routes
+ * ExecuteIQ Webhook Routes
  * Real-time data ingestion endpoints for 12 enterprise systems
  * Receives events from Salesforce, ServiceNow, Jira, Slack, etc.
  * Triggers real-time monitoring and playbook activation

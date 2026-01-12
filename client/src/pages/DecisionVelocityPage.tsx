@@ -43,7 +43,7 @@ export default function DecisionVelocityPage() {
           <CardContent className="space-y-4">
             <div className="prose prose-sm dark:prose-invert max-w-none">
               <p className="text-base font-medium text-blue-900 dark:text-blue-100">
-                POISE was built by studying the most demanding decision-making system in the world: <strong>NFL coaching</strong>. 
+                ExecuteIQ was built by studying the most demanding decision-making system in the world: <strong>NFL coaching</strong>. 
                 Then we discovered Microsoft, DBS Bank, and Amazon independently developed the same system through <strong>Dynamic Strategy</strong> methodology.
               </p>
               
@@ -72,7 +72,7 @@ export default function DecisionVelocityPage() {
               </div>
 
               <div className="bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 rounded-lg p-4 border-2 border-blue-300 dark:border-blue-700">
-                <div className="text-sm font-bold text-gray-900 dark:text-white mb-2">⚡ POISE = Both Systems Unified</div>
+                <div className="text-sm font-bold text-gray-900 dark:text-white mb-2">⚡ ExecuteIQ = Both Systems Unified</div>
                 <div className="text-xs text-gray-700 dark:text-gray-300">
                   You get the <strong>proven execution speed of NFL coaching</strong> (works every Sunday) combined with the 
                   <strong> proven transformation framework of Dynamic Strategy</strong> (grew Microsoft, DBS Bank, Amazon). 

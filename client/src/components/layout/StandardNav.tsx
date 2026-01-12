@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Play, Menu, X, LogIn, LogOut, User, ChevronDown, Brain, Target, Lightbulb, BarChart3, Layers, TrendingUp, Briefcase, Zap, BookOpen, GraduationCap, ClipboardList, Radar, Compass, Building } from "lucide-react";
-import poiseLogoPath from "@assets/poise-logo-official.png";
+import poiseLogoPath from "@assets/executeiq-logo-official.png";
 import { useLocation } from "wouter";
 import { useAuth } from "@/hooks/useAuth";
 import {
