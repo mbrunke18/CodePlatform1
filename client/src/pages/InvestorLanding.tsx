@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
-import executeiqLogoPath from "@assets/executeiq-logo-official.png";
+import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { 
   BarChart, 
   Bar, 
@@ -72,13 +72,8 @@ export default function InvestorLanding() {
           
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="mb-8 flex justify-center">
-              <div className="inline-block px-6 py-3 rounded-2xl bg-gradient-to-r from-slate-800/80 to-slate-900/70 border border-slate-600/50 backdrop-blur-sm">
-                <img 
-                  src={executeiqLogoPath} 
-                  alt="ExecuteIQ - Execute Decisions at Scale" 
-                  className="h-20 sm:h-24 lg:h-28 w-auto object-contain brightness-110 contrast-105"
-                  style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.55))' }}
-                />
+              <div className="inline-block px-6 py-4 rounded-2xl bg-gradient-to-r from-slate-800/80 to-slate-900/70 border border-slate-600/50 backdrop-blur-sm">
+                <ExecuteIQLogo width={280} variant="full" color="white" showTagline={true} />
               </div>
             </div>
             <Badge className="mb-6 bg-blue-600 text-white border-0 text-sm px-4 py-1.5" data-testid="badge-category">
