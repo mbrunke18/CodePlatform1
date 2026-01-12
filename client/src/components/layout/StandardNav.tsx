@@ -26,10 +26,10 @@ export default function StandardNav() {
   const navLinks = [
     { label: "Why ExecuteIQ", path: "/why-executeiq" },
     { label: "How It Works", path: "/how-it-works" },
-    { label: "Playbooks", path: "/playbooks" },
     { label: "Demos", path: "/demo-gallery" },
-    { label: "ExecuteIQ One™", path: "/mission-control", featured: true },
+    { label: "Playbooks", path: "/playbooks" },
     { label: "Pricing", path: "/pricing" },
+    { label: "ExecuteIQ One™", path: "/mission-control", featured: true },
   ];
 
   const workspaceLinks = [
