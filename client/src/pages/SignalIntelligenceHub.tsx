@@ -1819,7 +1819,7 @@ export default function SignalIntelligenceHub() {
                     <div className="space-y-3">
                       {SIGNAL_CATEGORIES.map(category => (
                         <Collapsible key={category.id} className="border rounded-lg overflow-hidden">
-                          <CollapsibleTrigger className="w-full">
+                          <CollapsibleTrigger className="w-full group">
                             <div 
                               className="p-4 flex items-center justify-between cursor-pointer hover:opacity-90 transition-opacity"
                               style={{ backgroundColor: `${category.color}15` }}
@@ -1844,7 +1844,7 @@ export default function SignalIntelligenceHub() {
                                 <Badge style={{ backgroundColor: category.color, color: 'white' }}>
                                   {category.dataPoints.length} points
                                 </Badge>
-                                <ChevronDown className="h-5 w-5 text-muted-foreground transition-transform duration-200 group-data-[state=open]:rotate-180" style={{ color: category.color }} />
+                                <ChevronDown className="h-5 w-5 transition-transform duration-200 group-data-[state=open]:rotate-180" style={{ color: category.color }} />
                               </div>
                             </div>
                           </CollapsibleTrigger>
@@ -1918,7 +1918,7 @@ export default function SignalIntelligenceHub() {
                             
                             return (
                               <Collapsible key={categoryName} defaultOpen className="border rounded-lg overflow-hidden border-purple-200 dark:border-purple-800">
-                                <CollapsibleTrigger className="w-full">
+                                <CollapsibleTrigger className="w-full group">
                                   <div 
                                     className="p-4 flex items-center justify-between bg-purple-50 dark:bg-purple-900/20 cursor-pointer hover:opacity-90 transition-opacity"
                                   >
@@ -1948,7 +1948,7 @@ export default function SignalIntelligenceHub() {
                                       <Badge className="bg-purple-500 text-white">
                                         {(dataPoints as any[]).length} custom
                                       </Badge>
-                                      <ChevronDown className="h-5 w-5 text-purple-500 transition-transform duration-200" />
+                                      <ChevronDown className="h-5 w-5 text-purple-500 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                                     </div>
                                   </div>
                                 </CollapsibleTrigger>
