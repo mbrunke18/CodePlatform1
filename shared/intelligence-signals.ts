@@ -97,6 +97,56 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         metricType: 'count',
         sources: ['news-api', 'press-releases'],
         defaultThreshold: { operator: 'gte', value: 1, urgency: 'high' }
+      },
+      {
+        id: 'comp_ad_spend',
+        name: 'Advertising Spend',
+        description: 'Competitor digital advertising spend changes',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['semrush', 'similarweb', 'adbeat'],
+        defaultThreshold: { operator: 'spike', value: 50, urgency: 'high' }
+      },
+      {
+        id: 'comp_social_growth',
+        name: 'Social Media Growth',
+        description: 'Competitor social following growth rate',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['sprout-social', 'brandwatch'],
+        defaultThreshold: { operator: 'spike', value: 25, urgency: 'medium' }
+      },
+      {
+        id: 'comp_market_expansion',
+        name: 'Geographic Expansion',
+        description: 'Competitor entering new markets or regions',
+        metricType: 'boolean',
+        sources: ['news-api', 'regulatory-filings'],
+        defaultThreshold: { operator: 'eq', value: true, urgency: 'critical' }
+      },
+      {
+        id: 'comp_feature_parity',
+        name: 'Feature Parity Gap',
+        description: 'Features competitors have that you lack',
+        metricType: 'count',
+        sources: ['g2', 'capterra', 'competitive-intel'],
+        defaultThreshold: { operator: 'gte', value: 5, urgency: 'high' }
+      },
+      {
+        id: 'comp_customer_wins',
+        name: 'Competitor Customer Wins',
+        description: 'Key accounts won by competitors',
+        metricType: 'count',
+        sources: ['crm-salesforce', 'news-api'],
+        defaultThreshold: { operator: 'gte', value: 3, urgency: 'critical' }
+      },
+      {
+        id: 'comp_acquisition_target',
+        name: 'Acquisition Rumors',
+        description: 'Competitor acquisition or merger rumors',
+        metricType: 'boolean',
+        sources: ['news-api', 'sec-filings', 'pitchbook'],
+        defaultThreshold: { operator: 'eq', value: true, urgency: 'critical' }
       }
     ]
   },
@@ -164,6 +214,59 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         unit: '%',
         sources: ['crm-salesforce', 'billing-systems'],
         defaultThreshold: { operator: 'spike', value: 5, urgency: 'high' }
+      },
+      {
+        id: 'mkt_customer_concentration',
+        name: 'Customer Concentration Risk',
+        description: 'Revenue from top 10 customers',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['crm-salesforce', 'finance-systems'],
+        defaultThreshold: { operator: 'gte', value: 40, urgency: 'high' }
+      },
+      {
+        id: 'mkt_segment_growth',
+        name: 'Segment Growth Rates',
+        description: 'Growth by market segment',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['industry-reports', 'internal-data'],
+        defaultThreshold: { operator: 'drop', value: 15, urgency: 'high' }
+      },
+      {
+        id: 'mkt_pricing_power',
+        name: 'Pricing Power Index',
+        description: 'Ability to raise prices without churn',
+        metricType: 'score',
+        sources: ['internal-analytics'],
+        defaultThreshold: { operator: 'drop', value: 10, urgency: 'high' }
+      },
+      {
+        id: 'mkt_tam_expansion',
+        name: 'TAM Expansion',
+        description: 'Total addressable market growth',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['industry-reports', 'gartner'],
+        defaultThreshold: { operator: 'spike', value: 20, urgency: 'low' }
+      },
+      {
+        id: 'mkt_competitive_losses',
+        name: 'Competitive Loss Rate',
+        description: 'Deals lost specifically to competitors',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['crm-salesforce', 'crm-hubspot'],
+        defaultThreshold: { operator: 'spike', value: 10, urgency: 'critical' }
+      },
+      {
+        id: 'mkt_channel_performance',
+        name: 'Channel Performance',
+        description: 'Revenue by sales channel trend',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['crm-salesforce', 'partner-portal'],
+        defaultThreshold: { operator: 'drop', value: 20, urgency: 'high' }
       }
     ]
   },
@@ -227,6 +330,47 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         metricType: 'count',
         sources: ['pitchbook', 'preqin'],
         defaultThreshold: { operator: 'gte', value: 3, urgency: 'high' }
+      },
+      {
+        id: 'fin_activist_stake',
+        name: 'Activist Investor Stakes',
+        description: 'Activist investor accumulating shares',
+        metricType: 'boolean',
+        sources: ['sec-edgar', '13f-filings'],
+        defaultThreshold: { operator: 'eq', value: true, urgency: 'critical' }
+      },
+      {
+        id: 'fin_earnings_guidance',
+        name: 'Earnings Guidance Changes',
+        description: 'Competitor earnings guidance revisions',
+        metricType: 'text',
+        sources: ['sec-filings', 'earnings-transcripts'],
+        defaultThreshold: { operator: 'contains', value: 'lowered', urgency: 'high' }
+      },
+      {
+        id: 'fin_debt_ratio',
+        name: 'Industry Debt Ratios',
+        description: 'Sector leverage trend changes',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['bloomberg', 'capital-iq'],
+        defaultThreshold: { operator: 'spike', value: 20, urgency: 'high' }
+      },
+      {
+        id: 'fin_spac_activity',
+        name: 'SPAC/IPO Activity',
+        description: 'Public market entry by competitors',
+        metricType: 'count',
+        sources: ['sec-filings', 'nasdaq', 'nyse'],
+        defaultThreshold: { operator: 'gte', value: 1, urgency: 'high' }
+      },
+      {
+        id: 'fin_insider_trading',
+        name: 'Insider Trading Signals',
+        description: 'Unusual insider buying/selling',
+        metricType: 'boolean',
+        sources: ['sec-form4', 'insidertrading-api'],
+        defaultThreshold: { operator: 'eq', value: true, urgency: 'medium' }
       }
     ]
   },
@@ -282,6 +426,54 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         metricType: 'count',
         sources: ['pacer', 'legal-databases'],
         defaultThreshold: { operator: 'gte', value: 1, urgency: 'medium' }
+      },
+      {
+        id: 'reg_privacy_changes',
+        name: 'Privacy Regulation Changes',
+        description: 'GDPR, CCPA, or similar privacy law updates',
+        metricType: 'boolean',
+        sources: ['regulatory-feeds', 'iapp'],
+        defaultThreshold: { operator: 'eq', value: true, urgency: 'high' }
+      },
+      {
+        id: 'reg_antitrust',
+        name: 'Antitrust Scrutiny',
+        description: 'Competition/antitrust investigations in sector',
+        metricType: 'boolean',
+        sources: ['ftc', 'doj', 'eu-commission'],
+        defaultThreshold: { operator: 'eq', value: true, urgency: 'critical' }
+      },
+      {
+        id: 'reg_labor_law',
+        name: 'Labor Law Changes',
+        description: 'Employment regulation updates',
+        metricType: 'count',
+        sources: ['dol', 'nlrb', 'state-agencies'],
+        defaultThreshold: { operator: 'gte', value: 1, urgency: 'medium' }
+      },
+      {
+        id: 'reg_tax_policy',
+        name: 'Tax Policy Changes',
+        description: 'Corporate tax law changes',
+        metricType: 'boolean',
+        sources: ['irs', 'treasury', 'oecd'],
+        defaultThreshold: { operator: 'eq', value: true, urgency: 'high' }
+      },
+      {
+        id: 'reg_industry_guidance',
+        name: 'Regulatory Guidance Updates',
+        description: 'New guidance from industry regulators',
+        metricType: 'count',
+        sources: ['fda', 'sec', 'fcc', 'industry-regulators'],
+        defaultThreshold: { operator: 'gte', value: 1, urgency: 'high' }
+      },
+      {
+        id: 'reg_whistleblower',
+        name: 'Whistleblower Reports',
+        description: 'Industry whistleblower filings',
+        metricType: 'boolean',
+        sources: ['sec-whistleblower', 'osha'],
+        defaultThreshold: { operator: 'eq', value: true, urgency: 'critical' }
       }
     ]
   },
@@ -348,6 +540,57 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         unit: 'days',
         sources: ['marine-traffic', 'port-authorities'],
         defaultThreshold: { operator: 'gt', value: 7, urgency: 'high' }
+      },
+      {
+        id: 'sc_single_source',
+        name: 'Single Source Dependencies',
+        description: 'Components with only one supplier',
+        metricType: 'count',
+        sources: ['procurement-systems', 'bom-analysis'],
+        defaultThreshold: { operator: 'gte', value: 5, urgency: 'high' }
+      },
+      {
+        id: 'sc_geopolitical_risk',
+        name: 'Supplier Geopolitical Risk',
+        description: 'Suppliers in high-risk regions',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['supplier-database', 'risk-analytics'],
+        defaultThreshold: { operator: 'gte', value: 30, urgency: 'high' }
+      },
+      {
+        id: 'sc_quality_issues',
+        name: 'Quality Incident Rate',
+        description: 'Supplier quality defect rate',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['quality-management', 'erp-systems'],
+        defaultThreshold: { operator: 'spike', value: 50, urgency: 'critical' }
+      },
+      {
+        id: 'sc_capacity_utilization',
+        name: 'Manufacturing Capacity',
+        description: 'Production capacity utilization',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['mes-systems', 'erp-systems'],
+        defaultThreshold: { operator: 'gte', value: 95, urgency: 'high' }
+      },
+      {
+        id: 'sc_weather_disruption',
+        name: 'Weather Event Alerts',
+        description: 'Weather affecting supply routes',
+        metricType: 'boolean',
+        sources: ['weather-api', 'noaa'],
+        defaultThreshold: { operator: 'eq', value: true, urgency: 'high' }
+      },
+      {
+        id: 'sc_labor_disruption',
+        name: 'Labor Disruption Risk',
+        description: 'Strike or labor action threats',
+        metricType: 'boolean',
+        sources: ['news-api', 'labor-tracking'],
+        defaultThreshold: { operator: 'eq', value: true, urgency: 'critical' }
       }
     ]
   },
@@ -419,6 +662,49 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         metricType: 'count',
         sources: ['gainsight', 'churnzero'],
         defaultThreshold: { operator: 'gte', value: 1, urgency: 'critical' }
+      },
+      {
+        id: 'cust_executive_change',
+        name: 'Customer Executive Changes',
+        description: 'Key contact departures at accounts',
+        metricType: 'count',
+        sources: ['linkedin', 'crm-salesforce'],
+        defaultThreshold: { operator: 'gte', value: 3, urgency: 'high' }
+      },
+      {
+        id: 'cust_contract_renewal',
+        name: 'Renewal Pipeline Health',
+        description: 'Renewals at risk in next 90 days',
+        metricType: 'currency',
+        unit: 'USD',
+        sources: ['crm-salesforce', 'finance-systems'],
+        defaultThreshold: { operator: 'gte', value: 500000, urgency: 'critical' }
+      },
+      {
+        id: 'cust_expansion_revenue',
+        name: 'Expansion Revenue Trend',
+        description: 'Upsell and cross-sell revenue growth',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['crm-salesforce', 'billing-systems'],
+        defaultThreshold: { operator: 'drop', value: 20, urgency: 'high' }
+      },
+      {
+        id: 'cust_response_time',
+        name: 'Support Response Time',
+        description: 'Average first response time',
+        metricType: 'count',
+        unit: 'hours',
+        sources: ['zendesk', 'servicenow'],
+        defaultThreshold: { operator: 'spike', value: 4, urgency: 'high' }
+      },
+      {
+        id: 'cust_product_feedback',
+        name: 'Feature Request Volume',
+        description: 'Customer feature requests trend',
+        metricType: 'count',
+        sources: ['productboard', 'canny', 'uservoice'],
+        defaultThreshold: { operator: 'spike', value: 50, urgency: 'medium' }
       }
     ]
   },
@@ -483,6 +769,50 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         unit: '%',
         sources: ['ats', 'greenhouse', 'lever'],
         defaultThreshold: { operator: 'drop', value: 20, urgency: 'high' }
+      },
+      {
+        id: 'tal_time_to_hire',
+        name: 'Time to Hire',
+        description: 'Average days to fill positions',
+        metricType: 'count',
+        unit: 'days',
+        sources: ['ats', 'greenhouse', 'lever'],
+        defaultThreshold: { operator: 'spike', value: 30, urgency: 'high' }
+      },
+      {
+        id: 'tal_salary_competitiveness',
+        name: 'Salary Competitiveness',
+        description: 'Compensation vs market rate',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['levels-fyi', 'glassdoor', 'compensation-data'],
+        defaultThreshold: { operator: 'lt', value: 90, urgency: 'high' }
+      },
+      {
+        id: 'tal_diversity_metrics',
+        name: 'Diversity Metrics',
+        description: 'Diversity representation changes',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['hris', 'workday'],
+        defaultThreshold: { operator: 'drop', value: 5, urgency: 'medium' }
+      },
+      {
+        id: 'tal_skill_gaps',
+        name: 'Critical Skill Gaps',
+        description: 'Unfilled critical skill positions',
+        metricType: 'count',
+        sources: ['hris', 'skills-matrix'],
+        defaultThreshold: { operator: 'gte', value: 5, urgency: 'high' }
+      },
+      {
+        id: 'tal_leadership_bench',
+        name: 'Leadership Bench Strength',
+        description: 'Succession pipeline coverage',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['hris', 'succession-planning'],
+        defaultThreshold: { operator: 'lt', value: 70, urgency: 'high' }
       }
     ]
   },
@@ -539,6 +869,47 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         metricType: 'count',
         sources: ['aws', 'azure', 'gcp-announcements'],
         defaultThreshold: { operator: 'gte', value: 1, urgency: 'critical' }
+      },
+      {
+        id: 'tech_ai_advancement',
+        name: 'AI Capability Advances',
+        description: 'Major AI breakthroughs affecting industry',
+        metricType: 'boolean',
+        sources: ['arxiv', 'tech-news', 'openai-announcements'],
+        defaultThreshold: { operator: 'eq', value: true, urgency: 'critical' }
+      },
+      {
+        id: 'tech_quantum_progress',
+        name: 'Quantum Computing Progress',
+        description: 'Quantum computing milestones',
+        metricType: 'boolean',
+        sources: ['research-papers', 'ibm-quantum', 'google-quantum'],
+        defaultThreshold: { operator: 'eq', value: true, urgency: 'high' }
+      },
+      {
+        id: 'tech_platform_dependency',
+        name: 'Platform Dependency Score',
+        description: 'Revenue dependent on single platform',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['internal-analytics'],
+        defaultThreshold: { operator: 'gte', value: 50, urgency: 'high' }
+      },
+      {
+        id: 'tech_legacy_systems',
+        name: 'Legacy System Risk',
+        description: 'Systems past end-of-life',
+        metricType: 'count',
+        sources: ['it-asset-management'],
+        defaultThreshold: { operator: 'gte', value: 5, urgency: 'high' }
+      },
+      {
+        id: 'tech_blockchain_adoption',
+        name: 'Blockchain Adoption',
+        description: 'Industry blockchain implementations',
+        metricType: 'count',
+        sources: ['news-api', 'industry-reports'],
+        defaultThreshold: { operator: 'gte', value: 3, urgency: 'medium' }
       }
     ]
   },
@@ -602,6 +973,47 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         unit: '/hour',
         sources: ['real-time-news-api'],
         defaultThreshold: { operator: 'gte', value: 10, urgency: 'critical' }
+      },
+      {
+        id: 'med_influencer_mentions',
+        name: 'Influencer Mentions',
+        description: 'Mentions by key industry influencers',
+        metricType: 'count',
+        sources: ['brandwatch', 'twitter-api'],
+        defaultThreshold: { operator: 'spike', value: 5, urgency: 'high' }
+      },
+      {
+        id: 'med_executive_visibility',
+        name: 'Executive Media Visibility',
+        description: 'CEO/C-suite media presence',
+        metricType: 'count',
+        sources: ['meltwater', 'cision'],
+        defaultThreshold: { operator: 'drop', value: 50, urgency: 'medium' }
+      },
+      {
+        id: 'med_boycott_signals',
+        name: 'Boycott Signals',
+        description: 'Social media boycott campaigns',
+        metricType: 'boolean',
+        sources: ['brandwatch', 'social-listening'],
+        defaultThreshold: { operator: 'eq', value: true, urgency: 'critical' }
+      },
+      {
+        id: 'med_misinformation',
+        name: 'Misinformation Spread',
+        description: 'False information spreading about company',
+        metricType: 'boolean',
+        sources: ['fact-check-apis', 'social-listening'],
+        defaultThreshold: { operator: 'eq', value: true, urgency: 'critical' }
+      },
+      {
+        id: 'med_earned_media_value',
+        name: 'Earned Media Value',
+        description: 'Value of unpaid media coverage',
+        metricType: 'currency',
+        unit: 'USD',
+        sources: ['meltwater', 'cision'],
+        defaultThreshold: { operator: 'drop', value: 30, urgency: 'medium' }
       }
     ]
   },
@@ -665,6 +1077,47 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         metricType: 'boolean',
         sources: ['news-api', 'intelligence-services'],
         defaultThreshold: { operator: 'eq', value: true, urgency: 'critical' }
+      },
+      {
+        id: 'geo_election_impact',
+        name: 'Election Impact',
+        description: 'Upcoming elections in key markets',
+        metricType: 'count',
+        unit: 'months',
+        sources: ['election-calendars', 'political-risk'],
+        defaultThreshold: { operator: 'lte', value: 6, urgency: 'high' }
+      },
+      {
+        id: 'geo_trade_agreements',
+        name: 'Trade Agreement Changes',
+        description: 'New or modified trade agreements',
+        metricType: 'boolean',
+        sources: ['wto', 'ustr', 'government-sources'],
+        defaultThreshold: { operator: 'eq', value: true, urgency: 'high' }
+      },
+      {
+        id: 'geo_nationalization_risk',
+        name: 'Nationalization Risk',
+        description: 'Asset seizure or nationalization threats',
+        metricType: 'boolean',
+        sources: ['political-risk-services', 'eiu'],
+        defaultThreshold: { operator: 'eq', value: true, urgency: 'critical' }
+      },
+      {
+        id: 'geo_supply_route_risk',
+        name: 'Supply Route Disruption',
+        description: 'Critical shipping lane threats',
+        metricType: 'boolean',
+        sources: ['maritime-intelligence', 'news-api'],
+        defaultThreshold: { operator: 'eq', value: true, urgency: 'critical' }
+      },
+      {
+        id: 'geo_diplomatic_tensions',
+        name: 'Diplomatic Tensions',
+        description: 'Rising tensions between key trading partners',
+        metricType: 'score',
+        sources: ['political-risk-services', 'news-api'],
+        defaultThreshold: { operator: 'spike', value: 2, urgency: 'high' }
       }
     ]
   },
@@ -738,6 +1191,48 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         unit: '%',
         sources: ['economic-models'],
         defaultThreshold: { operator: 'gte', value: 50, urgency: 'critical' }
+      },
+      {
+        id: 'econ_unemployment',
+        name: 'Unemployment Rate',
+        description: 'Key market unemployment changes',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['bls', 'eurostat'],
+        defaultThreshold: { operator: 'spike', value: 1, urgency: 'high' }
+      },
+      {
+        id: 'econ_housing_market',
+        name: 'Housing Market Index',
+        description: 'Housing market health indicator',
+        metricType: 'score',
+        sources: ['case-shiller', 'nahb'],
+        defaultThreshold: { operator: 'drop', value: 15, urgency: 'high' }
+      },
+      {
+        id: 'econ_commodity_prices',
+        name: 'Key Commodity Prices',
+        description: 'Oil, copper, and other key commodities',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['commodity-exchanges', 'bloomberg'],
+        defaultThreshold: { operator: 'spike', value: 20, urgency: 'high' }
+      },
+      {
+        id: 'econ_business_sentiment',
+        name: 'Business Confidence Index',
+        description: 'CEO/CFO confidence surveys',
+        metricType: 'score',
+        sources: ['conference-board', 'business-roundtable'],
+        defaultThreshold: { operator: 'drop', value: 15, urgency: 'high' }
+      },
+      {
+        id: 'econ_credit_conditions',
+        name: 'Credit Conditions',
+        description: 'Lending standards and credit availability',
+        metricType: 'text',
+        sources: ['fed-sloos', 'banking-surveys'],
+        defaultThreshold: { operator: 'contains', value: 'tightening', urgency: 'high' }
       }
     ]
   },
@@ -800,6 +1295,49 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         metricType: 'boolean',
         sources: ['news-api', 'partner-communications'],
         defaultThreshold: { operator: 'eq', value: true, urgency: 'high' }
+      },
+      {
+        id: 'part_integration_usage',
+        name: 'Integration Usage',
+        description: 'Partner integration API call volume',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['api-analytics', 'partner-portal'],
+        defaultThreshold: { operator: 'drop', value: 30, urgency: 'high' }
+      },
+      {
+        id: 'part_certification_expiry',
+        name: 'Certification Expiry',
+        description: 'Partner certifications expiring soon',
+        metricType: 'count',
+        unit: 'days',
+        sources: ['partner-portal', 'internal-tracking'],
+        defaultThreshold: { operator: 'lte', value: 90, urgency: 'medium' }
+      },
+      {
+        id: 'part_co_sell_pipeline',
+        name: 'Co-Sell Pipeline',
+        description: 'Joint opportunities in pipeline',
+        metricType: 'currency',
+        unit: 'USD',
+        sources: ['crm-salesforce', 'partner-portal'],
+        defaultThreshold: { operator: 'drop', value: 25, urgency: 'high' }
+      },
+      {
+        id: 'part_marketplace_ranking',
+        name: 'Marketplace Ranking',
+        description: 'Position on partner marketplaces',
+        metricType: 'count',
+        sources: ['marketplace-analytics'],
+        defaultThreshold: { operator: 'drop', value: 10, urgency: 'medium' }
+      },
+      {
+        id: 'part_strategic_review',
+        name: 'Strategic Partner Review',
+        description: 'Partner performance review outcomes',
+        metricType: 'text',
+        sources: ['partner-portal', 'internal-tracking'],
+        defaultThreshold: { operator: 'contains', value: 'at-risk', urgency: 'critical' }
       }
     ]
   },
@@ -858,6 +1396,56 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         unit: '%',
         sources: ['internal-tracking'],
         defaultThreshold: { operator: 'spike', value: 2, urgency: 'high' }
+      },
+      {
+        id: 'exec_okr_progress',
+        name: 'OKR Progress',
+        description: 'Quarterly OKR achievement rate',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['lattice', '15five', 'internal-tracking'],
+        defaultThreshold: { operator: 'lt', value: 70, urgency: 'high' }
+      },
+      {
+        id: 'exec_strategic_initiative',
+        name: 'Strategic Initiative Health',
+        description: 'Major initiatives at risk',
+        metricType: 'count',
+        sources: ['pmo-tools', 'jira'],
+        defaultThreshold: { operator: 'gte', value: 2, urgency: 'critical' }
+      },
+      {
+        id: 'exec_cross_functional',
+        name: 'Cross-Functional Delays',
+        description: 'Projects blocked by other teams',
+        metricType: 'count',
+        sources: ['jira', 'asana', 'monday'],
+        defaultThreshold: { operator: 'gte', value: 5, urgency: 'high' }
+      },
+      {
+        id: 'exec_scope_creep',
+        name: 'Scope Creep Index',
+        description: 'Scope changes after project start',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['project-systems'],
+        defaultThreshold: { operator: 'gte', value: 25, urgency: 'high' }
+      },
+      {
+        id: 'exec_stakeholder_alignment',
+        name: 'Stakeholder Alignment',
+        description: 'Executive alignment score on priorities',
+        metricType: 'score',
+        sources: ['survey-platforms', 'internal-tracking'],
+        defaultThreshold: { operator: 'lt', value: 70, urgency: 'high' }
+      },
+      {
+        id: 'exec_change_velocity',
+        name: 'Change Request Velocity',
+        description: 'Rate of strategic pivots',
+        metricType: 'count',
+        sources: ['pmo-tools'],
+        defaultThreshold: { operator: 'spike', value: 3, urgency: 'medium' }
       }
     ]
   },
@@ -915,6 +1503,51 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         metricType: 'count',
         sources: ['product-analytics', 'crm'],
         defaultThreshold: { operator: 'gte', value: 5, urgency: 'low' }
+      },
+      {
+        id: 'beh_session_duration',
+        name: 'Session Duration',
+        description: 'Average time in product',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['product-analytics', 'mixpanel'],
+        defaultThreshold: { operator: 'drop', value: 25, urgency: 'high' }
+      },
+      {
+        id: 'beh_core_action_frequency',
+        name: 'Core Action Frequency',
+        description: 'Key product action completion rate',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['product-analytics'],
+        defaultThreshold: { operator: 'drop', value: 20, urgency: 'critical' }
+      },
+      {
+        id: 'beh_user_segments',
+        name: 'Power User Decline',
+        description: 'Power user segment shrinking',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['product-analytics'],
+        defaultThreshold: { operator: 'drop', value: 15, urgency: 'high' }
+      },
+      {
+        id: 'beh_onboarding_completion',
+        name: 'Onboarding Completion',
+        description: 'New user onboarding completion rate',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['product-analytics', 'pendo'],
+        defaultThreshold: { operator: 'lt', value: 60, urgency: 'high' }
+      },
+      {
+        id: 'beh_feature_stickiness',
+        name: 'Feature Stickiness',
+        description: 'DAU/MAU ratio for key features',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['product-analytics'],
+        defaultThreshold: { operator: 'drop', value: 10, urgency: 'high' }
       }
     ]
   },
@@ -972,6 +1605,50 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         unit: '%',
         sources: ['legal-tracking'],
         defaultThreshold: { operator: 'lt', value: 50, urgency: 'high' }
+      },
+      {
+        id: 'innov_rd_roi',
+        name: 'R&D ROI',
+        description: 'Return on R&D investment',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['finance-systems', 'rd-tracking'],
+        defaultThreshold: { operator: 'drop', value: 20, urgency: 'high' }
+      },
+      {
+        id: 'innov_prototype_velocity',
+        name: 'Prototype Velocity',
+        description: 'Speed of prototype development',
+        metricType: 'count',
+        unit: 'weeks',
+        sources: ['rd-systems', 'jira'],
+        defaultThreshold: { operator: 'spike', value: 4, urgency: 'high' }
+      },
+      {
+        id: 'innov_customer_beta',
+        name: 'Beta Program Health',
+        description: 'Customer beta program engagement',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['product-systems', 'customer-success'],
+        defaultThreshold: { operator: 'drop', value: 25, urgency: 'medium' }
+      },
+      {
+        id: 'innov_acquisition_targets',
+        name: 'Acqui-hire Pipeline',
+        description: 'Technology acquisition targets',
+        metricType: 'count',
+        sources: ['corp-dev-tracking', 'pitchbook'],
+        defaultThreshold: { operator: 'drop', value: 50, urgency: 'low' }
+      },
+      {
+        id: 'innov_researcher_retention',
+        name: 'Key Researcher Retention',
+        description: 'Top R&D talent retention rate',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['hris', 'rd-systems'],
+        defaultThreshold: { operator: 'drop', value: 10, urgency: 'critical' }
       }
     ]
   },
@@ -1027,6 +1704,58 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         unit: '%',
         sources: ['internal-tracking'],
         defaultThreshold: { operator: 'gt', value: 10, urgency: 'high' }
+      },
+      {
+        id: 'esg_dei_progress',
+        name: 'DEI Progress',
+        description: 'Diversity, equity, inclusion metrics',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['hris', 'dei-tracking'],
+        defaultThreshold: { operator: 'drop', value: 5, urgency: 'medium' }
+      },
+      {
+        id: 'esg_carbon_footprint',
+        name: 'Carbon Footprint',
+        description: 'Scope 1/2/3 emissions trend',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['sustainability-platform', 'internal-tracking'],
+        defaultThreshold: { operator: 'spike', value: 10, urgency: 'high' }
+      },
+      {
+        id: 'esg_governance_score',
+        name: 'Governance Score',
+        description: 'Board governance assessment',
+        metricType: 'score',
+        sources: ['iss', 'glass-lewis'],
+        defaultThreshold: { operator: 'drop', value: 1, urgency: 'high' }
+      },
+      {
+        id: 'esg_stakeholder_concerns',
+        name: 'Stakeholder ESG Concerns',
+        description: 'ESG-related investor inquiries',
+        metricType: 'count',
+        sources: ['investor-relations', 'shareholder-tracking'],
+        defaultThreshold: { operator: 'spike', value: 5, urgency: 'high' }
+      },
+      {
+        id: 'esg_water_usage',
+        name: 'Water Usage',
+        description: 'Water consumption trends',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['facility-management', 'sustainability-platform'],
+        defaultThreshold: { operator: 'spike', value: 15, urgency: 'medium' }
+      },
+      {
+        id: 'esg_waste_reduction',
+        name: 'Waste Reduction',
+        description: 'Waste diversion rate',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['facility-management', 'sustainability-platform'],
+        defaultThreshold: { operator: 'drop', value: 10, urgency: 'medium' }
       }
     ]
   },
