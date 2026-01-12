@@ -47,7 +47,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
       {
         id: 'cc-welcome',
         title: 'Welcome to Command Center',
-        description: 'When a trigger hits—competitor launch, regulatory change, or crisis—organizations typically spend 20-50 hours getting organized. ExecuteIQ compresses that to 12 minutes. This is where the magic happens.',
+        description: 'When a strategic trigger hits, organizations typically waste 20-50 hours getting organized. ExecuteIQ compresses that to 12 minutes. AI handles detection and coordination. You make the decisions. This is where championship-speed execution happens.',
         phase: 'EXECUTE'
       },
       {

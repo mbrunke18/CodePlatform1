@@ -144,10 +144,13 @@ export default function HowItWorks() {
               How ExecuteIQ Works
             </h1>
             <p className="text-xl md:text-2xl text-slate-300 mb-4 leading-relaxed max-w-3xl mx-auto">
-              When a trigger hits—competitor launch, regulatory change, or market opportunity—organizations typically spend 20-50 hours just getting organized. <span className="text-poise-gold font-semibold">ExecuteIQ compresses that to 12 minutes.</span>
+              When a strategic trigger hits—a competitor launches, regulations shift, a cyber threat emerges—organizations typically <span className="text-red-300">waste 20-50 hours getting organized</span>. <span className="text-poise-gold font-semibold">ExecuteIQ compresses that to 12 minutes.</span>
+            </p>
+            <p className="text-lg text-slate-400 mb-4 leading-relaxed max-w-3xl mx-auto">
+              Our AI monitors 216 data points across 16 intelligence categories, detecting threats and opportunities before competitors see them. When a signal breaches a threshold, ExecuteIQ automatically activates the right playbook from our library of 166 battle-tested responses: notifying stakeholders, assigning tasks, staging documents, unlocking pre-approved budgets—all in under 12 minutes.
             </p>
             <p className="text-lg text-slate-400 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Our AI monitors 216 data points, detecting signals before they become crises. When a threshold is breached, we automatically activate the right playbook—notifying stakeholders, assigning tasks, staging documents, and unlocking pre-approved budgets. Think of it as the orchestration layer between strategy and execution.
+              We're the orchestration layer between strategy and execution. <span className="text-cyan-400">AI handles detection and coordination. Executives make the decisions.</span> What used to take 72 hours now happens at championship speed.
             </p>
             
             {/* Visual Phase Flow */}

@@ -86,19 +86,22 @@ export default function MarketingLanding() {
           <div className="mb-10">
             <div className="max-w-5xl mx-auto mb-8">
               <Badge className="mb-4 bg-cyan-500 text-white border-0 text-base px-6 py-2">
-                Category-Defining Platform
+                The Strategic Execution OS
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-4">
-                The First Strategic Execution Operating System
+                ExecuteIQ for Fortune 1000 Companies
               </h2>
               <p className="text-xl md:text-2xl text-white mb-4 leading-relaxed">
-                When a trigger hits—competitor launch, regulatory change, cyber threat, or market opportunity—organizations typically spend <span className="text-red-300">20-50 hours just getting organized</span>. ExecuteIQ compresses that to <span className="text-cyan-300 font-bold">12 minutes</span>.
+                When a strategic trigger hits—a competitor launches, regulations shift, a cyber threat emerges, or a market opportunity appears—organizations typically <span className="text-red-300">waste 20-50 hours getting organized</span>. ExecuteIQ compresses that to <span className="text-cyan-300 font-bold">12 minutes</span>.
               </p>
               <p className="text-lg text-slate-300 mb-4 leading-relaxed max-w-4xl mx-auto">
-                Our AI monitors 216 data points across 16 intelligence categories, detecting signals before they become crises. When a threshold is breached, ExecuteIQ automatically activates the right playbook from our library of 166 battle-tested responses—notifying stakeholders, assigning tasks, staging documents, and unlocking pre-approved budgets.
+                Our AI monitors 216 data points across 16 intelligence categories, detecting threats and opportunities before competitors see them. When a signal breaches a threshold, ExecuteIQ automatically activates the right playbook from our library of 166 battle-tested responses: notifying stakeholders, assigning tasks, staging documents, unlocking pre-approved budgets—all in under 12 minutes.
+              </p>
+              <p className="text-lg text-slate-300 mb-4 leading-relaxed max-w-4xl mx-auto">
+                We're the orchestration layer between strategy and execution. <span className="text-cyan-300">AI handles detection and coordination. Executives make the decisions.</span>
               </p>
               <p className="text-lg text-poise-gold font-semibold">
-                We turn the 72-hour scramble into a championship-level response.
+                What used to take 72 hours now happens at championship speed.
               </p>
               <div className="flex items-center justify-center gap-6 text-lg text-blue-100 mb-6">
                 <div className="flex items-center gap-2">
