@@ -48,7 +48,7 @@ const PRESENTATION_SLIDES: Slide[] = [
     id: 'title',
     act: 1,
     actName: 'Hook',
-    title: 'POISE',
+    title: 'ExecuteIQ',
     subtitle: 'Strategic Execution Operating System',
     content: 'slide',
     notes: 'Welcome everyone. Today I want to show you how we\'re transforming strategic execution for Fortune 1000 companies.',
@@ -133,7 +133,7 @@ const PRESENTATION_SLIDES: Slide[] = [
     title: 'Introducing POISE',
     subtitle: 'The Strategic Execution Operating System',
     content: 'slide',
-    notes: 'POISE is the first platform that connects signals to playbooks to execution to learning. A complete closed-loop system.',
+    notes: 'ExecuteIQ is the first platform that connects signals to playbooks to execution to learning. A complete closed-loop system.',
     visual: 'solution',
     data: {
       phases: ['IDENTIFY', 'DETECT', 'EXECUTE', 'ADVANCE'],
@@ -190,7 +190,7 @@ const PRESENTATION_SLIDES: Slide[] = [
     title: 'EXECUTE',
     subtitle: '12-Minute Coordinated Response',
     content: 'slide',
-    notes: 'When a playbook activates, POISE orchestrates everything: notifications, task assignments, approvals, and integrations. From signal to action in 12 minutes.',
+    notes: 'When a playbook activates, ExecuteIQ orchestrates everything: notifications, task assignments, approvals, and integrations. From signal to action in 12 minutes.',
     visual: 'phase',
     data: {
       phase: 'EXECUTE',
@@ -260,17 +260,17 @@ const PRESENTATION_SLIDES: Slide[] = [
     id: 'competitive',
     act: 4,
     actName: 'Proof & Traction',
-    title: 'Why POISE?',
+    title: 'Why ExecuteIQ?',
     subtitle: 'The Only Closed-Loop Platform',
     content: 'slide',
-    notes: 'Unlike point solutions, POISE is the only platform that connects all four phases. Palantir does analytics. Anaplan does planning. Dataminr does signals. Only POISE does execution.',
+    notes: 'Unlike point solutions, ExecuteIQ is the only platform that connects all four phases. Palantir does analytics. Anaplan does planning. Dataminr does signals. Only POISE does execution.',
     visual: 'competitive',
     data: {
       competitors: [
         { name: 'Palantir', has: ['Analytics'], missing: ['Playbooks', 'Execution', 'Learning'] },
         { name: 'Anaplan', has: ['Planning'], missing: ['Signals', 'Execution', 'Learning'] },
         { name: 'Dataminr', has: ['Signals'], missing: ['Playbooks', 'Execution', 'Learning'] },
-        { name: 'POISE', has: ['Signals', 'Playbooks', 'Execution', 'Learning'], missing: [] }
+        { name: 'ExecuteIQ', has: ['Signals', 'Playbooks', 'Execution', 'Learning'], missing: [] }
       ]
     }
   },
@@ -934,12 +934,12 @@ function InvestorPresentation() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.5 + i * 0.1 }}
                   className={`grid grid-cols-5 gap-4 p-4 rounded-xl mb-2 ${
-                    comp.name === 'POISE' 
+                    comp.name === 'ExecuteIQ' 
                       ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30' 
                       : 'bg-slate-800/50 border border-slate-700'
                   }`}
                 >
-                  <div className={`font-semibold ${comp.name === 'POISE' ? 'text-blue-400' : 'text-white'}`}>
+                  <div className={`font-semibold ${comp.name === 'ExecuteIQ' ? 'text-blue-400' : 'text-white'}`}>
                     {comp.name}
                   </div>
                   {['Signals', 'Playbooks', 'Execution', 'Learning'].map((cap) => (

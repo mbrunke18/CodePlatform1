@@ -104,6 +104,32 @@ export const organizations = pgTable('organizations', {
   updatedAt: timestamp("updated_at").defaultNow(),
 });
 
+// Strategic Objectives - Organization-level strategic goals (Fisk Leadership Model)
+export const strategicObjectives = pgTable('strategic_objectives', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').references(() => organizations.id, { onDelete: 'cascade' }).notNull(),
+  name: varchar('name', { length: 255 }).notNull(), // e.g., "Revenue Growth 2026", "Market Leadership", "Digital First"
+  description: text('description'),
+  targetDate: varchar('target_date', { length: 50 }),
+  targetValue: decimal('target_value', { precision: 14, scale: 2 }),
+  currentValue: decimal('current_value', { precision: 14, scale: 2 }).default('0'),
+  valueUnit: varchar('value_unit', { length: 50 }), // 'USD', 'percent', 'count', etc.
+  leadershipCapability: varchar('leadership_capability', { length: 50 }), // 'foresight' | 'courage' | 'agility' | 'purpose' | 'orchestration'
+  priority: integer('priority').default(1), // 1-5 priority ranking
+  status: varchar('status', { length: 50 }).default('active'), // 'active' | 'achieved' | 'paused' | 'archived'
+  progress: integer('progress').default(0), // 0-100 percentage
+  executionCount: integer('execution_count').default(0), // Number of playbook executions advancing this objective
+  createdBy: varchar('created_by').references(() => users.id),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+}, (table) => [
+  index('strategic_objectives_org_idx').on(table.organizationId),
+  index('strategic_objectives_capability_idx').on(table.leadershipCapability),
+]);
+
+export type StrategicObjective = typeof strategicObjectives.$inferSelect;
+export type InsertStrategicObjective = typeof strategicObjectives.$inferInsert;
+
 // Business Units for enhanced RBAC scoping
 export const businessUnits = pgTable('business_units', {
   id: uuid('id').primaryKey().defaultRandom(),
@@ -2013,6 +2039,16 @@ export const executiveTriggers = pgTable('executive_triggers', {
   statusMessage: text('status_message'),
   recommendedPlaybooks: jsonb('recommended_playbooks'), // Array of playbook IDs
   notificationSettings: jsonb('notification_settings'), // Who gets alerted, how (email/SMS/Slack)
+  
+  // Anticipation Scoring (Fisk Leadership Model)
+  magnitudeScore: integer('magnitude_score').default(5), // 1-10 scale
+  timeHorizon: varchar('time_horizon', { length: 50 }).default('emerging'), // 'immediate' | 'urgent' | 'emerging' | 'developing'
+  strategicRelevanceScore: integer('strategic_relevance_score').default(5), // 1-10 scale
+  anticipationValue: boolean('anticipation_value').default(false), // Could we have seen this coming?
+  anticipationWindowDays: integer('anticipation_window_days').default(0), // Days before threshold triggered
+  couldHaveAnticipated: boolean('could_have_anticipated').default(false),
+  leadershipCapability: varchar('leadership_capability', { length: 50 }), // 'foresight' | 'courage' | 'agility' | 'purpose' | 'orchestration'
+  
   isActive: boolean('is_active').default(true),
   lastTriggeredAt: timestamp('last_triggered_at'),
   triggerCount: integer('trigger_count').default(0),
@@ -5448,6 +5484,16 @@ export const playbooks = pgTable('playbooks', {
   status: varchar('status', { length: 20 }).default('draft'), // 'draft' | 'ready' | 'active' | 'archived'
   completionPercentage: integer('completion_percentage').default(0), // Track how complete the playbook is (0-100)
   
+  // Strategic Alignment Layer (Fisk Leadership Model)
+  leadershipCapability: varchar('leadership_capability', { length: 50 }), // 'foresight' | 'courage' | 'agility' | 'purpose' | 'orchestration'
+  strategicObjectives: jsonb('strategic_objectives').$type<Array<{
+    id: string;
+    name: string;
+    alignmentWeight: number; // 0-100: how much does this playbook advance this objective?
+    isPrimary: boolean;
+  }>>(),
+  executionProgressTowardGoal: integer('execution_progress_toward_goal').default(0), // Auto-calculated from executions
+  
   isActive: boolean('is_active').default(true),
   isTemplate: boolean('is_template').default(false), // Mark as global template
   createdBy: varchar('created_by').references(() => users.id),
@@ -5457,6 +5503,7 @@ export const playbooks = pgTable('playbooks', {
   index('playbooks_org_idx').on(table.organizationId),
   index('playbooks_template_idx').on(table.templateId),
   index('playbooks_source_idx').on(table.sourceType),
+  index('playbooks_capability_idx').on(table.leadershipCapability),
 ]);
 
 // Types for Organization Playbooks

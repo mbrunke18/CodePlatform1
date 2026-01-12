@@ -433,7 +433,7 @@ export default function IntegrationsPage() {
             <DialogHeader>
               <DialogTitle>Connect {selectedIntegration?.name}</DialogTitle>
               <DialogDescription>
-                Enter your credentials to connect {selectedIntegration?.name} to POISE.
+                Enter your credentials to connect {selectedIntegration?.name} to ExecuteIQ.
               </DialogDescription>
             </DialogHeader>
 

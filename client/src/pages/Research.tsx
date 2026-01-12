@@ -158,7 +158,7 @@ export default function Research() {
                   <h3 className="text-2xl font-bold text-foreground mb-2">Speed Saves Money</h3>
                   <p className="text-muted-foreground">
                     IBM's 2024 Cost of Data Breach study proves what we've seen in practice: faster 
-                    response = lower costs. POISE provides all of these capabilities in a single platform.
+                    response = lower costs. ExecuteIQ provides all of these capabilities in a single platform.
                   </p>
                 </div>
               </div>
@@ -629,7 +629,7 @@ export default function Research() {
             See the Research in Action
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Watch how POISE transforms these research findings into operational capability.
+            Watch how ExecuteIQ transforms these research findings into operational capability.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link href="/demo-selector">

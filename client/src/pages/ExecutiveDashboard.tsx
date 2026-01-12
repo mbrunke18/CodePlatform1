@@ -152,7 +152,7 @@ export default function ExecutiveDashboard() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Executive Dashboard | POISE Strategic Execution OS",
+      title: "Executive Dashboard | ExecuteIQ Strategic Execution OS",
       description: "Your unified strategic command center. Monitor Future Readiness Index, decision velocity, and organizational preparedness in real-time.",
       ogTitle: "Executive Dashboard | M",
       ogDescription: "Real-time executive metrics for strategic execution performance.",

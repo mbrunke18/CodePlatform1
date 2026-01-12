@@ -27,8 +27,8 @@ export default function VideoLanding() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "POISE - Strategic Execution Operating System | 72 Hours → 12 Minutes",
-      description: "Watch how POISE transforms strategic coordination from 72 hours to 12 minutes. Pre-staged playbooks, coordinated stakeholders, instant activation for Fortune 1000 companies.",
+      title: "ExecuteIQ - Strategic Execution Operating System | 72 Hours → 12 Minutes",
+      description: "Watch how ExecuteIQ transforms strategic coordination from 72 hours to 12 minutes. Pre-staged playbooks, coordinated stakeholders, instant activation for Fortune 1000 companies.",
       ogTitle: "POISE - The Speed to Execute",
       ogDescription: "166 playbooks. 12 minutes to coordinated execution. The Strategic Execution Operating System.",
     });
@@ -242,7 +242,7 @@ export default function VideoLanding() {
       <footer className="py-8 px-6 bg-slate-950 border-t border-slate-800">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-slate-500 text-sm">
-            POISE - Strategic Execution Operating System
+            ExecuteIQ - Strategic Execution Operating System
           </p>
         </div>
       </footer>

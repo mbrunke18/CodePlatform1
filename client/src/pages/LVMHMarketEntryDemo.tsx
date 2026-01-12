@@ -156,7 +156,7 @@ export default function LVMHMarketEntryDemo() {
                   <Play className="w-5 h-5 mr-2" />
                   Begin Opportunity Simulation
                 </Button>
-                <p className="text-sm text-purple-400 mt-3">Experience how POISE enables strategic velocity</p>
+                <p className="text-sm text-purple-400 mt-3">Experience how ExecuteIQ enables strategic velocity</p>
               </div>
             </Card>
           </div>
@@ -221,7 +221,7 @@ export default function LVMHMarketEntryDemo() {
                 Act 3: 12-Minute Coordinated Execution
               </h2>
               <p className="text-lg text-purple-200 mb-6">
-                POISE coordinates all 1,267 stakeholders in 12 minutes. Bernard Arnault's decision triggers instant alignment across 
+                ExecuteIQ coordinates all 1,267 stakeholders in 12 minutes. Bernard Arnault's decision triggers instant alignment across 
                 28 executives, 347 operational specialists, and 892 external partners—enabling simultaneous 10-brand launch.
               </p>
 

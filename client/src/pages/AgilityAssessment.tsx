@@ -199,7 +199,7 @@ export default function AgilityAssessment() {
                   </div>
                   <div className="bg-emerald-900/30 rounded-lg p-6 border border-emerald-500/30" data-testid="result-potential-growth">
                     <div className="text-3xl font-bold text-emerald-400 mb-2">+{revenueImpact.potentialGrowth}%</div>
-                    <p className="text-slate-400 text-sm">Potential Additional Growth with POISE</p>
+                    <p className="text-slate-400 text-sm">Potential Additional Growth with ExecuteIQ</p>
                   </div>
                   <div className="bg-slate-800/50 rounded-lg p-6" data-testid="result-benchmark">
                     <div className="text-3xl font-bold text-amber-400 mb-2">10.3%</div>

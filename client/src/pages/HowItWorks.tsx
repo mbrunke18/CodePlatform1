@@ -24,7 +24,7 @@ export default function HowItWorks() {
     {
       number: "I",
       name: "IDENTIFY",
-      moduleName: "POISE Playbook™",
+      moduleName: "ExecuteIQ Playbook™",
       tagline: "Build Your Depth Chart",
       icon: Target,
       color: "violet",
@@ -44,7 +44,7 @@ export default function HowItWorks() {
     {
       number: "D",
       name: "DETECT",
-      moduleName: "POISE Signal™",
+      moduleName: "ExecuteIQ Signal™",
       tagline: "Monitor Signals",
       icon: Radio,
       color: "blue",
@@ -64,7 +64,7 @@ export default function HowItWorks() {
     {
       number: "E",
       name: "EXECUTE",
-      moduleName: "POISE Compass™",
+      moduleName: "ExecuteIQ Compass™",
       tagline: "Execute Response",
       icon: CheckCircle,
       color: "emerald",
@@ -72,7 +72,7 @@ export default function HowItWorks() {
       borderColor: "border-emerald-500",
       bgLight: "bg-emerald-50 dark:bg-emerald-950/30",
       textColor: "text-emerald-600 dark:text-emerald-400",
-      description: "When triggers fire, POISE orchestrates your entire response—stakeholders, resources, and communications—in minutes, not weeks.",
+      description: "When triggers fire, ExecuteIQ orchestrates your entire response—stakeholders, resources, and communications—in minutes, not weeks.",
       capabilities: [
         "Automatic stakeholder notification and task assignment",
         "Pre-approved budget release for rapid resource deployment",
@@ -84,7 +84,7 @@ export default function HowItWorks() {
     {
       number: "A",
       name: "ADVANCE",
-      moduleName: "POISE Retrospect™",
+      moduleName: "ExecuteIQ Retrospect™",
       tagline: "Review the Film",
       icon: BookOpen,
       color: "amber",
@@ -229,7 +229,7 @@ export default function HowItWorks() {
         <div className="max-w-3xl mx-auto mt-16 text-center">
           <div className="bg-gradient-to-r from-poise-teal/10 via-cyan-500/10 to-poise-gold/10 rounded-2xl p-8 border border-poise-teal/30">
             <Badge className="mb-4 bg-poise-teal/20 text-poise-teal border-poise-teal/30">
-              POISE North Star™
+              ExecuteIQ North Star™
             </Badge>
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
               Your Complete Implementation Roadmap
@@ -242,7 +242,7 @@ export default function HowItWorks() {
               className="bg-gradient-to-r from-poise-teal to-cyan-500 hover:from-cyan-500 hover:to-poise-teal text-white px-8 py-3 text-lg shadow-lg shadow-poise-teal/30"
               data-testid="button-north-star"
             >
-              Launch POISE North Star™
+              Launch ExecuteIQ North Star™
               <ArrowRight className="h-5 w-5 ml-2" />
             </Button>
           </div>
@@ -258,7 +258,7 @@ export default function HowItWorks() {
                 What Makes This Different
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                POISE isn't just another planning tool. It's a complete operating system for strategic execution.
+                ExecuteIQ isn't just another planning tool. It's the orchestration layer for strategic execution.
               </p>
             </div>
             
@@ -292,7 +292,7 @@ export default function HowItWorks() {
             Ready to See It in Action?
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
-            Experience how POISE transforms a competitive threat into a coordinated 12-minute response.
+            Experience how ExecuteIQ transforms a competitive threat into a coordinated 12-minute response.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 

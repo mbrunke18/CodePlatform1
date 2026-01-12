@@ -186,7 +186,7 @@ export default function DemoGallery() {
                   <div>
                     <h3 className="font-semibold text-slate-900 dark:text-white">Your Journey Starts Here</h3>
                     <p className="text-sm text-slate-600 dark:text-slate-400">
-                      These demos map to Phase 1 of your POISE North Star™ journey — Discovery to 12-minute execution
+                      These demos map to Phase 1 of your ExecuteIQ North Star™ journey — Discovery to 12-minute execution
                     </p>
                   </div>
                 </div>
@@ -329,7 +329,7 @@ export default function DemoGallery() {
             <CardContent className="p-8 text-center">
               <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Strategic Execution?</h3>
               <p className="text-slate-300 mb-6 max-w-xl mx-auto">
-                Join Fortune 1000 companies achieving 12-minute coordinated response with POISE
+                Join Fortune 1000 companies achieving 12-minute coordinated response with ExecuteIQ
               </p>
               <div className="flex justify-center gap-4 flex-wrap">
                 <Link href="/pilot-demo">

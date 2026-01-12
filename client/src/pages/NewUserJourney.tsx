@@ -342,7 +342,7 @@ export default function NewUserJourney() {
                 <span className="text-white font-bold text-sm">POISE</span>
               </div>
               <div>
-                <h1 className="text-lg font-semibold text-white">Getting Started with POISE</h1>
+                <h1 className="text-lg font-semibold text-white">Getting Started with ExecuteIQ</h1>
                 <p className="text-xs text-slate-400">Your first playbook will be ready in under 15 minutes</p>
               </div>
             </div>
@@ -1116,7 +1116,7 @@ export default function NewUserJourney() {
                       transition={{ delay: 0.3 }}
                       className="text-3xl font-bold text-white mb-2"
                     >
-                      POISE is Now Active
+                      ExecuteIQ is Now Active
                     </motion.h2>
                     <motion.p 
                       initial={{ opacity: 0, y: 20 }}

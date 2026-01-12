@@ -584,7 +584,7 @@ function DemoLiveActivation() {
                   ✨ Augmented Execution in Action
                 </h3>
                 <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">
-                  Notice: POISE is coordinating stakeholders, but humans are making all decisions.
+                  Notice: ExecuteIQ is coordinating stakeholders, but humans are making all decisions.
                 </p>
                 <ul className="space-y-1 text-sm text-slate-700 dark:text-slate-300">
                   <li className="flex items-center gap-2">

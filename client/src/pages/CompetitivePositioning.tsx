@@ -125,7 +125,7 @@ const automationTools = [
     gaps: ['No strategic intelligence', 'No enterprise playbooks', 'No stakeholder coordination', 'No decision velocity'],
     color: 'bg-violet-500',
     whenTheyWin: 'Technical teams, complex data workflows',
-    trapQuestion: '"Make connects systems. POISE coordinates humans with pre-defined strategic responses."'
+    trapQuestion: '"Make connects systems. ExecuteIQ coordinates humans with pre-defined strategic responses."'
   },
   {
     name: 'Workato',
@@ -246,7 +246,7 @@ const objections = [
   },
   {
     objection: '"This sounds like another tool to adopt."',
-    response: 'POISE is the opposite—it reduces tools. Teams don\'t learn POISE; POISE comes to them via the tools they already use (Slack, Teams, Jira, email). The playbook library and signal monitoring are invisible to end users.',
+    response: 'ExecuteIQ is the opposite—it reduces tools. Teams don\'t learn POISE; POISE comes to them via the tools they already use (Slack, Teams, Jira, email). The playbook library and signal monitoring are invisible to end users.',
     category: 'Adoption'
   },
   {
@@ -261,7 +261,7 @@ const objections = [
   },
   {
     objection: '"How is this different from AI agents?"',
-    response: 'AI agents introduce unpredictability—you don\'t know what they\'ll do. POISE provides deterministic execution: pre-defined playbooks where AI recommends and humans decide. You get speed without surprises.',
+    response: 'AI agents introduce unpredictability—you don\'t know what they\'ll do. ExecuteIQ provides deterministic execution: pre-defined playbooks where AI recommends and humans decide. You get speed without surprises.',
     category: 'Technology'
   },
   {
@@ -271,7 +271,7 @@ const objections = [
   },
   {
     objection: '"Can\'t we just build this with Zapier/Make?"',
-    response: 'Automation tools connect apps. POISE orchestrates humans. You can\'t Zap your way to cross-functional coordination with human decision gates, pre-approved budgets, and institutional learning. POISE is the strategic layer above automation.',
+    response: 'Automation tools connect apps. ExecuteIQ orchestrates humans. You can\'t Zap your way to cross-functional coordination with human decision gates, pre-approved budgets, and institutional learning. ExecuteIQ is the strategic layer above automation.',
     category: 'Automation'
   },
   {
@@ -648,7 +648,7 @@ export default function CompetitivePositioning() {
                           </div>
                         </div>
                         <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
-                          <div className="text-xs font-semibold text-sky-600 dark:text-sky-400 mb-1">Relationship with POISE</div>
+                          <div className="text-xs font-semibold text-sky-600 dark:text-sky-400 mb-1">Relationship with ExecuteIQ</div>
                           <p className="text-xs text-slate-500 dark:text-slate-500">{tool.relationship}</p>
                         </div>
                         <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
@@ -776,7 +776,7 @@ export default function CompetitivePositioning() {
                 Five Categories, One Gap
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400">
-                POISE is the only platform that bridges planning, detection, coordination, and execution
+                ExecuteIQ is the only platform that bridges planning, detection, coordination, and execution
               </p>
             </div>
 

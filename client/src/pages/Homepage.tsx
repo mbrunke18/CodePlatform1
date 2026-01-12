@@ -237,7 +237,7 @@ export default function Homepage() {
                 The Operating System Organizations Have Been Missing.
               </h2>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-6">
-                POISE is the AI-native command layer that synchronizes your entire organization. 
+                ExecuteIQ is the AI-native command layer that synchronizes your entire organization. 
                 <span className="text-white font-semibold"> 166 pre-staged playbooks</span> with 
                 stakeholders, tasks, budgets, and communications—ready to activate 
                 the moment a trigger fires. <span className="text-emerald-400 font-medium">Everyone knows their role. Zero scrambling.</span>
@@ -867,7 +867,7 @@ export default function Homepage() {
 
           <div className="mt-12 text-center">
             <p className="text-lg text-slate-400">
-              No matter the situation, executives using POISE are prepared to execute 
+              No matter the situation, executives using ExecuteIQ are prepared to execute 
               <span className="text-white font-semibold"> swiftly, efficiently, and effectively.</span>
             </p>
           </div>
@@ -974,7 +974,7 @@ export default function Homepage() {
               Three Angles for the AI-Hungry Enterprise
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-              Every Fortune 500 is deploying AI. Here's why POISE is the missing piece.
+              Every Fortune 500 is deploying AI. Here's why ExecuteIQ is the missing piece.
             </p>
           </div>
           
@@ -1028,7 +1028,7 @@ export default function Homepage() {
                   </p>
                 </div>
                 <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                  POISE is the coordination layer that makes your AI investment pay off.
+                  ExecuteIQ is the coordination layer that makes your AI investment pay off.
                 </p>
               </CardContent>
             </Card>
@@ -1172,7 +1172,7 @@ export default function Homepage() {
                 <Badge className="mb-2 bg-white/20 text-white border-white/30">McKinsey Framework</Badge>
                 <h3 className="text-2xl font-bold text-white mb-2">Operating Model Alignment</h3>
                 <p className="text-white/80">
-                  Map your organization's structure to POISE's 166 playbooks using McKinsey's "Organize to Value" 12-element framework. Get personalized playbook recommendations based on your unique operating model fingerprint.
+                  Map your organization's structure to ExecuteIQ's 166 playbooks using McKinsey's "Organize to Value" 12-element framework. Get personalized playbook recommendations based on your unique operating model fingerprint.
                 </p>
               </div>
               <Button 
@@ -1361,7 +1361,7 @@ export default function Homepage() {
                 </p>
               </blockquote>
               <p className="text-lg font-semibold text-slate-900 dark:text-white">
-                POISE is the answer. <span className="text-amber-600 dark:text-amber-400">That's the IDEA.</span>
+                ExecuteIQ is the answer. <span className="text-amber-600 dark:text-amber-400">That's the IDEA.</span>
               </p>
             </div>
             <div className="grid grid-cols-1 gap-6">

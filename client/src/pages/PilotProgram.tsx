@@ -52,7 +52,7 @@ const pilotPhases = [
     duration: 'Weeks 3-6',
     color: 'bg-blue-600',
     activities: [
-      'Conduct 2-3 tabletop exercises with POISE',
+      'Conduct 2-3 tabletop exercises with ExecuteIQ',
       'Measure activation time (target: <12 min)',
       'Train response team leads on POISE workflow',
       'Refine playbooks based on dry run feedback',
@@ -98,7 +98,7 @@ const pilotInclusions = [
     category: 'Platform Access',
     icon: Layers,
     items: [
-      'Full POISE platform access for pilot team (up to 25 users)',
+      'Full ExecuteIQ platform access for pilot team (up to 25 users)',
       '5 customizable playbooks from 166 library',
       'Signal monitoring for 3 intelligence categories',
       'Command Center with real-time coordination'

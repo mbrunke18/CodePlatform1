@@ -55,9 +55,9 @@ const TOUR_SCENES: Scene[] = [
     id: 'intro',
     type: 'cinematic',
     duration: 6000,
-    title: 'POISE',
+    title: 'ExecuteIQ',
     subtitle: 'Strategic Execution Operating System',
-    narration: 'Welcome to POISE — the operating system that transforms how Fortune 1000 companies execute strategy.',
+    narration: 'Welcome to ExecuteIQ — the operating system that transforms how Fortune 1000 companies execute strategy.',
     visual: 'solution'
   },
   {
@@ -109,7 +109,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 8000,
     title: 'EXECUTE',
     subtitle: 'Execute Response',
-    narration: 'When signals fire, POISE orchestrates your entire organization. Stakeholders align in parallel, not sequence.',
+    narration: 'When signals fire, ExecuteIQ orchestrates your entire organization. Stakeholders align in parallel, not sequence.',
     visual: 'execute'
   },
   {
@@ -154,14 +154,14 @@ const TOUR_SCENES: Scene[] = [
     duration: 8000,
     title: 'The Results',
     subtitle: '3,180x Faster Response',
-    narration: 'What traditionally takes 72 hours, POISE coordinates in under 2 minutes. That\'s strategic velocity.',
+    narration: 'What traditionally takes 72 hours, ExecuteIQ coordinates in under 2 minutes. That\'s strategic velocity.',
     visual: 'metrics'
   },
   {
     id: 'comparison',
     type: 'proof',
     duration: 8000,
-    title: 'Why POISE?',
+    title: 'Why ExecuteIQ?',
     subtitle: 'The Only Closed-Loop Platform',
     narration: 'Unlike Palantir, Anaplan, or Dataminr — POISE connects signals to playbooks to execution to learning. One platform.',
     visual: 'comparison'

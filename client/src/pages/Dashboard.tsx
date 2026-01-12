@@ -208,7 +208,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Dashboard | POISE - Strategic Execution OS",
+      title: "Dashboard | ExecuteIQ - Strategic Execution OS",
       description: "Your strategic execution command center. Monitor readiness, track triggers, and coordinate responses in real-time.",
       ogTitle: "POISE Dashboard",
       ogDescription: "Strategic Execution OS for Fortune 1000 executives. Composure in every decision.",

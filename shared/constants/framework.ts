@@ -1,19 +1,19 @@
 // ============================================================================
-// POISE - STRATEGIC EXECUTION OPERATING SYSTEM
+// EXECUTEIQ - STRATEGIC EXECUTION OPERATING SYSTEM
 // Centralized definitions for the 4-phase IDEA Framework and 9 Strategic Domains
-// "Composure in every decision."
+// "Orchestration as a System"
 // ============================================================================
 
-// ----- POISE BRAND CONSTANTS -----
+// ----- EXECUTEIQ BRAND CONSTANTS -----
 
-export const POISE_BRAND = {
-  name: 'POISE',
-  fullName: 'POISE - Strategic Execution OS',
-  tagline: 'Composure in every decision.',
-  extendedTagline: 'Calm, Precise, Instant Execution',
+export const EXECUTEIQ_BRAND = {
+  name: 'ExecuteIQ',
+  fullName: 'ExecuteIQ - Strategic Execution OS',
+  tagline: 'Orchestration as a System.',
+  extendedTagline: 'Detect Early. Execute Precisely. Advance Strategy.',
   alternateTaglines: [
-    'Adapt at the Speed of Change',
-    'Your Employees Have AI. Your Organization Doesn\'t.'
+    'Transform strategy into 12-minute execution',
+    'The orchestration layer for Fortune 1000 leaders'
   ],
   colors: {
     primary: '#1A2B3D',
@@ -23,13 +23,63 @@ export const POISE_BRAND = {
     textMuted: '#94A3B8'
   },
   modules: {
-    identify: { name: 'POISE Playbook™', description: 'Build and customize strategic playbooks' },
-    detect: { name: 'POISE Signal™', description: 'AI-powered signal monitoring and detection' },
-    execute: { name: 'POISE Compass™', description: 'Coordinated response and execution' },
-    advance: { name: 'POISE Retrospect™', description: 'Institutional learning and improvement' },
-    executive: { name: 'POISE One™', description: 'Single-pane executive view' }
+    identify: { name: 'ExecuteIQ Playbook™', description: 'Build and customize strategic playbooks' },
+    detect: { name: 'ExecuteIQ Signal™', description: 'AI-powered signal monitoring and detection' },
+    execute: { name: 'ExecuteIQ Compass™', description: 'Coordinated response and execution' },
+    advance: { name: 'ExecuteIQ Retrospect™', description: 'Institutional learning and improvement' },
+    executive: { name: 'ExecuteIQ One™', description: 'Single-pane executive view' }
   }
 } as const;
+
+// Backward compatibility alias
+export const POISE_BRAND = EXECUTEIQ_BRAND;
+
+// ----- LEADERSHIP CAPABILITIES (Fisk Leadership Model) -----
+export const LEADERSHIP_CAPABILITIES = {
+  FORESIGHT: {
+    id: 'foresight',
+    name: 'Foresight',
+    description: 'Anticipate & Shape Markets',
+    icon: 'Telescope',
+    color: '#10B981',
+    domains: ['market-entry', 'competitive-response']
+  },
+  COURAGE: {
+    id: 'courage',
+    name: 'Courage',
+    description: 'Bold Bets with Incomplete Data',
+    icon: 'Shield',
+    color: '#8B5CF6',
+    domains: ['mergers-acquisitions', 'product-launch']
+  },
+  AGILITY: {
+    id: 'agility',
+    name: 'Agility',
+    description: 'Continuous Reinvention',
+    icon: 'Zap',
+    color: '#EC4899',
+    domains: ['digital-transformation', 'ai-governance']
+  },
+  PURPOSE: {
+    id: 'purpose',
+    name: 'Purpose',
+    description: 'Maintain Stakeholder Trust',
+    icon: 'Heart',
+    color: '#EF4444',
+    domains: ['regulatory-compliance', 'crisis-response']
+  },
+  ORCHESTRATION: {
+    id: 'orchestration',
+    name: 'Orchestration',
+    description: 'Align 9 Domains Simultaneously',
+    icon: 'Layers',
+    color: '#06B6D4',
+    domains: ['cross-domain']
+  }
+} as const;
+
+export const LEADERSHIP_CAPABILITIES_ARRAY = Object.values(LEADERSHIP_CAPABILITIES);
+export type LeadershipCapabilityId = keyof typeof LEADERSHIP_CAPABILITIES;
 
 // ----- IDEA FRAMEWORK PHASE DEFINITIONS -----
 
@@ -37,7 +87,7 @@ export const IDEA_PHASES = {
   IDENTIFY: {
     id: 'identify',
     name: 'IDENTIFY',
-    moduleName: 'POISE Playbook™',
+    moduleName: 'ExecuteIQ Playbook™',
     subtitle: 'Build Your Playbook Library',
     description: 'Map your operating model to execution playbooks. Pre-stage responses across 9 strategic domains. Know who does what before anything happens.',
     icon: 'ClipboardList',
@@ -61,7 +111,7 @@ export const IDEA_PHASES = {
   DETECT: {
     id: 'detect',
     name: 'DETECT',
-    moduleName: 'POISE Signal™',
+    moduleName: 'ExecuteIQ Signal™',
     subtitle: 'Monitor Signals',
     description: 'AI-powered monitoring spots signals early. Real-time triggers across market, competitive, and regulatory landscapes. Intelligence reports, not surprises.',
     icon: 'Radar',
@@ -85,7 +135,7 @@ export const IDEA_PHASES = {
   EXECUTE: {
     id: 'execute',
     name: 'EXECUTE',
-    moduleName: 'POISE Compass™',
+    moduleName: 'ExecuteIQ Compass™',
     subtitle: 'Coordinate Response',
     description: 'Coordinated action in 12 minutes vs. 72-hour industry average. Everyone aligned, nothing lost in translation.',
     icon: 'Play',
@@ -109,7 +159,7 @@ export const IDEA_PHASES = {
   ADVANCE: {
     id: 'advance',
     name: 'ADVANCE',
-    moduleName: 'POISE Retrospect™',
+    moduleName: 'ExecuteIQ Retrospect™',
     subtitle: 'Capture Learning',
     description: 'Every execution makes you stronger. Automated retrospectives capture what worked. Institutional knowledge compounds, not walks out the door.',
     icon: 'TrendingUp',
@@ -282,15 +332,16 @@ export const STRATEGIC_CATEGORIES_ARRAY = Object.values(STRATEGIC_CATEGORIES);
 // ----- EXECUTION TIMING BENCHMARKS -----
 
 export const TIMING_BENCHMARKS = {
-  POISE: {
+  EXECUTEIQ: {
     decisionTime: 12,
     decisionUnit: 'minutes',
     executionTime: 90,
     executionUnit: 'minutes',
-    description: 'POISE enables 12-minute decision start and 90-minute full execution'
+    description: 'ExecuteIQ enables 12-minute decision start and 90-minute full execution'
   },
-  // Backward compatibility alias
-  get M_PLATFORM() { return this.POISE; },
+  // Backward compatibility aliases
+  get POISE() { return this.EXECUTEIQ; },
+  get M_PLATFORM() { return this.EXECUTEIQ; },
   INDUSTRY_AVERAGE: {
     decisionTime: 72,
     decisionUnit: 'hours',

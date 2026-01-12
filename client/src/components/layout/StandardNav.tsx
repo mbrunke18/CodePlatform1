@@ -24,11 +24,11 @@ export default function StandardNav() {
   };
 
   const navLinks = [
-    { label: "Why POISE", path: "/why-poise" },
+    { label: "Why ExecuteIQ", path: "/why-executeiq" },
     { label: "How It Works", path: "/how-it-works" },
     { label: "Playbooks", path: "/playbooks" },
     { label: "Demos", path: "/demo-gallery" },
-    { label: "POISE One™", path: "/mission-control", featured: true },
+    { label: "ExecuteIQ One™", path: "/mission-control", featured: true },
     { label: "Pricing", path: "/pricing" },
   ];
 
@@ -40,10 +40,10 @@ export default function StandardNav() {
   ];
 
   const dashboardLinks = [
-    { label: "POISE One™ Overview", path: "/mission-control", icon: Compass, color: "text-poise-gold", featured: true },
+    { label: "ExecuteIQ One™ Overview", path: "/mission-control", icon: Compass, color: "text-poise-gold", featured: true },
     { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, color: "text-poise-teal" },
+    { label: "Strategy Execution", path: "/strategy-execution", icon: TrendingUp, color: "text-poise-teal" },
     { label: "Executive Dashboard", path: "/executive-dashboard", icon: BarChart3, color: "text-poise-gold" },
-    { label: "Decision Velocity", path: "/decision-velocity", icon: Zap, color: "text-blue-500" },
   ];
 
   const isActivePath = (path: string) => {
@@ -65,7 +65,7 @@ export default function StandardNav() {
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-poise-navy/80 to-poise-dark-gray/60 border border-poise-gold/30">
               <img 
                 src={poiseLogoPath} 
-                alt="POISE - Composure in every decision" 
+                alt="ExecuteIQ - Orchestration as a System" 
                 className="h-9 sm:h-10 md:h-11 w-auto object-contain brightness-110 contrast-105"
                 style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))' }}
               />
@@ -154,7 +154,7 @@ export default function StandardNav() {
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-72">
-                {/* IDENTIFY - POISE Playbook™ */}
+                {/* IDENTIFY - ExecuteIQ Playbook™ */}
                 <DropdownMenuLabel className="flex items-center gap-2 text-poise-gold">
                   <ClipboardList className="h-3 w-3" />
                   IDENTIFY
@@ -174,7 +174,7 @@ export default function StandardNav() {
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 
-                {/* DETECT - POISE Signal™ */}
+                {/* DETECT - ExecuteIQ Signal™ */}
                 <DropdownMenuLabel className="flex items-center gap-2 text-poise-teal">
                   <Radar className="h-3 w-3" />
                   DETECT
@@ -194,7 +194,7 @@ export default function StandardNav() {
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 
-                {/* EXECUTE - POISE Compass™ */}
+                {/* EXECUTE - ExecuteIQ Compass™ */}
                 <DropdownMenuLabel className="flex items-center gap-2 text-poise-teal">
                   <Compass className="h-3 w-3" />
                   EXECUTE
@@ -214,7 +214,7 @@ export default function StandardNav() {
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 
-                {/* ADVANCE - POISE Retrospect™ */}
+                {/* ADVANCE - ExecuteIQ Retrospect™ */}
                 <DropdownMenuLabel className="flex items-center gap-2 text-poise-gold">
                   <TrendingUp className="h-3 w-3" />
                   ADVANCE
@@ -265,7 +265,7 @@ export default function StandardNav() {
                   Our Story
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => navigateTo("/why-poise")} data-testid="nav-why-poise">
-                  Why POISE
+                  Why ExecuteIQ
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => navigateTo("/integrations")} data-testid="nav-integrations">
                   Integrations
@@ -395,7 +395,7 @@ export default function StandardNav() {
               {/* Divider */}
               <div className="border-t border-slate-800 my-2" />
               
-              {/* IDENTIFY - POISE Playbook™ */}
+              {/* IDENTIFY - ExecuteIQ Playbook™ */}
               <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide flex items-center gap-2">
                 <ClipboardList className="h-3 w-3" />
                 IDENTIFY
@@ -435,7 +435,7 @@ export default function StandardNav() {
               {/* Divider */}
               <div className="border-t border-slate-800 my-2" />
               
-              {/* DETECT - POISE Signal™ */}
+              {/* DETECT - ExecuteIQ Signal™ */}
               <p className="px-4 py-2 text-xs text-poise-teal uppercase tracking-wide flex items-center gap-2">
                 <Radar className="h-3 w-3" />
                 DETECT
@@ -475,7 +475,7 @@ export default function StandardNav() {
               {/* Divider */}
               <div className="border-t border-slate-800 my-2" />
               
-              {/* EXECUTE - POISE Compass™ */}
+              {/* EXECUTE - ExecuteIQ Compass™ */}
               <p className="px-4 py-2 text-xs text-poise-teal uppercase tracking-wide flex items-center gap-2">
                 <Compass className="h-3 w-3" />
                 EXECUTE
@@ -515,7 +515,7 @@ export default function StandardNav() {
               {/* Divider */}
               <div className="border-t border-slate-800 my-2" />
               
-              {/* ADVANCE - POISE Retrospect™ */}
+              {/* ADVANCE - ExecuteIQ Retrospect™ */}
               <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide flex items-center gap-2">
                 <TrendingUp className="h-3 w-3" />
                 ADVANCE
@@ -619,7 +619,7 @@ export default function StandardNav() {
                   className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
                   data-testid="nav-mobile-why-poise"
                 >
-                  Why POISE
+                  Why ExecuteIQ
                 </button>
                 <button
                   onClick={() => navigateTo("/integrations")}

@@ -220,7 +220,7 @@ export default function SHEINTrendDemo() {
                 Act 3: 12-Minute Coordinated Execution
               </h2>
               <p className="text-lg text-pink-200 mb-6">
-                POISE coordinates all 5,847 stakeholders in 12 minutes. CEO decision triggers instant alignment across designers, 
+                ExecuteIQ coordinates all 5,847 stakeholders in 12 minutes. CEO decision triggers instant alignment across designers, 
                 production coordinators, 5,000 suppliers, and marketing teams—enabling 7-day launch before Zara/H&M respond.
               </p>
 

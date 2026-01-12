@@ -324,7 +324,7 @@ export default function InvestorLanding() {
                     First mover defining "Strategic Execution Operating System" category (like Salesforce for CRM). Category creators capture 76% of market value (Gartner research).
                   </p>
                   <div className="text-sm font-semibold text-primary" data-testid="text-moat-category-advantage">
-                    Advantage: Brand moat—"POISE" becomes verb for strategic execution
+                    Advantage: Brand moat—"ExecuteIQ" becomes verb for strategic execution
                   </div>
                 </CardContent>
               </Card>
@@ -606,7 +606,7 @@ export default function InvestorLanding() {
               Join Us in Creating a New Software Category
             </h2>
             <p className="text-xl mb-8 text-blue-100" data-testid="text-cta-description">
-              POISE is defining the Strategic Execution Operating System category—a $127B market opportunity with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
+              ExecuteIQ is defining the Strategic Execution Operating System category—a $127B market opportunity with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button

@@ -34,9 +34,9 @@ import poiseLogoPath from "@assets/poise-logo-official.png";
 export default function WhyM() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Why POISE - The Founder Story | Strategic Execution OS",
-      description: "Discover how 5 years of elite football coaching and 20+ years of Fortune 500 strategic execution led to POISE—the first Strategic Execution OS.",
-      ogTitle: "Why POISE Exists - Creating a New Category",
+      title: "Why ExecuteIQ - The Founder Story | Strategic Execution OS",
+      description: "Discover how 5 years of elite football coaching and 20+ years of Fortune 500 strategic execution led to ExecuteIQ—the first Strategic Execution OS.",
+      ogTitle: "Why ExecuteIQ Exists - Creating a New Category",
       ogDescription: "The insight that created POISE: Business has no operating system for coordinated response. We're changing that.",
     });
   }, []);
@@ -64,7 +64,7 @@ export default function WhyM() {
               </Badge>
               
               <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight" data-testid="heading-why-poise">
-                Why POISE Exists
+                Why ExecuteIQ Exists
               </h1>
               
               <p className="text-xl text-blue-100 mb-8">
@@ -297,7 +297,7 @@ export default function WhyM() {
 
           <div className="text-center p-8 bg-white/5 rounded-2xl border border-white/10">
             <p className="text-xl font-medium text-blue-50 max-w-2xl mx-auto">
-              No matter the situation, executives using POISE are prepared to execute 
+              No matter the situation, executives using ExecuteIQ are prepared to execute 
               <span className="font-bold text-white"> swiftly, efficiently, and effectively.</span>
             </p>
           </div>
@@ -412,7 +412,7 @@ export default function WhyM() {
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               A strategy is a statement. Strategic Architecture is the operating system that keeps strategy alive when reality hits. 
-              POISE is that system—166 pre-staged playbooks across 9 strategic domains, coordinated response in 12 minutes vs. the 72-hour industry average.
+              ExecuteIQ is that system—166 pre-staged playbooks across 9 strategic domains, coordinated response in 12 minutes vs. the 72-hour industry average.
             </p>
           </div>
 
@@ -499,7 +499,7 @@ export default function WhyM() {
                 </ul>
                 <div className="mt-6 p-4 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg">
                   <p className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
-                    POISE is the Strategic Architecture your organization is missing—adapt at the speed of change.
+                    ExecuteIQ is the Strategic Architecture your organization is missing—adapt at the speed of change.
                   </p>
                 </div>
               </CardContent>
@@ -781,7 +781,7 @@ export default function WhyM() {
               The Evidence Behind POISE
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Independent research validates every principle POISE is built on.
+              Independent research validates every principle ExecuteIQ is built on.
             </p>
           </div>
 

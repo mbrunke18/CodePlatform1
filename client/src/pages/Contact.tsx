@@ -309,7 +309,7 @@ export default function Contact() {
                     {/* Disclaimer */}
                     <div className="bg-yellow-50 dark:bg-yellow-950 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
                       <p className="text-sm text-yellow-900 dark:text-yellow-200">
-                        <strong>Note:</strong> POISE is in pre-launch with zero production customers. This pilot program is designed to validate our design goals (12-minute execution vs 72-hour industry standard) in real-world Fortune 1000 environments. Selection is limited to 10 companies with clear strategic fit and implementation readiness.
+                        <strong>Note:</strong> ExecuteIQ is in pre-launch with zero production customers. This pilot program is designed to validate our design goals (12-minute execution vs 72-hour industry standard) in real-world Fortune 1000 environments. Selection is limited to 10 companies with clear strategic fit and implementation readiness.
                       </p>
                     </div>
 

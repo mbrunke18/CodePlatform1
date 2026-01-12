@@ -1,21 +1,29 @@
-# POISE - Strategic Execution OS
+# ExecuteIQ - Strategic Execution OS
 
 ## Overview
-POISE is the Strategic Execution OS for Fortune 1000 companies, designed to eliminate the 20-50 hours organizations spend getting organized after a strategic event hits. It bridges the gap between strategic preparation and operational execution by leveraging AI-driven trigger monitoring and an extensive library of 166 strategic playbooks across 9 domains. POISE integrates with existing tools like Jira, automatically creating projects, assigning tasks, staging documents, and unlocking pre-approved budgets within 12 minutes of a trigger. The platform operates on the IDEA Framework™ (IDENTIFY, DETECT, EXECUTE, ADVANCE), fostering a human-AI partnership where AI recommends and humans make final decisions.
+ExecuteIQ is the Strategic Execution OS for Fortune 1000 companies—the orchestration layer that transforms how leaders balance transformation and stability across all 9 strategic domains simultaneously. It eliminates the 20-50 hours organizations spend getting organized after a strategic event hits, bridging the gap between strategic preparation and operational execution through AI-driven trigger monitoring and an extensive library of 166 strategic playbooks across 9 domains. ExecuteIQ integrates with existing tools like Jira, automatically creating projects, assigning tasks, staging documents, and unlocking pre-approved budgets within 12 minutes of a trigger. The platform operates on the IDEA Framework™ (IDENTIFY, DETECT, EXECUTE, ADVANCE), fostering a human-AI partnership where AI recommends and humans make final decisions.
 
 ## Core Messaging (Updated Jan 2026)
-- **Primary Tagline:** "Composure in every decision."
-- **Extended Tagline:** "Calm, Precise, Instant Execution"
-- **Alternate Taglines:** "Adapt at the Speed of Change" | "Your Employees Have AI. Your Organization Doesn't."
+- **Primary Tagline:** "Orchestration as a System."
+- **Extended Tagline:** "Detect Early. Execute Precisely. Advance Strategy."
+- **Alternate Taglines:** "Transform strategy into 12-minute execution" | "The orchestration layer for Fortune 1000 leaders"
 - **IDEA Framework Tagline:** "That's the IDEA."
 
-## POISE Module Naming
+## ExecuteIQ Module Naming
 The platform uses trademarked module names aligned to the IDEA Framework:
-- **POISE Playbook™** (IDENTIFY): Build and customize strategic playbooks
-- **POISE Signal™** (DETECT): AI-powered signal monitoring and detection
-- **POISE Compass™** (EXECUTE): Coordinated response and execution
-- **POISE Retrospect™** (ADVANCE): Institutional learning and improvement
-- **POISE One™** (/mission-control): Single-pane executive overview of strategic readiness and execution status
+- **ExecuteIQ Playbook™** (IDENTIFY): Build and customize strategic playbooks
+- **ExecuteIQ Signal™** (DETECT): AI-powered signal monitoring and detection
+- **ExecuteIQ Compass™** (EXECUTE): Coordinated response and execution
+- **ExecuteIQ Retrospect™** (ADVANCE): Institutional learning and improvement
+- **ExecuteIQ One™** (/mission-control): Single-pane executive overview of strategic readiness and execution status
+
+## Leadership Capabilities (Fisk Leadership Model)
+Domains are now grouped into 5 Leadership Capabilities:
+- **Foresight** (Anticipate & Shape Markets): Market Entry, Competitive Response
+- **Courage** (Bold Bets with Incomplete Data): M&A, Product Launch
+- **Agility** (Continuous Reinvention): Digital Transformation, AI Governance
+- **Purpose** (Maintain Stakeholder Trust): Regulatory, Crisis Management
+- **Orchestration** (Align 9 Domains Simultaneously): Cross-Domain coordination
 
 ## Brand Colors
 - **Primary (Dark Navy):** #1A2B3D
@@ -31,21 +39,27 @@ The platform uses trademarked module names aligned to the IDEA Framework:
 - Executive professional language required across UI/UX
 
 ## System Architecture
-POISE operates on the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE), facilitating a human-AI partnership where AI handles monitoring, pattern detection, recommendations, and learning, while executives maintain decision-making control.
+ExecuteIQ operates on the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE), facilitating a human-AI partnership where AI handles monitoring, pattern detection, recommendations, and learning, while executives maintain decision-making control.
 
 **UI/UX Decisions:**
 - **Design:** Modern, enterprise-grade interface focused on decision velocity and human-AI collaboration.
 - **Theme:** Full dark/light mode support with localStorage persistence and WCAG AAA contrast compliance.
-- **Navigation:** Simplified 5-item navigation (Why POISE, How It Works, Playbooks, POISE One™, Pricing) with "More" dropdown for secondary pages. CTAs consolidated to "Try Demo" and "Start Pilot".
-- **Branding:** Consistent "POISE - Strategic Execution OS" branding with compass needle logo.
+- **Navigation:** Simplified 5-item navigation (Why ExecuteIQ, How It Works, Playbooks, ExecuteIQ One™, Pricing) with "More" dropdown for secondary pages. CTAs consolidated to "Try Demo" and "Start Pilot".
+- **Branding:** Consistent "ExecuteIQ - Strategic Execution OS" branding with compass needle logo.
 - **Design System:** Established with 60+ utility classes.
 
 **Homepage Executive-Readiness (Jan 2026):**
 - **Cinematic Video Intro:** First-time visitors see an immersive cinematic experience that builds excitement for the product value before revealing the full homepage
-- **AI Era Positioning:** "Your Employees Have AI. Your Organization Doesn't." with visual cards showing Individual Work (SOLVED), Coordination (BROKEN), With POISE (NOW SOLVED)
-- **POISE at a Glance Section:** Executive summary with 4 capabilities (Monitor, Activate, Orchestrate, Learn) and 4 key metrics (340X faster, 12 min, 166 playbooks, 10.3% revenue impact)
+- **AI Era Positioning:** "Your Employees Have AI. Your Organization Doesn't." with visual cards showing Individual Work (SOLVED), Coordination (BROKEN), With ExecuteIQ (NOW SOLVED)
+- **ExecuteIQ at a Glance Section:** Executive summary with 4 capabilities (Monitor, Activate, Orchestrate, Learn) and 4 key metrics (340X faster, 12 min, 166 playbooks, 10.3% revenue impact)
 - **Research-backed Trust Bar:** IBM/Ponemon ($4.88M breach cost), McKinsey (340X faster), BAI 2025 (10.3% growth) citations
 - **Skip Option:** Users can skip the intro via button in bottom-right corner
+
+**Strategy Execution Dashboard (NEW):**
+- **Transformation Progress:** Quarterly playbook activation stats, strategic goal advancement
+- **Orchestration Health Score:** Domain balance, cross-domain coordination, execution velocity
+- **Anticipation Insights:** Early signal detection metrics, anticipation window improvement
+- **Execution Intelligence Reports:** Monthly/quarterly PDF exports for board presentations
 
 **Pilot Demo (Jan 2026):**
 - **Live Proof-of-Concept:** /pilot-demo route with 5-step guided flow demonstrating full trigger→execution loop
@@ -56,10 +70,10 @@ POISE operates on the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE), facil
 
 **Technical Implementations & Feature Specifications:**
 - **IDEA Framework Phases:**
-    - **IDENTIFY (POISE Playbook™):** Build and customize playbooks from 166 templates across 9 strategic domains.
-    - **DETECT (POISE Signal™):** AI-powered pattern matching, scenario pattern library, competitive intelligence aggregation, early warning dashboards, and human-triggered playbook activation.
-    - **EXECUTE (POISE Compass™):** Orchestrates 12-minute coordinated responses, utilizing pre-approved budgets and enterprise integrations. Features a Command Center for real-time coordination.
-    - **ADVANCE (POISE Retrospect™):** Captures outcomes, conducts AI-powered analysis, and suggests playbook refinements for institutional learning.
+    - **IDENTIFY (ExecuteIQ Playbook™):** Build and customize playbooks from 166 templates across 9 strategic domains.
+    - **DETECT (ExecuteIQ Signal™):** AI-powered pattern matching, scenario pattern library, competitive intelligence aggregation, early warning dashboards, and human-triggered playbook activation.
+    - **EXECUTE (ExecuteIQ Compass™):** Orchestrates 12-minute coordinated responses, utilizing pre-approved budgets and enterprise integrations. Features a Command Center for real-time coordination.
+    - **ADVANCE (ExecuteIQ Retrospect™):** Captures outcomes, conducts AI-powered analysis, and suggests playbook refinements for institutional learning.
 - **9 Strategic Domains:** Encompassing OFFENSE (Market Entry, M&A, Product Launch), DEFENSE (Crisis, Cyber, Regulatory), and SPECIAL TEAMS (Digital Transformation, Competitive Response, AI Governance), with a total of 166 playbooks.
 - **AI Governance Domain:** Includes 18 playbooks covering AI-specific risks and a Foundational AI Principles Framework with 9 core principles.
 - **Execution Plan Sync & Integration Architecture:**
@@ -81,17 +95,17 @@ POISE operates on the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE), facil
 - **AI Services**: OpenAI GPT-4o.
 
 **Key Files & Constants:**
-- `shared/constants/framework.ts`: Centralized POISE_BRAND, IDEA_PHASES, STRATEGIC_DOMAINS, TIMING_BENCHMARKS, and UI constants (colors, icons, capabilities for each phase/domain).
+- `shared/constants/framework.ts`: Centralized EXECUTEIQ_BRAND, LEADERSHIP_CAPABILITIES, IDEA_PHASES, STRATEGIC_DOMAINS, TIMING_BENCHMARKS, and UI constants (colors, icons, capabilities for each phase/domain).
 - `shared/constants/taskLibrary.ts`: Enterprise Task Library with 42 pre-defined tasks organized by IDEA phases and 9 functional categories (Program Management, Communications, Risk/Compliance, Finance, Technology, HR/Change, Legal, Operations, Strategy).
 - `shared/schema.ts`: Database schema with TypeScript interfaces for TriggerCondition, PlaybookTask, DecisionPoint, LessonLearned, StakeholderMapping.
 - `client/src/components/PoiseLogo.tsx`: SVG logo component with 3 variants (full, icon-only, text-only), compass needle in "I", wave lines, and tagline. Supports darkMode prop.
 - `attached_assets/poise-logo-official.png`: Official PNG logo used in nav and footer.
 - `client/src/pages/TaskManagement.tsx`: Task Management page with dual-tab UI for Playbook Tasks and Task Library browsing.
 
-**POISE Logo Usage:**
+**ExecuteIQ Logo Usage:**
 - PNG (`poise-logo-official.png`): Main navigation, footer, hero sections
 - SVG (`PoiseLogo` component): Dashboard headers (icon-only), internal pages where variants are needed
-- Variants: `full` (text + compass + waves), `icon-only` (compass only), `text-only` (POISE text)
+- Variants: `full` (text + compass + waves), `icon-only` (compass only), `text-only` (ExecuteIQ text)
 
 **Enterprise Task Library (Jan 2026):**
 - 42 pre-defined enterprise tasks organized by IDEA Framework phases (Identify: 7, Detect: 6, Execute: 18, Advance: 10)

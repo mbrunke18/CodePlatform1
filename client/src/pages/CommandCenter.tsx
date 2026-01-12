@@ -273,7 +273,7 @@ export default function CommandCenter() {
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <Badge className="bg-poise-teal/20 text-poise-teal dark:bg-poise-teal/30 dark:text-poise-teal border border-poise-teal/40 text-xs font-semibold">
-                  POISE Compass™
+                  ExecuteIQ Compass™
                 </Badge>
                 <Badge variant="outline" className="border-poise-gold/40 text-poise-gold text-xs">
                   EXECUTE Phase

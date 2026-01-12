@@ -220,7 +220,7 @@ export default function SpaceXLaunchDemo() {
                 Act 3: 12-Minute Coordinated Execution
               </h2>
               <p className="text-lg text-blue-200 mb-6">
-                POISE coordinates all 1,847 stakeholders in 12 minutes. Elon's decision triggers instant alignment across 
+                ExecuteIQ coordinates all 1,847 stakeholders in 12 minutes. Elon's decision triggers instant alignment across 
                 34 executives, 813 operations teams, and 1,000 external partners (FAA, Space Force, Range Control).
               </p>
 

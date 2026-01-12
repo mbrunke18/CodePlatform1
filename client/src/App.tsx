@@ -91,6 +91,7 @@ import Homepage from "./pages/Homepage";
 import McKinseyIntelligenceCenter from "./pages/mckinsey/McKinseyIntelligenceCenter";
 import FutureReadinessDashboard from "./pages/FutureReadinessDashboard";
 import ExecutiveDashboard from "./pages/ExecutiveDashboard";
+import StrategyExecutionDashboard from "./pages/StrategyExecutionDashboard";
 import Sitemap from "./pages/Sitemap";
 import CommandCenter from "./pages/CommandCenter";
 // ScenarioLibraryPage consolidated into PlaybookLibrary
@@ -260,6 +261,7 @@ function Router() {
         <Route path="/north-star" component={CustomerJourney} />
         <Route path="/customer-journey" component={CustomerJourney} />
         <Route path="/executive-dashboard" component={ExecutiveDashboard} />
+        <Route path="/strategy-execution" component={StrategyExecutionDashboard} />
         <Route path="/scorecard" component={RedirectToExecutiveDashboard} />
         <Route path="/executive-scorecard" component={RedirectToExecutiveDashboard} />
         <Route path="/executive-suite" component={RedirectToExecutiveDashboard} />

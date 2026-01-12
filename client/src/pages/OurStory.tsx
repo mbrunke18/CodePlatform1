@@ -387,7 +387,7 @@ export default function OurStory() {
               </span>
             </h2>
             <p className="text-xl text-slate-300 mb-10">
-              Replace reactive scrambles with coordinated precision. See how POISE transforms 
+              Replace reactive scrambles with coordinated precision. See how ExecuteIQ transforms 
               strategic response from 72 hours to 12 minutes.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

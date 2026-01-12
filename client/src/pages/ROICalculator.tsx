@@ -159,7 +159,7 @@ export default function ROICalculator() {
               Calculate Your Strategic Velocity ROI
             </h1>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-6">
-              See how POISE transforms coordination time from 72 hours to 12 minutes—and what that means for your bottom line.
+              See how ExecuteIQ transforms coordination time from 72 hours to 12 minutes—and what that means for your bottom line.
             </p>
             
             {/* BAI Report Stat Highlight */}

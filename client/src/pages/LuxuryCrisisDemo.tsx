@@ -67,7 +67,7 @@ export default function LuxuryCrisisDemo() {
             {crisisScenario.subtitle}
           </p>
           <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
-            Experience how POISE transforms AI detection into coordinated execution—
+            Experience how ExecuteIQ transforms AI detection into coordinated execution—
             turning a $280M crisis into a strategic advantage in just 12 minutes.
           </p>
         </div>
@@ -278,7 +278,7 @@ export default function LuxuryCrisisDemo() {
               <Award className="h-16 w-16 mx-auto mb-6 text-green-600" />
               <h2 className="text-4xl font-bold mb-4">Demo Complete</h2>
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                You've just experienced how POISE transforms the gap between AI detection 
+                You've just experienced how ExecuteIQ transforms the gap between AI detection 
                 and human execution—from 72 hours of coordination chaos to 12 minutes of 
                 orchestrated response.
               </p>
@@ -303,7 +303,7 @@ export default function LuxuryCrisisDemo() {
                 <p className="text-sm text-muted-foreground">
                   Luxury brands are spending billions on AI for detection. But without POISE's 
                   execution layer, they're still losing 72 hours—and hundreds of millions—to 
-                  coordination chaos. POISE is the missing piece that turns AI insights into 
+                  coordination chaos. ExecuteIQ is the missing piece that turns AI insights into 
                   coordinated action at Fortune 1000 speed and scale.
                 </p>
               </div>

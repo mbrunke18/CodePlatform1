@@ -118,7 +118,7 @@ function MetricCard({
 export default function ExecutiveScorecard() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Executive Scorecard | POISE Strategic Execution OS",
+      title: "Executive Scorecard | ExecuteIQ Strategic Execution OS",
       description: "Track your strategic execution velocity with M's Executive Scorecard. Monitor preparedness scores, active triggers, response times, and decision outcomes.",
       ogTitle: "Executive Scorecard | M",
       ogDescription: "Real-time executive metrics for strategic execution performance.",

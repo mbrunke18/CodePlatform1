@@ -253,7 +253,7 @@ export default function PlaybookLibrary() {
         <header className="mb-10" data-testid="playbook-library-header">
           <div className="flex items-center gap-3 mb-2">
             <Badge className="bg-poise-gold/20 text-poise-gold dark:bg-poise-gold/30 dark:text-poise-gold border border-poise-gold/40 text-sm font-semibold px-3 py-1">
-              POISE Playbook™
+              ExecuteIQ Playbook™
             </Badge>
             <Badge variant="outline" className="border-poise-teal/40 text-poise-teal text-xs">
               IDENTIFY Phase

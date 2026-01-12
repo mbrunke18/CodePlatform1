@@ -38,7 +38,7 @@ const journeyPhases: JourneyPhase[] = [
     number: 1,
     name: 'Discovery',
     subtitle: 'Explore & Evaluate',
-    description: 'Experience POISE through demos, calculate ROI, and define pilot scope',
+    description: 'Experience ExecuteIQ through demos, calculate ROI, and define pilot scope',
     timeline: 'Week 1-2',
     workspace: 'Demo Gallery',
     workspacePath: '/demo-gallery',
@@ -67,7 +67,7 @@ const journeyPhases: JourneyPhase[] = [
     id: 'identify',
     number: 3,
     name: 'IDENTIFY',
-    subtitle: 'POISE Playbook™',
+    subtitle: 'ExecuteIQ Playbook™',
     description: 'Select playbooks, map stakeholders, and establish your strategic readiness baseline',
     timeline: 'Days 30-45',
     workspace: 'Playbook Factory',
@@ -82,7 +82,7 @@ const journeyPhases: JourneyPhase[] = [
     id: 'detect',
     number: 4,
     name: 'DETECT',
-    subtitle: 'POISE Signal™',
+    subtitle: 'ExecuteIQ Signal™',
     description: 'Configure AI-powered trigger monitoring and alert routing',
     timeline: 'Days 45-60',
     workspace: 'Signal Ops',
@@ -97,7 +97,7 @@ const journeyPhases: JourneyPhase[] = [
     id: 'execute',
     number: 5,
     name: 'EXECUTE',
-    subtitle: 'POISE Compass™',
+    subtitle: 'ExecuteIQ Compass™',
     description: 'Run practice drills and prove 12-minute response capability',
     timeline: 'Days 60-75',
     workspace: 'Compass Command',
@@ -112,7 +112,7 @@ const journeyPhases: JourneyPhase[] = [
     id: 'advance',
     number: 6,
     name: 'ADVANCE',
-    subtitle: 'POISE Retrospect™',
+    subtitle: 'ExecuteIQ Retrospect™',
     description: 'Capture lessons learned and refine playbooks for continuous improvement',
     timeline: 'Days 75-90',
     workspace: 'Retrospect Lab',
@@ -130,7 +130,7 @@ const journeyPhases: JourneyPhase[] = [
     subtitle: 'Ongoing Excellence',
     description: 'Expand coverage, track organizational maturity, and realize strategic ROI',
     timeline: 'Ongoing',
-    workspace: 'POISE One™',
+    workspace: 'ExecuteIQ One™',
     workspacePath: '/mission-control',
     icon: BarChart3,
     color: 'text-purple-500',
@@ -162,7 +162,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
                   <Compass className="h-5 w-5 text-poise-teal" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-slate-900 dark:text-white">POISE North Star™</h3>
+                  <h3 className="font-semibold text-slate-900 dark:text-white">ExecuteIQ North Star™</h3>
                   <p className="text-sm text-slate-500">Phase {current.number} of {totalPhases}</p>
                 </div>
               </div>
@@ -210,7 +210,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">POISE North Star™ Journey</h2>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">ExecuteIQ North Star™ Journey</h2>
           <p className="text-slate-600 dark:text-slate-400">Your path from discovery to continuous strategic excellence</p>
         </div>
         <div className="text-right">

@@ -59,7 +59,7 @@ const phaseDetails = [
   },
   {
     id: 'identify',
-    title: 'Phase 3: IDENTIFY (POISE Playbook™)',
+    title: 'Phase 3: IDENTIFY (ExecuteIQ Playbook™)',
     duration: 'Days 30-45',
     objective: 'Build your strategic playbook portfolio',
     activities: [
@@ -74,7 +74,7 @@ const phaseDetails = [
   },
   {
     id: 'detect',
-    title: 'Phase 4: DETECT (POISE Signal™)',
+    title: 'Phase 4: DETECT (ExecuteIQ Signal™)',
     duration: 'Days 45-60',
     objective: 'Activate AI-powered monitoring and alerting',
     activities: [
@@ -89,7 +89,7 @@ const phaseDetails = [
   },
   {
     id: 'execute',
-    title: 'Phase 5: EXECUTE (POISE Compass™)',
+    title: 'Phase 5: EXECUTE (ExecuteIQ Compass™)',
     duration: 'Days 60-75',
     objective: 'Prove 12-minute coordinated response capability',
     activities: [
@@ -103,7 +103,7 @@ const phaseDetails = [
   },
   {
     id: 'advance',
-    title: 'Phase 6: ADVANCE (POISE Retrospect™)',
+    title: 'Phase 6: ADVANCE (ExecuteIQ Retrospect™)',
     duration: 'Days 75-90',
     objective: 'Capture learning and refine for continuous improvement',
     activities: [
@@ -122,7 +122,7 @@ const phaseDetails = [
     duration: 'Ongoing',
     objective: 'Scale adoption and maximize strategic impact',
     activities: [
-      { name: 'POISE One™ Dashboard', path: '/mission-control', description: 'Executive overview of strategic readiness' },
+      { name: 'ExecuteIQ One™ Dashboard', path: '/mission-control', description: 'Executive overview of strategic readiness' },
       { name: 'Expand Playbook Coverage', path: '/playbooks', description: 'Add playbooks for new strategic domains' },
       { name: 'Track Organizational Maturity', path: '/operating-model', description: 'Monitor maturity progression' },
       { name: 'Quarterly Strategy Reviews', path: '/executive-dashboard', description: 'Regular strategic health checks' }
@@ -140,15 +140,15 @@ export default function CustomerJourney() {
           
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-slate-500 hover:text-poise-teal cursor-pointer">POISE One™</span>
+              <span className="text-slate-500 hover:text-poise-teal cursor-pointer">ExecuteIQ One™</span>
             </Link>
             <ChevronRight className="h-4 w-4 text-slate-400" />
-            <span className="text-poise-teal font-medium">POISE North Star™</span>
+            <span className="text-poise-teal font-medium">ExecuteIQ North Star™</span>
           </nav>
 
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-poise-teal/20 text-poise-teal border-poise-teal/30">
-              POISE North Star™
+              ExecuteIQ North Star™
             </Badge>
             <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
               Your Path to Strategic Excellence
@@ -172,7 +172,7 @@ export default function CustomerJourney() {
 
           <Tabs defaultValue="timeline" className="mb-12">
             <TabsList className="mb-6">
-              <TabsTrigger value="timeline">POISE North Star™ Timeline</TabsTrigger>
+              <TabsTrigger value="timeline">ExecuteIQ North Star™ Timeline</TabsTrigger>
               <TabsTrigger value="details">Phase Details</TabsTrigger>
             </TabsList>
 

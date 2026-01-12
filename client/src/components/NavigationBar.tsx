@@ -40,7 +40,7 @@ export default function NavigationBar() {
   const productLinks = [
     { title: "Executive Dashboard", href: "/executive-dashboard", description: "Unified command center: FRI, velocity, preparedness", featured: true },
     { title: "Playbook Library", href: "/playbook-library", description: "166 pre-built strategic playbooks" },
-    { title: "Live Demos", href: "/demo-hub", description: "Watch POISE in action" },
+    { title: "Live Demos", href: "/demo-hub", description: "Watch ExecuteIQ in action" },
     { title: "Pricing", href: "/calculator", description: "ROI calculator" },
   ];
 
