@@ -1307,6 +1307,10 @@ export default function SignalIntelligenceHub() {
                 <Radio className="h-4 w-4 mr-2" />
                 Signal Catalog
               </TabsTrigger>
+              <TabsTrigger value="datapoints" data-testid="tab-all-datapoints">
+                <Database className="h-4 w-4 mr-2" />
+                All Data Points ({totalDataPoints})
+              </TabsTrigger>
               <TabsTrigger value="triggers" data-testid="tab-my-triggers">
                 <Bell className="h-4 w-4 mr-2" />
                 My Triggers ({activeTriggerCount})
@@ -1670,6 +1674,106 @@ export default function SignalIntelligenceHub() {
                   </CardContent>
                 </Card>
               )}
+            </TabsContent>
+
+            <TabsContent value="datapoints" className="mt-6">
+              <Card className="card-bg">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <CardTitle className="flex items-center gap-2">
+                        <Database className="h-5 w-5 text-emerald-500" />
+                        Complete Data Points Library
+                      </CardTitle>
+                      <CardDescription>
+                        {totalDataPoints} data points across {SIGNAL_CATEGORIES.length} signal categories that ExecuteIQ monitors
+                      </CardDescription>
+                    </div>
+                    <Badge variant="outline" className="text-emerald-600 border-emerald-600">
+                      {totalDataPoints} Total
+                    </Badge>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <ScrollArea className="h-[600px]">
+                    <div className="space-y-6">
+                      {SIGNAL_CATEGORIES.map(category => (
+                        <div key={category.id} className="border rounded-lg overflow-hidden">
+                          <div 
+                            className="p-4 flex items-center justify-between"
+                            style={{ backgroundColor: `${category.color}15` }}
+                          >
+                            <div className="flex items-center gap-3">
+                              <div 
+                                className="w-10 h-10 rounded-lg flex items-center justify-center"
+                                style={{ backgroundColor: `${category.color}25` }}
+                              >
+                                <CategoryIcon 
+                                  iconName={category.icon} 
+                                  className="h-5 w-5"
+                                  style={{ color: category.color }}
+                                />
+                              </div>
+                              <div>
+                                <h3 className="font-semibold" style={{ color: category.color }}>{category.name}</h3>
+                                <p className="text-xs text-muted-foreground">{category.description}</p>
+                              </div>
+                            </div>
+                            <Badge style={{ backgroundColor: category.color, color: 'white' }}>
+                              {category.dataPoints.length} points
+                            </Badge>
+                          </div>
+                          <div className="divide-y">
+                            {category.dataPoints.map((dp, idx) => (
+                              <div key={dp.id} className="p-3 flex items-start gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                                <div className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xs font-medium text-slate-500">
+                                  {idx + 1}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center gap-2">
+                                    <span className="font-medium text-sm">{dp.name}</span>
+                                    <Badge variant="outline" className="text-xs">
+                                      {dp.metricType}
+                                    </Badge>
+                                  </div>
+                                  <p className="text-xs text-muted-foreground mt-1">{dp.description}</p>
+                                  <div className="flex items-center gap-2 mt-2">
+                                    <span className="text-xs text-slate-400">Sources:</span>
+                                    {dp.sources.map((src, i) => (
+                                      <Badge key={i} variant="secondary" className="text-xs py-0">
+                                        {src}
+                                      </Badge>
+                                    ))}
+                                  </div>
+                                </div>
+                                {dp.defaultThreshold && (
+                                  <div className="text-right text-xs">
+                                    <div className="text-muted-foreground">Default Trigger</div>
+                                    <div className="font-medium">
+                                      {dp.defaultThreshold.operator} {String(dp.defaultThreshold.value)}
+                                      {dp.unit && ` ${dp.unit}`}
+                                    </div>
+                                    <Badge 
+                                      className={`mt-1 ${
+                                        dp.defaultThreshold.urgency === 'critical' ? 'bg-red-500' :
+                                        dp.defaultThreshold.urgency === 'high' ? 'bg-amber-500' :
+                                        dp.defaultThreshold.urgency === 'medium' ? 'bg-blue-500' :
+                                        'bg-slate-500'
+                                      } text-white text-xs`}
+                                    >
+                                      {dp.defaultThreshold.urgency}
+                                    </Badge>
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </ScrollArea>
+                </CardContent>
+              </Card>
             </TabsContent>
 
             <TabsContent value="triggers" className="mt-6">
