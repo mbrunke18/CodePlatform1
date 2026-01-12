@@ -2328,7 +2328,7 @@ export const customDataPoints = pgTable('custom_data_points', {
   
   // Data Sources - how this data point gets its values
   sources: jsonb('sources'), // Array of source names e.g. ['manual-input', 'salesforce', 'internal-api']
-  dataSourceId: uuid('data_source_id').references(() => dataSources.id), // Optional link to integrated data source
+  dataSourceId: varchar('data_source_id').references(() => dataSources.id), // Optional link to integrated data source
   
   // Default Threshold Configuration
   defaultThreshold: jsonb('default_threshold'), // { operator: 'gt'|'lt'|'spike'|etc., value: number, urgency: 'critical'|'high'|'medium'|'low' }
@@ -3089,6 +3089,9 @@ export type InsertTriggerSignal = typeof triggerSignals.$inferInsert;
 export type CompositeTriggerLogic = typeof compositeTriggerLogic.$inferSelect;
 export type InsertCompositeTriggerLogic = typeof compositeTriggerLogic.$inferInsert;
 
+export type CustomDataPoint = typeof customDataPoints.$inferSelect;
+export type InsertCustomDataPoint = typeof customDataPoints.$inferInsert;
+
 // Enhanced Scenario Data Capture Insert Schemas
 export const insertScenarioContextSchema = createInsertSchema(scenarioContext).pick({
   scenarioId: true,
@@ -3201,6 +3204,21 @@ export const insertCompositeTriggerLogicSchema = createInsertSchema(compositeTri
   sequenceWindow: true,
   minimumSignals: true,
   evaluationWindow: true,
+});
+
+export const insertCustomDataPointSchema = createInsertSchema(customDataPoints).pick({
+  organizationId: true,
+  name: true,
+  description: true,
+  category: true,
+  metricType: true,
+  unit: true,
+  sources: true,
+  dataSourceId: true,
+  defaultThreshold: true,
+  currentValue: true,
+  isActive: true,
+  createdBy: true,
 });
 
 // Trigger Management Insert Schemas

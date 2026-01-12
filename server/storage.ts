@@ -37,6 +37,7 @@ import {
   scenarioStakeholders,
   scenarioSuccessMetrics,
   triggerSignals,
+  customDataPoints,
   executionInstances,
   executionInstanceTasks,
   notifications,
@@ -57,6 +58,8 @@ import {
   type InsertScenarioSuccessMetric,
   type TriggerSignal,
   type InsertTriggerSignal,
+  type CustomDataPoint,
+  type InsertCustomDataPoint,
   type Task,
   type InsertTask,
   type Role,
@@ -296,6 +299,14 @@ export interface IStorage {
   // Playbook-Trigger Association operations
   createPlaybookTriggerAssociation(association: InsertPlaybookTriggerAssociation): Promise<PlaybookTriggerAssociation>;
   getPlaybookTriggerAssociations(triggerId?: string, playbookId?: string): Promise<PlaybookTriggerAssociation[]>;
+  
+  // Custom Data Points operations
+  createCustomDataPoint(dataPoint: InsertCustomDataPoint): Promise<CustomDataPoint>;
+  getCustomDataPoints(organizationId: string, category?: string): Promise<CustomDataPoint[]>;
+  getCustomDataPointById(id: string): Promise<CustomDataPoint | undefined>;
+  updateCustomDataPoint(id: string, updates: Partial<InsertCustomDataPoint>): Promise<CustomDataPoint>;
+  deleteCustomDataPoint(id: string): Promise<void>;
+  getCustomDataPointCategories(organizationId: string): Promise<string[]>;
   
   // Playbook Telemetry operations
   getPlaybookTelemetry(playbookId: string, organizationId: string): Promise<{
@@ -1584,6 +1595,56 @@ export class DatabaseStorage implements IStorage {
       .select()
       .from(playbookTriggerAssociations)
       .orderBy(desc(playbookTriggerAssociations.createdAt));
+  }
+
+  // Custom Data Points operations
+  async createCustomDataPoint(dataPoint: InsertCustomDataPoint): Promise<CustomDataPoint> {
+    const [created] = await db.insert(customDataPoints).values(dataPoint).returning();
+    return created;
+  }
+
+  async getCustomDataPoints(organizationId: string, category?: string): Promise<CustomDataPoint[]> {
+    const conditions = [eq(customDataPoints.organizationId, organizationId)];
+    
+    if (category) {
+      conditions.push(eq(customDataPoints.category, category));
+    }
+    
+    return await db
+      .select()
+      .from(customDataPoints)
+      .where(and(...conditions))
+      .orderBy(customDataPoints.category, customDataPoints.name);
+  }
+
+  async getCustomDataPointById(id: string): Promise<CustomDataPoint | undefined> {
+    const [dataPoint] = await db
+      .select()
+      .from(customDataPoints)
+      .where(eq(customDataPoints.id, id));
+    return dataPoint;
+  }
+
+  async updateCustomDataPoint(id: string, updates: Partial<InsertCustomDataPoint>): Promise<CustomDataPoint> {
+    const [updated] = await db
+      .update(customDataPoints)
+      .set({ ...updates, updatedAt: new Date() })
+      .where(eq(customDataPoints.id, id))
+      .returning();
+    return updated;
+  }
+
+  async deleteCustomDataPoint(id: string): Promise<void> {
+    await db.delete(customDataPoints).where(eq(customDataPoints.id, id));
+  }
+
+  async getCustomDataPointCategories(organizationId: string): Promise<string[]> {
+    const results = await db
+      .selectDistinct({ category: customDataPoints.category })
+      .from(customDataPoints)
+      .where(eq(customDataPoints.organizationId, organizationId))
+      .orderBy(customDataPoints.category);
+    return results.map(r => r.category);
   }
 
   // Playbook Telemetry operations

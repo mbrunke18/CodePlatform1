@@ -549,6 +549,128 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Custom Data Points - User-defined data points for triggers
+  app.get('/api/custom-data-points', async (req: any, res) => {
+    try {
+      const userId = getUserId(req);
+      if (!userId) {
+        return res.status(401).json({ error: 'Authentication required' });
+      }
+      const { organizationId, category } = req.query;
+      if (!organizationId) {
+        return res.status(400).json({ error: 'Organization ID required' });
+      }
+      const dataPoints = await storage.getCustomDataPoints(organizationId as string, category as string | undefined);
+      res.json(dataPoints);
+    } catch (error) {
+      console.error('Error fetching custom data points:', error);
+      res.status(500).json({ message: 'Failed to fetch custom data points' });
+    }
+  });
+
+  app.get('/api/custom-data-points/categories', async (req: any, res) => {
+    try {
+      const userId = getUserId(req);
+      if (!userId) {
+        return res.status(401).json({ error: 'Authentication required' });
+      }
+      const { organizationId } = req.query;
+      if (!organizationId) {
+        return res.status(400).json({ error: 'Organization ID required' });
+      }
+      const categories = await storage.getCustomDataPointCategories(organizationId as string);
+      res.json(categories);
+    } catch (error) {
+      console.error('Error fetching custom data point categories:', error);
+      res.status(500).json({ message: 'Failed to fetch custom data point categories' });
+    }
+  });
+
+  app.get('/api/custom-data-points/:id', async (req: any, res) => {
+    try {
+      const userId = getUserId(req);
+      if (!userId) {
+        return res.status(401).json({ error: 'Authentication required' });
+      }
+      const { id } = req.params;
+      const dataPoint = await storage.getCustomDataPointById(id);
+      if (!dataPoint) {
+        return res.status(404).json({ error: 'Custom data point not found' });
+      }
+      res.json(dataPoint);
+    } catch (error) {
+      console.error('Error fetching custom data point:', error);
+      res.status(500).json({ message: 'Failed to fetch custom data point' });
+    }
+  });
+
+  app.post('/api/custom-data-points', async (req: any, res) => {
+    try {
+      const userId = getUserId(req);
+      if (!userId) {
+        return res.status(401).json({ error: 'Authentication required' });
+      }
+      const { insertCustomDataPointSchema } = await import('@shared/schema');
+      const validatedData = insertCustomDataPointSchema.parse({
+        ...req.body,
+        createdBy: userId,
+      });
+      const dataPoint = await storage.createCustomDataPoint(validatedData);
+      
+      broadcast(userId, {
+        type: 'CUSTOM_DATA_POINT_CREATED',
+        payload: { dataPoint },
+      });
+
+      res.status(201).json(dataPoint);
+    } catch (error) {
+      console.error('Error creating custom data point:', error);
+      res.status(500).json({ message: 'Failed to create custom data point' });
+    }
+  });
+
+  app.patch('/api/custom-data-points/:id', async (req: any, res) => {
+    try {
+      const userId = getUserId(req);
+      if (!userId) {
+        return res.status(401).json({ error: 'Authentication required' });
+      }
+      const { id } = req.params;
+      const dataPoint = await storage.updateCustomDataPoint(id, req.body);
+      
+      broadcast(userId, {
+        type: 'CUSTOM_DATA_POINT_UPDATED',
+        payload: { dataPoint },
+      });
+
+      res.json(dataPoint);
+    } catch (error) {
+      console.error('Error updating custom data point:', error);
+      res.status(500).json({ message: 'Failed to update custom data point' });
+    }
+  });
+
+  app.delete('/api/custom-data-points/:id', async (req: any, res) => {
+    try {
+      const userId = getUserId(req);
+      if (!userId) {
+        return res.status(401).json({ error: 'Authentication required' });
+      }
+      const { id } = req.params;
+      await storage.deleteCustomDataPoint(id);
+      
+      broadcast(userId, {
+        type: 'CUSTOM_DATA_POINT_DELETED',
+        payload: { id },
+      });
+
+      res.status(204).send();
+    } catch (error) {
+      console.error('Error deleting custom data point:', error);
+      res.status(500).json({ message: 'Failed to delete custom data point' });
+    }
+  });
+
   app.post('/api/strategic-alerts', async (req: any, res) => {
     try {
       const userId = getUserId(req);
