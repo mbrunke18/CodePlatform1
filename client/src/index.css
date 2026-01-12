@@ -1,9 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@300;400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
+  /* ===== EXECUTEIQ PRIMARY COLORS ===== */
+  --executeiq-navy: #1A2B3D;
+  --executeiq-gold: #D4AF37;
+  --executeiq-teal: #00A8A8;
+  --executeiq-white: #FFFFFF;
+  --executeiq-dark-gray: #0F1620;
+  --executeiq-light-gray: #F8F9FA;
+  
+  /* ===== SEMANTIC COLORS ===== */
+  --executeiq-success: #00A8A8;
+  --executeiq-warning: #D4AF37;
+  --executeiq-error: #E63946;
+  --executeiq-info: #00A8A8;
+  
+  /* ===== TEXT COLORS ===== */
+  --executeiq-text-primary: #1A2B3D;
+  --executeiq-text-secondary: #0F1620;
+  --executeiq-text-muted: #666666;
+  --executeiq-text-inverse: #FFFFFF;
+  
+  /* ===== BACKGROUND COLORS ===== */
+  --executeiq-bg-primary: #FFFFFF;
+  --executeiq-bg-secondary: #F8F9FA;
+  --executeiq-bg-dark: #1A2B3D;
+  
+  /* ===== BORDER COLORS ===== */
+  --executeiq-border: #E0E0E0;
+  --executeiq-border-light: #F0F0F0;
+  --executeiq-border-dark: #1A2B3D;
+
+  /* ===== SHADCN/UI THEME VARIABLES ===== */
   --background: hsl(210, 45%, 98%);
   --foreground: hsl(215, 25%, 15%);
   --card: hsl(0, 0%, 100%);
@@ -37,6 +68,7 @@
   --sidebar-border: hsl(217, 33%, 17%);
   --sidebar-ring: hsl(220, 90%, 56%);
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Menlo, monospace;
   --radius: 0.5rem;
@@ -85,6 +117,17 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--executeiq-text-primary);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--executeiq-navy);
+  }
+
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: var(--executeiq-white);
   }
 
   nav ul, nav li, [role="navigation"] ul, [role="navigation"] li,
@@ -293,4 +336,82 @@ button, a {
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
   @apply bg-slate-300 dark:bg-slate-600 rounded hover:bg-slate-400 dark:hover:bg-slate-500;
+}
+
+/* ========================================
+   EXECUTEIQ TYPOGRAPHY SYSTEM
+   ======================================== */
+
+.executeiq-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: var(--executeiq-navy);
+  letter-spacing: -0.5px;
+}
+
+.dark .executeiq-heading {
+  color: var(--executeiq-white);
+}
+
+.executeiq-tagline {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--executeiq-gold);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.executeiq-brand-accent {
+  color: var(--executeiq-gold);
+  font-weight: 600;
+}
+
+.executeiq-teal-accent {
+  color: var(--executeiq-teal);
+  font-weight: 600;
+}
+
+/* ========================================
+   EXECUTEIQ COLOR UTILITIES
+   ======================================== */
+
+.bg-executeiq-navy {
+  background-color: var(--executeiq-navy);
+}
+
+.bg-executeiq-gold {
+  background-color: var(--executeiq-gold);
+}
+
+.bg-executeiq-teal {
+  background-color: var(--executeiq-teal);
+}
+
+.bg-executeiq-dark {
+  background-color: var(--executeiq-dark-gray);
+}
+
+.text-executeiq-navy {
+  color: var(--executeiq-navy);
+}
+
+.text-executeiq-gold {
+  color: var(--executeiq-gold);
+}
+
+.text-executeiq-teal {
+  color: var(--executeiq-teal);
+}
+
+.border-executeiq-navy {
+  border-color: var(--executeiq-navy);
+}
+
+.border-executeiq-gold {
+  border-color: var(--executeiq-gold);
+}
+
+.border-executeiq-teal {
+  border-color: var(--executeiq-teal);
 }
