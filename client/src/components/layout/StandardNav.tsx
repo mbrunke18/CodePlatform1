@@ -63,12 +63,10 @@ export default function StandardNav() {
             data-testid="nav-logo"
           >
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-poise-navy/80 to-poise-dark-gray/60 border border-poise-gold/30">
-              <ExecuteIQLogo 
-                width={180} 
-                variant="text-only"
-                showTagline={false}
-                darkMode={true}
-              />
+              <span className="text-xl sm:text-2xl font-bold tracking-tight">
+                <span className="text-white">Execute</span>
+                <span className="text-poise-gold">IQ</span>
+              </span>
             </div>
           </div>
 
