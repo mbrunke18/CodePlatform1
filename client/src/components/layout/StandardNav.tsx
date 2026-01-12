@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Play, Menu, X, LogIn, LogOut, User, ChevronDown, Brain, Target, Lightbulb, BarChart3, Layers, TrendingUp, Briefcase, Zap, BookOpen, GraduationCap, ClipboardList, Radar, Compass, Building } from "lucide-react";
-import poiseLogoPath from "@assets/executeiq-logo-official.png";
+import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { useLocation } from "wouter";
 import { useAuth } from "@/hooks/useAuth";
 import {
@@ -63,11 +63,11 @@ export default function StandardNav() {
             data-testid="nav-logo"
           >
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-poise-navy/80 to-poise-dark-gray/60 border border-poise-gold/30">
-              <img 
-                src={poiseLogoPath} 
-                alt="ExecuteIQ - Orchestration as a System" 
-                className="h-9 sm:h-10 md:h-11 w-auto object-contain brightness-110 contrast-105"
-                style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))' }}
+              <ExecuteIQLogo 
+                width={180} 
+                variant="text-only"
+                showTagline={false}
+                darkMode={true}
               />
             </div>
           </div>
