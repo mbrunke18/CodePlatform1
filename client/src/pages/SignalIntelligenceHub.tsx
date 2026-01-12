@@ -1850,49 +1850,100 @@ export default function SignalIntelligenceHub() {
                           </CollapsibleTrigger>
                           <CollapsibleContent>
                             <div className="divide-y border-t">
-                              {category.dataPoints.map((dp, idx) => (
-                                <div key={dp.id} className="p-3 flex items-start gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50">
-                                  <div className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xs font-medium text-slate-500">
-                                    {idx + 1}
-                                  </div>
-                                  <div className="flex-1 min-w-0">
-                                    <div className="flex items-center gap-2">
-                                      <span className="font-medium text-sm">{dp.name}</span>
-                                      <Badge variant="outline" className="text-xs">
-                                        {dp.metricType}
-                                      </Badge>
+                              {category.dataPoints.map((dp, idx) => {
+                                const existingTrigger = safeTriggers.find((t: any) => 
+                                  t.conditions?.dataPointId === dp.id || t.name?.includes(dp.name)
+                                );
+                                const isActive = existingTrigger?.isActive ?? false;
+                                
+                                return (
+                                  <div key={dp.id} className="p-3 flex items-start gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                                    <div className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xs font-medium text-slate-500">
+                                      {idx + 1}
                                     </div>
-                                    <p className="text-xs text-muted-foreground mt-1">{dp.description}</p>
-                                    <div className="flex items-center gap-2 mt-2">
-                                      <span className="text-xs text-slate-400">Sources:</span>
-                                      {dp.sources.map((src, i) => (
-                                        <Badge key={i} variant="secondary" className="text-xs py-0">
-                                          {src}
+                                    <div className="flex-1 min-w-0">
+                                      <div className="flex items-center gap-2">
+                                        <span className="font-medium text-sm">{dp.name}</span>
+                                        <Badge variant="outline" className="text-xs">
+                                          {dp.metricType}
                                         </Badge>
-                                      ))}
+                                        {isActive && (
+                                          <Badge className="bg-emerald-500 text-white text-xs">
+                                            Monitoring
+                                          </Badge>
+                                        )}
+                                      </div>
+                                      <p className="text-xs text-muted-foreground mt-1">{dp.description}</p>
+                                      <div className="flex items-center gap-2 mt-2">
+                                        <span className="text-xs text-slate-400">Sources:</span>
+                                        {dp.sources.map((src, i) => (
+                                          <Badge key={i} variant="secondary" className="text-xs py-0">
+                                            {src}
+                                          </Badge>
+                                        ))}
+                                      </div>
+                                    </div>
+                                    {dp.defaultThreshold && (
+                                      <div className="text-right text-xs">
+                                        <div className="text-muted-foreground">Default Trigger</div>
+                                        <div className="font-medium">
+                                          {getOperatorLabel(dp.defaultThreshold.operator)} {String(dp.defaultThreshold.value)}
+                                          {dp.unit && ` ${dp.unit}`}
+                                        </div>
+                                        <Badge 
+                                          className={`mt-1 ${
+                                            dp.defaultThreshold.urgency === 'critical' ? 'bg-red-500' :
+                                            dp.defaultThreshold.urgency === 'high' ? 'bg-amber-500' :
+                                            dp.defaultThreshold.urgency === 'medium' ? 'bg-blue-500' :
+                                            'bg-slate-500'
+                                          } text-white text-xs`}
+                                        >
+                                          {dp.defaultThreshold.urgency}
+                                        </Badge>
+                                      </div>
+                                    )}
+                                    <div className="flex items-center gap-2">
+                                      <Switch 
+                                        checked={isActive}
+                                        onCheckedChange={(checked) => handleQuickToggle(dp, category, checked, existingTrigger?.id)}
+                                        disabled={createTriggerMutation.isPending || updateTriggerMutation.isPending}
+                                      />
+                                      <Button 
+                                        variant="ghost" 
+                                        size="sm"
+                                        onClick={() => {
+                                          setSelectedDataPoint(dp);
+                                          setSelectedCategory(category);
+                                          setEditingTrigger(existingTrigger || null);
+                                          setConfigDialogOpen(true);
+                                        }}
+                                        title="Configure trigger"
+                                      >
+                                        <Settings className="h-4 w-4" />
+                                      </Button>
                                     </div>
                                   </div>
-                                  {dp.defaultThreshold && (
-                                    <div className="text-right text-xs">
-                                      <div className="text-muted-foreground">Default Trigger</div>
-                                      <div className="font-medium">
-                                        {getOperatorLabel(dp.defaultThreshold.operator)} {String(dp.defaultThreshold.value)}
-                                        {dp.unit && ` ${dp.unit}`}
-                                      </div>
-                                      <Badge 
-                                        className={`mt-1 ${
-                                          dp.defaultThreshold.urgency === 'critical' ? 'bg-red-500' :
-                                          dp.defaultThreshold.urgency === 'high' ? 'bg-amber-500' :
-                                          dp.defaultThreshold.urgency === 'medium' ? 'bg-blue-500' :
-                                          'bg-slate-500'
-                                        } text-white text-xs`}
-                                      >
-                                        {dp.defaultThreshold.urgency}
-                                      </Badge>
-                                    </div>
-                                  )}
-                                </div>
-                              ))}
+                                );
+                              })}
+                              <div className="p-3 flex justify-center">
+                                <Button 
+                                  variant="outline" 
+                                  size="sm"
+                                  onClick={() => {
+                                    setCustomDataPointForm(prev => ({
+                                      ...prev,
+                                      category: category.id,
+                                      isNewCategory: false
+                                    }));
+                                    setCustomDataPointDialogOpen(true);
+                                  }}
+                                  className="text-xs"
+                                  style={{ borderColor: category.color, color: category.color }}
+                                >
+                                  <Plus className="h-3 w-3 mr-1" />
+                                  Add Custom Data Point to {category.name}
+                                </Button>
+                              </div>
                             </div>
                           </CollapsibleContent>
                         </Collapsible>
@@ -1954,63 +2005,102 @@ export default function SignalIntelligenceHub() {
                                 </CollapsibleTrigger>
                                 <CollapsibleContent>
                                   <div className="divide-y border-t">
-                                    {(dataPoints as any[]).map((dp: any, idx: number) => (
-                                      <div key={dp.id} className="p-3 flex items-start gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50">
-                                        <div className="w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900/40 flex items-center justify-center text-xs font-medium text-purple-500">
-                                          {idx + 1}
-                                        </div>
-                                        <div className="flex-1 min-w-0">
-                                          <div className="flex items-center gap-2">
-                                            <span className="font-medium text-sm">{dp.name}</span>
-                                            <Badge variant="outline" className="text-xs border-purple-300 text-purple-600">
-                                              {dp.metricType}
-                                            </Badge>
-                                            <Badge className="bg-purple-100 text-purple-600 text-xs">
-                                              Custom
-                                            </Badge>
+                                    {(dataPoints as any[]).map((dp: any, idx: number) => {
+                                      const existingTrigger = safeTriggers.find((t: any) => 
+                                        t.conditions?.dataPointId === dp.id || t.name?.includes(dp.name)
+                                      );
+                                      const isActive = existingTrigger?.isActive ?? false;
+                                      const categoryForTrigger = systemCategory || { 
+                                        id: categoryName, 
+                                        name: categoryName, 
+                                        color: '#9333ea',
+                                        description: '',
+                                        icon: 'Activity',
+                                        dataPoints: [],
+                                        recommendedPlaybooks: []
+                                      };
+                                      
+                                      return (
+                                        <div key={dp.id} className="p-3 flex items-start gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                                          <div className="w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900/40 flex items-center justify-center text-xs font-medium text-purple-500">
+                                            {idx + 1}
                                           </div>
-                                          <p className="text-xs text-muted-foreground mt-1">{dp.description || 'No description'}</p>
-                                          <div className="flex items-center gap-2 mt-2">
-                                            <span className="text-xs text-slate-400">Sources:</span>
-                                            {(dp.sources || ['manual-input']).map((src: string, i: number) => (
-                                              <Badge key={i} variant="secondary" className="text-xs py-0">
-                                                {src}
+                                          <div className="flex-1 min-w-0">
+                                            <div className="flex items-center gap-2">
+                                              <span className="font-medium text-sm">{dp.name}</span>
+                                              <Badge variant="outline" className="text-xs border-purple-300 text-purple-600">
+                                                {dp.metricType}
                                               </Badge>
-                                            ))}
+                                              <Badge className="bg-purple-100 text-purple-600 text-xs">
+                                                Custom
+                                              </Badge>
+                                              {isActive && (
+                                                <Badge className="bg-emerald-500 text-white text-xs">
+                                                  Monitoring
+                                                </Badge>
+                                              )}
+                                            </div>
+                                            <p className="text-xs text-muted-foreground mt-1">{dp.description || 'No description'}</p>
+                                            <div className="flex items-center gap-2 mt-2">
+                                              <span className="text-xs text-slate-400">Sources:</span>
+                                              {(dp.sources || ['manual-input']).map((src: string, i: number) => (
+                                                <Badge key={i} variant="secondary" className="text-xs py-0">
+                                                  {src}
+                                                </Badge>
+                                              ))}
+                                            </div>
+                                          </div>
+                                          {dp.defaultThreshold && (
+                                            <div className="text-right text-xs">
+                                              <div className="text-muted-foreground">Default Trigger</div>
+                                              <div className="font-medium">
+                                                {getOperatorLabel(dp.defaultThreshold.operator)} {String(dp.defaultThreshold.value)}
+                                                {dp.unit && ` ${dp.unit}`}
+                                              </div>
+                                              <Badge 
+                                                className={`mt-1 ${
+                                                  dp.defaultThreshold.urgency === 'critical' ? 'bg-red-500' :
+                                                  dp.defaultThreshold.urgency === 'high' ? 'bg-amber-500' :
+                                                  dp.defaultThreshold.urgency === 'medium' ? 'bg-blue-500' :
+                                                  'bg-slate-500'
+                                                } text-white text-xs`}
+                                              >
+                                                {dp.defaultThreshold.urgency}
+                                              </Badge>
+                                            </div>
+                                          )}
+                                          <div className="flex items-center gap-2">
+                                            <Switch 
+                                              checked={isActive}
+                                              onCheckedChange={(checked) => {
+                                                const customDp = {
+                                                  id: dp.id,
+                                                  name: dp.name,
+                                                  description: dp.description || '',
+                                                  metricType: dp.metricType,
+                                                  unit: dp.unit,
+                                                  sources: dp.sources || ['manual-input'],
+                                                  defaultThreshold: dp.defaultThreshold
+                                                };
+                                                handleQuickToggle(customDp as DataPoint, categoryForTrigger as SignalCategory, checked, existingTrigger?.id);
+                                              }}
+                                              disabled={createTriggerMutation.isPending || updateTriggerMutation.isPending}
+                                            />
+                                            <Button 
+                                              variant="ghost" 
+                                              size="sm"
+                                              onClick={(e) => {
+                                                e.stopPropagation();
+                                                deleteCustomDataPointMutation.mutate(dp.id);
+                                              }}
+                                              className="text-red-500 hover:text-red-700"
+                                            >
+                                              <Trash2 className="h-4 w-4" />
+                                            </Button>
                                           </div>
                                         </div>
-                                        {dp.defaultThreshold && (
-                                          <div className="text-right text-xs">
-                                            <div className="text-muted-foreground">Default Trigger</div>
-                                            <div className="font-medium">
-                                              {getOperatorLabel(dp.defaultThreshold.operator)} {String(dp.defaultThreshold.value)}
-                                              {dp.unit && ` ${dp.unit}`}
-                                            </div>
-                                            <Badge 
-                                              className={`mt-1 ${
-                                                dp.defaultThreshold.urgency === 'critical' ? 'bg-red-500' :
-                                                dp.defaultThreshold.urgency === 'high' ? 'bg-amber-500' :
-                                                dp.defaultThreshold.urgency === 'medium' ? 'bg-blue-500' :
-                                                'bg-slate-500'
-                                              } text-white text-xs`}
-                                            >
-                                              {dp.defaultThreshold.urgency}
-                                            </Badge>
-                                          </div>
-                                        )}
-                                        <Button 
-                                          variant="ghost" 
-                                          size="sm"
-                                          onClick={(e) => {
-                                            e.stopPropagation();
-                                            deleteCustomDataPointMutation.mutate(dp.id);
-                                          }}
-                                          className="text-red-500 hover:text-red-700"
-                                        >
-                                          <Trash2 className="h-4 w-4" />
-                                        </Button>
-                                      </div>
-                                    ))}
+                                      );
+                                    })}
                                   </div>
                                 </CollapsibleContent>
                               </Collapsible>
