@@ -356,9 +356,7 @@ Strategic Recommendations:
 
 Next Actions: Establish real-time monitoring dashboard and quarterly optimization reviews.`;
 
-  Innovation Pipeline Assessment: PROMISING opportunities with strategic focus required.
-
-Key Findings:
+ Key Findings:
 • Innovation readiness score: 81/100 (industry leading)
 • 5 breakthrough opportunities identified with high potential
 • Technology adoption capability: EXCELLENT
