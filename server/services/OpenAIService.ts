@@ -227,13 +227,6 @@ You are a change management and strategic adaptability expert with expertise in:
 
 Focus on: Change readiness assessment, transformation roadmaps, stakeholder alignment, risk mitigation strategies.
 
-- Ansoff Matrix market penetration strategies
-
-Focus on: Comprehensive strategic analysis, competitive positioning, market opportunities, multi-faceted decision support.
-Output Format: Strategic frameworks with quantified insights, competitive intelligence, and growth recommendations.`;
-
-      case 'echo':
-        return `${baseContext}
 
 ECHO CULTURAL ANALYTICS SPECIALIZATION:
 You are an organizational behavior and cultural intelligence expert with expertise in:
@@ -348,45 +341,6 @@ Include quantified insights and strategic confidence levels.`;
       case 'echo':
         return `${dataContext}
 
-ECHO CULTURAL ANALYTICS REQUEST:
-Analyze organizational culture and team dynamics:
-
-1. CULTURAL ASSESSMENT:
-   - Cultural dimension analysis (Hofstede framework)
-   - Communication pattern evaluation
-   - Collaboration effectiveness metrics
-
-1. INNOVATION OPPORTUNITY DISCOVERY:
-   - Emerging technology assessment
-   - Market disruption potential analysis
-   - Competitive advantage opportunities
-
-2. INNOVATION PIPELINE OPTIMIZATION:
-   - Stage-gate process efficiency
-   - Resource allocation optimization
-   - Technology roadmap recommendations
-
-3. BREAKTHROUGH POTENTIAL ASSESSMENT:
-   - Disruptive innovation identification
-   - Market adoption probability
-   - Investment priority ranking
-
-Include innovation readiness scores and implementation timelines.`;
-
-      default:
-        return `${dataContext}\n\nProvide strategic analysis and actionable recommendations.`;
-    }
-  }
-
-  /**
-   * Get specialized fallback responses for each AI module
-   */
-  private getSpecializedFallback(type: 'pulse' | 'flux' | 'prism' | 'echo' | 'nova', industry?: string): string {
-    const industryContext = industry ? ` within the ${industry} sector` : '';
-
-    switch (type) {
-      case 'pulse':
-        return `PULSE INTELLIGENCE ANALYSIS${industryContext}:
 
 Performance Health Status: STABLE with optimization opportunities identified.
 
