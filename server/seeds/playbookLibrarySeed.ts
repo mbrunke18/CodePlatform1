@@ -143,6 +143,9 @@ export function getSuccessMetrics(domainId: number): {
     outcomeMetrics: metricsMap[domainId] || ['Execution success rate', 'Stakeholder satisfaction'],
   };
 export async function seedPlaybookLibrary() {
+  console.log('Seeding playbook library...');
+  return true;
+}
   console.log('🏈 Seeding Complete 166-Playbook Library...');
   // Seeding logic here - for now just log
   return true;
