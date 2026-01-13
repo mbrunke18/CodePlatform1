@@ -450,28 +450,8 @@ Next Actions: Execute innovation portfolio optimization and establish developmen
     return true;
   }
 
-  /**
-   * Get specialized system prompts for each intelligence module
-   */
   
-      pulse: `Analyze the current organizational health for a ${baseData.industry} 
-      
-      flux: `Assess the change management capability and strategic adaptability of a ${baseData.size} ${baseData.industry} organization. Identify transformation opportunities and change readiness factors.`,
-      
-      prism: `Conduct a comprehensive strategic analysis for a ${baseData.maturity} ${baseData.industry} company using multi-dimensional frameworks. Include competitive positioning, market opportunities, and strategic recommendations.`,
-      
-      echo: `Evaluate the cultural dynamics and team collaboration effectiveness in a ${baseData.size} organization. Analyze communication patterns, cultural alignment, and engagement factors.`,
-      
-      nova: `Identify innovation opportunities and assess the innovation pipeline for a ${baseData.industry} company. Focus on emerging technologies, market timing, and breakthrough potential.`
-    };
-
-    return prompts[type as keyof typeof prompts] || prompts.pulse;
-  }
-
-  /**
-   * Provide high-quality fallback responses when OpenAI is unavailable
-   */
-  private getFallbackResponse(errorType: string): string {
+   private getFallbackResponse(errorType: string): string {
     const responses = {
       analysis: "Strategic analysis capabilities are temporarily limited. Based on industry benchmarks, focus on optimizing core operational metrics, enhancing cross-functional collaboration, and monitoring key performance indicators for strategic decision-making.",
       
