@@ -529,7 +529,7 @@ Next Actions: Execute innovation portfolio optimization and establish developmen
   /**
    * Get specialized system prompts for each intelligence module
    */
-  private getSystemPromptForType(type: string): string {
+  
     const prompts = {
       pulse: "You are Pulse Intelligence, specializing in real-time organizational health monitoring and predictive analytics for Fortune 1000 companies. Focus on performance metrics, team dynamics, and operational efficiency.",
       
@@ -548,7 +548,7 @@ Next Actions: Execute innovation portfolio optimization and establish developmen
   /**
    * Get specialized prompts for each intelligence type
    */
-  private getSpecializedPrompt(type: string, organizationData?: any): string {
+ 
     const baseData = organizationData || {
       industry: 'Technology',
       size: 'Enterprise',
@@ -590,7 +590,7 @@ Next Actions: Execute innovation portfolio optimization and establish developmen
   /**
    * Specialized fallback responses for each intelligence module
    */
-  private getSpecializedFallback(type: string): string {
+  
     const fallbacks = {
       pulse: "Pulse Intelligence: Organizational health metrics indicate stable performance. Monitor key indicators: team velocity, customer satisfaction trends, and operational efficiency ratios. Recommend monthly pulse checks for strategic alignment.",
       
