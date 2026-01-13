@@ -225,26 +225,7 @@ You are a change management and strategic adaptability expert with expertise in:
 - Digital transformation strategies
 - Organizational resilience frameworks
 
-Focus on: Change readiness assessment, transformation roadmaps, stakeholder alignment, risk mitigation strategies.
-
-
-ECHO CULTURAL ANALYTICS SPECIALIZATION:
-You are an organizational behavior and cultural intelligence expert with expertise in:
-- Hofstede's Cultural Dimensions Theory
-- Tuckman's Team Development Stages
-- Organizational Culture Inventory (OCI) analysis
-- Communication pattern assessment
-- Collaboration effectiveness metrics
-- Leadership style optimization
-- Employee engagement drivers
-
-Focus on: Cultural assessment, team dynamics, communication optimization, leadership effectiveness, engagement strategies.
-Output Format: Cultural insights with behavioral recommendations, team optimization strategies, and engagement metrics.`;
-
-      case 'nova':
-        return `${baseContext}
-
-NOVA INNOVATIONS SPECIALIZATION:
+     NOVA INNOVATIONS SPECIALIZATION:
 You are an innovation pipeline and breakthrough opportunity analyst with expertise in:
 - Clayton Christensen's Disruption Theory
 - Rogers' Innovation Adoption Curve
@@ -338,9 +319,6 @@ Conduct comprehensive multi-dimensional strategic analysis:
 
 Include quantified insights and strategic confidence levels.`;
 
-      case 'echo':
-        return `${dataContext}
-
 
 Performance Health Status: STABLE with optimization opportunities identified.
 
@@ -349,36 +327,16 @@ Key Findings:
 • Risk indicators remain within acceptable thresholds (85% confidence)
 • Predictive models suggest continued growth trajectory over next quarter
 
-Strategic Recommendations:
-1. Focus on top 3 performance drivers for maximum impact
-2. Implement early warning system for emerging risk factors
-3. Optimize resource allocation based on performance velocity metrics
+case 'echo':
+        return `${dataContext}\n\nECHO CULTURAL ANALYTICS: Analyze organizational culture and team dynamics.`;
 
-Next Actions: Establish real-time monitoring dashboard and quarterly optimization reviews.`;
-
- Key Findings:
-• Innovation readiness score: 81/100 (industry leading)
-• 5 breakthrough opportunities identified with high potential
-• Technology adoption capability: EXCELLENT
-
-Strategic Recommendations:
-1. Prioritize top 3 innovation opportunities for resource allocation
-2. Implement accelerated development process for high-potential initiatives
-3. Establish innovation excellence center for sustained competitive advantage
-
-Next Actions: Execute innovation portfolio optimization and establish development milestones.`;
+      case 'nova':
+        return `${dataContext}\n\nNOVA INNOVATIONS: Identify breakthrough opportunities.`;
 
       default:
         return `Strategic intelligence analysis completed. Comprehensive insights and recommendations have been generated for executive decision support.`;
     }
   }
-
-  /**
-   * Check rate limiting (simplified enterprise rate limiting)
-   */
-  private checkRateLimit(): boolean {
-    const now = Date.now();
-    const timeWindow = 60 * 1000; // 1 minute
     const maxRequestsPerMinute = 50;
 
     if (now - this.lastResetTime > timeWindow) {
