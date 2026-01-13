@@ -530,32 +530,6 @@ Next Actions: Execute innovation portfolio optimization and establish developmen
    * Get specialized system prompts for each intelligence module
    */
   
-    const prompts = {
-      pulse: "You are Pulse Intelligence, specializing in real-time organizational health monitoring and predictive analytics for Fortune 1000 companies. Focus on performance metrics, team dynamics, and operational efficiency.",
-      
-      flux: "You are Flux Adaptations, an expert in organizational change management and strategic adaptability. Analyze market shifts, internal capability gaps, and provide actionable transformation roadmaps.",
-      
-      prism: "You are Prism Insights, providing multi-dimensional strategic analysis using frameworks like Porter's Five Forces, SWOT, and Blue Ocean Strategy. Deliver comprehensive competitive intelligence.",
-      
-      echo: "You are Echo Cultural Analytics, specializing in team dynamics, cultural intelligence, and organizational behavior analysis. Focus on communication patterns, collaboration effectiveness, and cultural alignment.",
-      
-      nova: "You are Nova Innovations, focused on innovation pipeline management, breakthrough opportunity identification, and emerging technology assessment. Analyze market timing and innovation potential."
-    };
-
-    return prompts[type as keyof typeof prompts] || prompts.pulse;
-  }
-
-  /**
-   * Get specialized prompts for each intelligence type
-   */
- 
-    const baseData = organizationData || {
-      industry: 'Technology',
-      size: 'Enterprise',
-      maturity: 'Established'
-    };
-
-    const prompts = {
       pulse: `Analyze the current organizational health for a ${baseData.industry} company. Provide insights on performance trends, efficiency metrics, and early warning indicators for potential issues.`,
       
       flux: `Assess the change management capability and strategic adaptability of a ${baseData.size} ${baseData.industry} organization. Identify transformation opportunities and change readiness factors.`,

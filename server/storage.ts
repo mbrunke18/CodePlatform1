@@ -1627,46 +1627,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   // Custom Data Points operations
-  async createCustomDataPoint(dataPoint: InsertCustomDataPoint): Promise<CustomDataPoint> {
-    const [created] = await db.insert(customDataPoints).values(dataPoint).returning();
-    return created;
-  }
-
-  async getCustomDataPoints(organizationId: string, category?: string): Promise<CustomDataPoint[]> {
-    const conditions = [eq(customDataPoints.organizationId, organizationId)];
-    
-    if (category) {
-      conditions.push(eq(customDataPoints.category, category));
-    }
-    
-    return await db
-      .select()
-      .from(customDataPoints)
-      .where(and(...conditions))
-      .orderBy(customDataPoints.category, customDataPoints.name);
-  }
-
-  async getCustomDataPointById(id: string): Promise<CustomDataPoint | undefined> {
-    const [dataPoint] = await db
-      .select()
-      .from(customDataPoints)
-      .where(eq(customDataPoints.id, id));
-    return dataPoint;
-  }
-
-  async updateCustomDataPoint(id: string, updates: Partial<InsertCustomDataPoint>): Promise<CustomDataPoint> {
-    const [updated] = await db
-      .update(customDataPoints)
-      .set({ ...updates, updatedAt: new Date() })
-      .where(eq(customDataPoints.id, id))
-      .returning();
-    return updated;
-  }
-
-  async deleteCustomDataPoint(id: string): Promise<void> {
-    await db.delete(customDataPoints).where(eq(customDataPoints.id, id));
-  }
-
+  
   async getCustomDataPointCategories(organizationId: string): Promise<string[]> {
     const results = await db
       .selectDistinct({ category: customDataPoints.category })
