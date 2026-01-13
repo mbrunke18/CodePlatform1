@@ -226,19 +226,7 @@ You are a change management and strategic adaptability expert with expertise in:
 - Organizational resilience frameworks
 
 Focus on: Change readiness assessment, transformation roadmaps, stakeholder alignment, risk mitigation strategies.
-Output Format: Strategic transformation recommendations with implementation timelines and success metrics.`;
 
-      case 'prism':
-        return `${baseContext}
-
-PRISM INSIGHTS SPECIALIZATION:
-You are a multi-dimensional strategic analyst with expertise in:
-- Porter's Five Forces competitive analysis
-- SWOT matrix strategic planning
-- Blue Ocean Strategy frameworks
-- Balanced Scorecard methodology
-- McKinsey Growth Pyramid analysis
-- BCG Growth-Share Matrix
 - Ansoff Matrix market penetration strategies
 
 Focus on: Comprehensive strategic analysis, competitive positioning, market opportunities, multi-faceted decision support.
@@ -367,24 +355,6 @@ Analyze organizational culture and team dynamics:
    - Cultural dimension analysis (Hofstede framework)
    - Communication pattern evaluation
    - Collaboration effectiveness metrics
-
-2. TEAM DYNAMICS OPTIMIZATION:
-   - Team development stage analysis
-   - Leadership effectiveness assessment
-   - Engagement driver identification
-
-3. CULTURAL ENHANCEMENT STRATEGIES:
-   - Communication optimization recommendations
-   - Collaboration improvement initiatives
-   - Leadership development priorities
-
-Provide cultural health scores and behavioral change recommendations.`;
-
-      case 'nova':
-        return `${dataContext}
-
-NOVA INNOVATIONS ANALYSIS REQUEST:
-Identify breakthrough innovation opportunities and assess pipeline potential:
 
 1. INNOVATION OPPORTUNITY DISCOVERY:
    - Emerging technology assessment
@@ -530,7 +500,7 @@ Next Actions: Execute innovation portfolio optimization and establish developmen
    * Get specialized system prompts for each intelligence module
    */
   
-      pulse: `Analyze the current organizational health for a ${baseData.industry} company. Provide insights on performance trends, efficiency metrics, and early warning indicators for potential issues.`,
+      pulse: `Analyze the current organizational health for a ${baseData.industry} 
       
       flux: `Assess the change management capability and strategic adaptability of a ${baseData.size} ${baseData.industry} organization. Identify transformation opportunities and change readiness factors.`,
       
