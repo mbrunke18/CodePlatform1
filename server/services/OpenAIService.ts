@@ -356,61 +356,7 @@ Strategic Recommendations:
 
 Next Actions: Establish real-time monitoring dashboard and quarterly optimization reviews.`;
 
-      case 'flux':
-        return `FLUX ADAPTATIONS ANALYSIS${industryContext}:
-
-Change Readiness Assessment: MODERATE with strategic enhancement opportunities.
-
-Key Findings:
-• Organizational agility score: 72/100 (above industry average)
-• Change resistance factors identified in 2 critical areas
-• Digital transformation readiness: HIGH potential
-
-Strategic Recommendations:
-1. Implement ADKAR-based change acceleration program
-2. Address stakeholder alignment gaps in identified areas
-3. Leverage digital transformation capabilities for competitive advantage
-
-Next Actions: Launch 90-day change readiness enhancement initiative with executive sponsorship.`;
-
-      case 'prism':
-        return `PRISM INSIGHTS ANALYSIS${industryContext}:
-
-Multi-Dimensional Strategic Assessment: STRONG competitive position with growth opportunities.
-
-Key Findings:
-• Porter's Five Forces analysis indicates favorable competitive landscape
-• Blue Ocean opportunities identified in 3 market segments
-• Strategic option evaluation reveals optimal growth pathway
-
-Strategic Recommendations:
-1. Pursue identified Blue Ocean opportunities for sustainable differentiation
-2. Strengthen competitive moats in core business areas
-3. Implement balanced scorecard metrics for strategic tracking
-
-Next Actions: Execute strategic option analysis and develop detailed implementation roadmap.`;
-
-      case 'echo':
-        return `ECHO CULTURAL ANALYTICS${industryContext}:
-
-Cultural Intelligence Assessment: POSITIVE culture with optimization potential.
-
-Key Findings:
-• Team collaboration effectiveness: 78% (strong baseline)
-• Communication patterns show improvement opportunities
-• Leadership alignment with cultural values: HIGH
-
-Strategic Recommendations:
-1. Enhance cross-functional communication protocols
-2. Implement team effectiveness optimization program  
-3. Leverage cultural strengths for competitive advantage
-
-Next Actions: Deploy cultural enhancement initiatives with team lead engagement.`;
-
-      case 'nova':
-        return `NOVA INNOVATIONS ANALYSIS${industryContext}:
-
-Innovation Pipeline Assessment: PROMISING opportunities with strategic focus required.
+  Innovation Pipeline Assessment: PROMISING opportunities with strategic focus required.
 
 Key Findings:
 • Innovation readiness score: 81/100 (industry leading)
