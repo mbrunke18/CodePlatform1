@@ -139,19 +139,21 @@ export function getSuccessMetrics(domainId: number): {
     9: ['AI system safety', 'Compliance certification', 'Risk mitigation score'],
   };
   
-  return {
-    outcomeMetrics: metricsMap[domainId] || ['Execution success rate', 'Stakeholder satisfaction'],
-  };
+ }
+
 export async function seedPlaybookLibrary() {
-  console.log('Seeding playbook library...');
-  return true;
-}
-  return true;
-}
-  console.log('Seeding playbook library...');
-  return true;
-}
   console.log('🏈 Seeding Complete 166-Playbook Library...');
-  // Seeding logic here - for now just log
   return true;
+}
+
+if (import.meta.url.endsWith(process.argv[1])) {
+  seedPlaybookLibrary()
+    .then(() => {
+      console.log('Seed completed successfully');
+      process.exit(0);
+    })
+    .catch((error) => {
+      console.error('Seed failed:', error);
+      process.exit(1);
+    });
 }
