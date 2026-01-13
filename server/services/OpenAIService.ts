@@ -295,13 +295,20 @@ Assess organizational change readiness and provide transformation strategies:
    - Resilience building initiatives
 
 Provide timeline estimates and success probability assessments.`;
+case 'prism':
+        return `${dataContext}...Include quantified insights and strategic confidence levels.`;
 
-      case 'prism':
-        return `${dataContext}
+      case 'echo':
+        return `${dataContext}\n\nECHO CULTURAL ANALYTICS: Analyze organizational culture and team dynamics.`;
 
-PRISM INSIGHTS ANALYSIS REQUEST:
-Conduct comprehensive multi-dimensional strategic analysis:
+      case 'nova':
+        return `${dataContext}\n\nNOVA INNOVATIONS: Identify breakthrough opportunities.`;
 
+      default:
+        return `Strategic intelligence analysis completed...`;
+    }
+  }
+        
 1. COMPETITIVE INTELLIGENCE:
    - Porter's Five Forces analysis
    - Competitive positioning assessment
