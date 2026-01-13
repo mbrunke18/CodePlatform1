@@ -449,45 +449,8 @@ Next Actions: Execute innovation portfolio optimization and establish developmen
 
     return true;
   }
-
   
-   private getFallbackResponse(errorType: string): string {
-    const responses = {
-      analysis: "Strategic analysis capabilities are temporarily limited. Based on industry benchmarks, focus on optimizing core operational metrics, enhancing cross-functional collaboration, and monitoring key performance indicators for strategic decision-making.",
-      
-      quota_exceeded: "AI analysis is temporarily at capacity. Consider scheduling analysis during off-peak hours or implementing priority-based analysis queuing for critical strategic decisions.",
-      
-      model_unavailable: "Advanced AI models are temporarily unavailable. Utilizing baseline strategic analysis frameworks to provide fundamental insights for decision support.",
-      
-      error: "AI analysis service is temporarily unavailable. Please refer to your established strategic planning frameworks and consult with your executive team for critical decisions."
-    };
-
-    return responses[errorType as keyof typeof responses] || responses.error;
-  }
-
-  /**
-   * Specialized fallback responses for each intelligence module
-   */
-  
-    const fallbacks = {
-      pulse: "Pulse Intelligence: Organizational health metrics indicate stable performance. Monitor key indicators: team velocity, customer satisfaction trends, and operational efficiency ratios. Recommend monthly pulse checks for strategic alignment.",
-      
-      flux: "Flux Adaptations: Change readiness assessment suggests moderate adaptability. Focus on communication clarity, stakeholder engagement, and incremental implementation strategies. Consider agile transformation approaches for complex initiatives.",
-      
-      prism: "Prism Insights: Multi-dimensional analysis indicates balanced competitive position. Key strategic priorities: market differentiation, operational excellence, and innovation investment. Monitor competitive movements and market shifts quarterly.",
-      
-      echo: "Echo Cultural Analytics: Cultural health indicators show positive collaboration patterns. Areas for enhancement: cross-team communication, knowledge sharing, and inclusive decision-making processes. Recommend culture pulse surveys.",
-      
-      nova: "Nova Innovations: Innovation pipeline shows promising potential. Focus on emerging technology adoption, market timing optimization, and breakthrough opportunity identification. Consider innovation labs or strategic partnerships."
-    };
-
-    return fallbacks[type as keyof typeof fallbacks] || fallbacks.pulse;
-  }
-
-  /**
-   * Get service health status
-   */
-  getServiceStatus(): {
+   getServiceStatus(): {
     configured: boolean;
     requestCount: number;
     lastResetTime: number;
