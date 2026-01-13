@@ -143,6 +143,8 @@ export function getSuccessMetrics(domainId: number): {
     outcomeMetrics: metricsMap[domainId] || ['Execution success rate', 'Stakeholder satisfaction'],
   };
 export async function seedPlaybookLibrary() {
+  return true;
+}
   console.log('Seeding playbook library...');
   return true;
 }

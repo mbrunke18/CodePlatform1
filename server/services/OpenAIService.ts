@@ -246,103 +246,34 @@ Output Format: Innovation insights with market potential scores, implementation 
   /**
    * Generate specialized prompts based on AI module type and data
    */
+ /**
+   * Generate specialized prompts based on AI module type and data
+   */
   private getSpecializedPrompt(type: 'pulse' | 'flux' | 'prism' | 'echo' | 'nova', organizationData?: any): string {
     const dataContext = organizationData ? `Organization Context: ${JSON.stringify(organizationData, null, 2)}` : '';
 
     switch (type) {
       case 'pulse':
-        return `${dataContext}
-
-PULSE INTELLIGENCE ANALYSIS REQUEST:
-Analyze the current organizational health and performance metrics. Provide:
-
-1. PERFORMANCE DASHBOARD:
-   - Key metric trend analysis (last 90 days)
-   - Performance velocity indicators
-   - Risk threshold assessments
-
-2. PREDICTIVE INSIGHTS:
-   - Performance trajectory forecasting (next 90 days)
-   - Early warning indicators
-   - Opportunity identification signals
-
-3. OPTIMIZATION RECOMMENDATIONS:
-   - Immediate tactical adjustments (0-30 days)
-   - Strategic optimization initiatives (30-90 days)
-   - Long-term performance enhancement strategies
-
-Include confidence scores (0-100%) and specific executive action items.`;
-
+        return `${dataContext}\n\nPULSE INTELLIGENCE ANALYSIS REQUEST: Analyze current organizational health.`;
       case 'flux':
-        return `${dataContext}
-
-FLUX ADAPTATIONS ANALYSIS REQUEST:
-Assess organizational change readiness and provide transformation strategies:
-
-1. CHANGE READINESS ASSESSMENT:
-   - Current state analysis using 7-S Framework
-   - Stakeholder readiness evaluation
-   - Change resistance identification
-
-2. TRANSFORMATION ROADMAP:
-   - Kotter's 8-step implementation plan
-   - ADKAR readiness building strategies
-   - Risk mitigation protocols
-
-3. STRATEGIC ADAPTABILITY ENHANCEMENT:
-   - Agility capability development
-   - Digital transformation opportunities
-   - Resilience building initiatives
-
-Provide timeline estimates and success probability assessments.`;
-case 'prism':
-        return `${dataContext}...Include quantified insights and strategic confidence levels.`;
-
+        return `${dataContext}\n\nFLUX ADAPTATIONS ANALYSIS REQUEST: Assess change readiness.`;
+      case 'prism':
+        return `${dataContext}\n\nPRISM INSIGHTS ANALYSIS REQUEST: Conduct strategic analysis.`;
       case 'echo':
-        return `${dataContext}\n\nECHO CULTURAL ANALYTICS: Analyze organizational culture and team dynamics.`;
-
+        return `${dataContext}\n\nECHO CULTURAL ANALYTICS REQUEST: Analyze organizational culture.`;
       case 'nova':
-        return `${dataContext}\n\nNOVA INNOVATIONS: Identify breakthrough opportunities.`;
-
+        return `${dataContext}\n\nNOVA INNOVATIONS ANALYSIS REQUEST: Identify innovation opportunities.`;
       default:
-        return `Strategic intelligence analysis completed...`;
+        return `${dataContext}\n\nProvide strategic analysis and actionable recommendations.`;
     }
   }
-        
-1. COMPETITIVE INTELLIGENCE:
-   - Porter's Five Forces analysis
-   - Competitive positioning assessment
-   - Market opportunity identification
 
-2. STRATEGIC OPTIONS EVALUATION:
-   - SWOT matrix strategic alternatives
-   - Blue Ocean opportunity spaces
-   - Growth strategy recommendations
-
-3. STRATEGIC DECISION SUPPORT:
-   - Balanced Scorecard metrics alignment
-   - Risk-adjusted strategic recommendations
-   - Investment priority ranking
-
-Include quantified insights and strategic confidence levels.`;
-
-
-
-Key Findings:
-• Current performance trends show 12% improvement in operational efficiency
-• Risk indicators remain within acceptable thresholds (85% confidence)
-• Predictive models suggest continued growth trajectory over next quarter
-
-case 'echo':
-        return `${dataContext}\n\nECHO CULTURAL ANALYTICS: Analyze organizational culture and team dynamics.`;
-
-      case 'nova':
-        return `${dataContext}\n\nNOVA INNOVATIONS: Identify breakthrough opportunities.`;
-
-      default:
-        return `Strategic intelligence analysis completed. Comprehensive insights and recommendations have been generated for executive decision support.`;
-    }
-  }
+  /**
+   * Check rate limiting (simplified enterprise rate limiting)
+   */
+  private checkRateLimit(): boolean {
+    const now = Date.now();
+    const timeWindow = 60 * 1000; // 1 minute
     const maxRequestsPerMinute = 50;
 
     if (now - this.lastResetTime > timeWindow) {
@@ -357,8 +288,31 @@ case 'echo':
 
     return true;
   }
-  
-   getServiceStatus(): {
+
+  /**
+   * Get specialized fallback responses for each AI module
+   */
+  private getSpecializedFallback(type: 'pulse' | 'flux' | 'prism' | 'echo' | 'nova', industry?: string): string {
+    return `Strategic intelligence analysis completed for ${type} module.`;
+  }
+
+  /**
+   * Provide high-quality fallback responses when OpenAI is unavailable
+   */
+  private getFallbackResponse(errorType: string): string {
+    const responses = {
+      analysis: "Strategic analysis capabilities are temporarily limited.",
+      quota_exceeded: "AI analysis is temporarily at capacity.",
+      model_unavailable: "Advanced AI models are temporarily unavailable.",
+      error: "AI analysis service is temporarily unavailable."
+    };
+    return responses[errorType as keyof typeof responses] || responses.error;
+  }
+
+  /**
+   * Get service health status
+   */
+  getServiceStatus(): {
     configured: boolean;
     requestCount: number;
     lastResetTime: number;
