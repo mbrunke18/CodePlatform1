@@ -142,4 +142,4 @@ export function getSuccessMetrics(domainId: number): {
   return {
     outcomeMetrics: metricsMap[domainId] || ['Execution success rate', 'Stakeholder satisfaction'],
   };
-}
+export async function seedPlaybookLibrary() {}
