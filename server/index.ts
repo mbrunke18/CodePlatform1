@@ -370,7 +370,7 @@ app.use((req, res, next) => {
       reusePort: true,
     },
     () => {
-      log(`serving on port ${port}`);
+      log(\`serving on port ${port}`);
       logger.info(
         { port, env: app.get("env") },
         "ExecuteIQ server started and ready for health checks",
