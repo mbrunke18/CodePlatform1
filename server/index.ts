@@ -289,11 +289,13 @@ app.use((req, res, next) => {
   // Enhanced error handling with structured logging and security
   // Serve root and fallback to index.html
   app.get("/", (_req, res) => {
-    try {
-      res.sendFile("/app/dist/public/index.html");
-    } catch (error) {
-      res.status(500).send("Error loading application");
-    }
+    res.send(`
+    <!DOCTYPE html>
+    <html>
+      <head><title>ExecuteIQ</title></head>
+      <body><h1>ExecuteIQ is Running</h1></body>
+    </html>
+  `);
   });
   app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
