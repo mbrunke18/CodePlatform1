@@ -343,7 +343,7 @@ app.use((req, res, next) => {
       logger.info("✅ Vite setup complete");
     } else {
       logger.info("📦 Serving static files...");
-      serveStatic(app);
+      // serveStatic(app);
     }
   } catch (error) {
     logger.error({ error }, "❌ Vite/static setup failed");
@@ -555,6 +555,3 @@ process.on("uncaughtException", (error) => {
   );
   console.error("🔴 UNCAUGHT EXCEPTION:", error);
 });
-
-
-
