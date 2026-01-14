@@ -287,6 +287,14 @@ app.use((req, res, next) => {
   setupSwagger(app);
 
   // Enhanced error handling with structured logging and security
+  // Serve root and fallback to index.html
+  app.get("/", (_req, res) => {
+    try {
+      res.sendFile("/app/dist/public/index.html");
+    } catch (error) {
+      res.status(500).send("Error loading application");
+    }
+  });
   app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
