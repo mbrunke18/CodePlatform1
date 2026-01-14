@@ -45,7 +45,7 @@ COPY --from=builder /app/dist/public ./public
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S nodejs -u 1001
 
-USER nodejs
+
 
 # Expose port
 EXPOSE 5000
@@ -55,5 +55,5 @@ EXPOSE 5000
 # Use dumb-init to handle signals properly
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-# Application startup
+# Start application
 CMD ["node", "dist/index.js"]# Rebuild Wed Jan 14 03:58:45 PM UTC 2026
