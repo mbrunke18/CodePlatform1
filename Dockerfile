@@ -1,6 +1,6 @@
 # Build stage
 FROM node:20-alpine AS builder
-RUN echo "Build timestamp: $(date)" > /dev/null
+RUN echo "Build time: $(date)" > /dev/null
 WORKDIR /app
 
 # Copy package files
