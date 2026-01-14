@@ -6,7 +6,7 @@ import { type Server } from "http";
 import { nanoid } from "nanoid";
 import pino from "pino";
 
-const logger = pino({ name: 'vite-service' });
+const logger = pino({ name: "vite-service" });
 const viteLogger = createLogger();
 
 export function log(message: string, source = "express") {
@@ -25,9 +25,9 @@ export async function setupVite(app: Express, server: Server) {
     hmr: { server },
     allowedHosts: true as const,
   };
-  
+
   const { default: viteConfig } = await import("../vite.config");
-  
+
   const vite = await createViteServer({
     ...viteConfig,
     configFile: false,
@@ -41,7 +41,7 @@ export async function setupVite(app: Express, server: Server) {
     server: serverOptions,
     appType: "custom",
   });
-  
+
   app.use(vite.middlewares);
   app.use("*", async (req, res, next) => {
     const url = req.originalUrl;
@@ -67,19 +67,8 @@ export async function setupVite(app: Express, server: Server) {
 }
 
 export function serveStatic(app: Express) {
-  const distPath = "/app/dist/public";
-  
-  logger.info(`Attempting to serve static files from: ${distPath}`);
-  
-  if (!fs.existsSync(distPath)) {
-    logger.warn(`Static files directory not found at ${distPath}, serving API only`);
-    return;
-  }
-  
-  app.use(express.static(distPath));
+  app.use(express.static("/app/dist/public"));
   app.use("*", (_req, res) => {
-    res.sendFile(path.resolve(distPath, "index.html"));
+    res.sendFile("/app/dist/public/index.html");
   });
-  
-  logger.info(`Static files configured for ${distPath}`);
 }
