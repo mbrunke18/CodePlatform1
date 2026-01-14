@@ -55,5 +55,5 @@ EXPOSE 5000
 # Use dumb-init to handle signals properly
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-# Start application
+# Application startup
 CMD ["node", "dist/index.js"]# Rebuild Wed Jan 14 03:58:45 PM UTC 2026
