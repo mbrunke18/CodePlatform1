@@ -59,3 +59,4 @@ ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
 # Start application
 CMD ["node", "dist/index.js"]
+# Rebuild Wed Jan 14 03:58:45 PM UTC 2026
