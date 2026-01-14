@@ -180,7 +180,11 @@ app.use(auditLogger as any);
 // CORS middleware - configured for production with allowed origins
 const allowedOrigins = process.env.REPLIT_DOMAINS
   ? process.env.REPLIT_DOMAINS.split(",").map((d) => `https://${d}`)
-  : ["http://localhost:5000", "http://0.0.0.0:5000"];
+  : [
+      "http://localhost:5000",
+      "http://0.0.0.0:5000",
+      "https://codeplatform1.onrender.com",
+    ];
 
 // Helper to check if origin is a valid Replit domain
 const isReplitDomain = (origin: string): boolean => {
