@@ -75,15 +75,35 @@ const PRESENTATION_SLIDES: Slide[] = [
     act: 2,
     actName: 'Problem & Market',
     title: 'The Problem',
-    subtitle: 'Strategic execution is broken',
+    subtitle: 'Strategy is 10%. Execution is 90%.',
     content: 'slide',
-    notes: 'Right now, when a critical market signal appears—a competitor move, regulatory change, or customer shift—it takes enterprises 72+ hours just to get the information to decision-makers.',
+    notes: 'McKinsey research shows 95% of strategy execution happens OUTSIDE the strategy room. Right now, when a critical market signal appears—a competitor move, regulatory change, or customer shift—it takes enterprises 72+ hours just to get the information to decision-makers. The root cause: no playbooks, no pre-staged coordination, teams improvising in real-time.',
     visual: 'problem',
     data: {
       stats: [
+        { value: '95%', unit: '', label: 'Execution Outside Strategy Room (McKinsey)' },
         { value: '72+', unit: 'Hours', label: 'Signal to Decision' },
-        { value: '15+', unit: 'Meetings', label: 'To Align Stakeholders' },
-        { value: '$10-50M', unit: '', label: 'Annual Revenue at Risk' }
+        { value: '3x', unit: '', label: 'Execution Failure Costs vs Strategy Design' }
+      ]
+    }
+  },
+  {
+    id: 'problem-scenarios',
+    act: 2,
+    actName: 'Problem & Market',
+    title: 'The Cost by Scenario',
+    subtitle: 'Where Fortune 1000 Companies Lose Value',
+    content: 'slide',
+    notes: 'Every scenario type has a measurable cost of slow execution. Crisis delays cost $5-50M per hour. Missed market windows cost $10-100M in lost revenue. Product launches that take 18 months instead of 9 give competitors the advantage.',
+    visual: 'problem',
+    data: {
+      scenarioCosts: [
+        { scenario: 'Crisis Response', current: '72 hours to coordinate', cost: '$5-50M per hour delayed' },
+        { scenario: 'Market Opportunity', current: 'Miss 30-40% of windows', cost: '$10-100M lost revenue' },
+        { scenario: 'Product Launch', current: '18 months to market', cost: 'Competitors ship in 9 months' },
+        { scenario: 'M&A Integration', current: 'Coordination failures', cost: '$500M average integration loss' },
+        { scenario: 'Digital Transformation', current: 'Execution chaos', cost: '65% fail (strategy was good)' },
+        { scenario: 'Regulatory Compliance', current: 'Ad-hoc response', cost: '$5-20M in fines + delays' }
       ]
     }
   },
@@ -91,15 +111,16 @@ const PRESENTATION_SLIDES: Slide[] = [
     id: 'problem-2',
     act: 2,
     actName: 'Problem & Market',
-    title: 'The Cost of Slow',
+    title: 'The Competitive Reality',
     content: 'slide',
-    notes: 'Every hour of delay means lost market share, revenue leakage, and reputation damage. Your competitors who move faster capture the opportunity.',
+    notes: 'Companies that execute fast win. Period. They win market opportunities with first-mover advantage. They respond to crises before damage spreads. They launch products before competitors. They close M&A faster. They transform faster.',
     visual: 'problem',
     data: {
       consequences: [
-        { icon: 'target', text: 'Lost Market Share', desc: 'First-mover advantage goes to faster competitors' },
-        { icon: 'dollar', text: 'Revenue Leakage', desc: 'Opportunities expire before you can act' },
-        { icon: 'shield', text: 'Reputation Risk', desc: 'Reactive positioning signals weakness' }
+        { icon: 'target', text: 'Win Market Opportunities', desc: 'First-mover advantage goes to faster companies' },
+        { icon: 'shield', text: 'Respond Before Damage Spreads', desc: 'Crises contained at championship speed' },
+        { icon: 'rocket', text: 'Launch Before Competitors', desc: 'Speed = market share capture' },
+        { icon: 'dollar', text: 'Close M&A Faster', desc: 'Speed = value creation' }
       ]
     }
   },
@@ -108,19 +129,26 @@ const PRESENTATION_SLIDES: Slide[] = [
     act: 2,
     actName: 'Problem & Market',
     title: 'The Opportunity',
-    subtitle: '$45-60 Billion Total Addressable Market',
+    subtitle: '$13-20 Billion TAM — Strategic Execution Is Everything',
     content: 'slide',
-    notes: 'This is a massive market at the intersection of strategic planning, business intelligence, and workflow automation. No one owns this space yet.',
+    notes: 'Target market: 8,000+ Fortune 500-10,000 companies globally. Average annual spend on execution/operations: $500K-2M. 15-20% CAGR in enterprise operations software. Strategic execution tools: Emerging category with no clear leader.',
     visual: 'market',
     data: {
-      tam: '$45-60B',
-      sam: '$12B',
-      som: '$2.4B',
+      tam: '$13-20B',
+      sam: '$5B',
+      som: '$500M',
       segments: [
-        'Strategic Planning Software',
-        'Business Intelligence',
-        'Workflow Automation',
-        'Decision Intelligence'
+        'Financial Services: $5-8B (highest crisis frequency)',
+        'Healthcare & Pharma: $3-5B (regulatory pressure)',
+        'Retail & Logistics: $2-3B (supply chain crises)',
+        'Manufacturing & Energy: $1-2B (facility failures)',
+        'Tech & Aerospace: $1-2B (security breaches)'
+      ],
+      drivers: [
+        'Crisis frequency increasing (cyber, climate, supply chain)',
+        'Board pressure for execution velocity (post-pandemic)',
+        'AI maturity enabling smart playbook recommendations',
+        'Competitive advantage now = execution speed'
       ]
     }
   },
@@ -296,6 +324,50 @@ const PRESENTATION_SLIDES: Slide[] = [
   
   // ACT 5: GROWTH & ASK (6 min)
   {
+    id: 'unit-economics',
+    act: 5,
+    actName: 'Growth & Ask',
+    title: 'Unit Economics',
+    subtitle: 'Proven Business Model for Enterprise SaaS',
+    content: 'slide',
+    notes: 'Strong unit economics with 70-75% gross margins, 3-4 month payback, and 120%+ NRR. Each customer represents $3.75M-$7.5M in lifetime value.',
+    visual: 'financial',
+    data: {
+      economics: [
+        { metric: 'Annual Contract Value (ACV)', value: '$750K - $1.5M' },
+        { metric: 'Implementation Timeline', value: '8-12 weeks' },
+        { metric: 'Payback Period', value: '3-4 months' },
+        { metric: '5-Year Customer LTV', value: '$3.75M - $7.5M' },
+        { metric: 'Gross Margin', value: '70-75%' },
+        { metric: 'Net Revenue Retention', value: '120%+' }
+      ],
+      valueJustification: [
+        { item: 'Single crisis prevented', value: '$5-50M' },
+        { item: 'Single market opportunity won', value: '$10-100M' },
+        { item: 'Product launch acceleration', value: '$5-20M' },
+        { item: 'M&A integration synergy', value: '$50-200M' }
+      ]
+    }
+  },
+  {
+    id: 'moat',
+    act: 5,
+    actName: 'Growth & Ask',
+    title: 'Competitive Moat',
+    subtitle: "Why ExecuteIQ Can't Be Easily Copied",
+    content: 'slide',
+    notes: '166 playbooks require 18+ months of McKinsey-level expertise to build. Each playbook tested across industries and improves with customer feedback. Competitors starting today are 18 months behind.',
+    visual: 'competitive',
+    data: {
+      moats: [
+        { type: 'Time-to-Build', desc: '166 playbooks = 18+ months to replicate' },
+        { type: 'AI Learning', desc: 'Signal detection improves with every activation' },
+        { type: 'Switching Costs', desc: '$100-200K implementation, org processes tied to playbooks' },
+        { type: 'IP Protection', desc: 'Patent-pending IDEA Framework methodology' }
+      ]
+    }
+  },
+  {
     id: 'business-model',
     act: 5,
     actName: 'Growth & Ask',
@@ -311,9 +383,9 @@ const PRESENTATION_SLIDES: Slide[] = [
         { tier: 'Global', price: '$750K-$1.5M+', desc: 'Unlimited scope, Custom AI, Multi-region' }
       ],
       metrics: [
-        { label: 'ACV', value: '$450K' },
-        { label: 'Gross Margin', value: '85%' },
-        { label: 'NRR Target', value: '130%' }
+        { label: 'ACV', value: '$750K-$1.5M' },
+        { label: 'Gross Margin', value: '70-75%' },
+        { label: 'NRR Target', value: '120%+' }
       ]
     }
   },

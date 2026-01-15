@@ -371,6 +371,133 @@ export default function Pricing() {
         </div>
       </section>
 
+      {/* Value Justification - NEW SECTION */}
+      <section className="py-20 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-amber-500 text-white text-base px-4 py-2">
+              Value Justification
+            </Badge>
+            <h2 className="text-4xl font-bold mb-4 text-white">
+              One Event Pays for Years of ExecuteIQ
+            </h2>
+            <p className="text-xl text-blue-200 max-w-3xl mx-auto">
+              A single prevented crisis or captured opportunity delivers multiples of your annual investment
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <Card className="bg-white/10 border-white/20 backdrop-blur-sm">
+              <CardContent className="p-6">
+                <Shield className="h-10 w-10 text-red-400 mb-4" />
+                <div className="text-sm font-semibold text-red-300 mb-2">Single Crisis Prevented</div>
+                <div className="text-4xl font-bold text-white mb-2">$5-50M</div>
+                <div className="text-sm text-blue-200">in value protected</div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white/10 border-white/20 backdrop-blur-sm">
+              <CardContent className="p-6">
+                <TrendingUp className="h-10 w-10 text-green-400 mb-4" />
+                <div className="text-sm font-semibold text-green-300 mb-2">Market Opportunity Won</div>
+                <div className="text-4xl font-bold text-white mb-2">$10-100M</div>
+                <div className="text-sm text-blue-200">in new revenue captured</div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white/10 border-white/20 backdrop-blur-sm">
+              <CardContent className="p-6">
+                <Zap className="h-10 w-10 text-amber-400 mb-4" />
+                <div className="text-sm font-semibold text-amber-300 mb-2">Product Launch Acceleration</div>
+                <div className="text-4xl font-bold text-white mb-2">$5-20M</div>
+                <div className="text-sm text-blue-200">in time-to-market value</div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white/10 border-white/20 backdrop-blur-sm">
+              <CardContent className="p-6">
+                <Users className="h-10 w-10 text-purple-400 mb-4" />
+                <div className="text-sm font-semibold text-purple-300 mb-2">M&A Integration Synergy</div>
+                <div className="text-4xl font-bold text-white mb-2">$50-200M</div>
+                <div className="text-sm text-blue-200">in synergy capture</div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white/10 border-white/20 backdrop-blur-sm">
+              <CardContent className="p-6">
+                <Building2 className="h-10 w-10 text-cyan-400 mb-4" />
+                <div className="text-sm font-semibold text-cyan-300 mb-2">Decision Velocity Improvement</div>
+                <div className="text-4xl font-bold text-white mb-2">$500K-1M</div>
+                <div className="text-sm text-blue-200">per year in better execution</div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white/10 border-white/20 backdrop-blur-sm">
+              <CardContent className="p-6">
+                <FileText className="h-10 w-10 text-blue-400 mb-4" />
+                <div className="text-sm font-semibold text-blue-300 mb-2">Compliance Automation</div>
+                <div className="text-4xl font-bold text-white mb-2">$100-300K</div>
+                <div className="text-sm text-blue-200">per year in risk reduction</div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="text-center">
+            <p className="text-lg text-blue-200 max-w-3xl mx-auto">
+              <span className="font-semibold text-white">The math is simple:</span> Your $250K-$1.5M annual investment pays for itself with a single successful response. Everything after that is pure value creation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Unit Economics Section - NEW */}
+      <section className="py-16 px-6 bg-slate-50 dark:bg-slate-800">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold mb-4 text-slate-900 dark:text-white">
+              Implementation & Payback
+            </h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400">
+              Fast deployment, rapid time-to-value
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-6">
+            <Card className="text-center border-2">
+              <CardContent className="p-6">
+                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">8-12</div>
+                <div className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Weeks</div>
+                <div className="text-xs text-slate-600 dark:text-slate-400">Implementation Timeline</div>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center border-2">
+              <CardContent className="p-6">
+                <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">3-4</div>
+                <div className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Months</div>
+                <div className="text-xs text-slate-600 dark:text-slate-400">Payback Period</div>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center border-2">
+              <CardContent className="p-6">
+                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">4-6</div>
+                <div className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Weeks</div>
+                <div className="text-xs text-slate-600 dark:text-slate-400">Training & Onboarding</div>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center border-2">
+              <CardContent className="p-6">
+                <div className="text-3xl font-bold text-amber-600 dark:text-amber-400 mb-2">120%+</div>
+                <div className="text-sm font-semibold text-slate-900 dark:text-white mb-1">NRR</div>
+                <div className="text-xs text-slate-600 dark:text-slate-400">Net Revenue Retention</div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* ROI Justification */}
       <section className="py-20 px-6 bg-white dark:bg-slate-900">
         <div className="max-w-6xl mx-auto">
