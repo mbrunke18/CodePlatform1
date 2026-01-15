@@ -1,3 +1,4 @@
+cat > (server / replitAuth.ts) << "EOF";
 import * as client from "openid-client";
 import { Strategy, type VerifyFunction } from "openid-client/passport";
 
@@ -7,10 +8,6 @@ import type { Express, RequestHandler } from "express";
 import memoize from "memoizee";
 import connectPg from "connect-pg-simple";
 import { storage } from "./storage";
-
-if (!process.env.REPLIT_DOMAINS) {
-  //throw new Error("Environment variable REPLIT_DOMAINS not provided");
-}
 
 const getOidcConfig = memoize(
   async () => {
@@ -23,7 +20,7 @@ const getOidcConfig = memoize(
 );
 
 export function getSession() {
-  const sessionTtl = 7 * 24 * 60 * 60 * 1000; // 1 week
+  const sessionTtl = 7 * 24 * 60 * 60 * 1000;
   const pgStore = connectPg(session);
   const sessionStore = new pgStore({
     conString: process.env.DATABASE_URL,
@@ -70,7 +67,6 @@ export async function setupAuth(app: Express) {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  // Skip Replit auth setup if REPLIT_DOMAINS not provided (e.g., on Render)
   if (!process.env.REPLIT_DOMAINS) {
     console.log("⚠️  REPLIT_DOMAINS not set - Replit auth disabled");
     return;
@@ -128,6 +124,7 @@ export async function setupAuth(app: Express) {
       );
     });
   });
+}
 
 export const isAuthenticated: RequestHandler = async (req, res, next) => {
   const user = req.user as any;
@@ -176,3 +173,4 @@ export const hasPermission = (action: string) => {
     return next();
   };
 };
+EOF;
