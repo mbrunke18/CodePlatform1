@@ -292,10 +292,10 @@ app.use((req, res, next) => {
 
   // Enhanced error handling with structured logging and security
   // Serve root and fallback to index.html
-  app.use(express.static(path.resolve(__dirname, "../dist/public")));
+  app.use(express.static("/app/dist/public"));
 
   app.get("/", (_req, res) => {
-    res.sendFile(path.resolve(__dirname, "../dist/public/index.html"));
+    res.sendFile("/app/dist/public/index.html");
   });
   app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
