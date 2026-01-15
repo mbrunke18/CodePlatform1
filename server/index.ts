@@ -291,12 +291,6 @@ app.use((req, res, next) => {
   setupSwagger(app);
 
   // Enhanced error handling with structured logging and security
-  // Serve root and fallback to index.html
-  app.use(express.static("/app/dist/public"));
-
-  app.get("/", (_req, res) => {
-    res.sendFile("/app/dist/public/index.html");
-  });
   app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
@@ -353,6 +347,11 @@ app.use((req, res, next) => {
       logger.info("✅ Vite setup complete");
     } else {
       logger.info("📦 Serving static files...");
+      // Production: serve static files from build output
+      app.use(express.static("/app/dist/public"));
+      app.get("/", (_req, res) => {
+        res.sendFile("/app/dist/public/index.html");
+      });
       serveStatic(app);
     }
   } catch (error) {
