@@ -49,10 +49,17 @@ const ROTATING_TAGLINES = [
 
 export default function Homepage() {
   const [, setLocation] = useLocation();
-  // Use sessionStorage so intro plays on each new site visit, but respects skip during session
+  // Show intro only on initial site entry, not when navigating back from other pages
   const [showIntro, setShowIntro] = useState(() => {
     if (typeof window === "undefined") return true;
-    return !sessionStorage.getItem(INTRO_SEEN_KEY);
+    // Check if this is a fresh site entry (no flag set yet)
+    const hasSeenIntro = sessionStorage.getItem(INTRO_SEEN_KEY);
+    if (!hasSeenIntro) {
+      // Mark as seen immediately so navigating away and back won't show it again
+      sessionStorage.setItem(INTRO_SEEN_KEY, "true");
+      return true;
+    }
+    return false;
   });
   const [taglineIndex, setTaglineIndex] = useState(0);
 
@@ -64,7 +71,6 @@ export default function Homepage() {
   }, []);
 
   const handleSkipIntro = () => {
-    sessionStorage.setItem(INTRO_SEEN_KEY, "true");
     setShowIntro(false);
   };
 
