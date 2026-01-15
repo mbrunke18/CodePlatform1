@@ -183,7 +183,6 @@ const allowedOrigins = process.env.REPLIT_DOMAINS
   : [
       "http://localhost:5000",
       "http://0.0.0.0:5000",
-      "https://codeplatform1.onrender.com",
     ];
 
 // Helper to check if origin is a valid Replit domain
