@@ -525,12 +525,14 @@ app.use((req, res, next) => {
           await enterpriseJobService.initialize();
 
           serverReady = true;
+          console.log("✅ SERVER READY - SEEDING COMPLETE");
           logger.info("✅ Initialization complete - all systems ready");
         } catch (error) {
           logger.error({ error }, "❌ CRITICAL: Database seeding failed");
           console.error("🔴 Database seeding error:", error);
           // Still mark as ready so health checks pass - seeding failure shouldn't block the app
           serverReady = true;
+          console.log("✅ SERVER READY - SEEDING COMPLETE");
         }
       })();
     },
