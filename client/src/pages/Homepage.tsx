@@ -36,7 +36,7 @@ import Footer from "@/components/layout/Footer";
 import CinematicHero from "@/components/marketing/CinematicHero";
 import { StrategyReality, StrategyToIDEA } from "@/components/marketing/StrategyReality";
 
-const INTRO_SEEN_KEY = "poise_intro_seen";
+const INTRO_SEEN_KEY = "poise_intro_seen_session";
 
 const ROTATING_TAGLINES = [
   "Adapt at the Speed of Change.",
@@ -49,9 +49,10 @@ const ROTATING_TAGLINES = [
 
 export default function Homepage() {
   const [, setLocation] = useLocation();
+  // Use sessionStorage so intro plays on each new site visit, but respects skip during session
   const [showIntro, setShowIntro] = useState(() => {
     if (typeof window === "undefined") return true;
-    return !localStorage.getItem(INTRO_SEEN_KEY);
+    return !sessionStorage.getItem(INTRO_SEEN_KEY);
   });
   const [taglineIndex, setTaglineIndex] = useState(0);
 
@@ -63,7 +64,7 @@ export default function Homepage() {
   }, []);
 
   const handleSkipIntro = () => {
-    localStorage.setItem(INTRO_SEEN_KEY, "true");
+    sessionStorage.setItem(INTRO_SEEN_KEY, "true");
     setShowIntro(false);
   };
 
