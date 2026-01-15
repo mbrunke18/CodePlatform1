@@ -70,6 +70,12 @@ export async function setupAuth(app: Express) {
   app.use(passport.initialize());
   app.use(passport.session());
 
+  // Skip Replit auth setup if REPLIT_DOMAINS not provided (e.g., on Render)
+  if (!process.env.REPLIT_DOMAINS) {
+    console.log("⚠️  REPLIT_DOMAINS not set - Replit auth disabled");
+    return;
+  }
+
   const config = await getOidcConfig();
 
   const verify: VerifyFunction = async (
@@ -82,7 +88,7 @@ export async function setupAuth(app: Express) {
     verified(null, user);
   };
 
-  for (const domain of process.env.REPLIT_DOMAINS!.split(",")) {
+  for (const domain of process.env.REPLIT_DOMAINS.split(",")) {
     const strategy = new Strategy(
       {
         name: `replitauth:${domain}`,
@@ -112,6 +118,17 @@ export async function setupAuth(app: Express) {
     })(req, res, next);
   });
 
+  app.get("/api/logout", (req, res) => {
+    req.logout(() => {
+      res.redirect(
+        client.buildEndSessionUrl(config, {
+          client_id: process.env.REPL_ID!,
+          post_logout_redirect_uri: `${req.protocol}://${req.hostname}`,
+        }).href,
+      );
+    });
+  });
+}
   app.get("/api/logout", (req, res) => {
     req.logout(() => {
       res.redirect(
