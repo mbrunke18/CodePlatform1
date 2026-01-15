@@ -292,14 +292,10 @@ app.use((req, res, next) => {
 
   // Enhanced error handling with structured logging and security
   // Serve root and fallback to index.html
+  app.use(express.static(path.resolve(__dirname, "../dist/public")));
+
   app.get("/", (_req, res) => {
-    res.send(`
-    <!DOCTYPE html>
-    <html>
-      <head><title>ExecuteIQ</title></head>
-      <body><h1>ExecuteIQ is Running</h1></body>
-    </html>
-  `);
+    res.sendFile(path.resolve(__dirname, "../dist/public/index.html"));
   });
   app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
