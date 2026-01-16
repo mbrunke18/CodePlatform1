@@ -92,12 +92,9 @@ app.get("/_health", (_req, res) => {
 });
 
 // HEAD request on root for fast health checks (used by some load balancers)
+// Always return 200 - the app is available as soon as Express starts
 app.head("/", (_req, res) => {
-  if (serverReady) {
-    res.status(200).end();
-  } else {
-    res.status(503).end();
-  }
+  res.status(200).end();
 });
 
 // Import raw body parser for webhook signature verification
@@ -354,11 +351,7 @@ app.use((req, res, next) => {
       // Production: serve static files from build output
       app.use(express.static("/app/dist/public"));
       app.get("/", (_req, res) => {
-        // Check serverReady for health check compatibility
-        if (!serverReady) {
-          res.status(503).json({ status: "initializing" });
-          return;
-        }
+        // Always serve index.html - health checks use /health endpoint
         res.sendFile("/app/dist/public/index.html");
       });
       serveStatic(app);
