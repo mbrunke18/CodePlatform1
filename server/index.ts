@@ -350,11 +350,18 @@ app.use((req, res, next) => {
       logger.info("📦 Serving static files...");
       // Production: serve static files from build output
       app.use(express.static("/app/dist/public"));
+      
+      // Root "/" returns fast 200 for Autoscale health checks
       app.get("/", (_req, res) => {
-        // Always serve index.html - health checks use /health endpoint
+        res.status(200).json({ status: "ok", app: "ExecuteIQ" });
+      });
+      
+      serveStatic(app);
+      
+      // Catch-all route serves SPA for client-side routing (must be last)
+      app.get("/*", (_req, res) => {
         res.sendFile("/app/dist/public/index.html");
       });
-      serveStatic(app);
     }
   } catch (error) {
     logger.error({ error }, "❌ Vite/static setup failed");
