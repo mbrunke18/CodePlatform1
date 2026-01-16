@@ -289,6 +289,11 @@ app.use((req, res, next) => {
   // Set up API documentation
   setupSwagger(app);
 
+  // Mark server ready IMMEDIATELY after routes are registered
+  // This ensures health checks pass during Vite/static setup and database seeding
+  serverReady = true;
+  logger.info("✅ Server marked ready for health checks (routes registered)");
+
   // Enhanced error handling with structured logging and security
   app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
@@ -349,6 +354,11 @@ app.use((req, res, next) => {
       // Production: serve static files from build output
       app.use(express.static("/app/dist/public"));
       app.get("/", (_req, res) => {
+        // Check serverReady for health check compatibility
+        if (!serverReady) {
+          res.status(503).json({ status: "initializing" });
+          return;
+        }
         res.sendFile("/app/dist/public/index.html");
       });
       serveStatic(app);
@@ -373,13 +383,8 @@ app.use((req, res, next) => {
       log("serving on port " + port);
       logger.info(
         { port, env: app.get("env") },
-        "ExecuteIQ server started and ready for health checks",
+        "ExecuteIQ server started - health checks already passing",
       );
-
-      // Mark server ready IMMEDIATELY so health checks pass
-      // Seeding will continue in the background
-      serverReady = true;
-      logger.info("✅ Server marked ready for health checks");
 
       // Minimal initialization - just seed database, no background jobs
       // Background services will be enabled after core stability is verified
