@@ -376,11 +376,16 @@ app.use((req, res, next) => {
         "ExecuteIQ server started and ready for health checks",
       );
 
+      // Mark server ready IMMEDIATELY so health checks pass
+      // Seeding will continue in the background
+      serverReady = true;
+      logger.info("✅ Server marked ready for health checks");
+
       // Minimal initialization - just seed database, no background jobs
       // Background services will be enabled after core stability is verified
       (async () => {
         try {
-          logger.info("🔧 Starting database seeding...");
+          logger.info("🔧 Starting database seeding (background)...");
           const [result] = await db
             .select({ count: count() })
             .from(playbookLibrary);
@@ -523,15 +528,12 @@ app.use((req, res, next) => {
           logger.info("🔧 Initializing Enterprise Job Service...");
           await enterpriseJobService.initialize();
 
-          serverReady = true;
-          console.log("✅ SERVER READY - SEEDING COMPLETE");
-          logger.info("✅ Initialization complete - all systems ready");
+          console.log("✅ BACKGROUND SEEDING COMPLETE");
+          logger.info("✅ Background initialization complete - all systems ready");
         } catch (error) {
-          logger.error({ error }, "❌ CRITICAL: Database seeding failed");
-          console.error("🔴 Database seeding error:", error);
-          // Still mark as ready so health checks pass - seeding failure shouldn't block the app
-          serverReady = true;
-          console.log("✅ SERVER READY - SEEDING COMPLETE");
+          logger.error({ error }, "❌ Database seeding failed (non-blocking)");
+          console.error("🔴 Database seeding error (server still running):", error);
+          // Server is already marked ready - seeding failure doesn't block the app
         }
       })();
     },
