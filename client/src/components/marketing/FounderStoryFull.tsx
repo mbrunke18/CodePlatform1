@@ -1,13 +1,126 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { 
   Play, RotateCcw, Volume2, VolumeX, SkipForward, Pause, 
   Building2, Trophy, Clock, Target, Zap, Shield, Sword,
   TrendingUp, AlertTriangle, CheckCircle, Users, BookOpen,
-  Radar, BarChart3, ArrowRight, Brain
+  Radar, BarChart3, ArrowRight, Brain, Loader2
 } from "lucide-react";
 import { Link } from "wouter";
+
+const SCENE_NARRATIONS = [
+  "Every Fortune 1000 company faces an average of 4 to 6 major strategic events per year.",
+  "Companies that respond decisively within the first 24 hours are 340 times more likely to achieve their desired outcome than those who wait.",
+  "Seventy-two hours. That's how long it takes most Fortune 500 companies to respond to a strategic event. Conference calls. Slack messages flying. Waiting on the right people to get organized.",
+  "What does delay cost? In M&A, $1.3 million in value erosion per day. In crisis response, $4.88 million average breach cost. In competitive response, market windows that close forever.",
+  "The reason? Companies improvise. Every time something hits, they start from zero. No playbook. No pre-assigned roles. Just scrambling.",
+  "I'm Terry Danner. I spent 20 years inside Fortune 500 companies watching this happen.",
+  "Boyd Gaming, Ford, Lockheed Martin, Vantiv, Eli Lilly. I lived it. I've watched 50 million dollars evaporate because we couldn't coordinate fast enough.",
+  "Before all that? Football coach. 15 seasons. What I learned: you never run a play in a game without practicing it first. You have a playbook. Everyone knows their role. When the whistle blows, you execute.",
+  "But in business? We wing it. Every single time. It's insane when you think about it.",
+  "So I built ExecuteIQ. The Strategic Execution Operating System.",
+  "166 playbooks across 9 strategic domains. Market entry, M&A, competitive response, crisis management, product launches, regulatory compliance, digital transformation, AI governance, and cybersecurity.",
+  "The IDEA Framework. Identify, Detect, Execute, Advance. AI monitors for signals. Pre-built playbooks ready to activate. Coordinated execution with your team. Then capture what worked for next time.",
+  "One click to activate a playbook. Tasks auto-assigned. Stakeholders notified. Documents staged. Budgets unlocked. Everyone knows their role.",
+  "From signal detection to coordinated execution. 12 minutes. That's 340 times faster than the industry average.",
+  "The stakes have never been higher. 73% of executives report facing more strategic events than 5 years ago. AI is accelerating everything. Your competitors are moving faster.",
+  "This isn't just about defense. It's about offense too. Market opportunities that require speed. M&A integrations that need precision. Product launches that demand coordination.",
+  "In a world where everyone has access to AI tools, execution becomes the competitive advantage. The companies that can move decisively will dominate.",
+  "We're creating a new category. Strategic Execution Software. Gartner estimates this will be a $10 billion market by 2030.",
+  "ExecuteIQ has an 18-month head start. 166 playbooks built. Platform validated with enterprise customers. The moat widens every day.",
+  "The companies that figure this out first don't just survive. They dominate. Welcome to ExecuteIQ. Let's execute decisions at scale.",
+];
+
+function useTTSNarration() {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioCache = useRef<Map<number, string>>(new Map());
+  const [isLoading, setIsLoading] = useState(false);
+  const isMutedRef = useRef(true);
+
+  const fetchAudio = useCallback(async (sceneIndex: number): Promise<string | null> => {
+    if (audioCache.current.has(sceneIndex)) {
+      return audioCache.current.get(sceneIndex) || null;
+    }
+
+    const text = SCENE_NARRATIONS[sceneIndex];
+    if (!text) return null;
+
+    try {
+      const response = await fetch('/api/tts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, voice: 'onyx', format: 'mp3' }),
+      });
+
+      if (!response.ok) return null;
+
+      const data = await response.json();
+      const audioUrl = `data:audio/mp3;base64,${data.audio}`;
+      audioCache.current.set(sceneIndex, audioUrl);
+      return audioUrl;
+    } catch (error) {
+      console.error('TTS fetch error:', error);
+      return null;
+    }
+  }, []);
+
+  const prefetchNext = useCallback(async (currentIndex: number) => {
+    const nextIndex = currentIndex + 1;
+    if (nextIndex < SCENE_NARRATIONS.length && !audioCache.current.has(nextIndex)) {
+      await fetchAudio(nextIndex);
+    }
+  }, [fetchAudio]);
+
+  const playScene = useCallback(async (sceneIndex: number) => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+
+    if (isMutedRef.current) return;
+
+    setIsLoading(true);
+    const audioUrl = await fetchAudio(sceneIndex);
+    setIsLoading(false);
+
+    if (audioUrl && !isMutedRef.current) {
+      const audio = new Audio(audioUrl);
+      audio.volume = 0.8;
+      audioRef.current = audio;
+      audio.play().catch(() => {});
+      prefetchNext(sceneIndex);
+    }
+  }, [fetchAudio, prefetchNext]);
+
+  const setMuted = useCallback((muted: boolean) => {
+    isMutedRef.current = muted;
+    if (audioRef.current) {
+      if (muted) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play().catch(() => {});
+      }
+    }
+  }, []);
+
+  const stop = useCallback(() => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+    };
+  }, []);
+
+  return { playScene, setMuted, stop, isLoading };
+}
 
 interface SceneProps {
   children: React.ReactNode;
@@ -36,7 +149,6 @@ function useAmbientAudio() {
   const audioContextRef = useRef<AudioContext | null>(null);
   const gainNodeRef = useRef<GainNode | null>(null);
   const oscillatorsRef = useRef<OscillatorNode[]>([]);
-  const [isMuted, setIsMuted] = useState(true);
   const [isInitialized, setIsInitialized] = useState(false);
 
   const initAudio = () => {
@@ -71,7 +183,7 @@ function useAmbientAudio() {
     setIsInitialized(true);
   };
 
-  const toggleMute = () => {
+  const setMuted = (muted: boolean) => {
     if (!isInitialized) {
       initAudio();
     }
@@ -81,11 +193,8 @@ function useAmbientAudio() {
         audioContextRef.current.resume();
       }
       
-      const newMuted = !isMuted;
-      setIsMuted(newMuted);
-      
       gainNodeRef.current.gain.setTargetAtTime(
-        newMuted ? 0 : 0.25,
+        muted ? 0 : 0.25,
         audioContextRef.current.currentTime,
         0.5
       );
@@ -101,18 +210,38 @@ function useAmbientAudio() {
     }
   };
 
-  return { isMuted, toggleMute, cleanup, isInitialized };
+  return { setMuted, cleanup, isInitialized };
 }
 
 export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFullProps) {
   const [currentScene, setCurrentScene] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [hasCompleted, setHasCompleted] = useState(false);
-  const { isMuted, toggleMute, cleanup } = useAmbientAudio();
+  const [isMuted, setIsMuted] = useState(true);
+  const { setMuted: setAmbientMuted, cleanup } = useAmbientAudio();
+  const { playScene, stop: stopTTS, isLoading: ttsLoading, setMuted: setTTSMuted } = useTTSNarration();
+  
+  const toggleMute = () => {
+    const newMuted = !isMuted;
+    setIsMuted(newMuted);
+    setAmbientMuted(newMuted);
+    setTTSMuted(newMuted);
+  };
   
   useEffect(() => {
-    return () => cleanup();
+    return () => {
+      cleanup();
+      stopTTS();
+    };
   }, []);
+  
+  useEffect(() => {
+    if (isPlaying && !isMuted) {
+      playScene(currentScene);
+    } else {
+      stopTTS();
+    }
+  }, [currentScene, isPlaying, isMuted]);
   
   const scenes = [
     { duration: 8000 },   // 0: Cold open
@@ -155,6 +284,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
   }, [currentScene, isPlaying]);
 
   const restart = () => {
+    stopTTS();
     setCurrentScene(0);
     setIsPlaying(true);
     setHasCompleted(false);
@@ -971,7 +1101,13 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                 onClick={toggleMute}
                 className="text-slate-400 hover:text-white"
               >
-                {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+                {ttsLoading ? (
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                ) : isMuted ? (
+                  <VolumeX className="h-5 w-5" />
+                ) : (
+                  <Volume2 className="h-5 w-5" />
+                )}
               </Button>
             </div>
 

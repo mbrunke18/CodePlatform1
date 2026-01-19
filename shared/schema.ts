@@ -12,10 +12,15 @@ import {
   decimal,
   boolean,
   pgEnum,
+  serial,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 import { relations } from "drizzle-orm";
+
+// Re-export chat tables for OpenAI integration
+export { conversations, messages, insertConversationSchema, insertMessageSchema } from "./models/chat";
+export type { Conversation, InsertConversation, Message, InsertMessage } from "./models/chat";
 
 // PostgreSQL Enums for better data integrity
 export const organizationTypeEnum = pgEnum('organization_type', ['enterprise', 'mid-market', 'startup', 'government', 'non-profit']);

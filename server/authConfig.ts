@@ -11,6 +11,7 @@
  */
 export const PUBLIC_ROUTES = [
   // Marketing & Demo Routes - allow prospects to view content
+  '/api/tts', // Text-to-speech for founder story narration
   '/api/scenario-templates',
   '/api/scenario-templates/crisis',
   '/api/scenario-templates/category/:category',

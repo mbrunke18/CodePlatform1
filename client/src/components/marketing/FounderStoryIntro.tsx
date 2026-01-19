@@ -1,8 +1,109 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Play, RotateCcw, Volume2, VolumeX, SkipForward, Pause, Building2, Trophy, Briefcase, Clock } from "lucide-react";
+import { Play, RotateCcw, Volume2, VolumeX, SkipForward, Pause, Building2, Trophy, Briefcase, Clock, Loader2 } from "lucide-react";
 import { Link } from "wouter";
+
+const SCENE_NARRATIONS = [
+  "Seventy-two hours. That's how long it takes.",
+  "That's how long it takes most Fortune 500 companies to respond to a crisis. Conference calls. Scrambling. Waiting on decisions. Meanwhile, the damage compounds. The window closes.",
+  "I spent 20 years inside Fortune 500 companies watching this happen. Boyd Gaming, Ford, Lockheed Martin, Vantiv, Eli Lilly. I've watched 50 million dollars evaporate because we couldn't coordinate fast enough.",
+  "I kept thinking—in football, we'd never run a play without practicing it first. But in business? We wing it. Every time.",
+  "That's why I built ExecuteIQ. 166 playbooks across every scenario you'll face. Crisis Response, Market Entry, M&A Integration, Product Launches.",
+  "From signal to coordinated execution. 12 minutes. One click to activate. Roles assigned. Teams moving in parallel.",
+  "This isn't about working harder. It's about executing with discipline—the kind that wins championships.",
+  "The companies that figure this out first don't just survive. They dominate. Welcome to ExecuteIQ.",
+];
+
+function useTTSNarration() {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioCache = useRef<Map<number, string>>(new Map());
+  const [isLoading, setIsLoading] = useState(false);
+  const isMutedRef = useRef(true);
+
+  const fetchAudio = useCallback(async (sceneIndex: number): Promise<string | null> => {
+    if (audioCache.current.has(sceneIndex)) {
+      return audioCache.current.get(sceneIndex) || null;
+    }
+
+    const text = SCENE_NARRATIONS[sceneIndex];
+    if (!text) return null;
+
+    try {
+      const response = await fetch('/api/tts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, voice: 'onyx', format: 'mp3' }),
+      });
+
+      if (!response.ok) return null;
+
+      const data = await response.json();
+      const audioUrl = `data:audio/mp3;base64,${data.audio}`;
+      audioCache.current.set(sceneIndex, audioUrl);
+      return audioUrl;
+    } catch (error) {
+      console.error('TTS fetch error:', error);
+      return null;
+    }
+  }, []);
+
+  const prefetchNext = useCallback(async (currentIndex: number) => {
+    const nextIndex = currentIndex + 1;
+    if (nextIndex < SCENE_NARRATIONS.length && !audioCache.current.has(nextIndex)) {
+      await fetchAudio(nextIndex);
+    }
+  }, [fetchAudio]);
+
+  const playScene = useCallback(async (sceneIndex: number) => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+
+    if (isMutedRef.current) return;
+
+    setIsLoading(true);
+    const audioUrl = await fetchAudio(sceneIndex);
+    setIsLoading(false);
+
+    if (audioUrl && !isMutedRef.current) {
+      const audio = new Audio(audioUrl);
+      audio.volume = 0.8;
+      audioRef.current = audio;
+      audio.play().catch(() => {});
+      prefetchNext(sceneIndex);
+    }
+  }, [fetchAudio, prefetchNext]);
+
+  const setMuted = useCallback((muted: boolean) => {
+    isMutedRef.current = muted;
+    if (audioRef.current) {
+      if (muted) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play().catch(() => {});
+      }
+    }
+  }, []);
+
+  const stop = useCallback(() => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+    };
+  }, []);
+
+  return { playScene, setMuted, stop, isLoading };
+}
 
 interface SceneProps {
   children: React.ReactNode;
@@ -31,7 +132,6 @@ function useAmbientAudio() {
   const audioContextRef = useRef<AudioContext | null>(null);
   const gainNodeRef = useRef<GainNode | null>(null);
   const oscillatorsRef = useRef<OscillatorNode[]>([]);
-  const [isMuted, setIsMuted] = useState(true);
   const [isInitialized, setIsInitialized] = useState(false);
 
   const initAudio = () => {
@@ -66,7 +166,7 @@ function useAmbientAudio() {
     setIsInitialized(true);
   };
 
-  const toggleMute = () => {
+  const setMuted = (muted: boolean) => {
     if (!isInitialized) {
       initAudio();
     }
@@ -76,11 +176,8 @@ function useAmbientAudio() {
         audioContextRef.current.resume();
       }
       
-      const newMuted = !isMuted;
-      setIsMuted(newMuted);
-      
       gainNodeRef.current.gain.setTargetAtTime(
-        newMuted ? 0 : 0.25,
+        muted ? 0 : 0.25,
         audioContextRef.current.currentTime,
         0.5
       );
@@ -96,18 +193,38 @@ function useAmbientAudio() {
     }
   };
 
-  return { isMuted, toggleMute, cleanup, isInitialized };
+  return { setMuted, cleanup, isInitialized };
 }
 
 export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIntroProps) {
   const [currentScene, setCurrentScene] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [hasCompleted, setHasCompleted] = useState(false);
-  const { isMuted, toggleMute, cleanup } = useAmbientAudio();
+  const [isMuted, setIsMuted] = useState(true);
+  const { setMuted: setAmbientMuted, cleanup } = useAmbientAudio();
+  const { playScene, stop: stopTTS, isLoading: ttsLoading, setMuted: setTTSMuted } = useTTSNarration();
+  
+  const toggleMute = () => {
+    const newMuted = !isMuted;
+    setIsMuted(newMuted);
+    setAmbientMuted(newMuted);
+    setTTSMuted(newMuted);
+  };
   
   useEffect(() => {
-    return () => cleanup();
+    return () => {
+      cleanup();
+      stopTTS();
+    };
   }, []);
+  
+  useEffect(() => {
+    if (isPlaying && !isMuted) {
+      playScene(currentScene);
+    } else {
+      stopTTS();
+    }
+  }, [currentScene, isPlaying, isMuted]);
   
   const scenes = [
     { duration: 5000 },  // Cold open - "Seventy-two hours"
@@ -138,6 +255,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
   }, [currentScene, isPlaying]);
 
   const restart = () => {
+    stopTTS();
     setCurrentScene(0);
     setIsPlaying(true);
     setHasCompleted(false);
@@ -533,7 +651,13 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                 onClick={toggleMute}
                 className="text-slate-400 hover:text-white"
               >
-                {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+                {ttsLoading ? (
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                ) : isMuted ? (
+                  <VolumeX className="h-5 w-5" />
+                ) : (
+                  <Volume2 className="h-5 w-5" />
+                )}
               </Button>
             </div>
 
