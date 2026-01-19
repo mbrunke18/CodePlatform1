@@ -37,6 +37,7 @@ function useTTSNarration() {
   const audioCache = useRef<Map<number, string>>(new Map());
   const [isLoading, setIsLoading] = useState(false);
   const isMutedRef = useRef(true);
+  const userInteractedRef = useRef(false);
 
   const fetchAudio = useCallback(async (sceneIndex: number, retryCount = 0): Promise<string | null> => {
     if (audioCache.current.has(sceneIndex)) {
@@ -55,7 +56,6 @@ function useTTSNarration() {
 
       if (response.status === 429 && retryCount < 3) {
         const delay = Math.pow(2, retryCount) * 1000;
-        console.log(`Rate limited, retrying in ${delay}ms...`);
         await new Promise(resolve => setTimeout(resolve, delay));
         return fetchAudio(sceneIndex, retryCount + 1);
       }
@@ -63,9 +63,16 @@ function useTTSNarration() {
       if (!response.ok) return null;
 
       const data = await response.json();
-      const audioUrl = `data:audio/mpeg;base64,${data.audio}`;
-      audioCache.current.set(sceneIndex, audioUrl);
-      return audioUrl;
+      const byteString = atob(data.audio);
+      const ab = new ArrayBuffer(byteString.length);
+      const ia = new Uint8Array(ab);
+      for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+      }
+      const blob = new Blob([ab], { type: 'audio/mpeg' });
+      const blobUrl = URL.createObjectURL(blob);
+      audioCache.current.set(sceneIndex, blobUrl);
+      return blobUrl;
     } catch (error) {
       console.error('TTS fetch error:', error);
       if (retryCount < 3) {
@@ -80,7 +87,7 @@ function useTTSNarration() {
   const prefetchNext = useCallback(async (currentIndex: number) => {
     const nextIndex = currentIndex + 1;
     if (nextIndex < SCENE_NARRATIONS.length && !audioCache.current.has(nextIndex)) {
-      await fetchAudio(nextIndex);
+      fetchAudio(nextIndex);
     }
   }, [fetchAudio]);
 
@@ -96,26 +103,35 @@ function useTTSNarration() {
     const audioUrl = await fetchAudio(sceneIndex);
     setIsLoading(false);
 
-    if (audioUrl && !isMutedRef.current) {
+    if (audioUrl && !isMutedRef.current && userInteractedRef.current) {
       const audio = new Audio(audioUrl);
       audio.volume = 0.8;
       audioRef.current = audio;
-      audio.play().then(() => {
-        console.log('TTS playing scene', sceneIndex);
-      }).catch((err) => {
-        console.error('TTS playback error:', err);
-      });
-      prefetchNext(sceneIndex);
+      
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          prefetchNext(sceneIndex);
+        }).catch((err) => {
+          console.error('TTS playback error:', err.name, err.message);
+        });
+      }
     }
   }, [fetchAudio, prefetchNext]);
 
+  const enableAudio = useCallback(() => {
+    userInteractedRef.current = true;
+    isMutedRef.current = false;
+  }, []);
+
   const setMuted = useCallback((muted: boolean) => {
     isMutedRef.current = muted;
+    if (!muted) {
+      userInteractedRef.current = true;
+    }
     if (audioRef.current) {
       if (muted) {
         audioRef.current.pause();
-      } else {
-        audioRef.current.play().catch(() => {});
       }
     }
   }, []);
@@ -135,7 +151,7 @@ function useTTSNarration() {
     };
   }, []);
 
-  return { playScene, setMuted, stop, isLoading };
+  return { playScene, setMuted, stop, isLoading, enableAudio };
 }
 
 interface SceneProps {
@@ -235,15 +251,18 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
   const [hasCompleted, setHasCompleted] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const { setMuted: setAmbientMuted, cleanup } = useAmbientAudio();
-  const { playScene, stop: stopTTS, isLoading: ttsLoading, setMuted: setTTSMuted } = useTTSNarration();
+  const { playScene, stop: stopTTS, isLoading: ttsLoading, setMuted: setTTSMuted, enableAudio } = useTTSNarration();
   
   const toggleMute = () => {
     const newMuted = !isMuted;
     setIsMuted(newMuted);
     setAmbientMuted(newMuted);
     setTTSMuted(newMuted);
-    if (!newMuted && isPlaying) {
-      playScene(currentScene);
+    if (!newMuted) {
+      enableAudio();
+      if (isPlaying) {
+        playScene(currentScene);
+      }
     }
   };
   
