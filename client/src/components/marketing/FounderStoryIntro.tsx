@@ -209,6 +209,9 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
     setIsMuted(newMuted);
     setAmbientMuted(newMuted);
     setTTSMuted(newMuted);
+    if (!newMuted && isPlaying) {
+      playScene(currentScene);
+    }
   };
   
   useEffect(() => {
@@ -646,15 +649,18 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                 <RotateCcw className="h-5 w-5" />
               </Button>
               <Button
-                variant="ghost"
+                variant={isMuted ? "default" : "ghost"}
                 size="sm"
                 onClick={toggleMute}
-                className="text-slate-400 hover:text-white"
+                className={isMuted ? "bg-amber-500 hover:bg-amber-400 text-black animate-pulse" : "text-slate-400 hover:text-white"}
               >
                 {ttsLoading ? (
                   <Loader2 className="h-5 w-5 animate-spin" />
                 ) : isMuted ? (
-                  <VolumeX className="h-5 w-5" />
+                  <>
+                    <VolumeX className="h-5 w-5 mr-2" />
+                    <span className="text-sm">Enable Audio</span>
+                  </>
                 ) : (
                   <Volume2 className="h-5 w-5" />
                 )}
