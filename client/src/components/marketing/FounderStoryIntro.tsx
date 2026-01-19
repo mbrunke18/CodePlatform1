@@ -21,7 +21,7 @@ function useTTSNarration() {
   const [isLoading, setIsLoading] = useState(false);
   const isMutedRef = useRef(true);
 
-  const fetchAudio = useCallback(async (sceneIndex: number): Promise<string | null> => {
+  const fetchAudio = useCallback(async (sceneIndex: number, retryCount = 0): Promise<string | null> => {
     if (audioCache.current.has(sceneIndex)) {
       return audioCache.current.get(sceneIndex) || null;
     }
@@ -36,14 +36,26 @@ function useTTSNarration() {
         body: JSON.stringify({ text, voice: 'onyx', format: 'mp3' }),
       });
 
+      if (response.status === 429 && retryCount < 3) {
+        const delay = Math.pow(2, retryCount) * 1000;
+        console.log(`Rate limited, retrying in ${delay}ms...`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+        return fetchAudio(sceneIndex, retryCount + 1);
+      }
+
       if (!response.ok) return null;
 
       const data = await response.json();
-      const audioUrl = `data:audio/mp3;base64,${data.audio}`;
+      const audioUrl = `data:audio/mpeg;base64,${data.audio}`;
       audioCache.current.set(sceneIndex, audioUrl);
       return audioUrl;
     } catch (error) {
       console.error('TTS fetch error:', error);
+      if (retryCount < 3) {
+        const delay = Math.pow(2, retryCount) * 1000;
+        await new Promise(resolve => setTimeout(resolve, delay));
+        return fetchAudio(sceneIndex, retryCount + 1);
+      }
       return null;
     }
   }, []);
@@ -71,7 +83,11 @@ function useTTSNarration() {
       const audio = new Audio(audioUrl);
       audio.volume = 0.8;
       audioRef.current = audio;
-      audio.play().catch(() => {});
+      audio.play().then(() => {
+        console.log('TTS playing scene', sceneIndex);
+      }).catch((err) => {
+        console.error('TTS playback error:', err);
+      });
       prefetchNext(sceneIndex);
     }
   }, [fetchAudio, prefetchNext]);
