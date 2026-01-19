@@ -119,6 +119,7 @@ import NewUserJourney from "./pages/NewUserJourney";
 import CompetitivePositioning from "./pages/CompetitivePositioning";
 import PilotProgram from "./pages/PilotProgram";
 import HowItWorks from "./pages/HowItWorks";
+import FounderStory from "./pages/FounderStory";
 import OneClickDemo from "./pages/OneClickDemo";
 import ROICalculator from "./pages/ROICalculator";
 import AgilityAssessment from "./pages/AgilityAssessment";
@@ -290,6 +291,7 @@ function Router() {
         <Route path="/operating-model-health" component={RedirectToExecutiveDashboard} />
         <Route path="/roi-breakdown" component={ComprehensiveROIBreakdown} />
         <Route path="/our-story" component={OurStory} />
+        <Route path="/founder-story" component={FounderStory} />
         <Route path="/why-m" component={WhyM} />
         <Route path="/why-poise" component={WhyM} />
         <Route path="/why-executeiq" component={WhyM} />
