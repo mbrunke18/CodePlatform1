@@ -5,25 +5,33 @@ import { openai, speechToText, voiceChatWithTextModel, convertWebmToWav, textToS
 // Note: Set express.json({ limit: "50mb" }) for audio payloads.
 // Note: Use convertWebmToWav() to convert browser WebM to WAV before API calls.
 export function registerAudioRoutes(app: Express): void {
-  // Text-to-Speech endpoint for narration
+  // Text-to-Speech endpoint for narration using standard TTS API
   app.post("/api/tts", async (req: Request, res: Response) => {
     try {
       const { 
         text, 
-        voice = "onyx", 
-        format = "mp3" 
+        voice = "onyx"
       } = req.body;
 
       if (!text) {
         return res.status(400).json({ error: "Text is required" });
       }
 
-      const audioBuffer = await textToSpeech(text, voice, format);
+      // Use OpenAI's standard TTS API for reliable MP3 output
+      const response = await openai.audio.speech.create({
+        model: "tts-1",
+        voice: voice as "alloy" | "echo" | "fable" | "onyx" | "nova" | "shimmer",
+        input: text,
+        response_format: "mp3",
+      });
+
+      const arrayBuffer = await response.arrayBuffer();
+      const audioBuffer = Buffer.from(arrayBuffer);
       const base64Audio = audioBuffer.toString("base64");
 
       res.json({ 
         audio: base64Audio,
-        format,
+        format: "mp3",
         voice 
       });
     } catch (error) {
