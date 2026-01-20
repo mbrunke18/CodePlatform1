@@ -84,7 +84,7 @@ export default function VideoIntro({ onComplete, onSkip }: VideoIntroProps) {
 
   if (showStartScreen) {
     return (
-      <div className="relative min-h-screen bg-gradient-to-br from-[#1A2B3D] via-[#0f1a26] to-[#0a0a0f] flex items-center justify-center overflow-hidden">
+      <div className="fixed inset-0 z-[100] bg-gradient-to-br from-[#1A2B3D] via-[#0f1a26] to-[#0a0a0f] flex items-center justify-center overflow-hidden">
         <motion.div
           className="absolute inset-0"
           animate={{
@@ -154,7 +154,7 @@ export default function VideoIntro({ onComplete, onSkip }: VideoIntroProps) {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#0a0a0f] text-white overflow-hidden">
+    <div className="fixed inset-0 z-[100] bg-[#0a0a0f] text-white overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentScene}
