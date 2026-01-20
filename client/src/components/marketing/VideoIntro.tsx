@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Volume2, VolumeX } from "lucide-react";
+import { Volume2, VolumeX, SkipForward } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Intro } from "@/components/video/Intro";
 import { Problem } from "@/components/video/Problem";
@@ -78,18 +78,30 @@ export default function VideoIntro({ onComplete, onSkip }: VideoIntroProps) {
 
   return (
     <div className="fixed inset-0 z-[100] bg-[#0a0a0f] text-white overflow-hidden">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentScene}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="absolute inset-0"
-        >
-          <CurrentSceneComponent progress={sceneProgress} isPlaying={isPlaying} />
-        </motion.div>
-      </AnimatePresence>
+      <div className="absolute inset-0 bg-[#0a0a0f]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentScene}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="absolute inset-0"
+          >
+            <CurrentSceneComponent progress={sceneProgress} isPlaying={isPlaying} />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      <Button
+        onClick={onSkip}
+        variant="ghost"
+        size="lg"
+        className="fixed top-6 right-6 z-[110] text-white/70 hover:text-white hover:bg-white/10 gap-2 text-lg"
+      >
+        <SkipForward className="w-5 h-5" />
+        Skip to Site
+      </Button>
 
       <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/80 to-transparent p-6">
         <div className="w-full bg-white/20 rounded-full h-1.5 mb-4">

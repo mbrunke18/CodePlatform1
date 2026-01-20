@@ -27,8 +27,7 @@ import {
   Network,
   Activity,
   Check,
-  X,
-  SkipForward
+  X
 } from "lucide-react";
 import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
@@ -75,23 +74,7 @@ export default function Homepage() {
   };
 
   if (showIntro) {
-    return (
-      <div className="relative min-h-screen bg-slate-950" data-testid="cinematic-intro">
-        <VideoIntro onComplete={handleSkipIntro} onSkip={handleSkipIntro} />
-        <div className="fixed bottom-8 right-8 z-50">
-          <Button
-            variant="ghost"
-            size="lg"
-            onClick={handleSkipIntro}
-            className="text-slate-400 hover:text-white hover:bg-slate-800/50 gap-2"
-            data-testid="button-skip-intro"
-          >
-            <SkipForward className="h-5 w-5" />
-            Skip to Site
-          </Button>
-        </div>
-      </div>
-    );
+    return <VideoIntro onComplete={handleSkipIntro} onSkip={handleSkipIntro} />;
   }
 
   const phases = [
