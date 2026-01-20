@@ -5,19 +5,29 @@ import { Button } from "@/components/ui/button";
 import { Intro } from "@/components/video/Intro";
 import { Problem } from "@/components/video/Problem";
 import { Solution } from "@/components/video/Solution";
+import { IDEAFramework } from "@/components/video/IDEAFramework";
+import { StrategicDomains } from "@/components/video/StrategicDomains";
+import { SignalDemo } from "@/components/video/SignalDemo";
 import { PlaybookDemo } from "@/components/video/PlaybookDemo";
 import { ActivationDemo } from "@/components/video/ActivationDemo";
+import { IntegrationsDemo } from "@/components/video/IntegrationsDemo";
+import { CommandCenterDemo } from "@/components/video/CommandCenterDemo";
 import { MetricsDemo } from "@/components/video/MetricsDemo";
 import { Outro } from "@/components/video/Outro";
 
 const SCENES = [
-  { id: "intro", component: Intro, duration: 4000 },
-  { id: "problem", component: Problem, duration: 6000 },
-  { id: "solution", component: Solution, duration: 4000 },
-  { id: "playbook", component: PlaybookDemo, duration: 6000 },
-  { id: "activation", component: ActivationDemo, duration: 6000 },
-  { id: "metrics", component: MetricsDemo, duration: 5000 },
-  { id: "outro", component: Outro, duration: 5000 },
+  { id: "intro", component: Intro, duration: 4000, label: "Hook" },
+  { id: "problem", component: Problem, duration: 5000, label: "Problem" },
+  { id: "solution", component: Solution, duration: 4000, label: "Solution" },
+  { id: "idea", component: IDEAFramework, duration: 6000, label: "IDEA" },
+  { id: "domains", component: StrategicDomains, duration: 5000, label: "Domains" },
+  { id: "signals", component: SignalDemo, duration: 5000, label: "Signals" },
+  { id: "playbook", component: PlaybookDemo, duration: 5000, label: "Playbooks" },
+  { id: "activation", component: ActivationDemo, duration: 5000, label: "Activation" },
+  { id: "integrations", component: IntegrationsDemo, duration: 5000, label: "Integrations" },
+  { id: "command", component: CommandCenterDemo, duration: 6000, label: "Command" },
+  { id: "metrics", component: MetricsDemo, duration: 5000, label: "Results" },
+  { id: "outro", component: Outro, duration: 5000, label: "CTA" },
 ];
 
 export default function ExecuteIQVideo() {
@@ -96,34 +106,73 @@ export default function ExecuteIQVideo() {
             animate={{ opacity: 1 }}
             className="absolute inset-0 flex items-center justify-center bg-black/60 z-20"
           >
-            <Button
-              onClick={() => setIsPlaying(true)}
-              size="lg"
-              className="bg-[#D4AF37] hover:bg-[#c9a432] text-black font-bold text-xl px-12 py-8 rounded-full shadow-2xl"
-            >
-              <Play className="w-8 h-8 mr-3" />
-              Watch Video
-            </Button>
+            <div className="text-center">
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="mb-6"
+              >
+                <div className="relative w-24 h-24 mx-auto mb-4">
+                  <motion.div
+                    className="absolute inset-0 rounded-full border-4 border-[#D4AF37]"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  />
+                  <motion.div
+                    className="absolute inset-3 rounded-full border-2 border-[#00A8A8]"
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-xl font-bold text-[#D4AF37]">EIQ</span>
+                  </div>
+                </div>
+                <h2 className="text-3xl font-bold text-white mb-2">ExecuteIQ</h2>
+                <p className="text-white/60">Strategic Execution OS</p>
+              </motion.div>
+              
+              <Button
+                onClick={() => setIsPlaying(true)}
+                size="lg"
+                className="bg-[#D4AF37] hover:bg-[#c9a432] text-black font-bold text-xl px-12 py-8 rounded-full shadow-2xl"
+              >
+                <Play className="w-8 h-8 mr-3" />
+                Watch Video
+              </Button>
+              
+              <p className="text-white/40 text-sm mt-4">
+                {Math.floor(totalDuration / 1000)} seconds • {SCENES.length} scenes
+              </p>
+            </div>
           </motion.div>
         )}
 
+        <div className="absolute top-4 left-4 z-30">
+          <div className="bg-black/40 backdrop-blur-sm rounded-lg px-3 py-1.5 text-sm">
+            <span className="text-white/60">Scene {currentScene + 1}/{SCENES.length}:</span>
+            <span className="text-[#D4AF37] ml-2 font-medium">{SCENES[currentScene].label}</span>
+          </div>
+        </div>
+
         <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/80 to-transparent p-6">
-          <div className="w-full bg-white/20 rounded-full h-1 mb-4">
+          <div className="w-full bg-white/20 rounded-full h-1.5 mb-4">
             <div 
-              className="bg-[#D4AF37] h-1 rounded-full transition-all duration-100"
+              className="bg-[#D4AF37] h-1.5 rounded-full transition-all duration-100"
               style={{ width: `${overallPercent}%` }}
             />
           </div>
 
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               {SCENES.map((scene, idx) => (
                 <button
                   key={scene.id}
                   onClick={() => { setCurrentScene(idx); setProgress(0); }}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    idx === currentScene ? "bg-[#D4AF37] w-6" : 
-                    idx < currentScene ? "bg-[#D4AF37]/60" : "bg-white/30"
+                  title={scene.label}
+                  className={`h-2 rounded-full transition-all ${
+                    idx === currentScene ? "bg-[#D4AF37] w-8" : 
+                    idx < currentScene ? "bg-[#D4AF37]/60 w-3" : "bg-white/30 w-3"
                   }`}
                 />
               ))}
@@ -168,7 +217,7 @@ export default function ExecuteIQVideo() {
               </Button>
             </div>
 
-            <div className="text-sm text-white/60 font-mono">
+            <div className="text-sm text-white/60 font-mono min-w-[80px] text-right">
               {Math.floor(overallProgress / 1000)}s / {Math.floor(totalDuration / 1000)}s
             </div>
           </div>
