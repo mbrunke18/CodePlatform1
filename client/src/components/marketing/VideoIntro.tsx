@@ -21,18 +21,18 @@ interface VideoIntroProps {
 }
 
 const SCENES = [
-  { id: "intro", component: Intro, duration: 4000 },
-  { id: "problem", component: Problem, duration: 5000 },
-  { id: "solution", component: Solution, duration: 4000 },
-  { id: "idea", component: IDEAFramework, duration: 6000 },
-  { id: "domains", component: StrategicDomains, duration: 5000 },
-  { id: "signals", component: SignalDemo, duration: 5000 },
-  { id: "playbook", component: PlaybookDemo, duration: 5000 },
-  { id: "activation", component: ActivationDemo, duration: 5000 },
-  { id: "integrations", component: IntegrationsDemo, duration: 5000 },
-  { id: "command", component: CommandCenterDemo, duration: 6000 },
-  { id: "metrics", component: MetricsDemo, duration: 5000 },
-  { id: "outro", component: Outro, duration: 5000 },
+  { id: "intro", component: Intro, duration: 6000 },
+  { id: "problem", component: Problem, duration: 8000 },
+  { id: "solution", component: Solution, duration: 6000 },
+  { id: "idea", component: IDEAFramework, duration: 9000 },
+  { id: "domains", component: StrategicDomains, duration: 8000 },
+  { id: "signals", component: SignalDemo, duration: 8000 },
+  { id: "playbook", component: PlaybookDemo, duration: 8000 },
+  { id: "activation", component: ActivationDemo, duration: 8000 },
+  { id: "integrations", component: IntegrationsDemo, duration: 8000 },
+  { id: "command", component: CommandCenterDemo, duration: 9000 },
+  { id: "metrics", component: MetricsDemo, duration: 8000 },
+  { id: "outro", component: Outro, duration: 8000 },
 ];
 
 export default function VideoIntro({ onComplete, onSkip }: VideoIntroProps) {
