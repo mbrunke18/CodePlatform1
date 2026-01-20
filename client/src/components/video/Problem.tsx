@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
-import { AlertTriangle, Clock, Users, DollarSign } from "lucide-react";
+import { AlertTriangle, Clock, Users, DollarSign, Zap, Scale } from "lucide-react";
 
 interface SceneProps {
   progress: number;
@@ -12,6 +12,11 @@ const problems = [
   { icon: Users, text: "Teams working in silos", color: "#f97316" },
   { icon: DollarSign, text: "$4.88M average breach cost", color: "#eab308" },
   { icon: AlertTriangle, text: "Competitors move faster", color: "#dc2626" },
+];
+
+const whyNow = [
+  { icon: Zap, text: "AI disruption accelerating", color: "#a855f7" },
+  { icon: Scale, text: "Regulatory windows shrinking", color: "#3b82f6" },
 ];
 
 export function Problem({ progress }: SceneProps) {
@@ -29,49 +34,72 @@ export function Problem({ progress }: SceneProps) {
         transition={{ duration: 4, repeat: Infinity }}
       />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-8">
+      <div className="relative z-10 max-w-5xl mx-auto px-8">
         <TextPunch 
           text="The Problem" 
           size="xl" 
-          className="text-red-500 mb-12 text-center"
+          className="text-red-500 mb-6 text-center"
         />
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="text-2xl md:text-3xl text-white/80 text-center mb-12"
+          transition={{ delay: 0.3 }}
+          className="text-xl md:text-2xl text-white/80 text-center mb-8"
         >
           When a strategic event hits, organizations <span className="text-red-400 font-bold">scramble</span>.
         </motion.p>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 gap-4 mb-6">
           {problems.map((problem, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.8 + i * 0.3 }}
-              className="bg-white/5 border border-red-500/20 rounded-xl p-6 flex items-center gap-4"
+              transition={{ delay: 0.5 + i * 0.2 }}
+              className="bg-white/5 border border-red-500/20 rounded-xl p-4 flex items-center gap-3"
             >
               <div 
-                className="w-12 h-12 rounded-full flex items-center justify-center"
+                className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
                 style={{ backgroundColor: `${problem.color}20` }}
               >
-                <problem.icon className="w-6 h-6" style={{ color: problem.color }} />
+                <problem.icon className="w-5 h-5" style={{ color: problem.color }} />
               </div>
-              <p className="text-white/90 text-lg font-medium">{problem.text}</p>
+              <p className="text-white/90 text-sm font-medium">{problem.text}</p>
             </motion.div>
           ))}
         </div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.5 }}
+          className="border-t border-white/10 pt-6"
+        >
+          <p className="text-center text-white/50 text-sm mb-4 uppercase tracking-wider">Why This Matters Now</p>
+          <div className="flex justify-center gap-6">
+            {whyNow.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.8 + i * 0.2 }}
+                className="flex items-center gap-2"
+              >
+                <item.icon className="w-5 h-5" style={{ color: item.color }} />
+                <span className="text-white/70 text-sm">{item.text}</span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2.5 }}
-          className="text-xl text-white/60 text-center mt-12"
+          transition={{ delay: 2.3 }}
+          className="text-lg text-white/60 text-center mt-6"
         >
-          Strategy-execution gap costs Fortune 500 companies <span className="text-red-400">$900B annually</span>.
+          Strategy-execution gap costs Fortune 500 companies <span className="text-red-400 font-bold">$900B annually</span>.
         </motion.p>
       </div>
     </div>

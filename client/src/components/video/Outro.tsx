@@ -101,14 +101,24 @@ export function Outro({ progress }: SceneProps) {
           </Link>
         </motion.div>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.8 }}
-          className="mt-12 text-white/40 text-sm"
+          className="mt-10 pt-6 border-t border-white/10"
         >
-          18-month head start. 166 playbooks built. Platform validated.
-        </motion.p>
+          <p className="text-white/50 text-xs uppercase tracking-wider mb-3">Investor Ready</p>
+          <div className="flex items-center justify-center gap-6 text-sm">
+            <span className="text-[#D4AF37]">18-month head start</span>
+            <span className="text-white/30">•</span>
+            <span className="text-[#00A8A8]">166 playbooks built</span>
+            <span className="text-white/30">•</span>
+            <span className="text-white">Platform validated</span>
+          </div>
+          <p className="text-white/40 text-xs mt-4">
+            $900B market opportunity • Fortune 1000 target customers
+          </p>
+        </motion.div>
       </div>
     </div>
   );

@@ -14,7 +14,8 @@ const phases = [
     module: "ExecuteIQ Playbook™",
     icon: ClipboardList, 
     color: "#3B82F6",
-    description: "Build your playbook library"
+    description: "Build your playbook library",
+    outcome: "166 playbooks ready"
   },
   { 
     id: "detect", 
@@ -22,7 +23,8 @@ const phases = [
     module: "ExecuteIQ Signal™",
     icon: Radar, 
     color: "#10B981",
-    description: "AI monitors for triggers"
+    description: "AI monitors for triggers",
+    outcome: "72h early warning"
   },
   { 
     id: "execute", 
@@ -30,7 +32,8 @@ const phases = [
     module: "ExecuteIQ Compass™",
     icon: Play, 
     color: "#F59E0B",
-    description: "12-minute coordinated response"
+    description: "Coordinated response",
+    outcome: "12-min activation"
   },
   { 
     id: "advance", 
@@ -38,7 +41,8 @@ const phases = [
     module: "ExecuteIQ Retrospect™",
     icon: TrendingUp, 
     color: "#8B5CF6",
-    description: "Capture institutional learning"
+    description: "Capture learning",
+    outcome: "Continuous improvement"
   },
 ];
 
@@ -87,6 +91,14 @@ export function IDEAFramework({ progress }: SceneProps) {
                 <p className="text-white font-bold text-lg text-center">{phase.name}</p>
                 <p className="text-xs text-center mt-1" style={{ color: phase.color }}>{phase.module}</p>
                 <p className="text-white/50 text-xs text-center mt-2 max-w-[120px]">{phase.description}</p>
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: i <= activePhase ? 1 : 0 }}
+                  className="text-xs text-center mt-2 font-semibold px-2 py-1 rounded-full"
+                  style={{ backgroundColor: `${phase.color}30`, color: phase.color }}
+                >
+                  {phase.outcome}
+                </motion.p>
               </motion.div>
               
               {i < phases.length - 1 && (

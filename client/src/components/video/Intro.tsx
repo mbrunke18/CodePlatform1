@@ -75,16 +75,17 @@ export function Intro({ progress }: SceneProps) {
           transition={{ delay: 1 }}
           className="text-xl md:text-2xl text-white/70 max-w-xl mx-auto"
         >
-          That's how long it takes most organizations to respond to a crisis.
+          That's how long it takes Fortune 1000 companies to coordinate a strategic response.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 1.5 }}
-          className="mt-8 text-[#D4AF37] text-lg font-medium"
+          className="mt-8"
         >
-          We do it in 12 minutes.
+          <p className="text-[#D4AF37] text-2xl font-bold">We do it in 12 minutes.</p>
+          <p className="text-white/50 text-sm mt-2">That's a 340x improvement.</p>
         </motion.div>
       </div>
     </div>
