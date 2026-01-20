@@ -77,7 +77,6 @@ export default function Homepage() {
   if (showIntro) {
     return (
       <div className="relative min-h-screen bg-slate-950" data-testid="cinematic-intro">
-        <StandardNav />
         <VideoIntro onComplete={handleSkipIntro} onSkip={handleSkipIntro} />
         <div className="fixed bottom-8 right-8 z-50">
           <Button
