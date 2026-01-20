@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
-import { Radar, AlertCircle, TrendingUp, Globe, Zap } from "lucide-react";
+import { Radar, AlertCircle, TrendingUp, Globe, Zap, Clock, DollarSign } from "lucide-react";
 
 interface SceneProps {
   progress: number;
@@ -8,10 +8,10 @@ interface SceneProps {
 }
 
 const signals = [
-  { source: "SEC Filing", message: "Competitor XYZ filed 8-K: Major acquisition announced", severity: "high", time: "2 min ago" },
-  { source: "News Wire", message: "Industry regulation change proposed in EU Parliament", severity: "medium", time: "5 min ago" },
-  { source: "Social", message: "Trending: Customer complaints about competitor product", severity: "low", time: "8 min ago" },
-  { source: "Market Data", message: "Unusual trading volume detected in sector", severity: "medium", time: "12 min ago" },
+  { source: "SEC Filing", message: "Competitor XYZ filed 8-K: Major acquisition announced", severity: "high", time: "2 min ago", impact: "$2.4B deal" },
+  { source: "News Wire", message: "Industry regulation change proposed in EU Parliament", severity: "medium", time: "5 min ago", impact: "Q2 deadline" },
+  { source: "Social", message: "Trending: Customer complaints about competitor product", severity: "low", time: "8 min ago", impact: "Market opportunity" },
+  { source: "Market Data", message: "Unusual trading volume detected in sector", severity: "medium", time: "12 min ago", impact: "Potential M&A" },
 ];
 
 export function SignalDemo({ progress }: SceneProps) {
@@ -36,19 +36,37 @@ export function SignalDemo({ progress }: SceneProps) {
       </motion.div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-8 w-full">
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex items-center justify-center gap-8 mb-6 bg-white/5 rounded-xl p-3"
+        >
+          <div className="flex items-center gap-2">
+            <Clock className="w-4 h-4 text-[#D4AF37]" />
+            <span className="text-white/70 text-sm">Without ExecuteIQ:</span>
+            <span className="text-red-400 font-bold">72+ hours to notice</span>
+          </div>
+          <div className="w-px h-6 bg-white/20" />
+          <div className="flex items-center gap-2">
+            <Zap className="w-4 h-4 text-[#00A8A8]" />
+            <span className="text-white/70 text-sm">With ExecuteIQ:</span>
+            <span className="text-[#00A8A8] font-bold">Real-time detection</span>
+          </div>
+        </motion.div>
+
         <div className="grid grid-cols-2 gap-8">
           <div>
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-4">
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                className="w-12 h-12 bg-[#00A8A8]/20 rounded-xl flex items-center justify-center"
+                className="w-10 h-10 bg-[#00A8A8]/20 rounded-xl flex items-center justify-center"
               >
-                <Radar className="w-6 h-6 text-[#00A8A8]" />
+                <Radar className="w-5 h-5 text-[#00A8A8]" />
               </motion.div>
               <div>
-                <TextPunch text="Signal Intelligence" size="md" className="text-white" />
-                <p className="text-[#00A8A8] text-sm">ExecuteIQ Signal™ Active</p>
+                <TextPunch text="Signal Intelligence" size="sm" className="text-white" />
+                <p className="text-[#00A8A8] text-xs">Monitoring 50+ data sources</p>
               </div>
             </div>
 
@@ -65,13 +83,14 @@ export function SignalDemo({ progress }: SceneProps) {
                   }`}
                 >
                   <div className="flex items-start gap-3">
-                    <Globe className="w-4 h-4 text-white/40 mt-1" />
-                    <div className="flex-1">
+                    <Globe className="w-4 h-4 text-white/40 mt-1 flex-shrink-0" />
+                    <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between">
                         <span className="text-xs text-[#00A8A8]">{signal.source}</span>
                         <span className="text-xs text-white/40">{signal.time}</span>
                       </div>
-                      <p className="text-white text-sm mt-1">{signal.message}</p>
+                      <p className="text-white text-xs mt-1 truncate">{signal.message}</p>
+                      <span className="text-[#D4AF37] text-xs font-medium">{signal.impact}</span>
                     </div>
                   </div>
                 </motion.div>

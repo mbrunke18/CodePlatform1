@@ -36,10 +36,34 @@ export function ActivationDemo({ progress }: SceneProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="text-center text-white/60 text-lg mb-8"
+          className="text-center text-white/60 text-lg mb-4"
         >
           One click deploys the entire response team
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5 }}
+          className="flex items-center justify-center gap-4 mb-6"
+        >
+          <div className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-center">
+            <p className="text-white/50 text-xs">Stakeholders notified</p>
+            <p className="text-[#00A8A8] font-bold text-lg">Automatically</p>
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-center">
+            <p className="text-white/50 text-xs">Tasks assigned</p>
+            <p className="text-[#D4AF37] font-bold text-lg">By Role</p>
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-center">
+            <p className="text-white/50 text-xs">Budgets unlocked</p>
+            <p className="text-green-400 font-bold text-lg">Pre-approved</p>
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-center">
+            <p className="text-white/50 text-xs">Documents staged</p>
+            <p className="text-purple-400 font-bold text-lg">Ready to send</p>
+          </div>
+        </motion.div>
 
         <div className="grid grid-cols-2 gap-6">
           <div className="space-y-3">

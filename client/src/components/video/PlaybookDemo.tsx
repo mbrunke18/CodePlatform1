@@ -38,10 +38,26 @@ export function PlaybookDemo({ progress }: SceneProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="text-center text-white/60 text-lg mb-8"
+          className="text-center text-white/60 text-lg mb-4"
         >
           Across 9 strategic domains. Ready to deploy in seconds.
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="flex items-center justify-center gap-6 mb-6 text-sm"
+        >
+          <div className="flex items-center gap-2 bg-red-500/10 border border-red-500/30 rounded-lg px-3 py-2">
+            <span className="text-white/70">Without playbooks:</span>
+            <span className="text-red-400 font-bold">20-50 hours of chaos</span>
+          </div>
+          <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-lg px-3 py-2">
+            <span className="text-white/70">With ExecuteIQ:</span>
+            <span className="text-green-400 font-bold">Everyone knows their role</span>
+          </div>
+        </motion.div>
 
         <div className="grid grid-cols-3 gap-4">
           {playbooks.map((playbook, i) => (
@@ -58,24 +74,30 @@ export function PlaybookDemo({ progress }: SceneProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5 }}
-          className="mt-8 text-center"
+          className="mt-6 text-center"
         >
-          <div className="inline-flex items-center gap-6 bg-white/5 rounded-xl px-8 py-4">
+          <div className="inline-flex items-center gap-6 bg-white/5 rounded-xl px-6 py-3">
             <div className="text-center">
-              <p className="text-3xl font-bold text-[#D4AF37]">166</p>
+              <p className="text-2xl font-bold text-[#D4AF37]">166</p>
               <p className="text-xs text-white/50">Playbooks</p>
             </div>
             <div className="w-px h-8 bg-white/20" />
             <div className="text-center">
-              <p className="text-3xl font-bold text-[#00A8A8]">9</p>
+              <p className="text-2xl font-bold text-[#00A8A8]">9</p>
               <p className="text-xs text-white/50">Domains</p>
             </div>
             <div className="w-px h-8 bg-white/20" />
             <div className="text-center">
-              <p className="text-3xl font-bold text-white">2,400+</p>
+              <p className="text-2xl font-bold text-white">2,400+</p>
               <p className="text-xs text-white/50">Pre-built Tasks</p>
             </div>
+            <div className="w-px h-8 bg-white/20" />
+            <div className="text-center">
+              <p className="text-2xl font-bold text-green-400">18 mo</p>
+              <p className="text-xs text-white/50">Head Start</p>
+            </div>
           </div>
+          <p className="text-white/40 text-xs mt-3">Each playbook represents weeks of expert strategic planning—ready to deploy instantly</p>
         </motion.div>
       </div>
     </div>

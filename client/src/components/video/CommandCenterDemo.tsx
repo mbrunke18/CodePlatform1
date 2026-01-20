@@ -31,7 +31,7 @@ export function CommandCenterDemo({ progress }: SceneProps) {
   return (
     <div className="relative w-full h-full bg-gradient-to-br from-[#1A2B3D] via-[#0f1a26] to-[#0a0a0f] flex items-center justify-center overflow-hidden">
       <div className="relative z-10 max-w-6xl mx-auto px-8 w-full">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <motion.div
               animate={{ scale: [1, 1.1, 1] }}
@@ -52,6 +52,18 @@ export function CommandCenterDemo({ progress }: SceneProps) {
             <span className="text-white/50 text-sm">/ 12:00</span>
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="flex items-center justify-center gap-6 mb-4 bg-gradient-to-r from-green-500/10 via-transparent to-green-500/10 rounded-lg p-2"
+        >
+          <p className="text-white/70 text-sm">Real-time visibility:</p>
+          <span className="text-green-400 text-sm font-medium">Every stakeholder • Every task • Every decision</span>
+          <p className="text-white/50 text-sm">|</p>
+          <span className="text-[#D4AF37] text-sm font-medium">No more "who's doing what?"</span>
+        </motion.div>
 
         <div className="grid grid-cols-3 gap-6">
           <div className="col-span-2 bg-white/5 border border-white/10 rounded-xl p-5">
