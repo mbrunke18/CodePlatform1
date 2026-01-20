@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
+import { NarrationBox } from "./NarrationBox";
 import { ClipboardList, Radar, Play, TrendingUp, ArrowRight, LayoutDashboard } from "lucide-react";
 
 interface SceneProps {
@@ -133,6 +134,12 @@ export function IDEAFramework({ progress }: SceneProps) {
           </p>
         </motion.div>
       </div>
+      
+      <NarrationBox 
+        headline="The IDEA Framework"
+        description="Four phases work together: Identify playbooks, Detect triggers, Execute responses, and Advance through learning."
+        delay={0.5}
+      />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
+import { NarrationBox } from "./NarrationBox";
 import { Activity, Users, Clock, CheckCircle2, AlertTriangle, MessageSquare } from "lucide-react";
 
 interface SceneProps {
@@ -169,6 +170,12 @@ export function CommandCenterDemo({ progress }: SceneProps) {
           </div>
         </div>
       </div>
+      
+      <NarrationBox 
+        headline="Real-Time Command Center"
+        description="Track every stakeholder, every task, and every decision in real-time. No more wondering 'who's doing what?'"
+        delay={0.5}
+      />
     </div>
   );
 }

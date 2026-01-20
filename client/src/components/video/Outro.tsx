@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
+import { NarrationBox } from "./NarrationBox";
 import { ArrowRight, Calendar } from "lucide-react";
 import { Link } from "wouter";
 
@@ -120,6 +121,12 @@ export function Outro({ progress }: SceneProps) {
           </p>
         </motion.div>
       </div>
+      
+      <NarrationBox 
+        headline="Ready to Transform Your Execution?"
+        description="Try the demo or start a pilot program to see ExecuteIQ in action for your organization."
+        delay={0.5}
+      />
     </div>
   );
 }

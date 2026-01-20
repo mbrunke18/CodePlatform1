@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
+import { NarrationBox } from "./NarrationBox";
 import { 
   Target, Building, Rocket, AlertTriangle, Shield, 
   Scale, Cpu, Swords, Brain 
@@ -106,6 +107,12 @@ export function StrategicDomains({ progress }: SceneProps) {
           <p className="text-white/60 text-sm">Ready to customize and deploy in minutes</p>
         </motion.div>
       </div>
+      
+      <NarrationBox 
+        headline="Complete Strategic Coverage"
+        description="Nine domains across Offense, Defense, and Special Teams ensure you're prepared for any scenario."
+        delay={0.5}
+      />
     </div>
   );
 }

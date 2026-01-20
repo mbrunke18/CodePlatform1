@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
+import { NarrationBox } from "./NarrationBox";
 
 interface SceneProps {
   progress: number;
@@ -88,6 +89,12 @@ export function Intro({ progress }: SceneProps) {
           <p className="text-white/50 text-sm mt-2">That's a 340x improvement.</p>
         </motion.div>
       </div>
+      
+      <NarrationBox 
+        headline="The Speed Gap"
+        description="Fortune 1000 companies take 72 hours to coordinate strategic responses. ExecuteIQ does it in 12 minutes."
+        delay={0.5}
+      />
     </div>
   );
 }

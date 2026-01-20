@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
+import { NarrationBox } from "./NarrationBox";
 import { FakeRoleAssignment } from "./FakeRoleAssignment";
 import { Zap, CheckCircle2 } from "lucide-react";
 
@@ -117,6 +118,12 @@ export function ActivationDemo({ progress }: SceneProps) {
           </div>
         </div>
       </div>
+      
+      <NarrationBox 
+        headline="Instant Team Activation"
+        description="One click deploys the entire response team with pre-assigned tasks, pre-approved budgets, and staged documents."
+        delay={0.5}
+      />
     </div>
   );
 }

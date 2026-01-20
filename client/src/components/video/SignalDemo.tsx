@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { TextPunch } from "./TextPunch";
+import { NarrationBox } from "./NarrationBox";
 import { Radar, AlertCircle, TrendingUp, Globe, Zap, Clock, DollarSign } from "lucide-react";
 
 interface SceneProps {
@@ -129,8 +130,12 @@ export function SignalDemo({ progress }: SceneProps) {
           </div>
         </div>
       </div>
+      
+      <NarrationBox 
+        headline="Real-Time Signal Detection"
+        description="AI continuously scans 50+ data sources to detect strategic triggers before your competitors even notice them."
+        delay={0.5}
+      />
     </div>
   );
 }
-
-import { AnimatePresence } from "framer-motion";

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
+import { NarrationBox } from "./NarrationBox";
 import { Zap, ClipboardList, Radar, Play, TrendingUp } from "lucide-react";
 
 interface SceneProps {
@@ -111,6 +112,12 @@ export function Solution({ progress }: SceneProps) {
           <span className="text-white/70">from trigger to full execution</span>
         </motion.div>
       </div>
+      
+      <NarrationBox 
+        headline="Introducing ExecuteIQ"
+        description="The Strategic Execution OS that bridges the gap between strategy and action using the IDEA Framework."
+        delay={0.5}
+      />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
+import { NarrationBox } from "./NarrationBox";
 import { SiSlack, SiJira, SiSalesforce } from "react-icons/si";
 import { Mail, Calendar, FileText, Users, CheckCircle, MessageSquare, Wrench } from "lucide-react";
 
@@ -133,6 +134,12 @@ export function IntegrationsDemo({ progress }: SceneProps) {
           </div>
         </div>
       </div>
+      
+      <NarrationBox 
+        headline="Seamless Enterprise Integration"
+        description="ExecuteIQ connects to Jira, Slack, Teams, Salesforce, and more—automatically creating tasks and notifying teams."
+        delay={0.5}
+      />
     </div>
   );
 }

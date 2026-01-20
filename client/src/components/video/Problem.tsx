@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
+import { NarrationBox } from "./NarrationBox";
 import { AlertTriangle, Clock, Users, DollarSign, Zap, Scale } from "lucide-react";
 
 interface SceneProps {
@@ -102,6 +103,12 @@ export function Problem({ progress }: SceneProps) {
           Strategy-execution gap costs Fortune 500 companies <span className="text-red-400 font-bold">$900B annually</span>.
         </motion.p>
       </div>
+      
+      <NarrationBox 
+        headline="The Coordination Crisis"
+        description="When strategic events hit, organizations spend 20-50 hours just getting organized. That delay costs money and market position."
+        delay={0.5}
+      />
     </div>
   );
 }

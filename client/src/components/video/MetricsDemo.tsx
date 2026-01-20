@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
+import { NarrationBox } from "./NarrationBox";
 import { TrendingUp, Clock, Target, DollarSign, ArrowRight } from "lucide-react";
 
 interface SceneProps {
@@ -103,6 +104,12 @@ export function MetricsDemo({ progress }: SceneProps) {
           </div>
         </motion.div>
       </div>
+      
+      <NarrationBox 
+        headline="Proven Results"
+        description="340x faster response times, 94% task completion, and 10.3% revenue growth—backed by industry research."
+        delay={0.5}
+      />
     </div>
   );
 }

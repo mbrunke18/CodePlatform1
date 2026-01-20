@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
+import { NarrationBox } from "./NarrationBox";
 import { FakePlaybookCard } from "./FakePlaybookCard";
 import { BookOpen } from "lucide-react";
 
@@ -100,6 +101,12 @@ export function PlaybookDemo({ progress }: SceneProps) {
           <p className="text-white/40 text-xs mt-3">Each playbook represents weeks of expert strategic planning—ready to deploy instantly</p>
         </motion.div>
       </div>
+      
+      <NarrationBox 
+        headline="Pre-Built Strategic Playbooks"
+        description="166 battle-tested playbooks eliminate the chaos of figuring out 'who does what' when a crisis or opportunity hits."
+        delay={0.5}
+      />
     </div>
   );
 }
