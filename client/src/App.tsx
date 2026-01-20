@@ -120,6 +120,7 @@ import CompetitivePositioning from "./pages/CompetitivePositioning";
 import PilotProgram from "./pages/PilotProgram";
 import HowItWorks from "./pages/HowItWorks";
 import FounderStory from "./pages/FounderStory";
+import ExecuteIQVideo from "./pages/ExecuteIQVideo";
 import OneClickDemo from "./pages/OneClickDemo";
 import ROICalculator from "./pages/ROICalculator";
 import AgilityAssessment from "./pages/AgilityAssessment";
@@ -292,6 +293,7 @@ function Router() {
         <Route path="/roi-breakdown" component={ComprehensiveROIBreakdown} />
         <Route path="/our-story" component={OurStory} />
         <Route path="/founder-story" component={FounderStory} />
+        <Route path="/executeiq-video" component={ExecuteIQVideo} />
         <Route path="/why-m" component={WhyM} />
         <Route path="/why-poise" component={WhyM} />
         <Route path="/why-executeiq" component={WhyM} />
