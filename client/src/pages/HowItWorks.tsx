@@ -45,7 +45,7 @@ export default function HowItWorks() {
       number: "D",
       name: "DETECT",
       moduleName: "ExecuteIQ Signal™",
-      tagline: "Monitor Signals",
+      tagline: "Detect Signals",
       icon: Radio,
       color: "blue",
       bgGradient: "from-blue-500 to-cyan-500",

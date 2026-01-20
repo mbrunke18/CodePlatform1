@@ -8,10 +8,10 @@ interface SceneProps {
 }
 
 const capabilities = [
-  { icon: Radar, label: "Monitor", desc: "AI-powered signal detection" },
+  { icon: Radar, label: "Detect", desc: "AI signal detection" },
   { icon: BookOpen, label: "Activate", desc: "166 ready playbooks" },
-  { icon: Target, label: "Orchestrate", desc: "12-min coordinated response" },
-  { icon: TrendingUp, label: "Learn", desc: "Continuous improvement" },
+  { icon: Target, label: "Execute", desc: "12-min coordinated response" },
+  { icon: TrendingUp, label: "Advance", desc: "Continuous improvement" },
 ];
 
 export function Solution({ progress }: SceneProps) {

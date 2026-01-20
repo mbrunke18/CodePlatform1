@@ -100,7 +100,7 @@ export default function Homepage() {
       id: 'detect',
       phase: 'D',
       phaseName: 'Detect',
-      title: 'Monitor Signals',
+      title: 'Detect Signals',
       description: 'AI matches signals to playbooks and triggers execution. Not just analysis—action triggers that connect intelligence to execution.',
       aiPositioning: "AI that identifies which playbook to execute—not just what's happening.",
       icon: Radar,

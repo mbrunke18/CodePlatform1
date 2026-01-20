@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
-import { ClipboardList, Radar, Play, TrendingUp, ArrowRight } from "lucide-react";
+import { ClipboardList, Radar, Play, TrendingUp, ArrowRight, LayoutDashboard } from "lucide-react";
 
 interface SceneProps {
   progress: number;
@@ -23,7 +23,7 @@ const phases = [
     module: "ExecuteIQ Signal™",
     icon: Radar, 
     color: "#10B981",
-    description: "AI monitors for triggers",
+    description: "AI detects triggers",
     outcome: "72h early warning"
   },
   { 
@@ -115,14 +115,23 @@ export function IDEAFramework({ progress }: SceneProps) {
           ))}
         </div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5 }}
-          className="text-center text-white/60 text-lg mt-12"
+          className="mt-10 flex flex-col items-center"
         >
-          "That's the <span className="text-[#D4AF37] font-bold">IDEA</span>."
-        </motion.p>
+          <div className="flex items-center gap-3 bg-white/5 border border-[#D4AF37]/30 rounded-xl px-5 py-3">
+            <LayoutDashboard className="w-5 h-5 text-[#D4AF37]" />
+            <div>
+              <p className="text-white text-sm font-medium">ExecuteIQ One™</p>
+              <p className="text-white/50 text-xs">Unified command center for all 4 phases</p>
+            </div>
+          </div>
+          <p className="text-center text-white/60 text-lg mt-4">
+            "That's the <span className="text-[#D4AF37] font-bold">IDEA</span>."
+          </p>
+        </motion.div>
       </div>
     </div>
   );
