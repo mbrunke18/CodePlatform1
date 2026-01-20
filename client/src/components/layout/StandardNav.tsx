@@ -24,12 +24,10 @@ export default function StandardNav() {
   };
 
   const navLinks = [
-    { label: "Why ExecuteIQ", path: "/why-executeiq" },
     { label: "How It Works", path: "/how-it-works" },
-    { label: "Demos", path: "/demo-gallery" },
     { label: "Playbooks", path: "/playbooks" },
+    { label: "For Investors", path: "/investors" },
     { label: "Pricing", path: "/pricing" },
-    { label: "ExecuteIQ One™", path: "/mission-control", featured: true },
   ];
 
   const workspaceLinks = [
@@ -355,21 +353,40 @@ export default function StandardNav() {
           </div>
         </div>
 
-        {/* Mobile Menu - Simplified to match desktop journey */}
+        {/* Mobile Menu - Simplified primary journey */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-slate-800 animate-in slide-in-from-top-2 duration-200">
+          <div className="md:hidden py-4 border-t border-slate-800 animate-in slide-in-from-top-2 duration-200 max-h-[70vh] overflow-y-auto">
             <div className="flex flex-col gap-1">
-              {/* Main Links - Guided Journey */}
+              {/* Primary CTAs - Most prominent */}
+              <Button 
+                onClick={() => navigateTo("/pilot-demo")}
+                className="bg-gradient-to-r from-poise-teal to-cyan-600 text-white w-full justify-center h-12 text-base font-semibold"
+                data-testid="nav-mobile-try-demo"
+              >
+                <Play className="h-5 w-5 mr-2" />
+                Try Demo
+              </Button>
+              
+              <Button 
+                onClick={() => navigateTo("/pilot-program")}
+                variant="outline"
+                className="border-poise-gold/50 text-poise-gold hover:bg-poise-gold/10 w-full justify-center h-11 mt-2"
+                data-testid="nav-mobile-start-pilot"
+              >
+                Start Pilot
+              </Button>
+              
+              <div className="border-t border-slate-800 my-3" />
+              
+              {/* Main Navigation Links */}
               {navLinks.map((link) => (
                 <button
                   key={link.path}
                   onClick={() => navigateTo(link.path)}
                   className={`text-left py-3 px-4 rounded-lg transition-colors ${
-                    (link as any).featured
-                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium'
-                      : isActivePath(link.path)
-                        ? 'text-white bg-slate-800'
-                        : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    isActivePath(link.path)
+                      ? 'text-white bg-slate-800'
+                      : 'text-slate-300 hover:text-white hover:bg-slate-800'
                   }`}
                   data-testid={`nav-mobile-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
                 >
@@ -377,320 +394,73 @@ export default function StandardNav() {
                 </button>
               ))}
               
-              {/* Divider */}
-              <div className="border-t border-slate-800 my-2" />
+              <div className="border-t border-slate-800 my-3" />
               
-              {/* Primary CTAs */}
-              <Button 
-                onClick={() => navigateTo("/pilot-demo")}
-                className="bg-gradient-to-r from-emerald-600 to-cyan-600 text-white w-full justify-center h-11"
-                data-testid="nav-mobile-try-demo"
-              >
-                <Play className="h-4 w-4 mr-2" />
-                Try Demo
-              </Button>
-              
-              <Button 
-                onClick={() => navigateTo("/pilot-program")}
-                variant="outline"
-                className="border-blue-500/50 text-blue-400 hover:bg-blue-950 w-full justify-center h-11 mt-2"
-                data-testid="nav-mobile-start-pilot"
-              >
-                Start Pilot
-              </Button>
-              
-              {/* Divider */}
-              <div className="border-t border-slate-800 my-2" />
-              
-              {/* IDENTIFY - ExecuteIQ Playbook™ */}
-              <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide flex items-center gap-2">
-                <ClipboardList className="h-3 w-3" />
-                IDENTIFY
-                <span className="text-[10px] text-poise-gold/70">Playbook™</span>
-              </p>
-              <div className="grid grid-cols-2 gap-1">
+              {/* Quick Access - Most used features */}
+              <p className="px-4 py-2 text-xs text-white/50 uppercase tracking-wide">Quick Access</p>
+              <div className="grid grid-cols-2 gap-2 px-2">
+                <button
+                  onClick={() => navigateTo("/mission-control")}
+                  className="flex items-center gap-2 py-3 px-3 text-sm text-poise-gold hover:bg-poise-gold/10 rounded-lg border border-poise-gold/30"
+                  data-testid="nav-mobile-mission-control"
+                >
+                  <Compass className="h-4 w-4" />
+                  ExecuteIQ One™
+                </button>
                 <button
                   onClick={() => navigateTo("/playbooks")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
+                  className="flex items-center gap-2 py-3 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg border border-slate-700"
                   data-testid="nav-mobile-playbooks"
                 >
-                  Playbook Library
+                  <ClipboardList className="h-4 w-4" />
+                  166 Playbooks
                 </button>
-                <button
-                  onClick={() => navigateTo("/strategic")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-strategic"
-                >
-                  Scenario Planning
-                </button>
-                <button
-                  onClick={() => navigateTo("/what-if-analyzer")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-what-if"
-                >
-                  What-If Analyzer
-                </button>
-                <button
-                  onClick={() => navigateTo("/board-briefings")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-board-briefings"
-                >
-                  Board Briefings
-                </button>
-              </div>
-              
-              {/* Divider */}
-              <div className="border-t border-slate-800 my-2" />
-              
-              {/* DETECT - ExecuteIQ Signal™ */}
-              <p className="px-4 py-2 text-xs text-poise-teal uppercase tracking-wide flex items-center gap-2">
-                <Radar className="h-3 w-3" />
-                DETECT
-                <span className="text-[10px] text-poise-teal/70">Signal™</span>
-              </p>
-              <div className="grid grid-cols-2 gap-1">
                 <button
                   onClick={() => navigateTo("/signal-intelligence")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
+                  className="flex items-center gap-2 py-3 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg border border-slate-700"
                   data-testid="nav-mobile-signal-intel"
                 >
-                  Signal Intelligence
-                </button>
-                <button
-                  onClick={() => navigateTo("/triggers-management")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-triggers"
-                >
-                  AI Trigger Monitoring
-                </button>
-                <button
-                  onClick={() => navigateTo("/ai-radar")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-ai-radar"
-                >
-                  AI Radar
-                </button>
-                <button
-                  onClick={() => navigateTo("/pulse-intelligence")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-pulse"
-                >
-                  Weak Signal Detection
-                </button>
-              </div>
-              
-              {/* Divider */}
-              <div className="border-t border-slate-800 my-2" />
-              
-              {/* EXECUTE - ExecuteIQ Compass™ */}
-              <p className="px-4 py-2 text-xs text-poise-teal uppercase tracking-wide flex items-center gap-2">
-                <Compass className="h-3 w-3" />
-                EXECUTE
-                <span className="text-[10px] text-poise-teal/70">Compass™</span>
-              </p>
-              <div className="grid grid-cols-2 gap-1">
-                <button
-                  onClick={() => navigateTo("/command-center")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-command-center"
-                >
-                  Command Center
-                </button>
-                <button
-                  onClick={() => navigateTo("/crisis")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-crisis"
-                >
-                  Crisis Response
-                </button>
-                <button
-                  onClick={() => navigateTo("/war-room")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-war-room"
-                >
-                  Situation Room
-                </button>
-                <button
-                  onClick={() => navigateTo("/collaboration")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-collaboration"
-                >
-                  Team Collaboration
-                </button>
-              </div>
-              
-              {/* Divider */}
-              <div className="border-t border-slate-800 my-2" />
-              
-              {/* ADVANCE - ExecuteIQ Retrospect™ */}
-              <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide flex items-center gap-2">
-                <TrendingUp className="h-3 w-3" />
-                ADVANCE
-                <span className="text-[10px] text-poise-gold/70">Retrospect™</span>
-              </p>
-              <div className="grid grid-cols-2 gap-1">
-                <button
-                  onClick={() => navigateTo("/institutional-memory")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-institutional-memory"
-                >
-                  Institutional Memory
-                </button>
-                <button
-                  onClick={() => navigateTo("/decision-velocity")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-decision-velocity"
-                >
-                  Decision Velocity
+                  <Radar className="h-4 w-4" />
+                  Signal Hub
                 </button>
                 <button
                   onClick={() => navigateTo("/executive-dashboard")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
+                  className="flex items-center gap-2 py-3 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg border border-slate-700"
                   data-testid="nav-mobile-exec-dashboard"
                 >
-                  Executive Dashboard
-                </button>
-                <button
-                  onClick={() => navigateTo("/analytics")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-analytics"
-                >
-                  Executive Analytics
+                  <BarChart3 className="h-4 w-4" />
+                  Dashboard
                 </button>
               </div>
               
-              {/* Divider */}
-              <div className="border-t border-slate-800 my-2" />
+              <div className="border-t border-slate-800 my-3" />
               
-              {/* Demos */}
-              <p className="px-4 py-2 text-xs text-pink-400 uppercase tracking-wide flex items-center gap-2">
-                <Play className="h-3 w-3" />
-                Demos
-              </p>
-              <div className="grid grid-cols-2 gap-1">
-                <button
-                  onClick={() => navigateTo("/executive-simulation")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-exec-simulation"
-                >
-                  Executive Simulation
-                </button>
-                <button
-                  onClick={() => navigateTo("/sandbox-demo")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-sandbox"
-                >
-                  Interactive Sandbox
-                </button>
-                <button
-                  onClick={() => navigateTo("/investor-demo")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-investor-demo"
-                >
-                  Investor Demo
-                </button>
-                <button
-                  onClick={() => navigateTo("/product-tour")}
-                  className="text-left py-2 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-product-tour"
-                >
-                  Product Tour
-                </button>
-              </div>
-              
-              {/* Divider */}
-              <div className="border-t border-slate-800 my-2" />
-              
-              {/* Company */}
-              <p className="px-4 py-2 text-xs text-slate-500 uppercase tracking-wide flex items-center gap-2">
-                <Building className="h-3 w-3" />
-                Company
-              </p>
-              <div className="grid grid-cols-2 gap-1">
-                <button
-                  onClick={() => navigateTo("/how-it-works")}
-                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-how-it-works"
-                >
-                  How It Works
-                </button>
-                <button
-                  onClick={() => navigateTo("/our-story")}
-                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-our-story"
-                >
-                  Our Story
-                </button>
-                <button
-                  onClick={() => navigateTo("/founder-story")}
-                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-founder-story"
-                >
-                  Founder's Story
-                </button>
-                <button
-                  onClick={() => navigateTo("/why-executeiq")}
-                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-why-executeiq"
-                >
-                  Why ExecuteIQ
-                </button>
-                <button
-                  onClick={() => navigateTo("/integrations")}
-                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
-                  data-testid="nav-mobile-integrations"
-                >
-                  Integrations
-                </button>
+              {/* Company Links */}
+              <div className="flex flex-wrap gap-2 px-4">
                 <button
                   onClick={() => navigateTo("/contact")}
-                  className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg col-span-2"
-                  data-testid="nav-mobile-contact"
+                  className="text-sm text-slate-400 hover:text-white"
                 >
                   Contact
                 </button>
+                <span className="text-slate-600">•</span>
+                <button
+                  onClick={() => navigateTo("/our-story")}
+                  className="text-sm text-slate-400 hover:text-white"
+                >
+                  Our Story
+                </button>
+                <span className="text-slate-600">•</span>
+                <button
+                  onClick={() => navigateTo("/integrations")}
+                  className="text-sm text-slate-400 hover:text-white"
+                >
+                  Integrations
+                </button>
               </div>
               
-              {/* Management Links (for logged-in users) */}
-              {isAuthenticated && (
-                <>
-                  <div className="border-t border-slate-800 my-2" />
-                  <p className="px-3 py-1 text-xs text-slate-500 uppercase tracking-wider">Management</p>
-                  <div className="grid grid-cols-2 gap-1">
-                    <button
-                      onClick={() => navigateTo("/playbook-management")}
-                      className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
-                      data-testid="nav-mobile-playbook-mgmt"
-                    >
-                      Playbooks
-                    </button>
-                    <button
-                      onClick={() => navigateTo("/task-management")}
-                      className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
-                      data-testid="nav-mobile-task-mgmt"
-                    >
-                      Tasks
-                    </button>
-                    <button
-                      onClick={() => navigateTo("/stakeholder-management")}
-                      className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
-                      data-testid="nav-mobile-stakeholder-mgmt"
-                    >
-                      Stakeholders
-                    </button>
-                    <button
-                      onClick={() => navigateTo("/triggers-management")}
-                      className="text-left py-2 px-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg"
-                      data-testid="nav-mobile-triggers-mgmt"
-                    >
-                      Triggers
-                    </button>
-                  </div>
-                </>
-              )}
-              
               {/* Auth */}
-              <div className="border-t border-slate-800 my-2" />
+              <div className="border-t border-slate-800 my-3" />
               {isAuthenticated && user ? (
                 <div className="flex items-center justify-between px-3 py-2">
                   <div className="flex items-center gap-2">

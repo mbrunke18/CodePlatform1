@@ -72,6 +72,7 @@ import WhyM from "./pages/WhyM";
 import Research from "./pages/Research";
 import Contact from "./pages/Contact";
 import Pricing from "./pages/Pricing";
+import Investors from "./pages/Investors";
 import PilotMonitoring from "./pages/PilotMonitoring";
 import CrisisExposureMatrix from "./pages/CrisisExposureMatrix";
 import SimulationStudio from "./pages/SimulationStudio";
@@ -300,6 +301,8 @@ function Router() {
         <Route path="/research" component={Research} />
         <Route path="/how-it-works" component={HowItWorks} />
         <Route path="/pricing" component={Pricing} />
+        <Route path="/investors" component={Investors} />
+        <Route path="/for-investors" component={Investors} />
         <Route path="/competitive-positioning" component={CompetitivePositioning} />
         <Route path="/pilot-program" component={PilotProgram} />
         <Route path="/contact" component={Contact} />
