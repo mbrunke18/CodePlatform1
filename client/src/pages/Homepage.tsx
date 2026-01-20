@@ -33,7 +33,7 @@ import {
 import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
-import CinematicHero from "@/components/marketing/CinematicHero";
+import VideoIntro from "@/components/marketing/VideoIntro";
 import { StrategyReality, StrategyToIDEA } from "@/components/marketing/StrategyReality";
 
 const INTRO_SEEN_KEY = "poise_intro_seen_session";
@@ -78,7 +78,7 @@ export default function Homepage() {
     return (
       <div className="relative min-h-screen bg-slate-950" data-testid="cinematic-intro">
         <StandardNav />
-        <CinematicHero onSkip={handleSkipIntro} />
+        <VideoIntro onComplete={handleSkipIntro} onSkip={handleSkipIntro} />
         <div className="fixed bottom-8 right-8 z-50">
           <Button
             variant="ghost"
