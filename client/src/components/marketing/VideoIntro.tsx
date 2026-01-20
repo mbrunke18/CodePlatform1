@@ -103,43 +103,33 @@ export default function VideoIntro({ onComplete, onSkip }: VideoIntroProps) {
         Skip to Site
       </Button>
 
-      <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/80 to-transparent p-6">
-        <div className="w-full bg-white/20 rounded-full h-1.5 mb-4">
-          <motion.div 
-            className="bg-[#D4AF37] h-1.5 rounded-full"
-            style={{ width: `${overallPercent}%` }}
-          />
+      {/* Minimal progress indicator - bottom left corner */}
+      <div className="absolute bottom-4 left-4 z-30 flex items-center gap-2 opacity-40 hover:opacity-100 transition-opacity">
+        <div className="flex items-center gap-0.5">
+          {SCENES.map((scene, idx) => (
+            <div
+              key={scene.id}
+              className={`h-1 rounded-full transition-all ${
+                idx === currentScene ? "bg-[#D4AF37] w-4" : 
+                idx < currentScene ? "bg-[#D4AF37]/50 w-1.5" : "bg-white/20 w-1.5"
+              }`}
+            />
+          ))}
         </div>
-
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1">
-            {SCENES.map((scene, idx) => (
-              <div
-                key={scene.id}
-                className={`h-2 rounded-full transition-all ${
-                  idx === currentScene ? "bg-[#D4AF37] w-6" : 
-                  idx < currentScene ? "bg-[#D4AF37]/60 w-3" : "bg-white/30 w-3"
-                }`}
-              />
-            ))}
-          </div>
-
-          <div className="flex items-center gap-3">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMuted(!isMuted)}
-              className="text-white hover:bg-white/10"
-            >
-              {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-            </Button>
-          </div>
-
-          <div className="text-sm text-white/60 font-mono">
-            {Math.floor(overallProgress / 1000)}s / {Math.floor(totalDuration / 1000)}s
-          </div>
-        </div>
+        <span className="text-[10px] text-white/40 font-mono ml-1">
+          {Math.floor(overallProgress / 1000)}s
+        </span>
       </div>
+
+      {/* Mute button - bottom right corner */}
+      <Button
+        variant="ghost"
+        size="sm"
+        onClick={() => setIsMuted(!isMuted)}
+        className="absolute bottom-4 right-4 z-30 text-white/40 hover:text-white hover:bg-white/10 opacity-40 hover:opacity-100 transition-opacity h-8 w-8 p-0"
+      >
+        {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+      </Button>
     </div>
   );
 }
