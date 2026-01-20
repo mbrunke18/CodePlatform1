@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
-import { Zap, Radar, BookOpen, Target, TrendingUp } from "lucide-react";
+import { Zap, ClipboardList, Radar, Play, TrendingUp } from "lucide-react";
 
 interface SceneProps {
   progress: number;
@@ -8,9 +8,9 @@ interface SceneProps {
 }
 
 const capabilities = [
+  { icon: ClipboardList, label: "Identify", desc: "166 ready playbooks" },
   { icon: Radar, label: "Detect", desc: "AI signal detection" },
-  { icon: BookOpen, label: "Activate", desc: "166 ready playbooks" },
-  { icon: Target, label: "Execute", desc: "12-min coordinated response" },
+  { icon: Play, label: "Execute", desc: "12-min coordinated response" },
   { icon: TrendingUp, label: "Advance", desc: "Continuous improvement" },
 ];
 
