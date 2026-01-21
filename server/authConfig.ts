@@ -138,13 +138,20 @@ export const PUBLIC_ROUTES = [
   
   // Deal Risk Demo - public demo for pipeline risk detection
   '/api/demo/deal-risk/status',
-  '/api/demo/deal-risk/identify/connect',
-  '/api/demo/deal-risk/identify/playbooks',
+  '/api/demo/deal-risk/identify/connect-salesforce',
+  '/api/demo/deal-risk/identify/connect-slack',
+  '/api/demo/deal-risk/identify/connect-jira',
+  '/api/demo/deal-risk/identify/connect-calendar',
+  '/api/demo/deal-risk/identify/select-playbook',
   '/api/demo/deal-risk/identify/pipeline',
-  '/api/demo/deal-risk/detect/start',
-  '/api/demo/deal-risk/detect/stop',
-  '/api/demo/deal-risk/execute/activate',
-  '/api/demo/deal-risk/advance/capture-learnings',
+  '/api/demo/deal-risk/detect/start-monitoring',
+  '/api/demo/deal-risk/detect/stop-monitoring',
+  '/api/demo/deal-risk/detect/triggers',
+  '/api/demo/deal-risk/detect/current-alerts',
+  '/api/demo/deal-risk/execute/trigger',
+  '/api/demo/deal-risk/execute/timeline',
+  '/api/demo/deal-risk/advance/complete',
+  '/api/demo/deal-risk/advance/roi',
   '/api/demo/deal-risk/reset',
   
   // Configuration - needed for CustomerContext and landing page
