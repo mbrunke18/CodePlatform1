@@ -45,7 +45,7 @@ export default function DealRiskDemo() {
 
   const { data: pipeline } = useQuery({
     queryKey: ['/api/demo/deal-risk/identify/pipeline'],
-    enabled: currentPhase === 'identify',
+    enabled: currentPhase === 'identify' || currentPhase === 'detect',
   });
 
   const resetMutation = useMutation({
