@@ -9,10 +9,10 @@ interface SceneProps {
 }
 
 const metrics = [
-  { icon: Clock, label: "Response Time", value: "340x", subtext: "faster than industry", color: "#D4AF37" },
-  { icon: Target, label: "Execution Rate", value: "94%", subtext: "task completion", color: "#00A8A8" },
-  { icon: DollarSign, label: "Revenue Impact", value: "10.3%", subtext: "growth improvement", color: "#22c55e" },
-  { icon: TrendingUp, label: "First Year ROI", value: "847%", subtext: "validated return", color: "#8b5cf6" },
+  { icon: Clock, label: "Execution Speed", value: "10x", subtext: "faster (McKinsey)", color: "#D4AF37" },
+  { icon: Target, label: "Time Saved", value: "98 days", subtext: "with AI automation", color: "#00A8A8" },
+  { icon: DollarSign, label: "Cost Avoided", value: "$2.2M", subtext: "per breach (IBM)", color: "#22c55e" },
+  { icon: TrendingUp, label: "Crisis Response", value: "3.5x", subtext: "faster coordination", color: "#8b5cf6" },
 ];
 
 export function MetricsDemo({ progress }: SceneProps) {
@@ -43,12 +43,12 @@ export function MetricsDemo({ progress }: SceneProps) {
           className="flex items-center justify-center gap-6 mb-10"
         >
           <div className="text-center">
-            <p className="text-red-400 text-4xl font-bold line-through opacity-60">72 hours</p>
-            <p className="text-white/40 text-sm">Industry Standard</p>
+            <p className="text-red-400 text-4xl font-bold line-through opacity-60">Days</p>
+            <p className="text-white/40 text-sm">Traditional Response</p>
           </div>
           <ArrowRight className="w-8 h-8 text-[#D4AF37]" />
           <div className="text-center">
-            <p className="text-[#D4AF37] text-4xl font-bold">12 minutes</p>
+            <p className="text-[#D4AF37] text-4xl font-bold">Minutes</p>
             <p className="text-white/40 text-sm">With ExecuteIQ</p>
           </div>
         </motion.div>
@@ -98,16 +98,16 @@ export function MetricsDemo({ progress }: SceneProps) {
           <div className="flex items-center justify-center gap-6">
             <span className="text-[#D4AF37] font-medium">McKinsey</span>
             <span className="text-white/30">•</span>
-            <span className="text-[#00A8A8] font-medium">IBM/Ponemon</span>
+            <span className="text-[#00A8A8] font-medium">IBM 2024</span>
             <span className="text-white/30">•</span>
-            <span className="text-white font-medium">BAI 2025</span>
+            <span className="text-white font-medium">PagerDuty</span>
           </div>
         </motion.div>
       </div>
       
       <NarrationBox 
-        headline="Proven Results"
-        description="340x faster response times, 94% task completion, and 10.3% revenue growth—backed by industry research."
+        headline="Research-Validated Results"
+        description="10x faster execution (McKinsey), 98 days saved with AI (IBM 2024), 3.5x faster crisis response (PagerDuty)."
         delay={0.5}
       />
     </div>

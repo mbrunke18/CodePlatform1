@@ -171,10 +171,10 @@ export default function Homepage() {
   ];
 
   const stats = [
-    { value: '12 min', label: 'Avg Decision Time', icon: Clock },
-    { value: '340X', label: 'Faster Than Industry', icon: Zap },
+    { value: '12 min', label: 'Playbook Activation', icon: Clock },
+    { value: '10x', label: 'Faster Execution', icon: Zap, source: 'McKinsey' },
     { value: '166', label: 'Pre-Staged Playbooks', icon: BookOpen },
-    { value: '94%', label: 'On-Time Rate', icon: Target }
+    { value: '98 days', label: 'Saved with AI', icon: Target, source: 'IBM 2024' }
   ];
 
   return (
@@ -428,20 +428,20 @@ export default function Homepage() {
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-lg text-center">
-                    <div className="text-3xl font-bold text-blue-600 mb-1">340X</div>
-                    <div className="text-sm text-slate-600 dark:text-slate-400">Faster Response</div>
+                    <div className="text-3xl font-bold text-blue-600 mb-1">10x</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Faster Execution</div>
                   </div>
                   <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-lg text-center">
                     <div className="text-3xl font-bold text-emerald-600 mb-1">12 min</div>
-                    <div className="text-sm text-slate-600 dark:text-slate-400">To First Action</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Playbook Activation</div>
                   </div>
                   <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-lg text-center">
                     <div className="text-3xl font-bold text-purple-600 mb-1">166</div>
                     <div className="text-sm text-slate-600 dark:text-slate-400">Ready Playbooks</div>
                   </div>
                   <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-lg text-center">
-                    <div className="text-3xl font-bold text-amber-600 mb-1">10.3%</div>
-                    <div className="text-sm text-slate-600 dark:text-slate-400">Revenue Impact</div>
+                    <div className="text-3xl font-bold text-amber-600 mb-1">98 days</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Saved with AI</div>
                   </div>
                 </div>
               </CardContent>

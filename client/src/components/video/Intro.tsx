@@ -64,7 +64,7 @@ export function Intro({ progress }: SceneProps) {
         </motion.div>
 
         <TextPunch 
-          text="72 Hours" 
+          text="Days, Not Minutes" 
           size="2xl" 
           delay={0.5}
           className="text-white mb-4"
@@ -76,7 +76,7 @@ export function Intro({ progress }: SceneProps) {
           transition={{ delay: 1 }}
           className="text-xl md:text-2xl text-white/70 max-w-xl mx-auto"
         >
-          That's how long it takes Fortune 1000 companies to coordinate a strategic response.
+          That's how long it takes most organizations to coordinate a strategic response.
         </motion.p>
 
         <motion.div
@@ -85,14 +85,14 @@ export function Intro({ progress }: SceneProps) {
           transition={{ delay: 1.5 }}
           className="mt-8"
         >
-          <p className="text-[#D4AF37] text-2xl font-bold">We do it in 12 minutes.</p>
-          <p className="text-white/50 text-sm mt-2">That's a 340x improvement.</p>
+          <p className="text-[#D4AF37] text-2xl font-bold">We activate playbooks in 12 minutes.</p>
+          <p className="text-white/50 text-sm mt-2">That's 10x faster execution (McKinsey Research).</p>
         </motion.div>
       </div>
       
       <NarrationBox 
         headline="The Speed Gap"
-        description="Fortune 1000 companies take 72 hours to coordinate strategic responses. ExecuteIQ does it in 12 minutes."
+        description="Organizations spend days coordinating strategic responses. ExecuteIQ activates playbooks in minutes."
         delay={0.5}
       />
     </div>

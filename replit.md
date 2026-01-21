@@ -9,6 +9,18 @@ ExecuteIQ is the Strategic Execution OS for Fortune 1000 companies—the orchest
 - **Alternate Taglines:** "Transform strategy into 12-minute execution" | "The orchestration layer for Fortune 1000 leaders"
 - **IDEA Framework Tagline:** "That's the IDEA."
 
+## Research-Validated Benchmarks (Jan 2026)
+All performance claims are now backed by third-party research:
+- **5-10x faster execution** - McKinsey Operating Model Research (organizations with effective operating models)
+- **98 days saved** - IBM Cost of a Data Breach 2024 (AI/automation in incident response)
+- **$4.88M avg breach cost** - IBM Cost of a Data Breach 2024
+- **$2.2M cost savings** - IBM 2024 (organizations using AI extensively in prevention)
+- **3.5x faster crisis response** - PagerDuty 2024 (distributed vs centralized crisis management)
+- **12 minutes playbook activation** - ExecuteIQ internal capability (time to activate playbook and notify stakeholders)
+- **Industry coordination time: 20-72 hours** - Based on enterprise crisis management research
+
+Key principle: Claims use "days to minutes" or "10x faster" language rather than specific multipliers that cannot be directly validated.
+
 ## ExecuteIQ Module Naming
 The platform uses trademarked module names aligned to the IDEA Framework:
 - **ExecuteIQ Playbook™** (IDENTIFY): Build and customize strategic playbooks
@@ -52,8 +64,8 @@ ExecuteIQ operates on the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE), f
 **Homepage Executive-Readiness (Jan 2026):**
 - **Cinematic Video Intro:** First-time visitors see an immersive cinematic experience that builds excitement for the product value before revealing the full homepage
 - **AI Era Positioning:** "Your Employees Have AI. Your Organization Doesn't." with visual cards showing Individual Work (SOLVED), Coordination (BROKEN), With ExecuteIQ (NOW SOLVED)
-- **ExecuteIQ at a Glance Section:** Executive summary with 4 capabilities (Monitor, Activate, Orchestrate, Learn) and 4 key metrics (340X faster, 12 min, 166 playbooks, 10.3% revenue impact)
-- **Research-backed Trust Bar:** IBM/Ponemon ($4.88M breach cost), McKinsey (340X faster), BAI 2025 (10.3% growth) citations
+- **ExecuteIQ at a Glance Section:** Executive summary with 4 capabilities (Monitor, Activate, Orchestrate, Learn) and 4 key metrics (10x faster, 12 min activation, 166 playbooks, 98 days saved)
+- **Research-backed Trust Bar:** IBM 2024 ($4.88M breach cost, 98 days saved), McKinsey (5-10x faster), PagerDuty (3.5x crisis response) citations
 - **Skip Option:** Users can skip the intro via button in bottom-right corner
 
 **Strategy Execution Dashboard (NEW):**

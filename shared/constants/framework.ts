@@ -137,7 +137,7 @@ export const IDEA_PHASES = {
     name: 'EXECUTE',
     moduleName: 'ExecuteIQ Compass™',
     subtitle: 'Coordinate Response',
-    description: 'Coordinated action in 12 minutes vs. 72-hour industry average. Everyone aligned, nothing lost in translation.',
+    description: 'Coordinated action in minutes, not days. 10x faster execution with everyone aligned.',
     icon: 'Play',
     color: '#F59E0B',
     bgColor: 'bg-amber-500',
@@ -330,27 +330,68 @@ export const STRATEGIC_CATEGORIES = {
 export const STRATEGIC_CATEGORIES_ARRAY = Object.values(STRATEGIC_CATEGORIES);
 
 // ----- EXECUTION TIMING BENCHMARKS -----
+// Research-validated benchmarks with citations
 
 export const TIMING_BENCHMARKS = {
   EXECUTEIQ: {
+    activationTime: 12,
+    activationUnit: 'minutes',
+    fullExecutionTime: 90,
+    fullExecutionUnit: 'minutes',
+    description: 'ExecuteIQ enables 12-minute playbook activation and 90-minute coordinated execution',
+    // Backward compatibility
     decisionTime: 12,
     decisionUnit: 'minutes',
     executionTime: 90,
-    executionUnit: 'minutes',
-    description: 'ExecuteIQ enables 12-minute decision start and 90-minute full execution'
+    executionUnit: 'minutes'
   },
   // Backward compatibility aliases
   get ExecuteIQ() { return this.EXECUTEIQ; },
   get M_PLATFORM() { return this.EXECUTEIQ; },
   INDUSTRY_AVERAGE: {
-    decisionTime: 72,
+    coordinationStartTime: 24,
+    coordinationStartUnit: 'hours',
+    coordinationStartRange: '20-72 hours',
+    fullExecutionTime: 17,
+    fullExecutionUnit: 'days',
+    description: 'Organizations typically spend 20-72 hours getting organized after a strategic trigger',
+    // Backward compatibility
+    decisionTime: 24,
     decisionUnit: 'hours',
     executionTime: 17,
-    executionUnit: 'days',
-    description: 'Industry average is 72 hours to start coordinating, 17 days to fully execute'
+    executionUnit: 'days'
   },
-  SPEED_MULTIPLIER: 340,
-  VALUE_PROPOSITION: 'From 17 days to 90 minutes'
+  // Research-validated multipliers
+  SPEED_MULTIPLIER: 10, // McKinsey: "5-10x increase in speed" with effective operating models
+  SPEED_MULTIPLIER_RANGE: '5-10x',
+  DISTRIBUTED_MULTIPLIER: 3.5, // PagerDuty 2024: Distributed crisis teams respond 3.5x faster
+  AI_AUTOMATION_SAVINGS_DAYS: 98, // IBM 2024: AI/automation saves ~98 days in breach response
+  VALUE_PROPOSITION: 'From days to minutes',
+  // Research citations
+  CITATIONS: {
+    mckinsey: {
+      stat: '5-10x speed increase',
+      source: 'McKinsey Operating Model Research',
+      context: 'Organizations with effective operating models achieve 5-10x increase in speed for driving change'
+    },
+    ibm2024: {
+      breachCost: '$4.88M',
+      breachLifecycle: '258 days',
+      aiSavings: '98 days faster',
+      costSavings: '$2.2M',
+      source: 'IBM Cost of a Data Breach Report 2024'
+    },
+    pagerduty2024: {
+      stat: '3.5x faster response',
+      source: 'PagerDuty 2024',
+      context: 'Distributed crisis management frameworks respond 3.5x faster than centralized'
+    },
+    bai2025: {
+      stat: '10.3% revenue impact',
+      source: 'BAI Banking Strategies 2025',
+      context: 'Digital transformation impact on revenue growth'
+    }
+  }
 } as const;
 
 // ----- STAKEHOLDER ROLES -----

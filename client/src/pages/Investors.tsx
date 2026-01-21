@@ -10,10 +10,10 @@ import { Link } from "wouter";
 
 const metrics = [
   { 
-    value: "340x", 
-    label: "Faster Response", 
-    description: "72 hours → 12 minutes",
-    source: "McKinsey Research",
+    value: "5-10x", 
+    label: "Faster Execution", 
+    description: "Operating model speed improvement",
+    source: "McKinsey Operating Model Research",
     icon: Clock,
     color: "text-[#D4AF37]"
   },
@@ -21,25 +21,25 @@ const metrics = [
     value: "$4.88M", 
     label: "Avg Breach Cost", 
     description: "What companies pay for slow response",
-    source: "IBM/Ponemon 2024",
+    source: "IBM Cost of a Data Breach 2024",
     icon: Shield,
     color: "text-red-400"
   },
   { 
-    value: "10.3%", 
-    label: "Revenue Growth", 
-    description: "For companies with strategic agility",
-    source: "BAI 2025 Report",
-    icon: TrendingUp,
-    color: "text-green-400"
+    value: "98 days", 
+    label: "Saved with AI", 
+    description: "Faster breach detection & containment",
+    source: "IBM 2024 Report",
+    icon: Zap,
+    color: "text-[#00A8A8]"
   },
   { 
-    value: "$900B", 
-    label: "Market Opportunity", 
-    description: "Strategy-execution gap costs annually",
-    source: "Fortune 500 Analysis",
-    icon: DollarSign,
-    color: "text-[#00A8A8]"
+    value: "3.5x", 
+    label: "Faster Response", 
+    description: "Distributed vs centralized crisis teams",
+    source: "PagerDuty 2024",
+    icon: TrendingUp,
+    color: "text-green-400"
   },
 ];
 
@@ -94,7 +94,7 @@ export default function Investors() {
             </h1>
             
             <p className="text-xl text-white/70 max-w-3xl mx-auto mb-8">
-              ExecuteIQ transforms how enterprises respond to strategic events—reducing coordination time from 72 hours to 12 minutes while keeping humans in control.
+              ExecuteIQ transforms how enterprises respond to strategic events—achieving 10x faster execution with 12-minute playbook activation while keeping humans in control.
             </p>
             
             <div className="flex flex-wrap justify-center gap-4">
