@@ -196,22 +196,22 @@ export default function Homepage() {
               <span className="text-blue-300 text-sm font-medium">The AI Operating System for Strategic Execution</span>
             </div>
             
-            {/* The Disruption - What's Changing */}
+            {/* The Category - Strategic Execution OS */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tight" data-testid="heading-main">
-              AI Changed How People Work.<br />
+              Strategic Events Hit Fast.<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-                Now It's Time for Organizations.
+                Your Response Should Too.
               </span>
             </h1>
             
-            {/* The Gap */}
+            {/* The Problem */}
             <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-4 leading-relaxed" data-testid="text-insight">
-              Your employees are 10X faster with AI. But when a strategic event hits—
-              competitor move, crisis, opportunity—your organization still coordinates at 
-              <span className="text-white font-semibold"> meeting speed</span>.
+              M&A announcement. Competitor move. Regulatory change. Crisis breaks.
+              Your organization spends <span className="text-white font-semibold">days getting organized</span> while 
+              the window for action shrinks.
             </p>
             <p className="text-2xl md:text-3xl font-semibold text-white max-w-3xl mx-auto mb-8">
-              <span className="text-amber-400">20-50 hours</span> lost to coordination chaos. Every. Single. Time.
+              ExecuteIQ activates coordinated response in <span className="text-emerald-400">12 minutes</span>—across all 9 strategic domains.
             </p>
           </div>
 
@@ -292,27 +292,27 @@ export default function Homepage() {
 
           {/* Trust Bar - Research Validation */}
           <div className="bg-slate-800/50 rounded-2xl p-6 max-w-4xl mx-auto" data-testid="trust-bar">
-            <div className="text-center text-slate-400 text-sm mb-4">Validated by Independent Research</div>
+            <div className="text-center text-slate-400 text-sm mb-4">The Problem is Real — Research-Validated</div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               <div>
-                <div className="text-2xl font-bold text-white">35%</div>
-                <div className="text-xs text-slate-400">Cost savings with pre-defined response</div>
-                <div className="text-xs text-slate-500">IBM/Ponemon 2024</div>
+                <div className="text-2xl font-bold text-red-400">70%</div>
+                <div className="text-xs text-slate-400">Strategic initiatives fail</div>
+                <div className="text-xs text-slate-500">Bain & Company 2024</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-white">$1.76M</div>
-                <div className="text-xs text-slate-400">Saved with fast containment</div>
-                <div className="text-xs text-slate-500">McKinsey 2024</div>
+                <div className="text-2xl font-bold text-amber-400">$2.3T</div>
+                <div className="text-xs text-slate-400">Wasted on failed execution</div>
+                <div className="text-xs text-slate-500">Taylor & Francis 2024</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-white">10.3%</div>
-                <div className="text-xs text-slate-400">Revenue growth with agility</div>
-                <div className="text-xs text-slate-500">BAI 2025</div>
+                <div className="text-2xl font-bold text-emerald-400">10x</div>
+                <div className="text-xs text-slate-400">Faster with effective models</div>
+                <div className="text-xs text-slate-500">McKinsey Research</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-white">166</div>
-                <div className="text-xs text-slate-400">Pre-built playbooks</div>
-                <div className="text-xs text-slate-500">9 Domains</div>
+                <div className="text-2xl font-bold text-cyan-400">98 days</div>
+                <div className="text-xs text-slate-400">Saved with AI automation</div>
+                <div className="text-xs text-slate-500">IBM 2024</div>
               </div>
             </div>
           </div>
@@ -1128,7 +1128,7 @@ export default function Homepage() {
               </div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">9 Strategic Domains</h3>
               <p className="text-slate-600 dark:text-slate-400">
-                From market dynamics to AI governance. Offense and defense covered.
+                Because strategic events don't respect org charts. An M&A triggers regulatory, which triggers crisis comms, which triggers transformation. ExecuteIQ orchestrates all 9 simultaneously.
               </p>
             </div>
             
