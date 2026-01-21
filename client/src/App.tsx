@@ -87,6 +87,7 @@ import ManufacturingSupplierDemo from "./pages/ManufacturingSupplierDemo";
 import RetailFoodSafetyDemo from "./pages/RetailFoodSafetyDemo";
 import EnergyGridFailureDemo from "./pages/EnergyGridFailureDemo";
 import DemoLiveActivation from "./pages/DemoLiveActivation";
+import DealRiskDemo from "./pages/DealRiskDemo";
 import RoleSelector from "./pages/RoleSelector";
 import Homepage from "./pages/Homepage";
 import McKinseyIntelligenceCenter from "./pages/mckinsey/McKinseyIntelligenceCenter";
@@ -467,6 +468,7 @@ function Router() {
         <Route path="/investor-presentation" component={InvestorPresentation} />
         <Route path="/investor-demo" component={InvestorDemo} />
         <Route path="/customer-demo" component={CustomerDemo} />
+        <Route path="/deal-risk-demo" component={DealRiskDemo} />
         <Route path="/investor-resources" component={InvestorResources} />
         <Route path="/roadshow-resources" component={RoadshowResources} />
         <Route path="/roadshow" component={RoadshowResources} />

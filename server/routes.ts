@@ -9,6 +9,7 @@ import { nlqService, type NLQRequest } from "./nlq-service";
 import { preparednessScoring } from "./preparedness-scoring";
 import intelligenceRoutes from "./routes/intelligence-routes";
 import pilotRoutes from "./routes/pilot-routes";
+import demoRiskRoutes from "./routes/demoRiskRoutes";
 import { setupAuth, isAuthenticated, hasPermission } from "./replitAuth";
 import { registerAudioRoutes } from "./replit_integrations/audio";
 import { conditionalAuth } from "./authConfig";
@@ -122,6 +123,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Pilot Demo routes (no auth required)
   app.use('/api/pilot', pilotRoutes);
+
+  // Deal Risk Demo routes (no auth required)
+  app.use('/api/demo/deal-risk', demoRiskRoutes);
 
   // Audio/TTS routes for voice features
   registerAudioRoutes(app);
