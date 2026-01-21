@@ -372,6 +372,7 @@ export const TIMING_BENCHMARKS = {
     mckinsey: {
       stat: '5-10x speed increase',
       source: 'McKinsey Operating Model Research',
+      year: '2024',
       context: 'Organizations with effective operating models achieve 5-10x increase in speed for driving change'
     },
     ibm2024: {
@@ -379,17 +380,38 @@ export const TIMING_BENCHMARKS = {
       breachLifecycle: '258 days',
       aiSavings: '98 days faster',
       costSavings: '$2.2M',
-      source: 'IBM Cost of a Data Breach Report 2024'
+      source: 'IBM Cost of a Data Breach Report',
+      year: '2024'
     },
     pagerduty2024: {
       stat: '3.5x faster response',
-      source: 'PagerDuty 2024',
+      source: 'PagerDuty State of Digital Operations',
+      year: '2024',
       context: 'Distributed crisis management frameworks respond 3.5x faster than centralized'
     },
-    bai2025: {
-      stat: '10.3% revenue impact',
-      source: 'BAI Banking Strategies 2025',
-      context: 'Digital transformation impact on revenue growth'
+    bain2024: {
+      stat: '70-88% failure rate',
+      source: 'Bain & Company Digital Transformation Study',
+      year: '2024',
+      context: 'Digital transformations that fail to meet their original objectives'
+    },
+    fortuneNyu2024: {
+      stat: '70-75% failure rate',
+      source: 'Fortune/NYU Stern M&A Analysis',
+      year: '2024',
+      context: 'Analysis of 40,000 M&A deals over 40 years shows 70-75% fail to deliver value'
+    },
+    taylorFrancis2024: {
+      stat: '$2.3 trillion wasted',
+      source: 'Taylor & Francis Global Transformation Research',
+      year: '2024',
+      context: 'Global cost of failed digital transformation programs'
+    },
+    bci2024: {
+      stat: '75% activation rate',
+      source: 'Business Continuity Institute Crisis Management Report',
+      year: '2024',
+      context: 'Organizations that activated crisis management plans in past 12 months'
     }
   }
 } as const;

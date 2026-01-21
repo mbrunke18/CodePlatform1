@@ -11,6 +11,8 @@ ExecuteIQ is the Strategic Execution OS for Fortune 1000 companies—the orchest
 
 ## Research-Validated Benchmarks (Jan 2026)
 All performance claims are now backed by third-party research:
+
+**ExecuteIQ Value Metrics:**
 - **5-10x faster execution** - McKinsey Operating Model Research (organizations with effective operating models)
 - **98 days saved** - IBM Cost of a Data Breach 2024 (AI/automation in incident response)
 - **$4.88M avg breach cost** - IBM Cost of a Data Breach 2024
@@ -19,7 +21,13 @@ All performance claims are now backed by third-party research:
 - **12 minutes playbook activation** - ExecuteIQ internal capability (time to activate playbook and notify stakeholders)
 - **Industry coordination time: 20-72 hours** - Based on enterprise crisis management research
 
-Key principle: Claims use "days to minutes" or "10x faster" language rather than specific multipliers that cannot be directly validated.
+**Industry Problem Metrics (added Jan 2026):**
+- **70-88% transformation failure rate** - Bain & Company 2024 (digital transformations that fail to meet objectives)
+- **70-75% M&A failure rate** - Fortune/NYU Stern 2024 (analysis of 40,000 M&A deals over 40 years)
+- **$2.3 trillion wasted globally** - Taylor & Francis 2024 (cost of failed digital transformation programs)
+- **75% crisis plan activation** - Business Continuity Institute 2024 (organizations that activated plans in past 12 months)
+
+Key principle: Claims use "days to minutes" or "10x faster" language rather than specific multipliers that cannot be directly validated. All citations visible on Investors page.
 
 ## ExecuteIQ Module Naming
 The platform uses trademarked module names aligned to the IDEA Framework:

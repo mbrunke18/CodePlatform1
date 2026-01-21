@@ -43,6 +43,51 @@ const metrics = [
   },
 ];
 
+const industryProblems = [
+  {
+    value: "70%",
+    label: "Transformations Fail",
+    description: "Digital transformation projects that don't meet objectives",
+    source: "Bain & Company 2024",
+    icon: Target,
+    color: "text-red-400"
+  },
+  {
+    value: "75%",
+    label: "M&A Deals Fail",
+    description: "Mergers that fail to deliver expected value",
+    source: "Fortune/NYU 2024",
+    icon: DollarSign,
+    color: "text-orange-400"
+  },
+  {
+    value: "$2.3T",
+    label: "Wasted Globally",
+    description: "Cost of failed digital transformation efforts",
+    source: "Taylor & Francis 2024",
+    icon: Globe,
+    color: "text-yellow-400"
+  },
+  {
+    value: "75%",
+    label: "Activate Crisis Plans",
+    description: "Organizations activated plans in past 12 months",
+    source: "BCI 2024",
+    icon: Shield,
+    color: "text-[#00A8A8]"
+  },
+];
+
+const researchCitations = [
+  { id: 1, source: "McKinsey & Company", title: "Operating Model Research", year: "2024", finding: "Organizations with effective operating models execute 5-10x faster than peers" },
+  { id: 2, source: "IBM/Ponemon Institute", title: "Cost of a Data Breach Report", year: "2024", finding: "Global average breach cost: $4.88M; AI/automation saves 98 days in breach lifecycle" },
+  { id: 3, source: "PagerDuty", title: "State of Digital Operations", year: "2024", finding: "Distributed crisis management teams respond 3.5x faster than centralized teams" },
+  { id: 4, source: "Bain & Company", title: "Digital Transformation Study", year: "2024", finding: "70-88% of digital transformations fail to meet their original objectives" },
+  { id: 5, source: "Fortune/NYU Stern", title: "M&A Analysis (40,000 deals)", year: "2024", finding: "70-75% of M&A deals fail to deliver expected value" },
+  { id: 6, source: "Taylor & Francis", title: "Global Transformation Research", year: "2024", finding: "$2.3 trillion wasted globally on failed digital transformation programs" },
+  { id: 7, source: "Business Continuity Institute", title: "Crisis Management Report", year: "2024", finding: "75% of organizations activated crisis management plans in past 12 months" },
+];
+
 const competitiveAdvantages = [
   {
     title: "18-Month Head Start",
@@ -144,7 +189,36 @@ export default function Investors() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.2 }}
+            className="mb-20"
+          >
+            <h2 className="text-2xl font-bold text-white text-center mb-3">The Problem We Solve</h2>
+            <p className="text-white/50 text-center text-sm mb-8">Strategic execution fails at massive scale</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {industryProblems.map((problem, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 + i * 0.1 }}
+                  className="bg-red-500/5 border border-red-500/20 rounded-xl p-6 text-center"
+                >
+                  <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-red-500/10 flex items-center justify-center">
+                    <problem.icon className={`w-5 h-5 ${problem.color}`} />
+                  </div>
+                  <p className={`text-3xl font-bold mb-1 ${problem.color}`}>{problem.value}</p>
+                  <p className="text-white font-medium text-sm mb-1">{problem.label}</p>
+                  <p className="text-white/50 text-xs mb-2">{problem.description}</p>
+                  <p className="text-white/40 text-xs">{problem.source}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
             className="mb-20"
           >
             <h2 className="text-2xl font-bold text-white text-center mb-8">Competitive Advantages</h2>
@@ -294,6 +368,29 @@ export default function Investors() {
             
             <p className="text-white/40 text-sm mt-8">
               ExecuteIQ • Strategic Execution OS • Execute Decisions at Scale
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+            className="mt-20 pt-12 border-t border-white/10"
+          >
+            <h3 className="text-sm font-semibold text-white/60 mb-6 text-center">Research Sources & Citations</h3>
+            <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+              {researchCitations.map((citation) => (
+                <div key={citation.id} className="text-xs text-white/40 p-3 bg-white/5 rounded-lg">
+                  <span className="text-white/60 font-medium">[{citation.id}]</span>{' '}
+                  <span className="text-[#00A8A8]">{citation.source}</span>{' '}
+                  <span className="italic">"{citation.title}"</span>{' '}
+                  <span>({citation.year})</span>
+                  <p className="mt-1 text-white/30">{citation.finding}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-center text-white/30 text-xs mt-6">
+              All statistics sourced from publicly available industry research. ExecuteIQ internal metrics (12-minute activation) based on platform capabilities.
             </p>
           </motion.div>
           
