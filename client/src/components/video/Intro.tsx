@@ -64,10 +64,10 @@ export function Intro({ progress }: SceneProps) {
         </motion.div>
 
         <TextPunch 
-          text="Days, Not Minutes" 
+          text="70% of Transformations Fail" 
           size="2xl" 
           delay={0.5}
-          className="text-white mb-4"
+          className="text-red-400 mb-4"
         />
         
         <motion.p
@@ -76,23 +76,40 @@ export function Intro({ progress }: SceneProps) {
           transition={{ delay: 1 }}
           className="text-xl md:text-2xl text-white/70 max-w-xl mx-auto"
         >
-          That's how long it takes most organizations to coordinate a strategic response.
+          $2.3 trillion wasted globally on failed strategic execution.
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="mt-6 flex flex-wrap justify-center gap-4 text-sm"
+        >
+          <span className="px-3 py-1 bg-red-500/10 border border-red-500/30 rounded-full text-red-400">
+            75% M&A deals fail
+          </span>
+          <span className="px-3 py-1 bg-orange-500/10 border border-orange-500/30 rounded-full text-orange-400">
+            Days to coordinate
+          </span>
+          <span className="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400">
+            Knowledge lost
+          </span>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1.5 }}
-          className="mt-8"
+          transition={{ delay: 2 }}
+          className="mt-8 pt-6 border-t border-white/10"
         >
-          <p className="text-[#D4AF37] text-2xl font-bold">We activate playbooks in 12 minutes.</p>
-          <p className="text-white/50 text-sm mt-2">That's 10x faster execution (McKinsey Research).</p>
+          <p className="text-[#D4AF37] text-2xl font-bold">ExecuteIQ: 12-Minute Playbook Activation</p>
+          <p className="text-[#00A8A8] text-sm mt-2">10x faster execution • Research-validated results</p>
         </motion.div>
       </div>
       
       <NarrationBox 
-        headline="The Speed Gap"
-        description="Organizations spend days coordinating strategic responses. ExecuteIQ activates playbooks in minutes."
+        headline="The $2.3 Trillion Problem"
+        description="Strategic initiatives fail because coordination takes days. ExecuteIQ activates playbooks in 12 minutes."
         delay={0.5}
       />
     </div>
