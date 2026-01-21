@@ -64,10 +64,10 @@ export function Intro({ progress }: SceneProps) {
         </motion.div>
 
         <TextPunch 
-          text="70% of Transformations Fail" 
+          text="From Days to Minutes" 
           size="2xl" 
           delay={0.5}
-          className="text-red-400 mb-4"
+          className="text-white mb-4"
         />
         
         <motion.p
@@ -76,23 +76,26 @@ export function Intro({ progress }: SceneProps) {
           transition={{ delay: 1 }}
           className="text-xl md:text-2xl text-white/70 max-w-xl mx-auto"
         >
-          $2.3 trillion wasted globally on failed strategic execution.
+          When strategic events hit, every hour of delay costs millions.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="mt-6 flex flex-wrap justify-center gap-4 text-sm"
+          className="mt-6 flex flex-wrap justify-center gap-3 text-xs"
         >
-          <span className="px-3 py-1 bg-red-500/10 border border-red-500/30 rounded-full text-red-400">
-            75% M&A deals fail
+          <span className="px-3 py-1 bg-white/5 border border-white/20 rounded-full text-white/60">
+            M&A Integration
           </span>
-          <span className="px-3 py-1 bg-orange-500/10 border border-orange-500/30 rounded-full text-orange-400">
-            Days to coordinate
+          <span className="px-3 py-1 bg-white/5 border border-white/20 rounded-full text-white/60">
+            Crisis Response
           </span>
-          <span className="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400">
-            Knowledge lost
+          <span className="px-3 py-1 bg-white/5 border border-white/20 rounded-full text-white/60">
+            Competitive Moves
+          </span>
+          <span className="px-3 py-1 bg-white/5 border border-white/20 rounded-full text-white/60">
+            Regulatory Changes
           </span>
         </motion.div>
 
@@ -102,14 +105,14 @@ export function Intro({ progress }: SceneProps) {
           transition={{ delay: 2 }}
           className="mt-8 pt-6 border-t border-white/10"
         >
-          <p className="text-[#D4AF37] text-2xl font-bold">ExecuteIQ: 12-Minute Playbook Activation</p>
-          <p className="text-[#00A8A8] text-sm mt-2">10x faster execution • Research-validated results</p>
+          <p className="text-[#D4AF37] text-2xl font-bold">12-Minute Playbook Activation</p>
+          <p className="text-[#00A8A8] text-sm mt-2">10x faster • 166 playbooks • 9 strategic domains</p>
         </motion.div>
       </div>
       
       <NarrationBox 
-        headline="The $2.3 Trillion Problem"
-        description="Strategic initiatives fail because coordination takes days. ExecuteIQ activates playbooks in 12 minutes."
+        headline="Strategic Execution OS"
+        description="ExecuteIQ orchestrates your response across M&A, Crisis, Digital Transformation, and 6 more domains—in minutes, not days."
         delay={0.5}
       />
     </div>
