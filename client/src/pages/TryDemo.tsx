@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -29,10 +29,23 @@ import {
   ArrowUpRight,
   Sparkles,
   Building2,
-  Rocket
+  Rocket,
+  Mail,
+  Phone,
+  Calendar,
+  MessageSquare,
+  TrendingDown,
+  XCircle,
+  Volume2,
+  VolumeX,
+  ChevronDown,
+  FileText,
+  Briefcase,
+  Scale
 } from 'lucide-react';
+import { SiSlack, SiJira, SiSalesforce, SiNotion } from 'react-icons/si';
 
-type Phase = 'select' | 'identify' | 'detect' | 'execute' | 'advance';
+type Phase = 'select' | 'chaos' | 'identify' | 'detect' | 'execute' | 'advance' | 'complete';
 
 interface Scenario {
   id: string;
@@ -45,21 +58,19 @@ interface Scenario {
   playbook: string;
   dealValue: number;
   stakeholders: number;
+  revenuePerMinute: number;
+  chaosMessages: ChaosMessage[];
+}
+
+interface ChaosMessage {
+  id: string;
+  type: 'slack' | 'email' | 'text' | 'calendar' | 'call';
+  sender: string;
+  content: string;
+  urgency: 'critical' | 'high' | 'medium';
 }
 
 const SCENARIOS: Scenario[] = [
-  {
-    id: 'deal-risk',
-    name: 'Deal at Risk',
-    industry: 'Sales & Revenue',
-    icon: DollarSign,
-    color: 'from-emerald-500 to-teal-500',
-    borderColor: 'border-emerald-500/50',
-    trigger: 'Customer requests accelerated timeline on $5M deal',
-    playbook: 'Deal Risk Response',
-    dealValue: 5000000,
-    stakeholders: 6,
-  },
   {
     id: 'ransomware',
     name: 'Ransomware Attack',
@@ -71,6 +82,19 @@ const SCENARIOS: Scenario[] = [
     playbook: 'Cyber Incident Response',
     dealValue: 4880000,
     stakeholders: 12,
+    revenuePerMinute: 8500,
+    chaosMessages: [
+      { id: '1', type: 'slack', sender: 'IT Security', content: '🚨 CRITICAL: File encryption detected on production servers. Spreading rapidly.', urgency: 'critical' },
+      { id: '2', type: 'email', sender: 'Legal Team', content: 'RE: Breach notification requirements - We have 72 hours under GDPR. Need incident details ASAP.', urgency: 'critical' },
+      { id: '3', type: 'slack', sender: 'CFO Office', content: 'Board is asking for immediate update. What do we tell them?', urgency: 'critical' },
+      { id: '4', type: 'calendar', sender: 'Emergency Meeting', content: 'Crisis Response - War Room A - In 15 minutes', urgency: 'critical' },
+      { id: '5', type: 'text', sender: 'Board Chair', content: 'Just saw the news alert. Call me immediately.', urgency: 'critical' },
+      { id: '6', type: 'slack', sender: 'Customer Success', content: '47 enterprise customers reporting system access issues. What do we tell them?', urgency: 'high' },
+      { id: '7', type: 'email', sender: 'PR Team', content: 'TechCrunch is calling. They have sources saying we\'ve been breached. Response needed in 30 min.', urgency: 'critical' },
+      { id: '8', type: 'slack', sender: 'HR Director', content: 'Employees are panicking. Social media posts appearing. Need comms guidance NOW.', urgency: 'high' },
+      { id: '9', type: 'call', sender: 'FBI Cyber Division', content: 'Incoming call regarding potential ransomware investigation', urgency: 'critical' },
+      { id: '10', type: 'slack', sender: 'SOC Team', content: 'Ransom demand received: $15M in Bitcoin. 48-hour deadline.', urgency: 'critical' },
+    ]
   },
   {
     id: 'competitor',
@@ -81,29 +105,103 @@ const SCENARIOS: Scenario[] = [
     borderColor: 'border-purple-500/50',
     trigger: 'Major competitor announces product in your category',
     playbook: 'Competitive Response',
-    dealValue: 15000000,
+    dealValue: 47000000,
     stakeholders: 8,
+    revenuePerMinute: 12000,
+    chaosMessages: [
+      { id: '1', type: 'slack', sender: 'Enterprise Sales', content: '🔴 Acme Corp just put our $2.4M renewal on hold. Citing competitor pricing.', urgency: 'critical' },
+      { id: '2', type: 'email', sender: 'Sales Ops', content: 'Pipeline at risk: $47M in deals now reconsidering. Competitor offering 40% discounts.', urgency: 'critical' },
+      { id: '3', type: 'slack', sender: 'Channel Partners', content: 'Three major partners asking about our response. Threatening to switch.', urgency: 'high' },
+      { id: '4', type: 'text', sender: 'Board Member', content: 'Seeing the news. We need a response strategy today. Not tomorrow.', urgency: 'critical' },
+      { id: '5', type: 'email', sender: 'CFO', content: 'If we match pricing, margin impact is $180M annually. Options?', urgency: 'critical' },
+      { id: '6', type: 'slack', sender: 'Marketing', content: 'Should we counter with our own campaign? Need budget approval and messaging.', urgency: 'high' },
+      { id: '7', type: 'calendar', sender: 'Emergency Pricing Committee', content: 'War Room - Competitive Response - NOW', urgency: 'critical' },
+      { id: '8', type: 'text', sender: 'CEO', content: 'Wall Street Journal wants a statement. What\'s our position?', urgency: 'critical' },
+      { id: '9', type: 'slack', sender: 'Field Sales', content: '6 demos cancelled today. Prospects saying "why bother when competitor is cheaper"', urgency: 'high' },
+      { id: '10', type: 'email', sender: 'Analyst Relations', content: 'Gartner calling for comment. They\'re updating their MQ assessment.', urgency: 'high' },
+    ]
   },
   {
     id: 'regulatory',
-    name: 'Regulatory Change',
+    name: 'SEC Investigation',
     industry: 'Compliance',
-    icon: Building2,
+    icon: Scale,
     color: 'from-amber-500 to-yellow-500',
     borderColor: 'border-amber-500/50',
-    trigger: 'New SEC disclosure requirements announced',
-    playbook: 'Regulatory Compliance',
-    dealValue: 2500000,
+    trigger: 'SEC enforcement notice received',
+    playbook: 'Regulatory Response',
+    dealValue: 120000000,
     stakeholders: 10,
+    revenuePerMinute: 5000,
+    chaosMessages: [
+      { id: '1', type: 'email', sender: 'SEC Enforcement', content: 'Formal Document Preservation Notice - All employees must retain communications.', urgency: 'critical' },
+      { id: '2', type: 'slack', sender: 'Audit Committee Chair', content: 'Need emergency meeting with external auditors. Today.', urgency: 'critical' },
+      { id: '3', type: 'email', sender: 'External Counsel', content: 'Initiating investigation response protocol. $500K retainer required immediately.', urgency: 'critical' },
+      { id: '4', type: 'text', sender: 'CFO', content: 'Auditors want to review ALL Q3 deal documentation. Full freeze on document deletion.', urgency: 'critical' },
+      { id: '5', type: 'slack', sender: 'Investor Relations', content: 'Filing 8-K required within 4 business days. Draft needed.', urgency: 'high' },
+      { id: '6', type: 'calendar', sender: 'Legal Hold Meeting', content: 'All executives - Document preservation briefing - MANDATORY', urgency: 'critical' },
+      { id: '7', type: 'slack', sender: 'Finance Team', content: 'Restatement scenarios being modeled. Potential impact: $45M-$120M.', urgency: 'critical' },
+      { id: '8', type: 'text', sender: 'Board Chair', content: 'WSJ has the story. Running tomorrow morning. We need to get ahead of this.', urgency: 'critical' },
+      { id: '9', type: 'email', sender: 'HR Legal', content: 'Executive compensation clawback provisions activated. Review required.', urgency: 'high' },
+      { id: '10', type: 'slack', sender: 'Communications', content: 'Employee town hall needed. Rumors spreading. Morale tanking.', urgency: 'high' },
+    ]
+  },
+  {
+    id: 'deal-risk',
+    name: 'Deal at Risk',
+    industry: 'Sales & Revenue',
+    icon: DollarSign,
+    color: 'from-emerald-500 to-teal-500',
+    borderColor: 'border-emerald-500/50',
+    trigger: 'Customer requests accelerated timeline on $5M deal',
+    playbook: 'Deal Risk Response',
+    dealValue: 5000000,
+    stakeholders: 6,
+    revenuePerMinute: 3500,
+    chaosMessages: [
+      { id: '1', type: 'slack', sender: 'Account Executive', content: '🚨 GlobalTech just called - they need delivery 6 weeks early or deal is dead.', urgency: 'critical' },
+      { id: '2', type: 'email', sender: 'VP Sales', content: 'This is our largest Q4 deal. Losing it puts us under forecast. Need options NOW.', urgency: 'critical' },
+      { id: '3', type: 'slack', sender: 'Product Team', content: 'Accelerated timeline means cutting testing phase. Risk assessment needed.', urgency: 'high' },
+      { id: '4', type: 'text', sender: 'CEO', content: 'I just heard about GlobalTech. What\'s our plan? Board meeting in 2 hours.', urgency: 'critical' },
+      { id: '5', type: 'calendar', sender: 'Deal Review', content: 'Emergency Deal Strategy - All Hands - NOW', urgency: 'critical' },
+      { id: '6', type: 'slack', sender: 'Finance', content: 'If we expedite, overtime costs are $340K. Need approval for budget exception.', urgency: 'high' },
+      { id: '7', type: 'email', sender: 'Legal', content: 'Contract modification needed for new timeline. SLA penalties at risk.', urgency: 'high' },
+      { id: '8', type: 'slack', sender: 'Customer Success', content: 'Customer asking why we can\'t match competitor\'s timeline. Losing confidence.', urgency: 'critical' },
+      { id: '9', type: 'text', sender: 'CFO', content: 'Margin on expedited deal is 12% vs normal 28%. Is this worth it?', urgency: 'high' },
+      { id: '10', type: 'slack', sender: 'Operations', content: 'Engineering says impossible. Sales says must happen. Need exec decision.', urgency: 'critical' },
+    ]
   },
 ];
 
 const PHASES = [
+  { id: 'chaos' as Phase, name: 'THE CHAOS', icon: AlertTriangle, color: 'red', description: 'Without ExecuteIQ' },
   { id: 'identify' as Phase, name: 'IDENTIFY', icon: BookOpen, color: 'violet', description: 'Playbook ready' },
   { id: 'detect' as Phase, name: 'DETECT', icon: Radar, color: 'blue', description: 'Signal detected' },
   { id: 'execute' as Phase, name: 'EXECUTE', icon: Radio, color: 'emerald', description: 'Coordinate response' },
   { id: 'advance' as Phase, name: 'ADVANCE', icon: BarChart3, color: 'amber', description: 'Capture learnings' },
 ];
+
+const MESSAGE_ICONS: Record<string, any> = {
+  slack: SiSlack,
+  email: Mail,
+  text: MessageSquare,
+  calendar: Calendar,
+  call: Phone,
+};
+
+const PHASE_COLORS: Record<string, { bg: string; border: string; text: string }> = {
+  violet: { bg: 'bg-violet-500/20', border: 'border-violet-500', text: 'text-violet-400' },
+  blue: { bg: 'bg-blue-500/20', border: 'border-blue-500', text: 'text-blue-400' },
+  emerald: { bg: 'bg-emerald-500/20', border: 'border-emerald-500', text: 'text-emerald-400' },
+  amber: { bg: 'bg-amber-500/20', border: 'border-amber-500', text: 'text-amber-400' },
+  red: { bg: 'bg-red-500/20', border: 'border-red-500', text: 'text-red-400' },
+};
+
+const URGENCY_COLORS: Record<string, string> = {
+  critical: 'bg-red-500/20 border-red-500 text-red-300',
+  high: 'bg-orange-500/20 border-orange-500 text-orange-300',
+  medium: 'bg-yellow-500/20 border-yellow-500 text-yellow-300',
+};
 
 export default function TryDemo() {
   const [, setLocation] = useLocation();
@@ -113,13 +211,30 @@ export default function TryDemo() {
   const [executionSteps, setExecutionSteps] = useState<any[]>([]);
   const [isExecuting, setIsExecuting] = useState(false);
   const [learnings, setLearnings] = useState<any>(null);
+  
+  const [chaosMessages, setChaosMessages] = useState<ChaosMessage[]>([]);
+  const [revenueLost, setRevenueLost] = useState(0);
+  const [stressLevel, setStressLevel] = useState(0);
+  const [chaosSeconds, setChaosSeconds] = useState(0);
+  const [showChaosComplete, setShowChaosComplete] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  
+  const [executionTimer, setExecutionTimer] = useState(0);
+  const [savedValue, setSavedValue] = useState(0);
 
   const startDemo = (scenario: Scenario) => {
     setSelectedScenario(scenario);
-    setCurrentPhase('identify');
+    setCurrentPhase('chaos');
     setCompletedPhases([]);
     setExecutionSteps([]);
     setLearnings(null);
+    setChaosMessages([]);
+    setRevenueLost(0);
+    setStressLevel(0);
+    setChaosSeconds(0);
+    setShowChaosComplete(false);
+    setExecutionTimer(0);
+    setSavedValue(0);
   };
 
   const resetDemo = () => {
@@ -128,6 +243,59 @@ export default function TryDemo() {
     setCompletedPhases([]);
     setExecutionSteps([]);
     setLearnings(null);
+    setChaosMessages([]);
+    setRevenueLost(0);
+    setStressLevel(0);
+    setChaosSeconds(0);
+    setShowChaosComplete(false);
+    setExecutionTimer(0);
+    setSavedValue(0);
+  };
+
+  useEffect(() => {
+    if (currentPhase === 'chaos' && selectedScenario && !showChaosComplete) {
+      const messageInterval = setInterval(() => {
+        setChaosMessages(prev => {
+          if (prev.length >= selectedScenario.chaosMessages.length) {
+            clearInterval(messageInterval);
+            setTimeout(() => setShowChaosComplete(true), 1500);
+            return prev;
+          }
+          return [...prev, selectedScenario.chaosMessages[prev.length]];
+        });
+      }, 800);
+
+      const timerInterval = setInterval(() => {
+        setChaosSeconds(prev => prev + 1);
+        setRevenueLost(prev => prev + (selectedScenario.revenuePerMinute / 60));
+        setStressLevel(prev => Math.min(100, prev + 3));
+      }, 1000);
+
+      return () => {
+        clearInterval(messageInterval);
+        clearInterval(timerInterval);
+      };
+    }
+  }, [currentPhase, selectedScenario, showChaosComplete]);
+
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [chaosMessages]);
+
+  const skipChaos = () => {
+    if (selectedScenario) {
+      setChaosMessages(selectedScenario.chaosMessages);
+      setStressLevel(100);
+      setRevenueLost(selectedScenario.revenuePerMinute * 3);
+      setTimeout(() => setShowChaosComplete(true), 500);
+    }
+  };
+
+  const moveToPrepared = () => {
+    setCompletedPhases(prev => [...prev, 'chaos']);
+    setCurrentPhase('identify');
   };
 
   const completeIdentify = () => {
@@ -143,13 +311,28 @@ export default function TryDemo() {
 
   const simulateExecution = () => {
     setIsExecuting(true);
+    setExecutionTimer(0);
+    
+    const timerInterval = setInterval(() => {
+      setExecutionTimer(prev => {
+        if (prev >= 720) {
+          clearInterval(timerInterval);
+          return 720;
+        }
+        return prev + 12;
+      });
+      setSavedValue(prev => prev + ((selectedScenario?.dealValue || 5000000) / 60));
+    }, 200);
+
     const steps = [
-      { id: 1, title: 'Playbook Activated', description: 'Deal Risk Response playbook triggered', icon: Zap, delay: 0 },
-      { id: 2, title: 'Stakeholders Notified', description: '6 team members alerted via Slack', icon: Users, delay: 2000 },
-      { id: 3, title: 'Tasks Created', description: '12 tasks auto-created in Jira', icon: CheckCircle2, delay: 4000 },
-      { id: 4, title: 'Documents Staged', description: 'Response templates ready for review', icon: BookOpen, delay: 6000 },
-      { id: 5, title: 'Budget Released', description: '$50K pre-approved budget unlocked', icon: DollarSign, delay: 8000 },
-      { id: 6, title: 'Execution Complete', description: 'Coordinated response in 12 minutes', icon: CheckCircle2, delay: 10000 },
+      { id: 1, title: 'Playbook Activated', description: `${selectedScenario?.playbook} triggered`, icon: Zap, integration: 'executeiq', delay: 0 },
+      { id: 2, title: 'Stakeholders Notified', description: `${selectedScenario?.stakeholders} team members alerted`, icon: Users, integration: 'slack', delay: 1500 },
+      { id: 3, title: 'Tasks Auto-Created', description: '12 tasks created with owners assigned', icon: CheckCircle2, integration: 'jira', delay: 3000 },
+      { id: 4, title: 'War Room Launched', description: 'Collaboration channel created', icon: MessageSquare, integration: 'teams', delay: 4500 },
+      { id: 5, title: 'Documents Staged', description: 'Response templates ready for review', icon: FileText, integration: 'notion', delay: 6000 },
+      { id: 6, title: 'Executive Briefed', description: 'CEO notified with situation summary', icon: Briefcase, integration: 'salesforce', delay: 7500 },
+      { id: 7, title: 'Budget Released', description: '$50K pre-approved budget unlocked', icon: DollarSign, integration: 'executeiq', delay: 9000 },
+      { id: 8, title: 'Execution Complete', description: 'Coordinated response in 12 minutes', icon: CheckCircle2, integration: 'executeiq', delay: 11000 },
     ];
 
     steps.forEach((step, index) => {
@@ -159,6 +342,8 @@ export default function TryDemo() {
           setIsExecuting(false);
           setCompletedPhases(prev => [...prev, 'execute']);
           setCurrentPhase('advance');
+          clearInterval(timerInterval);
+          setExecutionTimer(720);
         }
       }, step.delay);
     });
@@ -185,8 +370,10 @@ export default function TryDemo() {
       ],
       metrics: {
         dealValueProtected: scenario?.dealValue || 5000000,
-        hoursRecovered: 20,
+        hoursRecovered: 98,
         costOfDelay: Math.round((scenario?.dealValue || 5000000) * 0.15),
+        traditionalTime: '20-72 hours',
+        executeiqTime: '12 minutes',
       },
       nextExecutionRecommendations: [
         'Apply improved playbook to similar scenarios in pipeline',
@@ -195,12 +382,38 @@ export default function TryDemo() {
       ],
     });
     setCompletedPhases(prev => [...prev, 'advance']);
+    setCurrentPhase('complete');
   };
 
   const getPhaseProgress = () => {
-    const phaseIndex = PHASES.findIndex(p => p.id === currentPhase);
-    if (currentPhase === 'select') return 0;
-    return ((phaseIndex + 1) / PHASES.length) * 100;
+    const activePhases = PHASES.filter(p => p.id !== 'chaos');
+    const phaseIndex = activePhases.findIndex(p => p.id === currentPhase);
+    if (currentPhase === 'select' || currentPhase === 'chaos') return 0;
+    if (currentPhase === 'complete') return 100;
+    return ((phaseIndex + 1) / activePhases.length) * 100;
+  };
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  const formatCurrency = (value: number) => {
+    if (value >= 1000000) return `$${(value / 1000000).toFixed(1)}M`;
+    if (value >= 1000) return `$${(value / 1000).toFixed(0)}K`;
+    return `$${value.toFixed(0)}`;
+  };
+
+  const getIntegrationIcon = (integration: string) => {
+    switch (integration) {
+      case 'slack': return <SiSlack className="h-4 w-4 text-[#4A154B]" />;
+      case 'jira': return <SiJira className="h-4 w-4 text-[#0052CC]" />;
+      case 'teams': return <Users className="h-4 w-4 text-[#6264A7]" />;
+      case 'salesforce': return <SiSalesforce className="h-4 w-4 text-[#00A1E0]" />;
+      case 'notion': return <SiNotion className="h-4 w-4 text-white" />;
+      default: return <Zap className="h-4 w-4 text-emerald-400" />;
+    }
   };
 
   return (
@@ -211,23 +424,26 @@ export default function TryDemo() {
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           {/* Header */}
           <div className="text-center mb-8">
-            <Badge className="mb-4 bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
-              Interactive Demo
+            <Badge className="mb-4 bg-gradient-to-r from-amber-500/20 to-emerald-500/20 text-amber-300 border-amber-500/30">
+              Y Combinator Demo
             </Badge>
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
               Experience ExecuteIQ
             </h1>
             <p className="text-lg text-slate-400">
-              See how Fortune 1000 leaders execute strategic decisions in 12 minutes
+              See why Fortune 1000 leaders need the Strategic Execution OS
             </p>
           </div>
 
           {/* Scenario Selection */}
           {currentPhase === 'select' && (
             <div className="max-w-4xl mx-auto">
-              <p className="text-center text-slate-400 mb-6">
-                Choose a scenario to see ExecuteIQ in action:
-              </p>
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-bold text-white mb-2">Choose Your Crisis</h2>
+                <p className="text-slate-400">
+                  Experience the chaos of strategic events—then see how ExecuteIQ transforms response
+                </p>
+              </div>
               <div className="grid md:grid-cols-2 gap-4">
                 {SCENARIOS.map((scenario) => {
                   const IconComponent = scenario.icon;
@@ -248,14 +464,10 @@ export default function TryDemo() {
                             </h3>
                             <p className="text-sm text-slate-500 mb-2">{scenario.industry}</p>
                             <p className="text-sm text-slate-400 mb-3">{scenario.trigger}</p>
-                            <div className="flex items-center gap-4 text-xs text-slate-500">
-                              <span className="flex items-center gap-1">
-                                <Users className="h-3 w-3" />
-                                {scenario.stakeholders} stakeholders
-                              </span>
-                              <span className="flex items-center gap-1">
-                                <Clock className="h-3 w-3" />
-                                12 min response
+                            <div className="flex items-center gap-4 text-xs">
+                              <span className="flex items-center gap-1 text-red-400">
+                                <TrendingDown className="h-3 w-3" />
+                                ${(scenario.revenuePerMinute / 1000).toFixed(1)}K/min at risk
                               </span>
                             </div>
                           </div>
@@ -266,17 +478,148 @@ export default function TryDemo() {
                   );
                 })}
               </div>
+            </div>
+          )}
 
-              <div className="mt-8 text-center">
-                <p className="text-slate-500 text-sm mb-4">
-                  All scenarios demonstrate the complete IDEA Framework
-                </p>
+          {/* CHAOS PHASE */}
+          {currentPhase === 'chaos' && selectedScenario && (
+            <div className="max-w-5xl mx-auto">
+              <div className="mb-6 flex items-center justify-between">
+                <Badge className="bg-red-500/20 text-red-300 border-red-500/30 animate-pulse">
+                  <AlertTriangle className="h-3 w-3 mr-1" />
+                  CRISIS IN PROGRESS
+                </Badge>
+                <Button variant="ghost" size="sm" onClick={resetDemo} className="text-slate-400 hover:text-white">
+                  <XCircle className="h-4 w-4 mr-1" />
+                  Exit Demo
+                </Button>
+              </div>
+
+              <div className="grid lg:grid-cols-3 gap-6">
+                {/* Left: Stats */}
+                <div className="space-y-4">
+                  <Card className="bg-red-950/50 border-red-500/50">
+                    <CardContent className="p-4">
+                      <div className="text-center">
+                        <p className="text-xs text-red-400 uppercase tracking-wide mb-1">Revenue Bleeding</p>
+                        <p className="text-3xl font-bold text-red-300 font-mono">
+                          -{formatCurrency(revenueLost)}
+                        </p>
+                        <p className="text-xs text-red-400/70 mt-1">
+                          ${(selectedScenario.revenuePerMinute / 1000).toFixed(1)}K per minute
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="bg-slate-900/50 border-slate-700">
+                    <CardContent className="p-4">
+                      <div className="text-center">
+                        <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">Time Elapsed</p>
+                        <p className="text-3xl font-bold text-white font-mono">
+                          {formatTime(chaosSeconds)}
+                        </p>
+                        <p className="text-xs text-slate-500 mt-1">
+                          Still no coordinated response
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="bg-slate-900/50 border-slate-700">
+                    <CardContent className="p-4">
+                      <p className="text-xs text-slate-400 uppercase tracking-wide mb-2">Stress Level</p>
+                      <Progress value={stressLevel} className="h-3 bg-slate-800" />
+                      <p className="text-xs text-orange-400 mt-2 text-center">
+                        {stressLevel < 50 ? 'Escalating' : stressLevel < 80 ? 'Critical' : 'Overwhelming'}
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  <div className="text-center text-xs text-slate-500 pt-2">
+                    <p>Industry average response time:</p>
+                    <p className="text-lg font-bold text-red-400">20-72 hours</p>
+                  </div>
+                </div>
+
+                {/* Center: Message Flood */}
+                <div className="lg:col-span-2">
+                  <Card className="bg-slate-900/50 border-slate-700 h-[450px] overflow-hidden">
+                    <CardHeader className="border-b border-slate-700 py-3">
+                      <div className="flex items-center justify-between">
+                        <CardTitle className="text-lg text-white flex items-center gap-2">
+                          <MessageSquare className="h-5 w-5 text-red-400" />
+                          Incoming Messages
+                        </CardTitle>
+                        <Badge variant="outline" className="text-red-400 border-red-500/50">
+                          {chaosMessages.length} urgent
+                        </Badge>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="p-0 h-[calc(100%-60px)] overflow-y-auto">
+                      <div className="space-y-2 p-4">
+                        {chaosMessages.map((msg, index) => {
+                          const IconComponent = MESSAGE_ICONS[msg.type] || MessageSquare;
+                          return (
+                            <div
+                              key={msg.id}
+                              className={`p-3 rounded-lg border ${URGENCY_COLORS[msg.urgency]} animate-in slide-in-from-right duration-300`}
+                              style={{ animationDelay: `${index * 50}ms` }}
+                            >
+                              <div className="flex items-start gap-3">
+                                <div className="p-2 bg-slate-800/50 rounded-lg">
+                                  <IconComponent className="h-4 w-4" />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center gap-2 mb-1">
+                                    <span className="text-xs font-medium text-white">{msg.sender}</span>
+                                    <Badge variant="outline" className="text-[10px] py-0 h-4">
+                                      {msg.type}
+                                    </Badge>
+                                  </div>
+                                  <p className="text-sm text-slate-300 leading-snug">{msg.content}</p>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                        <div ref={messagesEndRef} />
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Action buttons */}
+                  <div className="mt-4 flex gap-3">
+                    {!showChaosComplete && (
+                      <Button variant="outline" onClick={skipChaos} className="flex-1">
+                        Skip to Solution
+                        <ChevronRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    )}
+                    {showChaosComplete && (
+                      <div className="flex-1 space-y-3">
+                        <div className="p-4 bg-slate-800/50 border border-slate-600 rounded-lg text-center">
+                          <p className="text-slate-400 text-sm mb-1">This is what happens WITHOUT ExecuteIQ</p>
+                          <p className="text-white font-medium">Chaos. Confusion. Costly delays.</p>
+                        </div>
+                        <Button 
+                          className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold py-6"
+                          onClick={moveToPrepared}
+                        >
+                          <Sparkles className="mr-2 h-5 w-5" />
+                          Now See ExecuteIQ in Action
+                          <ArrowRight className="ml-2 h-5 w-5" />
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           )}
 
-          {/* Active Demo */}
-          {currentPhase !== 'select' && selectedScenario && (
+          {/* IDEA FRAMEWORK PHASES */}
+          {currentPhase !== 'select' && currentPhase !== 'chaos' && selectedScenario && (
             <>
               {/* Phase Navigation */}
               <div className="flex items-center justify-between mb-4">
@@ -285,28 +628,29 @@ export default function TryDemo() {
                     {selectedScenario.name}
                   </Badge>
                   <span className="text-sm text-slate-500">
-                    ${(selectedScenario.dealValue / 1000000).toFixed(1)}M at stake
+                    {formatCurrency(selectedScenario.dealValue)} at stake
                   </span>
                 </div>
                 <Button variant="ghost" size="sm" onClick={resetDemo} className="text-slate-400 hover:text-white">
                   <RefreshCw className="h-4 w-4 mr-1" />
-                  Change Scenario
+                  Try Another Scenario
                 </Button>
               </div>
 
               {/* Phase Indicators */}
               <div className="grid grid-cols-4 gap-2 mb-4">
-                {PHASES.map((phase, index) => {
+                {PHASES.filter(p => p.id !== 'chaos').map((phase) => {
                   const isCompleted = completedPhases.includes(phase.id);
                   const isCurrent = currentPhase === phase.id;
                   const IconComponent = phase.icon;
+                  const colors = PHASE_COLORS[phase.color] || PHASE_COLORS.emerald;
                   
                   return (
                     <div 
                       key={phase.id}
                       className={`p-3 rounded-lg border transition-all ${
                         isCurrent 
-                          ? `bg-${phase.color}-500/20 border-${phase.color}-500` 
+                          ? `${colors.bg} ${colors.border}` 
                           : isCompleted 
                             ? 'bg-slate-800/50 border-emerald-500/50' 
                             : 'bg-slate-900/30 border-slate-700/50'
@@ -316,7 +660,7 @@ export default function TryDemo() {
                         {isCompleted ? (
                           <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                         ) : (
-                          <IconComponent className={`h-4 w-4 ${isCurrent ? `text-${phase.color}-400` : 'text-slate-500'}`} />
+                          <IconComponent className={`h-4 w-4 ${isCurrent ? colors.text : 'text-slate-500'}`} />
                         )}
                         <span className={`text-xs font-medium ${isCurrent ? 'text-white' : isCompleted ? 'text-slate-300' : 'text-slate-500'}`}>
                           {phase.name}
@@ -341,12 +685,12 @@ export default function TryDemo() {
                           IDENTIFY: Playbook Ready
                         </CardTitle>
                         <CardDescription>
-                          Your {selectedScenario.playbook} playbook is pre-configured
+                          Your {selectedScenario.playbook} playbook was already configured
                         </CardDescription>
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <div className="p-4 bg-violet-500/10 border border-violet-500/30 rounded-lg">
-                          <h4 className="text-white font-medium mb-2">Playbook: {selectedScenario.playbook}</h4>
+                          <h4 className="text-white font-medium mb-3">Playbook: {selectedScenario.playbook}</h4>
                           <div className="grid grid-cols-2 gap-3 text-sm">
                             <div className="flex items-center gap-2 text-slate-300">
                               <CheckCircle2 className="h-4 w-4 text-emerald-400" />
@@ -367,9 +711,19 @@ export default function TryDemo() {
                           </div>
                         </div>
 
+                        <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg">
+                          <div className="flex items-center gap-2 text-emerald-400 mb-2">
+                            <Clock className="h-4 w-4" />
+                            <span className="font-medium">Time to Ready: 0 minutes</span>
+                          </div>
+                          <p className="text-sm text-slate-400">
+                            Everything was prepared BEFORE the crisis hit
+                          </p>
+                        </div>
+
                         <div className="p-3 bg-slate-800/50 rounded-lg">
                           <p className="text-sm text-slate-400">
-                            <span className="text-emerald-400 font-medium">Industry average:</span> 20-50 hours to coordinate a response team and find relevant documents.
+                            <span className="text-red-400 font-medium">Without ExecuteIQ:</span> 20-50 hours to coordinate a response team, find documents, and get budget approval.
                           </p>
                         </div>
 
@@ -396,7 +750,7 @@ export default function TryDemo() {
                         </CardDescription>
                       </CardHeader>
                       <CardContent className="space-y-4">
-                        <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
+                        <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg animate-pulse">
                           <div className="flex items-center gap-2 text-red-400 mb-2">
                             <AlertTriangle className="h-5 w-5" />
                             <span className="font-medium">Trigger Detected</span>
@@ -405,7 +759,7 @@ export default function TryDemo() {
                           <div className="mt-3 flex items-center gap-4 text-sm text-slate-400">
                             <span className="flex items-center gap-1">
                               <DollarSign className="h-4 w-4" />
-                              ${(selectedScenario.dealValue / 1000000).toFixed(1)}M at risk
+                              {formatCurrency(selectedScenario.dealValue)} at risk
                             </span>
                             <span className="flex items-center gap-1">
                               <Clock className="h-4 w-4" />
@@ -421,15 +775,15 @@ export default function TryDemo() {
                           </div>
                           <p className="text-sm text-slate-300">
                             Activate <span className="text-white font-medium">{selectedScenario.playbook}</span> playbook. 
-                            Match confidence: <span className="text-emerald-400">94%</span>
+                            Match confidence: <span className="text-emerald-400 font-bold">94%</span>
                           </p>
                         </div>
 
                         <Button 
-                          className="w-full bg-blue-600 hover:bg-blue-700"
+                          className="w-full bg-blue-600 hover:bg-blue-700 py-6 text-lg font-semibold"
                           onClick={completeDetect}
                         >
-                          <Play className="mr-2 h-4 w-4" />
+                          <Play className="mr-2 h-5 w-5" />
                           Activate Playbook
                         </Button>
                       </CardContent>
@@ -448,22 +802,36 @@ export default function TryDemo() {
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
+                        {/* Timer */}
+                        <div className="mb-4 p-4 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 rounded-lg text-center">
+                          <p className="text-xs text-emerald-400 uppercase tracking-wide mb-1">Execution Time</p>
+                          <p className="text-4xl font-bold text-white font-mono">
+                            {formatTime(executionTimer)}
+                          </p>
+                          <p className="text-xs text-emerald-300 mt-1">Target: 12:00</p>
+                        </div>
+
                         <div className="space-y-3">
-                          {executionSteps.map((step, index) => {
+                          {executionSteps.map((step) => {
                             const IconComponent = step.icon;
                             return (
                               <div 
                                 key={step.id}
-                                className="flex items-start gap-3 p-3 bg-slate-800/50 rounded-lg border-l-2 border-emerald-500 animate-in slide-in-from-left"
+                                className="flex items-start gap-3 p-3 bg-slate-800/50 rounded-lg border-l-4 border-emerald-500 animate-in slide-in-from-left"
                               >
                                 <div className="p-2 bg-emerald-500/20 rounded-lg">
                                   <IconComponent className="h-4 w-4 text-emerald-400" />
                                 </div>
-                                <div>
-                                  <p className="text-white font-medium text-sm">{step.title}</p>
+                                <div className="flex-1">
+                                  <div className="flex items-center gap-2">
+                                    <p className="text-white font-medium text-sm">{step.title}</p>
+                                    <div className="p-1 bg-slate-700 rounded">
+                                      {getIntegrationIcon(step.integration)}
+                                    </div>
+                                  </div>
                                   <p className="text-slate-400 text-xs">{step.description}</p>
                                 </div>
-                                <CheckCircle2 className="h-4 w-4 text-emerald-400 ml-auto" />
+                                <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                               </div>
                             );
                           })}
@@ -512,56 +880,22 @@ export default function TryDemo() {
                                 <span className="font-medium text-sm">Execution Complete</span>
                               </div>
                               <p className="text-xs text-slate-400">
-                                ${((learnings.metrics?.dealValueProtected || 0) / 1000000).toFixed(1)}M protected
+                                {formatCurrency(learnings.metrics?.dealValueProtected || 0)} protected
                               </p>
                             </div>
 
                             <div>
                               <h4 className="text-xs font-medium text-emerald-400 mb-2 flex items-center gap-1">
                                 <TrendingUp className="h-3 w-3" />
-                                What Worked
+                                Success Patterns Captured
                               </h4>
-                              {learnings.successPatterns?.slice(0, 2).map((pattern: any, i: number) => (
-                                <div key={i} className="p-2 bg-slate-800/50 rounded mb-1 text-xs">
-                                  <span className="text-white">{pattern.category}:</span>
-                                  <span className="text-slate-400 ml-1">{pattern.insight}</span>
-                                </div>
-                              ))}
-                            </div>
-
-                            <div>
-                              <h4 className="text-xs font-medium text-amber-400 mb-2 flex items-center gap-1">
-                                <Lightbulb className="h-3 w-3" />
-                                Playbook Improvements
-                              </h4>
-                              {learnings.playbookImprovements?.map((imp: any, i: number) => (
-                                <div key={i} className="p-2 bg-slate-800/50 rounded mb-1">
-                                  <div className="flex items-center justify-between">
-                                    <span className="text-white text-xs">{imp.title}</span>
-                                    <Badge className={imp.priority === 'high' ? 'bg-red-500/20 text-red-400 text-xs' : 'bg-amber-500/20 text-amber-400 text-xs'}>
-                                      {imp.priority}
-                                    </Badge>
+                              <div className="space-y-2">
+                                {learnings.successPatterns?.map((pattern: any, i: number) => (
+                                  <div key={i} className="p-2 bg-slate-800/50 rounded text-xs">
+                                    <span className="text-white font-medium">{pattern.category}:</span>
+                                    <span className="text-slate-400 ml-1">{pattern.insight}</span>
                                   </div>
-                                </div>
-                              ))}
-                            </div>
-
-                            <div className="p-3 bg-gradient-to-r from-amber-500/10 to-emerald-500/10 rounded-lg border border-amber-500/30">
-                              <div className="grid grid-cols-3 gap-2 text-center">
-                                <div>
-                                  <div className="text-lg font-bold text-emerald-400">
-                                    ${((learnings.metrics?.dealValueProtected || 0) / 1000000).toFixed(1)}M
-                                  </div>
-                                  <p className="text-xs text-slate-400">Protected</p>
-                                </div>
-                                <div>
-                                  <div className="text-lg font-bold text-amber-400">20h</div>
-                                  <p className="text-xs text-slate-400">Saved</p>
-                                </div>
-                                <div>
-                                  <div className="text-lg font-bold text-blue-400">12 min</div>
-                                  <p className="text-xs text-slate-400">Response</p>
-                                </div>
+                                ))}
                               </div>
                             </div>
                           </div>
@@ -569,95 +903,130 @@ export default function TryDemo() {
                       </CardContent>
                     </Card>
                   )}
-                </div>
 
-                {/* Right Side - Context */}
-                <div className="space-y-4">
-                  <Card className="bg-slate-900 border-slate-700">
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-white text-sm">The IDEA Framework</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-2">
-                        {PHASES.map((phase) => {
-                          const isCompleted = completedPhases.includes(phase.id);
-                          const isCurrent = currentPhase === phase.id;
-                          const IconComponent = phase.icon;
-                          
-                          return (
-                            <div 
-                              key={phase.id}
-                              className={`flex items-center gap-3 p-2 rounded-lg ${
-                                isCurrent ? 'bg-slate-800' : ''
-                              }`}
-                            >
-                              {isCompleted ? (
-                                <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-                              ) : (
-                                <IconComponent className={`h-4 w-4 ${isCurrent ? 'text-white' : 'text-slate-500'}`} />
-                              )}
-                              <div className="flex-1">
-                                <p className={`text-sm ${isCurrent ? 'text-white font-medium' : isCompleted ? 'text-slate-300' : 'text-slate-500'}`}>
-                                  {phase.name}
-                                </p>
-                                <p className="text-xs text-slate-500">{phase.description}</p>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Value Comparison */}
-                  <Card className="bg-slate-900 border-slate-700">
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-white text-sm">ExecuteIQ vs Traditional</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid grid-cols-2 gap-3">
-                        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-center">
-                          <p className="text-xs text-red-400 mb-1">Without ExecuteIQ</p>
-                          <p className="text-lg font-bold text-white">20-50 hrs</p>
-                          <p className="text-xs text-slate-500">to coordinate</p>
-                        </div>
-                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-center">
-                          <p className="text-xs text-emerald-400 mb-1">With ExecuteIQ</p>
-                          <p className="text-lg font-bold text-white">12 min</p>
-                          <p className="text-xs text-slate-500">to coordinate</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* CTA after completion */}
-                  {completedPhases.includes('advance') && learnings && (
+                  {currentPhase === 'complete' && (
                     <Card className="bg-gradient-to-br from-emerald-900/50 to-teal-900/50 border-emerald-500/50">
-                      <CardContent className="p-6 text-center">
-                        <Rocket className="h-10 w-10 text-emerald-400 mx-auto mb-3" />
-                        <h3 className="text-xl font-bold text-white mb-2">
-                          Ready to See It Live?
-                        </h3>
-                        <p className="text-slate-300 text-sm mb-4">
-                          Start a 2-week pilot with your own scenarios and integrations
-                        </p>
-                        <Button 
-                          className="w-full bg-emerald-600 hover:bg-emerald-700 mb-2"
-                          onClick={() => setLocation('/pilot-demo')}
-                        >
-                          Start Pilot
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Button>
-                        <Button 
-                          variant="ghost" 
-                          className="w-full text-slate-400 hover:text-white"
-                          onClick={() => setLocation('/contact')}
-                        >
-                          Talk to Sales
-                        </Button>
+                      <CardContent className="p-8 text-center">
+                        <div className="mb-6">
+                          <div className="inline-flex p-4 bg-emerald-500/20 rounded-full mb-4">
+                            <Rocket className="h-10 w-10 text-emerald-400" />
+                          </div>
+                          <h2 className="text-2xl font-bold text-white mb-2">Demo Complete</h2>
+                          <p className="text-slate-400">You just experienced the IDEA Framework in action</p>
+                        </div>
+
+                        <div className="grid grid-cols-3 gap-4 mb-6">
+                          <div className="p-4 bg-slate-800/50 rounded-lg">
+                            <p className="text-2xl font-bold text-emerald-400">12 min</p>
+                            <p className="text-xs text-slate-400">Response Time</p>
+                          </div>
+                          <div className="p-4 bg-slate-800/50 rounded-lg">
+                            <p className="text-2xl font-bold text-emerald-400">{formatCurrency(selectedScenario?.dealValue || 0)}</p>
+                            <p className="text-xs text-slate-400">Value Protected</p>
+                          </div>
+                          <div className="p-4 bg-slate-800/50 rounded-lg">
+                            <p className="text-2xl font-bold text-emerald-400">98 days</p>
+                            <p className="text-xs text-slate-400">Saved (IBM 2024)</p>
+                          </div>
+                        </div>
+
+                        <div className="space-y-3">
+                          <Button 
+                            className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 py-6 text-lg font-semibold"
+                            onClick={() => setLocation('/pilot-demo')}
+                          >
+                            <Rocket className="mr-2 h-5 w-5" />
+                            Start Your Pilot
+                          </Button>
+                          <Button 
+                            variant="outline"
+                            className="w-full"
+                            onClick={resetDemo}
+                          >
+                            <RefreshCw className="mr-2 h-4 w-4" />
+                            Try Another Scenario
+                          </Button>
+                        </div>
                       </CardContent>
                     </Card>
                   )}
+                </div>
+
+                {/* Sidebar */}
+                <div className="space-y-4">
+                  {/* Value Comparison */}
+                  <Card className="bg-slate-900/50 border-slate-700">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-sm text-white">Response Comparison</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-center">
+                          <p className="text-xs text-red-400 mb-1">Traditional</p>
+                          <p className="text-xl font-bold text-red-300">20-72 hrs</p>
+                          <p className="text-[10px] text-slate-500">Industry average</p>
+                        </div>
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-center">
+                          <p className="text-xs text-emerald-400 mb-1">ExecuteIQ</p>
+                          <p className="text-xl font-bold text-emerald-300">12 min</p>
+                          <p className="text-[10px] text-slate-500">Guaranteed</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Enterprise Integrations */}
+                  <Card className="bg-slate-900/50 border-slate-700">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-sm text-white">Integrated With Your Stack</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex flex-wrap gap-2">
+                        {[
+                          { icon: SiSlack, name: 'Slack', color: '#4A154B' },
+                          { icon: SiJira, name: 'Jira', color: '#0052CC' },
+                          { icon: Users, name: 'Teams', color: '#6264A7' },
+                          { icon: SiSalesforce, name: 'Salesforce', color: '#00A1E0' },
+                          { icon: SiNotion, name: 'Notion', color: '#FFFFFF' },
+                        ].map(({ icon: Icon, name, color }) => (
+                          <div key={name} className="flex items-center gap-1.5 px-2 py-1 bg-slate-800 rounded text-xs">
+                            <Icon className="h-3.5 w-3.5" style={{ color }} />
+                            <span className="text-slate-300">{name}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Research Citations */}
+                  <Card className="bg-slate-900/50 border-slate-700">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-sm text-white">Research-Backed Claims</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2">
+                      <div className="flex items-start gap-2 text-xs">
+                        <Badge variant="outline" className="text-[10px] shrink-0">IBM 2024</Badge>
+                        <span className="text-slate-400">98 days saved with AI/automation</span>
+                      </div>
+                      <div className="flex items-start gap-2 text-xs">
+                        <Badge variant="outline" className="text-[10px] shrink-0">McKinsey</Badge>
+                        <span className="text-slate-400">5-10x faster execution</span>
+                      </div>
+                      <div className="flex items-start gap-2 text-xs">
+                        <Badge variant="outline" className="text-[10px] shrink-0">PagerDuty</Badge>
+                        <span className="text-slate-400">3.5x faster crisis response</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* 166 Playbooks */}
+                  <Card className="bg-gradient-to-br from-amber-900/30 to-orange-900/30 border-amber-500/30">
+                    <CardContent className="p-4 text-center">
+                      <p className="text-4xl font-bold text-amber-400 mb-1">166</p>
+                      <p className="text-sm text-amber-200">Pre-Built Playbooks</p>
+                      <p className="text-xs text-slate-400 mt-1">Across 9 Strategic Domains</p>
+                    </CardContent>
+                  </Card>
                 </div>
               </div>
             </>
