@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, BookOpen } from "lucide-react";
 import { useLocation } from "wouter";
+import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 
 interface DemoNavHeaderProps {
   title?: string;
@@ -19,6 +20,7 @@ export default function DemoNavHeader({
       window.history.back();
     } else {
       setLocation('/industry-demos');
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }
   };
 
@@ -32,20 +34,29 @@ export default function DemoNavHeader({
           {/* Left: Logo + Title */}
           <div className="flex items-center gap-6">
             <button
-              onClick={() => setLocation('/')}
+              onClick={() => {
+                setLocation('/');
+                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+              }}
               className="flex items-center gap-3 hover:opacity-80 transition-opacity"
               data-testid="button-home"
             >
-              <div className="w-9 h-9 bg-gradient-to-br from-slate-100 to-slate-300 rounded-lg flex items-center justify-center shadow-lg">
-                <span className="text-slate-900 font-bold text-lg">M</span>
-              </div>
+              <ExecuteIQLogo 
+                width={32} 
+                height={32}
+                variant="icon-only"
+                color="white"
+              />
               <div className="hidden md:block">
-                <div className="text-white font-bold text-lg">M</div>
-                <div className="text-blue-400 text-xs">Strategic Execution OS</div>
+                <span className="text-xl font-bold tracking-tight" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  <span className="text-white">Execute</span>
+                  <span className="text-poise-gold">IQ</span>
+                </span>
+                <div className="text-poise-teal text-xs">Strategic Execution OS</div>
               </div>
             </button>
             
-            <div className="hidden md:flex items-center gap-2 text-sm text-blue-300">
+            <div className="hidden md:flex items-center gap-2 text-sm text-poise-teal">
               <span className="text-white/50">/</span>
               <span>{title}</span>
             </div>
@@ -68,8 +79,11 @@ export default function DemoNavHeader({
             
             <Button
               size="sm"
-              onClick={() => setLocation('/playbook-library')}
-              className="bg-blue-600 hover:bg-blue-500 text-white"
+              onClick={() => {
+                setLocation('/playbooks');
+                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+              }}
+              className="bg-poise-gold hover:bg-amber-500 text-poise-navy font-semibold"
               data-testid="button-explore-playbooks"
             >
               <BookOpen className="h-4 w-4 mr-2" />
