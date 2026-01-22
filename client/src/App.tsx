@@ -133,6 +133,7 @@ import PlaybookManagement from "./pages/PlaybookManagement";
 import TaskManagement from "./pages/TaskManagement";
 import StakeholderManagement from "./pages/StakeholderManagement";
 import PilotDemo from "./pages/PilotDemo";
+import TryDemo from "./pages/TryDemo";
 import { DemoControllerProvider } from "./contexts/DemoController";
 import { DemoTimelineProvider } from "./contexts/DemoTimelineContext";
 import { DynamicStrategyProvider } from "./contexts/DynamicStrategyContext";
@@ -397,10 +398,11 @@ function Router() {
         <Route path="/agility-assessment" component={AgilityAssessment} />
         
         {/* Sales & Demo Tools */}
-        <Route path="/live-demo" component={OneClickDemo} />
+        <Route path="/live-demo" component={TryDemo} />
         <Route path="/board-export" component={BoardExport} />
+        <Route path="/try-demo" component={TryDemo} />
         <Route path="/sandbox-demo" component={SandboxDemo} />
-        <Route path="/try-it" component={SandboxDemo} />
+        <Route path="/try-it" component={TryDemo} />
         <Route path="/pilot-demo" component={PilotDemo} />
         <Route path="/video" component={VideoLanding} />
         <Route path="/cinematic" component={VideoLanding} />
@@ -415,13 +417,13 @@ function Router() {
         <Route path="/integrations" component={IntegrationsPage} />
         
         {/* Demo Entry Point - Single clear path */}
-        <Route path="/demo" component={DemoRouter} />
-        <Route path="/demo-hub" component={DemoRouter} />
-        <Route path="/demo-selector" component={DemoRouter} />
-        <Route path="/demo/selector" component={DemoRouter} />
-        <Route path="/transformational-demo" component={DemoRouter} />
-        <Route path="/four-phase-demo" component={DemoRouter} />
-        <Route path="/4-phase-demo" component={DemoRouter} />
+        <Route path="/demo" component={TryDemo} />
+        <Route path="/demo-hub" component={TryDemo} />
+        <Route path="/demo-selector" component={TryDemo} />
+        <Route path="/demo/selector" component={TryDemo} />
+        <Route path="/transformational-demo" component={TryDemo} />
+        <Route path="/four-phase-demo" component={TryDemo} />
+        <Route path="/4-phase-demo" component={TryDemo} />
         
         {/* Live Interactive Demos - All 7 demos now use unified DemoLiveActivation component */}
         <Route path="/role-selector" component={RoleSelector} />
@@ -458,9 +460,9 @@ function Router() {
         <Route path="/spacex-demo" component={SpaceXLaunchDemo} />
         
         {/* Additional Demo Experiences */}
-        <Route path="/demos" component={DemoRouter} />
-        <Route path="/intelligence-demo" component={DemoRouter} />
-        <Route path="/signals-demo" component={DemoRouter} />
+        <Route path="/demos" component={TryDemo} />
+        <Route path="/intelligence-demo" component={TryDemo} />
+        <Route path="/signals-demo" component={TryDemo} />
         <Route path="/executive-simulation" component={ExecutiveSimulationDemo} />
         <Route path="/simulation-demo" component={ExecutiveSimulationDemo} />
         <Route path="/product-tour" component={ProductTour} />
@@ -475,11 +477,11 @@ function Router() {
         <Route path="/pitch-deck" component={InvestorPresentation} />
         
         {/* Legacy demos - redirect to main demo paths */}
-        <Route path="/watch-demo" component={DemoRouter} />
-        <Route path="/trade-show-demo" component={DemoRouter} />
-        <Route path="/executive-demo" component={DemoRouter} />
-        <Route path="/hybrid-demo" component={DemoRouter} />
-        <Route path="/executive-demo-walkthrough" component={DemoRouter} />
+        <Route path="/watch-demo" component={TryDemo} />
+        <Route path="/trade-show-demo" component={TryDemo} />
+        <Route path="/executive-demo" component={TryDemo} />
+        <Route path="/hybrid-demo" component={TryDemo} />
+        <Route path="/executive-demo-walkthrough" component={TryDemo} />
         
         {/* Legacy Routes */}
         <Route path="/interactive-demo" component={RedirectToHowItWorks} />

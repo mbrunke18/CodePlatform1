@@ -271,12 +271,12 @@ export default function Homepage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
             <Button 
               size="lg" 
-              onClick={() => setLocation('/pilot-demo')}
+              onClick={() => setLocation('/try-demo')}
               className="text-lg px-10 py-7 bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 shadow-lg shadow-emerald-500/25"
               data-testid="button-try-demo"
             >
               <Play className="mr-2 h-5 w-5" />
-              See It In Action
+              Try Demo
             </Button>
             <Button 
               size="lg" 
@@ -1214,7 +1214,7 @@ export default function Homepage() {
         <div className="max-w-5xl mx-auto">
           <Card 
             className="border-0 bg-white/10 backdrop-blur-sm cursor-pointer transition-all hover:bg-white/20 group"
-            onClick={() => setLocation('/sandbox-demo')}
+            onClick={() => setLocation('/try-demo')}
             data-testid="card-sandbox-demo-featured"
           >
             <CardContent className="p-8 flex flex-col md:flex-row items-center gap-6">
@@ -1260,7 +1260,7 @@ export default function Homepage() {
             {/* Live Demo */}
             <Card 
               className="border-2 border-blue-200 dark:border-blue-800 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 cursor-pointer transition-all hover:scale-105 hover:shadow-xl"
-              onClick={() => setLocation('/live-demo')}
+              onClick={() => setLocation('/try-demo')}
               data-testid="card-live-demo"
             >
               <CardContent className="p-6 text-center">

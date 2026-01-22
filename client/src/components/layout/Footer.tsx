@@ -51,13 +51,12 @@ export default function Footer() {
       ]
     },
     {
-      title: "Demos",
+      title: "Experience",
       links: [
-        { label: "Interactive Demo", path: "/demo" },
-        { label: "Investor Demo", path: "/investor-demo" },
-        { label: "Executive Simulation", path: "/executive-simulation" },
-        { label: "Industry Scenarios", path: "/industry-demos" },
+        { label: "Try Demo", path: "/try-demo" },
+        { label: "Start Pilot", path: "/pilot-demo" },
         { label: "Product Tour", path: "/product-tour" },
+        { label: "ROI Calculator", path: "/roi-calculator" },
       ]
     },
     {
