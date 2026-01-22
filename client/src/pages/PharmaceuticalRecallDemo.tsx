@@ -214,7 +214,6 @@ export default function PharmaceuticalRecallDemo() {
 
               <TwelveMinuteTimer
                 timelineEvents={pharmaDemoData.timelineEvents}
-                stakeholderTiers={pharmaDemoData.stakeholderTiers}
                 onComplete={() => setCoordinationComplete(true)}
                 autoStart={true}
               />

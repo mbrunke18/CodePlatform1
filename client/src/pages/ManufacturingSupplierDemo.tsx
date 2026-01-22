@@ -215,7 +215,6 @@ export default function ManufacturingSupplierDemo() {
 
               <TwelveMinuteTimer
                 timelineEvents={manufacturingDemoData.timelineEvents}
-                stakeholderTiers={manufacturingDemoData.stakeholderTiers}
                 onComplete={() => setCoordinationComplete(true)}
                 autoStart={true}
               />
