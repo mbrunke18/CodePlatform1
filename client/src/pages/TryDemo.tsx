@@ -41,7 +41,12 @@ import {
   ChevronDown,
   FileText,
   Briefcase,
-  Scale
+  Scale,
+  Crown,
+  Factory,
+  Pill,
+  ShoppingCart,
+  ExternalLink
 } from 'lucide-react';
 import { SiSlack, SiJira, SiSalesforce, SiNotion } from 'react-icons/si';
 
@@ -69,6 +74,31 @@ interface ChaosMessage {
   content: string;
   urgency: 'critical' | 'high' | 'medium';
 }
+
+interface IndustryDemo {
+  id: string;
+  title: string;
+  industry: string;
+  icon: any;
+  iconColor: string;
+  bgColor: string;
+  organization: string;
+  impact: string;
+  route: string;
+  type: 'offensive' | 'defensive';
+}
+
+const INDUSTRY_DEMOS: IndustryDemo[] = [
+  { id: 'lvmh', title: 'Strategic Market Entry', industry: 'Luxury', icon: Crown, iconColor: 'text-purple-400', bgColor: 'bg-purple-900/30', organization: 'LVMH', impact: '€1.68B value', route: '/lvmh-demo', type: 'offensive' },
+  { id: 'shein', title: 'Viral Trend Response', industry: 'Fashion', icon: TrendingUp, iconColor: 'text-pink-400', bgColor: 'bg-pink-900/30', organization: 'SHEIN', impact: '$108M revenue', route: '/shein-demo', type: 'offensive' },
+  { id: 'spacex', title: 'Launch Acceleration', industry: 'Aerospace', icon: Rocket, iconColor: 'text-blue-400', bgColor: 'bg-blue-900/30', organization: 'SpaceX', impact: '$47M value', route: '/spacex-demo', type: 'offensive' },
+  { id: 'financial', title: 'Ransomware Response', industry: 'Finance', icon: Shield, iconColor: 'text-blue-400', bgColor: 'bg-slate-800/50', organization: 'LoanDepot', impact: '$22M saved', route: '/financial-demo', type: 'defensive' },
+  { id: 'pharma', title: 'Class I Recall', industry: 'Pharma', icon: Pill, iconColor: 'text-red-400', bgColor: 'bg-red-900/30', organization: 'Glenmark', impact: 'Lives saved', route: '/pharma-demo', type: 'defensive' },
+  { id: 'manufacturing', title: 'Supplier Crisis', industry: 'Automotive', icon: Factory, iconColor: 'text-orange-400', bgColor: 'bg-orange-900/30', organization: 'Toyota', impact: '$450M saved', route: '/manufacturing-demo', type: 'defensive' },
+  { id: 'retail', title: 'Food Contamination', industry: 'Retail', icon: ShoppingCart, iconColor: 'text-green-400', bgColor: 'bg-green-900/30', organization: 'Walmart', impact: '$245M + lives', route: '/retail-demo', type: 'defensive' },
+  { id: 'energy', title: 'Grid Failure', industry: 'Energy', icon: Zap, iconColor: 'text-yellow-400', bgColor: 'bg-yellow-900/30', organization: 'Pacific Grid', impact: '$2.5B saved', route: '/energy-demo', type: 'defensive' },
+  { id: 'luxury-crisis', title: 'Revenue Collapse', industry: 'Luxury', icon: Building2, iconColor: 'text-purple-400', bgColor: 'bg-purple-900/30', organization: 'LVMH', impact: '€280M preserved', route: '/luxury-demo', type: 'defensive' },
+];
 
 const SCENARIOS: Scenario[] = [
   {
@@ -477,6 +507,46 @@ export default function TryDemo() {
                     </Card>
                   );
                 })}
+              </div>
+
+              {/* Industry Demos Teaser */}
+              <div className="mt-8 pt-6 border-t border-slate-800">
+                <div className="text-center">
+                  <p className="text-sm text-slate-400 mb-3">
+                    Want to see real company scenarios? Explore our industry deep-dives:
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-2 mb-4">
+                    {INDUSTRY_DEMOS.slice(0, 5).map((demo) => {
+                      const IconComponent = demo.icon;
+                      return (
+                        <button
+                          key={demo.id}
+                          onClick={() => {
+                            setLocation(demo.route);
+                            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                          }}
+                          className="flex items-center gap-2 px-3 py-2 bg-slate-800/50 border border-slate-700 rounded-lg hover:border-poise-teal/50 transition-colors text-sm"
+                        >
+                          <IconComponent className={`h-4 w-4 ${demo.iconColor}`} />
+                          <span className="text-slate-300">{demo.organization}</span>
+                          <span className="text-[10px] text-slate-500">{demo.industry}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                  <Button 
+                    variant="link" 
+                    size="sm" 
+                    onClick={() => {
+                      setLocation('/industry-demos');
+                      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                    }}
+                    className="text-poise-teal"
+                  >
+                    View All 9 Industry Demos
+                    <ArrowRight className="ml-1 h-4 w-4" />
+                  </Button>
+                </div>
               </div>
             </div>
           )}
@@ -905,53 +975,138 @@ export default function TryDemo() {
                   )}
 
                   {currentPhase === 'complete' && (
-                    <Card className="bg-gradient-to-br from-emerald-900/50 to-teal-900/50 border-emerald-500/50">
-                      <CardContent className="p-8 text-center">
-                        <div className="mb-6">
-                          <div className="inline-flex p-4 bg-emerald-500/20 rounded-full mb-4">
-                            <Rocket className="h-10 w-10 text-emerald-400" />
+                    <div className="space-y-6">
+                      <Card className="bg-gradient-to-br from-emerald-900/50 to-teal-900/50 border-emerald-500/50">
+                        <CardContent className="p-8 text-center">
+                          <div className="mb-6">
+                            <div className="inline-flex p-4 bg-emerald-500/20 rounded-full mb-4">
+                              <Rocket className="h-10 w-10 text-emerald-400" />
+                            </div>
+                            <h2 className="text-2xl font-bold text-white mb-2">Demo Complete</h2>
+                            <p className="text-slate-400">You just experienced the IDEA Framework in action</p>
                           </div>
-                          <h2 className="text-2xl font-bold text-white mb-2">Demo Complete</h2>
-                          <p className="text-slate-400">You just experienced the IDEA Framework in action</p>
-                        </div>
 
-                        <div className="grid grid-cols-3 gap-4 mb-6">
-                          <div className="p-4 bg-slate-800/50 rounded-lg">
-                            <p className="text-2xl font-bold text-emerald-400">12 min</p>
-                            <p className="text-xs text-slate-400">Response Time</p>
+                          <div className="grid grid-cols-3 gap-4 mb-6">
+                            <div className="p-4 bg-slate-800/50 rounded-lg">
+                              <p className="text-2xl font-bold text-emerald-400">12 min</p>
+                              <p className="text-xs text-slate-400">Response Time</p>
+                            </div>
+                            <div className="p-4 bg-slate-800/50 rounded-lg">
+                              <p className="text-2xl font-bold text-emerald-400">{formatCurrency(selectedScenario?.dealValue || 0)}</p>
+                              <p className="text-xs text-slate-400">Value Protected</p>
+                            </div>
+                            <div className="p-4 bg-slate-800/50 rounded-lg">
+                              <p className="text-2xl font-bold text-emerald-400">98 days</p>
+                              <p className="text-xs text-slate-400">Saved (IBM 2024)</p>
+                            </div>
                           </div>
-                          <div className="p-4 bg-slate-800/50 rounded-lg">
-                            <p className="text-2xl font-bold text-emerald-400">{formatCurrency(selectedScenario?.dealValue || 0)}</p>
-                            <p className="text-xs text-slate-400">Value Protected</p>
-                          </div>
-                          <div className="p-4 bg-slate-800/50 rounded-lg">
-                            <p className="text-2xl font-bold text-emerald-400">98 days</p>
-                            <p className="text-xs text-slate-400">Saved (IBM 2024)</p>
-                          </div>
-                        </div>
 
-                        <div className="space-y-3">
-                          <Button 
-                            className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 py-6 text-lg font-semibold"
-                            onClick={() => {
-                              setLocation('/pilot-demo');
-                              window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-                            }}
-                          >
-                            <Rocket className="mr-2 h-5 w-5" />
-                            Start Your Pilot
-                          </Button>
-                          <Button 
-                            variant="outline"
-                            className="w-full"
-                            onClick={resetDemo}
-                          >
-                            <RefreshCw className="mr-2 h-4 w-4" />
-                            Try Another Scenario
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
+                          <div className="space-y-3">
+                            <Button 
+                              className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 py-6 text-lg font-semibold"
+                              onClick={() => {
+                                setLocation('/pilot-demo');
+                                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                              }}
+                            >
+                              <Rocket className="mr-2 h-5 w-5" />
+                              Start Your Pilot
+                            </Button>
+                            <Button 
+                              variant="outline"
+                              className="w-full"
+                              onClick={resetDemo}
+                            >
+                              <RefreshCw className="mr-2 h-4 w-4" />
+                              Try Another Scenario
+                            </Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+
+                      {/* Industry Deep-Dive Demos */}
+                      <Card className="bg-slate-900/80 border-slate-700">
+                        <CardHeader className="pb-4">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <CardTitle className="text-lg text-white flex items-center gap-2">
+                                <Building2 className="h-5 w-5 text-poise-gold" />
+                                Explore Industry Deep-Dives
+                              </CardTitle>
+                              <CardDescription className="text-slate-400">
+                                See ExecuteIQ in action across 9 industries with real company scenarios
+                              </CardDescription>
+                            </div>
+                            <Badge className="bg-poise-gold/20 text-poise-gold border-poise-gold/30">
+                              9 Demos
+                            </Badge>
+                          </div>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="mb-4">
+                            <div className="flex gap-2 mb-3">
+                              <Badge variant="outline" className="text-green-400 border-green-500/30 bg-green-500/10">
+                                <Target className="h-3 w-3 mr-1" />
+                                Offensive (3)
+                              </Badge>
+                              <Badge variant="outline" className="text-red-400 border-red-500/30 bg-red-500/10">
+                                <Shield className="h-3 w-3 mr-1" />
+                                Defensive (6)
+                              </Badge>
+                            </div>
+                          </div>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                            {INDUSTRY_DEMOS.map((demo) => {
+                              const IconComponent = demo.icon;
+                              return (
+                                <button
+                                  key={demo.id}
+                                  onClick={() => {
+                                    setLocation(demo.route);
+                                    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                                  }}
+                                  className={`p-3 rounded-lg border transition-all hover:scale-[1.02] text-left group ${demo.bgColor} ${
+                                    demo.type === 'offensive' 
+                                      ? 'border-green-500/30 hover:border-green-400/50' 
+                                      : 'border-slate-600/50 hover:border-slate-500/70'
+                                  }`}
+                                >
+                                  <div className="flex items-center gap-2 mb-1">
+                                    <IconComponent className={`h-4 w-4 ${demo.iconColor}`} />
+                                    <span className="text-[10px] text-slate-500 uppercase">{demo.industry}</span>
+                                  </div>
+                                  <p className="text-xs font-medium text-white truncate">{demo.title}</p>
+                                  <div className="flex items-center justify-between mt-1">
+                                    <span className="text-[10px] text-slate-400">{demo.organization}</span>
+                                    <span className={`text-[10px] font-semibold ${demo.type === 'offensive' ? 'text-green-400' : 'text-emerald-400'}`}>
+                                      {demo.impact}
+                                    </span>
+                                  </div>
+                                  <div className="mt-2 flex items-center gap-1 text-[10px] text-poise-teal opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <span>Explore</span>
+                                    <ExternalLink className="h-2.5 w-2.5" />
+                                  </div>
+                                </button>
+                              );
+                            })}
+                          </div>
+                          <div className="mt-4 pt-4 border-t border-slate-700 text-center">
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              onClick={() => {
+                                setLocation('/industry-demos');
+                                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                              }}
+                              className="text-poise-teal border-poise-teal/30 hover:bg-poise-teal/10"
+                            >
+                              View All Industry Demos
+                              <ArrowRight className="ml-2 h-4 w-4" />
+                            </Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
                   )}
                 </div>
 
