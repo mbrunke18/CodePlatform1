@@ -60,7 +60,8 @@ const app = express();
 // Server is NOT ready until database seeding is complete
 let serverReady = false;
 
-// Health check endpoints
+// Health check endpoints - MUST be registered FIRST before any other routes
+// These ensure the app responds to health checks immediately on startup
 app.get("/health", (_req, res) => {
   res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
 });
@@ -96,6 +97,11 @@ app.get("/_health", (_req, res) => {
 app.head("/", (_req, res) => {
   res.status(200).end();
 });
+
+// CRITICAL: Root "/" health check for Replit Autoscale deployments
+// This MUST return 200 immediately - seeding happens in background after server starts
+// Registered before other middleware to ensure fastest possible response
+let rootHealthCheckRegistered = false;
 
 // Import raw body parser for webhook signature verification
 import { rawBodyParser } from "./middleware/rawBodyParser";
@@ -348,18 +354,34 @@ app.use((req, res, next) => {
       logger.info("✅ Vite setup complete");
     } else {
       logger.info("📦 Serving static files...");
-      // Production: serve static files from build output
-      app.use(express.static("/app/dist/public"));
       
-      // Root "/" returns fast 200 for Autoscale health checks
-      app.get("/", (_req, res) => {
-        res.status(200).json({ status: "ok", app: "ExecuteIQ" });
-      });
+      // CRITICAL: Register root "/" FIRST for Autoscale health checks in production
+      // Must return 200 immediately - this is the health check endpoint
+      if (!rootHealthCheckRegistered) {
+        app.get("/", (_req, res) => {
+          // Return index.html for browser requests (Accept header includes text/html)
+          const acceptHeader = _req.headers.accept || '';
+          if (acceptHeader.includes('text/html')) {
+            return res.sendFile("/app/dist/public/index.html");
+          }
+          // Return fast JSON for health check requests (curl, load balancers, etc.)
+          res.status(200).json({ status: "ok", app: "ExecuteIQ", timestamp: new Date().toISOString() });
+        });
+        rootHealthCheckRegistered = true;
+        logger.info("✅ Root health check endpoint registered for production");
+      }
+      
+      // Production: serve static files from build output
+      // Use custom middleware to serve index.html for SPA routes while allowing API routes through
+      app.use(express.static("/app/dist/public", {
+        index: false // Disable automatic index.html serving - we handle "/" explicitly
+      }));
       
       serveStatic(app);
       
       // Catch-all route serves SPA for client-side routing (must be last)
-      app.get("/*", (_req, res) => {
+      // Excludes "/" which is handled above for health checks
+      app.get(/^\/(?!$).*/, (_req, res) => {
         res.sendFile("/app/dist/public/index.html");
       });
     }
