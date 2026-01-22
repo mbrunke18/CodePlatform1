@@ -158,23 +158,91 @@ router.get('/execute/timeline', (req: Request, res: Response) => {
 router.post('/advance/complete', (req: Request, res: Response) => {
   demoState.phase = 'advance';
   
+  const dealAmount = demoState.currentExecution?.amount || 5000000;
+  const dealName = demoState.currentExecution?.dealName || 'Enterprise Deal';
+  
   const learnings = {
     executionId: demoState.currentExecution?.executionId,
-    lessonsLearned: [
-      'Early detection of contract compression risk enabled proactive engagement',
-      'Cross-functional coordination completed 15x faster than industry average',
-      'Automated task creation reduced manual coordination overhead by 90%',
+    dealContext: {
+      dealName,
+      dealAmount,
+      riskType: 'Contract Timeline Compression',
+      triggerDetected: 'Customer requested 60% timeline acceleration',
+    },
+    
+    // What worked well - specific, measurable outcomes
+    successPatterns: [
+      {
+        category: 'Early Detection',
+        insight: 'Risk signal detected 3 weeks before traditional discovery',
+        impact: 'Created window for proactive engagement vs reactive firefighting',
+        icon: 'radar',
+      },
+      {
+        category: 'Stakeholder Alignment',
+        insight: '6 stakeholders aligned in 12 minutes vs typical 3-4 day cycle',
+        impact: 'Prevented conflicting customer communications',
+        icon: 'users',
+      },
+      {
+        category: 'Decision Velocity',
+        insight: 'Executive sponsor briefed before customer escalation',
+        impact: 'Maintained relationship trust and deal momentum',
+        icon: 'zap',
+      },
     ],
+    
+    // Actionable playbook improvements with specific triggers
     playbookImprovements: [
-      'Add competitive intelligence trigger for deals over $3M',
-      'Include CFO in stakeholder list for deals with budget approval delays',
+      {
+        type: 'trigger',
+        title: 'Add Competitive Intelligence Trigger',
+        description: 'For deals over $3M, add trigger when competitor is mentioned in meeting notes',
+        priority: 'high',
+        estimatedImpact: 'Could have detected competitive threat 2 weeks earlier',
+      },
+      {
+        type: 'stakeholder',
+        title: 'Include CFO in Budget Delay Scenarios',
+        description: 'When budget approval delay >7 days, automatically loop in CFO',
+        priority: 'medium',
+        estimatedImpact: 'Reduces budget approval cycle by average 4 days',
+      },
+      {
+        type: 'task',
+        title: 'Add Technical Validation Checkpoint',
+        description: 'Before legal review, require technical architecture sign-off',
+        priority: 'medium',
+        estimatedImpact: 'Prevents late-stage technical objections in 23% of deals',
+      },
     ],
+    
+    // Institutional knowledge captured
+    institutionalKnowledge: [
+      {
+        pattern: 'Timeline Compression Pattern',
+        frequency: 'Occurs in 34% of enterprise deals',
+        bestResponse: 'Proactive scope negotiation within 24 hours preserves deal value',
+        worstOutcome: 'Delayed response leads to 15-40% scope reduction',
+      },
+    ],
+    
+    // ROI metrics
     metrics: {
       timeToResponse: 12,
       industryBenchmark: 180,
       efficiencyGain: '15x',
-      costAvoidance: demoState.currentExecution?.amount || 0,
+      hoursRecovered: 20,
+      dealValueProtected: dealAmount,
+      costOfDelay: Math.round(dealAmount * 0.15), // 15% deal erosion avoided
     },
+    
+    // Next execution improvements
+    nextExecutionRecommendations: [
+      'Apply improved playbook to 3 similar at-risk deals in pipeline',
+      'Schedule quarterly playbook review with sales leadership',
+      'Train new SDRs on early risk signal recognition',
+    ],
   };
   
   res.json({

@@ -21,7 +21,15 @@ import {
   Zap,
   RefreshCw,
   Play,
-  ChevronRight
+  ChevronRight,
+  Lightbulb,
+  Target,
+  TrendingUp,
+  Brain,
+  Shield,
+  Clock,
+  ArrowUpRight,
+  Sparkles
 } from 'lucide-react';
 
 type Phase = 'identify' | 'detect' | 'execute' | 'advance';
@@ -38,6 +46,7 @@ export default function DealRiskDemo() {
   const [completedPhases, setCompletedPhases] = useState<Phase[]>([]);
   const [execution, setExecution] = useState<any>(null);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [learnings, setLearnings] = useState<any>(null);
 
   const { data: status, refetch: refetchStatus } = useQuery({
     queryKey: ['/api/demo/deal-risk/status'],
@@ -54,6 +63,7 @@ export default function DealRiskDemo() {
       setCurrentPhase('identify');
       setCompletedPhases([]);
       setExecution(null);
+      setLearnings(null);
       queryClient.invalidateQueries({ queryKey: ['/api/demo/deal-risk'] });
     },
   });
@@ -106,8 +116,12 @@ export default function DealRiskDemo() {
   });
 
   const advanceCompleteMutation = useMutation({
-    mutationFn: () => apiRequest('POST', '/api/demo/deal-risk/advance/complete'),
-    onSuccess: () => {
+    mutationFn: async () => {
+      const res = await apiRequest('POST', '/api/demo/deal-risk/advance/complete');
+      return res.json();
+    },
+    onSuccess: (data) => {
+      setLearnings(data.learnings);
       setCompletedPhases(prev => [...prev, 'advance']);
     },
   });
@@ -358,59 +372,178 @@ export default function DealRiskDemo() {
             )}
 
             {currentPhase === 'advance' && (
-              <Card className="bg-slate-900 border-slate-700">
-                <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
-                    <BarChart3 className="h-5 w-5 text-amber-400" />
-                    ADVANCE Phase
-                  </CardTitle>
-                  <CardDescription>
-                    Capture learnings and improve
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {!completedPhases.includes('advance') ? (
-                    <Button 
-                      className="w-full bg-amber-600 hover:bg-amber-700"
-                      onClick={() => advanceCompleteMutation.mutate()}
-                    >
-                      Complete Retrospective
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  ) : (
-                    <div className="space-y-4">
-                      <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg">
-                        <div className="flex items-center gap-2 text-emerald-400 mb-2">
-                          <CheckCircle2 className="h-5 w-5" />
-                          <span className="font-medium">Demo Complete!</span>
-                        </div>
-                        <p className="text-sm text-slate-400">
-                          You've experienced the full IDEA Framework loop.
+              <div className="space-y-6">
+                <Card className="bg-slate-900 border-slate-700">
+                  <CardHeader>
+                    <CardTitle className="text-white flex items-center gap-2">
+                      <BarChart3 className="h-5 w-5 text-amber-400" />
+                      ADVANCE Phase
+                    </CardTitle>
+                    <CardDescription>
+                      Capture learnings and strengthen your playbook
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {!completedPhases.includes('advance') ? (
+                      <div className="space-y-4">
+                        <p className="text-slate-400">
+                          ExecuteIQ captures institutional knowledge from every execution, so your organization gets smarter with each response.
                         </p>
+                        <Button 
+                          className="w-full bg-amber-600 hover:bg-amber-700"
+                          onClick={() => advanceCompleteMutation.mutate()}
+                          disabled={advanceCompleteMutation.isPending}
+                        >
+                          {advanceCompleteMutation.isPending ? (
+                            <>
+                              <Brain className="mr-2 h-4 w-4 animate-pulse" />
+                              Analyzing Execution...
+                            </>
+                          ) : (
+                            <>
+                              <Sparkles className="mr-2 h-4 w-4" />
+                              Generate Insights & Recommendations
+                            </>
+                          )}
+                        </Button>
                       </div>
-                      
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="p-4 bg-slate-800/50 rounded-lg text-center">
-                          <div className="text-2xl font-bold text-emerald-400">12 min</div>
-                          <p className="text-xs text-slate-400">Response Time</p>
+                    ) : learnings ? (
+                      <div className="space-y-6">
+                        {/* Success Banner */}
+                        <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg">
+                          <div className="flex items-center gap-2 text-emerald-400 mb-1">
+                            <CheckCircle2 className="h-5 w-5" />
+                            <span className="font-medium">Execution Complete - Learnings Captured</span>
+                          </div>
+                          <p className="text-sm text-slate-400">
+                            {learnings.dealContext?.dealName} - ${((learnings.dealContext?.dealAmount || 0) / 1000000).toFixed(1)}M protected
+                          </p>
                         </div>
-                        <div className="p-4 bg-slate-800/50 rounded-lg text-center">
-                          <div className="text-2xl font-bold text-amber-400">15x</div>
-                          <p className="text-xs text-slate-400">Faster</p>
+
+                        {/* What Worked Well */}
+                        <div>
+                          <h4 className="text-sm font-medium text-emerald-400 mb-3 flex items-center gap-2">
+                            <TrendingUp className="h-4 w-4" />
+                            What Worked Well
+                          </h4>
+                          <div className="space-y-2">
+                            {learnings.successPatterns?.map((pattern: any, i: number) => (
+                              <div key={i} className="p-3 bg-slate-800/50 rounded-lg border-l-2 border-emerald-500">
+                                <div className="flex items-center gap-2 mb-1">
+                                  {pattern.icon === 'radar' && <Radar className="h-4 w-4 text-emerald-400" />}
+                                  {pattern.icon === 'users' && <Users className="h-4 w-4 text-emerald-400" />}
+                                  {pattern.icon === 'zap' && <Zap className="h-4 w-4 text-emerald-400" />}
+                                  <span className="text-white text-sm font-medium">{pattern.category}</span>
+                                </div>
+                                <p className="text-sm text-slate-300">{pattern.insight}</p>
+                                <p className="text-xs text-slate-500 mt-1">{pattern.impact}</p>
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                        <div className="p-4 bg-slate-800/50 rounded-lg text-center">
-                          <div className="text-2xl font-bold text-blue-400">4</div>
-                          <p className="text-xs text-slate-400">Systems Orchestrated</p>
+
+                        {/* Playbook Improvements */}
+                        <div>
+                          <h4 className="text-sm font-medium text-amber-400 mb-3 flex items-center gap-2">
+                            <Lightbulb className="h-4 w-4" />
+                            Recommended Playbook Improvements
+                          </h4>
+                          <div className="space-y-2">
+                            {learnings.playbookImprovements?.map((improvement: any, i: number) => (
+                              <div key={i} className="p-3 bg-slate-800/50 rounded-lg">
+                                <div className="flex items-center justify-between mb-1">
+                                  <span className="text-white text-sm font-medium">{improvement.title}</span>
+                                  <Badge className={improvement.priority === 'high' ? 'bg-red-500/20 text-red-400' : 'bg-amber-500/20 text-amber-400'}>
+                                    {improvement.priority}
+                                  </Badge>
+                                </div>
+                                <p className="text-sm text-slate-400">{improvement.description}</p>
+                                <p className="text-xs text-emerald-400 mt-2 flex items-center gap-1">
+                                  <ArrowUpRight className="h-3 w-3" />
+                                  {improvement.estimatedImpact}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                        <div className="p-4 bg-slate-800/50 rounded-lg text-center">
-                          <div className="text-2xl font-bold text-purple-400">6</div>
-                          <p className="text-xs text-slate-400">Stakeholders Aligned</p>
+
+                        {/* Institutional Knowledge */}
+                        {learnings.institutionalKnowledge?.length > 0 && (
+                          <div>
+                            <h4 className="text-sm font-medium text-purple-400 mb-3 flex items-center gap-2">
+                              <Brain className="h-4 w-4" />
+                              Institutional Knowledge Captured
+                            </h4>
+                            {learnings.institutionalKnowledge.map((knowledge: any, i: number) => (
+                              <div key={i} className="p-3 bg-purple-500/10 border border-purple-500/30 rounded-lg">
+                                <div className="text-white text-sm font-medium mb-2">{knowledge.pattern}</div>
+                                <div className="grid grid-cols-2 gap-3 text-xs">
+                                  <div>
+                                    <span className="text-slate-500">Frequency:</span>
+                                    <p className="text-slate-300">{knowledge.frequency}</p>
+                                  </div>
+                                  <div>
+                                    <span className="text-slate-500">Best Response:</span>
+                                    <p className="text-emerald-400">{knowledge.bestResponse}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
+                        {/* ROI Summary */}
+                        <div className="p-4 bg-gradient-to-r from-amber-500/10 to-emerald-500/10 rounded-lg border border-amber-500/30">
+                          <h4 className="text-sm font-medium text-white mb-3 flex items-center gap-2">
+                            <Shield className="h-4 w-4 text-amber-400" />
+                            Execution ROI
+                          </h4>
+                          <div className="grid grid-cols-3 gap-3">
+                            <div className="text-center">
+                              <div className="text-xl font-bold text-emerald-400">
+                                ${((learnings.metrics?.dealValueProtected || 0) / 1000000).toFixed(1)}M
+                              </div>
+                              <p className="text-xs text-slate-400">Deal Protected</p>
+                            </div>
+                            <div className="text-center">
+                              <div className="text-xl font-bold text-amber-400">
+                                {learnings.metrics?.hoursRecovered || 20}h
+                              </div>
+                              <p className="text-xs text-slate-400">Hours Recovered</p>
+                            </div>
+                            <div className="text-center">
+                              <div className="text-xl font-bold text-blue-400">
+                                ${((learnings.metrics?.costOfDelay || 0) / 1000).toFixed(0)}K
+                              </div>
+                              <p className="text-xs text-slate-400">Erosion Avoided</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Next Steps */}
+                        <div>
+                          <h4 className="text-sm font-medium text-blue-400 mb-3 flex items-center gap-2">
+                            <Target className="h-4 w-4" />
+                            Next Steps
+                          </h4>
+                          <div className="space-y-2">
+                            {learnings.nextExecutionRecommendations?.map((rec: string, i: number) => (
+                              <div key={i} className="flex items-center gap-2 text-sm text-slate-300">
+                                <ChevronRight className="h-4 w-4 text-blue-400" />
+                                {rec}
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
+                    ) : (
+                      <div className="text-center text-slate-400 py-8">
+                        Loading learnings...
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              </div>
             )}
           </div>
 
