@@ -134,6 +134,45 @@ import TaskManagement from "./pages/TaskManagement";
 import StakeholderManagement from "./pages/StakeholderManagement";
 import PilotDemo from "./pages/PilotDemo";
 import TryDemo from "./pages/TryDemo";
+
+import PlaybooksLibraryPage from "./pages/identify/PlaybooksLibraryPage";
+import IdentifyTemplatesPage from "./pages/identify/TemplatesPage";
+import MyPlaybooksPage from "./pages/identify/MyPlaybooksPage";
+import IdentifyWizardPage from "./pages/identify/WizardPage";
+import IdentifySLAPage from "./pages/identify/SLAPage";
+import IdentifyMetricsPage from "./pages/identify/MetricsPage";
+
+import DetectDashboardPage from "./pages/detect/DashboardPage";
+import DetectAlertsPage from "./pages/detect/AlertsPage";
+import DetectSignalsPage from "./pages/detect/SignalsPage";
+import DetectThreatsPage from "./pages/detect/ThreatsPage";
+import DetectTrendsPage from "./pages/detect/TrendsPage";
+import DetectHistoryPage from "./pages/detect/HistoryPage";
+
+import ExecuteWarRoomPage from "./pages/execute/WarRoomPage";
+import ExecuteActivationPage from "./pages/execute/ActivationPage";
+import ExecuteTasksPage from "./pages/execute/TasksPage";
+import ExecuteTrackingPage from "./pages/execute/TrackingPage";
+import ExecuteUpdatesPage from "./pages/execute/UpdatesPage";
+import ExecuteDecisionsPage from "./pages/execute/DecisionsPage";
+
+import AdvanceMetricsPage from "./pages/advance/MetricsPage";
+import AdvanceOutcomesPage from "./pages/advance/OutcomesPage";
+import AdvanceEffectivenessPage from "./pages/advance/EffectivenessPage";
+import AdvanceTeamPage from "./pages/advance/TeamPage";
+import AdvanceLessonsPage from "./pages/advance/LessonsPage";
+import AdvanceAuditPage from "./pages/advance/AuditPage";
+
+import SetupTeamPage from "./pages/setup/TeamPage";
+import SetupIntegrationsPage from "./pages/setup/IntegrationsPage";
+import SetupOrgPage from "./pages/setup/OrgPage";
+import SetupAPIPage from "./pages/setup/APIPage";
+
+import LearnQuickDemoPage from "./pages/learn/QuickDemoPage";
+import LearnRoleDemoPage from "./pages/learn/RoleDemoPage";
+import LearnDrillsPage from "./pages/learn/DrillsPage";
+import LearnHelpPage from "./pages/learn/HelpPage";
+
 import { DemoControllerProvider } from "./contexts/DemoController";
 import { DemoTimelineProvider } from "./contexts/DemoTimelineContext";
 import { DynamicStrategyProvider } from "./contexts/DynamicStrategyContext";
@@ -262,6 +301,52 @@ function Router() {
         <Route path="/workspaces/detect" component={WorkspaceDetect} />
         <Route path="/workspaces/execute" component={WorkspaceExecute} />
         <Route path="/workspaces/advance" component={WorkspaceAdvance} />
+        
+        {/* IDEA Framework Navigation Routes */}
+        {/* IDENTIFY Phase */}
+        <Route path="/identify/playbooks" component={PlaybooksLibraryPage} />
+        <Route path="/identify/templates" component={IdentifyTemplatesPage} />
+        <Route path="/identify/my-playbooks" component={MyPlaybooksPage} />
+        <Route path="/identify/wizard" component={IdentifyWizardPage} />
+        <Route path="/identify/sla" component={IdentifySLAPage} />
+        <Route path="/identify/metrics" component={IdentifyMetricsPage} />
+        
+        {/* DETECT Phase */}
+        <Route path="/detect/dashboard" component={DetectDashboardPage} />
+        <Route path="/detect/alerts" component={DetectAlertsPage} />
+        <Route path="/detect/signals" component={DetectSignalsPage} />
+        <Route path="/detect/threats" component={DetectThreatsPage} />
+        <Route path="/detect/trends" component={DetectTrendsPage} />
+        <Route path="/detect/history" component={DetectHistoryPage} />
+        
+        {/* EXECUTE Phase */}
+        <Route path="/execute/war-room" component={ExecuteWarRoomPage} />
+        <Route path="/execute/activation" component={ExecuteActivationPage} />
+        <Route path="/execute/tasks" component={ExecuteTasksPage} />
+        <Route path="/execute/tracking" component={ExecuteTrackingPage} />
+        <Route path="/execute/updates" component={ExecuteUpdatesPage} />
+        <Route path="/execute/decisions" component={ExecuteDecisionsPage} />
+        
+        {/* ADVANCE Phase */}
+        <Route path="/advance/metrics" component={AdvanceMetricsPage} />
+        <Route path="/advance/outcomes" component={AdvanceOutcomesPage} />
+        <Route path="/advance/effectiveness" component={AdvanceEffectivenessPage} />
+        <Route path="/advance/team" component={AdvanceTeamPage} />
+        <Route path="/advance/lessons" component={AdvanceLessonsPage} />
+        <Route path="/advance/audit" component={AdvanceAuditPage} />
+        
+        {/* SETUP */}
+        <Route path="/setup/team" component={SetupTeamPage} />
+        <Route path="/setup/integrations" component={SetupIntegrationsPage} />
+        <Route path="/setup/organization" component={SetupOrgPage} />
+        <Route path="/setup/api" component={SetupAPIPage} />
+        
+        {/* LEARN */}
+        <Route path="/learn/quick-demo" component={LearnQuickDemoPage} />
+        <Route path="/learn/role-demo" component={LearnRoleDemoPage} />
+        <Route path="/learn/drills" component={LearnDrillsPage} />
+        <Route path="/learn/help" component={LearnHelpPage} />
+        
         <Route path="/demo-gallery" component={DemoGallery} />
         <Route path="/north-star" component={CustomerJourney} />
         <Route path="/customer-journey" component={CustomerJourney} />
