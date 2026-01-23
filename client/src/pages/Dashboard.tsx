@@ -220,7 +220,7 @@ export default function Dashboard() {
     scoreValue >= 60 ? 'warning' : 'critical';
 
   return (
-    <IDEALayout>
+    <IDEALayout showBackButton={false}>
       <div className="flex-1 overflow-auto page-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
           
