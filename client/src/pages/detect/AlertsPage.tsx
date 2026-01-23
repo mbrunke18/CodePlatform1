@@ -1,5 +1,10 @@
+import IDEALayout from '@/components/layout/IDEALayout';
 import TriggersManagement from '@/pages/TriggersManagement';
 
 export default function AlertsPage() {
-  return <TriggersManagement />;
+  return (
+    <IDEALayout>
+      <TriggersManagement />
+    </IDEALayout>
+  );
 }

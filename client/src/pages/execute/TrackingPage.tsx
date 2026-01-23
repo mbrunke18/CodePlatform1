@@ -1,5 +1,10 @@
+import IDEALayout from '@/components/layout/IDEALayout';
 import CommandCenter from '@/pages/CommandCenter';
 
 export default function TrackingPage() {
-  return <CommandCenter />;
+  return (
+    <IDEALayout>
+      <CommandCenter />
+    </IDEALayout>
+  );
 }

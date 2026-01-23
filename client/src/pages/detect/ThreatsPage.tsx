@@ -1,4 +1,4 @@
-import PageLayout from '@/components/layout/PageLayout';
+import IDEALayout from '@/components/layout/IDEALayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { AlertTriangle, Shield, TrendingUp, Clock } from 'lucide-react';
@@ -11,7 +11,7 @@ const mockThreats = [
 
 export default function ThreatsPage() {
   return (
-    <PageLayout>
+    <IDEALayout>
       <div className="container max-w-6xl mx-auto py-8 px-4">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">Threat Detection</h1>
@@ -99,6 +99,6 @@ export default function ThreatsPage() {
           </CardContent>
         </Card>
       </div>
-    </PageLayout>
+    </IDEALayout>
   );
 }

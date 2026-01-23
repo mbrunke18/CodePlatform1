@@ -1,13 +1,12 @@
-import PageLayout from '@/components/layout/PageLayout';
+import IDEALayout from '@/components/layout/IDEALayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { BookOpen, Clock, Users, Plus } from 'lucide-react';
 import { Link } from 'wouter';
 
 export default function MyPlaybooksPage() {
   return (
-    <PageLayout>
+    <IDEALayout>
       <div className="container max-w-6xl mx-auto py-8 px-4">
         <div className="flex items-center justify-between mb-8">
           <div>
@@ -83,6 +82,6 @@ export default function MyPlaybooksPage() {
           </Card>
         </div>
       </div>
-    </PageLayout>
+    </IDEALayout>
   );
 }

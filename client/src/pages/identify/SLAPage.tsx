@@ -1,7 +1,7 @@
-import PageLayout from '@/components/layout/PageLayout';
+import IDEALayout from '@/components/layout/IDEALayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Clock, Target, Zap, TrendingUp } from 'lucide-react';
+import { Zap, TrendingUp } from 'lucide-react';
 
 const phaseSLAs = [
   {
@@ -40,7 +40,7 @@ const phaseSLAs = [
 
 export default function SLAPage() {
   return (
-    <PageLayout>
+    <IDEALayout>
       <div className="container max-w-6xl mx-auto py-8 px-4">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">SLA & Timeframes</h1>
@@ -105,6 +105,6 @@ export default function SLAPage() {
           </CardContent>
         </Card>
       </div>
-    </PageLayout>
+    </IDEALayout>
   );
 }

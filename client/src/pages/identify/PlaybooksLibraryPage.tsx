@@ -1,6 +1,10 @@
-import PageLayout from '@/components/layout/PageLayout';
+import IDEALayout from '@/components/layout/IDEALayout';
 import PlaybookLibraryV2 from '@/pages/PlaybookLibraryV2';
 
 export default function PlaybooksLibraryPage() {
-  return <PlaybookLibraryV2 />;
+  return (
+    <IDEALayout>
+      <PlaybookLibraryV2 />
+    </IDEALayout>
+  );
 }

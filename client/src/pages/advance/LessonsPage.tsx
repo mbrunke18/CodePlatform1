@@ -1,5 +1,10 @@
+import IDEALayout from '@/components/layout/IDEALayout';
 import InstitutionalMemory from '@/pages/InstitutionalMemory';
 
 export default function LessonsPage() {
-  return <InstitutionalMemory />;
+  return (
+    <IDEALayout>
+      <InstitutionalMemory />
+    </IDEALayout>
+  );
 }

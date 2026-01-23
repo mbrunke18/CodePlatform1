@@ -1,5 +1,10 @@
+import IDEALayout from '@/components/layout/IDEALayout';
 import RealTimeCollaboration from '@/pages/RealTimeCollaboration';
 
 export default function TeamPage() {
-  return <RealTimeCollaboration />;
+  return (
+    <IDEALayout>
+      <RealTimeCollaboration />
+    </IDEALayout>
+  );
 }

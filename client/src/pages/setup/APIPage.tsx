@@ -1,4 +1,4 @@
-import PageLayout from '@/components/layout/PageLayout';
+import IDEALayout from '@/components/layout/IDEALayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -6,7 +6,7 @@ import { Code, Key, BookOpen, Webhook } from 'lucide-react';
 
 export default function APIPage() {
   return (
-    <PageLayout>
+    <IDEALayout>
       <div className="container max-w-6xl mx-auto py-8 px-4">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">API & Automation</h1>
@@ -88,6 +88,6 @@ export default function APIPage() {
           </Card>
         </div>
       </div>
-    </PageLayout>
+    </IDEALayout>
   );
 }

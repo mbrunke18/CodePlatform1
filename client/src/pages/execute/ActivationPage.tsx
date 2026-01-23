@@ -1,5 +1,10 @@
+import IDEALayout from '@/components/layout/IDEALayout';
 import PlaybookActivationConsole from '@/pages/PlaybookActivationConsole';
 
 export default function ActivationPage() {
-  return <PlaybookActivationConsole />;
+  return (
+    <IDEALayout>
+      <PlaybookActivationConsole />
+    </IDEALayout>
+  );
 }

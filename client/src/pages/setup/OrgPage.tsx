@@ -1,5 +1,10 @@
+import IDEALayout from '@/components/layout/IDEALayout';
 import OrganizationSetup from '@/pages/OrganizationSetup';
 
 export default function OrgPage() {
-  return <OrganizationSetup />;
+  return (
+    <IDEALayout>
+      <OrganizationSetup />
+    </IDEALayout>
+  );
 }
