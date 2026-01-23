@@ -83,20 +83,20 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
         {expanded && (
           <div className="ml-4 mt-1 space-y-0.5 border-l border-border/50 pl-3">
             {phase.items.map(item => (
-              <Link key={item.id} href={item.path}>
-                <a
-                  className={cn(
-                    'flex items-center gap-2.5 px-3 py-2 rounded-md text-sm transition-all duration-150',
-                    'hover:bg-white/10 dark:hover:bg-white/5',
-                    isItemActive(item.path)
-                      ? 'bg-white/15 dark:bg-white/10 font-medium'
-                      : 'text-muted-foreground hover:text-foreground'
-                  )}
-                  onClick={() => setIsMobileOpen(false)}
-                >
-                  <span className="text-base">{item.icon}</span>
-                  <span className="truncate">{item.label}</span>
-                </a>
+              <Link 
+                key={item.id} 
+                href={item.path}
+                className={cn(
+                  'flex items-center gap-2.5 px-3 py-2 rounded-md text-sm transition-all duration-150',
+                  'hover:bg-white/10 dark:hover:bg-white/5',
+                  isItemActive(item.path)
+                    ? 'bg-white/15 dark:bg-white/10 font-medium'
+                    : 'text-muted-foreground hover:text-foreground'
+                )}
+                onClick={() => setIsMobileOpen(false)}
+              >
+                <span className="text-base">{item.icon}</span>
+                <span className="truncate">{item.label}</span>
               </Link>
             ))}
           </div>
@@ -108,20 +108,18 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
   const sidebarContent = (
     <div className="flex flex-col h-full">
       <div className="p-4 border-b border-border/50">
-        <Link href="/mission-control">
-          <a className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-poise-gold to-poise-teal flex items-center justify-center">
-              <div className="w-6 h-6 rounded-full border-2 border-white/90" />
-            </div>
-            <div>
-              <h1 className="font-bold text-lg leading-tight group-hover:text-poise-gold transition-colors">
-                ExecuteIQ One™
-              </h1>
-              <p className="text-[10px] text-muted-foreground">
-                Strategic Execution OS
-              </p>
-            </div>
-          </a>
+        <Link href="/mission-control" className="flex items-center gap-3 group">
+          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-poise-gold to-poise-teal flex items-center justify-center">
+            <div className="w-6 h-6 rounded-full border-2 border-white/90" />
+          </div>
+          <div>
+            <h1 className="font-bold text-lg leading-tight group-hover:text-poise-gold transition-colors">
+              ExecuteIQ One™
+            </h1>
+            <p className="text-[10px] text-muted-foreground">
+              Strategic Execution OS
+            </p>
+          </div>
         </Link>
         <div className="mt-3 flex items-center gap-1 text-[10px] text-muted-foreground">
           <span className="px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400">Identify</span>
@@ -144,11 +142,12 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
 
       <div className="p-3 border-t border-border/50 space-y-2">
         <div className="flex items-center gap-2">
-          <Link href="/">
-            <a className="flex-1 flex items-center gap-2 px-3 py-2 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors">
-              <Home className="h-4 w-4" />
-              <span>Home</span>
-            </a>
+          <Link 
+            href="/"
+            className="flex-1 flex items-center gap-2 px-3 py-2 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors"
+          >
+            <Home className="h-4 w-4" />
+            <span>Home</span>
           </Link>
           <Button
             variant="ghost"
