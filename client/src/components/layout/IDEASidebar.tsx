@@ -13,7 +13,7 @@ interface IDEASidebarProps {
 
 export default function IDEASidebar({ className }: IDEASidebarProps) {
   const [location] = useLocation();
-  const [expandedPhases, setExpandedPhases] = useState<string[]>(['identify']);
+  const [expandedPhases, setExpandedPhases] = useState<string[]>([]);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const { user, isAuthenticated, logout, login } = useAuth();
@@ -21,6 +21,18 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
   useEffect(() => {
     setIsDark(document.documentElement.classList.contains('dark'));
   }, []);
+
+  useEffect(() => {
+    const activePhase = navigationConfig.phases.find(phase =>
+      phase.items.some(item => location.startsWith(item.path.split('?')[0]))
+    );
+    if (activePhase && !expandedPhases.includes(activePhase.id)) {
+      setExpandedPhases(prev => {
+        if (prev.includes(activePhase.id)) return prev;
+        return [activePhase.id];
+      });
+    }
+  }, [location]);
 
   const toggleTheme = () => {
     const html = document.documentElement;
