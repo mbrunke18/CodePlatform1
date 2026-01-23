@@ -1,0 +1,62 @@
+import PageLayout from '@/components/layout/PageLayout';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { FileText, ArrowRight } from 'lucide-react';
+import { Link } from 'wouter';
+
+const templates = [
+  { name: 'Competitive Response', domain: 'Market Entry', count: 12, color: 'bg-blue-500' },
+  { name: 'M&A Integration', domain: 'M&A', count: 15, color: 'bg-purple-500' },
+  { name: 'Product Launch', domain: 'Product', count: 8, color: 'bg-green-500' },
+  { name: 'Crisis Management', domain: 'Crisis', count: 22, color: 'bg-red-500' },
+  { name: 'Cyber Incident', domain: 'Cyber', count: 18, color: 'bg-orange-500' },
+  { name: 'Regulatory Change', domain: 'Regulatory', count: 14, color: 'bg-yellow-500' },
+  { name: 'Digital Transformation', domain: 'Digital', count: 20, color: 'bg-cyan-500' },
+  { name: 'AI Governance', domain: 'AI', count: 18, color: 'bg-indigo-500' },
+];
+
+export default function TemplatesPage() {
+  return (
+    <PageLayout>
+      <div className="container max-w-6xl mx-auto py-8 px-4">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold mb-2">Scenario Templates</h1>
+          <p className="text-muted-foreground">
+            Pre-configured playbook templates by industry and threat type. Select a template to customize for your organization.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {templates.map((template) => (
+            <Card key={template.name} className="hover:border-poise-gold/50 transition-colors cursor-pointer">
+              <CardHeader className="pb-3">
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-lg ${template.color} flex items-center justify-center`}>
+                    <FileText className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-base">{template.name}</CardTitle>
+                    <Badge variant="secondary" className="text-xs mt-1">
+                      {template.domain}
+                    </Badge>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-3">
+                  {template.count} pre-built playbooks ready for customization
+                </p>
+                <Link href="/identify/playbooks">
+                  <Button variant="outline" size="sm" className="w-full">
+                    View Templates <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </PageLayout>
+  );
+}

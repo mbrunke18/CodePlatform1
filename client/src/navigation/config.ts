@@ -1,252 +1,286 @@
-// Centralized navigation types - single source of truth
-export type NavigationCategory = 'intelligence' | 'crisis' | 'strategic' | 'system';
+import { NavigationConfig, NavigationPhase } from './types';
 
-export type IconName = 
-  | 'LayoutDashboard'
-  | 'Brain'
-  | 'AlertTriangle'
-  | 'Target'
-  | 'Building2'
-  | 'Settings'
-  | 'Activity'
-  | 'TrendingUp'
-  | 'Users'
-  | 'Lightbulb'
-  | 'Shield'
-  | 'Zap'
-  | 'FileText'
-  | 'BarChart3'
-  | 'MessageSquare'
-  | 'Network'
-  | 'Layers'
-  | 'Rocket'
-  | 'Radio'
-  | 'PlayCircle'
-  | 'Presentation'
-  | 'Timer';
-
-export interface NavigationItem {
-  id: string;
-  label: string;
-  icon: IconName;
-  path: string;
-  badge?: string;
-  description: string;
-  category: NavigationCategory;
-}
-
-// Single source of truth for all navigation items - CONSOLIDATED FOR EXECUTIVES
-export const navigationItems: NavigationItem[] = [
-  // Executive Dashboard - Unified Command Center
-  {
-    id: 'executive-dashboard',
-    label: 'Executive Dashboard',
-    icon: 'LayoutDashboard',
-    path: '/executive-dashboard',
-    description: 'Unified command center: FRI, velocity, preparedness in one view',
-    category: 'intelligence'
-  },
-
-  // Playbook Library - PROMOTED TO TOP
-  {
-    id: 'playbook-library',
-    label: 'Playbook Library',
-    icon: 'Rocket',
-    path: '/playbook-library',
-    badge: '166',
-    description: '166 strategic playbooks across 9 operational domains',
-    category: 'intelligence'
-  },
-
-  // AI Intelligence - Consolidated
-  {
-    id: 'ai-hub',
-    label: 'AI Intelligence Hub',
-    icon: 'Brain',
-    path: '/ai',
-    badge: 'AI',
-    description: '5 strategic co-pilots: Pulse, Flux, Prism, Echo, Nova',
-    category: 'intelligence'
-  },
-  {
-    id: 'ai-radar',
-    label: 'Perpetual Foresight Dashboard',
-    icon: 'Radio',
-    path: '/ai-radar',
-    badge: 'LIVE',
-    description: '24/7 strategic signal monitoring with AI-powered foresight',
-    category: 'intelligence'
-  },
-
-  // Strategic Response - Full Suite
-  {
-    id: 'crisis-response',
-    label: 'Strategic Response',
-    icon: 'AlertTriangle',
-    path: '/crisis',
-    badge: 'LIVE',
-    description: '12-minute strategic execution vs 72-hour industry standard',
-    category: 'strategic'
-  },
-  {
-    id: 'war-room',
-    label: 'Situation Room',
-    icon: 'Radio',
-    path: '/war-room',
-    badge: 'LIVE',
-    description: 'Real-time collaborative command center',
-    category: 'strategic'
-  },
-  {
-    id: 'triggers-management',
-    label: 'AI Trigger Monitoring',
-    icon: 'Zap',
-    path: '/triggers-management',
-    badge: '24/7',
-    description: 'AI co-pilot monitors triggers and recommends playbooks',
-    category: 'strategic'
-  },
-  {
-    id: 'real-time-collab',
-    label: 'Team Collaboration',
-    icon: 'Users',
-    path: '/collaboration',
-    badge: 'LIVE',
-    description: 'Real-time coordination with WebSocket updates',
-    category: 'strategic'
-  },
-  {
-    id: 'preparedness',
-    label: 'Strategic Readiness Report',
-    icon: 'Shield',
-    path: '/preparedness-report',
-    description: 'Strategic Readiness Score™ and Dynamic Strategy benchmarking',
-    category: 'strategic'
-  },
-  {
-    id: 'drill-tracking',
-    label: 'Practice Drills',
-    icon: 'Target',
-    path: '/drill-tracking',
-    badge: 'V2',
-    description: 'Quarterly simulations with performance metrics',
-    category: 'strategic'
-  },
-
-  // Strategic Planning
-  {
-    id: 'strategic-planning',
-    label: 'Strategic Planning',
-    icon: 'Target',
-    path: '/strategic',
-    description: 'Scenario planning and strategic execution tracking',
-    category: 'strategic'
-  },
-  {
-    id: 'what-if',
-    label: 'What-If Analyzer',
-    icon: 'Target',
-    path: '/what-if-analyzer',
-    badge: 'PRACTICE',
-    description: 'Test scenarios before execution, improve your readiness',
-    category: 'strategic'
-  },
-  {
-    id: 'decision-velocity',
-    label: 'Decision Velocity Dashboard',
-    icon: 'Zap',
-    path: '/decision-velocity',
-    badge: 'NEW',
-    description: 'Your competitive advantage metric for Dynamic Strategy execution',
-    category: 'strategic'
-  },
-  {
-    id: 'analytics',
-    label: 'Analytics',
-    icon: 'BarChart3',
-    path: '/analytics',
-    description: 'Performance metrics and decision velocity tracking',
-    category: 'strategic'
-  },
-  {
-    id: 'institutional-memory',
-    label: 'Institutional Memory',
-    icon: 'Brain',
-    path: '/institutional-memory',
-    badge: 'V2',
-    description: 'Learn from past decisions and improve AI recommendations',
-    category: 'strategic'
-  },
-  {
-    id: 'board-briefings',
-    label: 'Board Briefings',
-    icon: 'FileText',
-    path: '/board-briefings',
-    badge: 'V2',
-    description: 'Automated reports with evidence traceability',
-    category: 'strategic'
-  },
-
-  // System Administration
-  {
-    id: 'vc-presentations',
-    label: 'Investor Demos',
-    icon: 'Presentation',
-    path: '/vc-presentations',
-    description: 'Investor presentation and demo materials',
-    category: 'system'
-  },
-  {
-    id: 'settings',
-    label: 'Settings',
-    icon: 'Settings',
-    path: '/settings',
-    description: 'Platform settings and configuration',
-    category: 'system'
-  }
-];
-
-// Category metadata for navigation grouping
-export interface CategoryConfig {
-  label: string;
-  icon: IconName;
-  color: string;
-  borderColor: string;
-}
-
-export const categories: Record<NavigationCategory, CategoryConfig> = {
-  intelligence: {
-    label: 'Intelligence & Insights',
-    icon: 'Brain',
-    color: 'from-blue-600 to-indigo-600',
-    borderColor: 'border-blue-500/30'
-  },
-  crisis: {
-    label: 'Strategic Execution',
-    icon: 'Shield',
-    color: 'from-red-600 to-red-700',
-    borderColor: 'border-red-500/30'
-  },
-  strategic: {
-    label: 'Strategic Planning',
-    icon: 'Target',
-    color: 'from-emerald-600 to-green-600',
-    borderColor: 'border-emerald-500/30'
-  },
-  system: {
-    label: 'System',
-    icon: 'Settings',
-    color: 'from-gray-600 to-slate-600',
-    borderColor: 'border-gray-500/30'
-  }
+export const navigationConfig: NavigationConfig = {
+  phases: [
+    {
+      id: 'identify',
+      label: 'IDENTIFY',
+      tagline: 'Prepare & Define',
+      icon: '🎯',
+      color: 'from-blue-600 to-cyan-600',
+      items: [
+        {
+          id: 'playbooks-library',
+          label: 'Strategic Playbooks Library',
+          path: '/identify/playbooks',
+          icon: '📚',
+          description: 'Browse all 166 pre-built playbooks across 9 domains'
+        },
+        {
+          id: 'templates',
+          label: 'Scenario Templates',
+          path: '/identify/templates',
+          icon: '📋',
+          description: 'Pre-configured templates by industry and threat type'
+        },
+        {
+          id: 'my-playbooks',
+          label: 'My Playbooks',
+          path: '/identify/my-playbooks',
+          icon: '✅',
+          description: 'Your customized playbooks ready for activation'
+        },
+        {
+          id: 'wizard',
+          label: 'Create Playbook',
+          path: '/identify/wizard',
+          icon: '➕',
+          description: 'Build a new playbook from scratch or template'
+        },
+        {
+          id: 'sla',
+          label: 'SLA & Timeframes',
+          path: '/identify/sla',
+          icon: '⏱️',
+          description: 'Define execution velocity targets per phase'
+        },
+        {
+          id: 'metrics',
+          label: 'Success Metrics',
+          path: '/identify/metrics',
+          icon: '🎯',
+          description: 'Define KPIs and success criteria for playbooks'
+        }
+      ]
+    },
+    {
+      id: 'detect',
+      label: 'DETECT',
+      tagline: 'Monitor 24/7',
+      icon: '👁️',
+      color: 'from-purple-600 to-pink-600',
+      items: [
+        {
+          id: 'dashboard',
+          label: 'Monitoring Dashboard',
+          path: '/detect/dashboard',
+          icon: '📊',
+          description: 'Real-time view of all monitored signals'
+        },
+        {
+          id: 'alerts',
+          label: 'Alert Configuration',
+          path: '/detect/alerts',
+          icon: '🔔',
+          description: 'Configure triggers and notification thresholds'
+        },
+        {
+          id: 'signals',
+          label: 'Signal Intelligence',
+          path: '/detect/signals',
+          icon: '📡',
+          description: 'AI-powered signal monitoring and analysis'
+        },
+        {
+          id: 'threats',
+          label: 'Threat Detection',
+          path: '/detect/threats',
+          icon: '⚠️',
+          description: 'Real-time threat identification and warnings'
+        },
+        {
+          id: 'trends',
+          label: 'Trend Analysis',
+          path: '/detect/trends',
+          icon: '📈',
+          description: 'Pattern recognition and predictive insights'
+        },
+        {
+          id: 'history',
+          label: 'Alert History',
+          path: '/detect/history',
+          icon: '📜',
+          description: 'Historical detection log and audit trail'
+        }
+      ]
+    },
+    {
+      id: 'execute',
+      label: 'EXECUTE',
+      tagline: 'Coordinated Response',
+      icon: '⚡',
+      color: 'from-orange-600 to-red-600',
+      items: [
+        {
+          id: 'war-room',
+          label: 'War Room',
+          path: '/execute/war-room',
+          icon: '🛡️',
+          description: 'Leadership coordination and command center'
+        },
+        {
+          id: 'activation',
+          label: 'Playbook Activation',
+          path: '/execute/activation',
+          icon: '⚡',
+          description: 'Trigger playbooks and initiate response'
+        },
+        {
+          id: 'tasks',
+          label: 'Task Distribution',
+          path: '/execute/tasks',
+          icon: '📤',
+          description: 'Auto-assign tasks to teams and systems'
+        },
+        {
+          id: 'tracking',
+          label: 'Real-time Tracking',
+          path: '/execute/tracking',
+          icon: '⏩',
+          description: 'Monitor 12-minute response progress'
+        },
+        {
+          id: 'updates',
+          label: 'Stakeholder Updates',
+          path: '/execute/updates',
+          icon: '📧',
+          description: 'Automated communication and status updates'
+        },
+        {
+          id: 'decisions',
+          label: 'Decision Points',
+          path: '/execute/decisions',
+          icon: '👍',
+          description: 'Go/no-go checkpoints and approvals'
+        }
+      ]
+    },
+    {
+      id: 'advance',
+      label: 'ADVANCE',
+      tagline: 'Measure & Improve',
+      icon: '📈',
+      color: 'from-green-600 to-emerald-600',
+      items: [
+        {
+          id: 'metrics',
+          label: 'Execution Metrics',
+          path: '/advance/metrics',
+          icon: '📊',
+          description: 'SLA compliance and velocity analytics'
+        },
+        {
+          id: 'outcomes',
+          label: 'Outcome Analysis',
+          path: '/advance/outcomes',
+          icon: '🥧',
+          description: 'What did we achieve? Impact assessment'
+        },
+        {
+          id: 'effectiveness',
+          label: 'Playbook Effectiveness',
+          path: '/advance/effectiveness',
+          icon: '✔️',
+          description: 'ROI per scenario and playbook performance'
+        },
+        {
+          id: 'team',
+          label: 'Team Performance',
+          path: '/advance/team',
+          icon: '👥',
+          description: 'Individual and team execution metrics'
+        },
+        {
+          id: 'lessons',
+          label: 'Lessons Learned',
+          path: '/advance/lessons',
+          icon: '💡',
+          description: 'Capture insights and update playbooks'
+        },
+        {
+          id: 'audit',
+          label: 'Audit Trail',
+          path: '/advance/audit',
+          icon: '🔒',
+          description: 'Governance, compliance, and full history'
+        }
+      ]
+    },
+    {
+      id: 'setup',
+      label: 'SETUP',
+      tagline: 'Configuration',
+      icon: '⚙️',
+      color: 'from-slate-600 to-gray-600',
+      items: [
+        {
+          id: 'team',
+          label: 'Team Management',
+          path: '/setup/team',
+          icon: '👥',
+          description: 'Manage roles, permissions, and team members'
+        },
+        {
+          id: 'integrations',
+          label: 'Integrations',
+          path: '/setup/integrations',
+          icon: '🔗',
+          description: 'Connect Jira, Slack, Active Directory, and more'
+        },
+        {
+          id: 'organization',
+          label: 'Organization Settings',
+          path: '/setup/organization',
+          icon: '⚙️',
+          description: 'Company-wide configuration and preferences'
+        },
+        {
+          id: 'api',
+          label: 'API & Automation',
+          path: '/setup/api',
+          icon: '💻',
+          description: 'Developer tools and API documentation'
+        }
+      ]
+    },
+    {
+      id: 'learn',
+      label: 'LEARN',
+      tagline: 'Get Started',
+      icon: '❓',
+      color: 'from-indigo-600 to-violet-600',
+      items: [
+        {
+          id: 'quick-demo',
+          label: 'Quick Demo (5 min)',
+          path: '/learn/quick-demo',
+          icon: '▶️',
+          description: 'What is ExecuteIQ? Interactive overview'
+        },
+        {
+          id: 'role-demo',
+          label: 'Your Role Demo',
+          path: '/learn/role-demo',
+          icon: '👤',
+          description: 'Personalized demo for CEO/COO/CHRO/CTO'
+        },
+        {
+          id: 'drills',
+          label: 'Practice Drills',
+          path: '/learn/drills',
+          icon: '🔄',
+          description: 'Test playbooks without triggering real responses'
+        },
+        {
+          id: 'help',
+          label: 'Help & Support',
+          path: '/learn/help',
+          icon: '❓',
+          description: 'Documentation, tutorials, and support'
+        }
+      ]
+    }
+  ]
 };
 
-// Helper functions for working with navigation
-export const getItemsByCategory = (category: NavigationCategory) => 
-  navigationItems.filter(item => item.category === category);
-
-export const findItemByPath = (path: string) => 
-  navigationItems.find(item => item.path === path);
-
-export const findItemById = (id: string) => 
-  navigationItems.find(item => item.id === id);
+export default navigationConfig;
