@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
-import PageLayout from '@/components/layout/PageLayout';
+import IDEALayout from '@/components/layout/IDEALayout';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -401,7 +401,7 @@ export default function MissionControl() {
   };
 
   return (
-    <PageLayout>
+    <IDEALayout>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
@@ -1522,6 +1522,6 @@ export default function MissionControl() {
           </Card>
         </div>
       </div>
-    </PageLayout>
+    </IDEALayout>
   );
 }

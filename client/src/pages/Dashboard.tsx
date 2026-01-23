@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useQuery } from '@tanstack/react-query';
 import { useWebSocket } from "@/hooks/useWebSocket";
 import { updatePageMetadata } from "@/lib/seo";
-import PageLayout from '@/components/layout/PageLayout';
+import IDEALayout from '@/components/layout/IDEALayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -220,7 +220,7 @@ export default function Dashboard() {
     scoreValue >= 60 ? 'warning' : 'critical';
 
   return (
-    <PageLayout>
+    <IDEALayout>
       <div className="flex-1 overflow-auto page-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
           
@@ -492,6 +492,6 @@ export default function Dashboard() {
           </p>
         </div>
       </div>
-    </PageLayout>
+    </IDEALayout>
   );
 }
