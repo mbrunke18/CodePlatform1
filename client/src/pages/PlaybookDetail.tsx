@@ -41,6 +41,7 @@ import { MonitorPhaseView } from '@/components/playbook/MonitorPhaseView';
 import { LearnPhaseView } from '@/components/playbook/LearnPhaseView';
 import { AIPrinciplesScorecard, DeterministicExecutionBadge } from '@/components/ai/AIPrinciplesScorecard';
 import { ExecutionCommandCenter } from '@/components/execution/ExecutionCommandCenter';
+import { PhaseSLASummary } from '@/components/playbook/PhaseSLASummary';
 
 const SEVERITY_COLORS = {
   critical: 'bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300',
@@ -316,6 +317,8 @@ export default function PlaybookDetail() {
                     </CardContent>
                   </Card>
                 )}
+
+                <PhaseSLASummary phaseSLAs={playbook.phaseSLAs} />
               </TabsContent>
 
               <TabsContent value="identify" className="mt-6">
