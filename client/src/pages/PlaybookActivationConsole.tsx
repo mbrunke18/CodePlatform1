@@ -1,4 +1,3 @@
-import StandardNav from '@/components/layout/StandardNav';
 import { useEffect, useState } from "react";
 import { useRoute, Link } from "wouter";
 import { useQuery, useMutation } from "@tanstack/react-query";

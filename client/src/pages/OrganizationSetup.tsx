@@ -15,7 +15,6 @@ import { useToast } from '@/hooks/use-toast';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import { Link } from 'wouter';
-import PageLayout from '@/components/layout/PageLayout';
 import { 
   Building2,
   Users,
@@ -384,7 +383,7 @@ export default function OrganizationSetup() {
   };
 
   return (
-    <PageLayout>
+    <>
       <div className="page-background min-h-screen bg-transparent p-6">
         <div className="max-w-7xl mx-auto space-y-8">
           
@@ -935,6 +934,6 @@ export default function OrganizationSetup() {
           
         </div>
       </div>
-    </PageLayout>
+    </>
   );
 }

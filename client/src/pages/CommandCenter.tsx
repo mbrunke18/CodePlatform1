@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import PageLayout from '@/components/layout/PageLayout';
 import { useDynamicStrategy } from '@/contexts/DynamicStrategyContext';
 import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -253,7 +252,7 @@ export default function CommandCenter() {
   }
 
   return (
-    <PageLayout>
+    <>
       {/* Confetti Celebration */}
       {showConfetti && (
         <ReactConfetti
@@ -909,6 +908,6 @@ export default function CommandCenter() {
           </CardContent>
         </Card>
       </div>
-    </PageLayout>
+    </>
   );
 }

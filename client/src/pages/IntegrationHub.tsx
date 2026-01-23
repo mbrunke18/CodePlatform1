@@ -6,7 +6,6 @@ import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
-import PageLayout from '@/components/layout/PageLayout';
 import { useQuery } from '@tanstack/react-query';
 import { Link as WouterLink } from 'wouter';
 import { 
@@ -523,7 +522,7 @@ export default function IntegrationHub() {
   });
 
   return (
-    <PageLayout>
+    <>
       <div className="flex-1 page-background overflow-y-auto p-8 space-y-8">
         
         {/* Ecosystem Connectors Header */}
@@ -986,6 +985,6 @@ export default function IntegrationHub() {
           </TabsContent>
         </Tabs>
       </div>
-    </PageLayout>
+    </>
   );
 }

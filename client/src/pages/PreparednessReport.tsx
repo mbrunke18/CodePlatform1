@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ArrowLeft, Shield, TrendingUp, AlertTriangle, CheckCircle, Target, Users } from 'lucide-react';
 import { Link } from 'wouter';
-import PageLayout from '@/components/layout/PageLayout';
 
 export default function PreparednessReport() {
   const { data: organizations = [] } = useQuery<any[]>({ queryKey: ['/api/organizations'] });
@@ -24,11 +23,11 @@ export default function PreparednessReport() {
 
   if (isLoading || !scoreData) {
     return (
-      <PageLayout>
+      <>
         <div className="p-6">
           <div className="animate-pulse">Loading preparedness report...</div>
         </div>
-      </PageLayout>
+      </>
     );
   }
 
@@ -36,7 +35,7 @@ export default function PreparednessReport() {
   const readinessMetrics = scoreData.readinessMetrics || {};
 
   return (
-    <PageLayout>
+    <>
       <div className="p-6 space-y-6" data-testid="preparedness-report-page">
         {/* Header */}
         <div className="flex items-center justify-between">
@@ -334,6 +333,6 @@ export default function PreparednessReport() {
           </TabsContent>
         </Tabs>
       </div>
-    </PageLayout>
+    </>
   );
 }

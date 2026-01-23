@@ -13,7 +13,6 @@ import { useQuery, useMutation } from '@tanstack/react-query';
 import { queryClient, apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 import { Link, useSearch } from 'wouter';
-import PageLayout from '@/components/layout/PageLayout';
 import OnboardingTrigger from '@/components/onboarding/OnboardingTrigger';
 import TriggerConfigurationWizard from '@/components/configuration/TriggerConfigurationWizard';
 import { 
@@ -360,7 +359,7 @@ export default function TriggersManagement() {
   };
 
   return (
-    <PageLayout>
+    <>
       <div className="page-background min-h-screen bg-transparent p-6">
         <div className="max-w-7xl mx-auto space-y-8">
           
@@ -990,6 +989,6 @@ export default function TriggersManagement() {
         }}
         editTrigger={editTriggerData}
       />
-    </PageLayout>
+    </>
   );
 }

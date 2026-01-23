@@ -1,4 +1,3 @@
-import PageLayout from '@/components/layout/PageLayout';
 import { useState } from 'react';
 import { useLocation, Link } from 'wouter';
 import { useDynamicStrategy } from '@/contexts/DynamicStrategyContext';
@@ -155,7 +154,7 @@ export default function ForesightRadar() {
 
   if (isLoading) {
     return (
-      <PageLayout>
+      <>
         <div className="page-background min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950 p-8">
           <div className="max-w-7xl mx-auto">
             <div className="animate-pulse space-y-4">
@@ -164,12 +163,12 @@ export default function ForesightRadar() {
             </div>
           </div>
         </div>
-      </PageLayout>
+      </>
     );
   }
 
   return (
-    <PageLayout>
+    <>
       <div className="bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950 p-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header with Value Proposition */}
@@ -668,6 +667,6 @@ export default function ForesightRadar() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </PageLayout>
+    </>
   );
 }

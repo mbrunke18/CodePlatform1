@@ -6,7 +6,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import PageLayout from '@/components/layout/PageLayout';
 import { 
   Users, 
   MessageSquare, 
@@ -335,7 +334,7 @@ export default function RealTimeCollaboration() {
   };
 
   return (
-    <PageLayout>
+    <>
       <div className="flex-1 page-background overflow-y-auto p-8 space-y-8">
         
         {/* Collaboration Header */}
@@ -758,6 +757,6 @@ export default function RealTimeCollaboration() {
           </TabsContent>
         </Tabs>
       </div>
-    </PageLayout>
+    </>
   );
 }

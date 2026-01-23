@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'wouter';
-import { ChevronDown, ChevronRight, Menu, X } from 'lucide-react';
+import { ChevronDown, ChevronRight, Menu, X, LogOut, User, Home, Moon, Sun } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { navigationConfig } from '@/navigation/config';
 import { NavigationPhase } from '@/navigation/types';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/hooks/useAuth';
 
 interface IDEASidebarProps {
   className?: string;
@@ -14,6 +15,20 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
   const [location] = useLocation();
   const [expandedPhases, setExpandedPhases] = useState<string[]>(['identify']);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+  const { user, isAuthenticated, logout, login } = useAuth();
+
+  useEffect(() => {
+    setIsDark(document.documentElement.classList.contains('dark'));
+  }, []);
+
+  const toggleTheme = () => {
+    const html = document.documentElement;
+    const newDark = !html.classList.contains('dark');
+    html.classList.toggle('dark');
+    localStorage.setItem('m-theme', newDark ? 'dark' : 'light');
+    setIsDark(newDark);
+  };
 
   const togglePhase = (phaseId: string) => {
     setExpandedPhases(prev =>
@@ -127,10 +142,52 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
         {navigationConfig.phases.slice(4).map(renderPhase)}
       </nav>
 
-      <div className="p-4 border-t border-border/50">
-        <div className="text-[10px] text-muted-foreground text-center">
-          💡 Following IDEA framework for strategic execution
+      <div className="p-3 border-t border-border/50 space-y-2">
+        <div className="flex items-center gap-2">
+          <Link href="/">
+            <a className="flex-1 flex items-center gap-2 px-3 py-2 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors">
+              <Home className="h-4 w-4" />
+              <span>Home</span>
+            </a>
+          </Link>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleTheme}
+            className="h-9 w-9 text-muted-foreground hover:text-foreground"
+          >
+            {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </Button>
         </div>
+        
+        {isAuthenticated && user ? (
+          <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-poise-gold to-poise-teal flex items-center justify-center text-white text-sm font-medium">
+              {user.initials || user.firstName?.charAt(0).toUpperCase() || 'U'}
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-sm font-medium truncate">{user.firstName || user.email}</div>
+              <div className="text-[10px] text-muted-foreground">Signed in</div>
+            </div>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={logout}
+              className="h-8 w-8 text-muted-foreground hover:text-red-400"
+            >
+              <LogOut className="h-4 w-4" />
+            </Button>
+          </div>
+        ) : (
+          <Button
+            onClick={login}
+            variant="outline"
+            className="w-full justify-start gap-2"
+          >
+            <User className="h-4 w-4" />
+            Sign In
+          </Button>
+        )}
       </div>
     </div>
   );

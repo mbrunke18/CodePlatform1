@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import PageLayout from '@/components/layout/PageLayout';
 import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -77,7 +76,7 @@ export default function AIRadarDashboard() {
   const currentCategory = SIGNAL_CATEGORIES[scanningCategory];
 
   return (
-    <PageLayout>
+    <>
       <div className="space-y-6 p-6">
         {/* Header */}
         <div className="flex items-center justify-between">
@@ -553,6 +552,6 @@ export default function AIRadarDashboard() {
           </Card>
         )}
       </div>
-    </PageLayout>
+    </>
   );
 }

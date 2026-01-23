@@ -7,7 +7,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import PageLayout from '@/components/layout/PageLayout';
 import { 
   FileText, 
   Shield, 
@@ -310,7 +309,7 @@ export default function AuditLoggingCenter() {
   });
 
   return (
-    <PageLayout>
+    <>
       <div className="flex-1 page-background overflow-y-auto p-8 space-y-8">
         
         {/* Audit Logging Header */}
@@ -762,6 +761,6 @@ export default function AuditLoggingCenter() {
           </TabsContent>
         </Tabs>
       </div>
-    </PageLayout>
+    </>
   );
 }
