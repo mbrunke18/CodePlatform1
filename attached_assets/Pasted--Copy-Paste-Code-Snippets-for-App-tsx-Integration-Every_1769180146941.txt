@@ -1,0 +1,235 @@
+# Copy-Paste Code Snippets for App.tsx Integration
+
+## 📋 Everything you need to add to your App.tsx (or main router file)
+
+### **Step 1: Copy all these imports to the TOP of App.tsx**
+
+```typescript
+// ========== IDENTIFY Phase Page Imports ==========
+import PlaybooksLibraryPage from '@/pages/identify/PlaybooksLibraryPage';
+import TemplatesPage from '@/pages/identify/TemplatesPage';
+import MyPlaybooksPage from '@/pages/identify/MyPlaybooksPage';
+import WizardPage from '@/pages/identify/WizardPage';
+import SLAPage from '@/pages/identify/SLAPage';
+import IdentifyMetricsPage from '@/pages/identify/MetricsPage';
+
+// ========== DETECT Phase Page Imports ==========
+import DetectDashboardPage from '@/pages/detect/DashboardPage';
+import DetectAlertsPage from '@/pages/detect/AlertsPage';
+import DetectSignalsPage from '@/pages/detect/SignalsPage';
+import DetectThreatsPage from '@/pages/detect/ThreatsPage';
+import DetectTrendsPage from '@/pages/detect/TrendsPage';
+import DetectHistoryPage from '@/pages/detect/HistoryPage';
+
+// ========== EXECUTE Phase Page Imports ==========
+import ExecuteWarRoomPage from '@/pages/execute/WarRoomPage';
+import ExecuteActivationPage from '@/pages/execute/ActivationPage';
+import ExecuteTasksPage from '@/pages/execute/TasksPage';
+import ExecuteTrackingPage from '@/pages/execute/TrackingPage';
+import ExecuteUpdatesPage from '@/pages/execute/UpdatesPage';
+import ExecuteDecisionsPage from '@/pages/execute/DecisionsPage';
+
+// ========== ADVANCE Phase Page Imports ==========
+import AdvanceMetricsPage from '@/pages/advance/MetricsPage';
+import AdvanceOutcomesPage from '@/pages/advance/OutcomesPage';
+import AdvanceEffectivenessPage from '@/pages/advance/EffectivenessPage';
+import AdvanceTeamPage from '@/pages/advance/TeamPage';
+import AdvanceLessonsPage from '@/pages/advance/LessonsPage';
+import AdvanceAuditPage from '@/pages/advance/AuditPage';
+
+// ========== SETUP Page Imports ==========
+import SetupTeamPage from '@/pages/setup/TeamPage';
+import SetupIntegrationsPage from '@/pages/setup/IntegrationsPage';
+import SetupOrgPage from '@/pages/setup/OrgPage';
+import SetupAPIPage from '@/pages/setup/APIPage';
+
+// ========== LEARN Page Imports ==========
+import LearnQuickDemoPage from '@/pages/learn/QuickDemoPage';
+import LearnRoleDemoPage from '@/pages/learn/RoleDemoPage';
+import LearnDrillsPage from '@/pages/learn/DrillsPage';
+import LearnHelpPage from '@/pages/learn/HelpPage';
+
+// ========== New Sidebar Import ==========
+import IDEASidebar from '@/components/layout/IDEASidebar';
+```
+
+---
+
+### **Step 2: Copy all these routes into your Router**
+
+```typescript
+{/* ========== IDENTIFY PHASE ROUTES ========== */}
+<Route path="/identify/playbooks" component={PlaybooksLibraryPage} />
+<Route path="/identify/templates" component={TemplatesPage} />
+<Route path="/identify/my-playbooks" component={MyPlaybooksPage} />
+<Route path="/identify/wizard" component={WizardPage} />
+<Route path="/identify/sla" component={SLAPage} />
+<Route path="/identify/metrics" component={IdentifyMetricsPage} />
+
+{/* ========== DETECT PHASE ROUTES ========== */}
+<Route path="/detect/dashboard" component={DetectDashboardPage} />
+<Route path="/detect/alerts" component={DetectAlertsPage} />
+<Route path="/detect/signals" component={DetectSignalsPage} />
+<Route path="/detect/threats" component={DetectThreatsPage} />
+<Route path="/detect/trends" component={DetectTrendsPage} />
+<Route path="/detect/history" component={DetectHistoryPage} />
+
+{/* ========== EXECUTE PHASE ROUTES ========== */}
+<Route path="/execute/war-room" component={ExecuteWarRoomPage} />
+<Route path="/execute/activation" component={ExecuteActivationPage} />
+<Route path="/execute/tasks" component={ExecuteTasksPage} />
+<Route path="/execute/tracking" component={ExecuteTrackingPage} />
+<Route path="/execute/updates" component={ExecuteUpdatesPage} />
+<Route path="/execute/decisions" component={ExecuteDecisionsPage} />
+
+{/* ========== ADVANCE PHASE ROUTES ========== */}
+<Route path="/advance/metrics" component={AdvanceMetricsPage} />
+<Route path="/advance/outcomes" component={AdvanceOutcomesPage} />
+<Route path="/advance/effectiveness" component={AdvanceEffectivenessPage} />
+<Route path="/advance/team" component={AdvanceTeamPage} />
+<Route path="/advance/lessons" component={AdvanceLessonsPage} />
+<Route path="/advance/audit" component={AdvanceAuditPage} />
+
+{/* ========== SETUP ROUTES ========== */}
+<Route path="/setup/team" component={SetupTeamPage} />
+<Route path="/setup/integrations" component={SetupIntegrationsPage} />
+<Route path="/setup/organization" component={SetupOrgPage} />
+<Route path="/setup/api" component={SetupAPIPage} />
+
+{/* ========== LEARN ROUTES ========== */}
+<Route path="/learn/quick-demo" component={LearnQuickDemoPage} />
+<Route path="/learn/role-demo" component={LearnRoleDemoPage} />
+<Route path="/learn/drills" component={LearnDrillsPage} />
+<Route path="/learn/help" component={LearnHelpPage} />
+```
+
+---
+
+### **Step 3: Update your Layout Component**
+
+Find where you render the navigation (usually in a layout or App component):
+
+**OLD CODE:**
+```tsx
+import StandardNav from '@/components/layout/StandardNav';
+
+export default function App() {
+  return (
+    <div>
+      <StandardNav />
+      <main>{/* page content */}</main>
+    </div>
+  );
+}
+```
+
+**NEW CODE:**
+```tsx
+import IDEASidebar from '@/components/layout/IDEASidebar';
+
+export default function App() {
+  return (
+    <div className="flex">
+      <IDEASidebar />
+      <main className="flex-1">{/* page content */}</main>
+    </div>
+  );
+}
+```
+
+---
+
+## 🎯 That's It!
+
+You now have:
+- ✅ 32 new pages (organized by IDEA phase)
+- ✅ Navigation configuration (IDEA-based structure)
+- ✅ New IDEASidebar component
+- ✅ All routes configured
+
+Total time to integrate: **~5-10 minutes**
+
+---
+
+## 📱 Testing the Navigation
+
+1. Start your dev server
+2. Click on "🎯 IDENTIFY" in the sidebar
+3. It expands to show 6 options
+4. Click any option to navigate
+5. You should see the placeholder page
+6. Sidebar shows which phase you're in
+
+Example URLs that will now work:
+- `/identify/playbooks` - Strategic Playbooks Library
+- `/identify/templates` - Scenario Templates
+- `/identify/wizard` - Create Playbook
+- `/detect/dashboard` - Monitoring Dashboard
+- `/execute/war-room` - War Room
+- `/advance/metrics` - Execution Metrics
+- `/setup/integrations` - Integrations
+- `/learn/quick-demo` - Quick Demo
+
+---
+
+## 🛠️ Customization Options
+
+### Change Phase Colors
+Edit `IDEASidebar.tsx` and update the color classes:
+```tsx
+{
+  id: 'identify',
+  color: 'from-blue-600 to-cyan-600',  // ← Change these
+  ...
+}
+```
+
+### Change Icons
+Edit the emoji icons in `config.ts`:
+```typescript
+icon: '🎯',  // Change to any emoji
+```
+
+### Change Sidebar Width
+Edit `IDEASidebar.tsx`:
+```tsx
+<aside className="w-72 ...">  {/* Change w-72 to w-80, w-64, etc */}
+```
+
+---
+
+## 📚 File Structure Reference
+
+All files are organized by phase:
+
+```
+client/src/
+├── navigation/
+│   ├── types.ts       ← Type definitions
+│   └── config.ts      ← IDEA phase configuration
+├── components/layout/
+│   └── IDEASidebar.tsx   ← New sidebar component
+└── pages/
+    ├── identify/      ← 6 pages
+    ├── detect/        ← 6 pages
+    ├── execute/       ← 6 pages
+    ├── advance/       ← 6 pages
+    ├── setup/         ← 4 pages
+    └── learn/         ← 4 pages
+```
+
+---
+
+## ⚡ Quick Integration Checklist
+
+- [ ] Copy all imports to App.tsx
+- [ ] Copy all routes to your router
+- [ ] Update layout to use IDEASidebar instead of old nav
+- [ ] Test that sidebar renders
+- [ ] Click through phase sections
+- [ ] Verify all routes load
+- [ ] Start replacing placeholder content with real features
+
+---
+
+**You're ready to launch the new IDEA-based navigation! 🚀**
