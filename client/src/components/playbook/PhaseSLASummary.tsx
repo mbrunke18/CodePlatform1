@@ -86,6 +86,7 @@ const convertFromMinutes = (minutes: number, unit: string) => {
 
 export function PhaseSLASummary({ phaseSLAs, compact = false }: PhaseSLASummaryProps) {
   const slas = phaseSLAs || DEFAULT_SLAS;
+  const isCustomized = !!phaseSLAs;
   const enabledCount = Object.values(slas).filter(s => s.enabled).length;
 
   if (compact) {
@@ -122,9 +123,14 @@ export function PhaseSLASummary({ phaseSLAs, compact = false }: PhaseSLASummaryP
             <Clock className="h-5 w-5 text-poise-teal" />
             Phase SLAs (IDEA Framework)
           </CardTitle>
-          <Badge variant="outline" className="text-xs">
-            {enabledCount}/4 Configured
-          </Badge>
+          <div className="flex items-center gap-2">
+            <Badge variant={isCustomized ? "default" : "secondary"} className="text-xs">
+              {isCustomized ? 'Customized' : 'Default Targets'}
+            </Badge>
+            <Badge variant="outline" className="text-xs">
+              {enabledCount}/4 Active
+            </Badge>
+          </div>
         </div>
       </CardHeader>
       <CardContent>
