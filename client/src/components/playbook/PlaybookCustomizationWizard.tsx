@@ -22,6 +22,7 @@ import PrepareOverviewStep from './wizard/PrepareOverviewStep';
 import MonitorTriggersStep from './wizard/MonitorTriggersStep';
 import ExecuteTasksStep from './wizard/ExecuteTasksStep';
 import LearnConfigStep from './wizard/LearnConfigStep';
+import SLADefinitionStep from './wizard/SLADefinitionStep';
 
 interface PlaybookCustomizationWizardProps {
   playbook: any;
@@ -35,11 +36,12 @@ const STEPS = [
   { id: 2, phase: 'prepare', name: 'Stakeholder Matrix', prefilled: '90%', component: StakeholderMatrixStep, aiTip: 'Define who does what when this playbook activates', icon: '👥' },
   { id: 3, phase: 'prepare', name: 'Communication Templates', prefilled: '80%', component: CommunicationTemplatesStep, aiTip: 'Pre-write messages for rapid deployment', icon: '📝' },
   { id: 4, phase: 'prepare', name: 'Budget & Resources', prefilled: '100%', component: BudgetAuthorityStep, aiTip: 'Pre-approve budgets and vendor contracts', icon: '💰' },
-  { id: 5, phase: 'monitor', name: 'MONITOR Triggers', prefilled: '100%', component: MonitorTriggersStep, aiTip: 'Define signals and conditions that activate this playbook', icon: '📡', isPhaseOverview: true },
-  { id: 6, phase: 'execute', name: 'EXECUTE Tasks', prefilled: '75%', component: ExecuteTasksStep, aiTip: 'Define tasks across immediate/coordinate/resolve/close sub-phases', icon: '⚡', isPhaseOverview: true },
-  { id: 7, phase: 'execute', name: 'Decision Trees', prefilled: '85%', component: DecisionTreesStep, aiTip: 'Map escalation paths and conditional logic', icon: '🌳' },
-  { id: 8, phase: 'learn', name: 'LEARN Activities', prefilled: '80%', component: LearnConfigStep, aiTip: 'Configure post-execution learning and improvement', icon: '📚', isPhaseOverview: true },
-  { id: 9, phase: 'learn', name: 'Success Metrics', prefilled: '80%', component: SuccessMetricsStep, aiTip: 'Define KPIs to measure execution quality', icon: '📊' },
+  { id: 5, phase: 'prepare', name: 'Phase SLAs', prefilled: '100%', component: SLADefinitionStep, aiTip: 'Set target timeframes for each IDEA phase to measure execution velocity', icon: '⏱️' },
+  { id: 6, phase: 'monitor', name: 'MONITOR Triggers', prefilled: '100%', component: MonitorTriggersStep, aiTip: 'Define signals and conditions that activate this playbook', icon: '📡', isPhaseOverview: true },
+  { id: 7, phase: 'execute', name: 'EXECUTE Tasks', prefilled: '75%', component: ExecuteTasksStep, aiTip: 'Define tasks across immediate/coordinate/resolve/close sub-phases', icon: '⚡', isPhaseOverview: true },
+  { id: 8, phase: 'execute', name: 'Decision Trees', prefilled: '85%', component: DecisionTreesStep, aiTip: 'Map escalation paths and conditional logic', icon: '🌳' },
+  { id: 9, phase: 'learn', name: 'LEARN Activities', prefilled: '80%', component: LearnConfigStep, aiTip: 'Configure post-execution learning and improvement', icon: '📚', isPhaseOverview: true },
+  { id: 10, phase: 'learn', name: 'Success Metrics', prefilled: '80%', component: SuccessMetricsStep, aiTip: 'Define KPIs to measure execution quality', icon: '📊' },
 ];
 
 const PHASE_STYLES = {
@@ -58,10 +60,10 @@ const PHASE_STYLES = {
 } as const;
 
 const PHASES = [
-  { id: 'prepare' as const, name: 'Prepare', icon: '🎯', steps: [1, 2, 3, 4] },
-  { id: 'monitor' as const, name: 'Monitor', icon: '📡', steps: [5] },
-  { id: 'execute' as const, name: 'Execute', icon: '⚡', steps: [6, 7] },
-  { id: 'learn' as const, name: 'Learn', icon: '📚', steps: [8, 9] },
+  { id: 'prepare' as const, name: 'Prepare', icon: '🎯', steps: [1, 2, 3, 4, 5] },
+  { id: 'monitor' as const, name: 'Monitor', icon: '📡', steps: [6] },
+  { id: 'execute' as const, name: 'Execute', icon: '⚡', steps: [7, 8] },
+  { id: 'learn' as const, name: 'Learn', icon: '📚', steps: [9, 10] },
 ];
 
 export default function PlaybookCustomizationWizard({
@@ -107,6 +109,38 @@ export default function PlaybookCustomizationWizard({
     
     // Step 8: Lessons Learned
     lessonsLearned: [],
+    
+    // Phase SLAs for IDEA Framework
+    phaseSLAs: playbook?.phaseSLAs || {
+      identify: {
+        name: 'Stakeholder Notification SLA',
+        description: 'Time from decision to notify all tier-1 stakeholders',
+        unit: 'minutes',
+        targetMinutes: 15,
+        enabled: true,
+      },
+      detect: {
+        name: 'Signal Detection SLA',
+        description: 'Time from trigger event to AI signal detection',
+        unit: 'hours',
+        targetMinutes: 240,
+        enabled: true,
+      },
+      execute: {
+        name: 'Execution SLA',
+        description: 'Time from trigger fire to first task execution',
+        unit: 'minutes',
+        targetMinutes: 5,
+        enabled: true,
+      },
+      advance: {
+        name: 'Outcome SLA',
+        description: 'Time to achieve primary objectives and stabilize situation',
+        unit: 'hours',
+        targetMinutes: 1440,
+        enabled: true,
+      },
+    },
   });
 
   const { toast } = useToast();
