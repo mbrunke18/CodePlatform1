@@ -376,30 +376,26 @@ app.use((req, res, next) => {
       await setupViteFn(app, server);
       logger.info("✅ Vite setup complete");
     } else {
-      logger.info("📦 Serving static files...");
+      logger.info("📦 Serving static files for production...");
       
       // Production: serve static files from build output
+      // NOTE: Do NOT call serveStatic() - it has a conflicting catch-all handler
       app.use(express.static("/app/dist/public", {
         index: false // Disable automatic index.html serving - "/" is handled by health check above
       }));
       
-      serveStatic(app);
-      
       // SPA catch-all for browser requests - serves index.html for client-side routing
       // The root "/" health check is already registered at the top of the file
-      // This handles all other routes for the SPA
-      app.get("*", (req, res, next) => {
-        // Skip API routes
-        if (req.path.startsWith('/api')) {
+      app.use("*", (req, res, next) => {
+        // Skip if already handled or if it's an API route
+        if (res.headersSent || req.originalUrl.startsWith('/api')) {
           return next();
         }
-        // Serve SPA for browser requests
-        const acceptHeader = req.headers.accept || '';
-        if (acceptHeader.includes('text/html')) {
-          return res.sendFile("/app/dist/public/index.html");
-        }
-        next();
+        // Serve SPA index.html for all other routes
+        res.sendFile("/app/dist/public/index.html");
       });
+      
+      logger.info("✅ Production static file serving configured");
     }
   } catch (error) {
     logger.error({ error }, "❌ Vite/static setup failed");

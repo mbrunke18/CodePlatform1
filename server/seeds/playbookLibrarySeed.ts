@@ -146,14 +146,6 @@ export async function seedPlaybookLibrary() {
   return true;
 }
 
-if (import.meta.url.endsWith(process.argv[1])) {
-  seedPlaybookLibrary()
-    .then(() => {
-      console.log('Seed completed successfully');
-      process.exit(0);
-    })
-    .catch((error) => {
-      console.error('Seed failed:', error);
-      process.exit(1);
-    });
-}
+// Direct execution check - DISABLED for bundled builds
+// This was causing process.exit(0) to kill the production server
+// To run seed manually, use: npx tsx server/seeds/playbookLibrarySeed.ts
