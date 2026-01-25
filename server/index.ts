@@ -98,10 +98,33 @@ app.head("/", (_req, res) => {
   res.status(200).end();
 });
 
-// CRITICAL: Root "/" health check for Replit Autoscale deployments
-// This MUST return 200 immediately - seeding happens in background after server starts
-// Registered before other middleware to ensure fastest possible response
-let rootHealthCheckRegistered = false;
+// CRITICAL: Root "/" GET health check for Replit Autoscale deployments
+// This MUST be registered IMMEDIATELY before any async operations
+// Returns 200 for health checks (non-browser), or defers to SPA handler for browsers
+app.get("/", (req, res, next) => {
+  const acceptHeader = req.headers.accept || '';
+  const userAgent = req.headers['user-agent'] || '';
+  
+  // Health check detection: no Accept header, or doesn't want HTML, or is a known health checker
+  const isHealthCheck = !acceptHeader || 
+    !acceptHeader.includes('text/html') || 
+    userAgent.includes('HealthChecker') ||
+    userAgent.includes('kube-probe') ||
+    userAgent.includes('GoogleHC');
+  
+  if (isHealthCheck) {
+    // Fast health check response - MUST return 200 immediately
+    return res.status(200).json({ 
+      status: "ok", 
+      app: "ExecuteIQ", 
+      ready: true,
+      timestamp: new Date().toISOString() 
+    });
+  }
+  
+  // Browser request - pass to SPA handler (registered later)
+  next();
+});
 
 // Import raw body parser for webhook signature verification
 import { rawBodyParser } from "./middleware/rawBodyParser";
@@ -355,34 +378,27 @@ app.use((req, res, next) => {
     } else {
       logger.info("📦 Serving static files...");
       
-      // CRITICAL: Register root "/" FIRST for Autoscale health checks in production
-      // Must return 200 immediately - this is the health check endpoint
-      if (!rootHealthCheckRegistered) {
-        app.get("/", (_req, res) => {
-          // Return index.html for browser requests (Accept header includes text/html)
-          const acceptHeader = _req.headers.accept || '';
-          if (acceptHeader.includes('text/html')) {
-            return res.sendFile("/app/dist/public/index.html");
-          }
-          // Return fast JSON for health check requests (curl, load balancers, etc.)
-          res.status(200).json({ status: "ok", app: "ExecuteIQ", timestamp: new Date().toISOString() });
-        });
-        rootHealthCheckRegistered = true;
-        logger.info("✅ Root health check endpoint registered for production");
-      }
-      
       // Production: serve static files from build output
-      // Use custom middleware to serve index.html for SPA routes while allowing API routes through
       app.use(express.static("/app/dist/public", {
-        index: false // Disable automatic index.html serving - we handle "/" explicitly
+        index: false // Disable automatic index.html serving - "/" is handled by health check above
       }));
       
       serveStatic(app);
       
-      // Catch-all route serves SPA for client-side routing (must be last)
-      // Excludes "/" which is handled above for health checks
-      app.get(/^\/(?!$).*/, (_req, res) => {
-        res.sendFile("/app/dist/public/index.html");
+      // SPA catch-all for browser requests - serves index.html for client-side routing
+      // The root "/" health check is already registered at the top of the file
+      // This handles all other routes for the SPA
+      app.get("*", (req, res, next) => {
+        // Skip API routes
+        if (req.path.startsWith('/api')) {
+          return next();
+        }
+        // Serve SPA for browser requests
+        const acceptHeader = req.headers.accept || '';
+        if (acceptHeader.includes('text/html')) {
+          return res.sendFile("/app/dist/public/index.html");
+        }
+        next();
       });
     }
   } catch (error) {
