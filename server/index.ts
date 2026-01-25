@@ -1,4 +1,5 @@
 import express, { type Request, Response, NextFunction } from "express";
+import path from "path";
 import { registerRoutes } from "./routes";
 import { serveStatic, log } from "./vite";
 import type { setupVite } from "./vite";
@@ -379,20 +380,25 @@ app.use((req, res, next) => {
       logger.info("📦 Serving static files for production...");
       
       // Production: serve static files from build output
+      // Use path.resolve for portable paths across environments
+      const distPublicPath = path.resolve(process.cwd(), "dist/public");
+      logger.info({ distPublicPath }, "Static file path resolved");
+      
       // NOTE: Do NOT call serveStatic() - it has a conflicting catch-all handler
-      app.use(express.static("/app/dist/public", {
+      app.use(express.static(distPublicPath, {
         index: false // Disable automatic index.html serving - "/" is handled by health check above
       }));
       
       // SPA catch-all for browser requests - serves index.html for client-side routing
       // The root "/" health check is already registered at the top of the file
+      const indexHtmlPath = path.resolve(distPublicPath, "index.html");
       app.use("*", (req, res, next) => {
         // Skip if already handled or if it's an API route
         if (res.headersSent || req.originalUrl.startsWith('/api')) {
           return next();
         }
         // Serve SPA index.html for all other routes
-        res.sendFile("/app/dist/public/index.html");
+        res.sendFile(indexHtmlPath);
       });
       
       logger.info("✅ Production static file serving configured");
