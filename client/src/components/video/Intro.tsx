@@ -64,7 +64,7 @@ export function Intro({ progress }: SceneProps) {
         </motion.div>
 
         <TextPunch 
-          text="From Days to Minutes" 
+          text="NFL-Grade Execution" 
           size="2xl" 
           delay={0.5}
           className="text-white mb-4"
@@ -76,7 +76,16 @@ export function Intro({ progress }: SceneProps) {
           transition={{ delay: 1 }}
           className="text-xl md:text-2xl text-white/70 max-w-xl mx-auto"
         >
-          When strategic events hit, every hour of delay costs millions.
+          The NFL executes 60-80 critical decisions in 3 hours.
+        </motion.p>
+        
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.5 }}
+          className="text-lg md:text-xl text-[#D4AF37] max-w-xl mx-auto mt-4"
+        >
+          Fortune 500 companies take 72 hours to coordinate one.
         </motion.p>
 
         <motion.div

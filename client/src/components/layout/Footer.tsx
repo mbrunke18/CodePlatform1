@@ -161,13 +161,13 @@ export default function Footer() {
       <div className="border-t border-poise-gold/10 bg-gradient-to-r from-poise-navy via-poise-dark-gray/50 to-poise-navy">
         <div className="max-w-7xl mx-auto px-6 py-8 text-center">
           <p className="text-2xl font-bold text-poise-gold mb-2" data-testid="footer-idea-tagline">
-            That's the IDEA.
+            NFL-Grade Execution for Enterprise
           </p>
           <p className="text-lg text-slate-300 italic mb-4">
-            "Comfortable and confident that we are prepared to execute. No matter the situation."
+            "The NFL executes 60-80 decisions in 3 hours. We built the system that brings that methodology to business."
           </p>
           <p className="text-sm text-poise-teal">
-            Success Favors the Prepared
+            72 Hours → 12 Minutes
           </p>
         </div>
       </div>

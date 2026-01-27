@@ -72,11 +72,20 @@ export function Solution({ progress }: SceneProps) {
           className="space-y-1"
         >
           <p className="text-2xl md:text-3xl text-white/90 font-light">
-            The Strategic Execution OS
+            NFL-Grade Execution Methodology
           </p>
           <p className="text-lg text-[#00A8A8]">
             for Fortune 1000 Leaders
           </p>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="mt-6 text-white/60 text-sm max-w-lg mx-auto"
+        >
+          Playbooks built before the moment. Roles pre-assigned. Everyone knows their job before the snap.
         </motion.div>
 
         <motion.div

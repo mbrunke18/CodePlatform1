@@ -191,45 +191,44 @@ export default function Homepage() {
           
           {/* THE HOOK - The Disruption */}
           <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 mb-8">
-              <Sparkles className="h-4 w-4 text-blue-400" />
-              <span className="text-blue-300 text-sm font-medium">The AI Operating System for Strategic Execution</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#D4AF37]/20 to-[#00A8A8]/20 border border-[#D4AF37]/30 mb-8">
+              <Sparkles className="h-4 w-4 text-[#D4AF37]" />
+              <span className="text-[#D4AF37] text-sm font-medium">NFL-Grade Execution Methodology for Enterprise</span>
             </div>
             
-            {/* The Category - Strategic Execution OS */}
+            {/* The Category - NFL-Grade Execution */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tight" data-testid="heading-main">
-              Strategic Events Hit Fast.<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-                Your Response Should Too.
+              NFL-Grade Execution<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#00A8A8] to-emerald-400">
+                for Enterprise
               </span>
             </h1>
             
-            {/* The Problem */}
+            {/* The Insight */}
             <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-4 leading-relaxed" data-testid="text-insight">
-              M&A announcement. Competitor move. Regulatory change. Crisis breaks.
-              Your organization spends <span className="text-white font-semibold">days getting organized</span> while 
-              the window for action shrinks.
+              The NFL executes <span className="text-white font-semibold">60-80 critical decisions in 3 hours</span>. 
+              Fortune 500 companies take <span className="text-red-400 font-semibold">72 hours</span> to coordinate one.
             </p>
             <p className="text-2xl md:text-3xl font-semibold text-white max-w-3xl mx-auto mb-8">
-              ExecuteIQ activates coordinated response in <span className="text-emerald-400">12 minutes</span>—across all 9 strategic domains.
+              We built the system that <span className="text-emerald-400">closes that gap</span>.
             </p>
           </div>
 
-          {/* THE TURN - ExecuteIQ as the New Operating System */}
+          {/* THE TURN - NFL Methodology */}
           <div className="bg-gradient-to-r from-slate-800/50 via-slate-800/80 to-slate-800/50 rounded-2xl border border-slate-700/50 p-8 mb-10 max-w-4xl mx-auto">
             <div className="text-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 mb-4">
-                <Zap className="h-4 w-4 text-emerald-400" />
-                <span className="text-emerald-400 text-sm font-medium">ExecuteIQ</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/30 mb-4">
+                <Zap className="h-4 w-4 text-[#D4AF37]" />
+                <span className="text-[#D4AF37] text-sm font-medium">The Methodology That Wins</span>
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                The Operating System Organizations Have Been Missing.
+                Preparation Enables Speed
               </h2>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-6">
-                ExecuteIQ is the AI-native command layer that synchronizes your entire organization. 
-                <span className="text-white font-semibold"> 166 pre-staged playbooks</span> with 
-                stakeholders, tasks, budgets, and communications—ready to activate 
-                the moment a trigger fires. <span className="text-emerald-400 font-medium">Everyone knows their role. Zero scrambling.</span>
+                NFL teams build playbooks before the season. Roles are pre-assigned. 
+                When the play is called, <span className="text-white font-semibold">everyone knows their job before the snap</span>. 
+                ExecuteIQ brings this methodology to business—<span className="text-[#D4AF37] font-semibold">166 playbooks</span>, 
+                pre-defined roles, <span className="text-emerald-400 font-medium">12-minute activation</span>.
               </p>
               
               {/* The Outcome - Value Delivered */}
@@ -1324,33 +1323,33 @@ export default function Homepage() {
       <StrategyReality />
       <StrategyToIDEA />
 
-      {/* Origin Story */}
+      {/* Origin Story - Built by Someone Who's Lived Both Worlds */}
       <section className="py-20 px-6 bg-white dark:bg-slate-950">
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <Badge className="mb-4 bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 border-amber-200 dark:border-amber-800" data-testid="badge-origin">
-                The Origin
+              <Badge className="mb-4 bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30" data-testid="badge-origin">
+                Built by Someone Who's Lived Both Worlds
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">
                 From Sideline to Boardroom
               </h2>
               <p className="text-lg text-slate-700 dark:text-slate-300 mb-4 leading-relaxed">
-                Before enterprise software, I spent 5 years coordinating elite athletes under pressure—as a major college football coach.
+                I coached college football for 5 years. Every game, 60-80 plays. Every 40 seconds—read the situation, call the play, execute. I lived the methodology that lets billion-dollar programs perform under pressure.
               </p>
               <p className="text-slate-600 dark:text-slate-400 mb-4">
-                When a play breaks down, you don't have 72 hours. You have 40 seconds. What makes that possible isn't superhuman speed—it's <strong className="text-slate-900 dark:text-white">preparation</strong>.
+                Then I spent 20 years inside Fortune 500 companies—Ford, Toyota, Lockheed Martin, Eli Lilly, Boyd Gaming, Churchill Downs. Same caliber of people. Same high stakes. But no playbooks. Every strategic moment handled ad-hoc.
               </p>
               <p className="text-slate-600 dark:text-slate-400 mb-6">
-                I spent 20+ years at Ford, Toyota, Lockheed Martin, Eli Lilly, and Churchill Downs asking the same question:
+                I watched the same pattern every time: <span className="text-red-600 dark:text-red-400 font-semibold">72 hours</span> getting meetings on calendars, still defining work and ownership. After 72 hours—maybe a plan. Execution hasn't started.
               </p>
-              <blockquote className="border-l-4 border-amber-500 pl-4 py-2 mb-6">
+              <blockquote className="border-l-4 border-[#D4AF37] pl-4 py-2 mb-6">
                 <p className="text-xl font-medium text-slate-800 dark:text-slate-200 italic">
-                  "Why can't the boardroom execute like the sideline?"
+                  "The NFL would never operate that way. I built ExecuteIQ to bring that methodology to enterprise."
                 </p>
               </blockquote>
               <p className="text-lg font-semibold text-slate-900 dark:text-white">
-                ExecuteIQ is the answer. <span className="text-amber-600 dark:text-amber-400">That's the IDEA.</span>
+                — Marty Brunke, Founder
               </p>
             </div>
             <div className="grid grid-cols-1 gap-6">
@@ -1372,14 +1371,14 @@ export default function Homepage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-r from-slate-900 to-slate-800">
+      <section className="py-20 px-6 bg-gradient-to-r from-[#1A2B3D] to-slate-900">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6" data-testid="heading-cta">
-            Ready to Close the Execution Gap?
+            72 Hours → 12 Minutes
           </h2>
-          <p className="text-lg text-emerald-400 font-semibold mb-2">Success Favors the Prepared</p>
+          <p className="text-lg text-[#D4AF37] font-semibold mb-2">The Methodology That Wins, Applied to Business</p>
           <p className="text-xl text-slate-300 mb-8">
-            Start with a 90-day pilot. See ExecuteIQ coordinate your first strategic response in 12 minutes instead of 72 hours.
+            ExecuteIQ at $250K/year vs. one delayed response costing $5-50M. <span className="text-emerald-400">Payback on first use.</span>
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 

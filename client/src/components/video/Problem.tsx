@@ -9,10 +9,10 @@ interface SceneProps {
 }
 
 const problems = [
-  { icon: Clock, text: "20-50 hours getting organized", color: "#ef4444" },
-  { icon: Users, text: "Teams working in silos", color: "#f97316" },
-  { icon: DollarSign, text: "$4.88M average breach cost", color: "#eab308" },
-  { icon: AlertTriangle, text: "Competitors move faster", color: "#dc2626" },
+  { icon: Clock, text: "Hours 1-24: Figuring out who needs to be involved", color: "#ef4444" },
+  { icon: Users, text: "Hours 24-48: Getting meetings on calendars", color: "#f97316" },
+  { icon: DollarSign, text: "Hours 48-72: Still defining work and ownership", color: "#eab308" },
+  { icon: AlertTriangle, text: "After 72 hours—maybe a plan. Execution hasn't started.", color: "#dc2626" },
 ];
 
 const whyNow = [
@@ -37,7 +37,7 @@ export function Problem({ progress }: SceneProps) {
 
       <div className="relative z-10 max-w-5xl mx-auto px-8">
         <TextPunch 
-          text="The Problem" 
+          text="72 Hours of Improvisation" 
           size="xl" 
           className="text-red-500 mb-6 text-center"
         />
@@ -48,7 +48,7 @@ export function Problem({ progress }: SceneProps) {
           transition={{ delay: 0.3 }}
           className="text-xl md:text-2xl text-white/80 text-center mb-8"
         >
-          When a strategic event hits, organizations <span className="text-red-400 font-bold">scramble</span>.
+          The NFL would <span className="text-red-400 font-bold">never</span> operate this way. Neither should your enterprise.
         </motion.p>
 
         <div className="grid grid-cols-2 gap-4 mb-6">
@@ -105,8 +105,8 @@ export function Problem({ progress }: SceneProps) {
       </div>
       
       <NarrationBox 
-        headline="The Coordination Crisis"
-        description="When strategic events hit, organizations spend 20-50 hours just getting organized. That delay costs money and market position."
+        headline="72 Hours of Improvisation"
+        description="Hours 1-24: Figuring out who to involve. Hours 24-48: Getting meetings scheduled. Hours 48-72: Still defining work. After 72 hours—maybe a plan. Execution hasn't started."
         delay={0.5}
       />
     </div>

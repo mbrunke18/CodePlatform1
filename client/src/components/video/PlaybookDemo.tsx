@@ -52,7 +52,7 @@ export function PlaybookDemo({ progress }: SceneProps) {
         >
           <div className="flex items-center gap-2 bg-red-500/10 border border-red-500/30 rounded-lg px-3 py-2">
             <span className="text-white/70">Without playbooks:</span>
-            <span className="text-red-400 font-bold">20-50 hours of chaos</span>
+            <span className="text-red-400 font-bold">72 hours of improvisation</span>
           </div>
           <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-lg px-3 py-2">
             <span className="text-white/70">With ExecuteIQ:</span>
