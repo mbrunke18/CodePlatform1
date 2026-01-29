@@ -13,7 +13,7 @@ export default function Footer() {
     {
       title: "IDENTIFY",
       links: [
-        { label: "Playbook Library (166)", path: "/playbooks" },
+        { label: "Playbook Library (166)", path: "/playbook-library" },
         { label: "Scenario Planning Hub", path: "/strategic" },
         { label: "Strategic Readiness Report", path: "/preparedness-report" },
         { label: "What-If Analyzer", path: "/what-if-analyzer" },
@@ -157,17 +157,17 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* That's the IDEA Tagline */}
+      {/* Platform Positioning Tagline */}
       <div className="border-t border-poise-gold/10 bg-gradient-to-r from-poise-navy via-poise-dark-gray/50 to-poise-navy">
         <div className="max-w-7xl mx-auto px-6 py-8 text-center">
           <p className="text-2xl font-bold text-poise-gold mb-2" data-testid="footer-idea-tagline">
-            NFL-Grade Execution for Enterprise
+            166 Playbooks to Start. Unlimited to Build.
           </p>
           <p className="text-lg text-slate-300 italic mb-4">
-            "The NFL executes 60-80 decisions in 3 hours. We built the system that brings that methodology to business."
+            "Start with proven playbooks. Make them yours. Execute any of them in 12 minutes."
           </p>
           <p className="text-sm text-poise-teal">
-            72 Hours → 12 Minutes
+            The Playbooks Are the Accelerant. The Platform Is the Product.
           </p>
         </div>
       </div>
@@ -182,9 +182,9 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-sm text-slate-400">
-                  © {new Date().getFullYear()} ExecuteIQ - Strategic Execution OS
+                  © {new Date().getFullYear()} ExecuteIQ - The Platform for Strategic Execution
                 </p>
-                <p className="text-xs text-slate-600">Calm, Precise, Instant Execution</p>
+                <p className="text-xs text-slate-600">NFL-Grade Methodology. Your Playbooks.</p>
               </div>
             </div>
             <div className="flex items-center gap-6">

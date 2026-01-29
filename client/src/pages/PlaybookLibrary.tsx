@@ -260,12 +260,12 @@ export default function PlaybookLibrary() {
             </Badge>
           </div>
           <h1 className="text-4xl font-bold text-slate-900 dark:text-white">
-            {actNowMode ? "Act Now" : "Strategic Playbook Library"}
+            {actNowMode ? "Act Now" : "166 Playbooks to Start. Unlimited Potential."}
           </h1>
-          <p className="text-slate-600 dark:text-slate-400 mt-2">
+          <p className="text-slate-600 dark:text-slate-400 mt-2 max-w-3xl">
             {actNowMode 
               ? "Prioritized plays based on real execution data."
-              : "166 battle-tested playbooks across 9 domains. From signal to coordinated action in minutes—not days."
+              : "Every playbook built from the same methodology that powers NFL execution—roles pre-defined, tasks sequenced, triggers identified. Start with ours. Customize them. Or build your own."
             }
           </p>
         </header>
