@@ -64,7 +64,7 @@ export function Intro({ progress }: SceneProps) {
         </motion.div>
 
         <TextPunch 
-          text="NFL-Grade Execution" 
+          text="Execution Infrastructure" 
           size="2xl" 
           delay={0.5}
           className="text-white mb-4"
@@ -76,7 +76,7 @@ export function Intro({ progress }: SceneProps) {
           transition={{ delay: 1 }}
           className="text-xl md:text-2xl text-white/70 max-w-xl mx-auto"
         >
-          The NFL executes 60-80 critical decisions in 3 hours.
+          7 major firms say execution infrastructure is the AI bottleneck.
         </motion.p>
         
         <motion.p
@@ -85,7 +85,7 @@ export function Intro({ progress }: SceneProps) {
           transition={{ delay: 1.5 }}
           className="text-lg md:text-xl text-[#D4AF37] max-w-xl mx-auto mt-4"
         >
-          Fortune 500 companies take 72 hours to coordinate one.
+          Fortune 500 companies take 72 hours to coordinate. ExecuteIQ does it in 12 minutes.
         </motion.p>
 
         <motion.div
@@ -114,14 +114,14 @@ export function Intro({ progress }: SceneProps) {
           transition={{ delay: 2 }}
           className="mt-8 pt-6 border-t border-white/10"
         >
-          <p className="text-[#D4AF37] text-2xl font-bold">12-Minute Playbook Activation</p>
-          <p className="text-[#00A8A8] text-sm mt-2">10x faster • 166 playbooks • 9 strategic domains</p>
+          <p className="text-[#D4AF37] text-2xl font-bold">12 Minutes to Execution</p>
+          <p className="text-[#00A8A8] text-sm mt-2">166 playbooks • Pre-defined governance • 9 strategic domains</p>
         </motion.div>
       </div>
       
       <NarrationBox 
-        headline="Strategic Execution OS"
-        description="ExecuteIQ orchestrates your response across M&A, Crisis, Digital Transformation, and 6 more domains—in minutes, not days."
+        headline="The Execution Infrastructure Layer"
+        description="ExecuteIQ provides the governance, decision rights, and coordination systems enterprises are missing—across M&A, Crisis, Digital Transformation, and 6 more domains."
         delay={0.5}
       />
     </div>

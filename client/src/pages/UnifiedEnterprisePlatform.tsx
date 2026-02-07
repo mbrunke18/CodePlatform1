@@ -212,7 +212,7 @@ export default function UnifiedEnterprisePlatform() {
             </div>
           </div>
 
-          {/* 4-Step NFL Methodology - M's Core */}
+          {/* 4-Step IDEA Framework - Core Methodology */}
           <div className="grid grid-cols-4 gap-3 flex-shrink-0">
             <Card className="border-blue-500/30 bg-gradient-to-br from-blue-950/40 to-gray-950/40 hover:border-blue-500/50 transition-all">
               <CardHeader className="p-3">
@@ -406,7 +406,7 @@ export default function UnifiedEnterprisePlatform() {
                 ))}
               </div>
 
-              {/* Decision Velocity - The NFL Coach Advantage */}
+              {/* Decision Velocity - Execution Infrastructure */}
               <Card className="border-emerald-500/50 bg-gradient-to-br from-emerald-950/50 to-blue-950/50 backdrop-blur-sm mb-4">
                 <CardHeader>
                   <div className="flex items-center justify-between">
@@ -414,15 +414,15 @@ export default function UnifiedEnterprisePlatform() {
                       <Zap className="h-6 w-6 text-emerald-400" />
                       Decision Velocity Dashboard
                       <Badge variant="outline" className="bg-emerald-600/20 text-emerald-300 border-emerald-500/50 ml-2">
-                        NFL COACH MODE
+                        INFRASTRUCTURE MODE
                       </Badge>
                     </CardTitle>
                     <Badge variant="outline" className="bg-blue-600/20 text-blue-300 border-blue-500/50">
-                      80+ PLAYS READY
+                      166 PLAYBOOKS READY
                     </Badge>
                   </div>
                   <p className="text-sm text-gray-300 mt-2">
-                    Execute like an NFL coach: From detection to decision in minutes, not days. Your organizational playbook for high-stakes situations.
+                    Execution infrastructure in action: From detection to coordinated execution in 12 minutes. Pre-defined governance for high-stakes situations.
                   </p>
                 </CardHeader>
                 <CardContent>

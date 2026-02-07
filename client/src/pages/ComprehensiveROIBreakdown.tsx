@@ -363,7 +363,7 @@ export default function ComprehensiveROIBreakdown() {
               <CardHeader>
                 <CardTitle>Traditional Approach vs. ExecuteIQ: Side-by-Side Comparison</CardTitle>
                 <CardDescription>
-                  See how ExecuteIQ's NFL coach-inspired methodology delivers superior outcomes
+                  See how ExecuteIQ's execution infrastructure delivers superior outcomes
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -442,7 +442,7 @@ export default function ComprehensiveROIBreakdown() {
                       </h4>
                       <p className="text-sm text-blue-700 dark:text-blue-300">
                         Stop losing ${totalAnnualValue.toFixed(0)}M annually to slow, reactive decision-making. 
-                        Get NFL coach-level execution speed in your boardroom.
+                        Get execution infrastructure that coordinates in 12 minutes, not 72 hours.
                       </p>
                     </div>
                     <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 gap-2" data-testid="button-schedule-demo">

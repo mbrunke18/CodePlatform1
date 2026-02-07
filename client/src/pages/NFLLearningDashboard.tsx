@@ -117,7 +117,7 @@ export default function NFLLearningDashboard() {
 
   return (
     <PageLayout>
-      <div className="p-6 space-y-6" data-testid="nfl-learning-dashboard-page">
+      <div className="p-6 space-y-6" data-testid="execution-learning-dashboard-page">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
@@ -519,7 +519,7 @@ export default function NFLLearningDashboard() {
                         {avgDrillTime || 'N/A'}m
                       </div>
                       <div className="text-xs text-green-600 dark:text-green-400 mt-2">
-                        {avgDrillTime && avgDrillTime <= 12 ? 'Meeting NFL Standard' : 'Room for improvement'}
+                        {avgDrillTime && avgDrillTime <= 12 ? 'Meeting Execution Standard' : 'Room for improvement'}
                       </div>
                     </div>
                   </div>

@@ -29,54 +29,60 @@ export default function DecisionVelocityPage() {
           </p>
         </div>
 
-        {/* NFL + Dynamic Strategy Foundation */}
+        {/* Execution Infrastructure Foundation */}
         <Card className="bg-gradient-to-br .section-background dark:from-blue-950/20 dark:to-purple-950/20 border-2 border-blue-200 dark:border-blue-800">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Target className="h-5 w-5 text-blue-600" />
-              The Foundation: NFL Coaching + Dynamic Strategy
+              The Foundation: Execution Infrastructure
             </CardTitle>
             <CardDescription>
-              Built by reverse-engineering how NFL coaches make 80+ decisions in under 40 seconds
+              Built on what 7 major firms say enterprises are missing
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="prose prose-sm dark:prose-invert max-w-none">
               <p className="text-base font-medium text-blue-900 dark:text-blue-100">
-                ExecuteIQ was built by studying the most demanding decision-making system in the world: <strong>NFL coaching</strong>. 
-                Then we discovered Microsoft, DBS Bank, and Amazon independently developed the same system through <strong>Dynamic Strategy</strong> methodology.
+                ExecuteIQ provides the <strong>execution infrastructure</strong> that McKinsey, IBM, Bain, BCG, Accenture, Anthropic, and OpenAI all say is missing—governance, decision rights, and coordination systems built before the moment hits.
               </p>
               
-              <div className="grid md:grid-cols-2 gap-4 my-4">
-                <div className="bg-white dark:bg-slate-900 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
-                  <div className="text-sm font-bold text-blue-700 dark:text-blue-300 mb-3">🏈 NFL Coaching (Execution Proof)</div>
+              <div className="grid md:grid-cols-3 gap-4 my-4">
+                <div className="bg-white dark:bg-slate-900 rounded-lg p-4 border border-amber-200 dark:border-amber-800">
+                  <div className="text-sm font-bold text-amber-700 dark:text-amber-300 mb-3">Pre-Defined Governance</div>
                   <div className="space-y-2 text-xs">
-                    <div><strong>Game Planning:</strong> Create 100+ plays for every scenario</div>
-                    <div><strong>Sideline Headset:</strong> Monitor game in real-time</div>
-                    <div><strong>40-Second Clock:</strong> Call play, coordinate 11 players</div>
-                    <div><strong>Film Study:</strong> Review decisions, improve playbook</div>
-                    <div className="text-green-600 dark:text-green-400 font-semibold mt-2">✓ Works every Sunday, 80+ decisions/game</div>
+                    <div><strong>166 Playbooks:</strong> Across 9 strategic domains</div>
+                    <div><strong>Roles Mapped:</strong> Before the situation hits</div>
+                    <div><strong>Accountability:</strong> Clear ownership structure</div>
+                    <div className="text-green-600 dark:text-green-400 font-semibold mt-2">✓ "Governance must be real-time, embedded" — McKinsey</div>
                   </div>
                 </div>
 
-                <div className="bg-white dark:bg-slate-900 rounded-lg p-4 border border-purple-200 dark:border-purple-800">
-                  <div className="text-sm font-bold text-purple-700 dark:text-purple-300 mb-3">🎯 Dynamic Strategy (Strategic Proof)</div>
+                <div className="bg-white dark:bg-slate-900 rounded-lg p-4 border border-emerald-200 dark:border-emerald-800">
+                  <div className="text-sm font-bold text-emerald-700 dark:text-emerald-300 mb-3">Clear Decision Rights</div>
                   <div className="space-y-2 text-xs">
-                    <div><strong>Perpetual Foresight:</strong> Continuous signal scanning</div>
-                    <div><strong>Data Pulse:</strong> Real-time intelligence loops</div>
-                    <div><strong>Aligned Agility:</strong> Pre-configured execution</div>
-                    <div><strong>Org Learning:</strong> Capture outcomes, refine</div>
-                    <div className="text-green-600 dark:text-green-400 font-semibold mt-2">✓ Grew Microsoft $300B → $3T</div>
+                    <div><strong>Pre-Assigned:</strong> Everyone knows their role</div>
+                    <div><strong>No Ambiguity:</strong> Decision authority defined</div>
+                    <div><strong>Instant Action:</strong> No meetings to define ownership</div>
+                    <div className="text-green-600 dark:text-green-400 font-semibold mt-2">✓ "69% say AI needs new management" — BCG</div>
+                  </div>
+                </div>
+
+                <div className="bg-white dark:bg-slate-900 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
+                  <div className="text-sm font-bold text-blue-700 dark:text-blue-300 mb-3">12-Minute Coordination</div>
+                  <div className="space-y-2 text-xs">
+                    <div><strong>Trigger Detection:</strong> AI-powered signal matching</div>
+                    <div><strong>Stakeholder Notification:</strong> Instant mobilization</div>
+                    <div><strong>Task Assignment:</strong> With owners pre-defined</div>
+                    <div className="text-green-600 dark:text-green-400 font-semibold mt-2">✓ "78% say AI needs new operating model" — IBM</div>
                   </div>
                 </div>
               </div>
 
               <div className="bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 rounded-lg p-4 border-2 border-blue-300 dark:border-blue-700">
-                <div className="text-sm font-bold text-gray-900 dark:text-white mb-2">⚡ ExecuteIQ = Both Systems Unified</div>
+                <div className="text-sm font-bold text-gray-900 dark:text-white mb-2">ExecuteIQ = The Infrastructure Layer</div>
                 <div className="text-xs text-gray-700 dark:text-gray-300">
-                  You get the <strong>proven execution speed of NFL coaching</strong> (works every Sunday) combined with the 
-                  <strong> proven transformation framework of Dynamic Strategy</strong> (grew Microsoft, DBS Bank, Amazon). 
-                  What took them 5 years to build, you get in 90 days.
+                  Companies like Microsoft, DBS Bank, and Amazon built execution infrastructure over 5+ years. 
+                  ExecuteIQ gives you that infrastructure on day one—166 playbooks, pre-defined governance, 12 minutes to execution.
                 </div>
               </div>
             </div>
@@ -91,14 +97,14 @@ export default function DecisionVelocityPage() {
               What is Decision Velocity?
             </CardTitle>
             <CardDescription>
-              The competitive advantage metric that NFL coaches and Fortune 1000 leaders track
+              The competitive advantage metric Fortune 1000 leaders track
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="prose prose-sm dark:prose-invert max-w-none">
               <p>
                 <strong>Decision Velocity</strong> measures how fast your organization moves from strategic signal to execution completion. 
-                NFL coaches master this with their 40-second play clock. Fortune 1000 companies call it their ultimate competitive advantage.
+                With execution infrastructure in place, Fortune 1000 companies coordinate in minutes instead of days.
               </p>
               <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 my-4">
                 <div className="text-sm font-semibold text-blue-700 dark:text-blue-300 mb-2">

@@ -48,7 +48,7 @@ export function Problem({ progress }: SceneProps) {
           transition={{ delay: 0.3 }}
           className="text-xl md:text-2xl text-white/80 text-center mb-8"
         >
-          The NFL would <span className="text-red-400 font-bold">never</span> operate this way. Neither should your enterprise.
+          7 major firms say this is why AI initiatives fail. <span className="text-red-400 font-bold">No execution infrastructure.</span>
         </motion.p>
 
         <div className="grid grid-cols-2 gap-4 mb-6">

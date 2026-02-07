@@ -257,17 +257,17 @@ export default function OurStory() {
           </TimelineChapter>
 
           {/* The Solution */}
-          <TimelineChapter number="Chapter 3" title="Reverse-Engineering the Playbook" color="blue">
+          <TimelineChapter number="Chapter 3" title="Building the Infrastructure" color="blue">
             <p>
-              We studied what makes NFL coaches so effective. Four principles emerged:
+              We studied what makes elite execution systems effective. Four principles emerged:
             </p>
 
             <div className="grid md:grid-cols-2 gap-4 my-8">
               {[
-                { icon: Trophy, title: "Pre-Game Preparation", desc: "Every scenario pre-planned. No improvisation under pressure." },
-                { icon: Building2, title: "24/7 Monitoring", desc: "Film study. Pattern recognition. Triggers identified before game day." },
-                { icon: TrendingDown, title: "One-Click Execution", desc: "Everyone knows their role. Execute immediately on signal." },
-                { icon: Lightbulb, title: "Institutional Memory", desc: "Learn from every play. Refine playbooks. Get better every season." },
+                { icon: Trophy, title: "Pre-Defined Governance", desc: "Every scenario pre-planned. Roles and decision rights clear before the moment hits." },
+                { icon: Building2, title: "24/7 Monitoring", desc: "Pattern recognition. Triggers identified. Infrastructure ready before you need it." },
+                { icon: TrendingDown, title: "Instant Coordination", desc: "Everyone knows their assignment. Execute immediately on signal." },
+                { icon: Lightbulb, title: "Institutional Memory", desc: "Learn from every execution. Refine playbooks. Infrastructure gets smarter over time." },
               ].map((item, i) => (
                 <div key={i} className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-5">
                   <item.icon className="h-6 w-6 text-blue-600 mb-2" />
@@ -278,16 +278,16 @@ export default function OurStory() {
             </div>
 
             <p>
-              These weren't just coaching techniques. They were the foundation of a 
-              new operating model for strategic execution.
+              These weren't just techniques. They were the foundation of 
+              execution infrastructure—what 7 major firms now say is missing.
             </p>
           </TimelineChapter>
 
           {/* The Vision */}
           <TimelineChapter number="Chapter 4" title="ExecuteIQ Was Born" color="purple">
             <p>
-              We translated 15 years of research into a platform that gives every 
-              Fortune 1000 executive the same strategic advantage as an NFL coach:
+              We translated 25 years of experience into the execution infrastructure 
+              Fortune 1000 executives have been missing:
             </p>
 
             <ul className="space-y-3 my-8">

@@ -18,7 +18,7 @@ export const PUBLIC_ROUTES = [
   '/api/scenario-templates/comprehensive',
   '/api/scenario-templates/:id',
   
-  // NFL Methodology - Playbook Library & Practice Drills (public demo access)
+  // Playbook Library & Practice Drills (public demo access)
   '/api/playbook-library',
   '/api/playbook-library/domains',
   '/api/playbook-library/domains/:domainId/categories',

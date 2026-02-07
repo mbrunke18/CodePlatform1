@@ -216,10 +216,10 @@ export default function SizzleReel() {
                   className="mb-8"
                 >
                   <p className="text-lg text-slate-300 mb-4">
-                    An NFL coach makes eighty decisions in a three-hour game. Forty seconds between plays.
+                    McKinsey, IBM, Bain, BCG, Accenture, Anthropic, and OpenAI all arrived at the same conclusion.
                   </p>
                   <p className="text-lg text-slate-300">
-                    Offense. Defense. Special teams. Everyone knows their assignment before the call comes.
+                    Organizations aren't failing at AI because of technology. They lack execution infrastructure—governance, decision rights, coordination.
                   </p>
                 </motion.div>
                 

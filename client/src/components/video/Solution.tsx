@@ -72,10 +72,10 @@ export function Solution({ progress }: SceneProps) {
           className="space-y-1"
         >
           <p className="text-2xl md:text-3xl text-white/90 font-light">
-            NFL-Grade Execution Methodology
+            The Execution Infrastructure
           </p>
           <p className="text-lg text-[#00A8A8]">
-            for Fortune 1000 Leaders
+            Enterprises Are Missing
           </p>
         </motion.div>
         
@@ -85,7 +85,7 @@ export function Solution({ progress }: SceneProps) {
           transition={{ delay: 1.5 }}
           className="mt-6 text-white/60 text-sm max-w-lg mx-auto"
         >
-          Playbooks built before the moment. Roles pre-assigned. Everyone knows their job before the snap.
+          Governance pre-defined. Decision rights clear. Coordination instant. 166 playbooks ready before the moment hits.
         </motion.div>
 
         <motion.div
@@ -124,7 +124,7 @@ export function Solution({ progress }: SceneProps) {
       
       <NarrationBox 
         headline="Introducing ExecuteIQ"
-        description="The Strategic Execution OS that bridges the gap between strategy and action using the IDEA Framework."
+        description="The execution infrastructure layer that provides governance, decision rights, and coordination—transforming 72-hour responses into 12-minute execution."
         delay={0.5}
       />
     </div>

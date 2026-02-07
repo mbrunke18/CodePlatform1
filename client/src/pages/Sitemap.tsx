@@ -82,7 +82,7 @@ export default function Sitemap() {
         { name: "Drill Tracking", path: "/drill-tracking" },
         { name: "Crisis Exposure Matrix", path: "/crisis-exposure-matrix" },
         { name: "Simulation Studio", path: "/simulation-studio" },
-        { name: "NFL Learning Dashboard", path: "/nfl-learning" },
+        { name: "Execution Learning Dashboard", path: "/execution-learning" },
       ]
     },
     {

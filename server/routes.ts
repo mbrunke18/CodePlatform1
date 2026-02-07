@@ -5958,15 +5958,15 @@ SUCCESS METRICS:
   console.log('   → /api/webhooks/workday - Workday HCM');
   console.log('   → /api/webhooks/okta - Okta Identity');
 
-  // Import NFL Methodology - Playbook Library routes
+  // Playbook Library routes
   const playbookLibraryRoutes = await import('./routes/playbookLibraryRoutes.js');
   app.use('/api/playbook-library', playbookLibraryRoutes.playbookLibraryRouter);
   
-  // Import NFL Methodology - Practice Drill routes
+  // Practice Drill routes
   const practiceDrillRoutes = await import('./routes/practiceDrillRoutes.js');
   app.use('/api/practice-drills', practiceDrillRoutes.practiceDrillRouter);
   
-  console.log('✅ NFL Methodology endpoints registered');
+  console.log('✅ Playbook & Drill endpoints registered');
   console.log('   → /api/playbook-library - 110 Playbook taxonomy');
   console.log('   → /api/practice-drills - Fire drill simulation system');
 

@@ -169,7 +169,7 @@ export const strategicScenarios = pgTable('strategic_scenarios', {
   status: varchar('status', { length: 50 }).default('draft'), // Keep as varchar for compatibility
   lastTriggered: timestamp("last_triggered"),
   
-  // NFL-Style Playbook Readiness Fields
+  // Playbook Readiness Fields
   lastDrillDate: timestamp("last_drill_date"), // When was this playbook last practiced?
   approvalStatus: varchar('approval_status', { length: 50 }).default('pending'), // 'approved', 'pending', 'needs_review'
   approvedBy: varchar('approved_by').references(() => users.id), // Who approved this playbook?
@@ -2474,10 +2474,10 @@ export const peerBenchmarks = pgTable('peer_benchmarks', {
 });
 
 // ============================================================================
-// NFL METHODOLOGY - 166 PLAYBOOK LIBRARY TAXONOMY
+// 166 PLAYBOOK LIBRARY TAXONOMY
 // ============================================================================
 
-// Playbook Domains - 9 Strategic Domains from NFL coaching methodology (including AI Governance)
+// Playbook Domains - 9 Strategic Domains (including AI Governance)
 export const playbookDomains = pgTable('playbook_domains', {
   id: uuid('id').primaryKey().defaultRandom(),
   name: varchar('name', { length: 255 }).notNull(), // "Competitive Threats", "Operational Disruptions", etc.
@@ -3348,7 +3348,7 @@ export const insertPeerBenchmarkSchema = createInsertSchema(peerBenchmarks).pick
   benchmarkPeriod: true,
 });
 
-// NFL Methodology - Playbook Library Types
+// Playbook Library Types
 export type PlaybookDomain = typeof playbookDomains.$inferSelect;
 export type InsertPlaybookDomain = typeof playbookDomains.$inferInsert;
 
@@ -3385,7 +3385,7 @@ export type InsertAiOptimizationSuggestion = typeof aiOptimizationSuggestions.$i
 export type PlaybookActivation = typeof playbookActivations.$inferSelect;
 export type InsertPlaybookActivation = typeof playbookActivations.$inferInsert;
 
-// NFL Methodology - Insert Schemas
+// Playbook Library - Insert Schemas
 export const insertPlaybookDomainSchema = createInsertSchema(playbookDomains).pick({
   name: true,
   code: true,

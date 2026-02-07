@@ -43,7 +43,7 @@ import PlaybookCommand from "./pages/PlaybookCommand";
 import PlaybookSettings from "./pages/PlaybookSettings";
 import PracticeDrills from "./pages/PracticeDrills";
 import LiveDrillExecution from "./pages/LiveDrillExecution";
-import NFLLearningDashboard from "./pages/NFLLearningDashboard";
+import ExecutionLearningDashboard from "./pages/NFLLearningDashboard";
 import DemoRouter from "./pages/DemoRouter";
 import InvestorDemo from "./pages/InvestorDemo";
 import CustomerDemo from "./pages/CustomerDemo";
@@ -472,7 +472,7 @@ function Router() {
         <Route path="/practice-drills" component={PracticeDrills} />
         <Route path="/crisis-exposure-matrix" component={CrisisExposureMatrix} />
         <Route path="/simulation-studio" component={SimulationStudio} />
-        <Route path="/nfl-learning" component={NFLLearningDashboard} />
+        <Route path="/execution-learning" component={ExecutionLearningDashboard} />
         
         {/* Analytics */}
         <Route path="/analytics" component={AdvancedAnalytics} />

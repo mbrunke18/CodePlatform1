@@ -290,7 +290,7 @@ export default function ComprehensiveScenarios() {
                         <CardContent className="space-y-4">
                           <p className="text-sm text-gray-600 dark:text-gray-400">{scenario.description}</p>
                           
-                          {/* NFL-Style Readiness Indicators */}
+                          {/* Readiness Indicators */}
                           <div className={`p-3 rounded-lg border ${readinessBg}`}>
                             <div className="grid grid-cols-2 gap-3 text-xs">
                               {/* Last Drill Date */}

@@ -228,7 +228,7 @@ export const hybridDemoScenarios: DemoScene[] = [
     id: 'playbook-activation',
     title: 'Coordinated Response Execution',
     subtitle: 'Real-time stakeholder mobilization',
-    description: 'Watch NFL-style playbook execution across all departments',
+    description: 'Watch coordinated playbook execution across all departments',
     type: 'interaction',
     phase: 'response',
     route: '/hybrid-demo',

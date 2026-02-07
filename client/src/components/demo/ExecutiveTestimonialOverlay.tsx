@@ -88,8 +88,8 @@ export function ExecutiveTestimonialOverlay() {
                       With ExecuteIQ Methodology
                     </p>
                     <blockquote className="text-xl text-emerald-100 leading-relaxed">
-                      NFL-inspired approach: Pre-built playbooks for every scenario. Roles rehearsed. 
-                      AI monitoring for early warning. One-click coordinated execution when trigger fires.
+                      Execution infrastructure approach: Pre-built playbooks with governance pre-defined. 
+                      AI monitoring for early warning. Coordinated execution with clear decision rights when trigger fires.
                     </blockquote>
                     <div className="space-y-2 pt-2">
                       <p className="text-emerald-200/80 italic">✓ Design goal: 12-minute execution from trigger</p>
