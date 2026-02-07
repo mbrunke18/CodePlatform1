@@ -25,81 +25,81 @@ export default function HowItWorks() {
       number: "I",
       name: "IDENTIFY",
       moduleName: "ExecuteIQ Playbook™",
-      tagline: "Build Your Depth Chart",
+      tagline: "Infrastructure Built in Advance",
       icon: Target,
       color: "violet",
       bgGradient: "from-violet-500 to-purple-600",
       borderColor: "border-violet-500",
       bgLight: "bg-violet-50 dark:bg-violet-950/30",
       textColor: "text-violet-600 dark:text-violet-400",
-      description: "Create and customize playbooks from our library of 166 battle-tested strategic responses across 9 domains.",
+      description: "166 playbooks across 9 strategic domains. Governance defined. Decision rights mapped. Roles assigned. All before the situation hits. This is what McKinsey means by 'real-time, embedded governance.' It's ready before you need it.",
       capabilities: [
-        "Access 166 pre-built playbooks covering crisis, competition, opportunity, AI governance, and more",
-        "Customize response sequences for your organization's structure",
-        "Define stakeholders, approval chains, and resource allocations",
-        "Set up trigger conditions that activate each playbook"
+        "166 pre-built playbooks across 9 strategic domains with governance pre-defined",
+        "Decision rights mapped and roles assigned before the situation arrives",
+        "Stakeholders, approval chains, and resource allocations locked in advance",
+        "Real-time, embedded governance ready to activate on demand"
       ],
-      outcome: "Your organization has a ready response for any strategic scenario before it happens."
+      outcome: "Your execution infrastructure is built, tested, and ready—before the moment arrives."
     },
     {
       number: "D",
       name: "DETECT",
       moduleName: "ExecuteIQ Signal™",
-      tagline: "Detect Signals",
+      tagline: "Situation Triggers Response",
       icon: Radio,
       color: "blue",
       bgGradient: "from-blue-500 to-cyan-500",
       borderColor: "border-blue-500",
       bgLight: "bg-blue-50 dark:bg-blue-950/30",
       textColor: "text-blue-600 dark:text-blue-400",
-      description: "Continuous AI monitoring across 16 intelligence categories and 216 data points to detect threats and opportunities.",
+      description: "A strategic moment hits—M&A, crisis, competitive threat. The infrastructure activates. The right playbook engages based on situational awareness. No meetings to figure out what to do. The infrastructure already knows.",
       capabilities: [
-        "Real-time monitoring of market signals, competitor moves, and industry shifts",
-        "AI pattern recognition identifies weak signals before they become crises",
-        "Automatic trigger detection matches events to relevant playbooks",
-        "Configurable alert thresholds and escalation paths"
+        "Strategic moments detected instantly—M&A activity, crises, competitive threats",
+        "Infrastructure activates automatically based on situational awareness",
+        "The right playbook engages without meetings or manual triage",
+        "Configurable triggers ensure the infrastructure responds to what matters"
       ],
-      outcome: "You're always first to know—and first to act—on strategic developments."
+      outcome: "When a situation hits, the infrastructure already knows what to do—no scrambling required."
     },
     {
       number: "E",
       name: "EXECUTE",
       moduleName: "ExecuteIQ Compass™",
-      tagline: "Execute Response",
+      tagline: "Coordination in 12 Minutes",
       icon: CheckCircle,
       color: "emerald",
       bgGradient: "from-emerald-500 to-green-500",
       borderColor: "border-emerald-500",
       bgLight: "bg-emerald-50 dark:bg-emerald-950/30",
       textColor: "text-emerald-600 dark:text-emerald-400",
-      description: "When triggers fire, ExecuteIQ orchestrates your entire response—stakeholders, resources, and communications—in minutes, not weeks.",
+      description: "Stakeholders notified. Tasks assigned with owners. Decision rights clear. Execution begins—not planning, execution. This is the operating model IBM says 78% of executives know they need.",
       capabilities: [
-        "Automatic stakeholder notification and task assignment",
-        "Pre-approved budget release for rapid resource deployment",
-        "Real-time coordination dashboard tracks execution progress",
-        "Integration with enterprise tools (Slack, Jira, email, calendars)"
+        "Stakeholders notified and tasks assigned with clear owners in minutes",
+        "Decision rights are clear—no ambiguity, no bottlenecks",
+        "Execution begins immediately—not planning, execution",
+        "The operating model 78% of executives know they need (IBM)"
       ],
-      outcome: "Your organization responds with the speed and precision of a championship team."
+      outcome: "Coordinated execution in 12 minutes—not 6-8 weeks of planning and alignment."
     },
     {
       number: "A",
       name: "ADVANCE",
       moduleName: "ExecuteIQ Retrospect™",
-      tagline: "Review the Film",
+      tagline: "Infrastructure Gets Smarter",
       icon: BookOpen,
       color: "amber",
       bgGradient: "from-amber-500 to-orange-500",
       borderColor: "border-amber-500",
       bgLight: "bg-amber-50 dark:bg-amber-950/30",
       textColor: "text-amber-600 dark:text-amber-400",
-      description: "Every execution feeds back into the system, making your playbooks smarter and your organization more prepared.",
+      description: "Every execution generates data. What worked? Where were the bottlenecks? The infrastructure learns and improves. Your execution capability compounds over time.",
       capabilities: [
-        "Automatic outcome capture and performance analysis",
-        "AI-powered playbook refinement suggestions",
-        "Institutional memory preserves lessons learned",
-        "Board-ready briefings generated from execution data"
+        "Every execution generates actionable performance data",
+        "Bottlenecks identified and addressed automatically",
+        "Infrastructure learns and improves with each activation",
+        "Execution capability compounds—each response makes the next one faster"
       ],
-      outcome: "Your strategic capability compounds over time—every response makes the next one better."
+      outcome: "Your execution infrastructure gets smarter with every use—compounding advantage over time."
     }
   ];
 
@@ -107,22 +107,22 @@ export default function HowItWorks() {
     {
       icon: Clock,
       title: "12-Minute Execution",
-      description: "Industry average: 6-8 weeks. ExecuteIQ delivers coordinated response in 12 minutes."
+      description: "Industry average: 6-8 weeks. ExecuteIQ's execution infrastructure delivers coordinated response in 12 minutes."
     },
     {
       icon: Brain,
       title: "Human-AI Partnership",
-      description: "AI monitors and recommends. Executives decide. The best of both worlds."
+      description: "AI powers the execution infrastructure. Executives make the decisions. The infrastructure handles coordination."
     },
     {
       icon: Shield,
-      title: "Pre-Approved Response",
-      description: "Budgets, stakeholders, and actions pre-defined—no bottlenecks when speed matters."
+      title: "Pre-Built Infrastructure",
+      description: "Governance, decision rights, and response protocols defined in advance—the infrastructure is ready before the situation hits."
     },
     {
       icon: TrendingUp,
       title: "Compounding Advantage",
-      description: "Every execution makes your playbooks smarter and your team faster."
+      description: "Every execution makes the infrastructure smarter. Your execution capability compounds over time."
     }
   ];
 
@@ -141,16 +141,10 @@ export default function HowItWorks() {
               The IDEA Framework™
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              How ExecuteIQ Works
+              From Situation to Execution in 12 Minutes
             </h1>
-            <p className="text-xl md:text-2xl text-slate-300 mb-4 leading-relaxed max-w-3xl mx-auto">
-              When a strategic trigger hits—a competitor launches, regulations shift, a cyber threat emerges—organizations typically <span className="text-red-300">waste 20-50 hours getting organized</span>. <span className="text-poise-gold font-semibold">ExecuteIQ compresses that to 12 minutes.</span>
-            </p>
-            <p className="text-lg text-slate-400 mb-4 leading-relaxed max-w-3xl mx-auto">
-              Our AI monitors 216 data points across 16 intelligence categories, detecting threats and opportunities before competitors see them. When a signal breaches a threshold, ExecuteIQ automatically activates the right playbook from our library of 166 battle-tested responses: notifying stakeholders, assigning tasks, staging documents, unlocking pre-approved budgets—all in under 12 minutes.
-            </p>
-            <p className="text-lg text-slate-400 mb-8 leading-relaxed max-w-3xl mx-auto">
-              We're the orchestration layer between strategy and execution. <span className="text-cyan-400">AI handles detection and coordination. Executives make the decisions.</span> What used to take 72 hours now happens at championship speed.
+            <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed max-w-3xl mx-auto">
+              Execution infrastructure works because it's ready before the moment arrives—just like the playbooks elite sports teams build before the season starts.
             </p>
             
             {/* Visual Phase Flow */}
@@ -264,7 +258,7 @@ export default function HowItWorks() {
                 What Makes This Different
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                ExecuteIQ isn't just another planning tool. It's the orchestration layer for strategic execution.
+                ExecuteIQ isn't just another planning tool. It's execution infrastructure—built in advance, activated in the moment.
               </p>
             </div>
             

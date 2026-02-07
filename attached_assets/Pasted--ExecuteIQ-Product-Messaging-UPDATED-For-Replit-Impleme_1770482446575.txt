@@ -1,0 +1,507 @@
+# ExecuteIQ Product Messaging — UPDATED
+
+## For Replit Implementation
+
+### Execution Infrastructure Framing + Platform Positioning
+
+-----
+
+# CORE POSITIONING SHIFT
+
+**Before:** “NFL-grade execution methodology for enterprise”
+
+**After:** “The execution infrastructure that makes AI actually work”
+
+**Why:** McKinsey, IBM, Bain, BCG, Accenture, Anthropic, and OpenAI all independently concluded that execution infrastructure is the bottleneck for AI adoption. This positions ExecuteIQ as the solution to a validated, urgent problem—not just a new methodology.
+
+-----
+
+# HOMEPAGE
+
+## Hero Section
+
+**Headline:**
+
+```
+The Execution Infrastructure Enterprises Are Missing
+```
+
+**Subheadline:**
+
+```
+7 major firms just concluded: organizations aren't failing at AI because of technology—they're failing because they lack governance, decision rights, and coordination systems. ExecuteIQ provides that infrastructure.
+```
+
+**Supporting text:**
+
+```
+166 playbooks to start. Customize them. Build your own. Pre-defined governance, clear decision rights, coordinated execution. In 12 minutes, execution begins—not planning, execution.
+```
+
+**Stats bar:**
+
+```
+78% of executives say AI requires a new operating model — IBM
+70% of AI transformation is people and processes — Bain
+69% agree AI requires new management approaches — BCG
+```
+
+**CTA Buttons:**
+
+```
+Primary: "See How It Works"
+Secondary: "Explore Playbooks"
+```
+
+-----
+
+## Problem Section
+
+**Section Headline:**
+
+```
+The Bottleneck Isn't AI. It's Infrastructure.
+```
+
+**Body:**
+
+```
+McKinsey, IBM, Bain, BCG, Accenture, Anthropic, and OpenAI all arrived at the same conclusion:
+
+Enterprises have AI tools. What they lack is the infrastructure to coordinate when strategic moments hit—M&A, crisis, competitive threat, transformation.
+
+Here's what happens without execution infrastructure:
+
+• Hours 1-24: Figuring out who needs to be involved
+• Hours 24-48: Getting meetings on calendars
+• Hours 48-72: Finally in a room, still defining work and ownership
+
+After 72 hours—maybe you have a plan. Execution hasn't started.
+
+The technology works. The operating model doesn't exist.
+
+Until now.
+```
+
+-----
+
+## Solution Section
+
+**Section Headline:**
+
+```
+ExecuteIQ: The Execution Infrastructure Layer
+```
+
+**Intro:**
+
+```
+ExecuteIQ provides what 7 major firms say is missing: pre-defined governance, clear decision rights, and coordination systems that activate in minutes—not days.
+```
+
+**Three Pillars:**
+
+**Pillar 1: Governance Pre-Defined**
+
+```
+Headline: Governance Ready Before the Moment
+
+Body: Every playbook includes pre-defined roles, decision rights, and accountability structures. When a situation hits, there's no confusion about who owns what. The governance is built in—real-time, embedded, exactly what McKinsey says enterprises need.
+
+Stat: "Governance must become real-time, data-driven, and embedded" — McKinsey
+```
+
+**Pillar 2: Decision Rights Clear**
+
+```
+Headline: Everyone Knows Their Assignment
+
+Body: BCG found 69% of executives agree AI requires fundamentally new management approaches. ExecuteIQ provides them—decision rights mapped before the situation, accountability clear before execution begins. No meetings to define ownership. It's already defined.
+
+Stat: "When AI becomes a teammate, who's accountable?" — BCG
+```
+
+**Pillar 3: Coordination Instant**
+
+```
+Headline: 12 Minutes to Execution
+
+Body: With execution infrastructure in place, coordination happens instantly. Situation triggers playbook. Stakeholders notified. Tasks assigned. Execution begins. Not 72 hours of meetings—12 minutes to action.
+
+Stat: "70% of AI transformation is people and processes" — Bain
+```
+
+-----
+
+## Platform Section
+
+**Section Headline:**
+
+```
+A Platform, Not a Fixed Product
+```
+
+**Body:**
+
+```
+ExecuteIQ isn't a rigid system. It's infrastructure you can adapt.
+```
+
+**Three cards:**
+
+**Card 1: 166 Playbooks to Start**
+
+```
+Headline: Don't Start From Scratch
+
+Body: 166 playbooks across 9 strategic domains—M&A, crisis, competitive response, digital transformation, and more. Built from 25 years of Fortune 500 execution experience. Ready to deploy on day one.
+```
+
+**Card 2: Customize Everything**
+
+```
+Headline: Make Them Yours
+
+Body: Every playbook is fully customizable. Adjust roles. Modify sequences. Change triggers. Your organization is unique. Your infrastructure should be too.
+```
+
+**Card 3: Build Your Own**
+
+```
+Headline: Create From Scratch
+
+Body: Face a situation we haven't covered? Build your own playbook. Your institutional knowledge, encoded into executable infrastructure—ready to activate when that situation hits again.
+```
+
+**Closing line:**
+
+```
+The playbooks are the accelerant. The platform is the product.
+```
+
+-----
+
+## Value Section
+
+**Section Headline:**
+
+```
+The Cost of Missing Infrastructure
+```
+
+**Body:**
+
+```
+The 72-hour gap has a real price tag:
+```
+
+**Value cards:**
+
+```
+Ransomware Response
+$136K per hour of delayed response (IBM)
+72 hours = $9.8M exposure
+
+M&A Integration Delay
+$5-50M in synergy erosion
+Every day of delay compounds
+
+Crisis Response Delay
+Reputational damage spreads hourly
+Market cap impact within 24 hours
+
+Competitive Response Delay
+Market share loss
+Often unrecoverable
+```
+
+**Closing line:**
+
+```
+ExecuteIQ at $250K-$750K/year vs. one incident costing $5-50M. Payback on first use.
+```
+
+-----
+
+## Validation Section (NEW)
+
+**Section Headline:**
+
+```
+What 7 Major Firms Are Saying
+```
+
+**Quote cards:**
+
+```
+"78% of executives say achieving maximum benefit from agentic AI requires a new operating model."
+— IBM, Agentic AI Operating Model Report
+
+"70% of AI transformation is people and processes—not technology."
+— Bain, Technology Report 2025
+
+"69% of executives agree: agentic AI requires fundamentally new management approaches."
+— BCG, Leading in the Age of AI Agents
+
+"Governance must become real-time, data-driven, and embedded."
+— McKinsey, The Agentic Organization
+
+"Companies that align AI, platforms, and business strategies achieve 2.2x revenue growth."
+— Accenture, Platform Strategy in the Age of Agentic AI
+
+"The limiting factors are now integration and governance, not capability."
+— Anthropic, State of AI Agents 2026
+
+"The divide is between organizations that treat AI as workflow infrastructure and those that leave it as a side tool."
+— OpenAI, State of Enterprise AI
+```
+
+**Closing line:**
+
+```
+They're all describing what ExecuteIQ provides.
+```
+
+-----
+
+## Founder Story Section
+
+**Section Headline:**
+
+```
+Built by Someone Who's Lived Both Worlds
+```
+
+**Body:**
+
+```
+I coached college football for 5 years. Every game, 60-80 plays. Every 40 seconds—read the situation, call the play, execute. The speed comes from preparation. Playbooks built before the season. Everyone knows their assignment before the moment.
+
+Then I spent 20 years inside Fortune 500 companies—Ford, Toyota, Lockheed Martin, Eli Lilly, Boyd Gaming, Churchill Downs. Same caliber of people. No playbooks. Every strategic moment handled ad-hoc.
+
+I watched the same pattern every time: 72 hours getting meetings on calendars, still defining who owns what. After 72 hours—maybe a plan. Execution hasn't started.
+
+7 major firms just said execution infrastructure is the bottleneck for AI. I built the infrastructure I wish I'd had.
+
+— Marty Brunke, Founder
+```
+
+-----
+
+# WHY EXECUTEIQ PAGE
+
+**Page Headline:**
+
+```
+The Infrastructure 7 Firms Say Is Missing
+```
+
+**Section 1: The Consensus**
+
+```
+Headline: What McKinsey, IBM, Bain, BCG, Accenture, Anthropic, and OpenAI All Concluded
+
+Body: In 2025, seven major consulting and technology firms independently published research on AI adoption. They all arrived at the same conclusion:
+
+Organizations aren't failing at AI because of technology. They're failing because they lack execution infrastructure—governance, decision rights, and coordination systems.
+
+This isn't speculation. It's consensus.
+```
+
+**Section 2: The Gap**
+
+```
+Headline: What's Missing
+
+Body: Enterprises have:
+✓ AI tools
+✓ Talented people
+✓ Strategic ambition
+
+Enterprises lack:
+✗ Pre-defined governance for strategic moments
+✗ Clear decision rights before situations hit
+✗ Coordination systems that activate in minutes
+
+The result: 72 hours to coordinate what should take minutes. Still defining work while the situation evolves.
+```
+
+**Section 3: The Solution**
+
+```
+Headline: ExecuteIQ Provides the Infrastructure
+
+Body: ExecuteIQ is the execution infrastructure layer:
+
+• 166 playbooks with governance, decision rights, and workflows pre-defined
+• Customizable to your organization
+• Build your own for unique situations
+• 12 minutes from trigger to execution
+
+The infrastructure that makes AI actually work.
+```
+
+-----
+
+# HOW IT WORKS PAGE
+
+**Page Headline:**
+
+```
+From Situation to Execution in 12 Minutes
+```
+
+**Intro:**
+
+```
+Execution infrastructure works because it's ready before the moment arrives—just like the playbooks elite sports teams build before the season starts.
+```
+
+**Phase 1: IDENTIFY**
+
+```
+Headline: Infrastructure Built in Advance
+
+Body: 166 playbooks across 9 strategic domains. Governance defined. Decision rights mapped. Roles assigned. All before the situation hits.
+
+This is what McKinsey means by "real-time, embedded governance." It's ready before you need it.
+```
+
+**Phase 2: DETECT**
+
+```
+Headline: Situation Triggers Response
+
+Body: A strategic moment hits—M&A, crisis, competitive threat. The infrastructure activates. The right playbook engages based on situational awareness.
+
+No meetings to figure out what to do. The infrastructure already knows.
+```
+
+**Phase 3: EXECUTE**
+
+```
+Headline: Coordination in 12 Minutes
+
+Body: Stakeholders notified. Tasks assigned with owners. Decision rights clear. Execution begins—not planning, execution.
+
+This is the operating model IBM says 78% of executives know they need.
+```
+
+**Phase 4: ADVANCE**
+
+```
+Headline: Infrastructure Gets Smarter
+
+Body: Every execution generates data. What worked? Where were the bottlenecks? The infrastructure learns and improves.
+
+Your execution capability compounds over time.
+```
+
+-----
+
+# PLAYBOOKS PAGE
+
+**Page Headline:**
+
+```
+166 Playbooks. Infinite Customization.
+```
+
+**Intro:**
+
+```
+Every playbook is execution infrastructure—governance, decision rights, and coordination pre-defined. Start with ours. Make them yours. Or build from scratch.
+```
+
+**Section: 9 Strategic Domains**
+
+```
+• M&A Integration
+• Crisis Response
+• Competitive Response
+• Digital Transformation
+• Market Entry
+• Product Launch
+• Regulatory Compliance
+• AI Governance
+• Cyber Security
+```
+
+**Section: What’s in a Playbook**
+
+```
+• Pre-defined roles and stakeholders
+• Clear decision rights and accountability
+• Task sequences with dependencies
+• Trigger conditions
+• Success metrics
+• Escalation paths
+
+Everything needed to execute—before the moment arrives.
+```
+
+-----
+
+# FOOTER
+
+**Tagline:**
+
+```
+ExecuteIQ — The Execution Infrastructure That Makes AI Work
+```
+
+-----
+
+# META/SEO
+
+**Page Title:**
+
+```
+ExecuteIQ | The Execution Infrastructure Enterprises Are Missing
+```
+
+**Meta Description:**
+
+```
+7 major firms say execution infrastructure is the AI bottleneck. ExecuteIQ provides it—166 playbooks, pre-defined governance, 12 minutes to execution.
+```
+
+-----
+
+# KEY MESSAGING SUMMARY
+
+**What to say:**
+
+- “Execution infrastructure” (not just methodology)
+- “The operating model that makes AI work”
+- “Governance, decision rights, and coordination pre-defined”
+- “7 major firms validated this”
+- “78% of executives say…” (IBM stat)
+- “70% is people and processes” (Bain stat)
+- “Platform, not fixed product”
+- “166 playbooks to start, customize or build your own”
+
+**What not to say:**
+
+- “Project management tool”
+- “Workflow automation”
+- Generic SaaS language
+- Anything that sounds like consulting
+
+-----
+
+# IMPLEMENTATION CHECKLIST
+
+- [ ] Update homepage hero with execution infrastructure headline
+- [ ] Add validation section with 7-firm quotes
+- [ ] Update problem section with infrastructure framing
+- [ ] Update solution section with governance/decision rights pillars
+- [ ] Add stats bar with IBM/Bain/BCG numbers
+- [ ] Update Why ExecuteIQ page
+- [ ] Update How It Works page
+- [ ] Update footer tagline
+- [ ] Update meta/SEO
+
+-----
+
+*Give this to Replit. The product messaging now aligns with the external validation from 7 major firms.*

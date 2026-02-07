@@ -161,10 +161,10 @@ export default function Footer() {
       <div className="border-t border-poise-gold/10 bg-gradient-to-r from-poise-navy via-poise-dark-gray/50 to-poise-navy">
         <div className="max-w-7xl mx-auto px-6 py-8 text-center">
           <p className="text-2xl font-bold text-poise-gold mb-2" data-testid="footer-idea-tagline">
-            166 Playbooks to Start. Unlimited to Build.
+            ExecuteIQ — The Execution Infrastructure That Makes AI Work
           </p>
           <p className="text-lg text-slate-300 italic mb-4">
-            "Start with proven playbooks. Make them yours. Execute any of them in 12 minutes."
+            "166 playbooks to start. Customize them. Build your own. Pre-defined governance, clear decision rights, 12 minutes to execution."
           </p>
           <p className="text-sm text-poise-teal">
             The Playbooks Are the Accelerant. The Platform Is the Product.
@@ -182,9 +182,9 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-sm text-slate-400">
-                  © {new Date().getFullYear()} ExecuteIQ - The Platform for Strategic Execution
+                  © {new Date().getFullYear()} ExecuteIQ - The Execution Infrastructure Enterprises Are Missing
                 </p>
-                <p className="text-xs text-slate-600">NFL-Grade Methodology. Your Playbooks.</p>
+                <p className="text-xs text-slate-600">Governance. Decision Rights. Coordination. In 12 Minutes.</p>
               </div>
             </div>
             <div className="flex items-center gap-6">

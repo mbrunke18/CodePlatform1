@@ -33,10 +33,10 @@ import { updatePageMetadata } from "@/lib/seo";
 export default function WhyM() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Why ExecuteIQ - The Founder Story | Strategic Execution OS",
-      description: "Discover how 5 years of elite football coaching and 20+ years of Fortune 500 strategic execution led to ExecuteIQ—the first Strategic Execution OS.",
-      ogTitle: "Why ExecuteIQ Exists - Creating a New Category",
-      ogDescription: "The insight that created ExecuteIQ: Business has no operating system for coordinated response. We're changing that.",
+      title: "Why ExecuteIQ - The Infrastructure 7 Firms Say Is Missing",
+      description: "McKinsey, IBM, Bain, BCG, Accenture, Anthropic, and OpenAI all concluded: organizations fail at AI because they lack execution infrastructure. ExecuteIQ provides it.",
+      ogTitle: "The Infrastructure 7 Firms Say Is Missing | ExecuteIQ",
+      ogDescription: "Seven major firms independently concluded that execution infrastructure—governance, decision rights, and coordination systems—is the missing layer for AI adoption.",
     });
   }, []);
 
@@ -44,58 +44,35 @@ export default function WhyM() {
     <div className="min-h-screen bg-background text-foreground">
       <StandardNav />
 
-      {/* Hero Section - Split Layout with Founder + CTAs */}
-      <section className="py-16 md:py-20 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <Badge className="mb-6 bg-primary text-white border-0">
-                <Lightbulb className="w-4 h-4 mr-2" />
-                The Origin Story
-              </Badge>
-              
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight" data-testid="heading-why-executeiq">
-                Why ExecuteIQ Exists
-              </h1>
-              
-              <p className="text-xl text-blue-100 mb-8">
-                The insight that created a new software category came from an unexpected place: 
-                the football field.
-              </p>
+      {/* Hero Section */}
+      <section className="py-16 md:py-24 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+        <div className="max-w-5xl mx-auto text-center">
+          <Badge className="mb-6 bg-amber-500 text-white border-0">
+            <BarChart3 className="w-4 h-4 mr-2" />
+            2025 Research Consensus
+          </Badge>
 
-              <div className="flex flex-wrap gap-4">
-                <Link href="/demo-selector">
-                  <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100">
-                    <Play className="mr-2 h-5 w-5" />
-                    Watch Demo
-                  </Button>
-                </Link>
-                <Link href="/research">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                    View Research
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight" data-testid="heading-why-executeiq">
+            The Infrastructure 7 Firms Say Is Missing
+          </h1>
 
-            <Card className="bg-white/10 border-white/20 backdrop-blur">
-              <CardContent className="p-6 md:p-8">
-                <Quote className="h-10 w-10 text-blue-300 mb-4 opacity-60" />
-                <blockquote className="text-lg text-blue-50 leading-relaxed mb-6 italic">
-                  "Business has no operating system for coordinated response. Football teams respond in seconds. Fortune 500 companies take 72 hours. I finally understood why."
-                </blockquote>
-                <div className="flex items-center gap-4 pt-4 border-t border-white/20">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-xl font-bold">
-                    MB
-                  </div>
-                  <div>
-                    <p className="font-bold text-white">Marty Brunke</p>
-                    <p className="text-blue-200 text-sm">Founder & CEO, ExecuteIQ</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-10">
+            McKinsey. IBM. Bain. BCG. Accenture. Anthropic. OpenAI. They all arrived at the same conclusion.
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link href="/demo-selector">
+              <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100">
+                <Play className="mr-2 h-5 w-5" />
+                Watch Demo
+              </Button>
+            </Link>
+            <Link href="/research">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                View Research
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -104,40 +81,223 @@ export default function WhyM() {
       <section className="py-8 px-6 bg-slate-100 dark:bg-slate-800 border-b border-border">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-3 gap-6 text-center">
-            <div data-testid="stat-coaching">
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-1" data-testid="value-coaching">5 yrs</div>
-              <p className="text-sm text-muted-foreground" data-testid="label-coaching">Collegiate Football Coaching</p>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-primary mb-1">7</div>
+              <p className="text-sm text-muted-foreground">Major Firms Agree</p>
             </div>
-            <div data-testid="stat-strategy">
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-1" data-testid="value-strategy">20+</div>
-              <p className="text-sm text-muted-foreground" data-testid="label-strategy">Years Fortune 500 Strategy</p>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-primary mb-1">166</div>
+              <p className="text-sm text-muted-foreground">Pre-Built Playbooks</p>
             </div>
-            <div data-testid="stat-transformations">
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-1" data-testid="value-transformations">6</div>
-              <p className="text-sm text-muted-foreground" data-testid="label-transformations">Enterprise Transformations</p>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-primary mb-1">12 min</div>
+              <p className="text-sm text-muted-foreground">Trigger to Execution</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* The Insight - Full Quote */}
+      {/* Section 1: The Consensus */}
+      <section className="py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-blue-600 text-white border-0">
+              <Globe2 className="w-4 h-4 mr-2" />
+              The Consensus
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+              What McKinsey, IBM, Bain, BCG, Accenture, Anthropic, and OpenAI All Concluded
+            </h2>
+          </div>
+
+          <Card className="border-2 border-primary/30 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-900">
+            <CardContent className="p-8 md:p-12">
+              <p className="text-lg md:text-xl text-foreground leading-relaxed mb-8">
+                In 2025, seven major consulting and technology firms independently published research on AI adoption. They all arrived at the same conclusion: Organizations aren't failing at AI because of technology. They're failing because they lack execution infrastructure—governance, decision rights, and coordination systems. This isn't speculation. It's consensus.
+              </p>
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4">
+                {["McKinsey", "IBM", "Bain", "BCG", "Accenture", "Anthropic", "OpenAI"].map((firm) => (
+                  <div key={firm} className="flex items-center justify-center p-3 bg-white dark:bg-slate-700 rounded-lg border border-border shadow-sm">
+                    <span className="text-sm font-semibold text-foreground">{firm}</span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Section 2: The Gap */}
+      <section className="py-16 px-6 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-amber-500 text-white border-0">
+              <AlertTriangle className="w-4 h-4 mr-2" />
+              The Gap
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              What's Missing
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <Card className="border-2 border-green-500/30 hover:border-green-500/50 transition-colors">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center">
+                    <CheckCircle2 className="h-6 w-6 text-green-500" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-xl text-foreground">What Enterprises Have</h3>
+                    <p className="text-sm text-green-600 dark:text-green-400 font-medium">Already invested</p>
+                  </div>
+                </div>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3 text-foreground">
+                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
+                    <span className="text-lg">AI tools</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-foreground">
+                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
+                    <span className="text-lg">Talented people</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-foreground">
+                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
+                    <span className="text-lg">Strategic ambition</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 border-red-500/30 hover:border-red-500/50 transition-colors">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center">
+                    <XCircle className="h-6 w-6 text-red-500" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-xl text-foreground">What They Lack</h3>
+                    <p className="text-sm text-red-600 dark:text-red-400 font-medium">The missing layer</p>
+                  </div>
+                </div>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3 text-foreground">
+                    <XCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
+                    <span className="text-lg">Pre-defined governance</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-foreground">
+                    <XCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
+                    <span className="text-lg">Clear decision rights</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-foreground">
+                    <XCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
+                    <span className="text-lg">Coordination systems</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card className="bg-gradient-to-r from-red-500/10 to-orange-500/10 border-red-500/30">
+            <CardContent className="p-8 text-center">
+              <Clock className="h-12 w-12 text-red-500 mx-auto mb-4" />
+              <p className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                Result: 72 hours to coordinate what should take minutes.
+              </p>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Without execution infrastructure, every strategic moment is handled ad-hoc—no matter how talented the team.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Section 3: The Solution */}
+      <section className="py-16 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-emerald-500 text-white border-0">
+              <Zap className="w-4 h-4 mr-2" />
+              The Solution
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              ExecuteIQ Provides the Infrastructure
+            </h2>
+          </div>
+
+          <Card className="bg-white/10 border-white/20 backdrop-blur mb-12">
+            <CardContent className="p-8 md:p-12">
+              <p className="text-lg md:text-xl text-blue-50 leading-relaxed mb-8">
+                ExecuteIQ is the execution infrastructure layer: 166 playbooks with governance, decision rights, and workflows pre-defined. Customizable to your organization. Build your own for unique situations. 12 minutes from trigger to execution. The infrastructure that makes AI actually work.
+              </p>
+
+              <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="text-center p-6 bg-white/5 rounded-2xl border border-white/10">
+                  <div className="w-14 h-14 mx-auto mb-4 bg-blue-500/20 rounded-2xl flex items-center justify-center">
+                    <BookOpen className="h-7 w-7 text-blue-400" />
+                  </div>
+                  <div className="text-3xl font-bold text-white mb-1">166</div>
+                  <p className="text-sm text-blue-200">Pre-built playbooks</p>
+                </div>
+                <div className="text-center p-6 bg-white/5 rounded-2xl border border-white/10">
+                  <div className="w-14 h-14 mx-auto mb-4 bg-emerald-500/20 rounded-2xl flex items-center justify-center">
+                    <Shield className="h-7 w-7 text-emerald-400" />
+                  </div>
+                  <div className="text-3xl font-bold text-white mb-1">Built-in</div>
+                  <p className="text-sm text-blue-200">Governance & decision rights</p>
+                </div>
+                <div className="text-center p-6 bg-white/5 rounded-2xl border border-white/10">
+                  <div className="w-14 h-14 mx-auto mb-4 bg-amber-500/20 rounded-2xl flex items-center justify-center">
+                    <Target className="h-7 w-7 text-amber-400" />
+                  </div>
+                  <div className="text-3xl font-bold text-white mb-1">Custom</div>
+                  <p className="text-sm text-blue-200">Build your own playbooks</p>
+                </div>
+                <div className="text-center p-6 bg-white/5 rounded-2xl border border-white/10">
+                  <div className="w-14 h-14 mx-auto mb-4 bg-purple-500/20 rounded-2xl flex items-center justify-center">
+                    <Timer className="h-7 w-7 text-purple-400" />
+                  </div>
+                  <div className="text-3xl font-bold text-white mb-1">12 min</div>
+                  <p className="text-sm text-blue-200">Trigger to execution</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="text-center">
+            <Link href="/demo-selector">
+              <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100">
+                <Play className="mr-2 h-5 w-5" />
+                See ExecuteIQ in Action
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Founder Story */}
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-primary text-white border-0">
+              <Lightbulb className="w-4 h-4 mr-2" />
+              The Founder
+            </Badge>
+            <h2 className="text-3xl font-bold text-foreground mb-4">
+              Built by Someone Who Lived the Problem
+            </h2>
+          </div>
+
           <Card className="border-2 border-primary/30 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-900">
             <CardContent className="p-8 md:p-12">
               <div className="flex items-start gap-6 mb-8">
                 <Quote className="h-12 w-12 text-primary shrink-0 opacity-60" />
-                <blockquote className="text-xl md:text-2xl text-foreground leading-relaxed italic">
-                  "In football, when a play is called, everyone knows exactly what to do. 
-                  Assignments are clear, responsibilities are owned, and execution happens in seconds 
-                  because the preparation is there. That level of alignment is built long before gameday.
-                  <br /><br />
-                  In business, I've spent 20 years watching Fortune 500 companies struggle with the 
-                  very thing football teams excel at naturally—clarity, coordination, and the ability 
-                  to execute with speed and confidence."
+                <blockquote className="text-lg md:text-xl text-foreground leading-relaxed italic">
+                  "I coached college football for 5 years. Every game, 60-80 plays. Every 40 seconds—read the situation, call the play, execute. The speed comes from preparation. Then I spent 20 years inside Fortune 500 companies—Ford, Toyota, Lockheed Martin, Eli Lilly, Boyd Gaming, Churchill Downs. Same caliber of people. No playbooks. Every strategic moment handled ad-hoc. 7 major firms just said execution infrastructure is the bottleneck for AI. I built the infrastructure I wish I'd had."
                 </blockquote>
               </div>
-              
+
               <div className="flex items-center justify-between flex-wrap gap-4 pt-6 border-t border-border">
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-2xl font-bold">
@@ -152,810 +312,36 @@ export default function WhyM() {
                   <Badge variant="outline">Ford</Badge>
                   <Badge variant="outline">Toyota</Badge>
                   <Badge variant="outline">Lockheed Martin</Badge>
-                  <Badge variant="outline">Stanford</Badge>
+                  <Badge variant="outline">Eli Lilly</Badge>
                   <Badge variant="outline">Boyd Gaming</Badge>
                   <Badge variant="outline">Churchill Downs</Badge>
                 </div>
               </div>
-              <div className="flex justify-center mt-8">
-                <Link href="/demo-selector">
-                  <Button className="bg-primary text-white hover:bg-primary/90" data-testid="button-demo-insight">
-                    <Play className="mr-2 h-4 w-4" />
-                    See the Vision in Action
-                  </Button>
-                </Link>
-              </div>
             </CardContent>
           </Card>
-        </div>
-      </section>
-
-      {/* Why Now - Market Timing with Icons & Citations */}
-      <section className="py-16 px-6 bg-gradient-to-br from-amber-500/5 to-orange-500/5">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-amber-500 text-white border-0">
-              <TrendingUp className="w-4 h-4 mr-2" />
-              Why Now
-            </Badge>
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              Three Forces Are Converging
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Creating a massive gap between designed operating models and executed strategy.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <Card className="bg-white dark:bg-slate-800 border-amber-500/30">
-              <CardContent className="p-6">
-                <div className="text-4xl font-bold text-amber-500 mb-3">$50B</div>
-                <h3 className="font-bold text-foreground mb-2">Consulting Saturation</h3>
-                <p className="text-sm text-muted-foreground">
-                  Companies spend $50B/year on strategy consulting, but consultants leave when the deck is done.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="bg-white dark:bg-slate-800 border-orange-500/30">
-              <CardContent className="p-6">
-                <div className="text-4xl font-bold text-orange-500 mb-3">67%</div>
-                <h3 className="font-bold text-foreground mb-2">Operating Model Overhauls</h3>
-                <p className="text-sm text-muted-foreground">
-                  67% of enterprises redesigned their operating model in the past 2 years (McKinsey, 2025).
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="bg-white dark:bg-slate-800 border-red-500/30">
-              <CardContent className="p-6">
-                <div className="text-4xl font-bold text-red-500 mb-3">12 min</div>
-                <h3 className="font-bold text-foreground mb-2">Speed Demands</h3>
-                <p className="text-sm text-muted-foreground">
-                  Markets move in days, not quarters. The 72-hour response window is now 12 minutes.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <Card className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-amber-500/30">
-            <CardContent className="p-6 text-center">
-              <Lightbulb className="h-10 w-10 text-amber-500 mx-auto mb-3" />
-              <p className="text-lg font-semibold text-foreground max-w-2xl mx-auto">
-                The gap between strategic intent and operational reality has never been wider. 
-                ExecuteIQ was built to close it.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* The Football Parallel - Complete Preparedness */}
-      <section className="py-16 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-white/20 text-white border-white/30">
-              <Target className="w-4 h-4 mr-2" />
-              The Insight
-            </Badge>
-            <h2 className="text-3xl font-bold mb-4">
-              Offense. Defense. Special Teams.
-            </h2>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Great football programs are prepared for every situation before the game starts. 
-              ExecuteIQ brings this same complete preparedness to business leadership.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <Card className="bg-white/10 border-white/20 backdrop-blur">
-              <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-emerald-500/20 rounded-2xl flex items-center justify-center">
-                  <TrendingUp className="h-8 w-8 text-emerald-400" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Offense</h3>
-                <p className="text-sm text-blue-100 mb-4">Seize opportunities</p>
-                <p className="text-sm text-blue-200">
-                  M&A targets, market expansion, competitive moves—playbooks ready to capitalize.
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-white/10 border-white/20 backdrop-blur">
-              <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-red-500/20 rounded-2xl flex items-center justify-center">
-                  <Shield className="h-8 w-8 text-red-400" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Defense</h3>
-                <p className="text-sm text-blue-100 mb-4">Protect value</p>
-                <p className="text-sm text-blue-200">
-                  Regulatory changes, supply chain disruptions, cyber incidents—responses pre-staged.
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-white/10 border-white/20 backdrop-blur">
-              <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-purple-500/20 rounded-2xl flex items-center justify-center">
-                  <Zap className="h-8 w-8 text-purple-400" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Special Teams</h3>
-                <p className="text-sm text-blue-100 mb-4">Change the game</p>
-                <p className="text-sm text-blue-200">
-                  AI governance, ESG mandates, workforce transformation—emerging plays ready.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="text-center p-8 bg-white/5 rounded-2xl border border-white/10">
-            <p className="text-xl font-medium text-blue-50 max-w-2xl mx-auto">
-              No matter the situation, executives using ExecuteIQ are prepared to execute 
-              <span className="font-bold text-white"> swiftly, efficiently, and effectively.</span>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* The Unique Background - Two Column */}
-      <section className="py-16 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              A Unique Perspective
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Only someone who's lived in both worlds could see this gap.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 mb-10">
-            <Card className="border-2 border-green-500/30 hover:border-green-500/50 transition-colors">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center">
-                    <Target className="h-6 w-6 text-green-500" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-xl text-foreground">Elite Sports</h3>
-                    <p className="text-sm text-muted-foreground">What works</p>
-                  </div>
-                </div>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2 text-muted-foreground">
-                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
-                    <span>Pre-designed plays for every situation</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-muted-foreground">
-                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
-                    <span>Every player knows their role before the snap</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-muted-foreground">
-                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
-                    <span>Split-second coordinated response</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-muted-foreground">
-                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
-                    <span>Continuous practice and improvement</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-red-500/30 hover:border-red-500/50 transition-colors">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center">
-                    <Building2 className="h-6 w-6 text-red-500" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-xl text-foreground">Fortune 500</h3>
-                    <p className="text-sm text-muted-foreground">What doesn't</p>
-                  </div>
-                </div>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2 text-muted-foreground">
-                    <XCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
-                    <span>72+ hours to coordinate response</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-muted-foreground">
-                    <XCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
-                    <span>No pre-staged playbooks</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-muted-foreground">
-                    <XCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
-                    <span>Improvisation as default mode</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-muted-foreground">
-                    <XCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
-                    <span>Lessons learned but not applied</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-
-          <Card className="bg-gradient-to-r from-primary/10 to-purple-500/10 border-primary/30">
-            <CardContent className="p-6 text-center">
-              <Lightbulb className="h-10 w-10 text-primary mx-auto mb-3" />
-              <p className="text-lg font-semibold text-foreground max-w-2xl mx-auto mb-4">
-                This isn't domain expertise. It's a category-defining insight that competitors cannot replicate.
-              </p>
-              <Link href="/research">
-                <Button variant="outline" className="border-primary text-primary hover:bg-primary/10" data-testid="button-research-perspective">
-                  Explore the Research
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* The Strategic Architecture Gap */}
-      <section className="py-16 px-6 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-blue-600 text-white border-0">
-              <Building2 className="w-4 h-4 mr-2" />
-              The Solution
-            </Badge>
-            <h2 className="text-3xl font-bold text-foreground mb-4" data-testid="heading-strategic-architecture">
-              Most Enterprises Confuse Strategy with Strategic Architecture
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              A strategy is a statement. Strategic Architecture is the operating system that keeps strategy alive when reality hits. 
-              ExecuteIQ is that system—166 pre-staged playbooks across 9 strategic domains, coordinated response in 12 minutes vs. the 72-hour industry average.
-            </p>
-          </div>
-
-          {/* The Drift Insight */}
-          <Card className="bg-gradient-to-r from-red-500/10 to-orange-500/10 border-red-500/30 mb-12">
-            <CardContent className="p-8 text-center">
-              <AlertTriangle className="h-12 w-12 text-red-500 mx-auto mb-4" />
-              <blockquote className="text-xl md:text-2xl font-medium text-foreground mb-4">
-                "Drift doesn't look like failure. It looks like productivity—until results come in."
-              </blockquote>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Without Strategic Architecture, teams stay incredibly busy—burning through budgets and talent—yet don't move the needle. "Busyness" becomes a false proxy for progress.
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* Comparison Table */}
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <Card className="border-red-500/30 bg-red-50/50 dark:bg-red-950/20">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center">
-                    <XCircle className="h-5 w-5 text-red-500" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground">Having a Strategy</h3>
-                </div>
-                <p className="text-sm text-red-600 dark:text-red-400 font-medium mb-4">Static — The "Deck"</p>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2 text-muted-foreground">
-                    <XCircle className="h-4 w-4 text-red-400 mt-1 shrink-0" />
-                    <span>PowerPoint vision, lives in executive decks</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-muted-foreground">
-                    <XCircle className="h-4 w-4 text-red-400 mt-1 shrink-0" />
-                    <span>Annual planning cycles with minimal learning</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-muted-foreground">
-                    <XCircle className="h-4 w-4 text-red-400 mt-1 shrink-0" />
-                    <span>Top-down communication, teams guess at priorities</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-muted-foreground">
-                    <XCircle className="h-4 w-4 text-red-400 mt-1 shrink-0" />
-                    <span>Success = "executed the plan" (fixed budgets)</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-muted-foreground">
-                    <XCircle className="h-4 w-4 text-red-400 mt-1 shrink-0" />
-                    <span>Change seen as "pivot" or "failure"</span>
-                  </li>
-                </ul>
-                <div className="mt-6 p-4 bg-red-100 dark:bg-red-900/30 rounded-lg">
-                  <p className="text-sm font-medium text-red-700 dark:text-red-300">
-                    You can do all this and still lose the market. The market doesn't care about your plan—it cares about your learning speed.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-emerald-500/30 bg-emerald-50/50 dark:bg-emerald-950/20">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-500" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground">Strategic Architecture</h3>
-                </div>
-                <p className="text-sm text-emerald-600 dark:text-emerald-400 font-medium mb-4">Dynamic — The Strategic Execution Operating System (ExecuteIQ)</p>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2 text-muted-foreground">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-500 mt-1 shrink-0" />
-                    <span><strong>IDENTIFY:</strong> Build your playbook library. Pre-stage responses. Know who does what before anything happens.</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-muted-foreground">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-500 mt-1 shrink-0" />
-                    <span><strong>DETECT:</strong> Monitor signals. AI matches patterns to playbooks and triggers execution.</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-muted-foreground">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-500 mt-1 shrink-0" />
-                    <span><strong>EXECUTE:</strong> Coordinate response. Decision in 12 minutes. Everyone aligned, nothing lost in translation.</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-muted-foreground">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-500 mt-1 shrink-0" />
-                    <span><strong>ADVANCE:</strong> Capture learning. Every execution makes you stronger. Get smarter every time.</span>
-                  </li>
-                </ul>
-                <div className="mt-6 p-4 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg">
-                  <p className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
-                    ExecuteIQ is the Strategic Architecture your organization is missing—adapt at the speed of change.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* What People Whisper */}
-          <div className="text-center mb-8">
-            <h3 className="text-xl font-bold text-foreground mb-4">
-              Strategic Architecture Answers What Your Best People Whisper
-            </h3>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-            <Card className="bg-white dark:bg-slate-800 border-blue-500/30">
-              <CardContent className="p-4 text-center">
-                <Lightbulb className="h-6 w-6 text-blue-500 mx-auto mb-2" />
-                <p className="text-sm font-medium text-foreground">"Why are we doing this?"</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-white dark:bg-slate-800 border-emerald-500/30">
-              <CardContent className="p-4 text-center">
-                <Target className="h-6 w-6 text-emerald-500 mx-auto mb-2" />
-                <p className="text-sm font-medium text-foreground">"What wins?"</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-white dark:bg-slate-800 border-amber-500/30">
-              <CardContent className="p-4 text-center">
-                <XCircle className="h-6 w-6 text-amber-500 mx-auto mb-2" />
-                <p className="text-sm font-medium text-foreground">"What stops?"</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-white dark:bg-slate-800 border-purple-500/30">
-              <CardContent className="p-4 text-center">
-                <Brain className="h-6 w-6 text-purple-500 mx-auto mb-2" />
-                <p className="text-sm font-medium text-foreground">"What changes with evidence?"</p>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Board-Level Tell */}
-          <Card className="border-2 border-primary/30 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-900">
-            <CardContent className="p-8">
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="shrink-0">
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                    <BarChart3 className="h-10 w-10 text-white" />
-                  </div>
-                </div>
-                <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-xl font-bold text-foreground mb-2">The Board-Level Tell</h3>
-                  <p className="text-lg text-muted-foreground mb-4">
-                    If you can't answer <span className="font-bold text-foreground">"what are we stopping this month?"</span> you're not governing strategy. You're narrating it.
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    ExecuteIQ's ADVANCE phase captures what worked, what didn't, and automatically refines your playbook library. Institutional knowledge compounds—it doesn't walk out the door. That's Strategic Architecture in action.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <div className="flex justify-center mt-8">
-            <Link href="/demo-selector">
-              <Button size="lg" className="bg-primary text-white hover:bg-primary/90" data-testid="button-strategic-architecture-demo">
-                <Play className="mr-2 h-5 w-5" />
-                See Strategic Architecture in Action
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* The Transformation - Side by Side */}
-      <section className="py-16 px-6 bg-slate-50 dark:bg-slate-900">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-primary text-white border-0">
-              <Zap className="w-4 h-4 mr-2" />
-              The Transformation
-            </Badge>
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              From 72 Hours to 12 Minutes
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="border-2 border-red-500/30">
-              <CardContent className="p-8">
-                <h3 className="text-xl font-bold text-red-500 mb-6 flex items-center gap-2">
-                  <Clock className="h-6 w-6" />
-                  Today: The 72-Hour Scramble
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 p-3 bg-red-500/5 rounded-lg">
-                    <div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-500 text-sm font-bold">1</div>
-                    <span className="text-muted-foreground">Event occurs → Who should handle this?</span>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-red-500/5 rounded-lg">
-                    <div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-500 text-sm font-bold">2</div>
-                    <span className="text-muted-foreground">Ad-hoc calls → What's our playbook?</span>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-red-500/5 rounded-lg">
-                    <div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-500 text-sm font-bold">3</div>
-                    <span className="text-muted-foreground">Debate → Who has authority?</span>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-red-500/5 rounded-lg">
-                    <div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-500 text-sm font-bold">4</div>
-                    <span className="text-muted-foreground">Discovery → What resources do we have?</span>
-                  </div>
-                  <div className="text-center pt-4 border-t border-red-500/20">
-                    <span className="text-2xl font-bold text-red-500">72 hours later...</span>
-                    <p className="text-sm text-muted-foreground mt-1">Response finally begins</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-green-500/30">
-              <CardContent className="p-8">
-                <h3 className="text-xl font-bold text-green-500 mb-6 flex items-center gap-2">
-                  <Zap className="h-6 w-6" />
-                  With ExecuteIQ: 12-Minute Activation
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 p-3 bg-green-500/5 rounded-lg">
-                    <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 text-sm font-bold">1</div>
-                    <span className="text-muted-foreground">Signal detected → Pre-configured alert</span>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-green-500/5 rounded-lg">
-                    <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 text-sm font-bold">2</div>
-                    <span className="text-muted-foreground">Playbook activates → Pre-staged, pre-assigned</span>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-green-500/5 rounded-lg">
-                    <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 text-sm font-bold">3</div>
-                    <span className="text-muted-foreground">Tasks deploy → Auto-created in Jira</span>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-green-500/5 rounded-lg">
-                    <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 text-sm font-bold">4</div>
-                    <span className="text-muted-foreground">Teams execute → Clear ownership</span>
-                  </div>
-                  <div className="text-center pt-4 border-t border-green-500/20">
-                    <span className="text-2xl font-bold text-green-500">12 minutes</span>
-                    <p className="text-sm text-muted-foreground mt-1">Coordinated response underway</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="text-center mt-10">
-            <Link href="/demo-selector">
-              <Button size="lg" className="bg-green-600 text-white hover:bg-green-700" data-testid="button-demo-transformation">
-                <Play className="mr-2 h-5 w-5" />
-                See the 12-Minute Transformation
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Category Creation */}
-      <section className="py-16 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-primary text-white">Category Creation</Badge>
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              We're Creating a New Category
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              ExecuteIQ isn't entering an existing market—we're defining a new one.
-            </p>
-          </div>
-
-          <Card className="mb-8">
-            <CardContent className="p-8">
-              <h3 className="text-xl font-bold text-foreground mb-6 text-center">
-                Strategic Execution Operating System (SEOS)
-              </h3>
-              
-              <div>
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b border-border">
-                      <th className="text-left py-3 px-4 font-semibold text-foreground">Existing Category</th>
-                      <th className="text-left py-3 px-4 font-semibold text-foreground">What It Does</th>
-                      <th className="text-left py-3 px-4 font-semibold text-foreground">What It Misses</th>
-                    </tr>
-                  </thead>
-                  <tbody className="text-muted-foreground">
-                    <tr className="border-b border-border">
-                      <td className="py-3 px-4 font-medium">Project Management</td>
-                      <td className="py-3 px-4">Tracks tasks</td>
-                      <td className="py-3 px-4">No pre-staging, triggers, or orchestration</td>
-                    </tr>
-                    <tr className="border-b border-border">
-                      <td className="py-3 px-4 font-medium">Business Continuity</td>
-                      <td className="py-3 px-4">Plans for disasters</td>
-                      <td className="py-3 px-4">No daily strategic response, no integration</td>
-                    </tr>
-                    <tr className="border-b border-border">
-                      <td className="py-3 px-4 font-medium">GRC Platforms</td>
-                      <td className="py-3 px-4">Manages compliance</td>
-                      <td className="py-3 px-4">No execution, no coordination</td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 px-4 font-medium">Strategy Software</td>
-                      <td className="py-3 px-4">Sets goals</td>
-                      <td className="py-3 px-4">No connection to action</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <div className="mt-8 p-6 bg-primary/10 rounded-lg">
-                <h4 className="font-bold text-foreground mb-4 text-center">SEOS Combines All Four:</h4>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="flex flex-col items-center text-center gap-2">
-                    <Shield className="h-8 w-8 text-primary" />
-                    <span className="text-sm font-medium text-foreground">Pre-staged Readiness</span>
-                  </div>
-                  <div className="flex flex-col items-center text-center gap-2">
-                    <Radio className="h-8 w-8 text-primary" />
-                    <span className="text-sm font-medium text-foreground">Signal Monitoring</span>
-                  </div>
-                  <div className="flex flex-col items-center text-center gap-2">
-                    <Zap className="h-8 w-8 text-primary" />
-                    <span className="text-sm font-medium text-foreground">Orchestrated Execution</span>
-                  </div>
-                  <div className="flex flex-col items-center text-center gap-2">
-                    <BookOpen className="h-8 w-8 text-primary" />
-                    <span className="text-sm font-medium text-foreground">Continuous Learning</span>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-8">
-              <h3 className="text-xl font-bold text-foreground mb-6 text-center">
-                Category Creation Precedents
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div className="text-center p-4">
-                  <div className="text-3xl font-bold text-blue-500 mb-2">$250B+</div>
-                  <p className="font-medium text-foreground">Salesforce</p>
-                  <p className="text-sm text-muted-foreground">Created CRM</p>
-                </div>
-                <div className="text-center p-4">
-                  <div className="text-3xl font-bold text-purple-500 mb-2">$150B+</div>
-                  <p className="font-medium text-foreground">ServiceNow</p>
-                  <p className="text-sm text-muted-foreground">Created ITSM</p>
-                </div>
-                <div className="text-center p-4">
-                  <div className="text-3xl font-bold text-green-500 mb-2">$60B+</div>
-                  <p className="font-medium text-foreground">Workday</p>
-                  <p className="text-sm text-muted-foreground">Created HCM Cloud</p>
-                </div>
-                <div className="text-center p-4 bg-primary/10 rounded-lg border-2 border-primary/30">
-                  <div className="text-3xl font-bold text-primary mb-2">$5B+</div>
-                  <p className="font-medium text-foreground">ExecuteIQ</p>
-                  <p className="text-sm text-muted-foreground">Creating SEOS</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Research Foundation */}
-      <section className="py-16 px-6 bg-slate-50 dark:bg-slate-900">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-blue-500 text-white border-0">
-              <BarChart3 className="w-4 h-4 mr-2" />
-              Research Foundation
-            </Badge>
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              The Evidence Behind ExecuteIQ
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Independent research validates every principle ExecuteIQ is built on.
-            </p>
-          </div>
-
-          {/* The AI Amplification Effect */}
-          <div className="mb-12">
-            <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
-              <Brain className="h-6 w-6 text-purple-500" />
-              The AI Amplification Effect
-            </h3>
-            <Card className="border-2 border-purple-500/30 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-950/20 dark:to-blue-950/20">
-              <CardContent className="p-8">
-                <Quote className="h-10 w-10 text-purple-500 mb-4 opacity-60" />
-                <blockquote className="text-lg md:text-xl text-foreground mb-4 italic">
-                  "AI does not create an advantage on its own. It amplifies the organization in which it is embedded. 
-                  In companies with strong business agility, AI accelerates learning, innovation, and value creation. 
-                  In those without it, AI exposes structural friction, leadership gaps, and brittle decision systems at speed."
-                </blockquote>
-                <p className="text-sm text-muted-foreground font-medium mb-4">
-                  — Business Agility Institute, 2025 Business Agility Report
-                </p>
-                <div className="p-4 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-                  <p className="text-sm font-medium text-purple-700 dark:text-purple-300">
-                    This is exactly ExecuteIQ's thesis: "Your Employees Have AI. Your Organization Doesn't." 
-                    Individual AI productivity doesn't help if organizational coordination is still broken.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* The Adaptability Imperative */}
-          <div className="mb-12">
-            <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
-              <TrendingUp className="h-6 w-6 text-emerald-500" />
-              The Adaptability Imperative
-            </h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              <Card className="border-2 border-emerald-500/30">
-                <CardContent className="p-6">
-                  <Quote className="h-8 w-8 text-emerald-500 mb-4 opacity-40" />
-                  <p className="text-foreground mb-4 italic">
-                    "The future will not reward the fastest organizations; only the most adaptable ones will."
-                  </p>
-                  <p className="text-sm text-muted-foreground font-medium">
-                    — Business Agility Institute, 2025
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="border-2 border-emerald-500/30">
-                <CardContent className="p-6">
-                  <div className="text-4xl font-bold text-emerald-500 mb-2">10.3%</div>
-                  <p className="text-foreground mb-2">
-                    Revenue per employee increase for organizations that improved their business agility capabilities.
-                  </p>
-                  <p className="text-sm text-muted-foreground font-medium">
-                    — Business Agility Institute, 2025
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-
-          {/* The Coordination Gap */}
-          <div className="mb-12">
-            <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
-              <Clock className="h-6 w-6 text-amber-500" />
-              The Coordination Gap
-            </h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              <Card className="border-2 hover:border-primary/30 transition-colors">
-                <CardContent className="p-6">
-                  <Quote className="h-8 w-8 text-primary mb-4 opacity-40" />
-                  <p className="text-foreground mb-4 italic">
-                    "Organizations with pre-defined incident response teams save 35% more on 
-                    breach-related costs than those that improvise."
-                  </p>
-                  <p className="text-sm text-muted-foreground font-medium">
-                    — IBM/Ponemon Institute, 2024
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="border-2 hover:border-primary/30 transition-colors">
-                <CardContent className="p-6">
-                  <Quote className="h-8 w-8 text-primary mb-4 opacity-40" />
-                  <p className="text-foreground mb-4 italic">
-                    "The first 72 hours of a crisis are critical. Organizations that contain incidents 
-                    quickly save an average of $1.76M."
-                  </p>
-                  <p className="text-sm text-muted-foreground font-medium">
-                    — McKinsey / IBM, 2024
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-
-          {/* The Disruption Reality */}
-          <div className="mb-12">
-            <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
-              <AlertTriangle className="h-6 w-6 text-red-500" />
-              The Disruption Reality
-            </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <Card className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl font-bold text-amber-500 mb-2">89%</div>
-                  <p className="text-sm text-muted-foreground">Say resilience is a top strategic priority</p>
-                  <p className="text-xs text-muted-foreground/60 mt-2">PwC 2023</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-gradient-to-br from-red-500/10 to-red-600/5 border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl font-bold text-red-500 mb-2">91%</div>
-                  <p className="text-sm text-muted-foreground">Experienced major disruption beyond COVID</p>
-                  <p className="text-xs text-muted-foreground/60 mt-2">PwC 2023</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-gradient-to-br from-orange-500/10 to-orange-600/5 border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl font-bold text-orange-500 mb-2">3.5</div>
-                  <p className="text-sm text-muted-foreground">Average disruptions every 2 years</p>
-                  <p className="text-xs text-muted-foreground/60 mt-2">PwC 2023</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-gradient-to-br from-purple-500/10 to-purple-600/5 border-purple-500/20">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl font-bold text-purple-500 mb-2">67%</div>
-                  <p className="text-sm text-muted-foreground">Redesigned operating model in past 2 years</p>
-                  <p className="text-xs text-muted-foreground/60 mt-2">McKinsey 2025</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-
-          {/* The Bottom Line */}
-          <Card className="border-2 border-primary/30 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-900 mb-8">
-            <CardContent className="p-8 text-center">
-              <h3 className="text-xl font-bold text-foreground mb-4">The Bottom Line</h3>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-4">
-                Organizations need pre-staged responses, AI-powered coordination, and continuous learning—not more meetings and slide decks. 
-                The research is clear: <span className="font-bold text-foreground">preparation beats improvisation every time.</span>
-              </p>
-              <p className="text-sm text-muted-foreground">
-                ExecuteIQ brings all of this together in one Strategic Execution Operating System.
-              </p>
-            </CardContent>
-          </Card>
-
-          <div className="text-center">
-            <Link href="/research">
-              <Button className="bg-primary text-white hover:bg-primary/90">
-                Explore Full Research Library
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+      <section className="py-16 px-6 bg-gradient-to-br from-primary/5 to-purple-500/5">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Ready to Transform How Your Organization Responds?
+          <h2 className="text-3xl font-bold text-foreground mb-4">
+            Ready to See the Infrastructure?
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            See ExecuteIQ in action and discover what 12-minute strategic coordination looks like.
+          <p className="text-lg text-muted-foreground mb-8">
+            See how ExecuteIQ closes the gap between AI investment and AI results.
           </p>
-          <div className="flex gap-4 justify-center flex-wrap">
+          <div className="flex flex-wrap justify-center gap-4">
             <Link href="/demo-selector">
-              <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100">
+              <Button size="lg" className="bg-primary text-white hover:bg-primary/90">
                 <Play className="mr-2 h-5 w-5" />
                 Watch Demo
               </Button>
             </Link>
             <Link href="/research">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                View Research
-              </Button>
-            </Link>
-            <Link href="/contact">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                Contact Us
+              <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
+                Explore Research
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
           </div>

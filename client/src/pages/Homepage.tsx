@@ -27,47 +27,30 @@ import {
   Network,
   Activity,
   Check,
-  X
+  X,
+  Quote,
+  Building2,
+  Scale,
+  UserCheck
 } from "lucide-react";
 import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
 import VideoIntro from "@/components/marketing/VideoIntro";
-import { StrategyReality, StrategyToIDEA } from "@/components/marketing/StrategyReality";
 
 const INTRO_SEEN_KEY = "poise_intro_seen_session";
 
-const ROTATING_TAGLINES = [
-  "Adapt at the Speed of Change.",
-  "Quarters, not years.",
-  "The playbook for pressure.",
-  "Prepared response beats reactive scramble.",
-  "166 playbooks. 12-minute activation.",
-  "Business agility, operationalized."
-];
-
 export default function Homepage() {
   const [, setLocation] = useLocation();
-  // Show intro only on initial site entry, not when navigating back from other pages
   const [showIntro, setShowIntro] = useState(() => {
     if (typeof window === "undefined") return true;
-    // Check if this is a fresh site entry (no flag set yet)
     const hasSeenIntro = sessionStorage.getItem(INTRO_SEEN_KEY);
     if (!hasSeenIntro) {
-      // Mark as seen immediately so navigating away and back won't show it again
       sessionStorage.setItem(INTRO_SEEN_KEY, "true");
       return true;
     }
     return false;
   });
-  const [taglineIndex, setTaglineIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTaglineIndex((prev) => (prev + 1) % ROTATING_TAGLINES.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
 
   const handleSkipIntro = () => {
     setShowIntro(false);
@@ -82,27 +65,25 @@ export default function Homepage() {
       id: 'identify',
       phase: 'I',
       phaseName: 'Identify',
-      title: 'Build Your Depth Chart',
-      description: 'Map your operating model to 166 pre-staged playbooks across 9 strategic domains. Know every scenario before it happens.',
-      aiPositioning: 'AI that pre-stages responses—the training data for every strategic scenario.',
+      title: 'Infrastructure Built in Advance',
+      description: '166 playbooks across 9 strategic domains. Governance defined. Decision rights mapped. Roles assigned. All before the situation hits.',
       icon: BookOpen,
       color: 'from-violet-500 to-purple-600',
       borderColor: 'border-violet-200 hover:border-violet-400',
       bgColor: 'bg-violet-50 dark:bg-violet-950/20',
       iconBg: 'bg-violet-100 dark:bg-violet-900/30',
       iconColor: 'text-violet-600 dark:text-violet-400',
-      features: ['Operating Model Alignment', '166 Pre-built Playbooks', 'Stakeholder Accountability Mapping', 'Readiness Scoring'],
+      features: ['Pre-defined governance & decision rights', '166 Pre-built Playbooks', 'Stakeholder Accountability Mapping', 'Readiness Scoring'],
       primaryLink: '/playbook-library',
       primaryLabel: 'Browse Playbooks',
-      mindsetQuote: 'Know every scenario before it happens.'
+      stat: '"Governance must become real-time, embedded" — McKinsey'
     },
     {
       id: 'detect',
       phase: 'D',
       phaseName: 'Detect',
-      title: 'Detect Signals',
-      description: 'AI matches signals to playbooks and triggers execution. Not just analysis—action triggers that connect intelligence to execution.',
-      aiPositioning: "AI that identifies which playbook to execute—not just what's happening.",
+      title: 'Situation Triggers Response',
+      description: 'A strategic moment hits—M&A, crisis, competitive threat. The infrastructure activates. The right playbook engages based on situational awareness.',
       icon: Radar,
       color: 'from-blue-500 to-cyan-600',
       borderColor: 'border-blue-200 hover:border-blue-400',
@@ -112,171 +93,160 @@ export default function Homepage() {
       features: ['AI Signal-to-Playbook Matching', 'Competitive Intelligence Aggregation', 'Early Warning Dashboards', 'Human-Triggered Activation'],
       primaryLink: '/foresight-radar',
       primaryLabel: 'View Radar',
-      mindsetQuote: 'See it coming before it arrives.'
+      stat: '"70% of AI transformation is people and processes" — Bain'
     },
     {
       id: 'execute',
       phase: 'E',
       phaseName: 'Execute',
-      title: 'Execute Response',
-      description: 'AI orchestrates cross-functional coordination. Decision in 12 minutes, full execution of 47 tasks in 90 minutes. Autonomous blocker resolution.',
-      aiPositioning: 'AI that orchestrates coordination—not just assists individual work.',
+      title: 'Coordination in 12 Minutes',
+      description: 'Stakeholders notified. Tasks assigned with owners. Decision rights clear. Execution begins—not planning, execution.',
       icon: Radio,
       color: 'from-emerald-500 to-green-600',
       borderColor: 'border-emerald-200 hover:border-emerald-400',
       bgColor: 'bg-emerald-50 dark:bg-emerald-950/20',
       iconBg: 'bg-emerald-100 dark:bg-emerald-900/30',
       iconColor: 'text-emerald-600 dark:text-emerald-400',
-      features: ['AI Cross-Functional Orchestration', 'Autonomous Blocker Resolution', 'Real-time Play Clock', 'Two-Minute Drill Mode'],
+      features: ['Pre-defined Decision Rights', 'Instant Stakeholder Coordination', 'Pre-approved Budget Release', 'Real-time Execution Tracking'],
       primaryLink: '/command-center',
       primaryLabel: 'Launch Command Center',
-      mindsetQuote: 'No thinking. Just execution.'
+      stat: '"78% say AI requires a new operating model" — IBM'
     },
     {
       id: 'advance',
       phase: 'A',
       phaseName: 'Advance',
-      title: 'Review the Film',
-      description: 'AI captures lessons and auto-refines playbooks. Insights propagate across related playbooks. Get smarter every execution.',
-      aiPositioning: 'AI that gets smarter every time you execute.',
+      title: 'Infrastructure Gets Smarter',
+      description: 'Every execution generates data. What worked? Where were the bottlenecks? The infrastructure learns and improves. Your execution capability compounds over time.',
       icon: BarChart3,
       color: 'from-amber-500 to-orange-600',
       borderColor: 'border-amber-200 hover:border-amber-400',
       bgColor: 'bg-amber-50 dark:bg-amber-950/20',
       iconBg: 'bg-amber-100 dark:bg-amber-900/30',
       iconColor: 'text-amber-600 dark:text-amber-400',
-      features: ['AI Playbook Refinement', 'Cross-Playbook Learning', 'Performance Benchmarking', 'Autonomous Improvement'],
+      features: ['AI Playbook Refinement', 'Cross-Playbook Learning', 'Performance Benchmarking', 'Compounding Improvement'],
       primaryLink: '/executive-dashboard',
       primaryLabel: 'View Dashboard',
-      mindsetQuote: 'Get better every time.'
+      stat: '"Companies aligning AI + platforms achieve 2.2x growth" — Accenture'
     }
   ];
-  
-  const executionTimeline = [
-    { time: '0:00', event: 'CEO selects Option A: Immediate Public Disclosure', type: 'decision' },
-    { time: '0:01', event: 'Triggering 47 tasks across 12 stakeholders', type: 'ai' },
-    { time: '0:02', event: 'Auto-populating breach disclosure template with incident data', type: 'ai' },
-    { time: '0:05', event: 'Legal reviewing draft - AI detected blocker: missing breach scope', type: 'blocker' },
-    { time: '0:06', event: 'AI auto-requested missing data from Security team', type: 'ai' },
-    { time: '0:09', event: 'Security provided scope - Legal unblocked', type: 'resolved' },
-    { time: '0:12', event: 'Legal approved disclosure', type: 'approval' },
-    { time: '0:15', event: 'Comms reviewing AI-drafted statement', type: 'progress' },
-    { time: '0:18', event: 'CFO approved budget allocation', type: 'approval' },
-    { time: '0:20', event: 'AI detected: Media inquiry - adjusting timeline', type: 'ai' },
-    { time: '0:27', event: 'CEO final approval on statement', type: 'decision' },
-    { time: '0:28', event: 'Statement published', type: 'complete' },
-    { time: '0:30', event: 'Regulatory notification sent', type: 'complete' },
-    { time: '0:45', event: '45,000 customer emails sent (AI-personalized)', type: 'ai' },
-    { time: '1:30', event: 'All 47 tasks complete', type: 'complete' }
-  ];
 
-  const stats = [
-    { value: '12 min', label: 'Playbook Activation', icon: Clock },
-    { value: '10x', label: 'Faster Execution', icon: Zap, source: 'McKinsey' },
-    { value: '166', label: 'Pre-Staged Playbooks', icon: BookOpen },
-    { value: '98 days', label: 'Saved with AI', icon: Target, source: 'IBM 2024' }
+  const validationQuotes = [
+    {
+      quote: "78% of executives say achieving maximum benefit from agentic AI requires a new operating model.",
+      source: "IBM",
+      report: "Agentic AI Operating Model Report",
+      color: "text-blue-400",
+      borderColor: "border-blue-500/30"
+    },
+    {
+      quote: "70% of AI transformation is people and processes—not technology.",
+      source: "Bain",
+      report: "Technology Report 2025",
+      color: "text-emerald-400",
+      borderColor: "border-emerald-500/30"
+    },
+    {
+      quote: "69% of executives agree: agentic AI requires fundamentally new management approaches.",
+      source: "BCG",
+      report: "Leading in the Age of AI Agents",
+      color: "text-purple-400",
+      borderColor: "border-purple-500/30"
+    },
+    {
+      quote: "Governance must become real-time, data-driven, and embedded.",
+      source: "McKinsey",
+      report: "The Agentic Organization",
+      color: "text-amber-400",
+      borderColor: "border-amber-500/30"
+    },
+    {
+      quote: "Companies that align AI, platforms, and business strategies achieve 2.2x revenue growth.",
+      source: "Accenture",
+      report: "Platform Strategy in the Age of Agentic AI",
+      color: "text-cyan-400",
+      borderColor: "border-cyan-500/30"
+    },
+    {
+      quote: "The limiting factors are now integration and governance, not capability.",
+      source: "Anthropic",
+      report: "State of AI Agents 2026",
+      color: "text-rose-400",
+      borderColor: "border-rose-500/30"
+    },
+    {
+      quote: "The divide is between organizations that treat AI as workflow infrastructure and those that leave it as a side tool.",
+      source: "OpenAI",
+      report: "State of Enterprise AI",
+      color: "text-indigo-400",
+      borderColor: "border-indigo-500/30"
+    }
   ];
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950">
       <StandardNav />
       
-      {/* Hero Section - High-Impact First Impression */}
+      {/* Hero Section - Execution Infrastructure */}
       <section className="relative py-16 md:py-28 px-6 overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
-        {/* Subtle background pattern */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.08),transparent_50%)]" />
         
         <div className="max-w-5xl mx-auto relative z-10">
-          
-          {/* THE HOOK - The Disruption */}
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#D4AF37]/20 to-[#00A8A8]/20 border border-[#D4AF37]/30 mb-8">
               <Sparkles className="h-4 w-4 text-[#D4AF37]" />
-              <span className="text-[#D4AF37] text-sm font-medium">NFL-Grade Execution Methodology for Enterprise</span>
+              <span className="text-[#D4AF37] text-sm font-medium">The Execution Infrastructure Layer</span>
             </div>
             
-            {/* The Category - NFL-Grade Execution */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tight" data-testid="heading-main">
-              NFL-Grade Execution<br />
+              The Execution Infrastructure<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#00A8A8] to-emerald-400">
-                for Enterprise
+                Enterprises Are Missing
               </span>
             </h1>
             
-            {/* The Platform Positioning */}
-            <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-4 leading-relaxed" data-testid="text-insight">
-              <span className="text-[#D4AF37] font-semibold">166 playbooks to start.</span> Customize them. Build your own. 
-              <span className="text-emerald-400 font-semibold">Execute any of them in 12 minutes.</span>
+            <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto mb-4 leading-relaxed" data-testid="text-insight">
+              7 major firms just concluded: organizations aren't failing at AI because of technology—they're failing because they lack <span className="text-white font-semibold">governance, decision rights, and coordination systems</span>. ExecuteIQ provides that infrastructure.
             </p>
-            <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8">
-              The NFL makes 60-80 decisions in 3 hours because of preparation. Fortune 500 companies improvise for 72 hours.
-              <span className="text-white font-semibold"> ExecuteIQ brings that methodology to enterprise.</span>
+            <p className="text-lg text-slate-400 max-w-3xl mx-auto mb-8">
+              <span className="text-[#D4AF37] font-semibold">166 playbooks to start.</span> Customize them. Build your own.
+              Pre-defined governance, clear decision rights, coordinated execution.
+              <span className="text-emerald-400 font-semibold"> In 12 minutes, execution begins—not planning, execution.</span>
             </p>
           </div>
 
-          {/* THE TURN - NFL Methodology */}
-          <div className="bg-gradient-to-r from-slate-800/50 via-slate-800/80 to-slate-800/50 rounded-2xl border border-slate-700/50 p-8 mb-10 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/30 mb-4">
-                <Zap className="h-4 w-4 text-[#D4AF37]" />
-                <span className="text-[#D4AF37] text-sm font-medium">The Methodology That Wins</span>
+          {/* Stats Bar - Research Validation */}
+          <div className="bg-slate-800/50 rounded-2xl p-6 max-w-4xl mx-auto mb-10" data-testid="trust-bar">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div>
+                <div className="text-3xl font-bold text-blue-400">78%</div>
+                <div className="text-sm text-slate-300">of executives say AI requires a new operating model</div>
+                <div className="text-xs text-slate-500 mt-1">IBM 2025</div>
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                Preparation Enables Speed
-              </h2>
-              <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-6">
-                NFL teams build playbooks before the season. Roles are pre-assigned. 
-                When the play is called, <span className="text-white font-semibold">everyone knows their job before the snap</span>. 
-                ExecuteIQ brings this methodology to business—<span className="text-[#D4AF37] font-semibold">166 playbooks</span>, 
-                pre-defined roles, <span className="text-emerald-400 font-medium">12-minute activation</span>.
-              </p>
-              
-              {/* The Outcome - Value Delivered */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4 border-t border-slate-700">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center">
-                    <Clock className="h-6 w-6 text-white" />
-                  </div>
-                  <div className="text-left">
-                    <div className="text-3xl font-bold text-white">12 min</div>
-                    <div className="text-sm text-slate-400">to coordinated response</div>
-                  </div>
-                </div>
-                <div className="hidden sm:block w-px h-12 bg-slate-700" />
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
-                    <BookOpen className="h-6 w-6 text-white" />
-                  </div>
-                  <div className="text-left">
-                    <div className="text-3xl font-bold text-white">166</div>
-                    <div className="text-sm text-slate-400">pre-staged playbooks</div>
-                  </div>
-                </div>
-                <div className="hidden sm:block w-px h-12 bg-slate-700" />
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center">
-                    <Users className="h-6 w-6 text-white" />
-                  </div>
-                  <div className="text-left">
-                    <div className="text-3xl font-bold text-white">Everyone</div>
-                    <div className="text-sm text-slate-400">aligned instantly</div>
-                  </div>
-                </div>
+              <div>
+                <div className="text-3xl font-bold text-emerald-400">70%</div>
+                <div className="text-sm text-slate-300">of AI transformation is people and processes</div>
+                <div className="text-xs text-slate-500 mt-1">Bain 2025</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-purple-400">69%</div>
+                <div className="text-sm text-slate-300">agree AI requires new management approaches</div>
+                <div className="text-xs text-slate-500 mt-1">BCG 2025</div>
               </div>
             </div>
           </div>
 
-          {/* CTA Buttons - Prominent */}
+          {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
             <Button 
               size="lg" 
-              onClick={() => setLocation('/mission-control')}
+              onClick={() => setLocation('/how-it-works')}
               className="text-lg px-10 py-7 bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 shadow-lg shadow-emerald-500/25"
               data-testid="button-try-demo"
             >
               <Play className="mr-2 h-5 w-5" />
-              See the Platform
+              See How It Works
             </Button>
             <Button 
               size="lg" 
@@ -289,465 +259,322 @@ export default function Homepage() {
               Explore Playbooks
             </Button>
           </div>
-
-          {/* Trust Bar - Research Validation */}
-          <div className="bg-slate-800/50 rounded-2xl p-6 max-w-4xl mx-auto" data-testid="trust-bar">
-            <div className="text-center text-slate-400 text-sm mb-4">The Problem is Real — Research-Validated</div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-2xl font-bold text-red-400">70%</div>
-                <div className="text-xs text-slate-400">Strategic initiatives fail</div>
-                <div className="text-xs text-slate-500">Bain & Company 2024</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-amber-400">$2.3T</div>
-                <div className="text-xs text-slate-400">Wasted on failed execution</div>
-                <div className="text-xs text-slate-500">Taylor & Francis 2024</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-emerald-400">10x</div>
-                <div className="text-xs text-slate-400">Faster with effective models</div>
-                <div className="text-xs text-slate-500">McKinsey Research</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-cyan-400">98 days</div>
-                <div className="text-xs text-slate-400">Saved with AI automation</div>
-                <div className="text-xs text-slate-500">IBM 2024</div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* The $20 Billion Proof Point */}
-      <section className="py-20 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800" data-testid="proof-point-section">
+      {/* Problem Section - The Bottleneck Isn't AI */}
+      <section className="py-20 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800" data-testid="problem-section">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30" data-testid="badge-proof-point">
-              The $20 Billion Proof Point
+            <Badge className="mb-4 bg-red-500/20 text-red-600 dark:text-red-400 border-red-500/30" data-testid="badge-problem">
+              The Real Bottleneck
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-              Why Does $20B+ Industry Execute This Way?
+              The Bottleneck Isn't AI. It's Infrastructure.
             </h2>
           </div>
           
           <div className="bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-blue-950/30 rounded-2xl p-8 mb-10">
             <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
-              The NFL is a <span className="font-bold text-[#D4AF37]">$20B+ industry</span>. College football programs are worth hundreds of millions. 
-              Every game, <span className="font-bold text-slate-900 dark:text-white">60-80 critical decisions in 3 hours</span>—wins, revenue, rankings, brand value all on the line.
+              McKinsey, IBM, Bain, BCG, Accenture, Anthropic, and OpenAI all arrived at the same conclusion:
             </p>
-            <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
-              They execute at that speed because of <span className="font-bold text-emerald-600 dark:text-emerald-400">preparation</span>:
+            <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
+              Enterprises have AI tools. What they lack is the <span className="font-bold text-slate-900 dark:text-white">infrastructure to coordinate when strategic moments hit</span>—M&A, crisis, competitive threat, transformation.
             </p>
             
-            <div className="grid md:grid-cols-2 gap-4 mb-8">
-              <div className="flex items-start gap-3 p-4 bg-white dark:bg-slate-800 rounded-lg">
-                <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
-                <span className="text-slate-700 dark:text-slate-300">Playbooks built before the season starts</span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-white dark:bg-slate-800 rounded-lg">
-                <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
-                <span className="text-slate-700 dark:text-slate-300">Decisions triggered by situational awareness</span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-white dark:bg-slate-800 rounded-lg">
-                <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
-                <span className="text-slate-700 dark:text-slate-300">Roles pre-assigned—everyone knows their job</span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-white dark:bg-slate-800 rounded-lg">
-                <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
-                <span className="text-slate-700 dark:text-slate-300">40 seconds to read, call, align, execute</span>
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 mb-8">
+              <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-4 uppercase tracking-wide">Here's what happens without execution infrastructure:</p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-20 shrink-0 text-right">
+                    <span className="text-red-500 font-bold">Hours 1-24</span>
+                  </div>
+                  <span className="text-slate-700 dark:text-slate-300">Figuring out who needs to be involved</span>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-20 shrink-0 text-right">
+                    <span className="text-red-500 font-bold">Hours 24-48</span>
+                  </div>
+                  <span className="text-slate-700 dark:text-slate-300">Getting meetings on calendars</span>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-20 shrink-0 text-right">
+                    <span className="text-red-500 font-bold">Hours 48-72</span>
+                  </div>
+                  <span className="text-slate-700 dark:text-slate-300">Finally in a room, still defining work and ownership</span>
+                </div>
               </div>
             </div>
             
             <div className="border-t border-slate-200 dark:border-slate-700 pt-6">
               <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
-                Fortune 500 companies face the same stakes—<span className="font-bold">M&A worth billions, crises that move markets</span>. 
-                But they improvise every time. <span className="text-red-500 font-bold">72 hours to coordinate</span> what should take minutes.
+                After 72 hours—maybe you have a plan. <span className="text-red-500 font-bold">Execution hasn't started.</span>
               </p>
               <p className="text-xl font-bold text-slate-900 dark:text-white mt-4">
-                The NFL would never operate this way. Neither should your enterprise.
+                The technology works. The operating model doesn't exist. <span className="text-emerald-600 dark:text-emerald-400">Until now.</span>
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Bar */}
-      <section className="py-8 bg-slate-50 dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
+      {/* Solution Section - Three Pillars */}
+      <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900" data-testid="solution-section">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center" data-testid={`stat-${index}`}>
-                <div className="flex items-center justify-center gap-2 mb-1">
-                  <stat.icon className="h-5 w-5 text-slate-500 dark:text-slate-400" />
-                  <span className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">{stat.value}</span>
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30">
+              The Solution
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              ExecuteIQ: The Execution Infrastructure Layer
+            </h2>
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+              ExecuteIQ provides what 7 major firms say is missing: pre-defined governance, clear decision rights, and coordination systems that activate in minutes—not days.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8 mb-10">
+            <Card className="bg-slate-800/50 border-slate-700 hover:border-[#D4AF37]/50 transition-all" data-testid="pillar-governance">
+              <CardContent className="p-8">
+                <div className="w-14 h-14 mb-4 bg-[#D4AF37]/20 rounded-2xl flex items-center justify-center">
+                  <Scale className="h-7 w-7 text-[#D4AF37]" />
                 </div>
-                <span className="text-sm text-slate-600 dark:text-slate-400">{stat.label}</span>
-              </div>
-            ))}
+                <h3 className="text-xl font-bold text-white mb-2">Governance Ready Before the Moment</h3>
+                <p className="text-slate-400 mb-6">
+                  Every playbook includes pre-defined roles, decision rights, and accountability structures. When a situation hits, there's no confusion about who owns what. The governance is built in—real-time, embedded, exactly what McKinsey says enterprises need.
+                </p>
+                <div className="p-3 bg-slate-900/50 rounded-lg border border-[#D4AF37]/20">
+                  <p className="text-sm text-[#D4AF37] italic">
+                    "Governance must become real-time, data-driven, and embedded" — McKinsey
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-slate-800/50 border-slate-700 hover:border-emerald-500/50 transition-all" data-testid="pillar-decisions">
+              <CardContent className="p-8">
+                <div className="w-14 h-14 mb-4 bg-emerald-500/20 rounded-2xl flex items-center justify-center">
+                  <UserCheck className="h-7 w-7 text-emerald-400" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Everyone Knows Their Assignment</h3>
+                <p className="text-slate-400 mb-6">
+                  BCG found 69% of executives agree AI requires fundamentally new management approaches. ExecuteIQ provides them—decision rights mapped before the situation, accountability clear before execution begins. No meetings to define ownership. It's already defined.
+                </p>
+                <div className="p-3 bg-slate-900/50 rounded-lg border border-emerald-500/20">
+                  <p className="text-sm text-emerald-400 italic">
+                    "When AI becomes a teammate, who's accountable?" — BCG
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-slate-800/50 border-slate-700 hover:border-cyan-500/50 transition-all" data-testid="pillar-coordination">
+              <CardContent className="p-8">
+                <div className="w-14 h-14 mb-4 bg-cyan-500/20 rounded-2xl flex items-center justify-center">
+                  <Clock className="h-7 w-7 text-cyan-400" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">12 Minutes to Execution</h3>
+                <p className="text-slate-400 mb-6">
+                  With execution infrastructure in place, coordination happens instantly. Situation triggers playbook. Stakeholders notified. Tasks assigned. Execution begins. Not 72 hours of meetings—12 minutes to action.
+                </p>
+                <div className="p-3 bg-slate-900/50 rounded-lg border border-cyan-500/20">
+                  <p className="text-sm text-cyan-400 italic">
+                    "70% of AI transformation is people and processes" — Bain
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* A Platform, Not a Fixed Product - NEW CRITICAL SECTION */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900" data-testid="platform-section">
+      {/* Platform Section - A Platform, Not a Fixed Product */}
+      <section className="py-20 bg-white dark:bg-slate-950" data-testid="platform-section">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30">
               Platform, Not Product
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
               A Platform, Not a Fixed Product
             </h2>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              ExecuteIQ isn't a rigid system you have to adapt to. It's a platform that adapts to you.
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+              ExecuteIQ isn't a rigid system. It's infrastructure you can adapt.
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 mb-10">
-            {/* Card 1: Start With 166 Playbooks */}
-            <Card className="bg-slate-800/50 border-slate-700 hover:border-[#D4AF37]/50 transition-all" data-testid="platform-card-start">
+            <Card className="border-2 border-slate-200 dark:border-slate-700 hover:border-[#D4AF37]/50 transition-all hover:shadow-xl" data-testid="platform-card-start">
               <CardContent className="p-8">
-                <div className="w-14 h-14 mb-4 bg-[#D4AF37]/20 rounded-2xl flex items-center justify-center">
+                <div className="w-14 h-14 mb-4 bg-[#D4AF37]/10 dark:bg-[#D4AF37]/20 rounded-2xl flex items-center justify-center">
                   <BookOpen className="h-7 w-7 text-[#D4AF37]" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Don't Start From Scratch</h3>
-                <p className="text-slate-400 mb-4">
-                  166 playbooks across 9 strategic domains—market entry, M&A, crisis response, digital transformation, competitive response, product launch, regulatory compliance, AI governance, and more.
-                </p>
-                <p className="text-sm text-slate-500">
-                  Built from 25 years of Fortune 500 execution experience. Ready to run on day one.
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Don't Start From Scratch</h3>
+                <p className="text-slate-600 dark:text-slate-400 mb-4">
+                  166 playbooks across 9 strategic domains—M&A, crisis, competitive response, digital transformation, and more. Built from 25 years of Fortune 500 execution experience. Ready to deploy on day one.
                 </p>
               </CardContent>
             </Card>
             
-            {/* Card 2: Customize Everything */}
-            <Card className="bg-slate-800/50 border-slate-700 hover:border-emerald-500/50 transition-all" data-testid="platform-card-customize">
+            <Card className="border-2 border-slate-200 dark:border-slate-700 hover:border-emerald-500/50 transition-all hover:shadow-xl" data-testid="platform-card-customize">
               <CardContent className="p-8">
-                <div className="w-14 h-14 mb-4 bg-emerald-500/20 rounded-2xl flex items-center justify-center">
-                  <Layers className="h-7 w-7 text-emerald-400" />
+                <div className="w-14 h-14 mb-4 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-2xl flex items-center justify-center">
+                  <Layers className="h-7 w-7 text-emerald-500 dark:text-emerald-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Make Them Yours</h3>
-                <p className="text-slate-400 mb-4">
-                  Every playbook is fully customizable. Adjust roles. Modify task sequences. Change triggers. Add steps. Remove what doesn't fit.
-                </p>
-                <p className="text-sm text-slate-500">
-                  Your organization is unique. Your playbooks should be too.
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Make Them Yours</h3>
+                <p className="text-slate-600 dark:text-slate-400 mb-4">
+                  Every playbook is fully customizable. Adjust roles. Modify sequences. Change triggers. Your organization is unique. Your infrastructure should be too.
                 </p>
               </CardContent>
             </Card>
             
-            {/* Card 3: Build Your Own */}
-            <Card className="bg-slate-800/50 border-slate-700 hover:border-purple-500/50 transition-all" data-testid="platform-card-build">
+            <Card className="border-2 border-slate-200 dark:border-slate-700 hover:border-purple-500/50 transition-all hover:shadow-xl" data-testid="platform-card-build">
               <CardContent className="p-8">
-                <div className="w-14 h-14 mb-4 bg-purple-500/20 rounded-2xl flex items-center justify-center">
-                  <Lightbulb className="h-7 w-7 text-purple-400" />
+                <div className="w-14 h-14 mb-4 bg-purple-500/10 dark:bg-purple-500/20 rounded-2xl flex items-center justify-center">
+                  <Lightbulb className="h-7 w-7 text-purple-500 dark:text-purple-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Create From Scratch</h3>
-                <p className="text-slate-400 mb-4">
-                  See a situation we haven't covered? Build your own playbook from scratch using the same framework.
-                </p>
-                <p className="text-sm text-slate-500">
-                  Your institutional knowledge, encoded into executable playbooks. Ready to activate in 12 minutes.
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Create From Scratch</h3>
+                <p className="text-slate-600 dark:text-slate-400 mb-4">
+                  Face a situation we haven't covered? Build your own playbook. Your institutional knowledge, encoded into executable infrastructure—ready to activate when that situation hits again.
                 </p>
               </CardContent>
             </Card>
           </div>
           
           <div className="text-center">
-            <p className="text-xl font-semibold text-white">
+            <p className="text-xl font-semibold text-slate-900 dark:text-white">
               The playbooks are the accelerant. <span className="text-[#D4AF37]">The platform is the product.</span>
             </p>
           </div>
         </div>
       </section>
 
-      {/* ExecuteIQ at a Glance - Executive Summary */}
-      <section className="py-16 bg-white dark:bg-slate-950" data-testid="executive-summary">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-3">ExecuteIQ at a Glance</h2>
-            <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-              Everything you need to know in 30 seconds
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* What ExecuteIQ Does */}
-            <Card className="border-2 border-slate-200 dark:border-slate-700" data-testid="glance-what">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                  <Target className="h-5 w-5 text-blue-600" />
-                  What ExecuteIQ Does
-                </h3>
-                <ul className="space-y-3 text-slate-700 dark:text-slate-300">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
-                    <span><strong>Monitors</strong> for strategic triggers (market shifts, crises, opportunities)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
-                    <span><strong>Activates</strong> pre-built playbooks when events occur</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
-                    <span><strong>Orchestrates</strong> cross-team response with tasks, budgets, stakeholders</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
-                    <span><strong>Learns</strong> from every execution to improve future responses</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-            
-            {/* Key Metrics */}
-            <Card className="border-2 border-slate-200 dark:border-slate-700" data-testid="glance-metrics">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                  <TrendingUp className="h-5 w-5 text-emerald-600" />
-                  Key Results
-                </h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-lg text-center">
-                    <div className="text-3xl font-bold text-blue-600 mb-1">10x</div>
-                    <div className="text-sm text-slate-600 dark:text-slate-400">Faster Execution</div>
-                  </div>
-                  <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-lg text-center">
-                    <div className="text-3xl font-bold text-emerald-600 mb-1">12 min</div>
-                    <div className="text-sm text-slate-600 dark:text-slate-400">Playbook Activation</div>
-                  </div>
-                  <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-lg text-center">
-                    <div className="text-3xl font-bold text-purple-600 mb-1">166</div>
-                    <div className="text-sm text-slate-600 dark:text-slate-400">Ready Playbooks</div>
-                  </div>
-                  <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-lg text-center">
-                    <div className="text-3xl font-bold text-amber-600 mb-1">98 days</div>
-                    <div className="text-sm text-slate-600 dark:text-slate-400">Saved with AI</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-          
-          {/* Quick Demo CTA */}
-          <div className="mt-8 text-center">
-            <div className="inline-flex items-center gap-4 p-4 bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-900 dark:to-blue-950/50 rounded-xl border border-slate-200 dark:border-slate-700">
-              <span className="text-slate-700 dark:text-slate-300">See it in action:</span>
-              <Button 
-                onClick={() => setLocation('/sandbox')}
-                className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700"
-                data-testid="button-glance-demo"
-              >
-                <Play className="mr-2 h-4 w-4" />
-                Try the Demo
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2025 Business Agility Report Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900" data-testid="bai-report-section">
-        <div className="max-w-6xl mx-auto px-6">
+      {/* Value Section - The Cost of Missing Infrastructure */}
+      <section className="py-20 px-6 bg-gradient-to-br from-slate-900 via-red-950/30 to-slate-900" data-testid="cost-section">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-amber-500/20 text-amber-400 border-amber-500/30" data-testid="badge-bai-report">
-              2025 Business Agility Report
+            <Badge className="mb-4 bg-red-500/20 text-red-400 border-red-500/30" data-testid="badge-cost">
+              The Stakes Are Real
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              The Industry Is Moving Slowly.
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">
-                You Don't Have To.
-              </span>
+              The Cost of Missing Infrastructure
             </h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              Data from 244 organizations reveals the gap between agile leaders and laggards.
+              The 72-hour gap has a real price tag:
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {/* Time to Improve */}
-            <Card className="bg-slate-800/50 border-slate-700 text-center" data-testid="bai-stat-time">
-              <CardContent className="p-8">
-                <div className="text-5xl font-bold text-red-400 mb-2">3.8 Years</div>
-                <p className="text-slate-400 mb-4">Industry average to see just 10% agility improvement</p>
-                <div className="border-t border-slate-700 pt-4 mt-4">
-                  <div className="text-2xl font-bold text-emerald-400">Quarters</div>
-                  <p className="text-sm text-slate-500">With ExecuteIQ</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <Card className="bg-slate-800/50 border-red-500/30 hover:border-red-500/60 transition-all" data-testid="cost-ransomware">
+              <CardContent className="p-6 text-center">
+                <div className="w-12 h-12 mx-auto mb-4 bg-red-500/20 rounded-xl flex items-center justify-center">
+                  <Shield className="h-6 w-6 text-red-400" />
                 </div>
+                <h3 className="text-lg font-bold text-white mb-2">Ransomware Response</h3>
+                <div className="text-3xl font-bold text-red-400 mb-2">$136K/hr</div>
+                <p className="text-sm text-slate-400">of delayed response (IBM)</p>
+                <p className="text-xs text-slate-500 mt-2">72 hours = $9.8M exposure</p>
               </CardContent>
             </Card>
             
-            {/* Revenue Growth */}
-            <Card className="bg-slate-800/50 border-slate-700 text-center" data-testid="bai-stat-revenue">
-              <CardContent className="p-8">
-                <div className="text-5xl font-bold text-emerald-400 mb-2">10.3%</div>
-                <p className="text-slate-400 mb-4">Revenue per employee growth for organizations that improved</p>
-                <div className="border-t border-slate-700 pt-4 mt-4">
-                  <div className="text-2xl font-bold text-red-400">3.5%</div>
-                  <p className="text-sm text-slate-500">Those that didn't improve</p>
+            <Card className="bg-slate-800/50 border-amber-500/30 hover:border-amber-500/60 transition-all" data-testid="cost-ma">
+              <CardContent className="p-6 text-center">
+                <div className="w-12 h-12 mx-auto mb-4 bg-amber-500/20 rounded-xl flex items-center justify-center">
+                  <Briefcase className="h-6 w-6 text-amber-400" />
                 </div>
+                <h3 className="text-lg font-bold text-white mb-2">M&A Integration Delay</h3>
+                <div className="text-3xl font-bold text-amber-400 mb-2">$5-50M</div>
+                <p className="text-sm text-slate-400">in synergy erosion</p>
+                <p className="text-xs text-slate-500 mt-2">Every day of delay compounds</p>
               </CardContent>
             </Card>
             
-            {/* Governance Gap */}
-            <Card className="bg-slate-800/50 border-slate-700 text-center" data-testid="bai-stat-governance">
-              <CardContent className="p-8">
-                <div className="text-5xl font-bold text-amber-400 mb-2">22%</div>
-                <p className="text-slate-400 mb-4">Have governance that actually supports speed</p>
-                <div className="border-t border-slate-700 pt-4 mt-4">
-                  <div className="text-2xl font-bold text-emerald-400">100%</div>
-                  <p className="text-sm text-slate-500">ExecuteIQ embeds governance into execution</p>
+            <Card className="bg-slate-800/50 border-purple-500/30 hover:border-purple-500/60 transition-all" data-testid="cost-crisis">
+              <CardContent className="p-6 text-center">
+                <div className="w-12 h-12 mx-auto mb-4 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                  <AlertTriangle className="h-6 w-6 text-purple-400" />
                 </div>
+                <h3 className="text-lg font-bold text-white mb-2">Crisis Response Delay</h3>
+                <div className="text-3xl font-bold text-purple-400 mb-2">24 hrs</div>
+                <p className="text-sm text-slate-400">Reputational damage spreads hourly</p>
+                <p className="text-xs text-slate-500 mt-2">Market cap impact within 24 hours</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-slate-800/50 border-blue-500/30 hover:border-blue-500/60 transition-all" data-testid="cost-competitive">
+              <CardContent className="p-6 text-center">
+                <div className="w-12 h-12 mx-auto mb-4 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                  <Target className="h-6 w-6 text-blue-400" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">Competitive Response</h3>
+                <div className="text-3xl font-bold text-blue-400 mb-2">Lost</div>
+                <p className="text-sm text-slate-400">Market share</p>
+                <p className="text-xs text-slate-500 mt-2">Often unrecoverable</p>
               </CardContent>
             </Card>
           </div>
           
-          <Card className="bg-gradient-to-r from-amber-900/30 to-orange-900/30 border-amber-500/30" data-testid="bai-insight-card">
-            <CardContent className="p-8 text-center">
-              <p className="text-2xl font-bold text-white mb-4">
-                "Pressure exposes cracks in the system."
-              </p>
-              <p className="text-lg text-slate-300 mb-6">
-                The question isn't "how do we avoid pressure?" It's "how do we build systems that perform UNDER pressure?"
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Button 
-                  onClick={() => setLocation('/agility-assessment')}
-                  className="bg-amber-600 hover:bg-amber-700 text-white"
-                  data-testid="button-take-assessment"
-                >
-                  <Target className="mr-2 h-4 w-4" />
-                  Take the Agility Assessment
-                </Button>
-                <Button 
-                  onClick={() => setLocation('/roi-calculator')}
-                  variant="outline"
-                  className="border-amber-500/50 text-amber-400 hover:bg-amber-500/10"
-                  data-testid="button-calculate-roi"
-                >
-                  <TrendingUp className="mr-2 h-4 w-4" />
-                  Calculate Your ROI
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          <div className="text-center bg-gradient-to-r from-emerald-900/30 to-cyan-900/30 rounded-2xl p-8 border border-emerald-500/30">
+            <p className="text-xl text-white mb-2">
+              <span className="font-bold text-emerald-400">ExecuteIQ at $250K-$750K/year</span> vs. one incident costing <span className="font-bold text-red-400">$5-50M</span>.
+            </p>
+            <p className="text-lg text-slate-300">
+              Payback on first use.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Survival Question Section */}
-      <section className="py-20 bg-slate-900 dark:bg-black text-white" data-testid="survival-section">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            
-            <h2 className="text-4xl font-bold mb-6" data-testid="heading-survival">
-              The Question Isn't "Do We Need This?"
+      {/* Validation Section - What 7 Major Firms Are Saying */}
+      <section className="py-20 bg-white dark:bg-slate-950" data-testid="validation-section">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-blue-500/20 text-blue-600 dark:text-blue-400 border-blue-500/30">
+              Industry Consensus
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              What 7 Major Firms Are Saying
             </h2>
-            <p className="text-3xl font-bold text-red-400 mb-8">
-              The Question Is "Can We Survive Without It?"
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+            {validationQuotes.map((item, index) => (
+              <Card key={index} className={`border ${item.borderColor} bg-slate-50 dark:bg-slate-900/50 hover:shadow-lg transition-all`} data-testid={`validation-quote-${index}`}>
+                <CardContent className="p-6">
+                  <Quote className={`h-6 w-6 ${item.color} mb-3 opacity-60`} />
+                  <p className="text-slate-700 dark:text-slate-300 mb-4 italic leading-relaxed">
+                    "{item.quote}"
+                  </p>
+                  <div className="pt-3 border-t border-slate-200 dark:border-slate-700">
+                    <p className={`font-bold ${item.color}`}>{item.source}</p>
+                    <p className="text-xs text-slate-500">{item.report}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          
+          <div className="text-center">
+            <p className="text-xl font-semibold text-slate-900 dark:text-white">
+              They're all describing what ExecuteIQ provides.
             </p>
-            
-            <div className="grid md:grid-cols-2 gap-8 mb-12 text-left">
-              
-              {/* Without */}
-              <div className="p-6 bg-red-950/30 border-2 border-red-800 rounded-lg" data-testid="without-m">
-                <h3 className="text-xl font-bold text-red-400 mb-4">
-                  Without ExecuteIQ
-                </h3>
-                <ul className="space-y-3 text-slate-300">
-                  <li className="flex items-start gap-2">
-                    <AlertTriangle className="h-5 w-5 text-red-500 shrink-0 mt-0.5" />
-                    <span>Markets shift while you align stakeholders (6 weeks)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <AlertTriangle className="h-5 w-5 text-red-500 shrink-0 mt-0.5" />
-                    <span>Crises spread while you coordinate response (17 days)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <AlertTriangle className="h-5 w-5 text-red-500 shrink-0 mt-0.5" />
-                    <span>Competitors capture opportunities while you schedule meetings</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <AlertTriangle className="h-5 w-5 text-red-500 shrink-0 mt-0.5" />
-                    <span>Innovation stalls in coordination hell (9 months)</span>
-                  </li>
-                </ul>
-              </div>
-              
-              {/* With */}
-              <div className="p-6 bg-emerald-950/30 border-2 border-emerald-800 rounded-lg" data-testid="with-m">
-                <h3 className="text-xl font-bold text-emerald-400 mb-4">
-                  With ExecuteIQ
-                </h3>
-                <ul className="space-y-3 text-slate-300">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
-                    <span>Execute market moves in 1 week (pre-staged playbooks)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
-                    <span>Resolve crises in 90 minutes (automated coordination)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
-                    <span>Capture opportunities before competitors see them</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
-                    <span>Deploy innovation in 6 weeks (coordinated rollout)</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="p-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl" data-testid="survival-cta">
-              <p className="text-2xl font-bold mb-4">
-                The answer gets clearer every day the world moves faster
-                <br />
-                and your organization still coordinates at the speed of meetings.
-              </p>
-              <Button 
-                size="lg" 
-                onClick={() => setLocation('/how-it-works')}
-                className="text-lg px-8 py-4 bg-white text-slate-900 hover:bg-slate-100"
-                data-testid="button-adaptation-proof-2"
-              >
-                Make Your Organization Adaptation-Proof
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* 4-Phase Navigation Grid */}
+      {/* IDEA Framework Section */}
       <section className="py-20 px-6 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-600" data-testid="badge-methodology">
-              The Methodology
+              The IDEA Framework™
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-phases">
-              The IDEA Framework™
+              From Situation to Execution in 12 Minutes
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
-              The preparation mindset of elite teams, systematized for enterprise execution.
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+              Execution infrastructure works because it's ready before the moment arrives.
             </p>
-            <div className="inline-block p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl mb-6">
-              <p className="text-lg font-semibold text-slate-900 dark:text-white italic">
-                "Comfortable and confident that we are prepared to execute. No matter the situation."
-              </p>
-            </div>
-            <div className="flex items-center justify-center gap-2 text-xl font-bold">
-              <span className="text-violet-600 dark:text-violet-400">I</span>
-              <span className="text-slate-400">·</span>
-              <span className="text-blue-600 dark:text-blue-400">D</span>
-              <span className="text-slate-400">·</span>
-              <span className="text-emerald-600 dark:text-emerald-400">E</span>
-              <span className="text-slate-400">·</span>
-              <span className="text-amber-600 dark:text-amber-400">A</span>
-            </div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -798,767 +625,204 @@ export default function Homepage() {
               </Card>
             ))}
           </div>
-          
-          {/* IDEA Tagline */}
-          <div className="mt-12 text-center">
-            <Card className="inline-block p-6 md:p-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/50 dark:to-purple-950/50 border-2 border-blue-300 dark:border-blue-700">
-              <p className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-2" data-testid="idea-tagline">
-                That's the <span className="bg-gradient-to-r from-violet-600 via-emerald-500 to-amber-500 bg-clip-text text-transparent">IDEA</span>.
-              </p>
-              <p className="text-lg text-slate-600 dark:text-slate-400">
-                Prepare with precision. Execute with confidence.
-              </p>
-            </Card>
-          </div>
         </div>
       </section>
 
-      {/* Offense / Defense / Special Teams */}
-      <section className="py-20 px-6 bg-slate-900 dark:bg-slate-950">
+      {/* Founder Story Section */}
+      <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900" data-testid="founder-section">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <Badge className="mb-4 bg-amber-500/20 text-amber-400 border-amber-500/30">
+              The Founder
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Built by Someone Who's Lived Both Worlds
+            </h2>
+          </div>
+          
+          <Card className="bg-slate-800/50 border-slate-700">
+            <CardContent className="p-8 md:p-10">
+              <p className="text-lg text-slate-300 leading-relaxed mb-6">
+                I coached college football for 5 years. Every game, 60-80 plays. Every 40 seconds—read the situation, call the play, execute. The speed comes from preparation. Playbooks built before the season. Everyone knows their assignment before the moment.
+              </p>
+              <p className="text-lg text-slate-300 leading-relaxed mb-6">
+                Then I spent 20 years inside Fortune 500 companies—Ford, Toyota, Lockheed Martin, Eli Lilly, Boyd Gaming, Churchill Downs. Same caliber of people. No playbooks. Every strategic moment handled ad-hoc.
+              </p>
+              <p className="text-lg text-slate-300 leading-relaxed mb-6">
+                I watched the same pattern every time: <span className="text-red-400 font-medium">72 hours getting meetings on calendars, still defining who owns what.</span> After 72 hours—maybe a plan. Execution hasn't started.
+              </p>
+              <p className="text-lg text-white font-semibold mb-6">
+                7 major firms just said execution infrastructure is the bottleneck for AI. I built the infrastructure I wish I'd had.
+              </p>
+              
+              <div className="flex items-center gap-4 pt-6 border-t border-slate-700">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white text-xl font-bold">
+                  MB
+                </div>
+                <div>
+                  <p className="font-bold text-white text-lg">Marty Brunke</p>
+                  <p className="text-amber-400 text-sm">Founder & CEO</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* 9 Strategic Domains */}
+      <section className="py-20 px-6 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-slate-700 text-slate-300 border-slate-600" data-testid="badge-coverage">
+            <Badge className="mb-4 bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-600" data-testid="badge-coverage">
               Complete Coverage
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4" data-testid="heading-coverage">
-              Offense. Defense. Special Teams.
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-coverage">
+              9 Strategic Domains. 166 Playbooks.
             </h2>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              Great football programs are prepared for every situation before the game starts. 
-              ExecuteIQ brings this same complete preparedness to business leadership.
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+              Pre-defined governance, clear decision rights, and coordination pre-built for every strategic scenario your organization will face.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Offense */}
-            <Card className="bg-gradient-to-br from-emerald-900/50 to-emerald-800/30 border-emerald-700/50 hover:border-emerald-500/50 transition-all" data-testid="card-offense">
+            <Card className="bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-900/30 dark:to-emerald-800/20 border-emerald-200 dark:border-emerald-700/50 hover:shadow-xl transition-all" data-testid="card-offense">
               <CardContent className="p-8">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center">
-                    <ArrowRight className="h-6 w-6 text-emerald-400" />
+                    <ArrowRight className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">Offense</h3>
-                    <p className="text-sm text-emerald-400">Seize Opportunities</p>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">Offense</h3>
+                    <p className="text-sm text-emerald-600 dark:text-emerald-400">Seize Opportunities</p>
                   </div>
                 </div>
-                <p className="text-slate-300 mb-6">
-                  M&A targets, market expansion, competitive moves—playbooks ready to capitalize.
-                </p>
                 <div className="space-y-2 mb-6">
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-400">Market Entry & Expansion</span>
-                    <span className="text-emerald-400 font-medium">22</span>
+                    <span className="text-slate-600 dark:text-slate-400">Market Entry & Expansion</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-medium">22</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-400">M&A Integration</span>
-                    <span className="text-emerald-400 font-medium">16</span>
+                    <span className="text-slate-600 dark:text-slate-400">M&A Integration</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-medium">16</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-400">Product Launch</span>
-                    <span className="text-emerald-400 font-medium">20</span>
+                    <span className="text-slate-600 dark:text-slate-400">Product Launch</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-medium">20</span>
                   </div>
                 </div>
-                <div className="pt-4 border-t border-emerald-700/50">
-                  <p className="text-2xl font-bold text-emerald-400">58 <span className="text-sm font-normal text-slate-400">playbooks</span></p>
+                <div className="pt-4 border-t border-emerald-200 dark:border-emerald-700/50">
+                  <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">58 <span className="text-sm font-normal text-slate-500 dark:text-slate-400">playbooks</span></p>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Defense */}
-            <Card className="bg-gradient-to-br from-blue-900/50 to-blue-800/30 border-blue-700/50 hover:border-blue-500/50 transition-all" data-testid="card-defense">
+            <Card className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/20 border-blue-200 dark:border-blue-700/50 hover:shadow-xl transition-all" data-testid="card-defense">
               <CardContent className="p-8">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
-                    <Shield className="h-6 w-6 text-blue-400" />
+                    <Shield className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">Defense</h3>
-                    <p className="text-sm text-blue-400">Protect Value</p>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">Defense</h3>
+                    <p className="text-sm text-blue-600 dark:text-blue-400">Protect Value</p>
                   </div>
                 </div>
-                <p className="text-slate-300 mb-6">
-                  Regulatory changes, supply chain disruptions, cyber incidents—responses pre-staged.
-                </p>
                 <div className="space-y-2 mb-6">
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-400">Crisis Response</span>
-                    <span className="text-blue-400 font-medium">24</span>
+                    <span className="text-slate-600 dark:text-slate-400">Crisis Response</span>
+                    <span className="text-blue-600 dark:text-blue-400 font-medium">24</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-400">Cyber Incidents</span>
-                    <span className="text-blue-400 font-medium">18</span>
+                    <span className="text-slate-600 dark:text-slate-400">Cyber Incidents</span>
+                    <span className="text-blue-600 dark:text-blue-400 font-medium">18</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-400">Regulatory Compliance</span>
-                    <span className="text-blue-400 font-medium">14</span>
+                    <span className="text-slate-600 dark:text-slate-400">Regulatory Compliance</span>
+                    <span className="text-blue-600 dark:text-blue-400 font-medium">14</span>
                   </div>
                 </div>
-                <div className="pt-4 border-t border-blue-700/50">
-                  <p className="text-2xl font-bold text-blue-400">56 <span className="text-sm font-normal text-slate-400">playbooks</span></p>
+                <div className="pt-4 border-t border-blue-200 dark:border-blue-700/50">
+                  <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">56 <span className="text-sm font-normal text-slate-500 dark:text-slate-400">playbooks</span></p>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Special Teams */}
-            <Card className="bg-gradient-to-br from-purple-900/50 to-purple-800/30 border-purple-700/50 hover:border-purple-500/50 transition-all" data-testid="card-special-teams">
+            <Card className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/20 border-purple-200 dark:border-purple-700/50 hover:shadow-xl transition-all" data-testid="card-special-teams">
               <CardContent className="p-8">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
-                    <Zap className="h-6 w-6 text-purple-400" />
+                    <Zap className="h-6 w-6 text-purple-600 dark:text-purple-400" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">Special Teams</h3>
-                    <p className="text-sm text-purple-400">Change the Game</p>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">Special Teams</h3>
+                    <p className="text-sm text-purple-600 dark:text-purple-400">Change the Game</p>
                   </div>
                 </div>
-                <p className="text-slate-300 mb-6">
-                  AI governance, ESG mandates, workforce transformation—emerging plays ready.
-                </p>
                 <div className="space-y-2 mb-6">
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-400">Digital Transformation</span>
-                    <span className="text-purple-400 font-medium">16</span>
+                    <span className="text-slate-600 dark:text-slate-400">Digital Transformation</span>
+                    <span className="text-purple-600 dark:text-purple-400 font-medium">20</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-400">Competitive Response</span>
-                    <span className="text-purple-400 font-medium">18</span>
+                    <span className="text-slate-600 dark:text-slate-400">Competitive Response</span>
+                    <span className="text-purple-600 dark:text-purple-400 font-medium">14</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-400">AI Governance</span>
-                    <span className="text-purple-400 font-medium">18</span>
+                    <span className="text-slate-600 dark:text-slate-400">AI Governance</span>
+                    <span className="text-purple-600 dark:text-purple-400 font-medium">18</span>
                   </div>
                 </div>
-                <div className="pt-4 border-t border-purple-700/50">
-                  <p className="text-2xl font-bold text-purple-400">52 <span className="text-sm font-normal text-slate-400">playbooks</span></p>
+                <div className="pt-4 border-t border-purple-200 dark:border-purple-700/50">
+                  <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">52 <span className="text-sm font-normal text-slate-500 dark:text-slate-400">playbooks</span></p>
                 </div>
               </CardContent>
             </Card>
           </div>
-
-          <div className="mt-12 text-center">
-            <p className="text-lg text-slate-400">
-              No matter the situation, executives using ExecuteIQ are prepared to execute 
-              <span className="text-white font-semibold"> swiftly, efficiently, and effectively.</span>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Full Execution Timeline Demo */}
-      <section className="py-20 px-6 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-blue-950/30" data-testid="execution-timeline-demo">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 border-emerald-300 dark:border-emerald-700" data-testid="badge-demo">
-              Full Execution Demo
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-timeline">
-              Data Breach Response: Complete in 90 Minutes
-            </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-              Coordination starts in 12 minutes. Full execution of 47 tasks across 12 stakeholders completes in 90 minutes. Industry average: 17 days.
-            </p>
-          </div>
           
-          <Card className="p-6 bg-slate-900 dark:bg-black border-2 border-slate-700" data-testid="timeline-container">
-            <div className="flex justify-between items-center mb-6 text-sm text-slate-400">
-              <span>AI COORDINATION LOG</span>
-              <div className="flex gap-4">
-                <span className="flex items-center gap-1"><span className="w-2 h-2 bg-purple-500 rounded-full"></span> AI Action</span>
-                <span className="flex items-center gap-1"><span className="w-2 h-2 bg-blue-500 rounded-full"></span> Human Decision</span>
-                <span className="flex items-center gap-1"><span className="w-2 h-2 bg-emerald-500 rounded-full"></span> Completed</span>
-              </div>
-            </div>
-            
-            <div className="space-y-2 max-h-96 overflow-y-auto pr-2">
-              {executionTimeline.map((item, index) => (
-                <div 
-                  key={index} 
-                  className={`flex items-start gap-4 p-3 rounded-lg transition-all ${
-                    item.type === 'ai' ? 'bg-purple-900/30 border-l-4 border-purple-500' :
-                    item.type === 'decision' ? 'bg-blue-900/30 border-l-4 border-blue-500' :
-                    item.type === 'blocker' ? 'bg-red-900/30 border-l-4 border-red-500' :
-                    item.type === 'resolved' ? 'bg-amber-900/30 border-l-4 border-amber-500' :
-                    item.type === 'approval' ? 'bg-cyan-900/30 border-l-4 border-cyan-500' :
-                    item.type === 'complete' ? 'bg-emerald-900/30 border-l-4 border-emerald-500' :
-                    'bg-slate-800/50 border-l-4 border-slate-600'
-                  }`}
-                  data-testid={`timeline-item-${index}`}
-                >
-                  <span className="text-slate-400 font-mono text-sm min-w-[45px]">[{item.time}]</span>
-                  <span className={`text-sm ${
-                    item.type === 'ai' ? 'text-purple-300' :
-                    item.type === 'decision' ? 'text-blue-300' :
-                    item.type === 'blocker' ? 'text-red-300' :
-                    item.type === 'resolved' ? 'text-amber-300' :
-                    item.type === 'approval' ? 'text-cyan-300' :
-                    item.type === 'complete' ? 'text-emerald-300' :
-                    'text-slate-300'
-                  }`}>
-                    {item.event}
-                  </span>
-                </div>
-              ))}
-            </div>
-            
-            <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-slate-700">
-              <div className="text-center">
-                <p className="text-3xl font-bold text-emerald-400">90 min</p>
-                <p className="text-sm text-slate-400">Total Time</p>
-              </div>
-              <div className="text-center">
-                <p className="text-3xl font-bold text-blue-400">8</p>
-                <p className="text-sm text-slate-400">Human Decisions</p>
-              </div>
-              <div className="text-center">
-                <p className="text-3xl font-bold text-purple-400">12</p>
-                <p className="text-sm text-slate-400">AI Blockers Resolved</p>
-              </div>
-            </div>
-          </Card>
-          
-          <div className="mt-8 text-center">
-            <p className="text-lg text-slate-600 dark:text-slate-400 mb-4">
-              <span className="font-bold text-slate-900 dark:text-white">Decision in 12 minutes. Full execution in 90 minutes.</span> Industry average: 17 days.
-            </p>
+          <div className="mt-10 text-center">
             <Button 
               size="lg"
-              onClick={() => setLocation('/executive-simulation')}
-              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
-              data-testid="button-try-simulation"
+              onClick={() => setLocation('/playbook-library')}
+              className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-lg px-8 py-6"
             >
-              Try the Full Simulation
+              <BookOpen className="mr-2 h-5 w-5" />
+              Explore All 166 Playbooks
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Three Corporate AI Angles */}
-      <section className="py-20 px-6 bg-white dark:bg-slate-950" data-testid="corporate-ai-angles">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 border-blue-300 dark:border-blue-700" data-testid="badge-ai-angles">
-              AI-Era Positioning
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-ai-angles">
-              Three Angles for the AI-Hungry Enterprise
-            </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-              Every Fortune 500 is deploying AI. Here's why ExecuteIQ is the missing piece.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* AI Governance Angle */}
-            <Card className="border-2 border-purple-200 dark:border-purple-800 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-950/30 dark:to-indigo-950/30 hover:shadow-xl transition-all" data-testid="angle-governance">
-              <CardContent className="p-6">
-                <div className="w-14 h-14 mb-4 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center">
-                  <Shield className="h-7 w-7 text-purple-600 dark:text-purple-400" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">AI Governance</h3>
-                <p className="text-sm text-purple-600 dark:text-purple-400 font-semibold mb-4">18 Pre-Built Playbooks</p>
-                <p className="text-slate-600 dark:text-slate-400 mb-6">
-                  Every company is deploying AI. None have governance frameworks that can keep pace.
-                </p>
-                <div className="space-y-3 mb-6">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-slate-600 dark:text-slate-400">Model deployment approval</span>
-                    <span className="font-medium text-purple-600 dark:text-purple-400">6 weeks → 3 days</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-slate-600 dark:text-slate-400">Bias incident response</span>
-                    <span className="font-medium text-purple-600 dark:text-purple-400">2 weeks → 90 min</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-slate-600 dark:text-slate-400">Vendor risk assessment</span>
-                    <span className="font-medium text-purple-600 dark:text-purple-400">2 months → 5 days</span>
-                  </div>
-                </div>
-                <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                  Your AI governance moves at the speed your AI team does.
-                </p>
-              </CardContent>
-            </Card>
-            
-            {/* AI Productivity Gap Angle */}
-            <Card className="border-2 border-blue-200 dark:border-blue-800 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 hover:shadow-xl transition-all" data-testid="angle-productivity">
-              <CardContent className="p-6">
-                <div className="w-14 h-14 mb-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center">
-                  <TrendingUp className="h-7 w-7 text-blue-600 dark:text-blue-400" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">AI Productivity Gap</h3>
-                <p className="text-sm text-blue-600 dark:text-blue-400 font-semibold mb-4">Unlock Your AI Investment</p>
-                <p className="text-slate-600 dark:text-slate-400 mb-6">
-                  You spent $5M on Copilot licenses. Your employees are 10X more productive. But strategic execution is still slow.
-                </p>
-                <div className="p-4 bg-white dark:bg-slate-900 rounded-lg mb-6">
-                  <p className="text-sm text-slate-500 dark:text-slate-400 mb-2">The Missing Piece</p>
-                  <p className="font-medium text-slate-900 dark:text-white">
-                    Individual AI speed → Organizational AI speed
-                  </p>
-                </div>
-                <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                  ExecuteIQ is the coordination layer that makes your AI investment pay off.
-                </p>
-              </CardContent>
-            </Card>
-            
-            {/* AI-Native Operations Angle */}
-            <Card className="border-2 border-emerald-200 dark:border-emerald-800 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 hover:shadow-xl transition-all" data-testid="angle-native">
-              <CardContent className="p-6">
-                <div className="w-14 h-14 mb-4 bg-emerald-100 dark:bg-emerald-900/30 rounded-2xl flex items-center justify-center">
-                  <Brain className="h-7 w-7 text-emerald-600 dark:text-emerald-400" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">AI-Native Operations</h3>
-                <p className="text-sm text-emerald-600 dark:text-emerald-400 font-semibold mb-4">Operate at Machine Speed</p>
-                <p className="text-slate-600 dark:text-slate-400 mb-6">
-                  AI-native companies don't just use AI for tasks. They use AI for coordination. That's why they move 10X faster.
-                </p>
-                <div className="space-y-2 mb-6">
-                  <div className="flex items-center gap-2 text-sm">
-                    <CheckCircle className="h-4 w-4 text-emerald-500" />
-                    <span className="text-slate-700 dark:text-slate-300">Pre-staged playbooks</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <CheckCircle className="h-4 w-4 text-emerald-500" />
-                    <span className="text-slate-700 dark:text-slate-300">AI-powered coordination</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <CheckCircle className="h-4 w-4 text-emerald-500" />
-                    <span className="text-slate-700 dark:text-slate-300">Execution at machine speed</span>
-                  </div>
-                </div>
-                <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                  ExecuteIQ makes you AI-native—where AI doesn't just assist, it orchestrates.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* The Cost of Not Having a Playbook - Value Section */}
-      <section className="py-20 px-6 bg-gradient-to-br from-slate-900 via-red-950/30 to-slate-900" data-testid="cost-section">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-red-500/20 text-red-400 border-red-500/30" data-testid="badge-cost">
-              The Stakes Are Real
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              The Cost of Not Having a Playbook
-            </h2>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              Every strategic moment without a playbook costs you:
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <Card className="bg-slate-800/50 border-red-500/30 hover:border-red-500/60 transition-all" data-testid="cost-ransomware">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 mx-auto mb-4 bg-red-500/20 rounded-xl flex items-center justify-center">
-                  <Shield className="h-6 w-6 text-red-400" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Ransomware Attack</h3>
-                <div className="text-3xl font-bold text-red-400 mb-2">$136K/hr</div>
-                <p className="text-sm text-slate-400">Delayed response cost</p>
-                <p className="text-xs text-slate-500 mt-2">72 hours = $9.8M exposure</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-slate-800/50 border-amber-500/30 hover:border-amber-500/60 transition-all" data-testid="cost-ma">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 mx-auto mb-4 bg-amber-500/20 rounded-xl flex items-center justify-center">
-                  <Briefcase className="h-6 w-6 text-amber-400" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">M&A Integration Delay</h3>
-                <div className="text-3xl font-bold text-amber-400 mb-2">$5-50M</div>
-                <p className="text-sm text-slate-400">Synergy erosion</p>
-                <p className="text-xs text-slate-500 mt-2">Every day of delay compounds</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-slate-800/50 border-purple-500/30 hover:border-purple-500/60 transition-all" data-testid="cost-crisis">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 mx-auto mb-4 bg-purple-500/20 rounded-xl flex items-center justify-center">
-                  <AlertTriangle className="h-6 w-6 text-purple-400" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Crisis Response Delay</h3>
-                <div className="text-3xl font-bold text-purple-400 mb-2">24 hrs</div>
-                <p className="text-sm text-slate-400">To market cap impact</p>
-                <p className="text-xs text-slate-500 mt-2">Reputational damage spreads hourly</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-slate-800/50 border-blue-500/30 hover:border-blue-500/60 transition-all" data-testid="cost-competitive">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 mx-auto mb-4 bg-blue-500/20 rounded-xl flex items-center justify-center">
-                  <Target className="h-6 w-6 text-blue-400" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Competitive Response</h3>
-                <div className="text-3xl font-bold text-blue-400 mb-2">Lost</div>
-                <p className="text-sm text-slate-400">Market share</p>
-                <p className="text-xs text-slate-500 mt-2">Often unrecoverable</p>
-              </CardContent>
-            </Card>
-          </div>
-          
-          <div className="text-center bg-gradient-to-r from-emerald-900/30 to-cyan-900/30 rounded-2xl p-8 border border-emerald-500/30">
-            <p className="text-xl text-white mb-4">
-              <span className="font-bold text-emerald-400">ExecuteIQ at $250K-$750K/year</span> vs. one delayed response costing <span className="font-bold text-red-400">$5-50M</span>.
-            </p>
-            <p className="text-slate-400">
-              And unlike consultants who leave after the engagement, <span className="text-white font-medium">your playbooks stay. They get better. They're ready for next time.</span>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Value Proposition - The Solution */}
-      <section className="py-20 px-6 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
-        <div className="max-w-5xl mx-auto text-center">
-          <Badge className="mb-4 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800" data-testid="badge-solution">
-            Platform vs Consultants
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-value">
-            The Platform, Not Consulting
-          </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-8">
-            Your playbooks, executed in 12 minutes. Out of the box or fully custom—the system coordinates either way.
-          </p>
-          
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 mb-12 shadow-lg">
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="text-left">
-                <h3 className="text-lg font-bold text-slate-500 dark:text-slate-400 mb-4">Consultants Design</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3 text-slate-600 dark:text-slate-300">
-                    <X className="w-5 h-5 mt-0.5 text-red-500 flex-shrink-0" />
-                    They leave after the engagement
-                  </li>
-                  <li className="flex items-start gap-3 text-slate-600 dark:text-slate-300">
-                    <X className="w-5 h-5 mt-0.5 text-red-500 flex-shrink-0" />
-                    Fingerprint on paper
-                  </li>
-                  <li className="flex items-start gap-3 text-slate-600 dark:text-slate-300">
-                    <X className="w-5 h-5 mt-0.5 text-red-500 flex-shrink-0" />
-                    "Here's what to build"
-                  </li>
-                </ul>
-              </div>
-              <div className="text-left">
-                <h3 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-4">ExecuteIQ Stays</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3 text-slate-700 dark:text-slate-200">
-                    <CheckCircle className="w-5 h-5 mt-0.5 text-emerald-500 flex-shrink-0" />
-                    166 playbooks to start, unlimited to build
-                  </li>
-                  <li className="flex items-start gap-3 text-slate-700 dark:text-slate-200">
-                    <CheckCircle className="w-5 h-5 mt-0.5 text-emerald-500 flex-shrink-0" />
-                    Gets smarter every execution
-                  </li>
-                  <li className="flex items-start gap-3 text-slate-700 dark:text-slate-200">
-                    <CheckCircle className="w-5 h-5 mt-0.5 text-emerald-500 flex-shrink-0" />
-                    Ready for next time
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <p className="mt-8 text-lg font-medium text-slate-700 dark:text-slate-300">
-              The playbooks are the accelerant. <span className="text-emerald-600 dark:text-emerald-400 font-bold">The platform is the product.</span>
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center" data-testid="value-speed">
-              <div className="w-16 h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center">
-                <Zap className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">72 Hours → 12 Minutes</h3>
-              <p className="text-slate-600 dark:text-slate-400">
-                Coordinated response vs. industry average. Speed is strategy.
-              </p>
-            </div>
-            
-            <div className="text-center" data-testid="value-playbooks">
-              <div className="w-16 h-16 mx-auto mb-4 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center">
-                <BookOpen className="h-8 w-8 text-purple-600 dark:text-purple-400" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">9 Strategic Domains</h3>
-              <p className="text-slate-600 dark:text-slate-400">
-                Because strategic events don't respect org charts. An M&A triggers regulatory, which triggers crisis comms, which triggers transformation. ExecuteIQ orchestrates all 9 simultaneously.
-              </p>
-            </div>
-            
-            <div className="text-center" data-testid="value-ai">
-              <div className="w-16 h-16 mx-auto mb-4 bg-emerald-100 dark:bg-emerald-900/30 rounded-2xl flex items-center justify-center">
-                <Users className="h-8 w-8 text-emerald-600 dark:text-emerald-400" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Human-AI Partnership</h3>
-              <p className="text-slate-600 dark:text-slate-400">
-                AI monitors and recommends. Executives decide and execute.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Operating Model Alignment Feature */}
-      <section className="py-12 px-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600">
-        <div className="max-w-5xl mx-auto">
-          <Card 
-            className="border-0 bg-white/10 backdrop-blur-sm cursor-pointer transition-all hover:bg-white/20 group"
-            onClick={() => setLocation('/operating-model')}
-            data-testid="card-operating-model-featured"
-          >
-            <CardContent className="p-8 flex flex-col md:flex-row items-center gap-6">
-              <div className="p-4 bg-white/20 rounded-2xl">
-                <Layers className="h-10 w-10 text-white" />
-              </div>
-              <div className="flex-1 text-center md:text-left">
-                <Badge className="mb-2 bg-white/20 text-white border-white/30">McKinsey Framework</Badge>
-                <h3 className="text-2xl font-bold text-white mb-2">Operating Model Alignment</h3>
-                <p className="text-white/80">
-                  Map your organization's structure to ExecuteIQ's 166 playbooks using McKinsey's "Organize to Value" 12-element framework. Get personalized playbook recommendations based on your unique operating model fingerprint.
-                </p>
-              </div>
-              <Button 
-                size="lg"
-                className="bg-white text-indigo-600 hover:bg-white/90 font-semibold"
-                data-testid="button-start-assessment"
-              >
-                Start Assessment
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Featured: Executive Simulation Demo */}
-      <section className="py-12 px-6 bg-gradient-to-r from-purple-600 via-blue-600 to-teal-500">
-        <div className="max-w-5xl mx-auto">
-          <Card 
-            className="border-0 bg-white/10 backdrop-blur-sm cursor-pointer transition-all hover:bg-white/20 group"
-            onClick={() => setLocation('/executive-simulation')}
-            data-testid="card-simulation-demo-featured"
-          >
-            <CardContent className="p-8 flex flex-col md:flex-row items-center gap-6">
-              <div className="p-4 bg-white/20 rounded-2xl">
-                <Briefcase className="h-10 w-10 text-white" />
-              </div>
-              <div className="flex-1 text-center md:text-left">
-                <Badge className="mb-2 bg-white/20 text-white border-white/30">Interactive Experience</Badge>
-                <h3 className="text-2xl font-bold text-white mb-2">Executive Simulation Demo</h3>
-                <p className="text-white/80">
-                  Step into the shoes of a Fortune 500 CSO. Experience real-time signal detection, playbook activation, and rapid coordinated response across your executive team. This is exactly how ExecuteIQ works in production.
-                </p>
-              </div>
-              <Button 
-                size="lg"
-                className="bg-white text-purple-600 hover:bg-white/90 font-semibold"
-                data-testid="button-try-simulation-featured"
-              >
-                Start Simulation
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Interactive Sandbox Demo CTA */}
-      <section className="py-12 px-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500">
-        <div className="max-w-5xl mx-auto">
-          <Card 
-            className="border-0 bg-white/10 backdrop-blur-sm cursor-pointer transition-all hover:bg-white/20 group"
-            onClick={() => setLocation('/try-demo')}
-            data-testid="card-sandbox-demo-featured"
-          >
-            <CardContent className="p-8 flex flex-col md:flex-row items-center gap-6">
-              <div className="p-4 bg-white/20 rounded-2xl">
-                <Play className="h-10 w-10 text-white" />
-              </div>
-              <div className="flex-1 text-center md:text-left">
-                <Badge className="mb-2 bg-white/20 text-white border-white/30">Try It Yourself</Badge>
-                <h3 className="text-2xl font-bold text-white mb-2">Interactive Sandbox Demo</h3>
-                <p className="text-white/80">
-                  Configure your own playbook, set triggers, define stakeholders, and watch your personalized scenario execute in real-time. See exactly how ExecuteIQ would work for your organization.
-                </p>
-              </div>
-              <Button 
-                size="lg"
-                className="bg-white text-purple-600 hover:bg-white/90 font-semibold"
-                data-testid="button-try-sandbox"
-              >
-                Try It Now
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Sales Toolkit Section */}
-      <section className="py-20 px-6 bg-slate-100 dark:bg-slate-900">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 border-green-200 dark:border-green-800" data-testid="badge-sales-tools">
-              Sales Toolkit
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-              Tools to Close Deals Faster
-            </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-              Interactive demos, ROI calculators, and board-ready exports—everything you need to demonstrate value.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {/* Live Demo */}
-            <Card 
-              className="border-2 border-blue-200 dark:border-blue-800 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 cursor-pointer transition-all hover:scale-105 hover:shadow-xl"
-              onClick={() => setLocation('/try-demo')}
-              data-testid="card-live-demo"
-            >
-              <CardContent className="p-6 text-center">
-                <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-blue-500/20 flex items-center justify-center">
-                  <Zap className="h-7 w-7 text-blue-600 dark:text-blue-400" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">One-Click Live Demo</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                  Watch a data breach get contained in 12 minutes. Real-time task cascade, stakeholder coordination, and resolution.
-                </p>
-                <Badge className="bg-blue-500/20 text-blue-600 dark:text-blue-400 border-blue-500/30">
-                  15-Second Interactive Demo
-                </Badge>
-              </CardContent>
-            </Card>
-
-            {/* ROI Calculator */}
-            <Card 
-              className="border-2 border-green-200 dark:border-green-800 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 cursor-pointer transition-all hover:scale-105 hover:shadow-xl"
-              onClick={() => setLocation('/roi-calculator')}
-              data-testid="card-roi-calculator"
-            >
-              <CardContent className="p-6 text-center">
-                <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-green-500/20 flex items-center justify-center">
-                  <TrendingUp className="h-7 w-7 text-green-600 dark:text-green-400" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">ROI Calculator</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                  Input company size, industry, and incident frequency. Get personalized time/cost savings projections.
-                </p>
-                <Badge className="bg-green-500/20 text-green-600 dark:text-green-400 border-green-500/30">
-                  Personalized ROI Analysis
-                </Badge>
-              </CardContent>
-            </Card>
-
-            {/* Board Export */}
-            <Card 
-              className="border-2 border-purple-200 dark:border-purple-800 bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-950/30 dark:to-violet-950/30 cursor-pointer transition-all hover:scale-105 hover:shadow-xl"
-              onClick={() => setLocation('/board-export')}
-              data-testid="card-board-export"
-            >
-              <CardContent className="p-6 text-center">
-                <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-purple-500/20 flex items-center justify-center">
-                  <Briefcase className="h-7 w-7 text-purple-600 dark:text-purple-400" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Board-Ready Export</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                  Generate executive briefings with one click. Active scenarios, response metrics, and financial summary.
-                </p>
-                <Badge className="bg-purple-500/20 text-purple-600 dark:text-purple-400 border-purple-500/30">
-                  PDF / PPTX / DOCX
-                </Badge>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Strategy Reality - Why 5% Strategy, 95% Ecosystem */}
-      <StrategyReality />
-      <StrategyToIDEA />
-
-      {/* Origin Story - Built by Someone Who's Lived Both Worlds */}
-      <section className="py-20 px-6 bg-white dark:bg-slate-950">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <Badge className="mb-4 bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30" data-testid="badge-origin">
-                Built by Someone Who's Lived Both Worlds
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">
-                From Sideline to Boardroom
-              </h2>
-              <p className="text-lg text-slate-700 dark:text-slate-300 mb-4 leading-relaxed">
-                I coached college football for 5 years. Every game, 60-80 plays. Every 40 seconds—read the situation, call the play, execute. I lived the methodology that lets billion-dollar programs perform under pressure.
-              </p>
-              <p className="text-slate-600 dark:text-slate-400 mb-4">
-                Then I spent 20 years inside Fortune 500 companies—Ford, Toyota, Lockheed Martin, Eli Lilly, Boyd Gaming, Churchill Downs. Same caliber of people. Same high stakes. But no playbooks. Every strategic moment handled ad-hoc.
-              </p>
-              <p className="text-slate-600 dark:text-slate-400 mb-6">
-                I watched the same pattern every time: <span className="text-red-600 dark:text-red-400 font-semibold">72 hours</span> getting meetings on calendars, still defining work and ownership. After 72 hours—maybe a plan. Execution hasn't started.
-              </p>
-              <blockquote className="border-l-4 border-[#D4AF37] pl-4 py-2 mb-6">
-                <p className="text-xl font-medium text-slate-800 dark:text-slate-200 italic">
-                  "The NFL would never operate that way. I built ExecuteIQ to bring that methodology to enterprise."
-                </p>
-              </blockquote>
-              <p className="text-lg font-semibold text-slate-900 dark:text-white">
-                — Marty Brunke, Founder
-              </p>
-            </div>
-            <div className="grid grid-cols-1 gap-6">
-              <div className="bg-slate-50 dark:bg-slate-900 rounded-xl p-6 text-center" data-testid="origin-stat-1">
-                <span className="text-4xl font-bold text-amber-600 dark:text-amber-400">5</span>
-                <p className="text-slate-600 dark:text-slate-400 mt-2">Years coaching major college football</p>
-              </div>
-              <div className="bg-slate-50 dark:bg-slate-900 rounded-xl p-6 text-center" data-testid="origin-stat-2">
-                <span className="text-4xl font-bold text-amber-600 dark:text-amber-400">20+</span>
-                <p className="text-slate-600 dark:text-slate-400 mt-2">Years Fortune 500 experience</p>
-              </div>
-              <div className="bg-slate-50 dark:bg-slate-900 rounded-xl p-6 text-center" data-testid="origin-stat-3">
-                <span className="text-4xl font-bold text-amber-600 dark:text-amber-400">7</span>
-                <p className="text-slate-600 dark:text-slate-400 mt-2">Enterprise transformations led</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-r from-[#1A2B3D] to-slate-900">
+      <section className="py-20 px-6 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6" data-testid="heading-cta">
-            72 Hours → 12 Minutes
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+            Ready to See It in Action?
           </h2>
-          <p className="text-lg text-[#D4AF37] font-semibold mb-2">The Methodology That Wins, Applied to Business</p>
-          <p className="text-xl text-slate-300 mb-8">
-            ExecuteIQ at $250K/year vs. one delayed response costing $5-50M. <span className="text-emerald-400">Payback on first use.</span>
+          <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
+            Experience how ExecuteIQ transforms a strategic moment into coordinated 12-minute execution.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
-              size="lg"
-              onClick={() => setLocation('/contact')}
-              className="bg-white text-slate-900 hover:bg-slate-100 font-semibold px-8 py-6 text-lg"
-              data-testid="button-request-access"
+              onClick={() => setLocation('/try-demo')}
+              className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8 py-6 text-lg"
+              data-testid="button-try-demo-cta"
             >
-              Request Access
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <Play className="h-5 w-5 mr-2" />
+              Try Interactive Demo
             </Button>
             <Button 
-              size="lg"
-              variant="outline"
-              onClick={() => setLocation('/our-story')}
-              className="border-white/30 text-white hover:bg-white/10 font-semibold px-8 py-6 text-lg"
-              data-testid="button-learn-more"
+              onClick={() => setLocation('/contact')}
+              className="bg-[#D4AF37] hover:bg-amber-500 text-slate-900 px-8 py-6 text-lg"
+              data-testid="button-start-pilot"
             >
-              Learn More
+              Start Pilot Program
+              <ArrowRight className="h-5 w-5 ml-2" />
             </Button>
           </div>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-6">
+            Q1 2026 Founding Partner Program
+          </p>
         </div>
       </section>
 
