@@ -269,7 +269,7 @@ export default function StakeholderManagement() {
             <h1 className="text-3xl font-bold text-slate-900 dark:text-white" data-testid="text-page-title">
               Stakeholder Directory
             </h1>
-            <p className="text-slate-600 dark:text-slate-400 mt-1">
+            <p className="text-slate-600 dark:text-slate-300 mt-1">
               Manage your organization's stakeholders, roles, and contact information
             </p>
           </div>
@@ -432,7 +432,7 @@ export default function StakeholderManagement() {
                         <span className="font-medium">{stakeholder.role}</span>
                       </TableCell>
                       <TableCell>
-                        <span className="text-slate-600 dark:text-slate-400">{stakeholder.department}</span>
+                        <span className="text-slate-600 dark:text-slate-300">{stakeholder.department}</span>
                       </TableCell>
                       <TableCell>
                         <Badge className={levelConfig.color}>
@@ -441,7 +441,7 @@ export default function StakeholderManagement() {
                       </TableCell>
                       <TableCell>
                         <div className="space-y-1 text-sm">
-                          <div className="flex items-center gap-1 text-slate-600 dark:text-slate-400">
+                          <div className="flex items-center gap-1 text-slate-600 dark:text-slate-300">
                             <Mail className="h-3 w-3" />
                             <span className="truncate max-w-[150px]" data-testid={`text-email-${stakeholder.id}`}>{stakeholder.email}</span>
                           </div>
@@ -466,7 +466,7 @@ export default function StakeholderManagement() {
                                 title={channel.label}
                                 data-testid={`badge-channel-${stakeholder.id}-${ch}`}
                               >
-                                <Icon className="h-3 w-3 text-slate-600 dark:text-slate-400" />
+                                <Icon className="h-3 w-3 text-slate-600 dark:text-slate-300" />
                               </div>
                             );
                           })}

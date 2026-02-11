@@ -176,7 +176,7 @@ export default function ScenarioVarianceAlert({
                   <Badge className="bg-amber-500 text-white">{warningCount} Warning</Badge>
                 )}
               </CardTitle>
-              <p className="text-xs text-slate-600 dark:text-slate-400">
+              <p className="text-xs text-slate-600 dark:text-slate-300">
                 Significant deviations from baseline detected
               </p>
             </div>

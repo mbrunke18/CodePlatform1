@@ -684,8 +684,8 @@ export default function PlaybookCustomize() {
                       <h3 className="font-bold text-sm tracking-wide">{phase.label}</h3>
                       <Badge variant="secondary" className="text-xs">{filledCount}/{phaseSections.length}</Badge>
                     </div>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 italic mb-2">{phase.tagline}</p>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2">{phase.description}</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-300 italic mb-2">{phase.tagline}</p>
+                    <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2">{phase.description}</p>
                   </CardContent>
                 </Card>
               );
@@ -699,7 +699,7 @@ export default function PlaybookCustomize() {
                   <div key={phase.id} className="mb-4">
                     <div className={`flex items-center gap-2 px-3 py-2 rounded-lg mb-1`}>
                       <div className={`w-2 h-2 rounded-full ${phase.color}`} />
-                      <span className="text-xs font-bold tracking-wider text-slate-500 dark:text-slate-400">{phase.label}</span>
+                      <span className="text-xs font-bold tracking-wider text-slate-500 dark:text-slate-300">{phase.label}</span>
                     </div>
                     {sections.filter(s => s.phase === phase.id).map((section) => {
                       const Icon = section.icon;
@@ -715,7 +715,7 @@ export default function PlaybookCustomize() {
                           className={`w-full flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-left text-sm transition-colors ${
                             isActive 
                               ? 'bg-primary text-primary-foreground' 
-                              : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+                              : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                           }`}
                           data-testid={`nav-${section.id}`}
                         >

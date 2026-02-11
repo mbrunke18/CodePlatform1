@@ -247,7 +247,7 @@ export default function PlaybookReadinessAudit() {
                   <div className={`text-3xl font-bold ${config.textColor}`}>
                     {count}
                   </div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400">
+                  <div className="text-sm text-slate-600 dark:text-slate-300">
                     {config.label}
                   </div>
                 </CardContent>
@@ -272,7 +272,7 @@ export default function PlaybookReadinessAudit() {
                 <div className="text-6xl font-bold text-blue-600 dark:text-blue-400">
                   {stats.averageScore}%
                 </div>
-                <div className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                <div className="text-sm text-slate-600 dark:text-slate-300 mt-1">
                   Target: 84.4%
                 </div>
               </div>
@@ -358,7 +358,7 @@ export default function PlaybookReadinessAudit() {
               </SelectContent>
             </Select>
           </div>
-          <div className="text-sm text-slate-600 dark:text-slate-400">
+          <div className="text-sm text-slate-600 dark:text-slate-300">
             Showing {filteredPlaybooks.length} of {playbooks.length} playbooks
           </div>
         </div>
@@ -389,7 +389,7 @@ export default function PlaybookReadinessAudit() {
                             {config.label}
                           </Badge>
                         </div>
-                        <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-400">
+                        <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-300">
                           <span>{playbook.domain}</span>
                           <span>•</span>
                           <span>{playbook.stakeholderCount} stakeholders</span>
@@ -494,7 +494,7 @@ export default function PlaybookReadinessAudit() {
                 <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-1">
                   Ready to improve readiness?
                 </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
+                <p className="text-sm text-slate-600 dark:text-slate-300">
                   Schedule a bulk drill session or import stakeholder data to boost your scores.
                 </p>
               </div>

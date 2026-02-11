@@ -289,7 +289,7 @@ export default function Homepage() {
             </p>
             
             <div className="bg-white dark:bg-slate-800 rounded-xl p-6 mb-8">
-              <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-4 uppercase tracking-wide">Here's what happens without execution infrastructure:</p>
+              <p className="text-sm font-semibold text-slate-600 dark:text-slate-300 mb-4 uppercase tracking-wide">Here's what happens without execution infrastructure:</p>
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
                   <div className="w-20 shrink-0 text-right">
@@ -479,7 +479,7 @@ export default function Homepage() {
                 <h3 className="text-lg font-bold text-white mb-2">Ransomware Response</h3>
                 <div className="text-3xl font-bold text-red-400 mb-2">$136K/hr</div>
                 <p className="text-sm text-slate-300">of delayed response (IBM)</p>
-                <p className="text-xs text-slate-400 mt-2">72 hours = $9.8M exposure</p>
+                <p className="text-xs text-slate-300 mt-2">72 hours = $9.8M exposure</p>
               </CardContent>
             </Card>
             
@@ -491,7 +491,7 @@ export default function Homepage() {
                 <h3 className="text-lg font-bold text-white mb-2">M&A Integration Delay</h3>
                 <div className="text-3xl font-bold text-amber-400 mb-2">$5-50M</div>
                 <p className="text-sm text-slate-300">in synergy erosion</p>
-                <p className="text-xs text-slate-400 mt-2">Every day of delay compounds</p>
+                <p className="text-xs text-slate-300 mt-2">Every day of delay compounds</p>
               </CardContent>
             </Card>
             
@@ -503,7 +503,7 @@ export default function Homepage() {
                 <h3 className="text-lg font-bold text-white mb-2">Crisis Response Delay</h3>
                 <div className="text-3xl font-bold text-purple-400 mb-2">24 hrs</div>
                 <p className="text-sm text-slate-300">Reputational damage spreads hourly</p>
-                <p className="text-xs text-slate-400 mt-2">Market cap impact within 24 hours</p>
+                <p className="text-xs text-slate-300 mt-2">Market cap impact within 24 hours</p>
               </CardContent>
             </Card>
             
@@ -515,7 +515,7 @@ export default function Homepage() {
                 <h3 className="text-lg font-bold text-white mb-2">Competitive Response</h3>
                 <div className="text-3xl font-bold text-blue-400 mb-2">Lost</div>
                 <p className="text-sm text-slate-300">Market share</p>
-                <p className="text-xs text-slate-400 mt-2">Often unrecoverable</p>
+                <p className="text-xs text-slate-300 mt-2">Often unrecoverable</p>
               </CardContent>
             </Card>
           </div>
@@ -553,7 +553,7 @@ export default function Homepage() {
                   </p>
                   <div className="pt-3 border-t border-slate-200 dark:border-slate-700">
                     <p className={`font-bold ${item.color}`}>{item.source}</p>
-                    <p className="text-xs text-slate-600 dark:text-slate-400">{item.report}</p>
+                    <p className="text-xs text-slate-600 dark:text-slate-300">{item.report}</p>
                   </div>
                 </CardContent>
               </Card>

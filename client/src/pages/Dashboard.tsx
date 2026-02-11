@@ -54,7 +54,7 @@ function KPICard({
       <div>
         <div className={`text-lg sm:text-2xl font-bold ${statusColors[status]}`}>{value}</div>
         <div className="text-xs sm:text-xs text-slate-600 dark:text-slate-300">{label}</div>
-        {trend && <div className="text-[9px] sm:text-xs text-slate-500 dark:text-slate-400 hidden sm:block">{trend}</div>}
+        {trend && <div className="text-xs text-slate-600 dark:text-slate-300 hidden sm:block">{trend}</div>}
       </div>
     </div>
   );
@@ -161,7 +161,7 @@ function ActivityItem({
   const colors = {
     alert: 'text-amber-500 bg-amber-100 dark:bg-amber-900/30',
     activation: 'text-blue-500 bg-blue-100 dark:bg-blue-900/30',
-    update: 'text-slate-500 bg-slate-100 dark:bg-slate-800',
+    update: 'text-slate-600 bg-slate-100 dark:bg-slate-800',
     success: 'text-emerald-500 bg-emerald-100 dark:bg-emerald-900/30'
   };
 
@@ -264,7 +264,7 @@ export default function Dashboard() {
                          overallStatus === 'warning' ? 'Attention Required' : 'Action Needed'}
                       </span>
                       <span className="text-xs text-slate-400 hidden sm:inline">•</span>
-                      <span className="text-xs sm:text-xs text-slate-400">
+                      <span className="text-xs sm:text-xs text-slate-600 dark:text-slate-300">
                         {isConnected ? 'Live' : 'Reconnecting...'}
                       </span>
                     </div>
@@ -487,7 +487,7 @@ export default function Dashboard() {
           </div>
 
           {/* Footer */}
-          <p className="text-center text-xs text-slate-400 dark:text-slate-500 pt-2">
+          <p className="text-center text-xs text-slate-600 dark:text-slate-300 pt-2">
             Data refreshes automatically • Last updated just now
           </p>
         </div>

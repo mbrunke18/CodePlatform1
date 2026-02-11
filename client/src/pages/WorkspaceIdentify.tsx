@@ -113,7 +113,7 @@ export default function WorkspaceIdentify() {
                     ExecuteIQ Playbook™
                   </Badge>
                 </div>
-                <p className="text-slate-600 dark:text-slate-400 mt-1">
+                <p className="text-slate-600 dark:text-slate-300 mt-1">
                   Build, customize, and manage strategic playbooks for every scenario
                 </p>
               </div>
@@ -184,7 +184,7 @@ export default function WorkspaceIdentify() {
                   </div>
                   <div className="space-y-1">
                     {category.domains.map((domain) => (
-                      <p key={domain} className="text-sm text-slate-600 dark:text-slate-400">• {domain}</p>
+                      <p key={domain} className="text-sm text-slate-600 dark:text-slate-300">• {domain}</p>
                     ))}
                   </div>
                 </CardContent>
@@ -210,7 +210,7 @@ export default function WorkspaceIdentify() {
                           </h3>
                           <ChevronRight className="h-4 w-4 text-slate-400 group-hover:text-poise-gold transition-colors" />
                         </div>
-                        <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                        <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">
                           {tool.description}
                         </p>
                         <Badge variant="outline" className="mt-3 text-xs">
@@ -234,7 +234,7 @@ export default function WorkspaceIdentify() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 dark:text-white">Ready for the next phase?</h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400">
+                    <p className="text-sm text-slate-600 dark:text-slate-300">
                       Once your playbooks are ready, set up signal monitoring in DETECT
                     </p>
                   </div>

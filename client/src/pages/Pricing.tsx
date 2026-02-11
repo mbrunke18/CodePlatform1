@@ -62,7 +62,7 @@ export default function Pricing() {
             <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white">
               Join Our Founding Partners
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
               We're selecting 10 Fortune 1000 companies for our 90-day validation program. Full platform access, dedicated implementation support, 100% pilot fee credited toward Year 1.
             </p>
           </div>
@@ -76,7 +76,7 @@ export default function Pricing() {
                 <div className="text-right">
                   <div className="text-4xl font-bold text-emerald-600">$75K</div>
                   <div className="text-sm text-emerald-700 dark:text-emerald-400 font-medium">100% credited to Year 1</div>
-                  <div className="text-xs text-slate-500 dark:text-slate-400">90-day pilot</div>
+                  <div className="text-xs text-slate-600 dark:text-slate-300">90-day pilot</div>
                 </div>
               </div>
               <p className="text-slate-700 dark:text-slate-300">
@@ -177,7 +177,7 @@ export default function Pricing() {
             <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white">
               Transparent, Value-Based Tiers
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
               Premium pricing for enterprise scale. No hidden fees. No per-user charges. Unlimited scenarios and executions.
             </p>
           </div>
@@ -188,11 +188,11 @@ export default function Pricing() {
               <CardHeader className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30">
                 <div className="text-center">
                   <Badge className="mb-3 bg-blue-600 text-white">Enterprise</Badge>
-                  <div className="text-sm text-slate-600 dark:text-slate-400 mb-2">1,000-5,000 employees</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">1,000-5,000 employees</div>
                   <div className="flex items-baseline justify-center gap-2 mb-1">
                     <div className="text-5xl font-bold text-slate-900 dark:text-white">$250K</div>
                   </div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400">per year</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">per year</div>
                 </div>
               </CardHeader>
               <CardContent className="pt-6">
@@ -240,11 +240,11 @@ export default function Pricing() {
               <CardHeader className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30">
                 <div className="text-center">
                   <Badge className="mb-3 bg-purple-600 text-white">Enterprise Plus</Badge>
-                  <div className="text-sm text-slate-600 dark:text-slate-400 mb-2">5,000-15,000 employees</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">5,000-15,000 employees</div>
                   <div className="flex items-baseline justify-center gap-2 mb-1">
                     <div className="text-5xl font-bold text-slate-900 dark:text-white">$450K</div>
                   </div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400">per year</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">per year</div>
                 </div>
               </CardHeader>
               <CardContent className="pt-6">
@@ -289,11 +289,11 @@ export default function Pricing() {
               <CardHeader className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-800/50">
                 <div className="text-center">
                   <Badge className="mb-3 bg-slate-700 text-white">Global</Badge>
-                  <div className="text-sm text-slate-600 dark:text-slate-400 mb-2">15,000+ employees</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">15,000+ employees</div>
                   <div className="flex items-baseline justify-center gap-2 mb-1">
                     <div className="text-4xl font-bold text-slate-900 dark:text-white">Custom</div>
                   </div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400">$750K - $1.5M+/year</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">$750K - $1.5M+/year</div>
                 </div>
               </CardHeader>
               <CardContent className="pt-6">
@@ -345,11 +345,11 @@ export default function Pricing() {
                   <div className="flex items-start justify-between mb-3">
                     <div>
                       <h3 className="font-semibold text-slate-900 dark:text-white">Premium Integration Hub</h3>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">Unlimited connectors, bi-directional sync</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-300">Unlimited connectors, bi-directional sync</p>
                     </div>
                     <div className="text-right">
                       <div className="text-xl font-bold text-blue-600">+$50K</div>
-                      <div className="text-xs text-slate-500">per year</div>
+                      <div className="text-xs text-slate-600">per year</div>
                     </div>
                   </div>
                 </div>
@@ -357,11 +357,11 @@ export default function Pricing() {
                   <div className="flex items-start justify-between mb-3">
                     <div>
                       <h3 className="font-semibold text-slate-900 dark:text-white">White-Glove Implementation</h3>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">Custom playbooks, training, change management</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-300">Custom playbooks, training, change management</p>
                     </div>
                     <div className="text-right">
                       <div className="text-xl font-bold text-blue-600">$150K-$300K</div>
-                      <div className="text-xs text-slate-500">one-time</div>
+                      <div className="text-xs text-slate-600">one-time</div>
                     </div>
                   </div>
                 </div>
@@ -457,7 +457,7 @@ export default function Pricing() {
             <h2 className="text-3xl font-bold mb-4 text-slate-900 dark:text-white">
               Implementation & Payback
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400">
+            <p className="text-lg text-slate-600 dark:text-slate-300">
               Fast deployment, rapid time-to-value
             </p>
           </div>
@@ -467,7 +467,7 @@ export default function Pricing() {
               <CardContent className="p-6">
                 <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">8-12</div>
                 <div className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Weeks</div>
-                <div className="text-xs text-slate-600 dark:text-slate-400">Implementation Timeline</div>
+                <div className="text-xs text-slate-600 dark:text-slate-300">Implementation Timeline</div>
               </CardContent>
             </Card>
 
@@ -475,7 +475,7 @@ export default function Pricing() {
               <CardContent className="p-6">
                 <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">3-4</div>
                 <div className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Months</div>
-                <div className="text-xs text-slate-600 dark:text-slate-400">Payback Period</div>
+                <div className="text-xs text-slate-600 dark:text-slate-300">Payback Period</div>
               </CardContent>
             </Card>
 
@@ -483,7 +483,7 @@ export default function Pricing() {
               <CardContent className="p-6">
                 <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">4-6</div>
                 <div className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Weeks</div>
-                <div className="text-xs text-slate-600 dark:text-slate-400">Training & Onboarding</div>
+                <div className="text-xs text-slate-600 dark:text-slate-300">Training & Onboarding</div>
               </CardContent>
             </Card>
 
@@ -491,7 +491,7 @@ export default function Pricing() {
               <CardContent className="p-6">
                 <div className="text-3xl font-bold text-amber-600 dark:text-amber-400 mb-2">120%+</div>
                 <div className="text-sm font-semibold text-slate-900 dark:text-white mb-1">NRR</div>
-                <div className="text-xs text-slate-600 dark:text-slate-400">Net Revenue Retention</div>
+                <div className="text-xs text-slate-600 dark:text-slate-300">Net Revenue Retention</div>
               </CardContent>
             </Card>
           </div>
@@ -505,7 +505,7 @@ export default function Pricing() {
             <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white">
               Return on Investment
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
               ExecuteIQ typically delivers 79x ROI in the first year through faster execution and revenue preservation
             </p>
           </div>
@@ -515,10 +515,10 @@ export default function Pricing() {
               <CardContent className="p-6">
                 <div className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-2">Competitive Responses</div>
                 <div className="text-3xl font-bold text-slate-900 dark:text-white mb-2">$9.6M</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                <div className="text-sm text-slate-600 dark:text-slate-300 mb-4">
                   4 responses/year × $2.4M avg deal preservation
                 </div>
-                <div className="text-xs text-slate-500 dark:text-slate-500">
+                <div className="text-xs text-slate-600 dark:text-slate-300">
                   Days → minutes coordination enables capturing time-sensitive opportunities
                 </div>
               </CardContent>
@@ -528,10 +528,10 @@ export default function Pricing() {
               <CardContent className="p-6">
                 <div className="text-sm font-semibold text-purple-600 dark:text-purple-400 mb-2">Regulatory Compliance</div>
                 <div className="text-3xl font-bold text-slate-900 dark:text-white mb-2">$10M</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                <div className="text-sm text-slate-600 dark:text-slate-300 mb-4">
                   2 responses/year × $5M avg risk avoidance
                 </div>
-                <div className="text-xs text-slate-500 dark:text-slate-500">
+                <div className="text-xs text-slate-600 dark:text-slate-300">
                   Trigger-activated playbooks ensure compliance windows aren't missed
                 </div>
               </CardContent>
@@ -541,10 +541,10 @@ export default function Pricing() {
               <CardContent className="p-6">
                 <div className="text-sm font-semibold text-green-600 dark:text-green-400 mb-2">M&A Opportunities</div>
                 <div className="text-3xl font-bold text-slate-900 dark:text-white mb-2">$20M</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                <div className="text-sm text-slate-600 dark:text-slate-300 mb-4">
                   1 response/year × $20M avg value capture
                 </div>
-                <div className="text-xs text-slate-500 dark:text-slate-500">
+                <div className="text-xs text-slate-600 dark:text-slate-300">
                   Pre-built acquisition playbooks enable decisive action when targets appear
                 </div>
               </CardContent>
@@ -594,7 +594,7 @@ export default function Pricing() {
           <h2 className="text-4xl font-bold mb-6 text-slate-900 dark:text-white">
             Ready to Transform Your Strategic Execution?
           </h2>
-          <p className="text-xl text-slate-600 dark:text-slate-400 mb-8">
+          <p className="text-xl text-slate-600 dark:text-slate-300 mb-8">
             Join our Q1 2026 Founding Partner Pilot Program or schedule a personalized pricing consultation
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -618,7 +618,7 @@ export default function Pricing() {
             </Button>
           </div>
           
-          <div className="flex items-center justify-center gap-6 text-sm text-slate-600 dark:text-slate-400">
+          <div className="flex items-center justify-center gap-6 text-sm text-slate-600 dark:text-slate-300">
             <button 
               onClick={() => setLocation("/playbook-library")}
               className="underline hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1"

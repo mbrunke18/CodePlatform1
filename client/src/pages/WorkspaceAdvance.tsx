@@ -114,7 +114,7 @@ export default function WorkspaceAdvance() {
                     ExecuteIQ Retrospect™
                   </Badge>
                 </div>
-                <p className="text-slate-600 dark:text-slate-400 mt-1">
+                <p className="text-slate-600 dark:text-slate-300 mt-1">
                   Learn, improve, and strengthen organizational resilience
                 </p>
               </div>
@@ -222,7 +222,7 @@ export default function WorkspaceAdvance() {
                           </h3>
                           <ChevronRight className="h-4 w-4 text-slate-400 group-hover:text-poise-gold transition-colors" />
                         </div>
-                        <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                        <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">
                           {tool.description}
                         </p>
                         <Badge variant="outline" className="mt-3 text-xs">
@@ -246,7 +246,7 @@ export default function WorkspaceAdvance() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 dark:text-white">Ready to apply learnings?</h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400">
+                    <p className="text-sm text-slate-600 dark:text-slate-300">
                       Update your playbooks with new insights and start the cycle again
                     </p>
                   </div>

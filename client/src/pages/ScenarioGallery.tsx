@@ -112,7 +112,7 @@ const defaultColors = {
   border: 'border-slate-200 dark:border-slate-800',
   bg: 'bg-slate-50 dark:bg-slate-950/10',
   hover: 'hover:border-slate-500 dark:hover:border-slate-500',
-  badge: 'bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-400',
+  badge: 'bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300',
   icon: 'text-slate-600'
 };
 
@@ -196,7 +196,7 @@ export default function ScenarioGallery() {
           {isLoading ? (
             <div className="text-center py-16" data-testid="loading-playbooks">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-              <p className="text-slate-600 dark:text-slate-400">Loading featured playbooks...</p>
+              <p className="text-slate-600 dark:text-slate-300">Loading featured playbooks...</p>
             </div>
           ) : (
             <>
@@ -243,7 +243,7 @@ export default function ScenarioGallery() {
                               {playbook.name}
                             </h3>
 
-                            <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-3">
+                            <p className="text-sm text-slate-600 dark:text-slate-300 mb-4 line-clamp-3">
                               {playbook.description}
                             </p>
 
@@ -333,7 +333,7 @@ export default function ScenarioGallery() {
                         <ChevronRight className="ml-2 h-5 w-5" />
                       </Button>
                     </div>
-                    <p className="text-sm text-slate-600 dark:text-slate-400">
+                    <p className="text-sm text-slate-600 dark:text-slate-300">
                       90-day validation partnership • Full platform access • Strategic implementation support
                     </p>
                   </CardContent>

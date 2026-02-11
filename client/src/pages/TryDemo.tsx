@@ -460,7 +460,7 @@ export default function TryDemo() {
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
               Experience ExecuteIQ
             </h1>
-            <p className="text-lg text-slate-400">
+            <p className="text-lg text-slate-300">
               See why Fortune 1000 leaders need the Strategic Execution OS
             </p>
           </div>
@@ -470,7 +470,7 @@ export default function TryDemo() {
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-8">
                 <h2 className="text-2xl font-bold text-white mb-2">Choose Your Crisis</h2>
-                <p className="text-slate-400">
+                <p className="text-slate-300">
                   Experience the chaos of strategic events—then see how ExecuteIQ transforms response
                 </p>
               </div>
@@ -492,8 +492,8 @@ export default function TryDemo() {
                             <h3 className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors mb-1">
                               {scenario.name}
                             </h3>
-                            <p className="text-sm text-slate-400 mb-2">{scenario.industry}</p>
-                            <p className="text-sm text-slate-400 mb-3">{scenario.trigger}</p>
+                            <p className="text-sm text-slate-300 mb-2">{scenario.industry}</p>
+                            <p className="text-sm text-slate-300 mb-3">{scenario.trigger}</p>
                             <div className="flex items-center gap-4 text-xs">
                               <span className="flex items-center gap-1 text-red-400">
                                 <TrendingDown className="h-3 w-3" />
@@ -512,7 +512,7 @@ export default function TryDemo() {
               {/* Industry Demos Teaser */}
               <div className="mt-8 pt-6 border-t border-slate-800">
                 <div className="text-center">
-                  <p className="text-sm text-slate-400 mb-3">
+                  <p className="text-sm text-slate-300 mb-3">
                     Want to see real company scenarios? Explore our industry deep-dives:
                   </p>
                   <div className="flex flex-wrap justify-center gap-2 mb-4">
@@ -529,7 +529,7 @@ export default function TryDemo() {
                         >
                           <IconComponent className={`h-4 w-4 ${demo.iconColor}`} />
                           <span className="text-slate-300">{demo.organization}</span>
-                          <span className="text-xs text-slate-400">{demo.industry}</span>
+                          <span className="text-xs text-slate-300">{demo.industry}</span>
                         </button>
                       );
                     })}
@@ -559,7 +559,7 @@ export default function TryDemo() {
                   <AlertTriangle className="h-3 w-3 mr-1" />
                   CRISIS IN PROGRESS
                 </Badge>
-                <Button variant="ghost" size="sm" onClick={resetDemo} className="text-slate-400 hover:text-white">
+                <Button variant="ghost" size="sm" onClick={resetDemo} className="text-slate-300 hover:text-white">
                   <XCircle className="h-4 w-4 mr-1" />
                   Exit Demo
                 </Button>
@@ -585,11 +585,11 @@ export default function TryDemo() {
                   <Card className="bg-slate-900/50 border-slate-700">
                     <CardContent className="p-4">
                       <div className="text-center">
-                        <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">Time Elapsed</p>
+                        <p className="text-xs text-slate-300 uppercase tracking-wide mb-1">Time Elapsed</p>
                         <p className="text-3xl font-bold text-white font-mono">
                           {formatTime(chaosSeconds)}
                         </p>
-                        <p className="text-xs text-slate-400 mt-1">
+                        <p className="text-xs text-slate-300 mt-1">
                           Still no coordinated response
                         </p>
                       </div>
@@ -598,7 +598,7 @@ export default function TryDemo() {
 
                   <Card className="bg-slate-900/50 border-slate-700">
                     <CardContent className="p-4">
-                      <p className="text-xs text-slate-400 uppercase tracking-wide mb-2">Stress Level</p>
+                      <p className="text-xs text-slate-300 uppercase tracking-wide mb-2">Stress Level</p>
                       <Progress value={stressLevel} className="h-3 bg-slate-800" />
                       <p className="text-xs text-orange-400 mt-2 text-center">
                         {stressLevel < 50 ? 'Escalating' : stressLevel < 80 ? 'Critical' : 'Overwhelming'}
@@ -606,7 +606,7 @@ export default function TryDemo() {
                     </CardContent>
                   </Card>
 
-                  <div className="text-center text-xs text-slate-400 pt-2">
+                  <div className="text-center text-xs text-slate-300 pt-2">
                     <p>Industry average response time:</p>
                     <p className="text-lg font-bold text-red-400">20-72 hours</p>
                   </div>
@@ -669,7 +669,7 @@ export default function TryDemo() {
                     {showChaosComplete && (
                       <div className="flex-1 space-y-3">
                         <div className="p-4 bg-slate-800/50 border border-slate-600 rounded-lg text-center">
-                          <p className="text-slate-400 text-sm mb-1">This is what happens WITHOUT ExecuteIQ</p>
+                          <p className="text-slate-300 text-sm mb-1">This is what happens WITHOUT ExecuteIQ</p>
                           <p className="text-white font-medium">Chaos. Confusion. Costly delays.</p>
                         </div>
                         <Button 
@@ -697,11 +697,11 @@ export default function TryDemo() {
                   <Badge className={`bg-gradient-to-r ${selectedScenario.color} text-white`}>
                     {selectedScenario.name}
                   </Badge>
-                  <span className="text-sm text-slate-400">
+                  <span className="text-sm text-slate-300">
                     {formatCurrency(selectedScenario.dealValue)} at stake
                   </span>
                 </div>
-                <Button variant="ghost" size="sm" onClick={resetDemo} className="text-slate-400 hover:text-white">
+                <Button variant="ghost" size="sm" onClick={resetDemo} className="text-slate-300 hover:text-white">
                   <RefreshCw className="h-4 w-4 mr-1" />
                   Try Another Scenario
                 </Button>
@@ -732,7 +732,7 @@ export default function TryDemo() {
                         ) : (
                           <IconComponent className={`h-4 w-4 ${isCurrent ? colors.text : 'text-slate-400'}`} />
                         )}
-                        <span className={`text-xs font-medium ${isCurrent ? 'text-white' : isCompleted ? 'text-slate-300' : 'text-slate-400'}`}>
+                        <span className={`text-xs font-medium ${isCurrent ? 'text-white' : isCompleted ? 'text-slate-300' : 'text-slate-300'}`}>
                           {phase.name}
                         </span>
                       </div>
@@ -786,13 +786,13 @@ export default function TryDemo() {
                             <Clock className="h-4 w-4" />
                             <span className="font-medium">Time to Ready: 0 minutes</span>
                           </div>
-                          <p className="text-sm text-slate-400">
+                          <p className="text-sm text-slate-300">
                             Everything was prepared BEFORE the crisis hit
                           </p>
                         </div>
 
                         <div className="p-3 bg-slate-800/50 rounded-lg">
-                          <p className="text-sm text-slate-400">
+                          <p className="text-sm text-slate-300">
                             <span className="text-red-400 font-medium">Without ExecuteIQ:</span> 20-50 hours to coordinate a response team, find documents, and get budget approval.
                           </p>
                         </div>
@@ -826,7 +826,7 @@ export default function TryDemo() {
                             <span className="font-medium">Trigger Detected</span>
                           </div>
                           <p className="text-white">{selectedScenario.trigger}</p>
-                          <div className="mt-3 flex items-center gap-4 text-sm text-slate-400">
+                          <div className="mt-3 flex items-center gap-4 text-sm text-slate-300">
                             <span className="flex items-center gap-1">
                               <DollarSign className="h-4 w-4" />
                               {formatCurrency(selectedScenario.dealValue)} at risk
@@ -899,7 +899,7 @@ export default function TryDemo() {
                                       {getIntegrationIcon(step.integration)}
                                     </div>
                                   </div>
-                                  <p className="text-slate-400 text-xs">{step.description}</p>
+                                  <p className="text-slate-300 text-xs">{step.description}</p>
                                 </div>
                                 <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                               </div>
@@ -907,7 +907,7 @@ export default function TryDemo() {
                           })}
                           
                           {isExecuting && (
-                            <div className="flex items-center justify-center p-4 text-slate-400">
+                            <div className="flex items-center justify-center p-4 text-slate-300">
                               <div className="animate-spin rounded-full h-5 w-5 border-2 border-emerald-500 border-t-transparent mr-2" />
                               Orchestrating response...
                             </div>
@@ -931,7 +931,7 @@ export default function TryDemo() {
                       <CardContent className="space-y-4">
                         {!learnings ? (
                           <div className="space-y-4">
-                            <p className="text-slate-400">
+                            <p className="text-slate-300">
                               ExecuteIQ captures what worked and suggests playbook improvements for next time.
                             </p>
                             <Button 
@@ -949,7 +949,7 @@ export default function TryDemo() {
                                 <CheckCircle2 className="h-4 w-4" />
                                 <span className="font-medium text-sm">Execution Complete</span>
                               </div>
-                              <p className="text-xs text-slate-400">
+                              <p className="text-xs text-slate-300">
                                 {formatCurrency(learnings.metrics?.dealValueProtected || 0)} protected
                               </p>
                             </div>
@@ -963,7 +963,7 @@ export default function TryDemo() {
                                 {learnings.successPatterns?.map((pattern: any, i: number) => (
                                   <div key={i} className="p-2 bg-slate-800/50 rounded text-xs">
                                     <span className="text-white font-medium">{pattern.category}:</span>
-                                    <span className="text-slate-400 ml-1">{pattern.insight}</span>
+                                    <span className="text-slate-300 ml-1">{pattern.insight}</span>
                                   </div>
                                 ))}
                               </div>
@@ -983,21 +983,21 @@ export default function TryDemo() {
                               <Rocket className="h-10 w-10 text-emerald-400" />
                             </div>
                             <h2 className="text-2xl font-bold text-white mb-2">Demo Complete</h2>
-                            <p className="text-slate-400">You just experienced the IDEA Framework in action</p>
+                            <p className="text-slate-300">You just experienced the IDEA Framework in action</p>
                           </div>
 
                           <div className="grid grid-cols-3 gap-4 mb-6">
                             <div className="p-4 bg-slate-800/50 rounded-lg">
                               <p className="text-2xl font-bold text-emerald-400">12 min</p>
-                              <p className="text-xs text-slate-400">Response Time</p>
+                              <p className="text-xs text-slate-300">Response Time</p>
                             </div>
                             <div className="p-4 bg-slate-800/50 rounded-lg">
                               <p className="text-2xl font-bold text-emerald-400">{formatCurrency(selectedScenario?.dealValue || 0)}</p>
-                              <p className="text-xs text-slate-400">Value Protected</p>
+                              <p className="text-xs text-slate-300">Value Protected</p>
                             </div>
                             <div className="p-4 bg-slate-800/50 rounded-lg">
                               <p className="text-2xl font-bold text-emerald-400">98 days</p>
-                              <p className="text-xs text-slate-400">Saved (IBM 2024)</p>
+                              <p className="text-xs text-slate-300">Saved (IBM 2024)</p>
                             </div>
                           </div>
 
@@ -1033,7 +1033,7 @@ export default function TryDemo() {
                                 <Building2 className="h-5 w-5 text-poise-gold" />
                                 Explore Industry Deep-Dives
                               </CardTitle>
-                              <CardDescription className="text-slate-400">
+                              <CardDescription className="text-slate-300">
                                 See ExecuteIQ in action across 9 industries with real company scenarios
                               </CardDescription>
                             </div>
@@ -1073,11 +1073,11 @@ export default function TryDemo() {
                                 >
                                   <div className="flex items-center gap-2 mb-1">
                                     <IconComponent className={`h-4 w-4 ${demo.iconColor}`} />
-                                    <span className="text-xs text-slate-400 uppercase">{demo.industry}</span>
+                                    <span className="text-xs text-slate-300 uppercase">{demo.industry}</span>
                                   </div>
                                   <p className="text-xs font-medium text-white truncate">{demo.title}</p>
                                   <div className="flex items-center justify-between mt-1">
-                                    <span className="text-xs text-slate-400">{demo.organization}</span>
+                                    <span className="text-xs text-slate-300">{demo.organization}</span>
                                     <span className={`text-xs font-semibold ${demo.type === 'offensive' ? 'text-green-400' : 'text-emerald-400'}`}>
                                       {demo.impact}
                                     </span>
@@ -1122,12 +1122,12 @@ export default function TryDemo() {
                         <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-center">
                           <p className="text-xs text-red-400 mb-1">Traditional</p>
                           <p className="text-xl font-bold text-red-300">20-72 hrs</p>
-                          <p className="text-xs text-slate-400">Industry average</p>
+                          <p className="text-xs text-slate-300">Industry average</p>
                         </div>
                         <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-center">
                           <p className="text-xs text-emerald-400 mb-1">ExecuteIQ</p>
                           <p className="text-xl font-bold text-emerald-300">12 min</p>
-                          <p className="text-xs text-slate-400">Guaranteed</p>
+                          <p className="text-xs text-slate-300">Guaranteed</p>
                         </div>
                       </div>
                     </CardContent>
@@ -1182,7 +1182,7 @@ export default function TryDemo() {
                     <CardContent className="p-4 text-center">
                       <p className="text-4xl font-bold text-amber-400 mb-1">166</p>
                       <p className="text-sm text-amber-200">Pre-Built Playbooks</p>
-                      <p className="text-xs text-slate-400 mt-1">Across 9 Strategic Domains</p>
+                      <p className="text-xs text-slate-300 mt-1">Across 9 Strategic Domains</p>
                     </CardContent>
                   </Card>
                 </div>

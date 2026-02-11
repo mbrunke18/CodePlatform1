@@ -179,7 +179,7 @@ button, a {
 }
 
 .text-subtitle {
-  @apply text-lg text-slate-600 dark:text-slate-400;
+  @apply text-lg text-slate-600 dark:text-slate-300;
 }
 
 .text-body {
@@ -187,11 +187,11 @@ button, a {
 }
 
 .text-caption {
-  @apply text-sm text-slate-500 dark:text-slate-400;
+  @apply text-sm text-slate-500 dark:text-slate-300;
 }
 
 .text-label {
-  @apply text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400;
+  @apply text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-300;
 }
 
 /* Page Backgrounds - Unified gradients */
@@ -231,7 +231,7 @@ button, a {
 }
 
 .metric-label {
-  @apply text-sm text-slate-500 dark:text-slate-400;
+  @apply text-sm text-slate-500 dark:text-slate-300;
 }
 
 /* Status Indicators */

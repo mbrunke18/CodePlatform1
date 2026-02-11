@@ -148,7 +148,7 @@ export default function PreActivationImpactPreview({
             </div>
             <div>
               <CardTitle className="text-xl">Pre-Activation Impact Preview</CardTitle>
-              <p className="text-sm text-slate-600 dark:text-slate-400">
+              <p className="text-sm text-slate-600 dark:text-slate-300">
                 Review projected impact before activating "{playbook?.name || 'Playbook'}"
               </p>
             </div>
@@ -250,7 +250,7 @@ export default function PreActivationImpactPreview({
                         {conflict.severity}
                       </Badge>
                     </div>
-                    <p className="text-xs text-slate-600 dark:text-slate-400">
+                    <p className="text-xs text-slate-600 dark:text-slate-300">
                       Conflicts with: {conflict.conflictingPlaybook}
                     </p>
                     <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-1">
@@ -290,7 +290,7 @@ export default function PreActivationImpactPreview({
               className="mt-1 w-5 h-5 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
               data-testid="checkbox-acknowledge-impact"
             />
-            <span className="text-sm text-slate-600 dark:text-slate-400">
+            <span className="text-sm text-slate-600 dark:text-slate-300">
               I have reviewed the projected impact, resource allocation, and any conflicts. 
               I authorize the activation of this playbook and the associated budget unlock.
             </span>

@@ -198,7 +198,7 @@ function RoleCard({ config }: { config: RoleConfig }) {
           </div>
           
           <div className="pt-4 border-t border-slate-300 dark:border-slate-700">
-            <div className="text-sm text-slate-600 dark:text-slate-400 mb-2">Your ExecuteIQ Impact:</div>
+            <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">Your ExecuteIQ Impact:</div>
             <div className="text-base font-bold text-green-600 dark:text-green-400" data-testid={`text-metric-${config.id.toLowerCase()}`}>
               {config.keyMetric}
             </div>
@@ -230,7 +230,7 @@ export default function RoleSelector() {
             </h1>
             <Sparkles className="h-12 w-12 text-blue-500 animate-pulse" />
           </div>
-          <p className="text-2xl text-slate-700 dark:text-slate-400 mb-4">
+          <p className="text-2xl text-slate-700 dark:text-slate-300 mb-4">
             See ExecuteIQ from Your Perspective
           </p>
           <p className="text-lg text-slate-600 dark:text-slate-500 max-w-3xl mx-auto">

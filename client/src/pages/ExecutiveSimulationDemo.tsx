@@ -633,7 +633,7 @@ export default function ExecutiveSimulationDemo() {
                   </Avatar>
                   <div>
                     <p className="font-semibold text-slate-900 dark:text-white text-sm">{COMPANY_PROFILE.persona}</p>
-                    <p className="text-xs text-slate-500 dark:text-slate-400">{COMPANY_PROFILE.role} • {COMPANY_PROFILE.name}</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-300">{COMPANY_PROFILE.role} • {COMPANY_PROFILE.name}</p>
                   </div>
                 </div>
                 <Separator orientation="vertical" className="h-8" />
@@ -772,7 +772,7 @@ export default function ExecutiveSimulationDemo() {
 
                         <div className="text-center z-10">
                           <p className="text-2xl font-bold text-slate-900 dark:text-white">{signals.length}</p>
-                          <p className="text-xs text-slate-500 dark:text-slate-400">Active Signals</p>
+                          <p className="text-xs text-slate-500 dark:text-slate-300">Active Signals</p>
                         </div>
                       </div>
                     </CardContent>
@@ -803,7 +803,7 @@ export default function ExecutiveSimulationDemo() {
                             </Avatar>
                             <div className="flex-1 min-w-0">
                               <p className="font-medium text-sm text-slate-900 dark:text-white truncate">{member.name}</p>
-                              <p className="text-xs text-slate-500 dark:text-slate-400">{member.role}</p>
+                              <p className="text-xs text-slate-500 dark:text-slate-300">{member.role}</p>
                             </div>
                             <div className={`w-2 h-2 rounded-full ${
                               member.status === 'available' ? 'bg-green-500' :
@@ -854,7 +854,7 @@ export default function ExecutiveSimulationDemo() {
                               <span className="text-xs text-slate-500">{signal.source}</span>
                             </div>
                             <h3 className="font-semibold text-slate-900 dark:text-white">{signal.title}</h3>
-                            <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">{signal.description}</p>
+                            <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">{signal.description}</p>
                           </div>
                         </div>
                         {signal.actionRequired && phase === 'playbook_selection' && (
@@ -908,7 +908,7 @@ export default function ExecutiveSimulationDemo() {
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <h4 className="font-semibold text-sm text-slate-700 dark:text-slate-300 mb-2">Key Actions</h4>
-                          <ul className="space-y-1 text-sm text-slate-600 dark:text-slate-400">
+                          <ul className="space-y-1 text-sm text-slate-600 dark:text-slate-300">
                             <li className="flex items-center gap-2">
                               <CheckCircle2 className="w-4 h-4 text-green-500" />
                               Executive team mobilization
@@ -1004,7 +1004,7 @@ export default function ExecutiveSimulationDemo() {
               ) : (
                 <div className="text-center py-12">
                   <FileText className="w-12 h-12 text-slate-400 mx-auto mb-4" />
-                  <p className="text-slate-500 dark:text-slate-400">Playbooks will be recommended when a signal requires response</p>
+                  <p className="text-slate-500 dark:text-slate-300">Playbooks will be recommended when a signal requires response</p>
                 </div>
               )}
             </TabsContent>
@@ -1032,7 +1032,7 @@ export default function ExecutiveSimulationDemo() {
                     <CardContent className="p-6">
                       <div className="mb-6">
                         <div className="flex justify-between text-sm mb-2">
-                          <span className="text-slate-600 dark:text-slate-400">Overall Progress</span>
+                          <span className="text-slate-600 dark:text-slate-300">Overall Progress</span>
                           <span className="font-medium text-slate-900 dark:text-white">{completedActions}/{playbookActions.length} Actions Complete</span>
                         </div>
                         <Progress value={progressPercent} className="h-3" />
@@ -1080,7 +1080,7 @@ export default function ExecutiveSimulationDemo() {
               ) : (
                 <div className="text-center py-12">
                   <Radio className="w-12 h-12 text-slate-400 mx-auto mb-4" />
-                  <p className="text-slate-500 dark:text-slate-400">Command Center activates when a playbook is launched</p>
+                  <p className="text-slate-500 dark:text-slate-300">Command Center activates when a playbook is launched</p>
                 </div>
               )}
             </TabsContent>

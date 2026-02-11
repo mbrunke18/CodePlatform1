@@ -311,13 +311,13 @@ export default function StandardNav() {
             ) : isAuthenticated && user ? (
               <div className="flex items-center gap-2">
                 <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 bg-slate-800 rounded-lg">
-                  <User className="h-4 w-4 text-slate-400" />
+                  <User className="h-4 w-4 text-slate-300" />
                   <span className="text-sm text-slate-300">{user.firstName || user.email?.split('@')[0]}</span>
                 </div>
                 <Button 
                   variant="ghost" 
                   onClick={logout}
-                  className="text-slate-400 hover:text-white hover:bg-slate-800 h-9 px-3"
+                  className="text-slate-300 hover:text-white hover:bg-slate-800 h-9 px-3"
                   data-testid="nav-logout"
                 >
                   <LogOut className="h-4 w-4 lg:mr-1.5" />
@@ -328,7 +328,7 @@ export default function StandardNav() {
               <Button 
                 variant="ghost" 
                 onClick={login}
-                className="text-slate-400 hover:text-white hover:bg-slate-800 h-9 px-3"
+                className="text-slate-300 hover:text-white hover:bg-slate-800 h-9 px-3"
                 data-testid="nav-login"
               >
                 <LogIn className="h-4 w-4 lg:mr-1.5" />
@@ -348,7 +348,7 @@ export default function StandardNav() {
               <Play className="h-4 w-4" />
             </Button>
             <button
-              className="p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
+              className="p-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               data-testid="nav-mobile-menu-toggle"
             >
@@ -443,21 +443,21 @@ export default function StandardNav() {
               <div className="flex flex-wrap gap-2 px-4">
                 <button
                   onClick={() => navigateTo("/contact")}
-                  className="text-sm text-slate-400 hover:text-white"
+                  className="text-sm text-slate-300 hover:text-white"
                 >
                   Contact
                 </button>
                 <span className="text-slate-600">•</span>
                 <button
                   onClick={() => navigateTo("/our-story")}
-                  className="text-sm text-slate-400 hover:text-white"
+                  className="text-sm text-slate-300 hover:text-white"
                 >
                   Our Story
                 </button>
                 <span className="text-slate-600">•</span>
                 <button
                   onClick={() => navigateTo("/integrations")}
-                  className="text-sm text-slate-400 hover:text-white"
+                  className="text-sm text-slate-300 hover:text-white"
                 >
                   Integrations
                 </button>
@@ -468,14 +468,14 @@ export default function StandardNav() {
               {isAuthenticated && user ? (
                 <div className="flex items-center justify-between px-3 py-2">
                   <div className="flex items-center gap-2">
-                    <User className="h-4 w-4 text-slate-400" />
+                    <User className="h-4 w-4 text-slate-300" />
                     <span className="text-sm text-slate-300">{user.firstName || user.email}</span>
                   </div>
                   <Button 
                     variant="ghost" 
                     size="sm"
                     onClick={logout}
-                    className="text-slate-400 hover:text-white"
+                    className="text-slate-300 hover:text-white"
                     data-testid="nav-mobile-signout"
                   >
                     Sign Out

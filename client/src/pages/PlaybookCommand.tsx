@@ -158,20 +158,20 @@ export default function PlaybookCommand() {
             )}
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
                 <Clock className="h-5 w-5" />
                 <span>~12 min execution</span>
               </div>
-              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
                 <Users className="h-5 w-5" />
                 <span>Human-led</span>
               </div>
-              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
                 <Sparkles className="h-5 w-5" />
                 <span>AI-assisted</span>
               </div>
               {playbook.preApprovedBudget && (
-                <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
                   <DollarSign className="h-5 w-5" />
                   <span>${Number(playbook.preApprovedBudget).toLocaleString()}</span>
                 </div>
@@ -181,7 +181,7 @@ export default function PlaybookCommand() {
             {playbook.primaryResponseStrategy && (
               <div>
                 <h3 className="font-medium mb-2">Response Strategy</h3>
-                <p className="text-slate-600 dark:text-slate-400 text-sm">
+                <p className="text-slate-600 dark:text-slate-300 text-sm">
                   {playbook.primaryResponseStrategy}
                 </p>
               </div>

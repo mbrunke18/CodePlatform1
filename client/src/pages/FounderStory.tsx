@@ -61,7 +61,7 @@ export default function FounderStory() {
               <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6">
                 The Story Behind ExecuteIQ
               </h1>
-              <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
                 20 years of Fortune 500 experience. 5 years coaching major college football. 
                 One mission: eliminate the chaos between strategy and execution.
               </p>
@@ -91,7 +91,7 @@ export default function FounderStory() {
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
                   Quick Intro
                 </h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-6">
+                <p className="text-slate-600 dark:text-slate-300 mb-6">
                   The 72-hour problem, the football insight, and why ExecuteIQ exists. 
                   Perfect for a quick overview.
                 </p>
@@ -132,7 +132,7 @@ export default function FounderStory() {
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
                   The Full Story
                 </h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-6">
+                <p className="text-slate-600 dark:text-slate-300 mb-6">
                   The complete narrative: McKinsey research, Fortune 500 experiences, 
                   the IDEA framework, and the vision for strategic execution.
                 </p>
@@ -200,12 +200,12 @@ export default function FounderStory() {
                 <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
                   The Unique Perspective
                 </h4>
-                <p className="text-slate-600 dark:text-slate-400 mb-4">
+                <p className="text-slate-600 dark:text-slate-300 mb-4">
                   After 20 years navigating crises, transformations, and strategic initiatives 
                   across gaming, automotive, financial services, aerospace, and pharma—and 5 years 
                   coaching major college football—Marty saw a pattern that no one was solving.
                 </p>
-                <p className="text-slate-600 dark:text-slate-400">
+                <p className="text-slate-600 dark:text-slate-300">
                   <span className="font-semibold text-slate-900 dark:text-white">The insight:</span> In football, 
                   you'd never run a play without practicing it. But in business, organizations improvise 
                   their most critical moments. ExecuteIQ brings the discipline of championship execution 

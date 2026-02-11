@@ -536,7 +536,7 @@ export default function SandboxDemo() {
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
           What strategic challenge do you want to prepare for?
         </h2>
-        <p className="text-lg text-slate-600 dark:text-slate-400">
+        <p className="text-lg text-slate-600 dark:text-slate-300">
           Select a domain to build your personalized playbook
         </p>
       </div>
@@ -565,7 +565,7 @@ export default function SandboxDemo() {
                   <IconComponent className="h-6 w-6" style={{ color: domain.color }} />
                 </div>
                 <h3 className="font-bold text-slate-900 dark:text-white mb-2">{domain.name}</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">{domain.description}</p>
+                <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">{domain.description}</p>
                 <Badge 
                   variant="outline" 
                   className="text-xs"
@@ -590,7 +590,7 @@ export default function SandboxDemo() {
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
           Configure Your {config.domainName} Playbook
         </h2>
-        <p className="text-lg text-slate-600 dark:text-slate-400">
+        <p className="text-lg text-slate-600 dark:text-slate-300">
           Set up your team, decision tree, escalation paths, and communications
         </p>
       </div>
@@ -1235,7 +1235,7 @@ export default function SandboxDemo() {
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
           Configure Task Assignments
         </h2>
-        <p className="text-lg text-slate-600 dark:text-slate-400">
+        <p className="text-lg text-slate-600 dark:text-slate-300">
           Define tasks, assign roles, and set dependencies for your {config.domainName} response
         </p>
       </div>
@@ -1416,7 +1416,7 @@ export default function SandboxDemo() {
           <div className="flex items-center justify-between">
             <div>
               <h4 className="font-bold text-slate-900 dark:text-white">Task Flow Preview</h4>
-              <p className="text-sm text-slate-600 dark:text-slate-400">
+              <p className="text-sm text-slate-600 dark:text-slate-300">
                 Total estimated time: {tasks.reduce((acc, t) => acc + t.estimatedMinutes, 0)} minutes
               </p>
             </div>
@@ -1514,7 +1514,7 @@ export default function SandboxDemo() {
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
           Configure Detection & Triggers
         </h2>
-        <p className="text-lg text-slate-600 dark:text-slate-400">
+        <p className="text-lg text-slate-600 dark:text-slate-300">
           Define signal sources, thresholds, and activation rules for your {config.domainName} playbook
         </p>
       </div>
@@ -1826,7 +1826,7 @@ export default function SandboxDemo() {
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
           {simulationComplete ? 'Response Coordinated!' : 'Running Your Personalized Simulation...'}
         </h2>
-        <p className="text-lg text-slate-600 dark:text-slate-400">
+        <p className="text-lg text-slate-600 dark:text-slate-300">
           {config.companyName || 'Your organization'} responding to {config.domainName} scenario
         </p>
       </div>
@@ -1904,7 +1904,7 @@ export default function SandboxDemo() {
                       : 'bg-slate-50 dark:bg-slate-800'
                   }`}
                 >
-                  <div className="min-w-16 font-mono text-sm font-bold text-slate-600 dark:text-slate-400">
+                  <div className="min-w-16 font-mono text-sm font-bold text-slate-600 dark:text-slate-300">
                     {event.time}
                   </div>
                   <div className="flex-1">
@@ -1920,7 +1920,7 @@ export default function SandboxDemo() {
                         {event.event}
                       </span>
                     </div>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 italic">
+                    <p className="text-xs text-slate-500 dark:text-slate-300 mt-1 italic">
                       {EVENT_EXPLANATIONS[event.type]}
                     </p>
                   </div>
@@ -1951,7 +1951,7 @@ export default function SandboxDemo() {
           <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
             Your Personalized ROI Analysis
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400">
+          <p className="text-lg text-slate-600 dark:text-slate-300">
             Based on your complete {config.domainName} playbook configuration
           </p>
         </div>
@@ -2184,7 +2184,7 @@ export default function SandboxDemo() {
         </Card>
 
         <div className="text-center">
-          <p className="text-slate-600 dark:text-slate-400 mb-4">
+          <p className="text-slate-600 dark:text-slate-300 mb-4">
             Ready to see ExecuteIQ with your real scenarios?
           </p>
           <div className="flex justify-center gap-4">

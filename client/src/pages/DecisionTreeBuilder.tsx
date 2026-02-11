@@ -170,7 +170,7 @@ export default function DecisionTreeBuilder() {
           <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-2" data-testid="page-title">
             Create Decision Tree
           </h1>
-          <p className="text-lg text-slate-600 dark:text-slate-400">
+          <p className="text-lg text-slate-600 dark:text-slate-300">
             Pre-stage critical decisions before scenarios occur. Head coaches prepare decision trees all week—so should you.
           </p>
         </div>
@@ -202,7 +202,7 @@ export default function DecisionTreeBuilder() {
                   <p className="text-sm font-semibold text-slate-900 dark:text-white mb-1">
                     That's the IDEA:
                   </p>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                  <p className="text-sm text-slate-600 dark:text-slate-300">
                     Comfortable and confident that we are prepared to execute. No matter the situation.
                   </p>
                 </div>

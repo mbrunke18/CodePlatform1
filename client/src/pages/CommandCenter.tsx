@@ -284,7 +284,7 @@ export default function CommandCenter() {
                 </h1>
                 <OnboardingTrigger pageId="command-center" autoStart={true} />
               </div>
-              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 flex flex-wrap items-center gap-2">
+              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 flex flex-wrap items-center gap-2">
                 <span className="hidden sm:inline">Real-time strategic execution coordination and control</span>
                 <span className="sm:hidden">Live execution control</span>
                 <Badge variant="outline" className="text-xs">
@@ -298,7 +298,7 @@ export default function CommandCenter() {
                 <div className="text-xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400">
                   {activeScenarios.length}
                 </div>
-                <div className="text-xs sm:text-xs text-slate-600 dark:text-slate-400 uppercase tracking-wide">
+                <div className="text-xs sm:text-xs text-slate-600 dark:text-slate-300 uppercase tracking-wide">
                   Active
                 </div>
               </div>
@@ -307,7 +307,7 @@ export default function CommandCenter() {
                 <div className="text-xl sm:text-3xl font-bold text-violet-600 dark:text-violet-400">
                   {teamsCoordinating}
                 </div>
-                <div className="text-xs sm:text-xs text-slate-600 dark:text-slate-400 uppercase tracking-wide">
+                <div className="text-xs sm:text-xs text-slate-600 dark:text-slate-300 uppercase tracking-wide">
                   Teams
                 </div>
               </div>
@@ -316,7 +316,7 @@ export default function CommandCenter() {
                 <div className="text-xl sm:text-3xl font-bold text-emerald-600 dark:text-emerald-400">
                   {percentOnTrack}%
                 </div>
-                <div className="text-xs sm:text-xs text-slate-600 dark:text-slate-400 uppercase tracking-wide">
+                <div className="text-xs sm:text-xs text-slate-600 dark:text-slate-300 uppercase tracking-wide">
                   On Track
                 </div>
               </div>
@@ -545,7 +545,7 @@ export default function CommandCenter() {
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
                   Ready for Strategic Execution
                 </h3>
-                <p className="text-slate-600 dark:text-slate-400 max-w-md mx-auto mb-6">
+                <p className="text-slate-600 dark:text-slate-300 max-w-md mx-auto mb-6">
                   ExecuteIQ monitors 12 intelligence signals continuously. When a trigger fires, 
                   your coordinated response activates in under 12 minutes.
                 </p>
@@ -595,7 +595,7 @@ export default function CommandCenter() {
                   <CardContent>
                     <div className="space-y-2">
                       <div className="flex items-center justify-between text-sm">
-                        <span className="text-slate-600 dark:text-slate-400">Progress</span>
+                        <span className="text-slate-600 dark:text-slate-300">Progress</span>
                         <span className="font-semibold">{scenario.progress}%</span>
                       </div>
                       <Progress value={scenario.progress} />
@@ -625,25 +625,25 @@ export default function CommandCenter() {
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-emerald-200 dark:border-emerald-900">
-                  <div className="text-xs text-slate-600 dark:text-slate-400 mb-1">Total Value</div>
+                  <div className="text-xs text-slate-600 dark:text-slate-300 mb-1">Total Value</div>
                   <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">
                     ${(roiReport.cumulativeValue / 1000000).toFixed(1)}M
                   </div>
                 </div>
                 <div className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-emerald-200 dark:border-emerald-900">
-                  <div className="text-xs text-slate-600 dark:text-slate-400 mb-1">Executions</div>
+                  <div className="text-xs text-slate-600 dark:text-slate-300 mb-1">Executions</div>
                   <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">
                     {roiReport.totalExecutions}
                   </div>
                 </div>
                 <div className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-emerald-200 dark:border-emerald-900">
-                  <div className="text-xs text-slate-600 dark:text-slate-400 mb-1">Avg Velocity</div>
+                  <div className="text-xs text-slate-600 dark:text-slate-300 mb-1">Avg Velocity</div>
                   <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">
                     {roiReport.avgTimeToActivate}m
                   </div>
                 </div>
                 <div className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-emerald-200 dark:border-emerald-900">
-                  <div className="text-xs text-slate-600 dark:text-slate-400 mb-1">Efficiency</div>
+                  <div className="text-xs text-slate-600 dark:text-slate-300 mb-1">Efficiency</div>
                   <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">
                     {roiReport.efficiency}
                   </div>
@@ -694,7 +694,7 @@ export default function CommandCenter() {
                         </span>
                         <span className="text-xs text-slate-500">{event.time}</span>
                       </div>
-                      <p className="text-sm text-slate-600 dark:text-slate-400 truncate">
+                      <p className="text-sm text-slate-600 dark:text-slate-300 truncate">
                         {event.action}
                       </p>
                     </div>
@@ -733,7 +733,7 @@ export default function CommandCenter() {
                       </p>
                       <div className="flex items-center gap-2 mt-1">
                         <span className="text-xs text-slate-500">{alert.source}</span>
-                        <span className="text-xs text-slate-400">•</span>
+                        <span className="text-xs text-slate-300">•</span>
                         <span className="text-xs text-slate-500">{alert.time}</span>
                       </div>
                     </div>
@@ -762,7 +762,7 @@ export default function CommandCenter() {
                 <div className="text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                   {readiness.overall.toFixed(1)}%
                 </div>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
+                <p className="text-sm text-slate-600 dark:text-slate-300">
                   Overall Readiness Score
                 </p>
               </div>
@@ -807,7 +807,7 @@ export default function CommandCenter() {
                         {signal.confidence}%
                       </Badge>
                     </div>
-                    <p className="text-xs text-slate-600 dark:text-slate-400">
+                    <p className="text-xs text-slate-600 dark:text-slate-300">
                       {signal.source} • {signal.category}
                     </p>
                   </div>
@@ -843,7 +843,7 @@ export default function CommandCenter() {
                         {pattern.accuracy}%
                       </Badge>
                     </div>
-                    <p className="text-xs text-slate-600 dark:text-slate-400">
+                    <p className="text-xs text-slate-600 dark:text-slate-300">
                       {pattern.signals} signals • {pattern.trend}
                     </p>
                   </div>
@@ -890,19 +890,19 @@ export default function CommandCenter() {
                 <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">
                   {continuousMode.enabled ? 'ON' : 'OFF'}
                 </div>
-                <div className="text-xs text-slate-600 dark:text-slate-400">Status</div>
+                <div className="text-xs text-slate-600 dark:text-slate-300">Status</div>
               </div>
               <div className="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
                 <div className="text-3xl font-bold text-violet-600 dark:text-violet-400 mb-1">
                   {continuousMode.tasksScheduled}
                 </div>
-                <div className="text-xs text-slate-600 dark:text-slate-400">Tasks Scheduled</div>
+                <div className="text-xs text-slate-600 dark:text-slate-300">Tasks Scheduled</div>
               </div>
               <div className="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
                 <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-1">
                   {continuousMode.nextRun ? new Date(continuousMode.nextRun).toLocaleTimeString() : '--'}
                 </div>
-                <div className="text-xs text-slate-600 dark:text-slate-400">Next Run</div>
+                <div className="text-xs text-slate-600 dark:text-slate-300">Next Run</div>
               </div>
             </div>
           </CardContent>

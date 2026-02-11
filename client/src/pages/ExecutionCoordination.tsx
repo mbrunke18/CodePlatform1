@@ -190,7 +190,7 @@ export default function ExecutionCoordination() {
               <h1 className="text-3xl font-bold text-slate-900 dark:text-white" data-testid="page-title">
                 Execution Coordination
               </h1>
-              <p className="text-slate-600 dark:text-slate-400">
+              <p className="text-slate-600 dark:text-slate-300">
                 Real-time coordinated response tracking
               </p>
             </div>
@@ -209,7 +209,7 @@ export default function ExecutionCoordination() {
             data-testid="triad-offense"
           >
             <p className="text-xs uppercase tracking-wider text-emerald-600 dark:text-emerald-400 font-semibold mb-1">OFFENSE</p>
-            <p className={`text-sm ${activeCategory === 'offense' ? 'text-emerald-700 dark:text-emerald-300 font-medium' : 'text-slate-600 dark:text-slate-400'}`}>
+            <p className={`text-sm ${activeCategory === 'offense' ? 'text-emerald-700 dark:text-emerald-300 font-medium' : 'text-slate-600 dark:text-slate-300'}`}>
               {activeCategory === 'offense' ? 'M&A Target Acquisition' : 'Seize Opportunities'}
             </p>
           </button>
@@ -223,7 +223,7 @@ export default function ExecutionCoordination() {
             data-testid="triad-defense"
           >
             <p className="text-xs uppercase tracking-wider text-blue-600 dark:text-blue-400 font-semibold mb-1">DEFENSE</p>
-            <p className={`text-sm ${activeCategory === 'defense' ? 'text-blue-700 dark:text-blue-300 font-medium' : 'text-slate-600 dark:text-slate-400'}`}>
+            <p className={`text-sm ${activeCategory === 'defense' ? 'text-blue-700 dark:text-blue-300 font-medium' : 'text-slate-600 dark:text-slate-300'}`}>
               {activeCategory === 'defense' ? 'Data Breach Response' : 'Protect Value'}
             </p>
           </button>
@@ -237,7 +237,7 @@ export default function ExecutionCoordination() {
             data-testid="triad-special"
           >
             <p className="text-xs uppercase tracking-wider text-purple-600 dark:text-purple-400 font-semibold mb-1">SPECIAL TEAMS</p>
-            <p className={`text-sm ${activeCategory === 'special_teams' ? 'text-purple-700 dark:text-purple-300 font-medium' : 'text-slate-600 dark:text-slate-400'}`}>
+            <p className={`text-sm ${activeCategory === 'special_teams' ? 'text-purple-700 dark:text-purple-300 font-medium' : 'text-slate-600 dark:text-slate-300'}`}>
               {activeCategory === 'special_teams' ? 'AI Model Governance' : 'Drive Innovation'}
             </p>
           </button>
@@ -255,7 +255,7 @@ export default function ExecutionCoordination() {
                   <p className="text-2xl font-bold text-slate-900 dark:text-white mb-1">
                     Game Day Execution
                   </p>
-                  <p className="text-lg text-slate-600 dark:text-slate-400">
+                  <p className="text-lg text-slate-600 dark:text-slate-300">
                     You prepared all week. Now just execute—whether seizing an opportunity, defending against a threat, or driving innovation.
                   </p>
                 </div>
@@ -281,7 +281,7 @@ export default function ExecutionCoordination() {
                     {sampleExecution.scenario}
                   </span>
                 </div>
-                <p className="text-slate-600 dark:text-slate-400">
+                <p className="text-slate-600 dark:text-slate-300">
                   Triggered {elapsedMinutes} minutes ago • {sampleExecution.completedTasks}/{sampleExecution.totalTasks} tasks complete
                 </p>
               </div>
@@ -508,7 +508,7 @@ export default function ExecutionCoordination() {
                 <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-1">
                   Industry Comparison
                 </h3>
-                <p className="text-slate-600 dark:text-slate-400">
+                <p className="text-slate-600 dark:text-slate-300">
                   Without ExecuteIQ, this coordinated response would take <span className="font-bold text-red-600">72 hours to decide + 2 weeks to execute</span>. 
                   With ExecuteIQ, you're on track to complete in <span className="font-bold text-emerald-600">~45 minutes total</span>.
                 </p>

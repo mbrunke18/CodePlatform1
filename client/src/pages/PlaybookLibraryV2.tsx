@@ -185,7 +185,7 @@ export default function PlaybookLibraryV2() {
                       <div className="space-y-1.5 mb-4">
                         {config.domains.map((domain, idx) => (
                           <div key={idx} className="flex items-center justify-between text-sm">
-                            <span className="text-slate-600 dark:text-slate-400">{domain.name}</span>
+                            <span className="text-slate-600 dark:text-slate-300">{domain.name}</span>
                             <span className="font-medium text-slate-900 dark:text-white">{domain.count}</span>
                           </div>
                         ))}
@@ -308,7 +308,7 @@ export default function PlaybookLibraryV2() {
                       <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-4">
                         <Search className="h-8 w-8 text-slate-400" />
                       </div>
-                      <p className="text-slate-500 dark:text-slate-400">No playbooks found matching your criteria.</p>
+                      <p className="text-slate-500 dark:text-slate-300">No playbooks found matching your criteria.</p>
                       <Button variant="link" onClick={() => { setSearch(""); setDomainFilter("all"); }}>
                         Clear filters
                       </Button>
@@ -363,7 +363,7 @@ function PlaybookCard({
                     ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
                     : playbook.status === 'active'
                     ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
-                    : 'bg-slate-100 text-slate-700 dark:bg-slate-900/30 dark:text-slate-400'
+                    : 'bg-slate-100 text-slate-700 dark:bg-slate-900/30 dark:text-slate-300'
                 }`}
               >
                 {playbook.status === 'draft' ? 'Draft' : 
@@ -383,7 +383,7 @@ function PlaybookCard({
         <h3 className="font-semibold text-slate-900 dark:text-white mb-2 line-clamp-2 leading-snug">
           {playbook.name}
         </h3>
-        <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2 mb-4">
+        <p className="text-sm text-slate-500 dark:text-slate-300 line-clamp-2 mb-4">
           {playbook.description}
         </p>
         

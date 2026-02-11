@@ -456,7 +456,7 @@ function DemoLiveActivation() {
                 Human-in-the-Loop Activation
               </Badge>
             </div>
-            <p className="text-2xl text-slate-600 dark:text-slate-400">
+            <p className="text-2xl text-slate-600 dark:text-slate-300">
               Real-time Strategic Coordination
             </p>
           </div>
@@ -506,22 +506,22 @@ function DemoLiveActivation() {
                   <div className="text-3xl font-bold text-slate-900 dark:text-white mb-2" data-testid="text-stakeholder-count">
                     {STAKEHOLDER_ROSTER.length}
                   </div>
-                  <div className="text-slate-600 dark:text-slate-400 text-lg">Stakeholders</div>
+                  <div className="text-slate-600 dark:text-slate-300 text-lg">Stakeholders</div>
                 </div>
                 <div className="text-center p-6 bg-purple-50 dark:bg-slate-800/50 rounded-lg border border-purple-200 dark:border-slate-700">
                   <Clock className="h-12 w-12 text-purple-600 dark:text-purple-400 mx-auto mb-3" />
                   <div className="text-3xl font-bold text-slate-900 dark:text-white mb-2">~12 min</div>
-                  <div className="text-slate-600 dark:text-slate-400 text-lg">Duration</div>
+                  <div className="text-slate-600 dark:text-slate-300 text-lg">Duration</div>
                 </div>
                 <div className="text-center p-6 bg-green-50 dark:bg-slate-800/50 rounded-lg border border-green-200 dark:border-slate-700">
                   <DollarSign className="h-12 w-12 text-green-600 dark:text-green-400 mx-auto mb-3" />
                   <div className="text-3xl font-bold text-slate-900 dark:text-white mb-2">{DEMO_SCENARIO.valueProp}</div>
-                  <div className="text-slate-600 dark:text-slate-400 text-lg">Value Created</div>
+                  <div className="text-slate-600 dark:text-slate-300 text-lg">Value Created</div>
                 </div>
               </div>
 
               <div className="text-center">
-                <p className="text-slate-600 dark:text-slate-400 text-lg mb-6">
+                <p className="text-slate-600 dark:text-slate-300 text-lg mb-6">
                   Click "Begin Activation" above to start the 12-minute live demonstration
                 </p>
                 <div className="flex items-center justify-center gap-4 text-sm text-slate-500 dark:text-slate-500">
@@ -560,7 +560,7 @@ function DemoLiveActivation() {
                 <p className="text-xl text-slate-700 dark:text-slate-300 mb-3" data-testid="text-playbook-name">
                   Playbook: {DEMO_SCENARIO.playbook}
                 </p>
-                <p className="text-lg text-slate-600 dark:text-slate-400" data-testid="text-scenario-description">
+                <p className="text-lg text-slate-600 dark:text-slate-300" data-testid="text-scenario-description">
                   {DEMO_SCENARIO.description}
                 </p>
               </div>
@@ -619,7 +619,7 @@ function DemoLiveActivation() {
                 <p className="font-semibold text-sm text-green-900 dark:text-green-100">
                   ✅ All Critical Stakeholders Engaged
                 </p>
-                <p className="text-xs text-slate-600 dark:text-slate-400">
+                <p className="text-xs text-slate-600 dark:text-slate-300">
                   Human-in-the-loop coordination: {acknowledgments.length}/{totalStakeholders} stakeholders approved their roles
                 </p>
               </div>
@@ -641,7 +641,7 @@ function DemoLiveActivation() {
                 {acknowledgments.length} of {totalStakeholders} Acknowledged
               </Badge>
             </CardTitle>
-            <p className="text-slate-600 dark:text-slate-400 text-lg mt-2">
+            <p className="text-slate-600 dark:text-slate-300 text-lg mt-2">
               Real-time coordination across all executive stakeholders
             </p>
           </CardHeader>
@@ -672,7 +672,7 @@ function DemoLiveActivation() {
                         <div className={`font-semibold text-sm ${isAcknowledged ? 'text-green-700 dark:text-green-300' : 'text-slate-900 dark:text-white'} truncate`}>
                           {stakeholder.name}
                         </div>
-                        <div className={`text-xs ${isAcknowledged ? 'text-green-600 dark:text-green-400' : 'text-slate-600 dark:text-slate-400'} truncate`}>
+                        <div className={`text-xs ${isAcknowledged ? 'text-green-600 dark:text-green-400' : 'text-slate-600 dark:text-slate-300'} truncate`}>
                           {stakeholder.role}
                         </div>
                         <div className="text-xs text-slate-500 dark:text-slate-500 truncate">

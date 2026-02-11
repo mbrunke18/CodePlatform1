@@ -39,7 +39,7 @@ function PullQuote({ children, author }: { children: React.ReactNode; author?: s
         {children}
       </blockquote>
       {author && (
-        <p className="mt-4 pl-8 md:pl-12 text-slate-500 dark:text-slate-400 font-medium">— {author}</p>
+        <p className="mt-4 pl-8 md:pl-12 text-slate-500 dark:text-slate-300 font-medium">— {author}</p>
       )}
     </div>
   );
@@ -208,7 +208,7 @@ export default function OurStory() {
               <p className="text-2xl font-bold text-red-700 dark:text-red-300 italic">
                 "Let me schedule a meeting to discuss our response."
               </p>
-              <p className="text-sm text-slate-600 dark:text-slate-400 mt-3">
+              <p className="text-sm text-slate-600 dark:text-slate-300 mt-3">
                 That meeting was scheduled three days later.
               </p>
             </div>
@@ -238,15 +238,15 @@ export default function OurStory() {
             <div className="grid grid-cols-3 gap-4 my-8">
               <div className="text-center p-4 bg-slate-100 dark:bg-slate-800 rounded-xl">
                 <div className="text-3xl font-bold text-orange-600">$144M</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400">Annual Value Gap</div>
+                <div className="text-sm text-slate-600 dark:text-slate-300">Annual Value Gap</div>
               </div>
               <div className="text-center p-4 bg-slate-100 dark:bg-slate-800 rounded-xl">
                 <div className="text-3xl font-bold text-orange-600">87%</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400">Transformations Fail</div>
+                <div className="text-sm text-slate-600 dark:text-slate-300">Transformations Fail</div>
               </div>
               <div className="text-center p-4 bg-slate-100 dark:bg-slate-800 rounded-xl">
                 <div className="text-3xl font-bold text-orange-600">10,000x</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400">Speed Difference</div>
+                <div className="text-sm text-slate-600 dark:text-slate-300">Speed Difference</div>
               </div>
             </div>
 
@@ -272,7 +272,7 @@ export default function OurStory() {
                 <div key={i} className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-5">
                   <item.icon className="h-6 w-6 text-blue-600 mb-2" />
                   <h4 className="font-semibold text-slate-900 dark:text-white">{item.title}</h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">{item.desc}</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -349,7 +349,7 @@ export default function OurStory() {
                   <div className="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0 mt-0.5">
                     <span className="text-green-600 text-xs font-bold">✓</span>
                   </div>
-                  <span className="text-slate-600 dark:text-slate-400">{principle}</span>
+                  <span className="text-slate-600 dark:text-slate-300">{principle}</span>
                 </div>
               ))}
             </div>

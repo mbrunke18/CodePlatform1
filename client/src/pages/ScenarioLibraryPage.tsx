@@ -46,7 +46,7 @@ export default function ScenarioLibraryPage() {
             <h1 className="text-title mb-2">
             Scenario Library
           </h1>
-          <p className="text-slate-600 dark:text-slate-400 mb-6">
+          <p className="text-slate-600 dark:text-slate-300 mb-6">
             166 battle-tested strategic playbooks across 9 domains
           </p>
 
@@ -103,7 +103,7 @@ export default function ScenarioLibraryPage() {
             <Card className="bg-slate-50 dark:bg-slate-900 border-dashed">
               <CardContent className="p-12 text-center">
                 <BookOpen className="w-12 h-12 text-slate-400 mx-auto mb-3" />
-                <p className="text-slate-600 dark:text-slate-400">
+                <p className="text-slate-600 dark:text-slate-300">
                   No playbooks found matching "{searchQuery}". Try a different search term.
                 </p>
               </CardContent>
@@ -131,11 +131,11 @@ export default function ScenarioLibraryPage() {
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-slate-600 dark:text-slate-400">Activations:</span>
+                      <span className="text-slate-600 dark:text-slate-300">Activations:</span>
                       <Badge variant="secondary">{playbook.activations}</Badge>
                     </div>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-slate-600 dark:text-slate-400">Last used:</span>
+                      <span className="text-slate-600 dark:text-slate-300">Last used:</span>
                       <span className="font-medium">{playbook.lastUsed}</span>
                     </div>
                     <Button className="w-full" size="sm" data-testid={`button-view-details-${playbook.id}`}>

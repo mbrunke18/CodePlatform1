@@ -374,7 +374,7 @@ export default function CompetitivePositioning() {
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-gap">
                 The $2M Gap Between Alert and Action
               </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+              <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
                 When a strategic event hits, organizations spend 20-50 hours getting organized. 
                 That's $60K-$2M in lost value per major event. ExecuteIQ eliminates that gap entirely.
               </p>
@@ -409,7 +409,7 @@ export default function CompetitivePositioning() {
                       </div>
                       <ArrowRight className="w-4 h-4 text-slate-400" />
                       <div className="bg-slate-100 dark:bg-slate-800 rounded-lg p-3 text-center">
-                        <div className="text-xs text-slate-600 dark:text-slate-400">Execution</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-300">Execution</div>
                         <div className="font-bold text-slate-700 dark:text-slate-300">+72 hrs</div>
                       </div>
                     </div>
@@ -452,7 +452,7 @@ export default function CompetitivePositioning() {
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-battle-cards">
                 Competitive Battle Cards
               </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-400">
+              <p className="text-lg text-slate-600 dark:text-slate-300">
                 How ExecuteIQ positions against each category of competitor
               </p>
             </div>
@@ -504,7 +504,7 @@ export default function CompetitivePositioning() {
                           <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">Their Strengths</div>
                           <ul className="space-y-1">
                             {tool.strengths.map((s, i) => (
-                              <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                              <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
                                 <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" /> {s}
                               </li>
                             ))}
@@ -514,7 +514,7 @@ export default function CompetitivePositioning() {
                           <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps ExecuteIQ Fills</div>
                           <ul className="space-y-1">
                             {tool.gaps.map((g, i) => (
-                              <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                              <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
                                 <Zap className="w-3 h-3 text-blue-500 flex-shrink-0" /> {g}
                               </li>
                             ))}
@@ -560,7 +560,7 @@ export default function CompetitivePositioning() {
                             <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">Their Strengths</div>
                             <ul className="space-y-1">
                               {tool.strengths.map((s, i) => (
-                                <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                                <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
                                   <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" /> {s}
                                 </li>
                               ))}
@@ -570,7 +570,7 @@ export default function CompetitivePositioning() {
                             <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps ExecuteIQ Fills</div>
                             <ul className="space-y-1">
                               {tool.gaps.map((g, i) => (
-                                <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                                <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
                                   <Zap className="w-3 h-3 text-blue-500 flex-shrink-0" /> {g}
                                 </li>
                               ))}
@@ -630,7 +630,7 @@ export default function CompetitivePositioning() {
                             <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">Their Strengths</div>
                             <ul className="space-y-1">
                               {tool.strengths.map((s, i) => (
-                                <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                                <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
                                   <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" /> {s}
                                 </li>
                               ))}
@@ -640,7 +640,7 @@ export default function CompetitivePositioning() {
                             <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps ExecuteIQ Fills</div>
                             <ul className="space-y-1">
                               {tool.gaps.map((g, i) => (
-                                <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                                <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
                                   <Zap className="w-3 h-3 text-blue-500 flex-shrink-0" /> {g}
                                 </li>
                               ))}
@@ -686,7 +686,7 @@ export default function CompetitivePositioning() {
                           <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">Their Strengths</div>
                           <ul className="space-y-1">
                             {tool.strengths.map((s, i) => (
-                              <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                              <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
                                 <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" /> {s}
                               </li>
                             ))}
@@ -696,7 +696,7 @@ export default function CompetitivePositioning() {
                           <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps ExecuteIQ Fills</div>
                           <ul className="space-y-1">
                             {tool.gaps.map((g, i) => (
-                              <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                              <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
                                 <Zap className="w-3 h-3 text-blue-500 flex-shrink-0" /> {g}
                               </li>
                             ))}
@@ -737,7 +737,7 @@ export default function CompetitivePositioning() {
                           <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">Their Strengths</div>
                           <ul className="space-y-1">
                             {tool.strengths.map((s, i) => (
-                              <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                              <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
                                 <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" /> {s}
                               </li>
                             ))}
@@ -747,7 +747,7 @@ export default function CompetitivePositioning() {
                           <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps ExecuteIQ Fills</div>
                           <ul className="space-y-1">
                             {tool.gaps.map((g, i) => (
-                              <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                              <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
                                 <Zap className="w-3 h-3 text-blue-500 flex-shrink-0" /> {g}
                               </li>
                             ))}
@@ -775,7 +775,7 @@ export default function CompetitivePositioning() {
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-category-comparison">
                 Five Categories, One Gap
               </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-400">
+              <p className="text-lg text-slate-600 dark:text-slate-300">
                 ExecuteIQ is the only platform that bridges planning, detection, coordination, and execution
               </p>
             </div>
@@ -789,37 +789,37 @@ export default function CompetitivePositioning() {
                       <th className="text-center p-3">
                         <div className="flex flex-col items-center">
                           <Bell className="w-4 h-4 text-red-500 mb-1" />
-                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Crisis</span>
+                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">Crisis</span>
                         </div>
                       </th>
                       <th className="text-center p-3">
                         <div className="flex flex-col items-center">
                           <Settings className="w-4 h-4 text-green-500 mb-1" />
-                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">PM</span>
+                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">PM</span>
                         </div>
                       </th>
                       <th className="text-center p-3">
                         <div className="flex flex-col items-center">
                           <Target className="w-4 h-4 text-indigo-500 mb-1" />
-                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">OKR</span>
+                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">OKR</span>
                         </div>
                       </th>
                       <th className="text-center p-3">
                         <div className="flex flex-col items-center">
                           <Zap className="w-4 h-4 text-orange-500 mb-1" />
-                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Automation</span>
+                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">Automation</span>
                         </div>
                       </th>
                       <th className="text-center p-3">
                         <div className="flex flex-col items-center">
                           <Calculator className="w-4 h-4 text-sky-500 mb-1" />
-                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Planning</span>
+                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">Planning</span>
                         </div>
                       </th>
                       <th className="text-center p-3 bg-blue-50 dark:bg-blue-900/20">
                         <div className="flex flex-col items-center">
                           <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mb-1">
-                            <span className="text-white font-bold text-[8px]">P</span>
+                            <span className="text-white font-bold text-xs">P</span>
                           </div>
                           <span className="text-xs font-bold text-blue-600 dark:text-blue-400">ExecuteIQ</span>
                         </div>
@@ -880,7 +880,7 @@ export default function CompetitivePositioning() {
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-objections">
                 Objection Handling Guide
               </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-400">
+              <p className="text-lg text-slate-600 dark:text-slate-300">
                 Common pushback and how to address it
               </p>
             </div>
@@ -904,7 +904,7 @@ export default function CompetitivePositioning() {
                       <div className="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/30">
                         <MessageSquare className="w-5 h-5 text-emerald-500" />
                       </div>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">{obj.response}</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-300">{obj.response}</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -1001,7 +1001,7 @@ export default function CompetitivePositioning() {
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-cta">
               Ready to Own Strategic Execution?
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
+            <p className="text-lg text-slate-600 dark:text-slate-300 mb-8">
               See how ExecuteIQ eliminates the 20-50 hours between alert and action
             </p>
             <div className="flex flex-wrap justify-center gap-4">

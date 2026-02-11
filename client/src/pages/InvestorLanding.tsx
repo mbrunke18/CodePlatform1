@@ -123,7 +123,7 @@ export default function InvestorLanding() {
               <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-testid="heading-market">
                 Massive Market Opportunity
               </h2>
-              <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto" data-testid="text-market-subtitle">
+              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-market-subtitle">
                 Creating a new $127B software category at the intersection of strategic planning, AI intelligence, and execution automation
               </p>
             </div>
@@ -138,7 +138,7 @@ export default function InvestorLanding() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-4xl font-bold text-blue-600 mb-2" data-testid="text-tam-value">$127B</div>
-                  <p className="text-slate-600 dark:text-slate-400" data-testid="text-tam-description">
+                  <p className="text-slate-600 dark:text-slate-300" data-testid="text-tam-description">
                     Fortune 1000 strategic execution software spend (15% of $847B total strategic initiatives budget)
                   </p>
                 </CardContent>
@@ -153,7 +153,7 @@ export default function InvestorLanding() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-4xl font-bold text-purple-600 mb-2" data-testid="text-sam-value">$38B</div>
-                  <p className="text-slate-600 dark:text-slate-400" data-testid="text-sam-description">
+                  <p className="text-slate-600 dark:text-slate-300" data-testid="text-sam-description">
                     Fortune 500 + high-growth enterprises with $1B+ revenue requiring executive decision velocity
                   </p>
                 </CardContent>
@@ -168,7 +168,7 @@ export default function InvestorLanding() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-4xl font-bold text-green-600 mb-2" data-testid="text-som-value">$1.9B</div>
-                  <p className="text-slate-600 dark:text-slate-400" data-testid="text-som-description">
+                  <p className="text-slate-600 dark:text-slate-300" data-testid="text-som-description">
                     5% market capture in Year 5 (50 Fortune 500 + 200 mid-market at $250K-$1.5M ACV)
                   </p>
                 </CardContent>
@@ -197,7 +197,7 @@ export default function InvestorLanding() {
                     </Bar>
                   </BarChart>
                 </ResponsiveContainer>
-                <div className="mt-4 text-center text-sm text-slate-600 dark:text-slate-400">
+                <div className="mt-4 text-center text-sm text-slate-600 dark:text-slate-300">
                   Progressive market capture: $127B TAM → $38B SAM → $1.9B SOM (Year 5)
                 </div>
               </CardContent>
@@ -213,28 +213,28 @@ export default function InvestorLanding() {
                     <CheckCircle2 className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white mb-1">AI Maturity Reached</div>
-                      <div className="text-slate-600 dark:text-slate-400">LLMs enable real-time strategic intelligence at scale (GPT-4, Claude, Gemini)</div>
+                      <div className="text-slate-600 dark:text-slate-300">LLMs enable real-time strategic intelligence at scale (GPT-4, Claude, Gemini)</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3" data-testid="reason-2">
                     <CheckCircle2 className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white mb-1">Execution Crisis</div>
-                      <div className="text-slate-600 dark:text-slate-400">87% of strategic initiatives fail—executives desperate for execution velocity</div>
+                      <div className="text-slate-600 dark:text-slate-300">87% of strategic initiatives fail—executives desperate for execution velocity</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3" data-testid="reason-3">
                     <CheckCircle2 className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white mb-1">Remote Work Complexity</div>
-                      <div className="text-slate-600 dark:text-slate-400">Distributed teams make coordination harder—need automated orchestration</div>
+                      <div className="text-slate-600 dark:text-slate-300">Distributed teams make coordination harder—need automated orchestration</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3" data-testid="reason-4">
                     <CheckCircle2 className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white mb-1">Competitive Velocity</div>
-                      <div className="text-slate-600 dark:text-slate-400">Market windows shrinking from months to days—speed is survival</div>
+                      <div className="text-slate-600 dark:text-slate-300">Market windows shrinking from months to days—speed is survival</div>
                     </div>
                   </div>
                 </div>
@@ -250,7 +250,7 @@ export default function InvestorLanding() {
               <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-testid="heading-moat">
                 Defensible Competitive Moat
               </h2>
-              <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto" data-testid="text-moat-subtitle">
+              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-moat-subtitle">
                 Multi-layered advantages that compound over time, creating winner-take-most dynamics
               </p>
             </div>
@@ -264,7 +264,7 @@ export default function InvestorLanding() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600 dark:text-slate-400 mb-4">
+                  <p className="text-slate-600 dark:text-slate-300 mb-4">
                     Competitors offer point solutions (BI tools, project management, chatbots). ExecuteIQ integrates entire strategic execution workflow—massive switching costs once embedded.
                   </p>
                   <div className="text-sm font-semibold text-primary" data-testid="text-moat-ecosystem-advantage">
@@ -281,7 +281,7 @@ export default function InvestorLanding() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600 dark:text-slate-400 mb-4">
+                  <p className="text-slate-600 dark:text-slate-300 mb-4">
                     AI learns from every decision across all customers (anonymized). More customers = smarter recommendations = higher retention. Data moat compounds quarterly.
                   </p>
                   <div className="text-sm font-semibold text-primary" data-testid="text-moat-memory-advantage">
@@ -298,7 +298,7 @@ export default function InvestorLanding() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600 dark:text-slate-400 mb-4">
+                  <p className="text-slate-600 dark:text-slate-300 mb-4">
                     Start with 13+ templates, grows to 500+ as customers contribute. More templates = more use cases = more customers. Self-reinforcing growth loop.
                   </p>
                   <div className="text-sm font-semibold text-primary" data-testid="text-moat-templates-advantage">
@@ -315,7 +315,7 @@ export default function InvestorLanding() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600 dark:text-slate-400 mb-4">
+                  <p className="text-slate-600 dark:text-slate-300 mb-4">
                     First mover defining "Strategic Execution Operating System" category (like Salesforce for CRM). Category creators capture 76% of market value (Gartner research).
                   </p>
                   <div className="text-sm font-semibold text-primary" data-testid="text-moat-category-advantage">
@@ -334,7 +334,7 @@ export default function InvestorLanding() {
               <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-testid="heading-model">
                 High-Margin SaaS Business Model
               </h2>
-              <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto" data-testid="text-model-subtitle">
+              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-model-subtitle">
                 Enterprise pricing with expansion revenue and sticky product-led growth
               </p>
             </div>
@@ -349,8 +349,8 @@ export default function InvestorLanding() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-3xl font-bold text-green-600 mb-2" data-testid="text-price-enterprise">$250K</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400 mb-4">Annual Contract Value</div>
-                  <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                  <div className="text-sm text-slate-600 dark:text-slate-300 mb-4">Annual Contract Value</div>
+                  <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-green-600" />
                       Single domain
@@ -376,8 +376,8 @@ export default function InvestorLanding() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-3xl font-bold text-blue-600 mb-2" data-testid="text-price-team">$450K</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400 mb-4">Annual Contract Value</div>
-                  <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                  <div className="text-sm text-slate-600 dark:text-slate-300 mb-4">Annual Contract Value</div>
+                  <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-blue-600" />
                       Multi-domain
@@ -403,8 +403,8 @@ export default function InvestorLanding() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-3xl font-bold text-purple-600 mb-2" data-testid="text-price-executive">$750K-$1.5M</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400 mb-4">Custom Annual Contract</div>
-                  <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                  <div className="text-sm text-slate-600 dark:text-slate-300 mb-4">Custom Annual Contract</div>
+                  <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-purple-600" />
                       Multi-region orchestration
@@ -433,21 +433,21 @@ export default function InvestorLanding() {
                       <BarChart3 className="h-5 w-5 text-green-600" />
                       <div className="font-semibold text-slate-900 dark:text-white">Integration Marketplace</div>
                     </div>
-                    <div className="text-slate-600 dark:text-slate-400">20% rev-share on third-party integrations (Salesforce, Jira, Slack)</div>
+                    <div className="text-slate-600 dark:text-slate-300">20% rev-share on third-party integrations (Salesforce, Jira, Slack)</div>
                   </div>
                   <div data-testid="expansion-2">
                     <div className="flex items-center gap-2 mb-2">
                       <Zap className="h-5 w-5 text-blue-600" />
                       <div className="font-semibold text-slate-900 dark:text-white">Premium Templates</div>
                     </div>
-                    <div className="text-slate-600 dark:text-slate-400">Industry-specific playbooks ($5K-$50K per template pack)</div>
+                    <div className="text-slate-600 dark:text-slate-300">Industry-specific playbooks ($5K-$50K per template pack)</div>
                   </div>
                   <div data-testid="expansion-3">
                     <div className="flex items-center gap-2 mb-2">
                       <Lock className="h-5 w-5 text-purple-600" />
                       <div className="font-semibold text-slate-900 dark:text-white">Advisory Services</div>
                     </div>
-                    <div className="text-slate-600 dark:text-slate-400">Strategic workshops ($50K-$200K per engagement)</div>
+                    <div className="text-slate-600 dark:text-slate-300">Strategic workshops ($50K-$200K per engagement)</div>
                   </div>
                 </div>
               </CardContent>
@@ -462,7 +462,7 @@ export default function InvestorLanding() {
               <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-testid="heading-economics">
                 Best-in-Class Unit Economics
               </h2>
-              <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto" data-testid="text-economics-subtitle">
+              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-economics-subtitle">
                 High LTV, low CAC, exceptional retention—SaaS metrics investors love
               </p>
             </div>
@@ -470,7 +470,7 @@ export default function InvestorLanding() {
             <div className="grid md:grid-cols-4 gap-6">
               <Card className="border-2" data-testid="card-ltv-cac">
                 <CardContent className="pt-6">
-                  <div className="text-sm text-slate-600 dark:text-slate-400 mb-2">LTV:CAC Ratio</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">LTV:CAC Ratio</div>
                   <div className="text-4xl font-bold text-green-600 mb-1" data-testid="text-ltv-cac">8.4:1</div>
                   <div className="text-xs text-slate-500">Target: &gt;3:1 (Exceptional)</div>
                 </CardContent>
@@ -478,7 +478,7 @@ export default function InvestorLanding() {
 
               <Card className="border-2" data-testid="card-payback">
                 <CardContent className="pt-6">
-                  <div className="text-sm text-slate-600 dark:text-slate-400 mb-2">CAC Payback</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">CAC Payback</div>
                   <div className="text-4xl font-bold text-blue-600 mb-1" data-testid="text-payback">7 months</div>
                   <div className="text-xs text-slate-500">Target: &lt;12mo (Excellent)</div>
                 </CardContent>
@@ -486,7 +486,7 @@ export default function InvestorLanding() {
 
               <Card className="border-2" data-testid="card-ndr">
                 <CardContent className="pt-6">
-                  <div className="text-sm text-slate-600 dark:text-slate-400 mb-2">Net Dollar Retention</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">Net Dollar Retention</div>
                   <div className="text-4xl font-bold text-purple-600 mb-1" data-testid="text-ndr">142%</div>
                   <div className="text-xs text-slate-500">Target: &gt;120% (Best-in-class)</div>
                 </CardContent>
@@ -494,7 +494,7 @@ export default function InvestorLanding() {
 
               <Card className="border-2" data-testid="card-gross-margin">
                 <CardContent className="pt-6">
-                  <div className="text-sm text-slate-600 dark:text-slate-400 mb-2">Gross Margin</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">Gross Margin</div>
                   <div className="text-4xl font-bold text-indigo-600 mb-1" data-testid="text-gross-margin">87%</div>
                   <div className="text-xs text-slate-500">Target: &gt;80% (Premium SaaS)</div>
                 </CardContent>
@@ -522,7 +522,7 @@ export default function InvestorLanding() {
                     <Line yAxisId="right" type="monotone" dataKey="cac" stroke="#8B5CF6" strokeWidth={2} name="CAC ($K)" />
                   </LineChart>
                 </ResponsiveContainer>
-                <div className="mt-4 text-center text-sm text-slate-600 dark:text-slate-400">
+                <div className="mt-4 text-center text-sm text-slate-600 dark:text-slate-300">
                   LTV:CAC improving from 3.2:1 (Y1) to 8.4:1 (Y5) as scale economics kick in
                 </div>
               </CardContent>
@@ -565,7 +565,7 @@ export default function InvestorLanding() {
                         <div className="w-4 h-4 rounded" style={{ backgroundColor: '#10B981' }}></div>
                         <div className="font-semibold text-slate-900 dark:text-white">Cost Savings: $7.2M</div>
                       </div>
-                      <div className="text-sm text-slate-600 dark:text-slate-400">
+                      <div className="text-sm text-slate-600 dark:text-slate-300">
                         Eliminated coordination delays, reduced strategic initiative failures
                       </div>
                     </div>
@@ -574,7 +574,7 @@ export default function InvestorLanding() {
                         <div className="w-4 h-4 rounded" style={{ backgroundColor: '#3B82F6' }}></div>
                         <div className="font-semibold text-slate-900 dark:text-white">Time Recovery: $3.4M</div>
                       </div>
-                      <div className="text-sm text-slate-600 dark:text-slate-400">
+                      <div className="text-sm text-slate-600 dark:text-slate-300">
                         342 hours saved monthly, valued at executive time rates
                       </div>
                     </div>
@@ -583,7 +583,7 @@ export default function InvestorLanding() {
                         <div className="w-4 h-4 rounded" style={{ backgroundColor: '#8B5CF6' }}></div>
                         <div className="font-semibold text-slate-900 dark:text-white">Risk Mitigation: $1.8M</div>
                       </div>
-                      <div className="text-sm text-slate-600 dark:text-slate-400">
+                      <div className="text-sm text-slate-600 dark:text-slate-300">
                         Prevented strategic missteps through AI-powered early warnings
                       </div>
                     </div>

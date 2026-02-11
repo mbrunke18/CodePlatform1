@@ -108,7 +108,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
-              className="text-lg text-slate-400 mb-4"
+              className="text-lg text-slate-300 mb-4"
             >
               Most organizations?
             </motion.p>
@@ -131,7 +131,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
-              className="text-lg text-slate-400 mb-6"
+              className="text-lg text-slate-300 mb-6"
             >
               ExecuteIQ: 166 playbooks for offense, defense, and special teams.
             </motion.p>
@@ -252,12 +252,12 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
             >
               <div className="text-center">
                 <div className="text-4xl font-bold text-red-500">72 hrs</div>
-                <div className="text-sm text-slate-500">Company A</div>
+                <div className="text-sm text-slate-300">Company A</div>
               </div>
               <div className="text-slate-600">vs</div>
               <div className="text-center">
                 <div className="text-4xl font-bold text-emerald-400">?</div>
-                <div className="text-sm text-slate-500">Company B</div>
+                <div className="text-sm text-slate-300">Company B</div>
               </div>
             </motion.div>
           </div>
@@ -275,7 +275,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
             >
               <div className="text-center opacity-50">
                 <div className="text-4xl font-bold text-red-500 line-through">72 hrs</div>
-                <div className="text-sm text-slate-500">Still scheduling</div>
+                <div className="text-sm text-slate-300">Still scheduling</div>
               </div>
               <ArrowRight className="h-8 w-8 text-emerald-400" />
               <div className="text-center">
@@ -294,7 +294,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
-              className="text-xl text-slate-400 mb-4"
+              className="text-xl text-slate-300 mb-4"
             >
               First movers don't wait for meetings.
             </motion.p>
@@ -375,7 +375,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.5 }}
-              className="text-lg text-slate-400 mt-4"
+              className="text-lg text-slate-300 mt-4"
             >
               Average time to coordinate a strategic response.
             </motion.p>
@@ -398,7 +398,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.5 }}
-              className="text-lg text-slate-400 mt-4"
+              className="text-lg text-slate-300 mt-4"
             >
               ExecuteIQ.
             </motion.p>
@@ -426,7 +426,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.6 }}
-              className="text-lg text-slate-400"
+              className="text-lg text-slate-300"
             >
               166 playbooks. Instant coordination.
               <br />Whether you're playing offense, defense, or changing the game.
@@ -550,7 +550,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onClick={restart}
-            className="ml-4 flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
+            className="ml-4 flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
             data-testid={`button-replay-${version}`}
           >
             <RotateCcw className="h-4 w-4" />
@@ -566,14 +566,14 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
             setCurrentScene(totalScenes - 1);
             setHasCompleted(true);
           }}
-          className="absolute bottom-8 right-8 text-slate-500 hover:text-white text-sm transition-colors"
+          className="absolute bottom-8 right-8 text-slate-300 hover:text-white text-sm transition-colors"
           data-testid={`button-skip-${version}`}
         >
           Skip
         </button>
       )}
       
-      <div className="absolute top-4 left-4 text-slate-500 text-sm">
+      <div className="absolute top-4 left-4 text-slate-300 text-sm">
         30-Second Spot: {getTitle()}
       </div>
     </div>

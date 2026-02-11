@@ -86,7 +86,7 @@ export default function FutureGym() {
               <Dumbbell className="w-10 h-10 text-blue-600" />
               Future Gym
             </h1>
-            <p className="text-slate-600 dark:text-slate-400">
+            <p className="text-slate-600 dark:text-slate-300">
               Build strategic muscle through simulated scenarios and practice drills
             </p>
           </div>
@@ -135,7 +135,7 @@ export default function FutureGym() {
               {Object.entries(readiness).filter(([key]) => key !== 'overall').map(([key, value]) => (
                 <div key={key} className="text-center">
                   <div className="text-2xl font-bold text-blue-600 mb-1">{value}%</div>
-                  <div className="text-xs uppercase tracking-wide text-slate-600 dark:text-slate-400 mb-2">
+                  <div className="text-xs uppercase tracking-wide text-slate-600 dark:text-slate-300 mb-2">
                     {key}
                   </div>
                   <Progress value={value} className="h-2" />
@@ -172,7 +172,7 @@ export default function FutureGym() {
                       }>
                         {scenario.difficulty}
                       </Badge>
-                      <span className="text-sm text-slate-600 dark:text-slate-400">
+                      <span className="text-sm text-slate-600 dark:text-slate-300">
                         {scenario.duration}
                       </span>
                     </div>

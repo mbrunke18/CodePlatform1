@@ -262,7 +262,7 @@ export default function PlaybookLibrary() {
           <h1 className="text-4xl font-bold text-slate-900 dark:text-white">
             {actNowMode ? "Act Now" : "166 Playbooks. Infinite Customization."}
           </h1>
-          <p className="text-slate-600 dark:text-slate-400 mt-2 max-w-3xl">
+          <p className="text-slate-600 dark:text-slate-300 mt-2 max-w-3xl">
             {actNowMode 
               ? "Prioritized plays based on real execution data."
               : "Every playbook is execution infrastructure—governance, decision rights, and coordination pre-defined. Start with ours. Make them yours. Or build from scratch."
@@ -288,7 +288,7 @@ export default function PlaybookLibrary() {
               onCheckedChange={setActNowMode}
               data-testid="switch-act-now"
             />
-            <span className="text-sm text-slate-600 dark:text-slate-400">Act Now priority</span>
+            <span className="text-sm text-slate-600 dark:text-slate-300">Act Now priority</span>
           </div>
         </div>
 
@@ -322,7 +322,7 @@ export default function PlaybookLibrary() {
                       </div>
                       <div>
                         <CardTitle className={meta.text}>{meta.label}</CardTitle>
-                        <CardDescription className="text-slate-600 dark:text-slate-400">{meta.tagline}</CardDescription>
+                        <CardDescription className="text-slate-600 dark:text-slate-300">{meta.tagline}</CardDescription>
                       </div>
                     </div>
                   </CardHeader>
@@ -332,7 +332,7 @@ export default function PlaybookLibrary() {
                         .sort(([,a], [,b]) => b - a)
                         .map(([domainName, count]) => (
                         <div key={domainName} className="flex justify-between items-center">
-                          <span className="text-slate-600 dark:text-slate-400 truncate">{domainName}</span>
+                          <span className="text-slate-600 dark:text-slate-300 truncate">{domainName}</span>
                           <span className={`${meta.text} font-medium ml-2`}>{count}</span>
                         </div>
                       ))}
@@ -340,7 +340,7 @@ export default function PlaybookLibrary() {
                     <div className="mt-4 pt-3 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between">
                       <Badge className={meta.badge}>{categoryCounts[category]} Playbooks</Badge>
                       {isSelected && (
-                        <span className="text-xs text-slate-500">Click to clear</span>
+                        <span className="text-xs text-slate-600">Click to clear</span>
                       )}
                     </div>
                   </CardContent>
@@ -367,14 +367,14 @@ export default function PlaybookLibrary() {
         )}
 
         {isLoading && (
-          <div className="py-24 text-center text-slate-500" data-testid="loading-state">
+          <div className="py-24 text-center text-slate-600" data-testid="loading-state">
             <Layers className="h-8 w-8 mx-auto mb-3 animate-pulse" />
             {actNowMode ? "Analyzing execution history…" : "Loading strategic plays…"}
           </div>
         )}
 
         {!isLoading && totalCount === 0 && (
-          <div className="py-24 text-center text-slate-500" data-testid="empty-state">
+          <div className="py-24 text-center text-slate-600" data-testid="empty-state">
             <BookOpen className="h-12 w-12 mx-auto mb-3 opacity-50" />
             <p className="font-medium">No playbooks found.</p>
             <p className="text-sm mt-1">Strategy gaps often hide here.</p>
@@ -428,7 +428,7 @@ export default function PlaybookLibrary() {
                   </CardHeader>
 
                   <CardContent className="space-y-4">
-                    <div className="text-sm text-slate-500 dark:text-slate-400 space-y-1">
+                    <div className="text-sm text-slate-600 dark:text-slate-300 space-y-1">
                       <div>
                         Last used:{" "}
                         {playbook.daysAgo === 999 ? "Never" : `${playbook.daysAgo} days ago`}
@@ -443,7 +443,7 @@ export default function PlaybookLibrary() {
                     </div>
 
                     {playbook.preApprovedBudget && (
-                      <div className="text-sm text-slate-500">
+                      <div className="text-sm text-slate-600">
                         Pre-approved: ${Number(playbook.preApprovedBudget).toLocaleString()}
                       </div>
                     )}
@@ -496,7 +496,7 @@ function Stat({ label, value, testId }: { label: string; value: number; testId: 
   return (
     <div className="text-center" data-testid={testId}>
       <div className="text-3xl font-bold text-slate-900 dark:text-white">{value}</div>
-      <div className="text-sm text-slate-500">{label}</div>
+      <div className="text-sm text-slate-600">{label}</div>
     </div>
   );
 }

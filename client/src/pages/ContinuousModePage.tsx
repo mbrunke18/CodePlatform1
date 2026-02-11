@@ -74,7 +74,7 @@ export default function ContinuousModePage() {
               <Activity className="w-10 h-10 text-blue-600" />
               Continuous Operations Mode
             </h1>
-            <p className="text-slate-600 dark:text-slate-400">
+            <p className="text-slate-600 dark:text-slate-300">
               Always-on strategic monitoring, learning, and automated coordination
             </p>
           </div>
@@ -125,7 +125,7 @@ export default function ContinuousModePage() {
               <CardTitle className="text-3xl text-blue-600">{continuousMode.tasksScheduled}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-slate-600 dark:text-slate-400">
+              <p className="text-sm text-slate-600 dark:text-slate-300">
                 Automated operations running
               </p>
             </CardContent>
@@ -139,7 +139,7 @@ export default function ContinuousModePage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-slate-600 dark:text-slate-400">
+              <p className="text-sm text-slate-600 dark:text-slate-300">
                 {continuousMode.nextRun ? 'Weak Signal Sweep' : 'No tasks scheduled'}
               </p>
             </CardContent>
@@ -162,7 +162,7 @@ export default function ContinuousModePage() {
                         <h3 className="font-semibold text-slate-900 dark:text-white mb-1">
                           {task.name}
                         </h3>
-                        <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-400">
+                        <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-300">
                           <div className="flex items-center gap-1">
                             <Calendar className="w-4 h-4" />
                             <span>{task.schedule}</span>
@@ -214,7 +214,7 @@ export default function ContinuousModePage() {
                         <div className="font-medium text-slate-900 dark:text-white">
                           {execution.task}
                         </div>
-                        <div className="text-sm text-slate-600 dark:text-slate-400">
+                        <div className="text-sm text-slate-600 dark:text-slate-300">
                           {execution.findings}
                         </div>
                       </div>

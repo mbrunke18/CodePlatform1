@@ -83,7 +83,7 @@ export function StrategyReality() {
               </svg>
             </span>
           </h2>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
             The Strategic Execution Reality
           </p>
         </motion.div>
@@ -104,7 +104,7 @@ export function StrategyReality() {
               <div className="w-48 shrink-0">
                 <span
                   className={`text-sm font-bold ${
-                    item.highlight ? "text-pink-500" : "text-slate-400"
+                    item.highlight ? "text-pink-500" : "text-slate-300"
                   }`}
                 >
                   {item.label}
@@ -127,7 +127,7 @@ export function StrategyReality() {
               </div>
 
               <div className="w-64 shrink-0 text-right hidden md:block">
-                <span className="text-sm text-slate-500">{item.description}</span>
+                <span className="text-sm text-slate-300">{item.description}</span>
               </div>
             </motion.div>
           ))}
@@ -144,7 +144,7 @@ export function StrategyReality() {
               <p className="text-3xl font-bold text-white mb-1">
                 The strategy is <span className="text-pink-500">5%</span> of the work.
               </p>
-              <p className="text-xl text-slate-400">
+              <p className="text-xl text-slate-300">
                 The ecosystem around it is{" "}
                 <span className="text-white font-semibold">95%</span>.
               </p>
@@ -165,12 +165,12 @@ export function StrategyReality() {
               </div>
               <h3 className="text-xl font-bold text-white">The 72-Hour Problem</h3>
             </div>
-            <p className="text-slate-400 mb-6">
+            <p className="text-slate-300 mb-6">
               Every time a strategic situation emerges—competitive threat, M&A opportunity, 
               crisis, transformation—organizations lose <span className="text-white font-semibold">72 hours</span> in 
               the "work around the strategy."
             </p>
-            <ul className="space-y-3 text-slate-400">
+            <ul className="space-y-3 text-slate-300">
               <li className="flex items-start gap-2">
                 <span className="text-red-500 mt-1">•</span>
                 <span>Scheduling meetings across calendars</span>
@@ -197,11 +197,11 @@ export function StrategyReality() {
               </div>
               <h3 className="text-xl font-bold text-white">ExecuteIQ: 12 Minutes</h3>
             </div>
-            <p className="text-slate-400 mb-6">
+            <p className="text-slate-300 mb-6">
               ExecuteIQ pre-stages the ecosystem <span className="text-white font-semibold">before</span> situations 
               occur. When triggers fire, everyone knows their role and executes immediately.
             </p>
-            <ul className="space-y-3 text-slate-400">
+            <ul className="space-y-3 text-slate-300">
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
                 <span>166 pre-built playbooks across 9 domains</span>
@@ -228,7 +228,7 @@ export function StrategyReality() {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <p className="text-slate-400 mb-6 text-lg">
+          <p className="text-slate-300 mb-6 text-lg">
             Don't optimize for the perfect strategy document.
             <br />
             <span className="text-white font-semibold">
@@ -264,7 +264,7 @@ export function StrategyRealityCompact() {
           { label: "Work After", width: "w-4/5", color: "bg-slate-700" },
         ].map((item) => (
           <div key={item.label} className="flex items-center gap-3">
-            <span className={`text-xs ${item.highlight ? 'text-pink-500' : 'text-slate-500'} w-24`}>
+            <span className={`text-xs ${item.highlight ? 'text-pink-500' : 'text-slate-300'} w-24`}>
               {item.label}
             </span>
             <div className={`h-4 ${item.width} ${item.color} rounded`} />
@@ -273,11 +273,11 @@ export function StrategyRealityCompact() {
       </div>
 
       <div className="border-t border-slate-800 pt-4">
-        <p className="text-sm text-slate-400">
+        <p className="text-sm text-slate-300">
           <span className="text-pink-500 font-bold">5%</span> strategy.{" "}
           <span className="text-white font-bold">95%</span> execution ecosystem.
         </p>
-        <p className="text-sm text-slate-500 mt-1">
+        <p className="text-sm text-slate-300 mt-1">
           That's the 72 hours ExecuteIQ compresses to 12 minutes.
         </p>
       </div>
@@ -304,7 +304,7 @@ export function StrategyRealityHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-xl md:text-2xl text-slate-400 mb-12 max-w-2xl mx-auto"
+          className="text-xl md:text-2xl text-slate-300 mb-12 max-w-2xl mx-auto"
         >
           The other 95%—alignment, coordination, execution—is where organizations 
           lose <span className="text-white">72 hours</span> every time a strategic situation emerges.
@@ -336,14 +336,14 @@ export function StrategyRealityHero() {
         >
           <div className="text-right">
             <p className="text-4xl md:text-5xl font-bold text-red-500">72h</p>
-            <p className="text-slate-500 text-sm">Industry Average</p>
+            <p className="text-slate-300 text-sm">Industry Average</p>
           </div>
           
           <ArrowRight className="w-8 h-8 text-slate-600" />
           
           <div className="text-left">
             <p className="text-4xl md:text-5xl font-bold text-emerald-500">12m</p>
-            <p className="text-slate-500 text-sm">With ExecuteIQ</p>
+            <p className="text-slate-300 text-sm">With ExecuteIQ</p>
           </div>
         </motion.div>
 
@@ -357,7 +357,7 @@ export function StrategyRealityHero() {
             See How It Works
             <ArrowRight className="w-5 h-5" />
           </Link>
-          <Link href="/demo" className="inline-flex items-center gap-2 text-slate-400 hover:text-white font-medium px-8 py-4 transition-colors" data-testid="link-watch-demo">
+          <Link href="/demo" className="inline-flex items-center gap-2 text-slate-300 hover:text-white font-medium px-8 py-4 transition-colors" data-testid="link-watch-demo">
             Watch Demo
           </Link>
         </motion.div>
@@ -414,7 +414,7 @@ export function StrategyToIDEA() {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             How ExecuteIQ Handles the 95%
           </h2>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
             The IDEA Framework maps directly to the hidden work around every strategy
           </p>
         </motion.div>
@@ -436,19 +436,19 @@ export function StrategyToIDEA() {
                 </div>
                 <div>
                   <h3 className={`font-bold ${item.textColor}`}>{item.phase}</h3>
-                  <p className="text-sm text-slate-500">IDEA Phase {index + 1}</p>
+                  <p className="text-sm text-slate-300">IDEA Phase {index + 1}</p>
                 </div>
               </div>
 
               <div className="mb-4">
-                <p className="text-xs text-slate-500 uppercase tracking-wide mb-2">
+                <p className="text-xs text-slate-300 uppercase tracking-wide mb-2">
                   Traditional "Hidden Work"
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {item.traditionalWork.map((work) => (
                     <span
                       key={work}
-                      className="text-xs bg-slate-800 text-slate-400 px-2 py-1 rounded"
+                      className="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded"
                     >
                       {work}
                     </span>
@@ -457,7 +457,7 @@ export function StrategyToIDEA() {
               </div>
 
               <div>
-                <p className="text-xs text-slate-500 uppercase tracking-wide mb-2">
+                <p className="text-xs text-slate-300 uppercase tracking-wide mb-2">
                   ExecuteIQ Solution
                 </p>
                 <p className="text-sm text-slate-300">{item.mPlatform}</p>

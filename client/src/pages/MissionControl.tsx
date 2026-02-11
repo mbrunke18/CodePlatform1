@@ -396,7 +396,7 @@ export default function MissionControl() {
       case 'offense': return 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30';
       case 'defense': return 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30';
       case 'special-teams': return 'text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/30';
-      default: return 'text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/30';
+      default: return 'text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/30';
     }
   };
 
@@ -422,20 +422,20 @@ export default function MissionControl() {
                 </div>
                 Strategic Command Center
               </h1>
-              <p className="text-slate-500 dark:text-slate-400 mt-1">
+              <p className="text-slate-500 dark:text-slate-300 mt-1">
                 Single-pane executive overview of strategic readiness and execution status
               </p>
             </div>
             <div className="flex items-center gap-4">
               <div className="text-right">
-                <div className="text-sm text-slate-500 dark:text-slate-400">System Status</div>
+                <div className="text-sm text-slate-500 dark:text-slate-300">System Status</div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                   <span className="font-semibold text-emerald-600 dark:text-emerald-400">All Systems Operational</span>
                 </div>
               </div>
               <div className="text-right hidden sm:block">
-                <div className="text-sm text-slate-500 dark:text-slate-400">Last Updated</div>
+                <div className="text-sm text-slate-500 dark:text-slate-300">Last Updated</div>
                 <div className="font-mono text-lg font-semibold text-slate-900 dark:text-white">
                   {currentTime.toLocaleTimeString()}
                 </div>
@@ -456,7 +456,7 @@ export default function MissionControl() {
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-slate-900 dark:text-white">{totalPlaybooks}</div>
-                    <div className="text-sm text-slate-500 dark:text-slate-400">Playbooks Ready</div>
+                    <div className="text-sm text-slate-500 dark:text-slate-300">Playbooks Ready</div>
                   </div>
                 </div>
               </motion.div>
@@ -473,7 +473,7 @@ export default function MissionControl() {
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-slate-900 dark:text-white">{activeTriggers}</div>
-                    <div className="text-sm text-slate-500 dark:text-slate-400">Active Triggers</div>
+                    <div className="text-sm text-slate-500 dark:text-slate-300">Active Triggers</div>
                   </div>
                 </div>
               </motion.div>
@@ -490,7 +490,7 @@ export default function MissionControl() {
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-slate-900 dark:text-white">{totalSignals}</div>
-                    <div className="text-sm text-slate-500 dark:text-slate-400">Signal Points</div>
+                    <div className="text-sm text-slate-500 dark:text-slate-300">Signal Points</div>
                   </div>
                 </div>
               </motion.div>
@@ -514,7 +514,7 @@ export default function MissionControl() {
                     <AlertTriangle className={`h-5 w-5 ${
                       criticalAlerts > 0 
                         ? 'text-red-600 dark:text-red-400' 
-                        : 'text-slate-500 dark:text-slate-400'
+                        : 'text-slate-500 dark:text-slate-300'
                     }`} />
                   </div>
                   <div>
@@ -523,7 +523,7 @@ export default function MissionControl() {
                         ? 'text-red-600 dark:text-red-400' 
                         : 'text-slate-900 dark:text-white'
                     }`}>{criticalAlerts}</div>
-                    <div className="text-sm text-slate-500 dark:text-slate-400">Critical Alerts</div>
+                    <div className="text-sm text-slate-500 dark:text-slate-300">Critical Alerts</div>
                   </div>
                 </div>
               </motion.div>
@@ -837,17 +837,17 @@ export default function MissionControl() {
                     <p className="text-sm font-medium text-slate-800 dark:text-slate-200 mb-2">
                       Build or Choose Playbooks
                     </p>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                    <p className="text-xs text-slate-500 dark:text-slate-300 mb-4">
                       Pre-stage stakeholders, tasks, budgets, and communication templates for instant activation.
                     </p>
                     
                     <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-3 mb-4">
                       <div className="flex justify-between text-sm mb-2">
-                        <span className="text-slate-600 dark:text-slate-400">Playbooks Ready</span>
+                        <span className="text-slate-600 dark:text-slate-300">Playbooks Ready</span>
                         <span className="font-bold text-blue-700 dark:text-blue-300">{playbooks.length || 166}</span>
                       </div>
                       <Progress value={85} className="h-1.5 bg-blue-100 dark:bg-blue-900" />
-                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">85% with full stakeholder assignments</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-300 mt-1">85% with full stakeholder assignments</p>
                     </div>
                     
                     <div className="space-y-2">
@@ -889,17 +889,17 @@ export default function MissionControl() {
                     <p className="text-sm font-medium text-slate-800 dark:text-slate-200 mb-2">
                       Configure Activation Triggers
                     </p>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                    <p className="text-xs text-slate-500 dark:text-slate-300 mb-4">
                       Define which signals auto-activate your playbooks so you never miss a critical event.
                     </p>
                     
                     <div className="bg-emerald-50 dark:bg-emerald-900/30 rounded-lg p-3 mb-4">
                       <div className="flex justify-between text-sm mb-2">
-                        <span className="text-slate-600 dark:text-slate-400">Active Triggers</span>
+                        <span className="text-slate-600 dark:text-slate-300">Active Triggers</span>
                         <span className="font-bold text-emerald-700 dark:text-emerald-300">{activeTriggers}</span>
                       </div>
                       <Progress value={75} className="h-1.5 bg-emerald-100 dark:bg-emerald-900" />
-                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Monitoring {totalSignals}+ data points</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-300 mt-1">Monitoring {totalSignals}+ data points</p>
                     </div>
                     
                     <div className="space-y-2">
@@ -941,17 +941,17 @@ export default function MissionControl() {
                     <p className="text-sm font-medium text-slate-800 dark:text-slate-200 mb-2">
                       Coordinate Response
                     </p>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                    <p className="text-xs text-slate-500 dark:text-slate-300 mb-4">
                       When triggered, everyone knows their role. Tasks assigned, budgets unlocked, comms staged.
                     </p>
                     
                     <div className="bg-amber-50 dark:bg-amber-900/30 rounded-lg p-3 mb-4">
                       <div className="flex justify-between text-sm mb-2">
-                        <span className="text-slate-600 dark:text-slate-400">Response Time</span>
+                        <span className="text-slate-600 dark:text-slate-300">Response Time</span>
                         <span className="font-bold text-amber-700 dark:text-amber-300">12 minutes</span>
                       </div>
                       <Progress value={100} className="h-1.5 bg-amber-100 dark:bg-amber-900" />
-                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">vs. 72-hour industry average</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-300 mt-1">vs. 72-hour industry average</p>
                     </div>
                     
                     <div className="space-y-2">
@@ -993,17 +993,17 @@ export default function MissionControl() {
                     <p className="text-sm font-medium text-slate-800 dark:text-slate-200 mb-2">
                       Review & Improve
                     </p>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                    <p className="text-xs text-slate-500 dark:text-slate-300 mb-4">
                       Capture lessons learned. AI analyzes patterns and suggests playbook refinements.
                     </p>
                     
                     <div className="bg-purple-50 dark:bg-purple-900/30 rounded-lg p-3 mb-4">
                       <div className="flex justify-between text-sm mb-2">
-                        <span className="text-slate-600 dark:text-slate-400">Improvement Rate</span>
+                        <span className="text-slate-600 dark:text-slate-300">Improvement Rate</span>
                         <span className="font-bold text-purple-700 dark:text-purple-300">94%</span>
                       </div>
                       <Progress value={94} className="h-1.5 bg-purple-100 dark:bg-purple-900" />
-                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Playbooks refined from learnings</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-300 mt-1">Playbooks refined from learnings</p>
                     </div>
                     
                     <div className="space-y-2">
@@ -1032,7 +1032,7 @@ export default function MissionControl() {
                     </div>
                     <div>
                       <p className="font-semibold text-slate-900 dark:text-white">Ready to see it in action?</p>
-                      <p className="text-sm text-slate-500 dark:text-slate-400">Experience a live trigger→execution flow in 3 minutes</p>
+                      <p className="text-sm text-slate-500 dark:text-slate-300">Experience a live trigger→execution flow in 3 minutes</p>
                     </div>
                   </div>
                   <Link href="/pilot-demo">
@@ -1246,7 +1246,7 @@ export default function MissionControl() {
                         trigger.severity === 'critical' ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300' :
                         trigger.severity === 'high' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300' :
                         trigger.severity === 'medium' ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300' :
-                        'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
+                        'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300'
                       }`}>
                         {trigger.severity}
                       </Badge>
@@ -1292,19 +1292,19 @@ export default function MissionControl() {
                   </h4>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-slate-600 dark:text-slate-400">Avg Response Time</span>
+                      <span className="text-sm text-slate-600 dark:text-slate-300">Avg Response Time</span>
                       <span className="font-bold text-emerald-600">{analyticsMetrics.avgResponseTime} min</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-slate-600 dark:text-slate-400">Executions This Month</span>
+                      <span className="text-sm text-slate-600 dark:text-slate-300">Executions This Month</span>
                       <span className="font-bold text-slate-900 dark:text-white">{analyticsMetrics.executionsThisMonth}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-slate-600 dark:text-slate-400">Success Rate</span>
+                      <span className="text-sm text-slate-600 dark:text-slate-300">Success Rate</span>
                       <span className="font-bold text-emerald-600">{analyticsMetrics.successRate}%</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-slate-600 dark:text-slate-400">Stakeholder Engagement</span>
+                      <span className="text-sm text-slate-600 dark:text-slate-300">Stakeholder Engagement</span>
                       <span className="font-bold text-blue-600">{Math.min(analyticsMetrics.stakeholderEngagement, 98)}%</span>
                     </div>
                   </div>
@@ -1421,7 +1421,7 @@ export default function MissionControl() {
                       </div>
                       <h4 className="font-semibold text-slate-900 dark:text-white group-hover:text-poise-gold transition-colors">Executive Dashboard</h4>
                     </div>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
                       Strategic readiness metrics, decision velocity, and organizational health at a glance.
                     </p>
                     <div className="flex items-center text-xs text-poise-gold opacity-0 group-hover:opacity-100 transition-opacity">
@@ -1440,7 +1440,7 @@ export default function MissionControl() {
                       </div>
                       <h4 className="font-semibold text-slate-900 dark:text-white group-hover:text-indigo-500 transition-colors">Operating Model</h4>
                     </div>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
                       McKinsey 12-element framework alignment and personalized playbook recommendations.
                     </p>
                     <div className="flex items-center text-xs text-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -1459,7 +1459,7 @@ export default function MissionControl() {
                       </div>
                       <h4 className="font-semibold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">ROI Calculator</h4>
                     </div>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
                       Personalized time and cost savings projections based on your organization.
                     </p>
                     <div className="flex items-center text-xs text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -1478,7 +1478,7 @@ export default function MissionControl() {
                       </div>
                       <h4 className="font-semibold text-slate-900 dark:text-white group-hover:text-purple-500 transition-colors">Board Export</h4>
                     </div>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
                       Generate executive briefings with active scenarios and financial summaries.
                     </p>
                     <div className="flex items-center text-xs text-purple-500 opacity-0 group-hover:opacity-100 transition-opacity">

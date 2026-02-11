@@ -184,7 +184,7 @@ export default function Footer() {
                 <p className="text-sm text-slate-300">
                   © {new Date().getFullYear()} ExecuteIQ - The Execution Infrastructure Enterprises Are Missing
                 </p>
-                <p className="text-xs text-slate-400">Governance. Decision Rights. Coordination. In 12 Minutes.</p>
+                <p className="text-xs text-slate-300">Governance. Decision Rights. Coordination. In 12 Minutes.</p>
               </div>
             </div>
             <div className="flex items-center gap-6">
@@ -198,7 +198,7 @@ export default function Footer() {
               </a>
               <a 
                 href="mailto:martinbrunke@executeiq.io"
-                className="text-sm text-slate-400 hover:text-white transition-colors"
+                className="text-sm text-slate-300 hover:text-white transition-colors"
               >
                 martinbrunke@executeiq.io
               </a>
@@ -216,7 +216,7 @@ export default function Footer() {
               </button>
               <button 
                 onClick={() => navigateTo("/contact")}
-                className="text-sm text-slate-400 hover:text-white transition-colors"
+                className="text-sm text-slate-300 hover:text-white transition-colors"
               >
                 Contact
               </button>

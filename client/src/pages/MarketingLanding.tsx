@@ -256,7 +256,7 @@ export default function MarketingLanding() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white">
               Explore All Product Features
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
               Complete platform ecosystem for championship-level execution. Click any feature to explore.
             </p>
           </div>
@@ -275,7 +275,7 @@ export default function MarketingLanding() {
                       Create Strategic Playbook
                     </h3>
                     <Badge className="bg-purple-600 text-white mb-3">Start Here</Badge>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
                       Build complete decision operations playbook in 5 phases: Context, Stakeholders, Triggers, Metrics, Review
                     </p>
                   </div>
@@ -295,7 +295,7 @@ export default function MarketingLanding() {
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                       AI Intelligence Layer
                     </h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
                       5 specialized AI modules: Pulse, Flux, Prism, Echo, Nova for strategic insights
                     </p>
                   </div>
@@ -317,7 +317,7 @@ export default function MarketingLanding() {
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                       24/7 Monitoring System
                     </h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
                       Track 12 intelligence signals with AI-powered pattern recognition and proactive alerts
                     </p>
                   </div>
@@ -339,7 +339,7 @@ export default function MarketingLanding() {
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                       Playbook Library
                     </h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
                       166 strategic playbooks across 9 operational domains covering growth, defense, transformation, and AI governance
                     </p>
                   </div>
@@ -361,7 +361,7 @@ export default function MarketingLanding() {
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                       What-If Analyzer
                     </h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
                       Test strategic approaches, simulate outcomes, and optimize execution plans
                     </p>
                   </div>
@@ -383,7 +383,7 @@ export default function MarketingLanding() {
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                       Executive Command Center
                     </h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
                       Real-time strategic coordination hub for 12-minute execution
                     </p>
                   </div>
@@ -405,7 +405,7 @@ export default function MarketingLanding() {
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                       Trigger Management
                     </h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
                       Define conditions, activate playbooks, monitor execution status
                     </p>
                   </div>
@@ -427,7 +427,7 @@ export default function MarketingLanding() {
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                       Integration Hub
                     </h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
                       Connect Jira, Slack, Teams, Salesforce, and 50+ enterprise tools
                     </p>
                   </div>
@@ -449,7 +449,7 @@ export default function MarketingLanding() {
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                       Institutional Memory
                     </h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
                       Capture decision outcomes, refine playbooks, build organizational wisdom
                     </p>
                   </div>
@@ -723,7 +723,7 @@ export default function MarketingLanding() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white">
               Complete Playbook: Competitive Response
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
               When your competitor launches a 15% price cut, here's how ExecuteIQ coordinates your entire response team in 12 minutes—instead of the 72-hour industry standard.
             </p>
           </div>
@@ -765,7 +765,7 @@ export default function MarketingLanding() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white">
               The Fortune 1000 Execution Gap
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
               The gap between strategic planning and coordinated execution costs enterprises billions annually
             </p>
           </div>
@@ -775,7 +775,7 @@ export default function MarketingLanding() {
               <CardContent className="pt-6 text-center">
                 <div className="text-5xl font-bold text-red-600 mb-2">72 hours</div>
                 <div className="text-lg font-semibold mb-2 text-slate-900 dark:text-white">Industry Standard</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400 mb-2">
+                <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">
                   Average coordination time for strategic initiatives in Fortune 1000 companies
                 </div>
                 <div className="text-xs text-slate-500 italic">Source: HBR "Why Strategy Execution Unravels" (2015), McKinsey "Decision Making in the Age of Urgency" (2023)</div>
@@ -786,7 +786,7 @@ export default function MarketingLanding() {
               <CardContent className="pt-6 text-center">
                 <div className="text-5xl font-bold text-red-600 mb-2">87%</div>
                 <div className="text-lg font-semibold mb-2 text-slate-900 dark:text-white">Missed Windows</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400 mb-2">
+                <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">
                   Strategic initiatives that miss execution windows due to coordination delays
                 </div>
                 <div className="text-xs text-slate-500 italic">Source: Bain & Company "The Execution Premium" study (2022)</div>
@@ -797,7 +797,7 @@ export default function MarketingLanding() {
               <CardContent className="pt-6 text-center">
                 <div className="text-5xl font-bold text-green-600 mb-2">12 min</div>
                 <div className="text-lg font-semibold mb-2 text-slate-900 dark:text-white">ExecuteIQ Target</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400">
+                <div className="text-sm text-slate-600 dark:text-slate-300">
                   Design goal: Coordinated execution with pre-built playbooks and AI orchestration
                 </div>
               </CardContent>
@@ -811,7 +811,7 @@ export default function MarketingLanding() {
               </p>
               <div className="text-center">
                 <div className="font-semibold text-slate-900 dark:text-white">ExecuteIQ Founding Team</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400">Bringing championship-level execution to enterprise strategy</div>
+                <div className="text-sm text-slate-600 dark:text-slate-300">Bringing championship-level execution to enterprise strategy</div>
               </div>
             </CardContent>
           </Card>

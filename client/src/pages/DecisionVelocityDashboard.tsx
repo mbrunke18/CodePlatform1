@@ -126,7 +126,7 @@ export default function DecisionVelocityDashboard() {
           <h1 className="text-5xl font-bold text-slate-900 dark:text-white mb-4" data-testid="page-title">
             Decision Velocity Dashboard
           </h1>
-          <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
             Head coaches make 80+ decisions in 3 hours because they pre-stage decision trees. 
             Track how fast your executive team is deciding.
           </p>
@@ -345,7 +345,7 @@ export default function DecisionVelocityDashboard() {
                   <div className="flex items-start justify-between mb-2">
                     <div>
                       <h4 className="font-semibold text-slate-900 dark:text-white">{decision.scenario}</h4>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">{decision.question}</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-300">{decision.question}</p>
                     </div>
                     <Badge variant={decision.decisionTimeMinutes <= 15 ? 'default' : 'secondary'}>
                       {decision.decisionTimeMinutes} min

@@ -153,7 +153,7 @@ export default function CustomerJourney() {
             <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
               Your Path to Strategic Excellence
             </h1>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
               From discovery to continuous value, your roadmap to 12-minute strategic response
             </p>
           </div>
@@ -236,7 +236,7 @@ export default function CustomerJourney() {
                               {phase.deliverables.map((deliverable, idx) => (
                                 <div key={idx} className="flex items-center gap-2 text-sm">
                                   <CheckCircle className="h-4 w-4 text-emerald-500" />
-                                  <span className="text-slate-600 dark:text-slate-400">{deliverable}</span>
+                                  <span className="text-slate-600 dark:text-slate-300">{deliverable}</span>
                                 </div>
                               ))}
                             </div>
@@ -272,7 +272,7 @@ export default function CustomerJourney() {
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
                 Ready to Start Your Journey?
               </h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-6 max-w-2xl mx-auto">
+              <p className="text-slate-600 dark:text-slate-300 mb-6 max-w-2xl mx-auto">
                 Join Fortune 1000 companies achieving 12-minute strategic response times
               </p>
               <div className="flex justify-center gap-4">

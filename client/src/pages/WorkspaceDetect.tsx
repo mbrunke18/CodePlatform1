@@ -113,7 +113,7 @@ export default function WorkspaceDetect() {
                     ExecuteIQ Signal™
                   </Badge>
                 </div>
-                <p className="text-slate-600 dark:text-slate-400 mt-1">
+                <p className="text-slate-600 dark:text-slate-300 mt-1">
                   Monitor, detect, and analyze strategic signals in real-time
                 </p>
               </div>
@@ -207,7 +207,7 @@ export default function WorkspaceDetect() {
                           </h3>
                           <ChevronRight className="h-4 w-4 text-slate-400 group-hover:text-poise-teal transition-colors" />
                         </div>
-                        <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                        <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">
                           {tool.description}
                         </p>
                         <Badge variant="outline" className="mt-3 text-xs">
@@ -231,7 +231,7 @@ export default function WorkspaceDetect() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 dark:text-white">Trigger detected?</h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400">
+                    <p className="text-sm text-slate-600 dark:text-slate-300">
                       When a trigger fires, move to EXECUTE for coordinated response
                     </p>
                   </div>

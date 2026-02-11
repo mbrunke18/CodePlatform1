@@ -310,7 +310,7 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
 
         {!sla.enabled && (
           <CardContent className="pt-4">
-            <div className="text-center py-4 text-slate-500 dark:text-slate-400">
+            <div className="text-center py-4 text-slate-500 dark:text-slate-300">
               <p className="text-sm">SLA not configured for this phase</p>
               <p className="text-xs mt-1">Enable the toggle above to set a timeframe</p>
             </div>
