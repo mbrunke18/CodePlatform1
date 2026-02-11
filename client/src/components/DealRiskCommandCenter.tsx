@@ -143,7 +143,7 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
                     <span className="text-xs text-slate-500 font-mono">{event.timestamp}</span>
-                    <Badge variant="outline" className="text-xs border-slate-600 text-slate-400">
+                    <Badge variant="outline" className="bg-transparent text-xs border-slate-600 text-slate-400">
                       {event.system}
                     </Badge>
                   </div>

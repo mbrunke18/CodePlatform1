@@ -420,7 +420,7 @@ export default function CrisisResponseCenter() {
                         <FileText className="w-4 h-4 mr-2" />
                         View Details
                       </Button>
-                      <Button size="sm" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
                         <Play className="w-4 h-4 mr-2" />
                         Activate
                       </Button>
@@ -466,7 +466,7 @@ export default function CrisisResponseCenter() {
                           <h4 className="font-semibold text-white mb-2">Assigned Team</h4>
                           <div className="space-y-1">
                             {crisis.assignedTeam.map((team, index) => (
-                              <Badge key={index} variant="outline" className="border-slate-600 text-slate-300">
+                              <Badge key={index} variant="outline" className="bg-transparent border-slate-600 text-slate-300">
                                 {team}
                               </Badge>
                             ))}
@@ -491,7 +491,7 @@ export default function CrisisResponseCenter() {
                           <CheckCircle className="w-4 h-4 mr-2" />
                           Update Status
                         </Button>
-                        <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                        <Button variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
                           <FileText className="w-4 h-4 mr-2" />
                           View Full Report
                         </Button>

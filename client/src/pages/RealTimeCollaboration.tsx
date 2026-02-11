@@ -572,11 +572,11 @@ export default function RealTimeCollaboration() {
                         <Video className="w-4 h-4 mr-2" />
                         Join Session
                       </Button>
-                      <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
                         <FileText className="w-4 h-4 mr-2" />
                         View Notes
                       </Button>
-                      <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
                         <Share className="w-4 h-4 mr-2" />
                         Share
                       </Button>
@@ -605,7 +605,7 @@ export default function RealTimeCollaboration() {
                       <div className="flex-1 page-background">
                         <h3 className="font-semibold text-white">{member.name}</h3>
                         <p className="text-sm text-slate-400">{member.role}</p>
-                        <Badge variant="outline" className="border-slate-600 text-slate-300 text-xs mt-1">
+                        <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-300 text-xs mt-1">
                           {member.department}
                         </Badge>
                       </div>
@@ -633,10 +633,10 @@ export default function RealTimeCollaboration() {
                         <MessageSquare className="w-4 h-4 mr-2" />
                         Message
                       </Button>
-                      <Button size="sm" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
                         <Video className="w-4 h-4" />
                       </Button>
-                      <Button size="sm" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
                         <Phone className="w-4 h-4" />
                       </Button>
                     </div>
@@ -683,7 +683,7 @@ export default function RealTimeCollaboration() {
                       <p className="text-slate-300 text-sm">{update.content}</p>
                       {update.relatedTo && (
                         <div className="mt-2">
-                          <Badge variant="outline" className="border-slate-600 text-slate-400 text-xs">
+                          <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-400 text-xs">
                             Related to: {update.relatedTo}
                           </Badge>
                         </div>

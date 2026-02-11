@@ -332,7 +332,7 @@ export default function OneClickDemo() {
                     <Zap className="h-5 w-5 text-amber-400" />
                     Live Execution Feed
                   </h3>
-                  <Badge variant="outline" className="text-slate-400">
+                  <Badge variant="outline" className="bg-transparent text-slate-400">
                     {completedTasks}/{tasks.length} Tasks
                   </Badge>
                 </div>

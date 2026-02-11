@@ -150,7 +150,7 @@ export default function Investors() {
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 h-12 px-6">
+                <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 h-12 px-6 bg-transparent">
                   <Calendar className="w-4 h-4 mr-2" />
                   Schedule Meeting
                 </Button>
@@ -353,13 +353,13 @@ export default function Investors() {
                 </Button>
               </Link>
               <Link href="/investor-demo">
-                <Button variant="outline" className="border-[#00A8A8]/50 text-[#00A8A8] hover:bg-[#00A8A8]/10 h-12 px-8">
+                <Button variant="outline" className="border-[#00A8A8]/50 text-[#00A8A8] hover:bg-[#00A8A8]/10 h-12 px-8 bg-transparent">
                   <FileText className="w-4 h-4 mr-2" />
                   Investor Presentation
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 h-12 px-8">
+                <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 h-12 px-8 bg-transparent">
                   <Calendar className="w-4 h-4 mr-2" />
                   Schedule Call
                 </Button>

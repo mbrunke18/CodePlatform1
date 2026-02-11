@@ -563,7 +563,7 @@ export default function AuditLoggingCenter() {
                             </Badge>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm">
-                            <Button size="sm" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                            <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
                               <Eye className="w-4 h-4" />
                             </Button>
                           </td>
@@ -589,7 +589,7 @@ export default function AuditLoggingCenter() {
                           <Badge className={getSeverityColor(event.severity)}>
                             {event.severity.toUpperCase()}
                           </Badge>
-                          <Badge variant="outline" className="border-slate-600 text-slate-300">
+                          <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-300">
                             {event.status.replace('_', ' ').toUpperCase()}
                           </Badge>
                         </div>
@@ -636,7 +636,7 @@ export default function AuditLoggingCenter() {
                           <Eye className="w-4 h-4 mr-2" />
                           Investigate
                         </Button>
-                        <Button size="sm" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                        <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
                           Mark Resolved
                         </Button>
                       </div>
@@ -700,7 +700,7 @@ export default function AuditLoggingCenter() {
                         <Download className="w-4 h-4 mr-2" />
                         Download Report
                       </Button>
-                      <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
                         <Eye className="w-4 h-4 mr-2" />
                         View Details
                       </Button>

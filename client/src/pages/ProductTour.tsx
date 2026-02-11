@@ -607,6 +607,7 @@ function ProductTour() {
             <Button 
               variant="outline" 
               size="lg"
+              className="bg-transparent text-white border-slate-500 hover:bg-slate-800"
               onClick={() => setLocation('/scenario-library')}
               data-testid="button-explore-playbooks"
             >
@@ -616,6 +617,7 @@ function ProductTour() {
             <Button 
               variant="outline" 
               size="lg"
+              className="bg-transparent text-white border-slate-500 hover:bg-slate-800"
               onClick={() => setLocation('/foresight-radar')}
               data-testid="button-see-radar"
             >

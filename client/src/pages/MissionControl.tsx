@@ -1506,7 +1506,7 @@ export default function MissionControl() {
                 </div>
                 <div className="flex gap-3">
                   <Link href="/how-it-works">
-                    <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                    <Button variant="outline" className="bg-transparent border-white/20 text-white hover:bg-white/10">
                       Learn More
                     </Button>
                   </Link>

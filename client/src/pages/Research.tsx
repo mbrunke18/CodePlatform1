@@ -639,7 +639,7 @@ export default function Research() {
               </Button>
             </Link>
             <Link href="/why-m">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-transparent">
                 Our Story
               </Button>
             </Link>

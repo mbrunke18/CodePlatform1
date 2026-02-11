@@ -349,7 +349,7 @@ export default function ComprehensiveAIIntelligence() {
               )}
               Generate Intelligence
             </Button>
-            <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+            <Button variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
               <Download className="w-4 h-4 mr-2" />
               Export Reports
             </Button>
@@ -545,7 +545,7 @@ export default function ComprehensiveAIIntelligence() {
                       <div className="text-sm font-semibold text-white mb-2">Capabilities</div>
                       <div className="flex flex-wrap gap-2">
                         {module.capabilities.map((capability, index) => (
-                          <Badge key={index} variant="outline" className="border-slate-600 text-slate-300 text-xs">
+                          <Badge key={index} variant="outline" className="bg-transparent border-slate-600 text-slate-300 text-xs">
                             {capability}
                           </Badge>
                         ))}
@@ -560,7 +560,7 @@ export default function ComprehensiveAIIntelligence() {
                           View Details
                         </Button>
                       </Link>
-                      <Button size="sm" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
                         <Settings className="w-4 h-4" />
                       </Button>
                     </div>
@@ -583,7 +583,7 @@ export default function ComprehensiveAIIntelligence() {
                           <Badge className={getPriorityColor(report.priority)}>
                             {report.priority.toUpperCase()}
                           </Badge>
-                          <Badge variant="outline" className="border-slate-600 text-slate-300">
+                          <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-300">
                             {report.module}
                           </Badge>
                         </div>
@@ -630,7 +630,7 @@ export default function ComprehensiveAIIntelligence() {
                           <Eye className="w-4 h-4 mr-2" />
                           Full Report
                         </Button>
-                        <Button size="sm" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                        <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
                           <Share className="w-4 h-4 mr-2" />
                           Share
                         </Button>

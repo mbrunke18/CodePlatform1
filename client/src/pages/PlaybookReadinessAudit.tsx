@@ -214,7 +214,7 @@ export default function PlaybookReadinessAudit() {
             </div>
             <div className="hidden lg:flex items-center gap-4">
               <OnboardingTrigger pageId="playbook-readiness" autoStart={true} className="bg-white/10 border-white/30 text-white hover:bg-white/20" />
-              <Button variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20" data-testid="button-export">
+              <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/20" data-testid="button-export">
                 <Download className="h-4 w-4 mr-2" />
                 Export Report
               </Button>

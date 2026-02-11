@@ -256,7 +256,7 @@ export default function RoadshowResources() {
               </Button>
               <Button 
                 variant="outline"
-                className="w-full border-slate-600 text-slate-300"
+                className="w-full bg-transparent border-slate-600 text-slate-300"
                 onClick={() => setLocation('/demo')}
                 data-testid="button-view-all-demos"
               >
@@ -280,7 +280,7 @@ export default function RoadshowResources() {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="border-slate-600"
+                      className="bg-transparent border-slate-600"
                       onClick={() => {
                         navigator.clipboard.writeText(activeDocument.content);
                         setCopiedStat('doc');
@@ -310,16 +310,16 @@ export default function RoadshowResources() {
                 <p className="text-slate-400 text-sm">What document to use in each situation</p>
               </div>
               <div className="flex flex-wrap gap-2">
-                <Badge variant="outline" className="border-slate-600 text-slate-300">
+                <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-300">
                   Tough question → FAQ
                 </Badge>
-                <Badge variant="outline" className="border-slate-600 text-slate-300">
+                <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-300">
                   Pricing talk → Pilot Program
                 </Badge>
-                <Badge variant="outline" className="border-slate-600 text-slate-300">
+                <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-300">
                   About to demo → Demo Script
                 </Badge>
-                <Badge variant="outline" className="border-slate-600 text-slate-300">
+                <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-300">
                   "Why can't Salesforce?" → Competitive Moat
                 </Badge>
               </div>

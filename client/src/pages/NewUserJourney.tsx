@@ -347,7 +347,7 @@ export default function NewUserJourney() {
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <Badge variant="outline" className="text-slate-300 border-slate-600">
+              <Badge variant="outline" className="bg-transparent text-slate-300 border-slate-600">
                 Step {state.step + 1} of {STEPS.length}
               </Badge>
               <Button

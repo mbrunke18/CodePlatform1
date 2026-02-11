@@ -17,7 +17,7 @@ export default function PlatformOverview() {
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
               See It in Action
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
+            <p className="text-lg text-slate-700 dark:text-slate-300 mb-8">
               Experience the full trigger-to-execution loop with a live interactive demo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

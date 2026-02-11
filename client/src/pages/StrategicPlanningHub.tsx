@@ -260,7 +260,7 @@ export default function StrategicPlanningHub() {
               <Plus className="w-4 h-4 mr-2" />
               New Scenario
             </Button>
-            <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+            <Button variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
               <Download className="w-4 w-4 mr-2" />
               Export Portfolio
             </Button>
@@ -504,10 +504,10 @@ export default function StrategicPlanningHub() {
                         <FileText className="w-4 h-4 mr-2" />
                         View Details
                       </Button>
-                      <Button size="sm" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
                         <Edit className="w-4 h-4" />
                       </Button>
-                      <Button size="sm" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
                         <Share className="w-4 h-4" />
                       </Button>
                     </div>

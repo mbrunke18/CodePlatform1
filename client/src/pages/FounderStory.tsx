@@ -41,7 +41,7 @@ export default function FounderStory() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Back link */}
           <Link href="/">
-            <Button variant="ghost" className="mb-8 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+            <Button variant="ghost" className="mb-8 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Home
             </Button>

@@ -262,7 +262,7 @@ export default function BoardExport() {
                         {SAMPLE_DATA.organization} • {SAMPLE_DATA.quarter}
                       </CardDescription>
                     </div>
-                    <Badge variant="outline" className="text-slate-400">
+                    <Badge variant="outline" className="bg-transparent text-slate-400">
                       {sections.filter(s => s.included).length} sections selected
                     </Badge>
                   </div>
@@ -394,7 +394,7 @@ export default function BoardExport() {
                           >
                             <div className="flex items-center gap-3">
                               <span className="text-white text-sm">{domain.domain}</span>
-                              <Badge variant="outline" className="text-xs text-slate-400">
+                              <Badge variant="outline" className="bg-transparent text-xs text-slate-400">
                                 {domain.playbooks} playbooks
                               </Badge>
                             </div>

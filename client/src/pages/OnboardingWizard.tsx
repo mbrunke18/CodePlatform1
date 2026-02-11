@@ -232,7 +232,7 @@ export default function OnboardingWizard() {
                   <p className="text-sm text-slate-400">{currentStepInfo.description}</p>
                 </div>
               </div>
-              <Badge variant="outline" className="text-slate-300">
+              <Badge variant="outline" className="bg-transparent text-slate-300 border-slate-600">
                 Step {currentStep + 1} of {ONBOARDING_STEPS.length}
               </Badge>
             </div>

@@ -1360,7 +1360,7 @@ export default function SandboxDemo() {
                             </Badge>
                           ))
                         ) : (
-                          <Badge variant="outline" className="text-xs text-slate-400">None</Badge>
+                          <Badge variant="outline" className="bg-transparent text-xs text-slate-400">None</Badge>
                         )}
                       </div>
                     </div>
@@ -1482,7 +1482,7 @@ export default function SandboxDemo() {
                         if (isResponsible) { badge = <Badge className="bg-blue-500 text-white">R</Badge>; role = 'R'; }
                         else if (isAccountable) { badge = <Badge className="bg-purple-500 text-white">A</Badge>; role = 'A'; }
                         else if (isConsulted) { badge = <Badge className="bg-amber-500 text-white">C</Badge>; role = 'C'; }
-                        else badge = <Badge variant="outline" className="text-slate-400">I</Badge>;
+                        else badge = <Badge variant="outline" className="bg-transparent text-slate-400">I</Badge>;
                         
                         return (
                           <td key={id} className="text-center p-2" data-testid={`raci-cell-${task.id}-${id}-${role}`}>{badge}</td>
@@ -1498,7 +1498,7 @@ export default function SandboxDemo() {
             <span><Badge className="bg-blue-500 text-white mr-1">R</Badge> Responsible</span>
             <span><Badge className="bg-purple-500 text-white mr-1">A</Badge> Accountable</span>
             <span><Badge className="bg-amber-500 text-white mr-1">C</Badge> Consulted</span>
-            <span><Badge variant="outline" className="text-slate-400 mr-1">I</Badge> Informed</span>
+            <span><Badge variant="outline" className="bg-transparent text-slate-400 mr-1">I</Badge> Informed</span>
           </div>
         </CardContent>
       </Card>

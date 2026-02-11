@@ -63,7 +63,7 @@ export default function InvestorResources() {
               </Button>
             </Link>
             <Link href="/demo-selector">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-transparent">
                 Watch Demo
               </Button>
             </Link>
@@ -414,17 +414,17 @@ export default function InvestorResources() {
               </Button>
             </Link>
             <Link href="/demo-selector">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-transparent">
                 Watch Demo
               </Button>
             </Link>
             <Link href="/contact">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-transparent">
                 Contact Marty
               </Button>
             </Link>
             <a href="mailto:martinbrunke@executeiq.io">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-transparent">
                 martinbrunke@executeiq.io
               </Button>
             </a>

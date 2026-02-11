@@ -437,10 +437,10 @@ export default function AdvancedAnalytics() {
                           <Badge className={getImpactColor(insight.impact)}>
                             {insight.impact.toUpperCase()} IMPACT
                           </Badge>
-                          <Badge variant="outline" className="border-slate-600 text-slate-300">
+                          <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-300">
                             {insight.category.toUpperCase()}
                           </Badge>
-                          <Badge variant="outline" className="border-slate-600 text-slate-300">
+                          <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-300">
                             {insight.timeHorizon.replace('_', ' ').toUpperCase()}
                           </Badge>
                         </div>

@@ -771,12 +771,12 @@ export default function IntegrationHub() {
                       <div className="text-sm font-semibold text-white mb-2">Features</div>
                       <div className="flex flex-wrap gap-2">
                         {integration.features.slice(0, 3).map((feature, index) => (
-                          <Badge key={index} variant="outline" className="border-slate-600 text-slate-300 text-xs">
+                          <Badge key={index} variant="outline" className="bg-transparent border-slate-600 text-slate-300 text-xs">
                             {feature}
                           </Badge>
                         ))}
                         {integration.features.length > 3 && (
-                          <Badge variant="outline" className="border-slate-600 text-slate-300 text-xs">
+                          <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-300 text-xs">
                             +{integration.features.length - 3} more
                           </Badge>
                         )}
@@ -788,10 +788,10 @@ export default function IntegrationHub() {
                         <Settings className="w-4 h-4 mr-2" />
                         Configure
                       </Button>
-                      <Button size="sm" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
                         <Monitor className="w-4 h-4" />
                       </Button>
-                      <Button size="sm" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
                         <FileText className="w-4 h-4" />
                       </Button>
                     </div>
@@ -873,7 +873,7 @@ export default function IntegrationHub() {
                           <Badge className={getStatusColor(flow.status)}>
                             {flow.status.toUpperCase()}
                           </Badge>
-                          <Badge variant="outline" className="border-slate-600 text-slate-300">
+                          <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-300">
                             {flow.type.replace('_', ' ').toUpperCase()}
                           </Badge>
                         </div>
@@ -921,11 +921,11 @@ export default function IntegrationHub() {
                         <Monitor className="w-4 h-4 mr-2" />
                         Monitor
                       </Button>
-                      <Button size="sm" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
                         <Settings className="w-4 h-4 mr-2" />
                         Configure
                       </Button>
-                      <Button size="sm" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
                         {flow.status === 'running' ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                       </Button>
                     </div>

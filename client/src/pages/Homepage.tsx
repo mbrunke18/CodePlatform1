@@ -253,7 +253,7 @@ export default function Homepage() {
               size="lg" 
               onClick={() => setLocation('/playbook-library')}
               variant="outline"
-              className="text-lg px-10 py-7 border-slate-500 text-white hover:bg-slate-800"
+              className="text-lg px-10 py-7 border-slate-500 text-white hover:bg-slate-800 bg-transparent"
               data-testid="button-explore"
             >
               <BookOpen className="mr-2 h-5 w-5" />

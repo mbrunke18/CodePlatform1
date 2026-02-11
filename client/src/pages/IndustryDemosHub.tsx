@@ -294,7 +294,7 @@ export default function IndustryDemosHub() {
                       <p className="text-sm text-blue-200">{demo.industry}</p>
                     </div>
                   </div>
-                  <Badge variant="outline" className="border-white/30 text-white">
+                  <Badge variant="outline" className="border-white/30 text-white bg-transparent">
                     {demo.playbook.split(' ')[0]}
                   </Badge>
                 </div>
@@ -365,7 +365,7 @@ export default function IndustryDemosHub() {
                       <p className="text-sm text-blue-200">{demo.industry}</p>
                     </div>
                   </div>
-                  <Badge variant="outline" className="border-white/30 text-white">
+                  <Badge variant="outline" className="border-white/30 text-white bg-transparent">
                     {demo.playbook.split(' - ')[0]}
                   </Badge>
                 </div>

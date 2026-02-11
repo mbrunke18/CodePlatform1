@@ -643,7 +643,7 @@ export default function TryDemo() {
                                 <div className="flex-1 min-w-0">
                                   <div className="flex items-center gap-2 mb-1">
                                     <span className="text-xs font-medium text-white">{msg.sender}</span>
-                                    <Badge variant="outline" className="text-xs py-0 h-4">
+                                    <Badge variant="outline" className="text-xs py-0 h-4 bg-transparent text-slate-300 border-slate-600">
                                       {msg.type}
                                     </Badge>
                                   </div>
@@ -661,7 +661,7 @@ export default function TryDemo() {
                   {/* Action buttons */}
                   <div className="mt-4 flex gap-3">
                     {!showChaosComplete && (
-                      <Button variant="outline" onClick={skipChaos} className="flex-1">
+                      <Button variant="outline" onClick={skipChaos} className="flex-1 bg-transparent text-white border-slate-600 hover:bg-slate-800">
                         Skip to Solution
                         <ChevronRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -1163,15 +1163,15 @@ export default function TryDemo() {
                     </CardHeader>
                     <CardContent className="space-y-2">
                       <div className="flex items-start gap-2 text-xs">
-                        <Badge variant="outline" className="text-xs shrink-0">IBM 2024</Badge>
+                        <Badge variant="outline" className="text-xs shrink-0 bg-transparent text-slate-300 border-slate-600">IBM 2024</Badge>
                         <span className="text-slate-300">98 days saved with AI/automation</span>
                       </div>
                       <div className="flex items-start gap-2 text-xs">
-                        <Badge variant="outline" className="text-xs shrink-0">McKinsey</Badge>
+                        <Badge variant="outline" className="text-xs shrink-0 bg-transparent text-slate-300 border-slate-600">McKinsey</Badge>
                         <span className="text-slate-300">5-10x faster execution</span>
                       </div>
                       <div className="flex items-start gap-2 text-xs">
-                        <Badge variant="outline" className="text-xs shrink-0">PagerDuty</Badge>
+                        <Badge variant="outline" className="text-xs shrink-0 bg-transparent text-slate-300 border-slate-600">PagerDuty</Badge>
                         <span className="text-slate-300">3.5x faster crisis response</span>
                       </div>
                     </CardContent>
