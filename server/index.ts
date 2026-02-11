@@ -468,49 +468,29 @@ app.use((req, res, next) => {
             defenseCount !== 56 ||
             specialTeamsCount !== 52
           ) {
-            logger.info("🔧 Fixing strategic category assignments...");
+            logger.info("🔧 Fixing strategic category assignments using domain names (UUID-safe)...");
 
-            // Domain 1 (Market Entry): OFFENSE
+            // OFFENSE domains: Market Dynamics (seq 1), Market Opportunities (seq 8)
             await db.execute(
-              sql`UPDATE playbook_library SET strategic_category = 'offense' WHERE domain_id = 1`,
+              sql`UPDATE playbook_library SET strategic_category = 'offense' WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name IN ('Market Dynamics', 'Market Opportunities'))`,
             );
-            // Domain 2 (M&A): OFFENSE
+            // Financial Strategy (seq 3): Split - first 18 OFFENSE, next 5 DEFENSE, last 1 SPECIAL TEAMS
             await db.execute(
-              sql`UPDATE playbook_library SET strategic_category = 'offense' WHERE domain_id = 2`,
-            );
-            // Domain 3 (Product Launch): Split - first 18 OFFENSE, next 5 DEFENSE, last 1 SPECIAL TEAMS
-            await db.execute(
-              sql`UPDATE playbook_library SET strategic_category = 'offense' WHERE domain_id = 3 AND playbook_number <= 18`,
+              sql`UPDATE playbook_library SET strategic_category = 'offense' WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name = 'Financial Strategy') AND playbook_number <= 18`,
             );
             await db.execute(
-              sql`UPDATE playbook_library SET strategic_category = 'defense' WHERE domain_id = 3 AND playbook_number > 18 AND playbook_number <= 23`,
+              sql`UPDATE playbook_library SET strategic_category = 'defense' WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name = 'Financial Strategy') AND playbook_number > 18 AND playbook_number <= 23`,
             );
             await db.execute(
-              sql`UPDATE playbook_library SET strategic_category = 'special_teams' WHERE domain_id = 3 AND playbook_number > 23`,
+              sql`UPDATE playbook_library SET strategic_category = 'special_teams' WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name = 'Financial Strategy') AND playbook_number > 23`,
             );
-            // Domain 4 (Crisis): DEFENSE
+            // DEFENSE domains: Operational Excellence (seq 2), Regulatory & Compliance (seq 4), Brand & Reputation (seq 7)
             await db.execute(
-              sql`UPDATE playbook_library SET strategic_category = 'defense' WHERE domain_id = 4`,
+              sql`UPDATE playbook_library SET strategic_category = 'defense' WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name IN ('Operational Excellence', 'Regulatory & Compliance', 'Brand & Reputation'))`,
             );
-            // Domain 5 (Cyber): DEFENSE
+            // SPECIAL TEAMS domains: Technology & Innovation (seq 5), Talent & Leadership (seq 6), AI Governance (seq 9)
             await db.execute(
-              sql`UPDATE playbook_library SET strategic_category = 'defense' WHERE domain_id = 5`,
-            );
-            // Domain 6 (Regulatory): DEFENSE
-            await db.execute(
-              sql`UPDATE playbook_library SET strategic_category = 'defense' WHERE domain_id = 6`,
-            );
-            // Domain 7 (Digital Transform): SPECIAL TEAMS
-            await db.execute(
-              sql`UPDATE playbook_library SET strategic_category = 'special_teams' WHERE domain_id = 7`,
-            );
-            // Domain 8 (Competitive): SPECIAL TEAMS
-            await db.execute(
-              sql`UPDATE playbook_library SET strategic_category = 'special_teams' WHERE domain_id = 8`,
-            );
-            // Domain 9 (AI Governance): SPECIAL TEAMS
-            await db.execute(
-              sql`UPDATE playbook_library SET strategic_category = 'special_teams' WHERE domain_id = 9`,
+              sql`UPDATE playbook_library SET strategic_category = 'special_teams' WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name IN ('Technology & Innovation', 'Talent & Leadership', 'AI Governance'))`,
             );
 
             // Verify the fix
