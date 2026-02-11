@@ -99,32 +99,13 @@ app.head("/", (_req, res) => {
   res.status(200).end();
 });
 
-// CRITICAL: Root "/" GET health check for Replit Autoscale deployments
-// This MUST be registered IMMEDIATELY before any async operations
-// Returns 200 for health checks (non-browser), or defers to SPA handler for browsers
-app.get("/", (req, res, next) => {
-  const acceptHeader = req.headers.accept || '';
-  const userAgent = req.headers['user-agent'] || '';
-  
-  // Health check detection: no Accept header, or doesn't want HTML, or is a known health checker
-  const isHealthCheck = !acceptHeader || 
-    !acceptHeader.includes('text/html') || 
-    userAgent.includes('HealthChecker') ||
-    userAgent.includes('kube-probe') ||
-    userAgent.includes('GoogleHC');
-  
-  if (isHealthCheck) {
-    // Fast health check response - MUST return 200 immediately
-    return res.status(200).json({ 
-      status: "ok", 
-      app: "ExecuteIQ", 
-      ready: true,
-      timestamp: new Date().toISOString() 
-    });
-  }
-  
-  // Browser request - pass to SPA handler (registered later)
-  next();
+app.get("/api/health-check", (_req, res) => {
+  res.status(200).json({ 
+    status: "ok", 
+    app: "ExecuteIQ", 
+    ready: true,
+    timestamp: new Date().toISOString() 
+  });
 });
 
 // Import raw body parser for webhook signature verification
@@ -384,20 +365,13 @@ app.use((req, res, next) => {
       const distPublicPath = path.resolve(process.cwd(), "dist/public");
       logger.info({ distPublicPath }, "Static file path resolved");
       
-      // NOTE: Do NOT call serveStatic() - it has a conflicting catch-all handler
-      app.use(express.static(distPublicPath, {
-        index: false // Disable automatic index.html serving - "/" is handled by health check above
-      }));
+      app.use(express.static(distPublicPath));
       
-      // SPA catch-all for browser requests - serves index.html for client-side routing
-      // The root "/" health check is already registered at the top of the file
       const indexHtmlPath = path.resolve(distPublicPath, "index.html");
       app.use("*", (req, res, next) => {
-        // Skip if already handled or if it's an API route
         if (res.headersSent || req.originalUrl.startsWith('/api')) {
           return next();
         }
-        // Serve SPA index.html for all other routes
         res.sendFile(indexHtmlPath);
       });
       
