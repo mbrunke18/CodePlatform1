@@ -513,15 +513,27 @@ app.use((req, res, next) => {
             await db.execute(
               sql`UPDATE playbook_library SET strategic_category = 'offense' WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name IN ('Market Dynamics', 'Market Opportunities'))`,
             );
-            // Financial Strategy (seq 3): Split - first 18 OFFENSE, next 5 DEFENSE, last 1 SPECIAL TEAMS
+            // Financial Strategy: 18 OFFENSE, 5 DEFENSE, 1 SPECIAL TEAMS (by playbook name for UUID safety)
             await db.execute(
-              sql`UPDATE playbook_library SET strategic_category = 'offense' WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name = 'Financial Strategy') AND playbook_number <= 18`,
+              sql`UPDATE playbook_library SET strategic_category = 'offense' 
+                  WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name = 'Financial Strategy') 
+                  AND name IN ('Accounting Irregularity Discovery', 'Activist Investor Campaign', 'Algorithmic Trading Malfunction',
+                    'Auditor Disagreement', 'Bank Credit Line Revocation', 'Cash Flow Crisis',
+                    'Correspondent Bank Failure', 'Credit Rating Downgrade', 'Currency Crisis (FX Exposure)',
+                    'Failed Fundraising Round', 'Financial Control Failure', 'Hostile Takeover Attempt',
+                    'Liquidity Crisis / Bank Run', 'Major Customer Payment Default', 'Revenue Shortfall (Miss Guidance)',
+                    'SWIFT/Payment System Disruption', 'Stock Price Crash (Public Company)', 'Unexpected Tax Liability')`,
             );
             await db.execute(
-              sql`UPDATE playbook_library SET strategic_category = 'defense' WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name = 'Financial Strategy') AND playbook_number > 18 AND playbook_number <= 23`,
+              sql`UPDATE playbook_library SET strategic_category = 'defense' 
+                  WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name = 'Financial Strategy') 
+                  AND name IN ('Commodity Price Spike', 'Commodity Trading Desk Rogue Trader', 'M&A Target Acquisition (Offensive)',
+                    'Major Customer Bankruptcy', 'Strategic Fundraising (IPO/Series)')`,
             );
             await db.execute(
-              sql`UPDATE playbook_library SET strategic_category = 'special_teams' WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name = 'Financial Strategy') AND playbook_number > 23`,
+              sql`UPDATE playbook_library SET strategic_category = 'special_teams' 
+                  WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name = 'Financial Strategy') 
+                  AND name = 'Portfolio Rebalancing'`,
             );
             // DEFENSE domains: Operational Excellence (seq 2), Regulatory & Compliance (seq 4), Brand & Reputation (seq 7)
             await db.execute(
