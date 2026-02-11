@@ -104,6 +104,7 @@ import ContinuousModePage from "./pages/ContinuousModePage";
 import PlaybookReadinessAudit from "./pages/PlaybookReadinessAudit";
 import ExecutiveSimulationDemo from "./pages/ExecutiveSimulationDemo";
 import ProductTour from "./pages/ProductTour";
+import PlatformOverview from "./pages/PlatformOverview";
 import InvestorPresentation from "./pages/InvestorPresentation";
 import MissionControl from "./pages/MissionControl";
 import WorkspaceIdentify from "./pages/WorkspaceIdentify";
@@ -550,6 +551,7 @@ function Router() {
         <Route path="/signals-demo" component={TryDemo} />
         <Route path="/executive-simulation" component={ExecutiveSimulationDemo} />
         <Route path="/simulation-demo" component={ExecutiveSimulationDemo} />
+        <Route path="/platform-overview" component={PlatformOverview} />
         <Route path="/product-tour" component={ProductTour} />
         <Route path="/video-tour" component={ProductTour} />
         <Route path="/investor-presentation" component={InvestorPresentation} />

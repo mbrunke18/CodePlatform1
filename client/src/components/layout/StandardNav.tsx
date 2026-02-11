@@ -251,6 +251,9 @@ export default function StandardNav() {
                 <DropdownMenuItem onClick={() => navigateTo("/investor-demo")} data-testid="nav-investor-demo">
                   Investor Demo
                 </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigateTo("/platform-overview")} data-testid="nav-platform-overview">
+                  Platform Overview
+                </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => navigateTo("/product-tour")} data-testid="nav-product-tour">
                   Product Tour
                 </DropdownMenuItem>
