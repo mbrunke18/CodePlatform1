@@ -443,6 +443,45 @@ app.use((req, res, next) => {
             );
           }
 
+          // Ensure playbooks table has all required columns (production migration)
+          try {
+            await db.execute(sql`ALTER TABLE playbooks ADD COLUMN IF NOT EXISTS strategic_objectives jsonb`);
+            await db.execute(sql`ALTER TABLE playbooks ADD COLUMN IF NOT EXISTS execution_progress_toward_goal integer DEFAULT 0`);
+            logger.info("✅ Ensured playbooks columns exist (strategic_objectives, execution_progress_toward_goal)");
+          } catch (e) {
+            logger.warn("Could not add playbooks columns (may already exist)");
+          }
+
+          // Ensure action_items table exists (production migration)
+          try {
+            await db.execute(sql`CREATE TABLE IF NOT EXISTS action_items (
+              id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+              organization_id UUID NOT NULL,
+              recommendation_id UUID,
+              initiative_id UUID,
+              scenario_id UUID,
+              title VARCHAR(255) NOT NULL,
+              description TEXT NOT NULL,
+              priority VARCHAR(10) DEFAULT 'medium',
+              status VARCHAR(20) DEFAULT 'pending',
+              assigned_to VARCHAR NOT NULL,
+              assigned_by VARCHAR,
+              due_date TIMESTAMP,
+              completed_at TIMESTAMP,
+              estimated_effort INTEGER,
+              actual_effort INTEGER,
+              dependencies JSONB,
+              approvals JSONB,
+              outcome TEXT,
+              tags JSONB,
+              created_at TIMESTAMP DEFAULT NOW(),
+              updated_at TIMESTAMP DEFAULT NOW()
+            )`);
+            logger.info("✅ Ensured action_items table exists");
+          } catch (e) {
+            logger.warn("Could not create action_items table (may already exist)");
+          }
+
           // Fix strategic categories for existing playbooks (production migration)
           // This ensures the 58/56/52 split even for records created before category logic was added
           // Version 2: Force fix on deployment
