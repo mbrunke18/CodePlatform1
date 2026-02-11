@@ -263,6 +263,11 @@ export default function Homepage() {
         </div>
       </section>
 
+      {/* Platform Visual - End-to-End Overview */}
+      <section className="bg-gradient-to-b from-slate-950 via-slate-900 to-white dark:to-slate-950">
+        <PlatformVisual />
+      </section>
+
       {/* Problem Section - The Bottleneck Isn't AI */}
       <section className="py-20 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800" data-testid="problem-section">
         <div className="max-w-5xl mx-auto px-6">
@@ -792,11 +797,6 @@ export default function Homepage() {
             </Button>
           </div>
         </div>
-      </section>
-
-      {/* Platform Visual - End-to-End Overview */}
-      <section className="bg-gradient-to-b from-slate-50 to-white dark:from-slate-900/50 dark:to-slate-900">
-        <PlatformVisual />
       </section>
 
       {/* CTA Section */}

@@ -19,7 +19,6 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
-import PlatformVisual from "@/components/marketing/PlatformVisual";
 import { useEffect } from "react";
 import { updatePageMetadata } from "@/lib/seo";
 
@@ -396,11 +395,6 @@ export default function InvestorResources() {
             </CardContent>
           </Card>
         </div>
-      </section>
-
-      {/* Platform Architecture Visual */}
-      <section className="bg-gradient-to-b from-slate-50 to-white dark:from-slate-900/50 dark:to-slate-900">
-        <PlatformVisual />
       </section>
 
       {/* CTA */}
