@@ -423,6 +423,11 @@ export default function InvestorResources() {
                 Contact Marty
               </Button>
             </Link>
+            <a href="mailto:martinbrunke@executeiq.io">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                martinbrunke@executeiq.io
+              </Button>
+            </a>
           </div>
         </div>
       </section>

@@ -188,6 +188,20 @@ export default function Footer() {
               </div>
             </div>
             <div className="flex items-center gap-6">
+              <a 
+                href="https://www.executeiq.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-poise-teal hover:text-poise-teal/80 transition-colors font-medium"
+              >
+                www.executeiq.io
+              </a>
+              <a 
+                href="mailto:martinbrunke@executeiq.io"
+                className="text-sm text-slate-400 hover:text-white transition-colors"
+              >
+                martinbrunke@executeiq.io
+              </a>
               <button 
                 onClick={() => navigateTo("/demo")}
                 className="text-sm text-emerald-400 hover:text-emerald-300 transition-colors font-medium"

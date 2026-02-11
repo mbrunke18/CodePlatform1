@@ -340,9 +340,17 @@ export default function Contact() {
           <h2 className="text-3xl font-bold mb-6 text-slate-900 dark:text-white">
             Questions About the Pilot Program?
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
-            Learn more about program structure, technical requirements, and success metrics.
+          <p className="text-lg text-slate-600 dark:text-slate-400 mb-4">
+            Reach out directly or learn more about program structure and success metrics.
           </p>
+          <div className="flex flex-wrap justify-center gap-6 mb-8">
+            <a href="mailto:martinbrunke@executeiq.io" className="text-lg font-medium text-blue-600 dark:text-blue-400 hover:underline">
+              martinbrunke@executeiq.io
+            </a>
+            <a href="https://www.executeiq.io" target="_blank" rel="noopener noreferrer" className="text-lg font-medium text-blue-600 dark:text-blue-400 hover:underline">
+              www.executeiq.io
+            </a>
+          </div>
           <div className="flex flex-wrap justify-center gap-4">
             <Button
               onClick={() => setLocation("/how-it-works")}
