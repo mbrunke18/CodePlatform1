@@ -216,7 +216,7 @@ export default function PlaybookReadinessDashboard({
                       className={`w-full bg-${config.color}-600 rounded-t-sm transition-all duration-500`}
                       style={{ height: `${Math.max(phaseScore * 0.8, 4)}px` }}
                     />
-                    <div className="text-[10px] text-slate-400 mt-1">{config.name}</div>
+                    <div className="text-xs text-muted-foreground mt-1">{config.name}</div>
                     <div className="text-xs font-semibold">{phaseScore}%</div>
                   </div>
                 );
@@ -278,25 +278,25 @@ export default function PlaybookReadinessDashboard({
         <CardContent>
           <div className="flex gap-1 h-4 rounded-full overflow-hidden">
             <div 
-              className="bg-violet-500 flex items-center justify-center text-[10px] text-white font-medium"
+              className="bg-violet-500 flex items-center justify-center text-xs text-white font-medium"
               style={{ width: `${score?.prepareWeight ?? 40}%` }}
             >
               {score?.prepareWeight ?? 40}%
             </div>
             <div 
-              className="bg-blue-500 flex items-center justify-center text-[10px] text-white font-medium"
+              className="bg-blue-500 flex items-center justify-center text-xs text-white font-medium"
               style={{ width: `${score?.monitorWeight ?? 20}%` }}
             >
               {score?.monitorWeight ?? 20}%
             </div>
             <div 
-              className="bg-emerald-500 flex items-center justify-center text-[10px] text-white font-medium"
+              className="bg-emerald-500 flex items-center justify-center text-xs text-white font-medium"
               style={{ width: `${score?.executeWeight ?? 30}%` }}
             >
               {score?.executeWeight ?? 30}%
             </div>
             <div 
-              className="bg-amber-500 flex items-center justify-center text-[10px] text-white font-medium"
+              className="bg-amber-500 flex items-center justify-center text-xs text-white font-medium"
               style={{ width: `${score?.learnWeight ?? 10}%` }}
             >
               {score?.learnWeight ?? 10}%

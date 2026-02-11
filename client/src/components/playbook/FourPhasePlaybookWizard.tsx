@@ -159,15 +159,15 @@ function OverallReadinessCard({ readinessData }: { readinessData: any }) {
         <div className="mt-4 grid grid-cols-3 gap-2 text-center">
           <div className="bg-slate-700/50 rounded-lg p-2">
             <div className="text-lg font-bold">{readinessData?.breakdown?.prepare?.completed ?? 0}/{readinessData?.breakdown?.prepare?.total ?? 0}</div>
-            <div className="text-[10px] text-slate-400">Prep Items</div>
+            <div className="text-xs text-muted-foreground">Prep Items</div>
           </div>
           <div className="bg-slate-700/50 rounded-lg p-2">
             <div className="text-lg font-bold">{readinessData?.breakdown?.monitor?.active ?? 0}/{readinessData?.breakdown?.monitor?.total ?? 0}</div>
-            <div className="text-[10px] text-slate-400">Active Triggers</div>
+            <div className="text-xs text-muted-foreground">Active Triggers</div>
           </div>
           <div className="bg-slate-700/50 rounded-lg p-2">
             <div className="text-lg font-bold">{readinessData?.breakdown?.learn?.configured ?? 0}</div>
-            <div className="text-[10px] text-slate-400">Learn Items</div>
+            <div className="text-xs text-muted-foreground">Learn Items</div>
           </div>
         </div>
       </CardContent>

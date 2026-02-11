@@ -80,7 +80,7 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
               )}>
                 {phase.label}
               </div>
-              <div className="text-[10px] text-muted-foreground opacity-70">
+              <div className="text-xs text-muted-foreground opacity-70">
                 {phase.tagline}
               </div>
             </div>
@@ -128,12 +128,12 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
             <h1 className="font-bold text-lg leading-tight group-hover:text-poise-gold transition-colors">
               ExecuteIQ One™
             </h1>
-            <p className="text-[10px] text-muted-foreground">
+            <p className="text-xs text-muted-foreground">
               Strategic Execution OS
             </p>
           </div>
         </Link>
-        <div className="mt-3 flex items-center gap-1 text-[10px] text-muted-foreground">
+        <div className="mt-3 flex items-center gap-1 text-xs text-muted-foreground">
           <span className="px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400">Identify</span>
           <span>→</span>
           <span className="px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-400">Detect</span>
@@ -178,7 +178,7 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
             </div>
             <div className="flex-1 min-w-0">
               <div className="text-sm font-medium truncate">{user.firstName || user.email}</div>
-              <div className="text-[10px] text-muted-foreground">Signed in</div>
+              <div className="text-xs text-muted-foreground">Signed in</div>
             </div>
             <Button
               variant="ghost"

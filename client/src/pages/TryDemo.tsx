@@ -492,7 +492,7 @@ export default function TryDemo() {
                             <h3 className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors mb-1">
                               {scenario.name}
                             </h3>
-                            <p className="text-sm text-slate-500 mb-2">{scenario.industry}</p>
+                            <p className="text-sm text-slate-400 mb-2">{scenario.industry}</p>
                             <p className="text-sm text-slate-400 mb-3">{scenario.trigger}</p>
                             <div className="flex items-center gap-4 text-xs">
                               <span className="flex items-center gap-1 text-red-400">
@@ -501,7 +501,7 @@ export default function TryDemo() {
                               </span>
                             </div>
                           </div>
-                          <ArrowRight className="h-5 w-5 text-slate-500 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                          <ArrowRight className="h-5 w-5 text-slate-400 group-hover:text-white group-hover:translate-x-1 transition-all" />
                         </div>
                       </CardContent>
                     </Card>
@@ -529,7 +529,7 @@ export default function TryDemo() {
                         >
                           <IconComponent className={`h-4 w-4 ${demo.iconColor}`} />
                           <span className="text-slate-300">{demo.organization}</span>
-                          <span className="text-[10px] text-slate-500">{demo.industry}</span>
+                          <span className="text-xs text-slate-400">{demo.industry}</span>
                         </button>
                       );
                     })}
@@ -589,7 +589,7 @@ export default function TryDemo() {
                         <p className="text-3xl font-bold text-white font-mono">
                           {formatTime(chaosSeconds)}
                         </p>
-                        <p className="text-xs text-slate-500 mt-1">
+                        <p className="text-xs text-slate-400 mt-1">
                           Still no coordinated response
                         </p>
                       </div>
@@ -606,7 +606,7 @@ export default function TryDemo() {
                     </CardContent>
                   </Card>
 
-                  <div className="text-center text-xs text-slate-500 pt-2">
+                  <div className="text-center text-xs text-slate-400 pt-2">
                     <p>Industry average response time:</p>
                     <p className="text-lg font-bold text-red-400">20-72 hours</p>
                   </div>
@@ -643,7 +643,7 @@ export default function TryDemo() {
                                 <div className="flex-1 min-w-0">
                                   <div className="flex items-center gap-2 mb-1">
                                     <span className="text-xs font-medium text-white">{msg.sender}</span>
-                                    <Badge variant="outline" className="text-[10px] py-0 h-4">
+                                    <Badge variant="outline" className="text-xs py-0 h-4">
                                       {msg.type}
                                     </Badge>
                                   </div>
@@ -697,7 +697,7 @@ export default function TryDemo() {
                   <Badge className={`bg-gradient-to-r ${selectedScenario.color} text-white`}>
                     {selectedScenario.name}
                   </Badge>
-                  <span className="text-sm text-slate-500">
+                  <span className="text-sm text-slate-400">
                     {formatCurrency(selectedScenario.dealValue)} at stake
                   </span>
                 </div>
@@ -730,9 +730,9 @@ export default function TryDemo() {
                         {isCompleted ? (
                           <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                         ) : (
-                          <IconComponent className={`h-4 w-4 ${isCurrent ? colors.text : 'text-slate-500'}`} />
+                          <IconComponent className={`h-4 w-4 ${isCurrent ? colors.text : 'text-slate-400'}`} />
                         )}
-                        <span className={`text-xs font-medium ${isCurrent ? 'text-white' : isCompleted ? 'text-slate-300' : 'text-slate-500'}`}>
+                        <span className={`text-xs font-medium ${isCurrent ? 'text-white' : isCompleted ? 'text-slate-300' : 'text-slate-400'}`}>
                           {phase.name}
                         </span>
                       </div>
@@ -1073,16 +1073,16 @@ export default function TryDemo() {
                                 >
                                   <div className="flex items-center gap-2 mb-1">
                                     <IconComponent className={`h-4 w-4 ${demo.iconColor}`} />
-                                    <span className="text-[10px] text-slate-500 uppercase">{demo.industry}</span>
+                                    <span className="text-xs text-slate-400 uppercase">{demo.industry}</span>
                                   </div>
                                   <p className="text-xs font-medium text-white truncate">{demo.title}</p>
                                   <div className="flex items-center justify-between mt-1">
-                                    <span className="text-[10px] text-slate-400">{demo.organization}</span>
-                                    <span className={`text-[10px] font-semibold ${demo.type === 'offensive' ? 'text-green-400' : 'text-emerald-400'}`}>
+                                    <span className="text-xs text-slate-400">{demo.organization}</span>
+                                    <span className={`text-xs font-semibold ${demo.type === 'offensive' ? 'text-green-400' : 'text-emerald-400'}`}>
                                       {demo.impact}
                                     </span>
                                   </div>
-                                  <div className="mt-2 flex items-center gap-1 text-[10px] text-poise-teal opacity-0 group-hover:opacity-100 transition-opacity">
+                                  <div className="mt-2 flex items-center gap-1 text-xs text-poise-teal opacity-0 group-hover:opacity-100 transition-opacity">
                                     <span>Explore</span>
                                     <ExternalLink className="h-2.5 w-2.5" />
                                   </div>
@@ -1122,12 +1122,12 @@ export default function TryDemo() {
                         <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-center">
                           <p className="text-xs text-red-400 mb-1">Traditional</p>
                           <p className="text-xl font-bold text-red-300">20-72 hrs</p>
-                          <p className="text-[10px] text-slate-500">Industry average</p>
+                          <p className="text-xs text-slate-400">Industry average</p>
                         </div>
                         <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-center">
                           <p className="text-xs text-emerald-400 mb-1">ExecuteIQ</p>
                           <p className="text-xl font-bold text-emerald-300">12 min</p>
-                          <p className="text-[10px] text-slate-500">Guaranteed</p>
+                          <p className="text-xs text-slate-400">Guaranteed</p>
                         </div>
                       </div>
                     </CardContent>
@@ -1163,16 +1163,16 @@ export default function TryDemo() {
                     </CardHeader>
                     <CardContent className="space-y-2">
                       <div className="flex items-start gap-2 text-xs">
-                        <Badge variant="outline" className="text-[10px] shrink-0">IBM 2024</Badge>
-                        <span className="text-slate-400">98 days saved with AI/automation</span>
+                        <Badge variant="outline" className="text-xs shrink-0">IBM 2024</Badge>
+                        <span className="text-slate-300">98 days saved with AI/automation</span>
                       </div>
                       <div className="flex items-start gap-2 text-xs">
-                        <Badge variant="outline" className="text-[10px] shrink-0">McKinsey</Badge>
-                        <span className="text-slate-400">5-10x faster execution</span>
+                        <Badge variant="outline" className="text-xs shrink-0">McKinsey</Badge>
+                        <span className="text-slate-300">5-10x faster execution</span>
                       </div>
                       <div className="flex items-start gap-2 text-xs">
-                        <Badge variant="outline" className="text-[10px] shrink-0">PagerDuty</Badge>
-                        <span className="text-slate-400">3.5x faster crisis response</span>
+                        <Badge variant="outline" className="text-xs shrink-0">PagerDuty</Badge>
+                        <span className="text-slate-300">3.5x faster crisis response</span>
                       </div>
                     </CardContent>
                   </Card>

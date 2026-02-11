@@ -398,10 +398,10 @@ export default function AIRadarDashboard() {
                     <p className="text-xs font-medium truncate">{category.name}</p>
                     <p className="text-xs text-muted-foreground">{category.dataPoints.length} signals</p>
                     {isScanning && (
-                      <Badge className="mt-1 text-[10px] bg-green-500">Scanning</Badge>
+                      <Badge className="mt-1 text-xs bg-green-500">Scanning</Badge>
                     )}
                     {hasAlert && !isScanning && (
-                      <Badge className="mt-1 text-[10px]" variant="destructive">Alert</Badge>
+                      <Badge className="mt-1 text-xs" variant="destructive">Alert</Badge>
                     )}
                   </div>
                 );

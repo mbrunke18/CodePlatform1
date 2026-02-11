@@ -298,7 +298,7 @@ export default function CommandCenter() {
                 <div className="text-xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400">
                   {activeScenarios.length}
                 </div>
-                <div className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-400 uppercase tracking-wide">
+                <div className="text-xs sm:text-xs text-slate-600 dark:text-slate-400 uppercase tracking-wide">
                   Active
                 </div>
               </div>
@@ -307,7 +307,7 @@ export default function CommandCenter() {
                 <div className="text-xl sm:text-3xl font-bold text-violet-600 dark:text-violet-400">
                   {teamsCoordinating}
                 </div>
-                <div className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-400 uppercase tracking-wide">
+                <div className="text-xs sm:text-xs text-slate-600 dark:text-slate-400 uppercase tracking-wide">
                   Teams
                 </div>
               </div>
@@ -316,7 +316,7 @@ export default function CommandCenter() {
                 <div className="text-xl sm:text-3xl font-bold text-emerald-600 dark:text-emerald-400">
                   {percentOnTrack}%
                 </div>
-                <div className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-400 uppercase tracking-wide">
+                <div className="text-xs sm:text-xs text-slate-600 dark:text-slate-400 uppercase tracking-wide">
                   On Track
                 </div>
               </div>
@@ -337,7 +337,7 @@ export default function CommandCenter() {
                       <div className="text-xl sm:text-3xl font-bold text-white" data-testid="text-countdown-time">
                         {formatTime(demoExecution.elapsedSeconds, true)}
                       </div>
-                      <div className="text-[10px] sm:text-xs text-white/70">remaining</div>
+                      <div className="text-xs sm:text-xs text-white/70">remaining</div>
                     </div>
                   </div>
                   {demoExecution.active && (
@@ -367,17 +367,17 @@ export default function CommandCenter() {
                 <div className="grid grid-cols-3 gap-2 sm:flex sm:items-center sm:gap-4 flex-1 sm:flex-initial">
                   <div className="text-center px-2 sm:px-3 py-1.5 sm:py-2 bg-white/10 rounded-lg">
                     <div className="text-base sm:text-xl font-bold text-white">{demoExecution.completedTasks.length}</div>
-                    <div className="text-[10px] sm:text-xs text-white/70">Tasks</div>
+                    <div className="text-xs sm:text-xs text-white/70">Tasks</div>
                   </div>
                   <div className="text-center px-2 sm:px-3 py-1.5 sm:py-2 bg-white/10 rounded-lg">
                     <div className="text-base sm:text-xl font-bold text-emerald-300" data-testid="text-roi-value">
                       ${(demoExecution.accumulatedValue / 1000).toFixed(0)}K
                     </div>
-                    <div className="text-[10px] sm:text-xs text-white/70">Value</div>
+                    <div className="text-xs sm:text-xs text-white/70">Value</div>
                   </div>
                   <div className="text-center px-2 sm:px-3 py-1.5 sm:py-2 bg-white/10 rounded-lg">
                     <div className="text-base sm:text-xl font-bold text-white">8</div>
-                    <div className="text-[10px] sm:text-xs text-white/70">Teams</div>
+                    <div className="text-xs sm:text-xs text-white/70">Teams</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-1">
@@ -412,7 +412,7 @@ export default function CommandCenter() {
                 return (
                   <div key={phase.id} className="flex-1" data-testid={`phase-progress-${phase.id}`}>
                     <div className="flex items-center justify-between mb-1">
-                      <span className={`text-[10px] sm:text-xs font-medium ${isActive ? 'text-white' : 'text-white/60'}`}>
+                      <span className={`text-xs sm:text-xs font-medium ${isActive ? 'text-white' : 'text-white/60'}`}>
                         {phase.icon} <span className="hidden sm:inline">{phase.name}</span>
                         <span className="sm:hidden">{phase.name.split(' ')[0]}</span>
                       </span>

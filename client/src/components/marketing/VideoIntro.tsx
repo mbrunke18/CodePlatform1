@@ -116,7 +116,7 @@ export default function VideoIntro({ onComplete, onSkip }: VideoIntroProps) {
             />
           ))}
         </div>
-        <span className="text-[10px] text-white/40 font-mono ml-1">
+        <span className="text-xs text-white/40 font-mono ml-1">
           {Math.floor(overallProgress / 1000)}s
         </span>
       </div>

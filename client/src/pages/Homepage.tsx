@@ -210,7 +210,7 @@ export default function Homepage() {
             <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto mb-4 leading-relaxed" data-testid="text-insight">
               7 major firms just concluded: organizations aren't failing at AI because of technology—they're failing because they lack <span className="text-white font-semibold">governance, decision rights, and coordination systems</span>. ExecuteIQ provides that infrastructure.
             </p>
-            <p className="text-lg text-slate-400 max-w-3xl mx-auto mb-8">
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-8">
               <span className="text-[#D4AF37] font-semibold">166 playbooks to start.</span> Customize them. Build your own.
               Pre-defined governance, clear decision rights, coordinated execution.
               <span className="text-emerald-400 font-semibold"> In 12 minutes, execution begins—not planning, execution.</span>
@@ -223,17 +223,17 @@ export default function Homepage() {
               <div>
                 <div className="text-3xl font-bold text-blue-400">78%</div>
                 <div className="text-sm text-slate-300">of executives say AI requires a new operating model</div>
-                <div className="text-xs text-slate-500 mt-1">IBM 2025</div>
+                <div className="text-xs text-slate-400 mt-1">IBM 2025</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-emerald-400">70%</div>
                 <div className="text-sm text-slate-300">of AI transformation is people and processes</div>
-                <div className="text-xs text-slate-500 mt-1">Bain 2025</div>
+                <div className="text-xs text-slate-400 mt-1">Bain 2025</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-purple-400">69%</div>
                 <div className="text-sm text-slate-300">agree AI requires new management approaches</div>
-                <div className="text-xs text-slate-500 mt-1">BCG 2025</div>
+                <div className="text-xs text-slate-400 mt-1">BCG 2025</div>
               </div>
             </div>
           </div>
@@ -264,7 +264,7 @@ export default function Homepage() {
       </section>
 
       {/* Platform Visual - End-to-End Overview */}
-      <section className="bg-gradient-to-b from-slate-950 via-slate-900 to-white dark:to-slate-950">
+      <section>
         <PlatformVisual />
       </section>
 
@@ -334,7 +334,7 @@ export default function Homepage() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               ExecuteIQ: The Execution Infrastructure Layer
             </h2>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
               ExecuteIQ provides what 7 major firms say is missing: pre-defined governance, clear decision rights, and coordination systems that activate in minutes—not days.
             </p>
           </div>
@@ -346,7 +346,7 @@ export default function Homepage() {
                   <Scale className="h-7 w-7 text-[#D4AF37]" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">Governance Ready Before the Moment</h3>
-                <p className="text-slate-400 mb-6">
+                <p className="text-slate-300 mb-6">
                   Every playbook includes pre-defined roles, decision rights, and accountability structures. When a situation hits, there's no confusion about who owns what. The governance is built in—real-time, embedded, exactly what McKinsey says enterprises need.
                 </p>
                 <div className="p-3 bg-slate-900/50 rounded-lg border border-[#D4AF37]/20">
@@ -363,7 +363,7 @@ export default function Homepage() {
                   <UserCheck className="h-7 w-7 text-emerald-400" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">Everyone Knows Their Assignment</h3>
-                <p className="text-slate-400 mb-6">
+                <p className="text-slate-300 mb-6">
                   BCG found 69% of executives agree AI requires fundamentally new management approaches. ExecuteIQ provides them—decision rights mapped before the situation, accountability clear before execution begins. No meetings to define ownership. It's already defined.
                 </p>
                 <div className="p-3 bg-slate-900/50 rounded-lg border border-emerald-500/20">
@@ -380,7 +380,7 @@ export default function Homepage() {
                   <Clock className="h-7 w-7 text-cyan-400" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">12 Minutes to Execution</h3>
-                <p className="text-slate-400 mb-6">
+                <p className="text-slate-300 mb-6">
                   With execution infrastructure in place, coordination happens instantly. Situation triggers playbook. Stakeholders notified. Tasks assigned. Execution begins. Not 72 hours of meetings—12 minutes to action.
                 </p>
                 <div className="p-3 bg-slate-900/50 rounded-lg border border-cyan-500/20">
@@ -404,7 +404,7 @@ export default function Homepage() {
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
               A Platform, Not a Fixed Product
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto">
               ExecuteIQ isn't a rigid system. It's infrastructure you can adapt.
             </p>
           </div>
@@ -416,7 +416,7 @@ export default function Homepage() {
                   <BookOpen className="h-7 w-7 text-[#D4AF37]" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Don't Start From Scratch</h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-4">
+                <p className="text-slate-700 dark:text-slate-300 mb-4">
                   166 playbooks across 9 strategic domains—M&A, crisis, competitive response, digital transformation, and more. Built from 25 years of Fortune 500 execution experience. Ready to deploy on day one.
                 </p>
               </CardContent>
@@ -428,7 +428,7 @@ export default function Homepage() {
                   <Layers className="h-7 w-7 text-emerald-500 dark:text-emerald-400" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Make Them Yours</h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-4">
+                <p className="text-slate-700 dark:text-slate-300 mb-4">
                   Every playbook is fully customizable. Adjust roles. Modify sequences. Change triggers. Your organization is unique. Your infrastructure should be too.
                 </p>
               </CardContent>
@@ -440,7 +440,7 @@ export default function Homepage() {
                   <Lightbulb className="h-7 w-7 text-purple-500 dark:text-purple-400" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Create From Scratch</h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-4">
+                <p className="text-slate-700 dark:text-slate-300 mb-4">
                   Face a situation we haven't covered? Build your own playbook. Your institutional knowledge, encoded into executable infrastructure—ready to activate when that situation hits again.
                 </p>
               </CardContent>
@@ -465,7 +465,7 @@ export default function Homepage() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               The Cost of Missing Infrastructure
             </h2>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
               The 72-hour gap has a real price tag:
             </p>
           </div>
@@ -478,8 +478,8 @@ export default function Homepage() {
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Ransomware Response</h3>
                 <div className="text-3xl font-bold text-red-400 mb-2">$136K/hr</div>
-                <p className="text-sm text-slate-400">of delayed response (IBM)</p>
-                <p className="text-xs text-slate-500 mt-2">72 hours = $9.8M exposure</p>
+                <p className="text-sm text-slate-300">of delayed response (IBM)</p>
+                <p className="text-xs text-slate-400 mt-2">72 hours = $9.8M exposure</p>
               </CardContent>
             </Card>
             
@@ -490,8 +490,8 @@ export default function Homepage() {
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">M&A Integration Delay</h3>
                 <div className="text-3xl font-bold text-amber-400 mb-2">$5-50M</div>
-                <p className="text-sm text-slate-400">in synergy erosion</p>
-                <p className="text-xs text-slate-500 mt-2">Every day of delay compounds</p>
+                <p className="text-sm text-slate-300">in synergy erosion</p>
+                <p className="text-xs text-slate-400 mt-2">Every day of delay compounds</p>
               </CardContent>
             </Card>
             
@@ -502,8 +502,8 @@ export default function Homepage() {
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Crisis Response Delay</h3>
                 <div className="text-3xl font-bold text-purple-400 mb-2">24 hrs</div>
-                <p className="text-sm text-slate-400">Reputational damage spreads hourly</p>
-                <p className="text-xs text-slate-500 mt-2">Market cap impact within 24 hours</p>
+                <p className="text-sm text-slate-300">Reputational damage spreads hourly</p>
+                <p className="text-xs text-slate-400 mt-2">Market cap impact within 24 hours</p>
               </CardContent>
             </Card>
             
@@ -514,8 +514,8 @@ export default function Homepage() {
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Competitive Response</h3>
                 <div className="text-3xl font-bold text-blue-400 mb-2">Lost</div>
-                <p className="text-sm text-slate-400">Market share</p>
-                <p className="text-xs text-slate-500 mt-2">Often unrecoverable</p>
+                <p className="text-sm text-slate-300">Market share</p>
+                <p className="text-xs text-slate-400 mt-2">Often unrecoverable</p>
               </CardContent>
             </Card>
           </div>
@@ -553,7 +553,7 @@ export default function Homepage() {
                   </p>
                   <div className="pt-3 border-t border-slate-200 dark:border-slate-700">
                     <p className={`font-bold ${item.color}`}>{item.source}</p>
-                    <p className="text-xs text-slate-500">{item.report}</p>
+                    <p className="text-xs text-slate-600 dark:text-slate-400">{item.report}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -578,7 +578,7 @@ export default function Homepage() {
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-phases">
               From Situation to Execution in 12 Minutes
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto">
               Execution infrastructure works because it's ready before the moment arrives.
             </p>
           </div>
@@ -607,7 +607,7 @@ export default function Homepage() {
                     {phase.title}
                   </h3>
                   
-                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                  <p className="text-sm text-slate-700 dark:text-slate-300 mb-4">
                     {phase.description}
                   </p>
                   
@@ -685,7 +685,7 @@ export default function Homepage() {
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-coverage">
               9 Strategic Domains. 166 Playbooks.
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto">
               Pre-defined governance, clear decision rights, and coordination pre-built for every strategic scenario your organization will face.
             </p>
           </div>
@@ -704,20 +704,20 @@ export default function Homepage() {
                 </div>
                 <div className="space-y-2 mb-6">
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-600 dark:text-slate-400">Market Entry & Expansion</span>
+                    <span className="text-slate-700 dark:text-slate-300">Market Entry & Expansion</span>
                     <span className="text-emerald-600 dark:text-emerald-400 font-medium">22</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-600 dark:text-slate-400">M&A Integration</span>
+                    <span className="text-slate-700 dark:text-slate-300">M&A Integration</span>
                     <span className="text-emerald-600 dark:text-emerald-400 font-medium">16</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-600 dark:text-slate-400">Product Launch</span>
+                    <span className="text-slate-700 dark:text-slate-300">Product Launch</span>
                     <span className="text-emerald-600 dark:text-emerald-400 font-medium">20</span>
                   </div>
                 </div>
                 <div className="pt-4 border-t border-emerald-200 dark:border-emerald-700/50">
-                  <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">58 <span className="text-sm font-normal text-slate-500 dark:text-slate-400">playbooks</span></p>
+                  <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">58 <span className="text-sm font-normal text-slate-600 dark:text-slate-300">playbooks</span></p>
                 </div>
               </CardContent>
             </Card>
@@ -735,20 +735,20 @@ export default function Homepage() {
                 </div>
                 <div className="space-y-2 mb-6">
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-600 dark:text-slate-400">Crisis Response</span>
+                    <span className="text-slate-700 dark:text-slate-300">Crisis Response</span>
                     <span className="text-blue-600 dark:text-blue-400 font-medium">24</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-600 dark:text-slate-400">Cyber Incidents</span>
+                    <span className="text-slate-700 dark:text-slate-300">Cyber Incidents</span>
                     <span className="text-blue-600 dark:text-blue-400 font-medium">18</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-600 dark:text-slate-400">Regulatory Compliance</span>
+                    <span className="text-slate-700 dark:text-slate-300">Regulatory Compliance</span>
                     <span className="text-blue-600 dark:text-blue-400 font-medium">14</span>
                   </div>
                 </div>
                 <div className="pt-4 border-t border-blue-200 dark:border-blue-700/50">
-                  <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">56 <span className="text-sm font-normal text-slate-500 dark:text-slate-400">playbooks</span></p>
+                  <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">56 <span className="text-sm font-normal text-slate-600 dark:text-slate-300">playbooks</span></p>
                 </div>
               </CardContent>
             </Card>
@@ -766,20 +766,20 @@ export default function Homepage() {
                 </div>
                 <div className="space-y-2 mb-6">
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-600 dark:text-slate-400">Digital Transformation</span>
+                    <span className="text-slate-700 dark:text-slate-300">Digital Transformation</span>
                     <span className="text-purple-600 dark:text-purple-400 font-medium">20</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-600 dark:text-slate-400">Competitive Response</span>
+                    <span className="text-slate-700 dark:text-slate-300">Competitive Response</span>
                     <span className="text-purple-600 dark:text-purple-400 font-medium">14</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-600 dark:text-slate-400">AI Governance</span>
+                    <span className="text-slate-700 dark:text-slate-300">AI Governance</span>
                     <span className="text-purple-600 dark:text-purple-400 font-medium">18</span>
                   </div>
                 </div>
                 <div className="pt-4 border-t border-purple-200 dark:border-purple-700/50">
-                  <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">52 <span className="text-sm font-normal text-slate-500 dark:text-slate-400">playbooks</span></p>
+                  <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">52 <span className="text-sm font-normal text-slate-600 dark:text-slate-300">playbooks</span></p>
                 </div>
               </CardContent>
             </Card>
@@ -805,7 +805,7 @@ export default function Homepage() {
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
             Ready to See It in Action?
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
             Experience how ExecuteIQ transforms a strategic moment into coordinated 12-minute execution.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -826,7 +826,7 @@ export default function Homepage() {
               <ArrowRight className="h-5 w-5 ml-2" />
             </Button>
           </div>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-6">
+          <p className="text-sm text-slate-600 dark:text-slate-300 mt-6">
             Q1 2026 Founding Partner Program
           </p>
         </div>

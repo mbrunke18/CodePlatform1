@@ -332,17 +332,17 @@ export default function UnifiedEnterprisePlatform() {
               <TabsTrigger value="audit" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-audit">
                 <Shield className="h-4 w-4" />
                 Audit & Compliance
-                <Badge variant="outline" className="ml-1 text-[10px] px-1 py-0 h-4 bg-blue-100 dark:bg-blue-900">V3</Badge>
+                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-blue-100 dark:bg-blue-900">V3</Badge>
               </TabsTrigger>
               <TabsTrigger value="integrations" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-integrations">
                 <Network className="h-4 w-4" />
                 Integrations
-                <Badge variant="outline" className="ml-1 text-[10px] px-1 py-0 h-4 bg-blue-100 dark:bg-blue-900">V3</Badge>
+                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-blue-100 dark:bg-blue-900">V3</Badge>
               </TabsTrigger>
               <TabsTrigger value="analytics" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-analytics">
                 <PieChart className="h-4 w-4" />
                 Advanced Analytics
-                <Badge variant="outline" className="ml-1 text-[10px] px-1 py-0 h-4 bg-blue-100 dark:bg-blue-900">V2</Badge>
+                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-blue-100 dark:bg-blue-900">V2</Badge>
               </TabsTrigger>
               <TabsTrigger value="scenario-triggers" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-triggers">
                 <Zap className="h-4 w-4" />

@@ -155,7 +155,7 @@ export default function LearnConfigStep({ data, onChange, playbook }: LearnConfi
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-medium">{item.title}</span>
                   {item.required && (
-                    <Badge variant="default" className="text-[10px]">Required</Badge>
+                    <Badge variant="default" className="text-xs">Required</Badge>
                   )}
                 </div>
                 <div className="flex flex-wrap gap-2 mt-1">

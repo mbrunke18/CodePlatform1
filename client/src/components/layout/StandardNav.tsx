@@ -115,7 +115,7 @@ export default function StandardNav() {
                       <div className="flex items-center gap-2">
                         <span className="font-medium">{ws.label}</span>
                       </div>
-                      <span className="text-xs text-slate-500">{ws.phase} • {ws.module}</span>
+                      <span className="text-xs text-muted-foreground">{ws.phase} • {ws.module}</span>
                     </div>
                   </DropdownMenuItem>
                 ))}
@@ -149,7 +149,7 @@ export default function StandardNav() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button
-                  className="px-4 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 text-slate-400 hover:text-white hover:bg-slate-800/50"
+                  className="px-4 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 text-slate-300 hover:text-white hover:bg-slate-800/50"
                   data-testid="nav-more-dropdown"
                 >
                   More
@@ -161,7 +161,7 @@ export default function StandardNav() {
                 <DropdownMenuLabel className="flex items-center gap-2 text-poise-gold">
                   <ClipboardList className="h-3 w-3" />
                   IDENTIFY
-                  <span className="text-[10px] text-poise-gold/70 ml-1">Playbook™</span>
+                  <span className="text-xs text-poise-gold/70 ml-1">Playbook™</span>
                 </DropdownMenuLabel>
                 <DropdownMenuItem onClick={() => navigateTo("/playbooks")} data-testid="nav-playbooks">
                   Playbook Library (166)
@@ -181,7 +181,7 @@ export default function StandardNav() {
                 <DropdownMenuLabel className="flex items-center gap-2 text-poise-teal">
                   <Radar className="h-3 w-3" />
                   DETECT
-                  <span className="text-[10px] text-poise-teal/70 ml-1">Signal™</span>
+                  <span className="text-xs text-poise-teal/70 ml-1">Signal™</span>
                 </DropdownMenuLabel>
                 <DropdownMenuItem onClick={() => navigateTo("/signal-intelligence")} data-testid="nav-signal-intelligence">
                   Signal Intelligence Hub
@@ -201,7 +201,7 @@ export default function StandardNav() {
                 <DropdownMenuLabel className="flex items-center gap-2 text-poise-teal">
                   <Compass className="h-3 w-3" />
                   EXECUTE
-                  <span className="text-[10px] text-poise-teal/70 ml-1">Compass™</span>
+                  <span className="text-xs text-poise-teal/70 ml-1">Compass™</span>
                 </DropdownMenuLabel>
                 <DropdownMenuItem onClick={() => navigateTo("/command-center")} data-testid="nav-command-center">
                   Command Center
@@ -221,7 +221,7 @@ export default function StandardNav() {
                 <DropdownMenuLabel className="flex items-center gap-2 text-poise-gold">
                   <TrendingUp className="h-3 w-3" />
                   ADVANCE
-                  <span className="text-[10px] text-poise-gold/70 ml-1">Retrospect™</span>
+                  <span className="text-xs text-poise-gold/70 ml-1">Retrospect™</span>
                 </DropdownMenuLabel>
                 <DropdownMenuItem onClick={() => navigateTo("/institutional-memory")} data-testid="nav-institutional-memory">
                   Institutional Memory

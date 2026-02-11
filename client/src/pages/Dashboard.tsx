@@ -53,8 +53,8 @@ function KPICard({
       <StatusDot status={status} />
       <div>
         <div className={`text-lg sm:text-2xl font-bold ${statusColors[status]}`}>{value}</div>
-        <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">{label}</div>
-        {trend && <div className="text-[9px] sm:text-xs text-slate-400 dark:text-slate-500 hidden sm:block">{trend}</div>}
+        <div className="text-xs sm:text-xs text-slate-600 dark:text-slate-300">{label}</div>
+        {trend && <div className="text-[9px] sm:text-xs text-slate-500 dark:text-slate-400 hidden sm:block">{trend}</div>}
       </div>
     </div>
   );
@@ -116,13 +116,13 @@ function PhaseCard({
                 <Icon className={`h-4 w-4 sm:h-5 sm:w-5 ${c.iconColor}`} />
               </div>
               <div>
-                <Badge className={`${c.badge} text-[10px] sm:text-xs font-bold`}>{phase}</Badge>
+                <Badge className={`${c.badge} text-xs sm:text-xs font-bold`}>{phase}</Badge>
               </div>
             </div>
             <ChevronRight className="h-4 w-4 text-slate-400" />
           </div>
           <CardTitle className="text-sm sm:text-lg text-slate-900 dark:text-white">{title}</CardTitle>
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 line-clamp-2">{description}</p>
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-2">{description}</p>
         </CardHeader>
         <CardContent className="p-3 sm:p-6 pt-0 sm:pt-0">
           <div className="space-y-1 sm:space-y-2">
@@ -176,7 +176,7 @@ function ActivityItem({
       <div className="flex-1 min-w-0">
         <p className="text-sm font-medium text-slate-900 dark:text-white truncate">{title}</p>
         <div className="flex items-center gap-2 mt-0.5">
-          <span className="text-xs text-slate-500 dark:text-slate-400">{time}</span>
+          <span className="text-xs text-slate-600 dark:text-slate-300">{time}</span>
           {status && (
             <Badge variant="outline" className="text-xs py-0 h-5">{status}</Badge>
           )}
@@ -264,7 +264,7 @@ export default function Dashboard() {
                          overallStatus === 'warning' ? 'Attention Required' : 'Action Needed'}
                       </span>
                       <span className="text-xs text-slate-400 hidden sm:inline">•</span>
-                      <span className="text-[10px] sm:text-xs text-slate-400">
+                      <span className="text-xs sm:text-xs text-slate-400">
                         {isConnected ? 'Live' : 'Reconnecting...'}
                       </span>
                     </div>
@@ -441,7 +441,7 @@ export default function Dashboard() {
                       </div>
                       <div className="text-left">
                         <div className="font-medium text-sm">Run Live Demo</div>
-                        <div className="text-xs text-slate-500">Experience a 12-min activation</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-300">Experience a 12-min activation</div>
                       </div>
                     </Button>
                   </Link>
@@ -453,7 +453,7 @@ export default function Dashboard() {
                       </div>
                       <div className="text-left">
                         <div className="font-medium text-sm">Browse Playbooks</div>
-                        <div className="text-xs text-slate-500">166 strategic templates</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-300">166 strategic templates</div>
                       </div>
                     </Button>
                   </Link>
@@ -465,7 +465,7 @@ export default function Dashboard() {
                       </div>
                       <div className="text-left">
                         <div className="font-medium text-sm">Configure Triggers</div>
-                        <div className="text-xs text-slate-500">Set up AI monitoring</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-300">Set up AI monitoring</div>
                       </div>
                     </Button>
                   </Link>
@@ -477,7 +477,7 @@ export default function Dashboard() {
                       </div>
                       <div className="text-left">
                         <div className="font-medium text-sm">Preparedness Report</div>
-                        <div className="text-xs text-slate-500">Full readiness analysis</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-300">Full readiness analysis</div>
                       </div>
                     </Button>
                   </Link>

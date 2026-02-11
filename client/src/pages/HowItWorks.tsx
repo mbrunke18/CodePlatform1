@@ -161,7 +161,7 @@ export default function HowItWorks() {
               ))}
               <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-slate-500 mx-1 md:mx-2 rotate-180 hidden md:block" />
             </div>
-            <p className="text-sm text-slate-400 mt-4">Continuous cycle — ADVANCE feeds back into IDENTIFY</p>
+            <p className="text-sm text-slate-300 mt-4">Continuous cycle — ADVANCE feeds back into IDENTIFY</p>
           </div>
         </div>
       </div>
@@ -209,7 +209,7 @@ export default function HowItWorks() {
                         <div className={`w-6 h-6 rounded-full ${phase.bgLight} flex items-center justify-center flex-shrink-0 mt-0.5`}>
                           <CheckCircle className={`h-4 w-4 ${phase.textColor}`} />
                         </div>
-                        <span className="text-slate-600 dark:text-slate-400">{capability}</span>
+                        <span className="text-slate-700 dark:text-slate-300">{capability}</span>
                       </div>
                     ))}
                   </div>
@@ -234,7 +234,7 @@ export default function HowItWorks() {
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
               Your Complete Implementation Roadmap
             </h3>
-            <p className="text-slate-600 dark:text-slate-400 mb-6 max-w-xl mx-auto">
+            <p className="text-slate-700 dark:text-slate-300 mb-6 max-w-xl mx-auto">
               Follow our 7-phase journey from discovery to continuous strategic excellence—with detailed milestones, timelines, and success metrics for every step.
             </p>
             <Button 
@@ -257,7 +257,7 @@ export default function HowItWorks() {
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
                 What Makes This Different
               </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+              <p className="text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto">
                 ExecuteIQ isn't just another planning tool. It's execution infrastructure—built in advance, activated in the moment.
               </p>
             </div>
@@ -275,7 +275,7 @@ export default function HowItWorks() {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">{diff.title}</h3>
-                      <p className="text-slate-600 dark:text-slate-400">{diff.description}</p>
+                      <p className="text-slate-700 dark:text-slate-300">{diff.description}</p>
                     </div>
                   </div>
                 </div>
@@ -291,7 +291,7 @@ export default function HowItWorks() {
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
             Ready to See It in Action?
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
             Experience how ExecuteIQ transforms a competitive threat into a coordinated 12-minute response.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -312,7 +312,7 @@ export default function HowItWorks() {
               <ArrowRight className="h-5 w-5 ml-2" />
             </Button>
           </div>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-6">
+          <p className="text-sm text-slate-600 dark:text-slate-300 mt-6">
             Q1 2026 Founding Partner Program • 90-day validation • $75K (100% credited to Year 1)
           </p>
         </div>

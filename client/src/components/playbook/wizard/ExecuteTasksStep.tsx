@@ -131,9 +131,9 @@ export default function ExecuteTasksStep({ data, onChange, playbook }: ExecuteTa
               <CardContent className="p-3 text-center">
                 <div className={`w-2 h-2 rounded-full ${phase.color} mx-auto mb-2`} />
                 <div className="text-xs font-medium">{phase.label}</div>
-                <div className="text-[10px] text-muted-foreground">{phase.description}</div>
+                <div className="text-xs text-muted-foreground">{phase.description}</div>
                 <div className="text-lg font-bold mt-1">{stats.count}</div>
-                <div className="text-[10px] text-muted-foreground">tasks · {stats.duration} min</div>
+                <div className="text-xs text-muted-foreground">tasks · {stats.duration} min</div>
               </CardContent>
             </Card>
           );
@@ -167,7 +167,7 @@ export default function ExecuteTasksStep({ data, onChange, playbook }: ExecuteTa
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-medium">{task.title}</span>
                     {task.isAutomated && (
-                      <Badge variant="secondary" className="text-[10px]">Auto</Badge>
+                      <Badge variant="secondary" className="text-xs">Auto</Badge>
                     )}
                   </div>
                   <div className="flex flex-wrap gap-2 mt-1">

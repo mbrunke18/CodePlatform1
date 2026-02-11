@@ -118,28 +118,28 @@ export default function Contact() {
                     <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white">Full Platform Access</div>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">Complete 7-component ecosystem during validation period</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-300">Complete 7-component ecosystem during validation period</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white">Strategic Implementation</div>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">Dedicated support for 3-5 critical scenarios</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-300">Dedicated support for 3-5 critical scenarios</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white">First-Mover Advantage</div>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">Category leadership in Executive Decision Operations</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-300">Category leadership in Executive Decision Operations</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white">Risk-Free Validation</div>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">Prove ROI in your context before full commitment</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-300">Prove ROI in your context before full commitment</p>
                     </div>
                   </div>
                 </div>
@@ -158,7 +158,7 @@ export default function Contact() {
             <Card data-testid="card-early-access-form">
               <CardHeader>
                 <CardTitle className="text-3xl">Tell Us About Your Organization</CardTitle>
-                <p className="text-slate-600 dark:text-slate-400">
+                <p className="text-slate-700 dark:text-slate-300">
                   Help us understand your strategic execution challenges and pilot readiness.
                 </p>
               </CardHeader>
@@ -323,7 +323,7 @@ export default function Contact() {
                       Submit Early Access Request
                     </Button>
 
-                    <p className="text-sm text-center text-slate-600 dark:text-slate-400">
+                    <p className="text-sm text-center text-slate-700 dark:text-slate-300">
                       Our team will review your request and contact you within 48 hours to schedule an executive interview.
                     </p>
                   </form>
@@ -340,7 +340,7 @@ export default function Contact() {
           <h2 className="text-3xl font-bold mb-6 text-slate-900 dark:text-white">
             Questions About the Pilot Program?
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 mb-4">
+          <p className="text-lg text-slate-700 dark:text-slate-300 mb-4">
             Reach out directly or learn more about program structure and success metrics.
           </p>
           <div className="flex flex-wrap justify-center gap-6 mb-8">

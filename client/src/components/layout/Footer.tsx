@@ -113,7 +113,7 @@ export default function Footer() {
                   <li key={link.path}>
                     <button
                       onClick={() => navigateTo(link.path)}
-                      className="text-sm text-slate-400 hover:text-white transition-colors text-left"
+                      className="text-sm text-slate-300 hover:text-white transition-colors text-left"
                     >
                       {link.label}
                     </button>
@@ -131,27 +131,27 @@ export default function Footer() {
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 text-center">
             <div>
               <div className="text-xl font-bold text-poise-gold">166</div>
-              <div className="text-xs text-slate-400">Strategic Playbooks</div>
+              <div className="text-xs text-slate-300">Strategic Playbooks</div>
             </div>
             <div>
               <div className="text-xl font-bold text-white">9</div>
-              <div className="text-xs text-slate-400">Executive Domains</div>
+              <div className="text-xs text-slate-300">Executive Domains</div>
             </div>
             <div>
               <div className="text-xl font-bold text-poise-teal">12 min</div>
-              <div className="text-xs text-slate-400">Decision Time</div>
+              <div className="text-xs text-slate-300">Decision Time</div>
             </div>
             <div>
               <div className="text-xl font-bold text-white">24/7</div>
-              <div className="text-xs text-slate-400">AI Monitoring</div>
+              <div className="text-xs text-slate-300">AI Monitoring</div>
             </div>
             <div>
               <div className="text-xl font-bold text-white">16</div>
-              <div className="text-xs text-slate-400">Signal Categories</div>
+              <div className="text-xs text-slate-300">Signal Categories</div>
             </div>
             <div>
               <div className="text-xl font-bold text-white">92</div>
-              <div className="text-xs text-slate-400">Data Points</div>
+              <div className="text-xs text-slate-300">Data Points</div>
             </div>
           </div>
         </div>
@@ -181,10 +181,10 @@ export default function Footer() {
                 <span className="text-[#D4AF37] font-bold text-lg tracking-tight">P</span>
               </div>
               <div>
-                <p className="text-sm text-slate-400">
+                <p className="text-sm text-slate-300">
                   © {new Date().getFullYear()} ExecuteIQ - The Execution Infrastructure Enterprises Are Missing
                 </p>
-                <p className="text-xs text-slate-600">Governance. Decision Rights. Coordination. In 12 Minutes.</p>
+                <p className="text-xs text-slate-400">Governance. Decision Rights. Coordination. In 12 Minutes.</p>
               </div>
             </div>
             <div className="flex items-center gap-6">

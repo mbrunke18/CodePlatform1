@@ -223,24 +223,24 @@ export default function PlaybookDetail() {
                   <div className="text-center p-2 sm:p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
                     <Clock className="h-4 w-4 sm:h-5 sm:w-5 mx-auto mb-1 text-blue-500" />
                     <div className="text-sm sm:text-base font-semibold">{playbook.timeSensitivity || 12}h</div>
-                    <div className="text-[10px] sm:text-xs text-muted-foreground">Response</div>
+                    <div className="text-xs sm:text-xs text-muted-foreground">Response</div>
                   </div>
                   <div className="text-center p-2 sm:p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
                     <Shield className="h-4 w-4 sm:h-5 sm:w-5 mx-auto mb-1 text-orange-500" />
                     <div className="text-sm sm:text-base font-semibold">{playbook.severityScore || 75}</div>
-                    <div className="text-[10px] sm:text-xs text-muted-foreground">Severity</div>
+                    <div className="text-xs sm:text-xs text-muted-foreground">Severity</div>
                   </div>
                   <div className="text-center p-2 sm:p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
                     <Users className="h-4 w-4 sm:h-5 sm:w-5 mx-auto mb-1 text-purple-500" />
                     <div className="text-sm sm:text-base font-semibold">
                       {(playbook.tier1Count || 0) + (playbook.tier2Count || 0)}
                     </div>
-                    <div className="text-[10px] sm:text-xs text-muted-foreground">Teams</div>
+                    <div className="text-xs sm:text-xs text-muted-foreground">Teams</div>
                   </div>
                   <div className="text-center p-2 sm:p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
                     <Target className="h-4 w-4 sm:h-5 sm:w-5 mx-auto mb-1 text-green-500" />
                     <div className="text-sm sm:text-base font-semibold">{playbook.historicalFrequency || 'N/A'}</div>
-                    <div className="text-[10px] sm:text-xs text-muted-foreground">Frequency</div>
+                    <div className="text-xs sm:text-xs text-muted-foreground">Frequency</div>
                   </div>
                 </div>
               </CardContent>
