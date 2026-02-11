@@ -37,6 +37,7 @@ import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
 import VideoIntro from "@/components/marketing/VideoIntro";
+import PlatformVisual from "@/components/marketing/PlatformVisual";
 
 const INTRO_SEEN_KEY = "poise_intro_seen_session";
 
@@ -791,6 +792,11 @@ export default function Homepage() {
             </Button>
           </div>
         </div>
+      </section>
+
+      {/* Platform Visual - End-to-End Overview */}
+      <section className="bg-gradient-to-b from-slate-50 to-white dark:from-slate-900/50 dark:to-slate-900">
+        <PlatformVisual />
       </section>
 
       {/* CTA Section */}

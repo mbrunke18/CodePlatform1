@@ -1,4 +1,5 @@
 import PageLayout from '@/components/layout/PageLayout';
+import PlatformVisual from "@/components/marketing/PlatformVisual";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { 
@@ -316,6 +317,10 @@ export default function HowItWorks() {
             Q1 2026 Founding Partner Program • 90-day validation • $75K (100% credited to Year 1)
           </p>
         </div>
+      </div>
+
+      <div className="bg-gradient-to-b from-slate-50 to-white dark:from-slate-900/50 dark:to-slate-900">
+        <PlatformVisual />
       </div>
 
       </div>
