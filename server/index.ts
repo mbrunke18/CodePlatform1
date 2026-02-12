@@ -79,6 +79,13 @@ app.get("/ready", (_req, res) => {
   }
 });
 
+app.use((req, res, next) => {
+  if (req.hostname === 'executeiq.io') {
+    return res.redirect(301, `https://www.executeiq.io${req.originalUrl}`);
+  }
+  next();
+});
+
 app.get("/_health", (_req, res) => {
   if (serverReady) {
     res
