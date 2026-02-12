@@ -38,7 +38,6 @@ import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
 import VideoIntro from "@/components/marketing/VideoIntro";
 import PlatformVisual from "@/components/marketing/PlatformVisual";
-const transformationVisualImg = "/images/transformation-visual.png";
 
 const INTRO_SEEN_KEY = "poise_intro_seen_session";
 
@@ -565,28 +564,6 @@ export default function Homepage() {
             <p className="text-xl font-semibold text-slate-900 dark:text-white">
               They're all describing what ExecuteIQ provides.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 72 Hours → 12 Minutes Transformation Visual */}
-      <section className="py-20 px-6 bg-white dark:bg-slate-950">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-              72 Hours → 12 Minutes
-            </h2>
-            <p className="text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto">
-              See how ExecuteIQ replaces the 72-hour scramble with coordinated, AI-powered execution infrastructure
-            </p>
-          </div>
-          <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700">
-            <img
-              src={transformationVisualImg}
-              alt="ExecuteIQ transforms 72-hour strategic scrambles into 12-minute coordinated execution with AI-powered IDEA Framework"
-              className="w-full h-auto"
-              loading="lazy"
-            />
           </div>
         </div>
       </section>
