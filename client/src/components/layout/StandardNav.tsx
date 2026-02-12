@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Play, Menu, X, LogIn, LogOut, User, ChevronDown, Brain, Target, Lightbulb, BarChart3, Layers, TrendingUp, Briefcase, Zap, BookOpen, GraduationCap, ClipboardList, Radar, Compass, Building } from "lucide-react";
+import { Play, Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Briefcase, Zap, ClipboardList, Radar, Compass, Building, Globe, Users, Calculator, Presentation, FileText, BookOpen, Video, Award, Shield, Layers } from "lucide-react";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { useLocation } from "wouter";
 import { useAuth } from "@/hooks/useAuth";
@@ -19,36 +19,106 @@ export default function StandardNav() {
   const { user, isAuthenticated, isLoading, login, logout } = useAuth();
 
   const navigateTo = (path: string) => {
+    if (path === '/ultimate-demo') {
+      window.location.href = '/ultimate-demo';
+      return;
+    }
     setLocation(path);
     setMobileMenuOpen(false);
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   };
 
-  const navLinks = [
-    { label: "How It Works", path: "/how-it-works" },
-    { label: "Playbooks", path: "/playbooks" },
-    { label: "For Investors", path: "/investors" },
-    { label: "Pricing", path: "/pricing" },
-  ];
-
-  const workspaceLinks = [
-    { label: "Playbook Factory", path: "/workspaces/identify", phase: "IDENTIFY", module: "Playbook™", icon: ClipboardList, color: "text-poise-gold" },
-    { label: "Signal Ops", path: "/workspaces/detect", phase: "DETECT", module: "Signal™", icon: Radar, color: "text-poise-teal" },
-    { label: "Compass Command", path: "/workspaces/execute", phase: "EXECUTE", module: "Compass™", icon: Compass, color: "text-poise-teal" },
-    { label: "Retrospect Lab", path: "/workspaces/advance", phase: "ADVANCE", module: "Retrospect™", icon: TrendingUp, color: "text-poise-gold" },
-  ];
-
-  const dashboardLinks = [
-    { label: "ExecuteIQ One™ Overview", path: "/mission-control", icon: Compass, color: "text-poise-gold", featured: true },
-    { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, color: "text-poise-teal" },
-    { label: "Strategy Execution", path: "/strategy-execution", icon: TrendingUp, color: "text-poise-teal" },
-    { label: "Executive Dashboard", path: "/executive-dashboard", icon: BarChart3, color: "text-poise-gold" },
-  ];
-
   const isActivePath = (path: string) => {
     if (path === "/") return location === "/";
     return location.startsWith(path);
   };
+
+  const productLinks = [
+    { label: "How It Works", path: "/how-it-works", icon: Layers, description: "See the IDEA Framework in action" },
+    { label: "Playbook Library", path: "/playbooks", icon: ClipboardList, description: "166 pre-built strategic playbooks" },
+    { label: "Pricing", path: "/pricing", icon: Calculator, description: "Plans and pricing" },
+    { label: "Integrations", path: "/integrations", icon: Globe, description: "Connect your enterprise tools" },
+  ];
+
+  const solutionsLinks = [
+    { label: "By Role", path: "/role-selector", icon: Users, description: "CEO, CFO, COO, CTO, CMO, CRO" },
+    { label: "By Industry", path: "/industry-demos", icon: Building, description: "Financial, Healthcare, Manufacturing" },
+    { label: "Competitive Positioning", path: "/competitive-positioning", icon: Shield, description: "How ExecuteIQ compares" },
+    { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "Calculate your savings" },
+  ];
+
+  const demosLinks = [
+    { label: "Ultimate Demo", path: "/ultimate-demo", icon: Zap, description: "Interactive 72hrs → 12min experience", featured: true },
+    { label: "Customer Demo", path: "/customer-demo", icon: Play, description: "Full product walkthrough" },
+    { label: "Industry Demos", path: "/industry-demos", icon: Building, description: "Luxury, Financial, Pharma & more" },
+    { label: "Interactive Sandbox", path: "/sandbox-demo", icon: Layers, description: "Hands-on product exploration" },
+    { label: "Executive Simulation", path: "/executive-simulation", icon: Award, description: "Live crisis response simulation" },
+  ];
+
+  const investorsLinks = [
+    { label: "For Investors", path: "/investors", icon: TrendingUp, description: "Investment thesis & traction" },
+    { label: "Investor Resources", path: "/investor-resources", icon: FileText, description: "Downloadable materials" },
+    { label: "VC Presentations", path: "/vc-presentations", icon: Presentation, description: "Pitch deck & financials" },
+    { label: "Competitive Positioning", path: "/competitive-positioning", icon: Shield, description: "Market landscape" },
+  ];
+
+  const companyLinks = [
+    { label: "Our Story", path: "/our-story", icon: BookOpen, description: "The ExecuteIQ journey" },
+    { label: "Founder's Story", path: "/founder-story", icon: Video, description: "Vision behind ExecuteIQ" },
+    { label: "Research", path: "/research", icon: FileText, description: "Academic & industry backing" },
+    { label: "Contact", path: "/contact", icon: Globe, description: "Get in touch" },
+  ];
+
+  const platformLinks = [
+    { label: "ExecuteIQ One™", path: "/mission-control", icon: Compass, color: "text-poise-gold" },
+    { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, color: "text-poise-teal" },
+    { label: "Strategy Execution", path: "/strategy-execution", icon: TrendingUp, color: "text-poise-teal" },
+    { label: "Executive Dashboard", path: "/executive-dashboard", icon: BarChart3, color: "text-poise-gold" },
+    { label: "Command Center", path: "/command-center", icon: Compass, color: "text-poise-teal" },
+    { label: "AI Trigger Monitoring", path: "/triggers-management", icon: Radar, color: "text-poise-teal" },
+    { label: "AI Radar", path: "/ai-radar", icon: Radar, color: "text-poise-teal" },
+  ];
+
+  const workspaceLinks = [
+    { label: "Playbook Factory", path: "/workspaces/identify", phase: "IDENTIFY", icon: ClipboardList, color: "text-poise-gold" },
+    { label: "Signal Ops", path: "/workspaces/detect", phase: "DETECT", icon: Radar, color: "text-poise-teal" },
+    { label: "Compass Command", path: "/workspaces/execute", phase: "EXECUTE", icon: Compass, color: "text-poise-teal" },
+    { label: "Retrospect Lab", path: "/workspaces/advance", phase: "ADVANCE", icon: TrendingUp, color: "text-poise-gold" },
+  ];
+
+  const renderDropdown = (label: string, links: typeof productLinks, align: "start" | "end" = "start") => (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button
+          className="px-3 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 text-slate-300 hover:text-white hover:bg-poise-teal/10"
+          data-testid={`nav-${label.toLowerCase().replace(/\s+/g, '-')}-dropdown`}
+        >
+          {label}
+          <ChevronDown className="h-3 w-3" />
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align={align} className="w-72">
+        {links.map((link) => (
+          <DropdownMenuItem
+            key={link.path + link.label}
+            onClick={() => navigateTo(link.path)}
+            className="flex items-center gap-3 py-2.5"
+            data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+          >
+            <link.icon className={`h-4 w-4 ${(link as any).featured ? 'text-poise-teal' : 'text-slate-400'}`} />
+            <div className="flex-1">
+              <div className={`font-medium text-sm ${(link as any).featured ? 'text-poise-teal' : ''}`}>
+                {link.label}
+              </div>
+              {link.description && (
+                <span className="text-xs text-muted-foreground">{link.description}</span>
+              )}
+            </div>
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
 
   return (
     <nav className="border-b border-poise-navy/50 bg-poise-navy sticky top-0 z-50">
@@ -75,247 +145,53 @@ export default function StandardNav() {
             </div>
           </div>
 
-          {/* Desktop Navigation Links - Simplified Journey */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <button
-                key={link.path}
-                onClick={() => navigateTo(link.path)}
-                className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
-                  (link as any).featured
-                    ? 'bg-gradient-to-r from-poise-gold to-amber-500 text-poise-navy font-semibold hover:from-amber-500 hover:to-poise-gold shadow-lg shadow-poise-gold/20'
-                    : isActivePath(link.path) 
-                      ? 'text-white bg-poise-teal/20 border border-poise-teal/40' 
-                      : 'text-slate-300 hover:text-white hover:bg-poise-teal/10'
-                }`}
-                data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
-              >
-                {link.label}
-              </button>
-            ))}
-            
-            {/* Workspaces Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button
-                  className="px-3 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 text-slate-300 hover:text-white hover:bg-poise-teal/10 border border-poise-teal/30"
-                  data-testid="nav-workspaces-dropdown"
-                >
-                  <Compass className="h-4 w-4 text-poise-teal" />
-                  Workspaces
-                  <ChevronDown className="h-3 w-3" />
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-64">
-                <DropdownMenuLabel className="text-slate-400">IDEA Framework Workspaces</DropdownMenuLabel>
-                {workspaceLinks.map((ws) => (
-                  <DropdownMenuItem key={ws.path} onClick={() => navigateTo(ws.path)} className="flex items-center gap-3">
-                    <ws.icon className={`h-4 w-4 ${ws.color}`} />
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium">{ws.label}</span>
-                      </div>
-                      <span className="text-xs text-muted-foreground">{ws.phase} • {ws.module}</span>
-                    </div>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+          {/* Desktop Navigation - Marketing Journey */}
+          <div className="hidden lg:flex items-center gap-1">
+            {renderDropdown("Product", productLinks)}
+            {renderDropdown("Solutions", solutionsLinks)}
+            {renderDropdown("Demos", demosLinks)}
+            {renderDropdown("Investors", investorsLinks)}
+            {renderDropdown("Company", companyLinks)}
 
-            {/* Dashboards Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button
-                  className="px-3 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 text-poise-gold hover:text-amber-300 hover:bg-poise-gold/10 border border-poise-gold/30"
-                  data-testid="nav-dashboards-dropdown"
-                >
-                  <BarChart3 className="h-4 w-4" />
-                  Dashboards
-                  <ChevronDown className="h-3 w-3" />
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-56">
-                <DropdownMenuLabel className="text-poise-gold">Executive Dashboards</DropdownMenuLabel>
-                {dashboardLinks.map((db) => (
-                  <DropdownMenuItem key={db.path} onClick={() => navigateTo(db.path)} className="flex items-center gap-3">
-                    <db.icon className={`h-4 w-4 ${db.color}`} />
-                    <span>{db.label}</span>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-            
-            {/* More Dropdown for secondary items */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button
-                  className="px-4 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 text-slate-300 hover:text-white hover:bg-slate-800/50"
-                  data-testid="nav-more-dropdown"
-                >
-                  More
-                  <ChevronDown className="h-3 w-3" />
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-72">
-                {/* IDENTIFY - ExecuteIQ Playbook™ */}
-                <DropdownMenuLabel className="flex items-center gap-2 text-poise-gold">
-                  <ClipboardList className="h-3 w-3" />
-                  IDENTIFY
-                  <span className="text-xs text-poise-gold/70 ml-1">Playbook™</span>
-                </DropdownMenuLabel>
-                <DropdownMenuItem onClick={() => navigateTo("/playbooks")} data-testid="nav-playbooks">
-                  Playbook Library (166)
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/strategic")} data-testid="nav-strategic">
-                  Scenario Planning Hub
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/what-if-analyzer")} data-testid="nav-what-if-analyzer">
-                  What-If Analyzer
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/board-briefings")} data-testid="nav-board-briefings">
-                  Board Briefings
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                
-                {/* DETECT - ExecuteIQ Signal™ */}
-                <DropdownMenuLabel className="flex items-center gap-2 text-poise-teal">
-                  <Radar className="h-3 w-3" />
-                  DETECT
-                  <span className="text-xs text-poise-teal/70 ml-1">Signal™</span>
-                </DropdownMenuLabel>
-                <DropdownMenuItem onClick={() => navigateTo("/signal-intelligence")} data-testid="nav-signal-intelligence">
-                  Signal Intelligence Hub
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/triggers-management")} data-testid="nav-triggers">
-                  AI Trigger Monitoring
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/ai-radar")} data-testid="nav-ai-radar">
-                  AI Radar Dashboard
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/pulse-intelligence")} data-testid="nav-pulse">
-                  Weak Signal Detection
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                
-                {/* EXECUTE - ExecuteIQ Compass™ */}
-                <DropdownMenuLabel className="flex items-center gap-2 text-poise-teal">
-                  <Compass className="h-3 w-3" />
-                  EXECUTE
-                  <span className="text-xs text-poise-teal/70 ml-1">Compass™</span>
-                </DropdownMenuLabel>
-                <DropdownMenuItem onClick={() => navigateTo("/command-center")} data-testid="nav-command-center">
-                  Command Center
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/crisis")} data-testid="nav-crisis">
-                  Crisis Response
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/war-room")} data-testid="nav-war-room">
-                  Situation Room
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/collaboration")} data-testid="nav-collaboration">
-                  Team Collaboration
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                
-                {/* ADVANCE - ExecuteIQ Retrospect™ */}
-                <DropdownMenuLabel className="flex items-center gap-2 text-poise-gold">
-                  <TrendingUp className="h-3 w-3" />
-                  ADVANCE
-                  <span className="text-xs text-poise-gold/70 ml-1">Retrospect™</span>
-                </DropdownMenuLabel>
-                <DropdownMenuItem onClick={() => navigateTo("/institutional-memory")} data-testid="nav-institutional-memory">
-                  Institutional Memory
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/decision-velocity")} data-testid="nav-decision-velocity">
-                  Decision Velocity
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/executive-dashboard")} data-testid="nav-executive-dashboard">
-                  Executive Dashboard
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/analytics")} data-testid="nav-analytics">
-                  Executive Analytics
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                
-                {/* Demos */}
-                <DropdownMenuLabel className="flex items-center gap-2 text-pink-400">
-                  <Play className="h-3 w-3" />
-                  Demos
-                </DropdownMenuLabel>
-                <DropdownMenuItem onClick={() => navigateTo("/executive-simulation")} data-testid="nav-executive-simulation">
-                  Executive Simulation
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/sandbox-demo")} data-testid="nav-sandbox-demo">
-                  Interactive Sandbox
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/investor-demo")} data-testid="nav-investor-demo">
-                  Investor Demo
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/platform-overview")} data-testid="nav-platform-overview">
-                  Platform Overview
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/product-tour")} data-testid="nav-product-tour">
-                  Product Tour
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => { window.location.href = '/ultimate-demo'; }} data-testid="nav-ultimate-demo">
-                  Ultimate Demo
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/customer-demo")} data-testid="nav-customer-demo">
-                  Customer Demo
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/industry-demos")} data-testid="nav-industry-demos">
-                  Industry Demos
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                
-                {/* Investors */}
-                <DropdownMenuLabel className="flex items-center gap-2 text-poise-gold">
-                  <Briefcase className="h-3 w-3" />
-                  Investors
-                </DropdownMenuLabel>
-                <DropdownMenuItem onClick={() => navigateTo("/investor-resources")} data-testid="nav-investor-resources">
-                  Investor Resources
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/vc-presentations")} data-testid="nav-vc-presentations">
-                  VC Presentations
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/competitive-positioning")} data-testid="nav-competitive-positioning">
-                  Competitive Positioning
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/roi-calculator")} data-testid="nav-roi-calculator">
-                  ROI Calculator
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                
-                {/* Company */}
-                <DropdownMenuLabel className="flex items-center gap-2 text-slate-400">
-                  <Building className="h-3 w-3" />
-                  Company
-                </DropdownMenuLabel>
-                <DropdownMenuItem onClick={() => navigateTo("/how-it-works")} data-testid="nav-how-it-works">
-                  How It Works
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/our-story")} data-testid="nav-our-story">
-                  Our Story
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/founder-story")} data-testid="nav-founder-story">
-                  Founder's Story (Video)
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/why-executeiq")} data-testid="nav-why-executeiq">
-                  Why ExecuteIQ
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/integrations")} data-testid="nav-integrations">
-                  Integrations
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigateTo("/contact")} data-testid="nav-contact">
-                  Contact
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            {/* Platform - Only shown when logged in */}
+            {isAuthenticated && (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button
+                    className="px-3 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 text-poise-gold hover:text-amber-300 hover:bg-poise-gold/10 border border-poise-gold/30"
+                    data-testid="nav-platform-dropdown"
+                  >
+                    <Compass className="h-4 w-4" />
+                    Platform
+                    <ChevronDown className="h-3 w-3" />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-64">
+                  <DropdownMenuLabel className="text-poise-gold">Dashboards</DropdownMenuLabel>
+                  {platformLinks.map((link) => (
+                    <DropdownMenuItem key={link.path} onClick={() => navigateTo(link.path)} className="flex items-center gap-3">
+                      <link.icon className={`h-4 w-4 ${link.color}`} />
+                      <span className="font-medium">{link.label}</span>
+                    </DropdownMenuItem>
+                  ))}
+                  <DropdownMenuSeparator />
+                  <DropdownMenuLabel className="text-poise-teal">Workspaces</DropdownMenuLabel>
+                  {workspaceLinks.map((ws) => (
+                    <DropdownMenuItem key={ws.path} onClick={() => navigateTo(ws.path)} className="flex items-center gap-3">
+                      <ws.icon className={`h-4 w-4 ${ws.color}`} />
+                      <div className="flex-1">
+                        <span className="font-medium">{ws.label}</span>
+                        <span className="text-xs text-muted-foreground ml-2">{ws.phase}</span>
+                      </div>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
           </div>
 
-          {/* Desktop CTAs - Simplified */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Desktop CTAs */}
+          <div className="hidden lg:flex items-center gap-3">
             <Button 
               onClick={() => navigateTo("/try-demo")}
               className="bg-gradient-to-r from-poise-teal to-cyan-600 hover:from-cyan-600 hover:to-poise-teal text-white font-semibold h-9 px-4 shadow-lg shadow-poise-teal/20"
@@ -338,7 +214,7 @@ export default function StandardNav() {
               <div className="h-9 w-20 bg-slate-800 animate-pulse rounded-lg" />
             ) : isAuthenticated && user ? (
               <div className="flex items-center gap-2">
-                <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 bg-slate-800 rounded-lg">
+                <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 bg-slate-800 rounded-lg">
                   <User className="h-4 w-4 text-slate-300" />
                   <span className="text-sm text-slate-300">{user.firstName || user.email?.split('@')[0]}</span>
                 </div>
@@ -348,8 +224,8 @@ export default function StandardNav() {
                   className="text-slate-300 hover:text-white hover:bg-slate-800 h-9 px-3"
                   data-testid="nav-logout"
                 >
-                  <LogOut className="h-4 w-4 lg:mr-1.5" />
-                  <span className="hidden lg:inline">Sign Out</span>
+                  <LogOut className="h-4 w-4 xl:mr-1.5" />
+                  <span className="hidden xl:inline">Sign Out</span>
                 </Button>
               </div>
             ) : (
@@ -359,19 +235,19 @@ export default function StandardNav() {
                 className="text-slate-300 hover:text-white hover:bg-slate-800 h-9 px-3"
                 data-testid="nav-login"
               >
-                <LogIn className="h-4 w-4 lg:mr-1.5" />
-                <span className="hidden lg:inline">Sign In</span>
+                <LogIn className="h-4 w-4 xl:mr-1.5" />
+                <span className="hidden xl:inline">Sign In</span>
               </Button>
             )}
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center gap-2">
+          <div className="flex lg:hidden items-center gap-2">
             <Button 
               onClick={() => navigateTo("/try-demo")}
               size="sm"
               className="bg-gradient-to-r from-emerald-600 to-cyan-600 text-white"
-              data-testid="nav-mobile-try-demo"
+              data-testid="nav-mobile-try-demo-btn"
             >
               <Play className="h-4 w-4" />
             </Button>
@@ -385,11 +261,11 @@ export default function StandardNav() {
           </div>
         </div>
 
-        {/* Mobile Menu - Simplified primary journey */}
+        {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-slate-800 animate-in slide-in-from-top-2 duration-200 max-h-[70vh] overflow-y-auto">
+          <div className="lg:hidden py-4 border-t border-slate-800 animate-in slide-in-from-top-2 duration-200 max-h-[80vh] overflow-y-auto">
             <div className="flex flex-col gap-1">
-              {/* Primary CTAs - Most prominent */}
+              {/* Primary CTAs */}
               <Button 
                 onClick={() => navigateTo("/try-demo")}
                 className="bg-gradient-to-r from-poise-teal to-cyan-600 text-white w-full justify-center h-12 text-base font-semibold"
@@ -407,97 +283,113 @@ export default function StandardNav() {
               >
                 Start Pilot
               </Button>
+
+              {/* Ultimate Demo - Featured */}
+              <button
+                onClick={() => navigateTo("/ultimate-demo")}
+                className="flex items-center gap-3 mt-3 py-3 px-4 text-sm font-semibold text-poise-teal bg-poise-teal/10 hover:bg-poise-teal/20 rounded-lg border border-poise-teal/30"
+                data-testid="nav-mobile-ultimate-demo"
+              >
+                <Zap className="h-5 w-5" />
+                Ultimate Demo — 72hrs → 12min
+              </button>
               
               <div className="border-t border-slate-800 my-3" />
               
-              {/* Main Navigation Links */}
-              {navLinks.map((link) => (
+              {/* Product */}
+              <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide font-semibold">Product</p>
+              {productLinks.map((link) => (
                 <button
                   key={link.path}
                   onClick={() => navigateTo(link.path)}
-                  className={`text-left py-3 px-4 rounded-lg transition-colors ${
-                    isActivePath(link.path)
-                      ? 'text-white bg-slate-800'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                  className={`text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 ${
+                    isActivePath(link.path) ? 'text-white bg-slate-800' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                   }`}
-                  data-testid={`nav-mobile-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
                 >
+                  <link.icon className="h-4 w-4 text-slate-400" />
                   {link.label}
                 </button>
               ))}
               
               <div className="border-t border-slate-800 my-3" />
               
-              {/* Quick Access - Most used features */}
-              <p className="px-4 py-2 text-xs text-white/50 uppercase tracking-wide">Quick Access</p>
-              <div className="grid grid-cols-2 gap-2 px-2">
+              {/* Solutions */}
+              <p className="px-4 py-2 text-xs text-poise-teal uppercase tracking-wide font-semibold">Solutions</p>
+              {solutionsLinks.map((link) => (
                 <button
-                  onClick={() => navigateTo("/mission-control")}
-                  className="flex items-center gap-2 py-3 px-3 text-sm text-poise-gold hover:bg-poise-gold/10 rounded-lg border border-poise-gold/30"
-                  data-testid="nav-mobile-mission-control"
+                  key={link.path + link.label}
+                  onClick={() => navigateTo(link.path)}
+                  className="text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-slate-300 hover:text-white hover:bg-slate-800"
                 >
-                  <Compass className="h-4 w-4" />
-                  ExecuteIQ One™
+                  <link.icon className="h-4 w-4 text-slate-400" />
+                  {link.label}
                 </button>
-                <button
-                  onClick={() => navigateTo("/playbooks")}
-                  className="flex items-center gap-2 py-3 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg border border-slate-700"
-                  data-testid="nav-mobile-playbooks"
-                >
-                  <ClipboardList className="h-4 w-4" />
-                  166 Playbooks
-                </button>
-                <button
-                  onClick={() => navigateTo("/signal-intelligence")}
-                  className="flex items-center gap-2 py-3 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg border border-slate-700"
-                  data-testid="nav-mobile-signal-intel"
-                >
-                  <Radar className="h-4 w-4" />
-                  Signal Hub
-                </button>
-                <button
-                  onClick={() => navigateTo("/executive-dashboard")}
-                  className="flex items-center gap-2 py-3 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg border border-slate-700"
-                  data-testid="nav-mobile-exec-dashboard"
-                >
-                  <BarChart3 className="h-4 w-4" />
-                  Dashboard
-                </button>
-                <button
-                  onClick={() => { window.location.href = '/ultimate-demo'; }}
-                  className="flex items-center gap-2 py-3 px-3 text-sm text-pink-400 hover:bg-pink-500/10 rounded-lg border border-pink-500/30 col-span-2"
-                  data-testid="nav-mobile-ultimate-demo"
-                >
-                  <Zap className="h-4 w-4" />
-                  Ultimate Demo — 72hrs → 12min
-                </button>
-              </div>
+              ))}
               
               <div className="border-t border-slate-800 my-3" />
               
-              {/* Company Links */}
-              <div className="flex flex-wrap gap-2 px-4">
+              {/* Demos */}
+              <p className="px-4 py-2 text-xs text-pink-400 uppercase tracking-wide font-semibold">Demos</p>
+              {demosLinks.filter(l => l.path !== '/ultimate-demo').map((link) => (
                 <button
-                  onClick={() => navigateTo("/contact")}
-                  className="text-sm text-slate-300 hover:text-white"
+                  key={link.path}
+                  onClick={() => navigateTo(link.path)}
+                  className="text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-slate-300 hover:text-white hover:bg-slate-800"
                 >
-                  Contact
+                  <link.icon className="h-4 w-4 text-slate-400" />
+                  {link.label}
                 </button>
-                <span className="text-slate-600">•</span>
+              ))}
+              
+              <div className="border-t border-slate-800 my-3" />
+              
+              {/* Investors */}
+              <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide font-semibold">Investors</p>
+              {investorsLinks.map((link) => (
                 <button
-                  onClick={() => navigateTo("/our-story")}
-                  className="text-sm text-slate-300 hover:text-white"
+                  key={link.path + link.label}
+                  onClick={() => navigateTo(link.path)}
+                  className="text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-slate-300 hover:text-white hover:bg-slate-800"
                 >
-                  Our Story
+                  <link.icon className="h-4 w-4 text-slate-400" />
+                  {link.label}
                 </button>
-                <span className="text-slate-600">•</span>
+              ))}
+              
+              <div className="border-t border-slate-800 my-3" />
+              
+              {/* Company */}
+              <p className="px-4 py-2 text-xs text-slate-500 uppercase tracking-wide font-semibold">Company</p>
+              {companyLinks.map((link) => (
                 <button
-                  onClick={() => navigateTo("/integrations")}
-                  className="text-sm text-slate-300 hover:text-white"
+                  key={link.path}
+                  onClick={() => navigateTo(link.path)}
+                  className="text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-slate-300 hover:text-white hover:bg-slate-800"
                 >
-                  Integrations
+                  <link.icon className="h-4 w-4 text-slate-400" />
+                  {link.label}
                 </button>
-              </div>
+              ))}
+
+              {/* Platform - Only when logged in */}
+              {isAuthenticated && (
+                <>
+                  <div className="border-t border-slate-800 my-3" />
+                  <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide font-semibold">Platform</p>
+                  <div className="grid grid-cols-2 gap-2 px-2">
+                    {platformLinks.map((link) => (
+                      <button
+                        key={link.path}
+                        onClick={() => navigateTo(link.path)}
+                        className={`flex items-center gap-2 py-3 px-3 text-sm ${link.color} hover:bg-slate-800 rounded-lg border border-slate-700`}
+                      >
+                        <link.icon className="h-4 w-4" />
+                        {link.label}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
               
               {/* Auth */}
               <div className="border-t border-slate-800 my-3" />
