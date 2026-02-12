@@ -61,15 +61,12 @@ const app = express();
 // Server is NOT ready until database seeding is complete
 let serverReady = false;
 
-// Domain redirect: executeiq.io → www.executeiq.io (must be first)
-app.use((req, res, next) => {
-  if (req.hostname === 'executeiq.io') {
-    return res.redirect(301, `https://www.executeiq.io${req.originalUrl}`);
-  }
-  next();
+// Health check endpoints - MUST be registered BEFORE the domain redirect
+// so Replit's deployment health checker always gets a 200
+app.get("/health", (_req, res) => {
+  res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
-// Health check endpoints consolidated under /api/health
 app.get("/api/health", (_req, res) => {
   res.status(200).json({ status: "ok", app: "ExecuteIQ", timestamp: new Date().toISOString() });
 });
@@ -112,6 +109,15 @@ app.get("/_health", (_req, res) => {
 // HEAD request on root for fast health checks (used by some load balancers)
 app.head("/", (_req, res) => {
   res.status(200).end();
+});
+
+// Domain redirect: executeiq.io → www.executeiq.io
+// Placed AFTER health checks so deployment health checks always pass
+app.use((req, res, next) => {
+  if (req.hostname === 'executeiq.io') {
+    return res.redirect(301, `https://www.executeiq.io${req.originalUrl}`);
+  }
+  next();
 });
 
 // Import raw body parser for webhook signature verification
