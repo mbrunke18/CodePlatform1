@@ -111,6 +111,10 @@ app.head("/", (_req, res) => {
   res.status(200).end();
 });
 
+app.get("/ultimate-demo", (_req, res) => {
+  res.sendFile(path.resolve("client/public/ultimate-demo.html"));
+});
+
 // Domain redirect: executeiq.io → www.executeiq.io
 // Placed AFTER health checks so deployment health checks always pass
 app.use((req, res, next) => {
