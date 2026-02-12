@@ -117,8 +117,9 @@ app.get("/ultimate-demo", (_req, res) => {
 
 // Domain redirect: executeiq.io → www.executeiq.io
 // Placed AFTER health checks so deployment health checks always pass
+// Skips root path "/" to ensure Autoscale health checks always get 200
 app.use((req, res, next) => {
-  if (req.hostname === 'executeiq.io') {
+  if (req.hostname === 'executeiq.io' && req.path !== '/' && req.path !== '/health' && req.path !== '/_health' && req.path !== '/api/health' && req.path !== '/ready') {
     return res.redirect(301, `https://www.executeiq.io${req.originalUrl}`);
   }
   next();
