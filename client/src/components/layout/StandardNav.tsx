@@ -257,6 +257,9 @@ export default function StandardNav() {
                 <DropdownMenuItem onClick={() => navigateTo("/product-tour")} data-testid="nav-product-tour">
                   Product Tour
                 </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => { window.location.href = '/ultimate-demo'; }} data-testid="nav-ultimate-demo">
+                  Ultimate Demo
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 
                 {/* Company */}
@@ -434,6 +437,14 @@ export default function StandardNav() {
                 >
                   <BarChart3 className="h-4 w-4" />
                   Dashboard
+                </button>
+                <button
+                  onClick={() => { window.location.href = '/ultimate-demo'; }}
+                  className="flex items-center gap-2 py-3 px-3 text-sm text-pink-400 hover:bg-pink-500/10 rounded-lg border border-pink-500/30 col-span-2"
+                  data-testid="nav-mobile-ultimate-demo"
+                >
+                  <Zap className="h-4 w-4" />
+                  Ultimate Demo — 72hrs → 12min
                 </button>
               </div>
               
