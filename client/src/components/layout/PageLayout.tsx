@@ -17,7 +17,7 @@ interface PageLayoutProps {
 export default function PageLayout({ 
   children, 
   className = "",
-  showBackButton = true,
+  showBackButton = false,
   backButtonLabel = "Back"
 }: PageLayoutProps) {
   return (

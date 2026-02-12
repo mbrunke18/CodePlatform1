@@ -71,7 +71,7 @@ export default function Contact() {
   };
 
   return (
-    <PageLayout showBackButton={true} backButtonLabel="Back">
+    <PageLayout>
       <div className="page-background min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
 
       {/* Hero Section */}

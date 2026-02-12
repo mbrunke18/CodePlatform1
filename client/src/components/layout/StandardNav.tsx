@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Play, Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Briefcase, Zap, ClipboardList, Radar, Compass, Building, Globe, Users, Calculator, Presentation, FileText, BookOpen, Video, Award, Shield, Layers } from "lucide-react";
+import { Play, Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Briefcase, Zap, ClipboardList, Radar, Compass, Building, Globe, Users, Calculator, Presentation, FileText, BookOpen, Video, Award, Shield, Layers, ArrowLeft, Eye, Brain, Target, Lightbulb } from "lucide-react";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { useLocation } from "wouter";
 import { useAuth } from "@/hooks/useAuth";
+import { scrollToTop } from "@/components/ScrollToTop";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,7 +26,7 @@ export default function StandardNav() {
     }
     setLocation(path);
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    scrollToTop();
   };
 
   const isActivePath = (path: string) => {
@@ -35,7 +36,9 @@ export default function StandardNav() {
 
   const productLinks = [
     { label: "How It Works", path: "/how-it-works", icon: Layers, description: "See the IDEA Framework in action" },
+    { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Full platform capabilities" },
     { label: "Playbook Library", path: "/playbooks", icon: ClipboardList, description: "166 pre-built strategic playbooks" },
+    { label: "Why ExecuteIQ", path: "/why-executeiq", icon: Target, description: "The execution infrastructure gap" },
     { label: "Pricing", path: "/pricing", icon: Calculator, description: "Plans and pricing" },
     { label: "Integrations", path: "/integrations", icon: Globe, description: "Connect your enterprise tools" },
   ];
@@ -53,6 +56,8 @@ export default function StandardNav() {
     { label: "Industry Demos", path: "/industry-demos", icon: Building, description: "Luxury, Financial, Pharma & more" },
     { label: "Interactive Sandbox", path: "/sandbox-demo", icon: Layers, description: "Hands-on product exploration" },
     { label: "Executive Simulation", path: "/executive-simulation", icon: Award, description: "Live crisis response simulation" },
+    { label: "Investor Demo", path: "/investor-demo", icon: Presentation, description: "Tailored investor walkthrough" },
+    { label: "Product Tour", path: "/product-tour", icon: Eye, description: "Guided platform tour" },
   ];
 
   const investorsLinks = [
@@ -69,15 +74,33 @@ export default function StandardNav() {
     { label: "Contact", path: "/contact", icon: Globe, description: "Get in touch" },
   ];
 
-  const platformLinks = [
+  const platformDashboards = [
     { label: "ExecuteIQ One™", path: "/mission-control", icon: Compass, color: "text-poise-gold" },
-    { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, color: "text-poise-teal" },
-    { label: "Strategy Execution", path: "/strategy-execution", icon: TrendingUp, color: "text-poise-teal" },
     { label: "Executive Dashboard", path: "/executive-dashboard", icon: BarChart3, color: "text-poise-gold" },
+    { label: "Strategy Execution", path: "/strategy-execution", icon: TrendingUp, color: "text-poise-teal" },
     { label: "Command Center", path: "/command-center", icon: Compass, color: "text-poise-teal" },
+    { label: "War Room", path: "/war-room", icon: Target, color: "text-poise-gold" },
+  ];
+
+  const platformIntelligence = [
+    { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, color: "text-poise-teal" },
     { label: "AI Trigger Monitoring", path: "/triggers-management", icon: Radar, color: "text-poise-teal" },
     { label: "AI Radar", path: "/ai-radar", icon: Radar, color: "text-poise-teal" },
+    { label: "Pulse Intelligence", path: "/pulse-intelligence", icon: Radar, color: "text-poise-teal" },
+    { label: "Crisis Response", path: "/crisis", icon: Shield, color: "text-red-400" },
   ];
+
+  const platformTools = [
+    { label: "Decision Velocity", path: "/decision-velocity", icon: Zap, color: "text-poise-teal" },
+    { label: "What-If Analyzer", path: "/what-if-analyzer", icon: Brain, color: "text-poise-teal" },
+    { label: "Strategic Planning", path: "/strategic", icon: Lightbulb, color: "text-poise-gold" },
+    { label: "Board Briefings", path: "/board-briefings", icon: FileText, color: "text-poise-gold" },
+    { label: "Advanced Analytics", path: "/analytics", icon: BarChart3, color: "text-poise-teal" },
+    { label: "Collaboration", path: "/collaboration", icon: Users, color: "text-poise-teal" },
+    { label: "Institutional Memory", path: "/institutional-memory", icon: BookOpen, color: "text-poise-gold" },
+  ];
+
+  const allPlatformLinks = [...platformDashboards, ...platformIntelligence, ...platformTools];
 
   const workspaceLinks = [
     { label: "Playbook Factory", path: "/workspaces/identify", phase: "IDENTIFY", icon: ClipboardList, color: "text-poise-gold" },
@@ -120,28 +143,50 @@ export default function StandardNav() {
     </DropdownMenu>
   );
 
+  const isHomePage = location === "/" || location === "/home";
+
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      navigateTo("/");
+    }
+  };
+
   return (
     <nav className="border-b border-poise-navy/50 bg-poise-navy sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
           
-          {/* Logo */}
-          <div 
-            className="flex items-center cursor-pointer hover:opacity-90 transition-opacity" 
-            onClick={() => navigateTo('/')}
-            data-testid="nav-logo"
-          >
-            <div className="flex items-center gap-2">
-              <ExecuteIQLogo 
-                width={32} 
-                height={32}
-                variant="icon-only"
-                color="white"
-              />
-              <span className="text-xl sm:text-2xl font-bold tracking-tight executeiq-heading" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                <span className="text-white">Execute</span>
-                <span className="text-executeiq-gold">IQ</span>
-              </span>
+          {/* Logo + Back Button */}
+          <div className="flex items-center gap-2">
+            {!isHomePage && (
+              <button
+                onClick={handleBack}
+                className="flex items-center gap-1 px-2 py-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors text-sm"
+                data-testid="nav-back-button"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                <span className="hidden sm:inline">Back</span>
+              </button>
+            )}
+            <div 
+              className="flex items-center cursor-pointer hover:opacity-90 transition-opacity" 
+              onClick={() => navigateTo('/')}
+              data-testid="nav-logo"
+            >
+              <div className="flex items-center gap-2">
+                <ExecuteIQLogo 
+                  width={32} 
+                  height={32}
+                  variant="icon-only"
+                  color="white"
+                />
+                <span className="text-xl sm:text-2xl font-bold tracking-tight executeiq-heading" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  <span className="text-white">Execute</span>
+                  <span className="text-executeiq-gold">IQ</span>
+                </span>
+              </div>
             </div>
           </div>
 
@@ -165,9 +210,25 @@ export default function StandardNav() {
                   <ChevronDown className="h-3 w-3" />
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-64">
-                <DropdownMenuLabel className="text-poise-gold">Dashboards</DropdownMenuLabel>
-                {platformLinks.map((link) => (
+              <DropdownMenuContent align="end" className="w-64 max-h-[70vh] overflow-y-auto">
+                <DropdownMenuLabel className="text-poise-gold">Dashboards & Command</DropdownMenuLabel>
+                {platformDashboards.map((link) => (
+                  <DropdownMenuItem key={link.path} onClick={() => navigateTo(link.path)} className="flex items-center gap-3">
+                    <link.icon className={`h-4 w-4 ${link.color}`} />
+                    <span className="font-medium">{link.label}</span>
+                  </DropdownMenuItem>
+                ))}
+                <DropdownMenuSeparator />
+                <DropdownMenuLabel className="text-poise-teal">Intelligence & Monitoring</DropdownMenuLabel>
+                {platformIntelligence.map((link) => (
+                  <DropdownMenuItem key={link.path} onClick={() => navigateTo(link.path)} className="flex items-center gap-3">
+                    <link.icon className={`h-4 w-4 ${link.color}`} />
+                    <span className="font-medium">{link.label}</span>
+                  </DropdownMenuItem>
+                ))}
+                <DropdownMenuSeparator />
+                <DropdownMenuLabel className="text-slate-400">Strategic Tools</DropdownMenuLabel>
+                {platformTools.map((link) => (
                   <DropdownMenuItem key={link.path} onClick={() => navigateTo(link.path)} className="flex items-center gap-3">
                     <link.icon className={`h-4 w-4 ${link.color}`} />
                     <span className="font-medium">{link.label}</span>
@@ -369,11 +430,11 @@ export default function StandardNav() {
                 </button>
               ))}
 
-              {/* Platform - Dashboards & Workspaces */}
+              {/* Platform - Dashboards, Intelligence & Tools */}
               <div className="border-t border-slate-800 my-3" />
               <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide font-semibold">Platform</p>
               <div className="grid grid-cols-2 gap-2 px-2">
-                {platformLinks.map((link) => (
+                {allPlatformLinks.map((link) => (
                   <button
                     key={link.path}
                     onClick={() => navigateTo(link.path)}

@@ -127,7 +127,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <PageLayout showBackButton={true} backButtonLabel="Back">
+    <PageLayout>
       <div className="page-background">
       
       {/* Hero Section */}
