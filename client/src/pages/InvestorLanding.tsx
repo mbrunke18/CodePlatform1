@@ -20,6 +20,8 @@ import {
 import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
+const productArchitectureImg = "/images/product-architecture.png";
+const futurePositioningImg = "/images/future-positioning.png";
 import { 
   BarChart, 
   Bar, 
@@ -116,8 +118,30 @@ export default function InvestorLanding() {
           </div>
         </section>
 
-        {/* Market Opportunity */}
+        {/* Product Architecture Visual */}
         <section className="py-16 px-6 bg-white dark:bg-slate-900">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white">
+                Complete End-to-End Platform
+              </h2>
+              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+                From signal detection to coordinated execution in 12 minutes — the full architecture that replaces 72-hour scrambles
+              </p>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700">
+              <img
+                src={productArchitectureImg}
+                alt="ExecuteIQ End-to-End Product Architecture — Signal Sources, AI Engine, 166 Playbooks, Execution Outputs, Command Center, and Integration Layer"
+                className="w-full h-auto"
+                loading="eager"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Market Opportunity */}
+        <section className="py-16 px-6 bg-slate-50 dark:bg-slate-800">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-testid="heading-market">
@@ -244,7 +268,7 @@ export default function InvestorLanding() {
         </section>
 
         {/* Competitive Moat */}
-        <section className="py-16 px-6 bg-slate-50 dark:bg-slate-800">
+        <section className="py-16 px-6 bg-white dark:bg-slate-900">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-testid="heading-moat">
@@ -323,6 +347,28 @@ export default function InvestorLanding() {
                   </div>
                 </CardContent>
               </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Future Positioning Visual */}
+        <section className="py-16 px-6 bg-slate-50 dark:bg-slate-800">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white">
+                Built for Today. Positioned for Tomorrow.
+              </h2>
+              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+                Selling pain relief today while building the operating layer for the AI era — infrastructure that evolves with every customer
+              </p>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700">
+              <img
+                src={futurePositioningImg}
+                alt="ExecuteIQ Future Positioning — Phase 1: Today's execution infrastructure, Phase 2: Tomorrow's AI operating layer"
+                className="w-full h-auto"
+                loading="lazy"
+              />
             </div>
           </div>
         </section>
