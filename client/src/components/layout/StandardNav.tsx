@@ -260,6 +260,31 @@ export default function StandardNav() {
                 <DropdownMenuItem onClick={() => { window.location.href = '/ultimate-demo'; }} data-testid="nav-ultimate-demo">
                   Ultimate Demo
                 </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigateTo("/customer-demo")} data-testid="nav-customer-demo">
+                  Customer Demo
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigateTo("/industry-demos")} data-testid="nav-industry-demos">
+                  Industry Demos
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                
+                {/* Investors */}
+                <DropdownMenuLabel className="flex items-center gap-2 text-poise-gold">
+                  <Briefcase className="h-3 w-3" />
+                  Investors
+                </DropdownMenuLabel>
+                <DropdownMenuItem onClick={() => navigateTo("/investor-resources")} data-testid="nav-investor-resources">
+                  Investor Resources
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigateTo("/vc-presentations")} data-testid="nav-vc-presentations">
+                  VC Presentations
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigateTo("/competitive-positioning")} data-testid="nav-competitive-positioning">
+                  Competitive Positioning
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigateTo("/roi-calculator")} data-testid="nav-roi-calculator">
+                  ROI Calculator
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 
                 {/* Company */}
