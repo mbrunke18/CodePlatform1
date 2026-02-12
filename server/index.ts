@@ -61,10 +61,26 @@ const app = express();
 // Server is NOT ready until database seeding is complete
 let serverReady = false;
 
-// Health check endpoints - MUST be registered FIRST before any other routes
-// These ensure the app responds to health checks immediately on startup
-app.get("/health", (_req, res) => {
-  res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
+// Domain redirect: executeiq.io → www.executeiq.io (must be first)
+app.use((req, res, next) => {
+  if (req.hostname === 'executeiq.io') {
+    return res.redirect(301, `https://www.executeiq.io${req.originalUrl}`);
+  }
+  next();
+});
+
+// Health check endpoints consolidated under /api/health
+app.get("/api/health", (_req, res) => {
+  res.status(200).json({ status: "ok", app: "ExecuteIQ", timestamp: new Date().toISOString() });
+});
+
+app.get("/api/health-check", (_req, res) => {
+  res.status(200).json({ 
+    status: "ok", 
+    app: "ExecuteIQ", 
+    ready: serverReady,
+    timestamp: new Date().toISOString() 
+  });
 });
 
 app.get("/ready", (_req, res) => {
@@ -77,13 +93,6 @@ app.get("/ready", (_req, res) => {
       .status(503)
       .json({ status: "initializing", timestamp: new Date().toISOString() });
   }
-});
-
-app.use((req, res, next) => {
-  if (req.hostname === 'executeiq.io') {
-    return res.redirect(301, `https://www.executeiq.io${req.originalUrl}`);
-  }
-  next();
 });
 
 app.get("/_health", (_req, res) => {
@@ -101,18 +110,8 @@ app.get("/_health", (_req, res) => {
 });
 
 // HEAD request on root for fast health checks (used by some load balancers)
-// Always return 200 - the app is available as soon as Express starts
 app.head("/", (_req, res) => {
   res.status(200).end();
-});
-
-app.get("/api/health-check", (_req, res) => {
-  res.status(200).json({ 
-    status: "ok", 
-    app: "ExecuteIQ", 
-    ready: true,
-    timestamp: new Date().toISOString() 
-  });
 });
 
 // Import raw body parser for webhook signature verification
