@@ -41,6 +41,7 @@ export default function NavigationBar() {
     { title: "Executive Dashboard", href: "/executive-dashboard", description: "Unified command center: FRI, velocity, preparedness", featured: true },
     { title: "Playbook Library", href: "/playbook-library", description: "166 pre-built strategic playbooks" },
     { title: "Live Demos", href: "/demo-hub", description: "Watch ExecuteIQ in action" },
+    { title: "Ultimate Demo", href: "/ultimate-demo", description: "Interactive 72hrs → 12min experience" },
     { title: "Pricing", href: "/calculator", description: "ROI calculator" },
   ];
 
@@ -73,6 +74,10 @@ export default function NavigationBar() {
   ];
 
   const navigateAndClose = (href: string) => {
+    if (href === '/ultimate-demo') {
+      window.location.href = '/ultimate-demo';
+      return;
+    }
     setLocation(href);
     setMobileMenuOpen(false);
   };
@@ -113,7 +118,11 @@ export default function NavigationBar() {
                           <NavigationMenuLink asChild>
                             <button
                               onClick={() => {
-                                setLocation(link.href);
+                                if (link.href === '/ultimate-demo') {
+                                  window.location.href = '/ultimate-demo';
+                                } else {
+                                  setLocation(link.href);
+                                }
                               }}
                               className={`w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors ${
                                 (link as any).featured 
