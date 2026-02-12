@@ -153,41 +153,39 @@ export default function StandardNav() {
             {renderDropdown("Investors", investorsLinks)}
             {renderDropdown("Company", companyLinks)}
 
-            {/* Platform - Only shown when logged in */}
-            {isAuthenticated && (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <button
-                    className="px-3 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 text-poise-gold hover:text-amber-300 hover:bg-poise-gold/10 border border-poise-gold/30"
-                    data-testid="nav-platform-dropdown"
-                  >
-                    <Compass className="h-4 w-4" />
-                    Platform
-                    <ChevronDown className="h-3 w-3" />
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-64">
-                  <DropdownMenuLabel className="text-poise-gold">Dashboards</DropdownMenuLabel>
-                  {platformLinks.map((link) => (
-                    <DropdownMenuItem key={link.path} onClick={() => navigateTo(link.path)} className="flex items-center gap-3">
-                      <link.icon className={`h-4 w-4 ${link.color}`} />
-                      <span className="font-medium">{link.label}</span>
-                    </DropdownMenuItem>
-                  ))}
-                  <DropdownMenuSeparator />
-                  <DropdownMenuLabel className="text-poise-teal">Workspaces</DropdownMenuLabel>
-                  {workspaceLinks.map((ws) => (
-                    <DropdownMenuItem key={ws.path} onClick={() => navigateTo(ws.path)} className="flex items-center gap-3">
-                      <ws.icon className={`h-4 w-4 ${ws.color}`} />
-                      <div className="flex-1">
-                        <span className="font-medium">{ws.label}</span>
-                        <span className="text-xs text-muted-foreground ml-2">{ws.phase}</span>
-                      </div>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            )}
+            {/* Platform - Always visible for product exploration */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  className="px-3 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 text-poise-gold hover:text-amber-300 hover:bg-poise-gold/10 border border-poise-gold/30"
+                  data-testid="nav-platform-dropdown"
+                >
+                  <Compass className="h-4 w-4" />
+                  Platform
+                  <ChevronDown className="h-3 w-3" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-64">
+                <DropdownMenuLabel className="text-poise-gold">Dashboards</DropdownMenuLabel>
+                {platformLinks.map((link) => (
+                  <DropdownMenuItem key={link.path} onClick={() => navigateTo(link.path)} className="flex items-center gap-3">
+                    <link.icon className={`h-4 w-4 ${link.color}`} />
+                    <span className="font-medium">{link.label}</span>
+                  </DropdownMenuItem>
+                ))}
+                <DropdownMenuSeparator />
+                <DropdownMenuLabel className="text-poise-teal">Workspaces</DropdownMenuLabel>
+                {workspaceLinks.map((ws) => (
+                  <DropdownMenuItem key={ws.path} onClick={() => navigateTo(ws.path)} className="flex items-center gap-3">
+                    <ws.icon className={`h-4 w-4 ${ws.color}`} />
+                    <div className="flex-1">
+                      <span className="font-medium">{ws.label}</span>
+                      <span className="text-xs text-muted-foreground ml-2">{ws.phase}</span>
+                    </div>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           {/* Desktop CTAs */}
@@ -371,25 +369,31 @@ export default function StandardNav() {
                 </button>
               ))}
 
-              {/* Platform - Only when logged in */}
-              {isAuthenticated && (
-                <>
-                  <div className="border-t border-slate-800 my-3" />
-                  <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide font-semibold">Platform</p>
-                  <div className="grid grid-cols-2 gap-2 px-2">
-                    {platformLinks.map((link) => (
-                      <button
-                        key={link.path}
-                        onClick={() => navigateTo(link.path)}
-                        className={`flex items-center gap-2 py-3 px-3 text-sm ${link.color} hover:bg-slate-800 rounded-lg border border-slate-700`}
-                      >
-                        <link.icon className="h-4 w-4" />
-                        {link.label}
-                      </button>
-                    ))}
-                  </div>
-                </>
-              )}
+              {/* Platform - Dashboards & Workspaces */}
+              <div className="border-t border-slate-800 my-3" />
+              <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide font-semibold">Platform</p>
+              <div className="grid grid-cols-2 gap-2 px-2">
+                {platformLinks.map((link) => (
+                  <button
+                    key={link.path}
+                    onClick={() => navigateTo(link.path)}
+                    className={`flex items-center gap-2 py-3 px-3 text-sm ${link.color} hover:bg-slate-800 rounded-lg border border-slate-700`}
+                  >
+                    <link.icon className="h-4 w-4" />
+                    {link.label}
+                  </button>
+                ))}
+                {workspaceLinks.map((ws) => (
+                  <button
+                    key={ws.path}
+                    onClick={() => navigateTo(ws.path)}
+                    className={`flex items-center gap-2 py-3 px-3 text-sm ${ws.color} hover:bg-slate-800 rounded-lg border border-slate-700`}
+                  >
+                    <ws.icon className="h-4 w-4" />
+                    {ws.label}
+                  </button>
+                ))}
+              </div>
               
               {/* Auth */}
               <div className="border-t border-slate-800 my-3" />
