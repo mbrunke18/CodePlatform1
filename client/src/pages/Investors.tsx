@@ -8,6 +8,9 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 
+const productArchitectureImg = "/images/product-architecture.png";
+const futurePositioningImg = "/images/future-positioning.png";
+
 const metrics = [
   { 
     value: "5-10x", 
@@ -218,6 +221,24 @@ export default function Investors() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35 }}
+            className="mb-20"
+          >
+            <h2 className="text-2xl font-bold text-white text-center mb-3">Complete End-to-End Platform</h2>
+            <p className="text-white/50 text-center text-sm mb-8">From signal detection to coordinated execution in 12 minutes</p>
+            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+              <img
+                src={productArchitectureImg}
+                alt="ExecuteIQ End-to-End Product Architecture — Signal Sources, AI Engine, 166 Playbooks, Execution Outputs, Command Center, and Integration Layer"
+                className="w-full h-auto"
+                loading="eager"
+              />
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
             className="mb-20"
           >
@@ -268,6 +289,24 @@ export default function Investors() {
                   <p className="text-white/50 text-xs">{phase.desc}</p>
                 </div>
               ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.55 }}
+            className="mb-20"
+          >
+            <h2 className="text-2xl font-bold text-white text-center mb-3">Built for Today. Positioned for Tomorrow.</h2>
+            <p className="text-white/50 text-center text-sm mb-8">Selling pain relief today while building the operating layer for the AI era</p>
+            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+              <img
+                src={futurePositioningImg}
+                alt="ExecuteIQ Future Positioning — Phase 1: Today's execution infrastructure, Phase 2: Tomorrow's AI operating layer"
+                className="w-full h-auto"
+                loading="lazy"
+              />
             </div>
           </motion.div>
 
