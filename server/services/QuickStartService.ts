@@ -1,5 +1,5 @@
 import { db } from '../db.js';
-import { quickStartTemplates, deploymentProgress, scenarios, kpis, users, organizations } from '@shared/schema';
+import { quickStartTemplates, deploymentProgress, strategicScenarios, kpis, users, organizations } from '@shared/schema';
 import { eq, and, desc, inArray } from 'drizzle-orm';
 import { roiMeasurementService } from './ROIMeasurementService.js';
 import { databaseNotificationService } from './DatabaseNotificationService.js';
@@ -305,12 +305,7 @@ export class QuickStartService {
           description: template.description,
           templateData: template.templateData,
           requirements: template.requirements,
-          estimatedSetupTime: template.estimatedSetupTime,
-          usageCount: 0,
-          successRate: 0.85,
-          version: "1.0",
-          isActive: true,
-          createdBy: "system"
+          estimatedSetupTime: template.estimatedSetupTime
         });
       }
 
@@ -366,7 +361,7 @@ export class QuickStartService {
       return templates.map(t => ({
         id: t.id,
         name: t.name,
-        category: t.category,
+        category: t.category || 'general',
         industry: t.industry || '',
         organizationSize: t.organizationSize || '',
         description: t.description || '',
@@ -580,7 +575,11 @@ export class QuickStartService {
         throw new Error(`Deployment ${deploymentId} not found`);
       }
 
-      const plan = deployment.metadata?.plan as DeploymentPlan;
+      const plan = (deployment.metadata as any)?.plan as DeploymentPlan;
+      if (!plan || !plan.steps) {
+        return false;
+      }
+      
       const step = plan.steps.find(s => s.id === stepId);
 
       if (!step || !step.automatable) {
@@ -589,15 +588,18 @@ export class QuickStartService {
 
       let success = false;
 
+      const orgId = deployment.organizationId?.toString() || '';
+      const templateId = deployment.templateId?.toString() || '';
+      
       switch (stepId) {
         case 'org_setup':
-          success = await this.executeOrgSetup(deployment.organizationId, deployment.templateId);
+          success = await this.executeOrgSetup(orgId, templateId);
           break;
         case 'scenarios':
-          success = await this.executeScenarioDeployment(deployment.organizationId, deployment.templateId);
+          success = await this.executeScenarioDeployment(orgId, templateId);
           break;
         case 'kpi_setup':
-          success = await this.executeKPISetup(deployment.organizationId, deployment.templateId);
+          success = await this.executeKPISetup(orgId, templateId);
           break;
         default:
           success = false;
@@ -605,15 +607,19 @@ export class QuickStartService {
 
       if (success) {
         const stepsCompleted = [...(deployment.stepsCompleted as string[] || []), stepId];
+        const currentStep = deployment.currentStep ?? 0;
+        const totalSteps = deployment.totalSteps ?? 0;
+        const nextStep = currentStep + 1;
+        
         await db
           .update(deploymentProgress)
           .set({
-            currentStep: deployment.currentStep + 1,
+            currentStep: nextStep,
             stepsCompleted,
-            status: deployment.currentStep + 1 >= deployment.totalSteps ? 'completed' : 'in_progress',
-            completedAt: deployment.currentStep + 1 >= deployment.totalSteps ? new Date() : undefined,
+            status: nextStep >= totalSteps ? 'completed' : 'in_progress',
+            completedAt: nextStep >= totalSteps ? new Date() : undefined,
             metadata: {
-              ...deployment.metadata,
+              ...(deployment.metadata as any || {}),
               lastStepCompleted: {
                 stepId,
                 completedAt: new Date().toISOString()
@@ -699,21 +705,19 @@ export class QuickStartService {
       const scenarioTemplates = templateData.scenarios || [];
 
       for (const scenarioTemplate of scenarioTemplates) {
-        await db.insert(scenarios).values({
+        await db.insert(strategicScenarios).values({
           organizationId,
           name: scenarioTemplate.name,
+          title: scenarioTemplate.name,
           description: scenarioTemplate.description,
-          category: scenarioTemplate.category,
-          priority: scenarioTemplate.priority as any,
+          type: 'template',
           status: 'draft',
-          tags: [`template:${templateId}`],
-          metadata: {
+          createdBy: 'system',
+          responseStrategy: {
+            templates: scenarioTemplate.response_templates,
             fromTemplate: templateId,
-            responseTemplates: scenarioTemplate.response_templates,
             deployedAt: new Date().toISOString()
-          },
-          createdAt: new Date(),
-          updatedAt: new Date()
+          }
         });
       }
 
@@ -743,23 +747,21 @@ export class QuickStartService {
 
       for (const kpiTemplate of kpiTemplates) {
         await db.insert(kpis).values({
-          organizationId,
+          organizationId: organizationId,
           name: kpiTemplate.name,
           description: kpiTemplate.description,
           category: kpiTemplate.category,
           unit: kpiTemplate.unit,
-          target: kpiTemplate.target,
-          threshold: kpiTemplate.threshold,
-          currentValue: 0, // Will be updated as data comes in
+          target: String(kpiTemplate.target ?? 0),
+          threshold: String(kpiTemplate.threshold ?? 0),
+          currentValue: '0',
           frequency: 'weekly',
           isActive: true,
           tags: [`template:${templateId}`],
           metadata: {
             fromTemplate: templateId,
             deployedAt: new Date().toISOString()
-          },
-          createdAt: new Date(),
-          updatedAt: new Date()
+          }
         });
       }
 
@@ -859,11 +861,13 @@ export class QuickStartService {
         throw new Error(`Deployment ${deploymentId} not found`);
       }
 
-      const plan = deployment.metadata?.plan as DeploymentPlan;
-      const progress = (deployment.currentStep / deployment.totalSteps) * 100;
-      const currentStep = plan.steps[deployment.currentStep]?.title || null;
-      const nextSteps = plan.steps.slice(deployment.currentStep, deployment.currentStep + 3);
-      const blockers = deployment.blockers as any[] || [];
+      const plan = (deployment.metadata as any)?.plan as DeploymentPlan;
+      const currentStep_ = deployment.currentStep ?? 0;
+      const totalSteps = deployment.totalSteps ?? 1;
+      const progress = (currentStep_ / totalSteps) * 100;
+      const currentStep = plan?.steps[currentStep_]?.title || null;
+      const nextSteps = plan?.steps.slice(currentStep_, currentStep_ + 3) || [];
+      const blockers = (deployment.blockers as any[] | null) || [];
 
       return {
         deployment,

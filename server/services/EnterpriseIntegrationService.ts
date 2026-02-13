@@ -139,7 +139,7 @@ export class EnterpriseIntegrationService {
       const config = integration.configuration as any;
       
       // Simulate connection test based on integration type
-      await this.performConnectionTest(integration.integrationType, config);
+      await this.performConnectionTest(integration.integrationType ?? 'unknown', config);
       
       const responseTime = Date.now() - startTime;
       
@@ -270,10 +270,10 @@ export class EnterpriseIntegrationService {
         .update(enterpriseIntegrations)
         .set({
           lastSyncAt: new Date(),
-          nextSyncAt: this.calculateNextSync(integration.syncFrequency),
+          nextSyncAt: this.calculateNextSync(integration.syncFrequency ?? 'daily'),
           errorLog: errors.slice(0, 10), // Store last 10 errors
           metadata: {
-            ...integration.metadata,
+            ...(integration.metadata ?? {}),
             lastSyncStats: {
               recordsProcessed,
               recordsSucceeded,
@@ -378,7 +378,7 @@ export class EnterpriseIntegrationService {
       });
 
       // Route data to appropriate destination based on type
-      await this.routeTransformedData(integration.organizationId, integration.integrationType, transformedData);
+      await this.routeTransformedData(integration.organizationId ?? '', integration.integrationType ?? '', transformedData);
 
     } catch (error) {
       // Store failed record for troubleshooting
@@ -524,6 +524,7 @@ export class EnterpriseIntegrationService {
         const todayRecords = syncData.filter(d => d.syncedAt && d.syncedAt >= today).length;
         const weekRecords = syncData.filter(d => d.syncedAt && d.syncedAt >= thisWeek).length;
 
+        const errorLogArray = Array.isArray(integration.errorLog) ? integration.errorLog : [];
         statuses.push({
           id: integration.id,
           name: integration.name,
@@ -532,7 +533,7 @@ export class EnterpriseIntegrationService {
           nextSyncAt: integration.nextSyncAt,
           errorCount: failedRecords,
           successRate: Math.round(successRate),
-          lastError: integration.errorLog?.[0]?.error,
+          lastError: errorLogArray.length > 0 ? errorLogArray[0]?.error : undefined,
           syncedRecords: {
             today: todayRecords,
             thisWeek: weekRecords,
