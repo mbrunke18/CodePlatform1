@@ -20,8 +20,13 @@ import {
   Target,
   ArrowRight,
   Play,
-  X
+  X,
+  ArrowLeft,
+  BarChart3,
+  FileText,
+  TrendingUp
 } from 'lucide-react';
+import { Link } from 'wouter';
 import { io, Socket } from 'socket.io-client';
 
 type StakeholderStatus = 'pending' | 'notifying' | 'notified' | 'acknowledged';
@@ -467,14 +472,19 @@ export default function LiveActivationCenter() {
   if (!activationId) {
     return (
       <div className="min-h-screen bg-gray-950 text-white">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <div className="text-center mb-16">
+        <div className="max-w-6xl mx-auto px-6 py-10 md:py-16">
+          <div className="mb-8">
+            <Link href="/" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-300 transition-colors">
+              <ArrowLeft className="w-4 h-4" /> Back to ExecuteIQ
+            </Link>
+          </div>
+          <div className="text-center mb-12 md:mb-16">
             <div className="flex items-center justify-center gap-3 mb-4">
               <Zap className="w-8 h-8 text-emerald-400" />
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Live Activation Command Center</h1>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">Live Activation Command Center</h1>
             </div>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Watch strategic coordination unfold in real-time
+            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+              Watch strategic coordination unfold in real-time. Select a playbook and see how ExecuteIQ orchestrates cross-functional alignment in under 12 minutes.
             </p>
           </div>
 
@@ -490,7 +500,7 @@ export default function LiveActivationCenter() {
                     'relative text-left rounded-xl border-2 p-6 transition-all duration-300 cursor-pointer',
                     'bg-gray-900 hover:bg-gray-800/80',
                     isSelected
-                      ? `${colors.border} ring-2 ${colors.ring} shadow-lg shadow-${pb.color}-500/10`
+                      ? `${colors.border} ring-2 ${colors.ring} shadow-lg`
                       : 'border-gray-800 hover:border-gray-700'
                   )}
                 >
@@ -552,41 +562,150 @@ export default function LiveActivationCenter() {
   }
 
   if (showCompletion) {
+    const avgResponseTime = stakeholders.length > 0
+      ? Math.round(stakeholders.reduce((sum, s) => sum + (s.responseTime || 0), 0) / stakeholders.length)
+      : 0;
+    const tier1Stakeholders = stakeholders.filter(s => s.tier === 1);
+    const tier2Stakeholders = stakeholders.filter(s => s.tier === 2);
+
     return (
-      <div className="min-h-screen bg-gray-950 text-white flex items-center justify-center p-6">
-        <div className="text-center max-w-lg">
-          <div className="w-24 h-24 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-8 animate-[pulse_2s_ease-in-out_infinite]">
-            <CheckCircle2 className="w-14 h-14 text-emerald-400" />
-          </div>
-          <h1 className="text-4xl font-bold mb-3">Coordination Complete</h1>
-          <p className="text-gray-400 mb-4 text-lg">All stakeholders aligned and tasks executed successfully.</p>
-          <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-lg px-4 py-2 mb-10">
-            <Zap className="w-4 h-4 text-emerald-400" />
-            <span className="text-sm text-emerald-400 font-medium">Full coordination in under 12 minutes — vs. 3-6 weeks traditional</span>
+      <div className="min-h-screen bg-gray-950 text-white p-6 overflow-y-auto">
+        <div className="max-w-4xl mx-auto py-8 md:py-12">
+          <div className="text-center mb-10">
+            <div className="w-20 h-20 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-6 animate-[pulse_2s_ease-in-out_infinite]">
+              <CheckCircle2 className="w-12 h-12 text-emerald-400" />
+            </div>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">Coordination Complete</h1>
+            <p className="text-gray-400 mb-4 text-lg">All stakeholders aligned and tasks executed successfully.</p>
+            <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-lg px-4 py-2">
+              <Zap className="w-4 h-4 text-emerald-400" />
+              <span className="text-sm text-emerald-400 font-medium">Full coordination in under 12 minutes — vs. 3-6 weeks traditional</span>
+            </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-6 mb-12">
-            <div className="bg-gray-900 border border-gray-800 rounded-xl p-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div className="bg-gray-900 border border-gray-800 rounded-xl p-5 text-center">
               <div className="text-3xl font-bold text-emerald-400">{formatElapsed(simulatedSeconds)}</div>
               <div className="text-xs text-gray-500 mt-1">Execution Time</div>
             </div>
-            <div className="bg-gray-900 border border-gray-800 rounded-xl p-5">
+            <div className="bg-gray-900 border border-gray-800 rounded-xl p-5 text-center">
               <div className="text-3xl font-bold text-emerald-400">{acknowledgedCount}/{stakeholders.length}</div>
-              <div className="text-xs text-gray-500 mt-1">Response Rate</div>
+              <div className="text-xs text-gray-500 mt-1">Stakeholders Reached</div>
             </div>
-            <div className="bg-gray-900 border border-gray-800 rounded-xl p-5">
+            <div className="bg-gray-900 border border-gray-800 rounded-xl p-5 text-center">
               <div className="text-3xl font-bold text-emerald-400">{completedTaskCount}/{tasks.length}</div>
               <div className="text-xs text-gray-500 mt-1">Tasks Completed</div>
             </div>
+            <div className="bg-gray-900 border border-gray-800 rounded-xl p-5 text-center">
+              <div className="text-3xl font-bold text-blue-400">{formatElapsed(toSimulatedTime(avgResponseTime))}</div>
+              <div className="text-xs text-gray-500 mt-1">Avg Response Time</div>
+            </div>
           </div>
 
-          <Button
-            size="lg"
-            onClick={runAnother}
-            className="bg-emerald-600 hover:bg-emerald-500 text-white px-10 py-6 text-lg rounded-xl"
-          >
-            Run Another Demo
-          </Button>
+          <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 mb-8">
+            <div className="flex items-center gap-2 mb-5">
+              <FileText className="w-5 h-5 text-blue-400" />
+              <h2 className="text-lg font-bold text-white">Executive After-Action Brief</h2>
+              <Badge className="text-[10px] border-0 bg-blue-500/10 text-blue-400 font-semibold ml-auto">AUTO-GENERATED</Badge>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-xs font-bold tracking-wider text-gray-500 mb-3 uppercase">Playbook Executed</h3>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={cn('p-2 rounded-lg', getCategoryColor(activePlaybook?.category || 'OFFENSE').bg)}>
+                    {getPlaybookIcon(activePlaybook?.icon || 'shield')}
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-white">{activePlaybook?.name}</div>
+                    <Badge className={cn('text-[10px] border-0 mt-1', getCategoryColor(activePlaybook?.category || 'OFFENSE').bg, getCategoryColor(activePlaybook?.category || 'OFFENSE').text)}>
+                      {activePlaybook?.category}
+                    </Badge>
+                  </div>
+                </div>
+
+                <h3 className="text-xs font-bold tracking-wider text-gray-500 mb-3 uppercase">Coordination Channels</h3>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {['Slack', 'Email', 'SMS', 'Teams', 'Push'].map(ch => (
+                    <Badge key={ch} variant="outline" className="text-[10px] border-gray-700 text-gray-400">{ch}</Badge>
+                  ))}
+                </div>
+
+                <h3 className="text-xs font-bold tracking-wider text-gray-500 mb-3 uppercase">Phase Breakdown</h3>
+                <div className="space-y-2">
+                  {[
+                    { label: 'Immediate', count: tasks.filter(t => t.phase === 'IMMEDIATE').length, color: 'text-red-400' },
+                    { label: 'Secondary', count: tasks.filter(t => t.phase === 'SECONDARY').length, color: 'text-amber-400' },
+                    { label: 'Follow Up', count: tasks.filter(t => t.phase === 'FOLLOW_UP').length, color: 'text-blue-400' },
+                  ].map(p => (
+                    <div key={p.label} className="flex items-center justify-between text-sm">
+                      <span className={cn('font-medium', p.color)}>{p.label}</span>
+                      <span className="text-gray-500">{p.count} tasks completed</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-xs font-bold tracking-wider text-gray-500 mb-3 uppercase">Tier 1 Leadership ({tier1Stakeholders.length})</h3>
+                <div className="space-y-1.5 mb-4">
+                  {tier1Stakeholders.map(s => (
+                    <div key={s.id} className="flex items-center gap-2">
+                      <div className={cn('w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0', s.color)}>{s.initials}</div>
+                      <span className="text-xs text-gray-300 flex-1 truncate">{s.name} — {s.title}</span>
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+                    </div>
+                  ))}
+                </div>
+
+                <h3 className="text-xs font-bold tracking-wider text-gray-500 mb-3 uppercase">Tier 2 Functional ({tier2Stakeholders.length})</h3>
+                <div className="space-y-1.5 mb-4">
+                  {tier2Stakeholders.map(s => (
+                    <div key={s.id} className="flex items-center gap-2">
+                      <div className={cn('w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0', s.color)}>{s.initials}</div>
+                      <span className="text-xs text-gray-300 flex-1 truncate">{s.name} — {s.title}</span>
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+                    </div>
+                  ))}
+                </div>
+
+                <h3 className="text-xs font-bold tracking-wider text-gray-500 mb-3 uppercase">Impact vs. Traditional</h3>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-400 flex items-center gap-1"><TrendingUp className="w-3.5 h-3.5 text-emerald-400" /> Time Saved</span>
+                    <span className="text-emerald-400 font-semibold">3-6 weeks → 12 min</span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-400 flex items-center gap-1"><BarChart3 className="w-3.5 h-3.5 text-blue-400" /> Cost Reduction</span>
+                    <span className="text-blue-400 font-semibold">~85% lower</span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-400 flex items-center gap-1"><Users className="w-3.5 h-3.5 text-purple-400" /> Coordination</span>
+                    <span className="text-purple-400 font-semibold">100% simultaneous</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button
+              size="lg"
+              onClick={runAnother}
+              className="bg-emerald-600 hover:bg-emerald-500 text-white px-10 py-6 text-lg rounded-xl w-full sm:w-auto"
+            >
+              Run Another Demo
+            </Button>
+            <Link href="/" className="w-full sm:w-auto">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white px-10 py-6 text-lg rounded-xl w-full"
+              >
+                Back to ExecuteIQ
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     );
@@ -599,16 +718,16 @@ export default function LiveActivationCenter() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
       <div className="border-b border-gray-800 bg-gray-900/80 backdrop-blur-sm sticky top-0 z-30">
-        <div className="max-w-[1800px] mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <h2 className="text-lg font-bold truncate">{activePlaybook?.name}</h2>
+        <div className="max-w-[1800px] mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-2 md:gap-4 min-w-0">
+            <h2 className="text-sm md:text-lg font-bold truncate">{activePlaybook?.name}</h2>
             {activePlaybook && (
-              <Badge className={cn('text-xs font-semibold border-0', getCategoryColor(activePlaybook.category).bg, getCategoryColor(activePlaybook.category).text)}>
+              <Badge className={cn('text-[10px] md:text-xs font-semibold border-0 hidden sm:inline-flex', getCategoryColor(activePlaybook.category).bg, getCategoryColor(activePlaybook.category).text)}>
                 {activePlaybook.category}
               </Badge>
             )}
             <Badge className={cn(
-              'text-xs font-semibold border-0',
+              'text-[10px] md:text-xs font-semibold border-0',
               activationState === 'ACTIVATING' ? 'bg-yellow-500/10 text-yellow-400' :
               activationState === 'IN_PROGRESS' ? 'bg-blue-500/10 text-blue-400' :
               'bg-emerald-500/10 text-emerald-400'
@@ -617,22 +736,22 @@ export default function LiveActivationCenter() {
               {activationState === 'ACTIVATING' ? 'ACTIVATING...' : activationState === 'IN_PROGRESS' ? 'IN PROGRESS' : 'COMPLETED'}
             </Badge>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 text-gray-300 font-mono text-lg">
+          <div className="flex items-center gap-2 md:gap-4">
+            <div className="flex items-center gap-2 md:gap-3">
+              <div className="flex items-center gap-1.5 text-gray-300 font-mono text-sm md:text-lg">
                 <Clock className="w-4 h-4 text-gray-500" />
                 {formatElapsed(simulatedSeconds)}
               </div>
-              <Badge className="text-[10px] border-0 bg-amber-500/10 text-amber-400 font-semibold">8x ACCELERATED</Badge>
+              <Badge className="text-[9px] md:text-[10px] border-0 bg-amber-500/10 text-amber-400 font-semibold">8x ACCELERATED</Badge>
             </div>
-            <Button variant="ghost" size="sm" onClick={cancelActivation} className="text-gray-400 hover:text-white hover:bg-gray-800">
-              <X className="w-4 h-4 mr-1" /> Cancel
+            <Button variant="ghost" size="sm" onClick={cancelActivation} className="text-gray-400 hover:text-white hover:bg-gray-800 px-2 md:px-3">
+              <X className="w-4 h-4" /><span className="hidden sm:inline ml-1">Cancel</span>
             </Button>
           </div>
         </div>
       </div>
 
-      <div className="max-w-[1800px] mx-auto p-4 grid grid-cols-1 lg:grid-cols-4 gap-4">
+      <div className="max-w-[1800px] mx-auto p-3 md:p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
         <div className="lg:col-span-1 space-y-3">
           <Card className="bg-gray-900 border-gray-800">
             <CardHeader className="pb-3">
@@ -689,7 +808,7 @@ export default function LiveActivationCenter() {
                     {s.status === 'acknowledged' && (
                       <>
                         <div className="w-2 h-2 rounded-full bg-emerald-400" />
-                        <span className="text-xs text-emerald-400">{s.responseTime}s</span>
+                        <span className="text-xs text-emerald-400">{formatElapsed(toSimulatedTime(s.responseTime || 0))}</span>
                       </>
                     )}
                   </div>
@@ -796,7 +915,7 @@ export default function LiveActivationCenter() {
           </Card>
         </div>
 
-        <div className="lg:col-span-1 space-y-3">
+        <div className="md:col-span-2 lg:col-span-1 space-y-3">
           <Card className="bg-gray-900 border-gray-800 h-full flex flex-col">
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-semibold text-gray-300 flex items-center gap-2">
@@ -804,7 +923,7 @@ export default function LiveActivationCenter() {
               </CardTitle>
             </CardHeader>
             <CardContent className="flex-1 overflow-hidden">
-              <div ref={feedRef} className="space-y-2 max-h-[calc(100vh-240px)] overflow-y-auto pr-1">
+              <div ref={feedRef} className="space-y-2 max-h-[60vh] lg:max-h-[calc(100vh-240px)] overflow-y-auto pr-1">
                 {activityFeed.length === 0 && (
                   <div className="text-center text-gray-600 text-sm py-8">Waiting for activity...</div>
                 )}
