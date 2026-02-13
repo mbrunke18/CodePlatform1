@@ -1276,7 +1276,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Update onboarding record as complete
       await db.update(organizationOnboarding)
         .set({
-          currentStep: 7,
+          stage4Learn: true,
           onboardingCompletedAt: new Date(),
           lastActivityAt: new Date(),
         })
@@ -1818,7 +1818,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         organizationId: organizationId,
         name: template.name,
         description: template.description || `Customized from template: ${template.name}`,
-        domain: template.triggerCriteria || template.domainName || 'General',
+        domain: template.triggerCriteria || template.domainId || 'General',
         category: template.strategicCategory || 'defense',
         priority: 'high',
         isActive: false,
@@ -5159,8 +5159,8 @@ SUCCESS METRICS:
           
           // Broadcast acknowledgment via WebSocket
           wsService.broadcastAcknowledgment(notification.entityId, {
-            stakeholderId: notification.recipientId,
-            stakeholderName: notification.recipientName || 'Unknown',
+            stakeholderId: notification.userId,
+            stakeholderName: (notification.metadata as any)?.recipientName || 'Unknown',
             acknowledgedAt,
             responseTimeMinutes: responseTime,
           });
@@ -5727,14 +5727,17 @@ SUCCESS METRICS:
       await db.insert(readinessMetrics).values({
         organizationId,
         overallScore: '84.4',
-        playbookMaturity: '88.2',
-        executionVelocity: '82.7',
-        learningRate: '79.3',
-        signalDetection: '87.1',
-        insights: {
-          strengths: ['High playbook completion rate', 'Effective stakeholder communication'],
-          improvements: ['Increase drill frequency', 'Expand weak signal monitoring']
-        },
+        foresightScore: '88',
+        velocityScore: '83',
+        agilityScore: '79',
+        learningScore: '79',
+        adaptabilityScore: '87',
+        activeScenarios: 3,
+        weakSignalsDetected: 5,
+        playbooksReady: 12,
+        playbooksTotal: 18,
+        averageResponseTime: 8,
+        trend: 'up',
         measurementDate: new Date(),
       });
 
@@ -5986,6 +5989,16 @@ SUCCESS METRICS:
   }, 5000);
   console.log('✅ Live Signal Ingestion API registered (auto-start in 5s)');
 
+  // Seed pipeline data (idempotent - only runs if tables are empty)
+  setTimeout(async () => {
+    try {
+      const { seedPipelineData } = await import('./seeds/seedPipelineData.js');
+      await seedPipelineData();
+    } catch (err) {
+      console.error('Pipeline seed error:', err);
+    }
+  }, 3000);
+
   // Import and use webhook routes for real-time enterprise data ingestion
   const webhookRoutes = await import('./routes/webhookRoutes.js');
   app.use('/api', webhookRoutes.default);
@@ -6022,7 +6035,8 @@ SUCCESS METRICS:
       const organizationId = req.userId || 'demo-org';
       
       const { activatePlaybook } = await import('./services/PlaybookExecutor');
-      const result = await activatePlaybook(organizationId, playbookId, scenarioId);
+      const executionPlanId = req.body.executionPlanId || playbookId;
+      const result = await activatePlaybook(organizationId, playbookId, scenarioId, executionPlanId, req.userId);
       
       res.json(result);
     } catch (error) {

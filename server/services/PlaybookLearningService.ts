@@ -144,5 +144,36 @@ function estimateReadiness(metrics: ExecutionMetrics): number {
   return Math.round(Math.min(100, readiness));
 }
 
-export const playbookLearningService = { analyzeExecution };
-export default { analyzeExecution };
+async function getSuggestions(playbookId: string, organizationId: string): Promise<any[]> {
+  try {
+    const { aiOptimizationSuggestions } = await import('@shared/schema');
+    const { db } = await import('../db');
+    const { eq, and } = await import('drizzle-orm');
+    const suggestions = await db.select().from(aiOptimizationSuggestions)
+      .where(and(
+        eq(aiOptimizationSuggestions.playbookId, playbookId),
+        eq(aiOptimizationSuggestions.organizationId, organizationId)
+      ));
+    return suggestions;
+  } catch (error) {
+    console.error('Error getting suggestions:', error);
+    return [];
+  }
+}
+
+async function acceptSuggestion(suggestionId: string, userId: string): Promise<void> {
+  try {
+    const { aiOptimizationSuggestions } = await import('@shared/schema');
+    const { db } = await import('../db');
+    const { eq } = await import('drizzle-orm');
+    await db.update(aiOptimizationSuggestions)
+      .set({ status: 'accepted', reviewedBy: userId, reviewedAt: new Date() })
+      .where(eq(aiOptimizationSuggestions.id, suggestionId));
+  } catch (error) {
+    console.error('Error accepting suggestion:', error);
+    throw error;
+  }
+}
+
+export const playbookLearningService = { analyzeExecution, getSuggestions, acceptSuggestion };
+export default { analyzeExecution, getSuggestions, acceptSuggestion };

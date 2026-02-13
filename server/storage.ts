@@ -238,7 +238,9 @@ export interface IStorage {
   getUserModuleUsage(userId: string): Promise<ModuleUsageAnalytic[]>;
   
   // Custom Data Points operations
-  getCustomDataPoints(organizationId?: string): Promise<CustomDataPoint[]>;
+  getCustomDataPoints(organizationId?: string, category?: string): Promise<CustomDataPoint[]>;
+  getCustomDataPointById(id: string): Promise<CustomDataPoint | undefined>;
+  updateCustomDataPoint(id: string, updates: Partial<InsertCustomDataPoint>): Promise<CustomDataPoint>;
   createCustomDataPoint(dataPoint: InsertCustomDataPoint): Promise<CustomDataPoint>;
   deleteCustomDataPoint(id: string): Promise<void>;
   
@@ -305,12 +307,6 @@ export interface IStorage {
   createPlaybookTriggerAssociation(association: InsertPlaybookTriggerAssociation): Promise<PlaybookTriggerAssociation>;
   getPlaybookTriggerAssociations(triggerId?: string, playbookId?: string): Promise<PlaybookTriggerAssociation[]>;
   
-  // Custom Data Points operations
-  createCustomDataPoint(dataPoint: InsertCustomDataPoint): Promise<CustomDataPoint>;
-  getCustomDataPoints(organizationId: string, category?: string): Promise<CustomDataPoint[]>;
-  getCustomDataPointById(id: string): Promise<CustomDataPoint | undefined>;
-  updateCustomDataPoint(id: string, updates: Partial<InsertCustomDataPoint>): Promise<CustomDataPoint>;
-  deleteCustomDataPoint(id: string): Promise<void>;
   getCustomDataPointCategories(organizationId: string): Promise<string[]>;
   
   // Playbook Telemetry operations
@@ -1105,12 +1101,16 @@ export class DatabaseStorage implements IStorage {
   }
 
   // Custom Data Points operations
-  async getCustomDataPoints(organizationId?: string): Promise<CustomDataPoint[]> {
-    if (organizationId) {
+  async getCustomDataPoints(organizationId?: string, category?: string): Promise<CustomDataPoint[]> {
+    const conditions = [];
+    if (organizationId) conditions.push(eq(customDataPoints.organizationId, organizationId));
+    if (category) conditions.push(eq(customDataPoints.category, category));
+    
+    if (conditions.length > 0) {
       return await db
         .select()
         .from(customDataPoints)
-        .where(eq(customDataPoints.organizationId, organizationId))
+        .where(conditions.length === 1 ? conditions[0] : and(...conditions))
         .orderBy(desc(customDataPoints.createdAt));
     }
     return await db
@@ -1122,6 +1122,23 @@ export class DatabaseStorage implements IStorage {
   async createCustomDataPoint(dataPoint: InsertCustomDataPoint): Promise<CustomDataPoint> {
     const [newDataPoint] = await db.insert(customDataPoints).values(dataPoint).returning();
     return newDataPoint;
+  }
+
+  async getCustomDataPointById(id: string): Promise<CustomDataPoint | undefined> {
+    const [dataPoint] = await db.select().from(customDataPoints).where(eq(customDataPoints.id, id));
+    return dataPoint;
+  }
+
+  async updateCustomDataPoint(id: string, updates: Partial<InsertCustomDataPoint>): Promise<CustomDataPoint> {
+    const [updated] = await db
+      .update(customDataPoints)
+      .set({ ...updates, updatedAt: new Date() })
+      .where(eq(customDataPoints.id, id))
+      .returning();
+    if (!updated) {
+      throw new Error(`Custom data point with id ${id} not found`);
+    }
+    return updated;
   }
 
   async deleteCustomDataPoint(id: string): Promise<void> {
