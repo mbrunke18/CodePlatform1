@@ -17,7 +17,7 @@ import {
   Target,
   ArrowRight,
   Zap,
-  Play
+  Compass
 } from 'lucide-react';
 
 interface RoleConfig {
@@ -29,9 +29,8 @@ interface RoleConfig {
   playbook: string;
   playbookLabel: string;
   category: 'OFFENSE' | 'DEFENSE' | 'SPECIAL TEAMS';
-  gradient: string;
-  borderColor: string;
-  iconColor: string;
+  accentColor: string;
+  iconBg: string;
 }
 
 const roleConfigs: RoleConfig[] = [
@@ -44,9 +43,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ma-day1',
     playbookLabel: 'M&A Day 1 Integration',
     category: 'OFFENSE',
-    gradient: 'from-blue-500/10 to-indigo-500/10',
-    borderColor: 'border-blue-500/30 hover:border-blue-500/60',
-    iconColor: 'text-blue-400'
+    accentColor: 'border-l-blue-500',
+    iconBg: 'bg-blue-500/15 text-blue-400'
   },
   {
     id: 'cfo',
@@ -57,9 +55,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ma-day1',
     playbookLabel: 'M&A Day 1 Integration',
     category: 'OFFENSE',
-    gradient: 'from-emerald-500/10 to-green-500/10',
-    borderColor: 'border-emerald-500/30 hover:border-emerald-500/60',
-    iconColor: 'text-emerald-400'
+    accentColor: 'border-l-emerald-500',
+    iconBg: 'bg-emerald-500/15 text-emerald-400'
   },
   {
     id: 'coo',
@@ -70,9 +67,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ma-day1',
     playbookLabel: 'M&A Day 1 Integration',
     category: 'OFFENSE',
-    gradient: 'from-amber-500/10 to-orange-500/10',
-    borderColor: 'border-amber-500/30 hover:border-amber-500/60',
-    iconColor: 'text-amber-400'
+    accentColor: 'border-l-amber-500',
+    iconBg: 'bg-amber-500/15 text-amber-400'
   },
   {
     id: 'cmo',
@@ -83,9 +79,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ma-day1',
     playbookLabel: 'M&A Day 1 Integration',
     category: 'OFFENSE',
-    gradient: 'from-purple-500/10 to-pink-500/10',
-    borderColor: 'border-purple-500/30 hover:border-purple-500/60',
-    iconColor: 'text-purple-400'
+    accentColor: 'border-l-purple-500',
+    iconBg: 'bg-purple-500/15 text-purple-400'
   },
   {
     id: 'cto',
@@ -96,9 +91,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ai-governance',
     playbookLabel: 'AI Governance Framework',
     category: 'SPECIAL TEAMS',
-    gradient: 'from-cyan-500/10 to-blue-500/10',
-    borderColor: 'border-cyan-500/30 hover:border-cyan-500/60',
-    iconColor: 'text-cyan-400'
+    accentColor: 'border-l-cyan-500',
+    iconBg: 'bg-cyan-500/15 text-cyan-400'
   },
   {
     id: 'ciso',
@@ -109,9 +103,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ransomware',
     playbookLabel: 'Ransomware Response',
     category: 'DEFENSE',
-    gradient: 'from-red-500/10 to-rose-500/10',
-    borderColor: 'border-red-500/30 hover:border-red-500/60',
-    iconColor: 'text-red-400'
+    accentColor: 'border-l-red-500',
+    iconBg: 'bg-red-500/15 text-red-400'
   },
   {
     id: 'chro',
@@ -122,9 +115,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ma-day1',
     playbookLabel: 'M&A Day 1 Integration',
     category: 'OFFENSE',
-    gradient: 'from-pink-500/10 to-rose-500/10',
-    borderColor: 'border-pink-500/30 hover:border-pink-500/60',
-    iconColor: 'text-pink-400'
+    accentColor: 'border-l-pink-500',
+    iconBg: 'bg-pink-500/15 text-pink-400'
   },
   {
     id: 'cdo',
@@ -135,9 +127,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ai-governance',
     playbookLabel: 'AI Governance Framework',
     category: 'SPECIAL TEAMS',
-    gradient: 'from-indigo-500/10 to-violet-500/10',
-    borderColor: 'border-indigo-500/30 hover:border-indigo-500/60',
-    iconColor: 'text-indigo-400'
+    accentColor: 'border-l-indigo-500',
+    iconBg: 'bg-indigo-500/15 text-indigo-400'
   },
   {
     id: 'gc',
@@ -148,9 +139,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ai-governance',
     playbookLabel: 'AI Governance Framework',
     category: 'SPECIAL TEAMS',
-    gradient: 'from-slate-500/10 to-gray-500/10',
-    borderColor: 'border-slate-500/30 hover:border-slate-500/60',
-    iconColor: 'text-slate-200'
+    accentColor: 'border-l-slate-400',
+    iconBg: 'bg-slate-500/15 text-slate-300'
   },
   {
     id: 'cco',
@@ -161,9 +151,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ai-governance',
     playbookLabel: 'AI Governance Framework',
     category: 'SPECIAL TEAMS',
-    gradient: 'from-teal-500/10 to-cyan-500/10',
-    borderColor: 'border-teal-500/30 hover:border-teal-500/60',
-    iconColor: 'text-teal-400'
+    accentColor: 'border-l-teal-500',
+    iconBg: 'bg-teal-500/15 text-teal-400'
   },
   {
     id: 'cso',
@@ -174,9 +163,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ma-day1',
     playbookLabel: 'M&A Day 1 Integration',
     category: 'OFFENSE',
-    gradient: 'from-violet-500/10 to-purple-500/10',
-    borderColor: 'border-violet-500/30 hover:border-violet-500/60',
-    iconColor: 'text-violet-400'
+    accentColor: 'border-l-violet-500',
+    iconBg: 'bg-violet-500/15 text-violet-400'
   },
   {
     id: 'cro',
@@ -187,16 +175,15 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ma-day1',
     playbookLabel: 'M&A Day 1 Integration',
     category: 'OFFENSE',
-    gradient: 'from-emerald-500/10 to-teal-500/10',
-    borderColor: 'border-emerald-500/30 hover:border-emerald-500/60',
-    iconColor: 'text-emerald-400'
+    accentColor: 'border-l-emerald-500',
+    iconBg: 'bg-emerald-500/15 text-emerald-400'
   }
 ];
 
 const categoryBadge = (cat: string) => {
-  if (cat === 'OFFENSE') return 'bg-blue-500/10 text-blue-400 border-blue-500/20';
-  if (cat === 'DEFENSE') return 'bg-red-500/10 text-red-400 border-red-500/20';
-  return 'bg-purple-500/10 text-purple-400 border-purple-500/20';
+  if (cat === 'OFFENSE') return 'bg-blue-500/15 text-blue-300 border-blue-500/30';
+  if (cat === 'DEFENSE') return 'bg-red-500/15 text-red-300 border-red-500/30';
+  return 'bg-purple-500/15 text-purple-300 border-purple-500/30';
 };
 
 export default function RoleSelector() {
@@ -206,18 +193,18 @@ export default function RoleSelector() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-16">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <Users className="w-8 h-8 text-emerald-400" />
+              <Users className="w-8 h-8 text-poise-teal" />
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-                Experience ExecuteIQ From Your Perspective
+                Your ExecuteIQ Workspace
               </h1>
             </div>
-            <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-6">
-              Select your role to experience the full ExecuteIQ product journey — from building playbooks and configuring triggers through live signal detection and 12-minute execution.
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-6">
+              Select your role to configure ExecuteIQ with the playbooks, signals, and dashboards most relevant to your responsibilities.
             </p>
-            <div className="flex items-center justify-center gap-6 text-sm text-gray-300">
-              <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-emerald-400" /> Full product walkthrough</span>
-              <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-blue-400" /> 12-stage hands-on journey</span>
-              <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-purple-400" /> Build, configure & execute</span>
+            <div className="flex items-center justify-center gap-6 text-sm text-gray-400">
+              <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-poise-teal" /> Personalized workspace</span>
+              <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-blue-400" /> Role-specific playbooks</span>
+              <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-purple-400" /> Tailored signal feeds</span>
             </div>
           </div>
 
@@ -226,16 +213,16 @@ export default function RoleSelector() {
               const Icon = config.icon;
               return (
                 <Link key={config.id} href={`/experience/${config.id}`}>
-                  <Card className={`bg-gradient-to-br ${config.gradient} border ${config.borderColor} transition-all duration-300 cursor-pointer hover:scale-[1.02] h-full`}>
+                  <Card className={`bg-gray-900 border-gray-800 border-l-4 ${config.accentColor} transition-all duration-300 cursor-pointer hover:bg-gray-800/80 hover:border-gray-700 h-full`}>
                     <CardContent className="p-5">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center gap-3">
-                          <div className={`p-2.5 rounded-lg bg-gray-900/60 ${config.iconColor}`}>
+                          <div className={`p-2.5 rounded-lg ${config.iconBg}`}>
                             <Icon className="w-5 h-5" />
                           </div>
                           <div>
                             <div className="font-bold text-white text-lg">{config.id.toUpperCase()}</div>
-                            <div className="text-xs text-gray-200">{config.title}</div>
+                            <div className="text-sm text-gray-400">{config.title}</div>
                           </div>
                         </div>
                         <Badge className={`text-[10px] border ${categoryBadge(config.category)}`}>
@@ -247,16 +234,16 @@ export default function RoleSelector() {
                         "{config.hookQuestion}"
                       </p>
 
-                      <div className="border-t border-white/10 pt-3 mb-4">
-                        <div className="text-[10px] uppercase tracking-wider text-gray-300 mb-1">Your ExecuteIQ Impact</div>
+                      <div className="border-t border-gray-700 pt-3 mb-4">
+                        <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Your ExecuteIQ Impact</div>
                         <div className="text-sm font-semibold text-emerald-400">{config.keyMetric}</div>
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <div className="text-[10px] text-gray-300">
-                          <Play className="w-3 h-3 inline mr-1" />Full Customer Experience
+                        <div className="text-xs text-gray-500">
+                          <Compass className="w-3 h-3 inline mr-1" />Configure Workspace
                         </div>
-                        <ArrowRight className="w-4 h-4 text-gray-300" />
+                        <ArrowRight className="w-4 h-4 text-gray-500" />
                       </div>
                     </CardContent>
                   </Card>
@@ -267,14 +254,14 @@ export default function RoleSelector() {
 
           <div className="mt-16 text-center">
             <Card className="bg-gray-900 border-gray-800 p-8 max-w-3xl mx-auto">
-              <h3 className="text-xl font-bold mb-3">Not sure which role to pick?</h3>
-              <p className="text-gray-200 mb-6">
-                Try the Live Activation Command Center directly — choose any playbook and watch the full coordination unfold.
+              <h3 className="text-xl font-bold mb-3 text-white">Not sure which role to start with?</h3>
+              <p className="text-gray-400 mb-6">
+                Jump straight into the Command Center — select any playbook and experience the full coordination workflow.
               </p>
-              <Link href="/activation">
-                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-500 text-white px-8">
-                  <Zap className="w-5 h-5 mr-2" />
-                  Go to Live Activation
+              <Link href="/command-center">
+                <Button size="lg" className="bg-gradient-to-r from-poise-teal to-cyan-600 hover:from-cyan-600 hover:to-poise-teal text-white px-8">
+                  <Compass className="w-5 h-5 mr-2" />
+                  Open Command Center
                 </Button>
               </Link>
             </Card>

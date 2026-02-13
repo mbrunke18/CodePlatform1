@@ -32,7 +32,8 @@ import {
   FileCheck,
   Send,
   Wallet,
-  Calendar
+  Calendar,
+  X
 } from 'lucide-react';
 import PageLayout from '@/components/layout/PageLayout';
 
@@ -114,6 +115,10 @@ export default function CommandCenter() {
   const [demoSpeed, setDemoSpeed] = useState(1);
   const [showConfetti, setShowConfetti] = useState(false);
   const [lastTickTime, setLastTickTime] = useState<number>(0);
+  const [selectedScenario, setSelectedScenario] = useState<string | null>(null);
+  const [continuousModeLocal, setContinuousModeLocal] = useState(continuousMode.enabled);
+  const [selectedSignal, setSelectedSignal] = useState<string | null>(null);
+  const [showScenarioLauncher, setShowScenarioLauncher] = useState(false);
   const [demoExecution, setDemoExecution] = useState<{
     active: boolean;
     startTime: number;
@@ -533,12 +538,52 @@ export default function CommandCenter() {
                 <Timer className="w-4 h-4 mr-2" />
                 Demo 12-Min Execution
               </Button>
-              <Button data-testid="button-launch-scenario">
+              <Button 
+                onClick={() => setShowScenarioLauncher(!showScenarioLauncher)}
+                data-testid="button-launch-scenario"
+              >
                 <PlayCircle className="w-4 h-4 mr-2" />
                 Launch New Scenario
               </Button>
             </div>
           </div>
+          {showScenarioLauncher && (
+            <Card className="mb-4 border-2 border-blue-500 dark:border-blue-700 animate-in slide-in-from-top-2 duration-200">
+              <CardContent className="py-5">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="font-semibold text-slate-900 dark:text-white">Select a Scenario to Launch</h3>
+                  <Button variant="ghost" size="sm" onClick={() => setShowScenarioLauncher(false)}>
+                    <X className="w-4 h-4" />
+                  </Button>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                  {[
+                    { name: 'Competitor Acquisition Response', domain: 'M&A', category: 'OFFENSE', teams: 8, tasks: 20 },
+                    { name: 'Ransomware Incident Response', domain: 'Cybersecurity', category: 'DEFENSE', teams: 6, tasks: 16 },
+                    { name: 'Product Counter-Launch', domain: 'Competitive Response', category: 'OFFENSE', teams: 7, tasks: 18 },
+                    { name: 'Regulatory Compliance Sprint', domain: 'Regulatory', category: 'DEFENSE', teams: 5, tasks: 14 },
+                    { name: 'AI Governance Deployment', domain: 'AI Governance', category: 'SPECIAL TEAMS', teams: 6, tasks: 22 },
+                    { name: 'Digital Transformation Phase 2', domain: 'Digital Transformation', category: 'SPECIAL TEAMS', teams: 9, tasks: 24 },
+                  ].map((scenario, i) => (
+                    <button
+                      key={i}
+                      onClick={() => { setShowScenarioLauncher(false); launchDemoExecution(); }}
+                      className="text-left p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-all"
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-sm font-medium text-slate-900 dark:text-white">{scenario.name}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                        <Badge variant="outline" className="text-[10px]">{scenario.category}</Badge>
+                        <span>{scenario.teams} teams</span>
+                        <span>{scenario.tasks} tasks</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          )}
           {activeScenarios.length === 0 && !demoExecution ? (
             <Card className="border-2 border-dashed border-slate-300 dark:border-slate-700 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-blue-950" data-testid="card-no-scenarios">
               <CardContent className="py-12 text-center">
@@ -602,9 +647,43 @@ export default function CommandCenter() {
                         <span className="font-semibold">{scenario.progress}%</span>
                       </div>
                       <Progress value={scenario.progress} />
-                      <Button variant="outline" size="sm" className="w-full mt-2" data-testid={`button-view-${scenario.id}`}>
-                        View Details
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="w-full mt-2" 
+                        onClick={() => setSelectedScenario(selectedScenario === scenario.id ? null : scenario.id)}
+                        data-testid={`button-view-${scenario.id}`}
+                      >
+                        {selectedScenario === scenario.id ? 'Hide Details' : 'View Details'}
                       </Button>
+                      {selectedScenario === scenario.id && (
+                        <div className="mt-3 pt-3 border-t border-slate-200 dark:border-slate-700 space-y-2 text-sm">
+                          <div className="flex justify-between">
+                            <span className="text-slate-500 dark:text-slate-400">Domain</span>
+                            <span className="font-medium">{scenario.domain || 'Strategic'}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-slate-500 dark:text-slate-400">Teams Active</span>
+                            <span className="font-medium">{scenario.teamsInvolved}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-slate-500 dark:text-slate-400">Progress</span>
+                            <span className="font-medium text-emerald-600">{scenario.progress}%</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-slate-500 dark:text-slate-400">Started</span>
+                            <span className="font-medium">{new Date().toLocaleDateString()}</span>
+                          </div>
+                          <Button 
+                            size="sm" 
+                            className="w-full mt-2 bg-gradient-to-r from-blue-600 to-violet-600 text-white"
+                            onClick={() => launchDemoExecution()}
+                          >
+                            <Rocket className="w-3 h-3 mr-1.5" />
+                            Open Execution View
+                          </Button>
+                        </div>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
@@ -722,27 +801,65 @@ export default function CommandCenter() {
             <CardContent>
               <div className="space-y-3">
                 {signalAlerts.map((alert) => (
-                  <div 
-                    key={alert.id} 
-                    className="flex items-start gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer"
-                    data-testid={`signal-alert-${alert.id}`}
-                  >
-                    <Badge className={`${severityColors[alert.severity]} text-xs px-2`}>
-                      {alert.severity.toUpperCase()}
-                    </Badge>
-                    <div className="flex-1 min-w-0">
-                      <p className="font-medium text-sm text-slate-900 dark:text-white">
-                        {alert.title}
-                      </p>
-                      <div className="flex items-center gap-2 mt-1">
-                        <span className="text-xs text-slate-300">{alert.source}</span>
-                        <span className="text-xs text-slate-300">•</span>
-                        <span className="text-xs text-slate-300">{alert.time}</span>
+                  <div key={alert.id}>
+                    <div 
+                      className="flex items-start gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer"
+                      data-testid={`signal-alert-${alert.id}`}
+                      onClick={() => setSelectedSignal(selectedSignal === alert.id ? null : alert.id)}
+                    >
+                      <Badge className={`${severityColors[alert.severity]} text-xs px-2`}>
+                        {alert.severity.toUpperCase()}
+                      </Badge>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-medium text-sm text-slate-900 dark:text-white">
+                          {alert.title}
+                        </p>
+                        <div className="flex items-center gap-2 mt-1">
+                          <span className="text-xs text-slate-300">{alert.source}</span>
+                          <span className="text-xs text-slate-300">•</span>
+                          <span className="text-xs text-slate-300">{alert.time}</span>
+                        </div>
                       </div>
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="flex-shrink-0"
+                        onClick={(e) => { e.stopPropagation(); setSelectedSignal(selectedSignal === alert.id ? null : alert.id); }}
+                      >
+                        {selectedSignal === alert.id ? <X className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
+                      </Button>
                     </div>
-                    <Button variant="ghost" size="sm" className="flex-shrink-0">
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
+                    {selectedSignal === alert.id && (
+                      <div className="ml-4 mr-4 mb-3 mt-1 p-3 bg-slate-50 dark:bg-slate-800/80 rounded-lg border border-slate-200 dark:border-slate-700 space-y-2 animate-in slide-in-from-top-2 duration-200">
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Signal Source</span>
+                          <span className="text-xs font-semibold">{alert.source}</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Detected</span>
+                          <span className="text-xs font-semibold">{alert.time}</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Confidence</span>
+                          <span className="text-xs font-semibold text-emerald-600">94%</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Matching Playbooks</span>
+                          <span className="text-xs font-semibold text-blue-600">3 playbooks</span>
+                        </div>
+                        <div className="flex gap-2 mt-2">
+                          <Button size="sm" className="flex-1 bg-gradient-to-r from-blue-600 to-violet-600 text-white text-xs"
+                            onClick={() => launchDemoExecution()}>
+                            <Rocket className="w-3 h-3 mr-1" />
+                            Activate Response
+                          </Button>
+                          <Button size="sm" variant="outline" className="text-xs"
+                            onClick={() => setSelectedSignal(null)}>
+                            Dismiss
+                          </Button>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -870,10 +987,11 @@ export default function CommandCenter() {
                 </CardDescription>
               </div>
               <Button 
-                variant={continuousMode.enabled ? "destructive" : "default"}
+                variant={continuousModeLocal ? "destructive" : "default"}
+                onClick={() => setContinuousModeLocal(!continuousModeLocal)}
                 data-testid="button-toggle-continuous-mode"
               >
-                {continuousMode.enabled ? (
+                {continuousModeLocal ? (
                   <>
                     <Pause className="w-4 h-4 mr-2" />
                     Pause
@@ -890,8 +1008,8 @@ export default function CommandCenter() {
           <CardContent>
             <div className="grid grid-cols-3 gap-6">
               <div className="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
-                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">
-                  {continuousMode.enabled ? 'ON' : 'OFF'}
+                <div className={`text-3xl font-bold mb-1 ${continuousModeLocal ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400'}`}>
+                  {continuousModeLocal ? 'ON' : 'OFF'}
                 </div>
                 <div className="text-xs text-slate-600 dark:text-slate-300">Status</div>
               </div>
