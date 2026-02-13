@@ -256,6 +256,7 @@ export default function LiveActivationCenter() {
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [currentPhase, setCurrentPhase] = useState<ActivationPhase>('IMMEDIATE');
   const [showCompletion, setShowCompletion] = useState(false);
+  const [liveDispatchResults, setLiveDispatchResults] = useState<any>(null);
   const socketRef = useRef<Socket | null>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const feedRef = useRef<HTMLDivElement>(null);
@@ -263,6 +264,28 @@ export default function LiveActivationCenter() {
   const simulationRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   const activePlaybook = DEFAULT_PLAYBOOKS.find(p => p.key === selectedPlaybook);
+
+  const { data: orgData } = useQuery({
+    queryKey: ['/api/organizations'],
+    retry: false,
+    staleTime: 60000,
+  });
+  const organizationId = (orgData as any)?.[0]?.id || null;
+
+  const { data: integrationStatus } = useQuery({
+    queryKey: ['/api/activation/integrations-status', organizationId],
+    enabled: !!organizationId,
+    retry: false,
+    staleTime: 30000,
+    queryFn: async () => {
+      const res = await apiRequest('GET', `/api/activation/integrations-status?organizationId=${organizationId}`);
+      return res.json();
+    },
+  });
+
+  const hasJira = integrationStatus?.jira?.connected === true;
+  const hasSlack = integrationStatus?.slack?.connected === true;
+  const hasLiveIntegrations = hasJira || hasSlack;
 
   const { data: playbooksData } = useQuery({
     queryKey: ['/api/activation/playbooks'],
@@ -309,6 +332,7 @@ export default function LiveActivationCenter() {
     setCurrentPhase('IMMEDIATE');
     setShowCompletion(false);
     setActivityFeed([]);
+    setLiveDispatchResults(null);
     startTimeRef.current = Date.now();
 
     const playbookKey = selectedPlaybook;
@@ -319,6 +343,36 @@ export default function LiveActivationCenter() {
 
     setStakeholders(initialStakeholders);
     setTasks(initialTasks);
+
+    if (hasLiveIntegrations && organizationId && activePlaybook) {
+      const dispatchPayload = {
+        organizationId,
+        playbookName: activePlaybook.name,
+        tasks: initialTasks.map(t => ({ name: t.name, owner: t.owner, phase: t.phase })),
+        stakeholders: initialStakeholders.map(s => ({ name: s.name, title: s.title })),
+      };
+      apiRequest('POST', '/api/activation/dispatch-live', dispatchPayload)
+        .then(r => r.json())
+        .then(result => {
+          setLiveDispatchResults(result);
+          if (result.jira?.length > 0) {
+            const created = result.jira.filter((r: any) => r.success);
+            if (created.length > 0) {
+              addActivity('system', `⚡ LIVE: ${created.length} Jira issue(s) created in your workspace`);
+              created.forEach((r: any) => {
+                addActivity('task', `⚡ Jira ${r.detail?.key}: ${r.detail?.taskName}`);
+              });
+            }
+          }
+          if (result.slack?.length > 0) {
+            const sent = result.slack.filter((r: any) => r.success);
+            if (sent.length > 0) {
+              addActivity('system', `⚡ LIVE: Activation notification sent to Slack`);
+            }
+          }
+        })
+        .catch(() => {});
+    }
 
     setTimeout(() => {
       setActivationState('IN_PROGRESS');
@@ -356,7 +410,7 @@ export default function LiveActivationCenter() {
     });
 
     runClientSimulation(initialStakeholders, initialTasks, playbookKey);
-  }, [selectedPlaybook, addActivity, industryOverlay]);
+  }, [selectedPlaybook, addActivity, industryOverlay, hasLiveIntegrations, organizationId, activePlaybook]);
 
   const runClientSimulation = useCallback((initStakeholders: Stakeholder[], initTasks: Task[], playbookKey: string) => {
     simulationRef.current.forEach(t => clearTimeout(t));
@@ -596,6 +650,35 @@ export default function LiveActivationCenter() {
             })}
           </div>
 
+          {hasLiveIntegrations && (
+            <div className="mb-8 rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <Zap className="w-4 h-4 text-cyan-400" />
+                <span className="text-sm font-semibold text-cyan-400">Live Integrations Active</span>
+                <Badge className="text-[10px] border-0 bg-cyan-500/20 text-cyan-300 ml-auto">CONNECTED</Badge>
+              </div>
+              <p className="text-xs text-gray-400 mb-3">
+                Activating this playbook will push real tasks and notifications to your connected tools:
+              </p>
+              <div className="flex items-center gap-3">
+                {hasJira && (
+                  <div className="flex items-center gap-1.5 bg-blue-500/10 border border-blue-500/20 rounded-lg px-3 py-1.5">
+                    <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+                    <span className="text-xs font-medium text-blue-400">Jira</span>
+                    <span className="text-[10px] text-gray-500">Tasks will be created</span>
+                  </div>
+                )}
+                {hasSlack && (
+                  <div className="flex items-center gap-1.5 bg-purple-500/10 border border-purple-500/20 rounded-lg px-3 py-1.5">
+                    <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+                    <span className="text-xs font-medium text-purple-400">Slack</span>
+                    <span className="text-[10px] text-gray-500">Notifications will be sent</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
           <div className="text-center">
             <Button
               size="lg"
@@ -615,11 +698,17 @@ export default function LiveActivationCenter() {
               ) : (
                 <>
                   <Play className="w-5 h-5 mr-2" />
-                  ACTIVATE PLAYBOOK
+                  {hasLiveIntegrations ? 'ACTIVATE PLAYBOOK (LIVE)' : 'ACTIVATE PLAYBOOK'}
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </>
               )}
             </Button>
+            {!hasLiveIntegrations && (
+              <p className="text-xs text-gray-600 mt-3">
+                <Link href="/integrations/connections" className="text-gray-500 hover:text-gray-300 underline">Connect Jira or Slack</Link>
+                {' '}to push real tasks and notifications during activation
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -788,6 +877,47 @@ export default function LiveActivationCenter() {
             </div>
           </div>
 
+          {liveDispatchResults && (liveDispatchResults.jira?.length > 0 || liveDispatchResults.slack?.length > 0) && (
+            <div className="bg-gray-900 border border-cyan-500/20 rounded-xl p-6 mb-8">
+              <div className="flex items-center gap-2 mb-4">
+                <Zap className="w-5 h-5 text-cyan-400" />
+                <h2 className="text-lg font-bold text-white">Live Integration Results</h2>
+                <Badge className="text-[10px] border-0 bg-cyan-500/20 text-cyan-300 ml-auto">REAL DATA</Badge>
+              </div>
+              {liveDispatchResults.jira?.filter((r: any) => r.success).length > 0 && (
+                <div className="mb-4">
+                  <h3 className="text-xs font-bold tracking-wider text-gray-500 mb-2 uppercase">Jira Issues Created</h3>
+                  <div className="space-y-1.5">
+                    {liveDispatchResults.jira.filter((r: any) => r.success).map((r: any, i: number) => (
+                      <div key={i} className="flex items-center gap-2 text-sm">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" />
+                        <span className="text-blue-400 font-mono text-xs">{r.detail?.key}</span>
+                        <span className="text-gray-300 text-xs">{r.detail?.taskName}</span>
+                        {r.detail?.url && (
+                          <a href={r.detail.url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-gray-500 hover:text-blue-400 ml-auto">View</a>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {liveDispatchResults.slack?.filter((r: any) => r.success).length > 0 && (
+                <div>
+                  <h3 className="text-xs font-bold tracking-wider text-gray-500 mb-2 uppercase">Slack Notifications</h3>
+                  <div className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-purple-400 flex-shrink-0" />
+                    <span className="text-gray-300 text-xs">Activation alert sent to Slack workspace</span>
+                  </div>
+                </div>
+              )}
+              {liveDispatchResults.summary && (
+                <div className="mt-3 pt-3 border-t border-gray-800 text-xs text-gray-500">
+                  {liveDispatchResults.summary}
+                </div>
+              )}
+            </div>
+          )}
+
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               size="lg"
@@ -843,6 +973,12 @@ export default function LiveActivationCenter() {
                 {formatElapsed(simulatedSeconds)}
               </div>
               <Badge className="text-[9px] md:text-[10px] border-0 bg-amber-500/10 text-amber-400 font-semibold">8x ACCELERATED</Badge>
+            {hasLiveIntegrations && (
+              <Badge className="text-[9px] md:text-[10px] border-0 bg-cyan-500/10 text-cyan-400 font-semibold hidden sm:inline-flex items-center gap-1">
+                <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                LIVE
+              </Badge>
+            )}
             </div>
             <Button variant="ghost" size="sm" onClick={cancelActivation} className="text-gray-400 hover:text-white hover:bg-gray-800 px-2 md:px-3">
               <X className="w-4 h-4" /><span className="hidden sm:inline ml-1">Cancel</span>

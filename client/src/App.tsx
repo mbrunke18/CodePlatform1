@@ -25,6 +25,7 @@ import RealTimeCollaboration from "./pages/RealTimeCollaboration";
 import AuditLoggingCenter from "./pages/AuditLoggingCenter";
 import IntegrationHub from "./pages/IntegrationHub";
 import IntegrationsPage from "./pages/IntegrationsPage";
+import IntegrationConnections from "./pages/IntegrationConnections";
 import AdvancedAnalytics from "./pages/AdvancedAnalytics";
 import TriggersManagement from "./pages/TriggersManagement";
 import PulseIntelligence from "./pages/PulseIntelligence";
@@ -501,7 +502,9 @@ function Router() {
         
         {/* Integration Hub */}
         <Route path="/integration-hub" component={IntegrationHub} />
-        <Route path="/integrations" component={IntegrationsPage} />
+        <Route path="/integrations" component={IntegrationConnections} />
+        <Route path="/integration-connections" component={IntegrationConnections} />
+        <Route path="/integrations-legacy" component={IntegrationsPage} />
         
         {/* Demo Entry Point - Single clear path */}
         <Route path="/demo" component={TryDemo} />

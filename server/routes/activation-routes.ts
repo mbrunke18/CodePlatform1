@@ -1,8 +1,43 @@
 import type { Express } from 'express';
 import { liveActivationService } from '../services/LiveActivationService';
 import { wsService } from '../services/WebSocketService';
+import { liveIntegrationDispatcher } from '../services/LiveIntegrationDispatcher';
 
 export function registerActivationRoutes(app: Express): void {
+
+  app.get('/api/activation/integrations-status', async (req, res) => {
+    try {
+      const organizationId = req.query.organizationId as string;
+      if (!organizationId) {
+        return res.json({ jira: { connected: false }, slack: { connected: false } });
+      }
+      const status = await liveIntegrationDispatcher.getIntegrationStatus(organizationId);
+      res.json(status);
+    } catch (error) {
+      res.json({ jira: { connected: false }, slack: { connected: false } });
+    }
+  });
+
+  app.post('/api/activation/dispatch-live', async (req, res) => {
+    try {
+      const { organizationId, playbookName, tasks, stakeholders } = req.body;
+      if (!organizationId || !playbookName) {
+        return res.status(400).json({ success: false, message: 'organizationId and playbookName required' });
+      }
+
+      const result = await liveIntegrationDispatcher.dispatchActivation(
+        organizationId,
+        playbookName,
+        tasks || [],
+        stakeholders || []
+      );
+
+      res.json({ success: true, ...result });
+    } catch (error) {
+      console.error('Live dispatch error:', error);
+      res.status(500).json({ success: false, message: 'Dispatch failed' });
+    }
+  });
   // GET /api/activation/playbooks - List available demo playbooks
   app.get('/api/activation/playbooks', async (req, res) => {
     try {

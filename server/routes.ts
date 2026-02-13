@@ -5946,6 +5946,46 @@ SUCCESS METRICS:
   const integrationRoutes = await import('./routes/integrations.js');
   app.use('/api/integrations', integrationRoutes.default);
 
+  // OAuth connection routes for Jira, Slack
+  const oauthRoutes = await import('./routes/oauth-routes.js');
+  app.use('/api/oauth', oauthRoutes.default);
+  console.log('✅ OAuth connection routes registered (Jira, Slack)');
+
+  // Live signal ingestion API
+  const { liveSignalIngestionService } = await import('./services/LiveSignalIngestionService.js');
+
+  app.get('/api/signals/live/status', (req, res) => {
+    res.json(liveSignalIngestionService.getStatus());
+  });
+
+  app.post('/api/signals/live/ingest', async (req, res) => {
+    try {
+      const organizationId = req.body?.organizationId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833';
+      const result = await liveSignalIngestionService.runIngestionCycle(organizationId);
+      res.json({ success: true, ...result });
+    } catch (err) {
+      res.status(500).json({ error: 'Ingestion failed', message: err instanceof Error ? err.message : 'Unknown' });
+    }
+  });
+
+  app.post('/api/signals/live/start', (req, res) => {
+    const organizationId = req.body?.organizationId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833';
+    const intervalMinutes = req.body?.intervalMinutes || 15;
+    liveSignalIngestionService.start(organizationId, intervalMinutes);
+    res.json({ success: true, status: liveSignalIngestionService.getStatus() });
+  });
+
+  app.post('/api/signals/live/stop', (req, res) => {
+    liveSignalIngestionService.stop();
+    res.json({ success: true, status: liveSignalIngestionService.getStatus() });
+  });
+
+  // Start live signal ingestion automatically
+  setTimeout(() => {
+    liveSignalIngestionService.start('ebe6af05-772b-4107-9c5a-9b5bf55c5833', 15);
+  }, 5000);
+  console.log('✅ Live Signal Ingestion API registered (auto-start in 5s)');
+
   // Import and use webhook routes for real-time enterprise data ingestion
   const webhookRoutes = await import('./routes/webhookRoutes.js');
   app.use('/api', webhookRoutes.default);
