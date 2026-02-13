@@ -178,6 +178,9 @@ export const PUBLIC_ROUTES = [
   '/api/dynamic-strategy/readiness',
   '/api/dynamic-strategy/oracle-patterns',
   
+  // AI Intelligence Feed - public demo of signal-to-action value
+  '/api/pulse/intelligence-feed',
+  
   // Auth Routes - needed for login/logout flow
   '/auth/login',
   '/auth/logout',

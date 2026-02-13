@@ -2713,7 +2713,332 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // === AI-POWERED ENTERPRISE INTELLIGENCE ENDPOINTS ===
-  
+
+  // Signal-to-Action Intelligence Feed - The core value demonstration of ExecuteIQ
+  app.get('/api/pulse/intelligence-feed', async (req: any, res) => {
+    try {
+      const { SIGNAL_CATEGORIES } = await import('@shared/intelligence-signals');
+      
+      const now = new Date();
+      const feedItems = [
+        {
+          id: 'sig-001',
+          signalCategory: 'competitive',
+          signalName: 'Competitor Product Launch Detected',
+          signalSource: 'News API + Patent Database',
+          detectedAt: new Date(now.getTime() - 8 * 60000).toISOString(),
+          urgency: 'critical' as const,
+          dataPoints: [
+            { label: 'Competitor', value: 'Accenture Strategy Cloud' },
+            { label: 'Product', value: 'AI-Powered Strategy Accelerator' },
+            { label: 'Market Impact', value: 'Direct competitor to 3 of your domains' },
+            { label: 'Press Coverage', value: '47 articles in 24 hours' }
+          ],
+          aiAnalysis: {
+            summary: 'Accenture has launched an AI strategy tool targeting the same enterprise segment. Their pricing undercuts market by 20%, and they have existing relationships with 12 of your target accounts. Immediate competitive response recommended.',
+            confidence: 0.94,
+            riskLevel: 'high',
+            timeToImpact: '2-4 weeks before pipeline affected',
+            keyInsight: 'Their product lacks real-time signal detection and playbook automation - your core differentiator.'
+          },
+          recommendedPlaybook: {
+            id: 'competitive-response',
+            name: 'Competitive Response Protocol',
+            domain: 'Competitive Response',
+            tasksCount: 8,
+            estimatedDuration: '12 minutes to activate',
+            keyActions: ['Counter-positioning brief', 'Sales enablement update', 'Win/loss analysis acceleration', 'Customer retention outreach']
+          },
+          costOfInaction: {
+            revenueAtRisk: 4200000,
+            pipelineImpact: '23% of Q2 pipeline exposed',
+            timeDecay: 'Risk increases 15% per week of delay',
+            competitorAdvantage: 'First-mover advantage solidifies in 30 days'
+          },
+          decisionStatus: 'pending',
+          slaDeadline: new Date(now.getTime() + 4 * 3600000).toISOString()
+        },
+        {
+          id: 'sig-002',
+          signalCategory: 'regulatory',
+          signalName: 'EU AI Act Enforcement Timeline Accelerated',
+          signalSource: 'Regulatory Monitor + Legal Intelligence',
+          detectedAt: new Date(now.getTime() - 45 * 60000).toISOString(),
+          urgency: 'critical' as const,
+          dataPoints: [
+            { label: 'Regulation', value: 'EU AI Act - Article 6 High-Risk Systems' },
+            { label: 'New Deadline', value: 'Moved from Q4 2026 to Q2 2026' },
+            { label: 'Affected Products', value: '4 product lines require compliance audit' },
+            { label: 'Penalty Range', value: 'Up to 6% of global annual revenue' }
+          ],
+          aiAnalysis: {
+            summary: 'The EU has accelerated enforcement of AI Act provisions for high-risk systems by 6 months. Your AI-powered analytics and decision tools fall under Article 6 classification. Compliance gap analysis shows 3 critical areas needing remediation.',
+            confidence: 0.97,
+            riskLevel: 'critical',
+            timeToImpact: 'Compliance deadline in 4 months',
+            keyInsight: 'Early compliance becomes a competitive advantage - only 12% of enterprises are prepared.'
+          },
+          recommendedPlaybook: {
+            id: 'regulatory-response',
+            name: 'Regulatory Compliance Sprint',
+            domain: 'Regulatory',
+            tasksCount: 12,
+            estimatedDuration: '12 minutes to activate',
+            keyActions: ['Compliance gap assessment', 'Legal team mobilization', 'Product audit initiation', 'Board notification draft']
+          },
+          costOfInaction: {
+            revenueAtRisk: 18500000,
+            pipelineImpact: 'EU market access at risk (34% of revenue)',
+            timeDecay: 'Each month of delay adds $2.1M in remediation costs',
+            competitorAdvantage: 'Compliant competitors gain preferred vendor status'
+          },
+          decisionStatus: 'approved',
+          slaDeadline: new Date(now.getTime() + 2 * 3600000).toISOString()
+        },
+        {
+          id: 'sig-003',
+          signalCategory: 'market',
+          signalName: 'Enterprise AI Spending Surge in Healthcare',
+          signalSource: 'Market Research + SEC Filings + Earnings Calls',
+          detectedAt: new Date(now.getTime() - 2 * 3600000).toISOString(),
+          urgency: 'high' as const,
+          dataPoints: [
+            { label: 'Sector', value: 'Healthcare & Life Sciences' },
+            { label: 'Budget Increase', value: '+340% YoY in AI strategy tools' },
+            { label: 'Deal Size Trend', value: 'Average enterprise deal up to $2.4M' },
+            { label: 'Key Buyers', value: 'CSOs, Chief Strategy Officers, COOs' }
+          ],
+          aiAnalysis: {
+            summary: 'Healthcare enterprises are dramatically increasing AI strategy budgets. 14 Fortune 500 healthcare companies have issued RFPs for strategic execution platforms in the last 30 days. This represents a new market entry opportunity with $890M TAM.',
+            confidence: 0.89,
+            riskLevel: 'opportunity',
+            timeToImpact: 'RFP window closes in 6-8 weeks',
+            keyInsight: 'Your existing pharma crisis playbooks give you immediate credibility in this vertical.'
+          },
+          recommendedPlaybook: {
+            id: 'market-expansion',
+            name: 'Market Entry Accelerator',
+            domain: 'Market Entry',
+            tasksCount: 10,
+            estimatedDuration: '12 minutes to activate',
+            keyActions: ['Vertical GTM strategy', 'Healthcare-specific demo environment', 'Partnership outreach to health systems', 'Regulatory pre-clearance']
+          },
+          costOfInaction: {
+            revenueAtRisk: 12800000,
+            pipelineImpact: 'Missing $890M TAM window',
+            timeDecay: 'Competitors establishing beachhead - 3 already in market',
+            competitorAdvantage: 'McKinsey launching healthcare strategy tool in Q3'
+          },
+          decisionStatus: 'pending',
+          slaDeadline: new Date(now.getTime() + 24 * 3600000).toISOString()
+        },
+        {
+          id: 'sig-004',
+          signalCategory: 'cybersecurity',
+          signalName: 'Supply Chain Vulnerability in Authentication Provider',
+          signalSource: 'Threat Intelligence + Vendor Monitoring + Dark Web Scan',
+          detectedAt: new Date(now.getTime() - 22 * 60000).toISOString(),
+          urgency: 'critical' as const,
+          dataPoints: [
+            { label: 'Threat Vector', value: 'Zero-day in OAuth provider dependency' },
+            { label: 'CVSS Score', value: '9.1 (Critical)' },
+            { label: 'Exposure Window', value: 'Estimated 72 hours before patch' },
+            { label: 'Affected Systems', value: '3 production services, 2 staging' }
+          ],
+          aiAnalysis: {
+            summary: 'Critical zero-day vulnerability detected in a third-party authentication library used across production services. Active exploitation detected in the wild targeting enterprise SaaS platforms. Immediate containment and communication protocol required.',
+            confidence: 0.96,
+            riskLevel: 'critical',
+            timeToImpact: 'Active exploitation - immediate',
+            keyInsight: 'Pre-staged incident response playbook can reduce containment time from 96 hours to 4 hours.'
+          },
+          recommendedPlaybook: {
+            id: 'cyber-incident-response',
+            name: 'Cyber Incident Response Protocol',
+            domain: 'Cyber Security',
+            tasksCount: 15,
+            estimatedDuration: '12 minutes to activate',
+            keyActions: ['Incident commander assignment', 'Affected system isolation', 'Customer communication draft', 'Board notification within 1 hour']
+          },
+          costOfInaction: {
+            revenueAtRisk: 8900000,
+            pipelineImpact: 'Customer trust erosion - 67% report switching after breach',
+            timeDecay: 'Every hour of delay increases breach probability by 23%',
+            competitorAdvantage: 'Breach disclosure requirements trigger within 72 hours'
+          },
+          decisionStatus: 'approved',
+          slaDeadline: new Date(now.getTime() + 1 * 3600000).toISOString()
+        },
+        {
+          id: 'sig-005',
+          signalCategory: 'talent',
+          signalName: 'Key Executive Departure at Strategic Partner',
+          signalSource: 'LinkedIn Monitoring + News Aggregation + CRM Signals',
+          detectedAt: new Date(now.getTime() - 5 * 3600000).toISOString(),
+          urgency: 'high' as const,
+          dataPoints: [
+            { label: 'Executive', value: 'CTO of Partner Corp (top 5 revenue partner)' },
+            { label: 'Destination', value: 'Joining competitor as Chief Strategy Officer' },
+            { label: 'Relationship Risk', value: 'Primary champion for $8.2M annual contract' },
+            { label: 'Contract Renewal', value: 'Due in 90 days' }
+          ],
+          aiAnalysis: {
+            summary: 'Your primary executive sponsor at a top-5 revenue partner is departing for a direct competitor. This puts an $8.2M annual relationship at risk, with contract renewal in 90 days. New CTO appointee has no existing relationship with your team.',
+            confidence: 0.92,
+            riskLevel: 'high',
+            timeToImpact: '30 days to establish new executive relationship',
+            keyInsight: 'Historical data shows 73% of accounts churn within 6 months of champion departure without intervention.'
+          },
+          recommendedPlaybook: {
+            id: 'customer-retention',
+            name: 'Executive Relationship Recovery',
+            domain: 'Competitive Response',
+            tasksCount: 7,
+            estimatedDuration: '12 minutes to activate',
+            keyActions: ['New CTO executive briefing request', 'Value realization report generation', 'Executive sponsor reassignment', 'Competitive displacement defense']
+          },
+          costOfInaction: {
+            revenueAtRisk: 8200000,
+            pipelineImpact: 'Cascading risk to 3 co-sell partnerships worth $12M',
+            timeDecay: 'Competitor influence increases daily during transition period',
+            competitorAdvantage: 'Departing exec brings insider knowledge of your roadmap'
+          },
+          decisionStatus: 'pending',
+          slaDeadline: new Date(now.getTime() + 48 * 3600000).toISOString()
+        },
+        {
+          id: 'sig-006',
+          signalCategory: 'financial',
+          signalName: 'Activist Investor Building Position in Target Account',
+          signalSource: 'SEC Filings + Market Intelligence + Board Network Analysis',
+          detectedAt: new Date(now.getTime() - 12 * 3600000).toISOString(),
+          urgency: 'medium' as const,
+          dataPoints: [
+            { label: 'Target', value: 'Fortune 200 prospect in active sales cycle' },
+            { label: 'Activist Fund', value: 'ValueAct Capital - 5.2% stake acquired' },
+            { label: 'Typical Playbook', value: 'Cost-cutting, vendor consolidation' },
+            { label: 'Your Deal Status', value: '$3.6M proposal in final review' }
+          ],
+          aiAnalysis: {
+            summary: 'An activist investor known for aggressive cost-cutting is building a position in your largest active prospect. Historical pattern shows 78% of their targets undergo vendor consolidation within 6 months. Your $3.6M deal needs repositioning from cost center to strategic value driver.',
+            confidence: 0.85,
+            riskLevel: 'medium',
+            timeToImpact: 'Board composition change expected within 60 days',
+            keyInsight: 'Reframing your proposal around cost-avoidance and risk reduction aligns with activist priorities.'
+          },
+          recommendedPlaybook: {
+            id: 'deal-risk-mitigation',
+            name: 'Deal Risk Mitigation Protocol',
+            domain: 'M&A Integration',
+            tasksCount: 6,
+            estimatedDuration: '12 minutes to activate',
+            keyActions: ['Proposal reframing for ROI focus', 'Executive sponsor escalation', 'Multi-year commitment incentive', 'Board-level value presentation']
+          },
+          costOfInaction: {
+            revenueAtRisk: 3600000,
+            pipelineImpact: 'Deal at 70% probability drops to 25% post-activist',
+            timeDecay: 'New board members typically freeze new vendor spending',
+            competitorAdvantage: 'Incumbents with existing contracts get grandfathered'
+          },
+          decisionStatus: 'pending',
+          slaDeadline: new Date(now.getTime() + 72 * 3600000).toISOString()
+        },
+        {
+          id: 'sig-007',
+          signalCategory: 'technology',
+          signalName: 'Breakthrough AI Model Release Impacts Product Roadmap',
+          signalSource: 'ArXiv Monitor + Tech News + Developer Community Analysis',
+          detectedAt: new Date(now.getTime() - 3 * 3600000).toISOString(),
+          urgency: 'high' as const,
+          dataPoints: [
+            { label: 'Technology', value: 'OpenAI o3 reasoning model - 10x faster inference' },
+            { label: 'Impact Area', value: 'Your AI analysis pipeline cost drops 80%' },
+            { label: 'Competitive Window', value: '60-day integration advantage' },
+            { label: 'Customer Demand', value: '8 enterprise customers asking about capabilities' }
+          ],
+          aiAnalysis: {
+            summary: 'A breakthrough AI model release enables 10x faster intelligence analysis at 80% lower cost. Early adopters gain significant competitive advantage. 8 of your enterprise customers have already inquired about enhanced AI capabilities. First-mover integration creates 60-day moat.',
+            confidence: 0.91,
+            riskLevel: 'opportunity',
+            timeToImpact: 'Integration window: 60 days',
+            keyInsight: 'Upgrading your AI pipeline now could reduce per-customer costs by $140K/year while improving analysis speed.'
+          },
+          recommendedPlaybook: {
+            id: 'technology-adoption',
+            name: 'Technology Advantage Capture',
+            domain: 'Digital Transformation',
+            tasksCount: 9,
+            estimatedDuration: '12 minutes to activate',
+            keyActions: ['Technical feasibility assessment', 'Integration sprint planning', 'Customer communication strategy', 'Competitive messaging update']
+          },
+          costOfInaction: {
+            revenueAtRisk: 6400000,
+            pipelineImpact: 'Competitors who integrate first capture premium positioning',
+            timeDecay: 'Advantage window narrows 5% per week',
+            competitorAdvantage: 'Palantir and C3.ai already announced integration timelines'
+          },
+          decisionStatus: 'pending',
+          slaDeadline: new Date(now.getTime() + 168 * 3600000).toISOString()
+        },
+        {
+          id: 'sig-008',
+          signalCategory: 'supply_chain',
+          signalName: 'Cloud Provider Outage Pattern Detected',
+          signalSource: 'Infrastructure Monitoring + Vendor SLA Tracking + Industry Reports',
+          detectedAt: new Date(now.getTime() - 1 * 3600000).toISOString(),
+          urgency: 'medium' as const,
+          dataPoints: [
+            { label: 'Provider', value: 'AWS us-east-1 region' },
+            { label: 'Pattern', value: '3rd significant degradation in 45 days' },
+            { label: 'Customer Impact', value: '340 enterprise users affected last incident' },
+            { label: 'SLA Credits', value: '$420K accrued, $1.2M potential' }
+          ],
+          aiAnalysis: {
+            summary: 'Recurring cloud infrastructure degradation pattern detected. Three significant incidents in 45 days suggests systemic reliability issue. Proactive multi-region failover and customer communication plan recommended before next incident.',
+            confidence: 0.88,
+            riskLevel: 'medium',
+            timeToImpact: 'Next incident probability: 67% within 30 days',
+            keyInsight: 'Proactive resilience plan converts potential crisis into customer trust moment.'
+          },
+          recommendedPlaybook: {
+            id: 'crisis-preparedness',
+            name: 'Infrastructure Resilience Protocol',
+            domain: 'Crisis Management',
+            tasksCount: 8,
+            estimatedDuration: '12 minutes to activate',
+            keyActions: ['Multi-region failover audit', 'Customer SLA review', 'Communication templates pre-staging', 'Executive war room setup']
+          },
+          costOfInaction: {
+            revenueAtRisk: 2100000,
+            pipelineImpact: 'Customer NPS drops 18 points per outage incident',
+            timeDecay: 'Reputational damage compounds with each incident',
+            competitorAdvantage: 'Competitors with multi-cloud positioning gain credibility'
+          },
+          decisionStatus: 'pending',
+          slaDeadline: new Date(now.getTime() + 96 * 3600000).toISOString()
+        }
+      ];
+
+      const summary = {
+        totalSignals: feedItems.length,
+        criticalSignals: feedItems.filter(f => f.urgency === 'critical').length,
+        pendingDecisions: feedItems.filter(f => f.decisionStatus === 'pending').length,
+        approvedActions: feedItems.filter(f => f.decisionStatus === 'approved').length,
+        totalRevenueAtRisk: feedItems.reduce((sum, f) => sum + f.costOfInaction.revenueAtRisk, 0),
+        avgConfidence: feedItems.reduce((sum, f) => sum + f.aiAnalysis.confidence, 0) / feedItems.length,
+        signalCategories: SIGNAL_CATEGORIES.length,
+        dataPointsMonitored: SIGNAL_CATEGORIES.reduce((acc, cat) => acc + cat.dataPoints.length, 0),
+        lastScanTime: now.toISOString(),
+        nextScanTime: new Date(now.getTime() + 300000).toISOString()
+      };
+
+      res.json({ feed: feedItems, summary });
+    } catch (error) {
+      console.error("Error generating intelligence feed:", error);
+      res.status(500).json({ message: "Failed to generate intelligence feed" });
+    }
+  });
+
   // AI-POWERED Pulse Metrics Generation using sophisticated algorithms
   app.post('/api/pulse/generate', async (req: any, res) => {
     try {
