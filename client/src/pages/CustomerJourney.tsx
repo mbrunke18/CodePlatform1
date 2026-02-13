@@ -281,11 +281,11 @@ export default function CustomerJourney() {
                     Start Pilot Program
                   </Button>
                 </Link>
-                <Link href="/demo-gallery">
+                <a href="/ultimate-demo">
                   <Button variant="outline" className="border-poise-teal text-poise-teal hover:bg-poise-teal/10">
                     Explore Demos
                   </Button>
-                </Link>
+                </a>
               </div>
             </CardContent>
           </Card>

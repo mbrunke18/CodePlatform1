@@ -810,7 +810,7 @@ export default function Homepage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
-              onClick={() => setLocation('/try-demo')}
+              onClick={() => { window.location.href = '/ultimate-demo'; }}
               className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8 py-6 text-lg"
               data-testid="button-try-demo-cta"
             >

@@ -296,7 +296,7 @@ export default function HowItWorks() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
-              onClick={() => setLocation("/demo-gallery")}
+              onClick={() => { window.location.href = '/ultimate-demo'; }}
               className="bg-poise-teal hover:bg-cyan-600 text-white px-8 py-6 text-lg"
               data-testid="button-try-demo"
             >

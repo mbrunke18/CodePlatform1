@@ -53,12 +53,7 @@ export default function StandardNav() {
   const demosLinks = [
     { label: "Ultimate Demo", path: "/ultimate-demo", icon: Zap, description: "Interactive 72hrs → 12min experience", featured: true },
     { label: "Scenario Demo", path: "/scenario-demo", icon: Target, description: "Offense vs Defense scenario comparisons", featured: true },
-    { label: "Customer Demo", path: "/customer-demo", icon: Play, description: "Full product walkthrough" },
     { label: "Industry Demos", path: "/industry-demos", icon: Building, description: "Luxury, Financial, Pharma & more" },
-    { label: "Interactive Sandbox", path: "/sandbox-demo", icon: Layers, description: "Hands-on product exploration" },
-    { label: "Executive Simulation", path: "/executive-simulation", icon: Award, description: "Live crisis response simulation" },
-    { label: "Investor Demo", path: "/investor-demo", icon: Presentation, description: "Tailored investor walkthrough" },
-    { label: "Product Tour", path: "/product-tour", icon: Eye, description: "Guided platform tour" },
   ];
 
   const investorsLinks = [
@@ -253,7 +248,7 @@ export default function StandardNav() {
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-3">
             <Button 
-              onClick={() => navigateTo("/try-demo")}
+              onClick={() => { window.location.href = '/ultimate-demo'; }}
               className="bg-gradient-to-r from-poise-teal to-cyan-600 hover:from-cyan-600 hover:to-poise-teal text-white font-semibold h-9 px-4 shadow-lg shadow-poise-teal/20"
               data-testid="nav-try-demo"
             >
@@ -304,7 +299,7 @@ export default function StandardNav() {
           {/* Mobile Menu Button */}
           <div className="flex lg:hidden items-center gap-2">
             <Button 
-              onClick={() => navigateTo("/try-demo")}
+              onClick={() => { window.location.href = '/ultimate-demo'; }}
               size="sm"
               className="bg-gradient-to-r from-emerald-600 to-cyan-600 text-white"
               data-testid="nav-mobile-try-demo-btn"
@@ -327,7 +322,7 @@ export default function StandardNav() {
             <div className="flex flex-col gap-1">
               {/* Primary CTAs */}
               <Button 
-                onClick={() => navigateTo("/try-demo")}
+                onClick={() => { window.location.href = '/ultimate-demo'; }}
                 className="bg-gradient-to-r from-poise-teal to-cyan-600 text-white w-full justify-center h-12 text-base font-semibold"
                 data-testid="nav-mobile-try-demo"
               >

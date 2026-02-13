@@ -5,6 +5,10 @@ export default function Footer() {
   const [, setLocation] = useLocation();
 
   const navigateTo = (path: string) => {
+    if (path === '/ultimate-demo' || path === '/scenario-demo') {
+      window.location.href = path;
+      return;
+    }
     setLocation(path);
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   };
@@ -53,9 +57,8 @@ export default function Footer() {
     {
       title: "Experience",
       links: [
-        { label: "Try Demo", path: "/try-demo" },
-        { label: "Start Pilot", path: "/pilot-demo" },
-        { label: "Product Tour", path: "/product-tour" },
+        { label: "Try Demo", path: "/ultimate-demo" },
+        { label: "Scenario Demo", path: "/scenario-demo" },
         { label: "ROI Calculator", path: "/roi-calculator" },
       ]
     },
@@ -203,13 +206,13 @@ export default function Footer() {
                 martinbrunke@executeiq.io
               </a>
               <button 
-                onClick={() => navigateTo("/demo")}
+                onClick={() => { window.location.href = '/ultimate-demo'; }}
                 className="text-sm text-emerald-400 hover:text-emerald-300 transition-colors font-medium"
               >
                 See Demo →
               </button>
               <button 
-                onClick={() => navigateTo("/investor-demo")}
+                onClick={() => navigateTo("/investors")}
                 className="text-sm text-purple-400 hover:text-purple-300 transition-colors font-medium"
               >
                 Investors →

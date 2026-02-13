@@ -79,7 +79,7 @@ export function Outro({ progress }: SceneProps) {
           transition={{ delay: 1.2 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <Link href="/pilot-demo">
+          <a href="/ultimate-demo">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -88,7 +88,7 @@ export function Outro({ progress }: SceneProps) {
               Try Demo
               <ArrowRight className="w-5 h-5" />
             </motion.button>
-          </Link>
+          </a>
           
           <Link href="/pricing">
             <motion.button

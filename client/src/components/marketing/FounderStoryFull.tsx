@@ -1075,7 +1075,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5, delay: 2.5 }}
                   className="flex gap-4 justify-center flex-wrap"
                 >
-                  <Link href="/sandbox">
+                  <a href="/ultimate-demo">
                     <Button 
                       size="lg" 
                       className="px-8 py-6 text-lg bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400"
@@ -1084,7 +1084,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                       <Play className="mr-2 h-5 w-5" />
                       Try Demo
                     </Button>
-                  </Link>
+                  </a>
                   <Link href="/playbook-library">
                     <Button 
                       size="lg"

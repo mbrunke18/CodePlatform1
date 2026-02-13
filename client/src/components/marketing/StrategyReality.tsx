@@ -357,9 +357,9 @@ export function StrategyRealityHero() {
             See How It Works
             <ArrowRight className="w-5 h-5" />
           </Link>
-          <Link href="/demo" className="inline-flex items-center gap-2 text-slate-300 hover:text-white font-medium px-8 py-4 transition-colors" data-testid="link-watch-demo">
+          <a href="/ultimate-demo" className="inline-flex items-center gap-2 text-slate-300 hover:text-white font-medium px-8 py-4 transition-colors" data-testid="link-watch-demo">
             Watch Demo
-          </Link>
+          </a>
         </motion.div>
       </div>
     </section>

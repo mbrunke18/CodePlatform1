@@ -189,12 +189,12 @@ export default function Investors() {
             </p>
             
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/pilot-demo">
+              <a href="/ultimate-demo">
                 <Button className="bg-[#D4AF37] hover:bg-[#c9a432] text-black font-semibold px-6 h-12">
                   <Play className="w-4 h-4 mr-2" />
                   Watch Demo
                 </Button>
-              </Link>
+              </a>
               <Link href="/contact">
                 <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 h-12 px-6 bg-transparent">
                   <Calendar className="w-4 h-4 mr-2" />
@@ -505,18 +505,18 @@ export default function Investors() {
           >
             <h2 className="text-2xl font-bold text-white mb-6">Ready to Learn More?</h2>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/pilot-demo">
+              <a href="/ultimate-demo">
                 <Button className="bg-[#D4AF37] hover:bg-[#c9a432] text-black font-semibold px-8 h-12">
                   <Play className="w-4 h-4 mr-2" />
                   Interactive Demo
                 </Button>
-              </Link>
-              <Link href="/investor-demo">
+              </a>
+              <a href="/scenario-demo">
                 <Button variant="outline" className="border-[#00A8A8]/50 text-[#00A8A8] hover:bg-[#00A8A8]/10 h-12 px-8 bg-transparent">
                   <FileText className="w-4 h-4 mr-2" />
-                  Investor Presentation
+                  Scenario Comparisons
                 </Button>
-              </Link>
+              </a>
               <Link href="/contact">
                 <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 h-12 px-8 bg-transparent">
                   <Calendar className="w-4 h-4 mr-2" />
