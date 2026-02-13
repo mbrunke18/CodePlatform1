@@ -139,6 +139,7 @@ import TryDemo from "./pages/TryDemo";
 import LiveActivationCenter from "./pages/LiveActivationCenter";
 import KeynoteDemo from "./pages/KeynoteDemo";
 import RoleExperience from "./pages/RoleExperience";
+import IndustryExperience from "./pages/IndustryExperience";
 
 import PlaybooksLibraryPage from "./pages/identify/PlaybooksLibraryPage";
 import IdentifyTemplatesPage from "./pages/identify/TemplatesPage";
@@ -576,6 +577,9 @@ function Router() {
         
         {/* Role-Based Customer Experience */}
         <Route path="/experience/:roleId" component={RoleExperience} />
+        
+        {/* Industry-Based Customer Experience */}
+        <Route path="/industry-experience/:industryId" component={IndustryExperience} />
         
         {/* Keynote Demo Mode - Tradeshow Presentation */}
         <Route path="/keynote" component={KeynoteDemo} />

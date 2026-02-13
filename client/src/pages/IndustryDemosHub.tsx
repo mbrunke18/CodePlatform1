@@ -191,7 +191,7 @@ export default function IndustryDemosHub() {
   const renderDemoCard = (demo: IndustryDemo) => {
     const DemoIcon = demo.icon;
     return (
-      <Link key={demo.id} href={`/activation?playbook=${demo.playbookKey}&industry=${demo.industryKey}`}>
+      <Link key={demo.id} href={`/industry-experience/${demo.id}`}>
         <Card className="bg-gray-900 border-gray-800 hover:border-gray-600 transition-all duration-300 cursor-pointer hover:scale-[1.02] h-full group">
           <div className="p-5">
             <div className="flex items-start justify-between mb-4">
