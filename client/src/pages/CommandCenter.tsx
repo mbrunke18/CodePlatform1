@@ -29,6 +29,7 @@ import {
   Sparkles,
   FastForward,
   Trophy,
+  Brain,
   FileCheck,
   Send,
   Wallet,
@@ -179,7 +180,7 @@ export default function CommandCenter() {
     }
   }, [demoExecution?.active, demoSpeed, lastTickTime]);
 
-  const launchDemoExecution = useCallback(() => {
+  const launchDemoExecution = useCallback((scenarioName?: string) => {
     setShowConfetti(false);
     setLastTickTime(Date.now());
     setSelectedScenario(null);
@@ -188,7 +189,7 @@ export default function CommandCenter() {
       startTime: Date.now(),
       elapsedSeconds: 0,
       phase: 0,
-      scenario: 'Competitor Acquisition Response',
+      scenario: scenarioName || 'Competitor Acquisition Response',
       completedTasks: [],
       accumulatedValue: 0,
     });
@@ -266,7 +267,6 @@ export default function CommandCenter() {
 
   return (
     <PageLayout>
-      {/* Confetti Celebration */}
       {showConfetti && (
         <ReactConfetti
           width={window.innerWidth}
@@ -278,58 +278,52 @@ export default function CommandCenter() {
         />
       )}
 
-      {/* Header with Key Metrics */}
-      <div className="bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950 border-b border-slate-200 dark:border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <Badge className="bg-poise-teal/20 text-poise-teal dark:bg-poise-teal/30 dark:text-poise-teal border border-poise-teal/40 text-xs font-semibold">
+      {/* ZONE 1: Hero Header — What is this page and why does it matter */}
+      <div className="bg-gradient-to-br from-slate-900 via-slate-900 to-blue-950 border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+            <div className="max-w-2xl">
+              <div className="flex items-center gap-2 mb-3">
+                <Badge className="bg-poise-teal/20 text-poise-teal border border-poise-teal/40 text-xs font-semibold">
                   ExecuteIQ Compass™
                 </Badge>
-                <Badge variant="outline" className="border-poise-gold/40 text-poise-gold text-xs">
-                  EXECUTE Phase
-                </Badge>
-              </div>
-              <div className="flex items-center gap-3 mb-2">
-                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white">
-                  Command Center
-                </h1>
-                <OnboardingTrigger pageId="command-center" autoStart={true} />
-              </div>
-              <div className="text-sm sm:text-base text-slate-600 dark:text-slate-300 flex flex-wrap items-center gap-2">
-                <span className="hidden sm:inline">Real-time strategic execution coordination and control</span>
-                <span className="sm:hidden">Live execution control</span>
-                <Badge variant="outline" className="text-xs">
+                <Badge variant="outline" className="border-slate-600 text-slate-400 text-xs">
                   <Clock className="w-3 h-3 mr-1" />
                   {currentTime.toLocaleTimeString()}
                 </Badge>
               </div>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3">
+                Command Center
+              </h1>
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+                Your organization's nerve center for strategic execution. When a critical event is detected, 
+                ExecuteIQ coordinates your entire response — tasks, teams, documents, budgets, and integrations — 
+                in under 12 minutes.
+              </p>
+              <OnboardingTrigger pageId="command-center" autoStart={true} />
             </div>
-            <div className="grid grid-cols-3 gap-3 sm:flex sm:items-center sm:gap-6">
-              <div className="text-center">
-                <div className="text-xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400">
+            <div className="grid grid-cols-3 gap-4 lg:gap-6">
+              <div className="text-center p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10">
+                <div className="text-2xl sm:text-3xl font-bold text-blue-400 mb-1">
                   {activeScenarios.length}
                 </div>
-                <div className="text-xs sm:text-xs text-slate-600 dark:text-slate-300 uppercase tracking-wide">
-                  Active
+                <div className="text-xs text-slate-400 uppercase tracking-wide">
+                  Active Scenarios
                 </div>
               </div>
-              <div className="hidden sm:block h-12 w-px bg-slate-300 dark:bg-slate-700"></div>
-              <div className="text-center">
-                <div className="text-xl sm:text-3xl font-bold text-violet-600 dark:text-violet-400">
+              <div className="text-center p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10">
+                <div className="text-2xl sm:text-3xl font-bold text-violet-400 mb-1">
                   {teamsCoordinating}
                 </div>
-                <div className="text-xs sm:text-xs text-slate-600 dark:text-slate-300 uppercase tracking-wide">
-                  Teams
+                <div className="text-xs text-slate-400 uppercase tracking-wide">
+                  Teams Ready
                 </div>
               </div>
-              <div className="hidden sm:block h-12 w-px bg-slate-300 dark:bg-slate-700"></div>
-              <div className="text-center">
-                <div className="text-xl sm:text-3xl font-bold text-emerald-600 dark:text-emerald-400">
+              <div className="text-center p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10">
+                <div className="text-2xl sm:text-3xl font-bold text-emerald-400 mb-1">
                   {percentOnTrack}%
                 </div>
-                <div className="text-xs sm:text-xs text-slate-600 dark:text-slate-300 uppercase tracking-wide">
+                <div className="text-xs text-slate-400 uppercase tracking-wide">
                   On Track
                 </div>
               </div>
@@ -338,7 +332,7 @@ export default function CommandCenter() {
         </div>
       </div>
 
-      {/* Live Execution Velocity Display - Hero Section */}
+      {/* ZONE 2: Live Execution View — The "aha moment" when running */}
       <div ref={executionViewRef} />
       {demoExecution && (
         <div className="bg-gradient-to-r from-blue-600 via-violet-600 to-purple-600 dark:from-blue-800 dark:via-violet-800 dark:to-purple-800">
@@ -351,7 +345,7 @@ export default function CommandCenter() {
                       <div className="text-xl sm:text-3xl font-bold text-white" data-testid="text-countdown-time">
                         {formatTime(demoExecution.elapsedSeconds, true)}
                       </div>
-                      <div className="text-xs sm:text-xs text-white/70">remaining</div>
+                      <div className="text-xs text-white/70">remaining</div>
                     </div>
                   </div>
                   {demoExecution.active && (
@@ -372,8 +366,8 @@ export default function CommandCenter() {
                   </div>
                   <p className="text-white/80 text-xs sm:text-sm truncate">
                     {demoExecution.active 
-                      ? `Executing: ${EXECUTION_PHASES[demoExecution.phase]?.name}`
-                      : 'Complete - All phases finished'}
+                      ? `Phase: ${EXECUTION_PHASES[demoExecution.phase]?.name}`
+                      : 'All phases finished successfully'}
                   </p>
                 </div>
               </div>
@@ -381,17 +375,17 @@ export default function CommandCenter() {
                 <div className="grid grid-cols-3 gap-2 sm:flex sm:items-center sm:gap-4 flex-1 sm:flex-initial">
                   <div className="text-center px-2 sm:px-3 py-1.5 sm:py-2 bg-white/10 rounded-lg">
                     <div className="text-base sm:text-xl font-bold text-white">{demoExecution.completedTasks.length}</div>
-                    <div className="text-xs sm:text-xs text-white/70">Tasks</div>
+                    <div className="text-xs text-white/70">Tasks Done</div>
                   </div>
                   <div className="text-center px-2 sm:px-3 py-1.5 sm:py-2 bg-white/10 rounded-lg">
                     <div className="text-base sm:text-xl font-bold text-emerald-300" data-testid="text-roi-value">
                       ${(demoExecution.accumulatedValue / 1000).toFixed(0)}K
                     </div>
-                    <div className="text-xs sm:text-xs text-white/70">Value</div>
+                    <div className="text-xs text-white/70">Value</div>
                   </div>
                   <div className="text-center px-2 sm:px-3 py-1.5 sm:py-2 bg-white/10 rounded-lg">
                     <div className="text-base sm:text-xl font-bold text-white">8</div>
-                    <div className="text-xs sm:text-xs text-white/70">Teams</div>
+                    <div className="text-xs text-white/70">Teams</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-1">
@@ -411,7 +405,6 @@ export default function CommandCenter() {
               </div>
             </div>
             
-            {/* Phase Progress Bar */}
             <div className="mt-4 sm:mt-6 grid grid-cols-2 sm:flex gap-2">
               {EXECUTION_PHASES.map((phase, idx) => {
                 const phaseStart = EXECUTION_PHASES.slice(0, idx).reduce((a, p) => a + p.duration, 0);
@@ -426,7 +419,7 @@ export default function CommandCenter() {
                 return (
                   <div key={phase.id} className="flex-1" data-testid={`phase-progress-${phase.id}`}>
                     <div className="flex items-center justify-between mb-1">
-                      <span className={`text-xs sm:text-xs font-medium ${isActive ? 'text-white' : 'text-white/60'}`}>
+                      <span className={`text-xs font-medium ${isActive ? 'text-white' : 'text-white/60'}`}>
                         {phase.icon} <span className="hidden sm:inline">{phase.name}</span>
                         <span className="sm:hidden">{phase.name.split(' ')[0]}</span>
                       </span>
@@ -445,13 +438,12 @@ export default function CommandCenter() {
               })}
             </div>
 
-            {/* Live Activity Feed */}
             {demoExecution.completedTasks.length > 0 && (
               <div className="mt-4 pt-4 border-t border-white/20">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
                     <Activity className="w-4 h-4 text-white/70" />
-                    <span className="text-xs font-medium text-white/70 uppercase tracking-wide">Live Activity</span>
+                    <span className="text-xs font-medium text-white/70 uppercase tracking-wide">Live Activity Feed</span>
                   </div>
                   <span className="text-xs text-white/60">{demoExecution.completedTasks.length} of 20 tasks</span>
                 </div>
@@ -482,36 +474,36 @@ export default function CommandCenter() {
         </div>
       )}
 
-      {/* Completion Celebration Modal */}
+      {/* Completion Celebration */}
       {demoExecution && !demoExecution.active && demoExecution.elapsedSeconds >= 720 && (
         <div className="bg-gradient-to-r from-emerald-600 to-teal-600 dark:from-emerald-800 dark:to-teal-800">
-          <div className="max-w-7xl mx-auto px-8 py-8">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-6">
-                <div className="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center">
-                  <Trophy className="w-10 h-10 text-white" />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div className="flex items-center gap-4 sm:gap-6">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                  <Trophy className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-white mb-1">
-                    Execution Complete!
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-1">
+                    Execution Complete
                   </h2>
-                  <p className="text-white/80">
-                    {demoExecution.scenario} - Full coordinated response in under 12 minutes
+                  <p className="text-white/80 text-sm sm:text-base">
+                    {demoExecution.scenario} — coordinated response delivered in under 12 minutes
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-8">
-                <div className="text-center px-4 py-2 bg-white/10 rounded-lg">
-                  <div className="text-3xl font-bold text-white">{demoExecution.completedTasks.length}</div>
-                  <div className="text-xs text-white/70">Tasks Completed</div>
+              <div className="flex flex-wrap items-center gap-3 sm:gap-6">
+                <div className="text-center px-3 sm:px-4 py-2 bg-white/10 rounded-lg">
+                  <div className="text-2xl sm:text-3xl font-bold text-white">{demoExecution.completedTasks.length}</div>
+                  <div className="text-xs text-white/70">Tasks</div>
                 </div>
-                <div className="text-center px-4 py-2 bg-white/10 rounded-lg">
-                  <div className="text-3xl font-bold text-emerald-200">${(demoExecution.accumulatedValue / 1000).toFixed(0)}K</div>
-                  <div className="text-xs text-white/70">Value Delivered</div>
+                <div className="text-center px-3 sm:px-4 py-2 bg-white/10 rounded-lg">
+                  <div className="text-2xl sm:text-3xl font-bold text-emerald-200">${(demoExecution.accumulatedValue / 1000).toFixed(0)}K</div>
+                  <div className="text-xs text-white/70">Value</div>
                 </div>
-                <div className="text-center px-4 py-2 bg-white/10 rounded-lg">
-                  <div className="text-3xl font-bold text-white">8</div>
-                  <div className="text-xs text-white/70">Teams Coordinated</div>
+                <div className="text-center px-3 sm:px-4 py-2 bg-white/10 rounded-lg">
+                  <div className="text-2xl sm:text-3xl font-bold text-white">8</div>
+                  <div className="text-xs text-white/70">Teams</div>
                 </div>
                 <Button
                   size="lg"
@@ -528,61 +520,63 @@ export default function CommandCenter() {
         </div>
       )}
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto p-8 space-y-8">
-        {/* Active Scenarios - or Demo Launch */}
+      {/* ZONE 3: Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8">
+
+        {/* Section: Launch an Execution */}
         <div>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Active Scenarios</h2>
-            <div className="flex gap-2">
-              <Button 
-                variant="outline"
-                onClick={launchDemoExecution}
-                disabled={demoExecution?.active}
-                data-testid="button-demo-execution"
-              >
-                <Timer className="w-4 h-4 mr-2" />
-                Demo 12-Min Execution
-              </Button>
-              <Button 
-                onClick={() => setShowScenarioLauncher(!showScenarioLauncher)}
-                data-testid="button-launch-scenario"
-              >
-                <PlayCircle className="w-4 h-4 mr-2" />
-                Launch New Scenario
-              </Button>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Launch an Execution</h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                Select a strategic scenario to see how ExecuteIQ orchestrates your organization's response in real time
+              </p>
             </div>
+            <Button 
+              onClick={() => setShowScenarioLauncher(!showScenarioLauncher)}
+              className="bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white shrink-0"
+              data-testid="button-launch-scenario"
+            >
+              <PlayCircle className="w-4 h-4 mr-2" />
+              Choose Scenario
+            </Button>
           </div>
+          
           {showScenarioLauncher && (
             <Card className="mb-4 border-2 border-blue-500 dark:border-blue-700 animate-in slide-in-from-top-2 duration-200">
               <CardContent className="py-5">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-semibold text-slate-900 dark:text-white">Select a Scenario to Launch</h3>
+                  <h3 className="font-semibold text-slate-900 dark:text-white">Select a Scenario</h3>
                   <Button variant="ghost" size="sm" onClick={() => setShowScenarioLauncher(false)}>
                     <X className="w-4 h-4" />
                   </Button>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                   {[
-                    { name: 'Competitor Acquisition Response', domain: 'M&A', category: 'OFFENSE', teams: 8, tasks: 20 },
-                    { name: 'Ransomware Incident Response', domain: 'Cybersecurity', category: 'DEFENSE', teams: 6, tasks: 16 },
-                    { name: 'Product Counter-Launch', domain: 'Competitive Response', category: 'OFFENSE', teams: 7, tasks: 18 },
-                    { name: 'Regulatory Compliance Sprint', domain: 'Regulatory', category: 'DEFENSE', teams: 5, tasks: 14 },
-                    { name: 'AI Governance Deployment', domain: 'AI Governance', category: 'SPECIAL TEAMS', teams: 6, tasks: 22 },
-                    { name: 'Digital Transformation Phase 2', domain: 'Digital Transformation', category: 'SPECIAL TEAMS', teams: 9, tasks: 24 },
+                    { name: 'Competitor Acquisition Response', domain: 'M&A', category: 'OFFENSE', teams: 8, tasks: 20, desc: 'Coordinate cross-functional response when a competitor announces a major acquisition' },
+                    { name: 'Ransomware Incident Response', domain: 'Cybersecurity', category: 'DEFENSE', teams: 6, tasks: 16, desc: 'Activate security protocols, legal, communications, and recovery simultaneously' },
+                    { name: 'Product Counter-Launch', domain: 'Competitive Response', category: 'OFFENSE', teams: 7, tasks: 18, desc: 'Rapid competitive response when a rival launches a product in your market' },
+                    { name: 'Regulatory Compliance Sprint', domain: 'Regulatory', category: 'DEFENSE', teams: 5, tasks: 14, desc: 'Mobilize legal, operations, and compliance for urgent regulatory changes' },
+                    { name: 'AI Governance Deployment', domain: 'AI Governance', category: 'SPECIAL TEAMS', teams: 6, tasks: 22, desc: 'Stand up governance framework across engineering, legal, and ethics teams' },
+                    { name: 'Digital Transformation Phase 2', domain: 'Digital Transformation', category: 'SPECIAL TEAMS', teams: 9, tasks: 24, desc: 'Orchestrate the next phase of enterprise-wide digital transformation' },
                   ].map((scenario, i) => (
                     <button
                       key={i}
-                      onClick={() => { setShowScenarioLauncher(false); launchDemoExecution(); }}
-                      className="text-left p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-all"
+                      onClick={() => { setShowScenarioLauncher(false); launchDemoExecution(scenario.name); }}
+                      className="text-left p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-all group"
                     >
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="text-sm font-medium text-slate-900 dark:text-white">{scenario.name}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                      <div className="flex items-center gap-2 mb-2">
                         <Badge variant="outline" className="text-[10px]">{scenario.category}</Badge>
-                        <span>{scenario.teams} teams</span>
-                        <span>{scenario.tasks} tasks</span>
+                        <span className="text-xs text-slate-400">{scenario.domain}</span>
+                      </div>
+                      <span className="text-sm font-semibold text-slate-900 dark:text-white block mb-1">{scenario.name}</span>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">{scenario.desc}</p>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3 text-xs text-slate-400">
+                          <span className="flex items-center gap-1"><Users className="w-3 h-3" /> {scenario.teams} teams</span>
+                          <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3" /> {scenario.tasks} tasks</span>
+                        </div>
+                        <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-blue-500 transition-colors" />
                       </div>
                     </button>
                   ))}
@@ -590,42 +584,57 @@ export default function CommandCenter() {
               </CardContent>
             </Card>
           )}
+
           {activeScenarios.length === 0 && !demoExecution ? (
-            <Card className="border-2 border-dashed border-slate-300 dark:border-slate-700 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-blue-950" data-testid="card-no-scenarios">
-              <CardContent className="py-12 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900 mb-4">
-                  <Sparkles className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+            <Card className="border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-slate-50 via-white to-blue-50/50 dark:from-slate-900 dark:via-slate-900 dark:to-blue-950/30" data-testid="card-no-scenarios">
+              <CardContent className="py-10 sm:py-14">
+                <div className="max-w-2xl mx-auto text-center">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-violet-100 dark:from-blue-900/50 dark:to-violet-900/50 mb-5">
+                    <Rocket className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">
+                    See ExecuteIQ in Action
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-300 mb-6 text-sm sm:text-base leading-relaxed">
+                    Watch how ExecuteIQ transforms a strategic trigger into a fully coordinated organizational response. 
+                    Tasks are assigned, documents are staged, budgets are unlocked, and integrations fire — all within 12 minutes.
+                  </p>
+                  <div className="flex items-center justify-center gap-4 sm:gap-6 mb-8">
+                    <div className="text-center">
+                      <div className="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400">20</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">Tasks Auto-Created</div>
+                    </div>
+                    <div className="h-8 w-px bg-slate-200 dark:bg-slate-700"></div>
+                    <div className="text-center">
+                      <div className="text-2xl sm:text-3xl font-bold text-violet-600 dark:text-violet-400">8</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">Teams Coordinated</div>
+                    </div>
+                    <div className="h-8 w-px bg-slate-200 dark:bg-slate-700"></div>
+                    <div className="text-center">
+                      <div className="text-2xl sm:text-3xl font-bold text-emerald-600 dark:text-emerald-400">&lt;12m</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">Full Activation</div>
+                    </div>
+                  </div>
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <Button 
+                      size="lg" 
+                      onClick={launchDemoExecution}
+                      className="bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white px-8"
+                      data-testid="button-launch-demo"
+                    >
+                      <Rocket className="w-4 h-4 mr-2" />
+                      Launch Execution
+                    </Button>
+                    <Button 
+                      size="lg" 
+                      variant="outline"
+                      onClick={() => setShowScenarioLauncher(true)}
+                    >
+                      <Target className="w-4 h-4 mr-2" />
+                      Browse Scenarios
+                    </Button>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
-                  Ready for Strategic Execution
-                </h3>
-                <p className="text-slate-600 dark:text-slate-300 max-w-md mx-auto mb-6">
-                  ExecuteIQ monitors 12 intelligence signals continuously. When a trigger fires, 
-                  your coordinated response activates in under 12 minutes.
-                </p>
-                <div className="flex items-center justify-center gap-4 mb-6">
-                  <div className="text-center px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">166</div>
-                    <div className="text-xs text-slate-300">Playbooks Ready</div>
-                  </div>
-                  <div className="text-center px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                    <div className="text-2xl font-bold text-violet-600 dark:text-violet-400">12</div>
-                    <div className="text-xs text-slate-300">Signal Sources</div>
-                  </div>
-                  <div className="text-center px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                    <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">&lt;12m</div>
-                    <div className="text-xs text-slate-300">Activation Time</div>
-                  </div>
-                </div>
-                <Button 
-                  size="lg" 
-                  onClick={launchDemoExecution}
-                  className="bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700"
-                  data-testid="button-launch-demo"
-                >
-                  <Rocket className="w-4 h-4 mr-2" />
-                  Watch 12-Minute Execution Demo
-                </Button>
               </CardContent>
             </Card>
           ) : (
@@ -676,10 +685,6 @@ export default function CommandCenter() {
                             <span className="text-slate-500 dark:text-slate-400">Progress</span>
                             <span className="font-medium text-emerald-600">{scenario.progress}%</span>
                           </div>
-                          <div className="flex justify-between">
-                            <span className="text-slate-500 dark:text-slate-400">Started</span>
-                            <span className="font-medium">{new Date().toLocaleDateString()}</span>
-                          </div>
                           <Button 
                             size="sm" 
                             className="w-full mt-2 bg-gradient-to-r from-blue-600 to-violet-600 text-white"
@@ -698,338 +703,311 @@ export default function CommandCenter() {
           )}
         </div>
 
-        {/* ROI & Value Demonstration */}
-        {roiReport && (
-          <Card className="border-2 border-emerald-500 dark:border-emerald-700 bg-emerald-50 dark:bg-emerald-950/30">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <DollarSign className="w-5 h-5 text-emerald-600" />
-                Enterprise Value Realized
-              </CardTitle>
-              <CardDescription>
-                Cumulative impact from strategic executions
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-emerald-200 dark:border-emerald-900">
-                  <div className="text-xs text-slate-600 dark:text-slate-300 mb-1">Total Value</div>
-                  <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">
-                    ${(roiReport.cumulativeValue / 1000000).toFixed(1)}M
-                  </div>
-                </div>
-                <div className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-emerald-200 dark:border-emerald-900">
-                  <div className="text-xs text-slate-600 dark:text-slate-300 mb-1">Executions</div>
-                  <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">
-                    {roiReport.totalExecutions}
-                  </div>
-                </div>
-                <div className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-emerald-200 dark:border-emerald-900">
-                  <div className="text-xs text-slate-600 dark:text-slate-300 mb-1">Avg Velocity</div>
-                  <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">
-                    {roiReport.avgTimeToActivate}m
-                  </div>
-                </div>
-                <div className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-emerald-200 dark:border-emerald-900">
-                  <div className="text-xs text-slate-600 dark:text-slate-300 mb-1">Efficiency</div>
-                  <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">
-                    {roiReport.efficiency}
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
-        {/* Real-time Coordination & Alerts */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Coordination Timeline */}
-          <Card data-testid="card-coordination-timeline">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Users className="w-5 h-5 text-violet-600" />
-                Coordination Timeline
-              </CardTitle>
-              <CardDescription>
-                Live team coordination across active scenarios
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                {coordinationTimeline.map((event) => (
-                  <div 
-                    key={event.id} 
-                    className="flex items-start gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700"
-                    data-testid={`timeline-event-${event.id}`}
-                  >
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                      event.status === 'completed' ? 'bg-emerald-100 dark:bg-emerald-900' :
-                      event.status === 'in-progress' ? 'bg-blue-100 dark:bg-blue-900' :
-                      'bg-slate-200 dark:bg-slate-700'
-                    }`}>
-                      {event.status === 'completed' ? (
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                      ) : event.status === 'in-progress' ? (
-                        <Radio className="w-4 h-4 text-blue-600 dark:text-blue-400 animate-pulse" />
-                      ) : (
-                        <Clock className="w-4 h-4 text-slate-300" />
-                      )}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between">
-                        <span className="font-medium text-sm text-slate-900 dark:text-white">
-                          {event.team}
-                        </span>
-                        <span className="text-xs text-slate-300">{event.time}</span>
-                      </div>
-                      <p className="text-sm text-slate-600 dark:text-slate-300 truncate">
-                        {event.action}
-                      </p>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-slate-600 dark:text-slate-200 flex-shrink-0" />
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Signal Alerts */}
-          <Card data-testid="card-signal-alerts">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Bell className="w-5 h-5 text-amber-600" />
-                Signal Alerts
-              </CardTitle>
-              <CardDescription>
-                Real-time intelligence from 12 monitoring sources
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                {signalAlerts.map((alert) => (
-                  <div key={alert.id}>
-                    <div 
-                      className="flex items-start gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer"
-                      data-testid={`signal-alert-${alert.id}`}
-                      onClick={() => setSelectedSignal(selectedSignal === alert.id ? null : alert.id)}
-                    >
-                      <Badge className={`${severityColors[alert.severity]} text-xs px-2`}>
-                        {alert.severity.toUpperCase()}
-                      </Badge>
-                      <div className="flex-1 min-w-0">
-                        <p className="font-medium text-sm text-slate-900 dark:text-white">
-                          {alert.title}
-                        </p>
-                        <div className="flex items-center gap-2 mt-1">
-                          <span className="text-xs text-slate-300">{alert.source}</span>
-                          <span className="text-xs text-slate-300">•</span>
-                          <span className="text-xs text-slate-300">{alert.time}</span>
-                        </div>
-                      </div>
-                      <Button 
-                        variant="ghost" 
-                        size="sm" 
-                        className="flex-shrink-0"
-                        onClick={(e) => { e.stopPropagation(); setSelectedSignal(selectedSignal === alert.id ? null : alert.id); }}
-                      >
-                        {selectedSignal === alert.id ? <X className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
-                      </Button>
-                    </div>
-                    {selectedSignal === alert.id && (
-                      <div className="ml-4 mr-4 mb-3 mt-1 p-3 bg-slate-50 dark:bg-slate-800/80 rounded-lg border border-slate-200 dark:border-slate-700 space-y-2 animate-in slide-in-from-top-2 duration-200">
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Signal Source</span>
-                          <span className="text-xs font-semibold">{alert.source}</span>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Detected</span>
-                          <span className="text-xs font-semibold">{alert.time}</span>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Confidence</span>
-                          <span className="text-xs font-semibold text-emerald-600">94%</span>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Matching Playbooks</span>
-                          <span className="text-xs font-semibold text-blue-600">3 playbooks</span>
-                        </div>
-                        <div className="flex gap-2 mt-2">
-                          <Button size="sm" className="flex-1 bg-gradient-to-r from-blue-600 to-violet-600 text-white text-xs"
-                            onClick={() => launchDemoExecution()}>
-                            <Rocket className="w-3 h-3 mr-1" />
-                            Activate Response
-                          </Button>
-                          <Button size="sm" variant="outline" className="text-xs"
-                            onClick={() => setSelectedSignal(null)}>
-                            Dismiss
-                          </Button>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Grid: Readiness + Weak Signals + Oracle */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Future Readiness */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-blue-600" />
-                Future Readiness Index™
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-center mb-4">
-                <div className="text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-                  {readiness.overall.toFixed(1)}%
-                </div>
-                <p className="text-sm text-slate-600 dark:text-slate-300">
-                  Overall Readiness Score
-                </p>
-              </div>
-              <div className="space-y-3">
-                {Object.entries(readiness).filter(([key]) => key !== 'overall').map(([key, value]) => (
-                  <div key={key}>
-                    <div className="flex items-center justify-between text-sm mb-1">
-                      <span className="capitalize text-slate-700 dark:text-slate-300">{key}</span>
-                      <span className="font-semibold">{value}%</span>
-                    </div>
-                    <Progress value={value} className="h-2" />
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Weak Signals */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <AlertTriangle className="w-5 h-5 text-amber-600" />
-                Weak Signals Detected
-              </CardTitle>
-              <CardDescription>
-                {weakSignals.length} signals detected
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3 max-h-96 overflow-y-auto">
-                {weakSignals.slice(0, 5).map((signal) => (
-                  <div 
-                    key={signal.id} 
-                    className="p-3 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200 dark:border-amber-900"
-                    data-testid={`weak-signal-${signal.id}`}
-                  >
-                    <div className="flex items-start justify-between mb-1">
-                      <h4 className="font-semibold text-sm text-slate-900 dark:text-white">
-                        {signal.title}
-                      </h4>
-                      <Badge variant="outline" className="text-xs">
-                        {signal.confidence}%
-                      </Badge>
-                    </div>
-                    <p className="text-xs text-slate-600 dark:text-slate-300">
-                      {signal.source} • {signal.category}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Oracle Patterns */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Zap className="w-5 h-5 text-violet-600" />
-                Oracle Intelligence
-              </CardTitle>
-              <CardDescription>
-                {oraclePatterns.length} patterns recognized
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3 max-h-96 overflow-y-auto">
-                {oraclePatterns.map((pattern) => (
-                  <div 
-                    key={pattern.id} 
-                    className="p-3 bg-violet-50 dark:bg-violet-950/30 rounded-lg border border-violet-200 dark:border-violet-900"
-                    data-testid={`oracle-pattern-${pattern.id}`}
-                  >
-                    <div className="flex items-start justify-between mb-1">
-                      <h4 className="font-semibold text-sm text-slate-900 dark:text-white">
-                        {pattern.name}
-                      </h4>
-                      <Badge variant="outline" className="text-xs">
-                        {pattern.accuracy}%
-                      </Badge>
-                    </div>
-                    <p className="text-xs text-slate-600 dark:text-slate-300">
-                      {pattern.signals} signals • {pattern.trend}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Continuous Mode Status */}
-        <Card className="border-2 border-blue-500 dark:border-blue-700">
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <div>
-                <CardTitle className="flex items-center gap-2">
-                  <Activity className="w-5 h-5 text-blue-600" />
-                  Continuous Operations Mode
+        {/* Section: Operational Intelligence — explains what these panels are */}
+        <div>
+          <div className="mb-4">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Operational Intelligence</h2>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+              Real-time visibility into team coordination and incoming signals that may require action
+            </p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <Card data-testid="card-coordination-timeline">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-base">
+                  <Users className="w-5 h-5 text-violet-600" />
+                  Team Coordination
                 </CardTitle>
                 <CardDescription>
-                  Always-on strategic monitoring and coordination
+                  What your teams are doing right now across active scenarios
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  {coordinationTimeline.map((event) => (
+                    <div 
+                      key={event.id} 
+                      className="flex items-start gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700"
+                      data-testid={`timeline-event-${event.id}`}
+                    >
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                        event.status === 'completed' ? 'bg-emerald-100 dark:bg-emerald-900' :
+                        event.status === 'in-progress' ? 'bg-blue-100 dark:bg-blue-900' :
+                        'bg-slate-200 dark:bg-slate-700'
+                      }`}>
+                        {event.status === 'completed' ? (
+                          <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                        ) : event.status === 'in-progress' ? (
+                          <Radio className="w-4 h-4 text-blue-600 dark:text-blue-400 animate-pulse" />
+                        ) : (
+                          <Clock className="w-4 h-4 text-slate-400" />
+                        )}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between">
+                          <span className="font-medium text-sm text-slate-900 dark:text-white">
+                            {event.team}
+                          </span>
+                          <span className="text-xs text-slate-400">{event.time}</span>
+                        </div>
+                        <p className="text-sm text-slate-600 dark:text-slate-300 truncate">
+                          {event.action}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card data-testid="card-signal-alerts">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-base">
+                  <Bell className="w-5 h-5 text-amber-600" />
+                  Incoming Signals
+                </CardTitle>
+                <CardDescription>
+                  Events detected across your monitoring sources that may require a response
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  {signalAlerts.map((alert) => (
+                    <div key={alert.id}>
+                      <div 
+                        className="flex items-start gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer"
+                        data-testid={`signal-alert-${alert.id}`}
+                        onClick={() => setSelectedSignal(selectedSignal === alert.id ? null : alert.id)}
+                      >
+                        <Badge className={`${severityColors[alert.severity]} text-xs px-2`}>
+                          {alert.severity.toUpperCase()}
+                        </Badge>
+                        <div className="flex-1 min-w-0">
+                          <p className="font-medium text-sm text-slate-900 dark:text-white">
+                            {alert.title}
+                          </p>
+                          <div className="flex items-center gap-2 mt-1">
+                            <span className="text-xs text-slate-400">{alert.source}</span>
+                            <span className="text-xs text-slate-300">·</span>
+                            <span className="text-xs text-slate-400">{alert.time}</span>
+                          </div>
+                        </div>
+                        <Button 
+                          variant="ghost" 
+                          size="sm" 
+                          className="flex-shrink-0"
+                          onClick={(e) => { e.stopPropagation(); setSelectedSignal(selectedSignal === alert.id ? null : alert.id); }}
+                        >
+                          {selectedSignal === alert.id ? <X className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
+                        </Button>
+                      </div>
+                      {selectedSignal === alert.id && (
+                        <div className="ml-4 mr-4 mb-3 mt-1 p-3 bg-slate-50 dark:bg-slate-800/80 rounded-lg border border-slate-200 dark:border-slate-700 space-y-2 animate-in slide-in-from-top-2 duration-200">
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Source</span>
+                            <span className="text-xs font-semibold">{alert.source}</span>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Detected</span>
+                            <span className="text-xs font-semibold">{alert.time}</span>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs font-medium text-slate-500 dark:text-slate-400">AI Confidence</span>
+                            <span className="text-xs font-semibold text-emerald-600">94%</span>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Matching Playbooks</span>
+                            <span className="text-xs font-semibold text-blue-600">3 available</span>
+                          </div>
+                          <div className="flex gap-2 mt-2">
+                            <Button size="sm" className="flex-1 bg-gradient-to-r from-blue-600 to-violet-600 text-white text-xs"
+                              onClick={() => launchDemoExecution()}>
+                              <Rocket className="w-3 h-3 mr-1" />
+                              Activate Response
+                            </Button>
+                            <Button size="sm" variant="outline" className="text-xs"
+                              onClick={() => setSelectedSignal(null)}>
+                              Dismiss
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* Section: Strategic Readiness */}
+        <div>
+          <div className="mb-4">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Strategic Readiness</h2>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+              How prepared your organization is to respond to emerging threats and opportunities
+            </p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-base">
+                  <TrendingUp className="w-5 h-5 text-blue-600" />
+                  Readiness Score
+                </CardTitle>
+                <CardDescription>
+                  Your organization's preparedness across key dimensions
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="text-center mb-4">
+                  <div className="text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+                    {readiness.overall.toFixed(1)}%
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  {Object.entries(readiness).filter(([key]) => key !== 'overall').map(([key, value]) => (
+                    <div key={key}>
+                      <div className="flex items-center justify-between text-sm mb-1">
+                        <span className="capitalize text-slate-700 dark:text-slate-300">{key}</span>
+                        <span className="font-semibold">{value}%</span>
+                      </div>
+                      <Progress value={value} className="h-2" />
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-base">
+                  <AlertTriangle className="w-5 h-5 text-amber-600" />
+                  Early Warning Signals
+                </CardTitle>
+                <CardDescription>
+                  Emerging patterns that haven't yet reached trigger threshold
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3 max-h-96 overflow-y-auto">
+                  {weakSignals.slice(0, 5).map((signal) => (
+                    <div 
+                      key={signal.id} 
+                      className="p-3 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200 dark:border-amber-900"
+                      data-testid={`weak-signal-${signal.id}`}
+                    >
+                      <div className="flex items-start justify-between mb-1">
+                        <h4 className="font-semibold text-sm text-slate-900 dark:text-white">
+                          {signal.title}
+                        </h4>
+                        <Badge variant="outline" className="text-xs">
+                          {signal.confidence}%
+                        </Badge>
+                      </div>
+                      <p className="text-xs text-slate-600 dark:text-slate-300">
+                        {signal.source} · {signal.category}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-base">
+                  <Zap className="w-5 h-5 text-violet-600" />
+                  AI Pattern Recognition
+                </CardTitle>
+                <CardDescription>
+                  Patterns the AI has identified across your signal data
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3 max-h-96 overflow-y-auto">
+                  {oraclePatterns.length > 0 ? oraclePatterns.map((pattern) => (
+                    <div 
+                      key={pattern.id} 
+                      className="p-3 bg-violet-50 dark:bg-violet-950/30 rounded-lg border border-violet-200 dark:border-violet-900"
+                      data-testid={`oracle-pattern-${pattern.id}`}
+                    >
+                      <div className="flex items-start justify-between mb-1">
+                        <h4 className="font-semibold text-sm text-slate-900 dark:text-white">
+                          {pattern.name}
+                        </h4>
+                        <Badge variant="outline" className="text-xs">
+                          {pattern.accuracy}%
+                        </Badge>
+                      </div>
+                      <p className="text-xs text-slate-600 dark:text-slate-300">
+                        {pattern.signals} signals · {pattern.trend}
+                      </p>
+                    </div>
+                  )) : (
+                    <div className="text-center py-6 text-sm text-slate-400">
+                      <Brain className="w-8 h-8 mx-auto mb-2 opacity-40" />
+                      AI is analyzing incoming signals. Patterns will appear as more data is collected.
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* Section: Always-On Monitoring */}
+        <Card className="border border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-950/20">
+          <CardHeader>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div>
+                <CardTitle className="flex items-center gap-2 text-base">
+                  <Activity className="w-5 h-5 text-blue-600" />
+                  Always-On Monitoring
+                </CardTitle>
+                <CardDescription>
+                  ExecuteIQ continuously watches your signal sources and automatically activates the right playbook when a trigger fires
                 </CardDescription>
               </div>
               <Button 
                 variant={continuousModeLocal ? "destructive" : "default"}
                 onClick={() => setContinuousModeLocal(!continuousModeLocal)}
+                className="shrink-0"
                 data-testid="button-toggle-continuous-mode"
               >
                 {continuousModeLocal ? (
                   <>
                     <Pause className="w-4 h-4 mr-2" />
-                    Pause
+                    Pause Monitoring
                   </>
                 ) : (
                   <>
                     <PlayCircle className="w-4 h-4 mr-2" />
-                    Activate
+                    Enable Monitoring
                   </>
                 )}
               </Button>
             </div>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-3 gap-6">
-              <div className="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+              <div className="text-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
                 <div className={`text-3xl font-bold mb-1 ${continuousModeLocal ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400'}`}>
-                  {continuousModeLocal ? 'ON' : 'OFF'}
+                  {continuousModeLocal ? 'ACTIVE' : 'PAUSED'}
                 </div>
-                <div className="text-xs text-slate-600 dark:text-slate-300">Status</div>
+                <div className="text-xs text-slate-500 dark:text-slate-400">Monitoring Status</div>
               </div>
-              <div className="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
+              <div className="text-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
                 <div className="text-3xl font-bold text-violet-600 dark:text-violet-400 mb-1">
                   {continuousMode.tasksScheduled}
                 </div>
-                <div className="text-xs text-slate-600 dark:text-slate-300">Tasks Scheduled</div>
+                <div className="text-xs text-slate-500 dark:text-slate-400">Automated Tasks Queued</div>
               </div>
-              <div className="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
+              <div className="text-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
                 <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-1">
                   {continuousMode.nextRun ? new Date(continuousMode.nextRun).toLocaleTimeString() : '--'}
                 </div>
-                <div className="text-xs text-slate-600 dark:text-slate-300">Next Run</div>
+                <div className="text-xs text-slate-500 dark:text-slate-400">Next Scan</div>
               </div>
             </div>
           </CardContent>
