@@ -211,6 +211,14 @@ function getCategoryColor(category: string) {
   }
 }
 
+const DEMO_DURATION = 90;
+const SIMULATED_DURATION = 720;
+const TIME_SCALE = SIMULATED_DURATION / DEMO_DURATION;
+
+function toSimulatedTime(realSeconds: number): number {
+  return Math.min(Math.round(realSeconds * TIME_SCALE), SIMULATED_DURATION);
+}
+
 function formatElapsed(seconds: number): string {
   const m = Math.floor(seconds / 60);
   const s = seconds % 60;
@@ -454,6 +462,7 @@ export default function LiveActivationCenter() {
   const taskPct = tasks.length > 0 ? Math.round((completedTaskCount / tasks.length) * 100) : 0;
 
   const phaseLabel = currentPhase === 'FOLLOW_UP' ? 'FOLLOW UP' : currentPhase;
+  const simulatedSeconds = toSimulatedTime(elapsedSeconds);
 
   if (!activationId) {
     return (
@@ -550,12 +559,16 @@ export default function LiveActivationCenter() {
             <CheckCircle2 className="w-14 h-14 text-emerald-400" />
           </div>
           <h1 className="text-4xl font-bold mb-3">Coordination Complete</h1>
-          <p className="text-gray-400 mb-10 text-lg">All stakeholders aligned and tasks executed successfully.</p>
+          <p className="text-gray-400 mb-4 text-lg">All stakeholders aligned and tasks executed successfully.</p>
+          <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-lg px-4 py-2 mb-10">
+            <Zap className="w-4 h-4 text-emerald-400" />
+            <span className="text-sm text-emerald-400 font-medium">Full coordination in under 12 minutes — vs. 3-6 weeks traditional</span>
+          </div>
 
           <div className="grid grid-cols-3 gap-6 mb-12">
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-5">
-              <div className="text-3xl font-bold text-emerald-400">{formatElapsed(elapsedSeconds)}</div>
-              <div className="text-xs text-gray-500 mt-1">Total Time</div>
+              <div className="text-3xl font-bold text-emerald-400">{formatElapsed(simulatedSeconds)}</div>
+              <div className="text-xs text-gray-500 mt-1">Execution Time</div>
             </div>
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-5">
               <div className="text-3xl font-bold text-emerald-400">{acknowledgedCount}/{stakeholders.length}</div>
@@ -605,9 +618,12 @@ export default function LiveActivationCenter() {
             </Badge>
           </div>
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 text-gray-300 font-mono text-lg">
-              <Clock className="w-4 h-4 text-gray-500" />
-              {formatElapsed(elapsedSeconds)}
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 text-gray-300 font-mono text-lg">
+                <Clock className="w-4 h-4 text-gray-500" />
+                {formatElapsed(simulatedSeconds)}
+              </div>
+              <Badge className="text-[10px] border-0 bg-amber-500/10 text-amber-400 font-semibold">8x ACCELERATED</Badge>
             </div>
             <Button variant="ghost" size="sm" onClick={cancelActivation} className="text-gray-400 hover:text-white hover:bg-gray-800">
               <X className="w-4 h-4 mr-1" /> Cancel
@@ -696,8 +712,8 @@ export default function LiveActivationCenter() {
             <CardContent className="space-y-4 max-h-[calc(100vh-200px)] overflow-y-auto pr-1">
               {[
                 { label: 'IMMEDIATE (0-2 min)', items: immediateT },
-                { label: 'SECONDARY (2-5 min)', items: secondaryT },
-                { label: 'FOLLOW UP (5-12 min)', items: followUpT },
+                { label: 'SECONDARY (2-6 min)', items: secondaryT },
+                { label: 'FOLLOW UP (6-12 min)', items: followUpT },
               ].map(group => (
                 group.items.length > 0 && (
                   <div key={group.label}>
@@ -744,16 +760,16 @@ export default function LiveActivationCenter() {
                     strokeWidth="8"
                     strokeLinecap="round"
                     strokeDasharray={`${2 * Math.PI * 54}`}
-                    strokeDashoffset={`${2 * Math.PI * 54 * (1 - Math.min(elapsedSeconds / 90, 1))}`}
+                    strokeDashoffset={`${2 * Math.PI * 54 * (1 - Math.min(simulatedSeconds / SIMULATED_DURATION, 1))}`}
                     className="transition-all duration-500"
                   />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-3xl font-bold font-mono text-white">{formatElapsed(elapsedSeconds)}</span>
-                  <span className="text-[10px] text-gray-500">ELAPSED</span>
+                  <span className="text-3xl font-bold font-mono text-white">{formatElapsed(simulatedSeconds)}</span>
+                  <span className="text-[10px] text-gray-500">EXECUTION TIME</span>
                 </div>
               </div>
-              <div className="text-xs text-gray-500 font-semibold tracking-wider mb-6">ACCELERATED DEMO (90s)</div>
+              <div className="text-xs text-gray-500 font-semibold tracking-wider mb-6">12-MINUTE COORDINATION CYCLE</div>
 
               <div className="grid grid-cols-2 gap-3 w-full">
                 <div className="bg-gray-800/60 rounded-lg p-3 text-center border border-gray-800">
@@ -795,7 +811,7 @@ export default function LiveActivationCenter() {
                 {activityFeed.map(entry => (
                   <div key={entry.id} className="flex items-start gap-2 py-1.5 border-b border-gray-800/50 last:border-0">
                     <span className="text-[10px] font-mono text-gray-600 mt-0.5 flex-shrink-0 w-12 text-right">
-                      [{formatElapsed(entry.timestamp)}]
+                      [{formatElapsed(toSimulatedTime(entry.timestamp))}]
                     </span>
                     <div className="flex-shrink-0 mt-1">
                       {entry.type === 'stakeholder' && <Users className="w-3 h-3 text-emerald-400" />}
