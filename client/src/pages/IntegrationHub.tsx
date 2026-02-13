@@ -91,6 +91,8 @@ interface DataFlow {
   transformations: string[];
 }
 
+import PageLayout from '@/components/layout/PageLayout';
+
 export default function IntegrationHub() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [searchTerm, setSearchTerm] = useState('');
@@ -522,7 +524,7 @@ export default function IntegrationHub() {
   });
 
   return (
-    <>
+    <PageLayout>
       <div className="flex-1 page-background overflow-y-auto p-8 space-y-8">
         
         {/* Ecosystem Connectors Header */}
@@ -985,6 +987,6 @@ export default function IntegrationHub() {
           </TabsContent>
         </Tabs>
       </div>
-    </>
+    </PageLayout>
   );
 }

@@ -22,6 +22,7 @@ import {
   ArrowLeft,
   Home
 } from 'lucide-react';
+import PageLayout from '@/components/layout/PageLayout';
 
 export default function FluxAdaptations() {
   const [selectedStrategy, setSelectedStrategy] = useState('active');
@@ -105,6 +106,7 @@ export default function FluxAdaptations() {
   );
 
   return (
+    <PageLayout>
     <div className="h-full bg-transparent p-4" data-testid="flux-adaptations">
         <div className="w-full max-w-none mx-auto space-y-4 h-full overflow-hidden flex flex-col">
           
@@ -297,5 +299,6 @@ export default function FluxAdaptations() {
           </Tabs>
         </div>
     </div>
+    </PageLayout>
   );
 }

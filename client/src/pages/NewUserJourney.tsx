@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PageLayout from '@/components/layout/PageLayout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
@@ -333,8 +334,9 @@ export default function NewUserJourney() {
   };
 
   return (
+    <PageLayout>
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950">
-      <div className="fixed top-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-sm border-b border-slate-700/50">
+      <div className="sticky top-0 left-0 right-0 z-40 bg-slate-900/90 backdrop-blur-sm border-b border-slate-700/50">
         <div className="max-w-5xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
@@ -1333,5 +1335,6 @@ export default function NewUserJourney() {
         </div>
       </div>
     </div>
+    </PageLayout>
   );
 }

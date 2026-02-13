@@ -25,6 +25,7 @@ import {
   Settings
 } from 'lucide-react';
 import { SIGNAL_CATEGORIES } from '@shared/intelligence-signals';
+import PageLayout from '@/components/layout/PageLayout';
 
 export default function AIRadarDashboard() {
   const [, setLocation] = useLocation();
@@ -76,7 +77,7 @@ export default function AIRadarDashboard() {
   const currentCategory = SIGNAL_CATEGORIES[scanningCategory];
 
   return (
-    <>
+    <PageLayout>
       <div className="space-y-6 p-6">
         {/* Header */}
         <div className="flex items-center justify-between">
@@ -552,6 +553,6 @@ export default function AIRadarDashboard() {
           </Card>
         )}
       </div>
-    </>
+    </PageLayout>
   );
 }

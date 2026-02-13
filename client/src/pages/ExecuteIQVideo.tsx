@@ -14,6 +14,7 @@ import { IntegrationsDemo } from "@/components/video/IntegrationsDemo";
 import { CommandCenterDemo } from "@/components/video/CommandCenterDemo";
 import { MetricsDemo } from "@/components/video/MetricsDemo";
 import { Outro } from "@/components/video/Outro";
+import PageLayout from '@/components/layout/PageLayout';
 
 const SCENES = [
   { id: "intro", component: Intro, duration: 4000, label: "Hook" },
@@ -85,6 +86,7 @@ export default function ExecuteIQVideo() {
   const overallPercent = (overallProgress / totalDuration) * 100;
 
   return (
+    <PageLayout>
     <div className="min-h-screen bg-[#0a0a0f] text-white overflow-hidden">
       <div className="relative w-full h-screen">
         <AnimatePresence mode="wait">
@@ -224,5 +226,6 @@ export default function ExecuteIQVideo() {
         </div>
       </div>
     </div>
+    </PageLayout>
   );
 }

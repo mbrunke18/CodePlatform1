@@ -24,6 +24,7 @@ import {
   ArrowLeft,
   Home
 } from 'lucide-react';
+import PageLayout from '@/components/layout/PageLayout';
 
 export default function EchoCulturalAnalytics() {
   const [selectedAnalysis, setSelectedAnalysis] = useState('overview');
@@ -155,7 +156,7 @@ export default function EchoCulturalAnalytics() {
   };
 
   return (
-    <>
+    <PageLayout>
       <div className="page-background min-h-screen bg-transparent p-6" data-testid="echo-cultural-analytics">
         <div className="max-w-7xl mx-auto space-y-8">
           
@@ -414,6 +415,6 @@ export default function EchoCulturalAnalytics() {
           </Tabs>
         </div>
       </div>
-    </>
+    </PageLayout>
   );
 }

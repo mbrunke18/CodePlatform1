@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Brain, BookOpen, TrendingUp, Award, AlertCircle, CheckCircle } from 'lucide-react';
+import PageLayout from '@/components/layout/PageLayout';
 
 export default function InstitutionalMemory() {
   const { data: decisionOutcomesData, isLoading: outcomesLoading } = useQuery<any[]>({
@@ -32,7 +33,7 @@ export default function InstitutionalMemory() {
   };
 
   return (
-    <>
+    <PageLayout>
       <div className="space-y-6 p-6">
         {/* V2 Feature Banner */}
       <div className="bg-blue-50 dark:bg-blue-950/30 border-2 border-blue-300 dark:border-blue-700 rounded-lg p-4">
@@ -242,6 +243,6 @@ export default function InstitutionalMemory() {
         </TabsContent>
       </Tabs>
       </div>
-    </>
+    </PageLayout>
   );
 }

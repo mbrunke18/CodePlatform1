@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import PageLayout from '@/components/layout/PageLayout';
 import { useRoute, Link } from "wouter";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -161,12 +162,13 @@ export default function PlaybookActivationConsole() {
 
   // For manual executions, only wait for playbook. For trigger-based, wait for both.
   if (!playbook || (!isManualExecution && !trigger)) {
-    return <div className="p-6">Loading activation console...</div>;
+    return <PageLayout><div className="p-6">Loading activation console...</div></PageLayout>;
   }
 
   // Show Pre-Activation Impact Preview if not yet confirmed
   if (!activationConfirmed) {
     return (
+      <PageLayout>
       <div className="page-background min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         <div className="container mx-auto p-6 space-y-6 max-w-4xl">
           <div className="flex items-center justify-between mb-6">
@@ -217,10 +219,12 @@ export default function PlaybookActivationConsole() {
           />
         </div>
       </div>
+      </PageLayout>
     );
   }
 
   return (
+    <PageLayout>
     <div className="page-background min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="container mx-auto p-6 space-y-6">
         {/* Header */}
@@ -604,5 +608,6 @@ export default function PlaybookActivationConsole() {
         )}
       </div>
     </div>
+    </PageLayout>
   );
 }

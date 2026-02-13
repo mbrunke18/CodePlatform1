@@ -30,6 +30,7 @@ import { Link } from 'wouter';
 import { io, Socket } from 'socket.io-client';
 import { ROLE_OVERLAYS, INDUSTRY_OVERLAYS } from '@/data/activationPersonalization';
 import type { RoleOverlay, IndustryOverlay } from '@/data/activationPersonalization';
+import PageLayout from '@/components/layout/PageLayout';
 
 type StakeholderStatus = 'pending' | 'notifying' | 'notified' | 'acknowledged';
 type TaskStatus = 'pending' | 'in_progress' | 'completed';
@@ -542,6 +543,7 @@ export default function LiveActivationCenter() {
 
   if (!activationId) {
     return (
+      <PageLayout>
       <div className="min-h-screen bg-gray-950 text-white">
         <div className="max-w-6xl mx-auto px-6 py-10 md:py-16">
           <div className="mb-8">
@@ -712,6 +714,7 @@ export default function LiveActivationCenter() {
           </div>
         </div>
       </div>
+      </PageLayout>
     );
   }
 
@@ -723,6 +726,7 @@ export default function LiveActivationCenter() {
     const tier2Stakeholders = stakeholders.filter(s => s.tier === 2);
 
     return (
+      <PageLayout>
       <div className="min-h-screen bg-gray-950 text-white p-6 overflow-y-auto">
         <div className="max-w-4xl mx-auto py-8 md:py-12">
           <div className="text-center mb-10">
@@ -938,6 +942,7 @@ export default function LiveActivationCenter() {
           </div>
         </div>
       </div>
+      </PageLayout>
     );
   }
 
@@ -946,6 +951,7 @@ export default function LiveActivationCenter() {
   const followUpT = tasks.filter(t => t.phase === 'FOLLOW_UP');
 
   return (
+    <PageLayout>
     <div className="min-h-screen bg-gray-950 text-white">
       <div className="border-b border-gray-800 bg-gray-900/80 backdrop-blur-sm sticky top-0 z-30">
         <div className="max-w-[1800px] mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2">
@@ -1210,5 +1216,6 @@ export default function LiveActivationCenter() {
         </div>
       </div>
     </div>
+    </PageLayout>
   );
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PageLayout from '@/components/layout/PageLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -166,7 +167,7 @@ export default function NovaInnovations() {
   );
 
   return (
-    <>
+    <PageLayout>
       <div className="page-background min-h-screen bg-transparent p-6" data-testid="nova-innovations">
         <div className="max-w-7xl mx-auto space-y-8">
           
@@ -450,6 +451,6 @@ export default function NovaInnovations() {
           </Tabs>
         </div>
       </div>
-    </>
+    </PageLayout>
   );
 }

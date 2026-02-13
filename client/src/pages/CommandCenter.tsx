@@ -34,6 +34,7 @@ import {
   Wallet,
   Calendar
 } from 'lucide-react';
+import PageLayout from '@/components/layout/PageLayout';
 
 interface CoordinationEvent {
   id: string;
@@ -240,6 +241,7 @@ export default function CommandCenter() {
 
   if (isLoading) {
     return (
+      <PageLayout>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950 p-8">
         <div className="max-w-7xl mx-auto">
           <div className="animate-pulse space-y-4">
@@ -248,11 +250,12 @@ export default function CommandCenter() {
           </div>
         </div>
       </div>
+      </PageLayout>
     );
   }
 
   return (
-    <>
+    <PageLayout>
       {/* Confetti Celebration */}
       {showConfetti && (
         <ReactConfetti
@@ -908,6 +911,6 @@ export default function CommandCenter() {
           </CardContent>
         </Card>
       </div>
-    </>
+    </PageLayout>
   );
 }

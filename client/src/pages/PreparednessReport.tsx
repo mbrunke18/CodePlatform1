@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import PageLayout from '@/components/layout/PageLayout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -23,11 +24,11 @@ export default function PreparednessReport() {
 
   if (isLoading || !scoreData) {
     return (
-      <>
+      <PageLayout>
         <div className="p-6">
           <div className="animate-pulse">Loading preparedness report...</div>
         </div>
-      </>
+      </PageLayout>
     );
   }
 
@@ -35,7 +36,7 @@ export default function PreparednessReport() {
   const readinessMetrics = scoreData.readinessMetrics || {};
 
   return (
-    <>
+    <PageLayout>
       <div className="p-6 space-y-6" data-testid="preparedness-report-page">
         {/* Header */}
         <div className="flex items-center justify-between">
@@ -333,6 +334,6 @@ export default function PreparednessReport() {
           </TabsContent>
         </Tabs>
       </div>
-    </>
+    </PageLayout>
   );
 }

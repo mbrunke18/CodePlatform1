@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PageLayout from '@/components/layout/PageLayout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -334,7 +335,7 @@ export default function RealTimeCollaboration() {
   };
 
   return (
-    <>
+    <PageLayout>
       <div className="flex-1 page-background overflow-y-auto p-8 space-y-8">
         
         {/* Collaboration Header */}
@@ -757,6 +758,6 @@ export default function RealTimeCollaboration() {
           </TabsContent>
         </Tabs>
       </div>
-    </>
+    </PageLayout>
   );
 }

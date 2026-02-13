@@ -89,6 +89,8 @@ interface ComplianceReport {
   }[];
 }
 
+import PageLayout from '@/components/layout/PageLayout';
+
 export default function AuditLoggingCenter() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [auditLogs, setAuditLogs] = useState<AuditLog[]>([]);
@@ -309,7 +311,7 @@ export default function AuditLoggingCenter() {
   });
 
   return (
-    <>
+    <PageLayout>
       <div className="flex-1 page-background overflow-y-auto p-8 space-y-8">
         
         {/* Audit Logging Header */}
@@ -761,6 +763,6 @@ export default function AuditLoggingCenter() {
           </TabsContent>
         </Tabs>
       </div>
-    </>
+    </PageLayout>
   );
 }

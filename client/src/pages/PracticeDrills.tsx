@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PageLayout from '@/components/layout/PageLayout';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -166,11 +167,11 @@ export default function PracticeDrills() {
 
   if (drillsLoading) {
     return (
-      <>
+      <PageLayout>
         <div className="p-6">
           <div className="animate-pulse">Loading practice drills...</div>
         </div>
-      </>
+      </PageLayout>
     );
   }
 
@@ -188,7 +189,7 @@ export default function PracticeDrills() {
     : 0;
 
   return (
-    <>
+    <PageLayout>
       <div className="p-6 space-y-6" data-testid="practice-drills-page">
         {/* Header */}
         <div className="flex items-center justify-between">
@@ -591,6 +592,6 @@ export default function PracticeDrills() {
           </TabsContent>
         </Tabs>
       </div>
-    </>
+    </PageLayout>
   );
 }

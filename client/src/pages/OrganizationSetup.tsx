@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PageLayout from '@/components/layout/PageLayout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -383,7 +384,7 @@ export default function OrganizationSetup() {
   };
 
   return (
-    <>
+    <PageLayout>
       <div className="page-background min-h-screen bg-transparent p-6">
         <div className="max-w-7xl mx-auto space-y-8">
           
@@ -934,6 +935,6 @@ export default function OrganizationSetup() {
           
         </div>
       </div>
-    </>
+    </PageLayout>
   );
 }

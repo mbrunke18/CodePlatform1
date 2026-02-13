@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Radio, AlertTriangle, TrendingUp, Eye, Zap, Settings, Database, Grid3X3, Play, Target, Shield, Lightbulb, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { SignalControlCenter } from '@/components/intelligence/SignalControlCenter';
+import PageLayout from '@/components/layout/PageLayout';
 
 interface EnhancedWeakSignal {
   id: string;
@@ -154,7 +155,7 @@ export default function ForesightRadar() {
 
   if (isLoading) {
     return (
-      <>
+      <PageLayout>
         <div className="page-background min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950 p-8">
           <div className="max-w-7xl mx-auto">
             <div className="animate-pulse space-y-4">
@@ -163,12 +164,12 @@ export default function ForesightRadar() {
             </div>
           </div>
         </div>
-      </>
+      </PageLayout>
     );
   }
 
   return (
-    <>
+    <PageLayout>
       <div className="bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950 p-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header with Value Proposition */}
@@ -667,6 +668,6 @@ export default function ForesightRadar() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </>
+    </PageLayout>
   );
 }

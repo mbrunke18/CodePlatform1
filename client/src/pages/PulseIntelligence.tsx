@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PageLayout from '@/components/layout/PageLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -89,6 +90,7 @@ export default function PulseIntelligence() {
   };
 
   return (
+    <PageLayout>
     <div className="h-full bg-transparent p-4" data-testid="pulse-intelligence">
         <div className="w-full max-w-none mx-auto space-y-4 h-full overflow-hidden flex flex-col">
           
@@ -273,5 +275,6 @@ export default function PulseIntelligence() {
           </Tabs>
         </div>
     </div>
+    </PageLayout>
   );
 }
