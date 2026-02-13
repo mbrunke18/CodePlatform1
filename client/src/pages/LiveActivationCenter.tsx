@@ -28,6 +28,8 @@ import {
 } from 'lucide-react';
 import { Link } from 'wouter';
 import { io, Socket } from 'socket.io-client';
+import { ROLE_OVERLAYS, INDUSTRY_OVERLAYS } from '@/data/activationPersonalization';
+import type { RoleOverlay, IndustryOverlay } from '@/data/activationPersonalization';
 
 type StakeholderStatus = 'pending' | 'notifying' | 'notified' | 'acknowledged';
 type TaskStatus = 'pending' | 'in_progress' | 'completed';
@@ -230,31 +232,6 @@ function formatElapsed(seconds: number): string {
   return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
 }
 
-const ROLE_CONTEXT: Record<string, { label: string; perspective: string }> = {
-  ceo: { label: 'CEO', perspective: 'See how ExecuteIQ gives you real-time visibility into cross-functional coordination the moment a strategic decision is made.' },
-  cfo: { label: 'CFO', perspective: 'Watch budget allocation, financial system lockdowns, and stakeholder coordination happen automatically — protecting value from minute one.' },
-  coo: { label: 'COO', perspective: 'See operational coordination across every business unit unfold simultaneously — no more sequential handoffs.' },
-  cmo: { label: 'CMO', perspective: 'Watch market-facing communications, customer notifications, and brand protection execute in parallel.' },
-  cto: { label: 'CTO', perspective: 'See technology integration, systems access, and engineering coordination orchestrated with zero delay.' },
-  ciso: { label: 'CISO', perspective: 'Watch coordinated incident response — containment, legal, communications, and recovery executing simultaneously.' },
-  chro: { label: 'CHRO', perspective: 'See people-focused coordination: transition plans, retention strategies, and cultural integration activated instantly.' },
-  cdo: { label: 'CDO', perspective: 'Watch data governance, compliance verification, and cross-functional AI policy deployment coordinate in real-time.' },
-  gc: { label: 'General Counsel', perspective: 'See legal review, regulatory notifications, and compliance workflows execute alongside operational response.' },
-  cco: { label: 'CCO', perspective: 'Watch compliance frameworks, audit responses, and regulatory coordination deploy across the entire organization.' },
-  cso: { label: 'CSO', perspective: 'See strategic execution velocity — every initiative coordinated with pre-approved resources and aligned stakeholders.' },
-  cro: { label: 'CRO', perspective: 'Watch revenue-impacting coordination: customer notifications, sales enablement, and pipeline protection in real-time.' },
-};
-
-const INDUSTRY_CONTEXT: Record<string, { label: string; perspective: string }> = {
-  luxury: { label: 'Luxury Goods', perspective: 'See how a global luxury conglomerate coordinates 10+ brands across 15 cities simultaneously.' },
-  'fast-fashion': { label: 'Fast Fashion', perspective: 'Watch trend capitalization coordination — from detection to 200-SKU production in minutes, not weeks.' },
-  aerospace: { label: 'Aerospace', perspective: 'See launch schedule acceleration coordination across engineering, safety, and operations teams.' },
-  financial: { label: 'Financial Services', perspective: 'Watch coordinated breach response across security, legal, regulatory, and customer-facing teams.' },
-  pharma: { label: 'Pharmaceutical', perspective: 'See Class I recall coordination — regulatory notifications, supply chain halt, and patient safety in parallel.' },
-  manufacturing: { label: 'Manufacturing', perspective: 'Watch supplier crisis coordination: alternative sourcing, production rescheduling, and customer management.' },
-  retail: { label: 'Retail', perspective: 'See food safety coordination across 800+ stores, 23 states, and regulatory agencies simultaneously.' },
-  energy: { label: 'Energy & Utilities', perspective: 'Watch grid emergency coordination across substations, field crews, regulators, and public communications.' },
-};
 
 export default function LiveActivationCenter() {
   const params = new URLSearchParams(window.location.search);
@@ -263,10 +240,12 @@ export default function LiveActivationCenter() {
   const urlIndustry = params.get('industry');
 
   const initialPlaybook = (urlPlaybook && DEFAULT_PLAYBOOKS.some(p => p.key === urlPlaybook)) ? urlPlaybook : 'ma-day1';
-  const roleContext = urlRole ? ROLE_CONTEXT[urlRole.toLowerCase()] : null;
-  const industryContext = urlIndustry ? INDUSTRY_CONTEXT[urlIndustry.toLowerCase()] : null;
-  const contextLabel = roleContext?.label || industryContext?.label || null;
-  const contextPerspective = roleContext?.perspective || industryContext?.perspective || null;
+  const roleOverlay: RoleOverlay | null = urlRole ? ROLE_OVERLAYS[urlRole.toLowerCase()] || null : null;
+  const industryOverlay: IndustryOverlay | null = urlIndustry ? INDUSTRY_OVERLAYS[urlIndustry.toLowerCase()] || null : null;
+  const contextLabel = roleOverlay?.label || industryOverlay?.label || null;
+  const contextPerspective = roleOverlay?.perspective || industryOverlay?.perspective || null;
+  const activeKpis = industryOverlay?.kpis || roleOverlay?.kpis || null;
+  const highlightedTaskIds = roleOverlay?.highlightedTaskIds || [];
 
   const [selectedPlaybook, setSelectedPlaybook] = useState<string>(initialPlaybook);
   const [activationId, setActivationId] = useState<string | null>(null);
@@ -333,8 +312,10 @@ export default function LiveActivationCenter() {
     startTimeRef.current = Date.now();
 
     const playbookKey = selectedPlaybook;
-    const initialStakeholders = (DEFAULT_STAKEHOLDERS[playbookKey] || DEFAULT_STAKEHOLDERS['ma-day1']).map(s => ({ ...s, status: 'pending' as StakeholderStatus }));
-    const initialTasks = (DEFAULT_TASKS[playbookKey] || DEFAULT_TASKS['ma-day1']).map(t => ({ ...t, status: 'pending' as TaskStatus }));
+    const industryStakeholders = industryOverlay?.stakeholders?.[playbookKey];
+    const industryTasks = industryOverlay?.tasks?.[playbookKey];
+    const initialStakeholders = (industryStakeholders || DEFAULT_STAKEHOLDERS[playbookKey] || DEFAULT_STAKEHOLDERS['ma-day1']).map(s => ({ ...s, status: 'pending' as StakeholderStatus }));
+    const initialTasks = (industryTasks || DEFAULT_TASKS[playbookKey] || DEFAULT_TASKS['ma-day1']).map(t => ({ ...t, status: 'pending' as TaskStatus }));
 
     setStakeholders(initialStakeholders);
     setTasks(initialTasks);
@@ -375,7 +356,7 @@ export default function LiveActivationCenter() {
     });
 
     runClientSimulation(initialStakeholders, initialTasks, playbookKey);
-  }, [selectedPlaybook, addActivity]);
+  }, [selectedPlaybook, addActivity, industryOverlay]);
 
   const runClientSimulation = useCallback((initStakeholders: Stakeholder[], initTasks: Task[], playbookKey: string) => {
     simulationRef.current.forEach(t => clearTimeout(t));
@@ -514,15 +495,52 @@ export default function LiveActivationCenter() {
               <ArrowLeft className="w-4 h-4" /> Back to ExecuteIQ
             </Link>
           </div>
-          {contextLabel && contextPerspective && (
-            <div className="mb-8 p-4 rounded-xl border border-emerald-500/20 bg-emerald-500/5">
-              <div className="flex items-center gap-2 mb-1">
-                <Target className="w-4 h-4 text-emerald-400" />
-                <span className="text-sm font-semibold text-emerald-400">
-                  {urlRole ? `${contextLabel} Perspective` : `${contextLabel} Industry`}
-                </span>
+          {(roleOverlay || industryOverlay) && (
+            <div className="mb-8 rounded-xl border border-emerald-500/20 bg-emerald-500/5 overflow-hidden">
+              <div className="p-4 pb-3">
+                <div className="flex items-center gap-2 mb-1">
+                  <Target className="w-4 h-4 text-emerald-400" />
+                  <span className="text-sm font-semibold text-emerald-400">
+                    {roleOverlay ? `${contextLabel} Perspective` : `${contextLabel} Industry`}
+                  </span>
+                </div>
+                <p className="text-sm text-gray-300">{contextPerspective}</p>
               </div>
-              <p className="text-sm text-gray-300">{contextPerspective}</p>
+
+              {industryOverlay && (
+                <div className="px-4 pb-3 border-t border-emerald-500/10 pt-3">
+                  <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-2">Scenario</div>
+                  <div className="text-sm font-medium text-white mb-1">{industryOverlay.scenario}</div>
+                  <div className="text-xs text-gray-400">{industryOverlay.organization}</div>
+                </div>
+              )}
+
+              {roleOverlay && (
+                <div className="px-4 pb-3 border-t border-emerald-500/10 pt-3">
+                  <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-2">Your Priority Actions</div>
+                  <div className="space-y-1">
+                    {roleOverlay.yourActions.map((action, i) => (
+                      <div key={i} className="flex items-center gap-2 text-xs text-gray-300">
+                        <CheckCircle2 className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                        {action}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {activeKpis && (
+                <div className="px-4 pb-4 border-t border-emerald-500/10 pt-3">
+                  <div className="grid grid-cols-3 gap-3">
+                    {activeKpis.map((kpi, i) => (
+                      <div key={i} className="text-center">
+                        <div className={cn('text-sm font-bold', kpi.color)}>{kpi.value}</div>
+                        <div className="text-[10px] text-gray-500">{kpi.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
           <div className="text-center mb-12 md:mb-16">
@@ -624,6 +642,16 @@ export default function LiveActivationCenter() {
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-3">Coordination Complete</h1>
             <p className="text-gray-400 mb-4 text-lg">All stakeholders aligned and tasks executed successfully.</p>
+            {industryOverlay && (
+              <div className="mb-4 text-sm text-gray-400">
+                <span className="text-white font-medium">{industryOverlay.scenario}</span> — {industryOverlay.organization}
+              </div>
+            )}
+            {roleOverlay && (
+              <div className="mb-4 text-sm text-gray-400">
+                Viewed as <span className="text-white font-medium">{roleOverlay.label}</span>
+              </div>
+            )}
             <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-lg px-4 py-2">
               <Zap className="w-4 h-4 text-emerald-400" />
               <span className="text-sm text-emerald-400 font-medium">Full coordination in under 12 minutes — vs. 3-6 weeks traditional</span>
@@ -716,21 +744,46 @@ export default function LiveActivationCenter() {
                   ))}
                 </div>
 
-                <h3 className="text-xs font-bold tracking-wider text-gray-500 mb-3 uppercase">Impact vs. Traditional</h3>
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400 flex items-center gap-1"><TrendingUp className="w-3.5 h-3.5 text-emerald-400" /> Time Saved</span>
-                    <span className="text-emerald-400 font-semibold">3-6 weeks → 12 min</span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400 flex items-center gap-1"><BarChart3 className="w-3.5 h-3.5 text-blue-400" /> Cost Reduction</span>
-                    <span className="text-blue-400 font-semibold">~85% lower</span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400 flex items-center gap-1"><Users className="w-3.5 h-3.5 text-purple-400" /> Coordination</span>
-                    <span className="text-purple-400 font-semibold">100% simultaneous</span>
-                  </div>
-                </div>
+                {(() => {
+                  const metrics = industryOverlay?.completionMetrics || roleOverlay?.completionMetrics || null;
+                  return metrics ? (
+                    <>
+                      <h3 className="text-xs font-bold tracking-wider text-gray-500 mb-3 uppercase">
+                        {roleOverlay ? `${roleOverlay.label} Impact` : industryOverlay ? `${industryOverlay.label} Impact` : 'Impact'} vs. Traditional
+                      </h3>
+                      <div className="space-y-3">
+                        {metrics.map((m, i) => (
+                          <div key={i} className="space-y-1">
+                            <div className="text-xs font-medium text-gray-400">{m.label}</div>
+                            <div className="flex items-center gap-2 text-sm">
+                              <span className="text-red-400/70 line-through text-xs">{m.before}</span>
+                              <ArrowRight className="w-3 h-3 text-gray-600 flex-shrink-0" />
+                              <span className="text-emerald-400 font-semibold text-xs">{m.after}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <h3 className="text-xs font-bold tracking-wider text-gray-500 mb-3 uppercase">Impact vs. Traditional</h3>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="text-gray-400 flex items-center gap-1"><TrendingUp className="w-3.5 h-3.5 text-emerald-400" /> Time Saved</span>
+                          <span className="text-emerald-400 font-semibold">3-6 weeks → 12 min</span>
+                        </div>
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="text-gray-400 flex items-center gap-1"><BarChart3 className="w-3.5 h-3.5 text-blue-400" /> Cost Reduction</span>
+                          <span className="text-blue-400 font-semibold">~85% lower</span>
+                        </div>
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="text-gray-400 flex items-center gap-1"><Users className="w-3.5 h-3.5 text-purple-400" /> Coordination</span>
+                          <span className="text-purple-400 font-semibold">100% simultaneous</span>
+                        </div>
+                      </div>
+                    </>
+                  );
+                })()}
               </div>
             </div>
           </div>
@@ -797,6 +850,24 @@ export default function LiveActivationCenter() {
           </div>
         </div>
       </div>
+
+      {activeKpis && (
+        <div className="border-b border-gray-800 bg-gray-900/50">
+          <div className="max-w-[1800px] mx-auto px-4 py-2 flex items-center justify-center gap-6 md:gap-10">
+            {contextLabel && (
+              <span className="text-xs font-semibold text-emerald-400 hidden sm:inline">
+                {roleOverlay ? `${contextLabel} View` : `${contextLabel}`}
+              </span>
+            )}
+            {activeKpis.map((kpi, i) => (
+              <div key={i} className="flex items-center gap-1.5 text-xs">
+                <span className="text-gray-500">{kpi.label}:</span>
+                <span className={cn('font-semibold', kpi.color)}>{kpi.value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="max-w-[1800px] mx-auto p-3 md:p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
         <div className="lg:col-span-1 space-y-3">
@@ -885,9 +956,12 @@ export default function LiveActivationCenter() {
                   <div key={group.label}>
                     <div className="text-[10px] font-bold tracking-widest text-gray-600 mb-2 uppercase">{group.label}</div>
                     <div className="space-y-1.5">
-                      {group.items.map(task => (
+                      {group.items.map(task => {
+                        const isYourTask = highlightedTaskIds.includes(task.id);
+                        return (
                         <div key={task.id} className={cn(
                           'flex items-center gap-2.5 p-2 rounded-lg transition-all duration-300',
+                          isYourTask && task.status !== 'completed' ? 'ring-1 ring-amber-500/30 bg-amber-500/5' :
                           task.status === 'completed' ? 'bg-emerald-500/5' :
                           task.status === 'in_progress' ? 'bg-blue-500/5' : 'bg-gray-800/30'
                         )}>
@@ -895,17 +969,23 @@ export default function LiveActivationCenter() {
                           {task.status === 'in_progress' && <Loader2 className="w-4 h-4 text-blue-400 animate-spin flex-shrink-0" />}
                           {task.status === 'completed' && <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />}
                           <div className="flex-1 min-w-0">
-                            <div className={cn(
-                              'text-sm truncate',
-                              task.status === 'completed' ? 'text-gray-400' :
-                              task.status === 'in_progress' ? 'text-white' : 'text-gray-500'
-                            )}>{task.name}</div>
+                            <div className="flex items-center gap-1.5">
+                              <span className={cn(
+                                'text-sm truncate',
+                                task.status === 'completed' ? 'text-gray-400' :
+                                task.status === 'in_progress' ? 'text-white' : 'text-gray-500'
+                              )}>{task.name}</span>
+                              {isYourTask && (
+                                <Badge className="text-[8px] px-1 py-0 bg-amber-500/20 text-amber-400 border-0 flex-shrink-0">YOU</Badge>
+                              )}
+                            </div>
                           </div>
                           <Badge variant="outline" className="text-[10px] px-1.5 py-0 border-gray-700 text-gray-600 flex-shrink-0">
                             {task.owner}
                           </Badge>
                         </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 )
