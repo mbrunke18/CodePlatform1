@@ -36,6 +36,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
+import { Progress } from "@/components/ui/progress";
 import {
   Plus,
   Search,
@@ -58,6 +59,8 @@ import {
   Zap,
   Target,
   BookOpen,
+  Loader2,
+  Activity,
 } from "lucide-react";
 
 import { 
@@ -155,7 +158,17 @@ export default function TaskManagement() {
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<"playbook" | "library">("playbook");
+  const [activeTab, setActiveTab] = useState<"playbook" | "library" | "sequences">("playbook");
+  
+  interface SequenceSummary {
+    domainName: string;
+    playbookCount: string;
+    taskCount: string;
+  }
+  
+  const { data: sequenceSummary, isLoading: sequencesLoading } = useQuery<SequenceSummary[]>({
+    queryKey: ['/api/playbook-task-sequences/summary'],
+  });
   
   // Library filters
   const [librarySearch, setLibrarySearch] = useState("");
@@ -435,8 +448,8 @@ export default function TaskManagement() {
           </Card>
         </div>
 
-        <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "playbook" | "library")} className="mb-6">
-          <TabsList className="grid w-full max-w-md grid-cols-2">
+        <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "playbook" | "library" | "sequences")} className="mb-6">
+          <TabsList className="grid w-full max-w-2xl grid-cols-3">
             <TabsTrigger value="playbook" className="flex items-center gap-2" data-testid="tab-playbook-tasks">
               <ListChecks className="h-4 w-4" />
               Playbook Tasks ({tasks.length})
@@ -444,6 +457,10 @@ export default function TaskManagement() {
             <TabsTrigger value="library" className="flex items-center gap-2" data-testid="tab-task-library">
               <Library className="h-4 w-4" />
               Task Library ({libraryStats.total})
+            </TabsTrigger>
+            <TabsTrigger value="sequences" className="flex items-center gap-2" data-testid="tab-execution-sequences">
+              <Activity className="h-4 w-4" />
+              Execution Sequences
             </TabsTrigger>
           </TabsList>
           
@@ -739,6 +756,121 @@ export default function TaskManagement() {
                 </Card>
               )}
             </div>
+          </TabsContent>
+          
+          <TabsContent value="sequences" className="mt-6">
+            {sequencesLoading ? (
+              <Card>
+                <CardContent className="py-16 text-center">
+                  <Loader2 className="h-8 w-8 mx-auto mb-4 text-purple-500 animate-spin" />
+                  <p className="text-slate-500">Loading execution sequences...</p>
+                </CardContent>
+              </Card>
+            ) : (
+              <div className="space-y-6">
+                <Card className="bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-950/40 dark:to-indigo-950/40 border-purple-200 dark:border-purple-800">
+                  <CardContent className="p-6">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                      <div>
+                        <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                          <Activity className="h-5 w-5 text-purple-600" />
+                          Playbook Execution Sequences
+                        </h2>
+                        <p className="text-slate-600 dark:text-slate-300 mt-1">
+                          Real task sequences from the database across all strategic domains
+                        </p>
+                      </div>
+                      <div className="flex gap-4">
+                        <div className="text-center px-4 py-2 bg-white dark:bg-slate-900 rounded-lg border">
+                          <p className="text-2xl font-bold text-purple-600">
+                            {sequenceSummary?.reduce((sum, d) => sum + parseInt(d.playbookCount), 0)?.toLocaleString() ?? '0'}
+                          </p>
+                          <p className="text-xs text-slate-500">Total Playbooks</p>
+                        </div>
+                        <div className="text-center px-4 py-2 bg-white dark:bg-slate-900 rounded-lg border">
+                          <p className="text-2xl font-bold text-indigo-600">
+                            {sequenceSummary?.reduce((sum, d) => sum + parseInt(d.taskCount), 0)?.toLocaleString() ?? '0'}
+                          </p>
+                          <p className="text-xs text-slate-500">Total Task Sequences</p>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {sequenceSummary?.map((domain) => {
+                    const playbookCount = parseInt(domain.playbookCount);
+                    const taskCount = parseInt(domain.taskCount);
+                    const coverage = Math.min(100, Math.round((taskCount / (playbookCount * 8)) * 100));
+                    
+                    const isDefense = /regulatory|brand|compliance|legal/i.test(domain.domainName);
+                    const isOffense = /market|growth|revenue|sales/i.test(domain.domainName);
+                    const DomainIcon = isDefense ? Shield : isOffense ? Target : Zap;
+                    const iconColor = isDefense ? "text-blue-600" : isOffense ? "text-orange-600" : "text-purple-600";
+                    const iconBg = isDefense ? "bg-blue-100 dark:bg-blue-900/30" : isOffense ? "bg-orange-100 dark:bg-orange-900/30" : "bg-purple-100 dark:bg-purple-900/30";
+                    const progressColor = coverage >= 80 ? "bg-green-500" : coverage >= 50 ? "bg-yellow-500" : "bg-red-500";
+                    
+                    return (
+                      <Card key={domain.domainName} className="hover:shadow-md transition-shadow">
+                        <CardHeader className="pb-3">
+                          <div className="flex items-start justify-between">
+                            <div className="flex items-center gap-3">
+                              <div className={`p-2 rounded-lg ${iconBg}`}>
+                                <DomainIcon className={`h-5 w-5 ${iconColor}`} />
+                              </div>
+                              <div>
+                                <CardTitle className="text-base">{domain.domainName}</CardTitle>
+                                <CardDescription className="text-xs mt-0.5">
+                                  {isDefense ? "Defense" : isOffense ? "Offense" : "Special Teams"}
+                                </CardDescription>
+                              </div>
+                            </div>
+                            <Badge variant="outline" className="text-xs">
+                              {coverage}%
+                            </Badge>
+                          </div>
+                        </CardHeader>
+                        <CardContent className="pt-0 space-y-3">
+                          <div className="flex justify-between text-sm">
+                            <span className="text-slate-500 flex items-center gap-1">
+                              <BookOpen className="h-3.5 w-3.5" />
+                              {playbookCount} playbooks
+                            </span>
+                            <span className="text-slate-500 flex items-center gap-1">
+                              <ListChecks className="h-3.5 w-3.5" />
+                              {taskCount} tasks
+                            </span>
+                          </div>
+                          <div>
+                            <div className="flex justify-between text-xs text-slate-400 mb-1">
+                              <span>Task Coverage</span>
+                              <span>{taskCount} / {playbookCount * 8}</span>
+                            </div>
+                            <div className="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                              <div
+                                className={`h-full rounded-full transition-all ${progressColor}`}
+                                style={{ width: `${coverage}%` }}
+                              />
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
+                </div>
+                
+                {(!sequenceSummary || sequenceSummary.length === 0) && (
+                  <Card>
+                    <CardContent className="py-12 text-center">
+                      <Activity className="h-12 w-12 mx-auto mb-4 text-slate-300" />
+                      <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">No Execution Sequences</h3>
+                      <p className="text-slate-500">No playbook task sequences found in the database.</p>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
+            )}
           </TabsContent>
         </Tabs>
 

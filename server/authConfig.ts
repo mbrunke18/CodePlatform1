@@ -99,6 +99,14 @@ export const PUBLIC_ROUTES = [
   '/api/integrations/enterprise/:organizationId',
   '/api/integrations/enterprise/connect',
   
+  // Playbook Task Sequences & Activations - demo access
+  '/api/playbook-task-sequences',
+  '/api/playbook-task-sequences/summary',
+  '/api/playbook-activations',
+  '/api/intelligence-reports',
+  '/api/war-room/sessions',
+  '/api/war-room/sessions/:sessionId',
+  
   // Institutional Memory - demo access for learning dashboard
   '/api/decision-outcomes',
   '/api/decision-outcomes/:organizationId',

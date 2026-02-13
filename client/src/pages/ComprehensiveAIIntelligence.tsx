@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Skeleton } from '@/components/ui/skeleton';
 import PageLayout from '@/components/layout/PageLayout';
 import { Link } from 'wouter';
 import { 
@@ -30,7 +32,9 @@ import {
   RefreshCw,
   Download,
   Share,
-  Filter
+  Filter,
+  Database,
+  FileText
 } from 'lucide-react';
 
 interface AIModule {
@@ -64,9 +68,39 @@ interface IntelligenceReport {
   confidence: number;
 }
 
+interface DatabaseIntelligenceReport {
+  id: string;
+  organizationId: string;
+  reportType: 'market_analysis' | 'competitive_intelligence' | 'risk_assessment' | 'regulatory_update' | 'technology_trends';
+  title: string;
+  executiveSummary: string;
+  findings: any[];
+  recommendations: any;
+  confidence: number;
+}
+
+const getReportTypeBadgeColor = (reportType: string) => {
+  switch (reportType) {
+    case 'market_analysis': return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
+    case 'competitive_intelligence': return 'bg-purple-500/20 text-purple-300 border-purple-500/30';
+    case 'risk_assessment': return 'bg-red-500/20 text-red-300 border-red-500/30';
+    case 'regulatory_update': return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
+    case 'technology_trends': return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
+    default: return 'bg-slate-500/20 text-slate-300 border-slate-500/30';
+  }
+};
+
+const formatReportType = (reportType: string) => {
+  return reportType.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+};
+
 export default function ComprehensiveAIIntelligence() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [aiModules, setAIModules] = useState<AIModule[]>([]);
+
+  const { data: dbReports, isLoading: dbReportsLoading } = useQuery<DatabaseIntelligenceReport[]>({
+    queryKey: ['/api/intelligence-reports'],
+  });
   const [intelligenceReports, setIntelligenceReports] = useState<IntelligenceReport[]>([]);
   const [systemMetrics, setSystemMetrics] = useState({
     totalProcessingPower: 94.7,
@@ -639,6 +673,76 @@ export default function ComprehensiveAIIntelligence() {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+
+            {/* Intelligence Reports from Database */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <Database className="h-5 w-5 text-blue-400" />
+                <h2 className="text-xl font-semibold text-white">Intelligence Reports from Database</h2>
+              </div>
+
+              {dbReportsLoading ? (
+                <div className="space-y-4">
+                  {[1, 2, 3].map((i) => (
+                    <Card key={i} className="bg-slate-900/50 border-slate-700/50">
+                      <CardContent className="p-6 space-y-4">
+                        <div className="flex items-center gap-3">
+                          <Skeleton className="h-6 w-48" />
+                          <Skeleton className="h-5 w-24" />
+                        </div>
+                        <Skeleton className="h-4 w-full" />
+                        <Skeleton className="h-4 w-3/4" />
+                        <div className="flex items-center gap-4">
+                          <Skeleton className="h-3 w-32" />
+                          <Skeleton className="h-3 w-24" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              ) : dbReports && dbReports.length > 0 ? (
+                <div className="space-y-4">
+                  {dbReports.map((report) => (
+                    <Card key={report.id} className="bg-slate-900/50 border-slate-700/50">
+                      <CardHeader>
+                        <div className="flex items-center justify-between">
+                          <CardTitle className="text-white flex items-center gap-3">
+                            <FileText className="h-5 w-5 text-blue-400" />
+                            {report.title}
+                          </CardTitle>
+                          <Badge className={getReportTypeBadgeColor(report.reportType)}>
+                            {formatReportType(report.reportType)}
+                          </Badge>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <p className="text-slate-300 text-sm">{report.executiveSummary}</p>
+
+                        <div className="flex items-center gap-6">
+                          <div className="flex-1">
+                            <div className="flex items-center justify-between mb-1">
+                              <span className="text-xs text-slate-400">Confidence</span>
+                              <span className="text-xs font-medium text-white">{Math.round(report.confidence * 100)}%</span>
+                            </div>
+                            <Progress value={report.confidence * 100} className="h-2" />
+                          </div>
+                          <div className="text-sm text-slate-400">
+                            <span className="font-medium text-white">{Array.isArray(report.findings) ? report.findings.length : 0}</span> findings
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              ) : (
+                <Card className="bg-slate-900/50 border-slate-700/50">
+                  <CardContent className="p-8 text-center">
+                    <Database className="h-12 w-12 mx-auto mb-3 text-slate-500" />
+                    <p className="text-slate-400">No intelligence reports found in the database.</p>
+                  </CardContent>
+                </Card>
+              )}
             </div>
           </TabsContent>
 

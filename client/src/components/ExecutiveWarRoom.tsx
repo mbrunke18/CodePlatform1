@@ -34,25 +34,24 @@ import { apiRequest } from '@/lib/queryClient';
 interface WarRoomSession {
   id: string;
   organizationId: string;
+  crisisId?: string;
   scenarioId?: string;
-  name: string;
-  description: string;
-  status: 'active' | 'standby' | 'closed';
-  priority: 'low' | 'medium' | 'high' | 'critical';
-  sessionType: 'crisis' | 'opportunity' | 'strategic_planning' | 'risk_mitigation';
-  leadExecutive: string;
-  participants: string[];
+  sessionName: string;
+  commanderId: string;
+  status: 'active' | 'completed';
   startTime: string;
-  expectedDuration?: number;
-  objectives: string[];
-  currentPhase: string;
-  nextActions: string[];
-  resources: any;
-  decisionLog: any[];
-  communicationPlan: any;
-  escalationProtocol: any;
+  endTime?: string;
+  participants: any[];
+  objectives: any[];
+  actionItems: any[];
+  decisions: any[];
+  executionTimeMinutes?: number;
+  executiveHourlyRate?: number;
+  stakeholdersNotified?: number;
+  businessImpact?: any;
+  outcome?: string;
   createdAt: string;
-  lastUpdated: string;
+  updatedAt: string;
 }
 
 interface ExecutiveBriefing {
@@ -117,21 +116,29 @@ export function ExecutiveWarRoom() {
   const [selectedSession, setSelectedSession] = useState<string | null>(null);
   const [newSessionForm, setNewSessionForm] = useState(false);
   const [sessionData, setSessionData] = useState({
-    name: '',
-    description: '',
-    sessionType: 'crisis' as const,
-    priority: 'medium' as const,
-    leadExecutive: '',
+    sessionName: '',
+    commanderId: '',
     objectives: ['']
   });
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
+  // Fetch organization for session creation
+  const { data: orgs = [] } = useQuery({
+    queryKey: ['/api/organizations'],
+    queryFn: async () => {
+      const response = await fetch('/api/organizations');
+      if (!response.ok) return [];
+      return response.json();
+    }
+  });
+  const orgId = orgs?.[0]?.id || '';
+
   // Fetch War Room Sessions
   const { data: sessions = [], isLoading: sessionsLoading } = useQuery({
-    queryKey: ['/api/strategic/war-room/sessions'],
+    queryKey: ['/api/war-room/sessions'],
     queryFn: async () => {
-      const response = await fetch('/api/strategic/war-room/sessions');
+      const response = await fetch('/api/war-room/sessions');
       if (!response.ok) return [];
       return response.json();
     }
@@ -170,7 +177,7 @@ export function ExecutiveWarRoom() {
   // Create War Room Session
   const createSessionMutation = useMutation({
     mutationFn: async (data: any) => {
-      const response = await fetch('/api/strategic/war-room/sessions', {
+      const response = await fetch('/api/war-room/sessions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -179,14 +186,11 @@ export function ExecutiveWarRoom() {
       return response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['/api/strategic/war-room/sessions'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/war-room/sessions'] });
       setNewSessionForm(false);
       setSessionData({
-        name: '',
-        description: '',
-        sessionType: 'crisis',
-        priority: 'medium',
-        leadExecutive: '',
+        sessionName: '',
+        commanderId: '',
         objectives: ['']
       });
       toast({
@@ -217,7 +221,7 @@ export function ExecutiveWarRoom() {
   });
 
   const handleCreateSession = () => {
-    if (!sessionData.name || !sessionData.leadExecutive) {
+    if (!sessionData.sessionName || !sessionData.commanderId) {
       toast({
         title: 'Validation Error',
         description: 'Please fill in all required fields.',
@@ -226,16 +230,20 @@ export function ExecutiveWarRoom() {
       return;
     }
 
+    if (!orgId) {
+      toast({ title: 'Error', description: 'No organization found. Please set up your organization first.', variant: 'destructive' });
+      return;
+    }
     createSessionMutation.mutate({
-      organizationId: 'default-org',
-      ...sessionData,
-      participants: [sessionData.leadExecutive],
-      currentPhase: 'initialization',
-      nextActions: sessionData.objectives,
-      resources: {},
-      decisionLog: [],
-      communicationPlan: {},
-      escalationProtocol: {}
+      organizationId: orgId,
+      sessionName: sessionData.sessionName,
+      commanderId: sessionData.commanderId,
+      status: 'active',
+      startTime: new Date().toISOString(),
+      participants: [sessionData.commanderId],
+      objectives: sessionData.objectives.filter(o => o.trim()),
+      actionItems: [],
+      decisions: []
     });
   };
 
@@ -252,8 +260,7 @@ export function ExecutiveWarRoom() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'active': return 'bg-green-500';
-      case 'standby': return 'bg-yellow-500';
-      case 'closed': return 'bg-gray-500';
+      case 'completed': return 'bg-gray-500';
       case 'new': return 'bg-blue-500';
       case 'acknowledged': return 'bg-orange-500';
       case 'resolved': return 'bg-green-500';
@@ -391,19 +398,15 @@ export function ExecutiveWarRoom() {
                         <div className="flex items-start justify-between mb-3">
                           <div className="flex-1">
                             <div className="flex items-center space-x-2 mb-2">
-                              <h4 className="font-semibold text-lg">{session.name}</h4>
-                              <Badge className={`${getPriorityColor(session.priority)} text-white`}>
-                                {session.priority.toUpperCase()}
-                              </Badge>
+                              <h4 className="font-semibold text-lg">{session.sessionName}</h4>
                               <Badge className={`${getStatusColor(session.status)} text-white`}>
                                 {session.status.toUpperCase()}
                               </Badge>
                             </div>
-                            <p className="text-gray-600 dark:text-gray-400 mb-2">{session.description}</p>
                             <div className="flex items-center space-x-4 text-sm text-gray-500">
                               <div className="flex items-center">
                                 <Users className="h-4 w-4 mr-1" />
-                                Lead: {session.leadExecutive}
+                                Commander: {session.commanderId}
                               </div>
                               <div className="flex items-center">
                                 <Clock className="h-4 w-4 mr-1" />
@@ -415,16 +418,16 @@ export function ExecutiveWarRoom() {
                         
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                           <div>
-                            <p className="text-xs text-gray-500 mb-1">Current Phase</p>
-                            <p className="font-medium">{session.currentPhase}</p>
+                            <p className="text-xs text-gray-500 mb-1">Objectives</p>
+                            <p className="font-medium">{Array.isArray(session.objectives) ? session.objectives.length : 0} defined</p>
                           </div>
                           <div>
-                            <p className="text-xs text-gray-500 mb-1">Session Type</p>
-                            <p className="font-medium capitalize">{session.sessionType.replace('_', ' ')}</p>
+                            <p className="text-xs text-gray-500 mb-1">Decisions</p>
+                            <p className="font-medium">{Array.isArray(session.decisions) ? session.decisions.length : 0} made</p>
                           </div>
                           <div>
                             <p className="text-xs text-gray-500 mb-1">Participants</p>
-                            <p className="font-medium">{session.participants.length} members</p>
+                            <p className="font-medium">{Array.isArray(session.participants) ? session.participants.length : 0} members</p>
                           </div>
                         </div>
                       </CardContent>
@@ -780,68 +783,20 @@ export function ExecutiveWarRoom() {
               <div>
                 <label className="block text-sm font-medium mb-1">Session Name *</label>
                 <Input
-                  value={sessionData.name}
-                  onChange={(e) => setSessionData({...sessionData, name: e.target.value})}
+                  value={sessionData.sessionName}
+                  onChange={(e) => setSessionData({...sessionData, sessionName: e.target.value})}
                   placeholder="e.g., Q2 Market Disruption Response"
                   data-testid="input-session-name"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">Description</label>
-                <Textarea
-                  value={sessionData.description}
-                  onChange={(e) => setSessionData({...sessionData, description: e.target.value})}
-                  placeholder="Brief description of the strategic situation..."
-                  rows={3}
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium mb-1">Session Type</label>
-                  <Select
-                    value={sessionData.sessionType}
-                    onValueChange={(value: any) => setSessionData({...sessionData, sessionType: value})}
-                  >
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="crisis">Crisis Response</SelectItem>
-                      <SelectItem value="opportunity">Strategic Opportunity</SelectItem>
-                      <SelectItem value="strategic_planning">Strategic Planning</SelectItem>
-                      <SelectItem value="risk_mitigation">Risk Mitigation</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-1">Priority Level</label>
-                  <Select
-                    value={sessionData.priority}
-                    onValueChange={(value: any) => setSessionData({...sessionData, priority: value})}
-                  >
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="low">Low</SelectItem>
-                      <SelectItem value="medium">Medium</SelectItem>
-                      <SelectItem value="high">High</SelectItem>
-                      <SelectItem value="critical">Critical</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-1">Lead Executive *</label>
+                <label className="block text-sm font-medium mb-1">Commander/Lead *</label>
                 <Input
-                  value={sessionData.leadExecutive}
-                  onChange={(e) => setSessionData({...sessionData, leadExecutive: e.target.value})}
+                  value={sessionData.commanderId}
+                  onChange={(e) => setSessionData({...sessionData, commanderId: e.target.value})}
                   placeholder="Executive leading this session"
-                  data-testid="input-lead-executive"
+                  data-testid="input-commander"
                 />
               </div>
 

@@ -56,7 +56,9 @@ import {
   scenarioExecutionPlans,
   scenarioStakeholders,
   notifications,
-  tasks
+  tasks,
+  playbookActivations,
+  intelligenceReports
 } from "@shared/schema";
 import { eq, desc, sql, like, and, asc, count } from 'drizzle-orm';
 import { db } from './db';
@@ -2625,6 +2627,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error creating intelligence report:", error);
       res.status(500).json({ message: "Failed to create intelligence report" });
+    }
+  });
+
+  app.get('/api/intelligence-reports', async (req: any, res) => {
+    try {
+      const result = await db.select().from(intelligenceReports).orderBy(desc(intelligenceReports.id));
+      res.json(result);
+    } catch (error) {
+      console.error("Error fetching all intelligence reports:", error);
+      res.status(500).json({ message: "Failed to fetch intelligence reports" });
     }
   });
 
@@ -6014,6 +6026,80 @@ SUCCESS METRICS:
   console.log('   → /api/webhooks/aws/cloudwatch - AWS CloudWatch');
   console.log('   → /api/webhooks/workday - Workday HCM');
   console.log('   → /api/webhooks/okta - Okta Identity');
+
+  // Playbook Task Sequences API
+  app.get('/api/playbook-task-sequences', async (req: any, res) => {
+    try {
+      const { playbookId, domain } = req.query;
+      const result = await db.select({
+        id: playbookTaskSequences.id,
+        playbookId: playbookTaskSequences.playbookId,
+        taskName: playbookTaskSequences.taskName,
+        taskDescription: playbookTaskSequences.taskDescription,
+        timing: playbookTaskSequences.timing,
+        timelinePhase: playbookTaskSequences.timelinePhase,
+        taskOwner: playbookTaskSequences.taskOwner,
+        dependencies: playbookTaskSequences.dependencies,
+        sequence: playbookTaskSequences.sequence,
+        isRequired: playbookTaskSequences.isRequired,
+        playbookName: playbookLibrary.name,
+        domainName: playbookDomains.name,
+        strategicCategory: playbookLibrary.strategicCategory,
+      })
+      .from(playbookTaskSequences)
+      .innerJoin(playbookLibrary, eq(playbookTaskSequences.playbookId, playbookLibrary.id))
+      .innerJoin(playbookDomains, eq(playbookLibrary.domainId, playbookDomains.id))
+      .orderBy(playbookDomains.name, playbookLibrary.name, playbookTaskSequences.sequence);
+      res.json(result);
+    } catch (error) {
+      console.error('Error fetching task sequences:', error);
+      res.status(500).json({ error: 'Failed to fetch task sequences' });
+    }
+  });
+
+  app.get('/api/playbook-task-sequences/summary', async (req: any, res) => {
+    try {
+      const result = await db.select({
+        domainName: playbookDomains.name,
+        playbookCount: sql<number>`count(distinct ${playbookLibrary.id})`,
+        taskCount: sql<number>`count(${playbookTaskSequences.id})`,
+      })
+      .from(playbookTaskSequences)
+      .innerJoin(playbookLibrary, eq(playbookTaskSequences.playbookId, playbookLibrary.id))
+      .innerJoin(playbookDomains, eq(playbookLibrary.domainId, playbookDomains.id))
+      .groupBy(playbookDomains.name)
+      .orderBy(playbookDomains.name);
+      res.json(result);
+    } catch (error) {
+      console.error('Error fetching task sequence summary:', error);
+      res.status(500).json({ error: 'Failed to fetch summary' });
+    }
+  });
+
+  // Playbook Activations API
+  app.get('/api/playbook-activations', async (req: any, res) => {
+    try {
+      const result = await db.select({
+        id: playbookActivations.id,
+        playbookId: playbookActivations.playbookId,
+        activationReason: playbookActivations.activationReason,
+        situationSummary: playbookActivations.situationSummary,
+        successRating: playbookActivations.successRating,
+        playbookImprovements: playbookActivations.playbookImprovements,
+        activatedAt: playbookActivations.activatedAt,
+        playbookName: playbookLibrary.name,
+        domainName: playbookDomains.name,
+      })
+      .from(playbookActivations)
+      .innerJoin(playbookLibrary, eq(playbookActivations.playbookId, playbookLibrary.id))
+      .innerJoin(playbookDomains, eq(playbookLibrary.domainId, playbookDomains.id))
+      .orderBy(sql`${playbookActivations.activatedAt} DESC`);
+      res.json(result);
+    } catch (error) {
+      console.error('Error fetching playbook activations:', error);
+      res.status(500).json({ error: 'Failed to fetch activations' });
+    }
+  });
 
   // Playbook Library routes
   const playbookLibraryRoutes = await import('./routes/playbookLibraryRoutes.js');
