@@ -280,16 +280,6 @@ function RedirectToTriggersManagement() {
   return null;
 }
 
-// Redirect command-center to Mission Control (Executive War Room)
-function RedirectToMissionControl() {
-  const [, setLocation] = useLocation();
-  
-  useEffect(() => {
-    setLocation('/mission-control');
-  }, [setLocation]);
-  
-  return null;
-}
 
 function Router() {
   const [location] = useLocation();
@@ -368,7 +358,7 @@ function Router() {
         {/* Strategic Operations */}
         <Route path="/strategic-monitoring" component={CrisisResponseCenter} />
         <Route path="/strategic-monitoring/:id" component={CrisisDetail} />
-        <Route path="/command-center" component={RedirectToMissionControl} />
+        <Route path="/command-center" component={CommandCenter} />
         <Route path="/collaboration" component={RealTimeCollaboration} />
         <Route path="/playbook-activation/:triggerId/:playbookId" component={PlaybookActivationConsole} />
         
@@ -425,7 +415,7 @@ function Router() {
         {/* Dynamic Strategy - Future Readiness (redirected to Executive Dashboard) */}
         <Route path="/future-readiness" component={RedirectToExecutiveDashboard} />
         <Route path="/readiness" component={RedirectToExecutiveDashboard} />
-        <Route path="/command-center-dynamic" component={RedirectToMissionControl} />
+        <Route path="/command-center-dynamic" component={CommandCenter} />
         <Route path="/scenario-library" component={RedirectToPlaybookLibrary} />
         <Route path="/scenario-gallery" component={RedirectToPlaybookLibrary} />
         <Route path="/comprehensive-scenarios" component={RedirectToPlaybookLibrary} />
@@ -518,9 +508,8 @@ function Router() {
         <Route path="/four-phase-demo" component={TryDemo} />
         <Route path="/4-phase-demo" component={TryDemo} />
         
-        {/* Live Activation Command Center - Primary demo experience */}
+        {/* Live Activation Center */}
         <Route path="/activation" component={LiveActivationCenter} />
-        <Route path="/command-center" component={LiveActivationCenter} />
         <Route path="/demo/activation" component={LiveActivationCenter} />
         
         {/* Live Interactive Demos - All 7 demos now use unified DemoLiveActivation component */}
