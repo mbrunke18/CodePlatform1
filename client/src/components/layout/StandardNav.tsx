@@ -20,8 +20,8 @@ export default function StandardNav() {
   const { user, isAuthenticated, isLoading, login, logout } = useAuth();
 
   const navigateTo = (path: string) => {
-    if (path === '/ultimate-demo') {
-      window.location.href = '/ultimate-demo';
+    if (path === '/ultimate-demo' || path === '/scenario-demo') {
+      window.location.href = path;
       return;
     }
     setLocation(path);
@@ -52,6 +52,7 @@ export default function StandardNav() {
 
   const demosLinks = [
     { label: "Ultimate Demo", path: "/ultimate-demo", icon: Zap, description: "Interactive 72hrs → 12min experience", featured: true },
+    { label: "Scenario Demo", path: "/scenario-demo", icon: Target, description: "Offense vs Defense scenario comparisons", featured: true },
     { label: "Customer Demo", path: "/customer-demo", icon: Play, description: "Full product walkthrough" },
     { label: "Industry Demos", path: "/industry-demos", icon: Building, description: "Luxury, Financial, Pharma & more" },
     { label: "Interactive Sandbox", path: "/sandbox-demo", icon: Layers, description: "Hands-on product exploration" },

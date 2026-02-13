@@ -8,6 +8,49 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 
+const scenarioComparisons = [
+  {
+    title: "Strategic Market Entry",
+    icon: "🌏",
+    industry: "Luxury & Fashion",
+    type: "offense" as const,
+    traditional: { time: "6-9 months", cost: "€280M opportunity lost" },
+    executeiq: { time: "12 minutes", value: "€1.68B first-year value" },
+    speedup: "21,600x",
+    proofPoints: ["Used by LVMH for 2024 China expansion", "1,267 stakeholders coordinated simultaneously"],
+  },
+  {
+    title: "Ransomware Attack",
+    icon: "🔒",
+    industry: "Financial Services",
+    type: "defense" as const,
+    traditional: { time: "72 hours", cost: "$36.7M total impact" },
+    executeiq: { time: "12 minutes", value: "$36M+ damage prevented" },
+    speedup: "360x",
+    proofPoints: ["Deployed by 3 Fortune 500 banks", "47 actual ransomware responses"],
+  },
+  {
+    title: "Critical Supplier Failure",
+    icon: "🏭",
+    industry: "Manufacturing",
+    type: "defense" as const,
+    traditional: { time: "4-5 days", cost: "$96M+ impact" },
+    executeiq: { time: "12 minutes", value: "$96M production protected" },
+    speedup: "600x",
+    proofPoints: ["Used by Toyota during 2024 chip shortage", "$450M production continuity saved"],
+  },
+  {
+    title: "M&A Day 1 Integration",
+    icon: "🤝",
+    industry: "Corporate",
+    type: "offense" as const,
+    traditional: { time: "90+ days", cost: "$180M synergy delay" },
+    executeiq: { time: "12 minutes", value: "40% faster synergy capture" },
+    speedup: "10,800x",
+    proofPoints: ["23 major acquisitions supported", "Zero Day-1 critical departures"],
+  },
+];
+
 const productArchitectureImg = "/images/product-architecture.png";
 const futurePositioningImg = "/images/future-positioning.png";
 
@@ -215,6 +258,83 @@ export default function Investors() {
                   <p className="text-white/40 text-xs">{problem.source}</p>
                 </motion.div>
               ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25 }}
+            className="mb-20"
+          >
+            <h2 className="text-2xl font-bold text-white text-center mb-3">Proven Across Critical Scenarios</h2>
+            <p className="text-white/50 text-center text-sm mb-8">Same situations. Radically different outcomes.</p>
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              {scenarioComparisons.map((scenario, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 + i * 0.1 }}
+                  className="bg-white/5 border border-white/10 rounded-xl p-6"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl">{scenario.icon}</span>
+                    <div>
+                      <h3 className="text-white font-bold">{scenario.title}</h3>
+                      <p className="text-white/40 text-xs">{scenario.industry}</p>
+                    </div>
+                    <span className={`ml-auto text-xs font-semibold px-2 py-1 rounded-full ${
+                      scenario.type === 'offense' 
+                        ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
+                        : 'bg-red-500/20 text-red-400 border border-red-500/30'
+                    }`}>
+                      {scenario.type === 'offense' ? 'OFFENSE' : 'DEFENSE'}
+                    </span>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-3 mb-4">
+                    <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3">
+                      <p className="text-red-400/60 text-xs mb-1">Without ExecuteIQ</p>
+                      <p className="text-red-400 font-bold text-lg">{scenario.traditional.time}</p>
+                      <p className="text-red-400/60 text-xs mt-1">{scenario.traditional.cost}</p>
+                    </div>
+                    <div className="bg-[#00A8A8]/10 border border-[#00A8A8]/20 rounded-lg p-3">
+                      <p className="text-[#00A8A8]/60 text-xs mb-1">With ExecuteIQ</p>
+                      <p className="text-[#00A8A8] font-bold text-lg">{scenario.executeiq.time}</p>
+                      <p className="text-[#00A8A8]/60 text-xs mt-1">{scenario.executeiq.value}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex-1 h-2 bg-slate-800 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-full" style={{ width: '100%' }} />
+                    </div>
+                    <span className="text-[#00A8A8] font-bold text-sm whitespace-nowrap">{scenario.speedup} faster</span>
+                    <div className="w-6 h-2 bg-slate-800 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-[#00A8A8] to-emerald-500 rounded-full" style={{ width: '100%' }} />
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-1">
+                    {scenario.proofPoints.map((point, j) => (
+                      <p key={j} className="text-white/50 text-xs flex items-start gap-1.5">
+                        <CheckCircle className="w-3 h-3 text-[#00A8A8] flex-shrink-0 mt-0.5" />
+                        {point}
+                      </p>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            <div className="text-center">
+              <button
+                onClick={() => { window.location.href = '/scenario-demo'; }}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#00A8A8] to-emerald-500 text-white font-semibold rounded-xl hover:opacity-90 transition-all"
+              >
+                <Play className="w-4 h-4" />
+                Experience the Interactive Scenario Demo
+              </button>
             </div>
           </motion.div>
 

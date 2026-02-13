@@ -115,6 +115,10 @@ app.get("/ultimate-demo", (_req, res) => {
   res.sendFile(path.resolve("client/public/ultimate-demo.html"));
 });
 
+app.get("/scenario-demo", (_req, res) => {
+  res.sendFile(path.resolve("client/public/scenario-demo.html"));
+});
+
 // Domain redirect: executeiq.io → www.executeiq.io
 // Placed AFTER health checks so deployment health checks always pass
 // Skips root path "/" to ensure Autoscale health checks always get 200
