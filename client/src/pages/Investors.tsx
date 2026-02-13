@@ -189,7 +189,7 @@ export default function Investors() {
             </p>
             
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="/ultimate-demo">
+              <a href="/scenario-demo">
                 <Button className="bg-[#D4AF37] hover:bg-[#c9a432] text-black font-semibold px-6 h-12">
                   <Play className="w-4 h-4 mr-2" />
                   Watch Demo
@@ -505,7 +505,7 @@ export default function Investors() {
           >
             <h2 className="text-2xl font-bold text-white mb-6">Ready to Learn More?</h2>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="/ultimate-demo">
+              <a href="/scenario-demo">
                 <Button className="bg-[#D4AF37] hover:bg-[#c9a432] text-black font-semibold px-8 h-12">
                   <Play className="w-4 h-4 mr-2" />
                   Interactive Demo

@@ -248,7 +248,7 @@ export default function StandardNav() {
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-3">
             <Button 
-              onClick={() => { window.location.href = '/ultimate-demo'; }}
+              onClick={() => { window.location.href = '/scenario-demo'; }}
               className="bg-gradient-to-r from-poise-teal to-cyan-600 hover:from-cyan-600 hover:to-poise-teal text-white font-semibold h-9 px-4 shadow-lg shadow-poise-teal/20"
               data-testid="nav-try-demo"
             >
@@ -299,7 +299,7 @@ export default function StandardNav() {
           {/* Mobile Menu Button */}
           <div className="flex lg:hidden items-center gap-2">
             <Button 
-              onClick={() => { window.location.href = '/ultimate-demo'; }}
+              onClick={() => { window.location.href = '/scenario-demo'; }}
               size="sm"
               className="bg-gradient-to-r from-emerald-600 to-cyan-600 text-white"
               data-testid="nav-mobile-try-demo-btn"
@@ -322,7 +322,7 @@ export default function StandardNav() {
             <div className="flex flex-col gap-1">
               {/* Primary CTAs */}
               <Button 
-                onClick={() => { window.location.href = '/ultimate-demo'; }}
+                onClick={() => { window.location.href = '/scenario-demo'; }}
                 className="bg-gradient-to-r from-poise-teal to-cyan-600 text-white w-full justify-center h-12 text-base font-semibold"
                 data-testid="nav-mobile-try-demo"
               >

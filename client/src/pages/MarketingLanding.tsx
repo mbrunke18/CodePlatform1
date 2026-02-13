@@ -178,7 +178,7 @@ export default function MarketingLanding() {
           <div className="text-center mb-10">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
               <Button 
-                onClick={() => { window.location.href = '/ultimate-demo'; }}
+                onClick={() => { window.location.href = '/scenario-demo'; }}
                 size="lg"
                 className="bg-gradient-to-r from-poise-teal to-cyan-500 hover:from-cyan-500 hover:to-poise-teal text-white font-bold text-lg px-10 py-6 shadow-2xl transform hover:scale-105 transition-all"
                 data-testid="button-try-demo"
@@ -830,7 +830,7 @@ export default function MarketingLanding() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button 
               size="lg"
-              onClick={() => { window.location.href = '/ultimate-demo'; }}
+              onClick={() => { window.location.href = '/scenario-demo'; }}
               className="bg-poise-teal hover:bg-cyan-500 text-white text-lg px-10 py-6 font-semibold"
               data-testid="button-cta-demo"
             >

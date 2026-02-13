@@ -57,8 +57,8 @@ export default function Footer() {
     {
       title: "Experience",
       links: [
-        { label: "Try Demo", path: "/ultimate-demo" },
-        { label: "Scenario Demo", path: "/scenario-demo" },
+        { label: "Try Demo", path: "/scenario-demo" },
+        { label: "Ultimate Demo", path: "/ultimate-demo" },
         { label: "ROI Calculator", path: "/roi-calculator" },
       ]
     },
@@ -206,7 +206,7 @@ export default function Footer() {
                 martinbrunke@executeiq.io
               </a>
               <button 
-                onClick={() => { window.location.href = '/ultimate-demo'; }}
+                onClick={() => { window.location.href = '/scenario-demo'; }}
                 className="text-sm text-emerald-400 hover:text-emerald-300 transition-colors font-medium"
               >
                 See Demo →

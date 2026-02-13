@@ -1075,7 +1075,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5, delay: 2.5 }}
                   className="flex gap-4 justify-center flex-wrap"
                 >
-                  <a href="/ultimate-demo">
+                  <a href="/scenario-demo">
                     <Button 
                       size="lg" 
                       className="px-8 py-6 text-lg bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400"
