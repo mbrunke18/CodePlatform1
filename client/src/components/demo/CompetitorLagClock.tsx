@@ -75,13 +75,13 @@ export function CompetitorLagClock() {
             </div>
 
             <div className="text-center border-l border-red-500/30 pl-4">
-              <div className="text-xs text-gray-400 font-medium mb-1">
+              <div className="text-xs text-gray-200 font-medium mb-1">
                 COMPETITORS
               </div>
               <div className="text-3xl font-bold text-gray-300 tabular-nums">
                 {competitorTime}
               </div>
-              <div className="text-xs text-gray-400">minutes</div>
+              <div className="text-xs text-gray-200">minutes</div>
             </div>
           </div>
           
@@ -108,7 +108,7 @@ export function CompetitorLagClock() {
               <div className="text-xs font-bold text-emerald-400 animate-pulse">
                 ✓ CRISIS RESOLVED
               </div>
-              <div className="text-xs text-gray-400 mt-1">
+              <div className="text-xs text-gray-200 mt-1">
                 While competitors are still discovering the problem...
               </div>
             </div>

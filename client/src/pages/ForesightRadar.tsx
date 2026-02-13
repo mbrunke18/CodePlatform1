@@ -192,7 +192,7 @@ export default function ForesightRadar() {
               </Badge>
             </div>
           </div>
-          <p className="text-slate-600 dark:text-slate-300 max-w-3xl">
+          <p className="text-slate-400 dark:text-slate-300 max-w-3xl">
             AI-powered continuous monitoring detects early signals of threats and opportunities before they become obvious. See what's coming so you can act first, not react late.
           </p>
         </div>
@@ -206,7 +206,7 @@ export default function ForesightRadar() {
               </div>
               <div>
                 <h4 className="font-semibold text-slate-900 dark:text-white">16 Signal Categories</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-300">Monitoring competitive, market, regulatory, and operational signals</p>
+                <p className="text-sm text-slate-400 dark:text-slate-300">Monitoring competitive, market, regulatory, and operational signals</p>
               </div>
             </CardContent>
           </Card>
@@ -217,7 +217,7 @@ export default function ForesightRadar() {
               </div>
               <div>
                 <h4 className="font-semibold text-slate-900 dark:text-white">Early Warning</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-300">Detect weak signals 2-6 weeks before they become obvious threats</p>
+                <p className="text-sm text-slate-400 dark:text-slate-300">Detect weak signals 2-6 weeks before they become obvious threats</p>
               </div>
             </CardContent>
           </Card>
@@ -228,7 +228,7 @@ export default function ForesightRadar() {
               </div>
               <div>
                 <h4 className="font-semibold text-slate-900 dark:text-white">AI Pattern Recognition</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-300">Oracle engine identifies opportunities others miss</p>
+                <p className="text-sm text-slate-400 dark:text-slate-300">Oracle engine identifies opportunities others miss</p>
               </div>
             </CardContent>
           </Card>
@@ -299,7 +299,7 @@ export default function ForesightRadar() {
                           {/* Tooltip */}
                           <div className="absolute hidden group-hover:block z-50 bg-white dark:bg-slate-800 p-3 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 min-w-64 top-6 left-0">
                             <div className="font-semibold text-sm mb-1">{signal.title}</div>
-                            <div className="text-xs text-slate-600 dark:text-slate-300 mb-2">{signal.description}</div>
+                            <div className="text-xs text-slate-400 dark:text-slate-300 mb-2">{signal.description}</div>
                             <div className="flex items-center gap-2 text-xs">
                               <Badge variant="outline">{signal.confidence}% confidence</Badge>
                               <Badge variant={signal.impact === 'critical' ? 'destructive' : 'secondary'}>
@@ -356,10 +356,10 @@ export default function ForesightRadar() {
                               {signal.impact}
                             </Badge>
                           </div>
-                          <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+                          <p className="text-sm text-slate-400 dark:text-slate-300 mb-3">
                             {signal.description}
                           </p>
-                          <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-500">
+                          <div className="flex items-center gap-4 text-xs text-slate-300 dark:text-slate-300">
                             <span className="flex items-center gap-1">
                               <TrendingUp className="w-3 h-3" />
                               {signal.confidence}% confidence
@@ -414,10 +414,10 @@ export default function ForesightRadar() {
                               {pattern.accuracy}% accurate
                             </Badge>
                           </div>
-                          <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">
+                          <p className="text-sm text-slate-400 dark:text-slate-300 mb-2">
                             {pattern.description}
                           </p>
-                          <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-300">
+                          <div className="flex items-center gap-4 text-sm text-slate-400 dark:text-slate-300">
                             <div className="flex items-center gap-1">
                               <TrendingUp className="w-4 h-4" />
                               <span>{pattern.trend}</span>
@@ -458,7 +458,7 @@ export default function ForesightRadar() {
                         <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                           Continuous Monitoring Active
                         </h3>
-                        <p className="text-sm text-slate-600 dark:text-slate-300">
+                        <p className="text-sm text-slate-400 dark:text-slate-300">
                           Scanning 16 intelligence signal categories in real-time
                         </p>
                       </div>
@@ -468,7 +468,7 @@ export default function ForesightRadar() {
                         <div className="text-3xl font-bold text-amber-600 dark:text-amber-400">
                           {weakSignals.length}
                         </div>
-                        <div className="text-xs text-slate-600 dark:text-slate-300 uppercase">
+                        <div className="text-xs text-slate-400 dark:text-slate-300 uppercase">
                           Weak Signals
                         </div>
                       </div>
@@ -476,7 +476,7 @@ export default function ForesightRadar() {
                         <div className="text-3xl font-bold text-violet-600 dark:text-violet-400">
                           {oraclePatterns.length}
                         </div>
-                        <div className="text-xs text-slate-600 dark:text-slate-300 uppercase">
+                        <div className="text-xs text-slate-400 dark:text-slate-300 uppercase">
                           Patterns
                         </div>
                       </div>
@@ -589,7 +589,7 @@ export default function ForesightRadar() {
                   <Lightbulb className="w-4 h-4 text-blue-600" />
                   <span className="font-semibold text-sm">Recommended Action</span>
                 </div>
-                <p className="text-sm text-slate-600 dark:text-slate-300">
+                <p className="text-sm text-slate-400 dark:text-slate-300">
                   {selectedSignal.suggestedPlaybook 
                     ? `Activate the "${selectedSignal.suggestedPlaybook}" playbook to address this signal before it escalates.`
                     : 'Review related playbooks to determine the best response strategy.'}
@@ -648,7 +648,7 @@ export default function ForesightRadar() {
                   <Lightbulb className="w-4 h-4 text-violet-600" />
                   <span className="font-semibold text-sm">Oracle Recommendation</span>
                 </div>
-                <p className="text-sm text-slate-600 dark:text-slate-300">
+                <p className="text-sm text-slate-400 dark:text-slate-300">
                   {selectedPattern.recommendation}
                 </p>
               </div>

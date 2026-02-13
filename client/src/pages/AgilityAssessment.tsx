@@ -195,15 +195,15 @@ export default function AgilityAssessment() {
                 <div className="grid md:grid-cols-3 gap-6 mb-8">
                   <div className="bg-slate-800/50 rounded-lg p-6" data-testid="result-current-growth">
                     <div className="text-3xl font-bold text-white mb-2">{revenueImpact.currentGrowth}%</div>
-                    <p className="text-slate-400 text-sm">Estimated Current Revenue/Employee Growth</p>
+                    <p className="text-slate-200 text-sm">Estimated Current Revenue/Employee Growth</p>
                   </div>
                   <div className="bg-emerald-900/30 rounded-lg p-6 border border-emerald-500/30" data-testid="result-potential-growth">
                     <div className="text-3xl font-bold text-emerald-400 mb-2">+{revenueImpact.potentialGrowth}%</div>
-                    <p className="text-slate-400 text-sm">Potential Additional Growth with ExecuteIQ</p>
+                    <p className="text-slate-200 text-sm">Potential Additional Growth with ExecuteIQ</p>
                   </div>
                   <div className="bg-slate-800/50 rounded-lg p-6" data-testid="result-benchmark">
                     <div className="text-3xl font-bold text-amber-400 mb-2">10.3%</div>
-                    <p className="text-slate-400 text-sm">Top Performer Benchmark (BAI 2025)</p>
+                    <p className="text-slate-200 text-sm">Top Performer Benchmark (BAI 2025)</p>
                   </div>
                 </div>
 
@@ -262,7 +262,7 @@ export default function AgilityAssessment() {
               </CardContent>
             </Card>
 
-            <div className="text-center text-slate-500 text-sm">
+            <div className="text-center text-slate-300 text-sm">
               Based on data from the 2025 Business Agility Report across 244 organizations
             </div>
           </div>
@@ -287,13 +287,13 @@ export default function AgilityAssessment() {
             <h1 className="text-3xl font-bold text-white mb-2">
               Where Does Your Organization Stand?
             </h1>
-            <p className="text-slate-400">
+            <p className="text-slate-200">
               Answer 5 questions to benchmark against 244 organizations from the 2025 Business Agility Report
             </p>
           </div>
 
           <div className="mb-8">
-            <div className="flex justify-between text-sm text-slate-400 mb-2">
+            <div className="flex justify-between text-sm text-slate-200 mb-2">
               <span>Question {currentQuestion + 1} of {QUESTIONS.length}</span>
               <span>{Math.round(progress)}% Complete</span>
             </div>
@@ -305,7 +305,7 @@ export default function AgilityAssessment() {
               <CardTitle className="text-xl text-white">
                 {currentQ.question}
               </CardTitle>
-              <p className="text-sm text-slate-400 mt-2">
+              <p className="text-sm text-slate-200 mt-2">
                 {currentQ.context}
               </p>
             </CardHeader>

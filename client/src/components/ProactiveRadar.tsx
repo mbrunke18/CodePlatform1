@@ -223,7 +223,7 @@ export default function ProactiveRadar() {
           </div>
           <div>
             <h2 className="text-2xl font-bold">Proactive AI Radar</h2>
-            <p className="text-gray-600">Strategic Co-pilot for Executive Decision Making</p>
+            <p className="text-gray-400">Strategic Co-pilot for Executive Decision Making</p>
           </div>
         </div>
         
@@ -275,7 +275,7 @@ export default function ProactiveRadar() {
                     </>
                   )}
                 </div>
-                <div className="mt-2 text-xs text-gray-500" data-testid="text-last-scan">
+                <div className="mt-2 text-xs text-gray-500 dark:text-gray-300" data-testid="text-last-scan">
                   Last Scan: {radarStatus?.status?.lastScanTime ? 
                     new Date(radarStatus.status.lastScanTime).toLocaleTimeString() : 
                     'Never'
@@ -296,7 +296,7 @@ export default function ProactiveRadar() {
                 <div className="text-2xl font-bold" data-testid="text-active-streams">
                   {radarStatus?.status?.activeDataStreams || 0}/{radarStatus?.status?.totalDataStreams || 0}
                 </div>
-                <div className="text-xs text-gray-500">Active Monitoring</div>
+                <div className="text-xs text-gray-500 dark:text-gray-300">Active Monitoring</div>
                 <Progress 
                   value={radarStatus?.status?.totalDataStreams ? 
                     (radarStatus.status.activeDataStreams / radarStatus.status.totalDataStreams) * 100 : 0
@@ -318,7 +318,7 @@ export default function ProactiveRadar() {
                 <div className="text-2xl font-bold" data-testid="text-active-triggers">
                   {radarStatus?.status?.activeAlertTriggers || 0}/{radarStatus?.status?.totalAlertTriggers || 0}
                 </div>
-                <div className="text-xs text-gray-500">Ready to Alert</div>
+                <div className="text-xs text-gray-500 dark:text-gray-300">Ready to Alert</div>
                 <Progress 
                   value={radarStatus?.status?.totalAlertTriggers ? 
                     (radarStatus.status.activeAlertTriggers / radarStatus.status.totalAlertTriggers) * 100 : 0
@@ -338,7 +338,7 @@ export default function ProactiveRadar() {
                 <Brain className="h-5 w-5 mr-2" />
                 Synthetic Futures Engine
               </CardTitle>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-400">
                 Generate novel strategic scenarios beyond historical templates using AI intelligence.
               </p>
             </CardHeader>
@@ -378,7 +378,7 @@ export default function ProactiveRadar() {
                       <AlertDescription>
                         <div className="space-y-2">
                           <div className="font-medium">{scenario.title}</div>
-                          <div className="text-sm text-gray-600">{scenario.description}</div>
+                          <div className="text-sm text-gray-400">{scenario.description}</div>
                           <div className="flex space-x-4 text-xs">
                             <Badge variant="outline">Likelihood: {(scenario.likelihood * 100).toFixed(0)}%</Badge>
                             <Badge variant="outline">Impact: {scenario.potentialImpact}</Badge>
@@ -402,7 +402,7 @@ export default function ProactiveRadar() {
                 <Eye className="h-5 w-5 mr-2" />
                 Intuition Validation
               </CardTitle>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-400">
                 Submit your strategic hunches for AI validation and data-driven analysis.
               </p>
             </CardHeader>
@@ -535,12 +535,12 @@ export default function ProactiveRadar() {
                 <Zap className="h-5 w-5 mr-2" />
                 Live Strategic Insights
               </CardTitle>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-400">
                 Real-time AI-generated insights and proactive alerts from continuous monitoring.
               </p>
             </CardHeader>
             <CardContent>
-              <div className="text-center py-8 text-gray-500" data-testid="div-insights-placeholder">
+              <div className="text-center py-8 text-gray-500 dark:text-gray-300" data-testid="div-insights-placeholder">
                 <TrendingUp className="h-12 w-12 mx-auto mb-4 opacity-50" />
                 <p>AI Radar is continuously scanning for strategic opportunities and risks.</p>
                 <p className="text-sm mt-2">New insights will appear here as they are discovered.</p>

@@ -273,7 +273,7 @@ export function InteractiveDecisionPoint({
   };
   
   const getTimeColor = () => {
-    if (timeRemaining === null) return 'text-slate-400';
+    if (timeRemaining === null) return 'text-slate-200';
     if (timeRemaining > 30) return 'text-green-400';
     if (timeRemaining > 15) return 'text-yellow-400';
     return 'text-red-400 animate-pulse';
@@ -290,7 +290,7 @@ export function InteractiveDecisionPoint({
           </Badge>
           <h2 className="text-3xl font-bold text-white mb-4">{config.title}</h2>
           <p className="text-slate-300 text-lg mb-8">{config.context}</p>
-          <div className="flex items-center justify-center gap-2 text-slate-400 mb-8">
+          <div className="flex items-center justify-center gap-2 text-slate-200 mb-8">
             <Clock className="w-5 h-5" />
             <span>You have {config.timeLimit} seconds to decide</span>
           </div>
@@ -335,7 +335,7 @@ export function InteractiveDecisionPoint({
               </CardHeader>
               <CardContent>
                 <p className="text-slate-300">{selectedOptionData?.consequence}</p>
-                <p className="text-slate-400 text-sm mt-4 italic">{selectedOptionData?.reasoning}</p>
+                <p className="text-slate-200 text-sm mt-4 italic">{selectedOptionData?.reasoning}</p>
               </CardContent>
             </Card>
             
@@ -427,7 +427,7 @@ export function InteractiveDecisionPoint({
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-1">{option.label}</h3>
-                    <p className="text-slate-400">{option.description}</p>
+                    <p className="text-slate-200">{option.description}</p>
                   </div>
                 </div>
               </CardContent>

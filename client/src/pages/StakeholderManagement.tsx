@@ -269,7 +269,7 @@ export default function StakeholderManagement() {
             <h1 className="text-3xl font-bold text-slate-900 dark:text-white" data-testid="text-page-title">
               Stakeholder Directory
             </h1>
-            <p className="text-slate-600 dark:text-slate-300 mt-1">
+            <p className="text-slate-400 dark:text-slate-300 mt-1">
               Manage your organization's stakeholders, roles, and contact information
             </p>
           </div>
@@ -288,11 +288,11 @@ export default function StakeholderManagement() {
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                  <Users className="h-5 w-5 text-slate-600" />
+                  <Users className="h-5 w-5 text-slate-400" />
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white">{stats.total}</p>
-                  <p className="text-sm text-slate-500">Total Stakeholders</p>
+                  <p className="text-sm text-slate-300">Total Stakeholders</p>
                 </div>
               </div>
             </CardContent>
@@ -305,7 +305,7 @@ export default function StakeholderManagement() {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-purple-600">{stats.cSuite}</p>
-                  <p className="text-sm text-slate-500">C-Suite</p>
+                  <p className="text-sm text-slate-300">C-Suite</p>
                 </div>
               </div>
             </CardContent>
@@ -318,7 +318,7 @@ export default function StakeholderManagement() {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-blue-600">{stats.executives}</p>
-                  <p className="text-sm text-slate-500">Executives</p>
+                  <p className="text-sm text-slate-300">Executives</p>
                 </div>
               </div>
             </CardContent>
@@ -331,7 +331,7 @@ export default function StakeholderManagement() {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-green-600">{stats.active}</p>
-                  <p className="text-sm text-slate-500">Active</p>
+                  <p className="text-sm text-slate-300">Active</p>
                 </div>
               </div>
             </CardContent>
@@ -342,7 +342,7 @@ export default function StakeholderManagement() {
           <CardContent className="p-4">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+                <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-600 dark:text-slate-200" />
                 <Input
                   placeholder="Search by name, role, or email..."
                   value={search}
@@ -386,7 +386,7 @@ export default function StakeholderManagement() {
             <CardContent className="py-16 text-center">
               <Users className="h-12 w-12 mx-auto mb-4 text-slate-300" />
               <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">No Stakeholders Found</h3>
-              <p className="text-slate-500 mb-6">Start by adding stakeholders to your directory.</p>
+              <p className="text-slate-300 mb-6">Start by adding stakeholders to your directory.</p>
               <Button onClick={handleOpenCreate} data-testid="button-add-first-stakeholder">
                 <Plus className="h-4 w-4 mr-2" />
                 Add First Stakeholder
@@ -432,7 +432,7 @@ export default function StakeholderManagement() {
                         <span className="font-medium">{stakeholder.role}</span>
                       </TableCell>
                       <TableCell>
-                        <span className="text-slate-600 dark:text-slate-300">{stakeholder.department}</span>
+                        <span className="text-slate-400 dark:text-slate-300">{stakeholder.department}</span>
                       </TableCell>
                       <TableCell>
                         <Badge className={levelConfig.color}>
@@ -441,12 +441,12 @@ export default function StakeholderManagement() {
                       </TableCell>
                       <TableCell>
                         <div className="space-y-1 text-sm">
-                          <div className="flex items-center gap-1 text-slate-600 dark:text-slate-300">
+                          <div className="flex items-center gap-1 text-slate-400 dark:text-slate-300">
                             <Mail className="h-3 w-3" />
                             <span className="truncate max-w-[150px]" data-testid={`text-email-${stakeholder.id}`}>{stakeholder.email}</span>
                           </div>
                           {stakeholder.phone && (
-                            <div className="flex items-center gap-1 text-slate-500">
+                            <div className="flex items-center gap-1 text-slate-300">
                               <Phone className="h-3 w-3" />
                               <span data-testid={`text-phone-${stakeholder.id}`}>{stakeholder.phone}</span>
                             </div>
@@ -466,7 +466,7 @@ export default function StakeholderManagement() {
                                 title={channel.label}
                                 data-testid={`badge-channel-${stakeholder.id}-${ch}`}
                               >
-                                <Icon className="h-3 w-3 text-slate-600 dark:text-slate-300" />
+                                <Icon className="h-3 w-3 text-slate-400 dark:text-slate-300" />
                               </div>
                             );
                           })}

@@ -314,8 +314,8 @@ export default function TriggersManagement() {
       case 'composite': return <BarChart3 className="h-4 w-4 text-blue-600" />;
       case 'threshold': return <Target className="h-4 w-4 text-green-600" />;
       case 'event': return <Zap className="h-4 w-4 text-yellow-600" />;
-      case 'time': return <Clock className="h-4 w-4 text-gray-600" />;
-      default: return <Activity className="h-4 w-4 text-gray-600" />;
+      case 'time': return <Clock className="h-4 w-4 text-gray-400" />;
+      default: return <Activity className="h-4 w-4 text-gray-400" />;
     }
   };
 
@@ -325,8 +325,8 @@ export default function TriggersManagement() {
       case 'predicting': return <TrendingUp className="h-4 w-4 text-purple-600" />;
       case 'learning': return <Settings className="h-4 w-4 text-blue-600 animate-spin" />;
       case 'active': return <Play className="h-4 w-4 text-green-600" />;
-      case 'paused': return <Pause className="h-4 w-4 text-gray-600" />;
-      default: return <Activity className="h-4 w-4 text-gray-600" />;
+      case 'paused': return <Pause className="h-4 w-4 text-gray-400" />;
+      default: return <Activity className="h-4 w-4 text-gray-400" />;
     }
   };
 
@@ -335,7 +335,7 @@ export default function TriggersManagement() {
       case 'connected': return <CheckCircle className="h-4 w-4 text-green-600" />;
       case 'disconnected': return <XCircle className="h-4 w-4 text-red-600" />;
       case 'error': return <AlertTriangle className="h-4 w-4 text-orange-600" />;
-      default: return <Activity className="h-4 w-4 text-gray-600" />;
+      default: return <Activity className="h-4 w-4 text-gray-400" />;
     }
   };
 
@@ -366,9 +366,9 @@ export default function TriggersManagement() {
           
           {/* Breadcrumb Navigation */}
           <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2 text-sm text-gray-200">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-gray-200 hover:text-white p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>
@@ -446,10 +446,10 @@ export default function TriggersManagement() {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-gray-600 text-sm font-medium">Paused Triggers</p>
+                    <p className="text-gray-400 text-sm font-medium">Paused Triggers</p>
                     <p className="text-2xl font-bold text-gray-700">{pausedCount}</p>
                   </div>
-                  <Pause className="h-8 w-8 text-gray-600" />
+                  <Pause className="h-8 w-8 text-gray-400" />
                 </div>
               </CardContent>
             </Card>
@@ -566,7 +566,7 @@ export default function TriggersManagement() {
                 {isLoading && (
                   <Card>
                     <CardContent className="p-12 text-center">
-                      <div className="text-gray-500">Loading triggers...</div>
+                      <div className="text-gray-300">Loading triggers...</div>
                     </CardContent>
                   </Card>
                 )}
@@ -576,7 +576,7 @@ export default function TriggersManagement() {
                     <CardContent className="p-12 text-center">
                       <AlertTriangle className="h-12 w-12 text-red-500 mx-auto mb-4" />
                       <h3 className="text-lg font-semibold text-red-700 mb-2">Error Loading Triggers</h3>
-                      <p className="text-gray-600">Failed to fetch triggers from the database. Please try refreshing the page.</p>
+                      <p className="text-gray-400">Failed to fetch triggers from the database. Please try refreshing the page.</p>
                     </CardContent>
                   </Card>
                 )}
@@ -584,9 +584,9 @@ export default function TriggersManagement() {
                 {!isLoading && !isError && filteredTriggers.length === 0 && (
                   <Card>
                     <CardContent className="p-12 text-center">
-                      <Target className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                      <Target className="h-12 w-12 text-gray-200 mx-auto mb-4" />
                       <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">No Triggers Found</h3>
-                      <p className="text-gray-600 dark:text-gray-400 mb-4">
+                      <p className="text-gray-400 dark:text-gray-200 mb-4">
                         {allTriggers.length === 0 
                           ? "You haven't created any executive triggers yet. Create your first trigger to start monitoring critical conditions."
                           : "No triggers match the selected filters. Try adjusting your category or status filters."}
@@ -625,19 +625,19 @@ export default function TriggersManagement() {
                             <h3 className="font-semibold text-gray-900 dark:text-gray-100">
                               {trigger.scenarioName}
                             </h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">{trigger.condition}</p>
+                            <p className="text-sm text-gray-400 dark:text-gray-200">{trigger.condition}</p>
                           </div>
                         </div>
 
                         <div className="flex items-center space-x-6">
                           <div className="text-center">
-                            <div className="text-sm text-gray-500">Threshold</div>
+                            <div className="text-sm text-gray-300">Threshold</div>
                             <div className="font-bold">{rawData?.conditions?.operator || '≥'} {rawData?.conditions?.value || trigger.thresholdValue}</div>
                           </div>
                           
                           {/* Enable/Disable Toggle */}
                           <div className="flex items-center space-x-2">
-                            <Label htmlFor={`trigger-toggle-${trigger.id}`} className="text-sm text-gray-500">
+                            <Label htmlFor={`trigger-toggle-${trigger.id}`} className="text-sm text-gray-300">
                               {trigger.status === 'paused' ? 'Disabled' : 'Enabled'}
                             </Label>
                             <Switch
@@ -695,19 +695,19 @@ export default function TriggersManagement() {
                             </div>
                             <div className="space-y-1 text-xs">
                               <div className="flex justify-between">
-                                <span className="text-slate-500">Field:</span>
+                                <span className="text-slate-300">Field:</span>
                                 <span className="font-mono text-slate-700 dark:text-slate-300">{rawData.conditions?.field || 'N/A'}</span>
                               </div>
                               <div className="flex justify-between">
-                                <span className="text-slate-500">Operator:</span>
+                                <span className="text-slate-300">Operator:</span>
                                 <span className="font-mono text-slate-700 dark:text-slate-300">{rawData.conditions?.operator || 'N/A'}</span>
                               </div>
                               <div className="flex justify-between">
-                                <span className="text-slate-500">Value:</span>
+                                <span className="text-slate-300">Value:</span>
                                 <span className="font-mono text-slate-700 dark:text-slate-300">{rawData.conditions?.value}</span>
                               </div>
                               <div className="flex justify-between">
-                                <span className="text-slate-500">Logic:</span>
+                                <span className="text-slate-300">Logic:</span>
                                 <span className="font-mono text-slate-700 dark:text-slate-300">{rawData.conditions?.logic || 'single'}</span>
                               </div>
                             </div>
@@ -743,15 +743,15 @@ export default function TriggersManagement() {
                             </div>
                             <div className="space-y-1 text-xs">
                               <div className="flex justify-between">
-                                <span className="text-slate-500">Category:</span>
+                                <span className="text-slate-300">Category:</span>
                                 <Badge variant="outline" className="text-xs capitalize">{rawData.category}</Badge>
                               </div>
                               <div className="flex justify-between">
-                                <span className="text-slate-500">Type:</span>
+                                <span className="text-slate-300">Type:</span>
                                 <span className="font-mono text-slate-700 dark:text-slate-300">{rawData.triggerType}</span>
                               </div>
                               <div className="flex justify-between">
-                                <span className="text-slate-500">Alert Level:</span>
+                                <span className="text-slate-300">Alert Level:</span>
                                 <Badge variant={rawData.alertThreshold === 'red' ? 'destructive' : rawData.alertThreshold === 'yellow' ? 'default' : 'secondary'} className="text-xs">
                                   {rawData.alertThreshold}
                                 </Badge>
@@ -842,8 +842,8 @@ export default function TriggersManagement() {
                               {trigger.escalationWorkflow.levels.map((level, idx) => (
                                 <div key={idx} className="text-xs bg-white dark:bg-gray-800 p-2 rounded border">
                                   <div className="font-medium text-orange-600">Level {level.level}</div>
-                                  <div className="text-gray-600 dark:text-gray-400">{level.threshold}s threshold</div>
-                                  <div className="text-gray-600 dark:text-gray-400">{level.approvers.join(', ')}</div>
+                                  <div className="text-gray-400 dark:text-gray-200">{level.threshold}s threshold</div>
+                                  <div className="text-gray-400 dark:text-gray-200">{level.approvers.join(', ')}</div>
                                 </div>
                               ))}
                             </div>
@@ -864,12 +864,12 @@ export default function TriggersManagement() {
                                   {trigger.dataSource.status}
                                 </Badge>
                               </div>
-                              <div className="text-xs text-gray-500">
+                              <div className="text-xs text-gray-300">
                                 Refresh: {trigger.dataSource.refreshRate}s | Last: {trigger.dataSource.lastUpdate}
                               </div>
                             </div>
                             {trigger.dataSource.endpoint && (
-                              <div className="text-xs text-gray-500 mt-1 truncate">
+                              <div className="text-xs text-gray-300 mt-1 truncate">
                                 {trigger.dataSource.endpoint}
                               </div>
                             )}
@@ -929,8 +929,8 @@ export default function TriggersManagement() {
                       {trigger.status === 'active' && (
                         <div className="mt-4">
                           <div className="flex items-center justify-between">
-                            <span className="text-xs text-gray-500">Progress to threshold</span>
-                            <span className="text-xs text-gray-500">
+                            <span className="text-xs text-gray-300">Progress to threshold</span>
+                            <span className="text-xs text-gray-300">
                               {Math.round((Number(trigger.currentValue) / Number(trigger.thresholdValue)) * 100)}%
                             </span>
                           </div>
@@ -960,15 +960,15 @@ export default function TriggersManagement() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-600">98.7%</div>
-                  <div className="text-sm text-gray-600">Detection Accuracy</div>
+                  <div className="text-sm text-gray-400">Detection Accuracy</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-green-600">1.2s</div>
-                  <div className="text-sm text-gray-600">Avg Response Time</div>
+                  <div className="text-sm text-gray-400">Avg Response Time</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-purple-600">47</div>
-                  <div className="text-sm text-gray-600">Prevented Escalations</div>
+                  <div className="text-sm text-gray-400">Prevented Escalations</div>
                 </div>
               </div>
             </CardContent>

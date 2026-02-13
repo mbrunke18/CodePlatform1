@@ -79,7 +79,7 @@ export default function StakeholderAlignmentDashboard({
           <h3 className="text-lg font-semibold text-white mb-2">
             No Stakeholders Assigned
           </h3>
-          <p className="text-slate-400 mb-4 max-w-sm">
+          <p className="text-slate-600 dark:text-slate-200 mb-4 max-w-sm">
             Configure your organization's stakeholders to enable alignment tracking during playbook execution.
           </p>
           <Link href="/organization-setup">
@@ -114,13 +114,13 @@ export default function StakeholderAlignmentDashboard({
               <div className="text-2xl font-bold text-purple-600" data-testid="alignment-percentage">
                 {alignmentPercentage}%
               </div>
-              <div className="text-xs text-gray-600 dark:text-gray-400">Acknowledged</div>
+              <div className="text-xs text-gray-400 dark:text-gray-200">Acknowledged</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-blue-600" data-testid="task-progress-percentage">
                 {taskProgress}%
               </div>
-              <div className="text-xs text-gray-600 dark:text-gray-400">Tasks Complete</div>
+              <div className="text-xs text-gray-400 dark:text-gray-200">Tasks Complete</div>
             </div>
           </div>
         </div>
@@ -142,7 +142,7 @@ export default function StakeholderAlignmentDashboard({
                   <User className={`h-4 w-4 ${
                     stakeholder.acknowledged 
                       ? 'text-green-600' 
-                      : 'text-gray-400'
+                      : 'text-gray-600 dark:text-gray-200'
                   }`} />
                 </div>
                 <div className="flex-1">
@@ -158,7 +158,7 @@ export default function StakeholderAlignmentDashboard({
                       {stakeholder.priority}
                     </Badge>
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400" data-testid={`stakeholder-role-${idx}`}>
+                  <div className="text-sm text-gray-400 dark:text-gray-200" data-testid={`stakeholder-role-${idx}`}>
                     {stakeholder.stakeholderRole}
                   </div>
                   {stakeholder.tasksAssigned > 0 && (
@@ -167,7 +167,7 @@ export default function StakeholderAlignmentDashboard({
                         value={(stakeholder.tasksCompleted / stakeholder.tasksAssigned) * 100} 
                         className="h-1.5 w-24" 
                       />
-                      <span className="text-xs text-gray-500" data-testid={`stakeholder-tasks-${idx}`}>
+                      <span className="text-xs text-gray-500 dark:text-gray-300" data-testid={`stakeholder-tasks-${idx}`}>
                         {stakeholder.tasksCompleted}/{stakeholder.tasksAssigned} tasks
                       </span>
                     </div>
@@ -181,15 +181,15 @@ export default function StakeholderAlignmentDashboard({
                     <div className="text-right">
                       <div className="text-sm font-semibold text-green-600">Acknowledged</div>
                       {stakeholder.responseTime && (
-                        <div className="text-xs text-gray-500">{stakeholder.responseTime}min response</div>
+                        <div className="text-xs text-gray-500 dark:text-gray-300">{stakeholder.responseTime}min response</div>
                       )}
                     </div>
                   </div>
                 ) : (
                   <div className="flex items-center gap-2" data-testid={`stakeholder-pending-${idx}`}>
-                    <Clock className="h-5 w-5 text-gray-400" />
+                    <Clock className="h-5 w-5 text-gray-600 dark:text-gray-200" />
                     <div className="text-right">
-                      <div className="text-sm font-semibold text-gray-600 dark:text-gray-400">Pending</div>
+                      <div className="text-sm font-semibold text-gray-400 dark:text-gray-200">Pending</div>
                       <Button 
                         variant="ghost" 
                         size="sm" 

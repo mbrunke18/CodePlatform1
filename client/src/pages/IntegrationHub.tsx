@@ -554,7 +554,7 @@ export default function IntegrationHub() {
                 <Globe className="h-5 w-5 text-blue-400" />
               </div>
               <div className="text-2xl font-bold text-white">{systemMetrics.totalIntegrations}</div>
-              <div className="text-sm text-slate-400">Total connected</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Total connected</div>
             </CardContent>
           </Card>
 
@@ -565,7 +565,7 @@ export default function IntegrationHub() {
                 <CheckCircle className="h-5 w-5 text-emerald-400" />
               </div>
               <div className="text-2xl font-bold text-white">{systemMetrics.activeConnections}</div>
-              <div className="text-sm text-slate-400">Connections live</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Connections live</div>
             </CardContent>
           </Card>
 
@@ -576,7 +576,7 @@ export default function IntegrationHub() {
                 <Zap className="h-5 w-5 text-purple-400" />
               </div>
               <div className="text-2xl font-bold text-white">{formatNumber(systemMetrics.dailyApiCalls)}</div>
-              <div className="text-sm text-slate-400">Today</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Today</div>
             </CardContent>
           </Card>
 
@@ -587,7 +587,7 @@ export default function IntegrationHub() {
                 <Activity className="h-5 w-5 text-emerald-400" />
               </div>
               <div className="text-2xl font-bold text-white">{systemMetrics.systemHealth}%</div>
-              <div className="text-sm text-slate-400">Overall status</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Overall status</div>
             </CardContent>
           </Card>
 
@@ -598,7 +598,7 @@ export default function IntegrationHub() {
                 <Database className="h-5 w-5 text-amber-400" />
               </div>
               <div className="text-2xl font-bold text-white">{systemMetrics.dataFlows}</div>
-              <div className="text-sm text-slate-400">Active pipelines</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Active pipelines</div>
             </CardContent>
           </Card>
 
@@ -609,7 +609,7 @@ export default function IntegrationHub() {
                 <AlertTriangle className="h-5 w-5 text-red-400" />
               </div>
               <div className="text-2xl font-bold text-white">{(systemMetrics.errorRate * 100).toFixed(2)}%</div>
-              <div className="text-sm text-slate-400">Last 24h</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Last 24h</div>
             </CardContent>
           </Card>
         </div>
@@ -645,7 +645,7 @@ export default function IntegrationHub() {
                         </div>
                         <div>
                           <div className="font-semibold text-white">{integration.name}</div>
-                          <div className="text-xs text-slate-400">{formatNumber(integration.dailyRequests)} requests today</div>
+                          <div className="text-xs text-slate-600 dark:text-slate-200">{formatNumber(integration.dailyRequests)} requests today</div>
                         </div>
                       </div>
                       <div className="text-right">
@@ -674,13 +674,13 @@ export default function IntegrationHub() {
                         <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
                           {endpoint.method}
                         </Badge>
-                        <span className="text-xs text-slate-400">
+                        <span className="text-xs text-slate-600 dark:text-slate-200">
                           {new Date(endpoint.lastCalled).toLocaleTimeString()}
                         </span>
                       </div>
                       <h4 className="font-semibold text-white text-sm mb-1">{endpoint.name}</h4>
                       <p className="text-slate-300 text-xs mb-2">{endpoint.path}</p>
-                      <div className="flex justify-between text-xs text-slate-500">
+                      <div className="flex justify-between text-xs text-slate-300">
                         <span>{formatNumber(endpoint.requests24h)} calls</span>
                         <span>{endpoint.averageResponse}ms avg</span>
                         <span>{endpoint.successRate}% success</span>
@@ -698,7 +698,7 @@ export default function IntegrationHub() {
             {/* Filters */}
             <div className="flex items-center gap-4 bg-slate-900/50 p-4 rounded-lg border border-slate-700/50">
               <div className="flex-1 page-background relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-600 dark:text-slate-200" />
                 <Input
                   placeholder="Search integrations..."
                   value={searchTerm}
@@ -744,26 +744,26 @@ export default function IntegrationHub() {
                         </Badge>
                       </div>
                     </div>
-                    <p className="text-slate-400 text-sm">{integration.description}</p>
+                    <p className="text-slate-600 dark:text-slate-200 text-sm">{integration.description}</p>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     
                     {/* Metrics */}
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
-                        <div className="text-slate-400">Health</div>
+                        <div className="text-slate-600 dark:text-slate-200">Health</div>
                         <div className="text-white font-medium">{integration.health}%</div>
                       </div>
                       <div>
-                        <div className="text-slate-400">Response Time</div>
+                        <div className="text-slate-600 dark:text-slate-200">Response Time</div>
                         <div className="text-white font-medium">{integration.responseTime}ms</div>
                       </div>
                       <div>
-                        <div className="text-slate-400">Daily Requests</div>
+                        <div className="text-slate-600 dark:text-slate-200">Daily Requests</div>
                         <div className="text-white font-medium">{formatNumber(integration.dailyRequests)}</div>
                       </div>
                       <div>
-                        <div className="text-slate-400">Error Rate</div>
+                        <div className="text-slate-600 dark:text-slate-200">Error Rate</div>
                         <div className="text-white font-medium">{(integration.errorRate * 100).toFixed(2)}%</div>
                       </div>
                     </div>
@@ -826,7 +826,7 @@ export default function IntegrationHub() {
                           <td className="px-6 py-4">
                             <div>
                               <div className="text-sm font-medium text-white">{endpoint.name}</div>
-                              <div className="text-xs text-slate-400 font-mono">{endpoint.path}</div>
+                              <div className="text-xs text-slate-600 dark:text-slate-200 font-mono">{endpoint.path}</div>
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
@@ -892,28 +892,28 @@ export default function IntegrationHub() {
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="text-sm text-slate-400">Records Processed</div>
+                        <div className="text-sm text-slate-600 dark:text-slate-200">Records Processed</div>
                         <div className="text-2xl font-bold text-white">{formatNumber(flow.recordsProcessed)}</div>
                       </div>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                       <div>
-                        <div className="text-sm text-slate-400">Frequency</div>
+                        <div className="text-sm text-slate-600 dark:text-slate-200">Frequency</div>
                         <div className="text-white font-medium">{flow.frequency}</div>
                       </div>
                       <div>
-                        <div className="text-sm text-slate-400">Last Run</div>
+                        <div className="text-sm text-slate-600 dark:text-slate-200">Last Run</div>
                         <div className="text-white font-medium">{new Date(flow.lastRun).toLocaleString()}</div>
                       </div>
                       <div>
-                        <div className="text-sm text-slate-400">Error Count</div>
+                        <div className="text-sm text-slate-600 dark:text-slate-200">Error Count</div>
                         <div className={`font-medium ${flow.errorCount === 0 ? 'text-emerald-400' : 'text-red-400'}`}>
                           {flow.errorCount}
                         </div>
                       </div>
                       <div>
-                        <div className="text-sm text-slate-400">Transformations</div>
+                        <div className="text-sm text-slate-600 dark:text-slate-200">Transformations</div>
                         <div className="text-white font-medium">{flow.transformations.length}</div>
                       </div>
                     </div>
@@ -947,7 +947,7 @@ export default function IntegrationHub() {
                     <Activity className="h-5 w-5 text-emerald-400" />
                   </div>
                   <div className="text-2xl font-bold text-white mb-2">99.9%</div>
-                  <div className="text-sm text-slate-400">Last 30 days</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-200">Last 30 days</div>
                 </CardContent>
               </Card>
 
@@ -958,7 +958,7 @@ export default function IntegrationHub() {
                     <Zap className="h-5 w-5 text-blue-400" />
                   </div>
                   <div className="text-2xl font-bold text-white mb-2">1.2K/s</div>
-                  <div className="text-sm text-slate-400">Requests per second</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-200">Requests per second</div>
                 </CardContent>
               </Card>
 
@@ -969,7 +969,7 @@ export default function IntegrationHub() {
                     <Clock className="h-5 w-5 text-purple-400" />
                   </div>
                   <div className="text-2xl font-bold text-white mb-2">234ms</div>
-                  <div className="text-sm text-slate-400">P95 response time</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-200">P95 response time</div>
                 </CardContent>
               </Card>
 
@@ -980,7 +980,7 @@ export default function IntegrationHub() {
                     <Database className="h-5 w-5 text-amber-400" />
                   </div>
                   <div className="text-2xl font-bold text-white mb-2">2.3TB</div>
-                  <div className="text-sm text-slate-400">Processed today</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-200">Processed today</div>
                 </CardContent>
               </Card>
             </div>

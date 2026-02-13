@@ -177,14 +177,14 @@ Best regards`
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-white">Share Demo</h2>
-                <p className="text-gray-400 text-sm">Send this experience to your team</p>
+                <p className="text-gray-600 dark:text-gray-200 text-sm">Send this experience to your team</p>
               </div>
             </div>
             <Button 
               variant="ghost" 
               size="sm"
               onClick={onClose}
-              className="text-gray-400 hover:text-white hover:bg-white/10"
+              className="text-gray-600 dark:text-gray-200 hover:text-white hover:bg-white/10"
               data-testid="share-close-btn"
             >
               <X className="h-5 w-5" />
@@ -194,7 +194,7 @@ Best regards`
           {/* Personalization Info */}
           <div className="flex items-center gap-2 bg-blue-950/30 rounded-lg p-3 border border-blue-500/30">
             <Users className="h-5 w-5 text-blue-400" />
-            <span className="text-sm text-gray-300">
+            <span className="text-sm text-gray-500 dark:text-gray-300">
               This demo link is personalized for:
             </span>
             <Badge variant="outline" className="bg-blue-600/20 text-blue-300 border-blue-500/50">
@@ -215,7 +215,7 @@ Best regards`
               <Input 
                 value={demoUrl}
                 readOnly
-                className="bg-gray-800 border-gray-700 text-gray-300 font-mono text-sm"
+                className="bg-gray-800 border-gray-700 text-gray-500 dark:text-gray-300 font-mono text-sm"
                 data-testid="demo-url-input"
               />
               <Button 
@@ -237,7 +237,7 @@ Best regards`
                 )}
               </Button>
             </div>
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-gray-600 dark:text-gray-200">
               This link will automatically start the demo with your selected settings
             </p>
           </div>
@@ -251,23 +251,23 @@ Best regards`
             
             {/* Subject */}
             <div className="space-y-2">
-              <Label className="text-sm text-gray-400">Subject Line</Label>
+              <Label className="text-sm text-gray-600 dark:text-gray-200">Subject Line</Label>
               <Input 
                 value={template.subject}
                 readOnly
-                className="bg-gray-800 border-gray-700 text-gray-300"
+                className="bg-gray-800 border-gray-700 text-gray-500 dark:text-gray-300"
                 data-testid="email-subject-input"
               />
             </div>
 
             {/* Body */}
             <div className="space-y-2">
-              <Label className="text-sm text-gray-400">Email Body</Label>
+              <Label className="text-sm text-gray-600 dark:text-gray-200">Email Body</Label>
               <Textarea 
                 value={template.body}
                 readOnly
                 rows={12}
-                className="bg-gray-800 border-gray-700 text-gray-300 font-mono text-sm"
+                className="bg-gray-800 border-gray-700 text-gray-500 dark:text-gray-300 font-mono text-sm"
                 data-testid="email-body-textarea"
               />
             </div>
@@ -300,7 +300,7 @@ Best regards`
               <Share2 className="h-4 w-4 text-purple-400" />
               Sharing Tips
             </h3>
-            <ul className="text-sm text-gray-300 space-y-1 list-disc list-inside">
+            <ul className="text-sm text-gray-500 dark:text-gray-300 space-y-1 list-disc list-inside">
               <li>Demo auto-starts when recipients click the link</li>
               <li>Takes 5-10 minutes depending on selected duration</li>
               <li>Fully interactive - no installation required</li>

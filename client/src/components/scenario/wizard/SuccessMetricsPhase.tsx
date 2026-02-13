@@ -90,7 +90,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
                 data-testid={`template-metric-${index}`}
               >
                 <p className="text-sm font-medium text-white">{template.name}</p>
-                <p className="text-xs text-gray-400 mt-1">
+                <p className="text-xs text-gray-200 mt-1">
                   Target: {template.target} {template.unit}
                 </p>
               </button>
@@ -139,7 +139,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
                             <Icon className="h-4 w-4" />
                             <div>
                               <div className="font-medium">{cat.label}</div>
-                              <div className="text-xs text-gray-500">{cat.description}</div>
+                              <div className="text-xs text-gray-300">{cat.description}</div>
                             </div>
                           </div>
                         </SelectItem>
@@ -178,7 +178,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
                   onChange={(e) => setNewMetric({ ...newMetric, baselineValue: e.target.value })}
                   className="bg-slate-800 border-slate-600 text-white mt-2"
                 />
-                <p className="text-xs text-gray-500 mt-1">Where are you today?</p>
+                <p className="text-xs text-gray-300 mt-1">Where are you today?</p>
               </div>
 
               <div>
@@ -191,7 +191,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
                   onChange={(e) => setNewMetric({ ...newMetric, targetValue: e.target.value })}
                   className="bg-slate-800 border-slate-600 text-white mt-2"
                 />
-                <p className="text-xs text-gray-500 mt-1">What defines success?</p>
+                <p className="text-xs text-gray-300 mt-1">What defines success?</p>
               </div>
             </div>
 
@@ -250,12 +250,12 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
                             </Badge>
                           )}
                         </div>
-                        <div className="text-sm text-gray-400 space-y-1">
+                        <div className="text-sm text-gray-200 space-y-1">
                           <p>
-                            <span className="text-gray-500">Category:</span> {categoryConfig?.label}
+                            <span className="text-gray-300">Category:</span> {categoryConfig?.label}
                           </p>
                           <p>
-                            <span className="text-gray-500">Baseline:</span> {metric.baselineValue || 'Not set'} {unitLabel} →{' '}
+                            <span className="text-gray-300">Baseline:</span> {metric.baselineValue || 'Not set'} {unitLabel} →{' '}
                             <span className="text-green-400 font-semibold">Target: {metric.targetValue} {unitLabel}</span>
                           </p>
                         </div>

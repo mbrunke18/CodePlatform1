@@ -74,8 +74,8 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
     return (
       <Card className="bg-slate-900 border-slate-700">
         <CardContent className="p-8 text-center">
-          <AlertTriangle className="h-12 w-12 text-slate-500 mx-auto mb-4" />
-          <p className="text-slate-400">No active execution. Trigger a playbook to see the Command Center in action.</p>
+          <AlertTriangle className="h-12 w-12 text-slate-300 mx-auto mb-4" />
+          <p className="text-slate-200">No active execution. Trigger a playbook to see the Command Center in action.</p>
         </CardContent>
       </Card>
     );
@@ -115,17 +115,17 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
           </div>
           <div className="mt-2 p-3 bg-slate-800/50 rounded-lg">
             <div className="flex items-center justify-between text-sm">
-              <span className="text-slate-400">Deal:</span>
+              <span className="text-slate-200">Deal:</span>
               <span className="text-white font-medium">{execution.dealName}</span>
             </div>
             <div className="flex items-center justify-between text-sm mt-1">
-              <span className="text-slate-400">Value:</span>
+              <span className="text-slate-200">Value:</span>
               <span className="text-emerald-400 font-medium">
                 ${(execution.amount / 1000000).toFixed(1)}M
               </span>
             </div>
             <div className="flex items-center justify-between text-sm mt-1">
-              <span className="text-slate-400">Risk Score:</span>
+              <span className="text-slate-200">Risk Score:</span>
               <span className="text-red-400 font-medium">{execution.riskScore}%</span>
             </div>
           </div>
@@ -142,8 +142,8 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-slate-500 font-mono">{event.timestamp}</span>
-                    <Badge variant="outline" className="bg-transparent text-xs border-slate-600 text-slate-400">
+                    <span className="text-xs text-slate-300 font-mono">{event.timestamp}</span>
+                    <Badge variant="outline" className="bg-transparent text-xs border-slate-600 text-slate-200">
                       {event.system}
                     </Badge>
                   </div>
@@ -165,7 +165,7 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
                 {execution.comparisonMetrics.executeiqTime} min
               </span>
             </div>
-            <p className="text-sm text-slate-400">ExecuteIQ Response Time</p>
+            <p className="text-sm text-slate-200">ExecuteIQ Response Time</p>
           </CardContent>
         </Card>
         <Card className="bg-slate-900 border-slate-700">
@@ -176,7 +176,7 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
                 {execution.comparisonMetrics.efficiency}
               </span>
             </div>
-            <p className="text-sm text-slate-400">vs. Industry Average ({execution.comparisonMetrics.industryAverage} min)</p>
+            <p className="text-sm text-slate-200">vs. Industry Average ({execution.comparisonMetrics.industryAverage} min)</p>
           </CardContent>
         </Card>
       </div>
@@ -189,23 +189,23 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
           <div className="grid grid-cols-4 gap-4 text-center">
             <div>
               <div className="text-2xl font-bold text-purple-400">1</div>
-              <p className="text-xs text-slate-400">Slack Alert</p>
+              <p className="text-xs text-slate-200">Slack Alert</p>
             </div>
             <div>
               <div className="text-2xl font-bold text-blue-400">
                 {execution.results.jira.taskCount}
               </div>
-              <p className="text-xs text-slate-400">Jira Tasks</p>
+              <p className="text-xs text-slate-200">Jira Tasks</p>
             </div>
             <div>
               <div className="text-2xl font-bold text-green-400">
                 {execution.results.calendar.attendees.length}
               </div>
-              <p className="text-xs text-slate-400">Attendees</p>
+              <p className="text-xs text-slate-200">Attendees</p>
             </div>
             <div>
               <div className="text-2xl font-bold text-cyan-400">4</div>
-              <p className="text-xs text-slate-400">Systems</p>
+              <p className="text-xs text-slate-200">Systems</p>
             </div>
           </div>
         </CardContent>

@@ -163,17 +163,17 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
                 </div>
                 <div>
                   <h3 className="font-semibold text-slate-900 dark:text-white">ExecuteIQ North Star™</h3>
-                  <p className="text-sm text-slate-500">Phase {current.number} of {totalPhases}</p>
+                  <p className="text-sm text-slate-300">Phase {current.number} of {totalPhases}</p>
                 </div>
               </div>
-              <ChevronRight className="h-5 w-5 text-slate-400 group-hover:text-poise-teal transition-colors" />
+              <ChevronRight className="h-5 w-5 text-slate-200 group-hover:text-poise-teal transition-colors" />
             </div>
             <Progress value={progressPercent} className="h-2 mb-3" />
             <div className="flex items-center gap-2">
               <Badge className={`${current.bgColor} ${current.color} border-0`}>
                 {current.name}
               </Badge>
-              <span className="text-sm text-slate-500">{current.subtitle}</span>
+              <span className="text-sm text-slate-300">{current.subtitle}</span>
             </div>
           </CardContent>
         </Card>
@@ -191,7 +191,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
                 ? `${phase.bgColor} border-2 border-current ${phase.color}` 
                 : phase.status === 'completed'
                   ? 'bg-emerald-500/10 text-emerald-600'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
             }`}>
               {phase.status === 'completed' ? (
                 <CheckCircle className="h-4 w-4" />
@@ -211,11 +211,11 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white">ExecuteIQ North Star™ Journey</h2>
-          <p className="text-slate-600 dark:text-slate-300">Your path from discovery to continuous strategic excellence</p>
+          <p className="text-slate-400 dark:text-slate-300">Your path from discovery to continuous strategic excellence</p>
         </div>
         <div className="text-right">
           <div className="text-3xl font-bold text-poise-teal">{completedPhases}/{totalPhases}</div>
-          <p className="text-sm text-slate-500">Phases Complete</p>
+          <p className="text-sm text-slate-300">Phases Complete</p>
         </div>
       </div>
 
@@ -246,7 +246,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
                         ? 'bg-emerald-500 text-white' 
                         : phase.status === 'current'
                           ? 'bg-poise-teal text-white'
-                          : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
+                          : 'bg-slate-200 dark:bg-slate-700 text-slate-400 dark:text-slate-300'
                     }`}>
                       {phase.number}
                     </div>
@@ -264,14 +264,14 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
                         <Badge className="bg-poise-teal text-white">Current Phase</Badge>
                       )}
                     </div>
-                    <p className="text-slate-600 dark:text-slate-300 mb-3">{phase.description}</p>
+                    <p className="text-slate-400 dark:text-slate-300 mb-3">{phase.description}</p>
                     
                     <div className="flex items-center gap-4 text-sm">
-                      <div className="flex items-center gap-1 text-slate-500">
+                      <div className="flex items-center gap-1 text-slate-300">
                         <Clock className="h-4 w-4" />
                         {phase.timeline}
                       </div>
-                      <div className="flex items-center gap-1 text-slate-500">
+                      <div className="flex items-center gap-1 text-slate-300">
                         <phase.icon className="h-4 w-4" />
                         {phase.workspace}
                       </div>
@@ -279,7 +279,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
 
                     <div className="mt-4 flex flex-wrap gap-2">
                       {phase.milestones.map((milestone, idx) => (
-                        <div key={idx} className="flex items-center gap-1 text-xs text-slate-500">
+                        <div key={idx} className="flex items-center gap-1 text-xs text-slate-300">
                           {phase.status === 'completed' ? (
                             <CheckCircle className="h-3 w-3 text-emerald-500" />
                           ) : (
@@ -291,7 +291,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
                     </div>
                   </div>
 
-                  <ChevronRight className="h-5 w-5 text-slate-400 group-hover:text-poise-teal transition-colors flex-shrink-0" />
+                  <ChevronRight className="h-5 w-5 text-slate-200 group-hover:text-poise-teal transition-colors flex-shrink-0" />
                 </div>
               </CardContent>
             </Card>

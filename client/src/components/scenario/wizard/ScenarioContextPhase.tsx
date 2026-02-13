@@ -68,7 +68,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
             <Lightbulb className="h-5 w-5 text-purple-400 mt-0.5" />
             <div>
               <p className="text-sm text-purple-300 font-medium">AI Recommendation</p>
-              <p className="text-xs text-gray-400 mt-1">
+              <p className="text-xs text-gray-200 mt-1">
                 Start with a template scenario to get industry-standard defaults, then customize for your business.
                 Most customers only need to customize 20-30% of fields.
               </p>
@@ -91,7 +91,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
             onChange={(e) => onChange({ name: e.target.value })}
             className="bg-slate-800 border-slate-600 text-white mt-2"
           />
-          <p className="text-xs text-gray-500 mt-1">Use clear, descriptive names that your team will recognize</p>
+          <p className="text-xs text-gray-300 mt-1">Use clear, descriptive names that your team will recognize</p>
         </div>
 
         <div>
@@ -140,7 +140,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
                       {type.label}
                     </span>
                   </div>
-                  <p className="text-xs text-gray-400">{type.description}</p>
+                  <p className="text-xs text-gray-200">{type.description}</p>
                 </button>
               );
             })}
@@ -160,7 +160,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
             onChange={(e) => onChange({ mission: e.target.value })}
             className="bg-slate-800 border-slate-600 text-white mt-2"
           />
-          <p className="text-xs text-gray-500 mt-1">Clear, measurable objective this scenario should achieve</p>
+          <p className="text-xs text-gray-300 mt-1">Clear, measurable objective this scenario should achieve</p>
         </div>
 
         {/* Time Horizon - Dropdown */}
@@ -178,7 +178,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
                 <SelectItem key={option.value} value={option.value}>
                   <div>
                     <div className="font-medium">{option.label}</div>
-                    <div className="text-xs text-gray-500">{option.description}</div>
+                    <div className="text-xs text-gray-300">{option.description}</div>
                   </div>
                 </SelectItem>
               ))}
@@ -203,7 +203,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
                 <SelectItem key={option.value} value={option.value}>
                   <div>
                     <div className="font-medium">{option.label}</div>
-                    <div className="text-xs text-gray-500">{option.description}</div>
+                    <div className="text-xs text-gray-300">{option.description}</div>
                   </div>
                 </SelectItem>
               ))}

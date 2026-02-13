@@ -230,9 +230,9 @@ export default function StrategicPlanningHub() {
         
         {/* Breadcrumb Navigation */}
         <div className="mb-6">
-          <div className="flex items-center gap-2 text-sm text-gray-400">
+          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-200">
             <Link to="/">
-              <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white p-1 h-auto">
+              <Button variant="ghost" size="sm" className="text-gray-600 dark:text-gray-200 hover:text-white p-1 h-auto">
                 <Home className="h-4 w-4" />
               </Button>
             </Link>
@@ -362,13 +362,13 @@ export default function StrategicPlanningHub() {
                       </div>
                       <div className="space-y-2">
                         <div className="flex justify-between text-sm">
-                          <span className="text-slate-400">Progress</span>
+                          <span className="text-slate-600 dark:text-slate-200">Progress</span>
                           <span className="text-white">{scenario.progress}%</span>
                         </div>
                         <Progress value={scenario.progress} className="h-2" />
                         <div className="flex justify-between text-xs">
-                          <span className="text-slate-500">Owner: {scenario.owner}</span>
-                          <span className="text-slate-500">Budget: {formatCurrency(scenario.budget)}</span>
+                          <span className="text-slate-300">Owner: {scenario.owner}</span>
+                          <span className="text-slate-300">Budget: {formatCurrency(scenario.budget)}</span>
                         </div>
                       </div>
                     </div>
@@ -390,21 +390,21 @@ export default function StrategicPlanningHub() {
                       <div className="w-2 h-2 bg-emerald-400 rounded-full" />
                       <div className="flex-1 page-background">
                         <div className="text-sm text-white">Digital Transformation milestone completed</div>
-                        <div className="text-xs text-slate-400">2 hours ago</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">2 hours ago</div>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg">
                       <div className="w-2 h-2 bg-blue-400 rounded-full" />
                       <div className="flex-1 page-background">
                         <div className="text-sm text-white">Market Expansion budget approved</div>
-                        <div className="text-xs text-slate-400">1 day ago</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">1 day ago</div>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg">
                       <div className="w-2 h-2 bg-amber-400 rounded-full" />
                       <div className="flex-1 page-background">
                         <div className="text-sm text-white">Sustainability initiative risk review</div>
-                        <div className="text-xs text-slate-400">3 days ago</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">3 days ago</div>
                       </div>
                     </div>
                   </div>
@@ -419,7 +419,7 @@ export default function StrategicPlanningHub() {
             {/* Filters and Search */}
             <div className="flex items-center gap-4 bg-slate-900/50 p-4 rounded-lg border border-slate-700/50">
               <div className="flex-1 page-background relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-600 dark:text-slate-200" />
                 <Input
                   placeholder="Search scenarios..."
                   value={searchTerm}
@@ -469,31 +469,31 @@ export default function StrategicPlanningHub() {
                         </Badge>
                       </div>
                     </div>
-                    <p className="text-slate-400 text-sm">{scenario.description}</p>
+                    <p className="text-slate-600 dark:text-slate-200 text-sm">{scenario.description}</p>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
-                        <div className="text-slate-400">Owner</div>
+                        <div className="text-slate-600 dark:text-slate-200">Owner</div>
                         <div className="text-white">{scenario.owner}</div>
                       </div>
                       <div>
-                        <div className="text-slate-400">Budget</div>
+                        <div className="text-slate-600 dark:text-slate-200">Budget</div>
                         <div className="text-white">{formatCurrency(scenario.budget)}</div>
                       </div>
                       <div>
-                        <div className="text-slate-400">Timeline</div>
+                        <div className="text-slate-600 dark:text-slate-200">Timeline</div>
                         <div className="text-white">{scenario.startDate} - {scenario.endDate}</div>
                       </div>
                       <div>
-                        <div className="text-slate-400">Progress</div>
+                        <div className="text-slate-600 dark:text-slate-200">Progress</div>
                         <div className="text-white">{scenario.progress}%</div>
                       </div>
                     </div>
                     
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-slate-400">Overall Progress</span>
+                        <span className="text-slate-600 dark:text-slate-200">Overall Progress</span>
                         <span className="text-white">{scenario.progress}%</span>
                       </div>
                       <Progress value={scenario.progress} className="h-2" />
@@ -527,7 +527,7 @@ export default function StrategicPlanningHub() {
                     <TrendingUp className="h-5 w-5 text-emerald-400" />
                   </div>
                   <div className="text-2xl font-bold text-white mb-2">94%</div>
-                  <div className="text-sm text-slate-400">Scenario completion</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-200">Scenario completion</div>
                 </CardContent>
               </Card>
 
@@ -538,7 +538,7 @@ export default function StrategicPlanningHub() {
                     <Calendar className="h-5 w-5 text-blue-400" />
                   </div>
                   <div className="text-2xl font-bold text-white mb-2">8.2</div>
-                  <div className="text-sm text-slate-400">months</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-200">months</div>
                 </CardContent>
               </Card>
 
@@ -549,7 +549,7 @@ export default function StrategicPlanningHub() {
                     <DollarSign className="h-5 w-5 text-emerald-400" />
                   </div>
                   <div className="text-2xl font-bold text-white mb-2">245%</div>
-                  <div className="text-sm text-slate-400">Return on investment</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-200">Return on investment</div>
                 </CardContent>
               </Card>
 
@@ -560,7 +560,7 @@ export default function StrategicPlanningHub() {
                     <AlertCircle className="h-5 w-5 text-amber-400" />
                   </div>
                   <div className="text-2xl font-bold text-white mb-2">87%</div>
-                  <div className="text-sm text-slate-400">Issues prevented</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-200">Issues prevented</div>
                 </CardContent>
               </Card>
             </div>

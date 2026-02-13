@@ -147,7 +147,7 @@ export default function FutureReadinessDashboard() {
               <Brain className="h-10 w-10 text-slate-900 dark:text-slate-100" />
               Future Readiness Index™
             </h1>
-            <p className="text-slate-600 dark:text-slate-300 mt-2">
+            <p className="text-slate-400 dark:text-slate-300 mt-2">
               Real-time strategic preparedness and self-learning intelligence
             </p>
           </div>
@@ -188,7 +188,7 @@ export default function FutureReadinessDashboard() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-slate-600 dark:text-slate-300">Playbook Maturity</span>
+                  <span className="text-sm text-slate-400 dark:text-slate-300">Playbook Maturity</span>
                   <Sparkles className="h-4 w-4 text-purple-500" />
                 </div>
                 <div className={`text-2xl font-bold ${getScoreColor(playbookMaturity)}`}>
@@ -199,7 +199,7 @@ export default function FutureReadinessDashboard() {
 
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-slate-600 dark:text-slate-300">Execution Velocity</span>
+                  <span className="text-sm text-slate-400 dark:text-slate-300">Execution Velocity</span>
                   <Zap className="h-4 w-4 text-yellow-500" />
                 </div>
                 <div className={`text-2xl font-bold ${getScoreColor(executionVelocity)}`}>
@@ -210,7 +210,7 @@ export default function FutureReadinessDashboard() {
 
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-slate-600 dark:text-slate-300">Learning Rate</span>
+                  <span className="text-sm text-slate-400 dark:text-slate-300">Learning Rate</span>
                   <Brain className="h-4 w-4 text-blue-500" />
                 </div>
                 <div className={`text-2xl font-bold ${getScoreColor(learningRate)}`}>
@@ -221,7 +221,7 @@ export default function FutureReadinessDashboard() {
 
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-slate-600 dark:text-slate-300">Signal Detection</span>
+                  <span className="text-sm text-slate-400 dark:text-slate-300">Signal Detection</span>
                   <Eye className="h-4 w-4 text-green-500" />
                 </div>
                 <div className={`text-2xl font-bold ${getScoreColor(signalDetection)}`}>
@@ -266,9 +266,9 @@ export default function FutureReadinessDashboard() {
                 <ScrollArea className="h-[500px]">
                   <div className="space-y-4">
                     {signalsLoading ? (
-                      <p className="text-center text-slate-500">Loading signals...</p>
+                      <p className="text-center text-slate-300">Loading signals...</p>
                     ) : weakSignals.length === 0 ? (
-                      <p className="text-center text-slate-500">No weak signals detected</p>
+                      <p className="text-center text-slate-300">No weak signals detected</p>
                     ) : (
                       weakSignals.map((signal) => (
                         <Card key={signal.id} className="border-l-4 border-l-orange-500">
@@ -282,10 +282,10 @@ export default function FutureReadinessDashboard() {
                                   </Badge>
                                   <Badge variant="outline">{signal.signalType}</Badge>
                                 </div>
-                                <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+                                <p className="text-sm text-slate-400 dark:text-slate-300 mb-3">
                                   {signal.description}
                                 </p>
-                                <div className="flex items-center gap-4 text-xs text-slate-500">
+                                <div className="flex items-center gap-4 text-xs text-slate-300">
                                   <span className="flex items-center gap-1">
                                     <BarChart3 className="h-3 w-3" />
                                     Confidence: {parseFloat(signal.confidence).toFixed(0)}%
@@ -326,9 +326,9 @@ export default function FutureReadinessDashboard() {
                 <ScrollArea className="h-[500px]">
                   <div className="space-y-4">
                     {patternsLoading ? (
-                      <p className="text-center text-slate-500">Loading patterns...</p>
+                      <p className="text-center text-slate-300">Loading patterns...</p>
                     ) : oraclePatterns.length === 0 ? (
-                      <p className="text-center text-slate-500">No oracle patterns detected</p>
+                      <p className="text-center text-slate-300">No oracle patterns detected</p>
                     ) : (
                       oraclePatterns.map((pattern) => (
                         <Card key={pattern.id} className="border-l-4 border-l-purple-500">
@@ -340,10 +340,10 @@ export default function FutureReadinessDashboard() {
                                   <Badge variant="secondary">{pattern.patternType}</Badge>
                                   {getImpactIcon(pattern.impact)}
                                 </div>
-                                <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+                                <p className="text-sm text-slate-400 dark:text-slate-300 mb-3">
                                   {pattern.description}
                                 </p>
-                                <div className="flex items-center gap-4 text-xs text-slate-500">
+                                <div className="flex items-center gap-4 text-xs text-slate-300">
                                   <span className="flex items-center gap-1">
                                     <BarChart3 className="h-3 w-3" />
                                     Confidence: {parseFloat(pattern.confidence).toFixed(0)}%
@@ -382,9 +382,9 @@ export default function FutureReadinessDashboard() {
                 <ScrollArea className="h-[500px]">
                   <div className="space-y-3">
                     {activityLoading ? (
-                      <p className="text-center text-slate-500">Loading activity...</p>
+                      <p className="text-center text-slate-300">Loading activity...</p>
                     ) : activityFeed.length === 0 ? (
-                      <p className="text-center text-slate-500">No recent activity</p>
+                      <p className="text-center text-slate-300">No recent activity</p>
                     ) : (
                       activityFeed.map((event, idx) => (
                         <div key={event.id}>
@@ -398,11 +398,11 @@ export default function FutureReadinessDashboard() {
                             <div className="flex-1 pb-4">
                               <div className="flex items-center justify-between mb-1">
                                 <h4 className="font-medium">{event.title}</h4>
-                                <span className="text-xs text-slate-500">
+                                <span className="text-xs text-slate-300">
                                   {format(new Date(event.timestamp), 'PPp')}
                                 </span>
                               </div>
-                              <p className="text-sm text-slate-600 dark:text-slate-300">
+                              <p className="text-sm text-slate-400 dark:text-slate-300">
                                 {event.description}
                               </p>
                               <Badge variant="outline" className="mt-2 text-xs">

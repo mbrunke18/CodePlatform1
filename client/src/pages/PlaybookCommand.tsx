@@ -93,7 +93,7 @@ export default function PlaybookCommand() {
         <main className="max-w-4xl mx-auto px-6 py-16 text-center">
           <AlertTriangle className="h-12 w-12 mx-auto text-amber-500 mb-4" />
           <h1 className="text-2xl font-bold mb-2">Playbook Not Found</h1>
-          <p className="text-slate-600 mb-6">The requested playbook could not be located.</p>
+          <p className="text-slate-400 mb-6">The requested playbook could not be located.</p>
           <Button onClick={() => setLocation("/playbooks")}>
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Library
@@ -158,20 +158,20 @@ export default function PlaybookCommand() {
             )}
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+              <div className="flex items-center gap-2 text-slate-400 dark:text-slate-300">
                 <Clock className="h-5 w-5" />
                 <span>~12 min execution</span>
               </div>
-              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+              <div className="flex items-center gap-2 text-slate-400 dark:text-slate-300">
                 <Users className="h-5 w-5" />
                 <span>Human-led</span>
               </div>
-              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+              <div className="flex items-center gap-2 text-slate-400 dark:text-slate-300">
                 <Sparkles className="h-5 w-5" />
                 <span>AI-assisted</span>
               </div>
               {playbook.preApprovedBudget && (
-                <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+                <div className="flex items-center gap-2 text-slate-400 dark:text-slate-300">
                   <DollarSign className="h-5 w-5" />
                   <span>${Number(playbook.preApprovedBudget).toLocaleString()}</span>
                 </div>
@@ -181,7 +181,7 @@ export default function PlaybookCommand() {
             {playbook.primaryResponseStrategy && (
               <div>
                 <h3 className="font-medium mb-2">Response Strategy</h3>
-                <p className="text-slate-600 dark:text-slate-300 text-sm">
+                <p className="text-slate-400 dark:text-slate-300 text-sm">
                   {playbook.primaryResponseStrategy}
                 </p>
               </div>
@@ -190,14 +190,14 @@ export default function PlaybookCommand() {
             <div className="pt-4 border-t">
               {!isAuthenticated ? (
                 <div className="text-center py-4">
-                  <p className="text-slate-600 mb-4">Sign in to execute this playbook</p>
+                  <p className="text-slate-400 mb-4">Sign in to execute this playbook</p>
                   <Button onClick={login} data-testid="button-login">
                     Sign In
                   </Button>
                 </div>
               ) : !organization?.id ? (
                 <div className="text-center py-4">
-                  <p className="text-slate-600 mb-4">No organization configured</p>
+                  <p className="text-slate-400 mb-4">No organization configured</p>
                   <Button disabled>Configure Organization</Button>
                 </div>
               ) : startExecution.isSuccess ? (
@@ -237,19 +237,19 @@ export default function PlaybookCommand() {
               {Array.isArray(playbook.tier1Stakeholders) && playbook.tier1Stakeholders.length > 0 && (
                 <div>
                   <Badge className="bg-red-100 text-red-700 mb-2">Tier 1 - Immediate</Badge>
-                  <p className="text-sm text-slate-600">{(playbook.tier1Stakeholders as string[]).join(", ")}</p>
+                  <p className="text-sm text-slate-400">{(playbook.tier1Stakeholders as string[]).join(", ")}</p>
                 </div>
               )}
               {Array.isArray(playbook.tier2Stakeholders) && playbook.tier2Stakeholders.length > 0 && (
                 <div>
                   <Badge className="bg-amber-100 text-amber-700 mb-2">Tier 2 - Within 2 Hours</Badge>
-                  <p className="text-sm text-slate-600">{(playbook.tier2Stakeholders as string[]).join(", ")}</p>
+                  <p className="text-sm text-slate-400">{(playbook.tier2Stakeholders as string[]).join(", ")}</p>
                 </div>
               )}
               {Array.isArray(playbook.tier3Stakeholders) && playbook.tier3Stakeholders.length > 0 && (
                 <div>
                   <Badge className="bg-blue-100 text-blue-700 mb-2">Tier 3 - Within 24 Hours</Badge>
-                  <p className="text-sm text-slate-600">{(playbook.tier3Stakeholders as string[]).join(", ")}</p>
+                  <p className="text-sm text-slate-400">{(playbook.tier3Stakeholders as string[]).join(", ")}</p>
                 </div>
               )}
             </CardContent>

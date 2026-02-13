@@ -365,7 +365,7 @@ export default function RealTimeCollaboration() {
                 <Users className="h-5 w-5 text-blue-400" />
               </div>
               <div className="text-2xl font-bold text-white">{collaborationSessions.filter(s => s.status === 'active').length}</div>
-              <div className="text-sm text-slate-400">Live collaboration</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Live collaboration</div>
             </CardContent>
           </Card>
 
@@ -376,7 +376,7 @@ export default function RealTimeCollaboration() {
                 <Activity className="h-5 w-5 text-emerald-400" />
               </div>
               <div className="text-2xl font-bold text-white">{teamMembers.filter(m => m.status === 'online').length}</div>
-              <div className="text-sm text-slate-400">Members available</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Members available</div>
             </CardContent>
           </Card>
 
@@ -387,7 +387,7 @@ export default function RealTimeCollaboration() {
                 <Bell className="h-5 w-5 text-purple-400" />
               </div>
               <div className="text-2xl font-bold text-white">{liveUpdates.length}</div>
-              <div className="text-sm text-slate-400">Recent activity</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Recent activity</div>
             </CardContent>
           </Card>
 
@@ -398,7 +398,7 @@ export default function RealTimeCollaboration() {
                 <CheckCircle className="h-5 w-5 text-emerald-400" />
               </div>
               <div className="text-2xl font-bold text-white">7</div>
-              <div className="text-sm text-slate-400">Executive decisions</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Executive decisions</div>
             </CardContent>
           </Card>
         </div>
@@ -433,14 +433,14 @@ export default function RealTimeCollaboration() {
                           <Badge className={getPriorityColor(update.priority)}>
                             {update.priority.toUpperCase()}
                           </Badge>
-                          <span className="text-sm text-slate-400">
+                          <span className="text-sm text-slate-600 dark:text-slate-200">
                             {new Date(update.timestamp).toLocaleTimeString()}
                           </span>
                         </div>
                       </div>
                       <h4 className="font-semibold text-white text-sm mb-1">{update.title}</h4>
                       <p className="text-slate-300 text-sm mb-2">{update.content}</p>
-                      <div className="text-xs text-slate-500">By: {update.user}</div>
+                      <div className="text-xs text-slate-300">By: {update.user}</div>
                     </div>
                   ))}
                 </CardContent>
@@ -511,7 +511,7 @@ export default function RealTimeCollaboration() {
                         <p className="text-slate-300 mb-4">{session.description}</p>
                       </div>
                       <div className="text-right">
-                        <div className="text-sm text-slate-400">Duration</div>
+                        <div className="text-sm text-slate-600 dark:text-slate-200">Duration</div>
                         <div className="text-white font-medium">{session.duration}</div>
                       </div>
                     </div>
@@ -532,7 +532,7 @@ export default function RealTimeCollaboration() {
                               </div>
                               <div>
                                 <div className="text-sm font-medium text-white">{participant.name}</div>
-                                <div className="text-xs text-slate-400">{participant.role}</div>
+                                <div className="text-xs text-slate-600 dark:text-slate-200">{participant.role}</div>
                               </div>
                             </div>
                           ))}
@@ -605,7 +605,7 @@ export default function RealTimeCollaboration() {
                       </div>
                       <div className="flex-1 page-background">
                         <h3 className="font-semibold text-white">{member.name}</h3>
-                        <p className="text-sm text-slate-400">{member.role}</p>
+                        <p className="text-sm text-slate-600 dark:text-slate-200">{member.role}</p>
                         <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-300 text-xs mt-1">
                           {member.department}
                         </Badge>
@@ -614,17 +614,17 @@ export default function RealTimeCollaboration() {
                     
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-slate-400">Status:</span>
+                        <span className="text-slate-600 dark:text-slate-200">Status:</span>
                         <span className="text-white capitalize">{member.status}</span>
                       </div>
                       {member.currentActivity && (
                         <div className="flex justify-between">
-                          <span className="text-slate-400">Activity:</span>
+                          <span className="text-slate-600 dark:text-slate-200">Activity:</span>
                           <span className="text-white text-xs">{member.currentActivity}</span>
                         </div>
                       )}
                       <div className="flex justify-between">
-                        <span className="text-slate-400">Timezone:</span>
+                        <span className="text-slate-600 dark:text-slate-200">Timezone:</span>
                         <span className="text-white">{member.timezone}</span>
                       </div>
                     </div>
@@ -677,14 +677,14 @@ export default function RealTimeCollaboration() {
                             {update.priority}
                           </Badge>
                         </div>
-                        <span className="text-xs text-slate-400">
+                        <span className="text-xs text-slate-600 dark:text-slate-200">
                           {new Date(update.timestamp).toLocaleTimeString()}
                         </span>
                       </div>
                       <p className="text-slate-300 text-sm">{update.content}</p>
                       {update.relatedTo && (
                         <div className="mt-2">
-                          <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-400 text-xs">
+                          <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-600 dark:text-slate-200 text-xs">
                             Related to: {update.relatedTo}
                           </Badge>
                         </div>
@@ -712,8 +712,8 @@ export default function RealTimeCollaboration() {
                       <span className="text-white font-medium">Digital Transformation Budget</span>
                       <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">APPROVED</Badge>
                     </div>
-                    <p className="text-sm text-slate-400">$2.5M allocated for Phase 2 implementation</p>
-                    <div className="text-xs text-slate-500 mt-1">Decided by: Chief Executive Officer</div>
+                    <p className="text-sm text-slate-600 dark:text-slate-200">$2.5M allocated for Phase 2 implementation</p>
+                    <div className="text-xs text-slate-300 mt-1">Decided by: Chief Executive Officer</div>
                   </div>
                   
                   <div className="p-3 bg-slate-800/50 rounded-lg">
@@ -721,8 +721,8 @@ export default function RealTimeCollaboration() {
                       <span className="text-white font-medium">APAC Market Expansion</span>
                       <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">APPROVED</Badge>
                     </div>
-                    <p className="text-sm text-slate-400">Greenlit market entry strategy</p>
-                    <div className="text-xs text-slate-500 mt-1">Decided by: VP Strategy</div>
+                    <p className="text-sm text-slate-600 dark:text-slate-200">Greenlit market entry strategy</p>
+                    <div className="text-xs text-slate-300 mt-1">Decided by: VP Strategy</div>
                   </div>
                 </CardContent>
               </Card>
@@ -740,8 +740,8 @@ export default function RealTimeCollaboration() {
                       <span className="text-white font-medium">Q3 Hiring Plan</span>
                       <Badge className="bg-amber-500/20 text-amber-300 border-amber-500/30">PENDING</Badge>
                     </div>
-                    <p className="text-sm text-slate-400">25 new positions across departments</p>
-                    <div className="text-xs text-slate-500 mt-1">Assigned to: Chief Financial Officer</div>
+                    <p className="text-sm text-slate-600 dark:text-slate-200">25 new positions across departments</p>
+                    <div className="text-xs text-slate-300 mt-1">Assigned to: Chief Financial Officer</div>
                   </div>
                   
                   <div className="p-3 bg-slate-800/50 rounded-lg">
@@ -749,8 +749,8 @@ export default function RealTimeCollaboration() {
                       <span className="text-white font-medium">Office Expansion</span>
                       <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">REVIEW</Badge>
                     </div>
-                    <p className="text-sm text-slate-400">Additional office space in Austin</p>
-                    <div className="text-xs text-slate-500 mt-1">Assigned to: Chief Operations Officer</div>
+                    <p className="text-sm text-slate-600 dark:text-slate-200">Additional office space in Austin</p>
+                    <div className="text-xs text-slate-300 mt-1">Assigned to: Chief Operations Officer</div>
                   </div>
                 </CardContent>
               </Card>

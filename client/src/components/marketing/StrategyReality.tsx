@@ -339,7 +339,7 @@ export function StrategyRealityHero() {
             <p className="text-slate-300 text-sm">Industry Average</p>
           </div>
           
-          <ArrowRight className="w-8 h-8 text-slate-600" />
+          <ArrowRight className="w-8 h-8 text-slate-400" />
           
           <div className="text-left">
             <p className="text-4xl md:text-5xl font-bold text-emerald-500">12m</p>

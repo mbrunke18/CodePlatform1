@@ -82,7 +82,7 @@ export default function DemoRouter() {
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4" data-testid="heading-demo-router">
               Experience ExecuteIQ
             </h1>
-            <p className="text-xl text-slate-400">
+            <p className="text-xl text-slate-200">
               Choose the demo that fits your schedule
             </p>
           </div>
@@ -95,7 +95,7 @@ export default function DemoRouter() {
               </div>
               <div className="flex-1">
                 <p className="text-white font-medium mb-1">Recommended for executives</p>
-                <p className="text-sm text-slate-400 mb-3">
+                <p className="text-sm text-slate-200 mb-3">
                   See how ExecuteIQ delivers 12-minute coordinated response with predictive AI and role-specific wins.
                 </p>
                 <Button
@@ -119,7 +119,7 @@ export default function DemoRouter() {
               </div>
               <div className="flex-1">
                 <p className="text-white font-medium mb-1">NEW: Predictive Intelligence</p>
-                <p className="text-sm text-slate-400">
+                <p className="text-sm text-slate-200">
                   ExecuteIQ forecasts trigger probabilities 90 days out. Run what-if scenarios. Know which playbooks you'll need before you need them.
                 </p>
               </div>
@@ -153,15 +153,15 @@ export default function DemoRouter() {
                           {demo.badge}
                         </Badge>
                       </div>
-                      <p className="text-slate-400 mb-2 text-sm md:text-base line-clamp-2">{demo.description}</p>
-                      <div className="flex items-center gap-2 text-sm text-slate-500">
+                      <p className="text-slate-200 mb-2 text-sm md:text-base line-clamp-2">{demo.description}</p>
+                      <div className="flex items-center gap-2 text-sm text-slate-300">
                         <Clock className="h-4 w-4" />
                         <span>{demo.duration}</span>
                       </div>
                     </div>
                     
                     {/* Arrow */}
-                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-slate-500 group-hover:text-white group-hover:translate-x-1 transition-all flex-shrink-0" />
+                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-slate-300 group-hover:text-white group-hover:translate-x-1 transition-all flex-shrink-0" />
                   </CardContent>
                 </Card>
               );
@@ -170,7 +170,7 @@ export default function DemoRouter() {
 
           {/* Alternative Path */}
           <div className="text-center mb-10">
-            <p className="text-slate-500 mb-4">
+            <p className="text-slate-300 mb-4">
               Want to explore on your own?
             </p>
             <Button
@@ -192,7 +192,7 @@ export default function DemoRouter() {
                 </div>
                 <div>
                   <p className="text-white font-medium">Investor?</p>
-                  <p className="text-sm text-slate-400">Locked demo, FAQ, and roadshow materials</p>
+                  <p className="text-sm text-slate-200">Locked demo, FAQ, and roadshow materials</p>
                 </div>
               </div>
               <div className="flex gap-2 w-full sm:w-auto">

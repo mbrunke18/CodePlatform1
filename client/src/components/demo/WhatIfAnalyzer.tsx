@@ -91,7 +91,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
           <Sparkles className="h-5 w-5 text-cyan-400" />
           AI-Powered What-If Analyzer
         </CardTitle>
-        <p className="text-gray-400 text-sm">
+        <p className="text-gray-200 text-sm">
           Adjust variables to see AI-predicted outcomes for your scenario
         </p>
       </CardHeader>
@@ -110,7 +110,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
               step={5}
               data-testid="slider-resource-allocation"
             />
-            <p className="text-xs text-gray-500">Budget and team capacity allocated</p>
+            <p className="text-xs text-gray-300">Budget and team capacity allocated</p>
           </div>
 
           <div className="space-y-2">
@@ -125,7 +125,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
               step={5}
               data-testid="slider-stakeholder-alignment"
             />
-            <p className="text-xs text-gray-500">Executive and team consensus level</p>
+            <p className="text-xs text-gray-300">Executive and team consensus level</p>
           </div>
 
           <div className="space-y-2">
@@ -140,7 +140,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
               step={5}
               data-testid="slider-market-volatility"
             />
-            <p className="text-xs text-gray-500">External market uncertainty factor</p>
+            <p className="text-xs text-gray-300">External market uncertainty factor</p>
           </div>
 
           <div className="space-y-2">
@@ -155,7 +155,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
               step={5}
               data-testid="slider-timeline-compression"
             />
-            <p className="text-xs text-gray-500">Schedule acceleration vs standard timeline</p>
+            <p className="text-xs text-gray-300">Schedule acceleration vs standard timeline</p>
           </div>
         </div>
 
@@ -273,7 +273,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
               </ul>
             </div>
 
-            <p className="text-xs text-gray-500 text-center italic">
+            <p className="text-xs text-gray-300 text-center italic">
               Analysis powered by OpenAI GPT-5 with strategic execution frameworks
             </p>
           </div>

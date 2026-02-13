@@ -167,7 +167,7 @@ export default function DemoCompletionScreen({
               <div className="flex items-center justify-center gap-6 text-center flex-wrap">
                 <div>
                   <div className="text-3xl md:text-4xl font-bold text-red-400/70 line-through">72 hours</div>
-                  <div className="text-sm text-slate-500">Traditional Response</div>
+                  <div className="text-sm text-slate-300">Traditional Response</div>
                 </div>
                 <ArrowRight className="h-8 w-8 text-emerald-400 hidden md:block" />
                 <div className="text-2xl text-emerald-400 md:hidden">→</div>
@@ -190,7 +190,7 @@ export default function DemoCompletionScreen({
                   <highlight.icon className={`h-6 w-6 ${highlight.color} mx-auto mb-2`} />
                   <div className={`text-2xl font-bold ${highlight.color}`}>{highlight.value}</div>
                   <div className="text-sm font-medium text-white">{highlight.title}</div>
-                  <div className="text-xs text-slate-400 mt-1">{highlight.description}</div>
+                  <div className="text-xs text-slate-200 mt-1">{highlight.description}</div>
                 </motion.div>
               ))}
             </div>
@@ -210,7 +210,7 @@ export default function DemoCompletionScreen({
                         </div>
                         <div className="flex-1 min-w-0">
                           <h3 className="text-sm font-semibold text-white">{step.title}</h3>
-                          <p className="text-xs text-slate-400">{step.description}</p>
+                          <p className="text-xs text-slate-200">{step.description}</p>
                         </div>
                       </div>
                       <Button 
@@ -257,7 +257,7 @@ export default function DemoCompletionScreen({
                 <Button
                   onClick={onRestart}
                   variant="ghost"
-                  className="text-slate-400 hover:text-white"
+                  className="text-slate-200 hover:text-white"
                   data-testid="restart-demo-btn"
                 >
                   Restart This Demo
@@ -267,7 +267,7 @@ export default function DemoCompletionScreen({
               <Button
                 onClick={onClose}
                 variant="ghost"
-                className="text-slate-500 hover:text-white"
+                className="text-slate-300 hover:text-white"
                 data-testid="completion-close-btn"
               >
                 Return to Platform

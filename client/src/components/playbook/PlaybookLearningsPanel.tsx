@@ -68,7 +68,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
       case 'timing': return 'text-purple-600 dark:text-purple-400';
       case 'resource_allocation': return 'text-green-600 dark:text-green-400';
       case 'escalation': return 'text-red-600 dark:text-red-400';
-      default: return 'text-slate-600 dark:text-slate-300';
+      default: return 'text-slate-400 dark:text-slate-300';
     }
   };
 
@@ -122,7 +122,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-600 dark:text-slate-300">Total Learnings</p>
+                <p className="text-sm text-slate-400 dark:text-slate-300">Total Learnings</p>
                 <p className="text-3xl font-bold text-slate-900 dark:text-white">{totalLearnings}</p>
               </div>
               <Brain className="h-8 w-8 text-blue-500" />
@@ -134,7 +134,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-600 dark:text-slate-300">Applied</p>
+                <p className="text-sm text-slate-400 dark:text-slate-300">Applied</p>
                 <p className="text-3xl font-bold text-green-600 dark:text-green-400">{appliedLearnings}</p>
               </div>
               <CheckCircle2 className="h-8 w-8 text-green-500" />
@@ -146,7 +146,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-600 dark:text-slate-300">Pending Review</p>
+                <p className="text-sm text-slate-400 dark:text-slate-300">Pending Review</p>
                 <p className="text-3xl font-bold text-yellow-600 dark:text-yellow-400">{pendingLearnings}</p>
               </div>
               <AlertCircle className="h-8 w-8 text-yellow-500" />
@@ -158,7 +158,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-600 dark:text-slate-300">Avg Confidence</p>
+                <p className="text-sm text-slate-400 dark:text-slate-300">Avg Confidence</p>
                 <p className="text-3xl font-bold text-purple-600 dark:text-purple-400">
                   {(avgConfidence * 100).toFixed(0)}%
                 </p>
@@ -185,16 +185,16 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
           {learningsLoading ? (
             <div className="flex items-center justify-center py-12">
               <div className="text-center">
-                <Brain className="h-12 w-12 text-slate-400 mx-auto mb-4 animate-pulse" />
-                <p className="text-slate-600 dark:text-slate-300">Loading learnings...</p>
+                <Brain className="h-12 w-12 text-slate-200 mx-auto mb-4 animate-pulse" />
+                <p className="text-slate-400 dark:text-slate-300">Loading learnings...</p>
               </div>
             </div>
           ) : safeLearnings.length === 0 ? (
             <div className="flex items-center justify-center py-12">
               <div className="text-center">
-                <Lightbulb className="h-12 w-12 text-slate-400 mx-auto mb-4" />
-                <p className="text-slate-600 dark:text-slate-300">No learnings captured yet</p>
-                <p className="text-sm text-slate-500 mt-2">
+                <Lightbulb className="h-12 w-12 text-slate-200 mx-auto mb-4" />
+                <p className="text-slate-400 dark:text-slate-300">No learnings captured yet</p>
+                <p className="text-sm text-slate-300 mt-2">
                   Execute this playbook to start building institutional knowledge
                 </p>
               </div>
@@ -248,7 +248,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
                                 <p className="text-slate-900 dark:text-white font-medium">
                                   {learning.learning}
                                 </p>
-                                <div className="flex items-center gap-4 mt-2 text-xs text-slate-500">
+                                <div className="flex items-center gap-4 mt-2 text-xs text-slate-300">
                                   <span className="flex items-center gap-1">
                                     <Clock className="h-3 w-3" />
                                     {format(new Date(learning.extractedAt), 'PPp')}
@@ -308,9 +308,9 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
         <CardContent>
           <div className="flex items-center justify-center py-12">
             <div className="text-center">
-              <History className="h-12 w-12 text-slate-400 mx-auto mb-4" />
-              <p className="text-slate-600 dark:text-slate-300">Version tracking coming soon</p>
-              <p className="text-sm text-slate-500 mt-2">
+              <History className="h-12 w-12 text-slate-200 mx-auto mb-4" />
+              <p className="text-slate-400 dark:text-slate-300">Version tracking coming soon</p>
+              <p className="text-sm text-slate-300 mt-2">
                 Playbook changes will be automatically versioned
               </p>
             </div>

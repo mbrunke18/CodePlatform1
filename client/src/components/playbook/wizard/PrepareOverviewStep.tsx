@@ -94,7 +94,7 @@ export default function PrepareOverviewStep({ data, onChange, playbook }: Prepar
       case 'in_progress':
         return <Clock className="h-4 w-4 text-amber-500" />;
       default:
-        return <AlertCircle className="h-4 w-4 text-slate-400" />;
+        return <AlertCircle className="h-4 w-4 text-slate-200" />;
     }
   };
 

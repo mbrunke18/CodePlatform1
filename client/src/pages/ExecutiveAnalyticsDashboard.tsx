@@ -323,9 +323,9 @@ export default function ExecutiveAnalyticsDashboard() {
         
         {/* Breadcrumb Navigation */}
         <div className="mb-6">
-          <div className="flex items-center gap-2 text-sm text-gray-400">
+          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-200">
             <Link to="/">
-              <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white p-1 h-auto">
+              <Button variant="ghost" size="sm" className="text-gray-600 dark:text-gray-200 hover:text-white p-1 h-auto">
                 <Home className="h-4 w-4" />
               </Button>
             </Link>
@@ -376,7 +376,7 @@ export default function ExecutiveAnalyticsDashboard() {
                 <Users className="h-5 w-5 text-blue-400" />
               </div>
               <div className="text-2xl font-bold text-white">{realTimeData.activeUsers.toLocaleString()}</div>
-              <div className="text-sm text-slate-400">Live concurrent users</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Live concurrent users</div>
             </CardContent>
           </Card>
 
@@ -387,7 +387,7 @@ export default function ExecutiveAnalyticsDashboard() {
                 <DollarSign className="h-5 w-5 text-emerald-400" />
               </div>
               <div className="text-2xl font-bold text-white">{formatCurrency(realTimeData.revenue)}</div>
-              <div className="text-sm text-slate-400">Today's revenue</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Today's revenue</div>
             </CardContent>
           </Card>
 
@@ -398,7 +398,7 @@ export default function ExecutiveAnalyticsDashboard() {
                 <Target className="h-5 w-5 text-purple-400" />
               </div>
               <div className="text-2xl font-bold text-white">{realTimeData.conversionRate}%</div>
-              <div className="text-sm text-slate-400">Conversion rate</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Conversion rate</div>
             </CardContent>
           </Card>
 
@@ -409,7 +409,7 @@ export default function ExecutiveAnalyticsDashboard() {
                 <CheckCircle className="h-5 w-5 text-emerald-400" />
               </div>
               <div className="text-2xl font-bold text-white">{realTimeData.customerSat}%</div>
-              <div className="text-sm text-slate-400">Satisfaction score</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Satisfaction score</div>
             </CardContent>
           </Card>
 
@@ -420,7 +420,7 @@ export default function ExecutiveAnalyticsDashboard() {
                 <Activity className="h-5 w-5 text-emerald-400" />
               </div>
               <div className="text-2xl font-bold text-white">{realTimeData.systemHealth}%</div>
-              <div className="text-sm text-slate-400">Platform uptime</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Platform uptime</div>
             </CardContent>
           </Card>
         </div>
@@ -450,9 +450,9 @@ export default function ExecutiveAnalyticsDashboard() {
                     <div className={`text-sm mb-2 ${metric.trend === 'up' ? 'text-emerald-400' : metric.trend === 'down' ? 'text-red-400' : 'text-amber-400'}`}>
                       {metric.change} vs previous period
                     </div>
-                    <div className="text-xs text-slate-400">{metric.description}</div>
+                    <div className="text-xs text-slate-600 dark:text-slate-200">{metric.description}</div>
                     {metric.benchmark && (
-                      <div className="text-xs text-slate-500 mt-2">{metric.benchmark}</div>
+                      <div className="text-xs text-slate-300 mt-2">{metric.benchmark}</div>
                     )}
                   </CardContent>
                 </Card>
@@ -475,9 +475,9 @@ export default function ExecutiveAnalyticsDashboard() {
                 <CardContent className="p-6">
                   <div className="h-64 flex items-center justify-center bg-slate-800/50 rounded-lg">
                     <div className="text-center">
-                      <LineChart className="h-16 w-16 text-slate-400 mx-auto mb-4" />
-                      <p className="text-slate-400">Interactive revenue chart</p>
-                      <p className="text-xs text-slate-500">12.4% growth trajectory</p>
+                      <LineChart className="h-16 w-16 text-slate-600 dark:text-slate-200 mx-auto mb-4" />
+                      <p className="text-slate-600 dark:text-slate-200">Interactive revenue chart</p>
+                      <p className="text-xs text-slate-300">12.4% growth trajectory</p>
                     </div>
                   </div>
                 </CardContent>
@@ -538,7 +538,7 @@ export default function ExecutiveAnalyticsDashboard() {
                         <p className="text-slate-300 mb-4">{insight.description}</p>
                       </div>
                       <div className="text-right">
-                        <div className="text-sm text-slate-400">Confidence</div>
+                        <div className="text-sm text-slate-600 dark:text-slate-200">Confidence</div>
                         <div className="text-xl font-bold text-white">{insight.confidence}%</div>
                       </div>
                     </div>
@@ -592,11 +592,11 @@ export default function ExecutiveAnalyticsDashboard() {
                   <CardContent className="space-y-4">
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
-                        <div className="text-slate-400">Budget</div>
+                        <div className="text-slate-600 dark:text-slate-200">Budget</div>
                         <div className="text-white font-medium">{formatCurrency(dept.budget)}</div>
                       </div>
                       <div>
-                        <div className="text-slate-400">Headcount</div>
+                        <div className="text-slate-600 dark:text-slate-200">Headcount</div>
                         <div className="text-white font-medium">{dept.headcount} people</div>
                       </div>
                     </div>
@@ -638,17 +638,17 @@ export default function ExecutiveAnalyticsDashboard() {
                 <CardContent className="space-y-4">
                   <div className="h-48 flex items-center justify-center bg-slate-800/50 rounded-lg">
                     <div className="text-center">
-                      <BarChart className="h-12 w-12 text-slate-400 mx-auto mb-2" />
-                      <p className="text-slate-400">Predictive revenue model</p>
+                      <BarChart className="h-12 w-12 text-slate-600 dark:text-slate-200 mx-auto mb-2" />
+                      <p className="text-slate-600 dark:text-slate-200">Predictive revenue model</p>
                     </div>
                   </div>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <div className="text-slate-400">Q2 Forecast</div>
+                      <div className="text-slate-600 dark:text-slate-200">Q2 Forecast</div>
                       <div className="text-white font-medium">$3.2M (+12.3%)</div>
                     </div>
                     <div>
-                      <div className="text-slate-400">Confidence</div>
+                      <div className="text-slate-600 dark:text-slate-200">Confidence</div>
                       <div className="text-emerald-400 font-medium">87%</div>
                     </div>
                   </div>
@@ -670,21 +670,21 @@ export default function ExecutiveAnalyticsDashboard() {
                         <span className="text-white font-medium">Market Growth</span>
                         <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">POSITIVE</Badge>
                       </div>
-                      <div className="text-sm text-slate-400">Industry expanding 8.2% annually</div>
+                      <div className="text-sm text-slate-600 dark:text-slate-200">Industry expanding 8.2% annually</div>
                     </div>
                     <div className="p-3 bg-slate-800/50 rounded-lg">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-white font-medium">Competitive Position</span>
                         <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">STRONG</Badge>
                       </div>
-                      <div className="text-sm text-slate-400">Top 3 market position maintained</div>
+                      <div className="text-sm text-slate-600 dark:text-slate-200">Top 3 market position maintained</div>
                     </div>
                     <div className="p-3 bg-slate-800/50 rounded-lg">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-white font-medium">Customer Demand</span>
                         <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">HIGH</Badge>
                       </div>
-                      <div className="text-sm text-slate-400">23% increase in qualified leads</div>
+                      <div className="text-sm text-slate-600 dark:text-slate-200">23% increase in qualified leads</div>
                     </div>
                   </div>
                 </CardContent>

@@ -20,7 +20,7 @@ export function BackButton({ label = "Back", className = "" }: BackButtonProps) 
       variant="ghost"
       size="sm"
       onClick={handleBack}
-      className={`text-slate-400 hover:text-white hover:bg-slate-800 gap-2 ${className}`}
+      className={`text-slate-200 hover:text-white hover:bg-slate-800 gap-2 ${className}`}
     >
       <ArrowLeft className="h-4 w-4" />
       {label}

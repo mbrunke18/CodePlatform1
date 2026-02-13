@@ -168,17 +168,17 @@ export default function ROICalculator() {
                 <div className="flex items-center justify-center gap-8 flex-wrap">
                   <div className="text-center">
                     <div className="text-3xl font-bold text-emerald-400">10.3%</div>
-                    <p className="text-sm text-slate-400">Revenue/Employee Growth</p>
-                    <p className="text-xs text-slate-500">Organizations that improved agility</p>
+                    <p className="text-sm text-slate-200">Revenue/Employee Growth</p>
+                    <p className="text-xs text-slate-300">Organizations that improved agility</p>
                   </div>
-                  <div className="text-2xl text-slate-500">vs</div>
+                  <div className="text-2xl text-slate-300">vs</div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-red-400">3.5%</div>
-                    <p className="text-sm text-slate-400">Revenue/Employee Growth</p>
-                    <p className="text-xs text-slate-500">Organizations that didn't improve</p>
+                    <p className="text-sm text-slate-200">Revenue/Employee Growth</p>
+                    <p className="text-xs text-slate-300">Organizations that didn't improve</p>
                   </div>
                 </div>
-                <p className="text-center text-sm text-slate-400 mt-4">
+                <p className="text-center text-sm text-slate-200 mt-4">
                   Source: 2025 Business Agility Report (244 organizations)
                 </p>
               </CardContent>
@@ -260,7 +260,7 @@ export default function ROICalculator() {
                 <CardContent className="space-y-6">
                   <div className="space-y-2">
                     <Label className="text-slate-300">Strategic Events per Year</Label>
-                    <div className="text-xs text-slate-500 mb-2">
+                    <div className="text-xs text-slate-300 mb-2">
                       Crises, competitive responses, market entries, M&A, regulatory changes
                     </div>
                     <div className="flex items-center gap-4">
@@ -281,7 +281,7 @@ export default function ROICalculator() {
 
                   <div className="space-y-2">
                     <Label className="text-slate-300">Average Response Time (Hours)</Label>
-                    <div className="text-xs text-slate-500 mb-2">
+                    <div className="text-xs text-slate-300 mb-2">
                       Time from event detection to coordinated response execution
                     </div>
                     <div className="flex items-center gap-4">
@@ -356,13 +356,13 @@ export default function ROICalculator() {
                       <div className="text-2xl font-bold text-white">
                         {formatCurrency(calculations.totalAnnualValue)}
                       </div>
-                      <div className="text-sm text-slate-400">Total Annual Value</div>
+                      <div className="text-sm text-slate-200">Total Annual Value</div>
                     </div>
                     <div className="bg-slate-800/50 rounded-lg p-4 text-center">
                       <div className="text-2xl font-bold text-white">
                         {calculations.paybackMonths.toFixed(1)} mo
                       </div>
-                      <div className="text-sm text-slate-400">Payback Period</div>
+                      <div className="text-sm text-slate-200">Payback Period</div>
                     </div>
                   </div>
 
@@ -401,7 +401,7 @@ export default function ROICalculator() {
                     <div className="bg-green-950/30 rounded-lg p-4 border border-green-500/20">
                       <div className="text-sm text-green-400 mb-1">With ExecuteIQ</div>
                       <div className="text-2xl font-bold text-white">~2 hours</div>
-                      <div className="text-xs text-slate-500">12 min decision + 90 min execution</div>
+                      <div className="text-xs text-slate-300">12 min decision + 90 min execution</div>
                     </div>
                   </div>
                 </CardContent>
@@ -421,7 +421,7 @@ export default function ROICalculator() {
                       <Clock className="h-5 w-5 text-blue-400" />
                       <div>
                         <div className="text-white">Executive Time Saved</div>
-                        <div className="text-xs text-slate-500">
+                        <div className="text-xs text-slate-300">
                           {formatNumber(Math.round(calculations.timeSavedHoursPerYear))} hours/year
                         </div>
                       </div>
@@ -436,7 +436,7 @@ export default function ROICalculator() {
                       <DollarSign className="h-5 w-5 text-green-400" />
                       <div>
                         <div className="text-white">Revenue Protected</div>
-                        <div className="text-xs text-slate-500">
+                        <div className="text-xs text-slate-300">
                           From faster competitive response
                         </div>
                       </div>
@@ -451,7 +451,7 @@ export default function ROICalculator() {
                       <Shield className="h-5 w-5 text-amber-400" />
                       <div>
                         <div className="text-white">Compliance Risk Reduction</div>
-                        <div className="text-xs text-slate-500">
+                        <div className="text-xs text-slate-300">
                           Faster regulatory response
                         </div>
                       </div>
@@ -473,7 +473,7 @@ export default function ROICalculator() {
               </Card>
 
               {/* Disclaimer */}
-              <div className="text-xs text-slate-500 text-center">
+              <div className="text-xs text-slate-300 text-center">
                 * Calculations are estimates based on industry benchmarks and your inputs.
                 Actual results may vary. Contact us for a detailed analysis.
               </div>

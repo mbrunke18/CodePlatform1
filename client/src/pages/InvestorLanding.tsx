@@ -518,7 +518,7 @@ export default function InvestorLanding() {
                 <CardContent className="pt-6">
                   <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">LTV:CAC Ratio</div>
                   <div className="text-4xl font-bold text-green-600 mb-1" data-testid="text-ltv-cac">8.4:1</div>
-                  <div className="text-xs text-slate-500">Target: &gt;3:1 (Exceptional)</div>
+                  <div className="text-xs text-slate-300">Target: &gt;3:1 (Exceptional)</div>
                 </CardContent>
               </Card>
 
@@ -526,7 +526,7 @@ export default function InvestorLanding() {
                 <CardContent className="pt-6">
                   <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">CAC Payback</div>
                   <div className="text-4xl font-bold text-blue-600 mb-1" data-testid="text-payback">7 months</div>
-                  <div className="text-xs text-slate-500">Target: &lt;12mo (Excellent)</div>
+                  <div className="text-xs text-slate-300">Target: &lt;12mo (Excellent)</div>
                 </CardContent>
               </Card>
 
@@ -534,7 +534,7 @@ export default function InvestorLanding() {
                 <CardContent className="pt-6">
                   <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">Net Dollar Retention</div>
                   <div className="text-4xl font-bold text-purple-600 mb-1" data-testid="text-ndr">142%</div>
-                  <div className="text-xs text-slate-500">Target: &gt;120% (Best-in-class)</div>
+                  <div className="text-xs text-slate-300">Target: &gt;120% (Best-in-class)</div>
                 </CardContent>
               </Card>
 
@@ -542,7 +542,7 @@ export default function InvestorLanding() {
                 <CardContent className="pt-6">
                   <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">Gross Margin</div>
                   <div className="text-4xl font-bold text-indigo-600 mb-1" data-testid="text-gross-margin">87%</div>
-                  <div className="text-xs text-slate-500">Target: &gt;80% (Premium SaaS)</div>
+                  <div className="text-xs text-slate-300">Target: &gt;80% (Premium SaaS)</div>
                 </CardContent>
               </Card>
             </div>

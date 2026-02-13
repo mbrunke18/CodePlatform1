@@ -73,7 +73,7 @@ function MetricCard({
   const trendClasses = {
     up: 'status-success',
     down: 'status-error',
-    neutral: 'text-slate-500 dark:text-slate-300'
+    neutral: 'text-slate-300 dark:text-slate-300'
   };
 
   return (
@@ -88,10 +88,10 @@ function MetricCard({
       </CardHeader>
       <CardContent className="space-y-3">
         <div>
-          <CardTitle className="text-sm font-medium text-slate-500 dark:text-slate-300 mb-1">{title}</CardTitle>
+          <CardTitle className="text-sm font-medium text-slate-300 dark:text-slate-300 mb-1">{title}</CardTitle>
           <div className="flex items-baseline gap-1">
             <span className="text-3xl font-bold text-slate-900 dark:text-white">{value}</span>
-            {unit && <span className="text-lg text-slate-400 dark:text-slate-500">{unit}</span>}
+            {unit && <span className="text-lg text-slate-600 dark:text-slate-300">{unit}</span>}
           </div>
         </div>
         
@@ -104,7 +104,7 @@ function MetricCard({
           <Button 
             variant="ghost" 
             size="sm"
-            className="w-full justify-between text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 -mx-2"
+            className="w-full justify-between text-slate-400 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 -mx-2"
           >
             {action}
             <ChevronRight className="h-4 w-4" />
@@ -169,7 +169,7 @@ export default function ExecutiveScorecard() {
               <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Executive Scorecard</h1>
               <OnboardingTrigger pageId="executive-scorecard" autoStart={true} className="bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/50" />
             </div>
-            <p className="text-slate-500 dark:text-slate-300 text-sm">Strategic execution metrics at a glance</p>
+            <p className="text-slate-300 dark:text-slate-300 text-sm">Strategic execution metrics at a glance</p>
           </div>
           <Badge className="bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800">
             <Activity className="h-3 w-3 mr-1.5" />
@@ -188,7 +188,7 @@ export default function ExecutiveScorecard() {
                     overallStatus === 'warning' ? 'bg-amber-500' : 'bg-red-500'
                   }`} />
                   <div>
-                    <div className="text-xs text-slate-500 dark:text-slate-300 uppercase tracking-wide">System Status</div>
+                    <div className="text-xs text-slate-300 dark:text-slate-300 uppercase tracking-wide">System Status</div>
                     <div className="text-slate-900 dark:text-white font-semibold">
                       {overallStatus === 'good' ? 'All Systems Operational' :
                        overallStatus === 'warning' ? 'Attention Needed' : 'Action Required'}
@@ -197,14 +197,14 @@ export default function ExecutiveScorecard() {
                 </div>
                 <div className="h-8 w-px bg-slate-200 dark:bg-slate-700 hidden sm:block" />
                 <div>
-                  <div className="text-xs text-slate-500 dark:text-slate-300 uppercase tracking-wide">Last Activation</div>
+                  <div className="text-xs text-slate-300 dark:text-slate-300 uppercase tracking-wide">Last Activation</div>
                   <div className="text-slate-900 dark:text-white font-semibold">
                     {last30Days.length > 0 ? 'Today' : 'No recent activity'}
                   </div>
                 </div>
                 <div className="h-8 w-px bg-slate-200 dark:bg-slate-700 hidden sm:block" />
                 <div>
-                  <div className="text-xs text-slate-500 dark:text-slate-300 uppercase tracking-wide">Response Time</div>
+                  <div className="text-xs text-slate-300 dark:text-slate-300 uppercase tracking-wide">Response Time</div>
                   <div className="text-slate-900 dark:text-white font-semibold">
                     {avgResponseTime > 0 ? `${Math.round(avgResponseTime)} min avg` : '—'}
                   </div>
@@ -283,7 +283,7 @@ export default function ExecutiveScorecard() {
         </div>
 
         {/* Footer note */}
-        <p className="text-center text-xs text-slate-500 dark:text-slate-300 pt-4">
+        <p className="text-center text-xs text-slate-300 dark:text-slate-300 pt-4">
           Data refreshes automatically • Last updated just now
         </p>
       </div>

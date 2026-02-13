@@ -137,7 +137,7 @@ export default function Sitemap() {
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             ExecuteIQ Sitemap
           </h1>
-          <p className="text-xl text-slate-400">
+          <p className="text-xl text-slate-200">
             Complete directory of all pages and features available in ExecuteIQ
           </p>
         </div>
@@ -172,19 +172,19 @@ export default function Sitemap() {
             <div className="grid md:grid-cols-4 gap-6 text-center">
               <div>
                 <div className="text-4xl font-bold text-blue-400 mb-2">7</div>
-                <div className="text-slate-400">Live Interactive Demos</div>
+                <div className="text-slate-200">Live Interactive Demos</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-green-400 mb-2">10</div>
-                <div className="text-slate-400">Industry Demos</div>
+                <div className="text-slate-200">Industry Demos</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-purple-400 mb-2">166</div>
-                <div className="text-slate-400">Strategic Playbooks</div>
+                <div className="text-slate-200">Strategic Playbooks</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-orange-400 mb-2">70+</div>
-                <div className="text-slate-400">Total Pages</div>
+                <div className="text-slate-200">Total Pages</div>
               </div>
             </div>
           </CardContent>

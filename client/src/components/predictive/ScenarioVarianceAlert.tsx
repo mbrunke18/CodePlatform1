@@ -176,7 +176,7 @@ export default function ScenarioVarianceAlert({
                   <Badge className="bg-amber-500 text-white">{warningCount} Warning</Badge>
                 )}
               </CardTitle>
-              <p className="text-xs text-slate-600 dark:text-slate-300">
+              <p className="text-xs text-slate-400 dark:text-slate-300">
                 Significant deviations from baseline detected
               </p>
             </div>
@@ -214,7 +214,7 @@ export default function ScenarioVarianceAlert({
                       {alert.variance > 0 ? '+' : ''}{alert.variance}% variance
                     </Badge>
                   </div>
-                  <div className="flex items-center gap-1 text-xs text-slate-500">
+                  <div className="flex items-center gap-1 text-xs text-slate-300">
                     <Clock className="w-3 h-3" />
                     {alert.detectedAt}
                   </div>
@@ -222,11 +222,11 @@ export default function ScenarioVarianceAlert({
 
                 <div className="grid grid-cols-2 gap-4 mb-3 text-sm">
                   <div>
-                    <span className="text-slate-500">Baseline:</span>
+                    <span className="text-slate-300">Baseline:</span>
                     <span className="ml-2 font-medium">{alert.baseline}</span>
                   </div>
                   <div>
-                    <span className="text-slate-500">Current:</span>
+                    <span className="text-slate-300">Current:</span>
                     <span className={`ml-2 font-medium ${
                       alert.severity === 'critical' ? 'text-red-600' : 'text-amber-600'
                     }`}>
@@ -237,7 +237,7 @@ export default function ScenarioVarianceAlert({
 
                 {alert.affectedPlaybooks.length > 0 && (
                   <div className="mb-2">
-                    <span className="text-xs text-slate-500">Affected Playbooks: </span>
+                    <span className="text-xs text-slate-300">Affected Playbooks: </span>
                     <span className="text-xs font-medium">{alert.affectedPlaybooks.join(', ')}</span>
                   </div>
                 )}

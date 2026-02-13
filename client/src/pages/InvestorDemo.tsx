@@ -319,7 +319,7 @@ export default function InvestorDemo() {
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-2" data-testid="heading-investor-demo">
               ExecuteIQ: The Strategic Execution Operating System
             </h1>
-            <p className="text-lg text-slate-400">
+            <p className="text-lg text-slate-200">
               First mover in $15B+ SEOS category. 166 playbooks. 12-minute execution.
             </p>
           </div>
@@ -353,7 +353,7 @@ export default function InvestorDemo() {
                     variant="ghost"
                     size="sm"
                     onClick={() => { setManualMode(true); setIsPlaying(false); }}
-                    className={`text-sm ${manualMode ? 'text-emerald-400' : 'text-slate-400'}`}
+                    className={`text-sm ${manualMode ? 'text-emerald-400' : 'text-slate-200'}`}
                     data-testid="button-manual-mode"
                   >
                     Manual Mode
@@ -362,7 +362,7 @@ export default function InvestorDemo() {
                     variant="ghost"
                     size="sm"
                     onClick={handleReset}
-                    className="text-slate-400"
+                    className="text-slate-200"
                     data-testid="button-reset-demo"
                   >
                     <RotateCcw className="h-4 w-4" />
@@ -371,14 +371,14 @@ export default function InvestorDemo() {
                 
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-slate-500">Speed:</span>
+                    <span className="text-xs text-slate-300">Speed:</span>
                     {[1, 2, 4].map((speed) => (
                       <Button
                         key={speed}
                         variant="ghost"
                         size="sm"
                         onClick={() => setPlaybackSpeed(speed)}
-                        className={`text-xs px-2 ${playbackSpeed === speed ? 'text-emerald-400 bg-emerald-500/20' : 'text-slate-400'}`}
+                        className={`text-xs px-2 ${playbackSpeed === speed ? 'text-emerald-400 bg-emerald-500/20' : 'text-slate-200'}`}
                         data-testid={`button-speed-${speed}x`}
                       >
                         {speed}x
@@ -387,11 +387,11 @@ export default function InvestorDemo() {
                   </div>
                   
                   <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-lg">
-                    <Clock className="h-4 w-4 text-slate-400" />
+                    <Clock className="h-4 w-4 text-slate-200" />
                     <span className="text-white font-mono text-sm">
                       {Math.floor(elapsedTime / 60)}:{(elapsedTime % 60).toString().padStart(2, '0')}
                     </span>
-                    <span className="text-slate-500 text-xs">/ 3:00</span>
+                    <span className="text-slate-300 text-xs">/ 3:00</span>
                   </div>
                 </div>
               </div>
@@ -414,7 +414,7 @@ export default function InvestorDemo() {
                 className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   idx === currentStageIndex
                     ? `${stage.phaseColor} text-white`
-                    : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                    : 'bg-slate-800 text-slate-200 hover:bg-slate-700'
                 }`}
                 data-testid={`button-stage-${idx}`}
               >
@@ -432,7 +432,7 @@ export default function InvestorDemo() {
                       <Badge className={`${currentStage.phaseColor} text-white`}>
                         {currentStage.phase}
                       </Badge>
-                      <span className="text-slate-400 text-sm">
+                      <span className="text-slate-200 text-sm">
                         {currentStage.beat} — {currentStageIndex + 1} of {IDEA_STORY.length}
                       </span>
                     </div>
@@ -443,7 +443,7 @@ export default function InvestorDemo() {
                           size="sm"
                           onClick={handlePrevStage}
                           disabled={currentStageIndex === 0}
-                          className="text-slate-400"
+                          className="text-slate-200"
                           data-testid="button-prev-stage"
                         >
                           ← Back
@@ -459,7 +459,7 @@ export default function InvestorDemo() {
                             setShowConfetti(true);
                             setTimeout(() => setShowConfetti(false), 5000);
                           }}
-                          className="text-slate-400"
+                          className="text-slate-200"
                           data-testid="button-skip-to-end"
                         >
                           <SkipForward className="h-4 w-4 mr-1" />
@@ -491,7 +491,7 @@ export default function InvestorDemo() {
                           <p className={`text-lg ${currentStage.color} mb-3`}>
                             {currentStage.subtitle}
                           </p>
-                          <p className="text-slate-400 leading-relaxed mb-4">
+                          <p className="text-slate-200 leading-relaxed mb-4">
                             {currentStage.description}
                           </p>
                           
@@ -511,7 +511,7 @@ export default function InvestorDemo() {
                         {currentStage.metrics.map((metric, idx) => (
                           <div key={idx} className="bg-slate-800/50 rounded-lg p-4 text-center">
                             <div className="text-2xl font-bold text-white mb-1">{metric.value}</div>
-                            <div className="text-xs text-slate-400">{metric.label}</div>
+                            <div className="text-xs text-slate-200">{metric.label}</div>
                           </div>
                         ))}
                       </div>
@@ -529,7 +529,7 @@ export default function InvestorDemo() {
                                 <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
                                 <div>
                                   <span className="text-white">{item.domain}:</span>{' '}
-                                  <span className="text-slate-400">{item.defaults}</span>
+                                  <span className="text-slate-200">{item.defaults}</span>
                                 </div>
                               </div>
                             ))}
@@ -576,7 +576,7 @@ export default function InvestorDemo() {
                           <div className="bg-emerald-900/30 border border-emerald-500/30 rounded-lg p-4 text-center">
                             <CheckCircle2 className="h-8 w-8 text-emerald-400 mx-auto mb-2" />
                             <p className="text-emerald-400 font-medium">Story Complete</p>
-                            <p className="text-slate-400 text-sm">From signal to coordinated action: 12 minutes vs 72 hours</p>
+                            <p className="text-slate-200 text-sm">From signal to coordinated action: 12 minutes vs 72 hours</p>
                           </div>
                           <div className="flex gap-3">
                             <Button
@@ -623,7 +623,7 @@ export default function InvestorDemo() {
                         </div>
                         <div>
                           <div className="text-sm font-medium text-white">{item.title}</div>
-                          <div className="text-xs text-slate-400">{item.description}</div>
+                          <div className="text-xs text-slate-200">{item.description}</div>
                         </div>
                       </div>
                     ))}
@@ -654,7 +654,7 @@ export default function InvestorDemo() {
                             <div className={`w-2 h-2 rounded-full ${isAcknowledged ? 'bg-emerald-400' : 'bg-slate-600'}`} />
                             <div className="flex-1 min-w-0">
                               <div className="text-sm font-medium text-white truncate">{stakeholder.name}</div>
-                              <div className="text-xs text-slate-400 truncate">{stakeholder.role}</div>
+                              <div className="text-xs text-slate-200 truncate">{stakeholder.role}</div>
                             </div>
                             {isAcknowledged && <CheckCircle2 className="h-4 w-4 text-emerald-400 flex-shrink-0" />}
                           </div>
@@ -663,7 +663,7 @@ export default function InvestorDemo() {
                     </div>
                     <div className="mt-3 pt-3 border-t border-slate-700">
                       <div className="flex justify-between text-sm">
-                        <span className="text-slate-400">Acknowledged</span>
+                        <span className="text-slate-200">Acknowledged</span>
                         <span className="text-white font-medium">{acknowledgedStakeholders.length} / {STAKEHOLDER_ACKNOWLEDGMENTS.length}</span>
                       </div>
                       <Progress value={(acknowledgedStakeholders.length / STAKEHOLDER_ACKNOWLEDGMENTS.length) * 100} className="h-2 mt-2" />
@@ -683,19 +683,19 @@ export default function InvestorDemo() {
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-slate-400">TAM</span>
+                      <span className="text-sm text-slate-200">TAM</span>
                       <span className="text-sm font-medium text-white">$15B+</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-slate-400">Target ACV</span>
+                      <span className="text-sm text-slate-200">Target ACV</span>
                       <span className="text-sm font-medium text-white">$250K-$1.5M</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-slate-400">Beachhead</span>
+                      <span className="text-sm text-slate-200">Beachhead</span>
                       <span className="text-sm font-medium text-white">Gaming & Hospitality</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-slate-400">Category</span>
+                      <span className="text-sm text-slate-200">Category</span>
                       <span className="text-sm font-medium text-emerald-400">Category Creator</span>
                     </div>
                   </div>

@@ -124,7 +124,7 @@ export default function StandardNav() {
             className="flex items-center gap-3 py-2.5"
             data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
           >
-            <link.icon className={`h-4 w-4 ${(link as any).featured ? 'text-poise-teal' : 'text-slate-400'}`} />
+            <link.icon className={`h-4 w-4 ${(link as any).featured ? 'text-poise-teal' : 'text-slate-200'}`} />
             <div className="flex-1">
               <div className={`font-medium text-sm ${(link as any).featured ? 'text-poise-teal' : ''}`}>
                 {link.label}
@@ -159,7 +159,7 @@ export default function StandardNav() {
             {!isHomePage && (
               <button
                 onClick={handleBack}
-                className="flex items-center gap-1 px-2 py-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors text-sm"
+                className="flex items-center gap-1 px-2 py-1.5 text-slate-200 hover:text-white hover:bg-slate-800 rounded-lg transition-colors text-sm"
                 data-testid="nav-back-button"
               >
                 <ArrowLeft className="h-4 w-4" />
@@ -223,7 +223,7 @@ export default function StandardNav() {
                   </DropdownMenuItem>
                 ))}
                 <DropdownMenuSeparator />
-                <DropdownMenuLabel className="text-slate-400">Strategic Tools</DropdownMenuLabel>
+                <DropdownMenuLabel className="text-slate-200">Strategic Tools</DropdownMenuLabel>
                 {platformTools.map((link) => (
                   <DropdownMenuItem key={link.path} onClick={() => navigateTo(link.path)} className="flex items-center gap-3">
                     <link.icon className={`h-4 w-4 ${link.color}`} />
@@ -361,7 +361,7 @@ export default function StandardNav() {
                     isActivePath(link.path) ? 'text-white bg-slate-800' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                   }`}
                 >
-                  <link.icon className="h-4 w-4 text-slate-400" />
+                  <link.icon className="h-4 w-4 text-slate-200" />
                   {link.label}
                 </button>
               ))}
@@ -376,7 +376,7 @@ export default function StandardNav() {
                   onClick={() => navigateTo(link.path)}
                   className="text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-slate-300 hover:text-white hover:bg-slate-800"
                 >
-                  <link.icon className="h-4 w-4 text-slate-400" />
+                  <link.icon className="h-4 w-4 text-slate-200" />
                   {link.label}
                 </button>
               ))}
@@ -391,7 +391,7 @@ export default function StandardNav() {
                   onClick={() => navigateTo(link.path)}
                   className="text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-slate-300 hover:text-white hover:bg-slate-800"
                 >
-                  <link.icon className="h-4 w-4 text-slate-400" />
+                  <link.icon className="h-4 w-4 text-slate-200" />
                   {link.label}
                 </button>
               ))}
@@ -406,7 +406,7 @@ export default function StandardNav() {
                   onClick={() => navigateTo(link.path)}
                   className="text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-slate-300 hover:text-white hover:bg-slate-800"
                 >
-                  <link.icon className="h-4 w-4 text-slate-400" />
+                  <link.icon className="h-4 w-4 text-slate-200" />
                   {link.label}
                 </button>
               ))}
@@ -414,14 +414,14 @@ export default function StandardNav() {
               <div className="border-t border-slate-800 my-3" />
               
               {/* Company */}
-              <p className="px-4 py-2 text-xs text-slate-500 uppercase tracking-wide font-semibold">Company</p>
+              <p className="px-4 py-2 text-xs text-slate-300 uppercase tracking-wide font-semibold">Company</p>
               {companyLinks.map((link) => (
                 <button
                   key={link.path}
                   onClick={() => navigateTo(link.path)}
                   className="text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-slate-300 hover:text-white hover:bg-slate-800"
                 >
-                  <link.icon className="h-4 w-4 text-slate-400" />
+                  <link.icon className="h-4 w-4 text-slate-200" />
                   {link.label}
                 </button>
               ))}

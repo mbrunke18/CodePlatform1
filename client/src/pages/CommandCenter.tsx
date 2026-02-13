@@ -555,15 +555,15 @@ export default function CommandCenter() {
                 <div className="flex items-center justify-center gap-4 mb-6">
                   <div className="text-center px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                     <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">166</div>
-                    <div className="text-xs text-slate-500">Playbooks Ready</div>
+                    <div className="text-xs text-slate-300">Playbooks Ready</div>
                   </div>
                   <div className="text-center px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                     <div className="text-2xl font-bold text-violet-600 dark:text-violet-400">12</div>
-                    <div className="text-xs text-slate-500">Signal Sources</div>
+                    <div className="text-xs text-slate-300">Signal Sources</div>
                   </div>
                   <div className="text-center px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                     <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">&lt;12m</div>
-                    <div className="text-xs text-slate-500">Activation Time</div>
+                    <div className="text-xs text-slate-300">Activation Time</div>
                   </div>
                 </div>
                 <Button 
@@ -687,7 +687,7 @@ export default function CommandCenter() {
                       ) : event.status === 'in-progress' ? (
                         <Radio className="w-4 h-4 text-blue-600 dark:text-blue-400 animate-pulse" />
                       ) : (
-                        <Clock className="w-4 h-4 text-slate-500" />
+                        <Clock className="w-4 h-4 text-slate-300" />
                       )}
                     </div>
                     <div className="flex-1 min-w-0">
@@ -695,13 +695,13 @@ export default function CommandCenter() {
                         <span className="font-medium text-sm text-slate-900 dark:text-white">
                           {event.team}
                         </span>
-                        <span className="text-xs text-slate-500">{event.time}</span>
+                        <span className="text-xs text-slate-300">{event.time}</span>
                       </div>
                       <p className="text-sm text-slate-600 dark:text-slate-300 truncate">
                         {event.action}
                       </p>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-400 flex-shrink-0" />
+                    <ArrowRight className="w-4 h-4 text-slate-600 dark:text-slate-200 flex-shrink-0" />
                   </div>
                 ))}
               </div>
@@ -735,9 +735,9 @@ export default function CommandCenter() {
                         {alert.title}
                       </p>
                       <div className="flex items-center gap-2 mt-1">
-                        <span className="text-xs text-slate-500">{alert.source}</span>
+                        <span className="text-xs text-slate-300">{alert.source}</span>
                         <span className="text-xs text-slate-300">•</span>
-                        <span className="text-xs text-slate-500">{alert.time}</span>
+                        <span className="text-xs text-slate-300">{alert.time}</span>
                       </div>
                     </div>
                     <Button variant="ghost" size="sm" className="flex-shrink-0">

@@ -80,7 +80,7 @@ export default function StrategyExecutionDashboard() {
     switch (trend) {
       case 'up': return <ArrowUp className="h-4 w-4 text-green-500" />;
       case 'down': return <ArrowDown className="h-4 w-4 text-red-500" />;
-      default: return <Minus className="h-4 w-4 text-slate-400" />;
+      default: return <Minus className="h-4 w-4 text-slate-600 dark:text-slate-200" />;
     }
   };
 
@@ -175,7 +175,7 @@ export default function StrategyExecutionDashboard() {
                       <Zap className="h-6 w-6 text-violet-500" />
                     </div>
                   </div>
-                  <p className="text-xs text-slate-600 mt-2">vs. industry average</p>
+                  <p className="text-xs text-slate-600 dark:text-slate-200 mt-2">vs. industry average</p>
                 </CardContent>
               </Card>
             </div>
@@ -236,7 +236,7 @@ export default function StrategyExecutionDashboard() {
                             <div className="flex items-center justify-between">
                               <div>
                                 <span className="font-medium text-slate-900 dark:text-white">{capability.name}</span>
-                                <p className="text-xs text-slate-600">{capability.domains.join(', ')}</p>
+                                <p className="text-xs text-slate-600 dark:text-slate-200">{capability.domains.join(', ')}</p>
                               </div>
                               <div className="flex items-center gap-2">
                                 {getTrendIcon(capability.trend)}
@@ -275,7 +275,7 @@ export default function StrategyExecutionDashboard() {
                             {metrics && getTrendIcon(metrics.trend)}
                           </div>
                           <div className="mt-4">
-                            <p className="text-xs text-slate-600 mb-1">Domains</p>
+                            <p className="text-xs text-slate-600 dark:text-slate-200 mb-1">Domains</p>
                             <div className="flex flex-wrap gap-1">
                               {capability.domains.map((domain) => (
                                 <Badge key={domain} variant="secondary" className="text-xs">
@@ -320,7 +320,7 @@ export default function StrategyExecutionDashboard() {
                               </div>
                               <div>
                                 <h4 className="font-semibold text-slate-900 dark:text-white">{objective.name}</h4>
-                                <p className="text-sm text-slate-600">Aligned to {capability} capability</p>
+                                <p className="text-sm text-slate-600 dark:text-slate-200">Aligned to {capability} capability</p>
                               </div>
                             </div>
                             <Badge className="bg-poise-teal/20 text-poise-teal">
@@ -371,15 +371,15 @@ export default function StrategyExecutionDashboard() {
                         </div>
                         <div className="grid grid-cols-3 gap-4 text-sm">
                           <div>
-                            <p className="text-slate-600">Magnitude</p>
+                            <p className="text-slate-600 dark:text-slate-200">Magnitude</p>
                             <p className="font-semibold">{signal.magnitude}/10</p>
                           </div>
                           <div>
-                            <p className="text-slate-600">Relevance</p>
+                            <p className="text-slate-600 dark:text-slate-200">Relevance</p>
                             <p className="font-semibold">{signal.relevance}/10</p>
                           </div>
                           <div>
-                            <p className="text-slate-600">Window</p>
+                            <p className="text-slate-600 dark:text-slate-200">Window</p>
                             <p className="font-semibold">{signal.windowDays} days</p>
                           </div>
                         </div>
@@ -408,11 +408,11 @@ export default function StrategyExecutionDashboard() {
                     <div className="grid grid-cols-2 gap-4">
                       <div className="p-4 rounded-lg bg-slate-100 dark:bg-slate-800 text-center">
                         <p className="text-2xl font-bold text-slate-900 dark:text-white">12</p>
-                        <p className="text-sm text-slate-600">Signals converted to executions</p>
+                        <p className="text-sm text-slate-600 dark:text-slate-200">Signals converted to executions</p>
                       </div>
                       <div className="p-4 rounded-lg bg-slate-100 dark:bg-slate-800 text-center">
                         <p className="text-2xl font-bold text-slate-900 dark:text-white">3</p>
-                        <p className="text-sm text-slate-600">Emerging opportunities</p>
+                        <p className="text-sm text-slate-600 dark:text-slate-200">Emerging opportunities</p>
                       </div>
                     </div>
 

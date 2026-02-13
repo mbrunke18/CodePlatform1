@@ -135,7 +135,7 @@ export default function PlaybookLibraryV2() {
                       Playbook Library
                     </h1>
                   </div>
-                  <p className="text-slate-400 max-w-lg">
+                  <p className="text-slate-600 dark:text-slate-200 max-w-lg">
                     {totalCount} battle-tested strategic playbooks. Select a category to explore.
                   </p>
                 </div>
@@ -185,7 +185,7 @@ export default function PlaybookLibraryV2() {
                       <div className="space-y-1.5 mb-4">
                         {config.domains.map((domain, idx) => (
                           <div key={idx} className="flex items-center justify-between text-sm">
-                            <span className="text-slate-600 dark:text-slate-300">{domain.name}</span>
+                            <span className="text-slate-400 dark:text-slate-300">{domain.name}</span>
                             <span className="font-medium text-slate-900 dark:text-white">{domain.count}</span>
                           </div>
                         ))}
@@ -270,7 +270,7 @@ export default function PlaybookLibraryV2() {
                 <div className="max-w-6xl mx-auto px-6 py-8">
                   <div className="flex items-center gap-4 mb-6 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
                     <div className="flex-1 relative max-w-sm">
-                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 dark:text-slate-200" />
                       <Input 
                         placeholder="Search playbooks..." 
                         className="pl-10 border-slate-200 dark:border-slate-700"
@@ -306,9 +306,9 @@ export default function PlaybookLibraryV2() {
                   ) : playbooks.length === 0 ? (
                     <div className="text-center py-20">
                       <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-4">
-                        <Search className="h-8 w-8 text-slate-400" />
+                        <Search className="h-8 w-8 text-slate-600 dark:text-slate-200" />
                       </div>
-                      <p className="text-slate-500 dark:text-slate-300">No playbooks found matching your criteria.</p>
+                      <p className="text-slate-300 dark:text-slate-300">No playbooks found matching your criteria.</p>
                       <Button variant="link" onClick={() => { setSearch(""); setDomainFilter("all"); }}>
                         Clear filters
                       </Button>
@@ -383,11 +383,11 @@ function PlaybookCard({
         <h3 className="font-semibold text-slate-900 dark:text-white mb-2 line-clamp-2 leading-snug">
           {playbook.name}
         </h3>
-        <p className="text-sm text-slate-500 dark:text-slate-300 line-clamp-2 mb-4">
+        <p className="text-sm text-slate-300 dark:text-slate-300 line-clamp-2 mb-4">
           {playbook.description}
         </p>
         
-        <div className="flex items-center gap-4 text-xs text-slate-500 mb-4">
+        <div className="flex items-center gap-4 text-xs text-slate-300 mb-4">
           {!isCustom && (
             <>
               <span className="flex items-center gap-1">

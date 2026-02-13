@@ -501,7 +501,7 @@ export default function TryDemo() {
                               </span>
                             </div>
                           </div>
-                          <ArrowRight className="h-5 w-5 text-slate-400 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                          <ArrowRight className="h-5 w-5 text-slate-200 group-hover:text-white group-hover:translate-x-1 transition-all" />
                         </div>
                       </CardContent>
                     </Card>
@@ -730,7 +730,7 @@ export default function TryDemo() {
                         {isCompleted ? (
                           <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                         ) : (
-                          <IconComponent className={`h-4 w-4 ${isCurrent ? colors.text : 'text-slate-400'}`} />
+                          <IconComponent className={`h-4 w-4 ${isCurrent ? colors.text : 'text-slate-200'}`} />
                         )}
                         <span className={`text-xs font-medium ${isCurrent ? 'text-white' : isCompleted ? 'text-slate-300' : 'text-slate-300'}`}>
                           {phase.name}

@@ -524,7 +524,7 @@ function DemoLiveActivation() {
                 <p className="text-slate-600 dark:text-slate-300 text-lg mb-6">
                   Click "Begin Activation" above to start the 12-minute live demonstration
                 </p>
-                <div className="flex items-center justify-center gap-4 text-sm text-slate-500 dark:text-slate-500">
+                <div className="flex items-center justify-center gap-4 text-sm text-slate-300 dark:text-slate-300">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
                     <span>Real-time coordination</span>
@@ -675,7 +675,7 @@ function DemoLiveActivation() {
                         <div className={`text-xs ${isAcknowledged ? 'text-green-600 dark:text-green-400' : 'text-slate-600 dark:text-slate-300'} truncate`}>
                           {stakeholder.role}
                         </div>
-                        <div className="text-xs text-slate-500 dark:text-slate-500 truncate">
+                        <div className="text-xs text-slate-300 dark:text-slate-300 truncate">
                           {stakeholder.department}
                         </div>
                       </div>
@@ -780,8 +780,8 @@ function DemoLiveActivation() {
                       <div className="text-7xl font-bold text-red-400 mb-3" data-testid="text-without-vexor">
                         48-72h
                       </div>
-                      <div className="text-xl text-slate-400">Traditional coordination</div>
-                      <div className="text-lg text-slate-500 mt-2">Email chains, meetings, delays</div>
+                      <div className="text-xl text-slate-600 dark:text-slate-200">Traditional coordination</div>
+                      <div className="text-lg text-slate-300 mt-2">Email chains, meetings, delays</div>
                     </div>
 
                     {/* Arrow */}
@@ -795,7 +795,7 @@ function DemoLiveActivation() {
                       <div className="text-7xl font-bold text-green-400 mb-3 animate-pulse" data-testid="text-with-vexor">
                         {finalMetrics.coordinationTime}
                       </div>
-                      <div className="text-xl text-slate-400">Strategic velocity</div>
+                      <div className="text-xl text-slate-600 dark:text-slate-200">Strategic velocity</div>
                       <div className="text-lg text-green-400 mt-2 font-semibold">
                         {finalMetrics.velocityMultiplier}x Faster!
                       </div>
@@ -883,7 +883,7 @@ function DemoLiveActivation() {
                     <div className="text-8xl font-bold font-mono tracking-tight" data-testid="text-elapsed-time">
                       {formatTime(elapsedTime)}
                     </div>
-                    <div className="text-2xl text-slate-400 mt-2">
+                    <div className="text-2xl text-slate-600 dark:text-slate-200 mt-2">
                       {demoPhase === 'threshold' && 'Continuing to Full Coordination...'}
                       {demoPhase === 'completing' && 'Finalizing Coordination...'}
                       {demoPhase === 'running' && 'Elapsed Time'}
@@ -899,7 +899,7 @@ function DemoLiveActivation() {
                     data-testid="progress-coordination"
                   />
                   <div className="flex justify-between text-xl">
-                    <span className="text-slate-400">
+                    <span className="text-slate-600 dark:text-slate-200">
                       {acknowledgments.length} / {totalStakeholders} Stakeholders Acknowledged
                     </span>
                     <span className="font-bold text-blue-400">
@@ -947,7 +947,7 @@ function DemoLiveActivation() {
               <div className="text-6xl font-bold text-blue-400" data-testid="text-ack-count">
                 {acknowledgments.length}
               </div>
-              <div className="text-xl text-slate-400 mt-2">
+              <div className="text-xl text-slate-600 dark:text-slate-200 mt-2">
                 out of {totalStakeholders}
               </div>
             </CardContent>
@@ -964,7 +964,7 @@ function DemoLiveActivation() {
               <div className="text-6xl font-bold text-yellow-400" data-testid="text-avg-response">
                 {avgResponseTime}s
               </div>
-              <div className="text-xl text-slate-400 mt-2">
+              <div className="text-xl text-slate-600 dark:text-slate-200 mt-2">
                 per stakeholder
               </div>
             </CardContent>
@@ -981,7 +981,7 @@ function DemoLiveActivation() {
               <div className="text-6xl font-bold text-green-400" data-testid="text-progress">
                 {progress.toFixed(0)}%
               </div>
-              <div className="text-xl text-slate-400 mt-2">
+              <div className="text-xl text-slate-600 dark:text-slate-200 mt-2">
                 of target reached
               </div>
             </CardContent>
@@ -1003,7 +1003,7 @@ function DemoLiveActivation() {
             <CardContent>
               <div className="space-y-3 max-h-[500px] overflow-y-auto" data-testid="feed-timeline">
                 {!executionId && (
-                  <div className="text-center py-12 text-slate-400 text-xl">
+                  <div className="text-center py-12 text-slate-600 dark:text-slate-200 text-xl">
                     Click "Start Demo Activation" to see live execution timeline
                   </div>
                 )}
@@ -1078,7 +1078,7 @@ function DemoLiveActivation() {
             <CardContent>
               <div className="space-y-3 max-h-[600px] overflow-y-auto" data-testid="feed-acknowledgments">
                 {acknowledgments.length === 0 && (
-                  <div className="text-center py-12 text-slate-400 text-xl">
+                  <div className="text-center py-12 text-slate-600 dark:text-slate-200 text-xl">
                     {executionId 
                       ? 'Waiting for stakeholder acknowledgments...'
                       : 'Click "Start Demo Activation" to begin'
@@ -1100,14 +1100,14 @@ function DemoLiveActivation() {
                             ✓ Human Decision
                           </Badge>
                         </div>
-                        <div className="text-lg text-slate-400">{ack.role}</div>
+                        <div className="text-lg text-slate-600 dark:text-slate-200">{ack.role}</div>
                       </div>
                     </div>
                     <div className="text-right flex-shrink-0">
                       <div className="text-2xl font-bold text-green-400">
                         +{ack.responseTime}s
                       </div>
-                      <div className="text-sm text-slate-400">
+                      <div className="text-sm text-slate-600 dark:text-slate-200">
                         {new Date(ack.acknowledgedAt).toLocaleTimeString()}
                       </div>
                     </div>
@@ -1127,39 +1127,39 @@ function DemoLiveActivation() {
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
-                <div className="text-sm text-slate-400 mb-2">WITHOUT ExecuteIQ</div>
+                <div className="text-sm text-slate-600 dark:text-slate-200 mb-2">WITHOUT ExecuteIQ</div>
                 <div className="flex items-center gap-2">
                   <AlertCircle className="h-6 w-6 text-red-400" />
                   <div className="text-3xl font-bold text-red-400">48-72h</div>
                 </div>
-                <div className="text-lg text-slate-400 mt-2">
+                <div className="text-lg text-slate-600 dark:text-slate-200 mt-2">
                   coordination time
                 </div>
               </div>
 
               <div className="border-t border-slate-700 pt-4">
-                <div className="text-sm text-slate-400 mb-2">WITH ExecuteIQ</div>
+                <div className="text-sm text-slate-600 dark:text-slate-200 mb-2">WITH ExecuteIQ</div>
                 <div className="flex items-center gap-2">
                   <TrendingUp className="h-6 w-6 text-green-400" />
                   <div className="text-3xl font-bold text-green-400">~12min</div>
                 </div>
-                <div className="text-lg text-slate-400 mt-2">
+                <div className="text-lg text-slate-600 dark:text-slate-200 mt-2">
                   coordination time
                 </div>
               </div>
 
               <div className="border-t border-slate-700 pt-4">
-                <div className="text-sm text-slate-400 mb-2">TIME SAVED</div>
+                <div className="text-sm text-slate-600 dark:text-slate-200 mb-2">TIME SAVED</div>
                 <div className="text-4xl font-bold text-purple-400">360x</div>
-                <div className="text-lg text-slate-400 mt-2">
+                <div className="text-lg text-slate-600 dark:text-slate-200 mt-2">
                   faster execution
                 </div>
               </div>
 
               <div className="border-t border-slate-700 pt-4">
-                <div className="text-sm text-slate-400 mb-2">VALUE</div>
+                <div className="text-sm text-slate-600 dark:text-slate-200 mb-2">VALUE</div>
                 <div className="text-3xl font-bold text-green-400">$283K</div>
-                <div className="text-lg text-slate-400 mt-2">
+                <div className="text-lg text-slate-600 dark:text-slate-200 mt-2">
                   executive time saved
                 </div>
               </div>

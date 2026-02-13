@@ -349,7 +349,7 @@ export default function Pricing() {
                     </div>
                     <div className="text-right">
                       <div className="text-xl font-bold text-blue-600">+$50K</div>
-                      <div className="text-xs text-slate-600">per year</div>
+                      <div className="text-xs text-slate-600 dark:text-slate-200">per year</div>
                     </div>
                   </div>
                 </div>
@@ -361,7 +361,7 @@ export default function Pricing() {
                     </div>
                     <div className="text-right">
                       <div className="text-xl font-bold text-blue-600">$150K-$300K</div>
-                      <div className="text-xs text-slate-600">one-time</div>
+                      <div className="text-xs text-slate-600 dark:text-slate-200">one-time</div>
                     </div>
                   </div>
                 </div>

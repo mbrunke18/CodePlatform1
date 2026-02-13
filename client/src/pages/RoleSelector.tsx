@@ -150,7 +150,7 @@ const roleConfigs: RoleConfig[] = [
     category: 'SPECIAL TEAMS',
     gradient: 'from-slate-500/10 to-gray-500/10',
     borderColor: 'border-slate-500/30 hover:border-slate-500/60',
-    iconColor: 'text-slate-400'
+    iconColor: 'text-slate-200'
   },
   {
     id: 'cco',
@@ -211,10 +211,10 @@ export default function RoleSelector() {
                 Experience ExecuteIQ From Your Perspective
               </h1>
             </div>
-            <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-6">
+            <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-6">
               Select your role to experience the full ExecuteIQ product journey — from building playbooks and configuring triggers through live signal detection and 12-minute execution.
             </p>
-            <div className="flex items-center justify-center gap-6 text-sm text-gray-500">
+            <div className="flex items-center justify-center gap-6 text-sm text-gray-300">
               <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-emerald-400" /> Full product walkthrough</span>
               <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-blue-400" /> 12-stage hands-on journey</span>
               <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-purple-400" /> Build, configure & execute</span>
@@ -235,7 +235,7 @@ export default function RoleSelector() {
                           </div>
                           <div>
                             <div className="font-bold text-white text-lg">{config.id.toUpperCase()}</div>
-                            <div className="text-xs text-gray-400">{config.title}</div>
+                            <div className="text-xs text-gray-200">{config.title}</div>
                           </div>
                         </div>
                         <Badge className={`text-[10px] border ${categoryBadge(config.category)}`}>
@@ -248,15 +248,15 @@ export default function RoleSelector() {
                       </p>
 
                       <div className="border-t border-white/10 pt-3 mb-4">
-                        <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Your ExecuteIQ Impact</div>
+                        <div className="text-[10px] uppercase tracking-wider text-gray-300 mb-1">Your ExecuteIQ Impact</div>
                         <div className="text-sm font-semibold text-emerald-400">{config.keyMetric}</div>
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <div className="text-[10px] text-gray-500">
+                        <div className="text-[10px] text-gray-300">
                           <Play className="w-3 h-3 inline mr-1" />Full Customer Experience
                         </div>
-                        <ArrowRight className="w-4 h-4 text-gray-500" />
+                        <ArrowRight className="w-4 h-4 text-gray-300" />
                       </div>
                     </CardContent>
                   </Card>
@@ -268,7 +268,7 @@ export default function RoleSelector() {
           <div className="mt-16 text-center">
             <Card className="bg-gray-900 border-gray-800 p-8 max-w-3xl mx-auto">
               <h3 className="text-xl font-bold mb-3">Not sure which role to pick?</h3>
-              <p className="text-gray-400 mb-6">
+              <p className="text-gray-200 mb-6">
                 Try the Live Activation Command Center directly — choose any playbook and watch the full coordination unfold.
               </p>
               <Link href="/activation">

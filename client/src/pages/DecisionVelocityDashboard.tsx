@@ -38,7 +38,7 @@ function getEffectivenessColor(effectiveness: string): string {
     case 'moderate': return 'text-amber-600';
     case 'low': return 'text-orange-600';
     case 'poor': return 'text-red-600';
-    default: return 'text-slate-600';
+    default: return 'text-slate-400';
   }
 }
 
@@ -70,7 +70,7 @@ export default function DecisionVelocityDashboard() {
         <StandardNav />
         <div className="container mx-auto px-4 py-20 flex flex-col items-center justify-center min-h-[60vh]">
           <Loader2 className="h-12 w-12 animate-spin text-emerald-600 mb-4" />
-          <p className="text-lg text-slate-600 dark:text-slate-300">Loading decision outcomes...</p>
+          <p className="text-lg text-slate-400 dark:text-slate-300">Loading decision outcomes...</p>
         </div>
         <Footer />
       </div>
@@ -90,7 +90,7 @@ export default function DecisionVelocityDashboard() {
           <h1 className="text-5xl font-bold text-slate-900 dark:text-white mb-4" data-testid="page-title">
             Decision Velocity Dashboard
           </h1>
-          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-400 dark:text-slate-300 max-w-3xl mx-auto">
             Head coaches make 80+ decisions in 3 hours because they pre-stage decision trees. 
             Track how fast your executive team is deciding.
           </p>
@@ -108,7 +108,7 @@ export default function DecisionVelocityDashboard() {
               <div className="text-4xl font-bold text-emerald-600" data-testid="total-decisions">
                 {totalDecisions}
               </div>
-              <p className="text-sm text-slate-500 mt-2">
+              <p className="text-sm text-slate-300 mt-2">
                 decisions tracked
               </p>
             </CardContent>
@@ -125,7 +125,7 @@ export default function DecisionVelocityDashboard() {
               <div className="text-4xl font-bold text-blue-600" data-testid="success-rate">
                 {successRate}%
               </div>
-              <p className="text-sm text-slate-500 mt-2">
+              <p className="text-sm text-slate-300 mt-2">
                 {successfulCount} of {totalDecisions} successful
               </p>
             </CardContent>
@@ -142,7 +142,7 @@ export default function DecisionVelocityDashboard() {
               <div className="text-4xl font-bold text-purple-600" data-testid="avg-confidence">
                 {avgConfidence}%
               </div>
-              <p className="text-sm text-slate-500 mt-2">
+              <p className="text-sm text-slate-300 mt-2">
                 average decision confidence
               </p>
             </CardContent>
@@ -159,7 +159,7 @@ export default function DecisionVelocityDashboard() {
               <div className="text-4xl font-bold text-amber-600" data-testid="avg-effectiveness">
                 {avgEffectiveness}%
               </div>
-              <p className="text-sm text-slate-500 mt-2">
+              <p className="text-sm text-slate-300 mt-2">
                 {excellentCount} excellent decisions
               </p>
             </CardContent>
@@ -249,7 +249,7 @@ export default function DecisionVelocityDashboard() {
                 }, {})).map(([type, stats]: [string, any]) => (
                   <div key={type} className="p-4 bg-slate-50 dark:bg-slate-800 rounded-lg text-center">
                     <div className="text-2xl font-bold text-slate-900 dark:text-white">{stats.count}</div>
-                    <div className="text-xs font-medium text-slate-500 mt-1">{formatDecisionType(type)}</div>
+                    <div className="text-xs font-medium text-slate-300 mt-1">{formatDecisionType(type)}</div>
                     <Badge variant="outline" className="mt-2 text-xs">
                       {Math.round((stats.successful / stats.count) * 100)}% success
                     </Badge>
@@ -269,7 +269,7 @@ export default function DecisionVelocityDashboard() {
           </CardHeader>
           <CardContent>
             {decisions.length === 0 ? (
-              <div className="text-center py-12 text-slate-500">
+              <div className="text-center py-12 text-slate-300">
                 <Target className="h-12 w-12 mx-auto mb-4 opacity-50" />
                 <p className="text-lg font-medium">No decisions recorded yet</p>
                 <p className="text-sm mt-1">Decision outcomes will appear here once they are tracked.</p>
@@ -287,7 +287,7 @@ export default function DecisionVelocityDashboard() {
                         <h4 className="font-semibold text-slate-900 dark:text-white">
                           {formatDecisionType(decision.decisionType)}
                         </h4>
-                        <p className="text-sm text-slate-600 dark:text-slate-300">{decision.decisionDescription}</p>
+                        <p className="text-sm text-slate-400 dark:text-slate-300">{decision.decisionDescription}</p>
                       </div>
                       <div className="flex items-center gap-2">
                         <Badge variant={getOutcomeBadgeVariant(decision.actualOutcome)}>
@@ -302,24 +302,24 @@ export default function DecisionVelocityDashboard() {
                     </div>
                     <div className="grid md:grid-cols-2 gap-4 mt-3 text-sm">
                       <div>
-                        <span className="text-slate-500">Decision Maker:</span>
+                        <span className="text-slate-300">Decision Maker:</span>
                         <span className="ml-2 font-medium text-slate-700 dark:text-slate-300">{decision.decisionMaker}</span>
                       </div>
                       <div>
-                        <span className="text-slate-500">Choice:</span>
+                        <span className="text-slate-300">Choice:</span>
                         <span className="ml-2 font-medium text-slate-700 dark:text-slate-300">
                           {decision.chosenOption?.title || 'N/A'}
                         </span>
                       </div>
                       {decision.confidence && (
                         <div>
-                          <span className="text-slate-500">Confidence:</span>
+                          <span className="text-slate-300">Confidence:</span>
                           <Badge variant="outline" className="ml-2">{formatDecisionType(decision.confidence)}</Badge>
                         </div>
                       )}
                       {decision.timeToImplement != null && (
                         <div>
-                          <span className="text-slate-500">Implementation Time:</span>
+                          <span className="text-slate-300">Implementation Time:</span>
                           <span className="ml-2 font-medium text-slate-700 dark:text-slate-300">{decision.timeToImplement} days</span>
                         </div>
                       )}
@@ -327,7 +327,7 @@ export default function DecisionVelocityDashboard() {
                     <div className="mt-3 p-3 bg-slate-50 dark:bg-slate-800 rounded text-sm">
                       {decision.actualResults?.description && (
                         <>
-                          <div className="text-slate-500 mb-1">Results:</div>
+                          <div className="text-slate-300 mb-1">Results:</div>
                           <div className="text-slate-700 dark:text-slate-300">{decision.actualResults.description}</div>
                         </>
                       )}
@@ -340,7 +340,7 @@ export default function DecisionVelocityDashboard() {
                       )}
                       {decision.lessonsLearned?.keyTakeaways && decision.lessonsLearned.keyTakeaways.length > 0 && (
                         <>
-                          <div className="text-slate-500 mt-2 mb-1">Lessons Learned:</div>
+                          <div className="text-slate-300 mt-2 mb-1">Lessons Learned:</div>
                           <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 italic space-y-1">
                             {decision.lessonsLearned.keyTakeaways.map((takeaway: string, i: number) => (
                               <li key={i}>{takeaway}</li>
@@ -349,7 +349,7 @@ export default function DecisionVelocityDashboard() {
                         </>
                       )}
                       {!decision.actualResults?.description && (!decision.lessonsLearned?.keyTakeaways || decision.lessonsLearned.keyTakeaways.length === 0) && (
-                        <div className="text-slate-400 italic">No outcome details recorded yet.</div>
+                        <div className="text-slate-600 dark:text-slate-200 italic">No outcome details recorded yet.</div>
                       )}
                     </div>
                   </div>
@@ -369,7 +369,7 @@ export default function DecisionVelocityDashboard() {
             <ArrowRight className="mr-2 h-5 w-5" />
             Create Your First Decision Tree
           </Button>
-          <p className="mt-3 text-sm text-slate-500">
+          <p className="mt-3 text-sm text-slate-300">
             Pre-stage decisions before scenarios occur—just like head coaches do
           </p>
         </div>

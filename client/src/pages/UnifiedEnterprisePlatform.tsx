@@ -575,7 +575,7 @@ export default function UnifiedEnterprisePlatform() {
                             <div className="flex items-center gap-2">
                               <span className="text-sm font-medium text-green-400">{rec.impact}</span>
                             </div>
-                            <div className="text-xs text-slate-200">
+                            <div className="text-xs text-slate-600 dark:text-slate-200">
                               {rec.timeframe} • {rec.dataPoints.toLocaleString()} data points
                             </div>
                           </div>
@@ -776,15 +776,15 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2">
                       <div className="p-2 bg-slate-800 rounded text-sm">
                         <div className="text-white font-medium">Q1 2026 Strategy Review</div>
-                        <div className="text-xs text-slate-200">Due in 14 days • High Priority</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Due in 14 days • High Priority</div>
                       </div>
                       <div className="p-2 bg-slate-800 rounded text-sm">
                         <div className="text-white font-medium">Market Expansion Phase 2</div>
-                        <div className="text-xs text-slate-200">Due in 28 days • Medium Priority</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Due in 28 days • Medium Priority</div>
                       </div>
                       <div className="p-2 bg-slate-800 rounded text-sm">
                         <div className="text-white font-medium">Innovation Lab Launch</div>
-                        <div className="text-xs text-slate-200">Due in 45 days • High Priority</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Due in 45 days • High Priority</div>
                       </div>
                     </div>
                     <Button className="w-full bg-purple-600 hover:bg-purple-700 text-xs">
@@ -838,21 +838,21 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2">
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-slate-200">Strategic Alignment</span>
+                          <span className="text-slate-600 dark:text-slate-200">Strategic Alignment</span>
                           <span className="text-green-400 font-bold">91%</span>
                         </div>
                         <Progress value={91} className="h-1" />
                       </div>
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-slate-200">Execution Quality</span>
+                          <span className="text-slate-600 dark:text-slate-200">Execution Quality</span>
                           <span className="text-blue-400 font-bold">87%</span>
                         </div>
                         <Progress value={87} className="h-1" />
                       </div>
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-slate-200">Value Delivery</span>
+                          <span className="text-slate-600 dark:text-slate-200">Value Delivery</span>
                           <span className="text-purple-400 font-bold">94%</span>
                         </div>
                         <Progress value={94} className="h-1" />
@@ -882,7 +882,7 @@ export default function UnifiedEnterprisePlatform() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-3">
-                      <p className="text-slate-200 text-sm">{module.description}</p>
+                      <p className="text-slate-600 dark:text-slate-200 text-sm">{module.description}</p>
                       <div className="flex justify-between items-center">
                         <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30">
                           {module.status.toUpperCase()}
@@ -907,7 +907,7 @@ export default function UnifiedEnterprisePlatform() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <div className="text-slate-200">
+                    <div className="text-slate-600 dark:text-slate-200">
                       <div className="flex justify-between mb-2">
                         <span>Active Users:</span>
                         <span className="text-green-400 font-bold">{collaborationData.activeUsers}</span>
@@ -938,7 +938,7 @@ export default function UnifiedEnterprisePlatform() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-3">
-                    <div className="text-slate-200 text-sm space-y-2">
+                    <div className="text-slate-600 dark:text-slate-200 text-sm space-y-2">
                       <div className="flex justify-between items-center">
                         <span>North America:</span>
                         <div className="flex items-center gap-2">
@@ -976,7 +976,7 @@ export default function UnifiedEnterprisePlatform() {
                       <div key={index} className="text-sm">
                         <div className="text-white font-medium">{activity.user}</div>
                         <div className="text-slate-300">{activity.action}</div>
-                        <div className="text-xs text-slate-200">{activity.time}</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">{activity.time}</div>
                       </div>
                     ))}
                   </CardContent>
@@ -1091,7 +1091,7 @@ export default function UnifiedEnterprisePlatform() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-slate-200 text-sm space-y-2">
+                    <div className="text-slate-600 dark:text-slate-200 text-sm space-y-2">
                       <div>Last Audit: 2 days ago</div>
                       <div>Next Review: 28 days</div>
                       <div>Active Findings: 0</div>
@@ -1210,15 +1210,15 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2">
                       <div className="p-2 bg-slate-800 rounded text-sm">
                         <div className="text-white font-medium">Auto-sync Financial Data</div>
-                        <div className="text-xs text-slate-200">Every 15 minutes</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Every 15 minutes</div>
                       </div>
                       <div className="p-2 bg-slate-800 rounded text-sm">
                         <div className="text-white font-medium">Customer Data Pipeline</div>
-                        <div className="text-xs text-slate-200">Real-time</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Real-time</div>
                       </div>
                       <div className="p-2 bg-slate-800 rounded text-sm">
                         <div className="text-white font-medium">Inventory Updates</div>
-                        <div className="text-xs text-slate-200">Hourly</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Hourly</div>
                       </div>
                     </div>
                     <Button className="w-full bg-yellow-600 hover:bg-yellow-700 text-xs">
@@ -1396,15 +1396,15 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2">
                       <div className="p-2 bg-slate-800 rounded text-sm">
                         <div className="text-white font-medium">Competitor Analysis</div>
-                        <div className="text-xs text-slate-200">Updated 2 hours ago</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Updated 2 hours ago</div>
                       </div>
                       <div className="p-2 bg-slate-800 rounded text-sm">
                         <div className="text-white font-medium">Market Trends</div>
-                        <div className="text-xs text-slate-200">Live monitoring</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Live monitoring</div>
                       </div>
                       <div className="p-2 bg-slate-800 rounded text-sm">
                         <div className="text-white font-medium">Industry Benchmarks</div>
-                        <div className="text-xs text-slate-200">Daily updates</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Daily updates</div>
                       </div>
                     </div>
                     <Button className="w-full bg-purple-600 hover:bg-purple-700 text-xs">
@@ -1502,21 +1502,21 @@ export default function UnifiedEnterprisePlatform() {
                           <span className="text-white font-medium text-sm">Revenue Forecasting Model</span>
                           <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">ACTIVE</Badge>
                         </div>
-                        <div className="text-xs text-slate-200">Accuracy: 96.2% • Last trained: 2 days ago</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Accuracy: 96.2% • Last trained: 2 days ago</div>
                       </div>
                       <div className="p-3 bg-slate-800 rounded">
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-white font-medium text-sm">Customer Churn Prediction</span>
                           <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">ACTIVE</Badge>
                         </div>
-                        <div className="text-xs text-slate-200">Accuracy: 89.7% • Last trained: 1 day ago</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Accuracy: 89.7% • Last trained: 1 day ago</div>
                       </div>
                       <div className="p-3 bg-slate-800 rounded">
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-white font-medium text-sm">Market Risk Assessment</span>
                           <Badge variant="outline" className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30 text-xs">TRAINING</Badge>
                         </div>
-                        <div className="text-xs text-slate-200">Accuracy: 93.4% • Training in progress</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Accuracy: 93.4% • Training in progress</div>
                       </div>
                     </div>
                   </CardContent>
@@ -1533,19 +1533,19 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2 max-h-48 overflow-y-auto">
                       <div className="text-xs text-slate-300 p-2 bg-slate-800 rounded">
                         <div className="text-white font-medium">Revenue spike detected</div>
-                        <div className="text-slate-200">+23% above forecast • 2 minutes ago</div>
+                        <div className="text-slate-600 dark:text-slate-200">+23% above forecast • 2 minutes ago</div>
                       </div>
                       <div className="text-xs text-slate-300 p-2 bg-slate-800 rounded">
                         <div className="text-white font-medium">Customer engagement surge</div>
-                        <div className="text-slate-200">Mobile app activity +45% • 5 minutes ago</div>
+                        <div className="text-slate-600 dark:text-slate-200">Mobile app activity +45% • 5 minutes ago</div>
                       </div>
                       <div className="text-xs text-slate-300 p-2 bg-slate-800 rounded">
                         <div className="text-white font-medium">Market trend shift identified</div>
-                        <div className="text-slate-200">Tech sector momentum +12% • 8 minutes ago</div>
+                        <div className="text-slate-600 dark:text-slate-200">Tech sector momentum +12% • 8 minutes ago</div>
                       </div>
                       <div className="text-xs text-slate-300 p-2 bg-slate-800 rounded">
                         <div className="text-white font-medium">Cost optimization opportunity</div>
-                        <div className="text-slate-200">Supply chain efficiency +7% • 12 minutes ago</div>
+                        <div className="text-slate-600 dark:text-slate-200">Supply chain efficiency +7% • 12 minutes ago</div>
                       </div>
                     </div>
                     <Button className="w-full bg-blue-600 hover:bg-blue-700 text-xs">
@@ -1609,21 +1609,21 @@ export default function UnifiedEnterprisePlatform() {
                           <span className="text-white font-medium text-sm">Market Volatility Alert</span>
                           <Badge variant="outline" className="bg-red-500/20 text-red-400 border-red-500/30 text-xs">ACTIVE</Badge>
                         </div>
-                        <div className="text-xs text-slate-200">Threshold: &gt;15% change • Last trigger: 2 hours ago</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Threshold: &gt;15% change • Last trigger: 2 hours ago</div>
                       </div>
                       <div className="p-3 bg-slate-800 rounded">
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-white font-medium text-sm">Revenue Target Monitor</span>
                           <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">ACTIVE</Badge>
                         </div>
-                        <div className="text-xs text-slate-200">Threshold: 95% of monthly target • Status: On track</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Threshold: 95% of monthly target • Status: On track</div>
                       </div>
                       <div className="p-3 bg-slate-800 rounded">
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-white font-medium text-sm">Customer Churn Risk</span>
                           <Badge variant="outline" className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30 text-xs">MONITORING</Badge>
                         </div>
-                        <div className="text-xs text-slate-200">ML Model confidence: 94% • Risk threshold: &gt;20%</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">ML Model confidence: 94% • Risk threshold: &gt;20%</div>
                       </div>
                     </div>
                   </CardContent>
@@ -1643,15 +1643,15 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2">
                       <div className="p-2 bg-slate-800 rounded text-sm">
                         <div className="text-white font-medium">Revenue Threshold Alert</div>
-                        <div className="text-xs text-slate-200">Trigger when below 90% of target</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Trigger when below 90% of target</div>
                       </div>
                       <div className="p-2 bg-slate-800 rounded text-sm">
                         <div className="text-white font-medium">Cash Flow Warning</div>
-                        <div className="text-xs text-slate-200">Monitor liquidity ratios</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Monitor liquidity ratios</div>
                       </div>
                       <div className="p-2 bg-slate-800 rounded text-sm">
                         <div className="text-white font-medium">Cost Overrun Detection</div>
-                        <div className="text-xs text-slate-200">Budget variance &gt;15%</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Budget variance &gt;15%</div>
                       </div>
                     </div>
                     <Button className="w-full bg-green-600 hover:bg-green-700 text-xs">
@@ -1672,15 +1672,15 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2">
                       <div className="p-2 bg-slate-800 rounded text-sm">
                         <div className="text-white font-medium">System Performance</div>
-                        <div className="text-xs text-slate-200">Response time &gt;2s threshold</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Response time &gt;2s threshold</div>
                       </div>
                       <div className="p-2 bg-slate-800 rounded text-sm">
                         <div className="text-white font-medium">Supply Chain Disruption</div>
-                        <div className="text-xs text-slate-200">Vendor delivery delays</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Vendor delivery delays</div>
                       </div>
                       <div className="p-2 bg-slate-800 rounded text-sm">
                         <div className="text-white font-medium">Quality Control Alert</div>
-                        <div className="text-xs text-slate-200">Defect rate &gt;3%</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Defect rate &gt;3%</div>
                       </div>
                     </div>
                     <Button className="w-full bg-red-600 hover:bg-red-700 text-xs">
@@ -1701,15 +1701,15 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2">
                       <div className="p-2 bg-slate-800 rounded text-sm">
                         <div className="text-white font-medium">Market Share Changes</div>
-                        <div className="text-xs text-slate-200">Competitor activity detection</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Competitor activity detection</div>
                       </div>
                       <div className="p-2 bg-slate-800 rounded text-sm">
                         <div className="text-white font-medium">Customer Sentiment</div>
-                        <div className="text-xs text-slate-200">NPS score below 7.0</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">NPS score below 7.0</div>
                       </div>
                       <div className="p-2 bg-slate-800 rounded text-sm">
                         <div className="text-white font-medium">Innovation Opportunity</div>
-                        <div className="text-xs text-slate-200">Technology trend analysis</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Technology trend analysis</div>
                       </div>
                     </div>
                     <Button className="w-full bg-blue-600 hover:bg-blue-700 text-xs">
@@ -1736,7 +1736,7 @@ export default function UnifiedEnterprisePlatform() {
                           <span className="text-white font-medium text-sm">Pattern Recognition Model</span>
                           <Badge variant="outline" className="bg-purple-500/20 text-purple-400 border-purple-500/30 text-xs">LEARNING</Badge>
                         </div>
-                        <div className="text-xs text-slate-200">Analyzing 47,892 historical trigger events</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Analyzing 47,892 historical trigger events</div>
                         <Progress value={73} className="h-1 mt-2" />
                       </div>
                       <div className="p-3 bg-slate-800 rounded">
@@ -1744,7 +1744,7 @@ export default function UnifiedEnterprisePlatform() {
                           <span className="text-white font-medium text-sm">Predictive Trigger Engine</span>
                           <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">ACTIVE</Badge>
                         </div>
-                        <div className="text-xs text-slate-200">Accuracy: 94.7% • Last updated: 2 hours ago</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-200">Accuracy: 94.7% • Last updated: 2 hours ago</div>
                       </div>
                     </div>
                   </CardContent>
@@ -1761,15 +1761,15 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2 max-h-48 overflow-y-auto">
                       <div className="text-xs text-slate-300 p-2 bg-slate-800 rounded">
                         <div className="text-white font-medium">Market volatility trigger activated</div>
-                        <div className="text-slate-200">Backup supplier activated • 2 hours ago</div>
+                        <div className="text-slate-600 dark:text-slate-200">Backup supplier activated • 2 hours ago</div>
                       </div>
                       <div className="text-xs text-slate-300 p-2 bg-slate-800 rounded">
                         <div className="text-white font-medium">Performance threshold reached</div>
-                        <div className="text-slate-200">Revenue target achieved • 5 hours ago</div>
+                        <div className="text-slate-600 dark:text-slate-200">Revenue target achieved • 5 hours ago</div>
                       </div>
                       <div className="text-xs text-slate-300 p-2 bg-slate-800 rounded">
                         <div className="text-white font-medium">Customer satisfaction spike</div>
-                        <div className="text-slate-200">NPS increased to 9.2 • 8 hours ago</div>
+                        <div className="text-slate-600 dark:text-slate-200">NPS increased to 9.2 • 8 hours ago</div>
                       </div>
                     </div>
                     <Button className="w-full bg-orange-600 hover:bg-orange-700 text-xs">
@@ -1845,7 +1845,7 @@ export default function UnifiedEnterprisePlatform() {
                               <Clock className="h-4 w-4 text-blue-600" />
                               <span className="text-sm text-slate-300">{rec.timeframe}</span>
                             </div>
-                            <div className="text-xs text-slate-200">
+                            <div className="text-xs text-slate-600 dark:text-slate-200">
                               Model: {rec.mlModel} • {rec.dataPoints.toLocaleString()} data points
                             </div>
                           </div>

@@ -46,13 +46,13 @@ export default function ScenarioLibraryPage() {
             <h1 className="text-title mb-2">
             Scenario Library
           </h1>
-          <p className="text-slate-600 dark:text-slate-300 mb-6">
+          <p className="text-slate-400 dark:text-slate-300 mb-6">
             166 battle-tested strategic playbooks across 9 domains
           </p>
 
           {/* Search */}
           <div className="relative max-w-2xl">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-600 dark:text-slate-200" />
             <Input
               type="text"
               placeholder="Search playbooks by name, category, or trigger..."
@@ -62,7 +62,7 @@ export default function ScenarioLibraryPage() {
               data-testid="input-search-playbooks"
             />
             {searchQuery && (
-              <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-slate-500">
+              <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-slate-300">
                 {filteredPlaybooks.length} result{filteredPlaybooks.length !== 1 ? 's' : ''}
               </span>
             )}
@@ -102,8 +102,8 @@ export default function ScenarioLibraryPage() {
           {filteredPlaybooks.length === 0 ? (
             <Card className="bg-slate-50 dark:bg-slate-900 border-dashed">
               <CardContent className="p-12 text-center">
-                <BookOpen className="w-12 h-12 text-slate-400 mx-auto mb-3" />
-                <p className="text-slate-600 dark:text-slate-300">
+                <BookOpen className="w-12 h-12 text-slate-600 dark:text-slate-200 mx-auto mb-3" />
+                <p className="text-slate-400 dark:text-slate-300">
                   No playbooks found matching "{searchQuery}". Try a different search term.
                 </p>
               </CardContent>
@@ -131,11 +131,11 @@ export default function ScenarioLibraryPage() {
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-slate-600 dark:text-slate-300">Activations:</span>
+                      <span className="text-slate-400 dark:text-slate-300">Activations:</span>
                       <Badge variant="secondary">{playbook.activations}</Badge>
                     </div>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-slate-600 dark:text-slate-300">Last used:</span>
+                      <span className="text-slate-400 dark:text-slate-300">Last used:</span>
                       <span className="font-medium">{playbook.lastUsed}</span>
                     </div>
                     <Button className="w-full" size="sm" data-testid={`button-view-details-${playbook.id}`}>

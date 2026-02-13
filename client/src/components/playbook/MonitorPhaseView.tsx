@@ -298,7 +298,7 @@ export function MonitorPhaseView({ playbookId, organizationId, isEditable = true
                       )}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2">
-                          <SeverityIcon className={`h-4 w-4 ${item.isActive ? severityConfig.color.split(' ')[1] : 'text-slate-400'}`} />
+                          <SeverityIcon className={`h-4 w-4 ${item.isActive ? severityConfig.color.split(' ')[1] : 'text-slate-600 dark:text-slate-200'}`} />
                           <span className="font-medium truncate">{item.signalName}</span>
                           <Badge className={`text-xs shrink-0 ${severityConfig.color}`}>
                             {severityConfig.label}

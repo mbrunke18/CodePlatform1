@@ -356,8 +356,8 @@ export function SplitScreenComparison() {
         {/* Progress indicator */}
         <div className="px-6 py-3 bg-gray-900/50 border-t border-gray-700">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-xs text-gray-400">Crisis Response Progress: {data.title}</p>
-            <p className="text-xs font-mono text-gray-400">Step {currentStep + 1} / 6</p>
+            <p className="text-xs text-gray-200">Crisis Response Progress: {data.title}</p>
+            <p className="text-xs font-mono text-gray-200">Step {currentStep + 1} / 6</p>
           </div>
           <Progress value={((currentStep + 1) / 6) * 100} className="h-1" />
         </div>

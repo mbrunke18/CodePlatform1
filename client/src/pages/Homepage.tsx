@@ -223,17 +223,17 @@ export default function Homepage() {
               <div>
                 <div className="text-3xl font-bold text-blue-400">78%</div>
                 <div className="text-sm text-slate-300">of executives say AI requires a new operating model</div>
-                <div className="text-xs text-slate-400 mt-1">IBM 2025</div>
+                <div className="text-xs text-slate-600 dark:text-slate-200 mt-1">IBM 2025</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-emerald-400">70%</div>
                 <div className="text-sm text-slate-300">of AI transformation is people and processes</div>
-                <div className="text-xs text-slate-400 mt-1">Bain 2025</div>
+                <div className="text-xs text-slate-600 dark:text-slate-200 mt-1">Bain 2025</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-purple-400">69%</div>
                 <div className="text-sm text-slate-300">agree AI requires new management approaches</div>
-                <div className="text-xs text-slate-400 mt-1">BCG 2025</div>
+                <div className="text-xs text-slate-600 dark:text-slate-200 mt-1">BCG 2025</div>
               </div>
             </div>
           </div>
@@ -603,7 +603,7 @@ export default function Homepage() {
                     </div>
                   </div>
                   
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-slate-700 dark:group-hover:text-slate-600 dark:text-slate-200 transition-colors">
                     {phase.title}
                   </h3>
                   

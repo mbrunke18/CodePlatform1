@@ -52,7 +52,7 @@ export default function ExecutionWebSocketDemo({
             ) : error ? (
               <span className="text-red-600">Error: {error}</span>
             ) : (
-              <span className="text-gray-600">Connecting...</span>
+              <span className="text-gray-400">Connecting...</span>
             )}
           </div>
         </CardContent>

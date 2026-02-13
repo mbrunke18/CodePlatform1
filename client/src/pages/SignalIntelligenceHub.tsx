@@ -1400,7 +1400,7 @@ export default function SignalIntelligenceHub() {
             <Card className="card-bg">
               <CardContent className="p-4 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
-                  <Target className="h-5 w-5 text-slate-600 dark:text-slate-300" />
+                  <Target className="h-5 w-5 text-slate-400 dark:text-slate-300" />
                 </div>
                 <div>
                   <div className="text-2xl font-bold">{internalCount}</div>
@@ -1639,7 +1639,7 @@ export default function SignalIntelligenceHub() {
                         className="h-auto py-4 flex flex-col items-center gap-2"
                         onClick={() => setActiveTab('triggers')}
                       >
-                        <Settings className="h-5 w-5 text-slate-500" />
+                        <Settings className="h-5 w-5 text-slate-300" />
                         <span className="text-sm">Manage Triggers</span>
                       </Button>
                     </div>
@@ -1858,7 +1858,7 @@ export default function SignalIntelligenceHub() {
                                 
                                 return (
                                   <div key={dp.id} className="p-3 flex items-start gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50">
-                                    <div className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xs font-medium text-slate-500">
+                                    <div className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xs font-medium text-slate-300">
                                       {idx + 1}
                                     </div>
                                     <div className="flex-1 min-w-0">
@@ -1875,7 +1875,7 @@ export default function SignalIntelligenceHub() {
                                       </div>
                                       <p className="text-xs text-muted-foreground mt-1">{dp.description}</p>
                                       <div className="flex items-center gap-2 mt-2">
-                                        <span className="text-xs text-slate-400">Sources:</span>
+                                        <span className="text-xs text-slate-600 dark:text-slate-200">Sources:</span>
                                         {dp.sources.map((src, i) => (
                                           <Badge key={i} variant="secondary" className="text-xs py-0">
                                             {src}
@@ -2042,7 +2042,7 @@ export default function SignalIntelligenceHub() {
                                             </div>
                                             <p className="text-xs text-muted-foreground mt-1">{dp.description || 'No description'}</p>
                                             <div className="flex items-center gap-2 mt-2">
-                                              <span className="text-xs text-slate-400">Sources:</span>
+                                              <span className="text-xs text-slate-600 dark:text-slate-200">Sources:</span>
                                               {(dp.sources || ['manual-input']).map((src: string, i: number) => (
                                                 <Badge key={i} variant="secondary" className="text-xs py-0">
                                                   {src}

@@ -392,22 +392,22 @@ export default function CompetitivePositioning() {
                         <div className="text-xs text-red-600 dark:text-red-400">Alert</div>
                         <div className="font-bold text-red-700 dark:text-red-300">T+0</div>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-slate-400" />
+                      <ArrowRight className="w-4 h-4 text-slate-600 dark:text-slate-200" />
                       <div className="bg-amber-100 dark:bg-amber-900/30 rounded-lg p-3 text-center">
                         <div className="text-xs text-amber-600 dark:text-amber-400">Triage</div>
                         <div className="font-bold text-amber-700 dark:text-amber-300">+4-8 hrs</div>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-slate-400" />
+                      <ArrowRight className="w-4 h-4 text-slate-600 dark:text-slate-200" />
                       <div className="bg-amber-100 dark:bg-amber-900/30 rounded-lg p-3 text-center">
                         <div className="text-xs text-amber-600 dark:text-amber-400">Planning</div>
                         <div className="font-bold text-amber-700 dark:text-amber-300">+12-24 hrs</div>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-slate-400" />
+                      <ArrowRight className="w-4 h-4 text-slate-600 dark:text-slate-200" />
                       <div className="bg-amber-100 dark:bg-amber-900/30 rounded-lg p-3 text-center">
                         <div className="text-xs text-amber-600 dark:text-amber-400">Coordination</div>
                         <div className="font-bold text-amber-700 dark:text-amber-300">+24-48 hrs</div>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-slate-400" />
+                      <ArrowRight className="w-4 h-4 text-slate-600 dark:text-slate-200" />
                       <div className="bg-slate-100 dark:bg-slate-800 rounded-lg p-3 text-center">
                         <div className="text-xs text-slate-600 dark:text-slate-300">Execution</div>
                         <div className="font-bold text-slate-700 dark:text-slate-300">+72 hrs</div>
@@ -522,7 +522,7 @@ export default function CompetitivePositioning() {
                         </div>
                         <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
                           <div className="text-xs font-semibold text-amber-600 dark:text-amber-400 mb-1">When They Win</div>
-                          <p className="text-xs text-slate-500 dark:text-slate-500">{tool.whenTheyWin}</p>
+                          <p className="text-xs text-slate-300 dark:text-slate-300">{tool.whenTheyWin}</p>
                         </div>
                         <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
                           <div className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 flex items-center gap-1">
@@ -649,7 +649,7 @@ export default function CompetitivePositioning() {
                         </div>
                         <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
                           <div className="text-xs font-semibold text-sky-600 dark:text-sky-400 mb-1">Relationship with ExecuteIQ</div>
-                          <p className="text-xs text-slate-500 dark:text-slate-500">{tool.relationship}</p>
+                          <p className="text-xs text-slate-300 dark:text-slate-300">{tool.relationship}</p>
                         </div>
                         <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
                           <div className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 flex items-center gap-1">
@@ -832,32 +832,32 @@ export default function CompetitivePositioning() {
                         <td className="p-4 text-sm text-slate-700 dark:text-slate-300">{row.capability}</td>
                         <td className="p-3 text-center">
                           {row.crisisTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.crisisTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-600 mx-auto" />}
+                          {row.crisisTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-200 mx-auto" />}
                           {row.crisisTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
-                          {row.crisisTools === 'manual' && <span className="text-xs text-slate-500">Manual</span>}
-                          {row.crisisTools === 'native' && <span className="text-xs text-slate-500">N/A</span>}
+                          {row.crisisTools === 'manual' && <span className="text-xs text-slate-300">Manual</span>}
+                          {row.crisisTools === 'native' && <span className="text-xs text-slate-300">N/A</span>}
                         </td>
                         <td className="p-3 text-center">
                           {row.pmTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.pmTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-600 mx-auto" />}
+                          {row.pmTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-200 mx-auto" />}
                           {row.pmTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
-                          {row.pmTools === 'manual' && <span className="text-xs text-slate-500">Manual</span>}
-                          {row.pmTools === 'native' && <span className="text-xs text-slate-500">N/A</span>}
+                          {row.pmTools === 'manual' && <span className="text-xs text-slate-300">Manual</span>}
+                          {row.pmTools === 'native' && <span className="text-xs text-slate-300">N/A</span>}
                         </td>
                         <td className="p-3 text-center">
                           {row.okrTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.okrTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-600 mx-auto" />}
+                          {row.okrTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-200 mx-auto" />}
                           {row.okrTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
-                          {row.okrTools === 'manual' && <span className="text-xs text-slate-500">Manual</span>}
+                          {row.okrTools === 'manual' && <span className="text-xs text-slate-300">Manual</span>}
                         </td>
                         <td className="p-3 text-center">
                           {row.automationTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.automationTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-600 mx-auto" />}
+                          {row.automationTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-200 mx-auto" />}
                           {row.automationTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
                         </td>
                         <td className="p-3 text-center">
                           {row.planningTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.planningTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-600 mx-auto" />}
+                          {row.planningTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-200 mx-auto" />}
                           {row.planningTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
                         </td>
                         <td className="p-3 text-center bg-blue-50/50 dark:bg-blue-900/10">

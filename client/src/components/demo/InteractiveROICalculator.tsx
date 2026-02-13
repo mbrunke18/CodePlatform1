@@ -189,12 +189,12 @@ export default function InteractiveROICalculator({ persona = 'general', industry
               <div className="text-sm text-gray-300 font-medium">Coordination Time Savings</div>
               <div className="flex items-center justify-center gap-4">
                 <div>
-                  <div className="text-sm text-gray-400">Industry Standard</div>
+                  <div className="text-sm text-gray-200">Industry Standard</div>
                   <div className="text-3xl font-bold text-red-400">72 hours</div>
                 </div>
-                <div className="text-2xl text-gray-500">→</div>
+                <div className="text-2xl text-gray-300">→</div>
                 <div>
-                  <div className="text-sm text-gray-400">M Execution</div>
+                  <div className="text-sm text-gray-200">M Execution</div>
                   <div className="text-3xl font-bold text-green-400">12 minutes</div>
                 </div>
               </div>
@@ -210,7 +210,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
             <div className="bg-blue-950/50 rounded-lg p-4 border border-blue-500/30">
               <div className="flex items-center gap-2 mb-1">
                 <Clock className="h-4 w-4 text-blue-400" />
-                <span className="text-xs text-gray-400">Decision Velocity</span>
+                <span className="text-xs text-gray-200">Decision Velocity</span>
               </div>
               <div className="text-2xl font-bold text-green-400">{mResponseMinutes} min</div>
               <div className="text-xs text-blue-300 mt-1">
@@ -221,7 +221,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
             <div className="bg-green-950/50 rounded-lg p-4 border border-green-500/30">
               <div className="flex items-center gap-2 mb-1">
                 <DollarSign className="h-4 w-4 text-green-400" />
-                <span className="text-xs text-gray-400">Annual Savings</span>
+                <span className="text-xs text-gray-200">Annual Savings</span>
               </div>
               <div className="text-2xl font-bold text-white">
                 ${(annualCostSavings / 1000000).toFixed(2)}M
@@ -234,7 +234,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
             <div className="bg-purple-950/50 rounded-lg p-4 border border-purple-500/30">
               <div className="flex items-center gap-2 mb-1">
                 <Target className="h-4 w-4 text-purple-400" />
-                <span className="text-xs text-gray-400">ROI</span>
+                <span className="text-xs text-gray-200">ROI</span>
               </div>
               <div className="text-2xl font-bold text-white">{roi.toFixed(0)}%</div>
               <div className="text-xs text-purple-300 mt-1">
@@ -245,7 +245,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
             <div className="bg-orange-950/50 rounded-lg p-4 border border-orange-500/30">
               <div className="flex items-center gap-2 mb-1">
                 <Users className="h-4 w-4 text-orange-400" />
-                <span className="text-xs text-gray-400">Risk Reduction</span>
+                <span className="text-xs text-gray-200">Risk Reduction</span>
               </div>
               <div className="text-2xl font-bold text-white">
                 {(complianceRiskReduction * 100).toFixed(0)}%

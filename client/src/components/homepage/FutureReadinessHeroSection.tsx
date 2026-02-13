@@ -57,7 +57,7 @@ export default function FutureReadinessHeroSection() {
               <div className="relative p-8">
                 <div className="flex items-center justify-between mb-8">
                   <div>
-                    <div className="text-sm text-slate-400 mb-1">Your Organization</div>
+                    <div className="text-sm text-slate-200 mb-1">Your Organization</div>
                     <div className="text-2xl font-bold text-white">Future Readiness Index™</div>
                   </div>
                   <div className="relative">
@@ -77,7 +77,7 @@ export default function FutureReadinessHeroSection() {
                   <div className={`text-7xl font-bold bg-gradient-to-br ${isHigh ? 'from-emerald-400 to-blue-400' : isMedium ? 'from-amber-400 to-orange-400' : 'from-red-400 to-pink-400'} bg-clip-text text-transparent mb-2`}>
                     {isLoading ? '...' : `${displayScore.toFixed(1)}%`}
                   </div>
-                  <div className="text-sm text-slate-400">
+                  <div className="text-sm text-slate-200">
                     {isLoading ? 'Loading...' : isError ? 'Error loading data' : 'Overall Readiness Score'}
                   </div>
                 </div>
@@ -86,7 +86,7 @@ export default function FutureReadinessHeroSection() {
                   <div className="p-4 rounded-lg bg-slate-800/50 border border-slate-700/50">
                     <div className="flex items-center gap-2 mb-2">
                       <Brain className="h-4 w-4 text-blue-400" />
-                      <div className="text-xs text-slate-400">Foresight</div>
+                      <div className="text-xs text-slate-200">Foresight</div>
                     </div>
                     <div className="text-2xl font-bold text-blue-400">{readiness?.foresightScore?.toFixed(0) || '92'}%</div>
                   </div>
@@ -94,7 +94,7 @@ export default function FutureReadinessHeroSection() {
                   <div className="p-4 rounded-lg bg-slate-800/50 border border-slate-700/50">
                     <div className="flex items-center gap-2 mb-2">
                       <Zap className="h-4 w-4 text-emerald-400" />
-                      <div className="text-xs text-slate-400">Velocity</div>
+                      <div className="text-xs text-slate-200">Velocity</div>
                     </div>
                     <div className="text-2xl font-bold text-emerald-400">{readiness?.velocityScore?.toFixed(0) || '88'}%</div>
                   </div>
@@ -102,7 +102,7 @@ export default function FutureReadinessHeroSection() {
                   <div className="p-4 rounded-lg bg-slate-800/50 border border-slate-700/50">
                     <div className="flex items-center gap-2 mb-2">
                       <Activity className="h-4 w-4 text-purple-400" />
-                      <div className="text-xs text-slate-400">Agility</div>
+                      <div className="text-xs text-slate-200">Agility</div>
                     </div>
                     <div className="text-2xl font-bold text-purple-400">{readiness?.agilityScore?.toFixed(0) || '86'}%</div>
                   </div>
@@ -110,7 +110,7 @@ export default function FutureReadinessHeroSection() {
                   <div className="p-4 rounded-lg bg-slate-800/50 border border-slate-700/50">
                     <div className="flex items-center gap-2 mb-2">
                       <TrendingUp className="h-4 w-4 text-amber-400" />
-                      <div className="text-xs text-slate-400">Learning</div>
+                      <div className="text-xs text-slate-200">Learning</div>
                     </div>
                     <div className="text-2xl font-bold text-amber-400">{readiness?.learningScore?.toFixed(0) || '75'}%</div>
                   </div>
@@ -135,7 +135,7 @@ export default function FutureReadinessHeroSection() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-2">Real-Time Intelligence</h3>
-                    <p className="text-sm text-slate-400">
+                    <p className="text-sm text-slate-200">
                       Monitor {readiness?.activeScenarios || 166} strategic scenarios, detect {readiness?.weakSignalsDetected || 23} weak signals, and track emerging patterns continuously.
                     </p>
                   </div>
@@ -149,7 +149,7 @@ export default function FutureReadinessHeroSection() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-2">12-Minute Response</h3>
-                    <p className="text-sm text-slate-400">
+                    <p className="text-sm text-slate-200">
                       From trigger detection to coordinated response—what used to take days now happens in 12 minutes.
                     </p>
                   </div>
@@ -163,7 +163,7 @@ export default function FutureReadinessHeroSection() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-2">Self-Learning Playbooks</h3>
-                    <p className="text-sm text-slate-400">
+                    <p className="text-sm text-slate-200">
                       Every execution teaches the system. AI extracts learnings and automatically refines playbooks over time.
                     </p>
                   </div>
@@ -175,7 +175,7 @@ export default function FutureReadinessHeroSection() {
                   <div className="text-3xl font-bold text-white mb-2">
                     Top 1% of Fortune 1000
                   </div>
-                  <p className="text-sm text-slate-400">
+                  <p className="text-sm text-slate-200">
                     84.4% readiness places you in the elite tier of strategic execution velocity
                   </p>
                 </div>

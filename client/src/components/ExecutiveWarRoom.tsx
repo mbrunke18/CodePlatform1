@@ -278,7 +278,7 @@ export function ExecutiveWarRoom() {
           </div>
           <div>
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Executive War Room</h1>
-            <p className="text-gray-600 dark:text-gray-400">Strategic Command & Crisis Coordination Center</p>
+            <p className="text-gray-400 dark:text-gray-200">Strategic Command & Crisis Coordination Center</p>
           </div>
         </div>
         <Button 
@@ -297,7 +297,7 @@ export function ExecutiveWarRoom() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Active Sessions</p>
+                <p className="text-sm text-gray-400 dark:text-gray-200">Active Sessions</p>
                 <p className="text-2xl font-bold text-primary">
                   {sessions.filter((s: WarRoomSession) => s.status === 'active').length}
                 </p>
@@ -311,7 +311,7 @@ export function ExecutiveWarRoom() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Critical Alerts</p>
+                <p className="text-sm text-gray-400 dark:text-gray-200">Critical Alerts</p>
                 <p className="text-2xl font-bold text-orange-600">
                   {alerts.filter((a: StrategicAlert) => a.severity === 'critical' && a.status === 'new').length}
                 </p>
@@ -325,7 +325,7 @@ export function ExecutiveWarRoom() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Today's Briefings</p>
+                <p className="text-sm text-gray-400 dark:text-gray-200">Today's Briefings</p>
                 <p className="text-2xl font-bold text-blue-600">
                   {briefings.filter((b: ExecutiveBriefing) => 
                     new Date(b.createdAt).toDateString() === new Date().toDateString()
@@ -341,7 +341,7 @@ export function ExecutiveWarRoom() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Pending Reports</p>
+                <p className="text-sm text-gray-400 dark:text-gray-200">Pending Reports</p>
                 <p className="text-2xl font-bold text-green-600">
                   {reports.filter((r: BoardReport) => r.status === 'draft').length}
                 </p>
@@ -382,9 +382,9 @@ export function ExecutiveWarRoom() {
               ) : sessions.length === 0 ? (
                 <Card>
                   <CardContent className="p-8 text-center">
-                    <Command className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold text-gray-600 mb-2">No Active Sessions</h3>
-                    <p className="text-gray-500 mb-4">All strategic command centers are in standby mode</p>
+                    <Command className="h-12 w-12 text-gray-600 dark:text-gray-200 mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold text-gray-400 mb-2">No Active Sessions</h3>
+                    <p className="text-gray-500 dark:text-gray-300 mb-4">All strategic command centers are in standby mode</p>
                     <Button onClick={() => setNewSessionForm(true)} variant="outline">
                       Activate First Session
                     </Button>
@@ -403,7 +403,7 @@ export function ExecutiveWarRoom() {
                                 {session.status.toUpperCase()}
                               </Badge>
                             </div>
-                            <div className="flex items-center space-x-4 text-sm text-gray-500">
+                            <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-300">
                               <div className="flex items-center">
                                 <Users className="h-4 w-4 mr-1" />
                                 Commander: {session.commanderId}
@@ -418,15 +418,15 @@ export function ExecutiveWarRoom() {
                         
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                           <div>
-                            <p className="text-xs text-gray-500 mb-1">Objectives</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-300 mb-1">Objectives</p>
                             <p className="font-medium">{Array.isArray(session.objectives) ? session.objectives.length : 0} defined</p>
                           </div>
                           <div>
-                            <p className="text-xs text-gray-500 mb-1">Decisions</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-300 mb-1">Decisions</p>
                             <p className="font-medium">{Array.isArray(session.decisions) ? session.decisions.length : 0} made</p>
                           </div>
                           <div>
-                            <p className="text-xs text-gray-500 mb-1">Participants</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-300 mb-1">Participants</p>
                             <p className="font-medium">{Array.isArray(session.participants) ? session.participants.length : 0} members</p>
                           </div>
                         </div>
@@ -507,9 +507,9 @@ export function ExecutiveWarRoom() {
               {briefings.length === 0 ? (
                 <Card>
                   <CardContent className="p-8 text-center">
-                    <Brain className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold text-gray-600 mb-2">No Intelligence Available</h3>
-                    <p className="text-gray-500">AI-powered briefings will appear here automatically</p>
+                    <Brain className="h-12 w-12 text-gray-600 dark:text-gray-200 mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold text-gray-400 mb-2">No Intelligence Available</h3>
+                    <p className="text-gray-500 dark:text-gray-300">AI-powered briefings will appear here automatically</p>
                   </CardContent>
                 </Card>
               ) : (
@@ -528,8 +528,8 @@ export function ExecutiveWarRoom() {
                                 <CheckCircle className="h-4 w-4 text-green-600" />
                               )}
                             </div>
-                            <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">{briefing.summary}</p>
-                            <div className="flex items-center space-x-4 text-xs text-gray-500">
+                            <p className="text-gray-400 dark:text-gray-200 text-sm mb-2">{briefing.summary}</p>
+                            <div className="flex items-center space-x-4 text-xs text-gray-500 dark:text-gray-300">
                               <span>{briefing.readingTime} min read</span>
                               <span>{new Date(briefing.createdAt).toLocaleDateString()}</span>
                             </div>
@@ -538,7 +538,7 @@ export function ExecutiveWarRoom() {
                         
                         {briefing.keyInsights.length > 0 && (
                           <div className="mt-3">
-                            <p className="text-xs text-gray-500 mb-1">Key Insights</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-300 mb-1">Key Insights</p>
                             <div className="flex flex-wrap gap-1">
                               {briefing.keyInsights.slice(0, 3).map((insight: any, idx: number) => (
                                 <Badge key={idx} variant="outline" className="text-xs">
@@ -616,9 +616,9 @@ export function ExecutiveWarRoom() {
           {alerts.length === 0 ? (
             <Card>
               <CardContent className="p-8 text-center">
-                <AlertTriangle className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-600 mb-2">No Active Alerts</h3>
-                <p className="text-gray-500">Strategic monitoring systems are operating normally</p>
+                <AlertTriangle className="h-12 w-12 text-gray-600 dark:text-gray-200 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-gray-400 mb-2">No Active Alerts</h3>
+                <p className="text-gray-500 dark:text-gray-300">Strategic monitoring systems are operating normally</p>
               </CardContent>
             </Card>
           ) : (
@@ -640,26 +640,26 @@ export function ExecutiveWarRoom() {
                             {alert.alertType.replace('_', ' ').toUpperCase()}
                           </Badge>
                         </div>
-                        <p className="text-gray-600 dark:text-gray-400 mb-3">{alert.description}</p>
+                        <p className="text-gray-400 dark:text-gray-200 mb-3">{alert.description}</p>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
                           <div>
-                            <p className="text-xs text-gray-500 mb-1">Source System</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-300 mb-1">Source System</p>
                             <p className="font-medium">{alert.sourceSystem}</p>
                           </div>
                           <div>
-                            <p className="text-xs text-gray-500 mb-1">Timeframe</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-300 mb-1">Timeframe</p>
                             <p className="font-medium">{alert.timeframe}</p>
                           </div>
                         </div>
 
                         {alert.recommendedActions.length > 0 && (
                           <div className="mt-3">
-                            <p className="text-xs text-gray-500 mb-2">Recommended Actions</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-300 mb-2">Recommended Actions</p>
                             <div className="space-y-1">
                               {alert.recommendedActions.slice(0, 2).map((action: any, idx: number) => (
                                 <div key={idx} className="flex items-center text-sm">
-                                  <Target className="h-3 w-3 mr-2 text-gray-400" />
+                                  <Target className="h-3 w-3 mr-2 text-gray-600 dark:text-gray-200" />
                                   {action.description || action}
                                 </div>
                               ))}
@@ -708,9 +708,9 @@ export function ExecutiveWarRoom() {
           {reports.length === 0 ? (
             <Card>
               <CardContent className="p-8 text-center">
-                <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-600 mb-2">No Reports Available</h3>
-                <p className="text-gray-500">Board-ready reports will be generated automatically</p>
+                <FileText className="h-12 w-12 text-gray-600 dark:text-gray-200 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-gray-400 mb-2">No Reports Available</h3>
+                <p className="text-gray-500 dark:text-gray-300">Board-ready reports will be generated automatically</p>
               </CardContent>
             </Card>
           ) : (
@@ -726,24 +726,24 @@ export function ExecutiveWarRoom() {
                             {report.reportType.toUpperCase()}
                           </Badge>
                         </div>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm mb-3">
+                        <p className="text-gray-400 dark:text-gray-200 text-sm mb-3">
                           {report.executiveSummary}
                         </p>
                         
                         <div className="space-y-2">
                           <div className="flex justify-between text-xs">
-                            <span className="text-gray-500">Status:</span>
+                            <span className="text-gray-500 dark:text-gray-300">Status:</span>
                             <Badge className={`${getStatusColor(report.status)} text-white text-xs`}>
                               {report.status.toUpperCase()}
                             </Badge>
                           </div>
                           <div className="flex justify-between text-xs">
-                            <span className="text-gray-500">Created by:</span>
+                            <span className="text-gray-500 dark:text-gray-300">Created by:</span>
                             <span>{report.createdBy}</span>
                           </div>
                           {report.approvedBy && (
                             <div className="flex justify-between text-xs">
-                              <span className="text-gray-500">Approved by:</span>
+                              <span className="text-gray-500 dark:text-gray-300">Approved by:</span>
                               <span>{report.approvedBy}</span>
                             </div>
                           )}

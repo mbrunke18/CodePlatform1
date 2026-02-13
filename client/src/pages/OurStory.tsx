@@ -39,7 +39,7 @@ function PullQuote({ children, author }: { children: React.ReactNode; author?: s
         {children}
       </blockquote>
       {author && (
-        <p className="mt-4 pl-8 md:pl-12 text-slate-500 dark:text-slate-300 font-medium">— {author}</p>
+        <p className="mt-4 pl-8 md:pl-12 text-slate-300 dark:text-slate-300 font-medium">— {author}</p>
       )}
     </div>
   );
@@ -327,7 +327,7 @@ export default function OurStory() {
               ].map((company, i) => (
                 <div key={i} className="text-center p-4 bg-slate-100 dark:bg-slate-800/50 rounded-xl">
                   <div className="text-lg font-bold text-slate-800 dark:text-white">{company.name}</div>
-                  <div className="text-xs text-slate-500">{company.desc}</div>
+                  <div className="text-xs text-slate-300">{company.desc}</div>
                 </div>
               ))}
             </div>
@@ -422,7 +422,7 @@ export default function OurStory() {
             </div>
             <span className="font-bold text-lg">Strategic Execution OS</span>
           </div>
-          <p className="text-slate-400">
+          <p className="text-slate-600 dark:text-slate-200">
             From the sidelines to the boardroom.
           </p>
         </div>

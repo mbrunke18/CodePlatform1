@@ -51,7 +51,7 @@ export default function EnterpriseNavigation() {
           </div>
           <div>
             <h1 className="text-xl font-bold text-white">M</h1>
-            <p className="text-sm text-gray-300">Strategic Execution OS</p>
+            <p className="text-sm text-gray-500 dark:text-gray-300">Strategic Execution OS</p>
           </div>
         </div>
 
@@ -81,7 +81,7 @@ export default function EnterpriseNavigation() {
                     <Link key={item.id} to={item.path}>
                       <Button
                         variant="ghost"
-                        className={`w-full justify-start h-auto p-3 text-gray-300 hover:text-white hover:bg-gray-800/50 ${location === item.path ? 'bg-primary/20 text-primary-foreground border-l-4 border-l-primary' : ''}`}
+                        className={`w-full justify-start h-auto p-3 text-gray-500 dark:text-gray-300 hover:text-white hover:bg-gray-800/50 ${location === item.path ? 'bg-primary/20 text-primary-foreground border-l-4 border-l-primary' : ''}`}
                         data-testid={`nav-item-${item.id}`}
                       >
                         <div className="flex items-center justify-between w-full min-w-0">
@@ -89,7 +89,7 @@ export default function EnterpriseNavigation() {
                             {renderIcon(item.icon, "h-5 w-5")}
                             <div className="text-left min-w-0 flex-1">
                               <div className="font-medium truncate">{item.label}</div>
-                              <div className="text-xs text-gray-400 truncate">{item.description}</div>
+                              <div className="text-xs text-gray-600 dark:text-gray-200 truncate">{item.description}</div>
                             </div>
                           </div>
                           {item.badge && (

@@ -39,10 +39,10 @@ export function ExecutiveTestimonialOverlay() {
           {/* Header */}
           <div className="text-center space-y-2">
             <div className="flex items-center justify-center gap-3">
-              <Quote className="h-8 w-8 text-slate-400" />
+              <Quote className="h-8 w-8 text-slate-200" />
               <h2 className="text-2xl font-bold text-slate-200">The Cost of Unpreparedness</h2>
             </div>
-            <p className="text-slate-400 text-sm">Illustrative Scenario: Before vs After ExecuteIQ Methodology (Sample Data)</p>
+            <p className="text-slate-200 text-sm">Illustrative Scenario: Before vs After ExecuteIQ Methodology (Sample Data)</p>
           </div>
 
           {/* Testimonial Content */}

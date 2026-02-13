@@ -81,14 +81,14 @@ export default function DemoConfigPanel({ onClose, onStartDemo }: DemoConfigPane
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-white">Demo Configuration</h2>
-                <p className="text-gray-400 text-sm">Customize your presentation experience</p>
+                <p className="text-gray-600 dark:text-gray-200 text-sm">Customize your presentation experience</p>
               </div>
             </div>
             <Button 
               variant="ghost" 
               size="sm"
               onClick={onClose}
-              className="text-gray-400 hover:text-white hover:bg-white/10"
+              className="text-gray-600 dark:text-gray-200 hover:text-white hover:bg-white/10"
               data-testid="config-close-btn"
             >
               <X className="h-5 w-5" />
@@ -107,7 +107,7 @@ export default function DemoConfigPanel({ onClose, onStartDemo }: DemoConfigPane
                   className={`h-auto p-4 flex flex-col items-start justify-start space-y-2 ${
                     selectedPreset === key
                       ? 'bg-blue-600/30 border-blue-500 text-white'
-                      : 'bg-gray-800/50 border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white'
+                      : 'bg-gray-800/50 border-gray-700 text-gray-500 dark:text-gray-300 hover:bg-gray-800 hover:text-white'
                   }`}
                   data-testid={`preset-${key}`}
                 >
@@ -189,7 +189,7 @@ export default function DemoConfigPanel({ onClose, onStartDemo }: DemoConfigPane
                 </SelectItem>
               </SelectContent>
             </Select>
-            <p className="text-xs text-gray-400">Tailors narration and focus areas to specific executive priorities</p>
+            <p className="text-xs text-gray-600 dark:text-gray-200">Tailors narration and focus areas to specific executive priorities</p>
           </div>
 
           {/* Industry Selection */}
@@ -217,7 +217,7 @@ export default function DemoConfigPanel({ onClose, onStartDemo }: DemoConfigPane
                 </SelectItem>
               </SelectContent>
             </Select>
-            <p className="text-xs text-gray-400">Shows crisis scenarios relevant to your industry</p>
+            <p className="text-xs text-gray-600 dark:text-gray-200">Shows crisis scenarios relevant to your industry</p>
           </div>
 
           {/* Advanced Options */}
@@ -227,7 +227,7 @@ export default function DemoConfigPanel({ onClose, onStartDemo }: DemoConfigPane
             <div className="flex items-center justify-between bg-gray-800/50 p-3 rounded-lg">
               <div>
                 <div className="text-white text-sm font-medium">Auto-advance scenes</div>
-                <div className="text-gray-400 text-xs">Automatically progress through demo</div>
+                <div className="text-gray-600 dark:text-gray-200 text-xs">Automatically progress through demo</div>
               </div>
               <Switch 
                 checked={autoAdvance} 
@@ -239,7 +239,7 @@ export default function DemoConfigPanel({ onClose, onStartDemo }: DemoConfigPane
             <div className="flex items-center justify-between bg-gray-800/50 p-3 rounded-lg">
               <div>
                 <div className="text-white text-sm font-medium">Show ROI calculator</div>
-                <div className="text-gray-400 text-xs">Display interactive value proposition</div>
+                <div className="text-gray-600 dark:text-gray-200 text-xs">Display interactive value proposition</div>
               </div>
               <Switch 
                 checked={showROI} 
@@ -258,7 +258,7 @@ export default function DemoConfigPanel({ onClose, onStartDemo }: DemoConfigPane
             >
               Launch Personalized Demo
             </Button>
-            <p className="text-center text-xs text-gray-400 mt-2">
+            <p className="text-center text-xs text-gray-600 dark:text-gray-200 mt-2">
               Estimated duration: {presets[selectedPreset as keyof typeof presets].duration}
             </p>
           </div>

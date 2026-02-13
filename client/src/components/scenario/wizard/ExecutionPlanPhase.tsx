@@ -142,7 +142,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
             <Timer className="h-5 w-5 text-purple-400 mt-0.5" />
             <div className="flex-1">
               <p className="text-sm text-purple-300 font-medium">12-Minute Execution Plan</p>
-              <p className="text-xs text-gray-400 mt-1">
+              <p className="text-xs text-gray-200 mt-1">
                 Build your Work Breakdown Structure (WBS): define WHO does WHAT, WHEN, with clear dependencies.
                 Tasks unfold in coordinated phases for championship execution.
               </p>
@@ -177,16 +177,16 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
             <CardContent className="p-4">
               <div className="flex items-start gap-3">
                 <phase.icon className={`h-5 w-5 mt-0.5 ${
-                  selectedPhase === phase.id ? `text-${phase.color}-400` : 'text-gray-500'
+                  selectedPhase === phase.id ? `text-${phase.color}-400` : 'text-gray-300'
                 }`} />
                 <div className="flex-1">
                   <h3 className="text-sm font-semibold text-white">{phase.name}</h3>
-                  <p className="text-xs text-gray-400 mt-1">{phase.description}</p>
+                  <p className="text-xs text-gray-200 mt-1">{phase.description}</p>
                   <div className="flex items-center gap-2 mt-2">
                     <Badge variant="outline" className="text-xs">
                       {executionPlan[phase.id]?.length || 0} tasks
                     </Badge>
-                    <span className="text-xs text-gray-500">
+                    <span className="text-xs text-gray-300">
                       {phase.startMin}-{phase.endMin} min
                     </span>
                   </div>
@@ -205,7 +205,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
               <AlertCircle className="h-5 w-5 text-yellow-400 mt-0.5" />
               <div>
                 <p className="text-sm text-yellow-300 font-medium">Add Stakeholders First</p>
-                <p className="text-xs text-gray-400 mt-1">
+                <p className="text-xs text-gray-200 mt-1">
                   Go back to the Stakeholders phase to define roles before building your execution plan.
                   Each task needs to be assigned to a specific role.
                 </p>
@@ -318,7 +318,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
       <Card className="border-slate-700/50 bg-slate-900/30">
         <CardContent className="p-6">
           <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
-            <ArrowRight className="h-5 w-5 text-gray-400" />
+            <ArrowRight className="h-5 w-5 text-gray-200" />
             Execution Timeline
           </h3>
 
@@ -339,7 +339,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
                       <phase.icon className={`h-5 w-5 text-${phase.color}-400`} />
                       <div className="flex-1">
                         <div className="font-semibold text-white">{phase.name}</div>
-                        <div className="text-xs text-gray-400">{phase.startMin}-{phase.endMin} minutes</div>
+                        <div className="text-xs text-gray-200">{phase.startMin}-{phase.endMin} minutes</div>
                       </div>
                       <Badge variant="outline" className="text-xs">
                         {phaseTasks.length} {phaseTasks.length === 1 ? 'task' : 'tasks'}
@@ -348,7 +348,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
                   </AccordionTrigger>
                   <AccordionContent className="px-4 pb-4">
                     {phaseTasks.length === 0 ? (
-                      <p className="text-sm text-gray-500 italic py-2">No tasks added to this phase yet.</p>
+                      <p className="text-sm text-gray-300 italic py-2">No tasks added to this phase yet.</p>
                     ) : (
                       <div className="space-y-2">
                         {phaseTasks.map((task: any, index: number) => (
@@ -360,16 +360,16 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
                             <div className="flex items-start justify-between gap-3">
                               <div className="flex-1">
                                 <div className="flex items-center gap-2 mb-1">
-                                  <span className="text-xs font-mono text-gray-500">#{task.sequence}</span>
+                                  <span className="text-xs font-mono text-gray-300">#{task.sequence}</span>
                                   <h4 className="text-sm font-semibold text-white">{task.title}</h4>
                                   <Badge className={`text-xs ${getPriorityClass(task.priority)}`}>
                                     {task.priority}
                                   </Badge>
                                 </div>
                                 {task.description && (
-                                  <p className="text-xs text-gray-400 mt-1">{task.description}</p>
+                                  <p className="text-xs text-gray-200 mt-1">{task.description}</p>
                                 )}
-                                <div className="flex items-center gap-3 mt-2 text-xs text-gray-500">
+                                <div className="flex items-center gap-3 mt-2 text-xs text-gray-300">
                                   <span className="flex items-center gap-1">
                                     <Target className="h-3 w-3" />
                                     {task.assignedRole}
@@ -410,7 +410,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
               <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5" />
               <div>
                 <p className="text-sm text-green-300 font-medium">Execution Plan Ready</p>
-                <p className="text-xs text-gray-400 mt-1">
+                <p className="text-xs text-gray-200 mt-1">
                   {getTotalTasks()} coordinated tasks across 3 phases · Estimated execution time: {getTotalTime()} minutes
                 </p>
               </div>

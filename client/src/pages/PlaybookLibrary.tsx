@@ -272,7 +272,7 @@ export default function PlaybookLibrary() {
 
         <div className="flex flex-wrap items-center gap-6 mb-10">
           <div className="max-w-md relative flex-1" data-testid="search-container">
-            <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+            <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-600 dark:text-slate-200" />
             <Input
               placeholder="Search by scenario, domain, or objective…"
               value={search}
@@ -340,7 +340,7 @@ export default function PlaybookLibrary() {
                     <div className="mt-4 pt-3 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between">
                       <Badge className={meta.badge}>{categoryCounts[category]} Playbooks</Badge>
                       {isSelected && (
-                        <span className="text-xs text-slate-600">Click to clear</span>
+                        <span className="text-xs text-slate-600 dark:text-slate-200">Click to clear</span>
                       )}
                     </div>
                   </CardContent>
@@ -367,14 +367,14 @@ export default function PlaybookLibrary() {
         )}
 
         {isLoading && (
-          <div className="py-24 text-center text-slate-600" data-testid="loading-state">
+          <div className="py-24 text-center text-slate-600 dark:text-slate-200" data-testid="loading-state">
             <Layers className="h-8 w-8 mx-auto mb-3 animate-pulse" />
             {actNowMode ? "Analyzing execution history…" : "Loading strategic plays…"}
           </div>
         )}
 
         {!isLoading && totalCount === 0 && (
-          <div className="py-24 text-center text-slate-600" data-testid="empty-state">
+          <div className="py-24 text-center text-slate-600 dark:text-slate-200" data-testid="empty-state">
             <BookOpen className="h-12 w-12 mx-auto mb-3 opacity-50" />
             <p className="font-medium">No playbooks found.</p>
             <p className="text-sm mt-1">Strategy gaps often hide here.</p>
@@ -443,7 +443,7 @@ export default function PlaybookLibrary() {
                     </div>
 
                     {playbook.preApprovedBudget && (
-                      <div className="text-sm text-slate-600">
+                      <div className="text-sm text-slate-600 dark:text-slate-200">
                         Pre-approved: ${Number(playbook.preApprovedBudget).toLocaleString()}
                       </div>
                     )}
@@ -496,7 +496,7 @@ function Stat({ label, value, testId }: { label: string; value: number; testId: 
   return (
     <div className="text-center" data-testid={testId}>
       <div className="text-3xl font-bold text-slate-900 dark:text-white">{value}</div>
-      <div className="text-sm text-slate-600">{label}</div>
+      <div className="text-sm text-slate-600 dark:text-slate-200">{label}</div>
     </div>
   );
 }

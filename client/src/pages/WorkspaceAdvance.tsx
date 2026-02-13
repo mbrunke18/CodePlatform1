@@ -95,9 +95,9 @@ export default function WorkspaceAdvance() {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-slate-500 hover:text-poise-gold cursor-pointer">ExecuteIQ One™</span>
+              <span className="text-slate-300 hover:text-poise-gold cursor-pointer">ExecuteIQ One™</span>
             </Link>
-            <ChevronRight className="h-4 w-4 text-slate-400" />
+            <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200" />
             <span className="text-poise-gold font-medium">ADVANCE</span>
           </nav>
 
@@ -114,7 +114,7 @@ export default function WorkspaceAdvance() {
                     ExecuteIQ Retrospect™
                   </Badge>
                 </div>
-                <p className="text-slate-600 dark:text-slate-300 mt-1">
+                <p className="text-slate-400 dark:text-slate-300 mt-1">
                   Learn, improve, and strengthen organizational resilience
                 </p>
               </div>
@@ -140,7 +140,7 @@ export default function WorkspaceAdvance() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-slate-900 dark:text-white">IDEA Framework Progress</h3>
-                <span className="text-sm text-slate-500">Phase 4 of 4 - Continuous Loop</span>
+                <span className="text-sm text-slate-300">Phase 4 of 4 - Continuous Loop</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex-1 flex items-center gap-2">
@@ -183,7 +183,7 @@ export default function WorkspaceAdvance() {
                     <metric.icon className={`h-5 w-5 ${metric.color}`} />
                   </div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white">{metric.value}</p>
-                  <p className="text-xs text-slate-500">{metric.label}</p>
+                  <p className="text-xs text-slate-300">{metric.label}</p>
                 </CardContent>
               </Card>
             ))}
@@ -220,9 +220,9 @@ export default function WorkspaceAdvance() {
                           <h3 className="font-semibold text-slate-900 dark:text-white group-hover:text-poise-gold transition-colors">
                             {tool.title}
                           </h3>
-                          <ChevronRight className="h-4 w-4 text-slate-400 group-hover:text-poise-gold transition-colors" />
+                          <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200 group-hover:text-poise-gold transition-colors" />
                         </div>
-                        <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">
+                        <p className="text-sm text-slate-400 dark:text-slate-300 mt-1">
                           {tool.description}
                         </p>
                         <Badge variant="outline" className="mt-3 text-xs">
@@ -246,7 +246,7 @@ export default function WorkspaceAdvance() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 dark:text-white">Ready to apply learnings?</h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-300">
+                    <p className="text-sm text-slate-400 dark:text-slate-300">
                       Update your playbooks with new insights and start the cycle again
                     </p>
                   </div>

@@ -71,7 +71,7 @@ export default function CreateScenarioButton({
               </div>
               Create Championship-Level Playbook
             </DialogTitle>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+            <p className="text-sm text-gray-400 dark:text-gray-200 mt-2">
               Build a complete decision operations playbook in 5 strategic phases
             </p>
           </DialogHeader>

@@ -286,7 +286,7 @@ export function ChaosSimulator({ scenario, companyName = 'Meridian Industries', 
             <p className="text-slate-300 text-lg mb-2">
               You're the Chief Strategy Officer of <span className="text-white font-semibold">{companyName}</span>.
             </p>
-            <p className="text-slate-400">
+            <p className="text-slate-200">
               It's 2:47 PM on a Tuesday. Your day is about to change.
             </p>
           </div>
@@ -353,7 +353,7 @@ export function ChaosSimulator({ scenario, companyName = 'Meridian Industries', 
                   </div>
                 ))}
               </div>
-              <p className="text-slate-400 text-sm">
+              <p className="text-slate-200 text-sm">
                 The average Fortune 1000 company takes <span className="text-white font-semibold">4.2 hours</span> to coordinate a crisis response.
                 <br />
                 ExecuteIQ reduces that to <span className="text-green-400 font-semibold">12 minutes</span>.
@@ -387,7 +387,7 @@ export function ChaosSimulator({ scenario, companyName = 'Meridian Industries', 
               variant="ghost"
               size="sm"
               onClick={() => setIsMuted(!isMuted)}
-              className="text-slate-400 hover:text-white"
+              className="text-slate-200 hover:text-white"
               data-testid="button-toggle-sound"
             >
               {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
@@ -407,7 +407,7 @@ export function ChaosSimulator({ scenario, companyName = 'Meridian Industries', 
         
         <div className="space-y-2">
           <div className="flex items-center justify-between text-sm">
-            <span className="text-slate-400">Organizational Stress Level</span>
+            <span className="text-slate-200">Organizational Stress Level</span>
             <span className="text-red-400 font-semibold">{stressLevel}%</span>
           </div>
           <Progress value={stressLevel} className="h-2 bg-slate-700" />
@@ -439,7 +439,7 @@ export function ChaosSimulator({ scenario, companyName = 'Meridian Industries', 
                   }`}>
                     {message.urgency.toUpperCase()}
                   </Badge>
-                  <span className="text-xs text-slate-500">
+                  <span className="text-xs text-slate-300">
                     {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>
@@ -453,7 +453,7 @@ export function ChaosSimulator({ scenario, companyName = 'Meridian Industries', 
       
       <div className="border-t border-slate-700 p-4 bg-slate-900/50">
         <div className="flex items-center justify-between text-sm">
-          <div className="flex items-center gap-4 text-slate-400">
+          <div className="flex items-center gap-4 text-slate-200">
             <span className="flex items-center gap-1">
               <MessageSquare className="w-4 h-4" />
               {messages.length} messages
@@ -469,7 +469,7 @@ export function ChaosSimulator({ scenario, companyName = 'Meridian Industries', 
               variant="ghost"
               size="sm"
               onClick={skipToEnd}
-              className="text-slate-400 hover:text-white"
+              className="text-slate-200 hover:text-white"
               data-testid="button-skip-chaos"
             >
               Skip to overwhelm

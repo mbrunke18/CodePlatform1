@@ -54,7 +54,7 @@ export default function InnovationPipelinePanel() {
       case 'testing': return "bg-purple-50 text-purple-600";
       case 'scaling': return "bg-green-50 text-green-600";
       case 'deployed': return "bg-emerald-50 text-emerald-600";
-      default: return "bg-gray-50 text-gray-600";
+      default: return "bg-gray-50 text-gray-400";
     }
   };
 

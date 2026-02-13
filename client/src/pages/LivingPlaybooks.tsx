@@ -82,7 +82,7 @@ export default function LivingPlaybooks() {
             <Brain className="w-10 h-10 text-blue-600" />
             Living Playbooks
           </h1>
-          <p className="text-slate-600 dark:text-slate-300">
+          <p className="text-slate-400 dark:text-slate-300">
             Self-learning strategic playbooks that evolve with every execution through AI-powered analysis
           </p>
         </div>
@@ -152,19 +152,19 @@ export default function LivingPlaybooks() {
                   {/* Metrics */}
                   <div className="grid grid-cols-3 gap-4">
                     <div>
-                      <div className="text-xs text-slate-600 dark:text-slate-300 mb-1">Activations</div>
+                      <div className="text-xs text-slate-400 dark:text-slate-300 mb-1">Activations</div>
                       <div className="text-2xl font-bold text-slate-900 dark:text-white">
                         {playbook.activations}
                       </div>
                     </div>
                     <div>
-                      <div className="text-xs text-slate-600 dark:text-slate-300 mb-1">Success Rate</div>
+                      <div className="text-xs text-slate-400 dark:text-slate-300 mb-1">Success Rate</div>
                       <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
                         {playbook.successRate}%
                       </div>
                     </div>
                     <div>
-                      <div className="text-xs text-slate-600 dark:text-slate-300 mb-1">Last Improved</div>
+                      <div className="text-xs text-slate-400 dark:text-slate-300 mb-1">Last Improved</div>
                       <div className="text-sm font-semibold text-slate-700 dark:text-slate-300">
                         {playbook.lastImproved}
                       </div>

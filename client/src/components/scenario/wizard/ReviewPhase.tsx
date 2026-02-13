@@ -63,21 +63,21 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
             <div className="bg-slate-900/50 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Users className="h-4 w-4 text-blue-400" />
-                <span className="text-sm text-gray-400">Stakeholders</span>
+                <span className="text-sm text-gray-200">Stakeholders</span>
               </div>
               <p className="text-2xl font-bold text-white">{stakeholderCount}</p>
             </div>
             <div className="bg-slate-900/50 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Bell className="h-4 w-4 text-purple-400" />
-                <span className="text-sm text-gray-400">Triggers</span>
+                <span className="text-sm text-gray-200">Triggers</span>
               </div>
               <p className="text-2xl font-bold text-white">{triggerCount}</p>
             </div>
             <div className="bg-slate-900/50 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <BarChart3 className="h-4 w-4 text-green-400" />
-                <span className="text-sm text-gray-400">Metrics</span>
+                <span className="text-sm text-gray-200">Metrics</span>
               </div>
               <p className="text-2xl font-bold text-white">{metricCount}</p>
             </div>
@@ -106,8 +106,8 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
                   ) : (
                     <AlertTriangle className="h-5 w-5 text-yellow-400 flex-shrink-0" />
                   )}
-                  <Icon className={`h-4 w-4 ${check.met ? 'text-green-400' : 'text-gray-500'}`} />
-                  <span className={`flex-1 ${check.met ? 'text-white' : 'text-gray-400'}`}>
+                  <Icon className={`h-4 w-4 ${check.met ? 'text-green-400' : 'text-gray-300'}`} />
+                  <span className={`flex-1 ${check.met ? 'text-white' : 'text-gray-200'}`}>
                     {check.label}
                   </span>
                   {check.met && (
@@ -125,7 +125,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
               <Clock className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
               <div>
                 <p className="text-sm font-semibold text-blue-300">Estimated Execution Velocity</p>
-                <p className="text-xs text-gray-400 mt-1">
+                <p className="text-xs text-gray-200 mt-1">
                   {readinessScore >= 80 ? (
                     <>
                       <span className="text-green-400 font-semibold">12-minute coordination ready</span> - Your scenario has all critical elements for rapid execution.

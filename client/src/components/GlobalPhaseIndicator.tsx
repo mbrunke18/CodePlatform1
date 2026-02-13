@@ -73,7 +73,7 @@ export default function GlobalPhaseIndicator({
                 <span className="hidden sm:inline">{phase.score}%</span>
               </button>
               {index < phases.length - 1 && (
-                <span className="text-slate-600 mx-1">→</span>
+                <span className="text-slate-400 mx-1">→</span>
               )}
             </div>
           );
@@ -85,8 +85,8 @@ export default function GlobalPhaseIndicator({
   return (
     <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4" data-testid="phase-indicator-full">
       <div className="flex items-center justify-between mb-3">
-        <span className="text-sm font-medium text-slate-400">IDEA Framework Readiness</span>
-        <span className="text-sm text-slate-500">
+        <span className="text-sm font-medium text-slate-200">IDEA Framework Readiness</span>
+        <span className="text-sm text-slate-300">
           Overall: {Math.round((scores.identify + scores.detect + scores.execute + scores.advance) / 4)}%
         </span>
       </div>
@@ -110,7 +110,7 @@ export default function GlobalPhaseIndicator({
                     style={{ width: `${phase.score}%` }}
                   />
                 </div>
-                <div className="text-xs text-slate-500 mt-1">{phase.score}%</div>
+                <div className="text-xs text-slate-300 mt-1">{phase.score}%</div>
               </button>
               {index < phases.length - 1 && (
                 <div className="text-slate-700 mx-2">→</div>

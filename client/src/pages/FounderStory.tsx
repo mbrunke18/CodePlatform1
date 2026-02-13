@@ -96,7 +96,7 @@ export default function FounderStory() {
                   Perfect for a quick overview.
                 </p>
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-slate-500 dark:text-slate-500">
+                  <div className="flex items-center gap-2 text-slate-300 dark:text-slate-300">
                     <Clock className="h-4 w-4" />
                     <span className="text-sm">~90 seconds</span>
                   </div>
@@ -137,7 +137,7 @@ export default function FounderStory() {
                   the IDEA framework, and the vision for strategic execution.
                 </p>
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-slate-500 dark:text-slate-500">
+                  <div className="flex items-center gap-2 text-slate-300 dark:text-slate-300">
                     <Clock className="h-4 w-4" />
                     <span className="text-sm">~3:30 minutes</span>
                   </div>
@@ -226,7 +226,7 @@ export default function FounderStory() {
               "Strategy is 10% of the work. Execution is 90%. 
               <span className="text-amber-600 dark:text-amber-400 font-medium"> ExecuteIQ is built for the 90%.</span>"
             </blockquote>
-            <p className="text-slate-500 dark:text-slate-500 mt-4">— Marty Brunke</p>
+            <p className="text-slate-300 dark:text-slate-300 mt-4">— Marty Brunke</p>
           </motion.div>
         </div>
       </main>

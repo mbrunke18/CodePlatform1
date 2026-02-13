@@ -579,7 +579,7 @@ function InvestorPresentation() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
-                  className="text-xl text-slate-400 mt-4 max-w-2xl"
+                  className="text-xl text-slate-200 mt-4 max-w-2xl"
                 >
                   {slide.data.description}
                 </motion.p>
@@ -591,8 +591,8 @@ function InvestorPresentation() {
                   transition={{ delay: 0.3 }}
                   className="mt-12 space-y-2"
                 >
-                  <p className="text-xl text-slate-400">{slide.data.contact.email}</p>
-                  <p className="text-lg text-slate-500">{slide.data.contact.website}</p>
+                  <p className="text-xl text-slate-200">{slide.data.contact.email}</p>
+                  <p className="text-lg text-slate-300">{slide.data.contact.website}</p>
                 </motion.div>
               )}
             </motion.div>
@@ -614,7 +614,7 @@ function InvestorPresentation() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="text-2xl text-slate-400 mb-12"
+                className="text-2xl text-slate-200 mb-12"
               >
                 {slide.subtitle}
               </motion.p>
@@ -636,8 +636,8 @@ function InvestorPresentation() {
                       {i === 2 && <TrendingUp className="w-12 h-12 text-yellow-400" />}
                     </div>
                     <div className="text-4xl font-bold text-red-400">{stat.value}</div>
-                    <div className="text-lg text-slate-400">{stat.unit}</div>
-                    <div className="text-sm text-slate-500">{stat.label}</div>
+                    <div className="text-lg text-slate-200">{stat.unit}</div>
+                    <div className="text-sm text-slate-300">{stat.label}</div>
                   </motion.div>
                 ))}
               </div>
@@ -659,7 +659,7 @@ function InvestorPresentation() {
                       {item.icon === 'shield' && <Shield className="w-7 h-7 text-red-400" />}
                     </div>
                     <h3 className="text-xl font-semibold text-white mb-2">{item.text}</h3>
-                    <p className="text-slate-400">{item.desc}</p>
+                    <p className="text-slate-200">{item.desc}</p>
                   </motion.div>
                 ))}
               </div>
@@ -681,7 +681,7 @@ function InvestorPresentation() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-2xl text-slate-400 mb-12"
+              className="text-2xl text-slate-200 mb-12"
             >
               {slide.subtitle}
             </motion.p>
@@ -702,11 +702,11 @@ function InvestorPresentation() {
                 </div>
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-slate-800 px-4 py-2 rounded-lg border border-slate-700">
                   <span className="text-lg font-semibold text-blue-400">{slide.data?.tam}</span>
-                  <span className="text-sm text-slate-400 ml-2">TAM</span>
+                  <span className="text-sm text-slate-200 ml-2">TAM</span>
                 </div>
                 <div className="absolute top-16 -right-4 bg-slate-800 px-4 py-2 rounded-lg border border-slate-700">
                   <span className="text-lg font-semibold text-purple-400">{slide.data?.sam}</span>
-                  <span className="text-sm text-slate-400 ml-2">SAM</span>
+                  <span className="text-sm text-slate-200 ml-2">SAM</span>
                 </div>
               </motion.div>
 
@@ -745,7 +745,7 @@ function InvestorPresentation() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-2xl text-slate-400 mb-12"
+              className="text-2xl text-slate-200 mb-12"
             >
               {slide.subtitle}
             </motion.p>
@@ -766,7 +766,7 @@ function InvestorPresentation() {
                   }`}>
                     {phase}
                   </div>
-                  {i < 3 && <ArrowRight className="w-6 h-6 text-slate-500 mx-2" />}
+                  {i < 3 && <ArrowRight className="w-6 h-6 text-slate-300 mx-2" />}
                 </div>
               ))}
             </motion.div>
@@ -781,13 +781,13 @@ function InvestorPresentation() {
                 <div className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
                   {slide.data?.velocity}
                 </div>
-                <div className="text-slate-400 mt-2">Response Time</div>
+                <div className="text-slate-200 mt-2">Response Time</div>
               </div>
               <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700 text-center">
                 <div className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
                   {slide.data?.playbooks}
                 </div>
-                <div className="text-slate-400 mt-2">Strategic Playbooks</div>
+                <div className="text-slate-200 mt-2">Strategic Playbooks</div>
               </div>
             </motion.div>
           </div>
@@ -826,7 +826,7 @@ function InvestorPresentation() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-2xl text-slate-400 mb-12"
+              className="text-2xl text-slate-200 mb-12"
             >
               {slide.subtitle}
             </motion.p>
@@ -865,7 +865,7 @@ function InvestorPresentation() {
                 <Play className="w-16 h-16 text-blue-400" />
               </div>
               <h2 className="text-5xl font-bold text-white mb-4">{slide.title}</h2>
-              <p className="text-2xl text-slate-400 mb-8">{slide.subtitle}</p>
+              <p className="text-2xl text-slate-200 mb-8">{slide.subtitle}</p>
               <Button 
                 size="lg" 
                 onClick={launchDemo}
@@ -875,7 +875,7 @@ function InvestorPresentation() {
                 <Play className="w-6 h-6 mr-3" />
                 Launch Executive Simulation
               </Button>
-              <p className="text-sm text-slate-500 mt-4">Opens in new tab • Return here after demo</p>
+              <p className="text-sm text-slate-300 mt-4">Opens in new tab • Return here after demo</p>
             </motion.div>
           </div>
         );
@@ -894,7 +894,7 @@ function InvestorPresentation() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-2xl text-slate-400 mb-12"
+              className="text-2xl text-slate-200 mb-12"
             >
               {slide.subtitle}
             </motion.p>
@@ -909,7 +909,7 @@ function InvestorPresentation() {
                 <div className="text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">
                   {slide.data.primary.value}
                 </div>
-                <div className="text-2xl text-slate-400">{slide.data.primary.label}</div>
+                <div className="text-2xl text-slate-200">{slide.data.primary.label}</div>
               </motion.div>
             )}
 
@@ -925,9 +925,9 @@ function InvestorPresentation() {
                   >
                     <div className="text-4xl font-bold text-white">
                       {metric.value}
-                      {metric.unit && <span className="text-2xl text-slate-400 ml-1">{metric.unit}</span>}
+                      {metric.unit && <span className="text-2xl text-slate-200 ml-1">{metric.unit}</span>}
                     </div>
-                    <div className="text-slate-400 mt-2">{metric.label}</div>
+                    <div className="text-slate-200 mt-2">{metric.label}</div>
                   </motion.div>
                 ))}
               </div>
@@ -945,7 +945,7 @@ function InvestorPresentation() {
                   >
                     <div>
                       <div className="text-lg font-semibold text-white">{item.category}</div>
-                      <div className="text-sm text-slate-400">{item.desc}</div>
+                      <div className="text-sm text-slate-200">{item.desc}</div>
                     </div>
                     <div className="text-2xl font-bold text-green-400">{item.value}</div>
                   </motion.div>
@@ -959,7 +959,7 @@ function InvestorPresentation() {
                   <div className="text-xl font-semibold text-white">Total Annual Value</div>
                   <div>
                     <span className="text-3xl font-bold text-green-400">{slide.data.total}</span>
-                    <span className="text-slate-400 ml-4">Payback: {slide.data.payback}</span>
+                    <span className="text-slate-200 ml-4">Payback: {slide.data.payback}</span>
                   </div>
                 </motion.div>
               </div>
@@ -981,7 +981,7 @@ function InvestorPresentation() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-2xl text-slate-400 mb-12"
+              className="text-2xl text-slate-200 mb-12"
             >
               {slide.subtitle}
             </motion.p>
@@ -994,10 +994,10 @@ function InvestorPresentation() {
             >
               <div className="grid grid-cols-5 gap-4 mb-4 px-4">
                 <div></div>
-                <div className="text-center text-sm text-slate-400">Signals</div>
-                <div className="text-center text-sm text-slate-400">Playbooks</div>
-                <div className="text-center text-sm text-slate-400">Execution</div>
-                <div className="text-center text-sm text-slate-400">Learning</div>
+                <div className="text-center text-sm text-slate-200">Signals</div>
+                <div className="text-center text-sm text-slate-200">Playbooks</div>
+                <div className="text-center text-sm text-slate-200">Execution</div>
+                <div className="text-center text-sm text-slate-200">Learning</div>
               </div>
               {slide.data?.competitors.map((comp: any, i: number) => (
                 <motion.div
@@ -1019,7 +1019,7 @@ function InvestorPresentation() {
                       {comp.has.includes(cap) ? (
                         <CheckCircle2 className="w-6 h-6 text-green-400" />
                       ) : (
-                        <AlertTriangle className="w-6 h-6 text-slate-600" />
+                        <AlertTriangle className="w-6 h-6 text-slate-400" />
                       )}
                     </div>
                   ))}
@@ -1043,7 +1043,7 @@ function InvestorPresentation() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-2xl text-slate-400 mb-12"
+              className="text-2xl text-slate-200 mb-12"
             >
               {slide.subtitle}
             </motion.p>
@@ -1061,8 +1061,8 @@ function InvestorPresentation() {
                     }`}
                   >
                     <div className="text-lg font-semibold text-white mb-2">{tier.tier}</div>
-                    <div className="text-3xl font-bold text-blue-400 mb-4">{tier.price}<span className="text-sm text-slate-400">/year</span></div>
-                    <div className="text-sm text-slate-400">{tier.desc}</div>
+                    <div className="text-3xl font-bold text-blue-400 mb-4">{tier.price}<span className="text-sm text-slate-200">/year</span></div>
+                    <div className="text-sm text-slate-200">{tier.desc}</div>
                   </motion.div>
                 ))}
               </div>
@@ -1078,7 +1078,7 @@ function InvestorPresentation() {
                 {slide.data.metrics.map((m: any) => (
                   <div key={m.label} className="text-center">
                     <div className="text-3xl font-bold text-white">{m.value}</div>
-                    <div className="text-sm text-slate-400">{m.label}</div>
+                    <div className="text-sm text-slate-200">{m.label}</div>
                   </div>
                 ))}
               </motion.div>
@@ -1103,7 +1103,7 @@ function InvestorPresentation() {
                       </div>
                       <div className="bg-slate-800 rounded-b-lg p-3 border border-slate-700 border-t-0 text-center">
                         <div className="font-semibold text-white">{m.year}</div>
-                        <div className="text-xs text-slate-400">{m.customers} customers</div>
+                        <div className="text-xs text-slate-200">{m.customers} customers</div>
                         <div className="text-xs text-blue-400">{m.focus}</div>
                       </div>
                     </motion.div>
@@ -1128,7 +1128,7 @@ function InvestorPresentation() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-2xl text-slate-400 mb-12"
+              className="text-2xl text-slate-200 mb-12"
             >
               {slide.subtitle}
             </motion.p>
@@ -1156,7 +1156,7 @@ function InvestorPresentation() {
                     {action.icon === 'presentation' && <Monitor className="w-6 h-6 text-blue-400" />}
                   </div>
                   <span className="text-lg text-white">{action.label}</span>
-                  <ArrowRight className="w-5 h-5 text-slate-400 ml-auto" />
+                  <ArrowRight className="w-5 h-5 text-slate-200 ml-auto" />
                 </motion.div>
               ))}
             </motion.div>
@@ -1180,26 +1180,26 @@ function InvestorPresentation() {
             variant="ghost"
             size="sm"
             onClick={() => setLocation('/')}
-            className="text-slate-400 hover:text-white"
+            className="text-slate-200 hover:text-white"
             data-testid="button-exit"
           >
             <ChevronLeft className="w-4 h-4 mr-1" />
             Exit
           </Button>
-          <div className="text-sm text-slate-400">
+          <div className="text-sm text-slate-200">
             Act {slide.act}: <span className="text-white">{slide.actName}</span>
           </div>
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="text-sm text-slate-400">
+          <div className="text-sm text-slate-200">
             Slide {currentSlide + 1} of {totalSlides}
           </div>
           <Button
             variant="ghost"
             size="sm"
             onClick={() => setShowNotes(!showNotes)}
-            className={showNotes ? 'text-blue-400' : 'text-slate-400'}
+            className={showNotes ? 'text-blue-400' : 'text-slate-200'}
             data-testid="button-toggle-notes"
           >
             <FileText className="w-4 h-4 mr-1" />
@@ -1209,7 +1209,7 @@ function InvestorPresentation() {
             variant="ghost"
             size="sm"
             onClick={toggleFullscreen}
-            className="text-slate-400 hover:text-white"
+            className="text-slate-200 hover:text-white"
             data-testid="button-fullscreen"
           >
             <Maximize2 className="w-4 h-4" />
@@ -1253,7 +1253,7 @@ function InvestorPresentation() {
               className="bg-slate-800/50 border-l border-slate-700 overflow-hidden"
             >
               <div className="p-6 w-80">
-                <h3 className="text-sm font-semibold text-slate-400 mb-3 flex items-center gap-2">
+                <h3 className="text-sm font-semibold text-slate-200 mb-3 flex items-center gap-2">
                   <FileText className="w-4 h-4" />
                   Speaker Notes
                 </h3>
@@ -1292,7 +1292,7 @@ function InvestorPresentation() {
                   className={`px-3 py-1.5 rounded-lg text-sm transition-colors ${
                     isActive 
                       ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' 
-                      : 'text-slate-400 hover:text-white hover:bg-slate-700'
+                      : 'text-slate-200 hover:text-white hover:bg-slate-700'
                   }`}
                   data-testid={`button-act-${act}`}
                 >
@@ -1326,7 +1326,7 @@ function InvestorPresentation() {
           </div>
 
           {/* Keyboard shortcuts hint */}
-          <div className="text-xs text-slate-500">
+          <div className="text-xs text-slate-300">
             <span className="px-1.5 py-0.5 bg-slate-700 rounded mr-1">←</span>
             <span className="px-1.5 py-0.5 bg-slate-700 rounded mr-2">→</span>
             navigate

@@ -107,21 +107,21 @@ export default function AIRadarDashboard() {
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 <span className="text-sm font-medium">LIVE MONITORING</span>
               </div>
-              <div className="text-sm text-slate-400">
+              <div className="text-sm text-slate-600 dark:text-slate-200">
                 Now scanning: <span className="text-blue-400 font-medium">{currentCategory?.name}</span>
               </div>
             </div>
             <div className="flex items-center gap-6 text-sm">
               <div>
-                <span className="text-slate-400">Active monitors:</span>
+                <span className="text-slate-600 dark:text-slate-200">Active monitors:</span>
                 <span className="ml-2 font-mono text-green-400">{triggers.length}</span>
               </div>
               <div>
-                <span className="text-slate-400">Weak signals:</span>
+                <span className="text-slate-600 dark:text-slate-200">Weak signals:</span>
                 <span className="ml-2 font-mono text-amber-400">{weakSignals.length}</span>
               </div>
               <div>
-                <span className="text-slate-400">Status:</span>
+                <span className="text-slate-600 dark:text-slate-200">Status:</span>
                 <span className="ml-2 font-mono text-blue-400">Active</span>
               </div>
             </div>
@@ -208,7 +208,7 @@ export default function AIRadarDashboard() {
               </div>
 
               {/* Legend */}
-              <div className="mt-4 flex justify-center gap-4 text-xs text-slate-400">
+              <div className="mt-4 flex justify-center gap-4 text-xs text-slate-600 dark:text-slate-200">
                 <div className="flex items-center gap-1">
                   <div className="w-2 h-2 bg-red-500 rounded-full" />
                   Critical

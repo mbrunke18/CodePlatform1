@@ -341,7 +341,7 @@ export default function AuditLoggingCenter() {
                 <FileText className="h-5 w-5 text-blue-400" />
               </div>
               <div className="text-2xl font-bold text-white">{metrics.totalLogs.toLocaleString()}</div>
-              <div className="text-sm text-slate-400">All time</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">All time</div>
             </CardContent>
           </Card>
 
@@ -352,7 +352,7 @@ export default function AuditLoggingCenter() {
                 <AlertTriangle className="h-5 w-5 text-amber-400" />
               </div>
               <div className="text-2xl font-bold text-white">{metrics.securityEvents}</div>
-              <div className="text-sm text-slate-400">This month</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">This month</div>
             </CardContent>
           </Card>
 
@@ -363,7 +363,7 @@ export default function AuditLoggingCenter() {
                 <CheckCircle className="h-5 w-5 text-emerald-400" />
               </div>
               <div className="text-2xl font-bold text-white">{metrics.complianceScore}%</div>
-              <div className="text-sm text-slate-400">Overall score</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Overall score</div>
             </CardContent>
           </Card>
 
@@ -374,7 +374,7 @@ export default function AuditLoggingCenter() {
                 <Activity className="h-5 w-5 text-emerald-400" />
               </div>
               <div className="text-2xl font-bold text-white">{metrics.systemHealth}%</div>
-              <div className="text-sm text-slate-400">Uptime</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Uptime</div>
             </CardContent>
           </Card>
 
@@ -385,7 +385,7 @@ export default function AuditLoggingCenter() {
                 <Users className="h-5 w-5 text-purple-400" />
               </div>
               <div className="text-2xl font-bold text-white">{metrics.dailyLogins}</div>
-              <div className="text-sm text-slate-400">Today</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Today</div>
             </CardContent>
           </Card>
 
@@ -396,7 +396,7 @@ export default function AuditLoggingCenter() {
                 <Lock className="h-5 w-5 text-red-400" />
               </div>
               <div className="text-2xl font-bold text-white">{metrics.failedAttempts}</div>
-              <div className="text-sm text-slate-400">Today</div>
+              <div className="text-sm text-slate-600 dark:text-slate-200">Today</div>
             </CardContent>
           </Card>
         </div>
@@ -435,13 +435,13 @@ export default function AuditLoggingCenter() {
                             {log.outcome.toUpperCase()}
                           </Badge>
                         </div>
-                        <span className="text-xs text-slate-400">
+                        <span className="text-xs text-slate-600 dark:text-slate-200">
                           {new Date(log.timestamp).toLocaleString()}
                         </span>
                       </div>
                       <h4 className="font-semibold text-white text-sm mb-1">{log.action}</h4>
                       <p className="text-slate-300 text-sm mb-2">{log.details}</p>
-                      <div className="text-xs text-slate-500">
+                      <div className="text-xs text-slate-300">
                         User: {log.user} | Resource: {log.resource}
                       </div>
                     </div>
@@ -466,12 +466,12 @@ export default function AuditLoggingCenter() {
                         </Badge>
                         <div className="text-right">
                           <div className="text-sm font-medium text-white">Risk: {event.riskScore}%</div>
-                          <div className="text-xs text-slate-400">{event.status}</div>
+                          <div className="text-xs text-slate-600 dark:text-slate-200">{event.status}</div>
                         </div>
                       </div>
                       <h4 className="font-semibold text-white text-sm mb-1">{event.type.replace('_', ' ')}</h4>
                       <p className="text-slate-300 text-sm mb-2">{event.description}</p>
-                      <div className="text-xs text-slate-500">
+                      <div className="text-xs text-slate-300">
                         User: {event.user} | {new Date(event.timestamp).toLocaleString()}
                       </div>
                     </div>
@@ -487,7 +487,7 @@ export default function AuditLoggingCenter() {
             {/* Filters */}
             <div className="flex items-center gap-4 bg-slate-900/50 p-4 rounded-lg border border-slate-700/50">
               <div className="flex-1 page-background relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-600 dark:text-slate-200" />
                 <Input
                   placeholder="Search logs..."
                   value={searchTerm}
@@ -598,7 +598,7 @@ export default function AuditLoggingCenter() {
                         <p className="text-slate-300 mb-4">{event.description}</p>
                       </div>
                       <div className="text-right">
-                        <div className="text-sm text-slate-400">Risk Score</div>
+                        <div className="text-sm text-slate-600 dark:text-slate-200">Risk Score</div>
                         <div className="text-2xl font-bold text-white">{event.riskScore}%</div>
                       </div>
                     </div>
@@ -630,7 +630,7 @@ export default function AuditLoggingCenter() {
                     </div>
                     
                     <div className="mt-4 pt-4 border-t border-slate-700 flex items-center justify-between">
-                      <div className="text-xs text-slate-500">
+                      <div className="text-xs text-slate-300">
                         User: {event.user} | Detected: {new Date(event.timestamp).toLocaleString()}
                       </div>
                       <div className="flex gap-2">
@@ -665,15 +665,15 @@ export default function AuditLoggingCenter() {
                   <CardContent className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       <div>
-                        <div className="text-sm text-slate-400">Period</div>
+                        <div className="text-sm text-slate-600 dark:text-slate-200">Period</div>
                         <div className="text-white font-medium">{report.period}</div>
                       </div>
                       <div>
-                        <div className="text-sm text-slate-400">Generated</div>
+                        <div className="text-sm text-slate-600 dark:text-slate-200">Generated</div>
                         <div className="text-white font-medium">{new Date(report.generatedDate).toLocaleDateString()}</div>
                       </div>
                       <div>
-                        <div className="text-sm text-slate-400">Overall Score</div>
+                        <div className="text-sm text-slate-600 dark:text-slate-200">Overall Score</div>
                         <div className="text-white font-medium">{report.compliance[0]?.score}%</div>
                       </div>
                     </div>
@@ -723,7 +723,7 @@ export default function AuditLoggingCenter() {
                     <BarChart3 className="h-5 w-5 text-blue-400" />
                   </div>
                   <div className="text-2xl font-bold text-white mb-2">2,847</div>
-                  <div className="text-sm text-slate-400">Logs today</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-200">Logs today</div>
                 </CardContent>
               </Card>
 
@@ -734,7 +734,7 @@ export default function AuditLoggingCenter() {
                     <Shield className="h-5 w-5 text-emerald-400" />
                   </div>
                   <div className="text-2xl font-bold text-white mb-2">94.2%</div>
-                  <div className="text-sm text-slate-400">Overall security</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-200">Overall security</div>
                 </CardContent>
               </Card>
 
@@ -745,7 +745,7 @@ export default function AuditLoggingCenter() {
                     <Clock className="h-5 w-5 text-purple-400" />
                   </div>
                   <div className="text-2xl font-bold text-white mb-2">1.2s</div>
-                  <div className="text-sm text-slate-400">Average response</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-200">Average response</div>
                 </CardContent>
               </Card>
 
@@ -756,7 +756,7 @@ export default function AuditLoggingCenter() {
                     <TrendingUp className="h-5 w-5 text-emerald-400" />
                   </div>
                   <div className="text-2xl font-bold text-white mb-2">99.7%</div>
-                  <div className="text-sm text-slate-400">Detection rate</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-200">Detection rate</div>
                 </CardContent>
               </Card>
             </div>

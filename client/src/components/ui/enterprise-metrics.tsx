@@ -100,7 +100,7 @@ export function LiveEnterpriseMetrics({ organizationId = "demo", className = "" 
       case 'innovation': return { bg: 'from-yellow-500/20 to-orange-500/20', text: 'text-yellow-400' };
       case 'culture': return { bg: 'from-purple-500/20 to-indigo-500/20', text: 'text-purple-400' };
       case 'strategy': return { bg: 'from-red-500/20 to-pink-500/20', text: 'text-red-400' };
-      default: return { bg: 'from-gray-500/20 to-slate-500/20', text: 'text-gray-400' };
+      default: return { bg: 'from-gray-500/20 to-slate-500/20', text: 'text-gray-200' };
     }
   };
 
@@ -170,12 +170,12 @@ export function LiveEnterpriseMetrics({ organizationId = "demo", className = "" 
                   
                   <div className={`text-3xl font-bold ${colors.text} mb-2`}>
                     {metric.displayValue}
-                    <span className="text-sm text-gray-400 font-normal ml-2">{metric.unit}</span>
+                    <span className="text-sm text-gray-200 font-normal ml-2">{metric.unit}</span>
                   </div>
 
                   <div className="space-y-2">
                     <div className="flex justify-between text-xs">
-                      <span className="text-gray-400">Benchmark Percentile</span>
+                      <span className="text-gray-200">Benchmark Percentile</span>
                       <span className="text-gray-300">{metric.benchmarkPercentile}th</span>
                     </div>
                     <Progress 
@@ -188,7 +188,7 @@ export function LiveEnterpriseMetrics({ organizationId = "demo", className = "" 
                     <Badge variant="outline" className={`${colors.text} border-gray-600/50 text-xs`}>
                       {metric.category}
                     </Badge>
-                    <div className="text-xs text-gray-500">
+                    <div className="text-xs text-gray-300">
                       Confidence: {(metric.confidence * 100).toFixed(0)}%
                     </div>
                   </div>
@@ -200,7 +200,7 @@ export function LiveEnterpriseMetrics({ organizationId = "demo", className = "" 
       </div>
 
       {/* Last Update Info */}
-      <div className="flex items-center justify-center space-x-4 text-sm text-gray-400">
+      <div className="flex items-center justify-center space-x-4 text-sm text-gray-200">
         <div className="flex items-center">
           <Activity className="w-4 h-4 mr-2 text-green-400" />
           Live Metrics

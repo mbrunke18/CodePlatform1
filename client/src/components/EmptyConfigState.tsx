@@ -95,7 +95,7 @@ export default function EmptyConfigState({
         <h3 className="text-lg font-semibold text-white mb-2">
           {title || info.title}
         </h3>
-        <p className="text-slate-400 mb-6 max-w-md">
+        <p className="text-slate-600 dark:text-slate-200 mb-6 max-w-md">
           {description || info.description}
         </p>
         <Link href={actionPath || info.actionPath}>

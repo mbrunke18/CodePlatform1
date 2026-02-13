@@ -92,7 +92,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
                   <stat.icon className={`h-8 w-8 ${stat.color} mx-auto mb-2`} />
                   <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
                   <div className="text-sm font-medium text-gray-300">{stat.label}</div>
-                  <div className="text-xs text-gray-400 mt-1">{stat.comparison}</div>
+                  <div className="text-xs text-gray-200 mt-1">{stat.comparison}</div>
                 </CardContent>
               </Card>
             ))}
@@ -150,7 +150,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
                 <p className="text-gray-300 mb-2">
                   <strong className="text-white">Interactive Demo:</strong> Sample data shown for illustration purposes. Scenarios and workflows reflect M's design capabilities and championship-level execution methodology.
                 </p>
-                <p className="text-gray-400 text-sm">
+                <p className="text-gray-200 text-sm">
                   Experience how preparation-driven execution transforms 72-hour coordination into 12-minute strategic response.
                 </p>
               </div>
@@ -158,7 +158,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
           </div>
 
           {/* Duration Info */}
-          <div className="flex items-center justify-center gap-6 text-sm text-gray-400">
+          <div className="flex items-center justify-center gap-6 text-sm text-gray-200">
             <div className="flex items-center gap-2">
               <Clock className="h-4 w-4" />
               <span>Demo Duration: 2-10 minutes (your choice)</span>

@@ -30,7 +30,7 @@ export function CommandCenterStatusBar() {
       case 'critical':
         return 'text-red-400';
       default:
-        return 'text-gray-400';
+        return 'text-gray-600 dark:text-gray-200';
     }
   };
 
@@ -89,7 +89,7 @@ export function CommandCenterStatusBar() {
             </div>
           </div>
 
-          <div className="text-slate-500 text-xs">
+          <div className="text-slate-300 text-xs">
             Last updated: {new Date(status.lastUpdated).toLocaleTimeString()}
           </div>
         </div>

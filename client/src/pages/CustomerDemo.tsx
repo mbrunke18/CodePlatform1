@@ -381,7 +381,7 @@ export default function CustomerDemo() {
                 
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-slate-500">Speed:</span>
+                    <span className="text-xs text-slate-300">Speed:</span>
                     {[1, 2, 4].map((speed) => (
                       <Button
                         key={speed}
@@ -397,11 +397,11 @@ export default function CustomerDemo() {
                   </div>
                   
                   <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-lg">
-                    <Clock className="h-4 w-4 text-slate-400" />
+                    <Clock className="h-4 w-4 text-slate-200" />
                     <span className="text-white font-mono text-sm">
                       {Math.floor(elapsedTime / 60)}:{(elapsedTime % 60).toString().padStart(2, '0')}
                     </span>
-                    <span className="text-slate-500 text-xs">/ 3:00</span>
+                    <span className="text-slate-300 text-xs">/ 3:00</span>
                   </div>
                 </div>
               </div>

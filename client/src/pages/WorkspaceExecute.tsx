@@ -95,9 +95,9 @@ export default function WorkspaceExecute() {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-slate-500 hover:text-poise-teal cursor-pointer">ExecuteIQ One™</span>
+              <span className="text-slate-300 hover:text-poise-teal cursor-pointer">ExecuteIQ One™</span>
             </Link>
-            <ChevronRight className="h-4 w-4 text-slate-400" />
+            <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200" />
             <span className="text-poise-teal font-medium">EXECUTE</span>
           </nav>
 
@@ -114,7 +114,7 @@ export default function WorkspaceExecute() {
                     ExecuteIQ Compass™
                   </Badge>
                 </div>
-                <p className="text-slate-600 dark:text-slate-300 mt-1">
+                <p className="text-slate-400 dark:text-slate-300 mt-1">
                   Coordinate responses and execute playbooks in 12 minutes
                 </p>
               </div>
@@ -140,7 +140,7 @@ export default function WorkspaceExecute() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-slate-900 dark:text-white">IDEA Framework Progress</h3>
-                <span className="text-sm text-slate-500">Phase 3 of 4</span>
+                <span className="text-sm text-slate-300">Phase 3 of 4</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex-1 flex items-center gap-2">
@@ -165,7 +165,7 @@ export default function WorkspaceExecute() {
                   <ArrowRight className="h-4 w-4 text-slate-300" />
                   <Link href="/workspaces/advance">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-poise-gold/10 cursor-pointer transition-colors">
-                      <span className="text-sm text-slate-500">ADVANCE</span>
+                      <span className="text-sm text-slate-300">ADVANCE</span>
                     </div>
                   </Link>
                 </div>
@@ -182,7 +182,7 @@ export default function WorkspaceExecute() {
                     <metric.icon className={`h-5 w-5 ${metric.color}`} />
                   </div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white">{metric.value}</p>
-                  <p className="text-xs text-slate-500">{metric.label}</p>
+                  <p className="text-xs text-slate-300">{metric.label}</p>
                 </CardContent>
               </Card>
             ))}
@@ -219,9 +219,9 @@ export default function WorkspaceExecute() {
                           <h3 className="font-semibold text-slate-900 dark:text-white group-hover:text-poise-teal transition-colors">
                             {tool.title}
                           </h3>
-                          <ChevronRight className="h-4 w-4 text-slate-400 group-hover:text-poise-teal transition-colors" />
+                          <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200 group-hover:text-poise-teal transition-colors" />
                         </div>
-                        <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">
+                        <p className="text-sm text-slate-400 dark:text-slate-300 mt-1">
                           {tool.description}
                         </p>
                         <Badge variant="outline" className="mt-3 text-xs">
@@ -245,7 +245,7 @@ export default function WorkspaceExecute() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 dark:text-white">Execution complete?</h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-300">
+                    <p className="text-sm text-slate-400 dark:text-slate-300">
                       Capture lessons learned and improve for next time in ADVANCE
                     </p>
                   </div>

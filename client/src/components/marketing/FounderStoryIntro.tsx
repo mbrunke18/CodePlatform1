@@ -702,7 +702,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
               </Button>
             </div>
 
-            <div className="text-slate-500 text-sm">
+            <div className="text-slate-300 text-sm">
               {currentScene + 1} / {totalScenes}
             </div>
 

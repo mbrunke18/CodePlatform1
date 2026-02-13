@@ -143,7 +143,7 @@ export default function SizzleReel() {
                     className="bg-slate-800/50 border border-slate-700 rounded-xl p-6"
                   >
                     <div className="text-3xl font-bold text-red-400 mb-2">Day 1</div>
-                    <Calendar className="h-8 w-8 text-slate-500 mx-auto mb-3" />
+                    <Calendar className="h-8 w-8 text-slate-300 mx-auto mb-3" />
                     <p className="text-slate-300 text-sm">
                       Recognizing the opportunity. Debating priorities. Getting leadership aligned.
                     </p>
@@ -156,7 +156,7 @@ export default function SizzleReel() {
                     className="bg-slate-800/50 border border-slate-700 rounded-xl p-6"
                   >
                     <div className="text-3xl font-bold text-red-400 mb-2">Day 2</div>
-                    <Users className="h-8 w-8 text-slate-500 mx-auto mb-3" />
+                    <Users className="h-8 w-8 text-slate-300 mx-auto mb-3" />
                     <p className="text-slate-300 text-sm">
                       Assembling stakeholders. Briefing teams. Assigning workstreams.
                     </p>
@@ -169,7 +169,7 @@ export default function SizzleReel() {
                     className="bg-slate-800/50 border border-slate-700 rounded-xl p-6"
                   >
                     <div className="text-3xl font-bold text-red-400 mb-2">Day 3</div>
-                    <GitBranch className="h-8 w-8 text-slate-500 mx-auto mb-3" />
+                    <GitBranch className="h-8 w-8 text-slate-300 mx-auto mb-3" />
                     <p className="text-slate-300 text-sm">
                       Clarifying ownership. Discovering dependencies. Reworking the plan.
                     </p>
@@ -433,16 +433,16 @@ export default function SizzleReel() {
                   className="flex justify-center gap-6 mb-8"
                 >
                   <div className="text-center">
-                    <div className="text-2xl font-semibold text-slate-500">CRM</div>
-                    <div className="text-xs text-slate-600">Customers</div>
+                    <div className="text-2xl font-semibold text-slate-300">CRM</div>
+                    <div className="text-xs text-slate-400">Customers</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-semibold text-slate-500">ERP</div>
-                    <div className="text-xs text-slate-600">Resources</div>
+                    <div className="text-2xl font-semibold text-slate-300">ERP</div>
+                    <div className="text-xs text-slate-400">Resources</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-semibold text-slate-500">PM</div>
-                    <div className="text-xs text-slate-600">Projects</div>
+                    <div className="text-2xl font-semibold text-slate-300">PM</div>
+                    <div className="text-xs text-slate-400">Projects</div>
                   </div>
                 </motion.div>
                 
@@ -629,14 +629,14 @@ export default function SizzleReel() {
             setCurrentScene(totalScenes - 1);
             setHasCompleted(true);
           }}
-          className="absolute bottom-8 right-8 text-slate-500 hover:text-white text-sm transition-colors"
+          className="absolute bottom-8 right-8 text-slate-300 hover:text-white text-sm transition-colors"
           data-testid="button-skip-sizzle"
         >
           Skip
         </button>
       )}
       
-      <div className="absolute top-4 left-4 text-slate-500 text-sm">
+      <div className="absolute top-4 left-4 text-slate-300 text-sm">
         2-Minute Sizzle Reel
       </div>
     </div>

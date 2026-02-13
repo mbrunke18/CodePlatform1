@@ -254,7 +254,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
                 <div className="text-4xl font-bold text-red-500">72 hrs</div>
                 <div className="text-sm text-slate-300">Company A</div>
               </div>
-              <div className="text-slate-600">vs</div>
+              <div className="text-slate-400">vs</div>
               <div className="text-center">
                 <div className="text-4xl font-bold text-emerald-400">?</div>
                 <div className="text-sm text-slate-300">Company B</div>

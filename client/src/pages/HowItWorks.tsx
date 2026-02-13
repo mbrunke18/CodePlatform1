@@ -155,11 +155,11 @@ export default function HowItWorks() {
                     <phase.icon className="h-6 w-6 md:h-8 md:w-8 text-white" />
                   </div>
                   {index < phases.length - 1 && (
-                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-slate-500 mx-1 md:mx-2" />
+                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-slate-300 mx-1 md:mx-2" />
                   )}
                 </div>
               ))}
-              <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-slate-500 mx-1 md:mx-2 rotate-180 hidden md:block" />
+              <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-slate-300 mx-1 md:mx-2 rotate-180 hidden md:block" />
             </div>
             <p className="text-sm text-slate-300 mt-4">Continuous cycle — ADVANCE feeds back into IDENTIFY</p>
           </div>

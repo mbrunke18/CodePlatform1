@@ -171,7 +171,7 @@ export default function IntegrationsPage() {
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
             ExecuteIQ Orchestrates Your Stack
           </h1>
-          <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
+          <p className="mt-2 text-lg text-gray-400 dark:text-gray-200">
             ExecuteIQ doesn't replace your workflow tools — it coordinates them. When a playbook 
             activates, ExecuteIQ tells each system exactly what to do.
           </p>
@@ -184,21 +184,21 @@ export default function IntegrationsPage() {
               <Zap className="w-6 h-6 text-blue-500" />
             </div>
             <h3 className="font-semibold text-gray-900 dark:text-white mb-2">ExecuteIQ Orchestrates</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Strategic playbooks trigger coordinated actions across your entire stack</p>
+            <p className="text-sm text-gray-400 dark:text-gray-200">Strategic playbooks trigger coordinated actions across your entire stack</p>
           </Card>
           <Card className="p-6 text-center">
             <div className="w-12 h-12 mx-auto mb-4 bg-purple-500/20 rounded-xl flex items-center justify-center">
               <Database className="w-6 h-6 text-purple-500" />
             </div>
             <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Tools Execute</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">ServiceNow, Jira, Slack, and Teams carry out the operational work</p>
+            <p className="text-sm text-gray-400 dark:text-gray-200">ServiceNow, Jira, Slack, and Teams carry out the operational work</p>
           </Card>
           <Card className="p-6 text-center">
             <div className="w-12 h-12 mx-auto mb-4 bg-emerald-500/20 rounded-xl flex items-center justify-center">
               <CheckCircle2 className="w-6 h-6 text-emerald-500" />
             </div>
             <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Everything Syncs</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Bi-directional updates keep ExecuteIQ and your tools in perfect alignment</p>
+            <p className="text-sm text-gray-400 dark:text-gray-200">Bi-directional updates keep ExecuteIQ and your tools in perfect alignment</p>
           </Card>
         </div>
 
@@ -207,7 +207,7 @@ export default function IntegrationsPage() {
           <Card className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Connected</p>
+                <p className="text-sm text-gray-400 dark:text-gray-200">Connected</p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">
                   {connectedIntegrations.filter(i => i.status === 'active').length}
                 </p>
@@ -221,7 +221,7 @@ export default function IntegrationsPage() {
           <Card className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Available</p>
+                <p className="text-sm text-gray-400 dark:text-gray-200">Available</p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">
                   {marketplace.filter(i => i.status === 'available').length}
                 </p>
@@ -235,13 +235,13 @@ export default function IntegrationsPage() {
           <Card className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Coming Soon</p>
+                <p className="text-sm text-gray-400 dark:text-gray-200">Coming Soon</p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">
                   {marketplace.filter(i => i.status === 'coming_soon').length}
                 </p>
               </div>
               <div className="w-12 h-12 bg-gray-500/10 rounded-lg flex items-center justify-center">
-                <Zap className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+                <Zap className="w-6 h-6 text-gray-400 dark:text-gray-200" />
               </div>
             </div>
           </Card>
@@ -275,7 +275,7 @@ export default function IntegrationsPage() {
                           Connected
                         </Badge>
                       ) : integration.status === 'coming_soon' ? (
-                        <Badge variant="outline" className="bg-gray-500/10 text-gray-600 dark:text-gray-400 border-gray-500/20">
+                        <Badge variant="outline" className="bg-gray-500/10 text-gray-400 dark:text-gray-200 border-gray-500/20">
                           Coming Soon
                         </Badge>
                       ) : (
@@ -289,7 +289,7 @@ export default function IntegrationsPage() {
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                       {integration.name}
                     </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                    <p className="text-sm text-gray-400 dark:text-gray-200 mb-4">
                       {integration.description}
                     </p>
 
@@ -303,7 +303,7 @@ export default function IntegrationsPage() {
 
                     {connected ? (
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-400">
+                        <div className="flex items-center justify-between text-xs text-gray-400 dark:text-gray-200">
                           <span>Status:</span>
                           <span className="font-medium">{connectedData?.status}</span>
                         </div>
@@ -369,7 +369,7 @@ export default function IntegrationsPage() {
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                       {integration.name}
                     </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                    <p className="text-sm text-gray-400 dark:text-gray-200 mb-4">
                       {integration.description}
                     </p>
 
@@ -412,7 +412,7 @@ export default function IntegrationsPage() {
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                       {integration.name}
                     </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                    <p className="text-sm text-gray-400 dark:text-gray-200 mb-4">
                       {integration.description}
                     </p>
 

@@ -94,9 +94,9 @@ export default function WorkspaceIdentify() {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-slate-500 hover:text-poise-gold cursor-pointer">ExecuteIQ One™</span>
+              <span className="text-slate-300 hover:text-poise-gold cursor-pointer">ExecuteIQ One™</span>
             </Link>
-            <ChevronRight className="h-4 w-4 text-slate-400" />
+            <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200" />
             <span className="text-poise-gold font-medium">IDENTIFY</span>
           </nav>
 
@@ -113,7 +113,7 @@ export default function WorkspaceIdentify() {
                     ExecuteIQ Playbook™
                   </Badge>
                 </div>
-                <p className="text-slate-600 dark:text-slate-300 mt-1">
+                <p className="text-slate-400 dark:text-slate-300 mt-1">
                   Build, customize, and manage strategic playbooks for every scenario
                 </p>
               </div>
@@ -139,7 +139,7 @@ export default function WorkspaceIdentify() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-slate-900 dark:text-white">IDEA Framework Progress</h3>
-                <span className="text-sm text-slate-500">Phase 1 of 4</span>
+                <span className="text-sm text-slate-300">Phase 1 of 4</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex-1 flex items-center gap-2">
@@ -150,19 +150,19 @@ export default function WorkspaceIdentify() {
                   <ArrowRight className="h-4 w-4 text-slate-300" />
                   <Link href="/workspaces/detect">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-poise-teal/10 cursor-pointer transition-colors">
-                      <span className="text-sm text-slate-500">DETECT</span>
+                      <span className="text-sm text-slate-300">DETECT</span>
                     </div>
                   </Link>
                   <ArrowRight className="h-4 w-4 text-slate-300" />
                   <Link href="/workspaces/execute">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-poise-teal/10 cursor-pointer transition-colors">
-                      <span className="text-sm text-slate-500">EXECUTE</span>
+                      <span className="text-sm text-slate-300">EXECUTE</span>
                     </div>
                   </Link>
                   <ArrowRight className="h-4 w-4 text-slate-300" />
                   <Link href="/workspaces/advance">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-poise-gold/10 cursor-pointer transition-colors">
-                      <span className="text-sm text-slate-500">ADVANCE</span>
+                      <span className="text-sm text-slate-300">ADVANCE</span>
                     </div>
                   </Link>
                 </div>
@@ -184,7 +184,7 @@ export default function WorkspaceIdentify() {
                   </div>
                   <div className="space-y-1">
                     {category.domains.map((domain) => (
-                      <p key={domain} className="text-sm text-slate-600 dark:text-slate-300">• {domain}</p>
+                      <p key={domain} className="text-sm text-slate-400 dark:text-slate-300">• {domain}</p>
                     ))}
                   </div>
                 </CardContent>
@@ -208,9 +208,9 @@ export default function WorkspaceIdentify() {
                           <h3 className="font-semibold text-slate-900 dark:text-white group-hover:text-poise-gold transition-colors">
                             {tool.title}
                           </h3>
-                          <ChevronRight className="h-4 w-4 text-slate-400 group-hover:text-poise-gold transition-colors" />
+                          <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200 group-hover:text-poise-gold transition-colors" />
                         </div>
-                        <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">
+                        <p className="text-sm text-slate-400 dark:text-slate-300 mt-1">
                           {tool.description}
                         </p>
                         <Badge variant="outline" className="mt-3 text-xs">
@@ -234,7 +234,7 @@ export default function WorkspaceIdentify() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 dark:text-white">Ready for the next phase?</h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-300">
+                    <p className="text-sm text-slate-400 dark:text-slate-300">
                       Once your playbooks are ready, set up signal monitoring in DETECT
                     </p>
                   </div>

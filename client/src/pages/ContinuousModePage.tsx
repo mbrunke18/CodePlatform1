@@ -74,7 +74,7 @@ export default function ContinuousModePage() {
               <Activity className="w-10 h-10 text-blue-600" />
               Continuous Operations Mode
             </h1>
-            <p className="text-slate-600 dark:text-slate-300">
+            <p className="text-slate-400 dark:text-slate-300">
               Always-on strategic monitoring, learning, and automated coordination
             </p>
           </div>
@@ -105,7 +105,7 @@ export default function ContinuousModePage() {
           }>
             <CardHeader>
               <CardDescription>System Status</CardDescription>
-              <CardTitle className={`text-3xl ${continuousMode.enabled ? "text-green-600" : "text-slate-400"}`}>
+              <CardTitle className={`text-3xl ${continuousMode.enabled ? "text-green-600" : "text-slate-600 dark:text-slate-200"}`}>
                 {continuousMode.enabled ? "ACTIVE" : "PAUSED"}
               </CardTitle>
             </CardHeader>
@@ -125,7 +125,7 @@ export default function ContinuousModePage() {
               <CardTitle className="text-3xl text-blue-600">{continuousMode.tasksScheduled}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-slate-600 dark:text-slate-300">
+              <p className="text-sm text-slate-400 dark:text-slate-300">
                 Automated operations running
               </p>
             </CardContent>
@@ -139,7 +139,7 @@ export default function ContinuousModePage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-slate-600 dark:text-slate-300">
+              <p className="text-sm text-slate-400 dark:text-slate-300">
                 {continuousMode.nextRun ? 'Weak Signal Sweep' : 'No tasks scheduled'}
               </p>
             </CardContent>
@@ -162,7 +162,7 @@ export default function ContinuousModePage() {
                         <h3 className="font-semibold text-slate-900 dark:text-white mb-1">
                           {task.name}
                         </h3>
-                        <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-300">
+                        <div className="flex items-center gap-4 text-sm text-slate-400 dark:text-slate-300">
                           <div className="flex items-center gap-1">
                             <Calendar className="w-4 h-4" />
                             <span>{task.schedule}</span>
@@ -174,13 +174,13 @@ export default function ContinuousModePage() {
                     </div>
                     <div className="flex items-center gap-6">
                       <div className="text-right">
-                        <div className="text-xs text-slate-500 dark:text-slate-500 mb-1">Last run</div>
+                        <div className="text-xs text-slate-300 dark:text-slate-300 mb-1">Last run</div>
                         <div className="text-sm font-medium text-slate-700 dark:text-slate-300">
                           {task.lastRun}
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="text-xs text-slate-500 dark:text-slate-500 mb-1">Next run</div>
+                        <div className="text-xs text-slate-300 dark:text-slate-300 mb-1">Next run</div>
                         <div className="text-sm font-medium text-slate-700 dark:text-slate-300">
                           {task.nextRun}
                         </div>
@@ -214,12 +214,12 @@ export default function ContinuousModePage() {
                         <div className="font-medium text-slate-900 dark:text-white">
                           {execution.task}
                         </div>
-                        <div className="text-sm text-slate-600 dark:text-slate-300">
+                        <div className="text-sm text-slate-400 dark:text-slate-300">
                           {execution.findings}
                         </div>
                       </div>
                     </div>
-                    <div className="text-sm text-slate-500 dark:text-slate-500">
+                    <div className="text-sm text-slate-300 dark:text-slate-300">
                       {execution.time}
                     </div>
                   </div>

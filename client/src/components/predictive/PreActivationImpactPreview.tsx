@@ -148,7 +148,7 @@ export default function PreActivationImpactPreview({
             </div>
             <div>
               <CardTitle className="text-xl">Pre-Activation Impact Preview</CardTitle>
-              <p className="text-sm text-slate-600 dark:text-slate-300">
+              <p className="text-sm text-slate-400 dark:text-slate-300">
                 Review projected impact before activating "{playbook?.name || 'Playbook'}"
               </p>
             </div>
@@ -165,28 +165,28 @@ export default function PreActivationImpactPreview({
             <div className="text-2xl font-bold text-slate-900 dark:text-white">
               {formatCurrency(preview.estimatedCost)}
             </div>
-            <div className="text-xs text-slate-500">Estimated Cost</div>
+            <div className="text-xs text-slate-300">Estimated Cost</div>
           </div>
           <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-4 text-center">
             <Clock className="w-6 h-6 text-blue-600 mx-auto mb-2" />
             <div className="text-2xl font-bold text-slate-900 dark:text-white">
               {preview.estimatedDuration} min
             </div>
-            <div className="text-xs text-slate-500">Est. Duration</div>
+            <div className="text-xs text-slate-300">Est. Duration</div>
           </div>
           <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-4 text-center">
             <Users className="w-6 h-6 text-purple-600 mx-auto mb-2" />
             <div className="text-2xl font-bold text-slate-900 dark:text-white">
               {preview.stakeholdersToNotify}
             </div>
-            <div className="text-xs text-slate-500">Stakeholders</div>
+            <div className="text-xs text-slate-300">Stakeholders</div>
           </div>
           <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-4 text-center">
             <FileText className="w-6 h-6 text-amber-600 mx-auto mb-2" />
             <div className="text-2xl font-bold text-slate-900 dark:text-white">
               {preview.documentsToStage}
             </div>
-            <div className="text-xs text-slate-500">Documents</div>
+            <div className="text-xs text-slate-300">Documents</div>
           </div>
         </div>
 
@@ -211,7 +211,7 @@ export default function PreActivationImpactPreview({
               <Progress value={preview.readinessScore} className="flex-1" />
               <span className="text-lg font-bold text-emerald-600">{preview.readinessScore}%</span>
             </div>
-            <p className="text-xs text-slate-500 mt-2">
+            <p className="text-xs text-slate-300 mt-2">
               Success probability: <span className="font-semibold text-blue-600">{preview.successProbability}%</span>
             </p>
           </div>
@@ -250,7 +250,7 @@ export default function PreActivationImpactPreview({
                         {conflict.severity}
                       </Badge>
                     </div>
-                    <p className="text-xs text-slate-600 dark:text-slate-300">
+                    <p className="text-xs text-slate-400 dark:text-slate-300">
                       Conflicts with: {conflict.conflictingPlaybook}
                     </p>
                     <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-1">
@@ -290,7 +290,7 @@ export default function PreActivationImpactPreview({
               className="mt-1 w-5 h-5 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
               data-testid="checkbox-acknowledge-impact"
             />
-            <span className="text-sm text-slate-600 dark:text-slate-300">
+            <span className="text-sm text-slate-400 dark:text-slate-300">
               I have reviewed the projected impact, resource allocation, and any conflicts. 
               I authorize the activation of this playbook and the associated budget unlock.
             </span>

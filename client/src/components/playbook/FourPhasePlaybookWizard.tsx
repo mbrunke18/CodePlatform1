@@ -135,7 +135,7 @@ function OverallReadinessCard({ readinessData }: { readinessData: any }) {
         <div className="flex items-center justify-between">
           <div className="text-center">
             <div className={`text-5xl font-bold ${scoreColor}`}>{score}%</div>
-            <div className="text-xs text-slate-400 mt-1">Overall Score</div>
+            <div className="text-xs text-slate-200 mt-1">Overall Score</div>
           </div>
           <div className="flex-1 ml-6 space-y-2">
             <div className="flex justify-between text-xs">

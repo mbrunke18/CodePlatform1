@@ -129,7 +129,7 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
               <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
                 Define Phase Timeframes
               </h3>
-              <p className="text-sm text-slate-600 dark:text-slate-300">
+              <p className="text-sm text-slate-400 dark:text-slate-300">
                 Executive-defined SLAs set clear expectations for each phase and create accountability. 
                 These timeframes become your organizational standard for measuring execution velocity.
               </p>
@@ -204,7 +204,7 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
                 placeholder="e.g., Stakeholder Notification SLA"
                 className="text-sm"
               />
-              <p className="text-xs text-slate-500">Give this SLA a clear, actionable name</p>
+              <p className="text-xs text-slate-300">Give this SLA a clear, actionable name</p>
             </div>
 
             <div className="space-y-2">
@@ -219,7 +219,7 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
                 rows={2}
                 className="text-sm"
               />
-              <p className="text-xs text-slate-500">This helps teams understand the "why" behind the timeframe</p>
+              <p className="text-xs text-slate-300">This helps teams understand the "why" behind the timeframe</p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
@@ -310,7 +310,7 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
 
         {!sla.enabled && (
           <CardContent className="pt-4">
-            <div className="text-center py-4 text-slate-500 dark:text-slate-300">
+            <div className="text-center py-4 text-slate-300 dark:text-slate-300">
               <p className="text-sm">SLA not configured for this phase</p>
               <p className="text-xs mt-1">Enable the toggle above to set a timeframe</p>
             </div>
@@ -335,7 +335,7 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
                     <span className="text-lg">{PHASE_INFO[phase as keyof typeof PHASE_INFO].icon}</span>
                     <div>
                       <div className="font-medium text-slate-900 dark:text-white">{phase.toUpperCase()}</div>
-                      <div className="text-xs text-slate-500">{s?.name}</div>
+                      <div className="text-xs text-slate-300">{s?.name}</div>
                     </div>
                   </div>
                   <div className="text-right">
@@ -344,7 +344,7 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
                         {displayVal} {s.unit}
                       </div>
                     ) : (
-                      <div className="text-xs text-slate-400">Not configured</div>
+                      <div className="text-xs text-slate-600 dark:text-slate-200">Not configured</div>
                     )}
                   </div>
                 </div>
@@ -363,7 +363,7 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
             <p className="text-slate-700 dark:text-slate-200">
               Most companies claim "fast execution." Your team will prove it with auditable SLA compliance metrics.
             </p>
-            <div className="text-xs text-slate-600 dark:text-slate-300 mt-3">
+            <div className="text-xs text-slate-400 dark:text-slate-300 mt-3">
               Marketing example: <em>"We guarantee crisis response initiation within 5 minutes—and we track it."</em>
             </div>
           </div>

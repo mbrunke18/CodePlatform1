@@ -24,7 +24,7 @@ const INFLUENCE_LEVELS = [
   { value: 'critical', label: 'Critical', color: 'text-red-400' },
   { value: 'high', label: 'High', color: 'text-orange-400' },
   { value: 'medium', label: 'Medium', color: 'text-yellow-400' },
-  { value: 'low', label: 'Low', color: 'text-gray-400' },
+  { value: 'low', label: 'Low', color: 'text-gray-200' },
 ];
 
 export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMatrixPhaseProps) {
@@ -72,7 +72,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
               <Shield className="h-5 w-5 text-yellow-400 mt-0.5" />
               <div>
                 <p className="text-sm text-yellow-300 font-medium">Required Roles Missing</p>
-                <p className="text-xs text-gray-400 mt-1">
+                <p className="text-xs text-gray-200 mt-1">
                   Every scenario needs an <strong>Executive Sponsor</strong> (decision authority) and 
                   an <strong>Accountable Owner</strong> (execution lead) for 12-minute activation.
                 </p>
@@ -146,7 +146,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
                           <Icon className="h-4 w-4" />
                           <div>
                             <div className="font-medium">{role.label}</div>
-                            <div className="text-xs text-gray-500">{role.description}</div>
+                            <div className="text-xs text-gray-300">{role.description}</div>
                           </div>
                         </div>
                       </SelectItem>
@@ -246,14 +246,14 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
                             </Badge>
                           )}
                         </div>
-                        <div className="text-sm text-gray-400 space-y-1">
+                        <div className="text-sm text-gray-200 space-y-1">
                           <p>{stakeholder.title}</p>
                           {stakeholder.email && <p className="text-xs">{stakeholder.email}</p>}
                           <div className="flex items-center gap-3 mt-2">
                             <Badge variant="outline" className="text-xs">
                               {roleConfig?.label || stakeholder.role}
                             </Badge>
-                            <span className={`text-xs ${influenceConfig?.color || 'text-gray-400'}`}>
+                            <span className={`text-xs ${influenceConfig?.color || 'text-gray-200'}`}>
                               {influenceConfig?.label || stakeholder.influenceLevel} Influence
                             </span>
                           </div>

@@ -48,7 +48,7 @@ export function BeforeAfterComparison() {
             <h3 className="text-2xl font-bold text-white mb-2">
               Traditional Response vs ExecuteIQ
             </h3>
-            <p className="text-slate-400">Same crisis. Radically different outcomes.</p>
+            <p className="text-slate-200">Same crisis. Radically different outcomes.</p>
           </div>
 
           <div className="grid grid-cols-2 gap-6">
@@ -112,7 +112,7 @@ export function BeforeAfterComparison() {
             <div className="text-amber-400 font-bold text-lg">
               6,000% Faster Response Time
             </div>
-            <div className="text-slate-400 text-sm mt-1">
+            <div className="text-slate-200 text-sm mt-1">
               This is the competitive advantage Fortune 1000 executives demand
             </div>
           </div>

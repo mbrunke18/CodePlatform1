@@ -238,7 +238,7 @@ export function OrganizationReadinessScore({
           <h2 className="text-3xl font-bold text-white mb-2">
             {companyName} Readiness Profile
           </h2>
-          <p className="text-slate-400">
+          <p className="text-slate-200">
             Based on {INDUSTRY_LABELS[industry]} industry benchmarks
           </p>
         </div>
@@ -276,10 +276,10 @@ export function OrganizationReadinessScore({
                 </div>
               </div>
               <h3 className="text-xl font-semibold text-white mb-2">Current Readiness</h3>
-              <p className="text-slate-400 text-sm">
+              <p className="text-slate-200 text-sm">
                 Industry average: {benchmarks.avgReadinessScore}%
               </p>
-              <p className="text-slate-400 text-sm">
+              <p className="text-slate-200 text-sm">
                 Top performers: {benchmarks.topQuartileScore}%
               </p>
             </CardContent>
@@ -300,7 +300,7 @@ export function OrganizationReadinessScore({
                     <span className="text-sm font-medium">Annual Risk Exposure</span>
                   </div>
                   <p className="text-2xl font-bold text-white">{formatCurrency(riskExposure)}</p>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="text-xs text-slate-200 mt-1">
                     Based on {scoreGap}% readiness gap
                   </p>
                 </div>
@@ -311,7 +311,7 @@ export function OrganizationReadinessScore({
                     <span className="text-sm font-medium">Executive Hours Wasted</span>
                   </div>
                   <p className="text-2xl font-bold text-white">{executiveTimeWasted} hrs/year</p>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="text-xs text-slate-200 mt-1">
                     On uncoordinated responses
                   </p>
                 </div>
@@ -320,7 +320,7 @@ export function OrganizationReadinessScore({
               <div className="bg-slate-900/50 rounded-lg p-4">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-slate-300 font-medium">Your Position vs Industry</span>
-                  <span className="text-slate-400 text-sm">
+                  <span className="text-slate-200 text-sm">
                     {currentScore < benchmarks.avgReadinessScore ? 'Below Average' : 'Above Average'}
                   </span>
                 </div>
@@ -338,7 +338,7 @@ export function OrganizationReadinessScore({
                     style={{ left: `${benchmarks.topQuartileScore}%` }}
                   />
                 </div>
-                <div className="flex justify-between text-xs text-slate-400 mt-2">
+                <div className="flex justify-between text-xs text-slate-200 mt-2">
                   <span>0%</span>
                   <span className="text-yellow-400">Industry Avg ({benchmarks.avgReadinessScore}%)</span>
                   <span className="text-green-400">Top Quartile ({benchmarks.topQuartileScore}%)</span>
@@ -366,7 +366,7 @@ export function OrganizationReadinessScore({
                       <div key={index} className="space-y-2">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
-                            <Icon className="w-4 h-4 text-slate-400" />
+                            <Icon className="w-4 h-4 text-slate-200" />
                             <span className="text-white font-medium">{metric.name}</span>
                           </div>
                           <span className={getScoreColor(metric.currentScore)}>
@@ -377,7 +377,7 @@ export function OrganizationReadinessScore({
                           value={metric.currentScore} 
                           className="h-2 bg-slate-700"
                         />
-                        <p className="text-xs text-slate-500">{metric.description}</p>
+                        <p className="text-xs text-slate-300">{metric.description}</p>
                       </div>
                     );
                   })}
@@ -409,7 +409,7 @@ export function OrganizationReadinessScore({
                               Day {milestone.day}
                             </Badge>
                           </div>
-                          <p className="text-slate-400 text-sm mb-2">{milestone.description}</p>
+                          <p className="text-slate-200 text-sm mb-2">{milestone.description}</p>
                           <p className="text-green-400 text-sm font-medium">{milestone.impact}</p>
                         </div>
                       </div>

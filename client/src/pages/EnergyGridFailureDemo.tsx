@@ -116,17 +116,17 @@ export default function EnergyGridFailureDemo() {
                   <div className="grid md:grid-cols-3 gap-4 mt-4">
                     <div className="bg-slate-800 p-4 rounded border border-red-500/30">
                       <Users className="h-5 w-5 text-amber-400 mb-2" />
-                      <div className="text-sm text-slate-400 mb-1">Scope</div>
+                      <div className="text-sm text-slate-200 mb-1">Scope</div>
                       <div className="text-lg font-bold text-white">{energyDemoData.crisis.impactMetrics.scope}</div>
                     </div>
                     <div className="bg-slate-800 p-4 rounded border border-red-500/30">
                       <Clock className="h-5 w-5 text-orange-400 mb-2" />
-                      <div className="text-sm text-slate-400 mb-1">Response Window</div>
+                      <div className="text-sm text-slate-200 mb-1">Response Window</div>
                       <div className="text-lg font-bold text-white">{energyDemoData.crisis.impactMetrics.timeWindow}</div>
                     </div>
                     <div className="bg-slate-800 p-4 rounded border border-red-500/30">
                       <DollarSign className="h-5 w-5 text-red-400 mb-2" />
-                      <div className="text-sm text-slate-400 mb-1">Financial Impact</div>
+                      <div className="text-sm text-slate-200 mb-1">Financial Impact</div>
                       <div className="text-lg font-bold text-white">{energyDemoData.crisis.impactMetrics.financialImpact}</div>
                     </div>
                   </div>
@@ -296,25 +296,25 @@ export default function EnergyGridFailureDemo() {
                   <Card className="p-6 bg-slate-900 border-amber-500">
                     <div className="text-center">
                       <Users className="h-8 w-8 text-amber-400 mx-auto mb-2" />
-                      <div className="text-sm text-slate-400 mb-1">Tier 1: Crisis Command</div>
+                      <div className="text-sm text-slate-200 mb-1">Tier 1: Crisis Command</div>
                       <div className="text-3xl font-bold text-white">{energyDemoData.stakeholderTiers.tier1.count}</div>
-                      <div className="text-xs text-slate-400 mt-2">{energyDemoData.stakeholderTiers.tier1.description}</div>
+                      <div className="text-xs text-slate-200 mt-2">{energyDemoData.stakeholderTiers.tier1.description}</div>
                     </div>
                   </Card>
                   <Card className="p-6 bg-slate-900 border-orange-500">
                     <div className="text-center">
                       <Activity className="h-8 w-8 text-orange-400 mx-auto mb-2" />
-                      <div className="text-sm text-slate-400 mb-1">Tier 2: Field Execution</div>
+                      <div className="text-sm text-slate-200 mb-1">Tier 2: Field Execution</div>
                       <div className="text-3xl font-bold text-white">{energyDemoData.stakeholderTiers.tier2.count}</div>
-                      <div className="text-xs text-slate-400 mt-2">{energyDemoData.stakeholderTiers.tier2.description}</div>
+                      <div className="text-xs text-slate-200 mt-2">{energyDemoData.stakeholderTiers.tier2.description}</div>
                     </div>
                   </Card>
                   <Card className="p-6 bg-slate-900 border-red-500">
                     <div className="text-center">
                       <ShieldAlert className="h-8 w-8 text-red-400 mx-auto mb-2" />
-                      <div className="text-sm text-slate-400 mb-1">Tier 3: Network</div>
+                      <div className="text-sm text-slate-200 mb-1">Tier 3: Network</div>
                       <div className="text-3xl font-bold text-white">{energyDemoData.stakeholderTiers.tier3.count}+</div>
-                      <div className="text-xs text-slate-400 mt-2">{energyDemoData.stakeholderTiers.tier3.description}</div>
+                      <div className="text-xs text-slate-200 mt-2">{energyDemoData.stakeholderTiers.tier3.description}</div>
                     </div>
                   </Card>
                 </div>

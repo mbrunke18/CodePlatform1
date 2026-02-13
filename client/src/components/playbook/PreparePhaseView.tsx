@@ -90,7 +90,7 @@ const PRIORITY_CONFIG = {
 };
 
 const STATUS_CONFIG = {
-  not_started: { label: 'Not Started', icon: Circle, color: 'text-slate-400' },
+  not_started: { label: 'Not Started', icon: Circle, color: 'text-slate-200' },
   in_progress: { label: 'In Progress', icon: Clock, color: 'text-yellow-500' },
   completed: { label: 'Completed', icon: CheckCircle2, color: 'text-green-500' },
 };

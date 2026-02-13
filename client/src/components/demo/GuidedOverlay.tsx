@@ -315,7 +315,7 @@ export default function GuidedOverlay() {
             </div>
 
             {/* Progress Display */}
-            <div className="mt-1 text-center text-xs text-gray-400">
+            <div className="mt-1 text-center text-xs text-gray-600 dark:text-gray-200">
               <span>{Math.round(state.progress)}% Complete</span>
             </div>
           </CardContent>
@@ -381,7 +381,7 @@ export default function GuidedOverlay() {
                 <h2 className="text-2xl font-bold text-white mb-2">
                   {currentSceneData.title}
                 </h2>
-                <p className="text-gray-300 text-base">
+                <p className="text-gray-500 dark:text-gray-300 text-base">
                   {currentSceneData.narration}
                 </p>
               </div>
@@ -430,7 +430,7 @@ export default function GuidedOverlay() {
                     className={`w-full justify-start text-left h-auto p-2 ${
                       index === state.currentScene
                         ? 'bg-blue-600/30 text-blue-300 border border-blue-500/50'
-                        : 'text-gray-400 hover:text-white hover:bg-white/5'
+                        : 'text-gray-600 dark:text-gray-200 hover:text-white hover:bg-white/5'
                     }`}
                     data-testid={`demo-scene-${index}`}
                   >

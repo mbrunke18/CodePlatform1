@@ -395,7 +395,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5 }}
                   className="mb-6"
                 >
-                  <span className="text-sm uppercase tracking-widest text-slate-500">McKinsey Research</span>
+                  <span className="text-sm uppercase tracking-widest text-slate-300">McKinsey Research</span>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -1152,7 +1152,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
               </Button>
             </div>
 
-            <div className="text-slate-500 text-sm">
+            <div className="text-slate-300 text-sm">
               {currentScene + 1} / {totalScenes}
             </div>
 
