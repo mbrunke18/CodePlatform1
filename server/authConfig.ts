@@ -70,6 +70,7 @@ export const PUBLIC_ROUTES = [
   '/api/demo/reset',
   '/api/dashboard/metrics',
   '/api/activations/demo', // Live Action Demo activation endpoint
+  '/api/pulse/intelligence-feed', // Keynote demo intelligence feed
   
   // Signal Intelligence Hub - demo access for triggers and data sources
   '/api/executive-triggers',
