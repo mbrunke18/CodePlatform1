@@ -51,8 +51,9 @@ export default function StandardNav() {
   ];
 
   const demosLinks = [
+    { label: "Keynote Demo", path: "/keynote", icon: Presentation, description: "Cinematic tradeshow presentation", featured: true },
     { label: "Live Activation", path: "/activation", icon: Zap, description: "Watch real-time stakeholder coordination", featured: true },
-    { label: "Ultimate Demo", path: "/ultimate-demo", icon: Target, description: "Interactive 72hrs → 12min experience", featured: true },
+    { label: "Ultimate Demo", path: "/ultimate-demo", icon: Target, description: "Interactive 72hrs → 12min experience" },
     { label: "Scenario Demo", path: "/scenario-demo", icon: Target, description: "Offense vs Defense scenario comparisons" },
   ];
 
