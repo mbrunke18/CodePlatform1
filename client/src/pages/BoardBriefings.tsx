@@ -5,6 +5,99 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { FileText, Download, Calendar, CheckCircle, TrendingUp, Award } from 'lucide-react';
 
+const demoBriefings = [
+  {
+    id: 'br-001',
+    title: 'Q4 2025 Quarterly Performance Review',
+    briefingType: 'Quarterly Review',
+    timeToDecision: '24h window',
+    reviewed: true,
+    executiveSummary: 'Revenue exceeded targets by 12.3% driven by enterprise expansion and new logo acquisition. Operating margins improved 180bps YoY to 34.2%. Customer retention rate held steady at 96.8%, with NPS increasing to 72. Three strategic initiatives on track for H1 2026 delivery.',
+    keyInsights: [
+      'Enterprise ARR grew 28% YoY to $47.2M, exceeding guidance by $3.1M',
+      'Sales cycle compression from 94 to 71 days following playbook standardization',
+      'Gross margin expansion to 78.4% reflects operational leverage from platform investments'
+    ],
+    confidenceLevel: 94,
+    createdAt: '2025-12-15T09:00:00Z'
+  },
+  {
+    id: 'br-002',
+    title: 'M&A Integration Update — Nexus Analytics Acquisition',
+    briefingType: 'Strategic Update',
+    timeToDecision: '48h window',
+    reviewed: true,
+    executiveSummary: 'Nexus Analytics integration is 78% complete, ahead of the 90-day target timeline. Technology stack consolidation on track with 92% API compatibility achieved. Key talent retention at 94% with 3 critical engineering leads secured on 2-year packages. Revenue synergies estimated at $8.4M for FY2026.',
+    keyInsights: [
+      'Data platform migration 85% complete — full cutover scheduled for Feb 28',
+      'Cross-sell pipeline of $12.6M identified across combined customer base',
+      'Cultural integration score at 4.2/5.0 based on pulse survey of 340 employees'
+    ],
+    confidenceLevel: 89,
+    createdAt: '2026-01-22T14:30:00Z'
+  },
+  {
+    id: 'br-003',
+    title: 'Cybersecurity Posture & Threat Landscape Report',
+    briefingType: 'Risk Assessment',
+    timeToDecision: 'Immediate',
+    reviewed: false,
+    executiveSummary: 'Overall security posture rated "Strong" with SOC 2 Type II audit completed successfully. Zero critical vulnerabilities in production systems. Phishing simulation success rate improved to 97.3% from 89.1% following Q3 training initiative. Third-party vendor risk assessment identified 2 medium-risk dependencies requiring remediation.',
+    keyInsights: [
+      'Mean time to detect (MTTD) reduced from 4.2hrs to 1.8hrs with new SIEM deployment',
+      'Ransomware tabletop exercise completed with 94% team readiness score',
+      'Regulatory compliance maintained across SOC 2, GDPR, and CCPA frameworks'
+    ],
+    confidenceLevel: 91,
+    createdAt: '2026-02-03T11:15:00Z'
+  },
+  {
+    id: 'br-004',
+    title: 'Digital Transformation Progress — Phase 3 Readiness',
+    briefingType: 'Strategic Initiative',
+    timeToDecision: '72h window',
+    reviewed: false,
+    executiveSummary: 'Phase 2 of the enterprise digital transformation completed on budget ($4.2M of $4.5M allocated). AI-powered workflow automation deployed across 6 business units, reducing manual processing time by 62%. Phase 3 planning underway with focus on predictive analytics and customer experience optimization.',
+    keyInsights: [
+      'Employee adoption of new digital tools reached 88%, exceeding 80% target',
+      'Process automation ROI of 340% realized within first 6 months of deployment',
+      'Customer-facing AI chatbot handling 73% of Tier 1 support inquiries autonomously'
+    ],
+    confidenceLevel: 87,
+    createdAt: '2026-02-10T16:45:00Z'
+  }
+];
+
+const demoBoardReports = [
+  {
+    id: 'rpt-001',
+    title: 'FY2025 Annual Board Report — Strategic Execution Review',
+    reportType: 'Annual Review',
+    reportingPeriod: 'FY2025',
+    approvedBy: 'Board of Directors',
+    executiveSummary: 'FY2025 closed with record revenue of $52.8M (31% YoY growth), surpassing guidance. All four strategic pillars delivered measurable outcomes. The organization achieved a 94% strategic initiative completion rate, up from 71% in FY2024.',
+    presentedAt: '2026-01-28T10:00:00Z'
+  },
+  {
+    id: 'rpt-002',
+    title: 'Q1 2026 Board Deck — Growth Acceleration & Market Expansion',
+    reportType: 'Quarterly Board Deck',
+    reportingPeriod: 'Q1 2026',
+    approvedBy: null,
+    executiveSummary: 'Q1 pipeline grew 44% QoQ with expansion into EMEA and APAC markets. Two enterprise logos ($1M+ ACV) signed in January. Board approval requested for $6.2M Series B extension to accelerate GTM hiring and product development.',
+    presentedAt: null
+  },
+  {
+    id: 'rpt-003',
+    title: 'Risk & Compliance Board Summary — February 2026',
+    reportType: 'Compliance Report',
+    reportingPeriod: 'Feb 2026',
+    approvedBy: 'Audit Committee',
+    executiveSummary: 'All regulatory compliance frameworks current. Enterprise risk register reviewed with 2 items escalated from "watch" to "monitor" status related to supply chain concentration. Insurance coverage adequate per annual review.',
+    presentedAt: '2026-02-05T14:00:00Z'
+  }
+];
+
 export default function BoardBriefings() {
   const { data: briefingsData, isLoading: briefingsLoading } = useQuery<any[]>({
     queryKey: ['/api/executive-briefings'],
@@ -14,22 +107,13 @@ export default function BoardBriefings() {
     queryKey: ['/api/board-reports'],
   });
 
-  const briefings = briefingsData ?? [];
-  const boardReports = boardReportsData ?? [];
+  const briefings = (briefingsData && briefingsData.length > 0) ? briefingsData : demoBriefings;
+  const boardReports = (boardReportsData && boardReportsData.length > 0) ? boardReportsData : demoBoardReports;
   const acknowledgedBriefings = briefings.filter((b: any) => b.reviewed);
 
   return (
     <PageLayout>
       <div className="space-y-6 p-6">
-        {/* V2 Feature Banner */}
-      <div className="bg-blue-50 dark:bg-blue-950/30 border-2 border-blue-300 dark:border-blue-700 rounded-lg p-4">
-        <div className="flex items-center gap-3">
-          <Badge variant="outline" className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 font-semibold">Coming in V2</Badge>
-          <p className="text-sm text-gray-700 dark:text-gray-300">
-            This feature launches after your organization builds crisis data. Board Briefings auto-generate executive reports with evidence traceability.
-          </p>
-        </div>
-      </div>
 
       <div className="flex items-center justify-between">
         <div>
@@ -117,12 +201,6 @@ export default function BoardBriefings() {
         <CardContent>
           {briefingsLoading ? (
             <div className="text-center py-8 text-muted-foreground">Loading briefings...</div>
-          ) : briefings.length === 0 ? (
-            <div className="text-center py-8 text-muted-foreground">
-              <FileText className="h-12 w-12 mx-auto mb-2 text-gray-400" />
-              <p>No briefings generated yet</p>
-              <Button className="mt-4" data-testid="button-create-first-briefing">Generate First Briefing</Button>
-            </div>
           ) : (
             <div className="space-y-4">
               {briefings.map((briefing: any) => (
@@ -196,12 +274,6 @@ export default function BoardBriefings() {
         <CardContent>
           {reportsLoading ? (
             <div className="text-center py-8 text-muted-foreground">Loading board reports...</div>
-          ) : boardReports.length === 0 ? (
-            <div className="text-center py-8 text-muted-foreground">
-              <Award className="h-12 w-12 mx-auto mb-2 text-gray-400" />
-              <p>No board reports generated yet</p>
-              <Button className="mt-4" data-testid="button-generate-first-report">Generate First Report</Button>
-            </div>
           ) : (
             <div className="space-y-4">
               {boardReports.map((report: any) => (

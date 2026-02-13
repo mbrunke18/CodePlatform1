@@ -6,11 +6,139 @@ import { Button } from '@/components/ui/button';
 import { PlayCircle, Trophy, Users, Clock, TrendingUp, Target } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 
+const demoDrills = [
+  {
+    id: 'drill-001',
+    name: 'Enterprise Ransomware Response Drill',
+    status: 'completed',
+    difficulty: 'advanced',
+    scenarioType: 'Cybersecurity',
+    participants: [
+      { name: 'Sarah Chen', role: 'CISO' },
+      { name: 'Michael Torres', role: 'VP Engineering' },
+      { name: 'David Park', role: 'General Counsel' },
+      { name: 'Lisa Wang', role: 'CFO' },
+      { name: 'James Mitchell', role: 'VP Communications' },
+      { name: 'Rachel Kim', role: 'CTO' }
+    ],
+    duration: 120,
+    performanceMetrics: {
+      overallScore: 91,
+      decisionSpeed: 88,
+      communicationClarity: 94,
+      stakeholderAlignment: 89,
+      resourceAllocation: 92
+    },
+    lessons: [
+      'Initial containment protocol executed in 8 minutes — 40% faster than previous drill',
+      'External communication template activated within SLA, reducing stakeholder uncertainty',
+      'Cross-functional handoff between security and legal teams needs tighter coordination'
+    ]
+  },
+  {
+    id: 'drill-002',
+    name: 'M&A Integration Tabletop Exercise',
+    status: 'completed',
+    difficulty: 'intermediate',
+    scenarioType: 'Strategic',
+    participants: [
+      { name: 'Lisa Wang', role: 'CFO' },
+      { name: 'David Park', role: 'General Counsel' },
+      { name: 'Amanda Brooks', role: 'VP Strategy' },
+      { name: 'Robert Chen', role: 'VP HR' },
+      { name: 'Karen Patel', role: 'VP Operations' }
+    ],
+    duration: 90,
+    performanceMetrics: {
+      overallScore: 86,
+      decisionSpeed: 82,
+      communicationClarity: 91,
+      stakeholderAlignment: 84,
+      resourceAllocation: 87
+    },
+    lessons: [
+      'Due diligence checklist completion improved from 72% to 94% with structured playbook',
+      'Cultural integration assessment protocol successfully tested with realistic talent scenarios'
+    ]
+  },
+  {
+    id: 'drill-003',
+    name: 'Supply Chain Disruption Simulation',
+    status: 'completed',
+    difficulty: 'advanced',
+    scenarioType: 'Operational',
+    participants: [
+      { name: 'Karen Patel', role: 'VP Operations' },
+      { name: 'Tom Nakamura', role: 'Head of Procurement' },
+      { name: 'Lisa Wang', role: 'CFO' },
+      { name: 'Sarah Chen', role: 'CISO' },
+      { name: 'James Mitchell', role: 'VP Communications' }
+    ],
+    duration: 105,
+    performanceMetrics: {
+      overallScore: 78,
+      decisionSpeed: 74,
+      communicationClarity: 82,
+      stakeholderAlignment: 76,
+      resourceAllocation: 80
+    },
+    lessons: [
+      'Alternative supplier activation took 35 minutes — target is under 20 minutes',
+      'Financial impact modeling was accurate within 8% of projected disruption cost',
+      'Customer communication cadence needs acceleration — first update delayed by 12 minutes'
+    ]
+  },
+  {
+    id: 'drill-004',
+    name: 'Regulatory Audit Readiness Check',
+    status: 'scheduled',
+    difficulty: 'intermediate',
+    scenarioType: 'Compliance',
+    participants: [
+      { name: 'David Park', role: 'General Counsel' },
+      { name: 'Sarah Chen', role: 'CISO' },
+      { name: 'Lisa Wang', role: 'CFO' },
+      { name: 'Emily Foster', role: 'Compliance Director' }
+    ],
+    duration: 75,
+    performanceMetrics: null,
+    lessons: []
+  },
+  {
+    id: 'drill-005',
+    name: 'Competitive Response Exercise — Market Disruption',
+    status: 'completed',
+    difficulty: 'advanced',
+    scenarioType: 'Competitive',
+    participants: [
+      { name: 'Amanda Brooks', role: 'VP Strategy' },
+      { name: 'Michael Torres', role: 'VP Engineering' },
+      { name: 'Rachel Kim', role: 'CTO' },
+      { name: 'Lisa Wang', role: 'CFO' },
+      { name: 'James Mitchell', role: 'VP Communications' },
+      { name: 'Karen Patel', role: 'VP Operations' },
+      { name: 'Tom Nakamura', role: 'Head of Product' }
+    ],
+    duration: 135,
+    performanceMetrics: {
+      overallScore: 88,
+      decisionSpeed: 85,
+      communicationClarity: 92,
+      stakeholderAlignment: 87,
+      resourceAllocation: 88
+    },
+    lessons: [
+      'Competitive intelligence synthesis completed in 15 minutes with pre-built analysis templates',
+      'Pricing response strategy formulated and war-gamed across 3 scenarios within SLA'
+    ]
+  }
+];
+
 export default function DrillTrackingSystem() {
   const { data: simulationsData, isLoading } = useQuery<any[]>({
     queryKey: ['/api/crisis-simulations'],
   });
-  const simulations = simulationsData ?? [];
+  const simulations = (simulationsData && simulationsData.length > 0) ? simulationsData : demoDrills;
 
   const completedDrills = simulations.filter((s: any) => s.status === 'completed');
   const avgPerformance = completedDrills.length > 0
@@ -39,15 +167,6 @@ export default function DrillTrackingSystem() {
 
   return (
     <div className="space-y-6 p-6">
-      {/* V2 Feature Banner */}
-      <div className="bg-blue-50 dark:bg-blue-950/30 border-2 border-blue-300 dark:border-blue-700 rounded-lg p-4">
-        <div className="flex items-center gap-3">
-          <Badge variant="outline" className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 font-semibold">Coming in V2</Badge>
-          <p className="text-sm text-gray-700 dark:text-gray-300">
-            This feature launches after you practice with What-If Analyzer. Drill Tracking measures your team's preparedness with quarterly simulations.
-          </p>
-        </div>
-      </div>
 
       <div className="flex items-center justify-between">
         <div>
@@ -137,12 +256,6 @@ export default function DrillTrackingSystem() {
         <CardContent>
           {isLoading ? (
             <div className="text-center py-8 text-muted-foreground">Loading drills...</div>
-          ) : simulations.length === 0 ? (
-            <div className="text-center py-8 text-muted-foreground">
-              <Target className="h-12 w-12 mx-auto mb-2 text-gray-400" />
-              <p>No drills scheduled yet</p>
-              <Button className="mt-4" data-testid="button-schedule-first-drill">Schedule First Drill</Button>
-            </div>
           ) : (
             <div className="space-y-4">
               {simulations.map((sim: any) => (

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useDynamicStrategy } from '@/contexts/DynamicStrategyContext';
 import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -119,6 +119,7 @@ export default function CommandCenter() {
   const [continuousModeLocal, setContinuousModeLocal] = useState(continuousMode.enabled);
   const [selectedSignal, setSelectedSignal] = useState<string | null>(null);
   const [showScenarioLauncher, setShowScenarioLauncher] = useState(false);
+  const executionViewRef = useRef<HTMLDivElement>(null);
   const [demoExecution, setDemoExecution] = useState<{
     active: boolean;
     startTime: number;
@@ -181,6 +182,7 @@ export default function CommandCenter() {
   const launchDemoExecution = useCallback(() => {
     setShowConfetti(false);
     setLastTickTime(Date.now());
+    setSelectedScenario(null);
     setDemoExecution({
       active: true,
       startTime: Date.now(),
@@ -190,6 +192,9 @@ export default function CommandCenter() {
       completedTasks: [],
       accumulatedValue: 0,
     });
+    setTimeout(() => {
+      executionViewRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   }, []);
 
   const recentTasks = useMemo(() => {
@@ -213,7 +218,7 @@ export default function CommandCenter() {
   const formatTime = (seconds: number, countdown: boolean = false) => {
     const displaySeconds = countdown ? Math.max(0, 720 - seconds) : seconds;
     const mins = Math.floor(displaySeconds / 60);
-    const secs = displaySeconds % 60;
+    const secs = Math.floor(displaySeconds % 60);
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
@@ -292,14 +297,14 @@ export default function CommandCenter() {
                 </h1>
                 <OnboardingTrigger pageId="command-center" autoStart={true} />
               </div>
-              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 flex flex-wrap items-center gap-2">
+              <div className="text-sm sm:text-base text-slate-600 dark:text-slate-300 flex flex-wrap items-center gap-2">
                 <span className="hidden sm:inline">Real-time strategic execution coordination and control</span>
                 <span className="sm:hidden">Live execution control</span>
                 <Badge variant="outline" className="text-xs">
                   <Clock className="w-3 h-3 mr-1" />
                   {currentTime.toLocaleTimeString()}
                 </Badge>
-              </p>
+              </div>
             </div>
             <div className="grid grid-cols-3 gap-3 sm:flex sm:items-center sm:gap-6">
               <div className="text-center">
@@ -334,6 +339,7 @@ export default function CommandCenter() {
       </div>
 
       {/* Live Execution Velocity Display - Hero Section */}
+      <div ref={executionViewRef} />
       {demoExecution && (
         <div className="bg-gradient-to-r from-blue-600 via-violet-600 to-purple-600 dark:from-blue-800 dark:via-violet-800 dark:to-purple-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">

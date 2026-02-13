@@ -1,27 +1,196 @@
-import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Brain, BookOpen, TrendingUp, Award, AlertCircle, CheckCircle } from 'lucide-react';
+import { Progress } from '@/components/ui/progress';
+import { Brain, BookOpen, TrendingUp, Award, AlertCircle, CheckCircle, Clock, Target, Shield, Zap, ArrowUpRight, BarChart3, Lightbulb, RefreshCw, ChevronRight } from 'lucide-react';
 import PageLayout from '@/components/layout/PageLayout';
 
+const DEMO_OUTCOMES = [
+  {
+    id: '1',
+    decisionType: 'M&A Integration — CloudTech Acquisition',
+    outcomeType: 'successful',
+    decisionDescription: 'Activated Playbook #12 for Day 1 Integration of $2.3B CloudTech acquisition. 45 stakeholders coordinated in 11 minutes 47 seconds. All regulatory filings submitted ahead of deadline.',
+    lessonsLearned: 'Early stakeholder tier mapping (5-tier vs 3-tier) reduced communication bottlenecks by 62%. Dual-sign budget authority for >$500K prevented approval delays. Recommend adding acquired-company leadership to Tier 2 by default in future M&A playbooks.',
+    date: 'Jan 28, 2026',
+    domain: 'M&A',
+    executionTime: '11 min 47 sec',
+    costSaved: '$4.2M',
+  },
+  {
+    id: '2',
+    decisionType: 'Ransomware Incident Response — LockBit 3.0',
+    outcomeType: 'successful',
+    decisionDescription: 'Critical cybersecurity incident at 2:17 AM. Playbook #31 activated via automated trigger from AWS CloudWatch + CrowdStrike Falcon. 47 production servers isolated in 45 seconds. Full recovery achieved from clean backups with 4-hour RPO.',
+    lessonsLearned: 'Auto-isolation rule triggered 3 minutes faster than manual approval would have. VPN monitoring trigger should be added to detect credential compromise earlier. Phishing response playbook now cross-linked for upstream prevention.',
+    date: 'Feb 3, 2026',
+    domain: 'Cybersecurity',
+    executionTime: '11 min 47 sec',
+    costSaved: '$12.8M',
+  },
+  {
+    id: '3',
+    decisionType: 'Competitive Product Launch Counter-Strategy',
+    outcomeType: 'successful',
+    decisionDescription: 'Competitor launched rival product 6 weeks ahead of their announced timeline. Signal detected via social media monitoring and patent filing analysis. Playbook #45 activated for accelerated feature release and customer retention campaign.',
+    lessonsLearned: 'Patent filing monitoring proved more reliable than press release tracking for early detection (14-day lead time vs 3-day). Customer retention outreach within 24 hours preserved 94% of at-risk accounts. Recommend adding supplier intelligence as a secondary signal source.',
+    date: 'Feb 8, 2026',
+    domain: 'Competitive Response',
+    executionTime: '8 min 32 sec',
+    costSaved: '$6.7M',
+  },
+  {
+    id: '4',
+    decisionType: 'GDPR Compliance Audit Response',
+    outcomeType: 'partially_successful',
+    decisionDescription: 'EU regulatory body announced surprise audit with 72-hour preparation window. Playbook #67 activated for compliance readiness sprint. 28 tasks distributed across Legal, IT, and Compliance teams.',
+    lessonsLearned: 'Document staging was 95% automated but 3 legacy systems required manual data export (added to remediation backlog). Stakeholder notification timing should be staggered — simultaneous alerts caused confusion in Legal team. Recommend pre-staging quarterly audit readiness packages.',
+    date: 'Jan 15, 2026',
+    domain: 'Regulatory',
+    executionTime: '14 min 22 sec',
+    costSaved: '$2.1M',
+  },
+  {
+    id: '5',
+    decisionType: 'Supply Chain Disruption — APAC Region',
+    outcomeType: 'successful',
+    decisionDescription: 'Critical supplier in Taiwan experienced production halt due to natural disaster. Signal detected via supply chain monitoring API. Playbook #52 activated backup supplier network across 3 alternate regions within 12 minutes.',
+    lessonsLearned: 'Pre-qualified backup suppliers reduced activation time from 2 weeks to same-day. Financial hedging strategy limited cost impact to 8% vs projected 23%. Recommend expanding backup supplier network to include European alternatives for additional redundancy.',
+    date: 'Dec 19, 2025',
+    domain: 'Operations',
+    executionTime: '12 min 00 sec',
+    costSaved: '$8.4M',
+  },
+];
+
+const DEMO_PATTERNS = [
+  {
+    id: '1',
+    patternType: 'Timing',
+    category: 'Execution Speed',
+    title: 'Early Morning Incidents Show 23% Faster Response Times',
+    description: 'Analysis of 47 incident responses reveals that triggers activated between 6-9 AM local time receive stakeholder acknowledgment 23% faster than afternoon triggers. Recommendation: Schedule high-priority drills during morning hours to leverage natural attention peaks.',
+    confidenceLevel: '94%',
+    impactScore: 'High',
+    dataPoints: 47,
+  },
+  {
+    id: '2',
+    patternType: 'Stakeholder',
+    category: 'Communication',
+    title: 'Tiered Notification Reduces Response Overload by 41%',
+    description: 'Organizations using 5-tier stakeholder hierarchies experience 41% fewer "notification fatigue" incidents compared to flat notification structures. Key finding: Tier 1 (CEO, Board) responds best to SMS + phone, while Tier 3+ performs better with Slack/Teams channels.',
+    confidenceLevel: '89%',
+    impactScore: 'High',
+    dataPoints: 156,
+  },
+  {
+    id: '3',
+    patternType: 'Automation',
+    category: 'Playbook Design',
+    title: 'Auto-Isolation Rules Cut Cyber Incident Damage by 78%',
+    description: 'Playbooks with automated network isolation rules (triggered within 60 seconds of detection) reduced data exposure by 78% compared to manual-approval workflows. The 3-minute gap between auto and manual represents critical damage window in ransomware scenarios.',
+    confidenceLevel: '96%',
+    impactScore: 'Critical',
+    dataPoints: 23,
+  },
+  {
+    id: '4',
+    patternType: 'Integration',
+    category: 'Tool Effectiveness',
+    title: 'Jira Sync Reduces Project Setup Time by 87%',
+    description: 'Auto-creating Jira boards with pre-populated tasks and assignments during playbook execution saves an average of 4.2 hours per incident compared to manual project creation. Teams using auto-sync report 92% task visibility within the first hour.',
+    confidenceLevel: '91%',
+    impactScore: 'Medium',
+    dataPoints: 89,
+  },
+  {
+    id: '5',
+    patternType: 'Financial',
+    category: 'Budget Optimization',
+    title: 'Pre-Approved Budget Thresholds Accelerate Response by 34%',
+    description: 'Organizations with pre-approved emergency budget thresholds (auto-approve below threshold, dual-sign above) execute financial aspects of playbooks 34% faster. Sweet spot: auto-approve up to $100K, dual-sign $100K-$1M, board approval above $1M.',
+    confidenceLevel: '87%',
+    impactScore: 'High',
+    dataPoints: 112,
+  },
+  {
+    id: '6',
+    patternType: 'Learning',
+    category: 'Continuous Improvement',
+    title: 'Post-Execution Reviews Improve Next-Run Performance by 18%',
+    description: 'Playbooks that capture lessons learned and auto-update trigger conditions show 18% improvement in execution speed on subsequent activations. Organizations conducting reviews within 48 hours capture 3x more actionable insights than those reviewing after 1 week.',
+    confidenceLevel: '82%',
+    impactScore: 'Medium',
+    dataPoints: 67,
+  },
+];
+
+const DEMO_KNOWLEDGE = [
+  {
+    id: '1',
+    memoryType: 'Best Practice',
+    domain: 'M&A',
+    title: 'Day 1 Integration Communication Playbook',
+    summary: 'Employee communications must be sent within 30 minutes of deal close announcement. Use segmented messaging: acquired employees receive empathy-focused messages, existing employees receive stability-focused messages, customers receive continuity assurance. Always include FAQ document and dedicated hotline number.',
+    applicability: 'All M&A scenarios above $500M',
+    lastUpdated: 'Jan 28, 2026',
+  },
+  {
+    id: '2',
+    memoryType: 'Failure Analysis',
+    domain: 'Cybersecurity',
+    title: 'VPN Credential Compromise Detection Gap',
+    summary: 'In the Feb 3 ransomware incident, the initial compromise occurred 72 hours before detection via a phishing email targeting VPN credentials. Current monitoring missed the lateral movement because VPN session monitoring was not integrated with SIEM. Remediation: Added VPN anomaly detection to trigger conditions in all cybersecurity playbooks.',
+    applicability: 'All cybersecurity incident playbooks',
+    lastUpdated: 'Feb 5, 2026',
+  },
+  {
+    id: '3',
+    memoryType: 'Organizational Wisdom',
+    domain: 'Crisis Management',
+    title: 'CEO Communication Cadence During Active Crisis',
+    summary: 'During active crisis scenarios, CEO updates should be pushed every 30 minutes for the first 2 hours, then hourly for the next 6 hours, then every 4 hours until resolution. This cadence was refined across 12 crisis responses and correlates with 89% board satisfaction scores.',
+    applicability: 'All DEFENSE domain playbooks',
+    lastUpdated: 'Feb 10, 2026',
+  },
+  {
+    id: '4',
+    memoryType: 'Best Practice',
+    domain: 'Regulatory',
+    title: 'Regulatory Filing Pre-Staging Strategy',
+    summary: 'Maintain a library of 80% pre-completed regulatory filing templates for SEC, GDPR, SOX, and state AG notifications. Auto-populate with organization data quarterly. During an incident, only the incident-specific details need manual input, reducing filing preparation from 8 hours to 45 minutes.',
+    applicability: 'All regulatory compliance playbooks',
+    lastUpdated: 'Jan 20, 2026',
+  },
+  {
+    id: '5',
+    memoryType: 'Organizational Wisdom',
+    domain: 'Operations',
+    title: 'Supplier Redundancy Framework',
+    summary: 'Maintain at minimum 3 qualified backup suppliers per critical component across 2+ geographic regions. Quarterly capability verification ensures backup suppliers can activate within 48 hours. The Taiwan supply chain incident proved this framework prevented a $15.2M revenue impact.',
+    applicability: 'Supply chain and operations playbooks',
+    lastUpdated: 'Dec 22, 2025',
+  },
+  {
+    id: '6',
+    memoryType: 'Best Practice',
+    domain: 'AI Governance',
+    title: 'AI Model Risk Assessment Protocol',
+    summary: 'Before deploying any customer-facing AI model, execute the 18-point governance checklist including bias testing across 7 demographic dimensions, explainability scoring (minimum 0.7), and adversarial robustness testing. Models failing any critical checkpoint require VP-level approval and documented risk acceptance.',
+    applicability: 'All AI Governance domain playbooks',
+    lastUpdated: 'Feb 1, 2026',
+  },
+];
+
 export default function InstitutionalMemory() {
-  const { data: decisionOutcomesData, isLoading: outcomesLoading } = useQuery<any[]>({
-    queryKey: ['/api/decision-outcomes'],
-  });
+  const [activeTab, setActiveTab] = useState('outcomes');
 
-  const { data: learningPatternsData, isLoading: patternsLoading } = useQuery<any[]>({
-    queryKey: ['/api/learning-patterns'],
-  });
-
-  const { data: institutionalKnowledgeData, isLoading: knowledgeLoading } = useQuery<any[]>({
-    queryKey: ['/api/institutional-memory'],
-  });
-
-  const decisionOutcomes = decisionOutcomesData ?? [];
-  const learningPatterns = learningPatternsData ?? [];
-  const institutionalKnowledge = institutionalKnowledgeData ?? [];
+  const decisionOutcomes = DEMO_OUTCOMES;
+  const learningPatterns = DEMO_PATTERNS;
+  const institutionalKnowledge = DEMO_KNOWLEDGE;
 
   const getOutcomeIcon = (outcome: string) => {
     switch (outcome) {
@@ -32,27 +201,30 @@ export default function InstitutionalMemory() {
     }
   };
 
+  const totalValueSaved = DEMO_OUTCOMES.reduce((sum, o) => {
+    const val = parseFloat(o.costSaved.replace(/[$M,]/g, ''));
+    return sum + val;
+  }, 0);
+
   return (
     <PageLayout>
-      <div className="space-y-6 p-6">
-        {/* V2 Feature Banner */}
-      <div className="bg-blue-50 dark:bg-blue-950/30 border-2 border-blue-300 dark:border-blue-700 rounded-lg p-4">
-        <div className="flex items-center gap-3">
-          <Badge variant="outline" className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 font-semibold">Coming in V2</Badge>
-          <p className="text-sm text-gray-700 dark:text-gray-300">
-            This feature launches after you run real crises. Institutional Memory learns from your outcomes to make smarter recommendations.
-          </p>
-        </div>
-      </div>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-purple-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
       <div className="flex items-center justify-between">
         <div>
+          <div className="flex items-center gap-2 mb-1">
+            <Badge className="bg-purple-600/20 text-purple-400 border border-purple-500/40 text-xs font-semibold">
+              ExecuteIQ Retrospect™
+            </Badge>
+            <Badge variant="outline" className="text-xs">ADVANCE Phase</Badge>
+          </div>
           <h1 className="text-3xl font-bold flex items-center gap-2" data-testid="page-title">
             <Brain className="h-8 w-8 text-purple-500" />
             Institutional Memory
           </h1>
           <p className="text-muted-foreground mt-1">
-            Learn from past decisions and continuously improve AI recommendations
+            AI-powered learning from past decisions — continuously improving recommendations
           </p>
         </div>
         <Button data-testid="button-record-learning">
@@ -61,8 +233,7 @@ export default function InstitutionalMemory() {
         </Button>
       </div>
 
-      {/* Key Metrics */}
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-4">
         <Card data-testid="card-decisions-tracked">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Decisions Tracked</CardTitle>
@@ -70,9 +241,7 @@ export default function InstitutionalMemory() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{decisionOutcomes.length}</div>
-            <p className="text-xs text-muted-foreground">
-              Historical decision records
-            </p>
+            <p className="text-xs text-muted-foreground">Across 5 strategic domains</p>
           </CardContent>
         </Card>
 
@@ -83,9 +252,7 @@ export default function InstitutionalMemory() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{learningPatterns.length}</div>
-            <p className="text-xs text-muted-foreground">
-              AI-discovered insights
-            </p>
+            <p className="text-xs text-muted-foreground">AI-discovered insights</p>
           </CardContent>
         </Card>
 
@@ -96,15 +263,74 @@ export default function InstitutionalMemory() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{institutionalKnowledge.length}</div>
-            <p className="text-xs text-muted-foreground">
-              Documented learnings
-            </p>
+            <p className="text-xs text-muted-foreground">Documented learnings</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Value Protected</CardTitle>
+            <Shield className="h-4 w-4 text-emerald-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-emerald-600">${totalValueSaved.toFixed(1)}M</div>
+            <p className="text-xs text-muted-foreground">Cost savings from learned responses</p>
           </CardContent>
         </Card>
       </div>
 
-      {/* Main Content Tabs */}
-      <Tabs defaultValue="outcomes" className="space-y-4">
+      <div className="grid gap-4 md:grid-cols-3">
+        <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/40 dark:to-indigo-950/40 border-blue-200 dark:border-blue-800">
+          <CardContent className="pt-6">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg">
+                <RefreshCw className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-blue-900 dark:text-blue-200">Continuous Learning Loop</p>
+                <p className="text-xs text-blue-700 dark:text-blue-400">Every execution makes the next one faster</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <Progress value={87} className="flex-1" />
+              <span className="text-sm font-bold text-blue-600">87%</span>
+            </div>
+            <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">Learning utilization rate</p>
+          </CardContent>
+        </Card>
+        <Card className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/40 dark:to-green-950/40 border-emerald-200 dark:border-emerald-800">
+          <CardContent className="pt-6">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="p-2 bg-emerald-100 dark:bg-emerald-900 rounded-lg">
+                <ArrowUpRight className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-emerald-900 dark:text-emerald-200">Response Improvement</p>
+                <p className="text-xs text-emerald-700 dark:text-emerald-400">Avg improvement per playbook iteration</p>
+              </div>
+            </div>
+            <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">+18%</div>
+            <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-1">Faster execution on each subsequent run</p>
+          </CardContent>
+        </Card>
+        <Card className="bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-950/40 dark:to-violet-950/40 border-purple-200 dark:border-purple-800">
+          <CardContent className="pt-6">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="p-2 bg-purple-100 dark:bg-purple-900 rounded-lg">
+                <Lightbulb className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-purple-900 dark:text-purple-200">AI Recommendations</p>
+                <p className="text-xs text-purple-700 dark:text-purple-400">Insights applied to active playbooks</p>
+              </div>
+            </div>
+            <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">34</div>
+            <p className="text-xs text-purple-600 dark:text-purple-400 mt-1">Auto-applied improvements this quarter</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Tabs defaultValue="outcomes" className="space-y-4" onValueChange={setActiveTab}>
         <TabsList data-testid="tabs-memory-sections">
           <TabsTrigger value="outcomes" data-testid="tab-outcomes">Decision Outcomes</TabsTrigger>
           <TabsTrigger value="patterns" data-testid="tab-patterns">Learning Patterns</TabsTrigger>
@@ -120,43 +346,42 @@ export default function InstitutionalMemory() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              {outcomesLoading ? (
-                <div className="text-center py-8 text-muted-foreground">Loading outcomes...</div>
-              ) : decisionOutcomes.length === 0 ? (
-                <div className="text-center py-8 text-muted-foreground">
-                  <BookOpen className="h-12 w-12 mx-auto mb-2 text-gray-400" />
-                  <p>No decision outcomes recorded yet</p>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  {decisionOutcomes.map((outcome: any) => (
-                    <div 
-                      key={outcome.id} 
-                      className="border rounded-lg p-4 space-y-3"
-                      data-testid={`outcome-${outcome.id}`}
-                    >
-                      <div className="flex items-start justify-between">
-                        <div className="flex-1 page-background space-y-2">
-                          <div className="flex items-center gap-2">
-                            {getOutcomeIcon(outcome.outcomeType)}
-                            <h3 className="font-semibold" data-testid={`text-outcome-type-${outcome.id}`}>
-                              {outcome.decisionType}
-                            </h3>
-                            <Badge variant="outline">{outcome.outcomeType}</Badge>
-                          </div>
-                          <p className="text-sm">{outcome.decisionDescription}</p>
-                          {outcome.lessonsLearned && (
-                            <div className="bg-blue-50 dark:bg-blue-950 p-3 rounded-md">
-                              <p className="text-sm font-medium mb-1">Lessons Learned:</p>
-                              <p className="text-sm text-muted-foreground">{outcome.lessonsLearned}</p>
-                            </div>
-                          )}
+              <div className="space-y-4">
+                {decisionOutcomes.map((outcome) => (
+                  <div 
+                    key={outcome.id} 
+                    className="border rounded-lg p-4 space-y-3"
+                    data-testid={`outcome-${outcome.id}`}
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1 space-y-2">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          {getOutcomeIcon(outcome.outcomeType)}
+                          <h3 className="font-semibold" data-testid={`text-outcome-type-${outcome.id}`}>
+                            {outcome.decisionType}
+                          </h3>
+                          <Badge variant="outline" className={outcome.outcomeType === 'successful' ? 'border-green-500 text-green-600' : 'border-yellow-500 text-yellow-600'}>
+                            {outcome.outcomeType === 'successful' ? 'Successful' : 'Partially Successful'}
+                          </Badge>
+                          <Badge variant="secondary">{outcome.domain}</Badge>
                         </div>
+                        <p className="text-sm text-slate-600 dark:text-slate-300">{outcome.decisionDescription}</p>
+                        <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
+                          <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {outcome.date}</span>
+                          <span className="flex items-center gap-1"><Zap className="h-3 w-3" /> {outcome.executionTime}</span>
+                          <span className="flex items-center gap-1 text-emerald-600 font-semibold"><Shield className="h-3 w-3" /> {outcome.costSaved} saved</span>
+                        </div>
+                        {outcome.lessonsLearned && (
+                          <div className="bg-blue-50 dark:bg-blue-950/50 p-3 rounded-md border border-blue-200 dark:border-blue-800">
+                            <p className="text-sm font-medium mb-1 flex items-center gap-1"><Lightbulb className="h-4 w-4 text-amber-500" /> Lessons Learned:</p>
+                            <p className="text-sm text-slate-600 dark:text-slate-300">{outcome.lessonsLearned}</p>
+                          </div>
+                        )}
                       </div>
                     </div>
-                  ))}
-                </div>
-              )}
+                  </div>
+                ))}
+              </div>
             </CardContent>
           </Card>
         </TabsContent>
@@ -170,36 +395,39 @@ export default function InstitutionalMemory() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              {patternsLoading ? (
-                <div className="text-center py-8 text-muted-foreground">Loading patterns...</div>
-              ) : learningPatterns.length === 0 ? (
-                <div className="text-center py-8 text-muted-foreground">
-                  <TrendingUp className="h-12 w-12 mx-auto mb-2 text-gray-400" />
-                  <p>No patterns identified yet - Need more decision history</p>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  {learningPatterns.map((pattern: any) => (
-                    <div 
-                      key={pattern.id} 
-                      className="border rounded-lg p-4 space-y-2"
-                      data-testid={`pattern-${pattern.id}`}
-                    >
-                      <div className="flex items-center gap-2">
-                        <Badge variant="secondary">{pattern.patternType}</Badge>
-                        <Badge variant="outline">{pattern.category}</Badge>
-                      </div>
-                      <h3 className="font-semibold" data-testid={`text-pattern-title-${pattern.id}`}>{pattern.title}</h3>
-                      <p className="text-sm text-muted-foreground">{pattern.description}</p>
-                      {pattern.confidenceLevel && (
-                        <p className="text-sm">
-                          <span className="font-medium">Confidence:</span> {pattern.confidenceLevel}
-                        </p>
-                      )}
+              <div className="space-y-4">
+                {learningPatterns.map((pattern) => (
+                  <div 
+                    key={pattern.id} 
+                    className="border rounded-lg p-4 space-y-2"
+                    data-testid={`pattern-${pattern.id}`}
+                  >
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <Badge variant="secondary">{pattern.patternType}</Badge>
+                      <Badge variant="outline">{pattern.category}</Badge>
+                      <Badge className={
+                        pattern.impactScore === 'Critical' ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300' :
+                        pattern.impactScore === 'High' ? 'bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300' :
+                        'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
+                      }>
+                        {pattern.impactScore} Impact
+                      </Badge>
                     </div>
-                  ))}
-                </div>
-              )}
+                    <h3 className="font-semibold" data-testid={`text-pattern-title-${pattern.id}`}>{pattern.title}</h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-300">{pattern.description}</p>
+                    <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400 pt-1">
+                      <span className="flex items-center gap-1">
+                        <Target className="h-3 w-3" />
+                        Confidence: <span className="font-semibold text-emerald-600">{pattern.confidenceLevel}</span>
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <BarChart3 className="h-3 w-3" />
+                        Based on {pattern.dataPoints} data points
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </CardContent>
           </Card>
         </TabsContent>
@@ -213,35 +441,35 @@ export default function InstitutionalMemory() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              {knowledgeLoading ? (
-                <div className="text-center py-8 text-muted-foreground">Loading knowledge base...</div>
-              ) : institutionalKnowledge.length === 0 ? (
-                <div className="text-center py-8 text-muted-foreground">
-                  <Award className="h-12 w-12 mx-auto mb-2 text-gray-400" />
-                  <p>Knowledge base is empty - Start documenting learnings</p>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  {institutionalKnowledge.map((knowledge: any) => (
-                    <div 
-                      key={knowledge.id} 
-                      className="border rounded-lg p-4 space-y-2"
-                      data-testid={`knowledge-${knowledge.id}`}
-                    >
-                      <div className="flex items-center gap-2">
-                        <Badge>{knowledge.memoryType}</Badge>
-                        {knowledge.domain && <Badge variant="outline">{knowledge.domain}</Badge>}
-                      </div>
-                      <h3 className="font-semibold" data-testid={`text-knowledge-title-${knowledge.id}`}>{knowledge.title}</h3>
-                      <p className="text-sm">{knowledge.summary}</p>
+              <div className="space-y-4">
+                {institutionalKnowledge.map((knowledge) => (
+                  <div 
+                    key={knowledge.id} 
+                    className="border rounded-lg p-4 space-y-2"
+                    data-testid={`knowledge-${knowledge.id}`}
+                  >
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <Badge className={
+                        knowledge.memoryType === 'Best Practice' ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300' :
+                        knowledge.memoryType === 'Failure Analysis' ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300' :
+                        'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300'
+                      }>{knowledge.memoryType}</Badge>
+                      {knowledge.domain && <Badge variant="outline">{knowledge.domain}</Badge>}
                     </div>
-                  ))}
-                </div>
-              )}
+                    <h3 className="font-semibold" data-testid={`text-knowledge-title-${knowledge.id}`}>{knowledge.title}</h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-300">{knowledge.summary}</p>
+                    <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400 pt-1">
+                      <span className="flex items-center gap-1"><Target className="h-3 w-3" /> {knowledge.applicability}</span>
+                      <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> Updated: {knowledge.lastUpdated}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </CardContent>
           </Card>
         </TabsContent>
       </Tabs>
+        </div>
       </div>
     </PageLayout>
   );

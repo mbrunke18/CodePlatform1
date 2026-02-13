@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye } from "lucide-react";
+import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket } from "lucide-react";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { useLocation } from "wouter";
 import { useAuth } from "@/hooks/useAuth";
@@ -49,6 +49,14 @@ export default function StandardNav() {
   ];
 
   const demosLinks = [
+    { label: "Try Demo", path: "/try-demo", icon: Rocket, description: "Experience the full platform" },
+    { label: "Industry Demos", path: "/industry-demos", icon: Building, description: "Industry-specific scenarios" },
+    { label: "Live Activation", path: "/demo/live-activation", icon: Zap, description: "Real-time trigger response" },
+    { label: "Executive Simulation", path: "/executive-simulation", icon: Users, description: "C-suite decision experience" },
+    { label: "Keynote Mode", path: "/keynote", icon: Presentation, description: "Tradeshow presentation" },
+  ];
+
+  const platformLinks = [
     { label: "ExecuteIQ One™", path: "/mission-control", icon: Compass, description: "Strategic operations hub" },
     { label: "Command Center", path: "/command-center", icon: Target, description: "Live execution coordination" },
     { label: "Executive Dashboard", path: "/executive-dashboard", icon: BarChart3, description: "Performance metrics & KPIs" },
@@ -65,7 +73,7 @@ export default function StandardNav() {
     { label: "Founder's Story", path: "/founder-story", icon: Video, description: "Vision behind ExecuteIQ" },
   ];
 
-  const platformLinks = [
+  const intelligenceLinks = [
     { label: "AI Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated trigger detection" },
     { label: "Signal Ops Center", path: "/workspaces/detect", icon: Radar, description: "Configure signal sources" },
     { label: "Pulse Intelligence", path: "/pulse-intelligence", icon: Radar, description: "Weak signal analysis" },
@@ -83,7 +91,7 @@ export default function StandardNav() {
     }
   };
 
-  const renderDropdown = (label: string, links: typeof dashboardLinks, icon?: any, highlighted?: boolean) => (
+  const renderDropdown = (label: string, links: typeof productLinks, icon?: any, highlighted?: boolean) => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button
@@ -160,8 +168,9 @@ export default function StandardNav() {
             {renderDropdown("Product", productLinks)}
             {renderDropdown("Solutions", solutionsLinks)}
             {renderDropdown("Demos", demosLinks)}
-            {renderDropdown("Investors", investorsLinks, undefined, true)}
             {renderDropdown("Platform", platformLinks)}
+            {renderDropdown("Investors", investorsLinks, undefined, true)}
+            {renderDropdown("Intelligence", intelligenceLinks)}
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
@@ -268,8 +277,22 @@ export default function StandardNav() {
               
               <div className="border-t border-slate-800 my-3" />
               
-              <p className="px-4 py-2 text-xs text-poise-teal uppercase tracking-wide font-semibold">Demos</p>
+              <p className="px-4 py-2 text-xs text-cyan-400 uppercase tracking-wide font-semibold">Demos</p>
               {demosLinks.map((link) => (
+                <button
+                  key={link.path}
+                  onClick={() => navigateTo(link.path)}
+                  className="text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-slate-300 hover:text-white hover:bg-slate-800"
+                >
+                  <link.icon className="h-4 w-4 text-slate-200" />
+                  {link.label}
+                </button>
+              ))}
+              
+              <div className="border-t border-slate-800 my-3" />
+
+              <p className="px-4 py-2 text-xs text-poise-teal uppercase tracking-wide font-semibold">Platform</p>
+              {platformLinks.map((link) => (
                 <button
                   key={link.path}
                   onClick={() => navigateTo(link.path)}
@@ -296,8 +319,8 @@ export default function StandardNav() {
 
               <div className="border-t border-slate-800 my-3" />
               
-              <p className="px-4 py-2 text-xs text-slate-400 uppercase tracking-wide font-semibold">Platform</p>
-              {platformLinks.map((link) => (
+              <p className="px-4 py-2 text-xs text-slate-400 uppercase tracking-wide font-semibold">Intelligence</p>
+              {intelligenceLinks.map((link) => (
                 <button
                   key={link.path}
                   onClick={() => navigateTo(link.path)}

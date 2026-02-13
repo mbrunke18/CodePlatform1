@@ -57,22 +57,22 @@ const DynamicStrategyContext = createContext<DynamicStrategyState | null>(null);
 export function DynamicStrategyProvider({ children }: { children: ReactNode }) {
   const { data: statusData, isLoading: statusLoading } = useQuery({
     queryKey: ['/api/dynamic-strategy/status'],
-    refetchInterval: 5000,
+    refetchInterval: 60000,
   });
 
   const { data: readinessData, isLoading: readinessLoading } = useQuery({
     queryKey: ['/api/dynamic-strategy/readiness'],
-    refetchInterval: 10000,
+    refetchInterval: 60000,
   });
 
   const { data: weakSignalsData, isLoading: signalsLoading } = useQuery({
     queryKey: ['/api/dynamic-strategy/weak-signals'],
-    refetchInterval: 15000,
+    refetchInterval: 120000,
   });
 
   const { data: patternsData, isLoading: patternsLoading } = useQuery({
     queryKey: ['/api/dynamic-strategy/oracle-patterns'],
-    refetchInterval: 30000,
+    refetchInterval: 120000,
   });
 
   const isLoading = statusLoading || readinessLoading || signalsLoading || patternsLoading;
