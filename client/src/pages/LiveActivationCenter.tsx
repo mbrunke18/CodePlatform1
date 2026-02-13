@@ -402,6 +402,7 @@ export default function LiveActivationCenter() {
   }, [addActivity]);
 
   const completeActivation = useCallback(() => {
+    if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
     setActivationState('COMPLETED');
     setStakeholders(prev => prev.map(s => s.status !== 'acknowledged' ? { ...s, status: 'acknowledged', responseTime: Math.floor(Math.random() * 30 + 10) } : s));
     setTasks(prev => prev.map(t => t.status !== 'completed' ? { ...t, status: 'completed' } : t));
