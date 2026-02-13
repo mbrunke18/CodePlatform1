@@ -230,8 +230,45 @@ function formatElapsed(seconds: number): string {
   return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
 }
 
+const ROLE_CONTEXT: Record<string, { label: string; perspective: string }> = {
+  ceo: { label: 'CEO', perspective: 'See how ExecuteIQ gives you real-time visibility into cross-functional coordination the moment a strategic decision is made.' },
+  cfo: { label: 'CFO', perspective: 'Watch budget allocation, financial system lockdowns, and stakeholder coordination happen automatically — protecting value from minute one.' },
+  coo: { label: 'COO', perspective: 'See operational coordination across every business unit unfold simultaneously — no more sequential handoffs.' },
+  cmo: { label: 'CMO', perspective: 'Watch market-facing communications, customer notifications, and brand protection execute in parallel.' },
+  cto: { label: 'CTO', perspective: 'See technology integration, systems access, and engineering coordination orchestrated with zero delay.' },
+  ciso: { label: 'CISO', perspective: 'Watch coordinated incident response — containment, legal, communications, and recovery executing simultaneously.' },
+  chro: { label: 'CHRO', perspective: 'See people-focused coordination: transition plans, retention strategies, and cultural integration activated instantly.' },
+  cdo: { label: 'CDO', perspective: 'Watch data governance, compliance verification, and cross-functional AI policy deployment coordinate in real-time.' },
+  gc: { label: 'General Counsel', perspective: 'See legal review, regulatory notifications, and compliance workflows execute alongside operational response.' },
+  cco: { label: 'CCO', perspective: 'Watch compliance frameworks, audit responses, and regulatory coordination deploy across the entire organization.' },
+  cso: { label: 'CSO', perspective: 'See strategic execution velocity — every initiative coordinated with pre-approved resources and aligned stakeholders.' },
+  cro: { label: 'CRO', perspective: 'Watch revenue-impacting coordination: customer notifications, sales enablement, and pipeline protection in real-time.' },
+};
+
+const INDUSTRY_CONTEXT: Record<string, { label: string; perspective: string }> = {
+  luxury: { label: 'Luxury Goods', perspective: 'See how a global luxury conglomerate coordinates 10+ brands across 15 cities simultaneously.' },
+  'fast-fashion': { label: 'Fast Fashion', perspective: 'Watch trend capitalization coordination — from detection to 200-SKU production in minutes, not weeks.' },
+  aerospace: { label: 'Aerospace', perspective: 'See launch schedule acceleration coordination across engineering, safety, and operations teams.' },
+  financial: { label: 'Financial Services', perspective: 'Watch coordinated breach response across security, legal, regulatory, and customer-facing teams.' },
+  pharma: { label: 'Pharmaceutical', perspective: 'See Class I recall coordination — regulatory notifications, supply chain halt, and patient safety in parallel.' },
+  manufacturing: { label: 'Manufacturing', perspective: 'Watch supplier crisis coordination: alternative sourcing, production rescheduling, and customer management.' },
+  retail: { label: 'Retail', perspective: 'See food safety coordination across 800+ stores, 23 states, and regulatory agencies simultaneously.' },
+  energy: { label: 'Energy & Utilities', perspective: 'Watch grid emergency coordination across substations, field crews, regulators, and public communications.' },
+};
+
 export default function LiveActivationCenter() {
-  const [selectedPlaybook, setSelectedPlaybook] = useState<string>('ma-day1');
+  const params = new URLSearchParams(window.location.search);
+  const urlPlaybook = params.get('playbook');
+  const urlRole = params.get('role');
+  const urlIndustry = params.get('industry');
+
+  const initialPlaybook = (urlPlaybook && DEFAULT_PLAYBOOKS.some(p => p.key === urlPlaybook)) ? urlPlaybook : 'ma-day1';
+  const roleContext = urlRole ? ROLE_CONTEXT[urlRole.toLowerCase()] : null;
+  const industryContext = urlIndustry ? INDUSTRY_CONTEXT[urlIndustry.toLowerCase()] : null;
+  const contextLabel = roleContext?.label || industryContext?.label || null;
+  const contextPerspective = roleContext?.perspective || industryContext?.perspective || null;
+
+  const [selectedPlaybook, setSelectedPlaybook] = useState<string>(initialPlaybook);
   const [activationId, setActivationId] = useState<string | null>(null);
   const [activationState, setActivationState] = useState<ActivationState>('ACTIVATING');
   const [stakeholders, setStakeholders] = useState<Stakeholder[]>([]);
@@ -240,7 +277,6 @@ export default function LiveActivationCenter() {
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [currentPhase, setCurrentPhase] = useState<ActivationPhase>('IMMEDIATE');
   const [showCompletion, setShowCompletion] = useState(false);
-
   const socketRef = useRef<Socket | null>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const feedRef = useRef<HTMLDivElement>(null);
@@ -478,6 +514,17 @@ export default function LiveActivationCenter() {
               <ArrowLeft className="w-4 h-4" /> Back to ExecuteIQ
             </Link>
           </div>
+          {contextLabel && contextPerspective && (
+            <div className="mb-8 p-4 rounded-xl border border-emerald-500/20 bg-emerald-500/5">
+              <div className="flex items-center gap-2 mb-1">
+                <Target className="w-4 h-4 text-emerald-400" />
+                <span className="text-sm font-semibold text-emerald-400">
+                  {urlRole ? `${contextLabel} Perspective` : `${contextLabel} Industry`}
+                </span>
+              </div>
+              <p className="text-sm text-gray-300">{contextPerspective}</p>
+            </div>
+          )}
           <div className="text-center mb-12 md:mb-16">
             <div className="flex items-center justify-center gap-3 mb-4">
               <Zap className="w-8 h-8 text-emerald-400" />

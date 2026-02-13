@@ -44,8 +44,8 @@ export default function StandardNav() {
   ];
 
   const solutionsLinks = [
-    { label: "By Role", path: "/role-selector", icon: Users, description: "CEO, CFO, COO, CTO, CMO, CRO" },
-    { label: "By Industry", path: "/industry-demos", icon: Building, description: "Financial, Healthcare, Manufacturing" },
+    { label: "By Role", path: "/role-selector", icon: Users, description: "See ExecuteIQ from your C-suite perspective" },
+    { label: "By Industry", path: "/industry-demos", icon: Building, description: "Offense & defense scenarios across industries" },
     { label: "Competitive Positioning", path: "/competitive-positioning", icon: Shield, description: "How ExecuteIQ compares" },
     { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "Calculate your savings" },
   ];
@@ -54,7 +54,6 @@ export default function StandardNav() {
     { label: "Live Activation", path: "/activation", icon: Zap, description: "Watch real-time stakeholder coordination", featured: true },
     { label: "Ultimate Demo", path: "/ultimate-demo", icon: Target, description: "Interactive 72hrs → 12min experience", featured: true },
     { label: "Scenario Demo", path: "/scenario-demo", icon: Target, description: "Offense vs Defense scenario comparisons" },
-    { label: "Industry Demos", path: "/industry-demos", icon: Building, description: "Luxury, Financial, Pharma & more" },
   ];
 
   const investorsLinks = [
