@@ -59,6 +59,12 @@ export const PUBLIC_ROUTES = [
   '/api/organizations/:id',
   '/api/users', // Public access for demo mode (NO AUTHENTICATION requirement)
   
+  // Live Activation Command Center - demo access
+  '/api/activation/playbooks',
+  '/api/activation/activate',
+  '/api/activation/:id',
+  '/api/activation/:id/cancel',
+  
   // Demo Routes ONLY - read-only demo data endpoints
   '/api/demo/scenarios',
   '/api/demo/reset',

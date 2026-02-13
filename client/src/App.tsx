@@ -135,6 +135,7 @@ import TaskManagement from "./pages/TaskManagement";
 import StakeholderManagement from "./pages/StakeholderManagement";
 import PilotDemo from "./pages/PilotDemo";
 import TryDemo from "./pages/TryDemo";
+import LiveActivationCenter from "./pages/LiveActivationCenter";
 
 import PlaybooksLibraryPage from "./pages/identify/PlaybooksLibraryPage";
 import IdentifyTemplatesPage from "./pages/identify/TemplatesPage";
@@ -510,6 +511,11 @@ function Router() {
         <Route path="/transformational-demo" component={TryDemo} />
         <Route path="/four-phase-demo" component={TryDemo} />
         <Route path="/4-phase-demo" component={TryDemo} />
+        
+        {/* Live Activation Command Center - Primary demo experience */}
+        <Route path="/activation" component={LiveActivationCenter} />
+        <Route path="/command-center" component={LiveActivationCenter} />
+        <Route path="/demo/activation" component={LiveActivationCenter} />
         
         {/* Live Interactive Demos - All 7 demos now use unified DemoLiveActivation component */}
         <Route path="/role-selector" component={RoleSelector} />

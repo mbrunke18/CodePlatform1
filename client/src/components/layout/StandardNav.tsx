@@ -51,8 +51,9 @@ export default function StandardNav() {
   ];
 
   const demosLinks = [
-    { label: "Ultimate Demo", path: "/ultimate-demo", icon: Zap, description: "Interactive 72hrs → 12min experience", featured: true },
-    { label: "Scenario Demo", path: "/scenario-demo", icon: Target, description: "Offense vs Defense scenario comparisons", featured: true },
+    { label: "Live Activation", path: "/activation", icon: Zap, description: "Watch real-time stakeholder coordination", featured: true },
+    { label: "Ultimate Demo", path: "/ultimate-demo", icon: Target, description: "Interactive 72hrs → 12min experience", featured: true },
+    { label: "Scenario Demo", path: "/scenario-demo", icon: Target, description: "Offense vs Defense scenario comparisons" },
     { label: "Industry Demos", path: "/industry-demos", icon: Building, description: "Luxury, Financial, Pharma & more" },
   ];
 

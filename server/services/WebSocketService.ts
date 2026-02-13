@@ -57,6 +57,19 @@ class WebSocketService {
         console.log(`Client ${socket.id} left execution-${executionInstanceId}`);
       });
 
+      socket.on('join-activation', (activationId: string) => {
+        if (activationId && typeof activationId === 'string') {
+          socket.join(`activation-${activationId}`);
+          socket.emit('activation-joined', { activationId });
+        }
+      });
+
+      socket.on('leave-activation', (activationId: string) => {
+        if (activationId && typeof activationId === 'string') {
+          socket.leave(`activation-${activationId}`);
+        }
+      });
+
       socket.on('identify', (data: { userId: string; organizationId?: string }) => {
         const conn = this.userConnections.get(socket.id);
         if (conn) {

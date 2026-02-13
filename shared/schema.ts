@@ -2789,6 +2789,54 @@ export const aiOptimizationSuggestions = pgTable('ai_optimization_suggestions', 
   createdAt: timestamp('created_at').defaultNow(),
 });
 
+// Activation Stakeholders - Per-stakeholder status tracking during live activations
+export const activationStakeholders = pgTable('activation_stakeholders', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  activationId: uuid('activation_id').notNull(), // References playbookActivations.id
+  roleName: varchar('role_name', { length: 100 }).notNull(),
+  personName: varchar('person_name', { length: 255 }).notNull(),
+  title: varchar('title', { length: 255 }),
+  department: varchar('department', { length: 100 }),
+  tier: integer('tier').default(1),
+  raciType: varchar('raci_type', { length: 20 }).default('informed'),
+  status: varchar('status', { length: 50 }).default('pending'),
+  notifiedAt: timestamp('notified_at'),
+  acknowledgedAt: timestamp('acknowledged_at'),
+  responseTimeSeconds: integer('response_time_seconds'),
+  notificationChannel: varchar('notification_channel', { length: 50 }).default('slack'),
+  avatarColor: varchar('avatar_color', { length: 20 }),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+// Activation Tasks - Live task tracking during a playbook activation
+export const activationTasks = pgTable('activation_tasks', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  activationId: uuid('activation_id').notNull(),
+  taskName: varchar('task_name', { length: 500 }).notNull(),
+  taskDescription: text('task_description'),
+  ownerRole: varchar('owner_role', { length: 100 }),
+  priority: varchar('priority', { length: 20 }).default('high'),
+  sequence: integer('sequence').notNull(),
+  phase: varchar('phase', { length: 50 }).default('immediate'),
+  status: varchar('status', { length: 50 }).default('pending'),
+  startedAt: timestamp('started_at'),
+  completedAt: timestamp('completed_at'),
+  estimatedMinutes: integer('estimated_minutes').default(2),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+// Activation Activity Log - Timeline of events during activation
+export const activationActivityLog = pgTable('activation_activity_log', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  activationId: uuid('activation_id').notNull(),
+  eventType: varchar('event_type', { length: 100 }).notNull(),
+  actorName: varchar('actor_name', { length: 255 }),
+  actorRole: varchar('actor_role', { length: 100 }),
+  description: text('description').notNull(),
+  metadata: jsonb('metadata'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
 // Playbook Activations - Track real-world playbook uses (links to executionInstances)
 export const playbookActivations = pgTable('playbook_activations', {
   id: uuid('id').primaryKey().defaultRandom(),
@@ -3384,6 +3432,15 @@ export type InsertAiOptimizationSuggestion = typeof aiOptimizationSuggestions.$i
 
 export type PlaybookActivation = typeof playbookActivations.$inferSelect;
 export type InsertPlaybookActivation = typeof playbookActivations.$inferInsert;
+
+export type ActivationStakeholder = typeof activationStakeholders.$inferSelect;
+export type InsertActivationStakeholder = typeof activationStakeholders.$inferInsert;
+
+export type ActivationTask = typeof activationTasks.$inferSelect;
+export type InsertActivationTask = typeof activationTasks.$inferInsert;
+
+export type ActivationActivityLogEntry = typeof activationActivityLog.$inferSelect;
+export type InsertActivationActivityLogEntry = typeof activationActivityLog.$inferInsert;
 
 // Playbook Library - Insert Schemas
 export const insertPlaybookDomainSchema = createInsertSchema(playbookDomains).pick({
