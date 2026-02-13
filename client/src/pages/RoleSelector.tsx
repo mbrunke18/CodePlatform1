@@ -212,12 +212,12 @@ export default function RoleSelector() {
               </h1>
             </div>
             <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-6">
-              Select your role to see a personalized live activation demo showing how ExecuteIQ solves your specific coordination challenges.
+              Select your role to experience the full ExecuteIQ product journey — from building playbooks and configuring triggers through live signal detection and 12-minute execution.
             </p>
             <div className="flex items-center justify-center gap-6 text-sm text-gray-500">
-              <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-emerald-400" /> Live 12-minute demo</span>
-              <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-blue-400" /> Role-specific context</span>
-              <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-purple-400" /> Real stakeholder coordination</span>
+              <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-emerald-400" /> Full product walkthrough</span>
+              <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-blue-400" /> 12-stage hands-on journey</span>
+              <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-purple-400" /> Build, configure & execute</span>
             </div>
           </div>
 
@@ -225,7 +225,7 @@ export default function RoleSelector() {
             {roleConfigs.map(config => {
               const Icon = config.icon;
               return (
-                <Link key={config.id} href={`/activation?playbook=${config.playbook}&role=${config.id}`}>
+                <Link key={config.id} href={`/experience/${config.id}`}>
                   <Card className={`bg-gradient-to-br ${config.gradient} border ${config.borderColor} transition-all duration-300 cursor-pointer hover:scale-[1.02] h-full`}>
                     <CardContent className="p-5">
                       <div className="flex items-start justify-between mb-4">
@@ -254,7 +254,7 @@ export default function RoleSelector() {
 
                       <div className="flex items-center justify-between">
                         <div className="text-[10px] text-gray-500">
-                          <Play className="w-3 h-3 inline mr-1" />{config.playbookLabel}
+                          <Play className="w-3 h-3 inline mr-1" />Full Customer Experience
                         </div>
                         <ArrowRight className="w-4 h-4 text-gray-500" />
                       </div>

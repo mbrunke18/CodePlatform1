@@ -138,6 +138,7 @@ import PilotDemo from "./pages/PilotDemo";
 import TryDemo from "./pages/TryDemo";
 import LiveActivationCenter from "./pages/LiveActivationCenter";
 import KeynoteDemo from "./pages/KeynoteDemo";
+import RoleExperience from "./pages/RoleExperience";
 
 import PlaybooksLibraryPage from "./pages/identify/PlaybooksLibraryPage";
 import IdentifyTemplatesPage from "./pages/identify/TemplatesPage";
@@ -573,11 +574,11 @@ function Router() {
         <Route path="/roadshow" component={RoadshowResources} />
         <Route path="/pitch-deck" component={InvestorPresentation} />
         
+        {/* Role-Based Customer Experience */}
+        <Route path="/experience/:roleId" component={RoleExperience} />
+        
         {/* Keynote Demo Mode - Tradeshow Presentation */}
         <Route path="/keynote" component={KeynoteDemo} />
-        <Route path="/keynote-demo" component={KeynoteDemo} />
-        <Route path="/tradeshow" component={KeynoteDemo} />
-        <Route path="/present" component={KeynoteDemo} />
         
         {/* Legacy demos - redirect to main demo paths */}
         <Route path="/watch-demo" component={TryDemo} />
