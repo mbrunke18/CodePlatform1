@@ -1,0 +1,752 @@
+# ExecuteIQ MVP Technical Specification
+## Version 1.0 — Build Document for Developers
+
+---
+
+## Executive Summary
+
+**Product:** ExecuteIQ — Strategic Execution Infrastructure
+**Goal:** Build MVP that enables ONE real playbook activation with real stakeholder coordination
+**Timeline:** 4-6 weeks
+**Core Deliverable:** When a trigger occurs, automatically notify stakeholders, assign tasks, track acknowledgments, and display real-time coordination status
+
+---
+
+## 1. Product Overview
+
+### What ExecuteIQ Does
+1. **IDENTIFY** — Detect a strategic trigger (initially manual, later automated)
+2. **DETECT** — Match to appropriate playbook from library
+3. **EXECUTE** — Notify stakeholders, assign tasks, track progress
+4. **ADVANCE** — Learn from execution, improve playbooks
+
+### MVP Scope
+- 1 integration: **Slack**
+- 3 playbooks: Ransomware, Supplier Failure, M&A Day 1
+- Manual trigger (admin clicks "Activate")
+- Real-time dashboard showing coordination status
+- Basic acknowledgment and task tracking
+
+---
+
+## 2. Technical Architecture
+
+### Stack Recommendation
+```
+Frontend:    React + Tailwind CSS
+Backend:     Node.js (Express) or Python (FastAPI)
+Database:    PostgreSQL
+Queue:       Redis + Bull (for async jobs)
+Real-time:   Socket.io or Server-Sent Events
+Auth:        Clerk or Auth0 (faster than DIY)
+Hosting:     Railway, Render, or Vercel + Supabase
+Slack:       Slack Bolt SDK
+```
+
+### Architecture Diagram
+```
+┌─────────────────────────────────────────────────────────────┐
+│                      EXECUTEIQ MVP                          │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ┌──────────┐     ┌──────────┐     ┌──────────────────┐   │
+│  │  React   │────▶│  API     │────▶│  PostgreSQL      │   │
+│  │ Frontend │◀────│  Server  │◀────│  Database        │   │
+│  └──────────┘     └────┬─────┘     └──────────────────┘   │
+│                        │                                    │
+│                        ▼                                    │
+│                   ┌──────────┐                             │
+│                   │  Redis   │ (Job Queue)                 │
+│                   └────┬─────┘                             │
+│                        │                                    │
+│                        ▼                                    │
+│            ┌───────────────────────┐                       │
+│            │   Notification Worker  │                       │
+│            └───────────┬───────────┘                       │
+│                        │                                    │
+│           ┌────────────┼────────────┐                      │
+│           ▼            ▼            ▼                      │
+│      ┌────────┐   ┌────────┐   ┌────────┐                 │
+│      │ Slack  │   │ Email  │   │  SMS   │                 │
+│      │  API   │   │(later) │   │(later) │                 │
+│      └────────┘   └────────┘   └────────┘                 │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 3. Database Schema
+
+### Core Tables
+
+```sql
+-- Organizations
+CREATE TABLE organizations (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name VARCHAR(255) NOT NULL,
+  slug VARCHAR(100) UNIQUE NOT NULL,
+  slack_team_id VARCHAR(50),
+  slack_access_token TEXT,
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Users (Stakeholders)
+CREATE TABLE users (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  org_id UUID REFERENCES organizations(id),
+  email VARCHAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  title VARCHAR(255),
+  department VARCHAR(100),
+  phone VARCHAR(50),
+  slack_user_id VARCHAR(50),
+  tier INTEGER DEFAULT 1, -- 1=Critical, 2=Important, 3=Informed
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Playbooks
+CREATE TABLE playbooks (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  org_id UUID REFERENCES organizations(id),
+  code VARCHAR(20) NOT NULL, -- e.g., '#SEC-001'
+  name VARCHAR(255) NOT NULL,
+  domain VARCHAR(100), -- Security, Operations, M&A, etc.
+  type VARCHAR(20), -- offense, defense, special
+  description TEXT,
+  trigger_criteria TEXT,
+  estimated_duration_minutes INTEGER,
+  created_at TIMESTAMP DEFAULT NOW(),
+  is_template BOOLEAN DEFAULT FALSE
+);
+
+-- Playbook Stakeholder Roles (RACI template)
+CREATE TABLE playbook_roles (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  playbook_id UUID REFERENCES playbooks(id),
+  role_name VARCHAR(100), -- e.g., 'CISO', 'Legal Lead'
+  raci_type VARCHAR(20), -- responsible, accountable, consulted, informed
+  notification_priority INTEGER DEFAULT 1,
+  required BOOLEAN DEFAULT TRUE
+);
+
+-- Playbook Tasks (template)
+CREATE TABLE playbook_tasks (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  playbook_id UUID REFERENCES playbooks(id),
+  title VARCHAR(500) NOT NULL,
+  description TEXT,
+  owner_role VARCHAR(100), -- Maps to playbook_roles.role_name
+  priority VARCHAR(20), -- critical, high, medium, low
+  sequence INTEGER,
+  estimated_minutes INTEGER,
+  dependencies JSONB -- Array of task IDs that must complete first
+);
+
+-- Activations (when a playbook is triggered)
+CREATE TABLE activations (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  org_id UUID REFERENCES organizations(id),
+  playbook_id UUID REFERENCES playbooks(id),
+  triggered_by UUID REFERENCES users(id),
+  trigger_description TEXT,
+  status VARCHAR(50) DEFAULT 'active', -- active, coordinated, resolved, cancelled
+  started_at TIMESTAMP DEFAULT NOW(),
+  coordinated_at TIMESTAMP, -- When full coordination achieved
+  resolved_at TIMESTAMP,
+  metadata JSONB
+);
+
+-- Activation Stakeholders (actual people assigned)
+CREATE TABLE activation_stakeholders (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  activation_id UUID REFERENCES activations(id),
+  user_id UUID REFERENCES users(id),
+  role_name VARCHAR(100),
+  raci_type VARCHAR(20),
+  notified_at TIMESTAMP,
+  acknowledged_at TIMESTAMP,
+  notification_channel VARCHAR(50), -- slack, email, sms
+  notification_id VARCHAR(100) -- External ID for tracking
+);
+
+-- Activation Tasks (actual tasks created)
+CREATE TABLE activation_tasks (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  activation_id UUID REFERENCES activations(id),
+  playbook_task_id UUID REFERENCES playbook_tasks(id),
+  assigned_to UUID REFERENCES users(id),
+  title VARCHAR(500) NOT NULL,
+  description TEXT,
+  priority VARCHAR(20),
+  status VARCHAR(50) DEFAULT 'pending', -- pending, in_progress, completed, blocked
+  created_at TIMESTAMP DEFAULT NOW(),
+  started_at TIMESTAMP,
+  completed_at TIMESTAMP
+);
+
+-- Activity Log (everything that happens)
+CREATE TABLE activity_log (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  activation_id UUID REFERENCES activations(id),
+  user_id UUID REFERENCES users(id),
+  action VARCHAR(100), -- notified, acknowledged, task_started, task_completed
+  details JSONB,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+```
+
+---
+
+## 4. API Endpoints
+
+### Authentication & Setup
+```
+POST   /api/auth/slack/install     — Start Slack OAuth
+GET    /api/auth/slack/callback    — Handle Slack OAuth callback
+GET    /api/org                    — Get current org details
+PUT    /api/org                    — Update org settings
+```
+
+### Stakeholders
+```
+GET    /api/stakeholders           — List all stakeholders
+POST   /api/stakeholders           — Create stakeholder
+POST   /api/stakeholders/import    — Bulk import from CSV
+PUT    /api/stakeholders/:id       — Update stakeholder
+DELETE /api/stakeholders/:id       — Remove stakeholder
+POST   /api/stakeholders/sync-slack — Sync with Slack users
+```
+
+### Playbooks
+```
+GET    /api/playbooks              — List all playbooks
+GET    /api/playbooks/:id          — Get playbook details
+POST   /api/playbooks              — Create playbook
+PUT    /api/playbooks/:id          — Update playbook
+GET    /api/playbooks/:id/roles    — Get playbook roles
+GET    /api/playbooks/:id/tasks    — Get playbook tasks
+POST   /api/playbooks/import       — Import from template library
+```
+
+### Activations (Core Feature)
+```
+POST   /api/activations            — ACTIVATE a playbook
+GET    /api/activations            — List activations
+GET    /api/activations/:id        — Get activation status
+PUT    /api/activations/:id/status — Update status (resolve, cancel)
+GET    /api/activations/:id/live   — SSE stream for real-time updates
+POST   /api/activations/:id/notify — Re-notify unacknowledged stakeholders
+```
+
+### Webhooks (Incoming)
+```
+POST   /api/webhooks/slack         — Slack events (button clicks, etc.)
+```
+
+---
+
+## 5. Core Flows
+
+### Flow 1: Playbook Activation
+
+```
+1. Admin clicks "Activate Playbook" → selects playbook → adds context
+   
+2. System creates Activation record
+   
+3. System maps roles to actual stakeholders:
+   - Look up playbook_roles for this playbook
+   - Find users matching each role (by title/department or explicit mapping)
+   - Create activation_stakeholder records
+   
+4. System creates tasks:
+   - Copy playbook_tasks to activation_tasks
+   - Assign owners based on role→user mapping
+   
+5. Job queue processes notifications:
+   - For each stakeholder, send Slack DM with:
+     - What's happening
+     - Their role (RACI)
+     - Their tasks
+     - Acknowledge button
+   
+6. Dashboard shows real-time status via SSE
+```
+
+### Flow 2: Stakeholder Acknowledgment
+
+```
+1. Stakeholder receives Slack DM with "Acknowledge" button
+
+2. Stakeholder clicks button
+
+3. Slack sends webhook to /api/webhooks/slack
+
+4. System:
+   - Finds activation_stakeholder record
+   - Updates acknowledged_at timestamp
+   - Logs activity
+   - Broadcasts update via SSE
+   
+5. Dashboard updates in real-time
+
+6. If all Tier-1 stakeholders acknowledged:
+   - Update activation status to "coordinated"
+   - Log coordination time
+```
+
+### Flow 3: Task Completion
+
+```
+1. Stakeholder clicks task in Slack or Dashboard
+
+2. Marks task as "In Progress" or "Complete"
+
+3. System:
+   - Updates activation_task status
+   - Checks if dependent tasks can now start
+   - Logs activity
+   - Broadcasts update
+   
+4. Dashboard shows progress
+```
+
+---
+
+## 6. Slack Integration Details
+
+### Required Scopes
+```
+channels:read
+chat:write
+im:write
+users:read
+users:read.email
+commands
+```
+
+### Slack Message Format (Notification)
+```javascript
+{
+  "blocks": [
+    {
+      "type": "header",
+      "text": {
+        "type": "plain_text",
+        "text": "🚨 ExecuteIQ: Ransomware Response Activated"
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*Playbook:* #SEC-001 Ransomware Response\n*Your Role:* CISO (Responsible)\n*Triggered:* 2 minutes ago"
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*Your Immediate Tasks:*\n• Isolate affected network segments\n• Verify backup integrity\n• Brief CEO on status"
+      }
+    },
+    {
+      "type": "actions",
+      "elements": [
+        {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": "✓ Acknowledge"
+          },
+          "style": "primary",
+          "action_id": "acknowledge_activation",
+          "value": "activation_id:stakeholder_id"
+        },
+        {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": "View Dashboard"
+          },
+          "url": "https://app.executeiq.io/activations/xyz"
+        }
+      ]
+    }
+  ]
+}
+```
+
+---
+
+## 7. Frontend Pages
+
+### Page 1: Dashboard (Home)
+- Active activations (cards with status)
+- Recent activity feed
+- Quick stats (avg coordination time, etc.)
+- "Activate Playbook" button
+
+### Page 2: Activation Detail
+- Real-time status display
+- Stakeholder list with acknowledgment status
+- Task list with completion status
+- Timeline of events
+- Coordination metrics (time to first ack, time to full coordination)
+
+### Page 3: Playbooks Library
+- List of available playbooks
+- Filter by domain/type
+- View playbook details
+- "Activate" button on each
+
+### Page 4: Playbook Editor
+- Edit playbook details
+- Manage roles (RACI)
+- Manage tasks
+- Preview notification
+
+### Page 5: Stakeholders
+- List all stakeholders
+- Import from CSV
+- Sync from Slack
+- Edit roles/assignments
+
+### Page 6: Settings
+- Slack connection
+- Notification preferences
+- Org details
+
+---
+
+## 8. MVP Playbooks to Include
+
+### Playbook 1: Ransomware Response (#SEC-001)
+```yaml
+name: Ransomware Response
+domain: Security
+type: defense
+estimated_duration: 12 minutes
+
+roles:
+  - name: CISO
+    raci: responsible
+    tier: 1
+  - name: CTO
+    raci: consulted
+    tier: 1
+  - name: CEO
+    raci: accountable
+    tier: 1
+  - name: Legal
+    raci: consulted
+    tier: 2
+  - name: Communications
+    raci: consulted
+    tier: 2
+  - name: CFO
+    raci: informed
+    tier: 2
+
+tasks:
+  - title: Isolate affected network segments
+    owner: CISO
+    priority: critical
+    sequence: 1
+  - title: Verify backup integrity
+    owner: CTO
+    priority: critical
+    sequence: 1
+  - title: Initiate legal hold
+    owner: Legal
+    priority: critical
+    sequence: 2
+  - title: Contact cyber insurance
+    owner: CFO
+    priority: high
+    sequence: 2
+  - title: Draft customer notification
+    owner: Communications
+    priority: high
+    sequence: 3
+  - title: Brief board
+    owner: CEO
+    priority: high
+    sequence: 4
+```
+
+### Playbook 2: Supplier Failure (#OPS-019)
+```yaml
+name: Critical Supplier Failure
+domain: Operations
+type: defense
+estimated_duration: 12 minutes
+
+roles:
+  - name: COO
+    raci: accountable
+    tier: 1
+  - name: Procurement Lead
+    raci: responsible
+    tier: 1
+  - name: Engineering Lead
+    raci: consulted
+    tier: 1
+  - name: CFO
+    raci: consulted
+    tier: 2
+  - name: Manufacturing Lead
+    raci: informed
+    tier: 2
+
+tasks:
+  - title: Activate pre-qualified alternative suppliers
+    owner: Procurement Lead
+    priority: critical
+    sequence: 1
+  - title: Pull approved alternative specs
+    owner: Engineering Lead
+    priority: critical
+    sequence: 1
+  - title: Authorize expedited purchase
+    owner: CFO
+    priority: critical
+    sequence: 2
+  - title: Book emergency logistics
+    owner: Procurement Lead
+    priority: high
+    sequence: 2
+  - title: Model production impact
+    owner: Manufacturing Lead
+    priority: high
+    sequence: 2
+```
+
+### Playbook 3: M&A Day 1 (#MA-067)
+```yaml
+name: M&A Day 1 Integration
+domain: M&A
+type: offense
+estimated_duration: 12 minutes
+
+roles:
+  - name: Integration Lead
+    raci: responsible
+    tier: 1
+  - name: CEO
+    raci: accountable
+    tier: 1
+  - name: CHRO
+    raci: consulted
+    tier: 1
+  - name: CTO
+    raci: consulted
+    tier: 1
+  - name: Communications Lead
+    raci: consulted
+    tier: 2
+
+tasks:
+  - title: Finalize org structure assignments
+    owner: CHRO
+    priority: critical
+    sequence: 1
+  - title: Deploy retention packages to key talent
+    owner: CHRO
+    priority: critical
+    sequence: 1
+  - title: Stage Day 1 communications
+    owner: Communications Lead
+    priority: critical
+    sequence: 2
+  - title: Confirm IT system cutover plan
+    owner: CTO
+    priority: high
+    sequence: 2
+  - title: Brief all managers on their new teams
+    owner: Integration Lead
+    priority: high
+    sequence: 3
+```
+
+---
+
+## 9. Real-Time Updates
+
+### Server-Sent Events (SSE) Implementation
+
+```javascript
+// Server endpoint
+app.get('/api/activations/:id/live', (req, res) => {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  
+  const activationId = req.params.id;
+  
+  // Subscribe to Redis pub/sub for this activation
+  const subscriber = redis.duplicate();
+  subscriber.subscribe(`activation:${activationId}`);
+  
+  subscriber.on('message', (channel, message) => {
+    res.write(`data: ${message}\n\n`);
+  });
+  
+  req.on('close', () => {
+    subscriber.unsubscribe();
+    subscriber.quit();
+  });
+});
+
+// When something happens (e.g., acknowledgment)
+function broadcastUpdate(activationId, event) {
+  redis.publish(`activation:${activationId}`, JSON.stringify({
+    type: event.type, // 'stakeholder_ack', 'task_complete', etc.
+    data: event.data,
+    timestamp: new Date().toISOString()
+  }));
+}
+```
+
+### Client-Side Handling
+
+```javascript
+// React hook for real-time updates
+function useActivationUpdates(activationId) {
+  const [status, setStatus] = useState(null);
+  
+  useEffect(() => {
+    const eventSource = new EventSource(`/api/activations/${activationId}/live`);
+    
+    eventSource.onmessage = (event) => {
+      const update = JSON.parse(event.data);
+      // Update local state based on event type
+      handleUpdate(update);
+    };
+    
+    return () => eventSource.close();
+  }, [activationId]);
+  
+  return status;
+}
+```
+
+---
+
+## 10. Success Metrics for MVP
+
+### Must Work
+- [ ] Admin can activate a playbook with one click
+- [ ] All mapped stakeholders receive Slack DM within 10 seconds
+- [ ] Acknowledgments are tracked and displayed in real-time
+- [ ] Dashboard shows live coordination progress
+- [ ] Time-to-coordination is measured and displayed
+
+### Nice to Have
+- [ ] Tasks can be marked complete from Slack
+- [ ] Re-notify button for unacknowledged stakeholders
+- [ ] Basic activation history
+- [ ] Export coordination report
+
+### Demo-Ready Checklist
+- [ ] Runs reliably for 30-minute demo
+- [ ] Works with 5-10 test stakeholders
+- [ ] Dashboard looks professional
+- [ ] Slack messages are clear and actionable
+- [ ] Can reset and run multiple activations
+
+---
+
+## 11. Development Timeline
+
+### Week 1: Foundation
+- Day 1-2: Project setup, database schema, basic API structure
+- Day 3-4: Slack OAuth integration
+- Day 5: Stakeholder CRUD + CSV import
+
+### Week 2: Core Engine
+- Day 1-2: Playbook data model + CRUD
+- Day 3-4: Activation flow (create activation, map stakeholders, create tasks)
+- Day 5: Notification worker (send Slack DMs)
+
+### Week 3: Interactivity
+- Day 1-2: Slack webhook handling (acknowledgments)
+- Day 3-4: Real-time updates (SSE)
+- Day 5: Task status updates
+
+### Week 4: Dashboard
+- Day 1-2: Activation dashboard (real-time status)
+- Day 3-4: Playbook library + editor
+- Day 5: Stakeholder management UI
+
+### Week 5: Polish
+- Day 1-2: Activation history + reporting
+- Day 3-4: Error handling, edge cases
+- Day 5: Testing with internal team
+
+### Week 6: Demo Ready
+- Day 1-2: Bug fixes from testing
+- Day 3-4: Performance optimization
+- Day 5: Demo prep + documentation
+
+---
+
+## 12. Cost Estimate
+
+### If Outsourced (Agency/Freelancer)
+| Item | Low | High |
+|------|-----|------|
+| Backend Development | $8,000 | $15,000 |
+| Frontend Development | $6,000 | $12,000 |
+| Slack Integration | $2,000 | $5,000 |
+| DevOps/Hosting Setup | $1,000 | $3,000 |
+| **Total** | **$17,000** | **$35,000** |
+
+### If Hired Developer (6 weeks)
+- Senior Full-Stack: $150-200/hr × 240 hrs = $36,000-$48,000
+- Mid-Level Full-Stack: $80-120/hr × 240 hrs = $19,200-$28,800
+
+### Ongoing Costs (Monthly)
+- Hosting (Railway/Render): $50-100
+- Database (Supabase/Neon): $25-50
+- Slack App: Free (within limits)
+- Total: ~$100/month
+
+---
+
+## 13. Handoff Checklist
+
+To give this to a developer, also provide:
+- [ ] This specification document
+- [ ] Access to existing demo code (for reference)
+- [ ] Figma designs or UI screenshots
+- [ ] Slack workspace for testing
+- [ ] List of test stakeholders (emails)
+- [ ] 3 playbook definitions (YAML or JSON)
+- [ ] Hosting account credentials
+- [ ] Domain DNS access
+
+---
+
+## Appendix: Key Questions Developer May Ask
+
+**Q: How do we map roles to actual people?**
+A: For MVP, admin manually assigns users to roles during setup. Later, we can infer from job titles.
+
+**Q: What if someone doesn't have Slack?**
+A: MVP is Slack-only. Mark them as "no Slack" and skip. V2 adds email/SMS.
+
+**Q: How do we handle multiple activations at once?**
+A: Each activation is independent. Dashboard shows all active ones.
+
+**Q: What about permissions/security?**
+A: MVP assumes all users in org can view all activations. V2 adds role-based access.
+
+**Q: How do we test without disrupting real Slack?**
+A: Create a test Slack workspace with dummy users.
+
+---
+
+*Document prepared for ExecuteIQ development. Version 1.0.*
