@@ -1012,7 +1012,7 @@ export default function CompetitivePositioning() {
                 data-testid="button-cta-demo"
               >
                 <Play className="w-5 h-5 mr-2" />
-                Watch 12-Minute Demo
+                See Live Execution
               </Button>
               <Button 
                 size="lg" 
