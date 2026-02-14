@@ -4,6 +4,7 @@ import { Volume2, VolumeX, SkipForward } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Intro } from "@/components/video/Intro";
 import { Problem } from "@/components/video/Problem";
+import { Validation } from "@/components/video/Validation";
 import { Solution } from "@/components/video/Solution";
 import { IDEAFramework } from "@/components/video/IDEAFramework";
 import { StrategicDomains } from "@/components/video/StrategicDomains";
@@ -23,6 +24,7 @@ interface VideoIntroProps {
 const SCENES = [
   { id: "intro", component: Intro, duration: 6000 },
   { id: "problem", component: Problem, duration: 10000 },
+  { id: "validation", component: Validation, duration: 9000 },
   { id: "solution", component: Solution, duration: 6000 },
   { id: "idea", component: IDEAFramework, duration: 9000 },
   { id: "domains", component: StrategicDomains, duration: 8000 },
