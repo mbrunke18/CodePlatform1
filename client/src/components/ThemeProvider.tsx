@@ -5,20 +5,15 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
 
   useEffect(() => {
-    // Load theme from localStorage or system preference
     const stored = localStorage.getItem('m-theme') as 'light' | 'dark' | null;
     if (stored) {
       setTheme(stored);
       applyTheme(stored);
     } else {
-      // Check system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const initial = prefersDark ? 'dark' : 'light';
-      setTheme(initial);
-      applyTheme(initial);
+      applyTheme('dark');
     }
   }, []);
 
