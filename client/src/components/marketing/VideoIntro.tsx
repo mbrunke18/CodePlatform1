@@ -22,7 +22,7 @@ interface VideoIntroProps {
 
 const SCENES = [
   { id: "intro", component: Intro, duration: 6000 },
-  { id: "problem", component: Problem, duration: 8000 },
+  { id: "problem", component: Problem, duration: 10000 },
   { id: "solution", component: Solution, duration: 6000 },
   { id: "idea", component: IDEAFramework, duration: 9000 },
   { id: "domains", component: StrategicDomains, duration: 8000 },

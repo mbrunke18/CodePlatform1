@@ -1,23 +1,41 @@
 import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
 import { NarrationBox } from "./NarrationBox";
-import { AlertTriangle, Clock, Users, DollarSign, Zap, Scale } from "lucide-react";
+import { Zap, Users, Brain, DollarSign } from "lucide-react";
 
 interface SceneProps {
   progress: number;
   isPlaying: boolean;
 }
 
-const problems = [
-  { icon: Clock, text: "Hours 1-24: Figuring out who needs to be involved", color: "#ef4444" },
-  { icon: Users, text: "Hours 24-48: Getting meetings on calendars", color: "#f97316" },
-  { icon: DollarSign, text: "Hours 48-72: Still defining work and ownership", color: "#eab308" },
-  { icon: AlertTriangle, text: "After 72 hours—maybe a plan. Execution hasn't started.", color: "#dc2626" },
-];
-
-const whyNow = [
-  { icon: Zap, text: "AI disruption accelerating", color: "#a855f7" },
-  { icon: Scale, text: "Regulatory windows shrinking", color: "#3b82f6" },
+const threeProblems = [
+  {
+    icon: Zap,
+    title: "The Execution Gap",
+    pain: "20-72 hours to even begin acting when strategic moments hit",
+    cost: "$136K/hour delayed response",
+    costDetail: "$5-50M M&A synergy erosion",
+    color: "#ef4444",
+    borderColor: "rgba(239,68,68,0.3)",
+  },
+  {
+    icon: Users,
+    title: "The Coordination Chaos",
+    pain: "50-200+ stakeholders with no system to coordinate them",
+    cost: "$4.88M avg breach cost",
+    costDetail: "35% higher without pre-defined teams",
+    color: "#f59e0b",
+    borderColor: "rgba(245,158,11,0.3)",
+  },
+  {
+    icon: Brain,
+    title: "The Institutional Amnesia",
+    pain: "Knowledge walks out the door. Same scramble every time.",
+    cost: "3.5 disruptions every 2 years",
+    costDetail: "Same $4.88M cost repeated each time",
+    color: "#a855f7",
+    borderColor: "rgba(168,85,247,0.3)",
+  },
 ];
 
 export function Problem({ progress }: SceneProps) {
@@ -37,76 +55,67 @@ export function Problem({ progress }: SceneProps) {
 
       <div className="relative z-10 max-w-5xl mx-auto px-8">
         <TextPunch 
-          text="72 Hours of Improvisation" 
+          text="Three Problems. Billions Lost." 
           size="xl" 
-          className="text-red-500 mb-6 text-center"
+          className="text-red-500 mb-3 text-center"
         />
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="text-xl md:text-2xl text-white/80 text-center mb-8"
+          className="text-lg md:text-xl text-white/70 text-center mb-8"
         >
-          7 major firms say this is why AI initiatives fail. <span className="text-red-400 font-bold">No execution infrastructure.</span>
+          Every Fortune 1000 company faces these problems. No infrastructure existed to solve them.
         </motion.p>
 
-        <div className="grid grid-cols-2 gap-4 mb-6">
-          {problems.map((problem, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          {threeProblems.map((problem, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5 + i * 0.2 }}
-              className="bg-white/5 border border-red-500/20 rounded-xl p-4 flex items-center gap-3"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 + i * 0.3 }}
+              className="bg-white/5 rounded-xl p-5 flex flex-col"
+              style={{ borderLeft: `3px solid ${problem.color}` }}
             >
-              <div 
-                className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-                style={{ backgroundColor: `${problem.color}20` }}
-              >
-                <problem.icon className="w-5 h-5" style={{ color: problem.color }} />
+              <div className="flex items-center gap-3 mb-3">
+                <div 
+                  className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                  style={{ backgroundColor: `${problem.color}20` }}
+                >
+                  <problem.icon className="w-5 h-5" style={{ color: problem.color }} />
+                </div>
+                <h3 className="text-white font-bold text-sm">{problem.title}</h3>
               </div>
-              <p className="text-white/90 text-sm font-medium">{problem.text}</p>
+              <p className="text-white/70 text-xs leading-relaxed mb-3">{problem.pain}</p>
+              <div 
+                className="mt-auto rounded-lg p-3"
+                style={{ backgroundColor: `${problem.color}10`, border: `1px solid ${problem.borderColor}` }}
+              >
+                <div className="flex items-center gap-1.5 mb-1">
+                  <DollarSign className="w-3.5 h-3.5" style={{ color: problem.color }} />
+                  <span className="text-xs font-bold" style={{ color: problem.color }}>{problem.cost}</span>
+                </div>
+                <p className="text-white/50 text-xs">{problem.costDetail}</p>
+              </div>
             </motion.div>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5 }}
-          className="border-t border-white/10 pt-6"
-        >
-          <p className="text-center text-white/50 text-sm mb-4 uppercase tracking-wider">Why This Matters Now</p>
-          <div className="flex justify-center gap-6">
-            {whyNow.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.8 + i * 0.2 }}
-                className="flex items-center gap-2"
-              >
-                <item.icon className="w-5 h-5" style={{ color: item.color }} />
-                <span className="text-white/70 text-sm">{item.text}</span>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2.3 }}
-          className="text-lg text-white/60 text-center mt-6"
+          transition={{ delay: 2 }}
+          className="text-lg text-white/60 text-center"
         >
           Strategy-execution gap costs Fortune 500 companies <span className="text-red-400 font-bold">$900B annually</span>.
         </motion.p>
       </div>
       
       <NarrationBox 
-        headline="72 Hours of Improvisation"
-        description="Hours 1-24: Figuring out who to involve. Hours 24-48: Getting meetings scheduled. Hours 48-72: Still defining work. After 72 hours—maybe a plan. Execution hasn't started."
+        headline="Three Problems. Billions Lost."
+        description="The Execution Gap: 20-72 hours to act. The Coordination Chaos: 50-200+ stakeholders, no system. The Institutional Amnesia: knowledge lost, same cost repeated. Together, they cost enterprises billions."
         delay={0.5}
       />
     </div>
