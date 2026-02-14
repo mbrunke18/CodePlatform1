@@ -12,7 +12,7 @@
 
 ExecuteIQ is a Strategic Execution Operating System that cuts enterprise response time from 72 hours to 12 minutes. When a strategic event happens—competitor move, crisis, M&A opportunity, regulatory change—ExecuteIQ automatically activates pre-staged playbooks and coordinates response across all stakeholders simultaneously.
 
-**The elevator pitch:** "7 major firms say execution infrastructure is the AI bottleneck. We built it—166 playbooks with pre-defined governance, clear decision rights, and 12-minute coordination. The execution infrastructure enterprises are missing."
+**The elevator pitch:** "15 major firms say execution infrastructure is the enterprise bottleneck. We built it—166 playbooks with pre-defined governance, clear decision rights, and 12-minute coordination. The execution infrastructure enterprises are missing."
 
 ---
 

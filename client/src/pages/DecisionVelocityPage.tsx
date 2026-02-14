@@ -37,7 +37,7 @@ export default function DecisionVelocityPage() {
               The Foundation: Execution Infrastructure
             </CardTitle>
             <CardDescription>
-              Built on what 7 major firms say enterprises are missing
+              Built on what 15 major firms say enterprises are missing
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">

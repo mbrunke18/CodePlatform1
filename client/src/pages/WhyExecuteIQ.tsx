@@ -294,7 +294,7 @@ export default function WhyExecuteIQ() {
               <div className="flex items-start gap-6 mb-8">
                 <Quote className="h-12 w-12 text-primary shrink-0 opacity-60" />
                 <blockquote className="text-lg md:text-xl text-foreground leading-relaxed italic">
-                  "I coached college football for 5 years. Every game, 60-80 plays. Every 40 seconds—read the situation, call the play, execute. The speed comes from preparation. Then I spent 20 years inside Fortune 500 companies—Ford, Toyota, Lockheed Martin, Eli Lilly, Boyd Gaming, Churchill Downs. Same caliber of people. No playbooks. Every strategic moment handled ad-hoc. 7 major firms just said execution infrastructure is the bottleneck for AI. I built the infrastructure I wish I'd had."
+                  "I coached college football for 5 years. Every game, 60-80 plays. Every 40 seconds—read the situation, call the play, execute. The speed comes from preparation. Then I spent 20 years inside Fortune 500 companies—Ford, Toyota, Lockheed Martin, Eli Lilly, Boyd Gaming, Churchill Downs. Same caliber of people. No playbooks. Every strategic moment handled ad-hoc. 15 major firms just said execution infrastructure is the bottleneck. I built the infrastructure I wish I'd had."
                 </blockquote>
               </div>
 

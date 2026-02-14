@@ -815,7 +815,7 @@ export default function Homepage() {
                 I watched the same pattern every time: <span className="text-red-400 font-medium">72 hours getting meetings on calendars, still defining who owns what.</span> After 72 hours—maybe a plan. Execution hasn't started.
               </p>
               <p className="text-lg text-white font-semibold mb-6">
-                7 major firms just said execution infrastructure is the bottleneck for AI. I built the infrastructure I wish I'd had.
+                15 major firms just said execution infrastructure is the bottleneck. I built the infrastructure I wish I'd had.
               </p>
               
               <div className="flex items-center gap-4 pt-6 border-t border-slate-700">

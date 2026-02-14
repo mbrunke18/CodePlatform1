@@ -76,7 +76,7 @@ export function Intro({ progress }: SceneProps) {
           transition={{ delay: 1 }}
           className="text-xl md:text-2xl text-white/70 max-w-xl mx-auto"
         >
-          7 major firms say execution infrastructure is the AI bottleneck.
+          15 major firms say execution infrastructure is the enterprise bottleneck.
         </motion.p>
         
         <motion.p

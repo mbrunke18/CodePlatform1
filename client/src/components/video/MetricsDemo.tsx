@@ -94,20 +94,28 @@ export function MetricsDemo({ progress }: SceneProps) {
           transition={{ delay: 1.3 }}
           className="mt-8 text-center"
         >
-          <p className="text-white/50 text-sm mb-2">Research-backed by</p>
-          <div className="flex items-center justify-center gap-6">
+          <p className="text-white/50 text-sm mb-2">Validated by 15 leading firms</p>
+          <div className="flex items-center justify-center gap-4 flex-wrap">
             <span className="text-[#D4AF37] font-medium">McKinsey</span>
             <span className="text-white/30">•</span>
-            <span className="text-[#00A8A8] font-medium">IBM 2024</span>
+            <span className="text-[#00A8A8] font-medium">IBM</span>
             <span className="text-white/30">•</span>
-            <span className="text-white font-medium">PagerDuty</span>
+            <span className="text-white font-medium">BCG</span>
+            <span className="text-white/30">•</span>
+            <span className="text-purple-400 font-medium">Deloitte</span>
+            <span className="text-white/30">•</span>
+            <span className="text-sky-400 font-medium">Microsoft</span>
+            <span className="text-white/30">•</span>
+            <span className="text-emerald-400 font-medium">Google Cloud</span>
+            <span className="text-white/30">•</span>
+            <span className="text-amber-400 font-medium">+ 9 more</span>
           </div>
         </motion.div>
       </div>
       
       <NarrationBox 
         headline="Research-Validated Results"
-        description="10x faster execution (McKinsey), 98 days saved with AI (IBM 2024), 3.5x faster crisis response (PagerDuty)."
+        description="10x faster execution (McKinsey), 98 days saved with AI (IBM), $2.2M cost avoided per breach. Validated by 15 leading firms including BCG, Deloitte, Microsoft, and Google Cloud."
         delay={0.5}
       />
     </div>

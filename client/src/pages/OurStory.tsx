@@ -279,7 +279,7 @@ export default function OurStory() {
 
             <p>
               These weren't just techniques. They were the foundation of 
-              execution infrastructure—what 7 major firms now say is missing.
+              execution infrastructure—what 15 major firms now say is missing.
             </p>
           </TimelineChapter>
 
