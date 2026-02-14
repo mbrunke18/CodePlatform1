@@ -637,7 +637,7 @@ export default function ExecutiveSimulationDemo() {
                   </div>
                 </div>
                 <Separator orientation="vertical" className="h-8" />
-                <Badge variant="outline" className="text-xs">
+                <Badge variant="outline" className="text-xs text-slate-300 border-slate-600">
                   <CircleDot className="w-3 h-3 mr-1 text-green-500" />
                   Simulation Active
                 </Badge>
@@ -666,6 +666,7 @@ export default function ExecutiveSimulationDemo() {
                   variant="outline" 
                   size="sm"
                   onClick={resetSimulation}
+                  className="text-white border-slate-600 hover:bg-slate-800"
                   data-testid="button-reset-simulation"
                 >
                   <RotateCcw className="w-4 h-4 mr-1" />
@@ -699,12 +700,12 @@ export default function ExecutiveSimulationDemo() {
         {/* Main Content */}
         <div className="container mx-auto px-4 py-6">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-            <TabsList className="grid grid-cols-4 w-full max-w-2xl mx-auto" data-testid="tabs-main-navigation">
-              <TabsTrigger value="radar" className="flex items-center gap-2" data-testid="tab-radar">
+            <TabsList className="grid grid-cols-4 w-full max-w-2xl mx-auto bg-slate-800/80 border border-slate-700" data-testid="tabs-main-navigation">
+              <TabsTrigger value="radar" className="flex items-center gap-2 data-[state=active]:bg-slate-700 data-[state=active]:text-white text-slate-300" data-testid="tab-radar">
                 <Radio className="w-4 h-4" />
                 Radar
               </TabsTrigger>
-              <TabsTrigger value="signals" className="flex items-center gap-2" data-testid="tab-signals">
+              <TabsTrigger value="signals" className="flex items-center gap-2 data-[state=active]:bg-slate-700 data-[state=active]:text-white text-slate-300" data-testid="tab-signals">
                 <AlertTriangle className="w-4 h-4" />
                 Signals
                 {signals.filter(s => s.actionRequired).length > 0 && (
@@ -713,11 +714,11 @@ export default function ExecutiveSimulationDemo() {
                   </Badge>
                 )}
               </TabsTrigger>
-              <TabsTrigger value="playbooks" className="flex items-center gap-2" data-testid="tab-playbooks">
+              <TabsTrigger value="playbooks" className="flex items-center gap-2 data-[state=active]:bg-slate-700 data-[state=active]:text-white text-slate-300" data-testid="tab-playbooks">
                 <FileText className="w-4 h-4" />
                 Playbooks
               </TabsTrigger>
-              <TabsTrigger value="command" className="flex items-center gap-2" data-testid="tab-command">
+              <TabsTrigger value="command" className="flex items-center gap-2 data-[state=active]:bg-slate-700 data-[state=active]:text-white text-slate-300" data-testid="tab-command">
                 <Radio className="w-4 h-4" />
                 Command
               </TabsTrigger>
@@ -930,11 +931,11 @@ export default function ExecutiveSimulationDemo() {
                         <div>
                           <h4 className="font-semibold text-sm text-slate-700 dark:text-slate-300 mb-2">Stakeholders</h4>
                           <div className="flex flex-wrap gap-2">
-                            <Badge variant="outline">CFO</Badge>
-                            <Badge variant="outline">CMO</Badge>
-                            <Badge variant="outline">VP Ops</Badge>
-                            <Badge variant="outline">Legal</Badge>
-                            <Badge variant="outline">VP Sales</Badge>
+                            <Badge variant="outline" className="text-slate-300 border-slate-600">CFO</Badge>
+                            <Badge variant="outline" className="text-slate-300 border-slate-600">CMO</Badge>
+                            <Badge variant="outline" className="text-slate-300 border-slate-600">VP Ops</Badge>
+                            <Badge variant="outline" className="text-slate-300 border-slate-600">Legal</Badge>
+                            <Badge variant="outline" className="text-slate-300 border-slate-600">VP Sales</Badge>
                           </div>
                         </div>
                       </div>
@@ -984,7 +985,7 @@ export default function ExecutiveSimulationDemo() {
                               <p className="font-medium text-slate-900 dark:text-white">{action.name}</p>
                               <p className="text-sm text-slate-300">{action.assignee} • {action.department}</p>
                             </div>
-                            <Badge variant="outline">{action.duration}</Badge>
+                            <Badge variant="outline" className="text-slate-300 border-slate-600">{action.duration}</Badge>
                           </div>
                         ))}
                       </div>

@@ -1014,7 +1014,7 @@ export default function TryDemo() {
                             </Button>
                             <Button 
                               variant="outline"
-                              className="w-full"
+                              className="w-full text-white border-slate-600 hover:bg-slate-800"
                               onClick={resetDemo}
                             >
                               <RefreshCw className="mr-2 h-4 w-4" />

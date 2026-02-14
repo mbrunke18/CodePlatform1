@@ -342,7 +342,7 @@ export default function InvestorDemo() {
                     <Button
                       onClick={() => setIsPlaying(false)}
                       variant="outline"
-                      className="border-slate-600"
+                      className="border-slate-600 text-white hover:bg-slate-800"
                       data-testid="button-pause-demo"
                     >
                       <Pause className="h-4 w-4 mr-2" />

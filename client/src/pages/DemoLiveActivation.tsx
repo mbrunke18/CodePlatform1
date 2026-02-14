@@ -465,7 +465,7 @@ function DemoLiveActivation() {
               onClick={resetDemo}
               variant="outline"
               size="lg"
-              className="text-lg"
+              className="text-lg text-white border-slate-600 hover:bg-slate-800"
               data-testid="button-reset-demo"
             >
               <RefreshCw className="mr-2 h-5 w-5" />
@@ -995,7 +995,7 @@ function DemoLiveActivation() {
                   <Activity className="h-8 w-8 text-blue-400" />
                   Execution Timeline - What's Happening
                 </span>
-                <Badge variant="outline" className="text-lg px-4 py-2">
+                <Badge variant="outline" className="text-lg px-4 py-2 text-white border-slate-500">
                   Live
                 </Badge>
               </CardTitle>
@@ -1070,7 +1070,7 @@ function DemoLiveActivation() {
                   <CheckCircle2 className="h-8 w-8 text-green-400" />
                   Live Acknowledgment Feed
                 </span>
-                <Badge variant="outline" className="text-lg px-4 py-2">
+                <Badge variant="outline" className="text-lg px-4 py-2 text-white border-slate-500">
                   Real-time
                 </Badge>
               </CardTitle>
