@@ -326,128 +326,204 @@ export default function Homepage() {
         <PlatformVisual />
       </section>
 
-      {/* Problem Section - The Bottleneck Isn't AI */}
-      <section className="py-20 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800" data-testid="problem-section">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-red-500/20 text-red-600 dark:text-red-400 border-red-500/30" data-testid="badge-problem">
-              The Real Bottleneck
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-              The Bottleneck Isn't AI. It's Infrastructure.
-            </h2>
-          </div>
-          
-          <div className="bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-blue-950/30 rounded-2xl p-8 mb-10">
-            <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
-              McKinsey, IBM, Bain, BCG, Accenture, Anthropic, and OpenAI all arrived at the same conclusion:
-            </p>
-            <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
-              Enterprises have AI tools. What they lack is the <span className="font-bold text-slate-900 dark:text-white">infrastructure to coordinate when strategic moments hit</span>—M&A, crisis, competitive threat, transformation.
-            </p>
-            
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 mb-8">
-              <p className="text-sm font-semibold text-slate-600 dark:text-slate-300 mb-4 uppercase tracking-wide">Here's what happens without execution infrastructure:</p>
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="w-20 shrink-0 text-right">
-                    <span className="text-red-500 font-bold">Hours 1-24</span>
-                  </div>
-                  <span className="text-slate-700 dark:text-slate-300">Figuring out who needs to be involved</span>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-20 shrink-0 text-right">
-                    <span className="text-red-500 font-bold">Hours 24-48</span>
-                  </div>
-                  <span className="text-slate-700 dark:text-slate-300">Getting meetings on calendars</span>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-20 shrink-0 text-right">
-                    <span className="text-red-500 font-bold">Hours 48-72</span>
-                  </div>
-                  <span className="text-slate-700 dark:text-slate-300">Finally in a room, still defining work and ownership</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="border-t border-slate-200 dark:border-slate-700 pt-6">
-              <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
-                After 72 hours—maybe you have a plan. <span className="text-red-500 font-bold">Execution hasn't started.</span>
-              </p>
-              <p className="text-xl font-bold text-slate-900 dark:text-white mt-4">
-                The technology works. The operating model doesn't exist. <span className="text-emerald-600 dark:text-emerald-400">Until now.</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Solution Section - Three Pillars */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900" data-testid="solution-section">
+      {/* 3 Problems Section - Pain → Cost → Solution → Value */}
+      <section className="py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" data-testid="three-problems-section">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30">
-              The Solution
+          <div className="text-center mb-16">
+            <Badge className="mb-4 bg-red-500/20 text-red-400 border-red-500/30" data-testid="badge-problems">
+              <AlertTriangle className="w-4 h-4 mr-2" />
+              Three Problems. Billions Lost.
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              ExecuteIQ: The Execution Infrastructure Layer
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              The Three Problems ExecuteIQ Was Built to Solve
             </h2>
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              ExecuteIQ provides what 15 major firms say is missing: pre-defined governance, clear decision rights, and coordination systems that activate in minutes—not days.
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+              Every Fortune 1000 company faces these three problems. Until now, no infrastructure existed to solve them.
             </p>
           </div>
-          
-          <div className="grid md:grid-cols-3 gap-8 mb-10">
-            <Card className="bg-slate-800/50 border-slate-700 hover:border-[#D4AF37]/50 transition-all" data-testid="pillar-governance">
-              <CardContent className="p-8">
-                <div className="w-14 h-14 mb-4 bg-[#D4AF37]/20 rounded-2xl flex items-center justify-center">
-                  <Scale className="h-7 w-7 text-[#D4AF37]" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Governance Ready Before the Moment</h3>
-                <p className="text-slate-300 mb-6">
-                  Every playbook includes pre-defined roles, decision rights, and accountability structures. When a situation hits, there's no confusion about who owns what. The governance is built in—real-time, embedded, exactly what McKinsey says enterprises need.
-                </p>
-                <div className="p-3 bg-slate-900/50 rounded-lg border border-[#D4AF37]/20">
-                  <p className="text-sm text-[#D4AF37] italic">
-                    "Governance must become real-time, data-driven, and embedded" — McKinsey
-                  </p>
+
+          <div className="space-y-8">
+            {/* Problem 1: The Execution Gap */}
+            <Card className="bg-slate-900/80 border border-slate-800 overflow-hidden hover:border-red-500/40 transition-all" data-testid="problem-execution-gap">
+              <CardContent className="p-0">
+                <div className="grid lg:grid-cols-2">
+                  <div className="p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-slate-800">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center">
+                        <Zap className="h-6 w-6 text-red-400" />
+                      </div>
+                      <div>
+                        <Badge className="bg-red-500/20 text-red-400 border-red-500/30 text-xs">Problem 1</Badge>
+                      </div>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-3">The Execution Gap</h3>
+                    <p className="text-slate-300 mb-4 leading-relaxed">
+                      When a strategic moment hits—M&A, crisis, competitive threat—companies spend <span className="text-red-400 font-semibold">20-72 hours</span> just figuring out who needs to be involved and getting meetings scheduled. Execution hasn't even started.
+                    </p>
+                    <div className="bg-red-950/30 border border-red-500/20 rounded-xl p-4">
+                      <p className="text-sm font-semibold text-red-400 mb-2">Financial Impact:</p>
+                      <div className="space-y-2">
+                        <p className="text-sm text-slate-300"><span className="text-red-400 font-bold">$136K/hour</span> — cost of delayed ransomware response (IBM)</p>
+                        <p className="text-sm text-slate-300"><span className="text-red-400 font-bold">$5-50M</span> — M&A synergy erosion per delayed integration</p>
+                        <p className="text-sm text-slate-300"><span className="text-red-400 font-bold">24 hours</span> — before crisis causes market cap damage</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-8 lg:p-10 bg-emerald-950/20">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+                        <CheckCircle2 className="h-6 w-6 text-emerald-400" />
+                      </div>
+                      <div>
+                        <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-xs">How ExecuteIQ Solves It</Badge>
+                      </div>
+                    </div>
+                    <p className="text-slate-300 mb-4 leading-relaxed">
+                      Pre-built infrastructure activates in <span className="text-emerald-400 font-semibold">12 minutes</span>. Governance, decision rights, and playbooks are ready <span className="text-white font-semibold">before</span> the moment arrives. No scrambling. No ad-hoc meetings. Execution starts immediately.
+                    </p>
+                    <div className="bg-emerald-950/30 border border-emerald-500/20 rounded-xl p-4">
+                      <p className="text-sm font-semibold text-emerald-400 mb-2">Value Delivered:</p>
+                      <div className="space-y-2">
+                        <p className="text-sm text-slate-300"><span className="text-emerald-400 font-bold">72 hours → 12 minutes</span> — from trigger to execution</p>
+                        <p className="text-sm text-slate-300"><span className="text-emerald-400 font-bold">$9.8M saved</span> — per ransomware incident avoided</p>
+                        <p className="text-sm text-slate-300"><span className="text-emerald-400 font-bold">166 playbooks</span> — ready to deploy on day one</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
-            
-            <Card className="bg-slate-800/50 border-slate-700 hover:border-emerald-500/50 transition-all" data-testid="pillar-decisions">
-              <CardContent className="p-8">
-                <div className="w-14 h-14 mb-4 bg-emerald-500/20 rounded-2xl flex items-center justify-center">
-                  <UserCheck className="h-7 w-7 text-emerald-400" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Everyone Knows Their Assignment</h3>
-                <p className="text-slate-300 mb-6">
-                  BCG found 69% of executives agree AI requires fundamentally new management approaches. ExecuteIQ provides them—decision rights mapped before the situation, accountability clear before execution begins. No meetings to define ownership. It's already defined.
-                </p>
-                <div className="p-3 bg-slate-900/50 rounded-lg border border-emerald-500/20">
-                  <p className="text-sm text-emerald-400 italic">
-                    "When AI becomes a teammate, who's accountable?" — BCG
-                  </p>
+
+            {/* Problem 2: The Coordination Chaos */}
+            <Card className="bg-slate-900/80 border border-slate-800 overflow-hidden hover:border-amber-500/40 transition-all" data-testid="problem-coordination-chaos">
+              <CardContent className="p-0">
+                <div className="grid lg:grid-cols-2">
+                  <div className="p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-slate-800">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center">
+                        <Users className="h-6 w-6 text-amber-400" />
+                      </div>
+                      <div>
+                        <Badge className="bg-amber-500/20 text-amber-400 border-amber-500/30 text-xs">Problem 2</Badge>
+                      </div>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-3">The Coordination Chaos</h3>
+                    <p className="text-slate-300 mb-4 leading-relaxed">
+                      A single strategic response can involve <span className="text-amber-400 font-semibold">50-200+ stakeholders</span> across legal, finance, operations, communications, and IT. Without a coordination system, teams work in silos, duplicate effort, and miss critical handoffs.
+                    </p>
+                    <div className="bg-amber-950/30 border border-amber-500/20 rounded-xl p-4">
+                      <p className="text-sm font-semibold text-amber-400 mb-2">Financial Impact:</p>
+                      <div className="space-y-2">
+                        <p className="text-sm text-slate-300"><span className="text-amber-400 font-bold">$4.88M</span> — average cost per data breach without coordination (IBM)</p>
+                        <p className="text-sm text-slate-300"><span className="text-amber-400 font-bold">35% higher costs</span> — without pre-defined response teams</p>
+                        <p className="text-sm text-slate-300"><span className="text-amber-400 font-bold">$2.2M more</span> — per incident vs. automated orchestration</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-8 lg:p-10 bg-emerald-950/20">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+                        <CheckCircle2 className="h-6 w-6 text-emerald-400" />
+                      </div>
+                      <div>
+                        <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-xs">How ExecuteIQ Solves It</Badge>
+                      </div>
+                    </div>
+                    <p className="text-slate-300 mb-4 leading-relaxed">
+                      Every playbook has <span className="text-emerald-400 font-semibold">pre-mapped stakeholder accountability</span>, instant notification, task assignment with clear owners, and real-time execution tracking. Everyone knows their assignment before the moment hits.
+                    </p>
+                    <div className="bg-emerald-950/30 border border-emerald-500/20 rounded-xl p-4">
+                      <p className="text-sm font-semibold text-emerald-400 mb-2">Value Delivered:</p>
+                      <div className="space-y-2">
+                        <p className="text-sm text-slate-300"><span className="text-emerald-400 font-bold">Instant coordination</span> — across 50-200+ stakeholders simultaneously</p>
+                        <p className="text-sm text-slate-300"><span className="text-emerald-400 font-bold">35% cost reduction</span> — with pre-defined response teams</p>
+                        <p className="text-sm text-slate-300"><span className="text-emerald-400 font-bold">Zero ownership confusion</span> — decision rights mapped in advance</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
-            
-            <Card className="bg-slate-800/50 border-slate-700 hover:border-cyan-500/50 transition-all" data-testid="pillar-coordination">
-              <CardContent className="p-8">
-                <div className="w-14 h-14 mb-4 bg-cyan-500/20 rounded-2xl flex items-center justify-center">
-                  <Clock className="h-7 w-7 text-cyan-400" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">12 Minutes to Execution</h3>
-                <p className="text-slate-300 mb-6">
-                  With execution infrastructure in place, coordination happens instantly. Situation triggers playbook. Stakeholders notified. Tasks assigned. Execution begins. Not 72 hours of meetings—12 minutes to action.
-                </p>
-                <div className="p-3 bg-slate-900/50 rounded-lg border border-cyan-500/20">
-                  <p className="text-sm text-cyan-400 italic">
-                    "70% of AI transformation is people and processes" — Bain
-                  </p>
+
+            {/* Problem 3: The Institutional Amnesia */}
+            <Card className="bg-slate-900/80 border border-slate-800 overflow-hidden hover:border-purple-500/40 transition-all" data-testid="problem-institutional-amnesia">
+              <CardContent className="p-0">
+                <div className="grid lg:grid-cols-2">
+                  <div className="p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-slate-800">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                        <Brain className="h-6 w-6 text-purple-400" />
+                      </div>
+                      <div>
+                        <Badge className="bg-purple-500/20 text-purple-400 border-purple-500/30 text-xs">Problem 3</Badge>
+                      </div>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-3">The Institutional Amnesia</h3>
+                    <p className="text-slate-300 mb-4 leading-relaxed">
+                      Companies handle crises, integrations, and competitive responses—then the knowledge <span className="text-purple-400 font-semibold">walks out the door</span>. The next time a similar situation hits, they start from scratch. The same 72-hour scramble. Every single time.
+                    </p>
+                    <div className="bg-purple-950/30 border border-purple-500/20 rounded-xl p-4">
+                      <p className="text-sm font-semibold text-purple-400 mb-2">Financial Impact:</p>
+                      <div className="space-y-2">
+                        <p className="text-sm text-slate-300"><span className="text-purple-400 font-bold">3.5 disruptions</span> — every two years per organization (PwC)</p>
+                        <p className="text-sm text-slate-300"><span className="text-purple-400 font-bold">$4.88M repeated</span> — same cost, same scramble, every time</p>
+                        <p className="text-sm text-slate-300"><span className="text-purple-400 font-bold">Zero improvement</span> — 10th response as slow as the 1st</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-8 lg:p-10 bg-emerald-950/20">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+                        <CheckCircle2 className="h-6 w-6 text-emerald-400" />
+                      </div>
+                      <div>
+                        <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-xs">How ExecuteIQ Solves It</Badge>
+                      </div>
+                    </div>
+                    <p className="text-slate-300 mb-4 leading-relaxed">
+                      The ADVANCE phase captures outcomes from every execution, conducts <span className="text-emerald-400 font-semibold">AI-powered analysis</span>, suggests playbook refinements, and builds institutional intelligence that <span className="text-white font-semibold">compounds over time</span>. Your organization gets smarter with every execution.
+                    </p>
+                    <div className="bg-emerald-950/30 border border-emerald-500/20 rounded-xl p-4">
+                      <p className="text-sm font-semibold text-emerald-400 mb-2">Value Delivered:</p>
+                      <div className="space-y-2">
+                        <p className="text-sm text-slate-300"><span className="text-emerald-400 font-bold">Compounding intelligence</span> — every execution makes the next one faster</p>
+                        <p className="text-sm text-slate-300"><span className="text-emerald-400 font-bold">AI-powered refinement</span> — playbooks improve automatically</p>
+                        <p className="text-sm text-slate-300"><span className="text-emerald-400 font-bold">Institutional memory</span> — knowledge stays, even when people leave</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
+          </div>
+
+          {/* Payback Summary */}
+          <div className="mt-12 text-center bg-gradient-to-r from-emerald-900/30 to-cyan-900/30 rounded-2xl p-8 border border-emerald-500/30" data-testid="payback-summary">
+            <p className="text-2xl text-white mb-2 font-bold">
+              <span className="text-emerald-400">ExecuteIQ at $250K-$750K/year</span> vs. one incident costing <span className="text-red-400">$5-50M</span>.
+            </p>
+            <p className="text-lg text-slate-300 mb-4">
+              Payback on first use. Protection that compounds with every execution after.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+              <Button 
+                size="lg" 
+                onClick={() => setLocation('/how-it-works')}
+                className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white"
+              >
+                <Play className="mr-2 h-5 w-5" />
+                See How It Works
+              </Button>
+              <Button 
+                size="lg" 
+                onClick={() => setLocation('/research')}
+                variant="outline"
+                className="border-slate-500 text-white hover:bg-slate-800 bg-transparent"
+              >
+                <BarChart3 className="mr-2 h-5 w-5" />
+                View the Research
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -513,81 +589,6 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* Value Section - The Cost of Missing Infrastructure */}
-      <section className="py-20 px-6 bg-gradient-to-br from-slate-900 via-red-950/30 to-slate-900" data-testid="cost-section">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-red-500/20 text-red-400 border-red-500/30" data-testid="badge-cost">
-              The Stakes Are Real
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              The Cost of Missing Infrastructure
-            </h2>
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              The 72-hour gap has a real price tag:
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <Card className="bg-slate-800/50 border-red-500/30 hover:border-red-500/60 transition-all" data-testid="cost-ransomware">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 mx-auto mb-4 bg-red-500/20 rounded-xl flex items-center justify-center">
-                  <Shield className="h-6 w-6 text-red-400" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Ransomware Response</h3>
-                <div className="text-3xl font-bold text-red-400 mb-2">$136K/hr</div>
-                <p className="text-sm text-slate-300">of delayed response (IBM)</p>
-                <p className="text-xs text-slate-300 mt-2">72 hours = $9.8M exposure</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-slate-800/50 border-amber-500/30 hover:border-amber-500/60 transition-all" data-testid="cost-ma">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 mx-auto mb-4 bg-amber-500/20 rounded-xl flex items-center justify-center">
-                  <Briefcase className="h-6 w-6 text-amber-400" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">M&A Integration Delay</h3>
-                <div className="text-3xl font-bold text-amber-400 mb-2">$5-50M</div>
-                <p className="text-sm text-slate-300">in synergy erosion</p>
-                <p className="text-xs text-slate-300 mt-2">Every day of delay compounds</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-slate-800/50 border-purple-500/30 hover:border-purple-500/60 transition-all" data-testid="cost-crisis">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 mx-auto mb-4 bg-purple-500/20 rounded-xl flex items-center justify-center">
-                  <AlertTriangle className="h-6 w-6 text-purple-400" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Crisis Response Delay</h3>
-                <div className="text-3xl font-bold text-purple-400 mb-2">24 hrs</div>
-                <p className="text-sm text-slate-300">Reputational damage spreads hourly</p>
-                <p className="text-xs text-slate-300 mt-2">Market cap impact within 24 hours</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-slate-800/50 border-blue-500/30 hover:border-blue-500/60 transition-all" data-testid="cost-competitive">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 mx-auto mb-4 bg-blue-500/20 rounded-xl flex items-center justify-center">
-                  <Target className="h-6 w-6 text-blue-400" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Competitive Response</h3>
-                <div className="text-3xl font-bold text-blue-400 mb-2">Lost</div>
-                <p className="text-sm text-slate-300">Market share</p>
-                <p className="text-xs text-slate-300 mt-2">Often unrecoverable</p>
-              </CardContent>
-            </Card>
-          </div>
-          
-          <div className="text-center bg-gradient-to-r from-emerald-900/30 to-cyan-900/30 rounded-2xl p-8 border border-emerald-500/30">
-            <p className="text-xl text-white mb-2">
-              <span className="font-bold text-emerald-400">ExecuteIQ at $250K-$750K/year</span> vs. one incident costing <span className="font-bold text-red-400">$5-50M</span>.
-            </p>
-            <p className="text-lg text-slate-300">
-              Payback on first use.
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* Validation Section - What 7 Major Firms Are Saying */}
       <section className="py-20 bg-white dark:bg-slate-950" data-testid="validation-section">

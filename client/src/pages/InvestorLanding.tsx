@@ -19,7 +19,8 @@ import {
   Brain,
   Globe2,
   FileText,
-  Quote
+  Quote,
+  AlertTriangle
 } from "lucide-react";
 import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
@@ -118,6 +119,110 @@ export default function InvestorLanding() {
                 Explore Use Cases
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Three Problems Worth Billions */}
+        <section className="py-16 px-6 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <Badge className="mb-6 bg-red-600/20 text-red-400 border border-red-500/30 text-sm px-4 py-1.5">
+                <AlertTriangle className="h-4 w-4 mr-2 inline" />
+                Market Problem
+              </Badge>
+              <h2 className="text-4xl font-bold mb-4 text-white">
+                Three Enterprise Problems Worth $847B
+              </h2>
+              <p className="text-xl text-slate-300 max-w-4xl mx-auto">
+                Fortune 1000 companies face these three problems every time a strategic moment hits. No infrastructure existed to solve them—until ExecuteIQ.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 mb-10">
+              <Card className="bg-slate-900/80 border border-slate-800 hover:border-red-500/40 transition-all">
+                <CardContent className="p-6">
+                  <div className="mb-4">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="p-2 rounded-lg bg-red-500/10">
+                        <Zap className="h-5 w-5 text-red-500" />
+                      </div>
+                      <span className="text-xs font-semibold text-red-400 uppercase tracking-wider">Problem 1</span>
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-2">The Execution Gap</h3>
+                    <p className="text-sm text-slate-300 mb-2">20-72 hours to even begin acting when strategic moments hit</p>
+                    <p className="text-xs text-red-400">$136K/hour delayed (IBM). $5-50M M&A synergy erosion.</p>
+                  </div>
+                  <div className="border-t border-slate-700 pt-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0" />
+                      <span className="text-sm text-emerald-400 font-semibold">Solution</span>
+                    </div>
+                    <p className="text-sm text-slate-300 mb-3">Pre-built infrastructure activates in 12 minutes</p>
+                    <div className="bg-emerald-500/10 rounded-lg px-3 py-2 text-center">
+                      <span className="text-emerald-400 font-bold text-lg">72 hrs → 12 min</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-slate-900/80 border border-slate-800 hover:border-amber-500/40 transition-all">
+                <CardContent className="p-6">
+                  <div className="mb-4">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="p-2 rounded-lg bg-amber-500/10">
+                        <Users className="h-5 w-5 text-amber-500" />
+                      </div>
+                      <span className="text-xs font-semibold text-amber-400 uppercase tracking-wider">Problem 2</span>
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-2">The Coordination Chaos</h3>
+                    <p className="text-sm text-slate-300 mb-2">50-200+ stakeholders. No system to coordinate them.</p>
+                    <p className="text-xs text-amber-400">$4.88M avg breach cost. 35% higher without pre-defined teams.</p>
+                  </div>
+                  <div className="border-t border-slate-700 pt-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0" />
+                      <span className="text-sm text-emerald-400 font-semibold">Solution</span>
+                    </div>
+                    <p className="text-sm text-slate-300 mb-3">Pre-mapped accountability, instant notification, real-time tracking</p>
+                    <div className="bg-emerald-500/10 rounded-lg px-3 py-2 text-center">
+                      <span className="text-emerald-400 font-bold text-lg">35% cost reduction</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-slate-900/80 border border-slate-800 hover:border-purple-500/40 transition-all">
+                <CardContent className="p-6">
+                  <div className="mb-4">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="p-2 rounded-lg bg-purple-500/10">
+                        <Brain className="h-5 w-5 text-purple-500" />
+                      </div>
+                      <span className="text-xs font-semibold text-purple-400 uppercase tracking-wider">Problem 3</span>
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-2">The Institutional Amnesia</h3>
+                    <p className="text-sm text-slate-300 mb-2">Knowledge walks out the door. Same scramble every time.</p>
+                    <p className="text-xs text-purple-400">3.5 disruptions per 2 years. Same $4.88M cost repeated.</p>
+                  </div>
+                  <div className="border-t border-slate-700 pt-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0" />
+                      <span className="text-sm text-emerald-400 font-semibold">Solution</span>
+                    </div>
+                    <p className="text-sm text-slate-300 mb-3">AI-powered learning loop. Playbooks that improve automatically.</p>
+                    <div className="bg-emerald-500/10 rounded-lg px-3 py-2 text-center">
+                      <span className="text-emerald-400 font-bold text-lg">Compounding intelligence</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="bg-slate-800/60 border border-slate-700 rounded-xl px-6 py-4 text-center">
+              <p className="text-slate-300">
+                <span className="text-white font-semibold">ExecuteIQ at $250K-$750K/year</span> vs. one incident costing <span className="text-red-400 font-semibold">$5-50M</span>. <span className="text-emerald-400 font-semibold">Payback on first use.</span>
+              </p>
             </div>
           </div>
         </section>
