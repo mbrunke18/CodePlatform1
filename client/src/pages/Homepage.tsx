@@ -31,7 +31,9 @@ import {
   Quote,
   Building2,
   Scale,
-  UserCheck
+  UserCheck,
+  Globe2,
+  ExternalLink
 } from "lucide-react";
 import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
@@ -181,6 +183,62 @@ export default function Homepage() {
       report: "State of Enterprise AI",
       color: "text-indigo-400",
       borderColor: "border-indigo-500/30"
+    },
+    {
+      quote: "AI transformation is shifting from CIO-led to CEO-led mandate across enterprises.",
+      source: "Deloitte",
+      report: "State of AI in the Enterprise 2026",
+      color: "text-teal-400",
+      borderColor: "border-teal-500/30"
+    },
+    {
+      quote: "Readiness requires people, process, culture, and governance—not just technology.",
+      source: "Microsoft",
+      report: "Agents Are Here",
+      color: "text-sky-400",
+      borderColor: "border-sky-500/30"
+    },
+    {
+      quote: "AI agents are being deployed across industries—but orchestration infrastructure determines outcomes.",
+      source: "Google Cloud",
+      report: "AI Agent Trends 2026",
+      color: "text-green-400",
+      borderColor: "border-green-500/30"
+    },
+    {
+      quote: "Organizations must move from AI proof-of-concept to AI proof-of-impact at enterprise scale.",
+      source: "World Economic Forum",
+      report: "Proof over Promise 2026",
+      color: "text-blue-300",
+      borderColor: "border-blue-400/30"
+    },
+    {
+      quote: "91% of organizations experienced major disruption—speed of coordinated response is the differentiator.",
+      source: "PwC",
+      report: "Global Crisis & Resilience Survey",
+      color: "text-orange-400",
+      borderColor: "border-orange-500/30"
+    },
+    {
+      quote: "By 2027, 40% of enterprises will use AI orchestration platforms to coordinate cross-functional execution.",
+      source: "Gartner",
+      report: "Strategic Technology Trends 2026",
+      color: "text-violet-400",
+      borderColor: "border-violet-500/30"
+    },
+    {
+      quote: "Enterprise AI spending will reach $632B by 2028—but ROI depends on operational infrastructure.",
+      source: "IDC",
+      report: "Worldwide AI Spending Guide 2026",
+      color: "text-pink-400",
+      borderColor: "border-pink-500/30"
+    },
+    {
+      quote: "AI-native enterprises outperform peers by 3.5x on strategic execution speed.",
+      source: "Forrester",
+      report: "The AI-Native Enterprise 2026",
+      color: "text-lime-400",
+      borderColor: "border-lime-500/30"
     }
   ];
 
@@ -208,7 +266,7 @@ export default function Homepage() {
             </h1>
             
             <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto mb-4 leading-relaxed" data-testid="text-insight">
-              7 major firms just concluded: organizations aren't failing at AI because of technology—they're failing because they lack <span className="text-white font-semibold">governance, decision rights, and coordination systems</span>. ExecuteIQ provides that infrastructure.
+              15 major firms just concluded: organizations aren't failing at AI because of technology—they're failing because they lack <span className="text-white font-semibold">governance, decision rights, and coordination systems</span>. ExecuteIQ provides that infrastructure.
             </p>
             <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-8">
               <span className="text-[#D4AF37] font-semibold">166 playbooks to start.</span> Customize them. Build your own.
@@ -335,7 +393,7 @@ export default function Homepage() {
               ExecuteIQ: The Execution Infrastructure Layer
             </h2>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              ExecuteIQ provides what 7 major firms say is missing: pre-defined governance, clear decision rights, and coordination systems that activate in minutes—not days.
+              ExecuteIQ provides what 15 major firms say is missing: pre-defined governance, clear decision rights, and coordination systems that activate in minutes—not days.
             </p>
           </div>
           
@@ -539,7 +597,7 @@ export default function Homepage() {
               Industry Consensus
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-              What 7 Major Firms Are Saying
+              What 15 Major Firms Are Saying
             </h2>
           </div>
           
@@ -564,6 +622,96 @@ export default function Homepage() {
             <p className="text-xl font-semibold text-slate-900 dark:text-white">
               They're all describing what ExecuteIQ provides.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Why 2026 Is Different - Research Validation */}
+      <section className="py-20 px-6 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-blue-500/20 text-blue-400 border-blue-500/30">
+              2026 Research Consensus
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              2026: The Year AI Became Enterprise Infrastructure
+            </h2>
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+              8 flagship reports from the world's top consulting firms converge on 3 signals that validate ExecuteIQ's thesis: the bottleneck isn't AI capability—it's execution infrastructure.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-14">
+            <Card className="bg-slate-900/80 border-blue-500/30 hover:border-blue-400/60 transition-all">
+              <CardContent className="p-8">
+                <div className="w-14 h-14 mb-4 bg-blue-500/20 rounded-2xl flex items-center justify-center">
+                  <Brain className="h-7 w-7 text-blue-400" />
+                </div>
+                <div className="flex items-center gap-2 mb-3">
+                  <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/30 text-xs">Signal 1</Badge>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">Agentic AI → Enterprise Infrastructure</h3>
+                <p className="text-slate-300 mb-4 leading-relaxed">
+                  Every major firm now agrees: AI agents are moving from experimentation to core enterprise infrastructure. But 78% of executives say this shift requires an entirely new operating model.
+                </p>
+                <div className="p-3 bg-slate-800/80 rounded-lg border border-blue-500/20">
+                  <p className="text-sm text-blue-400">
+                    <span className="font-semibold">ExecuteIQ Connection:</span> We provide the operating model—governance, decision rights, and coordination—that makes agentic AI operational, not experimental.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-slate-900/80 border-emerald-500/30 hover:border-emerald-400/60 transition-all">
+              <CardContent className="p-8">
+                <div className="w-14 h-14 mb-4 bg-emerald-500/20 rounded-2xl flex items-center justify-center">
+                  <Network className="h-7 w-7 text-emerald-400" />
+                </div>
+                <div className="flex items-center gap-2 mb-3">
+                  <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/30 text-xs">Signal 2</Badge>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">Redesign Work, Not Layer Automation</h3>
+                <p className="text-slate-300 mb-4 leading-relaxed">
+                  McKinsey and Deloitte conclude that layering AI on existing workflows fails. The winners are redesigning how work gets done—rebuilding processes from the ground up around speed and coordination.
+                </p>
+                <div className="p-3 bg-slate-800/80 rounded-lg border border-emerald-500/20">
+                  <p className="text-sm text-emerald-400">
+                    <span className="font-semibold">ExecuteIQ Connection:</span> Our 12-minute execution model doesn't automate the old 72-hour process. It replaces it with pre-built infrastructure that activates instantly.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-slate-900/80 border-amber-500/30 hover:border-amber-400/60 transition-all">
+              <CardContent className="p-8">
+                <div className="w-14 h-14 mb-4 bg-amber-500/20 rounded-2xl flex items-center justify-center">
+                  <Shield className="h-7 w-7 text-amber-400" />
+                </div>
+                <div className="flex items-center gap-2 mb-3">
+                  <Badge className="bg-amber-500/10 text-amber-400 border-amber-500/30 text-xs">Signal 3</Badge>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">Data Foundations & Governance Enable Speed</h3>
+                <p className="text-slate-300 mb-4 leading-relaxed">
+                  Google Cloud, IBM, and the World Economic Forum all emphasize: without governance frameworks and data foundations in place, AI deployments stall. Speed requires structure.
+                </p>
+                <div className="p-3 bg-slate-800/80 rounded-lg border border-amber-500/20">
+                  <p className="text-sm text-amber-400">
+                    <span className="font-semibold">ExecuteIQ Connection:</span> The IDEA Framework (Identify → Detect → Execute → Advance) embeds governance, accountability, and learning into every execution cycle.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="text-center mb-6">
+            <p className="text-sm text-slate-400 uppercase tracking-wider font-medium mb-4">Sources: 8 Flagship Reports</p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-3">
+            {['BCG', 'IBM', 'McKinsey', 'Deloitte', 'World Economic Forum', 'Microsoft', 'Google Cloud', 'Accenture'].map((firm) => (
+              <div key={firm} className="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2">
+                <span className="text-sm text-slate-300 font-medium">{firm}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>

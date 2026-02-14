@@ -15,7 +15,11 @@ import {
   Globe2,
   BarChart3,
   BookOpen,
-  CheckCircle2
+  CheckCircle2,
+  Brain,
+  Cpu,
+  Target,
+  Sparkles
 } from "lucide-react";
 import { Link } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
@@ -463,6 +467,167 @@ export default function Research() {
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* 2026 Enterprise AI Landscape */}
+      <section className="py-20 px-6 bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-950 text-white">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <Badge className="mb-6 bg-indigo-600 text-white border-0">
+              <Sparkles className="w-4 h-4 mr-2" />
+              2026 Research Landscape
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              The 2026 Enterprise AI Inflection Point
+            </h2>
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+              Eight flagship reports converge on one message: 2026 is when AI stops being a feature and becomes part of the enterprise operating system
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+            <div className="flex items-center gap-3 p-4 bg-indigo-900/50 border border-indigo-700/50 rounded-lg">
+              <Cpu className="h-6 w-6 text-indigo-400 shrink-0" />
+              <span className="text-indigo-200 font-medium">Agentic AI → Infrastructure</span>
+            </div>
+            <div className="flex items-center gap-3 p-4 bg-indigo-900/50 border border-indigo-700/50 rounded-lg">
+              <Brain className="h-6 w-6 text-indigo-400 shrink-0" />
+              <span className="text-indigo-200 font-medium">Redesign Work, Not Automation</span>
+            </div>
+            <div className="flex items-center gap-3 p-4 bg-indigo-900/50 border border-indigo-700/50 rounded-lg">
+              <Shield className="h-6 w-6 text-indigo-400 shrink-0" />
+              <span className="text-indigo-200 font-medium">Governance Enables Speed</span>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <div className="bg-slate-800/50 border border-slate-700 border-l-4 border-l-blue-500 rounded-lg p-6">
+              <div className="flex items-start gap-4 mb-3">
+                <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center shrink-0 text-white font-bold text-sm">1</div>
+                <div>
+                  <h4 className="font-bold text-white">BCG</h4>
+                  <p className="text-slate-300 text-sm">AI Radar 2026</p>
+                </div>
+              </div>
+              <p className="text-slate-300 text-sm mb-3 italic">"AI transformation is shifting from a CIO-led initiative to a CEO-led mandate across the enterprise."</p>
+              <div className="flex items-start gap-2">
+                <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
+                <p className="text-indigo-300 text-xs">ExecuteIQ turns CEO-level AI mandates into coordinated execution across every function.</p>
+              </div>
+            </div>
+
+            <div className="bg-slate-800/50 border border-slate-700 border-l-4 border-l-cyan-500 rounded-lg p-6">
+              <div className="flex items-start gap-4 mb-3">
+                <div className="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center shrink-0 text-white font-bold text-sm">2</div>
+                <div>
+                  <h4 className="font-bold text-white">IBM</h4>
+                  <p className="text-slate-300 text-sm">The Enterprise in 2030</p>
+                </div>
+              </div>
+              <p className="text-slate-300 text-sm mb-3 italic">"Five bold predictions for the smarter enterprise—where AI becomes embedded in every process and decision."</p>
+              <div className="flex items-start gap-2">
+                <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
+                <p className="text-indigo-300 text-xs">ExecuteIQ embeds AI into the decision layer, not just analytics dashboards.</p>
+              </div>
+            </div>
+
+            <div className="bg-slate-800/50 border border-slate-700 border-l-4 border-l-emerald-500 rounded-lg p-6">
+              <div className="flex items-start gap-4 mb-3">
+                <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center shrink-0 text-white font-bold text-sm">3</div>
+                <div>
+                  <h4 className="font-bold text-white">McKinsey</h4>
+                  <p className="text-slate-300 text-sm">Global Tech Agenda 2026</p>
+                </div>
+              </div>
+              <p className="text-slate-300 text-sm mb-3 italic">"CIOs are evolving from cost managers to strategy architects, orchestrating AI across the business."</p>
+              <div className="flex items-start gap-2">
+                <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
+                <p className="text-indigo-300 text-xs">ExecuteIQ gives CIOs the operational backbone to architect strategy, not just manage infrastructure.</p>
+              </div>
+            </div>
+
+            <div className="bg-slate-800/50 border border-slate-700 border-l-4 border-l-violet-500 rounded-lg p-6">
+              <div className="flex items-start gap-4 mb-3">
+                <div className="w-8 h-8 rounded-full bg-violet-500 flex items-center justify-center shrink-0 text-white font-bold text-sm">4</div>
+                <div>
+                  <h4 className="font-bold text-white">Deloitte</h4>
+                  <p className="text-slate-300 text-sm">State of AI in the Enterprise 2026</p>
+                </div>
+              </div>
+              <p className="text-slate-300 text-sm mb-3 italic">"The rise of sovereign, agentic, and physical AI is redefining what enterprise readiness looks like."</p>
+              <div className="flex items-start gap-2">
+                <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
+                <p className="text-indigo-300 text-xs">ExecuteIQ provides the readiness framework for agentic AI—playbooks, governance, and orchestration.</p>
+              </div>
+            </div>
+
+            <div className="bg-slate-800/50 border border-slate-700 border-l-4 border-l-amber-500 rounded-lg p-6">
+              <div className="flex items-start gap-4 mb-3">
+                <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center shrink-0 text-white font-bold text-sm">5</div>
+                <div>
+                  <h4 className="font-bold text-white">World Economic Forum</h4>
+                  <p className="text-slate-300 text-sm">Proof over Promise</p>
+                </div>
+              </div>
+              <p className="text-slate-300 text-sm mb-3 italic">"Scaling AI and turning it into outcomes—moving beyond pilots to enterprise-wide value creation."</p>
+              <div className="flex items-start gap-2">
+                <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
+                <p className="text-indigo-300 text-xs">ExecuteIQ bridges the pilot-to-production gap with structured execution workflows.</p>
+              </div>
+            </div>
+
+            <div className="bg-slate-800/50 border border-slate-700 border-l-4 border-l-sky-500 rounded-lg p-6">
+              <div className="flex items-start gap-4 mb-3">
+                <div className="w-8 h-8 rounded-full bg-sky-500 flex items-center justify-center shrink-0 text-white font-bold text-sm">6</div>
+                <div>
+                  <h4 className="font-bold text-white">Microsoft</h4>
+                  <p className="text-slate-300 text-sm">Agents Are Here</p>
+                </div>
+              </div>
+              <p className="text-slate-300 text-sm mb-3 italic">"AI agent readiness is about people, process, culture, and governance—not just technology deployment."</p>
+              <div className="flex items-start gap-2">
+                <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
+                <p className="text-indigo-300 text-xs">ExecuteIQ operationalizes the people + process layer that agent readiness demands.</p>
+              </div>
+            </div>
+
+            <div className="bg-slate-800/50 border border-slate-700 border-l-4 border-l-rose-500 rounded-lg p-6">
+              <div className="flex items-start gap-4 mb-3">
+                <div className="w-8 h-8 rounded-full bg-rose-500 flex items-center justify-center shrink-0 text-white font-bold text-sm">7</div>
+                <div>
+                  <h4 className="font-bold text-white">Google Cloud</h4>
+                  <p className="text-slate-300 text-sm">AI Agent Trends 2026</p>
+                </div>
+              </div>
+              <p className="text-slate-300 text-sm mb-3 italic">"AI agents are being deployed across industries—from customer service to supply chain to strategic planning."</p>
+              <div className="flex items-start gap-2">
+                <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
+                <p className="text-indigo-300 text-xs">ExecuteIQ provides the control plane for agent-driven workflows across business domains.</p>
+              </div>
+            </div>
+
+            <div className="bg-slate-800/50 border border-slate-700 border-l-4 border-l-fuchsia-500 rounded-lg p-6">
+              <div className="flex items-start gap-4 mb-3">
+                <div className="w-8 h-8 rounded-full bg-fuchsia-500 flex items-center justify-center shrink-0 text-white font-bold text-sm">8</div>
+                <div>
+                  <h4 className="font-bold text-white">Accenture</h4>
+                  <p className="text-slate-300 text-sm">New Rules of Platform Strategy</p>
+                </div>
+              </div>
+              <p className="text-slate-300 text-sm mb-3 italic">"Reinventing platform strategy for agentic AI—where platforms become orchestration layers, not just tools."</p>
+              <div className="flex items-start gap-2">
+                <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
+                <p className="text-indigo-300 text-xs">ExecuteIQ is built as the orchestration layer where strategy meets agentic execution.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-6 bg-slate-800/70 border border-slate-700 rounded-lg text-center">
+            <p className="text-slate-200 text-sm md:text-base leading-relaxed">
+              These decisions compound. The workflows you hand to agents, the data foundations you build, and the controls you put in place will shape performance for years. ExecuteIQ provides the infrastructure to make these decisions execute.
+            </p>
           </div>
         </div>
       </section>

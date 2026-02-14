@@ -33,10 +33,10 @@ import { updatePageMetadata } from "@/lib/seo";
 export default function WhyM() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Why ExecuteIQ - The Infrastructure 7 Firms Say Is Missing",
-      description: "McKinsey, IBM, Bain, BCG, Accenture, Anthropic, and OpenAI all concluded: organizations fail at AI because they lack execution infrastructure. ExecuteIQ provides it.",
-      ogTitle: "The Infrastructure 7 Firms Say Is Missing | ExecuteIQ",
-      ogDescription: "Seven major firms independently concluded that execution infrastructure—governance, decision rights, and coordination systems—is the missing layer for AI adoption.",
+      title: "Why ExecuteIQ - The Infrastructure 15 Firms Say Is Missing",
+      description: "McKinsey, IBM, BCG, Deloitte, Accenture, Microsoft, Google Cloud, and the World Economic Forum all concluded: organizations fail at AI because they lack execution infrastructure. ExecuteIQ provides it.",
+      ogTitle: "The Infrastructure 15 Firms Say Is Missing | ExecuteIQ",
+      ogDescription: "Fifteen major firms independently concluded that execution infrastructure—governance, decision rights, and coordination systems—is the missing layer for AI adoption.",
     });
   }, []);
 
@@ -49,15 +49,15 @@ export default function WhyM() {
         <div className="max-w-5xl mx-auto text-center">
           <Badge className="mb-6 bg-amber-500 text-white border-0">
             <BarChart3 className="w-4 h-4 mr-2" />
-            2025 Research Consensus
+            2026 Research Consensus
           </Badge>
 
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight" data-testid="heading-why-executeiq">
-            The Infrastructure 7 Firms Say Is Missing
+            The Infrastructure 15 Firms Say Is Missing
           </h1>
 
           <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-10">
-            McKinsey. IBM. Bain. BCG. Accenture. Anthropic. OpenAI. They all arrived at the same conclusion.
+            McKinsey. IBM. BCG. Deloitte. Accenture. Microsoft. Google Cloud. World Economic Forum. Bain. Anthropic. OpenAI. PwC. Gartner. Forrester. IDC. Fifteen firms, one conclusion: enterprises need execution infrastructure.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
@@ -82,7 +82,7 @@ export default function WhyM() {
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-3 gap-6 text-center">
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-1">7</div>
+              <div className="text-3xl md:text-4xl font-bold text-primary mb-1">15</div>
               <p className="text-sm text-muted-foreground">Major Firms Agree</p>
             </div>
             <div>
@@ -106,18 +106,18 @@ export default function WhyM() {
               The Consensus
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              What McKinsey, IBM, Bain, BCG, Accenture, Anthropic, and OpenAI All Concluded
+              What 15 Major Firms All Concluded
             </h2>
           </div>
 
           <Card className="border-2 border-primary/30 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-900">
             <CardContent className="p-8 md:p-12">
               <p className="text-lg md:text-xl text-foreground leading-relaxed mb-8">
-                In 2025, seven major consulting and technology firms independently published research on AI adoption. They all arrived at the same conclusion: Organizations aren't failing at AI because of technology. They're failing because they lack execution infrastructure—governance, decision rights, and coordination systems. This isn't speculation. It's consensus.
+                From 2025 into 2026, fifteen major consulting and technology firms independently published research on AI adoption. They all arrived at the same conclusion: Organizations aren't failing at AI because of technology. They're failing because they lack execution infrastructure—governance, decision rights, and coordination systems. This isn't speculation. It's consensus.
               </p>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4">
-                {["McKinsey", "IBM", "Bain", "BCG", "Accenture", "Anthropic", "OpenAI"].map((firm) => (
+              <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-3">
+                {["McKinsey", "IBM", "BCG", "Deloitte", "Accenture", "Microsoft", "Google Cloud", "WEF", "Bain", "Anthropic", "OpenAI", "PwC", "Gartner", "Forrester", "IDC"].map((firm) => (
                   <div key={firm} className="flex items-center justify-center p-3 bg-white dark:bg-slate-700 rounded-lg border border-border shadow-sm">
                     <span className="text-sm font-semibold text-foreground">{firm}</span>
                   </div>

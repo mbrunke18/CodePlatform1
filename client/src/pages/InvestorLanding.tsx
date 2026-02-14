@@ -15,7 +15,11 @@ import {
   Network,
   Lightbulb,
   CheckCircle2,
-  ArrowRight
+  ArrowRight,
+  Brain,
+  Globe2,
+  FileText,
+  Quote
 } from "lucide-react";
 import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
@@ -264,6 +268,145 @@ export default function InvestorLanding() {
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </section>
+
+        {/* Independent Market Validation */}
+        <section className="py-16 px-6 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <Badge className="mb-6 bg-indigo-600 text-white border-0 text-sm px-4 py-1.5">
+                2026 Market Validation
+              </Badge>
+              <h2 className="text-4xl font-bold mb-4 text-white">
+                8 Flagship Reports. One Conclusion.
+              </h2>
+              <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+                The world's top consulting and technology firms independently confirm the market ExecuteIQ addresses
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card className="bg-slate-800/60 border-slate-700 hover:border-indigo-500/50 transition-all">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Brain className="h-5 w-5 text-indigo-400" />
+                    <span className="font-bold text-white text-lg">BCG</span>
+                  </div>
+                  <div className="text-sm text-indigo-400 mb-3">AI Radar 2026</div>
+                  <div className="flex items-start gap-2 mb-3">
+                    <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
+                    <p className="text-slate-300 text-sm">"AI transformation shifting from CIO-led to CEO-led mandate"</p>
+                  </div>
+                  <p className="text-emerald-400 text-sm italic">→ ExecuteIQ is built for the C-suite</p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-slate-800/60 border-slate-700 hover:border-indigo-500/50 transition-all">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Globe2 className="h-5 w-5 text-blue-400" />
+                    <span className="font-bold text-white text-lg">IBM</span>
+                  </div>
+                  <div className="text-sm text-blue-400 mb-3">The Enterprise in 2030</div>
+                  <div className="flex items-start gap-2 mb-3">
+                    <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
+                    <p className="text-slate-300 text-sm">"The smarter enterprise requires new operating models"</p>
+                  </div>
+                  <p className="text-emerald-400 text-sm italic">→ ExecuteIQ IS that operating model</p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-slate-800/60 border-slate-700 hover:border-indigo-500/50 transition-all">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <BarChart3 className="h-5 w-5 text-cyan-400" />
+                    <span className="font-bold text-white text-lg">McKinsey</span>
+                  </div>
+                  <div className="text-sm text-cyan-400 mb-3">Global Tech Agenda 2026</div>
+                  <div className="flex items-start gap-2 mb-3">
+                    <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
+                    <p className="text-slate-300 text-sm">"CIOs evolving from cost managers to strategy architects"</p>
+                  </div>
+                  <p className="text-emerald-400 text-sm italic">→ Our 166 playbooks give them the execution infrastructure</p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-slate-800/60 border-slate-700 hover:border-indigo-500/50 transition-all">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Network className="h-5 w-5 text-purple-400" />
+                    <span className="font-bold text-white text-lg">Deloitte</span>
+                  </div>
+                  <div className="text-sm text-purple-400 mb-3">State of AI in the Enterprise 2026</div>
+                  <div className="flex items-start gap-2 mb-3">
+                    <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
+                    <p className="text-slate-300 text-sm">"Rise of sovereign, agentic, and physical AI"</p>
+                  </div>
+                  <p className="text-emerald-400 text-sm italic">→ ExecuteIQ orchestrates agentic AI with human oversight</p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-slate-800/60 border-slate-700 hover:border-indigo-500/50 transition-all">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Globe className="h-5 w-5 text-amber-400" />
+                    <span className="font-bold text-white text-lg">World Economic Forum</span>
+                  </div>
+                  <div className="text-sm text-amber-400 mb-3">Proof over Promise</div>
+                  <div className="flex items-start gap-2 mb-3">
+                    <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
+                    <p className="text-slate-300 text-sm">"Organizations scaling AI into outcomes"</p>
+                  </div>
+                  <p className="text-emerald-400 text-sm italic">→ ExecuteIQ delivers measurable execution outcomes</p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-slate-800/60 border-slate-700 hover:border-indigo-500/50 transition-all">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Zap className="h-5 w-5 text-sky-400" />
+                    <span className="font-bold text-white text-lg">Microsoft</span>
+                  </div>
+                  <div className="text-sm text-sky-400 mb-3">Agents Are Here</div>
+                  <div className="flex items-start gap-2 mb-3">
+                    <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
+                    <p className="text-slate-300 text-sm">"Readiness requires people, process, culture, governance"</p>
+                  </div>
+                  <p className="text-emerald-400 text-sm italic">→ ExecuteIQ provides all four</p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-slate-800/60 border-slate-700 hover:border-indigo-500/50 transition-all">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Target className="h-5 w-5 text-rose-400" />
+                    <span className="font-bold text-white text-lg">Google Cloud</span>
+                  </div>
+                  <div className="text-sm text-rose-400 mb-3">AI Agent Trends 2026</div>
+                  <div className="flex items-start gap-2 mb-3">
+                    <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
+                    <p className="text-slate-300 text-sm">"AI agents being used across industries"</p>
+                  </div>
+                  <p className="text-emerald-400 text-sm italic">→ Our 9 strategic domains cover the enterprise</p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-slate-800/60 border-slate-700 hover:border-indigo-500/50 transition-all">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <FileText className="h-5 w-5 text-teal-400" />
+                    <span className="font-bold text-white text-lg">Accenture</span>
+                  </div>
+                  <div className="text-sm text-teal-400 mb-3">New Rules of Platform Strategy</div>
+                  <div className="flex items-start gap-2 mb-3">
+                    <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
+                    <p className="text-slate-300 text-sm">"Reinventing platform strategy for agentic AI"</p>
+                  </div>
+                  <p className="text-emerald-400 text-sm italic">→ ExecuteIQ is that platform</p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </section>
 
