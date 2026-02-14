@@ -41,7 +41,7 @@ import Footer from "@/components/layout/Footer";
 import VideoIntro from "@/components/marketing/VideoIntro";
 import PlatformVisual from "@/components/marketing/PlatformVisual";
 
-const INTRO_SEEN_KEY = "poise_intro_seen_session";
+const INTRO_SEEN_KEY = "executeiq_intro_seen_session";
 
 export default function Homepage() {
   const [, setLocation] = useLocation();

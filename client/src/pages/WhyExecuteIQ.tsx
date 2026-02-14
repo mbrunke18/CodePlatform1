@@ -30,7 +30,7 @@ import Footer from "@/components/layout/Footer";
 import { useEffect } from "react";
 import { updatePageMetadata } from "@/lib/seo";
 
-export default function WhyM() {
+export default function WhyExecuteIQ() {
   useEffect(() => {
     updatePageMetadata({
       title: "Why ExecuteIQ - The Infrastructure 15 Firms Say Is Missing",

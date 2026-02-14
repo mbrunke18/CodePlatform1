@@ -803,7 +803,7 @@ export default function Research() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
-            <Link href="/why-m">
+            <Link href="/why-executeiq">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-transparent">
                 Our Story
               </Button>
