@@ -528,78 +528,24 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* Platform Section - A Platform, Not a Fixed Product */}
-      <section className="py-20 bg-white dark:bg-slate-950" data-testid="platform-section">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30">
-              Platform, Not Product
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-              A Platform, Not a Fixed Product
-            </h2>
-            <p className="text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto">
-              ExecuteIQ isn't a rigid system. It's infrastructure you can adapt.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8 mb-10">
-            <Card className="border-2 border-slate-200 dark:border-slate-700 hover:border-[#D4AF37]/50 transition-all hover:shadow-xl" data-testid="platform-card-start">
-              <CardContent className="p-8">
-                <div className="w-14 h-14 mb-4 bg-[#D4AF37]/10 dark:bg-[#D4AF37]/20 rounded-2xl flex items-center justify-center">
-                  <BookOpen className="h-7 w-7 text-[#D4AF37]" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Don't Start From Scratch</h3>
-                <p className="text-slate-700 dark:text-slate-300 mb-4">
-                  166 playbooks across 9 strategic domains—M&A, crisis, competitive response, digital transformation, and more. Built from 25 years of Fortune 500 execution experience. Ready to deploy on day one.
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-2 border-slate-200 dark:border-slate-700 hover:border-emerald-500/50 transition-all hover:shadow-xl" data-testid="platform-card-customize">
-              <CardContent className="p-8">
-                <div className="w-14 h-14 mb-4 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-2xl flex items-center justify-center">
-                  <Layers className="h-7 w-7 text-emerald-500 dark:text-emerald-400" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Make Them Yours</h3>
-                <p className="text-slate-700 dark:text-slate-300 mb-4">
-                  Every playbook is fully customizable. Adjust roles. Modify sequences. Change triggers. Your organization is unique. Your infrastructure should be too.
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-2 border-slate-200 dark:border-slate-700 hover:border-purple-500/50 transition-all hover:shadow-xl" data-testid="platform-card-build">
-              <CardContent className="p-8">
-                <div className="w-14 h-14 mb-4 bg-purple-500/10 dark:bg-purple-500/20 rounded-2xl flex items-center justify-center">
-                  <Lightbulb className="h-7 w-7 text-purple-500 dark:text-purple-400" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Create From Scratch</h3>
-                <p className="text-slate-700 dark:text-slate-300 mb-4">
-                  Face a situation we haven't covered? Build your own playbook. Your institutional knowledge, encoded into executable infrastructure—ready to activate when that situation hits again.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-          
-          <div className="text-center">
-            <p className="text-xl font-semibold text-slate-900 dark:text-white">
-              The playbooks are the accelerant. <span className="text-[#D4AF37]">The platform is the product.</span>
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* Validation Section - What 7 Major Firms Are Saying */}
+      {/* Validation Section - What 15 Major Firms Are Saying */}
       <section className="py-20 bg-white dark:bg-slate-950" data-testid="validation-section">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <Badge className="mb-4 bg-blue-500/20 text-blue-600 dark:text-blue-400 border-blue-500/30">
               Industry Consensus
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
               What 15 Major Firms Are Saying
             </h2>
+            <p className="text-lg text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-6">
+              These aren't our claims. This is what the world's top consulting, technology, and research firms independently concluded.
+            </p>
+            <div className="flex flex-wrap justify-center gap-2 mb-8">
+              {['IBM', 'BCG', 'McKinsey', 'Bain', 'Accenture', 'Deloitte', 'PwC', 'Gartner', 'Forrester', 'IDC', 'Microsoft', 'Google Cloud', 'OpenAI', 'Anthropic', 'World Economic Forum'].map((firm) => (
+                <span key={firm} className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full px-3 py-1 text-xs font-medium text-slate-700 dark:text-slate-300">{firm}</span>
+              ))}
+            </div>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
@@ -716,6 +662,68 @@ export default function Homepage() {
           </div>
         </div>
       </section>
+
+      {/* Platform Section - A Platform, Not a Fixed Product */}
+      <section className="py-20 bg-white dark:bg-slate-950" data-testid="platform-section">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30">
+              Platform, Not Product
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              A Platform, Not a Fixed Product
+            </h2>
+            <p className="text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto">
+              ExecuteIQ isn't a rigid system. It's infrastructure you can adapt.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8 mb-10">
+            <Card className="border-2 border-slate-200 dark:border-slate-700 hover:border-[#D4AF37]/50 transition-all hover:shadow-xl" data-testid="platform-card-start">
+              <CardContent className="p-8">
+                <div className="w-14 h-14 mb-4 bg-[#D4AF37]/10 dark:bg-[#D4AF37]/20 rounded-2xl flex items-center justify-center">
+                  <BookOpen className="h-7 w-7 text-[#D4AF37]" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Don't Start From Scratch</h3>
+                <p className="text-slate-700 dark:text-slate-300 mb-4">
+                  166 playbooks across 9 strategic domains—M&A, crisis, competitive response, digital transformation, and more. Built from 25 years of Fortune 500 execution experience. Ready to deploy on day one.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-2 border-slate-200 dark:border-slate-700 hover:border-emerald-500/50 transition-all hover:shadow-xl" data-testid="platform-card-customize">
+              <CardContent className="p-8">
+                <div className="w-14 h-14 mb-4 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-2xl flex items-center justify-center">
+                  <Layers className="h-7 w-7 text-emerald-500 dark:text-emerald-400" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Make Them Yours</h3>
+                <p className="text-slate-700 dark:text-slate-300 mb-4">
+                  Every playbook is fully customizable. Adjust roles. Modify sequences. Change triggers. Your organization is unique. Your infrastructure should be too.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-2 border-slate-200 dark:border-slate-700 hover:border-purple-500/50 transition-all hover:shadow-xl" data-testid="platform-card-build">
+              <CardContent className="p-8">
+                <div className="w-14 h-14 mb-4 bg-purple-500/10 dark:bg-purple-500/20 rounded-2xl flex items-center justify-center">
+                  <Lightbulb className="h-7 w-7 text-purple-500 dark:text-purple-400" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Create From Scratch</h3>
+                <p className="text-slate-700 dark:text-slate-300 mb-4">
+                  Face a situation we haven't covered? Build your own playbook. Your institutional knowledge, encoded into executable infrastructure—ready to activate when that situation hits again.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="text-center">
+            <p className="text-xl font-semibold text-slate-900 dark:text-white">
+              The playbooks are the accelerant. <span className="text-[#D4AF37]">The platform is the product.</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
 
       {/* IDEA Framework Section */}
       <section className="py-20 px-6 bg-slate-50 dark:bg-slate-900">
