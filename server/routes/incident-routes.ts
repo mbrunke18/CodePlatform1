@@ -775,6 +775,7 @@ router.post('/what-if', async (req, res) => {
     const schema = z.object({
       incidentId: z.string().uuid().optional(),
       scenario: z.string().min(10),
+      domain: z.enum(['offense', 'defense', 'special_teams']).optional(),
       playbook: z.any(),
     });
 
@@ -783,9 +784,19 @@ router.post('/what-if', async (req, res) => {
       return res.status(400).json({ error: parsed.error.errors[0].message });
     }
 
-    const { incidentId, scenario, playbook } = parsed.data;
+    const { incidentId, scenario, playbook, domain } = parsed.data;
 
-    const prompt = `You are an enterprise execution timing analyst. Given a playbook that coordinates in ~12 minutes, analyze how a proposed modification would impact coordination time.
+    const domainContext = domain === 'offense'
+      ? 'This is an OFFENSE scenario (market entry, M&A, product launch). Focus on speed-to-market, competitive advantage, and revenue impact.'
+      : domain === 'defense'
+      ? 'This is a DEFENSE scenario (crisis, cybersecurity, regulatory). Focus on containment speed, compliance deadlines, and damage mitigation.'
+      : domain === 'special_teams'
+      ? 'This is a SPECIAL TEAMS scenario (digital transformation, AI governance, competitive response). Focus on cross-functional coordination, change management, and organizational readiness.'
+      : 'This is a strategic execution scenario. Determine the domain (offense, defense, or special teams) and analyze accordingly.';
+
+    const prompt = `You are an enterprise strategic execution timing analyst for Fortune 1000 companies. ${domainContext}
+
+Given a playbook that coordinates in ~12 minutes, analyze how a proposed modification would impact coordination time and strategic outcomes.
 
 Return ONLY raw JSON (no markdown):
 {
@@ -793,10 +804,11 @@ Return ONLY raw JSON (no markdown):
   "modified_time": "XX minutes",
   "impact": "+XX min delay (or 'No significant impact' or '-X min improvement')",
   "recommendation": "Recommended / Not recommended / Conditionally recommended — with a one-sentence explanation",
-  "risk_assessment": "Brief assessment of risk tradeoffs"
+  "risk_assessment": "Brief assessment of risk tradeoffs",
+  "domain": "${domain || 'auto-detect'}"
 }
 
-Current playbook: ${JSON.stringify(playbook?.name || 'Standard Response Playbook')} with ${playbook?.tasks?.length || 8} tasks and ${playbook?.stakeholders?.length || 6} stakeholders.
+Current playbook: ${JSON.stringify(playbook?.name || 'Strategic Response Playbook')} with ${playbook?.tasks?.length || 8} tasks and ${playbook?.stakeholders?.length || 6} stakeholders.
 
 Proposed modification: "${scenario}"`;
 
@@ -812,7 +824,8 @@ Proposed modification: "${scenario}"`;
         modified_time: "35 minutes",
         impact: "+23 min delay",
         recommendation: "Not recommended. Adds significant delay with minimal risk reduction.",
-        risk_assessment: "The proposed change introduces additional coordination overhead without proportional risk mitigation."
+        risk_assessment: "The proposed change introduces additional coordination overhead without proportional risk mitigation.",
+        domain: domain || "strategic"
       };
     }
 

@@ -120,18 +120,55 @@ interface AnalysisResult {
 
 function AIQuickAnalysis() {
   const [scenario, setScenario] = useState('');
+  const [selectedDomain, setSelectedDomain] = useState<'all' | 'offense' | 'defense' | 'special_teams'>('all');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [result, setResult] = useState<any>(null);
   const [error, setError] = useState('');
 
-  const presetScenarios = [
-    "What if we add a board approval step before any external communications?",
-    "What if the CISO is unavailable during the incident?",
-    "What if we need legal review on all external comms?",
-    "What if the incident happens outside business hours?",
-    "What if we add a mandatory 30-minute assessment period?",
-    "What if we require dual authorization for spending over $100K?",
-  ];
+  const domainPresets: Record<string, { label: string; color: string; icon: any; scenarios: string[] }> = {
+    offense: {
+      label: 'OFFENSE',
+      color: 'emerald',
+      icon: Rocket,
+      scenarios: [
+        "What if we accelerate the market entry timeline from 6 months to 6 weeks?",
+        "What if a competitor launches in our target market before us?",
+        "What if we require dual board approval for M&A deals over $50M?",
+      ],
+    },
+    defense: {
+      label: 'DEFENSE',
+      color: 'red',
+      icon: Shield,
+      scenarios: [
+        "What if the CISO is unavailable during a ransomware attack?",
+        "What if a regulatory deadline changes from 90 days to 30 days?",
+        "What if we add mandatory legal review before all external crisis communications?",
+      ],
+    },
+    special_teams: {
+      label: 'SPECIAL TEAMS',
+      color: 'purple',
+      icon: Settings,
+      scenarios: [
+        "What if the digital transformation timeline is cut by 50%?",
+        "What if we need to integrate an acquired company's AI systems within 60 days?",
+        "What if we require AI ethics review for every new model deployment?",
+      ],
+    },
+  };
+
+  const allScenarios = selectedDomain === 'all'
+    ? Object.values(domainPresets).flatMap(d => d.scenarios.slice(0, 2))
+    : domainPresets[selectedDomain]?.scenarios || [];
+
+  const domainStyles: Record<string, { border: string; bg: string; text: string; iconText: string; btnClass: string }> = {
+    all: { border: 'border-teal-200 dark:border-teal-800', bg: 'bg-gradient-to-br from-teal-50 to-white dark:from-teal-900/20 dark:to-slate-900', text: 'text-teal-600', iconText: 'text-teal-600', btnClass: 'bg-teal-600 hover:bg-teal-700 text-white' },
+    offense: { border: 'border-emerald-200 dark:border-emerald-800', bg: 'bg-gradient-to-br from-emerald-50 to-white dark:from-emerald-900/20 dark:to-slate-900', text: 'text-emerald-600', iconText: 'text-emerald-600', btnClass: 'bg-emerald-600 hover:bg-emerald-700 text-white' },
+    defense: { border: 'border-red-200 dark:border-red-800', bg: 'bg-gradient-to-br from-red-50 to-white dark:from-red-900/20 dark:to-slate-900', text: 'text-red-600', iconText: 'text-red-600', btnClass: 'bg-red-600 hover:bg-red-700 text-white' },
+    special_teams: { border: 'border-purple-200 dark:border-purple-800', bg: 'bg-gradient-to-br from-purple-50 to-white dark:from-purple-900/20 dark:to-slate-900', text: 'text-purple-600', iconText: 'text-purple-600', btnClass: 'bg-purple-600 hover:bg-purple-700 text-white' },
+  };
+  const style = domainStyles[selectedDomain] || domainStyles.all;
 
   const runAnalysis = async () => {
     if (!scenario.trim()) return;
@@ -139,13 +176,16 @@ function AIQuickAnalysis() {
     setError('');
     setResult(null);
 
+    const domainLabel = selectedDomain === 'all' ? 'Strategic' : domainPresets[selectedDomain]?.label || 'Strategic';
+
     try {
       const response = await fetch('/api/incidents/what-if', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           scenario,
-          playbook: { name: 'Standard Response Playbook', tasks: Array(8).fill(null), stakeholders: Array(6).fill(null) },
+          domain: selectedDomain === 'all' ? undefined : selectedDomain,
+          playbook: { name: `${domainLabel} Response Playbook`, tasks: Array(8).fill(null), stakeholders: Array(6).fill(null) },
         }),
       });
       if (!response.ok) throw new Error('Analysis failed');
@@ -160,19 +200,41 @@ function AIQuickAnalysis() {
 
   return (
     <div className="space-y-6">
-      <Card className="border-teal-200 dark:border-teal-800 bg-gradient-to-br from-teal-50 to-white dark:from-teal-900/20 dark:to-slate-900">
+      <div className="flex gap-2 flex-wrap">
+        {[
+          { key: 'all', label: 'All Domains', icon: Sparkles, borderColor: 'border-teal-500', textColor: 'text-teal-700 dark:text-teal-300', bgColor: 'bg-teal-50 dark:bg-teal-900/20' },
+          { key: 'offense', label: 'OFFENSE', icon: Rocket, borderColor: 'border-emerald-500', textColor: 'text-emerald-700 dark:text-emerald-300', bgColor: 'bg-emerald-50 dark:bg-emerald-900/20' },
+          { key: 'defense', label: 'DEFENSE', icon: Shield, borderColor: 'border-red-500', textColor: 'text-red-700 dark:text-red-300', bgColor: 'bg-red-50 dark:bg-red-900/20' },
+          { key: 'special_teams', label: 'SPECIAL TEAMS', icon: Settings, borderColor: 'border-purple-500', textColor: 'text-purple-700 dark:text-purple-300', bgColor: 'bg-purple-50 dark:bg-purple-900/20' },
+        ].map(({ key, label, icon: Icon, borderColor, textColor, bgColor }) => (
+          <Button
+            key={key}
+            variant={selectedDomain === key ? 'default' : 'outline'}
+            size="sm"
+            className={selectedDomain === key ? `${bgColor} ${textColor} border-2 ${borderColor}` : ''}
+            onClick={() => setSelectedDomain(key as any)}
+          >
+            <Icon className="h-4 w-4 mr-1" />
+            {label}
+          </Button>
+        ))}
+      </div>
+
+      <Card className={`${style.border} ${style.bg}`}>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-teal-600" />
+            <Sparkles className={`h-5 w-5 ${style.iconText}`} />
             AI-Powered What-If Analysis
           </CardTitle>
           <CardDescription>
-            Describe a playbook modification and AI will analyze its impact on coordination time.
+            {selectedDomain === 'all'
+              ? 'Select a domain or describe any strategic scenario for AI impact analysis.'
+              : `Analyze ${domainPresets[selectedDomain]?.label} scenarios — AI will assess impact on execution timing and readiness.`}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex flex-wrap gap-2 mb-4">
-            {presetScenarios.map((s, i) => (
+            {allScenarios.map((s, i) => (
               <Button
                 key={i}
                 variant="outline"
@@ -180,7 +242,7 @@ function AIQuickAnalysis() {
                 className="text-xs"
                 onClick={() => setScenario(s)}
               >
-                {s.length > 50 ? s.substring(0, 50) + '...' : s}
+                {s.length > 55 ? s.substring(0, 55) + '...' : s}
               </Button>
             ))}
           </div>
@@ -188,14 +250,20 @@ function AIQuickAnalysis() {
           <Textarea
             value={scenario}
             onChange={(e: any) => setScenario(e.target.value)}
-            placeholder="Describe a modification to your playbook... e.g., 'What if we add a board approval step?'"
+            placeholder={selectedDomain === 'all'
+              ? "Describe any strategic what-if scenario... e.g., 'What if a competitor enters our market with 30% lower pricing?'"
+              : selectedDomain === 'offense'
+              ? "Describe an offensive scenario... e.g., 'What if we fast-track the product launch by 3 months?'"
+              : selectedDomain === 'defense'
+              ? "Describe a defensive scenario... e.g., 'What if a data breach affects 1M customer records?'"
+              : "Describe a transformation scenario... e.g., 'What if we mandate AI governance review for all deployments?'"}
             className="min-h-[80px]"
           />
 
           <Button
             onClick={runAnalysis}
             disabled={isAnalyzing || !scenario.trim()}
-            className="bg-teal-600 hover:bg-teal-700 text-white"
+            className={style.btnClass}
           >
             {isAnalyzing ? (
               <><Activity className="h-4 w-4 mr-2 animate-spin" /> Analyzing...</>
@@ -810,6 +878,50 @@ export default function WhatIfAnalyzer() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4" data-testid="quick-start-templates">
             <Card 
+              className="cursor-pointer hover:border-emerald-400 hover:shadow-lg transition-all border-2 border-transparent"
+              onClick={() => {
+                setAnalysisName('Market Entry Analysis');
+                setAnalysisDescription('Evaluate the strategic implications, competitive response, and resource requirements for entering a new market or launching a new product line.');
+                setScenarioType('market');
+                setIndustry('general');
+                toast({ title: "Template Loaded", description: "Market Entry Analysis loaded" });
+              }}
+              data-testid="template-market-entry"
+            >
+              <CardContent className="p-4 flex items-center gap-3">
+                <div className="p-2 bg-emerald-100 dark:bg-emerald-900/20 rounded-lg">
+                  <TrendingUp className="h-5 w-5 text-emerald-600" />
+                </div>
+                <div>
+                  <div className="font-medium text-gray-900 dark:text-white">Market Entry</div>
+                  <div className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">OFFENSE</div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="cursor-pointer hover:border-emerald-400 hover:shadow-lg transition-all border-2 border-transparent"
+              onClick={() => {
+                setAnalysisName('M&A Integration');
+                setAnalysisDescription('Plan the integration of an acquired company including culture alignment, systems consolidation, and talent retention strategies.');
+                setScenarioType('strategic');
+                setIndustry('general');
+                toast({ title: "Template Loaded", description: "M&A Integration loaded" });
+              }}
+              data-testid="template-ma-integration"
+            >
+              <CardContent className="p-4 flex items-center gap-3">
+                <div className="p-2 bg-emerald-100 dark:bg-emerald-900/20 rounded-lg">
+                  <Building2 className="h-5 w-5 text-emerald-600" />
+                </div>
+                <div>
+                  <div className="font-medium text-gray-900 dark:text-white">M&A Integration</div>
+                  <div className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">OFFENSE</div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card 
               className="cursor-pointer hover:border-red-400 hover:shadow-lg transition-all border-2 border-transparent"
               onClick={() => {
                 setAnalysisName('Product Recall Scenario');
@@ -826,57 +938,13 @@ export default function WhatIfAnalyzer() {
                 </div>
                 <div>
                   <div className="font-medium text-gray-900 dark:text-white">Product Recall</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">Crisis Response</div>
+                  <div className="text-xs text-red-600 dark:text-red-400 font-semibold">DEFENSE</div>
                 </div>
               </CardContent>
             </Card>
 
             <Card 
-              className="cursor-pointer hover:border-amber-400 hover:shadow-lg transition-all border-2 border-transparent"
-              onClick={() => {
-                setAnalysisName('Supply Chain Disruption');
-                setAnalysisDescription('Analyze the cascading effects of a major supplier failure or logistics disruption on operations, inventory, and customer delivery.');
-                setScenarioType('operational');
-                setIndustry('general');
-                toast({ title: "Template Loaded", description: "Supply Chain Disruption loaded" });
-              }}
-              data-testid="template-supply-chain"
-            >
-              <CardContent className="p-4 flex items-center gap-3">
-                <div className="p-2 bg-amber-100 dark:bg-amber-900/20 rounded-lg">
-                  <Package className="h-5 w-5 text-amber-600" />
-                </div>
-                <div>
-                  <div className="font-medium text-gray-900 dark:text-white">Supply Chain</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">Operational Risk</div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card 
-              className="cursor-pointer hover:border-green-400 hover:shadow-lg transition-all border-2 border-transparent"
-              onClick={() => {
-                setAnalysisName('Market Entry Analysis');
-                setAnalysisDescription('Evaluate the strategic implications, competitive response, and resource requirements for entering a new market or launching a new product line.');
-                setScenarioType('market');
-                setIndustry('general');
-                toast({ title: "Template Loaded", description: "Market Entry Analysis loaded" });
-              }}
-              data-testid="template-market-entry"
-            >
-              <CardContent className="p-4 flex items-center gap-3">
-                <div className="p-2 bg-green-100 dark:bg-green-900/20 rounded-lg">
-                  <TrendingUp className="h-5 w-5 text-green-600" />
-                </div>
-                <div>
-                  <div className="font-medium text-gray-900 dark:text-white">Market Entry</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">Strategic Growth</div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card 
-              className="cursor-pointer hover:border-blue-400 hover:shadow-lg transition-all border-2 border-transparent"
+              className="cursor-pointer hover:border-red-400 hover:shadow-lg transition-all border-2 border-transparent"
               onClick={() => {
                 setAnalysisName('Cybersecurity Incident');
                 setAnalysisDescription('Model response to a data breach or ransomware attack including containment, stakeholder communication, and recovery procedures.');
@@ -887,12 +955,12 @@ export default function WhatIfAnalyzer() {
               data-testid="template-cybersecurity"
             >
               <CardContent className="p-4 flex items-center gap-3">
-                <div className="p-2 bg-blue-100 dark:bg-blue-900/20 rounded-lg">
-                  <Shield className="h-5 w-5 text-blue-600" />
+                <div className="p-2 bg-red-100 dark:bg-red-900/20 rounded-lg">
+                  <Shield className="h-5 w-5 text-red-600" />
                 </div>
                 <div>
                   <div className="font-medium text-gray-900 dark:text-white">Cyber Incident</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">Security Response</div>
+                  <div className="text-xs text-red-600 dark:text-red-400 font-semibold">DEFENSE</div>
                 </div>
               </CardContent>
             </Card>
@@ -900,43 +968,43 @@ export default function WhatIfAnalyzer() {
             <Card 
               className="cursor-pointer hover:border-purple-400 hover:shadow-lg transition-all border-2 border-transparent"
               onClick={() => {
-                setAnalysisName('M&A Integration');
-                setAnalysisDescription('Plan the integration of an acquired company including culture alignment, systems consolidation, and talent retention strategies.');
+                setAnalysisName('Digital Transformation Sprint');
+                setAnalysisDescription('Analyze the impact of accelerating digital transformation initiatives including cloud migration, process automation, and organizational change management.');
                 setScenarioType('strategic');
                 setIndustry('general');
-                toast({ title: "Template Loaded", description: "M&A Integration loaded" });
+                toast({ title: "Template Loaded", description: "Digital Transformation Sprint loaded" });
               }}
-              data-testid="template-ma-integration"
+              data-testid="template-digital-transformation"
             >
               <CardContent className="p-4 flex items-center gap-3">
                 <div className="p-2 bg-purple-100 dark:bg-purple-900/20 rounded-lg">
-                  <Building2 className="h-5 w-5 text-purple-600" />
+                  <Zap className="h-5 w-5 text-purple-600" />
                 </div>
                 <div>
-                  <div className="font-medium text-gray-900 dark:text-white">M&A Integration</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">Strategic Change</div>
+                  <div className="font-medium text-gray-900 dark:text-white">Digital Transformation</div>
+                  <div className="text-xs text-purple-600 dark:text-purple-400 font-semibold">SPECIAL TEAMS</div>
                 </div>
               </CardContent>
             </Card>
 
             <Card 
-              className="cursor-pointer hover:border-cyan-400 hover:shadow-lg transition-all border-2 border-transparent"
+              className="cursor-pointer hover:border-purple-400 hover:shadow-lg transition-all border-2 border-transparent"
               onClick={() => {
-                setAnalysisName('Regulatory Change Impact');
-                setAnalysisDescription('Assess the operational and financial impact of new regulations, compliance requirements, or policy changes on business operations.');
+                setAnalysisName('AI Governance Framework');
+                setAnalysisDescription('Assess the operational and compliance impact of implementing AI governance policies including ethics review boards, model auditing, and deployment approval workflows.');
                 setScenarioType('regulatory');
                 setIndustry('general');
-                toast({ title: "Template Loaded", description: "Regulatory Change loaded" });
+                toast({ title: "Template Loaded", description: "AI Governance Framework loaded" });
               }}
-              data-testid="template-regulatory"
+              data-testid="template-ai-governance"
             >
               <CardContent className="p-4 flex items-center gap-3">
-                <div className="p-2 bg-cyan-100 dark:bg-cyan-900/20 rounded-lg">
-                  <FileText className="h-5 w-5 text-cyan-600" />
+                <div className="p-2 bg-purple-100 dark:bg-purple-900/20 rounded-lg">
+                  <FileText className="h-5 w-5 text-purple-600" />
                 </div>
                 <div>
-                  <div className="font-medium text-gray-900 dark:text-white">Regulatory Change</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">Compliance Impact</div>
+                  <div className="font-medium text-gray-900 dark:text-white">AI Governance</div>
+                  <div className="text-xs text-purple-600 dark:text-purple-400 font-semibold">SPECIAL TEAMS</div>
                 </div>
               </CardContent>
             </Card>
