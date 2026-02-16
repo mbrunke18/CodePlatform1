@@ -8,6 +8,171 @@ import sgMail from '@sendgrid/mail';
 
 const router = Router();
 
+function detectDomain(description: string): string {
+  const lower = description.toLowerCase();
+  const offenseKeywords = ['market entry', 'opportunity', 'expansion', 'launch', 'acquisition', 'm&a', 'merger', 'partnership', 'ipo', 'competitive position', 'new market', 'go-to-market', 'revenue', 'growth', 'customer acquisition'];
+  const defenseKeywords = ['ransomware', 'breach', 'crisis', 'attack', 'incident', 'outage', 'failure', 'recall', 'regulatory', 'compliance', 'threat', 'hack', 'security', 'fraud', 'litigation', 'whistleblower', 'safety'];
+  const specialKeywords = ['transformation', 'digital', 'migration', 'restructuring', 'ai governance', 'change management', 'automation', 'modernize', 'cloud', 'agile', 'innovation', 'esg', 'sustainability', 'culture'];
+  
+  const offenseScore = offenseKeywords.filter(k => lower.includes(k)).length;
+  const defenseScore = defenseKeywords.filter(k => lower.includes(k)).length;
+  const specialScore = specialKeywords.filter(k => lower.includes(k)).length;
+  
+  if (defenseScore >= offenseScore && defenseScore >= specialScore) return 'defense';
+  if (offenseScore >= specialScore) return 'offense';
+  return 'special_teams';
+}
+
+function getDomainFallback(domain: string, description: string) {
+  const fallbacks: Record<string, any> = {
+    offense: {
+      domain: 'offense',
+      domain_confidence: 0.85,
+      incident_type: 'Market Opportunity Delay',
+      matched_playbook: { code: '#MKT-001', name: 'Market Entry — Rapid Deployment Protocol', exists_in_library: true },
+      severity: 'high',
+      situation_summary: 'A significant market opportunity was identified but execution took too long due to coordination gaps, allowing competitors to move first.',
+      what_went_wrong: [
+        'No pre-built go-to-market playbook existed',
+        'Stakeholder alignment took months instead of minutes',
+        'Sequential approval process created bottlenecks',
+        'No pre-authorized decision thresholds for market investment',
+        'Competitive intelligence was not integrated into decision flow',
+        'No single owner for the opportunity capture'
+      ],
+      root_causes: [
+        { cause: 'Coordination Delay', description: 'Stakeholder alignment took months instead of minutes' },
+        { cause: 'Missing Playbook', description: 'No pre-built execution plan for market entry existed' },
+        { cause: 'Sequential Approvals', description: 'Each decision required a new meeting and approval cycle' },
+        { cause: 'No Pre-Authorization', description: 'Every investment decision required escalation' }
+      ],
+      estimated_impact: '$20-50M opportunity lost',
+      time_to_coordination: '6-9 months',
+      root_cause: 'Execution gap — the opportunity was clear but no coordination infrastructure existed to capture it quickly',
+      your_reality: [
+        { time: 'Week 1', description: 'Opportunity identified, initial discussions begin' },
+        { time: 'Month 1', description: 'Still building business case and seeking alignment' },
+        { time: 'Month 3', description: 'Stakeholder meetings ongoing, no clear decision' },
+        { time: 'Month 6', description: 'Approvals finally in progress, competitor already moving' },
+        { time: 'Month 9', description: 'Ready to execute but market window has closed' },
+        { time: 'Final', description: 'Competitor captured the opportunity — $20-50M lost' }
+      ],
+      with_executeiq: [
+        { time: '0:00', description: 'Market signal detected, entry playbook activated' },
+        { time: '0:02', description: '12 stakeholders notified across all functions' },
+        { time: '0:05', description: 'All critical roles acknowledged, go/no-go thresholds pre-cleared' },
+        { time: '0:08', description: 'Pre-authorized investment deployed, teams mobilized' },
+        { time: '0:12', description: 'Coordinated execution launched — first mover advantage captured' },
+        { time: 'Final', description: 'Market captured in 90 days with full coordination' }
+      ],
+      cost_without: '$30M opportunity lost',
+      cost_with: '$2M investment, $30M+ captured',
+      comparison_metrics: {
+        time_to_coordination: { reality: '6-9 months', executeiq: '12 minutes' },
+        stakeholder_alignment: { reality: 'Sequential over months', executeiq: 'Parallel in minutes' },
+        outcome: { reality: 'Missed opportunity', executeiq: 'First mover advantage' }
+      }
+    },
+    defense: {
+      domain: 'defense',
+      domain_confidence: 0.90,
+      incident_type: 'Coordination Failure',
+      matched_playbook: { code: '#SEC-001', name: 'Crisis Response — Multi-Stakeholder Protocol', exists_in_library: true },
+      severity: 'critical',
+      situation_summary: 'A critical threat materialized but response was delayed due to unclear ownership, missing playbooks, and ad-hoc coordination.',
+      what_went_wrong: [
+        'No clear incident owner identified in first 24 hours',
+        'No pre-built response playbook existed',
+        'Ad-hoc communication via emails and calls',
+        'No pre-authorized decision thresholds',
+        'Stakeholder notification was manual and incomplete',
+        'No documented escalation path'
+      ],
+      root_causes: [
+        { cause: 'No Clear Ownership', description: 'Nobody knew who was responsible for coordinating the response' },
+        { cause: 'Missing Playbook', description: 'No pre-built response plan existed for this scenario' },
+        { cause: 'Ad-hoc Communication', description: 'Used random calls and emails instead of structured notification' },
+        { cause: 'No Pre-Authorization', description: 'Every spending decision required a new approval meeting' }
+      ],
+      estimated_impact: '$8-15M',
+      time_to_coordination: '48-72 hours',
+      root_cause: 'Execution gap — strategy existed but coordination infrastructure did not',
+      your_reality: [
+        { time: 'Hour 0', description: 'Incident detected but unclear who owns the response' },
+        { time: 'Hour 4', description: 'Emails and calls trying to identify the right people' },
+        { time: 'Hour 12', description: 'Still no single owner — parallel efforts creating confusion' },
+        { time: 'Hour 24', description: 'News breaks before internal coordination is complete' },
+        { time: 'Hour 48-72', description: 'Finally assembled team, but damage already done' },
+        { time: 'Final', description: 'Contained after significant financial and reputational impact' }
+      ],
+      with_executeiq: [
+        { time: '0:00', description: 'Threat detected, response playbook activated automatically' },
+        { time: '0:02', description: '6 key stakeholders notified via Slack, SMS, and phone' },
+        { time: '0:05', description: 'All stakeholders acknowledged, tasks auto-assigned' },
+        { time: '0:08', description: 'Coordinated response fully underway, containment active' },
+        { time: '0:11', description: 'Situation contained, board briefing auto-generated' },
+        { time: 'Final', description: 'Resolved with minimal impact — $150-250K total cost' }
+      ],
+      cost_without: '$12M',
+      cost_with: '$200K',
+      comparison_metrics: {
+        time_to_coordination: { reality: '48-72 hours', executeiq: '12 minutes' },
+        stakeholder_alignment: { reality: 'Manual over days', executeiq: 'Automated in minutes' },
+        outcome: { reality: 'Significant damage', executeiq: 'Contained quickly' }
+      }
+    },
+    special_teams: {
+      domain: 'special_teams',
+      domain_confidence: 0.85,
+      incident_type: 'Transformation Stall',
+      matched_playbook: { code: '#TRN-001', name: 'Digital Transformation — Coordinated Execution Protocol', exists_in_library: true },
+      severity: 'high',
+      situation_summary: 'A major transformation initiative lost momentum due to conflicting priorities, unclear ownership, and stakeholder fatigue over an extended timeline.',
+      what_went_wrong: [
+        'No single owner for cross-functional coordination',
+        'Business units had conflicting priorities and timelines',
+        'Vendor selection and procurement took months',
+        'Lost executive sponsor without succession plan',
+        'No pre-defined RACI for transformation workstreams',
+        'Change management was reactive, not proactive'
+      ],
+      root_causes: [
+        { cause: 'Coordination Complexity', description: 'Multiple workstreams with no unified coordination mechanism' },
+        { cause: 'Stakeholder Fatigue', description: 'Extended timeline eroded buy-in and momentum' },
+        { cause: 'Missing Playbook', description: 'No pre-built transformation execution plan existed' },
+        { cause: 'No Pre-Authorization', description: 'Every resource decision required steering committee approval' }
+      ],
+      estimated_impact: '$40M spent, 30% delivered',
+      time_to_coordination: '18 months',
+      root_cause: 'Execution gap — transformation vision was clear but coordinated execution infrastructure was missing',
+      your_reality: [
+        { time: 'Month 1', description: 'Initiative approved, initial planning begins' },
+        { time: 'Month 3', description: 'Still selecting vendors and defining scope' },
+        { time: 'Month 6', description: 'First workstream launched but others stalled' },
+        { time: 'Month 12', description: 'Executive sponsor departs, momentum lost' },
+        { time: 'Month 18', description: 'Only 30% complete, budget exhausted' },
+        { time: 'Final', description: '$40M spent with minimal transformation achieved' }
+      ],
+      with_executeiq: [
+        { time: '0:00', description: 'Initiative triggered, transformation playbook activated' },
+        { time: '0:02', description: 'All workstream leads and sponsors notified' },
+        { time: '0:05', description: 'Dependencies mapped, blockers pre-cleared' },
+        { time: '0:10', description: 'Pre-authorized resources deployed, all teams aligned' },
+        { time: '0:12', description: 'Coordinated execution begins across all workstreams' },
+        { time: 'Final', description: 'Full transformation delivered on schedule, on budget' }
+      ],
+      cost_without: '$40M (30% delivered)',
+      cost_with: '$35M (100% delivered on schedule)',
+      comparison_metrics: {
+        time_to_coordination: { reality: '6+ months', executeiq: '12 minutes' },
+        stakeholder_alignment: { reality: 'Sequential over months', executeiq: 'Day 1 alignment' },
+        outcome: { reality: '30% delivered', executeiq: '100% on schedule' }
+      }
+    }
+  };
+  return fallbacks[domain] || fallbacks.defense;
+}
+
 // Helper to get SendGrid client (reuse from pilot-routes pattern)
 async function getSendGridClient() {
   const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
@@ -42,11 +207,12 @@ const activeSimulations = new Map<string, {
   intervalId?: NodeJS.Timeout;
 }>();
 
-// POST /api/incidents/analyze
+// POST /api/incidents/analyze - Strategic Situation Analyzer (all 3 domains)
 router.post('/analyze', async (req, res) => {
   try {
     const schema = z.object({
-      description: z.string().min(20, 'Please describe the incident in more detail (at least 20 characters)'),
+      description: z.string().min(20, 'Please describe the situation in more detail (at least 20 characters)'),
+      domain: z.enum(['offense', 'defense', 'special_teams', 'auto']).default('auto'),
       companyName: z.string().optional(),
       email: z.string().email().optional(),
     });
@@ -56,40 +222,62 @@ router.post('/analyze', async (req, res) => {
       return res.status(400).json({ error: parsed.error.errors[0].message });
     }
 
-    const { description, companyName, email } = parsed.data;
+    const { description, domain, companyName, email } = parsed.data;
 
-    const prompt = `You are an enterprise crisis and coordination analysis expert. A Fortune 1000 executive has described an incident their company experienced.
+    const prompt = `You are an expert in enterprise strategic execution across three domains:
+- OFFENSE (capturing opportunities): Market Entry, M&A, Product Launch, Geographic Expansion, Partnership Activation, IPO Readiness, Competitive Positioning
+- DEFENSE (containing threats): Crisis Response, Ransomware, Data Breach, Product Recall, Supplier Failure, Regulatory Investigation, Executive Departure
+- SPECIAL TEAMS (transformation initiatives): Digital Transformation, Competitive Response, AI Governance, Workforce Restructuring, Technology Migration, Cost Optimization
 
-Analyze this incident and return a JSON response with EXACTLY this structure (no markdown, no code fences, just raw JSON):
+A Fortune 1000 executive has described a strategic situation. Analyze it and classify into the right domain.
+
+${domain !== 'auto' ? `DOMAIN HINT: ${domain}` : 'AUTO-DETECT the domain from the description.'}
+
+Return ONLY raw JSON (no markdown, no code fences):
 {
-  "incident_type": "Category of incident (e.g., Ransomware Attack, Supply Chain Disruption, M&A Integration, Product Recall, Regulatory Change, Data Breach, Competitive Threat, Market Entry Failure, etc.)",
-  "what_went_wrong": ["Array of 4-6 specific failures that occurred", "Be very specific to their description"],
-  "estimated_impact": "$X-YM estimated financial impact",
-  "time_to_coordination": "Time it actually took to coordinate (extract from their description or estimate)",
-  "root_cause": "One-sentence root cause linking to execution/coordination gap",
+  "domain": "offense or defense or special_teams",
+  "domain_confidence": 0.95,
+  "incident_type": "Specific type label like Market Entry Delay, Ransomware Attack, Digital Transformation Stall",
+  "matched_playbook": {"code": "#MKT-001 or #SEC-001 or #TRN-001", "name": "Matched playbook name from 166 library", "exists_in_library": true},
+  "severity": "critical or high or medium",
+  "situation_summary": "2-3 sentence summary of what happened",
+  "what_went_wrong": ["Array of 4-6 specific execution failures", "Be specific to their description"],
+  "root_causes": [
+    {"cause": "Root Cause Name", "description": "One sentence explanation"},
+    {"cause": "Second Root Cause", "description": "Explanation"}
+  ],
+  "estimated_impact": "$X-YM estimated financial impact or opportunity cost",
+  "time_to_coordination": "Time it actually took (extract from description or estimate)",
+  "root_cause": "One-sentence root cause linking to execution gap",
   "your_reality": [
-    {"time": "Hour 0", "description": "What happened first"},
-    {"time": "Hour 1-4", "description": "Initial chaos"},
-    {"time": "Hour 8-12", "description": "Still figuring out ownership"},
-    {"time": "Hour 24+", "description": "Damage spreading"},
-    {"time": "Hour 48-72", "description": "Finally getting organized"},
-    {"time": "Final", "description": "Resolution with total cost"}
+    {"time": "appropriate time unit", "description": "What happened at this point"}
   ],
   "with_executeiq": [
-    {"time": "0:00", "description": "Trigger detected, playbook activated automatically"},
-    {"time": "0:02", "description": "All stakeholders notified with assigned roles"},
-    {"time": "0:05", "description": "Stakeholders acknowledged, tasks assigned"},
-    {"time": "0:08", "description": "Coordinated response underway"},
-    {"time": "0:11", "description": "Situation contained"},
-    {"time": "Final", "description": "Resolution with minimal cost"}
+    {"time": "0:00", "description": "Trigger/signal detected, playbook activated"},
+    {"time": "0:02", "description": "Stakeholders notified"},
+    {"time": "0:05", "description": "Acknowledged and tasks assigned"},
+    {"time": "0:08", "description": "Coordinated execution underway"},
+    {"time": "0:11", "description": "Aligned and executing"},
+    {"time": "Final", "description": "Outcome with ExecuteIQ"}
   ],
-  "cost_without": "$XM - the actual/estimated cost without ExecuteIQ",
-  "cost_with": "$XK - estimated cost with ExecuteIQ (typically 95-98% reduction)"
+  "cost_without": "$XM - actual cost/loss/opportunity missed",
+  "cost_with": "$XK - estimated cost with ExecuteIQ",
+  "comparison_metrics": {
+    "time_to_coordination": {"reality": "extracted timeline", "executeiq": "12 minutes"},
+    "stakeholder_alignment": {"reality": "description", "executeiq": "Parallel in minutes"},
+    "outcome": {"reality": "negative outcome", "executeiq": "positive outcome"}
+  }
 }
 
-IMPORTANT: Make the analysis deeply specific to what they described. Don't be generic. Reference their actual details.
+TIMELINE GUIDANCE by domain:
+- OFFENSE: Use Week/Month units (Week 1, Month 3, Month 9) for your_reality
+- DEFENSE: Use Hour units (Hour 1, Hour 8, Hour 24, Hour 72) for your_reality  
+- SPECIAL TEAMS: Use Month units (Month 1, Month 6, Month 12, Month 18) for your_reality
+- with_executeiq always uses minute units (0:00, 0:02, 0:05, etc.)
 
-Incident description: "${description}"`;
+IMPORTANT: Make the analysis deeply specific to what they described. Reference their actual details.
+
+Situation description: "${description}"`;
 
     let analysis;
     const aiResponse = await openAIService.analyzeText(prompt);
@@ -98,39 +286,8 @@ Incident description: "${description}"`;
       const cleaned = aiResponse.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
       analysis = JSON.parse(cleaned);
     } catch {
-      // Fallback structured response
-      analysis = {
-        incident_type: "Coordination Failure",
-        what_went_wrong: [
-          "No clear incident owner identified in first 24 hours",
-          "No pre-built response playbook existed",
-          "Ad-hoc communication via emails and calls",
-          "No pre-authorized decision thresholds",
-          "Stakeholder notification was manual and incomplete",
-          "No documented escalation path"
-        ],
-        estimated_impact: "$8-15M",
-        time_to_coordination: "48-72 hours",
-        root_cause: "Execution gap — strategy existed but coordination infrastructure didn't",
-        your_reality: [
-          { time: "Hour 0", description: "Incident detected but unclear who owns the response" },
-          { time: "Hour 4", description: "Emails and calls trying to identify the right people" },
-          { time: "Hour 12", description: "Still no single owner — parallel efforts creating confusion" },
-          { time: "Hour 24", description: "News breaks before internal coordination is complete" },
-          { time: "Hour 48-72", description: "Finally assembled team, but damage already done" },
-          { time: "Final", description: "Contained after significant financial and reputational impact" }
-        ],
-        with_executeiq: [
-          { time: "0:00", description: "Trigger detected, playbook activated automatically" },
-          { time: "0:02", description: "6 key stakeholders notified with assigned roles" },
-          { time: "0:05", description: "All stakeholders acknowledged, tasks auto-assigned" },
-          { time: "0:08", description: "Coordinated response fully underway" },
-          { time: "0:11", description: "Situation contained, communications deployed" },
-          { time: "Final", description: "Resolved with minimal impact — $150-250K total cost" }
-        ],
-        cost_without: "$12M",
-        cost_with: "$200K"
-      };
+      const detectedDomain = domain !== 'auto' ? domain : detectDomain(description);
+      analysis = getDomainFallback(detectedDomain, description);
     }
 
     const sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
@@ -478,18 +635,13 @@ router.get('/simulate/acknowledge', (req, res) => {
   `);
 });
 
-// POST /api/readiness/assess
+// POST /api/readiness/assess - Domain-aware readiness assessment
 router.post('/assess', async (req, res) => {
   try {
     const schema = z.object({
       companyName: z.string().optional(),
-      answers: z.object({
-        firstNotified: z.string(),
-        phoneNumber: z.string(),
-        firstActions: z.string(),
-        spendingAuthority: z.string(),
-        playbookLocation: z.string(),
-      }),
+      domain: z.enum(['offense', 'defense', 'special_teams']).default('defense'),
+      answers: z.record(z.string()),
     });
 
     const parsed = schema.safeParse(req.body);
@@ -497,69 +649,99 @@ router.post('/assess', async (req, res) => {
       return res.status(400).json({ error: parsed.error.errors[0].message });
     }
 
-    const { companyName, answers } = parsed.data;
+    const { companyName, domain, answers } = parsed.data;
 
     let score = 0;
     const gaps: string[] = [];
     const recommendations: string[] = [];
 
-    // Score each answer
-    if (answers.firstNotified && answers.firstNotified.length > 3) {
-      score += 20;
-    } else {
-      gaps.push("No clear incident owner identified");
-      recommendations.push("Designate a primary incident commander with 24/7 availability");
-    }
+    if (domain === 'offense') {
+      if (answers.coordinator && answers.coordinator.length > 3) { score += 20; }
+      else { gaps.push("No designated coordinator for market opportunities"); recommendations.push("Designate a strategic opportunity coordinator with cross-functional authority"); }
 
-    if (answers.phoneNumber && /\d{7,}/.test(answers.phoneNumber.replace(/\D/g, ''))) {
-      score += 15;
-    } else {
-      gaps.push("Contact information not readily available");
-      recommendations.push("Maintain an always-current emergency contact directory");
-    }
+      if (answers.speed === 'Under 1 week') score += 25;
+      else if (answers.speed === '1-4 weeks') score += 20;
+      else if (answers.speed === '1-3 months') score += 10;
+      else if (answers.speed === '3-6 months') score += 5;
+      else { gaps.push("Slow opportunity-to-decision cycle"); recommendations.push("Pre-authorize go/no-go thresholds to reduce decision latency"); }
 
-    if (answers.firstActions && answers.firstActions.length > 10) {
-      const actionCount = answers.firstActions.split(/[,;.\n]/).filter(a => a.trim().length > 2).length;
-      score += Math.min(25, actionCount * 8);
-      if (actionCount < 3) {
-        gaps.push("Insufficient initial response actions defined");
-        recommendations.push("Pre-define at least 5 immediate response actions for each scenario type");
-      }
-    } else {
-      gaps.push("No documented initial response actions");
-      recommendations.push("Create step-by-step action checklists for your top 5 risk scenarios");
-    }
-
-    if (answers.spendingAuthority && answers.spendingAuthority.length > 3) {
-      if (/\$|budget|authority|approve/i.test(answers.spendingAuthority)) {
+      if (answers.spendingAuthority && answers.spendingAuthority.length > 3 && answers.spendingAuthority.toLowerCase() !== 'no one') {
         score += 20;
-      } else {
-        score += 10;
-        gaps.push("Spending authority not clearly defined with dollar thresholds");
-        recommendations.push("Set pre-authorized spending limits: $50K (Director), $250K (VP), $1M (C-Suite)");
+      } else { gaps.push("No pre-authorized market entry spending authority"); recommendations.push("Establish pre-authorized spending thresholds: $1M (VP Strategy), $5M (CFO), $10M+ (CEO)"); }
+
+      if (answers.partners === 'Yes fully mapped') score += 20;
+      else if (answers.partners === 'Partially') { score += 10; gaps.push("Partner/vendor network only partially pre-qualified"); }
+      else { gaps.push("No pre-qualified partners or channels ready to activate"); recommendations.push("Build a pre-qualified partner network for rapid market entry deployment"); }
+
+      if (answers.playbookLocation === "We don't have one") {
+        gaps.push("No documented market entry playbook"); recommendations.push("Use ExecuteIQ's 58 Offense playbooks to build your market entry protocols");
+      } else if (answers.playbookLocation) {
+        score += 15;
+        if (['Confluence/SharePoint', 'Spreadsheets'].includes(answers.playbookLocation)) {
+          gaps.push("Playbook in static documents — not executable"); recommendations.push("Move to executable playbooks with automated triggers");
+        }
+      }
+    } else if (domain === 'defense') {
+      if (answers.firstNotified && answers.firstNotified.length > 3) { score += 20; }
+      else { gaps.push("No clear incident owner identified"); recommendations.push("Designate a primary incident commander with 24/7 availability"); }
+
+      if (answers.phoneNumber && /\d{7,}/.test(answers.phoneNumber.replace(/\D/g, ''))) { score += 15; }
+      else { gaps.push("Direct contact information not readily available"); recommendations.push("Maintain an always-current emergency contact directory"); }
+
+      if (answers.firstActions && answers.firstActions.length > 10) {
+        const actionCount = answers.firstActions.split(/[,;.\n]/).filter((a: string) => a.trim().length > 2).length;
+        score += Math.min(25, actionCount * 8);
+        if (actionCount < 3) { gaps.push("Insufficient initial response actions defined"); recommendations.push("Pre-define at least 5 immediate response actions for each scenario type"); }
+      } else { gaps.push("No documented initial response actions"); recommendations.push("Create step-by-step action checklists for your top 5 risk scenarios"); }
+
+      if (answers.spendingAuthority && answers.spendingAuthority.length > 3) {
+        if (/\$|budget|authority|approve/i.test(answers.spendingAuthority)) { score += 20; }
+        else { score += 10; gaps.push("Spending authority not clearly defined with dollar thresholds"); recommendations.push("Set pre-authorized spending limits: $50K (Director), $250K (VP), $1M (C-Suite)"); }
+      } else { gaps.push("No pre-authorized spending thresholds"); recommendations.push("Establish emergency spending authority without requiring a committee meeting"); }
+
+      if (answers.playbookLocation === "We don't have one" || answers.playbookLocation === "Don't have one") {
+        gaps.push("No documented response playbook exists"); recommendations.push("Use ExecuteIQ's 56 Defense playbooks to build your crisis response protocols");
+      } else if (answers.playbookLocation) {
+        score += 20;
+        if (['Confluence/SharePoint', 'Spreadsheets', 'Confluence', 'SharePoint', 'Google Doc'].includes(answers.playbookLocation)) {
+          gaps.push("Playbook stored in static documents — not executable"); recommendations.push("Move from static documents to executable playbooks");
+        }
       }
     } else {
-      gaps.push("No pre-authorized spending thresholds");
-      recommendations.push("Establish emergency spending authority without requiring a committee meeting");
-    }
+      if (answers.coordinator && answers.coordinator.length > 3) { score += 20; }
+      else { gaps.push("No cross-functional coordination owner"); recommendations.push("Designate a Transformation Lead with authority to coordinate across business units"); }
 
-    if (answers.playbookLocation === "Don't have one") {
-      gaps.push("No documented response playbook exists");
-      recommendations.push("Create response playbooks for your top risk scenarios using ExecuteIQ's 166 pre-built templates");
-    } else if (answers.playbookLocation) {
-      score += 20;
-      if (['Confluence', 'SharePoint', 'Google Doc'].includes(answers.playbookLocation)) {
-        gaps.push("Playbook stored in static documents — not executable");
-        recommendations.push("Move from static documents to executable playbooks with automated triggers and stakeholder coordination");
+      if (answers.alignmentSpeed === 'Under 1 week') score += 25;
+      else if (answers.alignmentSpeed === '1-4 weeks') score += 20;
+      else if (answers.alignmentSpeed === '1-3 months') score += 10;
+      else if (answers.alignmentSpeed === '3-6 months') score += 5;
+      else { gaps.push("Stakeholder alignment takes too long"); recommendations.push("Implement parallel coordination to reduce alignment time from months to minutes"); }
+
+      if (answers.raciMatrices === 'Yes for all scenarios') score += 20;
+      else if (answers.raciMatrices === 'Some scenarios') { score += 10; gaps.push("RACI matrices exist for some but not all scenarios"); }
+      else { gaps.push("No pre-defined RACI matrices for transformation scenarios"); recommendations.push("Build RACI matrices for your top transformation scenarios using ExecuteIQ templates"); }
+
+      if (answers.resourceAuthority && answers.resourceAuthority.length > 3 && !answers.resourceAuthority.toLowerCase().includes('steering committee')) {
+        score += 20;
+      } else { gaps.push("Resource reallocation requires steering committee approval"); recommendations.push("Pre-authorize resource reallocation up to 20% at the program lead level"); }
+
+      if (answers.playbookLocation === "We don't have one") {
+        gaps.push("No documented transformation playbook"); recommendations.push("Use ExecuteIQ's 52 Special Teams playbooks for transformation initiatives");
+      } else if (answers.playbookLocation) {
+        score += 15;
+        if (['Confluence/SharePoint', 'Spreadsheets'].includes(answers.playbookLocation)) {
+          gaps.push("Playbook in static documents — not executable"); recommendations.push("Move to executable playbooks with automated coordination");
+        }
       }
     }
 
     score = Math.min(100, Math.max(0, score));
-    const benchmark = score < 30 ? "less prepared than 87% of enterprises" 
-      : score < 50 ? "less prepared than 73% of enterprises"
-      : score < 70 ? "on par with 55% of enterprises"
-      : score < 85 ? "better prepared than 62% of enterprises"
-      : "in the top 15% of enterprise preparedness";
+    const domainLabel = domain === 'offense' ? 'OFFENSE' : domain === 'defense' ? 'DEFENSE' : 'SPECIAL TEAMS';
+    const benchmark = score < 30 ? `less prepared than 87% of enterprises in ${domainLabel}`
+      : score < 50 ? `less prepared than 73% of enterprises in ${domainLabel}`
+      : score < 70 ? `on par with 55% of enterprises in ${domainLabel}`
+      : score < 85 ? `better prepared than 62% of enterprises in ${domainLabel}`
+      : `in the top 15% of enterprise ${domainLabel} preparedness`;
 
     const sessionId = `readiness_${Date.now()}`;
     const [saved] = await db.insert(readinessAssessments).values({
@@ -574,6 +756,7 @@ router.post('/assess', async (req, res) => {
 
     res.json({
       id: saved.id,
+      domain,
       score,
       gaps,
       benchmark,

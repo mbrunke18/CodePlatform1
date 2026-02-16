@@ -32,11 +32,35 @@ import {
   DollarSign,
   Activity,
   CircleDot,
+  Settings,
+  Rocket,
 } from "lucide-react";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 
 const STEP_LABELS = ["Describe", "Analyze", "Playbook", "Simulate", "Report"];
+
+function domainColors(domain: string) {
+  switch (domain) {
+    case "offense":
+      return { bg: "bg-emerald-500/20", text: "text-emerald-400", border: "border-emerald-500/30", darkBg: "bg-emerald-950/30", label: "OFFENSE", realityBg: "bg-amber-950/30", realityBorder: "border-amber-500/20" };
+    case "special_teams":
+      return { bg: "bg-purple-500/20", text: "text-purple-400", border: "border-purple-500/30", darkBg: "bg-purple-950/30", label: "SPECIAL TEAMS", realityBg: "bg-purple-950/30", realityBorder: "border-purple-500/20" };
+    default:
+      return { bg: "bg-red-500/20", text: "text-red-400", border: "border-red-500/30", darkBg: "bg-red-950/30", label: "DEFENSE", realityBg: "bg-red-950/30", realityBorder: "border-red-500/20" };
+  }
+}
+
+function DomainIcon({ domain, className }: { domain: string; className?: string }) {
+  switch (domain) {
+    case "offense":
+      return <Target className={className} />;
+    case "special_teams":
+      return <Settings className={className} />;
+    default:
+      return <Shield className={className} />;
+  }
+}
 
 function raciColor(r: string) {
   switch (r?.toUpperCase()) {
@@ -58,8 +82,22 @@ function priorityColor(p: string) {
   }
 }
 
+function getPlaceholder(domain: string) {
+  switch (domain) {
+    case "offense":
+      return "Example: We identified a major opportunity to enter the Southeast Asian market before our competitors. By the time we aligned stakeholders...";
+    case "defense":
+      return "Example: Last year ransomware hit our Atlanta office. It took 3 days to figure out who was in charge...";
+    case "special_teams":
+      return "Example: We launched a digital transformation initiative to modernize our supply chain. After 18 months and $40M spent...";
+    default:
+      return "Describe any strategic situation \u2014 a crisis, an opportunity, a transformation, or a competitive threat...";
+  }
+}
+
 export default function IncidentAnalyzer() {
   const [currentStep, setCurrentStep] = useState(1);
+  const [selectedDomain, setSelectedDomain] = useState<'auto' | 'offense' | 'defense' | 'special_teams'>('auto');
   const [description, setDescription] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
@@ -91,6 +129,9 @@ export default function IncidentAnalyzer() {
     return `${String(m).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
   };
 
+  const activeDomain = analysis?.domain || (selectedDomain === 'auto' ? 'defense' : selectedDomain);
+  const dc = domainColors(activeDomain);
+
   const handleAnalyze = async () => {
     if (!description.trim()) return;
     setError("");
@@ -99,7 +140,7 @@ export default function IncidentAnalyzer() {
       const res = await fetch("/api/incidents/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ description, companyName, email }),
+        body: JSON.stringify({ description, companyName, email, domain: selectedDomain }),
       });
       if (!res.ok) throw new Error(`Analysis failed (${res.status})`);
       const data = await res.json();
@@ -107,7 +148,7 @@ export default function IncidentAnalyzer() {
       setIncidentId(data.incidentId || data.id || "inc-" + Date.now());
       setCurrentStep(2);
     } catch (e: any) {
-      setError(e.message || "Failed to analyze incident");
+      setError(e.message || "Failed to analyze situation");
     } finally {
       setIsAnalyzing(false);
     }
@@ -173,7 +214,6 @@ export default function IncidentAnalyzer() {
             }
           }
         } catch {
-          // continue polling
         }
       }, 1000);
     } catch (e: any) {
@@ -192,6 +232,7 @@ export default function IncidentAnalyzer() {
     if (timerRef.current) clearInterval(timerRef.current);
     if (pollingRef.current) clearInterval(pollingRef.current);
     setCurrentStep(1);
+    setSelectedDomain('auto');
     setDescription("");
     setCompanyName("");
     setEmail("");
@@ -218,7 +259,7 @@ export default function IncidentAnalyzer() {
     doc.text("ExecuteIQ", 105, 50, { align: "center" });
     doc.setFontSize(14);
     doc.setTextColor(94, 234, 212);
-    doc.text("Incident Analysis Report", 105, 65, { align: "center" });
+    doc.text("Strategic Analysis Report", 105, 65, { align: "center" });
     doc.setFontSize(10);
     doc.setTextColor(148, 163, 184);
     doc.text(`Generated: ${new Date().toLocaleDateString()}`, 105, 80, { align: "center" });
@@ -229,7 +270,7 @@ export default function IncidentAnalyzer() {
     doc.rect(0, 0, 210, 297, "F");
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(18);
-    doc.text("Incident Analysis", 20, 25);
+    doc.text("Strategic Analysis", 20, 25);
 
     doc.setFontSize(11);
     doc.setTextColor(148, 163, 184);
@@ -237,9 +278,14 @@ export default function IncidentAnalyzer() {
     doc.text(descLines, 20, 40);
 
     let y = 40 + descLines.length * 6 + 10;
-    if (analysis?.incidentType) {
+    if (analysis?.domain) {
       doc.setTextColor(94, 234, 212);
-      doc.text(`Incident Type: ${analysis.incidentType}`, 20, y);
+      doc.text(`Domain: ${analysis.domain.toUpperCase()}`, 20, y);
+      y += 10;
+    }
+    if (analysis?.incidentType || analysis?.incident_type) {
+      doc.setTextColor(94, 234, 212);
+      doc.text(`Type: ${analysis.incidentType || analysis.incident_type}`, 20, y);
       y += 10;
     }
     if (analysis?.estimatedImpact) {
@@ -268,7 +314,13 @@ export default function IncidentAnalyzer() {
       });
     }
 
-    if (analysis?.comparison?.length) {
+    const comparisonData = analysis?.comparison || analysis?.your_reality?.map((r: any, i: number) => ({
+      phase: r.phase || r.label || `Phase ${i + 1}`,
+      without: r.description || r.without || r.yourReality || "",
+      with: analysis?.with_executeiq?.[i]?.description || analysis?.with_executeiq?.[i]?.with || analysis?.with_executeiq?.[i]?.withExecuteIQ || "",
+    }));
+
+    if (comparisonData?.length) {
       doc.addPage();
       doc.setFillColor(15, 23, 42);
       doc.rect(0, 0, 210, 297, "F");
@@ -279,7 +331,7 @@ export default function IncidentAnalyzer() {
       autoTable(doc, {
         startY: 35,
         head: [["Phase", "Your Reality", "With ExecuteIQ"]],
-        body: analysis.comparison.map((row: any) => [
+        body: comparisonData.map((row: any) => [
           row.phase || row.label || "",
           row.without || row.yourReality || "",
           row.with || row.withExecuteIQ || "",
@@ -317,7 +369,7 @@ export default function IncidentAnalyzer() {
       doc.text(`Status: ${simulationData.status || "Completed"}`, 20, 50);
     }
 
-    doc.save("ExecuteIQ-Incident-Report.pdf");
+    doc.save("ExecuteIQ-Strategic-Report.pdf");
   };
 
   const generateBoardPDF = () => {
@@ -344,7 +396,7 @@ export default function IncidentAnalyzer() {
     doc.setFontSize(11);
     doc.setTextColor(226, 232, 240);
     const summaryLines = doc.splitTextToSize(
-      `An incident analysis was conducted for ${companyName || "the organization"} regarding: ${description.slice(0, 200)}...`,
+      `A strategic analysis was conducted for ${companyName || "the organization"} regarding: ${description.slice(0, 200)}...`,
       170
     );
     doc.text(summaryLines, 20, 40);
@@ -356,9 +408,10 @@ export default function IncidentAnalyzer() {
     y += 10;
     doc.setFontSize(10);
     doc.setTextColor(226, 232, 240);
-    if (analysis?.incidentType) { doc.text(`• Incident Type: ${analysis.incidentType}`, 25, y); y += 7; }
-    if (analysis?.estimatedImpact) { doc.text(`• Estimated Impact: ${analysis.estimatedImpact}`, 25, y); y += 7; }
-    if (analysis?.rootCause) { doc.text(`• Root Cause: ${analysis.rootCause}`, 25, y); y += 7; }
+    if (analysis?.domain) { doc.text(`\u2022 Domain: ${analysis.domain.toUpperCase()}`, 25, y); y += 7; }
+    if (analysis?.incidentType) { doc.text(`\u2022 Type: ${analysis.incidentType}`, 25, y); y += 7; }
+    if (analysis?.estimatedImpact) { doc.text(`\u2022 Estimated Impact: ${analysis.estimatedImpact}`, 25, y); y += 7; }
+    if (analysis?.rootCause) { doc.text(`\u2022 Root Cause: ${analysis.rootCause}`, 25, y); y += 7; }
 
     doc.addPage();
     doc.setFillColor(15, 23, 42);
@@ -403,11 +456,11 @@ export default function IncidentAnalyzer() {
       `Coordination time reduced from days to minutes`,
       `Impact avoided: ${analysis?.estimatedImpact || "Significant"}`,
       `Playbook pre-authorization eliminates decision bottlenecks`,
-      `Institutional memory captured for future incidents`,
+      `Institutional memory captured for future situations`,
     ];
     let roiY = 40;
     roiItems.forEach((item) => {
-      doc.text(`• ${item}`, 25, roiY);
+      doc.text(`\u2022 ${item}`, 25, roiY);
       roiY += 8;
     });
 
@@ -420,6 +473,19 @@ export default function IncidentAnalyzer() {
   const completedTaskCount = tasks.filter((t: any) => t.status === "completed" || t.completed).length;
   const simulationComplete = simulationData?.status === "completed" || simulationData?.completed;
 
+  const comparisonRows = analysis?.comparison || analysis?.your_reality?.map((r: any, i: number) => ({
+    phase: r.phase || r.label || `Phase ${i + 1}`,
+    without: r.description || r.without || r.yourReality || "",
+    with: analysis?.with_executeiq?.[i]?.description || analysis?.with_executeiq?.[i]?.with || analysis?.with_executeiq?.[i]?.withExecuteIQ || "",
+  }));
+
+  const simBannerConfig = (() => {
+    const d = activeDomain;
+    if (d === "offense") return { bg: "bg-emerald-950/30", border: "border-emerald-500/30", dotColor: "bg-emerald-400", textColor: "text-emerald-400", label: "OPPORTUNITY DETECTED" };
+    if (d === "special_teams") return { bg: "bg-purple-950/30", border: "border-purple-500/30", dotColor: "bg-purple-400", textColor: "text-purple-400", label: "INITIATIVE TRIGGERED" };
+    return { bg: "bg-teal-950/30", border: "border-teal-500/30", dotColor: "bg-teal-400", textColor: "text-teal-400", label: "Playbook Activated" };
+  })();
+
   return (
     <div className="min-h-screen bg-slate-950">
       <StandardNav />
@@ -428,13 +494,13 @@ export default function IncidentAnalyzer() {
         <div className="text-center mb-10">
           <Badge className="mb-4 bg-teal-500/20 text-teal-400 border-teal-500/30">
             <Brain className="w-4 h-4 mr-2" />
-            Incident Analyzer
+            Strategic Analyzer
           </Badge>
           <h1 className="text-4xl font-bold text-white mb-3">
-            AI-Powered Incident Analysis
+            See How ExecuteIQ Transforms Execution
           </h1>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Describe a past incident and get actionable playbooks, simulations, and executive reports
+            Describe any strategic situation. A crisis you faced. An opportunity you missed. A transformation that stalled.
           </p>
         </div>
 
@@ -483,13 +549,18 @@ export default function IncidentAnalyzer() {
         {/* Proof Points Bar */}
         <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 py-4 px-6 bg-slate-800/50 rounded-xl border border-slate-700/50 mb-8">
           <div className="text-center">
-            <div className="text-2xl font-bold text-teal-400">166</div>
-            <div className="text-xs text-slate-400">Playbooks Ready</div>
+            <div className="text-2xl font-bold text-emerald-400">58</div>
+            <div className="text-xs text-slate-400">Offense Playbooks</div>
           </div>
           <div className="w-px h-8 bg-slate-700" />
           <div className="text-center">
-            <div className="text-2xl font-bold text-teal-400">9</div>
-            <div className="text-xs text-slate-400">Strategic Domains</div>
+            <div className="text-2xl font-bold text-red-400">56</div>
+            <div className="text-xs text-slate-400">Defense Playbooks</div>
+          </div>
+          <div className="w-px h-8 bg-slate-700" />
+          <div className="text-center">
+            <div className="text-2xl font-bold text-purple-400">52</div>
+            <div className="text-xs text-slate-400">Special Teams</div>
           </div>
           <div className="w-px h-8 bg-slate-700" />
           <div className="text-center">
@@ -518,24 +589,90 @@ export default function IncidentAnalyzer() {
           </div>
         )}
 
-        {/* STEP 1: DESCRIBE INCIDENT */}
+        {/* STEP 1: DESCRIBE SITUATION */}
         {currentStep === 1 && (
           <Card className="bg-slate-900/80 border-slate-800">
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-2 text-2xl">
                 <FileText className="w-6 h-6 text-teal-400" />
-                Describe a Real Incident
+                Describe Your Situation
               </CardTitle>
               <p className="text-slate-400 mt-1">
                 Tell us about a crisis, missed opportunity, or coordination failure your company experienced.
               </p>
             </CardHeader>
             <CardContent className="space-y-6">
+              {/* Domain Selector */}
+              <div className="space-y-3">
+                <Label className="text-slate-300">Strategic Domain</Label>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <button
+                    onClick={() => setSelectedDomain('auto')}
+                    className={`relative rounded-xl border p-4 text-left transition-all ${
+                      selectedDomain === 'auto'
+                        ? 'bg-teal-500/10 border-teal-500/50 ring-1 ring-teal-500/30'
+                        : 'bg-slate-800/50 border-slate-700 hover:border-slate-600'
+                    }`}
+                  >
+                    <Brain className={`w-6 h-6 mb-2 ${selectedDomain === 'auto' ? 'text-teal-400' : 'text-slate-500'}`} />
+                    <p className={`text-sm font-semibold ${selectedDomain === 'auto' ? 'text-teal-400' : 'text-slate-300'}`}>
+                      Let AI Detect
+                    </p>
+                    <p className="text-xs text-slate-500 mt-1">Auto-classify</p>
+                  </button>
+                  <button
+                    onClick={() => setSelectedDomain('offense')}
+                    className={`relative rounded-xl border p-4 text-left transition-all ${
+                      selectedDomain === 'offense'
+                        ? 'bg-emerald-500/10 border-emerald-500/50 ring-1 ring-emerald-500/30'
+                        : 'bg-slate-800/50 border-slate-700 hover:border-slate-600'
+                    }`}
+                  >
+                    <Rocket className={`w-6 h-6 mb-2 ${selectedDomain === 'offense' ? 'text-emerald-400' : 'text-slate-500'}`} />
+                    <p className={`text-sm font-semibold ${selectedDomain === 'offense' ? 'text-emerald-400' : 'text-slate-300'}`}>
+                      OFFENSE
+                    </p>
+                    <p className="text-xs text-slate-500 mt-0.5">58 Playbooks</p>
+                    <p className="text-xs text-slate-600 mt-1">Market Entry &bull; M&amp;A &bull; Product Launch</p>
+                  </button>
+                  <button
+                    onClick={() => setSelectedDomain('defense')}
+                    className={`relative rounded-xl border p-4 text-left transition-all ${
+                      selectedDomain === 'defense'
+                        ? 'bg-red-500/10 border-red-500/50 ring-1 ring-red-500/30'
+                        : 'bg-slate-800/50 border-slate-700 hover:border-slate-600'
+                    }`}
+                  >
+                    <Shield className={`w-6 h-6 mb-2 ${selectedDomain === 'defense' ? 'text-red-400' : 'text-slate-500'}`} />
+                    <p className={`text-sm font-semibold ${selectedDomain === 'defense' ? 'text-red-400' : 'text-slate-300'}`}>
+                      DEFENSE
+                    </p>
+                    <p className="text-xs text-slate-500 mt-0.5">56 Playbooks</p>
+                    <p className="text-xs text-slate-600 mt-1">Crisis &bull; Cyber &bull; Regulatory</p>
+                  </button>
+                  <button
+                    onClick={() => setSelectedDomain('special_teams')}
+                    className={`relative rounded-xl border p-4 text-left transition-all ${
+                      selectedDomain === 'special_teams'
+                        ? 'bg-purple-500/10 border-purple-500/50 ring-1 ring-purple-500/30'
+                        : 'bg-slate-800/50 border-slate-700 hover:border-slate-600'
+                    }`}
+                  >
+                    <Settings className={`w-6 h-6 mb-2 ${selectedDomain === 'special_teams' ? 'text-purple-400' : 'text-slate-500'}`} />
+                    <p className={`text-sm font-semibold ${selectedDomain === 'special_teams' ? 'text-purple-400' : 'text-slate-300'}`}>
+                      SPECIAL TEAMS
+                    </p>
+                    <p className="text-xs text-slate-500 mt-0.5">52 Playbooks</p>
+                    <p className="text-xs text-slate-600 mt-1">Digital Transformation &bull; AI Governance</p>
+                  </button>
+                </div>
+              </div>
+
               <div className="space-y-2">
-                <Label className="text-slate-300">Incident Description *</Label>
+                <Label className="text-slate-300">Situation Description *</Label>
                 <Textarea
                   rows={6}
-                  placeholder="Last year ransomware hit our Atlanta office. It took 3 days to figure out who was in charge. By then it had spread to 4 other locations."
+                  placeholder={getPlaceholder(selectedDomain)}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   className="bg-slate-800/50 border-slate-700 text-white placeholder:text-slate-600 focus:border-teal-500 resize-none"
@@ -584,7 +721,7 @@ export default function IncidentAnalyzer() {
                     </>
                   ) : (
                     <>
-                      <Zap className="w-5 h-5" /> Analyze Incident
+                      <Zap className="w-5 h-5" /> Analyze My Situation
                     </>
                   )}
                 </Button>
@@ -603,14 +740,49 @@ export default function IncidentAnalyzer() {
                     <Brain className="w-6 h-6 text-teal-400" />
                     AI Analysis Results
                   </CardTitle>
-                  {analysis.incidentType && (
-                    <Badge className="bg-teal-500/20 text-teal-400 border-teal-500/30 text-sm">
-                      {analysis.incidentType}
-                    </Badge>
-                  )}
+                  <div className="flex items-center gap-2">
+                    {analysis.domain && (
+                      <Badge className={`${dc.bg} ${dc.text} ${dc.border} text-sm`}>
+                        <DomainIcon domain={activeDomain} className="w-3.5 h-3.5 mr-1.5" />
+                        {dc.label}
+                      </Badge>
+                    )}
+                    {(analysis.incidentType || analysis.incident_type) && (
+                      <Badge className="bg-teal-500/20 text-teal-400 border-teal-500/30 text-sm">
+                        {analysis.incidentType || analysis.incident_type}
+                      </Badge>
+                    )}
+                  </div>
                 </div>
               </CardHeader>
               <CardContent className="space-y-6">
+                {/* Matched Playbook */}
+                {analysis.matched_playbook && (
+                  <div className={`${dc.darkBg} border ${dc.border} rounded-xl p-5`}>
+                    <div className="flex items-center gap-3 mb-2">
+                      <BookOpen className={`w-5 h-5 ${dc.text}`} />
+                      <h4 className={`font-semibold ${dc.text}`}>Matched Playbook</h4>
+                    </div>
+                    <div className="flex items-center gap-3 mb-2">
+                      {analysis.matched_playbook.code && (
+                        <Badge className="bg-slate-800 text-slate-300 border-slate-700 text-xs">
+                          {analysis.matched_playbook.code}
+                        </Badge>
+                      )}
+                      <span className="text-white font-medium">{analysis.matched_playbook.name}</span>
+                    </div>
+                    <p className={`text-sm ${dc.text}`}>This playbook exists. Ready to deploy today.</p>
+                  </div>
+                )}
+
+                {/* Situation Summary */}
+                {analysis.situation_summary && (
+                  <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-4">
+                    <h4 className="text-sm font-semibold text-teal-400 mb-2">Situation Summary</h4>
+                    <p className="text-slate-300 text-sm">{analysis.situation_summary}</p>
+                  </div>
+                )}
+
                 {/* Stats */}
                 <div className="grid md:grid-cols-2 gap-4">
                   {analysis.estimatedImpact && (
@@ -652,8 +824,28 @@ export default function IncidentAnalyzer() {
                   </div>
                 )}
 
-                {/* Root Cause */}
-                {analysis.rootCause && (
+                {/* Root Causes (array) */}
+                {analysis.root_causes?.length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                      <Target className="w-5 h-5 text-amber-400" />
+                      Root Causes
+                    </h3>
+                    <div className="grid md:grid-cols-2 gap-3">
+                      {analysis.root_causes.map((cause: any, i: number) => (
+                        <div key={i} className="bg-amber-950/20 border border-amber-500/20 rounded-lg p-3">
+                          <p className="text-sm font-medium text-white">{typeof cause === 'string' ? cause : cause.title || cause.name || cause.description}</p>
+                          {typeof cause !== 'string' && cause.detail && (
+                            <p className="text-xs text-slate-400 mt-1">{cause.detail}</p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Root Cause (single) */}
+                {analysis.rootCause && !analysis.root_causes && (
                   <div className="bg-amber-950/20 border border-amber-500/30 rounded-xl p-4">
                     <h4 className="text-sm font-semibold text-amber-400 mb-2 flex items-center gap-2">
                       <Target className="w-4 h-4" /> Root Cause
@@ -662,8 +854,35 @@ export default function IncidentAnalyzer() {
                   </div>
                 )}
 
+                {/* Comparison Metrics */}
+                {analysis.comparison_metrics?.length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-3">Comparison Metrics</h3>
+                    <div className="overflow-x-auto rounded-xl border border-slate-700">
+                      <table className="w-full">
+                        <thead>
+                          <tr className="bg-slate-800">
+                            <th className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase">Metric</th>
+                            <th className="px-4 py-3 text-left text-xs font-semibold text-red-400 uppercase">Without</th>
+                            <th className="px-4 py-3 text-left text-xs font-semibold text-teal-400 uppercase">With ExecuteIQ</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {analysis.comparison_metrics.map((m: any, i: number) => (
+                            <tr key={i} className="border-t border-slate-800">
+                              <td className="px-4 py-3 text-sm font-medium text-slate-300">{m.metric || m.label || m.name}</td>
+                              <td className="px-4 py-3 text-sm text-red-300">{m.without || m.before || m.current}</td>
+                              <td className="px-4 py-3 text-sm text-teal-300">{m.with || m.after || m.improved}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
+
                 {/* Side-by-Side Comparison */}
-                {analysis.comparison?.length > 0 && (
+                {comparisonRows?.length > 0 && (
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-3">Side-by-Side Comparison</h3>
                     <div className="overflow-x-auto rounded-xl border border-slate-700">
@@ -673,7 +892,7 @@ export default function IncidentAnalyzer() {
                             <th className="bg-slate-800 px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase w-1/4">
                               Phase
                             </th>
-                            <th className="bg-red-950/40 px-4 py-3 text-left text-xs font-semibold text-red-400 uppercase w-[37.5%]">
+                            <th className={`${activeDomain === 'offense' ? 'bg-amber-950/40' : activeDomain === 'special_teams' ? 'bg-purple-950/40' : 'bg-red-950/40'} px-4 py-3 text-left text-xs font-semibold ${activeDomain === 'offense' ? 'text-amber-400' : activeDomain === 'special_teams' ? 'text-purple-400' : 'text-red-400'} uppercase w-[37.5%]`}>
                               Your Reality
                             </th>
                             <th className="bg-teal-950/40 px-4 py-3 text-left text-xs font-semibold text-teal-400 uppercase w-[37.5%]">
@@ -682,12 +901,12 @@ export default function IncidentAnalyzer() {
                           </tr>
                         </thead>
                         <tbody>
-                          {analysis.comparison.map((row: any, i: number) => (
+                          {comparisonRows.map((row: any, i: number) => (
                             <tr key={i} className="border-t border-slate-800">
                               <td className="bg-slate-900/50 px-4 py-3 text-sm font-medium text-slate-300">
                                 {row.phase || row.label}
                               </td>
-                              <td className="bg-red-950/10 px-4 py-3 text-sm text-red-300">
+                              <td className={`${activeDomain === 'offense' ? 'bg-amber-950/10' : activeDomain === 'special_teams' ? 'bg-purple-950/10' : 'bg-red-950/10'} px-4 py-3 text-sm ${activeDomain === 'offense' ? 'text-amber-300' : activeDomain === 'special_teams' ? 'text-purple-300' : 'text-red-300'}`}>
                                 {row.without || row.yourReality}
                               </td>
                               <td className="bg-teal-950/10 px-4 py-3 text-sm text-teal-300">
@@ -695,16 +914,16 @@ export default function IncidentAnalyzer() {
                               </td>
                             </tr>
                           ))}
-                          {(analysis.costWithout || analysis.costWith) && (
+                          {(analysis.costWithout || analysis.costWith || analysis.cost_without || analysis.cost_with) && (
                             <tr className="border-t-2 border-slate-700">
                               <td className="bg-slate-900/50 px-4 py-4 text-sm font-bold text-white">
                                 Total Cost
                               </td>
-                              <td className="bg-red-950/20 px-4 py-4 text-lg font-bold text-red-400">
-                                {analysis.costWithout}
+                              <td className={`${activeDomain === 'offense' ? 'bg-amber-950/20' : activeDomain === 'special_teams' ? 'bg-purple-950/20' : 'bg-red-950/20'} px-4 py-4 text-lg font-bold ${activeDomain === 'offense' ? 'text-amber-400' : activeDomain === 'special_teams' ? 'text-purple-400' : 'text-red-400'}`}>
+                                {analysis.costWithout || analysis.cost_without}
                               </td>
                               <td className="bg-teal-950/20 px-4 py-4 text-lg font-bold text-teal-400">
-                                {analysis.costWith}
+                                {analysis.costWith || analysis.cost_with}
                               </td>
                             </tr>
                           )}
@@ -741,7 +960,6 @@ export default function IncidentAnalyzer() {
         {/* STEP 3: GENERATED PLAYBOOK */}
         {currentStep === 3 && (editablePlaybook || playbook) && (
           <div className="space-y-6">
-            {/* Playbook Header */}
             <Card className="bg-slate-900/80 border-slate-800">
               <CardHeader>
                 <div className="flex items-center justify-between flex-wrap gap-3">
@@ -770,8 +988,9 @@ export default function IncidentAnalyzer() {
                     </Badge>
                   )}
                   {editablePlaybook?.domain && (
-                    <Badge className="bg-teal-500/20 text-teal-400 border-teal-500/30">
-                      {editablePlaybook.domain}
+                    <Badge className={`${domainColors(editablePlaybook.domain).bg} ${domainColors(editablePlaybook.domain).text} ${domainColors(editablePlaybook.domain).border}`}>
+                      <DomainIcon domain={editablePlaybook.domain} className="w-3.5 h-3.5 mr-1" />
+                      {domainColors(editablePlaybook.domain).label}
                     </Badge>
                   )}
                   {editablePlaybook?.category && (
@@ -944,10 +1163,10 @@ export default function IncidentAnalyzer() {
         {/* STEP 4: LIVE SIMULATION */}
         {currentStep === 4 && (
           <div className="space-y-6">
-            {/* Playbook Activated Alert */}
-            <div className="bg-teal-950/30 border border-teal-500/30 rounded-xl p-4 flex items-center gap-3">
-              <div className="w-3 h-3 bg-teal-400 rounded-full animate-pulse" />
-              <span className="text-teal-400 font-semibold">Playbook Activated</span>
+            {/* Domain-colored Alert Banner */}
+            <div className={`${simBannerConfig.bg} border ${simBannerConfig.border} rounded-xl p-4 flex items-center gap-3`}>
+              <div className={`w-3 h-3 ${simBannerConfig.dotColor} rounded-full animate-pulse`} />
+              <span className={`${simBannerConfig.textColor} font-semibold`}>{simBannerConfig.label}</span>
               <span className="text-slate-400 text-sm ml-auto">
                 {editablePlaybook?.name || playbook?.name || "Simulation Running"}
               </span>
@@ -1060,7 +1279,7 @@ export default function IncidentAnalyzer() {
             </div>
 
             {simulationComplete && (
-              <div className="bg-emerald-950/30 border border-emerald-500/30 rounded-xl p-6 text-center">
+              <div className={`${dc.darkBg} border ${dc.border} rounded-xl p-6 text-center`}>
                 <CheckCircle className="w-10 h-10 text-emerald-400 mx-auto mb-3" />
                 <h3 className="text-xl font-bold text-white mb-2">Simulation Complete</h3>
                 <p className="text-slate-400 mb-4">
@@ -1084,7 +1303,7 @@ export default function IncidentAnalyzer() {
                   onClick={handleGoToReport}
                   className="text-slate-400 border-slate-700 hover:bg-slate-800 hover:text-white"
                 >
-                  Skip to Report →
+                  Skip to Report
                 </Button>
               </div>
             )}
@@ -1101,7 +1320,7 @@ export default function IncidentAnalyzer() {
                 </div>
                 <h2 className="text-3xl font-bold text-white mb-2">Your Executive Report is Ready</h2>
                 <p className="text-slate-400 max-w-lg mx-auto">
-                  Download your incident analysis, playbook, and simulation results as professional PDF reports.
+                  Download your strategic analysis, playbook, and simulation results as professional PDF reports.
                 </p>
               </CardContent>
             </Card>
@@ -1109,9 +1328,9 @@ export default function IncidentAnalyzer() {
             {/* Summary Cards */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-center">
-                <Shield className="w-6 h-6 text-teal-400 mx-auto mb-2" />
-                <p className="text-xs text-slate-500 mb-1">Incident Type</p>
-                <p className="text-sm font-semibold text-white">{analysis?.incidentType || "Analyzed"}</p>
+                <DomainIcon domain={activeDomain} className={`w-6 h-6 ${dc.text} mx-auto mb-2`} />
+                <p className="text-xs text-slate-500 mb-1">Domain</p>
+                <p className={`text-sm font-semibold ${dc.text}`}>{dc.label}</p>
               </div>
               <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-center">
                 <DollarSign className="w-6 h-6 text-emerald-400 mx-auto mb-2" />
@@ -1135,7 +1354,7 @@ export default function IncidentAnalyzer() {
               <Card className="bg-slate-900/80 border-slate-800 hover:border-teal-500/30 transition-colors cursor-pointer group">
                 <CardContent className="pt-6 text-center">
                   <Download className="w-10 h-10 text-teal-400 mx-auto mb-3 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-lg font-semibold text-white mb-2">Incident Report</h3>
+                  <h3 className="text-lg font-semibold text-white mb-2">Strategic Analysis Report</h3>
                   <p className="text-sm text-slate-400 mb-4">
                     Complete analysis with side-by-side comparison, playbook summary, and simulation results
                   </p>
@@ -1143,7 +1362,7 @@ export default function IncidentAnalyzer() {
                     onClick={generateIncidentPDF}
                     className="bg-teal-500 hover:bg-teal-600 text-white gap-2 w-full"
                   >
-                    <Download className="w-4 h-4" /> Download Incident Report (PDF)
+                    <Download className="w-4 h-4" /> Download Strategic Report (PDF)
                   </Button>
                 </CardContent>
               </Card>
@@ -1185,7 +1404,7 @@ export default function IncidentAnalyzer() {
               McKinsey, BCG, Bain, Deloitte, PwC, and 10 more firms all published 2025-2026 guides confirming the execution infrastructure gap.
             </p>
             <p className="text-slate-400 text-sm">
-              ExecuteIQ is that infrastructure — ready to deploy today.
+              ExecuteIQ is that infrastructure -- ready to deploy today.
             </p>
           </div>
         </div>

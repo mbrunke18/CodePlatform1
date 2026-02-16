@@ -326,7 +326,7 @@ export default function Homepage() {
               data-testid="button-incident-analyzer"
             >
               <AlertTriangle className="mr-2 h-5 w-5" />
-              Try the Incident Analyzer
+              Try the Strategic Analyzer
             </Button>
             <Button 
               size="lg" 
