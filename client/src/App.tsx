@@ -38,6 +38,7 @@ import UATAdmin from "./pages/UATAdmin";
 import PlaybookActivationConsole from "./pages/PlaybookActivationConsole";
 import WhatIfAnalyzer from "./pages/WhatIfAnalyzer";
 import PreparednessReport from "./pages/PreparednessReport";
+import ReadinessAssessment from "./pages/ReadinessAssessment";
 import PlaybookLibraryV2 from "./pages/PlaybookLibraryV2";
 import PlaybookDetail from "./pages/PlaybookDetail";
 import PlaybookCommand from "./pages/PlaybookCommand";
@@ -135,6 +136,7 @@ import PlaybookManagement from "./pages/PlaybookManagement";
 import TaskManagement from "./pages/TaskManagement";
 import StakeholderManagement from "./pages/StakeholderManagement";
 import PilotDemo from "./pages/PilotDemo";
+import IncidentAnalyzer from "./pages/IncidentAnalyzer";
 import TryDemo from "./pages/TryDemo";
 import LiveActivationCenter from "./pages/LiveActivationCenter";
 import KeynoteDemo from "./pages/KeynoteDemo";
@@ -483,6 +485,8 @@ function Router() {
         <Route path="/sandbox-demo" component={SandboxDemo} />
         <Route path="/try-it" component={TryDemo} />
         <Route path="/pilot-demo" component={PilotDemo} />
+        <Route path="/incident-analyzer" component={IncidentAnalyzer} />
+        <Route path="/readiness-assessment" component={ReadinessAssessment} />
         <Route path="/video" component={VideoLanding} />
         <Route path="/cinematic" component={VideoLanding} />
         <Route path="/sizzle" component={VideoLanding} />

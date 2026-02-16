@@ -151,6 +151,16 @@ export const PUBLIC_ROUTES = [
   '/api/pilot/scenarios',
   '/api/pilot/playbooks',
   
+  // Incident Analysis & Readiness Assessment - public demo for prospects
+  '/api/incidents/analyze',
+  '/api/incidents/generate-playbook',
+  '/api/incidents/simulate',
+  '/api/incidents/simulate/status/:simulationId',
+  '/api/incidents/simulate/acknowledge',
+  '/api/incidents/what-if',
+  '/api/incidents/:id',
+  '/api/readiness/assess',
+  
   // Deal Risk Demo - public demo for pipeline risk detection
   '/api/demo/deal-risk/status',
   '/api/demo/deal-risk/identify/connect-salesforce',

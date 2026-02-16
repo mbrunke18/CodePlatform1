@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket } from "lucide-react";
+import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, ClipboardCheck, FlaskConical } from "lucide-react";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { useLocation } from "wouter";
 import { useAuth } from "@/hooks/useAuth";
@@ -71,6 +71,12 @@ export default function StandardNav() {
     { label: "Board Briefings", path: "/board-briefings", icon: FileText, description: "Executive reporting" },
     { label: "Our Story", path: "/our-story", icon: BookOpen, description: "The ExecuteIQ journey" },
     { label: "Founder's Story", path: "/founder-story", icon: Video, description: "Vision behind ExecuteIQ" },
+  ];
+
+  const experienceLinks = [
+    { label: "Incident Analyzer", path: "/incident-analyzer", icon: AlertCircle, description: "Analyze real incidents with AI" },
+    { label: "Readiness Assessment", path: "/readiness-assessment", icon: ClipboardCheck, description: "Evaluate your execution readiness" },
+    { label: "What-If Analyzer", path: "/what-if-analyzer", icon: FlaskConical, description: "Scenario modeling & simulation" },
   ];
 
   const intelligenceLinks = [
@@ -167,6 +173,7 @@ export default function StandardNav() {
           <div className="hidden lg:flex items-center gap-0.5">
             {renderDropdown("Product", productLinks)}
             {renderDropdown("Solutions", solutionsLinks)}
+            {renderDropdown("Experience", experienceLinks, undefined, true)}
             {renderDropdown("Demos", demosLinks)}
             {renderDropdown("Platform", platformLinks)}
             {renderDropdown("Investors", investorsLinks, undefined, true)}
@@ -289,6 +296,20 @@ export default function StandardNav() {
                 </button>
               ))}
               
+              <div className="border-t border-slate-800 my-3" />
+              
+              <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide font-semibold">Experience</p>
+              {experienceLinks.map((link) => (
+                <button
+                  key={link.path}
+                  onClick={() => navigateTo(link.path)}
+                  className="text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-slate-300 hover:text-white hover:bg-slate-800"
+                >
+                  <link.icon className="h-4 w-4 text-poise-gold" />
+                  {link.label}
+                </button>
+              ))}
+
               <div className="border-t border-slate-800 my-3" />
 
               <p className="px-4 py-2 text-xs text-poise-teal uppercase tracking-wide font-semibold">Platform</p>

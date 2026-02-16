@@ -297,7 +297,7 @@ export default function Homepage() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
             <Button 
               size="lg" 
               onClick={() => setLocation('/how-it-works')}
@@ -316,6 +316,27 @@ export default function Homepage() {
             >
               <BookOpen className="mr-2 h-5 w-5" />
               Explore Playbooks
+            </Button>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+            <Button 
+              size="lg" 
+              onClick={() => setLocation('/incident-analyzer')}
+              className="text-lg px-8 py-6 bg-gradient-to-r from-[#D4AF37] to-amber-600 hover:from-amber-600 hover:to-[#D4AF37] shadow-lg shadow-amber-500/25 text-white"
+              data-testid="button-incident-analyzer"
+            >
+              <AlertTriangle className="mr-2 h-5 w-5" />
+              Try the Incident Analyzer
+            </Button>
+            <Button 
+              size="lg" 
+              onClick={() => setLocation('/readiness-assessment')}
+              variant="outline"
+              className="text-lg px-8 py-6 border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#D4AF37]/10 bg-transparent"
+              data-testid="button-readiness-assessment"
+            >
+              <Shield className="mr-2 h-5 w-5" />
+              Check Your Readiness
             </Button>
           </div>
         </div>

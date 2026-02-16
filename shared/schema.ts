@@ -5788,6 +5788,83 @@ export const insertDecisionLogSchema = createInsertSchema(decisionLog).omit({
   createdAt: true,
 });
 
+// ============================================================================
+// EXECUTEIQ INCIDENT ANALYSIS TABLES
+// ============================================================================
+
+// Incident Analyses - Core incident analysis data
+export const incidentAnalyses = pgTable('incident_analyses', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  sessionId: varchar('session_id', { length: 100 }),
+  companyName: varchar('company_name', { length: 255 }),
+  incidentDescription: text('incident_description').notNull(),
+  incidentType: varchar('incident_type', { length: 100 }),
+  whatWentWrong: jsonb('what_went_wrong').$type<string[]>(),
+  estimatedImpact: varchar('estimated_impact', { length: 100 }),
+  timeToCoordination: varchar('time_to_coordination', { length: 100 }),
+  rootCause: text('root_cause'),
+  yourReality: jsonb('your_reality').$type<Array<{ time: string; description: string }>>(),
+  withExecuteIQ: jsonb('with_execute_iq').$type<Array<{ time: string; description: string }>>(),
+  costWithout: varchar('cost_without', { length: 100 }),
+  costWith: varchar('cost_with', { length: 100 }),
+  generatedPlaybook: jsonb('generated_playbook'),
+  simulationResults: jsonb('simulation_results'),
+  readinessScore: integer('readiness_score'),
+  readinessGaps: jsonb('readiness_gaps'),
+  whatIfResults: jsonb('what_if_results'),
+  email: varchar('email', { length: 255 }),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+export type IncidentAnalysis = typeof incidentAnalyses.$inferSelect;
+export type InsertIncidentAnalysis = z.infer<typeof insertIncidentAnalysisSchema>;
+
+export const insertIncidentAnalysisSchema = createInsertSchema(incidentAnalyses).omit({
+  id: true,
+  createdAt: true,
+});
+
+// Readiness Assessments - Readiness scoring and gap analysis
+export const readinessAssessments = pgTable('readiness_assessments', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  sessionId: varchar('session_id', { length: 100 }),
+  companyName: varchar('company_name', { length: 255 }),
+  answers: jsonb('answers').notNull(),
+  score: integer('score').notNull(),
+  gaps: jsonb('gaps').$type<string[]>(),
+  benchmark: varchar('benchmark', { length: 100 }),
+  recommendations: jsonb('recommendations'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+export type ReadinessAssessment = typeof readinessAssessments.$inferSelect;
+export type InsertReadinessAssessment = z.infer<typeof insertReadinessAssessmentSchema>;
+
+export const insertReadinessAssessmentSchema = createInsertSchema(readinessAssessments).omit({
+  id: true,
+  createdAt: true,
+});
+
+// What-If Runs - What-if scenario analysis results
+export const whatIfRuns = pgTable('what_if_runs', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  incidentAnalysisId: uuid('incident_analysis_id').references(() => incidentAnalyses.id),
+  scenario: text('scenario').notNull(),
+  originalTime: varchar('original_time', { length: 50 }),
+  modifiedTime: varchar('modified_time', { length: 50 }),
+  impact: text('impact'),
+  recommendation: text('recommendation'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+export type WhatIfRun = typeof whatIfRuns.$inferSelect;
+export type InsertWhatIfRun = z.infer<typeof insertWhatIfRunSchema>;
+
+export const insertWhatIfRunSchema = createInsertSchema(whatIfRuns).omit({
+  id: true,
+  createdAt: true,
+});
+
 // Types for Enhanced Execution
 export type PreflightCheckResultRecord = typeof preflightCheckResults.$inferSelect;
 export type InsertPreflightCheckResultRecord = typeof preflightCheckResults.$inferInsert;

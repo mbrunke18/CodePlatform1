@@ -111,6 +111,25 @@ export default function InvestorLanding() {
               </Button>
               <Button 
                 size="lg"
+                onClick={() => setLocation("/incident-analyzer")}
+                className="bg-gradient-to-r from-amber-500 to-yellow-600 text-white hover:from-amber-600 hover:to-yellow-700 shadow-lg shadow-amber-500/25"
+                data-testid="button-incident-analyzer"
+              >
+                <AlertTriangle className="mr-2 h-5 w-5" />
+                Try the Incident Analyzer
+              </Button>
+              <Button 
+                size="lg"
+                variant="outline"
+                onClick={() => setLocation("/readiness-assessment")}
+                className="border-cyan-400 text-cyan-300 hover:bg-cyan-400/10"
+                data-testid="button-readiness-assessment"
+              >
+                <Shield className="mr-2 h-5 w-5" />
+                Check Your Readiness
+              </Button>
+              <Button 
+                size="lg"
                 variant="outline"
                 onClick={() => setLocation("/business-scenarios")}
                 className="border-white text-white hover:bg-white/10"

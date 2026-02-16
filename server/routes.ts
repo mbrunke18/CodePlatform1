@@ -10,6 +10,7 @@ import { preparednessScoring } from "./preparedness-scoring";
 import intelligenceRoutes from "./routes/intelligence-routes";
 import pilotRoutes from "./routes/pilot-routes";
 import demoRiskRoutes from "./routes/demoRiskRoutes";
+import incidentRoutes from "./routes/incident-routes";
 import { registerActivationRoutes } from "./routes/activation-routes";
 import { setupAuth, isAuthenticated, hasPermission } from "./replitAuth";
 import { registerAudioRoutes } from "./replit_integrations/audio";
@@ -129,6 +130,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Deal Risk Demo routes (no auth required)
   app.use('/api/demo/deal-risk', demoRiskRoutes);
+
+  // Incident Analysis routes (no auth required)
+  app.use('/api/incidents', incidentRoutes);
+  app.use('/api/readiness', incidentRoutes);
 
   // Live Activation routes
   registerActivationRoutes(app);

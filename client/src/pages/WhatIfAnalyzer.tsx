@@ -118,6 +118,167 @@ interface AnalysisResult {
   confidenceLevel: number;
 }
 
+function AIQuickAnalysis() {
+  const [scenario, setScenario] = useState('');
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [result, setResult] = useState<any>(null);
+  const [error, setError] = useState('');
+
+  const presetScenarios = [
+    "What if we add a board approval step before any external communications?",
+    "What if the CISO is unavailable during the incident?",
+    "What if we need legal review on all external comms?",
+    "What if the incident happens outside business hours?",
+    "What if we add a mandatory 30-minute assessment period?",
+    "What if we require dual authorization for spending over $100K?",
+  ];
+
+  const runAnalysis = async () => {
+    if (!scenario.trim()) return;
+    setIsAnalyzing(true);
+    setError('');
+    setResult(null);
+
+    try {
+      const response = await fetch('/api/incidents/what-if', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          scenario,
+          playbook: { name: 'Standard Response Playbook', tasks: Array(8).fill(null), stakeholders: Array(6).fill(null) },
+        }),
+      });
+      if (!response.ok) throw new Error('Analysis failed');
+      const data = await response.json();
+      setResult(data);
+    } catch (err: any) {
+      setError(err.message || 'Analysis failed');
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      <Card className="border-teal-200 dark:border-teal-800 bg-gradient-to-br from-teal-50 to-white dark:from-teal-900/20 dark:to-slate-900">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Sparkles className="h-5 w-5 text-teal-600" />
+            AI-Powered What-If Analysis
+          </CardTitle>
+          <CardDescription>
+            Describe a playbook modification and AI will analyze its impact on coordination time.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex flex-wrap gap-2 mb-4">
+            {presetScenarios.map((s, i) => (
+              <Button
+                key={i}
+                variant="outline"
+                size="sm"
+                className="text-xs"
+                onClick={() => setScenario(s)}
+              >
+                {s.length > 50 ? s.substring(0, 50) + '...' : s}
+              </Button>
+            ))}
+          </div>
+
+          <Textarea
+            value={scenario}
+            onChange={(e: any) => setScenario(e.target.value)}
+            placeholder="Describe a modification to your playbook... e.g., 'What if we add a board approval step?'"
+            className="min-h-[80px]"
+          />
+
+          <Button
+            onClick={runAnalysis}
+            disabled={isAnalyzing || !scenario.trim()}
+            className="bg-teal-600 hover:bg-teal-700 text-white"
+          >
+            {isAnalyzing ? (
+              <><Activity className="h-4 w-4 mr-2 animate-spin" /> Analyzing...</>
+            ) : (
+              <><Sparkles className="h-4 w-4 mr-2" /> Analyze Impact</>
+            )}
+          </Button>
+
+          {error && (
+            <Alert variant="destructive">
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+          )}
+        </CardContent>
+      </Card>
+
+      {result && (
+        <Card className="border-slate-200 dark:border-slate-700">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <BarChart3 className="h-5 w-5 text-blue-600" />
+              Impact Analysis Results
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid md:grid-cols-3 gap-4 mb-6">
+              <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4 text-center">
+                <Clock className="h-5 w-5 text-green-600 mx-auto mb-1" />
+                <div className="text-sm text-green-600 dark:text-green-400">Original Time</div>
+                <div className="text-2xl font-bold text-green-700 dark:text-green-300">{result.original_time}</div>
+              </div>
+              <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-4 text-center">
+                <Clock className="h-5 w-5 text-red-600 mx-auto mb-1" />
+                <div className="text-sm text-red-600 dark:text-red-400">Modified Time</div>
+                <div className="text-2xl font-bold text-red-700 dark:text-red-300">{result.modified_time}</div>
+              </div>
+              <div className="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-4 text-center">
+                <TrendingUp className="h-5 w-5 text-amber-600 mx-auto mb-1" />
+                <div className="text-sm text-amber-600 dark:text-amber-400">Impact</div>
+                <div className="text-2xl font-bold text-amber-700 dark:text-amber-300">{result.impact}</div>
+              </div>
+            </div>
+
+            <div className={`rounded-lg p-4 mb-4 ${
+              result.recommendation?.includes('Not recommended') 
+                ? 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800'
+                : result.recommendation?.includes('Conditionally')
+                ? 'bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800'
+                : 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800'
+            }`}>
+              <div className="flex items-start gap-2">
+                {result.recommendation?.includes('Not recommended') ? (
+                  <XCircle className="h-5 w-5 text-red-600 mt-0.5 flex-shrink-0" />
+                ) : result.recommendation?.includes('Conditionally') ? (
+                  <AlertTriangle className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                ) : (
+                  <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                )}
+                <div>
+                  <div className="font-semibold text-slate-800 dark:text-white">Recommendation</div>
+                  <p className="text-slate-600 dark:text-slate-300">{result.recommendation}</p>
+                </div>
+              </div>
+            </div>
+
+            {result.risk_assessment && (
+              <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-4">
+                <div className="flex items-start gap-2">
+                  <Shield className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-slate-800 dark:text-white">Risk Assessment</div>
+                    <p className="text-slate-600 dark:text-slate-300">{result.risk_assessment}</p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      )}
+    </div>
+  );
+}
+
 export default function WhatIfAnalyzer() {
   const { toast } = useToast();
   
@@ -783,6 +944,10 @@ export default function WhatIfAnalyzer() {
 
           <Tabs defaultValue="analyzer" className="space-y-6">
             <TabsList className="bg-white dark:bg-slate-800">
+              <TabsTrigger value="ai-quick" data-testid="tab-ai-quick">
+                <Sparkles className="h-4 w-4 mr-2" />
+                AI Quick Analysis
+              </TabsTrigger>
               <TabsTrigger value="analyzer" data-testid="tab-analyzer">
                 <FlaskConical className="h-4 w-4 mr-2" />
                 Scenario Analyzer
@@ -792,6 +957,10 @@ export default function WhatIfAnalyzer() {
                 Saved Scenarios ({savedScenarios.length})
               </TabsTrigger>
             </TabsList>
+
+            <TabsContent value="ai-quick" className="space-y-6">
+              <AIQuickAnalysis />
+            </TabsContent>
 
             <TabsContent value="analyzer" className="space-y-6">
               {/* Load Template Section */}
