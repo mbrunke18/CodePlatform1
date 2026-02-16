@@ -35,7 +35,7 @@ import {
   Globe2,
   ExternalLink
 } from "lucide-react";
-import { useLocation } from "wouter";
+import { useLocation, Link } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
 import VideoIntro from "@/components/marketing/VideoIntro";
@@ -787,6 +787,35 @@ export default function Homepage() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industry Consensus */}
+      <section className="py-12 px-6 bg-gradient-to-r from-emerald-950 via-slate-900 to-emerald-950">
+        <div className="max-w-5xl mx-auto">
+          <div className="bg-emerald-900/20 border border-emerald-700/40 rounded-2xl p-8 text-center">
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <Sparkles className="h-5 w-5 text-emerald-400" />
+              <span className="text-emerald-400 font-semibold text-sm uppercase tracking-wider">Agentic AI Convergence</span>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
+              In the last 6 months, <span className="text-emerald-400">12 major guides</span> from <span className="text-emerald-400">9 leading firms</span> have confirmed this gap.
+            </h3>
+            <p className="text-slate-300 max-w-3xl mx-auto mb-4">
+              McKinsey, IBM, BCG, Bain, PwC, Accenture, Deloitte, AWS, and World Economic Forum — all independently published research pointing at the same conclusion: enterprises need execution infrastructure to operationalize AI.
+            </p>
+            <p className="text-emerald-400 font-semibold">
+              Every firm is consulting on the problem. ExecuteIQ built the product.
+            </p>
+            <div className="mt-4">
+              <Link href="/research">
+                <Button variant="outline" className="border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10 bg-transparent">
+                  See the Full Research
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

@@ -27,9 +27,9 @@ const firms = [
 ];
 
 const quotes = [
-  { firm: "BCG", quote: "AI transformation shifting from CIO-led to CEO-led mandate" },
-  { firm: "IBM", quote: "The smarter enterprise requires new operating models" },
-  { firm: "McKinsey", quote: "CIOs evolving from cost managers to strategy architects" },
+  { firm: "IBM", quote: "The operating model required to run AI at scale" },
+  { firm: "Bain", quote: "The data, platforms, and systems needed before scale is possible" },
+  { firm: "McKinsey", quote: "Organization design and work change with agents" },
 ];
 
 export function Validation({ progress }: SceneProps) {
@@ -68,9 +68,18 @@ export function Validation({ progress }: SceneProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="text-base md:text-lg text-white/60 text-center mb-6 max-w-2xl mx-auto"
+          className="text-base md:text-lg text-white/60 text-center mb-2 max-w-2xl mx-auto"
         >
-          The world's top consulting and technology firms independently confirm the problem ExecuteIQ solves.
+          The world's top consulting and technology firms all confirm the same gap.
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="text-sm text-white/40 text-center mb-6"
+        >
+          20+ reports. One conclusion: enterprises need execution infrastructure to operationalize AI.
         </motion.p>
 
         <motion.div
@@ -119,13 +128,13 @@ export function Validation({ progress }: SceneProps) {
           transition={{ delay: 2.5 }}
           className="text-sm text-white/50 text-center mt-6"
         >
-          From <span className="text-indigo-400 font-semibold">8 flagship reports</span> across consulting, technology, and research.
+          <span className="text-indigo-400 font-semibold">15 firms. 20+ reports.</span> Every one points at the gap ExecuteIQ fills.
         </motion.p>
       </div>
 
       <NarrationBox
         headline="15 Firms. One Conclusion."
-        description="BCG, IBM, McKinsey, Deloitte, Accenture, Microsoft, Google Cloud, World Economic Forum and more — all independently confirm enterprises need execution infrastructure. ExecuteIQ is that infrastructure."
+        description="15 firms including McKinsey, IBM, BCG, Bain, Deloitte, PwC, Accenture, Microsoft, Google Cloud, and World Economic Forum — all independently confirm enterprises need execution infrastructure to operationalize AI. ExecuteIQ built it."
         delay={0.5}
       />
     </div>

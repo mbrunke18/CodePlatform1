@@ -520,6 +520,114 @@ export default function InvestorLanding() {
           </div>
         </section>
 
+        {/* Agentic AI Convergence */}
+        <section className="py-16 px-6 bg-gradient-to-br from-emerald-950 via-slate-900 to-indigo-950 text-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-10">
+              <Badge className="mb-4 bg-emerald-600 text-white border-0 text-sm px-4 py-1.5">
+                Last 6 Months
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                12 Guides. 9 Firms. One Conclusion.
+              </h2>
+              <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-6">
+                The entire agentic AI landscape — from McKinsey to AWS to WEF — published in the last 6-8 months, all pointing at the same gap ExecuteIQ fills.
+              </p>
+              <div className="flex items-center justify-center gap-8 mb-8">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-emerald-400">12</div>
+                  <div className="text-slate-400 text-sm">Guides</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-emerald-400">9</div>
+                  <div className="text-slate-400 text-sm">Firms</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-emerald-400">6 mo</div>
+                  <div className="text-slate-400 text-sm">Published</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-emerald-400">1</div>
+                  <div className="text-slate-400 text-sm">Conclusion</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-4 mb-8">
+              <div className="bg-slate-800/50 border border-blue-500/30 rounded-xl p-5">
+                <div className="text-blue-400 font-bold text-sm mb-3 uppercase tracking-wider">Strategy</div>
+                <div className="space-y-3 text-sm">
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-300"><span className="text-white font-medium">McKinsey</span> — State of AI reality check</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-300"><span className="text-white font-medium">PwC</span> — Making AI agents accretive to P&L</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-300"><span className="text-white font-medium">McKinsey</span> — The Agentic AI Opportunity</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-300"><span className="text-white font-medium">Accenture</span> — Six Insights for AI ROI</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-slate-800/50 border border-emerald-500/30 rounded-xl p-5">
+                <div className="text-emerald-400 font-bold text-sm mb-3 uppercase tracking-wider">Build</div>
+                <div className="space-y-3 text-sm">
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-300"><span className="text-white font-medium">AWS</span> — Rise of Autonomous Agents</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-300"><span className="text-white font-medium">Bain</span> — Foundations for Agentic AI</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-300"><span className="text-white font-medium">IBM</span> — Agentic AI Operating Model</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-300"><span className="text-white font-medium">Deloitte</span> — Agentic Enterprise 2028</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-slate-800/50 border border-amber-500/30 rounded-xl p-5">
+                <div className="text-amber-400 font-bold text-sm mb-3 uppercase tracking-wider">Leadership</div>
+                <div className="space-y-3 text-sm">
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-300"><span className="text-white font-medium">BCG</span> — Machines That Manage Themselves</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-300"><span className="text-white font-medium">McKinsey</span> — The Agentic Organization</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-300"><span className="text-white font-medium">WEF</span> — AI Agents in Action</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-300"><span className="text-white font-medium">McKinsey</span> — Seizing the Agentic AI Advantage</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-5 bg-emerald-900/30 border border-emerald-700/50 rounded-lg text-center">
+              <p className="text-emerald-300 font-semibold mb-1">Every firm is consulting on the problem. ExecuteIQ built the product.</p>
+              <p className="text-slate-400 text-sm">166 playbooks, 9 strategic domains, pre-defined governance — ready today.</p>
+            </div>
+          </div>
+        </section>
+
         {/* Competitive Moat */}
         <section className="py-16 px-6 bg-white dark:bg-slate-900">
           <div className="max-w-7xl mx-auto">
