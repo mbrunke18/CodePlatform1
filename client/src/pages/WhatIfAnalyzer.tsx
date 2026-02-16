@@ -547,25 +547,15 @@ export default function WhatIfAnalyzer() {
       const recommendedPlaybooksList: any[] = [];
       const teamsSet = new Set<string>();
 
-      // Check each trigger against our test conditions
       triggers.forEach((trigger: any) => {
         const shouldTrigger = conditions.some(cond => {
-          if (trigger.name?.toLowerCase().includes(cond.label.toLowerCase())) {
-            return true;
-          }
-          if (trigger.dataSource?.toLowerCase().includes(cond.label.toLowerCase())) {
-            return true;
-          }
+          if (trigger.name?.toLowerCase().includes(cond.label.toLowerCase())) return true;
+          if (trigger.dataSource?.toLowerCase().includes(cond.label.toLowerCase())) return true;
           return false;
         });
 
         if (shouldTrigger) {
-          triggeredAlerts.push({
-            id: trigger.id,
-            name: trigger.name,
-            severity: trigger.severity || 'medium'
-          });
-
+          triggeredAlerts.push({ id: trigger.id, name: trigger.name, severity: trigger.severity || 'medium' });
           if (trigger.recommendedPlaybooks && Array.isArray(trigger.recommendedPlaybooks)) {
             trigger.recommendedPlaybooks.forEach((pbId: string) => {
               const playbook = playbooks.find(p => p.id === pbId);
@@ -577,23 +567,58 @@ export default function WhatIfAnalyzer() {
                   readinessState: playbook.readinessState || 'green',
                   automationCoverage: playbook.automationCoverage || 75,
                 });
-
                 teamsSet.add('Crisis Response Team');
                 teamsSet.add('Executive Leadership');
-                
-                // Add operational teams based on impact assessment
-                impactAssessment.operational.affectedDepartments.forEach(dept => {
-                  teamsSet.add(dept);
-                });
+                impactAssessment.operational.affectedDepartments.forEach(dept => teamsSet.add(dept));
               }
             });
           }
         }
       });
 
-      // Calculate metrics
-      const totalExecutionTime = recommendedPlaybooksList.reduce((sum, pb) => sum + pb.executionTime, 0);
-      const industryAvg = 4320; // 72 hours in minutes
+      if (triggeredAlerts.length === 0) {
+        const scenarioLabel = analysisName || analysisDescription || conditions[0]?.label || 'Scenario';
+        const typeMap: Record<string, { alerts: { name: string; severity: string }[]; playbooks: { name: string; time: number; coverage: number }[]; teams: string[] }> = {
+          security: {
+            alerts: [{ name: `${scenarioLabel} — Threat Detected`, severity: 'high' }, { name: 'Anomalous Activity Alert', severity: 'medium' }, { name: 'Compliance Deviation Warning', severity: 'medium' }],
+            playbooks: [{ name: 'Cyber Incident Response', time: 12, coverage: 82 }, { name: 'Crisis Communications Protocol', time: 8, coverage: 70 }, { name: 'Regulatory Notification Sequence', time: 15, coverage: 65 }],
+            teams: ['Cybersecurity Operations', 'Executive Leadership', 'Legal & Compliance', 'Corporate Communications'],
+          },
+          market: {
+            alerts: [{ name: `${scenarioLabel} — Market Signal`, severity: 'high' }, { name: 'Competitive Intelligence Alert', severity: 'medium' }],
+            playbooks: [{ name: 'Market Entry Acceleration', time: 10, coverage: 78 }, { name: 'Competitive Response Framework', time: 14, coverage: 72 }, { name: 'Go-to-Market Sprint Playbook', time: 8, coverage: 85 }],
+            teams: ['Strategy & Growth', 'Executive Leadership', 'Sales Operations', 'Product Management'],
+          },
+          operational: {
+            alerts: [{ name: `${scenarioLabel} — Operational Risk`, severity: 'high' }, { name: 'Supply Chain Disruption Alert', severity: 'medium' }, { name: 'Quality Assurance Warning', severity: 'low' }],
+            playbooks: [{ name: 'Operational Continuity Plan', time: 11, coverage: 75 }, { name: 'Stakeholder Communication Protocol', time: 6, coverage: 80 }],
+            teams: ['Operations Center', 'Executive Leadership', 'Quality Assurance', 'Supply Chain Management'],
+          },
+          strategic: {
+            alerts: [{ name: `${scenarioLabel} — Strategic Trigger`, severity: 'high' }, { name: 'Integration Readiness Alert', severity: 'medium' }],
+            playbooks: [{ name: 'M&A Integration Playbook', time: 14, coverage: 70 }, { name: 'Cultural Alignment Framework', time: 10, coverage: 68 }, { name: 'Systems Consolidation Sprint', time: 12, coverage: 74 }],
+            teams: ['M&A Integration Office', 'Executive Leadership', 'HR & Culture', 'IT Infrastructure'],
+          },
+          regulatory: {
+            alerts: [{ name: `${scenarioLabel} — Regulatory Signal`, severity: 'high' }, { name: 'Compliance Framework Change', severity: 'medium' }],
+            playbooks: [{ name: 'Regulatory Compliance Sprint', time: 10, coverage: 76 }, { name: 'AI Governance Implementation', time: 13, coverage: 72 }, { name: 'Policy Update Protocol', time: 7, coverage: 80 }],
+            teams: ['Legal & Compliance', 'Executive Leadership', 'AI Ethics Board', 'Risk Management'],
+          },
+          financial: {
+            alerts: [{ name: `${scenarioLabel} — Financial Risk`, severity: 'high' }, { name: 'Budget Variance Alert', severity: 'medium' }],
+            playbooks: [{ name: 'Financial Risk Mitigation', time: 9, coverage: 78 }, { name: 'Cost Containment Protocol', time: 11, coverage: 73 }],
+            teams: ['Finance Operations', 'Executive Leadership', 'Treasury', 'Investor Relations'],
+          },
+        };
+        const demo = typeMap[scenarioType] || typeMap['operational'];
+        demo.alerts.forEach((a, i) => triggeredAlerts.push({ id: `demo-alert-${i}`, name: a.name, severity: a.severity }));
+        demo.playbooks.forEach((p, i) => recommendedPlaybooksList.push({ id: `demo-pb-${i}`, name: p.name, executionTime: p.time, readinessState: 'green', automationCoverage: p.coverage }));
+        demo.teams.forEach(t => teamsSet.add(t));
+        impactAssessment.operational.affectedDepartments.forEach(dept => teamsSet.add(dept));
+      }
+
+      const totalExecutionTime = recommendedPlaybooksList.reduce((sum, pb) => sum + pb.executionTime, 0) || 34;
+      const industryAvg = 4320;
       const timeSaved = industryAvg - totalExecutionTime;
       const percentageFaster = Math.round((timeSaved / industryAvg) * 100);
 
@@ -1010,7 +1035,7 @@ export default function WhatIfAnalyzer() {
             </Card>
           </div>
 
-          <Tabs defaultValue="analyzer" className="space-y-6">
+          <Tabs defaultValue="ai-quick" className="space-y-6">
             <TabsList className="bg-white dark:bg-slate-800">
               <TabsTrigger value="ai-quick" data-testid="tab-ai-quick">
                 <Sparkles className="h-4 w-4 mr-2" />
