@@ -1,185 +1,173 @@
-import { useEffect, lazy } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { Loader2 } from "lucide-react";
+
 import NotFound from "@/pages/not-found";
-import Dashboard from "@/pages/Dashboard";
-import CrisisResponse from "@/pages/CrisisResponse";
-// ScenarioTemplates consolidated into PlaybookLibrary
-import UnifiedEnterprisePlatform from "@/pages/UnifiedEnterprisePlatform";
-import ExecutiveSuite from "@/pages/ExecutiveSuite";
-import AIIntelligence from "@/pages/AIIntelligence";
-import BusinessIntelligence from "@/pages/BusinessIntelligence";
-import VCPresentations from "@/pages/VCPresentations";
-// ComprehensiveScenarios consolidated into PlaybookLibrary
-import EnterpriseMetrics from "@/pages/EnterpriseMetrics";
-import Settings from "@/pages/Settings";
-import CrisisResponseCenter from "./pages/CrisisResponseCenter";
-import CrisisDetail from "./pages/CrisisDetail";
-import StrategicPlanningHub from "./pages/StrategicPlanningHub";
-import ExecutiveAnalyticsDashboard from "./pages/ExecutiveAnalyticsDashboard";
-import ComprehensiveAIIntelligence from "./pages/ComprehensiveAIIntelligence";
-import RealTimeCollaboration from "./pages/RealTimeCollaboration";
-import AuditLoggingCenter from "./pages/AuditLoggingCenter";
-import IntegrationHub from "./pages/IntegrationHub";
-import IntegrationsPage from "./pages/IntegrationsPage";
-import IntegrationConnections from "./pages/IntegrationConnections";
-import AdvancedAnalytics from "./pages/AdvancedAnalytics";
-import TriggersManagement from "./pages/TriggersManagement";
-import PulseIntelligence from "./pages/PulseIntelligence";
-import FluxAdaptations from "./pages/FluxAdaptations";
-import PrismInsights from "./pages/PrismInsights";
-import EchoCulturalAnalytics from "./pages/EchoCulturalAnalytics";
-import NovaInnovations from "./pages/NovaInnovations";
-import ExecutiveWarRoomPage from "./pages/ExecutiveWarRoomPage";
-import UATAdmin from "./pages/UATAdmin";
-import PlaybookActivationConsole from "./pages/PlaybookActivationConsole";
-import WhatIfAnalyzer from "./pages/WhatIfAnalyzer";
-import PreparednessReport from "./pages/PreparednessReport";
+import Homepage from "./pages/Homepage";
+import HowItWorks from "./pages/HowItWorks";
+import TryDemo from "./pages/TryDemo";
+import IncidentAnalyzer from "./pages/IncidentAnalyzer";
 import ReadinessAssessment from "./pages/ReadinessAssessment";
+import WhatIfAnalyzer from "./pages/WhatIfAnalyzer";
 import PlaybookLibraryV2 from "./pages/PlaybookLibraryV2";
 import PlaybookDetail from "./pages/PlaybookDetail";
-import PlaybookCommand from "./pages/PlaybookCommand";
-import PlaybookSettings from "./pages/PlaybookSettings";
-import PracticeDrills from "./pages/PracticeDrills";
-import LiveDrillExecution from "./pages/LiveDrillExecution";
-import ExecutionLearningDashboard from "./pages/NFLLearningDashboard";
-import DemoRouter from "./pages/DemoRouter";
-import InvestorDemo from "./pages/InvestorDemo";
-import CustomerDemo from "./pages/CustomerDemo";
-import RoadshowResources from "./pages/RoadshowResources";
-import AIIntelligenceHub from "./pages/AIIntelligenceHub";
-import IntelligenceControlCenter from "./pages/IntelligenceControlCenter";
-import ExecutiveScorecard from "./pages/ExecutiveScorecard";
-import AIRadarDashboard from "./pages/AIRadarDashboard";
-import SignalIntelligenceHub from "./pages/SignalIntelligenceHub";
-import InstitutionalMemory from "./pages/InstitutionalMemory";
-import DrillTrackingSystem from "./pages/DrillTrackingSystem";
-import BoardBriefings from "./pages/BoardBriefings";
-import MarketingLanding from "./pages/MarketingLanding";
-// ScenarioGallery consolidated into PlaybookLibrary
-import InvestorLanding from "./pages/InvestorLanding";
-import InvestorResources from "./pages/InvestorResources";
-import DecisionVelocityPage from "./pages/DecisionVelocityPage";
-import DecisionVelocityDashboard from "./pages/DecisionVelocityDashboard";
-import DecisionTreeBuilder from "./pages/DecisionTreeBuilder";
-import ExecutionCoordination from "./pages/ExecutionCoordination";
-import OperatingModelHealthReport from "./pages/OperatingModelHealthReport";
-import OperatingModelAlignment from "./pages/OperatingModelAlignment";
-import ComprehensiveROIBreakdown from "./pages/ComprehensiveROIBreakdown";
-import OurStory from "./pages/OurStory";
-import WhyExecuteIQ from "./pages/WhyExecuteIQ";
-import Research from "./pages/Research";
 import Contact from "./pages/Contact";
 import Pricing from "./pages/Pricing";
 import Investors from "./pages/Investors";
-import PilotMonitoring from "./pages/PilotMonitoring";
-import CrisisExposureMatrix from "./pages/CrisisExposureMatrix";
-import SimulationStudio from "./pages/SimulationStudio";
-import LuxuryCrisisDemo from "./pages/LuxuryCrisisDemo";
-import IndustryDemosHub from "./pages/IndustryDemosHub";
-import FinancialRansomwareDemo from "./pages/FinancialRansomwareDemo";
-import LVMHMarketEntryDemo from "./pages/LVMHMarketEntryDemo";
-import SHEINTrendDemo from "./pages/SHEINTrendDemo";
-import SpaceXLaunchDemo from "./pages/SpaceXLaunchDemo";
-import PharmaceuticalRecallDemo from "./pages/PharmaceuticalRecallDemo";
-import ManufacturingSupplierDemo from "./pages/ManufacturingSupplierDemo";
-import RetailFoodSafetyDemo from "./pages/RetailFoodSafetyDemo";
-import EnergyGridFailureDemo from "./pages/EnergyGridFailureDemo";
-import DemoLiveActivation from "./pages/DemoLiveActivation";
-import DealRiskDemo from "./pages/DealRiskDemo";
-import RoleSelector from "./pages/RoleSelector";
-import Homepage from "./pages/Homepage";
-import McKinseyIntelligenceCenter from "./pages/mckinsey/McKinseyIntelligenceCenter";
-import FutureReadinessDashboard from "./pages/FutureReadinessDashboard";
 import ExecutiveDashboard from "./pages/ExecutiveDashboard";
-import StrategyExecutionDashboard from "./pages/StrategyExecutionDashboard";
-import Sitemap from "./pages/Sitemap";
-import CommandCenter from "./pages/CommandCenter";
-// ScenarioLibraryPage consolidated into PlaybookLibrary
-import FutureGym from "./pages/FutureGym";
-import ForesightRadar from "./pages/ForesightRadar";
-import LivingPlaybooks from "./pages/LivingPlaybooks";
-import ContinuousModePage from "./pages/ContinuousModePage";
-import PlaybookReadinessAudit from "./pages/PlaybookReadinessAudit";
-import ExecutiveSimulationDemo from "./pages/ExecutiveSimulationDemo";
-import ProductTour from "./pages/ProductTour";
-import PlatformOverview from "./pages/PlatformOverview";
-import InvestorPresentation from "./pages/InvestorPresentation";
-import MissionControl from "./pages/MissionControl";
-import WorkspaceIdentify from "./pages/WorkspaceIdentify";
-import WorkspaceDetect from "./pages/WorkspaceDetect";
-import WorkspaceExecute from "./pages/WorkspaceExecute";
-import WorkspaceAdvance from "./pages/WorkspaceAdvance";
-import DemoGallery from "./pages/DemoGallery";
-import CustomerJourney from "./pages/CustomerJourney";
-import OrganizationSetup from "./pages/OrganizationSetup";
-import PlaybookCustomization from "./pages/PlaybookCustomization";
-import PlaybookCustomize from "./pages/PlaybookCustomize";
-import SuccessMetricsConfiguration from "./pages/SuccessMetricsConfiguration";
-import OnboardingWizard from "./pages/OnboardingWizard";
-import NewUserJourney from "./pages/NewUserJourney";
-import CompetitivePositioning from "./pages/CompetitivePositioning";
-import PilotProgram from "./pages/PilotProgram";
-import HowItWorks from "./pages/HowItWorks";
-import FounderStory from "./pages/FounderStory";
-import ExecuteIQVideo from "./pages/ExecuteIQVideo";
-import OneClickDemo from "./pages/OneClickDemo";
-import ROICalculator from "./pages/ROICalculator";
-import AgilityAssessment from "./pages/AgilityAssessment";
-import BoardExport from "./pages/BoardExport";
-import SandboxDemo from "./pages/SandboxDemo";
-import VideoLanding from "./pages/VideoLanding";
-import PlaybookManagement from "./pages/PlaybookManagement";
-import TaskManagement from "./pages/TaskManagement";
-import StakeholderManagement from "./pages/StakeholderManagement";
-import PilotDemo from "./pages/PilotDemo";
-import IncidentAnalyzer from "./pages/IncidentAnalyzer";
-import TryDemo from "./pages/TryDemo";
-import LiveActivationCenter from "./pages/LiveActivationCenter";
-import KeynoteDemo from "./pages/KeynoteDemo";
-import RoleExperience from "./pages/RoleExperience";
-import IndustryExperience from "./pages/IndustryExperience";
 
-import PlaybooksLibraryPage from "./pages/identify/PlaybooksLibraryPage";
-import IdentifyTemplatesPage from "./pages/identify/TemplatesPage";
-import MyPlaybooksPage from "./pages/identify/MyPlaybooksPage";
-import IdentifyWizardPage from "./pages/identify/WizardPage";
-import IdentifySLAPage from "./pages/identify/SLAPage";
-import IdentifyMetricsPage from "./pages/identify/MetricsPage";
+const Dashboard = lazy(() => import("@/pages/Dashboard"));
+const CrisisResponse = lazy(() => import("@/pages/CrisisResponse"));
+const BusinessIntelligence = lazy(() => import("@/pages/BusinessIntelligence"));
+const VCPresentations = lazy(() => import("@/pages/VCPresentations"));
+const Settings = lazy(() => import("@/pages/Settings"));
+const CrisisResponseCenter = lazy(() => import("./pages/CrisisResponseCenter"));
+const CrisisDetail = lazy(() => import("./pages/CrisisDetail"));
+const StrategicPlanningHub = lazy(() => import("./pages/StrategicPlanningHub"));
+const ExecutiveAnalyticsDashboard = lazy(() => import("./pages/ExecutiveAnalyticsDashboard"));
+const RealTimeCollaboration = lazy(() => import("./pages/RealTimeCollaboration"));
+const AuditLoggingCenter = lazy(() => import("./pages/AuditLoggingCenter"));
+const IntegrationHub = lazy(() => import("./pages/IntegrationHub"));
+const IntegrationsPage = lazy(() => import("./pages/IntegrationsPage"));
+const IntegrationConnections = lazy(() => import("./pages/IntegrationConnections"));
+const AdvancedAnalytics = lazy(() => import("./pages/AdvancedAnalytics"));
+const TriggersManagement = lazy(() => import("./pages/TriggersManagement"));
+const PulseIntelligence = lazy(() => import("./pages/PulseIntelligence"));
+const FluxAdaptations = lazy(() => import("./pages/FluxAdaptations"));
+const PrismInsights = lazy(() => import("./pages/PrismInsights"));
+const EchoCulturalAnalytics = lazy(() => import("./pages/EchoCulturalAnalytics"));
+const NovaInnovations = lazy(() => import("./pages/NovaInnovations"));
+const ExecutiveWarRoomPage = lazy(() => import("./pages/ExecutiveWarRoomPage"));
+const UATAdmin = lazy(() => import("./pages/UATAdmin"));
+const PlaybookActivationConsole = lazy(() => import("./pages/PlaybookActivationConsole"));
+const PreparednessReport = lazy(() => import("./pages/PreparednessReport"));
+const PlaybookCommand = lazy(() => import("./pages/PlaybookCommand"));
+const PlaybookSettings = lazy(() => import("./pages/PlaybookSettings"));
+const PracticeDrills = lazy(() => import("./pages/PracticeDrills"));
+const LiveDrillExecution = lazy(() => import("./pages/LiveDrillExecution"));
+const ExecutionLearningDashboard = lazy(() => import("./pages/NFLLearningDashboard"));
+const InvestorDemo = lazy(() => import("./pages/InvestorDemo"));
+const CustomerDemo = lazy(() => import("./pages/CustomerDemo"));
+const RoadshowResources = lazy(() => import("./pages/RoadshowResources"));
+const AIIntelligenceHub = lazy(() => import("./pages/AIIntelligenceHub"));
+const IntelligenceControlCenter = lazy(() => import("./pages/IntelligenceControlCenter"));
+const ExecutiveScorecard = lazy(() => import("./pages/ExecutiveScorecard"));
+const AIRadarDashboard = lazy(() => import("./pages/AIRadarDashboard"));
+const SignalIntelligenceHub = lazy(() => import("./pages/SignalIntelligenceHub"));
+const InstitutionalMemory = lazy(() => import("./pages/InstitutionalMemory"));
+const DrillTrackingSystem = lazy(() => import("./pages/DrillTrackingSystem"));
+const BoardBriefings = lazy(() => import("./pages/BoardBriefings"));
+const InvestorResources = lazy(() => import("./pages/InvestorResources"));
+const DecisionVelocityPage = lazy(() => import("./pages/DecisionVelocityPage"));
+const DecisionVelocityDashboard = lazy(() => import("./pages/DecisionVelocityDashboard"));
+const DecisionTreeBuilder = lazy(() => import("./pages/DecisionTreeBuilder"));
+const ExecutionCoordination = lazy(() => import("./pages/ExecutionCoordination"));
+const OperatingModelAlignment = lazy(() => import("./pages/OperatingModelAlignment"));
+const ComprehensiveROIBreakdown = lazy(() => import("./pages/ComprehensiveROIBreakdown"));
+const OurStory = lazy(() => import("./pages/OurStory"));
+const WhyExecuteIQ = lazy(() => import("./pages/WhyExecuteIQ"));
+const Research = lazy(() => import("./pages/Research"));
+const PilotMonitoring = lazy(() => import("./pages/PilotMonitoring"));
+const CrisisExposureMatrix = lazy(() => import("./pages/CrisisExposureMatrix"));
+const SimulationStudio = lazy(() => import("./pages/SimulationStudio"));
+const LuxuryCrisisDemo = lazy(() => import("./pages/LuxuryCrisisDemo"));
+const IndustryDemosHub = lazy(() => import("./pages/IndustryDemosHub"));
+const FinancialRansomwareDemo = lazy(() => import("./pages/FinancialRansomwareDemo"));
+const LVMHMarketEntryDemo = lazy(() => import("./pages/LVMHMarketEntryDemo"));
+const SHEINTrendDemo = lazy(() => import("./pages/SHEINTrendDemo"));
+const SpaceXLaunchDemo = lazy(() => import("./pages/SpaceXLaunchDemo"));
+const PharmaceuticalRecallDemo = lazy(() => import("./pages/PharmaceuticalRecallDemo"));
+const ManufacturingSupplierDemo = lazy(() => import("./pages/ManufacturingSupplierDemo"));
+const RetailFoodSafetyDemo = lazy(() => import("./pages/RetailFoodSafetyDemo"));
+const EnergyGridFailureDemo = lazy(() => import("./pages/EnergyGridFailureDemo"));
+const DemoLiveActivation = lazy(() => import("./pages/DemoLiveActivation"));
+const DealRiskDemo = lazy(() => import("./pages/DealRiskDemo"));
+const RoleSelector = lazy(() => import("./pages/RoleSelector"));
+const McKinseyIntelligenceCenter = lazy(() => import("./pages/mckinsey/McKinseyIntelligenceCenter"));
+const StrategyExecutionDashboard = lazy(() => import("./pages/StrategyExecutionDashboard"));
+const Sitemap = lazy(() => import("./pages/Sitemap"));
+const CommandCenter = lazy(() => import("./pages/CommandCenter"));
+const FutureGym = lazy(() => import("./pages/FutureGym"));
+const ForesightRadar = lazy(() => import("./pages/ForesightRadar"));
+const LivingPlaybooks = lazy(() => import("./pages/LivingPlaybooks"));
+const ContinuousModePage = lazy(() => import("./pages/ContinuousModePage"));
+const PlaybookReadinessAudit = lazy(() => import("./pages/PlaybookReadinessAudit"));
+const ExecutiveSimulationDemo = lazy(() => import("./pages/ExecutiveSimulationDemo"));
+const ProductTour = lazy(() => import("./pages/ProductTour"));
+const PlatformOverview = lazy(() => import("./pages/PlatformOverview"));
+const InvestorPresentation = lazy(() => import("./pages/InvestorPresentation"));
+const MissionControl = lazy(() => import("./pages/MissionControl"));
+const WorkspaceIdentify = lazy(() => import("./pages/WorkspaceIdentify"));
+const WorkspaceDetect = lazy(() => import("./pages/WorkspaceDetect"));
+const WorkspaceExecute = lazy(() => import("./pages/WorkspaceExecute"));
+const WorkspaceAdvance = lazy(() => import("./pages/WorkspaceAdvance"));
+const DemoGallery = lazy(() => import("./pages/DemoGallery"));
+const CustomerJourney = lazy(() => import("./pages/CustomerJourney"));
+const OrganizationSetup = lazy(() => import("./pages/OrganizationSetup"));
+const PlaybookCustomization = lazy(() => import("./pages/PlaybookCustomization"));
+const PlaybookCustomize = lazy(() => import("./pages/PlaybookCustomize"));
+const SuccessMetricsConfiguration = lazy(() => import("./pages/SuccessMetricsConfiguration"));
+const OnboardingWizard = lazy(() => import("./pages/OnboardingWizard"));
+const NewUserJourney = lazy(() => import("./pages/NewUserJourney"));
+const CompetitivePositioning = lazy(() => import("./pages/CompetitivePositioning"));
+const PilotProgram = lazy(() => import("./pages/PilotProgram"));
+const FounderStory = lazy(() => import("./pages/FounderStory"));
+const ExecuteIQVideo = lazy(() => import("./pages/ExecuteIQVideo"));
+const ROICalculator = lazy(() => import("./pages/ROICalculator"));
+const AgilityAssessment = lazy(() => import("./pages/AgilityAssessment"));
+const BoardExport = lazy(() => import("./pages/BoardExport"));
+const SandboxDemo = lazy(() => import("./pages/SandboxDemo"));
+const VideoLanding = lazy(() => import("./pages/VideoLanding"));
+const PlaybookManagement = lazy(() => import("./pages/PlaybookManagement"));
+const TaskManagement = lazy(() => import("./pages/TaskManagement"));
+const StakeholderManagement = lazy(() => import("./pages/StakeholderManagement"));
+const PilotDemo = lazy(() => import("./pages/PilotDemo"));
+const LiveActivationCenter = lazy(() => import("./pages/LiveActivationCenter"));
+const KeynoteDemo = lazy(() => import("./pages/KeynoteDemo"));
+const RoleExperience = lazy(() => import("./pages/RoleExperience"));
+const IndustryExperience = lazy(() => import("./pages/IndustryExperience"));
 
-import DetectDashboardPage from "./pages/detect/DashboardPage";
-import DetectAlertsPage from "./pages/detect/AlertsPage";
-import DetectSignalsPage from "./pages/detect/SignalsPage";
-import DetectThreatsPage from "./pages/detect/ThreatsPage";
-import DetectTrendsPage from "./pages/detect/TrendsPage";
-import DetectHistoryPage from "./pages/detect/HistoryPage";
+const PlaybooksLibraryPage = lazy(() => import("./pages/identify/PlaybooksLibraryPage"));
+const IdentifyTemplatesPage = lazy(() => import("./pages/identify/TemplatesPage"));
+const MyPlaybooksPage = lazy(() => import("./pages/identify/MyPlaybooksPage"));
+const IdentifyWizardPage = lazy(() => import("./pages/identify/WizardPage"));
+const IdentifySLAPage = lazy(() => import("./pages/identify/SLAPage"));
+const IdentifyMetricsPage = lazy(() => import("./pages/identify/MetricsPage"));
 
-import ExecuteWarRoomPage from "./pages/execute/WarRoomPage";
-import ExecuteActivationPage from "./pages/execute/ActivationPage";
-import ExecuteTasksPage from "./pages/execute/TasksPage";
-import ExecuteTrackingPage from "./pages/execute/TrackingPage";
-import ExecuteUpdatesPage from "./pages/execute/UpdatesPage";
-import ExecuteDecisionsPage from "./pages/execute/DecisionsPage";
+const DetectDashboardPage = lazy(() => import("./pages/detect/DashboardPage"));
+const DetectAlertsPage = lazy(() => import("./pages/detect/AlertsPage"));
+const DetectSignalsPage = lazy(() => import("./pages/detect/SignalsPage"));
+const DetectThreatsPage = lazy(() => import("./pages/detect/ThreatsPage"));
+const DetectTrendsPage = lazy(() => import("./pages/detect/TrendsPage"));
+const DetectHistoryPage = lazy(() => import("./pages/detect/HistoryPage"));
 
-import AdvanceMetricsPage from "./pages/advance/MetricsPage";
-import AdvanceOutcomesPage from "./pages/advance/OutcomesPage";
-import AdvanceEffectivenessPage from "./pages/advance/EffectivenessPage";
-import AdvanceTeamPage from "./pages/advance/TeamPage";
-import AdvanceLessonsPage from "./pages/advance/LessonsPage";
-import AdvanceAuditPage from "./pages/advance/AuditPage";
+const ExecuteWarRoomPage = lazy(() => import("./pages/execute/WarRoomPage"));
+const ExecuteActivationPage = lazy(() => import("./pages/execute/ActivationPage"));
+const ExecuteTasksPage = lazy(() => import("./pages/execute/TasksPage"));
+const ExecuteTrackingPage = lazy(() => import("./pages/execute/TrackingPage"));
+const ExecuteUpdatesPage = lazy(() => import("./pages/execute/UpdatesPage"));
+const ExecuteDecisionsPage = lazy(() => import("./pages/execute/DecisionsPage"));
 
-import SetupTeamPage from "./pages/setup/TeamPage";
-import SetupIntegrationsPage from "./pages/setup/IntegrationsPage";
-import SetupOrgPage from "./pages/setup/OrgPage";
-import SetupAPIPage from "./pages/setup/APIPage";
+const AdvanceMetricsPage = lazy(() => import("./pages/advance/MetricsPage"));
+const AdvanceOutcomesPage = lazy(() => import("./pages/advance/OutcomesPage"));
+const AdvanceEffectivenessPage = lazy(() => import("./pages/advance/EffectivenessPage"));
+const AdvanceTeamPage = lazy(() => import("./pages/advance/TeamPage"));
+const AdvanceLessonsPage = lazy(() => import("./pages/advance/LessonsPage"));
+const AdvanceAuditPage = lazy(() => import("./pages/advance/AuditPage"));
 
-import LearnQuickDemoPage from "./pages/learn/QuickDemoPage";
-import LearnRoleDemoPage from "./pages/learn/RoleDemoPage";
-import LearnDrillsPage from "./pages/learn/DrillsPage";
-import LearnHelpPage from "./pages/learn/HelpPage";
+const SetupTeamPage = lazy(() => import("./pages/setup/TeamPage"));
+const SetupIntegrationsPage = lazy(() => import("./pages/setup/IntegrationsPage"));
+const SetupOrgPage = lazy(() => import("./pages/setup/OrgPage"));
+const SetupAPIPage = lazy(() => import("./pages/setup/APIPage"));
+
+const LearnQuickDemoPage = lazy(() => import("./pages/learn/QuickDemoPage"));
+const LearnRoleDemoPage = lazy(() => import("./pages/learn/RoleDemoPage"));
+const LearnDrillsPage = lazy(() => import("./pages/learn/DrillsPage"));
+const LearnHelpPage = lazy(() => import("./pages/learn/HelpPage"));
 
 import { DemoControllerProvider } from "./contexts/DemoController";
 import { DemoTimelineProvider } from "./contexts/DemoTimelineContext";
@@ -188,7 +176,6 @@ import { OnboardingProvider } from "./contexts/OnboardingContext";
 import { CustomerProvider } from "./contexts/CustomerContext";
 import OnboardingOverlay from "./components/onboarding/OnboardingOverlay";
 import { ThemeProvider } from "./components/ThemeProvider";
-import { useAuth } from "./hooks/useAuth";
 import GuidedOverlay from "./components/demo/GuidedOverlay";
 import { HeroMetricsOverlay } from "./components/demo/HeroMetricsOverlay";
 import { CrisisResolvedCelebration } from "./components/demo/CrisisResolvedCelebration";
@@ -200,98 +187,37 @@ import { ExecutiveTestimonialOverlay } from "./components/demo/ExecutiveTestimon
 import { SplitScreenComparison } from "./components/demo/SplitScreenComparison";
 import { ScrollToTop } from "./components/ScrollToTop";
 
-function HomeRoute() {
-  // Show new professional homepage for everyone - no authentication required
-  return <Homepage />;
+function PageLoader() {
+  return (
+    <div className="flex items-center justify-center min-h-screen">
+      <Loader2 className="h-8 w-8 animate-spin text-primary" />
+    </div>
+  );
 }
 
-// Redirect component for deprecated routes
-function RedirectToScenarios() {
+function Redirect({ to }: { to: string }) {
   const [, setLocation] = useLocation();
-  
-  useEffect(() => {
-    setLocation('/business-scenarios');
-  }, [setLocation]);
-  
+  useEffect(() => { setLocation(to); }, [setLocation, to]);
   return null;
 }
 
-// Redirect all legacy scenario/template pages to unified Playbooks page
-function RedirectToPlaybookLibrary() {
-  const [, setLocation] = useLocation();
-  
-  useEffect(() => {
-    setLocation('/playbooks');
-  }, [setLocation]);
-  
-  return null;
+function renderRoutes(paths: string[], Component: any) {
+  return paths.map(path => <Route key={path} path={path} component={Component} />);
 }
 
-// Redirect all demo routes to the unified How It Works page
-function RedirectToHowItWorks() {
-  const [, setLocation] = useLocation();
-  
-  useEffect(() => {
-    setLocation('/how-it-works');
-  }, [setLocation]);
-  
-  return null;
+function renderRedirects(paths: string[], to: string) {
+  return paths.map(path => (
+    <Route key={path} path={path}>{() => <Redirect to={to} />}</Route>
+  ));
 }
-
-// Redirect all legacy dashboard pages to unified Executive Dashboard
-function RedirectToExecutiveDashboard() {
-  const [, setLocation] = useLocation();
-  
-  useEffect(() => {
-    setLocation('/executive-dashboard');
-  }, [setLocation]);
-  
-  return null;
-}
-
-// Redirect all legacy demo pages to unified Demo Hub
-function RedirectToDemoHub() {
-  const [, setLocation] = useLocation();
-  
-  useEffect(() => {
-    setLocation('/demo-hub');
-  }, [setLocation]);
-  
-  return null;
-}
-
-// Redirect all legacy intelligence pages to Intelligence Control Center
-function RedirectToIntelligence() {
-  const [, setLocation] = useLocation();
-  
-  useEffect(() => {
-    setLocation('/intelligence');
-  }, [setLocation]);
-  
-  return null;
-}
-
-// Redirect legacy trigger routes to triggers management
-function RedirectToTriggersManagement() {
-  const [, setLocation] = useLocation();
-  
-  useEffect(() => {
-    setLocation('/triggers-management');
-  }, [setLocation]);
-  
-  return null;
-}
-
 
 function Router() {
-  const [location] = useLocation();
-  
   return (
     <DemoTimelineProvider defaultDuration={720000} defaultSpeedMultiplier={20}>
       <DemoControllerProvider>
         <ScrollToTop />
+        <Suspense fallback={<PageLoader />}>
         <Switch>
-        {/* Primary Routes - Simplified Executive Experience */}
         <Route path="/" component={Homepage} />
         <Route path="/home" component={Homepage} />
         <Route path="/mission-control" component={MissionControl} />
@@ -299,8 +225,7 @@ function Router() {
         <Route path="/workspaces/detect" component={WorkspaceDetect} />
         <Route path="/workspaces/execute" component={WorkspaceExecute} />
         <Route path="/workspaces/advance" component={WorkspaceAdvance} />
-        
-        {/* IDEA Framework Navigation Routes */}
+
         {/* IDENTIFY Phase */}
         <Route path="/identify/playbooks" component={PlaybooksLibraryPage} />
         <Route path="/identify/templates" component={IdentifyTemplatesPage} />
@@ -308,7 +233,9 @@ function Router() {
         <Route path="/identify/wizard" component={IdentifyWizardPage} />
         <Route path="/identify/sla" component={IdentifySLAPage} />
         <Route path="/identify/metrics" component={IdentifyMetricsPage} />
-        
+        <Route path="/identify/playbook-library" component={PlaybookLibraryV2} />
+        <Route path="/identify/playbook-command/:id" component={PlaybookCommand} />
+
         {/* DETECT Phase */}
         <Route path="/detect/dashboard" component={DetectDashboardPage} />
         <Route path="/detect/alerts" component={DetectAlertsPage} />
@@ -316,7 +243,7 @@ function Router() {
         <Route path="/detect/threats" component={DetectThreatsPage} />
         <Route path="/detect/trends" component={DetectTrendsPage} />
         <Route path="/detect/history" component={DetectHistoryPage} />
-        
+
         {/* EXECUTE Phase */}
         <Route path="/execute/war-room" component={ExecuteWarRoomPage} />
         <Route path="/execute/activation" component={ExecuteActivationPage} />
@@ -324,7 +251,7 @@ function Router() {
         <Route path="/execute/tracking" component={ExecuteTrackingPage} />
         <Route path="/execute/updates" component={ExecuteUpdatesPage} />
         <Route path="/execute/decisions" component={ExecuteDecisionsPage} />
-        
+
         {/* ADVANCE Phase */}
         <Route path="/advance/metrics" component={AdvanceMetricsPage} />
         <Route path="/advance/outcomes" component={AdvanceOutcomesPage} />
@@ -332,51 +259,58 @@ function Router() {
         <Route path="/advance/team" component={AdvanceTeamPage} />
         <Route path="/advance/lessons" component={AdvanceLessonsPage} />
         <Route path="/advance/audit" component={AdvanceAuditPage} />
-        
+
         {/* SETUP */}
         <Route path="/setup/team" component={SetupTeamPage} />
         <Route path="/setup/integrations" component={SetupIntegrationsPage} />
         <Route path="/setup/organization" component={SetupOrgPage} />
         <Route path="/setup/api" component={SetupAPIPage} />
-        
+
         {/* LEARN */}
         <Route path="/learn/quick-demo" component={LearnQuickDemoPage} />
         <Route path="/learn/role-demo" component={LearnRoleDemoPage} />
         <Route path="/learn/drills" component={LearnDrillsPage} />
         <Route path="/learn/help" component={LearnHelpPage} />
-        
-        <Route path="/demo-gallery" component={DemoGallery} />
-        <Route path="/north-star" component={CustomerJourney} />
-        <Route path="/customer-journey" component={CustomerJourney} />
+
+        {/* Dashboards & Intelligence */}
         <Route path="/executive-dashboard" component={ExecutiveDashboard} />
         <Route path="/strategy-execution" component={StrategyExecutionDashboard} />
-        <Route path="/scorecard" component={RedirectToExecutiveDashboard} />
-        <Route path="/executive-scorecard" component={RedirectToExecutiveDashboard} />
-        <Route path="/executive-suite" component={RedirectToExecutiveDashboard} />
-        <Route path="/dashboard" component={RedirectToExecutiveDashboard} />
-        <Route path="/platform" component={RedirectToExecutiveDashboard} />
         <Route path="/business-intelligence" component={BusinessIntelligence} />
-        
+        <Route path="/intelligence" component={IntelligenceControlCenter} />
+        <Route path="/intelligence-control-center" component={IntelligenceControlCenter} />
+        <Route path="/ai-radar" component={AIRadarDashboard} />
+        <Route path="/signal-intelligence" component={SignalIntelligenceHub} />
+        {renderRoutes(["/ai", "/pulse", "/flux", "/prism", "/echo", "/nova"], AIIntelligenceHub)}
+        <Route path="/pulse-intelligence" component={PulseIntelligence} />
+        <Route path="/flux-adaptations" component={FluxAdaptations} />
+        <Route path="/prism-insights" component={PrismInsights} />
+        <Route path="/echo-cultural-analytics" component={EchoCulturalAnalytics} />
+        <Route path="/nova-innovations" component={NovaInnovations} />
+        {renderRoutes(["/mckinsey", "/mckinsey-intelligence"], McKinseyIntelligenceCenter)}
+
         {/* Strategic Operations */}
         <Route path="/strategic-monitoring" component={CrisisResponseCenter} />
         <Route path="/strategic-monitoring/:id" component={CrisisDetail} />
         <Route path="/command-center" component={CommandCenter} />
+        <Route path="/command-center-dynamic" component={CommandCenter} />
         <Route path="/collaboration" component={RealTimeCollaboration} />
         <Route path="/playbook-activation/:triggerId/:playbookId" component={PlaybookActivationConsole} />
-        
+
         {/* Strategic Planning */}
         <Route path="/strategic" component={StrategicPlanningHub} />
+        <Route path="/strategic-planning-hub" component={StrategicPlanningHub} />
         <Route path="/what-if-analyzer" component={WhatIfAnalyzer} />
         <Route path="/decision-velocity" component={DecisionVelocityPage} />
         <Route path="/decisions" component={DecisionVelocityDashboard} />
         <Route path="/decision-trees" component={DecisionTreeBuilder} />
         <Route path="/execution-coordination" component={ExecutionCoordination} />
-        <Route path="/scenarios" component={RedirectToPlaybookLibrary} />
         <Route path="/institutional-memory" component={InstitutionalMemory} />
         <Route path="/board-briefings" component={BoardBriefings} />
         <Route path="/operating-model" component={OperatingModelAlignment} />
-        <Route path="/operating-model-health" component={RedirectToExecutiveDashboard} />
         <Route path="/roi-breakdown" component={ComprehensiveROIBreakdown} />
+        <Route path="/calculator" component={ComprehensiveROIBreakdown} />
+
+        {/* Marketing & Company Pages */}
         <Route path="/our-story" component={OurStory} />
         <Route path="/founder-story" component={FounderStory} />
         <Route path="/executeiq-video" component={ExecuteIQVideo} />
@@ -384,84 +318,31 @@ function Router() {
         <Route path="/research" component={Research} />
         <Route path="/how-it-works" component={HowItWorks} />
         <Route path="/pricing" component={Pricing} />
-        <Route path="/investors" component={Investors} />
-        <Route path="/for-investors" component={Investors} />
+        {renderRoutes(["/investors", "/for-investors"], Investors)}
         <Route path="/competitive-positioning" component={CompetitivePositioning} />
         <Route path="/pilot-program" component={PilotProgram} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/early-access" component={Contact} />
-        
-        {/* Intelligence Control Center - Unified Entry Point */}
-        <Route path="/intelligence" component={IntelligenceControlCenter} />
-        <Route path="/intelligence-control-center" component={IntelligenceControlCenter} />
-        
-        {/* AI Intelligence - Consolidated Hub */}
-        <Route path="/ai" component={AIIntelligenceHub} />
-        <Route path="/ai-radar" component={AIRadarDashboard} />
-        <Route path="/signal-intelligence" component={SignalIntelligenceHub} />
-        <Route path="/pulse" component={AIIntelligenceHub} />
-        <Route path="/flux" component={AIIntelligenceHub} />
-        <Route path="/prism" component={AIIntelligenceHub} />
-        <Route path="/echo" component={AIIntelligenceHub} />
-        <Route path="/nova" component={AIIntelligenceHub} />
-        
-        {/* AI Intelligence - Individual Module Pages */}
-        <Route path="/pulse-intelligence" component={PulseIntelligence} />
-        <Route path="/flux-adaptations" component={FluxAdaptations} />
-        <Route path="/prism-insights" component={PrismInsights} />
-        <Route path="/echo-cultural-analytics" component={EchoCulturalAnalytics} />
-        <Route path="/nova-innovations" component={NovaInnovations} />
-        
-        {/* Dynamic Strategy - Future Readiness (redirected to Executive Dashboard) */}
-        <Route path="/future-readiness" component={RedirectToExecutiveDashboard} />
-        <Route path="/readiness" component={RedirectToExecutiveDashboard} />
-        <Route path="/command-center-dynamic" component={CommandCenter} />
-        <Route path="/scenario-library" component={RedirectToPlaybookLibrary} />
-        <Route path="/scenario-gallery" component={RedirectToPlaybookLibrary} />
-        <Route path="/comprehensive-scenarios" component={RedirectToPlaybookLibrary} />
-        <Route path="/triggers" component={RedirectToTriggersManagement} />
-        <Route path="/trigger-dashboard" component={RedirectToTriggersManagement} />
-        <Route path="/playbook-readiness" component={PlaybookReadinessAudit} />
-        <Route path="/playbook-audit" component={PlaybookReadinessAudit} />
-        <Route path="/future-gym" component={FutureGym} />
-        <Route path="/foresight-radar" component={ForesightRadar} />
-        <Route path="/living-playbooks" component={LivingPlaybooks} />
-        <Route path="/continuous-mode" component={ContinuousModePage} />
-        
-        {/* McKinsey Intelligence Center */}
-        <Route path="/mckinsey" component={McKinseyIntelligenceCenter} />
-        <Route path="/mckinsey-intelligence" component={McKinseyIntelligenceCenter} />
-        
-        {/* Triggers & Preparedness */}
+        {renderRoutes(["/contact", "/early-access"], Contact)}
+
+        {/* Playbooks & Triggers */}
         <Route path="/triggers-management" component={TriggersManagement} />
         <Route path="/organization-setup" component={OrganizationSetup} />
         <Route path="/playbook-customization" component={PlaybookCustomization} />
         <Route path="/success-metrics" component={SuccessMetricsConfiguration} />
-        <Route path="/onboarding" component={OnboardingWizard} />
-        <Route path="/setup" component={OnboardingWizard} />
-        <Route path="/get-started" component={OnboardingWizard} />
-        <Route path="/new-user-journey" component={NewUserJourney} />
-        <Route path="/start" component={NewUserJourney} />
-        <Route path="/welcome" component={NewUserJourney} />
-        <Route path="/journey" component={NewUserJourney} />
-        <Route path="/experience" component={NewUserJourney} />
+        {renderRoutes(["/onboarding", "/setup", "/get-started"], OnboardingWizard)}
+        {renderRoutes(["/new-user-journey", "/start", "/welcome", "/journey", "/experience"], NewUserJourney)}
         <Route path="/preparedness-report" component={PreparednessReport} />
         <Route path="/drill-tracking" component={DrillTrackingSystem} />
-        <Route path="/playbook-library" component={PlaybookLibraryV2} />
-        <Route path="/identify/playbook-library" component={PlaybookLibraryV2} />
-        <Route path="/identify/playbook-command/:id" component={PlaybookCommand} />
-        <Route path="/playbooks" component={PlaybookLibraryV2} />
+        {renderRoutes(["/playbook-library", "/playbooks", "/business-scenarios"], PlaybookLibraryV2)}
         <Route path="/playbooks/:id/customize" component={PlaybookCustomize} />
         <Route path="/playbooks/:id/preview" component={PlaybookDetail} />
         <Route path="/playbooks/:id/edit" component={PlaybookCustomize} />
         <Route path="/playbooks/create" component={PlaybookCustomize} />
         <Route path="/playbook-management" component={PlaybookManagement} />
-        <Route path="/playbook-customize/new" component={PlaybookCustomize} />
-        <Route path="/playbook-customize/:id" component={PlaybookCustomize} />
+        {renderRoutes(["/playbook-customize/new", "/playbook-customize/:id"], PlaybookCustomize)}
         <Route path="/task-management" component={TaskManagement} />
-        <Route path="/stakeholder-management" component={StakeholderManagement} />
-        <Route path="/stakeholders" component={StakeholderManagement} />
+        {renderRoutes(["/stakeholder-management", "/stakeholders"], StakeholderManagement)}
         <Route path="/playbook-library/:id" component={PlaybookDetail} />
+        <Route path="/business-scenario/:id" component={PlaybookDetail} />
         <Route path="/playbook-library/:id/settings" component={PlaybookSettings} />
         <Route path="/playbook-command/:id" component={PlaybookCommand} />
         <Route path="/practice-drills/:drillId/live" component={LiveDrillExecution} />
@@ -469,151 +350,111 @@ function Router() {
         <Route path="/crisis-exposure-matrix" component={CrisisExposureMatrix} />
         <Route path="/simulation-studio" component={SimulationStudio} />
         <Route path="/execution-learning" component={ExecutionLearningDashboard} />
-        
+        {renderRoutes(["/playbook-readiness", "/playbook-audit"], PlaybookReadinessAudit)}
+        <Route path="/future-gym" component={FutureGym} />
+        <Route path="/foresight-radar" component={ForesightRadar} />
+        <Route path="/living-playbooks" component={LivingPlaybooks} />
+        <Route path="/continuous-mode" component={ContinuousModePage} />
+
         {/* Analytics */}
         <Route path="/analytics" component={AdvancedAnalytics} />
+        <Route path="/advanced-analytics" component={AdvancedAnalytics} />
         <Route path="/executive-analytics-dashboard" component={ExecutiveAnalyticsDashboard} />
         <Route path="/audit-logging-center" component={AuditLoggingCenter} />
-        <Route path="/calculator" component={ComprehensiveROIBreakdown} />
         <Route path="/roi-calculator" component={ROICalculator} />
         <Route path="/agility-assessment" component={AgilityAssessment} />
-        
-        {/* Sales & Demo Tools */}
-        <Route path="/live-demo" component={TryDemo} />
+
+        {/* Demo & Sales Tools */}
+        {renderRoutes([
+          "/live-demo", "/try-demo", "/try-it", "/demo", "/demo-hub",
+          "/demo-selector", "/demo/selector", "/transformational-demo",
+          "/four-phase-demo", "/4-phase-demo", "/demos",
+          "/intelligence-demo", "/signals-demo", "/watch-demo",
+          "/executive-demo", "/hybrid-demo", "/executive-demo-walkthrough"
+        ], TryDemo)}
         <Route path="/board-export" component={BoardExport} />
-        <Route path="/try-demo" component={TryDemo} />
         <Route path="/sandbox-demo" component={SandboxDemo} />
-        <Route path="/try-it" component={TryDemo} />
         <Route path="/pilot-demo" component={PilotDemo} />
         <Route path="/incident-analyzer" component={IncidentAnalyzer} />
         <Route path="/readiness-assessment" component={ReadinessAssessment} />
-        <Route path="/video" component={VideoLanding} />
-        <Route path="/cinematic" component={VideoLanding} />
-        <Route path="/sizzle" component={VideoLanding} />
-        <Route path="/2-minute" component={VideoLanding} />
-        <Route path="/spots" component={VideoLanding} />
-        <Route path="/30-second" component={VideoLanding} />
-        <Route path="/brand-films" component={VideoLanding} />
-        
+        {renderRoutes(["/video", "/cinematic", "/sizzle", "/2-minute", "/spots", "/30-second", "/brand-films"], VideoLanding)}
+
         {/* Integration Hub */}
         <Route path="/integration-hub" component={IntegrationHub} />
-        <Route path="/integrations" component={IntegrationConnections} />
-        <Route path="/integration-connections" component={IntegrationConnections} />
+        {renderRoutes(["/integrations", "/integration-connections"], IntegrationConnections)}
         <Route path="/integrations-legacy" component={IntegrationsPage} />
-        
-        {/* Demo Entry Point - Single clear path */}
-        <Route path="/demo" component={TryDemo} />
-        <Route path="/demo-hub" component={TryDemo} />
-        <Route path="/demo-selector" component={TryDemo} />
-        <Route path="/demo/selector" component={TryDemo} />
-        <Route path="/transformational-demo" component={TryDemo} />
-        <Route path="/four-phase-demo" component={TryDemo} />
-        <Route path="/4-phase-demo" component={TryDemo} />
-        
-        {/* Live Activation Center */}
-        <Route path="/activation" component={LiveActivationCenter} />
-        <Route path="/demo/activation" component={LiveActivationCenter} />
-        
-        {/* Live Interactive Demos - All 7 demos now use unified DemoLiveActivation component */}
-        <Route path="/role-selector" component={RoleSelector} />
-        <Route path="/demo/role-selector" component={RoleSelector} />
-        <Route path="/demo/live-activation" component={DemoLiveActivation} />
-        <Route path="/demo/ransomware" component={DemoLiveActivation} />
-        <Route path="/demo/ma-integration" component={DemoLiveActivation} />
-        <Route path="/demo/product-launch" component={DemoLiveActivation} />
-        <Route path="/demo/supplier-crisis" component={DemoLiveActivation} />
-        <Route path="/demo/competitive-response" component={DemoLiveActivation} />
-        <Route path="/demo/regulatory-crisis" component={DemoLiveActivation} />
-        <Route path="/demo/customer-crisis" component={DemoLiveActivation} />
-        
-        {/* Approval Pages - Magic Link Approvals */}
+
+        {/* Live Activation & Interactive Demos */}
+        {renderRoutes(["/activation", "/demo/activation"], LiveActivationCenter)}
+        {renderRoutes(["/role-selector", "/demo/role-selector"], RoleSelector)}
+        {renderRoutes([
+          "/demo/live-activation", "/demo/ransomware", "/demo/ma-integration",
+          "/demo/product-launch", "/demo/supplier-crisis", "/demo/competitive-response",
+          "/demo/regulatory-crisis", "/demo/customer-crisis"
+        ], DemoLiveActivation)}
+
+        {/* Approval Pages */}
         <Route path="/approval-success" component={lazy(() => import('./pages/ApprovalSuccess'))} />
         <Route path="/approval-error" component={lazy(() => import('./pages/ApprovalError'))} />
-        
-        {/* Industry Demos Hub - Centralized Demo Access */}
-        <Route path="/industry-demos" component={IndustryDemosHub} />
-        <Route path="/crisis-demos" component={IndustryDemosHub} />
-        
-        {/* Industry-Specific Crisis Demos */}
-        <Route path="/luxury-demo" component={LuxuryCrisisDemo} />
-        <Route path="/luxury-crisis-demo" component={LuxuryCrisisDemo} />
+
+        {/* Industry Demos */}
+        {renderRoutes(["/industry-demos", "/crisis-demos"], IndustryDemosHub)}
+        {renderRoutes(["/luxury-demo", "/luxury-crisis-demo"], LuxuryCrisisDemo)}
         <Route path="/financial-demo" component={FinancialRansomwareDemo} />
         <Route path="/pharma-demo" component={PharmaceuticalRecallDemo} />
         <Route path="/manufacturing-demo" component={ManufacturingSupplierDemo} />
         <Route path="/retail-demo" component={RetailFoodSafetyDemo} />
         <Route path="/energy-demo" component={EnergyGridFailureDemo} />
-        
-        {/* Strategic Opportunity Demos (Offensive Coordination) */}
         <Route path="/lvmh-demo" component={LVMHMarketEntryDemo} />
         <Route path="/shein-demo" component={SHEINTrendDemo} />
         <Route path="/spacex-demo" component={SpaceXLaunchDemo} />
-        
-        {/* Additional Demo Experiences */}
-        <Route path="/demos" component={TryDemo} />
-        <Route path="/intelligence-demo" component={TryDemo} />
-        <Route path="/signals-demo" component={TryDemo} />
-        <Route path="/executive-simulation" component={ExecutiveSimulationDemo} />
-        <Route path="/simulation-demo" component={ExecutiveSimulationDemo} />
+        {renderRoutes(["/executive-simulation", "/simulation-demo"], ExecutiveSimulationDemo)}
         <Route path="/platform-overview" component={PlatformOverview} />
-        <Route path="/product-tour" component={ProductTour} />
-        <Route path="/video-tour" component={ProductTour} />
-        <Route path="/investor-presentation" component={InvestorPresentation} />
+        {renderRoutes(["/product-tour", "/video-tour"], ProductTour)}
+        {renderRoutes(["/investor-presentation", "/pitch-deck"], InvestorPresentation)}
         <Route path="/investor-demo" component={InvestorDemo} />
         <Route path="/customer-demo" component={CustomerDemo} />
         <Route path="/deal-risk-demo" component={DealRiskDemo} />
         <Route path="/investor-resources" component={InvestorResources} />
-        <Route path="/roadshow-resources" component={RoadshowResources} />
-        <Route path="/roadshow" component={RoadshowResources} />
-        <Route path="/pitch-deck" component={InvestorPresentation} />
-        
-        {/* Role-Based Customer Experience */}
+        {renderRoutes(["/roadshow-resources", "/roadshow"], RoadshowResources)}
+        <Route path="/demo-gallery" component={DemoGallery} />
+        {renderRoutes(["/keynote", "/trade-show-demo"], KeynoteDemo)}
+
+        {/* Customer Experience */}
+        {renderRoutes(["/north-star", "/customer-journey"], CustomerJourney)}
         <Route path="/experience/:roleId" component={RoleExperience} />
-        
-        {/* Industry-Based Customer Experience */}
         <Route path="/industry-experience/:industryId" component={IndustryExperience} />
-        
-        {/* Keynote Demo Mode - Tradeshow Presentation */}
-        <Route path="/keynote" component={KeynoteDemo} />
-        
-        {/* Legacy demos - redirect to main demo paths */}
-        <Route path="/watch-demo" component={TryDemo} />
-        <Route path="/trade-show-demo" component={KeynoteDemo} />
-        <Route path="/executive-demo" component={TryDemo} />
-        <Route path="/hybrid-demo" component={TryDemo} />
-        <Route path="/executive-demo-walkthrough" component={TryDemo} />
-        
-        {/* Legacy Routes */}
-        <Route path="/interactive-demo" component={RedirectToHowItWorks} />
-        <Route path="/interactive-master-demo" component={RedirectToHowItWorks} />
-        <Route path="/investor-landing" component={RedirectToHowItWorks} />
-        
-        {/* Playbook Library - 166 Strategic Playbooks */}
-        <Route path="/business-scenarios" component={PlaybookLibraryV2} />
-        <Route path="/business-scenario/:id" component={PlaybookDetail} />
-        
+
         {/* Settings & Administration */}
         <Route path="/vc-presentations" component={VCPresentations} />
         <Route path="/settings" component={Settings} />
         <Route path="/uat-admin" component={UATAdmin} />
         <Route path="/pilot-monitoring" component={PilotMonitoring} />
         <Route path="/sitemap" component={Sitemap} />
-        
-        {/* Landing Page - Redirects to Homepage for consistency */}
-        <Route path="/landing">{() => { window.location.href = '/'; return null; }}</Route>
-        
-        {/* Legacy Routes - Redirects for backwards compatibility */}
-        <Route path="/login">{() => { window.location.href = '/'; return null; }}</Route>
         <Route path="/comprehensive-homepage" component={ExecutiveScorecard} />
-        <Route path="/templates" component={RedirectToPlaybookLibrary} />
+
+        {/* Legacy Redirects */}
+        {renderRedirects([
+          "/scorecard", "/executive-scorecard", "/executive-suite",
+          "/dashboard", "/platform", "/operating-model-health",
+          "/future-readiness", "/readiness"
+        ], "/executive-dashboard")}
+        {renderRedirects([
+          "/scenarios", "/scenario-library", "/scenario-gallery",
+          "/comprehensive-scenarios", "/templates"
+        ], "/playbooks")}
+        {renderRedirects(["/triggers", "/trigger-dashboard"], "/triggers-management")}
+        {renderRedirects(["/interactive-demo", "/interactive-master-demo", "/investor-landing"], "/how-it-works")}
+        <Route path="/landing">{() => <Redirect to="/" />}</Route>
+        <Route path="/login">{() => <Redirect to="/" />}</Route>
         <Route path="/crisis" component={CrisisResponseCenter} />
         <Route path="/crisis/:id" component={CrisisDetail} />
         <Route path="/war-room" component={ExecutiveWarRoomPage} />
         <Route path="/crisis-response-center" component={CrisisResponseCenter} />
-        <Route path="/strategic-planning-hub" component={StrategicPlanningHub} />
-        <Route path="/advanced-analytics" component={AdvancedAnalytics} />
-        
-          <Route component={NotFound} />
+
+        <Route component={NotFound} />
         </Switch>
+        </Suspense>
       </DemoControllerProvider>
     </DemoTimelineProvider>
   );

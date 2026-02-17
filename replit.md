@@ -45,7 +45,9 @@ ExecuteIQ is built around the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE
 - **Enterprise Task Library:** A library of 42 pre-defined tasks categorized by IDEA phases and 9 functional areas, designed for rapid playbook setup and ensuring immediate execution readiness with predetermined stakeholders and tasks.
 
 ## Recent Changes (Feb 2026)
-- Cleaned up orphaned files: removed 5 dead scenario/playbook pages (ComprehensiveScenarios, ScenarioGallery, ScenarioLibraryPage, ScenarioTemplates, PlaybookLibrary V1), archive folder, deprecated EnterpriseNavigation component, 4 unused homepage components, 3 unused execution components, empty __tests__ directory, and 3 orphaned navigation files (routes.ts, m-nav.ts, workflow.ts)
+- **Major codebase cleanup**: Removed 5 dead scenario/playbook pages, archive folder, deprecated EnterpriseNavigation, 4 unused homepage components, 3 unused execution components, 12 unused demo components, 10 unused server services, 3 orphaned navigation files, empty __tests__ directory
+- **Route consolidation**: App.tsx reduced from 643 to 483 lines. Replaced 7 individual redirect components with a single generic Redirect. Grouped duplicate routes with renderRoutes/renderRedirects helpers. Removed 10+ unused page imports.
+- **Performance**: Added lazy loading (React.lazy + Suspense) for 100+ secondary pages. Only 12 critical pages (Homepage, HowItWorks, TryDemo, key Experience features) load eagerly. Added PageLoader spinner for loading state.
 - Navigation config (config.ts, types.ts) retained in client/src/navigation/ as they're actively used by IDEASidebar/IDEALayout
 - iconRenderer.tsx updated to define IconName type locally
 - Enhanced What-If Analyzer with clickable department chips and preset buttons
