@@ -445,11 +445,12 @@ function Router() {
         ], "/playbooks")}
         {renderRedirects(["/triggers", "/trigger-dashboard"], "/triggers-management")}
         {renderRedirects(["/interactive-demo", "/interactive-master-demo", "/investor-landing"], "/how-it-works")}
+        {renderRedirects(["/scenario-demo", "/ultimate-demo"], "/try-demo")}
         <Route path="/landing">{() => <Redirect to="/" />}</Route>
         <Route path="/login">{() => <Redirect to="/" />}</Route>
         <Route path="/crisis" component={CrisisResponseCenter} />
         <Route path="/crisis/:id" component={CrisisDetail} />
-        <Route path="/war-room" component={ExecutiveWarRoomPage} />
+        <Route path="/war-room">{() => <Redirect to="/command-center" />}</Route>
         <Route path="/crisis-response-center" component={CrisisResponseCenter} />
 
         <Route component={NotFound} />

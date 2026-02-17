@@ -557,7 +557,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.5, delay: 1.2 }}
                   className="flex gap-4 justify-center flex-wrap"
                 >
-                  <a href="/scenario-demo">
+                  <a href="/try-demo">
                     <Button 
                       size="lg" 
                       className="px-8 py-6 text-lg bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400" 

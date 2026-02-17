@@ -779,7 +779,7 @@ export default function MissionControl() {
                   <Shield className="h-12 w-12 mx-auto mb-3 text-slate-300 dark:text-slate-200" />
                   <p className="font-medium">All Clear - No Active Triggers</p>
                   <p className="text-sm mt-1">AI is continuously monitoring for strategic events</p>
-                  <a href="/scenario-demo">
+                  <a href="/try-demo">
                     <Button variant="outline" className="mt-4">
                       <PlayCircle className="h-4 w-4 mr-2" />
                       Try Demo
@@ -1035,7 +1035,7 @@ export default function MissionControl() {
                       <p className="text-sm text-slate-300 dark:text-slate-300">Experience a live trigger→execution flow in 3 minutes</p>
                     </div>
                   </div>
-                  <a href="/scenario-demo">
+                  <a href="/try-demo">
                     <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
                       <Play className="h-4 w-4 mr-2" />
                       Try Live Demo
@@ -1510,7 +1510,7 @@ export default function MissionControl() {
                       Learn More
                     </Button>
                   </Link>
-                  <a href="/scenario-demo">
+                  <a href="/try-demo">
                     <Button className="bg-white text-slate-900 hover:bg-slate-100">
                       <Rocket className="h-4 w-4 mr-2" />
                       Start Demo

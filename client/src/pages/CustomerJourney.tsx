@@ -281,7 +281,7 @@ export default function CustomerJourney() {
                     Start Pilot Program
                   </Button>
                 </Link>
-                <a href="/scenario-demo">
+                <a href="/try-demo">
                   <Button variant="outline" className="border-poise-teal text-poise-teal hover:bg-poise-teal/10">
                     Explore Demos
                   </Button>

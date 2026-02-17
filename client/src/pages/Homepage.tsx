@@ -35,7 +35,7 @@ import {
   Globe2,
   ExternalLink
 } from "lucide-react";
-import { useLocation, Link } from "wouter";
+import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
 import VideoIntro from "@/components/marketing/VideoIntro";
@@ -143,76 +143,6 @@ export default function Homepage() {
       borderColor: "border-blue-500/30"
     },
     {
-      quote: "70% of AI transformation is people and processes—not technology.",
-      source: "Bain",
-      report: "Technology Report 2025",
-      color: "text-emerald-400",
-      borderColor: "border-emerald-500/30"
-    },
-    {
-      quote: "69% of executives agree: agentic AI requires fundamentally new management approaches.",
-      source: "BCG",
-      report: "Leading in the Age of AI Agents",
-      color: "text-purple-400",
-      borderColor: "border-purple-500/30"
-    },
-    {
-      quote: "Governance must become real-time, data-driven, and embedded.",
-      source: "McKinsey",
-      report: "The Agentic Organization",
-      color: "text-amber-400",
-      borderColor: "border-amber-500/30"
-    },
-    {
-      quote: "Companies that align AI, platforms, and business strategies achieve 2.2x revenue growth.",
-      source: "Accenture",
-      report: "Platform Strategy in the Age of Agentic AI",
-      color: "text-cyan-400",
-      borderColor: "border-cyan-500/30"
-    },
-    {
-      quote: "The limiting factors are now integration and governance, not capability.",
-      source: "Anthropic",
-      report: "State of AI Agents 2026",
-      color: "text-rose-400",
-      borderColor: "border-rose-500/30"
-    },
-    {
-      quote: "The divide is between organizations that treat AI as workflow infrastructure and those that leave it as a side tool.",
-      source: "OpenAI",
-      report: "State of Enterprise AI",
-      color: "text-indigo-400",
-      borderColor: "border-indigo-500/30"
-    },
-    {
-      quote: "AI transformation is shifting from CIO-led to CEO-led mandate across enterprises.",
-      source: "Deloitte",
-      report: "State of AI in the Enterprise 2026",
-      color: "text-teal-400",
-      borderColor: "border-teal-500/30"
-    },
-    {
-      quote: "Readiness requires people, process, culture, and governance—not just technology.",
-      source: "Microsoft",
-      report: "Agents Are Here",
-      color: "text-sky-400",
-      borderColor: "border-sky-500/30"
-    },
-    {
-      quote: "AI agents are being deployed across industries—but orchestration infrastructure determines outcomes.",
-      source: "Google Cloud",
-      report: "AI Agent Trends 2026",
-      color: "text-green-400",
-      borderColor: "border-green-500/30"
-    },
-    {
-      quote: "Organizations must move from AI proof-of-concept to AI proof-of-impact at enterprise scale.",
-      source: "World Economic Forum",
-      report: "Proof over Promise 2026",
-      color: "text-blue-300",
-      borderColor: "border-blue-400/30"
-    },
-    {
       quote: "91% of organizations experienced major disruption—speed of coordinated response is the differentiator.",
       source: "PwC",
       report: "Global Crisis & Resilience Survey",
@@ -227,11 +157,18 @@ export default function Homepage() {
       borderColor: "border-violet-500/30"
     },
     {
-      quote: "Enterprise AI spending will reach $632B by 2028—but ROI depends on operational infrastructure.",
-      source: "IDC",
-      report: "Worldwide AI Spending Guide 2026",
-      color: "text-pink-400",
-      borderColor: "border-pink-500/30"
+      quote: "Governance must become real-time, data-driven, and embedded.",
+      source: "McKinsey",
+      report: "The Agentic Organization",
+      color: "text-amber-400",
+      borderColor: "border-amber-500/30"
+    },
+    {
+      quote: "Companies that align AI, platforms, and business strategies achieve 2.2x revenue growth.",
+      source: "Accenture",
+      report: "Platform Strategy in the Age of Agentic AI",
+      color: "text-cyan-400",
+      borderColor: "border-cyan-500/30"
     },
     {
       quote: "AI-native enterprises outperform peers by 3.5x on strategic execution speed.",
@@ -569,7 +506,7 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* Validation Section - What 15 Major Firms Are Saying */}
+      {/* Validation Section - Industry Research */}
       <section className="py-20 bg-white dark:bg-slate-950" data-testid="validation-section">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-8">
@@ -577,13 +514,13 @@ export default function Homepage() {
               Industry Consensus
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-              What 15 Major Firms Are Saying
+              What the Research Says
             </h2>
             <p className="text-lg text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-6">
               These aren't our claims. This is what the world's top consulting, technology, and research firms independently concluded.
             </p>
             <div className="flex flex-wrap justify-center gap-2 mb-8">
-              {['IBM', 'BCG', 'McKinsey', 'Bain', 'Accenture', 'Deloitte', 'PwC', 'Gartner', 'Forrester', 'IDC', 'Microsoft', 'Google Cloud', 'OpenAI', 'Anthropic', 'World Economic Forum'].map((firm) => (
+              {['IBM', 'PwC', 'Gartner', 'McKinsey', 'Accenture', 'Forrester'].map((firm) => (
                 <span key={firm} className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full px-3 py-1 text-xs font-medium text-slate-700 dark:text-slate-300">{firm}</span>
               ))}
             </div>
@@ -828,35 +765,6 @@ export default function Homepage() {
                 </CardContent>
               </Card>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Industry Consensus */}
-      <section className="py-12 px-6 bg-gradient-to-r from-emerald-950 via-slate-900 to-emerald-950">
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-emerald-900/20 border border-emerald-700/40 rounded-2xl p-8 text-center">
-            <div className="flex items-center justify-center gap-2 mb-3">
-              <Sparkles className="h-5 w-5 text-emerald-400" />
-              <span className="text-emerald-400 font-semibold text-sm uppercase tracking-wider">Agentic AI Convergence</span>
-            </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
-              In the last 6 months, <span className="text-emerald-400">12 major guides</span> from <span className="text-emerald-400">9 leading firms</span> have confirmed this gap.
-            </h3>
-            <p className="text-slate-300 max-w-3xl mx-auto mb-4">
-              McKinsey, IBM, BCG, Bain, PwC, Accenture, Deloitte, AWS, and World Economic Forum — all independently published research pointing at the same conclusion: enterprises need execution infrastructure to operationalize AI.
-            </p>
-            <p className="text-emerald-400 font-semibold">
-              Every firm is consulting on the problem. ExecuteIQ built the product.
-            </p>
-            <div className="mt-4">
-              <Link href="/research">
-                <Button variant="outline" className="border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10 bg-transparent">
-                  See the Full Research
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-            </div>
           </div>
         </div>
       </section>
@@ -1197,7 +1105,7 @@ export default function Homepage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
-              onClick={() => { window.location.href = '/scenario-demo'; }}
+              onClick={() => setLocation('/try-demo')}
               className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8 py-6 text-lg"
               data-testid="button-try-demo-cta"
             >

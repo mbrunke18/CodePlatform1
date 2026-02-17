@@ -89,7 +89,6 @@ export default function StandardNav() {
     { label: "Command Center", path: "/command-center", icon: Target, description: "Live execution coordination" },
     { label: "Executive Dashboard", path: "/executive-dashboard", icon: BarChart3, description: "Performance metrics & KPIs" },
     { label: "Strategy Execution", path: "/strategy-execution", icon: TrendingUp, description: "Transformation progress tracking" },
-    { label: "War Room", path: "/war-room", icon: Shield, description: "Crisis response coordination" },
     { label: "Playbook Factory", path: "/workspaces/identify", icon: Layers, description: "Build & customize playbooks" },
     { label: "Signal Ops Center", path: "/workspaces/detect", icon: Radar, description: "Configure signal sources" },
     { label: "Pulse Intelligence", path: "/pulse-intelligence", icon: Radar, description: "Weak signal analysis" },

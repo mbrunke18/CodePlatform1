@@ -189,7 +189,7 @@ export default function Investors() {
             </p>
             
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="/scenario-demo">
+              <a href="/try-demo">
                 <Button className="bg-[#D4AF37] hover:bg-[#c9a432] text-black font-semibold px-6 h-12">
                   <Play className="w-4 h-4 mr-2" />
                   Watch Demo
@@ -329,7 +329,7 @@ export default function Investors() {
             </div>
             <div className="text-center">
               <button
-                onClick={() => { window.location.href = '/scenario-demo'; }}
+                onClick={() => { window.location.href = '/try-demo'; }}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#00A8A8] to-emerald-500 text-white font-semibold rounded-xl hover:opacity-90 transition-all"
               >
                 <Play className="w-4 h-4" />
@@ -505,13 +505,13 @@ export default function Investors() {
           >
             <h2 className="text-2xl font-bold text-white mb-6">Ready to Learn More?</h2>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="/scenario-demo">
+              <a href="/try-demo">
                 <Button className="bg-[#D4AF37] hover:bg-[#c9a432] text-black font-semibold px-8 h-12">
                   <Play className="w-4 h-4 mr-2" />
                   Interactive Demo
                 </Button>
               </a>
-              <a href="/scenario-demo">
+              <a href="/try-demo">
                 <Button variant="outline" className="border-[#00A8A8]/50 text-[#00A8A8] hover:bg-[#00A8A8]/10 h-12 px-8 bg-transparent">
                   <FileText className="w-4 h-4 mr-2" />
                   Scenario Comparisons

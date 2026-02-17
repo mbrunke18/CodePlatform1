@@ -235,6 +235,61 @@ export default function HowItWorks() {
           ))}
         </div>
 
+        {/* 12-Minute Timeline Breakdown */}
+        <div className="max-w-4xl mx-auto mt-20 mb-16">
+          <div className="text-center mb-10">
+            <Badge className="mb-4 bg-emerald-600/20 text-emerald-400 border-emerald-500/30">
+              The 12-Minute Proof Point
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              From Trigger to Coordinated Execution
+            </h2>
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+              Here's exactly what happens in those 12 minutes — and why it takes others 72+ hours.
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="absolute left-6 md:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 via-blue-500 to-amber-500" />
+            
+            {[
+              { time: "0:00", label: "Trigger Detected", description: "AI signal or human activation identifies a strategic moment — M&A announcement, cyber breach, competitive threat.", color: "emerald", icon: "signal" },
+              { time: "0:30", label: "Playbook Matched & Loaded", description: "The right playbook from 166 options is matched to the situation. Governance structure, decision rights, and task templates load instantly.", color: "emerald", icon: "match" },
+              { time: "1:00", label: "Stakeholder Notification Sent", description: "All relevant stakeholders — 50 to 200+ across legal, finance, ops, comms — receive coordinated notifications via Slack, Teams, or email.", color: "blue", icon: "notify" },
+              { time: "3:00", label: "Stakeholders Acknowledged", description: "Response confirmations tracked in real-time. Escalation protocols activate for any non-responses. Full visibility in Command Center.", color: "blue", icon: "confirm" },
+              { time: "5:00", label: "Tasks Assigned with Clear Owners", description: "Every task has a named owner, a deadline, and a decision-rights framework. No ambiguity. No duplication. Everyone knows their assignment.", color: "violet", icon: "assign" },
+              { time: "8:00", label: "Decision Rights Confirmed, Budget Released", description: "Pre-approved budget thresholds activate. Spending authority delegated per playbook. Executive sign-off required only for exceptions.", color: "amber", icon: "budget" },
+              { time: "12:00", label: "Full Coordinated Execution Underway", description: "All workstreams active. Cross-functional teams executing in parallel. Real-time tracking across every task, every stakeholder, every deadline.", color: "emerald", icon: "execute" },
+            ].map((step, index) => {
+              const colorMap: Record<string, { dot: string; time: string; bg: string }> = {
+                emerald: { dot: "bg-emerald-500", time: "text-emerald-500 dark:text-emerald-400", bg: "bg-emerald-50 dark:bg-emerald-950/20" },
+                blue: { dot: "bg-blue-500", time: "text-blue-500 dark:text-blue-400", bg: "bg-blue-50 dark:bg-blue-950/20" },
+                violet: { dot: "bg-violet-500", time: "text-violet-500 dark:text-violet-400", bg: "bg-violet-50 dark:bg-violet-950/20" },
+                amber: { dot: "bg-amber-500", time: "text-amber-500 dark:text-amber-400", bg: "bg-amber-50 dark:bg-amber-950/20" },
+              };
+              const colors = colorMap[step.color];
+              return (
+                <div key={index} className="relative pl-16 md:pl-20 pb-8 last:pb-0">
+                  <div className={`absolute left-4 md:left-6 w-4 h-4 md:w-5 md:h-5 rounded-full ${colors.dot} border-4 border-white dark:border-slate-900 z-10`} style={{ top: '4px' }} />
+                  <div className={`${colors.bg} rounded-xl p-5 border border-slate-200 dark:border-slate-700`}>
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className={`text-lg md:text-xl font-bold font-mono ${colors.time}`}>{step.time}</span>
+                      <span className="text-lg font-bold text-slate-900 dark:text-white">{step.label}</span>
+                    </div>
+                    <p className="text-slate-600 dark:text-slate-300">{step.description}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-10 bg-gradient-to-r from-red-950/30 to-slate-900/50 dark:from-red-950/30 dark:to-slate-800/50 rounded-xl p-6 border border-red-500/20 text-center">
+            <p className="text-lg text-slate-700 dark:text-slate-300">
+              <span className="text-red-400 font-bold">Without ExecuteIQ:</span> At the 12-minute mark, most organizations are still trying to figure out who to call.
+            </p>
+          </div>
+        </div>
+
         {/* Agentic Execution Layer - Stack Positioning */}
         <div className="max-w-4xl mx-auto mt-20 mb-8">
           <div className="text-center mb-10">
@@ -356,7 +411,7 @@ export default function HowItWorks() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
-              onClick={() => { window.location.href = '/scenario-demo'; }}
+              onClick={() => { window.location.href = '/try-demo'; }}
               className="bg-poise-teal hover:bg-cyan-600 text-white px-8 py-6 text-lg"
               data-testid="button-try-demo"
             >
