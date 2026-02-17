@@ -22,9 +22,7 @@ import {
   Timer,
   Rocket
 } from 'lucide-react';
-import { IconName } from '../navigation/config';
 
-// Icon mapping from name to component
 const iconMap = {
   LayoutDashboard,
   Brain,
@@ -50,7 +48,8 @@ const iconMap = {
   Rocket
 } as const;
 
-// Icon renderer function that converts icon names to JSX components
+export type IconName = keyof typeof iconMap;
+
 export function renderIcon(iconName: IconName, className?: string) {
   const IconComponent = iconMap[iconName];
   if (!IconComponent) {
@@ -60,7 +59,6 @@ export function renderIcon(iconName: IconName, className?: string) {
   return <IconComponent className={className} />;
 }
 
-// Helper function with default styling for navigation icons
 export function renderNavigationIcon(iconName: IconName, size: 'sm' | 'md' = 'md') {
   const sizeClasses = {
     sm: 'h-4 w-4',

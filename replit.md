@@ -44,6 +44,14 @@ ExecuteIQ is built around the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE
 - **Key Constants:** Centralized constants for branding, leadership capabilities, IDEA phases, strategic domains, timing benchmarks, and UI elements.
 - **Enterprise Task Library:** A library of 42 pre-defined tasks categorized by IDEA phases and 9 functional areas, designed for rapid playbook setup and ensuring immediate execution readiness with predetermined stakeholders and tasks.
 
+## Recent Changes (Feb 2026)
+- Cleaned up orphaned files: removed 5 dead scenario/playbook pages (ComprehensiveScenarios, ScenarioGallery, ScenarioLibraryPage, ScenarioTemplates, PlaybookLibrary V1), archive folder, deprecated EnterpriseNavigation component, 4 unused homepage components, 3 unused execution components, empty __tests__ directory, and 3 orphaned navigation files (routes.ts, m-nav.ts, workflow.ts)
+- Navigation config (config.ts, types.ts) retained in client/src/navigation/ as they're actively used by IDEASidebar/IDEALayout
+- iconRenderer.tsx updated to define IconName type locally
+- Enhanced What-If Analyzer with clickable department chips and preset buttons
+- Added Enterprise Integration section to Homepage
+- Added zero-disruption integration differentiator to How It Works page
+
 ## External Dependencies
 - **AI Services**: OpenAI GPT-4o
 - **Database Services**: Neon PostgreSQL
