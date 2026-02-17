@@ -47,14 +47,59 @@ import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 import ScenarioVarianceAlert from '@/components/predictive/ScenarioVarianceAlert';
 
+interface StrategicVariable {
+  id: string;
+  label: string;
+  category: 'market' | 'operational' | 'financial' | 'regulatory' | 'environmental';
+  unit: string;
+  defaultOperator: 'greater' | 'less' | 'equals' | 'between' | 'increases_by' | 'decreases_by' | 'changes_to';
+  defaultValue: string;
+  placeholder: string;
+  scenarioTypes: string[];
+}
+
+const strategicVariables: StrategicVariable[] = [
+  { id: 'market_share', label: 'Market Share', category: 'market', unit: '%', defaultOperator: 'changes_to', defaultValue: '', placeholder: '25', scenarioTypes: ['market', 'strategic', 'operational', 'financial'] },
+  { id: 'revenue_change', label: 'Revenue', category: 'financial', unit: '%', defaultOperator: 'decreases_by', defaultValue: '', placeholder: '15', scenarioTypes: ['market', 'financial', 'strategic', 'operational', 'security', 'supply-chain', 'regulatory'] },
+  { id: 'competitor_pricing', label: 'Competitor Pricing', category: 'market', unit: '% lower', defaultOperator: 'changes_to', defaultValue: '', placeholder: '30', scenarioTypes: ['market', 'strategic', 'operational'] },
+  { id: 'time_to_market', label: 'Time to Market', category: 'operational', unit: 'months', defaultOperator: 'changes_to', defaultValue: '', placeholder: '3', scenarioTypes: ['market', 'strategic', 'operational'] },
+  { id: 'budget_available', label: 'Available Budget', category: 'financial', unit: '$M', defaultOperator: 'changes_to', defaultValue: '', placeholder: '5', scenarioTypes: ['market', 'financial', 'strategic', 'operational', 'security', 'supply-chain', 'regulatory'] },
+  { id: 'team_headcount', label: 'Team Size', category: 'operational', unit: 'people', defaultOperator: 'changes_to', defaultValue: '', placeholder: '50', scenarioTypes: ['market', 'strategic', 'operational', 'security'] },
+  { id: 'response_time', label: 'Response Time', category: 'operational', unit: 'minutes', defaultOperator: 'changes_to', defaultValue: '', placeholder: '12', scenarioTypes: ['security', 'operational', 'supply-chain', 'regulatory'] },
+  { id: 'downtime_duration', label: 'System Downtime', category: 'operational', unit: 'hours', defaultOperator: 'changes_to', defaultValue: '', placeholder: '4', scenarioTypes: ['security', 'operational', 'supply-chain'] },
+  { id: 'records_affected', label: 'Records Affected', category: 'operational', unit: 'records', defaultOperator: 'changes_to', defaultValue: '', placeholder: '500000', scenarioTypes: ['security', 'regulatory'] },
+  { id: 'compliance_deadline', label: 'Compliance Deadline', category: 'regulatory', unit: 'days', defaultOperator: 'changes_to', defaultValue: '', placeholder: '30', scenarioTypes: ['regulatory', 'security', 'strategic'] },
+  { id: 'supply_chain_delay', label: 'Supply Chain Delay', category: 'operational', unit: 'weeks', defaultOperator: 'increases_by', defaultValue: '', placeholder: '6', scenarioTypes: ['supply-chain', 'operational', 'market'] },
+  { id: 'customer_churn', label: 'Customer Churn Rate', category: 'market', unit: '%', defaultOperator: 'increases_by', defaultValue: '', placeholder: '8', scenarioTypes: ['market', 'strategic', 'operational', 'financial'] },
+  { id: 'cost_of_capital', label: 'Cost of Capital', category: 'financial', unit: '%', defaultOperator: 'increases_by', defaultValue: '', placeholder: '2.5', scenarioTypes: ['financial', 'strategic', 'market'] },
+  { id: 'regulatory_fine', label: 'Potential Regulatory Fine', category: 'regulatory', unit: '$M', defaultOperator: 'changes_to', defaultValue: '', placeholder: '10', scenarioTypes: ['regulatory', 'security', 'financial'] },
+  { id: 'staff_availability', label: 'Key Staff Availability', category: 'operational', unit: '%', defaultOperator: 'decreases_by', defaultValue: '', placeholder: '40', scenarioTypes: ['operational', 'security', 'strategic', 'supply-chain'] },
+  { id: 'integration_timeline', label: 'Integration Timeline', category: 'operational', unit: 'days', defaultOperator: 'changes_to', defaultValue: '', placeholder: '60', scenarioTypes: ['strategic', 'market', 'operational'] },
+  { id: 'oil_price', label: 'Oil Price', category: 'environmental', unit: '$/barrel', defaultOperator: 'greater', defaultValue: '', placeholder: '120', scenarioTypes: ['financial', 'supply-chain', 'operational', 'market'] },
+  { id: 'interest_rate', label: 'Interest Rate', category: 'financial', unit: '%', defaultOperator: 'increases_by', defaultValue: '', placeholder: '1.5', scenarioTypes: ['financial', 'strategic', 'market'] },
+  { id: 'adoption_rate', label: 'Technology Adoption Rate', category: 'operational', unit: '%', defaultOperator: 'changes_to', defaultValue: '', placeholder: '60', scenarioTypes: ['strategic', 'market', 'operational', 'security'] },
+  { id: 'reputation_score', label: 'Brand Reputation Score', category: 'market', unit: 'points (0-100)', defaultOperator: 'decreases_by', defaultValue: '', placeholder: '20', scenarioTypes: ['market', 'strategic', 'security', 'regulatory'] },
+];
+
+const operatorLabels: Record<string, string> = {
+  greater: 'is greater than',
+  less: 'is less than',
+  equals: 'equals',
+  between: 'is between',
+  increases_by: 'increases by',
+  decreases_by: 'decreases by',
+  changes_to: 'changes to',
+};
+
 interface TestCondition {
   id: string;
   label: string;
-  operator: 'greater' | 'less' | 'equals' | 'between';
+  operator: 'greater' | 'less' | 'equals' | 'between' | 'increases_by' | 'decreases_by' | 'changes_to';
   value: number | string;
   value2?: number | string;
   unit?: string;
   category: 'market' | 'operational' | 'financial' | 'regulatory' | 'environmental';
+  variableId?: string;
 }
 
 interface ImpactAssessment {
@@ -378,16 +423,15 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
   const [scenarioType, setScenarioType] = useState<string>('');
   const [industry, setIndustry] = useState<string>('');
   const [conditions, setConditions] = useState<TestCondition[]>([]);
-  const [newCondition, setNewCondition] = useState<{
-    label: string;
-    operator: 'greater' | 'less' | 'equals' | 'between';
-    value: string;
-    value2: string;
-    unit: string;
-    category: 'market' | 'operational' | 'financial' | 'regulatory' | 'environmental';
-  }>({
-    label: '', operator: 'greater', value: '', value2: '', unit: '', category: 'market',
-  });
+  const [selectedVariableId, setSelectedVariableId] = useState<string>('');
+  const [conditionOperator, setConditionOperator] = useState<string>('');
+  const [conditionValue, setConditionValue] = useState('');
+  const [conditionValue2, setConditionValue2] = useState('');
+  const [showCustomVariable, setShowCustomVariable] = useState(false);
+  const [showAllVariables, setShowAllVariables] = useState(false);
+  const [customLabel, setCustomLabel] = useState('');
+  const [customUnit, setCustomUnit] = useState('');
+  const [customCategory, setCustomCategory] = useState<'market' | 'operational' | 'financial' | 'regulatory' | 'environmental'>('market');
   const [impactAssessment, setImpactAssessment] = useState<ImpactAssessment>({
     financial: { estimatedCost: 0, revenueImpact: 0, budgetAllocation: 0 },
     operational: { affectedDepartments: [], affectedRegions: [], downtimeEstimate: 0 },
@@ -448,22 +492,79 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
     toast({ title: "Template Loaded", description: `Loaded scenario: ${template.name}` });
   };
 
+  const selectedVariable = strategicVariables.find(v => v.id === selectedVariableId);
+
+  const relevantVariables = scenarioType
+    ? strategicVariables.filter(v => v.scenarioTypes.includes(scenarioType))
+    : strategicVariables;
+
+  const alreadyAddedIds = new Set(conditions.map(c => c.variableId).filter(Boolean));
+
+  const handleSelectVariable = (varId: string) => {
+    const variable = strategicVariables.find(v => v.id === varId);
+    if (variable) {
+      setSelectedVariableId(varId);
+      setConditionOperator(variable.defaultOperator);
+      setConditionValue('');
+      setConditionValue2('');
+      setShowCustomVariable(false);
+    }
+  };
+
   const addCondition = () => {
-    if (!newCondition.label || !newCondition.value) {
-      toast({ title: "Missing Information", description: "Please provide both a condition label and value", variant: "destructive" });
+    if (showCustomVariable) {
+      if (!customLabel.trim() || !conditionValue.trim()) {
+        toast({ title: "Missing Information", description: "Please provide a variable name and value", variant: "destructive" });
+        return;
+      }
+      const customOp = conditionOperator || 'changes_to';
+      if (customOp === 'between' && !conditionValue2.trim()) {
+        toast({ title: "Missing Range", description: "Please enter both a minimum and maximum value for the 'between' range", variant: "destructive" });
+        return;
+      }
+      const condition: TestCondition = {
+        id: `cond_${Date.now()}`,
+        label: customLabel,
+        operator: (conditionOperator || 'changes_to') as any,
+        value: parseFloat(conditionValue) || conditionValue,
+        value2: conditionValue2 ? (parseFloat(conditionValue2) || conditionValue2) : undefined,
+        unit: customUnit,
+        category: customCategory,
+      };
+      setConditions([...conditions, condition]);
+      setCustomLabel('');
+      setCustomUnit('');
+      setConditionValue('');
+      setConditionValue2('');
+      setConditionOperator('');
+      setShowCustomVariable(false);
+      return;
+    }
+
+    if (!selectedVariable || !conditionValue.trim()) {
+      toast({ title: "Missing Information", description: "Please select a variable and enter a value", variant: "destructive" });
+      return;
+    }
+    const op = conditionOperator || selectedVariable.defaultOperator;
+    if (op === 'between' && !conditionValue2.trim()) {
+      toast({ title: "Missing Range", description: "Please enter both a minimum and maximum value for the 'between' range", variant: "destructive" });
       return;
     }
     const condition: TestCondition = {
       id: `cond_${Date.now()}`,
-      label: newCondition.label,
-      operator: newCondition.operator,
-      value: parseFloat(newCondition.value) || newCondition.value,
-      value2: newCondition.value2 ? (parseFloat(newCondition.value2) || newCondition.value2) : undefined,
-      unit: newCondition.unit,
-      category: newCondition.category,
+      label: selectedVariable.label,
+      operator: op as any,
+      value: parseFloat(conditionValue) || conditionValue,
+      value2: conditionValue2 ? (parseFloat(conditionValue2) || conditionValue2) : undefined,
+      unit: selectedVariable.unit,
+      category: selectedVariable.category,
+      variableId: selectedVariable.id,
     };
     setConditions([...conditions, condition]);
-    setNewCondition({ label: '', operator: 'greater', value: '', value2: '', unit: '', category: 'market' });
+    setSelectedVariableId('');
+    setConditionOperator('');
+    setConditionValue('');
+    setConditionValue2('');
   };
 
   const removeCondition = (id: string) => setConditions(conditions.filter(c => c.id !== id));
@@ -650,7 +751,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
     }
   };
 
-  const stepLabels = ['Define Scenario', 'Set Conditions', 'Impact & Resources', 'Results'];
+  const stepLabels = ['Define Scenario', 'Set Assumptions', 'Impact & Resources', 'Results'];
 
   const canAdvance = () => {
     if (wizardStep === 1) return !!analysisName.trim() && !!scenarioType;
@@ -810,88 +911,229 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Target className="h-5 w-5 text-blue-500" />
-                Define Test Conditions
+                Define Scenario Assumptions
               </CardTitle>
               <CardDescription>
-                What specific measurable conditions define this scenario?
-                For example: "Oil price greater than $120/barrel" or "Market share less than 15%."
+                What conditions or changes are you modeling? Pick strategic variables relevant to your scenario, 
+                set their values, and build a complete picture of the "what if."
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg space-y-3 border border-dashed border-slate-300 dark:border-slate-600">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div>
-                    <Label>Condition *</Label>
-                    <Input placeholder="e.g., Oil price, Market volatility" value={newCondition.label} onChange={(e) => setNewCondition({ ...newCondition, label: e.target.value })} />
-                  </div>
-                  <div>
-                    <Label>Category</Label>
-                    <Select value={newCondition.category} onValueChange={(value: any) => setNewCondition({ ...newCondition, category: value })}>
-                      <SelectTrigger><SelectValue /></SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="market">Market</SelectItem>
-                        <SelectItem value="operational">Operational</SelectItem>
-                        <SelectItem value="financial">Financial</SelectItem>
-                        <SelectItem value="regulatory">Regulatory</SelectItem>
-                        <SelectItem value="environmental">Environmental</SelectItem>
-                      </SelectContent>
-                    </Select>
+            <CardContent className="space-y-5">
+              {!showCustomVariable && !selectedVariableId && (
+                <div>
+                  <Label className="text-sm font-semibold text-slate-700 dark:text-slate-200 mb-3 block">
+                    {scenarioType ? 'Recommended for this scenario type' : 'Choose a strategic variable'}
+                  </Label>
+                  {(() => {
+                    const available = relevantVariables.filter(v => !alreadyAddedIds.has(v.id));
+                    const displayed = showAllVariables ? available : available.slice(0, 8);
+                    const hasMore = available.length > 8 && !showAllVariables;
+                    return (
+                      <>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                          {displayed.map(variable => {
+                            const catColors: Record<string, { bg: string; text: string; border: string }> = {
+                              market: { bg: 'bg-emerald-50 dark:bg-emerald-900/20', text: 'text-emerald-700 dark:text-emerald-300', border: 'border-emerald-200 dark:border-emerald-800' },
+                              operational: { bg: 'bg-blue-50 dark:bg-blue-900/20', text: 'text-blue-700 dark:text-blue-300', border: 'border-blue-200 dark:border-blue-800' },
+                              financial: { bg: 'bg-amber-50 dark:bg-amber-900/20', text: 'text-amber-700 dark:text-amber-300', border: 'border-amber-200 dark:border-amber-800' },
+                              regulatory: { bg: 'bg-purple-50 dark:bg-purple-900/20', text: 'text-purple-700 dark:text-purple-300', border: 'border-purple-200 dark:border-purple-800' },
+                              environmental: { bg: 'bg-cyan-50 dark:bg-cyan-900/20', text: 'text-cyan-700 dark:text-cyan-300', border: 'border-cyan-200 dark:border-cyan-800' },
+                            };
+                            const colors = catColors[variable.category] || catColors.market;
+                            return (
+                              <button
+                                key={variable.id}
+                                onClick={() => handleSelectVariable(variable.id)}
+                                className={`flex items-center gap-3 p-3 rounded-lg border ${colors.border} ${colors.bg} text-left transition-all hover:shadow-md hover:scale-[1.01]`}
+                              >
+                                <div className="flex-1 min-w-0">
+                                  <div className="text-sm font-medium text-slate-800 dark:text-white">{variable.label}</div>
+                                  <div className={`text-xs ${colors.text}`}>{variable.category} · {variable.unit}</div>
+                                </div>
+                                <ChevronRight className="h-4 w-4 text-slate-400 flex-shrink-0" />
+                              </button>
+                            );
+                          })}
+                        </div>
+                        {hasMore && (
+                          <div className="text-center mt-2">
+                            <Button variant="ghost" size="sm" className="text-blue-600 dark:text-blue-400" onClick={() => setShowAllVariables(true)}>
+                              Show {available.length - 8} more variables
+                            </Button>
+                          </div>
+                        )}
+                      </>
+                    );
+                  })()}
+                  <div className="mt-3 text-center">
+                    <Button variant="ghost" size="sm" className="text-slate-500" onClick={() => setShowCustomVariable(true)}>
+                      <Plus className="h-4 w-4 mr-1" /> Add a custom variable
+                    </Button>
                   </div>
                 </div>
-                <div className="grid grid-cols-3 gap-3">
-                  <div>
-                    <Label>Operator</Label>
-                    <Select value={newCondition.operator} onValueChange={(value: any) => setNewCondition({ ...newCondition, operator: value })}>
-                      <SelectTrigger><SelectValue /></SelectTrigger>
+              )}
+
+              {selectedVariableId && selectedVariable && (
+                <div className="p-4 bg-blue-50 dark:bg-blue-900/10 rounded-lg space-y-4 border border-blue-200 dark:border-blue-800">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-sm font-bold text-slate-800 dark:text-white">{selectedVariable.label}</div>
+                      <div className="text-xs text-slate-500">{selectedVariable.category} variable · measured in {selectedVariable.unit}</div>
+                    </div>
+                    <Button variant="ghost" size="sm" onClick={() => { setSelectedVariableId(''); setConditionValue(''); setConditionValue2(''); }}>
+                      <ArrowLeft className="h-3 w-3 mr-1" /> Change
+                    </Button>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-800 p-3 rounded-md border border-slate-200 dark:border-slate-700">
+                    <span className="font-medium text-slate-800 dark:text-white">{selectedVariable.label}</span>
+                    <Select value={conditionOperator} onValueChange={setConditionOperator}>
+                      <SelectTrigger className="w-44 h-8 text-xs">
+                        <SelectValue placeholder="Select..." />
+                      </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="greater">Greater than</SelectItem>
-                        <SelectItem value="less">Less than</SelectItem>
-                        <SelectItem value="equals">Equals</SelectItem>
-                        <SelectItem value="between">Between</SelectItem>
+                        <SelectItem value="changes_to">changes to</SelectItem>
+                        <SelectItem value="increases_by">increases by</SelectItem>
+                        <SelectItem value="decreases_by">decreases by</SelectItem>
+                        <SelectItem value="greater">is greater than</SelectItem>
+                        <SelectItem value="less">is less than</SelectItem>
+                        <SelectItem value="equals">equals</SelectItem>
+                        <SelectItem value="between">is between</SelectItem>
                       </SelectContent>
                     </Select>
+                    <Input
+                      type="number"
+                      placeholder={selectedVariable.placeholder}
+                      value={conditionValue}
+                      onChange={(e) => setConditionValue(e.target.value)}
+                      className="w-28 h-8 text-sm"
+                    />
+                    {conditionOperator === 'between' && (
+                      <>
+                        <span className="text-slate-400">and</span>
+                        <Input
+                          type="number"
+                          placeholder="max"
+                          value={conditionValue2}
+                          onChange={(e) => setConditionValue2(e.target.value)}
+                          className="w-28 h-8 text-sm"
+                        />
+                      </>
+                    )}
+                    <span className="text-slate-500 text-xs whitespace-nowrap">{selectedVariable.unit}</span>
                   </div>
-                  <div>
-                    <Label>Value *</Label>
-                    <Input type="number" placeholder="120" value={newCondition.value} onChange={(e) => setNewCondition({ ...newCondition, value: e.target.value })} />
-                  </div>
-                  {newCondition.operator === 'between' ? (
-                    <div>
-                      <Label>Max Value</Label>
-                      <Input type="number" placeholder="150" value={newCondition.value2} onChange={(e) => setNewCondition({ ...newCondition, value2: e.target.value })} />
-                    </div>
-                  ) : (
-                    <div>
-                      <Label>Unit</Label>
-                      <Input placeholder="$/barrel" value={newCondition.unit} onChange={(e) => setNewCondition({ ...newCondition, unit: e.target.value })} />
+
+                  {conditionValue && (
+                    <div className="text-xs text-slate-500 dark:text-slate-400 italic pl-1">
+                      Preview: "{selectedVariable.label} {operatorLabels[conditionOperator] || conditionOperator} {conditionValue}{conditionOperator === 'between' && conditionValue2 ? ` and ${conditionValue2}` : ''} {selectedVariable.unit}"
                     </div>
                   )}
+
+                  <Button onClick={addCondition} disabled={!conditionValue.trim() || (conditionOperator === 'between' && !conditionValue2.trim())} className="w-full">
+                    <Plus className="h-4 w-4 mr-2" /> Add This Assumption
+                  </Button>
                 </div>
-                <Button onClick={addCondition} className="w-full">
-                  <Plus className="h-4 w-4 mr-2" /> Add Condition
-                </Button>
-              </div>
+              )}
+
+              {showCustomVariable && (
+                <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg space-y-3 border border-dashed border-slate-300 dark:border-slate-600">
+                  <div className="flex items-center justify-between mb-1">
+                    <Label className="text-sm font-semibold">Custom Variable</Label>
+                    <Button variant="ghost" size="sm" onClick={() => setShowCustomVariable(false)}>
+                      <ArrowLeft className="h-3 w-3 mr-1" /> Back to presets
+                    </Button>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <Label className="text-xs">Variable Name *</Label>
+                      <Input placeholder="e.g., Oil Price, Attrition Rate" value={customLabel} onChange={(e) => setCustomLabel(e.target.value)} />
+                    </div>
+                    <div>
+                      <Label className="text-xs">Category</Label>
+                      <Select value={customCategory} onValueChange={(v: any) => setCustomCategory(v)}>
+                        <SelectTrigger><SelectValue /></SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="market">Market</SelectItem>
+                          <SelectItem value="operational">Operational</SelectItem>
+                          <SelectItem value="financial">Financial</SelectItem>
+                          <SelectItem value="regulatory">Regulatory</SelectItem>
+                          <SelectItem value="environmental">Environmental</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-3">
+                    <div>
+                      <Label className="text-xs">Behavior</Label>
+                      <Select value={conditionOperator || 'changes_to'} onValueChange={setConditionOperator}>
+                        <SelectTrigger><SelectValue /></SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="changes_to">changes to</SelectItem>
+                          <SelectItem value="increases_by">increases by</SelectItem>
+                          <SelectItem value="decreases_by">decreases by</SelectItem>
+                          <SelectItem value="greater">is greater than</SelectItem>
+                          <SelectItem value="less">is less than</SelectItem>
+                          <SelectItem value="between">is between</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div>
+                      <Label className="text-xs">Value *</Label>
+                      <Input type="number" placeholder="e.g., 120" value={conditionValue} onChange={(e) => setConditionValue(e.target.value)} />
+                    </div>
+                    {(conditionOperator || 'changes_to') === 'between' ? (
+                      <div>
+                        <Label className="text-xs">Max Value *</Label>
+                        <Input type="number" placeholder="e.g., 200" value={conditionValue2} onChange={(e) => setConditionValue2(e.target.value)} />
+                      </div>
+                    ) : (
+                      <div>
+                        <Label className="text-xs">Unit</Label>
+                        <Input placeholder="e.g., $/barrel, %" value={customUnit} onChange={(e) => setCustomUnit(e.target.value)} />
+                      </div>
+                    )}
+                  </div>
+                  {(conditionOperator || 'changes_to') === 'between' && (
+                    <div>
+                      <Label className="text-xs">Unit</Label>
+                      <Input placeholder="e.g., $/barrel, %" value={customUnit} onChange={(e) => setCustomUnit(e.target.value)} />
+                    </div>
+                  )}
+                  <Button onClick={addCondition} disabled={!customLabel.trim() || !conditionValue.trim() || ((conditionOperator || 'changes_to') === 'between' && !conditionValue2.trim())} className="w-full">
+                    <Plus className="h-4 w-4 mr-2" /> Add This Assumption
+                  </Button>
+                </div>
+              )}
 
               {conditions.length > 0 && (
                 <div className="space-y-2">
-                  <Label className="text-sm font-semibold">Active Conditions ({conditions.length})</Label>
-                  {conditions.map(condition => (
-                    <div key={condition.id} className="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-                      <div className="text-sm flex-1">
-                        <Badge variant="outline" className="mb-1 text-xs">{condition.category}</Badge>
-                        <div>
-                          <span className="font-medium">{condition.label}</span>
-                          <span className="text-slate-500"> {condition.operator} </span>
-                          <span className="font-medium">{condition.value}</span>
-                          {condition.value2 && <span className="font-medium"> - {condition.value2}</span>}
-                          {condition.unit && <span className="text-slate-500"> {condition.unit}</span>}
+                  <Label className="text-sm font-semibold">Scenario Assumptions ({conditions.length})</Label>
+                  {conditions.map(condition => {
+                    const catBadgeColors: Record<string, string> = {
+                      market: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300',
+                      operational: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
+                      financial: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300',
+                      regulatory: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300',
+                      environmental: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-300',
+                    };
+                    return (
+                      <div key={condition.id} className="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                        <div className="text-sm flex-1">
+                          <Badge className={`mb-1 text-[10px] border-0 ${catBadgeColors[condition.category] || ''}`}>{condition.category}</Badge>
+                          <div className="text-slate-800 dark:text-white">
+                            <span className="font-medium">{condition.label}</span>
+                            <span className="text-slate-500"> {operatorLabels[condition.operator] || condition.operator} </span>
+                            <span className="font-semibold">{condition.value}</span>
+                            {condition.value2 && <span className="font-semibold"> and {condition.value2}</span>}
+                            {condition.unit && <span className="text-slate-500 ml-1">{condition.unit}</span>}
+                          </div>
                         </div>
+                        <Button variant="ghost" size="sm" onClick={() => removeCondition(condition.id)}>
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
                       </div>
-                      <Button variant="ghost" size="sm" onClick={() => removeCondition(condition.id)}>
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </CardContent>
