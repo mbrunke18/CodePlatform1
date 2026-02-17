@@ -1141,7 +1141,38 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
         </div>
       )}
 
-      {wizardStep === 3 && (
+      {wizardStep === 3 && (() => {
+        const commonDepartments = ['IT & Security', 'Operations', 'Finance', 'Legal & Compliance', 'HR', 'Executive Leadership', 'Sales', 'Marketing', 'Engineering', 'Supply Chain', 'Customer Support', 'Risk Management'];
+        const toggleDepartment = (dept: string) => {
+          const current = impactAssessment.operational.affectedDepartments;
+          const updated = current.includes(dept) ? current.filter(d => d !== dept) : [...current, dept];
+          setImpactAssessment({ ...impactAssessment, operational: { ...impactAssessment.operational, affectedDepartments: updated } });
+        };
+        const resourcePresets: { name: string; type: 'personnel' | 'budget' | 'technology' | 'external' }[] = [
+          { name: 'Incident Response Team', type: 'personnel' },
+          { name: 'External Legal Counsel', type: 'external' },
+          { name: 'Crisis Communications Firm', type: 'external' },
+          { name: 'Emergency Budget Reserve', type: 'budget' },
+          { name: 'Security Operations Center', type: 'technology' },
+          { name: 'Project Management Office', type: 'personnel' },
+        ];
+        const addPresetResource = (preset: typeof resourcePresets[0]) => {
+          if (resources.some(r => r.name === preset.name)) return;
+          setResources([...resources, { id: `res_${Date.now()}`, type: preset.type, name: preset.name, quantity: 1, estimatedCost: 0, availability: 'available' }]);
+        };
+        const stakeholderPresets = [
+          { name: 'CEO / Managing Director', role: 'Executive Sponsor', priority: 'high' as const },
+          { name: 'CFO', role: 'Budget Authority', priority: 'high' as const },
+          { name: 'CISO / CTO', role: 'Technical Lead', priority: 'high' as const },
+          { name: 'General Counsel', role: 'Legal Oversight', priority: 'high' as const },
+          { name: 'VP of Operations', role: 'Operational Lead', priority: 'medium' as const },
+          { name: 'Head of Communications', role: 'External Messaging', priority: 'medium' as const },
+        ];
+        const addPresetStakeholder = (preset: typeof stakeholderPresets[0]) => {
+          if (stakeholders.some(s => s.name === preset.name)) return;
+          setStakeholders([...stakeholders, { id: `stake_${Date.now()}`, name: preset.name, role: preset.role, priority: preset.priority, communicationChannel: 'email' }]);
+        };
+        return (
         <div className="max-w-3xl mx-auto space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <Card>
@@ -1162,8 +1193,26 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                   <Input type="number" placeholder="100000" value={impactAssessment.financial.revenueImpact || ''} onChange={(e) => setImpactAssessment({ ...impactAssessment, financial: { ...impactAssessment.financial, revenueImpact: parseFloat(e.target.value) || 0 } })} />
                 </div>
                 <div>
-                  <Label className="text-xs">Affected Departments</Label>
-                  <Input placeholder="IT, Operations, Finance" value={impactAssessment.operational.affectedDepartments.join(', ')} onChange={(e) => setImpactAssessment({ ...impactAssessment, operational: { ...impactAssessment.operational, affectedDepartments: e.target.value.split(',').map(d => d.trim()).filter(Boolean) } })} />
+                  <Label className="text-xs mb-2 block">Affected Departments</Label>
+                  <div className="flex flex-wrap gap-1.5">
+                    {commonDepartments.map(dept => {
+                      const isSelected = impactAssessment.operational.affectedDepartments.includes(dept);
+                      return (
+                        <button
+                          key={dept}
+                          onClick={() => toggleDepartment(dept)}
+                          className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all ${
+                            isSelected
+                              ? 'bg-blue-600 text-white shadow-sm'
+                              : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                          }`}
+                        >
+                          {isSelected && <span className="mr-1">✓</span>}
+                          {dept}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
                 <div>
                   <Label className="text-xs">Reputational Risk</Label>
@@ -1187,9 +1236,20 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                     <Package className="h-5 w-5 text-amber-500" />
                     Resources Needed
                   </CardTitle>
-                  <CardDescription className="text-xs">Optional - what resources would this scenario require?</CardDescription>
+                  <CardDescription className="text-xs">Optional - tap common resources or add your own.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
+                  <div className="flex flex-wrap gap-1.5">
+                    {resourcePresets.filter(p => !resources.some(r => r.name === p.name)).map(preset => (
+                      <button
+                        key={preset.name}
+                        onClick={() => addPresetResource(preset)}
+                        className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800 hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-all"
+                      >
+                        <Plus className="h-3 w-3" /> {preset.name}
+                      </button>
+                    ))}
+                  </div>
                   {resources.map((resource) => (
                     <div key={resource.id} className="p-3 bg-slate-50 dark:bg-slate-800 rounded border space-y-2">
                       <div className="flex items-center justify-between">
@@ -1208,7 +1268,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                     </div>
                   ))}
                   <Button onClick={addResource} variant="outline" className="w-full" size="sm">
-                    <Plus className="h-4 w-4 mr-2" /> Add Resource
+                    <Plus className="h-4 w-4 mr-2" /> Add Custom Resource
                   </Button>
                 </CardContent>
               </Card>
@@ -1219,9 +1279,20 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                     <UserCheck className="h-5 w-5 text-blue-500" />
                     Key Stakeholders
                   </CardTitle>
-                  <CardDescription className="text-xs">Optional - who needs to be involved?</CardDescription>
+                  <CardDescription className="text-xs">Optional - tap common roles or add your own.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
+                  <div className="flex flex-wrap gap-1.5">
+                    {stakeholderPresets.filter(p => !stakeholders.some(s => s.name === p.name)).map(preset => (
+                      <button
+                        key={preset.name}
+                        onClick={() => addPresetStakeholder(preset)}
+                        className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-all"
+                      >
+                        <Plus className="h-3 w-3" /> {preset.name}
+                      </button>
+                    ))}
+                  </div>
                   {stakeholders.map((stakeholder) => (
                     <div key={stakeholder.id} className="p-3 bg-slate-50 dark:bg-slate-800 rounded border space-y-2">
                       <div className="flex items-center gap-2">
@@ -1242,14 +1313,15 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                     </div>
                   ))}
                   <Button onClick={addStakeholder} variant="outline" className="w-full" size="sm">
-                    <Plus className="h-4 w-4 mr-2" /> Add Stakeholder
+                    <Plus className="h-4 w-4 mr-2" /> Add Custom Stakeholder
                   </Button>
                 </CardContent>
               </Card>
             </div>
           </div>
         </div>
-      )}
+        );
+      })()}
 
       {wizardStep === 4 && analysisResult && (
         <div className="max-w-3xl mx-auto space-y-6 animate-in fade-in duration-500">
