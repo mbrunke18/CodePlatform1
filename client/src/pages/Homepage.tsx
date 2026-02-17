@@ -33,7 +33,9 @@ import {
   Scale,
   UserCheck,
   Globe2,
-  ExternalLink
+  ExternalLink,
+  ChevronDown,
+  ChevronUp
 } from "lucide-react";
 import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
@@ -45,6 +47,7 @@ const INTRO_SEEN_KEY = "executeiq_intro_seen_session";
 
 export default function Homepage() {
   const [, setLocation] = useLocation();
+  const [showAllQuotes, setShowAllQuotes] = useState(false);
   const [showIntro, setShowIntro] = useState(() => {
     if (typeof window === "undefined") return true;
     const hasSeenIntro = sessionStorage.getItem(INTRO_SEEN_KEY);
@@ -143,18 +146,18 @@ export default function Homepage() {
       borderColor: "border-blue-500/30"
     },
     {
-      quote: "91% of organizations experienced major disruption—speed of coordinated response is the differentiator.",
-      source: "PwC",
-      report: "Global Crisis & Resilience Survey",
-      color: "text-orange-400",
-      borderColor: "border-orange-500/30"
+      quote: "70% of AI transformation is people and processes—not technology.",
+      source: "Bain",
+      report: "Technology Report 2025",
+      color: "text-emerald-400",
+      borderColor: "border-emerald-500/30"
     },
     {
-      quote: "By 2027, 40% of enterprises will use AI orchestration platforms to coordinate cross-functional execution.",
-      source: "Gartner",
-      report: "Strategic Technology Trends 2026",
-      color: "text-violet-400",
-      borderColor: "border-violet-500/30"
+      quote: "69% of executives agree: agentic AI requires fundamentally new management approaches.",
+      source: "BCG",
+      report: "Leading in the Age of AI Agents",
+      color: "text-purple-400",
+      borderColor: "border-purple-500/30"
     },
     {
       quote: "Governance must become real-time, data-driven, and embedded.",
@@ -176,6 +179,69 @@ export default function Homepage() {
       report: "The AI-Native Enterprise 2026",
       color: "text-lime-400",
       borderColor: "border-lime-500/30"
+    },
+    {
+      quote: "The limiting factors are now integration and governance, not capability.",
+      source: "Anthropic",
+      report: "State of AI Agents 2026",
+      color: "text-rose-400",
+      borderColor: "border-rose-500/30"
+    },
+    {
+      quote: "The divide is between organizations that treat AI as workflow infrastructure and those that leave it as a side tool.",
+      source: "OpenAI",
+      report: "State of Enterprise AI",
+      color: "text-indigo-400",
+      borderColor: "border-indigo-500/30"
+    },
+    {
+      quote: "AI transformation is shifting from CIO-led to CEO-led mandate across enterprises.",
+      source: "Deloitte",
+      report: "State of AI in the Enterprise 2026",
+      color: "text-teal-400",
+      borderColor: "border-teal-500/30"
+    },
+    {
+      quote: "Readiness requires people, process, culture, and governance—not just technology.",
+      source: "Microsoft",
+      report: "Agents Are Here",
+      color: "text-sky-400",
+      borderColor: "border-sky-500/30"
+    },
+    {
+      quote: "AI agents are being deployed across industries—but orchestration infrastructure determines outcomes.",
+      source: "Google Cloud",
+      report: "AI Agent Trends 2026",
+      color: "text-green-400",
+      borderColor: "border-green-500/30"
+    },
+    {
+      quote: "Organizations must move from AI proof-of-concept to AI proof-of-impact at enterprise scale.",
+      source: "World Economic Forum",
+      report: "Proof over Promise 2026",
+      color: "text-blue-300",
+      borderColor: "border-blue-400/30"
+    },
+    {
+      quote: "91% of organizations experienced major disruption—speed of coordinated response is the differentiator.",
+      source: "PwC",
+      report: "Global Crisis & Resilience Survey",
+      color: "text-orange-400",
+      borderColor: "border-orange-500/30"
+    },
+    {
+      quote: "By 2027, 40% of enterprises will use AI orchestration platforms to coordinate cross-functional execution.",
+      source: "Gartner",
+      report: "Strategic Technology Trends 2026",
+      color: "text-violet-400",
+      borderColor: "border-violet-500/30"
+    },
+    {
+      quote: "Enterprise AI spending will reach $632B by 2028—but ROI depends on operational infrastructure.",
+      source: "IDC",
+      report: "Worldwide AI Spending Guide 2026",
+      color: "text-pink-400",
+      borderColor: "border-pink-500/30"
     }
   ];
 
@@ -520,14 +586,14 @@ export default function Homepage() {
               These aren't our claims. This is what the world's top consulting, technology, and research firms independently concluded.
             </p>
             <div className="flex flex-wrap justify-center gap-2 mb-8">
-              {['IBM', 'PwC', 'Gartner', 'McKinsey', 'Accenture', 'Forrester'].map((firm) => (
+              {['IBM', 'BCG', 'McKinsey', 'Bain', 'Accenture', 'Deloitte', 'PwC', 'Gartner', 'Forrester', 'IDC', 'Microsoft', 'Google Cloud', 'OpenAI', 'Anthropic', 'World Economic Forum'].map((firm) => (
                 <span key={firm} className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full px-3 py-1 text-xs font-medium text-slate-700 dark:text-slate-300">{firm}</span>
               ))}
             </div>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-            {validationQuotes.map((item, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+            {validationQuotes.slice(0, 6).map((item, index) => (
               <Card key={index} className={`border ${item.borderColor} bg-slate-50 dark:bg-slate-900/50 hover:shadow-lg transition-all`} data-testid={`validation-quote-${index}`}>
                 <CardContent className="p-6">
                   <Quote className={`h-6 w-6 ${item.color} mb-3 opacity-60`} />
@@ -542,10 +608,49 @@ export default function Homepage() {
               </Card>
             ))}
           </div>
+
+          {showAllQuotes && (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6 animate-in fade-in slide-in-from-top-4 duration-500">
+              {validationQuotes.slice(6).map((item, index) => (
+                <Card key={index + 6} className={`border ${item.borderColor} bg-slate-50 dark:bg-slate-900/50 hover:shadow-lg transition-all`} data-testid={`validation-quote-${index + 6}`}>
+                  <CardContent className="p-6">
+                    <Quote className={`h-6 w-6 ${item.color} mb-3 opacity-60`} />
+                    <p className="text-slate-700 dark:text-slate-300 mb-4 italic leading-relaxed">
+                      "{item.quote}"
+                    </p>
+                    <div className="pt-3 border-t border-slate-200 dark:border-slate-700">
+                      <p className={`font-bold ${item.color}`}>{item.source}</p>
+                      <p className="text-xs text-slate-600 dark:text-slate-300">{item.report}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
+
+          <div className="text-center mb-6">
+            <Button
+              variant="outline"
+              onClick={() => setShowAllQuotes(!showAllQuotes)}
+              className="border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+            >
+              {showAllQuotes ? (
+                <>
+                  <ChevronUp className="mr-2 h-4 w-4" />
+                  Show Less
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="mr-2 h-4 w-4" />
+                  See All 15 Research Findings
+                </>
+              )}
+            </Button>
+          </div>
           
           <div className="text-center">
             <p className="text-xl font-semibold text-slate-900 dark:text-white">
-              They're all describing what ExecuteIQ provides.
+              15 independent reports. One conclusion: <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500">ExecuteIQ is what they're describing.</span>
             </p>
           </div>
         </div>
