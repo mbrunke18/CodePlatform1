@@ -298,249 +298,289 @@ export default function ReadinessAssessment() {
 
       {phase === "select-domain" && (
         <section className="py-16 md:py-24 px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
+          <div className="max-w-4xl mx-auto space-y-10">
+            <div className="text-center">
               <Badge className="mb-4 bg-teal-500/20 text-teal-400 border-teal-500/30">
                 <Clock className="w-4 h-4 mr-2" />
                 5-Minute Diagnostic
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-                Execution Readiness Assessment
+                How Ready Is Your Organization<br className="hidden md:block" /> to Execute Under Pressure?
               </h1>
               <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-                Discover your organization's execution gaps across strategic domains
+                Answer 5 targeted questions and get an instant readiness score with specific gaps and recommendations for your strategic domain.
               </p>
             </div>
 
-            <div className="mb-8">
-              <Label className="text-slate-300 text-sm mb-2 block">Company Name (optional)</Label>
-              <Input
-                value={companyName}
-                onChange={(e) => setCompanyName(e.target.value)}
-                placeholder="Your organization's name"
-                className="bg-slate-900 border-slate-700 text-white placeholder:text-slate-500 focus:border-teal-500 max-w-md mx-auto"
-              />
+            <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-8">
+              <h2 className="text-lg font-semibold text-white mb-6 text-center">How It Works</h2>
+              <div className="grid grid-cols-3 gap-6 max-w-lg mx-auto">
+                {[
+                  { num: 1, label: "Choose Domain", desc: "Select your strategic focus area", icon: Target },
+                  { num: 2, label: "Answer 5 Questions", desc: "Quick, targeted diagnostic", icon: FileText },
+                  { num: 3, label: "Get Your Score", desc: "Gaps, benchmarks & next steps", icon: BarChart3 },
+                ].map((step) => (
+                  <div key={step.num} className="text-center">
+                    <div className="w-12 h-12 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center mx-auto mb-3">
+                      <step.icon className="w-5 h-5 text-teal-400" />
+                    </div>
+                    <div className="text-sm font-semibold text-white">{step.label}</div>
+                    <div className="text-xs text-slate-500 mt-1">{step.desc}</div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              {(Object.entries(DOMAIN_CONFIG) as [Domain, typeof DOMAIN_CONFIG[Domain]][]).map(([domain, config]) => {
-                const IconComponent = config.icon;
-                return (
-                  <Card
-                    key={domain}
-                    onClick={() => handleSelectDomain(domain)}
-                    className={`bg-slate-900/80 border ${config.border} ${config.borderHover} cursor-pointer transition-all hover:scale-[1.02] hover:shadow-lg`}
-                  >
-                    <CardHeader className="text-center pb-3">
-                      <div className={`w-16 h-16 rounded-2xl ${config.bgLight} flex items-center justify-center mx-auto mb-3`}>
-                        <IconComponent className={`h-8 w-8 ${config.textLight}`} />
+            <div>
+              <h2 className="text-lg font-semibold text-white mb-2 text-center">Select a Strategic Domain</h2>
+              <p className="text-sm text-slate-500 text-center mb-6">Choose the area you want to assess</p>
+
+              <div className="mb-6 max-w-md mx-auto">
+                <Label className="text-slate-400 text-sm mb-2 block text-center">Company Name (optional)</Label>
+                <Input
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
+                  placeholder="Your organization's name"
+                  className="bg-slate-900 border-slate-700 text-white placeholder:text-slate-500 focus:border-teal-500"
+                />
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                {(Object.entries(DOMAIN_CONFIG) as [Domain, typeof DOMAIN_CONFIG[Domain]][]).map(([domain, config]) => {
+                  const IconComponent = config.icon;
+                  return (
+                    <button
+                      key={domain}
+                      onClick={() => handleSelectDomain(domain)}
+                      className={`text-left rounded-xl bg-slate-900/80 border ${config.border} ${config.borderHover} p-6 transition-all hover:scale-[1.02] hover:shadow-lg group`}
+                    >
+                      <div className="text-center">
+                        <div className={`w-16 h-16 rounded-2xl ${config.bgLight} flex items-center justify-center mx-auto mb-3`}>
+                          <IconComponent className={`h-8 w-8 ${config.textLight}`} />
+                        </div>
+                        <h3 className={`text-xl font-bold ${config.textLight} mb-1`}>
+                          {config.label}
+                        </h3>
+                        <Badge className={`${config.bgLight} ${config.textLight} border-none mt-1`}>
+                          {config.playbooks}
+                        </Badge>
+                        <p className="text-slate-400 text-sm font-medium mt-3">{config.categories}</p>
+                        <p className="text-slate-500 text-sm italic mt-1">{config.tagline}</p>
+                        <div className={`${config.textLight} text-xs font-medium mt-4 flex items-center justify-center gap-1 group-hover:gap-2 transition-all`}>
+                          Start Assessment <ArrowRight className="w-3 h-3" />
+                        </div>
                       </div>
-                      <CardTitle className={`text-xl font-bold ${config.textLight}`}>
-                        {config.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {phase === "questions" && selectedDomain && domainConfig && (() => {
+        const q = questions[currentQuestion];
+        const iconDef = QUESTION_ICONS[currentQuestion];
+        const IconComponent = iconDef.icon;
+        const isLastQuestion = currentQuestion === questions.length - 1;
+        const hasAnswer = !!answers[q.key]?.trim();
+
+        return (
+          <section className="py-16 md:py-24 px-6">
+            <div className="max-w-2xl mx-auto">
+              <div className="text-center mb-8">
+                <Badge className={`mb-4 ${domainConfig.bgLight} ${domainConfig.textLight} ${domainConfig.border}`}>
+                  {(() => { const Icon = domainConfig.icon; return <Icon className="w-4 h-4 mr-2" />; })()}
+                  {domainConfig.label} Assessment
+                </Badge>
+                <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                  {companyName ? `${companyName}'s` : "Your"} {domainConfig.label} Readiness
+                </h1>
+              </div>
+
+              <div className="mb-8">
+                <div className="flex items-center justify-between text-sm text-slate-400 mb-2">
+                  <span>Question {currentQuestion + 1} of {questions.length}</span>
+                  <span>{Math.round(((currentQuestion + 1) / questions.length) * 100)}%</span>
+                </div>
+                <Progress
+                  value={((currentQuestion + 1) / questions.length) * 100}
+                  className="h-2 bg-slate-800"
+                />
+              </div>
+
+              <div className="flex justify-center gap-2 mb-8">
+                {questions.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentQuestion(idx)}
+                    className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-colors ${
+                      idx === currentQuestion
+                        ? `${domainConfig.bg} text-white shadow-lg ${domainConfig.shadow}`
+                        : answers[questions[idx].key]?.trim()
+                        ? "bg-emerald-500 text-white"
+                        : "bg-slate-800 text-slate-500 hover:bg-slate-700"
+                    }`}
+                  >
+                    {answers[questions[idx].key]?.trim() && idx !== currentQuestion ? (
+                      <CheckCircle2 className="w-4 h-4" />
+                    ) : (
+                      idx + 1
+                    )}
+                  </button>
+                ))}
+              </div>
+
+              <Card className={`bg-slate-900/80 border ${iconDef.border}`}>
+                <CardHeader className="pb-3">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-12 h-12 rounded-xl ${iconDef.bg} flex items-center justify-center`}>
+                      <IconComponent className={`h-6 w-6 ${iconDef.color}`} />
+                    </div>
+                    <div className="flex-1">
+                      <CardTitle className="text-white text-xl font-semibold">
+                        {q.question}
                       </CardTitle>
-                      <Badge className={`${config.bgLight} ${config.textLight} border-none mt-1`}>
-                        {config.playbooks}
-                      </Badge>
-                    </CardHeader>
-                    <CardContent className="text-center space-y-2 pb-6">
-                      <p className="text-slate-400 text-sm font-medium">{config.categories}</p>
-                      <p className="text-slate-500 text-sm italic">{config.tagline}</p>
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
+                      {q.helper && (
+                        <p className="text-slate-500 text-sm mt-1">{q.helper}</p>
+                      )}
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="pt-4">
+                  {q.type === "input" && (
+                    <Input
+                      value={answers[q.key] || ""}
+                      onChange={(e) => updateAnswer(q.key, e.target.value)}
+                      placeholder={q.placeholder}
+                      className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500 focus:border-teal-500 text-lg py-6"
+                      autoFocus
+                    />
+                  )}
+                  {q.type === "phone" && (
+                    <Input
+                      type="tel"
+                      value={answers[q.key] || ""}
+                      onChange={(e) => updateAnswer(q.key, e.target.value)}
+                      placeholder={q.placeholder}
+                      className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500 focus:border-teal-500 text-lg py-6"
+                      autoFocus
+                    />
+                  )}
+                  {q.type === "textarea" && (
+                    <Textarea
+                      value={answers[q.key] || ""}
+                      onChange={(e) => updateAnswer(q.key, e.target.value)}
+                      placeholder={q.placeholder}
+                      rows={4}
+                      className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500 focus:border-teal-500 resize-none text-lg"
+                      autoFocus
+                    />
+                  )}
+                  {q.type === "select" && (
+                    <Select
+                      value={answers[q.key] || ""}
+                      onValueChange={(val) => updateAnswer(q.key, val)}
+                    >
+                      <SelectTrigger className="bg-slate-800 border-slate-700 text-white focus:border-teal-500 text-lg py-6">
+                        <SelectValue placeholder={q.placeholder} />
+                      </SelectTrigger>
+                      <SelectContent className="bg-slate-800 border-slate-700">
+                        {q.options!.map((opt) => (
+                          <SelectItem key={opt} value={opt} className="text-white hover:bg-slate-700">
+                            {opt}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  )}
+                  {q.type === "radio" && (
+                    <RadioGroup
+                      value={answers[q.key] || ""}
+                      onValueChange={(val) => updateAnswer(q.key, val)}
+                      className="space-y-3"
+                    >
+                      {q.options!.map((opt) => (
+                        <div
+                          key={opt}
+                          className={`flex items-center space-x-3 p-3 rounded-lg border transition-colors cursor-pointer ${
+                            answers[q.key] === opt
+                              ? `${domainConfig.bgLight} ${domainConfig.border}`
+                              : "border-slate-700 hover:border-slate-600"
+                          }`}
+                          onClick={() => updateAnswer(q.key, opt)}
+                        >
+                          <RadioGroupItem
+                            value={opt}
+                            id={`${q.key}-${opt}`}
+                            className="border-slate-600 text-teal-500"
+                          />
+                          <Label htmlFor={`${q.key}-${opt}`} className="text-slate-300 cursor-pointer text-base flex-1">
+                            {opt}
+                          </Label>
+                        </div>
+                      ))}
+                    </RadioGroup>
+                  )}
+                </CardContent>
+              </Card>
 
-            <div className="text-center">
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => handleSelectDomain("defense")}
-                className="border-slate-600 text-slate-300 hover:bg-slate-800 bg-transparent"
-              >
-                <Layers className="mr-2 h-5 w-5" />
-                Assess All Three
-              </Button>
-            </div>
-          </div>
-        </section>
-      )}
+              {error && (
+                <div className="mt-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm flex items-center gap-2">
+                  <AlertTriangle className="h-4 w-4 flex-shrink-0" />
+                  {error}
+                </div>
+              )}
 
-      {phase === "questions" && selectedDomain && domainConfig && (
-        <section className="py-16 md:py-24 px-6">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-8">
-              <Badge className={`mb-4 ${domainConfig.bgLight} ${domainConfig.textLight} ${domainConfig.border}`}>
-                {(() => { const Icon = domainConfig.icon; return <Icon className="w-4 h-4 mr-2" />; })()}
-                {domainConfig.label} Assessment
-              </Badge>
-              <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
-                {domainConfig.label} Readiness
-              </h1>
-              <p className="text-slate-400">
-                {companyName ? `Assessing ${companyName}'s` : "Assessing your"} {domainConfig.label.toLowerCase()} execution readiness
-              </p>
-            </div>
+              <div className="mt-8 flex items-center justify-between">
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    if (currentQuestion === 0) {
+                      handleReset();
+                    } else {
+                      setCurrentQuestion(currentQuestion - 1);
+                    }
+                  }}
+                  className="border-slate-600 text-slate-300 hover:bg-slate-800 bg-transparent"
+                >
+                  {currentQuestion === 0 ? "Back to Domains" : "Previous"}
+                </Button>
 
-            <div className="mb-8">
-              <div className="flex items-center justify-between text-sm text-slate-400 mb-2">
-                <span>Question {currentQuestion + 1} of {questions.length}</span>
-                <span>{Math.round(((currentQuestion + 1) / questions.length) * 100)}%</span>
-              </div>
-              <Progress
-                value={((currentQuestion + 1) / questions.length) * 100}
-                className="h-2 bg-slate-800"
-              />
-            </div>
-
-            <div className="space-y-6">
-              {questions.map((q, idx) => {
-                const iconDef = QUESTION_ICONS[idx];
-                const IconComponent = iconDef.icon;
-                return (
-                  <Card
-                    key={q.key}
-                    className={`bg-slate-900/80 border ${iconDef.border} hover:border-opacity-60 transition-all`}
+                {isLastQuestion ? (
+                  <Button
+                    size="lg"
+                    onClick={handleSubmit}
+                    disabled={loading}
+                    className={`px-10 ${domainConfig.bg} hover:opacity-90 text-white shadow-lg ${domainConfig.shadow}`}
                   >
-                    <CardHeader className="pb-3">
-                      <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-xl ${iconDef.bg} flex items-center justify-center`}>
-                          <IconComponent className={`h-5 w-5 ${iconDef.color}`} />
-                        </div>
-                        <div className="flex-1">
-                          <CardTitle className="text-white text-lg font-semibold">
-                            <span className="text-slate-500 mr-2">Q{idx + 1}.</span>
-                            {q.question}
-                          </CardTitle>
-                          {q.helper && (
-                            <p className="text-slate-500 text-sm mt-1">{q.helper}</p>
-                          )}
-                        </div>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      {q.type === "input" && (
-                        <Input
-                          value={answers[q.key] || ""}
-                          onChange={(e) => {
-                            updateAnswer(q.key, e.target.value);
-                            setCurrentQuestion(Math.max(currentQuestion, idx));
-                          }}
-                          placeholder={q.placeholder}
-                          className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500 focus:border-teal-500"
-                        />
-                      )}
-                      {q.type === "phone" && (
-                        <Input
-                          type="tel"
-                          value={answers[q.key] || ""}
-                          onChange={(e) => {
-                            updateAnswer(q.key, e.target.value);
-                            setCurrentQuestion(Math.max(currentQuestion, idx));
-                          }}
-                          placeholder={q.placeholder}
-                          className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500 focus:border-teal-500"
-                        />
-                      )}
-                      {q.type === "textarea" && (
-                        <Textarea
-                          value={answers[q.key] || ""}
-                          onChange={(e) => {
-                            updateAnswer(q.key, e.target.value);
-                            setCurrentQuestion(Math.max(currentQuestion, idx));
-                          }}
-                          placeholder={q.placeholder}
-                          rows={3}
-                          className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500 focus:border-teal-500 resize-none"
-                        />
-                      )}
-                      {q.type === "select" && (
-                        <Select
-                          value={answers[q.key] || ""}
-                          onValueChange={(val) => {
-                            updateAnswer(q.key, val);
-                            setCurrentQuestion(Math.max(currentQuestion, idx));
-                          }}
-                        >
-                          <SelectTrigger className="bg-slate-800 border-slate-700 text-white focus:border-teal-500">
-                            <SelectValue placeholder={q.placeholder} />
-                          </SelectTrigger>
-                          <SelectContent className="bg-slate-800 border-slate-700">
-                            {q.options!.map((opt) => (
-                              <SelectItem key={opt} value={opt} className="text-white hover:bg-slate-700">
-                                {opt}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      )}
-                      {q.type === "radio" && (
-                        <RadioGroup
-                          value={answers[q.key] || ""}
-                          onValueChange={(val) => {
-                            updateAnswer(q.key, val);
-                            setCurrentQuestion(Math.max(currentQuestion, idx));
-                          }}
-                          className="space-y-2"
-                        >
-                          {q.options!.map((opt) => (
-                            <div key={opt} className="flex items-center space-x-3">
-                              <RadioGroupItem
-                                value={opt}
-                                id={`${q.key}-${opt}`}
-                                className="border-slate-600 text-teal-500"
-                              />
-                              <Label htmlFor={`${q.key}-${opt}`} className="text-slate-300 cursor-pointer">
-                                {opt}
-                              </Label>
-                            </div>
-                          ))}
-                        </RadioGroup>
-                      )}
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
-
-            {error && (
-              <div className="mt-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm flex items-center gap-2">
-                <AlertTriangle className="h-4 w-4 flex-shrink-0" />
-                {error}
-              </div>
-            )}
-
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={handleReset}
-                className="border-slate-600 text-slate-300 hover:bg-slate-800 bg-transparent"
-              >
-                Back to Domains
-              </Button>
-              <Button
-                size="lg"
-                onClick={handleSubmit}
-                disabled={loading}
-                className={`text-lg px-12 py-7 ${domainConfig.bg} hover:opacity-90 text-white shadow-lg ${domainConfig.shadow}`}
-              >
-                {loading ? (
-                  <>
-                    <div className="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-                    Analyzing...
-                  </>
+                    {loading ? (
+                      <>
+                        <div className="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                        Analyzing...
+                      </>
+                    ) : (
+                      <>
+                        <BarChart3 className="mr-2 h-5 w-5" />
+                        See My Score
+                      </>
+                    )}
+                  </Button>
                 ) : (
-                  <>
-                    <BarChart3 className="mr-2 h-5 w-5" />
-                    See My Score
-                  </>
+                  <Button
+                    onClick={() => setCurrentQuestion(currentQuestion + 1)}
+                    className={`${domainConfig.bg} hover:opacity-90 text-white`}
+                  >
+                    {hasAnswer ? "Next Question" : "Skip"}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
                 )}
-              </Button>
+              </div>
             </div>
-          </div>
-        </section>
-      )}
+          </section>
+        );
+      })()}
 
       {phase === "results" && result && selectedDomain && domainConfig && (
         <section className="py-16 md:py-24 px-6">

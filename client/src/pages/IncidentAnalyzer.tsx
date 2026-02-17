@@ -96,7 +96,7 @@ function getPlaceholder(domain: string) {
 }
 
 export default function IncidentAnalyzer() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(0);
   const [selectedDomain, setSelectedDomain] = useState<'auto' | 'offense' | 'defense' | 'special_teams'>('auto');
   const [description, setDescription] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -267,7 +267,7 @@ export default function IncidentAnalyzer() {
   const handleReset = () => {
     if (timerRef.current) clearInterval(timerRef.current);
     if (pollingRef.current) clearInterval(pollingRef.current);
-    setCurrentStep(1);
+    setCurrentStep(0);
     setSelectedDomain('auto');
     setDescription("");
     setCompanyName("");
@@ -527,93 +527,182 @@ export default function IncidentAnalyzer() {
       <StandardNav />
 
       <main className="container mx-auto px-4 py-12 pt-24 max-w-5xl">
-        <div className="text-center mb-10">
-          <Badge className="mb-4 bg-teal-500/20 text-teal-400 border-teal-500/30">
-            <Brain className="w-4 h-4 mr-2" />
-            Strategic Analyzer
-          </Badge>
-          <h1 className="text-4xl font-bold text-white mb-3">
-            See How ExecuteIQ Transforms Execution
-          </h1>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Describe any strategic situation. A crisis you faced. An opportunity you missed. A transformation that stalled.
-          </p>
-        </div>
+        {/* STEP 0: WELCOME LANDING */}
+        {currentStep === 0 && (
+          <div className="space-y-10">
+            <div className="text-center">
+              <Badge className="mb-4 bg-teal-500/20 text-teal-400 border-teal-500/30">
+                <Brain className="w-4 h-4 mr-2" />
+                Strategic Analyzer
+              </Badge>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+                See How ExecuteIQ Would Have<br className="hidden md:block" /> Transformed Your Outcome
+              </h1>
+              <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+                Describe any strategic situation your company faced and watch our AI analyze it, generate a custom playbook, and simulate full execution in under 12 minutes.
+              </p>
+            </div>
 
-        {/* Step Indicator */}
-        <div className="flex justify-center mb-10">
-          <div className="flex items-center gap-1">
-            {STEP_LABELS.map((label, i) => {
-              const stepNum = i + 1;
-              const isActive = currentStep === stepNum;
-              const isComplete = currentStep > stepNum;
-              return (
-                <div key={label} className="flex items-center">
-                  <div className="flex flex-col items-center gap-1">
-                    <div
-                      className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold transition-colors ${
-                        isActive
-                          ? "bg-teal-500 text-white shadow-lg shadow-teal-500/30"
-                          : isComplete
-                          ? "bg-emerald-500 text-white"
-                          : "bg-slate-800 text-slate-500"
-                      }`}
-                    >
-                      {isComplete ? <Check className="w-4 h-4" /> : stepNum}
+            <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-8">
+              <h2 className="text-lg font-semibold text-white mb-6 text-center">How It Works</h2>
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                {[
+                  { num: 1, label: "Describe", desc: "Tell us what happened", icon: FileText, color: "text-teal-400" },
+                  { num: 2, label: "Analyze", desc: "AI identifies gaps & root causes", icon: Brain, color: "text-blue-400" },
+                  { num: 3, label: "Playbook", desc: "Custom playbook generated", icon: BookOpen, color: "text-emerald-400" },
+                  { num: 4, label: "Simulate", desc: "Live 12-minute execution", icon: Play, color: "text-purple-400" },
+                  { num: 5, label: "Report", desc: "Download executive report", icon: Download, color: "text-amber-400" },
+                ].map((step) => (
+                  <div key={step.num} className="text-center">
+                    <div className={`w-12 h-12 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center mx-auto mb-3`}>
+                      <step.icon className={`w-5 h-5 ${step.color}`} />
                     </div>
-                    <span
-                      className={`text-xs font-medium ${
-                        isActive ? "text-teal-400" : isComplete ? "text-emerald-400" : "text-slate-600"
-                      }`}
-                    >
-                      {label}
-                    </span>
+                    <div className="text-sm font-semibold text-white">{step.label}</div>
+                    <div className="text-xs text-slate-500 mt-1">{step.desc}</div>
                   </div>
-                  {i < STEP_LABELS.length - 1 && (
-                    <div
-                      className={`w-10 h-0.5 mx-1 mt-[-12px] ${
-                        currentStep > stepNum ? "bg-emerald-500" : "bg-slate-800"
-                      }`}
-                    />
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
+                ))}
+              </div>
+            </div>
 
-        {/* Proof Points Bar */}
-        <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 py-4 px-6 bg-slate-800/50 rounded-xl border border-slate-700/50 mb-8">
-          <div className="text-center">
-            <div className="text-2xl font-bold text-emerald-400">58</div>
-            <div className="text-xs text-slate-400">Offense Playbooks</div>
+            <div>
+              <h2 className="text-lg font-semibold text-white mb-2 text-center">Try a Preset Scenario</h2>
+              <p className="text-sm text-slate-500 text-center mb-5">Select one to see the analyzer in action, or write your own below</p>
+              <div className="grid md:grid-cols-3 gap-4">
+                {[
+                  { domain: 'defense', label: 'DEFENSE', icon: Shield, title: 'Ransomware Attack', desc: 'Last year ransomware hit our Atlanta office. It took 3 days to figure out who was in charge of the response. By then, the damage had spread to 4 other offices.', borderCls: 'border-red-500/30 hover:border-red-500/50', bgCls: 'bg-red-950/20', textCls: 'text-red-400', badgeCls: 'bg-red-500/20 text-red-400 border-red-500/30' },
+                  { domain: 'offense', label: 'OFFENSE', icon: Rocket, title: 'Missed Market Entry', desc: 'We identified a major opportunity to enter the Southeast Asian market before our competitors. By the time we aligned stakeholders and got budget approval, two competitors had already launched.', borderCls: 'border-emerald-500/30 hover:border-emerald-500/50', bgCls: 'bg-emerald-950/20', textCls: 'text-emerald-400', badgeCls: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' },
+                  { domain: 'special_teams', label: 'SPECIAL TEAMS', icon: Settings, title: 'Stalled Transformation', desc: 'We launched a digital transformation initiative to modernize our supply chain. After 18 months and $40M spent, we\'re only 30% through the original scope.', borderCls: 'border-purple-500/30 hover:border-purple-500/50', bgCls: 'bg-purple-950/20', textCls: 'text-purple-400', badgeCls: 'bg-purple-500/20 text-purple-400 border-purple-500/30' },
+                ].map((preset) => (
+                  <button
+                    key={preset.domain}
+                    onClick={() => {
+                      setSelectedDomain(preset.domain as any);
+                      setDescription(preset.desc);
+                      setCurrentStep(1);
+                    }}
+                    className={`text-left rounded-xl border ${preset.borderCls} ${preset.bgCls} p-5 transition-all hover:scale-[1.01] group`}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <preset.icon className={`w-4 h-4 ${preset.textCls}`} />
+                      <Badge className={`${preset.badgeCls} text-xs`}>
+                        {preset.label}
+                      </Badge>
+                    </div>
+                    <h3 className="text-white font-semibold mb-1">{preset.title}</h3>
+                    <p className="text-slate-400 text-sm line-clamp-3">{preset.desc}</p>
+                    <div className={`${preset.textCls} text-xs font-medium mt-3 flex items-center gap-1 group-hover:gap-2 transition-all`}>
+                      Analyze this scenario <ArrowRight className="w-3 h-3" />
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="text-center">
+              <div className="inline-flex items-center gap-3 text-slate-500 text-sm mb-4">
+                <div className="h-px w-12 bg-slate-700" />
+                or
+                <div className="h-px w-12 bg-slate-700" />
+              </div>
+              <div>
+                <Button
+                  size="lg"
+                  onClick={() => setCurrentStep(1)}
+                  className="bg-teal-500 hover:bg-teal-600 text-white gap-2 px-10 py-6 text-lg"
+                >
+                  <FileText className="w-5 h-5" /> Describe Your Own Situation
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 py-4 px-6 bg-slate-800/50 rounded-xl border border-slate-700/50">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-emerald-400">58</div>
+                <div className="text-xs text-slate-400">Offense Playbooks</div>
+              </div>
+              <div className="w-px h-8 bg-slate-700" />
+              <div className="text-center">
+                <div className="text-2xl font-bold text-red-400">56</div>
+                <div className="text-xs text-slate-400">Defense Playbooks</div>
+              </div>
+              <div className="w-px h-8 bg-slate-700" />
+              <div className="text-center">
+                <div className="text-2xl font-bold text-purple-400">52</div>
+                <div className="text-xs text-slate-400">Special Teams</div>
+              </div>
+              <div className="w-px h-8 bg-slate-700" />
+              <div className="text-center">
+                <div className="text-2xl font-bold text-teal-400">12 min</div>
+                <div className="text-xs text-slate-400">Avg Coordination</div>
+              </div>
+              <div className="w-px h-8 bg-slate-700" />
+              <div className="text-center">
+                <div className="text-2xl font-bold text-teal-400">$450M+</div>
+                <div className="text-xs text-slate-400">Value Protected</div>
+              </div>
+            </div>
           </div>
-          <div className="w-px h-8 bg-slate-700" />
-          <div className="text-center">
-            <div className="text-2xl font-bold text-red-400">56</div>
-            <div className="text-xs text-slate-400">Defense Playbooks</div>
-          </div>
-          <div className="w-px h-8 bg-slate-700" />
-          <div className="text-center">
-            <div className="text-2xl font-bold text-purple-400">52</div>
-            <div className="text-xs text-slate-400">Special Teams</div>
-          </div>
-          <div className="w-px h-8 bg-slate-700" />
-          <div className="text-center">
-            <div className="text-2xl font-bold text-teal-400">12 min</div>
-            <div className="text-xs text-slate-400">Avg Coordination</div>
-          </div>
-          <div className="w-px h-8 bg-slate-700" />
-          <div className="text-center">
-            <div className="text-2xl font-bold text-teal-400">$450M+</div>
-            <div className="text-xs text-slate-400">Value Protected</div>
-          </div>
-          <div className="w-px h-8 bg-slate-700" />
-          <div className="text-center">
-            <div className="text-2xl font-bold text-emerald-400">15</div>
-            <div className="text-xs text-slate-400">Firms Validated</div>
-          </div>
-        </div>
+        )}
+
+        {/* Active Steps Header (Steps 1-5) */}
+        {currentStep >= 1 && (
+          <>
+            <div className="text-center mb-10">
+              <Badge className="mb-4 bg-teal-500/20 text-teal-400 border-teal-500/30">
+                <Brain className="w-4 h-4 mr-2" />
+                Strategic Analyzer
+              </Badge>
+              <h1 className="text-4xl font-bold text-white mb-3">
+                See How ExecuteIQ Transforms Execution
+              </h1>
+              <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+                Describe any strategic situation. A crisis you faced. An opportunity you missed. A transformation that stalled.
+              </p>
+            </div>
+
+            <div className="flex justify-center mb-10">
+              <div className="flex items-center gap-1">
+                {STEP_LABELS.map((label, i) => {
+                  const stepNum = i + 1;
+                  const isActive = currentStep === stepNum;
+                  const isComplete = currentStep > stepNum;
+                  return (
+                    <div key={label} className="flex items-center">
+                      <div className="flex flex-col items-center gap-1">
+                        <div
+                          className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold transition-colors ${
+                            isActive
+                              ? "bg-teal-500 text-white shadow-lg shadow-teal-500/30"
+                              : isComplete
+                              ? "bg-emerald-500 text-white"
+                              : "bg-slate-800 text-slate-500"
+                          }`}
+                        >
+                          {isComplete ? <Check className="w-4 h-4" /> : stepNum}
+                        </div>
+                        <span
+                          className={`text-xs font-medium ${
+                            isActive ? "text-teal-400" : isComplete ? "text-emerald-400" : "text-slate-600"
+                          }`}
+                        >
+                          {label}
+                        </span>
+                      </div>
+                      {i < STEP_LABELS.length - 1 && (
+                        <div
+                          className={`w-10 h-0.5 mx-1 mt-[-12px] ${
+                            currentStep > stepNum ? "bg-emerald-500" : "bg-slate-800"
+                          }`}
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </>
+        )}
 
         {error && (
           <div className="mb-6 p-4 rounded-xl bg-red-950/50 border border-red-500/30 text-red-400 flex items-center gap-3">
