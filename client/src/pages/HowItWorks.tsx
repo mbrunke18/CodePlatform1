@@ -92,14 +92,14 @@ export default function HowItWorks() {
       borderColor: "border-amber-500",
       bgLight: "bg-amber-50 dark:bg-amber-950/30",
       textColor: "text-amber-600 dark:text-amber-400",
-      description: "Every execution generates data. What worked? Where were the bottlenecks? The infrastructure learns and improves. Your execution capability compounds over time.",
+      description: "Every execution generates proprietary intelligence. AI analyzes outcomes, detects patterns across playbooks, benchmarks against industry standards, and refines your infrastructure automatically. Your execution capability doesn't just improve—it compounds into an institutional advantage.",
       capabilities: [
-        "Every execution generates actionable performance data",
-        "Bottlenecks identified and addressed automatically",
-        "Infrastructure learns and improves with each activation",
-        "Execution capability compounds—each response makes the next one faster"
+        "Every execution generates actionable performance data—building your proprietary intelligence layer",
+        "AI-powered pattern detection identifies what worked, what didn't, and why across all executions",
+        "Cross-playbook learning transfers insights from one domain to improve all others",
+        "Outcome benchmarking scores each execution against industry standards and your own history"
       ],
-      outcome: "Your execution infrastructure gets smarter with every use—compounding advantage over time."
+      outcome: "Your execution data becomes your competitive moat—each activation makes the entire infrastructure smarter, creating compounding advantage competitors can't replicate."
     }
   ];
 
@@ -128,6 +128,11 @@ export default function HowItWorks() {
       icon: Zap,
       title: "Zero-Disruption Integration",
       description: "Connects to Active Directory, Jira, Slack, SharePoint, and more. Your people keep using their existing tools—ExecuteIQ orchestrates them."
+    },
+    {
+      icon: Users,
+      title: "Enterprise-Grade Security",
+      description: "SSO via Azure AD, Okta, and Ping Identity. SAML/OIDC authentication. SOC 2 compliance roadmap. Your data stays in your control."
     }
   ];
 

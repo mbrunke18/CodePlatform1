@@ -53,6 +53,12 @@ ExecuteIQ is built around the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE
 - Enhanced What-If Analyzer with clickable department chips and preset buttons
 - Added Enterprise Integration section to Homepage
 - Added zero-disruption integration differentiator to How It Works page
+- **Positioning refinement**: Homepage hero leads with "Trigger-to-Execution Orchestration" and "From Trigger to Coordinated Execution In 12 Minutes" as primary message
+- **Quantified value metrics**: Added 4 key metrics (72hrs→12min, 70% faster mobilization, 50% less decision latency, $2.4M avg savings) to Homepage hero stats bar
+- **12-minute clarification**: Added "12 minutes = trigger-to-coordinated-execution. Deploy ExecuteIQ itself in weeks, not months" distinction
+- **Playbook credibility**: Added maturity ratings (Battle-Tested/Mission-Critical/Innovation-Ready), outcome scores, and validated-by indicators to PlaybookLibraryV2 category cards and individual playbook cards
+- **Data moat (ADVANCE phase)**: Updated ADVANCE descriptions across Homepage and HowItWorks to emphasize proprietary intelligence layer, cross-domain pattern detection, outcome benchmarking, and compounding competitive moat
+- **Enterprise auth roadmap**: Added Enterprise SSO & IAM card (Azure AD, Okta, Ping Identity, SAML 2.0, OIDC) to Homepage integration section and Enterprise-Grade Security differentiator to HowItWorks
 
 ## External Dependencies
 - **AI Services**: OpenAI GPT-4o

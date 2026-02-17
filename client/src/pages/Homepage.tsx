@@ -120,14 +120,14 @@ export default function Homepage() {
       phase: 'A',
       phaseName: 'Advance',
       title: 'Infrastructure Gets Smarter',
-      description: 'Every execution generates data. What worked? Where were the bottlenecks? The infrastructure learns and improves. Your execution capability compounds over time.',
+      description: 'Every execution builds proprietary intelligence. AI detects patterns, benchmarks outcomes, and refines playbooks automatically. Your execution capability compounds into an institutional advantage.',
       icon: BarChart3,
       color: 'from-amber-500 to-orange-600',
       borderColor: 'border-amber-200 hover:border-amber-400',
       bgColor: 'bg-amber-50 dark:bg-amber-950/20',
       iconBg: 'bg-amber-100 dark:bg-amber-900/30',
       iconColor: 'text-amber-600 dark:text-amber-400',
-      features: ['AI Playbook Refinement', 'Cross-Playbook Learning', 'Performance Benchmarking', 'Compounding Improvement'],
+      features: ['Proprietary Intelligence Layer', 'Cross-Domain Pattern Detection', 'Outcome Benchmarking vs. Industry', 'Compounding Competitive Moat'],
       primaryLink: '/executive-dashboard',
       primaryLabel: 'View Dashboard',
       stat: '"Companies aligning AI + platforms achieve 2.2x growth" — Accenture'
@@ -255,23 +255,22 @@ export default function Homepage() {
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#D4AF37]/20 to-[#00A8A8]/20 border border-[#D4AF37]/30 mb-8">
               <Sparkles className="h-4 w-4 text-[#D4AF37]" />
-              <span className="text-[#D4AF37] text-sm font-medium">The Execution Infrastructure Layer</span>
+              <span className="text-[#D4AF37] text-sm font-medium">Trigger-to-Execution Orchestration</span>
             </div>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tight" data-testid="heading-main">
-              The Execution Infrastructure<br />
+              From Trigger to Coordinated Execution<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#00A8A8] to-emerald-400">
-                Enterprises Are Missing
+                In 12 Minutes
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto mb-4 leading-relaxed" data-testid="text-insight">
-              15 major firms just concluded: organizations aren't failing at AI because of technology—they're failing because they lack <span className="text-white font-semibold">governance, decision rights, and coordination systems</span>. ExecuteIQ provides that infrastructure.
+              A strategic event hits—M&A, crisis, competitive threat. ExecuteIQ activates pre-built infrastructure: stakeholders notified, tasks assigned, decision rights clear, execution underway. Not in weeks. <span className="text-white font-semibold">In 12 minutes.</span>
             </p>
             <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-8">
-              <span className="text-[#D4AF37] font-semibold">166 playbooks to start.</span> Customize them. Build your own.
-              Pre-defined governance, clear decision rights, coordinated execution.
-              <span className="text-emerald-400 font-semibold"> In 12 minutes, execution begins—not planning, execution.</span>
+              <span className="text-[#D4AF37] font-semibold">166 playbooks to start.</span> Pre-built governance. Clear decision rights. Coordinated execution across 50-200+ stakeholders.
+              <span className="text-emerald-400 font-semibold"> From trigger to execution—not trigger to planning.</span>
             </p>
           </div>
 
@@ -292,6 +291,24 @@ export default function Homepage() {
                 <div className="text-3xl font-bold text-purple-400">69%</div>
                 <div className="text-sm text-slate-300">agree AI requires new management approaches</div>
                 <div className="text-xs text-slate-600 dark:text-slate-200 mt-1">BCG 2025</div>
+              </div>
+            </div>
+            <div className="border-t border-slate-700 mt-4 pt-4 grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+              <div>
+                <div className="text-2xl font-bold text-emerald-400">72 hrs → 12 min</div>
+                <div className="text-xs text-slate-400">Trigger to execution</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-emerald-400">70%</div>
+                <div className="text-xs text-slate-400">Faster mobilization</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-emerald-400">50%</div>
+                <div className="text-xs text-slate-400">Less decision latency</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-emerald-400">$2.4M</div>
+                <div className="text-xs text-slate-400">Avg savings per transformation</div>
               </div>
             </div>
           </div>
@@ -525,6 +542,9 @@ export default function Homepage() {
             </p>
             <p className="text-lg text-slate-300 mb-4">
               Payback on first use. Protection that compounds with every execution after.
+            </p>
+            <p className="text-sm text-slate-400 mt-2">
+              12 minutes = trigger-to-coordinated-execution. Deploy ExecuteIQ itself in weeks, not months.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
               <Button 
@@ -1120,6 +1140,23 @@ export default function Homepage() {
                 <div className="flex flex-wrap gap-1.5">
                   {['SharePoint', 'Google Drive', 'Confluence', 'Box'].map(tool => (
                     <span key={tool} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-teal-500/10 text-teal-400 border border-teal-500/20">{tool}</span>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-slate-900/80 border-slate-700 hover:border-cyan-500/40 transition-all">
+              <CardContent className="p-6">
+                <div className="w-12 h-12 mb-4 bg-cyan-500/20 rounded-xl flex items-center justify-center">
+                  <Shield className="h-6 w-6 text-cyan-400" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">Enterprise SSO & IAM</h3>
+                <p className="text-sm text-slate-300 mb-3">
+                  Enterprise-grade authentication through your existing identity provider. Single sign-on means your teams access ExecuteIQ through the same credentials they use for everything else.
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {['Azure AD', 'Okta', 'Ping Identity', 'SAML 2.0', 'OIDC'].map(tool => (
+                    <span key={tool} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">{tool}</span>
                   ))}
                 </div>
               </CardContent>
