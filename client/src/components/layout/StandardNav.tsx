@@ -30,62 +30,79 @@ export default function StandardNav() {
     return location.startsWith(path);
   };
 
-  const productLinks = [
-    { label: "How It Works", path: "/how-it-works", icon: Layers, description: "The IDEA Framework" },
-    { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Full capabilities" },
-    { label: "Playbook Library", path: "/playbooks", icon: ClipboardList, description: "166 playbooks across 9 domains" },
-    { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "Real-time signal monitoring" },
-    { label: "Integrations", path: "/integrations", icon: Globe, description: "24 enterprise connections" },
-    { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "Impact & savings analysis" },
+  type NavLink = { label: string; path: string; icon: any; description: string };
+  type NavSection = { heading: string; links: NavLink[] };
+
+  const productSections: NavSection[] = [
+    {
+      heading: "Understand",
+      links: [
+        { label: "How It Works", path: "/how-it-works", icon: Layers, description: "The IDEA Framework" },
+        { label: "Why ExecuteIQ", path: "/why-executeiq", icon: Target, description: "The execution gap" },
+        { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Full capabilities" },
+      ],
+    },
+    {
+      heading: "Capabilities",
+      links: [
+        { label: "Playbook Library", path: "/playbooks", icon: ClipboardList, description: "166 playbooks across 9 domains" },
+        { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "Real-time signal monitoring" },
+        { label: "AI Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated trigger detection" },
+        { label: "AI Radar", path: "/ai-radar", icon: Brain, description: "Predictive pattern matching" },
+        { label: "Integrations", path: "/integrations", icon: Globe, description: "24 enterprise connections" },
+      ],
+    },
+    {
+      heading: "Explore",
+      links: [
+        { label: "By Role", path: "/role-selector", icon: Users, description: "Playbooks for your C-suite role" },
+        { label: "Competitive Positioning", path: "/competitive-positioning", icon: Shield, description: "Market landscape" },
+        { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "Impact & savings analysis" },
+        { label: "Decision Velocity", path: "/decision-velocity", icon: Zap, description: "Accelerate decision-making" },
+      ],
+    },
   ];
 
-  const solutionsLinks = [
-    { label: "By Role", path: "/role-selector", icon: Users, description: "Playbooks for your C-suite role" },
-    { label: "By Industry", path: "/industry-demos", icon: Building, description: "Industry-specific scenarios" },
-    { label: "Why ExecuteIQ", path: "/why-executeiq", icon: Target, description: "The execution gap" },
-    { label: "Competitive Positioning", path: "/competitive-positioning", icon: Shield, description: "Market landscape" },
-    { label: "What-If Analyzer", path: "/what-if-analyzer", icon: Brain, description: "Scenario modeling & simulation" },
-    { label: "Decision Velocity", path: "/decision-velocity", icon: Zap, description: "Accelerate decision-making" },
+  const experienceSections: NavSection[] = [
+    {
+      heading: "AI Tools",
+      links: [
+        { label: "Strategic Analyzer", path: "/incident-analyzer", icon: AlertCircle, description: "Analyze any strategic situation with AI" },
+        { label: "Readiness Assessment", path: "/readiness-assessment", icon: ClipboardCheck, description: "Assess execution readiness by domain" },
+        { label: "What-If Analyzer", path: "/what-if-analyzer", icon: FlaskConical, description: "Scenario modeling & simulation" },
+      ],
+    },
+    {
+      heading: "Live Demos",
+      links: [
+        { label: "Try Demo", path: "/try-demo", icon: Rocket, description: "Experience the full platform" },
+        { label: "Industry Demos", path: "/industry-demos", icon: Building, description: "Industry-specific scenarios" },
+        { label: "Executive Simulation", path: "/executive-simulation", icon: Users, description: "C-suite decision experience" },
+        { label: "Live Activation", path: "/demo/live-activation", icon: Zap, description: "Real-time trigger response" },
+        { label: "Keynote Mode", path: "/keynote", icon: Presentation, description: "Tradeshow presentation" },
+      ],
+    },
   ];
 
-  const demosLinks = [
-    { label: "Try Demo", path: "/try-demo", icon: Rocket, description: "Experience the full platform" },
-    { label: "Industry Demos", path: "/industry-demos", icon: Building, description: "Industry-specific scenarios" },
-    { label: "Live Activation", path: "/demo/live-activation", icon: Zap, description: "Real-time trigger response" },
-    { label: "Executive Simulation", path: "/executive-simulation", icon: Users, description: "C-suite decision experience" },
-    { label: "Keynote Mode", path: "/keynote", icon: Presentation, description: "Tradeshow presentation" },
-  ];
-
-  const platformLinks = [
+  const platformLinks: NavLink[] = [
     { label: "ExecuteIQ One™", path: "/mission-control", icon: Compass, description: "Strategic operations hub" },
     { label: "Command Center", path: "/command-center", icon: Target, description: "Live execution coordination" },
     { label: "Executive Dashboard", path: "/executive-dashboard", icon: BarChart3, description: "Performance metrics & KPIs" },
     { label: "Strategy Execution", path: "/strategy-execution", icon: TrendingUp, description: "Transformation progress tracking" },
     { label: "War Room", path: "/war-room", icon: Shield, description: "Crisis response coordination" },
     { label: "Playbook Factory", path: "/workspaces/identify", icon: Layers, description: "Build & customize playbooks" },
+    { label: "Signal Ops Center", path: "/workspaces/detect", icon: Radar, description: "Configure signal sources" },
+    { label: "Pulse Intelligence", path: "/pulse-intelligence", icon: Radar, description: "Weak signal analysis" },
+    { label: "Institutional Memory", path: "/institutional-memory", icon: BookOpen, description: "Organizational learning" },
   ];
 
-  const investorsLinks = [
+  const investorsLinks: NavLink[] = [
     { label: "For Investors", path: "/investors", icon: TrendingUp, description: "Investment thesis" },
     { label: "Pitch Deck", path: "/pitch-deck", icon: Presentation, description: "Pre-seed investor deck" },
     { label: "Investor Resources", path: "/investor-resources", icon: FileText, description: "Materials & deck" },
     { label: "Board Briefings", path: "/board-briefings", icon: FileText, description: "Executive reporting" },
     { label: "Our Story", path: "/our-story", icon: BookOpen, description: "The ExecuteIQ journey" },
     { label: "Founder's Story", path: "/founder-story", icon: Video, description: "Vision behind ExecuteIQ" },
-  ];
-
-  const experienceLinks = [
-    { label: "Strategic Analyzer", path: "/incident-analyzer", icon: AlertCircle, description: "Analyze any strategic situation with AI" },
-    { label: "Readiness Assessment", path: "/readiness-assessment", icon: ClipboardCheck, description: "Assess execution readiness by domain" },
-    { label: "What-If Analyzer", path: "/what-if-analyzer", icon: FlaskConical, description: "Scenario modeling & simulation" },
-  ];
-
-  const intelligenceLinks = [
-    { label: "AI Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated trigger detection" },
-    { label: "Signal Ops Center", path: "/workspaces/detect", icon: Radar, description: "Configure signal sources" },
-    { label: "Pulse Intelligence", path: "/pulse-intelligence", icon: Radar, description: "Weak signal analysis" },
-    { label: "AI Radar", path: "/ai-radar", icon: Brain, description: "Predictive pattern matching" },
-    { label: "Institutional Memory", path: "/institutional-memory", icon: BookOpen, description: "Organizational learning" },
   ];
 
   const isHomePage = location === "/" || location === "/home";
@@ -98,39 +115,59 @@ export default function StandardNav() {
     }
   };
 
-  const renderDropdown = (label: string, links: typeof productLinks, icon?: any, highlighted?: boolean) => (
+  const renderDropdownButton = (label: string, highlighted?: boolean) => (
+    <button
+      className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1.5 ${
+        highlighted
+          ? 'text-poise-gold hover:text-amber-300 hover:bg-poise-gold/10'
+          : 'text-slate-300 hover:text-white hover:bg-white/5'
+      }`}
+      data-testid={`nav-${label.toLowerCase().replace(/\s+/g, '-')}-dropdown`}
+    >
+      {label}
+      <ChevronDown className="h-3 w-3" />
+    </button>
+  );
+
+  const renderNavItem = (link: NavLink) => (
+    <DropdownMenuItem
+      key={link.path + link.label}
+      onClick={() => navigateTo(link.path)}
+      className="flex items-center gap-3 py-2"
+      data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+    >
+      <link.icon className="h-4 w-4 text-slate-400" />
+      <div className="flex-1">
+        <div className="font-medium text-sm">{link.label}</div>
+        <span className="text-xs text-muted-foreground">{link.description}</span>
+      </div>
+    </DropdownMenuItem>
+  );
+
+  const renderSectionedDropdown = (label: string, sections: NavSection[], highlighted?: boolean) => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button
-          className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1.5 ${
-            highlighted
-              ? 'text-poise-gold hover:text-amber-300 hover:bg-poise-gold/10'
-              : 'text-slate-300 hover:text-white hover:bg-white/5'
-          }`}
-          data-testid={`nav-${label.toLowerCase().replace(/\s+/g, '-')}-dropdown`}
-        >
-          {icon && <span className="h-4 w-4">{icon}</span>}
-          {label}
-          <ChevronDown className="h-3 w-3" />
-        </button>
+        {renderDropdownButton(label, highlighted)}
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start" className="w-72 max-h-[80vh] overflow-y-auto">
+        {sections.map((section, sIdx) => (
+          <div key={section.heading}>
+            {sIdx > 0 && <DropdownMenuSeparator />}
+            <DropdownMenuLabel className="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">{section.heading}</DropdownMenuLabel>
+            {section.links.map(renderNavItem)}
+          </div>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+
+  const renderFlatDropdown = (label: string, links: NavLink[], highlighted?: boolean) => (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        {renderDropdownButton(label, highlighted)}
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="w-72">
-        {links.map((link) => (
-          <DropdownMenuItem
-            key={link.path + link.label}
-            onClick={() => navigateTo(link.path)}
-            className="flex items-center gap-3 py-2.5"
-            data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
-          >
-            <link.icon className="h-4 w-4 text-slate-300" />
-            <div className="flex-1">
-              <div className="font-medium text-sm">{link.label}</div>
-              {link.description && (
-                <span className="text-xs text-muted-foreground">{link.description}</span>
-              )}
-            </div>
-          </DropdownMenuItem>
-        ))}
+        {links.map(renderNavItem)}
       </DropdownMenuContent>
     </DropdownMenu>
   );
@@ -172,13 +209,10 @@ export default function StandardNav() {
           </div>
 
           <div className="hidden lg:flex items-center gap-0.5">
-            {renderDropdown("Product", productLinks)}
-            {renderDropdown("Solutions", solutionsLinks)}
-            {renderDropdown("Experience", experienceLinks, undefined, true)}
-            {renderDropdown("Demos", demosLinks)}
-            {renderDropdown("Platform", platformLinks)}
-            {renderDropdown("Investors", investorsLinks, undefined, true)}
-            {renderDropdown("Intelligence", intelligenceLinks)}
+            {renderSectionedDropdown("Product", productSections)}
+            {renderSectionedDropdown("Experience", experienceSections, true)}
+            {renderFlatDropdown("Platform", platformLinks)}
+            {renderFlatDropdown("Investors", investorsLinks, true)}
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
@@ -254,61 +288,41 @@ export default function StandardNav() {
               </Button>
               
               <div className="border-t border-slate-800 my-3" />
-              
-              <p className="px-4 py-2 text-xs text-poise-teal uppercase tracking-wide font-semibold">Product</p>
-              {productLinks.map((link) => (
-                <button
-                  key={link.path}
-                  onClick={() => navigateTo(link.path)}
-                  className={`text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 ${
-                    isActivePath(link.path) ? 'text-white bg-slate-800' : 'text-slate-300 hover:text-white hover:bg-slate-800'
-                  }`}
-                >
-                  <link.icon className="h-4 w-4 text-slate-200" />
-                  {link.label}
-                </button>
+
+              {productSections.map((section) => (
+                <div key={section.heading}>
+                  <p className="px-4 py-2 text-xs text-poise-teal uppercase tracking-wide font-semibold">{section.heading}</p>
+                  {section.links.map((link) => (
+                    <button
+                      key={link.path + link.label}
+                      onClick={() => navigateTo(link.path)}
+                      className={`text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 ${
+                        isActivePath(link.path) ? 'text-white bg-slate-800' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                      }`}
+                    >
+                      <link.icon className="h-4 w-4 text-slate-200" />
+                      {link.label}
+                    </button>
+                  ))}
+                </div>
               ))}
               
               <div className="border-t border-slate-800 my-3" />
               
-              <p className="px-4 py-2 text-xs text-poise-teal uppercase tracking-wide font-semibold">Solutions</p>
-              {solutionsLinks.map((link) => (
-                <button
-                  key={link.path}
-                  onClick={() => navigateTo(link.path)}
-                  className="text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-slate-300 hover:text-white hover:bg-slate-800"
-                >
-                  <link.icon className="h-4 w-4 text-slate-200" />
-                  {link.label}
-                </button>
-              ))}
-              
-              <div className="border-t border-slate-800 my-3" />
-              
-              <p className="px-4 py-2 text-xs text-cyan-400 uppercase tracking-wide font-semibold">Demos</p>
-              {demosLinks.map((link) => (
-                <button
-                  key={link.path}
-                  onClick={() => navigateTo(link.path)}
-                  className="text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-slate-300 hover:text-white hover:bg-slate-800"
-                >
-                  <link.icon className="h-4 w-4 text-slate-200" />
-                  {link.label}
-                </button>
-              ))}
-              
-              <div className="border-t border-slate-800 my-3" />
-              
-              <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide font-semibold">Experience</p>
-              {experienceLinks.map((link) => (
-                <button
-                  key={link.path}
-                  onClick={() => navigateTo(link.path)}
-                  className="text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-slate-300 hover:text-white hover:bg-slate-800"
-                >
-                  <link.icon className="h-4 w-4 text-poise-gold" />
-                  {link.label}
-                </button>
+              {experienceSections.map((section) => (
+                <div key={section.heading}>
+                  <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide font-semibold">{section.heading}</p>
+                  {section.links.map((link) => (
+                    <button
+                      key={link.path + link.label}
+                      onClick={() => navigateTo(link.path)}
+                      className="text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-slate-300 hover:text-white hover:bg-slate-800"
+                    >
+                      <link.icon className="h-4 w-4 text-poise-gold" />
+                      {link.label}
+                    </button>
+                  ))}
+                </div>
               ))}
 
               <div className="border-t border-slate-800 my-3" />
@@ -329,20 +343,6 @@ export default function StandardNav() {
               
               <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide font-semibold">Investors</p>
               {investorsLinks.map((link) => (
-                <button
-                  key={link.path}
-                  onClick={() => navigateTo(link.path)}
-                  className="text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-slate-300 hover:text-white hover:bg-slate-800"
-                >
-                  <link.icon className="h-4 w-4 text-slate-200" />
-                  {link.label}
-                </button>
-              ))}
-
-              <div className="border-t border-slate-800 my-3" />
-              
-              <p className="px-4 py-2 text-xs text-slate-400 uppercase tracking-wide font-semibold">Intelligence</p>
-              {intelligenceLinks.map((link) => (
                 <button
                   key={link.path}
                   onClick={() => navigateTo(link.path)}
