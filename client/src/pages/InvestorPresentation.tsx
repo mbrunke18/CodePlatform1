@@ -76,10 +76,10 @@ function InvestorPresentation() {
           166 pre-built playbooks that transform enterprise response from 72 hours to 12 minutes
         </p>
         <div className="flex items-center gap-2 text-slate-400 text-lg">
-          <span className="font-semibold text-white">Marty Brunke</span>
+          <span className="font-semibold text-white">Martin Brunke</span>
           <span>, Founder & CEO</span>
           <span className="mx-2">|</span>
-          <span className="text-teal-400">marty@executeiq.io</span>
+          <span className="text-teal-400">martinbrunke@executeiq.io</span>
         </div>
       </div>
     ),
@@ -440,7 +440,7 @@ function InvestorPresentation() {
                 <Users className="w-12 h-12 text-white" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-white mb-1">Marty Brunke</h3>
+                <h3 className="text-2xl font-bold text-white mb-1">Martin Brunke</h3>
                 <p className="text-teal-400 font-medium mb-4">Founder & CEO</p>
                 <div className="space-y-3 text-slate-300">
                   <div className="flex items-start gap-3">
@@ -642,7 +642,7 @@ function InvestorPresentation() {
         </p>
         <div className="flex items-center gap-4 text-slate-400">
           <Mail className="w-5 h-5 text-teal-400" />
-          <span className="text-teal-400 font-medium">marty@executeiq.io</span>
+          <span className="text-teal-400 font-medium">martinbrunke@executeiq.io</span>
           <span className="mx-2">|</span>
           <span className="text-teal-400 font-medium">executeiq.io</span>
         </div>

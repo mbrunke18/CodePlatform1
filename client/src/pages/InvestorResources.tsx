@@ -382,7 +382,7 @@ export default function InvestorResources() {
                     <Lightbulb className="h-5 w-5 text-primary" />
                     <span className="text-sm font-medium text-primary">Founder-Market Fit</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-2">Marty Brunke</h3>
+                  <h3 className="text-2xl font-bold text-foreground mb-2">Martin Brunke</h3>
                   <p className="text-muted-foreground mb-4">
                     5 years collegiate football coaching + 20+ years Fortune 500 strategic execution 
                     (Ford, Toyota, Lockheed Martin, Eli Lilly, Boyd Gaming, Charles Schwab)
@@ -420,7 +420,7 @@ export default function InvestorResources() {
             </Link>
             <Link href="/contact">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-transparent">
-                Contact Marty
+                Contact Martin
               </Button>
             </Link>
             <a href="mailto:martinbrunke@executeiq.io">

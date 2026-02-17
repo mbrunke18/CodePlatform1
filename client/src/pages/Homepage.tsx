@@ -893,7 +893,7 @@ export default function Homepage() {
                   MB
                 </div>
                 <div>
-                  <p className="font-bold text-white text-lg">Marty Brunke</p>
+                  <p className="font-bold text-white text-lg">Martin Brunke</p>
                   <p className="text-amber-400 text-sm">Founder & CEO</p>
                 </div>
               </div>

@@ -7,7 +7,7 @@
 
 **Roadshow Target Date:** [INSERT DATE]  
 **Checklist Created:** December 2024  
-**Owner:** Marty Brunke
+**Owner:** Martin Brunke
 
 This checklist covers everything needed before investor meetings. Tasks are organized by priority and category.
 
@@ -19,36 +19,36 @@ This checklist covers everything needed before investor meetings. Tasks are orga
 
 | # | Task | Owner | Due | Status |
 |---|------|-------|-----|--------|
-| 1 | Run full demo path 3x without errors | Marty | D-7 | ☐ |
-| 2 | Create "Investor Demo" preset with fixed data | Marty | D-7 | ☐ |
-| 3 | Record backup demo video (3 min) | Marty | D-5 | ☐ |
-| 4 | Save backup video to local device + cloud | Marty | D-5 | ☐ |
-| 5 | Test demo on presentation laptop | Marty | D-3 | ☐ |
-| 6 | Test demo on backup device (phone/tablet) | Marty | D-3 | ☐ |
-| 7 | Verify all demo routes work: `/demo`, `/executive-simulation`, `/demo/live-activation` | Marty | D-5 | ☐ |
+| 1 | Run full demo path 3x without errors | Martin | D-7 | ☐ |
+| 2 | Create "Investor Demo" preset with fixed data | Martin | D-7 | ☐ |
+| 3 | Record backup demo video (3 min) | Martin | D-5 | ☐ |
+| 4 | Save backup video to local device + cloud | Martin | D-5 | ☐ |
+| 5 | Test demo on presentation laptop | Martin | D-3 | ☐ |
+| 6 | Test demo on backup device (phone/tablet) | Martin | D-3 | ☐ |
+| 7 | Verify all demo routes work: `/demo`, `/executive-simulation`, `/demo/live-activation` | Martin | D-5 | ☐ |
 | 8 | Add demo completion CTA screen | Dev | D-7 | ☐ |
 
 ### Statistics & Claims
 
 | # | Task | Owner | Due | Status |
 |---|------|-------|-----|--------|
-| 9 | Audit actual playbook count (verify 166) | Marty | D-10 | ☐ |
+| 9 | Audit actual playbook count (verify 166) | Martin | D-10 | ☐ |
 | 10 | Standardize "12 minutes" claim across all pages | Dev | D-7 | ☐ |
-| 11 | Resolve "92 signals" vs "12 sources" inconsistency | Marty | D-7 | ☐ |
-| 12 | Document source for "$144M value gap" or remove | Marty | D-7 | ☐ |
-| 13 | Review ExecuteIQ-Validated-Statistics-QuickRef.md | Marty | D-7 | ☐ |
-| 14 | Print 5 copies of claims validation document | Marty | D-3 | ☐ |
+| 11 | Resolve "92 signals" vs "12 sources" inconsistency | Martin | D-7 | ☐ |
+| 12 | Document source for "$144M value gap" or remove | Martin | D-7 | ☐ |
+| 13 | Review ExecuteIQ-Validated-Statistics-QuickRef.md | Martin | D-7 | ☐ |
+| 14 | Print 5 copies of claims validation document | Martin | D-3 | ☐ |
 
 ### Materials Preparation
 
 | # | Task | Owner | Due | Status |
 |---|------|-------|-----|--------|
-| 15 | Review and personalize Investor FAQ | Marty | D-7 | ☐ |
-| 16 | Review and personalize Pilot Program one-pager | Marty | D-7 | ☐ |
-| 17 | Practice 3-minute demo script (10x minimum) | Marty | D-5 | ☐ |
-| 18 | Time demo runs (must be under 3:30) | Marty | D-5 | ☐ |
-| 19 | Finalize investor deck with "Why Now" slides | Marty | D-5 | ☐ |
-| 20 | Print 10 copies of pilot program one-pager | Marty | D-3 | ☐ |
+| 15 | Review and personalize Investor FAQ | Martin | D-7 | ☐ |
+| 16 | Review and personalize Pilot Program one-pager | Martin | D-7 | ☐ |
+| 17 | Practice 3-minute demo script (10x minimum) | Martin | D-5 | ☐ |
+| 18 | Time demo runs (must be under 3:30) | Martin | D-5 | ☐ |
+| 19 | Finalize investor deck with "Why Now" slides | Martin | D-5 | ☐ |
+| 20 | Print 10 copies of pilot program one-pager | Martin | D-3 | ☐ |
 
 ---
 
@@ -58,34 +58,34 @@ This checklist covers everything needed before investor meetings. Tasks are orga
 
 | # | Task | Owner | Due | Status |
 |---|------|-------|-----|--------|
-| 21 | Practice full pitch (deck + demo) with timer | Marty | D-5 | ☐ |
-| 22 | Rehearse competitive moat responses | Marty | D-5 | ☐ |
-| 23 | Rehearse "Why Now" narrative | Marty | D-5 | ☐ |
-| 24 | Do mock pitch with advisor/friend | Marty | D-3 | ☐ |
-| 25 | Incorporate feedback from mock pitch | Marty | D-2 | ☐ |
-| 26 | Prepare 60-second "hallway pitch" version | Marty | D-3 | ☐ |
+| 21 | Practice full pitch (deck + demo) with timer | Martin | D-5 | ☐ |
+| 22 | Rehearse competitive moat responses | Martin | D-5 | ☐ |
+| 23 | Rehearse "Why Now" narrative | Martin | D-5 | ☐ |
+| 24 | Do mock pitch with advisor/friend | Martin | D-3 | ☐ |
+| 25 | Incorporate feedback from mock pitch | Martin | D-2 | ☐ |
+| 26 | Prepare 60-second "hallway pitch" version | Martin | D-3 | ☐ |
 
 ### Technical Verification
 
 | # | Task | Owner | Due | Status |
 |---|------|-------|-----|--------|
-| 27 | Test site on mobile (iOS + Android) | Marty | D-5 | ☐ |
-| 28 | Verify contact form captures leads correctly | Marty | D-5 | ☐ |
-| 29 | Test login/auth flow if demonstrating | Marty | D-5 | ☐ |
-| 30 | Check page load times (<3 sec target) | Marty | D-5 | ☐ |
-| 31 | Verify OurStory page renders correctly | Marty | D-5 | ☐ |
-| 32 | Test all 4-phase card clicks on homepage | Marty | D-5 | ☐ |
+| 27 | Test site on mobile (iOS + Android) | Martin | D-5 | ☐ |
+| 28 | Verify contact form captures leads correctly | Martin | D-5 | ☐ |
+| 29 | Test login/auth flow if demonstrating | Martin | D-5 | ☐ |
+| 30 | Check page load times (<3 sec target) | Martin | D-5 | ☐ |
+| 31 | Verify OurStory page renders correctly | Martin | D-5 | ☐ |
+| 32 | Test all 4-phase card clicks on homepage | Martin | D-5 | ☐ |
 
 ### Logistics
 
 | # | Task | Owner | Due | Status |
 |---|------|-------|-----|--------|
-| 33 | Confirm all meeting times and locations | Marty | D-5 | ☐ |
-| 34 | Research each investor firm before meeting | Marty | D-3 | ☐ |
-| 35 | Prepare firm-specific talking points | Marty | D-3 | ☐ |
-| 36 | Book backup meeting space if needed | Marty | D-5 | ☐ |
-| 37 | Charge all devices night before | Marty | D-1 | ☐ |
-| 38 | Test presentation laptop charger | Marty | D-3 | ☐ |
+| 33 | Confirm all meeting times and locations | Martin | D-5 | ☐ |
+| 34 | Research each investor firm before meeting | Martin | D-3 | ☐ |
+| 35 | Prepare firm-specific talking points | Martin | D-3 | ☐ |
+| 36 | Book backup meeting space if needed | Martin | D-5 | ☐ |
+| 37 | Charge all devices night before | Martin | D-1 | ☐ |
+| 38 | Test presentation laptop charger | Martin | D-3 | ☐ |
 
 ---
 
@@ -95,12 +95,12 @@ This checklist covers everything needed before investor meetings. Tasks are orga
 
 | # | Task | Owner | Due | Status |
 |---|------|-------|-----|--------|
-| 39 | Create investor-specific deck variants | Marty | D-3 | ☐ |
-| 40 | Prepare industry-specific demo paths | Marty | D-3 | ☐ |
-| 41 | Draft follow-up email template | Marty | D-3 | ☐ |
-| 42 | Create LinkedIn connection request template | Marty | D-3 | ☐ |
-| 43 | Prepare data room access credentials | Marty | D-3 | ☐ |
-| 44 | Update personal LinkedIn with ExecuteIQ info | Marty | D-5 | ☐ |
+| 39 | Create investor-specific deck variants | Martin | D-3 | ☐ |
+| 40 | Prepare industry-specific demo paths | Martin | D-3 | ☐ |
+| 41 | Draft follow-up email template | Martin | D-3 | ☐ |
+| 42 | Create LinkedIn connection request template | Martin | D-3 | ☐ |
+| 43 | Prepare data room access credentials | Martin | D-3 | ☐ |
+| 44 | Update personal LinkedIn with ExecuteIQ info | Martin | D-5 | ☐ |
 
 ### Product Polish
 
@@ -195,7 +195,7 @@ Complete these within 24 hours of each meeting:
 
 | Page | URL |
 |------|-----|
-| Homepage | code-platform-martybrunke.replit.app |
+| Homepage | code-platform-martinbrunke.replit.app |
 | Demo Router | /demo |
 | Executive Simulation | /executive-simulation |
 | Live Demo | /demo/live-activation |

@@ -419,7 +419,7 @@ export default function WhyExecuteIQ() {
                     MB
                   </div>
                   <div>
-                    <p className="font-bold text-foreground text-lg">Marty Brunke</p>
+                    <p className="font-bold text-foreground text-lg">Martin Brunke</p>
                     <p className="text-muted-foreground">Founder & CEO, ExecuteIQ</p>
                   </div>
                 </div>

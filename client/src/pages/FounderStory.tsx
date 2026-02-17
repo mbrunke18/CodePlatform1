@@ -167,7 +167,7 @@ export default function FounderStory() {
                   <span className="text-4xl font-bold text-white">MB</span>
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white text-center md:text-left">
-                  Marty Brunke
+                  Martin Brunke
                 </h3>
                 <p className="text-amber-600 dark:text-amber-400 font-medium text-center md:text-left">
                   Founder & CEO
@@ -203,7 +203,7 @@ export default function FounderStory() {
                 <p className="text-slate-600 dark:text-slate-300 mb-4">
                   After 20 years navigating crises, transformations, and strategic initiatives 
                   across gaming, automotive, financial services, aerospace, and pharma—and 5 years 
-                  coaching major college football—Marty saw a pattern that no one was solving.
+                  coaching major college football—Martin saw a pattern that no one was solving.
                 </p>
                 <p className="text-slate-600 dark:text-slate-300">
                   <span className="font-semibold text-slate-900 dark:text-white">The insight:</span> In football, 
@@ -226,7 +226,7 @@ export default function FounderStory() {
               "Strategy is 10% of the work. Execution is 90%. 
               <span className="text-amber-600 dark:text-amber-400 font-medium"> ExecuteIQ is built for the 90%.</span>"
             </blockquote>
-            <p className="text-slate-300 dark:text-slate-300 mt-4">— Marty Brunke</p>
+            <p className="text-slate-300 dark:text-slate-300 mt-4">— Martin Brunke</p>
           </motion.div>
         </div>
       </main>

@@ -6,7 +6,7 @@
 ## Before You Start
 
 ### Setup Checklist
-- [ ] Browser open to ExecuteIQ homepage (https://code-platform-martybrunke.replit.app)
+- [ ] Browser open to ExecuteIQ homepage (https://code-platform-martinbrunke.replit.app)
 - [ ] Logged in (if showing dashboard features)
 - [ ] Screen sharing ready
 - [ ] Backup: Screen recording saved locally in case of internet issues
