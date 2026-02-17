@@ -123,6 +123,11 @@ export default function HowItWorks() {
       icon: TrendingUp,
       title: "Compounding Advantage",
       description: "Every execution makes the infrastructure smarter. Your execution capability compounds over time."
+    },
+    {
+      icon: Zap,
+      title: "Zero-Disruption Integration",
+      description: "Connects to Active Directory, Jira, Slack, SharePoint, and more. Your people keep using their existing tools—ExecuteIQ orchestrates them."
     }
   ];
 

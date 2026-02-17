@@ -1006,6 +1006,149 @@ export default function Homepage() {
         </div>
       </section>
 
+      {/* Enterprise Integration Section */}
+      <section className="py-20 px-6 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" data-testid="enterprise-integration-section">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-cyan-500/20 text-cyan-400 border-cyan-500/30">
+              <Network className="w-4 h-4 mr-2" />
+              Enterprise Integration
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Connects to What You Already Use
+            </h2>
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+              ExecuteIQ doesn't replace your tools. It orchestrates them. Your teams keep working where they already work—ExecuteIQ makes them move faster and in coordination.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <Card className="bg-slate-900/80 border-slate-700 hover:border-cyan-500/40 transition-all">
+              <CardContent className="p-6">
+                <div className="w-12 h-12 mb-4 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                  <Users className="h-6 w-6 text-blue-400" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">Identity & Access</h3>
+                <p className="text-sm text-slate-300 mb-3">
+                  SSO via your existing identity provider. When a playbook says "notify Legal," the system already knows who that is—pulled from your directory.
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {['Active Directory', 'Azure AD', 'Okta', 'SAML/OIDC'].map(tool => (
+                    <span key={tool} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">{tool}</span>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-slate-900/80 border-slate-700 hover:border-cyan-500/40 transition-all">
+              <CardContent className="p-6">
+                <div className="w-12 h-12 mb-4 bg-emerald-500/20 rounded-xl flex items-center justify-center">
+                  <CheckCircle className="h-6 w-6 text-emerald-400" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">Project Management</h3>
+                <p className="text-sm text-slate-300 mb-3">
+                  When a playbook executes, tasks are created in your team's existing tools—not ours. ExecuteIQ orchestrates; your teams execute where they already live.
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {['Jira', 'Azure DevOps', 'Monday.com', 'Asana', 'ServiceNow'].map(tool => (
+                    <span key={tool} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">{tool}</span>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-slate-900/80 border-slate-700 hover:border-cyan-500/40 transition-all">
+              <CardContent className="p-6">
+                <div className="w-12 h-12 mb-4 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                  <Zap className="h-6 w-6 text-purple-400" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">Communication</h3>
+                <p className="text-sm text-slate-300 mb-3">
+                  Notifications and escalations go through existing channels. The 12-minute execution window works because you're not asking people to check a new tool.
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {['Slack', 'Microsoft Teams', 'Outlook', 'Google Workspace'].map(tool => (
+                    <span key={tool} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">{tool}</span>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-slate-900/80 border-slate-700 hover:border-cyan-500/40 transition-all">
+              <CardContent className="p-6">
+                <div className="w-12 h-12 mb-4 bg-red-500/20 rounded-xl flex items-center justify-center">
+                  <Shield className="h-6 w-6 text-red-400" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">Security & Monitoring</h3>
+                <p className="text-sm text-slate-300 mb-3">
+                  Your SIEM alerts and monitoring tools become trigger sources for the DETECT phase. A security event feeds directly into signal detection—no manual input required.
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {['Splunk', 'CloudWatch', 'Datadog', 'CrowdStrike'].map(tool => (
+                    <span key={tool} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-red-500/10 text-red-400 border border-red-500/20">{tool}</span>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-slate-900/80 border-slate-700 hover:border-cyan-500/40 transition-all">
+              <CardContent className="p-6">
+                <div className="w-12 h-12 mb-4 bg-amber-500/20 rounded-xl flex items-center justify-center">
+                  <Briefcase className="h-6 w-6 text-amber-400" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">CRM & ERP</h3>
+                <p className="text-sm text-slate-300 mb-3">
+                  Customer impact data, deal intelligence, and operational metrics feed into playbook decisions—connecting strategic execution to business reality.
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {['Salesforce', 'HubSpot', 'SAP', 'Workday'].map(tool => (
+                    <span key={tool} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">{tool}</span>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-slate-900/80 border-slate-700 hover:border-cyan-500/40 transition-all">
+              <CardContent className="p-6">
+                <div className="w-12 h-12 mb-4 bg-teal-500/20 rounded-xl flex items-center justify-center">
+                  <Globe2 className="h-6 w-6 text-teal-400" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">Document & Knowledge</h3>
+                <p className="text-sm text-slate-300 mb-3">
+                  Playbook templates, post-incident reports, and board communications are staged in your company's existing document system—nothing to migrate.
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {['SharePoint', 'Google Drive', 'Confluence', 'Box'].map(tool => (
+                    <span key={tool} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-teal-500/10 text-teal-400 border border-teal-500/20">{tool}</span>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="bg-gradient-to-r from-cyan-900/30 via-blue-900/20 to-cyan-900/30 rounded-2xl p-8 border border-cyan-500/20 text-center">
+            <h3 className="text-xl font-bold text-white mb-3">Zero Behavior Change Required</h3>
+            <p className="text-slate-300 max-w-2xl mx-auto mb-4">
+              IT connects your tools once during onboarding. From that point, ExecuteIQ auto-syncs your org chart from Active Directory, routes tasks to Jira, sends alerts through Slack, and stages documents in SharePoint. Your people keep using their existing tools—ExecuteIQ just makes those tools move faster and in coordination.
+            </p>
+            <div className="flex items-center justify-center gap-6 text-sm">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-cyan-400" />
+                <span className="text-slate-300">One-time IT setup</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-cyan-400" />
+                <span className="text-slate-300">Auto directory sync</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-cyan-400" />
+                <span className="text-slate-300">OAuth2 secured</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 px-6 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="max-w-4xl mx-auto text-center">
