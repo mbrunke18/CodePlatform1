@@ -59,6 +59,8 @@ ExecuteIQ is built around the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE
 - **Playbook credibility**: Added maturity ratings (Battle-Tested/Mission-Critical/Innovation-Ready), outcome scores, and validated-by indicators to PlaybookLibraryV2 category cards and individual playbook cards
 - **Data moat (ADVANCE phase)**: Updated ADVANCE descriptions across Homepage and HowItWorks to emphasize proprietary intelligence layer, cross-domain pattern detection, outcome benchmarking, and compounding competitive moat
 - **Enterprise auth roadmap**: Added Enterprise SSO & IAM card (Azure AD, Okta, Ping Identity, SAML 2.0, OIDC) to Homepage integration section and Enterprise-Grade Security differentiator to HowItWorks
+- **Agentic execution layer positioning**: Added "Agentic Execution Layer" stack positioning to HowItWorks (vertical stack diagram showing strategy→ExecuteIQ→workflow→operational layers), WhyExecuteIQ (workflow tools vs agentic comparison + decision authority spectrum: Assist→Coordinate→Execute→Decide), and InvestorLanding (architectural thesis with agent type cards + hero tagline update to "The Agentic Execution Layer for Fortune 1000")
+- **Investor Pitch Deck rebuild**: Complete rebuild of InvestorPresentation.tsx with 15-slide pitch deck matching Deck 2 content. Full-screen slides with keyboard navigation, slide counter, fullscreen mode. Covers: Problem, Cost, IDEA Framework, Transformation, Playbooks, Market ($13-20B TAM), Competition, Business Model ($250K-$1.5M tiers), Traction, Team, GTM, Financials ($100M+ ARR Y5), The Ask ($2M pre-seed). Added "Pitch Deck" link to Investors navigation dropdown.
 
 ## External Dependencies
 - **AI Services**: OpenAI GPT-4o

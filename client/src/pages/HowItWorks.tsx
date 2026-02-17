@@ -235,6 +235,56 @@ export default function HowItWorks() {
           ))}
         </div>
 
+        {/* Agentic Execution Layer - Stack Positioning */}
+        <div className="max-w-4xl mx-auto mt-20 mb-8">
+          <div className="text-center mb-10">
+            <Badge className="mb-4 bg-purple-600/20 text-purple-400 border-purple-500/30">
+              Where ExecuteIQ Sits
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              The Agentic Execution Layer
+            </h2>
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+              ExecuteIQ occupies a distinct layer in the enterprise stack — between strategy and operational tools. Agents don't just generate answers. They coordinate enterprises.
+            </p>
+          </div>
+
+          <div className="space-y-3 max-w-xl mx-auto">
+            <div className="rounded-xl p-4 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-center">
+              <div className="text-sm text-slate-500 dark:text-slate-400 mb-1">Strategy Layer</div>
+              <div className="text-lg font-semibold text-slate-700 dark:text-slate-200">Board decisions, strategic plans, market analysis</div>
+            </div>
+            <div className="flex justify-center">
+              <ArrowRight className="h-5 w-5 text-slate-400 rotate-90" />
+            </div>
+            <div className="rounded-xl p-5 bg-gradient-to-r from-poise-teal/10 via-cyan-500/10 to-purple-500/10 border-2 border-poise-teal/50 text-center relative overflow-hidden">
+              <div className="absolute top-2 right-3 text-[10px] font-bold text-poise-teal uppercase tracking-wider">You Are Here</div>
+              <div className="text-sm text-poise-teal font-semibold mb-1">Agentic Execution Layer</div>
+              <div className="text-xl font-bold text-slate-900 dark:text-white mb-2">ExecuteIQ — Strategic Execution OS</div>
+              <div className="flex flex-wrap justify-center gap-2 text-xs">
+                <span className="px-2 py-1 rounded-full bg-poise-teal/10 text-poise-teal border border-poise-teal/20">Signal Detection Agents</span>
+                <span className="px-2 py-1 rounded-full bg-blue-500/10 text-blue-500 border border-blue-500/20">Routing Agents</span>
+                <span className="px-2 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">Decision Agents</span>
+                <span className="px-2 py-1 rounded-full bg-purple-500/10 text-purple-500 border border-purple-500/20">Learning Agents</span>
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <ArrowRight className="h-5 w-5 text-slate-400 rotate-90" />
+            </div>
+            <div className="rounded-xl p-4 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-center">
+              <div className="text-sm text-slate-500 dark:text-slate-400 mb-1">Workflow & Task Systems</div>
+              <div className="text-lg font-semibold text-slate-700 dark:text-slate-200">Jira, ServiceNow, Asana, Monday.com</div>
+            </div>
+            <div className="flex justify-center">
+              <ArrowRight className="h-5 w-5 text-slate-400 rotate-90" />
+            </div>
+            <div className="rounded-xl p-4 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-center">
+              <div className="text-sm text-slate-500 dark:text-slate-400 mb-1">Operational Systems</div>
+              <div className="text-lg font-semibold text-slate-700 dark:text-slate-200">ERP, CRM, HRIS, Cloud Infrastructure</div>
+            </div>
+          </div>
+        </div>
+
         {/* North Star CTA */}
         <div className="max-w-3xl mx-auto mt-16 text-center">
           <div className="bg-gradient-to-r from-poise-teal/10 via-cyan-500/10 to-poise-gold/10 rounded-2xl p-8 border border-poise-teal/30">

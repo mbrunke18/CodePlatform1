@@ -276,6 +276,121 @@ export default function WhyExecuteIQ() {
         </div>
       </section>
 
+      {/* Section: The Agentic Execution Layer */}
+      <section className="py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-purple-600 text-white border-0">
+              <Brain className="w-4 h-4 mr-2" />
+              The Agentic Layer
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Not Workflow Automation. Agentic Execution.
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              ExecuteIQ isn't another tool in the stack. It's the agentic execution layer — the system where AI agents coordinate enterprise-wide response in real time, with human executives making the final call.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <Card className="border-2 border-purple-500/30 hover:border-purple-500/50 transition-colors">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center">
+                    <XCircle className="h-6 w-6 text-red-500" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-xl text-foreground">Workflow Tools</h3>
+                    <p className="text-sm text-red-600 dark:text-red-400 font-medium">Scripted, reactive, siloed</p>
+                  </div>
+                </div>
+                <ul className="space-y-3 text-foreground">
+                  <li className="flex items-start gap-3">
+                    <XCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
+                    <span>Route tickets based on static rules</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <XCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
+                    <span>Require manual escalation at every step</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <XCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
+                    <span>No cross-functional coordination</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <XCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
+                    <span>Can't learn from previous executions</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 border-emerald-500/30 hover:border-emerald-500/50 transition-colors">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                    <CheckCircle2 className="h-6 w-6 text-emerald-500" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-xl text-foreground">Agentic Execution (ExecuteIQ)</h3>
+                    <p className="text-sm text-emerald-600 dark:text-emerald-400 font-medium">Autonomous, proactive, coordinated</p>
+                  </div>
+                </div>
+                <ul className="space-y-3 text-foreground">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-500 mt-0.5 shrink-0" />
+                    <span>Agents detect signals and activate playbooks</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-500 mt-0.5 shrink-0" />
+                    <span>Pre-authorized decisions within policy thresholds</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-500 mt-0.5 shrink-0" />
+                    <span>Cross-enterprise coordination in 12 minutes</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-500 mt-0.5 shrink-0" />
+                    <span>Every execution makes the system smarter</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-950/20 dark:to-blue-950/20 border-purple-500/20">
+            <CardContent className="p-8">
+              <h3 className="text-xl font-bold text-foreground mb-4 text-center">Agent Decision Authority Spectrum</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="text-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-border">
+                  <div className="text-2xl mb-2">🔍</div>
+                  <div className="font-semibold text-foreground mb-1">Assist</div>
+                  <p className="text-xs text-muted-foreground">Recommend actions to executives</p>
+                </div>
+                <div className="text-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-border">
+                  <div className="text-2xl mb-2">🔀</div>
+                  <div className="font-semibold text-foreground mb-1">Coordinate</div>
+                  <p className="text-xs text-muted-foreground">Route tasks + assign stakeholders</p>
+                </div>
+                <div className="text-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-border">
+                  <div className="text-2xl mb-2">⚡</div>
+                  <div className="font-semibold text-foreground mb-1">Execute</div>
+                  <p className="text-xs text-muted-foreground">Trigger pre-approved workflows</p>
+                </div>
+                <div className="text-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-border">
+                  <div className="text-2xl mb-2">🎯</div>
+                  <div className="font-semibold text-foreground mb-1">Decide</div>
+                  <p className="text-xs text-muted-foreground">Within policy thresholds only</p>
+                </div>
+              </div>
+              <p className="text-center text-sm text-muted-foreground mt-4">
+                Human executives retain ultimate authority. Agents operate within pre-defined governance guardrails.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       {/* Founder Story */}
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto">

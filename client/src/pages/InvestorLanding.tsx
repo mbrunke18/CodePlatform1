@@ -92,7 +92,7 @@ export default function InvestorLanding() {
             </h1>
             
             <p className="text-2xl md:text-3xl text-cyan-200 font-semibold mb-6" data-testid="text-tagline">
-              First Strategic Execution Operating System
+              The Agentic Execution Layer for Fortune 1000
             </p>
             
             <p className="text-lg md:text-xl text-blue-100 mb-8 max-w-4xl" data-testid="text-description">
@@ -242,6 +242,79 @@ export default function InvestorLanding() {
               <p className="text-slate-300">
                 <span className="text-white font-semibold">ExecuteIQ at $250K-$750K/year</span> vs. one incident costing <span className="text-red-400 font-semibold">$5-50M</span>. <span className="text-emerald-400 font-semibold">Payback on first use.</span>
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Agentic Execution Layer */}
+        <section className="py-16 px-6 bg-gradient-to-br from-purple-950/30 via-slate-950 to-slate-950 text-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <Badge className="mb-6 bg-purple-600/20 text-purple-400 border border-purple-500/30 text-sm px-4 py-1.5">
+                <Brain className="h-4 w-4 mr-2 inline" />
+                Architectural Thesis
+              </Badge>
+              <h2 className="text-4xl font-bold mb-4 text-white">
+                The Agentic Execution Layer
+              </h2>
+              <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+                Agents don't just generate answers — they coordinate enterprises. ExecuteIQ is the missing orchestration layer between strategy and operational systems.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-5 gap-2 items-center max-w-4xl mx-auto mb-12">
+              <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-4 text-center">
+                <div className="text-xs text-slate-400 mb-1">Strategy Layer</div>
+                <div className="text-sm font-semibold text-white">Board & C-Suite</div>
+              </div>
+              <div className="text-center text-slate-500">→</div>
+              <div className="bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border-2 border-purple-500/50 rounded-xl p-4 text-center">
+                <div className="text-xs text-purple-400 font-semibold mb-1">Agentic Execution Layer</div>
+                <div className="text-sm font-bold text-white">ExecuteIQ</div>
+              </div>
+              <div className="text-center text-slate-500">→</div>
+              <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-4 text-center">
+                <div className="text-xs text-slate-400 mb-1">Workflow Layer</div>
+                <div className="text-sm font-semibold text-white">Jira, ServiceNow</div>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-5 gap-4 max-w-5xl mx-auto">
+              <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-5 text-center">
+                <div className="w-10 h-10 mx-auto mb-3 bg-cyan-500/20 rounded-lg flex items-center justify-center">
+                  <Zap className="h-5 w-5 text-cyan-400" />
+                </div>
+                <div className="text-sm font-semibold text-white mb-1">Detection Agent</div>
+                <div className="text-xs text-slate-400">Monitors signals across domains</div>
+              </div>
+              <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-5 text-center">
+                <div className="w-10 h-10 mx-auto mb-3 bg-amber-500/20 rounded-lg flex items-center justify-center">
+                  <Target className="h-5 w-5 text-amber-400" />
+                </div>
+                <div className="text-sm font-semibold text-white mb-1">Risk Scoring Agent</div>
+                <div className="text-xs text-slate-400">Classifies severity + urgency</div>
+              </div>
+              <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-5 text-center">
+                <div className="w-10 h-10 mx-auto mb-3 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                  <Users className="h-5 w-5 text-blue-400" />
+                </div>
+                <div className="text-sm font-semibold text-white mb-1">Routing Agent</div>
+                <div className="text-xs text-slate-400">Assigns stakeholders + roles</div>
+              </div>
+              <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-5 text-center">
+                <div className="w-10 h-10 mx-auto mb-3 bg-emerald-500/20 rounded-lg flex items-center justify-center">
+                  <Shield className="h-5 w-5 text-emerald-400" />
+                </div>
+                <div className="text-sm font-semibold text-white mb-1">Decision Agent</div>
+                <div className="text-xs text-slate-400">Pre-authorized within policy</div>
+              </div>
+              <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-5 text-center">
+                <div className="w-10 h-10 mx-auto mb-3 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                  <Brain className="h-5 w-5 text-purple-400" />
+                </div>
+                <div className="text-sm font-semibold text-white mb-1">Learning Agent</div>
+                <div className="text-xs text-slate-400">Compounds institutional knowledge</div>
+              </div>
             </div>
           </div>
         </section>
