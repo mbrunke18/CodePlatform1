@@ -140,11 +140,47 @@ export default function IncidentAnalyzer() {
       const res = await fetch("/api/incidents/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ description, companyName, email, domain: selectedDomain }),
+        body: JSON.stringify({ description, companyName, email: email || undefined, domain: selectedDomain }),
       });
-      if (!res.ok) throw new Error(`Analysis failed (${res.status})`);
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.error || `Analysis failed (${res.status})`);
+      }
       const data = await res.json();
-      setAnalysis(data);
+      const raw = data.analysis || data;
+      const rawMetrics = raw.comparison_metrics || raw.comparisonMetrics;
+      let metricsArray: any[] | undefined;
+      if (rawMetrics && !Array.isArray(rawMetrics) && typeof rawMetrics === 'object') {
+        metricsArray = Object.entries(rawMetrics).map(([key, val]: [string, any]) => ({
+          metric: key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+          without: val.reality || val.without || val.before || val.current || '',
+          with: val.executeiq || val.with || val.after || val.improved || '',
+        }));
+      } else if (Array.isArray(rawMetrics)) {
+        metricsArray = rawMetrics;
+      }
+      const normalized = {
+        ...raw,
+        domain: raw.domain,
+        incidentType: raw.incidentType || raw.incident_type,
+        incident_type: raw.incident_type || raw.incidentType,
+        matched_playbook: raw.matched_playbook || raw.matchedPlaybook,
+        situation_summary: raw.situation_summary || raw.situationSummary,
+        whatWentWrong: raw.whatWentWrong || raw.what_went_wrong || [],
+        root_causes: raw.root_causes || raw.rootCauses || [],
+        rootCause: raw.rootCause || raw.root_cause,
+        estimatedImpact: raw.estimatedImpact || raw.estimated_impact,
+        timeToCoordination: raw.timeToCoordination || raw.time_to_coordination,
+        your_reality: raw.your_reality || raw.yourReality || [],
+        with_executeiq: raw.with_executeiq || raw.withExecuteiq || [],
+        cost_without: raw.cost_without || raw.costWithout,
+        cost_with: raw.cost_with || raw.costWith,
+        costWithout: raw.cost_without || raw.costWithout,
+        costWith: raw.cost_with || raw.costWith,
+        comparison_metrics: metricsArray,
+        comparison: raw.comparison,
+      };
+      setAnalysis(normalized);
       setIncidentId(data.incidentId || data.id || "inc-" + Date.now());
       setCurrentStep(2);
     } catch (e: any) {
@@ -474,7 +510,7 @@ export default function IncidentAnalyzer() {
   const simulationComplete = simulationData?.status === "completed" || simulationData?.completed;
 
   const comparisonRows = analysis?.comparison || analysis?.your_reality?.map((r: any, i: number) => ({
-    phase: r.phase || r.label || `Phase ${i + 1}`,
+    phase: r.phase || r.label || r.time || `Phase ${i + 1}`,
     without: r.description || r.without || r.yourReality || "",
     with: analysis?.with_executeiq?.[i]?.description || analysis?.with_executeiq?.[i]?.with || analysis?.with_executeiq?.[i]?.withExecuteIQ || "",
   }));
@@ -834,9 +870,9 @@ export default function IncidentAnalyzer() {
                     <div className="grid md:grid-cols-2 gap-3">
                       {analysis.root_causes.map((cause: any, i: number) => (
                         <div key={i} className="bg-amber-950/20 border border-amber-500/20 rounded-lg p-3">
-                          <p className="text-sm font-medium text-white">{typeof cause === 'string' ? cause : cause.title || cause.name || cause.description}</p>
-                          {typeof cause !== 'string' && cause.detail && (
-                            <p className="text-xs text-slate-400 mt-1">{cause.detail}</p>
+                          <p className="text-sm font-medium text-white">{typeof cause === 'string' ? cause : cause.cause || cause.title || cause.name || cause.description}</p>
+                          {typeof cause !== 'string' && (cause.detail || cause.description) && (
+                            <p className="text-xs text-slate-400 mt-1">{cause.detail || (cause.cause ? cause.description : '')}</p>
                           )}
                         </div>
                       ))}
