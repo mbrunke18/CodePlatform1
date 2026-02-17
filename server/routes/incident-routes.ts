@@ -214,7 +214,7 @@ router.post('/analyze', async (req, res) => {
       description: z.string().min(20, 'Please describe the situation in more detail (at least 20 characters)'),
       domain: z.enum(['offense', 'defense', 'special_teams', 'auto']).default('auto'),
       companyName: z.string().optional(),
-      email: z.string().email().optional(),
+      email: z.union([z.string().email(), z.literal('')]).optional(),
     });
 
     const parsed = schema.safeParse(req.body);
@@ -448,7 +448,7 @@ router.post('/simulate', async (req, res) => {
     const schema = z.object({
       incidentId: z.string().uuid(),
       playbook: z.any(),
-      email: z.string().email().optional(),
+      email: z.union([z.string().email(), z.literal('')]).optional(),
     });
 
     const parsed = schema.safeParse(req.body);
