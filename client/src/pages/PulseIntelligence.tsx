@@ -177,6 +177,21 @@ export default function PulseIntelligence() {
   return (
     <PageLayout>
       <div className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 min-h-screen">
+        {/* ROI Value Context */}
+        <div className="max-w-[1600px] mx-auto px-6 pt-6">
+          <Card className="bg-indigo-50 dark:bg-indigo-950/20 border-indigo-300 dark:border-indigo-700" data-testid="pulse-roi-context">
+            <CardContent className="p-3 flex items-center gap-3">
+              <div className="p-2 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg">
+                <Brain className="h-5 w-5 text-indigo-600" />
+              </div>
+              <div>
+                <div className="font-semibold text-indigo-900 dark:text-indigo-100 text-sm">How Pulse Saves You Money</div>
+                <div className="text-xs text-indigo-700 dark:text-indigo-300">Detects market shifts and competitive threats 4 weeks ahead, preventing $1.5M+ in missed strategic windows</div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
         {/* Command Center Header */}
         <div className="bg-gradient-to-r from-slate-900 via-indigo-950/50 to-slate-900 border-b border-indigo-500/20">
           <div className="max-w-[1600px] mx-auto px-6 py-5">
