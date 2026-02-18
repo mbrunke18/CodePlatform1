@@ -248,6 +248,7 @@ export default function TryDemo() {
   const [chaosSeconds, setChaosSeconds] = useState(0);
   const [showChaosComplete, setShowChaosComplete] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   
   const [executionTimer, setExecutionTimer] = useState(0);
   const [savedValue, setSavedValue] = useState(0);
@@ -310,9 +311,37 @@ export default function TryDemo() {
 
   useEffect(() => {
     if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }, [chaosMessages]);
+
+  useEffect(() => {
+    if (currentPhase !== 'select') {
+      contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [currentPhase]);
+
+  useEffect(() => {
+    if (showChaosComplete) {
+      const timer = setTimeout(() => moveToPrepared(), 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [showChaosComplete]);
+
+  useEffect(() => {
+    if (currentPhase === 'identify') {
+      const timer = setTimeout(() => completeIdentify(), 3500);
+      return () => clearTimeout(timer);
+    }
+    if (currentPhase === 'detect') {
+      const timer = setTimeout(() => completeDetect(), 3500);
+      return () => clearTimeout(timer);
+    }
+    if (currentPhase === 'advance' && !learnings) {
+      const timer = setTimeout(() => completeAdvance(), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [currentPhase, learnings]);
 
   const skipChaos = () => {
     if (selectedScenario) {
@@ -451,7 +480,7 @@ export default function TryDemo() {
       <StandardNav />
       
       <main className="flex-1 py-8 md:py-12">
-        <div className="max-w-6xl mx-auto px-4 md:px-6">
+        <div ref={contentRef} className="max-w-6xl mx-auto px-4 md:px-6">
           {/* Header */}
           <div className="text-center mb-8">
             <Badge className="mb-4 bg-gradient-to-r from-amber-500/20 to-emerald-500/20 text-amber-300 border-amber-500/30">

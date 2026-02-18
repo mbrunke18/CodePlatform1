@@ -178,6 +178,7 @@ export default function QuickDemoPage() {
   const [chaosSeconds, setChaosSeconds] = useState(0);
   const [showChaosComplete, setShowChaosComplete] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const [executionTimer, setExecutionTimer] = useState(0);
   const [savedValue, setSavedValue] = useState(0);
 
@@ -239,9 +240,37 @@ export default function QuickDemoPage() {
 
   useEffect(() => {
     if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }, [chaosMessages]);
+
+  useEffect(() => {
+    if (currentPhase !== 'select') {
+      contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [currentPhase]);
+
+  useEffect(() => {
+    if (showChaosComplete) {
+      const timer = setTimeout(() => moveToPrepared(), 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [showChaosComplete]);
+
+  useEffect(() => {
+    if (currentPhase === 'identify') {
+      const timer = setTimeout(() => completeIdentify(), 3500);
+      return () => clearTimeout(timer);
+    }
+    if (currentPhase === 'detect') {
+      const timer = setTimeout(() => completeDetect(), 3500);
+      return () => clearTimeout(timer);
+    }
+    if (currentPhase === 'advance' && !learnings) {
+      const timer = setTimeout(() => completeAdvance(), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [currentPhase, learnings]);
 
   const skipChaos = () => {
     if (selectedScenario) {
@@ -357,7 +386,7 @@ export default function QuickDemoPage() {
 
   return (
     <IDEALayout>
-      <div className="container max-w-5xl mx-auto py-8 px-4">
+      <div ref={contentRef} className="container max-w-5xl mx-auto py-8 px-4">
         {currentPhase === 'select' && (
           <>
             <div className="text-center mb-8">
