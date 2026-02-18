@@ -271,9 +271,12 @@ export default function Homepage() {
             <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto mb-4 leading-relaxed" data-testid="text-insight">
               A strategic event hits—M&A, crisis, competitive threat. ExecuteIQ activates pre-built infrastructure: stakeholders notified, tasks assigned, decision rights clear, execution underway. Not in weeks. <span className="text-white font-semibold">In 12 minutes.</span>
             </p>
-            <p className="text-lg text-slate-200 max-w-3xl mx-auto mb-8">
+            <p className="text-lg text-slate-200 max-w-3xl mx-auto mb-4">
               <span className="text-[#D4AF37] font-semibold">166 playbooks to start.</span> Pre-built governance. Clear decision rights. Coordinated execution across 50-200+ stakeholders.
               <span className="text-emerald-400 font-semibold"> From trigger to execution—not trigger to planning.</span>
+            </p>
+            <p className="text-base text-slate-300 max-w-2xl mx-auto mb-8 italic">
+              Powered by AI that detects signals, matches playbooks, orchestrates responses, and learns from every execution.
             </p>
           </div>
 
@@ -365,6 +368,51 @@ export default function Homepage() {
       {/* Platform Visual - End-to-End Overview */}
       <section>
         <PlatformVisual />
+      </section>
+
+      {/* AI Intelligence Engine - How the AI Works */}
+      <section className="py-16 px-6 bg-gradient-to-br from-blue-950/40 via-slate-950 to-emerald-950/40" data-testid="ai-engine-section">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <Badge className="mb-4 bg-[#00A8A8]/20 text-[#00A8A8] border-[#00A8A8]/30">
+              <Brain className="w-4 h-4 mr-2" />
+              AI Intelligence Engine
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+              Intelligence That Compounds With Every Execution
+            </h2>
+            <p className="text-lg text-slate-200 max-w-2xl mx-auto">
+              ExecuteIQ's AI doesn't just automate — it detects, reasons, orchestrates, and learns. Every execution makes the next one faster and smarter.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-0 relative">
+            <div className="hidden md:block absolute top-1/2 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-violet-500 via-blue-500 via-emerald-500 to-amber-500 -translate-y-1/2 z-0" />
+            
+            {[
+              { icon: Radar, label: 'DETECT', desc: 'AI monitors signals across competitive, regulatory, and market landscapes', color: 'from-violet-500 to-purple-600', dotColor: 'bg-violet-500', phase: 'D' },
+              { icon: Target, label: 'MATCH', desc: 'Pattern recognition maps signals to the right playbook from 166 options', color: 'from-blue-500 to-cyan-600', dotColor: 'bg-blue-500', phase: 'I' },
+              { icon: Network, label: 'ORCHESTRATE', desc: 'AI coordinates stakeholders, assigns tasks, and triggers execution flows', color: 'from-emerald-500 to-green-600', dotColor: 'bg-emerald-500', phase: 'E' },
+              { icon: Brain, label: 'LEARN', desc: 'Every outcome refines playbooks, building proprietary intelligence over time', color: 'from-amber-500 to-orange-600', dotColor: 'bg-amber-500', phase: 'A' },
+            ].map((step, i) => (
+              <div key={step.label} className="relative z-10 flex flex-col items-center text-center px-4 py-6">
+                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center mb-4 shadow-lg`}>
+                  <step.icon className="h-7 w-7 text-white" />
+                </div>
+                <div className="text-xs font-bold text-slate-400 tracking-widest mb-1">{step.phase}</div>
+                <h3 className="text-lg font-bold text-white mb-2">{step.label}</h3>
+                <p className="text-sm text-slate-300 leading-relaxed">{step.desc}</p>
+                {i < 3 && <ArrowRight className="md:hidden h-5 w-5 text-slate-600 mt-4" />}
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-8">
+            <p className="text-sm text-slate-400">
+              This is the <span className="text-[#00A8A8] font-semibold">IDEA Framework</span> — the continuous intelligence loop that powers every ExecuteIQ execution.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* 3 Problems Section - Pain → Cost → Solution → Value */}
