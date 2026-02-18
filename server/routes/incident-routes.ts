@@ -173,6 +173,183 @@ function getDomainFallback(domain: string, description: string) {
   return fallbacks[domain] || fallbacks.defense;
 }
 
+function getPlaybookFallback(incidentType: string, description: string) {
+  const lower = description.toLowerCase();
+  const offenseKeywords = ['market', 'opportunity', 'expansion', 'launch', 'acquisition', 'm&a', 'merger', 'partnership', 'ipo', 'revenue', 'growth'];
+  const specialKeywords = ['transformation', 'digital', 'migration', 'restructuring', 'ai governance', 'automation', 'modernize', 'cloud'];
+  const isOffense = offenseKeywords.some(k => lower.includes(k));
+  const isSpecial = specialKeywords.some(k => lower.includes(k));
+
+  if (isOffense) {
+    return {
+      name: `${incidentType || 'Market Opportunity'} — Rapid Capture Protocol`,
+      code: "#MKT-001",
+      domain: "offense",
+      category: "OFFENSE",
+      triggerConditions: [
+        { condition: "Market opportunity signal detected", threshold: "Revenue potential > $10M" },
+        { condition: "Competitive window narrowing", threshold: "< 90 days to first-mover advantage" },
+        { condition: "Executive sponsor greenlight", threshold: "VP+ approval" },
+        { condition: "Resource availability confirmed", threshold: "Core team available within 48hrs" }
+      ],
+      raciMatrix: [
+        { role: "Market Entry Lead", responsibility: "R", name: "[Assignee]", department: "Strategy" },
+        { role: "Chief Strategy Officer", responsibility: "A", name: "[Assignee]", department: "Executive" },
+        { role: "Product Lead", responsibility: "R", name: "[Assignee]", department: "Product" },
+        { role: "Finance Controller", responsibility: "C", name: "[Assignee]", department: "Finance" },
+        { role: "Sales Director", responsibility: "R", name: "[Assignee]", department: "Sales" },
+        { role: "Legal Counsel", responsibility: "C", name: "[Assignee]", department: "Legal" }
+      ],
+      stakeholders: [
+        { role: "Market Entry Lead", responsibility: "R", name: "[Assignee]", department: "Strategy" },
+        { role: "Chief Strategy Officer", responsibility: "A", name: "[Assignee]", department: "Executive" },
+        { role: "Product Lead", responsibility: "R", name: "[Assignee]", department: "Product" },
+        { role: "Finance Controller", responsibility: "C", name: "[Assignee]", department: "Finance" },
+        { role: "Sales Director", responsibility: "R", name: "[Assignee]", department: "Sales" },
+        { role: "Legal Counsel", responsibility: "C", name: "[Assignee]", department: "Legal" }
+      ],
+      taskSequence: [
+        { id: 1, name: "Validate market opportunity and size TAM", owner: "Market Entry Lead", priority: "Critical", duration: "2 minutes", phase: "Immediate" },
+        { id: 2, name: "Notify cross-functional capture team", owner: "System", priority: "Critical", duration: "1 minute", phase: "Immediate" },
+        { id: 3, name: "Assess competitive landscape and window", owner: "Strategy Analyst", priority: "Critical", duration: "3 minutes", phase: "Immediate" },
+        { id: 4, name: "Activate go-to-market playbook", owner: "Market Entry Lead", priority: "High", duration: "2 minutes", phase: "Immediate" },
+        { id: 5, name: "Allocate pre-authorized investment budget", owner: "Finance Controller", priority: "High", duration: "3 minutes", phase: "Secondary" },
+        { id: 6, name: "Brief sales and channel partners", owner: "Sales Director", priority: "High", duration: "5 minutes", phase: "Secondary" },
+        { id: 7, name: "Prepare regulatory and legal review", owner: "Legal Counsel", priority: "Medium", duration: "5 minutes", phase: "Secondary" },
+        { id: 8, name: "Launch coordinated market entry execution", owner: "Market Entry Lead", priority: "Critical", duration: "2 minutes", phase: "Follow-up" }
+      ],
+      tasks: [
+        { id: 1, name: "Validate market opportunity and size TAM", owner: "Market Entry Lead", priority: "Critical", duration: "2 minutes", phase: "Immediate" },
+        { id: 2, name: "Notify cross-functional capture team", owner: "System", priority: "Critical", duration: "1 minute", phase: "Immediate" },
+        { id: 3, name: "Assess competitive landscape and window", owner: "Strategy Analyst", priority: "Critical", duration: "3 minutes", phase: "Immediate" },
+        { id: 4, name: "Activate go-to-market playbook", owner: "Market Entry Lead", priority: "High", duration: "2 minutes", phase: "Immediate" },
+        { id: 5, name: "Allocate pre-authorized investment budget", owner: "Finance Controller", priority: "High", duration: "3 minutes", phase: "Secondary" },
+        { id: 6, name: "Brief sales and channel partners", owner: "Sales Director", priority: "High", duration: "5 minutes", phase: "Secondary" },
+        { id: 7, name: "Prepare regulatory and legal review", owner: "Legal Counsel", priority: "Medium", duration: "5 minutes", phase: "Secondary" },
+        { id: 8, name: "Launch coordinated market entry execution", owner: "Market Entry Lead", priority: "Critical", duration: "2 minutes", phase: "Follow-up" }
+      ],
+      preAuthorizedThresholds: [
+        { decision: "Market entry investment", limit: "Up to $2M without board approval", approver: "CSO" },
+        { decision: "Channel partner agreements", limit: "Standard terms pre-approved", approver: "Sales Director" },
+        { decision: "Product localization budget", limit: "Up to $500K", approver: "Product Lead" }
+      ],
+      estimated_coordination_time: "11 minutes"
+    };
+  }
+
+  if (isSpecial) {
+    return {
+      name: `${incidentType || 'Digital Transformation'} — Coordinated Execution Protocol`,
+      code: "#TRN-001",
+      domain: "special_teams",
+      category: "SPECIAL TEAMS",
+      triggerConditions: [
+        { condition: "Transformation initiative approved by steering committee", threshold: "Board or C-suite approval" },
+        { condition: "Technology readiness assessment complete", threshold: "Readiness score > 70%" },
+        { condition: "Change management plan finalized", threshold: "All workstream leads aligned" },
+        { condition: "Budget allocation confirmed", threshold: "Funding secured for Phase 1" }
+      ],
+      raciMatrix: [
+        { role: "Transformation Lead", responsibility: "R", name: "[Assignee]", department: "Digital" },
+        { role: "Chief Digital Officer", responsibility: "A", name: "[Assignee]", department: "Executive" },
+        { role: "Change Management Lead", responsibility: "R", name: "[Assignee]", department: "HR / Change" },
+        { role: "IT Architecture Lead", responsibility: "R", name: "[Assignee]", department: "IT" },
+        { role: "Business Unit Sponsors", responsibility: "C", name: "[Assignee]", department: "Business Operations" },
+        { role: "Finance Partner", responsibility: "I", name: "[Assignee]", department: "Finance" }
+      ],
+      stakeholders: [
+        { role: "Transformation Lead", responsibility: "R", name: "[Assignee]", department: "Digital" },
+        { role: "Chief Digital Officer", responsibility: "A", name: "[Assignee]", department: "Executive" },
+        { role: "Change Management Lead", responsibility: "R", name: "[Assignee]", department: "HR / Change" },
+        { role: "IT Architecture Lead", responsibility: "R", name: "[Assignee]", department: "IT" },
+        { role: "Business Unit Sponsors", responsibility: "C", name: "[Assignee]", department: "Business Operations" },
+        { role: "Finance Partner", responsibility: "I", name: "[Assignee]", department: "Finance" }
+      ],
+      taskSequence: [
+        { id: 1, name: "Activate transformation playbook and notify all workstream leads", owner: "Transformation Lead", priority: "Critical", duration: "2 minutes", phase: "Immediate" },
+        { id: 2, name: "Map cross-functional dependencies and blockers", owner: "IT Architecture Lead", priority: "Critical", duration: "3 minutes", phase: "Immediate" },
+        { id: 3, name: "Deploy pre-authorized resources to Phase 1 workstreams", owner: "Finance Partner", priority: "High", duration: "2 minutes", phase: "Immediate" },
+        { id: 4, name: "Launch change management communications", owner: "Change Management Lead", priority: "High", duration: "3 minutes", phase: "Immediate" },
+        { id: 5, name: "Establish real-time progress tracking dashboard", owner: "Transformation Lead", priority: "High", duration: "2 minutes", phase: "Secondary" },
+        { id: 6, name: "Align business unit sponsors on milestones", owner: "Business Unit Sponsors", priority: "Medium", duration: "5 minutes", phase: "Secondary" },
+        { id: 7, name: "Schedule weekly coordination cadence", owner: "Transformation Lead", priority: "Medium", duration: "2 minutes", phase: "Secondary" },
+        { id: 8, name: "Begin coordinated execution across all workstreams", owner: "All Leads", priority: "Critical", duration: "2 minutes", phase: "Follow-up" }
+      ],
+      tasks: [
+        { id: 1, name: "Activate transformation playbook and notify all workstream leads", owner: "Transformation Lead", priority: "Critical", duration: "2 minutes", phase: "Immediate" },
+        { id: 2, name: "Map cross-functional dependencies and blockers", owner: "IT Architecture Lead", priority: "Critical", duration: "3 minutes", phase: "Immediate" },
+        { id: 3, name: "Deploy pre-authorized resources to Phase 1 workstreams", owner: "Finance Partner", priority: "High", duration: "2 minutes", phase: "Immediate" },
+        { id: 4, name: "Launch change management communications", owner: "Change Management Lead", priority: "High", duration: "3 minutes", phase: "Immediate" },
+        { id: 5, name: "Establish real-time progress tracking dashboard", owner: "Transformation Lead", priority: "High", duration: "2 minutes", phase: "Secondary" },
+        { id: 6, name: "Align business unit sponsors on milestones", owner: "Business Unit Sponsors", priority: "Medium", duration: "5 minutes", phase: "Secondary" },
+        { id: 7, name: "Schedule weekly coordination cadence", owner: "Transformation Lead", priority: "Medium", duration: "2 minutes", phase: "Secondary" },
+        { id: 8, name: "Begin coordinated execution across all workstreams", owner: "All Leads", priority: "Critical", duration: "2 minutes", phase: "Follow-up" }
+      ],
+      preAuthorizedThresholds: [
+        { decision: "Workstream resource allocation", limit: "Up to $1M per workstream without steering committee", approver: "CDO" },
+        { decision: "Vendor and tool procurement", limit: "Pre-approved vendor list, up to $300K", approver: "IT Architecture Lead" },
+        { decision: "Timeline adjustments", limit: "Up to 2-week shift without re-approval", approver: "Transformation Lead" }
+      ],
+      estimated_coordination_time: "12 minutes"
+    };
+  }
+
+  return {
+    name: `${incidentType || 'Crisis Response'} — Multi-Stakeholder Protocol`,
+    code: "#SEC-001",
+    domain: "defense",
+    category: "DEFENSE",
+    triggerConditions: [
+      { condition: "Critical threat or incident detected", threshold: "Severity score > 85%" },
+      { condition: "Multiple system alerts within 15 minutes", threshold: "> 3 correlated alerts" },
+      { condition: "External report or notification received", threshold: "Any credible source" },
+      { condition: "Stakeholder escalation request", threshold: "Director level or above" }
+    ],
+    raciMatrix: [
+      { role: "Incident Commander", responsibility: "R", name: "[Assignee]", department: "Operations" },
+      { role: "Chief Information Security Officer", responsibility: "A", name: "[Assignee]", department: "Security" },
+      { role: "Communications Lead", responsibility: "R", name: "[Assignee]", department: "Corporate Communications" },
+      { role: "Legal Counsel", responsibility: "C", name: "[Assignee]", department: "Legal" },
+      { role: "Business Unit Lead", responsibility: "I", name: "[Assignee]", department: "Business Operations" },
+      { role: "External Relations", responsibility: "C", name: "[Assignee]", department: "Public Relations" }
+    ],
+    stakeholders: [
+      { role: "Incident Commander", responsibility: "R", name: "[Assignee]", department: "Operations" },
+      { role: "Chief Information Security Officer", responsibility: "A", name: "[Assignee]", department: "Security" },
+      { role: "Communications Lead", responsibility: "R", name: "[Assignee]", department: "Corporate Communications" },
+      { role: "Legal Counsel", responsibility: "C", name: "[Assignee]", department: "Legal" },
+      { role: "Business Unit Lead", responsibility: "I", name: "[Assignee]", department: "Business Operations" },
+      { role: "External Relations", responsibility: "C", name: "[Assignee]", department: "Public Relations" }
+    ],
+    taskSequence: [
+      { id: 1, name: "Activate incident response team", owner: "Incident Commander", priority: "Critical", duration: "2 minutes", phase: "Immediate" },
+      { id: 2, name: "Notify all stakeholders via automated channels", owner: "System", priority: "Critical", duration: "1 minute", phase: "Immediate" },
+      { id: 3, name: "Assess scope and severity", owner: "CISO", priority: "Critical", duration: "3 minutes", phase: "Immediate" },
+      { id: 4, name: "Activate containment procedures", owner: "Incident Commander", priority: "High", duration: "5 minutes", phase: "Immediate" },
+      { id: 5, name: "Prepare stakeholder communications", owner: "Communications Lead", priority: "High", duration: "5 minutes", phase: "Secondary" },
+      { id: 6, name: "Engage external counsel if needed", owner: "Legal Counsel", priority: "Medium", duration: "10 minutes", phase: "Secondary" },
+      { id: 7, name: "Document all actions and decisions", owner: "Incident Commander", priority: "Medium", duration: "Ongoing", phase: "Secondary" },
+      { id: 8, name: "Schedule post-incident review", owner: "Incident Commander", priority: "Medium", duration: "5 minutes", phase: "Follow-up" }
+    ],
+    tasks: [
+      { id: 1, name: "Activate incident response team", owner: "Incident Commander", priority: "Critical", duration: "2 minutes", phase: "Immediate" },
+      { id: 2, name: "Notify all stakeholders via automated channels", owner: "System", priority: "Critical", duration: "1 minute", phase: "Immediate" },
+      { id: 3, name: "Assess scope and severity", owner: "CISO", priority: "Critical", duration: "3 minutes", phase: "Immediate" },
+      { id: 4, name: "Activate containment procedures", owner: "Incident Commander", priority: "High", duration: "5 minutes", phase: "Immediate" },
+      { id: 5, name: "Prepare stakeholder communications", owner: "Communications Lead", priority: "High", duration: "5 minutes", phase: "Secondary" },
+      { id: 6, name: "Engage external counsel if needed", owner: "Legal Counsel", priority: "Medium", duration: "10 minutes", phase: "Secondary" },
+      { id: 7, name: "Document all actions and decisions", owner: "Incident Commander", priority: "Medium", duration: "Ongoing", phase: "Secondary" },
+      { id: 8, name: "Schedule post-incident review", owner: "Incident Commander", priority: "Medium", duration: "5 minutes", phase: "Follow-up" }
+    ],
+    preAuthorizedThresholds: [
+      { decision: "Authorize emergency spending", limit: "Up to $500K without board approval", approver: "CFO" },
+      { decision: "Issue external communications", limit: "Pre-approved templates only", approver: "Communications Lead" },
+      { decision: "Engage third-party specialists", limit: "Up to $200K", approver: "CISO" }
+    ],
+    estimated_coordination_time: "11 minutes"
+  };
+}
+
 // Helper to get SendGrid client (reuse from pilot-routes pattern)
 async function getSendGridClient() {
   const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
@@ -389,44 +566,18 @@ What went wrong: ${whatWentWrong.join('; ')}`;
     
     try {
       const cleaned = aiResponse.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
-      playbook = JSON.parse(cleaned);
-    } catch {
+      const parsed = JSON.parse(cleaned);
       playbook = {
-        name: `${incidentType} Response Protocol`,
-        code: "#INC-001",
-        domain: "Crisis",
-        category: "DEFENSE",
-        triggers: [
-          { condition: "Similar incident pattern detected", threshold: "Confidence score > 85%" },
-          { condition: "Multiple system alerts within 15 minutes", threshold: "> 3 correlated alerts" },
-          { condition: "External report or notification received", threshold: "Any credible source" },
-          { condition: "Stakeholder escalation request", threshold: "Director level or above" }
-        ],
-        stakeholders: [
-          { role: "Incident Commander", responsibility: "R", name: "[Assignee]", department: "Operations" },
-          { role: "Chief Information Security Officer", responsibility: "A", name: "[Assignee]", department: "Security" },
-          { role: "Communications Lead", responsibility: "R", name: "[Assignee]", department: "Corporate Communications" },
-          { role: "Legal Counsel", responsibility: "C", name: "[Assignee]", department: "Legal" },
-          { role: "Business Unit Lead", responsibility: "I", name: "[Assignee]", department: "Business Operations" },
-          { role: "External Relations", responsibility: "C", name: "[Assignee]", department: "Public Relations" }
-        ],
-        tasks: [
-          { id: 1, name: "Activate incident response team", owner: "Incident Commander", priority: "Critical", duration: "2 minutes", phase: "Immediate" },
-          { id: 2, name: "Notify all stakeholders via automated channels", owner: "System", priority: "Critical", duration: "1 minute", phase: "Immediate" },
-          { id: 3, name: "Assess scope and severity", owner: "CISO", priority: "Critical", duration: "3 minutes", phase: "Immediate" },
-          { id: 4, name: "Activate containment procedures", owner: "Incident Commander", priority: "High", duration: "5 minutes", phase: "Immediate" },
-          { id: 5, name: "Prepare stakeholder communications", owner: "Communications Lead", priority: "High", duration: "5 minutes", phase: "Secondary" },
-          { id: 6, name: "Engage external counsel if needed", owner: "Legal Counsel", priority: "Medium", duration: "10 minutes", phase: "Secondary" },
-          { id: 7, name: "Document all actions and decisions", owner: "Incident Commander", priority: "Medium", duration: "Ongoing", phase: "Secondary" },
-          { id: 8, name: "Schedule post-incident review", owner: "Incident Commander", priority: "Medium", duration: "5 minutes", phase: "Follow-up" }
-        ],
-        thresholds: [
-          { decision: "Authorize emergency spending", limit: "Up to $500K without board approval", approver: "CFO" },
-          { decision: "Issue external communications", limit: "Pre-approved templates only", approver: "Communications Lead" },
-          { decision: "Engage third-party specialists", limit: "Up to $200K", approver: "CISO" }
-        ],
-        estimated_coordination_time: "11 minutes"
+        ...parsed,
+        raciMatrix: parsed.raciMatrix || parsed.stakeholders,
+        taskSequence: parsed.taskSequence || parsed.tasks,
+        triggerConditions: parsed.triggerConditions || parsed.triggers,
+        preAuthorizedThresholds: parsed.preAuthorizedThresholds || parsed.thresholds,
+        stakeholders: parsed.stakeholders || parsed.raciMatrix,
+        tasks: parsed.tasks || parsed.taskSequence,
       };
+    } catch {
+      playbook = getPlaybookFallback(incidentType, description);
     }
 
     // Update the incident analysis with the playbook
@@ -459,7 +610,10 @@ router.post('/simulate', async (req, res) => {
     const { incidentId, playbook, email } = parsed.data;
     const simulationId = `sim_${Date.now()}`;
 
-    const stakeholders = (playbook.stakeholders || []).map((s: any) => ({
+    const rawStakeholders = playbook.stakeholders || playbook.raciMatrix || [];
+    const rawTasks = playbook.tasks || playbook.taskSequence || [];
+
+    const stakeholders = rawStakeholders.map((s: any) => ({
       name: s.name || s.role,
       role: s.role,
       acknowledged: false,
@@ -467,8 +621,8 @@ router.post('/simulate', async (req, res) => {
       acknowledgedAt: null,
     }));
 
-    const tasks = (playbook.tasks || []).map((t: any) => ({
-      name: t.name,
+    const tasks = rawTasks.map((t: any) => ({
+      name: t.name || t.task || t.title,
       owner: t.owner,
       status: 'pending',
       assignedAt: null,

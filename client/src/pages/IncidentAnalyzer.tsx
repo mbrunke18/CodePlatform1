@@ -206,8 +206,9 @@ export default function IncidentAnalyzer() {
       });
       if (!res.ok) throw new Error(`Playbook generation failed (${res.status})`);
       const data = await res.json();
-      setPlaybook(data);
-      setEditablePlaybook(JSON.parse(JSON.stringify(data)));
+      const pb = data.playbook || data;
+      setPlaybook(pb);
+      setEditablePlaybook(JSON.parse(JSON.stringify(pb)));
       setCurrentStep(3);
     } catch (e: any) {
       setError(e.message || "Failed to generate playbook");
