@@ -116,7 +116,7 @@ const DEFAULT_METRICS: SuccessMetric[] = [
   },
 ];
 
-export default function SuccessMetricsConfiguration() {
+export default function SuccessMetricsConfiguration({ embedded }: { embedded?: boolean }) {
   const { toast } = useToast();
   const [isAddMetricDialogOpen, setIsAddMetricDialogOpen] = useState(false);
   
@@ -251,7 +251,7 @@ export default function SuccessMetricsConfiguration() {
   const friProgress = friMetric ? calculateProgress(friMetric.currentValue, friMetric.baselineValue, friMetric.targetValue) : 0;
 
   return (
-    <PageLayout>
+    <PageLayout embedded={embedded}>
       <div className="page-background min-h-screen bg-transparent p-6">
         <div className="max-w-7xl mx-auto space-y-8">
           

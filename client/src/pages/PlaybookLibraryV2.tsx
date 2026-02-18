@@ -84,7 +84,7 @@ const categoryConfig = {
 
 type Category = keyof typeof categoryConfig;
 
-export default function PlaybookLibraryV2() {
+export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) {
   const [, setLocation] = useLocation();
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
   const [search, setSearch] = useState("");
@@ -128,7 +128,7 @@ export default function PlaybookLibraryV2() {
   
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
-      <StandardNav />
+      {!embedded && <StandardNav />}
       
       {!selectedCategory ? (
         <>
@@ -350,7 +350,7 @@ export default function PlaybookLibraryV2() {
         </>
       )}
       
-      <Footer />
+      {!embedded && <Footer />}
     </div>
   );
 }

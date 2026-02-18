@@ -115,7 +115,7 @@ const demoOraclePatterns: EnhancedOraclePattern[] = [
   }
 ];
 
-export default function ForesightRadar() {
+export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
   const { weakSignals: apiSignals, oraclePatterns: apiPatterns, isLoading } = useDynamicStrategy();
   const { isConnected } = useWebSocket();
   const [, setLocation] = useLocation();
@@ -155,7 +155,7 @@ export default function ForesightRadar() {
 
   if (isLoading) {
     return (
-      <PageLayout>
+      <PageLayout embedded={embedded}>
         <div className="page-background min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950 p-8">
           <div className="max-w-7xl mx-auto">
             <div className="animate-pulse space-y-4">
@@ -169,7 +169,7 @@ export default function ForesightRadar() {
   }
 
   return (
-    <PageLayout>
+    <PageLayout embedded={embedded}>
       <div className="bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950 p-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header with Value Proposition */}

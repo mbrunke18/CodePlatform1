@@ -100,7 +100,7 @@ const DEMO_SPEEDS = [
   { label: '10x', value: 10, icon: '🚀' },
 ];
 
-export default function CommandCenter() {
+export default function CommandCenter({ embedded }: { embedded?: boolean }) {
   const { 
     readiness, 
     activeScenarios, 
@@ -252,7 +252,7 @@ export default function CommandCenter() {
 
   if (isLoading) {
     return (
-      <PageLayout>
+      <PageLayout embedded={embedded}>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950 p-8">
         <div className="max-w-7xl mx-auto">
           <div className="animate-pulse space-y-4">
@@ -266,7 +266,7 @@ export default function CommandCenter() {
   }
 
   return (
-    <PageLayout>
+    <PageLayout embedded={embedded}>
       {showConfetti && (
         <ReactConfetti
           width={window.innerWidth}

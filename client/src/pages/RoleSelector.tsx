@@ -186,9 +186,9 @@ const categoryBadge = (cat: string) => {
   return 'bg-purple-500/15 text-purple-300 border-purple-500/30';
 };
 
-export default function RoleSelector() {
+export default function RoleSelector({ embedded }: { embedded?: boolean }) {
   return (
-    <PageLayout>
+    <PageLayout embedded={embedded}>
       <div className="min-h-screen bg-gray-950 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-16">
           <div className="text-center mb-12">

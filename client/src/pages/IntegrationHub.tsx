@@ -93,7 +93,7 @@ interface DataFlow {
 
 import PageLayout from '@/components/layout/PageLayout';
 
-export default function IntegrationHub() {
+export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [searchTerm, setSearchTerm] = useState('');
   const [filterCategory, setFilterCategory] = useState('all');
@@ -524,7 +524,7 @@ export default function IntegrationHub() {
   });
 
   return (
-    <PageLayout>
+    <PageLayout embedded={embedded}>
       <div className="flex-1 page-background overflow-y-auto p-8 space-y-8">
         
         {/* Ecosystem Connectors Header */}

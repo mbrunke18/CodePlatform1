@@ -978,7 +978,7 @@ function CompositeBuilderDialog({
   );
 }
 
-export default function SignalIntelligenceHub() {
+export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean }) {
   const { toast } = useToast();
   const [selectedCategory, setSelectedCategory] = useState<SignalCategory | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -1286,7 +1286,7 @@ export default function SignalIntelligenceHub() {
   ])];
 
   return (
-    <PageLayout>
+    <PageLayout embedded={embedded}>
       <div className="flex-1 overflow-auto page-background">
         <div className="max-w-7xl mx-auto p-6 space-y-6">
           

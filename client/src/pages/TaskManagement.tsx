@@ -150,7 +150,7 @@ const DEFAULT_TASKS: Task[] = CRITICAL_PRELOADED_TASKS.map((task, index) => ({
   dependsOn: index === 0 ? [] : [String(index)],
 }));
 
-export default function TaskManagement() {
+export default function TaskManagement({ embedded }: { embedded?: boolean }) {
   const { organization } = useCustomer();
   const { toast } = useToast();
   const [search, setSearch] = useState("");
@@ -358,7 +358,7 @@ export default function TaskManagement() {
 
   return (
     <>
-      <StandardNav />
+      {!embedded && <StandardNav />}
       
       <main className="max-w-7xl mx-auto px-6 py-12">
         <header className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -1051,7 +1051,7 @@ export default function TaskManagement() {
         </AlertDialog>
       </main>
 
-      <Footer />
+      {!embedded && <Footer />}
     </>
   );
 }

@@ -205,7 +205,7 @@ const mockTriggers: TriggerCondition[] = [
   }
 ];
 
-export default function TriggersManagement() {
+export default function TriggersManagement({ embedded }: { embedded?: boolean }) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedTrigger, setSelectedTrigger] = useState<TriggerCondition | null>(null);
   const [editTriggerData, setEditTriggerData] = useState<any>(null);
@@ -360,7 +360,7 @@ export default function TriggersManagement() {
   };
 
   return (
-    <PageLayout>
+    <PageLayout embedded={embedded}>
       <div className="page-background min-h-screen bg-transparent p-6">
         <div className="max-w-7xl mx-auto space-y-8">
           

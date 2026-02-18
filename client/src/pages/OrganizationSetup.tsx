@@ -90,7 +90,7 @@ interface CommunicationChannel {
   isActive: boolean;
 }
 
-export default function OrganizationSetup() {
+export default function OrganizationSetup({ embedded }: { embedded?: boolean }) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState('departments');
@@ -384,7 +384,7 @@ export default function OrganizationSetup() {
   };
 
   return (
-    <PageLayout>
+    <PageLayout embedded={embedded}>
       <div className="page-background min-h-screen bg-transparent p-6">
         <div className="max-w-7xl mx-auto space-y-8">
           

@@ -45,7 +45,7 @@ function parseSpeedAdvantage(speedString: string): number {
   return 0;
 }
 
-export default function ComprehensiveROIBreakdown() {
+export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boolean }) {
   // Calculate totals
   const scenarioData = scenarios.map(scenario => ({
     ...scenario,

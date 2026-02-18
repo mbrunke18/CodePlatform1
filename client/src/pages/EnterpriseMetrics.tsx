@@ -22,7 +22,7 @@ import {
   Briefcase
 } from 'lucide-react';
 
-export default function EnterpriseMetrics() {
+export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) {
   const enterpriseKPIs = [
     { title: "Platform Uptime", value: "99.97%", target: "99.99%", progress: 99.7, color: "text-green-600" },
     { title: "Response Time", value: "4 min", target: "2 min", progress: 80, color: "text-blue-600" },
@@ -65,7 +65,7 @@ export default function EnterpriseMetrics() {
   ];
 
   return (
-    <PageLayout>
+    <PageLayout embedded={embedded}>
       <div className="flex-1 page-background overflow-auto bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="p-8">
           {/* Enterprise Metrics Header */}

@@ -32,7 +32,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-export default function PracticeDrills() {
+export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
   const { toast } = useToast();
   const [selectedDrill, setSelectedDrill] = useState<any>(null);
   const [isScheduling, setIsScheduling] = useState(false);
@@ -170,7 +170,7 @@ export default function PracticeDrills() {
 
   if (drillsLoading) {
     return (
-      <PageLayout>
+      <PageLayout embedded={embedded}>
         <div className="p-6">
           <div className="animate-pulse">Loading practice drills...</div>
         </div>
@@ -192,7 +192,7 @@ export default function PracticeDrills() {
     : 0;
 
   return (
-    <PageLayout>
+    <PageLayout embedded={embedded}>
       <div className="p-6 space-y-6" data-testid="practice-drills-page">
         {/* Header */}
         <div className="flex items-center justify-between">

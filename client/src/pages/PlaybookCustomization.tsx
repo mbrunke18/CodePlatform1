@@ -95,7 +95,7 @@ const SAMPLE_TEMPLATES: PlaybookTemplate[] = [
   { id: '8', name: 'Financial Liquidity Response', category: 'financial', domain: 'finance', description: 'Emergency response to cash flow challenges or financial stress', estimatedDuration: '24-48 hours', complexity: 'high', stakeholderCount: 12, tasks: 25 },
 ];
 
-export default function PlaybookCustomization() {
+export default function PlaybookCustomization({ embedded }: { embedded?: boolean }) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [searchQuery, setSearchQuery] = useState('');
@@ -232,7 +232,7 @@ export default function PlaybookCustomization() {
   };
 
   return (
-    <PageLayout>
+    <PageLayout embedded={embedded}>
       <div className="page-background min-h-screen bg-transparent p-6">
         <div className="max-w-7xl mx-auto space-y-8">
           

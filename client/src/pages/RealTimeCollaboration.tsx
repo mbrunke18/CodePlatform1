@@ -81,7 +81,7 @@ interface TeamMember {
   timezone: string;
 }
 
-export default function RealTimeCollaboration() {
+export default function RealTimeCollaboration({ embedded }: { embedded?: boolean }) {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [collaborationSessions, setCollaborationSessions] = useState<CollaborationSession[]>([]);
   const [liveUpdates, setLiveUpdates] = useState<LiveUpdate[]>([]);
@@ -335,7 +335,7 @@ export default function RealTimeCollaboration() {
   };
 
   return (
-    <PageLayout>
+    <PageLayout embedded={embedded}>
       <div className="flex-1 page-background overflow-y-auto p-8 space-y-8">
         
         {/* Collaboration Header */}

@@ -91,7 +91,7 @@ interface ComplianceReport {
 
 import PageLayout from '@/components/layout/PageLayout';
 
-export default function AuditLoggingCenter() {
+export default function AuditLoggingCenter({ embedded }: { embedded?: boolean }) {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [auditLogs, setAuditLogs] = useState<AuditLog[]>([]);
   const [securityEvents, setSecurityEvents] = useState<SecurityEvent[]>([]);
@@ -311,7 +311,7 @@ export default function AuditLoggingCenter() {
   });
 
   return (
-    <PageLayout>
+    <PageLayout embedded={embedded}>
       <div className="flex-1 page-background overflow-y-auto p-8 space-y-8">
         
         {/* Audit Logging Header */}

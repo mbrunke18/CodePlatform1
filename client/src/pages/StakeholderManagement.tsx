@@ -134,7 +134,7 @@ const DEFAULT_STAKEHOLDERS: Stakeholder[] = [
   { id: '6', name: 'Robert Kim', email: 'robert.kim@company.com', phone: '+1 (555) 100-0006', role: 'CISO', department: 'Security', level: 2, responsibility: 'Security assessment, incident response', notificationChannels: ['email', 'phone', 'sms', 'slack'], isBackup: false, isActive: true },
 ];
 
-export default function StakeholderManagement() {
+export default function StakeholderManagement({ embedded }: { embedded?: boolean }) {
   const { organization } = useCustomer();
   const { toast } = useToast();
   const [search, setSearch] = useState("");
@@ -268,7 +268,7 @@ export default function StakeholderManagement() {
 
   return (
     <>
-      <StandardNav />
+      {!embedded && <StandardNav />}
       
       <main className="max-w-7xl mx-auto px-6 py-12">
         <header className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -895,7 +895,7 @@ export default function StakeholderManagement() {
         </AlertDialog>
       </main>
 
-      <Footer />
+      {!embedded && <Footer />}
     </>
   );
 }

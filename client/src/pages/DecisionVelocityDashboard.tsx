@@ -42,7 +42,7 @@ function getEffectivenessColor(effectiveness: string): string {
   }
 }
 
-export default function DecisionVelocityDashboard() {
+export default function DecisionVelocityDashboard({ embedded }: { embedded?: boolean }) {
   const [, setLocation] = useLocation();
 
   const { data: decisions = [], isLoading } = useQuery<any[]>({
@@ -67,19 +67,19 @@ export default function DecisionVelocityDashboard() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
-        <StandardNav />
+        {!embedded && <StandardNav />}
         <div className="container mx-auto px-4 py-20 flex flex-col items-center justify-center min-h-[60vh]">
           <Loader2 className="h-12 w-12 animate-spin text-emerald-600 mb-4" />
           <p className="text-lg text-slate-400 dark:text-slate-300">Loading decision outcomes...</p>
         </div>
-        <Footer />
+        {!embedded && <Footer />}
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
-      <StandardNav />
+      {!embedded && <StandardNav />}
       
       <div className="container mx-auto px-4 py-20">
         <div className="text-center mb-12">
@@ -375,7 +375,7 @@ export default function DecisionVelocityDashboard() {
         </div>
       </div>
       
-      <Footer />
+      {!embedded && <Footer />}
     </div>
   );
 }
