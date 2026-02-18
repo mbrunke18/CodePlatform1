@@ -293,7 +293,7 @@ export default function ReadinessAssessment() {
   const strokeDashoffset = result ? circumference - (result.score / 100) * circumference : circumference;
 
   return (
-    <div className="min-h-screen bg-slate-950">
+    <div className="min-h-screen bg-background">
       <StandardNav />
 
       {phase === "select-domain" && (
@@ -307,7 +307,7 @@ export default function ReadinessAssessment() {
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
                 How Ready Is Your Organization<br className="hidden md:block" /> to Execute Under Pressure?
               </h1>
-              <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+              <p className="text-lg text-slate-300 max-w-2xl mx-auto">
                 Answer 5 targeted questions and get an instant readiness score with specific gaps and recommendations for your strategic domain.
               </p>
             </div>
@@ -336,7 +336,7 @@ export default function ReadinessAssessment() {
               <p className="text-sm text-slate-500 text-center mb-6">Choose the area you want to assess</p>
 
               <div className="mb-6 max-w-md mx-auto">
-                <Label className="text-slate-400 text-sm mb-2 block text-center">Company Name (optional)</Label>
+                <Label className="text-slate-300 text-sm mb-2 block text-center">Company Name (optional)</Label>
                 <Input
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
@@ -364,7 +364,7 @@ export default function ReadinessAssessment() {
                         <Badge className={`${config.bgLight} ${config.textLight} border-none mt-1`}>
                           {config.playbooks}
                         </Badge>
-                        <p className="text-slate-400 text-sm font-medium mt-3">{config.categories}</p>
+                        <p className="text-slate-300 text-sm font-medium mt-3">{config.categories}</p>
                         <p className="text-slate-500 text-sm italic mt-1">{config.tagline}</p>
                         <div className={`${config.textLight} text-xs font-medium mt-4 flex items-center justify-center gap-1 group-hover:gap-2 transition-all`}>
                           Start Assessment <ArrowRight className="w-3 h-3" />
@@ -400,7 +400,7 @@ export default function ReadinessAssessment() {
               </div>
 
               <div className="mb-8">
-                <div className="flex items-center justify-between text-sm text-slate-400 mb-2">
+                <div className="flex items-center justify-between text-sm text-slate-300 mb-2">
                   <span>Question {currentQuestion + 1} of {questions.length}</span>
                   <span>{Math.round(((currentQuestion + 1) / questions.length) * 100)}%</span>
                 </div>
@@ -516,7 +516,7 @@ export default function ReadinessAssessment() {
                             id={`${q.key}-${opt}`}
                             className="border-slate-600 text-teal-500"
                           />
-                          <Label htmlFor={`${q.key}-${opt}`} className="text-slate-300 cursor-pointer text-base flex-1">
+                          <Label htmlFor={`${q.key}-${opt}`} className="text-slate-200 cursor-pointer text-base flex-1">
                             {opt}
                           </Label>
                         </div>
@@ -543,7 +543,7 @@ export default function ReadinessAssessment() {
                       setCurrentQuestion(currentQuestion - 1);
                     }
                   }}
-                  className="border-slate-600 text-slate-300 hover:bg-slate-800 bg-transparent"
+                  className="border-slate-600 text-slate-200 hover:bg-slate-800 bg-transparent"
                 >
                   {currentQuestion === 0 ? "Back to Domains" : "Previous"}
                 </Button>
@@ -624,7 +624,7 @@ export default function ReadinessAssessment() {
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <span className={`text-5xl font-bold ${domainConfig.text}`}>{result.score}</span>
-                  <span className="text-slate-400 text-sm mt-1">/100</span>
+                  <span className="text-slate-300 text-sm mt-1">/100</span>
                 </div>
               </div>
               <Badge className={`${scoreInfo!.bg} text-white border-none px-4 py-1.5 text-sm font-semibold`}>
@@ -646,7 +646,7 @@ export default function ReadinessAssessment() {
                   ].map((row) => (
                     <div key={row.label}>
                       <div className="flex items-center justify-between text-sm mb-1.5">
-                        <span className="text-slate-300 font-medium">{row.label}</span>
+                        <span className="text-slate-200 font-medium">{row.label}</span>
                         <span className="text-white font-bold">{row.value}/100</span>
                       </div>
                       <div className="h-3 bg-slate-800 rounded-full overflow-hidden">
@@ -669,7 +669,7 @@ export default function ReadinessAssessment() {
                 <div className="flex items-center gap-3">
                   <AlertTriangle className={`h-6 w-6 flex-shrink-0 ${domainConfig.textLight}`} />
                   <div>
-                    <p className="text-slate-400 text-sm">{domainConfig.label} Benchmark</p>
+                    <p className="text-slate-300 text-sm">{domainConfig.label} Benchmark</p>
                     <p className="text-white text-lg font-semibold">You're {result.benchmark}</p>
                   </div>
                 </div>
@@ -687,7 +687,7 @@ export default function ReadinessAssessment() {
                     <Card key={i} className="bg-slate-900/80 border border-red-500/30">
                       <CardContent className="p-4 flex items-start gap-3">
                         <XCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
-                        <p className="text-slate-300">{gap}</p>
+                        <p className="text-slate-200">{gap}</p>
                       </CardContent>
                     </Card>
                   ))}
@@ -732,7 +732,7 @@ export default function ReadinessAssessment() {
                             </div>
                             <div>
                               <h3 className={`font-bold ${domainConfig.textLight} text-sm tracking-wide`}>{item.title}</h3>
-                              <p className="text-slate-400 text-sm mt-1 leading-relaxed">{item.description}</p>
+                              <p className="text-slate-300 text-sm mt-1 leading-relaxed">{item.description}</p>
                             </div>
                           </div>
                         );
@@ -754,7 +754,7 @@ export default function ReadinessAssessment() {
                     <Card key={i} className="bg-slate-900/80 border border-emerald-500/30">
                       <CardContent className="p-4 flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                        <p className="text-slate-300">{rec}</p>
+                        <p className="text-slate-200">{rec}</p>
                       </CardContent>
                     </Card>
                   ))}
@@ -768,7 +768,7 @@ export default function ReadinessAssessment() {
                   <Rocket className={`h-6 w-6 ${domainConfig.textLight}`} />
                   Your Next Step
                 </h2>
-                <p className="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
+                <p className="text-slate-200 text-lg max-w-2xl mx-auto leading-relaxed">
                   Based on your score of <span className={`font-bold ${domainConfig.text}`}>{result.score}/100</span>,{" "}
                   {result.score < 60
                     ? `we recommend starting with our Founding Partner Pilot — a guided 6-week engagement to close your most critical ${domainConfig.label.toLowerCase()} gaps with dedicated support.`
@@ -800,7 +800,7 @@ export default function ReadinessAssessment() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-lg px-10 py-7 border-slate-600 text-slate-300 hover:bg-slate-800 bg-transparent"
+                  className="text-lg px-10 py-7 border-slate-600 text-slate-200 hover:bg-slate-800 bg-transparent"
                 >
                   See Our 166 Playbooks
                 </Button>
@@ -809,7 +809,7 @@ export default function ReadinessAssessment() {
                 size="lg"
                 variant="outline"
                 onClick={handleReset}
-                className="text-lg px-10 py-7 border-slate-600 text-slate-300 hover:bg-slate-800 bg-transparent"
+                className="text-lg px-10 py-7 border-slate-600 text-slate-200 hover:bg-slate-800 bg-transparent"
               >
                 Assess Another Domain
               </Button>

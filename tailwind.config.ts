@@ -12,11 +12,11 @@ export default {
       },
       colors: {
         poise: {
-          navy: '#1A2B3D',
-          gold: '#D4AF37',
-          teal: '#00A8A8',
-          white: '#FFFFFF',
-          'dark-gray': '#0F1620',
+          navy: '#1B2A4A',
+          gold: '#C9A84C',
+          teal: '#2B9E9E',
+          white: '#F0F2F5',
+          'dark-gray': '#141C2E',
         },
         background: "var(--background)",
         foreground: "var(--foreground)",

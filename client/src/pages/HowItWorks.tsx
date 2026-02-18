@@ -153,7 +153,7 @@ export default function HowItWorks() {
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               From Situation to Execution in 12 Minutes
             </h1>
-            <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-slate-200 mb-8 leading-relaxed max-w-3xl mx-auto">
               Execution infrastructure works because it's ready before the moment arrives—just like the playbooks elite sports teams build before the season starts.
             </p>
             
@@ -165,13 +165,13 @@ export default function HowItWorks() {
                     <phase.icon className="h-6 w-6 md:h-8 md:w-8 text-white" />
                   </div>
                   {index < phases.length - 1 && (
-                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-slate-300 mx-1 md:mx-2" />
+                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-slate-200 mx-1 md:mx-2" />
                   )}
                 </div>
               ))}
-              <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-slate-300 mx-1 md:mx-2 rotate-180 hidden md:block" />
+              <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-slate-200 mx-1 md:mx-2 rotate-180 hidden md:block" />
             </div>
-            <p className="text-sm text-slate-300 mt-4">Continuous cycle — ADVANCE feeds back into IDENTIFY</p>
+            <p className="text-sm text-slate-200 mt-4">Continuous cycle — ADVANCE feeds back into IDENTIFY</p>
           </div>
         </div>
       </div>

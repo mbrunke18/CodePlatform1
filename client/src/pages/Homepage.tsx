@@ -246,7 +246,7 @@ export default function Homepage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950">
+    <div className="min-h-screen bg-white dark:bg-background">
       <StandardNav />
       
       {/* Hero Section - Execution Infrastructure */}
@@ -268,10 +268,10 @@ export default function Homepage() {
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto mb-4 leading-relaxed" data-testid="text-insight">
+            <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto mb-4 leading-relaxed" data-testid="text-insight">
               A strategic event hits—M&A, crisis, competitive threat. ExecuteIQ activates pre-built infrastructure: stakeholders notified, tasks assigned, decision rights clear, execution underway. Not in weeks. <span className="text-white font-semibold">In 12 minutes.</span>
             </p>
-            <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-8">
+            <p className="text-lg text-slate-200 max-w-3xl mx-auto mb-8">
               <span className="text-[#D4AF37] font-semibold">166 playbooks to start.</span> Pre-built governance. Clear decision rights. Coordinated execution across 50-200+ stakeholders.
               <span className="text-emerald-400 font-semibold"> From trigger to execution—not trigger to planning.</span>
             </p>
@@ -282,36 +282,36 @@ export default function Homepage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
               <div>
                 <div className="text-3xl font-bold text-blue-400">78%</div>
-                <div className="text-sm text-slate-300">of executives say AI requires a new operating model</div>
+                <div className="text-sm text-slate-200">of executives say AI requires a new operating model</div>
                 <div className="text-xs text-slate-600 dark:text-slate-200 mt-1">IBM 2025</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-emerald-400">70%</div>
-                <div className="text-sm text-slate-300">of AI transformation is people and processes</div>
+                <div className="text-sm text-slate-200">of AI transformation is people and processes</div>
                 <div className="text-xs text-slate-600 dark:text-slate-200 mt-1">Bain 2025</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-purple-400">69%</div>
-                <div className="text-sm text-slate-300">agree AI requires new management approaches</div>
+                <div className="text-sm text-slate-200">agree AI requires new management approaches</div>
                 <div className="text-xs text-slate-600 dark:text-slate-200 mt-1">BCG 2025</div>
               </div>
             </div>
             <div className="border-t border-slate-700 mt-4 pt-4 grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
               <div>
                 <div className="text-2xl font-bold text-emerald-400">72 hrs → 12 min</div>
-                <div className="text-xs text-slate-400">Trigger to execution</div>
+                <div className="text-xs text-slate-300">Trigger to execution</div>
               </div>
               <div>
                 <div className="text-2xl font-bold text-emerald-400">70%</div>
-                <div className="text-xs text-slate-400">Faster mobilization</div>
+                <div className="text-xs text-slate-300">Faster mobilization</div>
               </div>
               <div>
                 <div className="text-2xl font-bold text-emerald-400">50%</div>
-                <div className="text-xs text-slate-400">Less decision latency</div>
+                <div className="text-xs text-slate-300">Less decision latency</div>
               </div>
               <div>
                 <div className="text-2xl font-bold text-emerald-400">$2.4M</div>
-                <div className="text-xs text-slate-400">Avg savings per transformation</div>
+                <div className="text-xs text-slate-300">Avg savings per transformation</div>
               </div>
             </div>
           </div>
@@ -378,7 +378,7 @@ export default function Homepage() {
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
               The Three Problems ExecuteIQ Was Built to Solve
             </h2>
-            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+            <p className="text-lg text-slate-200 max-w-3xl mx-auto">
               Every Fortune 1000 company faces these three problems. Until now, no infrastructure existed to solve them.
             </p>
           </div>
@@ -398,15 +398,15 @@ export default function Homepage() {
                       </div>
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-3">The Execution Gap</h3>
-                    <p className="text-slate-300 mb-4 leading-relaxed">
+                    <p className="text-slate-200 mb-4 leading-relaxed">
                       When a strategic moment hits—M&A, crisis, competitive threat—companies spend <span className="text-red-400 font-semibold">20-72 hours</span> just figuring out who needs to be involved and getting meetings scheduled. Execution hasn't even started.
                     </p>
                     <div className="bg-red-950/30 border border-red-500/20 rounded-xl p-4">
                       <p className="text-sm font-semibold text-red-400 mb-2">Financial Impact:</p>
                       <div className="space-y-2">
-                        <p className="text-sm text-slate-300"><span className="text-red-400 font-bold">$136K/hour</span> — cost of delayed ransomware response (IBM)</p>
-                        <p className="text-sm text-slate-300"><span className="text-red-400 font-bold">$5-50M</span> — M&A synergy erosion per delayed integration</p>
-                        <p className="text-sm text-slate-300"><span className="text-red-400 font-bold">24 hours</span> — before crisis causes market cap damage</p>
+                        <p className="text-sm text-slate-200"><span className="text-red-400 font-bold">$136K/hour</span> — cost of delayed ransomware response (IBM)</p>
+                        <p className="text-sm text-slate-200"><span className="text-red-400 font-bold">$5-50M</span> — M&A synergy erosion per delayed integration</p>
+                        <p className="text-sm text-slate-200"><span className="text-red-400 font-bold">24 hours</span> — before crisis causes market cap damage</p>
                       </div>
                     </div>
                   </div>
@@ -419,15 +419,15 @@ export default function Homepage() {
                         <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-xs">How ExecuteIQ Solves It</Badge>
                       </div>
                     </div>
-                    <p className="text-slate-300 mb-4 leading-relaxed">
+                    <p className="text-slate-200 mb-4 leading-relaxed">
                       Pre-built infrastructure activates in <span className="text-emerald-400 font-semibold">12 minutes</span>. Governance, decision rights, and playbooks are ready <span className="text-white font-semibold">before</span> the moment arrives. No scrambling. No ad-hoc meetings. Execution starts immediately.
                     </p>
                     <div className="bg-emerald-950/30 border border-emerald-500/20 rounded-xl p-4">
                       <p className="text-sm font-semibold text-emerald-400 mb-2">Value Delivered:</p>
                       <div className="space-y-2">
-                        <p className="text-sm text-slate-300"><span className="text-emerald-400 font-bold">72 hours → 12 minutes</span> — from trigger to execution</p>
-                        <p className="text-sm text-slate-300"><span className="text-emerald-400 font-bold">$9.8M saved</span> — per ransomware incident avoided</p>
-                        <p className="text-sm text-slate-300"><span className="text-emerald-400 font-bold">166 playbooks</span> — ready to deploy on day one</p>
+                        <p className="text-sm text-slate-200"><span className="text-emerald-400 font-bold">72 hours → 12 minutes</span> — from trigger to execution</p>
+                        <p className="text-sm text-slate-200"><span className="text-emerald-400 font-bold">$9.8M saved</span> — per ransomware incident avoided</p>
+                        <p className="text-sm text-slate-200"><span className="text-emerald-400 font-bold">166 playbooks</span> — ready to deploy on day one</p>
                       </div>
                     </div>
                   </div>
@@ -449,15 +449,15 @@ export default function Homepage() {
                       </div>
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-3">The Coordination Chaos</h3>
-                    <p className="text-slate-300 mb-4 leading-relaxed">
+                    <p className="text-slate-200 mb-4 leading-relaxed">
                       A single strategic response can involve <span className="text-amber-400 font-semibold">50-200+ stakeholders</span> across legal, finance, operations, communications, and IT. Without a coordination system, teams work in silos, duplicate effort, and miss critical handoffs.
                     </p>
                     <div className="bg-amber-950/30 border border-amber-500/20 rounded-xl p-4">
                       <p className="text-sm font-semibold text-amber-400 mb-2">Financial Impact:</p>
                       <div className="space-y-2">
-                        <p className="text-sm text-slate-300"><span className="text-amber-400 font-bold">$4.88M</span> — average cost per data breach without coordination (IBM)</p>
-                        <p className="text-sm text-slate-300"><span className="text-amber-400 font-bold">35% higher costs</span> — without pre-defined response teams</p>
-                        <p className="text-sm text-slate-300"><span className="text-amber-400 font-bold">$2.2M more</span> — per incident vs. automated orchestration</p>
+                        <p className="text-sm text-slate-200"><span className="text-amber-400 font-bold">$4.88M</span> — average cost per data breach without coordination (IBM)</p>
+                        <p className="text-sm text-slate-200"><span className="text-amber-400 font-bold">35% higher costs</span> — without pre-defined response teams</p>
+                        <p className="text-sm text-slate-200"><span className="text-amber-400 font-bold">$2.2M more</span> — per incident vs. automated orchestration</p>
                       </div>
                     </div>
                   </div>
@@ -470,15 +470,15 @@ export default function Homepage() {
                         <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-xs">How ExecuteIQ Solves It</Badge>
                       </div>
                     </div>
-                    <p className="text-slate-300 mb-4 leading-relaxed">
+                    <p className="text-slate-200 mb-4 leading-relaxed">
                       Every playbook has <span className="text-emerald-400 font-semibold">pre-mapped stakeholder accountability</span>, instant notification, task assignment with clear owners, and real-time execution tracking. Everyone knows their assignment before the moment hits.
                     </p>
                     <div className="bg-emerald-950/30 border border-emerald-500/20 rounded-xl p-4">
                       <p className="text-sm font-semibold text-emerald-400 mb-2">Value Delivered:</p>
                       <div className="space-y-2">
-                        <p className="text-sm text-slate-300"><span className="text-emerald-400 font-bold">Instant coordination</span> — across 50-200+ stakeholders simultaneously</p>
-                        <p className="text-sm text-slate-300"><span className="text-emerald-400 font-bold">35% cost reduction</span> — with pre-defined response teams</p>
-                        <p className="text-sm text-slate-300"><span className="text-emerald-400 font-bold">Zero ownership confusion</span> — decision rights mapped in advance</p>
+                        <p className="text-sm text-slate-200"><span className="text-emerald-400 font-bold">Instant coordination</span> — across 50-200+ stakeholders simultaneously</p>
+                        <p className="text-sm text-slate-200"><span className="text-emerald-400 font-bold">35% cost reduction</span> — with pre-defined response teams</p>
+                        <p className="text-sm text-slate-200"><span className="text-emerald-400 font-bold">Zero ownership confusion</span> — decision rights mapped in advance</p>
                       </div>
                     </div>
                   </div>
@@ -500,15 +500,15 @@ export default function Homepage() {
                       </div>
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-3">The Institutional Amnesia</h3>
-                    <p className="text-slate-300 mb-4 leading-relaxed">
+                    <p className="text-slate-200 mb-4 leading-relaxed">
                       Companies handle crises, integrations, and competitive responses—then the knowledge <span className="text-purple-400 font-semibold">walks out the door</span>. The next time a similar situation hits, they start from scratch. The same 72-hour scramble. Every single time.
                     </p>
                     <div className="bg-purple-950/30 border border-purple-500/20 rounded-xl p-4">
                       <p className="text-sm font-semibold text-purple-400 mb-2">Financial Impact:</p>
                       <div className="space-y-2">
-                        <p className="text-sm text-slate-300"><span className="text-purple-400 font-bold">3.5 disruptions</span> — every two years per organization (PwC)</p>
-                        <p className="text-sm text-slate-300"><span className="text-purple-400 font-bold">$4.88M repeated</span> — same cost, same scramble, every time</p>
-                        <p className="text-sm text-slate-300"><span className="text-purple-400 font-bold">Zero improvement</span> — 10th response as slow as the 1st</p>
+                        <p className="text-sm text-slate-200"><span className="text-purple-400 font-bold">3.5 disruptions</span> — every two years per organization (PwC)</p>
+                        <p className="text-sm text-slate-200"><span className="text-purple-400 font-bold">$4.88M repeated</span> — same cost, same scramble, every time</p>
+                        <p className="text-sm text-slate-200"><span className="text-purple-400 font-bold">Zero improvement</span> — 10th response as slow as the 1st</p>
                       </div>
                     </div>
                   </div>
@@ -521,15 +521,15 @@ export default function Homepage() {
                         <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-xs">How ExecuteIQ Solves It</Badge>
                       </div>
                     </div>
-                    <p className="text-slate-300 mb-4 leading-relaxed">
+                    <p className="text-slate-200 mb-4 leading-relaxed">
                       The ADVANCE phase captures outcomes from every execution, conducts <span className="text-emerald-400 font-semibold">AI-powered analysis</span>, suggests playbook refinements, and builds institutional intelligence that <span className="text-white font-semibold">compounds over time</span>. Your organization gets smarter with every execution.
                     </p>
                     <div className="bg-emerald-950/30 border border-emerald-500/20 rounded-xl p-4">
                       <p className="text-sm font-semibold text-emerald-400 mb-2">Value Delivered:</p>
                       <div className="space-y-2">
-                        <p className="text-sm text-slate-300"><span className="text-emerald-400 font-bold">Compounding intelligence</span> — every execution makes the next one faster</p>
-                        <p className="text-sm text-slate-300"><span className="text-emerald-400 font-bold">AI-powered refinement</span> — playbooks improve automatically</p>
-                        <p className="text-sm text-slate-300"><span className="text-emerald-400 font-bold">Institutional memory</span> — knowledge stays, even when people leave</p>
+                        <p className="text-sm text-slate-200"><span className="text-emerald-400 font-bold">Compounding intelligence</span> — every execution makes the next one faster</p>
+                        <p className="text-sm text-slate-200"><span className="text-emerald-400 font-bold">AI-powered refinement</span> — playbooks improve automatically</p>
+                        <p className="text-sm text-slate-200"><span className="text-emerald-400 font-bold">Institutional memory</span> — knowledge stays, even when people leave</p>
                       </div>
                     </div>
                   </div>
@@ -543,10 +543,10 @@ export default function Homepage() {
             <p className="text-2xl text-white mb-2 font-bold">
               <span className="text-emerald-400">ExecuteIQ at $250K-$750K/year</span> vs. one incident costing <span className="text-red-400">$5-50M</span>.
             </p>
-            <p className="text-lg text-slate-300 mb-4">
+            <p className="text-lg text-slate-200 mb-4">
               Payback on first use. Protection that compounds with every execution after.
             </p>
-            <p className="text-sm text-slate-400 mt-2">
+            <p className="text-sm text-slate-300 mt-2">
               12 minutes = trigger-to-coordinated-execution. Deploy ExecuteIQ itself in weeks, not months.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
@@ -573,7 +573,7 @@ export default function Homepage() {
       </section>
 
       {/* Validation Section - Industry Research */}
-      <section className="py-20 bg-white dark:bg-slate-950" data-testid="validation-section">
+      <section className="py-20 bg-white dark:bg-background" data-testid="validation-section">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-8">
             <Badge className="mb-4 bg-blue-500/20 text-blue-600 dark:text-blue-400 border-blue-500/30">
@@ -582,12 +582,12 @@ export default function Homepage() {
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
               What the Research Says
             </h2>
-            <p className="text-lg text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-6">
+            <p className="text-lg text-slate-700 dark:text-slate-200 max-w-3xl mx-auto mb-6">
               These aren't our claims. This is what the world's top consulting, technology, and research firms independently concluded.
             </p>
             <div className="flex flex-wrap justify-center gap-2 mb-8">
               {['IBM', 'BCG', 'McKinsey', 'Bain', 'Accenture', 'Deloitte', 'PwC', 'Gartner', 'Forrester', 'IDC', 'Microsoft', 'Google Cloud', 'OpenAI', 'Anthropic', 'World Economic Forum'].map((firm) => (
-                <span key={firm} className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full px-3 py-1 text-xs font-medium text-slate-700 dark:text-slate-300">{firm}</span>
+                <span key={firm} className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full px-3 py-1 text-xs font-medium text-slate-700 dark:text-slate-200">{firm}</span>
               ))}
             </div>
           </div>
@@ -597,12 +597,12 @@ export default function Homepage() {
               <Card key={index} className={`border ${item.borderColor} bg-slate-50 dark:bg-slate-900/50 hover:shadow-lg transition-all`} data-testid={`validation-quote-${index}`}>
                 <CardContent className="p-6">
                   <Quote className={`h-6 w-6 ${item.color} mb-3 opacity-60`} />
-                  <p className="text-slate-700 dark:text-slate-300 mb-4 italic leading-relaxed">
+                  <p className="text-slate-700 dark:text-slate-200 mb-4 italic leading-relaxed">
                     "{item.quote}"
                   </p>
                   <div className="pt-3 border-t border-slate-200 dark:border-slate-700">
                     <p className={`font-bold ${item.color}`}>{item.source}</p>
-                    <p className="text-xs text-slate-600 dark:text-slate-300">{item.report}</p>
+                    <p className="text-xs text-slate-600 dark:text-slate-200">{item.report}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -615,12 +615,12 @@ export default function Homepage() {
                 <Card key={index + 6} className={`border ${item.borderColor} bg-slate-50 dark:bg-slate-900/50 hover:shadow-lg transition-all`} data-testid={`validation-quote-${index + 6}`}>
                   <CardContent className="p-6">
                     <Quote className={`h-6 w-6 ${item.color} mb-3 opacity-60`} />
-                    <p className="text-slate-700 dark:text-slate-300 mb-4 italic leading-relaxed">
+                    <p className="text-slate-700 dark:text-slate-200 mb-4 italic leading-relaxed">
                       "{item.quote}"
                     </p>
                     <div className="pt-3 border-t border-slate-200 dark:border-slate-700">
                       <p className={`font-bold ${item.color}`}>{item.source}</p>
-                      <p className="text-xs text-slate-600 dark:text-slate-300">{item.report}</p>
+                      <p className="text-xs text-slate-600 dark:text-slate-200">{item.report}</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -632,7 +632,7 @@ export default function Homepage() {
             <Button
               variant="outline"
               onClick={() => setShowAllQuotes(!showAllQuotes)}
-              className="border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+              className="border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
             >
               {showAllQuotes ? (
                 <>
@@ -666,7 +666,7 @@ export default function Homepage() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               2026: The Year AI Became Enterprise Infrastructure
             </h2>
-            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+            <p className="text-lg text-slate-200 max-w-3xl mx-auto">
               8 flagship reports from the world's top consulting firms converge on 3 signals that validate ExecuteIQ's thesis: the bottleneck isn't AI capability—it's execution infrastructure.
             </p>
           </div>
@@ -681,7 +681,7 @@ export default function Homepage() {
                   <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/30 text-xs">Signal 1</Badge>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Agentic AI → Enterprise Infrastructure</h3>
-                <p className="text-slate-300 mb-4 leading-relaxed">
+                <p className="text-slate-200 mb-4 leading-relaxed">
                   Every major firm now agrees: AI agents are moving from experimentation to core enterprise infrastructure. But 78% of executives say this shift requires an entirely new operating model.
                 </p>
                 <div className="p-3 bg-slate-800/80 rounded-lg border border-blue-500/20">
@@ -701,7 +701,7 @@ export default function Homepage() {
                   <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/30 text-xs">Signal 2</Badge>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Redesign Work, Not Layer Automation</h3>
-                <p className="text-slate-300 mb-4 leading-relaxed">
+                <p className="text-slate-200 mb-4 leading-relaxed">
                   McKinsey and Deloitte conclude that layering AI on existing workflows fails. The winners are redesigning how work gets done—rebuilding processes from the ground up around speed and coordination.
                 </p>
                 <div className="p-3 bg-slate-800/80 rounded-lg border border-emerald-500/20">
@@ -721,7 +721,7 @@ export default function Homepage() {
                   <Badge className="bg-amber-500/10 text-amber-400 border-amber-500/30 text-xs">Signal 3</Badge>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Data Foundations & Governance Enable Speed</h3>
-                <p className="text-slate-300 mb-4 leading-relaxed">
+                <p className="text-slate-200 mb-4 leading-relaxed">
                   Google Cloud, IBM, and the World Economic Forum all emphasize: without governance frameworks and data foundations in place, AI deployments stall. Speed requires structure.
                 </p>
                 <div className="p-3 bg-slate-800/80 rounded-lg border border-amber-500/20">
@@ -734,12 +734,12 @@ export default function Homepage() {
           </div>
 
           <div className="text-center mb-6">
-            <p className="text-sm text-slate-400 uppercase tracking-wider font-medium mb-4">Sources: 8 Flagship Reports</p>
+            <p className="text-sm text-slate-300 uppercase tracking-wider font-medium mb-4">Sources: 8 Flagship Reports</p>
           </div>
           <div className="flex flex-wrap justify-center gap-3">
             {['BCG', 'IBM', 'McKinsey', 'Deloitte', 'World Economic Forum', 'Microsoft', 'Google Cloud', 'Accenture'].map((firm) => (
               <div key={firm} className="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2">
-                <span className="text-sm text-slate-300 font-medium">{firm}</span>
+                <span className="text-sm text-slate-200 font-medium">{firm}</span>
               </div>
             ))}
           </div>
@@ -747,7 +747,7 @@ export default function Homepage() {
       </section>
 
       {/* Platform Section - A Platform, Not a Fixed Product */}
-      <section className="py-20 bg-white dark:bg-slate-950" data-testid="platform-section">
+      <section className="py-20 bg-white dark:bg-background" data-testid="platform-section">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30">
@@ -756,7 +756,7 @@ export default function Homepage() {
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
               A Platform, Not a Fixed Product
             </h2>
-            <p className="text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-700 dark:text-slate-200 max-w-2xl mx-auto">
               ExecuteIQ isn't a rigid system. It's infrastructure you can adapt.
             </p>
           </div>
@@ -768,7 +768,7 @@ export default function Homepage() {
                   <BookOpen className="h-7 w-7 text-[#D4AF37]" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Don't Start From Scratch</h3>
-                <p className="text-slate-700 dark:text-slate-300 mb-4">
+                <p className="text-slate-700 dark:text-slate-200 mb-4">
                   166 playbooks across 9 strategic domains—M&A, crisis, competitive response, digital transformation, and more. Built from 20 years of Fortune 500 execution experience. Ready to deploy on day one.
                 </p>
               </CardContent>
@@ -780,7 +780,7 @@ export default function Homepage() {
                   <Layers className="h-7 w-7 text-emerald-500 dark:text-emerald-400" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Make Them Yours</h3>
-                <p className="text-slate-700 dark:text-slate-300 mb-4">
+                <p className="text-slate-700 dark:text-slate-200 mb-4">
                   Every playbook is fully customizable. Adjust roles. Modify sequences. Change triggers. Your organization is unique. Your infrastructure should be too.
                 </p>
               </CardContent>
@@ -792,7 +792,7 @@ export default function Homepage() {
                   <Lightbulb className="h-7 w-7 text-purple-500 dark:text-purple-400" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Create From Scratch</h3>
-                <p className="text-slate-700 dark:text-slate-300 mb-4">
+                <p className="text-slate-700 dark:text-slate-200 mb-4">
                   Face a situation we haven't covered? Build your own playbook. Your institutional knowledge, encoded into executable infrastructure—ready to activate when that situation hits again.
                 </p>
               </CardContent>
@@ -812,13 +812,13 @@ export default function Homepage() {
       <section className="py-20 px-6 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-600" data-testid="badge-methodology">
+            <Badge className="mb-4 bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200 border-slate-300 dark:border-slate-600" data-testid="badge-methodology">
               The IDEA Framework™
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-phases">
               From Situation to Execution in 12 Minutes
             </h2>
-            <p className="text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-700 dark:text-slate-200 max-w-2xl mx-auto">
               Execution infrastructure works because it's ready before the moment arrives.
             </p>
           </div>
@@ -847,13 +847,13 @@ export default function Homepage() {
                     {phase.title}
                   </h3>
                   
-                  <p className="text-sm text-slate-700 dark:text-slate-300 mb-4">
+                  <p className="text-sm text-slate-700 dark:text-slate-200 mb-4">
                     {phase.description}
                   </p>
                   
                   <ul className="space-y-2 mb-4">
                     {phase.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
+                      <li key={idx} className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-200">
                         <CheckCircle className={`h-4 w-4 ${phase.iconColor}`} />
                         {feature}
                       </li>
@@ -888,13 +888,13 @@ export default function Homepage() {
           
           <Card className="bg-slate-800/50 border-slate-700">
             <CardContent className="p-8 md:p-10">
-              <p className="text-lg text-slate-300 leading-relaxed mb-6">
+              <p className="text-lg text-slate-200 leading-relaxed mb-6">
                 I coached college football for 5 years. Every game, 60-80 plays. Every 40 seconds—read the situation, call the play, execute. The speed comes from preparation. Playbooks built before the season. Everyone knows their assignment before the moment.
               </p>
-              <p className="text-lg text-slate-300 leading-relaxed mb-6">
+              <p className="text-lg text-slate-200 leading-relaxed mb-6">
                 Then I spent 20 years inside Fortune 500 companies—Ford, Toyota, Lockheed Martin, Boyd Gaming, Churchill Downs, Charles Schwab. Same caliber of people. No playbooks. Every strategic moment handled ad-hoc.
               </p>
-              <p className="text-lg text-slate-300 leading-relaxed mb-6">
+              <p className="text-lg text-slate-200 leading-relaxed mb-6">
                 I watched the same pattern every time: <span className="text-red-400 font-medium">72 hours getting meetings on calendars, still defining who owns what.</span> After 72 hours—maybe a plan. Execution hasn't started.
               </p>
               <p className="text-lg text-white font-semibold mb-6">
@@ -919,13 +919,13 @@ export default function Homepage() {
       <section className="py-20 px-6 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-600" data-testid="badge-coverage">
+            <Badge className="mb-4 bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200 border-slate-300 dark:border-slate-600" data-testid="badge-coverage">
               Complete Coverage
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-coverage">
               9 Strategic Domains. 166 Playbooks.
             </h2>
-            <p className="text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-700 dark:text-slate-200 max-w-2xl mx-auto">
               Pre-defined governance, clear decision rights, and coordination pre-built for every strategic scenario your organization will face.
             </p>
           </div>
@@ -944,20 +944,20 @@ export default function Homepage() {
                 </div>
                 <div className="space-y-2 mb-6">
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-700 dark:text-slate-300">Market Entry & Expansion</span>
+                    <span className="text-slate-700 dark:text-slate-200">Market Entry & Expansion</span>
                     <span className="text-emerald-600 dark:text-emerald-400 font-medium">22</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-700 dark:text-slate-300">M&A Integration</span>
+                    <span className="text-slate-700 dark:text-slate-200">M&A Integration</span>
                     <span className="text-emerald-600 dark:text-emerald-400 font-medium">16</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-700 dark:text-slate-300">Product Launch</span>
+                    <span className="text-slate-700 dark:text-slate-200">Product Launch</span>
                     <span className="text-emerald-600 dark:text-emerald-400 font-medium">20</span>
                   </div>
                 </div>
                 <div className="pt-4 border-t border-emerald-200 dark:border-emerald-700/50">
-                  <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">58 <span className="text-sm font-normal text-slate-600 dark:text-slate-300">playbooks</span></p>
+                  <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">58 <span className="text-sm font-normal text-slate-600 dark:text-slate-200">playbooks</span></p>
                 </div>
               </CardContent>
             </Card>
@@ -975,20 +975,20 @@ export default function Homepage() {
                 </div>
                 <div className="space-y-2 mb-6">
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-700 dark:text-slate-300">Crisis Response</span>
+                    <span className="text-slate-700 dark:text-slate-200">Crisis Response</span>
                     <span className="text-blue-600 dark:text-blue-400 font-medium">24</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-700 dark:text-slate-300">Cyber Incidents</span>
+                    <span className="text-slate-700 dark:text-slate-200">Cyber Incidents</span>
                     <span className="text-blue-600 dark:text-blue-400 font-medium">18</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-700 dark:text-slate-300">Regulatory Compliance</span>
+                    <span className="text-slate-700 dark:text-slate-200">Regulatory Compliance</span>
                     <span className="text-blue-600 dark:text-blue-400 font-medium">14</span>
                   </div>
                 </div>
                 <div className="pt-4 border-t border-blue-200 dark:border-blue-700/50">
-                  <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">56 <span className="text-sm font-normal text-slate-600 dark:text-slate-300">playbooks</span></p>
+                  <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">56 <span className="text-sm font-normal text-slate-600 dark:text-slate-200">playbooks</span></p>
                 </div>
               </CardContent>
             </Card>
@@ -1006,20 +1006,20 @@ export default function Homepage() {
                 </div>
                 <div className="space-y-2 mb-6">
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-700 dark:text-slate-300">Digital Transformation</span>
+                    <span className="text-slate-700 dark:text-slate-200">Digital Transformation</span>
                     <span className="text-purple-600 dark:text-purple-400 font-medium">20</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-700 dark:text-slate-300">Competitive Response</span>
+                    <span className="text-slate-700 dark:text-slate-200">Competitive Response</span>
                     <span className="text-purple-600 dark:text-purple-400 font-medium">14</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-700 dark:text-slate-300">AI Governance</span>
+                    <span className="text-slate-700 dark:text-slate-200">AI Governance</span>
                     <span className="text-purple-600 dark:text-purple-400 font-medium">18</span>
                   </div>
                 </div>
                 <div className="pt-4 border-t border-purple-200 dark:border-purple-700/50">
-                  <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">52 <span className="text-sm font-normal text-slate-600 dark:text-slate-300">playbooks</span></p>
+                  <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">52 <span className="text-sm font-normal text-slate-600 dark:text-slate-200">playbooks</span></p>
                 </div>
               </CardContent>
             </Card>
@@ -1050,7 +1050,7 @@ export default function Homepage() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Connects to What You Already Use
             </h2>
-            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+            <p className="text-lg text-slate-200 max-w-3xl mx-auto">
               ExecuteIQ doesn't replace your tools. It orchestrates them. Your teams keep working where they already work—ExecuteIQ makes them move faster and in coordination.
             </p>
           </div>
@@ -1062,7 +1062,7 @@ export default function Homepage() {
                   <Users className="h-6 w-6 text-blue-400" />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Identity & Access</h3>
-                <p className="text-sm text-slate-300 mb-3">
+                <p className="text-sm text-slate-200 mb-3">
                   SSO via your existing identity provider. When a playbook says "notify Legal," the system already knows who that is—pulled from your directory.
                 </p>
                 <div className="flex flex-wrap gap-1.5">
@@ -1079,7 +1079,7 @@ export default function Homepage() {
                   <CheckCircle className="h-6 w-6 text-emerald-400" />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Project Management</h3>
-                <p className="text-sm text-slate-300 mb-3">
+                <p className="text-sm text-slate-200 mb-3">
                   When a playbook executes, tasks are created in your team's existing tools—not ours. ExecuteIQ orchestrates; your teams execute where they already live.
                 </p>
                 <div className="flex flex-wrap gap-1.5">
@@ -1096,7 +1096,7 @@ export default function Homepage() {
                   <Zap className="h-6 w-6 text-purple-400" />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Communication</h3>
-                <p className="text-sm text-slate-300 mb-3">
+                <p className="text-sm text-slate-200 mb-3">
                   Notifications and escalations go through existing channels. The 12-minute execution window works because you're not asking people to check a new tool.
                 </p>
                 <div className="flex flex-wrap gap-1.5">
@@ -1113,7 +1113,7 @@ export default function Homepage() {
                   <Shield className="h-6 w-6 text-red-400" />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Security & Monitoring</h3>
-                <p className="text-sm text-slate-300 mb-3">
+                <p className="text-sm text-slate-200 mb-3">
                   Your SIEM alerts and monitoring tools become trigger sources for the DETECT phase. A security event feeds directly into signal detection—no manual input required.
                 </p>
                 <div className="flex flex-wrap gap-1.5">
@@ -1130,7 +1130,7 @@ export default function Homepage() {
                   <Briefcase className="h-6 w-6 text-amber-400" />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">CRM & ERP</h3>
-                <p className="text-sm text-slate-300 mb-3">
+                <p className="text-sm text-slate-200 mb-3">
                   Customer impact data, deal intelligence, and operational metrics feed into playbook decisions—connecting strategic execution to business reality.
                 </p>
                 <div className="flex flex-wrap gap-1.5">
@@ -1147,7 +1147,7 @@ export default function Homepage() {
                   <Globe2 className="h-6 w-6 text-teal-400" />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Document & Knowledge</h3>
-                <p className="text-sm text-slate-300 mb-3">
+                <p className="text-sm text-slate-200 mb-3">
                   Playbook templates, post-incident reports, and board communications are staged in your company's existing document system—nothing to migrate.
                 </p>
                 <div className="flex flex-wrap gap-1.5">
@@ -1164,7 +1164,7 @@ export default function Homepage() {
                   <Shield className="h-6 w-6 text-cyan-400" />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Enterprise SSO & IAM</h3>
-                <p className="text-sm text-slate-300 mb-3">
+                <p className="text-sm text-slate-200 mb-3">
                   Enterprise-grade authentication through your existing identity provider. Single sign-on means your teams access ExecuteIQ through the same credentials they use for everything else.
                 </p>
                 <div className="flex flex-wrap gap-1.5">
@@ -1178,21 +1178,21 @@ export default function Homepage() {
 
           <div className="bg-gradient-to-r from-cyan-900/30 via-blue-900/20 to-cyan-900/30 rounded-2xl p-8 border border-cyan-500/20 text-center">
             <h3 className="text-xl font-bold text-white mb-3">Zero Behavior Change Required</h3>
-            <p className="text-slate-300 max-w-2xl mx-auto mb-4">
+            <p className="text-slate-200 max-w-2xl mx-auto mb-4">
               IT connects your tools once during onboarding. From that point, ExecuteIQ auto-syncs your org chart from Active Directory, routes tasks to Jira, sends alerts through Slack, and stages documents in SharePoint. Your people keep using their existing tools—ExecuteIQ just makes those tools move faster and in coordination.
             </p>
             <div className="flex items-center justify-center gap-6 text-sm">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-cyan-400" />
-                <span className="text-slate-300">One-time IT setup</span>
+                <span className="text-slate-200">One-time IT setup</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-cyan-400" />
-                <span className="text-slate-300">Auto directory sync</span>
+                <span className="text-slate-200">Auto directory sync</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-cyan-400" />
-                <span className="text-slate-300">OAuth2 secured</span>
+                <span className="text-slate-200">OAuth2 secured</span>
               </div>
             </div>
           </div>
@@ -1205,7 +1205,7 @@ export default function Homepage() {
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
             Ready to See It in Action?
           </h2>
-          <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-700 dark:text-slate-200 mb-8 max-w-2xl mx-auto">
             Experience how ExecuteIQ transforms a strategic moment into coordinated 12-minute execution.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -1226,7 +1226,7 @@ export default function Homepage() {
               <ArrowRight className="h-5 w-5 ml-2" />
             </Button>
           </div>
-          <p className="text-sm text-slate-600 dark:text-slate-300 mt-6">
+          <p className="text-sm text-slate-600 dark:text-slate-200 mt-6">
             Q1 2026 Founding Partner Program
           </p>
         </div>

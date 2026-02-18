@@ -206,7 +206,7 @@ export default function StrategyExecutionDashboard() {
                             </div>
                             <Progress value={(objective as any).progress || 0} className="h-2" />
                           </div>
-                          <span className="text-sm font-semibold text-slate-600 dark:text-slate-300">{(objective as any).progress || 0}%</span>
+                          <span className="text-sm font-semibold text-slate-600 dark:text-slate-200">{(objective as any).progress || 0}%</span>
                         </div>
                       );
                     })}
