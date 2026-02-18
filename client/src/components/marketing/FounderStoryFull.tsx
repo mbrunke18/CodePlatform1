@@ -16,7 +16,7 @@ const SCENE_NARRATIONS = [
   "What does delay cost? In M&A, $1.3 million in value erosion per day. In crisis response, $4.88 million average breach cost. In competitive response, market windows that close forever.",
   "The reason? Companies improvise. Every time something hits, they start from zero. No playbook. No pre-assigned roles. Just scrambling.",
   "I'm Terry Danner. I spent 20 years inside Fortune 500 companies watching this happen.",
-  "Boyd Gaming, Ford, Lockheed Martin, Vantiv, Eli Lilly. I lived it. I've watched 50 million dollars evaporate because we couldn't coordinate fast enough.",
+  "Ford, Toyota, Lockheed Martin, Boyd Gaming, Churchill Downs, Charles Schwab. I lived it. I've watched 50 million dollars evaporate because we couldn't coordinate fast enough.",
   "Before all that? Football coach. 15 seasons. What I learned: you never run a play in a game without practicing it first. You have a playbook. Everyone knows their role. When the whistle blows, you execute.",
   "But in business? We wing it. Every single time. It's insane when you think about it.",
   "So I built ExecuteIQ. The Strategic Execution Operating System.",
@@ -575,12 +575,12 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8"
                 >
                   {[
+                    { name: "Ford", industry: "Automotive" },
+                    { name: "Toyota", industry: "Automotive" },
+                    { name: "Lockheed Martin", industry: "Aerospace & Defense" },
                     { name: "Boyd Gaming", industry: "Gaming" },
-                    { name: "Ford & Toyota", industry: "Automotive" },
-                    { name: "Vantiv", industry: "Financial Services" },
-                    { name: "Lockheed Martin", industry: "Aerospace" },
-                    { name: "Eli Lilly", industry: "Pharma" },
-                    { name: "Energy Sector", industry: "Energy" },
+                    { name: "Churchill Downs", industry: "Entertainment" },
+                    { name: "Charles Schwab", industry: "Financial Services" },
                   ].map((company, i) => (
                     <motion.div
                       key={company.name}

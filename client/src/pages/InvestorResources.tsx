@@ -385,7 +385,7 @@ export default function InvestorResources() {
                   <h3 className="text-2xl font-bold text-foreground mb-2">Martin Brunke</h3>
                   <p className="text-muted-foreground mb-4">
                     5 years collegiate football coaching + 20+ years Fortune 500 strategic execution 
-                    (Ford, Toyota, Lockheed Martin, Eli Lilly, Boyd Gaming, Charles Schwab)
+                    (Ford, Toyota, Lockheed Martin, Boyd Gaming, Churchill Downs, Charles Schwab)
                   </p>
                   <p className="text-foreground italic">
                     "Business has no operating system for coordinated response. We're building it."

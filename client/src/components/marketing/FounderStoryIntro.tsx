@@ -7,7 +7,7 @@ import { Link } from "wouter";
 const SCENE_NARRATIONS = [
   "Seventy-two hours. That's how long it takes.",
   "That's how long it takes most Fortune 500 companies to respond to a crisis. Conference calls. Scrambling. Waiting on decisions. Meanwhile, the damage compounds. The window closes.",
-  "I spent 20 years inside Fortune 500 companies watching this happen. Boyd Gaming, Ford, Lockheed Martin, Vantiv, Eli Lilly. I've watched 50 million dollars evaporate because we couldn't coordinate fast enough.",
+  "I spent 20 years inside Fortune 500 companies watching this happen. Ford, Toyota, Lockheed Martin, Boyd Gaming, Churchill Downs, Charles Schwab. I've watched 50 million dollars evaporate because we couldn't coordinate fast enough.",
   "I kept thinking—in football, we'd never run a play without practicing it first. But in business? We wing it. Every time.",
   "That's why I built ExecuteIQ. 166 playbooks across every scenario you'll face. Crisis Response, Market Entry, M&A Integration, Product Launches.",
   "From signal to coordinated execution. 12 minutes. One click to activate. Roles assigned. Teams moving in parallel.",
@@ -399,11 +399,12 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8"
                 >
                   {[
-                    { name: "Boyd Gaming", icon: Building2 },
                     { name: "Ford", icon: Building2 },
+                    { name: "Toyota", icon: Building2 },
                     { name: "Lockheed Martin", icon: Building2 },
-                    { name: "Vantiv", icon: Building2 },
-                    { name: "Eli Lilly", icon: Building2 },
+                    { name: "Boyd Gaming", icon: Building2 },
+                    { name: "Churchill Downs", icon: Building2 },
+                    { name: "Charles Schwab", icon: Building2 },
                   ].map((company, i) => (
                     <motion.div
                       key={company.name}

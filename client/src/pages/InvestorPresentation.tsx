@@ -445,7 +445,7 @@ function InvestorPresentation() {
                 <div className="space-y-3 text-slate-300">
                   <div className="flex items-start gap-3">
                     <Building2 className="w-5 h-5 text-teal-400 mt-0.5 shrink-0" />
-                    <span><strong>20+ years</strong> Fortune 500 leadership — Ford, Toyota, Lockheed Martin, Ally Financial, Fifth Third Bank</span>
+                    <span><strong>20+ years</strong> Fortune 500 leadership — Ford, Toyota, Lockheed Martin, Boyd Gaming, Churchill Downs, Charles Schwab</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <Award className="w-5 h-5 text-teal-400 mt-0.5 shrink-0" />

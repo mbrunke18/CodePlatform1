@@ -259,7 +259,7 @@ They could build *features*—but they can't build the *system*.
 
 I've spent 20+ years watching Fortune 500 companies take 72 hours to make decisions that championship teams make in 40 seconds.
 
-- **Enterprise experience:** Ford, Toyota, Lockheed Martin, Eli Lilly, Boyd Gaming, Charles Schwab, Churchill Downs
+- **Enterprise experience:** Ford, Toyota, Lockheed Martin, Boyd Gaming, Churchill Downs, Charles Schwab
 - **Coaching methodology:** 5 years of collegiate football coaching, including bowl championship
 - **Pattern recognition:** I've seen the same coordination failures across every industry. The playbook approach works—I've proven it on the field and in the boardroom.
 

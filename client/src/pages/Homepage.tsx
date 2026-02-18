@@ -892,7 +892,7 @@ export default function Homepage() {
                 I coached college football for 5 years. Every game, 60-80 plays. Every 40 seconds—read the situation, call the play, execute. The speed comes from preparation. Playbooks built before the season. Everyone knows their assignment before the moment.
               </p>
               <p className="text-lg text-slate-300 leading-relaxed mb-6">
-                Then I spent 20 years inside Fortune 500 companies—Ford, Toyota, Lockheed Martin, Eli Lilly, Boyd Gaming, Churchill Downs. Same caliber of people. No playbooks. Every strategic moment handled ad-hoc.
+                Then I spent 20 years inside Fortune 500 companies—Ford, Toyota, Lockheed Martin, Boyd Gaming, Churchill Downs, Charles Schwab. Same caliber of people. No playbooks. Every strategic moment handled ad-hoc.
               </p>
               <p className="text-lg text-slate-300 leading-relaxed mb-6">
                 I watched the same pattern every time: <span className="text-red-400 font-medium">72 hours getting meetings on calendars, still defining who owns what.</span> After 72 hours—maybe a plan. Execution hasn't started.

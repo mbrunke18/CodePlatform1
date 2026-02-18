@@ -181,12 +181,12 @@ export default function FounderStory() {
                 </h4>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
                   {[
-                    "Boyd Gaming",
                     "Ford",
                     "Toyota",
-                    "Vantiv/Worldpay",
                     "Lockheed Martin",
-                    "Eli Lilly"
+                    "Boyd Gaming",
+                    "Churchill Downs",
+                    "Charles Schwab"
                   ].map((company) => (
                     <div 
                       key={company}
