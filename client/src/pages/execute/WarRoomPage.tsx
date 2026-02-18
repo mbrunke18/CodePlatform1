@@ -4,7 +4,7 @@ import ExecutiveWarRoomPage from '@/pages/ExecutiveWarRoomPage';
 export default function WarRoomPage() {
   return (
     <IDEALayout>
-      <ExecutiveWarRoomPage />
+      <ExecutiveWarRoomPage embedded={true} />
     </IDEALayout>
   );
 }

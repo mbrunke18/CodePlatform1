@@ -4,7 +4,7 @@ import OrganizationSetup from '@/pages/OrganizationSetup';
 export default function OrgPage() {
   return (
     <IDEALayout>
-      <OrganizationSetup />
+      <OrganizationSetup embedded={true} />
     </IDEALayout>
   );
 }

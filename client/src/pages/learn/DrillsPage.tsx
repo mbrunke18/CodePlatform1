@@ -4,7 +4,7 @@ import PracticeDrills from '@/pages/PracticeDrills';
 export default function DrillsPage() {
   return (
     <IDEALayout>
-      <PracticeDrills />
+      <PracticeDrills embedded={true} />
     </IDEALayout>
   );
 }

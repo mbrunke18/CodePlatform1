@@ -4,7 +4,7 @@ import IntegrationHub from '@/pages/IntegrationHub';
 export default function IntegrationsPage() {
   return (
     <IDEALayout>
-      <IntegrationHub />
+      <IntegrationHub embedded={true} />
     </IDEALayout>
   );
 }

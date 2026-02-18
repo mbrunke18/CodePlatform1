@@ -4,7 +4,7 @@ import DecisionVelocityDashboard from '@/pages/DecisionVelocityDashboard';
 export default function DecisionsPage() {
   return (
     <IDEALayout>
-      <DecisionVelocityDashboard />
+      <DecisionVelocityDashboard embedded={true} />
     </IDEALayout>
   );
 }

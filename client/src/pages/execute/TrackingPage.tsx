@@ -4,7 +4,7 @@ import CommandCenter from '@/pages/CommandCenter';
 export default function TrackingPage() {
   return (
     <IDEALayout>
-      <CommandCenter />
+      <CommandCenter embedded={true} />
     </IDEALayout>
   );
 }

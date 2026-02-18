@@ -4,7 +4,7 @@ import EnterpriseMetrics from '@/pages/EnterpriseMetrics';
 export default function MetricsPage() {
   return (
     <IDEALayout>
-      <EnterpriseMetrics />
+      <EnterpriseMetrics embedded={true} />
     </IDEALayout>
   );
 }

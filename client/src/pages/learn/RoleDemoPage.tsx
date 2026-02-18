@@ -4,7 +4,7 @@ import RoleSelector from '@/pages/RoleSelector';
 export default function RoleDemoPage() {
   return (
     <IDEALayout>
-      <RoleSelector />
+      <RoleSelector embedded={true} />
     </IDEALayout>
   );
 }

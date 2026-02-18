@@ -4,7 +4,7 @@ import StakeholderManagement from '@/pages/StakeholderManagement';
 export default function UpdatesPage() {
   return (
     <IDEALayout>
-      <StakeholderManagement />
+      <StakeholderManagement embedded={true} />
     </IDEALayout>
   );
 }

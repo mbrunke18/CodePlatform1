@@ -4,7 +4,7 @@ import AIRadarDashboard from '@/pages/AIRadarDashboard';
 export default function SignalsPage() {
   return (
     <IDEALayout>
-      <AIRadarDashboard />
+      <AIRadarDashboard embedded={true} />
     </IDEALayout>
   );
 }

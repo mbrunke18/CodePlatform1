@@ -4,7 +4,7 @@ import SuccessMetricsConfiguration from '@/pages/SuccessMetricsConfiguration';
 export default function MetricsPage() {
   return (
     <IDEALayout>
-      <SuccessMetricsConfiguration />
+      <SuccessMetricsConfiguration embedded={true} />
     </IDEALayout>
   );
 }

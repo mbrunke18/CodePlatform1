@@ -4,7 +4,7 @@ import TriggersManagement from '@/pages/TriggersManagement';
 export default function AlertsPage() {
   return (
     <IDEALayout>
-      <TriggersManagement />
+      <TriggersManagement embedded={true} />
     </IDEALayout>
   );
 }

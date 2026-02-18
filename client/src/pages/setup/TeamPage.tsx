@@ -4,7 +4,7 @@ import RealTimeCollaboration from '@/pages/RealTimeCollaboration';
 export default function TeamPage() {
   return (
     <IDEALayout>
-      <RealTimeCollaboration />
+      <RealTimeCollaboration embedded={true} />
     </IDEALayout>
   );
 }

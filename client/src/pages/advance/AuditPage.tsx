@@ -4,7 +4,7 @@ import AuditLoggingCenter from '@/pages/AuditLoggingCenter';
 export default function AuditPage() {
   return (
     <IDEALayout>
-      <AuditLoggingCenter />
+      <AuditLoggingCenter embedded={true} />
     </IDEALayout>
   );
 }

@@ -4,7 +4,7 @@ import ComprehensiveROIBreakdown from '@/pages/ComprehensiveROIBreakdown';
 export default function OutcomesPage() {
   return (
     <IDEALayout>
-      <ComprehensiveROIBreakdown />
+      <ComprehensiveROIBreakdown embedded={true} />
     </IDEALayout>
   );
 }

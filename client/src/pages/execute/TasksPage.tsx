@@ -4,7 +4,7 @@ import TaskManagement from '@/pages/TaskManagement';
 export default function TasksPage() {
   return (
     <IDEALayout>
-      <TaskManagement />
+      <TaskManagement embedded={true} />
     </IDEALayout>
   );
 }

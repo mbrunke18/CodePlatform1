@@ -4,7 +4,7 @@ import InstitutionalMemory from '@/pages/InstitutionalMemory';
 export default function LessonsPage() {
   return (
     <IDEALayout>
-      <InstitutionalMemory />
+      <InstitutionalMemory embedded={true} />
     </IDEALayout>
   );
 }
