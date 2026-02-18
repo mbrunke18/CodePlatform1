@@ -5,10 +5,6 @@ export default function Footer() {
   const [, setLocation] = useLocation();
 
   const navigateTo = (path: string) => {
-    if (path === '/ultimate-demo') {
-      window.location.href = path;
-      return;
-    }
     setLocation(path);
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   };
@@ -58,8 +54,8 @@ export default function Footer() {
       title: "Experience",
       links: [
         { label: "Try Demo", path: "/try-demo" },
-        { label: "Ultimate Demo", path: "/ultimate-demo" },
         { label: "ROI Calculator", path: "/roi-calculator" },
+        { label: "Readiness Assessment", path: "/readiness-assessment" },
       ]
     },
     {

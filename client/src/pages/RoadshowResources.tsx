@@ -248,7 +248,7 @@ export default function RoadshowResources() {
             <div className="mt-6 space-y-3">
               <Button 
                 className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600"
-                onClick={() => setLocation('/investor-demo')}
+                onClick={() => setLocation('/try-demo')}
                 data-testid="button-run-investor-demo"
               >
                 <Clock className="mr-2 h-4 w-4" />

@@ -41,7 +41,7 @@ const journeyPhases: JourneyPhase[] = [
     description: 'Experience ExecuteIQ through demos, calculate ROI, and define pilot scope',
     timeline: 'Week 1-2',
     workspace: 'Demo Gallery',
-    workspacePath: '/demo-gallery',
+    workspacePath: '/try-demo',
     icon: Rocket,
     color: 'text-pink-500',
     bgColor: 'bg-pink-500/10',

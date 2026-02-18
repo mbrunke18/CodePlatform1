@@ -563,18 +563,7 @@ export default function TryDemo() {
                       );
                     })}
                   </div>
-                  <Button 
-                    variant="link" 
-                    size="sm" 
-                    onClick={() => {
-                      setLocation('/industry-demos');
-                      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-                    }}
-                    className="text-poise-teal"
-                  >
-                    View All 9 Industry Demos
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </Button>
+                  <p className="text-xs text-slate-300 mt-2">Each scenario shows the full IDEA loop in action</p>
                 </div>
               </div>
             </div>
@@ -1120,18 +1109,7 @@ export default function TryDemo() {
                             })}
                           </div>
                           <div className="mt-4 pt-4 border-t border-slate-700 text-center">
-                            <Button 
-                              variant="outline" 
-                              size="sm"
-                              onClick={() => {
-                                setLocation('/industry-demos');
-                                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-                              }}
-                              className="text-poise-teal border-poise-teal/30 hover:bg-poise-teal/10"
-                            >
-                              View All Industry Demos
-                              <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
+                            <p className="text-xs text-slate-300">Click any scenario above to explore the full demo</p>
                           </div>
                         </CardContent>
                       </Card>
@@ -1220,6 +1198,63 @@ export default function TryDemo() {
           )}
         </div>
       </main>
+
+      {/* See It In Your Industry Section */}
+      <section className="bg-gradient-to-b from-background to-slate-900/80 border-t border-slate-700/50 py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-bold text-white mb-3">See It In Your Industry</h2>
+            <p className="text-slate-200 max-w-2xl mx-auto">
+              Explore how ExecuteIQ handles real-world scenarios across offense and defense — each demo shows the full trigger-to-execution loop.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {INDUSTRY_DEMOS.map((demo) => {
+              const IconComponent = demo.icon;
+              return (
+                <button
+                  key={demo.id}
+                  onClick={() => {
+                    setLocation(demo.route);
+                    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                  }}
+                  className={`p-5 rounded-xl border transition-all hover:scale-[1.02] text-left group ${demo.bgColor} ${
+                    demo.type === 'offensive' 
+                      ? 'border-green-500/30 hover:border-green-400/50' 
+                      : 'border-slate-600/50 hover:border-slate-500/70'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2">
+                      <IconComponent className={`h-5 w-5 ${demo.iconColor}`} />
+                      <span className="text-xs font-medium text-slate-200 uppercase tracking-wider">{demo.industry}</span>
+                    </div>
+                    <Badge variant="outline" className={`text-xs ${
+                      demo.type === 'offensive' 
+                        ? 'text-green-400 border-green-500/30 bg-green-500/10' 
+                        : 'text-blue-400 border-blue-500/30 bg-blue-500/10'
+                    }`}>
+                      {demo.type === 'offensive' ? 'Offense' : 'Defense'}
+                    </Badge>
+                  </div>
+                  <p className="text-sm font-semibold text-white mb-1">{demo.title}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-slate-300">{demo.organization}</span>
+                    <span className={`text-xs font-bold ${demo.type === 'offensive' ? 'text-green-400' : 'text-emerald-400'}`}>
+                      {demo.impact}
+                    </span>
+                  </div>
+                  <div className="mt-3 flex items-center gap-1 text-xs text-poise-teal opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span>Run this scenario</span>
+                    <ArrowRight className="h-3 w-3" />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>

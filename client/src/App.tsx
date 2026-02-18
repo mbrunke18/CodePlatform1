@@ -50,8 +50,6 @@ const PlaybookSettings = lazy(() => import("./pages/PlaybookSettings"));
 const PracticeDrills = lazy(() => import("./pages/PracticeDrills"));
 const LiveDrillExecution = lazy(() => import("./pages/LiveDrillExecution"));
 const ExecutionLearningDashboard = lazy(() => import("./pages/NFLLearningDashboard"));
-const InvestorDemo = lazy(() => import("./pages/InvestorDemo"));
-const CustomerDemo = lazy(() => import("./pages/CustomerDemo"));
 const RoadshowResources = lazy(() => import("./pages/RoadshowResources"));
 const AIIntelligenceHub = lazy(() => import("./pages/AIIntelligenceHub"));
 const IntelligenceControlCenter = lazy(() => import("./pages/IntelligenceControlCenter"));
@@ -73,7 +71,6 @@ const WhyExecuteIQ = lazy(() => import("./pages/WhyExecuteIQ"));
 const Research = lazy(() => import("./pages/Research"));
 const PilotMonitoring = lazy(() => import("./pages/PilotMonitoring"));
 const CrisisExposureMatrix = lazy(() => import("./pages/CrisisExposureMatrix"));
-const SimulationStudio = lazy(() => import("./pages/SimulationStudio"));
 const LuxuryCrisisDemo = lazy(() => import("./pages/LuxuryCrisisDemo"));
 const IndustryDemosHub = lazy(() => import("./pages/IndustryDemosHub"));
 const FinancialRansomwareDemo = lazy(() => import("./pages/FinancialRansomwareDemo"));
@@ -84,8 +81,6 @@ const PharmaceuticalRecallDemo = lazy(() => import("./pages/PharmaceuticalRecall
 const ManufacturingSupplierDemo = lazy(() => import("./pages/ManufacturingSupplierDemo"));
 const RetailFoodSafetyDemo = lazy(() => import("./pages/RetailFoodSafetyDemo"));
 const EnergyGridFailureDemo = lazy(() => import("./pages/EnergyGridFailureDemo"));
-const DemoLiveActivation = lazy(() => import("./pages/DemoLiveActivation"));
-const DealRiskDemo = lazy(() => import("./pages/DealRiskDemo"));
 const RoleSelector = lazy(() => import("./pages/RoleSelector"));
 const McKinseyIntelligenceCenter = lazy(() => import("./pages/mckinsey/McKinseyIntelligenceCenter"));
 const StrategyExecutionDashboard = lazy(() => import("./pages/StrategyExecutionDashboard"));
@@ -96,8 +91,6 @@ const ForesightRadar = lazy(() => import("./pages/ForesightRadar"));
 const LivingPlaybooks = lazy(() => import("./pages/LivingPlaybooks"));
 const ContinuousModePage = lazy(() => import("./pages/ContinuousModePage"));
 const PlaybookReadinessAudit = lazy(() => import("./pages/PlaybookReadinessAudit"));
-const ExecutiveSimulationDemo = lazy(() => import("./pages/ExecutiveSimulationDemo"));
-const ProductTour = lazy(() => import("./pages/ProductTour"));
 const PlatformOverview = lazy(() => import("./pages/PlatformOverview"));
 const InvestorPresentation = lazy(() => import("./pages/InvestorPresentation"));
 const MissionControl = lazy(() => import("./pages/MissionControl"));
@@ -105,7 +98,6 @@ const WorkspaceIdentify = lazy(() => import("./pages/WorkspaceIdentify"));
 const WorkspaceDetect = lazy(() => import("./pages/WorkspaceDetect"));
 const WorkspaceExecute = lazy(() => import("./pages/WorkspaceExecute"));
 const WorkspaceAdvance = lazy(() => import("./pages/WorkspaceAdvance"));
-const DemoGallery = lazy(() => import("./pages/DemoGallery"));
 const CustomerJourney = lazy(() => import("./pages/CustomerJourney"));
 const OrganizationSetup = lazy(() => import("./pages/OrganizationSetup"));
 const PlaybookCustomization = lazy(() => import("./pages/PlaybookCustomization"));
@@ -120,14 +112,10 @@ const ExecuteIQVideo = lazy(() => import("./pages/ExecuteIQVideo"));
 const ROICalculator = lazy(() => import("./pages/ROICalculator"));
 const AgilityAssessment = lazy(() => import("./pages/AgilityAssessment"));
 const BoardExport = lazy(() => import("./pages/BoardExport"));
-const SandboxDemo = lazy(() => import("./pages/SandboxDemo"));
 const VideoLanding = lazy(() => import("./pages/VideoLanding"));
 const PlaybookManagement = lazy(() => import("./pages/PlaybookManagement"));
 const TaskManagement = lazy(() => import("./pages/TaskManagement"));
 const StakeholderManagement = lazy(() => import("./pages/StakeholderManagement"));
-const PilotDemo = lazy(() => import("./pages/PilotDemo"));
-const LiveActivationCenter = lazy(() => import("./pages/LiveActivationCenter"));
-const KeynoteDemo = lazy(() => import("./pages/KeynoteDemo"));
 const RoleExperience = lazy(() => import("./pages/RoleExperience"));
 const IndustryExperience = lazy(() => import("./pages/IndustryExperience"));
 
@@ -348,7 +336,7 @@ function Router() {
         <Route path="/practice-drills/:drillId/live" component={LiveDrillExecution} />
         <Route path="/practice-drills" component={PracticeDrills} />
         <Route path="/crisis-exposure-matrix" component={CrisisExposureMatrix} />
-        <Route path="/simulation-studio" component={SimulationStudio} />
+        {renderRedirects(["/simulation-studio"], "/try-demo")}
         <Route path="/execution-learning" component={ExecutionLearningDashboard} />
         {renderRoutes(["/playbook-readiness", "/playbook-audit"], PlaybookReadinessAudit)}
         <Route path="/future-gym" component={FutureGym} />
@@ -373,8 +361,7 @@ function Router() {
           "/executive-demo", "/hybrid-demo", "/executive-demo-walkthrough"
         ], TryDemo)}
         <Route path="/board-export" component={BoardExport} />
-        <Route path="/sandbox-demo" component={SandboxDemo} />
-        <Route path="/pilot-demo" component={PilotDemo} />
+        {renderRedirects(["/sandbox-demo", "/pilot-demo"], "/try-demo")}
         <Route path="/incident-analyzer" component={IncidentAnalyzer} />
         <Route path="/readiness-assessment" component={ReadinessAssessment} />
         {renderRoutes(["/video", "/cinematic", "/sizzle", "/2-minute", "/spots", "/30-second", "/brand-films"], VideoLanding)}
@@ -385,13 +372,13 @@ function Router() {
         <Route path="/integrations-legacy" component={IntegrationsPage} />
 
         {/* Live Activation & Interactive Demos */}
-        {renderRoutes(["/activation", "/demo/activation"], LiveActivationCenter)}
+        {renderRedirects(["/activation", "/demo/activation"], "/try-demo")}
         {renderRoutes(["/role-selector", "/demo/role-selector"], RoleSelector)}
-        {renderRoutes([
+        {renderRedirects([
           "/demo/live-activation", "/demo/ransomware", "/demo/ma-integration",
           "/demo/product-launch", "/demo/supplier-crisis", "/demo/competitive-response",
           "/demo/regulatory-crisis", "/demo/customer-crisis"
-        ], DemoLiveActivation)}
+        ], "/try-demo")}
 
         {/* Approval Pages */}
         <Route path="/approval-success" component={lazy(() => import('./pages/ApprovalSuccess'))} />
@@ -408,17 +395,14 @@ function Router() {
         <Route path="/lvmh-demo" component={LVMHMarketEntryDemo} />
         <Route path="/shein-demo" component={SHEINTrendDemo} />
         <Route path="/spacex-demo" component={SpaceXLaunchDemo} />
-        {renderRoutes(["/executive-simulation", "/simulation-demo"], ExecutiveSimulationDemo)}
+        {renderRedirects(["/executive-simulation", "/simulation-demo"], "/try-demo")}
         <Route path="/platform-overview" component={PlatformOverview} />
-        {renderRoutes(["/product-tour", "/video-tour"], ProductTour)}
+        {renderRedirects(["/product-tour", "/video-tour"], "/try-demo")}
         {renderRoutes(["/investor-presentation", "/pitch-deck"], InvestorPresentation)}
-        <Route path="/investor-demo" component={InvestorDemo} />
-        <Route path="/customer-demo" component={CustomerDemo} />
-        <Route path="/deal-risk-demo" component={DealRiskDemo} />
+        {renderRedirects(["/investor-demo", "/customer-demo", "/deal-risk-demo"], "/try-demo")}
         <Route path="/investor-resources" component={InvestorResources} />
         {renderRoutes(["/roadshow-resources", "/roadshow"], RoadshowResources)}
-        <Route path="/demo-gallery" component={DemoGallery} />
-        {renderRoutes(["/keynote", "/trade-show-demo"], KeynoteDemo)}
+        {renderRedirects(["/demo-gallery", "/keynote", "/trade-show-demo"], "/try-demo")}
 
         {/* Customer Experience */}
         {renderRoutes(["/north-star", "/customer-journey"], CustomerJourney)}

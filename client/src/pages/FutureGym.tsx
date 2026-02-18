@@ -68,7 +68,7 @@ export default function FutureGym() {
   };
 
   const handleStartExercise = (scenario: typeof trainingScenarios[0]) => {
-    setLocation('/executive-simulation');
+    setLocation('/try-demo');
     toast({
       title: `Starting: ${scenario.name}`,
       description: `${scenario.difficulty} level exercise - ${scenario.duration}`,

@@ -75,11 +75,7 @@ export default function StandardNav() {
     {
       heading: "Live Demos",
       links: [
-        { label: "Try Demo", path: "/try-demo", icon: Rocket, description: "Experience the full platform" },
-        { label: "Industry Demos", path: "/industry-demos", icon: Building, description: "Industry-specific scenarios" },
-        { label: "Executive Simulation", path: "/executive-simulation", icon: Users, description: "C-suite decision experience" },
-        { label: "Live Activation", path: "/demo/live-activation", icon: Zap, description: "Real-time trigger response" },
-        { label: "Keynote Mode", path: "/keynote", icon: Presentation, description: "Tradeshow presentation" },
+        { label: "Try Demo", path: "/try-demo", icon: Rocket, description: "Full trigger-to-execution experience" },
       ],
     },
   ];

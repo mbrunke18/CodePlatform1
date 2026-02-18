@@ -880,7 +880,7 @@ export default function QuickDemoPage() {
                         <Button
                           className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white py-6 text-lg font-semibold"
                           onClick={() => {
-                            setLocation('/pilot-demo');
+                            setLocation('/try-demo');
                             window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
                           }}
                         >

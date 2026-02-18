@@ -434,7 +434,7 @@ export default function Dashboard() {
                   <CardTitle className="text-base">Quick Actions</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2">
-                  <Link href="/demo/live-activation">
+                  <Link href="/try-demo">
                     <Button variant="outline" className="w-full justify-start h-auto py-3" data-testid="button-run-demo">
                       <div className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mr-3">
                         <Zap className="h-4 w-4 text-blue-600 dark:text-blue-400" />

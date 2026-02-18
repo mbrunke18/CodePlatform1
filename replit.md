@@ -75,6 +75,7 @@ ExecuteIQ is built around the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE
   - **Practice Drills**: Added Drill Scoring Breakdown (5 criteria with progress bars) and Team Performance Comparison (4 teams with trend indicators)
   - **Pricing**: Added comprehensive Feature Comparison Matrix (18 features across 6 categories comparing Enterprise/Enterprise Plus/Global tiers)
   - **Stakeholder Management**: Added Engagement Analytics (response time, reach, participation), Communication Timeline (5 recent events), and RACI Matrix visualization (6 stakeholders × 4 playbooks)
+- **Demo consolidation**: Consolidated 22+ demo pages into one primary "Try Demo" path. Nav "Live Demos" reduced from 5 links to 1 ("Try Demo"). Footer "Experience" cleaned up (removed "Ultimate Demo"). Added "See It In Your Industry" section at bottom of TryDemo with 9 industry scenario cards. Redirected 15+ legacy demo routes (investor-demo, customer-demo, keynote, executive-simulation, sandbox-demo, pilot-demo, demo-gallery, deal-risk-demo, live-activation, etc.) to /try-demo. Industry-specific demos (luxury, financial, pharma, manufacturing, retail, energy, lvmh, shein, spacex) remain accessible from TryDemo page. Removed unused lazy imports from App.tsx.
 
 ## External Dependencies
 - **AI Services**: OpenAI GPT-4o
