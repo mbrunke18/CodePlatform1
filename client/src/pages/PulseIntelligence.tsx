@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { useQuery } from '@tanstack/react-query';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Link } from 'wouter';
+import OnboardingTrigger from '@/components/onboarding/OnboardingTrigger';
 import { 
   Activity, 
   TrendingUp, 
@@ -191,6 +192,7 @@ export default function PulseIntelligence() {
                   <h1 className="text-2xl font-bold text-white tracking-tight">Signal-to-Action Intelligence</h1>
                   <p className="text-slate-200 text-sm">AI-powered threat detection, analysis, and strategic response orchestration</p>
                 </div>
+                <OnboardingTrigger pageId="pulse-intelligence" autoStart={true} className="bg-white/10 border-white/30 text-white hover:bg-white/20" />
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/30 rounded-full">
