@@ -632,6 +632,38 @@ export default function ReadinessAssessment() {
               </Badge>
             </div>
 
+            <div className="mb-8">
+              <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <BarChart3 className="h-5 w-5 text-blue-400" />
+                Industry Benchmark Comparison
+              </h2>
+              <Card className={`bg-slate-900/80 border ${domainConfig.border}`}>
+                <CardContent className="p-6 space-y-5">
+                  {[
+                    { label: companyName || "Your Score", value: result.score, color: domainConfig.bg },
+                    { label: "Fortune 500 Average", value: selectedDomain === "offense" ? 62 : selectedDomain === "defense" ? 54 : 48, color: "bg-slate-500" },
+                    { label: "ExecuteIQ Clients", value: selectedDomain === "offense" ? 84 : selectedDomain === "defense" ? 78 : 75, color: "bg-teal-500" },
+                  ].map((row) => (
+                    <div key={row.label}>
+                      <div className="flex items-center justify-between text-sm mb-1.5">
+                        <span className="text-slate-300 font-medium">{row.label}</span>
+                        <span className="text-white font-bold">{row.value}/100</span>
+                      </div>
+                      <div className="h-3 bg-slate-800 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full rounded-full ${row.color} transition-all duration-700`}
+                          style={{ width: `${row.value}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                  <p className="text-sm text-teal-400 font-medium pt-2 border-t border-slate-700/50">
+                    ExecuteIQ clients score {Math.round((((selectedDomain === "offense" ? 84 : selectedDomain === "defense" ? 78 : 75) / (selectedDomain === "offense" ? 62 : selectedDomain === "defense" ? 54 : 48)) - 1) * 100)}% higher than Fortune 500 average
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+
             <Card className="bg-slate-900/80 border border-slate-700 mb-8">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3">
@@ -663,6 +695,54 @@ export default function ReadinessAssessment() {
               </div>
             )}
 
+            {result.gaps.length > 0 && (
+              <div className="mb-8">
+                <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                  <Layers className={`h-5 w-5 ${domainConfig.textLight}`} />
+                  How ExecuteIQ Closes These Gaps
+                </h2>
+                <Card className={`bg-gradient-to-br from-slate-900 via-slate-900/95 to-slate-800 border ${domainConfig.border} overflow-hidden`}>
+                  <CardContent className="p-6">
+                    <div className="space-y-5">
+                      {[
+                        {
+                          step: "1",
+                          title: `IDENTIFY — Pre-built playbooks for ${domainConfig.label.toLowerCase()}`,
+                          description: `${domainConfig.playbooks} ready to deploy across ${domainConfig.categories}. No more building from scratch — activate proven response frameworks in minutes.`,
+                          icon: Target,
+                        },
+                        {
+                          step: "2",
+                          title: "DETECT — AI-powered trigger monitoring",
+                          description: "Continuous signal scanning across news, regulatory filings, competitor moves, and internal metrics. Get alerted before situations escalate.",
+                          icon: TrendingUp,
+                        },
+                        {
+                          step: "3",
+                          title: "EXECUTE — 12-minute coordinated response",
+                          description: "From trigger detection to full team activation in under 12 minutes. Automated role assignment, stakeholder notification, and decision escalation.",
+                          icon: Clock,
+                        },
+                      ].map((item) => {
+                        const StepIcon = item.icon;
+                        return (
+                          <div key={item.step} className={`flex items-start gap-4 p-4 rounded-xl bg-slate-800/50 border ${domainConfig.border}`}>
+                            <div className={`w-10 h-10 rounded-lg ${domainConfig.bgLight} flex items-center justify-center flex-shrink-0`}>
+                              <StepIcon className={`h-5 w-5 ${domainConfig.textLight}`} />
+                            </div>
+                            <div>
+                              <h3 className={`font-bold ${domainConfig.textLight} text-sm tracking-wide`}>{item.title}</h3>
+                              <p className="text-slate-400 text-sm mt-1 leading-relaxed">{item.description}</p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            )}
+
             {result.recommendations.length > 0 && (
               <div className="mb-12">
                 <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
@@ -682,7 +762,22 @@ export default function ReadinessAssessment() {
               </div>
             )}
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Card className={`bg-gradient-to-r from-slate-900 via-slate-800/80 to-slate-900 border ${domainConfig.border} mb-8 overflow-hidden`}>
+              <CardContent className="p-8 text-center">
+                <h2 className="text-2xl font-bold text-white mb-3 flex items-center justify-center gap-2">
+                  <Rocket className={`h-6 w-6 ${domainConfig.textLight}`} />
+                  Your Next Step
+                </h2>
+                <p className="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
+                  Based on your score of <span className={`font-bold ${domainConfig.text}`}>{result.score}/100</span>,{" "}
+                  {result.score < 60
+                    ? `we recommend starting with our Founding Partner Pilot — a guided 6-week engagement to close your most critical ${domainConfig.label.toLowerCase()} gaps with dedicated support.`
+                    : `we recommend starting with our playbook library — activate ${domainConfig.playbooks.toLowerCase()} for ${domainConfig.label.toLowerCase()} and begin building execution muscle immediately.`}
+                </p>
+              </CardContent>
+            </Card>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
               <Link href="/incident-analyzer">
                 <Button
                   size="lg"
@@ -690,6 +785,15 @@ export default function ReadinessAssessment() {
                 >
                   Build Your Playbooks
                   <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="/roi-calculator">
+                <Button
+                  size="lg"
+                  className="text-lg px-10 py-7 bg-teal-600 hover:bg-teal-700 text-white shadow-lg shadow-teal-500/25"
+                >
+                  <DollarSign className="mr-2 h-5 w-5" />
+                  Calculate Your ROI
                 </Button>
               </Link>
               <Link href="/playbooks">

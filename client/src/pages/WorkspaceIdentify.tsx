@@ -192,6 +192,62 @@ export default function WorkspaceIdentify() {
             ))}
           </div>
 
+          {/* Recent Playbook Activity */}
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Recent Playbook Activity</h2>
+          <div className="space-y-3 mb-8">
+            <Card className="hover:shadow-md transition-shadow border-l-4 border-l-emerald-500">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-4">
+                  <div className="p-2 rounded-lg bg-emerald-500/10">
+                    <BookOpen className="h-5 w-5 text-emerald-500" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h4 className="font-semibold text-slate-900 dark:text-white">M&A Integration Playbook #12</h4>
+                      <Badge className="bg-emerald-500/20 text-emerald-600 border-emerald-500/30">Active</Badge>
+                    </div>
+                    <p className="text-sm text-slate-400 dark:text-slate-300 mt-0.5">Updated 2 hours ago by Sarah Chen</p>
+                  </div>
+                  <Clock className="h-4 w-4 text-slate-400 dark:text-slate-500 flex-shrink-0" />
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="hover:shadow-md transition-shadow border-l-4 border-l-red-500">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-4">
+                  <div className="p-2 rounded-lg bg-red-500/10">
+                    <Shield className="h-5 w-5 text-red-500" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h4 className="font-semibold text-slate-900 dark:text-white">Crisis Response Playbook #31</h4>
+                      <Badge className="bg-red-500/20 text-red-600 border-red-500/30">Triggered</Badge>
+                    </div>
+                    <p className="text-sm text-slate-400 dark:text-slate-300 mt-0.5">Activated Feb 3 via automated trigger</p>
+                  </div>
+                  <Clock className="h-4 w-4 text-slate-400 dark:text-slate-500 flex-shrink-0" />
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="hover:shadow-md transition-shadow border-l-4 border-l-amber-500">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-4">
+                  <div className="p-2 rounded-lg bg-amber-500/10">
+                    <Rocket className="h-5 w-5 text-amber-500" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h4 className="font-semibold text-slate-900 dark:text-white">Product Launch Playbook #45</h4>
+                      <Badge className="bg-amber-500/20 text-amber-600 border-amber-500/30">In Review</Badge>
+                    </div>
+                    <p className="text-sm text-slate-400 dark:text-slate-300 mt-0.5">Draft review pending from 3 stakeholders</p>
+                  </div>
+                  <Users className="h-4 w-4 text-slate-400 dark:text-slate-500 flex-shrink-0" />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
           {/* Workspace Tools Grid */}
           <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">IDENTIFY Tools</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">

@@ -16,8 +16,11 @@ import {
   AlertTriangle,
   TrendingUp,
   Award,
-  Activity
+  Activity,
+  ArrowUp,
+  Minus
 } from 'lucide-react';
+import { Progress } from '@/components/ui/progress';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -587,6 +590,108 @@ export default function PracticeDrills() {
                     </div>
                   </div>
                 )}
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Target className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  Drill Scoring Breakdown
+                </CardTitle>
+                <CardDescription>Detailed performance across key response dimensions</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-5">
+                  {[
+                    { label: "Response Time", score: 92, description: "How quickly stakeholders acknowledged" },
+                    { label: "Task Completion", score: 87, description: "Percentage of tasks completed on time" },
+                    { label: "Communication", score: 78, description: "Effectiveness of cross-team coordination" },
+                    { label: "Decision Quality", score: 85, description: "Accuracy of decisions under pressure" },
+                    { label: "Recovery", score: 91, description: "Speed of return to normal operations" },
+                  ].map((criteria) => (
+                    <div key={criteria.label} className="space-y-1.5">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <span className="text-sm font-medium">{criteria.label}</span>
+                          <span className="text-xs text-muted-foreground ml-2">— {criteria.description}</span>
+                        </div>
+                        <span className="text-sm font-bold">{criteria.score}/100</span>
+                      </div>
+                      <Progress value={criteria.score} className="h-2" />
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 pt-4 border-t">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Award className="h-5 w-5 text-amber-500" />
+                      <span className="font-semibold">Overall Average</span>
+                    </div>
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                      {Math.round((92 + 87 + 78 + 85 + 91) / 5)}/100
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Users className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                  Team Performance Comparison
+                </CardTitle>
+                <CardDescription>Cross-team drill performance and readiness trends</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  {[
+                    { team: "Security Operations", passRate: 94, avgTime: 10.2, trend: "up" as const },
+                    { team: "Legal & Compliance", passRate: 88, avgTime: 13.8, trend: "stable" as const },
+                    { team: "Executive Leadership", passRate: 82, avgTime: 15.1, trend: "up" as const },
+                    { team: "IT Infrastructure", passRate: 91, avgTime: 11.4, trend: "up" as const },
+                  ].map((item) => (
+                    <div
+                      key={item.team}
+                      className="flex items-center justify-between p-4 rounded-lg border bg-card hover:bg-muted/50 transition-colors"
+                    >
+                      <div className="flex-1">
+                        <div className="font-medium">{item.team}</div>
+                      </div>
+                      <div className="flex items-center gap-6 text-sm">
+                        <div className="text-center">
+                          <div className="text-muted-foreground text-xs">Pass Rate</div>
+                          <div className="font-bold">{item.passRate}%</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-muted-foreground text-xs">Avg Time</div>
+                          <div className="font-bold">{item.avgTime} min</div>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          {item.trend === "up" && (
+                            <Badge variant="outline" className="text-green-600 border-green-300 dark:border-green-700 bg-green-50 dark:bg-green-950/30">
+                              <ArrowUp className="h-3 w-3 mr-1" />
+                              Up
+                            </Badge>
+                          )}
+                          {item.trend === "stable" && (
+                            <Badge variant="outline" className="text-amber-600 border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-950/30">
+                              <Minus className="h-3 w-3 mr-1" />
+                              Stable
+                            </Badge>
+                          )}
+                          {item.trend === "down" && (
+                            <Badge variant="outline" className="text-red-600 border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-950/30">
+                              <TrendingUp className="h-3 w-3 mr-1 rotate-180" />
+                              Down
+                            </Badge>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </CardContent>
             </Card>
           </TabsContent>

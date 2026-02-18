@@ -330,6 +330,75 @@ export default function InstitutionalMemory() {
         </Card>
       </div>
 
+      <div className="grid gap-4 md:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <BarChart3 className="h-5 w-5 text-blue-500" />
+              Execution Performance Trend
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-end gap-3 h-40 mb-4">
+              {[
+                { month: 'Sep', value: 34 },
+                { month: 'Oct', value: 28 },
+                { month: 'Nov', value: 22 },
+                { month: 'Dec', value: 18 },
+                { month: 'Jan', value: 14 },
+                { month: 'Feb', value: 12 },
+              ].map((d) => (
+                <div key={d.month} className="flex-1 flex flex-col items-center gap-1">
+                  <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">{d.value}m</span>
+                  <div
+                    className="w-full rounded-t-md bg-gradient-to-t from-blue-600 to-blue-400 dark:from-blue-500 dark:to-blue-300 transition-all"
+                    style={{ height: `${(d.value / 34) * 100}%` }}
+                  />
+                  <span className="text-xs text-muted-foreground">{d.month}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 rounded-lg p-3">
+              <TrendingUp className="h-4 w-4 text-emerald-600" />
+              <span className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">67% improvement in average execution time over 6 months</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <BookOpen className="h-5 w-5 text-purple-500" />
+              Playbooks Improved From Learnings
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              {[
+                { name: 'M&A Day 1 Integration (#12)', improvement: 'Added 5-tier stakeholder mapping', version: 'v3 → v4', date: 'Jan 28' },
+                { name: 'Ransomware Response (#31)', improvement: 'Added VPN anomaly detection trigger', version: 'v2 → v3', date: 'Feb 5' },
+                { name: 'Competitive Counter (#45)', improvement: 'Added patent monitoring signal', version: 'v1 → v2', date: 'Feb 10' },
+                { name: 'GDPR Compliance (#67)', improvement: 'Staggered notification timing', version: 'v2 → v3', date: 'Jan 18' },
+              ].map((item) => (
+                <div key={item.name} className="flex items-center justify-between border rounded-lg p-3 bg-slate-50 dark:bg-slate-800/50">
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-slate-900 dark:text-slate-100 truncate">{item.name}</p>
+                    <p className="text-xs text-muted-foreground">{item.improvement}</p>
+                  </div>
+                  <div className="flex items-center gap-2 ml-3 shrink-0">
+                    <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300 text-xs">{item.version}</Badge>
+                    <span className="text-xs text-muted-foreground flex items-center gap-1">
+                      <Clock className="h-3 w-3" />
+                      {item.date}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
       <Tabs defaultValue="outcomes" className="space-y-4" onValueChange={setActiveTab}>
         <TabsList data-testid="tabs-memory-sections">
           <TabsTrigger value="outcomes" data-testid="tab-outcomes">Decision Outcomes</TabsTrigger>

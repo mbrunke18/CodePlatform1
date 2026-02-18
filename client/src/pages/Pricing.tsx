@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
   Check,
+  X,
   ArrowRight,
   TrendingUp,
   Shield,
@@ -333,6 +334,88 @@ export default function Pricing() {
               </CardContent>
             </Card>
           </div>
+
+          {/* Detailed Feature Comparison Matrix */}
+          <Card className="mb-12 bg-white dark:bg-slate-900 border-2 overflow-hidden">
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl text-slate-900 dark:text-white">Detailed Feature Comparison</CardTitle>
+            </CardHeader>
+            <CardContent className="p-0">
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b-2 border-slate-200 dark:border-slate-700">
+                      <th className="text-left p-4 font-semibold text-slate-900 dark:text-white w-[30%]">Feature</th>
+                      <th className="text-center p-4 font-semibold text-blue-600 dark:text-blue-400">Enterprise ($250K)</th>
+                      <th className="text-center p-4 font-semibold text-purple-600 dark:text-purple-400">Enterprise Plus ($450K)</th>
+                      <th className="text-center p-4 font-semibold text-slate-700 dark:text-slate-300">Global (Custom)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { category: "Core Platform", rows: [
+                        { feature: "Full Platform Access", values: ["check", "check", "check"] },
+                        { feature: "AI Intelligence Suite", values: ["check", "check", "check"] },
+                        { feature: "24/7 Monitoring", values: ["check", "check", "check"] },
+                      ]},
+                      { category: "Playbooks", rows: [
+                        { feature: "Playbook Library", values: ["166", "166", "166+Custom"] },
+                        { feature: "Custom Playbooks", values: ["5", "Unlimited", "Unlimited"] },
+                        { feature: "Playbook Versioning", values: ["check", "check", "check"] },
+                      ]},
+                      { category: "Execution", rows: [
+                        { feature: "Max Stakeholders", values: ["50", "200", "Unlimited"] },
+                        { feature: "Concurrent Executions", values: ["3", "10", "Unlimited"] },
+                        { feature: "Practice Drills", values: ["Monthly", "Weekly", "Daily"] },
+                      ]},
+                      { category: "Intelligence", rows: [
+                        { feature: "AI Signal Detection", values: ["check", "check", "check"] },
+                        { feature: "Pattern Analysis", values: ["Basic", "Advanced", "Enterprise"] },
+                        { feature: "Board Briefings", values: ["Quarterly", "Monthly", "On-demand"] },
+                      ]},
+                      { category: "Support", rows: [
+                        { feature: "SLA", values: ["99.9%", "99.95%", "99.99%"] },
+                        { feature: "Support Response", values: ["24h", "2h", "1h"] },
+                        { feature: "Dedicated CSM", values: ["check", "check", "✓ + Account Team"] },
+                      ]},
+                      { category: "Integration", rows: [
+                        { feature: "Enterprise Integrations", values: ["5", "Unlimited", "Unlimited"] },
+                        { feature: "API Access", values: ["Standard", "Premium", "Custom"] },
+                        { feature: "On-Premise Option", values: ["x", "x", "check"] },
+                      ]},
+                    ].map((group, gi) => (
+                      <>{/* Fragment for group */}
+                        <tr key={`cat-${gi}`} className="bg-slate-100 dark:bg-slate-800">
+                          <td colSpan={4} className="p-3 font-semibold text-slate-900 dark:text-white text-xs uppercase tracking-wider">
+                            {group.category}
+                          </td>
+                        </tr>
+                        {group.rows.map((row, ri) => (
+                          <tr
+                            key={`row-${gi}-${ri}`}
+                            className={ri % 2 === 0 ? "bg-white dark:bg-slate-900" : "bg-slate-50 dark:bg-slate-900/50"}
+                          >
+                            <td className="p-4 text-slate-700 dark:text-slate-300">{row.feature}</td>
+                            {row.values.map((val, vi) => (
+                              <td key={vi} className="p-4 text-center">
+                                {val === "check" ? (
+                                  <Check className="h-5 w-5 text-green-600 mx-auto" />
+                                ) : val === "x" ? (
+                                  <X className="h-5 w-5 text-red-400 mx-auto" />
+                                ) : (
+                                  <span className="text-slate-900 dark:text-slate-200 font-medium">{val}</span>
+                                )}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Add-On Modules */}
           <Card className="max-w-5xl mx-auto bg-white dark:bg-slate-900 border-2">

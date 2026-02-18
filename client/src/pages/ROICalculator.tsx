@@ -19,9 +19,12 @@ import {
   Target,
   Shield,
   Download,
-  Send
+  Send,
+  CheckCircle2,
+  BarChart3
 } from 'lucide-react';
 import { useLocation } from 'wouter';
+import { useToast } from '@/hooks/use-toast';
 import StandardNav from '@/components/layout/StandardNav';
 import Footer from '@/components/layout/Footer';
 
@@ -55,6 +58,7 @@ const COMPANY_SIZES: Record<string, { employees: number; label: string }> = {
 
 export default function ROICalculator() {
   const [, setLocation] = useLocation();
+  const { toast } = useToast();
   
   const [inputs, setInputs] = useState<ROIInputs>({
     companySize: 'enterprise',
@@ -380,6 +384,59 @@ export default function ROICalculator() {
                 </CardContent>
               </Card>
 
+              {/* Executive Summary */}
+              <Card className="bg-slate-900/50 border-slate-800">
+                <CardHeader>
+                  <CardTitle className="text-white flex items-center gap-2">
+                    <Target className="h-5 w-5 text-cyan-400" />
+                    Your Custom ROI Analysis
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-slate-300 leading-relaxed">
+                    Based on your profile as a {COMPANY_SIZES[inputs.companySize]?.label} organization in the {INDUSTRY_MULTIPLIERS[inputs.industry]?.label} sector, ExecuteIQ can deliver an estimated {formatCurrency(calculations.totalAnnualValue)} in annual value by reducing strategic response time from {inputs.avgResponseTimeHours} hours to under 2 hours — a {calculations.speedImprovement}X improvement in execution velocity that directly impacts competitive positioning and risk exposure.
+                  </p>
+
+                  <div className="space-y-3 mt-4">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
+                      <span className="text-slate-200">Save {formatNumber(Math.round(calculations.timeSavedHoursPerYear))} executive hours annually — equivalent to {Math.round(calculations.timeSavedHoursPerYear / 2080)} full-time senior leaders redeployed to growth initiatives</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
+                      <span className="text-slate-200">Protect {formatCurrency(calculations.revenueProtected)} in at-risk revenue through faster competitive and market response</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
+                      <span className="text-slate-200">Achieve full payback in {calculations.paybackMonths.toFixed(1)} months with a {calculations.roi.toFixed(0)}% first-year ROI</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
+                      <span className="text-slate-200">Reduce compliance exposure by {formatCurrency(calculations.complianceRiskReduction)} through automated regulatory response coordination</span>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-3 pt-4 border-t border-slate-700">
+                    <Button
+                      variant="outline"
+                      className="flex-1 border-slate-600 text-slate-200 hover:bg-slate-800"
+                      onClick={() => toast({ title: "Coming Soon", description: "Report download will be available shortly." })}
+                    >
+                      <Download className="h-4 w-4 mr-2" />
+                      Download Report
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="flex-1 border-slate-600 text-slate-200 hover:bg-slate-800"
+                      onClick={() => toast({ title: "Coming Soon", description: "Share functionality will be available shortly." })}
+                    >
+                      <Send className="h-4 w-4 mr-2" />
+                      Share Results
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+
               {/* Speed Improvement */}
               <Card className="bg-slate-900/50 border-slate-800">
                 <CardContent className="p-6">
@@ -472,12 +529,100 @@ export default function ROICalculator() {
                 </CardContent>
               </Card>
 
-              {/* Disclaimer */}
-              <div className="text-xs text-slate-300 text-center">
+              {/* Industry Benchmarks */}
+              <Card className="bg-slate-900/50 border-slate-800">
+                <CardHeader>
+                  <CardTitle className="text-white flex items-center gap-2">
+                    <BarChart3 className="h-5 w-5 text-purple-400" />
+                    Industry Benchmarks
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b border-slate-700">
+                          <th className="text-left text-slate-400 pb-3 pr-4">Metric</th>
+                          <th className="text-center text-slate-400 pb-3 px-2">Your Org</th>
+                          <th className="text-center text-slate-400 pb-3 px-2">Industry Avg</th>
+                          <th className="text-center text-green-400 pb-3 pl-2">ExecuteIQ Target</th>
+                        </tr>
+                      </thead>
+                      <tbody className="text-slate-200">
+                        <tr className="border-b border-slate-800">
+                          <td className="py-3 pr-4 text-white">Avg Response Time</td>
+                          <td className="py-3 px-2 text-center text-red-400 font-semibold">{inputs.avgResponseTimeHours}h</td>
+                          <td className="py-3 px-2 text-center text-amber-400">72h</td>
+                          <td className="py-3 pl-2 text-center text-green-400 font-semibold">~2h</td>
+                        </tr>
+                        <tr className="border-b border-slate-800">
+                          <td className="py-3 pr-4 text-white">Coordination Cost</td>
+                          <td className="py-3 px-2 text-center text-red-400 font-semibold">{formatCurrency(calculations.currentCoordinationCostPerYear)}</td>
+                          <td className="py-3 px-2 text-center text-amber-400">{formatCurrency(2400000)}</td>
+                          <td className="py-3 pl-2 text-center text-green-400 font-semibold">{formatCurrency(calculations.mCoordinationCostPerYear)}</td>
+                        </tr>
+                        <tr className="border-b border-slate-800">
+                          <td className="py-3 pr-4 text-white">Events Per Year</td>
+                          <td className="py-3 px-2 text-center font-semibold">{inputs.strategicEventsPerYear}</td>
+                          <td className="py-3 px-2 text-center text-amber-400">18</td>
+                          <td className="py-3 pl-2 text-center text-green-400 font-semibold">All covered</td>
+                        </tr>
+                        <tr>
+                          <td className="py-3 pr-4 text-white">Executive Hours Wasted</td>
+                          <td className="py-3 px-2 text-center text-red-400 font-semibold">{formatNumber(Math.round(calculations.currentTotalExecutiveHoursPerYear))}h</td>
+                          <td className="py-3 px-2 text-center text-amber-400">{formatNumber(10368)}h</td>
+                          <td className="py-3 pl-2 text-center text-green-400 font-semibold">{formatNumber(Math.round(calculations.mTotalExecutiveHoursPerYear))}h</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <div className="text-xs text-slate-400 text-center">
                 * Calculations are estimates based on industry benchmarks and your inputs.
                 Actual results may vary. Contact us for a detailed analysis.
               </div>
             </div>
+          </div>
+
+          {/* Bottom CTA Section */}
+          <div className="mt-16 max-w-4xl mx-auto">
+            <Card className="bg-gradient-to-r from-blue-950/80 via-indigo-950/80 to-purple-950/80 border-blue-500/30 overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-indigo-500/10 to-purple-500/5" />
+              <CardContent className="p-10 text-center relative z-10">
+                <h2 className="text-3xl font-bold text-white mb-3">
+                  Ready to See This in Action?
+                </h2>
+                <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
+                  Join our founding partner program and experience the strategic velocity difference firsthand.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8"
+                    onClick={() => setLocation('/contact')}
+                  >
+                    Start Your 90-Day Pilot
+                    <ArrowRight className="h-5 w-5 ml-2" />
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-blue-500/50 text-blue-300 hover:bg-blue-950/50 px-8"
+                    onClick={() => setLocation('/try-demo')}
+                  >
+                    Try the Live Demo
+                    <Zap className="h-5 w-5 ml-2" />
+                  </Button>
+                </div>
+
+                <p className="text-sm text-slate-400">
+                  Founding Partner Pilot: $75K, 100% credited to Year 1
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>

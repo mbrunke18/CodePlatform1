@@ -66,6 +66,15 @@ ExecuteIQ is built around the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE
 - **War Room consolidation**: Removed "War Room" from Platform nav. /war-room now redirects to /command-center. ExecuteIQ One™ (MissionControl) remains the primary hub, Command Center remains the live execution view.
 - **Homepage validation section**: Restored all 15 research quotes (IBM, Bain, BCG, McKinsey, Accenture, Forrester, Anthropic, OpenAI, Deloitte, Microsoft, Google Cloud, WEF, PwC, Gartner, IDC) with smart expandable layout—top 6 shown prominently, remaining 9 revealed via "See All 15 Research Findings" button. All 15 firm pills displayed. Closing tagline: "15 independent reports. One conclusion: ExecuteIQ is what they're describing."
 - **12-minute proof point**: Added visual timeline breakdown to HowItWorks page showing 7-step execution sequence (0:00 Trigger → 0:30 Playbook Match → 1:00 Notification → 3:00 Acknowledge → 5:00 Tasks Assigned → 8:00 Budget Released → 12:00 Full Execution). Uses vertical timeline with color-coded dots and gradient connector.
+- **Product depth enhancement (sales-readiness sweep)**: Comprehensive enhancements across 10+ pages for road-show readiness:
+  - **ROI Calculator**: Added executive summary with dynamic industry/size-aware copy, industry benchmarks comparison table, shareable results buttons, and full CTA section with Founding Partner Pilot promotion
+  - **Readiness Assessment**: Added industry benchmark comparison bars (Fortune 500 avg vs ExecuteIQ clients), "How ExecuteIQ Closes These Gaps" IDEA framework section, and personalized next-step CTA based on score
+  - **IDEA Workspace hubs (4 pages)**: WorkspaceIdentify added Recent Playbook Activity, WorkspaceDetect added Live Signal Feed with severity indicators, WorkspaceExecute added Active Executions with progress bars, WorkspaceAdvance added Recent Learnings with confidence bars
+  - **Institutional Memory**: Added Execution Performance Trend chart (6-month improvement visualization) and Playbooks Improved From Learnings tracker with version history
+  - **Board Briefings**: Added Decisions Requiring Board Action (priority-coded pending decisions) and AI-Generated Strategic Recommendations with confidence scores
+  - **Practice Drills**: Added Drill Scoring Breakdown (5 criteria with progress bars) and Team Performance Comparison (4 teams with trend indicators)
+  - **Pricing**: Added comprehensive Feature Comparison Matrix (18 features across 6 categories comparing Enterprise/Enterprise Plus/Global tiers)
+  - **Stakeholder Management**: Added Engagement Analytics (response time, reach, participation), Communication Timeline (5 recent events), and RACI Matrix visualization (6 stakeholders × 4 playbooks)
 
 ## External Dependencies
 - **AI Services**: OpenAI GPT-4o

@@ -3,6 +3,7 @@ import PageLayout from '@/components/layout/PageLayout';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
 import { 
   Compass, 
   Play,
@@ -18,7 +19,8 @@ import {
   Radar,
   TrendingUp,
   Zap,
-  CheckCircle
+  CheckCircle,
+  Calendar
 } from 'lucide-react';
 
 const workspaceTools = [
@@ -202,6 +204,55 @@ export default function WorkspaceExecute() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Active Executions */}
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Active Executions</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <Card className="border-l-4 border-l-poise-teal hover:shadow-lg transition-shadow">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="font-semibold text-slate-900 dark:text-white">M&A Integration — CloudTech Acquisition</h4>
+                  <Badge className="bg-poise-teal/20 text-poise-teal border-poise-teal/30">Active</Badge>
+                </div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-sm font-medium text-slate-900 dark:text-white">78%</span>
+                  <Progress value={78} className="flex-1 h-2" />
+                </div>
+                <div className="flex items-center gap-4 text-sm text-slate-400 dark:text-slate-300 mb-4">
+                  <span className="flex items-center gap-1"><CheckCircle className="h-3.5 w-3.5" /> 28 of 45 tasks</span>
+                  <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" /> 45 stakeholders</span>
+                  <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> Jan 28</span>
+                </div>
+                <Link href="/mission-control">
+                  <Button size="sm" variant="outline" className="border-poise-teal/50 text-poise-teal hover:bg-poise-teal/10">
+                    View Details <ChevronRight className="h-3.5 w-3.5 ml-1" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+            <Card className="border-l-4 border-l-amber-500 hover:shadow-lg transition-shadow">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="font-semibold text-slate-900 dark:text-white">Competitive Response — Market Counter-Strategy</h4>
+                  <Badge className="bg-amber-500/20 text-amber-600 border-amber-500/30">In Progress</Badge>
+                </div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-sm font-medium text-slate-900 dark:text-white">34%</span>
+                  <Progress value={34} className="flex-1 h-2" />
+                </div>
+                <div className="flex items-center gap-4 text-sm text-slate-400 dark:text-slate-300 mb-4">
+                  <span className="flex items-center gap-1"><CheckCircle className="h-3.5 w-3.5" /> 8 of 24 tasks</span>
+                  <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" /> 18 stakeholders</span>
+                  <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> Feb 15</span>
+                </div>
+                <Link href="/mission-control">
+                  <Button size="sm" variant="outline" className="border-amber-500/50 text-amber-600 hover:bg-amber-500/10">
+                    View Details <ChevronRight className="h-3.5 w-3.5 ml-1" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          </div>
 
           {/* Workspace Tools Grid */}
           <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">EXECUTE Tools</h2>

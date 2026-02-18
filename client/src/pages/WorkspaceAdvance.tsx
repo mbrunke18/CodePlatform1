@@ -3,6 +3,7 @@ import PageLayout from '@/components/layout/PageLayout';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
 import { 
   TrendingUp, 
   BookOpen,
@@ -203,6 +204,68 @@ export default function WorkspaceAdvance() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Recent Learnings */}
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Recent Learnings</h2>
+          <div className="space-y-3 mb-8">
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-4">
+                  <div className="p-2 rounded-lg bg-blue-500/10">
+                    <Lightbulb className="h-5 w-5 text-blue-500" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap mb-1">
+                      <h4 className="font-semibold text-slate-900 dark:text-white">5-tier stakeholder hierarchy reduced notification fatigue by 41%</h4>
+                      <Badge className="bg-blue-500/20 text-blue-600 border-blue-500/30">Pattern</Badge>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className="text-sm text-slate-400 dark:text-slate-300">Confidence: 89%</span>
+                      <Progress value={89} className="w-24 h-1.5" />
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-4">
+                  <div className="p-2 rounded-lg bg-emerald-500/10">
+                    <Brain className="h-5 w-5 text-emerald-500" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap mb-1">
+                      <h4 className="font-semibold text-slate-900 dark:text-white">Auto-isolation rules cut cyber incident damage by 78%</h4>
+                      <Badge className="bg-emerald-500/20 text-emerald-600 border-emerald-500/30">Automation</Badge>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className="text-sm text-slate-400 dark:text-slate-300">Confidence: 96%</span>
+                      <Progress value={96} className="w-24 h-1.5" />
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-4">
+                  <div className="p-2 rounded-lg bg-poise-gold/10">
+                    <BarChart3 className="h-5 w-5 text-poise-gold" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap mb-1">
+                      <h4 className="font-semibold text-slate-900 dark:text-white">Pre-approved budget thresholds accelerate response by 34%</h4>
+                      <Badge className="bg-poise-gold/20 text-poise-gold border-poise-gold/30">Financial</Badge>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className="text-sm text-slate-400 dark:text-slate-300">Confidence: 87%</span>
+                      <Progress value={87} className="w-24 h-1.5" />
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
           {/* Workspace Tools Grid */}
           <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">ADVANCE Tools</h2>

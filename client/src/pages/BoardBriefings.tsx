@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { FileText, Download, Calendar, CheckCircle, TrendingUp, Award } from 'lucide-react';
+import { FileText, Download, Calendar, CheckCircle, TrendingUp, Award, AlertTriangle, Brain, Target, Clock, Zap } from 'lucide-react';
 
 const demoBriefings = [
   {
@@ -260,6 +260,112 @@ export default function BoardBriefings() {
               ))}
             </div>
           )}
+        </CardContent>
+      </Card>
+
+      {/* Key Decisions Pending */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <AlertTriangle className="h-5 w-5 text-amber-500" />
+            Decisions Requiring Board Action
+          </CardTitle>
+          <CardDescription>Items pending executive approval or board vote</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-3">
+            {[
+              { title: 'Approve $6.2M Series B Extension', due: 'March 15', priority: 'High', status: 'Pending Vote' },
+              { title: 'APAC Market Entry Authorization', due: 'March 22', priority: 'Medium', status: 'Under Review' },
+              { title: 'AI Governance Policy Update', due: 'April 1', priority: 'High', status: 'Draft' },
+            ].map((decision) => (
+              <div
+                key={decision.title}
+                className={`border rounded-lg p-4 space-y-2 ${
+                  decision.priority === 'High'
+                    ? 'border-l-4 border-l-red-500'
+                    : 'border-l-4 border-l-amber-500'
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <h3 className="font-semibold text-slate-900 dark:text-slate-100">{decision.title}</h3>
+                  <Badge className={
+                    decision.status === 'Pending Vote' ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300' :
+                    decision.status === 'Under Review' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300' :
+                    'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300'
+                  }>{decision.status}</Badge>
+                </div>
+                <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  <span className="flex items-center gap-1">
+                    <Clock className="h-3.5 w-3.5" />
+                    Due: {decision.due}
+                  </span>
+                  <Badge variant="outline" className={
+                    decision.priority === 'High' ? 'border-red-400 text-red-600' : 'border-amber-400 text-amber-600'
+                  }>{decision.priority} Priority</Badge>
+                </div>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Strategic Recommendations */}
+      <Card>
+        <CardHeader>
+          <div className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2">
+              <Brain className="h-5 w-5 text-purple-500" />
+              AI-Generated Strategic Recommendations
+            </CardTitle>
+            <Badge className="bg-purple-600/20 text-purple-400 border border-purple-500/40 text-xs font-semibold">
+              ExecuteIQ Retrospect™
+            </Badge>
+          </div>
+          <CardDescription>Data-driven recommendations based on cross-functional intelligence analysis</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid gap-4 md:grid-cols-3">
+            {[
+              {
+                title: 'Accelerate EMEA Expansion',
+                description: 'Pipeline data suggests 44% QoQ growth. Recommend increasing GTM investment by 30% in Q2.',
+                confidence: 91,
+                icon: <TrendingUp className="h-5 w-5 text-blue-500" />,
+              },
+              {
+                title: 'Strengthen Supply Chain Redundancy',
+                description: 'Single-region dependency risk identified for 3 critical components. Recommend activating backup supplier framework.',
+                confidence: 87,
+                icon: <Target className="h-5 w-5 text-amber-500" />,
+              },
+              {
+                title: 'Increase Practice Drill Frequency',
+                description: 'Teams with monthly drills show 23% faster response times. Current cadence is quarterly.',
+                confidence: 94,
+                icon: <Zap className="h-5 w-5 text-emerald-500" />,
+              },
+            ].map((rec) => (
+              <Card key={rec.title} className="bg-gradient-to-br from-slate-50 to-purple-50 dark:from-slate-800/50 dark:to-purple-950/30 border-purple-200 dark:border-purple-800">
+                <CardContent className="pt-5 space-y-3">
+                  <div className="flex items-center gap-2">
+                    {rec.icon}
+                    <h3 className="font-semibold text-sm text-slate-900 dark:text-slate-100">{rec.title}</h3>
+                  </div>
+                  <p className="text-xs text-muted-foreground">{rec.description}</p>
+                  <div className="flex items-center gap-2">
+                    <div className="flex-1 bg-slate-200 dark:bg-slate-700 rounded-full h-1.5">
+                      <div
+                        className="bg-purple-500 h-1.5 rounded-full"
+                        style={{ width: `${rec.confidence}%` }}
+                      />
+                    </div>
+                    <span className="text-xs font-bold text-purple-600 dark:text-purple-400">{rec.confidence}%</span>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </CardContent>
       </Card>
 
