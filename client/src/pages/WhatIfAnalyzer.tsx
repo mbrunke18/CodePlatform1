@@ -333,55 +333,75 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
         </CardContent>
       </Card>
 
-      {result && (
+      {result && (() => {
+        const isNotRecommended = result.recommendation?.toLowerCase().includes('not recommended');
+        const isConditional = result.recommendation?.toLowerCase().includes('conditionally');
+        const isRecommended = !isNotRecommended && !isConditional;
+        const verdictConfig = isNotRecommended
+          ? { icon: XCircle, label: 'Not Recommended', color: 'red', bg: 'bg-red-50 dark:bg-red-900/20', border: 'border-red-200 dark:border-red-800', text: 'text-red-700 dark:text-red-300', iconColor: 'text-red-600', badgeBg: 'bg-red-600' }
+          : isConditional
+          ? { icon: AlertTriangle, label: 'Proceed with Caution', color: 'amber', bg: 'bg-amber-50 dark:bg-amber-900/20', border: 'border-amber-200 dark:border-amber-800', text: 'text-amber-700 dark:text-amber-300', iconColor: 'text-amber-600', badgeBg: 'bg-amber-600' }
+          : { icon: CheckCircle2, label: 'Recommended', color: 'green', bg: 'bg-green-50 dark:bg-green-900/20', border: 'border-green-200 dark:border-green-800', text: 'text-green-700 dark:text-green-300', iconColor: 'text-green-600', badgeBg: 'bg-green-600' };
+        const VerdictIcon = verdictConfig.icon;
+        return (
         <div className="space-y-6 animate-in fade-in duration-500">
-          <div className="text-center">
-            <Badge className="bg-blue-600 text-white px-4 py-1 text-sm">Analysis Complete</Badge>
-          </div>
 
-          <div className="grid md:grid-cols-3 gap-4">
-            <Card className="border-green-200 dark:border-green-800 bg-green-50/50 dark:bg-green-900/10">
-              <CardContent className="p-5 text-center">
-                <Clock className="h-6 w-6 text-green-600 mx-auto mb-2" />
-                <div className="text-xs font-semibold text-green-600 dark:text-green-400 uppercase tracking-wide mb-1">Original Response Time</div>
-                <div className="text-2xl font-bold text-green-700 dark:text-green-300">{result.original_time}</div>
-              </CardContent>
-            </Card>
-            <Card className="border-red-200 dark:border-red-800 bg-red-50/50 dark:bg-red-900/10">
-              <CardContent className="p-5 text-center">
-                <AlertTriangle className="h-6 w-6 text-red-600 mx-auto mb-2" />
-                <div className="text-xs font-semibold text-red-600 dark:text-red-400 uppercase tracking-wide mb-1">With This Change</div>
-                <div className="text-2xl font-bold text-red-700 dark:text-red-300">{result.modified_time}</div>
-              </CardContent>
-            </Card>
-            <Card className="border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-900/10">
-              <CardContent className="p-5 text-center">
-                <TrendingUp className="h-6 w-6 text-amber-600 mx-auto mb-2" />
-                <div className="text-xs font-semibold text-amber-600 dark:text-amber-400 uppercase tracking-wide mb-1">Net Impact</div>
-                <div className="text-2xl font-bold text-amber-700 dark:text-amber-300">{result.impact}</div>
-              </CardContent>
-            </Card>
-          </div>
-
-          <Card className={`${
-            result.recommendation?.includes('Not recommended') 
-              ? 'border-red-300 dark:border-red-700 bg-red-50/50 dark:bg-red-900/10'
-              : result.recommendation?.includes('Conditionally')
-              ? 'border-amber-300 dark:border-amber-700 bg-amber-50/50 dark:bg-amber-900/10'
-              : 'border-green-300 dark:border-green-700 bg-green-50/50 dark:bg-green-900/10'
-          }`}>
-            <CardContent className="p-5">
-              <div className="flex items-start gap-3">
-                {result.recommendation?.includes('Not recommended') ? (
-                  <XCircle className="h-6 w-6 text-red-600 mt-0.5 flex-shrink-0" />
-                ) : result.recommendation?.includes('Conditionally') ? (
-                  <AlertTriangle className="h-6 w-6 text-amber-600 mt-0.5 flex-shrink-0" />
-                ) : (
-                  <CheckCircle2 className="h-6 w-6 text-green-600 mt-0.5 flex-shrink-0" />
-                )}
+          <Card className={`${verdictConfig.border} ${verdictConfig.bg} border-2`}>
+            <CardContent className="p-6">
+              <div className="flex items-center gap-4 mb-4">
+                <div className={`p-3 rounded-xl ${verdictConfig.bg}`}>
+                  <VerdictIcon className={`h-8 w-8 ${verdictConfig.iconColor}`} />
+                </div>
                 <div>
-                  <div className="font-bold text-slate-800 dark:text-white text-lg mb-1">Recommendation</div>
-                  <p className="text-slate-600 dark:text-slate-300">{result.recommendation}</p>
+                  <Badge className={`${verdictConfig.badgeBg} text-white mb-1`}>{verdictConfig.label}</Badge>
+                  <h3 className="text-xl font-bold text-slate-800 dark:text-white">
+                    {isRecommended ? 'This change improves your execution speed'
+                      : isConditional ? 'This change requires careful planning'
+                      : 'This change would slow down your response'}
+                  </h3>
+                </div>
+              </div>
+              <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">{result.recommendation}</p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base flex items-center gap-2">
+                <Clock className="h-5 w-5 text-blue-600" />
+                Coordination Timeline Comparison
+              </CardTitle>
+              <CardDescription>How this change affects the time from trigger to full stakeholder coordination</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-32 text-sm font-medium text-slate-500 dark:text-slate-400 text-right flex-shrink-0">Current Playbook</div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3">
+                      <div className="flex-1 bg-green-100 dark:bg-green-900/30 rounded-full h-8 flex items-center px-4">
+                        <span className="text-sm font-bold text-green-700 dark:text-green-300">{result.original_time}</span>
+                      </div>
+                      <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0" />
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-32 text-sm font-medium text-slate-500 dark:text-slate-400 text-right flex-shrink-0">With This Change</div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3">
+                      <div className={`flex-1 ${isNotRecommended ? 'bg-red-100 dark:bg-red-900/30' : isConditional ? 'bg-amber-100 dark:bg-amber-900/30' : 'bg-green-100 dark:bg-green-900/30'} rounded-full h-8 flex items-center px-4`}>
+                        <span className={`text-sm font-bold ${isNotRecommended ? 'text-red-700 dark:text-red-300' : isConditional ? 'text-amber-700 dark:text-amber-300' : 'text-green-700 dark:text-green-300'}`}>{result.modified_time}</span>
+                      </div>
+                      {isNotRecommended ? <TrendingDown className="h-5 w-5 text-red-600 flex-shrink-0" /> : isConditional ? <AlertTriangle className="h-5 w-5 text-amber-600 flex-shrink-0" /> : <TrendingUp className="h-5 w-5 text-green-600 flex-shrink-0" />}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 pt-2 border-t border-slate-200 dark:border-slate-700">
+                  <div className="w-32 text-sm font-semibold text-slate-700 dark:text-slate-200 text-right flex-shrink-0">Net Impact</div>
+                  <div className="flex-1">
+                    <span className={`text-lg font-bold ${isNotRecommended ? 'text-red-600' : isConditional ? 'text-amber-600' : 'text-green-600'}`}>{result.impact}</span>
+                  </div>
                 </div>
               </div>
             </CardContent>
@@ -389,26 +409,76 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
 
           {result.risk_assessment && (
             <Card>
-              <CardContent className="p-5">
-                <div className="flex items-start gap-3">
-                  <Shield className="h-6 w-6 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <div className="font-bold text-slate-800 dark:text-white text-lg mb-1">Risk Assessment</div>
-                    <p className="text-slate-600 dark:text-slate-300">{result.risk_assessment}</p>
-                  </div>
-                </div>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-base flex items-center gap-2">
+                  <Shield className="h-5 w-5 text-blue-600" />
+                  What You Should Know
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">{result.risk_assessment}</p>
               </CardContent>
             </Card>
           )}
 
-          <div className="text-center pt-2">
-            <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">Want to model this scenario in more detail?</p>
-            <Button variant="outline" onClick={onSwitchToBuilder}>
-              <Layers className="h-4 w-4 mr-2" /> Open in Deep Scenario Builder
+          <Card className="border-teal-200 dark:border-teal-800 bg-gradient-to-br from-teal-50 to-white dark:from-teal-900/20 dark:to-slate-900">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base flex items-center gap-2">
+                <Zap className="h-5 w-5 text-teal-600" />
+                How ExecuteIQ Handles This
+              </CardTitle>
+              <CardDescription>
+                {isRecommended
+                  ? 'With this change in place, here is how ExecuteIQ orchestrates the response'
+                  : isConditional
+                  ? 'If you proceed with safeguards, ExecuteIQ can orchestrate the adjusted response'
+                  : 'Even without this change, ExecuteIQ keeps your current coordination at peak speed'}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid sm:grid-cols-3 gap-4">
+                <div className="flex gap-3 items-start">
+                  <div className="p-2 bg-teal-100 dark:bg-teal-900/30 rounded-lg flex-shrink-0">
+                    <Target className="h-4 w-4 text-teal-600" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-slate-800 dark:text-white">Auto-Detect Trigger</div>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">AI agents continuously monitor for this scenario pattern and activate the right playbook instantly</p>
+                  </div>
+                </div>
+                <div className="flex gap-3 items-start">
+                  <div className="p-2 bg-teal-100 dark:bg-teal-900/30 rounded-lg flex-shrink-0">
+                    <Users className="h-4 w-4 text-teal-600" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-slate-800 dark:text-white">Coordinate Stakeholders</div>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Notify 50-200+ stakeholders simultaneously with role-specific instructions and acknowledgment tracking</p>
+                  </div>
+                </div>
+                <div className="flex gap-3 items-start">
+                  <div className="p-2 bg-teal-100 dark:bg-teal-900/30 rounded-lg flex-shrink-0">
+                    <ArrowRight className="h-4 w-4 text-teal-600" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-slate-800 dark:text-white">Execute in {isRecommended ? (result.modified_time || result.original_time || '12 minutes') : (result.original_time || '12 minutes')}</div>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Pre-authorized budgets release, tasks assign, and documents stage — all within the coordination window</p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+            <Button onClick={onSwitchToBuilder} variant="outline" className="gap-2">
+              <Layers className="h-4 w-4" /> Build Detailed Scenario Model
+            </Button>
+            <Button onClick={() => setResult(null)} variant="ghost" className="text-slate-500 gap-2">
+              <FlaskConical className="h-4 w-4" /> Test Another Scenario
             </Button>
           </div>
         </div>
-      )}
+        );
+      })()}
     </div>
   );
 }
@@ -1323,134 +1393,217 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
         );
       })()}
 
-      {wizardStep === 4 && analysisResult && (
+      {wizardStep === 4 && analysisResult && (() => {
+        const impactLevel = analysisResult.impactScore >= 70 ? 'high' : analysisResult.impactScore >= 40 ? 'moderate' : 'low';
+        const impactConfig = {
+          high: { label: 'High Impact Scenario', color: 'text-red-600', bg: 'bg-red-50 dark:bg-red-900/20', border: 'border-red-200 dark:border-red-800', icon: AlertTriangle, iconColor: 'text-red-600' },
+          moderate: { label: 'Moderate Impact Scenario', color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-900/20', border: 'border-amber-200 dark:border-amber-800', icon: AlertTriangle, iconColor: 'text-amber-600' },
+          low: { label: 'Low Impact Scenario', color: 'text-green-600', bg: 'bg-green-50 dark:bg-green-900/20', border: 'border-green-200 dark:border-green-800', icon: CheckCircle2, iconColor: 'text-green-600' },
+        }[impactLevel];
+        const ImpactIcon = impactConfig.icon;
+        const industryHrs = Math.round(analysisResult.decisionVelocityMetrics.industryAverage / 60);
+        return (
         <div className="max-w-3xl mx-auto space-y-6 animate-in fade-in duration-500">
-          <Card className="border-2 border-blue-200 dark:border-blue-800">
-            <CardContent className="p-4">
-              <div className="flex flex-wrap items-center gap-3">
-                <Button onClick={saveScenario} className="flex-1 min-w-[140px]">
-                  <Save className="h-4 w-4 mr-2" /> Save Analysis
-                </Button>
-                <Button onClick={saveAsTemplate} variant="outline" className="flex-1 min-w-[140px]">
-                  <FileText className="h-4 w-4 mr-2" /> Save as Template
-                </Button>
+
+          <Card className={`${impactConfig.border} ${impactConfig.bg} border-2`}>
+            <CardContent className="p-6">
+              <div className="flex items-start gap-4">
+                <div className={`p-3 rounded-xl ${impactConfig.bg} flex-shrink-0`}>
+                  <ImpactIcon className={`h-7 w-7 ${impactConfig.iconColor}`} />
+                </div>
+                <div className="flex-1">
+                  <Badge className={`mb-2 ${impactLevel === 'high' ? 'bg-red-600' : impactLevel === 'moderate' ? 'bg-amber-600' : 'bg-green-600'} text-white`}>
+                    {impactConfig.label} — Score: {analysisResult.impactScore}/100
+                  </Badge>
+                  <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-2">
+                    {analysisResult.triggeredAlerts.length} alert{analysisResult.triggeredAlerts.length !== 1 ? 's' : ''} detected, {analysisResult.recommendedPlaybooks.length} playbook{analysisResult.recommendedPlaybooks.length !== 1 ? 's' : ''} ready to activate
+                  </h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">
+                    If this scenario occurs, ExecuteIQ would coordinate your response in <strong>{analysisResult.decisionVelocityMetrics.ourTime} minutes</strong> — {analysisResult.decisionVelocityMetrics.percentageFaster}% faster than the industry average of {industryHrs} hours. {analysisResult.teamsInvolved.length} teams would be mobilized simultaneously.
+                  </p>
+                </div>
               </div>
             </CardContent>
           </Card>
 
           <ScenarioVarianceAlert analysisResult={analysisResult} />
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Card className="bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-blue-900/20 dark:to-blue-800/10 border-blue-200 dark:border-blue-800">
-              <CardContent className="p-4 text-center">
-                <Clock className="h-5 w-5 text-blue-600 mx-auto mb-1" />
-                <div className="text-2xl font-bold text-blue-600">{analysisResult.decisionVelocityMetrics.ourTime} min</div>
-                <div className="text-xs text-blue-600/70 font-medium">Your Response</div>
+          <div className="grid sm:grid-cols-2 gap-4">
+            <Card>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-base flex items-center gap-2">
+                  <Clock className="h-5 w-5 text-blue-600" />
+                  Your Speed vs. Industry
+                </CardTitle>
+                <CardDescription>Time from trigger detection to full coordination</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-sm font-medium text-teal-600">With ExecuteIQ</span>
+                      <span className="text-sm font-bold text-teal-600">{analysisResult.decisionVelocityMetrics.ourTime} min</span>
+                    </div>
+                    <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-3">
+                      <div className="bg-teal-500 h-3 rounded-full" style={{ width: `${Math.max(5, (analysisResult.decisionVelocityMetrics.ourTime / analysisResult.decisionVelocityMetrics.industryAverage) * 100)}%` }} />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-sm font-medium text-slate-400">Industry Average</span>
+                      <span className="text-sm font-bold text-slate-400">{industryHrs} hours</span>
+                    </div>
+                    <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-3">
+                      <div className="bg-slate-300 dark:bg-slate-600 h-3 rounded-full w-full" />
+                    </div>
+                  </div>
+                  <div className="bg-teal-50 dark:bg-teal-900/20 rounded-lg p-3 text-center">
+                    <span className="text-2xl font-bold text-teal-600">{analysisResult.decisionVelocityMetrics.percentageFaster}%</span>
+                    <span className="text-sm text-teal-600 ml-1">faster response</span>
+                  </div>
+                </div>
               </CardContent>
             </Card>
-            <Card className="bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-slate-800/30 dark:to-slate-700/10 border-slate-200 dark:border-slate-700">
-              <CardContent className="p-4 text-center">
-                <Activity className="h-5 w-5 text-slate-500 mx-auto mb-1" />
-                <div className="text-2xl font-bold text-slate-500">{Math.round(analysisResult.decisionVelocityMetrics.industryAverage / 60)} hrs</div>
-                <div className="text-xs text-slate-500/70 font-medium">Industry Avg</div>
-              </CardContent>
-            </Card>
-            <Card className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/10 border-green-200 dark:border-green-800">
-              <CardContent className="p-4 text-center">
-                <TrendingUp className="h-5 w-5 text-green-600 mx-auto mb-1" />
-                <div className="text-2xl font-bold text-green-600">{analysisResult.decisionVelocityMetrics.percentageFaster}%</div>
-                <div className="text-xs text-green-600/70 font-medium">Faster</div>
-              </CardContent>
-            </Card>
-            <Card className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/10 border-orange-200 dark:border-orange-800">
-              <CardContent className="p-4 text-center">
-                <BarChart3 className="h-5 w-5 text-orange-600 mx-auto mb-1" />
-                <div className="text-2xl font-bold text-orange-600">{analysisResult.impactScore}/100</div>
-                <div className="text-xs text-orange-600/70 font-medium">Impact Score</div>
+
+            <Card>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-base flex items-center gap-2">
+                  <AlertTriangle className="h-5 w-5 text-orange-600" />
+                  What Gets Triggered
+                </CardTitle>
+                <CardDescription>Alerts that fire when this scenario is detected</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2">
+                  {analysisResult.triggeredAlerts.map(alert => (
+                    <div key={alert.id} className="flex items-center justify-between p-2.5 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                      <div className="flex items-center gap-2.5">
+                        <div className={`w-2 h-2 rounded-full flex-shrink-0 ${alert.severity === 'high' ? 'bg-red-500' : alert.severity === 'medium' ? 'bg-amber-500' : 'bg-blue-500'}`} />
+                        <span className="font-medium text-sm text-slate-700 dark:text-slate-200">{alert.name}</span>
+                      </div>
+                      <Badge variant={alert.severity === 'high' ? 'destructive' : 'secondary'} className="text-[10px]">{alert.severity}</Badge>
+                    </div>
+                  ))}
+                </div>
               </CardContent>
             </Card>
           </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <AlertTriangle className="h-5 w-5 text-orange-600" />
-                Triggered Alerts ({analysisResult.triggeredAlerts.length})
+          <Card className="border-teal-200 dark:border-teal-800 bg-gradient-to-br from-teal-50/50 to-white dark:from-teal-900/10 dark:to-slate-900">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base flex items-center gap-2">
+                <Zap className="h-5 w-5 text-teal-600" />
+                What ExecuteIQ Would Do
               </CardTitle>
+              <CardDescription>The playbooks and teams that activate automatically when this scenario triggers</CardDescription>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
-                {analysisResult.triggeredAlerts.map(alert => (
-                  <div key={alert.id} className="flex items-center justify-between p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-800">
-                    <div className="flex items-center gap-3">
-                      <AlertTriangle className="h-4 w-4 text-orange-600" />
-                      <span className="font-medium text-sm">{alert.name}</span>
+            <CardContent className="space-y-5">
+              <div>
+                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Playbooks That Activate</div>
+                <div className="space-y-2">
+                  {analysisResult.recommendedPlaybooks.map((playbook, idx) => (
+                    <div key={playbook.id} className="flex items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg border border-teal-100 dark:border-teal-900/30">
+                      <div className="w-7 h-7 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center flex-shrink-0">
+                        <span className="text-xs font-bold text-teal-600">{idx + 1}</span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-sm font-semibold text-slate-800 dark:text-white">{playbook.name}</div>
+                        <div className="flex items-center gap-3 mt-0.5">
+                          <span className="text-xs text-slate-500 flex items-center gap-1"><Clock className="h-3 w-3" /> {playbook.executionTime} min</span>
+                          {playbook.automationCoverage && (
+                            <span className="text-xs text-teal-600 flex items-center gap-1"><Zap className="h-3 w-3" /> {playbook.automationCoverage}% automated</span>
+                          )}
+                        </div>
+                      </div>
+                      <Badge className={`${playbook.readinessState === 'green' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'} text-[10px]`}>
+                        {playbook.readinessState === 'green' ? 'Ready' : 'Setup Needed'}
+                      </Badge>
                     </div>
-                    <Badge variant={alert.severity === 'high' ? 'destructive' : 'secondary'}>{alert.severity}</Badge>
-                  </div>
-                ))}
+                  ))}
+                </div>
+              </div>
+
+              <Separator />
+
+              <div>
+                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Teams Mobilized Simultaneously</div>
+                <div className="flex flex-wrap gap-2">
+                  {analysisResult.teamsInvolved.map((team, idx) => (
+                    <div key={idx} className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-slate-800 rounded-full border border-slate-200 dark:border-slate-700">
+                      <Users className="h-3 w-3 text-purple-500" />
+                      <span className="text-sm font-medium text-slate-700 dark:text-slate-200">{team.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <Separator />
+
+              <div>
+                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Orchestration Steps</div>
+                <div className="grid sm:grid-cols-4 gap-3">
+                  {[
+                    { time: '0:00', label: 'Trigger Detected', desc: 'AI agents identify the scenario pattern', icon: Target },
+                    { time: '0:30', label: 'Playbooks Matched', desc: `${analysisResult.recommendedPlaybooks.length} playbook${analysisResult.recommendedPlaybooks.length !== 1 ? 's' : ''} auto-selected`, icon: Rocket },
+                    { time: '1:00', label: 'Teams Notified', desc: `${analysisResult.teamsInvolved.length} teams receive role-specific instructions`, icon: Users },
+                    { time: `${analysisResult.decisionVelocityMetrics.ourTime}:00`, label: 'Fully Coordinated', desc: 'Tasks assigned, budgets released, execution underway', icon: CheckCircle2 },
+                  ].map((step, i) => {
+                    const StepIcon = step.icon;
+                    return (
+                      <div key={i} className="relative text-center">
+                        {i > 0 && <div className="absolute left-0 top-5 -translate-x-1/2 w-full h-px bg-teal-200 dark:bg-teal-800 hidden sm:block" style={{ left: '-50%', width: '100%' }} />}
+                        <div className="relative z-10 w-10 h-10 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center mx-auto mb-2">
+                          <StepIcon className="h-5 w-5 text-teal-600" />
+                        </div>
+                        <div className="text-xs font-bold text-teal-600 mb-0.5">{step.time}</div>
+                        <div className="text-xs font-semibold text-slate-800 dark:text-white">{step.label}</div>
+                        <div className="text-[10px] text-slate-500 mt-0.5">{step.desc}</div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Rocket className="h-5 w-5 text-blue-600" />
-                Recommended Playbooks ({analysisResult.recommendedPlaybooks.length})
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
-                {analysisResult.recommendedPlaybooks.map(playbook => (
-                  <div key={playbook.id} className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="font-medium text-sm">{playbook.name}</span>
-                      <Badge variant={playbook.readinessState === 'green' ? 'default' : 'secondary'} className={playbook.readinessState === 'green' ? 'bg-green-600' : ''}>{playbook.readinessState}</Badge>
-                    </div>
-                    <div className="flex items-center gap-4 text-xs text-slate-500">
-                      <span className="flex items-center gap-1"><Clock className="h-3 w-3" />{playbook.executionTime} min</span>
-                      {playbook.automationCoverage && <span className="flex items-center gap-1"><Zap className="h-3 w-3" />{playbook.automationCoverage}% automated</span>}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Users className="h-5 w-5 text-purple-600" />
-                Teams Mobilized ({analysisResult.teamsInvolved.length})
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                {analysisResult.teamsInvolved.map((team, idx) => (
-                  <Badge key={idx} variant="outline" className="text-purple-600 border-purple-300">{team.name}</Badge>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-blue-200 dark:border-blue-800">
+          <Card className="border-slate-200 dark:border-slate-700">
             <CardContent className="p-4">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-blue-600" />
-                  <span className="font-semibold text-sm">Analysis Confidence</span>
+                  <BarChart3 className="h-5 w-5 text-blue-600" />
+                  <span className="font-semibold text-sm text-slate-700 dark:text-slate-200">Analysis Confidence</span>
                 </div>
                 <Badge variant="outline" className="text-blue-600">{analysisResult.confidenceLevel}%</Badge>
               </div>
-              <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2 mt-2">
+              <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
                 <div className="bg-blue-600 h-2 rounded-full transition-all" style={{ width: `${analysisResult.confidenceLevel}%` }} />
               </div>
-              <p className="text-xs text-slate-500 mt-1">Add more detail (impact, resources, stakeholders) to increase confidence.</p>
+              <p className="text-xs text-slate-500 mt-1.5">
+                {analysisResult.confidenceLevel < 60
+                  ? 'Go back and add financial impact, resources, or stakeholders to increase confidence and get more precise results.'
+                  : analysisResult.confidenceLevel < 80
+                  ? 'Good baseline. Adding more resources or stakeholders would sharpen the analysis further.'
+                  : 'Strong confidence level. This analysis is well-supported by the data you provided.'}
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-2 border-blue-200 dark:border-blue-800">
+            <CardContent className="p-4">
+              <div className="flex flex-wrap items-center gap-3">
+                <Button onClick={saveScenario} className="flex-1 min-w-[140px]">
+                  <Save className="h-4 w-4 mr-2" /> Save This Analysis
+                </Button>
+                <Button onClick={saveAsTemplate} variant="outline" className="flex-1 min-w-[140px]">
+                  <FileText className="h-4 w-4 mr-2" /> Save as Reusable Template
+                </Button>
+              </div>
+              <p className="text-xs text-slate-500 text-center mt-2">Saved analyses appear in your scenario library and can be re-run anytime</p>
             </CardContent>
           </Card>
         </div>
-      )}
+        );
+      })()}
 
       {wizardStep < totalSteps && (
         <div className="max-w-2xl mx-auto flex items-center justify-between pt-2">
