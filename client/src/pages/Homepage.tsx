@@ -769,7 +769,7 @@ export default function Homepage() {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Don't Start From Scratch</h3>
                 <p className="text-slate-700 dark:text-slate-300 mb-4">
-                  166 playbooks across 9 strategic domains—M&A, crisis, competitive response, digital transformation, and more. Built from 25 years of Fortune 500 execution experience. Ready to deploy on day one.
+                  166 playbooks across 9 strategic domains—M&A, crisis, competitive response, digital transformation, and more. Built from 20 years of Fortune 500 execution experience. Ready to deploy on day one.
                 </p>
               </CardContent>
             </Card>

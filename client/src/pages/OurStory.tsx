@@ -286,7 +286,7 @@ export default function OurStory() {
           {/* The Vision */}
           <TimelineChapter number="Chapter 4" title="ExecuteIQ Was Born" color="purple">
             <p>
-              We translated 25 years of experience into the execution infrastructure 
+              We translated 20 years of experience into the execution infrastructure 
               Fortune 1000 executives have been missing:
             </p>
 
