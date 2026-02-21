@@ -387,13 +387,13 @@ export default function Homepage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-0 relative">
-            <div className="hidden md:block absolute top-1/2 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-violet-500 via-blue-500 via-emerald-500 to-amber-500 -translate-y-1/2 z-0" />
+            <div className="hidden md:block absolute top-1/2 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-blue-500 via-violet-500 via-emerald-500 to-amber-500 -translate-y-1/2 z-0" />
             
             {[
+              { icon: Target, label: 'IDENTIFY', desc: 'Pattern recognition maps signals to the right playbook from 166 options', color: 'from-blue-500 to-cyan-600', dotColor: 'bg-blue-500', phase: 'I' },
               { icon: Radar, label: 'DETECT', desc: 'AI monitors signals across competitive, regulatory, and market landscapes', color: 'from-violet-500 to-purple-600', dotColor: 'bg-violet-500', phase: 'D' },
-              { icon: Target, label: 'MATCH', desc: 'Pattern recognition maps signals to the right playbook from 166 options', color: 'from-blue-500 to-cyan-600', dotColor: 'bg-blue-500', phase: 'I' },
-              { icon: Network, label: 'ORCHESTRATE', desc: 'AI coordinates stakeholders, assigns tasks, and triggers execution flows', color: 'from-emerald-500 to-green-600', dotColor: 'bg-emerald-500', phase: 'E' },
-              { icon: Brain, label: 'LEARN', desc: 'Every outcome refines playbooks, building proprietary intelligence over time', color: 'from-amber-500 to-orange-600', dotColor: 'bg-amber-500', phase: 'A' },
+              { icon: Network, label: 'EXECUTE', desc: 'AI coordinates stakeholders, assigns tasks, and triggers execution flows', color: 'from-emerald-500 to-green-600', dotColor: 'bg-emerald-500', phase: 'E' },
+              { icon: Brain, label: 'ADVANCE', desc: 'Every outcome refines playbooks, building proprietary intelligence over time', color: 'from-amber-500 to-orange-600', dotColor: 'bg-amber-500', phase: 'A' },
             ].map((step, i) => (
               <div key={step.label} className="relative z-10 flex flex-col items-center text-center px-4 py-6">
                 <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center mb-4 shadow-lg`}>
