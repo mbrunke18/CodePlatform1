@@ -38,7 +38,7 @@ export default function MarketingLanding() {
       title: "ExecuteIQ - Strategic Execution Operating System | Transform Strategy into 12-Minute Execution",
       description: "Your competitor just launched. Your board meeting is in 3 days. ExecuteIQ is the orchestration layer that transforms 72-hour strategic coordination into 12-minute coordinated execution. 166 playbooks, 5 AI modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
       ogTitle: "ExecuteIQ - When Your Competitor Moves, Will You Be Ready?",
-      ogDescription: "The category-defining Strategic Execution Operating System. Limited Q1 2026 pilot: 10 Fortune 1000 design partners. Prepare → Monitor → Execute → Learn.",
+      ogDescription: "The category-defining Strategic Execution Operating System. Limited Q1 2026 pilot: 10 Fortune 1000 design partners. Identify → Detect → Execute → Advance.",
     });
   }, []);
 

@@ -218,7 +218,7 @@ export default function UnifiedEnterprisePlatform() {
               <CardHeader className="p-3">
                 <div className="flex items-center gap-2">
                   <Eye className="h-5 w-5 text-blue-400" />
-                  <CardTitle className="text-sm text-white">1. SENSE</CardTitle>
+                  <CardTitle className="text-sm text-white">1. IDENTIFY</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="p-3 pt-0">
@@ -240,7 +240,7 @@ export default function UnifiedEnterprisePlatform() {
               <CardHeader className="p-3">
                 <div className="flex items-center gap-2">
                   <Target className="h-5 w-5 text-orange-400" />
-                  <CardTitle className="text-sm text-white">2. DECIDE</CardTitle>
+                  <CardTitle className="text-sm text-white">2. DETECT</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="p-3 pt-0">
@@ -284,7 +284,7 @@ export default function UnifiedEnterprisePlatform() {
               <CardHeader className="p-3">
                 <div className="flex items-center gap-2">
                   <BookOpen className="h-5 w-5 text-purple-400" />
-                  <CardTitle className="text-sm text-white">4. LEARN</CardTitle>
+                  <CardTitle className="text-sm text-white">4. ADVANCE</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="p-3 pt-0">
@@ -360,7 +360,7 @@ export default function UnifiedEnterprisePlatform() {
               <div className="bg-gradient-to-r from-blue-50 via-purple-50/30 to-teal-50 dark:from-blue-950/20 dark:via-purple-950/10 dark:to-teal-950/20 rounded-lg border-2 border-blue-300 dark:border-blue-700 p-4 mb-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Prepare → Monitor → Execute</h2>
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Identify → Detect → Execute → Advance</h2>
                     <p className="text-sm text-gray-700 dark:text-gray-300">
                       Build playbooks from 80+ templates. AI watches your triggers 24/7. Execute in 12 minutes when conditions hit.
                     </p>

@@ -207,7 +207,7 @@ export default function InvestorResources() {
                 <div className="p-4 rounded-lg bg-blue-500/10 border border-blue-500/30">
                   <div className="flex items-center gap-2 mb-3">
                     <Target className="h-5 w-5 text-blue-500" />
-                    <span className="font-bold text-blue-500">PREPARE</span>
+                    <span className="font-bold text-blue-500">IDENTIFY</span>
                   </div>
                   <p className="text-sm text-muted-foreground">
                     Stakeholders assigned, documents staged, budgets pre-approved, authorities delegated
@@ -216,7 +216,7 @@ export default function InvestorResources() {
                 <div className="p-4 rounded-lg bg-cyan-500/10 border border-cyan-500/30">
                   <div className="flex items-center gap-2 mb-3">
                     <Radio className="h-5 w-5 text-cyan-500" />
-                    <span className="font-bold text-cyan-500">MONITOR</span>
+                    <span className="font-bold text-cyan-500">DETECT</span>
                   </div>
                   <p className="text-sm text-muted-foreground">
                     92+ signals tracked, triggers configured, alerts routed
@@ -234,7 +234,7 @@ export default function InvestorResources() {
                 <div className="p-4 rounded-lg bg-purple-500/10 border border-purple-500/30">
                   <div className="flex items-center gap-2 mb-3">
                     <BookOpen className="h-5 w-5 text-purple-500" />
-                    <span className="font-bold text-purple-500">LEARN</span>
+                    <span className="font-bold text-purple-500">ADVANCE</span>
                   </div>
                   <p className="text-sm text-muted-foreground">
                     Structured debriefs, metrics captured, playbooks improved
