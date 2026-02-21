@@ -26,14 +26,16 @@ import {
   Activity,
   Award,
   Building2,
-  Mail
+  Mail,
+  Bot,
+  Layers
 } from 'lucide-react';
 
 function InvestorPresentation() {
   const [, setLocation] = useLocation();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const totalSlides = 15;
+  const totalSlides = 16;
 
   const goToNext = useCallback(() => {
     setCurrentSlide(prev => Math.min(prev + 1, totalSlides - 1));
@@ -423,6 +425,54 @@ function InvestorPresentation() {
               <div className="text-slate-300 text-sm">{s.label}</div>
             </div>
           ))}
+        </div>
+      </div>
+    ),
+
+    () => (
+      <div className="flex flex-col items-center justify-center h-full px-4">
+        <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">Platform Vision</p>
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
+          The Agentic Execution Layer
+        </h2>
+        <p className="text-lg text-slate-300 max-w-3xl text-center mb-10">
+          AI agents are getting faster. Human coordination isn't. We sit in the middle.
+        </p>
+        <div className="grid grid-cols-3 gap-6 max-w-4xl w-full mb-10">
+          <div className="text-center p-6 bg-slate-900/80 border border-blue-500/30 rounded-xl">
+            <Bot className="w-8 h-8 text-blue-400 mx-auto mb-3" />
+            <div className="text-white font-bold mb-1">AI Agents</div>
+            <div className="text-slate-400 text-sm">Detect threats, surface insights, monitor signals</div>
+          </div>
+          <div className="text-center p-6 bg-indigo-900/40 border border-teal-500/40 rounded-xl">
+            <Layers className="w-8 h-8 text-teal-400 mx-auto mb-3" />
+            <div className="text-teal-300 font-bold mb-1">ExecuteIQ</div>
+            <div className="text-slate-300 text-sm">Activate playbooks, coordinate roles, track execution</div>
+          </div>
+          <div className="text-center p-6 bg-slate-900/80 border border-amber-500/30 rounded-xl">
+            <Users className="w-8 h-8 text-amber-400 mx-auto mb-3" />
+            <div className="text-white font-bold mb-1">Human Leaders</div>
+            <div className="text-slate-400 text-sm">Decide response, approve action, own outcomes</div>
+          </div>
+        </div>
+        <div className="grid md:grid-cols-3 gap-4 max-w-5xl w-full mb-8">
+          {[
+            { tier: 'Tier 1: Now', title: 'AI-Triggered Playbooks', desc: 'External AI systems trigger playbooks automatically. 400+ connectors ready.', color: 'border-green-500/30', badge: 'bg-green-500/20 text-green-400' },
+            { tier: 'Tier 2: Next', title: 'AI-Assisted Coordination', desc: 'AI agents handle prep work—context, drafts, blocker detection. Humans decide.', color: 'border-purple-500/30', badge: 'bg-purple-500/20 text-purple-400' },
+            { tier: 'Tier 3: Vision', title: 'Human-AI Hybrid Playbooks', desc: 'AI agents and human leaders run the same playbook. First platform to do this.', color: 'border-amber-500/30', badge: 'bg-amber-500/20 text-amber-400' },
+          ].map((t, i) => (
+            <div key={i} className={`bg-slate-900/80 border ${t.color} rounded-xl p-5`}>
+              <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold ${t.badge} mb-3`}>{t.tier}</span>
+              <div className="text-white font-bold mb-1">{t.title}</div>
+              <p className="text-slate-300 text-sm">{t.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div className="bg-gradient-to-r from-indigo-900/30 to-teal-900/30 rounded-xl p-5 border border-teal-500/20 max-w-4xl w-full text-center">
+          <p className="text-slate-200 text-sm italic">
+            "Execution infrastructure for humans" → <span className="text-teal-400 font-semibold not-italic">Execution infrastructure for the agentic enterprise</span>
+          </p>
+          <p className="text-slate-400 text-xs mt-2">New category. No direct competitor.</p>
         </div>
       </div>
     ),

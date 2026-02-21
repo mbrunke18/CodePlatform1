@@ -1247,6 +1247,160 @@ export default function Homepage() {
         </div>
       </section>
 
+      {/* Agentic Integration Architecture */}
+      <section className="py-20 px-6 bg-gradient-to-br from-slate-900 via-indigo-950/40 to-slate-900">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-indigo-500/20 text-indigo-400 border-indigo-500/30">
+              <Bot className="w-4 h-4 mr-2" />
+              Agentic Execution Architecture
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              The Coordination Layer for the Agentic Enterprise
+            </h2>
+            <p className="text-lg text-slate-200 max-w-3xl mx-auto">
+              AI agents are getting faster. Human coordination isn't. ExecuteIQ bridges the gap—activating playbooks when AI detects strategic moments, coordinating human decisions in minutes, and orchestrating execution across AI and human roles.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-4 mb-12">
+            <div className="relative bg-gradient-to-br from-blue-900/40 to-slate-900/80 rounded-2xl p-6 border border-blue-500/20 hover:border-blue-500/40 transition-all">
+              <div className="absolute top-4 right-4">
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-green-500/20 text-green-400 border border-green-500/20">AVAILABLE NOW</span>
+              </div>
+              <div className="w-12 h-12 mb-4 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                <Zap className="h-6 w-6 text-blue-400" />
+              </div>
+              <h3 className="text-lg font-bold text-white mb-2">AI-Triggered Playbooks</h3>
+              <p className="text-sm text-slate-200 mb-4">
+                External AI systems—security tools, market monitors, ERP alerts—trigger ExecuteIQ playbooks automatically. No manual detection. No delayed response.
+              </p>
+              <div className="space-y-2 mb-4">
+                {[
+                  'CrowdStrike detects anomaly → Ransomware Response activates',
+                  'Market monitor spots price shift → Competitive Response activates',
+                  'Regulatory filing detected → Compliance playbook activates'
+                ].map((example, i) => (
+                  <div key={i} className="flex items-start gap-2 text-xs text-slate-300">
+                    <ArrowRight className="w-3 h-3 text-blue-400 mt-0.5 shrink-0" />
+                    <span>{example}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {['Webhooks', 'Event API', '400+ Connectors'].map(tag => (
+                  <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">{tag}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative bg-gradient-to-br from-purple-900/40 to-slate-900/80 rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all">
+              <div className="absolute top-4 right-4">
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/20 text-purple-400 border border-purple-500/20">IN DEVELOPMENT</span>
+              </div>
+              <div className="w-12 h-12 mb-4 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                <Brain className="h-6 w-6 text-purple-400" />
+              </div>
+              <h3 className="text-lg font-bold text-white mb-2">AI-Assisted Coordination</h3>
+              <p className="text-sm text-slate-200 mb-4">
+                AI agents embedded within ExecuteIQ handle preparation work—context gathering, communication drafting, blocker detection—so humans focus purely on decisions.
+              </p>
+              <div className="space-y-2 mb-4">
+                {[
+                  'AI summarizes situation context from multiple sources',
+                  'AI drafts stakeholder communications for human approval',
+                  'AI monitors execution and flags delays in real-time'
+                ].map((example, i) => (
+                  <div key={i} className="flex items-start gap-2 text-xs text-slate-300">
+                    <ArrowRight className="w-3 h-3 text-purple-400 mt-0.5 shrink-0" />
+                    <span>{example}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {['Context Engine', 'Smart Drafting', 'Blocker Detection'].map(tag => (
+                  <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">{tag}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative bg-gradient-to-br from-amber-900/40 to-slate-900/80 rounded-2xl p-6 border border-amber-500/20 hover:border-amber-500/40 transition-all">
+              <div className="absolute top-4 right-4">
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-400 border border-amber-500/20">VISION</span>
+              </div>
+              <div className="w-12 h-12 mb-4 bg-amber-500/20 rounded-xl flex items-center justify-center">
+                <Users className="h-6 w-6 text-amber-400" />
+              </div>
+              <h3 className="text-lg font-bold text-white mb-2">Human-AI Hybrid Playbooks</h3>
+              <p className="text-sm text-slate-200 mb-4">
+                The first execution platform where AI agents and human leaders run the same playbook. AI handles research, analysis, and drafting. Humans own decisions and approvals.
+              </p>
+              <div className="space-y-2 mb-4">
+                {[
+                  'AI Agent: Pull docs, summarize risks, draft communications',
+                  'Human (CFO): Approve integration priorities and budgets',
+                  'AI Agent: Generate access requests, track completion'
+                ].map((example, i) => (
+                  <div key={i} className="flex items-start gap-2 text-xs text-slate-300">
+                    <ArrowRight className="w-3 h-3 text-amber-400 mt-0.5 shrink-0" />
+                    <span>{example}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {['Multi-Agent', 'Human-in-Loop', 'Decision Authority'].map(tag => (
+                  <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-indigo-900/30 via-purple-900/20 to-indigo-900/30 rounded-2xl p-8 border border-indigo-500/20">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-white mb-3">The Agentic Execution Layer</h3>
+                <p className="text-slate-200 mb-4">
+                  ExecuteIQ sits between AI systems and human decision-makers—the coordination layer the agentic enterprise is missing. As AI capabilities accelerate, the bottleneck shifts to human alignment and action. That's the problem we solve.
+                </p>
+                <div className="grid grid-cols-3 gap-3">
+                  <div className="text-center p-3 bg-slate-900/60 rounded-xl border border-slate-700">
+                    <Bot className="w-5 h-5 text-blue-400 mx-auto mb-1" />
+                    <div className="text-xs font-bold text-white">AI Agents</div>
+                    <div className="text-[10px] text-slate-400">Detect & Prepare</div>
+                  </div>
+                  <div className="text-center p-3 bg-indigo-900/40 rounded-xl border border-indigo-500/30">
+                    <Layers className="w-5 h-5 text-indigo-400 mx-auto mb-1" />
+                    <div className="text-xs font-bold text-indigo-300">ExecuteIQ</div>
+                    <div className="text-[10px] text-slate-400">Orchestrate & Coordinate</div>
+                  </div>
+                  <div className="text-center p-3 bg-slate-900/60 rounded-xl border border-slate-700">
+                    <UserCheck className="w-5 h-5 text-amber-400 mx-auto mb-1" />
+                    <div className="text-xs font-bold text-white">Human Leaders</div>
+                    <div className="text-[10px] text-slate-400">Decide & Own</div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex-1">
+                <div className="space-y-3">
+                  {[
+                    { current: 'Execution infrastructure for humans', enhanced: 'Execution infrastructure for the agentic enterprise' },
+                    { current: '72 hrs → 12 min (human coordination)', enhanced: 'AI detects in seconds, humans decide in minutes' },
+                    { current: '166 playbooks', enhanced: '166 playbooks with AI + human roles' },
+                    { current: 'Competes with: consultants, ServiceNow', enhanced: 'New category: no direct competitor' },
+                  ].map((row, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <div className="flex-1 text-xs text-slate-500 line-through">{row.current}</div>
+                      <ArrowRight className="w-3 h-3 text-indigo-400 shrink-0" />
+                      <div className="flex-1 text-xs text-indigo-300 font-medium">{row.enhanced}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 px-6 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="max-w-4xl mx-auto text-center">
