@@ -65,6 +65,9 @@ export const PUBLIC_ROUTES = [
   '/api/activation/:id',
   '/api/activation/:id/cancel',
   
+  // Executive Summary Generator - public demo access
+  '/api/executive-summary/generate',
+  
   // Demo Routes ONLY - read-only demo data endpoints
   '/api/demo/scenarios',
   '/api/demo/reset',

@@ -70,6 +70,7 @@ export default function StandardNav() {
         { label: "Strategic Analyzer", path: "/incident-analyzer", icon: AlertCircle, description: "Analyze any strategic situation with AI" },
         { label: "Readiness Assessment", path: "/readiness-assessment", icon: ClipboardCheck, description: "Assess execution readiness by domain" },
         { label: "What-If Analyzer", path: "/what-if-analyzer", icon: FlaskConical, description: "Scenario modeling & simulation" },
+        { label: "Executive Summary", path: "/executive-summary", icon: FileText, description: "One-click executive reports" },
       ],
     },
     {

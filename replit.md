@@ -1,7 +1,7 @@
 # ExecuteIQ - Strategic Execution OS
 
 ## Overview
-ExecuteIQ is the Strategic Execution OS for Fortune 1000 companies, designed to transform how leaders balance transformation and stability across 9 strategic domains simultaneously. It streamlines strategic execution by eliminating the extensive time organizations spend getting organized after a strategic event. The platform utilizes AI-driven trigger monitoring and an extensive library of 170 strategic playbooks. ExecuteIQ integrates with existing tools like Jira, automating project creation, task assignment, document staging, and budget allocation within 12 minutes of a trigger. It operates on the IDEA Framework™ (IDENTIFY, DETECT, EXECUTE, ADVANCE), fostering a human-AI partnership where AI recommends and humans make final decisions. ExecuteIQ aims to be "The Execution Infrastructure Enterprises Are Missing," accelerating execution, saving time, and reducing costs in strategic initiatives.
+ExecuteIQ is a Strategic Execution OS for Fortune 1000 companies, designed to enhance strategic execution by integrating AI-driven trigger monitoring and an extensive library of 170 strategic playbooks. It aims to eliminate the time organizations spend organizing after strategic events by automating project creation, task assignment, document staging, and budget allocation within 12 minutes of a trigger. Operating on the IDEA Framework™ (IDENTIFY, DETECT, EXECUTE, ADVANCE), ExecuteIQ fosters a human-AI partnership, positioning itself as "The Execution Infrastructure Enterprises Are Missing" to accelerate execution, save time, and reduce costs in strategic initiatives.
 
 ## User Preferences
 - Preferred communication style: Simple, everyday language
@@ -10,29 +10,31 @@ ExecuteIQ is the Strategic Execution OS for Fortune 1000 companies, designed to 
 - Executive professional language required across UI/UX
 
 ## System Architecture
-ExecuteIQ is built around the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE), promoting a human-AI collaboration where AI handles monitoring, pattern detection, recommendations, and continuous learning, while human executives retain ultimate decision-making authority.
+ExecuteIQ is built around the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE), promoting human-AI collaboration where AI handles monitoring, pattern detection, recommendations, and continuous learning, while human executives retain ultimate decision-making authority.
 
 **UI/UX Decisions:**
-- **Design:** A modern, enterprise-grade interface prioritizing decision velocity and seamless human-AI interaction.
-- **Theme:** Supports both dark and light modes with localStorage persistence and WCAG AAA contrast compliance.
-- **Navigation:** Features a streamlined 5-item navigation with a "More" dropdown for secondary pages. Calls to action are consolidated to "Try Demo" and "Start Pilot."
-- **Branding:** Consistent "ExecuteIQ - Strategic Execution OS" branding, featuring a concentric rings icon.
-- **Layout:** A `PageLayout` component ensures a consistent `StandardNav` header and `Footer` across all pages.
-- **Design System:** Utilizes a robust design system with over 60 utility classes.
-- **Homepage:** Features a cinematic video introduction, AI era positioning, an "ExecuteIQ at a Glance" section detailing capabilities and key metrics, and a research-backed trust bar.
-- **Strategy Execution Dashboard:** Provides insights into transformation progress, an orchestration health score, anticipation insights, and generates executive intelligence reports.
-- **Pilot Demo:** A live proof-of-concept demonstrating the full trigger-to-execution loop with real email notifications, a command center timeline, and pre-built trigger scenarios and playbooks.
+- **Design:** Modern, enterprise-grade interface prioritizing decision velocity and seamless human-AI interaction.
+- **Theme:** Supports dark and light modes with localStorage persistence and WCAG AAA contrast compliance.
+- **Navigation:** Streamlined 5-item navigation with a "More" dropdown. Calls to action are "Try Demo" and "Start Pilot."
+- **Branding:** Consistent "ExecuteIQ - Strategic Execution OS" branding with a concentric rings icon.
+- **Layout:** `PageLayout` component for consistent `StandardNav` header and `Footer`.
+- **Design System:** Robust design system with over 60 utility classes.
+- **Homepage:** Features a cinematic video introduction, AI era positioning, "ExecuteIQ at a Glance" detailing capabilities and metrics, and a research-backed trust bar.
+- **Strategy Execution Dashboard:** Provides insights into transformation progress, orchestration health score, anticipation insights, and generates executive intelligence reports.
+- **Pilot Demo:** Live proof-of-concept demonstrating the full trigger-to-execution loop with real email notifications, a command center timeline, and pre-built trigger scenarios and playbooks.
 
 **Technical Implementations & Feature Specifications:**
 - **IDEA Framework Phases:**
-    - **IDENTIFY (ExecuteIQ Playbook™):** Enables building and customizing strategic playbooks from 170 templates across 9 strategic domains.
-    - **DETECT (ExecuteIQ Signal™):** Provides AI-powered pattern matching, competitive intelligence aggregation, early warning dashboards, and human-triggered playbook activation.
+    - **IDENTIFY (ExecuteIQ Playbook™):** Build and customize strategic playbooks from 170 templates across 9 strategic domains.
+    - **DETECT (ExecuteIQ Signal™):** AI-powered pattern matching, competitive intelligence aggregation, early warning dashboards, and human-triggered playbook activation.
     - **EXECUTE (ExecuteIQ Compass™):** Orchestrates coordinated responses within 12 minutes, leveraging pre-approved budgets and enterprise integrations, managed via a Command Center.
     - **ADVANCE (ExecuteIQ Retrospect™):** Facilitates institutional learning by capturing outcomes, conducting AI-powered analysis, and suggesting playbook refinements.
-- **Strategic Domains:** Covers 9 domains, categorized into OFFENSE (Market Entry, M&A, Product Launch), DEFENSE (Crisis, Cyber, Regulatory), and SPECIAL TEAMS (Digital Transformation, Competitive Response, AI Governance), comprising 170 playbooks (58 OFFENSE, 58 DEFENSE, 54 SPECIAL TEAMS). The AI Governance domain includes 18 playbooks and a Foundational AI Principles Framework.
-- **Execution Plan Sync & Integration Architecture:** Employs an `ExecutionPlanSyncService` for bi-directional synchronization with various project management tools, a `DocumentTemplateEngine` for auto-generating documents, and a `FileExportService` for multiple file formats.
-- **Authentication:** Uses Replit OIDC integration with session management via PostgreSQL.
+- **Strategic Domains:** Covers 9 domains: OFFENSE (Market Entry, M&A, Product Launch), DEFENSE (Crisis, Cyber, Regulatory), and SPECIAL TEAMS (Digital Transformation, Competitive Response, AI Governance), comprising 170 playbooks.
+- **Execution Plan Sync & Integration Architecture:** Employs an `ExecutionPlanSyncService` for bi-directional synchronization, a `DocumentTemplateEngine` for auto-generating documents, and a `FileExportService`.
+- **Authentication:** Replit OIDC integration with session management via PostgreSQL.
 - **New User Journey:** A 7-step guided onboarding experience.
+- **Enterprise Task Library:** A library of 42 pre-defined tasks categorized by IDEA phases and 9 functional areas for rapid playbook setup.
+- **Executive Summary Generator:** One-click AI-powered executive report generation for 4 report types (Strategic Overview, Crisis Readiness, Competitive Intelligence, Transformation Progress). Configurable by industry/org/timeframe.
 
 **System Design Choices:**
 - **Frontend**: React 18, TypeScript, Vite, Radix UI, shadcn/ui, Tailwind CSS, TanStack Query v5, Wouter, React Hook Form, Zod.
@@ -42,46 +44,6 @@ ExecuteIQ is built around the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE
 - **Real-time**: Socket.IO WebSocket server.
 - **AI Services**: OpenAI GPT-4o.
 - **Key Constants:** Centralized constants for branding, leadership capabilities, IDEA phases, strategic domains, timing benchmarks, and UI elements.
-- **Enterprise Task Library:** A library of 42 pre-defined tasks categorized by IDEA phases and 9 functional areas, designed for rapid playbook setup and ensuring immediate execution readiness with predetermined stakeholders and tasks.
-
-## Recent Changes (Feb 2026)
-- **Major codebase cleanup**: Removed 5 dead scenario/playbook pages, archive folder, deprecated EnterpriseNavigation, 4 unused homepage components, 3 unused execution components, 12 unused demo components, 10 unused server services, 3 orphaned navigation files, empty __tests__ directory
-- **Route consolidation**: App.tsx reduced from 643 to 483 lines. Replaced 7 individual redirect components with a single generic Redirect. Grouped duplicate routes with renderRoutes/renderRedirects helpers. Removed 10+ unused page imports.
-- **Performance**: Added lazy loading (React.lazy + Suspense) for 100+ secondary pages. Only 12 critical pages (Homepage, HowItWorks, TryDemo, key Experience features) load eagerly. Added PageLoader spinner for loading state.
-- Navigation config (config.ts, types.ts) retained in client/src/navigation/ as they're actively used by IDEASidebar/IDEALayout
-- iconRenderer.tsx updated to define IconName type locally
-- Enhanced What-If Analyzer with clickable department chips and preset buttons
-- Added Enterprise Integration section to Homepage
-- Added zero-disruption integration differentiator to How It Works page
-- **Positioning refinement**: Homepage hero leads with "Trigger-to-Execution Orchestration" and "From Trigger to Coordinated Execution In 12 Minutes" as primary message
-- **Quantified value metrics**: Added 4 key metrics (72hrs→12min, 70% faster mobilization, 50% less decision latency, $2.4M avg savings) to Homepage hero stats bar
-- **12-minute clarification**: Added "12 minutes = trigger-to-coordinated-execution. Deploy ExecuteIQ itself in weeks, not months" distinction
-- **Playbook credibility**: Added maturity ratings (Battle-Tested/Mission-Critical/Innovation-Ready), outcome scores, and validated-by indicators to PlaybookLibraryV2 category cards and individual playbook cards
-- **Data moat (ADVANCE phase)**: Updated ADVANCE descriptions across Homepage and HowItWorks to emphasize proprietary intelligence layer, cross-domain pattern detection, outcome benchmarking, and compounding competitive moat
-- **Enterprise auth roadmap**: Added Enterprise SSO & IAM card (Azure AD, Okta, Ping Identity, SAML 2.0, OIDC) to Homepage integration section and Enterprise-Grade Security differentiator to HowItWorks
-- **Agentic execution layer positioning**: Added "Agentic Execution Layer" stack positioning to HowItWorks (vertical stack diagram showing strategy→ExecuteIQ→workflow→operational layers), WhyExecuteIQ (workflow tools vs agentic comparison + decision authority spectrum: Assist→Coordinate→Execute→Decide), and InvestorLanding (architectural thesis with agent type cards + hero tagline update to "The Agentic Execution Layer for Fortune 1000")
-- **Investor Pitch Deck rebuild**: Complete rebuild of InvestorPresentation.tsx with 15-slide pitch deck matching Deck 2 content. Full-screen slides with keyboard navigation, slide counter, fullscreen mode. Covers: Problem, Cost, IDEA Framework, Transformation, Playbooks, Market ($13-20B TAM), Competition, Business Model ($250K-$1.5M tiers), Traction, Team, GTM, Financials ($100M+ ARR Y5), The Ask ($2M pre-seed). Added "Pitch Deck" link to Investors navigation dropdown.
-- **Navigation consolidation**: Consolidated StandardNav from 7 dropdowns (Product, Solutions, Experience, Demos, Platform, Investors, Intelligence) to 4 focused dropdowns (Product, Experience, Platform, Investors). Product uses sectioned dropdown with Understand/Capabilities/Explore headers. Experience uses sectioned dropdown with AI Tools/Live Demos headers. Platform and Investors use flat dropdowns. Eliminated duplicate entries (Industry Demos, What-If Analyzer). Intelligence items moved to Product (Capabilities) and Platform. Mobile menu updated to match.
-- **Canonical demo path**: All /scenario-demo references replaced with /try-demo across 12+ files. Added /scenario-demo and /ultimate-demo redirects. Fixed homepage bottom CTA broken link.
-- **War Room consolidation**: Removed "War Room" from Platform nav. /war-room now redirects to /command-center. ExecuteIQ One™ (MissionControl) remains the primary hub, Command Center remains the live execution view.
-- **Homepage validation section**: Restored all 15 research quotes (IBM, Bain, BCG, McKinsey, Accenture, Forrester, Anthropic, OpenAI, Deloitte, Microsoft, Google Cloud, WEF, PwC, Gartner, IDC) with smart expandable layout—top 6 shown prominently, remaining 9 revealed via "See All 15 Research Findings" button. All 15 firm pills displayed. Closing tagline: "15 independent reports. One conclusion: ExecuteIQ is what they're describing."
-- **12-minute proof point**: Added visual timeline breakdown to HowItWorks page showing 7-step execution sequence (0:00 Trigger → 0:30 Playbook Match → 1:00 Notification → 3:00 Acknowledge → 5:00 Tasks Assigned → 8:00 Budget Released → 12:00 Full Execution). Uses vertical timeline with color-coded dots and gradient connector.
-- **Product depth enhancement (sales-readiness sweep)**: Comprehensive enhancements across 10+ pages for road-show readiness:
-  - **ROI Calculator**: Added executive summary with dynamic industry/size-aware copy, industry benchmarks comparison table, shareable results buttons, and full CTA section with Founding Partner Pilot promotion
-  - **Readiness Assessment**: Added industry benchmark comparison bars (Fortune 500 avg vs ExecuteIQ clients), "How ExecuteIQ Closes These Gaps" IDEA framework section, and personalized next-step CTA based on score
-  - **IDEA Workspace hubs (4 pages)**: WorkspaceIdentify added Recent Playbook Activity, WorkspaceDetect added Live Signal Feed with severity indicators, WorkspaceExecute added Active Executions with progress bars, WorkspaceAdvance added Recent Learnings with confidence bars
-  - **Institutional Memory**: Added Execution Performance Trend chart (6-month improvement visualization) and Playbooks Improved From Learnings tracker with version history
-  - **Board Briefings**: Added Decisions Requiring Board Action (priority-coded pending decisions) and AI-Generated Strategic Recommendations with confidence scores
-  - **Practice Drills**: Added Drill Scoring Breakdown (5 criteria with progress bars) and Team Performance Comparison (4 teams with trend indicators)
-  - **Pricing**: Added comprehensive Feature Comparison Matrix (18 features across 6 categories comparing Enterprise/Enterprise Plus/Global tiers)
-  - **Stakeholder Management**: Added Engagement Analytics (response time, reach, participation), Communication Timeline (5 recent events), and RACI Matrix visualization (6 stakeholders × 4 playbooks)
-- **Demo consolidation**: Consolidated 22+ demo pages into one primary "Try Demo" path. Nav "Live Demos" reduced from 5 links to 1 ("Try Demo"). Footer "Experience" cleaned up (removed "Ultimate Demo"). Added "See It In Your Industry" section at bottom of TryDemo with 9 industry scenario cards. Redirected 15+ legacy demo routes (investor-demo, customer-demo, keynote, executive-simulation, sandbox-demo, pilot-demo, demo-gallery, deal-risk-demo, live-activation, etc.) to /try-demo. Industry-specific demos (luxury, financial, pharma, manufacturing, retail, energy, lvmh, shein, spacex) remain accessible from TryDemo page. Removed unused lazy imports from App.tsx.
-- **Compound disruption framework (Feb 2026)**: Integrated compound disruption positioning across product using ExecuteIQ's own language (no third-party attribution):
-  - **Homepage**: "From Prediction to Preparation" paradigm shift section with Old Model vs New Model comparison, anticipatory/agile/antifragile→IDEA framework mapping
-  - **How It Works**: "Built for Compound Disruption" section with 4 compound disruption scenarios (Cyber+Regulatory, Geopolitical+Supply Chain, Climate+Operations, AI+Workforce)
-  - **Investor Presentation**: "Paradigm Shift" slide, updated "Why Now?" with compound disruption framing, 17 slides total
-  - **Playbook Library**: Compound Disruption Response section with 4 navigable compound playbooks (181-184) linked to full playbook detail pages
-- **Playbook count update (Feb 2026)**: Updated from 166 to 170 total playbooks (58 OFFENSE, 58 DEFENSE, 54 SPECIAL TEAMS) across all pages, components, constants, schema, and server code. Added 4 compound disruption playbooks as database-backed records (numbers 181-184).
 
 ## External Dependencies
 - **AI Services**: OpenAI GPT-4o

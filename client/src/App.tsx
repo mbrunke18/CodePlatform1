@@ -54,6 +54,7 @@ const RoadshowResources = lazy(() => import("./pages/RoadshowResources"));
 const AIIntelligenceHub = lazy(() => import("./pages/AIIntelligenceHub"));
 const IntelligenceControlCenter = lazy(() => import("./pages/IntelligenceControlCenter"));
 const ExecutiveScorecard = lazy(() => import("./pages/ExecutiveScorecard"));
+const ExecutiveSummaryGenerator = lazy(() => import("./pages/ExecutiveSummaryGenerator"));
 const AIRadarDashboard = lazy(() => import("./pages/AIRadarDashboard"));
 const SignalIntelligenceHub = lazy(() => import("./pages/SignalIntelligenceHub"));
 const InstitutionalMemory = lazy(() => import("./pages/InstitutionalMemory"));
@@ -348,6 +349,7 @@ function Router() {
         <Route path="/analytics" component={AdvancedAnalytics} />
         <Route path="/advanced-analytics" component={AdvancedAnalytics} />
         <Route path="/executive-analytics-dashboard" component={ExecutiveAnalyticsDashboard} />
+        {renderRoutes(["/executive-summary", "/executive-summary-generator", "/report-generator"], ExecutiveSummaryGenerator)}
         <Route path="/audit-logging-center" component={AuditLoggingCenter} />
         <Route path="/roi-calculator" component={ROICalculator} />
         <Route path="/agility-assessment" component={AgilityAssessment} />

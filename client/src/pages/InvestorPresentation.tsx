@@ -106,6 +106,7 @@ function InvestorPresentation() {
               { value: '72 hours', label: 'Average strategic response time', sub: 'Signal to coordinated action' },
               { value: '30%', label: 'Strategic value lost', sub: 'McKinsey research' },
               { value: '82%', label: 'Boards require crisis preparedness', sub: 'Post-2020 governance mandate' },
+              { value: '95% / 16%', label: 'CSOs: AI will reshape priorities — but few reimagining', sub: 'Deloitte 2026 CSO Survey' },
             ].map((s, i) => (
               <div key={i} className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
                 <div className="text-2xl font-bold text-teal-400">{s.value}</div>

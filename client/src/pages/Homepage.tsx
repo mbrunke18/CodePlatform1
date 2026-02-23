@@ -249,6 +249,13 @@ export default function Homepage() {
       report: "Worldwide AI Spending Guide 2026",
       color: "text-pink-400",
       borderColor: "border-pink-500/30"
+    },
+    {
+      quote: "95% of CSOs say AI will materially reshape strategic priorities in the next 12 months—but only 16% are using it to fundamentally reimagine lines of business.",
+      source: "Deloitte",
+      report: "2026 CSO Survey",
+      color: "text-teal-300",
+      borderColor: "border-teal-400/30"
     }
   ];
 
@@ -375,6 +382,75 @@ export default function Homepage() {
       {/* Platform Visual - End-to-End Overview */}
       <section>
         <PlatformVisual />
+      </section>
+
+      {/* The Coordination Gap */}
+      <section className="py-16 px-6 bg-white dark:bg-slate-900" data-testid="coordination-gap-section">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <Badge className="mb-4 bg-amber-500/20 text-amber-600 dark:text-amber-400 border-amber-500/30">
+              The Missing Layer
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              Every Enterprise Has Infrastructure for Everything — Except Execution
+            </h2>
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+              95% of strategy officers say AI will reshape their priorities this year. Only 16% are using it to fundamentally reimagine the business. The gap isn't technology — it's coordination infrastructure.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-10">
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">What Enterprises Have</h3>
+              {[
+                { system: 'ERP', purpose: 'Finance & Operations' },
+                { system: 'CRM', purpose: 'Customer Relationships' },
+                { system: 'ITSM', purpose: 'Service Tickets' },
+                { system: 'HCM', purpose: 'Human Capital' },
+              ].map((item) => (
+                <div key={item.system} className="flex items-center gap-3 p-3 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                  <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
+                  <div>
+                    <span className="font-semibold text-slate-900 dark:text-white">{item.system}</span>
+                    <span className="text-slate-500 dark:text-slate-400 ml-2">for {item.purpose}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-red-500 dark:text-red-400 uppercase tracking-wide">What They're Missing</h3>
+              {[
+                { gap: 'Strategic coordination across 50-200+ stakeholders', fallback: 'Email chains & ad-hoc war rooms' },
+                { gap: 'Pre-defined decision rights under pressure', fallback: 'Tribal knowledge & improvisation' },
+                { gap: 'Cross-functional execution orchestration', fallback: '72-hour alignment cycles' },
+                { gap: 'Institutional learning from past executions', fallback: 'Lost in someone\'s head' },
+              ].map((item) => (
+                <div key={item.gap} className="p-3 rounded-lg bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800/30">
+                  <div className="flex items-start gap-3">
+                    <AlertTriangle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                    <div>
+                      <span className="font-semibold text-slate-900 dark:text-white">{item.gap}</span>
+                      <div className="text-sm text-red-600 dark:text-red-400 mt-0.5">Current: {item.fallback}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="text-center">
+            <div className="inline-block p-6 rounded-2xl bg-gradient-to-r from-blue-50 to-emerald-50 dark:from-blue-950/30 dark:to-emerald-950/30 border border-blue-200 dark:border-blue-800/30">
+              <p className="text-lg font-semibold text-slate-900 dark:text-white mb-1">
+                Most enterprises make their coordination infrastructure decisions by default.
+              </p>
+              <p className="text-slate-600 dark:text-slate-300">
+                ExecuteIQ lets you make them <span className="text-blue-600 dark:text-blue-400 font-bold">by design</span>. 170 playbooks. Pre-defined governance. 12-minute execution.
+              </p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">Source: Deloitte 2026 CSO Survey</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* AI Intelligence Engine - How the AI Works */}
@@ -733,7 +809,7 @@ export default function Homepage() {
 
           <div className="text-center">
             <p className="text-slate-400 italic text-sm max-w-2xl mx-auto">
-              16 independent reports. One conclusion. The infrastructure for the next era of enterprise execution.
+              17 independent reports. One conclusion. The infrastructure for the next era of enterprise execution.
             </p>
           </div>
         </div>
@@ -809,7 +885,7 @@ export default function Homepage() {
               ) : (
                 <>
                   <ChevronDown className="mr-2 h-4 w-4" />
-                  See All 16 Research Findings
+                  See All 17 Research Findings
                 </>
               )}
             </Button>
@@ -817,7 +893,7 @@ export default function Homepage() {
           
           <div className="text-center">
             <p className="text-xl font-semibold text-slate-900 dark:text-white">
-              16 independent reports. One conclusion: <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500">ExecuteIQ is what they're describing.</span>
+              17 independent reports. One conclusion: <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500">ExecuteIQ is what they're describing.</span>
             </p>
           </div>
         </div>
