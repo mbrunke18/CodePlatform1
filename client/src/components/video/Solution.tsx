@@ -9,7 +9,7 @@ interface SceneProps {
 }
 
 const capabilities = [
-  { icon: ClipboardList, label: "Identify", desc: "166 ready playbooks" },
+  { icon: ClipboardList, label: "Identify", desc: "170 ready playbooks" },
   { icon: Radar, label: "Detect", desc: "AI signal detection" },
   { icon: Play, label: "Execute", desc: "12-min coordinated response" },
   { icon: TrendingUp, label: "Advance", desc: "Continuous improvement" },
@@ -85,7 +85,7 @@ export function Solution({ progress }: SceneProps) {
           transition={{ delay: 1.5 }}
           className="mt-6 text-white/60 text-sm max-w-lg mx-auto"
         >
-          Governance pre-defined. Decision rights clear. Coordination instant. 166 playbooks ready before the moment hits.
+          Governance pre-defined. Decision rights clear. Coordination instant. 170 playbooks ready before the moment hits.
         </motion.div>
 
         <motion.div

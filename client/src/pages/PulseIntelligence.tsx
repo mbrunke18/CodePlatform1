@@ -588,7 +588,7 @@ export default function PulseIntelligence() {
                 <div className="text-xs text-slate-200">Signal to Execution</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-white">166</div>
+                <div className="text-2xl font-bold text-white">170</div>
                 <div className="text-xs text-slate-200">Pre-Built Strategic Playbooks</div>
               </div>
               <div>

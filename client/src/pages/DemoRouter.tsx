@@ -179,7 +179,7 @@ export default function DemoRouter() {
               className="text-slate-300 border-slate-700 hover:bg-slate-800"
               data-testid="button-explore-playbooks"
             >
-              Browse 166 Playbooks →
+              Browse 170 Playbooks →
             </Button>
           </div>
 

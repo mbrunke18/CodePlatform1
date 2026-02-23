@@ -2,7 +2,7 @@
  * Production-Ready Trigger Seeding
  * 
  * Seeds all 92+ intelligence signal data points as triggers
- * and links them to appropriate playbooks from the 166 playbook library.
+ * and links them to appropriate playbooks from the 170 playbook library.
  */
 
 import { db } from '../db';

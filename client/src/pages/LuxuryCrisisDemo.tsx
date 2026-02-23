@@ -322,7 +322,7 @@ export default function LuxuryCrisisDemo() {
                   onClick={() => window.location.href = '/playbook-library'}
                   data-testid="button-explore-playbooks"
                 >
-                  Explore All 166 Playbooks
+                  Explore All 170 Playbooks
                   <ChevronRight className="h-5 w-5 ml-2" />
                 </Button>
               </div>

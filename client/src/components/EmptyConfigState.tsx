@@ -50,7 +50,7 @@ const configInfo = {
   playbooks: {
     icon: Layers,
     title: 'No Playbooks Customized',
-    description: 'Customize playbooks from our library of 166 templates to match your organization\'s processes.',
+    description: 'Customize playbooks from our library of 170 templates to match your organization\'s processes.',
     actionPath: '/playbook-customization',
     actionLabel: 'Customize Playbooks',
     color: 'text-green-500',

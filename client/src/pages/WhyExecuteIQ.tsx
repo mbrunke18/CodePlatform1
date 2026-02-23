@@ -86,7 +86,7 @@ export default function WhyExecuteIQ() {
               <p className="text-sm text-muted-foreground">Major Firms Agree</p>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-1">166</div>
+              <div className="text-3xl md:text-4xl font-bold text-primary mb-1">170</div>
               <p className="text-sm text-muted-foreground">Pre-Built Playbooks</p>
             </div>
             <div>
@@ -229,7 +229,7 @@ export default function WhyExecuteIQ() {
           <Card className="bg-white/10 border-white/20 backdrop-blur mb-12">
             <CardContent className="p-8 md:p-12">
               <p className="text-lg md:text-xl text-blue-50 leading-relaxed mb-8">
-                ExecuteIQ is the execution infrastructure layer: 166 playbooks with governance, decision rights, and workflows pre-defined. Customizable to your organization. Build your own for unique situations. 12 minutes from trigger to execution. The infrastructure that makes AI actually work.
+                ExecuteIQ is the execution infrastructure layer: 170 playbooks with governance, decision rights, and workflows pre-defined. Customizable to your organization. Build your own for unique situations. 12 minutes from trigger to execution. The infrastructure that makes AI actually work.
               </p>
 
               <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -237,7 +237,7 @@ export default function WhyExecuteIQ() {
                   <div className="w-14 h-14 mx-auto mb-4 bg-blue-500/20 rounded-2xl flex items-center justify-center">
                     <BookOpen className="h-7 w-7 text-blue-400" />
                   </div>
-                  <div className="text-3xl font-bold text-white mb-1">166</div>
+                  <div className="text-3xl font-bold text-white mb-1">170</div>
                   <p className="text-sm text-blue-200">Pre-built playbooks</p>
                 </div>
                 <div className="text-center p-6 bg-white/5 rounded-2xl border border-white/10">

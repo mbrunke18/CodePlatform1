@@ -66,7 +66,7 @@ const IDEA_STORY = [
   {
     id: 2,
     beat: "IDENTIFY",
-    title: "166 Playbooks. Zero Blank Pages.",
+    title: "170 Playbooks. Zero Blank Pages.",
     subtitle: "Build your depth chart before the game starts",
     phase: "IDENTIFY",
     phaseColor: "bg-violet-500",
@@ -74,10 +74,10 @@ const IDEA_STORY = [
     color: "text-violet-400",
     bgColor: "bg-violet-500/20",
     time: 30,
-    description: "Unlike crisis tools or PM platforms, ExecuteIQ comes with 166 battle-tested playbooks across 9 domains. OFFENSE (M&A, Market Entry, Product Launch), DEFENSE (Crisis, Cyber, Regulatory), SPECIAL TEAMS (Digital Transformation, Competitive Response, AI Governance).",
-    investorHighlight: "This is our moat. 166 playbooks = 20+ years of Fortune 500 execution experience. Competitors would need years to replicate.",
+    description: "Unlike crisis tools or PM platforms, ExecuteIQ comes with 170 battle-tested playbooks across 9 domains. OFFENSE (M&A, Market Entry, Product Launch), DEFENSE (Crisis, Cyber, Regulatory), SPECIAL TEAMS (Digital Transformation, Competitive Response, AI Governance).",
+    investorHighlight: "This is our moat. 170 playbooks = 20+ years of Fortune 500 execution experience. Competitors would need years to replicate.",
     metrics: [
-      { label: "Playbooks", value: "166" },
+      { label: "Playbooks", value: "170" },
       { label: "Domains", value: "9" },
       { label: "Categories", value: "3" }
     ],
@@ -212,7 +212,7 @@ const STAKEHOLDER_ACKNOWLEDGMENTS = [
 ];
 
 const MOAT_COMPONENTS = [
-  { icon: BookOpen, title: "166 Playbooks", description: "20+ years encoded" },
+  { icon: BookOpen, title: "170 Playbooks", description: "20+ years encoded" },
   { icon: LineChart, title: "Predictive AI", description: "90-day forecasting" },
   { icon: GitBranch, title: "Integration Layer", description: "Bi-directional PM sync" },
   { icon: Brain, title: "Institutional Data", description: "Execution history" },
@@ -320,7 +320,7 @@ export default function InvestorDemo() {
               ExecuteIQ: The Strategic Execution Operating System
             </h1>
             <p className="text-lg text-slate-200">
-              First mover in $15B+ SEOS category. 166 playbooks. 12-minute execution.
+              First mover in $15B+ SEOS category. 170 playbooks. 12-minute execution.
             </p>
           </div>
 

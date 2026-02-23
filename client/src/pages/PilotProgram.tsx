@@ -39,7 +39,7 @@ const pilotPhases = [
     activities: [
       'Executive sponsor alignment session',
       'Integration setup (Jira, Slack/Teams)',
-      'Select 3-5 pilot playbooks from 166 library',
+      'Select 3-5 pilot playbooks from 170 library',
       'Configure signal monitoring for pilot triggers',
       'Baseline current response metrics'
     ],
@@ -99,7 +99,7 @@ const pilotInclusions = [
     icon: Layers,
     items: [
       'Full ExecuteIQ platform access for pilot team (up to 25 users)',
-      '5 customizable playbooks from 166 library',
+      '5 customizable playbooks from 170 library',
       'Signal monitoring for 3 intelligence categories',
       'Command Center with real-time coordination'
     ]

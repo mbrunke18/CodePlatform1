@@ -28,7 +28,7 @@ export default function MyPlaybooksPage() {
               <BookOpen className="w-12 h-12 text-muted-foreground mb-4" />
               <h3 className="text-lg font-semibold mb-2">No playbooks yet</h3>
               <p className="text-muted-foreground text-center mb-4 max-w-md">
-                Create your first playbook by customizing one of our 166 pre-built templates
+                Create your first playbook by customizing one of our 170 pre-built templates
               </p>
               <Link href="/identify/playbooks">
                 <Button>Browse Playbook Library</Button>

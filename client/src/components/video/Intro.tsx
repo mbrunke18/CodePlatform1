@@ -115,7 +115,7 @@ export function Intro({ progress }: SceneProps) {
           className="mt-8 pt-6 border-t border-white/10"
         >
           <p className="text-[#D4AF37] text-2xl font-bold">12 Minutes to Execution</p>
-          <p className="text-[#00A8A8] text-sm mt-2">166 playbooks • Pre-defined governance • 9 strategic domains</p>
+          <p className="text-[#00A8A8] text-sm mt-2">170 playbooks • Pre-defined governance • 9 strategic domains</p>
         </motion.div>
       </div>
       

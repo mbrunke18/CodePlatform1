@@ -430,7 +430,7 @@ app.use((req, res, next) => {
             .select({ count: count() })
             .from(playbookLibrary);
           const playbookCount = Number(result?.count || 0);
-          const REQUIRED_PLAYBOOK_COUNT = 166; // Updated: 148 original + 18 AI Governance playbooks
+          const REQUIRED_PLAYBOOK_COUNT = 170; // Updated: 148 original + 18 AI Governance playbooks + 4 additional
 
           if (playbookCount < REQUIRED_PLAYBOOK_COUNT) {
             logger.info(
@@ -456,7 +456,7 @@ app.use((req, res, next) => {
             }
             await seedPlaybookLibrary();
             logger.info(
-              "✅ Database seeding completed with all 166 playbooks (including AI Governance)!",
+              "✅ Database seeding completed with all 170 playbooks (including AI Governance)!",
             );
           } else {
             logger.info(

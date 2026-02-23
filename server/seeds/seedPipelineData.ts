@@ -197,7 +197,7 @@ export async function seedPipelineData() {
   if (Number(taskSeqCount.cnt) > 0) {
     console.log(`[Seed] Playbook task sequences already seeded (${taskSeqCount.cnt} rows). Skipping.`);
   } else {
-    console.log("[Seed] Seeding playbook task sequences for 166 playbooks...");
+    console.log("[Seed] Seeding playbook task sequences for 170 playbooks...");
 
     const playbooks = await db.execute(sql`
       SELECT pl.id, pl.playbook_number, pl.name, pl.strategic_category, pd.name as domain_name
@@ -272,7 +272,7 @@ export async function seedPipelineData() {
         findings: [
           { finding: "Palantir AIP expanding into operational execution workflows", impact: "high", confidence: 0.87 },
           { finding: "McKinsey launching Lilli-powered execution advisory service", impact: "medium", confidence: 0.82 },
-          { finding: "No competitor offers pre-built 166-playbook library with domain expertise", impact: "high", confidence: 0.95 },
+          { finding: "No competitor offers pre-built 170-playbook library with domain expertise", impact: "high", confidence: 0.95 },
           { finding: "Average competitor response coordination time exceeds 4 hours", impact: "high", confidence: 0.90 },
         ],
         recommendations: {

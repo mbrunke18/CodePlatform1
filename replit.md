@@ -1,7 +1,7 @@
 # ExecuteIQ - Strategic Execution OS
 
 ## Overview
-ExecuteIQ is the Strategic Execution OS for Fortune 1000 companies, designed to transform how leaders balance transformation and stability across 9 strategic domains simultaneously. It streamlines strategic execution by eliminating the extensive time organizations spend getting organized after a strategic event. The platform utilizes AI-driven trigger monitoring and an extensive library of 166 strategic playbooks. ExecuteIQ integrates with existing tools like Jira, automating project creation, task assignment, document staging, and budget allocation within 12 minutes of a trigger. It operates on the IDEA Framework™ (IDENTIFY, DETECT, EXECUTE, ADVANCE), fostering a human-AI partnership where AI recommends and humans make final decisions. ExecuteIQ aims to be "The Execution Infrastructure Enterprises Are Missing," accelerating execution, saving time, and reducing costs in strategic initiatives.
+ExecuteIQ is the Strategic Execution OS for Fortune 1000 companies, designed to transform how leaders balance transformation and stability across 9 strategic domains simultaneously. It streamlines strategic execution by eliminating the extensive time organizations spend getting organized after a strategic event. The platform utilizes AI-driven trigger monitoring and an extensive library of 170 strategic playbooks. ExecuteIQ integrates with existing tools like Jira, automating project creation, task assignment, document staging, and budget allocation within 12 minutes of a trigger. It operates on the IDEA Framework™ (IDENTIFY, DETECT, EXECUTE, ADVANCE), fostering a human-AI partnership where AI recommends and humans make final decisions. ExecuteIQ aims to be "The Execution Infrastructure Enterprises Are Missing," accelerating execution, saving time, and reducing costs in strategic initiatives.
 
 ## User Preferences
 - Preferred communication style: Simple, everyday language
@@ -25,11 +25,11 @@ ExecuteIQ is built around the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE
 
 **Technical Implementations & Feature Specifications:**
 - **IDEA Framework Phases:**
-    - **IDENTIFY (ExecuteIQ Playbook™):** Enables building and customizing strategic playbooks from 166 templates across 9 strategic domains.
+    - **IDENTIFY (ExecuteIQ Playbook™):** Enables building and customizing strategic playbooks from 170 templates across 9 strategic domains.
     - **DETECT (ExecuteIQ Signal™):** Provides AI-powered pattern matching, competitive intelligence aggregation, early warning dashboards, and human-triggered playbook activation.
     - **EXECUTE (ExecuteIQ Compass™):** Orchestrates coordinated responses within 12 minutes, leveraging pre-approved budgets and enterprise integrations, managed via a Command Center.
     - **ADVANCE (ExecuteIQ Retrospect™):** Facilitates institutional learning by capturing outcomes, conducting AI-powered analysis, and suggesting playbook refinements.
-- **Strategic Domains:** Covers 9 domains, categorized into OFFENSE (Market Entry, M&A, Product Launch), DEFENSE (Crisis, Cyber, Regulatory), and SPECIAL TEAMS (Digital Transformation, Competitive Response, AI Governance), comprising 166 playbooks. The AI Governance domain includes 18 playbooks and a Foundational AI Principles Framework.
+- **Strategic Domains:** Covers 9 domains, categorized into OFFENSE (Market Entry, M&A, Product Launch), DEFENSE (Crisis, Cyber, Regulatory), and SPECIAL TEAMS (Digital Transformation, Competitive Response, AI Governance), comprising 170 playbooks (58 OFFENSE, 58 DEFENSE, 54 SPECIAL TEAMS). The AI Governance domain includes 18 playbooks and a Foundational AI Principles Framework.
 - **Execution Plan Sync & Integration Architecture:** Employs an `ExecutionPlanSyncService` for bi-directional synchronization with various project management tools, a `DocumentTemplateEngine` for auto-generating documents, and a `FileExportService` for multiple file formats.
 - **Authentication:** Uses Replit OIDC integration with session management via PostgreSQL.
 - **New User Journey:** A 7-step guided onboarding experience.

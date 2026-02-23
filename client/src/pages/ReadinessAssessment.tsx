@@ -77,7 +77,7 @@ const DOMAIN_CONFIG = {
     label: "DEFENSE",
     icon: Shield,
     color: "red",
-    playbooks: "56 Playbooks",
+    playbooks: "58 Playbooks",
     categories: "Crisis \u2022 Cyber \u2022 Regulatory",
     tagline: "How ready are you to contain threats?",
     bg: "bg-red-500",
@@ -93,7 +93,7 @@ const DOMAIN_CONFIG = {
     label: "SPECIAL TEAMS",
     icon: Settings,
     color: "purple",
-    playbooks: "52 Playbooks",
+    playbooks: "54 Playbooks",
     categories: "Digital Transformation \u2022 AI Governance",
     tagline: "How effectively do you execute change?",
     bg: "bg-purple-500",
@@ -802,7 +802,7 @@ export default function ReadinessAssessment() {
                   variant="outline"
                   className="text-lg px-10 py-7 border-slate-600 text-slate-200 hover:bg-slate-800 bg-transparent"
                 >
-                  See Our 166 Playbooks
+                  See Our 170 Playbooks
                 </Button>
               </Link>
               <Button

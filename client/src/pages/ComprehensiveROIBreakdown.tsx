@@ -103,7 +103,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
             </CardHeader>
             <CardContent>
               <p className="text-sm text-green-700 dark:text-green-300">
-                Across 166 strategic playbooks
+                Across 170 strategic playbooks
               </p>
             </CardContent>
           </Card>

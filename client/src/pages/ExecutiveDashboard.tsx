@@ -679,7 +679,7 @@ export default function ExecutiveDashboard() {
                         <Target className="h-5 w-5 text-blue-600" />
                         <div>
                           <div className="font-medium">Configure More Playbooks</div>
-                          <p className="text-sm text-slate-300">Add playbooks from our 166-template library</p>
+                          <p className="text-sm text-slate-300">Add playbooks from our 170-template library</p>
                         </div>
                       </div>
                       <ChevronRight className="h-5 w-5 text-slate-600 dark:text-slate-200" />
@@ -715,7 +715,7 @@ export default function ExecutiveDashboard() {
                         <Layers className="h-5 w-5 text-indigo-600" />
                         <div>
                           <div className="font-medium">Operating Model Alignment</div>
-                          <p className="text-sm text-slate-300">Map your structure to M's 166 playbooks using McKinsey's framework</p>
+                          <p className="text-sm text-slate-300">Map your structure to M's 170 playbooks using McKinsey's framework</p>
                         </div>
                       </div>
                       <ChevronRight className="h-5 w-5 text-slate-600 dark:text-slate-200" />

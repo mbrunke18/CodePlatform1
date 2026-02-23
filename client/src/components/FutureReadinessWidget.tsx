@@ -178,7 +178,7 @@ export default function FutureReadinessWidget({ organizationId }: { organization
           </div>
           <div className="text-center">
             <div className="text-2xl font-bold text-green-600 dark:text-green-400" data-testid="text-playbooks-ready">
-              {readinessData?.playbooksReady || 166}/{readinessData?.playbooksTotal || 166}
+              {readinessData?.playbooksReady || 170}/{readinessData?.playbooksTotal || 170}
             </div>
             <div className="text-xs text-muted-foreground mt-1">Playbooks Ready</div>
           </div>

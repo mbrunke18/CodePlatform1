@@ -75,7 +75,7 @@ function InvestorPresentation() {
           The Strategic Execution OS<br />for Fortune 1000
         </h1>
         <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mb-12">
-          166 pre-built playbooks that transform enterprise response from 72 hours to 12 minutes
+          170 pre-built playbooks that transform enterprise response from 72 hours to 12 minutes
         </p>
         <div className="flex items-center gap-2 text-slate-300 text-lg">
           <span className="font-semibold text-white">Martin Brunke</span>
@@ -169,7 +169,7 @@ function InvestorPresentation() {
           ))}
         </div>
         <p className="text-slate-300 text-center">
-          <span className="text-teal-400 font-semibold">166 playbooks</span> ready to deploy across <span className="text-teal-400 font-semibold">9 strategic domains</span>.
+          <span className="text-teal-400 font-semibold">170 playbooks</span> ready to deploy across <span className="text-teal-400 font-semibold">9 strategic domains</span>.
         </p>
       </div>
     ),
@@ -221,7 +221,7 @@ function InvestorPresentation() {
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">The Platform</p>
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
-          166 playbooks across three domains
+          170 playbooks across three domains
         </h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl w-full">
           <div className="bg-slate-900/80 border border-green-500/30 rounded-xl p-8">
@@ -240,7 +240,7 @@ function InvestorPresentation() {
             <div className="flex items-center gap-3 mb-4">
               <Shield className="w-6 h-6 text-red-400" />
               <h3 className="text-xl font-bold text-red-400">DEFENSE</h3>
-              <span className="ml-auto text-2xl font-bold text-red-400">56</span>
+              <span className="ml-auto text-2xl font-bold text-red-400">58</span>
             </div>
             <ul className="space-y-2 text-slate-200 text-sm">
               {['Crisis management', 'Cybersecurity response', 'Regulatory compliance', 'Reputation protection', 'Supply chain disruption', 'Legal & litigation'].map((item, i) => (
@@ -252,7 +252,7 @@ function InvestorPresentation() {
             <div className="flex items-center gap-3 mb-4">
               <Activity className="w-6 h-6 text-purple-400" />
               <h3 className="text-xl font-bold text-purple-400">SPECIAL TEAMS</h3>
-              <span className="ml-auto text-2xl font-bold text-purple-400">52</span>
+              <span className="ml-auto text-2xl font-bold text-purple-400">54</span>
             </div>
             <ul className="space-y-2 text-slate-200 text-sm">
               {['Digital transformation', 'Culture change', 'Talent acquisition', 'ESG & sustainability', 'Innovation pipeline', 'Board governance'].map((item, i) => (
@@ -404,7 +404,7 @@ function InvestorPresentation() {
           {[
             { tier: 'Starter', price: '$250K', desc: 'Single domain (Defense)', features: ['25 playbooks', '100 signals monitored', 'Standard integrations', 'Email support'] },
             { tier: 'Professional', price: '$750K', desc: 'Multi-domain expansion', features: ['100 playbooks', '500+ signals monitored', 'Full integration suite', 'Dedicated CSM'], highlight: true },
-            { tier: 'Enterprise', price: '$1.5M+', desc: 'Full platform deployment', features: ['166+ playbooks', '847+ signals monitored', 'Custom AI models', 'White-glove onboarding'] },
+            { tier: 'Enterprise', price: '$1.5M+', desc: 'Full platform deployment', features: ['170+ playbooks', '847+ signals monitored', 'Custom AI models', 'White-glove onboarding'] },
           ].map((t, i) => (
             <div key={i} className={`rounded-xl p-6 ${t.highlight ? 'bg-teal-950/40 border-2 border-teal-500/50' : 'bg-slate-900/80 border border-slate-800'}`}>
               {t.highlight && <div className="text-teal-400 text-xs font-bold uppercase mb-2">TARGET</div>}
@@ -447,7 +447,7 @@ function InvestorPresentation() {
           <div>
             <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2"><Rocket className="w-5 h-5 text-teal-400" /> Product Built</h3>
             <div className="space-y-3">
-              {['166 playbooks developed and tested', 'IDEA Framework™ fully implemented', 'AI signal detection engine live', 'Enterprise-grade security & compliance', 'Integration layer (Slack, Teams, ServiceNow)'].map((item, i) => (
+              {['170 playbooks developed and tested', 'IDEA Framework™ fully implemented', 'AI signal detection engine live', 'Enterprise-grade security & compliance', 'Integration layer (Slack, Teams, ServiceNow)'].map((item, i) => (
                 <div key={i} className="flex items-center gap-3 text-slate-200">
                   <CheckCircle2 className="w-5 h-5 text-green-400 shrink-0" />
                   <span>{item}</span>
@@ -730,7 +730,7 @@ function InvestorPresentation() {
         <div className="grid grid-cols-4 gap-6 max-w-3xl w-full my-10">
           {[
             { value: '340x', label: 'Faster' },
-            { value: '166', label: 'Playbooks' },
+            { value: '170', label: 'Playbooks' },
             { value: '10.3%', label: 'Revenue Impact' },
             { value: '$20B', label: 'TAM' },
           ].map((s, i) => (

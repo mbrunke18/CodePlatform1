@@ -39,7 +39,7 @@ export default function NavigationBar() {
 
   const productLinks = [
     { title: "Executive Dashboard", href: "/executive-dashboard", description: "Unified command center: FRI, velocity, preparedness", featured: true },
-    { title: "Playbook Library", href: "/playbook-library", description: "166 pre-built strategic playbooks" },
+    { title: "Playbook Library", href: "/playbook-library", description: "170 pre-built strategic playbooks" },
     { title: "Live Demos", href: "/demo-hub", description: "Watch ExecuteIQ in action" },
     { title: "Pricing", href: "/calculator", description: "ROI calculator" },
   ];
@@ -52,7 +52,7 @@ export default function NavigationBar() {
 
   const dynamicStrategyLinks = [
     { title: "Command Center", href: "/command-center", description: "Real-time execution coordination", featured: true },
-    { title: "Playbook Library", href: "/playbook-library", description: "166 strategic playbooks" },
+    { title: "Playbook Library", href: "/playbook-library", description: "170 strategic playbooks" },
     { title: "Foresight Radar", href: "/foresight-radar", description: "Weak signal detection & Oracle AI" },
     { title: "Future Gym", href: "/future-gym", description: "Strategic training & simulations" },
     { title: "Living Playbooks", href: "/living-playbooks", description: "Self-learning execution guides" },

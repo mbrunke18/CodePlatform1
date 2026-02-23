@@ -293,7 +293,7 @@ export default function OurStory() {
             <ul className="space-y-3 my-8">
               <li className="flex items-start gap-3">
                 <Rocket className="h-6 w-6 text-purple-600 flex-shrink-0 mt-1" />
-                <span><strong>166 battle-tested playbooks</strong> across 9 strategic domains</span>
+                <span><strong>170 battle-tested playbooks</strong> across 9 strategic domains</span>
               </li>
               <li className="flex items-start gap-3">
                 <Rocket className="h-6 w-6 text-purple-600 flex-shrink-0 mt-1" />
@@ -341,7 +341,7 @@ export default function OurStory() {
                 "Sense, Adapt, Learn: AI monitors 12 intelligence signals 24/7",
                 "Pre-Committed Resources: Budgets pre-approved for rapid deployment",
                 "Distributed Decision Rights: Right people empowered to act instantly",
-                "Scenario-Based Planning: 166 playbooks covering strategic landscape",
+                "Scenario-Based Planning: 170 playbooks covering strategic landscape",
                 "Continuous Calibration: Learning loops refine every response",
                 "Modular Execution: Plug-and-play components for any situation"
               ].map((principle, i) => (

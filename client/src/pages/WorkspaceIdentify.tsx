@@ -24,12 +24,12 @@ import {
 const workspaceTools = [
   {
     title: "Playbook Library",
-    description: "Browse and select from 166 pre-built strategic playbooks across 9 domains",
+    description: "Browse and select from 170 pre-built strategic playbooks across 9 domains",
     path: "/playbooks",
     icon: BookOpen,
     color: "text-poise-gold",
     bgColor: "bg-poise-gold/10",
-    stats: "166 playbooks",
+    stats: "170 playbooks",
     featured: true
   },
   {
@@ -81,8 +81,8 @@ const workspaceTools = [
 
 const domainCategories = [
   { name: "OFFENSE", domains: ["Market Entry", "M&A", "Product Launch"], count: 58, color: "text-emerald-500", icon: Rocket },
-  { name: "DEFENSE", domains: ["Crisis", "Cyber", "Regulatory"], count: 56, color: "text-red-500", icon: Shield },
-  { name: "SPECIAL TEAMS", domains: ["Digital Transformation", "Competitive Response", "AI Governance"], count: 52, color: "text-blue-500", icon: Globe }
+  { name: "DEFENSE", domains: ["Crisis", "Cyber", "Regulatory"], count: 58, color: "text-red-500", icon: Shield },
+  { name: "SPECIAL TEAMS", domains: ["Digital Transformation", "Competitive Response", "AI Governance"], count: 54, color: "text-blue-500", icon: Globe }
 ];
 
 export default function WorkspaceIdentify() {

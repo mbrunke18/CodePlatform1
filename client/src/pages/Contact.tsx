@@ -366,7 +366,7 @@ export default function Contact() {
               size="lg"
               data-testid="button-view-scenarios"
             >
-              View 166 Playbooks
+              View 170 Playbooks
             </Button>
             <Button
               onClick={() => setLocation("/our-story")}

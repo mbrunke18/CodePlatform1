@@ -50,7 +50,7 @@ export default function DecisionVelocityPage() {
                 <div className="bg-white dark:bg-slate-900 rounded-lg p-4 border border-amber-200 dark:border-amber-800">
                   <div className="text-sm font-bold text-amber-700 dark:text-amber-300 mb-3">Pre-Defined Governance</div>
                   <div className="space-y-2 text-xs">
-                    <div><strong>166 Playbooks:</strong> Across 9 strategic domains</div>
+                    <div><strong>170 Playbooks:</strong> Across 9 strategic domains</div>
                     <div><strong>Roles Mapped:</strong> Before the situation hits</div>
                     <div><strong>Accountability:</strong> Clear ownership structure</div>
                     <div className="text-green-600 dark:text-green-400 font-semibold mt-2">✓ "Governance must be real-time, embedded" — McKinsey</div>
@@ -82,7 +82,7 @@ export default function DecisionVelocityPage() {
                 <div className="text-sm font-bold text-gray-900 dark:text-white mb-2">ExecuteIQ = The Infrastructure Layer</div>
                 <div className="text-xs text-gray-700 dark:text-gray-300">
                   Companies like Microsoft, DBS Bank, and Amazon built execution infrastructure over 5+ years. 
-                  ExecuteIQ gives you that infrastructure on day one—166 playbooks, pre-defined governance, 12 minutes to execution.
+                  ExecuteIQ gives you that infrastructure on day one—170 playbooks, pre-defined governance, 12 minutes to execution.
                 </div>
               </div>
             </div>

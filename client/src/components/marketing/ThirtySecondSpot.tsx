@@ -133,7 +133,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3 }}
               className="text-lg text-slate-300 mb-6"
             >
-              ExecuteIQ: 166 playbooks for offense, defense, and special teams.
+              ExecuteIQ: 170 playbooks for offense, defense, and special teams.
             </motion.p>
             
             <motion.div
@@ -428,7 +428,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3, delay: 0.6 }}
               className="text-lg text-slate-300"
             >
-              166 playbooks. Instant coordination.
+              170 playbooks. Instant coordination.
               <br />Whether you're playing offense, defense, or changing the game.
             </motion.p>
           </div>

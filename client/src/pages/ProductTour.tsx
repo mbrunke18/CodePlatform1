@@ -91,7 +91,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 8000,
     title: 'IDENTIFY',
     subtitle: 'Build Your Depth Chart',
-    narration: 'Build your strategic arsenal. 166 pre-built playbooks across 9 domains — ready to deploy instantly when needed.',
+    narration: 'Build your strategic arsenal. 170 pre-built playbooks across 9 domains — ready to deploy instantly when needed.',
     visual: 'identify'
   },
   {
@@ -351,7 +351,7 @@ function ProductTour() {
             transition={{ delay: 0.9 }}
             className="text-center"
           >
-            <p className="text-4xl font-bold text-teal-400">166</p>
+            <p className="text-4xl font-bold text-teal-400">170</p>
             <p className="text-slate-600 dark:text-slate-200">Playbooks</p>
           </motion.div>
         </div>
@@ -364,7 +364,7 @@ function ProductTour() {
       prepare: {
         icon: BookOpen,
         color: 'blue',
-        items: ['166 Strategic Playbooks', '9 Strategic Domains', 'Pre-approved Budgets', 'Stakeholder Assignments']
+        items: ['170 Strategic Playbooks', '9 Strategic Domains', 'Pre-approved Budgets', 'Stakeholder Assignments']
       },
       monitor: {
         icon: Radio,
@@ -544,7 +544,7 @@ function ProductTour() {
           
           {[
             { label: 'Signal Detection', scores: ['Custom Build', 'No', '✓ 16 Categories'] },
-            { label: 'Pre-built Playbooks', scores: ['No', 'No', '✓ 166 Ready'] },
+            { label: 'Pre-built Playbooks', scores: ['No', 'No', '✓ 170 Ready'] },
             { label: 'Execution Engine', scores: ['No', 'No', '✓ 12-Minute'] },
             { label: 'Closed-Loop Learning', scores: ['Manual', 'Manual', '✓ AI-Powered'] }
           ].map((row, i) => (
@@ -612,7 +612,7 @@ function ProductTour() {
               data-testid="button-explore-playbooks"
             >
               <BookOpen className="w-5 h-5 mr-2" />
-              Explore 166 Playbooks
+              Explore 170 Playbooks
             </Button>
             <Button 
               variant="outline" 

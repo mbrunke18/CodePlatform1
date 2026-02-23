@@ -44,7 +44,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
     },
     { 
       icon: Zap, 
-      value: "166", 
+      value: "170", 
       label: "Playbook Templates",
       comparison: "Strategic response frameworks",
       color: "text-orange-400"
@@ -56,7 +56,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
     "Strategic Work Breakdown Structure with phases & dependencies",
     "All 5 AI Intelligence Modules in action",
     "Trigger-activated coordinated execution",
-    "166 strategic playbook templates across 9 operational domains",
+    "170 strategic playbook templates across 9 operational domains",
     "Interactive ROI calculations showing 360x velocity",
     "Practice drills and strategic rehearsals"
   ];

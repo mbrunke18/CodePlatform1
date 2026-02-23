@@ -272,7 +272,7 @@ export default function SizzleReel() {
                   className="mb-8"
                 >
                   <span className="text-xl md:text-2xl text-slate-300">
-                    166 pre-built playbooks across three strategic categories.
+                    170 pre-built playbooks across three strategic categories.
                   </span>
                 </motion.div>
                 

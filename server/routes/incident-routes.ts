@@ -415,7 +415,7 @@ Return ONLY raw JSON (no markdown, no code fences):
   "domain": "offense or defense or special_teams",
   "domain_confidence": 0.95,
   "incident_type": "Specific type label like Market Entry Delay, Ransomware Attack, Digital Transformation Stall",
-  "matched_playbook": {"code": "#MKT-001 or #SEC-001 or #TRN-001", "name": "Matched playbook name from 166 library", "exists_in_library": true},
+  "matched_playbook": {"code": "#MKT-001 or #SEC-001 or #TRN-001", "name": "Matched playbook name from 170 library", "exists_in_library": true},
   "severity": "critical or high or medium",
   "situation_summary": "2-3 sentence summary of what happened",
   "what_went_wrong": ["Array of 4-6 specific execution failures", "Be specific to their description"],

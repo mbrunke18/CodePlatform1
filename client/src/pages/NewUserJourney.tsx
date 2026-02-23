@@ -433,7 +433,7 @@ export default function NewUserJourney() {
                       <div className="w-12 h-12 mx-auto rounded-lg bg-green-500/20 flex items-center justify-center mb-4">
                         <Layers className="h-6 w-6 text-green-400" />
                       </div>
-                      <div className="text-2xl font-bold text-white mb-1">166</div>
+                      <div className="text-2xl font-bold text-white mb-1">170</div>
                       <div className="text-sm text-slate-200">Ready-to-use playbooks</div>
                     </Card>
                     <Card className="bg-slate-800/50 border-slate-700 text-center p-6">
@@ -709,7 +709,7 @@ export default function NewUserJourney() {
                       </div>
                       <div>
                         <p className="text-sm text-slate-300">
-                          You'll have access to all <span className="text-white font-semibold">166 playbooks</span> after setup.
+                          You'll have access to all <span className="text-white font-semibold">170 playbooks</span> after setup.
                           These are just recommended starting points.
                         </p>
                       </div>

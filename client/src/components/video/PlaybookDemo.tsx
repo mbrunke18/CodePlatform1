@@ -32,7 +32,7 @@ export function PlaybookDemo({ progress }: SceneProps) {
           >
             <BookOpen className="w-6 h-6 text-[#D4AF37]" />
           </motion.div>
-          <TextPunch text="166 Pre-Built Playbooks" size="lg" className="text-white" />
+          <TextPunch text="170 Pre-Built Playbooks" size="lg" className="text-white" />
         </div>
 
         <motion.p
@@ -79,7 +79,7 @@ export function PlaybookDemo({ progress }: SceneProps) {
         >
           <div className="inline-flex items-center gap-6 bg-white/5 rounded-xl px-6 py-3">
             <div className="text-center">
-              <p className="text-2xl font-bold text-[#D4AF37]">166</p>
+              <p className="text-2xl font-bold text-[#D4AF37]">170</p>
               <p className="text-xs text-white/50">Playbooks</p>
             </div>
             <div className="w-px h-8 bg-white/20" />
@@ -104,7 +104,7 @@ export function PlaybookDemo({ progress }: SceneProps) {
       
       <NarrationBox 
         headline="Pre-Built Strategic Playbooks"
-        description="166 battle-tested playbooks eliminate the chaos of figuring out 'who does what' when a crisis or opportunity hits."
+        description="170 battle-tested playbooks eliminate the chaos of figuring out 'who does what' when a crisis or opportunity hits."
         delay={0.5}
       />
     </div>

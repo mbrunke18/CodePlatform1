@@ -85,7 +85,7 @@ export default function PlatformVisual() {
       color: "from-blue-500 to-cyan-600",
       borderColor: "border-blue-500",
       bgColor: "bg-blue-500",
-      items: ["166 playbooks scanned", "Best fit selected", "Customized to context", "Dependencies mapped"],
+      items: ["170 playbooks scanned", "Best fit selected", "Customized to context", "Dependencies mapped"],
     },
     {
       letter: "E",
@@ -129,7 +129,7 @@ export default function PlatformVisual() {
 
   const valueMetrics = [
     { value: "72→12", label: "min response", suffix: "" },
-    { value: "166", label: "playbooks ready", suffix: "" },
+    { value: "170", label: "playbooks ready", suffix: "" },
     { value: "100%", label: "role clarity", suffix: "" },
     { value: "Real-time", label: "AI visibility", suffix: "" },
   ];
@@ -252,7 +252,7 @@ export default function PlatformVisual() {
             >
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-poise-gold/10 border border-poise-gold/30">
                 <BookOpen className="h-4 w-4 text-poise-gold" />
-                <span className="text-sm font-bold text-poise-gold">166 PLAYBOOKS</span>
+                <span className="text-sm font-bold text-poise-gold">170 PLAYBOOKS</span>
                 <span className="text-xs text-slate-400 dark:text-slate-300">•</span>
                 <span className="text-sm font-bold text-poise-gold">9 DOMAINS</span>
               </span>
@@ -376,7 +376,7 @@ export default function PlatformVisual() {
             custom={14}
           >
             <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-4 uppercase tracking-wide">
-              166 Playbooks • 9 Domains
+              170 Playbooks • 9 Domains
             </h4>
             <div className="flex flex-wrap gap-1.5">
               {domains.map((domain) => (

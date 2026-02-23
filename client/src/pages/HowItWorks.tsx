@@ -32,9 +32,9 @@ export default function HowItWorks() {
       borderColor: "border-violet-500",
       bgLight: "bg-violet-50 dark:bg-violet-950/30",
       textColor: "text-violet-600 dark:text-violet-400",
-      description: "166 playbooks across 9 strategic domains. Governance defined. Decision rights mapped. Roles assigned. All before the situation hits. This is what McKinsey means by 'real-time, embedded governance.' It's ready before you need it.",
+      description: "170 playbooks across 9 strategic domains. Governance defined. Decision rights mapped. Roles assigned. All before the situation hits. This is what McKinsey means by 'real-time, embedded governance.' It's ready before you need it.",
       capabilities: [
-        "166 pre-built playbooks across 9 strategic domains with governance pre-defined",
+        "170 pre-built playbooks across 9 strategic domains with governance pre-defined",
         "Decision rights mapped and roles assigned before the situation arrives",
         "Stakeholders, approval chains, and resource allocations locked in advance",
         "Real-time, embedded governance ready to activate on demand"
@@ -254,7 +254,7 @@ export default function HowItWorks() {
             
             {[
               { time: "0:00", label: "Trigger Detected", description: "AI signal or human activation identifies a strategic moment — M&A announcement, cyber breach, competitive threat.", color: "emerald", icon: "signal" },
-              { time: "0:30", label: "Playbook Matched & Loaded", description: "The right playbook from 166 options is matched to the situation. Governance structure, decision rights, and task templates load instantly.", color: "emerald", icon: "match" },
+              { time: "0:30", label: "Playbook Matched & Loaded", description: "The right playbook from 170 options is matched to the situation. Governance structure, decision rights, and task templates load instantly.", color: "emerald", icon: "match" },
               { time: "1:00", label: "Stakeholder Notification Sent", description: "All relevant stakeholders — 50 to 200+ across legal, finance, ops, comms — receive coordinated notifications via Slack, Teams, or email.", color: "blue", icon: "notify" },
               { time: "3:00", label: "Stakeholders Acknowledged", description: "Response confirmations tracked in real-time. Escalation protocols activate for any non-responses. Full visibility in Command Center.", color: "blue", icon: "confirm" },
               { time: "5:00", label: "Tasks Assigned with Clear Owners", description: "Every task has a named owner, a deadline, and a decision-rights framework. No ambiguity. No duplication. Everyone knows their assignment.", color: "violet", icon: "assign" },

@@ -179,7 +179,7 @@ export default function Sitemap() {
                 <div className="text-slate-200">Industry Demos</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-purple-400 mb-2">166</div>
+                <div className="text-4xl font-bold text-purple-400 mb-2">170</div>
                 <div className="text-slate-200">Strategic Playbooks</div>
               </div>
               <div>

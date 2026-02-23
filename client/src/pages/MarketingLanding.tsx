@@ -36,7 +36,7 @@ export default function MarketingLanding() {
   useEffect(() => {
     updatePageMetadata({
       title: "ExecuteIQ - Strategic Execution Operating System | Transform Strategy into 12-Minute Execution",
-      description: "Your competitor just launched. Your board meeting is in 3 days. ExecuteIQ is the orchestration layer that transforms 72-hour strategic coordination into 12-minute coordinated execution. 166 playbooks, 5 AI modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
+      description: "Your competitor just launched. Your board meeting is in 3 days. ExecuteIQ is the orchestration layer that transforms 72-hour strategic coordination into 12-minute coordinated execution. 170 playbooks, 5 AI modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
       ogTitle: "ExecuteIQ - When Your Competitor Moves, Will You Be Ready?",
       ogDescription: "The category-defining Strategic Execution Operating System. Limited Q1 2026 pilot: 10 Fortune 1000 design partners. Identify → Detect → Execute → Advance.",
     });
@@ -95,7 +95,7 @@ export default function MarketingLanding() {
                 When a strategic trigger hits—a competitor launches, regulations shift, a cyber threat emerges, or a market opportunity appears—organizations typically <span className="text-red-300">waste 20-50 hours getting organized</span>. ExecuteIQ compresses that to <span className="text-cyan-300 font-bold">12 minutes</span>.
               </p>
               <p className="text-lg text-slate-300 mb-4 leading-relaxed max-w-4xl mx-auto">
-                Our AI monitors 216 data points across 16 intelligence categories, detecting threats and opportunities before competitors see them. When a signal breaches a threshold, ExecuteIQ automatically activates the right playbook from our library of 166 battle-tested responses: notifying stakeholders, assigning tasks, staging documents, unlocking pre-approved budgets—all in under 12 minutes.
+                Our AI monitors 216 data points across 16 intelligence categories, detecting threats and opportunities before competitors see them. When a signal breaches a threshold, ExecuteIQ automatically activates the right playbook from our library of 170 battle-tested responses: notifying stakeholders, assigning tasks, staging documents, unlocking pre-approved budgets—all in under 12 minutes.
               </p>
               <p className="text-lg text-slate-300 mb-4 leading-relaxed max-w-4xl mx-auto">
                 We're the orchestration layer between strategy and execution. <span className="text-cyan-300">AI handles detection and coordination. Executives make the decisions.</span>
@@ -106,7 +106,7 @@ export default function MarketingLanding() {
               <div className="flex items-center justify-center gap-6 text-lg text-blue-100 mb-6">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-5 w-5 text-green-400" />
-                  <span>166 Strategic Playbooks</span>
+                  <span>170 Strategic Playbooks</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-5 w-5 text-green-400" />
@@ -135,7 +135,7 @@ export default function MarketingLanding() {
                     <Badge className="mb-2 bg-violet-500 text-white border-0 text-xs">IDENTIFY</Badge>
                     <div className="text-violet-200 font-bold text-lg mb-1">ExecuteIQ Playbook™</div>
                     <p className="text-violet-100/80 text-xs">
-                      166 pre-built playbooks across 9 strategic domains. Build your depth chart before events hit.
+                      170 pre-built playbooks across 9 strategic domains. Build your depth chart before events hit.
                     </p>
                   </div>
                   <div className="bg-blue-500/20 rounded-lg p-4 border border-blue-400/30">
@@ -205,7 +205,7 @@ export default function MarketingLanding() {
                 className="underline hover:text-cyan-300 transition-colors"
                 data-testid="link-explore-playbooks"
               >
-                explore 166 playbooks
+                explore 170 playbooks
               </button>
               {" "}•{" "}
               <button 
@@ -340,7 +340,7 @@ export default function MarketingLanding() {
                       Playbook Library
                     </h3>
                     <p className="text-sm text-slate-400 dark:text-slate-300 mb-4">
-                      166 strategic playbooks across 9 operational domains covering growth, defense, transformation, and AI governance
+                      170 strategic playbooks across 9 operational domains covering growth, defense, transformation, and AI governance
                     </p>
                   </div>
                 </div>
@@ -610,7 +610,7 @@ export default function MarketingLanding() {
               See It In Action
             </Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-              166 Strategic Playbook Library
+              170 Strategic Playbook Library
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
               Enterprise-ready playbook templates across 9 operational domains. From market dynamics to technology innovation, talent leadership to AI governance—transform any strategic initiative from a 72-hour process into a 12-minute coordinated response.

@@ -112,7 +112,7 @@ export default function CrisisExposureMatrix() {
           <CardHeader>
             <CardTitle className="text-blue-900 dark:text-blue-100">90-Day Onboarding Strategy</CardTitle>
             <CardDescription className="text-blue-700 dark:text-blue-300">
-              Don't try to prepare for all 166 playbooks at once. Start with your Top 10 Critical threats.
+              Don't try to prepare for all 170 playbooks at once. Start with your Top 10 Critical threats.
             </CardDescription>
           </CardHeader>
           <CardContent className="text-blue-900 dark:text-blue-100">
@@ -201,7 +201,7 @@ export default function CrisisExposureMatrix() {
               <div className="flex items-center justify-between p-4 border rounded-lg" data-testid="card-action-library">
                 <div>
                   <p className="font-medium">Review full playbook library</p>
-                  <p className="text-sm text-muted-foreground">Explore all 166 strategic playbooks</p>
+                  <p className="text-sm text-muted-foreground">Explore all 170 strategic playbooks</p>
                 </div>
                 <Link href="/playbook-library">
                   <Button variant="outline" data-testid="button-view-library">

@@ -414,7 +414,7 @@ export default function Research() {
                       IBM found 35% cost reduction with pre-assigned teams. ExecuteIQ's playbooks 
                       include pre-assigned stakeholders for every scenario.
                     </p>
-                    <Badge variant="outline" className="text-xs">166 Playbooks Ready</Badge>
+                    <Badge variant="outline" className="text-xs">170 Playbooks Ready</Badge>
                   </div>
                 </div>
               </CardContent>
@@ -708,7 +708,7 @@ export default function Research() {
                 </div>
                 <p className="text-slate-400 text-xs mb-2">Six Insights for AI ROI</p>
                 <p className="text-slate-300 text-sm mb-3">What actually drives AI results and return.</p>
-                <p className="text-emerald-400 text-xs italic">→ ExecuteIQ's 166 playbooks are the structured execution that drives ROI</p>
+                <p className="text-emerald-400 text-xs italic">→ ExecuteIQ's 170 playbooks are the structured execution that drives ROI</p>
               </div>
             </div>
           </div>
@@ -746,7 +746,7 @@ export default function Research() {
                 </div>
                 <p className="text-slate-400 text-xs mb-2">Agentic AI Operating Model</p>
                 <p className="text-slate-300 text-sm mb-3">The operating model required to run AI at scale.</p>
-                <p className="text-emerald-400 text-xs italic">→ ExecuteIQ delivers that operating model — 166 playbooks, 9 domains, pre-defined governance</p>
+                <p className="text-emerald-400 text-xs italic">→ ExecuteIQ delivers that operating model — 170 playbooks, 9 domains, pre-defined governance</p>
               </div>
               <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">

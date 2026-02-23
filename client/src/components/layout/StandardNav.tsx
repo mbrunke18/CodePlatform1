@@ -45,7 +45,7 @@ export default function StandardNav() {
     {
       heading: "Capabilities",
       links: [
-        { label: "Playbook Library", path: "/playbooks", icon: ClipboardList, description: "166 playbooks across 9 domains" },
+        { label: "Playbook Library", path: "/playbooks", icon: ClipboardList, description: "170 playbooks across 9 domains" },
         { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "Real-time signal monitoring" },
         { label: "AI Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated trigger detection" },
         { label: "AI Radar", path: "/ai-radar", icon: Brain, description: "Predictive pattern matching" },

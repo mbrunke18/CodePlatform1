@@ -305,7 +305,7 @@ export default function KeynoteDemo() {
           className="text-2xl text-slate-600 dark:text-slate-200 max-w-4xl mb-16 leading-relaxed"
         >
           From signal detection to full organizational response in <span className="text-white font-semibold">12 minutes</span> — not 72 hours.
-          <br />166 pre-built playbooks. 9 strategic domains. AI-powered execution.
+          <br />170 pre-built playbooks. 9 strategic domains. AI-powered execution.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -314,7 +314,7 @@ export default function KeynoteDemo() {
           className="flex gap-8"
         >
           {[
-            { value: '166', label: 'Strategic Playbooks', icon: BookOpen },
+            { value: '170', label: 'Strategic Playbooks', icon: BookOpen },
             { value: '9', label: 'Strategic Domains', icon: Globe },
             { value: '<12min', label: 'Signal to Action', icon: Timer },
             { value: '30+', label: 'Enterprise Integrations', icon: Workflow },
@@ -504,7 +504,7 @@ export default function KeynoteDemo() {
             PLAYBOOK MATCHED
           </div>
           <h2 className="text-5xl font-bold text-white mb-4">The Right Playbook, Instantly</h2>
-          <p className="text-xl text-slate-600 dark:text-slate-200">AI selects from 166 pre-built playbooks across 9 strategic domains</p>
+          <p className="text-xl text-slate-600 dark:text-slate-200">AI selects from 170 pre-built playbooks across 9 strategic domains</p>
         </motion.div>
 
         <motion.div
@@ -771,7 +771,7 @@ export default function KeynoteDemo() {
 
         <div className="grid grid-cols-4 gap-6 max-w-6xl w-full">
           {[
-            { phase: 'IDENTIFY', subtitle: 'ExecuteIQ Playbook', icon: BookOpen, color: 'from-blue-600 to-blue-800', border: 'border-blue-500/30', items: ['166 strategic playbooks', '9 domains: Offense, Defense, Special Teams', 'Customizable task sequences', 'Pre-approved budget allocation', 'Role-based stakeholder mapping'] },
+            { phase: 'IDENTIFY', subtitle: 'ExecuteIQ Playbook', icon: BookOpen, color: 'from-blue-600 to-blue-800', border: 'border-blue-500/30', items: ['170 strategic playbooks', '9 domains: Offense, Defense, Special Teams', 'Customizable task sequences', 'Pre-approved budget allocation', 'Role-based stakeholder mapping'] },
             { phase: 'DETECT', subtitle: 'ExecuteIQ Signal', icon: Radio, color: 'from-amber-600 to-amber-800', border: 'border-amber-500/30', items: ['AI-powered signal monitoring', '100+ data points tracked', 'Pattern recognition engine', 'Early warning dashboard', 'Human-triggered activation'] },
             { phase: 'EXECUTE', subtitle: 'ExecuteIQ Compass', icon: Zap, color: 'from-green-600 to-green-800', border: 'border-green-500/30', items: ['12-minute coordination', '30+ enterprise integrations', 'Automated task creation', 'War room orchestration', 'Real-time stakeholder tracking'] },
             { phase: 'ADVANCE', subtitle: 'ExecuteIQ Retrospect', icon: TrendingUp, color: 'from-purple-600 to-purple-800', border: 'border-purple-500/30', items: ['Institutional learning', 'AI-powered outcome analysis', 'Playbook refinement', 'Performance benchmarking', 'Continuous improvement loop'] },

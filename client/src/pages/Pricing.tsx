@@ -359,7 +359,7 @@ export default function Pricing() {
                         { feature: "24/7 Monitoring", values: ["check", "check", "check"] },
                       ]},
                       { category: "Playbooks", rows: [
-                        { feature: "Playbook Library", values: ["166", "166", "166+Custom"] },
+                        { feature: "Playbook Library", values: ["170", "170", "170+Custom"] },
                         { feature: "Custom Playbooks", values: ["5", "Unlimited", "Unlimited"] },
                         { feature: "Playbook Versioning", values: ["check", "check", "check"] },
                       ]},
@@ -708,7 +708,7 @@ export default function Pricing() {
               data-testid="link-playbook-library"
             >
               <FileText className="h-4 w-4" />
-              Explore 166 Strategic Playbooks
+              Explore 170 Strategic Playbooks
             </button>
             <span>•</span>
             <button 

@@ -276,7 +276,7 @@ export default function FinancialRansomwareDemo() {
                   data-testid="button-explore-playbooks"
                 >
                   <Library className="w-5 h-5 mr-2" />
-                  Explore All 166 Playbooks
+                  Explore All 170 Playbooks
                 </Button>
               </Link>
             </div>

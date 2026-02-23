@@ -13,7 +13,7 @@ export default function Footer() {
     {
       title: "IDENTIFY",
       links: [
-        { label: "Playbook Library (166)", path: "/playbook-library" },
+        { label: "Playbook Library (170)", path: "/playbook-library" },
         { label: "Scenario Planning Hub", path: "/strategic" },
         { label: "Strategic Readiness Report", path: "/preparedness-report" },
         { label: "What-If Analyzer", path: "/what-if-analyzer" },
@@ -129,7 +129,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 text-center">
             <div>
-              <div className="text-xl font-bold text-poise-gold">166</div>
+              <div className="text-xl font-bold text-poise-gold">170</div>
               <div className="text-xs text-slate-300">Strategic Playbooks</div>
             </div>
             <div>
@@ -163,7 +163,7 @@ export default function Footer() {
             ExecuteIQ — The Execution Infrastructure That Makes AI Work
           </p>
           <p className="text-lg text-slate-300 italic mb-4">
-            "166 playbooks to start. Customize them. Build your own. Pre-defined governance, clear decision rights, 12 minutes to execution."
+            "170 playbooks to start. Customize them. Build your own. Pre-defined governance, clear decision rights, 12 minutes to execution."
           </p>
           <p className="text-sm text-poise-teal">
             The Playbooks Are the Accelerant. The Platform Is the Product.

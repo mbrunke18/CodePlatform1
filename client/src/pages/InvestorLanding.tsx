@@ -381,7 +381,7 @@ export default function InvestorLanding() {
                     <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
                     <p className="text-slate-200 text-sm">"CIOs evolving from cost managers to strategy architects"</p>
                   </div>
-                  <p className="text-emerald-400 text-sm italic">→ Our 166 playbooks give them the execution infrastructure</p>
+                  <p className="text-emerald-400 text-sm italic">→ Our 170 playbooks give them the execution infrastructure</p>
                 </CardContent>
               </Card>
 
@@ -477,7 +477,7 @@ export default function InvestorLanding() {
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700">
               <img
                 src={productArchitectureImg}
-                alt="ExecuteIQ End-to-End Product Architecture — Signal Sources, AI Engine, 166 Playbooks, Execution Outputs, Command Center, and Integration Layer"
+                alt="ExecuteIQ End-to-End Product Architecture — Signal Sources, AI Engine, 170 Playbooks, Execution Outputs, Command Center, and Integration Layer"
                 className="w-full h-auto"
                 loading="eager"
               />
@@ -715,7 +715,7 @@ export default function InvestorLanding() {
 
             <div className="p-5 bg-emerald-900/30 border border-emerald-700/50 rounded-lg text-center">
               <p className="text-emerald-300 font-semibold mb-1">Every firm is consulting on the problem. ExecuteIQ built the product.</p>
-              <p className="text-slate-300 text-sm">166 playbooks, 9 strategic domains, pre-defined governance — ready today.</p>
+              <p className="text-slate-300 text-sm">170 playbooks, 9 strategic domains, pre-defined governance — ready today.</p>
             </div>
           </div>
         </section>

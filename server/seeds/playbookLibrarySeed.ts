@@ -1,6 +1,6 @@
 /**
  * Enhanced Playbook Data
- * Helper functions and constants for 166-playbook library seeding
+ * Helper functions and constants for 170-playbook library seeding
  * Provides severity scores, time sensitivity, activation tiers, and success metrics
  */
 
@@ -49,8 +49,8 @@ export const STANDARD_LEARNING_METRICS = [
  * Higher playbooks in each domain tend to be more severe
  */
 export function getSeverityScore(playbookNumber: number, domainId: number): number {
-  // Base severity from playbook position (1-166)
-  const baseScore = Math.min(playbookNumber / 166 * 10, 10);
+  // Base severity from playbook position (1-170)
+  const baseScore = Math.min(playbookNumber / 170 * 10, 10);
   
   // Domain modifiers (some domains inherently more severe)
   const domainModifiers: Record<number, number> = {
@@ -86,7 +86,7 @@ export function getTimeSensitivity(playbookNumber: number, severityScore: number
 export function getActivationTier(playbookNumber: number, domainId: number): string {
   // Playbooks are ordered by frequency within each domain
   // First playbooks in domain (1-5 per domain) are most frequent
-  const playbooksPerDomain = 166 / 9; // ~18 per domain
+  const playbooksPerDomain = 170 / 9; // ~19 per domain
   const positionInDomain = playbookNumber % Math.ceil(playbooksPerDomain);
   
   if (positionInDomain <= 3) return 'TIER_1_FREQUENT';
@@ -142,7 +142,7 @@ export function getSuccessMetrics(domainId: number): {
  }
 
 export async function seedPlaybookLibrary() {
-  console.log('🏈 Seeding Complete 166-Playbook Library...');
+  console.log('🏈 Seeding Complete 170-Playbook Library...');
   return true;
 }
 

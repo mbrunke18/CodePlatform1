@@ -137,7 +137,7 @@ const researchCitations = [
 const competitiveAdvantages = [
   {
     title: "18-Month Head Start",
-    description: "166 pre-built playbooks across 9 strategic domains represent 18+ months of strategic planning already done.",
+    description: "170 pre-built playbooks across 9 strategic domains represent 18+ months of strategic planning already done.",
     icon: Zap,
   },
   {
@@ -158,7 +158,7 @@ const competitiveAdvantages = [
 ];
 
 const milestones = [
-  { phase: "Completed", items: ["166 playbooks across 9 domains", "IDEA Framework implementation", "Enterprise integration architecture", "Interactive demo platform"] },
+  { phase: "Completed", items: ["170 playbooks across 9 domains", "IDEA Framework implementation", "Enterprise integration architecture", "Interactive demo platform"] },
   { phase: "Current", items: ["Customer pilot programs", "AI signal detection refinement", "Enterprise partnership discussions"] },
   { phase: "Next 12 Months", items: ["First enterprise contracts", "Expanded playbook library (250+)", "Industry-specific vertical solutions"] },
 ];
@@ -349,7 +349,7 @@ export default function Investors() {
             <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
               <img
                 src={productArchitectureImg}
-                alt="ExecuteIQ End-to-End Product Architecture — Signal Sources, AI Engine, 166 Playbooks, Execution Outputs, Command Center, and Integration Layer"
+                alt="ExecuteIQ End-to-End Product Architecture — Signal Sources, AI Engine, 170 Playbooks, Execution Outputs, Command Center, and Integration Layer"
                 className="w-full h-auto"
                 loading="eager"
               />

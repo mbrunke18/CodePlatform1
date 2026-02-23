@@ -72,14 +72,14 @@ export default function Homepage() {
       phase: 'I',
       phaseName: 'Identify',
       title: 'Infrastructure Built in Advance',
-      description: '166 playbooks across 9 strategic domains. Governance defined. Decision rights mapped. Roles assigned. All before the situation hits.',
+      description: '170 playbooks across 9 strategic domains. Governance defined. Decision rights mapped. Roles assigned. All before the situation hits.',
       icon: BookOpen,
       color: 'from-violet-500 to-purple-600',
       borderColor: 'border-violet-200 hover:border-violet-400',
       bgColor: 'bg-violet-50 dark:bg-violet-950/20',
       iconBg: 'bg-violet-100 dark:bg-violet-900/30',
       iconColor: 'text-violet-600 dark:text-violet-400',
-      features: ['Pre-defined governance & decision rights', '166 Pre-built Playbooks', 'Stakeholder Accountability Mapping', 'Readiness Scoring'],
+      features: ['Pre-defined governance & decision rights', '170 Pre-built Playbooks', 'Stakeholder Accountability Mapping', 'Readiness Scoring'],
       primaryLink: '/playbook-library',
       primaryLabel: 'Browse Playbooks',
       stat: '"Governance must become real-time, embedded" — McKinsey'
@@ -272,7 +272,7 @@ export default function Homepage() {
               A strategic event hits—M&A, crisis, competitive threat. ExecuteIQ activates pre-built infrastructure: stakeholders notified, tasks assigned, decision rights clear, execution underway. Not in weeks. <span className="text-white font-semibold">In 12 minutes.</span>
             </p>
             <p className="text-lg text-slate-200 max-w-3xl mx-auto mb-4">
-              <span className="text-[#D4AF37] font-semibold">166 playbooks to start.</span> Pre-built governance. Clear decision rights. Coordinated execution across 50-200+ stakeholders.
+              <span className="text-[#D4AF37] font-semibold">170 playbooks to start.</span> Pre-built governance. Clear decision rights. Coordinated execution across 50-200+ stakeholders.
               <span className="text-emerald-400 font-semibold"> From trigger to execution—not trigger to planning.</span>
             </p>
             <p className="text-base text-slate-300 max-w-2xl mx-auto mb-8 italic">
@@ -390,7 +390,7 @@ export default function Homepage() {
             <div className="hidden md:block absolute top-1/2 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-blue-500 via-violet-500 via-emerald-500 to-amber-500 -translate-y-1/2 z-0" />
             
             {[
-              { icon: Target, label: 'IDENTIFY', desc: 'Pattern recognition maps signals to the right playbook from 166 options', color: 'from-blue-500 to-cyan-600', dotColor: 'bg-blue-500', phase: 'I' },
+              { icon: Target, label: 'IDENTIFY', desc: 'Pattern recognition maps signals to the right playbook from 170 options', color: 'from-blue-500 to-cyan-600', dotColor: 'bg-blue-500', phase: 'I' },
               { icon: Radar, label: 'DETECT', desc: 'AI monitors signals across competitive, regulatory, and market landscapes', color: 'from-violet-500 to-purple-600', dotColor: 'bg-violet-500', phase: 'D' },
               { icon: Network, label: 'EXECUTE', desc: 'AI coordinates stakeholders, assigns tasks, and triggers execution flows', color: 'from-emerald-500 to-green-600', dotColor: 'bg-emerald-500', phase: 'E' },
               { icon: Brain, label: 'ADVANCE', desc: 'Every outcome refines playbooks, building proprietary intelligence over time', color: 'from-amber-500 to-orange-600', dotColor: 'bg-amber-500', phase: 'A' },
@@ -475,7 +475,7 @@ export default function Homepage() {
                       <div className="space-y-2">
                         <p className="text-sm text-slate-200"><span className="text-emerald-400 font-bold">72 hours → 12 minutes</span> — from trigger to execution</p>
                         <p className="text-sm text-slate-200"><span className="text-emerald-400 font-bold">$9.8M saved</span> — per ransomware incident avoided</p>
-                        <p className="text-sm text-slate-200"><span className="text-emerald-400 font-bold">166 playbooks</span> — ready to deploy on day one</p>
+                        <p className="text-sm text-slate-200"><span className="text-emerald-400 font-bold">170 playbooks</span> — ready to deploy on day one</p>
                       </div>
                     </div>
                   </div>
@@ -929,7 +929,7 @@ export default function Homepage() {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Don't Start From Scratch</h3>
                 <p className="text-slate-700 dark:text-slate-200 mb-4">
-                  166 playbooks across 9 strategic domains—M&A, crisis, competitive response, digital transformation, and more. Built from 20 years of Fortune 500 execution experience. Ready to deploy on day one.
+                  170 playbooks across 9 strategic domains—M&A, crisis, competitive response, digital transformation, and more. Built from 20 years of Fortune 500 execution experience. Ready to deploy on day one.
                 </p>
               </CardContent>
             </Card>
@@ -1083,7 +1083,7 @@ export default function Homepage() {
               Complete Coverage
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-coverage">
-              9 Strategic Domains. 166 Playbooks.
+              9 Strategic Domains. 170 Playbooks.
             </h2>
             <p className="text-lg text-slate-700 dark:text-slate-200 max-w-2xl mx-auto">
               Pre-defined governance, clear decision rights, and coordination pre-built for every strategic scenario your organization will face.
@@ -1148,7 +1148,7 @@ export default function Homepage() {
                   </div>
                 </div>
                 <div className="pt-4 border-t border-blue-200 dark:border-blue-700/50">
-                  <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">56 <span className="text-sm font-normal text-slate-600 dark:text-slate-200">playbooks</span></p>
+                  <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">58 <span className="text-sm font-normal text-slate-600 dark:text-slate-200">playbooks</span></p>
                 </div>
               </CardContent>
             </Card>
@@ -1179,7 +1179,7 @@ export default function Homepage() {
                   </div>
                 </div>
                 <div className="pt-4 border-t border-purple-200 dark:border-purple-700/50">
-                  <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">52 <span className="text-sm font-normal text-slate-600 dark:text-slate-200">playbooks</span></p>
+                  <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">54 <span className="text-sm font-normal text-slate-600 dark:text-slate-200">playbooks</span></p>
                 </div>
               </CardContent>
             </Card>
@@ -1192,7 +1192,7 @@ export default function Homepage() {
               className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-lg px-8 py-6"
             >
               <BookOpen className="mr-2 h-5 w-5" />
-              Explore All 166 Playbooks
+              Explore All 170 Playbooks
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
@@ -1497,7 +1497,7 @@ export default function Homepage() {
                   {[
                     { current: 'Execution infrastructure for humans', enhanced: 'Execution infrastructure for the agentic enterprise' },
                     { current: '72 hrs → 12 min (human coordination)', enhanced: 'AI detects in seconds, humans decide in minutes' },
-                    { current: '166 playbooks', enhanced: '166 playbooks with AI + human roles' },
+                    { current: '170 playbooks', enhanced: '170 playbooks with AI + human roles' },
                     { current: 'Competes with: consultants, ServiceNow', enhanced: 'New category: no direct competitor' },
                   ].map((row, i) => (
                     <div key={i} className="flex items-center gap-3">

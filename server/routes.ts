@@ -6257,7 +6257,7 @@ SUCCESS METRICS:
         },
         expected: {
           executiveTriggers: 178,
-          playbookLibrary: 166,
+          playbookLibrary: 170,
           playbookDomains: 9
         }
       });

@@ -1507,7 +1507,7 @@ export default function IndustryExperience() {
             >
               <div className="bg-slate-900/80 border border-cyan-500/20 rounded-xl p-4 text-center">
                 <BarChart3 className="h-6 w-6 text-cyan-400 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-white">166</div>
+                <div className="text-2xl font-bold text-white">170</div>
                 <div className="text-xs text-slate-300">Total Playbooks</div>
               </div>
               <div className="bg-slate-900/80 border border-purple-500/20 rounded-xl p-4 text-center">

@@ -28,7 +28,7 @@ import checklistContent from '@/data/ExecuteIQ-PreRoadshow-Checklist.md?raw';
 
 const KEY_STATS = [
   { label: "Response Time", value: "72h → 12min", color: "text-emerald-400" },
-  { label: "Playbooks", value: "166", color: "text-blue-400" },
+  { label: "Playbooks", value: "170", color: "text-blue-400" },
   { label: "Domains", value: "9", color: "text-purple-400" },
   { label: "Pilot Price", value: "$75K", color: "text-amber-400" },
   { label: "Contract Range", value: "$250K-$1.5M", color: "text-green-400" },

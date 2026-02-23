@@ -385,7 +385,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   className="mb-8"
                 >
                   <span className="text-lg text-slate-300">
-                    166 playbooks across offense, defense, and special teams.
+                    170 playbooks across offense, defense, and special teams.
                   </span>
                 </motion.div>
                 

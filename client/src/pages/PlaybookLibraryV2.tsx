@@ -48,11 +48,11 @@ const categoryConfig = {
     textColor: 'text-blue-600 dark:text-blue-400',
     borderColor: 'border-blue-200 dark:border-blue-800/50',
     hoverBorder: 'hover:border-blue-400 dark:hover:border-blue-600',
-    count: 56,
+    count: 58,
     domains: [
       { name: 'Crisis Response', count: 24 },
       { name: 'Cyber Incidents', count: 18 },
-      { name: 'Regulatory Compliance', count: 14 }
+      { name: 'Regulatory Compliance', count: 16 }
     ],
     maturity: 'Mission-Critical',
     validatedBy: 'Enterprise incident response data',
@@ -70,11 +70,11 @@ const categoryConfig = {
     textColor: 'text-purple-600 dark:text-purple-400',
     borderColor: 'border-purple-200 dark:border-purple-800/50',
     hoverBorder: 'hover:border-purple-400 dark:hover:border-purple-600',
-    count: 52,
+    count: 54,
     domains: [
       { name: 'Digital Transformation', count: 16 },
-      { name: 'Competitive Response', count: 18 },
-      { name: 'AI Governance', count: 18 }
+      { name: 'Competitive Response', count: 19 },
+      { name: 'AI Governance', count: 19 }
     ],
     maturity: 'Innovation-Ready',
     validatedBy: 'Digital transformation benchmarks',

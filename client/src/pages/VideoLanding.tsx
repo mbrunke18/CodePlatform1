@@ -30,7 +30,7 @@ export default function VideoLanding() {
       title: "ExecuteIQ - Strategic Execution Operating System | 72 Hours → 12 Minutes",
       description: "Watch how ExecuteIQ transforms strategic coordination from 72 hours to 12 minutes. Pre-staged playbooks, coordinated stakeholders, instant activation for Fortune 1000 companies.",
       ogTitle: "ExecuteIQ - The Speed to Execute",
-      ogDescription: "166 playbooks. 12 minutes to coordinated execution. The Strategic Execution Operating System.",
+      ogDescription: "170 playbooks. 12 minutes to coordinated execution. The Strategic Execution Operating System.",
     });
   }, []);
 

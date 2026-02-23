@@ -158,7 +158,7 @@ export const enhancedInstitutionalMemory = {
 };
 
 export const enhancedTemplateLibrary = {
-  totalTemplates: 166, // 166 playbook library across 9 domains (including AI Governance)
+  totalTemplates: 170, // 170 playbook library across 9 domains (including AI Governance)
   growthInitiatives: 40, // Growth playbooks (market expansion, innovation)
   riskManagement: 35, // Risk playbooks (compliance, protection)
   transformation: 35, // Transformation playbooks (M&A, restructuring)

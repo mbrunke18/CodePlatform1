@@ -418,7 +418,7 @@ export default function UnifiedEnterprisePlatform() {
                       </Badge>
                     </CardTitle>
                     <Badge variant="outline" className="bg-blue-600/20 text-blue-300 border-blue-500/50">
-                      166 PLAYBOOKS READY
+                      170 PLAYBOOKS READY
                     </Badge>
                   </div>
                   <p className="text-sm text-gray-300 mt-2">

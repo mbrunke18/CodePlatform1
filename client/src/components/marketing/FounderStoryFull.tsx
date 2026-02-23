@@ -20,7 +20,7 @@ const SCENE_NARRATIONS = [
   "Before all that? Football coach. 5 years. What I learned: you never run a play in a game without practicing it first. You have a playbook. Everyone knows their role. When the whistle blows, you execute.",
   "But in business? We wing it. Every single time. It's insane when you think about it.",
   "So I built ExecuteIQ. The Strategic Execution Operating System.",
-  "166 playbooks across 9 strategic domains. Market entry, M&A, competitive response, crisis management, product launches, regulatory compliance, digital transformation, AI governance, and cybersecurity.",
+  "170 playbooks across 9 strategic domains. Market entry, M&A, competitive response, crisis management, product launches, regulatory compliance, digital transformation, AI governance, and cybersecurity.",
   "The IDEA Framework. Identify, Detect, Execute, Advance. AI monitors for signals. Pre-built playbooks ready to activate. Coordinated execution with your team. Then capture what worked for next time.",
   "One click to activate a playbook. Tasks auto-assigned. Stakeholders notified. Documents staged. Budgets unlocked. Everyone knows their role.",
   "From signal detection to coordinated execution. 12 minutes. That's 340 times faster than the industry average.",
@@ -28,7 +28,7 @@ const SCENE_NARRATIONS = [
   "This isn't just about defense. It's about offense too. Market opportunities that require speed. M&A integrations that need precision. Product launches that demand coordination.",
   "In a world where everyone has access to AI tools, execution becomes the competitive advantage. The companies that can move decisively will dominate.",
   "We're creating a new category. Strategic Execution Software. Gartner estimates this will be a $10 billion market by 2030.",
-  "ExecuteIQ has an 18-month head start. 166 playbooks built. Platform validated with enterprise customers. The moat widens every day.",
+  "ExecuteIQ has an 18-month head start. 170 playbooks built. Platform validated with enterprise customers. The moat widens every day.",
   "The companies that figure this out first don't just survive. They dominate. Welcome to ExecuteIQ. Let's execute decisions at scale.",
 ];
 
@@ -292,7 +292,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
     { duration: 11000 },  // 7: Football coaching
     { duration: 9000 },   // 8: Business winging it
     { duration: 9000 },   // 9: So I built ExecuteIQ
-    { duration: 12000 },  // 10: 166 playbooks / 9 domains
+    { duration: 12000 },  // 10: 170 playbooks / 9 domains
     { duration: 11000 },  // 11: IDEA framework
     { duration: 9000 },   // 12: One click activation
     { duration: 9000 },   // 13: 12 minutes / 340x
@@ -703,7 +703,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
             </Scene>
           )}
 
-          {/* Scene 10: 166 playbooks */}
+          {/* Scene 10: 170 playbooks */}
           {currentScene === 10 && (
             <Scene key="scene-10">
               <div className="text-center max-w-5xl">
@@ -713,7 +713,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.6 }}
                   className="mb-8"
                 >
-                  <span className="text-6xl md:text-8xl font-bold text-emerald-400">166</span>
+                  <span className="text-6xl md:text-8xl font-bold text-emerald-400">170</span>
                   <span className="text-2xl md:text-4xl text-slate-300 ml-4">PLAYBOOKS</span>
                 </motion.div>
                 <motion.p
@@ -1030,7 +1030,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5, delay: 1.5 }}
                   className="text-lg text-slate-300"
                 >
-                  166 playbooks, AI signal detection, the IDEA methodology—
+                  170 playbooks, AI signal detection, the IDEA methodology—
                   <br />that can't be copied overnight.
                 </motion.p>
               </div>

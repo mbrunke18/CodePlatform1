@@ -111,7 +111,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
       {
         id: 'wia-welcome',
         title: 'What-If Analyzer',
-        description: 'Model any business scenario beyond the 166 playbook templates. Test market conditions, assess impact, and get AI-powered recommendations.',
+        description: 'Model any business scenario beyond the 170 playbook templates. Test market conditions, assess impact, and get AI-powered recommendations.',
         phase: 'IDENTIFY'
       },
       {
@@ -136,8 +136,8 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
     steps: [
       {
         id: 'sg-welcome',
-        title: '166 Strategic Playbooks',
-        description: 'Browse 166 battle-tested playbooks across 9 strategic domains. Each playbook includes pre-mapped stakeholders, decision trees, and communication templates.',
+        title: '170 Strategic Playbooks',
+        description: 'Browse 170 battle-tested playbooks across 9 strategic domains. Each playbook includes pre-mapped stakeholders, decision trees, and communication templates.',
         phase: 'IDENTIFY'
       },
       {
@@ -149,7 +149,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
       {
         id: 'sg-unlimited',
         title: 'Unlimited Custom Scenarios',
-        description: 'Use the What-If Analyzer to create unlimited custom scenarios beyond the 166 templates. Every scenario becomes a living playbook that improves over time.',
+        description: 'Use the What-If Analyzer to create unlimited custom scenarios beyond the 170 templates. Every scenario becomes a living playbook that improves over time.',
         phase: 'IDENTIFY'
       }
     ]
@@ -161,7 +161,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
       {
         id: 'pr-welcome',
         title: 'Playbook Readiness Audit',
-        description: 'Assess the preparedness of your 166 playbooks across 4 key dimensions: Trigger Coverage, Stakeholder Readiness, Practice Frequency, and Outcome Confidence.',
+        description: 'Assess the preparedness of your 170 playbooks across 4 key dimensions: Trigger Coverage, Stakeholder Readiness, Practice Frequency, and Outcome Confidence.',
         phase: 'IDENTIFY'
       },
       {

@@ -1184,10 +1184,10 @@ export default function TryDemo() {
                     </CardContent>
                   </Card>
 
-                  {/* 166 Playbooks */}
+                  {/* 170 Playbooks */}
                   <Card className="bg-gradient-to-br from-amber-900/30 to-orange-900/30 border-amber-500/30">
                     <CardContent className="p-4 text-center">
-                      <p className="text-4xl font-bold text-amber-400 mb-1">166</p>
+                      <p className="text-4xl font-bold text-amber-400 mb-1">170</p>
                       <p className="text-sm text-amber-200">Pre-Built Playbooks</p>
                       <p className="text-xs text-slate-200 mt-1">Across 9 Strategic Domains</p>
                     </CardContent>

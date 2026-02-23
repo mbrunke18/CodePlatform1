@@ -16,7 +16,7 @@ const phases = [
     icon: ClipboardList, 
     color: "#3B82F6",
     description: "Build your playbook library",
-    outcome: "166 playbooks ready"
+    outcome: "170 playbooks ready"
   },
   { 
     id: "detect", 

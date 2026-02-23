@@ -316,12 +316,12 @@ export default function Dashboard() {
               <PhaseCard
                 phase="IDENTIFY"
                 title="Build Your Depth Chart"
-                description="166 templates across 9 strategic domains"
+                description="170 templates across 9 strategic domains"
                 icon={Target}
                 color="violet"
                 link="/playbook-library"
                 metrics={[
-                  { label: 'Playbook Templates', value: '166' },
+                  { label: 'Playbook Templates', value: '170' },
                   { label: 'Custom Scenarios', value: '12' },
                   { label: 'Coverage', value: '94%', highlight: true }
                 ]}
@@ -453,7 +453,7 @@ export default function Dashboard() {
                       </div>
                       <div className="text-left">
                         <div className="font-medium text-sm">Browse Playbooks</div>
-                        <div className="text-xs text-slate-400 dark:text-slate-300">166 strategic templates</div>
+                        <div className="text-xs text-slate-400 dark:text-slate-300">170 strategic templates</div>
                       </div>
                     </Button>
                   </Link>

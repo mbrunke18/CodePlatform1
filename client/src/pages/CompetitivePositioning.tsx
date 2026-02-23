@@ -918,7 +918,7 @@ export default function CompetitivePositioning() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-white mb-4" data-testid="heading-domains">
-                166 Playbooks Across 9 Strategic Domains
+                170 Playbooks Across 9 Strategic Domains
               </h2>
               <p className="text-lg text-blue-200">
                 No competitor offers pre-built, executable strategic playbooks
@@ -947,7 +947,7 @@ export default function CompetitivePositioning() {
                 onClick={() => setLocation('/playbook-library')}
                 data-testid="button-browse-playbooks"
               >
-                Browse All 166 Playbooks
+                Browse All 170 Playbooks
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </div>

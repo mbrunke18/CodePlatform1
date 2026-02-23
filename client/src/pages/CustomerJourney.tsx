@@ -63,7 +63,7 @@ const phaseDetails = [
     duration: 'Days 30-45',
     objective: 'Build your strategic playbook portfolio',
     activities: [
-      { name: 'Browse Playbook Library', path: '/playbooks', description: 'Explore 166 playbooks across 9 strategic domains' },
+      { name: 'Browse Playbook Library', path: '/playbooks', description: 'Explore 170 playbooks across 9 strategic domains' },
       { name: 'Select Priority Playbooks', path: '/workspaces/identify', description: 'Choose playbooks aligned to your strategic priorities' },
       { name: 'Map Stakeholders', path: '/stakeholder-management', description: 'Assign accountability for each playbook' },
       { name: 'Customize Playbooks', path: '/playbook-customization', description: 'Tailor tasks, timelines, and resources' },

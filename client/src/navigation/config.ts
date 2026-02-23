@@ -14,7 +14,7 @@ export const navigationConfig: NavigationConfig = {
           label: 'Strategic Playbooks Library',
           path: '/identify/playbooks',
           icon: '📚',
-          description: 'Browse all 166 pre-built playbooks across 9 domains'
+          description: 'Browse all 170 pre-built playbooks across 9 domains'
         },
         {
           id: 'templates',

@@ -773,7 +773,7 @@ export default function IncidentAnalyzer() {
                     <p className={`text-sm font-semibold ${selectedDomain === 'defense' ? 'text-red-400' : 'text-slate-300'}`}>
                       DEFENSE
                     </p>
-                    <p className="text-xs text-slate-500 mt-0.5">56 Playbooks</p>
+                    <p className="text-xs text-slate-500 mt-0.5">58 Playbooks</p>
                     <p className="text-xs text-slate-600 mt-1">Crisis &bull; Cyber &bull; Regulatory</p>
                   </button>
                   <button
@@ -788,7 +788,7 @@ export default function IncidentAnalyzer() {
                     <p className={`text-sm font-semibold ${selectedDomain === 'special_teams' ? 'text-purple-400' : 'text-slate-300'}`}>
                       SPECIAL TEAMS
                     </p>
-                    <p className="text-xs text-slate-500 mt-0.5">52 Playbooks</p>
+                    <p className="text-xs text-slate-500 mt-0.5">54 Playbooks</p>
                     <p className="text-xs text-slate-600 mt-1">Digital Transformation &bull; AI Governance</p>
                   </button>
                 </div>

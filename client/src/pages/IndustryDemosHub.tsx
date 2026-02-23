@@ -327,7 +327,7 @@ export default function IndustryDemosHub() {
                 </Link>
                 <Link href="/playbooks">
                   <Button size="lg" variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800 px-8">
-                    Explore 166 Playbooks
+                    Explore 170 Playbooks
                   </Button>
                 </Link>
               </div>

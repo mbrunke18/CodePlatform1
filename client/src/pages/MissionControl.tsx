@@ -378,7 +378,7 @@ export default function MissionControl() {
     }
   };
 
-  const totalPlaybooks = 166;
+  const totalPlaybooks = 170;
   const totalSignals = SIGNAL_CATEGORIES.reduce((sum, cat) => sum + cat.dataPoints.length, 0);
   const activeTriggers = triggers.filter((t: any) => t.status === 'active').length || 41;
   const criticalAlerts = signalSummary.filter(s => s.status === 'critical').length;
@@ -844,7 +844,7 @@ export default function MissionControl() {
                     <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-3 mb-4">
                       <div className="flex justify-between text-sm mb-2">
                         <span className="text-slate-600 dark:text-slate-300">Playbooks Ready</span>
-                        <span className="font-bold text-blue-700 dark:text-blue-300">{playbooks.length || 166}</span>
+                        <span className="font-bold text-blue-700 dark:text-blue-300">{playbooks.length || 170}</span>
                       </div>
                       <Progress value={85} className="h-1.5 bg-blue-100 dark:bg-blue-900" />
                       <p className="text-xs text-slate-300 dark:text-slate-300 mt-1">85% with full stakeholder assignments</p>
@@ -854,7 +854,7 @@ export default function MissionControl() {
                       <Link href="/playbook-library">
                         <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700 text-white">
                           <BookOpen className="h-4 w-4 mr-2" />
-                          Browse 166 Playbooks
+                          Browse 170 Playbooks
                         </Button>
                       </Link>
                       <Link href="/playbooks/create">
@@ -1063,7 +1063,7 @@ export default function MissionControl() {
                     </Button>
                   </Link>
                 </div>
-                <CardDescription>166 pre-staged playbooks across 9 strategic domains</CardDescription>
+                <CardDescription>170 pre-staged playbooks across 9 strategic domains</CardDescription>
               </CardHeader>
               <CardContent>
                 <Tabs defaultValue="offense" className="w-full">
@@ -1072,10 +1072,10 @@ export default function MissionControl() {
                       OFFENSE (58)
                     </TabsTrigger>
                     <TabsTrigger value="defense" className="text-red-600 data-[state=active]:bg-red-50 dark:data-[state=active]:bg-red-900/30">
-                      DEFENSE (56)
+                      DEFENSE (58)
                     </TabsTrigger>
                     <TabsTrigger value="special-teams" className="text-purple-600 data-[state=active]:bg-purple-50 dark:data-[state=active]:bg-purple-900/30">
-                      SPECIAL TEAMS (52)
+                      SPECIAL TEAMS (54)
                     </TabsTrigger>
                   </TabsList>
                   

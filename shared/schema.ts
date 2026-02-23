@@ -2474,7 +2474,7 @@ export const peerBenchmarks = pgTable('peer_benchmarks', {
 });
 
 // ============================================================================
-// 166 PLAYBOOK LIBRARY TAXONOMY
+// 170 PLAYBOOK LIBRARY TAXONOMY
 // ============================================================================
 
 // Playbook Domains - 9 Strategic Domains (including AI Governance)
@@ -2504,10 +2504,10 @@ export const playbookCategories = pgTable('playbook_categories', {
   updatedAt: timestamp('updated_at').defaultNow(),
 });
 
-// Playbook Library - The 166 template playbooks (separate from org-specific scenarios)
+// Playbook Library - The 170 template playbooks (separate from org-specific scenarios)
 export const playbookLibrary = pgTable('playbook_library', {
   id: uuid('id').primaryKey().defaultRandom(),
-  playbookNumber: integer('playbook_number').notNull().unique(), // 1-180 (166 active playbooks)
+  playbookNumber: integer('playbook_number').notNull().unique(), // 1-184 (170 active playbooks)
   domainId: uuid('domain_id').references(() => playbookDomains.id).notNull(),
   categoryId: uuid('category_id').references(() => playbookCategories.id).notNull(),
   

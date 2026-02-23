@@ -71,21 +71,21 @@ const IDEA_STORY = [
     id: 2,
     beat: "IDENTIFY",
     title: "Your Playbooks Are Ready Before You Need Them",
-    subtitle: "166 templates customized for your organization",
+    subtitle: "170 templates customized for your organization",
     phase: "IDENTIFY",
     phaseColor: "bg-violet-500",
     icon: BookOpen,
     color: "text-violet-400",
     bgColor: "bg-violet-500/20",
     time: 30,
-    description: "M comes with 166 playbooks across 9 domains—from cyber incidents to M&A integration to product launches. Each one pre-configured with smart defaults for your industry. You customize once, then it's ready for instant activation.",
+    description: "M comes with 170 playbooks across 9 domains—from cyber incidents to M&A integration to product launches. Each one pre-configured with smart defaults for your industry. You customize once, then it's ready for instant activation.",
     roleWins: [
       { role: "CISO", benefit: "Cyber playbooks with ISO 27001, SOC2, NIST pre-loaded" },
       { role: "CFO", benefit: "Pre-approved budgets already staged for each scenario" },
       { role: "General Counsel", benefit: "Legal holds, regulatory notifications pre-staged" }
     ],
     metrics: [
-      { label: "Ready Playbooks", value: "166" },
+      { label: "Ready Playbooks", value: "170" },
       { label: "Domains Covered", value: "9" },
       { label: "Setup Time", value: "2 hours" }
     ],
@@ -594,7 +594,7 @@ export default function CustomerDemo() {
                               </div>
                               <div className="p-3 bg-violet-900/30 rounded-lg border border-violet-500/30">
                                 <div className="text-sm font-medium text-white mb-1">Global</div>
-                                <div className="text-xs text-slate-300 mb-2">All 166 playbooks</div>
+                                <div className="text-xs text-slate-300 mb-2">All 170 playbooks</div>
                                 <div className="text-violet-400 text-sm font-medium">Custom</div>
                                 <div className="text-xs text-violet-400/70">$750K-$1.5M/yr</div>
                               </div>
@@ -715,7 +715,7 @@ export default function CustomerDemo() {
                     </div>
                     <div className="p-3 bg-violet-900/30 border border-violet-500/30 rounded-lg">
                       <div className="text-sm font-medium text-white mb-1">Enterprise Pilot</div>
-                      <div className="text-xs text-slate-300">All 166 playbooks, dedicated success manager</div>
+                      <div className="text-xs text-slate-300">All 170 playbooks, dedicated success manager</div>
                     </div>
                   </div>
                 </CardContent>

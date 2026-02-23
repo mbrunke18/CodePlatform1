@@ -204,7 +204,7 @@ export function StrategyReality() {
             <ul className="space-y-3 text-slate-300">
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
-                <span>166 pre-built playbooks across 9 domains</span>
+                <span>170 pre-built playbooks across 9 domains</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />

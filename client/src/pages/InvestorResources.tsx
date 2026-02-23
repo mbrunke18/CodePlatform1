@@ -169,7 +169,7 @@ export default function InvestorResources() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
             <Card className="text-center">
               <CardContent className="pt-6">
-                <div className="text-4xl font-bold text-primary mb-2">166</div>
+                <div className="text-4xl font-bold text-primary mb-2">170</div>
                 <div className="text-sm text-muted-foreground">Strategic Playbooks</div>
                 <div className="text-xs text-muted-foreground mt-1">Across 9 domains</div>
               </CardContent>

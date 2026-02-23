@@ -98,7 +98,7 @@ export const IDEA_PHASES = {
     lightBg: 'bg-blue-50 dark:bg-blue-950/30',
     capabilities: [
       'Operating Model Alignment diagnostic',
-      '166 pre-built playbooks ready to deploy',
+      '170 pre-built playbooks ready to deploy',
       'Stakeholder accountability mapping',
       'Readiness scoring and gap analysis'
     ],
@@ -313,7 +313,7 @@ export const STRATEGIC_CATEGORIES = {
     description: 'Protect value and mitigate risks',
     icon: 'Shield',
     color: '#EF4444',
-    playbookCount: 56,
+    playbookCount: 58,
     domains: DEFENSE_DOMAINS
   },
   SPECIAL_TEAMS: {
@@ -322,7 +322,7 @@ export const STRATEGIC_CATEGORIES = {
     description: 'Transform and change the game',
     icon: 'Zap',
     color: '#8B5CF6',
-    playbookCount: 52,
+    playbookCount: 54,
     domains: SPECIAL_TEAMS_DOMAINS
   }
 } as const;
