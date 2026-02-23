@@ -61,17 +61,37 @@ export function Outro({ progress }: SceneProps) {
           transition={{ delay: 0.6 }}
           className="text-xl md:text-2xl text-[#D4AF37] font-medium mb-2"
         >
-          Execute Decisions at Scale
+          Trigger-to-Execution Orchestration
         </motion.p>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
-          className="text-lg text-white/60 mb-12"
+          className="text-lg text-white/60 mb-4"
         >
-          Detect Early. Execute Precisely. Advance Strategy.
+          From strategic trigger to coordinated execution in 12 minutes.
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+          className="flex flex-wrap justify-center gap-3 text-xs mb-10"
+        >
+          <span className="px-3 py-1 bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-full text-[#D4AF37]">
+            AI-Powered Signal Detection
+          </span>
+          <span className="px-3 py-1 bg-[#00A8A8]/10 border border-[#00A8A8]/30 rounded-full text-[#00A8A8]">
+            Executive Summary Generator
+          </span>
+          <span className="px-3 py-1 bg-purple-500/10 border border-purple-500/30 rounded-full text-purple-400">
+            What-If Analyzer
+          </span>
+          <span className="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400">
+            Readiness Assessment
+          </span>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -112,19 +132,19 @@ export function Outro({ progress }: SceneProps) {
           <div className="flex items-center justify-center gap-6 text-sm">
             <span className="text-[#D4AF37]">18-month head start</span>
             <span className="text-white/30">•</span>
-            <span className="text-[#00A8A8]">170 playbooks built</span>
+            <span className="text-[#00A8A8]">170 playbooks</span>
             <span className="text-white/30">•</span>
-            <span className="text-white">Platform validated</span>
+            <span className="text-white">17 reports validate the gap</span>
           </div>
           <p className="text-white/40 text-xs mt-4">
-            $900B market opportunity • Fortune 1000 target customers
+            $13-20B TAM • Fortune 1000 target • Compound disruption ready
           </p>
         </motion.div>
       </div>
       
       <NarrationBox 
-        headline="Ready to Transform Your Execution?"
-        description="Try the demo or start a pilot program to see ExecuteIQ in action for your organization."
+        headline="The Infrastructure Enterprises Are Missing"
+        description="Trigger-to-Execution Orchestration for Fortune 1000. 170 playbooks, AI-powered signals, executive intelligence, and compound disruption response—all in 12 minutes."
         delay={0.5}
       />
     </div>

@@ -164,7 +164,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   className="mb-4"
                 >
                   <span className="text-2xl md:text-3xl text-slate-300 font-light tracking-widest">
-                    THE WORLD
+                    DISRUPTION
                   </span>
                 </motion.div>
                 <motion.div
@@ -183,7 +183,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.6, delay: 1 }}
                 >
                   <span className="text-2xl md:text-3xl text-slate-300 font-light tracking-widest">
-                    FOR YOU.
+                    FOR YOUR PROCESS.
                   </span>
                 </motion.div>
               </div>
@@ -493,10 +493,21 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="mb-8"
+                  className="mb-4"
                 >
                   <span className="text-xl md:text-2xl text-slate-300">
-                    This is the operating system for the age of disruption.
+                    17 independent reports confirm: this is the infrastructure enterprises are missing.
+                  </span>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="mb-8"
+                >
+                  <span className="text-lg text-emerald-300/80">
+                    By design, not by default.
                   </span>
                 </motion.div>
                 
@@ -506,11 +517,11 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.6, delay: 0.5 }}
                 >
                   <span className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-300">
-                    THE STRATEGIC EXECUTION
+                    TRIGGER-TO-EXECUTION
                   </span>
                   <br />
                   <span className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
-                    OPERATING SYSTEM
+                    ORCHESTRATION
                   </span>
                 </motion.div>
               </div>
@@ -547,7 +558,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   className="mb-10"
                 >
                   <span className="text-lg md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 font-semibold uppercase tracking-wider">
-                    THE SPEED TO EXECUTE.
+                    TRIGGER TO EXECUTION IN 12 MINUTES.
                   </span>
                 </motion.div>
 

@@ -76,7 +76,7 @@ export function Intro({ progress }: SceneProps) {
           transition={{ delay: 1 }}
           className="text-xl md:text-2xl text-white/70 max-w-xl mx-auto"
         >
-          15 major firms say execution infrastructure is the enterprise bottleneck.
+          17 independent reports from 15 major firms confirm: execution infrastructure is the enterprise bottleneck.
         </motion.p>
         
         <motion.p
@@ -85,7 +85,7 @@ export function Intro({ progress }: SceneProps) {
           transition={{ delay: 1.5 }}
           className="text-lg md:text-xl text-[#D4AF37] max-w-xl mx-auto mt-4"
         >
-          Fortune 500 companies take 72 hours to coordinate. ExecuteIQ does it in 12 minutes.
+          Trigger-to-Execution Orchestration: from strategic trigger to coordinated execution in 12 minutes.
         </motion.p>
 
         <motion.div
@@ -101,6 +101,9 @@ export function Intro({ progress }: SceneProps) {
             Crisis Response
           </span>
           <span className="px-3 py-1 bg-white/5 border border-white/20 rounded-full text-white/60">
+            Compound Disruption
+          </span>
+          <span className="px-3 py-1 bg-white/5 border border-white/20 rounded-full text-white/60">
             Competitive Moves
           </span>
           <span className="px-3 py-1 bg-white/5 border border-white/20 rounded-full text-white/60">
@@ -114,14 +117,14 @@ export function Intro({ progress }: SceneProps) {
           transition={{ delay: 2 }}
           className="mt-8 pt-6 border-t border-white/10"
         >
-          <p className="text-[#D4AF37] text-2xl font-bold">12 Minutes to Execution</p>
-          <p className="text-[#00A8A8] text-sm mt-2">170 playbooks • Pre-defined governance • 9 strategic domains</p>
+          <p className="text-[#D4AF37] text-2xl font-bold">Trigger to Execution in 12 Minutes</p>
+          <p className="text-[#00A8A8] text-sm mt-2">170 playbooks • 9 strategic domains • 50-200+ stakeholders coordinated</p>
         </motion.div>
       </div>
       
       <NarrationBox 
-        headline="The Execution Infrastructure Layer"
-        description="ExecuteIQ provides the governance, decision rights, and coordination systems enterprises are missing—across M&A, Crisis, Digital Transformation, and 6 more domains."
+        headline="Trigger-to-Execution Orchestration"
+        description="17 independent reports confirm: enterprises need execution infrastructure. ExecuteIQ coordinates 50-200+ stakeholders from trigger to full execution in 12 minutes—across 9 strategic domains."
         delay={0.5}
       />
     </div>

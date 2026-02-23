@@ -28,8 +28,8 @@ const firms = [
 
 const quotes = [
   { firm: "IBM", quote: "The operating model required to run AI at scale" },
-  { firm: "Bain", quote: "The data, platforms, and systems needed before scale is possible" },
-  { firm: "McKinsey", quote: "Organization design and work change with agents" },
+  { firm: "Deloitte", quote: "95% of CSOs say AI will reshape priorities—but only 16% are reimagining lines of business" },
+  { firm: "McKinsey", quote: "Organization design and work change with agents—the agentic organization requires new infrastructure" },
 ];
 
 export function Validation({ progress }: SceneProps) {
@@ -59,7 +59,7 @@ export function Validation({ progress }: SceneProps) {
         </motion.div>
 
         <TextPunch
-          text="15 Firms. One Conclusion."
+          text="17 Reports. One Conclusion."
           size="xl"
           className="text-white mb-2 text-center"
         />
@@ -79,7 +79,7 @@ export function Validation({ progress }: SceneProps) {
           transition={{ delay: 0.5 }}
           className="text-sm text-white/40 text-center mb-6"
         >
-          20+ reports. One conclusion: enterprises need execution infrastructure to operationalize AI.
+          17 independent reports from 15 firms. One conclusion: enterprises need execution infrastructure to operationalize AI.
         </motion.p>
 
         <motion.div
@@ -128,13 +128,13 @@ export function Validation({ progress }: SceneProps) {
           transition={{ delay: 2.5 }}
           className="text-sm text-white/50 text-center mt-6"
         >
-          <span className="text-indigo-400 font-semibold">15 firms. 20+ reports.</span> Every one points at the gap ExecuteIQ fills.
+          <span className="text-indigo-400 font-semibold">15 firms. 17 reports.</span> Every one points at the gap ExecuteIQ fills.
         </motion.p>
       </div>
 
       <NarrationBox
-        headline="15 Firms. One Conclusion."
-        description="15 firms including McKinsey, IBM, BCG, Bain, Deloitte, PwC, Accenture, Microsoft, Google Cloud, and World Economic Forum — all independently confirm enterprises need execution infrastructure to operationalize AI. ExecuteIQ built it."
+        headline="17 Reports. One Conclusion."
+        description="17 independent reports from 15 firms—McKinsey, IBM, BCG, Bain, Deloitte, PwC, Accenture, Microsoft, Google Cloud, and more—all confirm enterprises need execution infrastructure. 95% of CSOs say AI will reshape priorities, but only 16% are acting. ExecuteIQ built the missing layer."
         delay={0.5}
       />
     </div>

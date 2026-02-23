@@ -72,10 +72,10 @@ export function Solution({ progress }: SceneProps) {
           className="space-y-1"
         >
           <p className="text-2xl md:text-3xl text-white/90 font-light">
-            The Execution Infrastructure
+            Trigger-to-Execution Orchestration
           </p>
           <p className="text-lg text-[#00A8A8]">
-            Enterprises Are Missing
+            By Design, Not By Default
           </p>
         </motion.div>
         
@@ -85,7 +85,7 @@ export function Solution({ progress }: SceneProps) {
           transition={{ delay: 1.5 }}
           className="mt-6 text-white/60 text-sm max-w-lg mx-auto"
         >
-          Governance pre-defined. Decision rights clear. Coordination instant. 170 playbooks ready before the moment hits.
+          Governance pre-defined. Decision rights clear. 50-200+ stakeholders coordinated instantly. 170 playbooks ready—including compound disruption scenarios.
         </motion.div>
 
         <motion.div
@@ -123,8 +123,8 @@ export function Solution({ progress }: SceneProps) {
       </div>
       
       <NarrationBox 
-        headline="Introducing ExecuteIQ"
-        description="The execution infrastructure layer that provides governance, decision rights, and coordination—transforming 72-hour responses into 12-minute execution."
+        headline="Trigger-to-Execution Orchestration"
+        description="ExecuteIQ provides the coordination infrastructure enterprises are missing—governance, decision rights, and stakeholder orchestration built by design, not by default. 170 playbooks across 9 domains, including compound disruption scenarios."
         delay={0.5}
       />
     </div>
