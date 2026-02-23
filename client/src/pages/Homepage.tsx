@@ -276,7 +276,7 @@ export default function Homepage() {
               <span className="text-emerald-400 font-semibold"> From trigger to execution—not trigger to planning.</span>
             </p>
             <p className="text-base text-slate-300 max-w-2xl mx-auto mb-8 italic">
-              Powered by AI that detects signals, matches playbooks, orchestrates responses, and learns from every execution.
+              In a world of compound disruptions, better predictions won't save you. Better response infrastructure will.
             </p>
           </div>
 
@@ -616,6 +616,118 @@ export default function Homepage() {
                 View the Research
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Paradigm Shift Section - From Prediction to Preparation */}
+      <section className="py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" data-testid="paradigm-shift-section">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-[#00A8A8]/20 text-[#00A8A8] border-[#00A8A8]/30">
+              <Lightbulb className="w-4 h-4 mr-2" />
+              The Paradigm Shift
+            </Badge>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              From Prediction to Preparation
+            </h2>
+            <p className="text-lg text-slate-200 max-w-3xl mx-auto mb-3">
+              The predict-and-act model is dead. In a world where disruptions compound and cascade, the only advantage is response infrastructure built in advance.
+            </p>
+            <p className="text-sm text-slate-400 italic">
+              Metaruptions — Disruptive Futures Institute, 2026 Word of the Year
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <Card className="bg-red-950/30 border border-red-500/30 overflow-hidden">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-red-500/20 flex items-center justify-center">
+                    <X className="h-5 w-5 text-red-400" />
+                  </div>
+                  <h3 className="text-xl font-bold text-red-400">The Old Model</h3>
+                </div>
+                <p className="text-white font-semibold mb-2">Predict → Plan → Execute</p>
+                <p className="text-sm text-slate-400 mb-6">Assumes: Stable environment, linear change, time to prepare</p>
+                <div className="space-y-3">
+                  {[
+                    "Ad-hoc response teams",
+                    "72-hour coordination loops",
+                    "Knowledge walks out the door",
+                    "Every crisis starts from scratch"
+                  ].map((item) => (
+                    <div key={item} className="flex items-start gap-3">
+                      <X className="h-4 w-4 text-red-400 mt-0.5 shrink-0" />
+                      <span className="text-slate-300 text-sm">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-emerald-950/30 border border-emerald-500/30 overflow-hidden">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-400" />
+                  </div>
+                  <h3 className="text-xl font-bold text-emerald-400">The New Model</h3>
+                </div>
+                <p className="text-white font-semibold mb-2">Detect → Activate → Coordinate → Execute → Advance</p>
+                <p className="text-sm text-slate-400 mb-6">Assumes: Compound disruptions, no time to improvise</p>
+                <div className="space-y-3">
+                  {[
+                    "Pre-built playbooks with decision rights",
+                    "12-minute coordinated execution",
+                    "Institutional intelligence that compounds",
+                    "Each response makes the next one faster"
+                  ].map((item) => (
+                    <div key={item} className="flex items-start gap-3">
+                      <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" />
+                      <span className="text-slate-300 text-sm">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
+            {[
+              {
+                mapping: "Anticipatory → IDENTIFY",
+                desc: "AI-powered signal detection before disruptions compound",
+                color: "text-violet-400",
+                borderColor: "border-violet-500/30",
+                bgColor: "bg-violet-500/10"
+              },
+              {
+                mapping: "Agile → DETECT + EXECUTE",
+                desc: "12-minute coordination with pre-defined decision rights",
+                color: "text-emerald-400",
+                borderColor: "border-emerald-500/30",
+                bgColor: "bg-emerald-500/10"
+              },
+              {
+                mapping: "Antifragile → ADVANCE",
+                desc: "Every execution strengthens future response capability",
+                color: "text-amber-400",
+                borderColor: "border-amber-500/30",
+                bgColor: "bg-amber-500/10"
+              }
+            ].map((item) => (
+              <div key={item.mapping} className={`${item.bgColor} border ${item.borderColor} rounded-xl p-5 text-center`}>
+                <p className={`font-bold ${item.color} mb-2`}>{item.mapping}</p>
+                <p className="text-sm text-slate-300">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <p className="text-slate-400 italic text-sm max-w-2xl mx-auto">
+              15 independent reports. One conclusion. The infrastructure for the next era of enterprise execution.
+            </p>
           </div>
         </div>
       </section>

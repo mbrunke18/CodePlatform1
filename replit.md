@@ -76,6 +76,11 @@ ExecuteIQ is built around the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE
   - **Pricing**: Added comprehensive Feature Comparison Matrix (18 features across 6 categories comparing Enterprise/Enterprise Plus/Global tiers)
   - **Stakeholder Management**: Added Engagement Analytics (response time, reach, participation), Communication Timeline (5 recent events), and RACI Matrix visualization (6 stakeholders × 4 playbooks)
 - **Demo consolidation**: Consolidated 22+ demo pages into one primary "Try Demo" path. Nav "Live Demos" reduced from 5 links to 1 ("Try Demo"). Footer "Experience" cleaned up (removed "Ultimate Demo"). Added "See It In Your Industry" section at bottom of TryDemo with 9 industry scenario cards. Redirected 15+ legacy demo routes (investor-demo, customer-demo, keynote, executive-simulation, sandbox-demo, pilot-demo, demo-gallery, deal-risk-demo, live-activation, etc.) to /try-demo. Industry-specific demos (luxury, financial, pharma, manufacturing, retail, energy, lvmh, shein, spacex) remain accessible from TryDemo page. Removed unused lazy imports from App.tsx.
+- **Metaruptions integration (Feb 2026)**: Integrated Disruptive Futures Institute's Metaruptions framework across 4 pages:
+  - **Homepage**: Updated hero sub-text ("better predictions won't save you, better response infrastructure will"), added "From Prediction to Preparation" paradigm shift section with Old Model vs New Model comparison, AAA→IDEA framework mapping (Anticipatory→IDENTIFY, Agile→DETECT+EXECUTE, Antifragile→ADVANCE)
+  - **How It Works**: Updated hero subtitle with metaruptions positioning, added "Built for Compound Disruption" section with 4 compound disruption scenarios (Cyber+Regulatory, Geopolitical+Supply Chain, Climate+Operations, AI+Workforce) and AAA→IDEA framework mapping
+  - **Investor Presentation**: Added "Paradigm Shift" slide (From Prediction to Preparation with Dead Model vs ExecuteIQ Model), updated "Why Now?" with metaruptions framing, updated totalSlides to 17, fixed DECIDE→DETECT in IDEA Framework slide
+  - **Playbook Library**: Added Compound Disruption Response callout section with 4 multi-domain coordination scenarios and cross-domain activation messaging
 
 ## External Dependencies
 - **AI Services**: OpenAI GPT-4o

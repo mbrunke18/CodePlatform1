@@ -35,7 +35,7 @@ function InvestorPresentation() {
   const [, setLocation] = useLocation();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const totalSlides = 16;
+  const totalSlides = 17;
 
   const goToNext = useCallback(() => {
     setCurrentSlide(prev => Math.min(prev + 1, totalSlides - 1));
@@ -150,7 +150,7 @@ function InvestorPresentation() {
         <div className="grid md:grid-cols-4 gap-6 max-w-5xl w-full mb-8">
           {[
             { letter: 'I', name: 'IDENTIFY', desc: 'AI watches 847+ signals across news, regulatory, market, and threat feeds', icon: <Eye className="w-6 h-6" />, color: 'from-violet-600 to-violet-800' },
-            { letter: 'D', name: 'DECIDE', desc: 'Match signals to playbooks with confidence scoring and stakeholder mapping', icon: <Brain className="w-6 h-6" />, color: 'from-blue-600 to-blue-800' },
+            { letter: 'D', name: 'DETECT', desc: 'Match signals to playbooks with confidence scoring and stakeholder mapping', icon: <Brain className="w-6 h-6" />, color: 'from-blue-600 to-blue-800' },
             { letter: 'E', name: 'EXECUTE', desc: 'One-click activation. 12-minute full mobilization. Pre-approved budgets deployed.', icon: <Zap className="w-6 h-6" />, color: 'from-teal-600 to-teal-800' },
             { letter: 'A', name: 'ADVANCE', desc: 'Learn from every activation. AI refines playbooks. Institutional knowledge captured.', icon: <TrendingUp className="w-6 h-6" />, color: 'from-amber-600 to-amber-800' },
           ].map((p, i) => (
@@ -291,11 +291,12 @@ function InvestorPresentation() {
             <h3 className="text-xl font-bold text-white mb-4">Why Now?</h3>
             <div className="space-y-3">
               {[
+                'Metaruptions: disruptions now compound and cascade (DFI 2026)',
                 'Crisis frequency increasing 3x since 2020',
                 'Board-level mandate for crisis preparedness (82%)',
                 'AI maturity enables real-time signal processing',
-                'No incumbent owns strategic execution',
-                'Post-pandemic urgency for execution speed',
+                'No incumbent owns strategic execution infrastructure',
+                '"Predict-and-act is dead" — enterprises need response infrastructure',
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3 text-slate-200">
                   <CheckCircle2 className="w-5 h-5 text-teal-400 mt-0.5 shrink-0" />
@@ -305,6 +306,58 @@ function InvestorPresentation() {
             </div>
           </div>
         </div>
+      </div>
+    ),
+
+    () => (
+      <div className="flex flex-col items-center justify-center h-full px-4">
+        <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">The Paradigm Shift</p>
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center max-w-4xl">
+          From Prediction to Preparation
+        </h2>
+        <p className="text-slate-300 text-center max-w-3xl mb-10">
+          "There is no data on the future. What we need is a new operating system." — Disruptive Futures Institute
+        </p>
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl w-full mb-10">
+          <div className="bg-red-950/30 border border-red-500/30 rounded-xl p-8">
+            <h3 className="text-xl font-bold text-red-400 mb-2">The Dead Model</h3>
+            <p className="text-slate-400 text-sm mb-4">Predict → Plan → Execute</p>
+            <div className="space-y-3">
+              {['Assumes stable, linear environment', 'Ad-hoc response teams assembled after the fact', '72-hour coordination loops', 'Knowledge lost when people leave', 'Same cost, same scramble, every time'].map((t, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-red-500 mt-2 shrink-0" />
+                  <span className="text-slate-300 text-sm">{t}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="bg-teal-950/30 border border-teal-500/30 rounded-xl p-8">
+            <h3 className="text-xl font-bold text-teal-400 mb-2">The ExecuteIQ Model</h3>
+            <p className="text-slate-400 text-sm mb-4">Detect → Activate → Coordinate → Execute → Advance</p>
+            <div className="space-y-3">
+              {['Built for compound disruptions (metaruptions)', 'Pre-built playbooks with decision rights mapped', '12-minute coordinated execution', 'Institutional intelligence that compounds', 'Each response makes the next one faster'].map((t, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-teal-500 mt-2 shrink-0" />
+                  <span className="text-slate-300 text-sm">{t}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-4 max-w-4xl w-full">
+          {[
+            { from: 'Anticipatory', to: 'IDENTIFY', desc: 'Signal detection before cascades' },
+            { from: 'Agile', to: 'DETECT + EXECUTE', desc: '12-min coordination, pre-defined rights' },
+            { from: 'Antifragile', to: 'ADVANCE', desc: 'Grows stronger from every disruption' },
+          ].map((m, i) => (
+            <div key={i} className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-center">
+              <div className="text-slate-400 text-xs font-semibold uppercase">{m.from}</div>
+              <div className="text-teal-400 font-bold my-1">→ {m.to}</div>
+              <div className="text-slate-300 text-xs">{m.desc}</div>
+            </div>
+          ))}
+        </div>
+        <p className="text-slate-500 text-xs mt-6">AAA Framework — Disruptive Futures Institute | "Metaruptions" — 2026 Word of the Year</p>
       </div>
     ),
 

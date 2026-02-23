@@ -224,6 +224,40 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
               })}
             </div>
             
+            <div className="mt-10 bg-gradient-to-r from-red-950/40 via-slate-900 to-amber-950/40 rounded-2xl border border-red-500/20 p-8">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center shrink-0">
+                  <Zap className="h-6 w-6 text-red-400" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-3 mb-1">
+                    <h3 className="text-lg font-bold text-white">Compound Disruption Response</h3>
+                    <Badge className="bg-red-500/20 text-red-400 border-red-500/30 text-[10px]">METARUPTIONS</Badge>
+                  </div>
+                  <p className="text-slate-300 text-sm">
+                    When disruptions cascade across domains — cyber + regulatory, geopolitical + supply chain — ExecuteIQ activates multi-domain playbooks simultaneously with coordinated decision rights.
+                  </p>
+                </div>
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                {[
+                  { scenario: 'Cyber + Regulatory', domains: 'Defense + Defense', playbooks: '6 coordinated', color: 'border-red-500/30 bg-red-950/20' },
+                  { scenario: 'Geopolitical + Supply Chain', domains: 'Defense + Offense', playbooks: '8 coordinated', color: 'border-amber-500/30 bg-amber-950/20' },
+                  { scenario: 'Climate + Operations', domains: 'Defense + Special Teams', playbooks: '5 coordinated', color: 'border-blue-500/30 bg-blue-950/20' },
+                  { scenario: 'AI + Workforce', domains: 'Special Teams + Defense', playbooks: '7 coordinated', color: 'border-purple-500/30 bg-purple-950/20' },
+                ].map((item, i) => (
+                  <div key={i} className={`border rounded-lg p-4 ${item.color}`}>
+                    <div className="text-white text-sm font-semibold mb-1">{item.scenario}</div>
+                    <div className="text-slate-400 text-xs mb-2">{item.domains}</div>
+                    <div className="text-emerald-400 text-xs font-medium">{item.playbooks}</div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-slate-500 mt-4 italic">
+                Cross-domain coordination is automatic — ExecuteIQ detects compound patterns and activates relevant playbooks across categories simultaneously.
+              </p>
+            </div>
+
             {myPlaybooks && myPlaybooks.length > 0 && (
               <div className="mt-12 mb-8">
                 <div className="flex items-center gap-3 mb-5">

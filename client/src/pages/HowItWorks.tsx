@@ -154,7 +154,7 @@ export default function HowItWorks() {
               From Situation to Execution in 12 Minutes
             </h1>
             <p className="text-xl md:text-2xl text-slate-200 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Execution infrastructure works because it's ready before the moment arrives—just like the playbooks elite sports teams build before the season starts.
+              In a world of metaruptions—where disruptions compound and cascade—the only advantage is execution infrastructure built before the moment arrives.
             </p>
             
             {/* Visual Phase Flow */}
@@ -395,6 +395,66 @@ export default function HowItWorks() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Built for Compound Disruption */}
+      <div className="bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 py-20">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <Badge className="mb-4 bg-red-500/20 text-red-400 border-red-500/30">
+                Built for Compound Disruption
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                When Disruptions Don't Come One at a Time
+              </h2>
+              <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+                Metaruptions — multidimensional, self-reinforcing systemic disruptions — are the new normal. A cyber breach triggers regulatory action. A tariff war disrupts supply chains. ExecuteIQ is built for compound response.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
+              {[
+                { scenario: 'Cyber + Regulatory', example: 'Data breach triggers GDPR penalties and SEC disclosure requirements simultaneously', response: 'Multi-domain coordination across legal, security, compliance, and communications', color: 'border-red-500/30', iconColor: 'text-red-400' },
+                { scenario: 'Geopolitical + Supply Chain', example: 'Tariff escalation impacts critical supplier in affected region', response: 'Cross-functional response coordinating procurement, operations, and finance', color: 'border-amber-500/30', iconColor: 'text-amber-400' },
+                { scenario: 'Climate + Operations', example: 'Weather event causes facility shutdown with cascading customer impact', response: 'Parallel workstreams across facilities, logistics, customer success, and PR', color: 'border-blue-500/30', iconColor: 'text-blue-400' },
+                { scenario: 'AI + Workforce', example: 'Automation announcement triggers union response and media attention', response: 'Integrated stakeholder management across HR, legal, communications, and executive team', color: 'border-purple-500/30', iconColor: 'text-purple-400' },
+              ].map((item, i) => (
+                <div key={i} className={`bg-slate-900/80 border ${item.color} rounded-xl p-6`}>
+                  <h3 className={`font-bold ${item.iconColor} mb-2`}>{item.scenario}</h3>
+                  <p className="text-slate-300 text-sm mb-3">{item.example}</p>
+                  <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700">
+                    <p className="text-xs text-slate-400 font-semibold mb-1 uppercase tracking-wider">ExecuteIQ Response</p>
+                    <p className="text-emerald-400 text-sm">{item.response}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center">
+              <h3 className="text-xl font-bold text-white mb-6">The IDEA Framework Operationalizes Strategic Foresight</h3>
+              <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                {[
+                  { aaa: 'Anticipatory', idea: 'IDENTIFY', desc: 'AI-powered signal detection spots compound disruption patterns before they cascade', color: 'bg-violet-500/10 border-violet-500/30', textColor: 'text-violet-400' },
+                  { aaa: 'Agile', idea: 'DETECT + EXECUTE', desc: '12-minute coordination with pre-defined decision rights — no time lost to improvisation', color: 'bg-emerald-500/10 border-emerald-500/30', textColor: 'text-emerald-400' },
+                  { aaa: 'Antifragile', idea: 'ADVANCE', desc: 'Every execution strengthens future response — your organization grows stronger from each disruption', color: 'bg-amber-500/10 border-amber-500/30', textColor: 'text-amber-400' },
+                ].map((item, i) => (
+                  <div key={i} className={`${item.color} border rounded-xl p-5`}>
+                    <div className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">{item.aaa}</div>
+                    <div className="flex items-center justify-center gap-2 mb-2">
+                      <ArrowRight className="h-3 w-3 text-slate-500" />
+                      <span className={`font-bold ${item.textColor}`}>{item.idea}</span>
+                    </div>
+                    <p className="text-slate-300 text-sm">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-sm text-slate-400 mt-6 italic">
+                AAA Framework (Antifragile, Anticipatory, Agile) — Disruptive Futures Institute, 2026
+              </p>
             </div>
           </div>
         </div>
