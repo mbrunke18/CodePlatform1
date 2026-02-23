@@ -9,7 +9,7 @@ import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "wouter";
-import { Search, Plus, Eye, Copy, Edit, Target, Shield, Zap, Clock, Users, Star, MoreHorizontal, ArrowLeft, ChevronRight, BookOpen } from "lucide-react";
+import { Search, Plus, Eye, Copy, Edit, Target, Shield, Zap, Clock, Users, Star, MoreHorizontal, ArrowLeft, ChevronRight, BookOpen, ChevronDown, AlertTriangle, Brain, Network, ArrowRight } from "lucide-react";
 import type { Playbook } from "@shared/schema";
 import { useCustomer } from "@/contexts/CustomerContext";
 
@@ -83,6 +83,252 @@ const categoryConfig = {
 };
 
 type Category = keyof typeof categoryConfig;
+
+const compoundScenarios = [
+  {
+    scenario: 'Cyber + Regulatory',
+    icon: Shield,
+    iconColor: 'text-red-400',
+    bgColor: 'border-red-500/30 bg-red-950/20',
+    expandedBg: 'bg-gradient-to-br from-red-950/40 to-slate-900',
+    domains: 'Defense + Defense',
+    playbookCount: 6,
+    description: 'A data breach triggers simultaneous GDPR penalties, SEC disclosure requirements, and customer notification obligations across multiple jurisdictions.',
+    triggerExample: 'Unauthorized data access detected in EU customer database',
+    playbooks: [
+      { name: 'Cyber Incident Response', domain: 'Cyber Incidents', phase: 'EXECUTE' },
+      { name: 'Data Breach Notification', domain: 'Regulatory Compliance', phase: 'EXECUTE' },
+      { name: 'GDPR Breach Protocol', domain: 'Regulatory Compliance', phase: 'EXECUTE' },
+      { name: 'SEC Disclosure Filing', domain: 'Regulatory Compliance', phase: 'DETECT' },
+      { name: 'Crisis Communications', domain: 'Crisis Response', phase: 'EXECUTE' },
+      { name: 'Customer Impact Assessment', domain: 'Crisis Response', phase: 'IDENTIFY' },
+    ],
+    stakeholders: ['CISO', 'General Counsel', 'DPO', 'CFO', 'VP Communications', 'CTO'],
+    timeline: [
+      { time: '0:00', action: 'Breach detected — IDENTIFY triggers pattern match' },
+      { time: '0:30', action: 'AI matches to 6 playbooks across Cyber + Regulatory' },
+      { time: '1:00', action: 'All 6 stakeholder leads notified simultaneously' },
+      { time: '3:00', action: 'Parallel workstreams active: containment, legal, comms' },
+      { time: '8:00', action: 'Regulatory filings staged, customer comms drafted' },
+      { time: '12:00', action: 'Full coordinated response operational' },
+    ],
+  },
+  {
+    scenario: 'Geopolitical + Supply Chain',
+    icon: Network,
+    iconColor: 'text-amber-400',
+    bgColor: 'border-amber-500/30 bg-amber-950/20',
+    expandedBg: 'bg-gradient-to-br from-amber-950/40 to-slate-900',
+    domains: 'Defense + Offense',
+    playbookCount: 8,
+    description: 'Tariff escalation or sanctions impact a critical supplier in an affected region, requiring simultaneous supply chain restructuring and market repositioning.',
+    triggerExample: 'New 25% tariff announced on semiconductor imports from key supplier region',
+    playbooks: [
+      { name: 'Supply Chain Disruption Response', domain: 'Crisis Response', phase: 'EXECUTE' },
+      { name: 'Alternative Supplier Activation', domain: 'Market Entry & Expansion', phase: 'EXECUTE' },
+      { name: 'Tariff Impact Assessment', domain: 'Regulatory Compliance', phase: 'IDENTIFY' },
+      { name: 'Cost Structure Realignment', domain: 'Crisis Response', phase: 'DETECT' },
+      { name: 'Customer Pricing Communication', domain: 'Product Launch', phase: 'EXECUTE' },
+      { name: 'Inventory Buffer Strategy', domain: 'Market Entry & Expansion', phase: 'EXECUTE' },
+      { name: 'Geopolitical Risk Monitoring', domain: 'Crisis Response', phase: 'DETECT' },
+      { name: 'Board Briefing: Supply Chain', domain: 'Crisis Response', phase: 'ADVANCE' },
+    ],
+    stakeholders: ['COO', 'CPO', 'CFO', 'VP Supply Chain', 'General Counsel', 'VP Sales', 'Board Secretary'],
+    timeline: [
+      { time: '0:00', action: 'Tariff announcement detected via news signal feed' },
+      { time: '0:30', action: 'AI identifies 8 affected playbooks across Defense + Offense' },
+      { time: '1:00', action: '7 stakeholder leads notified with role-specific briefs' },
+      { time: '3:00', action: 'Supplier alternatives assessed, cost impact modeled' },
+      { time: '8:00', action: 'Customer communication drafted, board briefing staged' },
+      { time: '12:00', action: 'Coordinated response across procurement, finance, sales' },
+    ],
+  },
+  {
+    scenario: 'Climate + Operations',
+    icon: AlertTriangle,
+    iconColor: 'text-blue-400',
+    bgColor: 'border-blue-500/30 bg-blue-950/20',
+    expandedBg: 'bg-gradient-to-br from-blue-950/40 to-slate-900',
+    domains: 'Defense + Special Teams',
+    playbookCount: 5,
+    description: 'Severe weather event causes facility shutdown with cascading impact on customers, logistics, employee safety, and insurance claims.',
+    triggerExample: 'Category 4 hurricane approaching primary manufacturing facility',
+    playbooks: [
+      { name: 'Facility Emergency Response', domain: 'Crisis Response', phase: 'EXECUTE' },
+      { name: 'Business Continuity Activation', domain: 'Crisis Response', phase: 'EXECUTE' },
+      { name: 'Customer Service Continuity', domain: 'Digital Transformation', phase: 'EXECUTE' },
+      { name: 'Employee Safety Protocol', domain: 'Crisis Response', phase: 'EXECUTE' },
+      { name: 'Insurance & Recovery Planning', domain: 'Crisis Response', phase: 'ADVANCE' },
+    ],
+    stakeholders: ['COO', 'VP Facilities', 'CHRO', 'VP Customer Success', 'Risk Officer'],
+    timeline: [
+      { time: '0:00', action: 'Weather monitoring signal triggers facility risk alert' },
+      { time: '0:30', action: '5 playbooks activated across Crisis + Digital Transformation' },
+      { time: '1:00', action: 'Employee evacuation notification, customer rerouting begins' },
+      { time: '3:00', action: 'Backup operations online, logistics rerouted' },
+      { time: '8:00', action: 'Insurance claims process initiated, recovery timeline set' },
+      { time: '12:00', action: 'All stakeholders aligned on 72-hour recovery plan' },
+    ],
+  },
+  {
+    scenario: 'AI + Workforce',
+    icon: Brain,
+    iconColor: 'text-purple-400',
+    bgColor: 'border-purple-500/30 bg-purple-950/20',
+    expandedBg: 'bg-gradient-to-br from-purple-950/40 to-slate-900',
+    domains: 'Special Teams + Defense',
+    playbookCount: 7,
+    description: 'AI automation announcement triggers union response, media scrutiny, regulatory inquiry, and employee morale concerns requiring coordinated stakeholder management.',
+    triggerExample: 'Internal AI automation plan leaked to media before employee communication',
+    playbooks: [
+      { name: 'AI Governance Communication', domain: 'AI Governance', phase: 'EXECUTE' },
+      { name: 'Workforce Transition Plan', domain: 'Digital Transformation', phase: 'EXECUTE' },
+      { name: 'Media Response Protocol', domain: 'Crisis Response', phase: 'EXECUTE' },
+      { name: 'Union/Labor Relations', domain: 'Crisis Response', phase: 'DETECT' },
+      { name: 'Employee Reskilling Initiative', domain: 'AI Governance', phase: 'EXECUTE' },
+      { name: 'Regulatory Compliance (AI Act)', domain: 'AI Governance', phase: 'IDENTIFY' },
+      { name: 'Board AI Strategy Brief', domain: 'AI Governance', phase: 'ADVANCE' },
+    ],
+    stakeholders: ['CHRO', 'CTO', 'General Counsel', 'VP Communications', 'Chief AI Officer', 'CEO'],
+    timeline: [
+      { time: '0:00', action: 'Media report detected — crisis signal triggers compound match' },
+      { time: '0:30', action: '7 playbooks activated across AI Governance + Crisis' },
+      { time: '1:00', action: '6 executive leads notified with coordinated talking points' },
+      { time: '3:00', action: 'Employee town hall scheduled, media holding statement issued' },
+      { time: '8:00', action: 'Reskilling plan drafted, regulatory filing reviewed' },
+      { time: '12:00', action: 'Unified response across HR, legal, comms, and technology' },
+    ],
+  },
+];
+
+function CompoundDisruptionSection() {
+  const [expandedScenario, setExpandedScenario] = useState<number | null>(null);
+
+  return (
+    <div className="mt-10 bg-gradient-to-r from-red-950/40 via-slate-900 to-amber-950/40 rounded-2xl border border-red-500/20 p-8">
+      <div className="flex items-start gap-4 mb-6">
+        <div className="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center shrink-0">
+          <Zap className="h-6 w-6 text-red-400" />
+        </div>
+        <div>
+          <div className="flex items-center gap-3 mb-1">
+            <h3 className="text-lg font-bold text-white">Compound Disruption Response</h3>
+            <Badge className="bg-red-500/20 text-red-400 border-red-500/30 text-[10px]">METARUPTIONS</Badge>
+          </div>
+          <p className="text-slate-300 text-sm">
+            When disruptions cascade across domains, ExecuteIQ activates multi-domain playbooks simultaneously. Click any scenario to explore the full response coordination.
+          </p>
+        </div>
+      </div>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        {compoundScenarios.map((item, i) => {
+          const Icon = item.icon;
+          const isExpanded = expandedScenario === i;
+          return (
+            <div
+              key={i}
+              className={`border rounded-lg p-4 cursor-pointer transition-all duration-200 ${item.bgColor} ${isExpanded ? 'ring-2 ring-white/20' : 'hover:ring-1 hover:ring-white/10'}`}
+              onClick={() => setExpandedScenario(isExpanded ? null : i)}
+            >
+              <div className="flex items-center justify-between mb-1">
+                <div className="flex items-center gap-2">
+                  <Icon className={`h-4 w-4 ${item.iconColor}`} />
+                  <div className="text-white text-sm font-semibold">{item.scenario}</div>
+                </div>
+                <ChevronDown className={`h-3.5 w-3.5 text-slate-400 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
+              </div>
+              <div className="text-slate-400 text-xs mb-2">{item.domains}</div>
+              <div className="text-emerald-400 text-xs font-medium">{item.playbookCount} coordinated playbooks</div>
+            </div>
+          );
+        })}
+      </div>
+
+      {expandedScenario !== null && (() => {
+        const scenario = compoundScenarios[expandedScenario];
+        const Icon = scenario.icon;
+        return (
+          <div className={`mt-6 rounded-xl border border-slate-700 ${scenario.expandedBg} p-6 animate-in fade-in slide-in-from-top-2 duration-300`}>
+            <div className="flex items-start gap-4 mb-6">
+              <div className={`w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center shrink-0`}>
+                <Icon className={`h-5 w-5 ${scenario.iconColor}`} />
+              </div>
+              <div className="flex-1">
+                <h4 className="text-lg font-bold text-white mb-1">{scenario.scenario}</h4>
+                <p className="text-slate-300 text-sm leading-relaxed">{scenario.description}</p>
+              </div>
+            </div>
+
+            <div className="bg-slate-800/60 rounded-lg p-4 mb-6 border border-slate-700/50">
+              <div className="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-1">Trigger Example</div>
+              <p className="text-white text-sm font-medium">{scenario.triggerExample}</p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-6 mb-6">
+              <div>
+                <h5 className="text-sm font-bold text-white mb-3 flex items-center gap-2">
+                  <BookOpen className="h-4 w-4 text-emerald-400" />
+                  Activated Playbooks ({scenario.playbookCount})
+                </h5>
+                <div className="space-y-2">
+                  {scenario.playbooks.map((pb, j) => (
+                    <div key={j} className="flex items-center justify-between bg-slate-800/40 rounded-lg px-3 py-2 border border-slate-700/30">
+                      <div className="flex-1">
+                        <div className="text-white text-sm font-medium">{pb.name}</div>
+                        <div className="text-slate-400 text-xs">{pb.domain}</div>
+                      </div>
+                      <Badge className="bg-slate-700/50 text-slate-300 border-slate-600 text-[10px] shrink-0">{pb.phase}</Badge>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h5 className="text-sm font-bold text-white mb-3 flex items-center gap-2">
+                  <Clock className="h-4 w-4 text-emerald-400" />
+                  12-Minute Execution Timeline
+                </h5>
+                <div className="space-y-0 relative">
+                  <div className="absolute left-[7px] top-3 bottom-3 w-0.5 bg-gradient-to-b from-emerald-500 via-emerald-400 to-emerald-300 rounded-full" />
+                  {scenario.timeline.map((step, j) => (
+                    <div key={j} className="flex items-start gap-3 py-1.5 relative">
+                      <div className={`w-4 h-4 rounded-full shrink-0 z-10 ${j === 0 ? 'bg-emerald-500 ring-2 ring-emerald-500/30' : j === scenario.timeline.length - 1 ? 'bg-emerald-300' : 'bg-emerald-400/80'}`} />
+                      <div className="flex-1 min-w-0">
+                        <span className="text-emerald-400 text-xs font-bold mr-2">{step.time}</span>
+                        <span className="text-slate-300 text-xs">{step.action}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <h5 className="text-sm font-bold text-white mt-6 mb-3 flex items-center gap-2">
+                  <Users className="h-4 w-4 text-emerald-400" />
+                  Stakeholders Coordinated ({scenario.stakeholders.length})
+                </h5>
+                <div className="flex flex-wrap gap-1.5">
+                  {scenario.stakeholders.map((s, j) => (
+                    <span key={j} className="px-2.5 py-1 rounded-full text-xs font-medium bg-slate-800 text-slate-200 border border-slate-700">{s}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-emerald-950/30 border border-emerald-500/20 rounded-lg p-4 flex items-center gap-3">
+              <ArrowRight className="h-4 w-4 text-emerald-400 shrink-0" />
+              <p className="text-emerald-300 text-sm">
+                All {scenario.playbookCount} playbooks activate simultaneously with pre-mapped decision rights — no sequential handoffs, no coordination meetings, no time lost.
+              </p>
+            </div>
+          </div>
+        );
+      })()}
+
+      <p className="text-xs text-slate-500 mt-4 italic">
+        Cross-domain coordination is automatic — ExecuteIQ detects compound patterns and activates relevant playbooks across categories simultaneously.
+      </p>
+    </div>
+  );
+}
 
 export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) {
   const [, setLocation] = useLocation();
@@ -224,39 +470,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
               })}
             </div>
             
-            <div className="mt-10 bg-gradient-to-r from-red-950/40 via-slate-900 to-amber-950/40 rounded-2xl border border-red-500/20 p-8">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center shrink-0">
-                  <Zap className="h-6 w-6 text-red-400" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-3 mb-1">
-                    <h3 className="text-lg font-bold text-white">Compound Disruption Response</h3>
-                    <Badge className="bg-red-500/20 text-red-400 border-red-500/30 text-[10px]">METARUPTIONS</Badge>
-                  </div>
-                  <p className="text-slate-300 text-sm">
-                    When disruptions cascade across domains — cyber + regulatory, geopolitical + supply chain — ExecuteIQ activates multi-domain playbooks simultaneously with coordinated decision rights.
-                  </p>
-                </div>
-              </div>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                {[
-                  { scenario: 'Cyber + Regulatory', domains: 'Defense + Defense', playbooks: '6 coordinated', color: 'border-red-500/30 bg-red-950/20' },
-                  { scenario: 'Geopolitical + Supply Chain', domains: 'Defense + Offense', playbooks: '8 coordinated', color: 'border-amber-500/30 bg-amber-950/20' },
-                  { scenario: 'Climate + Operations', domains: 'Defense + Special Teams', playbooks: '5 coordinated', color: 'border-blue-500/30 bg-blue-950/20' },
-                  { scenario: 'AI + Workforce', domains: 'Special Teams + Defense', playbooks: '7 coordinated', color: 'border-purple-500/30 bg-purple-950/20' },
-                ].map((item, i) => (
-                  <div key={i} className={`border rounded-lg p-4 ${item.color}`}>
-                    <div className="text-white text-sm font-semibold mb-1">{item.scenario}</div>
-                    <div className="text-slate-400 text-xs mb-2">{item.domains}</div>
-                    <div className="text-emerald-400 text-xs font-medium">{item.playbooks}</div>
-                  </div>
-                ))}
-              </div>
-              <p className="text-xs text-slate-500 mt-4 italic">
-                Cross-domain coordination is automatic — ExecuteIQ detects compound patterns and activates relevant playbooks across categories simultaneously.
-              </p>
-            </div>
+            <CompoundDisruptionSection />
 
             {myPlaybooks && myPlaybooks.length > 0 && (
               <div className="mt-12 mb-8">
