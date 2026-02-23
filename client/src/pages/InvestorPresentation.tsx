@@ -292,11 +292,13 @@ function InvestorPresentation() {
             <div className="space-y-3">
               {[
                 'Disruptions now compound and cascade — single-domain response is obsolete',
+                'McKinsey: "Operating models stretched beyond their limits" (State of Organizations 2026)',
                 'Crisis frequency increasing 3x since 2020',
                 'Board-level mandate for crisis preparedness (82%)',
                 'AI maturity enables real-time signal processing',
                 'No incumbent owns strategic execution infrastructure',
                 '"Predict-and-act is dead" — enterprises need response infrastructure',
+                '88% use AI, but only 1/3 scaling across enterprise (McKinsey State of AI)',
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3 text-slate-200">
                   <CheckCircle2 className="w-5 h-5 text-teal-400 mt-0.5 shrink-0" />

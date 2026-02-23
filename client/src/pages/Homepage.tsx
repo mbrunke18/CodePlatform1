@@ -167,6 +167,13 @@ export default function Homepage() {
       borderColor: "border-amber-500/30"
     },
     {
+      quote: "Multiple forces are colliding and stretching operating models beyond their limits. Sustained performance requires rethinking how organizations are designed, led, and experienced.",
+      source: "McKinsey",
+      report: "State of Organizations 2026",
+      color: "text-amber-300",
+      borderColor: "border-amber-400/30"
+    },
+    {
       quote: "Companies that align AI, platforms, and business strategies achieve 2.2x revenue growth.",
       source: "Accenture",
       report: "Platform Strategy in the Age of Agentic AI",
@@ -726,7 +733,7 @@ export default function Homepage() {
 
           <div className="text-center">
             <p className="text-slate-400 italic text-sm max-w-2xl mx-auto">
-              15 independent reports. One conclusion. The infrastructure for the next era of enterprise execution.
+              16 independent reports. One conclusion. The infrastructure for the next era of enterprise execution.
             </p>
           </div>
         </div>
@@ -802,7 +809,7 @@ export default function Homepage() {
               ) : (
                 <>
                   <ChevronDown className="mr-2 h-4 w-4" />
-                  See All 15 Research Findings
+                  See All 16 Research Findings
                 </>
               )}
             </Button>
@@ -810,7 +817,7 @@ export default function Homepage() {
           
           <div className="text-center">
             <p className="text-xl font-semibold text-slate-900 dark:text-white">
-              15 independent reports. One conclusion: <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500">ExecuteIQ is what they're describing.</span>
+              16 independent reports. One conclusion: <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500">ExecuteIQ is what they're describing.</span>
             </p>
           </div>
         </div>
