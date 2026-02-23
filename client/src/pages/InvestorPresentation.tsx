@@ -291,7 +291,7 @@ function InvestorPresentation() {
             <h3 className="text-xl font-bold text-white mb-4">Why Now?</h3>
             <div className="space-y-3">
               {[
-                'Metaruptions: disruptions now compound and cascade (DFI 2026)',
+                'Disruptions now compound and cascade — single-domain response is obsolete',
                 'Crisis frequency increasing 3x since 2020',
                 'Board-level mandate for crisis preparedness (82%)',
                 'AI maturity enables real-time signal processing',
@@ -316,7 +316,7 @@ function InvestorPresentation() {
           From Prediction to Preparation
         </h2>
         <p className="text-slate-300 text-center max-w-3xl mb-10">
-          "There is no data on the future. What we need is a new operating system." — Disruptive Futures Institute
+          There is no data on the future. What enterprises need is execution infrastructure built before the moment arrives.
         </p>
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl w-full mb-10">
           <div className="bg-red-950/30 border border-red-500/30 rounded-xl p-8">
@@ -335,7 +335,7 @@ function InvestorPresentation() {
             <h3 className="text-xl font-bold text-teal-400 mb-2">The ExecuteIQ Model</h3>
             <p className="text-slate-400 text-sm mb-4">Detect → Activate → Coordinate → Execute → Advance</p>
             <div className="space-y-3">
-              {['Built for compound disruptions (metaruptions)', 'Pre-built playbooks with decision rights mapped', '12-minute coordinated execution', 'Institutional intelligence that compounds', 'Each response makes the next one faster'].map((t, i) => (
+              {['Built for compound, cascading disruptions', 'Pre-built playbooks with decision rights mapped', '12-minute coordinated execution', 'Institutional intelligence that compounds', 'Each response makes the next one faster'].map((t, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-teal-500 mt-2 shrink-0" />
                   <span className="text-slate-300 text-sm">{t}</span>
@@ -346,9 +346,9 @@ function InvestorPresentation() {
         </div>
         <div className="grid grid-cols-3 gap-4 max-w-4xl w-full">
           {[
-            { from: 'Anticipatory', to: 'IDENTIFY', desc: 'Signal detection before cascades' },
-            { from: 'Agile', to: 'DETECT + EXECUTE', desc: '12-min coordination, pre-defined rights' },
-            { from: 'Antifragile', to: 'ADVANCE', desc: 'Grows stronger from every disruption' },
+            { from: 'Signal-First', to: 'IDENTIFY', desc: 'Signal detection before cascades' },
+            { from: 'Rapid Coordination', to: 'DETECT + EXECUTE', desc: '12-min coordination, pre-defined rights' },
+            { from: 'Adaptive Intelligence', to: 'ADVANCE', desc: 'Grows stronger from every disruption' },
           ].map((m, i) => (
             <div key={i} className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-center">
               <div className="text-slate-400 text-xs font-semibold uppercase">{m.from}</div>
@@ -357,7 +357,7 @@ function InvestorPresentation() {
             </div>
           ))}
         </div>
-        <p className="text-slate-500 text-xs mt-6">AAA Framework — Disruptive Futures Institute | "Metaruptions" — 2026 Word of the Year</p>
+        <p className="text-slate-500 text-xs mt-6">ExecuteIQ IDEA Framework™ — Built for the era of compound disruption</p>
       </div>
     ),
 

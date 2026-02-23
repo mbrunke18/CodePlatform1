@@ -226,7 +226,7 @@ function CompoundDisruptionSection() {
         <div>
           <div className="flex items-center gap-3 mb-1">
             <h3 className="text-lg font-bold text-white">Compound Disruption Response</h3>
-            <Badge className="bg-red-500/20 text-red-400 border-red-500/30 text-[10px]">METARUPTIONS</Badge>
+            <Badge className="bg-red-500/20 text-red-400 border-red-500/30 text-[10px]">COMPOUND RESPONSE</Badge>
           </div>
           <p className="text-slate-300 text-sm">
             When disruptions cascade across domains, ExecuteIQ activates multi-domain playbooks simultaneously. Click any scenario to explore the full response coordination.

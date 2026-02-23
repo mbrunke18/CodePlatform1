@@ -154,7 +154,7 @@ export default function HowItWorks() {
               From Situation to Execution in 12 Minutes
             </h1>
             <p className="text-xl md:text-2xl text-slate-200 mb-8 leading-relaxed max-w-3xl mx-auto">
-              In a world of metaruptions—where disruptions compound and cascade—the only advantage is execution infrastructure built before the moment arrives.
+              In a world where disruptions compound and cascade across domains simultaneously, the only advantage is execution infrastructure built before the moment arrives.
             </p>
             
             {/* Visual Phase Flow */}
@@ -412,7 +412,7 @@ export default function HowItWorks() {
                 When Disruptions Don't Come One at a Time
               </h2>
               <p className="text-lg text-slate-300 max-w-3xl mx-auto">
-                Metaruptions — multidimensional, self-reinforcing systemic disruptions — are the new normal. A cyber breach triggers regulatory action. A tariff war disrupts supply chains. ExecuteIQ is built for compound response.
+                Compound disruptions — multidimensional, self-reinforcing events that cascade across domains — are the new normal. A cyber breach triggers regulatory action. A tariff war disrupts supply chains. ExecuteIQ is built for coordinated, cross-domain response.
               </p>
             </div>
 
@@ -438,12 +438,12 @@ export default function HowItWorks() {
               <h3 className="text-xl font-bold text-white mb-6">The IDEA Framework Operationalizes Strategic Foresight</h3>
               <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
                 {[
-                  { aaa: 'Anticipatory', idea: 'IDENTIFY', desc: 'AI-powered signal detection spots compound disruption patterns before they cascade', color: 'bg-violet-500/10 border-violet-500/30', textColor: 'text-violet-400' },
-                  { aaa: 'Agile', idea: 'DETECT + EXECUTE', desc: '12-minute coordination with pre-defined decision rights — no time lost to improvisation', color: 'bg-emerald-500/10 border-emerald-500/30', textColor: 'text-emerald-400' },
-                  { aaa: 'Antifragile', idea: 'ADVANCE', desc: 'Every execution strengthens future response — your organization grows stronger from each disruption', color: 'bg-amber-500/10 border-amber-500/30', textColor: 'text-amber-400' },
+                  { principle: 'Signal-First', idea: 'IDENTIFY', desc: 'AI-powered signal detection spots compound disruption patterns before they cascade', color: 'bg-violet-500/10 border-violet-500/30', textColor: 'text-violet-400' },
+                  { principle: 'Rapid Coordination', idea: 'DETECT + EXECUTE', desc: '12-minute coordination with pre-defined decision rights — no time lost to improvisation', color: 'bg-emerald-500/10 border-emerald-500/30', textColor: 'text-emerald-400' },
+                  { principle: 'Adaptive Intelligence', idea: 'ADVANCE', desc: 'Every execution strengthens future response — your organization grows stronger from each disruption', color: 'bg-amber-500/10 border-amber-500/30', textColor: 'text-amber-400' },
                 ].map((item, i) => (
                   <div key={i} className={`${item.color} border rounded-xl p-5`}>
-                    <div className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">{item.aaa}</div>
+                    <div className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">{item.principle}</div>
                     <div className="flex items-center justify-center gap-2 mb-2">
                       <ArrowRight className="h-3 w-3 text-slate-500" />
                       <span className={`font-bold ${item.textColor}`}>{item.idea}</span>
@@ -453,7 +453,7 @@ export default function HowItWorks() {
                 ))}
               </div>
               <p className="text-sm text-slate-400 mt-6 italic">
-                AAA Framework (Antifragile, Anticipatory, Agile) — Disruptive Futures Institute, 2026
+                The IDEA Framework™ — signal-first detection, rapid coordination, and adaptive intelligence built into executable infrastructure.
               </p>
             </div>
           </div>

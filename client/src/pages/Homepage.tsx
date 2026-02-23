@@ -635,7 +635,7 @@ export default function Homepage() {
               The predict-and-act model is dead. In a world where disruptions compound and cascade, the only advantage is response infrastructure built in advance.
             </p>
             <p className="text-sm text-slate-400 italic">
-              Metaruptions — Disruptive Futures Institute, 2026 Word of the Year
+              Compound disruptions are the new normal. ExecuteIQ is the response infrastructure.
             </p>
           </div>
 
@@ -696,21 +696,21 @@ export default function Homepage() {
           <div className="grid md:grid-cols-3 gap-6 mb-10">
             {[
               {
-                mapping: "Anticipatory → IDENTIFY",
+                mapping: "Signal-First → IDENTIFY",
                 desc: "AI-powered signal detection before disruptions compound",
                 color: "text-violet-400",
                 borderColor: "border-violet-500/30",
                 bgColor: "bg-violet-500/10"
               },
               {
-                mapping: "Agile → DETECT + EXECUTE",
+                mapping: "Rapid Coordination → DETECT + EXECUTE",
                 desc: "12-minute coordination with pre-defined decision rights",
                 color: "text-emerald-400",
                 borderColor: "border-emerald-500/30",
                 bgColor: "bg-emerald-500/10"
               },
               {
-                mapping: "Antifragile → ADVANCE",
+                mapping: "Adaptive Intelligence → ADVANCE",
                 desc: "Every execution strengthens future response capability",
                 color: "text-amber-400",
                 borderColor: "border-amber-500/30",
