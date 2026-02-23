@@ -87,6 +87,7 @@ type Category = keyof typeof categoryConfig;
 const compoundScenarios = [
   {
     scenario: 'Cyber + Regulatory',
+    playbookNumber: 181,
     icon: Shield,
     iconColor: 'text-red-400',
     bgColor: 'border-red-500/30 bg-red-950/20',
@@ -115,6 +116,7 @@ const compoundScenarios = [
   },
   {
     scenario: 'Geopolitical + Supply Chain',
+    playbookNumber: 182,
     icon: Network,
     iconColor: 'text-amber-400',
     bgColor: 'border-amber-500/30 bg-amber-950/20',
@@ -145,6 +147,7 @@ const compoundScenarios = [
   },
   {
     scenario: 'Climate + Operations',
+    playbookNumber: 183,
     icon: AlertTriangle,
     iconColor: 'text-blue-400',
     bgColor: 'border-blue-500/30 bg-blue-950/20',
@@ -172,6 +175,7 @@ const compoundScenarios = [
   },
   {
     scenario: 'AI + Workforce',
+    playbookNumber: 184,
     icon: Brain,
     iconColor: 'text-purple-400',
     bgColor: 'border-purple-500/30 bg-purple-950/20',
@@ -203,6 +207,15 @@ const compoundScenarios = [
 
 function CompoundDisruptionSection() {
   const [expandedScenario, setExpandedScenario] = useState<number | null>(null);
+  const [, setLocation] = useLocation();
+
+  const { data: libraryData } = useQuery<{ playbooks: any[] }>({
+    queryKey: ['/api/playbook-library'],
+  });
+
+  const getPlaybookId = (playbookNumber: number) => {
+    return libraryData?.playbooks?.find((p: any) => p.playbookNumber === playbookNumber)?.id;
+  };
 
   return (
     <div className="mt-10 bg-gradient-to-r from-red-950/40 via-slate-900 to-amber-950/40 rounded-2xl border border-red-500/20 p-8">
@@ -313,11 +326,25 @@ function CompoundDisruptionSection() {
               </div>
             </div>
 
-            <div className="bg-emerald-950/30 border border-emerald-500/20 rounded-lg p-4 flex items-center gap-3">
-              <ArrowRight className="h-4 w-4 text-emerald-400 shrink-0" />
-              <p className="text-emerald-300 text-sm">
-                All {scenario.playbookCount} playbooks activate simultaneously with pre-mapped decision rights — no sequential handoffs, no coordination meetings, no time lost.
-              </p>
+            <div className="bg-emerald-950/30 border border-emerald-500/20 rounded-lg p-4 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3 flex-1">
+                <ArrowRight className="h-4 w-4 text-emerald-400 shrink-0" />
+                <p className="text-emerald-300 text-sm">
+                  All {scenario.playbookCount} playbooks activate simultaneously with pre-mapped decision rights — no sequential handoffs, no coordination meetings, no time lost.
+                </p>
+              </div>
+              {getPlaybookId(scenario.playbookNumber) && (
+                <Button
+                  size="sm"
+                  className="bg-emerald-600 hover:bg-emerald-500 text-white shrink-0"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLocation(`/playbooks/${getPlaybookId(scenario.playbookNumber)}/preview`);
+                  }}
+                >
+                  View Full Playbook <ArrowRight className="h-3.5 w-3.5 ml-1.5" />
+                </Button>
+              )}
             </div>
           </div>
         );

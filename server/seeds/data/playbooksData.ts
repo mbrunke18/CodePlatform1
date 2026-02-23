@@ -2394,7 +2394,51 @@ export const playbooksData: PlaybooksDataset = {
       "domain": 9,
       "frequency": "medium",
       "budget": 20000000
+    },
+    {
+      "number": 181,
+      "name": "Compound: Cyber + Regulatory Cascade",
+      "trigger": "Data breach detected with regulatory reporting obligations across multiple jurisdictions (GDPR, SEC, state notification laws)",
+      "stakeholders": ["CISO", "General Counsel", "DPO", "CFO", "VP Communications", "CTO"],
+      "response": "Parallel activation of cyber containment, regulatory notification, legal response, and stakeholder communication workstreams with unified command structure",
+      "domain": 5,
+      "frequency": "high",
+      "budget": 2500000,
+      "compound": true
+    },
+    {
+      "number": 182,
+      "name": "Compound: Geopolitical + Supply Chain Disruption",
+      "trigger": "Geopolitical event (tariff, sanctions, conflict) impacts critical supplier or trade route affecting multiple business units",
+      "stakeholders": ["COO", "CPO", "CFO", "VP Supply Chain", "General Counsel", "VP Sales", "Board Secretary"],
+      "response": "Simultaneous supplier diversification, cost structure realignment, customer communication, and board briefing with cross-functional war room coordination",
+      "domain": 2,
+      "frequency": "high",
+      "budget": 5000000,
+      "compound": true
+    },
+    {
+      "number": 183,
+      "name": "Compound: Climate + Operations Cascade",
+      "trigger": "Severe weather event or climate disruption threatens or impacts primary operational facility with customer-facing service dependencies",
+      "stakeholders": ["COO", "VP Facilities", "CHRO", "VP Customer Success", "Chief Risk Officer", "VP Logistics"],
+      "response": "Parallel workstreams for employee safety, facility protection, customer service continuity, logistics rerouting, and insurance/recovery planning with 72-hour recovery timeline",
+      "domain": 2,
+      "frequency": "medium",
+      "budget": 3000000,
+      "compound": true
+    },
+    {
+      "number": 184,
+      "name": "Compound: AI + Workforce Transformation Crisis",
+      "trigger": "AI automation initiative leaked or announced prematurely triggering workforce concern, union response, media attention, or regulatory inquiry",
+      "stakeholders": ["CHRO", "CTO", "General Counsel", "VP Communications", "Chief AI Officer", "CEO"],
+      "response": "Coordinated stakeholder management across HR, legal, communications, and technology with unified messaging, employee reskilling initiatives, and regulatory compliance for AI workforce transformation",
+      "domain": 9,
+      "frequency": "medium",
+      "budget": 1500000,
+      "compound": true
     }
   ],
-  "total": 166
+  "total": 170
 };
