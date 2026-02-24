@@ -349,7 +349,7 @@ export default function PlatformVisual() {
           </motion.div>
 
           <motion.div
-            className="rounded-xl border-2 border-poise-teal/30 bg-gradient-to-br from-poise-navyp-6"
+            className="rounded-xl border-2 border-poise-teal/30 bg-white p-6"
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={fadeUp}
@@ -361,8 +361,8 @@ export default function PlatformVisual() {
             <div className="grid grid-cols-2 gap-4">
               {valueMetrics.map((metric) => (
                 <div key={metric.label}>
-                  <div className="text-xl font-bold text-white">{metric.value}</div>
-                  <div className="text-xs text-slate-300">{metric.label}</div>
+                  <div className="text-xl font-bold text-poise-navy">{metric.value}</div>
+                  <div className="text-xs text-gray-600">{metric.label}</div>
                 </div>
               ))}
             </div>

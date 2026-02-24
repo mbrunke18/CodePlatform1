@@ -191,7 +191,7 @@ export default function WorkspaceExecute() {
           </div>
 
           {/* 12-Minute Promise Banner */}
-          <Card className="mb-8 bg-gradient-to-r from-poise-navytext-white border-0">
+          <Card className="mb-8 bg-white border border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-xl bg-white/10">
@@ -199,7 +199,7 @@ export default function WorkspaceExecute() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">12 Minutes to Coordinated Response</h3>
-                  <p className="text-slate-300">Execution OS delivers 340x faster execution than traditional approaches (72 hours)</p>
+                  <p className="text-gray-600">Execution OS delivers 340x faster execution than traditional approaches (72 hours)</p>
                 </div>
               </div>
             </CardContent>

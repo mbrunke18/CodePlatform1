@@ -141,19 +141,16 @@ export default function HowItWorks() {
       <div className="page-background">
       
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-poise-navy via-poise-dark-gray to-poise-navy text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(212,175,55,0.08),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(0,168,168,0.08),transparent_50%)]" />
-        
+      <div className="relative overflow-hidden bg-white border-b border-gray-100">
         <div className="container mx-auto px-6 py-20 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-poise-gold/20 text-poise-gold border-poise-gold/40 text-sm px-4 py-2">
+            <Badge className="mb-6 bg-poise-gold/10 text-poise-gold border-poise-gold/30 text-sm px-4 py-2">
               The IDEA Framework™
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
               From Situation to Execution in 12 Minutes
             </h1>
-            <p className="text-xl md:text-2xl text-slate-200 mb-8 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
               In a world where disruptions compound and cascade across domains simultaneously, the only advantage is execution infrastructure built before the moment arrives.
             </p>
             
@@ -165,13 +162,13 @@ export default function HowItWorks() {
                     <phase.icon className="h-6 w-6 md:h-8 md:w-8 text-white" />
                   </div>
                   {index < phases.length - 1 && (
-                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-slate-200 mx-1 md:mx-2" />
+                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-gray-400 mx-1 md:mx-2" />
                   )}
                 </div>
               ))}
-              <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-slate-200 mx-1 md:mx-2 rotate-180 hidden md:block" />
+              <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-gray-400 mx-1 md:mx-2 rotate-180 hidden md:block" />
             </div>
-            <p className="text-sm text-slate-200 mt-4">Continuous cycle — ADVANCE feeds back into IDENTIFY</p>
+            <p className="text-sm text-gray-500 mt-4">Continuous cycle — ADVANCE feeds back into IDENTIFY</p>
           </div>
         </div>
       </div>

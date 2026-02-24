@@ -325,7 +325,7 @@ export default function DemoGallery() {
           </div>
 
           {/* CTA - Unified Conversion Funnel: Try Demo + Start Pilot */}
-          <Card className="bg-gradient-to-r from-poise-navytext-white border-0">
+          <Card className="bg-white border border-gray-200 border-0">
             <CardContent className="p-8 text-center">
               <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Strategic Execution?</h3>
               <p className="text-slate-300 mb-6 max-w-xl mx-auto">

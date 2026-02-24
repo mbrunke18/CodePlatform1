@@ -819,12 +819,12 @@ export default function MarketingLanding() {
       </section>
 
       {/* Final CTA - Unified Conversion Funnel */}
-      <section className="py-24 px-6 bg-gradient-to-br from-poise-navyto-poise-navy text-white">
+      <section className="py-24 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Ready to Transform Strategic Execution?
           </h2>
-          <p className="text-xl text-slate-300 mb-8">
+          <p className="text-xl text-gray-600 mb-8">
             See how Execution OS transforms 72-hour coordination into 12-minute response.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">

@@ -191,7 +191,7 @@ export default function WorkspaceAdvance() {
           </div>
 
           {/* Continuous Improvement Banner */}
-          <Card className="mb-8 bg-gradient-to-r from-poise-navytext-white border-0">
+          <Card className="mb-8 bg-white border border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-xl bg-white/10">
@@ -199,7 +199,7 @@ export default function WorkspaceAdvance() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">Continuous Learning Loop</h3>
-                  <p className="text-slate-300">Every execution makes your playbooks smarter and your team faster</p>
+                  <p className="text-gray-600">Every execution makes your playbooks smarter and your team faster</p>
                 </div>
               </div>
             </CardContent>
