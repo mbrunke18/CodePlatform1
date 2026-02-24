@@ -320,9 +320,8 @@ html:not(.dark) [class*="from-neutral-9"] {
   background-image: none !important;
 }
 
-/* ── Restore nav / footer and their descendants ── */
+/* ── Restore footer (intentionally dark) and .bg-poise-navy elements ── */
 html:not(.dark) .bg-poise-navy,
-html:not(.dark) nav,
 html:not(.dark) footer {
   background-color: var(--exos-midnight) !important;
 }
@@ -332,9 +331,6 @@ html:not(.dark) .bg-poise-navy [class*="bg-slate-9"],
 html:not(.dark) .bg-poise-navy [class*="bg-gray-7"],
 html:not(.dark) .bg-poise-navy [class*="bg-gray-8"],
 html:not(.dark) .bg-poise-navy [class*="bg-gray-9"],
-html:not(.dark) nav [class*="bg-gray-7"],
-html:not(.dark) nav [class*="bg-gray-8"],
-html:not(.dark) nav [class*="bg-gray-9"],
 html:not(.dark) footer [class*="bg-gray-7"],
 html:not(.dark) footer [class*="bg-gray-8"],
 html:not(.dark) footer [class*="bg-gray-9"] {
@@ -426,9 +422,8 @@ html:not(.dark) [class*="from-sky-"] .text-white,
 html:not(.dark) [class*="from-fuchsia-"] .text-white,
 html:not(.dark) [class*="from-rose-"] .text-white { color: #ffffff !important; }
 
-/* ── Restore nav / footer text ── */
+/* ── Restore footer and .bg-poise-navy text ── */
 html:not(.dark) .bg-poise-navy .text-white,
-html:not(.dark) nav .text-white,
 html:not(.dark) footer .text-white { color: #ffffff !important; }
 html:not(.dark) .bg-poise-navy .text-slate-50,
 html:not(.dark) .bg-poise-navy .text-slate-100 { color: #f1f5f9 !important; }
