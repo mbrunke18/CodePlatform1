@@ -49,25 +49,25 @@
   --executeiq-border-dark: #1C2455;
 
   /* ===== SHADCN/UI THEME — LIGHT MODE ===== */
-  /* Warm off-white backgrounds, midnight navy text, gold accents */
-  --background: hsl(40, 24%, 91%);
+  /* Pure white backgrounds, midnight navy text, gold accents */
+  --background: hsl(0, 0%, 100%);
   --foreground: hsl(232, 67%, 11%);
-  --card: hsl(40, 30%, 97%);
+  --card: hsl(0, 0%, 100%);
   --card-foreground: hsl(232, 67%, 11%);
-  --popover: hsl(40, 30%, 97%);
+  --popover: hsl(0, 0%, 100%);
   --popover-foreground: hsl(232, 67%, 11%);
   --primary: hsl(38, 52%, 55%);
   --primary-foreground: hsl(232, 67%, 11%);
-  --secondary: hsl(44, 55%, 88%);
+  --secondary: hsl(232, 30%, 96%);
   --secondary-foreground: hsl(232, 55%, 18%);
-  --muted: hsl(40, 18%, 86%);
+  --muted: hsl(220, 14%, 96%);
   --muted-foreground: hsl(232, 20%, 42%);
   --accent: hsl(38, 52%, 55%);
   --accent-foreground: hsl(232, 67%, 11%);
   --destructive: hsl(4, 65%, 47%);
-  --destructive-foreground: hsl(40, 30%, 97%);
-  --border: hsl(38, 22%, 78%);
-  --input: hsl(38, 22%, 78%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(220, 13%, 91%);
+  --input: hsl(220, 13%, 91%);
   --ring: hsl(38, 52%, 55%);
   --chart-1: hsl(38, 52%, 55%);
   --chart-2: hsl(153, 52%, 36%);
@@ -188,9 +188,9 @@ html {
 :root:not(.dark) .skeleton {
   background: linear-gradient(
     90deg,
-    hsl(40, 18%, 84%) 25%,
-    hsl(40, 18%, 91%) 50%,
-    hsl(40, 18%, 84%) 75%
+    hsl(220, 13%, 91%) 25%,
+    hsl(220, 13%, 95%) 50%,
+    hsl(220, 13%, 91%) 75%
   );
   background-size: 200px 100%;
   animation: skeleton-loading 1.5s infinite;
@@ -238,16 +238,16 @@ button, a {
 
 /* Page Backgrounds */
 .page-background {
-  background: linear-gradient(135deg, hsl(40, 24%, 91%) 0%, hsl(40, 20%, 95%) 50%, hsl(44, 30%, 92%) 100%) !important;
+  background: #ffffff !important;
 }
 
 .dark .page-background {
   background: linear-gradient(135deg, hsl(232, 67%, 11%) 0%, hsl(233, 60%, 13%) 50%, hsl(232, 65%, 10%) 100%) !important;
 }
 
-/* Light mode: ensure body and root always render warm off-white */
+/* Light mode: ensure body and root always render pure white */
 html:not(.dark) body {
-  background-color: hsl(40, 24%, 91%) !important;
+  background-color: #ffffff !important;
 }
 
 /* ================================================================
@@ -256,15 +256,17 @@ html:not(.dark) body {
    Navigation and footer (bg-poise-navy) intentionally stay dark.
    ================================================================ */
 
-/* Force all dark solid backgrounds to warm ivory */
+/* Force all dark solid backgrounds to white */
 html:not(.dark) :not(nav):not(footer):not(header):is(
   .bg-slate-950, .bg-slate-900, .bg-slate-800, .bg-slate-700, .bg-slate-600,
+  .bg-slate-500, .bg-slate-400, .bg-slate-300, .bg-slate-200, .bg-slate-100,
   .bg-gray-950, .bg-gray-900, .bg-gray-800, .bg-gray-700,
-  .bg-zinc-950, .bg-zinc-900, .bg-zinc-800,
+  .bg-gray-600, .bg-gray-500, .bg-gray-400, .bg-gray-300, .bg-gray-200, .bg-gray-100,
+  .bg-zinc-950, .bg-zinc-900, .bg-zinc-800, .bg-zinc-700,
   .bg-neutral-950, .bg-neutral-900, .bg-neutral-800,
   .bg-poise-dark-gray
 ) {
-  background-color: hsl(40, 24%, 91%) !important;
+  background-color: #ffffff !important;
   background-image: none !important;
 }
 
@@ -278,24 +280,24 @@ html:not(.dark) :not(nav):not(footer):not(header):is(
 }
 
 /* Also strip from-* dark gradient starting colors */
-html:not(.dark) :not(nav):not(footer):not(header)[class*="from-slate-9"],
-html:not(.dark) :not(nav):not(footer):not(header)[class*="from-slate-8"],
-html:not(.dark) :not(nav):not(footer):not(header)[class*="from-gray-9"],
-html:not(.dark) :not(nav):not(footer):not(header)[class*="from-gray-8"] {
-  background-color: hsl(40, 24%, 91%) !important;
+html:not(.dark) :not(nav):not(footer):not(header)[class*="from-slate-"],
+html:not(.dark) :not(nav):not(footer):not(header)[class*="from-gray-"],
+html:not(.dark) :not(nav):not(footer):not(header)[class*="from-zinc-"],
+html:not(.dark) :not(nav):not(footer):not(header)[class*="from-neutral-"] {
+  background-color: #ffffff !important;
   background-image: none !important;
 }
 
-/* .page-hero becomes light in light mode */
+/* .page-hero becomes white in light mode */
 html:not(.dark) .page-hero {
-  background: hsl(40, 24%, 91%) !important;
+  background: #ffffff !important;
   background-image: none !important;
   color: #0A0F2E !important;
 }
 
 /* Also cover min-h-screen wrappers (exclude nav/footer dark containers) */
 html:not(.dark) .min-h-screen:not(.bg-poise-navy):not(.bg-poise-dark-gray) {
-  background-color: hsl(40, 24%, 91%) !important;
+  background-color: #ffffff !important;
   background-image: none !important;
 }
 
@@ -328,7 +330,7 @@ html:not(.dark) .bg-poise-navy .text-gray-300 { color: #cbd5e1 !important; }
 html:not(.dark) .bg-poise-navy .text-gray-400 { color: #94a3b8 !important; }
 
 .page-hero-light {
-  background: linear-gradient(135deg, hsl(40, 24%, 91%) 0%, hsl(44, 30%, 93%) 50%, hsl(40, 24%, 91%) 100%);
+  background: #ffffff;
 }
 
 .dark .page-hero-light {
@@ -337,8 +339,8 @@ html:not(.dark) .bg-poise-navy .text-gray-400 { color: #94a3b8 !important; }
 
 /* Card Styles */
 .card-bg {
-  background: hsl(40, 30%, 97%);
-  border: 1px solid hsl(38, 22%, 82%);
+  background: #ffffff;
+  border: 1px solid hsl(220, 13%, 91%);
   @apply rounded-xl shadow-sm;
 }
 
@@ -348,8 +350,8 @@ html:not(.dark) .bg-poise-navy .text-gray-400 { color: #94a3b8 !important; }
 }
 
 .card-elevated {
-  background: hsl(40, 30%, 97%);
-  border: 1px solid hsl(38, 22%, 82%);
+  background: #ffffff;
+  border: 1px solid hsl(220, 13%, 91%);
   @apply rounded-xl shadow-lg;
 }
 
@@ -359,8 +361,8 @@ html:not(.dark) .bg-poise-navy .text-gray-400 { color: #94a3b8 !important; }
 }
 
 .card-interactive {
-  background: hsl(40, 30%, 97%);
-  border: 1px solid hsl(38, 22%, 82%);
+  background: #ffffff;
+  border: 1px solid hsl(220, 13%, 91%);
   @apply rounded-xl shadow-sm transition-all cursor-pointer;
 }
 
@@ -381,8 +383,8 @@ html:not(.dark) .bg-poise-navy .text-gray-400 { color: #94a3b8 !important; }
 
 /* Metric Cards */
 .metric-card {
-  background: hsl(40, 30%, 97%);
-  border: 1px solid hsl(38, 22%, 82%);
+  background: #ffffff;
+  border: 1px solid hsl(220, 13%, 91%);
   @apply rounded-lg p-4;
 }
 
@@ -523,7 +525,7 @@ html:not(.dark) .bg-poise-navy .text-gray-400 { color: #94a3b8 !important; }
 
 /* Dividers */
 .divider {
-  border-top: 1px solid hsl(38, 22%, 78%);
+  border-top: 1px solid hsl(220, 13%, 88%);
 }
 
 .dark .divider {
@@ -531,7 +533,7 @@ html:not(.dark) .bg-poise-navy .text-gray-400 { color: #94a3b8 !important; }
 }
 
 .divider-vertical {
-  border-left: 1px solid hsl(38, 22%, 78%);
+  border-left: 1px solid hsl(220, 13%, 88%);
 }
 
 .dark .divider-vertical {
@@ -561,7 +563,7 @@ html:not(.dark) .bg-poise-navy .text-gray-400 { color: #94a3b8 !important; }
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: hsl(40, 18%, 86%);
+  background: hsl(220, 13%, 93%);
   border-radius: 3px;
 }
 
@@ -570,7 +572,7 @@ html:not(.dark) .bg-poise-navy .text-gray-400 { color: #94a3b8 !important; }
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: hsl(38, 35%, 65%);
+  background: hsl(220, 13%, 75%);
   border-radius: 3px;
 }
 
