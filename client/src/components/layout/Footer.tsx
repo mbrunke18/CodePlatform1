@@ -175,15 +175,29 @@ export default function Footer() {
       <div className="border-t border-poise-gold/10">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#1A2B3D] rounded-lg flex items-center justify-center border border-[#00A8A8]/30">
-                <span className="text-[#D4AF37] font-bold text-lg tracking-tight">P</span>
-              </div>
+            <div className="flex items-center gap-4">
+              {/* VaughnMartin VM lettermark */}
+              <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-label="VaughnMartin">
+                <rect x="0.5" y="0.5" width="43" height="43" rx="5.5" fill="none" stroke="#C9A84C" strokeOpacity="0.35" />
+                <text
+                  x="22"
+                  y="29"
+                  textAnchor="middle"
+                  fontFamily="'Cormorant Garamond', 'Georgia', serif"
+                  fontWeight="700"
+                  fontStyle="italic"
+                  fontSize="22"
+                  fill="#C9A84C"
+                  letterSpacing="1"
+                >VM</text>
+              </svg>
               <div>
-                <p className="text-sm text-slate-300">
+                <p className="text-sm font-semibold text-white tracking-wide" style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.06em' }}>
+                  VAUGHNMARTIN
+                </p>
+                <p className="text-xs text-slate-400">
                   © {new Date().getFullYear()} VaughnMartin — Execution OS
                 </p>
-                <p className="text-xs text-slate-300">Strategic Execution Through Elite Methodology</p>
               </div>
             </div>
             <div className="flex items-center gap-6">

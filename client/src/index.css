@@ -238,11 +238,29 @@ button, a {
 
 /* Page Backgrounds */
 .page-background {
-  background: linear-gradient(135deg, hsl(40, 24%, 91%) 0%, hsl(40, 20%, 95%) 50%, hsl(44, 30%, 92%) 100%);
+  background: linear-gradient(135deg, hsl(40, 24%, 91%) 0%, hsl(40, 20%, 95%) 50%, hsl(44, 30%, 92%) 100%) !important;
 }
 
 .dark .page-background {
-  background: linear-gradient(135deg, hsl(232, 67%, 11%) 0%, hsl(233, 60%, 13%) 50%, hsl(232, 65%, 10%) 100%);
+  background: linear-gradient(135deg, hsl(232, 67%, 11%) 0%, hsl(233, 60%, 13%) 50%, hsl(232, 65%, 10%) 100%) !important;
+}
+
+/* Light mode: ensure body and root always render warm off-white */
+html:not(.dark) body {
+  background-color: hsl(40, 24%, 91%) !important;
+}
+
+/* Light mode: neutralise hard-coded dark page wrappers that don't use .page-background */
+html:not(.dark) .min-h-screen.bg-gray-950,
+html:not(.dark) .min-h-screen.bg-gray-900,
+html:not(.dark) .min-h-screen.bg-slate-950,
+html:not(.dark) .min-h-screen.bg-slate-900,
+html:not(.dark) .min-h-screen.bg-slate-800,
+html:not(.dark) .min-h-screen.bg-gradient-to-br,
+html:not(.dark) .min-h-screen.bg-gradient-to-b,
+html:not(.dark) .min-h-screen.bg-gradient-to-r {
+  background: hsl(40, 24%, 91%) !important;
+  background-image: none !important;
 }
 
 .page-hero {

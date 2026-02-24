@@ -27,7 +27,7 @@ export default function PageLayout({
   }
 
   return (
-    <div className={`min-h-screen flex flex-col ${className}`}>
+    <div className={`min-h-screen flex flex-col page-background ${className}`}>
       <StandardNav />
       
       {showBackButton && (

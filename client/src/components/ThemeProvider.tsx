@@ -5,7 +5,7 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
     const stored = localStorage.getItem('m-theme') as 'light' | 'dark' | null;
@@ -13,7 +13,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       setTheme(stored);
       applyTheme(stored);
     } else {
-      applyTheme('dark');
+      applyTheme('light');
     }
   }, []);
 
@@ -40,14 +40,10 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
         <input
           type="hidden"
           value={theme}
-          onChange={(e) => {
-            const t = e.target.value as 'light' | 'dark';
-            toggleTheme();
-          }}
+          onChange={() => toggleTheme()}
           data-testid="theme-context-value"
         />
       </div>
-      {/* Make theme toggle available globally */}
       <script>
         {`window.__toggleTheme = () => {
           const html = document.documentElement;
