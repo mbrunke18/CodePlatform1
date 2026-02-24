@@ -57,12 +57,11 @@ const httpLogger = pinoHttp({
 
 const app = express();
 
-// CRITICAL: Track server readiness for health checks
-// Server is NOT ready until database seeding is complete
-let serverReady = false;
+// Track background seeding status (informational only, does NOT block health checks)
+let seedingComplete = false;
 
-// Health check endpoints - MUST be registered BEFORE the domain redirect
-// so Replit's deployment health checker always gets a 200
+// Health check endpoints - ALL return 200 immediately, NEVER 503
+// Registered BEFORE any middleware to ensure instant response for Autoscale health checks
 app.get("/health", (_req, res) => {
   res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
 });
@@ -75,38 +74,20 @@ app.get("/api/health-check", (_req, res) => {
   res.status(200).json({ 
     status: "ok", 
     app: "ExecuteIQ", 
-    ready: serverReady,
+    seeded: seedingComplete,
     timestamp: new Date().toISOString() 
   });
 });
 
 app.get("/ready", (_req, res) => {
-  if (serverReady) {
-    res
-      .status(200)
-      .json({ status: "ready", timestamp: new Date().toISOString() });
-  } else {
-    res
-      .status(503)
-      .json({ status: "initializing", timestamp: new Date().toISOString() });
-  }
+  res.status(200).json({ status: "ready", timestamp: new Date().toISOString() });
 });
 
 app.get("/_health", (_req, res) => {
-  if (serverReady) {
-    res
-      .status(200)
-      .json({ status: "ok", ready: true, timestamp: new Date().toISOString() });
-  } else {
-    res.status(503).json({
-      status: "starting",
-      ready: false,
-      timestamp: new Date().toISOString(),
-    });
-  }
+  res.status(200).json({ status: "ok", ready: true, timestamp: new Date().toISOString() });
 });
 
-// HEAD request on root for fast health checks (used by some load balancers)
+// HEAD and GET on root for fast health checks (used by load balancers and Autoscale)
 app.head("/", (_req, res) => {
   res.status(200).end();
 });
@@ -318,10 +299,7 @@ app.use((req, res, next) => {
   // Set up API documentation
   setupSwagger(app);
 
-  // Mark server ready IMMEDIATELY after routes are registered
-  // This ensures health checks pass during Vite/static setup and database seeding
-  serverReady = true;
-  logger.info("✅ Server marked ready for health checks (routes registered)");
+  logger.info("✅ Routes registered - health checks already passing from startup");
 
   // Enhanced error handling with structured logging and security
   app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
@@ -418,7 +396,7 @@ app.use((req, res, next) => {
       log("serving on port " + port);
       logger.info(
         { port, env: app.get("env") },
-        "ExecuteIQ server started - health checks already passing",
+        "ExecuteIQ server listening - health checks passing since startup",
       );
 
       // Minimal initialization - just seed database, no background jobs
@@ -599,6 +577,7 @@ app.use((req, res, next) => {
           logger.info("🔧 Initializing Enterprise Job Service...");
           await enterpriseJobService.initialize();
 
+          seedingComplete = true;
           console.log("✅ BACKGROUND SEEDING COMPLETE");
           logger.info("✅ Background initialization complete - all systems ready");
         } catch (error) {
