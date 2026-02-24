@@ -190,10 +190,8 @@ export default function StandardNav() {
               data-testid="nav-logo"
             >
               <ExecuteIQLogo
-                width={176}
-                height={50}
+                height={40}
                 variant="full"
-                showTagline={false}
                 color="white"
               />
             </div>

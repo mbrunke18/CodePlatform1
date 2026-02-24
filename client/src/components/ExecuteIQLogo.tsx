@@ -11,147 +11,146 @@ interface ExecuteIQLogoProps {
 }
 
 export const ExecuteIQLogo: FC<ExecuteIQLogoProps> = ({
-  width = 240,
-  height = 72,
+  width,
+  height = 48,
   variant = 'full',
-  showTagline = true,
+  showTagline = false,
   className = '',
   color = 'navy',
-  animate = false,
 }) => {
-  const colors = {
-    navy: '#0A0F2E',
-    gold: '#C9A84C',
-    teal: '#2B8A6E',
-    white: '#F0EDE4',
-  };
+  const isDark = color === 'white';
 
-  const iconColor = color === 'white' ? '#F0EDE4' : colors.navy;
-  const accentColor = colors.gold;
-  const accentTeal = colors.teal;
-
-  const iconStyles = animate ? {
-    filter: 'drop-shadow(0 2px 8px rgba(201, 168, 76, 0.2))',
-  } : {
-    filter: 'drop-shadow(0 2px 4px rgba(201, 168, 76, 0.15))',
-  };
-
-  const ringAnimation = animate ? `
-    @keyframes ring-pulse {
-      0%, 100% { opacity: 0.3; stroke-width: 1.5; }
-      50% { opacity: 0.6; stroke-width: 1.8; }
-    }
-    .ring-outer { animation: ring-pulse 3s ease-in-out infinite; }
-    .ring-2 { animation: ring-pulse 3s ease-in-out 0.3s infinite; }
-    .ring-3 { animation: ring-pulse 3s ease-in-out 0.6s infinite; }
-    .ring-4 { animation: ring-pulse 3s ease-in-out 0.9s infinite; }
-    .ring-core { animation: ring-pulse 3s ease-in-out 1.2s infinite; }
-  ` : '';
+  const wordExecColor = isDark ? '#F0EDE4' : '#0A0F2E';
+  const wordOsColor  = isDark ? '#EDD98A' : '#C9A84C';
 
   if (variant === 'icon-only') {
+    const size = width ?? height;
     return (
       <svg
-        width={width}
-        height={height}
-        viewBox="0 0 120 120"
+        width={size}
+        height={size}
+        viewBox="0 0 52 52"
+        fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
-        style={iconStyles}
       >
-        {animate && <defs><style>{ringAnimation}</style></defs>}
-
-        <circle cx="60" cy="60" r="54" fill="none" stroke={accentTeal} strokeWidth="1.5" opacity="0.25" className={animate ? 'ring-outer' : ''} />
-        <circle cx="60" cy="60" r="42" fill="none" stroke={accentTeal} strokeWidth="1.5" opacity="0.35" className={animate ? 'ring-2' : ''} />
-        <circle cx="60" cy="60" r="30" fill="none" stroke={iconColor} strokeWidth="1.5" opacity="0.45" className={animate ? 'ring-3' : ''} />
-        <circle cx="60" cy="60" r="18" fill="none" stroke={accentColor} strokeWidth="2" opacity="0.7" className={animate ? 'ring-4' : ''} />
-        <circle cx="60" cy="60" r="8" fill="none" stroke={accentColor} strokeWidth="2.5" className={animate ? 'ring-core' : ''} />
-        <circle cx="60" cy="60" r="4" fill={accentColor} />
+        <defs>
+          <linearGradient id="exos-arrow-grad" x1="0" y1="0" x2="52" y2="52" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor={isDark ? '#F5EBC4' : '#0A0F2E'} />
+            <stop offset="100%" stopColor="#C9A84C" />
+          </linearGradient>
+          <linearGradient id="exos-trail-grad" x1="0" y1="26" x2="52" y2="26" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#C9A84C" stopOpacity="0" />
+            <stop offset="100%" stopColor="#C9A84C" stopOpacity="0.4" />
+          </linearGradient>
+        </defs>
+        <line x1="4"  y1="18" x2="32" y2="18" stroke="url(#exos-trail-grad)" strokeWidth="2" />
+        <line x1="8"  y1="26" x2="36" y2="26" stroke="url(#exos-trail-grad)" strokeWidth="1.5" opacity="0.7" />
+        <line x1="4"  y1="34" x2="32" y2="34" stroke="url(#exos-trail-grad)" strokeWidth="2" />
+        <path d="M28 10 L48 26 L28 42" stroke="url(#exos-arrow-grad)" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M20 10 L40 26 L20 42" stroke="url(#exos-arrow-grad)" strokeWidth="2"   strokeLinecap="round" strokeLinejoin="round" opacity="0.4" />
       </svg>
     );
   }
 
   if (variant === 'text-only') {
+    const h = height;
     return (
-      <div className={className}>
-        <h1
-          style={{
-            fontSize: `${height * 0.55}px`,
-            fontWeight: 800,
-            fontFamily: "'Barlow Condensed', 'Montserrat', sans-serif",
-            margin: 0,
-            letterSpacing: '0.06em',
-            textTransform: 'uppercase',
-            color: color === 'white' ? '#F0EDE4' : colors.navy,
-          }}
-        >
-          Execution OS
-        </h1>
+      <div className={className} style={{ lineHeight: 1 }}>
+        <div style={{
+          fontFamily: "'Barlow Condensed', 'Montserrat', sans-serif",
+          fontSize: `${h * 0.55}px`,
+          fontWeight: 800,
+          letterSpacing: '0.10em',
+          textTransform: 'uppercase',
+          color: wordExecColor,
+        }}>
+          EXECUTION
+        </div>
+        <div style={{
+          fontFamily: "'Barlow Condensed', sans-serif",
+          fontSize: `${h * 0.24}px`,
+          fontWeight: 400,
+          letterSpacing: '0.30em',
+          textTransform: 'uppercase',
+          color: wordOsColor,
+          marginTop: '2px',
+        }}>
+          OPERATING SYSTEM
+        </div>
         {showTagline && (
-          <p
-            style={{
-              fontSize: `${height * 0.15}px`,
-              fontWeight: 600,
-              fontFamily: "'Barlow Condensed', 'Montserrat', sans-serif",
-              margin: '4px 0 0 0',
-              color: colors.gold,
-              letterSpacing: '0.22em',
-              textTransform: 'uppercase',
-            }}
-          >
+          <div style={{
+            fontFamily: "'Barlow', sans-serif",
+            fontSize: `${h * 0.16}px`,
+            fontWeight: 300,
+            letterSpacing: '0.25em',
+            textTransform: 'uppercase',
+            color: '#C9A84C',
+            marginTop: '6px',
+          }}>
             Prepared to Respond.
-          </p>
+          </div>
         )}
       </div>
     );
   }
 
+  const svgH = height;
+  const svgW = width ?? Math.round(svgH * (300 / 54));
+  const scale = svgH / 54;
+  const iconSize = Math.round(52 * scale);
+  const textX = iconSize + Math.round(14 * scale);
+  const exec_y = Math.round(34 * scale);
+  const os_y   = Math.round(50 * scale);
+  const execFontSize = Math.round(28 * scale);
+  const osFontSize   = Math.round(13 * scale);
+
   return (
     <svg
-      width={width}
-      height={height}
-      viewBox="0 0 420 120"
+      width={svgW}
+      height={svgH}
+      viewBox={`0 0 ${svgW} ${svgH}`}
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
       <defs>
-        <style>{`
-          .exos-text-main {
-            font-family: 'Barlow Condensed', 'Montserrat', sans-serif;
-            font-size: 44px;
-            font-weight: 800;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            fill: ${color === 'white' ? '#F0EDE4' : colors.navy};
-          }
-          .exos-text-sub {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 10px;
-            font-weight: 600;
-            fill: ${colors.gold};
-            letter-spacing: 3px;
-            text-transform: uppercase;
-          }
-          ${ringAnimation}
-        `}</style>
+        <linearGradient id="exos-full-arrow" x1="0" y1="0" x2={iconSize} y2={iconSize} gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor={isDark ? '#F5EBC4' : '#0A0F2E'} />
+          <stop offset="100%" stopColor="#C9A84C" />
+        </linearGradient>
+        <linearGradient id="exos-full-trail" x1="0" y1={iconSize / 2} x2={iconSize} y2={iconSize / 2} gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#C9A84C" stopOpacity="0" />
+          <stop offset="100%" stopColor="#C9A84C" stopOpacity="0.4" />
+        </linearGradient>
       </defs>
 
-      {/* Concentric rings icon */}
-      <g style={iconStyles} transform="translate(15, 20)">
-        <circle cx="30" cy="30" r="28" fill="none" stroke={accentTeal} strokeWidth="1" opacity="0.25" className={animate ? 'ring-outer' : ''} />
-        <circle cx="30" cy="30" r="22" fill="none" stroke={accentTeal} strokeWidth="1" opacity="0.35" className={animate ? 'ring-2' : ''} />
-        <circle cx="30" cy="30" r="16" fill="none" stroke={iconColor} strokeWidth="1" opacity="0.45" className={animate ? 'ring-3' : ''} />
-        <circle cx="30" cy="30" r="10" fill="none" stroke={accentColor} strokeWidth="1.5" opacity="0.7" className={animate ? 'ring-4' : ''} />
-        <circle cx="30" cy="30" r="5" fill="none" stroke={accentColor} strokeWidth="1.5" className={animate ? 'ring-core' : ''} />
-        <circle cx="30" cy="30" r="2" fill={accentColor} />
+      <g transform={`scale(${scale})`}>
+        <line x1="4"  y1="18" x2="32" y2="18" stroke="url(#exos-full-trail)" strokeWidth="2" />
+        <line x1="8"  y1="26" x2="36" y2="26" stroke="url(#exos-full-trail)" strokeWidth="1.5" opacity="0.7" />
+        <line x1="4"  y1="34" x2="32" y2="34" stroke="url(#exos-full-trail)" strokeWidth="2" />
+        <path d="M28 10 L48 26 L28 42" stroke="url(#exos-full-arrow)" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <path d="M20 10 L40 26 L20 42" stroke="url(#exos-full-arrow)" strokeWidth="2"   strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.4" />
       </g>
 
-      {/* Wordmark */}
-      <text x="88" y="62" className="exos-text-main">Execution OS</text>
+      <text
+        x={textX}
+        y={exec_y}
+        fontFamily="'Barlow Condensed', 'Montserrat', sans-serif"
+        fontSize={execFontSize}
+        fontWeight="800"
+        letterSpacing={Math.round(execFontSize * 0.10)}
+        fill={wordExecColor}
+      >EXECUTION</text>
 
-      {/* Tagline */}
-      {showTagline && (
-        <text x="88" y="80" className="exos-text-sub">Prepared to Respond.</text>
-      )}
+      <text
+        x={textX}
+        y={os_y}
+        fontFamily="'Barlow Condensed', sans-serif"
+        fontSize={osFontSize}
+        fontWeight="400"
+        letterSpacing={Math.round(osFontSize * 0.35)}
+        fill={wordOsColor}
+      >OPERATING SYSTEM</text>
     </svg>
   );
 };
