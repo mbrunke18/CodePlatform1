@@ -196,9 +196,9 @@ export default function StandardNav() {
                   variant="icon-only"
                   color="white"
                 />
-                <span className="text-xl sm:text-2xl font-bold tracking-tight executeiq-heading" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                  <span className="text-white">Execute</span>
-                  <span className="text-executeiq-gold">IQ</span>
+                <span className="text-xl sm:text-2xl font-bold tracking-tight" style={{ fontFamily: "'Barlow Condensed', 'Montserrat', sans-serif", letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                  <span className="text-white">Execution</span>
+                  <span className="text-executeiq-gold"> OS</span>
                 </span>
               </div>
             </div>
