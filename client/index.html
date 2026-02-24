@@ -3,18 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <!-- Theme initializer: runs synchronously before first paint to prevent flash.
+         Key changed to 'exos-theme' to reset all old dark-mode sessions to light. -->
+    <script>
+      (function() {
+        var stored = localStorage.getItem('exos-theme');
+        if (stored === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
     
-    <title>ExecuteIQ | The Execution Infrastructure Enterprises Are Missing</title>
-    <meta name="description" content="15 major firms say execution infrastructure is the enterprise bottleneck. ExecuteIQ provides it—166 playbooks, pre-defined governance, 12 minutes to execution." />
+    <title>Execution OS | VaughnMartin — Trigger-to-Execution in 12 Minutes</title>
+    <meta name="description" content="VaughnMartin Execution OS orchestrates coordinated enterprise responses within 12 minutes of a trigger. 170 strategic playbooks across Offense, Defense, and Special Teams." />
     
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="ExecuteIQ - The Execution Infrastructure Enterprises Are Missing" />
-    <meta property="og:description" content="15 major firms say execution infrastructure is the enterprise bottleneck. ExecuteIQ provides it—166 playbooks, pre-defined governance, 12 minutes to execution." />
-    <meta property="og:site_name" content="ExecuteIQ" />
+    <meta property="og:title" content="Execution OS — VaughnMartin" />
+    <meta property="og:description" content="170 playbooks. Pre-approved governance. 12 minutes to full execution. The trigger-to-execution infrastructure Fortune 1000 companies are missing." />
+    <meta property="og:site_name" content="VaughnMartin Execution OS" />
     
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="ExecuteIQ - The Execution Infrastructure Enterprises Are Missing" />
-    <meta name="twitter:description" content="166 playbooks. Pre-defined governance. Clear decision rights. 12 minutes to execution. The infrastructure that makes AI actually work." />
+    <meta name="twitter:title" content="Execution OS — VaughnMartin" />
+    <meta name="twitter:description" content="170 playbooks. Pre-approved governance. 12 minutes to full execution. The trigger-to-execution infrastructure Fortune 1000 companies are missing." />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +37,5 @@
     <script type="module" src="/src/main.tsx"></script>
     <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
     <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
-    
-    <!-- Google Analytics - initialized from React app when VITE_GA_MEASUREMENT_ID is set -->
   </body>
 </html>

@@ -1,5 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 
+const THEME_KEY = 'exos-theme';
+
 interface ThemeProviderProps {
   children: ReactNode;
 }
@@ -8,13 +10,10 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
-    const stored = localStorage.getItem('m-theme') as 'light' | 'dark' | null;
-    if (stored) {
-      setTheme(stored);
-      applyTheme(stored);
-    } else {
-      applyTheme('light');
-    }
+    const stored = localStorage.getItem(THEME_KEY) as 'light' | 'dark' | null;
+    const resolved = stored ?? 'light';
+    setTheme(resolved);
+    applyTheme(resolved);
   }, []);
 
   const applyTheme = (t: 'light' | 'dark') => {
@@ -30,7 +29,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     applyTheme(newTheme);
-    localStorage.setItem('m-theme', newTheme);
+    localStorage.setItem(THEME_KEY, newTheme);
   };
 
   return (
@@ -44,15 +43,6 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
           data-testid="theme-context-value"
         />
       </div>
-      <script>
-        {`window.__toggleTheme = () => {
-          const html = document.documentElement;
-          const current = html.classList.contains('dark') ? 'dark' : 'light';
-          const next = current === 'dark' ? 'light' : 'dark';
-          html.classList.toggle('dark');
-          localStorage.setItem('m-theme', next);
-        }`}
-      </script>
     </>
   );
 }
