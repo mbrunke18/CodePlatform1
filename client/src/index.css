@@ -250,23 +250,82 @@ html:not(.dark) body {
   background-color: hsl(40, 24%, 91%) !important;
 }
 
-/* Light mode: neutralise hard-coded dark page wrappers that don't use .page-background */
-html:not(.dark) .min-h-screen.bg-gray-950,
-html:not(.dark) .min-h-screen.bg-gray-900,
-html:not(.dark) .min-h-screen.bg-slate-950,
-html:not(.dark) .min-h-screen.bg-slate-900,
-html:not(.dark) .min-h-screen.bg-slate-800,
-html:not(.dark) .min-h-screen.bg-gradient-to-br,
-html:not(.dark) .min-h-screen.bg-gradient-to-b,
-html:not(.dark) .min-h-screen.bg-gradient-to-r {
-  background: hsl(40, 24%, 91%) !important;
+/* ================================================================
+   LIGHT MODE — FULLY LIGHT BACKGROUND SYSTEM
+   Strips every dark background from page sections/wrappers.
+   Navigation and footer (bg-poise-navy) intentionally stay dark.
+   ================================================================ */
+
+/* Force all dark solid backgrounds to warm ivory */
+html:not(.dark) :not(nav):not(footer):not(header):is(
+  .bg-slate-950, .bg-slate-900, .bg-slate-800, .bg-slate-700, .bg-slate-600,
+  .bg-gray-950, .bg-gray-900, .bg-gray-800, .bg-gray-700,
+  .bg-zinc-950, .bg-zinc-900, .bg-zinc-800,
+  .bg-neutral-950, .bg-neutral-900, .bg-neutral-800,
+  .bg-poise-dark-gray
+) {
+  background-color: hsl(40, 24%, 91%) !important;
   background-image: none !important;
 }
 
-.page-hero {
-  background: linear-gradient(135deg, var(--exos-midnight) 0%, var(--exos-midnight-mid) 50%, var(--exos-midnight-light) 100%);
-  color: var(--exos-off-white);
+/* Strip dark gradients — remove the gradient image, let bg-color show through */
+html:not(.dark) :not(nav):not(footer):not(header):is(
+  .bg-gradient-to-br, .bg-gradient-to-b, .bg-gradient-to-r,
+  .bg-gradient-to-bl, .bg-gradient-to-tr, .bg-gradient-to-tl,
+  .bg-gradient-to-t, .bg-gradient-to-l
+) {
+  background-image: none !important;
 }
+
+/* Also strip from-* dark gradient starting colors */
+html:not(.dark) :not(nav):not(footer):not(header)[class*="from-slate-9"],
+html:not(.dark) :not(nav):not(footer):not(header)[class*="from-slate-8"],
+html:not(.dark) :not(nav):not(footer):not(header)[class*="from-gray-9"],
+html:not(.dark) :not(nav):not(footer):not(header)[class*="from-gray-8"] {
+  background-color: hsl(40, 24%, 91%) !important;
+  background-image: none !important;
+}
+
+/* .page-hero becomes light in light mode */
+html:not(.dark) .page-hero {
+  background: hsl(40, 24%, 91%) !important;
+  background-image: none !important;
+  color: #0A0F2E !important;
+}
+
+/* Also cover min-h-screen wrappers (exclude nav/footer dark containers) */
+html:not(.dark) .min-h-screen:not(.bg-poise-navy):not(.bg-poise-dark-gray) {
+  background-color: hsl(40, 24%, 91%) !important;
+  background-image: none !important;
+}
+
+/* ================================================================
+   LIGHT MODE — TEXT CONTRAST SYSTEM
+   All light text demoted to readable dark. Only nav/footer restore
+   white text since those intentionally stay dark.
+   ================================================================ */
+
+html:not(.dark) .text-white { color: #0A0F2E !important; }
+html:not(.dark) .text-slate-50,
+html:not(.dark) .text-slate-100 { color: #1C2455 !important; }
+html:not(.dark) .text-slate-200 { color: #2C3060 !important; }
+html:not(.dark) .text-slate-300 { color: #4A5180 !important; }
+html:not(.dark) .text-gray-50,
+html:not(.dark) .text-gray-100,
+html:not(.dark) .text-gray-200 { color: #2C3060 !important; }
+html:not(.dark) .text-gray-300 { color: #4A5180 !important; }
+
+/* Restore white text only inside nav and footer (intentional dark elements) */
+html:not(.dark) .bg-poise-navy .text-white { color: #ffffff !important; }
+html:not(.dark) .bg-poise-navy .text-slate-50,
+html:not(.dark) .bg-poise-navy .text-slate-100 { color: #f1f5f9 !important; }
+html:not(.dark) .bg-poise-navy .text-slate-200 { color: #e2e8f0 !important; }
+html:not(.dark) .bg-poise-navy .text-slate-300 { color: #cbd5e1 !important; }
+html:not(.dark) .bg-poise-navy .text-slate-400 { color: #94a3b8 !important; }
+html:not(.dark) .bg-poise-navy .text-gray-100,
+html:not(.dark) .bg-poise-navy .text-gray-200 { color: #e2e8f0 !important; }
+html:not(.dark) .bg-poise-navy .text-gray-300 { color: #cbd5e1 !important; }
+html:not(.dark) .bg-poise-navy .text-gray-400 { color: #94a3b8 !important; }
 
 .page-hero-light {
   background: linear-gradient(135deg, hsl(40, 24%, 91%) 0%, hsl(44, 30%, 93%) 50%, hsl(40, 24%, 91%) 100%);

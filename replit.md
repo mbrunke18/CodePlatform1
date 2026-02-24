@@ -14,9 +14,9 @@ ExecuteIQ is built around the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE
 
 **UI/UX Decisions:**
 - **Design:** Modern, enterprise-grade interface prioritizing decision velocity and seamless human-AI interaction.
-- **Theme:** Supports dark and light modes with localStorage persistence and WCAG AAA contrast compliance.
+- **Theme:** Default is fully light mode (warm ivory `#F0EDE4`). Dark mode supported via localStorage. All page sections forced to ivory in light mode; only nav/footer (`bg-poise-navy`) intentionally remain dark. Light text classes (text-white, text-slate-100–300) converted to dark navy in light mode; restored to white only inside `bg-poise-navy` containers.
 - **Navigation:** Streamlined 5-item navigation with a "More" dropdown. Calls to action are "Try Demo" and "Start Pilot."
-- **Branding:** Consistent "ExecuteIQ - Strategic Execution OS" branding with a concentric rings icon.
+- **Branding:** Company = VaughnMartin, Product = Execution OS (formerly ExecuteIQ). Logo icon is a forward-pointing arrow with trailing lines. Wordmark stacks "EXECUTION" over "OPERATING SYSTEM". VaughnMartinLogo uses ascending double-V icon with Cormorant Garamond wordmark.
 - **Layout:** `PageLayout` component for consistent `StandardNav` header and `Footer`.
 - **Design System:** Robust design system with over 60 utility classes.
 - **Homepage:** Features a cinematic video introduction, AI era positioning, "ExecuteIQ at a Glance" detailing capabilities and metrics, and a research-backed trust bar.

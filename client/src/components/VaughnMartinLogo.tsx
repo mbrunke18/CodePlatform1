@@ -46,7 +46,7 @@ export const VaughnMartinLogo: FC<VaughnMartinLogoProps> = ({
   }
 
   const svgH = height;
-  const svgW = width ?? Math.round(svgH * (320 / 54));
+  const svgW = width ?? Math.round(svgH * (460 / 54));
   const scale = svgH / 54;
   const iconSize = Math.round(52 * scale);
   const textX = iconSize + Math.round(14 * scale);
@@ -100,7 +100,7 @@ export const VaughnMartinLogo: FC<VaughnMartinLogoProps> = ({
         fontFamily="'Barlow', sans-serif"
         fontSize={taglineFontSize}
         fontWeight="400"
-        letterSpacing={Math.round(taglineFontSize * 0.30)}
+        letterSpacing={Math.round(taglineFontSize * 0.12)}
         fill={taglineColor}
       >STRATEGIC EXECUTION · ELITE METHODOLOGY</text>
     </svg>
