@@ -35,9 +35,9 @@ export default function MarketingLanding() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "ExecuteIQ - Strategic Execution Operating System | Transform Strategy into 12-Minute Execution",
-      description: "Your competitor just launched. Your board meeting is in 3 days. ExecuteIQ is the orchestration layer that transforms 72-hour strategic coordination into 12-minute coordinated execution. 170 playbooks, 5 AI modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
-      ogTitle: "ExecuteIQ - When Your Competitor Moves, Will You Be Ready?",
+      title: "Execution OS - Strategic Execution Operating System | Transform Strategy into 12-Minute Execution",
+      description: "Your competitor just launched. Your board meeting is in 3 days. Execution OS is the orchestration layer that transforms 72-hour strategic coordination into 12-minute coordinated execution. 170 playbooks, 5 AI modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
+      ogTitle: "Execution OS - When Your Competitor Moves, Will You Be Ready?",
       ogDescription: "The category-defining Strategic Execution Operating System. Limited Q1 2026 pilot: 10 Fortune 1000 design partners. Identify → Detect → Execute → Advance.",
     });
   }, []);
@@ -51,7 +51,7 @@ export default function MarketingLanding() {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-20"></div>
         
         <div className="max-w-7xl mx-auto text-center relative z-10">
-          {/* ExecuteIQ Logo */}
+          {/* Execution OS Logo */}
           <div className="mb-8 flex justify-center">
             <div className="inline-block px-6 py-4 rounded-2xl bg-gradient-to-r from-slate-800/80 to-slate-900/70 border border-slate-600/50 backdrop-blur-sm">
               <ExecuteIQLogo width={280} variant="full" color="white" showTagline={true} />
@@ -77,7 +77,7 @@ export default function MarketingLanding() {
               </div>
               <p className="text-xl md:text-2xl text-yellow-200 font-bold">
                 By then, you'll have lost market share.<br />
-                <span className="text-white">Unless you have ExecuteIQ.</span>
+                <span className="text-white">Unless you have Execution OS.</span>
               </p>
             </div>
           </div>
@@ -89,13 +89,13 @@ export default function MarketingLanding() {
                 The Strategic Execution OS
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-4">
-                ExecuteIQ for Fortune 1000 Companies
+                Execution OS for Fortune 1000 Companies
               </h2>
               <p className="text-xl md:text-2xl text-white mb-4 leading-relaxed">
-                When a strategic trigger hits—a competitor launches, regulations shift, a cyber threat emerges, or a market opportunity appears—organizations typically <span className="text-red-300">waste 20-50 hours getting organized</span>. ExecuteIQ compresses that to <span className="text-cyan-300 font-bold">12 minutes</span>.
+                When a strategic trigger hits—a competitor launches, regulations shift, a cyber threat emerges, or a market opportunity appears—organizations typically <span className="text-red-300">waste 20-50 hours getting organized</span>. Execution OS compresses that to <span className="text-cyan-300 font-bold">12 minutes</span>.
               </p>
               <p className="text-lg text-slate-300 mb-4 leading-relaxed max-w-4xl mx-auto">
-                Our AI monitors 216 data points across 16 intelligence categories, detecting threats and opportunities before competitors see them. When a signal breaches a threshold, ExecuteIQ automatically activates the right playbook from our library of 170 battle-tested responses: notifying stakeholders, assigning tasks, staging documents, unlocking pre-approved budgets—all in under 12 minutes.
+                Our AI monitors 216 data points across 16 intelligence categories, detecting threats and opportunities before competitors see them. When a signal breaches a threshold, Execution OS automatically activates the right playbook from our library of 170 battle-tested responses: notifying stakeholders, assigning tasks, staging documents, unlocking pre-approved budgets—all in under 12 minutes.
               </p>
               <p className="text-lg text-slate-300 mb-4 leading-relaxed max-w-4xl mx-auto">
                 We're the orchestration layer between strategy and execution. <span className="text-cyan-300">AI handles detection and coordination. Executives make the decisions.</span>
@@ -119,12 +119,12 @@ export default function MarketingLanding() {
               </div>
             </div>
 
-            {/* ExecuteIQ Product Suite */}
+            {/* Execution OS Product Suite */}
             <Card className="max-w-5xl mx-auto bg-gradient-to-br from-blue-900/40 to-purple-900/40 backdrop-blur-sm border-2 border-blue-400/50">
               <CardContent className="p-6">
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-white mb-2">
-                    The ExecuteIQ Product Suite
+                    The Execution OS Product Suite
                   </h3>
                   <p className="text-blue-200 text-sm">
                     Four integrated modules powered by the IDEA Framework™
@@ -133,28 +133,28 @@ export default function MarketingLanding() {
                 <div className="grid md:grid-cols-4 gap-4 text-left">
                   <div className="bg-violet-500/20 rounded-lg p-4 border border-violet-400/30">
                     <Badge className="mb-2 bg-violet-500 text-white border-0 text-xs">IDENTIFY</Badge>
-                    <div className="text-violet-200 font-bold text-lg mb-1">ExecuteIQ Playbook™</div>
+                    <div className="text-violet-200 font-bold text-lg mb-1">Execution OS Playbook™</div>
                     <p className="text-violet-100/80 text-xs">
                       170 pre-built playbooks across 9 strategic domains. Build your depth chart before events hit.
                     </p>
                   </div>
                   <div className="bg-blue-500/20 rounded-lg p-4 border border-blue-400/30">
                     <Badge className="mb-2 bg-blue-500 text-white border-0 text-xs">DETECT</Badge>
-                    <div className="text-blue-200 font-bold text-lg mb-1">ExecuteIQ Signal™</div>
+                    <div className="text-blue-200 font-bold text-lg mb-1">Execution OS Signal™</div>
                     <p className="text-blue-100/80 text-xs">
                       AI-powered monitoring across 216 data points. Detect threats and opportunities before competitors.
                     </p>
                   </div>
                   <div className="bg-emerald-500/20 rounded-lg p-4 border border-emerald-400/30">
                     <Badge className="mb-2 bg-emerald-500 text-white border-0 text-xs">EXECUTE</Badge>
-                    <div className="text-emerald-200 font-bold text-lg mb-1">ExecuteIQ Compass™</div>
+                    <div className="text-emerald-200 font-bold text-lg mb-1">Execution OS Compass™</div>
                     <p className="text-emerald-100/80 text-xs">
                       12-minute coordinated execution. Stakeholders, budgets, and actions—automatically orchestrated.
                     </p>
                   </div>
                   <div className="bg-amber-500/20 rounded-lg p-4 border border-amber-400/30">
                     <Badge className="mb-2 bg-amber-500 text-white border-0 text-xs">ADVANCE</Badge>
-                    <div className="text-amber-200 font-bold text-lg mb-1">ExecuteIQ Retrospect™</div>
+                    <div className="text-amber-200 font-bold text-lg mb-1">Execution OS Retrospect™</div>
                     <p className="text-amber-100/80 text-xs">
                       Capture lessons, refine playbooks. Every execution makes your organization smarter.
                     </p>
@@ -162,7 +162,7 @@ export default function MarketingLanding() {
                 </div>
                 <div className="text-center mt-4">
                   <p className="text-blue-200 text-xs">
-                    Plus <span className="text-cyan-300 font-semibold">ExecuteIQ One™</span> — the single-pane executive overview of your strategic readiness
+                    Plus <span className="text-cyan-300 font-semibold">Execution OS One™</span> — the single-pane executive overview of your strategic readiness
                   </p>
                 </div>
               </CardContent>
@@ -594,7 +594,7 @@ export default function MarketingLanding() {
                   Elite organizations succeed through preparation, not improvisation.
                 </p>
                 <p className="text-xl text-blue-200">
-                  ExecuteIQ is the orchestration layer that enables Fortune 1000 leaders to sense change early, act decisively, and mobilize across 9 strategic domains in 12 minutes instead of 72 hours.
+                  Execution OS is the orchestration layer that enables Fortune 1000 leaders to sense change early, act decisively, and mobilize across 9 strategic domains in 12 minutes instead of 72 hours.
                 </p>
               </CardContent>
             </Card>
@@ -724,7 +724,7 @@ export default function MarketingLanding() {
               Complete Playbook: Competitive Response
             </h2>
             <p className="text-xl text-slate-400 dark:text-slate-300 max-w-3xl mx-auto">
-              When your competitor launches a 15% price cut, here's how ExecuteIQ coordinates your entire response team in 12 minutes—instead of the 72-hour industry standard.
+              When your competitor launches a 15% price cut, here's how Execution OS coordinates your entire response team in 12 minutes—instead of the 72-hour industry standard.
             </p>
           </div>
 
@@ -796,7 +796,7 @@ export default function MarketingLanding() {
             <Card data-testid="card-stat-vexor-target">
               <CardContent className="pt-6 text-center">
                 <div className="text-5xl font-bold text-green-600 mb-2">12 min</div>
-                <div className="text-lg font-semibold mb-2 text-slate-900 dark:text-white">ExecuteIQ Target</div>
+                <div className="text-lg font-semibold mb-2 text-slate-900 dark:text-white">Execution OS Target</div>
                 <div className="text-sm text-slate-400 dark:text-slate-300">
                   Design goal: Coordinated execution with pre-built playbooks and AI orchestration
                 </div>
@@ -807,10 +807,10 @@ export default function MarketingLanding() {
           <Card className="bg-blue-50 dark:bg-blue-950/30 border-2 border-blue-200 dark:border-blue-800" data-testid="card-founding-vision">
             <CardContent className="pt-8 pb-8">
               <p className="text-xl italic text-slate-700 dark:text-slate-300 mb-4 text-center max-w-3xl mx-auto">
-                "ExecuteIQ transforms leadership from guardians of continuity into architects of transformation. We're the orchestration layer that enables Fortune 1000 leaders to sense change early, act decisively, and mobilize across all 9 strategic domains."
+                "Execution OS transforms leadership from guardians of continuity into architects of transformation. We're the orchestration layer that enables Fortune 1000 leaders to sense change early, act decisively, and mobilize across all 9 strategic domains."
               </p>
               <div className="text-center">
-                <div className="font-semibold text-slate-900 dark:text-white">ExecuteIQ Founding Team</div>
+                <div className="font-semibold text-slate-900 dark:text-white">Execution OS Founding Team</div>
                 <div className="text-sm text-slate-400 dark:text-slate-300">Bringing championship-level execution to enterprise strategy</div>
               </div>
             </CardContent>
@@ -825,7 +825,7 @@ export default function MarketingLanding() {
             Ready to Transform Strategic Execution?
           </h2>
           <p className="text-xl text-slate-300 mb-8">
-            See how ExecuteIQ transforms 72-hour coordination into 12-minute response.
+            See how Execution OS transforms 72-hour coordination into 12-minute response.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button 

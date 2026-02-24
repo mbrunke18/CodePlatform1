@@ -108,7 +108,7 @@ export function PersonalReputationRiskOverlay() {
           {/* CTA Hint */}
           <div className="text-center">
             <p className="text-red-300/70 text-sm">
-              ExecuteIQ executives answer these questions with data, not excuses
+              Execution OS executives answer these questions with data, not excuses
             </p>
           </div>
         </div>

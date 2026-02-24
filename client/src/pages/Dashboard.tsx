@@ -208,9 +208,9 @@ export default function Dashboard() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Dashboard | ExecuteIQ - Strategic Execution OS",
+      title: "Dashboard | Execution OS - Strategic Execution OS",
       description: "Your strategic execution command center. Monitor readiness, track triggers, and coordinate responses in real-time.",
-      ogTitle: "ExecuteIQ Dashboard",
+      ogTitle: "Execution OS Dashboard",
       ogDescription: "Strategic Execution OS for Fortune 1000 executives. Execute Decisions at Scale.",
     });
   }, []);

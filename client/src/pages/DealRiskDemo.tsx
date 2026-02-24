@@ -162,7 +162,7 @@ export default function DealRiskDemo() {
             Deal Risk Response Demo
           </h1>
           <p className="text-xl text-slate-600 dark:text-slate-200 max-w-2xl mx-auto">
-            Experience the full IDEA Framework in action. Watch how ExecuteIQ detects a deal at risk and orchestrates a coordinated response in 12 minutes.
+            Experience the full IDEA Framework in action. Watch how Execution OS detects a deal at risk and orchestrates a coordinated response in 12 minutes.
           </p>
           <Button 
             variant="outline" 
@@ -387,7 +387,7 @@ export default function DealRiskDemo() {
                     {!completedPhases.includes('advance') ? (
                       <div className="space-y-4">
                         <p className="text-slate-600 dark:text-slate-200">
-                          ExecuteIQ captures institutional knowledge from every execution, so your organization gets smarter with each response.
+                          Execution OS captures institutional knowledge from every execution, so your organization gets smarter with each response.
                         </p>
                         <Button 
                           className="w-full bg-amber-600 hover:bg-amber-700"

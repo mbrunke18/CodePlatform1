@@ -20,20 +20,20 @@ export const ExecuteIQLogo: FC<ExecuteIQLogoProps> = ({
   animate = false,
 }) => {
   const colors = {
-    navy: '#1A2B3D',
-    gold: '#D4AF37',
-    teal: '#00A8A8',
-    white: '#FFFFFF',
+    navy: '#0A0F2E',
+    gold: '#C9A84C',
+    teal: '#2B8A6E',
+    white: '#F0EDE4',
   };
 
-  const iconColor = color === 'white' ? '#FFFFFF' : colors.navy;
+  const iconColor = color === 'white' ? '#F0EDE4' : colors.navy;
   const accentColor = colors.gold;
   const accentTeal = colors.teal;
 
   const iconStyles = animate ? {
-    filter: 'drop-shadow(0 2px 8px rgba(26, 43, 61, 0.15))',
+    filter: 'drop-shadow(0 2px 8px rgba(201, 168, 76, 0.2))',
   } : {
-    filter: 'drop-shadow(0 2px 4px rgba(26, 43, 61, 0.15))',
+    filter: 'drop-shadow(0 2px 4px rgba(201, 168, 76, 0.15))',
   };
 
   const ringAnimation = animate ? `
@@ -60,66 +60,11 @@ export const ExecuteIQLogo: FC<ExecuteIQLogoProps> = ({
       >
         {animate && <defs><style>{ringAnimation}</style></defs>}
 
-        {/* Outer Ring 1 */}
-        <circle
-          cx="60"
-          cy="60"
-          r="54"
-          fill="none"
-          stroke={accentTeal}
-          strokeWidth="1.5"
-          opacity="0.3"
-          className={animate ? 'ring-outer' : ''}
-        />
-
-        {/* Ring 2 */}
-        <circle
-          cx="60"
-          cy="60"
-          r="42"
-          fill="none"
-          stroke={accentTeal}
-          strokeWidth="1.5"
-          opacity="0.4"
-          className={animate ? 'ring-2' : ''}
-        />
-
-        {/* Ring 3 */}
-        <circle
-          cx="60"
-          cy="60"
-          r="30"
-          fill="none"
-          stroke={iconColor}
-          strokeWidth="1.5"
-          opacity="0.5"
-          className={animate ? 'ring-3' : ''}
-        />
-
-        {/* Ring 4 */}
-        <circle
-          cx="60"
-          cy="60"
-          r="18"
-          fill="none"
-          stroke={accentColor}
-          strokeWidth="2"
-          opacity="0.7"
-          className={animate ? 'ring-4' : ''}
-        />
-
-        {/* Core Ring */}
-        <circle
-          cx="60"
-          cy="60"
-          r="8"
-          fill="none"
-          stroke={accentColor}
-          strokeWidth="2.5"
-          className={animate ? 'ring-core' : ''}
-        />
-
-        {/* Central Command Point */}
+        <circle cx="60" cy="60" r="54" fill="none" stroke={accentTeal} strokeWidth="1.5" opacity="0.25" className={animate ? 'ring-outer' : ''} />
+        <circle cx="60" cy="60" r="42" fill="none" stroke={accentTeal} strokeWidth="1.5" opacity="0.35" className={animate ? 'ring-2' : ''} />
+        <circle cx="60" cy="60" r="30" fill="none" stroke={iconColor} strokeWidth="1.5" opacity="0.45" className={animate ? 'ring-3' : ''} />
+        <circle cx="60" cy="60" r="18" fill="none" stroke={accentColor} strokeWidth="2" opacity="0.7" className={animate ? 'ring-4' : ''} />
+        <circle cx="60" cy="60" r="8" fill="none" stroke={accentColor} strokeWidth="2.5" className={animate ? 'ring-core' : ''} />
         <circle cx="60" cy="60" r="4" fill={accentColor} />
       </svg>
     );
@@ -130,29 +75,30 @@ export const ExecuteIQLogo: FC<ExecuteIQLogoProps> = ({
       <div className={className}>
         <h1
           style={{
-            fontSize: `${height * 0.65}px`,
-            fontWeight: 700,
-            fontFamily: "'Montserrat', sans-serif",
+            fontSize: `${height * 0.55}px`,
+            fontWeight: 800,
+            fontFamily: "'Barlow Condensed', 'Montserrat', sans-serif",
             margin: 0,
-            color: color === 'white' ? '#FFFFFF' : colors.navy,
-            letterSpacing: '-0.5px',
+            letterSpacing: '0.06em',
+            textTransform: 'uppercase',
+            color: color === 'white' ? '#F0EDE4' : colors.navy,
           }}
         >
-          ExecuteIQ
+          Execution OS
         </h1>
         {showTagline && (
           <p
             style={{
               fontSize: `${height * 0.15}px`,
               fontWeight: 600,
-              fontFamily: "'Montserrat', sans-serif",
+              fontFamily: "'Barlow Condensed', 'Montserrat', sans-serif",
               margin: '4px 0 0 0',
               color: colors.gold,
-              letterSpacing: '1.2px',
+              letterSpacing: '0.22em',
               textTransform: 'uppercase',
             }}
           >
-            Execute Decisions at Scale
+            Prepared to Respond.
           </p>
         )}
       </div>
@@ -163,106 +109,48 @@ export const ExecuteIQLogo: FC<ExecuteIQLogoProps> = ({
     <svg
       width={width}
       height={height}
-      viewBox="0 0 400 120"
+      viewBox="0 0 420 120"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
       <defs>
         <style>{`
-          .executeiq-text {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+          .exos-text-main {
+            font-family: 'Barlow Condensed', 'Montserrat', sans-serif;
+            font-size: 44px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            fill: ${color === 'white' ? '#F0EDE4' : colors.navy};
           }
-          .executeiq-text-main {
-            font-size: 48px;
-            fill: ${color === 'white' ? '#FFFFFF' : colors.navy};
-          }
-          .executeiq-text-sub {
-            font-size: 11px;
-            fill: ${colors.gold};
+          .exos-text-sub {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 10px;
             font-weight: 600;
-            letter-spacing: 1.2px;
+            fill: ${colors.gold};
+            letter-spacing: 3px;
+            text-transform: uppercase;
           }
           ${ringAnimation}
         `}</style>
       </defs>
 
-      {/* Signature Icon */}
+      {/* Concentric rings icon */}
       <g style={iconStyles} transform="translate(15, 20)">
-        {/* Outer Ring 1 */}
-        <circle
-          cx="30"
-          cy="30"
-          r="28"
-          fill="none"
-          stroke={accentTeal}
-          strokeWidth="1"
-          opacity="0.3"
-          className={animate ? 'ring-outer' : ''}
-        />
-
-        {/* Ring 2 */}
-        <circle
-          cx="30"
-          cy="30"
-          r="22"
-          fill="none"
-          stroke={accentTeal}
-          strokeWidth="1"
-          opacity="0.4"
-          className={animate ? 'ring-2' : ''}
-        />
-
-        {/* Ring 3 */}
-        <circle
-          cx="30"
-          cy="30"
-          r="16"
-          fill="none"
-          stroke={iconColor}
-          strokeWidth="1"
-          opacity="0.5"
-          className={animate ? 'ring-3' : ''}
-        />
-
-        {/* Ring 4 */}
-        <circle
-          cx="30"
-          cy="30"
-          r="10"
-          fill="none"
-          stroke={accentColor}
-          strokeWidth="1.5"
-          opacity="0.7"
-          className={animate ? 'ring-4' : ''}
-        />
-
-        {/* Core Ring */}
-        <circle
-          cx="30"
-          cy="30"
-          r="5"
-          fill="none"
-          stroke={accentColor}
-          strokeWidth="1.5"
-          className={animate ? 'ring-core' : ''}
-        />
-
-        {/* Central Point */}
+        <circle cx="30" cy="30" r="28" fill="none" stroke={accentTeal} strokeWidth="1" opacity="0.25" className={animate ? 'ring-outer' : ''} />
+        <circle cx="30" cy="30" r="22" fill="none" stroke={accentTeal} strokeWidth="1" opacity="0.35" className={animate ? 'ring-2' : ''} />
+        <circle cx="30" cy="30" r="16" fill="none" stroke={iconColor} strokeWidth="1" opacity="0.45" className={animate ? 'ring-3' : ''} />
+        <circle cx="30" cy="30" r="10" fill="none" stroke={accentColor} strokeWidth="1.5" opacity="0.7" className={animate ? 'ring-4' : ''} />
+        <circle cx="30" cy="30" r="5" fill="none" stroke={accentColor} strokeWidth="1.5" className={animate ? 'ring-core' : ''} />
         <circle cx="30" cy="30" r="2" fill={accentColor} />
       </g>
 
       {/* Wordmark */}
-      <text x="110" y="62" className="executeiq-text executeiq-text-main">
-        ExecuteIQ
-      </text>
+      <text x="88" y="62" className="exos-text-main">Execution OS</text>
 
       {/* Tagline */}
       {showTagline && (
-        <text x="110" y="78" className="executeiq-text executeiq-text-sub">
-          EXECUTE DECISIONS AT SCALE
-        </text>
+        <text x="88" y="80" className="exos-text-sub">Prepared to Respond.</text>
       )}
     </svg>
   );

@@ -84,7 +84,7 @@ export default function SLAPage() {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground mb-4">
-              ExecuteIQ transforms strategic response from the industry standard of 20-72 hours 
+              Execution OS transforms strategic response from the industry standard of 20-72 hours 
               into a coordinated 12-minute execution cycle. This 10x improvement in velocity 
               creates measurable competitive advantage.
             </p>

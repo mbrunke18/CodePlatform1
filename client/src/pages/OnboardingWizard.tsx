@@ -172,14 +172,14 @@ export default function OnboardingWizard() {
     onSuccess: () => {
       toast({
         title: 'Onboarding Complete!',
-        description: 'Your ExecuteIQ platform is now configured and ready to use.',
+        description: 'Your Execution OS platform is now configured and ready to use.',
       });
       setLocation('/dashboard');
     },
     onError: () => {
       toast({
         title: 'Setup Complete',
-        description: 'Your configuration has been saved. Welcome to ExecuteIQ!',
+        description: 'Your configuration has been saved. Welcome to Execution OS!',
       });
       setLocation('/dashboard');
     },

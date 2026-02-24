@@ -56,7 +56,7 @@ const demos = [
   {
     id: "sandbox",
     title: "Interactive Sandbox",
-    description: "Explore ExecuteIQ features at your own pace in a guided environment",
+    description: "Explore Execution OS features at your own pace in a guided environment",
     path: "/sandbox-demo",
     duration: "Self-paced",
     category: "interactive",
@@ -70,7 +70,7 @@ const demos = [
   {
     id: "investor-demo",
     title: "Investor Demo",
-    description: "Comprehensive overview of ExecuteIQ value proposition and market opportunity",
+    description: "Comprehensive overview of Execution OS value proposition and market opportunity",
     path: "/investor-demo",
     duration: "15 min",
     category: "presentation",
@@ -84,7 +84,7 @@ const demos = [
   {
     id: "product-tour",
     title: "Product Tour",
-    description: "Guided walkthrough of all ExecuteIQ modules and capabilities",
+    description: "Guided walkthrough of all Execution OS modules and capabilities",
     path: "/product-tour",
     duration: "8 min",
     category: "presentation",
@@ -165,7 +165,7 @@ export default function DemoGallery() {
           {/* Header */}
           <div className="text-center mb-8">
             <Badge className="mb-4 bg-poise-teal/20 text-poise-teal border-poise-teal/30">
-              Experience ExecuteIQ
+              Experience Execution OS
             </Badge>
             <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
               Demo Gallery
@@ -186,7 +186,7 @@ export default function DemoGallery() {
                   <div>
                     <h3 className="font-semibold text-slate-900 dark:text-white">Your Journey Starts Here</h3>
                     <p className="text-sm text-slate-400 dark:text-slate-300">
-                      These demos map to Phase 1 of your ExecuteIQ North Star™ journey — Discovery to 12-minute execution
+                      These demos map to Phase 1 of your Execution OS North Star™ journey — Discovery to 12-minute execution
                     </p>
                   </div>
                 </div>
@@ -302,7 +302,7 @@ export default function DemoGallery() {
           <div className="mb-8">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Industry Scenarios</h2>
             <p className="text-slate-400 dark:text-slate-300 mb-6">
-              See ExecuteIQ in action with scenarios tailored to your industry
+              See Execution OS in action with scenarios tailored to your industry
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {industryDemos.map((demo) => (
@@ -329,7 +329,7 @@ export default function DemoGallery() {
             <CardContent className="p-8 text-center">
               <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Strategic Execution?</h3>
               <p className="text-slate-300 mb-6 max-w-xl mx-auto">
-                Join Fortune 1000 companies achieving 12-minute coordinated response with ExecuteIQ
+                Join Fortune 1000 companies achieving 12-minute coordinated response with Execution OS
               </p>
               <div className="flex justify-center gap-4 flex-wrap">
                 <Link href="/pilot-demo">

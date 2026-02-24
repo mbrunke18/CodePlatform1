@@ -142,7 +142,7 @@ const competitiveAdvantages = [
   },
   {
     title: "Human-AI Partnership",
-    description: "Unlike pure automation tools, ExecuteIQ keeps executives in control while AI handles monitoring and recommendations.",
+    description: "Unlike pure automation tools, Execution OS keeps executives in control while AI handles monitoring and recommendations.",
     icon: Users,
   },
   {
@@ -185,7 +185,7 @@ export default function Investors() {
             </h1>
             
             <p className="text-xl text-white/70 max-w-3xl mx-auto mb-8">
-              ExecuteIQ transforms how enterprises respond to strategic events—achieving 10x faster execution with 12-minute playbook activation while keeping humans in control.
+              Execution OS transforms how enterprises respond to strategic events—achieving 10x faster execution with 12-minute playbook activation while keeping humans in control.
             </p>
             
             <div className="flex flex-wrap justify-center gap-4">
@@ -295,12 +295,12 @@ export default function Investors() {
                   
                   <div className="grid grid-cols-2 gap-3 mb-4">
                     <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3">
-                      <p className="text-red-400/60 text-xs mb-1">Without ExecuteIQ</p>
+                      <p className="text-red-400/60 text-xs mb-1">Without Execution OS</p>
                       <p className="text-red-400 font-bold text-lg">{scenario.traditional.time}</p>
                       <p className="text-red-400/60 text-xs mt-1">{scenario.traditional.cost}</p>
                     </div>
                     <div className="bg-[#00A8A8]/10 border border-[#00A8A8]/20 rounded-lg p-3">
-                      <p className="text-[#00A8A8]/60 text-xs mb-1">With ExecuteIQ</p>
+                      <p className="text-[#00A8A8]/60 text-xs mb-1">With Execution OS</p>
                       <p className="text-[#00A8A8] font-bold text-lg">{scenario.executeiq.time}</p>
                       <p className="text-[#00A8A8]/60 text-xs mt-1">{scenario.executeiq.value}</p>
                     </div>
@@ -349,7 +349,7 @@ export default function Investors() {
             <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
               <img
                 src={productArchitectureImg}
-                alt="ExecuteIQ End-to-End Product Architecture — Signal Sources, AI Engine, 170 Playbooks, Execution Outputs, Command Center, and Integration Layer"
+                alt="Execution OS End-to-End Product Architecture — Signal Sources, AI Engine, 170 Playbooks, Execution Outputs, Command Center, and Integration Layer"
                 className="w-full h-auto"
                 loading="eager"
               />
@@ -423,7 +423,7 @@ export default function Investors() {
             <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
               <img
                 src={futurePositioningImg}
-                alt="ExecuteIQ Future Positioning — Phase 1: Today's execution infrastructure, Phase 2: Tomorrow's AI operating layer"
+                alt="Execution OS Future Positioning — Phase 1: Today's execution infrastructure, Phase 2: Tomorrow's AI operating layer"
                 className="w-full h-auto"
                 loading="lazy"
               />
@@ -526,7 +526,7 @@ export default function Investors() {
             </div>
             
             <p className="text-white/40 text-sm mt-8">
-              ExecuteIQ • Strategic Execution OS • Execute Decisions at Scale
+              Execution OS • Strategic Execution OS • Execute Decisions at Scale
             </p>
           </motion.div>
 
@@ -549,7 +549,7 @@ export default function Investors() {
               ))}
             </div>
             <p className="text-center text-white/30 text-xs mt-6">
-              All statistics sourced from publicly available industry research. ExecuteIQ internal metrics (12-minute activation) based on platform capabilities.
+              All statistics sourced from publicly available industry research. Execution OS internal metrics (12-minute activation) based on platform capabilities.
             </p>
           </motion.div>
           

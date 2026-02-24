@@ -204,7 +204,7 @@ const SCENARIOS: Scenario[] = [
 ];
 
 const PHASES = [
-  { id: 'chaos' as Phase, name: 'THE CHAOS', icon: AlertTriangle, color: 'red', description: 'Without ExecuteIQ' },
+  { id: 'chaos' as Phase, name: 'THE CHAOS', icon: AlertTriangle, color: 'red', description: 'Without Execution OS' },
   { id: 'identify' as Phase, name: 'IDENTIFY', icon: BookOpen, color: 'violet', description: 'Playbook ready' },
   { id: 'detect' as Phase, name: 'DETECT', icon: Radar, color: 'blue', description: 'Signal detected' },
   { id: 'execute' as Phase, name: 'EXECUTE', icon: Radio, color: 'emerald', description: 'Coordinate response' },
@@ -487,7 +487,7 @@ export default function TryDemo() {
               Y Combinator Demo
             </Badge>
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
-              Experience ExecuteIQ
+              Experience Execution OS
             </h1>
             <p className="text-lg text-slate-200">
               See why Fortune 1000 leaders need the Strategic Execution OS
@@ -500,7 +500,7 @@ export default function TryDemo() {
               <div className="text-center mb-8">
                 <h2 className="text-2xl font-bold text-white mb-2">Choose Your Crisis</h2>
                 <p className="text-slate-200">
-                  Experience the chaos of strategic events—then see how ExecuteIQ transforms response
+                  Experience the chaos of strategic events—then see how Execution OS transforms response
                 </p>
               </div>
               <div className="grid md:grid-cols-2 gap-4">
@@ -687,7 +687,7 @@ export default function TryDemo() {
                     {showChaosComplete && (
                       <div className="flex-1 space-y-3">
                         <div className="p-4 bg-slate-800/50 border border-slate-600 rounded-lg text-center">
-                          <p className="text-slate-200 text-sm mb-1">This is what happens WITHOUT ExecuteIQ</p>
+                          <p className="text-slate-200 text-sm mb-1">This is what happens WITHOUT Execution OS</p>
                           <p className="text-white font-medium">Chaos. Confusion. Costly delays.</p>
                         </div>
                         <Button 
@@ -695,7 +695,7 @@ export default function TryDemo() {
                           onClick={moveToPrepared}
                         >
                           <Sparkles className="mr-2 h-5 w-5" />
-                          Now See ExecuteIQ in Action
+                          Now See Execution OS in Action
                           <ArrowRight className="ml-2 h-5 w-5" />
                         </Button>
                       </div>
@@ -811,7 +811,7 @@ export default function TryDemo() {
 
                         <div className="p-3 bg-slate-800/50 rounded-lg">
                           <p className="text-sm text-slate-200">
-                            <span className="text-red-400 font-medium">Without ExecuteIQ:</span> 20-50 hours to coordinate a response team, find documents, and get budget approval.
+                            <span className="text-red-400 font-medium">Without Execution OS:</span> 20-50 hours to coordinate a response team, find documents, and get budget approval.
                           </p>
                         </div>
 
@@ -886,7 +886,7 @@ export default function TryDemo() {
                           EXECUTE: Coordinating Response
                         </CardTitle>
                         <CardDescription>
-                          Watch ExecuteIQ orchestrate your response in real-time
+                          Watch Execution OS orchestrate your response in real-time
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
@@ -950,7 +950,7 @@ export default function TryDemo() {
                         {!learnings ? (
                           <div className="space-y-4">
                             <p className="text-slate-200">
-                              ExecuteIQ captures what worked and suggests playbook improvements for next time.
+                              Execution OS captures what worked and suggests playbook improvements for next time.
                             </p>
                             <Button 
                               className="w-full bg-amber-600 hover:bg-amber-700"
@@ -1052,7 +1052,7 @@ export default function TryDemo() {
                                 Explore Industry Deep-Dives
                               </CardTitle>
                               <CardDescription className="text-slate-200">
-                                See ExecuteIQ in action across 9 industries with real company scenarios
+                                See Execution OS in action across 9 industries with real company scenarios
                               </CardDescription>
                             </div>
                             <Badge className="bg-poise-gold/20 text-poise-gold border-poise-gold/30">
@@ -1132,7 +1132,7 @@ export default function TryDemo() {
                           <p className="text-xs text-slate-200">Industry average</p>
                         </div>
                         <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-center">
-                          <p className="text-xs text-emerald-400 mb-1">ExecuteIQ</p>
+                          <p className="text-xs text-emerald-400 mb-1">Execution OS</p>
                           <p className="text-xl font-bold text-emerald-300">12 min</p>
                           <p className="text-xs text-slate-200">Guaranteed</p>
                         </div>
@@ -1205,7 +1205,7 @@ export default function TryDemo() {
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold text-white mb-3">See It In Your Industry</h2>
             <p className="text-slate-200 max-w-2xl mx-auto">
-              Explore how ExecuteIQ handles real-world scenarios across offense and defense — each demo shows the full trigger-to-execution loop.
+              Explore how Execution OS handles real-world scenarios across offense and defense — each demo shows the full trigger-to-execution loop.
             </p>
           </div>
           

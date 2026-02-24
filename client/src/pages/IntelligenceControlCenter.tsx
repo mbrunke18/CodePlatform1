@@ -34,7 +34,7 @@ export default function IntelligenceControlCenter() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Intelligence Control Center - ExecuteIQ Strategic Execution OS",
+      title: "Intelligence Control Center - Execution OS Strategic Execution OS",
       description: "Monitor 216+ data points across 16 signal categories. AI-powered pattern detection, trigger management, and strategic intelligence.",
       ogTitle: "M Intelligence Control Center",
       ogDescription: "Real-time strategic intelligence with AI-powered pattern detection and 12-minute response coordination.",

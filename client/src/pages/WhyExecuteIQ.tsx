@@ -30,12 +30,12 @@ import Footer from "@/components/layout/Footer";
 import { useEffect } from "react";
 import { updatePageMetadata } from "@/lib/seo";
 
-export default function WhyExecuteIQ() {
+export default function WhyExecution OS() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Why ExecuteIQ - The Infrastructure 15 Firms Say Is Missing",
-      description: "McKinsey, IBM, BCG, Deloitte, Accenture, Microsoft, Google Cloud, and the World Economic Forum all concluded: organizations fail at AI because they lack execution infrastructure. ExecuteIQ provides it.",
-      ogTitle: "The Infrastructure 15 Firms Say Is Missing | ExecuteIQ",
+      title: "Why Execution OS - The Infrastructure 15 Firms Say Is Missing",
+      description: "McKinsey, IBM, BCG, Deloitte, Accenture, Microsoft, Google Cloud, and the World Economic Forum all concluded: organizations fail at AI because they lack execution infrastructure. Execution OS provides it.",
+      ogTitle: "The Infrastructure 15 Firms Say Is Missing | Execution OS",
       ogDescription: "Fifteen major firms independently concluded that execution infrastructure—governance, decision rights, and coordination systems—is the missing layer for AI adoption.",
     });
   }, []);
@@ -222,14 +222,14 @@ export default function WhyExecuteIQ() {
               The Solution
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              ExecuteIQ Provides the Infrastructure
+              Execution OS Provides the Infrastructure
             </h2>
           </div>
 
           <Card className="bg-white/10 border-white/20 backdrop-blur mb-12">
             <CardContent className="p-8 md:p-12">
               <p className="text-lg md:text-xl text-blue-50 leading-relaxed mb-8">
-                ExecuteIQ is the execution infrastructure layer: 170 playbooks with governance, decision rights, and workflows pre-defined. Customizable to your organization. Build your own for unique situations. 12 minutes from trigger to execution. The infrastructure that makes AI actually work.
+                Execution OS is the execution infrastructure layer: 170 playbooks with governance, decision rights, and workflows pre-defined. Customizable to your organization. Build your own for unique situations. 12 minutes from trigger to execution. The infrastructure that makes AI actually work.
               </p>
 
               <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -269,7 +269,7 @@ export default function WhyExecuteIQ() {
             <Link href="/demo-selector">
               <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100">
                 <Play className="mr-2 h-5 w-5" />
-                See ExecuteIQ in Action
+                See Execution OS in Action
               </Button>
             </Link>
           </div>
@@ -288,7 +288,7 @@ export default function WhyExecuteIQ() {
               Not Workflow Automation. Agentic Execution.
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              ExecuteIQ isn't another tool in the stack. It's the agentic execution layer — the system where AI agents coordinate enterprise-wide response in real time, with human executives making the final call.
+              Execution OS isn't another tool in the stack. It's the agentic execution layer — the system where AI agents coordinate enterprise-wide response in real time, with human executives making the final call.
             </p>
           </div>
 
@@ -332,7 +332,7 @@ export default function WhyExecuteIQ() {
                     <CheckCircle2 className="h-6 w-6 text-emerald-500" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-xl text-foreground">Agentic Execution (ExecuteIQ)</h3>
+                    <h3 className="font-bold text-xl text-foreground">Agentic Execution (Execution OS)</h3>
                     <p className="text-sm text-emerald-600 dark:text-emerald-400 font-medium">Autonomous, proactive, coordinated</p>
                   </div>
                 </div>
@@ -420,7 +420,7 @@ export default function WhyExecuteIQ() {
                   </div>
                   <div>
                     <p className="font-bold text-foreground text-lg">Martin Brunke</p>
-                    <p className="text-muted-foreground">Founder & CEO, ExecuteIQ</p>
+                    <p className="text-muted-foreground">Founder & CEO, Execution OS</p>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -444,7 +444,7 @@ export default function WhyExecuteIQ() {
             Ready to See the Infrastructure?
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            See how ExecuteIQ closes the gap between AI investment and AI results.
+            See how Execution OS closes the gap between AI investment and AI results.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/demo-selector">

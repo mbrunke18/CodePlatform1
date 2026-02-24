@@ -63,7 +63,7 @@ export default function Footer() {
       links: [
         { label: "How It Works", path: "/how-it-works" },
         { label: "Our Story", path: "/our-story" },
-        { label: "Why ExecuteIQ", path: "/why-executeiq" },
+        { label: "Why Execution OS", path: "/why-executeiq" },
         { label: "Integrations", path: "/integrations" },
         { label: "Pricing", path: "/pricing" },
         { label: "Contact", path: "/contact" },
@@ -160,13 +160,13 @@ export default function Footer() {
       <div className="border-t border-poise-gold/10 bg-gradient-to-r from-poise-navy via-poise-dark-gray/50 to-poise-navy">
         <div className="max-w-7xl mx-auto px-6 py-8 text-center">
           <p className="text-2xl font-bold text-poise-gold mb-2" data-testid="footer-idea-tagline">
-            ExecuteIQ — The Execution Infrastructure That Makes AI Work
+            Execution OS — Prepared to Respond.
           </p>
           <p className="text-lg text-slate-300 italic mb-4">
-            "170 playbooks to start. Customize them. Build your own. Pre-defined governance, clear decision rights, 12 minutes to execution."
+            "Any situation. Coordinated response. Confidence."
           </p>
           <p className="text-sm text-poise-teal">
-            The Playbooks Are the Accelerant. The Platform Is the Product.
+            170 playbooks. Pre-defined governance. Clear decision rights. 12 minutes to execution.
           </p>
         </div>
       </div>
@@ -181,9 +181,9 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-sm text-slate-300">
-                  © {new Date().getFullYear()} ExecuteIQ - The Execution Infrastructure Enterprises Are Missing
+                  © {new Date().getFullYear()} VaughnMartin — Execution OS
                 </p>
-                <p className="text-xs text-slate-300">Governance. Decision Rights. Coordination. In 12 Minutes.</p>
+                <p className="text-xs text-slate-300">Strategic Execution Through Elite Methodology</p>
               </div>
             </div>
             <div className="flex items-center gap-6">

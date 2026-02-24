@@ -261,7 +261,7 @@ export default function IndustryDemosHub() {
               </h1>
             </div>
             <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-6">
-              See ExecuteIQ coordinate strategic execution across industries — from market entry opportunities to crisis response.
+              See Execution OS coordinate strategic execution across industries — from market entry opportunities to crisis response.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm text-gray-300">
               <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-blue-400" /> Offense & Defense</span>
@@ -292,7 +292,7 @@ export default function IndustryDemosHub() {
               <Badge className="bg-red-500/10 text-red-400 border border-red-500/20 text-xs">DEFENSE</Badge>
             </div>
             <p className="text-sm text-gray-200 mb-6 max-w-4xl">
-              When crises hit — ransomware, recalls, supplier failures — traditional coordination takes days. ExecuteIQ compresses response to minutes, protecting value before the situation escalates.
+              When crises hit — ransomware, recalls, supplier failures — traditional coordination takes days. Execution OS compresses response to minutes, protecting value before the situation escalates.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {defensiveDemos.map(renderDemoCard)}
@@ -303,7 +303,7 @@ export default function IndustryDemosHub() {
             <div className="text-center max-w-3xl mx-auto">
               <h3 className="text-xl font-bold mb-3">The Detection-Execution Gap</h3>
               <p className="text-gray-200 mb-6">
-                Every industry has invested billions in AI for detection. But when action is needed, coordination still happens at email speed. ExecuteIQ bridges that gap.
+                Every industry has invested billions in AI for detection. But when action is needed, coordination still happens at email speed. Execution OS bridges that gap.
               </p>
               <div className="grid grid-cols-3 gap-4 mb-8">
                 <div>
@@ -315,7 +315,7 @@ export default function IndustryDemosHub() {
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-emerald-400 mb-1">12 min</div>
-                  <div className="text-xs text-gray-300">ExecuteIQ coordination</div>
+                  <div className="text-xs text-gray-300">Execution OS coordination</div>
                 </div>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">

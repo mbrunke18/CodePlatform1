@@ -66,7 +66,7 @@ export default function ROIComparison({ traditional, vexor, bottomLine }: ROICom
           </div>
         </Card>
 
-        {/* ExecuteIQ Approach */}
+        {/* Execution OS Approach */}
         <Card className="p-6 border-green-500 border-2 bg-green-950/30">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">

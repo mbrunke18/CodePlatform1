@@ -121,7 +121,7 @@ export default function LVMHMarketEntryDemo() {
                       This isn't a crisis—it's a strategic offensive move. China's luxury market rebounds 47%, creating 
                       a 90-day window to capture market leadership. But coordinating 10 brands (Louis Vuitton, Dior, Fendi, 
                       Givenchy, Celine, Loewe, Loro Piana, Rimowa, Berluti, Kenzo) across 15 cities traditionally takes 
-                      <strong> 6-9 months</strong>. ExecuteIQ compresses coordination to <strong>12 minutes</strong>, enabling 
+                      <strong> 6-9 months</strong>. Execution OS compresses coordination to <strong>12 minutes</strong>, enabling 
                       simultaneous launch during Golden Week while competitors are still planning.
                     </p>
                   </div>
@@ -156,7 +156,7 @@ export default function LVMHMarketEntryDemo() {
                   <Play className="w-5 h-5 mr-2" />
                   Begin Opportunity Simulation
                 </Button>
-                <p className="text-sm text-purple-400 mt-3">Experience how ExecuteIQ enables strategic velocity</p>
+                <p className="text-sm text-purple-400 mt-3">Experience how Execution OS enables strategic velocity</p>
               </div>
             </Card>
           </div>
@@ -221,7 +221,7 @@ export default function LVMHMarketEntryDemo() {
                 Act 3: 12-Minute Coordinated Execution
               </h2>
               <p className="text-lg text-purple-200 mb-6">
-                ExecuteIQ coordinates all 1,267 stakeholders in 12 minutes. Bernard Arnault's decision triggers instant alignment across 
+                Execution OS coordinates all 1,267 stakeholders in 12 minutes. Bernard Arnault's decision triggers instant alignment across 
                 28 executives, 347 operational specialists, and 892 external partners—enabling simultaneous 10-brand launch.
               </p>
 

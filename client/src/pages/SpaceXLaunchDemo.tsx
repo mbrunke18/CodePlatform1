@@ -120,7 +120,7 @@ export default function SpaceXLaunchDemo() {
                     <p className="text-blue-100 leading-relaxed">
                       SpaceX already moves faster than traditional aerospace—but even SpaceX faces coordination bottlenecks. 
                       When a favorable orbital window opens, coordinating 1,847 stakeholders (ground crews, FAA, Space Force, 
-                      payload teams, weather, range safety) traditionally takes <strong>5-7 days</strong>. ExecuteIQ compresses 
+                      payload teams, weather, range safety) traditionally takes <strong>5-7 days</strong>. Execution OS compresses 
                       it to <strong>12 minutes</strong>—enabling SpaceX to capture time-sensitive launch opportunities competitors cannot match.
                     </p>
                   </div>
@@ -220,7 +220,7 @@ export default function SpaceXLaunchDemo() {
                 Act 3: 12-Minute Coordinated Execution
               </h2>
               <p className="text-lg text-blue-200 mb-6">
-                ExecuteIQ coordinates all 1,847 stakeholders in 12 minutes. Elon's decision triggers instant alignment across 
+                Execution OS coordinates all 1,847 stakeholders in 12 minutes. Elon's decision triggers instant alignment across 
                 34 executives, 813 operations teams, and 1,000 external partners (FAA, Space Force, Range Control).
               </p>
 

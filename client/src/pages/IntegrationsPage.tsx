@@ -169,11 +169,11 @@ export default function IntegrationsPage() {
             Enterprise Integrations
           </Badge>
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
-            ExecuteIQ Orchestrates Your Stack
+            Execution OS Orchestrates Your Stack
           </h1>
           <p className="mt-2 text-lg text-gray-400 dark:text-gray-200">
-            ExecuteIQ doesn't replace your workflow tools — it coordinates them. When a playbook 
-            activates, ExecuteIQ tells each system exactly what to do.
+            Execution OS doesn't replace your workflow tools — it coordinates them. When a playbook 
+            activates, Execution OS tells each system exactly what to do.
           </p>
         </div>
 
@@ -183,7 +183,7 @@ export default function IntegrationsPage() {
             <div className="w-12 h-12 mx-auto mb-4 bg-blue-500/20 rounded-xl flex items-center justify-center">
               <Zap className="w-6 h-6 text-blue-500" />
             </div>
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">ExecuteIQ Orchestrates</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Execution OS Orchestrates</h3>
             <p className="text-sm text-gray-400 dark:text-gray-200">Strategic playbooks trigger coordinated actions across your entire stack</p>
           </Card>
           <Card className="p-6 text-center">
@@ -198,7 +198,7 @@ export default function IntegrationsPage() {
               <CheckCircle2 className="w-6 h-6 text-emerald-500" />
             </div>
             <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Everything Syncs</h3>
-            <p className="text-sm text-gray-400 dark:text-gray-200">Bi-directional updates keep ExecuteIQ and your tools in perfect alignment</p>
+            <p className="text-sm text-gray-400 dark:text-gray-200">Bi-directional updates keep Execution OS and your tools in perfect alignment</p>
           </Card>
         </div>
 
@@ -433,7 +433,7 @@ export default function IntegrationsPage() {
             <DialogHeader>
               <DialogTitle>Connect {selectedIntegration?.name}</DialogTitle>
               <DialogDescription>
-                Enter your credentials to connect {selectedIntegration?.name} to ExecuteIQ.
+                Enter your credentials to connect {selectedIntegration?.name} to Execution OS.
               </DialogDescription>
             </DialogHeader>
 

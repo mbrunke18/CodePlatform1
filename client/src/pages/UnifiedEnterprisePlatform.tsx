@@ -183,7 +183,7 @@ export default function UnifiedEnterprisePlatform() {
                 <LayoutDashboard className="h-10 w-10" />
                 <div>
                   <h1 className="text-2xl font-bold" data-testid="platform-title">
-                    ExecuteIQ Executive Command Center
+                    Execution OS Executive Command Center
                   </h1>
                   <p className="text-primary-foreground/80">Where Strategy Meets Velocity™ - 12-Minute Execution Platform</p>
                 </div>

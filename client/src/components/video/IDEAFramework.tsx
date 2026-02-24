@@ -12,7 +12,7 @@ const phases = [
   { 
     id: "identify", 
     name: "IDENTIFY", 
-    module: "ExecuteIQ Playbook™",
+    module: "Execution OS Playbook™",
     icon: ClipboardList, 
     color: "#3B82F6",
     description: "Build your playbook library",
@@ -21,7 +21,7 @@ const phases = [
   { 
     id: "detect", 
     name: "DETECT", 
-    module: "ExecuteIQ Signal™",
+    module: "Execution OS Signal™",
     icon: Radar, 
     color: "#10B981",
     description: "AI detects triggers",
@@ -30,7 +30,7 @@ const phases = [
   { 
     id: "execute", 
     name: "EXECUTE", 
-    module: "ExecuteIQ Compass™",
+    module: "Execution OS Compass™",
     icon: Play, 
     color: "#F59E0B",
     description: "Coordinated response",
@@ -39,7 +39,7 @@ const phases = [
   { 
     id: "advance", 
     name: "ADVANCE", 
-    module: "ExecuteIQ Retrospect™",
+    module: "Execution OS Retrospect™",
     icon: TrendingUp, 
     color: "#8B5CF6",
     description: "Capture learning",
@@ -125,7 +125,7 @@ export function IDEAFramework({ progress }: SceneProps) {
           <div className="flex items-center gap-3 bg-white/5 border border-[#D4AF37]/30 rounded-xl px-5 py-3">
             <LayoutDashboard className="w-5 h-5 text-[#D4AF37]" />
             <div>
-              <p className="text-white text-sm font-medium">ExecuteIQ One™</p>
+              <p className="text-white text-sm font-medium">Execution OS One™</p>
               <p className="text-white/50 text-xs">Unified command center for all 4 phases</p>
             </div>
           </div>

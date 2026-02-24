@@ -96,7 +96,7 @@ export default function InvestorLanding() {
             </p>
             
             <p className="text-lg md:text-xl text-blue-100 mb-8 max-w-4xl" data-testid="text-description">
-              Fortune 1000 companies spend $847B annually on strategic initiatives—83% fail due to execution gaps. ExecuteIQ creates a new software category worth $127B TAM, delivering 500x faster execution with complete 7-component ecosystem.
+              Fortune 1000 companies spend $847B annually on strategic initiatives—83% fail due to execution gaps. Execution OS creates a new software category worth $127B TAM, delivering 500x faster execution with complete 7-component ecosystem.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -154,7 +154,7 @@ export default function InvestorLanding() {
                 Three Enterprise Problems Worth $847B
               </h2>
               <p className="text-xl text-slate-200 max-w-4xl mx-auto">
-                Fortune 1000 companies face these three problems every time a strategic moment hits. No infrastructure existed to solve them—until ExecuteIQ.
+                Fortune 1000 companies face these three problems every time a strategic moment hits. No infrastructure existed to solve them—until Execution OS.
               </p>
             </div>
 
@@ -240,7 +240,7 @@ export default function InvestorLanding() {
 
             <div className="bg-slate-800/60 border border-slate-700 rounded-xl px-6 py-4 text-center">
               <p className="text-slate-200">
-                <span className="text-white font-semibold">ExecuteIQ at $250K-$750K/year</span> vs. one incident costing <span className="text-red-400 font-semibold">$5-50M</span>. <span className="text-emerald-400 font-semibold">Payback on first use.</span>
+                <span className="text-white font-semibold">Execution OS at $250K-$750K/year</span> vs. one incident costing <span className="text-red-400 font-semibold">$5-50M</span>. <span className="text-emerald-400 font-semibold">Payback on first use.</span>
               </p>
             </div>
           </div>
@@ -258,7 +258,7 @@ export default function InvestorLanding() {
                 The Agentic Execution Layer
               </h2>
               <p className="text-xl text-slate-200 max-w-3xl mx-auto">
-                Agents don't just generate answers — they coordinate enterprises. ExecuteIQ is the missing orchestration layer between strategy and operational systems.
+                Agents don't just generate answers — they coordinate enterprises. Execution OS is the missing orchestration layer between strategy and operational systems.
               </p>
             </div>
 
@@ -270,7 +270,7 @@ export default function InvestorLanding() {
               <div className="text-center text-slate-500">→</div>
               <div className="bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border-2 border-purple-500/50 rounded-xl p-4 text-center">
                 <div className="text-xs text-purple-400 font-semibold mb-1">Agentic Execution Layer</div>
-                <div className="text-sm font-bold text-white">ExecuteIQ</div>
+                <div className="text-sm font-bold text-white">Execution OS</div>
               </div>
               <div className="text-center text-slate-500">→</div>
               <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-4 text-center">
@@ -330,7 +330,7 @@ export default function InvestorLanding() {
                 8 Flagship Reports. One Conclusion.
               </h2>
               <p className="text-xl text-slate-200 max-w-3xl mx-auto mb-6">
-                The world's top consulting and technology firms independently confirm the market ExecuteIQ addresses
+                The world's top consulting and technology firms independently confirm the market Execution OS addresses
               </p>
               <div className="flex flex-wrap justify-center gap-2 mb-4">
                 {['IBM', 'BCG', 'McKinsey', 'Bain', 'Accenture', 'Deloitte', 'PwC', 'Gartner', 'Forrester', 'IDC', 'Microsoft', 'Google Cloud', 'OpenAI', 'Anthropic', 'World Economic Forum'].map((firm) => (
@@ -351,7 +351,7 @@ export default function InvestorLanding() {
                     <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
                     <p className="text-slate-200 text-sm">"AI transformation shifting from CIO-led to CEO-led mandate"</p>
                   </div>
-                  <p className="text-emerald-400 text-sm italic">→ ExecuteIQ is built for the C-suite</p>
+                  <p className="text-emerald-400 text-sm italic">→ Execution OS is built for the C-suite</p>
                 </CardContent>
               </Card>
 
@@ -366,7 +366,7 @@ export default function InvestorLanding() {
                     <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
                     <p className="text-slate-200 text-sm">"The smarter enterprise requires new operating models"</p>
                   </div>
-                  <p className="text-emerald-400 text-sm italic">→ ExecuteIQ IS that operating model</p>
+                  <p className="text-emerald-400 text-sm italic">→ Execution OS IS that operating model</p>
                 </CardContent>
               </Card>
 
@@ -396,7 +396,7 @@ export default function InvestorLanding() {
                     <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
                     <p className="text-slate-200 text-sm">"Rise of sovereign, agentic, and physical AI"</p>
                   </div>
-                  <p className="text-emerald-400 text-sm italic">→ ExecuteIQ orchestrates agentic AI with human oversight</p>
+                  <p className="text-emerald-400 text-sm italic">→ Execution OS orchestrates agentic AI with human oversight</p>
                 </CardContent>
               </Card>
 
@@ -411,7 +411,7 @@ export default function InvestorLanding() {
                     <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
                     <p className="text-slate-200 text-sm">"Organizations scaling AI into outcomes"</p>
                   </div>
-                  <p className="text-emerald-400 text-sm italic">→ ExecuteIQ delivers measurable execution outcomes</p>
+                  <p className="text-emerald-400 text-sm italic">→ Execution OS delivers measurable execution outcomes</p>
                 </CardContent>
               </Card>
 
@@ -426,7 +426,7 @@ export default function InvestorLanding() {
                     <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
                     <p className="text-slate-200 text-sm">"Readiness requires people, process, culture, governance"</p>
                   </div>
-                  <p className="text-emerald-400 text-sm italic">→ ExecuteIQ provides all four</p>
+                  <p className="text-emerald-400 text-sm italic">→ Execution OS provides all four</p>
                 </CardContent>
               </Card>
 
@@ -456,7 +456,7 @@ export default function InvestorLanding() {
                     <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
                     <p className="text-slate-200 text-sm">"Reinventing platform strategy for agentic AI"</p>
                   </div>
-                  <p className="text-emerald-400 text-sm italic">→ ExecuteIQ is that platform</p>
+                  <p className="text-emerald-400 text-sm italic">→ Execution OS is that platform</p>
                 </CardContent>
               </Card>
             </div>
@@ -477,7 +477,7 @@ export default function InvestorLanding() {
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700">
               <img
                 src={productArchitectureImg}
-                alt="ExecuteIQ End-to-End Product Architecture — Signal Sources, AI Engine, 170 Playbooks, Execution Outputs, Command Center, and Integration Layer"
+                alt="Execution OS End-to-End Product Architecture — Signal Sources, AI Engine, 170 Playbooks, Execution Outputs, Command Center, and Integration Layer"
                 className="w-full h-auto"
                 loading="eager"
               />
@@ -623,7 +623,7 @@ export default function InvestorLanding() {
                 12 Guides. 9 Firms. One Conclusion.
               </h2>
               <p className="text-lg text-slate-200 max-w-3xl mx-auto mb-6">
-                The entire agentic AI landscape — from McKinsey to AWS to WEF — published in the last 6-8 months, all pointing at the same gap ExecuteIQ fills.
+                The entire agentic AI landscape — from McKinsey to AWS to WEF — published in the last 6-8 months, all pointing at the same gap Execution OS fills.
               </p>
               <div className="flex items-center justify-center gap-8 mb-8">
                 <div className="text-center">
@@ -714,7 +714,7 @@ export default function InvestorLanding() {
             </div>
 
             <div className="p-5 bg-emerald-900/30 border border-emerald-700/50 rounded-lg text-center">
-              <p className="text-emerald-300 font-semibold mb-1">Every firm is consulting on the problem. ExecuteIQ built the product.</p>
+              <p className="text-emerald-300 font-semibold mb-1">Every firm is consulting on the problem. Execution OS built the product.</p>
               <p className="text-slate-300 text-sm">170 playbooks, 9 strategic domains, pre-defined governance — ready today.</p>
             </div>
           </div>
@@ -742,7 +742,7 @@ export default function InvestorLanding() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-slate-600 dark:text-slate-300 mb-4">
-                    Competitors offer point solutions (BI tools, project management, chatbots). ExecuteIQ integrates entire strategic execution workflow—massive switching costs once embedded.
+                    Competitors offer point solutions (BI tools, project management, chatbots). Execution OS integrates entire strategic execution workflow—massive switching costs once embedded.
                   </p>
                   <div className="text-sm font-semibold text-primary" data-testid="text-moat-ecosystem-advantage">
                     Advantage: 18-24 month integration lead vs. competitors
@@ -796,7 +796,7 @@ export default function InvestorLanding() {
                     First mover defining "Strategic Execution Operating System" category (like Salesforce for CRM). Category creators capture 76% of market value (Gartner research).
                   </p>
                   <div className="text-sm font-semibold text-primary" data-testid="text-moat-category-advantage">
-                    Advantage: Brand moat—"ExecuteIQ" becomes verb for strategic execution
+                    Advantage: Brand moat—"Execution OS" becomes verb for strategic execution
                   </div>
                 </CardContent>
               </Card>
@@ -818,7 +818,7 @@ export default function InvestorLanding() {
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700">
               <img
                 src={futurePositioningImg}
-                alt="ExecuteIQ Future Positioning — Phase 1: Today's execution infrastructure, Phase 2: Tomorrow's AI operating layer"
+                alt="Execution OS Future Positioning — Phase 1: Today's execution infrastructure, Phase 2: Tomorrow's AI operating layer"
                 className="w-full h-auto"
                 loading="lazy"
               />
@@ -1100,7 +1100,7 @@ export default function InvestorLanding() {
               Join Us in Creating a New Software Category
             </h2>
             <p className="text-xl mb-8 text-blue-100" data-testid="text-cta-description">
-              ExecuteIQ is defining the Strategic Execution Operating System category—a $127B market opportunity with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
+              Execution OS is defining the Strategic Execution Operating System category—a $127B market opportunity with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button

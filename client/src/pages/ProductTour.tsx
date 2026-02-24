@@ -55,9 +55,9 @@ const TOUR_SCENES: Scene[] = [
     id: 'intro',
     type: 'cinematic',
     duration: 6000,
-    title: 'ExecuteIQ',
+    title: 'Execution OS',
     subtitle: 'Strategic Execution Operating System',
-    narration: 'Welcome to ExecuteIQ — the operating system that transforms how Fortune 1000 companies execute strategy.',
+    narration: 'Welcome to Execution OS — the operating system that transforms how Fortune 1000 companies execute strategy.',
     visual: 'solution'
   },
   {
@@ -82,7 +82,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 6000,
     title: 'The Solution',
     subtitle: 'Compress 72 hours into 12 minutes',
-    narration: 'ExecuteIQ connects intelligence signals directly to pre-built playbooks, enabling coordinated response in minutes — not days.',
+    narration: 'Execution OS connects intelligence signals directly to pre-built playbooks, enabling coordinated response in minutes — not days.',
     visual: 'solution'
   },
   {
@@ -109,7 +109,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 8000,
     title: 'EXECUTE',
     subtitle: 'Execute Response',
-    narration: 'When signals fire, ExecuteIQ orchestrates your entire organization. Stakeholders align in parallel, not sequence.',
+    narration: 'When signals fire, Execution OS orchestrates your entire organization. Stakeholders align in parallel, not sequence.',
     visual: 'execute'
   },
   {
@@ -127,7 +127,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 6000,
     title: 'See It In Action',
     subtitle: 'Executive Simulation',
-    narration: 'Experience ExecuteIQ through the eyes of Sarah Chen, Chief Strategy Officer at Meridian Industries.',
+    narration: 'Experience Execution OS through the eyes of Sarah Chen, Chief Strategy Officer at Meridian Industries.',
     visual: 'execute'
   },
   {
@@ -136,7 +136,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 7000,
     title: 'Critical Signal Detected',
     subtitle: 'Competitor Acquisition',
-    narration: 'A competitor announces a major acquisition. ExecuteIQ detects it instantly and recommends immediate response.',
+    narration: 'A competitor announces a major acquisition. Execution OS detects it instantly and recommends immediate response.',
     visual: 'detect'
   },
   {
@@ -154,16 +154,16 @@ const TOUR_SCENES: Scene[] = [
     duration: 8000,
     title: 'The Results',
     subtitle: '3,180x Faster Response',
-    narration: 'What traditionally takes 72 hours, ExecuteIQ coordinates in under 2 minutes. That\'s strategic velocity.',
+    narration: 'What traditionally takes 72 hours, Execution OS coordinates in under 2 minutes. That\'s strategic velocity.',
     visual: 'metrics'
   },
   {
     id: 'comparison',
     type: 'proof',
     duration: 8000,
-    title: 'Why ExecuteIQ?',
+    title: 'Why Execution OS?',
     subtitle: 'The Only Closed-Loop Platform',
-    narration: 'Unlike Palantir, Anaplan, or Dataminr — ExecuteIQ connects signals to playbooks to execution to learning. One platform.',
+    narration: 'Unlike Palantir, Anaplan, or Dataminr — Execution OS connects signals to playbooks to execution to learning. One platform.',
     visual: 'comparison'
   },
   {
@@ -326,7 +326,7 @@ function ProductTour() {
           }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <span className="text-5xl font-bold text-white">ExecuteIQ</span>
+          <span className="text-5xl font-bold text-white">Execution OS</span>
         </motion.div>
         <div className="flex items-center justify-center gap-8 mt-8">
           <motion.div 
@@ -539,7 +539,7 @@ function ProductTour() {
             <p className="text-slate-600 dark:text-slate-200 text-sm">Anaplan</p>
           </motion.div>
           <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="text-center p-3 bg-gradient-to-r from-blue-600 to-teal-500 rounded-lg">
-            <p className="text-white font-bold text-sm">ExecuteIQ</p>
+            <p className="text-white font-bold text-sm">Execution OS</p>
           </motion.div>
           
           {[
@@ -580,7 +580,7 @@ function ProductTour() {
         <motion.div 
           className="w-24 h-24 mx-auto mb-8 bg-gradient-to-br from-blue-500 to-teal-500 rounded-2xl flex items-center justify-center"
         >
-          <span className="text-4xl font-bold text-white">ExecuteIQ</span>
+          <span className="text-4xl font-bold text-white">Execution OS</span>
         </motion.div>
         <div className="space-y-6">
           <motion.div

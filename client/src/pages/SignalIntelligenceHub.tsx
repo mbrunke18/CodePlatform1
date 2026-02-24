@@ -1307,7 +1307,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <Badge className="bg-poise-teal/20 text-poise-teal dark:bg-poise-teal/30 dark:text-poise-teal border border-poise-teal/40 text-xs font-semibold">
-                    ExecuteIQ Signal™
+                    Execution OS Signal™
                   </Badge>
                   <Badge variant="outline" className="border-poise-gold/40 text-poise-gold text-xs">
                     DETECT Phase
@@ -1800,7 +1800,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
                         Complete Data Points Library
                       </CardTitle>
                       <CardDescription>
-                        {totalDataPoints + customDataPoints.length} data points ({totalDataPoints} system + {customDataPoints.length} custom) that ExecuteIQ monitors
+                        {totalDataPoints + customDataPoints.length} data points ({totalDataPoints} system + {customDataPoints.length} custom) that Execution OS monitors
                       </CardDescription>
                     </div>
                     <div className="flex items-center gap-3">

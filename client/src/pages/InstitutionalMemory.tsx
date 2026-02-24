@@ -215,7 +215,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
         <div>
           <div className="flex items-center gap-2 mb-1">
             <Badge className="bg-purple-600/20 text-purple-400 border border-purple-500/40 text-xs font-semibold">
-              ExecuteIQ Retrospect™
+              Execution OS Retrospect™
             </Badge>
             <Badge variant="outline" className="text-xs">ADVANCE Phase</Badge>
           </div>

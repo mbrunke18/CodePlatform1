@@ -509,8 +509,8 @@ export default function ExecutionCoordination() {
                   Industry Comparison
                 </h3>
                 <p className="text-slate-400 dark:text-slate-300">
-                  Without ExecuteIQ, this coordinated response would take <span className="font-bold text-red-600">72 hours to decide + 2 weeks to execute</span>. 
-                  With ExecuteIQ, you're on track to complete in <span className="font-bold text-emerald-600">~45 minutes total</span>.
+                  Without Execution OS, this coordinated response would take <span className="font-bold text-red-600">72 hours to decide + 2 weeks to execute</span>. 
+                  With Execution OS, you're on track to complete in <span className="font-bold text-emerald-600">~45 minutes total</span>.
                 </p>
               </div>
             </div>

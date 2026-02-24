@@ -55,7 +55,7 @@ export default function SuccessMetricsStep({ data, onChange }: SuccessMetricsSte
               data-testid="input-response-speed"
             />
             <p className="text-xs text-muted-foreground">
-              ExecuteIQ standard: 12 minutes to coordinated response
+              Execution OS standard: 12 minutes to coordinated response
             </p>
           </div>
 

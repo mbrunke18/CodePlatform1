@@ -284,7 +284,7 @@ export default function OurStory() {
           </TimelineChapter>
 
           {/* The Vision */}
-          <TimelineChapter number="Chapter 4" title="ExecuteIQ Was Born" color="purple">
+          <TimelineChapter number="Chapter 4" title="Execution OS Was Born" color="purple">
             <p>
               We translated 20 years of experience into the execution infrastructure 
               Fortune 1000 executives have been missing:
@@ -313,7 +313,7 @@ export default function OurStory() {
           {/* Enterprise Validation */}
           <TimelineChapter number="Chapter 5" title="Built on Proven Methodology" color="green">
             <p>
-              ExecuteIQ isn't theoretical. It's built on <strong>Dynamic Strategy</strong>—the methodology 
+              Execution OS isn't theoretical. It's built on <strong>Dynamic Strategy</strong>—the methodology 
               trusted by the world's most demanding organizations:
             </p>
 
@@ -365,7 +365,7 @@ export default function OurStory() {
             </div>
           </TimelineChapter>
 
-          <PullQuote author="The ExecuteIQ Philosophy">
+          <PullQuote author="The Execution OS Philosophy">
             Championship teams don't improvise under pressure. They execute prepared playbooks at competitive speed.
           </PullQuote>
         </div>
@@ -387,7 +387,7 @@ export default function OurStory() {
               </span>
             </h2>
             <p className="text-xl text-slate-300 mb-10">
-              Replace reactive scrambles with coordinated precision. See how ExecuteIQ transforms 
+              Replace reactive scrambles with coordinated precision. See how Execution OS transforms 
               strategic response from 72 hours to 12 minutes.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -418,7 +418,7 @@ export default function OurStory() {
         <div className="container mx-auto px-6 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-              <span className="text-white font-bold text-lg">ExecuteIQ</span>
+              <span className="text-white font-bold text-lg">Execution OS</span>
             </div>
             <span className="font-bold text-lg">Strategic Execution OS</span>
           </div>

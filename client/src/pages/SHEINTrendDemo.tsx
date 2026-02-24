@@ -120,7 +120,7 @@ export default function SHEINTrendDemo() {
                     <p className="text-pink-100 leading-relaxed">
                       SHEIN's AI detected the Cottage Core trend instantly. But coordinating 5,847 stakeholders (180 designers, 
                       5,000 suppliers, logistics, marketing) traditionally takes <strong>48-72 hours</strong>—enough time for 
-                      Zara and H&M to respond. In fast fashion, first-mover captures 65% of revenue. ExecuteIQ compresses coordination 
+                      Zara and H&M to respond. In fast fashion, first-mover captures 65% of revenue. Execution OS compresses coordination 
                       to <strong>12 minutes</strong>, enabling 7-day launch before competitors detect the trend.
                     </p>
                   </div>
@@ -220,7 +220,7 @@ export default function SHEINTrendDemo() {
                 Act 3: 12-Minute Coordinated Execution
               </h2>
               <p className="text-lg text-pink-200 mb-6">
-                ExecuteIQ coordinates all 5,847 stakeholders in 12 minutes. CEO decision triggers instant alignment across designers, 
+                Execution OS coordinates all 5,847 stakeholders in 12 minutes. CEO decision triggers instant alignment across designers, 
                 production coordinators, 5,000 suppliers, and marketing teams—enabling 7-day launch before Zara/H&M respond.
               </p>
 

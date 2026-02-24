@@ -152,7 +152,7 @@ export default function ExecutiveDashboard() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Executive Dashboard | ExecuteIQ Strategic Execution OS",
+      title: "Executive Dashboard | Execution OS Strategic Execution OS",
       description: "Your unified strategic command center. Monitor Future Readiness Index, decision velocity, and organizational preparedness in real-time.",
       ogTitle: "Executive Dashboard | M",
       ogDescription: "Real-time executive metrics for strategic execution performance.",
@@ -252,7 +252,7 @@ export default function ExecutiveDashboard() {
               />
             </div>
             <p className="text-slate-300 dark:text-slate-300 text-sm">
-              Unified strategic command center for ExecuteIQ
+              Unified strategic command center for Execution OS
             </p>
           </div>
           <div className="flex items-center gap-3">

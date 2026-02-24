@@ -283,7 +283,7 @@ export default function Homepage() {
             </h1>
             
             <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto mb-4 leading-relaxed" data-testid="text-insight">
-              A strategic event hits—M&A, crisis, competitive threat. ExecuteIQ activates pre-built infrastructure: stakeholders notified, tasks assigned, decision rights clear, execution underway. Not in weeks. <span className="text-white font-semibold">In 12 minutes.</span>
+              A strategic event hits—M&A, crisis, competitive threat. Execution OS activates pre-built infrastructure: stakeholders notified, tasks assigned, decision rights clear, execution underway. Not in weeks. <span className="text-white font-semibold">In 12 minutes.</span>
             </p>
             <p className="text-lg text-slate-200 max-w-3xl mx-auto mb-4">
               <span className="text-[#D4AF37] font-semibold">170 playbooks to start.</span> Pre-built governance. Clear decision rights. Coordinated execution across 50-200+ stakeholders.
@@ -445,7 +445,7 @@ export default function Homepage() {
                 Most enterprises make their coordination infrastructure decisions by default.
               </p>
               <p className="text-slate-600 dark:text-slate-300">
-                ExecuteIQ lets you make them <span className="text-blue-600 dark:text-blue-400 font-bold">by design</span>. 170 playbooks. Pre-defined governance. 12-minute execution.
+                Execution OS lets you make them <span className="text-blue-600 dark:text-blue-400 font-bold">by design</span>. 170 playbooks. Pre-defined governance. 12-minute execution.
               </p>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">Source: Deloitte 2026 CSO Survey</p>
             </div>
@@ -465,7 +465,7 @@ export default function Homepage() {
               Intelligence That Compounds With Every Execution
             </h2>
             <p className="text-lg text-slate-200 max-w-2xl mx-auto">
-              ExecuteIQ's AI doesn't just automate — it detects, reasons, orchestrates, and learns. Every execution makes the next one faster and smarter.
+              Execution OS' AI doesn't just automate — it detects, reasons, orchestrates, and learns. Every execution makes the next one faster and smarter.
             </p>
           </div>
 
@@ -492,7 +492,7 @@ export default function Homepage() {
 
           <div className="text-center mt-8">
             <p className="text-sm text-slate-400">
-              This is the <span className="text-[#00A8A8] font-semibold">IDEA Framework</span> — the continuous intelligence loop that powers every ExecuteIQ execution.
+              This is the <span className="text-[#00A8A8] font-semibold">IDEA Framework</span> — the continuous intelligence loop that powers every Execution OS execution.
             </p>
           </div>
         </div>
@@ -507,7 +507,7 @@ export default function Homepage() {
               Three Problems. Billions Lost.
             </Badge>
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              The Three Problems ExecuteIQ Was Built to Solve
+              The Three Problems Execution OS Was Built to Solve
             </h2>
             <p className="text-lg text-slate-200 max-w-3xl mx-auto">
               Every Fortune 1000 company faces these three problems. Until now, no infrastructure existed to solve them.
@@ -547,7 +547,7 @@ export default function Homepage() {
                         <CheckCircle2 className="h-6 w-6 text-emerald-400" />
                       </div>
                       <div>
-                        <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-xs">How ExecuteIQ Solves It</Badge>
+                        <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-xs">How Execution OS Solves It</Badge>
                       </div>
                     </div>
                     <p className="text-slate-200 mb-4 leading-relaxed">
@@ -598,7 +598,7 @@ export default function Homepage() {
                         <CheckCircle2 className="h-6 w-6 text-emerald-400" />
                       </div>
                       <div>
-                        <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-xs">How ExecuteIQ Solves It</Badge>
+                        <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-xs">How Execution OS Solves It</Badge>
                       </div>
                     </div>
                     <p className="text-slate-200 mb-4 leading-relaxed">
@@ -649,7 +649,7 @@ export default function Homepage() {
                         <CheckCircle2 className="h-6 w-6 text-emerald-400" />
                       </div>
                       <div>
-                        <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-xs">How ExecuteIQ Solves It</Badge>
+                        <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-xs">How Execution OS Solves It</Badge>
                       </div>
                     </div>
                     <p className="text-slate-200 mb-4 leading-relaxed">
@@ -672,13 +672,13 @@ export default function Homepage() {
           {/* Payback Summary */}
           <div className="mt-12 text-center bg-gradient-to-r from-emerald-900/30 to-cyan-900/30 rounded-2xl p-8 border border-emerald-500/30" data-testid="payback-summary">
             <p className="text-2xl text-white mb-2 font-bold">
-              <span className="text-emerald-400">ExecuteIQ at $250K-$750K/year</span> vs. one incident costing <span className="text-red-400">$5-50M</span>.
+              <span className="text-emerald-400">Execution OS at $250K-$750K/year</span> vs. one incident costing <span className="text-red-400">$5-50M</span>.
             </p>
             <p className="text-lg text-slate-200 mb-4">
               Payback on first use. Protection that compounds with every execution after.
             </p>
             <p className="text-sm text-slate-300 mt-2">
-              12 minutes = trigger-to-coordinated-execution. Deploy ExecuteIQ itself in weeks, not months.
+              12 minutes = trigger-to-coordinated-execution. Deploy Execution OS itself in weeks, not months.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
               <Button 
@@ -718,7 +718,7 @@ export default function Homepage() {
               The predict-and-act model is dead. In a world where disruptions compound and cascade, the only advantage is response infrastructure built in advance.
             </p>
             <p className="text-sm text-slate-400 italic">
-              Compound disruptions are the new normal. ExecuteIQ is the response infrastructure.
+              Compound disruptions are the new normal. Execution OS is the response infrastructure.
             </p>
           </div>
 
@@ -893,7 +893,7 @@ export default function Homepage() {
           
           <div className="text-center">
             <p className="text-xl font-semibold text-slate-900 dark:text-white">
-              17 independent reports. One conclusion: <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500">ExecuteIQ is what they're describing.</span>
+              17 independent reports. One conclusion: <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500">Execution OS is what they're describing.</span>
             </p>
           </div>
         </div>
@@ -910,7 +910,7 @@ export default function Homepage() {
               2026: The Year AI Became Enterprise Infrastructure
             </h2>
             <p className="text-lg text-slate-200 max-w-3xl mx-auto">
-              8 flagship reports from the world's top consulting firms converge on 3 signals that validate ExecuteIQ's thesis: the bottleneck isn't AI capability—it's execution infrastructure.
+              8 flagship reports from the world's top consulting firms converge on 3 signals that validate Execution OS' thesis: the bottleneck isn't AI capability—it's execution infrastructure.
             </p>
           </div>
 
@@ -929,7 +929,7 @@ export default function Homepage() {
                 </p>
                 <div className="p-3 bg-slate-800/80 rounded-lg border border-blue-500/20">
                   <p className="text-sm text-blue-400">
-                    <span className="font-semibold">ExecuteIQ Connection:</span> We provide the operating model—governance, decision rights, and coordination—that makes agentic AI operational, not experimental.
+                    <span className="font-semibold">Execution OS Connection:</span> We provide the operating model—governance, decision rights, and coordination—that makes agentic AI operational, not experimental.
                   </p>
                 </div>
               </CardContent>
@@ -949,7 +949,7 @@ export default function Homepage() {
                 </p>
                 <div className="p-3 bg-slate-800/80 rounded-lg border border-emerald-500/20">
                   <p className="text-sm text-emerald-400">
-                    <span className="font-semibold">ExecuteIQ Connection:</span> Our 12-minute execution model doesn't automate the old 72-hour process. It replaces it with pre-built infrastructure that activates instantly.
+                    <span className="font-semibold">Execution OS Connection:</span> Our 12-minute execution model doesn't automate the old 72-hour process. It replaces it with pre-built infrastructure that activates instantly.
                   </p>
                 </div>
               </CardContent>
@@ -969,7 +969,7 @@ export default function Homepage() {
                 </p>
                 <div className="p-3 bg-slate-800/80 rounded-lg border border-amber-500/20">
                   <p className="text-sm text-amber-400">
-                    <span className="font-semibold">ExecuteIQ Connection:</span> The IDEA Framework (Identify → Detect → Execute → Advance) embeds governance, accountability, and learning into every execution cycle.
+                    <span className="font-semibold">Execution OS Connection:</span> The IDEA Framework (Identify → Detect → Execute → Advance) embeds governance, accountability, and learning into every execution cycle.
                   </p>
                 </div>
               </CardContent>
@@ -1000,7 +1000,7 @@ export default function Homepage() {
               A Platform, Not a Fixed Product
             </h2>
             <p className="text-lg text-slate-700 dark:text-slate-200 max-w-2xl mx-auto">
-              ExecuteIQ isn't a rigid system. It's infrastructure you can adapt.
+              Execution OS isn't a rigid system. It's infrastructure you can adapt.
             </p>
           </div>
           
@@ -1294,7 +1294,7 @@ export default function Homepage() {
               Connects to What You Already Use
             </h2>
             <p className="text-lg text-slate-200 max-w-3xl mx-auto">
-              ExecuteIQ doesn't replace your tools. It orchestrates them. Your teams keep working where they already work—ExecuteIQ makes them move faster and in coordination.
+              Execution OS doesn't replace your tools. It orchestrates them. Your teams keep working where they already work—Execution OS makes them move faster and in coordination.
             </p>
           </div>
 
@@ -1323,7 +1323,7 @@ export default function Homepage() {
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Project Management</h3>
                 <p className="text-sm text-slate-200 mb-3">
-                  When a playbook executes, tasks are created in your team's existing tools—not ours. ExecuteIQ orchestrates; your teams execute where they already live.
+                  When a playbook executes, tasks are created in your team's existing tools—not ours. Execution OS orchestrates; your teams execute where they already live.
                 </p>
                 <div className="flex flex-wrap gap-1.5">
                   {['Jira', 'Azure DevOps', 'Monday.com', 'Asana', 'ServiceNow'].map(tool => (
@@ -1408,7 +1408,7 @@ export default function Homepage() {
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Enterprise SSO & IAM</h3>
                 <p className="text-sm text-slate-200 mb-3">
-                  Enterprise-grade authentication through your existing identity provider. Single sign-on means your teams access ExecuteIQ through the same credentials they use for everything else.
+                  Enterprise-grade authentication through your existing identity provider. Single sign-on means your teams access Execution OS through the same credentials they use for everything else.
                 </p>
                 <div className="flex flex-wrap gap-1.5">
                   {['Azure AD', 'Okta', 'Ping Identity', 'SAML 2.0', 'OIDC'].map(tool => (
@@ -1422,7 +1422,7 @@ export default function Homepage() {
           <div className="bg-gradient-to-r from-cyan-900/30 via-blue-900/20 to-cyan-900/30 rounded-2xl p-8 border border-cyan-500/20 text-center">
             <h3 className="text-xl font-bold text-white mb-3">Zero Behavior Change Required</h3>
             <p className="text-slate-200 max-w-2xl mx-auto mb-4">
-              IT connects your tools once during onboarding. From that point, ExecuteIQ auto-syncs your org chart from Active Directory, routes tasks to Jira, sends alerts through Slack, and stages documents in SharePoint. Your people keep using their existing tools—ExecuteIQ just makes those tools move faster and in coordination.
+              IT connects your tools once during onboarding. From that point, Execution OS auto-syncs your org chart from Active Directory, routes tasks to Jira, sends alerts through Slack, and stages documents in SharePoint. Your people keep using their existing tools—Execution OS just makes those tools move faster and in coordination.
             </p>
             <div className="flex items-center justify-center gap-6 text-sm">
               <div className="flex items-center gap-2">
@@ -1454,7 +1454,7 @@ export default function Homepage() {
               The Coordination Layer for the Agentic Enterprise
             </h2>
             <p className="text-lg text-slate-200 max-w-3xl mx-auto">
-              AI agents are getting faster. Human coordination isn't. ExecuteIQ bridges the gap—activating playbooks when AI detects strategic moments, coordinating human decisions in minutes, and orchestrating execution across AI and human roles.
+              AI agents are getting faster. Human coordination isn't. Execution OS bridges the gap—activating playbooks when AI detects strategic moments, coordinating human decisions in minutes, and orchestrating execution across AI and human roles.
             </p>
           </div>
 
@@ -1468,7 +1468,7 @@ export default function Homepage() {
               </div>
               <h3 className="text-lg font-bold text-white mb-2">AI-Triggered Playbooks</h3>
               <p className="text-sm text-slate-200 mb-4">
-                External AI systems—security tools, market monitors, ERP alerts—trigger ExecuteIQ playbooks automatically. No manual detection. No delayed response.
+                External AI systems—security tools, market monitors, ERP alerts—trigger Execution OS playbooks automatically. No manual detection. No delayed response.
               </p>
               <div className="space-y-2 mb-4">
                 {[
@@ -1498,7 +1498,7 @@ export default function Homepage() {
               </div>
               <h3 className="text-lg font-bold text-white mb-2">AI-Assisted Coordination</h3>
               <p className="text-sm text-slate-200 mb-4">
-                AI agents embedded within ExecuteIQ handle preparation work—context gathering, communication drafting, blocker detection—so humans focus purely on decisions.
+                AI agents embedded within Execution OS handle preparation work—context gathering, communication drafting, blocker detection—so humans focus purely on decisions.
               </p>
               <div className="space-y-2 mb-4">
                 {[
@@ -1555,7 +1555,7 @@ export default function Homepage() {
               <div className="flex-1">
                 <h3 className="text-xl font-bold text-white mb-3">The Agentic Execution Layer</h3>
                 <p className="text-slate-200 mb-4">
-                  ExecuteIQ sits between AI systems and human decision-makers—the coordination layer the agentic enterprise is missing. As AI capabilities accelerate, the bottleneck shifts to human alignment and action. That's the problem we solve.
+                  Execution OS sits between AI systems and human decision-makers—the coordination layer the agentic enterprise is missing. As AI capabilities accelerate, the bottleneck shifts to human alignment and action. That's the problem we solve.
                 </p>
                 <div className="grid grid-cols-3 gap-3">
                   <div className="text-center p-3 bg-slate-900/60 rounded-xl border border-slate-700">
@@ -1565,7 +1565,7 @@ export default function Homepage() {
                   </div>
                   <div className="text-center p-3 bg-indigo-900/40 rounded-xl border border-indigo-500/30">
                     <Layers className="w-5 h-5 text-indigo-400 mx-auto mb-1" />
-                    <div className="text-xs font-bold text-indigo-300">ExecuteIQ</div>
+                    <div className="text-xs font-bold text-indigo-300">Execution OS</div>
                     <div className="text-[10px] text-slate-400">Orchestrate & Coordinate</div>
                   </div>
                   <div className="text-center p-3 bg-slate-900/60 rounded-xl border border-slate-700">
@@ -1603,7 +1603,7 @@ export default function Homepage() {
             Ready to See It in Action?
           </h2>
           <p className="text-lg text-slate-700 dark:text-slate-200 mb-8 max-w-2xl mx-auto">
-            Experience how ExecuteIQ transforms a strategic moment into coordinated 12-minute execution.
+            Experience how Execution OS transforms a strategic moment into coordinated 12-minute execution.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 

@@ -24,9 +24,9 @@ export default function Pricing() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Enterprise Pricing - ExecuteIQ | Strategic Execution Operating System",
+      title: "Enterprise Pricing - Execution OS | Strategic Execution Operating System",
       description: "Premium tiered pricing for Fortune 1000 companies. Enterprise ($250K), Enterprise Plus ($450K), Global ($750K-$1.5M). Founding Partner Pilot Program ($75K, 100% credited to Year 1) available Q1 2026.",
-      ogTitle: "ExecuteIQ Enterprise Pricing - Built for Fortune 1000",
+      ogTitle: "Execution OS Enterprise Pricing - Built for Fortune 1000",
       ogDescription: "Category-defining Executive Decision Operations platform with value-aligned premium pricing. Three tiers from $250K-$1.5M annually.",
     });
   }, []);
@@ -48,7 +48,7 @@ export default function Pricing() {
             Transparent, value-based pricing for enterprise decision velocity
           </p>
           <p className="text-lg text-blue-200 max-w-3xl mx-auto">
-            ExecuteIQ is purpose-built for large enterprises executing complex strategic decisions. Our pricing reflects the platform's ability to deliver 360x faster execution and preserve millions in revenue.
+            Execution OS is purpose-built for large enterprises executing complex strategic decisions. Our pricing reflects the platform's ability to deliver 360x faster execution and preserve millions in revenue.
           </p>
         </div>
       </section>
@@ -462,7 +462,7 @@ export default function Pricing() {
               Value Justification
             </Badge>
             <h2 className="text-4xl font-bold mb-4 text-white">
-              One Event Pays for Years of ExecuteIQ
+              One Event Pays for Years of Execution OS
             </h2>
             <p className="text-xl text-blue-200 max-w-3xl mx-auto">
               A single prevented crisis or captured opportunity delivers multiples of your annual investment
@@ -589,7 +589,7 @@ export default function Pricing() {
               Return on Investment
             </h2>
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              ExecuteIQ typically delivers 79x ROI in the first year through faster execution and revenue preservation
+              Execution OS typically delivers 79x ROI in the first year through faster execution and revenue preservation
             </p>
           </div>
 
@@ -641,7 +641,7 @@ export default function Pricing() {
                   <div className="text-sm font-semibold text-blue-100 mb-2">Total Annual Value</div>
                   <div className="text-6xl font-bold mb-2">$39.6M</div>
                   <div className="text-blue-100 mb-4">
-                    Average customer captures $39.6M in value annually through ExecuteIQ
+                    Average customer captures $39.6M in value annually through Execution OS
                   </div>
                   <div className="bg-white/10 rounded-lg p-4 border border-white/20">
                     <div className="text-sm text-blue-100 mb-1">Return on Investment</div>

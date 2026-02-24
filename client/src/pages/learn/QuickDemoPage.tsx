@@ -393,9 +393,9 @@ export default function QuickDemoPage() {
               <Badge className="mb-4 bg-gradient-to-r from-amber-500/20 to-emerald-500/20 text-amber-300 border-amber-500/30">
                 5-Minute Interactive Demo
               </Badge>
-              <h1 className="text-3xl font-bold mb-2">Experience ExecuteIQ</h1>
+              <h1 className="text-3xl font-bold mb-2">Experience Execution OS</h1>
               <p className="text-muted-foreground text-lg">
-                Choose a crisis scenario and watch ExecuteIQ transform chaos into coordinated execution
+                Choose a crisis scenario and watch Execution OS transform chaos into coordinated execution
               </p>
             </div>
 
@@ -560,7 +560,7 @@ export default function QuickDemoPage() {
                   {showChaosComplete && (
                     <div className="flex-1 space-y-3">
                       <div className="p-4 border rounded-lg text-center">
-                        <p className="text-muted-foreground text-sm mb-1">This is what happens WITHOUT ExecuteIQ</p>
+                        <p className="text-muted-foreground text-sm mb-1">This is what happens WITHOUT Execution OS</p>
                         <p className="font-medium">Chaos. Confusion. Costly delays.</p>
                       </div>
                       <Button
@@ -568,7 +568,7 @@ export default function QuickDemoPage() {
                         onClick={moveToPrepared}
                       >
                         <Sparkles className="mr-2 h-5 w-5" />
-                        Now See ExecuteIQ in Action
+                        Now See Execution OS in Action
                         <ArrowRight className="ml-2 h-5 w-5" />
                       </Button>
                     </div>
@@ -679,7 +679,7 @@ export default function QuickDemoPage() {
 
                       <div className="p-3 bg-muted/50 rounded-lg">
                         <p className="text-sm text-muted-foreground">
-                          <span className="text-red-500 dark:text-red-400 font-medium">Without ExecuteIQ:</span> 20-50 hours to coordinate a response team, find documents, and get budget approval.
+                          <span className="text-red-500 dark:text-red-400 font-medium">Without Execution OS:</span> 20-50 hours to coordinate a response team, find documents, and get budget approval.
                         </p>
                       </div>
 
@@ -748,7 +748,7 @@ export default function QuickDemoPage() {
                         EXECUTE: Coordinating Response
                       </CardTitle>
                       <CardDescription>
-                        Watch ExecuteIQ orchestrate your response in real-time
+                        Watch Execution OS orchestrate your response in real-time
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -811,7 +811,7 @@ export default function QuickDemoPage() {
                       {!learnings ? (
                         <div className="space-y-4">
                           <p className="text-muted-foreground">
-                            ExecuteIQ captures what worked and suggests playbook improvements for next time.
+                            Execution OS captures what worked and suggests playbook improvements for next time.
                           </p>
                           <Button className="w-full bg-amber-600 hover:bg-amber-700 text-white" onClick={completeAdvance}>
                             <Sparkles className="mr-2 h-4 w-4" />
@@ -902,7 +902,7 @@ export default function QuickDemoPage() {
                   <CardContent className="p-4">
                     <h4 className="text-sm font-medium text-emerald-700 dark:text-emerald-400 mb-3 flex items-center gap-2">
                       <Zap className="h-4 w-4" />
-                      What ExecuteIQ Is Doing
+                      What Execution OS Is Doing
                     </h4>
                     <div className="space-y-3 text-sm">
                       {currentPhase === 'identify' && (
@@ -925,7 +925,7 @@ export default function QuickDemoPage() {
                       )}
                       {currentPhase === 'execute' && (
                         <>
-                          <p className="text-muted-foreground">ExecuteIQ orchestrates across Jira, Slack, Teams, Salesforce, and more. Tasks assigned, war rooms launched, budgets released automatically.</p>
+                          <p className="text-muted-foreground">Execution OS orchestrates across Jira, Slack, Teams, Salesforce, and more. Tasks assigned, war rooms launched, budgets released automatically.</p>
                           <div className="p-3 bg-background rounded-lg">
                             <p className="text-xs font-medium mb-1">12-Minute Execution</p>
                             <p className="text-xs text-muted-foreground">From trigger to coordinated execution across 50-200+ stakeholders.</p>
@@ -946,7 +946,7 @@ export default function QuickDemoPage() {
                           <p className="text-muted-foreground">The full IDEA Framework loop is complete. This same process works across all 9 strategic domains.</p>
                           <div className="p-3 bg-background rounded-lg">
                             <p className="text-xs font-medium mb-1">Ready for Your Organization</p>
-                            <p className="text-xs text-muted-foreground">Start a pilot to see ExecuteIQ with your real playbooks and integrations.</p>
+                            <p className="text-xs text-muted-foreground">Start a pilot to see Execution OS with your real playbooks and integrations.</p>
                           </div>
                         </>
                       )}

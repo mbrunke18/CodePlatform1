@@ -156,7 +156,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
           <CardHeader>
             <CardTitle className="text-2xl">Value Distribution by Strategy Type</CardTitle>
             <CardDescription>
-              How ExecuteIQ creates value across 8 strategic domains
+              How Execution OS creates value across 8 strategic domains
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -232,7 +232,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
           <TabsList className="mb-6">
             <TabsTrigger value="all" data-testid="tab-all-scenarios">All Playbooks</TabsTrigger>
             <TabsTrigger value="top5" data-testid="tab-top-5">Top 5 by Value</TabsTrigger>
-            <TabsTrigger value="comparison" data-testid="tab-comparison">Traditional vs ExecuteIQ</TabsTrigger>
+            <TabsTrigger value="comparison" data-testid="tab-comparison">Traditional vs Execution OS</TabsTrigger>
           </TabsList>
 
           <TabsContent value="all">
@@ -361,9 +361,9 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
           <TabsContent value="comparison">
             <Card>
               <CardHeader>
-                <CardTitle>Traditional Approach vs. ExecuteIQ: Side-by-Side Comparison</CardTitle>
+                <CardTitle>Traditional Approach vs. Execution OS: Side-by-Side Comparison</CardTitle>
                 <CardDescription>
-                  See how ExecuteIQ's execution infrastructure delivers superior outcomes
+                  See how Execution OS' execution infrastructure delivers superior outcomes
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -400,10 +400,10 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                     </div>
                   </div>
 
-                  {/* ExecuteIQ Approach */}
+                  {/* Execution OS Approach */}
                   <div className="bg-green-50 dark:bg-green-950/30 rounded-lg p-6 border-2 border-green-200 dark:border-green-800">
                     <h3 className="text-xl font-bold text-green-900 dark:text-green-100 mb-4">
-                      ✅ ExecuteIQ
+                      ✅ Execution OS
                     </h3>
                     <div className="space-y-4">
                       <div>

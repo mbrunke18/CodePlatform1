@@ -42,7 +42,7 @@ export function ExecutiveTestimonialOverlay() {
               <Quote className="h-8 w-8 text-slate-200" />
               <h2 className="text-2xl font-bold text-slate-200">The Cost of Unpreparedness</h2>
             </div>
-            <p className="text-slate-200 text-sm">Illustrative Scenario: Before vs After ExecuteIQ Methodology (Sample Data)</p>
+            <p className="text-slate-200 text-sm">Illustrative Scenario: Before vs After Execution OS Methodology (Sample Data)</p>
           </div>
 
           {/* Testimonial Content */}
@@ -85,7 +85,7 @@ export function ExecutiveTestimonialOverlay() {
                   </div>
                   <div className="flex-1 space-y-4">
                     <p className="text-sm text-emerald-400 font-semibold uppercase tracking-wide">
-                      With ExecuteIQ Methodology
+                      With Execution OS Methodology
                     </p>
                     <blockquote className="text-xl text-emerald-100 leading-relaxed">
                       Execution infrastructure approach: Pre-built playbooks with governance pre-defined. 
@@ -117,7 +117,7 @@ export function ExecutiveTestimonialOverlay() {
               {phase === 'before' ? (
                 <span className="text-red-300">The question isn't IF a crisis will hit—it's whether you'll be prepared.</span>
               ) : (
-                <span className="text-emerald-300 font-semibold">ExecuteIQ turns strategic preparation into your competitive advantage.</span>
+                <span className="text-emerald-300 font-semibold">Execution OS turns strategic preparation into your competitive advantage.</span>
               )}
             </p>
           </div>

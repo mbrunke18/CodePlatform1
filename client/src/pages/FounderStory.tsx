@@ -59,7 +59,7 @@ export default function FounderStory() {
                 Meet the Founder
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6">
-                The Story Behind ExecuteIQ
+                The Story Behind Execution OS
               </h1>
               <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
                 20 years of Fortune 500 experience. 5 years coaching major college football. 
@@ -92,7 +92,7 @@ export default function FounderStory() {
                   Quick Intro
                 </h3>
                 <p className="text-slate-600 dark:text-slate-300 mb-6">
-                  The 72-hour problem, the football insight, and why ExecuteIQ exists. 
+                  The 72-hour problem, the football insight, and why Execution OS exists. 
                   Perfect for a quick overview.
                 </p>
                 <div className="flex items-center justify-between">
@@ -208,7 +208,7 @@ export default function FounderStory() {
                 <p className="text-slate-600 dark:text-slate-300">
                   <span className="font-semibold text-slate-900 dark:text-white">The insight:</span> In football, 
                   you'd never run a play without practicing it. But in business, organizations improvise 
-                  their most critical moments. ExecuteIQ brings the discipline of championship execution 
+                  their most critical moments. Execution OS brings the discipline of championship execution 
                   to enterprise strategy.
                 </p>
               </div>
@@ -224,7 +224,7 @@ export default function FounderStory() {
           >
             <blockquote className="text-2xl md:text-3xl font-light text-slate-700 dark:text-slate-300 italic max-w-4xl mx-auto">
               "Strategy is 10% of the work. Execution is 90%. 
-              <span className="text-amber-600 dark:text-amber-400 font-medium"> ExecuteIQ is built for the 90%.</span>"
+              <span className="text-amber-600 dark:text-amber-400 font-medium"> Execution OS is built for the 90%.</span>"
             </blockquote>
             <p className="text-slate-300 dark:text-slate-300 mt-4">— Martin Brunke</p>
           </motion.div>

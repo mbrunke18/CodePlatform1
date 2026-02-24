@@ -853,9 +853,9 @@ export default function OperatingModelAlignment() {
                   <div>
                     <Card className="bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
                       <CardContent className="p-6">
-                        <h3 className="font-semibold text-lg mb-2">McKinsey → ExecuteIQ Connection</h3>
+                        <h3 className="font-semibold text-lg mb-2">McKinsey → Execution OS Connection</h3>
                         <p className="text-sm text-muted-foreground mb-4">
-                          "McKinsey gives you the operating model fingerprint. ExecuteIQ gives you the playbooks to execute it."
+                          "McKinsey gives you the operating model fingerprint. Execution OS gives you the playbooks to execute it."
                         </p>
                         <div className="space-y-3 mb-6">
                           <div className="flex items-center gap-2">

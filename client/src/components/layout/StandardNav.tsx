@@ -38,7 +38,7 @@ export default function StandardNav() {
       heading: "Understand",
       links: [
         { label: "How It Works", path: "/how-it-works", icon: Layers, description: "The IDEA Framework" },
-        { label: "Why ExecuteIQ", path: "/why-executeiq", icon: Target, description: "The execution gap" },
+        { label: "Why Execution OS", path: "/why-executeiq", icon: Target, description: "The execution gap" },
         { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Full capabilities" },
       ],
     },
@@ -82,7 +82,7 @@ export default function StandardNav() {
   ];
 
   const platformLinks: NavLink[] = [
-    { label: "ExecuteIQ One™", path: "/mission-control", icon: Compass, description: "Strategic operations hub" },
+    { label: "Execution OS Hub", path: "/mission-control", icon: Compass, description: "Strategic operations hub" },
     { label: "Command Center", path: "/command-center", icon: Target, description: "Live execution coordination" },
     { label: "Executive Dashboard", path: "/executive-dashboard", icon: BarChart3, description: "Performance metrics & KPIs" },
     { label: "Strategy Execution", path: "/strategy-execution", icon: TrendingUp, description: "Transformation progress tracking" },
@@ -97,8 +97,8 @@ export default function StandardNav() {
     { label: "Pitch Deck", path: "/pitch-deck", icon: Presentation, description: "Pre-seed investor deck" },
     { label: "Investor Resources", path: "/investor-resources", icon: FileText, description: "Materials & deck" },
     { label: "Board Briefings", path: "/board-briefings", icon: FileText, description: "Executive reporting" },
-    { label: "Our Story", path: "/our-story", icon: BookOpen, description: "The ExecuteIQ journey" },
-    { label: "Founder's Story", path: "/founder-story", icon: Video, description: "Vision behind ExecuteIQ" },
+    { label: "Our Story", path: "/our-story", icon: BookOpen, description: "The Execution OS journey" },
+    { label: "Founder's Story", path: "/founder-story", icon: Video, description: "The vision behind Execution OS" },
   ];
 
   const isHomePage = location === "/" || location === "/home";

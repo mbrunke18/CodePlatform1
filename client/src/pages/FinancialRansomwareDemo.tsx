@@ -197,7 +197,7 @@ export default function FinancialRansomwareDemo() {
           <div className="max-w-6xl mx-auto space-y-8">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-white mb-2">Crisis Contained</h2>
-              <p className="text-xl text-blue-200">Compare the traditional approach vs. ExecuteIQ's coordinated response</p>
+              <p className="text-xl text-blue-200">Compare the traditional approach vs. Execution OS' coordinated response</p>
             </div>
 
             <ROIComparison
@@ -252,9 +252,9 @@ export default function FinancialRansomwareDemo() {
             </div>
 
             <Card className="bg-gradient-to-r from-blue-950/50 to-purple-950/50 border-blue-800/30 p-8">
-              <h3 className="text-xl font-semibold text-white mb-4 text-center">The ExecuteIQ Difference</h3>
+              <h3 className="text-xl font-semibold text-white mb-4 text-center">The Execution OS Difference</h3>
               <p className="text-blue-100 text-center leading-relaxed max-w-3xl mx-auto">
-                Your AI detected the ransomware in milliseconds. But without ExecuteIQ, coordinating your CEO, CISO, CTO, CFO, legal counsel, Board, and regulators would take 48-72 hours of email chains and emergency meetings. In that window, a $1M incident becomes a $27M disaster. ExecuteIQ turns instant detection into 12-minute coordinated response—we're not replacing your AI, we're the execution layer that makes it deliver ROI.
+                Your AI detected the ransomware in milliseconds. But without Execution OS, coordinating your CEO, CISO, CTO, CFO, legal counsel, Board, and regulators would take 48-72 hours of email chains and emergency meetings. In that window, a $1M incident becomes a $27M disaster. Execution OS turns instant detection into 12-minute coordinated response—we're not replacing your AI, we're the execution layer that makes it deliver ROI.
               </p>
             </Card>
 

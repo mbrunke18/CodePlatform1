@@ -229,7 +229,7 @@ function CompoundDisruptionSection() {
             <Badge className="bg-red-500/20 text-red-400 border-red-500/30 text-[10px]">COMPOUND RESPONSE</Badge>
           </div>
           <p className="text-slate-300 text-sm">
-            When disruptions cascade across domains, ExecuteIQ activates multi-domain playbooks simultaneously. Click any scenario to explore the full response coordination.
+            When disruptions cascade across domains, Execution OS activates multi-domain playbooks simultaneously. Click any scenario to explore the full response coordination.
           </p>
         </div>
       </div>
@@ -351,7 +351,7 @@ function CompoundDisruptionSection() {
       })()}
 
       <p className="text-xs text-slate-500 mt-4 italic">
-        Cross-domain coordination is automatic — ExecuteIQ detects compound patterns and activates relevant playbooks across categories simultaneously.
+        Cross-domain coordination is automatic — Execution OS detects compound patterns and activates relevant playbooks across categories simultaneously.
       </p>
     </div>
   );

@@ -642,7 +642,7 @@ export default function ReadinessAssessment() {
                   {[
                     { label: companyName || "Your Score", value: result.score, color: domainConfig.bg },
                     { label: "Fortune 500 Average", value: selectedDomain === "offense" ? 62 : selectedDomain === "defense" ? 54 : 48, color: "bg-slate-500" },
-                    { label: "ExecuteIQ Clients", value: selectedDomain === "offense" ? 84 : selectedDomain === "defense" ? 78 : 75, color: "bg-teal-500" },
+                    { label: "Execution OS Clients", value: selectedDomain === "offense" ? 84 : selectedDomain === "defense" ? 78 : 75, color: "bg-teal-500" },
                   ].map((row) => (
                     <div key={row.label}>
                       <div className="flex items-center justify-between text-sm mb-1.5">
@@ -658,7 +658,7 @@ export default function ReadinessAssessment() {
                     </div>
                   ))}
                   <p className="text-sm text-teal-400 font-medium pt-2 border-t border-slate-700/50">
-                    ExecuteIQ clients score {Math.round((((selectedDomain === "offense" ? 84 : selectedDomain === "defense" ? 78 : 75) / (selectedDomain === "offense" ? 62 : selectedDomain === "defense" ? 54 : 48)) - 1) * 100)}% higher than Fortune 500 average
+                    Execution OS clients score {Math.round((((selectedDomain === "offense" ? 84 : selectedDomain === "defense" ? 78 : 75) / (selectedDomain === "offense" ? 62 : selectedDomain === "defense" ? 54 : 48)) - 1) * 100)}% higher than Fortune 500 average
                   </p>
                 </CardContent>
               </Card>
@@ -699,7 +699,7 @@ export default function ReadinessAssessment() {
               <div className="mb-8">
                 <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
                   <Layers className={`h-5 w-5 ${domainConfig.textLight}`} />
-                  How ExecuteIQ Closes These Gaps
+                  How Execution OS Closes These Gaps
                 </h2>
                 <Card className={`bg-gradient-to-br from-slate-900 via-slate-900/95 to-slate-800 border ${domainConfig.border} overflow-hidden`}>
                   <CardContent className="p-6">

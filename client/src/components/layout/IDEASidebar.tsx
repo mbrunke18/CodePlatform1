@@ -126,7 +126,7 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
           </div>
           <div>
             <h1 className="font-bold text-lg leading-tight group-hover:text-poise-gold transition-colors">
-              ExecuteIQ One™
+              Execution OS One™
             </h1>
             <p className="text-xs text-muted-foreground">
               Strategic Execution OS

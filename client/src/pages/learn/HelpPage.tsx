@@ -28,7 +28,7 @@ const resources = [
   {
     icon: MessageCircle,
     title: 'Community',
-    description: 'Connect with other ExecuteIQ users',
+    description: 'Connect with other Execution OS users',
     action: 'Join Community',
     color: 'text-purple-500'
   }

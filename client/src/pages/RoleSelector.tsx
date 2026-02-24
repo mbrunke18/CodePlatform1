@@ -195,11 +195,11 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             <div className="flex items-center justify-center gap-3 mb-4">
               <Users className="w-8 h-8 text-poise-teal" />
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-                Your ExecuteIQ Workspace
+                Your Execution OS Workspace
               </h1>
             </div>
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-6">
-              Select your role to configure ExecuteIQ with the playbooks, signals, and dashboards most relevant to your responsibilities.
+              Select your role to configure Execution OS with the playbooks, signals, and dashboards most relevant to your responsibilities.
             </p>
             <div className="flex items-center justify-center gap-6 text-sm text-gray-400">
               <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-poise-teal" /> Personalized workspace</span>
@@ -235,7 +235,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
                       </p>
 
                       <div className="border-t border-gray-700 pt-3 mb-4">
-                        <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Your ExecuteIQ Impact</div>
+                        <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Your Execution OS Impact</div>
                         <div className="text-sm font-semibold text-emerald-400">{config.keyMetric}</div>
                       </div>
 

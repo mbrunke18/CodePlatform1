@@ -33,7 +33,7 @@ const phaseDetails = [
     id: 'discovery',
     title: 'Phase 1: Discovery & Evaluation',
     duration: 'Week 1-2',
-    objective: 'Experience ExecuteIQ and secure executive sponsorship',
+    objective: 'Experience Execution OS and secure executive sponsorship',
     activities: [
       { name: 'Explore Demo Gallery', path: '/demo-gallery', description: 'Interactive demos for prospects, executives, and investors' },
       { name: 'Calculate Your ROI', path: '/roi-calculator', description: 'Quantify potential value with industry benchmarks' },
@@ -59,7 +59,7 @@ const phaseDetails = [
   },
   {
     id: 'identify',
-    title: 'Phase 3: IDENTIFY (ExecuteIQ Playbook™)',
+    title: 'Phase 3: IDENTIFY (Execution OS Playbook™)',
     duration: 'Days 30-45',
     objective: 'Build your strategic playbook portfolio',
     activities: [
@@ -74,7 +74,7 @@ const phaseDetails = [
   },
   {
     id: 'detect',
-    title: 'Phase 4: DETECT (ExecuteIQ Signal™)',
+    title: 'Phase 4: DETECT (Execution OS Signal™)',
     duration: 'Days 45-60',
     objective: 'Activate AI-powered monitoring and alerting',
     activities: [
@@ -89,7 +89,7 @@ const phaseDetails = [
   },
   {
     id: 'execute',
-    title: 'Phase 5: EXECUTE (ExecuteIQ Compass™)',
+    title: 'Phase 5: EXECUTE (Execution OS Compass™)',
     duration: 'Days 60-75',
     objective: 'Prove 12-minute coordinated response capability',
     activities: [
@@ -103,7 +103,7 @@ const phaseDetails = [
   },
   {
     id: 'advance',
-    title: 'Phase 6: ADVANCE (ExecuteIQ Retrospect™)',
+    title: 'Phase 6: ADVANCE (Execution OS Retrospect™)',
     duration: 'Days 75-90',
     objective: 'Capture learning and refine for continuous improvement',
     activities: [
@@ -122,7 +122,7 @@ const phaseDetails = [
     duration: 'Ongoing',
     objective: 'Scale adoption and maximize strategic impact',
     activities: [
-      { name: 'ExecuteIQ One™ Dashboard', path: '/mission-control', description: 'Executive overview of strategic readiness' },
+      { name: 'Execution OS One™ Dashboard', path: '/mission-control', description: 'Executive overview of strategic readiness' },
       { name: 'Expand Playbook Coverage', path: '/playbooks', description: 'Add playbooks for new strategic domains' },
       { name: 'Track Organizational Maturity', path: '/operating-model', description: 'Monitor maturity progression' },
       { name: 'Quarterly Strategy Reviews', path: '/executive-dashboard', description: 'Regular strategic health checks' }
@@ -140,15 +140,15 @@ export default function CustomerJourney() {
           
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-slate-300 hover:text-poise-teal cursor-pointer">ExecuteIQ One™</span>
+              <span className="text-slate-300 hover:text-poise-teal cursor-pointer">Execution OS One™</span>
             </Link>
             <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200" />
-            <span className="text-poise-teal font-medium">ExecuteIQ North Star™</span>
+            <span className="text-poise-teal font-medium">Execution OS North Star™</span>
           </nav>
 
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-poise-teal/20 text-poise-teal border-poise-teal/30">
-              ExecuteIQ North Star™
+              Execution OS North Star™
             </Badge>
             <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
               Your Path to Strategic Excellence
@@ -172,7 +172,7 @@ export default function CustomerJourney() {
 
           <Tabs defaultValue="timeline" className="mb-12">
             <TabsList className="mb-6">
-              <TabsTrigger value="timeline">ExecuteIQ North Star™ Timeline</TabsTrigger>
+              <TabsTrigger value="timeline">Execution OS North Star™ Timeline</TabsTrigger>
               <TabsTrigger value="details">Phase Details</TabsTrigger>
             </TabsList>
 

@@ -52,9 +52,9 @@ const pilotPhases = [
     duration: 'Weeks 3-6',
     color: 'bg-blue-600',
     activities: [
-      'Conduct 2-3 tabletop exercises with ExecuteIQ',
+      'Conduct 2-3 tabletop exercises with Execution OS',
       'Measure activation time (target: <12 min)',
-      'Train response team leads on ExecuteIQ workflow',
+      'Train response team leads on Execution OS workflow',
       'Refine playbooks based on dry run feedback',
       'Establish KPI tracking dashboard'
     ],
@@ -98,7 +98,7 @@ const pilotInclusions = [
     category: 'Platform Access',
     icon: Layers,
     items: [
-      'Full ExecuteIQ platform access for pilot team (up to 25 users)',
+      'Full Execution OS platform access for pilot team (up to 25 users)',
       '5 customizable playbooks from 170 library',
       'Signal monitoring for 3 intelligence categories',
       'Command Center with real-time coordination'
@@ -179,28 +179,28 @@ const roiCalculator = [
   {
     metric: 'Hours Saved per Event',
     baseline: '20-50 hours',
-    withExecuteIQ: '0 hours (pre-planned)',
+    withExecutionOS: '0 hours (pre-planned)',
     calculation: '20-50 × $500/hr executive time',
     value: '$10,000-$25,000'
   },
   {
     metric: 'Response Time',
     baseline: '72+ hours to full coordination',
-    withExecuteIQ: '12 minutes to full coordination',
+    withExecutionOS: '12 minutes to full coordination',
     calculation: 'Revenue protected by faster response',
     value: '$500K-$2M per major event'
   },
   {
     metric: 'C-Suite Time Recovery',
     baseline: '50+ hours per event',
-    withExecuteIQ: '5 hours oversight only',
+    withExecutionOS: '5 hours oversight only',
     calculation: '45 hours × $1,000/hr',
     value: '$45,000+ per event'
   },
   {
     metric: 'Tool Consolidation',
     baseline: 'Multiple point solutions',
-    withExecuteIQ: 'Single execution platform',
+    withExecutionOS: 'Single execution platform',
     calculation: 'Reduced platform licensing',
     value: '$50-100K annually'
   }
@@ -234,9 +234,9 @@ export default function PilotProgram() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "90-Day Pilot Program - ExecuteIQ | Strategic Execution OS",
-      description: "Validate ExecuteIQ's 12-minute coordination claim with a structured 90-day pilot. Includes 5 playbooks, Jira integration, and dedicated success manager. 100% credit applies to enterprise contract.",
-      ogTitle: "ExecuteIQ Pilot Program | 90 Days to Transform Strategic Execution",
+      title: "90-Day Pilot Program - Execution OS | Strategic Execution OS",
+      description: "Validate Execution OS' 12-minute coordination claim with a structured 90-day pilot. Includes 5 playbooks, Jira integration, and dedicated success manager. 100% credit applies to enterprise contract.",
+      ogTitle: "Execution OS Pilot Program | 90 Days to Transform Strategic Execution",
       ogDescription: "Fortune 1000 pilot program with ROI measurement, live activation, and clear conversion path.",
     });
   }, []);
@@ -259,7 +259,7 @@ export default function PilotProgram() {
               <span className="block text-emerald-400 mt-2">Validate Before You Commit</span>
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
-              Prove ExecuteIQ's 12-minute coordination claim with real activations in your environment. 
+              Prove Execution OS' 12-minute coordination claim with real activations in your environment. 
               Structured phases, measurable outcomes, and a clear path to enterprise deployment.
             </p>
             
@@ -369,7 +369,7 @@ export default function PilotProgram() {
                 What's Included
               </h2>
               <p className="text-lg text-slate-400 dark:text-slate-300">
-                Everything you need to validate ExecuteIQ in your environment
+                Everything you need to validate Execution OS in your environment
               </p>
             </div>
 
@@ -455,8 +455,8 @@ export default function PilotProgram() {
                   <thead>
                     <tr className="border-b border-white/20">
                       <th className="text-left p-4 font-semibold text-white">Value Metric</th>
-                      <th className="text-left p-4 font-semibold text-red-300">Before ExecuteIQ</th>
-                      <th className="text-left p-4 font-semibold text-emerald-300">With ExecuteIQ</th>
+                      <th className="text-left p-4 font-semibold text-red-300">Before Execution OS</th>
+                      <th className="text-left p-4 font-semibold text-emerald-300">With Execution OS</th>
                       <th className="text-left p-4 font-semibold text-blue-300">Calculation</th>
                       <th className="text-right p-4 font-semibold text-amber-300">Value Captured</th>
                     </tr>
@@ -466,7 +466,7 @@ export default function PilotProgram() {
                       <tr key={i} className="border-b border-white/10 last:border-0">
                         <td className="p-4 text-white font-medium">{row.metric}</td>
                         <td className="p-4 text-red-200">{row.baseline}</td>
-                        <td className="p-4 text-emerald-200">{row.withExecuteIQ}</td>
+                        <td className="p-4 text-emerald-200">{row.withExecutionOS}</td>
                         <td className="p-4 text-blue-200 text-sm">{row.calculation}</td>
                         <td className="p-4 text-amber-300 font-bold text-right">{row.value}</td>
                       </tr>

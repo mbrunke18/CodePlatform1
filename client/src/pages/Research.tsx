@@ -29,10 +29,10 @@ import { updatePageMetadata } from "@/lib/seo";
 export default function Research() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Research Behind ExecuteIQ | Crisis Response Statistics & Industry Data",
-      description: "ExecuteIQ was built on a foundation of industry research from McKinsey, PwC, IBM, and Ponemon Institute. See the data that proves faster response saves millions.",
-      ogTitle: "The Research Behind ExecuteIQ - Industry Data & Statistics",
-      ogDescription: "IBM, McKinsey, PwC research proves the cost of slow response. See how ExecuteIQ compresses 72 hours to 12 minutes.",
+      title: "Research Behind Execution OS | Crisis Response Statistics & Industry Data",
+      description: "Execution OS was built on a foundation of industry research from McKinsey, PwC, IBM, and Ponemon Institute. See the data that proves faster response saves millions.",
+      ogTitle: "The Research Behind Execution OS - Industry Data & Statistics",
+      ogDescription: "IBM, McKinsey, PwC research proves the cost of slow response. See how Execution OS compresses 72 hours to 12 minutes.",
     });
   }, []);
 
@@ -49,11 +49,11 @@ export default function Research() {
           </Badge>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight" data-testid="heading-research">
-            The Research Behind ExecuteIQ
+            The Research Behind Execution OS
           </h1>
           
           <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            ExecuteIQ was built on a foundation of industry research and 20+ years of Fortune 500 
+            Execution OS was built on a foundation of industry research and 20+ years of Fortune 500 
             operational experience. Here's the data that shaped our platform.
           </p>
         </div>
@@ -68,7 +68,7 @@ export default function Research() {
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Leading institutions have quantified the cost of slow, uncoordinated response. 
-              ExecuteIQ was designed to solve these exact challenges.
+              Execution OS was designed to solve these exact challenges.
             </p>
           </div>
 
@@ -98,7 +98,7 @@ export default function Research() {
                   <ArrowRight className="h-8 w-8 text-primary" />
                   <div className="text-center">
                     <div className="text-4xl font-bold text-primary">12 min</div>
-                    <p className="text-sm text-muted-foreground">ExecuteIQ's coordinated response</p>
+                    <p className="text-sm text-muted-foreground">Execution OS' coordinated response</p>
                   </div>
                 </div>
               </div>
@@ -162,7 +162,7 @@ export default function Research() {
                   <h3 className="text-2xl font-bold text-foreground mb-2">Speed Saves Money</h3>
                   <p className="text-muted-foreground">
                     IBM's 2024 Cost of Data Breach study proves what we've seen in practice: faster 
-                    response = lower costs. ExecuteIQ provides all of these capabilities in a single platform.
+                    response = lower costs. Execution OS provides all of these capabilities in a single platform.
                   </p>
                 </div>
               </div>
@@ -248,7 +248,7 @@ export default function Research() {
                 
                 <div className="p-4 bg-blue-500/10 rounded-lg mb-4">
                   <p className="text-sm text-foreground font-medium">
-                    22% above global average cost. ExecuteIQ cuts this timeline to minutes.
+                    22% above global average cost. Execution OS cuts this timeline to minutes.
                   </p>
                 </div>
                 
@@ -286,7 +286,7 @@ export default function Research() {
                 
                 <div className="p-4 bg-red-500/10 rounded-lg mb-4">
                   <p className="text-sm text-foreground font-medium">
-                    Highest regulatory scrutiny of any industry. ExecuteIQ ensures you're ready before the next incident.
+                    Highest regulatory scrutiny of any industry. Execution OS ensures you're ready before the next incident.
                   </p>
                 </div>
                 
@@ -364,7 +364,7 @@ export default function Research() {
                 <Shield className="h-8 w-8 text-purple-500 mx-auto mb-3" />
                 <h4 className="font-bold text-foreground mb-2">Balance Governance & Risk</h4>
                 <p className="text-sm text-muted-foreground">
-                  Give people autonomy while maintaining safeguards. ExecuteIQ's pre-approved resources do exactly this.
+                  Give people autonomy while maintaining safeguards. Execution OS' pre-approved resources do exactly this.
                 </p>
               </CardContent>
             </Card>
@@ -373,7 +373,7 @@ export default function Research() {
                 <Users className="h-8 w-8 text-purple-500 mx-auto mb-3" />
                 <h4 className="font-bold text-foreground mb-2">Empower with Accountability</h4>
                 <p className="text-sm text-muted-foreground">
-                  Clear task ownership with defined acceptance criteria. ExecuteIQ's playbooks assign both.
+                  Clear task ownership with defined acceptance criteria. Execution OS' playbooks assign both.
                 </p>
               </CardContent>
             </Card>
@@ -382,7 +382,7 @@ export default function Research() {
                 <Zap className="h-8 w-8 text-purple-500 mx-auto mb-3" />
                 <h4 className="font-bold text-foreground mb-2">Fund Work Dynamically</h4>
                 <p className="text-sm text-muted-foreground">
-                  Shift resources to high-value activities without bureaucracy. ExecuteIQ unlocks pre-approved budgets instantly.
+                  Shift resources to high-value activities without bureaucracy. Execution OS unlocks pre-approved budgets instantly.
                 </p>
               </CardContent>
             </Card>
@@ -390,15 +390,15 @@ export default function Research() {
         </div>
       </section>
 
-      {/* How ExecuteIQ Addresses These Findings */}
+      {/* How Execution OS Addresses These Findings */}
       <section className="py-16 px-6 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              How ExecuteIQ Addresses These Findings
+              How Execution OS Addresses These Findings
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Every feature in ExecuteIQ was designed to address a specific research finding about 
+              Every feature in Execution OS was designed to address a specific research finding about 
               what makes organizations faster and more resilient.
             </p>
           </div>
@@ -411,7 +411,7 @@ export default function Research() {
                   <div>
                     <h4 className="font-bold text-foreground mb-2">Pre-Defined Response Teams</h4>
                     <p className="text-sm text-muted-foreground mb-3">
-                      IBM found 35% cost reduction with pre-assigned teams. ExecuteIQ's playbooks 
+                      IBM found 35% cost reduction with pre-assigned teams. Execution OS' playbooks 
                       include pre-assigned stakeholders for every scenario.
                     </p>
                     <Badge variant="outline" className="text-xs">170 Playbooks Ready</Badge>
@@ -427,7 +427,7 @@ export default function Research() {
                   <div>
                     <h4 className="font-bold text-foreground mb-2">Automated Orchestration</h4>
                     <p className="text-sm text-muted-foreground mb-3">
-                      $2.2M saved per incident with automation. ExecuteIQ auto-creates Jira projects, 
+                      $2.2M saved per incident with automation. Execution OS auto-creates Jira projects, 
                       notifies via Slack, and orchestrates execution.
                     </p>
                     <Badge variant="outline" className="text-xs">Enterprise Integrations</Badge>
@@ -443,7 +443,7 @@ export default function Research() {
                   <div>
                     <h4 className="font-bold text-foreground mb-2">Faster Containment</h4>
                     <p className="text-sm text-muted-foreground mb-3">
-                      $1.76M saved by containing within 30 days. ExecuteIQ's pre-staged playbooks 
+                      $1.76M saved by containing within 30 days. Execution OS' pre-staged playbooks 
                       get you to coordinated response in minutes.
                     </p>
                     <Badge variant="outline" className="text-xs">12-Minute Activation</Badge>
@@ -459,7 +459,7 @@ export default function Research() {
                   <div>
                     <h4 className="font-bold text-foreground mb-2">AI-Powered Detection</h4>
                     <p className="text-sm text-muted-foreground mb-3">
-                      98 days faster with AI. ExecuteIQ's continuous monitoring detects weak signals 
+                      98 days faster with AI. Execution OS' continuous monitoring detects weak signals 
                       before they become crises.
                     </p>
                     <Badge variant="outline" className="text-xs">24/7 Monitoring</Badge>
@@ -514,7 +514,7 @@ export default function Research() {
               <p className="text-slate-300 text-sm mb-3 italic">"AI transformation is shifting from a CIO-led initiative to a CEO-led mandate across the enterprise."</p>
               <div className="flex items-start gap-2">
                 <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
-                <p className="text-indigo-300 text-xs">ExecuteIQ turns CEO-level AI mandates into coordinated execution across every function.</p>
+                <p className="text-indigo-300 text-xs">Execution OS turns CEO-level AI mandates into coordinated execution across every function.</p>
               </div>
             </div>
 
@@ -529,7 +529,7 @@ export default function Research() {
               <p className="text-slate-300 text-sm mb-3 italic">"Five bold predictions for the smarter enterprise—where AI becomes embedded in every process and decision."</p>
               <div className="flex items-start gap-2">
                 <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
-                <p className="text-indigo-300 text-xs">ExecuteIQ embeds AI into the decision layer, not just analytics dashboards.</p>
+                <p className="text-indigo-300 text-xs">Execution OS embeds AI into the decision layer, not just analytics dashboards.</p>
               </div>
             </div>
 
@@ -544,7 +544,7 @@ export default function Research() {
               <p className="text-slate-300 text-sm mb-3 italic">"CIOs are evolving from cost managers to strategy architects, orchestrating AI across the business."</p>
               <div className="flex items-start gap-2">
                 <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
-                <p className="text-indigo-300 text-xs">ExecuteIQ gives CIOs the operational backbone to architect strategy, not just manage infrastructure.</p>
+                <p className="text-indigo-300 text-xs">Execution OS gives CIOs the operational backbone to architect strategy, not just manage infrastructure.</p>
               </div>
             </div>
 
@@ -559,7 +559,7 @@ export default function Research() {
               <p className="text-slate-300 text-sm mb-3 italic">"The rise of sovereign, agentic, and physical AI is redefining what enterprise readiness looks like."</p>
               <div className="flex items-start gap-2">
                 <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
-                <p className="text-indigo-300 text-xs">ExecuteIQ provides the readiness framework for agentic AI—playbooks, governance, and orchestration.</p>
+                <p className="text-indigo-300 text-xs">Execution OS provides the readiness framework for agentic AI—playbooks, governance, and orchestration.</p>
               </div>
             </div>
 
@@ -574,7 +574,7 @@ export default function Research() {
               <p className="text-slate-300 text-sm mb-3 italic">"Scaling AI and turning it into outcomes—moving beyond pilots to enterprise-wide value creation."</p>
               <div className="flex items-start gap-2">
                 <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
-                <p className="text-indigo-300 text-xs">ExecuteIQ bridges the pilot-to-production gap with structured execution workflows.</p>
+                <p className="text-indigo-300 text-xs">Execution OS bridges the pilot-to-production gap with structured execution workflows.</p>
               </div>
             </div>
 
@@ -589,7 +589,7 @@ export default function Research() {
               <p className="text-slate-300 text-sm mb-3 italic">"AI agent readiness is about people, process, culture, and governance—not just technology deployment."</p>
               <div className="flex items-start gap-2">
                 <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
-                <p className="text-indigo-300 text-xs">ExecuteIQ operationalizes the people + process layer that agent readiness demands.</p>
+                <p className="text-indigo-300 text-xs">Execution OS operationalizes the people + process layer that agent readiness demands.</p>
               </div>
             </div>
 
@@ -604,7 +604,7 @@ export default function Research() {
               <p className="text-slate-300 text-sm mb-3 italic">"AI agents are being deployed across industries—from customer service to supply chain to strategic planning."</p>
               <div className="flex items-start gap-2">
                 <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
-                <p className="text-indigo-300 text-xs">ExecuteIQ provides the control plane for agent-driven workflows across business domains.</p>
+                <p className="text-indigo-300 text-xs">Execution OS provides the control plane for agent-driven workflows across business domains.</p>
               </div>
             </div>
 
@@ -619,14 +619,14 @@ export default function Research() {
               <p className="text-slate-300 text-sm mb-3 italic">"Reinventing platform strategy for agentic AI—where platforms become orchestration layers, not just tools."</p>
               <div className="flex items-start gap-2">
                 <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
-                <p className="text-indigo-300 text-xs">ExecuteIQ is built as the orchestration layer where strategy meets agentic execution.</p>
+                <p className="text-indigo-300 text-xs">Execution OS is built as the orchestration layer where strategy meets agentic execution.</p>
               </div>
             </div>
           </div>
 
           <div className="p-6 bg-slate-800/70 border border-slate-700 rounded-lg text-center">
             <p className="text-slate-200 text-sm md:text-base leading-relaxed">
-              These decisions compound. The workflows you hand to agents, the data foundations you build, and the controls you put in place will shape performance for years. ExecuteIQ provides the infrastructure to make these decisions execute.
+              These decisions compound. The workflows you hand to agents, the data foundations you build, and the controls you put in place will shape performance for years. Execution OS provides the infrastructure to make these decisions execute.
             </p>
           </div>
         </div>
@@ -644,7 +644,7 @@ export default function Research() {
               The 2026 Agentic AI Playbook
             </h2>
             <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-4">
-              12 guides from 9 leading firms — all published in the last 6-8 months — move from reality check to foundations to enterprise design. Together, they map the exact territory ExecuteIQ occupies.
+              12 guides from 9 leading firms — all published in the last 6-8 months — move from reality check to foundations to enterprise design. Together, they map the exact territory Execution OS occupies.
             </p>
             <div className="flex items-center justify-center gap-8 text-sm">
               <div className="text-center">
@@ -681,7 +681,7 @@ export default function Research() {
                 </div>
                 <p className="text-slate-400 text-xs mb-2">The State of AI in 2025</p>
                 <p className="text-slate-300 text-sm mb-3">A reality check on how companies are actually using AI today.</p>
-                <p className="text-emerald-400 text-xs italic">→ ExecuteIQ addresses the gap between AI adoption and AI execution</p>
+                <p className="text-emerald-400 text-xs italic">→ Execution OS addresses the gap between AI adoption and AI execution</p>
               </div>
               <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
@@ -690,7 +690,7 @@ export default function Research() {
                 </div>
                 <p className="text-slate-400 text-xs mb-2">Agentic AI Reinvention (Nov 2025)</p>
                 <p className="text-slate-300 text-sm mb-3">How enterprises scale AI agents for measurable business results.</p>
-                <p className="text-emerald-400 text-xs italic">→ ExecuteIQ delivers measurable P&L impact through structured execution</p>
+                <p className="text-emerald-400 text-xs italic">→ Execution OS delivers measurable P&L impact through structured execution</p>
               </div>
               <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
@@ -699,7 +699,7 @@ export default function Research() {
                 </div>
                 <p className="text-slate-400 text-xs mb-2">The Agentic AI Opportunity (Nov 2025)</p>
                 <p className="text-slate-300 text-sm mb-3">A comprehensive deep dive into Agentic AI and all of its impacts.</p>
-                <p className="text-emerald-400 text-xs italic">→ ExecuteIQ is the execution layer that makes agentic AI operational</p>
+                <p className="text-emerald-400 text-xs italic">→ Execution OS is the execution layer that makes agentic AI operational</p>
               </div>
               <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
@@ -708,7 +708,7 @@ export default function Research() {
                 </div>
                 <p className="text-slate-400 text-xs mb-2">Six Insights for AI ROI</p>
                 <p className="text-slate-300 text-sm mb-3">What actually drives AI results and return.</p>
-                <p className="text-emerald-400 text-xs italic">→ ExecuteIQ's 170 playbooks are the structured execution that drives ROI</p>
+                <p className="text-emerald-400 text-xs italic">→ Execution OS' 170 playbooks are the structured execution that drives ROI</p>
               </div>
             </div>
           </div>
@@ -728,7 +728,7 @@ export default function Research() {
                 </div>
                 <p className="text-slate-400 text-xs mb-2">Rise of Autonomous Agents</p>
                 <p className="text-slate-300 text-sm mb-3">What AI agents are and where they add value.</p>
-                <p className="text-emerald-400 text-xs italic">→ ExecuteIQ provides the strategic control layer on top of AI agent infrastructure</p>
+                <p className="text-emerald-400 text-xs italic">→ Execution OS provides the strategic control layer on top of AI agent infrastructure</p>
               </div>
               <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
@@ -737,7 +737,7 @@ export default function Research() {
                 </div>
                 <p className="text-slate-400 text-xs mb-2">Foundations for Agentic AI</p>
                 <p className="text-slate-300 text-sm mb-3">The data, platforms, and systems needed before scale.</p>
-                <p className="text-emerald-400 text-xs italic">→ ExecuteIQ IS that foundational platform — governance, playbooks, coordination</p>
+                <p className="text-emerald-400 text-xs italic">→ Execution OS IS that foundational platform — governance, playbooks, coordination</p>
               </div>
               <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
@@ -746,7 +746,7 @@ export default function Research() {
                 </div>
                 <p className="text-slate-400 text-xs mb-2">Agentic AI Operating Model</p>
                 <p className="text-slate-300 text-sm mb-3">The operating model required to run AI at scale.</p>
-                <p className="text-emerald-400 text-xs italic">→ ExecuteIQ delivers that operating model — 170 playbooks, 9 domains, pre-defined governance</p>
+                <p className="text-emerald-400 text-xs italic">→ Execution OS delivers that operating model — 170 playbooks, 9 domains, pre-defined governance</p>
               </div>
               <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
@@ -755,7 +755,7 @@ export default function Research() {
                 </div>
                 <p className="text-slate-400 text-xs mb-2">Agentic Enterprise 2028</p>
                 <p className="text-slate-300 text-sm mb-3">A horizon scan to stress-test a 2026 roadmap.</p>
-                <p className="text-emerald-400 text-xs italic">→ ExecuteIQ's 18-month head start means enterprises can adopt today for 2028 readiness</p>
+                <p className="text-emerald-400 text-xs italic">→ Execution OS' 18-month head start means enterprises can adopt today for 2028 readiness</p>
               </div>
             </div>
           </div>
@@ -775,7 +775,7 @@ export default function Research() {
                 </div>
                 <p className="text-slate-400 text-xs mb-2">Machines That Manage Themselves</p>
                 <p className="text-slate-300 text-sm mb-3">What an agent-driven enterprise may become.</p>
-                <p className="text-emerald-400 text-xs italic">→ ExecuteIQ bridges today's chaos to the agent-driven future with human oversight</p>
+                <p className="text-emerald-400 text-xs italic">→ Execution OS bridges today's chaos to the agent-driven future with human oversight</p>
               </div>
               <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
@@ -784,7 +784,7 @@ export default function Research() {
                 </div>
                 <p className="text-slate-400 text-xs mb-2">The Agentic Organization</p>
                 <p className="text-slate-300 text-sm mb-3">How organization design and work change with agents.</p>
-                <p className="text-emerald-400 text-xs italic">→ ExecuteIQ's IDEA Framework is the organizational design for the agentic era</p>
+                <p className="text-emerald-400 text-xs italic">→ Execution OS' IDEA Framework is the organizational design for the agentic era</p>
               </div>
               <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
@@ -793,7 +793,7 @@ export default function Research() {
                 </div>
                 <p className="text-slate-400 text-xs mb-2">AI Agents in Action</p>
                 <p className="text-slate-300 text-sm mb-3">Practical guidance for evaluating agents and setting guardrails.</p>
-                <p className="text-emerald-400 text-xs italic">→ ExecuteIQ's AI Governance domain provides exactly these guardrails — 18 playbooks</p>
+                <p className="text-emerald-400 text-xs italic">→ Execution OS' AI Governance domain provides exactly these guardrails — 18 playbooks</p>
               </div>
               <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
@@ -802,7 +802,7 @@ export default function Research() {
                 </div>
                 <p className="text-slate-400 text-xs mb-2">Seizing the Agentic AI Advantage</p>
                 <p className="text-slate-300 text-sm mb-3">Real-world examples of agentic AI driving results.</p>
-                <p className="text-emerald-400 text-xs italic">→ ExecuteIQ turns these examples into repeatable, scalable execution patterns</p>
+                <p className="text-emerald-400 text-xs italic">→ Execution OS turns these examples into repeatable, scalable execution patterns</p>
               </div>
             </div>
           </div>
@@ -810,7 +810,7 @@ export default function Research() {
           <div className="p-6 bg-emerald-900/30 border border-emerald-700/50 rounded-lg text-center">
             <p className="text-emerald-300 font-bold text-lg mb-2">The convergence is clear.</p>
             <p className="text-slate-300 text-sm leading-relaxed max-w-3xl mx-auto">
-              Every major consulting and technology firm is telling enterprises: you need governance, coordination systems, and execution infrastructure to operationalize AI. None of them are building the product. ExecuteIQ did.
+              Every major consulting and technology firm is telling enterprises: you need governance, coordination systems, and execution infrastructure to operationalize AI. None of them are building the product. Execution OS did.
             </p>
           </div>
         </div>
@@ -978,7 +978,7 @@ export default function Research() {
             See the Research in Action
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Watch how ExecuteIQ transforms these research findings into operational capability.
+            Watch how Execution OS transforms these research findings into operational capability.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link href="/demo-selector">

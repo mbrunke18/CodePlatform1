@@ -319,7 +319,7 @@ export default function BoardBriefings() {
               AI-Generated Strategic Recommendations
             </CardTitle>
             <Badge className="bg-purple-600/20 text-purple-400 border border-purple-500/40 text-xs font-semibold">
-              ExecuteIQ Retrospect™
+              Execution OS Retrospect™
             </Badge>
           </div>
           <CardDescription>Data-driven recommendations based on cross-functional intelligence analysis</CardDescription>

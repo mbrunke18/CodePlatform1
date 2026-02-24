@@ -19,7 +19,7 @@ const SCENE_NARRATIONS = [
   "Ford, Toyota, Lockheed Martin, Boyd Gaming, Churchill Downs, Charles Schwab. I lived it. I've watched 50 million dollars evaporate because we couldn't coordinate fast enough.",
   "Before all that? Football coach. 5 years. What I learned: you never run a play in a game without practicing it first. You have a playbook. Everyone knows their role. When the whistle blows, you execute.",
   "But in business? We wing it. Every single time. It's insane when you think about it.",
-  "So I built ExecuteIQ. The Strategic Execution Operating System.",
+  "So I built Execution OS. The Strategic Execution Operating System.",
   "170 playbooks across 9 strategic domains. Market entry, M&A, competitive response, crisis management, product launches, regulatory compliance, digital transformation, AI governance, and cybersecurity.",
   "The IDEA Framework. Identify, Detect, Execute, Advance. AI monitors for signals. Pre-built playbooks ready to activate. Coordinated execution with your team. Then capture what worked for next time.",
   "One click to activate a playbook. Tasks auto-assigned. Stakeholders notified. Documents staged. Budgets unlocked. Everyone knows their role.",
@@ -28,8 +28,8 @@ const SCENE_NARRATIONS = [
   "This isn't just about defense. It's about offense too. Market opportunities that require speed. M&A integrations that need precision. Product launches that demand coordination.",
   "In a world where everyone has access to AI tools, execution becomes the competitive advantage. The companies that can move decisively will dominate.",
   "We're creating a new category. Strategic Execution Software. Gartner estimates this will be a $10 billion market by 2030.",
-  "ExecuteIQ has an 18-month head start. 170 playbooks built. Platform validated with enterprise customers. The moat widens every day.",
-  "The companies that figure this out first don't just survive. They dominate. Welcome to ExecuteIQ. Let's execute decisions at scale.",
+  "Execution OS has an 18-month head start. 170 playbooks built. Platform validated with enterprise customers. The moat widens every day.",
+  "The companies that figure this out first don't just survive. They dominate. Welcome to Execution OS. Let's execute decisions at scale.",
 ];
 
 function useTTSNarration() {
@@ -291,7 +291,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
     { duration: 11000 },  // 6: Companies worked at
     { duration: 11000 },  // 7: Football coaching
     { duration: 9000 },   // 8: Business winging it
-    { duration: 9000 },   // 9: So I built ExecuteIQ
+    { duration: 9000 },   // 9: So I built Execution OS
     { duration: 12000 },  // 10: 170 playbooks / 9 domains
     { duration: 11000 },  // 11: IDEA framework
     { duration: 9000 },   // 12: One click activation
@@ -689,7 +689,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1, delay: 0.5, type: "spring" }}
                 >
-                  <span className="text-7xl md:text-9xl font-bold text-white">ExecuteIQ</span>
+                  <span className="text-7xl md:text-9xl font-bold text-white">Execution OS</span>
                 </motion.div>
                 <motion.p
                   initial={{ opacity: 0 }}
@@ -1058,7 +1058,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                 >
                   <p className="text-xl md:text-2xl text-slate-300 mb-2">Strategy is 10%. Execution is 90%.</p>
                   <p className="text-3xl md:text-4xl font-bold text-emerald-400">
-                    ExecuteIQ is built for the 90%.
+                    Execution OS is built for the 90%.
                   </p>
                 </motion.div>
                 <motion.p

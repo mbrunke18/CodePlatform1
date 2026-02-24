@@ -684,7 +684,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-white">Communication Channels</h2>
-                  <p className="text-sm text-gray-400">Configure how ExecuteIQ will notify stakeholders during activations</p>
+                  <p className="text-sm text-gray-400">Configure how Execution OS will notify stakeholders during activations</p>
                 </div>
                 <Button onClick={() => setIsChannelDialogOpen(true)} data-testid="button-add-channel">
                   <Plus className="h-4 w-4 mr-2" />

@@ -24,7 +24,7 @@ export default function HowItWorks() {
     {
       number: "I",
       name: "IDENTIFY",
-      moduleName: "ExecuteIQ Playbook™",
+      moduleName: "Execution OS Playbook™",
       tagline: "Infrastructure Built in Advance",
       icon: Target,
       color: "violet",
@@ -44,7 +44,7 @@ export default function HowItWorks() {
     {
       number: "D",
       name: "DETECT",
-      moduleName: "ExecuteIQ Signal™",
+      moduleName: "Execution OS Signal™",
       tagline: "Situation Triggers Response",
       icon: Radio,
       color: "blue",
@@ -64,7 +64,7 @@ export default function HowItWorks() {
     {
       number: "E",
       name: "EXECUTE",
-      moduleName: "ExecuteIQ Compass™",
+      moduleName: "Execution OS Compass™",
       tagline: "Coordination in 12 Minutes",
       icon: CheckCircle,
       color: "emerald",
@@ -84,7 +84,7 @@ export default function HowItWorks() {
     {
       number: "A",
       name: "ADVANCE",
-      moduleName: "ExecuteIQ Retrospect™",
+      moduleName: "Execution OS Retrospect™",
       tagline: "Infrastructure Gets Smarter",
       icon: BookOpen,
       color: "amber",
@@ -107,7 +107,7 @@ export default function HowItWorks() {
     {
       icon: Clock,
       title: "12-Minute Execution",
-      description: "Industry average: 6-8 weeks. ExecuteIQ's execution infrastructure delivers coordinated response in 12 minutes."
+      description: "Industry average: 6-8 weeks. Execution OS' execution infrastructure delivers coordinated response in 12 minutes."
     },
     {
       icon: Brain,
@@ -127,7 +127,7 @@ export default function HowItWorks() {
     {
       icon: Zap,
       title: "Zero-Disruption Integration",
-      description: "Connects to Active Directory, Jira, Slack, SharePoint, and more. Your people keep using their existing tools—ExecuteIQ orchestrates them."
+      description: "Connects to Active Directory, Jira, Slack, SharePoint, and more. Your people keep using their existing tools—Execution OS orchestrates them."
     },
     {
       icon: Users,
@@ -285,7 +285,7 @@ export default function HowItWorks() {
 
           <div className="mt-10 bg-gradient-to-r from-red-950/30 to-slate-900/50 dark:from-red-950/30 dark:to-slate-800/50 rounded-xl p-6 border border-red-500/20 text-center">
             <p className="text-lg text-slate-700 dark:text-slate-300">
-              <span className="text-red-400 font-bold">Without ExecuteIQ:</span> At the 12-minute mark, most organizations are still trying to figure out who to call.
+              <span className="text-red-400 font-bold">Without Execution OS:</span> At the 12-minute mark, most organizations are still trying to figure out who to call.
             </p>
           </div>
         </div>
@@ -294,13 +294,13 @@ export default function HowItWorks() {
         <div className="max-w-4xl mx-auto mt-20 mb-8">
           <div className="text-center mb-10">
             <Badge className="mb-4 bg-purple-600/20 text-purple-400 border-purple-500/30">
-              Where ExecuteIQ Sits
+              Where Execution OS Sits
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
               The Agentic Execution Layer
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-              ExecuteIQ occupies a distinct layer in the enterprise stack — between strategy and operational tools. Agents don't just generate answers. They coordinate enterprises.
+              Execution OS occupies a distinct layer in the enterprise stack — between strategy and operational tools. Agents don't just generate answers. They coordinate enterprises.
             </p>
           </div>
 
@@ -315,7 +315,7 @@ export default function HowItWorks() {
             <div className="rounded-xl p-5 bg-gradient-to-r from-poise-teal/10 via-cyan-500/10 to-purple-500/10 border-2 border-poise-teal/50 text-center relative overflow-hidden">
               <div className="absolute top-2 right-3 text-[10px] font-bold text-poise-teal uppercase tracking-wider">You Are Here</div>
               <div className="text-sm text-poise-teal font-semibold mb-1">Agentic Execution Layer</div>
-              <div className="text-xl font-bold text-slate-900 dark:text-white mb-2">ExecuteIQ — Strategic Execution OS</div>
+              <div className="text-xl font-bold text-slate-900 dark:text-white mb-2">Execution OS — Strategic Execution OS</div>
               <div className="flex flex-wrap justify-center gap-2 text-xs">
                 <span className="px-2 py-1 rounded-full bg-poise-teal/10 text-poise-teal border border-poise-teal/20">Signal Detection Agents</span>
                 <span className="px-2 py-1 rounded-full bg-blue-500/10 text-blue-500 border border-blue-500/20">Routing Agents</span>
@@ -344,7 +344,7 @@ export default function HowItWorks() {
         <div className="max-w-3xl mx-auto mt-16 text-center">
           <div className="bg-gradient-to-r from-poise-teal/10 via-cyan-500/10 to-poise-gold/10 rounded-2xl p-8 border border-poise-teal/30">
             <Badge className="mb-4 bg-poise-teal/20 text-poise-teal border-poise-teal/30">
-              ExecuteIQ North Star™
+              Execution OS North Star™
             </Badge>
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
               Your Complete Implementation Roadmap
@@ -357,7 +357,7 @@ export default function HowItWorks() {
               className="bg-gradient-to-r from-poise-teal to-cyan-500 hover:from-cyan-500 hover:to-poise-teal text-white px-8 py-3 text-lg shadow-lg shadow-poise-teal/30"
               data-testid="button-north-star"
             >
-              Launch ExecuteIQ North Star™
+              Launch Execution OS North Star™
               <ArrowRight className="h-5 w-5 ml-2" />
             </Button>
           </div>
@@ -373,7 +373,7 @@ export default function HowItWorks() {
                 What Makes This Different
               </h2>
               <p className="text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto">
-                ExecuteIQ isn't just another planning tool. It's execution infrastructure—built in advance, activated in the moment.
+                Execution OS isn't just another planning tool. It's execution infrastructure—built in advance, activated in the moment.
               </p>
             </div>
             
@@ -412,7 +412,7 @@ export default function HowItWorks() {
                 When Disruptions Don't Come One at a Time
               </h2>
               <p className="text-lg text-slate-300 max-w-3xl mx-auto">
-                Compound disruptions — multidimensional, self-reinforcing events that cascade across domains — are the new normal. A cyber breach triggers regulatory action. A tariff war disrupts supply chains. ExecuteIQ is built for coordinated, cross-domain response.
+                Compound disruptions — multidimensional, self-reinforcing events that cascade across domains — are the new normal. A cyber breach triggers regulatory action. A tariff war disrupts supply chains. Execution OS is built for coordinated, cross-domain response.
               </p>
             </div>
 
@@ -427,7 +427,7 @@ export default function HowItWorks() {
                   <h3 className={`font-bold ${item.iconColor} mb-2`}>{item.scenario}</h3>
                   <p className="text-slate-300 text-sm mb-3">{item.example}</p>
                   <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700">
-                    <p className="text-xs text-slate-400 font-semibold mb-1 uppercase tracking-wider">ExecuteIQ Response</p>
+                    <p className="text-xs text-slate-400 font-semibold mb-1 uppercase tracking-wider">Execution OS Response</p>
                     <p className="text-emerald-400 text-sm">{item.response}</p>
                   </div>
                 </div>
@@ -467,7 +467,7 @@ export default function HowItWorks() {
             Ready to See It in Action?
           </h2>
           <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
-            Experience how ExecuteIQ transforms a competitive threat into a coordinated 12-minute response.
+            Experience how Execution OS transforms a competitive threat into a coordinated 12-minute response.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 

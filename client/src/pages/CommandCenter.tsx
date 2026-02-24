@@ -285,7 +285,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
             <div className="max-w-2xl">
               <div className="flex items-center gap-2 mb-3">
                 <Badge className="bg-poise-teal/20 text-poise-teal border border-poise-teal/40 text-xs font-semibold">
-                  ExecuteIQ Compass™
+                  Execution OS Compass™
                 </Badge>
                 <Badge variant="outline" className="border-slate-600 text-slate-400 text-xs">
                   <Clock className="w-3 h-3 mr-1" />
@@ -297,7 +297,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
               </h1>
               <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
                 Your organization's nerve center for strategic execution. When a critical event is detected, 
-                ExecuteIQ coordinates your entire response — tasks, teams, documents, budgets, and integrations — 
+                Execution OS coordinates your entire response — tasks, teams, documents, budgets, and integrations — 
                 in under 12 minutes.
               </p>
               <OnboardingTrigger pageId="command-center" autoStart={true} />
@@ -529,7 +529,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
             <div>
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Launch an Execution</h2>
               <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-                Select a strategic scenario to see how ExecuteIQ orchestrates your organization's response in real time
+                Select a strategic scenario to see how Execution OS orchestrates your organization's response in real time
               </p>
             </div>
             <Button 
@@ -593,10 +593,10 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                     <Rocket className="w-8 h-8 text-blue-600 dark:text-blue-400" />
                   </div>
                   <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">
-                    See ExecuteIQ in Action
+                    See Execution OS in Action
                   </h3>
                   <p className="text-slate-600 dark:text-slate-300 mb-6 text-sm sm:text-base leading-relaxed">
-                    Watch how ExecuteIQ transforms a strategic trigger into a fully coordinated organizational response. 
+                    Watch how Execution OS transforms a strategic trigger into a fully coordinated organizational response. 
                     Tasks are assigned, documents are staged, budgets are unlocked, and integrations fire — all within 12 minutes.
                   </p>
                   <div className="flex items-center justify-center gap-4 sm:gap-6 mb-8">
@@ -966,7 +966,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                   Always-On Monitoring
                 </CardTitle>
                 <CardDescription>
-                  ExecuteIQ continuously watches your signal sources and automatically activates the right playbook when a trigger fires
+                  Execution OS continuously watches your signal sources and automatically activates the right playbook when a trigger fires
                 </CardDescription>
               </div>
               <Button 

@@ -87,7 +87,7 @@ export default function ROICalculator() {
     // Regulatory/compliance risk cost
     const complianceRiskCost = inputs.annualRevenue * 0.001 * industryData.regulatoryFactor;
     
-    // With ExecuteIQ (12-minute decision, 90-minute full execution)
+    // With Execution OS (12-minute decision, 90-minute full execution)
     const mResponseTimeHours = 0.2 + 1.5; // 12 min decision + 90 min execution = ~1.7 hours
     const mTotalExecutiveHoursPerYear = mResponseTimeHours * inputs.executivesInvolved * inputs.strategicEventsPerYear;
     const mCoordinationCostPerYear = mTotalExecutiveHoursPerYear * hourlyExecutiveCost;
@@ -115,7 +115,7 @@ export default function ROICalculator() {
       currentTotalExecutiveHoursPerYear,
       revenueAtRiskPerEvent,
       
-      // With ExecuteIQ
+      // With Execution OS
       mCoordinationCostPerYear,
       mTotalExecutiveHoursPerYear,
       
@@ -163,7 +163,7 @@ export default function ROICalculator() {
               Calculate Your Strategic Velocity ROI
             </h1>
             <p className="text-xl text-slate-200 max-w-2xl mx-auto mb-6">
-              See how ExecuteIQ transforms coordination time from 72 hours to 12 minutes—and what that means for your bottom line.
+              See how Execution OS transforms coordination time from 72 hours to 12 minutes—and what that means for your bottom line.
             </p>
             
             {/* BAI Report Stat Highlight */}
@@ -394,7 +394,7 @@ export default function ROICalculator() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-slate-200 leading-relaxed">
-                    Based on your profile as a {COMPANY_SIZES[inputs.companySize]?.label} organization in the {INDUSTRY_MULTIPLIERS[inputs.industry]?.label} sector, ExecuteIQ can deliver an estimated {formatCurrency(calculations.totalAnnualValue)} in annual value by reducing strategic response time from {inputs.avgResponseTimeHours} hours to under 2 hours — a {calculations.speedImprovement}X improvement in execution velocity that directly impacts competitive positioning and risk exposure.
+                    Based on your profile as a {COMPANY_SIZES[inputs.companySize]?.label} organization in the {INDUSTRY_MULTIPLIERS[inputs.industry]?.label} sector, Execution OS can deliver an estimated {formatCurrency(calculations.totalAnnualValue)} in annual value by reducing strategic response time from {inputs.avgResponseTimeHours} hours to under 2 hours — a {calculations.speedImprovement}X improvement in execution velocity that directly impacts competitive positioning and risk exposure.
                   </p>
 
                   <div className="space-y-3 mt-4">
@@ -456,7 +456,7 @@ export default function ROICalculator() {
                       <div className="text-2xl font-bold text-white">{inputs.avgResponseTimeHours} hours</div>
                     </div>
                     <div className="bg-green-950/30 rounded-lg p-4 border border-green-500/20">
-                      <div className="text-sm text-green-400 mb-1">With ExecuteIQ</div>
+                      <div className="text-sm text-green-400 mb-1">With Execution OS</div>
                       <div className="text-2xl font-bold text-white">~2 hours</div>
                       <div className="text-xs text-slate-200">12 min decision + 90 min execution</div>
                     </div>
@@ -545,7 +545,7 @@ export default function ROICalculator() {
                           <th className="text-left text-slate-300 pb-3 pr-4">Metric</th>
                           <th className="text-center text-slate-300 pb-3 px-2">Your Org</th>
                           <th className="text-center text-slate-300 pb-3 px-2">Industry Avg</th>
-                          <th className="text-center text-green-400 pb-3 pl-2">ExecuteIQ Target</th>
+                          <th className="text-center text-green-400 pb-3 pl-2">Execution OS Target</th>
                         </tr>
                       </thead>
                       <tbody className="text-slate-200">

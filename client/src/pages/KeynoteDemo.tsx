@@ -40,7 +40,7 @@ interface FeedItem {
 const STAGES = [
   { id: 'opening', label: 'The Problem' },
   { id: 'cost', label: 'Cost of Inaction' },
-  { id: 'introducing', label: 'ExecuteIQ' },
+  { id: 'introducing', label: 'Execution OS' },
   { id: 'signal', label: 'Signal Detection' },
   { id: 'analysis', label: 'AI Analysis' },
   { id: 'playbook', label: 'Playbook Match' },
@@ -286,7 +286,7 @@ export default function KeynoteDemo() {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="text-8xl font-bold text-white mb-4 tracking-tight"
         >
-          ExecuteIQ
+          Execution OS
         </motion.h1>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -771,10 +771,10 @@ export default function KeynoteDemo() {
 
         <div className="grid grid-cols-4 gap-6 max-w-6xl w-full">
           {[
-            { phase: 'IDENTIFY', subtitle: 'ExecuteIQ Playbook', icon: BookOpen, color: 'from-blue-600 to-blue-800', border: 'border-blue-500/30', items: ['170 strategic playbooks', '9 domains: Offense, Defense, Special Teams', 'Customizable task sequences', 'Pre-approved budget allocation', 'Role-based stakeholder mapping'] },
-            { phase: 'DETECT', subtitle: 'ExecuteIQ Signal', icon: Radio, color: 'from-amber-600 to-amber-800', border: 'border-amber-500/30', items: ['AI-powered signal monitoring', '100+ data points tracked', 'Pattern recognition engine', 'Early warning dashboard', 'Human-triggered activation'] },
-            { phase: 'EXECUTE', subtitle: 'ExecuteIQ Compass', icon: Zap, color: 'from-green-600 to-green-800', border: 'border-green-500/30', items: ['12-minute coordination', '30+ enterprise integrations', 'Automated task creation', 'War room orchestration', 'Real-time stakeholder tracking'] },
-            { phase: 'ADVANCE', subtitle: 'ExecuteIQ Retrospect', icon: TrendingUp, color: 'from-purple-600 to-purple-800', border: 'border-purple-500/30', items: ['Institutional learning', 'AI-powered outcome analysis', 'Playbook refinement', 'Performance benchmarking', 'Continuous improvement loop'] },
+            { phase: 'IDENTIFY', subtitle: 'Execution OS Playbook', icon: BookOpen, color: 'from-blue-600 to-blue-800', border: 'border-blue-500/30', items: ['170 strategic playbooks', '9 domains: Offense, Defense, Special Teams', 'Customizable task sequences', 'Pre-approved budget allocation', 'Role-based stakeholder mapping'] },
+            { phase: 'DETECT', subtitle: 'Execution OS Signal', icon: Radio, color: 'from-amber-600 to-amber-800', border: 'border-amber-500/30', items: ['AI-powered signal monitoring', '100+ data points tracked', 'Pattern recognition engine', 'Early warning dashboard', 'Human-triggered activation'] },
+            { phase: 'EXECUTE', subtitle: 'Execution OS Compass', icon: Zap, color: 'from-green-600 to-green-800', border: 'border-green-500/30', items: ['12-minute coordination', '30+ enterprise integrations', 'Automated task creation', 'War room orchestration', 'Real-time stakeholder tracking'] },
+            { phase: 'ADVANCE', subtitle: 'Execution OS Retrospect', icon: TrendingUp, color: 'from-purple-600 to-purple-800', border: 'border-purple-500/30', items: ['Institutional learning', 'AI-powered outcome analysis', 'Playbook refinement', 'Performance benchmarking', 'Continuous improvement loop'] },
           ].map((phase, i) => (
             <motion.div
               key={i}
@@ -824,7 +824,7 @@ export default function KeynoteDemo() {
             PROVEN RESULTS
           </div>
           <h2 className="text-5xl font-bold text-white mb-4">The Transformation</h2>
-          <p className="text-xl text-slate-600 dark:text-slate-200">Before ExecuteIQ vs. After ExecuteIQ</p>
+          <p className="text-xl text-slate-600 dark:text-slate-200">Before Execution OS</p>
         </motion.div>
 
         <div className="w-full max-w-6xl">
@@ -837,7 +837,7 @@ export default function KeynoteDemo() {
             >
               <h3 className="text-2xl font-bold text-red-400 mb-6 flex items-center gap-3">
                 <AlertTriangle className="h-7 w-7" />
-                WITHOUT ExecuteIQ
+                WITHOUT Execution OS
               </h3>
               <div className="space-y-4">
                 {[
@@ -866,7 +866,7 @@ export default function KeynoteDemo() {
             >
               <h3 className="text-2xl font-bold text-green-400 mb-6 flex items-center gap-3">
                 <CheckCircle2 className="h-7 w-7" />
-                WITH ExecuteIQ
+                WITH Execution OS
               </h3>
               <div className="space-y-4">
                 {[

@@ -458,7 +458,7 @@ export default function PlatformVisual() {
           custom={17}
         >
           <p className="text-2xl font-bold text-slate-900 dark:text-white">
-            ExecuteIQ: The Execution Infrastructure Enterprises Are Missing
+            Execution OS: The Execution Infrastructure Enterprises Are Missing
           </p>
           <a
             href="https://www.executeiq.io"

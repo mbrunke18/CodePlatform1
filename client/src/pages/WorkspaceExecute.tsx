@@ -97,7 +97,7 @@ export default function WorkspaceExecute() {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-slate-300 hover:text-poise-teal cursor-pointer">ExecuteIQ One™</span>
+              <span className="text-slate-300 hover:text-poise-teal cursor-pointer">Execution OS One™</span>
             </Link>
             <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200" />
             <span className="text-poise-teal font-medium">EXECUTE</span>
@@ -113,7 +113,7 @@ export default function WorkspaceExecute() {
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Compass Command</h1>
                   <Badge className="bg-poise-teal/20 text-poise-teal border-poise-teal/30">
-                    ExecuteIQ Compass™
+                    Execution OS Compass™
                   </Badge>
                 </div>
                 <p className="text-slate-400 dark:text-slate-300 mt-1">
@@ -199,7 +199,7 @@ export default function WorkspaceExecute() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">12 Minutes to Coordinated Response</h3>
-                  <p className="text-slate-300">ExecuteIQ delivers 340x faster execution than traditional approaches (72 hours)</p>
+                  <p className="text-slate-300">Execution OS delivers 340x faster execution than traditional approaches (72 hours)</p>
                 </div>
               </div>
             </CardContent>

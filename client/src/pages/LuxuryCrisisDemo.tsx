@@ -67,7 +67,7 @@ export default function LuxuryCrisisDemo() {
             {crisisScenario.subtitle}
           </p>
           <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
-            Experience how ExecuteIQ transforms AI detection into coordinated execution—
+            Experience how Execution OS transforms AI detection into coordinated execution—
             turning a $280M crisis into a strategic advantage in just 12 minutes.
           </p>
         </div>
@@ -278,7 +278,7 @@ export default function LuxuryCrisisDemo() {
               <Award className="h-16 w-16 mx-auto mb-6 text-green-600" />
               <h2 className="text-4xl font-bold mb-4">Demo Complete</h2>
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                You've just experienced how ExecuteIQ transforms the gap between AI detection 
+                You've just experienced how Execution OS transforms the gap between AI detection 
                 and human execution—from 72 hours of coordination chaos to 12 minutes of 
                 orchestrated response.
               </p>
@@ -301,9 +301,9 @@ export default function LuxuryCrisisDemo() {
               <div className="bg-white dark:bg-gray-900 p-6 rounded-lg border-2 border-blue-500 mb-8">
                 <p className="font-semibold mb-2">The Strategic Insight</p>
                 <p className="text-sm text-muted-foreground">
-                  Luxury brands are spending billions on AI for detection. But without ExecuteIQ's 
+                  Luxury brands are spending billions on AI for detection. But without Execution OS' 
                   execution layer, they're still losing 72 hours—and hundreds of millions—to 
-                  coordination chaos. ExecuteIQ is the missing piece that turns AI insights into 
+                  coordination chaos. Execution OS is the missing piece that turns AI insights into 
                   coordinated action at Fortune 1000 speed and scale.
                 </p>
               </div>

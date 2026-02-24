@@ -55,7 +55,7 @@ export function PlaybookDemo({ progress }: SceneProps) {
             <span className="text-red-400 font-bold">72 hours of improvisation</span>
           </div>
           <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-lg px-3 py-2">
-            <span className="text-white/70">With ExecuteIQ:</span>
+            <span className="text-white/70">With Execution OS:</span>
             <span className="text-green-400 font-bold">Everyone knows their role</span>
           </div>
         </motion.div>

@@ -548,7 +548,7 @@ export default function LiveActivationCenter() {
         <div className="max-w-6xl mx-auto px-6 py-10 md:py-16">
           <div className="mb-8">
             <Link href="/" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-300 transition-colors">
-              <ArrowLeft className="w-4 h-4" /> Back to ExecuteIQ
+              <ArrowLeft className="w-4 h-4" /> Back to Execution OS
             </Link>
           </div>
           {(roleOverlay || industryOverlay) && (
@@ -605,7 +605,7 @@ export default function LiveActivationCenter() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">Live Activation Command Center</h1>
             </div>
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-              Watch strategic coordination unfold in real-time. Select a playbook and see how ExecuteIQ orchestrates cross-functional alignment in under 12 minutes.
+              Watch strategic coordination unfold in real-time. Select a playbook and see how Execution OS orchestrates cross-functional alignment in under 12 minutes.
             </p>
           </div>
 
@@ -936,7 +936,7 @@ export default function LiveActivationCenter() {
                 variant="outline"
                 className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white px-10 py-6 text-lg rounded-xl w-full"
               >
-                Back to ExecuteIQ
+                Back to Execution OS
               </Button>
             </Link>
           </div>

@@ -96,7 +96,7 @@ export default function WorkspaceAdvance() {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-slate-300 hover:text-poise-gold cursor-pointer">ExecuteIQ One™</span>
+              <span className="text-slate-300 hover:text-poise-gold cursor-pointer">Execution OS One™</span>
             </Link>
             <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200" />
             <span className="text-poise-gold font-medium">ADVANCE</span>
@@ -112,7 +112,7 @@ export default function WorkspaceAdvance() {
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Retrospect Lab</h1>
                   <Badge className="bg-poise-gold/20 text-poise-gold border-poise-gold/30">
-                    ExecuteIQ Retrospect™
+                    Execution OS Retrospect™
                   </Badge>
                 </div>
                 <p className="text-slate-400 dark:text-slate-300 mt-1">

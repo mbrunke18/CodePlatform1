@@ -180,7 +180,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-4">
-                  Before ExecuteIQ
+                  Before Execution OS
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
@@ -200,7 +200,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
               
               <div>
                 <h3 className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-4">
-                  With ExecuteIQ
+                  With Execution OS
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg">

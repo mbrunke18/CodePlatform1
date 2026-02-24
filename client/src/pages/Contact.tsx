@@ -34,9 +34,9 @@ export default function Contact() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Request Early Access - ExecuteIQ Q1 2026 Pilot Program",
-      description: "Join ExecuteIQ's exclusive Q1 2026 pilot program. Limited to 10 Fortune 1000 companies for 90-day validation partnership. Transform strategic execution from days to minutes.",
-      ogTitle: "Request Early Access - ExecuteIQ Pilot Program",
+      title: "Request Early Access - Execution OS Q1 2026 Pilot Program",
+      description: "Join Execution OS' exclusive Q1 2026 pilot program. Limited to 10 Fortune 1000 companies for 90-day validation partnership. Transform strategic execution from days to minutes.",
+      ogTitle: "Request Early Access - Execution OS Pilot Program",
       ogDescription: "Limited pilot opportunity for Fortune 1000 companies. 90-day validation partnership starting Q1 2026.",
     });
   }, []);
@@ -84,7 +84,7 @@ export default function Contact() {
             Request Early Access Interview
           </h1>
           <p className="text-xl text-blue-200 max-w-3xl mx-auto mb-6">
-            Join an exclusive group of 10 Fortune 1000 companies transforming strategic execution through ExecuteIQ's 90-day validation partnership.
+            Join an exclusive group of 10 Fortune 1000 companies transforming strategic execution through Execution OS' 90-day validation partnership.
           </p>
           <div className="flex items-center justify-center gap-8 text-sm text-blue-300">
             <div className="flex items-center gap-2">
@@ -309,7 +309,7 @@ export default function Contact() {
                     {/* Disclaimer */}
                     <div className="bg-yellow-50 dark:bg-yellow-950 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
                       <p className="text-sm text-yellow-900 dark:text-yellow-200">
-                        <strong>Note:</strong> ExecuteIQ is in pre-launch with zero production customers. This pilot program is designed to validate our design goals (12-minute execution vs 72-hour industry standard) in real-world Fortune 1000 environments. Selection is limited to 10 companies with clear strategic fit and implementation readiness.
+                        <strong>Note:</strong> Execution OS is in pre-launch with zero production customers. This pilot program is designed to validate our design goals (12-minute execution vs 72-hour industry standard) in real-world Fortune 1000 environments. Selection is limited to 10 companies with clear strategic fit and implementation readiness.
                       </p>
                     </div>
 
@@ -358,7 +358,7 @@ export default function Contact() {
               size="lg"
               data-testid="button-see-demo"
             >
-              See How ExecuteIQ Works
+              See How Execution OS Works
             </Button>
             <Button
               onClick={() => setLocation("/playbook-library")}

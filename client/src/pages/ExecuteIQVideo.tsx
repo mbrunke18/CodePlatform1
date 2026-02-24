@@ -130,7 +130,7 @@ export default function ExecuteIQVideo() {
                     <span className="text-xl font-bold text-[#D4AF37]">EIQ</span>
                   </div>
                 </div>
-                <h2 className="text-3xl font-bold text-white mb-2">ExecuteIQ</h2>
+                <h2 className="text-3xl font-bold text-white mb-2">Execution OS</h2>
                 <p className="text-white/60">Strategic Execution OS</p>
               </motion.div>
               

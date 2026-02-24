@@ -128,7 +128,7 @@ function InvestorPresentation() {
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl w-full">
           {[
             { icon: <AlertTriangle className="w-8 h-8 text-red-400" />, value: '$22-50M', label: 'Average cost per ransomware incident', sub: 'IBM Security 2025', color: 'border-red-500/30' },
-            { icon: <Zap className="w-8 h-8 text-teal-400" />, value: '340x', label: 'Faster with ExecuteIQ', sub: '72 hours → 12 minutes', color: 'border-teal-500/30' },
+            { icon: <Zap className="w-8 h-8 text-teal-400" />, value: '340x', label: 'Faster with Execution OS', sub: '72 hours → 12 minutes', color: 'border-teal-500/30' },
             { icon: <DollarSign className="w-8 h-8 text-green-400" />, value: '$21-33M', label: 'Value created per crisis averted', sub: 'Revenue protection + opportunity capture', color: 'border-green-500/30' },
           ].map((c, i) => (
             <div key={i} className={`bg-slate-900/80 border ${c.color} rounded-xl p-8 text-center`}>
@@ -146,7 +146,7 @@ function InvestorPresentation() {
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">The Solution</p>
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
-          ExecuteIQ: The IDEA Framework™
+          Execution OS: The IDEA Framework™
         </h2>
         <div className="grid md:grid-cols-4 gap-6 max-w-5xl w-full mb-8">
           {[
@@ -184,7 +184,7 @@ function InvestorPresentation() {
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl w-full">
           <div className="bg-red-950/30 border border-red-500/30 rounded-xl p-8">
             <h3 className="text-xl font-bold text-red-400 mb-6 flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5" /> Without ExecuteIQ
+              <AlertTriangle className="w-5 h-5" /> Without Execution OS
             </h3>
             <div className="space-y-4">
               {['T+0: Signal detected by random employee', 'T+4h: Escalated via email chain', 'T+12h: Leadership aware', 'T+24h: War room assembled', 'T+48h: Response plan drafted', 'T+72h: First coordinated action'].map((t, i) => (
@@ -200,7 +200,7 @@ function InvestorPresentation() {
           </div>
           <div className="bg-teal-950/30 border border-teal-500/30 rounded-xl p-8">
             <h3 className="text-xl font-bold text-teal-400 mb-6 flex items-center gap-2">
-              <Zap className="w-5 h-5" /> With ExecuteIQ
+              <Zap className="w-5 h-5" /> With Execution OS
             </h3>
             <div className="space-y-4">
               {['T+0: AI detects signal automatically', 'T+2m: Playbook matched with 94% confidence', 'T+4m: Stakeholders notified, tasks assigned', 'T+8m: Budget pre-approved, resources staged', 'T+12m: Full coordinated response active', 'T+24h: Post-action review, playbook refined'].map((t, i) => (
@@ -335,7 +335,7 @@ function InvestorPresentation() {
             </div>
           </div>
           <div className="bg-teal-950/30 border border-teal-500/30 rounded-xl p-8">
-            <h3 className="text-xl font-bold text-teal-400 mb-2">The ExecuteIQ Model</h3>
+            <h3 className="text-xl font-bold text-teal-400 mb-2">The Execution OS Model</h3>
             <p className="text-slate-400 text-sm mb-4">Detect → Activate → Coordinate → Execute → Advance</p>
             <div className="space-y-3">
               {['Built for compound, cascading disruptions', 'Pre-built playbooks with decision rights mapped', '12-minute coordinated execution', 'Institutional intelligence that compounds', 'Each response makes the next one faster'].map((t, i) => (
@@ -360,7 +360,7 @@ function InvestorPresentation() {
             </div>
           ))}
         </div>
-        <p className="text-slate-500 text-xs mt-6">ExecuteIQ IDEA Framework™ — Built for the era of compound disruption</p>
+        <p className="text-slate-500 text-xs mt-6">Execution OS IDEA Framework™ — Built for the era of compound disruption</p>
       </div>
     ),
 
@@ -385,7 +385,7 @@ function InvestorPresentation() {
             </div>
           ))}
           <div className="bg-teal-950/40 border-2 border-teal-500/50 rounded-xl p-4">
-            <div className="text-teal-400 font-bold text-sm mb-1">ExecuteIQ</div>
+            <div className="text-teal-400 font-bold text-sm mb-1">Execution OS</div>
             <div className="text-teal-300/60 text-xs mb-3">Strategic Execution OS</div>
             <div className="text-xs space-y-1">
               {['AI signal detection', 'Pre-built playbooks', 'Automated coordination', 'Learning & refinement'].map((f, i) => (
@@ -502,7 +502,7 @@ function InvestorPresentation() {
           </div>
           <div className="text-center p-6 bg-indigo-900/40 border border-teal-500/40 rounded-xl">
             <Layers className="w-8 h-8 text-teal-400 mx-auto mb-3" />
-            <div className="text-teal-300 font-bold mb-1">ExecuteIQ</div>
+            <div className="text-teal-300 font-bold mb-1">Execution OS</div>
             <div className="text-slate-300 text-sm">Activate playbooks, coordinate roles, track execution</div>
           </div>
           <div className="text-center p-6 bg-slate-900/80 border border-amber-500/30 rounded-xl">
@@ -744,7 +744,7 @@ function InvestorPresentation() {
           ))}
         </div>
         <p className="text-xl text-slate-200 max-w-2xl mb-10 italic">
-          "Every consultancy is writing about this problem. ExecuteIQ has the product."
+          "Every consultancy is writing about this problem. Execution OS has the product."
         </p>
         <div className="flex items-center gap-4 text-slate-300">
           <Mail className="w-5 h-5 text-teal-400" />

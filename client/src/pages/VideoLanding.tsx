@@ -27,9 +27,9 @@ export default function VideoLanding() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "ExecuteIQ - Strategic Execution Operating System | 72 Hours → 12 Minutes",
-      description: "Watch how ExecuteIQ transforms strategic coordination from 72 hours to 12 minutes. Pre-staged playbooks, coordinated stakeholders, instant activation for Fortune 1000 companies.",
-      ogTitle: "ExecuteIQ - The Speed to Execute",
+      title: "Execution OS - Strategic Execution Operating System | 72 Hours → 12 Minutes",
+      description: "Watch how Execution OS transforms strategic coordination from 72 hours to 12 minutes. Pre-staged playbooks, coordinated stakeholders, instant activation for Fortune 1000 companies.",
+      ogTitle: "Execution OS - The Speed to Execute",
       ogDescription: "170 playbooks. 12 minutes to coordinated execution. The Strategic Execution Operating System.",
     });
   }, []);
@@ -49,7 +49,7 @@ export default function VideoLanding() {
                 </Button>
               </Link>
               <h1 className="text-3xl md:text-4xl font-bold text-white mb-2" data-testid="heading-video-hub">
-                ExecuteIQ Brand Films
+                Execution OS Brand Films
               </h1>
               <p className="text-slate-200">
                 Cinematic presentations for trade shows, conferences, and broadcast
@@ -163,10 +163,10 @@ export default function VideoLanding() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
-              The ExecuteIQ Advantage
+              The Execution OS Advantage
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Why Fortune 1000 Leaders Choose ExecuteIQ
+              Why Fortune 1000 Leaders Choose Execution OS
             </h2>
             <p className="text-slate-200 max-w-2xl mx-auto">
               Transform how your organization responds to the moments that matter
@@ -242,7 +242,7 @@ export default function VideoLanding() {
       <footer className="py-8 px-6 bg-slate-950 border-t border-slate-800">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-slate-300 text-sm">
-            ExecuteIQ - Strategic Execution Operating System
+            Execution OS - Strategic Execution Operating System
           </p>
         </div>
       </footer>

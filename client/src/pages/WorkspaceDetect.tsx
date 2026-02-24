@@ -94,7 +94,7 @@ export default function WorkspaceDetect() {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-slate-300 hover:text-poise-teal cursor-pointer">ExecuteIQ One™</span>
+              <span className="text-slate-300 hover:text-poise-teal cursor-pointer">Execution OS One™</span>
             </Link>
             <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200" />
             <span className="text-poise-teal font-medium">DETECT</span>
@@ -110,7 +110,7 @@ export default function WorkspaceDetect() {
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Signal Ops</h1>
                   <Badge className="bg-poise-teal/20 text-poise-teal border-poise-teal/30">
-                    ExecuteIQ Signal™
+                    Execution OS Signal™
                   </Badge>
                 </div>
                 <p className="text-slate-400 dark:text-slate-300 mt-1">

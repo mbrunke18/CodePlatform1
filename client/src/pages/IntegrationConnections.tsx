@@ -95,7 +95,7 @@ const INTEGRATIONS: IntegrationConfig[] = [
       { icon: Zap, label: 'Sync execution status in real-time' },
       { icon: RefreshCw, label: 'Two-way progress tracking' },
     ],
-    enablesDescription: 'When you connect Jira, ExecuteIQ will create real projects and tasks during playbook activation. Execution plans become live Jira boards with automated task assignment, status tracking, and sprint coordination.',
+    enablesDescription: 'When you connect Jira, Execution OS will create real projects and tasks during playbook activation. Execution plans become live Jira boards with automated task assignment, status tracking, and sprint coordination.',
   },
   {
     key: 'slack',
@@ -114,7 +114,7 @@ const INTEGRATIONS: IntegrationConfig[] = [
       { icon: Users, label: 'Team coordination & escalation' },
       { icon: Zap, label: 'Automated status updates' },
     ],
-    enablesDescription: 'When you connect Slack, ExecuteIQ will send real-time alerts to stakeholders during playbook activation. Crisis channels are created automatically, and team members receive instant notifications with action items and status updates.',
+    enablesDescription: 'When you connect Slack, Execution OS will send real-time alerts to stakeholders during playbook activation. Crisis channels are created automatically, and team members receive instant notifications with action items and status updates.',
   },
   {
     key: 'salesforce',
@@ -133,7 +133,7 @@ const INTEGRATIONS: IntegrationConfig[] = [
       { icon: Users, label: 'Stakeholder mapping from accounts' },
       { icon: BarChart3, label: 'Revenue impact tracking' },
     ],
-    enablesDescription: 'Salesforce integration enables ExecuteIQ to pull account data for stakeholder mapping, sync execution outcomes to opportunities, and trigger playbooks based on pipeline changes or deal stage transitions.',
+    enablesDescription: 'Salesforce integration enables Execution OS to pull account data for stakeholder mapping, sync execution outcomes to opportunities, and trigger playbooks based on pipeline changes or deal stage transitions.',
   },
   {
     key: 'hubspot',
@@ -170,7 +170,7 @@ const INTEGRATIONS: IntegrationConfig[] = [
       { icon: Calendar, label: 'Meeting scheduling automation' },
       { icon: FileText, label: 'Document sharing & collaboration' },
     ],
-    enablesDescription: 'Microsoft Teams integration enables ExecuteIQ to create dedicated war room channels, send adaptive card notifications to stakeholders, auto-schedule crisis meetings, and share execution documents.',
+    enablesDescription: 'Microsoft Teams integration enables Execution OS to create dedicated war room channels, send adaptive card notifications to stakeholders, auto-schedule crisis meetings, and share execution documents.',
   },
   {
     key: 'servicenow',
@@ -189,7 +189,7 @@ const INTEGRATIONS: IntegrationConfig[] = [
       { icon: Zap, label: 'Workflow automation triggers' },
       { icon: RefreshCw, label: 'Bi-directional status updates' },
     ],
-    enablesDescription: 'ServiceNow integration enables ExecuteIQ to create incidents, changes, and tasks automatically. Crisis playbooks trigger ServiceNow workflows, and execution status syncs bi-directionally.',
+    enablesDescription: 'ServiceNow integration enables Execution OS to create incidents, changes, and tasks automatically. Crisis playbooks trigger ServiceNow workflows, and execution status syncs bi-directionally.',
   },
   {
     key: 'google-workspace',
@@ -261,7 +261,7 @@ const INTEGRATIONS: IntegrationConfig[] = [
       { icon: Users, label: 'Automated user provisioning' },
       { icon: Eye, label: 'Access audit logging' },
     ],
-    enablesDescription: 'Okta integration provides enterprise-grade SSO for ExecuteIQ access, syncs organizational directory for stakeholder mapping, and triggers security playbooks on suspicious access events.',
+    enablesDescription: 'Okta integration provides enterprise-grade SSO for Execution OS access, syncs organizational directory for stakeholder mapping, and triggers security playbooks on suspicious access events.',
   },
   {
     key: 'microsoft-ad',
@@ -297,7 +297,7 @@ const INTEGRATIONS: IntegrationConfig[] = [
       { icon: BarChart3, label: 'Workforce analytics integration' },
       { icon: Calendar, label: 'Leave & availability data' },
     ],
-    enablesDescription: 'Workday integration maps your workforce to ExecuteIQ stakeholder roles, provides real-time availability data for execution coordination, and syncs financial planning data for budget allocation.',
+    enablesDescription: 'Workday integration maps your workforce to Execution OS stakeholder roles, provides real-time availability data for execution coordination, and syncs financial planning data for budget allocation.',
   },
   {
     key: 'sap',
@@ -369,7 +369,7 @@ const INTEGRATIONS: IntegrationConfig[] = [
       { icon: Users, label: 'Responder coordination' },
       { icon: Activity, label: 'Service health monitoring' },
     ],
-    enablesDescription: 'PagerDuty integration triggers cyber and crisis playbooks from critical incidents. On-call teams are automatically coordinated and escalation policies align with ExecuteIQ stakeholder mapping.',
+    enablesDescription: 'PagerDuty integration triggers cyber and crisis playbooks from critical incidents. On-call teams are automatically coordinated and escalation policies align with Execution OS stakeholder mapping.',
   },
   {
     key: 'datadog',
@@ -387,7 +387,7 @@ const INTEGRATIONS: IntegrationConfig[] = [
       { icon: Bell, label: 'Anomaly detection triggers' },
       { icon: Activity, label: 'Log-based playbook activation' },
     ],
-    enablesDescription: 'Datadog integration provides real-time infrastructure signals that can trigger digital transformation and cybersecurity playbooks. Anomaly detection feeds into ExecuteIQ signal processing.',
+    enablesDescription: 'Datadog integration provides real-time infrastructure signals that can trigger digital transformation and cybersecurity playbooks. Anomaly detection feeds into Execution OS signal processing.',
   },
   {
     key: 'splunk',
@@ -423,7 +423,7 @@ const INTEGRATIONS: IntegrationConfig[] = [
       { icon: Database, label: 'Data source integration' },
       { icon: Eye, label: 'Visual analytics reporting' },
     ],
-    enablesDescription: 'Tableau integration embeds executive dashboards into ExecuteIQ, monitors KPI thresholds for trigger activation, and provides visual analytics for playbook outcome reporting.',
+    enablesDescription: 'Tableau integration embeds executive dashboards into Execution OS, monitors KPI thresholds for trigger activation, and provides visual analytics for playbook outcome reporting.',
   },
   {
     key: 'power-bi',
@@ -441,7 +441,7 @@ const INTEGRATIONS: IntegrationConfig[] = [
       { icon: Database, label: 'DirectQuery data connectivity' },
       { icon: Eye, label: 'Executive scorecards' },
     ],
-    enablesDescription: 'Power BI integration provides embedded analytics and scorecards within ExecuteIQ. Metric thresholds in Power BI datasets can trigger strategic playbook activations automatically.',
+    enablesDescription: 'Power BI integration provides embedded analytics and scorecards within Execution OS. Metric thresholds in Power BI datasets can trigger strategic playbook activations automatically.',
   },
   {
     key: 'crowdstrike',
@@ -743,7 +743,7 @@ export default function IntegrationConnections() {
               <div className="w-12 h-12 mx-auto mb-4 bg-blue-500/20 rounded-xl flex items-center justify-center">
                 <Zap className="w-6 h-6 text-blue-400" />
               </div>
-              <h3 className="font-semibold text-white mb-2">ExecuteIQ Orchestrates</h3>
+              <h3 className="font-semibold text-white mb-2">Execution OS Orchestrates</h3>
               <p className="text-sm text-gray-400">Strategic playbooks trigger coordinated actions across your entire enterprise stack simultaneously</p>
             </Card>
             <Card className="p-6 bg-gray-900/60 border-gray-800 text-center">
@@ -758,7 +758,7 @@ export default function IntegrationConnections() {
                 <RefreshCw className="w-6 h-6 text-emerald-400" />
               </div>
               <h3 className="font-semibold text-white mb-2">Everything Syncs</h3>
-              <p className="text-sm text-gray-400">Bi-directional updates keep ExecuteIQ and all your tools in perfect alignment during execution</p>
+              <p className="text-sm text-gray-400">Bi-directional updates keep Execution OS and all your tools in perfect alignment during execution</p>
             </Card>
           </div>
 
