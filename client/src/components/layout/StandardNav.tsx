@@ -115,8 +115,8 @@ export default function StandardNav() {
     <button
       className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1.5 ${
         highlighted
-          ? 'text-poise-gold hover:text-amber-300 hover:bg-poise-gold/10'
-          : 'text-slate-300 hover:text-white hover:bg-white/5'
+          ? 'text-poise-gold hover:text-amber-600 hover:bg-amber-50'
+          : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
       }`}
       data-testid={`nav-${label.toLowerCase().replace(/\s+/g, '-')}-dropdown`}
     >
@@ -129,13 +129,13 @@ export default function StandardNav() {
     <DropdownMenuItem
       key={link.path + link.label}
       onClick={() => navigateTo(link.path)}
-      className="flex items-center gap-3 py-2"
+      className="flex items-center gap-3 py-2 cursor-pointer hover:bg-gray-50 focus:bg-gray-50"
       data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
     >
-      <link.icon className="h-4 w-4 text-gray-600" />
+      <link.icon className="h-4 w-4 text-gray-500 flex-shrink-0" />
       <div className="flex-1">
-        <div className="font-medium text-sm">{link.label}</div>
-        <span className="text-xs text-muted-foreground">{link.description}</span>
+        <div className="font-medium text-sm text-gray-900">{link.label}</div>
+        <span className="text-xs text-gray-500">{link.description}</span>
       </div>
     </DropdownMenuItem>
   );
@@ -145,11 +145,16 @@ export default function StandardNav() {
       <DropdownMenuTrigger asChild>
         {renderDropdownButton(label, highlighted)}
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-72 max-h-[80vh] overflow-y-auto">
+      <DropdownMenuContent
+        align="start"
+        className="w-72 max-h-[80vh] overflow-y-auto bg-white border border-gray-200 shadow-lg rounded-xl p-1"
+      >
         {sections.map((section, sIdx) => (
           <div key={section.heading}>
-            {sIdx > 0 && <DropdownMenuSeparator />}
-            <DropdownMenuLabel className="text-[11px] uppercase tracking-wider text-gray-600 font-semibold">{section.heading}</DropdownMenuLabel>
+            {sIdx > 0 && <DropdownMenuSeparator className="bg-gray-100" />}
+            <DropdownMenuLabel className="text-[11px] uppercase tracking-wider text-gray-400 font-semibold px-3 pt-2 pb-1">
+              {section.heading}
+            </DropdownMenuLabel>
             {section.links.map(renderNavItem)}
           </div>
         ))}
@@ -162,37 +167,40 @@ export default function StandardNav() {
       <DropdownMenuTrigger asChild>
         {renderDropdownButton(label, highlighted)}
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-72">
+      <DropdownMenuContent
+        align="start"
+        className="w-72 bg-white border border-gray-200 shadow-lg rounded-xl p-1"
+      >
         {links.map(renderNavItem)}
       </DropdownMenuContent>
     </DropdownMenu>
   );
 
   return (
-    <nav className="border-b border-poise-navy/50 bg-poise-navy sticky top-0 z-50">
+    <nav className="border-b border-gray-200 bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
-          
+
           <div className="flex items-center gap-2">
             {!isHomePage && (
               <button
                 onClick={handleBack}
-                className="flex items-center gap-1 px-2 py-1.5 text-slate-200 hover:text-white hover:bg-slate-800 rounded-lg transition-colors text-sm"
+                className="flex items-center gap-1 px-2 py-1.5 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors text-sm"
                 data-testid="nav-back-button"
               >
                 <ArrowLeft className="h-4 w-4" />
                 <span className="hidden sm:inline">Back</span>
               </button>
             )}
-            <div 
-              className="flex items-center cursor-pointer hover:opacity-90 transition-opacity" 
+            <div
+              className="flex items-center cursor-pointer hover:opacity-80 transition-opacity"
               onClick={() => navigateTo('/')}
               data-testid="nav-logo"
             >
               <ExecuteIQLogo
                 height={40}
                 variant="full"
-                color="white"
+                color="navy"
               />
             </div>
           </div>
@@ -205,9 +213,9 @@ export default function StandardNav() {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            <Button 
+            <Button
               onClick={() => navigateTo("/mission-control")}
-              className="bg-gradient-to-r from-poise-teal to-cyan-600 hover:from-cyan-600 hover:to-poise-teal text-white font-semibold h-9 px-4 shadow-lg shadow-poise-teal/20"
+              className="bg-gradient-to-r from-poise-teal to-cyan-600 hover:from-cyan-600 hover:to-poise-teal text-white font-semibold h-9 px-4 shadow-md shadow-poise-teal/20"
               data-testid="nav-open-platform"
             >
               <Compass className="h-4 w-4 mr-1.5" />
@@ -215,17 +223,17 @@ export default function StandardNav() {
             </Button>
 
             {isLoading ? (
-              <div className="h-9 w-20 bg-gray-50 animate-pulse rounded-lg" />
+              <div className="h-9 w-20 bg-gray-100 animate-pulse rounded-lg" />
             ) : isAuthenticated && user ? (
               <div className="flex items-center gap-2">
-                <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 bg-gray-50 rounded-lg">
-                  <User className="h-4 w-4 text-slate-300" />
-                  <span className="text-sm text-slate-300">{user.firstName || user.email?.split('@')[0]}</span>
+                <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-lg">
+                  <User className="h-4 w-4 text-gray-500" />
+                  <span className="text-sm text-gray-700">{user.firstName || user.email?.split('@')[0]}</span>
                 </div>
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   onClick={logout}
-                  className="text-slate-300 hover:text-white hover:bg-slate-800 h-9 px-3"
+                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 h-9 px-3"
                   data-testid="nav-logout"
                 >
                   <LogOut className="h-4 w-4 xl:mr-1.5" />
@@ -233,10 +241,10 @@ export default function StandardNav() {
                 </Button>
               </div>
             ) : (
-              <Button 
-                variant="ghost" 
+              <Button
+                variant="ghost"
                 onClick={login}
-                className="text-slate-300 hover:text-white hover:bg-slate-800 h-9 px-3"
+                className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 h-9 px-3"
                 data-testid="nav-login"
               >
                 <LogIn className="h-4 w-4 xl:mr-1.5" />
@@ -246,7 +254,7 @@ export default function StandardNav() {
           </div>
 
           <div className="flex lg:hidden items-center gap-2">
-            <Button 
+            <Button
               onClick={() => navigateTo("/mission-control")}
               size="sm"
               className="bg-gradient-to-r from-poise-teal to-cyan-600 text-white"
@@ -255,7 +263,7 @@ export default function StandardNav() {
               <Compass className="h-4 w-4" />
             </Button>
             <button
-              className="p-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
+              className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               data-testid="nav-mobile-menu-toggle"
             >
@@ -265,9 +273,9 @@ export default function StandardNav() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-gray-200 animate-in slide-in-from-top-2 duration-200 max-h-[80vh] overflow-y-auto">
+          <div className="lg:hidden py-4 border-t border-gray-100 animate-in slide-in-from-top-2 duration-200 max-h-[80vh] overflow-y-auto bg-white">
             <div className="flex flex-col gap-1">
-              <Button 
+              <Button
                 onClick={() => navigateTo("/mission-control")}
                 className="bg-gradient-to-r from-poise-teal to-cyan-600 text-white w-full justify-center h-12 text-base font-semibold"
                 data-testid="nav-mobile-open-platform"
@@ -275,8 +283,8 @@ export default function StandardNav() {
                 <Compass className="h-5 w-5 mr-2" />
                 Open Platform
               </Button>
-              
-              <div className="border-t border-gray-200 my-3" />
+
+              <div className="border-t border-gray-100 my-3" />
 
               {productSections.map((section) => (
                 <div key={section.heading}>
@@ -285,19 +293,21 @@ export default function StandardNav() {
                     <button
                       key={link.path + link.label}
                       onClick={() => navigateTo(link.path)}
-                      className={`text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 ${
-                        isActivePath(link.path) ? 'text-white bg-gray-50' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                      className={`w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 ${
+                        isActivePath(link.path)
+                          ? 'text-poise-navy bg-gray-100 font-medium'
+                          : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
                       }`}
                     >
-                      <link.icon className="h-4 w-4 text-slate-200" />
+                      <link.icon className="h-4 w-4 text-gray-500" />
                       {link.label}
                     </button>
                   ))}
                 </div>
               ))}
-              
-              <div className="border-t border-gray-200 my-3" />
-              
+
+              <div className="border-t border-gray-100 my-3" />
+
               {experienceSections.map((section) => (
                 <div key={section.heading}>
                   <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide font-semibold">{section.heading}</p>
@@ -305,7 +315,7 @@ export default function StandardNav() {
                     <button
                       key={link.path + link.label}
                       onClick={() => navigateTo(link.path)}
-                      className="text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-slate-300 hover:text-white hover:bg-slate-800"
+                      className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                     >
                       <link.icon className="h-4 w-4 text-poise-gold" />
                       {link.label}
@@ -314,56 +324,57 @@ export default function StandardNav() {
                 </div>
               ))}
 
-              <div className="border-t border-gray-200 my-3" />
+              <div className="border-t border-gray-100 my-3" />
 
               <p className="px-4 py-2 text-xs text-poise-teal uppercase tracking-wide font-semibold">Platform</p>
               {platformLinks.map((link) => (
                 <button
                   key={link.path}
                   onClick={() => navigateTo(link.path)}
-                  className="text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-slate-300 hover:text-white hover:bg-slate-800"
+                  className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                 >
-                  <link.icon className="h-4 w-4 text-slate-200" />
+                  <link.icon className="h-4 w-4 text-gray-500" />
                   {link.label}
                 </button>
               ))}
-              
-              <div className="border-t border-gray-200 my-3" />
-              
+
+              <div className="border-t border-gray-100 my-3" />
+
               <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide font-semibold">Investors</p>
               {investorsLinks.map((link) => (
                 <button
                   key={link.path}
                   onClick={() => navigateTo(link.path)}
-                  className="text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-slate-300 hover:text-white hover:bg-slate-800"
+                  className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                 >
-                  <link.icon className="h-4 w-4 text-slate-200" />
+                  <link.icon className="h-4 w-4 text-gray-500" />
                   {link.label}
                 </button>
               ))}
-              
-              <div className="border-t border-gray-200 my-3" />
+
+              <div className="border-t border-gray-100 my-3" />
+
               {isAuthenticated && user ? (
                 <div className="flex items-center justify-between px-3 py-2">
                   <div className="flex items-center gap-2">
-                    <User className="h-4 w-4 text-slate-300" />
-                    <span className="text-sm text-slate-300">{user.firstName || user.email}</span>
+                    <User className="h-4 w-4 text-gray-500" />
+                    <span className="text-sm text-gray-700">{user.firstName || user.email}</span>
                   </div>
-                  <Button 
-                    variant="ghost" 
+                  <Button
+                    variant="ghost"
                     size="sm"
                     onClick={logout}
-                    className="text-slate-300 hover:text-white"
+                    className="text-gray-600 hover:text-gray-900"
                     data-testid="nav-mobile-signout"
                   >
                     Sign Out
                   </Button>
                 </div>
               ) : (
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   onClick={login}
-                  className="text-slate-300 hover:text-white hover:bg-slate-800 w-full justify-center h-10"
+                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 w-full justify-center h-10"
                   data-testid="nav-mobile-signin"
                 >
                   <LogIn className="h-4 w-4 mr-2" />
