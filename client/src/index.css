@@ -251,60 +251,115 @@ html:not(.dark) body {
 }
 
 /* ================================================================
-   LIGHT MODE — FULLY LIGHT BACKGROUND SYSTEM
-   Strips every dark background from page sections/wrappers.
-   Navigation and footer (bg-poise-navy) intentionally stay dark.
+   LIGHT MODE — COMPREHENSIVE BACKGROUND SYSTEM
+   Uses attribute substring selectors [class*=""] to catch ALL
+   Tailwind variants including /50, /30, /20 opacity modifiers.
+   Only neutral dark shades are overridden → colored accents kept.
+   nav / footer (.bg-poise-navy) intentionally stay dark.
    ================================================================ */
 
-/* Force all dark solid backgrounds to white */
-html:not(.dark) :not(nav):not(footer):not(header):is(
-  .bg-slate-950, .bg-slate-900, .bg-slate-800, .bg-slate-700, .bg-slate-600,
-  .bg-slate-500, .bg-slate-400, .bg-slate-300, .bg-slate-200, .bg-slate-100,
-  .bg-gray-950, .bg-gray-900, .bg-gray-800, .bg-gray-700,
-  .bg-gray-600, .bg-gray-500, .bg-gray-400, .bg-gray-300, .bg-gray-200, .bg-gray-100,
-  .bg-zinc-950, .bg-zinc-900, .bg-zinc-800, .bg-zinc-700,
-  .bg-neutral-950, .bg-neutral-900, .bg-neutral-800,
-  .bg-poise-dark-gray
-) {
+/* ── Neutral dark shades 700–950: slate ── */
+html:not(.dark) [class*="bg-slate-7"],
+html:not(.dark) [class*="bg-slate-8"],
+html:not(.dark) [class*="bg-slate-9"] {
   background-color: #ffffff !important;
   background-image: none !important;
 }
 
-/* Strip dark gradients — remove the gradient image, let bg-color show through */
-html:not(.dark) :not(nav):not(footer):not(header):is(
-  .bg-gradient-to-br, .bg-gradient-to-b, .bg-gradient-to-r,
-  .bg-gradient-to-bl, .bg-gradient-to-tr, .bg-gradient-to-tl,
-  .bg-gradient-to-t, .bg-gradient-to-l
-) {
-  background-image: none !important;
-}
-
-/* Also strip from-* dark gradient starting colors */
-html:not(.dark) :not(nav):not(footer):not(header)[class*="from-slate-"],
-html:not(.dark) :not(nav):not(footer):not(header)[class*="from-gray-"],
-html:not(.dark) :not(nav):not(footer):not(header)[class*="from-zinc-"],
-html:not(.dark) :not(nav):not(footer):not(header)[class*="from-neutral-"] {
+/* ── Neutral dark shades 700–950: gray ── */
+html:not(.dark) [class*="bg-gray-7"],
+html:not(.dark) [class*="bg-gray-8"],
+html:not(.dark) [class*="bg-gray-9"] {
   background-color: #ffffff !important;
   background-image: none !important;
 }
 
-/* .page-hero becomes white in light mode */
+/* ── Neutral dark shades 700–950: zinc ── */
+html:not(.dark) [class*="bg-zinc-7"],
+html:not(.dark) [class*="bg-zinc-8"],
+html:not(.dark) [class*="bg-zinc-9"] {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+/* ── Neutral dark shades 700–950: neutral / stone ── */
+html:not(.dark) [class*="bg-neutral-7"],
+html:not(.dark) [class*="bg-neutral-8"],
+html:not(.dark) [class*="bg-neutral-9"],
+html:not(.dark) [class*="bg-stone-7"],
+html:not(.dark) [class*="bg-stone-8"],
+html:not(.dark) [class*="bg-stone-9"] {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+/* ── bg-black ── */
+html:not(.dark) .bg-black {
+  background-color: #ffffff !important;
+}
+
+/* ── Custom dark utility classes ── */
+html:not(.dark) .bg-poise-dark-gray {
+  background-color: #ffffff !important;
+}
+
+/* ── Gradients starting from dark neutral shades ── */
+html:not(.dark) [class*="from-slate-7"],
+html:not(.dark) [class*="from-slate-8"],
+html:not(.dark) [class*="from-slate-9"],
+html:not(.dark) [class*="from-gray-7"],
+html:not(.dark) [class*="from-gray-8"],
+html:not(.dark) [class*="from-gray-9"],
+html:not(.dark) [class*="from-zinc-7"],
+html:not(.dark) [class*="from-zinc-8"],
+html:not(.dark) [class*="from-zinc-9"],
+html:not(.dark) [class*="from-neutral-7"],
+html:not(.dark) [class*="from-neutral-8"],
+html:not(.dark) [class*="from-neutral-9"] {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+/* ── Restore nav / footer and their descendants ── */
+html:not(.dark) .bg-poise-navy,
+html:not(.dark) nav,
+html:not(.dark) footer {
+  background-color: var(--exos-midnight) !important;
+}
+html:not(.dark) .bg-poise-navy [class*="bg-slate-7"],
+html:not(.dark) .bg-poise-navy [class*="bg-slate-8"],
+html:not(.dark) .bg-poise-navy [class*="bg-slate-9"],
+html:not(.dark) .bg-poise-navy [class*="bg-gray-7"],
+html:not(.dark) .bg-poise-navy [class*="bg-gray-8"],
+html:not(.dark) .bg-poise-navy [class*="bg-gray-9"],
+html:not(.dark) nav [class*="bg-gray-7"],
+html:not(.dark) nav [class*="bg-gray-8"],
+html:not(.dark) nav [class*="bg-gray-9"],
+html:not(.dark) footer [class*="bg-gray-7"],
+html:not(.dark) footer [class*="bg-gray-8"],
+html:not(.dark) footer [class*="bg-gray-9"] {
+  background-color: revert !important;
+  background-image: revert !important;
+}
+
+/* ── page-background / page-hero → white ── */
+html:not(.dark) .page-background,
 html:not(.dark) .page-hero {
   background: #ffffff !important;
   background-image: none !important;
   color: #0A0F2E !important;
 }
 
-/* Also cover min-h-screen wrappers (exclude nav/footer dark containers) */
-html:not(.dark) .min-h-screen:not(.bg-poise-navy):not(.bg-poise-dark-gray) {
+/* ── min-h-screen wrappers → white (nav/footer excluded above) ── */
+html:not(.dark) .min-h-screen:not(.bg-poise-navy) {
   background-color: #ffffff !important;
   background-image: none !important;
 }
 
 /* ================================================================
    LIGHT MODE — TEXT CONTRAST SYSTEM
-   All light text demoted to readable dark. Only nav/footer restore
-   white text since those intentionally stay dark.
+   Light text converted to readable dark navy on white backgrounds.
+   White text restored for: nav/footer + colored accent elements.
    ================================================================ */
 
 html:not(.dark) .text-white { color: #0A0F2E !important; }
@@ -317,8 +372,64 @@ html:not(.dark) .text-gray-100,
 html:not(.dark) .text-gray-200 { color: #2C3060 !important; }
 html:not(.dark) .text-gray-300 { color: #4A5180 !important; }
 
-/* Restore white text only inside nav and footer (intentional dark elements) */
-html:not(.dark) .bg-poise-navy .text-white { color: #ffffff !important; }
+/* ── Restore white text inside colored accent backgrounds ── */
+/* These backgrounds are NOT neutral (red/blue/green/etc.) so text stays white */
+html:not(.dark) [class*="bg-red-"] .text-white,
+html:not(.dark) [class*="bg-blue-"] .text-white,
+html:not(.dark) [class*="bg-green-"] .text-white,
+html:not(.dark) [class*="bg-emerald-"] .text-white,
+html:not(.dark) [class*="bg-teal-"] .text-white,
+html:not(.dark) [class*="bg-cyan-"] .text-white,
+html:not(.dark) [class*="bg-indigo-"] .text-white,
+html:not(.dark) [class*="bg-violet-"] .text-white,
+html:not(.dark) [class*="bg-purple-"] .text-white,
+html:not(.dark) [class*="bg-pink-"] .text-white,
+html:not(.dark) [class*="bg-amber-"] .text-white,
+html:not(.dark) [class*="bg-orange-"] .text-white,
+html:not(.dark) [class*="bg-yellow-"] .text-white,
+html:not(.dark) [class*="bg-lime-"] .text-white,
+html:not(.dark) [class*="bg-sky-"] .text-white,
+html:not(.dark) [class*="bg-fuchsia-"] .text-white,
+html:not(.dark) [class*="bg-rose-"] .text-white { color: #ffffff !important; }
+
+/* Also restore white text when on same element as colored gradient */
+html:not(.dark) [class*="from-red-"].text-white,
+html:not(.dark) [class*="from-blue-"].text-white,
+html:not(.dark) [class*="from-green-"].text-white,
+html:not(.dark) [class*="from-emerald-"].text-white,
+html:not(.dark) [class*="from-teal-"].text-white,
+html:not(.dark) [class*="from-cyan-"].text-white,
+html:not(.dark) [class*="from-indigo-"].text-white,
+html:not(.dark) [class*="from-violet-"].text-white,
+html:not(.dark) [class*="from-purple-"].text-white,
+html:not(.dark) [class*="from-pink-"].text-white,
+html:not(.dark) [class*="from-amber-"].text-white,
+html:not(.dark) [class*="from-orange-"].text-white,
+html:not(.dark) [class*="from-sky-"].text-white,
+html:not(.dark) [class*="from-fuchsia-"].text-white,
+html:not(.dark) [class*="from-rose-"].text-white { color: #ffffff !important; }
+
+/* Also restore for children inside colored gradient containers */
+html:not(.dark) [class*="from-red-"] .text-white,
+html:not(.dark) [class*="from-blue-"] .text-white,
+html:not(.dark) [class*="from-green-"] .text-white,
+html:not(.dark) [class*="from-emerald-"] .text-white,
+html:not(.dark) [class*="from-teal-"] .text-white,
+html:not(.dark) [class*="from-cyan-"] .text-white,
+html:not(.dark) [class*="from-indigo-"] .text-white,
+html:not(.dark) [class*="from-violet-"] .text-white,
+html:not(.dark) [class*="from-purple-"] .text-white,
+html:not(.dark) [class*="from-pink-"] .text-white,
+html:not(.dark) [class*="from-amber-"] .text-white,
+html:not(.dark) [class*="from-orange-"] .text-white,
+html:not(.dark) [class*="from-sky-"] .text-white,
+html:not(.dark) [class*="from-fuchsia-"] .text-white,
+html:not(.dark) [class*="from-rose-"] .text-white { color: #ffffff !important; }
+
+/* ── Restore nav / footer text ── */
+html:not(.dark) .bg-poise-navy .text-white,
+html:not(.dark) nav .text-white,
+html:not(.dark) footer .text-white { color: #ffffff !important; }
 html:not(.dark) .bg-poise-navy .text-slate-50,
 html:not(.dark) .bg-poise-navy .text-slate-100 { color: #f1f5f9 !important; }
 html:not(.dark) .bg-poise-navy .text-slate-200 { color: #e2e8f0 !important; }
@@ -328,6 +439,19 @@ html:not(.dark) .bg-poise-navy .text-gray-100,
 html:not(.dark) .bg-poise-navy .text-gray-200 { color: #e2e8f0 !important; }
 html:not(.dark) .bg-poise-navy .text-gray-300 { color: #cbd5e1 !important; }
 html:not(.dark) .bg-poise-navy .text-gray-400 { color: #94a3b8 !important; }
+
+/* ── Fix dark borders in light mode → neutral light gray ── */
+html:not(.dark) [class*="border-gray-7"],
+html:not(.dark) [class*="border-gray-8"],
+html:not(.dark) [class*="border-gray-9"],
+html:not(.dark) [class*="border-slate-7"],
+html:not(.dark) [class*="border-slate-8"],
+html:not(.dark) [class*="border-slate-9"],
+html:not(.dark) [class*="border-zinc-7"],
+html:not(.dark) [class*="border-zinc-8"],
+html:not(.dark) [class*="border-zinc-9"] {
+  border-color: hsl(220, 13%, 88%) !important;
+}
 
 .page-hero-light {
   background: #ffffff;
