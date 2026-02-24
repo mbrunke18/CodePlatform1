@@ -192,11 +192,11 @@ export default function IndustryDemosHub() {
     const DemoIcon = demo.icon;
     return (
       <Link key={demo.id} href={`/industry-experience/${demo.id}`}>
-        <Card className="bg-gray-900 border-gray-800 hover:border-gray-600 transition-all duration-300 cursor-pointer hover:scale-[1.02] h-full group">
+        <Card className="bg-white border-gray-200 hover:border-gray-600 transition-all duration-300 cursor-pointer hover:scale-[1.02] h-full group">
           <div className="p-5">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-3">
-                <div className={`p-2.5 rounded-lg bg-gray-800 ${demo.iconColor}`}>
+                <div className={`p-2.5 rounded-lg bg-gray-50 ${demo.iconColor}`}>
                   <DemoIcon className="w-5 h-5" />
                 </div>
                 <div>
@@ -251,7 +251,7 @@ export default function IndustryDemosHub() {
 
   return (
     <PageLayout>
-      <div className="min-h-screen bg-gray-950 text-white">
+      <div className="min-h-screen bg-white text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-16">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
@@ -299,7 +299,7 @@ export default function IndustryDemosHub() {
             </div>
           </div>
 
-          <Card className="bg-gray-900 border-gray-800 p-8">
+          <Card className="bg-white border-gray-200 p-8">
             <div className="text-center max-w-3xl mx-auto">
               <h3 className="text-xl font-bold mb-3">The Detection-Execution Gap</h3>
               <p className="text-gray-200 mb-6">
@@ -311,7 +311,7 @@ export default function IndustryDemosHub() {
                   <div className="text-xs text-gray-300">Traditional coordination</div>
                 </div>
                 <div className="flex items-center justify-center">
-                  <ArrowRight className="w-6 h-6 text-gray-400" />
+                  <ArrowRight className="w-6 h-6 text-gray-600" />
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-emerald-400 mb-1">12 min</div>
@@ -326,7 +326,7 @@ export default function IndustryDemosHub() {
                   </Button>
                 </Link>
                 <Link href="/playbooks">
-                  <Button size="lg" variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800 px-8">
+                  <Button size="lg" variant="outline" className="border-gray-200 text-gray-300 hover:bg-gray-800 px-8">
                     Explore 170 Playbooks
                   </Button>
                 </Link>

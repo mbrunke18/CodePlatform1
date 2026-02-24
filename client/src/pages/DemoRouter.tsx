@@ -69,7 +69,7 @@ export default function DemoRouter() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
       <StandardNav />
       
       <main className="flex-1">
@@ -88,7 +88,7 @@ export default function DemoRouter() {
           </div>
 
           {/* Recommended Callout */}
-          <div className="mb-8 p-4 bg-gradient-to-r from-blue-950/50 to-cyan-950/50 border border-blue-500/30 rounded-xl">
+          <div className="mb-8 p-4 bg-gradient-to-r   border border-blue-500/30 rounded-xl">
             <div className="flex items-start gap-4">
               <div className="p-2 bg-blue-500/20 rounded-lg">
                 <Sparkles className="h-5 w-5 text-blue-400" />
@@ -112,7 +112,7 @@ export default function DemoRouter() {
           </div>
 
           {/* AI-Native Differentiator */}
-          <div className="mb-8 p-4 bg-gradient-to-r from-purple-950/40 to-violet-950/40 border border-purple-500/30 rounded-xl">
+          <div className="mb-8 p-4 bg-gradient-to-r   border border-purple-500/30 rounded-xl">
             <div className="flex items-start gap-4">
               <div className="p-2 bg-purple-500/20 rounded-lg">
                 <TrendingUp className="h-5 w-5 text-purple-400" />
@@ -133,7 +133,7 @@ export default function DemoRouter() {
               return (
                 <Card 
                   key={demo.id}
-                  className={`bg-slate-900/50 border-2 ${demo.borderColor} cursor-pointer transition-all hover:shadow-xl group`}
+                  className={`bg-white border-2 ${demo.borderColor} cursor-pointer transition-all hover:shadow-xl group`}
                   onClick={() => setLocation(demo.path)}
                   data-testid={`card-demo-${demo.id}`}
                 >
@@ -176,7 +176,7 @@ export default function DemoRouter() {
             <Button
               variant="outline"
               onClick={() => setLocation('/playbook-library')}
-              className="text-slate-300 border-slate-700 hover:bg-slate-800"
+              className="text-slate-300 border-gray-200 hover:bg-slate-800"
               data-testid="button-explore-playbooks"
             >
               Browse 170 Playbooks →

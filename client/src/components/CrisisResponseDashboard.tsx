@@ -156,7 +156,7 @@ export default function CrisisResponseDashboard({ organizationId }: { organizati
                     {scenario.description}
                   </p>
                   
-                  <div className="flex items-center gap-2 text-xs text-gray-400 dark:text-gray-200">
+                  <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-200">
                     <Clock className="h-3 w-3" />
                     Created {new Date(scenario.createdAt).toLocaleDateString()}
                   </div>
@@ -193,7 +193,7 @@ export default function CrisisResponseDashboard({ organizationId }: { organizati
                   {getCrisisIcon(template.category)}
                   <div>
                     <div className="text-lg">{template.name}</div>
-                    <div className="text-sm font-normal text-gray-400 dark:text-gray-200 capitalize">
+                    <div className="text-sm font-normal text-gray-600 dark:text-gray-200 capitalize">
                       {template.category.replace('-', ' ')} Crisis
                     </div>
                   </div>
@@ -202,7 +202,7 @@ export default function CrisisResponseDashboard({ organizationId }: { organizati
                   <Badge variant={template.severity === 'severe' ? 'destructive' : 'secondary'} className="mb-1">
                     {template.severity}
                   </Badge>
-                  <div className="text-xs text-gray-500 dark:text-gray-300 flex items-center gap-1">
+                  <div className="text-xs text-gray-600 dark:text-gray-300 flex items-center gap-1">
                     <Clock className="h-3 w-3" />
                     {template.typicalTimeframe}
                   </div>
@@ -230,7 +230,7 @@ export default function CrisisResponseDashboard({ organizationId }: { organizati
 
                 <div>
                   <div className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-2">Escalation Triggers:</div>
-                  <div className="text-xs text-gray-400 dark:text-gray-200">
+                  <div className="text-xs text-gray-600 dark:text-gray-200">
                     {template.escalationTriggers.slice(0, 2).map((trigger, index) => (
                       <div key={index} className="flex items-center gap-1">
                         <AlertCircle className="h-3 w-3 text-orange-500" />
@@ -238,7 +238,7 @@ export default function CrisisResponseDashboard({ organizationId }: { organizati
                       </div>
                     ))}
                     {template.escalationTriggers.length > 2 && (
-                      <div className="text-gray-500 dark:text-gray-300 mt-1">+{template.escalationTriggers.length - 2} more triggers</div>
+                      <div className="text-gray-600 dark:text-gray-300 mt-1">+{template.escalationTriggers.length - 2} more triggers</div>
                     )}
                   </div>
                 </div>
@@ -315,21 +315,21 @@ export default function CrisisResponseDashboard({ organizationId }: { organizati
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="text-center p-3 bg-white dark:bg-gray-800 rounded-lg">
               <div className="font-semibold">Crisis Commander</div>
-              <div className="text-sm text-gray-400 dark:text-gray-200">24/7 Emergency Line</div>
+              <div className="text-sm text-gray-600 dark:text-gray-200">24/7 Emergency Line</div>
               <Button variant="outline" size="sm" className="mt-2" data-testid="contact-crisis-commander">
                 Contact Now
               </Button>
             </div>
             <div className="text-center p-3 bg-white dark:bg-gray-800 rounded-lg">
               <div className="font-semibold">Legal Counsel</div>
-              <div className="text-sm text-gray-400 dark:text-gray-200">Regulatory & Compliance</div>
+              <div className="text-sm text-gray-600 dark:text-gray-200">Regulatory & Compliance</div>
               <Button variant="outline" size="sm" className="mt-2" data-testid="contact-legal">
                 Contact Now
               </Button>
             </div>
             <div className="text-center p-3 bg-white dark:bg-gray-800 rounded-lg">
               <div className="font-semibold">Communications Lead</div>
-              <div className="text-sm text-gray-400 dark:text-gray-200">Media & Stakeholder</div>
+              <div className="text-sm text-gray-600 dark:text-gray-200">Media & Stakeholder</div>
               <Button variant="outline" size="sm" className="mt-2" data-testid="contact-communications">
                 Contact Now
               </Button>

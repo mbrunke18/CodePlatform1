@@ -30,11 +30,11 @@ export default function LVMHMarketEntryDemo() {
   };
 
   return (
-    <div className="page-background min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900">
+    <div className="page-background min-h-screen bg-gradient-to-br ">
       <DemoNavHeader title="LVMH Market Entry Demo" showBackButton={true} />
 
       {/* Act Navigation */}
-      <div className="border-b border-purple-800/20 bg-slate-950/30 pt-20">
+      <div className="border-b border-purple-800/20 bg-white pt-20">
         <div className="container mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
             {[
@@ -66,7 +66,7 @@ export default function LVMHMarketEntryDemo() {
         {/* ACT 1: INTRODUCTION */}
         {currentAct === "intro" && (
           <div className="max-w-5xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-purple-800/30">
+            <Card className="p-8 bg-white border-purple-800/30">
               <div className="text-center mb-8">
                 <Crown className="w-16 h-16 text-purple-400 mx-auto mb-4" />
                 <h2 className="text-3xl font-bold text-white mb-3">{lvmhMarketEntryDemoData.crisis.title}</h2>
@@ -99,7 +99,7 @@ export default function LVMHMarketEntryDemo() {
                   </div>
                 </div>
 
-                <div className="p-6 bg-slate-900/50 rounded-lg border border-purple-800/30">
+                <div className="p-6 bg-white rounded-lg border border-purple-800/30">
                   <h3 className="font-bold text-white mb-4">Traditional Coordination Timeline</h3>
                   <ul className="space-y-2 text-sm text-purple-200">
                     <li>• Month 1-2: Sequential brand planning (10 brands independently)</li>
@@ -112,7 +112,7 @@ export default function LVMHMarketEntryDemo() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-purple-950/50 to-indigo-950/50 border border-purple-700 rounded-lg p-6 mb-8">
+              <div className="bg-gradient-to-r   border border-purple-700 rounded-lg p-6 mb-8">
                 <div className="flex items-start gap-4">
                   <Target className="w-8 h-8 text-purple-400 flex-shrink-0 mt-1" />
                   <div>
@@ -165,7 +165,7 @@ export default function LVMHMarketEntryDemo() {
         {/* ACT 2: AI DETECTION */}
         {currentAct === "detection" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-purple-800/30">
+            <Card className="p-8 bg-white border-purple-800/30">
               <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
                 <Target className="w-8 h-8 text-purple-400" />
                 Act 2: AI Market Intelligence Detection
@@ -215,7 +215,7 @@ export default function LVMHMarketEntryDemo() {
         {/* ACT 3: COORDINATED RESPONSE */}
         {currentAct === "coordination" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-purple-800/30">
+            <Card className="p-8 bg-white border-purple-800/30">
               <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
                 <TrendingUp className="w-8 h-8 text-purple-400" />
                 Act 3: 12-Minute Coordinated Execution
@@ -278,7 +278,7 @@ export default function LVMHMarketEntryDemo() {
         {/* ACT 4: ROI OUTCOME */}
         {currentAct === "outcome" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-purple-800/30 text-center">
+            <Card className="p-8 bg-white border-purple-800/30 text-center">
               <Crown className="w-16 h-16 text-purple-400 mx-auto mb-4" />
               <h2 className="text-3xl font-bold text-white mb-3">
                 €1.68B Value Creation Through Strategic Velocity

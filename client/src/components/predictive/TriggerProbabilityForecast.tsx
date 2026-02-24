@@ -154,7 +154,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
       <Card className="border-dashed border-2 border-slate-300 dark:border-slate-700">
         <CardContent className="p-6 text-center">
           <Brain className="w-12 h-12 text-slate-200 mx-auto mb-3" />
-          <p className="text-slate-400 dark:text-slate-300">No triggers configured for forecasting</p>
+          <p className="text-gray-600 dark:text-slate-300">No triggers configured for forecasting</p>
           <p className="text-sm text-slate-300 mt-1">Add triggers to see AI-powered probability predictions</p>
         </CardContent>
       </Card>
@@ -239,7 +239,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
               <div className={`rounded-lg p-3 text-center ${getProbabilityBg(forecast.probability30Days)}`}>
                 <div className="flex items-center justify-center gap-1 mb-1">
                   <Calendar className="w-3 h-3 text-slate-300" />
-                  <span className="text-xs font-medium text-slate-400 dark:text-slate-300">30 Days</span>
+                  <span className="text-xs font-medium text-gray-600 dark:text-slate-300">30 Days</span>
                 </div>
                 <div className={`text-2xl font-bold ${getProbabilityColor(forecast.probability30Days)}`}>
                   {forecast.probability30Days}%
@@ -252,7 +252,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
               <div className={`rounded-lg p-3 text-center ${getProbabilityBg(forecast.probability60Days)}`}>
                 <div className="flex items-center justify-center gap-1 mb-1">
                   <Calendar className="w-3 h-3 text-slate-300" />
-                  <span className="text-xs font-medium text-slate-400 dark:text-slate-300">60 Days</span>
+                  <span className="text-xs font-medium text-gray-600 dark:text-slate-300">60 Days</span>
                 </div>
                 <div className={`text-2xl font-bold ${getProbabilityColor(forecast.probability60Days)}`}>
                   {forecast.probability60Days}%
@@ -265,7 +265,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
               <div className={`rounded-lg p-3 text-center ${getProbabilityBg(forecast.probability90Days)}`}>
                 <div className="flex items-center justify-center gap-1 mb-1">
                   <Calendar className="w-3 h-3 text-slate-300" />
-                  <span className="text-xs font-medium text-slate-400 dark:text-slate-300">90 Days</span>
+                  <span className="text-xs font-medium text-gray-600 dark:text-slate-300">90 Days</span>
                 </div>
                 <div className={`text-2xl font-bold ${getProbabilityColor(forecast.probability90Days)}`}>
                   {forecast.probability90Days}%
@@ -280,7 +280,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
             {isExpanded && (
               <>
                 <div className="mb-3 pt-3 border-t border-slate-200 dark:border-slate-600">
-                  <div className="text-xs font-semibold text-slate-400 dark:text-slate-300 mb-2">Contributing Factors</div>
+                  <div className="text-xs font-semibold text-gray-600 dark:text-slate-300 mb-2">Contributing Factors</div>
                   <div className="flex flex-wrap gap-2">
                     {forecast.contributingFactors.map((factor, idx) => (
                       <Badge 

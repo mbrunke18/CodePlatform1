@@ -86,7 +86,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
               <button
                 key={index}
                 onClick={() => applyTemplate(template)}
-                className="p-3 rounded border border-purple-500/30 bg-slate-900/50 hover:bg-slate-800/50 transition-colors text-left"
+                className="p-3 rounded border border-purple-500/30 bg-white hover:bg-slate-800/50 transition-colors text-left"
                 data-testid={`template-metric-${index}`}
               >
                 <p className="text-sm font-medium text-white">{template.name}</p>
@@ -100,7 +100,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
       </Card>
 
       {/* Add Metric Form */}
-      <Card className="border-blue-500/30 bg-slate-900/50">
+      <Card className="border-blue-500/30 bg-white">
         <CardContent className="p-6">
           <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
             <Plus className="h-5 w-5 text-blue-400" />
@@ -116,7 +116,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
                 placeholder="e.g., Time to Full Stakeholder Coordination"
                 value={newMetric.name}
                 onChange={(e) => setNewMetric({ ...newMetric, name: e.target.value })}
-                className="bg-slate-800 border-slate-600 text-white mt-2"
+                className="bg-gray-50 border-slate-600 text-white mt-2"
               />
             </div>
 
@@ -127,7 +127,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
                   value={newMetric.category} 
                   onValueChange={(value: any) => setNewMetric({ ...newMetric, category: value })}
                 >
-                  <SelectTrigger className="bg-slate-800 border-slate-600 text-white mt-2" data-testid="select-metric-category">
+                  <SelectTrigger className="bg-gray-50 border-slate-600 text-white mt-2" data-testid="select-metric-category">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -155,7 +155,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
                   value={newMetric.measurementUnit} 
                   onValueChange={(value) => setNewMetric({ ...newMetric, measurementUnit: value })}
                 >
-                  <SelectTrigger className="bg-slate-800 border-slate-600 text-white mt-2" data-testid="select-measurement-unit">
+                  <SelectTrigger className="bg-gray-50 border-slate-600 text-white mt-2" data-testid="select-measurement-unit">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -176,7 +176,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
                   placeholder="Current performance"
                   value={newMetric.baselineValue}
                   onChange={(e) => setNewMetric({ ...newMetric, baselineValue: e.target.value })}
-                  className="bg-slate-800 border-slate-600 text-white mt-2"
+                  className="bg-gray-50 border-slate-600 text-white mt-2"
                 />
                 <p className="text-xs text-gray-300 mt-1">Where are you today?</p>
               </div>
@@ -189,7 +189,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
                   placeholder="Goal to achieve"
                   value={newMetric.targetValue}
                   onChange={(e) => setNewMetric({ ...newMetric, targetValue: e.target.value })}
-                  className="bg-slate-800 border-slate-600 text-white mt-2"
+                  className="bg-gray-50 border-slate-600 text-white mt-2"
                 />
                 <p className="text-xs text-gray-300 mt-1">What defines success?</p>
               </div>
@@ -237,7 +237,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
               const unitLabel = MEASUREMENT_UNITS.find(u => u.value === metric.measurementUnit)?.label || metric.measurementUnit;
 
               return (
-                <Card key={metric.id} className="border-slate-700">
+                <Card key={metric.id} className="border-gray-200">
                   <CardContent className="p-4">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">

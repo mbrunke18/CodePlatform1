@@ -132,7 +132,7 @@ export default function StandardNav() {
       className="flex items-center gap-3 py-2"
       data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
     >
-      <link.icon className="h-4 w-4 text-slate-400" />
+      <link.icon className="h-4 w-4 text-gray-600" />
       <div className="flex-1">
         <div className="font-medium text-sm">{link.label}</div>
         <span className="text-xs text-muted-foreground">{link.description}</span>
@@ -149,7 +149,7 @@ export default function StandardNav() {
         {sections.map((section, sIdx) => (
           <div key={section.heading}>
             {sIdx > 0 && <DropdownMenuSeparator />}
-            <DropdownMenuLabel className="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">{section.heading}</DropdownMenuLabel>
+            <DropdownMenuLabel className="text-[11px] uppercase tracking-wider text-gray-600 font-semibold">{section.heading}</DropdownMenuLabel>
             {section.links.map(renderNavItem)}
           </div>
         ))}
@@ -215,10 +215,10 @@ export default function StandardNav() {
             </Button>
 
             {isLoading ? (
-              <div className="h-9 w-20 bg-slate-800 animate-pulse rounded-lg" />
+              <div className="h-9 w-20 bg-gray-50 animate-pulse rounded-lg" />
             ) : isAuthenticated && user ? (
               <div className="flex items-center gap-2">
-                <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 bg-slate-800 rounded-lg">
+                <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 bg-gray-50 rounded-lg">
                   <User className="h-4 w-4 text-slate-300" />
                   <span className="text-sm text-slate-300">{user.firstName || user.email?.split('@')[0]}</span>
                 </div>
@@ -265,7 +265,7 @@ export default function StandardNav() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-slate-800 animate-in slide-in-from-top-2 duration-200 max-h-[80vh] overflow-y-auto">
+          <div className="lg:hidden py-4 border-t border-gray-200 animate-in slide-in-from-top-2 duration-200 max-h-[80vh] overflow-y-auto">
             <div className="flex flex-col gap-1">
               <Button 
                 onClick={() => navigateTo("/mission-control")}
@@ -276,7 +276,7 @@ export default function StandardNav() {
                 Open Platform
               </Button>
               
-              <div className="border-t border-slate-800 my-3" />
+              <div className="border-t border-gray-200 my-3" />
 
               {productSections.map((section) => (
                 <div key={section.heading}>
@@ -286,7 +286,7 @@ export default function StandardNav() {
                       key={link.path + link.label}
                       onClick={() => navigateTo(link.path)}
                       className={`text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 ${
-                        isActivePath(link.path) ? 'text-white bg-slate-800' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                        isActivePath(link.path) ? 'text-white bg-gray-50' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                       }`}
                     >
                       <link.icon className="h-4 w-4 text-slate-200" />
@@ -296,7 +296,7 @@ export default function StandardNav() {
                 </div>
               ))}
               
-              <div className="border-t border-slate-800 my-3" />
+              <div className="border-t border-gray-200 my-3" />
               
               {experienceSections.map((section) => (
                 <div key={section.heading}>
@@ -314,7 +314,7 @@ export default function StandardNav() {
                 </div>
               ))}
 
-              <div className="border-t border-slate-800 my-3" />
+              <div className="border-t border-gray-200 my-3" />
 
               <p className="px-4 py-2 text-xs text-poise-teal uppercase tracking-wide font-semibold">Platform</p>
               {platformLinks.map((link) => (
@@ -328,7 +328,7 @@ export default function StandardNav() {
                 </button>
               ))}
               
-              <div className="border-t border-slate-800 my-3" />
+              <div className="border-t border-gray-200 my-3" />
               
               <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide font-semibold">Investors</p>
               {investorsLinks.map((link) => (
@@ -342,7 +342,7 @@ export default function StandardNav() {
                 </button>
               ))}
               
-              <div className="border-t border-slate-800 my-3" />
+              <div className="border-t border-gray-200 my-3" />
               {isAuthenticated && user ? (
                 <div className="flex items-center justify-between px-3 py-2">
                   <div className="flex items-center gap-2">

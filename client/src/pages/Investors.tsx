@@ -307,11 +307,11 @@ export default function Investors() {
                   </div>
                   
                   <div className="flex items-center gap-2 mb-3">
-                    <div className="flex-1 h-2 bg-slate-800 rounded-full overflow-hidden">
+                    <div className="flex-1 h-2 bg-gray-50 rounded-full overflow-hidden">
                       <div className="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-full" style={{ width: '100%' }} />
                     </div>
                     <span className="text-[#00A8A8] font-bold text-sm whitespace-nowrap">{scenario.speedup} faster</span>
-                    <div className="w-6 h-2 bg-slate-800 rounded-full overflow-hidden">
+                    <div className="w-6 h-2 bg-gray-50 rounded-full overflow-hidden">
                       <div className="h-full bg-gradient-to-r from-[#00A8A8] to-emerald-500 rounded-full" style={{ width: '100%' }} />
                     </div>
                   </div>

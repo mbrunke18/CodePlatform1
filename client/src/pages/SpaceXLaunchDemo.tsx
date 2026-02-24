@@ -30,11 +30,11 @@ export default function SpaceXLaunchDemo() {
   };
 
   return (
-    <div className="page-background min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900">
+    <div className="page-background min-h-screen bg-gradient-to-br ">
       <DemoNavHeader title="SpaceX Launch Demo" showBackButton={true} />
 
       {/* Act Navigation */}
-      <div className="border-b border-blue-800/20 bg-slate-950/30 pt-20">
+      <div className="border-b border-blue-800/20 bg-white pt-20">
         <div className="container mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
             {[
@@ -66,7 +66,7 @@ export default function SpaceXLaunchDemo() {
         {/* ACT 1: INTRODUCTION */}
         {currentAct === "intro" && (
           <div className="max-w-5xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-blue-800/30">
+            <Card className="p-8 bg-white border-blue-800/30">
               <div className="text-center mb-8">
                 <Satellite className="w-16 h-16 text-blue-400 mx-auto mb-4" />
                 <h2 className="text-3xl font-bold text-white mb-3">{spacexLaunchDemoData.crisis.title}</h2>
@@ -99,7 +99,7 @@ export default function SpaceXLaunchDemo() {
                   </div>
                 </div>
 
-                <div className="p-6 bg-slate-900/50 rounded-lg border border-blue-800/30">
+                <div className="p-6 bg-white rounded-lg border border-blue-800/30">
                   <h3 className="font-bold text-white mb-4">Traditional Aerospace Coordination</h3>
                   <ul className="space-y-2 text-sm text-blue-200">
                     <li>• Day 1-2: Engineering reviews sequential approvals</li>
@@ -112,7 +112,7 @@ export default function SpaceXLaunchDemo() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-blue-950/50 to-indigo-950/50 border border-blue-700 rounded-lg p-6 mb-8">
+              <div className="bg-gradient-to-r   border border-blue-700 rounded-lg p-6 mb-8">
                 <div className="flex items-start gap-4">
                   <Zap className="w-8 h-8 text-blue-400 flex-shrink-0 mt-1" />
                   <div>
@@ -164,7 +164,7 @@ export default function SpaceXLaunchDemo() {
         {/* ACT 2: AI DETECTION */}
         {currentAct === "detection" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-blue-800/30">
+            <Card className="p-8 bg-white border-blue-800/30">
               <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
                 <Target className="w-8 h-8 text-blue-400" />
                 Act 2: Orbital Dynamics Detection
@@ -214,7 +214,7 @@ export default function SpaceXLaunchDemo() {
         {/* ACT 3: COORDINATED RESPONSE */}
         {currentAct === "coordination" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-blue-800/30">
+            <Card className="p-8 bg-white border-blue-800/30">
               <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
                 <Zap className="w-8 h-8 text-blue-400" />
                 Act 3: 12-Minute Coordinated Execution
@@ -277,7 +277,7 @@ export default function SpaceXLaunchDemo() {
         {/* ACT 4: ROI OUTCOME */}
         {currentAct === "outcome" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-blue-800/30 text-center">
+            <Card className="p-8 bg-white border-blue-800/30 text-center">
               <Rocket className="w-16 h-16 text-blue-400 mx-auto mb-4" />
               <h2 className="text-3xl font-bold text-white mb-3">
                 $47M Revenue + Strategic Orbital Position Through Coordination Velocity

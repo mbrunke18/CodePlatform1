@@ -130,7 +130,7 @@ export default function PrismInsights() {
       case 'high': return 'bg-orange-500/20 text-orange-400 border-orange-500/30';
       case 'medium': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
       case 'low': return 'bg-green-500/20 text-green-400 border-green-500/30';
-      default: return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
+      default: return 'bg-gray-500/20 text-gray-600 border-gray-500/30';
     }
   };
 
@@ -145,9 +145,9 @@ export default function PrismInsights() {
           
           {/* Breadcrumb Navigation */}
           <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2 text-sm text-gray-600">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-gray-600 hover:text-white p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>
@@ -214,7 +214,7 @@ export default function PrismInsights() {
 
             <TabsContent value={selectedDimension} className="space-y-6">
               {/* Analysis Tools Bar */}
-              <div className="flex items-center justify-between bg-gray-900/50 p-4 rounded-lg border border-gray-700/50">
+              <div className="flex items-center justify-between bg-white p-4 rounded-lg border border-gray-200">
                 <div className="flex items-center gap-4">
                   <Button variant="outline" size="sm">
                     <Filter className="h-4 w-4 mr-2" />
@@ -229,7 +229,7 @@ export default function PrismInsights() {
                     Visualize
                   </Button>
                 </div>
-                <div className="text-sm text-gray-400">
+                <div className="text-sm text-gray-600">
                   {filteredInsights.length} insights • Last updated: 2 minutes ago
                 </div>
               </div>
@@ -237,7 +237,7 @@ export default function PrismInsights() {
               {/* Insights Grid */}
               <div className="space-y-6">
                 {filteredInsights.map((insight) => (
-                  <Card key={insight.id} className="border-gray-700/50 bg-gray-900/50 backdrop-blur-sm hover:border-purple-500/30 transition-colors" data-testid={`insight-${insight.id}`}>
+                  <Card key={insight.id} className="border-gray-200 bg-white backdrop-blur-sm hover:border-purple-500/30 transition-colors" data-testid={`insight-${insight.id}`}>
                     <CardHeader>
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
@@ -246,7 +246,7 @@ export default function PrismInsights() {
                           </div>
                           <div>
                             <h3 className="text-xl font-semibold text-white">{insight.title}</h3>
-                            <p className="text-gray-400 capitalize">{insight.dimension} Analysis • {insight.timeframe}</p>
+                            <p className="text-gray-600 capitalize">{insight.dimension} Analysis • {insight.timeframe}</p>
                           </div>
                         </div>
                         <div className="flex flex-col gap-2">
@@ -254,7 +254,7 @@ export default function PrismInsights() {
                             {insight.impact.toUpperCase()} IMPACT
                           </Badge>
                           <div className="text-right">
-                            <div className="text-sm text-gray-400">Confidence</div>
+                            <div className="text-sm text-gray-600">Confidence</div>
                             <div className="text-lg font-bold text-white">{insight.confidence}%</div>
                           </div>
                         </div>
@@ -295,7 +295,7 @@ export default function PrismInsights() {
                         </div>
                       </div>
 
-                      <div className="flex gap-3 pt-4 border-t border-gray-700/50">
+                      <div className="flex gap-3 pt-4 border-t border-gray-200">
                         <Button size="sm" variant="outline" className="flex-1">
                           <Eye className="h-4 w-4 mr-2" />
                           Deep Dive Analysis

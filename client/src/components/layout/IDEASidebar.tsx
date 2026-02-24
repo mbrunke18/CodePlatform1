@@ -75,7 +75,7 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
             <span className="text-xl">{phase.icon}</span>
             <div className="text-left">
               <div className={cn(
-                'font-semibold text-sm bg-gradient-to-r bg-clip-text text-transparent',
+                'font-semibold text-sm  bg-clip-text text-transparent',
                 phase.color
               )}>
                 {phase.label}

@@ -91,7 +91,7 @@ const compoundScenarios = [
     icon: Shield,
     iconColor: 'text-red-400',
     bgColor: 'border-red-500/30 bg-red-950/20',
-    expandedBg: 'bg-gradient-to-br from-red-950/40 to-slate-900',
+    expandedBg: 'bg-gradient-to-br  ',
     domains: 'Defense + Defense',
     playbookCount: 6,
     description: 'A data breach triggers simultaneous GDPR penalties, SEC disclosure requirements, and customer notification obligations across multiple jurisdictions.',
@@ -120,7 +120,7 @@ const compoundScenarios = [
     icon: Network,
     iconColor: 'text-amber-400',
     bgColor: 'border-amber-500/30 bg-amber-950/20',
-    expandedBg: 'bg-gradient-to-br from-amber-950/40 to-slate-900',
+    expandedBg: 'bg-gradient-to-br  ',
     domains: 'Defense + Offense',
     playbookCount: 8,
     description: 'Tariff escalation or sanctions impact a critical supplier in an affected region, requiring simultaneous supply chain restructuring and market repositioning.',
@@ -151,7 +151,7 @@ const compoundScenarios = [
     icon: AlertTriangle,
     iconColor: 'text-blue-400',
     bgColor: 'border-blue-500/30 bg-blue-950/20',
-    expandedBg: 'bg-gradient-to-br from-blue-950/40 to-slate-900',
+    expandedBg: 'bg-gradient-to-br  ',
     domains: 'Defense + Special Teams',
     playbookCount: 5,
     description: 'Severe weather event causes facility shutdown with cascading impact on customers, logistics, employee safety, and insurance claims.',
@@ -179,7 +179,7 @@ const compoundScenarios = [
     icon: Brain,
     iconColor: 'text-purple-400',
     bgColor: 'border-purple-500/30 bg-purple-950/20',
-    expandedBg: 'bg-gradient-to-br from-purple-950/40 to-slate-900',
+    expandedBg: 'bg-gradient-to-br  ',
     domains: 'Special Teams + Defense',
     playbookCount: 7,
     description: 'AI automation announcement triggers union response, media scrutiny, regulatory inquiry, and employee morale concerns requiring coordinated stakeholder management.',
@@ -218,7 +218,7 @@ function CompoundDisruptionSection() {
   };
 
   return (
-    <div className="mt-10 bg-gradient-to-r from-red-950/40 via-slate-900 to-amber-950/40 rounded-2xl border border-red-500/20 p-8">
+    <div className="mt-10 bg-gradient-to-r  rounded-2xl border border-red-500/20 p-8">
       <div className="flex items-start gap-4 mb-6">
         <div className="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center shrink-0">
           <Zap className="h-6 w-6 text-red-400" />
@@ -248,9 +248,9 @@ function CompoundDisruptionSection() {
                   <Icon className={`h-4 w-4 ${item.iconColor}`} />
                   <div className="text-white text-sm font-semibold">{item.scenario}</div>
                 </div>
-                <ChevronDown className={`h-3.5 w-3.5 text-slate-400 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`h-3.5 w-3.5 text-gray-600 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
               </div>
-              <div className="text-slate-400 text-xs mb-2">{item.domains}</div>
+              <div className="text-gray-600 text-xs mb-2">{item.domains}</div>
               <div className="text-emerald-400 text-xs font-medium">{item.playbookCount} coordinated playbooks</div>
             </div>
           );
@@ -261,9 +261,9 @@ function CompoundDisruptionSection() {
         const scenario = compoundScenarios[expandedScenario];
         const Icon = scenario.icon;
         return (
-          <div className={`mt-6 rounded-xl border border-slate-700 ${scenario.expandedBg} p-6 animate-in fade-in slide-in-from-top-2 duration-300`}>
+          <div className={`mt-6 rounded-xl border border-gray-200 ${scenario.expandedBg} p-6 animate-in fade-in slide-in-from-top-2 duration-300`}>
             <div className="flex items-start gap-4 mb-6">
-              <div className={`w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center shrink-0`}>
+              <div className={`w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center shrink-0`}>
                 <Icon className={`h-5 w-5 ${scenario.iconColor}`} />
               </div>
               <div className="flex-1">
@@ -272,8 +272,8 @@ function CompoundDisruptionSection() {
               </div>
             </div>
 
-            <div className="bg-slate-800/60 rounded-lg p-4 mb-6 border border-slate-700/50">
-              <div className="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-1">Trigger Example</div>
+            <div className="bg-gray-50 rounded-lg p-4 mb-6 border border-gray-200">
+              <div className="text-xs text-gray-600 font-semibold uppercase tracking-wider mb-1">Trigger Example</div>
               <p className="text-white text-sm font-medium">{scenario.triggerExample}</p>
             </div>
 
@@ -285,12 +285,12 @@ function CompoundDisruptionSection() {
                 </h5>
                 <div className="space-y-2">
                   {scenario.playbooks.map((pb, j) => (
-                    <div key={j} className="flex items-center justify-between bg-slate-800/40 rounded-lg px-3 py-2 border border-slate-700/30">
+                    <div key={j} className="flex items-center justify-between bg-gray-50 rounded-lg px-3 py-2 border border-gray-200">
                       <div className="flex-1">
                         <div className="text-white text-sm font-medium">{pb.name}</div>
-                        <div className="text-slate-400 text-xs">{pb.domain}</div>
+                        <div className="text-gray-600 text-xs">{pb.domain}</div>
                       </div>
-                      <Badge className="bg-slate-700/50 text-slate-300 border-slate-600 text-[10px] shrink-0">{pb.phase}</Badge>
+                      <Badge className="bg-gray-50 text-slate-300 border-slate-600 text-[10px] shrink-0">{pb.phase}</Badge>
                     </div>
                   ))}
                 </div>
@@ -320,7 +320,7 @@ function CompoundDisruptionSection() {
                 </h5>
                 <div className="flex flex-wrap gap-1.5">
                   {scenario.stakeholders.map((s, j) => (
-                    <span key={j} className="px-2.5 py-1 rounded-full text-xs font-medium bg-slate-800 text-slate-200 border border-slate-700">{s}</span>
+                    <span key={j} className="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-50 text-slate-200 border border-gray-200">{s}</span>
                   ))}
                 </div>
               </div>
@@ -350,7 +350,7 @@ function CompoundDisruptionSection() {
         );
       })()}
 
-      <p className="text-xs text-slate-500 mt-4 italic">
+      <p className="text-xs text-gray-500 mt-4 italic">
         Cross-domain coordination is automatic — Execution OS detects compound patterns and activates relevant playbooks across categories simultaneously.
       </p>
     </div>
@@ -405,7 +405,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
       
       {!selectedCategory ? (
         <>
-          <div className="bg-slate-900 dark:bg-slate-950 border-b border-slate-800">
+          <div className="bg-white dark:bg-slate-950 border-b border-gray-200">
             <div className="max-w-6xl mx-auto px-6 pt-24 pb-16">
               <div className="flex items-center justify-between">
                 <div>
@@ -467,7 +467,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                       <div className="space-y-1.5 mb-4">
                         {config.domains.map((domain, idx) => (
                           <div key={idx} className="flex items-center justify-between text-sm">
-                            <span className="text-slate-400 dark:text-slate-300">{domain.name}</span>
+                            <span className="text-gray-600 dark:text-slate-300">{domain.name}</span>
                             <span className="font-medium text-slate-900 dark:text-white">{domain.count}</span>
                           </div>
                         ))}
@@ -475,14 +475,14 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                       
                       <div className="pt-3 mt-3 border-t border-slate-100 dark:border-slate-800 space-y-1.5 mb-3">
                         <div className="flex items-center justify-between text-xs">
-                          <span className="text-slate-500 dark:text-slate-400">Maturity</span>
+                          <span className="text-gray-500 dark:text-slate-400">Maturity</span>
                           <span className={`font-semibold ${config.textColor}`}>{config.maturity}</span>
                         </div>
                         <div className="flex items-center justify-between text-xs">
-                          <span className="text-slate-500 dark:text-slate-400">Outcome Score</span>
+                          <span className="text-gray-500 dark:text-slate-400">Outcome Score</span>
                           <span className={`font-semibold ${config.textColor}`}>{config.avgOutcomeScore}%</span>
                         </div>
-                        <div className="text-[10px] text-slate-400 dark:text-slate-500 italic">
+                        <div className="text-[10px] text-gray-600 dark:text-slate-500 italic">
                           Validated: {config.validatedBy}
                         </div>
                       </div>
@@ -526,7 +526,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
             
             return (
               <>
-                <div className={`bg-gradient-to-r ${config.bgGradient} border-b border-slate-800`}>
+                <div className={`bg-gradient-to-r ${config.bgGradient} border-b border-gray-200`}>
                   <div className="max-w-6xl mx-auto px-6 pt-24 pb-12">
                     <Button 
                       variant="ghost" 

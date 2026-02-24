@@ -41,7 +41,7 @@ export default function Research() {
       <StandardNav />
 
       {/* Hero Section */}
-      <section className="py-20 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+      <section className="py-20 px-6 text-white">
         <div className="max-w-5xl mx-auto text-center">
           <Badge className="mb-6 bg-primary text-white border-0">
             <BarChart3 className="w-4 h-4 mr-2" />
@@ -472,7 +472,7 @@ export default function Research() {
       </section>
 
       {/* 2026 Enterprise AI Landscape */}
-      <section className="py-20 px-6 bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-950 text-white">
+      <section className="py-20 px-6 bg-gradient-to-br  text-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <Badge className="mb-6 bg-indigo-600 text-white border-0">
@@ -503,7 +503,7 @@ export default function Research() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <div className="bg-slate-800/50 border border-slate-700 border-l-4 border-l-blue-500 rounded-lg p-6">
+            <div className="bg-gray-50 border border-gray-200 border-l-4 border-l-blue-500 rounded-lg p-6">
               <div className="flex items-start gap-4 mb-3">
                 <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center shrink-0 text-white font-bold text-sm">1</div>
                 <div>
@@ -518,7 +518,7 @@ export default function Research() {
               </div>
             </div>
 
-            <div className="bg-slate-800/50 border border-slate-700 border-l-4 border-l-cyan-500 rounded-lg p-6">
+            <div className="bg-gray-50 border border-gray-200 border-l-4 border-l-cyan-500 rounded-lg p-6">
               <div className="flex items-start gap-4 mb-3">
                 <div className="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center shrink-0 text-white font-bold text-sm">2</div>
                 <div>
@@ -533,7 +533,7 @@ export default function Research() {
               </div>
             </div>
 
-            <div className="bg-slate-800/50 border border-slate-700 border-l-4 border-l-emerald-500 rounded-lg p-6">
+            <div className="bg-gray-50 border border-gray-200 border-l-4 border-l-emerald-500 rounded-lg p-6">
               <div className="flex items-start gap-4 mb-3">
                 <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center shrink-0 text-white font-bold text-sm">3</div>
                 <div>
@@ -548,7 +548,7 @@ export default function Research() {
               </div>
             </div>
 
-            <div className="bg-slate-800/50 border border-slate-700 border-l-4 border-l-violet-500 rounded-lg p-6">
+            <div className="bg-gray-50 border border-gray-200 border-l-4 border-l-violet-500 rounded-lg p-6">
               <div className="flex items-start gap-4 mb-3">
                 <div className="w-8 h-8 rounded-full bg-violet-500 flex items-center justify-center shrink-0 text-white font-bold text-sm">4</div>
                 <div>
@@ -563,7 +563,7 @@ export default function Research() {
               </div>
             </div>
 
-            <div className="bg-slate-800/50 border border-slate-700 border-l-4 border-l-amber-500 rounded-lg p-6">
+            <div className="bg-gray-50 border border-gray-200 border-l-4 border-l-amber-500 rounded-lg p-6">
               <div className="flex items-start gap-4 mb-3">
                 <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center shrink-0 text-white font-bold text-sm">5</div>
                 <div>
@@ -578,7 +578,7 @@ export default function Research() {
               </div>
             </div>
 
-            <div className="bg-slate-800/50 border border-slate-700 border-l-4 border-l-sky-500 rounded-lg p-6">
+            <div className="bg-gray-50 border border-gray-200 border-l-4 border-l-sky-500 rounded-lg p-6">
               <div className="flex items-start gap-4 mb-3">
                 <div className="w-8 h-8 rounded-full bg-sky-500 flex items-center justify-center shrink-0 text-white font-bold text-sm">6</div>
                 <div>
@@ -593,7 +593,7 @@ export default function Research() {
               </div>
             </div>
 
-            <div className="bg-slate-800/50 border border-slate-700 border-l-4 border-l-rose-500 rounded-lg p-6">
+            <div className="bg-gray-50 border border-gray-200 border-l-4 border-l-rose-500 rounded-lg p-6">
               <div className="flex items-start gap-4 mb-3">
                 <div className="w-8 h-8 rounded-full bg-rose-500 flex items-center justify-center shrink-0 text-white font-bold text-sm">7</div>
                 <div>
@@ -608,7 +608,7 @@ export default function Research() {
               </div>
             </div>
 
-            <div className="bg-slate-800/50 border border-slate-700 border-l-4 border-l-fuchsia-500 rounded-lg p-6">
+            <div className="bg-gray-50 border border-gray-200 border-l-4 border-l-fuchsia-500 rounded-lg p-6">
               <div className="flex items-start gap-4 mb-3">
                 <div className="w-8 h-8 rounded-full bg-fuchsia-500 flex items-center justify-center shrink-0 text-white font-bold text-sm">8</div>
                 <div>
@@ -624,7 +624,7 @@ export default function Research() {
             </div>
           </div>
 
-          <div className="p-6 bg-slate-800/70 border border-slate-700 rounded-lg text-center">
+          <div className="p-6 bg-gray-50 border border-gray-200 rounded-lg text-center">
             <p className="text-slate-200 text-sm md:text-base leading-relaxed">
               These decisions compound. The workflows you hand to agents, the data foundations you build, and the controls you put in place will shape performance for years. Execution OS provides the infrastructure to make these decisions execute.
             </p>
@@ -633,7 +633,7 @@ export default function Research() {
       </section>
 
       {/* 2026 Agentic AI Playbook */}
-      <section className="py-20 px-6 bg-gradient-to-br from-emerald-950 via-slate-900 to-indigo-950 text-white">
+      <section className="py-20 px-6 bg-white text-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <Badge className="mb-6 bg-emerald-600 text-white border-0">
@@ -649,19 +649,19 @@ export default function Research() {
             <div className="flex items-center justify-center gap-8 text-sm">
               <div className="text-center">
                 <div className="text-3xl font-bold text-emerald-400">12</div>
-                <div className="text-slate-400">Guides</div>
+                <div className="text-gray-600">Guides</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-emerald-400">9</div>
-                <div className="text-slate-400">Firms</div>
+                <div className="text-gray-600">Firms</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-emerald-400">6 mo</div>
-                <div className="text-slate-400">Time Span</div>
+                <div className="text-gray-600">Time Span</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-emerald-400">1</div>
-                <div className="text-slate-400">Conclusion</div>
+                <div className="text-gray-600">Conclusion</div>
               </div>
             </div>
           </div>
@@ -674,39 +674,39 @@ export default function Research() {
               <h3 className="text-xl font-bold text-white">STRATEGY — How far are we really?</h3>
             </div>
             <div className="grid md:grid-cols-2 gap-4 mb-8">
-              <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs font-bold">1</span>
                   <span className="font-bold text-white">McKinsey (QuantumBlack)</span>
                 </div>
-                <p className="text-slate-400 text-xs mb-2">The State of AI in 2025</p>
+                <p className="text-gray-600 text-xs mb-2">The State of AI in 2025</p>
                 <p className="text-slate-300 text-sm mb-3">A reality check on how companies are actually using AI today.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS addresses the gap between AI adoption and AI execution</p>
               </div>
-              <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-6 h-6 rounded-full bg-orange-500 flex items-center justify-center text-white text-xs font-bold">2</span>
                   <span className="font-bold text-white">PwC</span>
                 </div>
-                <p className="text-slate-400 text-xs mb-2">Agentic AI Reinvention (Nov 2025)</p>
+                <p className="text-gray-600 text-xs mb-2">Agentic AI Reinvention (Nov 2025)</p>
                 <p className="text-slate-300 text-sm mb-3">How enterprises scale AI agents for measurable business results.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS delivers measurable P&L impact through structured execution</p>
               </div>
-              <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-6 h-6 rounded-full bg-cyan-500 flex items-center justify-center text-white text-xs font-bold">3</span>
                   <span className="font-bold text-white">McKinsey</span>
                 </div>
-                <p className="text-slate-400 text-xs mb-2">The Agentic AI Opportunity (Nov 2025)</p>
+                <p className="text-gray-600 text-xs mb-2">The Agentic AI Opportunity (Nov 2025)</p>
                 <p className="text-slate-300 text-sm mb-3">A comprehensive deep dive into Agentic AI and all of its impacts.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS is the execution layer that makes agentic AI operational</p>
               </div>
-              <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-6 h-6 rounded-full bg-purple-500 flex items-center justify-center text-white text-xs font-bold">4</span>
                   <span className="font-bold text-white">Accenture</span>
                 </div>
-                <p className="text-slate-400 text-xs mb-2">Six Insights for AI ROI</p>
+                <p className="text-gray-600 text-xs mb-2">Six Insights for AI ROI</p>
                 <p className="text-slate-300 text-sm mb-3">What actually drives AI results and return.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS' 170 playbooks are the structured execution that drives ROI</p>
               </div>
@@ -721,39 +721,39 @@ export default function Research() {
               <h3 className="text-xl font-bold text-white">BUILD — What needs to exist before scale?</h3>
             </div>
             <div className="grid md:grid-cols-2 gap-4 mb-8">
-              <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-6 h-6 rounded-full bg-sky-500 flex items-center justify-center text-white text-xs font-bold">5</span>
                   <span className="font-bold text-white">AWS</span>
                 </div>
-                <p className="text-slate-400 text-xs mb-2">Rise of Autonomous Agents</p>
+                <p className="text-gray-600 text-xs mb-2">Rise of Autonomous Agents</p>
                 <p className="text-slate-300 text-sm mb-3">What AI agents are and where they add value.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS provides the strategic control layer on top of AI agent infrastructure</p>
               </div>
-              <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center text-white text-xs font-bold">6</span>
                   <span className="font-bold text-white">Bain</span>
                 </div>
-                <p className="text-slate-400 text-xs mb-2">Foundations for Agentic AI</p>
+                <p className="text-gray-600 text-xs mb-2">Foundations for Agentic AI</p>
                 <p className="text-slate-300 text-sm mb-3">The data, platforms, and systems needed before scale.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS IS that foundational platform — governance, playbooks, coordination</p>
               </div>
-              <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold">7</span>
                   <span className="font-bold text-white">IBM</span>
                 </div>
-                <p className="text-slate-400 text-xs mb-2">Agentic AI Operating Model</p>
+                <p className="text-gray-600 text-xs mb-2">Agentic AI Operating Model</p>
                 <p className="text-slate-300 text-sm mb-3">The operating model required to run AI at scale.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS delivers that operating model — 170 playbooks, 9 domains, pre-defined governance</p>
               </div>
-              <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-6 h-6 rounded-full bg-violet-500 flex items-center justify-center text-white text-xs font-bold">8</span>
                   <span className="font-bold text-white">Deloitte</span>
                 </div>
-                <p className="text-slate-400 text-xs mb-2">Agentic Enterprise 2028</p>
+                <p className="text-gray-600 text-xs mb-2">Agentic Enterprise 2028</p>
                 <p className="text-slate-300 text-sm mb-3">A horizon scan to stress-test a 2026 roadmap.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS' 18-month head start means enterprises can adopt today for 2028 readiness</p>
               </div>
@@ -768,39 +768,39 @@ export default function Research() {
               <h3 className="text-xl font-bold text-white">LEADERSHIP — How work, control, and decisions change</h3>
             </div>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-6 h-6 rounded-full bg-indigo-500 flex items-center justify-center text-white text-xs font-bold">9</span>
                   <span className="font-bold text-white">BCG</span>
                 </div>
-                <p className="text-slate-400 text-xs mb-2">Machines That Manage Themselves</p>
+                <p className="text-gray-600 text-xs mb-2">Machines That Manage Themselves</p>
                 <p className="text-slate-300 text-sm mb-3">What an agent-driven enterprise may become.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS bridges today's chaos to the agent-driven future with human oversight</p>
               </div>
-              <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-6 h-6 rounded-full bg-cyan-500 flex items-center justify-center text-white text-xs font-bold">10</span>
                   <span className="font-bold text-white">McKinsey</span>
                 </div>
-                <p className="text-slate-400 text-xs mb-2">The Agentic Organization</p>
+                <p className="text-gray-600 text-xs mb-2">The Agentic Organization</p>
                 <p className="text-slate-300 text-sm mb-3">How organization design and work change with agents.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS' IDEA Framework is the organizational design for the agentic era</p>
               </div>
-              <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-6 h-6 rounded-full bg-amber-500 flex items-center justify-center text-white text-xs font-bold">11</span>
                   <span className="font-bold text-white">World Economic Forum</span>
                 </div>
-                <p className="text-slate-400 text-xs mb-2">AI Agents in Action</p>
+                <p className="text-gray-600 text-xs mb-2">AI Agents in Action</p>
                 <p className="text-slate-300 text-sm mb-3">Practical guidance for evaluating agents and setting guardrails.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS' AI Governance domain provides exactly these guardrails — 18 playbooks</p>
               </div>
-              <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-white text-xs font-bold">12</span>
                   <span className="font-bold text-white">McKinsey</span>
                 </div>
-                <p className="text-slate-400 text-xs mb-2">Seizing the Agentic AI Advantage</p>
+                <p className="text-gray-600 text-xs mb-2">Seizing the Agentic AI Advantage</p>
                 <p className="text-slate-300 text-sm mb-3">Real-world examples of agentic AI driving results.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS turns these examples into repeatable, scalable execution patterns</p>
               </div>
@@ -972,7 +972,7 @@ export default function Research() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+      <section className="py-16 px-6 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">
             See the Research in Action

@@ -42,11 +42,11 @@ export default function ManufacturingSupplierDemo() {
   };
 
   return (
-    <div className="page-background min-h-screen bg-gradient-to-br from-slate-950 via-orange-950 to-slate-900">
+    <div className="page-background min-h-screen bg-gradient-to-br ">
       <DemoNavHeader title="Manufacturing Supplier Demo" showBackButton={true} />
 
       {/* Act Navigation */}
-      <div className="border-b border-orange-800/20 bg-slate-950/30 pt-20">
+      <div className="border-b border-orange-800/20 bg-white pt-20">
         <div className="container mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
             {[
@@ -78,7 +78,7 @@ export default function ManufacturingSupplierDemo() {
         {/* ACT 1: INTRODUCTION */}
         {currentAct === "intro" && (
           <div className="max-w-5xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-orange-800/30">
+            <Card className="p-8 bg-white border-orange-800/30">
               <div className="text-center mb-8">
                 <Cpu className="w-16 h-16 text-orange-400 mx-auto mb-4" />
                 <h2 className="text-3xl font-bold text-white mb-3">{manufacturingDemoData.crisis.title}</h2>
@@ -111,7 +111,7 @@ export default function ManufacturingSupplierDemo() {
                   </div>
                 </div>
 
-                <div className="p-6 bg-slate-900/50 rounded-lg border border-orange-800/30">
+                <div className="p-6 bg-white rounded-lg border border-orange-800/30">
                   <h3 className="font-bold text-white mb-4">Traditional Response (30 Days)</h3>
                   <ul className="space-y-2 text-sm text-orange-200">
                     <li>• Day 1-2: Assess which suppliers affected</li>
@@ -125,7 +125,7 @@ export default function ManufacturingSupplierDemo() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-orange-950/50 to-amber-950/50 border border-orange-700 rounded-lg p-6 mb-8">
+              <div className="bg-gradient-to-r   border border-orange-700 rounded-lg p-6 mb-8">
                 <div className="flex items-start gap-4">
                   <ShieldAlert className="w-8 h-8 text-orange-400 flex-shrink-0 mt-1" />
                   <div>
@@ -158,7 +158,7 @@ export default function ManufacturingSupplierDemo() {
         {/* ACT 2: AI DETECTION */}
         {currentAct === "detection" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-orange-800/30">
+            <Card className="p-8 bg-white border-orange-800/30">
               <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                 <ShieldAlert className="w-8 h-8 text-orange-400" />
                 Supply Chain AI Detects Critical Supplier Failure
@@ -207,7 +207,7 @@ export default function ManufacturingSupplierDemo() {
         {/* ACT 3: 4-HOUR COORDINATION */}
         {currentAct === "coordination" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-orange-800/30">
+            <Card className="p-8 bg-white border-orange-800/30">
               <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                 <Clock className="w-8 h-8 text-orange-400" />
                 4-Hour Coordinated Response Across 158 Stakeholders
@@ -269,7 +269,7 @@ export default function ManufacturingSupplierDemo() {
         {/* ACT 4: ROI OUTCOME */}
         {currentAct === "outcome" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-green-800/30">
+            <Card className="p-8 bg-white border-green-800/30">
               <div className="text-center mb-8">
                 <TrendingUp className="w-16 h-16 text-green-400 mx-auto mb-4" />
                 <h2 className="text-3xl font-bold text-white mb-3">$450M Production Saved</h2>

@@ -132,7 +132,7 @@ export default function DecisionConfidenceScore({
               <span className="font-semibold" data-testid="data-completeness-score">{confidence.dataCompletenessScore}%</span>
             </div>
             <Progress value={confidence.dataCompletenessScore} className="h-2" />
-            <p className="text-xs text-gray-400 dark:text-gray-200">
+            <p className="text-xs text-gray-600 dark:text-gray-200">
               {confidence.dataSourcesConnected} of 5 sources connected
             </p>
           </div>
@@ -146,7 +146,7 @@ export default function DecisionConfidenceScore({
               <span className="font-semibold" data-testid="stakeholder-alignment-score">{confidence.stakeholderAlignmentScore}%</span>
             </div>
             <Progress value={confidence.stakeholderAlignmentScore} className="h-2" />
-            <p className="text-xs text-gray-400 dark:text-gray-200">
+            <p className="text-xs text-gray-600 dark:text-gray-200">
               {confidence.stakeholdersMapped} key stakeholders mapped
             </p>
           </div>
@@ -160,7 +160,7 @@ export default function DecisionConfidenceScore({
               <span className="font-semibold" data-testid="historical-precedent-score">{confidence.historicalPrecedentScore}%</span>
             </div>
             <Progress value={confidence.historicalPrecedentScore} className="h-2" />
-            <p className="text-xs text-gray-400 dark:text-gray-200">
+            <p className="text-xs text-gray-600 dark:text-gray-200">
               {confidence.similarCasesFound} similar cases analyzed
             </p>
           </div>
@@ -174,7 +174,7 @@ export default function DecisionConfidenceScore({
               <span className="font-semibold" data-testid="risk-coverage-score">{confidence.riskCoverageScore}%</span>
             </div>
             <Progress value={confidence.riskCoverageScore} className="h-2" />
-            <p className="text-xs text-gray-400 dark:text-gray-200">
+            <p className="text-xs text-gray-600 dark:text-gray-200">
               {confidence.risksCovered} of {confidence.totalRisks} risks addressed
             </p>
           </div>

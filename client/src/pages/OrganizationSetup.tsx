@@ -390,9 +390,9 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
           
           {/* Breadcrumb Navigation */}
           <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2 text-sm text-gray-600">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-gray-600 hover:text-white p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>
@@ -433,28 +433,28 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <h3 className="text-lg font-semibold text-white">Setup Progress</h3>
-                  <p className="text-sm text-gray-400">Complete all sections to enable full strategic execution capabilities</p>
+                  <p className="text-sm text-gray-600">Complete all sections to enable full strategic execution capabilities</p>
                 </div>
                 <div className="text-right">
                   <div className="text-3xl font-bold text-indigo-400">{Math.round(progressPercent)}%</div>
-                  <div className="text-sm text-gray-400">Complete</div>
+                  <div className="text-sm text-gray-600">Complete</div>
                 </div>
               </div>
               <Progress value={progressPercent} className="h-3 mb-4" />
               <div className="grid grid-cols-4 gap-4">
-                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.departments ? 'bg-green-500/20' : 'bg-gray-700/30'}`}>
+                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.departments ? 'bg-green-500/20' : 'bg-gray-50'}`}>
                   {setupProgress.departments ? <CheckCircle className="h-5 w-5 text-green-500" /> : <AlertTriangle className="h-5 w-5 text-yellow-500" />}
                   <span className="text-sm text-white">Departments</span>
                 </div>
-                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.stakeholders ? 'bg-green-500/20' : 'bg-gray-700/30'}`}>
+                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.stakeholders ? 'bg-green-500/20' : 'bg-gray-50'}`}>
                   {setupProgress.stakeholders ? <CheckCircle className="h-5 w-5 text-green-500" /> : <AlertTriangle className="h-5 w-5 text-yellow-500" />}
                   <span className="text-sm text-white">Stakeholders</span>
                 </div>
-                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.escalation ? 'bg-green-500/20' : 'bg-gray-700/30'}`}>
+                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.escalation ? 'bg-green-500/20' : 'bg-gray-50'}`}>
                   {setupProgress.escalation ? <CheckCircle className="h-5 w-5 text-green-500" /> : <AlertTriangle className="h-5 w-5 text-yellow-500" />}
                   <span className="text-sm text-white">Escalation</span>
                 </div>
-                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.channels ? 'bg-green-500/20' : 'bg-gray-700/30'}`}>
+                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.channels ? 'bg-green-500/20' : 'bg-gray-50'}`}>
                   {setupProgress.channels ? <CheckCircle className="h-5 w-5 text-green-500" /> : <AlertTriangle className="h-5 w-5 text-yellow-500" />}
                   <span className="text-sm text-white">Channels</span>
                 </div>
@@ -464,7 +464,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
 
           {/* Main Content Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-            <TabsList className="bg-gray-800/50 p-1 h-auto flex-wrap">
+            <TabsList className="bg-gray-50 p-1 h-auto flex-wrap">
               <TabsTrigger value="departments" className="gap-2 data-[state=active]:bg-indigo-600">
                 <Layers className="h-4 w-4" />
                 Departments
@@ -488,7 +488,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-white">Department Structure</h2>
-                  <p className="text-sm text-gray-400">Define your organization's departments and reporting structure</p>
+                  <p className="text-sm text-gray-600">Define your organization's departments and reporting structure</p>
                 </div>
                 <Button onClick={() => setIsDepartmentDialogOpen(true)} data-testid="button-add-department">
                   <Plus className="h-4 w-4 mr-2" />
@@ -498,31 +498,31 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {departments.map((dept) => (
-                  <Card key={dept.id} className="bg-gray-800/50 border-gray-700 hover:border-indigo-500/50 transition-all">
+                  <Card key={dept.id} className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between">
                         <div>
                           <h3 className="font-semibold text-white">{dept.name}</h3>
-                          <p className="text-sm text-gray-400 mt-1">{dept.description}</p>
+                          <p className="text-sm text-gray-600 mt-1">{dept.description}</p>
                         </div>
                         <div className="flex gap-1">
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-400 hover:text-white">
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-600 hover:text-white">
                             <Edit className="h-4 w-4" />
                           </Button>
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-400 hover:text-red-500">
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-600 hover:text-red-500">
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>
                       </div>
                       <div className="mt-4 flex items-center gap-4 text-sm">
                         {dept.headcount && (
-                          <div className="flex items-center gap-1 text-gray-400">
+                          <div className="flex items-center gap-1 text-gray-600">
                             <Users className="h-4 w-4" />
                             <span>{dept.headcount}</span>
                           </div>
                         )}
                         {dept.leaderName && (
-                          <div className="flex items-center gap-1 text-gray-400">
+                          <div className="flex items-center gap-1 text-gray-600">
                             <UserCircle className="h-4 w-4" />
                             <span>{dept.leaderName}</span>
                           </div>
@@ -539,7 +539,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-white">Key Stakeholders</h2>
-                  <p className="text-sm text-gray-400">Define executives and decision-makers for playbook coordination</p>
+                  <p className="text-sm text-gray-600">Define executives and decision-makers for playbook coordination</p>
                 </div>
                 <Button onClick={() => setIsStakeholderDialogOpen(true)} data-testid="button-add-stakeholder">
                   <Plus className="h-4 w-4 mr-2" />
@@ -549,7 +549,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {stakeholders.map((sh) => (
-                  <Card key={sh.id} className="bg-gray-800/50 border-gray-700 hover:border-indigo-500/50 transition-all">
+                  <Card key={sh.id} className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
@@ -562,22 +562,22 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                           </div>
                         </div>
                         <div className="flex gap-1">
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-400 hover:text-white">
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-600 hover:text-white">
                             <Edit className="h-4 w-4" />
                           </Button>
                         </div>
                       </div>
                       <div className="mt-4 space-y-2">
-                        <div className="flex items-center gap-2 text-sm text-gray-400">
+                        <div className="flex items-center gap-2 text-sm text-gray-600">
                           <Mail className="h-4 w-4" />
                           <span>{sh.email}</span>
                         </div>
-                        <div className="flex items-center gap-2 text-sm text-gray-400">
+                        <div className="flex items-center gap-2 text-sm text-gray-600">
                           <Building2 className="h-4 w-4" />
                           <span>{sh.department}</span>
                         </div>
                         {sh.approvalLimit && (
-                          <div className="flex items-center gap-2 text-sm text-gray-400">
+                          <div className="flex items-center gap-2 text-sm text-gray-600">
                             <DollarSign className="h-4 w-4" />
                             <span>Approval limit: ${sh.approvalLimit.toLocaleString()}</span>
                           </div>
@@ -606,7 +606,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-white">Escalation Policies</h2>
-                  <p className="text-sm text-gray-400">Define how unacknowledged alerts escalate through your organization</p>
+                  <p className="text-sm text-gray-600">Define how unacknowledged alerts escalate through your organization</p>
                 </div>
                 <Button onClick={() => setIsEscalationDialogOpen(true)} data-testid="button-add-escalation">
                   <Plus className="h-4 w-4 mr-2" />
@@ -616,44 +616,44 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               
               <div className="space-y-4">
                 {escalationPolicies.map((policy) => (
-                  <Card key={policy.id} className="bg-gray-800/50 border-gray-700">
+                  <Card key={policy.id} className="bg-gray-50 border-gray-200">
                     <CardContent className="p-6">
                       <div className="flex items-start justify-between mb-4">
                         <div>
                           <h3 className="font-semibold text-white text-lg">{policy.name}</h3>
-                          <p className="text-sm text-gray-400 mt-1">{policy.description}</p>
+                          <p className="text-sm text-gray-600 mt-1">{policy.description}</p>
                           <Badge className="mt-2 bg-indigo-500/20 text-indigo-400 border-indigo-500/30">
                             {policy.triggerType.replace('_', ' ')}
                           </Badge>
                         </div>
                         <div className="flex gap-1">
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-400 hover:text-white">
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-600 hover:text-white">
                             <Edit className="h-4 w-4" />
                           </Button>
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-400 hover:text-red-500">
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-600 hover:text-red-500">
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>
                       </div>
                       
                       <div className="relative">
-                        <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-700"></div>
+                        <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-50"></div>
                         <div className="space-y-4">
                           {policy.levels.map((level, idx) => (
                             <div key={level.level} className="relative flex items-start gap-4 pl-8">
                               <div className={`absolute left-2 w-4 h-4 rounded-full ${
                                 idx === 0 ? 'bg-green-500' : idx === 1 ? 'bg-yellow-500' : 'bg-red-500'
                               } ring-4 ring-gray-800`}></div>
-                              <div className="flex-1 p-3 bg-gray-700/50 rounded-lg">
+                              <div className="flex-1 p-3 bg-gray-50 rounded-lg">
                                 <div className="flex items-center justify-between">
                                   <span className="font-medium text-white">Level {level.level}</span>
-                                  <div className="flex items-center gap-1 text-sm text-gray-400">
+                                  <div className="flex items-center gap-1 text-sm text-gray-600">
                                     <Clock className="h-4 w-4" />
                                     <span>{level.timeoutMinutes} min</span>
                                   </div>
                                 </div>
                                 <div className="mt-2 flex items-center gap-2">
-                                  <span className="text-sm text-gray-400">Approvers:</span>
+                                  <span className="text-sm text-gray-600">Approvers:</span>
                                   {level.approvers.map((approver) => (
                                     <Badge key={approver} variant="outline" className="text-xs">
                                       {approver}
@@ -661,7 +661,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                                   ))}
                                 </div>
                                 <div className="mt-2 flex items-center gap-2">
-                                  <span className="text-sm text-gray-400">Actions:</span>
+                                  <span className="text-sm text-gray-600">Actions:</span>
                                   {level.actions.map((action) => (
                                     <Badge key={action} className="text-xs bg-blue-500/20 text-blue-400 border-blue-500/30">
                                       {action}
@@ -684,7 +684,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-white">Communication Channels</h2>
-                  <p className="text-sm text-gray-400">Configure how Execution OS will notify stakeholders during activations</p>
+                  <p className="text-sm text-gray-600">Configure how Execution OS will notify stakeholders during activations</p>
                 </div>
                 <Button onClick={() => setIsChannelDialogOpen(true)} data-testid="button-add-channel">
                   <Plus className="h-4 w-4 mr-2" />
@@ -694,7 +694,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {communicationChannels.map((channel) => (
-                  <Card key={channel.id} className={`bg-gray-800/50 border-gray-700 ${channel.isActive ? '' : 'opacity-50'}`}>
+                  <Card key={channel.id} className={`bg-gray-50 border-gray-200 ${channel.isActive ? '' : 'opacity-50'}`}>
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
@@ -708,7 +708,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                           </div>
                           <div>
                             <h3 className="font-semibold text-white">{channel.name}</h3>
-                            <p className="text-sm text-gray-400 capitalize">{channel.channelType}</p>
+                            <p className="text-sm text-gray-600 capitalize">{channel.channelType}</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-2">

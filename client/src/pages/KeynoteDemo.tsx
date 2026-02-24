@@ -109,10 +109,10 @@ function ActivationTimeline() {
           >
             <div className="w-16 text-right font-mono text-sm text-slate-600 dark:text-slate-200">{s.time}</div>
             <div className={`w-10 h-10 rounded-full flex items-center justify-center ${isActive ? 'bg-white/10' : 'bg-white/5'}`}>
-              <Icon className={`h-5 w-5 ${isActive ? s.color : 'text-slate-400'}`} />
+              <Icon className={`h-5 w-5 ${isActive ? s.color : 'text-gray-600'}`} />
             </div>
             <div className="flex-1">
-              <div className={`font-semibold text-sm ${isActive ? 'text-white' : 'text-slate-400'}`}>{s.label}</div>
+              <div className={`font-semibold text-sm ${isActive ? 'text-white' : 'text-gray-600'}`}>{s.label}</div>
               <div className={`text-xs ${isActive ? 'text-slate-600 dark:text-slate-200' : 'text-slate-700'}`}>{s.detail}</div>
             </div>
             {isCurrent && (
@@ -351,7 +351,7 @@ export default function KeynoteDemo() {
           transition={{ delay: 0.6, duration: 0.8 }}
           className="w-full max-w-5xl"
         >
-          <div className="bg-slate-900/80 border border-red-500/30 rounded-2xl overflow-hidden">
+          <div className="bg-white border border-red-500/30 rounded-2xl overflow-hidden">
             <div className="bg-red-950/50 border-b border-red-500/20 px-8 py-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
@@ -418,7 +418,7 @@ export default function KeynoteDemo() {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="w-full max-w-5xl grid grid-cols-2 gap-6"
         >
-          <div className="bg-slate-900/80 border border-purple-500/20 rounded-2xl p-8">
+          <div className="bg-white border border-purple-500/20 rounded-2xl p-8">
             <div className="flex items-center gap-3 mb-6">
               <Brain className="h-8 w-8 text-purple-400" />
               <h3 className="text-xl font-semibold text-white">Key Insights</h3>
@@ -449,7 +449,7 @@ export default function KeynoteDemo() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="bg-slate-900/80 border border-purple-500/20 rounded-2xl p-8"
+              className="bg-white border border-purple-500/20 rounded-2xl p-8"
             >
               <h3 className="text-lg font-semibold text-white mb-4">AI Confidence Score</h3>
               <div className="flex items-end gap-4">
@@ -460,7 +460,7 @@ export default function KeynoteDemo() {
                   Based on {signal?.aiAnalysis?.dataPointsAnalyzed || 847} data points analyzed
                 </div>
               </div>
-              <div className="mt-4 h-3 bg-slate-800 rounded-full overflow-hidden">
+              <div className="mt-4 h-3 bg-gray-50 rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${signal?.aiConfidence || 94}%` }}
@@ -474,7 +474,7 @@ export default function KeynoteDemo() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.6 }}
-              className="bg-slate-900/80 border border-amber-500/20 rounded-2xl p-8"
+              className="bg-white border border-amber-500/20 rounded-2xl p-8"
             >
               <h3 className="text-lg font-semibold text-white mb-4">Cost of Inaction</h3>
               <div className="grid grid-cols-2 gap-4">
@@ -513,8 +513,8 @@ export default function KeynoteDemo() {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="w-full max-w-5xl"
         >
-          <div className="bg-slate-900/80 border border-cyan-500/30 rounded-2xl overflow-hidden">
-            <div className="bg-gradient-to-r from-cyan-950/50 to-indigo-950/50 border-b border-cyan-500/20 px-8 py-5 flex items-center justify-between">
+          <div className="bg-white border border-cyan-500/30 rounded-2xl overflow-hidden">
+            <div className="bg-gradient-to-r   border-b border-cyan-500/20 px-8 py-5 flex items-center justify-between">
               <div>
                 <span className="text-cyan-400 text-sm font-medium">RECOMMENDED PLAYBOOK</span>
                 <h3 className="text-2xl font-bold text-white mt-1">
@@ -623,7 +623,7 @@ export default function KeynoteDemo() {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="w-full max-w-4xl"
         >
-          <div className="bg-slate-900/80 border border-indigo-500/30 rounded-2xl p-10">
+          <div className="bg-white border border-indigo-500/30 rounded-2xl p-10">
             <div className="flex items-center gap-6 mb-8">
               <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center">
                 <Brain className="h-8 w-8 text-white" />
@@ -649,7 +649,7 @@ export default function KeynoteDemo() {
 
             <div className="flex items-center justify-between p-6 bg-white/5 rounded-xl">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center text-white font-semibold text-lg">JP</div>
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-slate-600 flex items-center justify-center text-white font-semibold text-lg">JP</div>
                 <div>
                   <div className="text-white font-semibold">Jennifer Park, CEO</div>
                   <div className="text-slate-600 dark:text-slate-200 text-sm">Decision Authority</div>
@@ -698,7 +698,7 @@ export default function KeynoteDemo() {
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
-                className="bg-slate-900/80 border border-green-500/20 rounded-2xl p-6 h-full"
+                className="bg-white border border-green-500/20 rounded-2xl p-6 h-full"
               >
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-semibold text-white">Execution Timeline</h3>
@@ -716,7 +716,7 @@ export default function KeynoteDemo() {
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
-                className="bg-slate-900/80 border border-blue-500/20 rounded-2xl p-6"
+                className="bg-white border border-blue-500/20 rounded-2xl p-6"
               >
                 <h3 className="text-lg font-semibold text-white mb-4">Coordination Metrics</h3>
                 <div className="grid grid-cols-2 gap-4">
@@ -738,7 +738,7 @@ export default function KeynoteDemo() {
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.7, duration: 0.6 }}
-                className="bg-slate-900/80 border border-amber-500/20 rounded-2xl p-6"
+                className="bg-white border border-amber-500/20 rounded-2xl p-6"
               >
                 <h3 className="text-lg font-semibold text-white mb-4">Integration Activity</h3>
                 <div className="space-y-3">
@@ -781,7 +781,7 @@ export default function KeynoteDemo() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + i * 0.2, duration: 0.6 }}
-              className={`bg-slate-900/80 ${phase.border} border rounded-2xl overflow-hidden`}
+              className={`bg-white ${phase.border} border rounded-2xl overflow-hidden`}
             >
               <div className={`bg-gradient-to-br ${phase.color} p-6 text-center`}>
                 <phase.icon className="h-10 w-10 text-white mx-auto mb-3" />
@@ -997,7 +997,7 @@ export default function KeynoteDemo() {
           className="mt-12 flex items-center gap-3"
         >
           <div className="h-px w-16 bg-gradient-to-r from-transparent to-slate-600" />
-          <span className="text-slate-400 text-sm">executeiq.io</span>
+          <span className="text-gray-600 text-sm">executeiq.io</span>
           <div className="h-px w-16 bg-gradient-to-l from-transparent to-slate-600" />
         </motion.div>
       </div>
@@ -1008,11 +1008,11 @@ export default function KeynoteDemo() {
 
   return (
     <div
-      className="relative min-h-screen bg-slate-950 overflow-hidden cursor-none"
+      className="relative min-h-screen bg-white overflow-hidden cursor-none"
       onMouseMove={handleMouseMove}
       onClick={next}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] to-black" />
 
       <AnimatePresence mode="wait">
         <motion.div

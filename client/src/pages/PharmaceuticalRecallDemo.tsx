@@ -42,11 +42,11 @@ export default function PharmaceuticalRecallDemo() {
   };
 
   return (
-    <div className="page-background min-h-screen bg-gradient-to-br from-slate-950 via-red-950 to-slate-900">
+    <div className="page-background min-h-screen bg-gradient-to-br ">
       <DemoNavHeader title="Pharmaceutical Recall Demo" showBackButton={true} />
 
       {/* Act Navigation */}
-      <div className="border-b border-red-800/20 bg-slate-950/30 pt-20">
+      <div className="border-b border-red-800/20 bg-white pt-20">
         <div className="container mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
             {[
@@ -78,7 +78,7 @@ export default function PharmaceuticalRecallDemo() {
         {/* ACT 1: INTRODUCTION */}
         {currentAct === "intro" && (
           <div className="max-w-5xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-red-800/30">
+            <Card className="p-8 bg-white border-red-800/30">
               <div className="text-center mb-8">
                 <Heart className="w-16 h-16 text-red-400 mx-auto mb-4" />
                 <h2 className="text-3xl font-bold text-white mb-3">{pharmaDemoData.crisis.title}</h2>
@@ -111,7 +111,7 @@ export default function PharmaceuticalRecallDemo() {
                   </div>
                 </div>
 
-                <div className="p-6 bg-slate-900/50 rounded-lg border border-red-800/30">
+                <div className="p-6 bg-white rounded-lg border border-red-800/30">
                   <h3 className="font-bold text-white mb-4">What Happened (May-June 2024)</h3>
                   <ul className="space-y-2 text-sm text-red-200">
                     <li>• Week 1-3: Internal investigation</li>
@@ -124,7 +124,7 @@ export default function PharmaceuticalRecallDemo() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-red-950/50 to-rose-950/50 border border-red-700 rounded-lg p-6 mb-8">
+              <div className="bg-gradient-to-r   border border-red-700 rounded-lg p-6 mb-8">
                 <div className="flex items-start gap-4">
                   <ShieldAlert className="w-8 h-8 text-red-400 flex-shrink-0 mt-1" />
                   <div>
@@ -157,7 +157,7 @@ export default function PharmaceuticalRecallDemo() {
         {/* ACT 2: AI DETECTION */}
         {currentAct === "detection" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-red-800/30">
+            <Card className="p-8 bg-white border-red-800/30">
               <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                 <ShieldAlert className="w-8 h-8 text-red-400" />
                 AI Quality Monitoring Detects Critical Failure
@@ -206,7 +206,7 @@ export default function PharmaceuticalRecallDemo() {
         {/* ACT 3: 12-MINUTE COORDINATION */}
         {currentAct === "coordination" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-red-800/30">
+            <Card className="p-8 bg-white border-red-800/30">
               <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                 <Clock className="w-8 h-8 text-red-400" />
                 12-Minute Coordinated Response Across 2,052 Stakeholders
@@ -268,7 +268,7 @@ export default function PharmaceuticalRecallDemo() {
         {/* ACT 4: ROI OUTCOME */}
         {currentAct === "outcome" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-green-800/30">
+            <Card className="p-8 bg-white border-green-800/30">
               <div className="text-center mb-8">
                 <Heart className="w-16 h-16 text-green-400 mx-auto mb-4" />
                 <h2 className="text-3xl font-bold text-white mb-3">A Life Saved</h2>

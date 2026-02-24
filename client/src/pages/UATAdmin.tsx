@@ -492,14 +492,14 @@ export default function UATAdmin() {
                   </CardHeader>
                   <CardContent>
                     {orgLoading ? (
-                      <p className="text-sm text-gray-500">Loading organizations...</p>
+                      <p className="text-sm text-gray-600">Loading organizations...</p>
                     ) : (
                       <div className="space-y-3">
                         {(organizations as UATOrganization[]).slice(0, 5).map((org: UATOrganization) => (
                           <div key={org.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                             <div>
                               <p className="font-medium">{org.name}</p>
-                              <p className="text-xs text-gray-500">{org.domain} • {org.type}</p>
+                              <p className="text-xs text-gray-600">{org.domain} • {org.type}</p>
                             </div>
                             <Badge variant={org.status === 'Active' ? 'secondary' : 'destructive'}>
                               {org.status}
@@ -521,18 +521,18 @@ export default function UATAdmin() {
                   </CardHeader>
                   <CardContent>
                     {usersLoading ? (
-                      <p className="text-sm text-gray-500">Loading users...</p>
+                      <p className="text-sm text-gray-600">Loading users...</p>
                     ) : (
                       <div className="space-y-3">
                         {(users as UATUser[]).slice(0, 5).map((user: UATUser) => (
                           <div key={user.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                             <div>
                               <p className="font-medium">{user.firstName} {user.lastName}</p>
-                              <p className="text-xs text-gray-500">{user.email}</p>
+                              <p className="text-xs text-gray-600">{user.email}</p>
                             </div>
                             <div className="text-right">
                               <p className="text-xs font-medium">{user.department}</p>
-                              <p className="text-xs text-gray-500">{user.team}</p>
+                              <p className="text-xs text-gray-600">{user.team}</p>
                             </div>
                           </div>
                         ))}
@@ -558,7 +558,7 @@ export default function UATAdmin() {
                 </CardHeader>
                 <CardContent>
                   {decisionsLoading ? (
-                    <p className="text-sm text-gray-500">Loading decision outcomes...</p>
+                    <p className="text-sm text-gray-600">Loading decision outcomes...</p>
                   ) : (
                     <div className="space-y-4">
                       {(decisionOutcomes as DecisionOutcome[]).slice(0, 3).map((decision: DecisionOutcome) => (
@@ -567,7 +567,7 @@ export default function UATAdmin() {
                             <div className="flex-1 page-background">
                               <p className="font-medium">{decision.decisionType}</p>
                               <p className="text-sm text-gray-600 mt-1">{decision.decisionDescription}</p>
-                              <div className="flex items-center gap-4 mt-2 text-xs text-gray-500">
+                              <div className="flex items-center gap-4 mt-2 text-xs text-gray-600">
                                 <span>Org: {decision.organizationId}</span>
                                 {decision.scenarioId && <span>Scenario: {decision.scenarioId}</span>}
                                 <span>{new Date(decision.createdAt).toLocaleString()}</span>

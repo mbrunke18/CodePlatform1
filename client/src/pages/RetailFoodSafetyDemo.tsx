@@ -42,11 +42,11 @@ export default function RetailFoodSafetyDemo() {
   };
 
   return (
-    <div className="page-background min-h-screen bg-gradient-to-br from-slate-950 via-emerald-950 to-slate-900">
+    <div className="page-background min-h-screen bg-gradient-to-br ">
       <DemoNavHeader title="Retail Food Safety Demo" showBackButton={true} />
 
       {/* Act Navigation */}
-      <div className="border-b border-emerald-800/20 bg-slate-950/30 pt-20">
+      <div className="border-b border-emerald-800/20 bg-white pt-20">
         <div className="container mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
             {[
@@ -78,7 +78,7 @@ export default function RetailFoodSafetyDemo() {
         {/* ACT 1: INTRODUCTION */}
         {currentAct === "intro" && (
           <div className="max-w-5xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-emerald-800/30">
+            <Card className="p-8 bg-white border-emerald-800/30">
               <div className="text-center mb-8">
                 <ShoppingCart className="w-16 h-16 text-emerald-400 mx-auto mb-4" />
                 <h2 className="text-3xl font-bold text-white mb-3">{retailDemoData.crisis.title}</h2>
@@ -111,7 +111,7 @@ export default function RetailFoodSafetyDemo() {
                   </div>
                 </div>
 
-                <div className="p-6 bg-slate-900/50 rounded-lg border border-emerald-800/30">
+                <div className="p-6 bg-white rounded-lg border border-emerald-800/30">
                   <h3 className="font-bold text-white mb-4">Traditional Recall Timeline</h3>
                   <ul className="space-y-2 text-sm text-emerald-200">
                     <li>• Week 1: QA detects contamination, internal investigation</li>
@@ -124,7 +124,7 @@ export default function RetailFoodSafetyDemo() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-emerald-950/50 to-green-950/50 border border-emerald-700 rounded-lg p-6 mb-8">
+              <div className="bg-gradient-to-r   border border-emerald-700 rounded-lg p-6 mb-8">
                 <div className="flex items-start gap-4">
                   <ShieldAlert className="w-8 h-8 text-emerald-400 flex-shrink-0 mt-1" />
                   <div>
@@ -176,7 +176,7 @@ export default function RetailFoodSafetyDemo() {
         {/* ACT 2: AI DETECTION */}
         {currentAct === "detection" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-emerald-800/30">
+            <Card className="p-8 bg-white border-emerald-800/30">
               <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                 <ShieldAlert className="w-8 h-8 text-emerald-400" />
                 AI Quality Control Detects Food Safety Crisis
@@ -225,7 +225,7 @@ export default function RetailFoodSafetyDemo() {
         {/* ACT 3: COORDINATED RESPONSE */}
         {currentAct === "coordination" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-emerald-800/30">
+            <Card className="p-8 bg-white border-emerald-800/30">
               <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                 <Clock className="w-8 h-8 text-emerald-400" />
                 1-Hour Coordinated Response Across 5,000 Stakeholders
@@ -311,7 +311,7 @@ export default function RetailFoodSafetyDemo() {
         {/* ACT 4: OUTCOME */}
         {currentAct === "outcome" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-slate-900/50 border-emerald-800/30">
+            <Card className="p-8 bg-white border-emerald-800/30">
               <div className="text-center mb-8">
                 <Heart className="w-16 h-16 text-emerald-400 mx-auto mb-4" />
                 <h2 className="text-3xl font-bold text-white mb-3">Lives Saved Through Rapid Coordination</h2>
@@ -343,7 +343,7 @@ export default function RetailFoodSafetyDemo() {
                 }}
               />
 
-              <div className="mt-8 p-6 bg-gradient-to-r from-emerald-950/50 to-green-950/50 border border-emerald-600 rounded-lg">
+              <div className="mt-8 p-6 bg-gradient-to-r   border border-emerald-600 rounded-lg">
                 <h3 className="font-bold text-white mb-4 text-center text-xl">The Execution OS Difference</h3>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>

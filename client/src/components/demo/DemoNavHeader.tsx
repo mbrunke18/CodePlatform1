@@ -26,7 +26,7 @@ export default function DemoNavHeader({
 
   return (
     <header 
-      className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-white/10"
+      className="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-md border-b border-white/10"
       data-testid="demo-nav-header"
     >
       <div className="container mx-auto px-6 py-4">

@@ -35,7 +35,7 @@ export default function VideoLanding() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-950" data-testid="page-video-landing">
+    <div className="min-h-screen bg-white" data-testid="page-video-landing">
       <StandardNav />
       
       <div className="pt-20">
@@ -58,7 +58,7 @@ export default function VideoLanding() {
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full max-w-2xl grid-cols-3 bg-slate-800/50 mb-8" data-testid="video-tabs">
+            <TabsList className="grid w-full max-w-2xl grid-cols-3 bg-gray-50 mb-8" data-testid="video-tabs">
               <TabsTrigger 
                 value="90-second" 
                 className="data-[state=active]:bg-emerald-600"
@@ -94,7 +94,7 @@ export default function VideoLanding() {
                   Purpose: Trade show booth loop, conference opener, website hero, investor meetings
                 </p>
               </div>
-              <div className="rounded-xl overflow-hidden border border-slate-800">
+              <div className="rounded-xl overflow-hidden border border-gray-200">
                 <CinematicHero />
               </div>
             </TabsContent>
@@ -108,7 +108,7 @@ export default function VideoLanding() {
                   Purpose: Conference sessions, investor presentations, sales meetings, website
                 </p>
               </div>
-              <div className="rounded-xl overflow-hidden border border-slate-800">
+              <div className="rounded-xl overflow-hidden border border-gray-200">
                 <SizzleReel />
               </div>
             </TabsContent>
@@ -129,7 +129,7 @@ export default function VideoLanding() {
                     Version 1: "Offense, Defense, Special Teams"
                   </h3>
                   <p className="text-slate-300 text-sm mb-3">Best for: Trade shows, LinkedIn, brand awareness</p>
-                  <div className="rounded-xl overflow-hidden border border-slate-800">
+                  <div className="rounded-xl overflow-hidden border border-gray-200">
                     <ThirtySecondSpot version="offense-defense" />
                   </div>
                 </div>
@@ -139,7 +139,7 @@ export default function VideoLanding() {
                     Version 2: "The First Mover"
                   </h3>
                   <p className="text-slate-300 text-sm mb-3">Best for: Competitive positioning, executive audience</p>
-                  <div className="rounded-xl overflow-hidden border border-slate-800">
+                  <div className="rounded-xl overflow-hidden border border-gray-200">
                     <ThirtySecondSpot version="first-mover" />
                   </div>
                 </div>
@@ -149,7 +149,7 @@ export default function VideoLanding() {
                     Version 3: "360X Faster"
                   </h3>
                   <p className="text-slate-300 text-sm mb-3">Best for: Metric-driven audiences, performance marketing</p>
-                  <div className="rounded-xl overflow-hidden border border-slate-800">
+                  <div className="rounded-xl overflow-hidden border border-gray-200">
                     <ThirtySecondSpot version="360x-faster" />
                   </div>
                 </div>
@@ -159,7 +159,7 @@ export default function VideoLanding() {
         </div>
       </div>
 
-      <section className="py-20 px-6 bg-gradient-to-b from-slate-950 to-slate-900">
+      <section className="py-20 px-6 bg-gradient-to-b">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
@@ -174,7 +174,7 @@ export default function VideoLanding() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="bg-slate-800/50 border-slate-700 hover:border-emerald-500/50 transition-colors">
+            <Card className="bg-gray-50 border-gray-200 hover:border-emerald-500/50 transition-colors">
               <CardContent className="p-6">
                 <Clock className="h-10 w-10 text-emerald-400 mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">12-Minute Execution</h3>
@@ -184,7 +184,7 @@ export default function VideoLanding() {
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-800/50 border-slate-700 hover:border-blue-500/50 transition-colors">
+            <Card className="bg-gray-50 border-gray-200 hover:border-blue-500/50 transition-colors">
               <CardContent className="p-6">
                 <Users className="h-10 w-10 text-blue-400 mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">Coordinated Response</h3>
@@ -194,7 +194,7 @@ export default function VideoLanding() {
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-800/50 border-slate-700 hover:border-purple-500/50 transition-colors">
+            <Card className="bg-gray-50 border-gray-200 hover:border-purple-500/50 transition-colors">
               <CardContent className="p-6">
                 <Zap className="h-10 w-10 text-purple-400 mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">AI-Powered Monitoring</h3>
@@ -207,7 +207,7 @@ export default function VideoLanding() {
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-slate-900">
+      <section className="py-20 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to Execute at the Speed of Change?
@@ -239,7 +239,7 @@ export default function VideoLanding() {
         </div>
       </section>
 
-      <footer className="py-8 px-6 bg-slate-950 border-t border-slate-800">
+      <footer className="py-8 px-6 bg-white border-t border-gray-200">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-slate-300 text-sm">
             Execution OS - Strategic Execution Operating System

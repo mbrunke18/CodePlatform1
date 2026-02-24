@@ -223,7 +223,7 @@ export default function GuidedOverlay() {
         className={`fixed top-4 right-4 z-[10000] ${state.presentationMode ? 'top-6 right-6' : ''}`}
         data-testid="demo-control-bar"
       >
-        <Card className="bg-gray-900/95 border-blue-500/50 shadow-2xl backdrop-blur-md">
+        <Card className="bg-white border-blue-500/50 shadow-2xl backdrop-blur-md">
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
               {/* Demo Info */}
@@ -307,7 +307,7 @@ export default function GuidedOverlay() {
             </div>
 
             {/* Progress Bar */}
-            <div className="mt-2 w-full bg-gray-700/50 rounded-full h-1">
+            <div className="mt-2 w-full bg-gray-50 rounded-full h-1">
               <div 
                 className="bg-blue-500 h-1 rounded-full transition-all duration-1000"
                 style={{ width: `${state.progress}%` }}
@@ -329,7 +329,7 @@ export default function GuidedOverlay() {
           style={{ bottom: state.presentationMode ? '44vh' : '42vh' }}
           data-testid="demo-narration-card"
         >
-          <Card className="bg-gray-900/95 border-blue-500/50 shadow-2xl backdrop-blur-sm max-h-64 overflow-hidden flex flex-col">
+          <Card className="bg-white border-blue-500/50 shadow-2xl backdrop-blur-sm max-h-64 overflow-hidden flex flex-col">
             <CardContent className="p-4 overflow-y-auto">
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0">
@@ -372,7 +372,7 @@ export default function GuidedOverlay() {
           className={`fixed inset-4 z-[10001] flex items-center justify-center ${state.presentationMode ? 'inset-6' : ''}`}
           data-testid="demo-decision-card"
         >
-          <Card className="bg-gray-900/98 border-blue-500/70 shadow-2xl backdrop-blur-lg max-w-6xl w-full max-h-[90vh] overflow-hidden">
+          <Card className="bg-white border-blue-500/70 shadow-2xl backdrop-blur-lg max-w-6xl w-full max-h-[90vh] overflow-hidden">
             <CardContent className="p-8 overflow-y-auto max-h-[90vh]">
               <div className="text-center mb-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -381,7 +381,7 @@ export default function GuidedOverlay() {
                 <h2 className="text-2xl font-bold text-white mb-2">
                   {currentSceneData.title}
                 </h2>
-                <p className="text-gray-500 dark:text-gray-300 text-base">
+                <p className="text-gray-600 dark:text-gray-300 text-base">
                   {currentSceneData.narration}
                 </p>
               </div>
@@ -417,7 +417,7 @@ export default function GuidedOverlay() {
           className="fixed left-6 top-1/2 transform -translate-y-1/2 z-[10000] w-64"
           data-testid="demo-scene-preview"
         >
-          <Card className="bg-gray-900/95 border-blue-500/50 shadow-2xl backdrop-blur-md">
+          <Card className="bg-white border-blue-500/50 shadow-2xl backdrop-blur-md">
             <CardContent className="p-4">
               <h4 className="text-white font-semibold mb-3">Demo Scenes</h4>
               <div className="space-y-2 max-h-64 overflow-y-auto">

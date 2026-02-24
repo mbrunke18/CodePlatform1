@@ -88,12 +88,12 @@ export default function NavigationBar() {
             onClick={() => navigateAndClose('/')}
             data-testid="nav-logo"
           >
-            <div className="w-10 h-10 bg-slate-900 dark:bg-slate-100 rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-white dark:bg-slate-100 rounded-lg flex items-center justify-center">
               <span className="text-white dark:text-slate-900 font-bold text-xl">P</span>
             </div>
             <div>
               <span className="text-xl font-bold text-slate-900 dark:text-white">Execution OS</span>
-              <span className="text-xs block text-slate-400 dark:text-slate-300">Strategic Execution OS</span>
+              <span className="text-xs block text-gray-600 dark:text-slate-300">Strategic Execution OS</span>
             </div>
           </div>
 
@@ -103,7 +103,7 @@ export default function NavigationBar() {
               <NavigationMenuList>
                 {/* Product */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-slate-700 dark:text-slate-300 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-slate-800">
+                  <NavigationMenuTrigger className="text-slate-700 dark:text-slate-300 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-gray-50">
                     Product
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -125,7 +125,7 @@ export default function NavigationBar() {
                                 {(link as any).featured && <span className="text-xs px-2 py-0.5 bg-blue-600 dark:bg-blue-500 text-white rounded-full">NEW</span>}
                                 {link.title}
                               </div>
-                              <p className="line-clamp-2 text-sm leading-snug text-slate-400 dark:text-slate-300">
+                              <p className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-slate-300">
                                 {link.description}
                               </p>
                             </button>
@@ -138,7 +138,7 @@ export default function NavigationBar() {
 
                 {/* Solutions */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-slate-700 dark:text-slate-300 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-slate-800">
+                  <NavigationMenuTrigger className="text-slate-700 dark:text-slate-300 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-gray-50">
                     Solutions
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -153,7 +153,7 @@ export default function NavigationBar() {
                               className="w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-blue-50 dark:hover:bg-slate-700 hover:text-blue-700 dark:hover:text-blue-400 focus:bg-blue-50 dark:focus:bg-slate-700 focus:text-blue-700 dark:focus:text-blue-400"
                             >
                               <div className="text-sm font-medium leading-none text-slate-900 dark:text-slate-100">{link.title}</div>
-                              <p className="line-clamp-2 text-sm leading-snug text-slate-400 dark:text-slate-300">
+                              <p className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-slate-300">
                                 {link.description}
                               </p>
                             </button>
@@ -166,7 +166,7 @@ export default function NavigationBar() {
 
                 {/* Dynamic Strategy */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-slate-700 dark:text-slate-300 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-slate-800 font-semibold">
+                  <NavigationMenuTrigger className="text-slate-700 dark:text-slate-300 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-gray-50 font-semibold">
                     <span className="flex items-center gap-1">
                       Dynamic Strategy
                       <span className="text-xs px-2 py-0.5 bg-blue-600 dark:bg-blue-500 text-white rounded-full ml-1">NEW</span>
@@ -190,7 +190,7 @@ export default function NavigationBar() {
                               <div className={`text-sm font-medium leading-none ${(link as any).featured ? 'text-blue-700 dark:text-blue-400' : 'text-slate-900 dark:text-slate-100'}`}>
                                 {link.title}
                               </div>
-                              <p className="line-clamp-2 text-sm leading-snug text-slate-400 dark:text-slate-300">
+                              <p className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-slate-300">
                                 {link.description}
                               </p>
                             </button>
@@ -203,7 +203,7 @@ export default function NavigationBar() {
 
                 {/* Resources */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-slate-700 dark:text-slate-300 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-slate-800">
+                  <NavigationMenuTrigger className="text-slate-700 dark:text-slate-300 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-gray-50">
                     Resources
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -221,7 +221,7 @@ export default function NavigationBar() {
                               className="w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-blue-50 dark:hover:bg-slate-700 hover:text-blue-700 dark:hover:text-blue-400 focus:bg-blue-50 dark:focus:bg-slate-700 focus:text-blue-700 dark:focus:text-blue-400 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                               <div className="text-sm font-medium leading-none text-slate-900 dark:text-slate-100">{link.title}</div>
-                              <p className="line-clamp-2 text-sm leading-snug text-slate-400 dark:text-slate-300">
+                              <p className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-slate-300">
                                 {link.description}
                               </p>
                             </button>
@@ -234,7 +234,7 @@ export default function NavigationBar() {
 
                 {/* Company */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-slate-700 dark:text-slate-300 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-slate-800">
+                  <NavigationMenuTrigger className="text-slate-700 dark:text-slate-300 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-gray-50">
                     Company
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -252,7 +252,7 @@ export default function NavigationBar() {
                               className="w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-blue-50 dark:hover:bg-slate-700 hover:text-blue-700 dark:hover:text-blue-400 focus:bg-blue-50 dark:focus:bg-slate-700 focus:text-blue-700 dark:focus:text-blue-400 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                               <div className="text-sm font-medium leading-none text-slate-900 dark:text-slate-100">{link.title}</div>
-                              <p className="line-clamp-2 text-sm leading-snug text-slate-400 dark:text-slate-300">
+                              <p className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-slate-300">
                                 {link.description}
                               </p>
                             </button>
@@ -275,9 +275,9 @@ export default function NavigationBar() {
               aria-label="Toggle theme"
             >
               {isDark ? (
-                <Sun className="h-5 w-5 text-slate-400 dark:text-slate-300" />
+                <Sun className="h-5 w-5 text-gray-600 dark:text-slate-300" />
               ) : (
-                <Moon className="h-5 w-5 text-slate-400 dark:text-slate-300" />
+                <Moon className="h-5 w-5 text-gray-600 dark:text-slate-300" />
               )}
             </button>
             <Button
@@ -319,7 +319,7 @@ export default function NavigationBar() {
                               e.preventDefault();
                               navigateAndClose(link.href);
                             }}
-                            className="text-slate-400 hover:text-blue-600 block py-1"
+                            className="text-gray-600 hover:text-blue-600 block py-1"
                           >
                             {link.title}
                           </a>
@@ -340,7 +340,7 @@ export default function NavigationBar() {
                               e.preventDefault();
                               navigateAndClose(link.href);
                             }}
-                            className="text-slate-400 hover:text-blue-600 block py-1"
+                            className="text-gray-600 hover:text-blue-600 block py-1"
                           >
                             {link.title}
                           </a>
@@ -357,7 +357,7 @@ export default function NavigationBar() {
                         <li key={link.href}>
                           <a
                             href={link.href}
-                            className="text-slate-400 hover:text-blue-600 block py-1"
+                            className="text-gray-600 hover:text-blue-600 block py-1"
                           >
                             {link.title}
                           </a>
@@ -374,7 +374,7 @@ export default function NavigationBar() {
                         <li key={link.href}>
                           <a
                             href={link.href}
-                            className="text-slate-400 hover:text-blue-600 block py-1"
+                            className="text-gray-600 hover:text-blue-600 block py-1"
                           >
                             {link.title}
                           </a>

@@ -32,7 +32,7 @@ export function PowerfulCTA() {
 
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50" data-testid="powerful-cta">
-      <Card className="bg-gradient-to-r from-blue-950 via-purple-950 to-indigo-950 border-blue-500 shadow-2xl backdrop-blur-sm">
+      <Card className="bg-white border-blue-500 shadow-2xl backdrop-blur-sm">
         <div className="p-6 space-y-4 max-w-3xl">
           {/* Main CTA */}
           <div className="text-center space-y-3">

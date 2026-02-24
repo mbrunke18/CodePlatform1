@@ -25,7 +25,7 @@ export default function NotFound() {
             <div className="flex gap-3">
               <Button
                 onClick={() => setLocation('/')}
-                className="flex-1 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200"
+                className="flex-1 bg-white dark:bg-slate-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200"
               >
                 <Home className="mr-2 h-4 w-4" />
                 Go Home

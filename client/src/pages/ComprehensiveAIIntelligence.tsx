@@ -392,7 +392,7 @@ export default function ComprehensiveAIIntelligence() {
 
         {/* System Overview */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Processing Power</h3>
@@ -403,7 +403,7 @@ export default function ComprehensiveAIIntelligence() {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Active Modules</h3>
@@ -414,7 +414,7 @@ export default function ComprehensiveAIIntelligence() {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Daily Insights</h3>
@@ -425,7 +425,7 @@ export default function ComprehensiveAIIntelligence() {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Accuracy Rate</h3>
@@ -436,7 +436,7 @@ export default function ComprehensiveAIIntelligence() {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">System Health</h3>
@@ -450,12 +450,12 @@ export default function ComprehensiveAIIntelligence() {
 
         {/* Main Intelligence Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="bg-slate-800/50 border border-slate-700/50">
-            <TabsTrigger value="dashboard" className="data-[state=active]:bg-slate-700">AI Dashboard</TabsTrigger>
-            <TabsTrigger value="modules" className="data-[state=active]:bg-slate-700">AI Modules</TabsTrigger>
-            <TabsTrigger value="reports" className="data-[state=active]:bg-slate-700">Intelligence Reports</TabsTrigger>
-            <TabsTrigger value="insights" className="data-[state=active]:bg-slate-700">Live Insights</TabsTrigger>
-            <TabsTrigger value="configuration" className="data-[state=active]:bg-slate-700">Configuration</TabsTrigger>
+          <TabsList className="bg-gray-50 border border-gray-200">
+            <TabsTrigger value="dashboard" className="data-[state=active]:bg-gray-50">AI Dashboard</TabsTrigger>
+            <TabsTrigger value="modules" className="data-[state=active]:bg-gray-50">AI Modules</TabsTrigger>
+            <TabsTrigger value="reports" className="data-[state=active]:bg-gray-50">Intelligence Reports</TabsTrigger>
+            <TabsTrigger value="insights" className="data-[state=active]:bg-gray-50">Live Insights</TabsTrigger>
+            <TabsTrigger value="configuration" className="data-[state=active]:bg-gray-50">Configuration</TabsTrigger>
           </TabsList>
 
           {/* AI Dashboard */}
@@ -463,7 +463,7 @@ export default function ComprehensiveAIIntelligence() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               
               {/* Module Status Overview */}
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <Brain className="h-5 w-5" />
@@ -472,7 +472,7 @@ export default function ComprehensiveAIIntelligence() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {aiModules.map((module) => (
-                    <div key={module.id} className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg">
+                    <div key={module.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center gap-3">
                         <div className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg">
                           {module.icon}
@@ -497,7 +497,7 @@ export default function ComprehensiveAIIntelligence() {
               </Card>
 
               {/* Recent Intelligence Activity */}
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <Clock className="h-5 w-5" />
@@ -506,21 +506,21 @@ export default function ComprehensiveAIIntelligence() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg">
+                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
                       <div className="flex-1 page-background">
                         <div className="text-sm text-white">Pulse Intelligence generated performance metrics</div>
                         <div className="text-xs text-slate-600 dark:text-slate-200">Real-time • Confidence: 96.4%</div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg">
+                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <div className="w-2 h-2 bg-blue-400 rounded-full" />
                       <div className="flex-1 page-background">
                         <div className="text-sm text-white">Nova identified breakthrough innovation opportunity</div>
                         <div className="text-xs text-slate-600 dark:text-slate-200">2 min ago • Impact: $750K potential</div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg">
+                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <div className="w-2 h-2 bg-purple-400 rounded-full" />
                       <div className="flex-1 page-background">
                         <div className="text-sm text-white">Prism completed strategic market analysis</div>
@@ -537,7 +537,7 @@ export default function ComprehensiveAIIntelligence() {
           <TabsContent value="modules" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
               {aiModules.map((module) => (
-                <Card key={module.id} className="bg-slate-900/50 border-slate-700/50 hover:bg-slate-800/50 transition-all duration-300">
+                <Card key={module.id} className="bg-white border-gray-200 hover:bg-slate-800/50 transition-all duration-300">
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <CardTitle className="text-white flex items-center gap-3">
@@ -608,7 +608,7 @@ export default function ComprehensiveAIIntelligence() {
           <TabsContent value="reports" className="space-y-6">
             <div className="space-y-4">
               {intelligenceReports.map((report) => (
-                <Card key={report.id} className="bg-slate-900/50 border-slate-700/50">
+                <Card key={report.id} className="bg-white border-gray-200">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1 page-background">
@@ -655,7 +655,7 @@ export default function ComprehensiveAIIntelligence() {
                       </div>
                     </div>
                     
-                    <div className="mt-4 pt-4 border-t border-slate-700 flex items-center justify-between">
+                    <div className="mt-4 pt-4 border-t border-gray-200 flex items-center justify-between">
                       <div className="text-xs text-slate-300">
                         Generated: {new Date(report.timestamp).toLocaleString()}
                       </div>
@@ -685,7 +685,7 @@ export default function ComprehensiveAIIntelligence() {
               {dbReportsLoading ? (
                 <div className="space-y-4">
                   {[1, 2, 3].map((i) => (
-                    <Card key={i} className="bg-slate-900/50 border-slate-700/50">
+                    <Card key={i} className="bg-white border-gray-200">
                       <CardContent className="p-6 space-y-4">
                         <div className="flex items-center gap-3">
                           <Skeleton className="h-6 w-48" />
@@ -704,7 +704,7 @@ export default function ComprehensiveAIIntelligence() {
               ) : dbReports && dbReports.length > 0 ? (
                 <div className="space-y-4">
                   {dbReports.map((report) => (
-                    <Card key={report.id} className="bg-slate-900/50 border-slate-700/50">
+                    <Card key={report.id} className="bg-white border-gray-200">
                       <CardHeader>
                         <div className="flex items-center justify-between">
                           <CardTitle className="text-white flex items-center gap-3">
@@ -736,7 +736,7 @@ export default function ComprehensiveAIIntelligence() {
                   ))}
                 </div>
               ) : (
-                <Card className="bg-slate-900/50 border-slate-700/50">
+                <Card className="bg-white border-gray-200">
                   <CardContent className="p-8 text-center">
                     <Database className="h-12 w-12 mx-auto mb-3 text-slate-300" />
                     <p className="text-slate-600 dark:text-slate-200">No intelligence reports found in the database.</p>
@@ -757,7 +757,7 @@ export default function ComprehensiveAIIntelligence() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {aiModules.filter(m => m.insights.length > 0).map((module) => (
-                <Card key={module.id} className="bg-slate-900/50 border-slate-700/50">
+                <Card key={module.id} className="bg-white border-gray-200">
                   <CardHeader>
                     <CardTitle className="text-white flex items-center gap-2">
                       {module.icon}
@@ -778,7 +778,7 @@ export default function ComprehensiveAIIntelligence() {
 
           {/* Configuration */}
           <TabsContent value="configuration" className="space-y-6">
-            <Card className="bg-slate-900/50 border-slate-700/50">
+            <Card className="bg-white border-gray-200">
               <CardHeader>
                 <CardTitle className="text-white">AI System Configuration</CardTitle>
               </CardHeader>

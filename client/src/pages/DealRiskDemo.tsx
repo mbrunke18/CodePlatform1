@@ -150,7 +150,7 @@ export default function DealRiskDemo() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950">
+    <div className="min-h-screen bg-white">
       <StandardNav />
       
       <main className="max-w-7xl mx-auto px-6 py-12">
@@ -174,7 +174,7 @@ export default function DealRiskDemo() {
           </Button>
         </div>
 
-        <div className="flex items-center justify-between mb-8 bg-slate-900/50 rounded-xl p-4 border border-slate-800">
+        <div className="flex items-center justify-between mb-8 bg-white rounded-xl p-4 border border-gray-200">
           {PHASES.map((phase, index) => {
             const isCompleted = completedPhases.includes(phase.id);
             const isCurrent = currentPhase === phase.id;
@@ -193,7 +193,7 @@ export default function DealRiskDemo() {
                   }`}
                 >
                   <div className={`p-2 rounded-lg ${
-                    isCurrent ? `bg-${phase.color}-500` : isCompleted ? 'bg-emerald-500' : 'bg-slate-700'
+                    isCurrent ? `bg-${phase.color}-500` : isCompleted ? 'bg-emerald-500' : 'bg-gray-50'
                   }`}>
                     {isCompleted ? (
                       <CheckCircle2 className="h-5 w-5 text-white" />
@@ -209,7 +209,7 @@ export default function DealRiskDemo() {
                   </div>
                 </button>
                 {index < PHASES.length - 1 && (
-                  <ChevronRight className="h-5 w-5 text-slate-400 mx-2" />
+                  <ChevronRight className="h-5 w-5 text-gray-600 mx-2" />
                 )}
               </div>
             );
@@ -221,7 +221,7 @@ export default function DealRiskDemo() {
         <div className="grid lg:grid-cols-2 gap-8">
           <div className="space-y-6">
             {currentPhase === 'identify' && (
-              <Card className="bg-slate-900 border-slate-700">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <BookOpen className="h-5 w-5 text-violet-400" />
@@ -233,7 +233,7 @@ export default function DealRiskDemo() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg">
+                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <span className="text-white">Salesforce</span>
                       {integrations.salesforce ? (
                         <Badge className="bg-emerald-500/20 text-emerald-400">Connected</Badge>
@@ -243,7 +243,7 @@ export default function DealRiskDemo() {
                         </Button>
                       )}
                     </div>
-                    <div className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg">
+                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <span className="text-white">Slack</span>
                       {integrations.slack ? (
                         <Badge className="bg-emerald-500/20 text-emerald-400">Connected</Badge>
@@ -253,7 +253,7 @@ export default function DealRiskDemo() {
                         </Button>
                       )}
                     </div>
-                    <div className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg">
+                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <span className="text-white">Jira</span>
                       {integrations.jira ? (
                         <Badge className="bg-emerald-500/20 text-emerald-400">Connected</Badge>
@@ -291,7 +291,7 @@ export default function DealRiskDemo() {
             )}
 
             {currentPhase === 'detect' && (
-              <Card className="bg-slate-900 border-slate-700">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <Radar className="h-5 w-5 text-blue-400" />
@@ -352,7 +352,7 @@ export default function DealRiskDemo() {
             )}
 
             {currentPhase === 'execute' && (
-              <Card className="bg-slate-900 border-slate-700">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <Radio className="h-5 w-5 text-emerald-400" />
@@ -373,7 +373,7 @@ export default function DealRiskDemo() {
 
             {currentPhase === 'advance' && (
               <div className="space-y-6">
-                <Card className="bg-slate-900 border-slate-700">
+                <Card className="bg-white border-gray-200">
                   <CardHeader>
                     <CardTitle className="text-white flex items-center gap-2">
                       <BarChart3 className="h-5 w-5 text-amber-400" />
@@ -428,7 +428,7 @@ export default function DealRiskDemo() {
                           </h4>
                           <div className="space-y-2">
                             {learnings.successPatterns?.map((pattern: any, i: number) => (
-                              <div key={i} className="p-3 bg-slate-800/50 rounded-lg border-l-2 border-emerald-500">
+                              <div key={i} className="p-3 bg-gray-50 rounded-lg border-l-2 border-emerald-500">
                                 <div className="flex items-center gap-2 mb-1">
                                   {pattern.icon === 'radar' && <Radar className="h-4 w-4 text-emerald-400" />}
                                   {pattern.icon === 'users' && <Users className="h-4 w-4 text-emerald-400" />}
@@ -450,7 +450,7 @@ export default function DealRiskDemo() {
                           </h4>
                           <div className="space-y-2">
                             {learnings.playbookImprovements?.map((improvement: any, i: number) => (
-                              <div key={i} className="p-3 bg-slate-800/50 rounded-lg">
+                              <div key={i} className="p-3 bg-gray-50 rounded-lg">
                                 <div className="flex items-center justify-between mb-1">
                                   <span className="text-white text-sm font-medium">{improvement.title}</span>
                                   <Badge className={improvement.priority === 'high' ? 'bg-red-500/20 text-red-400' : 'bg-amber-500/20 text-amber-400'}>
@@ -549,31 +549,31 @@ export default function DealRiskDemo() {
 
           <div className="space-y-6">
             {typedPipeline && (
-              <Card className="bg-slate-900 border-slate-700">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white">Pipeline Overview</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 bg-slate-800/50 rounded-lg text-center">
+                    <div className="p-4 bg-gray-50 rounded-lg text-center">
                       <div className="text-2xl font-bold text-white">
                         {typedPipeline.summary?.totalDeals || 5}
                       </div>
                       <p className="text-xs text-slate-600 dark:text-slate-200">Total Deals</p>
                     </div>
-                    <div className="p-4 bg-slate-800/50 rounded-lg text-center">
+                    <div className="p-4 bg-gray-50 rounded-lg text-center">
                       <div className="text-2xl font-bold text-emerald-400">
                         ${((typedPipeline.summary?.totalPipeline || 23900000) / 1000000).toFixed(1)}M
                       </div>
                       <p className="text-xs text-slate-600 dark:text-slate-200">Pipeline Value</p>
                     </div>
-                    <div className="p-4 bg-slate-800/50 rounded-lg text-center">
+                    <div className="p-4 bg-gray-50 rounded-lg text-center">
                       <div className="text-2xl font-bold text-red-400">
                         {typedPipeline.deals?.filter((d: any) => d.riskScore > 60).length || 1}
                       </div>
                       <p className="text-xs text-slate-600 dark:text-slate-200">At Risk</p>
                     </div>
-                    <div className="p-4 bg-slate-800/50 rounded-lg text-center">
+                    <div className="p-4 bg-gray-50 rounded-lg text-center">
                       <div className="text-2xl font-bold text-amber-400">
                         ${((typedPipeline.summary?.atRiskValue || 5000000) / 1000000).toFixed(1)}M
                       </div>
@@ -585,7 +585,7 @@ export default function DealRiskDemo() {
             )}
 
             {execution && (
-              <Card className="bg-slate-900 border-slate-700">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white">ROI Summary</CardTitle>
                 </CardHeader>

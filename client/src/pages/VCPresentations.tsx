@@ -132,7 +132,7 @@ export default function VCPresentations() {
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Investor Relations Center</h1>
-                <p className="text-gray-400 dark:text-gray-300">Series B Presentation Materials & Financial Projections</p>
+                <p className="text-gray-600 dark:text-gray-300">Series B Presentation Materials & Financial Projections</p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
@@ -151,11 +151,11 @@ export default function VCPresentations() {
             {investmentHighlights.map((highlight, index) => (
               <Card key={index} className="bg-white/90 dark:bg-slate-800/90 backdrop-blur border-slate-200 dark:border-slate-700">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-sm font-medium text-gray-400 dark:text-gray-200">{highlight.title}</CardTitle>
+                  <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-200">{highlight.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{highlight.value}</div>
-                  <div className="text-sm text-gray-400 dark:text-gray-200 mb-1">{highlight.subtitle}</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-200 mb-1">{highlight.subtitle}</div>
                   <div className={`text-sm font-medium ${highlight.color}`}>{highlight.growth}</div>
                 </CardContent>
               </Card>
@@ -179,7 +179,7 @@ export default function VCPresentations() {
                         {material.icon}
                         <div>
                           <h4 className="font-semibold text-gray-900 dark:text-white">{material.title}</h4>
-                          <p className="text-sm text-gray-400 dark:text-gray-200">{material.description}</p>
+                          <p className="text-sm text-gray-600 dark:text-gray-200">{material.description}</p>
                           <div className="flex items-center space-x-4 text-xs text-gray-300 mt-1">
                             <span>{material.slides} slides</span>
                             <span>{material.duration}</span>

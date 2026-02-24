@@ -93,7 +93,7 @@ export default function ROISummaryCard({ organizationId, period = "quarter" }: R
         {/* Key Metrics Grid */}
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-1">
-            <div className="flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-300">
+            <div className="flex items-center gap-1.5 text-xs text-gray-600 dark:text-slate-300">
               <DollarSign className="w-3.5 h-3.5" />
               <span>Value Created</span>
             </div>
@@ -103,7 +103,7 @@ export default function ROISummaryCard({ organizationId, period = "quarter" }: R
           </div>
 
           <div className="space-y-1">
-            <div className="flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-300">
+            <div className="flex items-center gap-1.5 text-xs text-gray-600 dark:text-slate-300">
               <Clock className="w-3.5 h-3.5" />
               <span>Time Recovered</span>
             </div>
@@ -116,13 +116,13 @@ export default function ROISummaryCard({ organizationId, period = "quarter" }: R
         {/* Execution Metrics */}
         <div className="flex items-center justify-between pt-3 border-t border-blue-200 dark:border-blue-800">
           <div className="space-y-1">
-            <div className="text-xs text-slate-400 dark:text-slate-300">Playbooks Executed</div>
+            <div className="text-xs text-gray-600 dark:text-slate-300">Playbooks Executed</div>
             <div className="text-lg font-semibold text-slate-900 dark:text-white" data-testid="roi-playbooks-executed">
               {displayData.playbooksExecuted}
             </div>
           </div>
           <div className="space-y-1 text-right">
-            <div className="text-xs text-slate-400 dark:text-slate-300">vs Traditional</div>
+            <div className="text-xs text-gray-600 dark:text-slate-300">vs Traditional</div>
             <div className="flex items-center gap-1 text-lg font-semibold text-blue-600 dark:text-blue-400" data-testid="roi-velocity-multiplier">
               <Zap className="w-4 h-4" />
               {displayData.velocityMultiplier}x faster

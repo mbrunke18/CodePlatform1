@@ -283,7 +283,7 @@ export default function HowItWorks() {
             })}
           </div>
 
-          <div className="mt-10 bg-gradient-to-r from-red-950/30 to-slate-900/50 dark:from-red-950/30 dark:to-slate-800/50 rounded-xl p-6 border border-red-500/20 text-center">
+          <div className="mt-10 bg-gradient-to-r dark:from-red-950/30 dark:to-slate-800/50 rounded-xl p-6 border border-red-500/20 text-center">
             <p className="text-lg text-slate-700 dark:text-slate-300">
               <span className="text-red-400 font-bold">Without Execution OS:</span> At the 12-minute mark, most organizations are still trying to figure out who to call.
             </p>
@@ -306,11 +306,11 @@ export default function HowItWorks() {
 
           <div className="space-y-3 max-w-xl mx-auto">
             <div className="rounded-xl p-4 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-center">
-              <div className="text-sm text-slate-500 dark:text-slate-400 mb-1">Strategy Layer</div>
+              <div className="text-sm text-gray-500 dark:text-slate-400 mb-1">Strategy Layer</div>
               <div className="text-lg font-semibold text-slate-700 dark:text-slate-200">Board decisions, strategic plans, market analysis</div>
             </div>
             <div className="flex justify-center">
-              <ArrowRight className="h-5 w-5 text-slate-400 rotate-90" />
+              <ArrowRight className="h-5 w-5 text-gray-600 rotate-90" />
             </div>
             <div className="rounded-xl p-5 bg-gradient-to-r from-poise-teal/10 via-cyan-500/10 to-purple-500/10 border-2 border-poise-teal/50 text-center relative overflow-hidden">
               <div className="absolute top-2 right-3 text-[10px] font-bold text-poise-teal uppercase tracking-wider">You Are Here</div>
@@ -324,17 +324,17 @@ export default function HowItWorks() {
               </div>
             </div>
             <div className="flex justify-center">
-              <ArrowRight className="h-5 w-5 text-slate-400 rotate-90" />
+              <ArrowRight className="h-5 w-5 text-gray-600 rotate-90" />
             </div>
             <div className="rounded-xl p-4 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-center">
-              <div className="text-sm text-slate-500 dark:text-slate-400 mb-1">Workflow & Task Systems</div>
+              <div className="text-sm text-gray-500 dark:text-slate-400 mb-1">Workflow & Task Systems</div>
               <div className="text-lg font-semibold text-slate-700 dark:text-slate-200">Jira, ServiceNow, Asana, Monday.com</div>
             </div>
             <div className="flex justify-center">
-              <ArrowRight className="h-5 w-5 text-slate-400 rotate-90" />
+              <ArrowRight className="h-5 w-5 text-gray-600 rotate-90" />
             </div>
             <div className="rounded-xl p-4 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-center">
-              <div className="text-sm text-slate-500 dark:text-slate-400 mb-1">Operational Systems</div>
+              <div className="text-sm text-gray-500 dark:text-slate-400 mb-1">Operational Systems</div>
               <div className="text-lg font-semibold text-slate-700 dark:text-slate-200">ERP, CRM, HRIS, Cloud Infrastructure</div>
             </div>
           </div>
@@ -401,7 +401,7 @@ export default function HowItWorks() {
       </div>
 
       {/* Built for Compound Disruption */}
-      <div className="bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 py-20">
+      <div className=" py-20">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
@@ -423,11 +423,11 @@ export default function HowItWorks() {
                 { scenario: 'Climate + Operations', example: 'Weather event causes facility shutdown with cascading customer impact', response: 'Parallel workstreams across facilities, logistics, customer success, and PR', color: 'border-blue-500/30', iconColor: 'text-blue-400' },
                 { scenario: 'AI + Workforce', example: 'Automation announcement triggers union response and media attention', response: 'Integrated stakeholder management across HR, legal, communications, and executive team', color: 'border-purple-500/30', iconColor: 'text-purple-400' },
               ].map((item, i) => (
-                <div key={i} className={`bg-slate-900/80 border ${item.color} rounded-xl p-6`}>
+                <div key={i} className={`bg-white border ${item.color} rounded-xl p-6`}>
                   <h3 className={`font-bold ${item.iconColor} mb-2`}>{item.scenario}</h3>
                   <p className="text-slate-300 text-sm mb-3">{item.example}</p>
-                  <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700">
-                    <p className="text-xs text-slate-400 font-semibold mb-1 uppercase tracking-wider">Execution OS Response</p>
+                  <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+                    <p className="text-xs text-gray-600 font-semibold mb-1 uppercase tracking-wider">Execution OS Response</p>
                     <p className="text-emerald-400 text-sm">{item.response}</p>
                   </div>
                 </div>
@@ -443,16 +443,16 @@ export default function HowItWorks() {
                   { principle: 'Adaptive Intelligence', idea: 'ADVANCE', desc: 'Every execution strengthens future response — your organization grows stronger from each disruption', color: 'bg-amber-500/10 border-amber-500/30', textColor: 'text-amber-400' },
                 ].map((item, i) => (
                   <div key={i} className={`${item.color} border rounded-xl p-5`}>
-                    <div className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">{item.principle}</div>
+                    <div className="text-gray-600 text-xs font-semibold uppercase tracking-wider mb-1">{item.principle}</div>
                     <div className="flex items-center justify-center gap-2 mb-2">
-                      <ArrowRight className="h-3 w-3 text-slate-500" />
+                      <ArrowRight className="h-3 w-3 text-gray-500" />
                       <span className={`font-bold ${item.textColor}`}>{item.idea}</span>
                     </div>
                     <p className="text-slate-300 text-sm">{item.desc}</p>
                   </div>
                 ))}
               </div>
-              <p className="text-sm text-slate-400 mt-6 italic">
+              <p className="text-sm text-gray-600 mt-6 italic">
                 The IDEA Framework™ — signal-first detection, rapid coordination, and adaptive intelligence built into executable infrastructure.
               </p>
             </div>

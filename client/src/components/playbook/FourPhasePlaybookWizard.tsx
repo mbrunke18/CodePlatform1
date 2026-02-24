@@ -124,7 +124,7 @@ function OverallReadinessCard({ readinessData }: { readinessData: any }) {
   const scoreColor = score >= 80 ? 'text-green-600' : score >= 60 ? 'text-amber-600' : 'text-red-600';
   
   return (
-    <Card className="bg-gradient-to-br from-slate-900 to-slate-800 text-white border-0">
+    <Card className=" text-white border-0">
       <CardHeader className="pb-2">
         <CardTitle className="flex items-center gap-2 text-lg">
           <Shield className="w-5 h-5" />
@@ -157,15 +157,15 @@ function OverallReadinessCard({ readinessData }: { readinessData: any }) {
           </div>
         </div>
         <div className="mt-4 grid grid-cols-3 gap-2 text-center">
-          <div className="bg-slate-700/50 rounded-lg p-2">
+          <div className="bg-gray-50 rounded-lg p-2">
             <div className="text-lg font-bold">{readinessData?.breakdown?.prepare?.completed ?? 0}/{readinessData?.breakdown?.prepare?.total ?? 0}</div>
             <div className="text-xs text-muted-foreground">Prep Items</div>
           </div>
-          <div className="bg-slate-700/50 rounded-lg p-2">
+          <div className="bg-gray-50 rounded-lg p-2">
             <div className="text-lg font-bold">{readinessData?.breakdown?.monitor?.active ?? 0}/{readinessData?.breakdown?.monitor?.total ?? 0}</div>
             <div className="text-xs text-muted-foreground">Active Triggers</div>
           </div>
-          <div className="bg-slate-700/50 rounded-lg p-2">
+          <div className="bg-gray-50 rounded-lg p-2">
             <div className="text-lg font-bold">{readinessData?.breakdown?.learn?.configured ?? 0}</div>
             <div className="text-xs text-muted-foreground">Learn Items</div>
           </div>

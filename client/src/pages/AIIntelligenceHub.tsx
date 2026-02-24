@@ -97,7 +97,7 @@ export default function AIIntelligenceHub() {
 
   return (
     <PageLayout>
-      <div className="page-background min-h-screen bg-gray-950">
+      <div className="page-background min-h-screen bg-white">
         {/* Page Title Section */}
         <div className="max-w-7xl mx-auto px-6 pt-6 pb-4">
           <div className="flex items-center justify-between">
@@ -107,7 +107,7 @@ export default function AIIntelligenceHub() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-white">AI Intelligence Hub</h1>
-                <p className="text-sm text-gray-400">Strategic co-pilots for executive decision-making</p>
+                <p className="text-sm text-gray-600">Strategic co-pilots for executive decision-making</p>
               </div>
             </div>
             <Badge variant="outline" className="bg-green-500/10 text-green-300 border-green-500/30">
@@ -119,7 +119,7 @@ export default function AIIntelligenceHub() {
 
         {/* Module Navigation */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <div className="border-b border-gray-800 bg-gray-900/30">
+          <div className="border-b border-gray-200 bg-white">
             <div className="max-w-7xl mx-auto px-6">
               <TabsList className="grid w-full grid-cols-5 bg-transparent gap-2 h-auto p-0 border-0">
                 {modules.map((module) => {
@@ -132,21 +132,21 @@ export default function AIIntelligenceHub() {
                       className={`
                         flex flex-col items-center gap-2 py-4 px-4 rounded-none border-b-2 transition-all
                         ${isActive 
-                          ? `${module.borderColor} bg-gray-800/50` 
+                          ? `${module.borderColor} bg-gray-50` 
                           : 'border-transparent hover:bg-gray-800/30'
                         }
                         data-[state=active]:shadow-none
                       `}
                       data-testid={`ai-module-${module.id}`}
                     >
-                      <div className={`p-2 rounded-lg ${isActive ? module.bgColor : 'bg-gray-800/50'}`}>
-                        <Icon className={`h-5 w-5 ${isActive ? module.color : 'text-gray-400'}`} />
+                      <div className={`p-2 rounded-lg ${isActive ? module.bgColor : 'bg-gray-50'}`}>
+                        <Icon className={`h-5 w-5 ${isActive ? module.color : 'text-gray-600'}`} />
                       </div>
                       <div className="text-center">
-                        <p className={`text-sm font-semibold ${isActive ? 'text-white' : 'text-gray-400'}`}>
+                        <p className={`text-sm font-semibold ${isActive ? 'text-white' : 'text-gray-600'}`}>
                           {module.name}
                         </p>
-                        <p className="text-xs text-gray-500 mt-0.5">
+                        <p className="text-xs text-gray-600 mt-0.5">
                           {module.description}
                         </p>
                       </div>

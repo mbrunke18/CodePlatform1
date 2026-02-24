@@ -1492,7 +1492,7 @@ export default function MissionControl() {
           </Card>
 
           {/* Value Proposition Footer */}
-          <Card className="bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-800 dark:to-slate-900 text-white border-0">
+          <Card className="bg-gradient-to-r dark:from-slate-800 dark:to-slate-900 text-white border-0">
             <CardContent className="p-6">
               <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div className="flex items-center gap-4">

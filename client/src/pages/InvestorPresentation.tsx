@@ -108,7 +108,7 @@ function InvestorPresentation() {
               { value: '82%', label: 'Boards require crisis preparedness', sub: 'Post-2020 governance mandate' },
               { value: '95% / 16%', label: 'CSOs: AI will reshape priorities — but few reimagining', sub: 'Deloitte 2026 CSO Survey' },
             ].map((s, i) => (
-              <div key={i} className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+              <div key={i} className="bg-white border border-gray-200 rounded-xl p-5">
                 <div className="text-2xl font-bold text-teal-400">{s.value}</div>
                 <div className="text-white font-medium">{s.label}</div>
                 <div className="text-slate-300 text-sm">{s.sub}</div>
@@ -131,11 +131,11 @@ function InvestorPresentation() {
             { icon: <Zap className="w-8 h-8 text-teal-400" />, value: '340x', label: 'Faster with Execution OS', sub: '72 hours → 12 minutes', color: 'border-teal-500/30' },
             { icon: <DollarSign className="w-8 h-8 text-green-400" />, value: '$21-33M', label: 'Value created per crisis averted', sub: 'Revenue protection + opportunity capture', color: 'border-green-500/30' },
           ].map((c, i) => (
-            <div key={i} className={`bg-slate-900/80 border ${c.color} rounded-xl p-8 text-center`}>
+            <div key={i} className={`bg-white border ${c.color} rounded-xl p-8 text-center`}>
               <div className="flex justify-center mb-4">{c.icon}</div>
               <div className="text-3xl font-bold text-white mb-2">{c.value}</div>
               <div className="text-slate-200 font-medium mb-1">{c.label}</div>
-              <div className="text-slate-500 text-sm">{c.sub}</div>
+              <div className="text-gray-500 text-sm">{c.sub}</div>
             </div>
           ))}
         </div>
@@ -155,7 +155,7 @@ function InvestorPresentation() {
             { letter: 'E', name: 'EXECUTE', desc: 'One-click activation. 12-minute full mobilization. Pre-approved budgets deployed.', icon: <Zap className="w-6 h-6" />, color: 'from-teal-600 to-teal-800' },
             { letter: 'A', name: 'ADVANCE', desc: 'Learn from every activation. AI refines playbooks. Institutional knowledge captured.', icon: <TrendingUp className="w-6 h-6" />, color: 'from-amber-600 to-amber-800' },
           ].map((p, i) => (
-            <div key={i} className="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden">
+            <div key={i} className="bg-white border border-gray-200 rounded-xl overflow-hidden">
               <div className={`bg-gradient-to-b ${p.color} p-4 flex items-center gap-3`}>
                 <span className="text-3xl font-black text-white/90">{p.letter}</span>
                 <div>
@@ -225,7 +225,7 @@ function InvestorPresentation() {
           170 playbooks across three domains
         </h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl w-full">
-          <div className="bg-slate-900/80 border border-green-500/30 rounded-xl p-8">
+          <div className="bg-white border border-green-500/30 rounded-xl p-8">
             <div className="flex items-center gap-3 mb-4">
               <Swords className="w-6 h-6 text-green-400" />
               <h3 className="text-xl font-bold text-green-400">OFFENSE</h3>
@@ -237,7 +237,7 @@ function InvestorPresentation() {
               ))}
             </ul>
           </div>
-          <div className="bg-slate-900/80 border border-red-500/30 rounded-xl p-8">
+          <div className="bg-white border border-red-500/30 rounded-xl p-8">
             <div className="flex items-center gap-3 mb-4">
               <Shield className="w-6 h-6 text-red-400" />
               <h3 className="text-xl font-bold text-red-400">DEFENSE</h3>
@@ -249,7 +249,7 @@ function InvestorPresentation() {
               ))}
             </ul>
           </div>
-          <div className="bg-slate-900/80 border border-purple-500/30 rounded-xl p-8">
+          <div className="bg-white border border-purple-500/30 rounded-xl p-8">
             <div className="flex items-center gap-3 mb-4">
               <Activity className="w-6 h-6 text-purple-400" />
               <h3 className="text-xl font-bold text-purple-400">SPECIAL TEAMS</h3>
@@ -280,7 +280,7 @@ function InvestorPresentation() {
                 { label: 'SAM', value: '$5-8B', desc: 'Fortune 1000 enterprises' },
                 { label: 'SOM', value: '$500M-1B', desc: 'Year 5 target' },
               ].map((m, i) => (
-                <div key={i} className="bg-slate-900/80 border border-slate-800 rounded-lg p-4 flex items-center gap-4">
+                <div key={i} className="bg-white border border-gray-200 rounded-lg p-4 flex items-center gap-4">
                   <span className="text-teal-400 font-bold text-sm w-12">{m.label}</span>
                   <span className="text-white font-bold text-lg">{m.value}</span>
                   <span className="text-slate-300 text-sm ml-auto">{m.desc}</span>
@@ -324,7 +324,7 @@ function InvestorPresentation() {
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl w-full mb-10">
           <div className="bg-red-950/30 border border-red-500/30 rounded-xl p-8">
             <h3 className="text-xl font-bold text-red-400 mb-2">The Dead Model</h3>
-            <p className="text-slate-400 text-sm mb-4">Predict → Plan → Execute</p>
+            <p className="text-gray-600 text-sm mb-4">Predict → Plan → Execute</p>
             <div className="space-y-3">
               {['Assumes stable, linear environment', 'Ad-hoc response teams assembled after the fact', '72-hour coordination loops', 'Knowledge lost when people leave', 'Same cost, same scramble, every time'].map((t, i) => (
                 <div key={i} className="flex items-start gap-3">
@@ -336,7 +336,7 @@ function InvestorPresentation() {
           </div>
           <div className="bg-teal-950/30 border border-teal-500/30 rounded-xl p-8">
             <h3 className="text-xl font-bold text-teal-400 mb-2">The Execution OS Model</h3>
-            <p className="text-slate-400 text-sm mb-4">Detect → Activate → Coordinate → Execute → Advance</p>
+            <p className="text-gray-600 text-sm mb-4">Detect → Activate → Coordinate → Execute → Advance</p>
             <div className="space-y-3">
               {['Built for compound, cascading disruptions', 'Pre-built playbooks with decision rights mapped', '12-minute coordinated execution', 'Institutional intelligence that compounds', 'Each response makes the next one faster'].map((t, i) => (
                 <div key={i} className="flex items-start gap-3">
@@ -353,14 +353,14 @@ function InvestorPresentation() {
             { from: 'Rapid Coordination', to: 'DETECT + EXECUTE', desc: '12-min coordination, pre-defined rights' },
             { from: 'Adaptive Intelligence', to: 'ADVANCE', desc: 'Grows stronger from every disruption' },
           ].map((m, i) => (
-            <div key={i} className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-center">
-              <div className="text-slate-400 text-xs font-semibold uppercase">{m.from}</div>
+            <div key={i} className="bg-white border border-gray-200 rounded-xl p-4 text-center">
+              <div className="text-gray-600 text-xs font-semibold uppercase">{m.from}</div>
               <div className="text-teal-400 font-bold my-1">→ {m.to}</div>
               <div className="text-slate-300 text-xs">{m.desc}</div>
             </div>
           ))}
         </div>
-        <p className="text-slate-500 text-xs mt-6">Execution OS IDEA Framework™ — Built for the era of compound disruption</p>
+        <p className="text-gray-500 text-xs mt-6">Execution OS IDEA Framework™ — Built for the era of compound disruption</p>
       </div>
     ),
 
@@ -372,14 +372,14 @@ function InvestorPresentation() {
         </h2>
         <div className="grid md:grid-cols-5 gap-4 max-w-5xl w-full">
           {[
-            { name: 'McKinsey / BCG', type: 'Strategy Consulting', has: 'Strategy frameworks', missing: 'No software, no automation, no real-time', color: 'border-slate-700' },
-            { name: 'ServiceNow / Jira', type: 'Workflow Tools', has: 'Task management', missing: 'No playbooks, no AI signals, no strategy layer', color: 'border-slate-700' },
-            { name: 'PagerDuty', type: 'Incident Response', has: 'IT alerting', missing: 'IT-only, no strategic execution', color: 'border-slate-700' },
-            { name: 'Palantir', type: 'Data Analytics', has: 'Data analysis', missing: 'No playbooks, no coordination, no execution', color: 'border-slate-700' },
+            { name: 'McKinsey / BCG', type: 'Strategy Consulting', has: 'Strategy frameworks', missing: 'No software, no automation, no real-time', color: 'border-gray-200' },
+            { name: 'ServiceNow / Jira', type: 'Workflow Tools', has: 'Task management', missing: 'No playbooks, no AI signals, no strategy layer', color: 'border-gray-200' },
+            { name: 'PagerDuty', type: 'Incident Response', has: 'IT alerting', missing: 'IT-only, no strategic execution', color: 'border-gray-200' },
+            { name: 'Palantir', type: 'Data Analytics', has: 'Data analysis', missing: 'No playbooks, no coordination, no execution', color: 'border-gray-200' },
           ].map((c, i) => (
-            <div key={i} className={`bg-slate-900/80 border ${c.color} rounded-xl p-4`}>
+            <div key={i} className={`bg-white border ${c.color} rounded-xl p-4`}>
               <div className="text-white font-bold text-sm mb-1">{c.name}</div>
-              <div className="text-slate-500 text-xs mb-3">{c.type}</div>
+              <div className="text-gray-500 text-xs mb-3">{c.type}</div>
               <div className="text-green-400 text-xs mb-1">✓ {c.has}</div>
               <div className="text-red-400 text-xs">✗ {c.missing}</div>
             </div>
@@ -409,7 +409,7 @@ function InvestorPresentation() {
             { tier: 'Professional', price: '$750K', desc: 'Multi-domain expansion', features: ['100 playbooks', '500+ signals monitored', 'Full integration suite', 'Dedicated CSM'], highlight: true },
             { tier: 'Enterprise', price: '$1.5M+', desc: 'Full platform deployment', features: ['170+ playbooks', '847+ signals monitored', 'Custom AI models', 'White-glove onboarding'] },
           ].map((t, i) => (
-            <div key={i} className={`rounded-xl p-6 ${t.highlight ? 'bg-teal-950/40 border-2 border-teal-500/50' : 'bg-slate-900/80 border border-slate-800'}`}>
+            <div key={i} className={`rounded-xl p-6 ${t.highlight ? 'bg-teal-950/40 border-2 border-teal-500/50' : 'bg-white border border-gray-200'}`}>
               {t.highlight && <div className="text-teal-400 text-xs font-bold uppercase mb-2">TARGET</div>}
               <div className="text-white font-bold text-lg">{t.tier}</div>
               <div className="text-3xl font-bold text-teal-400 my-2">{t.price}</div>
@@ -476,7 +476,7 @@ function InvestorPresentation() {
             { value: '340x', label: 'Faster response' },
             { value: '60x', label: 'Execution improvement' },
           ].map((s, i) => (
-            <div key={i} className="text-center bg-slate-900/80 border border-slate-800 rounded-xl p-6">
+            <div key={i} className="text-center bg-white border border-gray-200 rounded-xl p-6">
               <div className="text-3xl font-bold text-teal-400">{s.value}</div>
               <div className="text-slate-300 text-sm">{s.label}</div>
             </div>
@@ -495,20 +495,20 @@ function InvestorPresentation() {
           AI agents are getting faster. Human coordination isn't. We sit in the middle.
         </p>
         <div className="grid grid-cols-3 gap-6 max-w-4xl w-full mb-10">
-          <div className="text-center p-6 bg-slate-900/80 border border-blue-500/30 rounded-xl">
+          <div className="text-center p-6 bg-white border border-blue-500/30 rounded-xl">
             <Bot className="w-8 h-8 text-blue-400 mx-auto mb-3" />
             <div className="text-white font-bold mb-1">AI Agents</div>
-            <div className="text-slate-400 text-sm">Detect threats, surface insights, monitor signals</div>
+            <div className="text-gray-600 text-sm">Detect threats, surface insights, monitor signals</div>
           </div>
           <div className="text-center p-6 bg-indigo-900/40 border border-teal-500/40 rounded-xl">
             <Layers className="w-8 h-8 text-teal-400 mx-auto mb-3" />
             <div className="text-teal-300 font-bold mb-1">Execution OS</div>
             <div className="text-slate-300 text-sm">Activate playbooks, coordinate roles, track execution</div>
           </div>
-          <div className="text-center p-6 bg-slate-900/80 border border-amber-500/30 rounded-xl">
+          <div className="text-center p-6 bg-white border border-amber-500/30 rounded-xl">
             <Users className="w-8 h-8 text-amber-400 mx-auto mb-3" />
             <div className="text-white font-bold mb-1">Human Leaders</div>
-            <div className="text-slate-400 text-sm">Decide response, approve action, own outcomes</div>
+            <div className="text-gray-600 text-sm">Decide response, approve action, own outcomes</div>
           </div>
         </div>
         <div className="grid md:grid-cols-3 gap-4 max-w-5xl w-full mb-8">
@@ -517,18 +517,18 @@ function InvestorPresentation() {
             { tier: 'Tier 2: Next', title: 'AI-Assisted Coordination', desc: 'AI agents handle prep work—context, drafts, blocker detection. Humans decide.', color: 'border-purple-500/30', badge: 'bg-purple-500/20 text-purple-400' },
             { tier: 'Tier 3: Vision', title: 'Human-AI Hybrid Playbooks', desc: 'AI agents and human leaders run the same playbook. First platform to do this.', color: 'border-amber-500/30', badge: 'bg-amber-500/20 text-amber-400' },
           ].map((t, i) => (
-            <div key={i} className={`bg-slate-900/80 border ${t.color} rounded-xl p-5`}>
+            <div key={i} className={`bg-white border ${t.color} rounded-xl p-5`}>
               <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold ${t.badge} mb-3`}>{t.tier}</span>
               <div className="text-white font-bold mb-1">{t.title}</div>
               <p className="text-slate-300 text-sm">{t.desc}</p>
             </div>
           ))}
         </div>
-        <div className="bg-gradient-to-r from-indigo-900/30 to-teal-900/30 rounded-xl p-5 border border-teal-500/20 max-w-4xl w-full text-center">
+        <div className="bg-gradient-to-r   rounded-xl p-5 border border-teal-500/20 max-w-4xl w-full text-center">
           <p className="text-slate-200 text-sm italic">
             "Execution infrastructure for humans" → <span className="text-teal-400 font-semibold not-italic">Execution infrastructure for the agentic enterprise</span>
           </p>
-          <p className="text-slate-400 text-xs mt-2">New category. No direct competitor.</p>
+          <p className="text-gray-600 text-xs mt-2">New category. No direct competitor.</p>
         </div>
       </div>
     ),
@@ -540,7 +540,7 @@ function InvestorPresentation() {
           Built by someone who's lived this problem.
         </h2>
         <div className="max-w-4xl w-full">
-          <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-8 mb-8">
+          <div className="bg-white border border-gray-200 rounded-xl p-8 mb-8">
             <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="w-24 h-24 bg-gradient-to-br from-teal-500 to-blue-600 rounded-2xl flex items-center justify-center shrink-0">
                 <Users className="w-12 h-12 text-white" />
@@ -565,7 +565,7 @@ function InvestorPresentation() {
               </div>
             </div>
           </div>
-          <div className="bg-slate-900/60 border border-teal-500/20 rounded-xl p-6 italic text-slate-200 text-lg text-center">
+          <div className="bg-white border border-teal-500/20 rounded-xl p-6 italic text-slate-200 text-lg text-center">
             "I've seen this problem from the coaching box and the boardroom. When the signal hits, you either have a playbook or you're improvising. Fortune 1000 companies are still improvising."
           </div>
         </div>
@@ -584,7 +584,7 @@ function InvestorPresentation() {
             { phase: 'Year 2', title: 'Scale', target: '100+ accounts', desc: 'Expand to Offense domain. Channel partnerships. Industry-specific playbook packs.', color: 'border-teal-500/30' },
             { phase: 'Year 3+', title: 'Market Leadership', target: '500+ accounts', desc: 'Full platform adoption. International expansion. Industry standard for strategic execution.', color: 'border-purple-500/30' },
           ].map((p, i) => (
-            <div key={i} className={`bg-slate-900/80 border ${p.color} rounded-xl p-6`}>
+            <div key={i} className={`bg-white border ${p.color} rounded-xl p-6`}>
               <div className="text-teal-400 font-bold text-sm mb-1">{p.phase}</div>
               <div className="text-white font-bold text-lg mb-1">{p.title}</div>
               <div className="text-slate-300 text-sm mb-3">{p.target}</div>
@@ -602,7 +602,7 @@ function InvestorPresentation() {
               { name: 'Insurance', pct: '15%' },
               { name: 'Aerospace', pct: '5%' },
             ].map((v, i) => (
-              <div key={i} className="bg-slate-900/80 border border-slate-800 rounded-lg px-4 py-2 flex items-center gap-2">
+              <div key={i} className="bg-white border border-gray-200 rounded-lg px-4 py-2 flex items-center gap-2">
                 <span className="text-teal-400 font-bold">{v.pct}</span>
                 <span className="text-slate-200 text-sm">{v.name}</span>
               </div>
@@ -627,11 +627,11 @@ function InvestorPresentation() {
               { year: 'Year 4', arr: '$60-80M', customers: '100-150', focus: 'International' },
               { year: 'Year 5', arr: '$100M+', customers: '200+', focus: 'Market leader' },
             ].map((y, i) => (
-              <div key={i} className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-center">
+              <div key={i} className="bg-white border border-gray-200 rounded-xl p-4 text-center">
                 <div className="text-teal-400 font-bold text-sm mb-2">{y.year}</div>
                 <div className="text-2xl font-bold text-white mb-1">{y.arr}</div>
                 <div className="text-slate-300 text-xs">{y.customers} customers</div>
-                <div className="text-slate-500 text-xs">{y.focus}</div>
+                <div className="text-gray-500 text-xs">{y.focus}</div>
               </div>
             ))}
           </div>
@@ -695,7 +695,7 @@ function InvestorPresentation() {
                     <span className="text-slate-200">{f.label}</span>
                     <span className="text-white font-bold">{f.pct}%</span>
                   </div>
-                  <div className="w-full bg-slate-800 rounded-full h-3">
+                  <div className="w-full bg-gray-50 rounded-full h-3">
                     <div className={`${f.color} h-3 rounded-full`} style={{ width: `${f.pct}%` }} />
                   </div>
                 </div>
@@ -773,7 +773,7 @@ function InvestorPresentation() {
         ))}
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur border-t border-slate-800 px-6 py-3 flex items-center justify-between z-50">
+      <div className="fixed bottom-0 left-0 right-0 bg-white backdrop-blur border-t border-gray-200 px-6 py-3 flex items-center justify-between z-50">
         <div className="flex items-center gap-2">
           <Button
             variant="ghost"

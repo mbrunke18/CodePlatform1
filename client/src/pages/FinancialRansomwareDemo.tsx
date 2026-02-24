@@ -48,11 +48,11 @@ export default function FinancialRansomwareDemo() {
   };
 
   return (
-    <div className="page-background min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900">
+    <div className="page-background min-h-screen bg-gradient-to-br ">
       <DemoNavHeader title="Financial Ransomware Demo" showBackButton={true} />
 
       {/* Progress Indicator */}
-      <div className="border-b border-blue-800/20 bg-slate-950/30 pt-20">
+      <div className="border-b border-blue-800/20 bg-white pt-20">
         <div className="container mx-auto px-6 py-3">
           <div className="flex items-center gap-4 text-sm">
             <div className={`flex items-center gap-2 ${currentAct === "introduction" ? "text-blue-400" : "text-blue-600"}`}>
@@ -88,7 +88,7 @@ export default function FinancialRansomwareDemo() {
             </div>
 
             {/* Organization Info */}
-            <Card className="bg-slate-900/50 border-blue-800/30 p-6">
+            <Card className="bg-white border-blue-800/30 p-6">
               <div className="flex items-start gap-4 mb-4">
                 <Building2 className="w-6 h-6 text-blue-400 mt-1" />
                 <div>
@@ -107,7 +107,7 @@ export default function FinancialRansomwareDemo() {
             </Card>
 
             {/* Crisis Scenario */}
-            <Card className="bg-slate-900/50 border-red-800/50 p-6">
+            <Card className="bg-white border-red-800/50 p-6">
               <div className="flex items-start gap-4">
                 <AlertTriangle className="w-6 h-6 text-red-400 mt-1" />
                 <div className="flex-1 page-background">
@@ -115,22 +115,22 @@ export default function FinancialRansomwareDemo() {
                   <p className="text-blue-100 mb-4 leading-relaxed">{financialDemoData.crisis.description}</p>
                   
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="bg-slate-950/50 p-4 rounded-lg border border-red-800/30">
+                    <div className="bg-white p-4 rounded-lg border border-red-800/30">
                       <DollarSign className="w-5 h-5 text-red-400 mb-2" />
                       <div className="text-xl font-bold text-white">{financialDemoData.crisis.impactMetrics.financialImpact}</div>
                       <div className="text-sm text-red-300">At Risk</div>
                     </div>
-                    <div className="bg-slate-950/50 p-4 rounded-lg border border-blue-800/30">
+                    <div className="bg-white p-4 rounded-lg border border-blue-800/30">
                       <Clock className="w-5 h-5 text-blue-400 mb-2" />
                       <div className="text-xl font-bold text-white">{financialDemoData.crisis.impactMetrics.timeWindow}</div>
                       <div className="text-sm text-blue-300">Response Window</div>
                     </div>
-                    <div className="bg-slate-950/50 p-4 rounded-lg border border-blue-800/30">
+                    <div className="bg-white p-4 rounded-lg border border-blue-800/30">
                       <Users className="w-5 h-5 text-blue-400 mb-2" />
                       <div className="text-xl font-bold text-white">{financialDemoData.crisis.impactMetrics.stakeholders}</div>
                       <div className="text-sm text-blue-300">Stakeholders</div>
                     </div>
-                    <div className="bg-slate-950/50 p-4 rounded-lg border border-red-800/30">
+                    <div className="bg-white p-4 rounded-lg border border-red-800/30">
                       <AlertTriangle className="w-5 h-5 text-red-400 mb-2" />
                       <div className="text-xl font-bold text-white">{financialDemoData.crisis.impactMetrics.affectedCustomers}</div>
                       <div className="text-sm text-red-300">Affected Customers</div>
@@ -141,7 +141,7 @@ export default function FinancialRansomwareDemo() {
             </Card>
 
             {/* Playbook Info */}
-            <Card className="bg-gradient-to-r from-blue-950/50 to-purple-950/50 border-blue-800/30 p-6">
+            <Card className="bg-gradient-to-r   border-blue-800/30 p-6">
               <h3 className="text-lg font-semibold text-white mb-4">M Playbook: {financialDemoData.playbook.id} - {financialDemoData.playbook.name}</h3>
               <div className="flex items-center gap-6 mb-4">
                 <div className="text-sm text-blue-200">Domain: <span className="text-white font-semibold">{financialDemoData.playbook.domain}</span></div>
@@ -232,26 +232,26 @@ export default function FinancialRansomwareDemo() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="bg-slate-900/50 border-green-800/30 p-6 text-center">
+              <Card className="bg-white border-green-800/30 p-6 text-center">
                 <DollarSign className="w-8 h-8 text-green-400 mx-auto mb-3" />
                 <div className="text-3xl font-bold text-white mb-2">{financialDemoData.roiComparison.bottomLine.value}</div>
                 <div className="text-sm text-green-300">Value Preserved</div>
               </Card>
 
-              <Card className="bg-slate-900/50 border-blue-800/30 p-6 text-center">
+              <Card className="bg-white border-blue-800/30 p-6 text-center">
                 <Clock className="w-8 h-8 text-blue-400 mx-auto mb-3" />
                 <div className="text-3xl font-bold text-white mb-2">12 min</div>
                 <div className="text-sm text-blue-300">Full Coordination</div>
               </Card>
 
-              <Card className="bg-slate-900/50 border-purple-800/30 p-6 text-center">
+              <Card className="bg-white border-purple-800/30 p-6 text-center">
                 <Users className="w-8 h-8 text-purple-400 mx-auto mb-3" />
                 <div className="text-3xl font-bold text-white mb-2">{financialDemoData.crisis.impactMetrics.stakeholders}</div>
                 <div className="text-sm text-purple-300">Stakeholders Aligned</div>
               </Card>
             </div>
 
-            <Card className="bg-gradient-to-r from-blue-950/50 to-purple-950/50 border-blue-800/30 p-8">
+            <Card className="bg-gradient-to-r   border-blue-800/30 p-8">
               <h3 className="text-xl font-semibold text-white mb-4 text-center">The Execution OS Difference</h3>
               <p className="text-blue-100 text-center leading-relaxed max-w-3xl mx-auto">
                 Your AI detected the ransomware in milliseconds. But without Execution OS, coordinating your CEO, CISO, CTO, CFO, legal counsel, Board, and regulators would take 48-72 hours of email chains and emergency meetings. In that window, a $1M incident becomes a $27M disaster. Execution OS turns instant detection into 12-minute coordinated response—we're not replacing your AI, we're the execution layer that makes it deliver ROI.

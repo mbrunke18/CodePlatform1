@@ -429,7 +429,7 @@ function DemoLiveActivation() {
   };
 
   return (
-    <div className="page-background min-h-screen bg-slate-950 text-white">
+    <div className="page-background min-h-screen bg-white text-white">
       <DemoNavHeader title="Execution OS Live Activation Demo" showBackButton={true} />
       <div className="pt-20 p-8">
       {/* Confetti Celebration */}
@@ -724,7 +724,7 @@ function DemoLiveActivation() {
 
               {/* Main Coordination Stats */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                <Card className="bg-slate-800/80 border-green-500/30">
+                <Card className="bg-gray-50 border-green-500/30">
                   <CardContent className="p-6 text-center">
                     <Clock className="h-12 w-12 text-green-400 mx-auto mb-3" />
                     <div className="text-6xl font-bold text-green-400 mb-2" data-testid="text-final-time">
@@ -734,7 +734,7 @@ function DemoLiveActivation() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-slate-800/80 border-green-500/30">
+                <Card className="bg-gray-50 border-green-500/30">
                   <CardContent className="p-6 text-center">
                     <Users className="h-12 w-12 text-blue-400 mx-auto mb-3" />
                     <div className="text-6xl font-bold text-blue-400 mb-2" data-testid="text-final-acks">
@@ -744,7 +744,7 @@ function DemoLiveActivation() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-slate-800/80 border-green-500/30">
+                <Card className="bg-gray-50 border-green-500/30">
                   <CardContent className="p-6 text-center">
                     <Target className="h-12 w-12 text-purple-400 mx-auto mb-3" />
                     <div className="text-6xl font-bold text-purple-400 mb-2" data-testid="text-final-rate">
@@ -754,7 +754,7 @@ function DemoLiveActivation() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-slate-800/80 border-green-500/30">
+                <Card className="bg-gray-50 border-green-500/30">
                   <CardContent className="p-6 text-center">
                     <Zap className="h-12 w-12 text-yellow-400 mx-auto mb-3" />
                     <div className="text-6xl font-bold text-yellow-400 mb-2" data-testid="text-final-avg">
@@ -766,7 +766,7 @@ function DemoLiveActivation() {
               </div>
 
               {/* The Execution OS Advantage - Before/After */}
-              <Card className="bg-gradient-to-r from-slate-800/90 to-slate-700/90 border-purple-500/50 mb-12">
+              <Card className=" border-purple-500/50 mb-12">
                 <CardHeader>
                   <CardTitle className="text-4xl text-center text-purple-300">
                     The Execution OS Advantage
@@ -806,7 +806,7 @@ function DemoLiveActivation() {
 
               {/* Value Created */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <Card className="bg-gradient-to-br from-blue-900/40 to-purple-900/40 border-blue-500/50">
+                <Card className="bg-gradient-to-br   border-blue-500/50">
                   <CardContent className="p-8 text-center">
                     <Clock className="h-16 w-16 text-blue-400 mx-auto mb-4" />
                     <div className="text-5xl font-bold text-blue-400 mb-3" data-testid="text-time-saved">
@@ -816,7 +816,7 @@ function DemoLiveActivation() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-green-900/40 to-emerald-900/40 border-green-500/50">
+                <Card className="bg-gradient-to-br   border-green-500/50">
                   <CardContent className="p-8 text-center">
                     <DollarSign className="h-16 w-16 text-green-400 mx-auto mb-4" />
                     <div className="text-5xl font-bold text-green-400 mb-3" data-testid="text-value-saved">
@@ -826,7 +826,7 @@ function DemoLiveActivation() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-purple-900/40 to-pink-900/40 border-purple-500/50">
+                <Card className="bg-gradient-to-br   border-purple-500/50">
                   <CardContent className="p-8 text-center">
                     <TrendingUp className="h-16 w-16 text-purple-400 mx-auto mb-4" />
                     <div className="text-5xl font-bold text-purple-400 mb-3" data-testid="text-velocity">
@@ -874,7 +874,7 @@ function DemoLiveActivation() {
       {demoPhase !== 'complete' && (
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Timer - Large and Prominent */}
-          <Card className="lg:col-span-3 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border-slate-700">
+          <Card className="lg:col-span-3 border-gray-200">
             <CardContent className="p-12">
               <div className="text-center">
                 <div className="flex items-center justify-center gap-4 mb-6">
@@ -936,7 +936,7 @@ function DemoLiveActivation() {
           </Card>
 
           {/* Stats Cards */}
-          <Card className="bg-slate-800/50 border-slate-700">
+          <Card className="bg-gray-50 border-gray-200">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <Users className="h-8 w-8 text-blue-400" />
@@ -953,7 +953,7 @@ function DemoLiveActivation() {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-800/50 border-slate-700">
+          <Card className="bg-gray-50 border-gray-200">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <Zap className="h-8 w-8 text-yellow-400" />
@@ -970,7 +970,7 @@ function DemoLiveActivation() {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-800/50 border-slate-700">
+          <Card className="bg-gray-50 border-gray-200">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <Target className="h-8 w-8 text-green-400" />
@@ -988,7 +988,7 @@ function DemoLiveActivation() {
           </Card>
 
           {/* Task Execution Timeline */}
-          <Card className="lg:col-span-3 bg-slate-800/50 border-slate-700">
+          <Card className="lg:col-span-3 bg-gray-50 border-gray-200">
             <CardHeader>
               <CardTitle className="flex items-center justify-between text-2xl">
                 <span className="flex items-center gap-2">
@@ -1030,7 +1030,7 @@ function DemoLiveActivation() {
                       className={`p-4 rounded-lg border transition-all ${
                         isExecuted 
                           ? getColor() + ' opacity-100 animate-in slide-in-from-left'
-                          : 'bg-slate-700/30 border-slate-600/30 opacity-40'
+                          : 'bg-gray-50 border-slate-600/30 opacity-40'
                       }`}
                       data-testid={`timeline-item-${task.id}`}
                     >
@@ -1063,7 +1063,7 @@ function DemoLiveActivation() {
           </Card>
 
           {/* Real-time Acknowledgment Feed */}
-          <Card className="lg:col-span-3 bg-slate-800/50 border-slate-700">
+          <Card className="lg:col-span-3 bg-gray-50 border-gray-200">
             <CardHeader>
               <CardTitle className="flex items-center justify-between text-2xl">
                 <span className="flex items-center gap-2">
@@ -1088,7 +1088,7 @@ function DemoLiveActivation() {
                 {acknowledgments.map((ack, index) => (
                   <div
                     key={`${ack.id}-${ack.acknowledgedAt}-${index}`}
-                    className="flex items-center justify-between p-4 bg-slate-700/50 rounded-lg border border-slate-600 animate-in slide-in-from-right"
+                    className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-slate-600 animate-in slide-in-from-right"
                     data-testid={`ack-item-${index}`}
                   >
                     <div className="flex items-center gap-4 flex-1">
@@ -1118,7 +1118,7 @@ function DemoLiveActivation() {
           </Card>
 
           {/* ROI Comparison */}
-          <Card className="bg-gradient-to-br from-purple-900/50 to-blue-900/50 border-purple-700">
+          <Card className="bg-gradient-to-br   border-purple-700">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <DollarSign className="h-8 w-8 text-purple-400" />
@@ -1137,7 +1137,7 @@ function DemoLiveActivation() {
                 </div>
               </div>
 
-              <div className="border-t border-slate-700 pt-4">
+              <div className="border-t border-gray-200 pt-4">
                 <div className="text-sm text-slate-600 dark:text-slate-200 mb-2">WITH Execution OS</div>
                 <div className="flex items-center gap-2">
                   <TrendingUp className="h-6 w-6 text-green-400" />
@@ -1148,7 +1148,7 @@ function DemoLiveActivation() {
                 </div>
               </div>
 
-              <div className="border-t border-slate-700 pt-4">
+              <div className="border-t border-gray-200 pt-4">
                 <div className="text-sm text-slate-600 dark:text-slate-200 mb-2">TIME SAVED</div>
                 <div className="text-4xl font-bold text-purple-400">360x</div>
                 <div className="text-lg text-slate-600 dark:text-slate-200 mt-2">
@@ -1156,7 +1156,7 @@ function DemoLiveActivation() {
                 </div>
               </div>
 
-              <div className="border-t border-slate-700 pt-4">
+              <div className="border-t border-gray-200 pt-4">
                 <div className="text-sm text-slate-600 dark:text-slate-200 mb-2">VALUE</div>
                 <div className="text-3xl font-bold text-green-400">$283K</div>
                 <div className="text-lg text-slate-600 dark:text-slate-200 mt-2">
@@ -1170,7 +1170,7 @@ function DemoLiveActivation() {
 
       {/* Pre-Demo Checklist (collapsible) */}
       {!executionId && (
-        <Card className="max-w-7xl mx-auto mt-8 bg-slate-800/50 border-slate-700">
+        <Card className="max-w-7xl mx-auto mt-8 bg-gray-50 border-gray-200">
           <CardHeader>
             <CardTitle className="text-2xl">Pre-Demo Checklist</CardTitle>
           </CardHeader>

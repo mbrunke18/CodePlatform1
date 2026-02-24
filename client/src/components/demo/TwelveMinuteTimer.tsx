@@ -101,7 +101,7 @@ export default function TwelveMinuteTimer({
         <p className="text-xl text-blue-200">{subtitle}</p>
       </div>
 
-      <Card className="p-4 bg-gradient-to-br from-blue-950 to-indigo-950 border-blue-800/30 max-w-md mx-auto">
+      <Card className="p-4 bg-gradient-to-br   border-blue-800/30 max-w-md mx-auto">
         <div className="flex items-center justify-center gap-4">
           <Clock className={`h-5 w-5 text-blue-400 ${isRunning ? 'animate-pulse' : ''}`} />
           <div className="text-4xl font-bold text-white" data-testid="text-timer">

@@ -36,7 +36,7 @@ export default function Pricing() {
       <StandardNav />
 
       {/* Hero */}
-      <section className="py-20 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+      <section className="py-20 px-6 text-white">
         <div className="max-w-5xl mx-auto text-center">
           <Badge className="mb-6 bg-cyan-500 text-white border-0 text-lg px-6 py-2" data-testid="badge-pricing">
             Enterprise Pricing
@@ -289,7 +289,7 @@ export default function Pricing() {
             <Card className="border-2 border-slate-300 dark:border-slate-700" data-testid="card-tier-global">
               <CardHeader className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-800/50">
                 <div className="text-center">
-                  <Badge className="mb-3 bg-slate-700 text-white">Global</Badge>
+                  <Badge className="mb-3 bg-gray-50 text-white">Global</Badge>
                   <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">15,000+ employees</div>
                   <div className="flex items-baseline justify-center gap-2 mb-1">
                     <div className="text-4xl font-bold text-slate-900 dark:text-white">Custom</div>
@@ -325,7 +325,7 @@ export default function Pricing() {
                   </li>
                 </ul>
                 <Button 
-                  className="w-full bg-slate-700 hover:bg-slate-800 text-white"
+                  className="w-full bg-gray-50 hover:bg-slate-800 text-white"
                   onClick={() => setLocation("/contact")}
                   data-testid="button-global-tier"
                 >
@@ -455,7 +455,7 @@ export default function Pricing() {
       </section>
 
       {/* Value Justification - NEW SECTION */}
-      <section className="py-20 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+      <section className="py-20 px-6 text-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-amber-500 text-white text-base px-4 py-2">

@@ -65,7 +65,7 @@ export default function ExecutionTimelineDemo({
 
           {/* Scenario & Trigger */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Card className="bg-gray-800/50 border-gray-700">
+            <Card className="bg-gray-50 border-gray-200">
               <CardHeader className="pb-3">
                 <CardTitle className="text-sm text-gray-600 dark:text-gray-200 flex items-center gap-2">
                   <AlertCircle className="h-4 w-4" />
@@ -77,7 +77,7 @@ export default function ExecutionTimelineDemo({
               </CardContent>
             </Card>
 
-            <Card className="bg-gray-800/50 border-gray-700">
+            <Card className="bg-gray-50 border-gray-200">
               <CardHeader className="pb-3">
                 <CardTitle className="text-sm text-gray-600 dark:text-gray-200 flex items-center gap-2">
                   <Zap className="h-4 w-4" />
@@ -91,7 +91,7 @@ export default function ExecutionTimelineDemo({
           </div>
 
           {/* Stakeholders */}
-          <Card className="bg-gray-800/50 border-gray-700">
+          <Card className="bg-gray-50 border-gray-200">
             <CardHeader className="pb-3">
               <CardTitle className="text-sm text-gray-600 dark:text-gray-200 flex items-center gap-2">
                 <Users className="h-4 w-4" />
@@ -115,7 +115,7 @@ export default function ExecutionTimelineDemo({
 
           {/* Performance Metrics */}
           {plan.historicalPerformance && (
-            <div className="bg-gradient-to-r from-green-950/50 to-emerald-950/50 rounded-lg p-4 border border-green-500/30">
+            <div className="bg-gradient-to-r   rounded-lg p-4 border border-green-500/30">
               <div className="grid grid-cols-4 gap-4 text-center">
                 <div>
                   <div className="text-2xl font-bold text-green-400">{plan.historicalPerformance.actualTime} min</div>
@@ -144,7 +144,7 @@ export default function ExecutionTimelineDemo({
       {/* Execution Timeline - 3 Phases */}
       <div className="space-y-6">
         {Object.entries(plan.phases).map(([phaseKey, phase], phaseIdx) => (
-          <Card key={phaseKey} className="bg-gray-800/50 border-gray-700 overflow-hidden">
+          <Card key={phaseKey} className="bg-gray-50 border-gray-200 overflow-hidden">
             <div className={`bg-gradient-to-r ${getPhaseColor(phase.name)} p-4`}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -172,7 +172,7 @@ export default function ExecutionTimelineDemo({
               {phase.tasks.map((task, taskIdx) => (
                 <div 
                   key={taskIdx}
-                  className="border-l-4 border-blue-500/50 pl-4 py-3 bg-gray-900/30 rounded-r-lg"
+                  className="border-l-4 border-blue-500/50 pl-4 py-3 bg-white rounded-r-lg"
                   data-testid={`task-${phaseKey}-${taskIdx}`}
                 >
                   <div className="flex items-start justify-between gap-4 mb-2">
@@ -208,7 +208,7 @@ export default function ExecutionTimelineDemo({
 
                   {/* Dependency Indicator */}
                   {'dependsOn' in task && task.dependsOn && (
-                    <div className="flex items-center gap-2 text-orange-400 text-xs mt-2 pt-2 border-t border-gray-700">
+                    <div className="flex items-center gap-2 text-orange-400 text-xs mt-2 pt-2 border-t border-gray-200">
                       <ArrowRight className="h-3 w-3" />
                       <span className="italic">Depends on: {task.dependsOn}</span>
                     </div>
@@ -221,7 +221,7 @@ export default function ExecutionTimelineDemo({
       </div>
 
       {/* Execution Summary */}
-      <Card className="bg-gradient-to-r from-blue-950/50 to-teal-950/50 border-blue-500/30">
+      <Card className="bg-gradient-to-r   border-blue-500/30">
         <CardContent className="p-6">
           <div className="space-y-4">
             <div className="flex items-center justify-between">

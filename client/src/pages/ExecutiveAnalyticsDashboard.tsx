@@ -344,13 +344,13 @@ export default function ExecutiveAnalyticsDashboard() {
           </div>
           <div className="flex items-center gap-4">
             <Link to="/">
-              <Button variant="secondary" className="bg-slate-700 hover:bg-slate-600 text-slate-100 border-slate-600">
+              <Button variant="secondary" className="bg-gray-50 hover:bg-slate-600 text-slate-100 border-slate-600">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Dashboard
               </Button>
             </Link>
             <Select value={timeRange} onValueChange={setTimeRange}>
-              <SelectTrigger className="w-40 bg-slate-800 border-slate-600 text-white">
+              <SelectTrigger className="w-40 bg-gray-50 border-slate-600 text-white">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -369,7 +369,7 @@ export default function ExecutiveAnalyticsDashboard() {
 
         {/* Real-Time Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Active Users</h3>
@@ -380,7 +380,7 @@ export default function ExecutiveAnalyticsDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Revenue</h3>
@@ -391,7 +391,7 @@ export default function ExecutiveAnalyticsDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Conversion</h3>
@@ -402,7 +402,7 @@ export default function ExecutiveAnalyticsDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Customer Sat</h3>
@@ -413,7 +413,7 @@ export default function ExecutiveAnalyticsDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">System Health</h3>
@@ -427,20 +427,20 @@ export default function ExecutiveAnalyticsDashboard() {
 
         {/* Main Analytics Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="bg-slate-800/50 border border-slate-700/50">
-            <TabsTrigger value="overview" className="data-[state=active]:bg-slate-700">Executive Overview</TabsTrigger>
-            <TabsTrigger value="performance" className="data-[state=active]:bg-slate-700">Performance</TabsTrigger>
-            <TabsTrigger value="roi" className="data-[state=active]:bg-slate-700">ROI Analytics</TabsTrigger>
-            <TabsTrigger value="insights" className="data-[state=active]:bg-slate-700">AI Insights</TabsTrigger>
-            <TabsTrigger value="departments" className="data-[state=active]:bg-slate-700">Departments</TabsTrigger>
-            <TabsTrigger value="forecasting" className="data-[state=active]:bg-slate-700">Forecasting</TabsTrigger>
+          <TabsList className="bg-gray-50 border border-gray-200">
+            <TabsTrigger value="overview" className="data-[state=active]:bg-gray-50">Executive Overview</TabsTrigger>
+            <TabsTrigger value="performance" className="data-[state=active]:bg-gray-50">Performance</TabsTrigger>
+            <TabsTrigger value="roi" className="data-[state=active]:bg-gray-50">ROI Analytics</TabsTrigger>
+            <TabsTrigger value="insights" className="data-[state=active]:bg-gray-50">AI Insights</TabsTrigger>
+            <TabsTrigger value="departments" className="data-[state=active]:bg-gray-50">Departments</TabsTrigger>
+            <TabsTrigger value="forecasting" className="data-[state=active]:bg-gray-50">Forecasting</TabsTrigger>
           </TabsList>
 
           {/* Executive Overview */}
           <TabsContent value="overview" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {executiveMetrics.map((metric) => (
-                <Card key={metric.id} className="bg-slate-900/50 border-slate-700/50 hover:bg-slate-800/50 transition-all duration-300">
+                <Card key={metric.id} className="bg-white border-gray-200 hover:bg-slate-800/50 transition-all duration-300">
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between mb-4">
                       <h3 className="font-semibold text-white">{metric.name}</h3>
@@ -465,7 +465,7 @@ export default function ExecutiveAnalyticsDashboard() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               
               {/* Performance Chart Placeholder */}
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <BarChart3 className="h-5 w-5" />
@@ -473,7 +473,7 @@ export default function ExecutiveAnalyticsDashboard() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-6">
-                  <div className="h-64 flex items-center justify-center bg-slate-800/50 rounded-lg">
+                  <div className="h-64 flex items-center justify-center bg-gray-50 rounded-lg">
                     <div className="text-center">
                       <LineChart className="h-16 w-16 text-slate-600 dark:text-slate-200 mx-auto mb-4" />
                       <p className="text-slate-600 dark:text-slate-200">Interactive revenue chart</p>
@@ -484,7 +484,7 @@ export default function ExecutiveAnalyticsDashboard() {
               </Card>
 
               {/* KPI Performance */}
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <Target className="h-5 w-5" />
@@ -522,7 +522,7 @@ export default function ExecutiveAnalyticsDashboard() {
           <TabsContent value="insights" className="space-y-6">
             <div className="space-y-4">
               {performanceInsights.map((insight) => (
-                <Card key={insight.id} className="bg-slate-900/50 border-slate-700/50">
+                <Card key={insight.id} className="bg-white border-gray-200">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1 page-background">
@@ -563,7 +563,7 @@ export default function ExecutiveAnalyticsDashboard() {
                     </div>
                     
                     {insight.actionRequired && (
-                      <div className="mt-4 pt-4 border-t border-slate-700">
+                      <div className="mt-4 pt-4 border-t border-gray-200">
                         <Button className="bg-blue-600 hover:bg-blue-700">
                           <Zap className="w-4 h-4 mr-2" />
                           Take Action
@@ -580,7 +580,7 @@ export default function ExecutiveAnalyticsDashboard() {
           <TabsContent value="departments" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {departmentData.map((dept) => (
-                <Card key={dept.department} className="bg-slate-900/50 border-slate-700/50">
+                <Card key={dept.department} className="bg-white border-gray-200">
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <CardTitle className="text-white">{dept.department}</CardTitle>
@@ -628,7 +628,7 @@ export default function ExecutiveAnalyticsDashboard() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               
               {/* Revenue Forecast */}
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <TrendingUp className="h-5 w-5" />
@@ -636,7 +636,7 @@ export default function ExecutiveAnalyticsDashboard() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="h-48 flex items-center justify-center bg-slate-800/50 rounded-lg">
+                  <div className="h-48 flex items-center justify-center bg-gray-50 rounded-lg">
                     <div className="text-center">
                       <BarChart className="h-12 w-12 text-slate-600 dark:text-slate-200 mx-auto mb-2" />
                       <p className="text-slate-600 dark:text-slate-200">Predictive revenue model</p>
@@ -656,7 +656,7 @@ export default function ExecutiveAnalyticsDashboard() {
               </Card>
 
               {/* Market Trends */}
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <Globe className="h-5 w-5" />
@@ -665,21 +665,21 @@ export default function ExecutiveAnalyticsDashboard() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
-                    <div className="p-3 bg-slate-800/50 rounded-lg">
+                    <div className="p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-white font-medium">Market Growth</span>
                         <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">POSITIVE</Badge>
                       </div>
                       <div className="text-sm text-slate-600 dark:text-slate-200">Industry expanding 8.2% annually</div>
                     </div>
-                    <div className="p-3 bg-slate-800/50 rounded-lg">
+                    <div className="p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-white font-medium">Competitive Position</span>
                         <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">STRONG</Badge>
                       </div>
                       <div className="text-sm text-slate-600 dark:text-slate-200">Top 3 market position maintained</div>
                     </div>
-                    <div className="p-3 bg-slate-800/50 rounded-lg">
+                    <div className="p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-white font-medium">Customer Demand</span>
                         <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">HIGH</Badge>

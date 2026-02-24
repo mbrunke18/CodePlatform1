@@ -93,7 +93,7 @@ export default function AIRadarSimulation({
       </div>
 
       {/* Main Confidence Meter */}
-      <Card className={`p-6 bg-slate-900/50 border-blue-800/30 ${triggered ? 'border-red-500 border-2 animate-pulse' : ''}`}>
+      <Card className={`p-6 bg-white border-blue-800/30 ${triggered ? 'border-red-500 border-2 animate-pulse' : ''}`}>
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <Activity className={`h-5 w-5 ${isMonitoring ? 'animate-pulse text-green-500' : 'text-blue-400'}`} />
@@ -138,7 +138,7 @@ export default function AIRadarSimulation({
               <p className="text-sm text-red-200 mb-3">
                 {playbookName}
               </p>
-              <div className="bg-slate-900/50 p-3 rounded border border-red-800/30">
+              <div className="bg-white p-3 rounded border border-red-800/30">
                 <p className="text-xs font-mono text-red-200">
                   <TrendingDown className="inline h-3 w-3 mr-1" />
                   Confidence: {confidence.toFixed(1)}% | Playbook activation recommended

@@ -85,7 +85,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
   };
 
   return (
-    <Card className="border-cyan-500/30 bg-gradient-to-br from-slate-900 via-cyan-950/20 to-slate-900">
+    <Card className="border-cyan-500/30 bg-gradient-to-br ">
       <CardHeader>
         <CardTitle className="text-white flex items-center gap-2">
           <Sparkles className="h-5 w-5 text-cyan-400" />
@@ -229,7 +229,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
 
             {/* Success Factors & Risks */}
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-slate-800/50 rounded-lg p-4">
+              <div className="bg-gray-50 rounded-lg p-4">
                 <h4 className="font-semibold text-green-400 mb-3 flex items-center gap-2">
                   <CheckCircle className="h-4 w-4" />
                   Key Success Factors
@@ -244,7 +244,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
                 </ul>
               </div>
 
-              <div className="bg-slate-800/50 rounded-lg p-4">
+              <div className="bg-gray-50 rounded-lg p-4">
                 <h4 className="font-semibold text-yellow-400 mb-3 flex items-center gap-2">
                   <AlertTriangle className="h-4 w-4" />
                   Critical Risks

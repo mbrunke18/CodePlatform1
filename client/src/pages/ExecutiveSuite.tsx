@@ -134,7 +134,7 @@ export default function ExecutiveSuite() {
                   <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{metric.value}</div>
                   <div className={`text-sm flex items-center ${
                     metric.trend === 'up' ? 'text-green-600' : 
-                    metric.trend === 'down' ? 'text-red-600' : 'text-gray-500'
+                    metric.trend === 'down' ? 'text-red-600' : 'text-gray-600'
                   }`}>
                     {metric.trend === 'up' && <TrendingUp className="w-3 h-3 mr-1" />}
                     {metric.change}

@@ -314,8 +314,8 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
       case 'composite': return <BarChart3 className="h-4 w-4 text-blue-600" />;
       case 'threshold': return <Target className="h-4 w-4 text-green-600" />;
       case 'event': return <Zap className="h-4 w-4 text-yellow-600" />;
-      case 'time': return <Clock className="h-4 w-4 text-gray-400" />;
-      default: return <Activity className="h-4 w-4 text-gray-400" />;
+      case 'time': return <Clock className="h-4 w-4 text-gray-600" />;
+      default: return <Activity className="h-4 w-4 text-gray-600" />;
     }
   };
 
@@ -325,8 +325,8 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
       case 'predicting': return <TrendingUp className="h-4 w-4 text-purple-600" />;
       case 'learning': return <Settings className="h-4 w-4 text-blue-600 animate-spin" />;
       case 'active': return <Play className="h-4 w-4 text-green-600" />;
-      case 'paused': return <Pause className="h-4 w-4 text-gray-400" />;
-      default: return <Activity className="h-4 w-4 text-gray-400" />;
+      case 'paused': return <Pause className="h-4 w-4 text-gray-600" />;
+      default: return <Activity className="h-4 w-4 text-gray-600" />;
     }
   };
 
@@ -335,7 +335,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
       case 'connected': return <CheckCircle className="h-4 w-4 text-green-600" />;
       case 'disconnected': return <XCircle className="h-4 w-4 text-red-600" />;
       case 'error': return <AlertTriangle className="h-4 w-4 text-orange-600" />;
-      default: return <Activity className="h-4 w-4 text-gray-400" />;
+      default: return <Activity className="h-4 w-4 text-gray-600" />;
     }
   };
 
@@ -446,10 +446,10 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-gray-400 text-sm font-medium">Paused Triggers</p>
+                    <p className="text-gray-600 text-sm font-medium">Paused Triggers</p>
                     <p className="text-2xl font-bold text-gray-700">{pausedCount}</p>
                   </div>
-                  <Pause className="h-8 w-8 text-gray-400" />
+                  <Pause className="h-8 w-8 text-gray-600" />
                 </div>
               </CardContent>
             </Card>
@@ -576,7 +576,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                     <CardContent className="p-12 text-center">
                       <AlertTriangle className="h-12 w-12 text-red-500 mx-auto mb-4" />
                       <h3 className="text-lg font-semibold text-red-700 mb-2">Error Loading Triggers</h3>
-                      <p className="text-gray-400">Failed to fetch triggers from the database. Please try refreshing the page.</p>
+                      <p className="text-gray-600">Failed to fetch triggers from the database. Please try refreshing the page.</p>
                     </CardContent>
                   </Card>
                 )}
@@ -586,7 +586,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                     <CardContent className="p-12 text-center">
                       <Target className="h-12 w-12 text-gray-200 mx-auto mb-4" />
                       <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">No Triggers Found</h3>
-                      <p className="text-gray-400 dark:text-gray-200 mb-4">
+                      <p className="text-gray-600 dark:text-gray-200 mb-4">
                         {allTriggers.length === 0 
                           ? "You haven't created any executive triggers yet. Create your first trigger to start monitoring critical conditions."
                           : "No triggers match the selected filters. Try adjusting your category or status filters."}
@@ -625,7 +625,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                             <h3 className="font-semibold text-gray-900 dark:text-gray-100">
                               {trigger.scenarioName}
                             </h3>
-                            <p className="text-sm text-gray-400 dark:text-gray-200">{trigger.condition}</p>
+                            <p className="text-sm text-gray-600 dark:text-gray-200">{trigger.condition}</p>
                           </div>
                         </div>
 
@@ -842,8 +842,8 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                               {trigger.escalationWorkflow.levels.map((level, idx) => (
                                 <div key={idx} className="text-xs bg-white dark:bg-gray-800 p-2 rounded border">
                                   <div className="font-medium text-orange-600">Level {level.level}</div>
-                                  <div className="text-gray-400 dark:text-gray-200">{level.threshold}s threshold</div>
-                                  <div className="text-gray-400 dark:text-gray-200">{level.approvers.join(', ')}</div>
+                                  <div className="text-gray-600 dark:text-gray-200">{level.threshold}s threshold</div>
+                                  <div className="text-gray-600 dark:text-gray-200">{level.approvers.join(', ')}</div>
                                 </div>
                               ))}
                             </div>
@@ -960,15 +960,15 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-600">98.7%</div>
-                  <div className="text-sm text-gray-400">Detection Accuracy</div>
+                  <div className="text-sm text-gray-600">Detection Accuracy</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-green-600">1.2s</div>
-                  <div className="text-sm text-gray-400">Avg Response Time</div>
+                  <div className="text-sm text-gray-600">Avg Response Time</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-purple-600">47</div>
-                  <div className="text-sm text-gray-400">Prevented Escalations</div>
+                  <div className="text-sm text-gray-600">Prevented Escalations</div>
                 </div>
               </div>
             </CardContent>

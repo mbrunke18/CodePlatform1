@@ -126,7 +126,7 @@ export function AIChat({ organizationId, placeholder = "Ask me anything about yo
           <Bot className="w-5 h-5 text-blue-600" />
           AI Intelligence Assistant
         </CardTitle>
-        <p className="text-sm text-gray-400">
+        <p className="text-sm text-gray-600">
           Ask questions about your organization's data and get insights backed by real information.
         </p>
       </CardHeader>
@@ -135,8 +135,8 @@ export function AIChat({ organizationId, placeholder = "Ask me anything about yo
         <ScrollArea className="flex-1 px-6" data-testid="chat-messages">
           <div className="space-y-4 pb-4">
             {messages.length === 0 && (
-              <div className="text-center text-gray-500 dark:text-gray-300 py-8">
-                <Bot className="w-12 h-12 mx-auto mb-3 text-gray-500 dark:text-gray-300" />
+              <div className="text-center text-gray-600 dark:text-gray-300 py-8">
+                <Bot className="w-12 h-12 mx-auto mb-3 text-gray-600 dark:text-gray-300" />
                 <p className="text-lg font-medium">How can I help you today?</p>
                 <p className="text-sm">Ask me about strategic scenarios, team performance, or any organizational data.</p>
               </div>
@@ -172,7 +172,7 @@ export function AIChat({ organizationId, placeholder = "Ask me anything about yo
                         <div className="space-y-2">
                           <Separator />
                           <div>
-                            <h4 className="text-xs font-medium text-gray-400 mb-2 flex items-center gap-1">
+                            <h4 className="text-xs font-medium text-gray-600 mb-2 flex items-center gap-1">
                               <FileText className="w-3 h-3" />
                               Sources ({message.sources.length})
                             </h4>
@@ -185,7 +185,7 @@ export function AIChat({ organizationId, placeholder = "Ask me anything about yo
                                       {Math.round(source.relevanceScore * 100)}% match
                                     </Badge>
                                   </div>
-                                  <p className="text-gray-400 line-clamp-2">{source.content}</p>
+                                  <p className="text-gray-600 line-clamp-2">{source.content}</p>
                                   <Badge variant="secondary" className="mt-1">
                                     {source.sourceType}
                                   </Badge>
@@ -198,7 +198,7 @@ export function AIChat({ organizationId, placeholder = "Ask me anything about yo
 
                       {/* Metadata for assistant messages */}
                       {message.role === 'assistant' && message.metadata && (
-                        <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-300 pt-2 border-t border-gray-200">
+                        <div className="flex items-center gap-4 text-xs text-gray-600 dark:text-gray-300 pt-2 border-t border-gray-200">
                           <div className="flex items-center gap-1">
                             <Clock className="w-3 h-3" />
                             {message.metadata.processingTime}ms
@@ -235,7 +235,7 @@ export function AIChat({ organizationId, placeholder = "Ask me anything about yo
                 <div className="bg-gray-50 border rounded-lg p-4 max-w-[85%]">
                   <div className="flex items-center gap-2">
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-green-600"></div>
-                    <span className="text-sm text-gray-400">Thinking...</span>
+                    <span className="text-sm text-gray-600">Thinking...</span>
                   </div>
                 </div>
               </div>
@@ -262,7 +262,7 @@ export function AIChat({ organizationId, placeholder = "Ask me anything about yo
               <Send className="w-4 h-4" />
             </Button>
           </form>
-          <p className="text-xs text-gray-500 dark:text-gray-300 mt-2">
+          <p className="text-xs text-gray-600 dark:text-gray-300 mt-2">
             AI responses are powered by your organizational data. Ask about scenarios, performance, risks, or any strategic topic.
           </p>
         </div>

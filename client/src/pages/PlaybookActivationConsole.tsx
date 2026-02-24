@@ -469,7 +469,7 @@ export default function PlaybookActivationConsole() {
             
             <div className="space-y-3">
               {safeTasks.length === 0 ? (
-                <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+                <div className="text-center py-8 text-gray-600 dark:text-gray-400">
                   No tasks defined for this playbook
                 </div>
               ) : (
@@ -488,7 +488,7 @@ export default function PlaybookActivationConsole() {
                     {task.status === 'completed' ? (
                       <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
                     ) : (
-                      <Circle className="h-5 w-5 text-gray-400 mt-0.5 flex-shrink-0" />
+                      <Circle className="h-5 w-5 text-gray-600 mt-0.5 flex-shrink-0" />
                     )}
                     <div className="flex-1 page-background">
                       <div className="font-semibold">{task.description}</div>

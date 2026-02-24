@@ -165,7 +165,7 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
                         {integration.providers.join(", ")}
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-gray-500">Coverage: {integration.coverage}</span>
+                        <span className="text-xs text-gray-600">Coverage: {integration.coverage}</span>
                         <CheckCircle className="w-4 h-4 text-green-500" />
                       </div>
                     </div>

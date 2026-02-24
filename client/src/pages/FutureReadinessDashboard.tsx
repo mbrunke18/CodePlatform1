@@ -147,7 +147,7 @@ export default function FutureReadinessDashboard() {
               <Brain className="h-10 w-10 text-slate-900 dark:text-slate-100" />
               Future Readiness Index™
             </h1>
-            <p className="text-slate-400 dark:text-slate-300 mt-2">
+            <p className="text-gray-600 dark:text-slate-300 mt-2">
               Real-time strategic preparedness and self-learning intelligence
             </p>
           </div>
@@ -188,7 +188,7 @@ export default function FutureReadinessDashboard() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-slate-400 dark:text-slate-300">Playbook Maturity</span>
+                  <span className="text-sm text-gray-600 dark:text-slate-300">Playbook Maturity</span>
                   <Sparkles className="h-4 w-4 text-purple-500" />
                 </div>
                 <div className={`text-2xl font-bold ${getScoreColor(playbookMaturity)}`}>
@@ -199,7 +199,7 @@ export default function FutureReadinessDashboard() {
 
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-slate-400 dark:text-slate-300">Execution Velocity</span>
+                  <span className="text-sm text-gray-600 dark:text-slate-300">Execution Velocity</span>
                   <Zap className="h-4 w-4 text-yellow-500" />
                 </div>
                 <div className={`text-2xl font-bold ${getScoreColor(executionVelocity)}`}>
@@ -210,7 +210,7 @@ export default function FutureReadinessDashboard() {
 
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-slate-400 dark:text-slate-300">Learning Rate</span>
+                  <span className="text-sm text-gray-600 dark:text-slate-300">Learning Rate</span>
                   <Brain className="h-4 w-4 text-blue-500" />
                 </div>
                 <div className={`text-2xl font-bold ${getScoreColor(learningRate)}`}>
@@ -221,7 +221,7 @@ export default function FutureReadinessDashboard() {
 
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-slate-400 dark:text-slate-300">Signal Detection</span>
+                  <span className="text-sm text-gray-600 dark:text-slate-300">Signal Detection</span>
                   <Eye className="h-4 w-4 text-green-500" />
                 </div>
                 <div className={`text-2xl font-bold ${getScoreColor(signalDetection)}`}>
@@ -282,7 +282,7 @@ export default function FutureReadinessDashboard() {
                                   </Badge>
                                   <Badge variant="outline">{signal.signalType}</Badge>
                                 </div>
-                                <p className="text-sm text-slate-400 dark:text-slate-300 mb-3">
+                                <p className="text-sm text-gray-600 dark:text-slate-300 mb-3">
                                   {signal.description}
                                 </p>
                                 <div className="flex items-center gap-4 text-xs text-slate-300">
@@ -340,7 +340,7 @@ export default function FutureReadinessDashboard() {
                                   <Badge variant="secondary">{pattern.patternType}</Badge>
                                   {getImpactIcon(pattern.impact)}
                                 </div>
-                                <p className="text-sm text-slate-400 dark:text-slate-300 mb-3">
+                                <p className="text-sm text-gray-600 dark:text-slate-300 mb-3">
                                   {pattern.description}
                                 </p>
                                 <div className="flex items-center gap-4 text-xs text-slate-300">
@@ -402,7 +402,7 @@ export default function FutureReadinessDashboard() {
                                   {format(new Date(event.timestamp), 'PPp')}
                                 </span>
                               </div>
-                              <p className="text-sm text-slate-400 dark:text-slate-300">
+                              <p className="text-sm text-gray-600 dark:text-slate-300">
                                 {event.description}
                               </p>
                               <Badge variant="outline" className="mt-2 text-xs">

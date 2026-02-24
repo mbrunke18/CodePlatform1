@@ -47,7 +47,7 @@ export function PeerAdoptionOverlay() {
     <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm animate-in fade-in duration-300" />
       
-      <Card className="relative w-[950px] bg-gradient-to-br from-blue-950/95 via-indigo-950/95 to-purple-950/95 border-blue-500/50 p-8 shadow-2xl animate-in zoom-in-95 duration-500">
+      <Card className="relative w-[950px] bg-gradient-to-br  border-blue-500/50 p-8 shadow-2xl animate-in zoom-in-95 duration-500">
         <div className="space-y-6">
           {/* Header */}
           <div className="text-center space-y-3">

@@ -176,7 +176,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex flex-col gap-1">
               <VaughnMartinLogo height={40} color="dark" />
-              <p className="text-xs text-slate-500" style={{ paddingLeft: '2px' }}>
+              <p className="text-xs text-gray-500" style={{ paddingLeft: '2px' }}>
                 © {new Date().getFullYear()} VaughnMartin — Execution OS
               </p>
             </div>

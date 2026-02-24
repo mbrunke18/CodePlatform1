@@ -227,7 +227,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
       case 'low': return 'bg-green-500/20 text-green-400 border-green-500/30';
       case 'medium': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
       case 'high': return 'bg-red-500/20 text-red-400 border-red-500/30';
-      default: return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
+      default: return 'bg-gray-500/20 text-gray-600 border-gray-500/30';
     }
   };
 
@@ -238,9 +238,9 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
           
           {/* Breadcrumb Navigation */}
           <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2 text-sm text-gray-600">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-gray-600 hover:text-white p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>
@@ -277,44 +277,44 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
 
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <Card className="bg-gray-800/50 border-gray-700">
+            <Card className="bg-gray-50 border-gray-200">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gray-400">Total Templates</p>
+                    <p className="text-sm text-gray-600">Total Templates</p>
                     <p className="text-2xl font-bold text-white">{templates.length}</p>
                   </div>
                   <BookOpen className="h-8 w-8 text-emerald-500" />
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-gray-800/50 border-gray-700">
+            <Card className="bg-gray-50 border-gray-200">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gray-400">Customized</p>
+                    <p className="text-sm text-gray-600">Customized</p>
                     <p className="text-2xl font-bold text-white">3</p>
                   </div>
                   <Edit className="h-8 w-8 text-blue-500" />
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-gray-800/50 border-gray-700">
+            <Card className="bg-gray-50 border-gray-200">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gray-400">Active</p>
+                    <p className="text-sm text-gray-600">Active</p>
                     <p className="text-2xl font-bold text-white">2</p>
                   </div>
                   <Play className="h-8 w-8 text-green-500" />
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-gray-800/50 border-gray-700">
+            <Card className="bg-gray-50 border-gray-200">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gray-400">Domains</p>
+                    <p className="text-sm text-gray-600">Domains</p>
                     <p className="text-2xl font-bold text-white">8</p>
                   </div>
                   <Target className="h-8 w-8 text-purple-500" />
@@ -326,17 +326,17 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
           {/* Search and Filter */}
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-600" />
               <Input 
                 placeholder="Search playbook templates..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 bg-gray-800/50 border-gray-700"
+                className="pl-10 bg-gray-50 border-gray-200"
                 data-testid="input-search-playbooks"
               />
             </div>
             <Select value={selectedDomain} onValueChange={setSelectedDomain}>
-              <SelectTrigger className="w-48 bg-gray-800/50 border-gray-700">
+              <SelectTrigger className="w-48 bg-gray-50 border-gray-200">
                 <Filter className="h-4 w-4 mr-2" />
                 <SelectValue placeholder="All Domains" />
               </SelectTrigger>
@@ -379,12 +379,12 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
           {/* Playbook Templates Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredTemplates.map((template: PlaybookTemplate) => (
-              <Card key={template.id} className="bg-gray-800/50 border-gray-700 hover:border-emerald-500/50 transition-all">
+              <Card key={template.id} className="bg-gray-50 border-gray-200 hover:border-emerald-500/50 transition-all">
                 <CardHeader className="pb-2">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <CardTitle className="text-white text-lg">{template.name}</CardTitle>
-                      <CardDescription className="mt-1 text-gray-400 line-clamp-2">
+                      <CardDescription className="mt-1 text-gray-600 line-clamp-2">
                         {template.description}
                       </CardDescription>
                     </div>
@@ -395,21 +395,21 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                     <Badge className={getComplexityColor(template.complexity)}>
                       {template.complexity} complexity
                     </Badge>
-                    <Badge variant="outline" className="text-gray-400">
+                    <Badge variant="outline" className="text-gray-600">
                       {template.category}
                     </Badge>
                   </div>
                   
                   <div className="grid grid-cols-3 gap-2 text-sm">
-                    <div className="flex items-center gap-1 text-gray-400">
+                    <div className="flex items-center gap-1 text-gray-600">
                       <Clock className="h-4 w-4" />
                       <span>{template.estimatedDuration}</span>
                     </div>
-                    <div className="flex items-center gap-1 text-gray-400">
+                    <div className="flex items-center gap-1 text-gray-600">
                       <Users className="h-4 w-4" />
                       <span>{template.stakeholderCount}</span>
                     </div>
-                    <div className="flex items-center gap-1 text-gray-400">
+                    <div className="flex items-center gap-1 text-gray-600">
                       <Target className="h-4 w-4" />
                       <span>{template.tasks} tasks</span>
                     </div>
@@ -429,11 +429,11 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
           </div>
 
           {filteredTemplates.length === 0 && (
-            <Card className="bg-gray-800/50 border-gray-700">
+            <Card className="bg-gray-50 border-gray-200">
               <CardContent className="p-12 text-center">
-                <BookOpen className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                <BookOpen className="h-12 w-12 text-gray-600 mx-auto mb-4" />
                 <h3 className="text-lg font-semibold text-white mb-2">No Playbooks Found</h3>
-                <p className="text-gray-400">Try adjusting your search or filter criteria</p>
+                <p className="text-gray-600">Try adjusting your search or filter criteria</p>
               </CardContent>
             </Card>
           )}
@@ -454,13 +454,13 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
               {/* Step Progress */}
               <div className="mb-6">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-gray-500">Step {customizationStep} of 3</span>
+                  <span className="text-sm text-gray-600">Step {customizationStep} of 3</span>
                 </div>
                 <Progress value={(customizationStep / 3) * 100} className="h-2" />
                 <div className="flex justify-between mt-2">
-                  <span className={`text-xs ${customizationStep >= 1 ? 'text-emerald-500' : 'text-gray-500'}`}>Details</span>
-                  <span className={`text-xs ${customizationStep >= 2 ? 'text-emerald-500' : 'text-gray-500'}`}>Stakeholders</span>
-                  <span className={`text-xs ${customizationStep >= 3 ? 'text-emerald-500' : 'text-gray-500'}`}>Settings</span>
+                  <span className={`text-xs ${customizationStep >= 1 ? 'text-emerald-500' : 'text-gray-600'}`}>Details</span>
+                  <span className={`text-xs ${customizationStep >= 2 ? 'text-emerald-500' : 'text-gray-600'}`}>Stakeholders</span>
+                  <span className={`text-xs ${customizationStep >= 3 ? 'text-emerald-500' : 'text-gray-600'}`}>Settings</span>
                 </div>
               </div>
               
@@ -493,7 +493,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                       onChange={(e) => setBudgetLimit(e.target.value)}
                       placeholder="e.g., 500000"
                     />
-                    <p className="text-xs text-gray-500">Maximum budget that can be authorized during playbook execution</p>
+                    <p className="text-xs text-gray-600">Maximum budget that can be authorized during playbook execution</p>
                   </div>
                 </div>
               )}
@@ -508,7 +508,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                       Add Role
                     </Button>
                   </div>
-                  <p className="text-sm text-gray-500">Assign people from your organization to each role in this playbook</p>
+                  <p className="text-sm text-gray-600">Assign people from your organization to each role in this playbook</p>
                   
                   <div className="space-y-3">
                     {stakeholderAssignments.map((assignment, idx) => (
@@ -557,7 +557,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                               variant="ghost" 
                               size="icon"
                               onClick={() => removeStakeholderRole(idx)}
-                              className="text-gray-400 hover:text-red-500 mt-5"
+                              className="text-gray-600 hover:text-red-500 mt-5"
                             >
                               <Trash2 className="h-4 w-4" />
                             </Button>
@@ -573,14 +573,14 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
               {customizationStep === 3 && (
                 <div className="space-y-4">
                   <Label className="text-lg">Execution Settings</Label>
-                  <p className="text-sm text-gray-500">Configure how this playbook should be executed when activated</p>
+                  <p className="text-sm text-gray-600">Configure how this playbook should be executed when activated</p>
                   
                   <Card className="bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700">
                     <CardContent className="p-4 space-y-4">
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="font-medium">Require Approval Before Activation</p>
-                          <p className="text-sm text-gray-500">Playbook must be approved by designated stakeholder before tasks begin</p>
+                          <p className="text-sm text-gray-600">Playbook must be approved by designated stakeholder before tasks begin</p>
                         </div>
                         <Switch checked={approvalRequired} onCheckedChange={setApprovalRequired} />
                       </div>
@@ -590,7 +590,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="font-medium">Notify on Activation</p>
-                          <p className="text-sm text-gray-500">Send notifications when playbook is activated</p>
+                          <p className="text-sm text-gray-600">Send notifications when playbook is activated</p>
                         </div>
                         <Switch defaultChecked />
                       </div>
@@ -600,7 +600,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="font-medium">Notify on Task Completion</p>
-                          <p className="text-sm text-gray-500">Send notifications as tasks are completed</p>
+                          <p className="text-sm text-gray-600">Send notifications as tasks are completed</p>
                         </div>
                         <Switch defaultChecked />
                       </div>
@@ -610,7 +610,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="font-medium">Auto-Escalate Blocked Tasks</p>
-                          <p className="text-sm text-gray-500">Automatically escalate if tasks are blocked for too long</p>
+                          <p className="text-sm text-gray-600">Automatically escalate if tasks are blocked for too long</p>
                         </div>
                         <Switch defaultChecked />
                       </div>
@@ -622,13 +622,13 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                     <CardContent className="p-4">
                       <h4 className="font-medium text-emerald-400 mb-2">Customization Summary</h4>
                       <div className="grid grid-cols-2 gap-2 text-sm">
-                        <div className="text-gray-400">Playbook Name:</div>
+                        <div className="text-gray-600">Playbook Name:</div>
                         <div className="text-white">{customName}</div>
-                        <div className="text-gray-400">Budget Limit:</div>
+                        <div className="text-gray-600">Budget Limit:</div>
                         <div className="text-white">${parseInt(budgetLimit || '0').toLocaleString()}</div>
-                        <div className="text-gray-400">Stakeholders:</div>
+                        <div className="text-gray-600">Stakeholders:</div>
                         <div className="text-white">{stakeholderAssignments.length} assigned</div>
-                        <div className="text-gray-400">Approval Required:</div>
+                        <div className="text-gray-600">Approval Required:</div>
                         <div className="text-white">{approvalRequired ? 'Yes' : 'No'}</div>
                       </div>
                     </CardContent>

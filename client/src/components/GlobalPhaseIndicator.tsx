@@ -73,7 +73,7 @@ export default function GlobalPhaseIndicator({
                 <span className="hidden sm:inline">{phase.score}%</span>
               </button>
               {index < phases.length - 1 && (
-                <span className="text-slate-400 mx-1">→</span>
+                <span className="text-gray-600 mx-1">→</span>
               )}
             </div>
           );
@@ -83,7 +83,7 @@ export default function GlobalPhaseIndicator({
   }
 
   return (
-    <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4" data-testid="phase-indicator-full">
+    <div className="bg-white border border-gray-200 rounded-lg p-4" data-testid="phase-indicator-full">
       <div className="flex items-center justify-between mb-3">
         <span className="text-sm font-medium text-slate-200">IDEA Framework Readiness</span>
         <span className="text-sm text-slate-300">
@@ -104,7 +104,7 @@ export default function GlobalPhaseIndicator({
                   <Icon className={`h-4 w-4 ${phase.color}`} />
                   <span className={`text-xs font-medium ${phase.color}`}>{phase.label}</span>
                 </div>
-                <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
+                <div className="h-2 bg-gray-50 rounded-full overflow-hidden">
                   <div 
                     className={`h-full ${phase.bgColor} transition-all`}
                     style={{ width: `${phase.score}%` }}

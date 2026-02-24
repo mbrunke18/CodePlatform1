@@ -547,7 +547,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
 
         {/* System Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Integrations</h3>
@@ -558,7 +558,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Active</h3>
@@ -569,7 +569,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">API Calls</h3>
@@ -580,7 +580,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Health</h3>
@@ -591,7 +591,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Data Flows</h3>
@@ -602,7 +602,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Error Rate</h3>
@@ -616,12 +616,12 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
 
         {/* Main Integration Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="bg-slate-800/50 border border-slate-700/50">
-            <TabsTrigger value="dashboard" className="data-[state=active]:bg-slate-700">Dashboard</TabsTrigger>
-            <TabsTrigger value="integrations" className="data-[state=active]:bg-slate-700">Integrations</TabsTrigger>
-            <TabsTrigger value="apis" className="data-[state=active]:bg-slate-700">API Endpoints</TabsTrigger>
-            <TabsTrigger value="dataflows" className="data-[state=active]:bg-slate-700">Data Flows</TabsTrigger>
-            <TabsTrigger value="monitoring" className="data-[state=active]:bg-slate-700">Monitoring</TabsTrigger>
+          <TabsList className="bg-gray-50 border border-gray-200">
+            <TabsTrigger value="dashboard" className="data-[state=active]:bg-gray-50">Dashboard</TabsTrigger>
+            <TabsTrigger value="integrations" className="data-[state=active]:bg-gray-50">Integrations</TabsTrigger>
+            <TabsTrigger value="apis" className="data-[state=active]:bg-gray-50">API Endpoints</TabsTrigger>
+            <TabsTrigger value="dataflows" className="data-[state=active]:bg-gray-50">Data Flows</TabsTrigger>
+            <TabsTrigger value="monitoring" className="data-[state=active]:bg-gray-50">Monitoring</TabsTrigger>
           </TabsList>
 
           {/* Dashboard */}
@@ -629,7 +629,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               
               {/* Top Integrations */}
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <BarChart3 className="h-5 w-5" />
@@ -638,7 +638,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {integrations.slice(0, 5).map((integration) => (
-                    <div key={integration.id} className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg">
+                    <div key={integration.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
                           <Globe className="w-5 h-5 text-white" />
@@ -660,7 +660,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
               </Card>
 
               {/* Recent Activity */}
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <Clock className="h-5 w-5" />
@@ -669,7 +669,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {apiEndpoints.slice(0, 5).map((endpoint) => (
-                    <div key={endpoint.id} className="p-3 bg-slate-800/50 rounded-lg">
+                    <div key={endpoint.id} className="p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center justify-between mb-2">
                         <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
                           {endpoint.method}
@@ -696,18 +696,18 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
           <TabsContent value="integrations" className="space-y-6">
             
             {/* Filters */}
-            <div className="flex items-center gap-4 bg-slate-900/50 p-4 rounded-lg border border-slate-700/50">
+            <div className="flex items-center gap-4 bg-white p-4 rounded-lg border border-gray-200">
               <div className="flex-1 page-background relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-600 dark:text-slate-200" />
                 <Input
                   placeholder="Search integrations..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 bg-slate-800 border-slate-600 text-white"
+                  className="pl-10 bg-gray-50 border-slate-600 text-white"
                 />
               </div>
               <Select value={filterCategory} onValueChange={setFilterCategory}>
-                <SelectTrigger className="w-48 bg-slate-800 border-slate-600 text-white">
+                <SelectTrigger className="w-48 bg-gray-50 border-slate-600 text-white">
                   <SelectValue placeholder="Category" />
                 </SelectTrigger>
                 <SelectContent>
@@ -726,7 +726,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
             {/* Integrations Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {filteredIntegrations.map((integration) => (
-                <Card key={integration.id} className="bg-slate-900/50 border-slate-700/50 hover:bg-slate-800/50 transition-all duration-300">
+                <Card key={integration.id} className="bg-white border-gray-200 hover:bg-slate-800/50 transition-all duration-300">
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <CardTitle className="text-white flex items-center gap-3">
@@ -805,11 +805,11 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
 
           {/* API Endpoints */}
           <TabsContent value="apis" className="space-y-6">
-            <Card className="bg-slate-900/50 border-slate-700/50">
+            <Card className="bg-white border-gray-200">
               <CardContent className="p-0">
                 <div className="overflow-x-auto">
                   <table className="w-full">
-                    <thead className="bg-slate-800/50 border-b border-slate-700">
+                    <thead className="bg-gray-50 border-b border-gray-200">
                       <tr>
                         <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">Endpoint</th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">Method</th>
@@ -866,7 +866,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
           <TabsContent value="dataflows" className="space-y-6">
             <div className="space-y-4">
               {dataFlows.map((flow) => (
-                <Card key={flow.id} className="bg-slate-900/50 border-slate-700/50">
+                <Card key={flow.id} className="bg-white border-gray-200">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1 page-background">
@@ -940,7 +940,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
           {/* Monitoring */}
           <TabsContent value="monitoring" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-white">Uptime</h3>
@@ -951,7 +951,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-white">Throughput</h3>
@@ -962,7 +962,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-white">Latency</h3>
@@ -973,7 +973,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-white">Data Volume</h3>

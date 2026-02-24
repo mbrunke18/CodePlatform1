@@ -346,7 +346,7 @@ export default function ExecutiveSimulationDemo() {
   if (phase === 'intro') {
     return (
       <PageLayout>
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-6">
+        <div className="min-h-screen flex items-center justify-center p-6">
           <Card className="max-w-3xl w-full border-0 bg-white/5 backdrop-blur-xl" data-testid="card-simulation-intro">
             <CardHeader className="text-center pb-2">
               <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-teal-400 rounded-2xl flex items-center justify-center">
@@ -364,7 +364,7 @@ export default function ExecutiveSimulationDemo() {
             </CardHeader>
             
             <CardContent className="space-y-6">
-              <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+              <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
                 <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                   <Building2 className="w-5 h-5 text-blue-400" />
                   Your Company Profile
@@ -389,7 +389,7 @@ export default function ExecutiveSimulationDemo() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-blue-900/50 to-teal-900/50 rounded-xl p-6 border border-blue-700/30">
+              <div className="bg-gradient-to-r   rounded-xl p-6 border border-blue-700/30">
                 <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
                   <Users className="w-5 h-5 text-teal-400" />
                   Your Role
@@ -406,7 +406,7 @@ export default function ExecutiveSimulationDemo() {
                 </div>
               </div>
 
-              <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+              <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
                 <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                   <Target className="w-5 h-5 text-purple-400" />
                   What You'll Experience
@@ -452,7 +452,7 @@ export default function ExecutiveSimulationDemo() {
   if (phase === 'complete') {
     return (
       <PageLayout>
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-900/20 to-slate-900 flex items-center justify-center p-6">
+        <div className="min-h-screen bg-gradient-to-br flex items-center justify-center p-6">
           <Card className="max-w-3xl w-full border-0 bg-white/5 backdrop-blur-xl" data-testid="card-simulation-complete">
             <CardHeader className="text-center pb-2">
               <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-emerald-500 to-green-400 rounded-2xl flex items-center justify-center">
@@ -471,24 +471,24 @@ export default function ExecutiveSimulationDemo() {
             
             <CardContent className="space-y-6">
               <div className="grid grid-cols-3 gap-4">
-                <div className="bg-slate-800/50 rounded-xl p-6 text-center border border-slate-700">
+                <div className="bg-gray-50 rounded-xl p-6 text-center border border-gray-200">
                   <Clock className="w-8 h-8 text-blue-400 mx-auto mb-2" />
                   <p className="text-3xl font-bold text-white">{formatTime(elapsedTime)}</p>
                   <p className="text-slate-600 dark:text-slate-200 text-sm">Total Response Time</p>
                 </div>
-                <div className="bg-slate-800/50 rounded-xl p-6 text-center border border-slate-700">
+                <div className="bg-gray-50 rounded-xl p-6 text-center border border-gray-200">
                   <Users className="w-8 h-8 text-purple-400 mx-auto mb-2" />
                   <p className="text-3xl font-bold text-white">6</p>
                   <p className="text-slate-600 dark:text-slate-200 text-sm">Stakeholders Aligned</p>
                 </div>
-                <div className="bg-slate-800/50 rounded-xl p-6 text-center border border-slate-700">
+                <div className="bg-gray-50 rounded-xl p-6 text-center border border-gray-200">
                   <CheckCircle2 className="w-8 h-8 text-green-400 mx-auto mb-2" />
                   <p className="text-3xl font-bold text-white">{playbookActions.length}</p>
                   <p className="text-slate-600 dark:text-slate-200 text-sm">Actions Completed</p>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-emerald-900/50 to-green-900/50 rounded-xl p-6 border border-emerald-700/30">
+              <div className="bg-gradient-to-r   rounded-xl p-6 border border-emerald-700/30">
                 <h3 className="text-lg font-semibold text-white mb-4">Traditional vs Execution OS Response</h3>
                 <div className="space-y-4">
                   <div>
@@ -496,7 +496,7 @@ export default function ExecutiveSimulationDemo() {
                       <span className="text-slate-600 dark:text-slate-200">Traditional Approach</span>
                       <span className="text-red-400">48-72 hours</span>
                     </div>
-                    <div className="h-3 bg-slate-700 rounded-full overflow-hidden">
+                    <div className="h-3 bg-gray-50 rounded-full overflow-hidden">
                       <div className="h-full bg-red-500/50 rounded-full" style={{ width: '100%' }}></div>
                     </div>
                   </div>
@@ -505,7 +505,7 @@ export default function ExecutiveSimulationDemo() {
                       <span className="text-slate-600 dark:text-slate-200">With Execution OS</span>
                       <span className="text-emerald-400">{formatTime(elapsedTime)}</span>
                     </div>
-                    <div className="h-3 bg-slate-700 rounded-full overflow-hidden">
+                    <div className="h-3 bg-gray-50 rounded-full overflow-hidden">
                       <div className="h-full bg-gradient-to-r from-emerald-500 to-green-400 rounded-full" style={{ width: '3%' }}></div>
                     </div>
                   </div>
@@ -515,7 +515,7 @@ export default function ExecutiveSimulationDemo() {
                 </p>
               </div>
 
-              <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+              <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
                 <h3 className="text-lg font-semibold text-white mb-4">What Happened</h3>
                 <ul className="space-y-3 text-slate-300 text-sm">
                   <li className="flex items-start gap-3">
@@ -577,7 +577,7 @@ export default function ExecutiveSimulationDemo() {
         {/* Critical Alert Overlay */}
         {showCriticalAlert && criticalSignal && (
           <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4" data-testid="overlay-critical-alert">
-            <Card className="max-w-2xl w-full border-2 border-red-500 bg-slate-900 animate-pulse">
+            <Card className="max-w-2xl w-full border-2 border-red-500 bg-white animate-pulse">
               <CardHeader className="bg-red-500/20 border-b border-red-500/30">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-red-500 rounded-xl flex items-center justify-center animate-pulse">
@@ -601,14 +601,14 @@ export default function ExecutiveSimulationDemo() {
                     Just now
                   </span>
                 </div>
-                <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
+                <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
                   <p className="text-amber-400 font-medium flex items-center gap-2">
                     <Zap className="w-4 h-4" />
                     Execution OS Recommendation: Activate "Competitor M&A Response" playbook immediately
                   </p>
                 </div>
               </CardContent>
-              <CardFooter className="border-t border-slate-700 bg-slate-800/50">
+              <CardFooter className="border-t border-gray-200 bg-gray-50">
                 <Button 
                   className="w-full bg-red-600 hover:bg-red-700 text-white"
                   onClick={handleAcknowledgeAlert}
@@ -700,12 +700,12 @@ export default function ExecutiveSimulationDemo() {
         {/* Main Content */}
         <div className="container mx-auto px-4 py-6">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-            <TabsList className="grid grid-cols-4 w-full max-w-2xl mx-auto bg-slate-800/80 border border-slate-700" data-testid="tabs-main-navigation">
-              <TabsTrigger value="radar" className="flex items-center gap-2 data-[state=active]:bg-slate-700 data-[state=active]:text-white text-slate-300" data-testid="tab-radar">
+            <TabsList className="grid grid-cols-4 w-full max-w-2xl mx-auto bg-gray-50 border border-gray-200" data-testid="tabs-main-navigation">
+              <TabsTrigger value="radar" className="flex items-center gap-2 data-[state=active]:bg-gray-50 data-[state=active]:text-white text-slate-300" data-testid="tab-radar">
                 <Radio className="w-4 h-4" />
                 Radar
               </TabsTrigger>
-              <TabsTrigger value="signals" className="flex items-center gap-2 data-[state=active]:bg-slate-700 data-[state=active]:text-white text-slate-300" data-testid="tab-signals">
+              <TabsTrigger value="signals" className="flex items-center gap-2 data-[state=active]:bg-gray-50 data-[state=active]:text-white text-slate-300" data-testid="tab-signals">
                 <AlertTriangle className="w-4 h-4" />
                 Signals
                 {signals.filter(s => s.actionRequired).length > 0 && (
@@ -714,11 +714,11 @@ export default function ExecutiveSimulationDemo() {
                   </Badge>
                 )}
               </TabsTrigger>
-              <TabsTrigger value="playbooks" className="flex items-center gap-2 data-[state=active]:bg-slate-700 data-[state=active]:text-white text-slate-300" data-testid="tab-playbooks">
+              <TabsTrigger value="playbooks" className="flex items-center gap-2 data-[state=active]:bg-gray-50 data-[state=active]:text-white text-slate-300" data-testid="tab-playbooks">
                 <FileText className="w-4 h-4" />
                 Playbooks
               </TabsTrigger>
-              <TabsTrigger value="command" className="flex items-center gap-2 data-[state=active]:bg-slate-700 data-[state=active]:text-white text-slate-300" data-testid="tab-command">
+              <TabsTrigger value="command" className="flex items-center gap-2 data-[state=active]:bg-gray-50 data-[state=active]:text-white text-slate-300" data-testid="tab-command">
                 <Radio className="w-4 h-4" />
                 Command
               </TabsTrigger>
@@ -855,7 +855,7 @@ export default function ExecutiveSimulationDemo() {
                               <span className="text-xs text-slate-300">{signal.source}</span>
                             </div>
                             <h3 className="font-semibold text-slate-900 dark:text-white">{signal.title}</h3>
-                            <p className="text-sm text-slate-400 dark:text-slate-300 mt-1">{signal.description}</p>
+                            <p className="text-sm text-gray-600 dark:text-slate-300 mt-1">{signal.description}</p>
                           </div>
                         </div>
                         {signal.actionRequired && phase === 'playbook_selection' && (
@@ -909,7 +909,7 @@ export default function ExecutiveSimulationDemo() {
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <h4 className="font-semibold text-sm text-slate-700 dark:text-slate-300 mb-2">Key Actions</h4>
-                          <ul className="space-y-1 text-sm text-slate-400 dark:text-slate-300">
+                          <ul className="space-y-1 text-sm text-gray-600 dark:text-slate-300">
                             <li className="flex items-center gap-2">
                               <CheckCircle2 className="w-4 h-4 text-green-500" />
                               Executive team mobilization
@@ -978,7 +978,7 @@ export default function ExecutiveSimulationDemo() {
                             className="flex items-center gap-4 p-3 bg-slate-50 dark:bg-slate-800 rounded-lg"
                             data-testid={`action-${action.id}`}
                           >
-                            <div className="w-8 h-8 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center text-sm font-bold text-slate-400 dark:text-slate-300">
+                            <div className="w-8 h-8 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center text-sm font-bold text-gray-600 dark:text-slate-300">
                               {index + 1}
                             </div>
                             <div className="flex-1">
@@ -1033,7 +1033,7 @@ export default function ExecutiveSimulationDemo() {
                     <CardContent className="p-6">
                       <div className="mb-6">
                         <div className="flex justify-between text-sm mb-2">
-                          <span className="text-slate-400 dark:text-slate-300">Overall Progress</span>
+                          <span className="text-gray-600 dark:text-slate-300">Overall Progress</span>
                           <span className="font-medium text-slate-900 dark:text-white">{completedActions}/{playbookActions.length} Actions Complete</span>
                         </div>
                         <Progress value={progressPercent} className="h-3" />

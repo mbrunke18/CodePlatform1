@@ -74,12 +74,12 @@ export default function InvestorLanding() {
       <StandardNav />
 
         {/* Hero Section */}
-        <section className="py-20 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white relative overflow-hidden">
+        <section className="py-20 px-6 text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-20"></div>
           
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="mb-8 flex justify-center">
-              <div className="inline-block px-6 py-4 rounded-2xl bg-gradient-to-r from-slate-800/80 to-slate-900/70 border border-slate-600/50 backdrop-blur-sm">
+              <div className="inline-block px-6 py-4 rounded-2xl border border-slate-600/50 backdrop-blur-sm">
                 <ExecuteIQLogo width={280} variant="full" color="white" showTagline={true} />
               </div>
             </div>
@@ -143,7 +143,7 @@ export default function InvestorLanding() {
         </section>
 
         {/* Three Problems Worth Billions */}
-        <section className="py-16 px-6 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+        <section className="py-16 px-6 text-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <Badge className="mb-6 bg-red-600/20 text-red-400 border border-red-500/30 text-sm px-4 py-1.5">
@@ -159,7 +159,7 @@ export default function InvestorLanding() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6 mb-10">
-              <Card className="bg-slate-900/80 border border-slate-800 hover:border-red-500/40 transition-all">
+              <Card className="bg-white border border-gray-200 hover:border-red-500/40 transition-all">
                 <CardContent className="p-6">
                   <div className="mb-4">
                     <div className="flex items-center gap-3 mb-3">
@@ -172,7 +172,7 @@ export default function InvestorLanding() {
                     <p className="text-sm text-slate-200 mb-2">20-72 hours to even begin acting when strategic moments hit</p>
                     <p className="text-xs text-red-400">$136K/hour delayed (IBM). $5-50M M&A synergy erosion.</p>
                   </div>
-                  <div className="border-t border-slate-700 pt-4">
+                  <div className="border-t border-gray-200 pt-4">
                     <div className="flex items-center gap-2 mb-2">
                       <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0" />
                       <span className="text-sm text-emerald-400 font-semibold">Solution</span>
@@ -185,7 +185,7 @@ export default function InvestorLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-900/80 border border-slate-800 hover:border-amber-500/40 transition-all">
+              <Card className="bg-white border border-gray-200 hover:border-amber-500/40 transition-all">
                 <CardContent className="p-6">
                   <div className="mb-4">
                     <div className="flex items-center gap-3 mb-3">
@@ -198,7 +198,7 @@ export default function InvestorLanding() {
                     <p className="text-sm text-slate-200 mb-2">50-200+ stakeholders. No system to coordinate them.</p>
                     <p className="text-xs text-amber-400">$4.88M avg breach cost. 35% higher without pre-defined teams.</p>
                   </div>
-                  <div className="border-t border-slate-700 pt-4">
+                  <div className="border-t border-gray-200 pt-4">
                     <div className="flex items-center gap-2 mb-2">
                       <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0" />
                       <span className="text-sm text-emerald-400 font-semibold">Solution</span>
@@ -211,7 +211,7 @@ export default function InvestorLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-900/80 border border-slate-800 hover:border-purple-500/40 transition-all">
+              <Card className="bg-white border border-gray-200 hover:border-purple-500/40 transition-all">
                 <CardContent className="p-6">
                   <div className="mb-4">
                     <div className="flex items-center gap-3 mb-3">
@@ -224,7 +224,7 @@ export default function InvestorLanding() {
                     <p className="text-sm text-slate-200 mb-2">Knowledge walks out the door. Same scramble every time.</p>
                     <p className="text-xs text-purple-400">3.5 disruptions per 2 years. Same $4.88M cost repeated.</p>
                   </div>
-                  <div className="border-t border-slate-700 pt-4">
+                  <div className="border-t border-gray-200 pt-4">
                     <div className="flex items-center gap-2 mb-2">
                       <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0" />
                       <span className="text-sm text-emerald-400 font-semibold">Solution</span>
@@ -238,7 +238,7 @@ export default function InvestorLanding() {
               </Card>
             </div>
 
-            <div className="bg-slate-800/60 border border-slate-700 rounded-xl px-6 py-4 text-center">
+            <div className="bg-gray-50 border border-gray-200 rounded-xl px-6 py-4 text-center">
               <p className="text-slate-200">
                 <span className="text-white font-semibold">Execution OS at $250K-$750K/year</span> vs. one incident costing <span className="text-red-400 font-semibold">$5-50M</span>. <span className="text-emerald-400 font-semibold">Payback on first use.</span>
               </p>
@@ -247,7 +247,7 @@ export default function InvestorLanding() {
         </section>
 
         {/* Agentic Execution Layer */}
-        <section className="py-16 px-6 bg-gradient-to-br from-purple-950/30 via-slate-950 to-slate-950 text-white">
+        <section className="py-16 px-6 bg-gradient-to-br  text-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <Badge className="mb-6 bg-purple-600/20 text-purple-400 border border-purple-500/30 text-sm px-4 py-1.5">
@@ -263,52 +263,52 @@ export default function InvestorLanding() {
             </div>
 
             <div className="grid md:grid-cols-5 gap-2 items-center max-w-4xl mx-auto mb-12">
-              <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-4 text-center">
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
                 <div className="text-xs text-slate-300 mb-1">Strategy Layer</div>
                 <div className="text-sm font-semibold text-white">Board & C-Suite</div>
               </div>
-              <div className="text-center text-slate-500">→</div>
+              <div className="text-center text-gray-500">→</div>
               <div className="bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border-2 border-purple-500/50 rounded-xl p-4 text-center">
                 <div className="text-xs text-purple-400 font-semibold mb-1">Agentic Execution Layer</div>
                 <div className="text-sm font-bold text-white">Execution OS</div>
               </div>
-              <div className="text-center text-slate-500">→</div>
-              <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-4 text-center">
+              <div className="text-center text-gray-500">→</div>
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
                 <div className="text-xs text-slate-300 mb-1">Workflow Layer</div>
                 <div className="text-sm font-semibold text-white">Jira, ServiceNow</div>
               </div>
             </div>
 
             <div className="grid md:grid-cols-5 gap-4 max-w-5xl mx-auto">
-              <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-5 text-center">
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
                 <div className="w-10 h-10 mx-auto mb-3 bg-cyan-500/20 rounded-lg flex items-center justify-center">
                   <Zap className="h-5 w-5 text-cyan-400" />
                 </div>
                 <div className="text-sm font-semibold text-white mb-1">Detection Agent</div>
                 <div className="text-xs text-slate-300">Monitors signals across domains</div>
               </div>
-              <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-5 text-center">
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
                 <div className="w-10 h-10 mx-auto mb-3 bg-amber-500/20 rounded-lg flex items-center justify-center">
                   <Target className="h-5 w-5 text-amber-400" />
                 </div>
                 <div className="text-sm font-semibold text-white mb-1">Risk Scoring Agent</div>
                 <div className="text-xs text-slate-300">Classifies severity + urgency</div>
               </div>
-              <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-5 text-center">
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
                 <div className="w-10 h-10 mx-auto mb-3 bg-blue-500/20 rounded-lg flex items-center justify-center">
                   <Users className="h-5 w-5 text-blue-400" />
                 </div>
                 <div className="text-sm font-semibold text-white mb-1">Routing Agent</div>
                 <div className="text-xs text-slate-300">Assigns stakeholders + roles</div>
               </div>
-              <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-5 text-center">
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
                 <div className="w-10 h-10 mx-auto mb-3 bg-emerald-500/20 rounded-lg flex items-center justify-center">
                   <Shield className="h-5 w-5 text-emerald-400" />
                 </div>
                 <div className="text-sm font-semibold text-white mb-1">Decision Agent</div>
                 <div className="text-xs text-slate-300">Pre-authorized within policy</div>
               </div>
-              <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-5 text-center">
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
                 <div className="w-10 h-10 mx-auto mb-3 bg-purple-500/20 rounded-lg flex items-center justify-center">
                   <Brain className="h-5 w-5 text-purple-400" />
                 </div>
@@ -320,7 +320,7 @@ export default function InvestorLanding() {
         </section>
 
         {/* Independent Market Validation - Moved up for visibility */}
-        <section className="py-16 px-6 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white">
+        <section className="py-16 px-6 text-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <Badge className="mb-6 bg-indigo-600 text-white border-0 text-sm px-4 py-1.5">
@@ -340,7 +340,7 @@ export default function InvestorLanding() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
-              <Card className="bg-slate-800/60 border-slate-700 hover:border-indigo-500/50 transition-all">
+              <Card className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <Brain className="h-5 w-5 text-indigo-400" />
@@ -348,14 +348,14 @@ export default function InvestorLanding() {
                   </div>
                   <div className="text-sm text-indigo-400 mb-3">AI Radar 2026</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
+                    <Quote className="h-4 w-4 text-gray-500 flex-shrink-0 mt-1" />
                     <p className="text-slate-200 text-sm">"AI transformation shifting from CIO-led to CEO-led mandate"</p>
                   </div>
                   <p className="text-emerald-400 text-sm italic">→ Execution OS is built for the C-suite</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-800/60 border-slate-700 hover:border-indigo-500/50 transition-all">
+              <Card className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <Globe2 className="h-5 w-5 text-blue-400" />
@@ -363,14 +363,14 @@ export default function InvestorLanding() {
                   </div>
                   <div className="text-sm text-blue-400 mb-3">The Enterprise in 2030</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
+                    <Quote className="h-4 w-4 text-gray-500 flex-shrink-0 mt-1" />
                     <p className="text-slate-200 text-sm">"The smarter enterprise requires new operating models"</p>
                   </div>
                   <p className="text-emerald-400 text-sm italic">→ Execution OS IS that operating model</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-800/60 border-slate-700 hover:border-indigo-500/50 transition-all">
+              <Card className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <BarChart3 className="h-5 w-5 text-cyan-400" />
@@ -378,14 +378,14 @@ export default function InvestorLanding() {
                   </div>
                   <div className="text-sm text-cyan-400 mb-3">Global Tech Agenda 2026</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
+                    <Quote className="h-4 w-4 text-gray-500 flex-shrink-0 mt-1" />
                     <p className="text-slate-200 text-sm">"CIOs evolving from cost managers to strategy architects"</p>
                   </div>
                   <p className="text-emerald-400 text-sm italic">→ Our 170 playbooks give them the execution infrastructure</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-800/60 border-slate-700 hover:border-indigo-500/50 transition-all">
+              <Card className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <Network className="h-5 w-5 text-purple-400" />
@@ -393,14 +393,14 @@ export default function InvestorLanding() {
                   </div>
                   <div className="text-sm text-purple-400 mb-3">State of AI in the Enterprise 2026</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
+                    <Quote className="h-4 w-4 text-gray-500 flex-shrink-0 mt-1" />
                     <p className="text-slate-200 text-sm">"Rise of sovereign, agentic, and physical AI"</p>
                   </div>
                   <p className="text-emerald-400 text-sm italic">→ Execution OS orchestrates agentic AI with human oversight</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-800/60 border-slate-700 hover:border-indigo-500/50 transition-all">
+              <Card className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <Globe className="h-5 w-5 text-amber-400" />
@@ -408,14 +408,14 @@ export default function InvestorLanding() {
                   </div>
                   <div className="text-sm text-amber-400 mb-3">Proof over Promise</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
+                    <Quote className="h-4 w-4 text-gray-500 flex-shrink-0 mt-1" />
                     <p className="text-slate-200 text-sm">"Organizations scaling AI into outcomes"</p>
                   </div>
                   <p className="text-emerald-400 text-sm italic">→ Execution OS delivers measurable execution outcomes</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-800/60 border-slate-700 hover:border-indigo-500/50 transition-all">
+              <Card className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <Zap className="h-5 w-5 text-sky-400" />
@@ -423,14 +423,14 @@ export default function InvestorLanding() {
                   </div>
                   <div className="text-sm text-sky-400 mb-3">Agents Are Here</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
+                    <Quote className="h-4 w-4 text-gray-500 flex-shrink-0 mt-1" />
                     <p className="text-slate-200 text-sm">"Readiness requires people, process, culture, governance"</p>
                   </div>
                   <p className="text-emerald-400 text-sm italic">→ Execution OS provides all four</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-800/60 border-slate-700 hover:border-indigo-500/50 transition-all">
+              <Card className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <Target className="h-5 w-5 text-rose-400" />
@@ -438,14 +438,14 @@ export default function InvestorLanding() {
                   </div>
                   <div className="text-sm text-rose-400 mb-3">AI Agent Trends 2026</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
+                    <Quote className="h-4 w-4 text-gray-500 flex-shrink-0 mt-1" />
                     <p className="text-slate-200 text-sm">"AI agents being used across industries"</p>
                   </div>
                   <p className="text-emerald-400 text-sm italic">→ Our 9 strategic domains cover the enterprise</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-800/60 border-slate-700 hover:border-indigo-500/50 transition-all">
+              <Card className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <FileText className="h-5 w-5 text-teal-400" />
@@ -453,7 +453,7 @@ export default function InvestorLanding() {
                   </div>
                   <div className="text-sm text-teal-400 mb-3">New Rules of Platform Strategy</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-slate-500 flex-shrink-0 mt-1" />
+                    <Quote className="h-4 w-4 text-gray-500 flex-shrink-0 mt-1" />
                     <p className="text-slate-200 text-sm">"Reinventing platform strategy for agentic AI"</p>
                   </div>
                   <p className="text-emerald-400 text-sm italic">→ Execution OS is that platform</p>
@@ -613,7 +613,7 @@ export default function InvestorLanding() {
         </section>
 
         {/* Agentic AI Convergence */}
-        <section className="py-16 px-6 bg-gradient-to-br from-emerald-950 via-slate-900 to-indigo-950 text-white">
+        <section className="py-16 px-6 bg-white text-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-10">
               <Badge className="mb-4 bg-emerald-600 text-white border-0 text-sm px-4 py-1.5">
@@ -646,7 +646,7 @@ export default function InvestorLanding() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-4 mb-8">
-              <div className="bg-slate-800/50 border border-blue-500/30 rounded-xl p-5">
+              <div className="bg-gray-50 border border-blue-500/30 rounded-xl p-5">
                 <div className="text-blue-400 font-bold text-sm mb-3 uppercase tracking-wider">Strategy</div>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-2">
@@ -668,7 +668,7 @@ export default function InvestorLanding() {
                 </div>
               </div>
 
-              <div className="bg-slate-800/50 border border-emerald-500/30 rounded-xl p-5">
+              <div className="bg-gray-50 border border-emerald-500/30 rounded-xl p-5">
                 <div className="text-emerald-400 font-bold text-sm mb-3 uppercase tracking-wider">Build</div>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-2">
@@ -690,7 +690,7 @@ export default function InvestorLanding() {
                 </div>
               </div>
 
-              <div className="bg-slate-800/50 border border-amber-500/30 rounded-xl p-5">
+              <div className="bg-gray-50 border border-amber-500/30 rounded-xl p-5">
                 <div className="text-amber-400 font-bold text-sm mb-3 uppercase tracking-wider">Leadership</div>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-2">
@@ -1094,7 +1094,7 @@ export default function InvestorLanding() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-6 bg-gradient-to-br from-primary to-blue-900 text-white">
+        <section className="py-20 px-6 bg-gradient-to-br from-primary  text-white">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-6" data-testid="heading-cta">
               Join Us in Creating a New Software Category

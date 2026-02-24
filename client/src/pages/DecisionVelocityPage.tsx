@@ -24,7 +24,7 @@ export default function DecisionVelocityPage() {
           <p className="mt-2 text-gray-600 dark:text-gray-400">
             Measure your competitive advantage through decision velocity - the #1 metric for Dynamic Strategy practitioners
           </p>
-          <p className="mt-1 text-sm text-gray-500 dark:text-gray-500">
+          <p className="mt-1 text-sm text-gray-600 dark:text-gray-500">
             Companies like Microsoft, DBS Bank, and Amazon track decision velocity as their strategic execution metric
           </p>
         </div>

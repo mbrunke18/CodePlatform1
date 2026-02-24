@@ -676,7 +676,7 @@ export default function IntegrationConnections() {
 
   return (
     <PageLayout>
-      <div className="min-h-screen bg-gray-950">
+      <div className="min-h-screen bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 space-y-10">
 
           <div className="space-y-2">
@@ -686,91 +686,91 @@ export default function IntegrationConnections() {
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-white">Enterprise Integration Hub</h1>
-                <p className="text-gray-400 text-sm mt-0.5">Connect your enterprise stack to power real-time strategic execution across {INTEGRATIONS.length} tools</p>
+                <p className="text-gray-600 text-sm mt-0.5">Connect your enterprise stack to power real-time strategic execution across {INTEGRATIONS.length} tools</p>
               </div>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <Card className="bg-gray-900/60 border-gray-800">
+            <Card className="bg-white border-gray-200">
               <CardContent className="p-5 flex items-center gap-4">
                 <div className="p-2.5 rounded-lg bg-blue-500/10">
                   <Globe className="w-5 h-5 text-blue-400" />
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-white">{INTEGRATIONS.length}</div>
-                  <div className="text-xs text-gray-400">Total Integrations</div>
+                  <div className="text-xs text-gray-600">Total Integrations</div>
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-gray-900/60 border-gray-800">
+            <Card className="bg-white border-gray-200">
               <CardContent className="p-5 flex items-center gap-4">
                 <div className="p-2.5 rounded-lg bg-emerald-500/10">
                   <CheckCircle className="w-5 h-5 text-emerald-400" />
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-white">{connectedCount}</div>
-                  <div className="text-xs text-gray-400">Connected</div>
+                  <div className="text-xs text-gray-600">Connected</div>
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-gray-900/60 border-gray-800">
+            <Card className="bg-white border-gray-200">
               <CardContent className="p-5 flex items-center gap-4">
                 <div className="p-2.5 rounded-lg bg-purple-500/10">
                   <Layers className="w-5 h-5 text-purple-400" />
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-white">{Object.keys(CATEGORY_LABELS).length}</div>
-                  <div className="text-xs text-gray-400">Categories</div>
+                  <div className="text-xs text-gray-600">Categories</div>
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-gray-900/60 border-gray-800">
+            <Card className="bg-white border-gray-200">
               <CardContent className="p-5 flex items-center gap-4">
                 <div className="p-2.5 rounded-lg bg-amber-500/10">
                   <Shield className="w-5 h-5 text-amber-400" />
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-white">Enterprise</div>
-                  <div className="text-xs text-gray-400">Security Grade</div>
+                  <div className="text-xs text-gray-600">Security Grade</div>
                 </div>
               </CardContent>
             </Card>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="p-6 bg-gray-900/60 border-gray-800 text-center">
+            <Card className="p-6 bg-white border-gray-200 text-center">
               <div className="w-12 h-12 mx-auto mb-4 bg-blue-500/20 rounded-xl flex items-center justify-center">
                 <Zap className="w-6 h-6 text-blue-400" />
               </div>
               <h3 className="font-semibold text-white mb-2">Execution OS Orchestrates</h3>
-              <p className="text-sm text-gray-400">Strategic playbooks trigger coordinated actions across your entire enterprise stack simultaneously</p>
+              <p className="text-sm text-gray-600">Strategic playbooks trigger coordinated actions across your entire enterprise stack simultaneously</p>
             </Card>
-            <Card className="p-6 bg-gray-900/60 border-gray-800 text-center">
+            <Card className="p-6 bg-white border-gray-200 text-center">
               <div className="w-12 h-12 mx-auto mb-4 bg-purple-500/20 rounded-xl flex items-center justify-center">
                 <Database className="w-6 h-6 text-purple-400" />
               </div>
               <h3 className="font-semibold text-white mb-2">Your Tools Execute</h3>
-              <p className="text-sm text-gray-400">Jira, Slack, Salesforce, ServiceNow, Teams, and 20+ tools carry out the operational work</p>
+              <p className="text-sm text-gray-600">Jira, Slack, Salesforce, ServiceNow, Teams, and 20+ tools carry out the operational work</p>
             </Card>
-            <Card className="p-6 bg-gray-900/60 border-gray-800 text-center">
+            <Card className="p-6 bg-white border-gray-200 text-center">
               <div className="w-12 h-12 mx-auto mb-4 bg-emerald-500/20 rounded-xl flex items-center justify-center">
                 <RefreshCw className="w-6 h-6 text-emerald-400" />
               </div>
               <h3 className="font-semibold text-white mb-2">Everything Syncs</h3>
-              <p className="text-sm text-gray-400">Bi-directional updates keep Execution OS and all your tools in perfect alignment during execution</p>
+              <p className="text-sm text-gray-600">Bi-directional updates keep Execution OS and all your tools in perfect alignment during execution</p>
             </Card>
           </div>
 
           <div className="space-y-4">
             <div className="flex items-center gap-4 flex-wrap">
               <div className="relative flex-1 min-w-[240px]">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600" />
                 <Input
                   value={searchTerm}
                   onChange={e => setSearchTerm(e.target.value)}
                   placeholder="Search integrations..."
-                  className="pl-10 bg-gray-900/60 border-gray-800 text-white placeholder:text-gray-500"
+                  className="pl-10 bg-white border-gray-200 text-white placeholder:text-gray-500"
                 />
               </div>
               <div className="flex gap-2 flex-wrap">
@@ -784,7 +784,7 @@ export default function IntegrationConnections() {
                       variant={isActive ? 'default' : 'outline'}
                       size="sm"
                       onClick={() => setActiveCategory(cat)}
-                      className={`text-xs ${isActive ? 'bg-blue-600 text-white' : 'border-gray-700 text-gray-400 hover:text-white hover:bg-gray-800'}`}
+                      className={`text-xs ${isActive ? 'bg-blue-600 text-white' : 'border-gray-200 text-gray-600 hover:text-white hover:bg-gray-800'}`}
                     >
                       {catInfo.label}
                     </Button>
@@ -793,7 +793,7 @@ export default function IntegrationConnections() {
               </div>
             </div>
 
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-gray-600">
               Showing {filteredIntegrations.length} of {INTEGRATIONS.length} integrations
             </div>
           </div>
@@ -801,7 +801,7 @@ export default function IntegrationConnections() {
           {isLoading ? (
             <div className="flex items-center justify-center py-20">
               <Loader2 className="w-8 h-8 text-blue-400 animate-spin" />
-              <span className="ml-3 text-gray-400">Loading integrations...</span>
+              <span className="ml-3 text-gray-600">Loading integrations...</span>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
@@ -813,7 +813,7 @@ export default function IntegrationConnections() {
                 const Icon = config.icon;
 
                 return (
-                  <Card key={config.key} className={`bg-gray-900/80 border-gray-800 overflow-hidden transition-all hover:border-gray-700 ${isConnected ? 'ring-1 ring-emerald-500/20' : ''}`}>
+                  <Card key={config.key} className={`bg-white border-gray-200 overflow-hidden transition-all hover:border-gray-700 ${isConnected ? 'ring-1 ring-emerald-500/20' : ''}`}>
                     <CardContent className="p-5 space-y-4">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
@@ -822,7 +822,7 @@ export default function IntegrationConnections() {
                           </div>
                           <div>
                             <h3 className="text-sm font-semibold text-white">{config.name}</h3>
-                            <p className="text-xs text-gray-500 mt-0.5 line-clamp-1">{config.description}</p>
+                            <p className="text-xs text-gray-600 mt-0.5 line-clamp-1">{config.description}</p>
                           </div>
                         </div>
                         {isConnected ? getStatusBadge(status) : getConnectionTypeBadge(config.connectionType)}
@@ -839,7 +839,7 @@ export default function IntegrationConnections() {
                         {config.capabilities.map((cap, idx) => {
                           const CapIcon = cap.icon;
                           return (
-                            <div key={idx} className="flex items-center gap-1.5 text-[11px] text-gray-400 py-1">
+                            <div key={idx} className="flex items-center gap-1.5 text-[11px] text-gray-600 py-1">
                               <CapIcon className="w-3 h-3 text-gray-600 flex-shrink-0" />
                               <span className="line-clamp-1">{cap.label}</span>
                             </div>
@@ -856,13 +856,13 @@ export default function IntegrationConnections() {
                         </div>
                       )}
 
-                      <div className="flex items-center gap-2 pt-1 border-t border-gray-800">
+                      <div className="flex items-center gap-2 pt-1 border-t border-gray-200">
                         {isConnected ? (
                           <>
                             <Button
                               variant="outline"
                               size="sm"
-                              className="border-gray-700 text-gray-300 hover:bg-gray-800 gap-1 text-xs h-8"
+                              className="border-gray-200 text-gray-300 hover:bg-gray-800 gap-1 text-xs h-8"
                               onClick={() => handleTest(config.key, integration!.id)}
                               disabled={testingId === config.key}
                             >
@@ -891,7 +891,7 @@ export default function IntegrationConnections() {
                             Connect
                           </Button>
                         )}
-                        <Badge variant="outline" className="text-[9px] text-gray-600 border-gray-800 ml-auto">
+                        <Badge variant="outline" className="text-[9px] text-gray-600 border-gray-200 ml-auto">
                           {CATEGORY_LABELS[config.category]?.label || config.category}
                         </Badge>
                       </div>
@@ -902,7 +902,7 @@ export default function IntegrationConnections() {
             </div>
           )}
 
-          <Card className="bg-gray-900/60 border-gray-800">
+          <Card className="bg-white border-gray-200">
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-2">
                 <Zap className="w-5 h-5 text-amber-400" />
@@ -920,15 +920,15 @@ export default function IntegrationConnections() {
                       </div>
                       <div>
                         <h4 className="text-sm font-semibold text-white mb-1">{config.name}</h4>
-                        <p className="text-xs text-gray-400 leading-relaxed">{config.enablesDescription}</p>
+                        <p className="text-xs text-gray-600 leading-relaxed">{config.enablesDescription}</p>
                       </div>
                     </div>
                   );
                 })}
               </div>
 
-              <div className="pt-4 border-t border-gray-800">
-                <div className="flex items-center gap-2 text-xs text-gray-500">
+              <div className="pt-4 border-t border-gray-200">
+                <div className="flex items-center gap-2 text-xs text-gray-600">
                   <Shield className="w-3.5 h-3.5" />
                   All connections use industry-standard security protocols (OAuth 2.0, SAML, API Key encryption). No passwords are stored. Enterprise-grade token rotation and audit logging included.
                 </div>

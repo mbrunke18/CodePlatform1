@@ -17,7 +17,7 @@ export default function FounderStory() {
 
   if (activeVideo === "intro") {
     return (
-      <div className="min-h-screen bg-slate-950">
+      <div className="min-h-screen bg-white">
         <StandardNav />
         <FounderStoryIntro onComplete={handleVideoComplete} onSkip={handleVideoComplete} />
       </div>
@@ -26,7 +26,7 @@ export default function FounderStory() {
 
   if (activeVideo === "full") {
     return (
-      <div className="min-h-screen bg-slate-950">
+      <div className="min-h-screen bg-white">
         <StandardNav />
         <FounderStoryFull onComplete={handleVideoComplete} onSkip={handleVideoComplete} />
       </div>

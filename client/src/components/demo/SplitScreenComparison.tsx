@@ -264,10 +264,10 @@ export function SplitScreenComparison() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 animate-in slide-in-from-bottom duration-700 h-[40vh]">
-      <Card className="rounded-t-xl rounded-b-none border-t-2 border-x-0 border-b-0 border-blue-500/50 bg-gray-950/98 backdrop-blur-xl shadow-2xl h-full overflow-y-auto">
+      <Card className="rounded-t-xl rounded-b-none border-t-2 border-x-0 border-b-0 border-blue-500/50 bg-white backdrop-blur-xl shadow-2xl h-full overflow-y-auto">
         <div className="grid grid-cols-2 divide-x divide-gray-700">
           {/* TRADITIONAL SIDE - PAIN */}
-          <div className="p-6 bg-gradient-to-br from-red-950/40 to-orange-950/40">
+          <div className="p-6 bg-gradient-to-br  ">
             <div className="space-y-4">
               {/* Header */}
               <div className="flex items-center justify-between">
@@ -308,7 +308,7 @@ export function SplitScreenComparison() {
           </div>
 
           {/* Execution OS SIDE - POWER */}
-          <div className="p-6 bg-gradient-to-br from-blue-950/40 to-teal-950/40">
+          <div className="p-6 bg-gradient-to-br  ">
             <div className="space-y-4">
               {/* Header */}
               <div className="flex items-center justify-between">
@@ -354,7 +354,7 @@ export function SplitScreenComparison() {
         </div>
 
         {/* Progress indicator */}
-        <div className="px-6 py-3 bg-gray-900/50 border-t border-gray-700">
+        <div className="px-6 py-3 bg-white border-t border-gray-200">
           <div className="flex items-center justify-between mb-2">
             <p className="text-xs text-gray-200">Crisis Response Progress: {data.title}</p>
             <p className="text-xs font-mono text-gray-200">Step {currentStep + 1} / 6</p>

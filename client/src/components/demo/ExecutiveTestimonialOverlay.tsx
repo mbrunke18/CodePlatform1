@@ -34,7 +34,7 @@ export function ExecutiveTestimonialOverlay() {
     <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
       <div className="absolute inset-0 bg-black/75 backdrop-blur-sm animate-in fade-in duration-300" />
       
-      <Card className="relative w-[950px] bg-gradient-to-br from-slate-950/95 via-slate-900/95 to-slate-950/95 border-slate-500/50 p-8 shadow-2xl animate-in zoom-in-95 duration-500">
+      <Card className="relative w-[950px] border-slate-500/50 p-8 shadow-2xl animate-in zoom-in-95 duration-500">
         <div className="space-y-6">
           {/* Header */}
           <div className="text-center space-y-2">
@@ -112,7 +112,7 @@ export function ExecutiveTestimonialOverlay() {
           </div>
 
           {/* Bottom Message */}
-          <div className="bg-gradient-to-r from-slate-800/50 to-slate-700/50 rounded-lg p-5 border border-slate-600/40">
+          <div className=" rounded-lg p-5 border border-slate-600/40">
             <p className="text-center text-slate-200 text-lg">
               {phase === 'before' ? (
                 <span className="text-red-300">The question isn't IF a crisis will hit—it's whether you'll be prepared.</span>

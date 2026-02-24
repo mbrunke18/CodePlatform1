@@ -334,7 +334,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
 
         {/* Metrics Overview */}
         <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Total Logs</h3>
@@ -345,7 +345,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Security Events</h3>
@@ -356,7 +356,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Compliance</h3>
@@ -367,7 +367,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">System Health</h3>
@@ -378,7 +378,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Daily Logins</h3>
@@ -389,7 +389,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Failed Attempts</h3>
@@ -403,12 +403,12 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
 
         {/* Main Audit Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="bg-slate-800/50 border border-slate-700/50">
-            <TabsTrigger value="dashboard" className="data-[state=active]:bg-slate-700">Dashboard</TabsTrigger>
-            <TabsTrigger value="logs" className="data-[state=active]:bg-slate-700">Audit Logs</TabsTrigger>
-            <TabsTrigger value="security" className="data-[state=active]:bg-slate-700">Security Events</TabsTrigger>
-            <TabsTrigger value="compliance" className="data-[state=active]:bg-slate-700">Compliance</TabsTrigger>
-            <TabsTrigger value="analytics" className="data-[state=active]:bg-slate-700">Analytics</TabsTrigger>
+          <TabsList className="bg-gray-50 border border-gray-200">
+            <TabsTrigger value="dashboard" className="data-[state=active]:bg-gray-50">Dashboard</TabsTrigger>
+            <TabsTrigger value="logs" className="data-[state=active]:bg-gray-50">Audit Logs</TabsTrigger>
+            <TabsTrigger value="security" className="data-[state=active]:bg-gray-50">Security Events</TabsTrigger>
+            <TabsTrigger value="compliance" className="data-[state=active]:bg-gray-50">Compliance</TabsTrigger>
+            <TabsTrigger value="analytics" className="data-[state=active]:bg-gray-50">Analytics</TabsTrigger>
           </TabsList>
 
           {/* Dashboard */}
@@ -416,7 +416,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               
               {/* Recent Activity */}
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <Clock className="h-5 w-5" />
@@ -425,7 +425,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 </CardHeader>
                 <CardContent className="space-y-4 max-h-96 overflow-y-auto">
                   {auditLogs.slice(0, 8).map((log) => (
-                    <div key={log.id} className="p-3 bg-slate-800/50 rounded-lg border border-slate-600/50">
+                    <div key={log.id} className="p-3 bg-gray-50 rounded-lg border border-slate-600/50">
                       <div className="flex items-start justify-between mb-2">
                         <div className="flex items-center gap-2">
                           <Badge className={getCategoryColor(log.category)}>
@@ -450,7 +450,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
               </Card>
 
               {/* Security Alerts */}
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <Shield className="h-5 w-5" />
@@ -459,7 +459,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {securityEvents.slice(0, 3).map((event) => (
-                    <div key={event.id} className="p-3 bg-slate-800/50 rounded-lg border border-slate-600/50">
+                    <div key={event.id} className="p-3 bg-gray-50 rounded-lg border border-slate-600/50">
                       <div className="flex items-start justify-between mb-2">
                         <Badge className={getSeverityColor(event.severity)}>
                           {event.severity.toUpperCase()}
@@ -485,18 +485,18 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
           <TabsContent value="logs" className="space-y-6">
             
             {/* Filters */}
-            <div className="flex items-center gap-4 bg-slate-900/50 p-4 rounded-lg border border-slate-700/50">
+            <div className="flex items-center gap-4 bg-white p-4 rounded-lg border border-gray-200">
               <div className="flex-1 page-background relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-600 dark:text-slate-200" />
                 <Input
                   placeholder="Search logs..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 bg-slate-800 border-slate-600 text-white"
+                  className="pl-10 bg-gray-50 border-slate-600 text-white"
                 />
               </div>
               <Select value={filterCategory} onValueChange={setFilterCategory}>
-                <SelectTrigger className="w-48 bg-slate-800 border-slate-600 text-white">
+                <SelectTrigger className="w-48 bg-gray-50 border-slate-600 text-white">
                   <SelectValue placeholder="Category" />
                 </SelectTrigger>
                 <SelectContent>
@@ -510,7 +510,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 </SelectContent>
               </Select>
               <Select value={filterSeverity} onValueChange={setFilterSeverity}>
-                <SelectTrigger className="w-40 bg-slate-800 border-slate-600 text-white">
+                <SelectTrigger className="w-40 bg-gray-50 border-slate-600 text-white">
                   <SelectValue placeholder="Severity" />
                 </SelectTrigger>
                 <SelectContent>
@@ -524,11 +524,11 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
             </div>
 
             {/* Logs Table */}
-            <Card className="bg-slate-900/50 border-slate-700/50">
+            <Card className="bg-white border-gray-200">
               <CardContent className="p-0">
                 <div className="overflow-x-auto">
                   <table className="w-full">
-                    <thead className="bg-slate-800/50 border-b border-slate-700">
+                    <thead className="bg-gray-50 border-b border-gray-200">
                       <tr>
                         <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">Timestamp</th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">User</th>
@@ -582,7 +582,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
           <TabsContent value="security" className="space-y-6">
             <div className="space-y-4">
               {securityEvents.map((event) => (
-                <Card key={event.id} className="bg-slate-900/50 border-slate-700/50">
+                <Card key={event.id} className="bg-white border-gray-200">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1 page-background">
@@ -629,7 +629,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                       </div>
                     </div>
                     
-                    <div className="mt-4 pt-4 border-t border-slate-700 flex items-center justify-between">
+                    <div className="mt-4 pt-4 border-t border-gray-200 flex items-center justify-between">
                       <div className="text-xs text-slate-300">
                         User: {event.user} | Detected: {new Date(event.timestamp).toLocaleString()}
                       </div>
@@ -653,7 +653,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
           <TabsContent value="compliance" className="space-y-6">
             <div className="space-y-4">
               {complianceReports.map((report) => (
-                <Card key={report.id} className="bg-slate-900/50 border-slate-700/50">
+                <Card key={report.id} className="bg-white border-gray-200">
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <CardTitle className="text-white">{report.reportType}</CardTitle>
@@ -682,7 +682,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                       <h4 className="font-semibold text-white mb-3">Findings</h4>
                       <div className="space-y-2">
                         {report.findings.map((finding, index) => (
-                          <div key={index} className="p-3 bg-slate-800/50 rounded-lg">
+                          <div key={index} className="p-3 bg-gray-50 rounded-lg">
                             <div className="flex items-center justify-between mb-2">
                               <span className="font-medium text-white">{finding.category}</span>
                               <Badge className={getSeverityColor(finding.severity)}>
@@ -716,7 +716,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
           {/* Analytics */}
           <TabsContent value="analytics" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-white">Log Volume</h3>
@@ -727,7 +727,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-white">Security Score</h3>
@@ -738,7 +738,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-white">Response Time</h3>
@@ -749,7 +749,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-white">Threat Detection</h3>

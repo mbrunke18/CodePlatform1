@@ -310,7 +310,7 @@ export default function CompetitivePositioning() {
       <div className="bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950">
         
         {/* Hero Section */}
-        <section className="py-16 px-6 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900">
+        <section className="py-16 px-6 bg-white">
           <div className="max-w-6xl mx-auto text-center">
             <Badge className="mb-6 bg-blue-600/20 text-blue-300 border-blue-500/30" data-testid="badge-market-position">
               Market Position
@@ -914,7 +914,7 @@ export default function CompetitivePositioning() {
         </section>
 
         {/* Strategic Domains */}
-        <section className="py-16 px-6 bg-gradient-to-br from-blue-900 to-purple-900">
+        <section className="py-16 px-6 bg-gradient-to-br  ">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-white mb-4" data-testid="heading-domains">
@@ -957,7 +957,7 @@ export default function CompetitivePositioning() {
         {/* The Moat */}
         <section className="py-16 px-6">
           <div className="max-w-4xl mx-auto">
-            <Card className="bg-gradient-to-br from-slate-900 to-blue-900 text-white border-0" data-testid="card-moat">
+            <Card className="bg-white text-white border-0" data-testid="card-moat">
               <CardContent className="p-8">
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-xl bg-white/10">

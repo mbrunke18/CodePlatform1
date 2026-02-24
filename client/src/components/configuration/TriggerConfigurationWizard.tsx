@@ -389,7 +389,7 @@ export default function TriggerConfigurationWizard({
         {/* Progress indicator */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-500 dark:text-gray-300">Step {step} of {totalSteps}</span>
+            <span className="text-sm text-gray-600 dark:text-gray-300">Step {step} of {totalSteps}</span>
             <span className="text-sm font-medium">
               {step === 1 && 'Category & Basics'}
               {step === 2 && 'Conditions'}
@@ -482,7 +482,7 @@ export default function TriggerConfigurationWizard({
               </div>
               
               {selectedCategory && (
-                <p className="text-sm text-gray-500 dark:text-gray-300 mt-2">
+                <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
                   {SIGNAL_CATEGORIES.find(c => c.id === selectedCategory)?.description}
                 </p>
               )}
@@ -550,7 +550,7 @@ export default function TriggerConfigurationWizard({
                     onChange={(e) => setThresholdValue(e.target.value)}
                     data-testid="input-threshold"
                   />
-                  <span className="text-sm text-gray-500 dark:text-gray-300 min-w-[60px]">
+                  <span className="text-sm text-gray-600 dark:text-gray-300 min-w-[60px]">
                     {getFieldUnit()}
                   </span>
                 </div>
@@ -572,7 +572,7 @@ export default function TriggerConfigurationWizard({
                     ))}
                   </SelectContent>
                 </Select>
-                <p className="text-xs text-gray-500 dark:text-gray-300">
+                <p className="text-xs text-gray-600 dark:text-gray-300">
                   {SEVERITY_LEVELS.find(l => l.id === severity)?.description}
                 </p>
               </div>
@@ -589,7 +589,7 @@ export default function TriggerConfigurationWizard({
                     <SelectItem key={freq.id} value={freq.id}>
                       <div className="flex flex-col">
                         <span>{freq.name}</span>
-                        <span className="text-xs text-gray-500 dark:text-gray-300">{freq.description}</span>
+                        <span className="text-xs text-gray-600 dark:text-gray-300">{freq.description}</span>
                       </div>
                     </SelectItem>
                   ))}
@@ -602,8 +602,8 @@ export default function TriggerConfigurationWizard({
               <Card className="bg-gray-50 dark:bg-gray-800/50 border-dashed">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <Eye className="h-4 w-4 text-gray-500 dark:text-gray-300" />
-                    <span className="text-sm font-medium text-gray-400 dark:text-gray-200">Trigger Preview</span>
+                    <Eye className="h-4 w-4 text-gray-600 dark:text-gray-300" />
+                    <span className="text-sm font-medium text-gray-600 dark:text-gray-200">Trigger Preview</span>
                   </div>
                   <p className="text-lg font-medium">
                     Alert when{' '}
@@ -642,7 +642,7 @@ export default function TriggerConfigurationWizard({
                       <Mail className="h-5 w-5 text-blue-500" />
                       <div>
                         <p className="font-medium">Email Notifications</p>
-                        <p className="text-sm text-gray-500 dark:text-gray-300">Send email alerts to configured recipients</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">Send email alerts to configured recipients</p>
                       </div>
                     </div>
                     <Switch 
@@ -659,7 +659,7 @@ export default function TriggerConfigurationWizard({
                       <MessageSquare className="h-5 w-5 text-purple-500" />
                       <div>
                         <p className="font-medium">Slack Notifications</p>
-                        <p className="text-sm text-gray-500 dark:text-gray-300">Post alerts to Slack channels</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">Post alerts to Slack channels</p>
                       </div>
                     </div>
                     <Switch 
@@ -676,7 +676,7 @@ export default function TriggerConfigurationWizard({
                       <Smartphone className="h-5 w-5 text-green-500" />
                       <div>
                         <p className="font-medium">In-App Notifications</p>
-                        <p className="text-sm text-gray-500 dark:text-gray-300">Show alerts in the Execution OS platform</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">Show alerts in the Execution OS platform</p>
                       </div>
                     </div>
                     <Switch 
@@ -693,7 +693,7 @@ export default function TriggerConfigurationWizard({
                       <Webhook className="h-5 w-5 text-orange-500" />
                       <div>
                         <p className="font-medium">Webhook Integration</p>
-                        <p className="text-sm text-gray-500 dark:text-gray-300">Send data to external systems via webhook</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">Send data to external systems via webhook</p>
                       </div>
                     </div>
                     <Switch 
@@ -716,7 +716,7 @@ export default function TriggerConfigurationWizard({
                       <TrendingUp className="h-5 w-5 text-red-500" />
                       <div>
                         <p className="font-medium">Auto-Escalate</p>
-                        <p className="text-sm text-gray-500 dark:text-gray-300">Automatically escalate if not acknowledged</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">Automatically escalate if not acknowledged</p>
                       </div>
                     </div>
                     <Switch 
@@ -741,7 +741,7 @@ export default function TriggerConfigurationWizard({
                           <SelectItem value="240">4 hours</SelectItem>
                         </SelectContent>
                       </Select>
-                      <p className="text-xs text-gray-500 dark:text-gray-300">
+                      <p className="text-xs text-gray-600 dark:text-gray-300">
                         Alert will be escalated to the next level if not acknowledged within this time
                       </p>
                     </div>
@@ -767,7 +767,7 @@ export default function TriggerConfigurationWizard({
             <div className="flex items-center justify-between">
               <div>
                 <Label className="text-lg font-semibold">Auto-Activate Playbook</Label>
-                <p className="text-sm text-gray-500 dark:text-gray-300">Automatically activate selected playbook when trigger fires</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Automatically activate selected playbook when trigger fires</p>
               </div>
               <Switch 
                 checked={autoActivatePlaybook} 
@@ -778,7 +778,7 @@ export default function TriggerConfigurationWizard({
             
             <div className="space-y-4">
               <Label className="text-lg font-semibold">Recommended Playbooks</Label>
-              <p className="text-sm text-gray-500 dark:text-gray-300">
+              <p className="text-sm text-gray-600 dark:text-gray-300">
                 Select playbooks that should be suggested when this trigger fires
               </p>
               
@@ -799,7 +799,7 @@ export default function TriggerConfigurationWizard({
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="font-medium">{playbook.name || playbook.title}</p>
-                            <p className="text-sm text-gray-500 dark:text-gray-300">{playbook.category}</p>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">{playbook.category}</p>
                           </div>
                           {selectedPlaybooks.includes(playbook.id) && (
                             <Check className="h-5 w-5 text-green-600" />
@@ -812,8 +812,8 @@ export default function TriggerConfigurationWizard({
                   <Card className="col-span-2">
                     <CardContent className="p-8 text-center">
                       <PlayCircle className="h-12 w-12 text-gray-600 dark:text-gray-200 mx-auto mb-4" />
-                      <p className="text-gray-400">No playbooks available</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-300">Create playbooks first to link them to triggers</p>
+                      <p className="text-gray-600">No playbooks available</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">Create playbooks first to link them to triggers</p>
                     </CardContent>
                   </Card>
                 )}
@@ -831,28 +831,28 @@ export default function TriggerConfigurationWizard({
               <CardContent className="space-y-3">
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <span className="text-gray-500 dark:text-gray-300">Name:</span>
+                    <span className="text-gray-600 dark:text-gray-300">Name:</span>
                     <p className="font-medium">{triggerName}</p>
                   </div>
                   <div>
-                    <span className="text-gray-500 dark:text-gray-300">Category:</span>
+                    <span className="text-gray-600 dark:text-gray-300">Category:</span>
                     <p className="font-medium">{SIGNAL_CATEGORIES.find(c => c.id === selectedCategory)?.name}</p>
                   </div>
                   <div>
-                    <span className="text-gray-500 dark:text-gray-300">Condition:</span>
+                    <span className="text-gray-600 dark:text-gray-300">Condition:</span>
                     <p className="font-medium">
                       {SIGNAL_FIELDS[selectedCategory]?.find(f => f.id === selectedField)?.name}{' '}
                       {OPERATORS.find(o => o.id === operator)?.symbol} {thresholdValue} {getFieldUnit()}
                     </p>
                   </div>
                   <div>
-                    <span className="text-gray-500 dark:text-gray-300">Severity:</span>
+                    <span className="text-gray-600 dark:text-gray-300">Severity:</span>
                     <Badge className={SEVERITY_LEVELS.find(l => l.id === severity)?.color}>
                       {severity.toUpperCase()}
                     </Badge>
                   </div>
                   <div>
-                    <span className="text-gray-500 dark:text-gray-300">Notifications:</span>
+                    <span className="text-gray-600 dark:text-gray-300">Notifications:</span>
                     <div className="flex gap-1 mt-1">
                       {emailEnabled && <Badge variant="outline">Email</Badge>}
                       {slackEnabled && <Badge variant="outline">Slack</Badge>}
@@ -861,7 +861,7 @@ export default function TriggerConfigurationWizard({
                     </div>
                   </div>
                   <div>
-                    <span className="text-gray-500 dark:text-gray-300">Linked Playbooks:</span>
+                    <span className="text-gray-600 dark:text-gray-300">Linked Playbooks:</span>
                     <p className="font-medium">{selectedPlaybooks.length} selected</p>
                   </div>
                 </div>

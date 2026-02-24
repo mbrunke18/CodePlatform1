@@ -43,7 +43,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
   return (
     <div className="space-y-6">
       {/* Completion Overview */}
-      <Card className="border-blue-500/30 bg-gradient-to-r from-blue-950/20 to-purple-950/20">
+      <Card className="border-blue-500/30 bg-gradient-to-r  ">
         <CardHeader>
           <CardTitle className="text-white flex items-center gap-2">
             <Sparkles className="h-6 w-6 text-purple-400" />
@@ -60,21 +60,21 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
           </div>
 
           <div className="grid md:grid-cols-3 gap-4">
-            <div className="bg-slate-900/50 rounded-lg p-4">
+            <div className="bg-white rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Users className="h-4 w-4 text-blue-400" />
                 <span className="text-sm text-gray-200">Stakeholders</span>
               </div>
               <p className="text-2xl font-bold text-white">{stakeholderCount}</p>
             </div>
-            <div className="bg-slate-900/50 rounded-lg p-4">
+            <div className="bg-white rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Bell className="h-4 w-4 text-purple-400" />
                 <span className="text-sm text-gray-200">Triggers</span>
               </div>
               <p className="text-2xl font-bold text-white">{triggerCount}</p>
             </div>
-            <div className="bg-slate-900/50 rounded-lg p-4">
+            <div className="bg-white rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <BarChart3 className="h-4 w-4 text-green-400" />
                 <span className="text-sm text-gray-200">Metrics</span>
@@ -86,7 +86,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
       </Card>
 
       {/* Readiness Checklist */}
-      <Card className="border-slate-700">
+      <Card className="border-gray-200">
         <CardHeader>
           <CardTitle className="text-white">Readiness Checklist</CardTitle>
         </CardHeader>
@@ -98,7 +98,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
                 <div
                   key={index}
                   className={`flex items-center gap-3 p-3 rounded-lg ${
-                    check.met ? 'bg-green-950/20 border border-green-500/30' : 'bg-slate-900/50 border border-slate-700'
+                    check.met ? 'bg-green-950/20 border border-green-500/30' : 'bg-white border border-gray-200'
                   }`}
                 >
                   {check.met ? (

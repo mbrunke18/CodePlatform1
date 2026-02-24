@@ -131,7 +131,7 @@ export default function Sitemap() {
   ];
 
   return (
-    <div className="page-background min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white p-8 pt-24">
+    <div className="page-background min-h-screen text-white p-8 pt-24">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
@@ -144,7 +144,7 @@ export default function Sitemap() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {sections.map((section) => (
-            <Card key={section.title} className="bg-slate-800/50 border-slate-700">
+            <Card key={section.title} className="bg-gray-50 border-gray-200">
               <CardHeader>
                 <CardTitle className="text-xl text-blue-400">{section.title}</CardTitle>
               </CardHeader>
@@ -166,7 +166,7 @@ export default function Sitemap() {
           ))}
         </div>
 
-        <Card className="mt-8 bg-slate-800/50 border-slate-700">
+        <Card className="mt-8 bg-gray-50 border-gray-200">
           <CardContent className="p-8">
             <h2 className="text-2xl font-bold mb-4">Quick Stats</h2>
             <div className="grid md:grid-cols-4 gap-6 text-center">

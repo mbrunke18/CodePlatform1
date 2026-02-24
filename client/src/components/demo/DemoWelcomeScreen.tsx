@@ -66,7 +66,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
       className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/70 backdrop-blur-sm"
       data-testid="demo-welcome-screen"
     >
-      <Card className="bg-gray-900/98 border-blue-500/70 shadow-2xl backdrop-blur-lg max-w-5xl w-full max-h-[90vh] overflow-y-auto">
+      <Card className="bg-white border-blue-500/70 shadow-2xl backdrop-blur-lg max-w-5xl w-full max-h-[90vh] overflow-y-auto">
         <CardContent className="p-8 space-y-6">
           
           {/* Header */}
@@ -87,7 +87,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
           {/* Key Stats */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {keyStats.map((stat, index) => (
-              <Card key={index} className="bg-gray-800/50 border-gray-700">
+              <Card key={index} className="bg-gray-50 border-gray-200">
                 <CardContent className="p-4 text-center">
                   <stat.icon className={`h-8 w-8 ${stat.color} mx-auto mb-2`} />
                   <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
@@ -115,7 +115,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
           </div>
 
           {/* Early Access Program */}
-          <div className="bg-gradient-to-r from-purple-950/50 to-pink-950/50 rounded-lg p-6 border border-purple-500/30">
+          <div className="bg-gradient-to-r   rounded-lg p-6 border border-purple-500/30">
             <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
               <Building2 className="h-5 w-5 text-purple-400" />
               Built for Fortune 1000 Strategic Execution

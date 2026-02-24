@@ -264,7 +264,7 @@ export default function Homepage() {
       <StandardNav />
       
       {/* Hero Section - Execution Infrastructure */}
-      <section className="relative py-16 md:py-28 px-6 overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+      <section className="relative py-16 md:py-28 px-6 overflow-hidden bg-gradient-to-br ">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.08),transparent_50%)]" />
         
@@ -295,7 +295,7 @@ export default function Homepage() {
           </div>
 
           {/* Stats Bar - Research Validation */}
-          <div className="bg-slate-800/50 rounded-2xl p-6 max-w-4xl mx-auto mb-10" data-testid="trust-bar">
+          <div className="bg-gray-50 rounded-2xl p-6 max-w-4xl mx-auto mb-10" data-testid="trust-bar">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
               <div>
                 <div className="text-3xl font-bold text-blue-400">78%</div>
@@ -313,7 +313,7 @@ export default function Homepage() {
                 <div className="text-xs text-slate-600 dark:text-slate-200 mt-1">BCG 2025</div>
               </div>
             </div>
-            <div className="border-t border-slate-700 mt-4 pt-4 grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+            <div className="border-t border-gray-200 mt-4 pt-4 grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
               <div>
                 <div className="text-2xl font-bold text-emerald-400">72 hrs → 12 min</div>
                 <div className="text-xs text-slate-300">Trigger to execution</div>
@@ -401,7 +401,7 @@ export default function Homepage() {
 
           <div className="grid md:grid-cols-2 gap-8 mb-10">
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">What Enterprises Have</h3>
+              <h3 className="text-lg font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wide">What Enterprises Have</h3>
               {[
                 { system: 'ERP', purpose: 'Finance & Operations' },
                 { system: 'CRM', purpose: 'Customer Relationships' },
@@ -412,7 +412,7 @@ export default function Homepage() {
                   <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
                   <div>
                     <span className="font-semibold text-slate-900 dark:text-white">{item.system}</span>
-                    <span className="text-slate-500 dark:text-slate-400 ml-2">for {item.purpose}</span>
+                    <span className="text-gray-500 dark:text-slate-400 ml-2">for {item.purpose}</span>
                   </div>
                 </div>
               ))}
@@ -447,14 +447,14 @@ export default function Homepage() {
               <p className="text-slate-600 dark:text-slate-300">
                 Execution OS lets you make them <span className="text-blue-600 dark:text-blue-400 font-bold">by design</span>. 170 playbooks. Pre-defined governance. 12-minute execution.
               </p>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">Source: Deloitte 2026 CSO Survey</p>
+              <p className="text-xs text-gray-500 dark:text-slate-400 mt-2">Source: Deloitte 2026 CSO Survey</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* AI Intelligence Engine - How the AI Works */}
-      <section className="py-16 px-6 bg-gradient-to-br from-blue-950/40 via-slate-950 to-emerald-950/40" data-testid="ai-engine-section">
+      <section className="py-16 px-6 bg-gradient-to-br " data-testid="ai-engine-section">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10">
             <Badge className="mb-4 bg-[#00A8A8]/20 text-[#00A8A8] border-[#00A8A8]/30">
@@ -482,7 +482,7 @@ export default function Homepage() {
                 <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center mb-4 shadow-lg`}>
                   <step.icon className="h-7 w-7 text-white" />
                 </div>
-                <div className="text-xs font-bold text-slate-400 tracking-widest mb-1">{step.phase}</div>
+                <div className="text-xs font-bold text-gray-600 tracking-widest mb-1">{step.phase}</div>
                 <h3 className="text-lg font-bold text-white mb-2">{step.label}</h3>
                 <p className="text-sm text-slate-300 leading-relaxed">{step.desc}</p>
                 {i < 3 && <ArrowRight className="md:hidden h-5 w-5 text-slate-600 mt-4" />}
@@ -491,7 +491,7 @@ export default function Homepage() {
           </div>
 
           <div className="text-center mt-8">
-            <p className="text-sm text-slate-400">
+            <p className="text-sm text-gray-600">
               This is the <span className="text-[#00A8A8] font-semibold">IDEA Framework</span> — the continuous intelligence loop that powers every Execution OS execution.
             </p>
           </div>
@@ -499,7 +499,7 @@ export default function Homepage() {
       </section>
 
       {/* 3 Problems Section - Pain → Cost → Solution → Value */}
-      <section className="py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" data-testid="three-problems-section">
+      <section className="py-20 bg-gradient-to-br " data-testid="three-problems-section">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-red-500/20 text-red-400 border-red-500/30" data-testid="badge-problems">
@@ -516,10 +516,10 @@ export default function Homepage() {
 
           <div className="space-y-8">
             {/* Problem 1: The Execution Gap */}
-            <Card className="bg-slate-900/80 border border-slate-800 overflow-hidden hover:border-red-500/40 transition-all" data-testid="problem-execution-gap">
+            <Card className="bg-white border border-gray-200 overflow-hidden hover:border-red-500/40 transition-all" data-testid="problem-execution-gap">
               <CardContent className="p-0">
                 <div className="grid lg:grid-cols-2">
-                  <div className="p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-slate-800">
+                  <div className="p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-gray-200">
                     <div className="flex items-center gap-3 mb-6">
                       <div className="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center">
                         <Zap className="h-6 w-6 text-red-400" />
@@ -567,10 +567,10 @@ export default function Homepage() {
             </Card>
 
             {/* Problem 2: The Coordination Chaos */}
-            <Card className="bg-slate-900/80 border border-slate-800 overflow-hidden hover:border-amber-500/40 transition-all" data-testid="problem-coordination-chaos">
+            <Card className="bg-white border border-gray-200 overflow-hidden hover:border-amber-500/40 transition-all" data-testid="problem-coordination-chaos">
               <CardContent className="p-0">
                 <div className="grid lg:grid-cols-2">
-                  <div className="p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-slate-800">
+                  <div className="p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-gray-200">
                     <div className="flex items-center gap-3 mb-6">
                       <div className="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center">
                         <Users className="h-6 w-6 text-amber-400" />
@@ -618,10 +618,10 @@ export default function Homepage() {
             </Card>
 
             {/* Problem 3: The Institutional Amnesia */}
-            <Card className="bg-slate-900/80 border border-slate-800 overflow-hidden hover:border-purple-500/40 transition-all" data-testid="problem-institutional-amnesia">
+            <Card className="bg-white border border-gray-200 overflow-hidden hover:border-purple-500/40 transition-all" data-testid="problem-institutional-amnesia">
               <CardContent className="p-0">
                 <div className="grid lg:grid-cols-2">
-                  <div className="p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-slate-800">
+                  <div className="p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-gray-200">
                     <div className="flex items-center gap-3 mb-6">
                       <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
                         <Brain className="h-6 w-6 text-purple-400" />
@@ -670,7 +670,7 @@ export default function Homepage() {
           </div>
 
           {/* Payback Summary */}
-          <div className="mt-12 text-center bg-gradient-to-r from-emerald-900/30 to-cyan-900/30 rounded-2xl p-8 border border-emerald-500/30" data-testid="payback-summary">
+          <div className="mt-12 text-center bg-gradient-to-r   rounded-2xl p-8 border border-emerald-500/30" data-testid="payback-summary">
             <p className="text-2xl text-white mb-2 font-bold">
               <span className="text-emerald-400">Execution OS at $250K-$750K/year</span> vs. one incident costing <span className="text-red-400">$5-50M</span>.
             </p>
@@ -704,7 +704,7 @@ export default function Homepage() {
       </section>
 
       {/* Paradigm Shift Section - From Prediction to Preparation */}
-      <section className="py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" data-testid="paradigm-shift-section">
+      <section className="py-20 bg-gradient-to-br " data-testid="paradigm-shift-section">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-[#00A8A8]/20 text-[#00A8A8] border-[#00A8A8]/30">
@@ -717,7 +717,7 @@ export default function Homepage() {
             <p className="text-lg text-slate-200 max-w-3xl mx-auto mb-3">
               The predict-and-act model is dead. In a world where disruptions compound and cascade, the only advantage is response infrastructure built in advance.
             </p>
-            <p className="text-sm text-slate-400 italic">
+            <p className="text-sm text-gray-600 italic">
               Compound disruptions are the new normal. Execution OS is the response infrastructure.
             </p>
           </div>
@@ -732,7 +732,7 @@ export default function Homepage() {
                   <h3 className="text-xl font-bold text-red-400">The Old Model</h3>
                 </div>
                 <p className="text-white font-semibold mb-2">Predict → Plan → Execute</p>
-                <p className="text-sm text-slate-400 mb-6">Assumes: Stable environment, linear change, time to prepare</p>
+                <p className="text-sm text-gray-600 mb-6">Assumes: Stable environment, linear change, time to prepare</p>
                 <div className="space-y-3">
                   {[
                     "Ad-hoc response teams",
@@ -758,7 +758,7 @@ export default function Homepage() {
                   <h3 className="text-xl font-bold text-emerald-400">The New Model</h3>
                 </div>
                 <p className="text-white font-semibold mb-2">Detect → Activate → Coordinate → Execute → Advance</p>
-                <p className="text-sm text-slate-400 mb-6">Assumes: Compound disruptions, no time to improvise</p>
+                <p className="text-sm text-gray-600 mb-6">Assumes: Compound disruptions, no time to improvise</p>
                 <div className="space-y-3">
                   {[
                     "Pre-built playbooks with decision rights",
@@ -808,7 +808,7 @@ export default function Homepage() {
           </div>
 
           <div className="text-center">
-            <p className="text-slate-400 italic text-sm max-w-2xl mx-auto">
+            <p className="text-gray-600 italic text-sm max-w-2xl mx-auto">
               17 independent reports. One conclusion. The infrastructure for the next era of enterprise execution.
             </p>
           </div>
@@ -900,7 +900,7 @@ export default function Homepage() {
       </section>
 
       {/* Why 2026 Is Different - Research Validation */}
-      <section className="py-20 px-6 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950">
+      <section className="py-20 px-6 bg-gradient-to-br ">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-blue-500/20 text-blue-400 border-blue-500/30">
@@ -915,7 +915,7 @@ export default function Homepage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-14">
-            <Card className="bg-slate-900/80 border-blue-500/30 hover:border-blue-400/60 transition-all">
+            <Card className="bg-white border-blue-500/30 hover:border-blue-400/60 transition-all">
               <CardContent className="p-8">
                 <div className="w-14 h-14 mb-4 bg-blue-500/20 rounded-2xl flex items-center justify-center">
                   <Brain className="h-7 w-7 text-blue-400" />
@@ -927,7 +927,7 @@ export default function Homepage() {
                 <p className="text-slate-200 mb-4 leading-relaxed">
                   Every major firm now agrees: AI agents are moving from experimentation to core enterprise infrastructure. But 78% of executives say this shift requires an entirely new operating model.
                 </p>
-                <div className="p-3 bg-slate-800/80 rounded-lg border border-blue-500/20">
+                <div className="p-3 bg-gray-50 rounded-lg border border-blue-500/20">
                   <p className="text-sm text-blue-400">
                     <span className="font-semibold">Execution OS Connection:</span> We provide the operating model—governance, decision rights, and coordination—that makes agentic AI operational, not experimental.
                   </p>
@@ -935,7 +935,7 @@ export default function Homepage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-900/80 border-emerald-500/30 hover:border-emerald-400/60 transition-all">
+            <Card className="bg-white border-emerald-500/30 hover:border-emerald-400/60 transition-all">
               <CardContent className="p-8">
                 <div className="w-14 h-14 mb-4 bg-emerald-500/20 rounded-2xl flex items-center justify-center">
                   <Network className="h-7 w-7 text-emerald-400" />
@@ -947,7 +947,7 @@ export default function Homepage() {
                 <p className="text-slate-200 mb-4 leading-relaxed">
                   McKinsey and Deloitte conclude that layering AI on existing workflows fails. The winners are redesigning how work gets done—rebuilding processes from the ground up around speed and coordination.
                 </p>
-                <div className="p-3 bg-slate-800/80 rounded-lg border border-emerald-500/20">
+                <div className="p-3 bg-gray-50 rounded-lg border border-emerald-500/20">
                   <p className="text-sm text-emerald-400">
                     <span className="font-semibold">Execution OS Connection:</span> Our 12-minute execution model doesn't automate the old 72-hour process. It replaces it with pre-built infrastructure that activates instantly.
                   </p>
@@ -955,7 +955,7 @@ export default function Homepage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-900/80 border-amber-500/30 hover:border-amber-400/60 transition-all">
+            <Card className="bg-white border-amber-500/30 hover:border-amber-400/60 transition-all">
               <CardContent className="p-8">
                 <div className="w-14 h-14 mb-4 bg-amber-500/20 rounded-2xl flex items-center justify-center">
                   <Shield className="h-7 w-7 text-amber-400" />
@@ -967,7 +967,7 @@ export default function Homepage() {
                 <p className="text-slate-200 mb-4 leading-relaxed">
                   Google Cloud, IBM, and the World Economic Forum all emphasize: without governance frameworks and data foundations in place, AI deployments stall. Speed requires structure.
                 </p>
-                <div className="p-3 bg-slate-800/80 rounded-lg border border-amber-500/20">
+                <div className="p-3 bg-gray-50 rounded-lg border border-amber-500/20">
                   <p className="text-sm text-amber-400">
                     <span className="font-semibold">Execution OS Connection:</span> The IDEA Framework (Identify → Detect → Execute → Advance) embeds governance, accountability, and learning into every execution cycle.
                   </p>
@@ -981,7 +981,7 @@ export default function Homepage() {
           </div>
           <div className="flex flex-wrap justify-center gap-3">
             {['BCG', 'IBM', 'McKinsey', 'Deloitte', 'World Economic Forum', 'Microsoft', 'Google Cloud', 'Accenture'].map((firm) => (
-              <div key={firm} className="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2">
+              <div key={firm} className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-2">
                 <span className="text-sm text-slate-200 font-medium">{firm}</span>
               </div>
             ))}
@@ -1118,7 +1118,7 @@ export default function Homepage() {
       </section>
 
       {/* Founder Story Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900" data-testid="founder-section">
+      <section className="py-20 bg-gradient-to-br " data-testid="founder-section">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-10">
             <Badge className="mb-4 bg-amber-500/20 text-amber-400 border-amber-500/30">
@@ -1129,7 +1129,7 @@ export default function Homepage() {
             </h2>
           </div>
           
-          <Card className="bg-slate-800/50 border-slate-700">
+          <Card className="bg-gray-50 border-gray-200">
             <CardContent className="p-8 md:p-10">
               <p className="text-lg text-slate-200 leading-relaxed mb-6">
                 I coached college football for 5 years. Every game, 60-80 plays. Every 40 seconds—read the situation, call the play, execute. The speed comes from preparation. Playbooks built before the season. Everyone knows their assignment before the moment.
@@ -1144,7 +1144,7 @@ export default function Homepage() {
                 15 major firms just said execution infrastructure is the bottleneck. I built the infrastructure I wish I'd had.
               </p>
               
-              <div className="flex items-center gap-4 pt-6 border-t border-slate-700">
+              <div className="flex items-center gap-4 pt-6 border-t border-gray-200">
                 <div className="w-14 h-14 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white text-xl font-bold">
                   MB
                 </div>
@@ -1283,7 +1283,7 @@ export default function Homepage() {
       </section>
 
       {/* Enterprise Integration Section */}
-      <section className="py-20 px-6 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" data-testid="enterprise-integration-section">
+      <section className="py-20 px-6 bg-gradient-to-br " data-testid="enterprise-integration-section">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-cyan-500/20 text-cyan-400 border-cyan-500/30">
@@ -1299,7 +1299,7 @@ export default function Homepage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            <Card className="bg-slate-900/80 border-slate-700 hover:border-cyan-500/40 transition-all">
+            <Card className="bg-white border-gray-200 hover:border-cyan-500/40 transition-all">
               <CardContent className="p-6">
                 <div className="w-12 h-12 mb-4 bg-blue-500/20 rounded-xl flex items-center justify-center">
                   <Users className="h-6 w-6 text-blue-400" />
@@ -1316,7 +1316,7 @@ export default function Homepage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-900/80 border-slate-700 hover:border-cyan-500/40 transition-all">
+            <Card className="bg-white border-gray-200 hover:border-cyan-500/40 transition-all">
               <CardContent className="p-6">
                 <div className="w-12 h-12 mb-4 bg-emerald-500/20 rounded-xl flex items-center justify-center">
                   <CheckCircle className="h-6 w-6 text-emerald-400" />
@@ -1333,7 +1333,7 @@ export default function Homepage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-900/80 border-slate-700 hover:border-cyan-500/40 transition-all">
+            <Card className="bg-white border-gray-200 hover:border-cyan-500/40 transition-all">
               <CardContent className="p-6">
                 <div className="w-12 h-12 mb-4 bg-purple-500/20 rounded-xl flex items-center justify-center">
                   <Zap className="h-6 w-6 text-purple-400" />
@@ -1350,7 +1350,7 @@ export default function Homepage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-900/80 border-slate-700 hover:border-cyan-500/40 transition-all">
+            <Card className="bg-white border-gray-200 hover:border-cyan-500/40 transition-all">
               <CardContent className="p-6">
                 <div className="w-12 h-12 mb-4 bg-red-500/20 rounded-xl flex items-center justify-center">
                   <Shield className="h-6 w-6 text-red-400" />
@@ -1367,7 +1367,7 @@ export default function Homepage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-900/80 border-slate-700 hover:border-cyan-500/40 transition-all">
+            <Card className="bg-white border-gray-200 hover:border-cyan-500/40 transition-all">
               <CardContent className="p-6">
                 <div className="w-12 h-12 mb-4 bg-amber-500/20 rounded-xl flex items-center justify-center">
                   <Briefcase className="h-6 w-6 text-amber-400" />
@@ -1384,7 +1384,7 @@ export default function Homepage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-900/80 border-slate-700 hover:border-cyan-500/40 transition-all">
+            <Card className="bg-white border-gray-200 hover:border-cyan-500/40 transition-all">
               <CardContent className="p-6">
                 <div className="w-12 h-12 mb-4 bg-teal-500/20 rounded-xl flex items-center justify-center">
                   <Globe2 className="h-6 w-6 text-teal-400" />
@@ -1401,7 +1401,7 @@ export default function Homepage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-900/80 border-slate-700 hover:border-cyan-500/40 transition-all">
+            <Card className="bg-white border-gray-200 hover:border-cyan-500/40 transition-all">
               <CardContent className="p-6">
                 <div className="w-12 h-12 mb-4 bg-cyan-500/20 rounded-xl flex items-center justify-center">
                   <Shield className="h-6 w-6 text-cyan-400" />
@@ -1419,7 +1419,7 @@ export default function Homepage() {
             </Card>
           </div>
 
-          <div className="bg-gradient-to-r from-cyan-900/30 via-blue-900/20 to-cyan-900/30 rounded-2xl p-8 border border-cyan-500/20 text-center">
+          <div className="bg-gradient-to-r  rounded-2xl p-8 border border-cyan-500/20 text-center">
             <h3 className="text-xl font-bold text-white mb-3">Zero Behavior Change Required</h3>
             <p className="text-slate-200 max-w-2xl mx-auto mb-4">
               IT connects your tools once during onboarding. From that point, Execution OS auto-syncs your org chart from Active Directory, routes tasks to Jira, sends alerts through Slack, and stages documents in SharePoint. Your people keep using their existing tools—Execution OS just makes those tools move faster and in coordination.
@@ -1443,7 +1443,7 @@ export default function Homepage() {
       </section>
 
       {/* Agentic Integration Architecture */}
-      <section className="py-20 px-6 bg-gradient-to-br from-slate-900 via-indigo-950/40 to-slate-900">
+      <section className="py-20 px-6 bg-gradient-to-br ">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-indigo-500/20 text-indigo-400 border-indigo-500/30">
@@ -1459,7 +1459,7 @@ export default function Homepage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-4 mb-12">
-            <div className="relative bg-gradient-to-br from-blue-900/40 to-slate-900/80 rounded-2xl p-6 border border-blue-500/20 hover:border-blue-500/40 transition-all">
+            <div className="relative bg-gradient-to-br rounded-2xl p-6 border border-blue-500/20 hover:border-blue-500/40 transition-all">
               <div className="absolute top-4 right-4">
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-green-500/20 text-green-400 border border-green-500/20">AVAILABLE NOW</span>
               </div>
@@ -1489,7 +1489,7 @@ export default function Homepage() {
               </div>
             </div>
 
-            <div className="relative bg-gradient-to-br from-purple-900/40 to-slate-900/80 rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all">
+            <div className="relative bg-gradient-to-br rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all">
               <div className="absolute top-4 right-4">
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/20 text-purple-400 border border-purple-500/20">IN DEVELOPMENT</span>
               </div>
@@ -1519,7 +1519,7 @@ export default function Homepage() {
               </div>
             </div>
 
-            <div className="relative bg-gradient-to-br from-amber-900/40 to-slate-900/80 rounded-2xl p-6 border border-amber-500/20 hover:border-amber-500/40 transition-all">
+            <div className="relative bg-gradient-to-br rounded-2xl p-6 border border-amber-500/20 hover:border-amber-500/40 transition-all">
               <div className="absolute top-4 right-4">
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-400 border border-amber-500/20">VISION</span>
               </div>
@@ -1550,7 +1550,7 @@ export default function Homepage() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-indigo-900/30 via-purple-900/20 to-indigo-900/30 rounded-2xl p-8 border border-indigo-500/20">
+          <div className="bg-gradient-to-r  rounded-2xl p-8 border border-indigo-500/20">
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="flex-1">
                 <h3 className="text-xl font-bold text-white mb-3">The Agentic Execution Layer</h3>
@@ -1558,20 +1558,20 @@ export default function Homepage() {
                   Execution OS sits between AI systems and human decision-makers—the coordination layer the agentic enterprise is missing. As AI capabilities accelerate, the bottleneck shifts to human alignment and action. That's the problem we solve.
                 </p>
                 <div className="grid grid-cols-3 gap-3">
-                  <div className="text-center p-3 bg-slate-900/60 rounded-xl border border-slate-700">
+                  <div className="text-center p-3 bg-white rounded-xl border border-gray-200">
                     <Bot className="w-5 h-5 text-blue-400 mx-auto mb-1" />
                     <div className="text-xs font-bold text-white">AI Agents</div>
-                    <div className="text-[10px] text-slate-400">Detect & Prepare</div>
+                    <div className="text-[10px] text-gray-600">Detect & Prepare</div>
                   </div>
                   <div className="text-center p-3 bg-indigo-900/40 rounded-xl border border-indigo-500/30">
                     <Layers className="w-5 h-5 text-indigo-400 mx-auto mb-1" />
                     <div className="text-xs font-bold text-indigo-300">Execution OS</div>
-                    <div className="text-[10px] text-slate-400">Orchestrate & Coordinate</div>
+                    <div className="text-[10px] text-gray-600">Orchestrate & Coordinate</div>
                   </div>
-                  <div className="text-center p-3 bg-slate-900/60 rounded-xl border border-slate-700">
+                  <div className="text-center p-3 bg-white rounded-xl border border-gray-200">
                     <UserCheck className="w-5 h-5 text-amber-400 mx-auto mb-1" />
                     <div className="text-xs font-bold text-white">Human Leaders</div>
-                    <div className="text-[10px] text-slate-400">Decide & Own</div>
+                    <div className="text-[10px] text-gray-600">Decide & Own</div>
                   </div>
                 </div>
               </div>
@@ -1584,7 +1584,7 @@ export default function Homepage() {
                     { current: 'Competes with: consultants, ServiceNow', enhanced: 'New category: no direct competitor' },
                   ].map((row, i) => (
                     <div key={i} className="flex items-center gap-3">
-                      <div className="flex-1 text-xs text-slate-500 line-through">{row.current}</div>
+                      <div className="flex-1 text-xs text-gray-500 line-through">{row.current}</div>
                       <ArrowRight className="w-3 h-3 text-indigo-400 shrink-0" />
                       <div className="flex-1 text-xs text-indigo-300 font-medium">{row.enhanced}</div>
                     </div>

@@ -50,7 +50,7 @@ export default function CulturalAnalyticsPanel() {
       case 'improving': return "text-green-600";
       case 'stable': return "text-blue-600";
       case 'declining': return "text-red-600";
-      default: return "text-gray-400";
+      default: return "text-gray-600";
     }
   };
 

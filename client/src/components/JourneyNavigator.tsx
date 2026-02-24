@@ -211,7 +211,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Execution OS North Star™ Journey</h2>
-          <p className="text-slate-400 dark:text-slate-300">Your path from discovery to continuous strategic excellence</p>
+          <p className="text-gray-600 dark:text-slate-300">Your path from discovery to continuous strategic excellence</p>
         </div>
         <div className="text-right">
           <div className="text-3xl font-bold text-poise-teal">{completedPhases}/{totalPhases}</div>
@@ -246,7 +246,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
                         ? 'bg-emerald-500 text-white' 
                         : phase.status === 'current'
                           ? 'bg-poise-teal text-white'
-                          : 'bg-slate-200 dark:bg-slate-700 text-slate-400 dark:text-slate-300'
+                          : 'bg-slate-200 dark:bg-slate-700 text-gray-600 dark:text-slate-300'
                     }`}>
                       {phase.number}
                     </div>
@@ -264,7 +264,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
                         <Badge className="bg-poise-teal text-white">Current Phase</Badge>
                       )}
                     </div>
-                    <p className="text-slate-400 dark:text-slate-300 mb-3">{phase.description}</p>
+                    <p className="text-gray-600 dark:text-slate-300 mb-3">{phase.description}</p>
                     
                     <div className="flex items-center gap-4 text-sm">
                       <div className="flex items-center gap-1 text-slate-300">

@@ -37,7 +37,7 @@ export default function InvestorResources() {
       <StandardNav />
 
       {/* Hero Section */}
-      <section className="py-20 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+      <section className="py-20 px-6 text-white">
         <div className="max-w-5xl mx-auto text-center">
           <Badge className="mb-6 bg-blue-500 text-white border-0">
             Investor Overview
@@ -398,7 +398,7 @@ export default function InvestorResources() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+      <section className="py-16 px-6 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">
             Ready to Learn More?

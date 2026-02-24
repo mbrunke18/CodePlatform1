@@ -246,13 +246,13 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
 
   return (
     <div className="space-y-6">
-      <Button variant="ghost" size="sm" onClick={onBack} className="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 -ml-2">
+      <Button variant="ghost" size="sm" onClick={onBack} className="text-gray-500 hover:text-slate-700 dark:hover:text-slate-300 -ml-2">
         <ArrowLeft className="h-4 w-4 mr-1" /> Back to options
       </Button>
 
       <div className="text-center max-w-2xl mx-auto mb-2">
         <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-2">Quick What-If Analysis</h2>
-        <p className="text-slate-500 dark:text-slate-400">
+        <p className="text-gray-500 dark:text-slate-400">
           Describe a scenario in plain language and get an instant AI-powered impact assessment.
           See how long it would take to respond, what risks are involved, and whether to proceed.
         </p>
@@ -376,7 +376,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
             <CardContent>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-32 text-sm font-medium text-slate-500 dark:text-slate-400 text-right flex-shrink-0">Current Playbook</div>
+                  <div className="w-32 text-sm font-medium text-gray-500 dark:text-slate-400 text-right flex-shrink-0">Current Playbook</div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
                       <div className="flex-1 bg-green-100 dark:bg-green-900/30 rounded-full h-8 flex items-center px-4">
@@ -387,7 +387,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-32 text-sm font-medium text-slate-500 dark:text-slate-400 text-right flex-shrink-0">With This Change</div>
+                  <div className="w-32 text-sm font-medium text-gray-500 dark:text-slate-400 text-right flex-shrink-0">With This Change</div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
                       <div className={`flex-1 ${isNotRecommended ? 'bg-red-100 dark:bg-red-900/30' : isConditional ? 'bg-amber-100 dark:bg-amber-900/30' : 'bg-green-100 dark:bg-green-900/30'} rounded-full h-8 flex items-center px-4`}>
@@ -443,7 +443,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-slate-800 dark:text-white">Auto-Detect Trigger</div>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">AI agents continuously monitor for this scenario pattern and activate the right playbook instantly</p>
+                    <p className="text-xs text-gray-500 dark:text-slate-400 mt-0.5">AI agents continuously monitor for this scenario pattern and activate the right playbook instantly</p>
                   </div>
                 </div>
                 <div className="flex gap-3 items-start">
@@ -452,7 +452,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-slate-800 dark:text-white">Coordinate Stakeholders</div>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Notify 50-200+ stakeholders simultaneously with role-specific instructions and acknowledgment tracking</p>
+                    <p className="text-xs text-gray-500 dark:text-slate-400 mt-0.5">Notify 50-200+ stakeholders simultaneously with role-specific instructions and acknowledgment tracking</p>
                   </div>
                 </div>
                 <div className="flex gap-3 items-start">
@@ -461,7 +461,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-slate-800 dark:text-white">Execute in {isRecommended ? (result.modified_time || result.original_time || '12 minutes') : (result.original_time || '12 minutes')}</div>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Pre-authorized budgets release, tasks assign, and documents stage — all within the coordination window</p>
+                    <p className="text-xs text-gray-500 dark:text-slate-400 mt-0.5">Pre-authorized budgets release, tasks assign, and documents stage — all within the coordination window</p>
                   </div>
                 </div>
               </div>
@@ -472,7 +472,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
             <Button onClick={onSwitchToBuilder} variant="outline" className="gap-2">
               <Layers className="h-4 w-4" /> Build Detailed Scenario Model
             </Button>
-            <Button onClick={() => setResult(null)} variant="ghost" className="text-slate-500 gap-2">
+            <Button onClick={() => setResult(null)} variant="ghost" className="text-gray-500 gap-2">
               <FlaskConical className="h-4 w-4" /> Test Another Scenario
             </Button>
           </div>
@@ -831,13 +831,13 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
 
   return (
     <div className="space-y-6">
-      <Button variant="ghost" size="sm" onClick={onBack} className="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 -ml-2">
+      <Button variant="ghost" size="sm" onClick={onBack} className="text-gray-500 hover:text-slate-700 dark:hover:text-slate-300 -ml-2">
         <ArrowLeft className="h-4 w-4 mr-1" /> Back to options
       </Button>
 
       <div className="text-center max-w-2xl mx-auto mb-2">
         <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-2">Deep Scenario Builder</h2>
-        <p className="text-slate-500 dark:text-slate-400">
+        <p className="text-gray-500 dark:text-slate-400">
           Build a detailed scenario model step by step. Define conditions, assess impact, and see exactly which
           playbooks and teams would activate.
         </p>
@@ -858,7 +858,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
                   isActive ? 'bg-blue-600 text-white shadow-md' :
                   isComplete ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 cursor-pointer hover:bg-blue-200 dark:hover:bg-blue-900/50' :
-                  'bg-slate-100 text-slate-400 dark:bg-slate-800 dark:text-slate-500'
+                  'bg-slate-100 text-gray-600 dark:bg-slate-800 dark:text-slate-500'
                 }`}
               >
                 {isComplete ? <CheckCircle2 className="h-3.5 w-3.5" /> : <span>{step}</span>}
@@ -912,7 +912,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
 
               {scenarioTemplates.length > 0 && (
                 <div>
-                  <Label className="text-xs text-slate-500 mb-1 block">Or load from your saved templates:</Label>
+                  <Label className="text-xs text-gray-500 mb-1 block">Or load from your saved templates:</Label>
                   <Select onValueChange={loadDbTemplate}>
                     <SelectTrigger><SelectValue placeholder="Select a saved template..." /></SelectTrigger>
                     <SelectContent>
@@ -1020,7 +1020,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                                   <div className="text-sm font-medium text-slate-800 dark:text-white">{variable.label}</div>
                                   <div className={`text-xs ${colors.text}`}>{variable.category} · {variable.unit}</div>
                                 </div>
-                                <ChevronRight className="h-4 w-4 text-slate-400 flex-shrink-0" />
+                                <ChevronRight className="h-4 w-4 text-gray-600 flex-shrink-0" />
                               </button>
                             );
                           })}
@@ -1036,7 +1036,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                     );
                   })()}
                   <div className="mt-3 text-center">
-                    <Button variant="ghost" size="sm" className="text-slate-500" onClick={() => setShowCustomVariable(true)}>
+                    <Button variant="ghost" size="sm" className="text-gray-500" onClick={() => setShowCustomVariable(true)}>
                       <Plus className="h-4 w-4 mr-1" /> Add a custom variable
                     </Button>
                   </div>
@@ -1048,7 +1048,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-sm font-bold text-slate-800 dark:text-white">{selectedVariable.label}</div>
-                      <div className="text-xs text-slate-500">{selectedVariable.category} variable · measured in {selectedVariable.unit}</div>
+                      <div className="text-xs text-gray-500">{selectedVariable.category} variable · measured in {selectedVariable.unit}</div>
                     </div>
                     <Button variant="ghost" size="sm" onClick={() => { setSelectedVariableId(''); setConditionValue(''); setConditionValue2(''); }}>
                       <ArrowLeft className="h-3 w-3 mr-1" /> Change
@@ -1080,7 +1080,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                     />
                     {conditionOperator === 'between' && (
                       <>
-                        <span className="text-slate-400">and</span>
+                        <span className="text-gray-600">and</span>
                         <Input
                           type="number"
                           placeholder="max"
@@ -1090,11 +1090,11 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                         />
                       </>
                     )}
-                    <span className="text-slate-500 text-xs whitespace-nowrap">{selectedVariable.unit}</span>
+                    <span className="text-gray-500 text-xs whitespace-nowrap">{selectedVariable.unit}</span>
                   </div>
 
                   {conditionValue && (
-                    <div className="text-xs text-slate-500 dark:text-slate-400 italic pl-1">
+                    <div className="text-xs text-gray-500 dark:text-slate-400 italic pl-1">
                       Preview: "{selectedVariable.label} {operatorLabels[conditionOperator] || conditionOperator} {conditionValue}{conditionOperator === 'between' && conditionValue2 ? ` and ${conditionValue2}` : ''} {selectedVariable.unit}"
                     </div>
                   )}
@@ -1192,10 +1192,10 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                           <Badge className={`mb-1 text-[10px] border-0 ${catBadgeColors[condition.category] || ''}`}>{condition.category}</Badge>
                           <div className="text-slate-800 dark:text-white">
                             <span className="font-medium">{condition.label}</span>
-                            <span className="text-slate-500"> {operatorLabels[condition.operator] || condition.operator} </span>
+                            <span className="text-gray-500"> {operatorLabels[condition.operator] || condition.operator} </span>
                             <span className="font-semibold">{condition.value}</span>
                             {condition.value2 && <span className="font-semibold"> and {condition.value2}</span>}
-                            {condition.unit && <span className="text-slate-500 ml-1">{condition.unit}</span>}
+                            {condition.unit && <span className="text-gray-500 ml-1">{condition.unit}</span>}
                           </div>
                         </div>
                         <Button variant="ghost" size="sm" onClick={() => removeCondition(condition.id)}>
@@ -1450,8 +1450,8 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                   </div>
                   <div>
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-sm font-medium text-slate-400">Industry Average</span>
-                      <span className="text-sm font-bold text-slate-400">{industryHrs} hours</span>
+                      <span className="text-sm font-medium text-gray-600">Industry Average</span>
+                      <span className="text-sm font-bold text-gray-600">{industryHrs} hours</span>
                     </div>
                     <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-3">
                       <div className="bg-slate-300 dark:bg-slate-600 h-3 rounded-full w-full" />
@@ -1499,7 +1499,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
             </CardHeader>
             <CardContent className="space-y-5">
               <div>
-                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Playbooks That Activate</div>
+                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Playbooks That Activate</div>
                 <div className="space-y-2">
                   {analysisResult.recommendedPlaybooks.map((playbook, idx) => (
                     <div key={playbook.id} className="flex items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg border border-teal-100 dark:border-teal-900/30">
@@ -1509,7 +1509,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                       <div className="flex-1 min-w-0">
                         <div className="text-sm font-semibold text-slate-800 dark:text-white">{playbook.name}</div>
                         <div className="flex items-center gap-3 mt-0.5">
-                          <span className="text-xs text-slate-500 flex items-center gap-1"><Clock className="h-3 w-3" /> {playbook.executionTime} min</span>
+                          <span className="text-xs text-gray-500 flex items-center gap-1"><Clock className="h-3 w-3" /> {playbook.executionTime} min</span>
                           {playbook.automationCoverage && (
                             <span className="text-xs text-teal-600 flex items-center gap-1"><Zap className="h-3 w-3" /> {playbook.automationCoverage}% automated</span>
                           )}
@@ -1526,7 +1526,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
               <Separator />
 
               <div>
-                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Teams Mobilized Simultaneously</div>
+                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Teams Mobilized Simultaneously</div>
                 <div className="flex flex-wrap gap-2">
                   {analysisResult.teamsInvolved.map((team, idx) => (
                     <div key={idx} className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-slate-800 rounded-full border border-slate-200 dark:border-slate-700">
@@ -1540,7 +1540,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
               <Separator />
 
               <div>
-                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Orchestration Steps</div>
+                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Orchestration Steps</div>
                 <div className="grid sm:grid-cols-4 gap-3">
                   {[
                     { time: '0:00', label: 'Trigger Detected', desc: 'AI agents identify the scenario pattern', icon: Target },
@@ -1557,7 +1557,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                         </div>
                         <div className="text-xs font-bold text-teal-600 mb-0.5">{step.time}</div>
                         <div className="text-xs font-semibold text-slate-800 dark:text-white">{step.label}</div>
-                        <div className="text-[10px] text-slate-500 mt-0.5">{step.desc}</div>
+                        <div className="text-[10px] text-gray-500 mt-0.5">{step.desc}</div>
                       </div>
                     );
                   })}
@@ -1578,7 +1578,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
               <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
                 <div className="bg-blue-600 h-2 rounded-full transition-all" style={{ width: `${analysisResult.confidenceLevel}%` }} />
               </div>
-              <p className="text-xs text-slate-500 mt-1.5">
+              <p className="text-xs text-gray-500 mt-1.5">
                 {analysisResult.confidenceLevel < 60
                   ? 'Go back and add financial impact, resources, or stakeholders to increase confidence and get more precise results.'
                   : analysisResult.confidenceLevel < 80
@@ -1598,7 +1598,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                   <FileText className="h-4 w-4 mr-2" /> Save as Reusable Template
                 </Button>
               </div>
-              <p className="text-xs text-slate-500 text-center mt-2">Saved analyses appear in your scenario library and can be re-run anytime</p>
+              <p className="text-xs text-gray-500 text-center mt-2">Saved analyses appear in your scenario library and can be re-run anytime</p>
             </CardContent>
           </Card>
         </div>
@@ -1651,7 +1651,7 @@ export default function WhatIfAnalyzer() {
                     </div>
                   </div>
                 </div>
-                <p className="text-slate-500 dark:text-slate-400 text-lg">
+                <p className="text-gray-500 dark:text-slate-400 text-lg">
                   Test any strategic scenario before it happens. See how your organization would respond,
                   which playbooks activate, and how fast you'd coordinate.
                 </p>
@@ -1671,20 +1671,20 @@ export default function WhatIfAnalyzer() {
                       <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 text-[10px]">RECOMMENDED FOR FIRST TIME</Badge>
                     </div>
                   </div>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
+                  <p className="text-sm text-gray-500 dark:text-slate-400 mb-4">
                     Describe a "what if" scenario in plain language and get an instant AI-powered impact assessment
                     with a go/no-go recommendation.
                   </p>
                   <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-400">
                       <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
                       <span>Type a scenario in plain English</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-400">
                       <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
                       <span>AI analyzes timing impact and risks</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-400">
                       <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
                       <span>Get a clear recommendation in seconds</span>
                     </div>
@@ -1707,20 +1707,20 @@ export default function WhatIfAnalyzer() {
                       <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300 text-[10px]">DETAILED MODELING</Badge>
                     </div>
                   </div>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
+                  <p className="text-sm text-gray-500 dark:text-slate-400 mb-4">
                     Build a thorough scenario model with measurable conditions, impact assessment, resources,
                     and stakeholders. Save and reuse as templates.
                   </p>
                   <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-400">
                       <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
                       <span>Guided 4-step wizard walks you through</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-400">
                       <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
                       <span>See which playbooks and teams activate</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-400">
                       <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
                       <span>Save scenarios and create reusable templates</span>
                     </div>
@@ -1733,7 +1733,7 @@ export default function WhatIfAnalyzer() {
 
               {savedScenarios.length > 0 && (
                 <div className="max-w-3xl mx-auto">
-                  <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+                  <h3 className="text-sm font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
                     <Save className="h-4 w-4" /> Your Saved Scenarios ({savedScenarios.length})
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -1741,10 +1741,10 @@ export default function WhatIfAnalyzer() {
                       <Card key={scenario.id} className="hover:shadow-md transition-shadow">
                         <CardContent className="p-4">
                           <div className="font-medium text-sm text-slate-800 dark:text-white mb-1">{scenario.name}</div>
-                          <div className="text-xs text-slate-500 line-clamp-2 mb-2">{scenario.description}</div>
+                          <div className="text-xs text-gray-500 line-clamp-2 mb-2">{scenario.description}</div>
                           <div className="flex items-center justify-between text-xs">
-                            <span className="text-slate-400">Impact: <span className="font-semibold text-orange-600">{scenario.impactScore || 'N/A'}</span></span>
-                            <span className="text-slate-400">{scenario.projectedExecutionTime || 0} min</span>
+                            <span className="text-gray-600">Impact: <span className="font-semibold text-orange-600">{scenario.impactScore || 'N/A'}</span></span>
+                            <span className="text-gray-600">{scenario.projectedExecutionTime || 0} min</span>
                           </div>
                         </CardContent>
                       </Card>

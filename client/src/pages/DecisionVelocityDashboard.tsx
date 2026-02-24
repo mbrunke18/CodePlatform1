@@ -38,7 +38,7 @@ function getEffectivenessColor(effectiveness: string): string {
     case 'moderate': return 'text-amber-600';
     case 'low': return 'text-orange-600';
     case 'poor': return 'text-red-600';
-    default: return 'text-slate-400';
+    default: return 'text-gray-600';
   }
 }
 
@@ -70,7 +70,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
         {!embedded && <StandardNav />}
         <div className="container mx-auto px-4 py-20 flex flex-col items-center justify-center min-h-[60vh]">
           <Loader2 className="h-12 w-12 animate-spin text-emerald-600 mb-4" />
-          <p className="text-lg text-slate-400 dark:text-slate-300">Loading decision outcomes...</p>
+          <p className="text-lg text-gray-600 dark:text-slate-300">Loading decision outcomes...</p>
         </div>
         {!embedded && <Footer />}
       </div>
@@ -90,7 +90,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
           <h1 className="text-5xl font-bold text-slate-900 dark:text-white mb-4" data-testid="page-title">
             Decision Velocity Dashboard
           </h1>
-          <p className="text-xl text-slate-400 dark:text-slate-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-slate-300 max-w-3xl mx-auto">
             Head coaches make 80+ decisions in 3 hours because they pre-stage decision trees. 
             Track how fast your executive team is deciding.
           </p>
@@ -287,7 +287,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
                         <h4 className="font-semibold text-slate-900 dark:text-white">
                           {formatDecisionType(decision.decisionType)}
                         </h4>
-                        <p className="text-sm text-slate-400 dark:text-slate-300">{decision.decisionDescription}</p>
+                        <p className="text-sm text-gray-600 dark:text-slate-300">{decision.decisionDescription}</p>
                       </div>
                       <div className="flex items-center gap-2">
                         <Badge variant={getOutcomeBadgeVariant(decision.actualOutcome)}>

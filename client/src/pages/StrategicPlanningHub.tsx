@@ -251,7 +251,7 @@ export default function StrategicPlanningHub() {
           </div>
           <div className="flex items-center gap-4">
             <Link to="/">
-              <Button variant="secondary" className="bg-slate-700 hover:bg-slate-600 text-slate-100 border-slate-600">
+              <Button variant="secondary" className="bg-gray-50 hover:bg-slate-600 text-slate-100 border-slate-600">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Dashboard
               </Button>
@@ -269,7 +269,7 @@ export default function StrategicPlanningHub() {
 
         {/* Portfolio Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Total Scenarios</h3>
@@ -279,7 +279,7 @@ export default function StrategicPlanningHub() {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Active Projects</h3>
@@ -289,7 +289,7 @@ export default function StrategicPlanningHub() {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Completed Q1</h3>
@@ -299,7 +299,7 @@ export default function StrategicPlanningHub() {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Total Budget</h3>
@@ -309,7 +309,7 @@ export default function StrategicPlanningHub() {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Portfolio Health</h3>
@@ -319,7 +319,7 @@ export default function StrategicPlanningHub() {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Risk Exposure</h3>
@@ -332,11 +332,11 @@ export default function StrategicPlanningHub() {
 
         {/* Main Content Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="bg-slate-800/50 border border-slate-700/50">
-            <TabsTrigger value="dashboard" className="data-[state=active]:bg-slate-700">Portfolio Dashboard</TabsTrigger>
-            <TabsTrigger value="scenarios" className="data-[state=active]:bg-slate-700">Strategic Scenarios</TabsTrigger>
-            <TabsTrigger value="analytics" className="data-[state=active]:bg-slate-700">Performance Analytics</TabsTrigger>
-            <TabsTrigger value="planning" className="data-[state=active]:bg-slate-700">Planning Tools</TabsTrigger>
+          <TabsList className="bg-gray-50 border border-gray-200">
+            <TabsTrigger value="dashboard" className="data-[state=active]:bg-gray-50">Portfolio Dashboard</TabsTrigger>
+            <TabsTrigger value="scenarios" className="data-[state=active]:bg-gray-50">Strategic Scenarios</TabsTrigger>
+            <TabsTrigger value="analytics" className="data-[state=active]:bg-gray-50">Performance Analytics</TabsTrigger>
+            <TabsTrigger value="planning" className="data-[state=active]:bg-gray-50">Planning Tools</TabsTrigger>
           </TabsList>
 
           {/* Portfolio Dashboard */}
@@ -344,7 +344,7 @@ export default function StrategicPlanningHub() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               
               {/* Active Scenarios Overview */}
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <Target className="h-5 w-5" />
@@ -353,7 +353,7 @@ export default function StrategicPlanningHub() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {scenarios.filter(s => s.status === 'active').map((scenario) => (
-                    <div key={scenario.id} className="p-4 bg-slate-800/50 rounded-lg border border-slate-600/50">
+                    <div key={scenario.id} className="p-4 bg-gray-50 rounded-lg border border-slate-600/50">
                       <div className="flex items-center justify-between mb-3">
                         <h4 className="font-semibold text-white">{scenario.name}</h4>
                         <Badge className={getPriorityColor(scenario.priority)}>
@@ -377,7 +377,7 @@ export default function StrategicPlanningHub() {
               </Card>
 
               {/* Recent Activity */}
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <Clock className="h-5 w-5" />
@@ -386,21 +386,21 @@ export default function StrategicPlanningHub() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg">
+                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <div className="w-2 h-2 bg-emerald-400 rounded-full" />
                       <div className="flex-1 page-background">
                         <div className="text-sm text-white">Digital Transformation milestone completed</div>
                         <div className="text-xs text-slate-600 dark:text-slate-200">2 hours ago</div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg">
+                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <div className="w-2 h-2 bg-blue-400 rounded-full" />
                       <div className="flex-1 page-background">
                         <div className="text-sm text-white">Market Expansion budget approved</div>
                         <div className="text-xs text-slate-600 dark:text-slate-200">1 day ago</div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg">
+                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <div className="w-2 h-2 bg-amber-400 rounded-full" />
                       <div className="flex-1 page-background">
                         <div className="text-sm text-white">Sustainability initiative risk review</div>
@@ -417,18 +417,18 @@ export default function StrategicPlanningHub() {
           <TabsContent value="scenarios" className="space-y-6">
             
             {/* Filters and Search */}
-            <div className="flex items-center gap-4 bg-slate-900/50 p-4 rounded-lg border border-slate-700/50">
+            <div className="flex items-center gap-4 bg-white p-4 rounded-lg border border-gray-200">
               <div className="flex-1 page-background relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-600 dark:text-slate-200" />
                 <Input
                   placeholder="Search scenarios..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 bg-slate-800 border-slate-600 text-white"
+                  className="pl-10 bg-gray-50 border-slate-600 text-white"
                 />
               </div>
               <Select value={filterStatus} onValueChange={setFilterStatus}>
-                <SelectTrigger className="w-40 bg-slate-800 border-slate-600 text-white">
+                <SelectTrigger className="w-40 bg-gray-50 border-slate-600 text-white">
                   <SelectValue placeholder="Status" />
                 </SelectTrigger>
                 <SelectContent>
@@ -440,7 +440,7 @@ export default function StrategicPlanningHub() {
                 </SelectContent>
               </Select>
               <Select value={filterPriority} onValueChange={setFilterPriority}>
-                <SelectTrigger className="w-40 bg-slate-800 border-slate-600 text-white">
+                <SelectTrigger className="w-40 bg-gray-50 border-slate-600 text-white">
                   <SelectValue placeholder="Priority" />
                 </SelectTrigger>
                 <SelectContent>
@@ -456,7 +456,7 @@ export default function StrategicPlanningHub() {
             {/* Scenarios Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {filteredScenarios.map((scenario) => (
-                <Card key={scenario.id} className="bg-slate-900/50 border-slate-700/50 hover:bg-slate-800/50 transition-all duration-300">
+                <Card key={scenario.id} className="bg-white border-gray-200 hover:bg-slate-800/50 transition-all duration-300">
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <CardTitle className="text-white text-lg">{scenario.name}</CardTitle>
@@ -520,7 +520,7 @@ export default function StrategicPlanningHub() {
           {/* Performance Analytics */}
           <TabsContent value="analytics" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-white">Success Rate</h3>
@@ -531,7 +531,7 @@ export default function StrategicPlanningHub() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-white">Avg Timeline</h3>
@@ -542,7 +542,7 @@ export default function StrategicPlanningHub() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-white">ROI Average</h3>
@@ -553,7 +553,7 @@ export default function StrategicPlanningHub() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-white">Risk Mitigation</h3>
@@ -568,7 +568,7 @@ export default function StrategicPlanningHub() {
 
           {/* Planning Tools */}
           <TabsContent value="planning" className="space-y-6">
-            <Card className="bg-slate-900/50 border-slate-700/50">
+            <Card className="bg-white border-gray-200">
               <CardHeader>
                 <CardTitle className="text-white">Strategic Planning Tools</CardTitle>
               </CardHeader>

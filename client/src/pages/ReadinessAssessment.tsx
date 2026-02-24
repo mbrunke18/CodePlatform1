@@ -312,7 +312,7 @@ export default function ReadinessAssessment() {
               </p>
             </div>
 
-            <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-8">
+            <div className="bg-white border border-gray-200 rounded-2xl p-8">
               <h2 className="text-lg font-semibold text-white mb-6 text-center">How It Works</h2>
               <div className="grid grid-cols-3 gap-6 max-w-lg mx-auto">
                 {[
@@ -321,11 +321,11 @@ export default function ReadinessAssessment() {
                   { num: 3, label: "Get Your Score", desc: "Gaps, benchmarks & next steps", icon: BarChart3 },
                 ].map((step) => (
                   <div key={step.num} className="text-center">
-                    <div className="w-12 h-12 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center mx-auto mb-3">
+                    <div className="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 flex items-center justify-center mx-auto mb-3">
                       <step.icon className="w-5 h-5 text-teal-400" />
                     </div>
                     <div className="text-sm font-semibold text-white">{step.label}</div>
-                    <div className="text-xs text-slate-500 mt-1">{step.desc}</div>
+                    <div className="text-xs text-gray-500 mt-1">{step.desc}</div>
                   </div>
                 ))}
               </div>
@@ -333,7 +333,7 @@ export default function ReadinessAssessment() {
 
             <div>
               <h2 className="text-lg font-semibold text-white mb-2 text-center">Select a Strategic Domain</h2>
-              <p className="text-sm text-slate-500 text-center mb-6">Choose the area you want to assess</p>
+              <p className="text-sm text-gray-500 text-center mb-6">Choose the area you want to assess</p>
 
               <div className="mb-6 max-w-md mx-auto">
                 <Label className="text-slate-300 text-sm mb-2 block text-center">Company Name (optional)</Label>
@@ -341,7 +341,7 @@ export default function ReadinessAssessment() {
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
                   placeholder="Your organization's name"
-                  className="bg-slate-900 border-slate-700 text-white placeholder:text-slate-500 focus:border-teal-500"
+                  className="bg-white border-gray-200 text-white placeholder:text-slate-500 focus:border-teal-500"
                 />
               </div>
 
@@ -352,7 +352,7 @@ export default function ReadinessAssessment() {
                     <button
                       key={domain}
                       onClick={() => handleSelectDomain(domain)}
-                      className={`text-left rounded-xl bg-slate-900/80 border ${config.border} ${config.borderHover} p-6 transition-all hover:scale-[1.02] hover:shadow-lg group`}
+                      className={`text-left rounded-xl bg-white border ${config.border} ${config.borderHover} p-6 transition-all hover:scale-[1.02] hover:shadow-lg group`}
                     >
                       <div className="text-center">
                         <div className={`w-16 h-16 rounded-2xl ${config.bgLight} flex items-center justify-center mx-auto mb-3`}>
@@ -365,7 +365,7 @@ export default function ReadinessAssessment() {
                           {config.playbooks}
                         </Badge>
                         <p className="text-slate-300 text-sm font-medium mt-3">{config.categories}</p>
-                        <p className="text-slate-500 text-sm italic mt-1">{config.tagline}</p>
+                        <p className="text-gray-500 text-sm italic mt-1">{config.tagline}</p>
                         <div className={`${config.textLight} text-xs font-medium mt-4 flex items-center justify-center gap-1 group-hover:gap-2 transition-all`}>
                           Start Assessment <ArrowRight className="w-3 h-3" />
                         </div>
@@ -406,7 +406,7 @@ export default function ReadinessAssessment() {
                 </div>
                 <Progress
                   value={((currentQuestion + 1) / questions.length) * 100}
-                  className="h-2 bg-slate-800"
+                  className="h-2 bg-gray-50"
                 />
               </div>
 
@@ -420,7 +420,7 @@ export default function ReadinessAssessment() {
                         ? `${domainConfig.bg} text-white shadow-lg ${domainConfig.shadow}`
                         : answers[questions[idx].key]?.trim()
                         ? "bg-emerald-500 text-white"
-                        : "bg-slate-800 text-slate-500 hover:bg-slate-700"
+                        : "bg-gray-50 text-gray-500 hover:bg-slate-700"
                     }`}
                   >
                     {answers[questions[idx].key]?.trim() && idx !== currentQuestion ? (
@@ -432,7 +432,7 @@ export default function ReadinessAssessment() {
                 ))}
               </div>
 
-              <Card className={`bg-slate-900/80 border ${iconDef.border}`}>
+              <Card className={`bg-white border ${iconDef.border}`}>
                 <CardHeader className="pb-3">
                   <div className="flex items-center gap-3">
                     <div className={`w-12 h-12 rounded-xl ${iconDef.bg} flex items-center justify-center`}>
@@ -443,7 +443,7 @@ export default function ReadinessAssessment() {
                         {q.question}
                       </CardTitle>
                       {q.helper && (
-                        <p className="text-slate-500 text-sm mt-1">{q.helper}</p>
+                        <p className="text-gray-500 text-sm mt-1">{q.helper}</p>
                       )}
                     </div>
                   </div>
@@ -454,7 +454,7 @@ export default function ReadinessAssessment() {
                       value={answers[q.key] || ""}
                       onChange={(e) => updateAnswer(q.key, e.target.value)}
                       placeholder={q.placeholder}
-                      className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500 focus:border-teal-500 text-lg py-6"
+                      className="bg-gray-50 border-gray-200 text-white placeholder:text-slate-500 focus:border-teal-500 text-lg py-6"
                       autoFocus
                     />
                   )}
@@ -464,7 +464,7 @@ export default function ReadinessAssessment() {
                       value={answers[q.key] || ""}
                       onChange={(e) => updateAnswer(q.key, e.target.value)}
                       placeholder={q.placeholder}
-                      className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500 focus:border-teal-500 text-lg py-6"
+                      className="bg-gray-50 border-gray-200 text-white placeholder:text-slate-500 focus:border-teal-500 text-lg py-6"
                       autoFocus
                     />
                   )}
@@ -474,7 +474,7 @@ export default function ReadinessAssessment() {
                       onChange={(e) => updateAnswer(q.key, e.target.value)}
                       placeholder={q.placeholder}
                       rows={4}
-                      className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500 focus:border-teal-500 resize-none text-lg"
+                      className="bg-gray-50 border-gray-200 text-white placeholder:text-slate-500 focus:border-teal-500 resize-none text-lg"
                       autoFocus
                     />
                   )}
@@ -483,10 +483,10 @@ export default function ReadinessAssessment() {
                       value={answers[q.key] || ""}
                       onValueChange={(val) => updateAnswer(q.key, val)}
                     >
-                      <SelectTrigger className="bg-slate-800 border-slate-700 text-white focus:border-teal-500 text-lg py-6">
+                      <SelectTrigger className="bg-gray-50 border-gray-200 text-white focus:border-teal-500 text-lg py-6">
                         <SelectValue placeholder={q.placeholder} />
                       </SelectTrigger>
-                      <SelectContent className="bg-slate-800 border-slate-700">
+                      <SelectContent className="bg-gray-50 border-gray-200">
                         {q.options!.map((opt) => (
                           <SelectItem key={opt} value={opt} className="text-white hover:bg-slate-700">
                             {opt}
@@ -507,7 +507,7 @@ export default function ReadinessAssessment() {
                           className={`flex items-center space-x-3 p-3 rounded-lg border transition-colors cursor-pointer ${
                             answers[q.key] === opt
                               ? `${domainConfig.bgLight} ${domainConfig.border}`
-                              : "border-slate-700 hover:border-slate-600"
+                              : "border-gray-200 hover:border-slate-600"
                           }`}
                           onClick={() => updateAnswer(q.key, opt)}
                         >
@@ -637,7 +637,7 @@ export default function ReadinessAssessment() {
                 <BarChart3 className="h-5 w-5 text-blue-400" />
                 Industry Benchmark Comparison
               </h2>
-              <Card className={`bg-slate-900/80 border ${domainConfig.border}`}>
+              <Card className={`bg-white border ${domainConfig.border}`}>
                 <CardContent className="p-6 space-y-5">
                   {[
                     { label: companyName || "Your Score", value: result.score, color: domainConfig.bg },
@@ -649,7 +649,7 @@ export default function ReadinessAssessment() {
                         <span className="text-slate-200 font-medium">{row.label}</span>
                         <span className="text-white font-bold">{row.value}/100</span>
                       </div>
-                      <div className="h-3 bg-slate-800 rounded-full overflow-hidden">
+                      <div className="h-3 bg-gray-50 rounded-full overflow-hidden">
                         <div
                           className={`h-full rounded-full ${row.color} transition-all duration-700`}
                           style={{ width: `${row.value}%` }}
@@ -657,14 +657,14 @@ export default function ReadinessAssessment() {
                       </div>
                     </div>
                   ))}
-                  <p className="text-sm text-teal-400 font-medium pt-2 border-t border-slate-700/50">
+                  <p className="text-sm text-teal-400 font-medium pt-2 border-t border-gray-200">
                     Execution OS clients score {Math.round((((selectedDomain === "offense" ? 84 : selectedDomain === "defense" ? 78 : 75) / (selectedDomain === "offense" ? 62 : selectedDomain === "defense" ? 54 : 48)) - 1) * 100)}% higher than Fortune 500 average
                   </p>
                 </CardContent>
               </Card>
             </div>
 
-            <Card className="bg-slate-900/80 border border-slate-700 mb-8">
+            <Card className="bg-white border border-gray-200 mb-8">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3">
                   <AlertTriangle className={`h-6 w-6 flex-shrink-0 ${domainConfig.textLight}`} />
@@ -684,7 +684,7 @@ export default function ReadinessAssessment() {
                 </h2>
                 <div className="space-y-3">
                   {result.gaps.map((gap, i) => (
-                    <Card key={i} className="bg-slate-900/80 border border-red-500/30">
+                    <Card key={i} className="bg-white border border-red-500/30">
                       <CardContent className="p-4 flex items-start gap-3">
                         <XCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
                         <p className="text-slate-200">{gap}</p>
@@ -701,7 +701,7 @@ export default function ReadinessAssessment() {
                   <Layers className={`h-5 w-5 ${domainConfig.textLight}`} />
                   How Execution OS Closes These Gaps
                 </h2>
-                <Card className={`bg-gradient-to-br from-slate-900 via-slate-900/95 to-slate-800 border ${domainConfig.border} overflow-hidden`}>
+                <Card className={`    border ${domainConfig.border} overflow-hidden`}>
                   <CardContent className="p-6">
                     <div className="space-y-5">
                       {[
@@ -726,7 +726,7 @@ export default function ReadinessAssessment() {
                       ].map((item) => {
                         const StepIcon = item.icon;
                         return (
-                          <div key={item.step} className={`flex items-start gap-4 p-4 rounded-xl bg-slate-800/50 border ${domainConfig.border}`}>
+                          <div key={item.step} className={`flex items-start gap-4 p-4 rounded-xl bg-gray-50 border ${domainConfig.border}`}>
                             <div className={`w-10 h-10 rounded-lg ${domainConfig.bgLight} flex items-center justify-center flex-shrink-0`}>
                               <StepIcon className={`h-5 w-5 ${domainConfig.textLight}`} />
                             </div>
@@ -751,7 +751,7 @@ export default function ReadinessAssessment() {
                 </h2>
                 <div className="space-y-3">
                   {result.recommendations.map((rec, i) => (
-                    <Card key={i} className="bg-slate-900/80 border border-emerald-500/30">
+                    <Card key={i} className="bg-white border border-emerald-500/30">
                       <CardContent className="p-4 flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
                         <p className="text-slate-200">{rec}</p>
@@ -762,7 +762,7 @@ export default function ReadinessAssessment() {
               </div>
             )}
 
-            <Card className={`bg-gradient-to-r from-slate-900 via-slate-800/80 to-slate-900 border ${domainConfig.border} mb-8 overflow-hidden`}>
+            <Card className={`    border ${domainConfig.border} mb-8 overflow-hidden`}>
               <CardContent className="p-8 text-center">
                 <h2 className="text-2xl font-bold text-white mb-3 flex items-center justify-center gap-2">
                   <Rocket className={`h-6 w-6 ${domainConfig.textLight}`} />

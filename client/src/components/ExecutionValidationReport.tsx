@@ -156,7 +156,7 @@ export default function ExecutionValidationReport({
               <div className="text-3xl font-bold text-green-600" data-testid="accuracy-score">
                 {report.accuracy}%
               </div>
-              <div className="text-xs text-gray-400 dark:text-gray-200">Accuracy</div>
+              <div className="text-xs text-gray-600 dark:text-gray-200">Accuracy</div>
             </div>
           </div>
         </div>
@@ -174,11 +174,11 @@ export default function ExecutionValidationReport({
             </div>
             <div className="space-y-1">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400 dark:text-gray-200">Predicted</span>
+                <span className="text-gray-600 dark:text-gray-200">Predicted</span>
                 <span className="font-semibold">{report.predictedOutcomes.timeToResolution}s</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400 dark:text-gray-200">Actual</span>
+                <span className="text-gray-600 dark:text-gray-200">Actual</span>
                 <span className="font-semibold" data-testid="actual-time">{report.actualOutcomes.timeToResolution}s</span>
               </div>
               <div className={`flex justify-between text-sm font-bold ${
@@ -203,11 +203,11 @@ export default function ExecutionValidationReport({
             </div>
             <div className="space-y-1">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400 dark:text-gray-200">Predicted</span>
+                <span className="text-gray-600 dark:text-gray-200">Predicted</span>
                 <span className="font-semibold">${report.predictedOutcomes.estimatedCost.toLocaleString()}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400 dark:text-gray-200">Actual</span>
+                <span className="text-gray-600 dark:text-gray-200">Actual</span>
                 <span className="font-semibold" data-testid="actual-cost">${report.actualOutcomes.actualCost.toLocaleString()}</span>
               </div>
               <div className={`flex justify-between text-sm font-bold ${
@@ -228,11 +228,11 @@ export default function ExecutionValidationReport({
             </div>
             <div className="space-y-1">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400 dark:text-gray-200">Predicted</span>
+                <span className="text-gray-600 dark:text-gray-200">Predicted</span>
                 <span className="font-semibold">{report.predictedOutcomes.stakeholdersImpacted}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400 dark:text-gray-200">Actual</span>
+                <span className="text-gray-600 dark:text-gray-200">Actual</span>
                 <span className="font-semibold" data-testid="actual-stakeholders">{report.actualOutcomes.stakeholdersEngaged}</span>
               </div>
               <div className="flex justify-between text-sm font-bold text-green-600">
@@ -249,11 +249,11 @@ export default function ExecutionValidationReport({
             </div>
             <div className="space-y-1">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400 dark:text-gray-200">Predicted</span>
+                <span className="text-gray-600 dark:text-gray-200">Predicted</span>
                 <span className="font-semibold">{report.predictedOutcomes.risksIdentified}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400 dark:text-gray-200">Actual</span>
+                <span className="text-gray-600 dark:text-gray-200">Actual</span>
                 <span className="font-semibold" data-testid="actual-risks">{report.actualOutcomes.risksRealized}</span>
               </div>
               <div className="flex justify-between text-sm font-bold text-green-600">

@@ -317,7 +317,7 @@ function RadarChart({ scores, targetScores }: { scores: Record<OperatingModelEle
               height={24}
             >
               <div className="flex items-center justify-center w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800">
-                <Icon className="w-3 h-3 text-slate-400 dark:text-slate-300" />
+                <Icon className="w-3 h-3 text-gray-600 dark:text-slate-300" />
               </div>
             </foreignObject>
           </g>

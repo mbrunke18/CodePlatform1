@@ -276,7 +276,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
             <h1 className="text-3xl font-bold text-slate-900 dark:text-white" data-testid="text-page-title">
               Stakeholder Directory
             </h1>
-            <p className="text-slate-400 dark:text-slate-300 mt-1">
+            <p className="text-gray-600 dark:text-slate-300 mt-1">
               Manage your organization's stakeholders, roles, and contact information
             </p>
           </div>
@@ -295,7 +295,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                  <Users className="h-5 w-5 text-slate-400" />
+                  <Users className="h-5 w-5 text-gray-600" />
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white">{stats.total}</p>
@@ -439,7 +439,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                         <span className="font-medium">{stakeholder.role}</span>
                       </TableCell>
                       <TableCell>
-                        <span className="text-slate-400 dark:text-slate-300">{stakeholder.department}</span>
+                        <span className="text-gray-600 dark:text-slate-300">{stakeholder.department}</span>
                       </TableCell>
                       <TableCell>
                         <Badge className={levelConfig.color}>
@@ -448,7 +448,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                       </TableCell>
                       <TableCell>
                         <div className="space-y-1 text-sm">
-                          <div className="flex items-center gap-1 text-slate-400 dark:text-slate-300">
+                          <div className="flex items-center gap-1 text-gray-600 dark:text-slate-300">
                             <Mail className="h-3 w-3" />
                             <span className="truncate max-w-[150px]" data-testid={`text-email-${stakeholder.id}`}>{stakeholder.email}</span>
                           </div>
@@ -473,7 +473,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                                 title={channel.label}
                                 data-testid={`badge-channel-${stakeholder.id}-${ch}`}
                               >
-                                <Icon className="h-3 w-3 text-slate-400 dark:text-slate-300" />
+                                <Icon className="h-3 w-3 text-gray-600 dark:text-slate-300" />
                               </div>
                             );
                           })}
@@ -527,7 +527,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                 </div>
                 <p className="text-3xl font-bold text-slate-900 dark:text-white mb-1">3.2 minutes</p>
                 <p className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Average Response Time</p>
-                <p className="text-xs text-slate-400 dark:text-slate-400">Stakeholders acknowledge notifications within avg 3.2 min</p>
+                <p className="text-xs text-gray-600 dark:text-slate-400">Stakeholders acknowledge notifications within avg 3.2 min</p>
                 <Progress value={94} className="mt-3 h-1.5" />
               </CardContent>
             </Card>
@@ -541,7 +541,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                 </div>
                 <p className="text-3xl font-bold text-slate-900 dark:text-white mb-1">98.4%</p>
                 <p className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Notification Reach</p>
-                <p className="text-xs text-slate-400 dark:text-slate-400">Percentage of stakeholders successfully reached on first attempt</p>
+                <p className="text-xs text-gray-600 dark:text-slate-400">Percentage of stakeholders successfully reached on first attempt</p>
                 <Progress value={98.4} className="mt-3 h-1.5" />
               </CardContent>
             </Card>
@@ -555,7 +555,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                 </div>
                 <p className="text-3xl font-bold text-slate-900 dark:text-white mb-1">92%</p>
                 <p className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Participation Rate</p>
-                <p className="text-xs text-slate-400 dark:text-slate-400">Stakeholder participation rate in practice drills</p>
+                <p className="text-xs text-gray-600 dark:text-slate-400">Stakeholder participation rate in practice drills</p>
                 <Progress value={92} className="mt-3 h-1.5" />
               </CardContent>
             </Card>
@@ -591,8 +591,8 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
-                            <EntryIcon className="h-4 w-4 text-slate-400 dark:text-slate-300" />
-                            <span className="text-sm font-semibold text-slate-500 dark:text-slate-400">{entry.date}</span>
+                            <EntryIcon className="h-4 w-4 text-gray-600 dark:text-slate-300" />
+                            <span className="text-sm font-semibold text-gray-500 dark:text-slate-400">{entry.date}</span>
                           </div>
                           <p className="text-sm text-slate-700 dark:text-slate-200">{entry.description}</p>
                         </div>
@@ -644,7 +644,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                         </Avatar>
                         <div>
                           <p className="font-medium text-slate-900 dark:text-white text-sm">{row.name}</p>
-                          <p className="text-xs text-slate-400 dark:text-slate-400">{row.role}</p>
+                          <p className="text-xs text-gray-600 dark:text-slate-400">{row.role}</p>
                         </div>
                       </div>
                     </TableCell>
@@ -669,19 +669,19 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
               <div className="flex flex-wrap gap-4 text-xs">
                 <div className="flex items-center gap-1.5">
                   <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400 text-xs px-1.5">R</Badge>
-                  <span className="text-slate-500 dark:text-slate-400">Responsible</span>
+                  <span className="text-gray-500 dark:text-slate-400">Responsible</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-xs px-1.5">A</Badge>
-                  <span className="text-slate-500 dark:text-slate-400">Accountable</span>
+                  <span className="text-gray-500 dark:text-slate-400">Accountable</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-xs px-1.5">C</Badge>
-                  <span className="text-slate-500 dark:text-slate-400">Consulted</span>
+                  <span className="text-gray-500 dark:text-slate-400">Consulted</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Badge className="bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 text-xs px-1.5">I</Badge>
-                  <span className="text-slate-500 dark:text-slate-400">Informed</span>
+                  <span className="text-gray-500 dark:text-slate-400">Informed</span>
                 </div>
               </div>
             </div>

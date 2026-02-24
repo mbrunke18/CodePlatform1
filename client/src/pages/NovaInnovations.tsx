@@ -148,7 +148,7 @@ export default function NovaInnovations() {
       case 'high': return 'bg-orange-500/20 text-orange-400 border-orange-500/30';
       case 'medium': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
       case 'low': return 'bg-green-500/20 text-green-400 border-green-500/30';
-      default: return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
+      default: return 'bg-gray-500/20 text-gray-600 border-gray-500/30';
     }
   };
 
@@ -158,7 +158,7 @@ export default function NovaInnovations() {
       case 'research': return 'bg-purple-500/20 text-purple-400 border-purple-500/30';
       case 'ideation': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
       case 'discovery': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
-      default: return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
+      default: return 'bg-gray-500/20 text-gray-600 border-gray-500/30';
     }
   };
 
@@ -173,9 +173,9 @@ export default function NovaInnovations() {
           
           {/* Breadcrumb Navigation */}
           <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2 text-sm text-gray-600">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-gray-600 hover:text-white p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>
@@ -295,7 +295,7 @@ export default function NovaInnovations() {
               {/* Innovation Projects Grid */}
               <div className="space-y-6">
                 {filteredProjects.map((project) => (
-                  <Card key={project.id} className="border-gray-700/50 bg-gray-900/50 backdrop-blur-sm hover:border-purple-500/30 transition-colors" data-testid={project.id === 'ai-automation' ? 'innovation-project-ai' : `project-${project.id}`}>
+                  <Card key={project.id} className="border-gray-200 bg-white backdrop-blur-sm hover:border-purple-500/30 transition-colors" data-testid={project.id === 'ai-automation' ? 'innovation-project-ai' : `project-${project.id}`}>
                     <CardHeader>
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
@@ -304,11 +304,11 @@ export default function NovaInnovations() {
                           </div>
                           <div>
                             <h3 className="text-xl font-semibold text-white">{project.name}</h3>
-                            <p className="text-gray-400">{project.description}</p>
+                            <p className="text-gray-600">{project.description}</p>
                             <div className="flex items-center gap-2 mt-2">
-                              <span className="text-sm text-gray-400">Timeline: {project.timeline}</span>
+                              <span className="text-sm text-gray-600">Timeline: {project.timeline}</span>
                               <span className="text-gray-600">•</span>
-                              <span className="text-sm text-gray-400">Investment: ${project.investment}M</span>
+                              <span className="text-sm text-gray-600">Investment: ${project.investment}M</span>
                             </div>
                           </div>
                         </div>
@@ -320,7 +320,7 @@ export default function NovaInnovations() {
                             {project.stage.toUpperCase()}
                           </Badge>
                           <div className="text-right">
-                            <div className="text-sm text-gray-400">Potential</div>
+                            <div className="text-sm text-gray-600">Potential</div>
                             <div className="text-lg font-bold text-white">{project.potential}%</div>
                           </div>
                         </div>
@@ -331,28 +331,28 @@ export default function NovaInnovations() {
                       <div className="grid grid-cols-4 gap-4">
                         <div>
                           <div className="flex items-center justify-between text-sm mb-1">
-                            <span className="text-gray-400">Efficiency</span>
+                            <span className="text-gray-600">Efficiency</span>
                             <span className="text-blue-400 font-medium">{project.impact.efficiency}%</span>
                           </div>
                           <Progress value={project.impact.efficiency} className="h-2" />
                         </div>
                         <div>
                           <div className="flex items-center justify-between text-sm mb-1">
-                            <span className="text-gray-400">Cost Impact</span>
+                            <span className="text-gray-600">Cost Impact</span>
                             <span className="text-emerald-400 font-medium">{project.impact.cost}%</span>
                           </div>
                           <Progress value={project.impact.cost} className="h-2" />
                         </div>
                         <div>
                           <div className="flex items-center justify-between text-sm mb-1">
-                            <span className="text-gray-400">Revenue</span>
+                            <span className="text-gray-600">Revenue</span>
                             <span className="text-purple-400 font-medium">{project.impact.revenue}%</span>
                           </div>
                           <Progress value={project.impact.revenue} className="h-2" />
                         </div>
                         <div>
                           <div className="flex items-center justify-between text-sm mb-1">
-                            <span className="text-gray-400">Risk</span>
+                            <span className="text-gray-600">Risk</span>
                             <span className="text-orange-400 font-medium">{project.impact.risk}%</span>
                           </div>
                           <Progress value={project.impact.risk} className="h-2" />
@@ -368,7 +368,7 @@ export default function NovaInnovations() {
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {project.team.map((member, index) => (
-                              <Badge key={index} variant="outline" className="bg-gray-800/50 text-gray-300 border-gray-600">
+                              <Badge key={index} variant="outline" className="bg-gray-50 text-gray-300 border-gray-600">
                                 {member}
                               </Badge>
                             ))}
@@ -385,13 +385,13 @@ export default function NovaInnovations() {
                               <div key={index} className="flex items-center justify-between text-sm">
                                 <span className="text-gray-300">{milestone.name}</span>
                                 <div className="flex items-center gap-2">
-                                  <span className="text-gray-400">{milestone.date}</span>
+                                  <span className="text-gray-600">{milestone.date}</span>
                                   <Badge 
                                     variant="outline" 
                                     className={
                                       milestone.status === 'completed' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' :
                                       milestone.status === 'in-progress' ? 'bg-blue-500/20 text-blue-400 border-blue-500/30' :
-                                      'bg-gray-500/20 text-gray-400 border-gray-500/30'
+                                      'bg-gray-500/20 text-gray-600 border-gray-500/30'
                                     }
                                   >
                                     {milestone.status}
@@ -403,7 +403,7 @@ export default function NovaInnovations() {
                         </div>
                       </div>
 
-                      <div className="flex gap-3 pt-4 border-t border-gray-700/50">
+                      <div className="flex gap-3 pt-4 border-t border-gray-200">
                         <Button size="sm" variant="outline" className="flex-1">
                           <Eye className="h-4 w-4 mr-2" />
                           View Details

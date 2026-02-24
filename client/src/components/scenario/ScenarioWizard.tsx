@@ -231,7 +231,7 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
   return (
     <div className="max-w-6xl mx-auto space-y-6">
       {/* Progress Header */}
-      <Card className="border-blue-500/30 bg-gradient-to-r from-blue-950/20 to-purple-950/20">
+      <Card className="border-blue-500/30 bg-gradient-to-r  ">
         <CardHeader>
           <div className="flex items-center justify-between mb-4">
             <div>
@@ -276,15 +276,15 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
                   : isComplete
                   ? 'border-green-500/50 bg-green-950/20 hover:scale-102'
                   : isAccessible
-                  ? 'border-slate-700 bg-slate-900/50 hover:border-slate-600'
-                  : 'border-slate-800 bg-slate-900/20 opacity-50 cursor-not-allowed'
+                  ? 'border-gray-200 bg-white hover:border-slate-600'
+                  : 'border-gray-200 bg-white opacity-50 cursor-not-allowed'
               }`}
             >
               <div className="flex items-center gap-2 mb-2">
                 {isComplete ? (
                   <CheckCircle className="h-5 w-5 text-green-400" />
                 ) : (
-                  <Circle className={`h-5 w-5 ${isCurrent ? 'text-blue-400' : 'text-gray-400'}`} />
+                  <Circle className={`h-5 w-5 ${isCurrent ? 'text-blue-400' : 'text-gray-600'}`} />
                 )}
                 <span className={`text-sm font-semibold ${isCurrent ? 'text-blue-300' : isComplete ? 'text-green-300' : 'text-gray-200'}`}>
                   Phase {index + 1}
@@ -303,7 +303,7 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
       </div>
 
       {/* Phase Content */}
-      <Card className="border-slate-700">
+      <Card className="border-gray-200">
         <CardHeader>
           <div className="flex items-center gap-3">
             {(() => {
@@ -356,7 +356,7 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
               className={`${
                 canProceed
                   ? 'bg-blue-600 hover:bg-blue-700'
-                  : 'bg-slate-700 text-slate-300 cursor-not-allowed'
+                  : 'bg-gray-50 text-slate-300 cursor-not-allowed'
               } text-white`}
               data-testid="button-wizard-next"
             >

@@ -30,7 +30,7 @@ import Footer from "@/components/layout/Footer";
 import { useEffect } from "react";
 import { updatePageMetadata } from "@/lib/seo";
 
-export default function WhyExecution OS() {
+export default function WhyExecuteIQ() {
   useEffect(() => {
     updatePageMetadata({
       title: "Why Execution OS - The Infrastructure 15 Firms Say Is Missing",
@@ -45,7 +45,7 @@ export default function WhyExecution OS() {
       <StandardNav />
 
       {/* Hero Section */}
-      <section className="py-16 md:py-24 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+      <section className="py-16 md:py-24 px-6 text-white">
         <div className="max-w-5xl mx-auto text-center">
           <Badge className="mb-6 bg-amber-500 text-white border-0">
             <BarChart3 className="w-4 h-4 mr-2" />
@@ -214,7 +214,7 @@ export default function WhyExecution OS() {
       </section>
 
       {/* Section 3: The Solution */}
-      <section className="py-16 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+      <section className="py-16 px-6 text-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-emerald-500 text-white border-0">

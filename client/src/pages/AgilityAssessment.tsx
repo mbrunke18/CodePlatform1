@@ -160,7 +160,7 @@ export default function AgilityAssessment() {
     const revenueImpact = calculateRevenueImpact(score);
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950">
+      <div className="min-h-screen bg-gradient-to-br ">
         <StandardNav />
         
         <div className="container mx-auto px-4 py-12">
@@ -175,7 +175,7 @@ export default function AgilityAssessment() {
               </h1>
             </div>
 
-            <Card className="bg-slate-900/50 border-slate-800 mb-8" data-testid="card-score-result">
+            <Card className="bg-white border-gray-200 mb-8" data-testid="card-score-result">
               <CardContent className="p-8 text-center">
                 <div className="mb-8">
                   <div 
@@ -193,7 +193,7 @@ export default function AgilityAssessment() {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-6 mb-8">
-                  <div className="bg-slate-800/50 rounded-lg p-6" data-testid="result-current-growth">
+                  <div className="bg-gray-50 rounded-lg p-6" data-testid="result-current-growth">
                     <div className="text-3xl font-bold text-white mb-2">{revenueImpact.currentGrowth}%</div>
                     <p className="text-slate-200 text-sm">Estimated Current Revenue/Employee Growth</p>
                   </div>
@@ -201,13 +201,13 @@ export default function AgilityAssessment() {
                     <div className="text-3xl font-bold text-emerald-400 mb-2">+{revenueImpact.potentialGrowth}%</div>
                     <p className="text-slate-200 text-sm">Potential Additional Growth with Execution OS</p>
                   </div>
-                  <div className="bg-slate-800/50 rounded-lg p-6" data-testid="result-benchmark">
+                  <div className="bg-gray-50 rounded-lg p-6" data-testid="result-benchmark">
                     <div className="text-3xl font-bold text-amber-400 mb-2">10.3%</div>
                     <p className="text-slate-200 text-sm">Top Performer Benchmark (BAI 2025)</p>
                   </div>
                 </div>
 
-                <Card className="bg-slate-800/50 border-slate-700 mb-8">
+                <Card className="bg-gray-50 border-gray-200 mb-8">
                   <CardContent className="p-6">
                     <h3 className="text-xl font-bold text-white mb-4">What This Means</h3>
                     {score < 60 ? (
@@ -274,7 +274,7 @@ export default function AgilityAssessment() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950">
+    <div className="min-h-screen bg-gradient-to-br ">
       <StandardNav />
       
       <div className="container mx-auto px-4 py-12">
@@ -300,7 +300,7 @@ export default function AgilityAssessment() {
             <Progress value={progress} className="h-2" />
           </div>
 
-          <Card className="bg-slate-900/50 border-slate-800" data-testid="card-question">
+          <Card className="bg-white border-gray-200" data-testid="card-question">
             <CardHeader>
               <CardTitle className="text-xl text-white">
                 {currentQ.question}
@@ -322,7 +322,7 @@ export default function AgilityAssessment() {
                     className={`flex items-center space-x-3 p-4 rounded-lg border transition-all cursor-pointer ${
                       currentAnswer === option.value 
                         ? 'border-emerald-500 bg-emerald-500/10' 
-                        : 'border-slate-700 bg-slate-800/50 hover:border-slate-600'
+                        : 'border-gray-200 bg-gray-50 hover:border-slate-600'
                     }`}
                     onClick={() => handleAnswer(option.value)}
                     data-testid={`option-${option.value}`}
@@ -348,7 +348,7 @@ export default function AgilityAssessment() {
                   variant="outline"
                   onClick={handleBack}
                   disabled={currentQuestion === 0}
-                  className="border-slate-700 text-slate-300 hover:bg-slate-800"
+                  className="border-gray-200 text-slate-300 hover:bg-slate-800"
                   data-testid="button-back"
                 >
                   <ArrowLeft className="mr-2 h-4 w-4" />

@@ -99,17 +99,17 @@ export default function IntelligenceControlCenter() {
 
   const getColorClasses = (color: string) => {
     const colors: Record<string, { bg: string; border: string; text: string; badge: string }> = {
-      purple: { bg: 'from-purple-950/40 to-slate-950/40', border: 'border-purple-500/30 hover:border-purple-500/50', text: 'text-purple-400', badge: 'bg-purple-500/10 text-purple-300 border-purple-500/30' },
-      blue: { bg: 'from-blue-950/40 to-slate-950/40', border: 'border-blue-500/30 hover:border-blue-500/50', text: 'text-blue-400', badge: 'bg-blue-500/10 text-blue-300 border-blue-500/30' },
-      cyan: { bg: 'from-cyan-950/40 to-slate-950/40', border: 'border-cyan-500/30 hover:border-cyan-500/50', text: 'text-cyan-400', badge: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30' },
-      amber: { bg: 'from-amber-950/40 to-slate-950/40', border: 'border-amber-500/30 hover:border-amber-500/50', text: 'text-amber-400', badge: 'bg-amber-500/10 text-amber-300 border-amber-500/30' },
-      green: { bg: 'from-green-950/40 to-slate-950/40', border: 'border-green-500/30 hover:border-green-500/50', text: 'text-green-400', badge: 'bg-green-500/10 text-green-300 border-green-500/30' },
+      purple: { bg: ' ', border: 'border-purple-500/30 hover:border-purple-500/50', text: 'text-purple-400', badge: 'bg-purple-500/10 text-purple-300 border-purple-500/30' },
+      blue: { bg: ' ', border: 'border-blue-500/30 hover:border-blue-500/50', text: 'text-blue-400', badge: 'bg-blue-500/10 text-blue-300 border-blue-500/30' },
+      cyan: { bg: ' ', border: 'border-cyan-500/30 hover:border-cyan-500/50', text: 'text-cyan-400', badge: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30' },
+      amber: { bg: ' ', border: 'border-amber-500/30 hover:border-amber-500/50', text: 'text-amber-400', badge: 'bg-amber-500/10 text-amber-300 border-amber-500/30' },
+      green: { bg: ' ', border: 'border-green-500/30 hover:border-green-500/50', text: 'text-green-400', badge: 'bg-green-500/10 text-green-300 border-green-500/30' },
     };
     return colors[color] || colors.blue;
   };
 
   return (
-    <div className="min-h-screen bg-slate-950" data-testid="intelligence-control-center">
+    <div className="min-h-screen bg-white" data-testid="intelligence-control-center">
       <StandardNav />
       
       <div className="max-w-7xl mx-auto px-6 py-8 space-y-8">
@@ -135,7 +135,7 @@ export default function IntelligenceControlCenter() {
 
         {/* Quick Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4" data-testid="grid-quick-stats">
-          <Card className="bg-slate-900/50 border-slate-800" data-testid="stat-data-points">
+          <Card className="bg-white border-gray-200" data-testid="stat-data-points">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
@@ -146,7 +146,7 @@ export default function IntelligenceControlCenter() {
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-slate-900/50 border-slate-800" data-testid="stat-signal-categories">
+          <Card className="bg-white border-gray-200" data-testid="stat-signal-categories">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
@@ -157,7 +157,7 @@ export default function IntelligenceControlCenter() {
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-slate-900/50 border-slate-800" data-testid="stat-weak-signals">
+          <Card className="bg-white border-gray-200" data-testid="stat-weak-signals">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
@@ -168,7 +168,7 @@ export default function IntelligenceControlCenter() {
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-slate-900/50 border-slate-800" data-testid="stat-active-patterns">
+          <Card className="bg-white border-gray-200" data-testid="stat-active-patterns">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
@@ -218,7 +218,7 @@ export default function IntelligenceControlCenter() {
                       <div className="flex items-center justify-between">
                         <div className="flex flex-wrap gap-2">
                           {module.features.slice(0, 3).map((feature, idx) => (
-                            <span key={idx} className="text-xs text-slate-300 bg-slate-800/50 px-2 py-1 rounded">
+                            <span key={idx} className="text-xs text-slate-300 bg-gray-50 px-2 py-1 rounded">
                               {feature}
                             </span>
                           ))}
@@ -236,7 +236,7 @@ export default function IntelligenceControlCenter() {
         {/* Quick Actions */}
         <div className="grid md:grid-cols-3 gap-4 pt-4" data-testid="section-quick-actions">
           <Link href="/ai" data-testid="link-ai-copilots">
-            <Card className="bg-slate-900/50 border-slate-700 hover:border-purple-500/50 transition-all cursor-pointer" data-testid="card-ai-copilots">
+            <Card className="bg-white border-gray-200 hover:border-purple-500/50 transition-all cursor-pointer" data-testid="card-ai-copilots">
               <CardContent className="p-4 flex items-center gap-4">
                 <div className="p-2 bg-purple-500/10 rounded-lg">
                   <Brain className="h-5 w-5 text-purple-400" />
@@ -251,7 +251,7 @@ export default function IntelligenceControlCenter() {
           </Link>
           
           <Link href="/signal-intelligence" data-testid="link-configure-signals">
-            <Card className="bg-slate-900/50 border-slate-700 hover:border-blue-500/50 transition-all cursor-pointer" data-testid="card-configure-signals">
+            <Card className="bg-white border-gray-200 hover:border-blue-500/50 transition-all cursor-pointer" data-testid="card-configure-signals">
               <CardContent className="p-4 flex items-center gap-4">
                 <div className="p-2 bg-blue-500/10 rounded-lg">
                   <Radio className="h-5 w-5 text-blue-400" />
@@ -266,7 +266,7 @@ export default function IntelligenceControlCenter() {
           </Link>
           
           <Link href="/triggers-management" data-testid="link-manage-triggers">
-            <Card className="bg-slate-900/50 border-slate-700 hover:border-amber-500/50 transition-all cursor-pointer" data-testid="card-manage-triggers">
+            <Card className="bg-white border-gray-200 hover:border-amber-500/50 transition-all cursor-pointer" data-testid="card-manage-triggers">
               <CardContent className="p-4 flex items-center gap-4">
                 <div className="p-2 bg-amber-500/10 rounded-lg">
                   <Bell className="h-5 w-5 text-amber-400" />

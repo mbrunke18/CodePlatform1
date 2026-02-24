@@ -146,7 +146,7 @@ export default function PlaybookReadinessDashboard({
 
   if (compact) {
     return (
-      <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-lg">
+      <div className="flex items-center gap-4 p-4 text-white rounded-lg">
         <div className="text-center">
           <div className={`text-3xl font-bold text-${status.color}-400`}>{overallScore}%</div>
           <div className="text-xs text-slate-600 dark:text-slate-200">Readiness</div>
@@ -175,7 +175,7 @@ export default function PlaybookReadinessDashboard({
 
   return (
     <div className="space-y-6">
-      <Card className="bg-gradient-to-br from-slate-900 to-slate-800 text-white border-0">
+      <Card className=" text-white border-0">
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
             <CardTitle className="flex items-center gap-2 text-lg">
@@ -224,7 +224,7 @@ export default function PlaybookReadinessDashboard({
             </div>
           </div>
 
-          <div className="grid grid-cols-4 gap-3 mt-4 pt-4 border-t border-slate-700">
+          <div className="grid grid-cols-4 gap-3 mt-4 pt-4 border-t border-gray-200">
             <ReadinessMetricCard 
               icon={Users} 
               label="Stakeholders" 

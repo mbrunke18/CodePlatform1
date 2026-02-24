@@ -685,7 +685,7 @@ export default function PlaybookCustomize() {
                       <Badge variant="secondary" className="text-xs">{filledCount}/{phaseSections.length}</Badge>
                     </div>
                     <p className="text-xs text-slate-300 dark:text-slate-300 italic mb-2">{phase.tagline}</p>
-                    <p className="text-xs text-slate-400 dark:text-slate-300 line-clamp-2">{phase.description}</p>
+                    <p className="text-xs text-gray-600 dark:text-slate-300 line-clamp-2">{phase.description}</p>
                   </CardContent>
                 </Card>
               );
@@ -715,7 +715,7 @@ export default function PlaybookCustomize() {
                           className={`w-full flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-left text-sm transition-colors ${
                             isActive 
                               ? 'bg-primary text-primary-foreground' 
-                              : 'text-slate-400 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+                              : 'text-gray-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                           }`}
                           data-testid={`nav-${section.id}`}
                         >
@@ -788,7 +788,7 @@ export default function PlaybookCustomize() {
                                     <span className={`font-medium ${
                                       field.value === 'draft' ? 'text-yellow-600 dark:text-yellow-400' :
                                       field.value === 'ready' ? 'text-green-600 dark:text-green-400' :
-                                      field.value === 'active' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-400'
+                                      field.value === 'active' ? 'text-blue-600 dark:text-blue-400' : 'text-gray-600'
                                     }`}>
                                       {PLAYBOOK_STATUSES.find(s => s.value === field.value)?.label || 'Draft'}
                                     </span>
@@ -807,7 +807,7 @@ export default function PlaybookCustomize() {
                                       <span className={`${
                                         s.value === 'draft' ? 'text-yellow-600 dark:text-yellow-400' :
                                         s.value === 'ready' ? 'text-green-600 dark:text-green-400' :
-                                        s.value === 'active' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-400'
+                                        s.value === 'active' ? 'text-blue-600 dark:text-blue-400' : 'text-gray-600'
                                       }`}>
                                         {s.label}
                                       </span>

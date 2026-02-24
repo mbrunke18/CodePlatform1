@@ -170,7 +170,7 @@ export default function DemoGallery() {
             <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
               Demo Gallery
             </h1>
-            <p className="text-xl text-slate-400 dark:text-slate-300 max-w-2xl mx-auto mb-6">
+            <p className="text-xl text-gray-600 dark:text-slate-300 max-w-2xl mx-auto mb-6">
               Choose your experience: interactive simulations, guided tours, or industry-specific scenarios
             </p>
           </div>
@@ -185,7 +185,7 @@ export default function DemoGallery() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 dark:text-white">Your Journey Starts Here</h3>
-                    <p className="text-sm text-slate-400 dark:text-slate-300">
+                    <p className="text-sm text-gray-600 dark:text-slate-300">
                       These demos map to Phase 1 of your Execution OS North Star™ journey — Discovery to 12-minute execution
                     </p>
                   </div>
@@ -226,7 +226,7 @@ export default function DemoGallery() {
                         <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-poise-teal transition-colors mb-2">
                           {demo.title}
                         </h3>
-                        <p className="text-slate-400 dark:text-slate-300 mb-4">
+                        <p className="text-gray-600 dark:text-slate-300 mb-4">
                           {demo.description}
                         </p>
                         <div className="flex flex-wrap gap-2">
@@ -276,7 +276,7 @@ export default function DemoGallery() {
                           </h3>
                           <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200 group-hover:text-poise-teal transition-colors" />
                         </div>
-                        <p className="text-sm text-slate-400 dark:text-slate-300 mt-1 mb-3">
+                        <p className="text-sm text-gray-600 dark:text-slate-300 mt-1 mb-3">
                           {demo.description}
                         </p>
                         <div className="flex items-center gap-2 flex-wrap">
@@ -301,7 +301,7 @@ export default function DemoGallery() {
           {/* Industry-Specific Demos */}
           <div className="mb-8">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Industry Scenarios</h2>
-            <p className="text-slate-400 dark:text-slate-300 mb-6">
+            <p className="text-gray-600 dark:text-slate-300 mb-6">
               See Execution OS in action with scenarios tailored to your industry
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -314,7 +314,7 @@ export default function DemoGallery() {
                         {demo.title}
                       </h3>
                       <p className="text-xs text-slate-300 mb-2">{demo.industry}</p>
-                      <p className="text-sm text-slate-400 dark:text-slate-300">
+                      <p className="text-sm text-gray-600 dark:text-slate-300">
                         {demo.description}
                       </p>
                     </CardContent>
@@ -325,7 +325,7 @@ export default function DemoGallery() {
           </div>
 
           {/* CTA - Unified Conversion Funnel: Try Demo + Start Pilot */}
-          <Card className="bg-gradient-to-r from-poise-navy to-slate-800 text-white border-0">
+          <Card className="bg-gradient-to-r from-poise-navytext-white border-0">
             <CardContent className="p-8 text-center">
               <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Strategic Execution?</h3>
               <p className="text-slate-300 mb-6 max-w-xl mx-auto">

@@ -121,9 +121,9 @@ export default function SettingsPage() {
         <div className="p-8">
           {/* Breadcrumb Navigation */}
           <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2 text-sm text-gray-600">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-400 hover:text-gray-800 dark:hover:text-white p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-800 dark:hover:text-white p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>
@@ -554,7 +554,7 @@ export default function SettingsPage() {
                       </Button>
                     </div>
 
-                    <div className="text-xs text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                    <div className="text-xs text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
                       <strong>Note:</strong> This action will completely replace all organizations, users, scenarios, tasks, and AI intelligence data with the Golden Demo dataset. This is intended for sales presentations and demonstrations only.
                     </div>
                   </div>

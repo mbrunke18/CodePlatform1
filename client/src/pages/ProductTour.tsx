@@ -409,7 +409,7 @@ function ProductTour() {
                   initial={{ x: 50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.3 + index * 0.15 }}
-                  className="flex items-center gap-3 bg-slate-800/50 rounded-lg p-4"
+                  className="flex items-center gap-3 bg-gray-50 rounded-lg p-4"
                 >
                   <CheckCircle2 className={`w-5 h-5 text-${config.color}-400`} />
                   <span className="text-white font-medium">{item}</span>
@@ -429,7 +429,7 @@ function ProductTour() {
         animate={{ opacity: 1 }}
         className="w-full max-w-4xl"
       >
-        <Card className="bg-slate-800/80 border-slate-700 overflow-hidden">
+        <Card className="bg-gray-50 border-gray-200 overflow-hidden">
           <div className="bg-gradient-to-r from-blue-600 to-teal-500 p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
@@ -464,7 +464,7 @@ function ProductTour() {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 1 + i * 0.1 }}
-                    className="flex items-center gap-2 bg-slate-700/50 rounded-lg p-3"
+                    className="flex items-center gap-2 bg-gray-50 rounded-lg p-3"
                   >
                     <div className="w-8 h-8 bg-teal-500/20 rounded-full flex items-center justify-center">
                       <CheckCircle2 className="w-4 h-4 text-teal-400" />
@@ -532,10 +532,10 @@ function ProductTour() {
       >
         <div className="grid grid-cols-4 gap-4">
           <div className="col-span-1"></div>
-          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="text-center p-3 bg-slate-800 rounded-lg">
+          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="text-center p-3 bg-gray-50 rounded-lg">
             <p className="text-slate-600 dark:text-slate-200 text-sm">Palantir</p>
           </motion.div>
-          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="text-center p-3 bg-slate-800 rounded-lg">
+          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="text-center p-3 bg-gray-50 rounded-lg">
             <p className="text-slate-600 dark:text-slate-200 text-sm">Anaplan</p>
           </motion.div>
           <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="text-center p-3 bg-gradient-to-r from-blue-600 to-teal-500 rounded-lg">
@@ -555,11 +555,11 @@ function ProductTour() {
               transition={{ delay: 0.5 + i * 0.1 }}
               className="contents"
             >
-              <div className="p-3 bg-slate-800/50 rounded-lg flex items-center">
+              <div className="p-3 bg-gray-50 rounded-lg flex items-center">
                 <p className="text-white text-sm">{row.label}</p>
               </div>
               {row.scores.map((score, j) => (
-                <div key={j} className={`p-3 rounded-lg flex items-center justify-center ${j === 2 ? 'bg-teal-500/20' : 'bg-slate-800/30'}`}>
+                <div key={j} className={`p-3 rounded-lg flex items-center justify-center ${j === 2 ? 'bg-teal-500/20' : 'bg-gray-50'}`}>
                   <p className={`text-sm ${j === 2 ? 'text-teal-400 font-medium' : 'text-slate-300'}`}>{score}</p>
                 </div>
               ))}
@@ -662,11 +662,11 @@ function ProductTour() {
 
   return (
     <div 
-      className="fixed inset-0 bg-slate-950 overflow-hidden"
+      className="fixed inset-0 bg-white overflow-hidden"
       onMouseMove={() => setShowControls(true)}
       data-testid="page-product-tour"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-950 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-br to-black" />
       
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
@@ -741,7 +741,7 @@ function ProductTour() {
       >
         <div className="max-w-4xl mx-auto">
           <div className="mb-4">
-            <Progress value={progress} className="h-1 bg-slate-700" />
+            <Progress value={progress} className="h-1 bg-gray-50" />
           </div>
           
           <div className="flex items-center justify-between">
@@ -826,7 +826,7 @@ const ProductTourWithNav = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <StandardNav />
-      <div className="flex-1 bg-slate-950">
+      <div className="flex-1 bg-white">
         <ProductTour />
       </div>
     </div>

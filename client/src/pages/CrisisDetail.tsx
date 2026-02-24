@@ -344,19 +344,19 @@ export default function CrisisDetail() {
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div>
-                      <div className="text-sm font-medium text-gray-500">Organization</div>
+                      <div className="text-sm font-medium text-gray-600">Organization</div>
                       <div className="text-lg font-semibold">{organization?.name || 'Unknown'}</div>
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-gray-500">Industry</div>
+                      <div className="text-sm font-medium text-gray-600">Industry</div>
                       <div>{organization?.industry || 'Not specified'}</div>
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-gray-500">Size</div>
+                      <div className="text-sm font-medium text-gray-600">Size</div>
                       <div>{organization?.size ? `${organization.size} employees` : 'Not specified'}</div>
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-gray-500">Location</div>
+                      <div className="text-sm font-medium text-gray-600">Location</div>
                       <div>{organization?.headquarters || 'Not specified'}</div>
                     </div>
                   </CardContent>
@@ -406,7 +406,7 @@ export default function CrisisDetail() {
               ) : tasks.length === 0 ? (
                 <Card>
                   <CardContent className="text-center py-8">
-                    <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                    <FileText className="h-12 w-12 text-gray-600 mx-auto mb-4" />
                     <h3 className="text-lg font-semibold mb-2">No Tasks Yet</h3>
                     <p className="text-gray-600">Tasks will be created when the crisis response is activated.</p>
                   </CardContent>
@@ -437,12 +437,12 @@ export default function CrisisDetail() {
                                 )}
                               </Button>
                               <div className="flex-1 page-background">
-                                <p className={`text-sm ${task.status === 'Completed' ? 'line-through text-gray-500' : 'text-gray-900 dark:text-gray-100'}`}>
+                                <p className={`text-sm ${task.status === 'Completed' ? 'line-through text-gray-600' : 'text-gray-900 dark:text-gray-100'}`}>
                                   {task.description}
                                 </p>
                               </div>
                             </div>
-                            <div className="flex items-center gap-4 text-xs text-gray-500 ml-8">
+                            <div className="flex items-center gap-4 text-xs text-gray-600 ml-8">
                               <span className={`px-2 py-1 rounded-full ${getPriorityColor(task.priority)}`}>
                                 {task.priority}
                               </span>
@@ -472,7 +472,7 @@ export default function CrisisDetail() {
                       <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
                       <div className="flex-1 page-background">
                         <div className="text-sm font-medium">Crisis Detected</div>
-                        <div className="text-xs text-gray-500">{new Date(crisis.createdAt).toLocaleString()}</div>
+                        <div className="text-xs text-gray-600">{new Date(crisis.createdAt).toLocaleString()}</div>
                         <div className="text-sm text-gray-600 mt-1">Initial crisis scenario created and logged</div>
                       </div>
                     </div>
@@ -482,7 +482,7 @@ export default function CrisisDetail() {
                         <div className="w-2 h-2 bg-orange-600 rounded-full mt-2"></div>
                         <div className="flex-1 page-background">
                           <div className="text-sm font-medium">Response Activated</div>
-                          <div className="text-xs text-gray-500">{new Date().toLocaleString()}</div>
+                          <div className="text-xs text-gray-600">{new Date().toLocaleString()}</div>
                           <div className="text-sm text-gray-600 mt-1">Emergency response protocols initiated</div>
                         </div>
                       </div>
@@ -493,7 +493,7 @@ export default function CrisisDetail() {
                         <div className="w-2 h-2 bg-green-600 rounded-full mt-2"></div>
                         <div className="flex-1 page-background">
                           <div className="text-sm font-medium">Crisis Resolved</div>
-                          <div className="text-xs text-gray-500">{new Date(crisis.updatedAt).toLocaleString()}</div>
+                          <div className="text-xs text-gray-600">{new Date(crisis.updatedAt).toLocaleString()}</div>
                           <div className="text-sm text-gray-600 mt-1">All critical tasks completed, situation stabilized</div>
                         </div>
                       </div>

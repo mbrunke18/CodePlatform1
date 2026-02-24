@@ -71,7 +71,7 @@ export default function StakeholderAlignmentDashboard({
 
   if (!alignmentData || alignmentData.length === 0) {
     return (
-      <Card className="border-dashed border-2 border-slate-700 bg-slate-900/50" data-testid="stakeholder-alignment-empty">
+      <Card className="border-dashed border-2 border-gray-200 bg-white" data-testid="stakeholder-alignment-empty">
         <CardContent className="flex flex-col items-center justify-center py-8 text-center">
           <div className="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center mb-4">
             <AlertCircle className="h-6 w-6 text-purple-500" />
@@ -114,13 +114,13 @@ export default function StakeholderAlignmentDashboard({
               <div className="text-2xl font-bold text-purple-600" data-testid="alignment-percentage">
                 {alignmentPercentage}%
               </div>
-              <div className="text-xs text-gray-400 dark:text-gray-200">Acknowledged</div>
+              <div className="text-xs text-gray-600 dark:text-gray-200">Acknowledged</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-blue-600" data-testid="task-progress-percentage">
                 {taskProgress}%
               </div>
-              <div className="text-xs text-gray-400 dark:text-gray-200">Tasks Complete</div>
+              <div className="text-xs text-gray-600 dark:text-gray-200">Tasks Complete</div>
             </div>
           </div>
         </div>
@@ -158,7 +158,7 @@ export default function StakeholderAlignmentDashboard({
                       {stakeholder.priority}
                     </Badge>
                   </div>
-                  <div className="text-sm text-gray-400 dark:text-gray-200" data-testid={`stakeholder-role-${idx}`}>
+                  <div className="text-sm text-gray-600 dark:text-gray-200" data-testid={`stakeholder-role-${idx}`}>
                     {stakeholder.stakeholderRole}
                   </div>
                   {stakeholder.tasksAssigned > 0 && (
@@ -167,7 +167,7 @@ export default function StakeholderAlignmentDashboard({
                         value={(stakeholder.tasksCompleted / stakeholder.tasksAssigned) * 100} 
                         className="h-1.5 w-24" 
                       />
-                      <span className="text-xs text-gray-500 dark:text-gray-300" data-testid={`stakeholder-tasks-${idx}`}>
+                      <span className="text-xs text-gray-600 dark:text-gray-300" data-testid={`stakeholder-tasks-${idx}`}>
                         {stakeholder.tasksCompleted}/{stakeholder.tasksAssigned} tasks
                       </span>
                     </div>
@@ -181,7 +181,7 @@ export default function StakeholderAlignmentDashboard({
                     <div className="text-right">
                       <div className="text-sm font-semibold text-green-600">Acknowledged</div>
                       {stakeholder.responseTime && (
-                        <div className="text-xs text-gray-500 dark:text-gray-300">{stakeholder.responseTime}min response</div>
+                        <div className="text-xs text-gray-600 dark:text-gray-300">{stakeholder.responseTime}min response</div>
                       )}
                     </div>
                   </div>
@@ -189,7 +189,7 @@ export default function StakeholderAlignmentDashboard({
                   <div className="flex items-center gap-2" data-testid={`stakeholder-pending-${idx}`}>
                     <Clock className="h-5 w-5 text-gray-600 dark:text-gray-200" />
                     <div className="text-right">
-                      <div className="text-sm font-semibold text-gray-400 dark:text-gray-200">Pending</div>
+                      <div className="text-sm font-semibold text-gray-600 dark:text-gray-200">Pending</div>
                       <Button 
                         variant="ghost" 
                         size="sm" 

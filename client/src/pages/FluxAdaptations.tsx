@@ -88,7 +88,7 @@ export default function FluxAdaptations() {
       case 'high': return 'bg-orange-500/20 text-orange-400 border-orange-500/30';
       case 'medium': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
       case 'low': return 'bg-green-500/20 text-green-400 border-green-500/30';
-      default: return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
+      default: return 'bg-gray-500/20 text-gray-600 border-gray-500/30';
     }
   };
 
@@ -96,8 +96,8 @@ export default function FluxAdaptations() {
     switch (status) {
       case 'active': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
       case 'planning': return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
-      case 'paused': return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
-      default: return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
+      case 'paused': return 'bg-gray-500/20 text-gray-600 border-gray-500/30';
+      default: return 'bg-gray-500/20 text-gray-600 border-gray-500/30';
     }
   };
 
@@ -112,9 +112,9 @@ export default function FluxAdaptations() {
           
           {/* Breadcrumb Navigation */}
           <div className="mb-2 flex-shrink-0">
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2 text-sm text-gray-600">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-gray-600 hover:text-white p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>
@@ -184,7 +184,7 @@ export default function FluxAdaptations() {
                   {/* Adaptation Strategies Grid */}
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                     {filteredStrategies.map((strategy) => (
-                      <Card key={strategy.id} className="border-gray-700/50 bg-gray-900/50 backdrop-blur-sm hover:border-blue-500/30 transition-colors" data-testid={`strategy-${strategy.id}`}>
+                      <Card key={strategy.id} className="border-gray-200 bg-white backdrop-blur-sm hover:border-blue-500/30 transition-colors" data-testid={`strategy-${strategy.id}`}>
                         <CardHeader>
                           <div className="flex items-start justify-between">
                             <div className="flex items-center gap-3">
@@ -195,7 +195,7 @@ export default function FluxAdaptations() {
                               </div>
                               <div>
                                 <h3 className="font-semibold text-white">{strategy.name}</h3>
-                                <p className="text-sm text-gray-400 capitalize">{strategy.category} • {strategy.timeline}</p>
+                                <p className="text-sm text-gray-600 capitalize">{strategy.category} • {strategy.timeline}</p>
                               </div>
                             </div>
                             <div className="flex flex-col gap-2">
@@ -214,14 +214,14 @@ export default function FluxAdaptations() {
                           <div className="grid grid-cols-2 gap-4">
                             <div>
                               <div className="flex items-center justify-between text-sm mb-1">
-                                <span className="text-gray-400">Impact</span>
+                                <span className="text-gray-600">Impact</span>
                                 <span className="text-emerald-400 font-medium">{strategy.impact}%</span>
                               </div>
                               <Progress value={strategy.impact} className="h-2" />
                             </div>
                             <div>
                               <div className="flex items-center justify-between text-sm mb-1">
-                                <span className="text-gray-400">Effort</span>
+                                <span className="text-gray-600">Effort</span>
                                 <span className="text-orange-400 font-medium">{strategy.effort}%</span>
                               </div>
                               <Progress value={strategy.effort} className="h-2" />
@@ -282,15 +282,15 @@ export default function FluxAdaptations() {
                   </Card>
                 </>
               ) : (
-                <Card className="border-gray-700/50 bg-gray-900/50 backdrop-blur-sm">
+                <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="text-white">Strategy Analytics & Performance</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-center py-12">
-                      <BarChart3 className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-400">Advanced strategy analytics and performance tracking</p>
-                      <p className="text-sm text-gray-500 mt-2">Real-time adaptation effectiveness measurement</p>
+                      <BarChart3 className="h-16 w-16 text-gray-600 mx-auto mb-4" />
+                      <p className="text-gray-600">Advanced strategy analytics and performance tracking</p>
+                      <p className="text-sm text-gray-600 mt-2">Real-time adaptation effectiveness measurement</p>
                     </div>
                   </CardContent>
                 </Card>

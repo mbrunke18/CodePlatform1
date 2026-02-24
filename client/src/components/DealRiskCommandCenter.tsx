@@ -72,7 +72,7 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
 
   if (!execution) {
     return (
-      <Card className="bg-slate-900 border-slate-700">
+      <Card className="bg-white border-gray-200">
         <CardContent className="p-8 text-center">
           <AlertTriangle className="h-12 w-12 text-slate-300 mx-auto mb-4" />
           <p className="text-slate-200">No active execution. Trigger a playbook to see the Command Center in action.</p>
@@ -102,7 +102,7 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
 
   return (
     <div className="space-y-6">
-      <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
+      <Card className=" border-gray-200">
         <CardHeader className="pb-4">
           <div className="flex items-center justify-between">
             <CardTitle className="text-white flex items-center gap-2">
@@ -113,7 +113,7 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
               Live Execution
             </Badge>
           </div>
-          <div className="mt-2 p-3 bg-slate-800/50 rounded-lg">
+          <div className="mt-2 p-3 bg-gray-50 rounded-lg">
             <div className="flex items-center justify-between text-sm">
               <span className="text-slate-200">Deal:</span>
               <span className="text-white font-medium">{execution.dealName}</span>
@@ -135,7 +135,7 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
             {execution.timeline.slice(0, visibleEvents).map((event, index) => (
               <div 
                 key={index}
-                className="flex items-start gap-3 p-3 bg-slate-800/50 rounded-lg border border-slate-700/50 animate-in fade-in slide-in-from-left-2 duration-300"
+                className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200 animate-in fade-in slide-in-from-left-2 duration-300"
               >
                 <div className={`p-2 rounded-lg ${getSystemColor(event.system)} text-white`}>
                   {getSystemIcon(event.system)}
@@ -157,7 +157,7 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
       </Card>
 
       <div className="grid grid-cols-2 gap-4">
-        <Card className="bg-slate-900 border-slate-700">
+        <Card className="bg-white border-gray-200">
           <CardContent className="p-4 text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <Clock className="h-5 w-5 text-emerald-400" />
@@ -168,7 +168,7 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
             <p className="text-sm text-slate-200">Execution OS Response Time</p>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900 border-slate-700">
+        <Card className="bg-white border-gray-200">
           <CardContent className="p-4 text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <TrendingUp className="h-5 w-5 text-amber-400" />
@@ -181,7 +181,7 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
         </Card>
       </div>
 
-      <Card className="bg-slate-900 border-slate-700">
+      <Card className="bg-white border-gray-200">
         <CardHeader className="pb-2">
           <CardTitle className="text-white text-lg">Execution Summary</CardTitle>
         </CardHeader>

@@ -156,7 +156,7 @@ export default function BusinessIntelligence() {
                         <span className="text-gray-600 dark:text-gray-400">{kpi.current} / {kpi.target}</span>
                       </div>
                       <Progress value={kpi.progress} className="h-3" />
-                      <div className="text-xs text-gray-500 text-right">{kpi.progress}% of target achieved</div>
+                      <div className="text-xs text-gray-600 text-right">{kpi.progress}% of target achieved</div>
                     </div>
                   ))}
                 </div>

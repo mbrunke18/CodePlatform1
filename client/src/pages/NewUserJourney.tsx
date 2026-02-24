@@ -335,8 +335,8 @@ export default function NewUserJourney() {
 
   return (
     <PageLayout>
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950">
-      <div className="sticky top-0 left-0 right-0 z-40 bg-slate-900/90 backdrop-blur-sm border-b border-slate-700/50">
+    <div className="min-h-screen bg-gradient-to-br ">
+      <div className="sticky top-0 left-0 right-0 z-40 bg-white backdrop-blur-sm border-b border-gray-200">
         <div className="max-w-5xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
@@ -377,7 +377,7 @@ export default function NewUserJourney() {
                     flex items-center justify-center w-8 h-8 rounded-full transition-all
                     ${isCurrent ? 'bg-indigo-600 ring-2 ring-indigo-400 ring-offset-2 ring-offset-slate-900' : ''}
                     ${isCompleted ? 'bg-green-600' : ''}
-                    ${!isCurrent && !isCompleted ? 'bg-slate-700' : ''}
+                    ${!isCurrent && !isCompleted ? 'bg-gray-50' : ''}
                   `}>
                     {isCompleted ? (
                       <Check className="h-4 w-4 text-white" />
@@ -386,7 +386,7 @@ export default function NewUserJourney() {
                     )}
                   </div>
                   {index < STEPS.length - 1 && (
-                    <div className={`flex-1 h-0.5 mx-1 ${isCompleted ? 'bg-green-600' : 'bg-slate-700'}`} />
+                    <div className={`flex-1 h-0.5 mx-1 ${isCompleted ? 'bg-green-600' : 'bg-gray-50'}`} />
                   )}
                 </div>
               );
@@ -422,21 +422,21 @@ export default function NewUserJourney() {
                   </div>
 
                   <div className="grid grid-cols-3 gap-6 max-w-3xl mx-auto mt-12">
-                    <Card className="bg-slate-800/50 border-slate-700 text-center p-6">
+                    <Card className="bg-gray-50 border-gray-200 text-center p-6">
                       <div className="w-12 h-12 mx-auto rounded-lg bg-indigo-500/20 flex items-center justify-center mb-4">
                         <Clock className="h-6 w-6 text-indigo-400" />
                       </div>
                       <div className="text-2xl font-bold text-white mb-1">15 min</div>
                       <div className="text-sm text-slate-200">Time to your first playbook</div>
                     </Card>
-                    <Card className="bg-slate-800/50 border-slate-700 text-center p-6">
+                    <Card className="bg-gray-50 border-gray-200 text-center p-6">
                       <div className="w-12 h-12 mx-auto rounded-lg bg-green-500/20 flex items-center justify-center mb-4">
                         <Layers className="h-6 w-6 text-green-400" />
                       </div>
                       <div className="text-2xl font-bold text-white mb-1">170</div>
                       <div className="text-sm text-slate-200">Ready-to-use playbooks</div>
                     </Card>
-                    <Card className="bg-slate-800/50 border-slate-700 text-center p-6">
+                    <Card className="bg-gray-50 border-gray-200 text-center p-6">
                       <div className="w-12 h-12 mx-auto rounded-lg bg-purple-500/20 flex items-center justify-center mb-4">
                         <Radio className="h-6 w-6 text-purple-400" />
                       </div>
@@ -445,7 +445,7 @@ export default function NewUserJourney() {
                     </Card>
                   </div>
 
-                  <div className="bg-gradient-to-r from-indigo-900/30 to-purple-900/30 border border-indigo-500/30 rounded-xl p-6 max-w-2xl mx-auto mt-8">
+                  <div className="bg-gradient-to-r   border border-indigo-500/30 rounded-xl p-6 max-w-2xl mx-auto mt-8">
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 rounded-lg bg-indigo-500/30 flex items-center justify-center flex-shrink-0">
                         <Sparkles className="h-5 w-5 text-indigo-400" />
@@ -491,14 +491,14 @@ export default function NewUserJourney() {
                           value={state.organizationName}
                           onChange={(e) => updateState({ organizationName: e.target.value })}
                           placeholder="Enter your company name"
-                          className="bg-slate-800/50 border-slate-700 h-12 text-white placeholder:text-slate-300"
+                          className="bg-gray-50 border-gray-200 h-12 text-white placeholder:text-slate-300"
                           data-testid="input-org-name"
                         />
                       </div>
                       <div className="space-y-2">
                         <Label className="text-slate-300">Employee Count</Label>
                         <Select value={state.employeeCount} onValueChange={(v) => updateState({ employeeCount: v })}>
-                          <SelectTrigger className="bg-slate-800/50 border-slate-700 h-12 text-white" data-testid="select-employees">
+                          <SelectTrigger className="bg-gray-50 border-gray-200 h-12 text-white" data-testid="select-employees">
                             <SelectValue placeholder="Select company size" />
                           </SelectTrigger>
                           <SelectContent>
@@ -523,7 +523,7 @@ export default function NewUserJourney() {
                               className={`cursor-pointer transition-all ${
                                 isSelected 
                                   ? 'bg-indigo-600/20 border-indigo-500 ring-1 ring-indigo-500' 
-                                  : 'bg-slate-800/50 border-slate-700 hover:border-slate-600'
+                                  : 'bg-gray-50 border-gray-200 hover:border-slate-600'
                               }`}
                               onClick={() => updateState({ industry: industry.id, selectedPlaybooks: [] })}
                               data-testid={`industry-${industry.id}`}
@@ -540,13 +540,13 @@ export default function NewUserJourney() {
                       </div>
                     </div>
 
-                    <Separator className="bg-slate-700" />
+                    <Separator className="bg-gray-50" />
 
                     <div className="grid grid-cols-2 gap-6">
                       <div className="space-y-3">
                         <Label className="text-slate-300">Your Role *</Label>
                         <Select value={state.executiveRole} onValueChange={(v) => updateState({ executiveRole: v })}>
-                          <SelectTrigger className="bg-slate-800/50 border-slate-700 h-12 text-white" data-testid="select-role">
+                          <SelectTrigger className="bg-gray-50 border-gray-200 h-12 text-white" data-testid="select-role">
                             <SelectValue placeholder="Select your role" />
                           </SelectTrigger>
                           <SelectContent>
@@ -566,7 +566,7 @@ export default function NewUserJourney() {
                           value={state.executiveName}
                           onChange={(e) => updateState({ executiveName: e.target.value })}
                           placeholder="Enter your name"
-                          className="bg-slate-800/50 border-slate-700 h-12 text-white placeholder:text-slate-300"
+                          className="bg-gray-50 border-gray-200 h-12 text-white placeholder:text-slate-300"
                           data-testid="input-exec-name"
                         />
                       </div>
@@ -592,7 +592,7 @@ export default function NewUserJourney() {
                           className={`cursor-pointer transition-all ${
                             isSelected 
                               ? 'bg-indigo-600/20 border-indigo-500 ring-1 ring-indigo-500' 
-                              : 'bg-slate-800/50 border-slate-700 hover:border-slate-600'
+                              : 'bg-gray-50 border-gray-200 hover:border-slate-600'
                           }`}
                           onClick={() => {
                             if (isSelected) {
@@ -621,7 +621,7 @@ export default function NewUserJourney() {
                   </div>
 
                   {state.priorities.length > 0 && (
-                    <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700">
+                    <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
                       <div className="flex items-center gap-2 text-sm text-slate-300">
                         <CheckCircle className="h-4 w-4 text-green-400" />
                         <span>
@@ -654,7 +654,7 @@ export default function NewUserJourney() {
                           className={`cursor-pointer transition-all ${
                             isSelected 
                               ? 'bg-indigo-600/20 border-indigo-500 ring-1 ring-indigo-500' 
-                              : 'bg-slate-800/50 border-slate-700 hover:border-slate-600'
+                              : 'bg-gray-50 border-gray-200 hover:border-slate-600'
                           }`}
                           onClick={() => {
                             if (isSelected) {
@@ -680,14 +680,14 @@ export default function NewUserJourney() {
                                 <div className="flex items-center gap-2">
                                   <span className="text-xs text-slate-300">Triggers:</span>
                                   {playbook.triggers.map((trigger, idx) => (
-                                    <Badge key={idx} variant="secondary" className="text-xs bg-slate-700">
+                                    <Badge key={idx} variant="secondary" className="text-xs bg-gray-50">
                                       {trigger}
                                     </Badge>
                                   ))}
                                 </div>
                               </div>
                               <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                                isSelected ? 'bg-green-500' : 'bg-slate-700'
+                                isSelected ? 'bg-green-500' : 'bg-gray-50'
                               }`}>
                                 {isSelected ? (
                                   <Check className="h-5 w-5 text-white" />
@@ -702,9 +702,9 @@ export default function NewUserJourney() {
                     })}
                   </div>
 
-                  <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
+                  <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-slate-700 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center">
                         <Sparkles className="h-5 w-5 text-slate-200" />
                       </div>
                       <div>
@@ -727,7 +727,7 @@ export default function NewUserJourney() {
                     </p>
                   </div>
 
-                  <div className="bg-gradient-to-r from-indigo-900/30 to-purple-900/30 border border-indigo-500/30 rounded-xl p-4 mb-6">
+                  <div className="bg-gradient-to-r   border border-indigo-500/30 rounded-xl p-4 mb-6">
                     <div className="flex items-center gap-3">
                       <Activity className="h-5 w-5 text-indigo-400" />
                       <span className="text-sm text-slate-300">
@@ -749,7 +749,7 @@ export default function NewUserJourney() {
                           className={`transition-all ${
                             isEnabled 
                               ? 'bg-green-600/10 border-green-500/50' 
-                              : 'bg-slate-800/50 border-slate-700'
+                              : 'bg-gray-50 border-gray-200'
                           }`}
                           data-testid={`signal-${category.id}`}
                         >
@@ -814,7 +814,7 @@ export default function NewUserJourney() {
                   </div>
 
                   <div className="grid gap-6">
-                    <Card className="bg-slate-800/50 border-slate-700">
+                    <Card className="bg-gray-50 border-gray-200">
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
                           <div className="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center flex-shrink-0">
@@ -830,7 +830,7 @@ export default function NewUserJourney() {
                                 type="number"
                                 value={state.friTarget}
                                 onChange={(e) => updateState({ friTarget: Number(e.target.value) })}
-                                className="w-24 bg-slate-900 border-slate-600 text-white"
+                                className="w-24 bg-white border-slate-600 text-white"
                                 min={0}
                                 max={100}
                                 step={0.1}
@@ -846,7 +846,7 @@ export default function NewUserJourney() {
                       </CardContent>
                     </Card>
 
-                    <Card className="bg-slate-800/50 border-slate-700">
+                    <Card className="bg-gray-50 border-gray-200">
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
                           <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center flex-shrink-0">
@@ -862,7 +862,7 @@ export default function NewUserJourney() {
                                 type="number"
                                 value={state.velocityTarget}
                                 onChange={(e) => updateState({ velocityTarget: Number(e.target.value) })}
-                                className="w-24 bg-slate-900 border-slate-600 text-white"
+                                className="w-24 bg-white border-slate-600 text-white"
                                 min={1}
                                 max={60}
                                 data-testid="input-velocity-target"
@@ -877,7 +877,7 @@ export default function NewUserJourney() {
                       </CardContent>
                     </Card>
 
-                    <Card className="bg-slate-800/50 border-slate-700">
+                    <Card className="bg-gray-50 border-gray-200">
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
                           <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center flex-shrink-0">
@@ -893,7 +893,7 @@ export default function NewUserJourney() {
                                 type="number"
                                 value={state.coverageTarget}
                                 onChange={(e) => updateState({ coverageTarget: Number(e.target.value) })}
-                                className="w-24 bg-slate-900 border-slate-600 text-white"
+                                className="w-24 bg-white border-slate-600 text-white"
                                 min={50}
                                 max={100}
                                 data-testid="input-coverage-target"
@@ -919,21 +919,21 @@ export default function NewUserJourney() {
 
                   {/* Live Configuration Summary */}
                   <div className="grid grid-cols-3 gap-4 mb-6">
-                    <Card className="bg-gradient-to-br from-indigo-900/30 to-indigo-800/20 border-indigo-500/30">
+                    <Card className="bg-gradient-to-br  to-indigo-800/20 border-indigo-500/30">
                       <CardContent className="p-4 text-center">
                         <div className="text-3xl font-bold text-indigo-400 mb-1">{state.enabledSignals.length}</div>
                         <div className="text-sm text-slate-200">Signal Categories</div>
                         <div className="text-xs text-indigo-400 mt-1">Monitoring {state.enabledSignals.length * 6}+ data points</div>
                       </CardContent>
                     </Card>
-                    <Card className="bg-gradient-to-br from-purple-900/30 to-purple-800/20 border-purple-500/30">
+                    <Card className="bg-gradient-to-br  to-purple-800/20 border-purple-500/30">
                       <CardContent className="p-4 text-center">
                         <div className="text-3xl font-bold text-purple-400 mb-1">{state.selectedPlaybooks.length}</div>
                         <div className="text-sm text-slate-200">Active Playbooks</div>
                         <div className="text-xs text-purple-400 mt-1">Ready for instant activation</div>
                       </CardContent>
                     </Card>
-                    <Card className="bg-gradient-to-br from-green-900/30 to-green-800/20 border-green-500/30">
+                    <Card className="bg-gradient-to-br  to-green-800/20 border-green-500/30">
                       <CardContent className="p-4 text-center">
                         <div className="text-3xl font-bold text-green-400 mb-1">{state.velocityTarget}m</div>
                         <div className="text-sm text-slate-200">Target Response</div>
@@ -943,8 +943,8 @@ export default function NewUserJourney() {
                   </div>
 
                   {/* Live Signal Monitoring Preview */}
-                  <Card className="bg-slate-900 border-slate-700 overflow-hidden">
-                    <CardHeader className="bg-gradient-to-r from-slate-800 to-slate-900 border-b border-slate-700 py-3">
+                  <Card className="bg-white border-gray-200 overflow-hidden">
+                    <CardHeader className=" border-b border-gray-200 py-3">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
@@ -965,7 +965,7 @@ export default function NewUserJourney() {
                               initial={{ opacity: 0, x: -20 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: index * 0.1 }}
-                              className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg border border-slate-700/50"
+                              className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200"
                             >
                               <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center">
@@ -977,7 +977,7 @@ export default function NewUserJourney() {
                                 </div>
                               </div>
                               <div className="flex items-center gap-2">
-                                <div className="w-16 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                                <div className="w-16 h-1.5 bg-gray-50 rounded-full overflow-hidden">
                                   <motion.div 
                                     className="h-full bg-green-500"
                                     initial={{ width: 0 }}
@@ -1000,8 +1000,8 @@ export default function NewUserJourney() {
                   </Card>
 
                   {/* Playbook Ready Status */}
-                  <Card className="bg-slate-900 border-slate-700 overflow-hidden">
-                    <CardHeader className="bg-gradient-to-r from-slate-800 to-slate-900 border-b border-slate-700 py-3">
+                  <Card className="bg-white border-gray-200 overflow-hidden">
+                    <CardHeader className=" border-b border-gray-200 py-3">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <Layers className="w-4 h-4 text-purple-400" />
@@ -1022,7 +1022,7 @@ export default function NewUserJourney() {
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: index * 0.1 }}
-                              className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg border border-slate-700/50"
+                              className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200"
                             >
                               <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center">
@@ -1042,7 +1042,7 @@ export default function NewUserJourney() {
                   </Card>
 
                   {/* ROI Projection */}
-                  <Card className="bg-gradient-to-br from-green-900/20 to-emerald-900/20 border-green-500/30">
+                  <Card className="bg-gradient-to-br   border-green-500/30">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
                         <div className="w-12 h-12 rounded-xl bg-green-500/30 flex items-center justify-center flex-shrink-0">
@@ -1054,15 +1054,15 @@ export default function NewUserJourney() {
                             Based on {INDUSTRIES.find(i => i.id === state.industry)?.name || 'your industry'} benchmarks and your configuration
                           </p>
                           <div className="grid grid-cols-3 gap-4">
-                            <div className="text-center p-3 bg-slate-900/50 rounded-lg">
+                            <div className="text-center p-3 bg-white rounded-lg">
                               <div className="text-xl font-bold text-green-400">$2.4M</div>
                               <div className="text-xs text-slate-300">Risk Mitigation</div>
                             </div>
-                            <div className="text-center p-3 bg-slate-900/50 rounded-lg">
+                            <div className="text-center p-3 bg-white rounded-lg">
                               <div className="text-xl font-bold text-green-400">847hrs</div>
                               <div className="text-xs text-slate-300">Executive Time Saved</div>
                             </div>
-                            <div className="text-center p-3 bg-slate-900/50 rounded-lg">
+                            <div className="text-center p-3 bg-white rounded-lg">
                               <div className="text-xl font-bold text-green-400">12x</div>
                               <div className="text-xs text-slate-300">Faster Response</div>
                             </div>
@@ -1073,7 +1073,7 @@ export default function NewUserJourney() {
                   </Card>
 
                   {/* What Happens Next */}
-                  <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
+                  <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
                     <h4 className="font-semibold text-white mb-3 flex items-center gap-2">
                       <Sparkles className="w-4 h-4 text-indigo-400" />
                       What happens when you complete setup:
@@ -1136,7 +1136,7 @@ export default function NewUserJourney() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
                   >
-                    <Card className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700">
+                    <Card className=" border-gray-200">
                       <CardHeader className="pb-2">
                         <CardTitle className="text-lg text-white flex items-center gap-2">
                           <Activity className="w-5 h-5 text-green-400" />
@@ -1145,17 +1145,17 @@ export default function NewUserJourney() {
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <div className="grid grid-cols-3 gap-4">
-                          <div className="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50 text-center">
+                          <div className="bg-white rounded-xl p-4 border border-gray-200 text-center">
                             <div className="text-3xl font-bold text-green-400">{state.enabledSignals.length}</div>
                             <div className="text-sm text-slate-200">Signal Categories</div>
                             <div className="text-xs text-green-400/70 mt-1">Monitoring 24/7</div>
                           </div>
-                          <div className="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50 text-center">
+                          <div className="bg-white rounded-xl p-4 border border-gray-200 text-center">
                             <div className="text-3xl font-bold text-purple-400">{state.selectedPlaybooks.length}</div>
                             <div className="text-sm text-slate-200">Playbooks</div>
                             <div className="text-xs text-purple-400/70 mt-1">Armed & Ready</div>
                           </div>
-                          <div className="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50 text-center">
+                          <div className="bg-white rounded-xl p-4 border border-gray-200 text-center">
                             <div className="text-3xl font-bold text-blue-400">{state.friTarget}%</div>
                             <div className="text-sm text-slate-200">FRI Target</div>
                             <div className="text-xs text-blue-400/70 mt-1">Tracking Active</div>
@@ -1178,12 +1178,12 @@ export default function NewUserJourney() {
                     </h3>
                     
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700/50">
+                      <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
                         <div className="text-xs text-slate-300 uppercase tracking-wider mb-1">Organization</div>
                         <div className="text-white font-medium">{state.organizationName}</div>
                         <div className="text-sm text-slate-200">{INDUSTRIES.find(i => i.id === state.industry)?.name}</div>
                       </div>
-                      <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700/50">
+                      <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
                         <div className="text-xs text-slate-300 uppercase tracking-wider mb-1">Strategic Focus</div>
                         <div className="text-white font-medium">{state.priorities.length} Priorities</div>
                         <div className="text-sm text-slate-200 truncate">
@@ -1200,28 +1200,28 @@ export default function NewUserJourney() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.7 }}
                   >
-                    <Card className="bg-gradient-to-br from-indigo-900/20 to-purple-900/20 border-indigo-500/30">
+                    <Card className="bg-gradient-to-br   border-indigo-500/30">
                       <CardContent className="p-6">
                         <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
                           <Sparkles className="w-5 h-5 text-indigo-400" />
                           Your First Actions in the Platform
                         </h3>
                         <div className="space-y-3">
-                          <div className="flex items-center gap-3 p-3 bg-slate-900/50 rounded-lg">
+                          <div className="flex items-center gap-3 p-3 bg-white rounded-lg">
                             <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold">1</div>
                             <div>
                               <div className="text-white font-medium">Review Your Dashboard</div>
                               <div className="text-sm text-slate-200">See your Future Readiness Index and active monitoring status</div>
                             </div>
                           </div>
-                          <div className="flex items-center gap-3 p-3 bg-slate-900/50 rounded-lg">
+                          <div className="flex items-center gap-3 p-3 bg-white rounded-lg">
                             <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold">2</div>
                             <div>
                               <div className="text-white font-medium">Explore Your Playbooks</div>
                               <div className="text-sm text-slate-200">Customize response protocols for your specific organization</div>
                             </div>
                           </div>
-                          <div className="flex items-center gap-3 p-3 bg-slate-900/50 rounded-lg">
+                          <div className="flex items-center gap-3 p-3 bg-white rounded-lg">
                             <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold">3</div>
                             <div>
                               <div className="text-white font-medium">Visit Command Center</div>
@@ -1256,7 +1256,7 @@ export default function NewUserJourney() {
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-sm border-t border-slate-700/50 px-6 py-4">
+      <div className="fixed bottom-0 left-0 right-0 bg-white backdrop-blur-sm border-t border-gray-200 px-6 py-4">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           {state.step !== 7 ? (
             <Button

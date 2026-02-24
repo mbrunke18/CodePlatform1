@@ -220,7 +220,7 @@ export default function OnboardingWizard() {
     <PageLayout>
       <div className="max-w-4xl mx-auto space-y-8 py-8">
         {/* Progress Header */}
-        <Card className="bg-slate-900 border-slate-700">
+        <Card className="bg-white border-gray-200">
           <CardContent className="pt-6">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
@@ -254,7 +254,7 @@ export default function OnboardingWizard() {
                     }`}
                   >
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                      isCurrent ? step.bgColor : isCompleted ? 'bg-green-500/10' : 'bg-slate-800'
+                      isCurrent ? step.bgColor : isCompleted ? 'bg-green-500/10' : 'bg-gray-50'
                     }`}>
                       {isCompleted ? (
                         <CheckCircle className="h-4 w-4" />
@@ -271,7 +271,7 @@ export default function OnboardingWizard() {
         </Card>
 
         {/* Step Content */}
-        <Card className="bg-slate-900 border-slate-700 min-h-[400px]">
+        <Card className="bg-white border-gray-200 min-h-[400px]">
           <CardContent className="pt-6">
             {/* Step 1: Organization Setup */}
             {currentStep === 0 && (
@@ -284,7 +284,7 @@ export default function OnboardingWizard() {
                       value={orgData.companyName}
                       onChange={(e) => setOrgData({ ...orgData, companyName: e.target.value })}
                       placeholder="Enter your company name"
-                      className="bg-slate-800 border-slate-700"
+                      className="bg-gray-50 border-gray-200"
                       data-testid="input-company-name"
                     />
                   </div>
@@ -292,7 +292,7 @@ export default function OnboardingWizard() {
                   <div className="space-y-2">
                     <Label htmlFor="industry" className="text-slate-300">Industry</Label>
                     <Select value={orgData.industry} onValueChange={(v) => setOrgData({ ...orgData, industry: v })}>
-                      <SelectTrigger className="bg-slate-800 border-slate-700" data-testid="select-industry">
+                      <SelectTrigger className="bg-gray-50 border-gray-200" data-testid="select-industry">
                         <SelectValue placeholder="Select industry" />
                       </SelectTrigger>
                       <SelectContent>
@@ -310,7 +310,7 @@ export default function OnboardingWizard() {
                   <div className="space-y-2">
                     <Label htmlFor="employeeCount" className="text-slate-300">Employee Count</Label>
                     <Select value={orgData.employeeCount} onValueChange={(v) => setOrgData({ ...orgData, employeeCount: v })}>
-                      <SelectTrigger className="bg-slate-800 border-slate-700" data-testid="select-employees">
+                      <SelectTrigger className="bg-gray-50 border-gray-200" data-testid="select-employees">
                         <SelectValue placeholder="Select size" />
                       </SelectTrigger>
                       <SelectContent>
@@ -329,13 +329,13 @@ export default function OnboardingWizard() {
                       value={orgData.primaryContact}
                       onChange={(e) => setOrgData({ ...orgData, primaryContact: e.target.value })}
                       placeholder="Name of primary executive sponsor"
-                      className="bg-slate-800 border-slate-700"
+                      className="bg-gray-50 border-gray-200"
                       data-testid="input-primary-contact"
                     />
                   </div>
                 </div>
                 
-                <div className="pt-4 border-t border-slate-700">
+                <div className="pt-4 border-t border-gray-200">
                   <Label className="text-slate-300 mb-3 block">Key Departments (will be included in playbook coordination)</Label>
                   <div className="flex flex-wrap gap-2">
                     {['Executive', 'Operations', 'Finance', 'Legal', 'Communications', 'IT', 'HR', 'Sales', 'Marketing'].map((dept) => (
@@ -372,7 +372,7 @@ export default function OnboardingWizard() {
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card className="bg-slate-800 border-slate-700">
+                  <Card className="bg-gray-50 border-gray-200">
                     <CardHeader className="pb-3">
                       <CardTitle className="text-sm flex items-center gap-2 text-amber-400">
                         <BarChart3 className="h-4 w-4" />
@@ -385,7 +385,7 @@ export default function OnboardingWizard() {
                           type="number"
                           value={triggerData.revenueThreshold}
                           onChange={(e) => setTriggerData({ ...triggerData, revenueThreshold: Number(e.target.value) })}
-                          className="bg-slate-900 border-slate-600 w-24"
+                          className="bg-white border-slate-600 w-24"
                           data-testid="input-revenue-threshold"
                         />
                         <span className="text-slate-200">% change triggers alert</span>
@@ -393,7 +393,7 @@ export default function OnboardingWizard() {
                     </CardContent>
                   </Card>
                   
-                  <Card className="bg-slate-800 border-slate-700">
+                  <Card className="bg-gray-50 border-gray-200">
                     <CardHeader className="pb-3">
                       <CardTitle className="text-sm flex items-center gap-2 text-purple-400">
                         <Target className="h-4 w-4" />
@@ -406,7 +406,7 @@ export default function OnboardingWizard() {
                           type="number"
                           value={triggerData.marketShareThreshold}
                           onChange={(e) => setTriggerData({ ...triggerData, marketShareThreshold: Number(e.target.value) })}
-                          className="bg-slate-900 border-slate-600 w-24"
+                          className="bg-white border-slate-600 w-24"
                           data-testid="input-market-threshold"
                         />
                         <span className="text-slate-200">% shift triggers alert</span>
@@ -414,7 +414,7 @@ export default function OnboardingWizard() {
                     </CardContent>
                   </Card>
                   
-                  <Card className="bg-slate-800 border-slate-700">
+                  <Card className="bg-gray-50 border-gray-200">
                     <CardHeader className="pb-3">
                       <CardTitle className="text-sm flex items-center gap-2 text-red-400">
                         <AlertTriangle className="h-4 w-4" />
@@ -427,7 +427,7 @@ export default function OnboardingWizard() {
                           type="number"
                           value={triggerData.sentimentThreshold}
                           onChange={(e) => setTriggerData({ ...triggerData, sentimentThreshold: Number(e.target.value) })}
-                          className="bg-slate-900 border-slate-600 w-24"
+                          className="bg-white border-slate-600 w-24"
                           data-testid="input-sentiment-threshold"
                         />
                         <span className="text-slate-200">% negative swing</span>
@@ -436,7 +436,7 @@ export default function OnboardingWizard() {
                   </Card>
                 </div>
                 
-                <div className="pt-4 border-t border-slate-700 space-y-4">
+                <div className="pt-4 border-t border-gray-200 space-y-4">
                   <h3 className="font-semibold text-white">Alert Categories</h3>
                   
                   <div className="flex items-center justify-between">
@@ -509,8 +509,8 @@ export default function OnboardingWizard() {
                         key={playbook.id}
                         className={`cursor-pointer transition-all ${
                           playbookData.selectedPlaybooks.includes(playbook.id)
-                            ? 'bg-slate-700 border-green-500/50'
-                            : 'bg-slate-800 border-slate-700 hover:border-slate-600'
+                            ? 'bg-gray-50 border-green-500/50'
+                            : 'bg-gray-50 border-gray-200 hover:border-slate-600'
                         }`}
                         onClick={() => {
                           if (playbookData.selectedPlaybooks.includes(playbook.id)) {
@@ -539,7 +539,7 @@ export default function OnboardingWizard() {
                   </div>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-700">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-200">
                   <div className="space-y-2">
                     <Label className="text-slate-300 flex items-center gap-2">
                       <Clock className="h-4 w-4" />
@@ -550,7 +550,7 @@ export default function OnboardingWizard() {
                         type="number"
                         value={playbookData.responseTimeTarget}
                         onChange={(e) => setPlaybookData({ ...playbookData, responseTimeTarget: Number(e.target.value) })}
-                        className="bg-slate-800 border-slate-700 w-24"
+                        className="bg-gray-50 border-gray-200 w-24"
                         data-testid="input-response-time"
                       />
                       <span className="text-slate-200">minutes</span>
@@ -566,7 +566,7 @@ export default function OnboardingWizard() {
                         type="number"
                         value={playbookData.defaultBudgetThreshold}
                         onChange={(e) => setPlaybookData({ ...playbookData, defaultBudgetThreshold: Number(e.target.value) })}
-                        className="bg-slate-800 border-slate-700"
+                        className="bg-gray-50 border-gray-200"
                         data-testid="input-budget-threshold"
                       />
                     </div>
@@ -599,7 +599,7 @@ export default function OnboardingWizard() {
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card className="bg-slate-800 border-slate-700">
+                  <Card className="bg-gray-50 border-gray-200">
                     <CardHeader className="pb-3">
                       <CardTitle className="text-sm flex items-center gap-2 text-blue-400">
                         <Sparkles className="h-4 w-4" />
@@ -614,7 +614,7 @@ export default function OnboardingWizard() {
                           step="0.1"
                           value={metricsData.friTarget}
                           onChange={(e) => setMetricsData({ ...metricsData, friTarget: Number(e.target.value) })}
-                          className="bg-slate-900 border-slate-600 w-24"
+                          className="bg-white border-slate-600 w-24"
                           data-testid="input-fri-target"
                         />
                         <span className="text-slate-200">%</span>
@@ -623,7 +623,7 @@ export default function OnboardingWizard() {
                     </CardContent>
                   </Card>
                   
-                  <Card className="bg-slate-800 border-slate-700">
+                  <Card className="bg-gray-50 border-gray-200">
                     <CardHeader className="pb-3">
                       <CardTitle className="text-sm flex items-center gap-2 text-green-400">
                         <Zap className="h-4 w-4" />
@@ -637,7 +637,7 @@ export default function OnboardingWizard() {
                           type="number"
                           value={metricsData.velocityTarget}
                           onChange={(e) => setMetricsData({ ...metricsData, velocityTarget: Number(e.target.value) })}
-                          className="bg-slate-900 border-slate-600 w-24"
+                          className="bg-white border-slate-600 w-24"
                           data-testid="input-velocity-target"
                         />
                         <span className="text-slate-200">minutes</span>
@@ -646,7 +646,7 @@ export default function OnboardingWizard() {
                     </CardContent>
                   </Card>
                   
-                  <Card className="bg-slate-800 border-slate-700">
+                  <Card className="bg-gray-50 border-gray-200">
                     <CardHeader className="pb-3">
                       <CardTitle className="text-sm flex items-center gap-2 text-purple-400">
                         <Shield className="h-4 w-4" />
@@ -660,7 +660,7 @@ export default function OnboardingWizard() {
                           type="number"
                           value={metricsData.coverageTarget}
                           onChange={(e) => setMetricsData({ ...metricsData, coverageTarget: Number(e.target.value) })}
-                          className="bg-slate-900 border-slate-600 w-24"
+                          className="bg-white border-slate-600 w-24"
                           data-testid="input-coverage-target"
                         />
                         <span className="text-slate-200">%</span>
@@ -669,7 +669,7 @@ export default function OnboardingWizard() {
                     </CardContent>
                   </Card>
                   
-                  <Card className="bg-slate-800 border-slate-700">
+                  <Card className="bg-gray-50 border-gray-200">
                     <CardHeader className="pb-3">
                       <CardTitle className="text-sm flex items-center gap-2 text-amber-400">
                         <Clock className="h-4 w-4" />
@@ -682,7 +682,7 @@ export default function OnboardingWizard() {
                         value={metricsData.reviewCadence} 
                         onValueChange={(v) => setMetricsData({ ...metricsData, reviewCadence: v })}
                       >
-                        <SelectTrigger className="bg-slate-900 border-slate-600" data-testid="select-review-cadence">
+                        <SelectTrigger className="bg-white border-slate-600" data-testid="select-review-cadence">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>

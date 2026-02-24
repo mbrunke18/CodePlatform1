@@ -75,7 +75,7 @@ export default function Contact() {
       <div className="page-background min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
 
       {/* Hero Section */}
-      <section className="py-16 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+      <section className="py-16 px-6 text-white">
         <div className="max-w-5xl mx-auto text-center">
           <Badge className="mb-4 bg-purple-600 text-white border-0 text-base px-6 py-2" data-testid="badge-early-access">
             Q1 2026 Pilot Program

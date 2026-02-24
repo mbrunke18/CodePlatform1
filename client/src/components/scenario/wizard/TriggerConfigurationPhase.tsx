@@ -89,7 +89,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
               <button
                 key={index}
                 onClick={() => applyTemplate(template)}
-                className="p-3 rounded border border-purple-500/30 bg-slate-900/50 hover:bg-slate-800/50 transition-colors text-left"
+                className="p-3 rounded border border-purple-500/30 bg-white hover:bg-slate-800/50 transition-colors text-left"
                 data-testid={`template-trigger-${index}`}
               >
                 <p className="text-sm font-medium text-white">{template.name}</p>
@@ -103,7 +103,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
       </Card>
 
       {/* Add Trigger Form */}
-      <Card className="border-blue-500/30 bg-slate-900/50">
+      <Card className="border-blue-500/30 bg-white">
         <CardContent className="p-6">
           <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
             <Plus className="h-5 w-5 text-blue-400" />
@@ -120,7 +120,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
                   placeholder="e.g., Revenue Decline Alert"
                   value={newTrigger.name}
                   onChange={(e) => setNewTrigger({ ...newTrigger, name: e.target.value })}
-                  className="bg-slate-800 border-slate-600 text-white mt-2"
+                  className="bg-gray-50 border-slate-600 text-white mt-2"
                 />
               </div>
 
@@ -132,7 +132,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
                   placeholder="e.g., Monthly Revenue"
                   value={newTrigger.signal}
                   onChange={(e) => setNewTrigger({ ...newTrigger, signal: e.target.value })}
-                  className="bg-slate-800 border-slate-600 text-white mt-2"
+                  className="bg-gray-50 border-slate-600 text-white mt-2"
                 />
                 <p className="text-xs text-gray-300 mt-1">What metric or event should AI monitor?</p>
               </div>
@@ -143,7 +143,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
                   value={newTrigger.operator} 
                   onValueChange={(value: any) => setNewTrigger({ ...newTrigger, operator: value })}
                 >
-                  <SelectTrigger className="bg-slate-800 border-slate-600 text-white mt-2" data-testid="select-trigger-operator">
+                  <SelectTrigger className="bg-gray-50 border-slate-600 text-white mt-2" data-testid="select-trigger-operator">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -170,7 +170,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
                   placeholder="e.g., 85%, $10M, 30 days"
                   value={newTrigger.threshold}
                   onChange={(e) => setNewTrigger({ ...newTrigger, threshold: e.target.value })}
-                  className="bg-slate-800 border-slate-600 text-white mt-2"
+                  className="bg-gray-50 border-slate-600 text-white mt-2"
                 />
               </div>
 
@@ -180,7 +180,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
                   value={newTrigger.priority} 
                   onValueChange={(value: any) => setNewTrigger({ ...newTrigger, priority: value })}
                 >
-                  <SelectTrigger className="bg-slate-800 border-slate-600 text-white mt-2" data-testid="select-trigger-priority">
+                  <SelectTrigger className="bg-gray-50 border-slate-600 text-white mt-2" data-testid="select-trigger-priority">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -236,7 +236,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
               const priorityConfig = PRIORITY_LEVELS.find(p => p.value === trigger.priority);
 
               return (
-                <Card key={trigger.id} className="border-slate-700">
+                <Card key={trigger.id} className="border-gray-200">
                   <CardContent className="p-4">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">

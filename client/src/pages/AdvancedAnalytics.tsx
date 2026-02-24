@@ -303,7 +303,7 @@ export default function AdvancedAnalytics() {
           </div>
           <div className="flex items-center gap-4">
             <Link to="/">
-              <Button variant="secondary" className="bg-slate-700 hover:bg-slate-600 text-slate-100 border-slate-600">
+              <Button variant="secondary" className="bg-gray-50 hover:bg-slate-600 text-slate-100 border-slate-600">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Dashboard
               </Button>
@@ -321,12 +321,12 @@ export default function AdvancedAnalytics() {
 
         {/* Advanced Analytics Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="bg-slate-800/50 border border-slate-700/50">
-            <TabsTrigger value="predictive" className="data-[state=active]:bg-slate-700">Predictive Models</TabsTrigger>
-            <TabsTrigger value="intelligence" className="data-[state=active]:bg-slate-700">Business Intelligence</TabsTrigger>
-            <TabsTrigger value="benchmarks" className="data-[state=active]:bg-slate-700">Industry Benchmarks</TabsTrigger>
-            <TabsTrigger value="scenarios" className="data-[state=active]:bg-slate-700">Scenario Analysis</TabsTrigger>
-            <TabsTrigger value="ai-chat" className="data-[state=active]:bg-slate-700 flex items-center gap-2">
+          <TabsList className="bg-gray-50 border border-gray-200">
+            <TabsTrigger value="predictive" className="data-[state=active]:bg-gray-50">Predictive Models</TabsTrigger>
+            <TabsTrigger value="intelligence" className="data-[state=active]:bg-gray-50">Business Intelligence</TabsTrigger>
+            <TabsTrigger value="benchmarks" className="data-[state=active]:bg-gray-50">Industry Benchmarks</TabsTrigger>
+            <TabsTrigger value="scenarios" className="data-[state=active]:bg-gray-50">Scenario Analysis</TabsTrigger>
+            <TabsTrigger value="ai-chat" className="data-[state=active]:bg-gray-50 flex items-center gap-2">
               <MessageSquare className="h-4 w-4" />
               AI Chat
             </TabsTrigger>
@@ -336,7 +336,7 @@ export default function AdvancedAnalytics() {
           <TabsContent value="predictive" className="space-y-6">
             <div className="space-y-6">
               {predictiveModels.map((model) => (
-                <Card key={model.id} className="bg-slate-900/50 border-slate-700/50">
+                <Card key={model.id} className="bg-white border-gray-200">
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <CardTitle className="text-white flex items-center gap-3">
@@ -355,7 +355,7 @@ export default function AdvancedAnalytics() {
                       <h4 className="font-semibold text-white mb-3">Forecasts</h4>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {model.predictions.map((prediction, index) => (
-                          <div key={index} className="p-4 bg-slate-800/50 rounded-lg">
+                          <div key={index} className="p-4 bg-gray-50 rounded-lg">
                             <div className="flex items-center justify-between mb-2">
                               <span className="text-white font-medium">{prediction.period}</span>
                               <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
@@ -380,7 +380,7 @@ export default function AdvancedAnalytics() {
                       <h4 className="font-semibold text-white mb-3">Key Drivers</h4>
                       <div className="space-y-3">
                         {model.keyDrivers.map((driver, index) => (
-                          <div key={index} className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg">
+                          <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                             <div className="flex items-center gap-3">
                               {getTrendIcon(driver.trend)}
                               <span className="text-white">{driver.factor}</span>
@@ -406,7 +406,7 @@ export default function AdvancedAnalytics() {
                       <h4 className="font-semibold text-white mb-3">Scenario Analysis</h4>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {model.scenarios.map((scenario, index) => (
-                          <div key={index} className="p-4 bg-slate-800/50 rounded-lg border border-slate-600/50">
+                          <div key={index} className="p-4 bg-gray-50 rounded-lg border border-slate-600/50">
                             <div className="flex items-center justify-between mb-2">
                               <span className="font-medium text-white">{scenario.name}</span>
                               <span className="text-sm text-slate-600 dark:text-slate-200">{scenario.probability}%</span>
@@ -429,7 +429,7 @@ export default function AdvancedAnalytics() {
           <TabsContent value="intelligence" className="space-y-6">
             <div className="space-y-4">
               {businessIntelligence.map((insight) => (
-                <Card key={insight.id} className="bg-slate-900/50 border-slate-700/50">
+                <Card key={insight.id} className="bg-white border-gray-200">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1 page-background">
@@ -472,7 +472,7 @@ export default function AdvancedAnalytics() {
                         <h4 className="font-semibold text-white mb-2">Recommended Actions</h4>
                         <div className="space-y-2">
                           {insight.recommendations.slice(0, 2).map((rec, index) => (
-                            <div key={index} className="p-2 bg-slate-800/50 rounded">
+                            <div key={index} className="p-2 bg-gray-50 rounded">
                               <div className="flex items-center justify-between">
                                 <span className="text-sm text-white">{rec.action}</span>
                                 <span className="text-xs text-emerald-400">{rec.estimatedROI}% ROI</span>
@@ -493,7 +493,7 @@ export default function AdvancedAnalytics() {
           <TabsContent value="benchmarks" className="space-y-6">
             <div className="space-y-6">
               {industryBenchmarks.map((benchmark, index) => (
-                <Card key={index} className="bg-slate-900/50 border-slate-700/50">
+                <Card key={index} className="bg-white border-gray-200">
                   <CardHeader>
                     <CardTitle className="text-white">{benchmark.metric}</CardTitle>
                   </CardHeader>
@@ -551,7 +551,7 @@ export default function AdvancedAnalytics() {
 
           {/* Scenario Analysis */}
           <TabsContent value="scenarios" className="space-y-6">
-            <Card className="bg-slate-900/50 border-slate-700/50">
+            <Card className="bg-white border-gray-200">
               <CardHeader>
                 <CardTitle className="text-white">Monte Carlo Business Scenarios</CardTitle>
               </CardHeader>

@@ -100,7 +100,7 @@ const PRIORITY_CONFIG = {
   critical: { label: "Critical", color: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400" },
   high: { label: "High", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
   medium: { label: "Medium", color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400" },
-  low: { label: "Low", color: "bg-slate-100 text-slate-400 dark:bg-slate-800 dark:text-slate-300" },
+  low: { label: "Low", color: "bg-slate-100 text-gray-600 dark:bg-slate-800 dark:text-slate-300" },
 };
 
 const STATUS_CONFIG = {
@@ -366,7 +366,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
             <h1 className="text-3xl font-bold text-slate-900 dark:text-white" data-testid="text-page-title">
               Task Management
             </h1>
-            <p className="text-slate-400 dark:text-slate-300 mt-1">
+            <p className="text-gray-600 dark:text-slate-300 mt-1">
               Define and manage execution tasks with dependencies and approval gates
             </p>
           </div>
@@ -385,7 +385,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                  <ListChecks className="h-5 w-5 text-slate-400" />
+                  <ListChecks className="h-5 w-5 text-gray-600" />
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white">{stats.total}</p>
@@ -401,7 +401,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                   <Circle className="h-5 w-5 text-slate-600 dark:text-slate-200" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-slate-400">{stats.pending}</p>
+                  <p className="text-2xl font-bold text-gray-600">{stats.pending}</p>
                   <p className="text-sm text-slate-300">Pending</p>
                 </div>
               </div>
@@ -589,7 +589,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                         <BookOpen className="h-5 w-5 text-indigo-600" />
                         Enterprise Task Library
                       </h2>
-                      <p className="text-slate-400 dark:text-slate-300 mt-1">
+                      <p className="text-gray-600 dark:text-slate-300 mt-1">
                         {libraryStats.total} pre-defined tasks across all IDEA phases. Add tasks to your playbook to ensure everyone knows their role.
                       </p>
                     </div>
@@ -776,7 +776,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                           <Activity className="h-5 w-5 text-purple-600" />
                           Playbook Execution Sequences
                         </h2>
-                        <p className="text-slate-400 dark:text-slate-300 mt-1">
+                        <p className="text-gray-600 dark:text-slate-300 mt-1">
                           Real task sequences from the database across all strategic domains
                         </p>
                       </div>

@@ -257,9 +257,9 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
           
           {/* Breadcrumb Navigation */}
           <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2 text-sm text-gray-600">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-gray-600 hover:text-white p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>
@@ -303,15 +303,15 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
           </div>
 
           {/* FRI Hero Card */}
-          <Card className="border-amber-500/30 bg-gradient-to-br from-amber-900/30 to-orange-900/20">
+          <Card className="border-amber-500/30 bg-gradient-to-br  ">
             <CardContent className="p-8">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-6">
                   <div className="relative">
-                    <div className="w-32 h-32 rounded-full border-8 border-amber-500/30 flex items-center justify-center bg-gray-900">
+                    <div className="w-32 h-32 rounded-full border-8 border-amber-500/30 flex items-center justify-center bg-white">
                       <div className="text-center">
                         <div className="text-4xl font-bold text-amber-400">{overallFRI.toFixed(1)}%</div>
-                        <div className="text-sm text-gray-400">Current FRI</div>
+                        <div className="text-sm text-gray-600">Current FRI</div>
                       </div>
                     </div>
                     <div className="absolute -right-2 -top-2 w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center">
@@ -320,14 +320,14 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-white">Future Readiness Index™</h2>
-                    <p className="text-gray-400 mt-1">Your organization's strategic preparedness score</p>
+                    <p className="text-gray-600 mt-1">Your organization's strategic preparedness score</p>
                     <div className="mt-4 flex items-center gap-4">
                       <div>
-                        <span className="text-sm text-gray-400">Target:</span>
+                        <span className="text-sm text-gray-600">Target:</span>
                         <span className="ml-2 text-lg font-semibold text-amber-400">{friTarget}%</span>
                       </div>
                       <div>
-                        <span className="text-sm text-gray-400">Improvement:</span>
+                        <span className="text-sm text-gray-600">Improvement:</span>
                         <span className="ml-2 text-lg font-semibold text-green-400">+{(overallFRI - (friMetric?.baselineValue || 0)).toFixed(1)}%</span>
                       </div>
                     </div>
@@ -335,11 +335,11 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                 </div>
                 <div className="w-64">
                   <div className="flex justify-between text-sm mb-2">
-                    <span className="text-gray-400">Progress to Target</span>
+                    <span className="text-gray-600">Progress to Target</span>
                     <span className="text-amber-400">{friProgress.toFixed(0)}%</span>
                   </div>
                   <Progress value={friProgress} className="h-3" />
-                  <p className="text-xs text-gray-500 mt-2">
+                  <p className="text-xs text-gray-600 mt-2">
                     {friProgress >= 100 ? 'Target achieved!' : `${(friTarget - overallFRI).toFixed(1)}% remaining to target`}
                   </p>
                 </div>
@@ -355,28 +355,28 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
               const progress = calculateProgress(metric.currentValue, metric.baselineValue, metric.targetValue);
               
               return (
-                <Card key={metric.id} className="bg-gray-800/50 border-gray-700 hover:border-amber-500/50 transition-all">
+                <Card key={metric.id} className="bg-gray-50 border-gray-200 hover:border-amber-500/50 transition-all">
                   <CardHeader className="pb-2">
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center bg-gray-700`}>
+                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center bg-gray-50`}>
                           <TypeIcon className={`h-5 w-5 ${typeInfo.color}`} />
                         </div>
                         <div>
                           <CardTitle className="text-white text-lg">{metric.name}</CardTitle>
-                          <CardDescription className="text-gray-400 text-sm">
+                          <CardDescription className="text-gray-600 text-sm">
                             {metric.description}
                           </CardDescription>
                         </div>
                       </div>
                       <div className="flex gap-1">
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-400 hover:text-white">
+                        <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-600 hover:text-white">
                           <Edit className="h-4 w-4" />
                         </Button>
                         <Button 
                           variant="ghost" 
                           size="icon" 
-                          className="h-8 w-8 text-gray-400 hover:text-red-500"
+                          className="h-8 w-8 text-gray-600 hover:text-red-500"
                           onClick={() => handleDeleteMetric(metric.id)}
                         >
                           <Trash2 className="h-4 w-4" />
@@ -386,20 +386,20 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="grid grid-cols-3 gap-4 text-center">
-                      <div className="p-2 bg-gray-700/50 rounded-lg">
-                        <div className="text-xs text-gray-400">Baseline</div>
+                      <div className="p-2 bg-gray-50 rounded-lg">
+                        <div className="text-xs text-gray-600">Baseline</div>
                         <div className="text-lg font-semibold text-gray-300">
                           {metric.baselineValue}{metric.unit === '%' || metric.unit === 'minutes' ? '' : ' '}{metric.unit}
                         </div>
                       </div>
-                      <div className="p-2 bg-gray-700/50 rounded-lg border-2 border-amber-500/30">
-                        <div className="text-xs text-gray-400">Current</div>
+                      <div className="p-2 bg-gray-50 rounded-lg border-2 border-amber-500/30">
+                        <div className="text-xs text-gray-600">Current</div>
                         <div className="text-lg font-semibold text-amber-400">
                           {metric.currentValue}{metric.unit === '%' || metric.unit === 'minutes' ? '' : ' '}{metric.unit}
                         </div>
                       </div>
-                      <div className="p-2 bg-gray-700/50 rounded-lg">
-                        <div className="text-xs text-gray-400">Target</div>
+                      <div className="p-2 bg-gray-50 rounded-lg">
+                        <div className="text-xs text-gray-600">Target</div>
                         <div className="text-lg font-semibold text-green-400">
                           {metric.targetValue}{metric.unit === '%' || metric.unit === 'minutes' ? '' : ' '}{metric.unit}
                         </div>
@@ -408,12 +408,12 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                     
                     <div>
                       <div className="flex justify-between text-sm mb-1">
-                        <span className="text-gray-400">Progress</span>
+                        <span className="text-gray-600">Progress</span>
                         <span className={progress >= 80 ? 'text-green-400' : progress >= 50 ? 'text-yellow-400' : 'text-red-400'}>
                           {progress.toFixed(0)}%
                         </span>
                       </div>
-                      <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
+                      <div className="h-2 bg-gray-50 rounded-full overflow-hidden">
                         <div 
                           className={`h-full ${getProgressColor(progress)} transition-all`}
                           style={{ width: `${progress}%` }}
@@ -422,13 +422,13 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                     </div>
                     
                     <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-2 text-gray-400">
+                      <div className="flex items-center gap-2 text-gray-600">
                         <RefreshCw className="h-4 w-4" />
                         <span>Review: {metric.reviewCadence}</span>
                       </div>
                       <Badge 
                         variant="outline" 
-                        className={metric.isActive ? 'text-green-400 border-green-500/30' : 'text-gray-400 border-gray-500/30'}
+                        className={metric.isActive ? 'text-green-400 border-green-500/30' : 'text-gray-600 border-gray-500/30'}
                       >
                         {metric.isActive ? 'Active' : 'Inactive'}
                       </Badge>

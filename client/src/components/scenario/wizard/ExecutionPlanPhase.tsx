@@ -169,7 +169,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
             className={`cursor-pointer transition-all ${
               selectedPhase === phase.id
                 ? getPhaseColorClass(phase.color) + ' ring-2 ring-offset-2 ring-offset-slate-950'
-                : 'border-slate-700/50 bg-slate-900/30 opacity-60 hover:opacity-100'
+                : 'border-gray-200 bg-white opacity-60 hover:opacity-100'
             }`}
             onClick={() => setSelectedPhase(phase.id)}
             data-testid={`phase-card-${phase.id}`}
@@ -214,7 +214,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
           </CardContent>
         </Card>
       ) : (
-        <Card className="border-blue-500/30 bg-slate-900/50">
+        <Card className="border-blue-500/30 bg-white">
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
               <Plus className="h-5 w-5 text-blue-400" />
@@ -230,7 +230,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
                   placeholder="e.g., CFO validates budget impact ($2M approved?)"
                   value={newTask.title}
                   onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
-                  className="bg-slate-800 border-slate-600 text-white mt-2"
+                  className="bg-gray-50 border-slate-600 text-white mt-2"
                 />
               </div>
 
@@ -242,7 +242,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
                   placeholder="Detailed task instructions, expected output, success criteria..."
                   value={newTask.description}
                   onChange={(e) => setNewTask({ ...newTask, description: e.target.value })}
-                  className="bg-slate-800 border-slate-600 text-white mt-2 min-h-[80px]"
+                  className="bg-gray-50 border-slate-600 text-white mt-2 min-h-[80px]"
                 />
               </div>
 
@@ -253,7 +253,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
                     value={newTask.assignedRole}
                     onValueChange={(value) => setNewTask({ ...newTask, assignedRole: value })}
                   >
-                    <SelectTrigger id="task-role" data-testid="select-task-role" className="bg-slate-800 border-slate-600 text-white mt-2">
+                    <SelectTrigger id="task-role" data-testid="select-task-role" className="bg-gray-50 border-slate-600 text-white mt-2">
                       <SelectValue placeholder="Select role..." />
                     </SelectTrigger>
                     <SelectContent>
@@ -276,7 +276,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
                     max="12"
                     value={newTask.estimatedMinutes}
                     onChange={(e) => setNewTask({ ...newTask, estimatedMinutes: parseInt(e.target.value) || 2 })}
-                    className="bg-slate-800 border-slate-600 text-white mt-2"
+                    className="bg-gray-50 border-slate-600 text-white mt-2"
                   />
                 </div>
 
@@ -286,7 +286,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
                     value={newTask.priority}
                     onValueChange={(value: any) => setNewTask({ ...newTask, priority: value })}
                   >
-                    <SelectTrigger id="task-priority" data-testid="select-task-priority" className="bg-slate-800 border-slate-600 text-white mt-2">
+                    <SelectTrigger id="task-priority" data-testid="select-task-priority" className="bg-gray-50 border-slate-600 text-white mt-2">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -315,7 +315,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
       )}
 
       {/* Execution Timeline View */}
-      <Card className="border-slate-700/50 bg-slate-900/30">
+      <Card className="border-gray-200 bg-white">
         <CardContent className="p-6">
           <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
             <ArrowRight className="h-5 w-5 text-gray-200" />
@@ -354,7 +354,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
                         {phaseTasks.map((task: any, index: number) => (
                           <div
                             key={task.id}
-                            className="p-3 rounded border border-slate-700/50 bg-slate-900/50 hover:bg-slate-800/50 transition-colors"
+                            className="p-3 rounded border border-gray-200 bg-white hover:bg-slate-800/50 transition-colors"
                             data-testid={`task-${phase.id}-${index}`}
                           >
                             <div className="flex items-start justify-between gap-3">

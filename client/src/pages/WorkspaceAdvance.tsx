@@ -115,7 +115,7 @@ export default function WorkspaceAdvance() {
                     Execution OS Retrospect™
                   </Badge>
                 </div>
-                <p className="text-slate-400 dark:text-slate-300 mt-1">
+                <p className="text-gray-600 dark:text-slate-300 mt-1">
                   Learn, improve, and strengthen organizational resilience
                 </p>
               </div>
@@ -191,7 +191,7 @@ export default function WorkspaceAdvance() {
           </div>
 
           {/* Continuous Improvement Banner */}
-          <Card className="mb-8 bg-gradient-to-r from-poise-navy to-slate-800 text-white border-0">
+          <Card className="mb-8 bg-gradient-to-r from-poise-navytext-white border-0">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-xl bg-white/10">
@@ -220,7 +220,7 @@ export default function WorkspaceAdvance() {
                       <Badge className="bg-blue-500/20 text-blue-600 border-blue-500/30">Pattern</Badge>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-sm text-slate-400 dark:text-slate-300">Confidence: 89%</span>
+                      <span className="text-sm text-gray-600 dark:text-slate-300">Confidence: 89%</span>
                       <Progress value={89} className="w-24 h-1.5" />
                     </div>
                   </div>
@@ -239,7 +239,7 @@ export default function WorkspaceAdvance() {
                       <Badge className="bg-emerald-500/20 text-emerald-600 border-emerald-500/30">Automation</Badge>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-sm text-slate-400 dark:text-slate-300">Confidence: 96%</span>
+                      <span className="text-sm text-gray-600 dark:text-slate-300">Confidence: 96%</span>
                       <Progress value={96} className="w-24 h-1.5" />
                     </div>
                   </div>
@@ -258,7 +258,7 @@ export default function WorkspaceAdvance() {
                       <Badge className="bg-poise-gold/20 text-poise-gold border-poise-gold/30">Financial</Badge>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-sm text-slate-400 dark:text-slate-300">Confidence: 87%</span>
+                      <span className="text-sm text-gray-600 dark:text-slate-300">Confidence: 87%</span>
                       <Progress value={87} className="w-24 h-1.5" />
                     </div>
                   </div>
@@ -285,7 +285,7 @@ export default function WorkspaceAdvance() {
                           </h3>
                           <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200 group-hover:text-poise-gold transition-colors" />
                         </div>
-                        <p className="text-sm text-slate-400 dark:text-slate-300 mt-1">
+                        <p className="text-sm text-gray-600 dark:text-slate-300 mt-1">
                           {tool.description}
                         </p>
                         <Badge variant="outline" className="mt-3 text-xs">
@@ -309,7 +309,7 @@ export default function WorkspaceAdvance() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 dark:text-white">Ready to apply learnings?</h3>
-                    <p className="text-sm text-slate-400 dark:text-slate-300">
+                    <p className="text-sm text-gray-600 dark:text-slate-300">
                       Update your playbooks with new insights and start the cycle again
                     </p>
                   </div>

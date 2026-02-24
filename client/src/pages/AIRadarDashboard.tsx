@@ -100,7 +100,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
         </div>
 
         {/* Live Status Bar */}
-        <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-xl p-4 text-white">
+        <div className=" rounded-xl p-4 text-white">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
@@ -131,7 +131,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
         {/* Main Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Radar Visualization */}
-          <Card className="lg:col-span-1 bg-slate-950 border-slate-800">
+          <Card className="lg:col-span-1 bg-white border-gray-200">
             <CardHeader className="pb-2">
               <CardTitle className="text-white text-lg">Signal Radar</CardTitle>
             </CardHeader>
@@ -139,18 +139,18 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
               <div className="relative w-full aspect-square max-w-[300px] mx-auto">
                 {/* Radar circles */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-full h-full rounded-full border border-slate-700" />
-                  <div className="absolute w-3/4 h-3/4 rounded-full border border-slate-700" />
-                  <div className="absolute w-1/2 h-1/2 rounded-full border border-slate-700" />
-                  <div className="absolute w-1/4 h-1/4 rounded-full border border-slate-700" />
+                  <div className="w-full h-full rounded-full border border-gray-200" />
+                  <div className="absolute w-3/4 h-3/4 rounded-full border border-gray-200" />
+                  <div className="absolute w-1/2 h-1/2 rounded-full border border-gray-200" />
+                  <div className="absolute w-1/4 h-1/4 rounded-full border border-gray-200" />
                 </div>
                 
                 {/* Cross lines */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-full h-px bg-slate-700" />
+                  <div className="w-full h-px bg-gray-50" />
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-px h-full bg-slate-700" />
+                  <div className="w-px h-full bg-gray-50" />
                 </div>
                 
                 {/* Radar sweep */}

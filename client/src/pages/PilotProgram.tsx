@@ -246,9 +246,9 @@ export default function PilotProgram() {
       <div className="bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950">
         
         {/* Hero Section */}
-        <section className="py-16 px-6 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
+        <section className="py-16 px-6 bg-gradient-to-br ">
           <div className="max-w-6xl mx-auto text-center">
-            <div className="inline-block px-6 py-4 rounded-2xl bg-gradient-to-r from-slate-800/80 to-slate-900/70 border border-slate-600/50 backdrop-blur-sm mb-6">
+            <div className="inline-block px-6 py-4 rounded-2xl border border-slate-600/50 backdrop-blur-sm mb-6">
               <ExecuteIQLogo width={240} variant="full" color="white" showTagline={true} />
             </div>
             <Badge className="mb-6 bg-emerald-600/20 text-emerald-300 border-emerald-500/30" data-testid="badge-pilot">
@@ -318,7 +318,7 @@ export default function PilotProgram() {
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-phases">
                 Structured 90-Day Journey
               </h2>
-              <p className="text-lg text-slate-400 dark:text-slate-300">
+              <p className="text-lg text-gray-600 dark:text-slate-300">
                 Crawl, walk, run methodology with clear milestones and success criteria
               </p>
             </div>
@@ -341,7 +341,7 @@ export default function PilotProgram() {
                         <CardContent className="text-sm">
                           <ul className="space-y-1 mb-4">
                             {phase.activities.slice(0, 3).map((activity, j) => (
-                              <li key={j} className="text-slate-400 dark:text-slate-300 flex items-start gap-2">
+                              <li key={j} className="text-gray-600 dark:text-slate-300 flex items-start gap-2">
                                 <CheckCircle className="w-3 h-3 text-emerald-500 mt-1 flex-shrink-0" />
                                 <span className="text-xs">{activity}</span>
                               </li>
@@ -368,7 +368,7 @@ export default function PilotProgram() {
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-inclusions">
                 What's Included
               </h2>
-              <p className="text-lg text-slate-400 dark:text-slate-300">
+              <p className="text-lg text-gray-600 dark:text-slate-300">
                 Everything you need to validate Execution OS in your environment
               </p>
             </div>
@@ -387,7 +387,7 @@ export default function PilotProgram() {
                   <CardContent>
                     <ul className="space-y-2">
                       {inclusion.items.map((item, j) => (
-                        <li key={j} className="text-sm text-slate-400 dark:text-slate-300 flex items-start gap-2">
+                        <li key={j} className="text-sm text-gray-600 dark:text-slate-300 flex items-start gap-2">
                           <CheckCircle className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
                           {item}
                         </li>
@@ -407,7 +407,7 @@ export default function PilotProgram() {
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-candidates">
                 Ideal Pilot Candidates
               </h2>
-              <p className="text-lg text-slate-400 dark:text-slate-300">
+              <p className="text-lg text-gray-600 dark:text-slate-300">
                 Organizations positioned to maximize pilot value
               </p>
             </div>
@@ -418,7 +418,7 @@ export default function PilotProgram() {
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">
-                        <candidate.icon className="w-5 h-5 text-slate-400 dark:text-slate-300" />
+                        <candidate.icon className="w-5 h-5 text-gray-600 dark:text-slate-300" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-2">
@@ -427,7 +427,7 @@ export default function PilotProgram() {
                             {candidate.importance}
                           </Badge>
                         </div>
-                        <p className="text-sm text-slate-400 dark:text-slate-300">{candidate.description}</p>
+                        <p className="text-sm text-gray-600 dark:text-slate-300">{candidate.description}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -438,7 +438,7 @@ export default function PilotProgram() {
         </section>
 
         {/* ROI Measurement Framework */}
-        <section className="py-16 px-6 bg-gradient-to-br from-blue-900 to-purple-900">
+        <section className="py-16 px-6 bg-gradient-to-br  ">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-white mb-4" data-testid="heading-roi">
@@ -491,7 +491,7 @@ export default function PilotProgram() {
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-conversion">
                 Pilot to Production Path
               </h2>
-              <p className="text-lg text-slate-400 dark:text-slate-300">
+              <p className="text-lg text-gray-600 dark:text-slate-300">
                 Founding partner benefits for pilot participants
               </p>
             </div>
@@ -504,7 +504,7 @@ export default function PilotProgram() {
                       <term.icon className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
                     </div>
                     <h3 className="font-bold text-slate-900 dark:text-white mb-2">{term.term}</h3>
-                    <p className="text-sm text-slate-400 dark:text-slate-300">{term.description}</p>
+                    <p className="text-sm text-gray-600 dark:text-slate-300">{term.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -559,7 +559,7 @@ export default function PilotProgram() {
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-cta">
               Ready to Validate Strategic Execution?
             </h2>
-            <p className="text-lg text-slate-400 dark:text-slate-300 mb-8">
+            <p className="text-lg text-gray-600 dark:text-slate-300 mb-8">
               Limited to 5 design partners in Q1 2026. Priority given to organizations with recent strategic event pain.
             </p>
             <div className="flex flex-wrap justify-center gap-4">

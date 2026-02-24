@@ -299,7 +299,7 @@ export default function PilotDemo() {
             <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
               Prove It Works
             </h1>
-            <p className="text-xl text-slate-400 dark:text-slate-300">
+            <p className="text-xl text-gray-600 dark:text-slate-300">
               Experience the full trigger → execution flow with real notifications
             </p>
           </div>
@@ -313,7 +313,7 @@ export default function PilotDemo() {
                       ? "bg-blue-600 text-white" 
                       : ["setup", "configure", "ready", "executing", "complete"].indexOf(step) > i
                         ? "bg-emerald-500 text-white"
-                        : "bg-slate-200 dark:bg-slate-700 text-slate-400"
+                        : "bg-slate-200 dark:bg-slate-700 text-gray-600"
                   }`}>
                     {["setup", "configure", "ready", "executing", "complete"].indexOf(step) > i ? (
                       <CheckCircle className="w-4 h-4" />
@@ -363,7 +363,7 @@ export default function PilotDemo() {
                         className="text-lg py-6"
                         data-testid="input-pilot-email"
                       />
-                      <p className="text-sm text-slate-400">
+                      <p className="text-sm text-gray-600">
                         We'll send you a stakeholder notification just like your team would receive
                       </p>
                     </div>
@@ -431,7 +431,7 @@ export default function PilotDemo() {
                           <h4 className="font-medium text-slate-900 dark:text-white mb-1">
                             {trigger.name}
                           </h4>
-                          <p className="text-sm text-slate-400 dark:text-slate-300">
+                          <p className="text-sm text-gray-600 dark:text-slate-300">
                             {trigger.description}
                           </p>
                         </button>
@@ -466,14 +466,14 @@ export default function PilotDemo() {
                           <h4 className="font-medium text-slate-900 dark:text-white mb-1">
                             {playbook.name}
                           </h4>
-                          <p className="text-sm text-slate-400 dark:text-slate-300 mb-3">
+                          <p className="text-sm text-gray-600 dark:text-slate-300 mb-3">
                             {playbook.description}
                           </p>
                           <div className="flex gap-3 text-xs">
-                            <span className="text-slate-400 dark:text-slate-300">
+                            <span className="text-gray-600 dark:text-slate-300">
                               {playbook.tasks} tasks
                             </span>
-                            <span className="text-slate-400 dark:text-slate-300">
+                            <span className="text-gray-600 dark:text-slate-300">
                               {playbook.stakeholders} stakeholders
                             </span>
                             <span className="text-emerald-600 dark:text-emerald-400 font-medium">
@@ -533,7 +533,7 @@ export default function PilotDemo() {
                           <Mail className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                         </div>
                         <div>
-                          <p className="text-sm text-slate-400 dark:text-slate-300">Stakeholder Email</p>
+                          <p className="text-sm text-gray-600 dark:text-slate-300">Stakeholder Email</p>
                           <p className="font-medium text-slate-900 dark:text-white">{email}</p>
                         </div>
                       </div>
@@ -543,9 +543,9 @@ export default function PilotDemo() {
                           {triggerData && <triggerData.icon className={`w-5 h-5 ${triggerData.color}`} />}
                         </div>
                         <div>
-                          <p className="text-sm text-slate-400 dark:text-slate-300">Trigger Scenario</p>
+                          <p className="text-sm text-gray-600 dark:text-slate-300">Trigger Scenario</p>
                           <p className="font-medium text-slate-900 dark:text-white">{triggerData?.name}</p>
-                          <p className="text-sm text-slate-400 mt-1">"{triggerData?.sampleSignal}"</p>
+                          <p className="text-sm text-gray-600 mt-1">"{triggerData?.sampleSignal}"</p>
                         </div>
                       </div>
                       <Separator />
@@ -554,9 +554,9 @@ export default function PilotDemo() {
                           <BookOpen className="w-5 h-5 text-violet-600 dark:text-violet-400" />
                         </div>
                         <div>
-                          <p className="text-sm text-slate-400 dark:text-slate-300">Playbook to Execute</p>
+                          <p className="text-sm text-gray-600 dark:text-slate-300">Playbook to Execute</p>
                           <p className="font-medium text-slate-900 dark:text-white">{playbookData?.name}</p>
-                          <p className="text-sm text-slate-400 mt-1">
+                          <p className="text-sm text-gray-600 mt-1">
                             {playbookData?.tasks} tasks • {playbookData?.stakeholders} stakeholders
                           </p>
                         </div>
@@ -632,7 +632,7 @@ export default function PilotDemo() {
                   <CardContent className="space-y-6">
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-slate-400 dark:text-slate-300">Execution Progress</span>
+                        <span className="text-gray-600 dark:text-slate-300">Execution Progress</span>
                         <span className="font-medium">{executionProgress}%</span>
                       </div>
                       <Progress value={executionProgress} className="h-2" />
@@ -678,7 +678,7 @@ export default function PilotDemo() {
                                   <CheckCircle className="w-4 h-4 text-emerald-500" />
                                 )}
                               </div>
-                              <p className="text-sm text-slate-400 dark:text-slate-300 mb-2">
+                              <p className="text-sm text-gray-600 dark:text-slate-300 mb-2">
                                 {event.description}
                               </p>
                               <div className="flex items-center gap-2 text-xs">
@@ -689,7 +689,7 @@ export default function PilotDemo() {
                               </div>
                             </div>
                             <div className="text-right shrink-0">
-                              <div className="text-xs text-slate-400 mb-1">
+                              <div className="text-xs text-gray-600 mb-1">
                                 {event.timestamp.toLocaleTimeString()}
                               </div>
                               <div className="text-xs px-2 py-1 rounded bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 line-through">
@@ -754,20 +754,20 @@ export default function PilotDemo() {
                             <div className="grid grid-cols-3 gap-4 text-center">
                               <div>
                                 <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">30-60</div>
-                                <div className="text-xs text-slate-400 dark:text-slate-300">Hours Saved</div>
+                                <div className="text-xs text-gray-600 dark:text-slate-300">Hours Saved</div>
                               </div>
                               <div>
                                 <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">$15-30K</div>
-                                <div className="text-xs text-slate-400 dark:text-slate-300">Executive Time Recovered</div>
+                                <div className="text-xs text-gray-600 dark:text-slate-300">Executive Time Recovered</div>
                               </div>
                               <div>
                                 <div className="text-2xl font-bold text-amber-600 dark:text-amber-400">340x</div>
-                                <div className="text-xs text-slate-400 dark:text-slate-300">Faster Response</div>
+                                <div className="text-xs text-gray-600 dark:text-slate-300">Faster Response</div>
                               </div>
                             </div>
                           </div>
 
-                          <p className="text-sm text-slate-400 dark:text-slate-300 text-center mb-6">
+                          <p className="text-sm text-gray-600 dark:text-slate-300 text-center mb-6">
                             In production, Execution OS also creates Jira tickets, notifies Slack channels, stages documents, and unlocks pre-approved budgets—all automatically.
                           </p>
 

@@ -279,7 +279,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
       )}
 
       {/* ZONE 1: Hero Header — What is this page and why does it matter */}
-      <div className="bg-gradient-to-br from-slate-900 via-slate-900 to-blue-950 border-b border-slate-800">
+      <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
             <div className="max-w-2xl">
@@ -287,7 +287,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 <Badge className="bg-poise-teal/20 text-poise-teal border border-poise-teal/40 text-xs font-semibold">
                   Execution OS Compass™
                 </Badge>
-                <Badge variant="outline" className="border-slate-600 text-slate-400 text-xs">
+                <Badge variant="outline" className="border-slate-600 text-gray-600 text-xs">
                   <Clock className="w-3 h-3 mr-1" />
                   {currentTime.toLocaleTimeString()}
                 </Badge>
@@ -307,7 +307,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 <div className="text-2xl sm:text-3xl font-bold text-blue-400 mb-1">
                   {activeScenarios.length}
                 </div>
-                <div className="text-xs text-slate-400 uppercase tracking-wide">
+                <div className="text-xs text-gray-600 uppercase tracking-wide">
                   Active Scenarios
                 </div>
               </div>
@@ -315,7 +315,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 <div className="text-2xl sm:text-3xl font-bold text-violet-400 mb-1">
                   {teamsCoordinating}
                 </div>
-                <div className="text-xs text-slate-400 uppercase tracking-wide">
+                <div className="text-xs text-gray-600 uppercase tracking-wide">
                   Teams Ready
                 </div>
               </div>
@@ -323,7 +323,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 <div className="text-2xl sm:text-3xl font-bold text-emerald-400 mb-1">
                   {percentOnTrack}%
                 </div>
-                <div className="text-xs text-slate-400 uppercase tracking-wide">
+                <div className="text-xs text-gray-600 uppercase tracking-wide">
                   On Track
                 </div>
               </div>
@@ -528,7 +528,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
             <div>
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Launch an Execution</h2>
-              <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+              <p className="text-sm text-gray-500 dark:text-slate-400 mt-1">
                 Select a strategic scenario to see how Execution OS orchestrates your organization's response in real time
               </p>
             </div>
@@ -567,12 +567,12 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                     >
                       <div className="flex items-center gap-2 mb-2">
                         <Badge variant="outline" className="text-[10px]">{scenario.category}</Badge>
-                        <span className="text-xs text-slate-400">{scenario.domain}</span>
+                        <span className="text-xs text-gray-600">{scenario.domain}</span>
                       </div>
                       <span className="text-sm font-semibold text-slate-900 dark:text-white block mb-1">{scenario.name}</span>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">{scenario.desc}</p>
+                      <p className="text-xs text-gray-500 dark:text-slate-400 mb-3">{scenario.desc}</p>
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3 text-xs text-slate-400">
+                        <div className="flex items-center gap-3 text-xs text-gray-600">
                           <span className="flex items-center gap-1"><Users className="w-3 h-3" /> {scenario.teams} teams</span>
                           <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3" /> {scenario.tasks} tasks</span>
                         </div>
@@ -602,17 +602,17 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                   <div className="flex items-center justify-center gap-4 sm:gap-6 mb-8">
                     <div className="text-center">
                       <div className="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400">20</div>
-                      <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">Tasks Auto-Created</div>
+                      <div className="text-xs text-gray-500 dark:text-slate-400 mt-1">Tasks Auto-Created</div>
                     </div>
                     <div className="h-8 w-px bg-slate-200 dark:bg-slate-700"></div>
                     <div className="text-center">
                       <div className="text-2xl sm:text-3xl font-bold text-violet-600 dark:text-violet-400">8</div>
-                      <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">Teams Coordinated</div>
+                      <div className="text-xs text-gray-500 dark:text-slate-400 mt-1">Teams Coordinated</div>
                     </div>
                     <div className="h-8 w-px bg-slate-200 dark:bg-slate-700"></div>
                     <div className="text-center">
                       <div className="text-2xl sm:text-3xl font-bold text-emerald-600 dark:text-emerald-400">&lt;12m</div>
-                      <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">Full Activation</div>
+                      <div className="text-xs text-gray-500 dark:text-slate-400 mt-1">Full Activation</div>
                     </div>
                   </div>
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -674,15 +674,15 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                       {selectedScenario === scenario.id && (
                         <div className="mt-3 pt-3 border-t border-slate-200 dark:border-slate-700 space-y-2 text-sm">
                           <div className="flex justify-between">
-                            <span className="text-slate-500 dark:text-slate-400">Domain</span>
+                            <span className="text-gray-500 dark:text-slate-400">Domain</span>
                             <span className="font-medium">{scenario.domain || 'Strategic'}</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-slate-500 dark:text-slate-400">Teams Active</span>
+                            <span className="text-gray-500 dark:text-slate-400">Teams Active</span>
                             <span className="font-medium">{scenario.teamsInvolved}</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-slate-500 dark:text-slate-400">Progress</span>
+                            <span className="text-gray-500 dark:text-slate-400">Progress</span>
                             <span className="font-medium text-emerald-600">{scenario.progress}%</span>
                           </div>
                           <Button 
@@ -707,7 +707,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
         <div>
           <div className="mb-4">
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Operational Intelligence</h2>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+            <p className="text-sm text-gray-500 dark:text-slate-400 mt-1">
               Real-time visibility into team coordination and incoming signals that may require action
             </p>
           </div>
@@ -740,7 +740,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                         ) : event.status === 'in-progress' ? (
                           <Radio className="w-4 h-4 text-blue-600 dark:text-blue-400 animate-pulse" />
                         ) : (
-                          <Clock className="w-4 h-4 text-slate-400" />
+                          <Clock className="w-4 h-4 text-gray-600" />
                         )}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -748,7 +748,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                           <span className="font-medium text-sm text-slate-900 dark:text-white">
                             {event.team}
                           </span>
-                          <span className="text-xs text-slate-400">{event.time}</span>
+                          <span className="text-xs text-gray-600">{event.time}</span>
                         </div>
                         <p className="text-sm text-slate-600 dark:text-slate-300 truncate">
                           {event.action}
@@ -787,9 +787,9 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                             {alert.title}
                           </p>
                           <div className="flex items-center gap-2 mt-1">
-                            <span className="text-xs text-slate-400">{alert.source}</span>
+                            <span className="text-xs text-gray-600">{alert.source}</span>
                             <span className="text-xs text-slate-300">·</span>
-                            <span className="text-xs text-slate-400">{alert.time}</span>
+                            <span className="text-xs text-gray-600">{alert.time}</span>
                           </div>
                         </div>
                         <Button 
@@ -804,19 +804,19 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                       {selectedSignal === alert.id && (
                         <div className="ml-4 mr-4 mb-3 mt-1 p-3 bg-slate-50 dark:bg-slate-800/80 rounded-lg border border-slate-200 dark:border-slate-700 space-y-2 animate-in slide-in-from-top-2 duration-200">
                           <div className="flex items-center justify-between">
-                            <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Source</span>
+                            <span className="text-xs font-medium text-gray-500 dark:text-slate-400">Source</span>
                             <span className="text-xs font-semibold">{alert.source}</span>
                           </div>
                           <div className="flex items-center justify-between">
-                            <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Detected</span>
+                            <span className="text-xs font-medium text-gray-500 dark:text-slate-400">Detected</span>
                             <span className="text-xs font-semibold">{alert.time}</span>
                           </div>
                           <div className="flex items-center justify-between">
-                            <span className="text-xs font-medium text-slate-500 dark:text-slate-400">AI Confidence</span>
+                            <span className="text-xs font-medium text-gray-500 dark:text-slate-400">AI Confidence</span>
                             <span className="text-xs font-semibold text-emerald-600">94%</span>
                           </div>
                           <div className="flex items-center justify-between">
-                            <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Matching Playbooks</span>
+                            <span className="text-xs font-medium text-gray-500 dark:text-slate-400">Matching Playbooks</span>
                             <span className="text-xs font-semibold text-blue-600">3 available</span>
                           </div>
                           <div className="flex gap-2 mt-2">
@@ -844,7 +844,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
         <div>
           <div className="mb-4">
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Strategic Readiness</h2>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+            <p className="text-sm text-gray-500 dark:text-slate-400 mt-1">
               How prepared your organization is to respond to emerging threats and opportunities
             </p>
           </div>
@@ -945,7 +945,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                       </p>
                     </div>
                   )) : (
-                    <div className="text-center py-6 text-sm text-slate-400">
+                    <div className="text-center py-6 text-sm text-gray-600">
                       <Brain className="w-8 h-8 mx-auto mb-2 opacity-40" />
                       AI is analyzing incoming signals. Patterns will appear as more data is collected.
                     </div>
@@ -992,22 +992,22 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
           <CardContent>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
               <div className="text-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
-                <div className={`text-3xl font-bold mb-1 ${continuousModeLocal ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400'}`}>
+                <div className={`text-3xl font-bold mb-1 ${continuousModeLocal ? 'text-emerald-600 dark:text-emerald-400' : 'text-gray-600'}`}>
                   {continuousModeLocal ? 'ACTIVE' : 'PAUSED'}
                 </div>
-                <div className="text-xs text-slate-500 dark:text-slate-400">Monitoring Status</div>
+                <div className="text-xs text-gray-500 dark:text-slate-400">Monitoring Status</div>
               </div>
               <div className="text-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
                 <div className="text-3xl font-bold text-violet-600 dark:text-violet-400 mb-1">
                   {continuousMode.tasksScheduled}
                 </div>
-                <div className="text-xs text-slate-500 dark:text-slate-400">Automated Tasks Queued</div>
+                <div className="text-xs text-gray-500 dark:text-slate-400">Automated Tasks Queued</div>
               </div>
               <div className="text-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
                 <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-1">
                   {continuousMode.nextRun ? new Date(continuousMode.nextRun).toLocaleTimeString() : '--'}
                 </div>
-                <div className="text-xs text-slate-500 dark:text-slate-400">Next Scan</div>
+                <div className="text-xs text-gray-500 dark:text-slate-400">Next Scan</div>
               </div>
             </div>
           </CardContent>

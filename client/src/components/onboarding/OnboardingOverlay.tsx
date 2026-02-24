@@ -115,7 +115,7 @@ export default function OnboardingOverlay() {
         className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-[10000] w-full max-w-lg px-4"
         data-testid="onboarding-overlay"
       >
-        <Card className="bg-slate-900/98 border-blue-500/50 shadow-2xl backdrop-blur-md">
+        <Card className="bg-white border-blue-500/50 shadow-2xl backdrop-blur-md">
           <CardContent className="p-5">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-3">
@@ -180,7 +180,7 @@ export default function OnboardingOverlay() {
                   variant="outline"
                   onClick={prevStep}
                   disabled={state.currentStep === 0}
-                  className="border-gray-600 text-gray-500 dark:text-gray-300 hover:bg-white/10"
+                  className="border-gray-600 text-gray-600 dark:text-gray-300 hover:bg-white/10"
                   data-testid="onboarding-prev"
                 >
                   <ChevronLeft className="h-4 w-4" />

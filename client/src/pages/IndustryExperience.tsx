@@ -215,7 +215,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
   },
   'financial-ransomware': {
     id: 'financial-ransomware', title: 'Ransomware Attack Response', organization: 'LoanDepot (Major Mortgage Lender)',
-    industry: 'Financial Services', icon: Shield, color: 'text-blue-400', gradient: 'from-blue-700 to-slate-800',
+    industry: 'Financial Services', icon: Shield, color: 'text-blue-400', gradient: 'from-blue-700 ',
     scenario: 'Banking Infrastructure Breach — LockBit 3.0 Attack on Mortgage Processing Systems',
     domain: 'Cybersecurity Incident', domainCategory: 'DEFENSE',
     playbook: { number: '065', name: 'Ransomware Attack Response — Financial Services', tasks: 36, stakeholders: 150, budget: '$4.8M' },
@@ -663,7 +663,7 @@ export default function IndustryExperience() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-              className="bg-slate-900/80 border border-cyan-500/20 rounded-2xl p-6">
+              className="bg-white border border-cyan-500/20 rounded-2xl p-6">
               <div className="flex items-center gap-2 mb-3">
                 <BookOpen className="h-5 w-5 text-cyan-400" />
                 <h3 className="font-semibold text-white">Your Playbook</h3>
@@ -676,7 +676,7 @@ export default function IndustryExperience() {
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-              className="bg-slate-900/80 border border-amber-500/20 rounded-2xl p-6">
+              className="bg-white border border-amber-500/20 rounded-2xl p-6">
               <div className="flex items-center gap-2 mb-3">
                 <Radio className="h-5 w-5 text-amber-400" />
                 <h3 className="font-semibold text-white">Active Triggers</h3>
@@ -691,7 +691,7 @@ export default function IndustryExperience() {
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              className="bg-slate-900/80 border border-indigo-500/20 rounded-2xl p-6">
+              className="bg-white border border-indigo-500/20 rounded-2xl p-6">
               <div className="flex items-center gap-2 mb-3">
                 <Database className="h-5 w-5 text-indigo-400" />
                 <h3 className="font-semibold text-white">Connected Data Sources</h3>
@@ -710,7 +710,7 @@ export default function IndustryExperience() {
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
-              className="bg-slate-900/80 border border-purple-500/20 rounded-2xl p-6">
+              className="bg-white border border-purple-500/20 rounded-2xl p-6">
               <div className="flex items-center gap-2 mb-3">
                 <Sliders className="h-5 w-5 text-purple-400" />
                 <h3 className="font-semibold text-white">Customizations</h3>
@@ -750,7 +750,7 @@ export default function IndustryExperience() {
               <p className="text-xl text-slate-600 dark:text-slate-200 mb-2">{industry.industry} Industry</p>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
-              className="mt-8 bg-slate-900/80 border border-white/10 rounded-2xl p-8"
+              className="mt-8 bg-white border border-white/10 rounded-2xl p-8"
             >
               <div className="text-sm text-slate-300 uppercase tracking-wider mb-3">Industry Scenario</div>
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">{industry.scenario}</h2>
@@ -789,7 +789,7 @@ export default function IndustryExperience() {
               <span className="text-xs text-slate-600 dark:text-slate-200 font-medium">{setupReadiness.percent}% ready</span>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-              className="bg-slate-900/80 border border-cyan-500/20 rounded-2xl overflow-hidden"
+              className="bg-white border border-cyan-500/20 rounded-2xl overflow-hidden"
             >
               <div className="bg-cyan-950/30 border-b border-cyan-500/10 px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -893,7 +893,7 @@ export default function IndustryExperience() {
             <div className="space-y-4 mb-6">
               {userTriggers.map((trigger, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.1 }}
-                  className={`bg-slate-900/80 border rounded-2xl p-6 ${trigger.enabled ? 'border-amber-500/20' : 'border-white/5 opacity-60'}`}
+                  className={`bg-white border rounded-2xl p-6 ${trigger.enabled ? 'border-amber-500/20' : 'border-white/5 opacity-60'}`}
                 >
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
@@ -935,7 +935,7 @@ export default function IndustryExperience() {
                 </Button>
               ) : (
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-                  className="bg-slate-900/80 border border-amber-500/20 rounded-2xl p-6">
+                  className="bg-white border border-amber-500/20 rounded-2xl p-6">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <Input placeholder="Trigger name..." className="bg-white/5 border-white/10 text-white"
                       onKeyDown={e => {
@@ -982,7 +982,7 @@ export default function IndustryExperience() {
               <Progress value={setupReadiness.percent} className="h-2 flex-1" />
               <span className="text-xs text-slate-600 dark:text-slate-200 font-medium">{setupReadiness.percent}% ready</span>
             </div>
-            <div className="bg-slate-900/80 border border-indigo-500/20 rounded-2xl p-5 mb-4">
+            <div className="bg-white border border-indigo-500/20 rounded-2xl p-5 mb-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <Activity className="h-5 w-5 text-indigo-400" />
@@ -997,7 +997,7 @@ export default function IndustryExperience() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               {userDataSources.map((source, i) => (
                 <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.1 + i * 0.1 }}
-                  className={`bg-slate-900/80 border rounded-xl p-5 ${source.connected ? 'border-green-500/20' : 'border-white/10'}`}
+                  className={`bg-white border rounded-xl p-5 ${source.connected ? 'border-green-500/20' : 'border-white/10'}`}
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
@@ -1084,7 +1084,7 @@ export default function IndustryExperience() {
             <div className="space-y-4 mb-6">
               {userCustomizations.map((custom, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.08 }}
-                  className="bg-slate-900/80 border border-purple-500/20 rounded-xl p-5"
+                  className="bg-white border border-purple-500/20 rounded-xl p-5"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <Label className="text-white font-medium">{custom.field}</Label>
@@ -1150,7 +1150,7 @@ export default function IndustryExperience() {
               <p className="text-slate-600 dark:text-slate-200">Your {industry.industry} trigger has detected a critical event</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ delay: 0.3, duration: 0.6 }}
-              className="bg-slate-900/80 border border-red-500/30 rounded-2xl overflow-hidden"
+              className="bg-white border border-red-500/30 rounded-2xl overflow-hidden"
             >
               <div className="bg-red-950/50 border-b border-red-500/20 px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -1207,7 +1207,7 @@ export default function IndustryExperience() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}
-                className="bg-slate-900/80 border border-purple-500/20 rounded-2xl p-6"
+                className="bg-white border border-purple-500/20 rounded-2xl p-6"
               >
                 <div className="flex items-center gap-2 mb-4">
                   <Brain className="h-5 w-5 text-purple-400" />
@@ -1226,20 +1226,20 @@ export default function IndustryExperience() {
               </motion.div>
               <div className="space-y-6">
                 <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}
-                  className="bg-slate-900/80 border border-purple-500/20 rounded-2xl p-6"
+                  className="bg-white border border-purple-500/20 rounded-2xl p-6"
                 >
                   <h3 className="text-lg font-semibold text-white mb-3">AI Confidence</h3>
                   <div className="flex items-end gap-4 mb-4">
                     <div className="text-5xl font-bold text-purple-400">96%</div>
                     <div className="text-sm text-slate-600 dark:text-slate-200 pb-2">recommendation confidence</div>
                   </div>
-                  <div className="h-3 bg-slate-800 rounded-full overflow-hidden">
+                  <div className="h-3 bg-gray-50 rounded-full overflow-hidden">
                     <motion.div initial={{ width: 0 }} animate={{ width: '96%' }} transition={{ delay: 0.8, duration: 1.5 }}
                       className="h-full bg-gradient-to-r from-purple-600 to-purple-400 rounded-full" />
                   </div>
                 </motion.div>
                 <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 }}
-                  className="bg-slate-900/80 border border-cyan-500/20 rounded-2xl p-6"
+                  className="bg-white border border-cyan-500/20 rounded-2xl p-6"
                 >
                   <h3 className="text-lg font-semibold text-white mb-3">AI Recommendation</h3>
                   <p className="text-sm text-slate-300 leading-relaxed">
@@ -1261,7 +1261,7 @@ export default function IndustryExperience() {
               <p className="text-slate-600 dark:text-slate-200">AI recommends. The executive decides. Always.</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              className="bg-slate-900/80 border border-indigo-500/30 rounded-2xl p-8"
+              className="bg-white border border-indigo-500/30 rounded-2xl p-8"
             >
               <div className="flex items-center gap-5 mb-6">
                 <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${industry.gradient} flex items-center justify-center`}>
@@ -1317,7 +1317,7 @@ export default function IndustryExperience() {
               <p className="text-slate-600 dark:text-slate-200">Watch as tasks auto-create, stakeholders coordinate, and systems activate</p>
             </div>
             <div className="grid grid-cols-5 gap-4">
-              <div className="col-span-3 bg-slate-900/80 border border-green-500/20 rounded-2xl p-5">
+              <div className="col-span-3 bg-white border border-green-500/20 rounded-2xl p-5">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-semibold text-white">Execution Timeline</h3>
                   <div className="flex items-center gap-2">
@@ -1349,7 +1349,7 @@ export default function IndustryExperience() {
                 </div>
               </div>
               <div className="col-span-2 space-y-4">
-                <div className="bg-slate-900/80 border border-blue-500/20 rounded-2xl p-5">
+                <div className="bg-white border border-blue-500/20 rounded-2xl p-5">
                   <h3 className="font-semibold text-white mb-3 text-sm">Stakeholder Response</h3>
                   <div className="space-y-2">
                     {industry.stakeholders.map((s, i) => (
@@ -1370,7 +1370,7 @@ export default function IndustryExperience() {
                     ))}
                   </div>
                 </div>
-                <div className="bg-slate-900/80 border border-amber-500/20 rounded-2xl p-5">
+                <div className="bg-white border border-amber-500/20 rounded-2xl p-5">
                   <h3 className="font-semibold text-white mb-3 text-sm">Progress</h3>
                   <div className="space-y-3">
                     <div>
@@ -1404,7 +1404,7 @@ export default function IndustryExperience() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-                className="bg-slate-900/80 border border-green-500/20 rounded-xl p-4">
+                className="bg-white border border-green-500/20 rounded-xl p-4">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                   <span className="text-xs text-green-400 font-medium">OPERATIONAL</span>
@@ -1413,7 +1413,7 @@ export default function IndustryExperience() {
                 <div className="text-xs text-slate-300">Tasks Executing</div>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-                className="bg-slate-900/80 border border-blue-500/20 rounded-xl p-4">
+                className="bg-white border border-blue-500/20 rounded-xl p-4">
                 <div className="flex items-center gap-2 mb-2">
                   <Users className="h-4 w-4 text-blue-400" />
                   <span className="text-xs text-blue-400 font-medium">COORDINATED</span>
@@ -1422,7 +1422,7 @@ export default function IndustryExperience() {
                 <div className="text-xs text-slate-300">Stakeholders Aligned</div>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-                className="bg-slate-900/80 border border-amber-500/20 rounded-xl p-4">
+                className="bg-white border border-amber-500/20 rounded-xl p-4">
                 <div className="flex items-center gap-2 mb-2">
                   <Clock className="h-4 w-4 text-amber-400" />
                   <span className="text-xs text-amber-400 font-medium">ELAPSED</span>
@@ -1432,7 +1432,7 @@ export default function IndustryExperience() {
               </motion.div>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
-              className="bg-slate-900/80 border border-blue-500/20 rounded-2xl p-6"
+              className="bg-white border border-blue-500/20 rounded-2xl p-6"
             >
               <h3 className="font-semibold text-white mb-4">Live Activity Feed</h3>
               <div className="space-y-3">
@@ -1465,7 +1465,7 @@ export default function IndustryExperience() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {industry.outcomes.map((outcome, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 + i * 0.15 }}
-                  className="bg-slate-900/80 border border-green-500/20 rounded-2xl p-6"
+                  className="bg-white border border-green-500/20 rounded-2xl p-6"
                 >
                   <h4 className="text-sm text-slate-600 dark:text-slate-200 mb-3">{outcome.metric}</h4>
                   <div className="flex items-center gap-4">
@@ -1494,7 +1494,7 @@ export default function IndustryExperience() {
               <p className="text-slate-600 dark:text-slate-200">Every execution makes {industry.organization} smarter</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              className="bg-slate-900/80 border border-indigo-500/20 rounded-2xl p-8 mb-8"
+              className="bg-white border border-indigo-500/20 rounded-2xl p-8 mb-8"
             >
               <div className="flex items-center gap-3 mb-4">
                 <Brain className="h-6 w-6 text-indigo-400" />
@@ -1505,17 +1505,17 @@ export default function IndustryExperience() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
               className="grid grid-cols-3 gap-4 mb-8"
             >
-              <div className="bg-slate-900/80 border border-cyan-500/20 rounded-xl p-4 text-center">
+              <div className="bg-white border border-cyan-500/20 rounded-xl p-4 text-center">
                 <BarChart3 className="h-6 w-6 text-cyan-400 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-white">170</div>
                 <div className="text-xs text-slate-300">Total Playbooks</div>
               </div>
-              <div className="bg-slate-900/80 border border-purple-500/20 rounded-xl p-4 text-center">
+              <div className="bg-white border border-purple-500/20 rounded-xl p-4 text-center">
                 <Brain className="h-6 w-6 text-purple-400 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-white">94%</div>
                 <div className="text-xs text-slate-300">AI Accuracy</div>
               </div>
-              <div className="bg-slate-900/80 border border-green-500/20 rounded-xl p-4 text-center">
+              <div className="bg-white border border-green-500/20 rounded-xl p-4 text-center">
                 <Timer className="h-6 w-6 text-green-400 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-white">&lt;12 min</div>
                 <div className="text-xs text-slate-300">Avg. Execution</div>
@@ -1550,7 +1550,7 @@ export default function IndustryExperience() {
 
   return (
     <PageLayout>
-      <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      <div className="min-h-screen bg-gradient-to-b ">
         <div className="max-w-7xl mx-auto px-4 pt-6 pb-4">
           <div className="flex items-center justify-between mb-2">
             <Link href="/industry-demos">

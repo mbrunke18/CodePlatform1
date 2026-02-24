@@ -49,7 +49,7 @@ export default function EnergyGridFailureDemo() {
   };
 
   return (
-    <div className="page-background min-h-screen bg-gradient-to-b from-slate-950 to-amber-950">
+    <div className="page-background min-h-screen bg-gradient-to-b">
       <DemoNavHeader title="Energy Grid Crisis Demo" showBackButton={true} />
       <div className="container mx-auto px-4 py-12 pt-24 max-w-6xl">
         {/* Header */}
@@ -75,7 +75,7 @@ export default function EnergyGridFailureDemo() {
         {currentAct === "intro" && (
           <div className="space-y-8 animate-in fade-in duration-500">
             {/* Organization Card */}
-            <Card className="p-8 bg-gradient-to-br from-amber-950 to-orange-950 border-amber-500 border-2">
+            <Card className="p-8 bg-gradient-to-br   border-amber-500 border-2">
               <div className="text-center mb-6">
                 <Zap className="h-16 w-16 mx-auto mb-4 text-amber-400" />
                 <h2 className="text-3xl font-bold mb-2 text-white">{energyDemoData.organization.name}</h2>
@@ -105,7 +105,7 @@ export default function EnergyGridFailureDemo() {
             </Card>
 
             {/* Crisis Event */}
-            <Card className="p-8 bg-slate-900 border-red-500 border-2">
+            <Card className="p-8 bg-white border-red-500 border-2">
               <div className="flex items-start gap-4 mb-6">
                 <div className="p-3 bg-red-900 rounded-full">
                   <AlertTriangle className="h-8 w-8 text-red-400" />
@@ -114,17 +114,17 @@ export default function EnergyGridFailureDemo() {
                   <h3 className="text-2xl font-bold mb-2 text-white">The Crisis Event</h3>
                   <p className="text-lg text-slate-300 mb-4">{energyDemoData.crisis.description}</p>
                   <div className="grid md:grid-cols-3 gap-4 mt-4">
-                    <div className="bg-slate-800 p-4 rounded border border-red-500/30">
+                    <div className="bg-gray-50 p-4 rounded border border-red-500/30">
                       <Users className="h-5 w-5 text-amber-400 mb-2" />
                       <div className="text-sm text-slate-200 mb-1">Scope</div>
                       <div className="text-lg font-bold text-white">{energyDemoData.crisis.impactMetrics.scope}</div>
                     </div>
-                    <div className="bg-slate-800 p-4 rounded border border-red-500/30">
+                    <div className="bg-gray-50 p-4 rounded border border-red-500/30">
                       <Clock className="h-5 w-5 text-orange-400 mb-2" />
                       <div className="text-sm text-slate-200 mb-1">Response Window</div>
                       <div className="text-lg font-bold text-white">{energyDemoData.crisis.impactMetrics.timeWindow}</div>
                     </div>
-                    <div className="bg-slate-800 p-4 rounded border border-red-500/30">
+                    <div className="bg-gray-50 p-4 rounded border border-red-500/30">
                       <DollarSign className="h-5 w-5 text-red-400 mb-2" />
                       <div className="text-sm text-slate-200 mb-1">Financial Impact</div>
                       <div className="text-lg font-bold text-white">{energyDemoData.crisis.impactMetrics.financialImpact}</div>
@@ -135,7 +135,7 @@ export default function EnergyGridFailureDemo() {
             </Card>
 
             {/* Playbook */}
-            <Card className="p-8 bg-gradient-to-r from-amber-900 to-orange-900 border-amber-400 border-2">
+            <Card className="p-8 bg-gradient-to-r   border-amber-400 border-2">
               <div className="flex items-center gap-4 mb-4">
                 <div className="p-3 bg-amber-500 rounded-full">
                   <ShieldAlert className="h-6 w-6 text-white" />
@@ -158,7 +158,7 @@ export default function EnergyGridFailureDemo() {
                 Pre-configured emergency response coordinating federal agencies (DoE, FEMA, DHS), 247 substations, 
                 47 critical hospitals, and 2,500 field personnel for rapid grid stabilization.
               </p>
-              <div className="bg-slate-900/50 p-4 rounded">
+              <div className="bg-white p-4 rounded">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-amber-200">Preparedness Score</span>
                   <span className="text-2xl font-bold text-amber-400">{energyDemoData.playbook.preparednessScore}%</span>
@@ -196,7 +196,7 @@ export default function EnergyGridFailureDemo() {
         {/* ACT 1: AI Detection */}
         {currentAct === "detection" && (
           <div className="space-y-8 animate-in fade-in duration-500">
-            <Card className="p-8 bg-gradient-to-r from-red-950 to-orange-950 border-red-500 border-2">
+            <Card className="p-8 bg-gradient-to-r   border-red-500 border-2">
               <Activity className="h-12 w-12 text-red-400 mb-4" />
               <h2 className="text-3xl font-bold mb-4 text-white">
                 AI Grid Monitoring Detects Cascading Failure Risk
@@ -246,7 +246,7 @@ export default function EnergyGridFailureDemo() {
         {/* ACT 2: Coordinated Response */}
         {currentAct === "coordination" && (
           <div className="space-y-8 animate-in fade-in duration-500">
-            <Card className="p-8 bg-gradient-to-r from-amber-950 to-orange-950 border-amber-500 border-2">
+            <Card className="p-8 bg-gradient-to-r   border-amber-500 border-2">
               <Zap className="h-12 w-12 text-amber-400 mb-4" />
               <h2 className="text-3xl font-bold mb-4 text-white">
                 3-Hour Coordinated Response Across 2,500 Stakeholders
@@ -255,7 +255,7 @@ export default function EnergyGridFailureDemo() {
                 Watch Execution OS orchestrate grid stabilization across 247 substations, 47 hospitals, federal agencies, 
                 and 2,500 field personnel—executing load shedding and emergency repairs in parallel.
               </p>
-              <div className="bg-slate-900/50 p-4 rounded grid md:grid-cols-3 gap-4">
+              <div className="bg-white p-4 rounded grid md:grid-cols-3 gap-4">
                 <div>
                   <div className="text-sm text-amber-300 mb-1">Critical Facilities</div>
                   <div className="text-2xl font-bold text-white">47 Hospitals</div>
@@ -281,7 +281,7 @@ export default function EnergyGridFailureDemo() {
 
             {coordinationComplete && (
               <div className="space-y-6 animate-in fade-in duration-500">
-                <Card className="p-6 bg-gradient-to-r from-green-950 to-emerald-950 border-green-500 border-2">
+                <Card className="p-6 bg-gradient-to-r   border-green-500 border-2">
                   <CheckCircle className="h-12 w-12 text-green-400 mb-4 mx-auto" />
                   <h3 className="text-2xl font-bold text-center mb-4 text-white">
                     Grid Stabilized - Crisis Resolved
@@ -293,7 +293,7 @@ export default function EnergyGridFailureDemo() {
                 </Card>
 
                 <div className="grid md:grid-cols-3 gap-4">
-                  <Card className="p-6 bg-slate-900 border-amber-500">
+                  <Card className="p-6 bg-white border-amber-500">
                     <div className="text-center">
                       <Users className="h-8 w-8 text-amber-400 mx-auto mb-2" />
                       <div className="text-sm text-slate-200 mb-1">Tier 1: Crisis Command</div>
@@ -301,7 +301,7 @@ export default function EnergyGridFailureDemo() {
                       <div className="text-xs text-slate-200 mt-2">{energyDemoData.stakeholderTiers.tier1.description}</div>
                     </div>
                   </Card>
-                  <Card className="p-6 bg-slate-900 border-orange-500">
+                  <Card className="p-6 bg-white border-orange-500">
                     <div className="text-center">
                       <Activity className="h-8 w-8 text-orange-400 mx-auto mb-2" />
                       <div className="text-sm text-slate-200 mb-1">Tier 2: Field Execution</div>
@@ -309,7 +309,7 @@ export default function EnergyGridFailureDemo() {
                       <div className="text-xs text-slate-200 mt-2">{energyDemoData.stakeholderTiers.tier2.description}</div>
                     </div>
                   </Card>
-                  <Card className="p-6 bg-slate-900 border-red-500">
+                  <Card className="p-6 bg-white border-red-500">
                     <div className="text-center">
                       <ShieldAlert className="h-8 w-8 text-red-400 mx-auto mb-2" />
                       <div className="text-sm text-slate-200 mb-1">Tier 3: Network</div>
@@ -337,7 +337,7 @@ export default function EnergyGridFailureDemo() {
         {/* ACT 3: Outcome */}
         {currentAct === "outcome" && (
           <div className="space-y-8 animate-in fade-in duration-500">
-            <Card className="p-8 bg-gradient-to-r from-green-950 to-emerald-950 border-green-500 border-2">
+            <Card className="p-8 bg-gradient-to-r   border-green-500 border-2">
               <div className="text-center">
                 <CheckCircle className="h-16 w-16 text-green-400 mx-auto mb-4" />
                 <h2 className="text-4xl font-bold mb-4 text-white">
@@ -367,7 +367,7 @@ export default function EnergyGridFailureDemo() {
               bottomLine={energyDemoData.roiComparison.bottomLine}
             />
 
-            <Card className="p-8 bg-slate-900 border-amber-500">
+            <Card className="p-8 bg-white border-amber-500">
               <h3 className="text-2xl font-bold mb-4 text-white">The Execution OS Difference</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>

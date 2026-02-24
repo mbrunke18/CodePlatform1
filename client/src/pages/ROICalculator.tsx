@@ -148,7 +148,7 @@ export default function ROICalculator() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950">
+    <div className="min-h-screen bg-gradient-to-br ">
       <StandardNav />
       
       <div className="container mx-auto px-4 py-12">
@@ -167,7 +167,7 @@ export default function ROICalculator() {
             </p>
             
             {/* BAI Report Stat Highlight */}
-            <Card className="bg-gradient-to-r from-emerald-900/30 to-cyan-900/30 border-emerald-500/30 max-w-2xl mx-auto">
+            <Card className="bg-gradient-to-r   border-emerald-500/30 max-w-2xl mx-auto">
               <CardContent className="p-6">
                 <div className="flex items-center justify-center gap-8 flex-wrap">
                   <div className="text-center">
@@ -192,7 +192,7 @@ export default function ROICalculator() {
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Input Section */}
             <div className="space-y-6">
-              <Card className="bg-slate-900/50 border-slate-800">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <Building2 className="h-5 w-5 text-blue-400" />
@@ -206,7 +206,7 @@ export default function ROICalculator() {
                       value={inputs.companySize} 
                       onValueChange={(v) => setInputs({...inputs, companySize: v})}
                     >
-                      <SelectTrigger className="bg-slate-800 border-slate-700 text-white" data-testid="select-company-size">
+                      <SelectTrigger className="bg-gray-50 border-gray-200 text-white" data-testid="select-company-size">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -223,7 +223,7 @@ export default function ROICalculator() {
                       value={inputs.industry} 
                       onValueChange={(v) => setInputs({...inputs, industry: v})}
                     >
-                      <SelectTrigger className="bg-slate-800 border-slate-700 text-white" data-testid="select-industry">
+                      <SelectTrigger className="bg-gray-50 border-gray-200 text-white" data-testid="select-industry">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -254,7 +254,7 @@ export default function ROICalculator() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-900/50 border-slate-800">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <AlertTriangle className="h-5 w-5 text-amber-400" />
@@ -346,7 +346,7 @@ export default function ROICalculator() {
             {/* Results Section */}
             <div className="space-y-6">
               {/* ROI Summary Card */}
-              <Card className="bg-gradient-to-br from-green-950/50 to-emerald-950/50 border-green-500/30">
+              <Card className="bg-gradient-to-br   border-green-500/30">
                 <CardContent className="p-8">
                   <div className="text-center mb-6">
                     <div className="text-6xl font-bold text-green-400 mb-2">
@@ -356,13 +356,13 @@ export default function ROICalculator() {
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="bg-slate-800/50 rounded-lg p-4 text-center">
+                    <div className="bg-gray-50 rounded-lg p-4 text-center">
                       <div className="text-2xl font-bold text-white">
                         {formatCurrency(calculations.totalAnnualValue)}
                       </div>
                       <div className="text-sm text-slate-200">Total Annual Value</div>
                     </div>
-                    <div className="bg-slate-800/50 rounded-lg p-4 text-center">
+                    <div className="bg-gray-50 rounded-lg p-4 text-center">
                       <div className="text-2xl font-bold text-white">
                         {calculations.paybackMonths.toFixed(1)} mo
                       </div>
@@ -385,7 +385,7 @@ export default function ROICalculator() {
               </Card>
 
               {/* Executive Summary */}
-              <Card className="bg-slate-900/50 border-slate-800">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <Target className="h-5 w-5 text-cyan-400" />
@@ -416,7 +416,7 @@ export default function ROICalculator() {
                     </div>
                   </div>
 
-                  <div className="flex gap-3 pt-4 border-t border-slate-700">
+                  <div className="flex gap-3 pt-4 border-t border-gray-200">
                     <Button
                       variant="outline"
                       className="flex-1 border-slate-600 text-slate-200 hover:bg-slate-800"
@@ -438,7 +438,7 @@ export default function ROICalculator() {
               </Card>
 
               {/* Speed Improvement */}
-              <Card className="bg-slate-900/50 border-slate-800">
+              <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-lg font-semibold text-white flex items-center gap-2">
@@ -465,7 +465,7 @@ export default function ROICalculator() {
               </Card>
 
               {/* Value Breakdown */}
-              <Card className="bg-slate-900/50 border-slate-800">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <TrendingUp className="h-5 w-5 text-blue-400" />
@@ -473,7 +473,7 @@ export default function ROICalculator() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg">
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center gap-3">
                       <Clock className="h-5 w-5 text-blue-400" />
                       <div>
@@ -488,7 +488,7 @@ export default function ROICalculator() {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg">
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center gap-3">
                       <DollarSign className="h-5 w-5 text-green-400" />
                       <div>
@@ -503,7 +503,7 @@ export default function ROICalculator() {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg">
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center gap-3">
                       <Shield className="h-5 w-5 text-amber-400" />
                       <div>
@@ -518,7 +518,7 @@ export default function ROICalculator() {
                     </div>
                   </div>
 
-                  <div className="border-t border-slate-700 pt-4 mt-4">
+                  <div className="border-t border-gray-200 pt-4 mt-4">
                     <div className="flex items-center justify-between">
                       <div className="text-lg text-white font-semibold">Total Annual Value</div>
                       <div className="text-2xl font-bold text-green-400">
@@ -530,7 +530,7 @@ export default function ROICalculator() {
               </Card>
 
               {/* Industry Benchmarks */}
-              <Card className="bg-slate-900/50 border-slate-800">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <BarChart3 className="h-5 w-5 text-purple-400" />
@@ -541,7 +541,7 @@ export default function ROICalculator() {
                   <div className="overflow-x-auto">
                     <table className="w-full text-sm">
                       <thead>
-                        <tr className="border-b border-slate-700">
+                        <tr className="border-b border-gray-200">
                           <th className="text-left text-slate-300 pb-3 pr-4">Metric</th>
                           <th className="text-center text-slate-300 pb-3 px-2">Your Org</th>
                           <th className="text-center text-slate-300 pb-3 px-2">Industry Avg</th>
@@ -549,19 +549,19 @@ export default function ROICalculator() {
                         </tr>
                       </thead>
                       <tbody className="text-slate-200">
-                        <tr className="border-b border-slate-800">
+                        <tr className="border-b border-gray-200">
                           <td className="py-3 pr-4 text-white">Avg Response Time</td>
                           <td className="py-3 px-2 text-center text-red-400 font-semibold">{inputs.avgResponseTimeHours}h</td>
                           <td className="py-3 px-2 text-center text-amber-400">72h</td>
                           <td className="py-3 pl-2 text-center text-green-400 font-semibold">~2h</td>
                         </tr>
-                        <tr className="border-b border-slate-800">
+                        <tr className="border-b border-gray-200">
                           <td className="py-3 pr-4 text-white">Coordination Cost</td>
                           <td className="py-3 px-2 text-center text-red-400 font-semibold">{formatCurrency(calculations.currentCoordinationCostPerYear)}</td>
                           <td className="py-3 px-2 text-center text-amber-400">{formatCurrency(2400000)}</td>
                           <td className="py-3 pl-2 text-center text-green-400 font-semibold">{formatCurrency(calculations.mCoordinationCostPerYear)}</td>
                         </tr>
-                        <tr className="border-b border-slate-800">
+                        <tr className="border-b border-gray-200">
                           <td className="py-3 pr-4 text-white">Events Per Year</td>
                           <td className="py-3 px-2 text-center font-semibold">{inputs.strategicEventsPerYear}</td>
                           <td className="py-3 px-2 text-center text-amber-400">18</td>
@@ -588,7 +588,7 @@ export default function ROICalculator() {
 
           {/* Bottom CTA Section */}
           <div className="mt-16 max-w-4xl mx-auto">
-            <Card className="bg-gradient-to-r from-blue-950/80 via-indigo-950/80 to-purple-950/80 border-blue-500/30 overflow-hidden relative">
+            <Card className="bg-gradient-to-r  border-blue-500/30 overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-indigo-500/10 to-purple-500/5" />
               <CardContent className="p-10 text-center relative z-10">
                 <h2 className="text-3xl font-bold text-white mb-3">
@@ -618,7 +618,7 @@ export default function ROICalculator() {
                   </Button>
                 </div>
 
-                <p className="text-sm text-slate-400">
+                <p className="text-sm text-gray-600">
                   Founding Partner Pilot: $75K, 100% credited to Year 1
                 </p>
               </CardContent>

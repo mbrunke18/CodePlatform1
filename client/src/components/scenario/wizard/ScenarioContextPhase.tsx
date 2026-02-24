@@ -89,7 +89,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
             placeholder="e.g., Supply Chain Disruption - Asia Pacific"
             value={data.name}
             onChange={(e) => onChange({ name: e.target.value })}
-            className="bg-slate-800 border-slate-600 text-white mt-2"
+            className="bg-gray-50 border-slate-600 text-white mt-2"
           />
           <p className="text-xs text-gray-300 mt-1">Use clear, descriptive names that your team will recognize</p>
         </div>
@@ -102,7 +102,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
             placeholder="What is this scenario about?"
             value={data.description}
             onChange={(e) => onChange({ description: e.target.value })}
-            className="bg-slate-800 border-slate-600 text-white mt-2 min-h-[80px]"
+            className="bg-gray-50 border-slate-600 text-white mt-2 min-h-[80px]"
           />
         </div>
       </div>
@@ -131,7 +131,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
                   className={`p-4 rounded-lg border-2 text-left transition-all ${
                     isSelected
                       ? 'border-blue-500 bg-blue-950/30'
-                      : 'border-slate-700 bg-slate-900/50 hover:border-slate-600'
+                      : 'border-gray-200 bg-white hover:border-slate-600'
                   }`}
                 >
                   <div className="flex items-center gap-2 mb-2">
@@ -158,7 +158,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
             placeholder="e.g., Maintain 95% fulfillment rate during supplier disruptions"
             value={data.mission}
             onChange={(e) => onChange({ mission: e.target.value })}
-            className="bg-slate-800 border-slate-600 text-white mt-2"
+            className="bg-gray-50 border-slate-600 text-white mt-2"
           />
           <p className="text-xs text-gray-300 mt-1">Clear, measurable objective this scenario should achieve</p>
         </div>
@@ -170,7 +170,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
             Time Horizon <Badge variant="outline" className="text-xs">Required</Badge>
           </Label>
           <Select value={data.timeHorizon} onValueChange={(value) => onChange({ timeHorizon: value })}>
-            <SelectTrigger className="bg-slate-800 border-slate-600 text-white" data-testid="select-time-horizon">
+            <SelectTrigger className="bg-gray-50 border-slate-600 text-white" data-testid="select-time-horizon">
               <SelectValue placeholder="Select time horizon" />
             </SelectTrigger>
             <SelectContent>
@@ -195,7 +195,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
             value={data.businessImpactCategory} 
             onValueChange={(value) => onChange({ businessImpactCategory: value })}
           >
-            <SelectTrigger className="bg-slate-800 border-slate-600 text-white" data-testid="select-business-impact">
+            <SelectTrigger className="bg-gray-50 border-slate-600 text-white" data-testid="select-business-impact">
               <SelectValue placeholder="Select primary impact" />
             </SelectTrigger>
             <SelectContent>
@@ -213,7 +213,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
       </div>
 
       {/* Optional: Organizational Context */}
-      <details className="border border-slate-700 rounded-lg p-4 bg-slate-900/30">
+      <details className="border border-gray-200 rounded-lg p-4 bg-white">
         <summary className="cursor-pointer text-white font-medium">
           Advanced: Organizational Context (Optional)
         </summary>
@@ -226,7 +226,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
               placeholder="e.g., Supply Chain Operations"
               value={data.primaryBusinessUnit}
               onChange={(e) => onChange({ primaryBusinessUnit: e.target.value })}
-              className="bg-slate-800 border-slate-600 text-white mt-2"
+              className="bg-gray-50 border-slate-600 text-white mt-2"
             />
           </div>
 
@@ -238,7 +238,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
               placeholder="Provide additional background, history, or relevant context..."
               value={data.narrativeContext}
               onChange={(e) => onChange({ narrativeContext: e.target.value })}
-              className="bg-slate-800 border-slate-600 text-white mt-2 min-h-[100px]"
+              className="bg-gray-50 border-slate-600 text-white mt-2 min-h-[100px]"
             />
           </div>
         </div>

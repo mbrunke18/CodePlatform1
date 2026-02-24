@@ -26,7 +26,7 @@ export function CrisisResolvedCelebration() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-in fade-in duration-500" data-testid="crisis-resolved-celebration">
-      <Card className="bg-gradient-to-br from-emerald-950 via-green-900 to-emerald-950 border-emerald-500 shadow-2xl max-w-2xl animate-in zoom-in duration-500">
+      <Card className="bg-gradient-to-br    border-emerald-500 shadow-2xl max-w-2xl animate-in zoom-in duration-500">
         <div className="p-8 space-y-6 text-center">
           {/* Success Icon */}
           <div className="flex justify-center">

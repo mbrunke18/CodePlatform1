@@ -75,7 +75,7 @@ const PRIORITY_CONFIG = {
   critical: { label: "Critical", color: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400" },
   high: { label: "High", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
   medium: { label: "Medium", color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400" },
-  low: { label: "Low", color: "bg-slate-100 text-slate-400 dark:bg-slate-800 dark:text-slate-300" },
+  low: { label: "Low", color: "bg-slate-100 text-gray-600 dark:bg-slate-800 dark:text-slate-300" },
 };
 
 export default function PlaybookManagement() {
@@ -153,7 +153,7 @@ export default function PlaybookManagement() {
             <h1 className="text-3xl font-bold text-slate-900 dark:text-white" data-testid="text-page-title">
               Playbook Management
             </h1>
-            <p className="text-slate-400 dark:text-slate-300 mt-1">
+            <p className="text-gray-600 dark:text-slate-300 mt-1">
               Create, customize, and manage your organization's strategic playbooks
             </p>
           </div>
@@ -172,7 +172,7 @@ export default function PlaybookManagement() {
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                  <FileText className="h-5 w-5 text-slate-400 dark:text-slate-300" />
+                  <FileText className="h-5 w-5 text-gray-600 dark:text-slate-300" />
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white">{stats.total}</p>
@@ -211,10 +211,10 @@ export default function PlaybookManagement() {
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                  <Edit className="h-5 w-5 text-slate-400" />
+                  <Edit className="h-5 w-5 text-gray-600" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-slate-400">{stats.draft}</p>
+                  <p className="text-2xl font-bold text-gray-600">{stats.draft}</p>
                   <p className="text-sm text-slate-300">Drafts</p>
                 </div>
               </div>
@@ -323,7 +323,7 @@ export default function PlaybookManagement() {
                       <TableCell>
                         <div className="flex items-center gap-3">
                           <div className={`p-2 rounded-lg ${categoryConfig?.bg || 'bg-slate-100 dark:bg-slate-800'}`}>
-                            <CategoryIcon className={`h-4 w-4 ${categoryConfig?.color || 'text-slate-400'}`} />
+                            <CategoryIcon className={`h-4 w-4 ${categoryConfig?.color || 'text-gray-600'}`} />
                           </div>
                           <div>
                             <p className="font-medium text-slate-900 dark:text-white">{playbook.name}</p>
@@ -348,7 +348,7 @@ export default function PlaybookManagement() {
                       </TableCell>
                       <TableCell className="text-right">
                         {playbook.totalBudget ? (
-                          <span className="text-slate-400 dark:text-slate-300" data-testid={`text-budget-${playbook.id}`}>
+                          <span className="text-gray-600 dark:text-slate-300" data-testid={`text-budget-${playbook.id}`}>
                             ${Number(playbook.totalBudget).toLocaleString()}
                           </span>
                         ) : (
@@ -356,7 +356,7 @@ export default function PlaybookManagement() {
                         )}
                       </TableCell>
                       <TableCell className="text-right">
-                        <span className="text-slate-400 dark:text-slate-300" data-testid={`text-uses-${playbook.id}`}>
+                        <span className="text-gray-600 dark:text-slate-300" data-testid={`text-uses-${playbook.id}`}>
                           {playbook.timesUsed || 0}
                         </span>
                       </TableCell>

@@ -144,8 +144,8 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
   };
 
   return (
-    <div className="relative w-full min-h-[600px] md:min-h-[700px] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden" data-testid="cinematic-hero">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent" />
+    <div className="relative w-full min-h-[600px] md:min-h-[700px] overflow-hidden" data-testid="cinematic-hero">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))]  via-transparent to-transparent" />
       
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />

@@ -204,7 +204,7 @@ export default function OneClickDemo() {
   // Idle state - show the start button
   if (demoState === 'idle' && !isFullscreen) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950">
+      <div className="min-h-screen bg-gradient-to-br ">
         <StandardNav />
         
         <div className="container mx-auto px-4 py-20">
@@ -224,19 +224,19 @@ export default function OneClickDemo() {
             </p>
 
             <div className="grid md:grid-cols-3 gap-6 mb-12">
-              <Card className="bg-slate-800/50 border-slate-700">
+              <Card className="bg-gray-50 border-gray-200">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl font-bold text-red-400 mb-2">2.4M</div>
                   <div className="text-sm text-slate-200">Customers Impacted</div>
                 </CardContent>
               </Card>
-              <Card className="bg-slate-800/50 border-slate-700">
+              <Card className="bg-gray-50 border-gray-200">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl font-bold text-amber-400 mb-2">$50M</div>
                   <div className="text-sm text-slate-200">Potential Fine</div>
                 </CardContent>
               </Card>
-              <Card className="bg-slate-800/50 border-slate-700">
+              <Card className="bg-gray-50 border-gray-200">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl font-bold text-green-400 mb-2">12 min</div>
                   <div className="text-sm text-slate-200">Target Response Time</div>
@@ -267,11 +267,11 @@ export default function OneClickDemo() {
 
   // Running/Paused/Complete state - fullscreen demo view
   return (
-    <div className="fixed inset-0 bg-slate-950 z-50 overflow-auto">
+    <div className="fixed inset-0 bg-white z-50 overflow-auto">
       {showConfetti && <Confetti recycle={false} numberOfPieces={500} />}
       
       {/* Header */}
-      <div className="bg-slate-900/90 border-b border-slate-800 sticky top-0 z-10">
+      <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -325,7 +325,7 @@ export default function OneClickDemo() {
           
           {/* Left Column - Task Feed */}
           <div className="lg:col-span-2 space-y-4">
-            <Card className="bg-slate-900/50 border-slate-800">
+            <Card className="bg-white border-gray-200">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-semibold text-white flex items-center gap-2">
@@ -343,8 +343,8 @@ export default function OneClickDemo() {
                       key={task.id}
                       className={`border-l-4 ${getTaskBorderColor(task.type)} pl-4 py-2 rounded-r transition-all duration-300 ${
                         task.completed 
-                          ? 'bg-slate-800/50 opacity-100' 
-                          : 'bg-slate-900/30 opacity-40'
+                          ? 'bg-gray-50 opacity-100' 
+                          : 'bg-white opacity-40'
                       }`}
                       data-testid={`task-${task.id}`}
                     >
@@ -368,7 +368,7 @@ export default function OneClickDemo() {
           {/* Right Column - Stakeholders & Stats */}
           <div className="space-y-4">
             {/* Stakeholder Status */}
-            <Card className="bg-slate-900/50 border-slate-800">
+            <Card className="bg-white border-gray-200">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-semibold text-white flex items-center gap-2">
@@ -387,7 +387,7 @@ export default function OneClickDemo() {
                       className={`flex items-center justify-between p-2 rounded transition-all duration-300 ${
                         stakeholder.acknowledged 
                           ? 'bg-green-500/10 border border-green-500/30' 
-                          : 'bg-slate-800/30'
+                          : 'bg-gray-50'
                       }`}
                       data-testid={`stakeholder-${stakeholder.id}`}
                     >
@@ -414,7 +414,7 @@ export default function OneClickDemo() {
             </Card>
 
             {/* Live Metrics */}
-            <Card className="bg-slate-900/50 border-slate-800">
+            <Card className="bg-white border-gray-200">
               <CardContent className="p-4 space-y-4">
                 <h3 className="text-lg font-semibold text-white flex items-center gap-2">
                   <TrendingUp className="h-5 w-5 text-emerald-400" />
@@ -422,19 +422,19 @@ export default function OneClickDemo() {
                 </h3>
                 
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="bg-slate-800/50 rounded-lg p-3 text-center">
+                  <div className="bg-gray-50 rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-blue-400">{completedTasks}</div>
                     <div className="text-xs text-slate-300">Tasks Complete</div>
                   </div>
-                  <div className="bg-slate-800/50 rounded-lg p-3 text-center">
+                  <div className="bg-gray-50 rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-green-400">{acknowledgedCount}</div>
                     <div className="text-xs text-slate-300">Stakeholders Active</div>
                   </div>
-                  <div className="bg-slate-800/50 rounded-lg p-3 text-center">
+                  <div className="bg-gray-50 rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-amber-400">$500K</div>
                     <div className="text-xs text-slate-300">Budget Released</div>
                   </div>
-                  <div className="bg-slate-800/50 rounded-lg p-3 text-center">
+                  <div className="bg-gray-50 rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-purple-400">2.4M</div>
                     <div className="text-xs text-slate-300">Customers Notified</div>
                   </div>
@@ -446,7 +446,7 @@ export default function OneClickDemo() {
 
         {/* Completion Card */}
         {demoState === 'complete' && (
-          <Card className="mt-6 bg-gradient-to-r from-green-950/50 to-emerald-950/50 border-green-500/30">
+          <Card className="mt-6 bg-gradient-to-r   border-green-500/30">
             <CardContent className="p-8 text-center">
               <div className="flex justify-center mb-4">
                 <div className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center">
@@ -460,19 +460,19 @@ export default function OneClickDemo() {
               </p>
               
               <div className="grid md:grid-cols-4 gap-4 mb-8">
-                <div className="bg-slate-800/50 rounded-lg p-4">
+                <div className="bg-gray-50 rounded-lg p-4">
                   <div className="text-3xl font-bold text-green-400">340X</div>
                   <div className="text-sm text-slate-200">Faster Response</div>
                 </div>
-                <div className="bg-slate-800/50 rounded-lg p-4">
+                <div className="bg-gray-50 rounded-lg p-4">
                   <div className="text-3xl font-bold text-blue-400">$47M</div>
                   <div className="text-sm text-slate-200">Fine Avoided</div>
                 </div>
-                <div className="bg-slate-800/50 rounded-lg p-4">
+                <div className="bg-gray-50 rounded-lg p-4">
                   <div className="text-3xl font-bold text-amber-400">47</div>
                   <div className="text-sm text-slate-200">Tasks Coordinated</div>
                 </div>
-                <div className="bg-slate-800/50 rounded-lg p-4">
+                <div className="bg-gray-50 rounded-lg p-4">
                   <div className="text-3xl font-bold text-purple-400">8</div>
                   <div className="text-sm text-slate-200">Executives Aligned</div>
                 </div>

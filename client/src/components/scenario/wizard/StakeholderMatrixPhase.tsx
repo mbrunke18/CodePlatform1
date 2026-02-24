@@ -83,7 +83,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
       )}
 
       {/* Add Stakeholder Form */}
-      <Card className="border-blue-500/30 bg-slate-900/50">
+      <Card className="border-blue-500/30 bg-white">
         <CardContent className="p-6">
           <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
             <Plus className="h-5 w-5 text-blue-400" />
@@ -99,7 +99,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
                 placeholder="e.g., Sarah Chen"
                 value={newStakeholder.name}
                 onChange={(e) => setNewStakeholder({ ...newStakeholder, name: e.target.value })}
-                className="bg-slate-800 border-slate-600 text-white mt-2"
+                className="bg-gray-50 border-slate-600 text-white mt-2"
               />
             </div>
 
@@ -111,7 +111,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
                 placeholder="e.g., COO"
                 value={newStakeholder.title}
                 onChange={(e) => setNewStakeholder({ ...newStakeholder, title: e.target.value })}
-                className="bg-slate-800 border-slate-600 text-white mt-2"
+                className="bg-gray-50 border-slate-600 text-white mt-2"
               />
             </div>
 
@@ -124,7 +124,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
                 placeholder="e.g., sarah.chen@company.com"
                 value={newStakeholder.email}
                 onChange={(e) => setNewStakeholder({ ...newStakeholder, email: e.target.value })}
-                className="bg-slate-800 border-slate-600 text-white mt-2"
+                className="bg-gray-50 border-slate-600 text-white mt-2"
               />
             </div>
 
@@ -134,7 +134,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
                 value={newStakeholder.role} 
                 onValueChange={(value: any) => setNewStakeholder({ ...newStakeholder, role: value })}
               >
-                <SelectTrigger className="bg-slate-800 border-slate-600 text-white mt-2" data-testid="select-stakeholder-role">
+                <SelectTrigger className="bg-gray-50 border-slate-600 text-white mt-2" data-testid="select-stakeholder-role">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -162,7 +162,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
                 value={newStakeholder.influenceLevel} 
                 onValueChange={(value: any) => setNewStakeholder({ ...newStakeholder, influenceLevel: value })}
               >
-                <SelectTrigger className="bg-slate-800 border-slate-600 text-white mt-2" data-testid="select-influence-level">
+                <SelectTrigger className="bg-gray-50 border-slate-600 text-white mt-2" data-testid="select-influence-level">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -226,7 +226,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
               const influenceConfig = INFLUENCE_LEVELS.find(l => l.value === stakeholder.influenceLevel);
 
               return (
-                <Card key={stakeholder.id} className="border-slate-700">
+                <Card key={stakeholder.id} className="border-gray-200">
                   <CardContent className="p-4">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">

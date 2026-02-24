@@ -102,7 +102,7 @@ function MarkdownRenderer({ content }: { content: string }) {
           return <h1 key={idx} className="text-2xl font-bold text-white mt-6 mb-4">{line.slice(2)}</h1>;
         }
         if (line.startsWith('## ')) {
-          return <h2 key={idx} className="text-xl font-bold text-white mt-6 mb-3 border-b border-slate-700 pb-2">{line.slice(3)}</h2>;
+          return <h2 key={idx} className="text-xl font-bold text-white mt-6 mb-3 border-b border-gray-200 pb-2">{line.slice(3)}</h2>;
         }
         if (line.startsWith('### ')) {
           return <h3 key={idx} className="text-lg font-semibold text-emerald-400 mt-4 mb-2">{line.slice(4)}</h3>;
@@ -123,7 +123,7 @@ function MarkdownRenderer({ content }: { content: string }) {
           const cells = line.split(' | ').map(c => c.replace(/^\||\|$/g, '').trim());
           const isHeader = lines[idx + 1]?.includes('---');
           return (
-            <div key={idx} className={`grid gap-2 py-2 border-b border-slate-800 ${isHeader ? 'font-semibold text-white' : 'text-slate-200'}`} style={{ gridTemplateColumns: `repeat(${cells.length}, minmax(0, 1fr))` }}>
+            <div key={idx} className={`grid gap-2 py-2 border-b border-gray-200 ${isHeader ? 'font-semibold text-white' : 'text-slate-200'}`} style={{ gridTemplateColumns: `repeat(${cells.length}, minmax(0, 1fr))` }}>
               {cells.map((cell, i) => <div key={i} className="text-sm">{cell}</div>)}
             </div>
           );
@@ -132,7 +132,7 @@ function MarkdownRenderer({ content }: { content: string }) {
           return null;
         }
         if (line.startsWith('---')) {
-          return <hr key={idx} className="border-slate-700 my-6" />;
+          return <hr key={idx} className="border-gray-200 my-6" />;
         }
         if (line.trim() === '') {
           return <div key={idx} className="h-2" />;
@@ -140,7 +140,7 @@ function MarkdownRenderer({ content }: { content: string }) {
         const formattedLine = line
           .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>')
           .replace(/\*(.*?)\*/g, '<em>$1</em>')
-          .replace(/`(.*?)`/g, '<code class="bg-slate-800 px-1 rounded text-emerald-400">$1</code>');
+          .replace(/`(.*?)`/g, '<code class="bg-gray-50 px-1 rounded text-emerald-400">$1</code>');
         return <p key={idx} className="text-slate-300 my-1" dangerouslySetInnerHTML={{ __html: formattedLine }} />;
       })}
     </div>
@@ -161,7 +161,7 @@ export default function RoadshowResources() {
   const activeDocument = DOCUMENTS.find(d => d.id === activeDoc);
 
   return (
-    <div className="min-h-screen bg-slate-950">
+    <div className="min-h-screen bg-white">
       <StandardNav />
       
       <div className="max-w-7xl mx-auto px-6 py-8">
@@ -186,7 +186,7 @@ export default function RoadshowResources() {
             {KEY_STATS.map((stat) => (
               <Card 
                 key={stat.label}
-                className="bg-slate-900/50 border-slate-700 cursor-pointer hover:border-slate-500 transition-all group"
+                className="bg-white border-gray-200 cursor-pointer hover:border-slate-500 transition-all group"
                 onClick={() => copyToClipboard(stat.value, stat.label)}
                 data-testid={`card-stat-${stat.label.toLowerCase().replace(/\s+/g, '-')}`}
               >
@@ -218,10 +218,10 @@ export default function RoadshowResources() {
                 return (
                   <Card 
                     key={doc.id}
-                    className={`bg-slate-900/50 border cursor-pointer transition-all ${
+                    className={`bg-white border cursor-pointer transition-all ${
                       activeDoc === doc.id 
                         ? 'border-emerald-500 bg-emerald-950/20' 
-                        : 'border-slate-700 hover:border-slate-500'
+                        : 'border-gray-200 hover:border-slate-500'
                     }`}
                     onClick={() => setActiveDoc(doc.id)}
                     data-testid={`card-doc-${doc.id}`}
@@ -267,8 +267,8 @@ export default function RoadshowResources() {
 
           <div className="lg:col-span-3">
             {activeDocument && (
-              <Card className="bg-slate-900 border-slate-700">
-                <CardHeader className="border-b border-slate-700">
+              <Card className="bg-white border-gray-200">
+                <CardHeader className="border-b border-gray-200">
                   <div className="flex items-center gap-4">
                     <div className={`p-3 rounded-xl bg-gradient-to-br ${activeDocument.color}`}>
                       <activeDocument.icon className="h-6 w-6 text-white" />
@@ -302,7 +302,7 @@ export default function RoadshowResources() {
           </div>
         </div>
 
-        <Card className="mt-8 bg-gradient-to-r from-purple-950/50 to-blue-950/50 border-purple-500/30">
+        <Card className="mt-8 bg-gradient-to-r   border-purple-500/30">
           <CardContent className="p-6">
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div>

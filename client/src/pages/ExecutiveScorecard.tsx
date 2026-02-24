@@ -104,7 +104,7 @@ function MetricCard({
           <Button 
             variant="ghost" 
             size="sm"
-            className="w-full justify-between text-slate-400 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 -mx-2"
+            className="w-full justify-between text-gray-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 -mx-2"
           >
             {action}
             <ChevronRight className="h-4 w-4" />

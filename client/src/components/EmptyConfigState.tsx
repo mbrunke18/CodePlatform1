@@ -87,7 +87,7 @@ export default function EmptyConfigState({
   const Icon = info.icon;
   
   return (
-    <Card className="border-dashed border-2 border-slate-700 bg-slate-900/50">
+    <Card className="border-dashed border-2 border-gray-200 bg-white">
       <CardContent className="flex flex-col items-center justify-center py-12 text-center">
         <div className={`w-16 h-16 rounded-full ${info.bgColor} flex items-center justify-center mb-4`}>
           <Icon className={`h-8 w-8 ${info.color}`} />
@@ -112,7 +112,7 @@ export default function EmptyConfigState({
 
 export function QuickSetupBanner() {
   return (
-    <Card className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 border-blue-500/30">
+    <Card className="bg-gradient-to-r   border-blue-500/30">
       <CardContent className="flex items-center justify-between py-4">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">

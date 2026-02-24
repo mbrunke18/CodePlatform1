@@ -315,7 +315,7 @@ export default function CustomerDemo() {
   const StageIcon = currentStage.icon;
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
       <StandardNav />
       
       {showConfetti && <Confetti recycle={false} numberOfPieces={200} />}
@@ -335,7 +335,7 @@ export default function CustomerDemo() {
           </div>
 
           {/* Playback Controls */}
-          <Card className="bg-slate-900/80 border-slate-700 mb-6">
+          <Card className="bg-white border-gray-200 mb-6">
             <CardContent className="p-4">
               <div className="flex items-center justify-between flex-wrap gap-4">
                 <div className="flex items-center gap-3">
@@ -396,7 +396,7 @@ export default function CustomerDemo() {
                     ))}
                   </div>
                   
-                  <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-lg">
+                  <div className="flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-lg">
                     <Clock className="h-4 w-4 text-slate-200" />
                     <span className="text-white font-mono text-sm">
                       {Math.floor(elapsedTime / 60)}:{(elapsedTime % 60).toString().padStart(2, '0')}
@@ -424,7 +424,7 @@ export default function CustomerDemo() {
                 className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   idx === currentStageIndex
                     ? `${stage.phaseColor} text-white`
-                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                    : 'bg-gray-50 text-slate-300 hover:bg-slate-700'
                 }`}
                 data-testid={`button-stage-${idx}`}
               >
@@ -435,8 +435,8 @@ export default function CustomerDemo() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 space-y-6">
-              <Card className="bg-slate-900 border-slate-700">
-                <CardHeader className="border-b border-slate-700 pb-4">
+              <Card className="bg-white border-gray-200">
+                <CardHeader className="border-b border-gray-200 pb-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <Badge className={`${currentStage.phaseColor} text-white`}>
@@ -509,7 +509,7 @@ export default function CustomerDemo() {
                       
                       <div className="grid grid-cols-3 gap-4 mb-6">
                         {currentStage.metrics.map((metric, idx) => (
-                          <div key={idx} className="bg-slate-800/50 rounded-lg p-4 text-center">
+                          <div key={idx} className="bg-gray-50 rounded-lg p-4 text-center">
                             <div className="text-2xl font-bold text-white mb-1">{metric.value}</div>
                             <div className="text-xs text-slate-300">{metric.label}</div>
                           </div>
@@ -536,7 +536,7 @@ export default function CustomerDemo() {
 
                       {/* Smart Defaults Panel */}
                       {currentStage.smartDefaults && (
-                        <div className="bg-slate-800/50 rounded-lg p-4 mb-4">
+                        <div className="bg-gray-50 rounded-lg p-4 mb-4">
                           <div className="flex items-center gap-2 mb-3">
                             <Settings className="h-4 w-4 text-violet-400" />
                             <span className="font-medium text-white">{currentStage.smartDefaults.title}</span>
@@ -573,7 +573,7 @@ export default function CustomerDemo() {
                           </div>
                           
                           {/* Pilot Program Options */}
-                          <div className="bg-slate-800/50 rounded-lg p-4">
+                          <div className="bg-gray-50 rounded-lg p-4">
                             <p className="text-white font-medium mb-3">Start With a Founding Partner Pilot</p>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                               <div className="p-3 bg-emerald-900/30 rounded-lg border border-emerald-500/30">
@@ -582,12 +582,12 @@ export default function CustomerDemo() {
                                 <div className="text-emerald-400 text-sm font-medium">$75K</div>
                                 <div className="text-xs text-emerald-400/70">100% credited to Year 1</div>
                               </div>
-                              <div className="p-3 bg-slate-700/50 rounded-lg border border-slate-600">
+                              <div className="p-3 bg-gray-50 rounded-lg border border-slate-600">
                                 <div className="text-sm font-medium text-white mb-1">Enterprise</div>
                                 <div className="text-xs text-slate-300 mb-2">Single domain</div>
                                 <div className="text-blue-400 text-sm font-medium">$250K/yr</div>
                               </div>
-                              <div className="p-3 bg-slate-700/50 rounded-lg border border-blue-500/30">
+                              <div className="p-3 bg-gray-50 rounded-lg border border-blue-500/30">
                                 <div className="text-sm font-medium text-white mb-1">Enterprise Plus</div>
                                 <div className="text-xs text-slate-300 mb-2">Multi-domain</div>
                                 <div className="text-blue-400 text-sm font-medium">$450K/yr</div>
@@ -630,7 +630,7 @@ export default function CustomerDemo() {
 
             <div className="space-y-6">
               {/* Value Recovered */}
-              <Card className="bg-gradient-to-br from-emerald-900/40 to-slate-900 border-emerald-500/30">
+              <Card className="bg-gradient-to-br border-emerald-500/30">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-lg text-white flex items-center gap-2">
                     <TrendingUp className="h-5 w-5 text-emerald-400" />
@@ -656,7 +656,7 @@ export default function CustomerDemo() {
 
               {/* Stakeholder Response - only show during EXECUTE */}
               {currentStageIndex >= 3 && (
-                <Card className="bg-slate-900 border-slate-700">
+                <Card className="bg-white border-gray-200">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-lg text-white flex items-center gap-2">
                       <Users className="h-5 w-5 text-blue-400" />
@@ -671,7 +671,7 @@ export default function CustomerDemo() {
                           <div 
                             key={idx}
                             className={`p-2 rounded-lg flex items-center gap-2 transition-all ${
-                              isAcknowledged ? 'bg-emerald-900/30' : 'bg-slate-800/30'
+                              isAcknowledged ? 'bg-emerald-900/30' : 'bg-gray-50'
                             }`}
                           >
                             <div className={`w-2 h-2 rounded-full ${isAcknowledged ? 'bg-emerald-400' : 'bg-slate-600'}`} />
@@ -684,7 +684,7 @@ export default function CustomerDemo() {
                         );
                       })}
                     </div>
-                    <div className="mt-3 pt-3 border-t border-slate-700">
+                    <div className="mt-3 pt-3 border-t border-gray-200">
                       <div className="flex justify-between text-sm">
                         <span className="text-slate-300">Acknowledged</span>
                         <span className="text-white font-medium">{acknowledgedStakeholders.length} / {STAKEHOLDER_ACKNOWLEDGMENTS.length}</span>
@@ -696,7 +696,7 @@ export default function CustomerDemo() {
               )}
 
               {/* Pilot Options */}
-              <Card className="bg-slate-900 border-slate-700">
+              <Card className="bg-white border-gray-200">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-lg text-white flex items-center gap-2">
                     <Target className="h-5 w-5 text-violet-400" />
@@ -705,11 +705,11 @@ export default function CustomerDemo() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
-                    <div className="p-3 bg-slate-800/50 rounded-lg">
+                    <div className="p-3 bg-gray-50 rounded-lg">
                       <div className="text-sm font-medium text-white mb-1">90-Day Proof of Concept</div>
                       <div className="text-xs text-slate-300">Single domain, 20 playbooks, 1 live execution</div>
                     </div>
-                    <div className="p-3 bg-slate-800/50 rounded-lg">
+                    <div className="p-3 bg-gray-50 rounded-lg">
                       <div className="text-sm font-medium text-white mb-1">Domain Pilot</div>
                       <div className="text-xs text-slate-300">Full domain, all playbooks, 3 live executions</div>
                     </div>

@@ -53,8 +53,8 @@ function KPICard({
       <StatusDot status={status} />
       <div>
         <div className={`text-lg sm:text-2xl font-bold ${statusColors[status]}`}>{value}</div>
-        <div className="text-xs sm:text-xs text-slate-400 dark:text-slate-300">{label}</div>
-        {trend && <div className="text-xs text-slate-400 dark:text-slate-300 hidden sm:block">{trend}</div>}
+        <div className="text-xs sm:text-xs text-gray-600 dark:text-slate-300">{label}</div>
+        {trend && <div className="text-xs text-gray-600 dark:text-slate-300 hidden sm:block">{trend}</div>}
       </div>
     </div>
   );
@@ -122,13 +122,13 @@ function PhaseCard({
             <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200" />
           </div>
           <CardTitle className="text-sm sm:text-lg text-slate-900 dark:text-white">{title}</CardTitle>
-          <p className="text-xs sm:text-sm text-slate-400 dark:text-slate-300 line-clamp-2">{description}</p>
+          <p className="text-xs sm:text-sm text-gray-600 dark:text-slate-300 line-clamp-2">{description}</p>
         </CardHeader>
         <CardContent className="p-3 sm:p-6 pt-0 sm:pt-0">
           <div className="space-y-1 sm:space-y-2">
             {metrics.map((metric, i) => (
               <div key={i} className="flex justify-between items-center">
-                <span className="text-xs sm:text-sm text-slate-400 dark:text-slate-300">{metric.label}</span>
+                <span className="text-xs sm:text-sm text-gray-600 dark:text-slate-300">{metric.label}</span>
                 <span className={`text-xs sm:text-sm font-semibold ${metric.highlight ? c.iconColor : 'text-slate-900 dark:text-white'}`}>
                   {metric.value}
                 </span>
@@ -161,7 +161,7 @@ function ActivityItem({
   const colors = {
     alert: 'text-amber-500 bg-amber-100 dark:bg-amber-900/30',
     activation: 'text-blue-500 bg-blue-100 dark:bg-blue-900/30',
-    update: 'text-slate-400 bg-slate-100 dark:bg-slate-800',
+    update: 'text-gray-600 bg-slate-100 dark:bg-slate-800',
     success: 'text-emerald-500 bg-emerald-100 dark:bg-emerald-900/30'
   };
 
@@ -176,7 +176,7 @@ function ActivityItem({
       <div className="flex-1 min-w-0">
         <p className="text-sm font-medium text-slate-900 dark:text-white truncate">{title}</p>
         <div className="flex items-center gap-2 mt-0.5">
-          <span className="text-xs text-slate-400 dark:text-slate-300">{time}</span>
+          <span className="text-xs text-gray-600 dark:text-slate-300">{time}</span>
           {status && (
             <Badge variant="outline" className="text-xs py-0 h-5">{status}</Badge>
           )}
@@ -259,12 +259,12 @@ export default function Dashboard() {
                     <h1 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white">Strategic Command Center</h1>
                     <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-0.5">
                       <StatusDot status={overallStatus} />
-                      <span className="text-xs sm:text-sm text-slate-400 dark:text-slate-300">
+                      <span className="text-xs sm:text-sm text-gray-600 dark:text-slate-300">
                         {overallStatus === 'good' ? 'All Systems Operational' :
                          overallStatus === 'warning' ? 'Attention Required' : 'Action Needed'}
                       </span>
                       <span className="text-xs text-slate-600 dark:text-slate-200 hidden sm:inline">•</span>
-                      <span className="text-xs sm:text-xs text-slate-400 dark:text-slate-300">
+                      <span className="text-xs sm:text-xs text-gray-600 dark:text-slate-300">
                         {isConnected ? 'Live' : 'Reconnecting...'}
                       </span>
                     </div>
@@ -441,7 +441,7 @@ export default function Dashboard() {
                       </div>
                       <div className="text-left">
                         <div className="font-medium text-sm">Run Live Demo</div>
-                        <div className="text-xs text-slate-400 dark:text-slate-300">Experience a 12-min activation</div>
+                        <div className="text-xs text-gray-600 dark:text-slate-300">Experience a 12-min activation</div>
                       </div>
                     </Button>
                   </Link>
@@ -453,7 +453,7 @@ export default function Dashboard() {
                       </div>
                       <div className="text-left">
                         <div className="font-medium text-sm">Browse Playbooks</div>
-                        <div className="text-xs text-slate-400 dark:text-slate-300">170 strategic templates</div>
+                        <div className="text-xs text-gray-600 dark:text-slate-300">170 strategic templates</div>
                       </div>
                     </Button>
                   </Link>
@@ -465,7 +465,7 @@ export default function Dashboard() {
                       </div>
                       <div className="text-left">
                         <div className="font-medium text-sm">Configure Triggers</div>
-                        <div className="text-xs text-slate-400 dark:text-slate-300">Set up AI monitoring</div>
+                        <div className="text-xs text-gray-600 dark:text-slate-300">Set up AI monitoring</div>
                       </div>
                     </Button>
                   </Link>
@@ -477,7 +477,7 @@ export default function Dashboard() {
                       </div>
                       <div className="text-left">
                         <div className="font-medium text-sm">Preparedness Report</div>
-                        <div className="text-xs text-slate-400 dark:text-slate-300">Full readiness analysis</div>
+                        <div className="text-xs text-gray-600 dark:text-slate-300">Full readiness analysis</div>
                       </div>
                     </Button>
                   </Link>
@@ -487,7 +487,7 @@ export default function Dashboard() {
           </div>
 
           {/* Footer */}
-          <p className="text-center text-xs text-slate-400 dark:text-slate-300 pt-2">
+          <p className="text-center text-xs text-gray-600 dark:text-slate-300 pt-2">
             Data refreshes automatically • Last updated just now
           </p>
         </div>

@@ -113,7 +113,7 @@ export default function WorkspaceIdentify() {
                     Execution OS Playbook™
                   </Badge>
                 </div>
-                <p className="text-slate-400 dark:text-slate-300 mt-1">
+                <p className="text-gray-600 dark:text-slate-300 mt-1">
                   Build, customize, and manage strategic playbooks for every scenario
                 </p>
               </div>
@@ -184,7 +184,7 @@ export default function WorkspaceIdentify() {
                   </div>
                   <div className="space-y-1">
                     {category.domains.map((domain) => (
-                      <p key={domain} className="text-sm text-slate-400 dark:text-slate-300">• {domain}</p>
+                      <p key={domain} className="text-sm text-gray-600 dark:text-slate-300">• {domain}</p>
                     ))}
                   </div>
                 </CardContent>
@@ -206,9 +206,9 @@ export default function WorkspaceIdentify() {
                       <h4 className="font-semibold text-slate-900 dark:text-white">M&A Integration Playbook #12</h4>
                       <Badge className="bg-emerald-500/20 text-emerald-600 border-emerald-500/30">Active</Badge>
                     </div>
-                    <p className="text-sm text-slate-400 dark:text-slate-300 mt-0.5">Updated 2 hours ago by Sarah Chen</p>
+                    <p className="text-sm text-gray-600 dark:text-slate-300 mt-0.5">Updated 2 hours ago by Sarah Chen</p>
                   </div>
-                  <Clock className="h-4 w-4 text-slate-400 dark:text-slate-500 flex-shrink-0" />
+                  <Clock className="h-4 w-4 text-gray-600 dark:text-slate-500 flex-shrink-0" />
                 </div>
               </CardContent>
             </Card>
@@ -223,9 +223,9 @@ export default function WorkspaceIdentify() {
                       <h4 className="font-semibold text-slate-900 dark:text-white">Crisis Response Playbook #31</h4>
                       <Badge className="bg-red-500/20 text-red-600 border-red-500/30">Triggered</Badge>
                     </div>
-                    <p className="text-sm text-slate-400 dark:text-slate-300 mt-0.5">Activated Feb 3 via automated trigger</p>
+                    <p className="text-sm text-gray-600 dark:text-slate-300 mt-0.5">Activated Feb 3 via automated trigger</p>
                   </div>
-                  <Clock className="h-4 w-4 text-slate-400 dark:text-slate-500 flex-shrink-0" />
+                  <Clock className="h-4 w-4 text-gray-600 dark:text-slate-500 flex-shrink-0" />
                 </div>
               </CardContent>
             </Card>
@@ -240,9 +240,9 @@ export default function WorkspaceIdentify() {
                       <h4 className="font-semibold text-slate-900 dark:text-white">Product Launch Playbook #45</h4>
                       <Badge className="bg-amber-500/20 text-amber-600 border-amber-500/30">In Review</Badge>
                     </div>
-                    <p className="text-sm text-slate-400 dark:text-slate-300 mt-0.5">Draft review pending from 3 stakeholders</p>
+                    <p className="text-sm text-gray-600 dark:text-slate-300 mt-0.5">Draft review pending from 3 stakeholders</p>
                   </div>
-                  <Users className="h-4 w-4 text-slate-400 dark:text-slate-500 flex-shrink-0" />
+                  <Users className="h-4 w-4 text-gray-600 dark:text-slate-500 flex-shrink-0" />
                 </div>
               </CardContent>
             </Card>
@@ -266,7 +266,7 @@ export default function WorkspaceIdentify() {
                           </h3>
                           <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200 group-hover:text-poise-gold transition-colors" />
                         </div>
-                        <p className="text-sm text-slate-400 dark:text-slate-300 mt-1">
+                        <p className="text-sm text-gray-600 dark:text-slate-300 mt-1">
                           {tool.description}
                         </p>
                         <Badge variant="outline" className="mt-3 text-xs">
@@ -290,7 +290,7 @@ export default function WorkspaceIdentify() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 dark:text-white">Ready for the next phase?</h3>
-                    <p className="text-sm text-slate-400 dark:text-slate-300">
+                    <p className="text-sm text-gray-600 dark:text-slate-300">
                       Once your playbooks are ready, set up signal monitoring in DETECT
                     </p>
                   </div>

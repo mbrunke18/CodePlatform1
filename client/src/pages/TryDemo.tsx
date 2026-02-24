@@ -92,7 +92,7 @@ const INDUSTRY_DEMOS: IndustryDemo[] = [
   { id: 'lvmh', title: 'Strategic Market Entry', industry: 'Luxury', icon: Crown, iconColor: 'text-purple-400', bgColor: 'bg-purple-900/30', organization: 'LVMH', impact: '€1.68B value', route: '/lvmh-demo', type: 'offensive' },
   { id: 'shein', title: 'Viral Trend Response', industry: 'Fashion', icon: TrendingUp, iconColor: 'text-pink-400', bgColor: 'bg-pink-900/30', organization: 'SHEIN', impact: '$108M revenue', route: '/shein-demo', type: 'offensive' },
   { id: 'spacex', title: 'Launch Acceleration', industry: 'Aerospace', icon: Rocket, iconColor: 'text-blue-400', bgColor: 'bg-blue-900/30', organization: 'SpaceX', impact: '$47M value', route: '/spacex-demo', type: 'offensive' },
-  { id: 'financial', title: 'Ransomware Response', industry: 'Finance', icon: Shield, iconColor: 'text-blue-400', bgColor: 'bg-slate-800/50', organization: 'LoanDepot', impact: '$22M saved', route: '/financial-demo', type: 'defensive' },
+  { id: 'financial', title: 'Ransomware Response', industry: 'Finance', icon: Shield, iconColor: 'text-blue-400', bgColor: 'bg-gray-50', organization: 'LoanDepot', impact: '$22M saved', route: '/financial-demo', type: 'defensive' },
   { id: 'pharma', title: 'Class I Recall', industry: 'Pharma', icon: Pill, iconColor: 'text-red-400', bgColor: 'bg-red-900/30', organization: 'Glenmark', impact: 'Lives saved', route: '/pharma-demo', type: 'defensive' },
   { id: 'manufacturing', title: 'Supplier Crisis', industry: 'Automotive', icon: Factory, iconColor: 'text-orange-400', bgColor: 'bg-orange-900/30', organization: 'Toyota', impact: '$450M saved', route: '/manufacturing-demo', type: 'defensive' },
   { id: 'retail', title: 'Food Contamination', industry: 'Retail', icon: ShoppingCart, iconColor: 'text-green-400', bgColor: 'bg-green-900/30', organization: 'Walmart', impact: '$245M + lives', route: '/retail-demo', type: 'defensive' },
@@ -509,7 +509,7 @@ export default function TryDemo() {
                   return (
                     <Card 
                       key={scenario.id}
-                      className={`bg-slate-900/50 border-2 ${scenario.borderColor} cursor-pointer transition-all hover:shadow-xl hover:scale-[1.02] group`}
+                      className={`bg-white border-2 ${scenario.borderColor} cursor-pointer transition-all hover:shadow-xl hover:scale-[1.02] group`}
                       onClick={() => startDemo(scenario)}
                     >
                       <CardContent className="p-6">
@@ -539,7 +539,7 @@ export default function TryDemo() {
               </div>
 
               {/* Industry Demos Teaser */}
-              <div className="mt-8 pt-6 border-t border-slate-800">
+              <div className="mt-8 pt-6 border-t border-gray-200">
                 <div className="text-center">
                   <p className="text-sm text-slate-200 mb-3">
                     Want to see real company scenarios? Explore our industry deep-dives:
@@ -554,7 +554,7 @@ export default function TryDemo() {
                             setLocation(demo.route);
                             window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
                           }}
-                          className="flex items-center gap-2 px-3 py-2 bg-slate-800/50 border border-slate-700 rounded-lg hover:border-poise-teal/50 transition-colors text-sm"
+                          className="flex items-center gap-2 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg hover:border-poise-teal/50 transition-colors text-sm"
                         >
                           <IconComponent className={`h-4 w-4 ${demo.iconColor}`} />
                           <span className="text-slate-200">{demo.organization}</span>
@@ -600,7 +600,7 @@ export default function TryDemo() {
                     </CardContent>
                   </Card>
 
-                  <Card className="bg-slate-900/50 border-slate-700">
+                  <Card className="bg-white border-gray-200">
                     <CardContent className="p-4">
                       <div className="text-center">
                         <p className="text-xs text-slate-200 uppercase tracking-wide mb-1">Time Elapsed</p>
@@ -614,10 +614,10 @@ export default function TryDemo() {
                     </CardContent>
                   </Card>
 
-                  <Card className="bg-slate-900/50 border-slate-700">
+                  <Card className="bg-white border-gray-200">
                     <CardContent className="p-4">
                       <p className="text-xs text-slate-200 uppercase tracking-wide mb-2">Stress Level</p>
-                      <Progress value={stressLevel} className="h-3 bg-slate-800" />
+                      <Progress value={stressLevel} className="h-3 bg-gray-50" />
                       <p className="text-xs text-orange-400 mt-2 text-center">
                         {stressLevel < 50 ? 'Escalating' : stressLevel < 80 ? 'Critical' : 'Overwhelming'}
                       </p>
@@ -632,8 +632,8 @@ export default function TryDemo() {
 
                 {/* Center: Message Flood */}
                 <div className="lg:col-span-2">
-                  <Card className="bg-slate-900/50 border-slate-700 h-[450px] overflow-hidden">
-                    <CardHeader className="border-b border-slate-700 py-3">
+                  <Card className="bg-white border-gray-200 h-[450px] overflow-hidden">
+                    <CardHeader className="border-b border-gray-200 py-3">
                       <div className="flex items-center justify-between">
                         <CardTitle className="text-lg text-white flex items-center gap-2">
                           <MessageSquare className="h-5 w-5 text-red-400" />
@@ -655,7 +655,7 @@ export default function TryDemo() {
                               style={{ animationDelay: `${index * 50}ms` }}
                             >
                               <div className="flex items-start gap-3">
-                                <div className="p-2 bg-slate-800/50 rounded-lg">
+                                <div className="p-2 bg-gray-50 rounded-lg">
                                   <IconComponent className="h-4 w-4" />
                                 </div>
                                 <div className="flex-1 min-w-0">
@@ -686,7 +686,7 @@ export default function TryDemo() {
                     )}
                     {showChaosComplete && (
                       <div className="flex-1 space-y-3">
-                        <div className="p-4 bg-slate-800/50 border border-slate-600 rounded-lg text-center">
+                        <div className="p-4 bg-gray-50 border border-slate-600 rounded-lg text-center">
                           <p className="text-slate-200 text-sm mb-1">This is what happens WITHOUT Execution OS</p>
                           <p className="text-white font-medium">Chaos. Confusion. Costly delays.</p>
                         </div>
@@ -740,8 +740,8 @@ export default function TryDemo() {
                         isCurrent 
                           ? `${colors.bg} ${colors.border}` 
                           : isCompleted 
-                            ? 'bg-slate-800/50 border-emerald-500/50' 
-                            : 'bg-slate-900/30 border-slate-700/50'
+                            ? 'bg-gray-50 border-emerald-500/50' 
+                            : 'bg-white border-gray-200'
                       }`}
                     >
                       <div className="flex items-center gap-2">
@@ -766,7 +766,7 @@ export default function TryDemo() {
                 {/* Main Phase Card */}
                 <div>
                   {currentPhase === 'identify' && (
-                    <Card className="bg-slate-900 border-slate-700">
+                    <Card className="bg-white border-gray-200">
                       <CardHeader>
                         <CardTitle className="text-white flex items-center gap-2">
                           <BookOpen className="h-5 w-5 text-violet-400" />
@@ -809,7 +809,7 @@ export default function TryDemo() {
                           </p>
                         </div>
 
-                        <div className="p-3 bg-slate-800/50 rounded-lg">
+                        <div className="p-3 bg-gray-50 rounded-lg">
                           <p className="text-sm text-slate-200">
                             <span className="text-red-400 font-medium">Without Execution OS:</span> 20-50 hours to coordinate a response team, find documents, and get budget approval.
                           </p>
@@ -827,7 +827,7 @@ export default function TryDemo() {
                   )}
 
                   {currentPhase === 'detect' && (
-                    <Card className="bg-slate-900 border-slate-700">
+                    <Card className="bg-white border-gray-200">
                       <CardHeader>
                         <CardTitle className="text-white flex items-center gap-2">
                           <Radar className="h-5 w-5 text-blue-400" />
@@ -879,7 +879,7 @@ export default function TryDemo() {
                   )}
 
                   {currentPhase === 'execute' && (
-                    <Card className="bg-slate-900 border-slate-700">
+                    <Card className="bg-white border-gray-200">
                       <CardHeader>
                         <CardTitle className="text-white flex items-center gap-2">
                           <Radio className="h-5 w-5 text-emerald-400" />
@@ -905,7 +905,7 @@ export default function TryDemo() {
                             return (
                               <div 
                                 key={step.id}
-                                className="flex items-start gap-3 p-3 bg-slate-800/50 rounded-lg border-l-4 border-emerald-500 animate-in slide-in-from-left"
+                                className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border-l-4 border-emerald-500 animate-in slide-in-from-left"
                               >
                                 <div className="p-2 bg-emerald-500/20 rounded-lg">
                                   <IconComponent className="h-4 w-4 text-emerald-400" />
@@ -913,7 +913,7 @@ export default function TryDemo() {
                                 <div className="flex-1">
                                   <div className="flex items-center gap-2">
                                     <p className="text-white font-medium text-sm">{step.title}</p>
-                                    <div className="p-1 bg-slate-700 rounded">
+                                    <div className="p-1 bg-gray-50 rounded">
                                       {getIntegrationIcon(step.integration)}
                                     </div>
                                   </div>
@@ -936,7 +936,7 @@ export default function TryDemo() {
                   )}
 
                   {currentPhase === 'advance' && (
-                    <Card className="bg-slate-900 border-slate-700">
+                    <Card className="bg-white border-gray-200">
                       <CardHeader>
                         <CardTitle className="text-white flex items-center gap-2">
                           <BarChart3 className="h-5 w-5 text-amber-400" />
@@ -979,7 +979,7 @@ export default function TryDemo() {
                               </h4>
                               <div className="space-y-2">
                                 {learnings.successPatterns?.map((pattern: any, i: number) => (
-                                  <div key={i} className="p-2 bg-slate-800/50 rounded text-xs">
+                                  <div key={i} className="p-2 bg-gray-50 rounded text-xs">
                                     <span className="text-white font-medium">{pattern.category}:</span>
                                     <span className="text-slate-200 ml-1">{pattern.insight}</span>
                                   </div>
@@ -994,7 +994,7 @@ export default function TryDemo() {
 
                   {currentPhase === 'complete' && (
                     <div className="space-y-6">
-                      <Card className="bg-gradient-to-br from-emerald-900/50 to-teal-900/50 border-emerald-500/50">
+                      <Card className="bg-gradient-to-br   border-emerald-500/50">
                         <CardContent className="p-8 text-center">
                           <div className="mb-6">
                             <div className="inline-flex p-4 bg-emerald-500/20 rounded-full mb-4">
@@ -1005,15 +1005,15 @@ export default function TryDemo() {
                           </div>
 
                           <div className="grid grid-cols-3 gap-4 mb-6">
-                            <div className="p-4 bg-slate-800/50 rounded-lg">
+                            <div className="p-4 bg-gray-50 rounded-lg">
                               <p className="text-2xl font-bold text-emerald-400">12 min</p>
                               <p className="text-xs text-slate-200">Response Time</p>
                             </div>
-                            <div className="p-4 bg-slate-800/50 rounded-lg">
+                            <div className="p-4 bg-gray-50 rounded-lg">
                               <p className="text-2xl font-bold text-emerald-400">{formatCurrency(selectedScenario?.dealValue || 0)}</p>
                               <p className="text-xs text-slate-200">Value Protected</p>
                             </div>
-                            <div className="p-4 bg-slate-800/50 rounded-lg">
+                            <div className="p-4 bg-gray-50 rounded-lg">
                               <p className="text-2xl font-bold text-emerald-400">98 days</p>
                               <p className="text-xs text-slate-200">Saved (IBM 2024)</p>
                             </div>
@@ -1043,7 +1043,7 @@ export default function TryDemo() {
                       </Card>
 
                       {/* Industry Deep-Dive Demos */}
-                      <Card className="bg-slate-900/80 border-slate-700">
+                      <Card className="bg-white border-gray-200">
                         <CardHeader className="pb-4">
                           <div className="flex items-center justify-between">
                             <div>
@@ -1108,7 +1108,7 @@ export default function TryDemo() {
                               );
                             })}
                           </div>
-                          <div className="mt-4 pt-4 border-t border-slate-700 text-center">
+                          <div className="mt-4 pt-4 border-t border-gray-200 text-center">
                             <p className="text-xs text-slate-300">Click any scenario above to explore the full demo</p>
                           </div>
                         </CardContent>
@@ -1120,7 +1120,7 @@ export default function TryDemo() {
                 {/* Sidebar */}
                 <div className="space-y-4">
                   {/* Value Comparison */}
-                  <Card className="bg-slate-900/50 border-slate-700">
+                  <Card className="bg-white border-gray-200">
                     <CardHeader className="pb-2">
                       <CardTitle className="text-sm text-white">Response Comparison</CardTitle>
                     </CardHeader>
@@ -1141,7 +1141,7 @@ export default function TryDemo() {
                   </Card>
 
                   {/* Enterprise Integrations */}
-                  <Card className="bg-slate-900/50 border-slate-700">
+                  <Card className="bg-white border-gray-200">
                     <CardHeader className="pb-2">
                       <CardTitle className="text-sm text-white">Integrated With Your Stack</CardTitle>
                     </CardHeader>
@@ -1154,7 +1154,7 @@ export default function TryDemo() {
                           { icon: SiSalesforce, name: 'Salesforce', color: '#00A1E0' },
                           { icon: SiNotion, name: 'Notion', color: '#FFFFFF' },
                         ].map(({ icon: Icon, name, color }) => (
-                          <div key={name} className="flex items-center gap-1.5 px-2 py-1 bg-slate-800 rounded text-xs">
+                          <div key={name} className="flex items-center gap-1.5 px-2 py-1 bg-gray-50 rounded text-xs">
                             <Icon className="h-3.5 w-3.5" style={{ color }} />
                             <span className="text-slate-200">{name}</span>
                           </div>
@@ -1164,7 +1164,7 @@ export default function TryDemo() {
                   </Card>
 
                   {/* Research Citations */}
-                  <Card className="bg-slate-900/50 border-slate-700">
+                  <Card className="bg-white border-gray-200">
                     <CardHeader className="pb-2">
                       <CardTitle className="text-sm text-white">Research-Backed Claims</CardTitle>
                     </CardHeader>
@@ -1185,7 +1185,7 @@ export default function TryDemo() {
                   </Card>
 
                   {/* 170 Playbooks */}
-                  <Card className="bg-gradient-to-br from-amber-900/30 to-orange-900/30 border-amber-500/30">
+                  <Card className="bg-gradient-to-br   border-amber-500/30">
                     <CardContent className="p-4 text-center">
                       <p className="text-4xl font-bold text-amber-400 mb-1">170</p>
                       <p className="text-sm text-amber-200">Pre-Built Playbooks</p>
@@ -1200,7 +1200,7 @@ export default function TryDemo() {
       </main>
 
       {/* See It In Your Industry Section */}
-      <section className="bg-gradient-to-b from-background to-slate-900/80 border-t border-slate-700/50 py-16 px-6">
+      <section className="bg-gradient-to-b from-backgroundborder-t border-gray-200 py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold text-white mb-3">See It In Your Industry</h2>

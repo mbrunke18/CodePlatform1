@@ -129,7 +129,7 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
               <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
                 Define Phase Timeframes
               </h3>
-              <p className="text-sm text-slate-400 dark:text-slate-300">
+              <p className="text-sm text-gray-600 dark:text-slate-300">
                 Executive-defined SLAs set clear expectations for each phase and create accountability. 
                 These timeframes become your organizational standard for measuring execution velocity.
               </p>
@@ -363,7 +363,7 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
             <p className="text-slate-700 dark:text-slate-200">
               Most companies claim "fast execution." Your team will prove it with auditable SLA compliance metrics.
             </p>
-            <div className="text-xs text-slate-400 dark:text-slate-300 mt-3">
+            <div className="text-xs text-gray-600 dark:text-slate-300 mt-3">
               Marketing example: <em>"We guarantee crisis response initiation within 5 minutes—and we track it."</em>
             </div>
           </div>

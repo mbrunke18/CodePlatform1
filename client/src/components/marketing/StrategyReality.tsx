@@ -8,7 +8,7 @@ export function StrategyReality() {
       label: "WORK AROUND",
       description: "Executive Buy-in, Stakeholder Negotiations",
       blocks: 10,
-      color: "bg-slate-700",
+      color: "bg-gray-50",
     },
     {
       label: "WORK BEFORE",
@@ -45,18 +45,18 @@ export function StrategyReality() {
       label: "WORK BEYOND",
       description: "Repetition, Coordination, Iteration",
       blocks: 12,
-      color: "bg-slate-700",
+      color: "bg-gray-50",
     },
     {
       label: "WORK AFTER",
       description: "Tracking Outcomes, KPIs, Feedback, Retros",
       blocks: 10,
-      color: "bg-slate-700",
+      color: "bg-gray-50",
     },
   ];
 
   return (
-    <section className="py-20 px-4 bg-slate-950" data-testid="strategy-reality-section">
+    <section className="py-20 px-4 bg-white" data-testid="strategy-reality-section">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -97,7 +97,7 @@ export function StrategyReality() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               className={`flex items-center gap-4 p-4 rounded-lg ${
-                item.highlight ? "bg-slate-900/50 border border-pink-500/30" : "bg-slate-900/30"
+                item.highlight ? "bg-white border border-pink-500/30" : "bg-white"
               }`}
               data-testid={`work-block-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
             >
@@ -139,7 +139,7 @@ export function StrategyReality() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-4 bg-slate-900 border border-slate-800 rounded-2xl px-8 py-6">
+          <div className="inline-flex items-center gap-4 bg-white border border-gray-200 rounded-2xl px-8 py-6">
             <div className="text-left">
               <p className="text-3xl font-bold text-white mb-1">
                 The strategy is <span className="text-pink-500">5%</span> of the work.
@@ -158,7 +158,7 @@ export function StrategyReality() {
           viewport={{ once: true }}
           className="grid md:grid-cols-2 gap-8"
         >
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+          <div className="bg-white border border-gray-200 rounded-2xl p-8">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-2 bg-red-500/10 rounded-lg">
                 <Clock className="w-6 h-6 text-red-500" />
@@ -190,7 +190,7 @@ export function StrategyReality() {
             </ul>
           </div>
 
-          <div className="bg-gradient-to-br from-slate-900 to-slate-900/50 border border-emerald-500/30 rounded-2xl p-8">
+          <div className=" border border-emerald-500/30 rounded-2xl p-8">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-2 bg-emerald-500/10 rounded-lg">
                 <Target className="w-6 h-6 text-emerald-500" />
@@ -247,21 +247,21 @@ export function StrategyReality() {
 
 export function StrategyRealityCompact() {
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6" data-testid="strategy-reality-compact">
+    <div className="bg-white border border-gray-200 rounded-2xl p-6" data-testid="strategy-reality-compact">
       <h3 className="text-lg font-bold text-white mb-4">
         Why It's Never Just "The Strategy"
       </h3>
       
       <div className="space-y-2 mb-6">
         {[
-          { label: "Work Around", width: "w-full", color: "bg-slate-700" },
+          { label: "Work Around", width: "w-full", color: "bg-gray-50" },
           { label: "Work Before", width: "w-3/5", color: "bg-slate-600" },
           { label: "Work to Align", width: "w-2/5", color: "bg-slate-600" },
           { label: "Strategy", width: "w-1/6", color: "bg-pink-500", highlight: true },
           { label: "Work to Share", width: "w-2/5", color: "bg-slate-600" },
           { label: "Work to Implement", width: "w-4/5", color: "bg-slate-600" },
-          { label: "Work Beyond", width: "w-full", color: "bg-slate-700" },
-          { label: "Work After", width: "w-4/5", color: "bg-slate-700" },
+          { label: "Work Beyond", width: "w-full", color: "bg-gray-50" },
+          { label: "Work After", width: "w-4/5", color: "bg-gray-50" },
         ].map((item) => (
           <div key={item.label} className="flex items-center gap-3">
             <span className={`text-xs ${item.highlight ? 'text-pink-500' : 'text-slate-300'} w-24`}>
@@ -272,7 +272,7 @@ export function StrategyRealityCompact() {
         ))}
       </div>
 
-      <div className="border-t border-slate-800 pt-4">
+      <div className="border-t border-gray-200 pt-4">
         <p className="text-sm text-slate-300">
           <span className="text-pink-500 font-bold">5%</span> strategy.{" "}
           <span className="text-white font-bold">95%</span> execution ecosystem.
@@ -287,7 +287,7 @@ export function StrategyRealityCompact() {
 
 export function StrategyRealityHero() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-slate-950 px-4 py-20" data-testid="strategy-reality-hero">
+    <section className="min-h-screen flex items-center justify-center bg-white px-4 py-20" data-testid="strategy-reality-hero">
       <div className="max-w-5xl mx-auto text-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -320,7 +320,7 @@ export function StrategyRealityHero() {
             {Array.from({ length: 19 }).map((_, i) => (
               <div
                 key={i}
-                className="w-4 h-12 md:w-6 md:h-16 bg-slate-700 rounded"
+                className="w-4 h-12 md:w-6 md:h-16 bg-gray-50 rounded"
               />
             ))}
           </div>
@@ -339,7 +339,7 @@ export function StrategyRealityHero() {
             <p className="text-slate-300 text-sm">Industry Average</p>
           </div>
           
-          <ArrowRight className="w-8 h-8 text-slate-400" />
+          <ArrowRight className="w-8 h-8 text-gray-600" />
           
           <div className="text-left">
             <p className="text-4xl md:text-5xl font-bold text-emerald-500">12m</p>
@@ -403,7 +403,7 @@ export function StrategyToIDEA() {
   ];
 
   return (
-    <section className="py-20 px-4 bg-slate-950" data-testid="strategy-to-idea-section">
+    <section className="py-20 px-4 bg-white" data-testid="strategy-to-idea-section">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -427,7 +427,7 @@ export function StrategyToIDEA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`bg-slate-900 border ${item.borderColor} rounded-2xl p-6`}
+              className={`bg-white border ${item.borderColor} rounded-2xl p-6`}
               data-testid={`idea-phase-${item.phase.toLowerCase()}`}
             >
               <div className="flex items-center gap-3 mb-4">
@@ -448,7 +448,7 @@ export function StrategyToIDEA() {
                   {item.traditionalWork.map((work) => (
                     <span
                       key={work}
-                      className="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded"
+                      className="text-xs bg-gray-50 text-slate-300 px-2 py-1 rounded"
                     >
                       {work}
                     </span>
@@ -472,7 +472,7 @@ export function StrategyToIDEA() {
 
 export default function StrategyRealityPage() {
   return (
-    <div className="bg-slate-950 min-h-screen">
+    <div className="bg-white min-h-screen">
       <StrategyRealityHero />
       <StrategyReality />
       <StrategyToIDEA />

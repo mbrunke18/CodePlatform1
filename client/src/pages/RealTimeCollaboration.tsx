@@ -358,7 +358,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
 
         {/* Live Status Overview */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Active Sessions</h3>
@@ -369,7 +369,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Team Online</h3>
@@ -380,7 +380,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Live Updates</h3>
@@ -391,7 +391,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-white">Decisions Today</h3>
@@ -405,12 +405,12 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
 
         {/* Main Collaboration Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="bg-slate-800/50 border border-slate-700/50">
-            <TabsTrigger value="dashboard" className="data-[state=active]:bg-slate-700">Live Dashboard</TabsTrigger>
-            <TabsTrigger value="sessions" className="data-[state=active]:bg-slate-700">Active Sessions</TabsTrigger>
-            <TabsTrigger value="team" className="data-[state=active]:bg-slate-700">Team Status</TabsTrigger>
-            <TabsTrigger value="messages" className="data-[state=active]:bg-slate-700">Live Feed</TabsTrigger>
-            <TabsTrigger value="decisions" className="data-[state=active]:bg-slate-700">Decision Tracking</TabsTrigger>
+          <TabsList className="bg-gray-50 border border-gray-200">
+            <TabsTrigger value="dashboard" className="data-[state=active]:bg-gray-50">Live Dashboard</TabsTrigger>
+            <TabsTrigger value="sessions" className="data-[state=active]:bg-gray-50">Active Sessions</TabsTrigger>
+            <TabsTrigger value="team" className="data-[state=active]:bg-gray-50">Team Status</TabsTrigger>
+            <TabsTrigger value="messages" className="data-[state=active]:bg-gray-50">Live Feed</TabsTrigger>
+            <TabsTrigger value="decisions" className="data-[state=active]:bg-gray-50">Decision Tracking</TabsTrigger>
           </TabsList>
 
           {/* Live Dashboard */}
@@ -418,7 +418,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               
               {/* Real-Time Activity Feed */}
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <Activity className="h-5 w-5" />
@@ -427,7 +427,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                 </CardHeader>
                 <CardContent className="space-y-4 max-h-96 overflow-y-auto">
                   {liveUpdates.slice(0, 8).map((update) => (
-                    <div key={update.id} className="p-3 bg-slate-800/50 rounded-lg border border-slate-600/50">
+                    <div key={update.id} className="p-3 bg-gray-50 rounded-lg border border-slate-600/50">
                       <div className="flex items-start justify-between mb-2">
                         <div className="flex items-center gap-2">
                           <Badge className={getPriorityColor(update.priority)}>
@@ -447,7 +447,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
               </Card>
 
               {/* Quick Communication */}
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <MessageSquare className="h-5 w-5" />
@@ -461,7 +461,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                       value={newMessage}
                       onChange={(e) => setNewMessage(e.target.value)}
                       onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-                      className="bg-slate-800 border-slate-600 text-white"
+                      className="bg-gray-50 border-slate-600 text-white"
                     />
                     <Button onClick={sendMessage} className="bg-blue-600 hover:bg-blue-700">
                       <Send className="w-4 h-4" />
@@ -495,7 +495,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
           <TabsContent value="sessions" className="space-y-6">
             <div className="space-y-4">
               {collaborationSessions.map((session) => (
-                <Card key={session.id} className="bg-slate-900/50 border-slate-700/50">
+                <Card key={session.id} className="bg-white border-gray-200">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1 page-background">
@@ -524,11 +524,11 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                             <div key={participant.id} className="flex items-center gap-3">
                               <div className="relative">
                                 <Avatar className="h-8 w-8">
-                                  <AvatarFallback className="bg-slate-700 text-white text-xs">
+                                  <AvatarFallback className="bg-gray-50 text-white text-xs">
                                     {participant.name.split(' ').map(n => n[0]).join('')}
                                   </AvatarFallback>
                                 </Avatar>
-                                <div className={`absolute -bottom-1 -right-1 w-3 h-3 ${getStatusColor(participant.status)} rounded-full border border-slate-900`} />
+                                <div className={`absolute -bottom-1 -right-1 w-3 h-3 ${getStatusColor(participant.status)} rounded-full border border-gray-200`} />
                               </div>
                               <div>
                                 <div className="text-sm font-medium text-white">{participant.name}</div>
@@ -568,7 +568,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                       )}
                     </div>
                     
-                    <div className="mt-6 pt-4 border-t border-slate-700 flex gap-3">
+                    <div className="mt-6 pt-4 border-t border-gray-200 flex gap-3">
                       <Button className="bg-blue-600 hover:bg-blue-700">
                         <Video className="w-4 h-4 mr-2" />
                         Join Session
@@ -592,16 +592,16 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
           <TabsContent value="team" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {teamMembers.map((member) => (
-                <Card key={member.id} className="bg-slate-900/50 border-slate-700/50">
+                <Card key={member.id} className="bg-white border-gray-200">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4 mb-4">
                       <div className="relative">
                         <Avatar className="h-12 w-12">
-                          <AvatarFallback className="bg-slate-700 text-white">
+                          <AvatarFallback className="bg-gray-50 text-white">
                             {member.name.split(' ').map(n => n[0]).join('')}
                           </AvatarFallback>
                         </Avatar>
-                        <div className={`absolute -bottom-1 -right-1 w-4 h-4 ${getStatusColor(member.status)} rounded-full border-2 border-slate-900`} />
+                        <div className={`absolute -bottom-1 -right-1 w-4 h-4 ${getStatusColor(member.status)} rounded-full border-2 border-gray-200`} />
                       </div>
                       <div className="flex-1 page-background">
                         <h3 className="font-semibold text-white">{member.name}</h3>
@@ -649,7 +649,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
 
           {/* Live Feed */}
           <TabsContent value="messages" className="space-y-6">
-            <Card className="bg-slate-900/50 border-slate-700/50">
+            <Card className="bg-white border-gray-200">
               <CardHeader>
                 <CardTitle className="text-white">Live Communication Feed</CardTitle>
               </CardHeader>
@@ -660,7 +660,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                     value={newMessage}
                     onChange={(e) => setNewMessage(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-                    className="bg-slate-800 border-slate-600 text-white"
+                    className="bg-gray-50 border-slate-600 text-white"
                   />
                   <Button onClick={sendMessage} className="bg-blue-600 hover:bg-blue-700">
                     <Send className="w-4 h-4" />
@@ -669,7 +669,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                 
                 <div className="space-y-3 max-h-96 overflow-y-auto">
                   {liveUpdates.map((update) => (
-                    <div key={update.id} className="p-4 bg-slate-800/50 rounded-lg">
+                    <div key={update.id} className="p-4 bg-gray-50 rounded-lg">
                       <div className="flex items-start justify-between mb-2">
                         <div className="flex items-center gap-2">
                           <span className="font-medium text-white text-sm">{update.user}</span>
@@ -699,7 +699,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
           {/* Decision Tracking */}
           <TabsContent value="decisions" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <Target className="h-5 w-5" />
@@ -707,7 +707,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <div className="p-3 bg-slate-800/50 rounded-lg">
+                  <div className="p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-white font-medium">Digital Transformation Budget</span>
                       <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">APPROVED</Badge>
@@ -716,7 +716,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                     <div className="text-xs text-slate-300 mt-1">Decided by: Chief Executive Officer</div>
                   </div>
                   
-                  <div className="p-3 bg-slate-800/50 rounded-lg">
+                  <div className="p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-white font-medium">APAC Market Expansion</span>
                       <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">APPROVED</Badge>
@@ -727,7 +727,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-900/50 border-slate-700/50">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <Clock className="h-5 w-5" />
@@ -735,7 +735,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <div className="p-3 bg-slate-800/50 rounded-lg">
+                  <div className="p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-white font-medium">Q3 Hiring Plan</span>
                       <Badge className="bg-amber-500/20 text-amber-300 border-amber-500/30">PENDING</Badge>
@@ -744,7 +744,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                     <div className="text-xs text-slate-300 mt-1">Assigned to: Chief Financial Officer</div>
                   </div>
                   
-                  <div className="p-3 bg-slate-800/50 rounded-lg">
+                  <div className="p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-white font-medium">Office Expansion</span>
                       <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">REVIEW</Badge>

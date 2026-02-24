@@ -306,8 +306,8 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
   const progress = ((currentScene + 1) / totalScenes) * 100;
 
   return (
-    <div className="relative w-full min-h-[600px] md:min-h-[700px] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-900/10 via-transparent to-transparent" />
+    <div className="relative w-full min-h-[600px] md:min-h-[700px] overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))]  via-transparent to-transparent" />
       
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse" />
@@ -411,7 +411,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 1 + i * 0.15 }}
-                      className="flex flex-col items-center p-3 bg-slate-800/50 border border-slate-700 rounded-lg"
+                      className="flex flex-col items-center p-3 bg-gray-50 border border-gray-200 rounded-lg"
                     >
                       <company.icon className="h-6 w-6 text-amber-400 mb-2" />
                       <span className="text-sm text-slate-300">{company.name}</span>
@@ -657,7 +657,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
       <div className="absolute bottom-0 left-0 right-0 p-6">
         <div className="max-w-4xl mx-auto">
           {/* Progress bar */}
-          <div className="h-1 bg-slate-800 rounded-full mb-4 overflow-hidden">
+          <div className="h-1 bg-gray-50 rounded-full mb-4 overflow-hidden">
             <motion.div
               className="h-full bg-gradient-to-r from-amber-500 to-emerald-500"
               initial={{ width: 0 }}

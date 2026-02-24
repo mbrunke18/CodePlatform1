@@ -80,7 +80,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                 <h1 className="text-4xl font-bold text-slate-900 dark:text-white">
                   Comprehensive ROI Analysis
                 </h1>
-                <p className="text-lg text-slate-400 dark:text-slate-300">
+                <p className="text-lg text-gray-600 dark:text-slate-300">
                   Complete value breakdown across all strategic scenarios
                 </p>
               </div>
@@ -264,7 +264,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                         >
                           <td className="py-3 px-4">
                             <div className="font-medium text-slate-900 dark:text-white">{scenario.title}</div>
-                            <div className="text-sm text-slate-400 dark:text-slate-300">{scenario.purpose}</div>
+                            <div className="text-sm text-gray-600 dark:text-slate-300">{scenario.purpose}</div>
                           </td>
                           <td className="py-3 px-4">
                             <Badge 
@@ -284,7 +284,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                             </div>
                           </td>
                           <td className="py-3 px-4 text-right">
-                            <span className="text-slate-400 dark:text-slate-300">
+                            <span className="text-gray-600 dark:text-slate-300">
                               {scenario.elementsActivated?.length || 0}/12
                             </span>
                           </td>
@@ -329,14 +329,14 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                           </div>
                           <div>
                             <h3 className="font-bold text-lg text-slate-900 dark:text-white">{scenario.title}</h3>
-                            <p className="text-sm text-slate-400 dark:text-slate-300">{scenario.description}</p>
+                            <p className="text-sm text-gray-600 dark:text-slate-300">{scenario.description}</p>
                           </div>
                         </div>
                         <div className="text-right">
                           <div className="text-3xl font-bold text-green-600 dark:text-green-400">
                             ${scenario.valueNumber.toFixed(1)}M
                           </div>
-                          <div className="text-sm text-slate-400 dark:text-slate-300">annual value</div>
+                          <div className="text-sm text-gray-600 dark:text-slate-300">annual value</div>
                         </div>
                       </div>
                       <div className="grid grid-cols-2 gap-4 mt-4">

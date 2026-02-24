@@ -205,7 +205,7 @@ export default function McKinseyIntelligenceCenter() {
                     <div className="flex items-center gap-3">
                       {phase.status === 'completed' && <CheckCircle2 className="h-5 w-5 text-green-600" />}
                       {phase.status === 'in_progress' && <Clock className="h-5 w-5 text-blue-600 animate-pulse" />}
-                      {phase.status === 'pending' && <AlertCircle className="h-5 w-5 text-gray-400" />}
+                      {phase.status === 'pending' && <AlertCircle className="h-5 w-5 text-gray-600" />}
                       <div>
                         <p className="font-semibold">{phase.name}</p>
                         <p className="text-xs text-muted-foreground">{phase.duration}</p>
@@ -377,7 +377,7 @@ export default function McKinseyIntelligenceCenter() {
                   <div className="flex items-center gap-3">
                     {rule.status === 'compliant' && <CheckCircle2 className="h-5 w-5 text-green-600" />}
                     {rule.status === 'in_progress' && <Clock className="h-5 w-5 text-blue-600" />}
-                    {rule.status === 'not_started' && <AlertCircle className="h-5 w-5 text-gray-400" />}
+                    {rule.status === 'not_started' && <AlertCircle className="h-5 w-5 text-gray-600" />}
                     <div>
                       <p className="font-medium text-sm">{rule.name}</p>
                       <p className="text-xs text-muted-foreground">Owner: {rule.owner}</p>

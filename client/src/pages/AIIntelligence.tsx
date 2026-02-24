@@ -148,7 +148,7 @@ export default function AIIntelligence() {
                     </div>
                     <Progress value={module.accuracy} className="h-2" />
                     
-                    <div className="flex items-center justify-between text-xs text-gray-500">
+                    <div className="flex items-center justify-between text-xs text-gray-600">
                       <span>Last Update: {module.lastUpdate}</span>
                       <span>{module.insights} insights</span>
                     </div>
@@ -174,9 +174,9 @@ export default function AIIntelligence() {
                       <CheckCircle className="w-4 h-4 mt-0.5 text-green-500 flex-shrink-0" />
                       <div className="flex-1 page-background">
                         <p className="text-sm text-gray-700 dark:text-gray-300">{insight}</p>
-                        <p className="text-xs text-gray-500 mt-1">AI Confidence: {Math.floor(Math.random() * 10) + 85}%</p>
+                        <p className="text-xs text-gray-600 mt-1">AI Confidence: {Math.floor(Math.random() * 10) + 85}%</p>
                       </div>
-                      <Clock className="w-3 h-3 text-gray-400" />
+                      <Clock className="w-3 h-3 text-gray-600" />
                     </div>
                   ))}
                 </div>

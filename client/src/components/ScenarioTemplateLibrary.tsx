@@ -252,7 +252,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Enterprise Intelligence Templates</h2>
-          <p className="text-gray-400 dark:text-gray-200 mt-2">World-class crisis response and strategic planning templates</p>
+          <p className="text-gray-600 dark:text-gray-200 mt-2">World-class crisis response and strategic planning templates</p>
         </div>
         <Badge variant="secondary" className="px-3 py-1">
           {allTemplates.length} Templates Available
@@ -280,7 +280,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-400 dark:text-gray-200 text-sm mb-3">{template.description}</p>
+                    <p className="text-gray-600 dark:text-gray-200 text-sm mb-3">{template.description}</p>
                     <div className="flex items-center justify-between">
                       <Badge variant={template.severity === 'severe' ? 'destructive' : 'secondary'}>
                         {template.severity}
@@ -334,7 +334,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
                     <Wand2 className="h-4 w-4 text-purple-600" />
                     <span className="font-medium">Smart Suggestions</span>
                   </div>
-                  <p className="text-sm text-gray-400">AI recommends templates based on your organization's risk profile</p>
+                  <p className="text-sm text-gray-600">AI recommends templates based on your organization's risk profile</p>
                   <Button size="sm" className="mt-2 bg-purple-600 hover:bg-purple-700">
                     Generate Suggestions
                   </Button>
@@ -346,7 +346,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
                     <Building className="h-4 w-4 text-blue-600" />
                     <span className="font-medium">Industry Analysis</span>
                   </div>
-                  <p className="text-sm text-gray-400">Templates optimized for your specific industry requirements</p>
+                  <p className="text-sm text-gray-600">Templates optimized for your specific industry requirements</p>
                   <Button size="sm" variant="outline" className="mt-2 border-blue-300 text-blue-600">
                     Analyze Industry
                   </Button>
@@ -358,7 +358,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
                     <Award className="h-4 w-4 text-green-600" />
                     <span className="font-medium">Compliance Check</span>
                   </div>
-                  <p className="text-sm text-gray-400">Verify templates meet regulatory requirements</p>
+                  <p className="text-sm text-gray-600">Verify templates meet regulatory requirements</p>
                   <Button size="sm" variant="outline" className="mt-2 border-green-300 text-green-600">
                     Run Compliance
                   </Button>
@@ -379,7 +379,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
                   {filteredTemplates.length} Templates
                 </Badge>
               </CardTitle>
-              <p className="text-sm text-gray-400 mt-1">
+              <p className="text-sm text-gray-600 mt-1">
                 Enterprise-grade starting templates with AI optimization and compliance frameworks. Customize and expand as you build YOUR playbooks.
               </p>
             </div>
@@ -424,7 +424,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
               <div className="flex items-center justify-between bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center gap-4 flex-wrap">
                   <div>
-                    <Label className="text-xs text-gray-400 dark:text-gray-200">Industry</Label>
+                    <Label className="text-xs text-gray-600 dark:text-gray-200">Industry</Label>
                     <Select value={selectedIndustry} onValueChange={setSelectedIndustry}>
                       <SelectTrigger className="w-40">
                         <SelectValue />
@@ -442,7 +442,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
                   </div>
                   
                   <div>
-                    <Label className="text-xs text-gray-400 dark:text-gray-200">Compliance</Label>
+                    <Label className="text-xs text-gray-600 dark:text-gray-200">Compliance</Label>
                     <Select value={filterCompliance} onValueChange={setFilterCompliance}>
                       <SelectTrigger className="w-32">
                         <SelectValue />
@@ -459,7 +459,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
                   </div>
 
                   <div>
-                    <Label className="text-xs text-gray-400 dark:text-gray-200">Sort by</Label>
+                    <Label className="text-xs text-gray-600 dark:text-gray-200">Sort by</Label>
                     <Select value={sortBy} onValueChange={setSortBy}>
                       <SelectTrigger className="w-40">
                         <SelectValue />
@@ -534,22 +534,22 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-400 dark:text-gray-200 text-sm mb-4">{template.description}</p>
+                      <p className="text-gray-600 dark:text-gray-200 text-sm mb-4">{template.description}</p>
                       
                       {/* Effectiveness Metrics */}
                       <div className="mb-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                         <div className="grid grid-cols-3 gap-2 text-xs">
                           <div className="text-center">
                             <div className="font-medium text-blue-600">{template.effectiveness.usageCount}</div>
-                            <div className="text-gray-500 dark:text-gray-300">Uses</div>
+                            <div className="text-gray-600 dark:text-gray-300">Uses</div>
                           </div>
                           <div className="text-center">
                             <div className="font-medium text-green-600">{template.effectiveness.successRate}%</div>
-                            <div className="text-gray-500 dark:text-gray-300">Success</div>
+                            <div className="text-gray-600 dark:text-gray-300">Success</div>
                           </div>
                           <div className="text-center">
                             <div className="font-medium text-purple-600">{template.effectiveness.avgResolutionTime}</div>
-                            <div className="text-gray-500 dark:text-gray-300">Avg Time</div>
+                            <div className="text-gray-600 dark:text-gray-300">Avg Time</div>
                           </div>
                         </div>
                       </div>
@@ -581,12 +581,12 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
                         
                         <div className="text-sm">
                           <div className="font-medium text-gray-900 dark:text-gray-100 mb-1">Key Decision Points:</div>
-                          <ul className="text-gray-400 dark:text-gray-200 space-y-1">
+                          <ul className="text-gray-600 dark:text-gray-200 space-y-1">
                             {template.criticalDecisionPoints.slice(0, 2).map((point: string, index: number) => (
                               <li key={index} className="text-xs">• {point}</li>
                             ))}
                             {template.criticalDecisionPoints.length > 2 && (
-                              <li className="text-xs text-gray-500 dark:text-gray-300">+{template.criticalDecisionPoints.length - 2} more</li>
+                              <li className="text-xs text-gray-600 dark:text-gray-300">+{template.criticalDecisionPoints.length - 2} more</li>
                             )}
                           </ul>
                         </div>
@@ -618,7 +618,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
               </div>
               
               {filteredTemplates.length === 0 && (
-                <div className="text-center py-8 text-gray-500 dark:text-gray-300 dark:text-gray-200" data-testid="no-templates">
+                <div className="text-center py-8 text-gray-600 dark:text-gray-300 dark:text-gray-200" data-testid="no-templates">
                   No templates found in this category
                 </div>
               )}
@@ -680,13 +680,13 @@ function TemplateDetailsForm({ template, onSubmit, isLoading }: {
             <Card key={index} className="border-l-4 border-l-blue-500">
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm font-medium capitalize">{phase.phase}</CardTitle>
-                <div className="text-xs text-gray-500 dark:text-gray-300">{phase.timeline}</div>
+                <div className="text-xs text-gray-600 dark:text-gray-300">{phase.timeline}</div>
               </CardHeader>
               <CardContent className="pt-0">
                 <div className="space-y-2 text-xs">
                   <div>
                     <div className="font-medium">Objectives:</div>
-                    <ul className="text-gray-400 dark:text-gray-200">
+                    <ul className="text-gray-600 dark:text-gray-200">
                       {phase.objectives.slice(0, 2).map((obj: string, i: number) => (
                         <li key={i}>• {obj}</li>
                       ))}
@@ -738,7 +738,7 @@ function TemplateDetailsForm({ template, onSubmit, isLoading }: {
               {template.requiredDataPoints.length} Critical Fields
             </Badge>
           </div>
-          <p className="text-sm text-gray-400 dark:text-gray-200 mb-6">
+          <p className="text-sm text-gray-600 dark:text-gray-200 mb-6">
             Complete assessment requires detailed information across all relevant categories for executive decision-making
           </p>
           
@@ -779,7 +779,7 @@ function TemplateDetailsForm({ template, onSubmit, isLoading }: {
                           </Select>
                         ) : field.fieldType === 'multiselect' ? (
                           <div className="space-y-2">
-                            <div className="text-xs text-gray-400">Select all that apply:</div>
+                            <div className="text-xs text-gray-600">Select all that apply:</div>
                             <div className="grid grid-cols-2 gap-2">
                               {field.options?.map((option: string) => (
                                 <label key={option} className="flex items-center space-x-2">
@@ -812,7 +812,7 @@ function TemplateDetailsForm({ template, onSubmit, isLoading }: {
                           />
                         ) : field.fieldType === 'currency' ? (
                           <div className="relative">
-                            <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-300">$</span>
+                            <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 dark:text-gray-300">$</span>
                             <Input
                               id={field.fieldName}
                               type="number"
@@ -838,7 +838,7 @@ function TemplateDetailsForm({ template, onSubmit, isLoading }: {
                               data-testid={`input-${field.fieldName}`}
                               className="pr-8"
                             />
-                            <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-300">%</span>
+                            <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 dark:text-gray-300">%</span>
                           </div>
                         ) : (
                           <Input
@@ -891,7 +891,7 @@ function TemplateDetailsForm({ template, onSubmit, isLoading }: {
                       {stakeholder.decisionAuthority}
                     </Badge>
                   </div>
-                  <div className="text-xs text-gray-400 dark:text-gray-200">
+                  <div className="text-xs text-gray-600 dark:text-gray-200">
                     {stakeholder.department} • {stakeholder.communicationPriority}
                   </div>
                 </CardContent>
@@ -902,7 +902,7 @@ function TemplateDetailsForm({ template, onSubmit, isLoading }: {
 
         {/* Action Buttons */}
         <div className="flex items-center justify-between pt-4 border-t">
-          <div className="text-sm text-gray-500 dark:text-gray-300">
+          <div className="text-sm text-gray-600 dark:text-gray-300">
             This will create a strategic scenario based on the template
           </div>
           <Button 

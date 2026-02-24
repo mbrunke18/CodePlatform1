@@ -116,7 +116,7 @@ export default function WorkspaceExecute() {
                     Execution OS Compass™
                   </Badge>
                 </div>
-                <p className="text-slate-400 dark:text-slate-300 mt-1">
+                <p className="text-gray-600 dark:text-slate-300 mt-1">
                   Coordinate responses and execute playbooks in 12 minutes
                 </p>
               </div>
@@ -191,7 +191,7 @@ export default function WorkspaceExecute() {
           </div>
 
           {/* 12-Minute Promise Banner */}
-          <Card className="mb-8 bg-gradient-to-r from-poise-navy to-slate-800 text-white border-0">
+          <Card className="mb-8 bg-gradient-to-r from-poise-navytext-white border-0">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-xl bg-white/10">
@@ -218,7 +218,7 @@ export default function WorkspaceExecute() {
                   <span className="text-sm font-medium text-slate-900 dark:text-white">78%</span>
                   <Progress value={78} className="flex-1 h-2" />
                 </div>
-                <div className="flex items-center gap-4 text-sm text-slate-400 dark:text-slate-300 mb-4">
+                <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-slate-300 mb-4">
                   <span className="flex items-center gap-1"><CheckCircle className="h-3.5 w-3.5" /> 28 of 45 tasks</span>
                   <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" /> 45 stakeholders</span>
                   <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> Jan 28</span>
@@ -240,7 +240,7 @@ export default function WorkspaceExecute() {
                   <span className="text-sm font-medium text-slate-900 dark:text-white">34%</span>
                   <Progress value={34} className="flex-1 h-2" />
                 </div>
-                <div className="flex items-center gap-4 text-sm text-slate-400 dark:text-slate-300 mb-4">
+                <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-slate-300 mb-4">
                   <span className="flex items-center gap-1"><CheckCircle className="h-3.5 w-3.5" /> 8 of 24 tasks</span>
                   <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" /> 18 stakeholders</span>
                   <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> Feb 15</span>
@@ -272,7 +272,7 @@ export default function WorkspaceExecute() {
                           </h3>
                           <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200 group-hover:text-poise-teal transition-colors" />
                         </div>
-                        <p className="text-sm text-slate-400 dark:text-slate-300 mt-1">
+                        <p className="text-sm text-gray-600 dark:text-slate-300 mt-1">
                           {tool.description}
                         </p>
                         <Badge variant="outline" className="mt-3 text-xs">
@@ -296,7 +296,7 @@ export default function WorkspaceExecute() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 dark:text-white">Execution complete?</h3>
-                    <p className="text-sm text-slate-400 dark:text-slate-300">
+                    <p className="text-sm text-gray-600 dark:text-slate-300">
                       Capture lessons learned and improve for next time in ADVANCE
                     </p>
                   </div>

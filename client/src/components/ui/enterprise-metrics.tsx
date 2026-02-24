@@ -108,7 +108,7 @@ export function LiveEnterpriseMetrics({ organizationId = "demo", className = "" 
     return (
       <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${className}`}>
         {Array.from({ length: 6 }).map((_, i) => (
-          <Card key={i} className="bg-black/40 border-gray-700/50 animate-pulse">
+          <Card key={i} className="bg-black/40 border-gray-200 animate-pulse">
             <CardContent className="p-6">
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-10 h-10 bg-gray-600/50 rounded-lg" />
@@ -138,7 +138,7 @@ export function LiveEnterpriseMetrics({ organizationId = "demo", className = "" 
           const icon = getIcon(metric.category);
           
           return (
-            <Card key={metric.id} className="bg-black/40 border-gray-700/50 backdrop-blur-sm hover:bg-black/60 transition-all duration-500 group">
+            <Card key={metric.id} className="bg-black/40 border-gray-200 backdrop-blur-sm hover:bg-black/60 transition-all duration-500 group">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className={`p-3 rounded-lg bg-gradient-to-r ${colors.bg} group-hover:scale-105 transition-transform duration-300`}>
@@ -184,7 +184,7 @@ export function LiveEnterpriseMetrics({ organizationId = "demo", className = "" 
                     />
                   </div>
 
-                  <div className="flex items-center justify-between pt-3 border-t border-gray-700/30">
+                  <div className="flex items-center justify-between pt-3 border-t border-gray-200">
                     <Badge variant="outline" className={`${colors.text} border-gray-600/50 text-xs`}>
                       {metric.category}
                     </Badge>

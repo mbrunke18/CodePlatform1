@@ -61,8 +61,8 @@ export default function SizzleReel() {
   };
 
   return (
-    <div className="relative w-full min-h-[600px] md:min-h-[700px] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden" data-testid="sizzle-reel">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-transparent to-transparent" />
+    <div className="relative w-full min-h-[600px] md:min-h-[700px] overflow-hidden" data-testid="sizzle-reel">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))]  via-transparent to-transparent" />
       
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-pulse" />
@@ -140,7 +140,7 @@ export default function SizzleReel() {
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
-                    className="bg-slate-800/50 border border-slate-700 rounded-xl p-6"
+                    className="bg-gray-50 border border-gray-200 rounded-xl p-6"
                   >
                     <div className="text-3xl font-bold text-red-400 mb-2">Day 1</div>
                     <Calendar className="h-8 w-8 text-slate-300 mx-auto mb-3" />
@@ -153,7 +153,7 @@ export default function SizzleReel() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
-                    className="bg-slate-800/50 border border-slate-700 rounded-xl p-6"
+                    className="bg-gray-50 border border-gray-200 rounded-xl p-6"
                   >
                     <div className="text-3xl font-bold text-red-400 mb-2">Day 2</div>
                     <Users className="h-8 w-8 text-slate-300 mx-auto mb-3" />
@@ -166,7 +166,7 @@ export default function SizzleReel() {
                     initial={{ opacity: 0, x: 30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.9 }}
-                    className="bg-slate-800/50 border border-slate-700 rounded-xl p-6"
+                    className="bg-gray-50 border border-gray-200 rounded-xl p-6"
                   >
                     <div className="text-3xl font-bold text-red-400 mb-2">Day 3</div>
                     <GitBranch className="h-8 w-8 text-slate-300 mx-auto mb-3" />
@@ -339,7 +339,7 @@ export default function SizzleReel() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
-                    className="bg-slate-800/50 border border-slate-700 rounded-xl p-4"
+                    className="bg-gray-50 border border-gray-200 rounded-xl p-4"
                   >
                     <Users className="h-8 w-8 text-emerald-400 mx-auto mb-2" />
                     <p className="text-white font-semibold text-sm mb-1">Stakeholders Mapped</p>
@@ -350,7 +350,7 @@ export default function SizzleReel() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
-                    className="bg-slate-800/50 border border-slate-700 rounded-xl p-4"
+                    className="bg-gray-50 border border-gray-200 rounded-xl p-4"
                   >
                     <Brain className="h-8 w-8 text-emerald-400 mx-auto mb-2" />
                     <p className="text-white font-semibold text-sm mb-1">Decisions Pre-staged</p>
@@ -361,7 +361,7 @@ export default function SizzleReel() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.9 }}
-                    className="bg-slate-800/50 border border-slate-700 rounded-xl p-4"
+                    className="bg-gray-50 border border-gray-200 rounded-xl p-4"
                   >
                     <Bell className="h-8 w-8 text-emerald-400 mx-auto mb-2" />
                     <p className="text-white font-semibold text-sm mb-1">Instant Activation</p>
@@ -372,7 +372,7 @@ export default function SizzleReel() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 1.2 }}
-                    className="bg-slate-800/50 border border-slate-700 rounded-xl p-4"
+                    className="bg-gray-50 border border-gray-200 rounded-xl p-4"
                   >
                     <BarChart3 className="h-8 w-8 text-emerald-400 mx-auto mb-2" />
                     <p className="text-white font-semibold text-sm mb-1">Parallel Execution</p>
@@ -434,15 +434,15 @@ export default function SizzleReel() {
                 >
                   <div className="text-center">
                     <div className="text-2xl font-semibold text-slate-300">CRM</div>
-                    <div className="text-xs text-slate-400">Customers</div>
+                    <div className="text-xs text-gray-600">Customers</div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-semibold text-slate-300">ERP</div>
-                    <div className="text-xs text-slate-400">Resources</div>
+                    <div className="text-xs text-gray-600">Resources</div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-semibold text-slate-300">PM</div>
-                    <div className="text-xs text-slate-400">Projects</div>
+                    <div className="text-xs text-gray-600">Projects</div>
                   </div>
                 </motion.div>
                 

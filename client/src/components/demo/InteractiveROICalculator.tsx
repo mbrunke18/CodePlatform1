@@ -134,7 +134,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
       className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
       data-testid="roi-calculator"
     >
-      <Card className="bg-gradient-to-br from-gray-900 to-blue-900/30 border-blue-500/50 shadow-2xl">
+      <Card className="bg-gradient-to-br border-blue-500/50 shadow-2xl">
         <CardContent className="p-6 space-y-6">
           {/* Header */}
           <div className="text-center space-y-2">
@@ -184,7 +184,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
           </div>
 
           {/* Coordination Time Savings Highlight */}
-          <div className="bg-gradient-to-r from-green-950/70 to-emerald-950/70 rounded-lg p-4 border-2 border-green-500/50">
+          <div className="bg-gradient-to-r   rounded-lg p-4 border-2 border-green-500/50">
             <div className="text-center space-y-2">
               <div className="text-sm text-gray-300 font-medium">Coordination Time Savings</div>
               <div className="flex items-center justify-center gap-4">
