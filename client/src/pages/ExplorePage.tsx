@@ -103,7 +103,7 @@ export default function ExplorePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-[#0A0F2E] hover:bg-[#1a2040] text-white px-10 py-6 text-lg font-semibold rounded-lg gap-3"
+                className="bg-[#0A0F2E] hover:bg-[#1a2040] !text-white px-10 py-6 text-lg font-semibold rounded-lg gap-3"
                 onClick={() => { window.location.href = '/api/login'; }}
               >
                 <LogIn className="h-5 w-5" />
@@ -187,7 +187,7 @@ export default function ExplorePage() {
                   ))}
                 </ul>
                 <Button
-                  className="w-full bg-[#0A0F2E] hover:bg-[#1a2040] text-white"
+                  className="w-full bg-[#0A0F2E] hover:bg-[#1a2040] !text-white"
                   onClick={() => { window.location.href = '/api/login'; }}
                 >
                   <LogIn className="h-4 w-4 mr-2" />

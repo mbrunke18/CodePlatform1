@@ -220,7 +220,7 @@ export default function StandardNav() {
               <>
                 <Button
                   onClick={() => navigateTo("/mission-control")}
-                  className="bg-gradient-to-r from-poise-teal to-cyan-600 hover:from-cyan-600 hover:to-poise-teal text-white font-semibold h-9 px-4 shadow-md shadow-poise-teal/20"
+                  className="bg-gradient-to-r from-poise-teal to-cyan-600 hover:from-cyan-600 hover:to-poise-teal !text-white font-semibold h-9 px-4 shadow-md shadow-poise-teal/20"
                   data-testid="nav-open-platform"
                 >
                   <Compass className="h-4 w-4 mr-1.5" />
@@ -255,7 +255,7 @@ export default function StandardNav() {
                 </Button>
                 <Button
                   onClick={() => navigateTo("/contact")}
-                  className="bg-[#0A0F2E] hover:bg-[#1a2040] dark:bg-white dark:hover:bg-gray-100 text-white dark:text-[#0A0F2E] h-9 px-4 font-semibold"
+                  className="bg-[#0A0F2E] hover:bg-[#1a2040] dark:bg-white dark:hover:bg-gray-100 !text-white dark:!text-[#0A0F2E] h-9 px-4 font-semibold"
                   data-testid="nav-start-pilot"
                 >
                   Start Pilot
@@ -278,7 +278,7 @@ export default function StandardNav() {
               <Button
                 onClick={() => navigateTo("/mission-control")}
                 size="sm"
-                className="bg-gradient-to-r from-poise-teal to-cyan-600 text-white"
+                className="bg-gradient-to-r from-poise-teal to-cyan-600 !text-white"
                 data-testid="nav-mobile-open-platform"
               >
                 <Compass className="h-4 w-4" />
@@ -300,7 +300,7 @@ export default function StandardNav() {
               {isAuthenticated && user ? (
                 <Button
                   onClick={() => navigateTo("/mission-control")}
-                  className="bg-gradient-to-r from-poise-teal to-cyan-600 text-white w-full justify-center h-12 text-base font-semibold"
+                  className="bg-gradient-to-r from-poise-teal to-cyan-600 !text-white w-full justify-center h-12 text-base font-semibold"
                   data-testid="nav-mobile-open-platform"
                 >
                   <Compass className="h-5 w-5 mr-2" />
@@ -319,7 +319,7 @@ export default function StandardNav() {
                   </Button>
                   <Button
                     onClick={() => navigateTo("/contact")}
-                    className="w-full justify-center h-12 text-base font-semibold bg-[#0A0F2E] hover:bg-[#1a2040] dark:bg-white dark:hover:bg-gray-100 text-white dark:text-[#0A0F2E]"
+                    className="w-full justify-center h-12 text-base font-semibold bg-[#0A0F2E] hover:bg-[#1a2040] dark:bg-white dark:hover:bg-gray-100 !text-white dark:!text-[#0A0F2E]"
                     data-testid="nav-mobile-start-pilot"
                   >
                     Start Pilot Program
