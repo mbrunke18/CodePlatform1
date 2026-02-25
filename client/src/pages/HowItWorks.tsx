@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { useLocation } from "wouter";
 import { BrandStamp } from "@/components/BrandStamp";
+import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
 export default function HowItWorks() {
   const [, setLocation] = useLocation();
@@ -25,7 +26,7 @@ export default function HowItWorks() {
     {
       number: "I",
       name: "IDENTIFY",
-      moduleName: "Execution OS Playbook™",
+      moduleName: "Playbook™",
       tagline: "Infrastructure Built in Advance",
       icon: Target,
       color: "violet",
@@ -45,7 +46,7 @@ export default function HowItWorks() {
     {
       number: "D",
       name: "DETECT",
-      moduleName: "Execution OS Signal™",
+      moduleName: "Signal™",
       tagline: "Situation Triggers Response",
       icon: Radio,
       color: "blue",
@@ -65,7 +66,7 @@ export default function HowItWorks() {
     {
       number: "E",
       name: "EXECUTE",
-      moduleName: "Execution OS Compass™",
+      moduleName: "Compass™",
       tagline: "Coordination in 12 Minutes",
       icon: CheckCircle,
       color: "emerald",
@@ -85,7 +86,7 @@ export default function HowItWorks() {
     {
       number: "A",
       name: "ADVANCE",
-      moduleName: "Execution OS Retrospect™",
+      moduleName: "Retrospect™",
       tagline: "Infrastructure Gets Smarter",
       icon: BookOpen,
       color: "amber",
@@ -195,7 +196,8 @@ export default function HowItWorks() {
                     <div>
                       <div className="flex items-center gap-3 mb-1">
                         <span className="text-gray-900/70 text-sm font-medium">Phase {phase.number}</span>
-                        <Badge className="bg-white/20 text-gray-900 border-white/30 text-xs font-semibold">
+                        <Badge className="bg-white/20 text-gray-900 border-white/30 text-xs font-semibold flex items-center gap-1.5">
+                          <VaughnMartinLogo variant="icon-only" height={14} />
                           {phase.moduleName}
                         </Badge>
                       </div>
