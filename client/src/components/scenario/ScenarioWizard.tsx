@@ -236,7 +236,7 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
           <div className="flex items-center justify-between mb-4">
             <div>
               <CardTitle className="text-gray-900 text-2xl">Complete Scenario Definition</CardTitle>
-              <CardDescription className="text-gray-500">
+              <CardDescription className="text-gray-700">
                 Build an actionable, executable playbook with complete situation capture
               </CardDescription>
             </div>
@@ -247,7 +247,7 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
           </div>
           
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-sm text-gray-500">
+            <div className="flex items-center justify-between text-sm text-gray-700">
               <span>Overall Progress</span>
               <span>{completedPhases.size} of {WIZARD_PHASES.length - 1} phases complete</span>
             </div>
@@ -284,19 +284,19 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
                 {isComplete ? (
                   <CheckCircle className="h-5 w-5 text-green-400" />
                 ) : (
-                  <Circle className={`h-5 w-5 ${isCurrent ? 'text-blue-400' : 'text-gray-600'}`} />
+                  <Circle className={`h-5 w-5 ${isCurrent ? 'text-blue-400' : 'text-gray-800'}`} />
                 )}
-                <span className={`text-sm font-semibold ${isCurrent ? 'text-blue-300' : isComplete ? 'text-green-300' : 'text-gray-500'}`}>
+                <span className={`text-sm font-semibold ${isCurrent ? 'text-blue-300' : isComplete ? 'text-green-300' : 'text-gray-700'}`}>
                   Phase {index + 1}
                 </span>
               </div>
               <div className="flex items-center gap-2 mb-1">
-                <Icon className={`h-4 w-4 ${isCurrent ? 'text-blue-400' : isComplete ? 'text-green-400' : 'text-gray-600'}`} />
-                <p className={`font-medium text-sm ${isCurrent ? 'text-gray-900' : isComplete ? 'text-gray-600' : 'text-gray-600'}`}>
+                <Icon className={`h-4 w-4 ${isCurrent ? 'text-blue-400' : isComplete ? 'text-green-400' : 'text-gray-800'}`} />
+                <p className={`font-medium text-sm ${isCurrent ? 'text-gray-900' : isComplete ? 'text-gray-800' : 'text-gray-800'}`}>
                   {phase.label}
                 </p>
               </div>
-              <p className="text-xs text-gray-600 leading-tight">{phase.description}</p>
+              <p className="text-xs text-gray-800 leading-tight">{phase.description}</p>
             </button>
           );
         })}
@@ -328,7 +328,7 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
             <Button
               variant="ghost"
               onClick={onCancel}
-              className="text-gray-500 hover:text-white"
+              className="text-gray-700 hover:text-white"
               data-testid="button-cancel-wizard"
             >
               Cancel
@@ -341,7 +341,7 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
             <Button
               variant="outline"
               onClick={handleBack}
-              className="border-slate-600 text-gray-600"
+              className="border-slate-600 text-gray-800"
               data-testid="button-wizard-back"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
@@ -356,7 +356,7 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
               className={`${
                 canProceed
                   ? 'bg-blue-600 hover:bg-blue-700'
-                  : 'bg-gray-50 text-gray-600 cursor-not-allowed'
+                  : 'bg-gray-50 text-gray-800 cursor-not-allowed'
               } text-gray-900`}
               data-testid="button-wizard-next"
             >

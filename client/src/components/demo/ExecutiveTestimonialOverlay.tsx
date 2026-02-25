@@ -39,10 +39,10 @@ export function ExecutiveTestimonialOverlay() {
           {/* Header */}
           <div className="text-center space-y-2">
             <div className="flex items-center justify-center gap-3">
-              <Quote className="h-8 w-8 text-gray-600" />
-              <h2 className="text-2xl font-bold text-gray-600">The Cost of Unpreparedness</h2>
+              <Quote className="h-8 w-8 text-gray-800" />
+              <h2 className="text-2xl font-bold text-gray-800">The Cost of Unpreparedness</h2>
             </div>
-            <p className="text-gray-600 text-sm">Illustrative Scenario: Before vs After Execution OS Methodology (Sample Data)</p>
+            <p className="text-gray-800 text-sm">Illustrative Scenario: Before vs After Execution OS Methodology (Sample Data)</p>
           </div>
 
           {/* Testimonial Content */}
@@ -65,9 +65,9 @@ export function ExecutiveTestimonialOverlay() {
                       No playbooks, no rehearsed roles, no pre-built execution plans.
                     </blockquote>
                     <div className="space-y-2 pt-2">
-                      <p className="text-red-600/80 italic">• Typical result: 72-hour coordination delay</p>
-                      <p className="text-red-600/80 italic">• Common outcome: Missed execution windows</p>
-                      <p className="text-red-600/80 italic">• Industry standard: Reactive vs anticipatory</p>
+                      <p className="text-red-700/80 italic">• Typical result: 72-hour coordination delay</p>
+                      <p className="text-red-700/80 italic">• Common outcome: Missed execution windows</p>
+                      <p className="text-red-700/80 italic">• Industry standard: Reactive vs anticipatory</p>
                     </div>
                   </div>
                 </div>
@@ -113,7 +113,7 @@ export function ExecutiveTestimonialOverlay() {
 
           {/* Bottom Message */}
           <div className=" rounded-lg p-5 border border-slate-600/40">
-            <p className="text-center text-gray-600 text-lg">
+            <p className="text-center text-gray-800 text-lg">
               {phase === 'before' ? (
                 <span className="text-red-300">The question isn't IF a crisis will hit—it's whether you'll be prepared.</span>
               ) : (

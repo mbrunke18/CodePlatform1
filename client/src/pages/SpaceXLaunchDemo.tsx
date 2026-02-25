@@ -70,7 +70,7 @@ export default function SpaceXLaunchDemo() {
               <div className="text-center mb-8">
                 <Satellite className="w-16 h-16 text-blue-400 mx-auto mb-4" />
                 <h2 className="text-3xl font-bold text-gray-900 mb-3">{spacexLaunchDemoData.crisis.title}</h2>
-                <p className="text-xl text-blue-700">{spacexLaunchDemoData.crisis.subtitle}</p>
+                <p className="text-xl text-blue-800">{spacexLaunchDemoData.crisis.subtitle}</p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
@@ -101,7 +101,7 @@ export default function SpaceXLaunchDemo() {
 
                 <div className="p-6 bg-white rounded-lg border border-blue-800/30">
                   <h3 className="font-bold text-gray-900 mb-4">Traditional Aerospace Coordination</h3>
-                  <ul className="space-y-2 text-sm text-blue-700">
+                  <ul className="space-y-2 text-sm text-blue-800">
                     <li>• Day 1-2: Engineering reviews sequential approvals</li>
                     <li>• Day 3-4: FAA license modification (standard 7-10 days)</li>
                     <li className="text-amber-400 font-semibold">• During gap: Favorable window closes</li>
@@ -117,7 +117,7 @@ export default function SpaceXLaunchDemo() {
                   <Zap className="w-8 h-8 text-blue-400 flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-gray-900 mb-2">When Elon Calls the Play, Everyone Executes</h3>
-                    <p className="text-blue-600 leading-relaxed">
+                    <p className="text-blue-800 leading-relaxed">
                       SpaceX already moves faster than traditional aerospace—but even SpaceX faces coordination bottlenecks. 
                       When a favorable orbital window opens, coordinating 1,847 stakeholders (ground crews, FAA, Space Force, 
                       payload teams, weather, range safety) traditionally takes <strong>5-7 days</strong>. Execution OS compresses 
@@ -169,7 +169,7 @@ export default function SpaceXLaunchDemo() {
                 <Target className="w-8 h-8 text-blue-400" />
                 Act 2: Orbital Dynamics Detection
               </h2>
-              <p className="text-lg text-blue-700 mb-4">
+              <p className="text-lg text-blue-800 mb-4">
                 9:00 AM PT - SpaceX trajectory analysis identifies rare orbital window opening 3 days early. Favorable 
                 atmospheric conditions + ULA delay = vacant April 15 slot. Moving launch forward unlocks $47M revenue + optimal constellation geometry.
               </p>
@@ -178,7 +178,7 @@ export default function SpaceXLaunchDemo() {
                   <CheckCircle className="h-6 w-6 text-blue-400 animate-pulse" />
                   <div>
                     <p className="font-bold text-gray-900">Orbital Window Criteria Met</p>
-                    <p className="text-sm text-blue-700">
+                    <p className="text-sm text-blue-800">
                       Favorable conditions confirmed - Playbook #155 (Launch Acceleration) recommended
                     </p>
                   </div>
@@ -219,7 +219,7 @@ export default function SpaceXLaunchDemo() {
                 <Zap className="w-8 h-8 text-blue-400" />
                 Act 3: 12-Minute Coordinated Execution
               </h2>
-              <p className="text-lg text-blue-700 mb-6">
+              <p className="text-lg text-blue-800 mb-6">
                 Execution OS coordinates all 1,847 stakeholders in 12 minutes. Elon's decision triggers instant alignment across 
                 34 executives, 813 operations teams, and 1,000 external partners (FAA, Space Force, Range Control).
               </p>
@@ -230,7 +230,7 @@ export default function SpaceXLaunchDemo() {
                     <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-gray-900 font-bold">1</div>
                     <h3 className="font-bold text-gray-900">Mission Leadership</h3>
                   </div>
-                  <p className="text-sm text-blue-700 mb-2">34 executives approve 3-day acceleration, initiate FAA expedited review</p>
+                  <p className="text-sm text-blue-800 mb-2">34 executives approve 3-day acceleration, initiate FAA expedited review</p>
                   <div className="text-2xl font-bold text-blue-400">34 Leaders</div>
                 </div>
                 <div className="p-6 bg-blue-950/30 rounded-lg border border-blue-800/30">
@@ -238,7 +238,7 @@ export default function SpaceXLaunchDemo() {
                     <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-gray-900 font-bold">2</div>
                     <h3 className="font-bold text-gray-900">Operations Teams</h3>
                   </div>
-                  <p className="text-sm text-blue-700 mb-2">Ground crews, vehicle processing, payload, fueling—all accelerated by 72 hours</p>
+                  <p className="text-sm text-blue-800 mb-2">Ground crews, vehicle processing, payload, fueling—all accelerated by 72 hours</p>
                   <div className="text-2xl font-bold text-blue-400">813 Specialists</div>
                 </div>
                 <div className="p-6 bg-blue-950/30 rounded-lg border border-blue-800/30">
@@ -246,7 +246,7 @@ export default function SpaceXLaunchDemo() {
                     <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-gray-900 font-bold">3</div>
                     <h3 className="font-bold text-gray-900">External Partners</h3>
                   </div>
-                  <p className="text-sm text-blue-700 mb-2">FAA, Space Force, Range Control, airspace—all coordinated</p>
+                  <p className="text-sm text-blue-800 mb-2">FAA, Space Force, Range Control, airspace—all coordinated</p>
                   <div className="text-2xl font-bold text-blue-400">1,000 Partners</div>
                 </div>
               </div>
@@ -282,7 +282,7 @@ export default function SpaceXLaunchDemo() {
               <h2 className="text-3xl font-bold text-gray-900 mb-3">
                 $47M Revenue + Strategic Orbital Position Through Coordination Velocity
               </h2>
-              <p className="text-xl text-blue-700 mb-6">
+              <p className="text-xl text-blue-800 mb-6">
                 SpaceX coordinates 1,847 stakeholders in 12 minutes, moves launch forward 3 days, captures April 15 
                 optimal window—accelerating Starlink expansion and demonstrating coordination velocity traditional aerospace cannot match.
               </p>

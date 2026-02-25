@@ -585,7 +585,7 @@ export default function PlaybookCustomize() {
         <div className="flex items-center justify-between">
           <div className="cursor-pointer flex-1" onClick={() => toggleSection(id)}>
             <CardTitle className="text-lg flex items-center gap-2">
-              <Icon className="h-5 w-5 text-gray-600" />
+              <Icon className="h-5 w-5 text-gray-800" />
               {title}
               {phaseBadge && (
                 <span className={`ml-2 w-5 h-5 ${phaseBadge.color} text-gray-900 text-xs font-bold rounded flex items-center justify-center`}>
@@ -597,7 +597,7 @@ export default function PlaybookCustomize() {
           </div>
           <div className="flex items-center gap-2">
             {children}
-            {expandedSections[id] ? <ChevronUp className="h-5 w-5 text-slate-600 dark:text-slate-200 cursor-pointer" onClick={() => toggleSection(id)} /> : <ChevronDown className="h-5 w-5 text-slate-600 dark:text-slate-200 cursor-pointer" onClick={() => toggleSection(id)} />}
+            {expandedSections[id] ? <ChevronUp className="h-5 w-5 text-gray-800 dark:text-slate-200 cursor-pointer" onClick={() => toggleSection(id)} /> : <ChevronDown className="h-5 w-5 text-gray-800 dark:text-slate-200 cursor-pointer" onClick={() => toggleSection(id)} />}
           </div>
         </div>
       </CardHeader>
@@ -609,7 +609,7 @@ export default function PlaybookCustomize() {
       <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
         <StandardNav />
         <div className="flex items-center justify-center h-[60vh]">
-          <div className="text-gray-600">Loading template...</div>
+          <div className="text-gray-800">Loading template...</div>
         </div>
       </div>
     );
@@ -638,7 +638,7 @@ export default function PlaybookCustomize() {
               <h1 className="text-2xl font-semibold text-slate-900 dark:text-white mb-1">
                 {isCreateMode ? "Create Playbook" : "Customize Playbook"}
               </h1>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-800 text-sm">
                 Comprehensive strategic response configuration
               </p>
             </div>
@@ -684,8 +684,8 @@ export default function PlaybookCustomize() {
                       <h3 className="font-bold text-sm tracking-wide">{phase.label}</h3>
                       <Badge variant="secondary" className="text-xs">{filledCount}/{phaseSections.length}</Badge>
                     </div>
-                    <p className="text-xs text-gray-600 dark:text-slate-300 italic mb-2">{phase.tagline}</p>
-                    <p className="text-xs text-gray-600 dark:text-slate-300 line-clamp-2">{phase.description}</p>
+                    <p className="text-xs text-gray-800 dark:text-slate-300 italic mb-2">{phase.tagline}</p>
+                    <p className="text-xs text-gray-800 dark:text-slate-300 line-clamp-2">{phase.description}</p>
                   </CardContent>
                 </Card>
               );
@@ -699,7 +699,7 @@ export default function PlaybookCustomize() {
                   <div key={phase.id} className="mb-4">
                     <div className={`flex items-center gap-2 px-3 py-2 rounded-lg mb-1`}>
                       <div className={`w-2 h-2 rounded-full ${phase.color}`} />
-                      <span className="text-xs font-bold tracking-wider text-gray-600 dark:text-slate-300">{phase.label}</span>
+                      <span className="text-xs font-bold tracking-wider text-gray-800 dark:text-slate-300">{phase.label}</span>
                     </div>
                     {sections.filter(s => s.phase === phase.id).map((section) => {
                       const Icon = section.icon;
@@ -715,7 +715,7 @@ export default function PlaybookCustomize() {
                           className={`w-full flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-left text-sm transition-colors ${
                             isActive 
                               ? 'bg-primary text-primary-foreground' 
-                              : 'text-gray-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+                              : 'text-gray-800 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                           }`}
                           data-testid={`nav-${section.id}`}
                         >
@@ -787,8 +787,8 @@ export default function PlaybookCustomize() {
                                     }`} />
                                     <span className={`font-medium ${
                                       field.value === 'draft' ? 'text-yellow-600 dark:text-yellow-400' :
-                                      field.value === 'ready' ? 'text-green-600 dark:text-green-400' :
-                                      field.value === 'active' ? 'text-blue-600 dark:text-blue-400' : 'text-gray-600'
+                                      field.value === 'ready' ? 'text-emerald-700 dark:text-green-400' :
+                                      field.value === 'active' ? 'text-blue-800 dark:text-blue-400' : 'text-gray-800'
                                     }`}>
                                       {PLAYBOOK_STATUSES.find(s => s.value === field.value)?.label || 'Draft'}
                                     </span>
@@ -806,8 +806,8 @@ export default function PlaybookCustomize() {
                                       }`} />
                                       <span className={`${
                                         s.value === 'draft' ? 'text-yellow-600 dark:text-yellow-400' :
-                                        s.value === 'ready' ? 'text-green-600 dark:text-green-400' :
-                                        s.value === 'active' ? 'text-blue-600 dark:text-blue-400' : 'text-gray-600'
+                                        s.value === 'ready' ? 'text-emerald-700 dark:text-green-400' :
+                                        s.value === 'active' ? 'text-blue-800 dark:text-blue-400' : 'text-gray-800'
                                       }`}>
                                         {s.label}
                                       </span>
@@ -817,7 +817,7 @@ export default function PlaybookCustomize() {
                               </SelectContent>
                             </Select>
                           )} />
-                          <p className="text-xs text-gray-600 mt-1">
+                          <p className="text-xs text-gray-800 mt-1">
                             {PLAYBOOK_STATUSES.find(s => s.value === watch('status'))?.description}
                           </p>
                         </div>
@@ -838,14 +838,14 @@ export default function PlaybookCustomize() {
                   {expandedSections.triggers && (
                     <CardContent>
                       {triggersArray.fields.length === 0 ? (
-                        <div className="text-center py-8 text-slate-600 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No triggers defined</div>
+                        <div className="text-center py-8 text-gray-800 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No triggers defined</div>
                       ) : (
                         <div className="space-y-3">
                           {triggersArray.fields.map((field, index) => (
                             <div key={field.id} className="p-3 bg-slate-50 dark:bg-slate-900 rounded-lg space-y-3" data-testid={`trigger-item-${index}`}>
                               <div className="flex gap-2">
                                 <Input {...register(`triggerConditions.${index}.description`)} placeholder="Trigger description..." className="flex-1" />
-                                <Button type="button" variant="ghost" size="sm" onClick={() => triggersArray.remove(index)}><Trash2 className="h-4 w-4 text-slate-600 dark:text-slate-200" /></Button>
+                                <Button type="button" variant="ghost" size="sm" onClick={() => triggersArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
                               </div>
                               <div className="grid grid-cols-3 gap-2">
                                 <Controller name={`triggerConditions.${index}.source`} control={control} render={({ field }) => (
@@ -887,14 +887,14 @@ export default function PlaybookCustomize() {
                   {expandedSections.escalation && (
                     <CardContent>
                       {escalationArray.fields.length === 0 ? (
-                        <div className="text-center py-8 text-slate-600 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No escalation paths</div>
+                        <div className="text-center py-8 text-gray-800 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No escalation paths</div>
                       ) : (
                         <div className="space-y-3">
                           {escalationArray.fields.map((field, index) => (
                             <div key={field.id} className="p-3 bg-slate-50 dark:bg-slate-900 rounded-lg space-y-3">
                               <div className="flex justify-between items-center">
                                 <Badge variant="outline">Path {index + 1}</Badge>
-                                <Button type="button" variant="ghost" size="sm" onClick={() => escalationArray.remove(index)}><Trash2 className="h-4 w-4 text-slate-600 dark:text-slate-200" /></Button>
+                                <Button type="button" variant="ghost" size="sm" onClick={() => escalationArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
                               </div>
                               <div className="grid grid-cols-2 gap-2">
                                 <Controller name={`escalationPaths.${index}.triggerCondition`} control={control} render={({ field }) => (
@@ -942,7 +942,7 @@ export default function PlaybookCustomize() {
                   {expandedSections.stakeholders && (
                     <CardContent>
                       {stakeholdersArray.fields.length === 0 ? (
-                        <div className="text-center py-8 text-slate-600 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No stakeholders</div>
+                        <div className="text-center py-8 text-gray-800 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No stakeholders</div>
                       ) : (
                         <div className="space-y-3">
                           {stakeholdersArray.fields.map((field, index) => (
@@ -961,7 +961,7 @@ export default function PlaybookCustomize() {
                                   )} />
                                   <Label className="text-xs">Backup</Label>
                                 </div>
-                                <Button type="button" variant="ghost" size="sm" onClick={() => stakeholdersArray.remove(index)}><Trash2 className="h-4 w-4 text-slate-600 dark:text-slate-200" /></Button>
+                                <Button type="button" variant="ghost" size="sm" onClick={() => stakeholdersArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
                               </div>
                               <Input {...register(`stakeholders.${index}.responsibility`)} placeholder="Responsibility..." />
                               <div className="flex gap-1 flex-wrap">
@@ -972,7 +972,7 @@ export default function PlaybookCustomize() {
                                       const isSelected = channels.includes(ch.value);
                                       return (
                                         <button key={ch.value} type="button" onClick={() => field.onChange(isSelected ? channels.filter((c: string) => c !== ch.value) : [...channels, ch.value])}
-                                          className={`px-2 py-1 text-xs rounded-full border ${isSelected ? 'bg-primary text-primary-foreground' : 'bg-white dark:bg-slate-800 text-gray-600'}`}>
+                                          className={`px-2 py-1 text-xs rounded-full border ${isSelected ? 'bg-primary text-primary-foreground' : 'bg-white dark:bg-slate-800 text-gray-800'}`}>
                                           {ch.label}
                                         </button>
                                       );
@@ -1000,7 +1000,7 @@ export default function PlaybookCustomize() {
                   {expandedSections.steps && (
                     <CardContent>
                       {stepsArray.fields.length === 0 ? (
-                        <div className="text-center py-8 text-slate-600 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No steps</div>
+                        <div className="text-center py-8 text-gray-800 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No steps</div>
                       ) : (
                         <div className="space-y-3">
                           {stepsArray.fields.map((field, index) => (
@@ -1043,7 +1043,7 @@ export default function PlaybookCustomize() {
                                   </div>
                                   <Input {...register(`executionSteps.${index}.deliverables`)} placeholder="Deliverables..." />
                                 </div>
-                                <Button type="button" variant="ghost" size="sm" onClick={() => stepsArray.remove(index)}><Trash2 className="h-4 w-4 text-slate-600 dark:text-slate-200" /></Button>
+                                <Button type="button" variant="ghost" size="sm" onClick={() => stepsArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
                               </div>
                             </div>
                           ))}
@@ -1068,16 +1068,16 @@ export default function PlaybookCustomize() {
                         <div>
                           <Label className="text-sm">Total Budget</Label>
                           <div className="flex items-center gap-1 mt-1">
-                            <span className="text-slate-600 dark:text-slate-200">$</span>
+                            <span className="text-gray-800 dark:text-slate-200">$</span>
                             <Input type="number" {...register('totalBudget', { valueAsNumber: true })} placeholder="0" />
                           </div>
                         </div>
                         <div className="flex items-end">
-                          <p className="text-sm"><span className="text-gray-600">Allocated:</span> <span className="font-semibold">${totalAllocatedBudget.toLocaleString()}</span></p>
+                          <p className="text-sm"><span className="text-gray-800">Allocated:</span> <span className="font-semibold">${totalAllocatedBudget.toLocaleString()}</span></p>
                         </div>
                       </div>
                       {budgetArray.fields.length === 0 ? (
-                        <div className="text-center py-6 text-slate-600 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No budget lines</div>
+                        <div className="text-center py-6 text-gray-800 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No budget lines</div>
                       ) : (
                         <div className="space-y-2">
                           {budgetArray.fields.map((field, index) => (
@@ -1089,7 +1089,7 @@ export default function PlaybookCustomize() {
                                 </Select>
                               )} />
                               <div className="flex items-center gap-1 w-28">
-                                <span className="text-slate-600 dark:text-slate-200 text-sm">$</span>
+                                <span className="text-gray-800 dark:text-slate-200 text-sm">$</span>
                                 <Input type="number" {...register(`budgetAllocations.${index}.amount`, { valueAsNumber: true })} placeholder="Amount" />
                               </div>
                               <div className="flex items-center gap-1">
@@ -1099,7 +1099,7 @@ export default function PlaybookCustomize() {
                                 <Label className="text-xs flex items-center gap-1"><Lock className="h-3 w-3" />Pre-approved</Label>
                               </div>
                               <Input {...register(`budgetAllocations.${index}.notes`)} placeholder="Notes" className="flex-1" />
-                              <Button type="button" variant="ghost" size="sm" onClick={() => budgetArray.remove(index)}><Trash2 className="h-4 w-4 text-slate-600 dark:text-slate-200" /></Button>
+                              <Button type="button" variant="ghost" size="sm" onClick={() => budgetArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
                             </div>
                           ))}
                         </div>
@@ -1120,7 +1120,7 @@ export default function PlaybookCustomize() {
                   {expandedSections.impact && (
                     <CardContent>
                       {impactArray.fields.length === 0 ? (
-                        <div className="text-center py-6 text-slate-600 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No impact metrics</div>
+                        <div className="text-center py-6 text-gray-800 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No impact metrics</div>
                       ) : (
                         <div className="space-y-2">
                           {impactArray.fields.map((field, index) => (
@@ -1133,11 +1133,11 @@ export default function PlaybookCustomize() {
                                   </Select>
                                 )} />
                                 <div className="flex items-center gap-1 w-32">
-                                  <span className="text-slate-600 dark:text-slate-200">$</span>
+                                  <span className="text-gray-800 dark:text-slate-200">$</span>
                                   <Input type="number" {...register(`businessImpacts.${index}.estimatedValue`, { valueAsNumber: true })} placeholder="Value" />
                                 </div>
                                 <Input {...register(`businessImpacts.${index}.description`)} placeholder="Description" className="flex-1" />
-                                <Button type="button" variant="ghost" size="sm" onClick={() => impactArray.remove(index)}><Trash2 className="h-4 w-4 text-slate-600 dark:text-slate-200" /></Button>
+                                <Button type="button" variant="ghost" size="sm" onClick={() => impactArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
                               </div>
                               <Input {...register(`businessImpacts.${index}.measurementMethod`)} placeholder="How will this be measured?" />
                             </div>
@@ -1192,7 +1192,7 @@ export default function PlaybookCustomize() {
                               const selected = (field.value || []).includes(f.value);
                               return (
                                 <button key={f.value} type="button" onClick={() => field.onChange(selected ? field.value.filter((v: string) => v !== f.value) : [...(field.value || []), f.value])}
-                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-blue-100 text-blue-700 border-blue-300' : 'bg-white dark:bg-slate-800 text-gray-600 border-slate-200'}`}>
+                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-blue-100 text-blue-800 border-blue-300' : 'bg-white dark:bg-slate-800 text-gray-800 border-slate-200'}`}>
                                   {f.label}
                                 </button>
                               );
@@ -1212,7 +1212,7 @@ export default function PlaybookCustomize() {
                                 </Select>
                               )} />
                               <Input {...register(`complianceRequirements.${index}.requirement`)} placeholder="Requirement" className="flex-1" />
-                              <Button type="button" variant="ghost" size="sm" onClick={() => complianceArray.remove(index)}><Trash2 className="h-4 w-4 text-slate-600 dark:text-slate-200" /></Button>
+                              <Button type="button" variant="ghost" size="sm" onClick={() => complianceArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
                             </div>
                           ))}
                         </div>
@@ -1241,7 +1241,7 @@ export default function PlaybookCustomize() {
                         <div>
                           <Label className="text-sm font-medium">Max Financial Exposure</Label>
                           <div className="flex items-center gap-1 mt-1.5">
-                            <span className="text-slate-600 dark:text-slate-200">$</span>
+                            <span className="text-gray-800 dark:text-slate-200">$</span>
                             <Input type="number" {...register('maxFinancialExposure', { valueAsNumber: true })} placeholder="0" />
                           </div>
                         </div>
@@ -1325,7 +1325,7 @@ export default function PlaybookCustomize() {
                   {expandedSections.dependencies && (
                     <CardContent>
                       {dependenciesArray.fields.length === 0 ? (
-                        <div className="text-center py-6 text-slate-600 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No dependencies</div>
+                        <div className="text-center py-6 text-gray-800 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No dependencies</div>
                       ) : (
                         <div className="space-y-2">
                           {dependenciesArray.fields.map((field, index) => (
@@ -1349,7 +1349,7 @@ export default function PlaybookCustomize() {
                                     </SelectContent>
                                   </Select>
                                 )} />
-                                <Button type="button" variant="ghost" size="sm" onClick={() => dependenciesArray.remove(index)}><Trash2 className="h-4 w-4 text-slate-600 dark:text-slate-200" /></Button>
+                                <Button type="button" variant="ghost" size="sm" onClick={() => dependenciesArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
                               </div>
                               <div className="grid grid-cols-2 gap-2">
                                 <Input {...register(`dependencies.${index}.contactInfo`)} placeholder="Contact info" />
@@ -1422,7 +1422,7 @@ export default function PlaybookCustomize() {
                               const selected = (field.value || []).includes(r.value);
                               return (
                                 <button key={r.value} type="button" onClick={() => field.onChange(selected ? field.value.filter((v: string) => v !== r.value) : [...(field.value || []), r.value])}
-                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-purple-100 text-purple-700 border-purple-300' : 'bg-white dark:bg-slate-800 text-gray-600 border-slate-200'}`}>
+                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-purple-100 text-purple-700 border-purple-300' : 'bg-white dark:bg-slate-800 text-gray-800 border-slate-200'}`}>
                                   {r.label}
                                 </button>
                               );
@@ -1510,7 +1510,7 @@ export default function PlaybookCustomize() {
                             <div key={field.id} className="flex gap-2">
                               <Input {...register(`successMetrics.customMetrics.${index}.name`)} placeholder="Metric name" className="flex-1" />
                               <Input {...register(`successMetrics.customMetrics.${index}.target`)} placeholder="Target" className="w-32" />
-                              <Button type="button" variant="ghost" size="sm" onClick={() => customMetricsArray.remove(index)}><Trash2 className="h-4 w-4 text-slate-600 dark:text-slate-200" /></Button>
+                              <Button type="button" variant="ghost" size="sm" onClick={() => customMetricsArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
                             </div>
                           ))}
                         </div>
@@ -1528,7 +1528,7 @@ export default function PlaybookCustomize() {
       {/* STICKY SAVE BAR */}
       <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-4 px-6 z-50">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="text-sm text-gray-600">
+          <div className="text-sm text-gray-800">
             {Object.keys(errors).length > 0 && (
               <span className="text-red-500">Please fix errors before saving</span>
             )}

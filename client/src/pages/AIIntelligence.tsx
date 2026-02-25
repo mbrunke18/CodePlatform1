@@ -102,11 +102,11 @@ export default function AIIntelligence() {
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white">AI Intelligence Center</h1>
-                <p className="text-gray-600 dark:text-gray-300">Advanced Organizational Intelligence & Predictive Analytics</p>
+                <p className="text-gray-800 dark:text-gray-300">Advanced Organizational Intelligence & Predictive Analytics</p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              <Badge variant="outline" className="text-green-600 border-green-500/50">
+              <Badge variant="outline" className="text-emerald-700 border-green-500/50">
                 <Activity className="w-3 h-3 mr-1" />
                 All Modules Active
               </Badge>
@@ -139,16 +139,16 @@ export default function AIIntelligence() {
                   <CardTitle className="text-lg">{module.name}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{module.description}</p>
+                  <p className="text-sm text-gray-800 dark:text-gray-400 mb-4">{module.description}</p>
                   
                   <div className="space-y-3">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-600 dark:text-gray-400">Accuracy</span>
-                      <span className="font-semibold text-green-600">{module.accuracy}%</span>
+                      <span className="text-gray-800 dark:text-gray-400">Accuracy</span>
+                      <span className="font-semibold text-emerald-700">{module.accuracy}%</span>
                     </div>
                     <Progress value={module.accuracy} className="h-2" />
                     
-                    <div className="flex items-center justify-between text-xs text-gray-600">
+                    <div className="flex items-center justify-between text-xs text-gray-800">
                       <span>Last Update: {module.lastUpdate}</span>
                       <span>{module.insights} insights</span>
                     </div>
@@ -174,9 +174,9 @@ export default function AIIntelligence() {
                       <CheckCircle className="w-4 h-4 mt-0.5 text-green-500 flex-shrink-0" />
                       <div className="flex-1 page-background">
                         <p className="text-sm text-gray-700 dark:text-gray-300">{insight}</p>
-                        <p className="text-xs text-gray-600 mt-1">AI Confidence: {Math.floor(Math.random() * 10) + 85}%</p>
+                        <p className="text-xs text-gray-800 mt-1">AI Confidence: {Math.floor(Math.random() * 10) + 85}%</p>
                       </div>
-                      <Clock className="w-3 h-3 text-gray-600" />
+                      <Clock className="w-3 h-3 text-gray-800" />
                     </div>
                   ))}
                 </div>
@@ -198,7 +198,7 @@ export default function AIIntelligence() {
               <CardContent className="space-y-4">
                 <div className="p-4 bg-gradient-to-r .section-background dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg">
                   <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Active Intelligence Module</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                  <p className="text-sm text-gray-800 dark:text-gray-400 mb-3">
                     {aiModules.find(m => m.id === activeModule)?.description}
                   </p>
                   <div className="flex space-x-2">

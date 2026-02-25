@@ -52,7 +52,7 @@ export default function Research() {
             The Research Behind Execution OS
           </h1>
           
-          <p className="text-xl md:text-2xl text-blue-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-blue-800 mb-8 max-w-3xl mx-auto">
             Execution OS was built on a foundation of industry research and 20+ years of Fortune 500 
             operational experience. Here's the data that shaped our platform.
           </p>
@@ -482,7 +482,7 @@ export default function Research() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               The 2026 Enterprise AI Inflection Point
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-800 max-w-3xl mx-auto">
               Eight flagship reports converge on one message: 2026 is when AI stops being a feature and becomes part of the enterprise operating system
             </p>
           </div>
@@ -508,10 +508,10 @@ export default function Research() {
                 <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center shrink-0 text-gray-900 font-bold text-sm">1</div>
                 <div>
                   <h4 className="font-bold text-gray-900">BCG</h4>
-                  <p className="text-gray-600 text-sm">AI Radar 2026</p>
+                  <p className="text-gray-800 text-sm">AI Radar 2026</p>
                 </div>
               </div>
-              <p className="text-gray-600 text-sm mb-3 italic">"AI transformation is shifting from a CIO-led initiative to a CEO-led mandate across the enterprise."</p>
+              <p className="text-gray-800 text-sm mb-3 italic">"AI transformation is shifting from a CIO-led initiative to a CEO-led mandate across the enterprise."</p>
               <div className="flex items-start gap-2">
                 <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
                 <p className="text-indigo-300 text-xs">Execution OS turns CEO-level AI mandates into coordinated execution across every function.</p>
@@ -523,10 +523,10 @@ export default function Research() {
                 <div className="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center shrink-0 text-gray-900 font-bold text-sm">2</div>
                 <div>
                   <h4 className="font-bold text-gray-900">IBM</h4>
-                  <p className="text-gray-600 text-sm">The Enterprise in 2030</p>
+                  <p className="text-gray-800 text-sm">The Enterprise in 2030</p>
                 </div>
               </div>
-              <p className="text-gray-600 text-sm mb-3 italic">"Five bold predictions for the smarter enterprise—where AI becomes embedded in every process and decision."</p>
+              <p className="text-gray-800 text-sm mb-3 italic">"Five bold predictions for the smarter enterprise—where AI becomes embedded in every process and decision."</p>
               <div className="flex items-start gap-2">
                 <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
                 <p className="text-indigo-300 text-xs">Execution OS embeds AI into the decision layer, not just analytics dashboards.</p>
@@ -538,10 +538,10 @@ export default function Research() {
                 <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center shrink-0 text-gray-900 font-bold text-sm">3</div>
                 <div>
                   <h4 className="font-bold text-gray-900">McKinsey</h4>
-                  <p className="text-gray-600 text-sm">Global Tech Agenda 2026</p>
+                  <p className="text-gray-800 text-sm">Global Tech Agenda 2026</p>
                 </div>
               </div>
-              <p className="text-gray-600 text-sm mb-3 italic">"CIOs are evolving from cost managers to strategy architects, orchestrating AI across the business."</p>
+              <p className="text-gray-800 text-sm mb-3 italic">"CIOs are evolving from cost managers to strategy architects, orchestrating AI across the business."</p>
               <div className="flex items-start gap-2">
                 <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
                 <p className="text-indigo-300 text-xs">Execution OS gives CIOs the operational backbone to architect strategy, not just manage infrastructure.</p>
@@ -553,10 +553,10 @@ export default function Research() {
                 <div className="w-8 h-8 rounded-full bg-violet-500 flex items-center justify-center shrink-0 text-gray-900 font-bold text-sm">4</div>
                 <div>
                   <h4 className="font-bold text-gray-900">Deloitte</h4>
-                  <p className="text-gray-600 text-sm">State of AI in the Enterprise 2026</p>
+                  <p className="text-gray-800 text-sm">State of AI in the Enterprise 2026</p>
                 </div>
               </div>
-              <p className="text-gray-600 text-sm mb-3 italic">"The rise of sovereign, agentic, and physical AI is redefining what enterprise readiness looks like."</p>
+              <p className="text-gray-800 text-sm mb-3 italic">"The rise of sovereign, agentic, and physical AI is redefining what enterprise readiness looks like."</p>
               <div className="flex items-start gap-2">
                 <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
                 <p className="text-indigo-300 text-xs">Execution OS provides the readiness framework for agentic AI—playbooks, governance, and orchestration.</p>
@@ -568,10 +568,10 @@ export default function Research() {
                 <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center shrink-0 text-gray-900 font-bold text-sm">5</div>
                 <div>
                   <h4 className="font-bold text-gray-900">World Economic Forum</h4>
-                  <p className="text-gray-600 text-sm">Proof over Promise</p>
+                  <p className="text-gray-800 text-sm">Proof over Promise</p>
                 </div>
               </div>
-              <p className="text-gray-600 text-sm mb-3 italic">"Scaling AI and turning it into outcomes—moving beyond pilots to enterprise-wide value creation."</p>
+              <p className="text-gray-800 text-sm mb-3 italic">"Scaling AI and turning it into outcomes—moving beyond pilots to enterprise-wide value creation."</p>
               <div className="flex items-start gap-2">
                 <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
                 <p className="text-indigo-300 text-xs">Execution OS bridges the pilot-to-production gap with structured execution workflows.</p>
@@ -583,10 +583,10 @@ export default function Research() {
                 <div className="w-8 h-8 rounded-full bg-sky-500 flex items-center justify-center shrink-0 text-gray-900 font-bold text-sm">6</div>
                 <div>
                   <h4 className="font-bold text-gray-900">Microsoft</h4>
-                  <p className="text-gray-600 text-sm">Agents Are Here</p>
+                  <p className="text-gray-800 text-sm">Agents Are Here</p>
                 </div>
               </div>
-              <p className="text-gray-600 text-sm mb-3 italic">"AI agent readiness is about people, process, culture, and governance—not just technology deployment."</p>
+              <p className="text-gray-800 text-sm mb-3 italic">"AI agent readiness is about people, process, culture, and governance—not just technology deployment."</p>
               <div className="flex items-start gap-2">
                 <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
                 <p className="text-indigo-300 text-xs">Execution OS operationalizes the people + process layer that agent readiness demands.</p>
@@ -598,10 +598,10 @@ export default function Research() {
                 <div className="w-8 h-8 rounded-full bg-rose-500 flex items-center justify-center shrink-0 text-gray-900 font-bold text-sm">7</div>
                 <div>
                   <h4 className="font-bold text-gray-900">Google Cloud</h4>
-                  <p className="text-gray-600 text-sm">AI Agent Trends 2026</p>
+                  <p className="text-gray-800 text-sm">AI Agent Trends 2026</p>
                 </div>
               </div>
-              <p className="text-gray-600 text-sm mb-3 italic">"AI agents are being deployed across industries—from customer service to supply chain to strategic planning."</p>
+              <p className="text-gray-800 text-sm mb-3 italic">"AI agents are being deployed across industries—from customer service to supply chain to strategic planning."</p>
               <div className="flex items-start gap-2">
                 <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
                 <p className="text-indigo-300 text-xs">Execution OS provides the control plane for agent-driven workflows across business domains.</p>
@@ -613,10 +613,10 @@ export default function Research() {
                 <div className="w-8 h-8 rounded-full bg-fuchsia-500 flex items-center justify-center shrink-0 text-gray-900 font-bold text-sm">8</div>
                 <div>
                   <h4 className="font-bold text-gray-900">Accenture</h4>
-                  <p className="text-gray-600 text-sm">New Rules of Platform Strategy</p>
+                  <p className="text-gray-800 text-sm">New Rules of Platform Strategy</p>
                 </div>
               </div>
-              <p className="text-gray-600 text-sm mb-3 italic">"Reinventing platform strategy for agentic AI—where platforms become orchestration layers, not just tools."</p>
+              <p className="text-gray-800 text-sm mb-3 italic">"Reinventing platform strategy for agentic AI—where platforms become orchestration layers, not just tools."</p>
               <div className="flex items-start gap-2">
                 <Target className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
                 <p className="text-indigo-300 text-xs">Execution OS is built as the orchestration layer where strategy meets agentic execution.</p>
@@ -625,7 +625,7 @@ export default function Research() {
           </div>
 
           <div className="p-6 bg-gray-50 border border-gray-200 rounded-lg text-center">
-            <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+            <p className="text-gray-800 text-sm md:text-base leading-relaxed">
               These decisions compound. The workflows you hand to agents, the data foundations you build, and the controls you put in place will shape performance for years. Execution OS provides the infrastructure to make these decisions execute.
             </p>
           </div>
@@ -643,25 +643,25 @@ export default function Research() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               The 2026 Agentic AI Playbook
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-4">
+            <p className="text-lg text-gray-800 max-w-3xl mx-auto mb-4">
               12 guides from 9 leading firms — all published in the last 6-8 months — move from reality check to foundations to enterprise design. Together, they map the exact territory Execution OS occupies.
             </p>
             <div className="flex items-center justify-center gap-8 text-sm">
               <div className="text-center">
                 <div className="text-3xl font-bold text-emerald-400">12</div>
-                <div className="text-gray-600">Guides</div>
+                <div className="text-gray-800">Guides</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-emerald-400">9</div>
-                <div className="text-gray-600">Firms</div>
+                <div className="text-gray-800">Firms</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-emerald-400">6 mo</div>
-                <div className="text-gray-600">Time Span</div>
+                <div className="text-gray-800">Time Span</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-emerald-400">1</div>
-                <div className="text-gray-600">Conclusion</div>
+                <div className="text-gray-800">Conclusion</div>
               </div>
             </div>
           </div>
@@ -679,8 +679,8 @@ export default function Research() {
                   <span className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-gray-900 text-xs font-bold">1</span>
                   <span className="font-bold text-gray-900">McKinsey (QuantumBlack)</span>
                 </div>
-                <p className="text-gray-600 text-xs mb-2">The State of AI in 2025</p>
-                <p className="text-gray-600 text-sm mb-3">A reality check on how companies are actually using AI today.</p>
+                <p className="text-gray-800 text-xs mb-2">The State of AI in 2025</p>
+                <p className="text-gray-800 text-sm mb-3">A reality check on how companies are actually using AI today.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS addresses the gap between AI adoption and AI execution</p>
               </div>
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
@@ -688,8 +688,8 @@ export default function Research() {
                   <span className="w-6 h-6 rounded-full bg-orange-500 flex items-center justify-center text-gray-900 text-xs font-bold">2</span>
                   <span className="font-bold text-gray-900">PwC</span>
                 </div>
-                <p className="text-gray-600 text-xs mb-2">Agentic AI Reinvention (Nov 2025)</p>
-                <p className="text-gray-600 text-sm mb-3">How enterprises scale AI agents for measurable business results.</p>
+                <p className="text-gray-800 text-xs mb-2">Agentic AI Reinvention (Nov 2025)</p>
+                <p className="text-gray-800 text-sm mb-3">How enterprises scale AI agents for measurable business results.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS delivers measurable P&L impact through structured execution</p>
               </div>
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
@@ -697,8 +697,8 @@ export default function Research() {
                   <span className="w-6 h-6 rounded-full bg-cyan-500 flex items-center justify-center text-gray-900 text-xs font-bold">3</span>
                   <span className="font-bold text-gray-900">McKinsey</span>
                 </div>
-                <p className="text-gray-600 text-xs mb-2">The Agentic AI Opportunity (Nov 2025)</p>
-                <p className="text-gray-600 text-sm mb-3">A comprehensive deep dive into Agentic AI and all of its impacts.</p>
+                <p className="text-gray-800 text-xs mb-2">The Agentic AI Opportunity (Nov 2025)</p>
+                <p className="text-gray-800 text-sm mb-3">A comprehensive deep dive into Agentic AI and all of its impacts.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS is the execution layer that makes agentic AI operational</p>
               </div>
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
@@ -706,8 +706,8 @@ export default function Research() {
                   <span className="w-6 h-6 rounded-full bg-purple-500 flex items-center justify-center text-gray-900 text-xs font-bold">4</span>
                   <span className="font-bold text-gray-900">Accenture</span>
                 </div>
-                <p className="text-gray-600 text-xs mb-2">Six Insights for AI ROI</p>
-                <p className="text-gray-600 text-sm mb-3">What actually drives AI results and return.</p>
+                <p className="text-gray-800 text-xs mb-2">Six Insights for AI ROI</p>
+                <p className="text-gray-800 text-sm mb-3">What actually drives AI results and return.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS' 170 playbooks are the structured execution that drives ROI</p>
               </div>
             </div>
@@ -726,8 +726,8 @@ export default function Research() {
                   <span className="w-6 h-6 rounded-full bg-sky-500 flex items-center justify-center text-gray-900 text-xs font-bold">5</span>
                   <span className="font-bold text-gray-900">AWS</span>
                 </div>
-                <p className="text-gray-600 text-xs mb-2">Rise of Autonomous Agents</p>
-                <p className="text-gray-600 text-sm mb-3">What AI agents are and where they add value.</p>
+                <p className="text-gray-800 text-xs mb-2">Rise of Autonomous Agents</p>
+                <p className="text-gray-800 text-sm mb-3">What AI agents are and where they add value.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS provides the strategic control layer on top of AI agent infrastructure</p>
               </div>
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
@@ -735,8 +735,8 @@ export default function Research() {
                   <span className="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center text-gray-900 text-xs font-bold">6</span>
                   <span className="font-bold text-gray-900">Bain</span>
                 </div>
-                <p className="text-gray-600 text-xs mb-2">Foundations for Agentic AI</p>
-                <p className="text-gray-600 text-sm mb-3">The data, platforms, and systems needed before scale.</p>
+                <p className="text-gray-800 text-xs mb-2">Foundations for Agentic AI</p>
+                <p className="text-gray-800 text-sm mb-3">The data, platforms, and systems needed before scale.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS IS that foundational platform — governance, playbooks, coordination</p>
               </div>
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
@@ -744,8 +744,8 @@ export default function Research() {
                   <span className="w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center text-gray-900 text-xs font-bold">7</span>
                   <span className="font-bold text-gray-900">IBM</span>
                 </div>
-                <p className="text-gray-600 text-xs mb-2">Agentic AI Operating Model</p>
-                <p className="text-gray-600 text-sm mb-3">The operating model required to run AI at scale.</p>
+                <p className="text-gray-800 text-xs mb-2">Agentic AI Operating Model</p>
+                <p className="text-gray-800 text-sm mb-3">The operating model required to run AI at scale.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS delivers that operating model — 170 playbooks, 9 domains, pre-defined governance</p>
               </div>
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
@@ -753,8 +753,8 @@ export default function Research() {
                   <span className="w-6 h-6 rounded-full bg-violet-500 flex items-center justify-center text-gray-900 text-xs font-bold">8</span>
                   <span className="font-bold text-gray-900">Deloitte</span>
                 </div>
-                <p className="text-gray-600 text-xs mb-2">Agentic Enterprise 2028</p>
-                <p className="text-gray-600 text-sm mb-3">A horizon scan to stress-test a 2026 roadmap.</p>
+                <p className="text-gray-800 text-xs mb-2">Agentic Enterprise 2028</p>
+                <p className="text-gray-800 text-sm mb-3">A horizon scan to stress-test a 2026 roadmap.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS' 18-month head start means enterprises can adopt today for 2028 readiness</p>
               </div>
             </div>
@@ -773,8 +773,8 @@ export default function Research() {
                   <span className="w-6 h-6 rounded-full bg-indigo-500 flex items-center justify-center text-gray-900 text-xs font-bold">9</span>
                   <span className="font-bold text-gray-900">BCG</span>
                 </div>
-                <p className="text-gray-600 text-xs mb-2">Machines That Manage Themselves</p>
-                <p className="text-gray-600 text-sm mb-3">What an agent-driven enterprise may become.</p>
+                <p className="text-gray-800 text-xs mb-2">Machines That Manage Themselves</p>
+                <p className="text-gray-800 text-sm mb-3">What an agent-driven enterprise may become.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS bridges today's chaos to the agent-driven future with human oversight</p>
               </div>
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
@@ -782,8 +782,8 @@ export default function Research() {
                   <span className="w-6 h-6 rounded-full bg-cyan-500 flex items-center justify-center text-gray-900 text-xs font-bold">10</span>
                   <span className="font-bold text-gray-900">McKinsey</span>
                 </div>
-                <p className="text-gray-600 text-xs mb-2">The Agentic Organization</p>
-                <p className="text-gray-600 text-sm mb-3">How organization design and work change with agents.</p>
+                <p className="text-gray-800 text-xs mb-2">The Agentic Organization</p>
+                <p className="text-gray-800 text-sm mb-3">How organization design and work change with agents.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS' IDEA Framework is the organizational design for the agentic era</p>
               </div>
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
@@ -791,8 +791,8 @@ export default function Research() {
                   <span className="w-6 h-6 rounded-full bg-amber-500 flex items-center justify-center text-gray-900 text-xs font-bold">11</span>
                   <span className="font-bold text-gray-900">World Economic Forum</span>
                 </div>
-                <p className="text-gray-600 text-xs mb-2">AI Agents in Action</p>
-                <p className="text-gray-600 text-sm mb-3">Practical guidance for evaluating agents and setting guardrails.</p>
+                <p className="text-gray-800 text-xs mb-2">AI Agents in Action</p>
+                <p className="text-gray-800 text-sm mb-3">Practical guidance for evaluating agents and setting guardrails.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS' AI Governance domain provides exactly these guardrails — 18 playbooks</p>
               </div>
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-emerald-500/50 transition-all">
@@ -800,8 +800,8 @@ export default function Research() {
                   <span className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-gray-900 text-xs font-bold">12</span>
                   <span className="font-bold text-gray-900">McKinsey</span>
                 </div>
-                <p className="text-gray-600 text-xs mb-2">Seizing the Agentic AI Advantage</p>
-                <p className="text-gray-600 text-sm mb-3">Real-world examples of agentic AI driving results.</p>
+                <p className="text-gray-800 text-xs mb-2">Seizing the Agentic AI Advantage</p>
+                <p className="text-gray-800 text-sm mb-3">Real-world examples of agentic AI driving results.</p>
                 <p className="text-emerald-400 text-xs italic">→ Execution OS turns these examples into repeatable, scalable execution patterns</p>
               </div>
             </div>
@@ -809,7 +809,7 @@ export default function Research() {
 
           <div className="p-6 bg-emerald-900/30 border border-emerald-700/50 rounded-lg text-center">
             <p className="text-emerald-300 font-bold text-lg mb-2">The convergence is clear.</p>
-            <p className="text-gray-600 text-sm leading-relaxed max-w-3xl mx-auto">
+            <p className="text-gray-800 text-sm leading-relaxed max-w-3xl mx-auto">
               Every major consulting and technology firm is telling enterprises: you need governance, coordination systems, and execution infrastructure to operationalize AI. None of them are building the product. Execution OS did.
             </p>
           </div>
@@ -977,7 +977,7 @@ export default function Research() {
           <h2 className="text-3xl font-bold mb-6">
             See the Research in Action
           </h2>
-          <p className="text-xl text-blue-600 mb-8">
+          <p className="text-xl text-blue-800 mb-8">
             Watch how Execution OS transforms these research findings into operational capability.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">

@@ -30,21 +30,21 @@ export default function VCPresentations() {
       value: "$847B",
       subtitle: "Enterprise intelligence market size",
       growth: "+18.2% CAGR",
-      color: "text-blue-600"
+      color: "text-blue-800"
     },
     {
       title: "Current Traction",
       value: "178",
       subtitle: "Enterprise components deployed",
       growth: "98/100 quality score",
-      color: "text-green-600"
+      color: "text-emerald-700"
     },
     {
       title: "Competitive Advantage",
       value: "4 min",
       subtitle: "Crisis response vs 6-month traditional",
       growth: "15,000x faster",
-      color: "text-purple-600"
+      color: "text-purple-800"
     },
     {
       title: "AI Accuracy",
@@ -132,7 +132,7 @@ export default function VCPresentations() {
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Investor Relations Center</h1>
-                <p className="text-gray-600 dark:text-gray-300">Series B Presentation Materials & Financial Projections</p>
+                <p className="text-gray-800 dark:text-gray-300">Series B Presentation Materials & Financial Projections</p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
@@ -151,11 +151,11 @@ export default function VCPresentations() {
             {investmentHighlights.map((highlight, index) => (
               <Card key={index} className="bg-white/90 dark:bg-slate-800/90 backdrop-blur border-slate-200 dark:border-slate-700">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-200">{highlight.title}</CardTitle>
+                  <CardTitle className="text-sm font-medium text-gray-800 dark:text-gray-200">{highlight.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{highlight.value}</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-200 mb-1">{highlight.subtitle}</div>
+                  <div className="text-sm text-gray-800 dark:text-gray-200 mb-1">{highlight.subtitle}</div>
                   <div className={`text-sm font-medium ${highlight.color}`}>{highlight.growth}</div>
                 </CardContent>
               </Card>
@@ -179,8 +179,8 @@ export default function VCPresentations() {
                         {material.icon}
                         <div>
                           <h4 className="font-semibold text-gray-900 dark:text-white">{material.title}</h4>
-                          <p className="text-sm text-gray-600 dark:text-gray-200">{material.description}</p>
-                          <div className="flex items-center space-x-4 text-xs text-gray-600 mt-1">
+                          <p className="text-sm text-gray-800 dark:text-gray-200">{material.description}</p>
+                          <div className="flex items-center space-x-4 text-xs text-gray-800 mt-1">
                             <span>{material.slides} slides</span>
                             <span>{material.duration}</span>
                             <Badge variant="outline">{material.type}</Badge>
@@ -235,7 +235,7 @@ export default function VCPresentations() {
                     <TrendingUp className="w-4 h-4 mr-2" />
                     <span className="text-sm font-medium">Investment Readiness Score: 96/100</span>
                   </div>
-                  <p className="text-xs text-green-700 dark:text-green-300 mt-1">
+                  <p className="text-xs text-emerald-800 dark:text-green-300 mt-1">
                     Platform demonstrates clear market leadership with unprecedented competitive advantages in enterprise intelligence and crisis response.
                   </p>
                 </div>

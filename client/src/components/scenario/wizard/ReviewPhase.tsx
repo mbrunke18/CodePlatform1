@@ -63,21 +63,21 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
             <div className="bg-white rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Users className="h-4 w-4 text-blue-400" />
-                <span className="text-sm text-gray-500">Stakeholders</span>
+                <span className="text-sm text-gray-700">Stakeholders</span>
               </div>
               <p className="text-2xl font-bold text-gray-900">{stakeholderCount}</p>
             </div>
             <div className="bg-white rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Bell className="h-4 w-4 text-purple-400" />
-                <span className="text-sm text-gray-500">Triggers</span>
+                <span className="text-sm text-gray-700">Triggers</span>
               </div>
               <p className="text-2xl font-bold text-gray-900">{triggerCount}</p>
             </div>
             <div className="bg-white rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <BarChart3 className="h-4 w-4 text-green-400" />
-                <span className="text-sm text-gray-500">Metrics</span>
+                <span className="text-sm text-gray-700">Metrics</span>
               </div>
               <p className="text-2xl font-bold text-gray-900">{metricCount}</p>
             </div>
@@ -106,8 +106,8 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
                   ) : (
                     <AlertTriangle className="h-5 w-5 text-yellow-400 flex-shrink-0" />
                   )}
-                  <Icon className={`h-4 w-4 ${check.met ? 'text-green-400' : 'text-gray-600'}`} />
-                  <span className={`flex-1 ${check.met ? 'text-gray-900' : 'text-gray-500'}`}>
+                  <Icon className={`h-4 w-4 ${check.met ? 'text-green-400' : 'text-gray-800'}`} />
+                  <span className={`flex-1 ${check.met ? 'text-gray-900' : 'text-gray-700'}`}>
                     {check.label}
                   </span>
                   {check.met && (
@@ -125,7 +125,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
               <Clock className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
               <div>
                 <p className="text-sm font-semibold text-blue-300">Estimated Execution Velocity</p>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-700 mt-1">
                   {readinessScore >= 80 ? (
                     <>
                       <span className="text-green-400 font-semibold">12-minute coordination ready</span> - Your scenario has all critical elements for rapid execution.
@@ -159,7 +159,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
             {!hasExecutiveSponsor && (
               <div className="flex items-start gap-2">
                 <span className="text-purple-400 mt-0.5">•</span>
-                <p className="text-gray-600">
+                <p className="text-gray-800">
                   <strong className="text-gray-900">Add Executive Sponsor:</strong> Critical for decision authority and rapid approvals
                 </p>
               </div>
@@ -167,7 +167,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
             {!hasAccountableOwner && (
               <div className="flex items-start gap-2">
                 <span className="text-purple-400 mt-0.5">•</span>
-                <p className="text-gray-600">
+                <p className="text-gray-800">
                   <strong className="text-gray-900">Assign Accountable Owner:</strong> Essential for coordinated execution
                 </p>
               </div>
@@ -175,7 +175,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
             {triggerCount < 2 && (
               <div className="flex items-start gap-2">
                 <span className="text-purple-400 mt-0.5">•</span>
-                <p className="text-gray-600">
+                <p className="text-gray-800">
                   <strong className="text-gray-900">Add More Triggers:</strong> Multiple signals improve detection accuracy
                 </p>
               </div>
@@ -183,7 +183,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
             {!hasKeyMetrics && (
               <div className="flex items-start gap-2">
                 <span className="text-purple-400 mt-0.5">•</span>
-                <p className="text-gray-600">
+                <p className="text-gray-800">
                   <strong className="text-gray-900">Mark Key Metrics:</strong> Identify primary success indicators for focus
                 </p>
               </div>
@@ -191,7 +191,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
             {stakeholderCount < 3 && (
               <div className="flex items-start gap-2">
                 <span className="text-purple-400 mt-0.5">•</span>
-                <p className="text-gray-600">
+                <p className="text-gray-800">
                   <strong className="text-gray-900">Add Cross-functional Stakeholders:</strong> Most scenarios require 3-7 stakeholders
                 </p>
               </div>

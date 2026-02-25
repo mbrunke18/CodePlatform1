@@ -210,7 +210,7 @@ export function LearnPhaseView({ playbookId, organizationId, isEditable = true }
               </CardDescription>
             </div>
             <div className="text-right">
-              <div className="text-3xl font-bold text-green-600 dark:text-green-400" data-testid="learn-items-count">
+              <div className="text-3xl font-bold text-emerald-700 dark:text-green-400" data-testid="learn-items-count">
                 {totalItems}
               </div>
               <div className="text-xs text-muted-foreground">Learning Activities</div>

@@ -53,7 +53,7 @@ export default function ApprovalError() {
       <Card className="max-w-md w-full">
         <CardHeader className="text-center">
           <div className="mx-auto w-16 h-16 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center mb-4">
-            <AlertCircle className="w-10 h-10 text-red-600 dark:text-red-400" />
+            <AlertCircle className="w-10 h-10 text-red-700 dark:text-red-400" />
           </div>
           <CardTitle className="text-2xl">{errorDetails.title}</CardTitle>
           <CardDescription>{errorDetails.description}</CardDescription>
@@ -67,7 +67,7 @@ export default function ApprovalError() {
             <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
               What you can do:
             </p>
-            <ul className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
+            <ul className="space-y-1 text-sm text-gray-800 dark:text-gray-400">
               {errorDetails.suggestions.map((suggestion, index) => (
                 <li key={index} className="flex items-start">
                   <span className="mr-2">•</span>

@@ -53,7 +53,7 @@ export function FakeRoleAssignment({ name, role, task, avatar, delay = 0, status
           <h4 className="text-gray-900 font-medium text-sm">{name}</h4>
           <span className="text-[#D4AF37] text-xs">{role}</span>
         </div>
-        <p className="text-gray-500 text-xs truncate">{task}</p>
+        <p className="text-gray-700 text-xs truncate">{task}</p>
       </div>
 
       <motion.div

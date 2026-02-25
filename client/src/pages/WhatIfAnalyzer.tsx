@@ -198,9 +198,9 @@ const domainPresets: Record<string, { label: string; color: string; icon: any; s
 
 const domainStyleMap: Record<string, { border: string; bg: string; text: string; iconText: string; btnClass: string }> = {
   all: { border: 'border-teal-200 dark:border-teal-800', bg: 'bg-gradient-to-br from-teal-50 to-white dark:from-teal-900/20 dark:to-slate-900', text: 'text-teal-600', iconText: 'text-teal-600', btnClass: 'bg-teal-600 hover:bg-teal-700 text-gray-900' },
-  offense: { border: 'border-emerald-200 dark:border-emerald-800', bg: 'bg-gradient-to-br from-emerald-50 to-white dark:from-emerald-900/20 dark:to-slate-900', text: 'text-emerald-600', iconText: 'text-emerald-600', btnClass: 'bg-emerald-600 hover:bg-emerald-700 text-gray-900' },
-  defense: { border: 'border-red-200 dark:border-red-800', bg: 'bg-gradient-to-br from-red-50 to-white dark:from-red-900/20 dark:to-slate-900', text: 'text-red-600', iconText: 'text-red-600', btnClass: 'bg-red-600 hover:bg-red-700 text-gray-900' },
-  special_teams: { border: 'border-purple-200 dark:border-purple-800', bg: 'bg-gradient-to-br from-purple-50 to-white dark:from-purple-900/20 dark:to-slate-900', text: 'text-purple-600', iconText: 'text-purple-600', btnClass: 'bg-purple-600 hover:bg-purple-700 text-gray-900' },
+  offense: { border: 'border-emerald-200 dark:border-emerald-800', bg: 'bg-gradient-to-br from-emerald-50 to-white dark:from-emerald-900/20 dark:to-slate-900', text: 'text-emerald-700', iconText: 'text-emerald-700', btnClass: 'bg-emerald-600 hover:bg-emerald-700 text-gray-900' },
+  defense: { border: 'border-red-200 dark:border-red-800', bg: 'bg-gradient-to-br from-red-50 to-white dark:from-red-900/20 dark:to-slate-900', text: 'text-red-700', iconText: 'text-red-700', btnClass: 'bg-red-600 hover:bg-red-700 text-gray-900' },
+  special_teams: { border: 'border-purple-200 dark:border-purple-800', bg: 'bg-gradient-to-br from-purple-50 to-white dark:from-purple-900/20 dark:to-slate-900', text: 'text-purple-800', iconText: 'text-purple-800', btnClass: 'bg-purple-600 hover:bg-purple-700 text-gray-900' },
 };
 
 function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSwitchToBuilder: () => void }) {
@@ -246,13 +246,13 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
 
   return (
     <div className="space-y-6">
-      <Button variant="ghost" size="sm" onClick={onBack} className="text-gray-500 hover:text-slate-700 dark:hover:text-slate-300 -ml-2">
+      <Button variant="ghost" size="sm" onClick={onBack} className="text-gray-700 hover:text-slate-700 dark:hover:text-slate-300 -ml-2">
         <ArrowLeft className="h-4 w-4 mr-1" /> Back to options
       </Button>
 
       <div className="text-center max-w-2xl mx-auto mb-2">
         <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-2">Quick What-If Analysis</h2>
-        <p className="text-gray-500 dark:text-slate-400">
+        <p className="text-gray-700 dark:text-slate-400">
           Describe a scenario in plain language and get an instant AI-powered impact assessment.
           See how long it would take to respond, what risks are involved, and whether to proceed.
         </p>
@@ -338,10 +338,10 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
         const isConditional = result.recommendation?.toLowerCase().includes('conditionally');
         const isRecommended = !isNotRecommended && !isConditional;
         const verdictConfig = isNotRecommended
-          ? { icon: XCircle, label: 'Not Recommended', color: 'red', bg: 'bg-red-50 dark:bg-red-900/20', border: 'border-red-200 dark:border-red-800', text: 'text-red-700 dark:text-red-300', iconColor: 'text-red-600', badgeBg: 'bg-red-600' }
+          ? { icon: XCircle, label: 'Not Recommended', color: 'red', bg: 'bg-red-50 dark:bg-red-900/20', border: 'border-red-200 dark:border-red-800', text: 'text-red-700 dark:text-red-300', iconColor: 'text-red-700', badgeBg: 'bg-red-600' }
           : isConditional
-          ? { icon: AlertTriangle, label: 'Proceed with Caution', color: 'amber', bg: 'bg-amber-50 dark:bg-amber-900/20', border: 'border-amber-200 dark:border-amber-800', text: 'text-amber-700 dark:text-amber-300', iconColor: 'text-amber-600', badgeBg: 'bg-amber-600' }
-          : { icon: CheckCircle2, label: 'Recommended', color: 'green', bg: 'bg-green-50 dark:bg-green-900/20', border: 'border-green-200 dark:border-green-800', text: 'text-green-700 dark:text-green-300', iconColor: 'text-green-600', badgeBg: 'bg-green-600' };
+          ? { icon: AlertTriangle, label: 'Proceed with Caution', color: 'amber', bg: 'bg-amber-50 dark:bg-amber-900/20', border: 'border-amber-200 dark:border-amber-800', text: 'text-[#C9A84C] dark:text-amber-300', iconColor: 'text-[#C9A84C]', badgeBg: 'bg-amber-600' }
+          : { icon: CheckCircle2, label: 'Recommended', color: 'green', bg: 'bg-green-50 dark:bg-green-900/20', border: 'border-green-200 dark:border-green-800', text: 'text-emerald-800 dark:text-green-300', iconColor: 'text-emerald-700', badgeBg: 'bg-green-600' };
         const VerdictIcon = verdictConfig.icon;
         return (
         <div className="space-y-6 animate-in fade-in duration-500">
@@ -361,14 +361,14 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   </h3>
                 </div>
               </div>
-              <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">{result.recommendation}</p>
+              <p className="text-gray-800 dark:text-slate-300 text-sm leading-relaxed">{result.recommendation}</p>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader className="pb-3">
               <CardTitle className="text-base flex items-center gap-2">
-                <Clock className="h-5 w-5 text-blue-600" />
+                <Clock className="h-5 w-5 text-blue-800" />
                 Coordination Timeline Comparison
               </CardTitle>
               <CardDescription>How this change affects the time from trigger to full stakeholder coordination</CardDescription>
@@ -376,31 +376,31 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
             <CardContent>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-32 text-sm font-medium text-gray-500 dark:text-slate-400 text-right flex-shrink-0">Current Playbook</div>
+                  <div className="w-32 text-sm font-medium text-gray-700 dark:text-slate-400 text-right flex-shrink-0">Current Playbook</div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
                       <div className="flex-1 bg-green-100 dark:bg-green-900/30 rounded-full h-8 flex items-center px-4">
-                        <span className="text-sm font-bold text-green-700 dark:text-green-300">{result.original_time}</span>
+                        <span className="text-sm font-bold text-emerald-800 dark:text-green-300">{result.original_time}</span>
                       </div>
-                      <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0" />
+                      <CheckCircle2 className="h-5 w-5 text-emerald-700 flex-shrink-0" />
                     </div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-32 text-sm font-medium text-gray-500 dark:text-slate-400 text-right flex-shrink-0">With This Change</div>
+                  <div className="w-32 text-sm font-medium text-gray-700 dark:text-slate-400 text-right flex-shrink-0">With This Change</div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
                       <div className={`flex-1 ${isNotRecommended ? 'bg-red-100 dark:bg-red-900/30' : isConditional ? 'bg-amber-100 dark:bg-amber-900/30' : 'bg-green-100 dark:bg-green-900/30'} rounded-full h-8 flex items-center px-4`}>
-                        <span className={`text-sm font-bold ${isNotRecommended ? 'text-red-700 dark:text-red-300' : isConditional ? 'text-amber-700 dark:text-amber-300' : 'text-green-700 dark:text-green-300'}`}>{result.modified_time}</span>
+                        <span className={`text-sm font-bold ${isNotRecommended ? 'text-red-700 dark:text-red-300' : isConditional ? 'text-[#C9A84C] dark:text-amber-300' : 'text-emerald-800 dark:text-green-300'}`}>{result.modified_time}</span>
                       </div>
-                      {isNotRecommended ? <TrendingDown className="h-5 w-5 text-red-600 flex-shrink-0" /> : isConditional ? <AlertTriangle className="h-5 w-5 text-amber-600 flex-shrink-0" /> : <TrendingUp className="h-5 w-5 text-green-600 flex-shrink-0" />}
+                      {isNotRecommended ? <TrendingDown className="h-5 w-5 text-red-700 flex-shrink-0" /> : isConditional ? <AlertTriangle className="h-5 w-5 text-[#C9A84C] flex-shrink-0" /> : <TrendingUp className="h-5 w-5 text-emerald-700 flex-shrink-0" />}
                     </div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 pt-2 border-t border-slate-200 dark:border-slate-700">
                   <div className="w-32 text-sm font-semibold text-slate-700 dark:text-slate-200 text-right flex-shrink-0">Net Impact</div>
                   <div className="flex-1">
-                    <span className={`text-lg font-bold ${isNotRecommended ? 'text-red-600' : isConditional ? 'text-amber-600' : 'text-green-600'}`}>{result.impact}</span>
+                    <span className={`text-lg font-bold ${isNotRecommended ? 'text-red-700' : isConditional ? 'text-[#C9A84C]' : 'text-emerald-700'}`}>{result.impact}</span>
                   </div>
                 </div>
               </div>
@@ -411,12 +411,12 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
             <Card>
               <CardHeader className="pb-3">
                 <CardTitle className="text-base flex items-center gap-2">
-                  <Shield className="h-5 w-5 text-blue-600" />
+                  <Shield className="h-5 w-5 text-blue-800" />
                   What You Should Know
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">{result.risk_assessment}</p>
+                <p className="text-gray-800 dark:text-slate-300 text-sm leading-relaxed">{result.risk_assessment}</p>
               </CardContent>
             </Card>
           )}
@@ -443,7 +443,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-slate-800 dark:text-white">Auto-Detect Trigger</div>
-                    <p className="text-xs text-gray-500 dark:text-slate-400 mt-0.5">AI agents continuously monitor for this scenario pattern and activate the right playbook instantly</p>
+                    <p className="text-xs text-gray-700 dark:text-slate-400 mt-0.5">AI agents continuously monitor for this scenario pattern and activate the right playbook instantly</p>
                   </div>
                 </div>
                 <div className="flex gap-3 items-start">
@@ -452,7 +452,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-slate-800 dark:text-white">Coordinate Stakeholders</div>
-                    <p className="text-xs text-gray-500 dark:text-slate-400 mt-0.5">Notify 50-200+ stakeholders simultaneously with role-specific instructions and acknowledgment tracking</p>
+                    <p className="text-xs text-gray-700 dark:text-slate-400 mt-0.5">Notify 50-200+ stakeholders simultaneously with role-specific instructions and acknowledgment tracking</p>
                   </div>
                 </div>
                 <div className="flex gap-3 items-start">
@@ -461,7 +461,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-slate-800 dark:text-white">Execute in {isRecommended ? (result.modified_time || result.original_time || '12 minutes') : (result.original_time || '12 minutes')}</div>
-                    <p className="text-xs text-gray-500 dark:text-slate-400 mt-0.5">Pre-authorized budgets release, tasks assign, and documents stage — all within the coordination window</p>
+                    <p className="text-xs text-gray-700 dark:text-slate-400 mt-0.5">Pre-authorized budgets release, tasks assign, and documents stage — all within the coordination window</p>
                   </div>
                 </div>
               </div>
@@ -472,7 +472,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
             <Button onClick={onSwitchToBuilder} variant="outline" className="gap-2">
               <Layers className="h-4 w-4" /> Build Detailed Scenario Model
             </Button>
-            <Button onClick={() => setResult(null)} variant="ghost" className="text-gray-500 gap-2">
+            <Button onClick={() => setResult(null)} variant="ghost" className="text-gray-700 gap-2">
               <FlaskConical className="h-4 w-4" /> Test Another Scenario
             </Button>
           </div>
@@ -831,13 +831,13 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
 
   return (
     <div className="space-y-6">
-      <Button variant="ghost" size="sm" onClick={onBack} className="text-gray-500 hover:text-slate-700 dark:hover:text-slate-300 -ml-2">
+      <Button variant="ghost" size="sm" onClick={onBack} className="text-gray-700 hover:text-slate-700 dark:hover:text-slate-300 -ml-2">
         <ArrowLeft className="h-4 w-4 mr-1" /> Back to options
       </Button>
 
       <div className="text-center max-w-2xl mx-auto mb-2">
         <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-2">Deep Scenario Builder</h2>
-        <p className="text-gray-500 dark:text-slate-400">
+        <p className="text-gray-700 dark:text-slate-400">
           Build a detailed scenario model step by step. Define conditions, assess impact, and see exactly which
           playbooks and teams would activate.
         </p>
@@ -857,8 +857,8 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                 onClick={() => { if (isComplete) setWizardStep(step); }}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
                   isActive ? 'bg-blue-600 text-gray-900 shadow-md' :
-                  isComplete ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 cursor-pointer hover:bg-blue-200 dark:hover:bg-blue-900/50' :
-                  'bg-slate-100 text-gray-600 dark:bg-slate-800 dark:text-slate-500'
+                  isComplete ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 cursor-pointer hover:bg-blue-200 dark:hover:bg-blue-900/50' :
+                  'bg-slate-100 text-gray-800 dark:bg-slate-800 dark:text-slate-500'
                 }`}
               >
                 {isComplete ? <CheckCircle2 className="h-3.5 w-3.5" /> : <span>{step}</span>}
@@ -892,8 +892,8 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                   const isActive = analysisName === { 'market-entry': 'Market Entry Analysis', 'ma-integration': 'M&A Integration', 'product-recall': 'Product Recall Scenario', 'cyber-incident': 'Cybersecurity Incident', 'digital-transform': 'Digital Transformation Sprint', 'ai-governance': 'AI Governance Framework' }[key];
                   const borderMap: Record<string, string> = { emerald: 'border-emerald-400 bg-emerald-50 dark:bg-emerald-900/20', red: 'border-red-400 bg-red-50 dark:bg-red-900/20', purple: 'border-purple-400 bg-purple-50 dark:bg-purple-900/20' };
                   const iconBg: Record<string, string> = { emerald: 'bg-emerald-100 dark:bg-emerald-900/30', red: 'bg-red-100 dark:bg-red-900/30', purple: 'bg-purple-100 dark:bg-purple-900/30' };
-                  const iconColor: Record<string, string> = { emerald: 'text-emerald-600', red: 'text-red-600', purple: 'text-purple-600' };
-                  const domainColor: Record<string, string> = { emerald: 'text-emerald-600 dark:text-emerald-400', red: 'text-red-600 dark:text-red-400', purple: 'text-purple-600 dark:text-purple-400' };
+                  const iconColor: Record<string, string> = { emerald: 'text-emerald-700', red: 'text-red-700', purple: 'text-purple-800' };
+                  const domainColor: Record<string, string> = { emerald: 'text-emerald-700 dark:text-emerald-400', red: 'text-red-700 dark:text-red-400', purple: 'text-purple-800 dark:text-purple-400' };
                   return (
                     <button
                       key={key}
@@ -912,7 +912,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
 
               {scenarioTemplates.length > 0 && (
                 <div>
-                  <Label className="text-xs text-gray-500 mb-1 block">Or load from your saved templates:</Label>
+                  <Label className="text-xs text-gray-700 mb-1 block">Or load from your saved templates:</Label>
                   <Select onValueChange={loadDbTemplate}>
                     <SelectTrigger><SelectValue placeholder="Select a saved template..." /></SelectTrigger>
                     <SelectContent>
@@ -1004,8 +1004,8 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                           {displayed.map(variable => {
                             const catColors: Record<string, { bg: string; text: string; border: string }> = {
                               market: { bg: 'bg-emerald-50 dark:bg-emerald-900/20', text: 'text-emerald-700 dark:text-emerald-300', border: 'border-emerald-200 dark:border-emerald-800' },
-                              operational: { bg: 'bg-blue-50 dark:bg-blue-900/20', text: 'text-blue-700 dark:text-blue-300', border: 'border-blue-200 dark:border-blue-800' },
-                              financial: { bg: 'bg-amber-50 dark:bg-amber-900/20', text: 'text-amber-700 dark:text-amber-300', border: 'border-amber-200 dark:border-amber-800' },
+                              operational: { bg: 'bg-blue-50 dark:bg-blue-900/20', text: 'text-blue-800 dark:text-blue-300', border: 'border-blue-200 dark:border-blue-800' },
+                              financial: { bg: 'bg-amber-50 dark:bg-amber-900/20', text: 'text-[#C9A84C] dark:text-amber-300', border: 'border-amber-200 dark:border-amber-800' },
                               regulatory: { bg: 'bg-purple-50 dark:bg-purple-900/20', text: 'text-purple-700 dark:text-purple-300', border: 'border-purple-200 dark:border-purple-800' },
                               environmental: { bg: 'bg-cyan-50 dark:bg-cyan-900/20', text: 'text-cyan-700 dark:text-cyan-300', border: 'border-cyan-200 dark:border-cyan-800' },
                             };
@@ -1020,14 +1020,14 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                                   <div className="text-sm font-medium text-slate-800 dark:text-white">{variable.label}</div>
                                   <div className={`text-xs ${colors.text}`}>{variable.category} · {variable.unit}</div>
                                 </div>
-                                <ChevronRight className="h-4 w-4 text-gray-600 flex-shrink-0" />
+                                <ChevronRight className="h-4 w-4 text-gray-800 flex-shrink-0" />
                               </button>
                             );
                           })}
                         </div>
                         {hasMore && (
                           <div className="text-center mt-2">
-                            <Button variant="ghost" size="sm" className="text-blue-600 dark:text-blue-400" onClick={() => setShowAllVariables(true)}>
+                            <Button variant="ghost" size="sm" className="text-blue-800 dark:text-blue-400" onClick={() => setShowAllVariables(true)}>
                               Show {available.length - 8} more variables
                             </Button>
                           </div>
@@ -1036,7 +1036,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                     );
                   })()}
                   <div className="mt-3 text-center">
-                    <Button variant="ghost" size="sm" className="text-gray-500" onClick={() => setShowCustomVariable(true)}>
+                    <Button variant="ghost" size="sm" className="text-gray-700" onClick={() => setShowCustomVariable(true)}>
                       <Plus className="h-4 w-4 mr-1" /> Add a custom variable
                     </Button>
                   </div>
@@ -1048,14 +1048,14 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-sm font-bold text-slate-800 dark:text-white">{selectedVariable.label}</div>
-                      <div className="text-xs text-gray-500">{selectedVariable.category} variable · measured in {selectedVariable.unit}</div>
+                      <div className="text-xs text-gray-700">{selectedVariable.category} variable · measured in {selectedVariable.unit}</div>
                     </div>
                     <Button variant="ghost" size="sm" onClick={() => { setSelectedVariableId(''); setConditionValue(''); setConditionValue2(''); }}>
                       <ArrowLeft className="h-3 w-3 mr-1" /> Change
                     </Button>
                   </div>
 
-                  <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-800 p-3 rounded-md border border-slate-200 dark:border-slate-700">
+                  <div className="flex items-center gap-2 text-sm text-gray-800 dark:text-slate-300 bg-white dark:bg-slate-800 p-3 rounded-md border border-slate-200 dark:border-slate-700">
                     <span className="font-medium text-slate-800 dark:text-white">{selectedVariable.label}</span>
                     <Select value={conditionOperator} onValueChange={setConditionOperator}>
                       <SelectTrigger className="w-44 h-8 text-xs">
@@ -1080,7 +1080,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                     />
                     {conditionOperator === 'between' && (
                       <>
-                        <span className="text-gray-600">and</span>
+                        <span className="text-gray-800">and</span>
                         <Input
                           type="number"
                           placeholder="max"
@@ -1090,11 +1090,11 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                         />
                       </>
                     )}
-                    <span className="text-gray-500 text-xs whitespace-nowrap">{selectedVariable.unit}</span>
+                    <span className="text-gray-700 text-xs whitespace-nowrap">{selectedVariable.unit}</span>
                   </div>
 
                   {conditionValue && (
-                    <div className="text-xs text-gray-500 dark:text-slate-400 italic pl-1">
+                    <div className="text-xs text-gray-700 dark:text-slate-400 italic pl-1">
                       Preview: "{selectedVariable.label} {operatorLabels[conditionOperator] || conditionOperator} {conditionValue}{conditionOperator === 'between' && conditionValue2 ? ` and ${conditionValue2}` : ''} {selectedVariable.unit}"
                     </div>
                   )}
@@ -1181,8 +1181,8 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                   {conditions.map(condition => {
                     const catBadgeColors: Record<string, string> = {
                       market: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300',
-                      operational: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
-                      financial: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300',
+                      operational: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300',
+                      financial: 'bg-amber-100 text-[#C9A84C] dark:bg-amber-900/30 dark:text-amber-300',
                       regulatory: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300',
                       environmental: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-300',
                     };
@@ -1192,10 +1192,10 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                           <Badge className={`mb-1 text-[10px] border-0 ${catBadgeColors[condition.category] || ''}`}>{condition.category}</Badge>
                           <div className="text-slate-800 dark:text-white">
                             <span className="font-medium">{condition.label}</span>
-                            <span className="text-gray-500"> {operatorLabels[condition.operator] || condition.operator} </span>
+                            <span className="text-gray-700"> {operatorLabels[condition.operator] || condition.operator} </span>
                             <span className="font-semibold">{condition.value}</span>
                             {condition.value2 && <span className="font-semibold"> and {condition.value2}</span>}
-                            {condition.unit && <span className="text-gray-500 ml-1">{condition.unit}</span>}
+                            {condition.unit && <span className="text-gray-700 ml-1">{condition.unit}</span>}
                           </div>
                         </div>
                         <Button variant="ghost" size="sm" onClick={() => removeCondition(condition.id)}>
@@ -1274,7 +1274,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                           className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all ${
                             isSelected
                               ? 'bg-blue-600 text-gray-900 shadow-sm'
-                              : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                              : 'bg-slate-100 dark:bg-slate-800 text-gray-800 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
                           }`}
                         >
                           {isSelected && <span className="mr-1">✓</span>}
@@ -1314,7 +1314,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                       <button
                         key={preset.name}
                         onClick={() => addPresetResource(preset)}
-                        className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800 hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-all"
+                        className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-50 dark:bg-amber-900/20 text-[#C9A84C] dark:text-amber-300 border border-amber-200 dark:border-amber-800 hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-all"
                       >
                         <Plus className="h-3 w-3" /> {preset.name}
                       </button>
@@ -1357,7 +1357,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                       <button
                         key={preset.name}
                         onClick={() => addPresetStakeholder(preset)}
-                        className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-all"
+                        className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-all"
                       >
                         <Plus className="h-3 w-3" /> {preset.name}
                       </button>
@@ -1396,9 +1396,9 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
       {wizardStep === 4 && analysisResult && (() => {
         const impactLevel = analysisResult.impactScore >= 70 ? 'high' : analysisResult.impactScore >= 40 ? 'moderate' : 'low';
         const impactConfig = {
-          high: { label: 'High Impact Scenario', color: 'text-red-600', bg: 'bg-red-50 dark:bg-red-900/20', border: 'border-red-200 dark:border-red-800', icon: AlertTriangle, iconColor: 'text-red-600' },
-          moderate: { label: 'Moderate Impact Scenario', color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-900/20', border: 'border-amber-200 dark:border-amber-800', icon: AlertTriangle, iconColor: 'text-amber-600' },
-          low: { label: 'Low Impact Scenario', color: 'text-green-600', bg: 'bg-green-50 dark:bg-green-900/20', border: 'border-green-200 dark:border-green-800', icon: CheckCircle2, iconColor: 'text-green-600' },
+          high: { label: 'High Impact Scenario', color: 'text-red-700', bg: 'bg-red-50 dark:bg-red-900/20', border: 'border-red-200 dark:border-red-800', icon: AlertTriangle, iconColor: 'text-red-700' },
+          moderate: { label: 'Moderate Impact Scenario', color: 'text-[#C9A84C]', bg: 'bg-amber-50 dark:bg-amber-900/20', border: 'border-amber-200 dark:border-amber-800', icon: AlertTriangle, iconColor: 'text-[#C9A84C]' },
+          low: { label: 'Low Impact Scenario', color: 'text-emerald-700', bg: 'bg-green-50 dark:bg-green-900/20', border: 'border-green-200 dark:border-green-800', icon: CheckCircle2, iconColor: 'text-emerald-700' },
         }[impactLevel];
         const ImpactIcon = impactConfig.icon;
         const industryHrs = Math.round(analysisResult.decisionVelocityMetrics.industryAverage / 60);
@@ -1418,7 +1418,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                   <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-2">
                     {analysisResult.triggeredAlerts.length} alert{analysisResult.triggeredAlerts.length !== 1 ? 's' : ''} detected, {analysisResult.recommendedPlaybooks.length} playbook{analysisResult.recommendedPlaybooks.length !== 1 ? 's' : ''} ready to activate
                   </h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-300">
+                  <p className="text-sm text-gray-800 dark:text-slate-300">
                     If this scenario occurs, Execution OS would coordinate your response in <strong>{analysisResult.decisionVelocityMetrics.ourTime} minutes</strong> — {analysisResult.decisionVelocityMetrics.percentageFaster}% faster than the industry average of {industryHrs} hours. {analysisResult.teamsInvolved.length} teams would be mobilized simultaneously.
                   </p>
                 </div>
@@ -1432,7 +1432,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
             <Card>
               <CardHeader className="pb-3">
                 <CardTitle className="text-base flex items-center gap-2">
-                  <Clock className="h-5 w-5 text-blue-600" />
+                  <Clock className="h-5 w-5 text-blue-800" />
                   Your Speed vs. Industry
                 </CardTitle>
                 <CardDescription>Time from trigger detection to full coordination</CardDescription>
@@ -1450,8 +1450,8 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                   </div>
                   <div>
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-sm font-medium text-gray-600">Industry Average</span>
-                      <span className="text-sm font-bold text-gray-600">{industryHrs} hours</span>
+                      <span className="text-sm font-medium text-gray-800">Industry Average</span>
+                      <span className="text-sm font-bold text-gray-800">{industryHrs} hours</span>
                     </div>
                     <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-3">
                       <div className="bg-slate-300 dark:bg-slate-600 h-3 rounded-full w-full" />
@@ -1499,7 +1499,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
             </CardHeader>
             <CardContent className="space-y-5">
               <div>
-                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Playbooks That Activate</div>
+                <div className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-2">Playbooks That Activate</div>
                 <div className="space-y-2">
                   {analysisResult.recommendedPlaybooks.map((playbook, idx) => (
                     <div key={playbook.id} className="flex items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg border border-teal-100 dark:border-teal-900/30">
@@ -1509,13 +1509,13 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                       <div className="flex-1 min-w-0">
                         <div className="text-sm font-semibold text-slate-800 dark:text-white">{playbook.name}</div>
                         <div className="flex items-center gap-3 mt-0.5">
-                          <span className="text-xs text-gray-500 flex items-center gap-1"><Clock className="h-3 w-3" /> {playbook.executionTime} min</span>
+                          <span className="text-xs text-gray-700 flex items-center gap-1"><Clock className="h-3 w-3" /> {playbook.executionTime} min</span>
                           {playbook.automationCoverage && (
                             <span className="text-xs text-teal-600 flex items-center gap-1"><Zap className="h-3 w-3" /> {playbook.automationCoverage}% automated</span>
                           )}
                         </div>
                       </div>
-                      <Badge className={`${playbook.readinessState === 'green' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'} text-[10px]`}>
+                      <Badge className={`${playbook.readinessState === 'green' ? 'bg-green-100 text-emerald-800 dark:bg-green-900/30 dark:text-green-400' : 'bg-amber-100 text-[#C9A84C] dark:bg-amber-900/30 dark:text-amber-400'} text-[10px]`}>
                         {playbook.readinessState === 'green' ? 'Ready' : 'Setup Needed'}
                       </Badge>
                     </div>
@@ -1526,7 +1526,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
               <Separator />
 
               <div>
-                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Teams Mobilized Simultaneously</div>
+                <div className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-2">Teams Mobilized Simultaneously</div>
                 <div className="flex flex-wrap gap-2">
                   {analysisResult.teamsInvolved.map((team, idx) => (
                     <div key={idx} className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-slate-800 rounded-full border border-slate-200 dark:border-slate-700">
@@ -1540,7 +1540,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
               <Separator />
 
               <div>
-                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Orchestration Steps</div>
+                <div className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-3">Orchestration Steps</div>
                 <div className="grid sm:grid-cols-4 gap-3">
                   {[
                     { time: '0:00', label: 'Trigger Detected', desc: 'AI agents identify the scenario pattern', icon: Target },
@@ -1557,7 +1557,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                         </div>
                         <div className="text-xs font-bold text-teal-600 mb-0.5">{step.time}</div>
                         <div className="text-xs font-semibold text-slate-800 dark:text-white">{step.label}</div>
-                        <div className="text-[10px] text-gray-500 mt-0.5">{step.desc}</div>
+                        <div className="text-[10px] text-gray-700 mt-0.5">{step.desc}</div>
                       </div>
                     );
                   })}
@@ -1570,15 +1570,15 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <BarChart3 className="h-5 w-5 text-blue-600" />
+                  <BarChart3 className="h-5 w-5 text-blue-800" />
                   <span className="font-semibold text-sm text-slate-700 dark:text-slate-200">Analysis Confidence</span>
                 </div>
-                <Badge variant="outline" className="text-blue-600">{analysisResult.confidenceLevel}%</Badge>
+                <Badge variant="outline" className="text-blue-800">{analysisResult.confidenceLevel}%</Badge>
               </div>
               <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
                 <div className="bg-blue-600 h-2 rounded-full transition-all" style={{ width: `${analysisResult.confidenceLevel}%` }} />
               </div>
-              <p className="text-xs text-gray-500 mt-1.5">
+              <p className="text-xs text-gray-700 mt-1.5">
                 {analysisResult.confidenceLevel < 60
                   ? 'Go back and add financial impact, resources, or stakeholders to increase confidence and get more precise results.'
                   : analysisResult.confidenceLevel < 80
@@ -1598,7 +1598,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                   <FileText className="h-4 w-4 mr-2" /> Save as Reusable Template
                 </Button>
               </div>
-              <p className="text-xs text-gray-500 text-center mt-2">Saved analyses appear in your scenario library and can be re-run anytime</p>
+              <p className="text-xs text-gray-700 text-center mt-2">Saved analyses appear in your scenario library and can be re-run anytime</p>
             </CardContent>
           </Card>
         </div>
@@ -1651,7 +1651,7 @@ export default function WhatIfAnalyzer() {
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-500 dark:text-slate-400 text-lg">
+                <p className="text-gray-700 dark:text-slate-400 text-lg">
                   Test any strategic scenario before it happens. See how your organization would respond,
                   which playbooks activate, and how fast you'd coordinate.
                 </p>
@@ -1664,32 +1664,32 @@ export default function WhatIfAnalyzer() {
                 >
                   <div className="flex items-center gap-3 mb-3">
                     <div className="p-2.5 bg-blue-100 dark:bg-blue-900/30 rounded-xl group-hover:bg-blue-200 dark:group-hover:bg-blue-900/50 transition-colors">
-                      <Sparkles className="h-6 w-6 text-blue-600" />
+                      <Sparkles className="h-6 w-6 text-blue-800" />
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-slate-800 dark:text-white">Quick Analysis</h3>
-                      <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 text-[10px]">RECOMMENDED FOR FIRST TIME</Badge>
+                      <Badge className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 text-[10px]">RECOMMENDED FOR FIRST TIME</Badge>
                     </div>
                   </div>
-                  <p className="text-sm text-gray-500 dark:text-slate-400 mb-4">
+                  <p className="text-sm text-gray-700 dark:text-slate-400 mb-4">
                     Describe a "what if" scenario in plain language and get an instant AI-powered impact assessment
                     with a go/no-go recommendation.
                   </p>
                   <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-400">
+                    <div className="flex items-center gap-2 text-xs text-gray-700 dark:text-slate-400">
                       <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
                       <span>Type a scenario in plain English</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-400">
+                    <div className="flex items-center gap-2 text-xs text-gray-700 dark:text-slate-400">
                       <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
                       <span>AI analyzes timing impact and risks</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-400">
+                    <div className="flex items-center gap-2 text-xs text-gray-700 dark:text-slate-400">
                       <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
                       <span>Get a clear recommendation in seconds</span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1 mt-4 text-sm font-semibold text-blue-600 group-hover:gap-2 transition-all">
+                  <div className="flex items-center gap-1 mt-4 text-sm font-semibold text-blue-800 group-hover:gap-2 transition-all">
                     Start Quick Analysis <ArrowRight className="h-4 w-4" />
                   </div>
                 </button>
@@ -1700,32 +1700,32 @@ export default function WhatIfAnalyzer() {
                 >
                   <div className="flex items-center gap-3 mb-3">
                     <div className="p-2.5 bg-purple-100 dark:bg-purple-900/30 rounded-xl group-hover:bg-purple-200 dark:group-hover:bg-purple-900/50 transition-colors">
-                      <Layers className="h-6 w-6 text-purple-600" />
+                      <Layers className="h-6 w-6 text-purple-800" />
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-slate-800 dark:text-white">Deep Scenario Builder</h3>
                       <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300 text-[10px]">DETAILED MODELING</Badge>
                     </div>
                   </div>
-                  <p className="text-sm text-gray-500 dark:text-slate-400 mb-4">
+                  <p className="text-sm text-gray-700 dark:text-slate-400 mb-4">
                     Build a thorough scenario model with measurable conditions, impact assessment, resources,
                     and stakeholders. Save and reuse as templates.
                   </p>
                   <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-400">
+                    <div className="flex items-center gap-2 text-xs text-gray-700 dark:text-slate-400">
                       <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
                       <span>Guided 4-step wizard walks you through</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-400">
+                    <div className="flex items-center gap-2 text-xs text-gray-700 dark:text-slate-400">
                       <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
                       <span>See which playbooks and teams activate</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-400">
+                    <div className="flex items-center gap-2 text-xs text-gray-700 dark:text-slate-400">
                       <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
                       <span>Save scenarios and create reusable templates</span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1 mt-4 text-sm font-semibold text-purple-600 group-hover:gap-2 transition-all">
+                  <div className="flex items-center gap-1 mt-4 text-sm font-semibold text-purple-800 group-hover:gap-2 transition-all">
                     Open Scenario Builder <ArrowRight className="h-4 w-4" />
                   </div>
                 </button>
@@ -1733,7 +1733,7 @@ export default function WhatIfAnalyzer() {
 
               {savedScenarios.length > 0 && (
                 <div className="max-w-3xl mx-auto">
-                  <h3 className="text-sm font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+                  <h3 className="text-sm font-semibold text-gray-700 dark:text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
                     <Save className="h-4 w-4" /> Your Saved Scenarios ({savedScenarios.length})
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -1741,10 +1741,10 @@ export default function WhatIfAnalyzer() {
                       <Card key={scenario.id} className="hover:shadow-md transition-shadow">
                         <CardContent className="p-4">
                           <div className="font-medium text-sm text-slate-800 dark:text-white mb-1">{scenario.name}</div>
-                          <div className="text-xs text-gray-500 line-clamp-2 mb-2">{scenario.description}</div>
+                          <div className="text-xs text-gray-700 line-clamp-2 mb-2">{scenario.description}</div>
                           <div className="flex items-center justify-between text-xs">
-                            <span className="text-gray-600">Impact: <span className="font-semibold text-orange-600">{scenario.impactScore || 'N/A'}</span></span>
-                            <span className="text-gray-600">{scenario.projectedExecutionTime || 0} min</span>
+                            <span className="text-gray-800">Impact: <span className="font-semibold text-orange-600">{scenario.impactScore || 'N/A'}</span></span>
+                            <span className="text-gray-800">{scenario.projectedExecutionTime || 0} min</span>
                           </div>
                         </CardContent>
                       </Card>

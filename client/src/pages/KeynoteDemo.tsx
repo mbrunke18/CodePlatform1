@@ -107,13 +107,13 @@ function ActivationTimeline() {
             transition={{ duration: 0.5 }}
             className={`flex items-center gap-4 p-3 rounded-lg transition-all ${isCurrent ? 'bg-white/10 ring-1 ring-white/20 scale-[1.02]' : ''}`}
           >
-            <div className="w-16 text-right font-mono text-sm text-slate-600 dark:text-slate-200">{s.time}</div>
+            <div className="w-16 text-right font-mono text-sm text-gray-800 dark:text-slate-200">{s.time}</div>
             <div className={`w-10 h-10 rounded-full flex items-center justify-center ${isActive ? 'bg-white/10' : 'bg-white/5'}`}>
-              <Icon className={`h-5 w-5 ${isActive ? s.color : 'text-gray-600'}`} />
+              <Icon className={`h-5 w-5 ${isActive ? s.color : 'text-gray-800'}`} />
             </div>
             <div className="flex-1">
-              <div className={`font-semibold text-sm ${isActive ? 'text-gray-900' : 'text-gray-600'}`}>{s.label}</div>
-              <div className={`text-xs ${isActive ? 'text-slate-600 dark:text-slate-200' : 'text-slate-700'}`}>{s.detail}</div>
+              <div className={`font-semibold text-sm ${isActive ? 'text-gray-900' : 'text-gray-800'}`}>{s.label}</div>
+              <div className={`text-xs ${isActive ? 'text-gray-800 dark:text-slate-200' : 'text-slate-700'}`}>{s.detail}</div>
             </div>
             {isCurrent && (
               <motion.div
@@ -194,22 +194,22 @@ export default function KeynoteDemo() {
         >
           <div className="text-center">
             <div className="text-6xl font-bold text-red-400 mb-3"><CountUp end={72} suffix="+" /></div>
-            <div className="text-xl text-slate-600 dark:text-slate-200">Hours for critical signals to reach decision-makers</div>
+            <div className="text-xl text-gray-800 dark:text-slate-200">Hours for critical signals to reach decision-makers</div>
           </div>
           <div className="text-center">
             <div className="text-6xl font-bold text-amber-400 mb-3"><CountUp end={67} suffix="%" /></div>
-            <div className="text-xl text-slate-600 dark:text-slate-200">Of strategic initiatives fail due to poor execution</div>
+            <div className="text-xl text-gray-800 dark:text-slate-200">Of strategic initiatives fail due to poor execution</div>
           </div>
           <div className="text-center">
             <div className="text-6xl font-bold text-orange-400 mb-3"><CountUp end={23} suffix="%" /></div>
-            <div className="text-xl text-slate-600 dark:text-slate-200">Of executive time wasted getting organized</div>
+            <div className="text-xl text-gray-800 dark:text-slate-200">Of executive time wasted getting organized</div>
           </div>
         </motion.div>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 0.8 }}
-          className="text-2xl text-gray-600 mt-16 max-w-3xl"
+          className="text-2xl text-gray-800 mt-16 max-w-3xl"
         >
           Fortune 1000 companies lose billions every year because they can't move fast enough when it matters most.
         </motion.p>
@@ -233,7 +233,7 @@ export default function KeynoteDemo() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="text-2xl text-slate-600 dark:text-slate-200 mb-16 max-w-3xl"
+          className="text-2xl text-gray-800 dark:text-slate-200 mb-16 max-w-3xl"
         >
           Annual cost of failed strategic execution across Fortune 1000 companies
         </motion.p>
@@ -258,7 +258,7 @@ export default function KeynoteDemo() {
             >
               <item.icon className={`h-10 w-10 ${item.color} mx-auto mb-4`} />
               <div className={`text-4xl font-bold ${item.color} mb-2`}>{item.value}</div>
-              <div className="text-sm text-slate-600 dark:text-slate-200">{item.label}</div>
+              <div className="text-sm text-gray-800 dark:text-slate-200">{item.label}</div>
             </motion.div>
           ))}
         </motion.div>
@@ -302,7 +302,7 @@ export default function KeynoteDemo() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.8 }}
-          className="text-2xl text-slate-600 dark:text-slate-200 max-w-4xl mb-16 leading-relaxed"
+          className="text-2xl text-gray-800 dark:text-slate-200 max-w-4xl mb-16 leading-relaxed"
         >
           From signal detection to full organizational response in <span className="text-gray-900 font-semibold">12 minutes</span> — not 72 hours.
           <br />170 pre-built playbooks. 9 strategic domains. AI-powered execution.
@@ -322,7 +322,7 @@ export default function KeynoteDemo() {
             <div key={i} className="text-center">
               <item.icon className="h-8 w-8 text-indigo-400 mx-auto mb-2" />
               <div className="text-3xl font-bold text-gray-900">{item.value}</div>
-              <div className="text-sm text-gray-600">{item.label}</div>
+              <div className="text-sm text-gray-800">{item.label}</div>
             </div>
           ))}
         </motion.div>
@@ -342,7 +342,7 @@ export default function KeynoteDemo() {
             LIVE SIGNAL DETECTED
           </div>
           <h2 className="text-5xl font-bold text-gray-900 mb-4">Signal Intelligence Feed</h2>
-          <p className="text-xl text-slate-600 dark:text-slate-200">Real-time monitoring across 16 categories and 100+ data points</p>
+          <p className="text-xl text-gray-800 dark:text-slate-200">Real-time monitoring across 16 categories and 100+ data points</p>
         </motion.div>
 
         <motion.div
@@ -358,13 +358,13 @@ export default function KeynoteDemo() {
                   <Radio className="h-6 w-6 text-red-500" />
                 </motion.div>
                 <span className="text-red-400 font-semibold text-lg">CRITICAL SIGNAL</span>
-                <span className="text-gray-600 mx-2">|</span>
-                <span className="text-slate-600 dark:text-slate-200 text-sm">
+                <span className="text-gray-800 mx-2">|</span>
+                <span className="text-gray-800 dark:text-slate-200 text-sm">
                   {signal ? new Date(signal.detectedAt).toLocaleString() : 'Just Now'}
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-xs text-gray-600">SEVERITY</span>
+                <span className="text-xs text-gray-800">SEVERITY</span>
                 <span className="bg-red-500 text-gray-900 text-xs font-bold px-3 py-1 rounded-full">CRITICAL</span>
               </div>
             </div>
@@ -372,7 +372,7 @@ export default function KeynoteDemo() {
               <h3 className="text-3xl font-bold text-gray-900 mb-3">
                 {signal?.signalName || 'Competitor Product Launch Detected'}
               </h3>
-              <p className="text-lg text-slate-600 dark:text-slate-200 mb-8 leading-relaxed">
+              <p className="text-lg text-gray-800 dark:text-slate-200 mb-8 leading-relaxed">
                 {signal?.summary || 'Major competitor has announced a product launch that directly competes with our flagship offering. Market positioning and revenue protection required.'}
               </p>
               <div className="grid grid-cols-4 gap-6">
@@ -391,7 +391,7 @@ export default function KeynoteDemo() {
                   >
                     <item.icon className={`h-6 w-6 ${item.color} mx-auto mb-2`} />
                     <div className={`text-xl font-bold ${item.color}`}>{item.value}</div>
-                    <div className="text-xs text-gray-600 mt-1">{item.label}</div>
+                    <div className="text-xs text-gray-800 mt-1">{item.label}</div>
                   </motion.div>
                 ))}
               </div>
@@ -409,7 +409,7 @@ export default function KeynoteDemo() {
             AI ANALYSIS ENGINE
           </div>
           <h2 className="text-5xl font-bold text-gray-900 mb-4">AI Analyzes the Threat</h2>
-          <p className="text-xl text-slate-600 dark:text-slate-200">GPT-4o processes the signal against your organizational context</p>
+          <p className="text-xl text-gray-800 dark:text-slate-200">GPT-4o processes the signal against your organizational context</p>
         </motion.div>
 
         <motion.div
@@ -438,7 +438,7 @@ export default function KeynoteDemo() {
                   className="flex items-start gap-3 bg-white/5 rounded-lg p-4"
                 >
                   <Lightbulb className="h-5 w-5 text-amber-400 mt-0.5 shrink-0" />
-                  <span className="text-gray-600 text-sm">{insight}</span>
+                  <span className="text-gray-800 text-sm">{insight}</span>
                 </motion.div>
               ))}
             </div>
@@ -456,7 +456,7 @@ export default function KeynoteDemo() {
                 <div className="text-6xl font-bold text-purple-400">
                   <CountUp end={signal?.aiConfidence || 94} suffix="%" />
                 </div>
-                <div className="text-slate-600 dark:text-slate-200 pb-2 text-sm">
+                <div className="text-gray-800 dark:text-slate-200 pb-2 text-sm">
                   Based on {signal?.aiAnalysis?.dataPointsAnalyzed || 847} data points analyzed
                 </div>
               </div>
@@ -486,7 +486,7 @@ export default function KeynoteDemo() {
                 ].map((item, i) => (
                   <div key={i} className="bg-white/5 rounded-lg p-3 text-center">
                     <div className={`text-xl font-bold ${item.color}`}>{item.value}</div>
-                    <div className="text-xs text-gray-600">{item.label}</div>
+                    <div className="text-xs text-gray-800">{item.label}</div>
                   </div>
                 ))}
               </div>
@@ -504,7 +504,7 @@ export default function KeynoteDemo() {
             PLAYBOOK MATCHED
           </div>
           <h2 className="text-5xl font-bold text-gray-900 mb-4">The Right Playbook, Instantly</h2>
-          <p className="text-xl text-slate-600 dark:text-slate-200">AI selects from 170 pre-built playbooks across 9 strategic domains</p>
+          <p className="text-xl text-gray-800 dark:text-slate-200">AI selects from 170 pre-built playbooks across 9 strategic domains</p>
         </motion.div>
 
         <motion.div
@@ -522,14 +522,14 @@ export default function KeynoteDemo() {
                 </h3>
               </div>
               <div className="text-right">
-                <span className="text-gray-600 text-xs">PLAYBOOK</span>
+                <span className="text-gray-800 text-xs">PLAYBOOK</span>
                 <div className="text-3xl font-bold text-cyan-400">#{signal?.aiAnalysis?.playbookNumber || '47'}</div>
               </div>
             </div>
             <div className="p-8">
               <div className="grid grid-cols-3 gap-8 mb-8">
                 <div>
-                  <h4 className="text-sm text-gray-600 mb-3 uppercase tracking-wider">Pre-Configured Actions</h4>
+                  <h4 className="text-sm text-gray-800 mb-3 uppercase tracking-wider">Pre-Configured Actions</h4>
                   <div className="space-y-2">
                     {['Competitive analysis brief', 'Pricing adjustment proposal', 'Customer retention outreach', 'Product roadmap acceleration', 'Sales enablement update', 'Partner communication plan'].map((action, i) => (
                       <motion.div
@@ -537,7 +537,7 @@ export default function KeynoteDemo() {
                         initial={{ opacity: 0, x: -15 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.8 + i * 0.1 }}
-                        className="flex items-center gap-2 text-sm text-gray-600"
+                        className="flex items-center gap-2 text-sm text-gray-800"
                       >
                         <CheckCircle2 className="h-4 w-4 text-green-500" />
                         {action}
@@ -546,7 +546,7 @@ export default function KeynoteDemo() {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-sm text-gray-600 mb-3 uppercase tracking-wider">Stakeholders Auto-Notified</h4>
+                  <h4 className="text-sm text-gray-800 mb-3 uppercase tracking-wider">Stakeholders Auto-Notified</h4>
                   <div className="space-y-2">
                     {['CEO - Jennifer Park', 'CMO - Lisa Anderson', 'VP Sales - Ryan Davis', 'VP Product - Laura Lewis', 'Head of Strategy - Patricia Wright', 'Director of Pricing - Amanda Jackson'].map((person, i) => (
                       <motion.div
@@ -554,7 +554,7 @@ export default function KeynoteDemo() {
                         initial={{ opacity: 0, x: -15 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 1 + i * 0.1 }}
-                        className="flex items-center gap-2 text-sm text-gray-600"
+                        className="flex items-center gap-2 text-sm text-gray-800"
                       >
                         <Users className="h-4 w-4 text-blue-400" />
                         {person}
@@ -563,7 +563,7 @@ export default function KeynoteDemo() {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-sm text-gray-600 mb-3 uppercase tracking-wider">Enterprise Integrations</h4>
+                  <h4 className="text-sm text-gray-800 mb-3 uppercase tracking-wider">Enterprise Integrations</h4>
                   <div className="space-y-2">
                     {[
                       { name: 'Jira - 24 tasks auto-created', icon: '📋' },
@@ -578,7 +578,7 @@ export default function KeynoteDemo() {
                         initial={{ opacity: 0, x: -15 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 1.2 + i * 0.1 }}
-                        className="flex items-center gap-2 text-sm text-gray-600"
+                        className="flex items-center gap-2 text-sm text-gray-800"
                       >
                         <span>{item.icon}</span>
                         {item.name}
@@ -595,7 +595,7 @@ export default function KeynoteDemo() {
                   { label: 'Target Completion', value: '< 12 Minutes', color: 'text-amber-400' },
                 ].map((item, i) => (
                   <div key={i} className="text-center bg-white/5 rounded-xl p-4">
-                    <div className="text-xs text-gray-600 mb-1">{item.label}</div>
+                    <div className="text-xs text-gray-800 mb-1">{item.label}</div>
                     <div className={`text-lg font-bold ${item.color}`}>{item.value}</div>
                   </div>
                 ))}
@@ -614,7 +614,7 @@ export default function KeynoteDemo() {
             HUMAN-AI PARTNERSHIP
           </div>
           <h2 className="text-5xl font-bold text-gray-900 mb-4">AI Recommends. You Decide.</h2>
-          <p className="text-xl text-slate-600 dark:text-slate-200">The executive retains full decision authority. Always.</p>
+          <p className="text-xl text-gray-800 dark:text-slate-200">The executive retains full decision authority. Always.</p>
         </motion.div>
 
         <motion.div
@@ -630,16 +630,16 @@ export default function KeynoteDemo() {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-gray-900">AI Recommendation</h3>
-                <p className="text-slate-600 dark:text-slate-200">Based on analysis of 847 data points</p>
+                <p className="text-gray-800 dark:text-slate-200">Based on analysis of 847 data points</p>
               </div>
               <div className="ml-auto text-right">
                 <div className="text-4xl font-bold text-green-400">94%</div>
-                <div className="text-xs text-gray-600">Confidence</div>
+                <div className="text-xs text-gray-800">Confidence</div>
               </div>
             </div>
 
             <div className="bg-indigo-950/30 border border-indigo-500/10 rounded-xl p-6 mb-8">
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-gray-800 leading-relaxed">
                 "Activate <span className="text-gray-900 font-semibold">Competitive Response Playbook #47</span> immediately.
                 Delay beyond 48 hours increases revenue exposure from $12.5M to $28.3M.
                 Pre-approved budget of $250K covers initial counter-strategy. 28 stakeholders
@@ -652,7 +652,7 @@ export default function KeynoteDemo() {
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-slate-600 flex items-center justify-center text-gray-900 font-semibold text-lg">JP</div>
                 <div>
                   <div className="text-gray-900 font-semibold">Jennifer Park, CEO</div>
-                  <div className="text-slate-600 dark:text-slate-200 text-sm">Decision Authority</div>
+                  <div className="text-gray-800 dark:text-slate-200 text-sm">Decision Authority</div>
                 </div>
               </div>
               <motion.div
@@ -673,7 +673,7 @@ export default function KeynoteDemo() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 0.8 }}
-          className="text-lg text-gray-600 mt-8 max-w-2xl text-center"
+          className="text-lg text-gray-800 mt-8 max-w-2xl text-center"
         >
           Every playbook activation requires human approval. AI accelerates the process — humans make the final call.
         </motion.p>
@@ -689,7 +689,7 @@ export default function KeynoteDemo() {
               LIVE ACTIVATION
             </div>
             <h2 className="text-5xl font-bold text-gray-900 mb-3">12-Minute Execution</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-200">Watch the full organizational response unfold in real-time</p>
+            <p className="text-lg text-gray-800 dark:text-slate-200">Watch the full organizational response unfold in real-time</p>
           </motion.div>
 
           <div className="grid grid-cols-5 gap-6">
@@ -728,7 +728,7 @@ export default function KeynoteDemo() {
                   ].map((m, i) => (
                     <div key={i} className="bg-white/5 rounded-lg p-3 text-center">
                       <div className={`text-2xl font-bold ${m.color}`}>{m.value}</div>
-                      <div className="text-xs text-gray-600">{m.label}</div>
+                      <div className="text-xs text-gray-800">{m.label}</div>
                     </div>
                   ))}
                 </div>
@@ -766,7 +766,7 @@ export default function KeynoteDemo() {
       <div className="flex flex-col items-center justify-center min-h-screen px-8">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center mb-12">
           <h2 className="text-5xl font-bold text-gray-900 mb-4">The IDEA Framework</h2>
-          <p className="text-xl text-slate-600 dark:text-slate-200">Four phases of continuous strategic execution</p>
+          <p className="text-xl text-gray-800 dark:text-slate-200">Four phases of continuous strategic execution</p>
         </motion.div>
 
         <div className="grid grid-cols-4 gap-6 max-w-6xl w-full">
@@ -790,7 +790,7 @@ export default function KeynoteDemo() {
               </div>
               <div className="p-5 space-y-2">
                 {phase.items.map((item, j) => (
-                  <div key={j} className="flex items-center gap-2 text-sm text-gray-600">
+                  <div key={j} className="flex items-center gap-2 text-sm text-gray-800">
                     <CheckCircle2 className="h-3.5 w-3.5 text-green-500 shrink-0" />
                     {item}
                   </div>
@@ -809,7 +809,7 @@ export default function KeynoteDemo() {
           {['IDENTIFY', 'DETECT', 'EXECUTE', 'ADVANCE'].map((phase, i) => (
             <div key={i} className="flex items-center gap-3">
               <div className="bg-white/10 rounded-full px-4 py-2 text-sm text-gray-900 font-medium">{phase}</div>
-              {i < 3 && <ArrowRight className="h-4 w-4 text-gray-600" />}
+              {i < 3 && <ArrowRight className="h-4 w-4 text-gray-800" />}
             </div>
           ))}
         </motion.div>
@@ -824,7 +824,7 @@ export default function KeynoteDemo() {
             PROVEN RESULTS
           </div>
           <h2 className="text-5xl font-bold text-gray-900 mb-4">The Transformation</h2>
-          <p className="text-xl text-slate-600 dark:text-slate-200">Before Execution OS</p>
+          <p className="text-xl text-gray-800 dark:text-slate-200">Before Execution OS</p>
         </motion.div>
 
         <div className="w-full max-w-6xl">
@@ -903,7 +903,7 @@ export default function KeynoteDemo() {
               <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
                 <div className={`text-4xl font-bold ${item.color} mb-1`}>{item.value}</div>
                 <div className="text-gray-900 text-sm font-medium">{item.detail}</div>
-                <div className="text-gray-600 text-xs mt-1">{item.label}</div>
+                <div className="text-gray-800 text-xs mt-1">{item.label}</div>
               </div>
             ))}
           </motion.div>
@@ -940,7 +940,7 @@ export default function KeynoteDemo() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="text-2xl text-slate-600 dark:text-slate-200 max-w-3xl mb-12 leading-relaxed"
+          className="text-2xl text-gray-800 dark:text-slate-200 max-w-3xl mb-12 leading-relaxed"
         >
           Start a 30-day pilot with your organization. See the full signal-to-action pipeline
           running on your strategic priorities within the first week.
@@ -985,7 +985,7 @@ export default function KeynoteDemo() {
             <div key={i} className="text-center">
               <item.icon className="h-8 w-8 text-indigo-400 mx-auto mb-2" />
               <div className="text-gray-900 text-sm font-medium">{item.label}</div>
-              <div className="text-gray-600 text-xs">{item.detail}</div>
+              <div className="text-gray-800 text-xs">{item.detail}</div>
             </div>
           ))}
         </motion.div>
@@ -997,7 +997,7 @@ export default function KeynoteDemo() {
           className="mt-12 flex items-center gap-3"
         >
           <div className="h-px w-16 bg-gradient-to-r from-transparent to-slate-600" />
-          <span className="text-gray-600 text-sm">executeiq.io</span>
+          <span className="text-gray-800 text-sm">executeiq.io</span>
           <div className="h-px w-16 bg-gradient-to-l from-transparent to-slate-600" />
         </motion.div>
       </div>

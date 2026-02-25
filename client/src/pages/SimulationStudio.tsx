@@ -241,15 +241,15 @@ export default function SimulationStudio() {
           </CardHeader>
           <CardContent className="text-sm text-blue-900 dark:text-blue-100 space-y-2">
             <div className="flex items-start gap-2">
-              <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5 text-green-600" />
+              <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5 text-emerald-700" />
               <p><strong>Find Bottlenecks:</strong> Discover that your Legal counsel takes 22 minutes to respond, not the planned 2 minutes</p>
             </div>
             <div className="flex items-start gap-2">
-              <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5 text-green-600" />
+              <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5 text-emerald-700" />
               <p><strong>Build Muscle Memory:</strong> Turn a 72-hour chaos into 20 minutes, then 15, then the target 12 minutes</p>
             </div>
             <div className="flex items-start gap-2">
-              <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5 text-green-600" />
+              <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5 text-emerald-700" />
               <p><strong>Prove ROI:</strong> Demonstrate to the board that your crisis preparedness is real, not theoretical</p>
             </div>
           </CardContent>

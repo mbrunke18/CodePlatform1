@@ -31,7 +31,7 @@ export function DemoStrategicAlert() {
   return (
     <div className="mb-6" data-testid="demo-strategic-alert">
       <Alert className="border-red-500 bg-red-50 dark:bg-red-900/20">
-        <AlertTriangle className="h-5 w-5 text-red-600" />
+        <AlertTriangle className="h-5 w-5 text-red-700" />
         <AlertDescription className="ml-2">
           <div className="flex items-center justify-between">
             <div>
@@ -88,7 +88,7 @@ export function DemoActiveStrategicCard() {
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">
-              <AlertTriangle className="h-6 w-6 text-red-600" />
+              <AlertTriangle className="h-6 w-6 text-red-700" />
               <CardTitle className="text-xl text-red-900 dark:text-red-100">
                 Supply Chain Disruption - AcmeParts Inc
               </CardTitle>
@@ -107,7 +107,7 @@ export function DemoActiveStrategicCard() {
             </div>
           </div>
           <div className="text-right">
-            <div className="text-sm text-gray-600 dark:text-gray-200 mb-1">Detected</div>
+            <div className="text-sm text-gray-800 dark:text-gray-200 mb-1">Detected</div>
             <div className="font-semibold text-gray-900 dark:text-gray-100">
               3 days ago
             </div>
@@ -124,19 +124,19 @@ export function DemoActiveStrategicCard() {
           <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Trigger Conditions Met</h4>
           <div className="space-y-2 text-sm">
             <div className="flex items-start gap-2">
-              <CheckCircle className="h-4 w-4 text-red-600 mt-0.5" />
+              <CheckCircle className="h-4 w-4 text-red-700 mt-0.5" />
               <span className="text-gray-700 dark:text-gray-300">
                 Supplier credit rating dropped to <strong>B-</strong> (threshold: B-)
               </span>
             </div>
             <div className="flex items-start gap-2">
-              <CheckCircle className="h-4 w-4 text-red-600 mt-0.5" />
+              <CheckCircle className="h-4 w-4 text-red-700 mt-0.5" />
               <span className="text-gray-700 dark:text-gray-300">
                 Stock price fell <strong>42%</strong> in 5 days (threshold: 40%)
               </span>
             </div>
             <div className="flex items-start gap-2">
-              <CheckCircle className="h-4 w-4 text-red-600 mt-0.5" />
+              <CheckCircle className="h-4 w-4 text-red-700 mt-0.5" />
               <span className="text-gray-700 dark:text-gray-300">
                 Detected <strong>72 hours before competitors</strong> - 5-day head start
               </span>
@@ -149,37 +149,37 @@ export function DemoActiveStrategicCard() {
             <div className="bg-white dark:bg-gray-900/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-2 mb-1">
                 <DollarSign className="h-4 w-4 text-yellow-600" />
-                <span className="text-xs text-gray-600 dark:text-gray-200">Financial Exposure</span>
+                <span className="text-xs text-gray-800 dark:text-gray-200">Financial Exposure</span>
               </div>
               <div className="text-lg font-bold text-yellow-700 dark:text-yellow-400">$12M</div>
-              <div className="text-xs text-gray-600 dark:text-gray-300">Quarterly revenue at risk</div>
+              <div className="text-xs text-gray-800 dark:text-gray-300">Quarterly revenue at risk</div>
             </div>
             
             <div className="bg-white dark:bg-gray-900/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-2 mb-1">
-                <Users className="h-4 w-4 text-blue-600" />
-                <span className="text-xs text-gray-600 dark:text-gray-200">Workforce Impact</span>
+                <Users className="h-4 w-4 text-blue-800" />
+                <span className="text-xs text-gray-800 dark:text-gray-200">Workforce Impact</span>
               </div>
-              <div className="text-lg font-bold text-blue-700 dark:text-blue-400">847</div>
-              <div className="text-xs text-gray-600 dark:text-gray-300">Employees affected</div>
+              <div className="text-lg font-bold text-blue-800 dark:text-blue-400">847</div>
+              <div className="text-xs text-gray-800 dark:text-gray-300">Employees affected</div>
             </div>
             
             <div className="bg-white dark:bg-gray-900/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-2 mb-1">
-                <Building2 className="h-4 w-4 text-purple-600" />
-                <span className="text-xs text-gray-600 dark:text-gray-200">Facilities</span>
+                <Building2 className="h-4 w-4 text-purple-800" />
+                <span className="text-xs text-gray-800 dark:text-gray-200">Facilities</span>
               </div>
               <div className="text-lg font-bold text-purple-700 dark:text-purple-400">3</div>
-              <div className="text-xs text-gray-600 dark:text-gray-300">Production sites at risk</div>
+              <div className="text-xs text-gray-800 dark:text-gray-300">Production sites at risk</div>
             </div>
             
             <div className="bg-white dark:bg-gray-900/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-2 mb-1">
-                <TrendingDown className="h-4 w-4 text-red-600" />
-                <span className="text-xs text-gray-600 dark:text-gray-200">Capacity Risk</span>
+                <TrendingDown className="h-4 w-4 text-red-700" />
+                <span className="text-xs text-gray-800 dark:text-gray-200">Capacity Risk</span>
               </div>
               <div className="text-lg font-bold text-red-700 dark:text-red-400">35%</div>
-              <div className="text-xs text-gray-600 dark:text-gray-300">Manufacturing capacity</div>
+              <div className="text-xs text-gray-800 dark:text-gray-300">Manufacturing capacity</div>
             </div>
           </div>
         )}
@@ -190,22 +190,22 @@ export function DemoActiveStrategicCard() {
               <h4 className="font-semibold text-blue-900 dark:text-blue-100">
                 Coordinated Response Execution
               </h4>
-              <span className="text-sm font-semibold text-blue-700 dark:text-blue-300">
+              <span className="text-sm font-semibold text-blue-800 dark:text-blue-300">
                 {taskProgress}% Complete
               </span>
             </div>
             <Progress value={taskProgress} className="mb-3" />
             <div className="grid grid-cols-2 gap-2 text-sm">
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-green-600" />
+                <CheckCircle className="h-4 w-4 text-emerald-700" />
                 <span className="text-gray-700 dark:text-gray-300">Procurement: Alternative suppliers identified</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-green-600" />
+                <CheckCircle className="h-4 w-4 text-emerald-700" />
                 <span className="text-gray-700 dark:text-gray-300">Production: Revised schedules deployed</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-green-600" />
+                <CheckCircle className="h-4 w-4 text-emerald-700" />
                 <span className="text-gray-700 dark:text-gray-300">Finance: Payment protocols activated</span>
               </div>
               <div className="flex items-center gap-2">
@@ -237,34 +237,34 @@ export function DemoStrategicROIResults() {
       <Card className="border-green-300 bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20">
         <CardHeader>
           <CardTitle className="text-2xl text-green-900 dark:text-green-100 flex items-center gap-2">
-            <CheckCircle className="h-7 w-7 text-green-600" />
+            <CheckCircle className="h-7 w-7 text-emerald-700" />
             Situation Resolved - Quantified Results
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="bg-white dark:bg-gray-900/50 rounded-lg p-4 border border-green-200 dark:border-green-700">
-              <div className="text-sm text-gray-600 dark:text-gray-200 mb-1">Response Time</div>
-              <div className="text-3xl font-bold text-green-700 dark:text-green-400">12 min</div>
-              <div className="text-xs text-green-600 dark:text-green-400">vs 72 hours traditional</div>
+              <div className="text-sm text-gray-800 dark:text-gray-200 mb-1">Response Time</div>
+              <div className="text-3xl font-bold text-emerald-800 dark:text-green-400">12 min</div>
+              <div className="text-xs text-emerald-700 dark:text-green-400">vs 72 hours traditional</div>
             </div>
             
             <div className="bg-white dark:bg-gray-900/50 rounded-lg p-4 border border-green-200 dark:border-green-700">
-              <div className="text-sm text-gray-600 dark:text-gray-200 mb-1">Time Saved</div>
-              <div className="text-3xl font-bold text-blue-700 dark:text-blue-400">71.8 hrs</div>
-              <div className="text-xs text-blue-600 dark:text-blue-400">Decision velocity advantage</div>
+              <div className="text-sm text-gray-800 dark:text-gray-200 mb-1">Time Saved</div>
+              <div className="text-3xl font-bold text-blue-800 dark:text-blue-400">71.8 hrs</div>
+              <div className="text-xs text-blue-800 dark:text-blue-400">Decision velocity advantage</div>
             </div>
             
             <div className="bg-white dark:bg-gray-900/50 rounded-lg p-4 border border-green-200 dark:border-green-700">
-              <div className="text-sm text-gray-600 dark:text-gray-200 mb-1">Revenue Protected</div>
+              <div className="text-sm text-gray-800 dark:text-gray-200 mb-1">Revenue Protected</div>
               <div className="text-3xl font-bold text-yellow-700 dark:text-yellow-400">$12M</div>
               <div className="text-xs text-yellow-600 dark:text-yellow-400">Quarterly revenue secured</div>
             </div>
             
             <div className="bg-white dark:bg-gray-900/50 rounded-lg p-4 border border-green-200 dark:border-green-700">
-              <div className="text-sm text-gray-600 dark:text-gray-200 mb-1">Competitive Edge</div>
+              <div className="text-sm text-gray-800 dark:text-gray-200 mb-1">Competitive Edge</div>
               <div className="text-3xl font-bold text-purple-700 dark:text-purple-400">5 days</div>
-              <div className="text-xs text-purple-600 dark:text-purple-400">Head start vs competitors</div>
+              <div className="text-xs text-purple-800 dark:text-purple-400">Head start vs competitors</div>
             </div>
           </div>
           
@@ -272,16 +272,16 @@ export function DemoStrategicROIResults() {
             <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Execution Success Metrics</h4>
             <div className="grid grid-cols-3 gap-3 text-sm">
               <div>
-                <div className="text-gray-600 dark:text-gray-200">Task Completion</div>
-                <div className="text-lg font-bold text-blue-700 dark:text-blue-300">94%</div>
+                <div className="text-gray-800 dark:text-gray-200">Task Completion</div>
+                <div className="text-lg font-bold text-blue-800 dark:text-blue-300">94%</div>
               </div>
               <div>
-                <div className="text-gray-600 dark:text-gray-200">Team Coordination</div>
-                <div className="text-lg font-bold text-blue-700 dark:text-blue-300">47 members</div>
+                <div className="text-gray-800 dark:text-gray-200">Team Coordination</div>
+                <div className="text-lg font-bold text-blue-800 dark:text-blue-300">47 members</div>
               </div>
               <div>
-                <div className="text-gray-600 dark:text-gray-200">Departments</div>
-                <div className="text-lg font-bold text-blue-700 dark:text-blue-300">8 teams</div>
+                <div className="text-gray-800 dark:text-gray-200">Departments</div>
+                <div className="text-lg font-bold text-blue-800 dark:text-blue-300">8 teams</div>
               </div>
             </div>
           </div>

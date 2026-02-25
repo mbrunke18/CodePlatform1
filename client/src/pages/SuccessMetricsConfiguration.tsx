@@ -257,9 +257,9 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
           
           {/* Breadcrumb Navigation */}
           <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-gray-800">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-600 hover:text-white p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-gray-800 hover:text-white p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>
@@ -279,21 +279,21 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                 </div>
                 <div>
                   <h1 className="text-3xl font-bold" data-testid="success-metrics-title">Success Metrics Configuration</h1>
-                  <p className="text-amber-700 mt-1">Define YOUR success criteria and KPIs</p>
-                  <p className="text-amber-700 mt-1 text-sm">Track progress toward your strategic goals with custom metrics</p>
+                  <p className="text-[#C9A84C] mt-1">Define YOUR success criteria and KPIs</p>
+                  <p className="text-[#C9A84C] mt-1 text-sm">Track progress toward your strategic goals with custom metrics</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
                 <Button 
                   onClick={() => setIsAddMetricDialogOpen(true)}
-                  className="bg-white text-amber-600 hover:bg-amber-50"
+                  className="bg-white text-[#C9A84C] hover:bg-amber-50"
                   data-testid="button-add-metric"
                 >
                   <Plus className="h-4 w-4 mr-2" />
                   Add Metric
                 </Button>
                 <Link to="/">
-                  <Button variant="secondary" className="bg-amber-700 hover:bg-amber-800 text-amber-700 border-amber-600">
+                  <Button variant="secondary" className="bg-amber-700 hover:bg-amber-800 text-[#C9A84C] border-amber-600">
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Dashboard
                   </Button>
@@ -311,7 +311,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                     <div className="w-32 h-32 rounded-full border-8 border-amber-500/30 flex items-center justify-center bg-white">
                       <div className="text-center">
                         <div className="text-4xl font-bold text-amber-400">{overallFRI.toFixed(1)}%</div>
-                        <div className="text-sm text-gray-600">Current FRI</div>
+                        <div className="text-sm text-gray-800">Current FRI</div>
                       </div>
                     </div>
                     <div className="absolute -right-2 -top-2 w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center">
@@ -320,14 +320,14 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-gray-900">Future Readiness Index™</h2>
-                    <p className="text-gray-600 mt-1">Your organization's strategic preparedness score</p>
+                    <p className="text-gray-800 mt-1">Your organization's strategic preparedness score</p>
                     <div className="mt-4 flex items-center gap-4">
                       <div>
-                        <span className="text-sm text-gray-600">Target:</span>
+                        <span className="text-sm text-gray-800">Target:</span>
                         <span className="ml-2 text-lg font-semibold text-amber-400">{friTarget}%</span>
                       </div>
                       <div>
-                        <span className="text-sm text-gray-600">Improvement:</span>
+                        <span className="text-sm text-gray-800">Improvement:</span>
                         <span className="ml-2 text-lg font-semibold text-green-400">+{(overallFRI - (friMetric?.baselineValue || 0)).toFixed(1)}%</span>
                       </div>
                     </div>
@@ -335,11 +335,11 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                 </div>
                 <div className="w-64">
                   <div className="flex justify-between text-sm mb-2">
-                    <span className="text-gray-600">Progress to Target</span>
+                    <span className="text-gray-800">Progress to Target</span>
                     <span className="text-amber-400">{friProgress.toFixed(0)}%</span>
                   </div>
                   <Progress value={friProgress} className="h-3" />
-                  <p className="text-xs text-gray-600 mt-2">
+                  <p className="text-xs text-gray-800 mt-2">
                     {friProgress >= 100 ? 'Target achieved!' : `${(friTarget - overallFRI).toFixed(1)}% remaining to target`}
                   </p>
                 </div>
@@ -364,19 +364,19 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                         </div>
                         <div>
                           <CardTitle className="text-gray-900 text-lg">{metric.name}</CardTitle>
-                          <CardDescription className="text-gray-600 text-sm">
+                          <CardDescription className="text-gray-800 text-sm">
                             {metric.description}
                           </CardDescription>
                         </div>
                       </div>
                       <div className="flex gap-1">
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-600 hover:text-white">
+                        <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-800 hover:text-white">
                           <Edit className="h-4 w-4" />
                         </Button>
                         <Button 
                           variant="ghost" 
                           size="icon" 
-                          className="h-8 w-8 text-gray-600 hover:text-red-500"
+                          className="h-8 w-8 text-gray-800 hover:text-red-500"
                           onClick={() => handleDeleteMetric(metric.id)}
                         >
                           <Trash2 className="h-4 w-4" />
@@ -387,19 +387,19 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                   <CardContent className="space-y-4">
                     <div className="grid grid-cols-3 gap-4 text-center">
                       <div className="p-2 bg-gray-50 rounded-lg">
-                        <div className="text-xs text-gray-600">Baseline</div>
-                        <div className="text-lg font-semibold text-gray-600">
+                        <div className="text-xs text-gray-800">Baseline</div>
+                        <div className="text-lg font-semibold text-gray-800">
                           {metric.baselineValue}{metric.unit === '%' || metric.unit === 'minutes' ? '' : ' '}{metric.unit}
                         </div>
                       </div>
                       <div className="p-2 bg-gray-50 rounded-lg border-2 border-amber-500/30">
-                        <div className="text-xs text-gray-600">Current</div>
+                        <div className="text-xs text-gray-800">Current</div>
                         <div className="text-lg font-semibold text-amber-400">
                           {metric.currentValue}{metric.unit === '%' || metric.unit === 'minutes' ? '' : ' '}{metric.unit}
                         </div>
                       </div>
                       <div className="p-2 bg-gray-50 rounded-lg">
-                        <div className="text-xs text-gray-600">Target</div>
+                        <div className="text-xs text-gray-800">Target</div>
                         <div className="text-lg font-semibold text-green-400">
                           {metric.targetValue}{metric.unit === '%' || metric.unit === 'minutes' ? '' : ' '}{metric.unit}
                         </div>
@@ -408,7 +408,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                     
                     <div>
                       <div className="flex justify-between text-sm mb-1">
-                        <span className="text-gray-600">Progress</span>
+                        <span className="text-gray-800">Progress</span>
                         <span className={progress >= 80 ? 'text-green-400' : progress >= 50 ? 'text-yellow-400' : 'text-red-400'}>
                           {progress.toFixed(0)}%
                         </span>
@@ -422,13 +422,13 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                     </div>
                     
                     <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-2 text-gray-600">
+                      <div className="flex items-center gap-2 text-gray-800">
                         <RefreshCw className="h-4 w-4" />
                         <span>Review: {metric.reviewCadence}</span>
                       </div>
                       <Badge 
                         variant="outline" 
-                        className={metric.isActive ? 'text-green-400 border-green-500/30' : 'text-gray-600 border-gray-500/30'}
+                        className={metric.isActive ? 'text-green-400 border-green-500/30' : 'text-gray-800 border-gray-500/30'}
                       >
                         {metric.isActive ? 'Active' : 'Inactive'}
                       </Badge>

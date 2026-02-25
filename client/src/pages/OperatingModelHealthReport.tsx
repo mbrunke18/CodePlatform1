@@ -57,10 +57,10 @@ const elementIcons = {
 };
 
 function getHealthStatus(score: number) {
-  if (score >= 80) return { label: 'Excellent', color: 'bg-green-500', textColor: 'text-green-600' };
-  if (score >= 70) return { label: 'Good', color: 'bg-blue-500', textColor: 'text-blue-600' };
+  if (score >= 80) return { label: 'Excellent', color: 'bg-green-500', textColor: 'text-emerald-700' };
+  if (score >= 70) return { label: 'Good', color: 'bg-blue-500', textColor: 'text-blue-800' };
   if (score >= 60) return { label: 'Fair', color: 'bg-yellow-500', textColor: 'text-yellow-600' };
-  return { label: 'Needs Attention', color: 'bg-red-500', textColor: 'text-red-600' };
+  return { label: 'Needs Attention', color: 'bg-red-500', textColor: 'text-red-700' };
 }
 
 function getElementActivationCount(elementId: OperatingModelElement) {
@@ -89,7 +89,7 @@ export default function OperatingModelHealthReport() {
               <h1 className="text-4xl font-bold text-slate-900 dark:text-white">
                 Operating Model Health Report
               </h1>
-              <p className="text-lg text-gray-600 dark:text-slate-300">
+              <p className="text-lg text-gray-800 dark:text-slate-300">
                 McKinsey's 12 Elements Framework Assessment
               </p>
             </div>
@@ -110,7 +110,7 @@ export default function OperatingModelHealthReport() {
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-6xl font-bold text-slate-900 dark:text-white">
                     {overallScore}
-                    <span className="text-3xl text-gray-600 dark:text-slate-300">/100</span>
+                    <span className="text-3xl text-gray-800 dark:text-slate-300">/100</span>
                   </span>
                   <Badge className={`${getHealthStatus(overallScore).color} text-gray-900 text-lg px-4 py-2`}>
                     {getHealthStatus(overallScore).label}
@@ -119,29 +119,29 @@ export default function OperatingModelHealthReport() {
                 <Progress value={overallScore} className="h-3 mb-6" data-testid="progress-overall-score" />
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <div className="text-3xl font-bold text-green-600" data-testid="text-excellent-count">{excellentCount}</div>
-                    <div className="text-sm text-gray-600 dark:text-slate-300">Excellent</div>
+                    <div className="text-3xl font-bold text-emerald-700" data-testid="text-excellent-count">{excellentCount}</div>
+                    <div className="text-sm text-gray-800 dark:text-slate-300">Excellent</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-blue-600" data-testid="text-good-count">
+                    <div className="text-3xl font-bold text-blue-800" data-testid="text-good-count">
                       {Object.values(elementHealthScores).filter(s => s >= 70 && s < 80).length}
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-slate-300">Good</div>
+                    <div className="text-sm text-gray-800 dark:text-slate-300">Good</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-yellow-600" data-testid="text-needs-attention-count">{needsAttentionCount}</div>
-                    <div className="text-sm text-gray-600 dark:text-slate-300">Needs Focus</div>
+                    <div className="text-sm text-gray-800 dark:text-slate-300">Needs Focus</div>
                   </div>
                 </div>
               </div>
               <div className="card-bg rounded-lg p-6">
                 <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
-                  <TrendingUp className="h-5 w-5 text-blue-600" />
+                  <TrendingUp className="h-5 w-5 text-blue-800" />
                   Key Insights
                 </h3>
                 <ul className="space-y-3 text-sm">
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="h-5 w-5 text-emerald-700 mt-0.5 flex-shrink-0" />
                     <span>Leadership and Purpose are your strongest elements, driving strategic clarity</span>
                   </li>
                   <li className="flex items-start gap-2">
@@ -149,7 +149,7 @@ export default function OperatingModelHealthReport() {
                     <span>Rewards and Processes need improvement to unlock full transformation potential</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <TrendingUp className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <TrendingUp className="h-5 w-5 text-blue-800 mt-0.5 flex-shrink-0" />
                     <span>Technology investments are paying off with 78% health score</span>
                   </li>
                 </ul>
@@ -195,10 +195,10 @@ export default function OperatingModelHealthReport() {
                     <CardContent>
                       <Progress value={score} className="mb-4 h-2" />
                       <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600 dark:text-slate-300">
+                        <span className="text-gray-800 dark:text-slate-300">
                           Status: <span className={`font-semibold ${status.textColor}`}>{status.label}</span>
                         </span>
-                        <span className="text-gray-600 dark:text-slate-300">
+                        <span className="text-gray-800 dark:text-slate-300">
                           {activationCount} scenarios
                         </span>
                       </div>
@@ -240,10 +240,10 @@ export default function OperatingModelHealthReport() {
                     <CardContent>
                       <Progress value={score} className="mb-4 h-2" />
                       <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600 dark:text-slate-300">
+                        <span className="text-gray-800 dark:text-slate-300">
                           Status: <span className={`font-semibold ${status.textColor}`}>{status.label}</span>
                         </span>
-                        <span className="text-gray-600 dark:text-slate-300">
+                        <span className="text-gray-800 dark:text-slate-300">
                           {activationCount} scenarios
                         </span>
                       </div>
@@ -285,10 +285,10 @@ export default function OperatingModelHealthReport() {
                     <CardContent>
                       <Progress value={score} className="mb-4 h-2" />
                       <div className="flex items-center justify-between text-sm mb-4">
-                        <span className="text-gray-600 dark:text-slate-300">
+                        <span className="text-gray-800 dark:text-slate-300">
                           Status: <span className={`font-semibold ${status.textColor}`}>{status.label}</span>
                         </span>
-                        <span className="text-gray-600 dark:text-slate-300">
+                        <span className="text-gray-800 dark:text-slate-300">
                           {activationCount} scenarios
                         </span>
                       </div>
@@ -313,7 +313,7 @@ export default function OperatingModelHealthReport() {
         <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-900 border-2">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <TrendingUp className="h-6 w-6 text-blue-600" />
+              <TrendingUp className="h-6 w-6 text-blue-800" />
               Strategic Recommendations
             </CardTitle>
             <CardDescription>
@@ -324,10 +324,10 @@ export default function OperatingModelHealthReport() {
             <div className="space-y-4">
               <div className="bg-white dark:bg-slate-800 rounded-lg p-4 border-l-4 border-red-500">
                 <div className="flex items-start gap-3">
-                  <AlertCircle className="h-5 w-5 text-red-600 mt-0.5 flex-shrink-0" />
+                  <AlertCircle className="h-5 w-5 text-red-700 mt-0.5 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold text-lg mb-1">Priority 1: Strengthen Rewards System</h4>
-                    <p className="text-sm text-gray-600 dark:text-slate-300 mb-2">
+                    <p className="text-sm text-gray-800 dark:text-slate-300 mb-2">
                       Current score: 62. Misaligned incentives are limiting transformation velocity.
                     </p>
                     <p className="text-sm text-slate-700 dark:text-slate-300">
@@ -343,7 +343,7 @@ export default function OperatingModelHealthReport() {
                   <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold text-lg mb-1">Priority 2: Optimize Core Processes</h4>
-                    <p className="text-sm text-gray-600 dark:text-slate-300 mb-2">
+                    <p className="text-sm text-gray-800 dark:text-slate-300 mb-2">
                       Current score: 65. Process inefficiencies are creating execution drag.
                     </p>
                     <p className="text-sm text-slate-700 dark:text-slate-300">
@@ -356,10 +356,10 @@ export default function OperatingModelHealthReport() {
 
               <div className="bg-white dark:bg-slate-800 rounded-lg p-4 border-l-4 border-green-500">
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle2 className="h-5 w-5 text-emerald-700 mt-0.5 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold text-lg mb-1">Opportunity: Leverage Leadership Strength</h4>
-                    <p className="text-sm text-gray-600 dark:text-slate-300 mb-2">
+                    <p className="text-sm text-gray-800 dark:text-slate-300 mb-2">
                       Current score: 85. Strong leadership is your competitive advantage.
                     </p>
                     <p className="text-sm text-slate-700 dark:text-slate-300">

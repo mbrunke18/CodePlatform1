@@ -124,10 +124,10 @@ export default function PreActivationImpactPreview({
 
   const getRiskColor = (level: string) => {
     switch (level) {
-      case 'critical': return 'text-red-600 bg-red-100 dark:bg-red-900/30';
+      case 'critical': return 'text-red-700 bg-red-100 dark:bg-red-900/30';
       case 'high': return 'text-orange-600 bg-orange-100 dark:bg-orange-900/30';
-      case 'medium': return 'text-amber-600 bg-amber-100 dark:bg-amber-900/30';
-      default: return 'text-emerald-600 bg-emerald-100 dark:bg-emerald-900/30';
+      case 'medium': return 'text-[#C9A84C] bg-amber-100 dark:bg-amber-900/30';
+      default: return 'text-emerald-700 bg-emerald-100 dark:bg-emerald-900/30';
     }
   };
 
@@ -148,7 +148,7 @@ export default function PreActivationImpactPreview({
             </div>
             <div>
               <CardTitle className="text-xl">Pre-Activation Impact Preview</CardTitle>
-              <p className="text-sm text-gray-600 dark:text-slate-300">
+              <p className="text-sm text-gray-800 dark:text-slate-300">
                 Review projected impact before activating "{playbook?.name || 'Playbook'}"
               </p>
             </div>
@@ -161,39 +161,39 @@ export default function PreActivationImpactPreview({
       <CardContent className="p-6 space-y-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-4 text-center">
-            <DollarSign className="w-6 h-6 text-emerald-600 mx-auto mb-2" />
+            <DollarSign className="w-6 h-6 text-emerald-700 mx-auto mb-2" />
             <div className="text-2xl font-bold text-slate-900 dark:text-white">
               {formatCurrency(preview.estimatedCost)}
             </div>
-            <div className="text-xs text-gray-600">Estimated Cost</div>
+            <div className="text-xs text-gray-800">Estimated Cost</div>
           </div>
           <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-4 text-center">
-            <Clock className="w-6 h-6 text-blue-600 mx-auto mb-2" />
+            <Clock className="w-6 h-6 text-blue-800 mx-auto mb-2" />
             <div className="text-2xl font-bold text-slate-900 dark:text-white">
               {preview.estimatedDuration} min
             </div>
-            <div className="text-xs text-gray-600">Est. Duration</div>
+            <div className="text-xs text-gray-800">Est. Duration</div>
           </div>
           <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-4 text-center">
-            <Users className="w-6 h-6 text-purple-600 mx-auto mb-2" />
+            <Users className="w-6 h-6 text-purple-800 mx-auto mb-2" />
             <div className="text-2xl font-bold text-slate-900 dark:text-white">
               {preview.stakeholdersToNotify}
             </div>
-            <div className="text-xs text-gray-600">Stakeholders</div>
+            <div className="text-xs text-gray-800">Stakeholders</div>
           </div>
           <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-4 text-center">
-            <FileText className="w-6 h-6 text-amber-600 mx-auto mb-2" />
+            <FileText className="w-6 h-6 text-[#C9A84C] mx-auto mb-2" />
             <div className="text-2xl font-bold text-slate-900 dark:text-white">
               {preview.documentsToStage}
             </div>
-            <div className="text-xs text-gray-600">Documents</div>
+            <div className="text-xs text-gray-800">Documents</div>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border border-slate-200 dark:border-slate-700 rounded-lg p-4">
             <div className="flex items-center gap-2 mb-3">
-              <Building2 className="w-5 h-5 text-blue-600" />
+              <Building2 className="w-5 h-5 text-blue-800" />
               <h4 className="font-semibold">Departments Involved</h4>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -204,35 +204,35 @@ export default function PreActivationImpactPreview({
           </div>
           <div className="border border-slate-200 dark:border-slate-700 rounded-lg p-4">
             <div className="flex items-center gap-2 mb-3">
-              <Shield className="w-5 h-5 text-emerald-600" />
+              <Shield className="w-5 h-5 text-emerald-700" />
               <h4 className="font-semibold">Readiness Score</h4>
             </div>
             <div className="flex items-center gap-3">
               <Progress value={preview.readinessScore} className="flex-1" />
-              <span className="text-lg font-bold text-emerald-600">{preview.readinessScore}%</span>
+              <span className="text-lg font-bold text-emerald-700">{preview.readinessScore}%</span>
             </div>
-            <p className="text-xs text-gray-600 mt-2">
-              Success probability: <span className="font-semibold text-blue-600">{preview.successProbability}%</span>
+            <p className="text-xs text-gray-800 mt-2">
+              Success probability: <span className="font-semibold text-blue-800">{preview.successProbability}%</span>
             </p>
           </div>
         </div>
 
         <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-4 border border-emerald-200 dark:border-emerald-800">
           <div className="flex items-center gap-2 mb-2">
-            <DollarSign className="w-5 h-5 text-emerald-600" />
+            <DollarSign className="w-5 h-5 text-emerald-700" />
             <h4 className="font-semibold text-emerald-800 dark:text-emerald-200">Budget Auto-Unlock</h4>
           </div>
           <p className="text-2xl font-bold text-emerald-700 dark:text-emerald-300">
             {formatCurrency(preview.budgetToUnlock)}
           </p>
-          <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-1">
+          <p className="text-xs text-emerald-700 dark:text-emerald-400 mt-1">
             Pre-approved emergency response fund will be released upon activation
           </p>
         </div>
 
         {hasConflicts && (
           <Alert className="border-amber-300 bg-amber-50 dark:bg-amber-900/20">
-            <AlertTriangle className="h-4 w-4 text-amber-600" />
+            <AlertTriangle className="h-4 w-4 text-[#C9A84C]" />
             <AlertDescription>
               <div className="font-semibold text-amber-800 dark:text-amber-200 mb-2">
                 Resource Conflicts Detected
@@ -243,17 +243,17 @@ export default function PreActivationImpactPreview({
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-medium">{conflict.resourceName}</span>
                       <Badge variant="outline" className={
-                        conflict.severity === 'high' ? 'border-red-400 text-red-600' :
-                        conflict.severity === 'medium' ? 'border-amber-400 text-amber-600' :
+                        conflict.severity === 'high' ? 'border-red-400 text-red-700' :
+                        conflict.severity === 'medium' ? 'border-amber-400 text-[#C9A84C]' :
                         'border-yellow-400 text-yellow-600'
                       }>
                         {conflict.severity}
                       </Badge>
                     </div>
-                    <p className="text-xs text-gray-600 dark:text-slate-300">
+                    <p className="text-xs text-gray-800 dark:text-slate-300">
                       Conflicts with: {conflict.conflictingPlaybook}
                     </p>
-                    <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-1">
+                    <p className="text-xs text-emerald-700 dark:text-emerald-400 mt-1">
                       Resolution: {conflict.resolution}
                     </p>
                   </div>
@@ -265,7 +265,7 @@ export default function PreActivationImpactPreview({
 
         {hasBlockers && (
           <Alert className="border-red-300 bg-red-50 dark:bg-red-900/20">
-            <XCircle className="h-4 w-4 text-red-600" />
+            <XCircle className="h-4 w-4 text-red-700" />
             <AlertDescription>
               <div className="font-semibold text-red-800 dark:text-red-200 mb-2">
                 Blockers Identified
@@ -287,10 +287,10 @@ export default function PreActivationImpactPreview({
               type="checkbox" 
               checked={acknowledged}
               onChange={(e) => setAcknowledged(e.target.checked)}
-              className="mt-1 w-5 h-5 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+              className="mt-1 w-5 h-5 rounded border-slate-300 text-blue-800 focus:ring-blue-500"
               data-testid="checkbox-acknowledge-impact"
             />
-            <span className="text-sm text-gray-600 dark:text-slate-300">
+            <span className="text-sm text-gray-800 dark:text-slate-300">
               I have reviewed the projected impact, resource allocation, and any conflicts. 
               I authorize the activation of this playbook and the associated budget unlock.
             </span>

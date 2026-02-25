@@ -20,7 +20,7 @@ export default function ApprovalSuccess() {
       <Card className="max-w-md w-full">
         <CardHeader className="text-center">
           <div className="mx-auto w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-4">
-            <CheckCircle className="w-10 h-10 text-green-600 dark:text-green-400" />
+            <CheckCircle className="w-10 h-10 text-emerald-700 dark:text-green-400" />
           </div>
           <CardTitle className="text-2xl">
             {action === 'approve' ? 'Approved Successfully' : 'Action Completed'}
@@ -32,12 +32,12 @@ export default function ApprovalSuccess() {
         <CardContent className="space-y-4">
           {executionId && (
             <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-              <p className="text-sm text-gray-600 dark:text-gray-400">Execution ID</p>
+              <p className="text-sm text-gray-800 dark:text-gray-400">Execution ID</p>
               <p className="font-mono text-sm break-all">{executionId}</p>
             </div>
           )}
           
-          <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+          <div className="space-y-2 text-sm text-gray-800 dark:text-gray-400">
             <p>✓ Your approval has been processed</p>
             <p>✓ Stakeholders have been notified</p>
             <p>✓ Execution will begin shortly</p>

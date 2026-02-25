@@ -125,7 +125,7 @@ const tierConfig = {
   'combat-ready': {
     label: 'Combat Ready',
     color: 'bg-emerald-500',
-    textColor: 'text-emerald-600 dark:text-emerald-400',
+    textColor: 'text-emerald-700 dark:text-emerald-400',
     bgColor: 'bg-emerald-50 dark:bg-emerald-950/30',
     borderColor: 'border-emerald-200 dark:border-emerald-800',
     icon: CheckCircle2
@@ -133,7 +133,7 @@ const tierConfig = {
   'practice-needed': {
     label: 'Practice Needed',
     color: 'bg-amber-500',
-    textColor: 'text-amber-600 dark:text-amber-400',
+    textColor: 'text-[#C9A84C] dark:text-amber-400',
     bgColor: 'bg-amber-50 dark:bg-amber-950/30',
     borderColor: 'border-amber-200 dark:border-amber-800',
     icon: Clock
@@ -149,7 +149,7 @@ const tierConfig = {
   'not-configured': {
     label: 'Not Configured',
     color: 'bg-red-500',
-    textColor: 'text-red-600 dark:text-red-400',
+    textColor: 'text-red-700 dark:text-red-400',
     bgColor: 'bg-red-50 dark:bg-red-950/30',
     borderColor: 'border-red-200 dark:border-red-800',
     icon: XCircle
@@ -207,7 +207,7 @@ export default function PlaybookReadinessAudit() {
                   Playbook Readiness Audit
                 </h1>
               </div>
-              <p className="text-blue-600 text-lg max-w-2xl">
+              <p className="text-blue-800 text-lg max-w-2xl">
                 Assess preparedness across your 170 strategic playbooks. Identify gaps, 
                 schedule drills, and ensure your organization is ready to execute.
               </p>
@@ -247,7 +247,7 @@ export default function PlaybookReadinessAudit() {
                   <div className={`text-3xl font-bold ${config.textColor}`}>
                     {count}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-slate-300">
+                  <div className="text-sm text-gray-800 dark:text-slate-300">
                     {config.label}
                   </div>
                 </CardContent>
@@ -259,7 +259,7 @@ export default function PlaybookReadinessAudit() {
         <Card className="border-2 border-blue-500 dark:border-blue-700" data-testid="card-overall-readiness">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="h-5 w-5 text-blue-600" />
+              <TrendingUp className="h-5 w-5 text-blue-800" />
               Overall Readiness Score
             </CardTitle>
             <CardDescription>
@@ -269,10 +269,10 @@ export default function PlaybookReadinessAudit() {
           <CardContent>
             <div className="flex items-center gap-8">
               <div className="text-center">
-                <div className="text-6xl font-bold text-blue-600 dark:text-blue-400">
+                <div className="text-6xl font-bold text-blue-800 dark:text-blue-400">
                   {stats.averageScore}%
                 </div>
-                <div className="text-sm text-gray-600 dark:text-slate-300 mt-1">
+                <div className="text-sm text-gray-800 dark:text-slate-300 mt-1">
                   Target: 84.4%
                 </div>
               </div>
@@ -325,7 +325,7 @@ export default function PlaybookReadinessAudit() {
         <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
           <div className="flex items-center gap-3 w-full md:w-auto">
             <div className="relative flex-1 md:w-80">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-600 dark:text-slate-200" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-800 dark:text-slate-200" />
               <Input
                 placeholder="Search playbooks..."
                 value={searchQuery}
@@ -358,7 +358,7 @@ export default function PlaybookReadinessAudit() {
               </SelectContent>
             </Select>
           </div>
-          <div className="text-sm text-gray-600 dark:text-slate-300">
+          <div className="text-sm text-gray-800 dark:text-slate-300">
             Showing {filteredPlaybooks.length} of {playbooks.length} playbooks
           </div>
         </div>
@@ -389,7 +389,7 @@ export default function PlaybookReadinessAudit() {
                             {config.label}
                           </Badge>
                         </div>
-                        <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-slate-300">
+                        <div className="flex items-center gap-4 text-sm text-gray-800 dark:text-slate-300">
                           <span>{playbook.domain}</span>
                           <span>•</span>
                           <span>{playbook.stakeholderCount} stakeholders</span>
@@ -408,28 +408,28 @@ export default function PlaybookReadinessAudit() {
                     <div className="flex items-center gap-6">
                       <div className="hidden lg:flex items-center gap-4">
                         <div className="text-center">
-                          <div className="text-lg font-bold text-blue-600 dark:text-blue-400">
+                          <div className="text-lg font-bold text-blue-800 dark:text-blue-400">
                             {playbook.triggerCoverage}%
                           </div>
-                          <div className="text-xs text-gray-600">Triggers</div>
+                          <div className="text-xs text-gray-800">Triggers</div>
                         </div>
                         <div className="text-center">
                           <div className="text-lg font-bold text-violet-600 dark:text-violet-400">
                             {playbook.stakeholderReadiness}%
                           </div>
-                          <div className="text-xs text-gray-600">Stakeholders</div>
+                          <div className="text-xs text-gray-800">Stakeholders</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-lg font-bold text-amber-600 dark:text-amber-400">
+                          <div className="text-lg font-bold text-[#C9A84C] dark:text-amber-400">
                             {playbook.practiceFrequency}%
                           </div>
-                          <div className="text-xs text-gray-600">Practice</div>
+                          <div className="text-xs text-gray-800">Practice</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">
+                          <div className="text-lg font-bold text-emerald-700 dark:text-emerald-400">
                             {playbook.outcomeConfidence}%
                           </div>
-                          <div className="text-xs text-gray-600">Confidence</div>
+                          <div className="text-xs text-gray-800">Confidence</div>
                         </div>
                       </div>
 
@@ -437,7 +437,7 @@ export default function PlaybookReadinessAudit() {
                         <div className={`text-2xl font-bold ${config.textColor}`}>
                           {playbook.overallScore}%
                         </div>
-                        <div className="text-xs text-gray-600">Overall</div>
+                        <div className="text-xs text-gray-800">Overall</div>
                       </div>
 
                       <div className="flex items-center gap-2">
@@ -463,7 +463,7 @@ export default function PlaybookReadinessAudit() {
                   {playbook.recommendations.length > 0 && (
                     <div className="mt-3 pt-3 border-t border-slate-200 dark:border-slate-700">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-xs font-semibold text-gray-600">Recommendations:</span>
+                        <span className="text-xs font-semibold text-gray-800">Recommendations:</span>
                         {playbook.recommendations.map((rec, idx) => (
                           <Badge key={idx} variant="secondary" className="text-xs">
                             {rec}
@@ -494,7 +494,7 @@ export default function PlaybookReadinessAudit() {
                 <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-1">
                   Ready to improve readiness?
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-slate-300">
+                <p className="text-sm text-gray-800 dark:text-slate-300">
                   Schedule a bulk drill session or import stakeholder data to boost your scores.
                 </p>
               </div>

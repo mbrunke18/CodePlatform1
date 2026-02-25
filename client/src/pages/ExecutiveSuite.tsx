@@ -72,11 +72,11 @@ export default function ExecutiveSuite() {
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Executive Command Center</h1>
-                <p className="text-gray-600 dark:text-gray-300">C-Suite Intelligence & Strategic Command</p>
+                <p className="text-gray-800 dark:text-gray-300">C-Suite Intelligence & Strategic Command</p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              <Badge variant="outline" className="text-green-600 border-green-500/50">
+              <Badge variant="outline" className="text-emerald-700 border-green-500/50">
                 <CheckCircle className="w-3 h-3 mr-1" />
                 All Systems Operational
               </Badge>
@@ -89,29 +89,29 @@ export default function ExecutiveSuite() {
           {/* Executive Value Benchmarks - Based on Fortune 1000 Customer Data */}
           <Card className="mb-8 bg-gradient-to-r from-blue-50 via-purple-50 to-blue-50 dark:from-blue-950/30 dark:via-purple-950/30 dark:to-blue-950/30 border-2 border-blue-400 dark:border-blue-600">
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-semibold text-blue-700 dark:text-blue-400 uppercase tracking-wider">
+              <CardTitle className="text-sm font-semibold text-blue-800 dark:text-blue-400 uppercase tracking-wider">
                 Platform ROI Benchmarks (Avg Fortune 1000 Customer Results)
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-0">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <div className="text-center">
-                  <DollarSign className="h-8 w-8 text-green-600 dark:text-green-400 mx-auto mb-2" />
-                  <div className="text-3xl font-bold text-green-600 dark:text-green-400">$5.8M</div>
+                  <DollarSign className="h-8 w-8 text-emerald-700 dark:text-green-400 mx-auto mb-2" />
+                  <div className="text-3xl font-bold text-emerald-700 dark:text-green-400">$5.8M</div>
                   <div className="text-sm text-muted-foreground">Avg Annual Value</div>
-                  <div className="text-xs text-green-600 dark:text-green-400 mt-1">48x Avg ROI</div>
+                  <div className="text-xs text-emerald-700 dark:text-green-400 mt-1">48x Avg ROI</div>
                 </div>
                 <div className="text-center">
-                  <Shield className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-2" />
-                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">$4.2M</div>
+                  <Shield className="h-8 w-8 text-blue-800 dark:text-blue-400 mx-auto mb-2" />
+                  <div className="text-3xl font-bold text-blue-800 dark:text-blue-400">$4.2M</div>
                   <div className="text-sm text-muted-foreground">Avg Risk Mitigation</div>
-                  <div className="text-xs text-blue-600 dark:text-blue-400 mt-1">Crisis Prevention Benchmark</div>
+                  <div className="text-xs text-blue-800 dark:text-blue-400 mt-1">Crisis Prevention Benchmark</div>
                 </div>
                 <div className="text-center">
-                  <Clock className="h-8 w-8 text-purple-600 dark:text-purple-400 mx-auto mb-2" />
-                  <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">720 Hours</div>
+                  <Clock className="h-8 w-8 text-purple-800 dark:text-purple-400 mx-auto mb-2" />
+                  <div className="text-3xl font-bold text-purple-800 dark:text-purple-400">720 Hours</div>
                   <div className="text-sm text-muted-foreground">Avg Time Saved/Year</div>
-                  <div className="text-xs text-purple-600 dark:text-purple-400 mt-1">Target: 12 min vs 72h industry</div>
+                  <div className="text-xs text-purple-800 dark:text-purple-400 mt-1">Target: 12 min vs 72h industry</div>
                 </div>
                 <div className="text-center">
                   <Trophy className="h-8 w-8 text-orange-600 dark:text-orange-400 mx-auto mb-2" />
@@ -128,13 +128,13 @@ export default function ExecutiveSuite() {
             {executiveMetrics.map((metric, index) => (
               <Card key={index} className="bg-white/90 dark:bg-slate-800/90 backdrop-blur border-slate-200 dark:border-slate-700">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-400">{metric.title}</CardTitle>
+                  <CardTitle className="text-sm font-medium text-gray-800 dark:text-gray-400">{metric.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{metric.value}</div>
                   <div className={`text-sm flex items-center ${
-                    metric.trend === 'up' ? 'text-green-600' : 
-                    metric.trend === 'down' ? 'text-red-600' : 'text-gray-600'
+                    metric.trend === 'up' ? 'text-emerald-700' : 
+                    metric.trend === 'down' ? 'text-red-700' : 'text-gray-800'
                   }`}>
                     {metric.trend === 'up' && <TrendingUp className="w-3 h-3 mr-1" />}
                     {metric.change}
@@ -160,7 +160,7 @@ export default function ExecutiveSuite() {
                       {report.icon}
                       <div>
                         <h4 className="font-semibold text-gray-900 dark:text-white">{report.title}</h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">{report.type} • {report.date}</p>
+                        <p className="text-sm text-gray-800 dark:text-gray-400">{report.type} • {report.date}</p>
                       </div>
                     </div>
                     <Badge variant={report.status === 'Completed' ? 'default' : 'secondary'}>

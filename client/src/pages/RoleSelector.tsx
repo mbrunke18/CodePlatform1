@@ -140,7 +140,7 @@ const roleConfigs: RoleConfig[] = [
     playbookLabel: 'AI Governance Framework',
     category: 'SPECIAL TEAMS',
     accentColor: 'border-l-slate-400',
-    iconBg: 'bg-slate-500/15 text-gray-600'
+    iconBg: 'bg-slate-500/15 text-gray-800'
   },
   {
     id: 'cco',
@@ -198,10 +198,10 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
                 Your Execution OS Workspace
               </h1>
             </div>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-6">
+            <p className="text-lg md:text-xl text-gray-800 max-w-3xl mx-auto mb-6">
               Select your role to configure Execution OS with the playbooks, signals, and dashboards most relevant to your responsibilities.
             </p>
-            <div className="flex items-center justify-center gap-6 text-sm text-gray-600">
+            <div className="flex items-center justify-center gap-6 text-sm text-gray-800">
               <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-poise-teal" /> Personalized workspace</span>
               <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-blue-400" /> Role-specific playbooks</span>
               <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-purple-400" /> Tailored signal feeds</span>
@@ -222,7 +222,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
                           </div>
                           <div>
                             <div className="font-bold text-gray-900 text-lg">{config.id.toUpperCase()}</div>
-                            <div className="text-sm text-gray-600">{config.title}</div>
+                            <div className="text-sm text-gray-800">{config.title}</div>
                           </div>
                         </div>
                         <Badge className={`text-[10px] border ${categoryBadge(config.category)}`}>
@@ -230,20 +230,20 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
                         </Badge>
                       </div>
 
-                      <p className="text-sm text-gray-600 italic mb-4 min-h-[48px] leading-relaxed">
+                      <p className="text-sm text-gray-800 italic mb-4 min-h-[48px] leading-relaxed">
                         "{config.hookQuestion}"
                       </p>
 
                       <div className="border-t border-gray-200 pt-3 mb-4">
-                        <div className="text-[10px] uppercase tracking-wider text-gray-600 mb-1">Your Execution OS Impact</div>
+                        <div className="text-[10px] uppercase tracking-wider text-gray-800 mb-1">Your Execution OS Impact</div>
                         <div className="text-sm font-semibold text-emerald-400">{config.keyMetric}</div>
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <div className="text-xs text-gray-600">
+                        <div className="text-xs text-gray-800">
                           <Compass className="w-3 h-3 inline mr-1" />Configure Workspace
                         </div>
-                        <ArrowRight className="w-4 h-4 text-gray-600" />
+                        <ArrowRight className="w-4 h-4 text-gray-800" />
                       </div>
                     </CardContent>
                   </Card>
@@ -255,7 +255,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
           <div className="mt-16 text-center">
             <Card className="bg-white border-gray-200 p-8 max-w-3xl mx-auto">
               <h3 className="text-xl font-bold mb-3 text-gray-900">Not sure which role to start with?</h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-800 mb-6">
                 Jump straight into the Command Center — select any playbook and experience the full coordination workflow.
               </p>
               <Link href="/command-center">

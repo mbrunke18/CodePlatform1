@@ -137,7 +137,7 @@ export default function Sitemap() {
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             Execution OS Sitemap
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-800">
             Complete directory of all pages and features available in Execution OS
           </p>
         </div>
@@ -154,7 +154,7 @@ export default function Sitemap() {
                     <li key={page.path}>
                       <button
                         onClick={() => setLocation(page.path)}
-                        className="text-gray-600 hover:text-white hover:underline text-left w-full"
+                        className="text-gray-800 hover:text-white hover:underline text-left w-full"
                       >
                         {page.name}
                       </button>
@@ -172,19 +172,19 @@ export default function Sitemap() {
             <div className="grid md:grid-cols-4 gap-6 text-center">
               <div>
                 <div className="text-4xl font-bold text-blue-400 mb-2">7</div>
-                <div className="text-gray-600">Live Interactive Demos</div>
+                <div className="text-gray-800">Live Interactive Demos</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-green-400 mb-2">10</div>
-                <div className="text-gray-600">Industry Demos</div>
+                <div className="text-gray-800">Industry Demos</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-purple-400 mb-2">170</div>
-                <div className="text-gray-600">Strategic Playbooks</div>
+                <div className="text-gray-800">Strategic Playbooks</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-orange-400 mb-2">70+</div>
-                <div className="text-gray-600">Total Pages</div>
+                <div className="text-gray-800">Total Pages</div>
               </div>
             </div>
           </CardContent>

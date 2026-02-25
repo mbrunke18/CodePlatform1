@@ -88,11 +88,11 @@ export default function LuxuryCrisisDemo() {
                     <div className="text-sm text-muted-foreground">Market Cap</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-blue-700 dark:text-blue-400">{luxuryOrg.brands}</div>
+                    <div className="text-3xl font-bold text-blue-800 dark:text-blue-400">{luxuryOrg.brands}</div>
                     <div className="text-sm text-muted-foreground">Maisons</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-green-700 dark:text-green-400">{luxuryOrg.regions}</div>
+                    <div className="text-3xl font-bold text-emerald-800 dark:text-green-400">{luxuryOrg.regions}</div>
                     <div className="text-sm text-muted-foreground">Regions</div>
                   </div>
                   <div>
@@ -109,7 +109,7 @@ export default function LuxuryCrisisDemo() {
             <Card className="p-8">
               <div className="flex items-start gap-4 mb-6">
                 <div className="p-3 bg-red-100 dark:bg-red-900 rounded-full">
-                  <Target className="h-6 w-6 text-red-600 dark:text-red-400" />
+                  <Target className="h-6 w-6 text-red-700 dark:text-red-400" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold mb-2">The Crisis Event</h3>
@@ -119,7 +119,7 @@ export default function LuxuryCrisisDemo() {
                   <div className="grid md:grid-cols-3 gap-4 mt-4">
                     <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded">
                       <div className="text-sm text-muted-foreground mb-1">Financial Impact</div>
-                      <div className="text-2xl font-bold text-red-600">{crisisScenario.financialImpact}</div>
+                      <div className="text-2xl font-bold text-red-700">{crisisScenario.financialImpact}</div>
                     </div>
                     <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded">
                       <div className="text-sm text-muted-foreground mb-1">Response Window</div>
@@ -127,7 +127,7 @@ export default function LuxuryCrisisDemo() {
                     </div>
                     <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded">
                       <div className="text-sm text-muted-foreground mb-1">Stakeholders</div>
-                      <div className="text-2xl font-bold text-blue-600">{crisisScenario.stakeholdersInvolved}</div>
+                      <div className="text-2xl font-bold text-blue-800">{crisisScenario.stakeholdersInvolved}</div>
                     </div>
                   </div>
                 </div>
@@ -153,7 +153,7 @@ export default function LuxuryCrisisDemo() {
                     {playbookTemplate.sections.slice(0, 4).map(section => (
                       <div key={section.name} className="bg-white dark:bg-gray-900 p-3 rounded text-center">
                         <div className="text-xs text-muted-foreground mb-1">{section.name}</div>
-                        <div className="text-lg font-bold text-blue-600">{section.prefill}%</div>
+                        <div className="text-lg font-bold text-blue-800">{section.prefill}%</div>
                       </div>
                     ))}
                   </div>
@@ -275,7 +275,7 @@ export default function LuxuryCrisisDemo() {
         {currentAct === 'complete' && (
           <div className="space-y-8 animate-in fade-in duration-500">
             <Card className="p-12 bg-gradient-to-br from-purple-50 via-blue-50 to-green-50 dark:from-purple-950 dark:via-blue-950 dark:to-green-950 text-center">
-              <Award className="h-16 w-16 mx-auto mb-6 text-green-600" />
+              <Award className="h-16 w-16 mx-auto mb-6 text-emerald-700" />
               <h2 className="text-4xl font-bold mb-4">Demo Complete</h2>
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
                 You've just experienced how Execution OS transforms the gap between AI detection 
@@ -285,15 +285,15 @@ export default function LuxuryCrisisDemo() {
 
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <Card className="p-6 border-2 border-green-500">
-                  <div className="text-4xl font-bold text-green-600 mb-2">$280M</div>
+                  <div className="text-4xl font-bold text-emerald-700 mb-2">$280M</div>
                   <div className="text-sm text-muted-foreground">Value Preserved</div>
                 </Card>
                 <Card className="p-6 border-2 border-blue-500">
-                  <div className="text-4xl font-bold text-blue-600 mb-2">12 min</div>
+                  <div className="text-4xl font-bold text-blue-800 mb-2">12 min</div>
                   <div className="text-sm text-muted-foreground">Full Coordination</div>
                 </Card>
                 <Card className="p-6 border-2 border-purple-500">
-                  <div className="text-4xl font-bold text-purple-600 mb-2">193</div>
+                  <div className="text-4xl font-bold text-purple-800 mb-2">193</div>
                   <div className="text-sm text-muted-foreground">Stakeholders Aligned</div>
                 </Card>
               </div>

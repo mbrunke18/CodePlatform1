@@ -91,7 +91,7 @@ export function IDEAFramework({ progress }: SceneProps) {
                 </div>
                 <p className="text-gray-900 font-bold text-lg text-center">{phase.name}</p>
                 <p className="text-xs text-center mt-1" style={{ color: phase.color }}>{phase.module}</p>
-                <p className="text-gray-500 text-xs text-center mt-2 max-w-[120px]">{phase.description}</p>
+                <p className="text-gray-700 text-xs text-center mt-2 max-w-[120px]">{phase.description}</p>
                 <motion.p 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: i <= activePhase ? 1 : 0 }}
@@ -126,10 +126,10 @@ export function IDEAFramework({ progress }: SceneProps) {
             <LayoutDashboard className="w-5 h-5 text-[#D4AF37]" />
             <div>
               <p className="text-gray-900 text-sm font-medium">Execution OS One™</p>
-              <p className="text-gray-500 text-xs">Unified command center for all 4 phases</p>
+              <p className="text-gray-700 text-xs">Unified command center for all 4 phases</p>
             </div>
           </div>
-          <p className="text-center text-gray-500 text-lg mt-4">
+          <p className="text-center text-gray-700 text-lg mt-4">
             "That's the <span className="text-[#D4AF37] font-bold">IDEA</span>."
           </p>
         </motion.div>

@@ -97,9 +97,9 @@ export default function WorkspaceExecute() {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-gray-600 hover:text-poise-teal cursor-pointer">Execution OS One™</span>
+              <span className="text-gray-800 hover:text-poise-teal cursor-pointer">Execution OS One™</span>
             </Link>
-            <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200" />
+            <ChevronRight className="h-4 w-4 text-gray-800 dark:text-slate-200" />
             <span className="text-poise-teal font-medium">EXECUTE</span>
           </nav>
 
@@ -116,7 +116,7 @@ export default function WorkspaceExecute() {
                     Execution OS Compass™
                   </Badge>
                 </div>
-                <p className="text-gray-600 dark:text-slate-300 mt-1">
+                <p className="text-gray-800 dark:text-slate-300 mt-1">
                   Coordinate responses and execute playbooks in 12 minutes
                 </p>
               </div>
@@ -142,7 +142,7 @@ export default function WorkspaceExecute() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-slate-900 dark:text-white">IDEA Framework Progress</h3>
-                <span className="text-sm text-gray-600">Phase 3 of 4</span>
+                <span className="text-sm text-gray-800">Phase 3 of 4</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex-1 flex items-center gap-2">
@@ -152,22 +152,22 @@ export default function WorkspaceExecute() {
                       <span className="text-sm text-poise-gold">IDENTIFY</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-gray-600" />
+                  <ArrowRight className="h-4 w-4 text-gray-800" />
                   <Link href="/workspaces/detect">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-poise-teal/10 hover:bg-poise-teal/20 cursor-pointer transition-colors">
                       <Radar className="h-4 w-4 text-poise-teal" />
                       <span className="text-sm text-poise-teal">DETECT</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-gray-600" />
+                  <ArrowRight className="h-4 w-4 text-gray-800" />
                   <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-poise-teal/20 border-2 border-poise-teal">
                     <Compass className="h-4 w-4 text-poise-teal" />
                     <span className="text-sm font-medium text-poise-teal">EXECUTE</span>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-gray-600" />
+                  <ArrowRight className="h-4 w-4 text-gray-800" />
                   <Link href="/workspaces/advance">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-poise-gold/10 cursor-pointer transition-colors">
-                      <span className="text-sm text-gray-600">ADVANCE</span>
+                      <span className="text-sm text-gray-800">ADVANCE</span>
                     </div>
                   </Link>
                 </div>
@@ -184,7 +184,7 @@ export default function WorkspaceExecute() {
                     <metric.icon className={`h-5 w-5 ${metric.color}`} />
                   </div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white">{metric.value}</p>
-                  <p className="text-xs text-gray-600">{metric.label}</p>
+                  <p className="text-xs text-gray-800">{metric.label}</p>
                 </CardContent>
               </Card>
             ))}
@@ -199,7 +199,7 @@ export default function WorkspaceExecute() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">12 Minutes to Coordinated Response</h3>
-                  <p className="text-gray-600">Execution OS delivers 340x faster execution than traditional approaches (72 hours)</p>
+                  <p className="text-gray-800">Execution OS delivers 340x faster execution than traditional approaches (72 hours)</p>
                 </div>
               </div>
             </CardContent>
@@ -218,7 +218,7 @@ export default function WorkspaceExecute() {
                   <span className="text-sm font-medium text-slate-900 dark:text-white">78%</span>
                   <Progress value={78} className="flex-1 h-2" />
                 </div>
-                <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-slate-300 mb-4">
+                <div className="flex items-center gap-4 text-sm text-gray-800 dark:text-slate-300 mb-4">
                   <span className="flex items-center gap-1"><CheckCircle className="h-3.5 w-3.5" /> 28 of 45 tasks</span>
                   <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" /> 45 stakeholders</span>
                   <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> Jan 28</span>
@@ -234,19 +234,19 @@ export default function WorkspaceExecute() {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="font-semibold text-slate-900 dark:text-white">Competitive Response — Market Counter-Strategy</h4>
-                  <Badge className="bg-amber-500/20 text-amber-600 border-amber-500/30">In Progress</Badge>
+                  <Badge className="bg-amber-500/20 text-[#C9A84C] border-amber-500/30">In Progress</Badge>
                 </div>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-sm font-medium text-slate-900 dark:text-white">34%</span>
                   <Progress value={34} className="flex-1 h-2" />
                 </div>
-                <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-slate-300 mb-4">
+                <div className="flex items-center gap-4 text-sm text-gray-800 dark:text-slate-300 mb-4">
                   <span className="flex items-center gap-1"><CheckCircle className="h-3.5 w-3.5" /> 8 of 24 tasks</span>
                   <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" /> 18 stakeholders</span>
                   <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> Feb 15</span>
                 </div>
                 <Link href="/mission-control">
-                  <Button size="sm" variant="outline" className="border-amber-500/50 text-amber-600 hover:bg-amber-500/10">
+                  <Button size="sm" variant="outline" className="border-amber-500/50 text-[#C9A84C] hover:bg-amber-500/10">
                     View Details <ChevronRight className="h-3.5 w-3.5 ml-1" />
                   </Button>
                 </Link>
@@ -270,9 +270,9 @@ export default function WorkspaceExecute() {
                           <h3 className="font-semibold text-slate-900 dark:text-white group-hover:text-poise-teal transition-colors">
                             {tool.title}
                           </h3>
-                          <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200 group-hover:text-poise-teal transition-colors" />
+                          <ChevronRight className="h-4 w-4 text-gray-800 dark:text-slate-200 group-hover:text-poise-teal transition-colors" />
                         </div>
-                        <p className="text-sm text-gray-600 dark:text-slate-300 mt-1">
+                        <p className="text-sm text-gray-800 dark:text-slate-300 mt-1">
                           {tool.description}
                         </p>
                         <Badge variant="outline" className="mt-3 text-xs">
@@ -296,7 +296,7 @@ export default function WorkspaceExecute() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 dark:text-white">Execution complete?</h3>
-                    <p className="text-sm text-gray-600 dark:text-slate-300">
+                    <p className="text-sm text-gray-800 dark:text-slate-300">
                       Capture lessons learned and improve for next time in ADVANCE
                     </p>
                   </div>

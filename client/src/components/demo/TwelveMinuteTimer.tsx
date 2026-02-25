@@ -98,7 +98,7 @@ export default function TwelveMinuteTimer({
     <div className="space-y-6">
       <div className="text-center mb-4">
         <h2 className="text-3xl font-bold text-gray-900 mb-2">{title}</h2>
-        <p className="text-xl text-blue-700">{subtitle}</p>
+        <p className="text-xl text-blue-800">{subtitle}</p>
       </div>
 
       <Card className="p-4 bg-gradient-to-br   border-blue-800/30 max-w-md mx-auto">
@@ -107,7 +107,7 @@ export default function TwelveMinuteTimer({
           <div className="text-4xl font-bold text-gray-900" data-testid="text-timer">
             {timelineState.formattedTime}
           </div>
-          <span className="text-sm text-blue-700">
+          <span className="text-sm text-blue-800">
             {completed ? '✓ Complete' : 'Coordinating...'}
           </span>
         </div>
@@ -168,15 +168,15 @@ export default function TwelveMinuteTimer({
         <Card className="p-6 bg-green-50 dark:bg-green-950 border-green-500 border-2" data-testid="card-completion">
           <div className="grid grid-cols-3 gap-4 text-center">
             <div>
-              <div className="text-2xl font-bold text-green-700 dark:text-green-300">12:00</div>
+              <div className="text-2xl font-bold text-emerald-800 dark:text-green-300">12:00</div>
               <div className="text-xs text-muted-foreground">Total Time</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-green-700 dark:text-green-300">193</div>
+              <div className="text-2xl font-bold text-emerald-800 dark:text-green-300">193</div>
               <div className="text-xs text-muted-foreground">Stakeholders</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-green-700 dark:text-green-300">$50M</div>
+              <div className="text-2xl font-bold text-emerald-800 dark:text-green-300">$50M</div>
               <div className="text-xs text-muted-foreground">Budget Activated</div>
             </div>
           </div>

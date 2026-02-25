@@ -99,12 +99,12 @@ const STAKEHOLDER_ROLES = [
 const PRIORITY_CONFIG = {
   critical: { label: "Critical", color: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400" },
   high: { label: "High", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
-  medium: { label: "Medium", color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400" },
-  low: { label: "Low", color: "bg-slate-100 text-gray-600 dark:bg-slate-800 dark:text-slate-300" },
+  medium: { label: "Medium", color: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400" },
+  low: { label: "Low", color: "bg-slate-100 text-gray-800 dark:bg-slate-800 dark:text-slate-300" },
 };
 
 const STATUS_CONFIG = {
-  pending: { label: "Pending", icon: Circle, color: "text-slate-600 dark:text-slate-200" },
+  pending: { label: "Pending", icon: Circle, color: "text-gray-800 dark:text-slate-200" },
   in_progress: { label: "In Progress", icon: Timer, color: "text-blue-500" },
   completed: { label: "Completed", icon: CheckCircle2, color: "text-green-500" },
   blocked: { label: "Blocked", icon: AlertTriangle, color: "text-red-500" },
@@ -366,7 +366,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
             <h1 className="text-3xl font-bold text-slate-900 dark:text-white" data-testid="text-page-title">
               Task Management
             </h1>
-            <p className="text-gray-600 dark:text-slate-300 mt-1">
+            <p className="text-gray-800 dark:text-slate-300 mt-1">
               Define and manage execution tasks with dependencies and approval gates
             </p>
           </div>
@@ -385,11 +385,11 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                  <ListChecks className="h-5 w-5 text-gray-600" />
+                  <ListChecks className="h-5 w-5 text-gray-800" />
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white">{stats.total}</p>
-                  <p className="text-sm text-gray-600">Total Tasks</p>
+                  <p className="text-sm text-gray-800">Total Tasks</p>
                 </div>
               </div>
             </CardContent>
@@ -398,11 +398,11 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                  <Circle className="h-5 w-5 text-slate-600 dark:text-slate-200" />
+                  <Circle className="h-5 w-5 text-gray-800 dark:text-slate-200" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-gray-600">{stats.pending}</p>
-                  <p className="text-sm text-gray-600">Pending</p>
+                  <p className="text-2xl font-bold text-gray-800">{stats.pending}</p>
+                  <p className="text-sm text-gray-800">Pending</p>
                 </div>
               </div>
             </CardContent>
@@ -411,11 +411,11 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                  <Timer className="h-5 w-5 text-blue-600" />
+                  <Timer className="h-5 w-5 text-blue-800" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-blue-600">{stats.inProgress}</p>
-                  <p className="text-sm text-gray-600">In Progress</p>
+                  <p className="text-2xl font-bold text-blue-800">{stats.inProgress}</p>
+                  <p className="text-sm text-gray-800">In Progress</p>
                 </div>
               </div>
             </CardContent>
@@ -424,11 +424,11 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                  <CheckCircle2 className="h-5 w-5 text-green-600" />
+                  <CheckCircle2 className="h-5 w-5 text-emerald-700" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-green-600">{stats.completed}</p>
-                  <p className="text-sm text-gray-600">Completed</p>
+                  <p className="text-2xl font-bold text-emerald-700">{stats.completed}</p>
+                  <p className="text-sm text-gray-800">Completed</p>
                 </div>
               </div>
             </CardContent>
@@ -437,11 +437,11 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-                  <Clock className="h-5 w-5 text-purple-600" />
+                  <Clock className="h-5 w-5 text-purple-800" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-purple-600">{stats.totalMinutes}m</p>
-                  <p className="text-sm text-gray-600">Total Duration</p>
+                  <p className="text-2xl font-bold text-purple-800">{stats.totalMinutes}m</p>
+                  <p className="text-sm text-gray-800">Total Duration</p>
                 </div>
               </div>
             </CardContent>
@@ -468,7 +468,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
             <Card className="mb-6">
               <CardContent className="p-4">
                 <div className="relative">
-                  <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-600 dark:text-slate-200" />
+                  <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-800 dark:text-slate-200" />
                   <Input
                     placeholder="Search tasks..."
                     value={search}
@@ -484,9 +484,9 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
           {filteredTasks.length === 0 ? (
             <Card>
               <CardContent className="py-16 text-center">
-                <ListChecks className="h-12 w-12 mx-auto mb-4 text-gray-600" />
+                <ListChecks className="h-12 w-12 mx-auto mb-4 text-gray-800" />
                 <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">No Tasks Found</h3>
-                <p className="text-gray-600 mb-6">Start by creating your first execution task.</p>
+                <p className="text-gray-800 mb-6">Start by creating your first execution task.</p>
                 <Button onClick={handleOpenCreate} data-testid="button-add-first-task">
                   <Plus className="h-4 w-4 mr-2" />
                   Add Task
@@ -519,7 +519,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                               <StatusIcon className={`h-4 w-4 ${STATUS_CONFIG[task.status].color}`} />
                               <h3 className="font-semibold text-slate-900 dark:text-white">{task.title}</h3>
                             </div>
-                            <p className="text-sm text-gray-600 mb-3">{task.description}</p>
+                            <p className="text-sm text-gray-800 mb-3">{task.description}</p>
                             
                             <div className="flex flex-wrap gap-2">
                               <Badge variant="outline" className="text-xs">
@@ -534,13 +534,13 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                                 {priorityConfig.label}
                               </Badge>
                               {task.approvalRequired !== 'none' && (
-                                <Badge variant="outline" className="text-xs text-purple-600 border-purple-300">
+                                <Badge variant="outline" className="text-xs text-purple-800 border-purple-300">
                                   <GitBranch className="h-3 w-3 mr-1" />
                                   {APPROVAL_TYPES.find(a => a.value === task.approvalRequired)?.label}
                                 </Badge>
                               )}
                               {task.dependsOn.length > 0 && (
-                                <Badge variant="outline" className="text-xs text-amber-600 border-amber-300">
+                                <Badge variant="outline" className="text-xs text-[#C9A84C] border-amber-300">
                                   <ArrowRight className="h-3 w-3 mr-1" />
                                   Depends on: {dependencies}
                                 </Badge>
@@ -561,7 +561,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                               variant="ghost" 
                               size="sm" 
                               onClick={() => setDeleteId(task.id)}
-                              className="text-red-600 hover:text-red-700"
+                              className="text-red-700 hover:text-red-700"
                               data-testid={`button-delete-${task.id}`}
                             >
                               <Trash2 className="h-4 w-4" />
@@ -589,25 +589,25 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                         <BookOpen className="h-5 w-5 text-indigo-600" />
                         Enterprise Task Library
                       </h2>
-                      <p className="text-gray-600 dark:text-slate-300 mt-1">
+                      <p className="text-gray-800 dark:text-slate-300 mt-1">
                         {libraryStats.total} pre-defined tasks across all IDEA phases. Add tasks to your playbook to ensure everyone knows their role.
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-2">
                       <Badge variant="outline" className="bg-white dark:bg-slate-900">
-                        <Target className="h-3 w-3 mr-1 text-blue-600" />
+                        <Target className="h-3 w-3 mr-1 text-blue-800" />
                         {libraryStats.phases.identify} IDENTIFY
                       </Badge>
                       <Badge variant="outline" className="bg-white dark:bg-slate-900">
-                        <Zap className="h-3 w-3 mr-1 text-amber-600" />
+                        <Zap className="h-3 w-3 mr-1 text-[#C9A84C]" />
                         {libraryStats.phases.detect} DETECT
                       </Badge>
                       <Badge variant="outline" className="bg-white dark:bg-slate-900">
-                        <Shield className="h-3 w-3 mr-1 text-green-600" />
+                        <Shield className="h-3 w-3 mr-1 text-emerald-700" />
                         {libraryStats.phases.execute} EXECUTE
                       </Badge>
                       <Badge variant="outline" className="bg-white dark:bg-slate-900">
-                        <Briefcase className="h-3 w-3 mr-1 text-purple-600" />
+                        <Briefcase className="h-3 w-3 mr-1 text-purple-800" />
                         {libraryStats.phases.advance} ADVANCE
                       </Badge>
                     </div>
@@ -628,7 +628,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                     <span className={`text-xs font-bold ${IDEA_PHASES[phase].color}`}>
                       {IDEA_PHASES[phase].label}
                     </span>
-                    <span className="text-xs text-gray-600">Add all tasks</span>
+                    <span className="text-xs text-gray-800">Add all tasks</span>
                   </Button>
                 ))}
               </div>
@@ -638,7 +638,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                 <CardContent className="p-4">
                   <div className="flex flex-col md:flex-row gap-4">
                     <div className="flex-1 relative">
-                      <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-600 dark:text-slate-200" />
+                      <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-800 dark:text-slate-200" />
                       <Input
                         placeholder="Search tasks..."
                         value={librarySearch}
@@ -702,7 +702,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                             <h3 className="font-semibold text-slate-900 dark:text-white text-sm mb-1">
                               {template.title}
                             </h3>
-                            <p className="text-xs text-gray-600 mb-2 line-clamp-2">
+                            <p className="text-xs text-gray-800 mb-2 line-clamp-2">
                               {template.description}
                             </p>
                             <div className="flex flex-wrap gap-1.5">
@@ -724,7 +724,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                             variant={isAdded ? "ghost" : "default"}
                             disabled={isAdded}
                             onClick={() => handleAddFromLibrary(template)}
-                            className={isAdded ? "text-green-600" : ""}
+                            className={isAdded ? "text-emerald-700" : ""}
                             data-testid={`button-add-library-task-${template.id}`}
                           >
                             {isAdded ? (
@@ -749,9 +749,9 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
               {filteredLibraryTasks.length === 0 && (
                 <Card>
                   <CardContent className="py-12 text-center">
-                    <Library className="h-12 w-12 mx-auto mb-4 text-gray-600" />
+                    <Library className="h-12 w-12 mx-auto mb-4 text-gray-800" />
                     <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">No Tasks Found</h3>
-                    <p className="text-gray-600">Try adjusting your filters or search terms.</p>
+                    <p className="text-gray-800">Try adjusting your filters or search terms.</p>
                   </CardContent>
                 </Card>
               )}
@@ -763,7 +763,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
               <Card>
                 <CardContent className="py-16 text-center">
                   <Loader2 className="h-8 w-8 mx-auto mb-4 text-purple-500 animate-spin" />
-                  <p className="text-gray-600">Loading execution sequences...</p>
+                  <p className="text-gray-800">Loading execution sequences...</p>
                 </CardContent>
               </Card>
             ) : (
@@ -773,25 +773,25 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                       <div>
                         <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                          <Activity className="h-5 w-5 text-purple-600" />
+                          <Activity className="h-5 w-5 text-purple-800" />
                           Playbook Execution Sequences
                         </h2>
-                        <p className="text-gray-600 dark:text-slate-300 mt-1">
+                        <p className="text-gray-800 dark:text-slate-300 mt-1">
                           Real task sequences from the database across all strategic domains
                         </p>
                       </div>
                       <div className="flex gap-4">
                         <div className="text-center px-4 py-2 bg-white dark:bg-slate-900 rounded-lg border">
-                          <p className="text-2xl font-bold text-purple-600">
+                          <p className="text-2xl font-bold text-purple-800">
                             {sequenceSummary?.reduce((sum, d) => sum + parseInt(d.playbookCount), 0)?.toLocaleString() ?? '0'}
                           </p>
-                          <p className="text-xs text-gray-600">Total Playbooks</p>
+                          <p className="text-xs text-gray-800">Total Playbooks</p>
                         </div>
                         <div className="text-center px-4 py-2 bg-white dark:bg-slate-900 rounded-lg border">
                           <p className="text-2xl font-bold text-indigo-600">
                             {sequenceSummary?.reduce((sum, d) => sum + parseInt(d.taskCount), 0)?.toLocaleString() ?? '0'}
                           </p>
-                          <p className="text-xs text-gray-600">Total Task Sequences</p>
+                          <p className="text-xs text-gray-800">Total Task Sequences</p>
                         </div>
                       </div>
                     </div>
@@ -807,7 +807,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                     const isDefense = /regulatory|brand|compliance|legal/i.test(domain.domainName);
                     const isOffense = /market|growth|revenue|sales/i.test(domain.domainName);
                     const DomainIcon = isDefense ? Shield : isOffense ? Target : Zap;
-                    const iconColor = isDefense ? "text-blue-600" : isOffense ? "text-orange-600" : "text-purple-600";
+                    const iconColor = isDefense ? "text-blue-800" : isOffense ? "text-orange-600" : "text-purple-800";
                     const iconBg = isDefense ? "bg-blue-100 dark:bg-blue-900/30" : isOffense ? "bg-orange-100 dark:bg-orange-900/30" : "bg-purple-100 dark:bg-purple-900/30";
                     const progressColor = coverage >= 80 ? "bg-green-500" : coverage >= 50 ? "bg-yellow-500" : "bg-red-500";
                     
@@ -833,17 +833,17 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                         </CardHeader>
                         <CardContent className="pt-0 space-y-3">
                           <div className="flex justify-between text-sm">
-                            <span className="text-gray-600 flex items-center gap-1">
+                            <span className="text-gray-800 flex items-center gap-1">
                               <BookOpen className="h-3.5 w-3.5" />
                               {playbookCount} playbooks
                             </span>
-                            <span className="text-gray-600 flex items-center gap-1">
+                            <span className="text-gray-800 flex items-center gap-1">
                               <ListChecks className="h-3.5 w-3.5" />
                               {taskCount} tasks
                             </span>
                           </div>
                           <div>
-                            <div className="flex justify-between text-xs text-slate-600 dark:text-slate-200 mb-1">
+                            <div className="flex justify-between text-xs text-gray-800 dark:text-slate-200 mb-1">
                               <span>Task Coverage</span>
                               <span>{taskCount} / {playbookCount * 8}</span>
                             </div>
@@ -863,9 +863,9 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                 {(!sequenceSummary || sequenceSummary.length === 0) && (
                   <Card>
                     <CardContent className="py-12 text-center">
-                      <Activity className="h-12 w-12 mx-auto mb-4 text-gray-600" />
+                      <Activity className="h-12 w-12 mx-auto mb-4 text-gray-800" />
                       <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">No Execution Sequences</h3>
-                      <p className="text-gray-600">No playbook task sequences found in the database.</p>
+                      <p className="text-gray-800">No playbook task sequences found in the database.</p>
                     </CardContent>
                   </Card>
                 )}

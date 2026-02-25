@@ -51,7 +51,7 @@ export default function HowItWorks() {
       bgGradient: "from-blue-500 to-cyan-500",
       borderColor: "border-blue-500",
       bgLight: "bg-blue-50 dark:bg-blue-950/30",
-      textColor: "text-blue-600 dark:text-blue-400",
+      textColor: "text-blue-800 dark:text-blue-400",
       description: "A strategic moment hits—M&A, crisis, competitive threat. The infrastructure activates. The right playbook engages based on situational awareness. No meetings to figure out what to do. The infrastructure already knows.",
       capabilities: [
         "Strategic moments detected instantly—M&A activity, crises, competitive threats",
@@ -71,7 +71,7 @@ export default function HowItWorks() {
       bgGradient: "from-emerald-500 to-green-500",
       borderColor: "border-emerald-500",
       bgLight: "bg-emerald-50 dark:bg-emerald-950/30",
-      textColor: "text-emerald-600 dark:text-emerald-400",
+      textColor: "text-emerald-700 dark:text-emerald-400",
       description: "Stakeholders notified. Tasks assigned with owners. Decision rights clear. Execution begins—not planning, execution. This is the operating model IBM says 78% of executives know they need.",
       capabilities: [
         "Stakeholders notified and tasks assigned with clear owners in minutes",
@@ -91,7 +91,7 @@ export default function HowItWorks() {
       bgGradient: "from-amber-500 to-orange-500",
       borderColor: "border-amber-500",
       bgLight: "bg-amber-50 dark:bg-amber-950/30",
-      textColor: "text-amber-600 dark:text-amber-400",
+      textColor: "text-[#C9A84C] dark:text-amber-400",
       description: "Every execution generates proprietary intelligence. AI analyzes outcomes, detects patterns across playbooks, benchmarks against industry standards, and refines your infrastructure automatically. Your execution capability doesn't just improve—it compounds into an institutional advantage.",
       capabilities: [
         "Every execution generates actionable performance data—building your proprietary intelligence layer",
@@ -150,7 +150,7 @@ export default function HowItWorks() {
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
               From Situation to Execution in 12 Minutes
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-800 mb-8 leading-relaxed max-w-3xl mx-auto">
               In a world where disruptions compound and cascade across domains simultaneously, the only advantage is execution infrastructure built before the moment arrives.
             </p>
             
@@ -162,13 +162,13 @@ export default function HowItWorks() {
                     <phase.icon className="h-6 w-6 md:h-8 md:w-8 text-gray-900" />
                   </div>
                   {index < phases.length - 1 && (
-                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-gray-400 mx-1 md:mx-2" />
+                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-gray-600 mx-1 md:mx-2" />
                   )}
                 </div>
               ))}
-              <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-gray-400 mx-1 md:mx-2 rotate-180 hidden md:block" />
+              <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-gray-600 mx-1 md:mx-2 rotate-180 hidden md:block" />
             </div>
-            <p className="text-sm text-gray-500 mt-4">Continuous cycle — ADVANCE feeds back into IDENTIFY</p>
+            <p className="text-sm text-gray-700 mt-4">Continuous cycle — ADVANCE feeds back into IDENTIFY</p>
           </div>
         </div>
       </div>
@@ -241,7 +241,7 @@ export default function HowItWorks() {
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
               From Trigger to Coordinated Execution
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-800 dark:text-slate-300 max-w-2xl mx-auto">
               Here's exactly what happens in those 12 minutes — and why it takes others 72+ hours.
             </p>
           </div>
@@ -273,7 +273,7 @@ export default function HowItWorks() {
                       <span className={`text-lg md:text-xl font-bold font-mono ${colors.time}`}>{step.time}</span>
                       <span className="text-lg font-bold text-slate-900 dark:text-white">{step.label}</span>
                     </div>
-                    <p className="text-slate-600 dark:text-slate-300">{step.description}</p>
+                    <p className="text-gray-800 dark:text-slate-300">{step.description}</p>
                   </div>
                 </div>
               );
@@ -296,18 +296,18 @@ export default function HowItWorks() {
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
               The Agentic Execution Layer
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-800 dark:text-slate-300 max-w-2xl mx-auto">
               Execution OS occupies a distinct layer in the enterprise stack — between strategy and operational tools. Agents don't just generate answers. They coordinate enterprises.
             </p>
           </div>
 
           <div className="space-y-3 max-w-xl mx-auto">
             <div className="rounded-xl p-4 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-center">
-              <div className="text-sm text-gray-500 dark:text-slate-400 mb-1">Strategy Layer</div>
+              <div className="text-sm text-gray-700 dark:text-slate-400 mb-1">Strategy Layer</div>
               <div className="text-lg font-semibold text-slate-700 dark:text-slate-200">Board decisions, strategic plans, market analysis</div>
             </div>
             <div className="flex justify-center">
-              <ArrowRight className="h-5 w-5 text-gray-600 rotate-90" />
+              <ArrowRight className="h-5 w-5 text-gray-800 rotate-90" />
             </div>
             <div className="rounded-xl p-5 bg-gradient-to-r from-poise-teal/10 via-cyan-500/10 to-purple-500/10 border-2 border-poise-teal/50 text-center relative overflow-hidden">
               <div className="absolute top-2 right-3 text-[10px] font-bold text-poise-teal uppercase tracking-wider">You Are Here</div>
@@ -316,22 +316,22 @@ export default function HowItWorks() {
               <div className="flex flex-wrap justify-center gap-2 text-xs">
                 <span className="px-2 py-1 rounded-full bg-poise-teal/10 text-poise-teal border border-poise-teal/20">Signal Detection Agents</span>
                 <span className="px-2 py-1 rounded-full bg-blue-500/10 text-blue-500 border border-blue-500/20">Routing Agents</span>
-                <span className="px-2 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">Decision Agents</span>
+                <span className="px-2 py-1 rounded-full bg-amber-500/10 text-[#C9A84C] dark:text-amber-400 border border-amber-500/20">Decision Agents</span>
                 <span className="px-2 py-1 rounded-full bg-purple-500/10 text-purple-500 border border-purple-500/20">Learning Agents</span>
               </div>
             </div>
             <div className="flex justify-center">
-              <ArrowRight className="h-5 w-5 text-gray-600 rotate-90" />
+              <ArrowRight className="h-5 w-5 text-gray-800 rotate-90" />
             </div>
             <div className="rounded-xl p-4 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-center">
-              <div className="text-sm text-gray-500 dark:text-slate-400 mb-1">Workflow & Task Systems</div>
+              <div className="text-sm text-gray-700 dark:text-slate-400 mb-1">Workflow & Task Systems</div>
               <div className="text-lg font-semibold text-slate-700 dark:text-slate-200">Jira, ServiceNow, Asana, Monday.com</div>
             </div>
             <div className="flex justify-center">
-              <ArrowRight className="h-5 w-5 text-gray-600 rotate-90" />
+              <ArrowRight className="h-5 w-5 text-gray-800 rotate-90" />
             </div>
             <div className="rounded-xl p-4 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-center">
-              <div className="text-sm text-gray-500 dark:text-slate-400 mb-1">Operational Systems</div>
+              <div className="text-sm text-gray-700 dark:text-slate-400 mb-1">Operational Systems</div>
               <div className="text-lg font-semibold text-slate-700 dark:text-slate-200">ERP, CRM, HRIS, Cloud Infrastructure</div>
             </div>
           </div>
@@ -383,7 +383,7 @@ export default function HowItWorks() {
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
-                      <diff.icon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                      <diff.icon className="h-6 w-6 text-blue-800 dark:text-blue-400" />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">{diff.title}</h3>
@@ -408,7 +408,7 @@ export default function HowItWorks() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 When Disruptions Don't Come One at a Time
               </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg text-gray-800 max-w-3xl mx-auto">
                 Compound disruptions — multidimensional, self-reinforcing events that cascade across domains — are the new normal. A cyber breach triggers regulatory action. A tariff war disrupts supply chains. Execution OS is built for coordinated, cross-domain response.
               </p>
             </div>
@@ -422,9 +422,9 @@ export default function HowItWorks() {
               ].map((item, i) => (
                 <div key={i} className={`bg-white border ${item.color} rounded-xl p-6`}>
                   <h3 className={`font-bold ${item.iconColor} mb-2`}>{item.scenario}</h3>
-                  <p className="text-gray-600 text-sm mb-3">{item.example}</p>
+                  <p className="text-gray-800 text-sm mb-3">{item.example}</p>
                   <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
-                    <p className="text-xs text-gray-600 font-semibold mb-1 uppercase tracking-wider">Execution OS Response</p>
+                    <p className="text-xs text-gray-800 font-semibold mb-1 uppercase tracking-wider">Execution OS Response</p>
                     <p className="text-emerald-400 text-sm">{item.response}</p>
                   </div>
                 </div>
@@ -440,16 +440,16 @@ export default function HowItWorks() {
                   { principle: 'Adaptive Intelligence', idea: 'ADVANCE', desc: 'Every execution strengthens future response — your organization grows stronger from each disruption', color: 'bg-amber-500/10 border-amber-500/30', textColor: 'text-amber-400' },
                 ].map((item, i) => (
                   <div key={i} className={`${item.color} border rounded-xl p-5`}>
-                    <div className="text-gray-600 text-xs font-semibold uppercase tracking-wider mb-1">{item.principle}</div>
+                    <div className="text-gray-800 text-xs font-semibold uppercase tracking-wider mb-1">{item.principle}</div>
                     <div className="flex items-center justify-center gap-2 mb-2">
-                      <ArrowRight className="h-3 w-3 text-gray-500" />
+                      <ArrowRight className="h-3 w-3 text-gray-700" />
                       <span className={`font-bold ${item.textColor}`}>{item.idea}</span>
                     </div>
-                    <p className="text-gray-600 text-sm">{item.desc}</p>
+                    <p className="text-gray-800 text-sm">{item.desc}</p>
                   </div>
                 ))}
               </div>
-              <p className="text-sm text-gray-600 mt-6 italic">
+              <p className="text-sm text-gray-800 mt-6 italic">
                 The IDEA Framework™ — signal-first detection, rapid coordination, and adaptive intelligence built into executable infrastructure.
               </p>
             </div>
@@ -484,7 +484,7 @@ export default function HowItWorks() {
               <ArrowRight className="h-5 w-5 ml-2" />
             </Button>
           </div>
-          <p className="text-sm text-slate-600 dark:text-slate-300 mt-6">
+          <p className="text-sm text-gray-800 dark:text-slate-300 mt-6">
             Q1 2026 Founding Partner Program • 90-day validation • $75K (100% credited to Year 1)
           </p>
         </div>

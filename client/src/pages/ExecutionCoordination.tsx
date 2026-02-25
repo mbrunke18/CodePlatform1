@@ -150,12 +150,12 @@ const sampleExecutions = {
 type CategoryKey = 'offense' | 'defense' | 'special_teams';
 
 const statusConfig = {
-  pending: { color: 'bg-slate-200 text-gray-600', icon: Circle, label: 'Pending' },
-  blocked: { color: 'bg-red-100 text-red-600', icon: AlertCircle, label: 'Blocked' },
-  ready: { color: 'bg-blue-100 text-blue-600', icon: Play, label: 'Ready' },
-  in_progress: { color: 'bg-amber-100 text-amber-600', icon: Pause, label: 'In Progress' },
-  completed: { color: 'bg-emerald-100 text-emerald-600', icon: CheckCircle, label: 'Completed' },
-  failed: { color: 'bg-red-100 text-red-600', icon: AlertCircle, label: 'Failed' },
+  pending: { color: 'bg-slate-200 text-gray-800', icon: Circle, label: 'Pending' },
+  blocked: { color: 'bg-red-100 text-red-700', icon: AlertCircle, label: 'Blocked' },
+  ready: { color: 'bg-blue-100 text-blue-800', icon: Play, label: 'Ready' },
+  in_progress: { color: 'bg-amber-100 text-[#C9A84C]', icon: Pause, label: 'In Progress' },
+  completed: { color: 'bg-emerald-100 text-emerald-700', icon: CheckCircle, label: 'Completed' },
+  failed: { color: 'bg-red-100 text-red-700', icon: AlertCircle, label: 'Failed' },
 };
 
 export default function ExecutionCoordination() {
@@ -168,9 +168,9 @@ export default function ExecutionCoordination() {
   const elapsedMinutes = Math.round((Date.now() - new Date(sampleExecution.triggeredAt).getTime()) / 60000);
   
   const categoryStyles = {
-    offense: { bg: 'from-emerald-50 to-green-50 dark:from-emerald-950/40 dark:to-green-950/40', border: 'border-emerald-300 dark:border-emerald-700', text: 'text-emerald-600 dark:text-emerald-400', icon: 'bg-emerald-500' },
-    defense: { bg: 'from-blue-50 to-indigo-50 dark:from-blue-950/40 dark:to-indigo-950/40', border: 'border-blue-300 dark:border-blue-700', text: 'text-blue-600 dark:text-blue-400', icon: 'bg-blue-500' },
-    special_teams: { bg: 'from-purple-50 to-violet-50 dark:from-purple-950/40 dark:to-violet-950/40', border: 'border-purple-300 dark:border-purple-700', text: 'text-purple-600 dark:text-purple-400', icon: 'bg-purple-500' }
+    offense: { bg: 'from-emerald-50 to-green-50 dark:from-emerald-950/40 dark:to-green-950/40', border: 'border-emerald-300 dark:border-emerald-700', text: 'text-emerald-700 dark:text-emerald-400', icon: 'bg-emerald-500' },
+    defense: { bg: 'from-blue-50 to-indigo-50 dark:from-blue-950/40 dark:to-indigo-950/40', border: 'border-blue-300 dark:border-blue-700', text: 'text-blue-800 dark:text-blue-400', icon: 'bg-blue-500' },
+    special_teams: { bg: 'from-purple-50 to-violet-50 dark:from-purple-950/40 dark:to-violet-950/40', border: 'border-purple-300 dark:border-purple-700', text: 'text-purple-800 dark:text-purple-400', icon: 'bg-purple-500' }
   };
   
   const currentStyle = categoryStyles[activeCategory];
@@ -190,7 +190,7 @@ export default function ExecutionCoordination() {
               <h1 className="text-3xl font-bold text-slate-900 dark:text-white" data-testid="page-title">
                 Execution Coordination
               </h1>
-              <p className="text-gray-600 dark:text-slate-300">
+              <p className="text-gray-800 dark:text-slate-300">
                 Real-time coordinated response tracking
               </p>
             </div>
@@ -208,8 +208,8 @@ export default function ExecutionCoordination() {
             }`}
             data-testid="triad-offense"
           >
-            <p className="text-xs uppercase tracking-wider text-emerald-600 dark:text-emerald-400 font-semibold mb-1">OFFENSE</p>
-            <p className={`text-sm ${activeCategory === 'offense' ? 'text-emerald-700 dark:text-emerald-300 font-medium' : 'text-gray-600 dark:text-slate-300'}`}>
+            <p className="text-xs uppercase tracking-wider text-emerald-700 dark:text-emerald-400 font-semibold mb-1">OFFENSE</p>
+            <p className={`text-sm ${activeCategory === 'offense' ? 'text-emerald-700 dark:text-emerald-300 font-medium' : 'text-gray-800 dark:text-slate-300'}`}>
               {activeCategory === 'offense' ? 'M&A Target Acquisition' : 'Seize Opportunities'}
             </p>
           </button>
@@ -222,8 +222,8 @@ export default function ExecutionCoordination() {
             }`}
             data-testid="triad-defense"
           >
-            <p className="text-xs uppercase tracking-wider text-blue-600 dark:text-blue-400 font-semibold mb-1">DEFENSE</p>
-            <p className={`text-sm ${activeCategory === 'defense' ? 'text-blue-700 dark:text-blue-300 font-medium' : 'text-gray-600 dark:text-slate-300'}`}>
+            <p className="text-xs uppercase tracking-wider text-blue-800 dark:text-blue-400 font-semibold mb-1">DEFENSE</p>
+            <p className={`text-sm ${activeCategory === 'defense' ? 'text-blue-800 dark:text-blue-300 font-medium' : 'text-gray-800 dark:text-slate-300'}`}>
               {activeCategory === 'defense' ? 'Data Breach Response' : 'Protect Value'}
             </p>
           </button>
@@ -236,8 +236,8 @@ export default function ExecutionCoordination() {
             }`}
             data-testid="triad-special"
           >
-            <p className="text-xs uppercase tracking-wider text-purple-600 dark:text-purple-400 font-semibold mb-1">SPECIAL TEAMS</p>
-            <p className={`text-sm ${activeCategory === 'special_teams' ? 'text-purple-700 dark:text-purple-300 font-medium' : 'text-gray-600 dark:text-slate-300'}`}>
+            <p className="text-xs uppercase tracking-wider text-purple-800 dark:text-purple-400 font-semibold mb-1">SPECIAL TEAMS</p>
+            <p className={`text-sm ${activeCategory === 'special_teams' ? 'text-purple-700 dark:text-purple-300 font-medium' : 'text-gray-800 dark:text-slate-300'}`}>
               {activeCategory === 'special_teams' ? 'AI Model Governance' : 'Drive Innovation'}
             </p>
           </button>
@@ -255,13 +255,13 @@ export default function ExecutionCoordination() {
                   <p className="text-2xl font-bold text-slate-900 dark:text-white mb-1">
                     Game Day Execution
                   </p>
-                  <p className="text-lg text-gray-600 dark:text-slate-300">
+                  <p className="text-lg text-gray-800 dark:text-slate-300">
                     You prepared all week. Now just execute—whether seizing an opportunity, defending against a threat, or driving innovation.
                   </p>
                 </div>
               </div>
               <div className="text-center md:text-right">
-                <p className="text-sm text-gray-600 mb-1">The Mindset:</p>
+                <p className="text-sm text-gray-800 mb-1">The Mindset:</p>
                 <p className={`text-lg font-semibold ${currentStyle.text}`}>
                   "Comfortable. Confident. Prepared."
                 </p>
@@ -281,29 +281,29 @@ export default function ExecutionCoordination() {
                     {sampleExecution.scenario}
                   </span>
                 </div>
-                <p className="text-gray-600 dark:text-slate-300">
+                <p className="text-gray-800 dark:text-slate-300">
                   Triggered {elapsedMinutes} minutes ago • {sampleExecution.completedTasks}/{sampleExecution.totalTasks} tasks complete
                 </p>
               </div>
               
               <div className="flex items-center gap-6">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-emerald-600" data-testid="text-completion">
+                  <div className="text-3xl font-bold text-emerald-700" data-testid="text-completion">
                     {completionPercent}%
                   </div>
-                  <div className="text-sm text-gray-600">Complete</div>
+                  <div className="text-sm text-gray-800">Complete</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-600" data-testid="text-elapsed">
+                  <div className="text-3xl font-bold text-blue-800" data-testid="text-elapsed">
                     {elapsedMinutes}m
                   </div>
-                  <div className="text-sm text-gray-600">Elapsed</div>
+                  <div className="text-sm text-gray-800">Elapsed</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-amber-600">
+                  <div className="text-3xl font-bold text-[#C9A84C]">
                     ~{Math.max(0, 45 - elapsedMinutes)}m
                   </div>
-                  <div className="text-sm text-gray-600">Remaining</div>
+                  <div className="text-sm text-gray-800">Remaining</div>
                 </div>
               </div>
             </div>
@@ -317,13 +317,13 @@ export default function ExecutionCoordination() {
           <Card className="bg-white dark:bg-slate-800">
             <CardContent className="p-4 flex items-center gap-3">
               <div className="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center">
-                <CheckCircle className="h-5 w-5 text-emerald-600" />
+                <CheckCircle className="h-5 w-5 text-emerald-700" />
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900 dark:text-white" data-testid="metric-completed">
                   {sampleExecution.completedTasks}
                 </div>
-                <div className="text-sm text-gray-600">Completed</div>
+                <div className="text-sm text-gray-800">Completed</div>
               </div>
             </CardContent>
           </Card>
@@ -331,13 +331,13 @@ export default function ExecutionCoordination() {
           <Card className="bg-white dark:bg-slate-800">
             <CardContent className="p-4 flex items-center gap-3">
               <div className="w-10 h-10 bg-amber-100 dark:bg-amber-900/30 rounded-lg flex items-center justify-center">
-                <Play className="h-5 w-5 text-amber-600" />
+                <Play className="h-5 w-5 text-[#C9A84C]" />
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900 dark:text-white">
                   {sampleExecution.phases.flatMap(p => p.tasks).filter(t => t.status === 'in_progress').length}
                 </div>
-                <div className="text-sm text-gray-600">In Progress</div>
+                <div className="text-sm text-gray-800">In Progress</div>
               </div>
             </CardContent>
           </Card>
@@ -345,13 +345,13 @@ export default function ExecutionCoordination() {
           <Card className="bg-white dark:bg-slate-800">
             <CardContent className="p-4 flex items-center gap-3">
               <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
-                <Users className="h-5 w-5 text-blue-600" />
+                <Users className="h-5 w-5 text-blue-800" />
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900 dark:text-white">
                   12
                 </div>
-                <div className="text-sm text-gray-600">Stakeholders</div>
+                <div className="text-sm text-gray-800">Stakeholders</div>
               </div>
             </CardContent>
           </Card>
@@ -359,13 +359,13 @@ export default function ExecutionCoordination() {
           <Card className="bg-white dark:bg-slate-800">
             <CardContent className="p-4 flex items-center gap-3">
               <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
-                <Target className="h-5 w-5 text-purple-600" />
+                <Target className="h-5 w-5 text-purple-800" />
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900 dark:text-white">
                   45m
                 </div>
-                <div className="text-sm text-gray-600">Target Time</div>
+                <div className="text-sm text-gray-800">Target Time</div>
               </div>
             </CardContent>
           </Card>
@@ -399,7 +399,7 @@ export default function ExecutionCoordination() {
                             {phaseComplete ? (
                               <CheckCircle className="h-5 w-5 text-gray-900" />
                             ) : (
-                              <span className="text-sm font-bold text-gray-600 dark:text-slate-300">{phaseIndex + 1}</span>
+                              <span className="text-sm font-bold text-gray-800 dark:text-slate-300">{phaseIndex + 1}</span>
                             )}
                           </div>
                           <div>
@@ -438,7 +438,7 @@ export default function ExecutionCoordination() {
                                   <div className="font-medium text-slate-900 dark:text-white">
                                     {task.title}
                                   </div>
-                                  <div className="text-sm text-gray-600">
+                                  <div className="text-sm text-gray-800">
                                     {task.assignee} • {task.role}
                                     {task.isParallel && (
                                       <Badge variant="outline" className="ml-2 text-xs">Parallel</Badge>
@@ -449,9 +449,9 @@ export default function ExecutionCoordination() {
                               <div className="flex items-center gap-4">
                                 <div className="text-right text-sm">
                                   {task.actualMinutes ? (
-                                    <span className="text-emerald-600">{task.actualMinutes}m</span>
+                                    <span className="text-emerald-700">{task.actualMinutes}m</span>
                                   ) : (
-                                    <span className="text-slate-600 dark:text-slate-200">~{task.estimatedMinutes}m</span>
+                                    <span className="text-gray-800 dark:text-slate-200">~{task.estimatedMinutes}m</span>
                                   )}
                                 </div>
                                 {task.status === 'ready' && (
@@ -479,7 +479,7 @@ export default function ExecutionCoordination() {
           <TabsContent value="roles">
             <Card>
               <CardContent className="p-6">
-                <p className="text-gray-600 text-center py-8">
+                <p className="text-gray-800 text-center py-8">
                   Role-based view coming soon - see tasks grouped by assignee
                 </p>
               </CardContent>
@@ -489,7 +489,7 @@ export default function ExecutionCoordination() {
           <TabsContent value="dependencies">
             <Card>
               <CardContent className="p-6">
-                <p className="text-gray-600 text-center py-8">
+                <p className="text-gray-800 text-center py-8">
                   Dependency graph coming soon - visualize task dependencies and critical path
                 </p>
               </CardContent>
@@ -502,15 +502,15 @@ export default function ExecutionCoordination() {
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
-                <Clock className="h-6 w-6 text-blue-600" />
+                <Clock className="h-6 w-6 text-blue-800" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-1">
                   Industry Comparison
                 </h3>
-                <p className="text-gray-600 dark:text-slate-300">
-                  Without Execution OS, this coordinated response would take <span className="font-bold text-red-600">72 hours to decide + 2 weeks to execute</span>. 
-                  With Execution OS, you're on track to complete in <span className="font-bold text-emerald-600">~45 minutes total</span>.
+                <p className="text-gray-800 dark:text-slate-300">
+                  Without Execution OS, this coordinated response would take <span className="font-bold text-red-700">72 hours to decide + 2 weeks to execute</span>. 
+                  With Execution OS, you're on track to complete in <span className="font-bold text-emerald-700">~45 minutes total</span>.
                 </p>
               </div>
             </div>

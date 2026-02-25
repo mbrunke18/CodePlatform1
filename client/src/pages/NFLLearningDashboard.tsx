@@ -156,7 +156,7 @@ export default function NFLLearningDashboard() {
                   </div>
                   <div className="text-xs text-muted-foreground mt-1">Avg. Response Time</div>
                 </div>
-                <Clock className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                <Clock className="h-8 w-8 text-blue-800 dark:text-blue-400" />
               </div>
             </CardContent>
           </Card>
@@ -170,7 +170,7 @@ export default function NFLLearningDashboard() {
                   </div>
                   <div className="text-xs text-muted-foreground mt-1">Success Rate</div>
                 </div>
-                <Target className="h-8 w-8 text-green-600 dark:text-green-400" />
+                <Target className="h-8 w-8 text-emerald-700 dark:text-green-400" />
               </div>
             </CardContent>
           </Card>
@@ -184,7 +184,7 @@ export default function NFLLearningDashboard() {
                   </div>
                   <div className="text-xs text-muted-foreground mt-1">Improvement Rate</div>
                 </div>
-                <TrendingUp className="h-8 w-8 text-purple-600 dark:text-purple-400" />
+                <TrendingUp className="h-8 w-8 text-purple-800 dark:text-purple-400" />
               </div>
             </CardContent>
           </Card>
@@ -222,7 +222,7 @@ export default function NFLLearningDashboard() {
               <CardContent>
                 {pendingSuggestions.length === 0 ? (
                   <div className="text-center py-12 text-muted-foreground">
-                    <CheckCircle className="h-12 w-12 mx-auto mb-3 text-green-600" />
+                    <CheckCircle className="h-12 w-12 mx-auto mb-3 text-emerald-700" />
                     <p className="font-medium">All suggestions reviewed</p>
                     <p className="text-sm mt-1">You're up to date with AI recommendations</p>
                   </div>
@@ -235,7 +235,7 @@ export default function NFLLearningDashboard() {
                       const severityColors = {
                         high: 'bg-red-100 dark:bg-red-950 text-red-700 dark:text-red-300',
                         medium: 'bg-yellow-100 dark:bg-yellow-950 text-yellow-700 dark:text-yellow-300',
-                        low: 'bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300',
+                        low: 'bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300',
                       };
 
                       return (
@@ -351,7 +351,7 @@ export default function NFLLearningDashboard() {
                         <div className="text-3xl font-bold" data-testid="text-response-trend">
                           {avgDrillTime}m
                         </div>
-                        <div className="flex items-center gap-1 text-sm text-green-600 dark:text-green-400">
+                        <div className="flex items-center gap-1 text-sm text-emerald-700 dark:text-green-400">
                           <TrendingUp className="h-4 w-4" />
                           <span>Improving</span>
                         </div>
@@ -362,7 +362,7 @@ export default function NFLLearningDashboard() {
                         <div className="text-3xl font-bold" data-testid="text-success-trend">
                           {avgSuccessRate}%
                         </div>
-                        <div className="flex items-center gap-1 text-sm text-green-600 dark:text-green-400">
+                        <div className="flex items-center gap-1 text-sm text-emerald-700 dark:text-green-400">
                           <TrendingUp className="h-4 w-4" />
                           <span>Improving</span>
                         </div>
@@ -426,12 +426,12 @@ export default function NFLLearningDashboard() {
                   {activations.length > 0 && (
                     <div className="p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
                       <div className="flex items-start gap-3">
-                        <Zap className="h-5 w-5 text-blue-600 mt-0.5" />
+                        <Zap className="h-5 w-5 text-blue-800 mt-0.5" />
                         <div>
-                          <h4 className="font-medium text-blue-700 dark:text-blue-300">
+                          <h4 className="font-medium text-blue-800 dark:text-blue-300">
                             Real Activation Insight
                           </h4>
-                          <p className="text-sm text-blue-600 dark:text-blue-400 mt-1">
+                          <p className="text-sm text-blue-800 dark:text-blue-400 mt-1">
                             You've had {activations.length} real playbook activation{activations.length !== 1 ? 's' : ''}. 
                             Teams that practice monthly respond 3x faster to real crises.
                           </p>
@@ -443,12 +443,12 @@ export default function NFLLearningDashboard() {
                   {drillPerformances.length >= 3 && (
                     <div className="p-4 bg-green-50 dark:bg-green-950/20 rounded-lg">
                       <div className="flex items-start gap-3">
-                        <TrendingUp className="h-5 w-5 text-green-600 mt-0.5" />
+                        <TrendingUp className="h-5 w-5 text-emerald-700 mt-0.5" />
                         <div>
-                          <h4 className="font-medium text-green-700 dark:text-green-300">
+                          <h4 className="font-medium text-emerald-800 dark:text-green-300">
                             Practice Momentum
                           </h4>
-                          <p className="text-sm text-green-600 dark:text-green-400 mt-1">
+                          <p className="text-sm text-emerald-700 dark:text-green-400 mt-1">
                             Your team has completed {drillPerformances.length} drills. 
                             Organizations with 10+ drills show 40% better crisis outcomes.
                           </p>
@@ -460,12 +460,12 @@ export default function NFLLearningDashboard() {
                   {acceptedSuggestions.length > 0 && (
                     <div className="p-4 bg-purple-50 dark:bg-purple-950/20 rounded-lg">
                       <div className="flex items-start gap-3">
-                        <Lightbulb className="h-5 w-5 text-purple-600 mt-0.5" />
+                        <Lightbulb className="h-5 w-5 text-purple-800 mt-0.5" />
                         <div>
                           <h4 className="font-medium text-purple-700 dark:text-purple-300">
                             AI-Driven Improvement
                           </h4>
-                          <p className="text-sm text-purple-600 dark:text-purple-400 mt-1">
+                          <p className="text-sm text-purple-800 dark:text-purple-400 mt-1">
                             You've implemented {acceptedSuggestions.length} AI suggestion{acceptedSuggestions.length !== 1 ? 's' : ''}. 
                             This typically leads to {improvementRate}% faster response times.
                           </p>
@@ -500,25 +500,25 @@ export default function NFLLearningDashboard() {
                 <div className="space-y-6">
                   <div className="grid grid-cols-2 gap-6">
                     <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/20 rounded-lg">
-                      <div className="text-sm font-medium text-blue-700 dark:text-blue-300 mb-2">
+                      <div className="text-sm font-medium text-blue-800 dark:text-blue-300 mb-2">
                         Decision Velocity Score
                       </div>
                       <div className="text-4xl font-bold text-blue-900 dark:text-blue-100" data-testid="text-velocity-score">
                         {Math.max(65, avgSuccessRate)}
                       </div>
-                      <div className="text-xs text-blue-600 dark:text-blue-400 mt-2">
+                      <div className="text-xs text-blue-800 dark:text-blue-400 mt-2">
                         out of 100
                       </div>
                     </div>
 
                     <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/20 dark:to-green-900/20 rounded-lg">
-                      <div className="text-sm font-medium text-green-700 dark:text-green-300 mb-2">
+                      <div className="text-sm font-medium text-emerald-800 dark:text-green-300 mb-2">
                         Target: 12-Minute Response
                       </div>
                       <div className="text-4xl font-bold text-green-900 dark:text-green-100" data-testid="text-target-vs-actual">
                         {avgDrillTime || 'N/A'}m
                       </div>
-                      <div className="text-xs text-green-600 dark:text-green-400 mt-2">
+                      <div className="text-xs text-emerald-700 dark:text-green-400 mt-2">
                         {avgDrillTime && avgDrillTime <= 12 ? 'Meeting Execution Standard' : 'Room for improvement'}
                       </div>
                     </div>
@@ -529,7 +529,7 @@ export default function NFLLearningDashboard() {
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <CheckCircle className="h-4 w-4 text-green-600" />
+                          <CheckCircle className="h-4 w-4 text-emerald-700" />
                           <span className="text-sm">Practice Frequency</span>
                         </div>
                         <Badge variant="outline">
@@ -538,7 +538,7 @@ export default function NFLLearningDashboard() {
                       </div>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <CheckCircle className="h-4 w-4 text-green-600" />
+                          <CheckCircle className="h-4 w-4 text-emerald-700" />
                           <span className="text-sm">AI Optimization</span>
                         </div>
                         <Badge variant="outline">
@@ -548,7 +548,7 @@ export default function NFLLearningDashboard() {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           {avgSuccessRate >= 80 ? (
-                            <CheckCircle className="h-4 w-4 text-green-600" />
+                            <CheckCircle className="h-4 w-4 text-emerald-700" />
                           ) : (
                             <AlertCircle className="h-4 w-4 text-yellow-600" />
                           )}

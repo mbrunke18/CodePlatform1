@@ -230,7 +230,7 @@ export function MonitorPhaseView({ playbookId, organizationId, isEditable = true
               </CardDescription>
             </div>
             <div className="text-right">
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400" data-testid="active-triggers-count">
+              <div className="text-3xl font-bold text-blue-800 dark:text-blue-400" data-testid="active-triggers-count">
                 {activeCount}
               </div>
               <div className="text-xs text-muted-foreground">Active Triggers</div>
@@ -298,7 +298,7 @@ export function MonitorPhaseView({ playbookId, organizationId, isEditable = true
                       )}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2">
-                          <SeverityIcon className={`h-4 w-4 ${item.isActive ? severityConfig.color.split(' ')[1] : 'text-slate-600 dark:text-slate-200'}`} />
+                          <SeverityIcon className={`h-4 w-4 ${item.isActive ? severityConfig.color.split(' ')[1] : 'text-gray-800 dark:text-slate-200'}`} />
                           <span className="font-medium truncate">{item.signalName}</span>
                           <Badge className={`text-xs shrink-0 ${severityConfig.color}`}>
                             {severityConfig.label}

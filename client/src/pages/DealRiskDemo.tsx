@@ -161,13 +161,13 @@ export default function DealRiskDemo() {
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             Deal Risk Response Demo
           </h1>
-          <p className="text-xl text-slate-600 dark:text-slate-200 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-800 dark:text-slate-200 max-w-2xl mx-auto">
             Experience the full IDEA Framework in action. Watch how Execution OS detects a deal at risk and orchestrates a coordinated response in 12 minutes.
           </p>
           <Button 
             variant="outline" 
             onClick={() => resetMutation.mutate()}
-            className="mt-4 border-slate-600 text-gray-600 hover:bg-slate-800"
+            className="mt-4 border-slate-600 text-gray-800 hover:bg-slate-800"
           >
             <RefreshCw className="h-4 w-4 mr-2" />
             Reset Demo
@@ -202,14 +202,14 @@ export default function DealRiskDemo() {
                     )}
                   </div>
                   <div className="text-left">
-                    <div className="text-xs text-slate-600 dark:text-slate-200">Phase {index + 1}</div>
-                    <div className={`font-semibold ${isCurrent ? 'text-gray-900' : 'text-slate-600 dark:text-slate-200'}`}>
+                    <div className="text-xs text-gray-800 dark:text-slate-200">Phase {index + 1}</div>
+                    <div className={`font-semibold ${isCurrent ? 'text-gray-900' : 'text-gray-800 dark:text-slate-200'}`}>
                       {phase.name}
                     </div>
                   </div>
                 </button>
                 {index < PHASES.length - 1 && (
-                  <ChevronRight className="h-5 w-5 text-gray-600 mx-2" />
+                  <ChevronRight className="h-5 w-5 text-gray-800 mx-2" />
                 )}
               </div>
             );
@@ -281,7 +281,7 @@ export default function DealRiskDemo() {
                         <CheckCircle2 className="h-5 w-5" />
                         <span className="font-medium">Playbook Configured</span>
                       </div>
-                      <p className="text-sm text-slate-600 dark:text-slate-200">
+                      <p className="text-sm text-gray-800 dark:text-slate-200">
                         {typedStatus.playbook.name} with {typedStatus.playbook.triggers.length} trigger conditions
                       </p>
                     </div>
@@ -329,7 +329,7 @@ export default function DealRiskDemo() {
                               {deal.riskScore}% Risk
                             </Badge>
                           </div>
-                          <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-200 mb-3">
+                          <div className="flex items-center gap-4 text-sm text-gray-800 dark:text-slate-200 mb-3">
                             <span className="flex items-center gap-1">
                               <DollarSign className="h-4 w-4" />
                               ${(deal.amount / 1000000).toFixed(1)}M
@@ -386,7 +386,7 @@ export default function DealRiskDemo() {
                   <CardContent className="space-y-4">
                     {!completedPhases.includes('advance') ? (
                       <div className="space-y-4">
-                        <p className="text-slate-600 dark:text-slate-200">
+                        <p className="text-gray-800 dark:text-slate-200">
                           Execution OS captures institutional knowledge from every execution, so your organization gets smarter with each response.
                         </p>
                         <Button 
@@ -415,7 +415,7 @@ export default function DealRiskDemo() {
                             <CheckCircle2 className="h-5 w-5" />
                             <span className="font-medium">Execution Complete - Learnings Captured</span>
                           </div>
-                          <p className="text-sm text-slate-600 dark:text-slate-200">
+                          <p className="text-sm text-gray-800 dark:text-slate-200">
                             {learnings.dealContext?.dealName} - ${((learnings.dealContext?.dealAmount || 0) / 1000000).toFixed(1)}M protected
                           </p>
                         </div>
@@ -435,8 +435,8 @@ export default function DealRiskDemo() {
                                   {pattern.icon === 'zap' && <Zap className="h-4 w-4 text-emerald-400" />}
                                   <span className="text-gray-900 text-sm font-medium">{pattern.category}</span>
                                 </div>
-                                <p className="text-sm text-gray-600">{pattern.insight}</p>
-                                <p className="text-xs text-gray-600 mt-1">{pattern.impact}</p>
+                                <p className="text-sm text-gray-800">{pattern.insight}</p>
+                                <p className="text-xs text-gray-800 mt-1">{pattern.impact}</p>
                               </div>
                             ))}
                           </div>
@@ -457,7 +457,7 @@ export default function DealRiskDemo() {
                                     {improvement.priority}
                                   </Badge>
                                 </div>
-                                <p className="text-sm text-slate-600 dark:text-slate-200">{improvement.description}</p>
+                                <p className="text-sm text-gray-800 dark:text-slate-200">{improvement.description}</p>
                                 <p className="text-xs text-emerald-400 mt-2 flex items-center gap-1">
                                   <ArrowUpRight className="h-3 w-3" />
                                   {improvement.estimatedImpact}
@@ -479,11 +479,11 @@ export default function DealRiskDemo() {
                                 <div className="text-gray-900 text-sm font-medium mb-2">{knowledge.pattern}</div>
                                 <div className="grid grid-cols-2 gap-3 text-xs">
                                   <div>
-                                    <span className="text-gray-600">Frequency:</span>
-                                    <p className="text-gray-600">{knowledge.frequency}</p>
+                                    <span className="text-gray-800">Frequency:</span>
+                                    <p className="text-gray-800">{knowledge.frequency}</p>
                                   </div>
                                   <div>
-                                    <span className="text-gray-600">Best Response:</span>
+                                    <span className="text-gray-800">Best Response:</span>
                                     <p className="text-emerald-400">{knowledge.bestResponse}</p>
                                   </div>
                                 </div>
@@ -503,19 +503,19 @@ export default function DealRiskDemo() {
                               <div className="text-xl font-bold text-emerald-400">
                                 ${((learnings.metrics?.dealValueProtected || 0) / 1000000).toFixed(1)}M
                               </div>
-                              <p className="text-xs text-slate-600 dark:text-slate-200">Deal Protected</p>
+                              <p className="text-xs text-gray-800 dark:text-slate-200">Deal Protected</p>
                             </div>
                             <div className="text-center">
                               <div className="text-xl font-bold text-amber-400">
                                 {learnings.metrics?.hoursRecovered || 20}h
                               </div>
-                              <p className="text-xs text-slate-600 dark:text-slate-200">Hours Recovered</p>
+                              <p className="text-xs text-gray-800 dark:text-slate-200">Hours Recovered</p>
                             </div>
                             <div className="text-center">
                               <div className="text-xl font-bold text-blue-400">
                                 ${((learnings.metrics?.costOfDelay || 0) / 1000).toFixed(0)}K
                               </div>
-                              <p className="text-xs text-slate-600 dark:text-slate-200">Erosion Avoided</p>
+                              <p className="text-xs text-gray-800 dark:text-slate-200">Erosion Avoided</p>
                             </div>
                           </div>
                         </div>
@@ -528,7 +528,7 @@ export default function DealRiskDemo() {
                           </h4>
                           <div className="space-y-2">
                             {learnings.nextExecutionRecommendations?.map((rec: string, i: number) => (
-                              <div key={i} className="flex items-center gap-2 text-sm text-gray-600">
+                              <div key={i} className="flex items-center gap-2 text-sm text-gray-800">
                                 <ChevronRight className="h-4 w-4 text-blue-400" />
                                 {rec}
                               </div>
@@ -537,7 +537,7 @@ export default function DealRiskDemo() {
                         </div>
                       </div>
                     ) : (
-                      <div className="text-center text-slate-600 dark:text-slate-200 py-8">
+                      <div className="text-center text-gray-800 dark:text-slate-200 py-8">
                         Loading learnings...
                       </div>
                     )}
@@ -559,25 +559,25 @@ export default function DealRiskDemo() {
                       <div className="text-2xl font-bold text-gray-900">
                         {typedPipeline.summary?.totalDeals || 5}
                       </div>
-                      <p className="text-xs text-slate-600 dark:text-slate-200">Total Deals</p>
+                      <p className="text-xs text-gray-800 dark:text-slate-200">Total Deals</p>
                     </div>
                     <div className="p-4 bg-gray-50 rounded-lg text-center">
                       <div className="text-2xl font-bold text-emerald-400">
                         ${((typedPipeline.summary?.totalPipeline || 23900000) / 1000000).toFixed(1)}M
                       </div>
-                      <p className="text-xs text-slate-600 dark:text-slate-200">Pipeline Value</p>
+                      <p className="text-xs text-gray-800 dark:text-slate-200">Pipeline Value</p>
                     </div>
                     <div className="p-4 bg-gray-50 rounded-lg text-center">
                       <div className="text-2xl font-bold text-red-400">
                         {typedPipeline.deals?.filter((d: any) => d.riskScore > 60).length || 1}
                       </div>
-                      <p className="text-xs text-slate-600 dark:text-slate-200">At Risk</p>
+                      <p className="text-xs text-gray-800 dark:text-slate-200">At Risk</p>
                     </div>
                     <div className="p-4 bg-gray-50 rounded-lg text-center">
                       <div className="text-2xl font-bold text-amber-400">
                         ${((typedPipeline.summary?.atRiskValue || 5000000) / 1000000).toFixed(1)}M
                       </div>
-                      <p className="text-xs text-slate-600 dark:text-slate-200">At Risk Value</p>
+                      <p className="text-xs text-gray-800 dark:text-slate-200">At Risk Value</p>
                     </div>
                   </div>
                 </CardContent>
@@ -592,19 +592,19 @@ export default function DealRiskDemo() {
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between p-3 bg-emerald-500/10 rounded-lg">
-                      <span className="text-slate-600 dark:text-slate-200">Time Saved</span>
+                      <span className="text-gray-800 dark:text-slate-200">Time Saved</span>
                       <span className="text-emerald-400 font-bold">168 minutes</span>
                     </div>
                     <div className="flex items-center justify-between p-3 bg-blue-500/10 rounded-lg">
-                      <span className="text-slate-600 dark:text-slate-200">Tasks Automated</span>
+                      <span className="text-gray-800 dark:text-slate-200">Tasks Automated</span>
                       <span className="text-blue-400 font-bold">4 tasks</span>
                     </div>
                     <div className="flex items-center justify-between p-3 bg-purple-500/10 rounded-lg">
-                      <span className="text-slate-600 dark:text-slate-200">Stakeholders Notified</span>
+                      <span className="text-gray-800 dark:text-slate-200">Stakeholders Notified</span>
                       <span className="text-purple-400 font-bold">6 people</span>
                     </div>
                     <div className="flex items-center justify-between p-3 bg-amber-500/10 rounded-lg">
-                      <span className="text-slate-600 dark:text-slate-200">Deal Value Protected</span>
+                      <span className="text-gray-800 dark:text-slate-200">Deal Value Protected</span>
                       <span className="text-amber-400 font-bold">
                         ${(execution.amount / 1000000).toFixed(1)}M
                       </span>

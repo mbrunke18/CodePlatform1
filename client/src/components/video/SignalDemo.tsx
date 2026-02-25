@@ -44,13 +44,13 @@ export function SignalDemo({ progress }: SceneProps) {
         >
           <div className="flex items-center gap-2">
             <Clock className="w-4 h-4 text-[#D4AF37]" />
-            <span className="text-gray-600 text-sm">Without Execution OS:</span>
+            <span className="text-gray-800 text-sm">Without Execution OS:</span>
             <span className="text-red-400 font-bold">Days to notice</span>
           </div>
           <div className="w-px h-6 bg-gray-100" />
           <div className="flex items-center gap-2">
             <Zap className="w-4 h-4 text-[#00A8A8]" />
-            <span className="text-gray-600 text-sm">With Execution OS:</span>
+            <span className="text-gray-800 text-sm">With Execution OS:</span>
             <span className="text-[#00A8A8] font-bold">Real-time detection</span>
           </div>
         </motion.div>
@@ -84,11 +84,11 @@ export function SignalDemo({ progress }: SceneProps) {
                   }`}
                 >
                   <div className="flex items-start gap-3">
-                    <Globe className="w-4 h-4 text-gray-400 mt-1 flex-shrink-0" />
+                    <Globe className="w-4 h-4 text-gray-600 mt-1 flex-shrink-0" />
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between">
                         <span className="text-xs text-[#00A8A8]">{signal.source}</span>
-                        <span className="text-xs text-gray-400">{signal.time}</span>
+                        <span className="text-xs text-gray-600">{signal.time}</span>
                       </div>
                       <p className="text-gray-900 text-xs mt-1 truncate">{signal.message}</p>
                       <span className="text-[#D4AF37] text-xs font-medium">{signal.impact}</span>

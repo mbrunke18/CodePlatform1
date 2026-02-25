@@ -74,7 +74,7 @@ export function CrisisResolvedCelebration() {
             <div className="text-amber-400 font-bold text-lg mb-2">
               ⚡ Competitive Advantage Secured
             </div>
-            <p className="text-amber-700 text-sm">
+            <p className="text-[#C9A84C] text-sm">
               While your competitors are still discovering this crisis through news alerts 
               (3 days behind), you've already resolved it, protected revenue, and maintained 
               stakeholder confidence. This is executive leadership in the AI era.

@@ -229,10 +229,10 @@ export default function OnboardingWizard() {
                 </div>
                 <div>
                   <h2 className="text-xl font-bold text-gray-900">{currentStepInfo.title}</h2>
-                  <p className="text-sm text-gray-600">{currentStepInfo.description}</p>
+                  <p className="text-sm text-gray-800">{currentStepInfo.description}</p>
                 </div>
               </div>
-              <Badge variant="outline" className="bg-transparent text-gray-600 border-slate-600">
+              <Badge variant="outline" className="bg-transparent text-gray-800 border-slate-600">
                 Step {currentStep + 1} of {ONBOARDING_STEPS.length}
               </Badge>
             </div>
@@ -250,7 +250,7 @@ export default function OnboardingWizard() {
                   <div 
                     key={step.id}
                     className={`flex items-center gap-2 ${
-                      isCurrent ? step.color : isCompleted ? 'text-green-500' : 'text-gray-600'
+                      isCurrent ? step.color : isCompleted ? 'text-green-500' : 'text-gray-800'
                     }`}
                   >
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
@@ -278,7 +278,7 @@ export default function OnboardingWizard() {
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="companyName" className="text-gray-600">Company Name</Label>
+                    <Label htmlFor="companyName" className="text-gray-800">Company Name</Label>
                     <Input
                       id="companyName"
                       value={orgData.companyName}
@@ -290,7 +290,7 @@ export default function OnboardingWizard() {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="industry" className="text-gray-600">Industry</Label>
+                    <Label htmlFor="industry" className="text-gray-800">Industry</Label>
                     <Select value={orgData.industry} onValueChange={(v) => setOrgData({ ...orgData, industry: v })}>
                       <SelectTrigger className="bg-gray-50 border-gray-200" data-testid="select-industry">
                         <SelectValue placeholder="Select industry" />
@@ -308,7 +308,7 @@ export default function OnboardingWizard() {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="employeeCount" className="text-gray-600">Employee Count</Label>
+                    <Label htmlFor="employeeCount" className="text-gray-800">Employee Count</Label>
                     <Select value={orgData.employeeCount} onValueChange={(v) => setOrgData({ ...orgData, employeeCount: v })}>
                       <SelectTrigger className="bg-gray-50 border-gray-200" data-testid="select-employees">
                         <SelectValue placeholder="Select size" />
@@ -323,7 +323,7 @@ export default function OnboardingWizard() {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="primaryContact" className="text-gray-600">Primary Contact</Label>
+                    <Label htmlFor="primaryContact" className="text-gray-800">Primary Contact</Label>
                     <Input
                       id="primaryContact"
                       value={orgData.primaryContact}
@@ -336,7 +336,7 @@ export default function OnboardingWizard() {
                 </div>
                 
                 <div className="pt-4 border-t border-gray-200">
-                  <Label className="text-gray-600 mb-3 block">Key Departments (will be included in playbook coordination)</Label>
+                  <Label className="text-gray-800 mb-3 block">Key Departments (will be included in playbook coordination)</Label>
                   <div className="flex flex-wrap gap-2">
                     {['Executive', 'Operations', 'Finance', 'Legal', 'Communications', 'IT', 'HR', 'Sales', 'Marketing'].map((dept) => (
                       <Badge
@@ -367,7 +367,7 @@ export default function OnboardingWizard() {
             {/* Step 2: Trigger Configuration */}
             {currentStep === 1 && (
               <div className="space-y-6">
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-800 mb-4">
                   Configure the thresholds that will trigger strategic alerts and playbook recommendations.
                 </p>
                 
@@ -388,7 +388,7 @@ export default function OnboardingWizard() {
                           className="bg-white border-slate-600 w-24"
                           data-testid="input-revenue-threshold"
                         />
-                        <span className="text-gray-600">% change triggers alert</span>
+                        <span className="text-gray-800">% change triggers alert</span>
                       </div>
                     </CardContent>
                   </Card>
@@ -409,7 +409,7 @@ export default function OnboardingWizard() {
                           className="bg-white border-slate-600 w-24"
                           data-testid="input-market-threshold"
                         />
-                        <span className="text-gray-600">% shift triggers alert</span>
+                        <span className="text-gray-800">% shift triggers alert</span>
                       </div>
                     </CardContent>
                   </Card>
@@ -430,7 +430,7 @@ export default function OnboardingWizard() {
                           className="bg-white border-slate-600 w-24"
                           data-testid="input-sentiment-threshold"
                         />
-                        <span className="text-gray-600">% negative swing</span>
+                        <span className="text-gray-800">% negative swing</span>
                       </div>
                     </CardContent>
                   </Card>
@@ -444,7 +444,7 @@ export default function OnboardingWizard() {
                       <Shield className="h-5 w-5 text-blue-400" />
                       <div>
                         <p className="text-gray-900">Competitor Alerts</p>
-                        <p className="text-xs text-gray-600">Monitor competitor moves and market positioning</p>
+                        <p className="text-xs text-gray-800">Monitor competitor moves and market positioning</p>
                       </div>
                     </div>
                     <Switch 
@@ -459,7 +459,7 @@ export default function OnboardingWizard() {
                       <AlertTriangle className="h-5 w-5 text-amber-400" />
                       <div>
                         <p className="text-gray-900">Regulatory Alerts</p>
-                        <p className="text-xs text-gray-600">Track regulatory changes and compliance risks</p>
+                        <p className="text-xs text-gray-800">Track regulatory changes and compliance risks</p>
                       </div>
                     </div>
                     <Switch 
@@ -474,7 +474,7 @@ export default function OnboardingWizard() {
                       <Bell className="h-5 w-5 text-green-400" />
                       <div>
                         <p className="text-gray-900">Media & PR Alerts</p>
-                        <p className="text-xs text-gray-600">Monitor brand mentions and sentiment shifts</p>
+                        <p className="text-xs text-gray-800">Monitor brand mentions and sentiment shifts</p>
                       </div>
                     </div>
                     <Switch 
@@ -490,12 +490,12 @@ export default function OnboardingWizard() {
             {/* Step 3: Playbook Customization */}
             {currentStep === 2 && (
               <div className="space-y-6">
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-800 mb-4">
                   Select and configure the strategic playbooks your organization will use.
                 </p>
                 
                 <div className="space-y-4">
-                  <Label className="text-gray-600">Selected Playbook Categories</Label>
+                  <Label className="text-gray-800">Selected Playbook Categories</Label>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                     {[
                       { id: 'Crisis Response', icon: AlertTriangle, color: 'text-red-400' },
@@ -541,7 +541,7 @@ export default function OnboardingWizard() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-200">
                   <div className="space-y-2">
-                    <Label className="text-gray-600 flex items-center gap-2">
+                    <Label className="text-gray-800 flex items-center gap-2">
                       <Clock className="h-4 w-4" />
                       Target Response Time
                     </Label>
@@ -553,15 +553,15 @@ export default function OnboardingWizard() {
                         className="bg-gray-50 border-gray-200 w-24"
                         data-testid="input-response-time"
                       />
-                      <span className="text-gray-600">minutes</span>
+                      <span className="text-gray-800">minutes</span>
                     </div>
-                    <p className="text-xs text-gray-600">Industry benchmark: 12 minutes</p>
+                    <p className="text-xs text-gray-800">Industry benchmark: 12 minutes</p>
                   </div>
                   
                   <div className="space-y-2">
-                    <Label className="text-gray-600">Default Budget Threshold</Label>
+                    <Label className="text-gray-800">Default Budget Threshold</Label>
                     <div className="flex items-center gap-3">
-                      <span className="text-gray-600">$</span>
+                      <span className="text-gray-800">$</span>
                       <Input
                         type="number"
                         value={playbookData.defaultBudgetThreshold}
@@ -570,7 +570,7 @@ export default function OnboardingWizard() {
                         data-testid="input-budget-threshold"
                       />
                     </div>
-                    <p className="text-xs text-gray-600">Pre-approved spend per activation</p>
+                    <p className="text-xs text-gray-800">Pre-approved spend per activation</p>
                   </div>
                 </div>
                 
@@ -579,7 +579,7 @@ export default function OnboardingWizard() {
                     <Zap className="h-5 w-5 text-amber-400" />
                     <div>
                       <p className="text-gray-900">Auto-Escalation</p>
-                      <p className="text-xs text-gray-600">Automatically escalate if response time exceeds target</p>
+                      <p className="text-xs text-gray-800">Automatically escalate if response time exceeds target</p>
                     </div>
                   </div>
                   <Switch 
@@ -594,7 +594,7 @@ export default function OnboardingWizard() {
             {/* Step 4: Success Metrics */}
             {currentStep === 3 && (
               <div className="space-y-6">
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-800 mb-4">
                   Define the key performance indicators that will measure your strategic execution success.
                 </p>
                 
@@ -617,9 +617,9 @@ export default function OnboardingWizard() {
                           className="bg-white border-slate-600 w-24"
                           data-testid="input-fri-target"
                         />
-                        <span className="text-gray-600">%</span>
+                        <span className="text-gray-800">%</span>
                       </div>
-                      <p className="text-xs text-gray-600 mt-2">Recommended: 84.4% (top quartile)</p>
+                      <p className="text-xs text-gray-800 mt-2">Recommended: 84.4% (top quartile)</p>
                     </CardContent>
                   </Card>
                   
@@ -640,9 +640,9 @@ export default function OnboardingWizard() {
                           className="bg-white border-slate-600 w-24"
                           data-testid="input-velocity-target"
                         />
-                        <span className="text-gray-600">minutes</span>
+                        <span className="text-gray-800">minutes</span>
                       </div>
-                      <p className="text-xs text-gray-600 mt-2">Industry average: 45 minutes</p>
+                      <p className="text-xs text-gray-800 mt-2">Industry average: 45 minutes</p>
                     </CardContent>
                   </Card>
                   
@@ -663,9 +663,9 @@ export default function OnboardingWizard() {
                           className="bg-white border-slate-600 w-24"
                           data-testid="input-coverage-target"
                         />
-                        <span className="text-gray-600">%</span>
+                        <span className="text-gray-800">%</span>
                       </div>
-                      <p className="text-xs text-gray-600 mt-2">Recommended: 95% coverage</p>
+                      <p className="text-xs text-gray-800 mt-2">Recommended: 95% coverage</p>
                     </CardContent>
                   </Card>
                   
@@ -738,7 +738,7 @@ export default function OnboardingWizard() {
           <Button
             variant="link"
             onClick={() => setLocation('/dashboard')}
-            className="text-gray-600 hover:text-slate-300"
+            className="text-gray-800 hover:text-slate-300"
             data-testid="button-skip"
           >
             Skip for now and explore the platform

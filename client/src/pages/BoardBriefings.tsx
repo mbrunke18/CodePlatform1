@@ -136,7 +136,7 @@ export default function BoardBriefings() {
         <Card data-testid="card-total-briefings">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Briefings</CardTitle>
-            <FileText className="h-4 w-4 text-blue-600" />
+            <FileText className="h-4 w-4 text-blue-800" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{briefings.length}</div>
@@ -149,7 +149,7 @@ export default function BoardBriefings() {
         <Card data-testid="card-board-reports">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Board Reports</CardTitle>
-            <Award className="h-4 w-4 text-purple-600" />
+            <Award className="h-4 w-4 text-purple-800" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{boardReports.length}</div>
@@ -162,7 +162,7 @@ export default function BoardBriefings() {
         <Card data-testid="card-reviewed">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Reviewed</CardTitle>
-            <CheckCircle className="h-4 w-4 text-green-600" />
+            <CheckCircle className="h-4 w-4 text-emerald-700" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{acknowledgedBriefings.length}</div>
@@ -175,7 +175,7 @@ export default function BoardBriefings() {
         <Card data-testid="card-avg-confidence">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Avg Confidence</CardTitle>
-            <TrendingUp className="h-4 w-4 text-blue-600" />
+            <TrendingUp className="h-4 w-4 text-blue-800" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -291,7 +291,7 @@ export default function BoardBriefings() {
                   <h3 className="font-semibold text-slate-900 dark:text-slate-100">{decision.title}</h3>
                   <Badge className={
                     decision.status === 'Pending Vote' ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300' :
-                    decision.status === 'Under Review' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300' :
+                    decision.status === 'Under Review' ? 'bg-amber-100 text-[#C9A84C] dark:bg-amber-900 dark:text-amber-300' :
                     'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300'
                   }>{decision.status}</Badge>
                 </div>
@@ -301,7 +301,7 @@ export default function BoardBriefings() {
                     Due: {decision.due}
                   </span>
                   <Badge variant="outline" className={
-                    decision.priority === 'High' ? 'border-red-400 text-red-600' : 'border-amber-400 text-amber-600'
+                    decision.priority === 'High' ? 'border-red-400 text-red-700' : 'border-amber-400 text-[#C9A84C]'
                   }>{decision.priority} Priority</Badge>
                 </div>
               </div>
@@ -360,7 +360,7 @@ export default function BoardBriefings() {
                         style={{ width: `${rec.confidence}%` }}
                       />
                     </div>
-                    <span className="text-xs font-bold text-purple-600 dark:text-purple-400">{rec.confidence}%</span>
+                    <span className="text-xs font-bold text-purple-800 dark:text-purple-400">{rec.confidence}%</span>
                   </div>
                 </CardContent>
               </Card>

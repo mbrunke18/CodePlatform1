@@ -37,7 +37,7 @@ export function ActivationDemo({ progress }: SceneProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="text-center text-gray-500 text-lg mb-4"
+          className="text-center text-gray-700 text-lg mb-4"
         >
           One click deploys the entire response team
         </motion.p>
@@ -49,26 +49,26 @@ export function ActivationDemo({ progress }: SceneProps) {
           className="flex items-center justify-center gap-4 mb-6"
         >
           <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 text-center">
-            <p className="text-gray-500 text-xs">Stakeholders notified</p>
+            <p className="text-gray-700 text-xs">Stakeholders notified</p>
             <p className="text-[#00A8A8] font-bold text-lg">Automatically</p>
           </div>
           <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 text-center">
-            <p className="text-gray-500 text-xs">Tasks assigned</p>
+            <p className="text-gray-700 text-xs">Tasks assigned</p>
             <p className="text-[#D4AF37] font-bold text-lg">By Role</p>
           </div>
           <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 text-center">
-            <p className="text-gray-500 text-xs">Budgets unlocked</p>
+            <p className="text-gray-700 text-xs">Budgets unlocked</p>
             <p className="text-green-400 font-bold text-lg">Pre-approved</p>
           </div>
           <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 text-center">
-            <p className="text-gray-500 text-xs">Documents staged</p>
+            <p className="text-gray-700 text-xs">Documents staged</p>
             <p className="text-purple-400 font-bold text-lg">Ready to send</p>
           </div>
         </motion.div>
 
         <div className="grid grid-cols-2 gap-6">
           <div className="space-y-3">
-            <h3 className="text-gray-600 text-sm font-medium mb-4 flex items-center gap-2">
+            <h3 className="text-gray-800 text-sm font-medium mb-4 flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-green-400" />
               Team Assignments
             </h3>
@@ -111,7 +111,7 @@ export function ActivationDemo({ progress }: SceneProps) {
                     animate={item.done ? { scale: [1, 1.2, 1] } : {}}
                     transition={{ duration: 0.3 }}
                   />
-                  <span className={item.done ? "text-gray-900" : "text-gray-400"}>{item.event}</span>
+                  <span className={item.done ? "text-gray-900" : "text-gray-600"}>{item.event}</span>
                 </motion.div>
               ))}
             </div>

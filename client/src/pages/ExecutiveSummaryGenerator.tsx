@@ -279,7 +279,7 @@ export default function ExecutiveSummaryGenerator() {
             </div>
             <div>
               <h1 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Executive Summary Generator</h1>
-              <p className="text-slate-600 dark:text-slate-300">One-click AI-powered executive reports for strategic decision-making</p>
+              <p className="text-gray-800 dark:text-slate-300">One-click AI-powered executive reports for strategic decision-making</p>
             </div>
           </div>
 
@@ -312,7 +312,7 @@ export default function ExecutiveSummaryGenerator() {
                               <Icon className={`w-4 h-4 ${type.color}`} />
                               <span className="text-sm font-medium text-slate-900 dark:text-white">{type.label}</span>
                             </div>
-                            <p className="text-xs text-gray-500 dark:text-slate-400 mt-1 ml-6">{type.description}</p>
+                            <p className="text-xs text-gray-700 dark:text-slate-400 mt-1 ml-6">{type.description}</p>
                           </button>
                         );
                       })}
@@ -386,7 +386,7 @@ export default function ExecutiveSummaryGenerator() {
 
                   {generateMutation.isPending && (
                     <div className="space-y-2">
-                      <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-400">
+                      <div className="flex items-center gap-2 text-xs text-gray-700 dark:text-slate-400">
                         <Clock className="w-3 h-3" />
                         AI is analyzing strategic data...
                       </div>
@@ -404,19 +404,19 @@ export default function ExecutiveSummaryGenerator() {
                     <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Report Metadata</h4>
                     <div className="space-y-2 text-xs">
                       <div className="flex justify-between">
-                        <span className="text-gray-500 dark:text-slate-400">Generated</span>
+                        <span className="text-gray-700 dark:text-slate-400">Generated</span>
                         <span className="text-slate-700 dark:text-slate-300">{new Date(metadata.generatedAt).toLocaleString()}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-500 dark:text-slate-400">Report Type</span>
+                        <span className="text-gray-700 dark:text-slate-400">Report Type</span>
                         <Badge variant="outline" className="text-xs">{selectedReportInfo?.label}</Badge>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-500 dark:text-slate-400">Industry</span>
+                        <span className="text-gray-700 dark:text-slate-400">Industry</span>
                         <span className="text-slate-700 dark:text-slate-300">{metadata.industry}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-500 dark:text-slate-400">AI Model</span>
+                        <span className="text-gray-700 dark:text-slate-400">AI Model</span>
                         <Badge variant="outline" className="text-xs">{metadata.model === 'fallback' ? 'Template' : 'GPT-5'}</Badge>
                       </div>
                     </div>
@@ -433,7 +433,7 @@ export default function ExecutiveSummaryGenerator() {
                       <FileText className="w-8 h-8 text-blue-500" />
                     </div>
                     <h3 className="text-xl font-semibold text-slate-700 dark:text-slate-200 mb-2">Ready to Generate</h3>
-                    <p className="text-gray-500 dark:text-slate-400 max-w-sm mx-auto mb-6">
+                    <p className="text-gray-700 dark:text-slate-400 max-w-sm mx-auto mb-6">
                       Select a report type, configure your parameters, and click generate. Your AI-powered executive summary will appear here.
                     </p>
                     <div className="flex flex-wrap justify-center gap-2">
@@ -451,12 +451,12 @@ export default function ExecutiveSummaryGenerator() {
                       <Sparkles className="w-8 h-8 text-blue-500" />
                     </div>
                     <h3 className="text-xl font-semibold text-slate-700 dark:text-slate-200 mb-2">Generating Your Report</h3>
-                    <p className="text-gray-500 dark:text-slate-400 max-w-sm mx-auto mb-4">
+                    <p className="text-gray-700 dark:text-slate-400 max-w-sm mx-auto mb-4">
                       AI is synthesizing strategic intelligence across your configured parameters...
                     </p>
                     <div className="space-y-3 max-w-xs mx-auto">
                       {['Analyzing strategic position', 'Processing domain intelligence', 'Compiling executive insights', 'Formatting report'].map((step, i) => (
-                        <div key={i} className="flex items-center gap-3 text-sm text-gray-500 dark:text-slate-400">
+                        <div key={i} className="flex items-center gap-3 text-sm text-gray-700 dark:text-slate-400">
                           <Loader2 className="w-3.5 h-3.5 animate-spin text-blue-500" />
                           <span>{step}</span>
                         </div>
@@ -475,7 +475,7 @@ export default function ExecutiveSummaryGenerator() {
                       )}
                       <div>
                         <CardTitle className="text-base font-semibold text-slate-900 dark:text-white">{selectedReportInfo?.label}</CardTitle>
-                        <p className="text-xs text-gray-500 dark:text-slate-400">
+                        <p className="text-xs text-gray-700 dark:text-slate-400">
                           {organizationName || 'Your Organization'} • {industry} • {timeframes.find(t => t.value === timeframe)?.label}
                         </p>
                       </div>

@@ -263,7 +263,7 @@ export default function AdvancedAnalytics() {
       case 'high': return 'bg-red-500/20 text-red-300 border-red-500/30';
       case 'medium': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
       case 'low': return 'bg-green-500/20 text-green-300 border-green-500/30';
-      default: return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
     }
   };
 
@@ -282,9 +282,9 @@ export default function AdvancedAnalytics() {
         
         {/* Breadcrumb Navigation */}
         <div className="mb-6">
-          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-200">
+          <div className="flex items-center gap-2 text-sm text-gray-800 dark:text-gray-200">
             <Link to="/">
-              <Button variant="ghost" size="sm" className="text-gray-600 dark:text-gray-200 hover:text-white p-1 h-auto">
+              <Button variant="ghost" size="sm" className="text-gray-800 dark:text-gray-200 hover:text-white p-1 h-auto">
                 <Home className="h-4 w-4" />
               </Button>
             </Link>
@@ -299,11 +299,11 @@ export default function AdvancedAnalytics() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Advanced Business Intelligence</h1>
-            <p className="text-gray-600">Predictive analytics, market intelligence, and competitive benchmarking</p>
+            <p className="text-gray-800">Predictive analytics, market intelligence, and competitive benchmarking</p>
           </div>
           <div className="flex items-center gap-4">
             <Link to="/">
-              <Button variant="secondary" className="bg-gray-50 hover:bg-slate-600 text-gray-500 border-slate-600">
+              <Button variant="secondary" className="bg-gray-50 hover:bg-slate-600 text-gray-700 border-slate-600">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Dashboard
               </Button>
@@ -367,7 +367,7 @@ export default function AdvancedAnalytics() {
                                model.type === 'customer_churn' ? `${prediction.value}%` : 
                                prediction.value.toLocaleString()}
                             </div>
-                            <div className="text-xs text-slate-600 dark:text-slate-200">
+                            <div className="text-xs text-gray-800 dark:text-slate-200">
                               Key factors: {prediction.factors.slice(0, 2).join(', ')}
                             </div>
                           </div>
@@ -390,7 +390,7 @@ export default function AdvancedAnalytics() {
                                 <div className="text-sm font-medium text-gray-900">
                                   {(Math.abs(driver.impact) * 100).toFixed(1)}% Impact
                                 </div>
-                                <div className="text-xs text-slate-600 dark:text-slate-200">
+                                <div className="text-xs text-gray-800 dark:text-slate-200">
                                   {(driver.significance * 100).toFixed(0)}% Significance
                                 </div>
                               </div>
@@ -409,12 +409,12 @@ export default function AdvancedAnalytics() {
                           <div key={index} className="p-4 bg-gray-50 rounded-lg border border-slate-600/50">
                             <div className="flex items-center justify-between mb-2">
                               <span className="font-medium text-gray-900">{scenario.name}</span>
-                              <span className="text-sm text-slate-600 dark:text-slate-200">{scenario.probability}%</span>
+                              <span className="text-sm text-gray-800 dark:text-slate-200">{scenario.probability}%</span>
                             </div>
                             <div className="text-xl font-bold text-gray-900 mb-2">
                               {model.type === 'revenue' ? formatCurrency(scenario.outcome) : `${scenario.outcome}%`}
                             </div>
-                            <p className="text-xs text-slate-600 dark:text-slate-200">{scenario.description}</p>
+                            <p className="text-xs text-gray-800 dark:text-slate-200">{scenario.description}</p>
                           </div>
                         ))}
                       </div>
@@ -437,21 +437,21 @@ export default function AdvancedAnalytics() {
                           <Badge className={getImpactColor(insight.impact)}>
                             {insight.impact.toUpperCase()} IMPACT
                           </Badge>
-                          <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-600">
+                          <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800">
                             {insight.category.toUpperCase()}
                           </Badge>
-                          <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-600">
+                          <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800">
                             {insight.timeHorizon.replace('_', ' ').toUpperCase()}
                           </Badge>
                         </div>
                         <p className="text-gray-900 text-lg mb-4">{insight.insight}</p>
                       </div>
                       <div className="text-right">
-                        <div className="text-sm text-slate-600 dark:text-slate-200">Financial Impact</div>
+                        <div className="text-sm text-gray-800 dark:text-slate-200">Financial Impact</div>
                         <div className={`text-2xl font-bold ${insight.quantifiedValue > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
                           {insight.quantifiedValue > 0 ? '+' : ''}{formatCurrency(insight.quantifiedValue)}
                         </div>
-                        <div className="text-sm text-slate-600 dark:text-slate-200">Risk Level: {insight.riskLevel}%</div>
+                        <div className="text-sm text-gray-800 dark:text-slate-200">Risk Level: {insight.riskLevel}%</div>
                       </div>
                     </div>
                     
@@ -460,7 +460,7 @@ export default function AdvancedAnalytics() {
                         <h4 className="font-semibold text-gray-900 mb-2">Data Sources</h4>
                         <div className="space-y-1">
                           {insight.sources.map((source, index) => (
-                            <div key={index} className="text-sm text-gray-600 flex items-center gap-2">
+                            <div key={index} className="text-sm text-gray-800 flex items-center gap-2">
                               <CheckCircle className="w-3 h-3 text-emerald-400" />
                               {source}
                             </div>
@@ -477,7 +477,7 @@ export default function AdvancedAnalytics() {
                                 <span className="text-sm text-gray-900">{rec.action}</span>
                                 <span className="text-xs text-emerald-400">{rec.estimatedROI}% ROI</span>
                               </div>
-                              <div className="text-xs text-slate-600 dark:text-slate-200">Timeline: {rec.timeToImplement}</div>
+                              <div className="text-xs text-gray-800 dark:text-slate-200">Timeline: {rec.timeToImplement}</div>
                             </div>
                           ))}
                         </div>
@@ -500,7 +500,7 @@ export default function AdvancedAnalytics() {
                   <CardContent className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                       <div className="text-center">
-                        <div className="text-sm text-slate-600 dark:text-slate-200 mb-1">Our Performance</div>
+                        <div className="text-sm text-gray-800 dark:text-slate-200 mb-1">Our Performance</div>
                         <div className="text-2xl font-bold text-gray-900">
                           {benchmark.metric.includes('Cost') || benchmark.metric.includes('Revenue') ? 
                             formatCurrency(benchmark.ourPerformance) : benchmark.ourPerformance.toLocaleString()}
@@ -511,8 +511,8 @@ export default function AdvancedAnalytics() {
                       </div>
                       
                       <div className="text-center">
-                        <div className="text-sm text-slate-600 dark:text-slate-200 mb-1">Industry Average</div>
-                        <div className="text-2xl font-bold text-gray-600">
+                        <div className="text-sm text-gray-800 dark:text-slate-200 mb-1">Industry Average</div>
+                        <div className="text-2xl font-bold text-gray-800">
                           {benchmark.metric.includes('Cost') || benchmark.metric.includes('Revenue') ? 
                             formatCurrency(benchmark.industryAverage) : benchmark.industryAverage.toLocaleString()}
                         </div>
@@ -522,7 +522,7 @@ export default function AdvancedAnalytics() {
                       </div>
                       
                       <div className="text-center">
-                        <div className="text-sm text-slate-600 dark:text-slate-200 mb-1">Top Quartile</div>
+                        <div className="text-sm text-gray-800 dark:text-slate-200 mb-1">Top Quartile</div>
                         <div className="text-2xl font-bold text-amber-300">
                           {benchmark.metric.includes('Cost') || benchmark.metric.includes('Revenue') ? 
                             formatCurrency(benchmark.topQuartile) : benchmark.topQuartile.toLocaleString()}
@@ -533,7 +533,7 @@ export default function AdvancedAnalytics() {
                       </div>
                       
                       <div className="text-center">
-                        <div className="text-sm text-slate-600 dark:text-slate-200 mb-1">Improvement Potential</div>
+                        <div className="text-sm text-gray-800 dark:text-slate-200 mb-1">Improvement Potential</div>
                         <div className="text-2xl font-bold text-blue-300">
                           {benchmark.metric.includes('Cost') || benchmark.metric.includes('Revenue') ? 
                             formatCurrency(benchmark.improvementPotential) : benchmark.improvementPotential.toLocaleString()}
@@ -556,7 +556,7 @@ export default function AdvancedAnalytics() {
                 <CardTitle className="text-gray-900">Monte Carlo Business Scenarios</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-center text-slate-600 dark:text-slate-200 py-12">
+                <div className="text-center text-gray-800 dark:text-slate-200 py-12">
                   <BarChart3 className="h-16 w-16 mx-auto mb-4" />
                   <p>Advanced Monte Carlo simulations and sensitivity analysis</p>
                   <p className="text-sm">10,000+ scenario iterations with probability distributions</p>

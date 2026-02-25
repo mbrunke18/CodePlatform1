@@ -80,7 +80,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                 <h1 className="text-4xl font-bold text-slate-900 dark:text-white">
                   Comprehensive ROI Analysis
                 </h1>
-                <p className="text-lg text-gray-600 dark:text-slate-300">
+                <p className="text-lg text-gray-800 dark:text-slate-300">
                   Complete value breakdown across all strategic scenarios
                 </p>
               </div>
@@ -96,13 +96,13 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
         <div className="grid md:grid-cols-4 gap-6 mb-8">
           <Card className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950 border-2 border-green-200 dark:border-green-800">
             <CardHeader className="pb-3">
-              <CardDescription className="text-green-700 dark:text-green-300">Total Annual Value</CardDescription>
+              <CardDescription className="text-emerald-800 dark:text-green-300">Total Annual Value</CardDescription>
               <CardTitle className="text-4xl font-bold text-green-900 dark:text-green-100" data-testid="text-total-annual-value">
                 ${totalAnnualValue.toFixed(0)}M
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-green-700 dark:text-green-300">
+              <p className="text-sm text-emerald-800 dark:text-green-300">
                 Across 170 strategic playbooks
               </p>
             </CardContent>
@@ -110,13 +110,13 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
 
           <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950 border-2 border-blue-200 dark:border-blue-800">
             <CardHeader className="pb-3">
-              <CardDescription className="text-blue-700 dark:text-blue-300">Avg Speed Advantage</CardDescription>
+              <CardDescription className="text-blue-800 dark:text-blue-300">Avg Speed Advantage</CardDescription>
               <CardTitle className="text-4xl font-bold text-blue-900 dark:text-blue-100" data-testid="text-avg-speed">
                 {avgSpeedImprovement} days
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-blue-700 dark:text-blue-300">
+              <p className="text-sm text-blue-800 dark:text-blue-300">
                 Faster decision execution
               </p>
             </CardContent>
@@ -163,16 +163,16 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-blue-50 dark:bg-blue-950 rounded-lg p-6 border-2 border-blue-200 dark:border-blue-800">
                 <div className="flex items-center gap-2 mb-3">
-                  <Target className="h-5 w-5 text-blue-600" />
+                  <Target className="h-5 w-5 text-blue-800" />
                   <h3 className="font-semibold text-lg text-blue-900 dark:text-blue-100">Market Growth</h3>
                 </div>
                 <div className="text-3xl font-bold text-blue-900 dark:text-blue-100 mb-2" data-testid="text-offensive-value">
                   ${offensiveValue.toFixed(0)}M
                 </div>
-                <p className="text-sm text-blue-700 dark:text-blue-300 mb-4">
+                <p className="text-sm text-blue-800 dark:text-blue-300 mb-4">
                   Market dynamics, opportunities, and expansion playbooks
                 </p>
-                <div className="space-y-1 text-xs text-blue-600 dark:text-blue-400">
+                <div className="space-y-1 text-xs text-blue-800 dark:text-blue-400">
                   {scenarioData.filter(s => s.category === 'offensive').map(s => (
                     <div key={s.id} className="flex justify-between">
                       <span>{s.title}</span>
@@ -184,7 +184,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
 
               <div className="bg-red-50 dark:bg-red-950 rounded-lg p-6 border-2 border-red-200 dark:border-red-800">
                 <div className="flex items-center gap-2 mb-3">
-                  <Shield className="h-5 w-5 text-red-600" />
+                  <Shield className="h-5 w-5 text-red-700" />
                   <h3 className="font-semibold text-lg text-red-900 dark:text-red-100">Risk Management</h3>
                 </div>
                 <div className="text-3xl font-bold text-red-900 dark:text-red-100 mb-2" data-testid="text-defensive-value">
@@ -193,7 +193,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                 <p className="text-sm text-red-700 dark:text-red-300 mb-4">
                   Risk mitigation, compliance, crisis response
                 </p>
-                <div className="space-y-1 text-xs text-red-600 dark:text-red-400">
+                <div className="space-y-1 text-xs text-red-700 dark:text-red-400">
                   {scenarioData.filter(s => s.category === 'defensive').map(s => (
                     <div key={s.id} className="flex justify-between">
                       <span>{s.title}</span>
@@ -205,7 +205,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
 
               <div className="bg-purple-50 dark:bg-purple-950 rounded-lg p-6 border-2 border-purple-200 dark:border-purple-800">
                 <div className="flex items-center gap-2 mb-3">
-                  <TrendingUp className="h-5 w-5 text-purple-600" />
+                  <TrendingUp className="h-5 w-5 text-purple-800" />
                   <h3 className="font-semibold text-lg text-purple-900 dark:text-purple-100">Strategic Transformation</h3>
                 </div>
                 <div className="text-3xl font-bold text-purple-900 dark:text-purple-100 mb-2" data-testid="text-special-teams-value">
@@ -214,7 +214,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                 <p className="text-sm text-purple-700 dark:text-purple-300 mb-4">
                   M&A, restructuring, sustainability
                 </p>
-                <div className="space-y-1 text-xs text-purple-600 dark:text-purple-400">
+                <div className="space-y-1 text-xs text-purple-800 dark:text-purple-400">
                   {scenarioData.filter(s => s.category === 'special-teams').map(s => (
                     <div key={s.id} className="flex justify-between">
                       <span>{s.title}</span>
@@ -264,7 +264,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                         >
                           <td className="py-3 px-4">
                             <div className="font-medium text-slate-900 dark:text-white">{scenario.title}</div>
-                            <div className="text-sm text-gray-600 dark:text-slate-300">{scenario.purpose}</div>
+                            <div className="text-sm text-gray-800 dark:text-slate-300">{scenario.purpose}</div>
                           </td>
                           <td className="py-3 px-4">
                             <Badge 
@@ -274,7 +274,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                             </Badge>
                           </td>
                           <td className="py-3 px-4 text-right">
-                            <div className="font-bold text-green-600 dark:text-green-400">
+                            <div className="font-bold text-emerald-700 dark:text-green-400">
                               ${scenario.valueNumber.toFixed(1)}M
                             </div>
                           </td>
@@ -284,7 +284,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                             </div>
                           </td>
                           <td className="py-3 px-4 text-right">
-                            <span className="text-gray-600 dark:text-slate-300">
+                            <span className="text-gray-800 dark:text-slate-300">
                               {scenario.elementsActivated?.length || 0}/12
                             </span>
                           </td>
@@ -292,7 +292,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                       ))}
                       <tr className="bg-slate-100 dark:bg-slate-900 font-bold border-t-2 border-slate-300 dark:border-slate-600">
                         <td className="py-4 px-4 text-lg" colSpan={2}>TOTAL VALUE</td>
-                        <td className="py-4 px-4 text-right text-xl text-green-600 dark:text-green-400" data-testid="text-table-total-value">
+                        <td className="py-4 px-4 text-right text-xl text-emerald-700 dark:text-green-400" data-testid="text-table-total-value">
                           ${totalAnnualValue.toFixed(1)}M
                         </td>
                         <td className="py-4 px-4 text-right" colSpan={2}>
@@ -329,23 +329,23 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                           </div>
                           <div>
                             <h3 className="font-bold text-lg text-slate-900 dark:text-white">{scenario.title}</h3>
-                            <p className="text-sm text-gray-600 dark:text-slate-300">{scenario.description}</p>
+                            <p className="text-sm text-gray-800 dark:text-slate-300">{scenario.description}</p>
                           </div>
                         </div>
                         <div className="text-right">
-                          <div className="text-3xl font-bold text-green-600 dark:text-green-400">
+                          <div className="text-3xl font-bold text-emerald-700 dark:text-green-400">
                             ${scenario.valueNumber.toFixed(1)}M
                           </div>
-                          <div className="text-sm text-gray-600 dark:text-slate-300">annual value</div>
+                          <div className="text-sm text-gray-800 dark:text-slate-300">annual value</div>
                         </div>
                       </div>
                       <div className="grid grid-cols-2 gap-4 mt-4">
                         <div className="flex items-center gap-2">
-                          <Clock className="h-4 w-4 text-blue-600" />
+                          <Clock className="h-4 w-4 text-blue-800" />
                           <span className="text-sm text-slate-700 dark:text-slate-300">{scenario.speedAdvantage}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <CheckCircle2 className="h-4 w-4 text-green-600" />
+                          <CheckCircle2 className="h-4 w-4 text-emerald-700" />
                           <span className="text-sm text-slate-700 dark:text-slate-300">
                             {scenario.elementsActivated?.length || 0} elements activated
                           </span>
@@ -407,11 +407,11 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                     </h3>
                     <div className="space-y-4">
                       <div>
-                        <div className="text-sm text-green-700 dark:text-green-300 mb-1">Average Response Time</div>
+                        <div className="text-sm text-emerald-800 dark:text-green-300 mb-1">Average Response Time</div>
                         <div className="text-2xl font-bold text-green-900 dark:text-green-100">12 minutes</div>
                       </div>
                       <div>
-                        <div className="text-sm text-green-700 dark:text-green-300 mb-1">Decision Process</div>
+                        <div className="text-sm text-emerald-800 dark:text-green-300 mb-1">Decision Process</div>
                         <ul className="text-sm text-green-800 dark:text-green-200 space-y-1">
                           <li>• AI detects trigger automatically</li>
                           <li>• Pre-configured playbook activates</li>
@@ -421,11 +421,11 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                         </ul>
                       </div>
                       <div>
-                        <div className="text-sm text-green-700 dark:text-green-300 mb-1">Annual Value Created</div>
+                        <div className="text-sm text-emerald-800 dark:text-green-300 mb-1">Annual Value Created</div>
                         <div className="text-xl font-bold text-green-900 dark:text-green-100">
                           ${totalAnnualValue.toFixed(0)}M+ delivered
                         </div>
-                        <div className="text-xs text-green-700 dark:text-green-300 mt-1">
+                        <div className="text-xs text-emerald-800 dark:text-green-300 mt-1">
                           Cost savings, revenue protection, faster execution
                         </div>
                       </div>
@@ -440,7 +440,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                       <h4 className="font-bold text-lg text-blue-900 dark:text-blue-100 mb-2">
                         The Choice is Clear
                       </h4>
-                      <p className="text-sm text-blue-700 dark:text-blue-300">
+                      <p className="text-sm text-blue-800 dark:text-blue-300">
                         Stop losing ${totalAnnualValue.toFixed(0)}M annually to slow, reactive decision-making. 
                         Get execution infrastructure that coordinates in 12 minutes, not 72 hours.
                       </p>

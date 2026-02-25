@@ -137,26 +137,26 @@ export default function OnboardingOverlay() {
                       </Badge>
                     )}
                   </div>
-                  <p className="text-gray-600 dark:text-gray-200 text-xs">{config.pageName}</p>
+                  <p className="text-gray-800 dark:text-gray-200 text-xs">{config.pageName}</p>
                 </div>
               </div>
               <Button
                 size="sm"
                 variant="ghost"
                 onClick={dismissOnboarding}
-                className="text-gray-600 dark:text-gray-200 hover:text-white hover:bg-white/10 -mt-1 -mr-2"
+                className="text-gray-800 dark:text-gray-200 hover:text-white hover:bg-white/10 -mt-1 -mr-2"
                 data-testid="onboarding-close"
               >
                 <X className="h-4 w-4" />
               </Button>
             </div>
 
-            <p className="text-gray-600 dark:text-gray-200 text-sm leading-relaxed mb-4" data-testid="onboarding-description">
+            <p className="text-gray-800 dark:text-gray-200 text-sm leading-relaxed mb-4" data-testid="onboarding-description">
               {currentStep.description}
             </p>
 
             <div className="mb-4">
-              <div className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-200 mb-1">
+              <div className="flex items-center justify-between text-xs text-gray-800 dark:text-gray-200 mb-1">
                 <span>Step {state.currentStep + 1} of {steps.length}</span>
                 <span>{Math.round(progress)}%</span>
               </div>
@@ -168,7 +168,7 @@ export default function OnboardingOverlay() {
                 variant="ghost"
                 size="sm"
                 onClick={skipOnboarding}
-                className="text-gray-600 dark:text-gray-200 hover:text-white text-xs"
+                className="text-gray-800 dark:text-gray-200 hover:text-white text-xs"
                 data-testid="onboarding-skip"
               >
                 Skip tour
@@ -180,7 +180,7 @@ export default function OnboardingOverlay() {
                   variant="outline"
                   onClick={prevStep}
                   disabled={state.currentStep === 0}
-                  className="border-gray-600 text-gray-600 dark:text-gray-300 hover:bg-white/10"
+                  className="border-gray-600 text-gray-800 dark:text-gray-300 hover:bg-white/10"
                   data-testid="onboarding-prev"
                 >
                   <ChevronLeft className="h-4 w-4" />

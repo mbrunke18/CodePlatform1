@@ -74,9 +74,9 @@ export default function AIRadarSimulation({
   }, [isMonitoring, triggered, onTriggerFired]);
 
   const getConfidenceColor = (conf: number) => {
-    if (conf >= 85) return 'text-red-600 dark:text-red-400';
+    if (conf >= 85) return 'text-red-700 dark:text-red-400';
     if (conf >= 70) return 'text-yellow-600 dark:text-yellow-400';
-    return 'text-green-600 dark:text-green-400';
+    return 'text-emerald-700 dark:text-green-400';
   };
 
   const getStreamStatus = (conf: number) => {
@@ -89,7 +89,7 @@ export default function AIRadarSimulation({
     <div className="space-y-6">
       <div className="text-center mb-6">
         <h2 className="text-3xl font-bold text-gray-900 mb-2">{title}</h2>
-        <p className="text-xl text-blue-700">{subtitle}</p>
+        <p className="text-xl text-blue-800">{subtitle}</p>
       </div>
 
       {/* Main Confidence Meter */}
@@ -117,7 +117,7 @@ export default function AIRadarSimulation({
           <div className="flex items-center justify-between text-xs text-muted-foreground">
             <span>Threshold: 85%</span>
             {triggered && (
-              <span className="text-red-600 dark:text-red-400 font-semibold flex items-center gap-1">
+              <span className="text-red-700 dark:text-red-400 font-semibold flex items-center gap-1">
                 <AlertTriangle className="h-3 w-3" />
                 THRESHOLD EXCEEDED
               </span>
@@ -135,11 +135,11 @@ export default function AIRadarSimulation({
             </div>
             <div className="flex-1">
               <h4 className="font-bold text-lg mb-1 text-gray-900">Playbook {playbookId} Recommended</h4>
-              <p className="text-sm text-red-600 mb-3">
+              <p className="text-sm text-red-700 mb-3">
                 {playbookName}
               </p>
               <div className="bg-white p-3 rounded border border-red-800/30">
-                <p className="text-xs font-mono text-red-600">
+                <p className="text-xs font-mono text-red-700">
                   <TrendingDown className="inline h-3 w-3 mr-1" />
                   Confidence: {confidence.toFixed(1)}% | Playbook activation recommended
                 </p>

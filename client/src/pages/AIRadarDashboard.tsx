@@ -107,21 +107,21 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 <span className="text-sm font-medium">LIVE MONITORING</span>
               </div>
-              <div className="text-sm text-slate-600 dark:text-slate-200">
+              <div className="text-sm text-gray-800 dark:text-slate-200">
                 Now scanning: <span className="text-blue-400 font-medium">{currentCategory?.name}</span>
               </div>
             </div>
             <div className="flex items-center gap-6 text-sm">
               <div>
-                <span className="text-slate-600 dark:text-slate-200">Active monitors:</span>
+                <span className="text-gray-800 dark:text-slate-200">Active monitors:</span>
                 <span className="ml-2 font-mono text-green-400">{triggers.length}</span>
               </div>
               <div>
-                <span className="text-slate-600 dark:text-slate-200">Weak signals:</span>
+                <span className="text-gray-800 dark:text-slate-200">Weak signals:</span>
                 <span className="ml-2 font-mono text-amber-400">{weakSignals.length}</span>
               </div>
               <div>
-                <span className="text-slate-600 dark:text-slate-200">Status:</span>
+                <span className="text-gray-800 dark:text-slate-200">Status:</span>
                 <span className="ml-2 font-mono text-blue-400">Active</span>
               </div>
             </div>
@@ -208,7 +208,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
               </div>
 
               {/* Legend */}
-              <div className="mt-4 flex justify-center gap-4 text-xs text-slate-600 dark:text-slate-200">
+              <div className="mt-4 flex justify-center gap-4 text-xs text-gray-800 dark:text-slate-200">
                 <div className="flex items-center gap-1">
                   <div className="w-2 h-2 bg-red-500 rounded-full" />
                   Critical
@@ -234,7 +234,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-xs text-muted-foreground">Threat Level</p>
-                      <p className={`text-2xl font-bold ${criticalTriggers.length > 0 ? 'text-red-600' : 'text-green-600'}`}>
+                      <p className={`text-2xl font-bold ${criticalTriggers.length > 0 ? 'text-red-700' : 'text-emerald-700'}`}>
                         {criticalTriggers.length > 0 ? 'ELEVATED' : 'NORMAL'}
                       </p>
                     </div>
@@ -272,7 +272,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-xs text-muted-foreground">Avg Response</p>
-                      <p className="text-2xl font-bold text-green-600">12m</p>
+                      <p className="text-2xl font-bold text-emerald-700">12m</p>
                     </div>
                     <Zap className="h-8 w-8 text-amber-500" />
                   </div>
@@ -493,13 +493,13 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="text-center p-4 bg-white dark:bg-slate-900 rounded-lg">
-                  <p className="text-3xl font-bold text-emerald-600">
+                  <p className="text-3xl font-bold text-emerald-700">
                     {dynamicStatus?.readinessScore?.toFixed(1) || '—'}%
                   </p>
                   <p className="text-xs text-muted-foreground">Readiness Score</p>
                 </div>
                 <div className="text-center p-4 bg-white dark:bg-slate-900 rounded-lg">
-                  <p className="text-3xl font-bold text-blue-600">{totalDataPoints}</p>
+                  <p className="text-3xl font-bold text-blue-800">{totalDataPoints}</p>
                   <p className="text-xs text-muted-foreground">Data Points</p>
                 </div>
               </div>
@@ -511,7 +511,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                 </div>
                 <div className="flex justify-between text-sm">
                   <span>Elevated Alerts</span>
-                  <span className={`font-medium ${activeTriggers.length > 0 ? 'text-amber-600' : 'text-green-600'}`}>
+                  <span className={`font-medium ${activeTriggers.length > 0 ? 'text-[#C9A84C]' : 'text-emerald-700'}`}>
                     {activeTriggers.length}
                   </span>
                 </div>

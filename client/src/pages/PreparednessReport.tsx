@@ -52,7 +52,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
               <p className="text-muted-foreground mt-1">Comprehensive crisis readiness assessment</p>
             </div>
           </div>
-          <Shield className="h-12 w-12 text-blue-600 dark:text-blue-400" />
+          <Shield className="h-12 w-12 text-blue-800 dark:text-blue-400" />
         </div>
 
         {/* Score Overview */}
@@ -64,7 +64,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
           <CardContent>
             <div className="flex items-center gap-8">
               <div className="text-center">
-                <div className="text-6xl font-bold text-blue-600 dark:text-blue-400" data-testid="score-main">
+                <div className="text-6xl font-bold text-blue-800 dark:text-blue-400" data-testid="score-main">
                   {scoreData.score}
                 </div>
                 <div className="text-sm text-muted-foreground mt-2">out of 100</div>
@@ -135,7 +135,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-3 gap-6">
                   <div className="text-center p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
-                    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400" data-testid="industry-avg">
+                    <div className="text-3xl font-bold text-blue-800 dark:text-blue-400" data-testid="industry-avg">
                       {scoreData.industryBenchmark}
                     </div>
                     <div className="text-sm text-muted-foreground mt-1">Industry Average</div>
@@ -143,7 +143,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
                   </div>
 
                   <div className="text-center p-4 bg-green-50 dark:bg-green-950/20 rounded-lg">
-                    <div className="text-3xl font-bold text-green-600 dark:text-green-400" data-testid="percentile">
+                    <div className="text-3xl font-bold text-emerald-700 dark:text-green-400" data-testid="percentile">
                       {scoreData.peerPercentile}
                     </div>
                     <div className="text-sm text-muted-foreground mt-1">Percentile Rank</div>
@@ -151,7 +151,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
                   </div>
 
                   <div className="text-center p-4 bg-purple-50 dark:bg-purple-950/20 rounded-lg">
-                    <div className="text-3xl font-bold text-purple-600 dark:text-purple-400" data-testid="delta">
+                    <div className="text-3xl font-bold text-purple-800 dark:text-purple-400" data-testid="delta">
                       {Math.abs(scoreData.score - scoreData.industryBenchmark)}
                     </div>
                     <div className="text-sm text-muted-foreground mt-1">Points {scoreData.score > scoreData.industryBenchmark ? 'Above' : 'Below'} Average</div>
@@ -162,7 +162,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
                   <h4 className="font-medium mb-3">Competitive Positioning</h4>
                   <div className="space-y-2 text-sm">
                     {scoreData.score >= scoreData.industryBenchmark + 10 && (
-                      <div className="flex items-start gap-2 text-green-700 dark:text-green-400">
+                      <div className="flex items-start gap-2 text-emerald-800 dark:text-green-400">
                         <CheckCircle className="h-4 w-4 mt-0.5" />
                         <span>Significantly above industry standard - You're a market leader in preparedness</span>
                       </div>
@@ -174,7 +174,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
                       </div>
                     )}
                     <div className="flex items-start gap-2">
-                      <TrendingUp className="h-4 w-4 mt-0.5 text-blue-600" />
+                      <TrendingUp className="h-4 w-4 mt-0.5 text-blue-800" />
                       <span>Anonymous benchmarking ensures fair comparison across {scoreData.executiveRole} peers</span>
                     </div>
                   </div>
@@ -195,7 +195,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
               <CardContent>
                 {coverageGaps.length === 0 ? (
                   <div className="text-center py-8 text-muted-foreground" data-testid="no-gaps">
-                    <CheckCircle className="h-12 w-12 mx-auto mb-3 text-green-600" />
+                    <CheckCircle className="h-12 w-12 mx-auto mb-3 text-emerald-700" />
                     <p className="font-medium">No critical coverage gaps identified</p>
                     <p className="text-sm mt-1">You've addressed all high-priority scenarios</p>
                   </div>
@@ -275,10 +275,10 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
               <CardContent className="space-y-3">
                 {readinessMetrics.scenariosPracticed < 30 && (
                   <div className="flex items-start gap-3 p-3 bg-blue-50 dark:bg-blue-950/20 rounded-lg" data-testid="rec-scenarios">
-                    <Target className="h-5 w-5 text-blue-600 mt-0.5" />
+                    <Target className="h-5 w-5 text-blue-800 mt-0.5" />
                     <div className="flex-1 page-background">
-                      <div className="font-medium text-blue-700 dark:text-blue-300">Practice More Scenarios</div>
-                      <p className="text-sm text-blue-600 dark:text-blue-400 mt-1">
+                      <div className="font-medium text-blue-800 dark:text-blue-300">Practice More Scenarios</div>
+                      <p className="text-sm text-blue-800 dark:text-blue-400 mt-1">
                         Complete {Math.ceil((30 - (readinessMetrics.scenariosPracticed || 0)) / 3)} more what-if analyses to maximize this category (+{30 - (readinessMetrics.scenariosPracticed || 0)} points)
                       </p>
                       <Link href="/what-if-analyzer">
@@ -290,10 +290,10 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
 
                 {readinessMetrics.drillsCompleted < 25 && (
                   <div className="flex items-start gap-3 p-3 bg-green-50 dark:bg-green-950/20 rounded-lg" data-testid="rec-drills">
-                    <Shield className="h-5 w-5 text-green-600 mt-0.5" />
+                    <Shield className="h-5 w-5 text-emerald-700 mt-0.5" />
                     <div className="flex-1 page-background">
-                      <div className="font-medium text-green-700 dark:text-green-300">Run Playbook Drills</div>
-                      <p className="text-sm text-green-600 dark:text-green-400 mt-1">
+                      <div className="font-medium text-emerald-800 dark:text-green-300">Run Playbook Drills</div>
+                      <p className="text-sm text-emerald-700 dark:text-green-400 mt-1">
                         Complete {Math.ceil((25 - (readinessMetrics.drillsCompleted || 0)) / 5)} more playbook drills (+{25 - (readinessMetrics.drillsCompleted || 0)} points)
                       </p>
                       <Link href="/playbook-library">
@@ -305,10 +305,10 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
 
                 {readinessMetrics.triggersCovered < 20 && (
                   <div className="flex items-start gap-3 p-3 bg-purple-50 dark:bg-purple-950/20 rounded-lg" data-testid="rec-triggers">
-                    <AlertTriangle className="h-5 w-5 text-purple-600 mt-0.5" />
+                    <AlertTriangle className="h-5 w-5 text-purple-800 mt-0.5" />
                     <div className="flex-1 page-background">
                       <div className="font-medium text-purple-700 dark:text-purple-300">Configure More Triggers</div>
-                      <p className="text-sm text-purple-600 dark:text-purple-400 mt-1">
+                      <p className="text-sm text-purple-800 dark:text-purple-400 mt-1">
                         Set up {Math.ceil((20 - (readinessMetrics.triggersCovered || 0)) / 4)} more executive triggers (+{20 - (readinessMetrics.triggersCovered || 0)} points)
                       </p>
                       <Link href="/trigger-dashboard">

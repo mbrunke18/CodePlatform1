@@ -455,7 +455,7 @@ export default function QuickDemoPage() {
         {currentPhase === 'chaos' && selectedScenario && (
           <div>
             <div className="mb-6 flex items-center justify-between">
-              <Badge className="bg-red-500/20 text-red-600 dark:text-red-300 border-red-500/30 animate-pulse">
+              <Badge className="bg-red-500/20 text-red-700 dark:text-red-300 border-red-500/30 animate-pulse">
                 <AlertTriangle className="h-3 w-3 mr-1" />
                 CRISIS IN PROGRESS
               </Badge>
@@ -469,8 +469,8 @@ export default function QuickDemoPage() {
               <div className="space-y-4">
                 <Card className="border-red-500/50 bg-red-50 dark:bg-red-950/50">
                   <CardContent className="p-4 text-center">
-                    <p className="text-xs text-red-600 dark:text-red-400 uppercase tracking-wide mb-1">Revenue Bleeding</p>
-                    <p className="text-3xl font-bold text-red-600 dark:text-red-300 font-mono">
+                    <p className="text-xs text-red-700 dark:text-red-400 uppercase tracking-wide mb-1">Revenue Bleeding</p>
+                    <p className="text-3xl font-bold text-red-700 dark:text-red-300 font-mono">
                       -{formatCurrency(revenueLost)}
                     </p>
                     <p className="text-xs text-red-500 dark:text-red-400/70 mt-1">
@@ -668,7 +668,7 @@ export default function QuickDemoPage() {
                       </div>
 
                       <div className="p-4 bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 rounded-lg">
-                        <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 mb-2">
+                        <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 mb-2">
                           <Clock className="h-4 w-4" />
                           <span className="font-medium">Time to Ready: 0 minutes</span>
                         </div>
@@ -704,7 +704,7 @@ export default function QuickDemoPage() {
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div className="p-4 bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/30 rounded-lg animate-pulse">
-                        <div className="flex items-center gap-2 text-red-600 dark:text-red-400 mb-2">
+                        <div className="flex items-center gap-2 text-red-700 dark:text-red-400 mb-2">
                           <AlertTriangle className="h-5 w-5" />
                           <span className="font-medium">Trigger Detected</span>
                         </div>
@@ -722,13 +722,13 @@ export default function QuickDemoPage() {
                       </div>
 
                       <div className="p-4 bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/30 rounded-lg">
-                        <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 mb-2">
+                        <div className="flex items-center gap-2 text-blue-800 dark:text-blue-400 mb-2">
                           <Brain className="h-5 w-5" />
                           <span className="font-medium">AI Recommendation</span>
                         </div>
                         <p className="text-sm text-muted-foreground">
                           Activate <span className="font-medium text-foreground">{selectedScenario.playbook}</span> playbook.
-                          Match confidence: <span className="text-emerald-600 dark:text-emerald-400 font-bold">94%</span>
+                          Match confidence: <span className="text-emerald-700 dark:text-emerald-400 font-bold">94%</span>
                         </p>
                       </div>
 
@@ -753,7 +753,7 @@ export default function QuickDemoPage() {
                     </CardHeader>
                     <CardContent>
                       <div className="mb-4 p-4 bg-emerald-50 dark:bg-gradient-to-r dark:from-emerald-500/20 dark:to-teal-500/20 border border-emerald-200 dark:border-emerald-500/30 rounded-lg text-center">
-                        <p className="text-xs text-emerald-600 dark:text-emerald-400 uppercase tracking-wide mb-1">Execution Time</p>
+                        <p className="text-xs text-emerald-700 dark:text-emerald-400 uppercase tracking-wide mb-1">Execution Time</p>
                         <p className="text-4xl font-bold font-mono">
                           {formatTime(executionTimer)}
                         </p>
@@ -769,7 +769,7 @@ export default function QuickDemoPage() {
                               className="flex items-start gap-3 p-3 bg-muted/50 rounded-lg border-l-4 border-emerald-500 animate-in slide-in-from-left"
                             >
                               <div className="p-2 bg-emerald-100 dark:bg-emerald-500/20 rounded-lg">
-                                <IconComponent className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                                <IconComponent className="h-4 w-4 text-emerald-700 dark:text-emerald-400" />
                               </div>
                               <div className="flex-1">
                                 <div className="flex items-center gap-2">
@@ -821,7 +821,7 @@ export default function QuickDemoPage() {
                       ) : (
                         <div className="space-y-4">
                           <div className="p-3 bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 rounded-lg">
-                            <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 mb-1">
+                            <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 mb-1">
                               <CheckCircle2 className="h-4 w-4" />
                               <span className="font-medium text-sm">Execution Complete</span>
                             </div>
@@ -831,7 +831,7 @@ export default function QuickDemoPage() {
                           </div>
 
                           <div>
-                            <h4 className="text-xs font-medium text-emerald-600 dark:text-emerald-400 mb-2 flex items-center gap-1">
+                            <h4 className="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2 flex items-center gap-1">
                               <TrendingUp className="h-3 w-3" />
                               Success Patterns Captured
                             </h4>
@@ -855,7 +855,7 @@ export default function QuickDemoPage() {
                     <CardContent className="p-8 text-center">
                       <div className="mb-6">
                         <div className="inline-flex p-4 bg-emerald-100 dark:bg-emerald-500/20 rounded-full mb-4">
-                          <Rocket className="h-10 w-10 text-emerald-600 dark:text-emerald-400" />
+                          <Rocket className="h-10 w-10 text-emerald-700 dark:text-emerald-400" />
                         </div>
                         <h2 className="text-2xl font-bold mb-2">Demo Complete</h2>
                         <p className="text-muted-foreground">You just experienced the IDEA Framework in action</p>
@@ -863,15 +863,15 @@ export default function QuickDemoPage() {
 
                       <div className="grid grid-cols-3 gap-4 mb-6">
                         <div className="p-4 bg-background/50 rounded-lg">
-                          <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">12 min</p>
+                          <p className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">12 min</p>
                           <p className="text-xs text-muted-foreground">Response Time</p>
                         </div>
                         <div className="p-4 bg-background/50 rounded-lg">
-                          <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">{formatCurrency(selectedScenario?.dealValue || 0)}</p>
+                          <p className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">{formatCurrency(selectedScenario?.dealValue || 0)}</p>
                           <p className="text-xs text-muted-foreground">Value Protected</p>
                         </div>
                         <div className="p-4 bg-background/50 rounded-lg">
-                          <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">98 days</p>
+                          <p className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">98 days</p>
                           <p className="text-xs text-muted-foreground">Saved (IBM 2024)</p>
                         </div>
                       </div>
@@ -961,7 +961,7 @@ export default function QuickDemoPage() {
                         <TrendingUp className="h-4 w-4 text-emerald-500" />
                         Value Protected
                       </h4>
-                      <p className="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-1">
+                      <p className="text-3xl font-bold text-emerald-700 dark:text-emerald-400 mb-1">
                         {formatCurrency(currentPhase === 'complete' ? (selectedScenario?.dealValue || 0) : savedValue)}
                       </p>
                       <p className="text-xs text-muted-foreground">

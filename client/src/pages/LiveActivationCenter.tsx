@@ -215,7 +215,7 @@ function getCategoryColor(category: string) {
     case 'OFFENSE': return { bg: 'bg-blue-500/10', text: 'text-blue-400', border: 'border-blue-500/30', ring: 'ring-blue-500', solid: 'bg-blue-500' };
     case 'DEFENSE': return { bg: 'bg-red-500/10', text: 'text-red-400', border: 'border-red-500/30', ring: 'ring-red-500', solid: 'bg-red-500' };
     case 'SPECIAL TEAMS': return { bg: 'bg-purple-500/10', text: 'text-purple-400', border: 'border-purple-500/30', ring: 'ring-purple-500', solid: 'bg-purple-500' };
-    default: return { bg: 'bg-gray-500/10', text: 'text-gray-600', border: 'border-gray-500/30', ring: 'ring-gray-500', solid: 'bg-gray-500' };
+    default: return { bg: 'bg-gray-500/10', text: 'text-gray-800', border: 'border-gray-500/30', ring: 'ring-gray-500', solid: 'bg-gray-500' };
   }
 }
 
@@ -547,7 +547,7 @@ export default function LiveActivationCenter() {
       <div className="min-h-screen bg-white text-gray-900">
         <div className="max-w-6xl mx-auto px-6 py-10 md:py-16">
           <div className="mb-8">
-            <Link href="/" className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-300 transition-colors">
+            <Link href="/" className="inline-flex items-center gap-2 text-sm text-gray-800 hover:text-gray-300 transition-colors">
               <ArrowLeft className="w-4 h-4" /> Back to Execution OS
             </Link>
           </div>
@@ -560,23 +560,23 @@ export default function LiveActivationCenter() {
                     {roleOverlay ? `${contextLabel} Perspective` : `${contextLabel} Industry`}
                   </span>
                 </div>
-                <p className="text-sm text-gray-600">{contextPerspective}</p>
+                <p className="text-sm text-gray-800">{contextPerspective}</p>
               </div>
 
               {industryOverlay && (
                 <div className="px-4 pb-3 border-t border-emerald-500/10 pt-3">
-                  <div className="text-[10px] uppercase tracking-wider text-gray-600 mb-2">Scenario</div>
+                  <div className="text-[10px] uppercase tracking-wider text-gray-800 mb-2">Scenario</div>
                   <div className="text-sm font-medium text-gray-900 mb-1">{industryOverlay.scenario}</div>
-                  <div className="text-xs text-gray-600">{industryOverlay.organization}</div>
+                  <div className="text-xs text-gray-800">{industryOverlay.organization}</div>
                 </div>
               )}
 
               {roleOverlay && (
                 <div className="px-4 pb-3 border-t border-emerald-500/10 pt-3">
-                  <div className="text-[10px] uppercase tracking-wider text-gray-600 mb-2">Your Priority Actions</div>
+                  <div className="text-[10px] uppercase tracking-wider text-gray-800 mb-2">Your Priority Actions</div>
                   <div className="space-y-1">
                     {roleOverlay.yourActions.map((action, i) => (
-                      <div key={i} className="flex items-center gap-2 text-xs text-gray-600">
+                      <div key={i} className="flex items-center gap-2 text-xs text-gray-800">
                         <CheckCircle2 className="w-3 h-3 text-emerald-400 flex-shrink-0" />
                         {action}
                       </div>
@@ -591,7 +591,7 @@ export default function LiveActivationCenter() {
                     {activeKpis.map((kpi, i) => (
                       <div key={i} className="text-center">
                         <div className={cn('text-sm font-bold', kpi.color)}>{kpi.value}</div>
-                        <div className="text-[10px] text-gray-600">{kpi.label}</div>
+                        <div className="text-[10px] text-gray-800">{kpi.label}</div>
                       </div>
                     ))}
                   </div>
@@ -604,7 +604,7 @@ export default function LiveActivationCenter() {
               <Zap className="w-8 h-8 text-emerald-400" />
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">Live Activation Command Center</h1>
             </div>
-            <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-800 max-w-2xl mx-auto">
               Watch strategic coordination unfold in real-time. Select a playbook and see how Execution OS orchestrates cross-functional alignment in under 12 minutes.
             </p>
           </div>
@@ -635,8 +635,8 @@ export default function LiveActivationCenter() {
                     {getPlaybookIcon(pb.icon)}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{pb.name}</h3>
-                  <p className="text-sm text-gray-600 mb-6 leading-relaxed">{pb.description}</p>
-                  <div className="flex items-center gap-4 text-xs text-gray-600">
+                  <p className="text-sm text-gray-800 mb-6 leading-relaxed">{pb.description}</p>
+                  <div className="flex items-center gap-4 text-xs text-gray-800">
                     <span className="flex items-center gap-1">
                       <Users className="w-3.5 h-3.5" /> {pb.stakeholderCount} stakeholders
                     </span>
@@ -644,7 +644,7 @@ export default function LiveActivationCenter() {
                       <Target className="w-3.5 h-3.5" /> {pb.taskCount} tasks
                     </span>
                   </div>
-                  <div className="mt-3 text-xs text-gray-600 flex items-center gap-1">
+                  <div className="mt-3 text-xs text-gray-800 flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" /> {pb.duration}
                   </div>
                 </button>
@@ -659,7 +659,7 @@ export default function LiveActivationCenter() {
                 <span className="text-sm font-semibold text-cyan-400">Live Integrations Active</span>
                 <Badge className="text-[10px] border-0 bg-cyan-500/20 text-cyan-300 ml-auto">CONNECTED</Badge>
               </div>
-              <p className="text-xs text-gray-600 mb-3">
+              <p className="text-xs text-gray-800 mb-3">
                 Activating this playbook will push real tasks and notifications to your connected tools:
               </p>
               <div className="flex items-center gap-3">
@@ -667,14 +667,14 @@ export default function LiveActivationCenter() {
                   <div className="flex items-center gap-1.5 bg-blue-500/10 border border-blue-500/20 rounded-lg px-3 py-1.5">
                     <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
                     <span className="text-xs font-medium text-blue-400">Jira</span>
-                    <span className="text-[10px] text-gray-600">Tasks will be created</span>
+                    <span className="text-[10px] text-gray-800">Tasks will be created</span>
                   </div>
                 )}
                 {hasSlack && (
                   <div className="flex items-center gap-1.5 bg-purple-500/10 border border-purple-500/20 rounded-lg px-3 py-1.5">
                     <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
                     <span className="text-xs font-medium text-purple-400">Slack</span>
-                    <span className="text-[10px] text-gray-600">Notifications will be sent</span>
+                    <span className="text-[10px] text-gray-800">Notifications will be sent</span>
                   </div>
                 )}
               </div>
@@ -706,8 +706,8 @@ export default function LiveActivationCenter() {
               )}
             </Button>
             {!hasLiveIntegrations && (
-              <p className="text-xs text-gray-600 mt-3">
-                <Link href="/integrations/connections" className="text-gray-600 hover:text-gray-300 underline">Connect Jira or Slack</Link>
+              <p className="text-xs text-gray-800 mt-3">
+                <Link href="/integrations/connections" className="text-gray-800 hover:text-gray-300 underline">Connect Jira or Slack</Link>
                 {' '}to push real tasks and notifications during activation
               </p>
             )}
@@ -734,14 +734,14 @@ export default function LiveActivationCenter() {
               <CheckCircle2 className="w-12 h-12 text-emerald-400" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-3">Coordination Complete</h1>
-            <p className="text-gray-600 mb-4 text-lg">All stakeholders aligned and tasks executed successfully.</p>
+            <p className="text-gray-800 mb-4 text-lg">All stakeholders aligned and tasks executed successfully.</p>
             {industryOverlay && (
-              <div className="mb-4 text-sm text-gray-600">
+              <div className="mb-4 text-sm text-gray-800">
                 <span className="text-gray-900 font-medium">{industryOverlay.scenario}</span> — {industryOverlay.organization}
               </div>
             )}
             {roleOverlay && (
-              <div className="mb-4 text-sm text-gray-600">
+              <div className="mb-4 text-sm text-gray-800">
                 Viewed as <span className="text-gray-900 font-medium">{roleOverlay.label}</span>
               </div>
             )}
@@ -754,19 +754,19 @@ export default function LiveActivationCenter() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div className="bg-white border border-gray-200 rounded-xl p-5 text-center">
               <div className="text-3xl font-bold text-emerald-400">{formatElapsed(simulatedSeconds)}</div>
-              <div className="text-xs text-gray-600 mt-1">Execution Time</div>
+              <div className="text-xs text-gray-800 mt-1">Execution Time</div>
             </div>
             <div className="bg-white border border-gray-200 rounded-xl p-5 text-center">
               <div className="text-3xl font-bold text-emerald-400">{acknowledgedCount}/{stakeholders.length}</div>
-              <div className="text-xs text-gray-600 mt-1">Stakeholders Reached</div>
+              <div className="text-xs text-gray-800 mt-1">Stakeholders Reached</div>
             </div>
             <div className="bg-white border border-gray-200 rounded-xl p-5 text-center">
               <div className="text-3xl font-bold text-emerald-400">{completedTaskCount}/{tasks.length}</div>
-              <div className="text-xs text-gray-600 mt-1">Tasks Completed</div>
+              <div className="text-xs text-gray-800 mt-1">Tasks Completed</div>
             </div>
             <div className="bg-white border border-gray-200 rounded-xl p-5 text-center">
               <div className="text-3xl font-bold text-blue-400">{formatElapsed(toSimulatedTime(avgResponseTime))}</div>
-              <div className="text-xs text-gray-600 mt-1">Avg Response Time</div>
+              <div className="text-xs text-gray-800 mt-1">Avg Response Time</div>
             </div>
           </div>
 
@@ -779,7 +779,7 @@ export default function LiveActivationCenter() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h3 className="text-xs font-bold tracking-wider text-gray-600 mb-3 uppercase">Playbook Executed</h3>
+                <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-3 uppercase">Playbook Executed</h3>
                 <div className="flex items-center gap-3 mb-4">
                   <div className={cn('p-2 rounded-lg', getCategoryColor(activePlaybook?.category || 'OFFENSE').bg)}>
                     {getPlaybookIcon(activePlaybook?.icon || 'shield')}
@@ -792,14 +792,14 @@ export default function LiveActivationCenter() {
                   </div>
                 </div>
 
-                <h3 className="text-xs font-bold tracking-wider text-gray-600 mb-3 uppercase">Coordination Channels</h3>
+                <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-3 uppercase">Coordination Channels</h3>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {['Slack', 'Email', 'SMS', 'Teams', 'Push'].map(ch => (
-                    <Badge key={ch} variant="outline" className="text-[10px] border-gray-200 text-gray-600">{ch}</Badge>
+                    <Badge key={ch} variant="outline" className="text-[10px] border-gray-200 text-gray-800">{ch}</Badge>
                   ))}
                 </div>
 
-                <h3 className="text-xs font-bold tracking-wider text-gray-600 mb-3 uppercase">Phase Breakdown</h3>
+                <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-3 uppercase">Phase Breakdown</h3>
                 <div className="space-y-2">
                   {[
                     { label: 'Immediate', count: tasks.filter(t => t.phase === 'IMMEDIATE').length, color: 'text-red-400' },
@@ -808,30 +808,30 @@ export default function LiveActivationCenter() {
                   ].map(p => (
                     <div key={p.label} className="flex items-center justify-between text-sm">
                       <span className={cn('font-medium', p.color)}>{p.label}</span>
-                      <span className="text-gray-600">{p.count} tasks completed</span>
+                      <span className="text-gray-800">{p.count} tasks completed</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               <div>
-                <h3 className="text-xs font-bold tracking-wider text-gray-600 mb-3 uppercase">Tier 1 Leadership ({tier1Stakeholders.length})</h3>
+                <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-3 uppercase">Tier 1 Leadership ({tier1Stakeholders.length})</h3>
                 <div className="space-y-1.5 mb-4">
                   {tier1Stakeholders.map(s => (
                     <div key={s.id} className="flex items-center gap-2">
                       <div className={cn('w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-gray-900 flex-shrink-0', s.color)}>{s.initials}</div>
-                      <span className="text-xs text-gray-600 flex-1 truncate">{s.name} — {s.title}</span>
+                      <span className="text-xs text-gray-800 flex-1 truncate">{s.name} — {s.title}</span>
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
                     </div>
                   ))}
                 </div>
 
-                <h3 className="text-xs font-bold tracking-wider text-gray-600 mb-3 uppercase">Tier 2 Functional ({tier2Stakeholders.length})</h3>
+                <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-3 uppercase">Tier 2 Functional ({tier2Stakeholders.length})</h3>
                 <div className="space-y-1.5 mb-4">
                   {tier2Stakeholders.map(s => (
                     <div key={s.id} className="flex items-center gap-2">
                       <div className={cn('w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-gray-900 flex-shrink-0', s.color)}>{s.initials}</div>
-                      <span className="text-xs text-gray-600 flex-1 truncate">{s.name} — {s.title}</span>
+                      <span className="text-xs text-gray-800 flex-1 truncate">{s.name} — {s.title}</span>
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
                     </div>
                   ))}
@@ -841,16 +841,16 @@ export default function LiveActivationCenter() {
                   const metrics = industryOverlay?.completionMetrics || roleOverlay?.completionMetrics || null;
                   return metrics ? (
                     <>
-                      <h3 className="text-xs font-bold tracking-wider text-gray-600 mb-3 uppercase">
+                      <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-3 uppercase">
                         {roleOverlay ? `${roleOverlay.label} Impact` : industryOverlay ? `${industryOverlay.label} Impact` : 'Impact'} vs. Traditional
                       </h3>
                       <div className="space-y-3">
                         {metrics.map((m, i) => (
                           <div key={i} className="space-y-1">
-                            <div className="text-xs font-medium text-gray-600">{m.label}</div>
+                            <div className="text-xs font-medium text-gray-800">{m.label}</div>
                             <div className="flex items-center gap-2 text-sm">
                               <span className="text-red-400/70 line-through text-xs">{m.before}</span>
-                              <ArrowRight className="w-3 h-3 text-gray-600 flex-shrink-0" />
+                              <ArrowRight className="w-3 h-3 text-gray-800 flex-shrink-0" />
                               <span className="text-emerald-400 font-semibold text-xs">{m.after}</span>
                             </div>
                           </div>
@@ -859,18 +859,18 @@ export default function LiveActivationCenter() {
                     </>
                   ) : (
                     <>
-                      <h3 className="text-xs font-bold tracking-wider text-gray-600 mb-3 uppercase">Impact vs. Traditional</h3>
+                      <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-3 uppercase">Impact vs. Traditional</h3>
                       <div className="space-y-2">
                         <div className="flex items-center justify-between text-sm">
-                          <span className="text-gray-600 flex items-center gap-1"><TrendingUp className="w-3.5 h-3.5 text-emerald-400" /> Time Saved</span>
+                          <span className="text-gray-800 flex items-center gap-1"><TrendingUp className="w-3.5 h-3.5 text-emerald-400" /> Time Saved</span>
                           <span className="text-emerald-400 font-semibold">3-6 weeks → 12 min</span>
                         </div>
                         <div className="flex items-center justify-between text-sm">
-                          <span className="text-gray-600 flex items-center gap-1"><BarChart3 className="w-3.5 h-3.5 text-blue-400" /> Cost Reduction</span>
+                          <span className="text-gray-800 flex items-center gap-1"><BarChart3 className="w-3.5 h-3.5 text-blue-400" /> Cost Reduction</span>
                           <span className="text-blue-400 font-semibold">~85% lower</span>
                         </div>
                         <div className="flex items-center justify-between text-sm">
-                          <span className="text-gray-600 flex items-center gap-1"><Users className="w-3.5 h-3.5 text-purple-400" /> Coordination</span>
+                          <span className="text-gray-800 flex items-center gap-1"><Users className="w-3.5 h-3.5 text-purple-400" /> Coordination</span>
                           <span className="text-purple-400 font-semibold">100% simultaneous</span>
                         </div>
                       </div>
@@ -890,15 +890,15 @@ export default function LiveActivationCenter() {
               </div>
               {liveDispatchResults.jira?.filter((r: any) => r.success).length > 0 && (
                 <div className="mb-4">
-                  <h3 className="text-xs font-bold tracking-wider text-gray-600 mb-2 uppercase">Jira Issues Created</h3>
+                  <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-2 uppercase">Jira Issues Created</h3>
                   <div className="space-y-1.5">
                     {liveDispatchResults.jira.filter((r: any) => r.success).map((r: any, i: number) => (
                       <div key={i} className="flex items-center gap-2 text-sm">
                         <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" />
                         <span className="text-blue-400 font-mono text-xs">{r.detail?.key}</span>
-                        <span className="text-gray-600 text-xs">{r.detail?.taskName}</span>
+                        <span className="text-gray-800 text-xs">{r.detail?.taskName}</span>
                         {r.detail?.url && (
-                          <a href={r.detail.url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-gray-600 hover:text-blue-400 ml-auto">View</a>
+                          <a href={r.detail.url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-gray-800 hover:text-blue-400 ml-auto">View</a>
                         )}
                       </div>
                     ))}
@@ -907,15 +907,15 @@ export default function LiveActivationCenter() {
               )}
               {liveDispatchResults.slack?.filter((r: any) => r.success).length > 0 && (
                 <div>
-                  <h3 className="text-xs font-bold tracking-wider text-gray-600 mb-2 uppercase">Slack Notifications</h3>
+                  <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-2 uppercase">Slack Notifications</h3>
                   <div className="flex items-center gap-2 text-sm">
                     <CheckCircle2 className="w-3.5 h-3.5 text-purple-400 flex-shrink-0" />
-                    <span className="text-gray-600 text-xs">Activation alert sent to Slack workspace</span>
+                    <span className="text-gray-800 text-xs">Activation alert sent to Slack workspace</span>
                   </div>
                 </div>
               )}
               {liveDispatchResults.summary && (
-                <div className="mt-3 pt-3 border-t border-gray-200 text-xs text-gray-600">
+                <div className="mt-3 pt-3 border-t border-gray-200 text-xs text-gray-800">
                   {liveDispatchResults.summary}
                 </div>
               )}
@@ -934,7 +934,7 @@ export default function LiveActivationCenter() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-gray-200 text-gray-600 hover:bg-gray-800 hover:text-white px-10 py-6 text-lg rounded-xl w-full"
+                className="border-gray-200 text-gray-800 hover:bg-gray-800 hover:text-white px-10 py-6 text-lg rounded-xl w-full"
               >
                 Back to Execution OS
               </Button>
@@ -974,8 +974,8 @@ export default function LiveActivationCenter() {
           </div>
           <div className="flex items-center gap-2 md:gap-4">
             <div className="flex items-center gap-2 md:gap-3">
-              <div className="flex items-center gap-1.5 text-gray-600 font-mono text-sm md:text-lg">
-                <Clock className="w-4 h-4 text-gray-600" />
+              <div className="flex items-center gap-1.5 text-gray-800 font-mono text-sm md:text-lg">
+                <Clock className="w-4 h-4 text-gray-800" />
                 {formatElapsed(simulatedSeconds)}
               </div>
               <Badge className="text-[9px] md:text-[10px] border-0 bg-amber-500/10 text-amber-400 font-semibold">8x ACCELERATED</Badge>
@@ -986,7 +986,7 @@ export default function LiveActivationCenter() {
               </Badge>
             )}
             </div>
-            <Button variant="ghost" size="sm" onClick={cancelActivation} className="text-gray-600 hover:text-white hover:bg-gray-800 px-2 md:px-3">
+            <Button variant="ghost" size="sm" onClick={cancelActivation} className="text-gray-800 hover:text-white hover:bg-gray-800 px-2 md:px-3">
               <X className="w-4 h-4" /><span className="hidden sm:inline ml-1">Cancel</span>
             </Button>
           </div>
@@ -1003,7 +1003,7 @@ export default function LiveActivationCenter() {
             )}
             {activeKpis.map((kpi, i) => (
               <div key={i} className="flex items-center gap-1.5 text-xs">
-                <span className="text-gray-600">{kpi.label}:</span>
+                <span className="text-gray-800">{kpi.label}:</span>
                 <span className={cn('font-semibold', kpi.color)}>{kpi.value}</span>
               </div>
             ))}
@@ -1016,7 +1016,7 @@ export default function LiveActivationCenter() {
           <Card className="bg-white border-gray-200">
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
-                <CardTitle className="text-sm font-semibold text-gray-600 flex items-center gap-2">
+                <CardTitle className="text-sm font-semibold text-gray-800 flex items-center gap-2">
                   <Users className="w-4 h-4 text-blue-400" /> Stakeholder Coordination
                 </CardTitle>
                 <span className="text-xs text-emerald-400 font-mono">{acknowledgedCount}/{stakeholders.length} acknowledged</span>
@@ -1040,17 +1040,17 @@ export default function LiveActivationCenter() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
                       <span className="text-sm font-medium text-gray-900 truncate">{s.name}</span>
-                      <Badge variant="outline" className="text-[10px] px-1.5 py-0 border-gray-200 text-gray-600">
+                      <Badge variant="outline" className="text-[10px] px-1.5 py-0 border-gray-200 text-gray-800">
                         Tier {s.tier}
                       </Badge>
                     </div>
-                    <div className="text-xs text-gray-600 truncate">{s.title} · {s.department}</div>
+                    <div className="text-xs text-gray-800 truncate">{s.title} · {s.department}</div>
                   </div>
                   <div className="flex items-center gap-1.5 flex-shrink-0">
                     {s.status === 'pending' && (
                       <>
                         <div className="w-2 h-2 rounded-full bg-gray-600" />
-                        <span className="text-xs text-gray-600">Pending</span>
+                        <span className="text-xs text-gray-800">Pending</span>
                       </>
                     )}
                     {s.status === 'notifying' && (
@@ -1082,7 +1082,7 @@ export default function LiveActivationCenter() {
           <Card className="bg-white border-gray-200">
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
-                <CardTitle className="text-sm font-semibold text-gray-600 flex items-center gap-2">
+                <CardTitle className="text-sm font-semibold text-gray-800 flex items-center gap-2">
                   <Target className="w-4 h-4 text-blue-400" /> Execution Tasks
                 </CardTitle>
                 <span className="text-xs text-emerald-400 font-mono">{completedTaskCount}/{tasks.length} complete</span>
@@ -1096,7 +1096,7 @@ export default function LiveActivationCenter() {
               ].map(group => (
                 group.items.length > 0 && (
                   <div key={group.label}>
-                    <div className="text-[10px] font-bold tracking-widest text-gray-600 mb-2 uppercase">{group.label}</div>
+                    <div className="text-[10px] font-bold tracking-widest text-gray-800 mb-2 uppercase">{group.label}</div>
                     <div className="space-y-1.5">
                       {group.items.map(task => {
                         const isYourTask = highlightedTaskIds.includes(task.id);
@@ -1107,22 +1107,22 @@ export default function LiveActivationCenter() {
                           task.status === 'completed' ? 'bg-emerald-500/5' :
                           task.status === 'in_progress' ? 'bg-blue-500/5' : 'bg-gray-50'
                         )}>
-                          {task.status === 'pending' && <Circle className="w-4 h-4 text-gray-600 flex-shrink-0" />}
+                          {task.status === 'pending' && <Circle className="w-4 h-4 text-gray-800 flex-shrink-0" />}
                           {task.status === 'in_progress' && <Loader2 className="w-4 h-4 text-blue-400 animate-spin flex-shrink-0" />}
                           {task.status === 'completed' && <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />}
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-1.5">
                               <span className={cn(
                                 'text-sm truncate',
-                                task.status === 'completed' ? 'text-gray-600' :
-                                task.status === 'in_progress' ? 'text-gray-900' : 'text-gray-600'
+                                task.status === 'completed' ? 'text-gray-800' :
+                                task.status === 'in_progress' ? 'text-gray-900' : 'text-gray-800'
                               )}>{task.name}</span>
                               {isYourTask && (
                                 <Badge className="text-[8px] px-1 py-0 bg-amber-500/20 text-amber-400 border-0 flex-shrink-0">YOU</Badge>
                               )}
                             </div>
                           </div>
-                          <Badge variant="outline" className="text-[10px] px-1.5 py-0 border-gray-200 text-gray-600 flex-shrink-0">
+                          <Badge variant="outline" className="text-[10px] px-1.5 py-0 border-gray-200 text-gray-800 flex-shrink-0">
                             {task.owner}
                           </Badge>
                         </div>
@@ -1154,30 +1154,30 @@ export default function LiveActivationCenter() {
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <span className="text-3xl font-bold font-mono text-gray-900">{formatElapsed(simulatedSeconds)}</span>
-                  <span className="text-[10px] text-gray-600">EXECUTION TIME</span>
+                  <span className="text-[10px] text-gray-800">EXECUTION TIME</span>
                 </div>
               </div>
-              <div className="text-xs text-gray-600 font-semibold tracking-wider mb-6">12-MINUTE COORDINATION CYCLE</div>
+              <div className="text-xs text-gray-800 font-semibold tracking-wider mb-6">12-MINUTE COORDINATION CYCLE</div>
 
               <div className="grid grid-cols-2 gap-3 w-full">
                 <div className="bg-gray-50 rounded-lg p-3 text-center border border-gray-200">
                   <div className="text-2xl font-bold text-emerald-400">{coordinationPct}%</div>
-                  <div className="text-[10px] text-gray-600 mt-1">Coordination</div>
+                  <div className="text-[10px] text-gray-800 mt-1">Coordination</div>
                   <Progress value={coordinationPct} className="h-1 mt-2 bg-gray-50" />
                 </div>
                 <div className="bg-gray-50 rounded-lg p-3 text-center border border-gray-200">
                   <div className="text-2xl font-bold text-blue-400">{acknowledgedCount}/{stakeholders.length}</div>
-                  <div className="text-[10px] text-gray-600 mt-1">Stakeholders</div>
+                  <div className="text-[10px] text-gray-800 mt-1">Stakeholders</div>
                   <Progress value={stakeholders.length > 0 ? (acknowledgedCount / stakeholders.length) * 100 : 0} className="h-1 mt-2 bg-gray-50" />
                 </div>
                 <div className="bg-gray-50 rounded-lg p-3 text-center border border-gray-200">
                   <div className="text-2xl font-bold text-blue-400">{completedTaskCount}/{tasks.length}</div>
-                  <div className="text-[10px] text-gray-600 mt-1">Tasks</div>
+                  <div className="text-[10px] text-gray-800 mt-1">Tasks</div>
                   <Progress value={taskPct} className="h-1 mt-2 bg-gray-50" />
                 </div>
                 <div className="bg-gray-50 rounded-lg p-3 text-center border border-gray-200">
                   <div className="text-lg font-bold text-purple-400">{phaseLabel}</div>
-                  <div className="text-[10px] text-gray-600 mt-1">Phase</div>
+                  <div className="text-[10px] text-gray-800 mt-1">Phase</div>
                 </div>
               </div>
             </CardContent>
@@ -1187,27 +1187,27 @@ export default function LiveActivationCenter() {
         <div className="md:col-span-2 lg:col-span-1 space-y-3">
           <Card className="bg-white border-gray-200 h-full flex flex-col">
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-semibold text-gray-600 flex items-center gap-2">
+              <CardTitle className="text-sm font-semibold text-gray-800 flex items-center gap-2">
                 <Activity className="w-4 h-4 text-emerald-400" /> Live Activity Feed
               </CardTitle>
             </CardHeader>
             <CardContent className="flex-1 overflow-hidden">
               <div ref={feedRef} className="space-y-2 max-h-[60vh] lg:max-h-[calc(100vh-240px)] overflow-y-auto pr-1">
                 {activityFeed.length === 0 && (
-                  <div className="text-center text-gray-600 text-sm py-8">Waiting for activity...</div>
+                  <div className="text-center text-gray-800 text-sm py-8">Waiting for activity...</div>
                 )}
                 {activityFeed.map(entry => (
                   <div key={entry.id} className="flex items-start gap-2 py-1.5 border-b border-gray-200 last:border-0">
-                    <span className="text-[10px] font-mono text-gray-600 mt-0.5 flex-shrink-0 w-12 text-right">
+                    <span className="text-[10px] font-mono text-gray-800 mt-0.5 flex-shrink-0 w-12 text-right">
                       [{formatElapsed(toSimulatedTime(entry.timestamp))}]
                     </span>
                     <div className="flex-shrink-0 mt-1">
                       {entry.type === 'stakeholder' && <Users className="w-3 h-3 text-emerald-400" />}
                       {entry.type === 'task' && <CheckCircle2 className="w-3 h-3 text-blue-400" />}
                       {entry.type === 'phase' && <Zap className="w-3 h-3 text-purple-400" />}
-                      {entry.type === 'system' && <Activity className="w-3 h-3 text-gray-600" />}
+                      {entry.type === 'system' && <Activity className="w-3 h-3 text-gray-800" />}
                     </div>
-                    <span className="text-xs text-gray-600 leading-relaxed">{entry.description}</span>
+                    <span className="text-xs text-gray-800 leading-relaxed">{entry.description}</span>
                   </div>
                 ))}
               </div>

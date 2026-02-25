@@ -345,18 +345,18 @@ export default function NewUserJourney() {
               </div>
               <div>
                 <h1 className="text-lg font-semibold text-gray-900">Getting Started with Execution OS</h1>
-                <p className="text-xs text-gray-600">Your first playbook will be ready in under 15 minutes</p>
+                <p className="text-xs text-gray-800">Your first playbook will be ready in under 15 minutes</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <Badge variant="outline" className="bg-transparent text-gray-600 border-slate-600">
+              <Badge variant="outline" className="bg-transparent text-gray-800 border-slate-600">
                 Step {state.step + 1} of {STEPS.length}
               </Badge>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setLocation('/')}
-                className="text-gray-600 hover:text-white hover:bg-slate-800"
+                className="text-gray-800 hover:text-white hover:bg-slate-800"
                 data-testid="button-home"
               >
                 <Home className="h-4 w-4 mr-1" />
@@ -382,7 +382,7 @@ export default function NewUserJourney() {
                     {isCompleted ? (
                       <Check className="h-4 w-4 text-gray-900" />
                     ) : (
-                      <Icon className={`h-4 w-4 ${isCurrent ? 'text-gray-900' : 'text-gray-600'}`} />
+                      <Icon className={`h-4 w-4 ${isCurrent ? 'text-gray-900' : 'text-gray-800'}`} />
                     )}
                   </div>
                   {index < STEPS.length - 1 && (
@@ -415,7 +415,7 @@ export default function NewUserJourney() {
                     <h2 className="text-4xl font-bold text-gray-900 mb-4">
                       Success Favors the Prepared
                     </h2>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                    <p className="text-xl text-gray-800 max-w-2xl mx-auto">
                       Execution OS replaces reactive scrambles with coordinated precision, turning emerging opportunities 
                       into decisive action in <span className="text-indigo-400 font-semibold">12 minutes, not 72 hours</span>
                     </p>
@@ -427,21 +427,21 @@ export default function NewUserJourney() {
                         <Clock className="h-6 w-6 text-indigo-400" />
                       </div>
                       <div className="text-2xl font-bold text-gray-900 mb-1">15 min</div>
-                      <div className="text-sm text-gray-600">Time to your first playbook</div>
+                      <div className="text-sm text-gray-800">Time to your first playbook</div>
                     </Card>
                     <Card className="bg-gray-50 border-gray-200 text-center p-6">
                       <div className="w-12 h-12 mx-auto rounded-lg bg-green-500/20 flex items-center justify-center mb-4">
                         <Layers className="h-6 w-6 text-green-400" />
                       </div>
                       <div className="text-2xl font-bold text-gray-900 mb-1">170</div>
-                      <div className="text-sm text-gray-600">Ready-to-use playbooks</div>
+                      <div className="text-sm text-gray-800">Ready-to-use playbooks</div>
                     </Card>
                     <Card className="bg-gray-50 border-gray-200 text-center p-6">
                       <div className="w-12 h-12 mx-auto rounded-lg bg-purple-500/20 flex items-center justify-center mb-4">
                         <Radio className="h-6 w-6 text-purple-400" />
                       </div>
                       <div className="text-2xl font-bold text-gray-900 mb-1">92</div>
-                      <div className="text-sm text-gray-600">Intelligence signals</div>
+                      <div className="text-sm text-gray-800">Intelligence signals</div>
                     </Card>
                   </div>
 
@@ -452,7 +452,7 @@ export default function NewUserJourney() {
                       </div>
                       <div className="text-left">
                         <h3 className="font-semibold text-gray-900 mb-1">What you'll accomplish</h3>
-                        <ul className="text-sm text-gray-600 space-y-1">
+                        <ul className="text-sm text-gray-800 space-y-1">
                           <li className="flex items-center gap-2">
                             <Check className="h-4 w-4 text-green-400" />
                             Configure Execution OS for your industry and role
@@ -480,13 +480,13 @@ export default function NewUserJourney() {
                 <div className="space-y-8">
                   <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold text-gray-900 mb-2">Tell us about your organization</h2>
-                    <p className="text-gray-600">This helps us personalize your playbooks and intelligence signals</p>
+                    <p className="text-gray-800">This helps us personalize your playbooks and intelligence signals</p>
                   </div>
 
                   <div className="grid gap-6">
                     <div className="grid grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label className="text-gray-600">Organization Name *</Label>
+                        <Label className="text-gray-800">Organization Name *</Label>
                         <Input
                           value={state.organizationName}
                           onChange={(e) => updateState({ organizationName: e.target.value })}
@@ -496,7 +496,7 @@ export default function NewUserJourney() {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label className="text-gray-600">Employee Count</Label>
+                        <Label className="text-gray-800">Employee Count</Label>
                         <Select value={state.employeeCount} onValueChange={(v) => updateState({ employeeCount: v })}>
                           <SelectTrigger className="bg-gray-50 border-gray-200 h-12 text-gray-900" data-testid="select-employees">
                             <SelectValue placeholder="Select company size" />
@@ -512,7 +512,7 @@ export default function NewUserJourney() {
                     </div>
 
                     <div className="space-y-3">
-                      <Label className="text-gray-600">Industry *</Label>
+                      <Label className="text-gray-800">Industry *</Label>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                         {INDUSTRIES.map((industry) => {
                           const Icon = industry.icon;
@@ -529,8 +529,8 @@ export default function NewUserJourney() {
                               data-testid={`industry-${industry.id}`}
                             >
                               <CardContent className="p-4 text-center">
-                                <Icon className={`h-6 w-6 mx-auto mb-2 ${isSelected ? 'text-indigo-400' : 'text-gray-600'}`} />
-                                <div className={`text-sm font-medium ${isSelected ? 'text-gray-900' : 'text-gray-600'}`}>
+                                <Icon className={`h-6 w-6 mx-auto mb-2 ${isSelected ? 'text-indigo-400' : 'text-gray-800'}`} />
+                                <div className={`text-sm font-medium ${isSelected ? 'text-gray-900' : 'text-gray-800'}`}>
                                   {industry.name}
                                 </div>
                               </CardContent>
@@ -544,7 +544,7 @@ export default function NewUserJourney() {
 
                     <div className="grid grid-cols-2 gap-6">
                       <div className="space-y-3">
-                        <Label className="text-gray-600">Your Role *</Label>
+                        <Label className="text-gray-800">Your Role *</Label>
                         <Select value={state.executiveRole} onValueChange={(v) => updateState({ executiveRole: v })}>
                           <SelectTrigger className="bg-gray-50 border-gray-200 h-12 text-gray-900" data-testid="select-role">
                             <SelectValue placeholder="Select your role" />
@@ -561,7 +561,7 @@ export default function NewUserJourney() {
                         </Select>
                       </div>
                       <div className="space-y-2">
-                        <Label className="text-gray-600">Your Name</Label>
+                        <Label className="text-gray-800">Your Name</Label>
                         <Input
                           value={state.executiveName}
                           onChange={(e) => updateState({ executiveName: e.target.value })}
@@ -579,7 +579,7 @@ export default function NewUserJourney() {
                 <div className="space-y-8">
                   <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold text-gray-900 mb-2">What are your strategic priorities?</h2>
-                    <p className="text-gray-600">Select at least 2 priorities to personalize your playbook recommendations</p>
+                    <p className="text-gray-800">Select at least 2 priorities to personalize your playbook recommendations</p>
                   </div>
 
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -605,13 +605,13 @@ export default function NewUserJourney() {
                         >
                           <CardContent className="p-4">
                             <div className="flex items-center justify-between mb-3">
-                              <Icon className={`h-6 w-6 ${isSelected ? 'text-indigo-400' : 'text-gray-600'}`} />
+                              <Icon className={`h-6 w-6 ${isSelected ? 'text-indigo-400' : 'text-gray-800'}`} />
                               {isSelected && <Check className="h-5 w-5 text-green-400" />}
                             </div>
-                            <div className={`font-medium mb-1 ${isSelected ? 'text-gray-900' : 'text-gray-600'}`}>
+                            <div className={`font-medium mb-1 ${isSelected ? 'text-gray-900' : 'text-gray-800'}`}>
                               {priority.name}
                             </div>
-                            <div className="text-xs text-gray-600">
+                            <div className="text-xs text-gray-800">
                               {priority.description}
                             </div>
                           </CardContent>
@@ -622,7 +622,7 @@ export default function NewUserJourney() {
 
                   {state.priorities.length > 0 && (
                     <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                      <div className="flex items-center gap-2 text-sm text-gray-800">
                         <CheckCircle className="h-4 w-4 text-green-400" />
                         <span>
                           Selected: {state.priorities.map(p => 
@@ -639,7 +639,7 @@ export default function NewUserJourney() {
                 <div className="space-y-8">
                   <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold text-gray-900 mb-2">Choose your first playbooks</h2>
-                    <p className="text-gray-600">
+                    <p className="text-gray-800">
                       Based on your industry ({INDUSTRIES.find(i => i.id === state.industry)?.name}), 
                       we recommend these playbooks
                     </p>
@@ -669,16 +669,16 @@ export default function NewUserJourney() {
                             <div className="flex items-start justify-between">
                               <div className="flex-1">
                                 <div className="flex items-center gap-3 mb-2">
-                                  <h3 className={`font-semibold text-lg ${isSelected ? 'text-gray-900' : 'text-gray-600'}`}>
+                                  <h3 className={`font-semibold text-lg ${isSelected ? 'text-gray-900' : 'text-gray-800'}`}>
                                     {playbook.name}
                                   </h3>
                                   <Badge variant="outline" className="text-xs">
                                     {playbook.domain}
                                   </Badge>
                                 </div>
-                                <p className="text-sm text-gray-600 mb-3">{playbook.description}</p>
+                                <p className="text-sm text-gray-800 mb-3">{playbook.description}</p>
                                 <div className="flex items-center gap-2">
-                                  <span className="text-xs text-gray-600">Triggers:</span>
+                                  <span className="text-xs text-gray-800">Triggers:</span>
                                   {playbook.triggers.map((trigger, idx) => (
                                     <Badge key={idx} variant="secondary" className="text-xs bg-gray-50">
                                       {trigger}
@@ -692,7 +692,7 @@ export default function NewUserJourney() {
                                 {isSelected ? (
                                   <Check className="h-5 w-5 text-gray-900" />
                                 ) : (
-                                  <Layers className="h-5 w-5 text-gray-600" />
+                                  <Layers className="h-5 w-5 text-gray-800" />
                                 )}
                               </div>
                             </div>
@@ -705,10 +705,10 @@ export default function NewUserJourney() {
                   <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center">
-                        <Sparkles className="h-5 w-5 text-gray-600" />
+                        <Sparkles className="h-5 w-5 text-gray-800" />
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-800">
                           You'll have access to all <span className="text-gray-900 font-semibold">170 playbooks</span> after setup.
                           These are just recommended starting points.
                         </p>
@@ -722,7 +722,7 @@ export default function NewUserJourney() {
                 <div className="space-y-8">
                   <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold text-gray-900 mb-2">Enable intelligence monitoring</h2>
-                    <p className="text-gray-600">
+                    <p className="text-gray-800">
                       Turn on the signals that matter most to your strategic priorities
                     </p>
                   </div>
@@ -730,7 +730,7 @@ export default function NewUserJourney() {
                   <div className="bg-gradient-to-r   border border-indigo-500/30 rounded-xl p-4 mb-6">
                     <div className="flex items-center gap-3">
                       <Activity className="h-5 w-5 text-indigo-400" />
-                      <span className="text-sm text-gray-600">
+                      <span className="text-sm text-gray-800">
                         Based on your priorities, we recommend these signal categories. Toggle them on to enable 24/7 AI monitoring.
                       </span>
                     </div>
@@ -774,8 +774,8 @@ export default function NewUserJourney() {
                                       </Badge>
                                     )}
                                   </div>
-                                  <p className="text-sm text-gray-600">{category.description}</p>
-                                  <p className="text-xs text-gray-600 mt-1">
+                                  <p className="text-sm text-gray-800">{category.description}</p>
+                                  <p className="text-xs text-gray-800 mt-1">
                                     {category.dataPoints.length} data points monitored
                                   </p>
                                 </div>
@@ -798,7 +798,7 @@ export default function NewUserJourney() {
                     })}
                   </div>
 
-                  <div className="text-center text-sm text-gray-600">
+                  <div className="text-center text-sm text-gray-800">
                     {state.enabledSignals.length} of {SIGNAL_CATEGORIES.length} signal categories enabled
                   </div>
                 </div>
@@ -808,7 +808,7 @@ export default function NewUserJourney() {
                 <div className="space-y-8">
                   <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold text-gray-900 mb-2">Set your success targets</h2>
-                    <p className="text-gray-600">
+                    <p className="text-gray-800">
                       Define what success looks like for your organization
                     </p>
                   </div>
@@ -822,7 +822,7 @@ export default function NewUserJourney() {
                           </div>
                           <div className="flex-1">
                             <h3 className="font-semibold text-gray-900 mb-1">Future Readiness Index™ Target</h3>
-                            <p className="text-sm text-gray-600 mb-4">
+                            <p className="text-sm text-gray-800 mb-4">
                               Your organization's strategic preparedness score across 5 dimensions
                             </p>
                             <div className="flex items-center gap-4">
@@ -836,7 +836,7 @@ export default function NewUserJourney() {
                                 step={0.1}
                                 data-testid="input-fri-target"
                               />
-                              <span className="text-gray-600">%</span>
+                              <span className="text-gray-800">%</span>
                               <Badge variant="secondary" className="bg-green-500/20 text-green-300">
                                 Best-in-class: 84.4%
                               </Badge>
@@ -854,7 +854,7 @@ export default function NewUserJourney() {
                           </div>
                           <div className="flex-1">
                             <h3 className="font-semibold text-gray-900 mb-1">Decision Velocity Target</h3>
-                            <p className="text-sm text-gray-600 mb-4">
+                            <p className="text-sm text-gray-800 mb-4">
                               Target time from signal detection to coordinated response
                             </p>
                             <div className="flex items-center gap-4">
@@ -867,7 +867,7 @@ export default function NewUserJourney() {
                                 max={60}
                                 data-testid="input-velocity-target"
                               />
-                              <span className="text-gray-600">minutes</span>
+                              <span className="text-gray-800">minutes</span>
                               <Badge variant="secondary" className="bg-green-500/20 text-green-300">
                                 Industry avg: 72 hours
                               </Badge>
@@ -885,7 +885,7 @@ export default function NewUserJourney() {
                           </div>
                           <div className="flex-1">
                             <h3 className="font-semibold text-gray-900 mb-1">Playbook Coverage Target</h3>
-                            <p className="text-sm text-gray-600 mb-4">
+                            <p className="text-sm text-gray-800 mb-4">
                               Percentage of critical scenarios with ready playbooks
                             </p>
                             <div className="flex items-center gap-4">
@@ -898,7 +898,7 @@ export default function NewUserJourney() {
                                 max={100}
                                 data-testid="input-coverage-target"
                               />
-                              <span className="text-gray-600">%</span>
+                              <span className="text-gray-800">%</span>
                             </div>
                           </div>
                         </div>
@@ -912,7 +912,7 @@ export default function NewUserJourney() {
                 <div className="space-y-8">
                   <div className="text-center mb-6">
                     <h2 className="text-3xl font-bold text-gray-900 mb-2">Your Command Center is Ready</h2>
-                    <p className="text-gray-600">
+                    <p className="text-gray-800">
                       Here's what Execution OS will monitor and execute for {state.organizationName || 'your organization'}
                     </p>
                   </div>
@@ -922,21 +922,21 @@ export default function NewUserJourney() {
                     <Card className="bg-gradient-to-br  to-indigo-800/20 border-indigo-500/30">
                       <CardContent className="p-4 text-center">
                         <div className="text-3xl font-bold text-indigo-400 mb-1">{state.enabledSignals.length}</div>
-                        <div className="text-sm text-gray-600">Signal Categories</div>
+                        <div className="text-sm text-gray-800">Signal Categories</div>
                         <div className="text-xs text-indigo-400 mt-1">Monitoring {state.enabledSignals.length * 6}+ data points</div>
                       </CardContent>
                     </Card>
                     <Card className="bg-gradient-to-br  to-purple-800/20 border-purple-500/30">
                       <CardContent className="p-4 text-center">
                         <div className="text-3xl font-bold text-purple-400 mb-1">{state.selectedPlaybooks.length}</div>
-                        <div className="text-sm text-gray-600">Active Playbooks</div>
+                        <div className="text-sm text-gray-800">Active Playbooks</div>
                         <div className="text-xs text-purple-400 mt-1">Ready for instant activation</div>
                       </CardContent>
                     </Card>
                     <Card className="bg-gradient-to-br  to-green-800/20 border-green-500/30">
                       <CardContent className="p-4 text-center">
                         <div className="text-3xl font-bold text-green-400 mb-1">{state.velocityTarget}m</div>
-                        <div className="text-sm text-gray-600">Target Response</div>
+                        <div className="text-sm text-gray-800">Target Response</div>
                         <div className="text-xs text-green-400 mt-1">vs 72hr industry average</div>
                       </CardContent>
                     </Card>
@@ -973,7 +973,7 @@ export default function NewUserJourney() {
                                 </div>
                                 <div>
                                   <div className="text-sm font-medium text-gray-900">{category?.name || signalId}</div>
-                                  <div className="text-xs text-gray-600">{category?.dataPoints.length || 0} data points active</div>
+                                  <div className="text-xs text-gray-800">{category?.dataPoints.length || 0} data points active</div>
                                 </div>
                               </div>
                               <div className="flex items-center gap-2">
@@ -991,7 +991,7 @@ export default function NewUserJourney() {
                           );
                         })}
                         {state.enabledSignals.length > 4 && (
-                          <div className="text-center text-xs text-gray-600 py-2">
+                          <div className="text-center text-xs text-gray-800 py-2">
                             + {state.enabledSignals.length - 4} more signal categories monitoring
                           </div>
                         )}
@@ -1030,7 +1030,7 @@ export default function NewUserJourney() {
                                 </div>
                                 <div>
                                   <div className="text-sm font-medium text-gray-900">{playbook?.name || playbookId}</div>
-                                  <div className="text-xs text-gray-600">Triggers: {playbook?.triggers.join(', ')}</div>
+                                  <div className="text-xs text-gray-800">Triggers: {playbook?.triggers.join(', ')}</div>
                                 </div>
                               </div>
                               <Badge className="bg-green-500/20 text-green-300 text-xs">Ready</Badge>
@@ -1050,21 +1050,21 @@ export default function NewUserJourney() {
                         </div>
                         <div className="flex-1">
                           <h3 className="font-semibold text-gray-900 mb-2">Projected Annual Value</h3>
-                          <p className="text-sm text-gray-600 mb-4">
+                          <p className="text-sm text-gray-800 mb-4">
                             Based on {INDUSTRIES.find(i => i.id === state.industry)?.name || 'your industry'} benchmarks and your configuration
                           </p>
                           <div className="grid grid-cols-3 gap-4">
                             <div className="text-center p-3 bg-white rounded-lg">
                               <div className="text-xl font-bold text-green-400">$2.4M</div>
-                              <div className="text-xs text-gray-600">Risk Mitigation</div>
+                              <div className="text-xs text-gray-800">Risk Mitigation</div>
                             </div>
                             <div className="text-center p-3 bg-white rounded-lg">
                               <div className="text-xl font-bold text-green-400">847hrs</div>
-                              <div className="text-xs text-gray-600">Executive Time Saved</div>
+                              <div className="text-xs text-gray-800">Executive Time Saved</div>
                             </div>
                             <div className="text-center p-3 bg-white rounded-lg">
                               <div className="text-xl font-bold text-green-400">12x</div>
-                              <div className="text-xs text-gray-600">Faster Response</div>
+                              <div className="text-xs text-gray-800">Faster Response</div>
                             </div>
                           </div>
                         </div>
@@ -1079,19 +1079,19 @@ export default function NewUserJourney() {
                       What happens when you complete setup:
                     </h4>
                     <div className="grid grid-cols-2 gap-3">
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                      <div className="flex items-center gap-2 text-sm text-gray-800">
                         <CheckCircle className="w-4 h-4 text-green-400" />
                         {state.enabledSignals.length} triggers go live immediately
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                      <div className="flex items-center gap-2 text-sm text-gray-800">
                         <CheckCircle className="w-4 h-4 text-green-400" />
                         {state.selectedPlaybooks.length} playbooks ready for activation
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                      <div className="flex items-center gap-2 text-sm text-gray-800">
                         <CheckCircle className="w-4 h-4 text-green-400" />
                         Real-time monitoring begins
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                      <div className="flex items-center gap-2 text-sm text-gray-800">
                         <CheckCircle className="w-4 h-4 text-green-400" />
                         Dashboard reflects your configuration
                       </div>
@@ -1124,7 +1124,7 @@ export default function NewUserJourney() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.4 }}
-                      className="text-gray-600 text-lg"
+                      className="text-gray-800 text-lg"
                     >
                       Your strategic execution system is monitoring and ready
                     </motion.p>
@@ -1147,17 +1147,17 @@ export default function NewUserJourney() {
                         <div className="grid grid-cols-3 gap-4">
                           <div className="bg-white rounded-xl p-4 border border-gray-200 text-center">
                             <div className="text-3xl font-bold text-green-400">{state.enabledSignals.length}</div>
-                            <div className="text-sm text-gray-600">Signal Categories</div>
+                            <div className="text-sm text-gray-800">Signal Categories</div>
                             <div className="text-xs text-green-400/70 mt-1">Monitoring 24/7</div>
                           </div>
                           <div className="bg-white rounded-xl p-4 border border-gray-200 text-center">
                             <div className="text-3xl font-bold text-purple-400">{state.selectedPlaybooks.length}</div>
-                            <div className="text-sm text-gray-600">Playbooks</div>
+                            <div className="text-sm text-gray-800">Playbooks</div>
                             <div className="text-xs text-purple-400/70 mt-1">Armed & Ready</div>
                           </div>
                           <div className="bg-white rounded-xl p-4 border border-gray-200 text-center">
                             <div className="text-3xl font-bold text-blue-400">{state.friTarget}%</div>
-                            <div className="text-sm text-gray-600">FRI Target</div>
+                            <div className="text-sm text-gray-800">FRI Target</div>
                             <div className="text-xs text-blue-400/70 mt-1">Tracking Active</div>
                           </div>
                         </div>
@@ -1173,20 +1173,20 @@ export default function NewUserJourney() {
                     className="grid gap-4"
                   >
                     <h3 className="font-semibold text-gray-900 flex items-center gap-2">
-                      <Settings className="w-4 h-4 text-gray-600" />
+                      <Settings className="w-4 h-4 text-gray-800" />
                       Your Configuration
                     </h3>
                     
                     <div className="grid grid-cols-2 gap-4">
                       <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                        <div className="text-xs text-gray-600 uppercase tracking-wider mb-1">Organization</div>
+                        <div className="text-xs text-gray-800 uppercase tracking-wider mb-1">Organization</div>
                         <div className="text-gray-900 font-medium">{state.organizationName}</div>
-                        <div className="text-sm text-gray-600">{INDUSTRIES.find(i => i.id === state.industry)?.name}</div>
+                        <div className="text-sm text-gray-800">{INDUSTRIES.find(i => i.id === state.industry)?.name}</div>
                       </div>
                       <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                        <div className="text-xs text-gray-600 uppercase tracking-wider mb-1">Strategic Focus</div>
+                        <div className="text-xs text-gray-800 uppercase tracking-wider mb-1">Strategic Focus</div>
                         <div className="text-gray-900 font-medium">{state.priorities.length} Priorities</div>
-                        <div className="text-sm text-gray-600 truncate">
+                        <div className="text-sm text-gray-800 truncate">
                           {state.priorities.slice(0, 2).map(p => STRATEGIC_PRIORITIES.find(sp => sp.id === p)?.name).join(', ')}
                           {state.priorities.length > 2 && ` +${state.priorities.length - 2} more`}
                         </div>
@@ -1211,21 +1211,21 @@ export default function NewUserJourney() {
                             <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold">1</div>
                             <div>
                               <div className="text-gray-900 font-medium">Review Your Dashboard</div>
-                              <div className="text-sm text-gray-600">See your Future Readiness Index and active monitoring status</div>
+                              <div className="text-sm text-gray-800">See your Future Readiness Index and active monitoring status</div>
                             </div>
                           </div>
                           <div className="flex items-center gap-3 p-3 bg-white rounded-lg">
                             <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold">2</div>
                             <div>
                               <div className="text-gray-900 font-medium">Explore Your Playbooks</div>
-                              <div className="text-sm text-gray-600">Customize response protocols for your specific organization</div>
+                              <div className="text-sm text-gray-800">Customize response protocols for your specific organization</div>
                             </div>
                           </div>
                           <div className="flex items-center gap-3 p-3 bg-white rounded-lg">
                             <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold">3</div>
                             <div>
                               <div className="text-gray-900 font-medium">Visit Command Center</div>
-                              <div className="text-sm text-gray-600">When a trigger fires, this is where 12-minute responses are orchestrated</div>
+                              <div className="text-sm text-gray-800">When a trigger fires, this is where 12-minute responses are orchestrated</div>
                             </div>
                           </div>
                         </div>
@@ -1263,14 +1263,14 @@ export default function NewUserJourney() {
               variant="ghost"
               onClick={handleBack}
               disabled={state.step === 0}
-              className="text-gray-600 hover:text-white"
+              className="text-gray-800 hover:text-white"
               data-testid="button-back"
             >
               <ChevronLeft className="h-4 w-4 mr-2" />
               Back
             </Button>
           ) : (
-            <div className="text-gray-600 text-sm">
+            <div className="text-gray-800 text-sm">
               Setup complete - your system is now active
             </div>
           )}

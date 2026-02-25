@@ -319,7 +319,7 @@ export default function CompetitivePositioning() {
               The Strategic Execution Layer
               <span className="block text-blue-400 mt-2">Category of One</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-800 max-w-3xl mx-auto mb-8">
               Crisis tools notify. PM tools track. Execution OS executes. We're not competing with Everbridge or Jira—we own the 
               <span className="text-blue-300 font-semibold"> 20-50 hours of coordination </span> 
               that happens between alert and action.
@@ -334,7 +334,7 @@ export default function CompetitivePositioning() {
               </div>
               <div className="bg-blue-500/30 border-2 border-blue-400 rounded-lg px-6 py-3 ring-2 ring-blue-400/50">
                 <Zap className="w-5 h-5 text-blue-300 inline mr-2" />
-                <span className="text-blue-700 font-bold">Strategic Execution</span>
+                <span className="text-blue-800 font-bold">Strategic Execution</span>
                 <div className="text-xs text-blue-300 mt-1">Execution OS (Category of One)</div>
               </div>
               <div className="bg-green-500/20 border border-green-500/40 rounded-lg px-6 py-3">
@@ -374,7 +374,7 @@ export default function CompetitivePositioning() {
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-gap">
                 The $2M Gap Between Alert and Action
               </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+              <p className="text-lg text-gray-800 dark:text-slate-300 max-w-3xl mx-auto">
                 When a strategic event hits, organizations spend 20-50 hours getting organized. 
                 That's $60K-$2M in lost value per major event. Execution OS eliminates that gap entirely.
               </p>
@@ -389,27 +389,27 @@ export default function CompetitivePositioning() {
                     <div className="text-red-500 font-bold text-lg mb-2">Without Execution OS</div>
                     <div className="flex items-center justify-center gap-2 flex-wrap">
                       <div className="bg-red-100 dark:bg-red-900/30 rounded-lg p-3 text-center">
-                        <div className="text-xs text-red-600 dark:text-red-400">Alert</div>
+                        <div className="text-xs text-red-700 dark:text-red-400">Alert</div>
                         <div className="font-bold text-red-700 dark:text-red-300">T+0</div>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-slate-600 dark:text-slate-200" />
+                      <ArrowRight className="w-4 h-4 text-gray-800 dark:text-slate-200" />
                       <div className="bg-amber-100 dark:bg-amber-900/30 rounded-lg p-3 text-center">
-                        <div className="text-xs text-amber-600 dark:text-amber-400">Triage</div>
-                        <div className="font-bold text-amber-700 dark:text-amber-300">+4-8 hrs</div>
+                        <div className="text-xs text-[#C9A84C] dark:text-amber-400">Triage</div>
+                        <div className="font-bold text-[#C9A84C] dark:text-amber-300">+4-8 hrs</div>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-slate-600 dark:text-slate-200" />
+                      <ArrowRight className="w-4 h-4 text-gray-800 dark:text-slate-200" />
                       <div className="bg-amber-100 dark:bg-amber-900/30 rounded-lg p-3 text-center">
-                        <div className="text-xs text-amber-600 dark:text-amber-400">Planning</div>
-                        <div className="font-bold text-amber-700 dark:text-amber-300">+12-24 hrs</div>
+                        <div className="text-xs text-[#C9A84C] dark:text-amber-400">Planning</div>
+                        <div className="font-bold text-[#C9A84C] dark:text-amber-300">+12-24 hrs</div>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-slate-600 dark:text-slate-200" />
+                      <ArrowRight className="w-4 h-4 text-gray-800 dark:text-slate-200" />
                       <div className="bg-amber-100 dark:bg-amber-900/30 rounded-lg p-3 text-center">
-                        <div className="text-xs text-amber-600 dark:text-amber-400">Coordination</div>
-                        <div className="font-bold text-amber-700 dark:text-amber-300">+24-48 hrs</div>
+                        <div className="text-xs text-[#C9A84C] dark:text-amber-400">Coordination</div>
+                        <div className="font-bold text-[#C9A84C] dark:text-amber-300">+24-48 hrs</div>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-slate-600 dark:text-slate-200" />
+                      <ArrowRight className="w-4 h-4 text-gray-800 dark:text-slate-200" />
                       <div className="bg-slate-100 dark:bg-slate-800 rounded-lg p-3 text-center">
-                        <div className="text-xs text-slate-600 dark:text-slate-300">Execution</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-300">Execution</div>
                         <div className="font-bold text-slate-700 dark:text-slate-300">+72 hrs</div>
                       </div>
                     </div>
@@ -424,17 +424,17 @@ export default function CompetitivePositioning() {
                     <div className="text-emerald-500 font-bold text-lg mb-2">With Execution OS</div>
                     <div className="flex items-center justify-center gap-2 flex-wrap">
                       <div className="bg-emerald-100 dark:bg-emerald-900/30 rounded-lg p-3 text-center">
-                        <div className="text-xs text-emerald-600 dark:text-emerald-400">Trigger Detected</div>
+                        <div className="text-xs text-emerald-700 dark:text-emerald-400">Trigger Detected</div>
                         <div className="font-bold text-emerald-700 dark:text-emerald-300">T+0</div>
                       </div>
                       <ArrowRight className="w-4 h-4 text-emerald-400" />
                       <div className="bg-emerald-100 dark:bg-emerald-900/30 rounded-lg p-3 text-center">
-                        <div className="text-xs text-emerald-600 dark:text-emerald-400">Playbook Activated</div>
+                        <div className="text-xs text-emerald-700 dark:text-emerald-400">Playbook Activated</div>
                         <div className="font-bold text-emerald-700 dark:text-emerald-300">+30 sec</div>
                       </div>
                       <ArrowRight className="w-4 h-4 text-emerald-400" />
                       <div className="bg-emerald-100 dark:bg-emerald-900/30 rounded-lg p-3 text-center">
-                        <div className="text-xs text-emerald-600 dark:text-emerald-400">All Teams Aligned</div>
+                        <div className="text-xs text-emerald-700 dark:text-emerald-400">All Teams Aligned</div>
                         <div className="font-bold text-emerald-700 dark:text-emerald-300">+12 min</div>
                       </div>
                     </div>
@@ -452,7 +452,7 @@ export default function CompetitivePositioning() {
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-battle-cards">
                 Competitive Battle Cards
               </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-300">
+              <p className="text-lg text-gray-800 dark:text-slate-300">
                 How Execution OS positions against each category of competitor
               </p>
             </div>
@@ -501,34 +501,34 @@ export default function CompetitivePositioning() {
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <div>
-                          <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">Their Strengths</div>
+                          <div className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 mb-2">Their Strengths</div>
                           <ul className="space-y-1">
                             {tool.strengths.map((s, i) => (
-                              <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
+                              <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
                                 <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" /> {s}
                               </li>
                             ))}
                           </ul>
                         </div>
                         <div>
-                          <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps Execution OS Fills</div>
+                          <div className="text-xs font-semibold text-blue-800 dark:text-blue-400 mb-2">Gaps Execution OS Fills</div>
                           <ul className="space-y-1">
                             {tool.gaps.map((g, i) => (
-                              <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
+                              <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
                                 <Zap className="w-3 h-3 text-blue-500 flex-shrink-0" /> {g}
                               </li>
                             ))}
                           </ul>
                         </div>
                         <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
-                          <div className="text-xs font-semibold text-amber-600 dark:text-amber-400 mb-1">When They Win</div>
-                          <p className="text-xs text-gray-600 dark:text-slate-300">{tool.whenTheyWin}</p>
+                          <div className="text-xs font-semibold text-[#C9A84C] dark:text-amber-400 mb-1">When They Win</div>
+                          <p className="text-xs text-gray-800 dark:text-slate-300">{tool.whenTheyWin}</p>
                         </div>
                         <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
-                          <div className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 flex items-center gap-1">
+                          <div className="text-xs font-semibold text-blue-800 dark:text-blue-300 mb-1 flex items-center gap-1">
                             <MessageSquare className="w-3 h-3" /> Trap Question
                           </div>
-                          <p className="text-xs text-blue-600 dark:text-blue-400 italic">{tool.trapQuestion}</p>
+                          <p className="text-xs text-blue-800 dark:text-blue-400 italic">{tool.trapQuestion}</p>
                         </div>
                       </CardContent>
                     </Card>
@@ -557,20 +557,20 @@ export default function CompetitivePositioning() {
                       <CardContent className="space-y-4">
                         <div className="grid grid-cols-2 gap-4">
                           <div>
-                            <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">Their Strengths</div>
+                            <div className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 mb-2">Their Strengths</div>
                             <ul className="space-y-1">
                               {tool.strengths.map((s, i) => (
-                                <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
+                                <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
                                   <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" /> {s}
                                 </li>
                               ))}
                             </ul>
                           </div>
                           <div>
-                            <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps Execution OS Fills</div>
+                            <div className="text-xs font-semibold text-blue-800 dark:text-blue-400 mb-2">Gaps Execution OS Fills</div>
                             <ul className="space-y-1">
                               {tool.gaps.map((g, i) => (
-                                <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
+                                <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
                                   <Zap className="w-3 h-3 text-blue-500 flex-shrink-0" /> {g}
                                 </li>
                               ))}
@@ -578,10 +578,10 @@ export default function CompetitivePositioning() {
                           </div>
                         </div>
                         <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
-                          <div className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 flex items-center gap-1">
+                          <div className="text-xs font-semibold text-blue-800 dark:text-blue-300 mb-1 flex items-center gap-1">
                             <MessageSquare className="w-3 h-3" /> Trap Question
                           </div>
-                          <p className="text-xs text-blue-600 dark:text-blue-400 italic">{tool.trapQuestion}</p>
+                          <p className="text-xs text-blue-800 dark:text-blue-400 italic">{tool.trapQuestion}</p>
                         </div>
                       </CardContent>
                     </Card>
@@ -627,20 +627,20 @@ export default function CompetitivePositioning() {
                       <CardContent className="space-y-4">
                         <div className="grid grid-cols-2 gap-4">
                           <div>
-                            <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">Their Strengths</div>
+                            <div className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 mb-2">Their Strengths</div>
                             <ul className="space-y-1">
                               {tool.strengths.map((s, i) => (
-                                <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
+                                <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
                                   <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" /> {s}
                                 </li>
                               ))}
                             </ul>
                           </div>
                           <div>
-                            <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps Execution OS Fills</div>
+                            <div className="text-xs font-semibold text-blue-800 dark:text-blue-400 mb-2">Gaps Execution OS Fills</div>
                             <ul className="space-y-1">
                               {tool.gaps.map((g, i) => (
-                                <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
+                                <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
                                   <Zap className="w-3 h-3 text-blue-500 flex-shrink-0" /> {g}
                                 </li>
                               ))}
@@ -648,14 +648,14 @@ export default function CompetitivePositioning() {
                           </div>
                         </div>
                         <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
-                          <div className="text-xs font-semibold text-sky-600 dark:text-sky-400 mb-1">Relationship with Execution OS</div>
-                          <p className="text-xs text-gray-600 dark:text-slate-300">{tool.relationship}</p>
+                          <div className="text-xs font-semibold text-sky-800 dark:text-sky-400 mb-1">Relationship with Execution OS</div>
+                          <p className="text-xs text-gray-800 dark:text-slate-300">{tool.relationship}</p>
                         </div>
                         <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
-                          <div className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 flex items-center gap-1">
+                          <div className="text-xs font-semibold text-blue-800 dark:text-blue-300 mb-1 flex items-center gap-1">
                             <MessageSquare className="w-3 h-3" /> Trap Question
                           </div>
-                          <p className="text-xs text-blue-600 dark:text-blue-400 italic">{tool.trapQuestion}</p>
+                          <p className="text-xs text-blue-800 dark:text-blue-400 italic">{tool.trapQuestion}</p>
                         </div>
                       </CardContent>
                     </Card>
@@ -683,30 +683,30 @@ export default function CompetitivePositioning() {
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <div>
-                          <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">Their Strengths</div>
+                          <div className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 mb-2">Their Strengths</div>
                           <ul className="space-y-1">
                             {tool.strengths.map((s, i) => (
-                              <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
+                              <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
                                 <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" /> {s}
                               </li>
                             ))}
                           </ul>
                         </div>
                         <div>
-                          <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps Execution OS Fills</div>
+                          <div className="text-xs font-semibold text-blue-800 dark:text-blue-400 mb-2">Gaps Execution OS Fills</div>
                           <ul className="space-y-1">
                             {tool.gaps.map((g, i) => (
-                              <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
+                              <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
                                 <Zap className="w-3 h-3 text-blue-500 flex-shrink-0" /> {g}
                               </li>
                             ))}
                           </ul>
                         </div>
                         <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
-                          <div className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 flex items-center gap-1">
+                          <div className="text-xs font-semibold text-blue-800 dark:text-blue-300 mb-1 flex items-center gap-1">
                             <MessageSquare className="w-3 h-3" /> Trap Question
                           </div>
-                          <p className="text-xs text-blue-600 dark:text-blue-400 italic">{tool.trapQuestion}</p>
+                          <p className="text-xs text-blue-800 dark:text-blue-400 italic">{tool.trapQuestion}</p>
                         </div>
                       </CardContent>
                     </Card>
@@ -734,30 +734,30 @@ export default function CompetitivePositioning() {
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <div>
-                          <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">Their Strengths</div>
+                          <div className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 mb-2">Their Strengths</div>
                           <ul className="space-y-1">
                             {tool.strengths.map((s, i) => (
-                              <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
+                              <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
                                 <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" /> {s}
                               </li>
                             ))}
                           </ul>
                         </div>
                         <div>
-                          <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaps Execution OS Fills</div>
+                          <div className="text-xs font-semibold text-blue-800 dark:text-blue-400 mb-2">Gaps Execution OS Fills</div>
                           <ul className="space-y-1">
                             {tool.gaps.map((g, i) => (
-                              <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1">
+                              <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
                                 <Zap className="w-3 h-3 text-blue-500 flex-shrink-0" /> {g}
                               </li>
                             ))}
                           </ul>
                         </div>
                         <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
-                          <div className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 flex items-center gap-1">
+                          <div className="text-xs font-semibold text-blue-800 dark:text-blue-300 mb-1 flex items-center gap-1">
                             <MessageSquare className="w-3 h-3" /> Trap Question
                           </div>
-                          <p className="text-xs text-blue-600 dark:text-blue-400 italic">{tool.trapQuestion}</p>
+                          <p className="text-xs text-blue-800 dark:text-blue-400 italic">{tool.trapQuestion}</p>
                         </div>
                       </CardContent>
                     </Card>
@@ -775,7 +775,7 @@ export default function CompetitivePositioning() {
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-category-comparison">
                 Five Categories, One Gap
               </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-300">
+              <p className="text-lg text-gray-800 dark:text-slate-300">
                 Execution OS is the only platform that bridges planning, detection, coordination, and execution
               </p>
             </div>
@@ -789,31 +789,31 @@ export default function CompetitivePositioning() {
                       <th className="text-center p-3">
                         <div className="flex flex-col items-center">
                           <Bell className="w-4 h-4 text-red-500 mb-1" />
-                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">Crisis</span>
+                          <span className="text-xs font-semibold text-gray-800 dark:text-slate-300">Crisis</span>
                         </div>
                       </th>
                       <th className="text-center p-3">
                         <div className="flex flex-col items-center">
                           <Settings className="w-4 h-4 text-green-500 mb-1" />
-                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">PM</span>
+                          <span className="text-xs font-semibold text-gray-800 dark:text-slate-300">PM</span>
                         </div>
                       </th>
                       <th className="text-center p-3">
                         <div className="flex flex-col items-center">
                           <Target className="w-4 h-4 text-indigo-500 mb-1" />
-                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">OKR</span>
+                          <span className="text-xs font-semibold text-gray-800 dark:text-slate-300">OKR</span>
                         </div>
                       </th>
                       <th className="text-center p-3">
                         <div className="flex flex-col items-center">
                           <Zap className="w-4 h-4 text-orange-500 mb-1" />
-                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">Automation</span>
+                          <span className="text-xs font-semibold text-gray-800 dark:text-slate-300">Automation</span>
                         </div>
                       </th>
                       <th className="text-center p-3">
                         <div className="flex flex-col items-center">
                           <Calculator className="w-4 h-4 text-sky-500 mb-1" />
-                          <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">Planning</span>
+                          <span className="text-xs font-semibold text-gray-800 dark:text-slate-300">Planning</span>
                         </div>
                       </th>
                       <th className="text-center p-3 bg-blue-50 dark:bg-blue-900/20">
@@ -821,7 +821,7 @@ export default function CompetitivePositioning() {
                           <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mb-1">
                             <span className="text-gray-900 font-bold text-xs">P</span>
                           </div>
-                          <span className="text-xs font-bold text-blue-600 dark:text-blue-400">Execution OS</span>
+                          <span className="text-xs font-bold text-blue-800 dark:text-blue-400">Execution OS</span>
                         </div>
                       </th>
                     </tr>
@@ -832,32 +832,32 @@ export default function CompetitivePositioning() {
                         <td className="p-4 text-sm text-slate-700 dark:text-slate-300">{row.capability}</td>
                         <td className="p-3 text-center">
                           {row.crisisTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.crisisTools === false && <XCircle className="w-4 h-4 text-gray-600 dark:text-slate-200 mx-auto" />}
+                          {row.crisisTools === false && <XCircle className="w-4 h-4 text-gray-800 dark:text-slate-200 mx-auto" />}
                           {row.crisisTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
-                          {row.crisisTools === 'manual' && <span className="text-xs text-gray-600">Manual</span>}
-                          {row.crisisTools === 'native' && <span className="text-xs text-gray-600">N/A</span>}
+                          {row.crisisTools === 'manual' && <span className="text-xs text-gray-800">Manual</span>}
+                          {row.crisisTools === 'native' && <span className="text-xs text-gray-800">N/A</span>}
                         </td>
                         <td className="p-3 text-center">
                           {row.pmTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.pmTools === false && <XCircle className="w-4 h-4 text-gray-600 dark:text-slate-200 mx-auto" />}
+                          {row.pmTools === false && <XCircle className="w-4 h-4 text-gray-800 dark:text-slate-200 mx-auto" />}
                           {row.pmTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
-                          {row.pmTools === 'manual' && <span className="text-xs text-gray-600">Manual</span>}
-                          {row.pmTools === 'native' && <span className="text-xs text-gray-600">N/A</span>}
+                          {row.pmTools === 'manual' && <span className="text-xs text-gray-800">Manual</span>}
+                          {row.pmTools === 'native' && <span className="text-xs text-gray-800">N/A</span>}
                         </td>
                         <td className="p-3 text-center">
                           {row.okrTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.okrTools === false && <XCircle className="w-4 h-4 text-gray-600 dark:text-slate-200 mx-auto" />}
+                          {row.okrTools === false && <XCircle className="w-4 h-4 text-gray-800 dark:text-slate-200 mx-auto" />}
                           {row.okrTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
-                          {row.okrTools === 'manual' && <span className="text-xs text-gray-600">Manual</span>}
+                          {row.okrTools === 'manual' && <span className="text-xs text-gray-800">Manual</span>}
                         </td>
                         <td className="p-3 text-center">
                           {row.automationTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.automationTools === false && <XCircle className="w-4 h-4 text-gray-600 dark:text-slate-200 mx-auto" />}
+                          {row.automationTools === false && <XCircle className="w-4 h-4 text-gray-800 dark:text-slate-200 mx-auto" />}
                           {row.automationTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
                         </td>
                         <td className="p-3 text-center">
                           {row.planningTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.planningTools === false && <XCircle className="w-4 h-4 text-gray-600 dark:text-slate-200 mx-auto" />}
+                          {row.planningTools === false && <XCircle className="w-4 h-4 text-gray-800 dark:text-slate-200 mx-auto" />}
                           {row.planningTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
                         </td>
                         <td className="p-3 text-center bg-blue-50/50 dark:bg-blue-900/10">
@@ -880,7 +880,7 @@ export default function CompetitivePositioning() {
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-objections">
                 Objection Handling Guide
               </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-300">
+              <p className="text-lg text-gray-800 dark:text-slate-300">
                 Common pushback and how to address it
               </p>
             </div>
@@ -904,7 +904,7 @@ export default function CompetitivePositioning() {
                       <div className="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/30">
                         <MessageSquare className="w-5 h-5 text-emerald-500" />
                       </div>
-                      <p className="text-sm text-slate-600 dark:text-slate-300">{obj.response}</p>
+                      <p className="text-sm text-gray-800 dark:text-slate-300">{obj.response}</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -920,7 +920,7 @@ export default function CompetitivePositioning() {
               <h2 className="text-3xl font-bold text-gray-900 mb-4" data-testid="heading-domains">
                 170 Playbooks Across 9 Strategic Domains
               </h2>
-              <p className="text-lg text-blue-700">
+              <p className="text-lg text-blue-800">
                 No competitor offers pre-built, executable strategic playbooks
               </p>
             </div>
@@ -935,7 +935,7 @@ export default function CompetitivePositioning() {
                 >
                   <domain.icon className="w-6 h-6 text-blue-300 mx-auto mb-2" />
                   <div className="text-xl font-bold text-gray-900 mb-1">{domain.count}</div>
-                  <div className="text-xs text-blue-700">{domain.name}</div>
+                  <div className="text-xs text-blue-800">{domain.name}</div>
                 </div>
               ))}
             </div>
@@ -965,7 +965,7 @@ export default function CompetitivePositioning() {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold mb-4">The Enterprise Moat</h3>
-                    <p className="text-blue-700 mb-6">
+                    <p className="text-blue-800 mb-6">
                       Once a Fortune 1000 company has 50+ playbooks syncing to Jira with bi-directional updates, 
                       historical execution data, and months of organizational knowledge encoded in Execution OS—switching 
                       becomes nearly impossible.
@@ -1001,7 +1001,7 @@ export default function CompetitivePositioning() {
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-cta">
               Ready to Own Strategic Execution?
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300 mb-8">
+            <p className="text-lg text-gray-800 dark:text-slate-300 mb-8">
               See how Execution OS eliminates the 20-50 hours between alert and action
             </p>
             <div className="flex flex-wrap justify-center gap-4">

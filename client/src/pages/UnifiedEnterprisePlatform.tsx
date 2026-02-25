@@ -163,9 +163,9 @@ export default function UnifiedEnterprisePlatform() {
           
           {/* Breadcrumb Navigation */}
           <div className="mb-2 flex-shrink-0">
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-gray-800">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-600 hover:text-white p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-gray-800 hover:text-white p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>
@@ -222,14 +222,14 @@ export default function UnifiedEnterprisePlatform() {
                 </div>
               </CardHeader>
               <CardContent className="p-3 pt-0">
-                <p className="text-xs text-gray-600 mb-2">24/7 AI Intelligence</p>
+                <p className="text-xs text-gray-800 mb-2">24/7 AI Intelligence</p>
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-600">Pulse Active</span>
+                    <span className="text-gray-800">Pulse Active</span>
                     <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30 text-xs">94%</Badge>
                   </div>
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-600">12 Signals</span>
+                    <span className="text-gray-800">12 Signals</span>
                     <span className="text-blue-400 font-semibold">Monitoring</span>
                   </div>
                 </div>
@@ -244,14 +244,14 @@ export default function UnifiedEnterprisePlatform() {
                 </div>
               </CardHeader>
               <CardContent className="p-3 pt-0">
-                <p className="text-xs text-gray-600 mb-2">Trigger Intelligence</p>
+                <p className="text-xs text-gray-800 mb-2">Trigger Intelligence</p>
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-600">Preparedness</span>
+                    <span className="text-gray-800">Preparedness</span>
                     <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30 text-xs">98.7%</Badge>
                   </div>
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-600">47 Playbooks</span>
+                    <span className="text-gray-800">47 Playbooks</span>
                     <span className="text-orange-400 font-semibold">Ready</span>
                   </div>
                 </div>
@@ -266,14 +266,14 @@ export default function UnifiedEnterprisePlatform() {
                 </div>
               </CardHeader>
               <CardContent className="p-3 pt-0">
-                <p className="text-xs text-gray-600 mb-2">12-Minute Coordination</p>
+                <p className="text-xs text-gray-800 mb-2">12-Minute Coordination</p>
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-600">Avg Speed</span>
+                    <span className="text-gray-800">Avg Speed</span>
                     <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30 text-xs">12min</Badge>
                   </div>
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-600">vs Industry</span>
+                    <span className="text-gray-800">vs Industry</span>
                     <span className="text-green-400 font-semibold">360x Faster</span>
                   </div>
                 </div>
@@ -288,14 +288,14 @@ export default function UnifiedEnterprisePlatform() {
                 </div>
               </CardHeader>
               <CardContent className="p-3 pt-0">
-                <p className="text-xs text-gray-600 mb-2">Institutional Memory</p>
+                <p className="text-xs text-gray-800 mb-2">Institutional Memory</p>
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-600">Executions</span>
+                    <span className="text-gray-800">Executions</span>
                     <Badge variant="outline" className="bg-purple-500/10 text-purple-400 border-purple-500/30 text-xs">1,247</Badge>
                   </div>
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-600">ROI Captured</span>
+                    <span className="text-gray-800">ROI Captured</span>
                     <span className="text-purple-400 font-semibold">$144M</span>
                   </div>
                 </div>
@@ -393,7 +393,7 @@ export default function UnifiedEnterprisePlatform() {
                     <CardContent>
                       <div className="space-y-1">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-gray-600">{metric.name}</span>
+                          <span className="text-sm font-medium text-gray-800">{metric.name}</span>
                           <span className={`text-sm font-bold ${metric.color}`}>
                             {metric.change}
                           </span>
@@ -421,7 +421,7 @@ export default function UnifiedEnterprisePlatform() {
                       170 PLAYBOOKS READY
                     </Badge>
                   </div>
-                  <p className="text-sm text-gray-600 mt-2">
+                  <p className="text-sm text-gray-800 mt-2">
                     Execution infrastructure in action: From detection to coordinated execution in 12 minutes. Pre-defined governance for high-stakes situations.
                   </p>
                 </CardHeader>
@@ -431,11 +431,11 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="p-4 bg-gray-50 rounded-lg border border-emerald-500/30">
                       <div className="flex items-center gap-2 mb-2">
                         <Clock className="h-5 w-5 text-emerald-400" />
-                        <span className="text-sm font-medium text-gray-600">Avg. Decision Time</span>
+                        <span className="text-sm font-medium text-gray-800">Avg. Decision Time</span>
                       </div>
                       <div className="flex items-baseline gap-2">
                         <span className="text-3xl font-bold text-gray-900">12</span>
-                        <span className="text-lg text-gray-600">minutes</span>
+                        <span className="text-lg text-gray-800">minutes</span>
                       </div>
                       <div className="mt-2 flex items-center gap-1">
                         <TrendingUp className="h-4 w-4 text-emerald-400" />
@@ -447,11 +447,11 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="p-4 bg-gray-50 rounded-lg border border-blue-500/30">
                       <div className="flex items-center gap-2 mb-2">
                         <Target className="h-5 w-5 text-blue-400" />
-                        <span className="text-sm font-medium text-gray-600">Plays Executed (30d)</span>
+                        <span className="text-sm font-medium text-gray-800">Plays Executed (30d)</span>
                       </div>
                       <div className="flex items-baseline gap-2">
                         <span className="text-3xl font-bold text-gray-900">47</span>
-                        <span className="text-lg text-gray-600">playbooks</span>
+                        <span className="text-lg text-gray-800">playbooks</span>
                       </div>
                       <div className="mt-2 flex items-center gap-1">
                         <CheckCircle className="h-4 w-4 text-blue-400" />
@@ -463,11 +463,11 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="p-4 bg-gray-50 rounded-lg border border-purple-500/30">
                       <div className="flex items-center gap-2 mb-2">
                         <DollarSign className="h-5 w-5 text-purple-400" />
-                        <span className="text-sm font-medium text-gray-600">Value Created (30d)</span>
+                        <span className="text-sm font-medium text-gray-800">Value Created (30d)</span>
                       </div>
                       <div className="flex items-baseline gap-2">
                         <span className="text-3xl font-bold text-gray-900">$8.2M</span>
-                        <span className="text-lg text-gray-600">saved</span>
+                        <span className="text-lg text-gray-800">saved</span>
                       </div>
                       <div className="mt-2 flex items-center gap-1">
                         <TrendingUp className="h-4 w-4 text-purple-400" />
@@ -478,8 +478,8 @@ export default function UnifiedEnterprisePlatform() {
 
                   {/* Most Used Playbooks */}
                   <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                    <h4 className="text-sm font-semibold text-gray-600 mb-3 flex items-center gap-2">
-                      <Activity className="h-4 w-4 text-gray-600" />
+                    <h4 className="text-sm font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                      <Activity className="h-4 w-4 text-gray-800" />
                       Top 5 Playbooks (This Month)
                     </h4>
                     <div className="space-y-2">
@@ -498,7 +498,7 @@ export default function UnifiedEnterprisePlatform() {
                             <span className="text-sm text-gray-900 font-medium">{playbook.name}</span>
                           </div>
                           <div className="flex items-center gap-4 text-xs">
-                            <span className="text-gray-600">{playbook.uses} uses</span>
+                            <span className="text-gray-800">{playbook.uses} uses</span>
                             <span className="text-emerald-400">{playbook.avgTime}</span>
                             <span className="text-purple-400 font-semibold">{playbook.value}</span>
                           </div>
@@ -534,12 +534,12 @@ export default function UnifiedEnterprisePlatform() {
                         </div>
                         <div className="space-y-1">
                           <div className="flex justify-between text-sm">
-                            <span className="text-gray-600">Progress:</span>
+                            <span className="text-gray-800">Progress:</span>
                             <span className="text-blue-400 font-bold">{scenario.progress}%</span>
                           </div>
                           <Progress value={scenario.progress} className="h-2" />
                           <div className="flex justify-between text-sm">
-                            <span className="text-gray-600">Projected ROI:</span>
+                            <span className="text-gray-800">Projected ROI:</span>
                             <span className="text-green-400 font-bold">{scenario.roi}</span>
                           </div>
                         </div>
@@ -565,17 +565,17 @@ export default function UnifiedEnterprisePlatform() {
                               {rec.priority.toUpperCase()}
                             </Badge>
                             <div className="flex items-center gap-1">
-                              <Brain className="h-4 w-4 text-purple-600" />
-                              <span className="text-xs text-gray-600">{rec.confidence}% confidence</span>
+                              <Brain className="h-4 w-4 text-purple-800" />
+                              <span className="text-xs text-gray-800">{rec.confidence}% confidence</span>
                             </div>
                           </div>
                           <h4 className="font-semibold text-sm mb-2 text-gray-900">{rec.title}</h4>
-                          <p className="text-xs text-gray-600 mb-3">{rec.description}</p>
+                          <p className="text-xs text-gray-800 mb-3">{rec.description}</p>
                           <div className="space-y-1">
                             <div className="flex items-center gap-2">
                               <span className="text-sm font-medium text-green-400">{rec.impact}</span>
                             </div>
-                            <div className="text-xs text-slate-600 dark:text-slate-200">
+                            <div className="text-xs text-gray-800 dark:text-slate-200">
                               {rec.timeframe} • {rec.dataPoints.toLocaleString()} data points
                             </div>
                           </div>
@@ -638,11 +638,11 @@ export default function UnifiedEnterprisePlatform() {
                     </Button>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="text-center p-3 bg-white dark:bg-red-900 rounded">
-                        <div className="text-2xl font-bold text-red-600">24/7</div>
+                        <div className="text-2xl font-bold text-red-700">24/7</div>
                         <div className="text-sm text-red-800 dark:text-red-200">Command Center</div>
                       </div>
                       <div className="text-center p-3 bg-white dark:bg-red-900 rounded">
-                        <div className="text-2xl font-bold text-red-600">15+</div>
+                        <div className="text-2xl font-bold text-red-700">15+</div>
                         <div className="text-sm text-red-800 dark:text-red-200">Response Templates</div>
                       </div>
                     </div>
@@ -659,14 +659,14 @@ export default function UnifiedEnterprisePlatform() {
                         <div className="p-3 bg-gray-50 rounded-lg border border-slate-600 hover:border-blue-500 cursor-pointer transition-colors">
                           <div className="flex justify-between items-start mb-2">
                             <div>
-                              <span className="text-xs text-gray-600 font-mono">{playbook.playbookId}</span>
+                              <span className="text-xs text-gray-800 font-mono">{playbook.playbookId}</span>
                               <h4 className="font-semibold text-gray-900">{playbook.name}</h4>
                             </div>
                             <Badge variant={playbook.severity === 'critical' ? 'destructive' : playbook.severity === 'high' ? 'default' : 'secondary'}>
                               {playbook.severity.toUpperCase()}
                             </Badge>
                           </div>
-                          <div className="text-sm text-gray-600 space-y-1">
+                          <div className="text-sm text-gray-800 space-y-1">
                             <div>Execution Time: {playbook.activationTime}</div>
                             <div>Team Size: {playbook.stakeholders}</div>
                           </div>
@@ -704,12 +704,12 @@ export default function UnifiedEnterprisePlatform() {
                         </div>
                         <div className="space-y-1">
                           <div className="flex justify-between text-xs">
-                            <span className="text-gray-600">Progress:</span>
+                            <span className="text-gray-800">Progress:</span>
                             <span className="text-blue-400 font-bold">{scenario.progress}%</span>
                           </div>
                           <Progress value={scenario.progress} className="h-1" />
                           <div className="flex justify-between text-xs">
-                            <span className="text-gray-600">Expected ROI:</span>
+                            <span className="text-gray-800">Expected ROI:</span>
                             <span className="text-green-400 font-bold">{scenario.roi}</span>
                           </div>
                         </div>
@@ -729,31 +729,31 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="grid grid-cols-2 gap-4">
                       <div className="text-center p-3 bg-gray-50 rounded">
                         <div className="text-xl font-bold text-blue-400">$4.2M</div>
-                        <div className="text-xs text-gray-600">Active Budget</div>
+                        <div className="text-xs text-gray-800">Active Budget</div>
                       </div>
                       <div className="text-center p-3 bg-gray-50 rounded">
                         <div className="text-xl font-bold text-green-400">189</div>
-                        <div className="text-xs text-gray-600">Team Members</div>
+                        <div className="text-xs text-gray-800">Team Members</div>
                       </div>
                     </div>
                     <div className="space-y-3">
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-gray-600">Budget Utilization</span>
+                          <span className="text-gray-800">Budget Utilization</span>
                           <span className="text-blue-400 font-bold">73%</span>
                         </div>
                         <Progress value={73} className="h-2" />
                       </div>
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-gray-600">Resource Efficiency</span>
+                          <span className="text-gray-800">Resource Efficiency</span>
                           <span className="text-green-400 font-bold">94%</span>
                         </div>
                         <Progress value={94} className="h-2" />
                       </div>
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-gray-600">Timeline Adherence</span>
+                          <span className="text-gray-800">Timeline Adherence</span>
                           <span className="text-orange-400 font-bold">82%</span>
                         </div>
                         <Progress value={82} className="h-2" />
@@ -776,15 +776,15 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2">
                       <div className="p-2 bg-gray-50 rounded text-sm">
                         <div className="text-gray-900 font-medium">Q1 2026 Strategy Review</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Due in 14 days • High Priority</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Due in 14 days • High Priority</div>
                       </div>
                       <div className="p-2 bg-gray-50 rounded text-sm">
                         <div className="text-gray-900 font-medium">Market Expansion Phase 2</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Due in 28 days • Medium Priority</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Due in 28 days • Medium Priority</div>
                       </div>
                       <div className="p-2 bg-gray-50 rounded text-sm">
                         <div className="text-gray-900 font-medium">Innovation Lab Launch</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Due in 45 days • High Priority</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Due in 45 days • High Priority</div>
                       </div>
                     </div>
                     <Button className="w-full bg-purple-600 hover:bg-purple-700 text-xs">
@@ -804,19 +804,19 @@ export default function UnifiedEnterprisePlatform() {
                   <CardContent className="space-y-3">
                     <div className="space-y-2">
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-600 text-sm">Executive Sponsors</span>
+                        <span className="text-gray-800 text-sm">Executive Sponsors</span>
                         <span className="text-blue-400 font-bold">12</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-600 text-sm">Department Heads</span>
+                        <span className="text-gray-800 text-sm">Department Heads</span>
                         <span className="text-green-400 font-bold">34</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-600 text-sm">Key Contributors</span>
+                        <span className="text-gray-800 text-sm">Key Contributors</span>
                         <span className="text-purple-400 font-bold">167</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-600 text-sm">Engagement Score</span>
+                        <span className="text-gray-800 text-sm">Engagement Score</span>
                         <span className="text-orange-400 font-bold">89%</span>
                       </div>
                     </div>
@@ -838,21 +838,21 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2">
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-slate-600 dark:text-slate-200">Strategic Alignment</span>
+                          <span className="text-gray-800 dark:text-slate-200">Strategic Alignment</span>
                           <span className="text-green-400 font-bold">91%</span>
                         </div>
                         <Progress value={91} className="h-1" />
                       </div>
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-slate-600 dark:text-slate-200">Execution Quality</span>
+                          <span className="text-gray-800 dark:text-slate-200">Execution Quality</span>
                           <span className="text-blue-400 font-bold">87%</span>
                         </div>
                         <Progress value={87} className="h-1" />
                       </div>
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-slate-600 dark:text-slate-200">Value Delivery</span>
+                          <span className="text-gray-800 dark:text-slate-200">Value Delivery</span>
                           <span className="text-purple-400 font-bold">94%</span>
                         </div>
                         <Progress value={94} className="h-1" />
@@ -882,7 +882,7 @@ export default function UnifiedEnterprisePlatform() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-3">
-                      <p className="text-slate-600 dark:text-slate-200 text-sm">{module.description}</p>
+                      <p className="text-gray-800 dark:text-slate-200 text-sm">{module.description}</p>
                       <div className="flex justify-between items-center">
                         <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30">
                           {module.status.toUpperCase()}
@@ -907,7 +907,7 @@ export default function UnifiedEnterprisePlatform() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <div className="text-slate-600 dark:text-slate-200">
+                    <div className="text-gray-800 dark:text-slate-200">
                       <div className="flex justify-between mb-2">
                         <span>Active Users:</span>
                         <span className="text-green-400 font-bold">{collaborationData.activeUsers}</span>
@@ -938,7 +938,7 @@ export default function UnifiedEnterprisePlatform() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-3">
-                    <div className="text-slate-600 dark:text-slate-200 text-sm space-y-2">
+                    <div className="text-gray-800 dark:text-slate-200 text-sm space-y-2">
                       <div className="flex justify-between items-center">
                         <span>North America:</span>
                         <div className="flex items-center gap-2">
@@ -975,8 +975,8 @@ export default function UnifiedEnterprisePlatform() {
                     {collaborationData.recentActivity.map((activity, index) => (
                       <div key={index} className="text-sm">
                         <div className="text-gray-900 font-medium">{activity.user}</div>
-                        <div className="text-gray-600">{activity.action}</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">{activity.time}</div>
+                        <div className="text-gray-800">{activity.action}</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">{activity.time}</div>
                       </div>
                     ))}
                   </CardContent>
@@ -1012,7 +1012,7 @@ export default function UnifiedEnterprisePlatform() {
                       </Button>
                     </div>
                     <div className="mt-4 p-3 bg-gray-50 rounded-lg">
-                      <div className="text-sm text-gray-600">
+                      <div className="text-sm text-gray-800">
                         <div className="flex justify-between mb-1">
                           <span>Messages Today:</span>
                           <span className="text-blue-400 font-bold">147</span>
@@ -1040,19 +1040,19 @@ export default function UnifiedEnterprisePlatform() {
                   <CardContent className="space-y-4">
                     <div className="space-y-3">
                       <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                        <span className="text-gray-600">Operations Team</span>
+                        <span className="text-gray-800">Operations Team</span>
                         <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30">SYNC</Badge>
                       </div>
                       <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                        <span className="text-gray-600">Finance Department</span>
+                        <span className="text-gray-800">Finance Department</span>
                         <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30">SYNC</Badge>
                       </div>
                       <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                        <span className="text-gray-600">Legal & Compliance</span>
+                        <span className="text-gray-800">Legal & Compliance</span>
                         <Badge variant="outline" className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30">PENDING</Badge>
                       </div>
                       <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                        <span className="text-gray-600">Technology Team</span>
+                        <span className="text-gray-800">Technology Team</span>
                         <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30">SYNC</Badge>
                       </div>
                     </div>
@@ -1077,7 +1077,7 @@ export default function UnifiedEnterprisePlatform() {
                   <CardContent>
                     <div className="text-center">
                       <div className="text-3xl font-bold text-green-400">98.7%</div>
-                      <div className="text-gray-600">Compliance Score</div>
+                      <div className="text-gray-800">Compliance Score</div>
                       <Progress value={98.7} className="h-2 mt-2" />
                     </div>
                   </CardContent>
@@ -1091,7 +1091,7 @@ export default function UnifiedEnterprisePlatform() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-slate-600 dark:text-slate-200 text-sm space-y-2">
+                    <div className="text-gray-800 dark:text-slate-200 text-sm space-y-2">
                       <div>Last Audit: 2 days ago</div>
                       <div>Next Review: 28 days</div>
                       <div>Active Findings: 0</div>
@@ -1107,7 +1107,7 @@ export default function UnifiedEnterprisePlatform() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-gray-600 text-sm space-y-1">
+                    <div className="text-gray-800 text-sm space-y-1">
                       <div>SOX Compliance ✓</div>
                       <div>ISO 27001 ✓</div>
                       <div>GDPR Ready ✓</div>
@@ -1130,27 +1130,27 @@ export default function UnifiedEnterprisePlatform() {
                   <CardContent className="space-y-3">
                     <div className="grid grid-cols-1 gap-2">
                       <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                        <span className="text-gray-600">SAP ERP</span>
+                        <span className="text-gray-800">SAP ERP</span>
                         <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30">ACTIVE</Badge>
                       </div>
                       <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                        <span className="text-gray-600">Salesforce CRM</span>
+                        <span className="text-gray-800">Salesforce CRM</span>
                         <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30">ACTIVE</Badge>
                       </div>
                       <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                        <span className="text-gray-600">Microsoft Dynamics</span>
+                        <span className="text-gray-800">Microsoft Dynamics</span>
                         <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30">ACTIVE</Badge>
                       </div>
                       <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                        <span className="text-gray-600">Oracle Database</span>
+                        <span className="text-gray-800">Oracle Database</span>
                         <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30">ACTIVE</Badge>
                       </div>
                       <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                        <span className="text-gray-600">Tableau Analytics</span>
+                        <span className="text-gray-800">Tableau Analytics</span>
                         <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30">ACTIVE</Badge>
                       </div>
                       <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                        <span className="text-gray-600">Slack Workspace</span>
+                        <span className="text-gray-800">Slack Workspace</span>
                         <Badge variant="outline" className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30">SYNC</Badge>
                       </div>
                     </div>
@@ -1168,28 +1168,28 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="grid grid-cols-2 gap-4">
                       <div className="text-center p-3 bg-gray-50 rounded">
                         <div className="text-xl font-bold text-blue-400">47</div>
-                        <div className="text-xs text-gray-600">Active APIs</div>
+                        <div className="text-xs text-gray-800">Active APIs</div>
                       </div>
                       <div className="text-center p-3 bg-gray-50 rounded">
                         <div className="text-xl font-bold text-green-400">99.97%</div>
-                        <div className="text-xs text-gray-600">Uptime SLA</div>
+                        <div className="text-xs text-gray-800">Uptime SLA</div>
                       </div>
                     </div>
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Data Flow Rate:</span>
+                        <span className="text-gray-800">Data Flow Rate:</span>
                         <span className="text-blue-400 font-bold">2.4TB/hour</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">API Calls/min:</span>
+                        <span className="text-gray-800">API Calls/min:</span>
                         <span className="text-green-400 font-bold">34,672</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Error Rate:</span>
+                        <span className="text-gray-800">Error Rate:</span>
                         <span className="text-orange-400 font-bold">0.03%</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Data Quality Score:</span>
+                        <span className="text-gray-800">Data Quality Score:</span>
                         <span className="text-purple-400 font-bold">96.8%</span>
                       </div>
                     </div>
@@ -1210,15 +1210,15 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2">
                       <div className="p-2 bg-gray-50 rounded text-sm">
                         <div className="text-gray-900 font-medium">Auto-sync Financial Data</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Every 15 minutes</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Every 15 minutes</div>
                       </div>
                       <div className="p-2 bg-gray-50 rounded text-sm">
                         <div className="text-gray-900 font-medium">Customer Data Pipeline</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Real-time</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Real-time</div>
                       </div>
                       <div className="p-2 bg-gray-50 rounded text-sm">
                         <div className="text-gray-900 font-medium">Inventory Updates</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Hourly</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Hourly</div>
                       </div>
                     </div>
                     <Button className="w-full bg-yellow-600 hover:bg-yellow-700 text-xs">
@@ -1238,19 +1238,19 @@ export default function UnifiedEnterprisePlatform() {
                   <CardContent className="space-y-3">
                     <div className="space-y-2">
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-600 text-sm">OAuth 2.0 Auth</span>
+                        <span className="text-gray-800 text-sm">OAuth 2.0 Auth</span>
                         <CheckCircle className="h-4 w-4 text-green-400" />
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-600 text-sm">End-to-End Encryption</span>
+                        <span className="text-gray-800 text-sm">End-to-End Encryption</span>
                         <CheckCircle className="h-4 w-4 text-green-400" />
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-600 text-sm">Data Masking</span>
+                        <span className="text-gray-800 text-sm">Data Masking</span>
                         <CheckCircle className="h-4 w-4 text-green-400" />
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-600 text-sm">Audit Logging</span>
+                        <span className="text-gray-800 text-sm">Audit Logging</span>
                         <CheckCircle className="h-4 w-4 text-green-400" />
                       </div>
                     </div>
@@ -1272,21 +1272,21 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2">
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-gray-600">System Load</span>
+                          <span className="text-gray-800">System Load</span>
                           <span className="text-blue-400 font-bold">67%</span>
                         </div>
                         <Progress value={67} className="h-1" />
                       </div>
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-gray-600">Network Latency</span>
+                          <span className="text-gray-800">Network Latency</span>
                           <span className="text-green-400 font-bold">12ms</span>
                         </div>
                         <Progress value={88} className="h-1" />
                       </div>
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-gray-600">Data Sync Status</span>
+                          <span className="text-gray-800">Data Sync Status</span>
                           <span className="text-purple-400 font-bold">98%</span>
                         </div>
                         <Progress value={98} className="h-1" />
@@ -1315,28 +1315,28 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="grid grid-cols-2 gap-4">
                       <div className="text-center p-3 bg-gray-50 rounded">
                         <div className="text-xl font-bold text-green-400">94.7%</div>
-                        <div className="text-xs text-gray-600">Prediction Accuracy</div>
+                        <div className="text-xs text-gray-800">Prediction Accuracy</div>
                       </div>
                       <div className="text-center p-3 bg-gray-50 rounded">
                         <div className="text-xl font-bold text-blue-400">2.4M</div>
-                        <div className="text-xs text-gray-600">Data Points</div>
+                        <div className="text-xs text-gray-800">Data Points</div>
                       </div>
                     </div>
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Market Forecasting:</span>
+                        <span className="text-gray-800">Market Forecasting:</span>
                         <span className="text-green-400 font-bold">96.2%</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Risk Prediction:</span>
+                        <span className="text-gray-800">Risk Prediction:</span>
                         <span className="text-blue-400 font-bold">93.8%</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Revenue Projection:</span>
+                        <span className="text-gray-800">Revenue Projection:</span>
                         <span className="text-purple-400 font-bold">92.1%</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Customer Behavior:</span>
+                        <span className="text-gray-800">Customer Behavior:</span>
                         <span className="text-orange-400 font-bold">89.6%</span>
                       </div>
                     </div>
@@ -1354,28 +1354,28 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="grid grid-cols-2 gap-4">
                       <div className="text-center p-3 bg-gray-50 rounded">
                         <div className="text-xl font-bold text-blue-400">67</div>
-                        <div className="text-xs text-gray-600">Active Dashboards</div>
+                        <div className="text-xs text-gray-800">Active Dashboards</div>
                       </div>
                       <div className="text-center p-3 bg-gray-50 rounded">
                         <div className="text-xl font-bold text-green-400">34</div>
-                        <div className="text-xs text-gray-600">Data Sources</div>
+                        <div className="text-xs text-gray-800">Data Sources</div>
                       </div>
                     </div>
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Real-time Feeds:</span>
+                        <span className="text-gray-800">Real-time Feeds:</span>
                         <span className="text-green-400 font-bold">18 Active</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Data Processing:</span>
+                        <span className="text-gray-800">Data Processing:</span>
                         <span className="text-blue-400 font-bold">4.7TB/day</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Query Performance:</span>
+                        <span className="text-gray-800">Query Performance:</span>
                         <span className="text-purple-400 font-bold">0.3s avg</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Data Freshness:</span>
+                        <span className="text-gray-800">Data Freshness:</span>
                         <span className="text-orange-400 font-bold">Real-time</span>
                       </div>
                     </div>
@@ -1396,15 +1396,15 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2">
                       <div className="p-2 bg-gray-50 rounded text-sm">
                         <div className="text-gray-900 font-medium">Competitor Analysis</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Updated 2 hours ago</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Updated 2 hours ago</div>
                       </div>
                       <div className="p-2 bg-gray-50 rounded text-sm">
                         <div className="text-gray-900 font-medium">Market Trends</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Live monitoring</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Live monitoring</div>
                       </div>
                       <div className="p-2 bg-gray-50 rounded text-sm">
                         <div className="text-gray-900 font-medium">Industry Benchmarks</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Daily updates</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Daily updates</div>
                       </div>
                     </div>
                     <Button className="w-full bg-purple-600 hover:bg-purple-700 text-xs">
@@ -1425,21 +1425,21 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2">
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-gray-600">Customer Satisfaction</span>
+                          <span className="text-gray-800">Customer Satisfaction</span>
                           <span className="text-green-400 font-bold">94.8%</span>
                         </div>
                         <Progress value={94.8} className="h-1" />
                       </div>
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-gray-600">Retention Rate</span>
+                          <span className="text-gray-800">Retention Rate</span>
                           <span className="text-blue-400 font-bold">87.3%</span>
                         </div>
                         <Progress value={87.3} className="h-1" />
                       </div>
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-gray-600">Churn Risk</span>
+                          <span className="text-gray-800">Churn Risk</span>
                           <span className="text-orange-400 font-bold">12.7%</span>
                         </div>
                         <Progress value={12.7} className="h-1" />
@@ -1462,19 +1462,19 @@ export default function UnifiedEnterprisePlatform() {
                   <CardContent className="space-y-3">
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Revenue Growth:</span>
+                        <span className="text-gray-800">Revenue Growth:</span>
                         <span className="text-green-400 font-bold">+18.7%</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Profit Margin:</span>
+                        <span className="text-gray-800">Profit Margin:</span>
                         <span className="text-blue-400 font-bold">23.4%</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Cost Efficiency:</span>
+                        <span className="text-gray-800">Cost Efficiency:</span>
                         <span className="text-purple-400 font-bold">+12.1%</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">ROI:</span>
+                        <span className="text-gray-800">ROI:</span>
                         <span className="text-orange-400 font-bold">267%</span>
                       </div>
                     </div>
@@ -1502,21 +1502,21 @@ export default function UnifiedEnterprisePlatform() {
                           <span className="text-gray-900 font-medium text-sm">Revenue Forecasting Model</span>
                           <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">ACTIVE</Badge>
                         </div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Accuracy: 96.2% • Last trained: 2 days ago</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Accuracy: 96.2% • Last trained: 2 days ago</div>
                       </div>
                       <div className="p-3 bg-gray-50 rounded">
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-gray-900 font-medium text-sm">Customer Churn Prediction</span>
                           <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">ACTIVE</Badge>
                         </div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Accuracy: 89.7% • Last trained: 1 day ago</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Accuracy: 89.7% • Last trained: 1 day ago</div>
                       </div>
                       <div className="p-3 bg-gray-50 rounded">
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-gray-900 font-medium text-sm">Market Risk Assessment</span>
                           <Badge variant="outline" className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30 text-xs">TRAINING</Badge>
                         </div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Accuracy: 93.4% • Training in progress</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Accuracy: 93.4% • Training in progress</div>
                       </div>
                     </div>
                   </CardContent>
@@ -1531,21 +1531,21 @@ export default function UnifiedEnterprisePlatform() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="space-y-2 max-h-48 overflow-y-auto">
-                      <div className="text-xs text-gray-600 p-2 bg-gray-50 rounded">
+                      <div className="text-xs text-gray-800 p-2 bg-gray-50 rounded">
                         <div className="text-gray-900 font-medium">Revenue spike detected</div>
-                        <div className="text-slate-600 dark:text-slate-200">+23% above forecast • 2 minutes ago</div>
+                        <div className="text-gray-800 dark:text-slate-200">+23% above forecast • 2 minutes ago</div>
                       </div>
-                      <div className="text-xs text-gray-600 p-2 bg-gray-50 rounded">
+                      <div className="text-xs text-gray-800 p-2 bg-gray-50 rounded">
                         <div className="text-gray-900 font-medium">Customer engagement surge</div>
-                        <div className="text-slate-600 dark:text-slate-200">Mobile app activity +45% • 5 minutes ago</div>
+                        <div className="text-gray-800 dark:text-slate-200">Mobile app activity +45% • 5 minutes ago</div>
                       </div>
-                      <div className="text-xs text-gray-600 p-2 bg-gray-50 rounded">
+                      <div className="text-xs text-gray-800 p-2 bg-gray-50 rounded">
                         <div className="text-gray-900 font-medium">Market trend shift identified</div>
-                        <div className="text-slate-600 dark:text-slate-200">Tech sector momentum +12% • 8 minutes ago</div>
+                        <div className="text-gray-800 dark:text-slate-200">Tech sector momentum +12% • 8 minutes ago</div>
                       </div>
-                      <div className="text-xs text-gray-600 p-2 bg-gray-50 rounded">
+                      <div className="text-xs text-gray-800 p-2 bg-gray-50 rounded">
                         <div className="text-gray-900 font-medium">Cost optimization opportunity</div>
-                        <div className="text-slate-600 dark:text-slate-200">Supply chain efficiency +7% • 12 minutes ago</div>
+                        <div className="text-gray-800 dark:text-slate-200">Supply chain efficiency +7% • 12 minutes ago</div>
                       </div>
                     </div>
                     <Button className="w-full bg-blue-600 hover:bg-blue-700 text-xs">
@@ -1571,24 +1571,24 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="grid grid-cols-2 gap-4">
                       <div className="text-center p-3 bg-gray-50 rounded">
                         <div className="text-xl font-bold text-yellow-400">47</div>
-                        <div className="text-xs text-gray-600">Active Triggers</div>
+                        <div className="text-xs text-gray-800">Active Triggers</div>
                       </div>
                       <div className="text-center p-3 bg-gray-50 rounded">
                         <div className="text-xl font-bold text-green-400">12</div>
-                        <div className="text-xs text-gray-600">Triggered Today</div>
+                        <div className="text-xs text-gray-800">Triggered Today</div>
                       </div>
                     </div>
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Success Rate:</span>
+                        <span className="text-gray-800">Success Rate:</span>
                         <span className="text-green-400 font-bold">99.8%</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Avg Response Time:</span>
+                        <span className="text-gray-800">Avg Response Time:</span>
                         <span className="text-blue-400 font-bold">147ms</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">False Positives:</span>
+                        <span className="text-gray-800">False Positives:</span>
                         <span className="text-orange-400 font-bold">0.2%</span>
                       </div>
                     </div>
@@ -1609,21 +1609,21 @@ export default function UnifiedEnterprisePlatform() {
                           <span className="text-gray-900 font-medium text-sm">Market Volatility Alert</span>
                           <Badge variant="outline" className="bg-red-500/20 text-red-400 border-red-500/30 text-xs">ACTIVE</Badge>
                         </div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Threshold: &gt;15% change • Last trigger: 2 hours ago</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Threshold: &gt;15% change • Last trigger: 2 hours ago</div>
                       </div>
                       <div className="p-3 bg-gray-50 rounded">
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-gray-900 font-medium text-sm">Revenue Target Monitor</span>
                           <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">ACTIVE</Badge>
                         </div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Threshold: 95% of monthly target • Status: On track</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Threshold: 95% of monthly target • Status: On track</div>
                       </div>
                       <div className="p-3 bg-gray-50 rounded">
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-gray-900 font-medium text-sm">Customer Churn Risk</span>
                           <Badge variant="outline" className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30 text-xs">MONITORING</Badge>
                         </div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">ML Model confidence: 94% • Risk threshold: &gt;20%</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">ML Model confidence: 94% • Risk threshold: &gt;20%</div>
                       </div>
                     </div>
                   </CardContent>
@@ -1643,15 +1643,15 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2">
                       <div className="p-2 bg-gray-50 rounded text-sm">
                         <div className="text-gray-900 font-medium">Revenue Threshold Alert</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Trigger when below 90% of target</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Trigger when below 90% of target</div>
                       </div>
                       <div className="p-2 bg-gray-50 rounded text-sm">
                         <div className="text-gray-900 font-medium">Cash Flow Warning</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Monitor liquidity ratios</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Monitor liquidity ratios</div>
                       </div>
                       <div className="p-2 bg-gray-50 rounded text-sm">
                         <div className="text-gray-900 font-medium">Cost Overrun Detection</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Budget variance &gt;15%</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Budget variance &gt;15%</div>
                       </div>
                     </div>
                     <Button className="w-full bg-green-600 hover:bg-green-700 text-xs">
@@ -1672,15 +1672,15 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2">
                       <div className="p-2 bg-gray-50 rounded text-sm">
                         <div className="text-gray-900 font-medium">System Performance</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Response time &gt;2s threshold</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Response time &gt;2s threshold</div>
                       </div>
                       <div className="p-2 bg-gray-50 rounded text-sm">
                         <div className="text-gray-900 font-medium">Supply Chain Disruption</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Vendor delivery delays</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Vendor delivery delays</div>
                       </div>
                       <div className="p-2 bg-gray-50 rounded text-sm">
                         <div className="text-gray-900 font-medium">Quality Control Alert</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Defect rate &gt;3%</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Defect rate &gt;3%</div>
                       </div>
                     </div>
                     <Button className="w-full bg-red-600 hover:bg-red-700 text-xs">
@@ -1701,15 +1701,15 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2">
                       <div className="p-2 bg-gray-50 rounded text-sm">
                         <div className="text-gray-900 font-medium">Market Share Changes</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Competitor activity detection</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Competitor activity detection</div>
                       </div>
                       <div className="p-2 bg-gray-50 rounded text-sm">
                         <div className="text-gray-900 font-medium">Customer Sentiment</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">NPS score below 7.0</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">NPS score below 7.0</div>
                       </div>
                       <div className="p-2 bg-gray-50 rounded text-sm">
                         <div className="text-gray-900 font-medium">Innovation Opportunity</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Technology trend analysis</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Technology trend analysis</div>
                       </div>
                     </div>
                     <Button className="w-full bg-blue-600 hover:bg-blue-700 text-xs">
@@ -1736,7 +1736,7 @@ export default function UnifiedEnterprisePlatform() {
                           <span className="text-gray-900 font-medium text-sm">Pattern Recognition Model</span>
                           <Badge variant="outline" className="bg-purple-500/20 text-purple-400 border-purple-500/30 text-xs">LEARNING</Badge>
                         </div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Analyzing 47,892 historical trigger events</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Analyzing 47,892 historical trigger events</div>
                         <Progress value={73} className="h-1 mt-2" />
                       </div>
                       <div className="p-3 bg-gray-50 rounded">
@@ -1744,7 +1744,7 @@ export default function UnifiedEnterprisePlatform() {
                           <span className="text-gray-900 font-medium text-sm">Predictive Trigger Engine</span>
                           <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">ACTIVE</Badge>
                         </div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">Accuracy: 94.7% • Last updated: 2 hours ago</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Accuracy: 94.7% • Last updated: 2 hours ago</div>
                       </div>
                     </div>
                   </CardContent>
@@ -1759,17 +1759,17 @@ export default function UnifiedEnterprisePlatform() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="space-y-2 max-h-48 overflow-y-auto">
-                      <div className="text-xs text-gray-600 p-2 bg-gray-50 rounded">
+                      <div className="text-xs text-gray-800 p-2 bg-gray-50 rounded">
                         <div className="text-gray-900 font-medium">Market volatility trigger activated</div>
-                        <div className="text-slate-600 dark:text-slate-200">Backup supplier activated • 2 hours ago</div>
+                        <div className="text-gray-800 dark:text-slate-200">Backup supplier activated • 2 hours ago</div>
                       </div>
-                      <div className="text-xs text-gray-600 p-2 bg-gray-50 rounded">
+                      <div className="text-xs text-gray-800 p-2 bg-gray-50 rounded">
                         <div className="text-gray-900 font-medium">Performance threshold reached</div>
-                        <div className="text-slate-600 dark:text-slate-200">Revenue target achieved • 5 hours ago</div>
+                        <div className="text-gray-800 dark:text-slate-200">Revenue target achieved • 5 hours ago</div>
                       </div>
-                      <div className="text-xs text-gray-600 p-2 bg-gray-50 rounded">
+                      <div className="text-xs text-gray-800 p-2 bg-gray-50 rounded">
                         <div className="text-gray-900 font-medium">Customer satisfaction spike</div>
-                        <div className="text-slate-600 dark:text-slate-200">NPS increased to 9.2 • 8 hours ago</div>
+                        <div className="text-gray-800 dark:text-slate-200">NPS increased to 9.2 • 8 hours ago</div>
                       </div>
                     </div>
                     <Button className="w-full bg-orange-600 hover:bg-orange-700 text-xs">
@@ -1805,7 +1805,7 @@ export default function UnifiedEnterprisePlatform() {
                       <div className="text-sm opacity-90">Decisions Supported</div>
                     </div>
                   </div>
-                  <Button className="w-full mt-4 bg-white text-purple-600 hover:bg-gray-100">
+                  <Button className="w-full mt-4 bg-white text-purple-800 hover:bg-gray-100">
                     <Brain className="h-4 w-4 mr-2" />
                     Launch Executive Assistant
                   </Button>
@@ -1831,21 +1831,21 @@ export default function UnifiedEnterprisePlatform() {
                               {rec.priority.toUpperCase()}
                             </Badge>
                             <div className="flex items-center gap-1">
-                              <Brain className="h-4 w-4 text-purple-600" />
-                              <span className="text-xs text-gray-600">{rec.confidence}% confidence</span>
+                              <Brain className="h-4 w-4 text-purple-800" />
+                              <span className="text-xs text-gray-800">{rec.confidence}% confidence</span>
                             </div>
                           </div>
                           <h4 className="font-semibold text-sm mb-2 text-gray-900">{rec.title}</h4>
-                          <p className="text-xs text-gray-600 mb-3">{rec.description}</p>
+                          <p className="text-xs text-gray-800 mb-3">{rec.description}</p>
                           <div className="space-y-1">
                             <div className="flex items-center gap-2">
                               <span className="text-sm font-medium text-green-400">{rec.impact}</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <Clock className="h-4 w-4 text-blue-600" />
-                              <span className="text-sm text-gray-600">{rec.timeframe}</span>
+                              <Clock className="h-4 w-4 text-blue-800" />
+                              <span className="text-sm text-gray-800">{rec.timeframe}</span>
                             </div>
-                            <div className="text-xs text-slate-600 dark:text-slate-200">
+                            <div className="text-xs text-gray-800 dark:text-slate-200">
                               Model: {rec.mlModel} • {rec.dataPoints.toLocaleString()} data points
                             </div>
                           </div>
@@ -1885,7 +1885,7 @@ export default function UnifiedEnterprisePlatform() {
                       </Button>
                     </div>
                     <div className="p-3 bg-gray-50 rounded-lg">
-                      <div className="text-sm text-gray-600 space-y-1">
+                      <div className="text-sm text-gray-800 space-y-1">
                         <div className="flex justify-between">
                           <span>Executive Alerts:</span>
                           <span className="text-red-400 font-bold">2</span>
@@ -1914,28 +1914,28 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-3">
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-gray-600">Revenue Growth</span>
+                          <span className="text-gray-800">Revenue Growth</span>
                           <span className="text-green-400 font-bold">+24.7%</span>
                         </div>
                         <Progress value={84.7} className="h-2" />
                       </div>
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-gray-600">Market Share</span>
+                          <span className="text-gray-800">Market Share</span>
                           <span className="text-blue-400 font-bold">18.3%</span>
                         </div>
                         <Progress value={73.3} className="h-2" />
                       </div>
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-gray-600">Customer Satisfaction</span>
+                          <span className="text-gray-800">Customer Satisfaction</span>
                           <span className="text-purple-400 font-bold">96.2%</span>
                         </div>
                         <Progress value={96.2} className="h-2" />
                       </div>
                       <div>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-gray-600">Operational Efficiency</span>
+                          <span className="text-gray-800">Operational Efficiency</span>
                           <span className="text-orange-400 font-bold">91.8%</span>
                         </div>
                         <Progress value={91.8} className="h-2" />

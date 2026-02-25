@@ -49,8 +49,8 @@ export default function CrisisResponse() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold text-green-700 dark:text-green-300">98%</div>
-                <div className="text-xs text-green-600 dark:text-green-400">Crisis Prepared</div>
+                <div className="text-2xl font-bold text-emerald-800 dark:text-green-300">98%</div>
+                <div className="text-xs text-emerald-700 dark:text-green-400">Crisis Prepared</div>
               </CardContent>
             </Card>
 
@@ -62,8 +62,8 @@ export default function CrisisResponse() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold text-blue-700 dark:text-blue-300">&lt;1hr</div>
-                <div className="text-xs text-blue-600 dark:text-blue-400">Average Activation</div>
+                <div className="text-2xl font-bold text-blue-800 dark:text-blue-300">&lt;1hr</div>
+                <div className="text-xs text-blue-800 dark:text-blue-400">Average Activation</div>
               </CardContent>
             </Card>
 
@@ -76,7 +76,7 @@ export default function CrisisResponse() {
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold text-purple-700 dark:text-purple-300">15+</div>
-                <div className="text-xs text-purple-600 dark:text-purple-400">Crisis Scenarios</div>
+                <div className="text-xs text-purple-800 dark:text-purple-400">Crisis Scenarios</div>
               </CardContent>
             </Card>
 

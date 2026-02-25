@@ -170,7 +170,7 @@ export default function DecisionTreeBuilder() {
           <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-2" data-testid="page-title">
             Create Decision Tree
           </h1>
-          <p className="text-lg text-gray-600 dark:text-slate-300">
+          <p className="text-lg text-gray-800 dark:text-slate-300">
             Pre-stage critical decisions before scenarios occur. Head coaches prepare decision trees all week—so should you.
           </p>
         </div>
@@ -193,16 +193,16 @@ export default function DecisionTreeBuilder() {
                 </p>
                 <p className="text-slate-700 dark:text-slate-300 mt-2">
                   <strong>Do the same for your business.</strong> Pre-stage critical decisions for any scenario—
-                  <span className="text-emerald-600 dark:text-emerald-400">seizing an M&A opportunity</span>, 
-                  <span className="text-blue-600 dark:text-blue-400">defending against a crisis</span>, or 
-                  <span className="text-purple-600 dark:text-purple-400">driving AI transformation</span>. 
+                  <span className="text-emerald-700 dark:text-emerald-400">seizing an M&A opportunity</span>, 
+                  <span className="text-blue-800 dark:text-blue-400">defending against a crisis</span>, or 
+                  <span className="text-purple-800 dark:text-purple-400">driving AI transformation</span>. 
                   You don't panic—you execute what you already prepared.
                 </p>
                 <div className="mt-4 p-4 bg-white dark:bg-slate-800 rounded-lg border border-blue-200 dark:border-blue-700">
                   <p className="text-sm font-semibold text-slate-900 dark:text-white mb-1">
                     That's the IDEA:
                   </p>
-                  <p className="text-sm text-gray-600 dark:text-slate-300">
+                  <p className="text-sm text-gray-800 dark:text-slate-300">
                     Comfortable and confident that we are prepared to execute. No matter the situation.
                   </p>
                 </div>
@@ -227,7 +227,7 @@ export default function DecisionTreeBuilder() {
                 onChange={(e) => setScenario(e.target.value)}
                 data-testid="input-scenario"
               />
-              <p className="text-xs text-gray-600 mt-1">
+              <p className="text-xs text-gray-800 mt-1">
                 What situation triggers this decision?
               </p>
             </div>
@@ -455,7 +455,7 @@ export default function DecisionTreeBuilder() {
                       rows={3}
                       className="bg-white dark:bg-slate-800"
                     />
-                    <p className="text-xs text-gray-600 mt-1">
+                    <p className="text-xs text-gray-800 mt-1">
                       Decision criteria help executives choose fast
                     </p>
                   </div>

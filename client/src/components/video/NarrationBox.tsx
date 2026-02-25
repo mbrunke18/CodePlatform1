@@ -16,7 +16,7 @@ export function NarrationBox({ headline, description, delay = 0.3 }: NarrationBo
     >
       <div className="bg-white/95 backdrop-blur-sm border-l-2 border-[#D4AF37] shadow-lg rounded-r-lg px-3 py-2">
         <p className="text-[#D4AF37] font-semibold text-xs mb-0.5">{headline}</p>
-        <p className="text-gray-600 text-xs leading-tight">{description}</p>
+        <p className="text-gray-800 text-xs leading-tight">{description}</p>
       </div>
     </motion.div>
   );

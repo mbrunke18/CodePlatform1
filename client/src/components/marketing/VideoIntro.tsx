@@ -102,7 +102,7 @@ export default function VideoIntro({ onComplete, onSkip }: VideoIntroProps) {
         onClick={onSkip}
         variant="ghost"
         size="lg"
-        className="fixed top-6 right-6 z-[110] text-gray-500 hover:text-gray-900 hover:bg-gray-100 gap-2 text-lg"
+        className="fixed top-6 right-6 z-[110] text-gray-700 hover:text-gray-900 hover:bg-gray-100 gap-2 text-lg"
       >
         <SkipForward className="w-5 h-5" />
         Skip to Site
@@ -121,7 +121,7 @@ export default function VideoIntro({ onComplete, onSkip }: VideoIntroProps) {
             />
           ))}
         </div>
-        <span className="text-xs text-gray-400 font-mono ml-1">
+        <span className="text-xs text-gray-600 font-mono ml-1">
           {Math.floor(overallProgress / 1000)}s
         </span>
       </div>
@@ -131,7 +131,7 @@ export default function VideoIntro({ onComplete, onSkip }: VideoIntroProps) {
         variant="ghost"
         size="sm"
         onClick={() => setIsMuted(!isMuted)}
-        className="absolute bottom-4 right-4 z-30 text-gray-400 hover:text-gray-900 hover:bg-gray-100 opacity-40 hover:opacity-100 transition-opacity h-8 w-8 p-0"
+        className="absolute bottom-4 right-4 z-30 text-gray-600 hover:text-gray-900 hover:bg-gray-100 opacity-40 hover:opacity-100 transition-opacity h-8 w-8 p-0"
       >
         {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
       </Button>

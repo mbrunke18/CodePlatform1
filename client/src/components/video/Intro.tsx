@@ -75,7 +75,7 @@ export function Intro({ progress }: SceneProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
-          className="text-xl md:text-2xl text-gray-600 max-w-xl mx-auto"
+          className="text-xl md:text-2xl text-gray-800 max-w-xl mx-auto"
         >
           17 independent reports from 15 major firms confirm: execution infrastructure is the enterprise bottleneck.
         </motion.p>
@@ -95,19 +95,19 @@ export function Intro({ progress }: SceneProps) {
           transition={{ delay: 1.5 }}
           className="mt-6 flex flex-wrap justify-center gap-3 text-xs"
         >
-          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-500">
+          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-700">
             M&A Integration
           </span>
-          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-500">
+          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-700">
             Crisis Response
           </span>
-          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-500">
+          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-700">
             Compound Disruption
           </span>
-          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-500">
+          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-700">
             Competitive Moves
           </span>
-          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-500">
+          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-700">
             Regulatory Changes
           </span>
         </motion.div>

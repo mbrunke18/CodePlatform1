@@ -55,22 +55,22 @@ export default function FinancialRansomwareDemo() {
       <div className="border-b border-blue-800/20 bg-white pt-20">
         <div className="container mx-auto px-6 py-3">
           <div className="flex items-center gap-4 text-sm">
-            <div className={`flex items-center gap-2 ${currentAct === "introduction" ? "text-blue-400" : "text-blue-600"}`}>
+            <div className={`flex items-center gap-2 ${currentAct === "introduction" ? "text-blue-400" : "text-blue-800"}`}>
               <div className={`w-2 h-2 rounded-full ${currentAct === "introduction" ? "bg-blue-400" : "bg-blue-800"}`} />
               Introduction
             </div>
             <div className="flex-1 page-background h-px bg-blue-900" />
-            <div className={`flex items-center gap-2 ${currentAct === "ai-detection" ? "text-blue-400" : "text-blue-600"}`}>
+            <div className={`flex items-center gap-2 ${currentAct === "ai-detection" ? "text-blue-400" : "text-blue-800"}`}>
               <div className={`w-2 h-2 rounded-full ${currentAct === "ai-detection" ? "bg-blue-400" : "bg-blue-800"}`} />
               AI Detection
             </div>
             <div className="flex-1 page-background h-px bg-blue-900" />
-            <div className={`flex items-center gap-2 ${currentAct === "coordination" ? "text-blue-400" : "text-blue-600"}`}>
+            <div className={`flex items-center gap-2 ${currentAct === "coordination" ? "text-blue-400" : "text-blue-800"}`}>
               <div className={`w-2 h-2 rounded-full ${currentAct === "coordination" ? "bg-blue-400" : "bg-blue-800"}`} />
               Coordination
             </div>
             <div className="flex-1 page-background h-px bg-blue-900" />
-            <div className={`flex items-center gap-2 ${currentAct === "outcome" || currentAct === "summary" ? "text-blue-400" : "text-blue-600"}`}>
+            <div className={`flex items-center gap-2 ${currentAct === "outcome" || currentAct === "summary" ? "text-blue-400" : "text-blue-800"}`}>
               <div className={`w-2 h-2 rounded-full ${currentAct === "outcome" || currentAct === "summary" ? "bg-blue-400" : "bg-blue-800"}`} />
               Outcome
             </div>
@@ -84,7 +84,7 @@ export default function FinancialRansomwareDemo() {
           <div className="max-w-5xl mx-auto space-y-8 animate-fade-in">
             <div className="text-center space-y-4">
               <h2 className="text-4xl font-bold text-gray-900">{financialDemoData.crisis.title}</h2>
-              <p className="text-xl text-blue-700">{financialDemoData.crisis.subtitle}</p>
+              <p className="text-xl text-blue-800">{financialDemoData.crisis.subtitle}</p>
             </div>
 
             {/* Organization Info */}
@@ -93,7 +93,7 @@ export default function FinancialRansomwareDemo() {
                 <Building2 className="w-6 h-6 text-blue-400 mt-1" />
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">{financialDemoData.organization.name}</h3>
-                  <p className="text-blue-700 mb-4">{financialDemoData.organization.type}</p>
+                  <p className="text-blue-800 mb-4">{financialDemoData.organization.type}</p>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {Object.entries(financialDemoData.organization.stats).map(([key, value]) => (
                       <div key={key}>
@@ -112,7 +112,7 @@ export default function FinancialRansomwareDemo() {
                 <AlertTriangle className="w-6 h-6 text-red-400 mt-1" />
                 <div className="flex-1 page-background">
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">The Crisis Scenario</h3>
-                  <p className="text-blue-600 mb-4 leading-relaxed">{financialDemoData.crisis.description}</p>
+                  <p className="text-blue-800 mb-4 leading-relaxed">{financialDemoData.crisis.description}</p>
                   
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div className="bg-white p-4 rounded-lg border border-red-800/30">
@@ -144,9 +144,9 @@ export default function FinancialRansomwareDemo() {
             <Card className="bg-gradient-to-r   border-blue-800/30 p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">M Playbook: {financialDemoData.playbook.id} - {financialDemoData.playbook.name}</h3>
               <div className="flex items-center gap-6 mb-4">
-                <div className="text-sm text-blue-700">Domain: <span className="text-gray-900 font-semibold">{financialDemoData.playbook.domain}</span></div>
-                <div className="text-sm text-blue-700">Sections: <span className="text-gray-900 font-semibold">{financialDemoData.playbook.sections}</span></div>
-                <div className="text-sm text-blue-700">
+                <div className="text-sm text-blue-800">Domain: <span className="text-gray-900 font-semibold">{financialDemoData.playbook.domain}</span></div>
+                <div className="text-sm text-blue-800">Sections: <span className="text-gray-900 font-semibold">{financialDemoData.playbook.sections}</span></div>
+                <div className="text-sm text-blue-800">
                   Preparedness: <span className="text-green-400 font-semibold">{financialDemoData.playbook.preparedness}%</span>
                 </div>
               </div>
@@ -197,7 +197,7 @@ export default function FinancialRansomwareDemo() {
           <div className="max-w-6xl mx-auto space-y-8">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-gray-900 mb-2">Crisis Contained</h2>
-              <p className="text-xl text-blue-700">Compare the traditional approach vs. Execution OS' coordinated response</p>
+              <p className="text-xl text-blue-800">Compare the traditional approach vs. Execution OS' coordinated response</p>
             </div>
 
             <ROIComparison
@@ -228,7 +228,7 @@ export default function FinancialRansomwareDemo() {
                 <CheckCircle2 className="w-10 h-10 text-green-400" />
               </div>
               <h2 className="text-3xl font-bold text-gray-900 mb-2">Demo Complete</h2>
-              <p className="text-xl text-blue-700">Financial Services Ransomware Response</p>
+              <p className="text-xl text-blue-800">Financial Services Ransomware Response</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -253,7 +253,7 @@ export default function FinancialRansomwareDemo() {
 
             <Card className="bg-gradient-to-r   border-blue-800/30 p-8">
               <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">The Execution OS Difference</h3>
-              <p className="text-blue-600 text-center leading-relaxed max-w-3xl mx-auto">
+              <p className="text-blue-800 text-center leading-relaxed max-w-3xl mx-auto">
                 Your AI detected the ransomware in milliseconds. But without Execution OS, coordinating your CEO, CISO, CTO, CFO, legal counsel, Board, and regulators would take 48-72 hours of email chains and emergency meetings. In that window, a $1M incident becomes a $27M disaster. Execution OS turns instant detection into 12-minute coordinated response—we're not replacing your AI, we're the execution layer that makes it deliver ROI.
               </p>
             </Card>

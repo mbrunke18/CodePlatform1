@@ -34,12 +34,12 @@ function AnimatedSection({ children, className = "" }: { children: React.ReactNo
 function PullQuote({ children, author }: { children: React.ReactNode; author?: string }) {
   return (
     <div className="relative my-16 py-8">
-      <Quote className="absolute -top-2 left-0 h-12 w-12 text-blue-700 dark:text-blue-800" />
+      <Quote className="absolute -top-2 left-0 h-12 w-12 text-blue-800 dark:text-blue-800" />
       <blockquote className="text-2xl md:text-3xl font-medium text-slate-800 dark:text-slate-200 italic pl-8 md:pl-12 leading-relaxed">
         {children}
       </blockquote>
       {author && (
-        <p className="mt-4 pl-8 md:pl-12 text-gray-600 dark:text-slate-300 font-medium">— {author}</p>
+        <p className="mt-4 pl-8 md:pl-12 text-gray-800 dark:text-slate-300 font-medium">— {author}</p>
       )}
     </div>
   );
@@ -57,12 +57,12 @@ function TimelineChapter({
   children: React.ReactNode;
 }) {
   const colorClasses: Record<string, { bg: string; border: string; text: string; dot: string }> = {
-    amber: { bg: "bg-amber-500", border: "border-amber-500", text: "text-amber-600 dark:text-amber-400", dot: "bg-amber-500" },
-    green: { bg: "bg-green-500", border: "border-green-500", text: "text-green-600 dark:text-green-400", dot: "bg-green-500" },
-    red: { bg: "bg-red-500", border: "border-red-500", text: "text-red-600 dark:text-red-400", dot: "bg-red-500" },
+    amber: { bg: "bg-amber-500", border: "border-amber-500", text: "text-[#C9A84C] dark:text-amber-400", dot: "bg-amber-500" },
+    green: { bg: "bg-green-500", border: "border-green-500", text: "text-emerald-700 dark:text-green-400", dot: "bg-green-500" },
+    red: { bg: "bg-red-500", border: "border-red-500", text: "text-red-700 dark:text-red-400", dot: "bg-red-500" },
     orange: { bg: "bg-orange-500", border: "border-orange-500", text: "text-orange-600 dark:text-orange-400", dot: "bg-orange-500" },
-    blue: { bg: "bg-blue-500", border: "border-blue-500", text: "text-blue-600 dark:text-blue-400", dot: "bg-blue-500" },
-    purple: { bg: "bg-purple-500", border: "border-purple-500", text: "text-purple-600 dark:text-purple-400", dot: "bg-purple-500" },
+    blue: { bg: "bg-blue-500", border: "border-blue-500", text: "text-blue-800 dark:text-blue-400", dot: "bg-blue-500" },
+    purple: { bg: "bg-purple-500", border: "border-purple-500", text: "text-purple-800 dark:text-purple-400", dot: "bg-purple-500" },
   };
 
   const c = colorClasses[color] || colorClasses.blue;
@@ -84,7 +84,7 @@ function TimelineChapter({
         </div>
         
         {/* Chapter content */}
-        <div className="space-y-6 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+        <div className="space-y-6 text-lg text-gray-800 dark:text-slate-300 leading-relaxed">
           {children}
         </div>
       </div>
@@ -144,7 +144,7 @@ export default function OurStory() {
                 Years of Preparation.
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-800 max-w-2xl mx-auto">
               How one coach's championship methodology became the execution engine for Fortune 1000 companies.
             </p>
           </motion.div>
@@ -170,7 +170,7 @@ export default function OurStory() {
             </p>
             
             <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 p-6 rounded-r-xl my-8">
-              <p className="text-2xl font-bold text-amber-700 dark:text-amber-300 italic">
+              <p className="text-2xl font-bold text-[#C9A84C] dark:text-amber-300 italic">
                 "Momentum change."
               </p>
             </div>
@@ -208,7 +208,7 @@ export default function OurStory() {
               <p className="text-2xl font-bold text-red-700 dark:text-red-300 italic">
                 "Let me schedule a meeting to discuss our response."
               </p>
-              <p className="text-sm text-slate-600 dark:text-slate-300 mt-3">
+              <p className="text-sm text-gray-800 dark:text-slate-300 mt-3">
                 That meeting was scheduled three days later.
               </p>
             </div>
@@ -238,15 +238,15 @@ export default function OurStory() {
             <div className="grid grid-cols-3 gap-4 my-8">
               <div className="text-center p-4 bg-slate-100 dark:bg-slate-800 rounded-xl">
                 <div className="text-3xl font-bold text-orange-600">$144M</div>
-                <div className="text-sm text-slate-600 dark:text-slate-300">Annual Value Gap</div>
+                <div className="text-sm text-gray-800 dark:text-slate-300">Annual Value Gap</div>
               </div>
               <div className="text-center p-4 bg-slate-100 dark:bg-slate-800 rounded-xl">
                 <div className="text-3xl font-bold text-orange-600">87%</div>
-                <div className="text-sm text-slate-600 dark:text-slate-300">Transformations Fail</div>
+                <div className="text-sm text-gray-800 dark:text-slate-300">Transformations Fail</div>
               </div>
               <div className="text-center p-4 bg-slate-100 dark:bg-slate-800 rounded-xl">
                 <div className="text-3xl font-bold text-orange-600">10,000x</div>
-                <div className="text-sm text-slate-600 dark:text-slate-300">Speed Difference</div>
+                <div className="text-sm text-gray-800 dark:text-slate-300">Speed Difference</div>
               </div>
             </div>
 
@@ -270,9 +270,9 @@ export default function OurStory() {
                 { icon: Lightbulb, title: "Institutional Memory", desc: "Learn from every execution. Refine playbooks. Infrastructure gets smarter over time." },
               ].map((item, i) => (
                 <div key={i} className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-5">
-                  <item.icon className="h-6 w-6 text-blue-600 mb-2" />
+                  <item.icon className="h-6 w-6 text-blue-800 mb-2" />
                   <h4 className="font-semibold text-slate-900 dark:text-white">{item.title}</h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-300">{item.desc}</p>
+                  <p className="text-sm text-gray-800 dark:text-slate-300">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -292,19 +292,19 @@ export default function OurStory() {
 
             <ul className="space-y-3 my-8">
               <li className="flex items-start gap-3">
-                <Rocket className="h-6 w-6 text-purple-600 flex-shrink-0 mt-1" />
+                <Rocket className="h-6 w-6 text-purple-800 flex-shrink-0 mt-1" />
                 <span><strong>170 battle-tested playbooks</strong> across 9 strategic domains</span>
               </li>
               <li className="flex items-start gap-3">
-                <Rocket className="h-6 w-6 text-purple-600 flex-shrink-0 mt-1" />
+                <Rocket className="h-6 w-6 text-purple-800 flex-shrink-0 mt-1" />
                 <span><strong>AI-powered monitoring</strong> across 92 intelligence signals</span>
               </li>
               <li className="flex items-start gap-3">
-                <Rocket className="h-6 w-6 text-purple-600 flex-shrink-0 mt-1" />
+                <Rocket className="h-6 w-6 text-purple-800 flex-shrink-0 mt-1" />
                 <span><strong>12-minute coordinated response</strong> when triggers fire</span>
               </li>
               <li className="flex items-start gap-3">
-                <Rocket className="h-6 w-6 text-purple-600 flex-shrink-0 mt-1" />
+                <Rocket className="h-6 w-6 text-purple-800 flex-shrink-0 mt-1" />
                 <span><strong>Institutional memory</strong> that makes every response smarter</span>
               </li>
             </ul>
@@ -327,7 +327,7 @@ export default function OurStory() {
               ].map((company, i) => (
                 <div key={i} className="text-center p-4 bg-slate-100 dark:bg-slate-800/50 rounded-xl">
                   <div className="text-lg font-bold text-slate-800 dark:text-white">{company.name}</div>
-                  <div className="text-xs text-gray-600">{company.desc}</div>
+                  <div className="text-xs text-gray-800">{company.desc}</div>
                 </div>
               ))}
             </div>
@@ -347,16 +347,16 @@ export default function OurStory() {
               ].map((principle, i) => (
                 <div key={i} className="flex items-start gap-2 text-sm">
                   <div className="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-green-600 text-xs font-bold">✓</span>
+                    <span className="text-emerald-700 text-xs font-bold">✓</span>
                   </div>
-                  <span className="text-slate-600 dark:text-slate-300">{principle}</span>
+                  <span className="text-gray-800 dark:text-slate-300">{principle}</span>
                 </div>
               ))}
             </div>
 
             {/* Research Validation */}
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-xl p-6 border border-green-200 dark:border-green-800 my-8">
-              <div className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2">Research Foundation</div>
+              <div className="text-sm font-semibold text-emerald-800 dark:text-green-400 mb-2">Research Foundation</div>
               <p className="text-slate-700 dark:text-slate-300">
                 Validated through McKinsey research on strategic agility, MIT Sloan studies on 
                 organizational decision-making, and 15+ years of real-world implementation 
@@ -386,7 +386,7 @@ export default function OurStory() {
                 Are You?
               </span>
             </h2>
-            <p className="text-xl text-gray-600 mb-10">
+            <p className="text-xl text-gray-800 mb-10">
               Replace reactive scrambles with coordinated precision. See how Execution OS transforms 
               strategic response from 72 hours to 12 minutes.
             </p>
@@ -422,7 +422,7 @@ export default function OurStory() {
             </div>
             <span className="font-bold text-lg">Strategic Execution OS</span>
           </div>
-          <p className="text-slate-600 dark:text-slate-200">
+          <p className="text-gray-800 dark:text-slate-200">
             From the sidelines to the boardroom.
           </p>
         </div>

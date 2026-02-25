@@ -47,7 +47,7 @@ const SEVERITY_COLORS = {
   critical: 'bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300',
   high: 'bg-orange-100 text-orange-700 dark:bg-orange-950 dark:text-orange-300',
   medium: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-950 dark:text-yellow-300',
-  low: 'bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300',
+  low: 'bg-green-100 text-emerald-800 dark:bg-green-950 dark:text-green-300',
 };
 
 export default function PlaybookDetail() {
@@ -509,7 +509,7 @@ export default function PlaybookDetail() {
                   {!canActivate && (
                     <div className="flex items-center gap-2 p-3 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-lg text-sm">
                       <AlertTriangle className="h-4 w-4 text-amber-500 shrink-0" />
-                      <span className="text-amber-700 dark:text-amber-300">
+                      <span className="text-[#C9A84C] dark:text-amber-300">
                         Readiness must be at least 50% to activate
                       </span>
                     </div>

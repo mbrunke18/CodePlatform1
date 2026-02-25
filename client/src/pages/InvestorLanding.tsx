@@ -95,7 +95,7 @@ export default function InvestorLanding() {
               The Agentic Execution Layer for Fortune 1000
             </p>
             
-            <p className="text-lg md:text-xl text-blue-600 mb-8 max-w-4xl" data-testid="text-description">
+            <p className="text-lg md:text-xl text-blue-800 mb-8 max-w-4xl" data-testid="text-description">
               Fortune 1000 companies spend $847B annually on strategic initiatives—83% fail due to execution gaps. Execution OS creates a new software category worth $127B TAM, delivering 500x faster execution with complete 7-component ecosystem.
             </p>
 
@@ -153,7 +153,7 @@ export default function InvestorLanding() {
               <h2 className="text-4xl font-bold mb-4 text-gray-900">
                 Three Enterprise Problems Worth $847B
               </h2>
-              <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+              <p className="text-xl text-gray-800 max-w-4xl mx-auto">
                 Fortune 1000 companies face these three problems every time a strategic moment hits. No infrastructure existed to solve them—until Execution OS.
               </p>
             </div>
@@ -169,7 +169,7 @@ export default function InvestorLanding() {
                       <span className="text-xs font-semibold text-red-400 uppercase tracking-wider">Problem 1</span>
                     </div>
                     <h3 className="text-lg font-bold text-gray-900 mb-2">The Execution Gap</h3>
-                    <p className="text-sm text-gray-600 mb-2">20-72 hours to even begin acting when strategic moments hit</p>
+                    <p className="text-sm text-gray-800 mb-2">20-72 hours to even begin acting when strategic moments hit</p>
                     <p className="text-xs text-red-400">$136K/hour delayed (IBM). $5-50M M&A synergy erosion.</p>
                   </div>
                   <div className="border-t border-gray-200 pt-4">
@@ -177,7 +177,7 @@ export default function InvestorLanding() {
                       <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0" />
                       <span className="text-sm text-emerald-400 font-semibold">Solution</span>
                     </div>
-                    <p className="text-sm text-gray-600 mb-3">Pre-built infrastructure activates in 12 minutes</p>
+                    <p className="text-sm text-gray-800 mb-3">Pre-built infrastructure activates in 12 minutes</p>
                     <div className="bg-emerald-500/10 rounded-lg px-3 py-2 text-center">
                       <span className="text-emerald-400 font-bold text-lg">72 hrs → 12 min</span>
                     </div>
@@ -195,7 +195,7 @@ export default function InvestorLanding() {
                       <span className="text-xs font-semibold text-amber-400 uppercase tracking-wider">Problem 2</span>
                     </div>
                     <h3 className="text-lg font-bold text-gray-900 mb-2">The Coordination Chaos</h3>
-                    <p className="text-sm text-gray-600 mb-2">50-200+ stakeholders. No system to coordinate them.</p>
+                    <p className="text-sm text-gray-800 mb-2">50-200+ stakeholders. No system to coordinate them.</p>
                     <p className="text-xs text-amber-400">$4.88M avg breach cost. 35% higher without pre-defined teams.</p>
                   </div>
                   <div className="border-t border-gray-200 pt-4">
@@ -203,7 +203,7 @@ export default function InvestorLanding() {
                       <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0" />
                       <span className="text-sm text-emerald-400 font-semibold">Solution</span>
                     </div>
-                    <p className="text-sm text-gray-600 mb-3">Pre-mapped accountability, instant notification, real-time tracking</p>
+                    <p className="text-sm text-gray-800 mb-3">Pre-mapped accountability, instant notification, real-time tracking</p>
                     <div className="bg-emerald-500/10 rounded-lg px-3 py-2 text-center">
                       <span className="text-emerald-400 font-bold text-lg">35% cost reduction</span>
                     </div>
@@ -221,7 +221,7 @@ export default function InvestorLanding() {
                       <span className="text-xs font-semibold text-purple-400 uppercase tracking-wider">Problem 3</span>
                     </div>
                     <h3 className="text-lg font-bold text-gray-900 mb-2">The Institutional Amnesia</h3>
-                    <p className="text-sm text-gray-600 mb-2">Knowledge walks out the door. Same scramble every time.</p>
+                    <p className="text-sm text-gray-800 mb-2">Knowledge walks out the door. Same scramble every time.</p>
                     <p className="text-xs text-purple-400">3.5 disruptions per 2 years. Same $4.88M cost repeated.</p>
                   </div>
                   <div className="border-t border-gray-200 pt-4">
@@ -229,7 +229,7 @@ export default function InvestorLanding() {
                       <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0" />
                       <span className="text-sm text-emerald-400 font-semibold">Solution</span>
                     </div>
-                    <p className="text-sm text-gray-600 mb-3">AI-powered learning loop. Playbooks that improve automatically.</p>
+                    <p className="text-sm text-gray-800 mb-3">AI-powered learning loop. Playbooks that improve automatically.</p>
                     <div className="bg-emerald-500/10 rounded-lg px-3 py-2 text-center">
                       <span className="text-emerald-400 font-bold text-lg">Compounding intelligence</span>
                     </div>
@@ -239,7 +239,7 @@ export default function InvestorLanding() {
             </div>
 
             <div className="bg-gray-50 border border-gray-200 rounded-xl px-6 py-4 text-center">
-              <p className="text-gray-600">
+              <p className="text-gray-800">
                 <span className="text-gray-900 font-semibold">Execution OS at $250K-$750K/year</span> vs. one incident costing <span className="text-red-400 font-semibold">$5-50M</span>. <span className="text-emerald-400 font-semibold">Payback on first use.</span>
               </p>
             </div>
@@ -257,24 +257,24 @@ export default function InvestorLanding() {
               <h2 className="text-4xl font-bold mb-4 text-gray-900">
                 The Agentic Execution Layer
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-800 max-w-3xl mx-auto">
                 Agents don't just generate answers — they coordinate enterprises. Execution OS is the missing orchestration layer between strategy and operational systems.
               </p>
             </div>
 
             <div className="grid md:grid-cols-5 gap-2 items-center max-w-4xl mx-auto mb-12">
               <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
-                <div className="text-xs text-gray-600 mb-1">Strategy Layer</div>
+                <div className="text-xs text-gray-800 mb-1">Strategy Layer</div>
                 <div className="text-sm font-semibold text-gray-900">Board & C-Suite</div>
               </div>
-              <div className="text-center text-gray-500">→</div>
+              <div className="text-center text-gray-700">→</div>
               <div className="bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border-2 border-purple-500/50 rounded-xl p-4 text-center">
                 <div className="text-xs text-purple-400 font-semibold mb-1">Agentic Execution Layer</div>
                 <div className="text-sm font-bold text-gray-900">Execution OS</div>
               </div>
-              <div className="text-center text-gray-500">→</div>
+              <div className="text-center text-gray-700">→</div>
               <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
-                <div className="text-xs text-gray-600 mb-1">Workflow Layer</div>
+                <div className="text-xs text-gray-800 mb-1">Workflow Layer</div>
                 <div className="text-sm font-semibold text-gray-900">Jira, ServiceNow</div>
               </div>
             </div>
@@ -285,35 +285,35 @@ export default function InvestorLanding() {
                   <Zap className="h-5 w-5 text-cyan-400" />
                 </div>
                 <div className="text-sm font-semibold text-gray-900 mb-1">Detection Agent</div>
-                <div className="text-xs text-gray-600">Monitors signals across domains</div>
+                <div className="text-xs text-gray-800">Monitors signals across domains</div>
               </div>
               <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
                 <div className="w-10 h-10 mx-auto mb-3 bg-amber-500/20 rounded-lg flex items-center justify-center">
                   <Target className="h-5 w-5 text-amber-400" />
                 </div>
                 <div className="text-sm font-semibold text-gray-900 mb-1">Risk Scoring Agent</div>
-                <div className="text-xs text-gray-600">Classifies severity + urgency</div>
+                <div className="text-xs text-gray-800">Classifies severity + urgency</div>
               </div>
               <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
                 <div className="w-10 h-10 mx-auto mb-3 bg-blue-500/20 rounded-lg flex items-center justify-center">
                   <Users className="h-5 w-5 text-blue-400" />
                 </div>
                 <div className="text-sm font-semibold text-gray-900 mb-1">Routing Agent</div>
-                <div className="text-xs text-gray-600">Assigns stakeholders + roles</div>
+                <div className="text-xs text-gray-800">Assigns stakeholders + roles</div>
               </div>
               <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
                 <div className="w-10 h-10 mx-auto mb-3 bg-emerald-500/20 rounded-lg flex items-center justify-center">
                   <Shield className="h-5 w-5 text-emerald-400" />
                 </div>
                 <div className="text-sm font-semibold text-gray-900 mb-1">Decision Agent</div>
-                <div className="text-xs text-gray-600">Pre-authorized within policy</div>
+                <div className="text-xs text-gray-800">Pre-authorized within policy</div>
               </div>
               <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
                 <div className="w-10 h-10 mx-auto mb-3 bg-purple-500/20 rounded-lg flex items-center justify-center">
                   <Brain className="h-5 w-5 text-purple-400" />
                 </div>
                 <div className="text-sm font-semibold text-gray-900 mb-1">Learning Agent</div>
-                <div className="text-xs text-gray-600">Compounds institutional knowledge</div>
+                <div className="text-xs text-gray-800">Compounds institutional knowledge</div>
               </div>
             </div>
           </div>
@@ -329,12 +329,12 @@ export default function InvestorLanding() {
               <h2 className="text-4xl font-bold mb-4 text-gray-900">
                 8 Flagship Reports. One Conclusion.
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
+              <p className="text-xl text-gray-800 max-w-3xl mx-auto mb-6">
                 The world's top consulting and technology firms independently confirm the market Execution OS addresses
               </p>
               <div className="flex flex-wrap justify-center gap-2 mb-4">
                 {['IBM', 'BCG', 'McKinsey', 'Bain', 'Accenture', 'Deloitte', 'PwC', 'Gartner', 'Forrester', 'IDC', 'Microsoft', 'Google Cloud', 'OpenAI', 'Anthropic', 'World Economic Forum'].map((firm) => (
-                  <span key={firm} className="bg-white/10 border border-white/20 rounded-full px-3 py-1 text-xs font-medium text-gray-600">{firm}</span>
+                  <span key={firm} className="bg-white/10 border border-white/20 rounded-full px-3 py-1 text-xs font-medium text-gray-800">{firm}</span>
                 ))}
               </div>
             </div>
@@ -348,8 +348,8 @@ export default function InvestorLanding() {
                   </div>
                   <div className="text-sm text-indigo-400 mb-3">AI Radar 2026</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-gray-500 flex-shrink-0 mt-1" />
-                    <p className="text-gray-600 text-sm">"AI transformation shifting from CIO-led to CEO-led mandate"</p>
+                    <Quote className="h-4 w-4 text-gray-700 flex-shrink-0 mt-1" />
+                    <p className="text-gray-800 text-sm">"AI transformation shifting from CIO-led to CEO-led mandate"</p>
                   </div>
                   <p className="text-emerald-400 text-sm italic">→ Execution OS is built for the C-suite</p>
                 </CardContent>
@@ -363,8 +363,8 @@ export default function InvestorLanding() {
                   </div>
                   <div className="text-sm text-blue-400 mb-3">The Enterprise in 2030</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-gray-500 flex-shrink-0 mt-1" />
-                    <p className="text-gray-600 text-sm">"The smarter enterprise requires new operating models"</p>
+                    <Quote className="h-4 w-4 text-gray-700 flex-shrink-0 mt-1" />
+                    <p className="text-gray-800 text-sm">"The smarter enterprise requires new operating models"</p>
                   </div>
                   <p className="text-emerald-400 text-sm italic">→ Execution OS IS that operating model</p>
                 </CardContent>
@@ -378,8 +378,8 @@ export default function InvestorLanding() {
                   </div>
                   <div className="text-sm text-cyan-400 mb-3">Global Tech Agenda 2026</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-gray-500 flex-shrink-0 mt-1" />
-                    <p className="text-gray-600 text-sm">"CIOs evolving from cost managers to strategy architects"</p>
+                    <Quote className="h-4 w-4 text-gray-700 flex-shrink-0 mt-1" />
+                    <p className="text-gray-800 text-sm">"CIOs evolving from cost managers to strategy architects"</p>
                   </div>
                   <p className="text-emerald-400 text-sm italic">→ Our 170 playbooks give them the execution infrastructure</p>
                 </CardContent>
@@ -393,8 +393,8 @@ export default function InvestorLanding() {
                   </div>
                   <div className="text-sm text-purple-400 mb-3">State of AI in the Enterprise 2026</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-gray-500 flex-shrink-0 mt-1" />
-                    <p className="text-gray-600 text-sm">"Rise of sovereign, agentic, and physical AI"</p>
+                    <Quote className="h-4 w-4 text-gray-700 flex-shrink-0 mt-1" />
+                    <p className="text-gray-800 text-sm">"Rise of sovereign, agentic, and physical AI"</p>
                   </div>
                   <p className="text-emerald-400 text-sm italic">→ Execution OS orchestrates agentic AI with human oversight</p>
                 </CardContent>
@@ -408,8 +408,8 @@ export default function InvestorLanding() {
                   </div>
                   <div className="text-sm text-amber-400 mb-3">Proof over Promise</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-gray-500 flex-shrink-0 mt-1" />
-                    <p className="text-gray-600 text-sm">"Organizations scaling AI into outcomes"</p>
+                    <Quote className="h-4 w-4 text-gray-700 flex-shrink-0 mt-1" />
+                    <p className="text-gray-800 text-sm">"Organizations scaling AI into outcomes"</p>
                   </div>
                   <p className="text-emerald-400 text-sm italic">→ Execution OS delivers measurable execution outcomes</p>
                 </CardContent>
@@ -423,8 +423,8 @@ export default function InvestorLanding() {
                   </div>
                   <div className="text-sm text-sky-400 mb-3">Agents Are Here</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-gray-500 flex-shrink-0 mt-1" />
-                    <p className="text-gray-600 text-sm">"Readiness requires people, process, culture, governance"</p>
+                    <Quote className="h-4 w-4 text-gray-700 flex-shrink-0 mt-1" />
+                    <p className="text-gray-800 text-sm">"Readiness requires people, process, culture, governance"</p>
                   </div>
                   <p className="text-emerald-400 text-sm italic">→ Execution OS provides all four</p>
                 </CardContent>
@@ -438,8 +438,8 @@ export default function InvestorLanding() {
                   </div>
                   <div className="text-sm text-rose-400 mb-3">AI Agent Trends 2026</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-gray-500 flex-shrink-0 mt-1" />
-                    <p className="text-gray-600 text-sm">"AI agents being used across industries"</p>
+                    <Quote className="h-4 w-4 text-gray-700 flex-shrink-0 mt-1" />
+                    <p className="text-gray-800 text-sm">"AI agents being used across industries"</p>
                   </div>
                   <p className="text-emerald-400 text-sm italic">→ Our 9 strategic domains cover the enterprise</p>
                 </CardContent>
@@ -453,8 +453,8 @@ export default function InvestorLanding() {
                   </div>
                   <div className="text-sm text-teal-400 mb-3">New Rules of Platform Strategy</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-gray-500 flex-shrink-0 mt-1" />
-                    <p className="text-gray-600 text-sm">"Reinventing platform strategy for agentic AI"</p>
+                    <Quote className="h-4 w-4 text-gray-700 flex-shrink-0 mt-1" />
+                    <p className="text-gray-800 text-sm">"Reinventing platform strategy for agentic AI"</p>
                   </div>
                   <p className="text-emerald-400 text-sm italic">→ Execution OS is that platform</p>
                 </CardContent>
@@ -470,7 +470,7 @@ export default function InvestorLanding() {
               <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white">
                 Complete End-to-End Platform
               </h2>
-              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-800 dark:text-slate-300 max-w-3xl mx-auto">
                 From signal detection to coordinated execution in 12 minutes — the full architecture that replaces 72-hour scrambles
               </p>
             </div>
@@ -492,7 +492,7 @@ export default function InvestorLanding() {
               <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-testid="heading-market">
                 Massive Market Opportunity
               </h2>
-              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-market-subtitle">
+              <p className="text-xl text-gray-800 dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-market-subtitle">
                 Creating a new $127B software category at the intersection of strategic planning, AI intelligence, and execution automation
               </p>
             </div>
@@ -501,13 +501,13 @@ export default function InvestorLanding() {
               <Card className="border-2" data-testid="card-tam">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
-                    <Globe className="h-6 w-6 text-blue-600" />
+                    <Globe className="h-6 w-6 text-blue-800" />
                     TAM (Total Addressable Market)
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-4xl font-bold text-blue-600 mb-2" data-testid="text-tam-value">$127B</div>
-                  <p className="text-slate-600 dark:text-slate-300" data-testid="text-tam-description">
+                  <div className="text-4xl font-bold text-blue-800 mb-2" data-testid="text-tam-value">$127B</div>
+                  <p className="text-gray-800 dark:text-slate-300" data-testid="text-tam-description">
                     Fortune 1000 strategic execution software spend (15% of $847B total strategic initiatives budget)
                   </p>
                 </CardContent>
@@ -516,13 +516,13 @@ export default function InvestorLanding() {
               <Card className="border-2" data-testid="card-sam">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
-                    <Target className="h-6 w-6 text-purple-600" />
+                    <Target className="h-6 w-6 text-purple-800" />
                     SAM (Serviceable Addressable)
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-4xl font-bold text-purple-600 mb-2" data-testid="text-sam-value">$38B</div>
-                  <p className="text-slate-600 dark:text-slate-300" data-testid="text-sam-description">
+                  <div className="text-4xl font-bold text-purple-800 mb-2" data-testid="text-sam-value">$38B</div>
+                  <p className="text-gray-800 dark:text-slate-300" data-testid="text-sam-description">
                     Fortune 500 + high-growth enterprises with $1B+ revenue requiring executive decision velocity
                   </p>
                 </CardContent>
@@ -531,13 +531,13 @@ export default function InvestorLanding() {
               <Card className="border-2" data-testid="card-som">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
-                    <Rocket className="h-6 w-6 text-green-600" />
+                    <Rocket className="h-6 w-6 text-emerald-700" />
                     SOM (Serviceable Obtainable)
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-4xl font-bold text-green-600 mb-2" data-testid="text-som-value">$1.9B</div>
-                  <p className="text-slate-600 dark:text-slate-300" data-testid="text-som-description">
+                  <div className="text-4xl font-bold text-emerald-700 mb-2" data-testid="text-som-value">$1.9B</div>
+                  <p className="text-gray-800 dark:text-slate-300" data-testid="text-som-description">
                     5% market capture in Year 5 (50 Fortune 500 + 200 mid-market at $250K-$1.5M ACV)
                   </p>
                 </CardContent>
@@ -566,7 +566,7 @@ export default function InvestorLanding() {
                     </Bar>
                   </BarChart>
                 </ResponsiveContainer>
-                <div className="mt-4 text-center text-sm text-slate-600 dark:text-slate-300">
+                <div className="mt-4 text-center text-sm text-gray-800 dark:text-slate-300">
                   Progressive market capture: $127B TAM → $38B SAM → $1.9B SOM (Year 5)
                 </div>
               </CardContent>
@@ -579,31 +579,31 @@ export default function InvestorLanding() {
                 </h3>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="flex items-start gap-3" data-testid="reason-1">
-                    <CheckCircle2 className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
+                    <CheckCircle2 className="h-6 w-6 text-emerald-700 flex-shrink-0 mt-1" />
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white mb-1">AI Maturity Reached</div>
-                      <div className="text-slate-600 dark:text-slate-300">LLMs enable real-time strategic intelligence at scale (GPT-4, Claude, Gemini)</div>
+                      <div className="text-gray-800 dark:text-slate-300">LLMs enable real-time strategic intelligence at scale (GPT-4, Claude, Gemini)</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3" data-testid="reason-2">
-                    <CheckCircle2 className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
+                    <CheckCircle2 className="h-6 w-6 text-emerald-700 flex-shrink-0 mt-1" />
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white mb-1">Execution Crisis</div>
-                      <div className="text-slate-600 dark:text-slate-300">87% of strategic initiatives fail—executives desperate for execution velocity</div>
+                      <div className="text-gray-800 dark:text-slate-300">87% of strategic initiatives fail—executives desperate for execution velocity</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3" data-testid="reason-3">
-                    <CheckCircle2 className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
+                    <CheckCircle2 className="h-6 w-6 text-emerald-700 flex-shrink-0 mt-1" />
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white mb-1">Remote Work Complexity</div>
-                      <div className="text-slate-600 dark:text-slate-300">Distributed teams make coordination harder—need automated orchestration</div>
+                      <div className="text-gray-800 dark:text-slate-300">Distributed teams make coordination harder—need automated orchestration</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3" data-testid="reason-4">
-                    <CheckCircle2 className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
+                    <CheckCircle2 className="h-6 w-6 text-emerald-700 flex-shrink-0 mt-1" />
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white mb-1">Competitive Velocity</div>
-                      <div className="text-slate-600 dark:text-slate-300">Market windows shrinking from months to days—speed is survival</div>
+                      <div className="text-gray-800 dark:text-slate-300">Market windows shrinking from months to days—speed is survival</div>
                     </div>
                   </div>
                 </div>
@@ -622,25 +622,25 @@ export default function InvestorLanding() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 12 Guides. 9 Firms. One Conclusion.
               </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
+              <p className="text-lg text-gray-800 max-w-3xl mx-auto mb-6">
                 The entire agentic AI landscape — from McKinsey to AWS to WEF — published in the last 6-8 months, all pointing at the same gap Execution OS fills.
               </p>
               <div className="flex items-center justify-center gap-8 mb-8">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-emerald-400">12</div>
-                  <div className="text-gray-600 text-sm">Guides</div>
+                  <div className="text-gray-800 text-sm">Guides</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-emerald-400">9</div>
-                  <div className="text-gray-600 text-sm">Firms</div>
+                  <div className="text-gray-800 text-sm">Firms</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-emerald-400">6 mo</div>
-                  <div className="text-gray-600 text-sm">Published</div>
+                  <div className="text-gray-800 text-sm">Published</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-emerald-400">1</div>
-                  <div className="text-gray-600 text-sm">Conclusion</div>
+                  <div className="text-gray-800 text-sm">Conclusion</div>
                 </div>
               </div>
             </div>
@@ -651,19 +651,19 @@ export default function InvestorLanding() {
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-600"><span className="text-gray-900 font-medium">McKinsey</span> — State of AI reality check</span>
+                    <span className="text-gray-800"><span className="text-gray-900 font-medium">McKinsey</span> — State of AI reality check</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-600"><span className="text-gray-900 font-medium">PwC</span> — Making AI agents accretive to P&L</span>
+                    <span className="text-gray-800"><span className="text-gray-900 font-medium">PwC</span> — Making AI agents accretive to P&L</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-600"><span className="text-gray-900 font-medium">McKinsey</span> — The Agentic AI Opportunity</span>
+                    <span className="text-gray-800"><span className="text-gray-900 font-medium">McKinsey</span> — The Agentic AI Opportunity</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-600"><span className="text-gray-900 font-medium">Accenture</span> — Six Insights for AI ROI</span>
+                    <span className="text-gray-800"><span className="text-gray-900 font-medium">Accenture</span> — Six Insights for AI ROI</span>
                   </div>
                 </div>
               </div>
@@ -673,19 +673,19 @@ export default function InvestorLanding() {
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-600"><span className="text-gray-900 font-medium">AWS</span> — Rise of Autonomous Agents</span>
+                    <span className="text-gray-800"><span className="text-gray-900 font-medium">AWS</span> — Rise of Autonomous Agents</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-600"><span className="text-gray-900 font-medium">Bain</span> — Foundations for Agentic AI</span>
+                    <span className="text-gray-800"><span className="text-gray-900 font-medium">Bain</span> — Foundations for Agentic AI</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-600"><span className="text-gray-900 font-medium">IBM</span> — Agentic AI Operating Model</span>
+                    <span className="text-gray-800"><span className="text-gray-900 font-medium">IBM</span> — Agentic AI Operating Model</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-600"><span className="text-gray-900 font-medium">Deloitte</span> — Agentic Enterprise 2028</span>
+                    <span className="text-gray-800"><span className="text-gray-900 font-medium">Deloitte</span> — Agentic Enterprise 2028</span>
                   </div>
                 </div>
               </div>
@@ -695,19 +695,19 @@ export default function InvestorLanding() {
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-600"><span className="text-gray-900 font-medium">BCG</span> — Machines That Manage Themselves</span>
+                    <span className="text-gray-800"><span className="text-gray-900 font-medium">BCG</span> — Machines That Manage Themselves</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-600"><span className="text-gray-900 font-medium">McKinsey</span> — The Agentic Organization</span>
+                    <span className="text-gray-800"><span className="text-gray-900 font-medium">McKinsey</span> — The Agentic Organization</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-600"><span className="text-gray-900 font-medium">WEF</span> — AI Agents in Action</span>
+                    <span className="text-gray-800"><span className="text-gray-900 font-medium">WEF</span> — AI Agents in Action</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-600"><span className="text-gray-900 font-medium">McKinsey</span> — Seizing the Agentic AI Advantage</span>
+                    <span className="text-gray-800"><span className="text-gray-900 font-medium">McKinsey</span> — Seizing the Agentic AI Advantage</span>
                   </div>
                 </div>
               </div>
@@ -715,7 +715,7 @@ export default function InvestorLanding() {
 
             <div className="p-5 bg-emerald-900/30 border border-emerald-700/50 rounded-lg text-center">
               <p className="text-emerald-300 font-semibold mb-1">Every firm is consulting on the problem. Execution OS built the product.</p>
-              <p className="text-gray-600 text-sm">170 playbooks, 9 strategic domains, pre-defined governance — ready today.</p>
+              <p className="text-gray-800 text-sm">170 playbooks, 9 strategic domains, pre-defined governance — ready today.</p>
             </div>
           </div>
         </section>
@@ -727,7 +727,7 @@ export default function InvestorLanding() {
               <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-testid="heading-moat">
                 Defensible Competitive Moat
               </h2>
-              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-moat-subtitle">
+              <p className="text-xl text-gray-800 dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-moat-subtitle">
                 Multi-layered advantages that compound over time, creating winner-take-most dynamics
               </p>
             </div>
@@ -741,7 +741,7 @@ export default function InvestorLanding() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600 dark:text-slate-300 mb-4">
+                  <p className="text-gray-800 dark:text-slate-300 mb-4">
                     Competitors offer point solutions (BI tools, project management, chatbots). Execution OS integrates entire strategic execution workflow—massive switching costs once embedded.
                   </p>
                   <div className="text-sm font-semibold text-primary" data-testid="text-moat-ecosystem-advantage">
@@ -753,12 +753,12 @@ export default function InvestorLanding() {
               <Card className="border-2" data-testid="card-moat-memory">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
-                    <Lightbulb className="h-6 w-6 text-purple-600" />
+                    <Lightbulb className="h-6 w-6 text-purple-800" />
                     Institutional Memory Network Effects
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600 dark:text-slate-300 mb-4">
+                  <p className="text-gray-800 dark:text-slate-300 mb-4">
                     AI learns from every decision across all customers (anonymized). More customers = smarter recommendations = higher retention. Data moat compounds quarterly.
                   </p>
                   <div className="text-sm font-semibold text-primary" data-testid="text-moat-memory-advantage">
@@ -770,12 +770,12 @@ export default function InvestorLanding() {
               <Card className="border-2" data-testid="card-moat-templates">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
-                    <Network className="h-6 w-6 text-blue-600" />
+                    <Network className="h-6 w-6 text-blue-800" />
                     Template Library Network Effects
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600 dark:text-slate-300 mb-4">
+                  <p className="text-gray-800 dark:text-slate-300 mb-4">
                     Start with 13+ templates, grows to 500+ as customers contribute. More templates = more use cases = more customers. Self-reinforcing growth loop.
                   </p>
                   <div className="text-sm font-semibold text-primary" data-testid="text-moat-templates-advantage">
@@ -787,12 +787,12 @@ export default function InvestorLanding() {
               <Card className="border-2" data-testid="card-moat-category">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
-                    <Rocket className="h-6 w-6 text-green-600" />
+                    <Rocket className="h-6 w-6 text-emerald-700" />
                     Category Leadership
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600 dark:text-slate-300 mb-4">
+                  <p className="text-gray-800 dark:text-slate-300 mb-4">
                     First mover defining "Strategic Execution Operating System" category (like Salesforce for CRM). Category creators capture 76% of market value (Gartner research).
                   </p>
                   <div className="text-sm font-semibold text-primary" data-testid="text-moat-category-advantage">
@@ -811,7 +811,7 @@ export default function InvestorLanding() {
               <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white">
                 Built for Today. Positioned for Tomorrow.
               </h2>
-              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-800 dark:text-slate-300 max-w-3xl mx-auto">
                 Selling pain relief today while building the operating layer for the AI era — infrastructure that evolves with every customer
               </p>
             </div>
@@ -833,7 +833,7 @@ export default function InvestorLanding() {
               <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-testid="heading-model">
                 High-Margin SaaS Business Model
               </h2>
-              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-model-subtitle">
+              <p className="text-xl text-gray-800 dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-model-subtitle">
                 Enterprise pricing with expansion revenue and sticky product-led growth
               </p>
             </div>
@@ -842,24 +842,24 @@ export default function InvestorLanding() {
               <Card className="border-2" data-testid="card-pricing-enterprise">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
-                    <DollarSign className="h-6 w-6 text-green-600" />
+                    <DollarSign className="h-6 w-6 text-emerald-700" />
                     Enterprise
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-3xl font-bold text-green-600 mb-2" data-testid="text-price-enterprise">$250K</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-300 mb-4">Annual Contract Value</div>
-                  <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                  <div className="text-3xl font-bold text-emerald-700 mb-2" data-testid="text-price-enterprise">$250K</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-300 mb-4">Annual Contract Value</div>
+                  <ul className="space-y-2 text-sm text-gray-800 dark:text-slate-300">
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-green-600" />
+                      <CheckCircle2 className="h-4 w-4 text-emerald-700" />
                       Single domain
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-green-600" />
+                      <CheckCircle2 className="h-4 w-4 text-emerald-700" />
                       Standard integrations
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-green-600" />
+                      <CheckCircle2 className="h-4 w-4 text-emerald-700" />
                       Dedicated CSM
                     </li>
                   </ul>
@@ -869,24 +869,24 @@ export default function InvestorLanding() {
               <Card className="border-2" data-testid="card-pricing-team">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
-                    <Users className="h-6 w-6 text-blue-600" />
+                    <Users className="h-6 w-6 text-blue-800" />
                     Enterprise Plus
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-3xl font-bold text-blue-600 mb-2" data-testid="text-price-team">$450K</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-300 mb-4">Annual Contract Value</div>
-                  <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                  <div className="text-3xl font-bold text-blue-800 mb-2" data-testid="text-price-team">$450K</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-300 mb-4">Annual Contract Value</div>
+                  <ul className="space-y-2 text-sm text-gray-800 dark:text-slate-300">
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-blue-600" />
+                      <CheckCircle2 className="h-4 w-4 text-blue-800" />
                       Multi-domain
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-blue-600" />
+                      <CheckCircle2 className="h-4 w-4 text-blue-800" />
                       Full integration suite
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-blue-600" />
+                      <CheckCircle2 className="h-4 w-4 text-blue-800" />
                       Priority support
                     </li>
                   </ul>
@@ -896,24 +896,24 @@ export default function InvestorLanding() {
               <Card className="border-2" data-testid="card-pricing-executive">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
-                    <TrendingUp className="h-6 w-6 text-purple-600" />
+                    <TrendingUp className="h-6 w-6 text-purple-800" />
                     Global
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-3xl font-bold text-purple-600 mb-2" data-testid="text-price-executive">$750K-$1.5M</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-300 mb-4">Custom Annual Contract</div>
-                  <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                  <div className="text-3xl font-bold text-purple-800 mb-2" data-testid="text-price-executive">$750K-$1.5M</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-300 mb-4">Custom Annual Contract</div>
+                  <ul className="space-y-2 text-sm text-gray-800 dark:text-slate-300">
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-purple-600" />
+                      <CheckCircle2 className="h-4 w-4 text-purple-800" />
                       Multi-region orchestration
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-purple-600" />
+                      <CheckCircle2 className="h-4 w-4 text-purple-800" />
                       White-glove implementation
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-purple-600" />
+                      <CheckCircle2 className="h-4 w-4 text-purple-800" />
                       Dedicated account team
                     </li>
                   </ul>
@@ -929,24 +929,24 @@ export default function InvestorLanding() {
                 <div className="grid md:grid-cols-3 gap-6">
                   <div data-testid="expansion-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <BarChart3 className="h-5 w-5 text-green-600" />
+                      <BarChart3 className="h-5 w-5 text-emerald-700" />
                       <div className="font-semibold text-slate-900 dark:text-white">Integration Marketplace</div>
                     </div>
-                    <div className="text-slate-600 dark:text-slate-300">20% rev-share on third-party integrations (Salesforce, Jira, Slack)</div>
+                    <div className="text-gray-800 dark:text-slate-300">20% rev-share on third-party integrations (Salesforce, Jira, Slack)</div>
                   </div>
                   <div data-testid="expansion-2">
                     <div className="flex items-center gap-2 mb-2">
-                      <Zap className="h-5 w-5 text-blue-600" />
+                      <Zap className="h-5 w-5 text-blue-800" />
                       <div className="font-semibold text-slate-900 dark:text-white">Premium Templates</div>
                     </div>
-                    <div className="text-slate-600 dark:text-slate-300">Industry-specific playbooks ($5K-$50K per template pack)</div>
+                    <div className="text-gray-800 dark:text-slate-300">Industry-specific playbooks ($5K-$50K per template pack)</div>
                   </div>
                   <div data-testid="expansion-3">
                     <div className="flex items-center gap-2 mb-2">
-                      <Lock className="h-5 w-5 text-purple-600" />
+                      <Lock className="h-5 w-5 text-purple-800" />
                       <div className="font-semibold text-slate-900 dark:text-white">Advisory Services</div>
                     </div>
-                    <div className="text-slate-600 dark:text-slate-300">Strategic workshops ($50K-$200K per engagement)</div>
+                    <div className="text-gray-800 dark:text-slate-300">Strategic workshops ($50K-$200K per engagement)</div>
                   </div>
                 </div>
               </CardContent>
@@ -961,7 +961,7 @@ export default function InvestorLanding() {
               <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-testid="heading-economics">
                 Best-in-Class Unit Economics
               </h2>
-              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-economics-subtitle">
+              <p className="text-xl text-gray-800 dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-economics-subtitle">
                 High LTV, low CAC, exceptional retention—SaaS metrics investors love
               </p>
             </div>
@@ -969,33 +969,33 @@ export default function InvestorLanding() {
             <div className="grid md:grid-cols-4 gap-6">
               <Card className="border-2" data-testid="card-ltv-cac">
                 <CardContent className="pt-6">
-                  <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">LTV:CAC Ratio</div>
-                  <div className="text-4xl font-bold text-green-600 mb-1" data-testid="text-ltv-cac">8.4:1</div>
-                  <div className="text-xs text-gray-600">Target: &gt;3:1 (Exceptional)</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-300 mb-2">LTV:CAC Ratio</div>
+                  <div className="text-4xl font-bold text-emerald-700 mb-1" data-testid="text-ltv-cac">8.4:1</div>
+                  <div className="text-xs text-gray-800">Target: &gt;3:1 (Exceptional)</div>
                 </CardContent>
               </Card>
 
               <Card className="border-2" data-testid="card-payback">
                 <CardContent className="pt-6">
-                  <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">CAC Payback</div>
-                  <div className="text-4xl font-bold text-blue-600 mb-1" data-testid="text-payback">7 months</div>
-                  <div className="text-xs text-gray-600">Target: &lt;12mo (Excellent)</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-300 mb-2">CAC Payback</div>
+                  <div className="text-4xl font-bold text-blue-800 mb-1" data-testid="text-payback">7 months</div>
+                  <div className="text-xs text-gray-800">Target: &lt;12mo (Excellent)</div>
                 </CardContent>
               </Card>
 
               <Card className="border-2" data-testid="card-ndr">
                 <CardContent className="pt-6">
-                  <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">Net Dollar Retention</div>
-                  <div className="text-4xl font-bold text-purple-600 mb-1" data-testid="text-ndr">142%</div>
-                  <div className="text-xs text-gray-600">Target: &gt;120% (Best-in-class)</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-300 mb-2">Net Dollar Retention</div>
+                  <div className="text-4xl font-bold text-purple-800 mb-1" data-testid="text-ndr">142%</div>
+                  <div className="text-xs text-gray-800">Target: &gt;120% (Best-in-class)</div>
                 </CardContent>
               </Card>
 
               <Card className="border-2" data-testid="card-gross-margin">
                 <CardContent className="pt-6">
-                  <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">Gross Margin</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-300 mb-2">Gross Margin</div>
                   <div className="text-4xl font-bold text-indigo-600 mb-1" data-testid="text-gross-margin">87%</div>
-                  <div className="text-xs text-gray-600">Target: &gt;80% (Premium SaaS)</div>
+                  <div className="text-xs text-gray-800">Target: &gt;80% (Premium SaaS)</div>
                 </CardContent>
               </Card>
             </div>
@@ -1021,7 +1021,7 @@ export default function InvestorLanding() {
                     <Line yAxisId="right" type="monotone" dataKey="cac" stroke="#8B5CF6" strokeWidth={2} name="CAC ($K)" />
                   </LineChart>
                 </ResponsiveContainer>
-                <div className="mt-4 text-center text-sm text-slate-600 dark:text-slate-300">
+                <div className="mt-4 text-center text-sm text-gray-800 dark:text-slate-300">
                   LTV:CAC improving from 3.2:1 (Y1) to 8.4:1 (Y5) as scale economics kick in
                 </div>
               </CardContent>
@@ -1064,7 +1064,7 @@ export default function InvestorLanding() {
                         <div className="w-4 h-4 rounded" style={{ backgroundColor: '#10B981' }}></div>
                         <div className="font-semibold text-slate-900 dark:text-white">Cost Savings: $7.2M</div>
                       </div>
-                      <div className="text-sm text-slate-600 dark:text-slate-300">
+                      <div className="text-sm text-gray-800 dark:text-slate-300">
                         Eliminated coordination delays, reduced strategic initiative failures
                       </div>
                     </div>
@@ -1073,7 +1073,7 @@ export default function InvestorLanding() {
                         <div className="w-4 h-4 rounded" style={{ backgroundColor: '#3B82F6' }}></div>
                         <div className="font-semibold text-slate-900 dark:text-white">Time Recovery: $3.4M</div>
                       </div>
-                      <div className="text-sm text-slate-600 dark:text-slate-300">
+                      <div className="text-sm text-gray-800 dark:text-slate-300">
                         342 hours saved monthly, valued at executive time rates
                       </div>
                     </div>
@@ -1082,7 +1082,7 @@ export default function InvestorLanding() {
                         <div className="w-4 h-4 rounded" style={{ backgroundColor: '#8B5CF6' }}></div>
                         <div className="font-semibold text-slate-900 dark:text-white">Risk Mitigation: $1.8M</div>
                       </div>
-                      <div className="text-sm text-slate-600 dark:text-slate-300">
+                      <div className="text-sm text-gray-800 dark:text-slate-300">
                         Prevented strategic missteps through AI-powered early warnings
                       </div>
                     </div>
@@ -1099,7 +1099,7 @@ export default function InvestorLanding() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6" data-testid="heading-cta">
               Join Us in Creating a New Software Category
             </h2>
-            <p className="text-xl mb-8 text-blue-600" data-testid="text-cta-description">
+            <p className="text-xl mb-8 text-blue-800" data-testid="text-cta-description">
               Execution OS is defining the Strategic Execution Operating System category—a $127B market opportunity with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">

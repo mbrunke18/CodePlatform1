@@ -327,10 +327,10 @@ export default function ExecutiveSimulationDemo() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'completed': return 'text-green-600 dark:text-green-400';
-      case 'in_progress': return 'text-blue-600 dark:text-blue-400';
-      case 'blocked': return 'text-red-600 dark:text-red-400';
-      default: return 'text-slate-600 dark:text-slate-200';
+      case 'completed': return 'text-emerald-700 dark:text-green-400';
+      case 'in_progress': return 'text-blue-800 dark:text-blue-400';
+      case 'blocked': return 'text-red-700 dark:text-red-400';
+      default: return 'text-gray-800 dark:text-slate-200';
     }
   };
 
@@ -358,7 +358,7 @@ export default function ExecutiveSimulationDemo() {
               <CardTitle className="text-3xl font-bold text-gray-900 mb-2">
                 Welcome to Your Day as CSO
               </CardTitle>
-              <CardDescription className="text-lg text-gray-600">
+              <CardDescription className="text-lg text-gray-800">
                 Experience Execution OS from the perspective of a Fortune 500 executive
               </CardDescription>
             </CardHeader>
@@ -371,19 +371,19 @@ export default function ExecutiveSimulationDemo() {
                 </h3>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <span className="text-slate-600 dark:text-slate-200">Company:</span>
+                    <span className="text-gray-800 dark:text-slate-200">Company:</span>
                     <span className="text-gray-900 ml-2 font-medium">{COMPANY_PROFILE.name}</span>
                   </div>
                   <div>
-                    <span className="text-slate-600 dark:text-slate-200">Industry:</span>
+                    <span className="text-gray-800 dark:text-slate-200">Industry:</span>
                     <span className="text-gray-900 ml-2 font-medium">{COMPANY_PROFILE.industry}</span>
                   </div>
                   <div>
-                    <span className="text-slate-600 dark:text-slate-200">Revenue:</span>
+                    <span className="text-gray-800 dark:text-slate-200">Revenue:</span>
                     <span className="text-gray-900 ml-2 font-medium">{COMPANY_PROFILE.revenue}</span>
                   </div>
                   <div>
-                    <span className="text-slate-600 dark:text-slate-200">Employees:</span>
+                    <span className="text-gray-800 dark:text-slate-200">Employees:</span>
                     <span className="text-gray-900 ml-2 font-medium">{COMPANY_PROFILE.employees}</span>
                   </div>
                 </div>
@@ -401,7 +401,7 @@ export default function ExecutiveSimulationDemo() {
                   <div>
                     <p className="text-xl font-bold text-gray-900">{COMPANY_PROFILE.persona}</p>
                     <p className="text-teal-300">{COMPANY_PROFILE.role}</p>
-                    <p className="text-slate-600 dark:text-slate-200 text-sm mt-1">{COMPANY_PROFILE.headquarters}</p>
+                    <p className="text-gray-800 dark:text-slate-200 text-sm mt-1">{COMPANY_PROFILE.headquarters}</p>
                   </div>
                 </div>
               </div>
@@ -411,7 +411,7 @@ export default function ExecutiveSimulationDemo() {
                   <Target className="w-5 h-5 text-purple-400" />
                   What You'll Experience
                 </h3>
-                <ul className="space-y-3 text-gray-600">
+                <ul className="space-y-3 text-gray-800">
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                     <span>Monitor real-time intelligence signals from multiple sources</span>
@@ -464,7 +464,7 @@ export default function ExecutiveSimulationDemo() {
               <CardTitle className="text-3xl font-bold text-gray-900 mb-2">
                 Response Successfully Coordinated
               </CardTitle>
-              <CardDescription className="text-lg text-gray-600">
+              <CardDescription className="text-lg text-gray-800">
                 You just experienced the power of Execution OS
               </CardDescription>
             </CardHeader>
@@ -474,17 +474,17 @@ export default function ExecutiveSimulationDemo() {
                 <div className="bg-gray-50 rounded-xl p-6 text-center border border-gray-200">
                   <Clock className="w-8 h-8 text-blue-400 mx-auto mb-2" />
                   <p className="text-3xl font-bold text-gray-900">{formatTime(elapsedTime)}</p>
-                  <p className="text-slate-600 dark:text-slate-200 text-sm">Total Response Time</p>
+                  <p className="text-gray-800 dark:text-slate-200 text-sm">Total Response Time</p>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-6 text-center border border-gray-200">
                   <Users className="w-8 h-8 text-purple-400 mx-auto mb-2" />
                   <p className="text-3xl font-bold text-gray-900">6</p>
-                  <p className="text-slate-600 dark:text-slate-200 text-sm">Stakeholders Aligned</p>
+                  <p className="text-gray-800 dark:text-slate-200 text-sm">Stakeholders Aligned</p>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-6 text-center border border-gray-200">
                   <CheckCircle2 className="w-8 h-8 text-green-400 mx-auto mb-2" />
                   <p className="text-3xl font-bold text-gray-900">{playbookActions.length}</p>
-                  <p className="text-slate-600 dark:text-slate-200 text-sm">Actions Completed</p>
+                  <p className="text-gray-800 dark:text-slate-200 text-sm">Actions Completed</p>
                 </div>
               </div>
 
@@ -493,7 +493,7 @@ export default function ExecutiveSimulationDemo() {
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <span className="text-slate-600 dark:text-slate-200">Traditional Approach</span>
+                      <span className="text-gray-800 dark:text-slate-200">Traditional Approach</span>
                       <span className="text-red-400">48-72 hours</span>
                     </div>
                     <div className="h-3 bg-gray-50 rounded-full overflow-hidden">
@@ -502,7 +502,7 @@ export default function ExecutiveSimulationDemo() {
                   </div>
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <span className="text-slate-600 dark:text-slate-200">With Execution OS</span>
+                      <span className="text-gray-800 dark:text-slate-200">With Execution OS</span>
                       <span className="text-emerald-400">{formatTime(elapsedTime)}</span>
                     </div>
                     <div className="h-3 bg-gray-50 rounded-full overflow-hidden">
@@ -517,7 +517,7 @@ export default function ExecutiveSimulationDemo() {
 
               <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">What Happened</h3>
-                <ul className="space-y-3 text-gray-600 text-sm">
+                <ul className="space-y-3 text-gray-800 text-sm">
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-blue-400 text-xs font-bold">1</span>
@@ -550,7 +550,7 @@ export default function ExecutiveSimulationDemo() {
               <Button 
                 variant="outline"
                 onClick={resetSimulation}
-                className="border-slate-600 text-gray-600 hover:bg-slate-800"
+                className="border-slate-600 text-gray-800 hover:bg-slate-800"
                 data-testid="button-restart-simulation"
               >
                 <RotateCcw className="w-4 h-4 mr-2" />
@@ -590,8 +590,8 @@ export default function ExecutiveSimulationDemo() {
                 </div>
               </CardHeader>
               <CardContent className="p-6 space-y-4">
-                <p className="text-gray-600">{criticalSignal.description}</p>
-                <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-200">
+                <p className="text-gray-800">{criticalSignal.description}</p>
+                <div className="flex items-center gap-4 text-sm text-gray-800 dark:text-slate-200">
                   <span className="flex items-center gap-1">
                     <Globe className="w-4 h-4" />
                     {criticalSignal.source}
@@ -633,11 +633,11 @@ export default function ExecutiveSimulationDemo() {
                   </Avatar>
                   <div>
                     <p className="font-semibold text-slate-900 dark:text-white text-sm">{COMPANY_PROFILE.persona}</p>
-                    <p className="text-xs text-gray-600 dark:text-slate-300">{COMPANY_PROFILE.role} • {COMPANY_PROFILE.name}</p>
+                    <p className="text-xs text-gray-800 dark:text-slate-300">{COMPANY_PROFILE.role} • {COMPANY_PROFILE.name}</p>
                   </div>
                 </div>
                 <Separator orientation="vertical" className="h-8" />
-                <Badge variant="outline" className="text-xs text-gray-600 border-slate-600">
+                <Badge variant="outline" className="text-xs text-gray-800 border-slate-600">
                   <CircleDot className="w-3 h-3 mr-1 text-green-500" />
                   Simulation Active
                 </Badge>
@@ -701,11 +701,11 @@ export default function ExecutiveSimulationDemo() {
         <div className="container mx-auto px-4 py-6">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
             <TabsList className="grid grid-cols-4 w-full max-w-2xl mx-auto bg-gray-50 border border-gray-200" data-testid="tabs-main-navigation">
-              <TabsTrigger value="radar" className="flex items-center gap-2 data-[state=active]:bg-gray-50 data-[state=active]:text-gray-900 text-gray-600" data-testid="tab-radar">
+              <TabsTrigger value="radar" className="flex items-center gap-2 data-[state=active]:bg-gray-50 data-[state=active]:text-gray-900 text-gray-800" data-testid="tab-radar">
                 <Radio className="w-4 h-4" />
                 Radar
               </TabsTrigger>
-              <TabsTrigger value="signals" className="flex items-center gap-2 data-[state=active]:bg-gray-50 data-[state=active]:text-gray-900 text-gray-600" data-testid="tab-signals">
+              <TabsTrigger value="signals" className="flex items-center gap-2 data-[state=active]:bg-gray-50 data-[state=active]:text-gray-900 text-gray-800" data-testid="tab-signals">
                 <AlertTriangle className="w-4 h-4" />
                 Signals
                 {signals.filter(s => s.actionRequired).length > 0 && (
@@ -714,11 +714,11 @@ export default function ExecutiveSimulationDemo() {
                   </Badge>
                 )}
               </TabsTrigger>
-              <TabsTrigger value="playbooks" className="flex items-center gap-2 data-[state=active]:bg-gray-50 data-[state=active]:text-gray-900 text-gray-600" data-testid="tab-playbooks">
+              <TabsTrigger value="playbooks" className="flex items-center gap-2 data-[state=active]:bg-gray-50 data-[state=active]:text-gray-900 text-gray-800" data-testid="tab-playbooks">
                 <FileText className="w-4 h-4" />
                 Playbooks
               </TabsTrigger>
-              <TabsTrigger value="command" className="flex items-center gap-2 data-[state=active]:bg-gray-50 data-[state=active]:text-gray-900 text-gray-600" data-testid="tab-command">
+              <TabsTrigger value="command" className="flex items-center gap-2 data-[state=active]:bg-gray-50 data-[state=active]:text-gray-900 text-gray-800" data-testid="tab-command">
                 <Radio className="w-4 h-4" />
                 Command
               </TabsTrigger>
@@ -773,7 +773,7 @@ export default function ExecutiveSimulationDemo() {
 
                         <div className="text-center z-10">
                           <p className="text-2xl font-bold text-slate-900 dark:text-white">{signals.length}</p>
-                          <p className="text-xs text-gray-600 dark:text-slate-300">Active Signals</p>
+                          <p className="text-xs text-gray-800 dark:text-slate-300">Active Signals</p>
                         </div>
                       </div>
                     </CardContent>
@@ -795,16 +795,16 @@ export default function ExecutiveSimulationDemo() {
                           <div key={member.id} className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
                             <Avatar className="w-10 h-10">
                               <AvatarFallback className={`text-sm font-bold ${
-                                member.status === 'available' ? 'bg-green-100 text-green-700' :
-                                member.status === 'busy' ? 'bg-amber-100 text-amber-700' :
-                                'bg-slate-100 text-gray-600'
+                                member.status === 'available' ? 'bg-green-100 text-emerald-800' :
+                                member.status === 'busy' ? 'bg-amber-100 text-[#C9A84C]' :
+                                'bg-slate-100 text-gray-800'
                               }`}>
                                 {member.avatar}
                               </AvatarFallback>
                             </Avatar>
                             <div className="flex-1 min-w-0">
                               <p className="font-medium text-sm text-slate-900 dark:text-white truncate">{member.name}</p>
-                              <p className="text-xs text-gray-600 dark:text-slate-300">{member.role}</p>
+                              <p className="text-xs text-gray-800 dark:text-slate-300">{member.role}</p>
                             </div>
                             <div className={`w-2 h-2 rounded-full ${
                               member.status === 'available' ? 'bg-green-500' :
@@ -842,9 +842,9 @@ export default function ExecutiveSimulationDemo() {
                             'bg-blue-100 dark:bg-blue-900/30'
                           }`}>
                             <signal.icon className={`w-5 h-5 ${
-                              signal.severity === 'critical' ? 'text-red-600' :
+                              signal.severity === 'critical' ? 'text-red-700' :
                               signal.severity === 'high' ? 'text-orange-600' :
-                              'text-blue-600'
+                              'text-blue-800'
                             }`} />
                           </div>
                           <div>
@@ -852,10 +852,10 @@ export default function ExecutiveSimulationDemo() {
                               <Badge className={getSeverityColor(signal.severity)}>
                                 {signal.severity.toUpperCase()}
                               </Badge>
-                              <span className="text-xs text-gray-600">{signal.source}</span>
+                              <span className="text-xs text-gray-800">{signal.source}</span>
                             </div>
                             <h3 className="font-semibold text-slate-900 dark:text-white">{signal.title}</h3>
-                            <p className="text-sm text-gray-600 dark:text-slate-300 mt-1">{signal.description}</p>
+                            <p className="text-sm text-gray-800 dark:text-slate-300 mt-1">{signal.description}</p>
                           </div>
                         </div>
                         {signal.actionRequired && phase === 'playbook_selection' && (
@@ -900,8 +900,8 @@ export default function ExecutiveSimulationDemo() {
                           <CardDescription>Comprehensive response framework for competitor acquisition events</CardDescription>
                         </div>
                         <div className="text-right">
-                          <p className="text-sm text-gray-600">Est. Coordination Time</p>
-                          <p className="text-2xl font-bold text-blue-600">12 min</p>
+                          <p className="text-sm text-gray-800">Est. Coordination Time</p>
+                          <p className="text-2xl font-bold text-blue-800">12 min</p>
                         </div>
                       </div>
                     </CardHeader>
@@ -909,7 +909,7 @@ export default function ExecutiveSimulationDemo() {
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <h4 className="font-semibold text-sm text-slate-700 dark:text-slate-300 mb-2">Key Actions</h4>
-                          <ul className="space-y-1 text-sm text-gray-600 dark:text-slate-300">
+                          <ul className="space-y-1 text-sm text-gray-800 dark:text-slate-300">
                             <li className="flex items-center gap-2">
                               <CheckCircle2 className="w-4 h-4 text-green-500" />
                               Executive team mobilization
@@ -931,11 +931,11 @@ export default function ExecutiveSimulationDemo() {
                         <div>
                           <h4 className="font-semibold text-sm text-slate-700 dark:text-slate-300 mb-2">Stakeholders</h4>
                           <div className="flex flex-wrap gap-2">
-                            <Badge variant="outline" className="text-gray-600 border-slate-600">CFO</Badge>
-                            <Badge variant="outline" className="text-gray-600 border-slate-600">CMO</Badge>
-                            <Badge variant="outline" className="text-gray-600 border-slate-600">VP Ops</Badge>
-                            <Badge variant="outline" className="text-gray-600 border-slate-600">Legal</Badge>
-                            <Badge variant="outline" className="text-gray-600 border-slate-600">VP Sales</Badge>
+                            <Badge variant="outline" className="text-gray-800 border-slate-600">CFO</Badge>
+                            <Badge variant="outline" className="text-gray-800 border-slate-600">CMO</Badge>
+                            <Badge variant="outline" className="text-gray-800 border-slate-600">VP Ops</Badge>
+                            <Badge variant="outline" className="text-gray-800 border-slate-600">Legal</Badge>
+                            <Badge variant="outline" className="text-gray-800 border-slate-600">VP Sales</Badge>
                           </div>
                         </div>
                       </div>
@@ -953,7 +953,7 @@ export default function ExecutiveSimulationDemo() {
                   <Card className="border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950/20">
                     <CardHeader>
                       <div className="flex items-center gap-3">
-                        <CheckCircle2 className="w-8 h-8 text-green-600" />
+                        <CheckCircle2 className="w-8 h-8 text-emerald-700" />
                         <div>
                           <CardTitle>Playbook Activated: Competitor M&A Response</CardTitle>
                           <CardDescription>Team notifications sent. Review actions below and launch execution.</CardDescription>
@@ -978,14 +978,14 @@ export default function ExecutiveSimulationDemo() {
                             className="flex items-center gap-4 p-3 bg-slate-50 dark:bg-slate-800 rounded-lg"
                             data-testid={`action-${action.id}`}
                           >
-                            <div className="w-8 h-8 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center text-sm font-bold text-gray-600 dark:text-slate-300">
+                            <div className="w-8 h-8 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center text-sm font-bold text-gray-800 dark:text-slate-300">
                               {index + 1}
                             </div>
                             <div className="flex-1">
                               <p className="font-medium text-slate-900 dark:text-white">{action.name}</p>
-                              <p className="text-sm text-gray-600">{action.assignee} • {action.department}</p>
+                              <p className="text-sm text-gray-800">{action.assignee} • {action.department}</p>
                             </div>
-                            <Badge variant="outline" className="text-gray-600 border-slate-600">{action.duration}</Badge>
+                            <Badge variant="outline" className="text-gray-800 border-slate-600">{action.duration}</Badge>
                           </div>
                         ))}
                       </div>
@@ -1004,8 +1004,8 @@ export default function ExecutiveSimulationDemo() {
                 </div>
               ) : (
                 <div className="text-center py-12">
-                  <FileText className="w-12 h-12 text-slate-600 dark:text-slate-200 mx-auto mb-4" />
-                  <p className="text-gray-600 dark:text-slate-300">Playbooks will be recommended when a signal requires response</p>
+                  <FileText className="w-12 h-12 text-gray-800 dark:text-slate-200 mx-auto mb-4" />
+                  <p className="text-gray-800 dark:text-slate-300">Playbooks will be recommended when a signal requires response</p>
                 </div>
               )}
             </TabsContent>
@@ -1021,11 +1021,11 @@ export default function ExecutiveSimulationDemo() {
                           <Radio className="w-6 h-6" />
                           <div>
                             <CardTitle className="text-gray-900">Command Center Active</CardTitle>
-                            <CardDescription className="text-blue-600">Coordinating response in real-time</CardDescription>
+                            <CardDescription className="text-blue-800">Coordinating response in real-time</CardDescription>
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="text-blue-600 text-sm">Elapsed Time</p>
+                          <p className="text-blue-800 text-sm">Elapsed Time</p>
                           <p className="text-2xl font-mono font-bold">{formatTime(elapsedTime)}</p>
                         </div>
                       </div>
@@ -1033,7 +1033,7 @@ export default function ExecutiveSimulationDemo() {
                     <CardContent className="p-6">
                       <div className="mb-6">
                         <div className="flex justify-between text-sm mb-2">
-                          <span className="text-gray-600 dark:text-slate-300">Overall Progress</span>
+                          <span className="text-gray-800 dark:text-slate-300">Overall Progress</span>
                           <span className="font-medium text-slate-900 dark:text-white">{completedActions}/{playbookActions.length} Actions Complete</span>
                         </div>
                         <Progress value={progressPercent} className="h-3" />
@@ -1055,17 +1055,17 @@ export default function ExecutiveSimulationDemo() {
                             </div>
                             <div className="flex-1">
                               <p className={`font-medium ${
-                                action.status === 'completed' ? 'text-green-700 dark:text-green-400' :
-                                action.status === 'in_progress' ? 'text-blue-700 dark:text-blue-400' :
+                                action.status === 'completed' ? 'text-emerald-800 dark:text-green-400' :
+                                action.status === 'in_progress' ? 'text-blue-800 dark:text-blue-400' :
                                 'text-slate-700 dark:text-slate-300'
                               }`}>
                                 {action.name}
                               </p>
-                              <p className="text-sm text-gray-600">{action.assignee} • {action.department}</p>
+                              <p className="text-sm text-gray-800">{action.assignee} • {action.department}</p>
                             </div>
                             <Badge variant="outline" className={
-                              action.status === 'completed' ? 'border-green-500 text-green-600' :
-                              action.status === 'in_progress' ? 'border-blue-500 text-blue-600' :
+                              action.status === 'completed' ? 'border-green-500 text-emerald-700' :
+                              action.status === 'in_progress' ? 'border-blue-500 text-blue-800' :
                               ''
                             }>
                               {action.status === 'completed' ? 'Done' : 
@@ -1080,8 +1080,8 @@ export default function ExecutiveSimulationDemo() {
                 </div>
               ) : (
                 <div className="text-center py-12">
-                  <Radio className="w-12 h-12 text-slate-600 dark:text-slate-200 mx-auto mb-4" />
-                  <p className="text-gray-600 dark:text-slate-300">Command Center activates when a playbook is launched</p>
+                  <Radio className="w-12 h-12 text-gray-800 dark:text-slate-200 mx-auto mb-4" />
+                  <p className="text-gray-800 dark:text-slate-300">Command Center activates when a playbook is launched</p>
                 </div>
               )}
             </TabsContent>

@@ -24,9 +24,9 @@ import {
 
 export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) {
   const enterpriseKPIs = [
-    { title: "Platform Uptime", value: "99.97%", target: "99.99%", progress: 99.7, color: "text-green-600" },
-    { title: "Response Time", value: "4 min", target: "2 min", progress: 80, color: "text-blue-600" },
-    { title: "User Adoption", value: "94%", target: "98%", progress: 94, color: "text-purple-600" },
+    { title: "Platform Uptime", value: "99.97%", target: "99.99%", progress: 99.7, color: "text-emerald-700" },
+    { title: "Response Time", value: "4 min", target: "2 min", progress: 80, color: "text-blue-800" },
+    { title: "User Adoption", value: "94%", target: "98%", progress: 94, color: "text-purple-800" },
     { title: "Cost Efficiency", value: "$847K", target: "$1.2M", progress: 85, color: "text-orange-600" }
   ];
 
@@ -76,11 +76,11 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Enterprise Metrics Center</h1>
-                <p className="text-gray-600 dark:text-gray-300">Platform Performance & Enterprise Integration Hub</p>
+                <p className="text-gray-800 dark:text-gray-300">Platform Performance & Enterprise Integration Hub</p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              <Badge variant="outline" className="text-green-600 border-green-500/50">
+              <Badge variant="outline" className="text-emerald-700 border-green-500/50">
                 <CheckCircle className="w-3 h-3 mr-1" />
                 Enterprise Ready
               </Badge>
@@ -95,13 +95,13 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
             {enterpriseKPIs.map((kpi, index) => (
               <Card key={index} className="bg-white/90 dark:bg-slate-800/90 backdrop-blur">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-400">{kpi.title}</CardTitle>
+                  <CardTitle className="text-sm font-medium text-gray-800 dark:text-gray-400">{kpi.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{kpi.value}</div>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-600 dark:text-gray-400">Target: {kpi.target}</span>
+                      <span className="text-gray-800 dark:text-gray-400">Target: {kpi.target}</span>
                       <span className={kpi.color}>{kpi.progress}%</span>
                     </div>
                     <Progress value={kpi.progress} className="h-2" />
@@ -126,7 +126,7 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
                     <div key={index} className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
                       <div>
                         <h4 className="font-medium text-gray-900 dark:text-white">{metric.metric}</h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">{metric.value}</p>
+                        <p className="text-sm text-gray-800 dark:text-gray-400">{metric.value}</p>
                       </div>
                       <Badge 
                         variant={metric.status === 'Optimal' || metric.status === 'Excellent' ? 'default' : 'secondary'}
@@ -161,11 +161,11 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
                           {integration.status}
                         </Badge>
                       </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                      <div className="text-sm text-gray-800 dark:text-gray-400 mb-2">
                         {integration.providers.join(", ")}
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-gray-600">Coverage: {integration.coverage}</span>
+                        <span className="text-xs text-gray-800">Coverage: {integration.coverage}</span>
                         <CheckCircle className="w-4 h-4 text-green-500" />
                       </div>
                     </div>

@@ -111,19 +111,19 @@ function MarkdownRenderer({ content }: { content: string }) {
           return <p key={idx} className="font-bold text-gray-900 my-2">{line.slice(2, -2)}</p>;
         }
         if (line.startsWith('> ')) {
-          return <blockquote key={idx} className="border-l-4 border-emerald-500 pl-4 my-3 text-gray-600 italic">{line.slice(2)}</blockquote>;
+          return <blockquote key={idx} className="border-l-4 border-emerald-500 pl-4 my-3 text-gray-800 italic">{line.slice(2)}</blockquote>;
         }
         if (line.startsWith('- [ ] ')) {
-          return <div key={idx} className="flex items-start gap-2 my-1"><input type="checkbox" className="mt-1" /><span className="text-gray-600">{line.slice(6)}</span></div>;
+          return <div key={idx} className="flex items-start gap-2 my-1"><input type="checkbox" className="mt-1" /><span className="text-gray-800">{line.slice(6)}</span></div>;
         }
         if (line.startsWith('- ')) {
-          return <li key={idx} className="text-gray-600 ml-4 my-1">{line.slice(2)}</li>;
+          return <li key={idx} className="text-gray-800 ml-4 my-1">{line.slice(2)}</li>;
         }
         if (line.startsWith('| ') && line.includes(' | ')) {
           const cells = line.split(' | ').map(c => c.replace(/^\||\|$/g, '').trim());
           const isHeader = lines[idx + 1]?.includes('---');
           return (
-            <div key={idx} className={`grid gap-2 py-2 border-b border-gray-200 ${isHeader ? 'font-semibold text-gray-900' : 'text-gray-600'}`} style={{ gridTemplateColumns: `repeat(${cells.length}, minmax(0, 1fr))` }}>
+            <div key={idx} className={`grid gap-2 py-2 border-b border-gray-200 ${isHeader ? 'font-semibold text-gray-900' : 'text-gray-800'}`} style={{ gridTemplateColumns: `repeat(${cells.length}, minmax(0, 1fr))` }}>
               {cells.map((cell, i) => <div key={i} className="text-sm">{cell}</div>)}
             </div>
           );
@@ -141,7 +141,7 @@ function MarkdownRenderer({ content }: { content: string }) {
           .replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900">$1</strong>')
           .replace(/\*(.*?)\*/g, '<em>$1</em>')
           .replace(/`(.*?)`/g, '<code class="bg-gray-50 px-1 rounded text-emerald-400">$1</code>');
-        return <p key={idx} className="text-gray-600 my-1" dangerouslySetInnerHTML={{ __html: formattedLine }} />;
+        return <p key={idx} className="text-gray-800 my-1" dangerouslySetInnerHTML={{ __html: formattedLine }} />;
       })}
     </div>
   );
@@ -172,7 +172,7 @@ export default function RoadshowResources() {
           <h1 className="text-4xl font-bold text-gray-900 mb-2" data-testid="heading-roadshow">
             Roadshow Preparation
           </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-800 max-w-2xl mx-auto">
             Complete investor materials. Click any document to view full content.
           </p>
         </div>
@@ -192,8 +192,8 @@ export default function RoadshowResources() {
               >
                 <CardContent className="p-4 text-center">
                   <div className={`text-2xl font-bold ${stat.color}`}>{stat.value}</div>
-                  <div className="text-sm text-gray-600">{stat.label}</div>
-                  <div className="mt-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-600 flex items-center justify-center gap-1">
+                  <div className="text-sm text-gray-800">{stat.label}</div>
+                  <div className="mt-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-800 flex items-center justify-center gap-1">
                     {copiedStat === stat.label ? (
                       <><Check className="h-3 w-3" /> Copied</>
                     ) : (
@@ -233,7 +233,7 @@ export default function RoadshowResources() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="font-medium text-gray-900 text-sm">{doc.title}</div>
-                          <div className="text-xs text-gray-600 truncate">{doc.description}</div>
+                          <div className="text-xs text-gray-800 truncate">{doc.description}</div>
                         </div>
                         <Badge variant="secondary" className="text-xs shrink-0">
                           {doc.badge}
@@ -256,7 +256,7 @@ export default function RoadshowResources() {
               </Button>
               <Button 
                 variant="outline"
-                className="w-full bg-transparent border-slate-600 text-gray-600"
+                className="w-full bg-transparent border-slate-600 text-gray-800"
                 onClick={() => setLocation('/demo')}
                 data-testid="button-view-all-demos"
               >
@@ -307,19 +307,19 @@ export default function RoadshowResources() {
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div>
                 <h3 className="text-lg font-bold text-gray-900 mb-1">Quick Reference Table</h3>
-                <p className="text-gray-600 text-sm">What document to use in each situation</p>
+                <p className="text-gray-800 text-sm">What document to use in each situation</p>
               </div>
               <div className="flex flex-wrap gap-2">
-                <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-600">
+                <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800">
                   Tough question → FAQ
                 </Badge>
-                <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-600">
+                <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800">
                   Pricing talk → Pilot Program
                 </Badge>
-                <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-600">
+                <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800">
                   About to demo → Demo Script
                 </Badge>
-                <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-600">
+                <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800">
                   "Why can't Salesforce?" → Competitive Moat
                 </Badge>
               </div>

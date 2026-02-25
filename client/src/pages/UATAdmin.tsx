@@ -211,7 +211,7 @@ export default function UATAdmin() {
                 <h1 className="text-2xl font-bold text-gray-900 dark:text-white" data-testid="uat-admin-title">
                   UAT Administration Center
                 </h1>
-                <p className="text-sm text-gray-600 dark:text-gray-300">White-Glove Customer Onboarding & Testing Management</p>
+                <p className="text-sm text-gray-800 dark:text-gray-300">White-Glove Customer Onboarding & Testing Management</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -252,9 +252,9 @@ export default function UATAdmin() {
                 <Card className="border-2 border-blue-200">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Building2 className="h-5 w-5 text-blue-600" />
+                      <Building2 className="h-5 w-5 text-blue-800" />
                       Create UAT Organization
-                      <Badge variant="outline" className="bg-blue-50 text-blue-700">Stage 1</Badge>
+                      <Badge variant="outline" className="bg-blue-50 text-blue-800">Stage 1</Badge>
                     </CardTitle>
                     <p className="text-sm text-muted-foreground">
                       Manually provision customer organization for white-glove onboarding
@@ -345,9 +345,9 @@ export default function UATAdmin() {
                 <Card className="border-2 border-green-200">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Users className="h-5 w-5 text-green-600" />
+                      <Users className="h-5 w-5 text-emerald-700" />
                       Provision Test Users
-                      <Badge variant="outline" className="bg-green-50 text-green-700">Stage 1</Badge>
+                      <Badge variant="outline" className="bg-green-50 text-emerald-800">Stage 1</Badge>
                     </CardTitle>
                     <p className="text-sm text-muted-foreground">
                       Create user accounts linked to the customer organization
@@ -486,20 +486,20 @@ export default function UATAdmin() {
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Building2 className="h-5 w-5 text-blue-600" />
+                      <Building2 className="h-5 w-5 text-blue-800" />
                       UAT Organizations
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     {orgLoading ? (
-                      <p className="text-sm text-gray-600">Loading organizations...</p>
+                      <p className="text-sm text-gray-800">Loading organizations...</p>
                     ) : (
                       <div className="space-y-3">
                         {(organizations as UATOrganization[]).slice(0, 5).map((org: UATOrganization) => (
                           <div key={org.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                             <div>
                               <p className="font-medium">{org.name}</p>
-                              <p className="text-xs text-gray-600">{org.domain} • {org.type}</p>
+                              <p className="text-xs text-gray-800">{org.domain} • {org.type}</p>
                             </div>
                             <Badge variant={org.status === 'Active' ? 'secondary' : 'destructive'}>
                               {org.status}
@@ -515,24 +515,24 @@ export default function UATAdmin() {
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Users className="h-5 w-5 text-green-600" />
+                      <Users className="h-5 w-5 text-emerald-700" />
                       UAT Test Users
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     {usersLoading ? (
-                      <p className="text-sm text-gray-600">Loading users...</p>
+                      <p className="text-sm text-gray-800">Loading users...</p>
                     ) : (
                       <div className="space-y-3">
                         {(users as UATUser[]).slice(0, 5).map((user: UATUser) => (
                           <div key={user.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                             <div>
                               <p className="font-medium">{user.firstName} {user.lastName}</p>
-                              <p className="text-xs text-gray-600">{user.email}</p>
+                              <p className="text-xs text-gray-800">{user.email}</p>
                             </div>
                             <div className="text-right">
                               <p className="text-xs font-medium">{user.department}</p>
-                              <p className="text-xs text-gray-600">{user.team}</p>
+                              <p className="text-xs text-gray-800">{user.team}</p>
                             </div>
                           </div>
                         ))}
@@ -558,7 +558,7 @@ export default function UATAdmin() {
                 </CardHeader>
                 <CardContent>
                   {decisionsLoading ? (
-                    <p className="text-sm text-gray-600">Loading decision outcomes...</p>
+                    <p className="text-sm text-gray-800">Loading decision outcomes...</p>
                   ) : (
                     <div className="space-y-4">
                       {(decisionOutcomes as DecisionOutcome[]).slice(0, 3).map((decision: DecisionOutcome) => (
@@ -566,8 +566,8 @@ export default function UATAdmin() {
                           <div className="flex items-start justify-between">
                             <div className="flex-1 page-background">
                               <p className="font-medium">{decision.decisionType}</p>
-                              <p className="text-sm text-gray-600 mt-1">{decision.decisionDescription}</p>
-                              <div className="flex items-center gap-4 mt-2 text-xs text-gray-600">
+                              <p className="text-sm text-gray-800 mt-1">{decision.decisionDescription}</p>
+                              <div className="flex items-center gap-4 mt-2 text-xs text-gray-800">
                                 <span>Org: {decision.organizationId}</span>
                                 {decision.scenarioId && <span>Scenario: {decision.scenarioId}</span>}
                                 <span>{new Date(decision.createdAt).toLocaleString()}</span>
@@ -596,7 +596,7 @@ export default function UATAdmin() {
               <Card className="border-2 border-red-200">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <PlayCircle className="h-5 w-5 text-red-600" />
+                    <PlayCircle className="h-5 w-5 text-red-700" />
                     Core UAT Scenario: Supply Chain Disruption
                     <Badge variant="outline" className="bg-red-50 text-red-700">Stage 2</Badge>
                   </CardTitle>
@@ -620,7 +620,7 @@ export default function UATAdmin() {
                           <CardTitle className="text-sm">1. War Room Activation</CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-xs text-gray-600">Customer team lead initiates scenario from template</p>
+                          <p className="text-xs text-gray-800">Customer team lead initiates scenario from template</p>
                           <Badge variant="secondary" className="mt-2 text-xs">Ready</Badge>
                         </CardContent>
                       </Card>
@@ -630,7 +630,7 @@ export default function UATAdmin() {
                           <CardTitle className="text-sm">2. Real-time Collaboration</CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-xs text-gray-600">All testers join and validate live updates</p>
+                          <p className="text-xs text-gray-800">All testers join and validate live updates</p>
                           <Badge variant="secondary" className="mt-2 text-xs">Live</Badge>
                         </CardContent>
                       </Card>
@@ -640,7 +640,7 @@ export default function UATAdmin() {
                           <CardTitle className="text-sm">3. AI-Powered Insight</CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-xs text-gray-600">Test AI co-pilot with relevant questions</p>
+                          <p className="text-xs text-gray-800">Test AI co-pilot with relevant questions</p>
                           <Badge variant="secondary" className="mt-2 text-xs">AI Ready</Badge>
                         </CardContent>
                       </Card>

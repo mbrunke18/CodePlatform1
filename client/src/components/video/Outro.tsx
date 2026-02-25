@@ -69,7 +69,7 @@ export function Outro({ progress }: SceneProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
-          className="text-lg text-gray-500 mb-4"
+          className="text-lg text-gray-700 mb-4"
         >
           From strategic trigger to coordinated execution in 12 minutes.
         </motion.p>
@@ -129,15 +129,15 @@ export function Outro({ progress }: SceneProps) {
           transition={{ delay: 1.8 }}
           className="mt-10 pt-6 border-t border-gray-200"
         >
-          <p className="text-gray-500 text-xs uppercase tracking-wider mb-3">Investor Ready</p>
+          <p className="text-gray-700 text-xs uppercase tracking-wider mb-3">Investor Ready</p>
           <div className="flex items-center justify-center gap-6 text-sm">
             <span className="text-[#D4AF37]">18-month head start</span>
-            <span className="text-gray-400">•</span>
+            <span className="text-gray-600">•</span>
             <span className="text-[#00A8A8]">170 playbooks</span>
-            <span className="text-gray-400">•</span>
+            <span className="text-gray-600">•</span>
             <span className="text-gray-900">17 reports validate the gap</span>
           </div>
-          <p className="text-gray-400 text-xs mt-4">
+          <p className="text-gray-600 text-xs mt-4">
             $13-20B TAM • Fortune 1000 target • Compound disruption ready
           </p>
         </motion.div>

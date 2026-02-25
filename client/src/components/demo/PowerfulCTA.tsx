@@ -39,7 +39,7 @@ export function PowerfulCTA() {
             <h3 className="text-2xl font-bold text-gray-900">
               Ready to Transform Your Crisis Response?
             </h3>
-            <p className="text-lg text-blue-700">
+            <p className="text-lg text-blue-800">
               Schedule your personalized war room workshop and activate your executive triggers within 48 hours
             </p>
           </div>
@@ -51,7 +51,7 @@ export function PowerfulCTA() {
               return (
                 <div key={index} className="flex items-center gap-2">
                   <Icon className={`h-5 w-5 ${point.color}`} />
-                  <span className="text-sm text-blue-600">{point.text}</span>
+                  <span className="text-sm text-blue-800">{point.text}</span>
                 </div>
               );
             })}
@@ -72,7 +72,7 @@ export function PowerfulCTA() {
             <Button 
               size="lg"
               variant="outline"
-              className="border-blue-500 text-blue-700 hover:bg-blue-900/50 px-8 py-6 text-lg"
+              className="border-blue-500 text-blue-800 hover:bg-blue-900/50 px-8 py-6 text-lg"
               data-testid="cta-contact-sales"
             >
               Contact Executive Sales
@@ -98,7 +98,7 @@ export function PowerfulCTA() {
           {/* Social Proof */}
           <div className="text-center pt-4 border-t border-blue-500/30">
             <p className="text-sm text-blue-300">
-              Trusted by <span className="font-bold text-blue-700">127 Fortune 1000 companies</span> protecting 
+              Trusted by <span className="font-bold text-blue-800">127 Fortune 1000 companies</span> protecting 
               <span className="font-bold text-emerald-400"> $47B</span> in combined annual revenue
             </p>
           </div>

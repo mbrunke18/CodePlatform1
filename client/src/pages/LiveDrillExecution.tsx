@@ -172,7 +172,7 @@ export default function LiveDrillExecution() {
         <div className="flex items-center justify-between">
           <div>
             <div className="flex items-center gap-3">
-              <Activity className="h-8 w-8 text-red-600 animate-pulse" />
+              <Activity className="h-8 w-8 text-red-700 animate-pulse" />
               <h1 className="text-3xl font-bold" data-testid="page-title">
                 LIVE DRILL EXECUTION
               </h1>
@@ -354,8 +354,8 @@ export default function LiveDrillExecution() {
                               <span className="text-xs font-mono text-muted-foreground">
                                 {task.timing}
                               </span>
-                              {isCompleted && <CheckCircle className="h-4 w-4 text-green-600" />}
-                              {isActive && <AlertTriangle className="h-4 w-4 text-blue-600 animate-pulse" />}
+                              {isCompleted && <CheckCircle className="h-4 w-4 text-emerald-700" />}
+                              {isActive && <AlertTriangle className="h-4 w-4 text-blue-800 animate-pulse" />}
                             </div>
                             <div className="font-medium text-sm">{task.taskName}</div>
                             <div className="text-xs text-muted-foreground mt-1">

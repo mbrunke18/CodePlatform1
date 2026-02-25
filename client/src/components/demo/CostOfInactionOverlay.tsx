@@ -58,7 +58,7 @@ export function CostOfInactionOverlay() {
               </div>
               <h2 className="text-3xl font-bold text-red-500">Every Day You Wait...</h2>
             </div>
-            <p className="text-xl text-red-600/90">The cost of traditional crisis response adds up</p>
+            <p className="text-xl text-red-700/90">The cost of traditional crisis response adds up</p>
           </div>
 
           {/* Counter */}

@@ -197,7 +197,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
       case 'successful': return <CheckCircle className="h-5 w-5 text-green-500" />;
       case 'partially_successful': return <AlertCircle className="h-5 w-5 text-yellow-500" />;
       case 'failed': return <AlertCircle className="h-5 w-5 text-red-500" />;
-      default: return <AlertCircle className="h-5 w-5 text-gray-600" />;
+      default: return <AlertCircle className="h-5 w-5 text-gray-800" />;
     }
   };
 
@@ -237,7 +237,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
         <Card data-testid="card-decisions-tracked">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Decisions Tracked</CardTitle>
-            <BookOpen className="h-4 w-4 text-blue-600" />
+            <BookOpen className="h-4 w-4 text-blue-800" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{decisionOutcomes.length}</div>
@@ -248,7 +248,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
         <Card data-testid="card-patterns-identified">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Patterns Identified</CardTitle>
-            <TrendingUp className="h-4 w-4 text-green-600" />
+            <TrendingUp className="h-4 w-4 text-emerald-700" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{learningPatterns.length}</div>
@@ -259,7 +259,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
         <Card data-testid="card-knowledge-base">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Knowledge Base</CardTitle>
-            <Award className="h-4 w-4 text-purple-600" />
+            <Award className="h-4 w-4 text-purple-800" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{institutionalKnowledge.length}</div>
@@ -270,10 +270,10 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Value Protected</CardTitle>
-            <Shield className="h-4 w-4 text-emerald-600" />
+            <Shield className="h-4 w-4 text-emerald-700" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-emerald-600">${totalValueSaved.toFixed(1)}M</div>
+            <div className="text-2xl font-bold text-emerald-700">${totalValueSaved.toFixed(1)}M</div>
             <p className="text-xs text-muted-foreground">Cost savings from learned responses</p>
           </CardContent>
         </Card>
@@ -284,48 +284,48 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
           <CardContent className="pt-6">
             <div className="flex items-center gap-3 mb-3">
               <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg">
-                <RefreshCw className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                <RefreshCw className="h-5 w-5 text-blue-800 dark:text-blue-400" />
               </div>
               <div>
                 <p className="text-sm font-semibold text-blue-900 dark:text-blue-200">Continuous Learning Loop</p>
-                <p className="text-xs text-blue-700 dark:text-blue-400">Every execution makes the next one faster</p>
+                <p className="text-xs text-blue-800 dark:text-blue-400">Every execution makes the next one faster</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
               <Progress value={87} className="flex-1" />
-              <span className="text-sm font-bold text-blue-600">87%</span>
+              <span className="text-sm font-bold text-blue-800">87%</span>
             </div>
-            <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">Learning utilization rate</p>
+            <p className="text-xs text-blue-800 dark:text-blue-400 mt-1">Learning utilization rate</p>
           </CardContent>
         </Card>
         <Card className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/40 dark:to-green-950/40 border-emerald-200 dark:border-emerald-800">
           <CardContent className="pt-6">
             <div className="flex items-center gap-3 mb-3">
               <div className="p-2 bg-emerald-100 dark:bg-emerald-900 rounded-lg">
-                <ArrowUpRight className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                <ArrowUpRight className="h-5 w-5 text-emerald-700 dark:text-emerald-400" />
               </div>
               <div>
                 <p className="text-sm font-semibold text-emerald-900 dark:text-emerald-200">Response Improvement</p>
                 <p className="text-xs text-emerald-700 dark:text-emerald-400">Avg improvement per playbook iteration</p>
               </div>
             </div>
-            <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">+18%</div>
-            <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-1">Faster execution on each subsequent run</p>
+            <div className="text-3xl font-bold text-emerald-700 dark:text-emerald-400">+18%</div>
+            <p className="text-xs text-emerald-700 dark:text-emerald-400 mt-1">Faster execution on each subsequent run</p>
           </CardContent>
         </Card>
         <Card className="bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-950/40 dark:to-violet-950/40 border-purple-200 dark:border-purple-800">
           <CardContent className="pt-6">
             <div className="flex items-center gap-3 mb-3">
               <div className="p-2 bg-purple-100 dark:bg-purple-900 rounded-lg">
-                <Lightbulb className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                <Lightbulb className="h-5 w-5 text-purple-800 dark:text-purple-400" />
               </div>
               <div>
                 <p className="text-sm font-semibold text-purple-900 dark:text-purple-200">AI Recommendations</p>
                 <p className="text-xs text-purple-700 dark:text-purple-400">Insights applied to active playbooks</p>
               </div>
             </div>
-            <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">34</div>
-            <p className="text-xs text-purple-600 dark:text-purple-400 mt-1">Auto-applied improvements this quarter</p>
+            <div className="text-3xl font-bold text-purple-800 dark:text-purple-400">34</div>
+            <p className="text-xs text-purple-800 dark:text-purple-400 mt-1">Auto-applied improvements this quarter</p>
           </CardContent>
         </Card>
       </div>
@@ -359,7 +359,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
               ))}
             </div>
             <div className="flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 rounded-lg p-3">
-              <TrendingUp className="h-4 w-4 text-emerald-600" />
+              <TrendingUp className="h-4 w-4 text-emerald-700" />
               <span className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">67% improvement in average execution time over 6 months</span>
             </div>
           </CardContent>
@@ -429,21 +429,21 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
                           <h3 className="font-semibold" data-testid={`text-outcome-type-${outcome.id}`}>
                             {outcome.decisionType}
                           </h3>
-                          <Badge variant="outline" className={outcome.outcomeType === 'successful' ? 'border-green-500 text-green-600' : 'border-yellow-500 text-yellow-600'}>
+                          <Badge variant="outline" className={outcome.outcomeType === 'successful' ? 'border-green-500 text-emerald-700' : 'border-yellow-500 text-yellow-600'}>
                             {outcome.outcomeType === 'successful' ? 'Successful' : 'Partially Successful'}
                           </Badge>
                           <Badge variant="secondary">{outcome.domain}</Badge>
                         </div>
-                        <p className="text-sm text-slate-600 dark:text-slate-300">{outcome.decisionDescription}</p>
-                        <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-slate-400">
+                        <p className="text-sm text-gray-800 dark:text-slate-300">{outcome.decisionDescription}</p>
+                        <div className="flex items-center gap-4 text-xs text-gray-700 dark:text-slate-400">
                           <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {outcome.date}</span>
                           <span className="flex items-center gap-1"><Zap className="h-3 w-3" /> {outcome.executionTime}</span>
-                          <span className="flex items-center gap-1 text-emerald-600 font-semibold"><Shield className="h-3 w-3" /> {outcome.costSaved} saved</span>
+                          <span className="flex items-center gap-1 text-emerald-700 font-semibold"><Shield className="h-3 w-3" /> {outcome.costSaved} saved</span>
                         </div>
                         {outcome.lessonsLearned && (
                           <div className="bg-blue-50 dark:bg-blue-950/50 p-3 rounded-md border border-blue-200 dark:border-blue-800">
                             <p className="text-sm font-medium mb-1 flex items-center gap-1"><Lightbulb className="h-4 w-4 text-amber-500" /> Lessons Learned:</p>
-                            <p className="text-sm text-slate-600 dark:text-slate-300">{outcome.lessonsLearned}</p>
+                            <p className="text-sm text-gray-800 dark:text-slate-300">{outcome.lessonsLearned}</p>
                           </div>
                         )}
                       </div>
@@ -477,17 +477,17 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
                       <Badge className={
                         pattern.impactScore === 'Critical' ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300' :
                         pattern.impactScore === 'High' ? 'bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300' :
-                        'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
+                        'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300'
                       }>
                         {pattern.impactScore} Impact
                       </Badge>
                     </div>
                     <h3 className="font-semibold" data-testid={`text-pattern-title-${pattern.id}`}>{pattern.title}</h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-300">{pattern.description}</p>
-                    <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-slate-400 pt-1">
+                    <p className="text-sm text-gray-800 dark:text-slate-300">{pattern.description}</p>
+                    <div className="flex items-center gap-4 text-xs text-gray-700 dark:text-slate-400 pt-1">
                       <span className="flex items-center gap-1">
                         <Target className="h-3 w-3" />
-                        Confidence: <span className="font-semibold text-emerald-600">{pattern.confidenceLevel}</span>
+                        Confidence: <span className="font-semibold text-emerald-700">{pattern.confidenceLevel}</span>
                       </span>
                       <span className="flex items-center gap-1">
                         <BarChart3 className="h-3 w-3" />
@@ -526,8 +526,8 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
                       {knowledge.domain && <Badge variant="outline">{knowledge.domain}</Badge>}
                     </div>
                     <h3 className="font-semibold" data-testid={`text-knowledge-title-${knowledge.id}`}>{knowledge.title}</h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-300">{knowledge.summary}</p>
-                    <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-slate-400 pt-1">
+                    <p className="text-sm text-gray-800 dark:text-slate-300">{knowledge.summary}</p>
+                    <div className="flex items-center gap-4 text-xs text-gray-700 dark:text-slate-400 pt-1">
                       <span className="flex items-center gap-1"><Target className="h-3 w-3" /> {knowledge.applicability}</span>
                       <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> Updated: {knowledge.lastUpdated}</span>
                     </div>

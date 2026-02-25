@@ -140,9 +140,9 @@ export default function CustomerJourney() {
           
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-gray-600 hover:text-poise-teal cursor-pointer">Execution OS One™</span>
+              <span className="text-gray-800 hover:text-poise-teal cursor-pointer">Execution OS One™</span>
             </Link>
-            <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200" />
+            <ChevronRight className="h-4 w-4 text-gray-800 dark:text-slate-200" />
             <span className="text-poise-teal font-medium">Execution OS North Star™</span>
           </nav>
 
@@ -153,7 +153,7 @@ export default function CustomerJourney() {
             <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
               Your Path to Strategic Excellence
             </h1>
-            <p className="text-xl text-gray-600 dark:text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-800 dark:text-slate-300 max-w-3xl mx-auto">
               From discovery to continuous value, your roadmap to 12-minute strategic response
             </p>
           </div>
@@ -164,7 +164,7 @@ export default function CustomerJourney() {
                 <CardContent className="p-6">
                   <div className="text-3xl font-bold text-poise-teal mb-1">{metric.value}</div>
                   <div className="font-medium text-slate-900 dark:text-white mb-1">{metric.label}</div>
-                  <div className="text-xs text-gray-600">{metric.description}</div>
+                  <div className="text-xs text-gray-800">{metric.description}</div>
                 </CardContent>
               </Card>
             ))}
@@ -213,12 +213,12 @@ export default function CustomerJourney() {
                             {phase.activities.map((activity) => (
                               <Link key={activity.path} href={activity.path}>
                                 <div className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 hover:bg-poise-teal/10 cursor-pointer group transition-colors">
-                                  <ArrowRight className="h-4 w-4 text-slate-600 dark:text-slate-200 group-hover:text-poise-teal" />
+                                  <ArrowRight className="h-4 w-4 text-gray-800 dark:text-slate-200 group-hover:text-poise-teal" />
                                   <div className="flex-1">
                                     <div className="font-medium text-slate-900 dark:text-white group-hover:text-poise-teal transition-colors">
                                       {activity.name}
                                     </div>
-                                    <div className="text-xs text-gray-600">{activity.description}</div>
+                                    <div className="text-xs text-gray-800">{activity.description}</div>
                                   </div>
                                 </div>
                               </Link>
@@ -236,7 +236,7 @@ export default function CustomerJourney() {
                               {phase.deliverables.map((deliverable, idx) => (
                                 <div key={idx} className="flex items-center gap-2 text-sm">
                                   <CheckCircle className="h-4 w-4 text-emerald-500" />
-                                  <span className="text-gray-600 dark:text-slate-300">{deliverable}</span>
+                                  <span className="text-gray-800 dark:text-slate-300">{deliverable}</span>
                                 </div>
                               ))}
                             </div>
@@ -272,7 +272,7 @@ export default function CustomerJourney() {
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
                 Ready to Start Your Journey?
               </h3>
-              <p className="text-gray-600 dark:text-slate-300 mb-6 max-w-2xl mx-auto">
+              <p className="text-gray-800 dark:text-slate-300 mb-6 max-w-2xl mx-auto">
                 Join Fortune 1000 companies achieving 12-minute strategic response times
               </p>
               <div className="flex justify-center gap-4">

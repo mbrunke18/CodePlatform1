@@ -489,7 +489,7 @@ export default function TryDemo() {
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
               Experience Execution OS
             </h1>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-800">
               See why Fortune 1000 leaders need the Strategic Execution OS
             </p>
           </div>
@@ -499,7 +499,7 @@ export default function TryDemo() {
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">Choose Your Crisis</h2>
-                <p className="text-gray-600">
+                <p className="text-gray-800">
                   Experience the chaos of strategic events—then see how Execution OS transforms response
                 </p>
               </div>
@@ -521,8 +521,8 @@ export default function TryDemo() {
                             <h3 className="text-lg font-bold text-gray-900 group-hover:text-emerald-400 transition-colors mb-1">
                               {scenario.name}
                             </h3>
-                            <p className="text-sm text-gray-600 mb-2">{scenario.industry}</p>
-                            <p className="text-sm text-gray-600 mb-3">{scenario.trigger}</p>
+                            <p className="text-sm text-gray-800 mb-2">{scenario.industry}</p>
+                            <p className="text-sm text-gray-800 mb-3">{scenario.trigger}</p>
                             <div className="flex items-center gap-4 text-xs">
                               <span className="flex items-center gap-1 text-red-400">
                                 <TrendingDown className="h-3 w-3" />
@@ -530,7 +530,7 @@ export default function TryDemo() {
                               </span>
                             </div>
                           </div>
-                          <ArrowRight className="h-5 w-5 text-gray-600 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                          <ArrowRight className="h-5 w-5 text-gray-800 group-hover:text-white group-hover:translate-x-1 transition-all" />
                         </div>
                       </CardContent>
                     </Card>
@@ -541,7 +541,7 @@ export default function TryDemo() {
               {/* Industry Demos Teaser */}
               <div className="mt-8 pt-6 border-t border-gray-200">
                 <div className="text-center">
-                  <p className="text-sm text-gray-600 mb-3">
+                  <p className="text-sm text-gray-800 mb-3">
                     Want to see real company scenarios? Explore our industry deep-dives:
                   </p>
                   <div className="flex flex-wrap justify-center gap-2 mb-4">
@@ -557,13 +557,13 @@ export default function TryDemo() {
                           className="flex items-center gap-2 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg hover:border-poise-teal/50 transition-colors text-sm"
                         >
                           <IconComponent className={`h-4 w-4 ${demo.iconColor}`} />
-                          <span className="text-gray-600">{demo.organization}</span>
-                          <span className="text-xs text-gray-600">{demo.industry}</span>
+                          <span className="text-gray-800">{demo.organization}</span>
+                          <span className="text-xs text-gray-800">{demo.industry}</span>
                         </button>
                       );
                     })}
                   </div>
-                  <p className="text-xs text-gray-600 mt-2">Each scenario shows the full IDEA loop in action</p>
+                  <p className="text-xs text-gray-800 mt-2">Each scenario shows the full IDEA loop in action</p>
                 </div>
               </div>
             </div>
@@ -577,7 +577,7 @@ export default function TryDemo() {
                   <AlertTriangle className="h-3 w-3 mr-1" />
                   CRISIS IN PROGRESS
                 </Badge>
-                <Button variant="ghost" size="sm" onClick={resetDemo} className="text-gray-600 hover:text-white">
+                <Button variant="ghost" size="sm" onClick={resetDemo} className="text-gray-800 hover:text-white">
                   <XCircle className="h-4 w-4 mr-1" />
                   Exit Demo
                 </Button>
@@ -603,11 +603,11 @@ export default function TryDemo() {
                   <Card className="bg-white border-gray-200">
                     <CardContent className="p-4">
                       <div className="text-center">
-                        <p className="text-xs text-gray-600 uppercase tracking-wide mb-1">Time Elapsed</p>
+                        <p className="text-xs text-gray-800 uppercase tracking-wide mb-1">Time Elapsed</p>
                         <p className="text-3xl font-bold text-gray-900 font-mono">
                           {formatTime(chaosSeconds)}
                         </p>
-                        <p className="text-xs text-gray-600 mt-1">
+                        <p className="text-xs text-gray-800 mt-1">
                           Still no coordinated response
                         </p>
                       </div>
@@ -616,7 +616,7 @@ export default function TryDemo() {
 
                   <Card className="bg-white border-gray-200">
                     <CardContent className="p-4">
-                      <p className="text-xs text-gray-600 uppercase tracking-wide mb-2">Stress Level</p>
+                      <p className="text-xs text-gray-800 uppercase tracking-wide mb-2">Stress Level</p>
                       <Progress value={stressLevel} className="h-3 bg-gray-50" />
                       <p className="text-xs text-orange-400 mt-2 text-center">
                         {stressLevel < 50 ? 'Escalating' : stressLevel < 80 ? 'Critical' : 'Overwhelming'}
@@ -624,7 +624,7 @@ export default function TryDemo() {
                     </CardContent>
                   </Card>
 
-                  <div className="text-center text-xs text-gray-600 pt-2">
+                  <div className="text-center text-xs text-gray-800 pt-2">
                     <p>Industry average response time:</p>
                     <p className="text-lg font-bold text-red-400">20-72 hours</p>
                   </div>
@@ -661,11 +661,11 @@ export default function TryDemo() {
                                 <div className="flex-1 min-w-0">
                                   <div className="flex items-center gap-2 mb-1">
                                     <span className="text-xs font-medium text-gray-900">{msg.sender}</span>
-                                    <Badge variant="outline" className="text-xs py-0 h-4 bg-transparent text-gray-600 border-slate-600">
+                                    <Badge variant="outline" className="text-xs py-0 h-4 bg-transparent text-gray-800 border-slate-600">
                                       {msg.type}
                                     </Badge>
                                   </div>
-                                  <p className="text-sm text-gray-600 leading-snug">{msg.content}</p>
+                                  <p className="text-sm text-gray-800 leading-snug">{msg.content}</p>
                                 </div>
                               </div>
                             </div>
@@ -687,7 +687,7 @@ export default function TryDemo() {
                     {showChaosComplete && (
                       <div className="flex-1 space-y-3">
                         <div className="p-4 bg-gray-50 border border-slate-600 rounded-lg text-center">
-                          <p className="text-gray-600 text-sm mb-1">This is what happens WITHOUT Execution OS</p>
+                          <p className="text-gray-800 text-sm mb-1">This is what happens WITHOUT Execution OS</p>
                           <p className="text-gray-900 font-medium">Chaos. Confusion. Costly delays.</p>
                         </div>
                         <Button 
@@ -715,11 +715,11 @@ export default function TryDemo() {
                   <Badge className={`bg-gradient-to-r ${selectedScenario.color} text-gray-900`}>
                     {selectedScenario.name}
                   </Badge>
-                  <span className="text-sm text-gray-600">
+                  <span className="text-sm text-gray-800">
                     {formatCurrency(selectedScenario.dealValue)} at stake
                   </span>
                 </div>
-                <Button variant="ghost" size="sm" onClick={resetDemo} className="text-gray-600 hover:text-white">
+                <Button variant="ghost" size="sm" onClick={resetDemo} className="text-gray-800 hover:text-white">
                   <RefreshCw className="h-4 w-4 mr-1" />
                   Try Another Scenario
                 </Button>
@@ -748,9 +748,9 @@ export default function TryDemo() {
                         {isCompleted ? (
                           <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                         ) : (
-                          <IconComponent className={`h-4 w-4 ${isCurrent ? colors.text : 'text-gray-600'}`} />
+                          <IconComponent className={`h-4 w-4 ${isCurrent ? colors.text : 'text-gray-800'}`} />
                         )}
-                        <span className={`text-xs font-medium ${isCurrent ? 'text-gray-900' : isCompleted ? 'text-gray-600' : 'text-gray-600'}`}>
+                        <span className={`text-xs font-medium ${isCurrent ? 'text-gray-900' : isCompleted ? 'text-gray-800' : 'text-gray-800'}`}>
                           {phase.name}
                         </span>
                       </div>
@@ -780,19 +780,19 @@ export default function TryDemo() {
                         <div className="p-4 bg-violet-500/10 border border-violet-500/30 rounded-lg">
                           <h4 className="text-gray-900 font-medium mb-3">Playbook: {selectedScenario.playbook}</h4>
                           <div className="grid grid-cols-2 gap-3 text-sm">
-                            <div className="flex items-center gap-2 text-gray-600">
+                            <div className="flex items-center gap-2 text-gray-800">
                               <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                               12 pre-configured tasks
                             </div>
-                            <div className="flex items-center gap-2 text-gray-600">
+                            <div className="flex items-center gap-2 text-gray-800">
                               <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                               {selectedScenario.stakeholders} stakeholders mapped
                             </div>
-                            <div className="flex items-center gap-2 text-gray-600">
+                            <div className="flex items-center gap-2 text-gray-800">
                               <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                               Response templates staged
                             </div>
-                            <div className="flex items-center gap-2 text-gray-600">
+                            <div className="flex items-center gap-2 text-gray-800">
                               <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                               Budget pre-approved
                             </div>
@@ -804,13 +804,13 @@ export default function TryDemo() {
                             <Clock className="h-4 w-4" />
                             <span className="font-medium">Time to Ready: 0 minutes</span>
                           </div>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-gray-800">
                             Everything was prepared BEFORE the crisis hit
                           </p>
                         </div>
 
                         <div className="p-3 bg-gray-50 rounded-lg">
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-gray-800">
                             <span className="text-red-400 font-medium">Without Execution OS:</span> 20-50 hours to coordinate a response team, find documents, and get budget approval.
                           </p>
                         </div>
@@ -844,7 +844,7 @@ export default function TryDemo() {
                             <span className="font-medium">Trigger Detected</span>
                           </div>
                           <p className="text-gray-900">{selectedScenario.trigger}</p>
-                          <div className="mt-3 flex items-center gap-4 text-sm text-gray-600">
+                          <div className="mt-3 flex items-center gap-4 text-sm text-gray-800">
                             <span className="flex items-center gap-1">
                               <DollarSign className="h-4 w-4" />
                               {formatCurrency(selectedScenario.dealValue)} at risk
@@ -861,7 +861,7 @@ export default function TryDemo() {
                             <Brain className="h-5 w-5" />
                             <span className="font-medium">AI Recommendation</span>
                           </div>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-gray-800">
                             Activate <span className="text-gray-900 font-medium">{selectedScenario.playbook}</span> playbook. 
                             Match confidence: <span className="text-emerald-400 font-bold">94%</span>
                           </p>
@@ -917,7 +917,7 @@ export default function TryDemo() {
                                       {getIntegrationIcon(step.integration)}
                                     </div>
                                   </div>
-                                  <p className="text-gray-600 text-xs">{step.description}</p>
+                                  <p className="text-gray-800 text-xs">{step.description}</p>
                                 </div>
                                 <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                               </div>
@@ -925,7 +925,7 @@ export default function TryDemo() {
                           })}
                           
                           {isExecuting && (
-                            <div className="flex items-center justify-center p-4 text-gray-600">
+                            <div className="flex items-center justify-center p-4 text-gray-800">
                               <div className="animate-spin rounded-full h-5 w-5 border-2 border-emerald-500 border-t-transparent mr-2" />
                               Orchestrating response...
                             </div>
@@ -949,7 +949,7 @@ export default function TryDemo() {
                       <CardContent className="space-y-4">
                         {!learnings ? (
                           <div className="space-y-4">
-                            <p className="text-gray-600">
+                            <p className="text-gray-800">
                               Execution OS captures what worked and suggests playbook improvements for next time.
                             </p>
                             <Button 
@@ -967,7 +967,7 @@ export default function TryDemo() {
                                 <CheckCircle2 className="h-4 w-4" />
                                 <span className="font-medium text-sm">Execution Complete</span>
                               </div>
-                              <p className="text-xs text-gray-600">
+                              <p className="text-xs text-gray-800">
                                 {formatCurrency(learnings.metrics?.dealValueProtected || 0)} protected
                               </p>
                             </div>
@@ -981,7 +981,7 @@ export default function TryDemo() {
                                 {learnings.successPatterns?.map((pattern: any, i: number) => (
                                   <div key={i} className="p-2 bg-gray-50 rounded text-xs">
                                     <span className="text-gray-900 font-medium">{pattern.category}:</span>
-                                    <span className="text-gray-600 ml-1">{pattern.insight}</span>
+                                    <span className="text-gray-800 ml-1">{pattern.insight}</span>
                                   </div>
                                 ))}
                               </div>
@@ -1001,21 +1001,21 @@ export default function TryDemo() {
                               <Rocket className="h-10 w-10 text-emerald-400" />
                             </div>
                             <h2 className="text-2xl font-bold text-gray-900 mb-2">Demo Complete</h2>
-                            <p className="text-gray-600">You just experienced the IDEA Framework in action</p>
+                            <p className="text-gray-800">You just experienced the IDEA Framework in action</p>
                           </div>
 
                           <div className="grid grid-cols-3 gap-4 mb-6">
                             <div className="p-4 bg-gray-50 rounded-lg">
                               <p className="text-2xl font-bold text-emerald-400">12 min</p>
-                              <p className="text-xs text-gray-600">Response Time</p>
+                              <p className="text-xs text-gray-800">Response Time</p>
                             </div>
                             <div className="p-4 bg-gray-50 rounded-lg">
                               <p className="text-2xl font-bold text-emerald-400">{formatCurrency(selectedScenario?.dealValue || 0)}</p>
-                              <p className="text-xs text-gray-600">Value Protected</p>
+                              <p className="text-xs text-gray-800">Value Protected</p>
                             </div>
                             <div className="p-4 bg-gray-50 rounded-lg">
                               <p className="text-2xl font-bold text-emerald-400">98 days</p>
-                              <p className="text-xs text-gray-600">Saved (IBM 2024)</p>
+                              <p className="text-xs text-gray-800">Saved (IBM 2024)</p>
                             </div>
                           </div>
 
@@ -1051,7 +1051,7 @@ export default function TryDemo() {
                                 <Building2 className="h-5 w-5 text-poise-gold" />
                                 Explore Industry Deep-Dives
                               </CardTitle>
-                              <CardDescription className="text-gray-600">
+                              <CardDescription className="text-gray-800">
                                 See Execution OS in action across 9 industries with real company scenarios
                               </CardDescription>
                             </div>
@@ -1091,11 +1091,11 @@ export default function TryDemo() {
                                 >
                                   <div className="flex items-center gap-2 mb-1">
                                     <IconComponent className={`h-4 w-4 ${demo.iconColor}`} />
-                                    <span className="text-xs text-gray-600 uppercase">{demo.industry}</span>
+                                    <span className="text-xs text-gray-800 uppercase">{demo.industry}</span>
                                   </div>
                                   <p className="text-xs font-medium text-gray-900 truncate">{demo.title}</p>
                                   <div className="flex items-center justify-between mt-1">
-                                    <span className="text-xs text-gray-600">{demo.organization}</span>
+                                    <span className="text-xs text-gray-800">{demo.organization}</span>
                                     <span className={`text-xs font-semibold ${demo.type === 'offensive' ? 'text-green-400' : 'text-emerald-400'}`}>
                                       {demo.impact}
                                     </span>
@@ -1109,7 +1109,7 @@ export default function TryDemo() {
                             })}
                           </div>
                           <div className="mt-4 pt-4 border-t border-gray-200 text-center">
-                            <p className="text-xs text-gray-600">Click any scenario above to explore the full demo</p>
+                            <p className="text-xs text-gray-800">Click any scenario above to explore the full demo</p>
                           </div>
                         </CardContent>
                       </Card>
@@ -1129,12 +1129,12 @@ export default function TryDemo() {
                         <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-center">
                           <p className="text-xs text-red-400 mb-1">Traditional</p>
                           <p className="text-xl font-bold text-red-300">20-72 hrs</p>
-                          <p className="text-xs text-gray-600">Industry average</p>
+                          <p className="text-xs text-gray-800">Industry average</p>
                         </div>
                         <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-center">
                           <p className="text-xs text-emerald-400 mb-1">Execution OS</p>
                           <p className="text-xl font-bold text-emerald-300">12 min</p>
-                          <p className="text-xs text-gray-600">Guaranteed</p>
+                          <p className="text-xs text-gray-800">Guaranteed</p>
                         </div>
                       </div>
                     </CardContent>
@@ -1156,7 +1156,7 @@ export default function TryDemo() {
                         ].map(({ icon: Icon, name, color }) => (
                           <div key={name} className="flex items-center gap-1.5 px-2 py-1 bg-gray-50 rounded text-xs">
                             <Icon className="h-3.5 w-3.5" style={{ color }} />
-                            <span className="text-gray-600">{name}</span>
+                            <span className="text-gray-800">{name}</span>
                           </div>
                         ))}
                       </div>
@@ -1170,16 +1170,16 @@ export default function TryDemo() {
                     </CardHeader>
                     <CardContent className="space-y-2">
                       <div className="flex items-start gap-2 text-xs">
-                        <Badge variant="outline" className="text-xs shrink-0 bg-transparent text-gray-600 border-slate-600">IBM 2024</Badge>
-                        <span className="text-gray-600">98 days saved with AI/automation</span>
+                        <Badge variant="outline" className="text-xs shrink-0 bg-transparent text-gray-800 border-slate-600">IBM 2024</Badge>
+                        <span className="text-gray-800">98 days saved with AI/automation</span>
                       </div>
                       <div className="flex items-start gap-2 text-xs">
-                        <Badge variant="outline" className="text-xs shrink-0 bg-transparent text-gray-600 border-slate-600">McKinsey</Badge>
-                        <span className="text-gray-600">5-10x faster execution</span>
+                        <Badge variant="outline" className="text-xs shrink-0 bg-transparent text-gray-800 border-slate-600">McKinsey</Badge>
+                        <span className="text-gray-800">5-10x faster execution</span>
                       </div>
                       <div className="flex items-start gap-2 text-xs">
-                        <Badge variant="outline" className="text-xs shrink-0 bg-transparent text-gray-600 border-slate-600">PagerDuty</Badge>
-                        <span className="text-gray-600">3.5x faster crisis response</span>
+                        <Badge variant="outline" className="text-xs shrink-0 bg-transparent text-gray-800 border-slate-600">PagerDuty</Badge>
+                        <span className="text-gray-800">3.5x faster crisis response</span>
                       </div>
                     </CardContent>
                   </Card>
@@ -1188,8 +1188,8 @@ export default function TryDemo() {
                   <Card className="bg-gradient-to-br   border-amber-500/30">
                     <CardContent className="p-4 text-center">
                       <p className="text-4xl font-bold text-amber-400 mb-1">170</p>
-                      <p className="text-sm text-amber-700">Pre-Built Playbooks</p>
-                      <p className="text-xs text-gray-600 mt-1">Across 9 Strategic Domains</p>
+                      <p className="text-sm text-[#C9A84C]">Pre-Built Playbooks</p>
+                      <p className="text-xs text-gray-800 mt-1">Across 9 Strategic Domains</p>
                     </CardContent>
                   </Card>
                 </div>
@@ -1204,7 +1204,7 @@ export default function TryDemo() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold text-gray-900 mb-3">See It In Your Industry</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-800 max-w-2xl mx-auto">
               Explore how Execution OS handles real-world scenarios across offense and defense — each demo shows the full trigger-to-execution loop.
             </p>
           </div>
@@ -1228,7 +1228,7 @@ export default function TryDemo() {
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
                       <IconComponent className={`h-5 w-5 ${demo.iconColor}`} />
-                      <span className="text-xs font-medium text-gray-600 uppercase tracking-wider">{demo.industry}</span>
+                      <span className="text-xs font-medium text-gray-800 uppercase tracking-wider">{demo.industry}</span>
                     </div>
                     <Badge variant="outline" className={`text-xs ${
                       demo.type === 'offensive' 
@@ -1240,7 +1240,7 @@ export default function TryDemo() {
                   </div>
                   <p className="text-sm font-semibold text-gray-900 mb-1">{demo.title}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-gray-600">{demo.organization}</span>
+                    <span className="text-xs text-gray-800">{demo.organization}</span>
                     <span className={`text-xs font-bold ${demo.type === 'offensive' ? 'text-green-400' : 'text-emerald-400'}`}>
                       {demo.impact}
                     </span>

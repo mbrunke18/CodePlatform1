@@ -47,11 +47,11 @@ export default function InvestorResources() {
             We're Creating a New Category
           </h1>
           
-          <p className="text-xl md:text-2xl text-blue-600 mb-4 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-blue-800 mb-4 max-w-3xl mx-auto">
             <span className="font-bold">Strategic Execution Operating System (SEOS)</span>
           </p>
           
-          <p className="text-lg text-blue-700 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-blue-800 mb-8 max-w-2xl mx-auto">
             What Salesforce did for customer relationships, Execution OS does for strategic execution.
           </p>
 
@@ -403,7 +403,7 @@ export default function InvestorResources() {
           <h2 className="text-3xl font-bold mb-6">
             Ready to Learn More?
           </h2>
-          <p className="text-xl text-blue-600 mb-8">
+          <p className="text-xl text-blue-800 mb-8">
             See Execution OS in action and explore the category-defining opportunity.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">

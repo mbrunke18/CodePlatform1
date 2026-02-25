@@ -83,10 +83,10 @@ export default function FutureGym() {
         <div className="flex items-start justify-between">
           <div>
             <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent mb-2 flex items-center gap-3">
-              <Dumbbell className="w-10 h-10 text-blue-600" />
+              <Dumbbell className="w-10 h-10 text-blue-800" />
               Future Gym
             </h1>
-            <p className="text-gray-600 dark:text-slate-300">
+            <p className="text-gray-800 dark:text-slate-300">
               Build strategic muscle through simulated scenarios and practice drills
             </p>
           </div>
@@ -101,7 +101,7 @@ export default function FutureGym() {
           <Card>
             <CardHeader>
               <CardDescription>Total Exercises</CardDescription>
-              <CardTitle className="text-3xl text-blue-600">{teamStats.totalExercises}</CardTitle>
+              <CardTitle className="text-3xl text-blue-800">{teamStats.totalExercises}</CardTitle>
             </CardHeader>
           </Card>
           <Card>
@@ -113,7 +113,7 @@ export default function FutureGym() {
           <Card>
             <CardHeader>
               <CardDescription>Training Hours</CardDescription>
-              <CardTitle className="text-3xl text-emerald-600">{teamStats.hoursTraining}</CardTitle>
+              <CardTitle className="text-3xl text-emerald-700">{teamStats.hoursTraining}</CardTitle>
             </CardHeader>
           </Card>
           <Card>
@@ -134,8 +134,8 @@ export default function FutureGym() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
               {Object.entries(readiness).filter(([key]) => key !== 'overall').map(([key, value]) => (
                 <div key={key} className="text-center">
-                  <div className="text-2xl font-bold text-blue-600 mb-1">{value}%</div>
-                  <div className="text-xs uppercase tracking-wide text-gray-600 dark:text-slate-300 mb-2">
+                  <div className="text-2xl font-bold text-blue-800 mb-1">{value}%</div>
+                  <div className="text-xs uppercase tracking-wide text-gray-800 dark:text-slate-300 mb-2">
                     {key}
                   </div>
                   <Progress value={value} className="h-2" />
@@ -172,7 +172,7 @@ export default function FutureGym() {
                       }>
                         {scenario.difficulty}
                       </Badge>
-                      <span className="text-sm text-gray-600 dark:text-slate-300">
+                      <span className="text-sm text-gray-800 dark:text-slate-300">
                         {scenario.duration}
                       </span>
                     </div>
@@ -182,7 +182,7 @@ export default function FutureGym() {
                           <span className="text-sm font-medium text-green-900 dark:text-green-100">
                             Completed
                           </span>
-                          <span className="text-lg font-bold text-green-600 dark:text-green-400">
+                          <span className="text-lg font-bold text-emerald-700 dark:text-green-400">
                             {scenario.score}%
                           </span>
                         </div>

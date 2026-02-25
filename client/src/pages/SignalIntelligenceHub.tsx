@@ -420,7 +420,7 @@ function MyTriggersTab({ triggers, isLoading, onEdit, onToggle, onDelete }: {
                         className={`text-xs ${
                           trigger.alertThreshold === 'red' || trigger.severity === 'critical' ? 'bg-red-100 text-red-700' :
                           trigger.alertThreshold === 'yellow' || trigger.severity === 'high' ? 'bg-orange-100 text-orange-700' :
-                          trigger.severity === 'medium' ? 'bg-amber-100 text-amber-700' :
+                          trigger.severity === 'medium' ? 'bg-amber-100 text-[#C9A84C]' :
                           'bg-slate-100 text-slate-700'
                         }`}
                       >
@@ -482,7 +482,7 @@ function TemplatesTab({ onUseTemplate }: { onUseTemplate: (template: any) => voi
                     className={`text-xs ${
                       template.urgency === 'critical' ? 'bg-red-100 text-red-700' :
                       template.urgency === 'high' ? 'bg-orange-100 text-orange-700' :
-                      'bg-amber-100 text-amber-700'
+                      'bg-amber-100 text-[#C9A84C]'
                     }`}
                   >
                     {template.urgency}
@@ -735,7 +735,7 @@ function TriggerConfigDialog({
                 <h4 className="font-semibold">Recommended Playbooks</h4>
                 <div className="flex flex-wrap gap-2">
                   {category.recommendedPlaybooks.map((playbook, i) => (
-                    <Badge key={i} className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+                    <Badge key={i} className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
                       <Target className="h-3 w-3 mr-1" />
                       {playbook}
                     </Badge>
@@ -1352,7 +1352,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
             <Card className="card-bg">
               <CardContent className="p-4 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
-                  <Radio className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  <Radio className="h-5 w-5 text-blue-800 dark:text-blue-400" />
                 </div>
                 <div>
                   <div className="text-2xl font-bold">{SIGNAL_CATEGORIES.length}</div>
@@ -1364,7 +1364,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
             <Card className="card-bg">
               <CardContent className="p-4 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
-                  <Database className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                  <Database className="h-5 w-5 text-emerald-700 dark:text-emerald-400" />
                 </div>
                 <div>
                   <div className="text-2xl font-bold">{totalDataPoints}</div>
@@ -1376,7 +1376,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
             <Card className="card-bg">
               <CardContent className="p-4 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center">
-                  <Bell className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+                  <Bell className="h-5 w-5 text-[#C9A84C] dark:text-amber-400" />
                 </div>
                 <div>
                   <div className="text-2xl font-bold">{activeTriggerCount}</div>
@@ -1388,7 +1388,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
             <Card className="card-bg">
               <CardContent className="p-4 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
-                  <Globe className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                  <Globe className="h-5 w-5 text-purple-800 dark:text-purple-400" />
                 </div>
                 <div>
                   <div className="text-2xl font-bold">{externalCount}</div>
@@ -1400,7 +1400,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
             <Card className="card-bg">
               <CardContent className="p-4 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
-                  <Target className="h-5 w-5 text-gray-600 dark:text-slate-300" />
+                  <Target className="h-5 w-5 text-gray-800 dark:text-slate-300" />
                 </div>
                 <div>
                   <div className="text-2xl font-bold">{internalCount}</div>
@@ -1639,7 +1639,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
                         className="h-auto py-4 flex flex-col items-center gap-2"
                         onClick={() => setActiveTab('triggers')}
                       >
-                        <Settings className="h-5 w-5 text-gray-600" />
+                        <Settings className="h-5 w-5 text-gray-800" />
                         <span className="text-sm">Manage Triggers</span>
                       </Button>
                     </div>
@@ -1804,7 +1804,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
                       </CardDescription>
                     </div>
                     <div className="flex items-center gap-3">
-                      <Badge variant="outline" className="text-emerald-600 border-emerald-600">
+                      <Badge variant="outline" className="text-emerald-700 border-emerald-600">
                         {totalDataPoints + customDataPoints.length} Total
                       </Badge>
                       <Button onClick={() => setCustomDataPointDialogOpen(true)} size="sm">
@@ -1858,7 +1858,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
                                 
                                 return (
                                   <div key={dp.id} className="p-3 flex items-start gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50">
-                                    <div className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xs font-medium text-gray-600">
+                                    <div className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xs font-medium text-gray-800">
                                       {idx + 1}
                                     </div>
                                     <div className="flex-1 min-w-0">
@@ -1875,7 +1875,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
                                       </div>
                                       <p className="text-xs text-muted-foreground mt-1">{dp.description}</p>
                                       <div className="flex items-center gap-2 mt-2">
-                                        <span className="text-xs text-slate-600 dark:text-slate-200">Sources:</span>
+                                        <span className="text-xs text-gray-800 dark:text-slate-200">Sources:</span>
                                         {dp.sources.map((src, i) => (
                                           <Badge key={i} variant="secondary" className="text-xs py-0">
                                             {src}
@@ -1954,7 +1954,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
                         <>
                           <Separator className="my-6" />
                           <div className="mb-4">
-                            <h3 className="font-semibold text-lg flex items-center gap-2 text-purple-600">
+                            <h3 className="font-semibold text-lg flex items-center gap-2 text-purple-800">
                               <Sparkles className="h-5 w-5" />
                               Your Custom Data Points
                             </h3>
@@ -1986,9 +1986,9 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
                                         )}
                                       </div>
                                       <div className="text-left">
-                                        <h3 className="font-semibold text-purple-600">
+                                        <h3 className="font-semibold text-purple-800">
                                           {systemCategory?.name || categoryName}
-                                          {isCustomCategory && <Badge className="ml-2 bg-purple-100 text-purple-600 text-xs">Custom Category</Badge>}
+                                          {isCustomCategory && <Badge className="ml-2 bg-purple-100 text-purple-800 text-xs">Custom Category</Badge>}
                                         </h3>
                                         <p className="text-xs text-muted-foreground">
                                           {isCustomCategory ? 'Custom category created by your organization' : 'Custom data points added to system category'}
@@ -2028,10 +2028,10 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
                                           <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2">
                                               <span className="font-medium text-sm">{dp.name}</span>
-                                              <Badge variant="outline" className="text-xs border-purple-300 text-purple-600">
+                                              <Badge variant="outline" className="text-xs border-purple-300 text-purple-800">
                                                 {dp.metricType}
                                               </Badge>
-                                              <Badge className="bg-purple-100 text-purple-600 text-xs">
+                                              <Badge className="bg-purple-100 text-purple-800 text-xs">
                                                 Custom
                                               </Badge>
                                               {isActive && (
@@ -2042,7 +2042,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
                                             </div>
                                             <p className="text-xs text-muted-foreground mt-1">{dp.description || 'No description'}</p>
                                             <div className="flex items-center gap-2 mt-2">
-                                              <span className="text-xs text-slate-600 dark:text-slate-200">Sources:</span>
+                                              <span className="text-xs text-gray-800 dark:text-slate-200">Sources:</span>
                                               {(dp.sources || ['manual-input']).map((src: string, i: number) => (
                                                 <Badge key={i} variant="secondary" className="text-xs py-0">
                                                   {src}

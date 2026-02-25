@@ -147,7 +147,7 @@ export default function CrisisDetail() {
         <div className="text-center py-12">
           <AlertTriangle className="h-12 w-12 text-red-500 mx-auto mb-4" />
           <h2 className="text-xl font-semibold mb-2">Crisis Not Found</h2>
-          <p className="text-gray-600 mb-4">The requested crisis scenario could not be found.</p>
+          <p className="text-gray-800 mb-4">The requested crisis scenario could not be found.</p>
           <Link href="/crisis">
             <Button variant="outline">
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -171,10 +171,10 @@ export default function CrisisDetail() {
 
   const getPriorityColor = (priority: string) => {
     switch (priority.toLowerCase()) {
-      case 'high': return 'text-red-600 bg-red-50 dark:bg-red-900/20';
+      case 'high': return 'text-red-700 bg-red-50 dark:bg-red-900/20';
       case 'medium': return 'text-orange-600 bg-orange-50 dark:bg-orange-900/20';
-      case 'low': return 'text-green-600 bg-green-50 dark:bg-green-900/20';
-      default: return 'text-gray-600 bg-gray-50 dark:bg-gray-900/20';
+      case 'low': return 'text-emerald-700 bg-green-50 dark:bg-green-900/20';
+      default: return 'text-gray-800 bg-gray-50 dark:bg-gray-900/20';
     }
   };
 
@@ -245,18 +245,18 @@ export default function CrisisDetail() {
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium">Task Completion</span>
-                  <span className="text-sm text-gray-600" data-testid="task-progress-counter">{completedTasks} of {totalTasks} tasks</span>
+                  <span className="text-sm text-gray-800" data-testid="task-progress-counter">{completedTasks} of {totalTasks} tasks</span>
                 </div>
                 <Progress value={progressPercentage} className="h-2" />
                 
                 <div className="grid grid-cols-2 gap-4 mt-6">
                   <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                    <div className="text-2xl font-bold text-blue-600">{totalTasks}</div>
-                    <div className="text-sm text-gray-600">Total Tasks</div>
+                    <div className="text-2xl font-bold text-blue-800">{totalTasks}</div>
+                    <div className="text-sm text-gray-800">Total Tasks</div>
                   </div>
                   <div className="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                    <div className="text-2xl font-bold text-green-600">{completedTasks}</div>
-                    <div className="text-sm text-gray-600">Completed</div>
+                    <div className="text-2xl font-bold text-emerald-700">{completedTasks}</div>
+                    <div className="text-sm text-gray-800">Completed</div>
                   </div>
                 </div>
               </CardContent>
@@ -344,19 +344,19 @@ export default function CrisisDetail() {
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div>
-                      <div className="text-sm font-medium text-gray-600">Organization</div>
+                      <div className="text-sm font-medium text-gray-800">Organization</div>
                       <div className="text-lg font-semibold">{organization?.name || 'Unknown'}</div>
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-gray-600">Industry</div>
+                      <div className="text-sm font-medium text-gray-800">Industry</div>
                       <div>{organization?.industry || 'Not specified'}</div>
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-gray-600">Size</div>
+                      <div className="text-sm font-medium text-gray-800">Size</div>
                       <div>{organization?.size ? `${organization.size} employees` : 'Not specified'}</div>
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-gray-600">Location</div>
+                      <div className="text-sm font-medium text-gray-800">Location</div>
                       <div>{organization?.headquarters || 'Not specified'}</div>
                     </div>
                   </CardContent>
@@ -384,7 +384,7 @@ export default function CrisisDetail() {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm font-medium">Est. Financial Impact</span>
-                      <span className="text-sm font-semibold text-red-600">$2.4M+</span>
+                      <span className="text-sm font-semibold text-red-700">$2.4M+</span>
                     </div>
                   </CardContent>
                 </Card>
@@ -394,7 +394,7 @@ export default function CrisisDetail() {
             <TabsContent value="tasks" className="space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-semibold">Strategic Action Items</h3>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-gray-800">
                   {completedTasks} of {totalTasks} completed
                 </div>
               </div>
@@ -406,9 +406,9 @@ export default function CrisisDetail() {
               ) : tasks.length === 0 ? (
                 <Card>
                   <CardContent className="text-center py-8">
-                    <FileText className="h-12 w-12 text-gray-600 mx-auto mb-4" />
+                    <FileText className="h-12 w-12 text-gray-800 mx-auto mb-4" />
                     <h3 className="text-lg font-semibold mb-2">No Tasks Yet</h3>
-                    <p className="text-gray-600">Tasks will be created when the crisis response is activated.</p>
+                    <p className="text-gray-800">Tasks will be created when the crisis response is activated.</p>
                   </CardContent>
                 </Card>
               ) : (
@@ -431,18 +431,18 @@ export default function CrisisDetail() {
                                 data-testid={`button-toggle-task-${task.id}`}
                               >
                                 {task.status === 'Completed' ? (
-                                  <CheckCircle className="h-5 w-5 text-green-600" />
+                                  <CheckCircle className="h-5 w-5 text-emerald-700" />
                                 ) : (
                                   <div className="h-5 w-5 border-2 border-gray-300 rounded-full" />
                                 )}
                               </Button>
                               <div className="flex-1 page-background">
-                                <p className={`text-sm ${task.status === 'Completed' ? 'line-through text-gray-600' : 'text-gray-900 dark:text-gray-100'}`}>
+                                <p className={`text-sm ${task.status === 'Completed' ? 'line-through text-gray-800' : 'text-gray-900 dark:text-gray-100'}`}>
                                   {task.description}
                                 </p>
                               </div>
                             </div>
-                            <div className="flex items-center gap-4 text-xs text-gray-600 ml-8">
+                            <div className="flex items-center gap-4 text-xs text-gray-800 ml-8">
                               <span className={`px-2 py-1 rounded-full ${getPriorityColor(task.priority)}`}>
                                 {task.priority}
                               </span>
@@ -472,8 +472,8 @@ export default function CrisisDetail() {
                       <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
                       <div className="flex-1 page-background">
                         <div className="text-sm font-medium">Crisis Detected</div>
-                        <div className="text-xs text-gray-600">{new Date(crisis.createdAt).toLocaleString()}</div>
-                        <div className="text-sm text-gray-600 mt-1">Initial crisis scenario created and logged</div>
+                        <div className="text-xs text-gray-800">{new Date(crisis.createdAt).toLocaleString()}</div>
+                        <div className="text-sm text-gray-800 mt-1">Initial crisis scenario created and logged</div>
                       </div>
                     </div>
                     
@@ -482,8 +482,8 @@ export default function CrisisDetail() {
                         <div className="w-2 h-2 bg-orange-600 rounded-full mt-2"></div>
                         <div className="flex-1 page-background">
                           <div className="text-sm font-medium">Response Activated</div>
-                          <div className="text-xs text-gray-600">{new Date().toLocaleString()}</div>
-                          <div className="text-sm text-gray-600 mt-1">Emergency response protocols initiated</div>
+                          <div className="text-xs text-gray-800">{new Date().toLocaleString()}</div>
+                          <div className="text-sm text-gray-800 mt-1">Emergency response protocols initiated</div>
                         </div>
                       </div>
                     )}
@@ -493,8 +493,8 @@ export default function CrisisDetail() {
                         <div className="w-2 h-2 bg-green-600 rounded-full mt-2"></div>
                         <div className="flex-1 page-background">
                           <div className="text-sm font-medium">Crisis Resolved</div>
-                          <div className="text-xs text-gray-600">{new Date(crisis.updatedAt).toLocaleString()}</div>
-                          <div className="text-sm text-gray-600 mt-1">All critical tasks completed, situation stabilized</div>
+                          <div className="text-xs text-gray-800">{new Date(crisis.updatedAt).toLocaleString()}</div>
+                          <div className="text-sm text-gray-800 mt-1">All critical tasks completed, situation stabilized</div>
                         </div>
                       </div>
                     )}
@@ -521,15 +521,15 @@ export default function CrisisDetail() {
                     
                     <div className="pt-4 space-y-3">
                       <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Response Speed</span>
+                        <span className="text-sm text-gray-800">Response Speed</span>
                         <Badge variant="outline">Excellent</Badge>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Team Coordination</span>
+                        <span className="text-sm text-gray-800">Team Coordination</span>
                         <Badge variant="outline">Good</Badge>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Resource Efficiency</span>
+                        <span className="text-sm text-gray-800">Resource Efficiency</span>
                         <Badge variant="outline">Very Good</Badge>
                       </div>
                     </div>

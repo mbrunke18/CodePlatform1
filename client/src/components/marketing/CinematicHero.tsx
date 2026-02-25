@@ -163,7 +163,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.6 }}
                   className="mb-4"
                 >
-                  <span className="text-2xl md:text-3xl text-gray-600 font-light tracking-widest">
+                  <span className="text-2xl md:text-3xl text-gray-800 font-light tracking-widest">
                     DISRUPTION
                   </span>
                 </motion.div>
@@ -182,7 +182,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1 }}
                 >
-                  <span className="text-2xl md:text-3xl text-gray-600 font-light tracking-widest">
+                  <span className="text-2xl md:text-3xl text-gray-800 font-light tracking-widest">
                     FOR YOUR PROCESS.
                   </span>
                 </motion.div>
@@ -201,7 +201,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     className="flex flex-col items-center p-4"
                   >
                     <Globe className="h-10 w-10 text-emerald-400 mb-2" />
-                    <span className="text-gray-600 text-sm">A market opens.</span>
+                    <span className="text-gray-800 text-sm">A market opens.</span>
                   </motion.div>
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -210,7 +210,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     className="flex flex-col items-center p-4"
                   >
                     <TrendingUp className="h-10 w-10 text-blue-400 mb-2" />
-                    <span className="text-gray-600 text-sm">A competitor moves.</span>
+                    <span className="text-gray-800 text-sm">A competitor moves.</span>
                   </motion.div>
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -219,7 +219,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     className="flex flex-col items-center p-4"
                   >
                     <Cpu className="h-10 w-10 text-purple-400 mb-2" />
-                    <span className="text-gray-600 text-sm">A transformation begins.</span>
+                    <span className="text-gray-800 text-sm">A transformation begins.</span>
                   </motion.div>
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -228,7 +228,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     className="flex flex-col items-center p-4"
                   >
                     <AlertTriangle className="h-10 w-10 text-red-400 mb-2" />
-                    <span className="text-gray-600 text-sm">A crisis strikes.</span>
+                    <span className="text-gray-800 text-sm">A crisis strikes.</span>
                   </motion.div>
                 </div>
                 
@@ -236,7 +236,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 1.2 }}
-                  className="text-lg text-gray-600 mb-4"
+                  className="text-lg text-gray-800 mb-4"
                 >
                   In these moments, one thing decides everything.
                 </motion.p>
@@ -263,7 +263,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.5 }}
                   className="mb-6"
                 >
-                  <span className="text-lg md:text-xl text-gray-600 uppercase tracking-widest">
+                  <span className="text-lg md:text-xl text-gray-800 uppercase tracking-widest">
                     Most organizations take
                   </span>
                 </motion.div>
@@ -284,7 +284,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.8 }}
-                  className="text-gray-600 text-lg mb-4"
+                  className="text-gray-800 text-lg mb-4"
                 >
                   just to align.
                 </motion.div>
@@ -295,15 +295,15 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.5, delay: 1.2 }}
                   className="flex flex-wrap justify-center gap-4 mb-6"
                 >
-                  <div className="flex items-center gap-2 text-gray-600">
+                  <div className="flex items-center gap-2 text-gray-800">
                     <Calendar className="h-5 w-5" />
                     <span>Meetings to schedule</span>
                   </div>
-                  <div className="flex items-center gap-2 text-gray-600">
+                  <div className="flex items-center gap-2 text-gray-800">
                     <Users className="h-5 w-5" />
                     <span>Stakeholders to brief</span>
                   </div>
-                  <div className="flex items-center gap-2 text-gray-600">
+                  <div className="flex items-center gap-2 text-gray-800">
                     <Mail className="h-5 w-5" />
                     <span>Tasks to assign</span>
                   </div>
@@ -330,7 +330,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.3 }}
                   className="mb-8"
                 >
-                  <span className="text-xl md:text-2xl text-gray-600 uppercase tracking-widest">
+                  <span className="text-xl md:text-2xl text-gray-800 uppercase tracking-widest">
                     What if you could execute in
                   </span>
                 </motion.div>
@@ -365,7 +365,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.5 }}
                   className="mb-4"
                 >
-                  <span className="text-lg text-gray-600">Execution OS is the</span>
+                  <span className="text-lg text-gray-800">Execution OS is the</span>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: -20 }}
@@ -384,7 +384,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.5, delay: 0.5 }}
                   className="mb-8"
                 >
-                  <span className="text-lg text-gray-600">
+                  <span className="text-lg text-gray-800">
                     170 playbooks across offense, defense, and special teams.
                   </span>
                 </motion.div>
@@ -398,7 +398,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   >
                     <Sword className="h-10 w-10 text-red-400 mx-auto mb-3" />
                     <h3 className="text-2xl font-bold text-red-400 mb-2">OFFENSE</h3>
-                    <p className="text-gray-600 text-sm mb-2">Market Entry • M&A • Product Launch</p>
+                    <p className="text-gray-800 text-sm mb-2">Market Entry • M&A • Product Launch</p>
                     <p className="text-emerald-400 text-sm font-medium">Seize opportunities before competitors react.</p>
                   </motion.div>
 
@@ -410,7 +410,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   >
                     <Shield className="h-10 w-10 text-blue-400 mx-auto mb-3" />
                     <h3 className="text-2xl font-bold text-blue-400 mb-2">DEFENSE</h3>
-                    <p className="text-gray-600 text-sm mb-2">Crisis • Cyber • Regulatory</p>
+                    <p className="text-gray-800 text-sm mb-2">Crisis • Cyber • Regulatory</p>
                     <p className="text-emerald-400 text-sm font-medium">Protect value when threats emerge.</p>
                   </motion.div>
 
@@ -422,7 +422,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   >
                     <Zap className="h-10 w-10 text-purple-400 mx-auto mb-3" />
                     <h3 className="text-2xl font-bold text-purple-400 mb-2">SPECIAL TEAMS</h3>
-                    <p className="text-gray-600 text-sm mb-2">Transformation • AI • Innovation</p>
+                    <p className="text-gray-800 text-sm mb-2">Transformation • AI • Innovation</p>
                     <p className="text-emerald-400 text-sm font-medium">Drive transformation at speed.</p>
                   </motion.div>
                 </div>
@@ -437,7 +437,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="mb-4 text-gray-600"
+                  className="mb-4 text-gray-800"
                 >
                   Stakeholders mapped. Decisions pre-staged. Execution coordinated in real-time.
                 </motion.div>
@@ -450,7 +450,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                 >
                   <div className="text-center">
                     <div className="text-4xl md:text-6xl font-bold text-red-500 line-through opacity-60">72 hrs</div>
-                    <div className="text-sm text-gray-600 mt-1">Before</div>
+                    <div className="text-sm text-gray-800 mt-1">Before</div>
                   </div>
                   <motion.div
                     animate={{ x: [0, 10, 0] }}
@@ -468,7 +468,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 1 }}
-                  className="text-xl text-gray-600 mb-4"
+                  className="text-xl text-gray-800 mb-4"
                 >
                   While others are still scheduling meetings...
                 </motion.div>
@@ -495,7 +495,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.5 }}
                   className="mb-4"
                 >
-                  <span className="text-xl md:text-2xl text-gray-600">
+                  <span className="text-xl md:text-2xl text-gray-800">
                     17 independent reports confirm: this is the infrastructure enterprises are missing.
                   </span>
                 </motion.div>
@@ -546,7 +546,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.5, delay: 0.4 }}
                   className="mb-4"
                 >
-                  <span className="text-xl md:text-2xl text-gray-600 tracking-wide">
+                  <span className="text-xl md:text-2xl text-gray-800 tracking-wide">
                     Strategic Execution Operating System
                   </span>
                 </motion.div>
@@ -616,7 +616,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
       <div className="absolute bottom-8 left-0 right-0 flex items-center justify-center gap-4">
         <button
           onClick={toggleMute}
-          className="flex items-center gap-2 text-gray-600 hover:text-white transition-colors px-3 py-2 rounded-lg hover:bg-slate-800/50"
+          className="flex items-center gap-2 text-gray-800 hover:text-white transition-colors px-3 py-2 rounded-lg hover:bg-slate-800/50"
           data-testid="button-toggle-sound"
           title={isMuted ? "Enable ambient sound" : "Mute sound"}
         >
@@ -649,7 +649,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onClick={restart}
-            className="ml-4 flex items-center gap-2 text-gray-600 hover:text-white transition-colors"
+            className="ml-4 flex items-center gap-2 text-gray-800 hover:text-white transition-colors"
             data-testid="button-replay"
           >
             <RotateCcw className="h-4 w-4" />
@@ -665,7 +665,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
             setCurrentScene(totalScenes - 1);
             setHasCompleted(true);
           }}
-          className="absolute bottom-8 right-8 text-gray-600 hover:text-white text-sm transition-colors"
+          className="absolute bottom-8 right-8 text-gray-800 hover:text-white text-sm transition-colors"
           data-testid="button-skip"
         >
           Skip

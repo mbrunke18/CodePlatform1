@@ -94,9 +94,9 @@ export default function WorkspaceDetect() {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-gray-600 hover:text-poise-teal cursor-pointer">Execution OS One™</span>
+              <span className="text-gray-800 hover:text-poise-teal cursor-pointer">Execution OS One™</span>
             </Link>
-            <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200" />
+            <ChevronRight className="h-4 w-4 text-gray-800 dark:text-slate-200" />
             <span className="text-poise-teal font-medium">DETECT</span>
           </nav>
 
@@ -113,7 +113,7 @@ export default function WorkspaceDetect() {
                     Execution OS Signal™
                   </Badge>
                 </div>
-                <p className="text-gray-600 dark:text-slate-300 mt-1">
+                <p className="text-gray-800 dark:text-slate-300 mt-1">
                   Monitor, detect, and analyze strategic signals in real-time
                 </p>
               </div>
@@ -139,7 +139,7 @@ export default function WorkspaceDetect() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-slate-900 dark:text-white">IDEA Framework Progress</h3>
-                <span className="text-sm text-gray-600">Phase 2 of 4</span>
+                <span className="text-sm text-gray-800">Phase 2 of 4</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex-1 flex items-center gap-2">
@@ -149,21 +149,21 @@ export default function WorkspaceDetect() {
                       <span className="text-sm text-poise-gold">IDENTIFY</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-gray-600" />
+                  <ArrowRight className="h-4 w-4 text-gray-800" />
                   <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-poise-teal/20 border-2 border-poise-teal">
                     <Radar className="h-4 w-4 text-poise-teal" />
                     <span className="text-sm font-medium text-poise-teal">DETECT</span>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-gray-600" />
+                  <ArrowRight className="h-4 w-4 text-gray-800" />
                   <Link href="/workspaces/execute">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-poise-teal/10 cursor-pointer transition-colors">
-                      <span className="text-sm text-gray-600">EXECUTE</span>
+                      <span className="text-sm text-gray-800">EXECUTE</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-gray-600" />
+                  <ArrowRight className="h-4 w-4 text-gray-800" />
                   <Link href="/workspaces/advance">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-poise-gold/10 cursor-pointer transition-colors">
-                      <span className="text-sm text-gray-600">ADVANCE</span>
+                      <span className="text-sm text-gray-800">ADVANCE</span>
                     </div>
                   </Link>
                 </div>
@@ -183,7 +183,7 @@ export default function WorkspaceDetect() {
                     </Badge>
                   </div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white">{category.count}</p>
-                  <p className="text-xs text-gray-600">{category.name}</p>
+                  <p className="text-xs text-gray-800">{category.name}</p>
                 </CardContent>
               </Card>
             ))}
@@ -204,10 +204,10 @@ export default function WorkspaceDetect() {
                   <span className="flex h-3 w-3 rounded-full bg-amber-500 flex-shrink-0" title="Medium severity" />
                   <div className="flex-1 min-w-0">
                     <h4 className="font-semibold text-slate-900 dark:text-white">Competitor patent filing detected</h4>
-                    <p className="text-sm text-gray-600 dark:text-slate-300 mt-0.5">TechCorp filed 3 new AI patents</p>
+                    <p className="text-sm text-gray-800 dark:text-slate-300 mt-0.5">TechCorp filed 3 new AI patents</p>
                   </div>
                   <Badge variant="outline" className="text-amber-500 border-amber-500/30 flex-shrink-0">Medium</Badge>
-                  <span className="text-xs text-gray-600 dark:text-slate-500 whitespace-nowrap">14 min ago</span>
+                  <span className="text-xs text-gray-800 dark:text-slate-500 whitespace-nowrap">14 min ago</span>
                 </div>
               </CardContent>
             </Card>
@@ -217,10 +217,10 @@ export default function WorkspaceDetect() {
                   <span className="flex h-3 w-3 rounded-full bg-red-500 flex-shrink-0" title="High severity" />
                   <div className="flex-1 min-w-0">
                     <h4 className="font-semibold text-slate-900 dark:text-white">Regulatory alert</h4>
-                    <p className="text-sm text-gray-600 dark:text-slate-300 mt-0.5">SEC proposed new AI disclosure requirements</p>
+                    <p className="text-sm text-gray-800 dark:text-slate-300 mt-0.5">SEC proposed new AI disclosure requirements</p>
                   </div>
                   <Badge variant="outline" className="text-red-500 border-red-500/30 flex-shrink-0">High</Badge>
-                  <span className="text-xs text-gray-600 dark:text-slate-500 whitespace-nowrap">2 hours ago</span>
+                  <span className="text-xs text-gray-800 dark:text-slate-500 whitespace-nowrap">2 hours ago</span>
                 </div>
               </CardContent>
             </Card>
@@ -230,10 +230,10 @@ export default function WorkspaceDetect() {
                   <span className="flex h-3 w-3 rounded-full bg-emerald-500 flex-shrink-0" title="Low severity" />
                   <div className="flex-1 min-w-0">
                     <h4 className="font-semibold text-slate-900 dark:text-white">Market shift</h4>
-                    <p className="text-sm text-gray-600 dark:text-slate-300 mt-0.5">APAC semiconductor demand up 23% QoQ</p>
+                    <p className="text-sm text-gray-800 dark:text-slate-300 mt-0.5">APAC semiconductor demand up 23% QoQ</p>
                   </div>
                   <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 flex-shrink-0">Low</Badge>
-                  <span className="text-xs text-gray-600 dark:text-slate-500 whitespace-nowrap">4 hours ago</span>
+                  <span className="text-xs text-gray-800 dark:text-slate-500 whitespace-nowrap">4 hours ago</span>
                 </div>
               </CardContent>
             </Card>
@@ -243,10 +243,10 @@ export default function WorkspaceDetect() {
                   <span className="flex h-3 w-3 rounded-full bg-amber-500 flex-shrink-0" title="Medium severity" />
                   <div className="flex-1 min-w-0">
                     <h4 className="font-semibold text-slate-900 dark:text-white">Social sentiment spike</h4>
-                    <p className="text-sm text-gray-600 dark:text-slate-300 mt-0.5">Brand mentions up 340% on Twitter/X</p>
+                    <p className="text-sm text-gray-800 dark:text-slate-300 mt-0.5">Brand mentions up 340% on Twitter/X</p>
                   </div>
                   <Badge variant="outline" className="text-amber-500 border-amber-500/30 flex-shrink-0">Medium</Badge>
-                  <span className="text-xs text-gray-600 dark:text-slate-500 whitespace-nowrap">6 hours ago</span>
+                  <span className="text-xs text-gray-800 dark:text-slate-500 whitespace-nowrap">6 hours ago</span>
                 </div>
               </CardContent>
             </Card>
@@ -268,9 +268,9 @@ export default function WorkspaceDetect() {
                           <h3 className="font-semibold text-slate-900 dark:text-white group-hover:text-poise-teal transition-colors">
                             {tool.title}
                           </h3>
-                          <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200 group-hover:text-poise-teal transition-colors" />
+                          <ChevronRight className="h-4 w-4 text-gray-800 dark:text-slate-200 group-hover:text-poise-teal transition-colors" />
                         </div>
-                        <p className="text-sm text-gray-600 dark:text-slate-300 mt-1">
+                        <p className="text-sm text-gray-800 dark:text-slate-300 mt-1">
                           {tool.description}
                         </p>
                         <Badge variant="outline" className="mt-3 text-xs">
@@ -294,7 +294,7 @@ export default function WorkspaceDetect() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 dark:text-white">Trigger detected?</h3>
-                    <p className="text-sm text-gray-600 dark:text-slate-300">
+                    <p className="text-sm text-gray-800 dark:text-slate-300">
                       When a trigger fires, move to EXECUTE for coordinated response
                     </p>
                   </div>

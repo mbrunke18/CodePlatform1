@@ -130,7 +130,7 @@ export default function PrismInsights() {
       case 'high': return 'bg-orange-500/20 text-orange-400 border-orange-500/30';
       case 'medium': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
       case 'low': return 'bg-green-500/20 text-green-400 border-green-500/30';
-      default: return 'bg-gray-500/20 text-gray-600 border-gray-500/30';
+      default: return 'bg-gray-500/20 text-gray-800 border-gray-500/30';
     }
   };
 
@@ -145,9 +145,9 @@ export default function PrismInsights() {
           
           {/* Breadcrumb Navigation */}
           <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-gray-800">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-600 hover:text-white p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-gray-800 hover:text-white p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>
@@ -162,7 +162,7 @@ export default function PrismInsights() {
           <Card className="mb-4 bg-purple-50 dark:bg-purple-950/20 border-purple-300 dark:border-purple-700" data-testid="prism-roi-context">
             <CardContent className="p-3 flex items-center gap-3">
               <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-                <Layers className="h-5 w-5 text-purple-600" />
+                <Layers className="h-5 w-5 text-purple-800" />
               </div>
               <div>
                 <div className="font-semibold text-purple-900 dark:text-purple-100 text-sm">How Prism Saves You Money</div>
@@ -180,18 +180,18 @@ export default function PrismInsights() {
                   <h1 className="text-3xl font-bold" data-testid="prism-title">
                     Prism Insights
                   </h1>
-                  <p className="text-purple-600">Multi-dimensional strategic analysis and decision support intelligence</p>
+                  <p className="text-purple-800">Multi-dimensional strategic analysis and decision support intelligence</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
                 <OnboardingTrigger pageId="prism-insights" autoStart={true} className="bg-white/10 border-white/30 text-gray-900 hover:bg-white/20" />
                 <Link to="/">
-                  <Button variant="secondary" className="bg-purple-700 hover:bg-purple-800 text-purple-600 border-purple-600" data-testid="back-to-dashboard">
+                  <Button variant="secondary" className="bg-purple-700 hover:bg-purple-800 text-purple-800 border-purple-600" data-testid="back-to-dashboard">
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Dashboard
                   </Button>
                 </Link>
-                <Badge variant="secondary" className="bg-purple-700 text-purple-600 border-purple-600" data-testid="ai-analysis-badge">
+                <Badge variant="secondary" className="bg-purple-700 text-purple-800 border-purple-600" data-testid="ai-analysis-badge">
                   <Brain className="h-4 w-4 mr-2" />
                   AI ANALYSIS
                 </Badge>
@@ -229,7 +229,7 @@ export default function PrismInsights() {
                     Visualize
                   </Button>
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-gray-800">
                   {filteredInsights.length} insights • Last updated: 2 minutes ago
                 </div>
               </div>
@@ -246,7 +246,7 @@ export default function PrismInsights() {
                           </div>
                           <div>
                             <h3 className="text-xl font-semibold text-gray-900">{insight.title}</h3>
-                            <p className="text-gray-600 capitalize">{insight.dimension} Analysis • {insight.timeframe}</p>
+                            <p className="text-gray-800 capitalize">{insight.dimension} Analysis • {insight.timeframe}</p>
                           </div>
                         </div>
                         <div className="flex flex-col gap-2">
@@ -254,14 +254,14 @@ export default function PrismInsights() {
                             {insight.impact.toUpperCase()} IMPACT
                           </Badge>
                           <div className="text-right">
-                            <div className="text-sm text-gray-600">Confidence</div>
+                            <div className="text-sm text-gray-800">Confidence</div>
                             <div className="text-lg font-bold text-gray-900">{insight.confidence}%</div>
                           </div>
                         </div>
                       </div>
                     </CardHeader>
                     <CardContent className="space-y-6">
-                      <p className="text-gray-600">{insight.description}</p>
+                      <p className="text-gray-800">{insight.description}</p>
                       
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <div>
@@ -271,7 +271,7 @@ export default function PrismInsights() {
                           </h4>
                           <ul className="space-y-2">
                             {insight.insights.map((item, index) => (
-                              <li key={index} className="flex items-start gap-2 text-sm text-gray-600">
+                              <li key={index} className="flex items-start gap-2 text-sm text-gray-800">
                                 <div className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
                                 {item}
                               </li>
@@ -286,7 +286,7 @@ export default function PrismInsights() {
                           </h4>
                           <ul className="space-y-2">
                             {insight.recommendations.map((item, index) => (
-                              <li key={index} className="flex items-start gap-2 text-sm text-gray-600">
+                              <li key={index} className="flex items-start gap-2 text-sm text-gray-800">
                                 <div className="w-1.5 h-1.5 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
                                 {item}
                               </li>
@@ -330,7 +330,7 @@ export default function PrismInsights() {
                     </div>
                     <div className="p-4 bg-green-950/30 rounded-lg border border-green-500/30">
                       <p className="text-green-300 font-medium mb-2">Optimization Opportunity</p>
-                      <p className="text-green-700 text-sm">Operational efficiency improvements can fund 73% of strategic market expansion with neutral cash flow impact.</p>
+                      <p className="text-emerald-800 text-sm">Operational efficiency improvements can fund 73% of strategic market expansion with neutral cash flow impact.</p>
                     </div>
                     <div className="p-4 bg-orange-950/30 rounded-lg border border-orange-500/30">
                       <p className="text-orange-300 font-medium mb-2">Risk-Adjusted Prioritization</p>

@@ -226,7 +226,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                   </div>
                   <div className="text-xs text-muted-foreground mt-1">Total Drills</div>
                 </div>
-                <Activity className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                <Activity className="h-8 w-8 text-blue-800 dark:text-blue-400" />
               </div>
             </CardContent>
           </Card>
@@ -240,7 +240,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                   </div>
                   <div className="text-xs text-muted-foreground mt-1">Avg. Completion</div>
                 </div>
-                <Clock className="h-8 w-8 text-green-600 dark:text-green-400" />
+                <Clock className="h-8 w-8 text-emerald-700 dark:text-green-400" />
               </div>
             </CardContent>
           </Card>
@@ -254,7 +254,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                   </div>
                   <div className="text-xs text-muted-foreground mt-1">Success Rate</div>
                 </div>
-                <TrendingUp className="h-8 w-8 text-purple-600 dark:text-purple-400" />
+                <TrendingUp className="h-8 w-8 text-purple-800 dark:text-purple-400" />
               </div>
             </CardContent>
           </Card>
@@ -435,7 +435,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                   <Card key={drill.id} className="border-2 border-green-500" data-testid={`card-active-drill-${drill.id}`}>
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
-                        <Activity className="h-5 w-5 text-green-600 animate-pulse" />
+                        <Activity className="h-5 w-5 text-emerald-700 animate-pulse" />
                         {playbook?.title || 'Unknown Playbook'} - LIVE
                       </CardTitle>
                       <CardDescription>Simulation in progress</CardDescription>
@@ -596,7 +596,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Target className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  <Target className="h-5 w-5 text-blue-800 dark:text-blue-400" />
                   Drill Scoring Breakdown
                 </CardTitle>
                 <CardDescription>Detailed performance across key response dimensions</CardDescription>
@@ -628,7 +628,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                       <Award className="h-5 w-5 text-amber-500" />
                       <span className="font-semibold">Overall Average</span>
                     </div>
-                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                    <div className="text-2xl font-bold text-blue-800 dark:text-blue-400">
                       {Math.round((92 + 87 + 78 + 85 + 91) / 5)}/100
                     </div>
                   </div>
@@ -639,7 +639,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Users className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                  <Users className="h-5 w-5 text-purple-800 dark:text-purple-400" />
                   Team Performance Comparison
                 </CardTitle>
                 <CardDescription>Cross-team drill performance and readiness trends</CardDescription>
@@ -670,19 +670,19 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                         </div>
                         <div className="flex items-center gap-1">
                           {item.trend === "up" && (
-                            <Badge variant="outline" className="text-green-600 border-green-300 dark:border-green-700 bg-green-50 dark:bg-green-950/30">
+                            <Badge variant="outline" className="text-emerald-700 border-green-300 dark:border-green-700 bg-green-50 dark:bg-green-950/30">
                               <ArrowUp className="h-3 w-3 mr-1" />
                               Up
                             </Badge>
                           )}
                           {item.trend === "stable" && (
-                            <Badge variant="outline" className="text-amber-600 border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-950/30">
+                            <Badge variant="outline" className="text-[#C9A84C] border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-950/30">
                               <Minus className="h-3 w-3 mr-1" />
                               Stable
                             </Badge>
                           )}
                           {item.trend === "down" && (
-                            <Badge variant="outline" className="text-red-600 border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-950/30">
+                            <Badge variant="outline" className="text-red-700 border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-950/30">
                               <TrendingUp className="h-3 w-3 mr-1 rotate-180" />
                               Down
                             </Badge>

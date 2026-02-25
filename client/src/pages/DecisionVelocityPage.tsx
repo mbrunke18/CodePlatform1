@@ -21,10 +21,10 @@ export default function DecisionVelocityPage() {
               Dynamic Strategy Metric
             </Badge>
           </div>
-          <p className="mt-2 text-gray-600 dark:text-gray-400">
+          <p className="mt-2 text-gray-800 dark:text-gray-400">
             Measure your competitive advantage through decision velocity - the #1 metric for Dynamic Strategy practitioners
           </p>
-          <p className="mt-1 text-sm text-gray-600 dark:text-gray-500">
+          <p className="mt-1 text-sm text-gray-800 dark:text-gray-500">
             Companies like Microsoft, DBS Bank, and Amazon track decision velocity as their strategic execution metric
           </p>
         </div>
@@ -33,7 +33,7 @@ export default function DecisionVelocityPage() {
         <Card className="bg-gradient-to-br .section-background dark:from-blue-950/20 dark:to-purple-950/20 border-2 border-blue-200 dark:border-blue-800">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Target className="h-5 w-5 text-blue-600" />
+              <Target className="h-5 w-5 text-blue-800" />
               The Foundation: Execution Infrastructure
             </CardTitle>
             <CardDescription>
@@ -48,12 +48,12 @@ export default function DecisionVelocityPage() {
               
               <div className="grid md:grid-cols-3 gap-4 my-4">
                 <div className="bg-white dark:bg-slate-900 rounded-lg p-4 border border-amber-200 dark:border-amber-800">
-                  <div className="text-sm font-bold text-amber-700 dark:text-amber-300 mb-3">Pre-Defined Governance</div>
+                  <div className="text-sm font-bold text-[#C9A84C] dark:text-amber-300 mb-3">Pre-Defined Governance</div>
                   <div className="space-y-2 text-xs">
                     <div><strong>170 Playbooks:</strong> Across 9 strategic domains</div>
                     <div><strong>Roles Mapped:</strong> Before the situation hits</div>
                     <div><strong>Accountability:</strong> Clear ownership structure</div>
-                    <div className="text-green-600 dark:text-green-400 font-semibold mt-2">✓ "Governance must be real-time, embedded" — McKinsey</div>
+                    <div className="text-emerald-700 dark:text-green-400 font-semibold mt-2">✓ "Governance must be real-time, embedded" — McKinsey</div>
                   </div>
                 </div>
 
@@ -63,17 +63,17 @@ export default function DecisionVelocityPage() {
                     <div><strong>Pre-Assigned:</strong> Everyone knows their role</div>
                     <div><strong>No Ambiguity:</strong> Decision authority defined</div>
                     <div><strong>Instant Action:</strong> No meetings to define ownership</div>
-                    <div className="text-green-600 dark:text-green-400 font-semibold mt-2">✓ "69% say AI needs new management" — BCG</div>
+                    <div className="text-emerald-700 dark:text-green-400 font-semibold mt-2">✓ "69% say AI needs new management" — BCG</div>
                   </div>
                 </div>
 
                 <div className="bg-white dark:bg-slate-900 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
-                  <div className="text-sm font-bold text-blue-700 dark:text-blue-300 mb-3">12-Minute Coordination</div>
+                  <div className="text-sm font-bold text-blue-800 dark:text-blue-300 mb-3">12-Minute Coordination</div>
                   <div className="space-y-2 text-xs">
                     <div><strong>Trigger Detection:</strong> AI-powered signal matching</div>
                     <div><strong>Stakeholder Notification:</strong> Instant mobilization</div>
                     <div><strong>Task Assignment:</strong> With owners pre-defined</div>
-                    <div className="text-green-600 dark:text-green-400 font-semibold mt-2">✓ "78% say AI needs new operating model" — IBM</div>
+                    <div className="text-emerald-700 dark:text-green-400 font-semibold mt-2">✓ "78% say AI needs new operating model" — IBM</div>
                   </div>
                 </div>
               </div>
@@ -93,7 +93,7 @@ export default function DecisionVelocityPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Target className="h-5 w-5 text-blue-600" />
+              <Target className="h-5 w-5 text-blue-800" />
               What is Decision Velocity?
             </CardTitle>
             <CardDescription>
@@ -107,13 +107,13 @@ export default function DecisionVelocityPage() {
                 With execution infrastructure in place, Fortune 1000 companies coordinate in minutes instead of days.
               </p>
               <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 my-4">
-                <div className="text-sm font-semibold text-blue-700 dark:text-blue-300 mb-2">
+                <div className="text-sm font-semibold text-blue-800 dark:text-blue-300 mb-2">
                   The Formula:
                 </div>
                 <div className="text-xs space-y-1">
                   <div>Time from Trigger Detection → Decision → Execution Completion</div>
                   <div className="text-muted-foreground">Your velocity: 12 minutes vs Competitor velocity: 72 hours</div>
-                  <div className="font-medium text-green-600 dark:text-green-400">Result: 5-day competitive advantage per strategic move</div>
+                  <div className="font-medium text-emerald-700 dark:text-green-400">Result: 5-day competitive advantage per strategic move</div>
                 </div>
               </div>
               <p>
@@ -131,7 +131,7 @@ export default function DecisionVelocityPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="h-5 w-5 text-green-600" />
+              <TrendingUp className="h-5 w-5 text-emerald-700" />
               How to Improve Decision Velocity
             </CardTitle>
             <CardDescription>
@@ -141,7 +141,7 @@ export default function DecisionVelocityPage() {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/20 rounded-lg p-4">
-                <div className="font-semibold text-blue-700 dark:text-blue-300 mb-2">1. Perpetual Foresight</div>
+                <div className="font-semibold text-blue-800 dark:text-blue-300 mb-2">1. Perpetual Foresight</div>
                 <div className="text-sm text-gray-700 dark:text-gray-300">
                   24/7 AI monitoring detects signals early. Early detection = faster response = higher velocity.
                 </div>
@@ -155,7 +155,7 @@ export default function DecisionVelocityPage() {
               </div>
 
               <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/20 dark:to-green-900/20 rounded-lg p-4">
-                <div className="font-semibold text-green-700 dark:text-green-300 mb-2">3. Ecosystem Connectors</div>
+                <div className="font-semibold text-emerald-800 dark:text-green-300 mb-2">3. Ecosystem Connectors</div>
                 <div className="text-sm text-gray-700 dark:text-gray-300">
                   More integrations = faster coordination. 10-15 connected systems eliminate manual handoffs.
                 </div>
@@ -186,7 +186,7 @@ export default function DecisionVelocityPage() {
             <div className="space-y-4">
               <div className="border-l-4 border-blue-500 pl-4">
                 <div className="font-semibold text-gray-900 dark:text-white">Microsoft</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                <div className="text-sm text-gray-800 dark:text-gray-400 mt-1">
                   Transformed from 5-year planning cycles to continuous iteration. Decision velocity improvement enabled 
                   market cap growth from $300B to $3T. Satya Nadella: "Strategy must be a living process that learns in real time."
                 </div>
@@ -194,7 +194,7 @@ export default function DecisionVelocityPage() {
 
               <div className="border-l-4 border-purple-500 pl-4">
                 <div className="font-semibold text-gray-900 dark:text-white">DBS Bank</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                <div className="text-sm text-gray-800 dark:text-gray-400 mt-1">
                   "Live More, Bank Less" required rapid execution. Built "data nervous system" and strategy sprints to improve 
                   decision velocity. Result: Named World's Best Bank, executing 5x faster than traditional banks.
                 </div>
@@ -202,7 +202,7 @@ export default function DecisionVelocityPage() {
 
               <div className="border-l-4 border-green-500 pl-4">
                 <div className="font-semibold text-gray-900 dark:text-white">Amazon</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                <div className="text-sm text-gray-800 dark:text-gray-400 mt-1">
                   "Always Day One" culture = continuous decision velocity. Bezos insisted on doubling experiments yearly. 
                   Speed of execution (not just innovation) created category leadership in retail, cloud, and logistics.
                 </div>

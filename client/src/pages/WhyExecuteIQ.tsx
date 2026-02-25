@@ -56,7 +56,7 @@ export default function WhyExecuteIQ() {
             The Infrastructure 15 Firms Say Is Missing
           </h1>
 
-          <p className="text-xl md:text-2xl text-blue-600 max-w-3xl mx-auto mb-10">
+          <p className="text-xl md:text-2xl text-blue-800 max-w-3xl mx-auto mb-10">
             McKinsey. IBM. BCG. Deloitte. Accenture. Microsoft. Google Cloud. World Economic Forum. Bain. Anthropic. OpenAI. PwC. Gartner. Forrester. IDC. Fifteen firms, one conclusion: enterprises need execution infrastructure.
           </p>
 
@@ -150,7 +150,7 @@ export default function WhyExecuteIQ() {
                   </div>
                   <div>
                     <h3 className="font-bold text-xl text-foreground">What Enterprises Have</h3>
-                    <p className="text-sm text-green-600 dark:text-green-400 font-medium">Already invested</p>
+                    <p className="text-sm text-emerald-700 dark:text-green-400 font-medium">Already invested</p>
                   </div>
                 </div>
                 <ul className="space-y-4">
@@ -178,7 +178,7 @@ export default function WhyExecuteIQ() {
                   </div>
                   <div>
                     <h3 className="font-bold text-xl text-foreground">What They Lack</h3>
-                    <p className="text-sm text-red-600 dark:text-red-400 font-medium">The missing layer</p>
+                    <p className="text-sm text-red-700 dark:text-red-400 font-medium">The missing layer</p>
                   </div>
                 </div>
                 <ul className="space-y-4">
@@ -238,28 +238,28 @@ export default function WhyExecuteIQ() {
                     <BookOpen className="h-7 w-7 text-blue-400" />
                   </div>
                   <div className="text-3xl font-bold text-gray-900 mb-1">170</div>
-                  <p className="text-sm text-blue-700">Pre-built playbooks</p>
+                  <p className="text-sm text-blue-800">Pre-built playbooks</p>
                 </div>
                 <div className="text-center p-6 bg-white/5 rounded-2xl border border-white/10">
                   <div className="w-14 h-14 mx-auto mb-4 bg-emerald-500/20 rounded-2xl flex items-center justify-center">
                     <Shield className="h-7 w-7 text-emerald-400" />
                   </div>
                   <div className="text-3xl font-bold text-gray-900 mb-1">Built-in</div>
-                  <p className="text-sm text-blue-700">Governance & decision rights</p>
+                  <p className="text-sm text-blue-800">Governance & decision rights</p>
                 </div>
                 <div className="text-center p-6 bg-white/5 rounded-2xl border border-white/10">
                   <div className="w-14 h-14 mx-auto mb-4 bg-amber-500/20 rounded-2xl flex items-center justify-center">
                     <Target className="h-7 w-7 text-amber-400" />
                   </div>
                   <div className="text-3xl font-bold text-gray-900 mb-1">Custom</div>
-                  <p className="text-sm text-blue-700">Build your own playbooks</p>
+                  <p className="text-sm text-blue-800">Build your own playbooks</p>
                 </div>
                 <div className="text-center p-6 bg-white/5 rounded-2xl border border-white/10">
                   <div className="w-14 h-14 mx-auto mb-4 bg-purple-500/20 rounded-2xl flex items-center justify-center">
                     <Timer className="h-7 w-7 text-purple-400" />
                   </div>
                   <div className="text-3xl font-bold text-gray-900 mb-1">12 min</div>
-                  <p className="text-sm text-blue-700">Trigger to execution</p>
+                  <p className="text-sm text-blue-800">Trigger to execution</p>
                 </div>
               </div>
             </CardContent>
@@ -301,7 +301,7 @@ export default function WhyExecuteIQ() {
                   </div>
                   <div>
                     <h3 className="font-bold text-xl text-foreground">Workflow Tools</h3>
-                    <p className="text-sm text-red-600 dark:text-red-400 font-medium">Scripted, reactive, siloed</p>
+                    <p className="text-sm text-red-700 dark:text-red-400 font-medium">Scripted, reactive, siloed</p>
                   </div>
                 </div>
                 <ul className="space-y-3 text-foreground">
@@ -333,7 +333,7 @@ export default function WhyExecuteIQ() {
                   </div>
                   <div>
                     <h3 className="font-bold text-xl text-foreground">Agentic Execution (Execution OS)</h3>
-                    <p className="text-sm text-emerald-600 dark:text-emerald-400 font-medium">Autonomous, proactive, coordinated</p>
+                    <p className="text-sm text-emerald-700 dark:text-emerald-400 font-medium">Autonomous, proactive, coordinated</p>
                   </div>
                 </div>
                 <ul className="space-y-3 text-foreground">

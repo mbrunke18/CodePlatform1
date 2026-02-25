@@ -275,9 +275,9 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
       case 'data_access': return 'bg-purple-500/20 text-purple-300 border-purple-500/30';
       case 'configuration': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
       case 'decision': return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
-      case 'system': return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
+      case 'system': return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
       case 'security': return 'bg-red-500/20 text-red-300 border-red-500/30';
-      default: return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
     }
   };
 
@@ -287,7 +287,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
       case 'high': return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
       case 'medium': return 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30';
       case 'low': return 'bg-green-500/20 text-green-300 border-green-500/30';
-      default: return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
     }
   };
 
@@ -296,7 +296,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
       case 'success': return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
       case 'failure': return 'bg-red-500/20 text-red-300 border-red-500/30';
       case 'warning': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
-      default: return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
     }
   };
 
@@ -318,7 +318,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Enterprise Audit & Compliance Center</h1>
-            <p className="text-gray-600">Comprehensive activity logging, security monitoring, and compliance tracking</p>
+            <p className="text-gray-800">Comprehensive activity logging, security monitoring, and compliance tracking</p>
           </div>
           <div className="flex items-center gap-4">
             <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
@@ -341,7 +341,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 <FileText className="h-5 w-5 text-blue-400" />
               </div>
               <div className="text-2xl font-bold text-gray-900">{metrics.totalLogs.toLocaleString()}</div>
-              <div className="text-sm text-slate-600 dark:text-slate-200">All time</div>
+              <div className="text-sm text-gray-800 dark:text-slate-200">All time</div>
             </CardContent>
           </Card>
 
@@ -352,7 +352,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 <AlertTriangle className="h-5 w-5 text-amber-400" />
               </div>
               <div className="text-2xl font-bold text-gray-900">{metrics.securityEvents}</div>
-              <div className="text-sm text-slate-600 dark:text-slate-200">This month</div>
+              <div className="text-sm text-gray-800 dark:text-slate-200">This month</div>
             </CardContent>
           </Card>
 
@@ -363,7 +363,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 <CheckCircle className="h-5 w-5 text-emerald-400" />
               </div>
               <div className="text-2xl font-bold text-gray-900">{metrics.complianceScore}%</div>
-              <div className="text-sm text-slate-600 dark:text-slate-200">Overall score</div>
+              <div className="text-sm text-gray-800 dark:text-slate-200">Overall score</div>
             </CardContent>
           </Card>
 
@@ -374,7 +374,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 <Activity className="h-5 w-5 text-emerald-400" />
               </div>
               <div className="text-2xl font-bold text-gray-900">{metrics.systemHealth}%</div>
-              <div className="text-sm text-slate-600 dark:text-slate-200">Uptime</div>
+              <div className="text-sm text-gray-800 dark:text-slate-200">Uptime</div>
             </CardContent>
           </Card>
 
@@ -385,7 +385,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 <Users className="h-5 w-5 text-purple-400" />
               </div>
               <div className="text-2xl font-bold text-gray-900">{metrics.dailyLogins}</div>
-              <div className="text-sm text-slate-600 dark:text-slate-200">Today</div>
+              <div className="text-sm text-gray-800 dark:text-slate-200">Today</div>
             </CardContent>
           </Card>
 
@@ -396,7 +396,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 <Lock className="h-5 w-5 text-red-400" />
               </div>
               <div className="text-2xl font-bold text-gray-900">{metrics.failedAttempts}</div>
-              <div className="text-sm text-slate-600 dark:text-slate-200">Today</div>
+              <div className="text-sm text-gray-800 dark:text-slate-200">Today</div>
             </CardContent>
           </Card>
         </div>
@@ -435,13 +435,13 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                             {log.outcome.toUpperCase()}
                           </Badge>
                         </div>
-                        <span className="text-xs text-slate-600 dark:text-slate-200">
+                        <span className="text-xs text-gray-800 dark:text-slate-200">
                           {new Date(log.timestamp).toLocaleString()}
                         </span>
                       </div>
                       <h4 className="font-semibold text-gray-900 text-sm mb-1">{log.action}</h4>
-                      <p className="text-gray-600 text-sm mb-2">{log.details}</p>
-                      <div className="text-xs text-gray-600">
+                      <p className="text-gray-800 text-sm mb-2">{log.details}</p>
+                      <div className="text-xs text-gray-800">
                         User: {log.user} | Resource: {log.resource}
                       </div>
                     </div>
@@ -466,12 +466,12 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                         </Badge>
                         <div className="text-right">
                           <div className="text-sm font-medium text-gray-900">Risk: {event.riskScore}%</div>
-                          <div className="text-xs text-slate-600 dark:text-slate-200">{event.status}</div>
+                          <div className="text-xs text-gray-800 dark:text-slate-200">{event.status}</div>
                         </div>
                       </div>
                       <h4 className="font-semibold text-gray-900 text-sm mb-1">{event.type.replace('_', ' ')}</h4>
-                      <p className="text-gray-600 text-sm mb-2">{event.description}</p>
-                      <div className="text-xs text-gray-600">
+                      <p className="text-gray-800 text-sm mb-2">{event.description}</p>
+                      <div className="text-xs text-gray-800">
                         User: {event.user} | {new Date(event.timestamp).toLocaleString()}
                       </div>
                     </div>
@@ -487,7 +487,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
             {/* Filters */}
             <div className="flex items-center gap-4 bg-white p-4 rounded-lg border border-gray-200">
               <div className="flex-1 page-background relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-600 dark:text-slate-200" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-800 dark:text-slate-200" />
                 <Input
                   placeholder="Search logs..."
                   value={searchTerm}
@@ -530,19 +530,19 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                   <table className="w-full">
                     <thead className="bg-gray-50 border-b border-gray-200">
                       <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Timestamp</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">User</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Action</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Resource</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Category</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Outcome</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Actions</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">Timestamp</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">User</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">Action</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">Resource</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">Category</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">Outcome</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">Actions</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-700">
                       {filteredLogs.slice(0, 20).map((log) => (
                         <tr key={log.id} className="hover:bg-slate-800/30">
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                             {new Date(log.timestamp).toLocaleString()}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -551,7 +551,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                             {log.action}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                             {log.resource}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
@@ -565,7 +565,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                             </Badge>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm">
-                            <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
+                            <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
                               <Eye className="w-4 h-4" />
                             </Button>
                           </td>
@@ -591,14 +591,14 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                           <Badge className={getSeverityColor(event.severity)}>
                             {event.severity.toUpperCase()}
                           </Badge>
-                          <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-600">
+                          <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800">
                             {event.status.replace('_', ' ').toUpperCase()}
                           </Badge>
                         </div>
-                        <p className="text-gray-600 mb-4">{event.description}</p>
+                        <p className="text-gray-800 mb-4">{event.description}</p>
                       </div>
                       <div className="text-right">
-                        <div className="text-sm text-slate-600 dark:text-slate-200">Risk Score</div>
+                        <div className="text-sm text-gray-800 dark:text-slate-200">Risk Score</div>
                         <div className="text-2xl font-bold text-gray-900">{event.riskScore}%</div>
                       </div>
                     </div>
@@ -608,7 +608,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                         <div className="text-sm font-semibold text-gray-900 mb-2">Affected Resources</div>
                         <div className="space-y-1">
                           {event.affectedResources.map((resource, index) => (
-                            <div key={index} className="text-sm text-gray-600 flex items-center gap-2">
+                            <div key={index} className="text-sm text-gray-800 flex items-center gap-2">
                               <Database className="w-4 h-4 text-blue-400" />
                               {resource}
                             </div>
@@ -620,7 +620,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                         <div className="text-sm font-semibold text-gray-900 mb-2">Recommendations</div>
                         <div className="space-y-1">
                           {event.recommendations.map((rec, index) => (
-                            <div key={index} className="text-sm text-gray-600 flex items-center gap-2">
+                            <div key={index} className="text-sm text-gray-800 flex items-center gap-2">
                               <Target className="w-4 h-4 text-emerald-400" />
                               {rec}
                             </div>
@@ -630,7 +630,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                     </div>
                     
                     <div className="mt-4 pt-4 border-t border-gray-200 flex items-center justify-between">
-                      <div className="text-xs text-gray-600">
+                      <div className="text-xs text-gray-800">
                         User: {event.user} | Detected: {new Date(event.timestamp).toLocaleString()}
                       </div>
                       <div className="flex gap-2">
@@ -638,7 +638,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                           <Eye className="w-4 h-4 mr-2" />
                           Investigate
                         </Button>
-                        <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
+                        <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
                           Mark Resolved
                         </Button>
                       </div>
@@ -665,15 +665,15 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                   <CardContent className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       <div>
-                        <div className="text-sm text-slate-600 dark:text-slate-200">Period</div>
+                        <div className="text-sm text-gray-800 dark:text-slate-200">Period</div>
                         <div className="text-gray-900 font-medium">{report.period}</div>
                       </div>
                       <div>
-                        <div className="text-sm text-slate-600 dark:text-slate-200">Generated</div>
+                        <div className="text-sm text-gray-800 dark:text-slate-200">Generated</div>
                         <div className="text-gray-900 font-medium">{new Date(report.generatedDate).toLocaleDateString()}</div>
                       </div>
                       <div>
-                        <div className="text-sm text-slate-600 dark:text-slate-200">Overall Score</div>
+                        <div className="text-sm text-gray-800 dark:text-slate-200">Overall Score</div>
                         <div className="text-gray-900 font-medium">{report.compliance[0]?.score}%</div>
                       </div>
                     </div>
@@ -689,7 +689,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                                 {finding.count} {finding.severity.toUpperCase()}
                               </Badge>
                             </div>
-                            <div className="text-sm text-gray-600">
+                            <div className="text-sm text-gray-800">
                               {finding.details.join(', ')}
                             </div>
                           </div>
@@ -702,7 +702,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                         <Download className="w-4 h-4 mr-2" />
                         Download Report
                       </Button>
-                      <Button variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
+                      <Button variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
                         <Eye className="w-4 h-4 mr-2" />
                         View Details
                       </Button>
@@ -723,7 +723,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                     <BarChart3 className="h-5 w-5 text-blue-400" />
                   </div>
                   <div className="text-2xl font-bold text-gray-900 mb-2">2,847</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-200">Logs today</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-200">Logs today</div>
                 </CardContent>
               </Card>
 
@@ -734,7 +734,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                     <Shield className="h-5 w-5 text-emerald-400" />
                   </div>
                   <div className="text-2xl font-bold text-gray-900 mb-2">94.2%</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-200">Overall security</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-200">Overall security</div>
                 </CardContent>
               </Card>
 
@@ -745,7 +745,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                     <Clock className="h-5 w-5 text-purple-400" />
                   </div>
                   <div className="text-2xl font-bold text-gray-900 mb-2">1.2s</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-200">Average response</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-200">Average response</div>
                 </CardContent>
               </Card>
 
@@ -756,7 +756,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                     <TrendingUp className="h-5 w-5 text-emerald-400" />
                   </div>
                   <div className="text-2xl font-bold text-gray-900 mb-2">99.7%</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-200">Detection rate</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-200">Detection rate</div>
                 </CardContent>
               </Card>
             </div>

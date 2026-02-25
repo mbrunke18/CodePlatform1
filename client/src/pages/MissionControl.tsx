@@ -393,10 +393,10 @@ export default function MissionControl() {
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case 'offense': return 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30';
-      case 'defense': return 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30';
-      case 'special-teams': return 'text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/30';
-      default: return 'text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/30';
+      case 'offense': return 'text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30';
+      case 'defense': return 'text-red-700 dark:text-red-400 bg-red-50 dark:bg-red-900/30';
+      case 'special-teams': return 'text-purple-800 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/30';
+      default: return 'text-gray-800 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/30';
     }
   };
 
@@ -422,20 +422,20 @@ export default function MissionControl() {
                 </div>
                 Strategic Command Center
               </h1>
-              <p className="text-gray-600 dark:text-slate-300 mt-1">
+              <p className="text-gray-800 dark:text-slate-300 mt-1">
                 Single-pane executive overview of strategic readiness and execution status
               </p>
             </div>
             <div className="flex items-center gap-4">
               <div className="text-right">
-                <div className="text-sm text-gray-600 dark:text-slate-300">System Status</div>
+                <div className="text-sm text-gray-800 dark:text-slate-300">System Status</div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="font-semibold text-emerald-600 dark:text-emerald-400">All Systems Operational</span>
+                  <span className="font-semibold text-emerald-700 dark:text-emerald-400">All Systems Operational</span>
                 </div>
               </div>
               <div className="text-right hidden sm:block">
-                <div className="text-sm text-gray-600 dark:text-slate-300">Last Updated</div>
+                <div className="text-sm text-gray-800 dark:text-slate-300">Last Updated</div>
                 <div className="font-mono text-lg font-semibold text-slate-900 dark:text-white">
                   {currentTime.toLocaleTimeString()}
                 </div>
@@ -452,11 +452,11 @@ export default function MissionControl() {
               >
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-lg bg-blue-100 dark:bg-blue-900/40">
-                    <BookOpen className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                    <BookOpen className="h-5 w-5 text-blue-800 dark:text-blue-400" />
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-slate-900 dark:text-white">{totalPlaybooks}</div>
-                    <div className="text-sm text-gray-600 dark:text-slate-300">Playbooks Ready</div>
+                    <div className="text-sm text-gray-800 dark:text-slate-300">Playbooks Ready</div>
                   </div>
                 </div>
               </motion.div>
@@ -469,11 +469,11 @@ export default function MissionControl() {
               >
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-lg bg-emerald-100 dark:bg-emerald-900/40">
-                    <Activity className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                    <Activity className="h-5 w-5 text-emerald-700 dark:text-emerald-400" />
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-slate-900 dark:text-white">{activeTriggers}</div>
-                    <div className="text-sm text-gray-600 dark:text-slate-300">Active Triggers</div>
+                    <div className="text-sm text-gray-800 dark:text-slate-300">Active Triggers</div>
                   </div>
                 </div>
               </motion.div>
@@ -486,11 +486,11 @@ export default function MissionControl() {
               >
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-lg bg-purple-100 dark:bg-purple-900/40">
-                    <Radar className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                    <Radar className="h-5 w-5 text-purple-800 dark:text-purple-400" />
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-slate-900 dark:text-white">{totalSignals}</div>
-                    <div className="text-sm text-gray-600 dark:text-slate-300">Signal Points</div>
+                    <div className="text-sm text-gray-800 dark:text-slate-300">Signal Points</div>
                   </div>
                 </div>
               </motion.div>
@@ -513,17 +513,17 @@ export default function MissionControl() {
                   }`}>
                     <AlertTriangle className={`h-5 w-5 ${
                       criticalAlerts > 0 
-                        ? 'text-red-600 dark:text-red-400' 
-                        : 'text-gray-600 dark:text-slate-300'
+                        ? 'text-red-700 dark:text-red-400' 
+                        : 'text-gray-800 dark:text-slate-300'
                     }`} />
                   </div>
                   <div>
                     <div className={`text-2xl font-bold ${
                       criticalAlerts > 0 
-                        ? 'text-red-600 dark:text-red-400' 
+                        ? 'text-red-700 dark:text-red-400' 
                         : 'text-slate-900 dark:text-white'
                     }`}>{criticalAlerts}</div>
-                    <div className="text-sm text-gray-600 dark:text-slate-300">Critical Alerts</div>
+                    <div className="text-sm text-gray-800 dark:text-slate-300">Critical Alerts</div>
                   </div>
                 </div>
               </motion.div>
@@ -604,15 +604,15 @@ export default function MissionControl() {
                               {execution.name}
                             </span>
                           </div>
-                          <div className="text-sm text-gray-600 mt-1">
+                          <div className="text-sm text-gray-800 mt-1">
                             Playbook: {execution.playbook}
                           </div>
                         </div>
                         <div className="text-right">
-                          <div className="text-3xl font-bold text-amber-600">
+                          <div className="text-3xl font-bold text-[#C9A84C]">
                             {Math.floor((Date.now() - new Date(execution.startedAt).getTime()) / 60000)}m
                           </div>
-                          <div className="text-xs text-gray-600">Elapsed</div>
+                          <div className="text-xs text-gray-800">Elapsed</div>
                         </div>
                       </div>
 
@@ -620,7 +620,7 @@ export default function MissionControl() {
                       <div className="mb-6">
                         <div className="flex justify-between text-sm mb-2">
                           <span className="font-medium text-slate-700 dark:text-slate-300">Execution Progress</span>
-                          <span className="font-bold text-amber-600">{execution.progress}%</span>
+                          <span className="font-bold text-[#C9A84C]">{execution.progress}%</span>
                         </div>
                         <Progress value={execution.progress} className="h-3" />
                       </div>
@@ -631,19 +631,19 @@ export default function MissionControl() {
                           <div className="text-3xl font-bold text-slate-900 dark:text-white">
                             {execution.stakeholdersEngaged}/5
                           </div>
-                          <div className="text-sm text-gray-600">Stakeholders Engaged</div>
+                          <div className="text-sm text-gray-800">Stakeholders Engaged</div>
                         </div>
                         <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                           <div className="text-3xl font-bold text-slate-900 dark:text-white">
                             {execution.tasksCompleted}/{execution.totalTasks}
                           </div>
-                          <div className="text-sm text-gray-600">Tasks Completed</div>
+                          <div className="text-sm text-gray-800">Tasks Completed</div>
                         </div>
                         <div className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                          <div className="text-3xl font-bold text-emerald-600">
+                          <div className="text-3xl font-bold text-emerald-700">
                             {Math.round(execution.progress * 0.12)}
                           </div>
-                          <div className="text-sm text-gray-600">Est. Minutes Left</div>
+                          <div className="text-sm text-gray-800">Est. Minutes Left</div>
                         </div>
                       </div>
 
@@ -651,7 +651,7 @@ export default function MissionControl() {
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                           <h4 className="font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                            <Users className="h-4 w-4 text-blue-600" />
+                            <Users className="h-4 w-4 text-blue-800" />
                             Stakeholder Status
                           </h4>
                           <div className="space-y-2">
@@ -664,12 +664,12 @@ export default function MissionControl() {
                                     'bg-slate-300'
                                   }`} />
                                   <span className="font-medium text-sm">{stakeholder.name}</span>
-                                  <span className="text-xs text-gray-600">({stakeholder.role})</span>
+                                  <span className="text-xs text-gray-800">({stakeholder.role})</span>
                                 </div>
                                 <Badge className={`text-xs ${
                                   stakeholder.status === 'completed' ? 'bg-emerald-100 text-emerald-700' :
-                                  stakeholder.status === 'engaged' ? 'bg-amber-100 text-amber-700' :
-                                  'bg-slate-100 text-slate-600 dark:text-slate-200'
+                                  stakeholder.status === 'engaged' ? 'bg-amber-100 text-[#C9A84C]' :
+                                  'bg-slate-100 text-gray-800 dark:text-slate-200'
                                 }`}>
                                   {stakeholder.status}
                                 </Badge>
@@ -681,7 +681,7 @@ export default function MissionControl() {
                         {/* Timeline */}
                         <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                           <h4 className="font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                            <Clock className="h-4 w-4 text-purple-600" />
+                            <Clock className="h-4 w-4 text-purple-800" />
                             Execution Timeline
                           </h4>
                           <ScrollArea className="h-[200px]">
@@ -697,11 +697,11 @@ export default function MissionControl() {
                                   <div className="flex-1">
                                     <div className="flex items-center justify-between">
                                       <span className="font-medium text-sm">{event.title}</span>
-                                      <span className="text-xs text-gray-600">
+                                      <span className="text-xs text-gray-800">
                                         {new Date(event.timestamp).toLocaleTimeString()}
                                       </span>
                                     </div>
-                                    <p className="text-xs text-gray-600">{event.description}</p>
+                                    <p className="text-xs text-gray-800">{event.description}</p>
                                   </div>
                                 </div>
                               ))}
@@ -732,7 +732,7 @@ export default function MissionControl() {
                               {trigger.name}
                             </span>
                           </div>
-                          <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+                          <div className="flex flex-wrap items-center gap-4 text-sm text-gray-800">
                             <span className="flex items-center gap-1">
                               <Clock className="h-3.5 w-3.5" />
                               Detected {Math.floor((Date.now() - new Date(trigger.detectedAt).getTime()) / 60000)} min ago
@@ -747,7 +747,7 @@ export default function MissionControl() {
                             </span>
                           </div>
                           <div className="mt-2 p-2 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
-                            <span className="text-sm text-blue-700 dark:text-blue-300">
+                            <span className="text-sm text-blue-800 dark:text-blue-300">
                               <strong>Suggested:</strong> {trigger.suggestedPlaybook}
                             </span>
                           </div>
@@ -775,8 +775,8 @@ export default function MissionControl() {
                 </div>
               ) : (
                 /* EMPTY STATE */
-                <div className="text-center py-12 text-gray-600">
-                  <Shield className="h-12 w-12 mx-auto mb-3 text-gray-600 dark:text-slate-200" />
+                <div className="text-center py-12 text-gray-800">
+                  <Shield className="h-12 w-12 mx-auto mb-3 text-gray-800 dark:text-slate-200" />
                   <p className="font-medium">All Clear - No Active Triggers</p>
                   <p className="text-sm mt-1">AI is continuously monitoring for strategic events</p>
                   <a href="/try-demo">
@@ -799,7 +799,7 @@ export default function MissionControl() {
                     <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent">
                       IDEA Runway
                     </span>
-                    <span className="text-slate-600 dark:text-slate-300">— Your Operational Journey</span>
+                    <span className="text-gray-800 dark:text-slate-300">— Your Operational Journey</span>
                   </CardTitle>
                   <CardDescription className="mt-1">
                     Follow this path to achieve 12-minute coordinated response to any strategic event
@@ -820,34 +820,34 @@ export default function MissionControl() {
                   className="relative rounded-xl border-2 border-blue-200 dark:border-blue-800 bg-gradient-to-b from-blue-50 to-white dark:from-blue-950/30 dark:to-slate-900"
                 >
                   <div className="hidden lg:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10">
-                    <ArrowRight className="h-7 w-7 text-gray-600 dark:text-slate-200" />
+                    <ArrowRight className="h-7 w-7 text-gray-800 dark:text-slate-200" />
                   </div>
                   
                   <div className="p-5">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-2.5 rounded-xl bg-blue-100 dark:bg-blue-900/50">
-                        <ClipboardList className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                        <ClipboardList className="h-6 w-6 text-blue-800 dark:text-blue-400" />
                       </div>
                       <div>
-                        <Badge variant="outline" className="text-xs font-mono text-blue-600 border-blue-300">Step 1</Badge>
-                        <h3 className="text-lg font-bold text-blue-700 dark:text-blue-400">IDENTIFY</h3>
+                        <Badge variant="outline" className="text-xs font-mono text-blue-800 border-blue-300">Step 1</Badge>
+                        <h3 className="text-lg font-bold text-blue-800 dark:text-blue-400">IDENTIFY</h3>
                       </div>
                     </div>
                     
                     <p className="text-sm font-medium text-slate-800 dark:text-slate-200 mb-2">
                       Build or Choose Playbooks
                     </p>
-                    <p className="text-xs text-gray-600 dark:text-slate-300 mb-4">
+                    <p className="text-xs text-gray-800 dark:text-slate-300 mb-4">
                       Pre-stage stakeholders, tasks, budgets, and communication templates for instant activation.
                     </p>
                     
                     <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-3 mb-4">
                       <div className="flex justify-between text-sm mb-2">
-                        <span className="text-slate-600 dark:text-slate-300">Playbooks Ready</span>
-                        <span className="font-bold text-blue-700 dark:text-blue-300">{playbooks.length || 170}</span>
+                        <span className="text-gray-800 dark:text-slate-300">Playbooks Ready</span>
+                        <span className="font-bold text-blue-800 dark:text-blue-300">{playbooks.length || 170}</span>
                       </div>
                       <Progress value={85} className="h-1.5 bg-blue-100 dark:bg-blue-900" />
-                      <p className="text-xs text-gray-600 dark:text-slate-300 mt-1">85% with full stakeholder assignments</p>
+                      <p className="text-xs text-gray-800 dark:text-slate-300 mt-1">85% with full stakeholder assignments</p>
                     </div>
                     
                     <div className="space-y-2">
@@ -858,7 +858,7 @@ export default function MissionControl() {
                         </Button>
                       </Link>
                       <Link href="/playbooks/create">
-                        <Button variant="outline" size="sm" className="w-full border-blue-300 text-blue-700 hover:bg-blue-50 dark:border-blue-700 dark:text-blue-400 dark:hover:bg-blue-900/30">
+                        <Button variant="outline" size="sm" className="w-full border-blue-300 text-blue-800 hover:bg-blue-50 dark:border-blue-700 dark:text-blue-400 dark:hover:bg-blue-900/30">
                           Build Custom Playbook
                         </Button>
                       </Link>
@@ -872,16 +872,16 @@ export default function MissionControl() {
                   className="relative rounded-xl border-2 border-emerald-200 dark:border-emerald-800 bg-gradient-to-b from-emerald-50 to-white dark:from-emerald-950/30 dark:to-slate-900"
                 >
                   <div className="hidden lg:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10">
-                    <ArrowRight className="h-7 w-7 text-gray-600 dark:text-slate-200" />
+                    <ArrowRight className="h-7 w-7 text-gray-800 dark:text-slate-200" />
                   </div>
                   
                   <div className="p-5">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-2.5 rounded-xl bg-emerald-100 dark:bg-emerald-900/50">
-                        <Radar className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
+                        <Radar className="h-6 w-6 text-emerald-700 dark:text-emerald-400" />
                       </div>
                       <div>
-                        <Badge variant="outline" className="text-xs font-mono text-emerald-600 border-emerald-300">Step 2</Badge>
+                        <Badge variant="outline" className="text-xs font-mono text-emerald-700 border-emerald-300">Step 2</Badge>
                         <h3 className="text-lg font-bold text-emerald-700 dark:text-emerald-400">DETECT</h3>
                       </div>
                     </div>
@@ -889,17 +889,17 @@ export default function MissionControl() {
                     <p className="text-sm font-medium text-slate-800 dark:text-slate-200 mb-2">
                       Configure Activation Triggers
                     </p>
-                    <p className="text-xs text-gray-600 dark:text-slate-300 mb-4">
+                    <p className="text-xs text-gray-800 dark:text-slate-300 mb-4">
                       Define which signals auto-activate your playbooks so you never miss a critical event.
                     </p>
                     
                     <div className="bg-emerald-50 dark:bg-emerald-900/30 rounded-lg p-3 mb-4">
                       <div className="flex justify-between text-sm mb-2">
-                        <span className="text-slate-600 dark:text-slate-300">Active Triggers</span>
+                        <span className="text-gray-800 dark:text-slate-300">Active Triggers</span>
                         <span className="font-bold text-emerald-700 dark:text-emerald-300">{activeTriggers}</span>
                       </div>
                       <Progress value={75} className="h-1.5 bg-emerald-100 dark:bg-emerald-900" />
-                      <p className="text-xs text-gray-600 dark:text-slate-300 mt-1">Monitoring {totalSignals}+ data points</p>
+                      <p className="text-xs text-gray-800 dark:text-slate-300 mt-1">Monitoring {totalSignals}+ data points</p>
                     </div>
                     
                     <div className="space-y-2">
@@ -924,34 +924,34 @@ export default function MissionControl() {
                   className="relative rounded-xl border-2 border-amber-200 dark:border-amber-800 bg-gradient-to-b from-amber-50 to-white dark:from-amber-950/30 dark:to-slate-900"
                 >
                   <div className="hidden lg:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10">
-                    <ArrowRight className="h-7 w-7 text-gray-600 dark:text-slate-200" />
+                    <ArrowRight className="h-7 w-7 text-gray-800 dark:text-slate-200" />
                   </div>
                   
                   <div className="p-5">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-2.5 rounded-xl bg-amber-100 dark:bg-amber-900/50">
-                        <Play className="h-6 w-6 text-amber-600 dark:text-amber-400" />
+                        <Play className="h-6 w-6 text-[#C9A84C] dark:text-amber-400" />
                       </div>
                       <div>
-                        <Badge variant="outline" className="text-xs font-mono text-amber-600 border-amber-300">Step 3</Badge>
-                        <h3 className="text-lg font-bold text-amber-700 dark:text-amber-400">EXECUTE</h3>
+                        <Badge variant="outline" className="text-xs font-mono text-[#C9A84C] border-amber-300">Step 3</Badge>
+                        <h3 className="text-lg font-bold text-[#C9A84C] dark:text-amber-400">EXECUTE</h3>
                       </div>
                     </div>
                     
                     <p className="text-sm font-medium text-slate-800 dark:text-slate-200 mb-2">
                       Coordinate Response
                     </p>
-                    <p className="text-xs text-gray-600 dark:text-slate-300 mb-4">
+                    <p className="text-xs text-gray-800 dark:text-slate-300 mb-4">
                       When triggered, everyone knows their role. Tasks assigned, budgets unlocked, comms staged.
                     </p>
                     
                     <div className="bg-amber-50 dark:bg-amber-900/30 rounded-lg p-3 mb-4">
                       <div className="flex justify-between text-sm mb-2">
-                        <span className="text-slate-600 dark:text-slate-300">Response Time</span>
-                        <span className="font-bold text-amber-700 dark:text-amber-300">12 minutes</span>
+                        <span className="text-gray-800 dark:text-slate-300">Response Time</span>
+                        <span className="font-bold text-[#C9A84C] dark:text-amber-300">12 minutes</span>
                       </div>
                       <Progress value={100} className="h-1.5 bg-amber-100 dark:bg-amber-900" />
-                      <p className="text-xs text-gray-600 dark:text-slate-300 mt-1">vs. 72-hour industry average</p>
+                      <p className="text-xs text-gray-800 dark:text-slate-300 mt-1">vs. 72-hour industry average</p>
                     </div>
                     
                     <div className="space-y-2">
@@ -966,7 +966,7 @@ export default function MissionControl() {
                         Open Command Center
                       </Button>
                       <Link href="/stakeholder-management">
-                        <Button variant="outline" size="sm" className="w-full border-amber-300 text-amber-700 hover:bg-amber-50 dark:border-amber-700 dark:text-amber-400 dark:hover:bg-amber-900/30">
+                        <Button variant="outline" size="sm" className="w-full border-amber-300 text-[#C9A84C] hover:bg-amber-50 dark:border-amber-700 dark:text-amber-400 dark:hover:bg-amber-900/30">
                           View Stakeholder Roles
                         </Button>
                       </Link>
@@ -982,10 +982,10 @@ export default function MissionControl() {
                   <div className="p-5">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-2.5 rounded-xl bg-purple-100 dark:bg-purple-900/50">
-                        <TrendingUp className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                        <TrendingUp className="h-6 w-6 text-purple-800 dark:text-purple-400" />
                       </div>
                       <div>
-                        <Badge variant="outline" className="text-xs font-mono text-purple-600 border-purple-300">Step 4</Badge>
+                        <Badge variant="outline" className="text-xs font-mono text-purple-800 border-purple-300">Step 4</Badge>
                         <h3 className="text-lg font-bold text-purple-700 dark:text-purple-400">ADVANCE</h3>
                       </div>
                     </div>
@@ -993,17 +993,17 @@ export default function MissionControl() {
                     <p className="text-sm font-medium text-slate-800 dark:text-slate-200 mb-2">
                       Review & Improve
                     </p>
-                    <p className="text-xs text-gray-600 dark:text-slate-300 mb-4">
+                    <p className="text-xs text-gray-800 dark:text-slate-300 mb-4">
                       Capture lessons learned. AI analyzes patterns and suggests playbook refinements.
                     </p>
                     
                     <div className="bg-purple-50 dark:bg-purple-900/30 rounded-lg p-3 mb-4">
                       <div className="flex justify-between text-sm mb-2">
-                        <span className="text-slate-600 dark:text-slate-300">Improvement Rate</span>
+                        <span className="text-gray-800 dark:text-slate-300">Improvement Rate</span>
                         <span className="font-bold text-purple-700 dark:text-purple-300">94%</span>
                       </div>
                       <Progress value={94} className="h-1.5 bg-purple-100 dark:bg-purple-900" />
-                      <p className="text-xs text-gray-600 dark:text-slate-300 mt-1">Playbooks refined from learnings</p>
+                      <p className="text-xs text-gray-800 dark:text-slate-300 mt-1">Playbooks refined from learnings</p>
                     </div>
                     
                     <div className="space-y-2">
@@ -1032,7 +1032,7 @@ export default function MissionControl() {
                     </div>
                     <div>
                       <p className="font-semibold text-slate-900 dark:text-white">Ready to see it in action?</p>
-                      <p className="text-sm text-gray-600 dark:text-slate-300">Experience a live trigger→execution flow in 3 minutes</p>
+                      <p className="text-sm text-gray-800 dark:text-slate-300">Experience a live trigger→execution flow in 3 minutes</p>
                     </div>
                   </div>
                   <a href="/try-demo">
@@ -1054,7 +1054,7 @@ export default function MissionControl() {
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <BookOpen className="h-5 w-5 text-blue-600" />
+                    <BookOpen className="h-5 w-5 text-blue-800" />
                     <CardTitle className="text-lg">Playbook Library</CardTitle>
                   </div>
                   <Link href="/playbook-library">
@@ -1068,13 +1068,13 @@ export default function MissionControl() {
               <CardContent>
                 <Tabs defaultValue="offense" className="w-full">
                   <TabsList className="grid w-full grid-cols-3 mb-4">
-                    <TabsTrigger value="offense" className="text-emerald-600 data-[state=active]:bg-emerald-50 dark:data-[state=active]:bg-emerald-900/30">
+                    <TabsTrigger value="offense" className="text-emerald-700 data-[state=active]:bg-emerald-50 dark:data-[state=active]:bg-emerald-900/30">
                       OFFENSE (58)
                     </TabsTrigger>
-                    <TabsTrigger value="defense" className="text-red-600 data-[state=active]:bg-red-50 dark:data-[state=active]:bg-red-900/30">
+                    <TabsTrigger value="defense" className="text-red-700 data-[state=active]:bg-red-50 dark:data-[state=active]:bg-red-900/30">
                       DEFENSE (58)
                     </TabsTrigger>
-                    <TabsTrigger value="special-teams" className="text-purple-600 data-[state=active]:bg-purple-50 dark:data-[state=active]:bg-purple-900/30">
+                    <TabsTrigger value="special-teams" className="text-purple-800 data-[state=active]:bg-purple-50 dark:data-[state=active]:bg-purple-900/30">
                       SPECIAL TEAMS (54)
                     </TabsTrigger>
                   </TabsList>
@@ -1108,17 +1108,17 @@ export default function MissionControl() {
                                       <div className="font-semibold text-slate-900 dark:text-white text-sm">
                                         {domain.name}
                                       </div>
-                                      <div className="text-xs text-gray-600">
+                                      <div className="text-xs text-gray-800">
                                         {domain.count} playbooks
                                       </div>
                                     </div>
                                   </div>
-                                  <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                  <ChevronRight className="h-4 w-4 text-gray-800 dark:text-slate-200 opacity-0 group-hover:opacity-100 transition-opacity" />
                                 </div>
                                 <div className="space-y-1.5">
                                   <div className="flex justify-between text-xs">
-                                    <span className="text-gray-600">Readiness</span>
-                                    <span className="font-medium text-emerald-600">
+                                    <span className="text-gray-800">Readiness</span>
+                                    <span className="font-medium text-emerald-700">
                                       {Math.round((domain.readyCount / domain.count) * 100)}%
                                     </span>
                                   </div>
@@ -1142,7 +1142,7 @@ export default function MissionControl() {
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Radar className="h-5 w-5 text-emerald-600" />
+                    <Radar className="h-5 w-5 text-emerald-700" />
                     <CardTitle className="text-lg">Signal Intelligence</CardTitle>
                   </div>
                   <Link href="/signal-intelligence">
@@ -1175,12 +1175,12 @@ export default function MissionControl() {
                               </Badge>
                             )}
                             {signal.warningCount > 0 && signal.criticalCount === 0 && (
-                              <Badge variant="outline" className="text-xs text-amber-600 border-amber-300">
+                              <Badge variant="outline" className="text-xs text-[#C9A84C] border-amber-300">
                                 {signal.warningCount}
                               </Badge>
                             )}
-                            <span className="text-xs text-gray-600">{signal.activeCount}</span>
-                            <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <span className="text-xs text-gray-800">{signal.activeCount}</span>
+                            <ChevronRight className="h-4 w-4 text-gray-800 dark:text-slate-200 opacity-0 group-hover:opacity-100 transition-opacity" />
                           </div>
                         </div>
                       </Link>
@@ -1204,7 +1204,7 @@ export default function MissionControl() {
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Bell className="h-5 w-5 text-amber-600" />
+                  <Bell className="h-5 w-5 text-[#C9A84C]" />
                   <CardTitle className="text-lg">Active Triggers</CardTitle>
                   <Badge className="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
                     {triggers.length} Total
@@ -1239,14 +1239,14 @@ export default function MissionControl() {
                           }`} />
                           <div>
                             <div className="font-medium text-slate-900 dark:text-white text-sm group-hover:text-poise-teal transition-colors">{trigger.name}</div>
-                            <div className="text-xs text-gray-600 capitalize">{trigger.category}</div>
+                            <div className="text-xs text-gray-800 capitalize">{trigger.category}</div>
                           </div>
                         </div>
                       <Badge className={`text-xs ${
                         trigger.severity === 'critical' ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300' :
-                        trigger.severity === 'high' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300' :
+                        trigger.severity === 'high' ? 'bg-amber-100 text-[#C9A84C] dark:bg-amber-900/30 dark:text-amber-300' :
                         trigger.severity === 'medium' ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300' :
-                        'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300'
+                        'bg-slate-100 text-gray-800 dark:bg-slate-800 dark:text-slate-300'
                       }`}>
                         {trigger.severity}
                       </Badge>
@@ -1255,8 +1255,8 @@ export default function MissionControl() {
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-8 text-gray-600">
-                  <Bell className="h-10 w-10 mx-auto mb-3 text-gray-600 dark:text-slate-200" />
+                <div className="text-center py-8 text-gray-800">
+                  <Bell className="h-10 w-10 mx-auto mb-3 text-gray-800 dark:text-slate-200" />
                   <p className="font-medium">Loading triggers...</p>
                   <p className="text-sm mt-1">Fetching data from signal categories</p>
                 </div>
@@ -1287,25 +1287,25 @@ export default function MissionControl() {
                 {/* Performance Metrics - Dynamic */}
                 <div className="p-4 rounded-xl bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-800">
                   <h4 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                    <BarChart3 className="h-4 w-4 text-purple-600" />
+                    <BarChart3 className="h-4 w-4 text-purple-800" />
                     Performance Trends
                   </h4>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-slate-600 dark:text-slate-300">Avg Response Time</span>
-                      <span className="font-bold text-emerald-600">{analyticsMetrics.avgResponseTime} min</span>
+                      <span className="text-sm text-gray-800 dark:text-slate-300">Avg Response Time</span>
+                      <span className="font-bold text-emerald-700">{analyticsMetrics.avgResponseTime} min</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-slate-600 dark:text-slate-300">Executions This Month</span>
+                      <span className="text-sm text-gray-800 dark:text-slate-300">Executions This Month</span>
                       <span className="font-bold text-slate-900 dark:text-white">{analyticsMetrics.executionsThisMonth}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-slate-600 dark:text-slate-300">Success Rate</span>
-                      <span className="font-bold text-emerald-600">{analyticsMetrics.successRate}%</span>
+                      <span className="text-sm text-gray-800 dark:text-slate-300">Success Rate</span>
+                      <span className="font-bold text-emerald-700">{analyticsMetrics.successRate}%</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-slate-600 dark:text-slate-300">Stakeholder Engagement</span>
-                      <span className="font-bold text-blue-600">{Math.min(analyticsMetrics.stakeholderEngagement, 98)}%</span>
+                      <span className="text-sm text-gray-800 dark:text-slate-300">Stakeholder Engagement</span>
+                      <span className="font-bold text-blue-800">{Math.min(analyticsMetrics.stakeholderEngagement, 98)}%</span>
                     </div>
                   </div>
                 </div>
@@ -1313,7 +1313,7 @@ export default function MissionControl() {
                 {/* Recent Completions - Dynamic */}
                 <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
                   <h4 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-emerald-600" />
+                    <CheckCircle className="h-4 w-4 text-emerald-700" />
                     Recent Completions
                   </h4>
                   <div className="space-y-3">
@@ -1326,7 +1326,7 @@ export default function MissionControl() {
                               {exec.status === 'success' ? 'Success' : 'Partial'}
                             </Badge>
                           </div>
-                          <div className="text-xs text-gray-600">
+                          <div className="text-xs text-gray-800">
                             Completed in {exec.duration} min • Just now
                           </div>
                         </div>
@@ -1338,21 +1338,21 @@ export default function MissionControl() {
                             <span className="font-medium text-sm text-slate-900 dark:text-white">Market Entry Response</span>
                             <Badge className="bg-emerald-100 text-emerald-700 text-xs">Success</Badge>
                           </div>
-                          <div className="text-xs text-gray-600">Completed in 11 min • 2 days ago</div>
+                          <div className="text-xs text-gray-800">Completed in 11 min • 2 days ago</div>
                         </div>
                         <div className="p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                           <div className="flex items-center justify-between mb-1">
                             <span className="font-medium text-sm text-slate-900 dark:text-white">Regulatory Filing</span>
                             <Badge className="bg-emerald-100 text-emerald-700 text-xs">Success</Badge>
                           </div>
-                          <div className="text-xs text-gray-600">Completed in 9 min • 5 days ago</div>
+                          <div className="text-xs text-gray-800">Completed in 9 min • 5 days ago</div>
                         </div>
                         <div className="p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                           <div className="flex items-center justify-between mb-1">
                             <span className="font-medium text-sm text-slate-900 dark:text-white">Crisis Communication</span>
                             <Badge className="bg-emerald-100 text-emerald-700 text-xs">Success</Badge>
                           </div>
-                          <div className="text-xs text-gray-600">Completed in 7 min • 1 week ago</div>
+                          <div className="text-xs text-gray-800">Completed in 7 min • 1 week ago</div>
                         </div>
                       </>
                     )}
@@ -1362,7 +1362,7 @@ export default function MissionControl() {
                 {/* Lessons Learned - Dynamic */}
                 <div className="p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
                   <h4 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                    <Lightbulb className="h-4 w-4 text-amber-600" />
+                    <Lightbulb className="h-4 w-4 text-[#C9A84C]" />
                     Lessons Learned ({institutionalLessons.length})
                   </h4>
                   <div className="space-y-3">
@@ -1371,7 +1371,7 @@ export default function MissionControl() {
                         <p className="text-sm text-slate-700 dark:text-slate-300 mb-2">
                           "{lesson.insight}"
                         </p>
-                        <div className="flex items-center gap-2 text-xs text-gray-600">
+                        <div className="flex items-center gap-2 text-xs text-gray-800">
                           <span>From: {lesson.source}</span>
                           <span>•</span>
                           <span>Applied to {lesson.appliedTo} playbooks</span>
@@ -1380,7 +1380,7 @@ export default function MissionControl() {
                     ))}
                   </div>
                   <Link href="/institutional-memory">
-                    <Button variant="outline" size="sm" className="w-full mt-4 border-amber-300 text-amber-700 hover:bg-amber-100 dark:border-amber-700 dark:text-amber-400 dark:hover:bg-amber-900/30">
+                    <Button variant="outline" size="sm" className="w-full mt-4 border-amber-300 text-[#C9A84C] hover:bg-amber-100 dark:border-amber-700 dark:text-amber-400 dark:hover:bg-amber-900/30">
                       View All Learnings
                     </Button>
                   </Link>
@@ -1421,7 +1421,7 @@ export default function MissionControl() {
                       </div>
                       <h4 className="font-semibold text-slate-900 dark:text-white group-hover:text-poise-gold transition-colors">Executive Dashboard</h4>
                     </div>
-                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+                    <p className="text-sm text-gray-800 dark:text-slate-300 mb-3">
                       Strategic readiness metrics, decision velocity, and organizational health at a glance.
                     </p>
                     <div className="flex items-center text-xs text-poise-gold opacity-0 group-hover:opacity-100 transition-opacity">
@@ -1440,7 +1440,7 @@ export default function MissionControl() {
                       </div>
                       <h4 className="font-semibold text-slate-900 dark:text-white group-hover:text-indigo-500 transition-colors">Operating Model</h4>
                     </div>
-                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+                    <p className="text-sm text-gray-800 dark:text-slate-300 mb-3">
                       McKinsey 12-element framework alignment and personalized playbook recommendations.
                     </p>
                     <div className="flex items-center text-xs text-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -1455,11 +1455,11 @@ export default function MissionControl() {
                   <div className="group p-4 rounded-xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-400 transition-all cursor-pointer hover:shadow-lg">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/30">
-                        <Calculator className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                        <Calculator className="h-5 w-5 text-emerald-700 dark:text-emerald-400" />
                       </div>
                       <h4 className="font-semibold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">ROI Calculator</h4>
                     </div>
-                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+                    <p className="text-sm text-gray-800 dark:text-slate-300 mb-3">
                       Personalized time and cost savings projections based on your organization.
                     </p>
                     <div className="flex items-center text-xs text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -1474,11 +1474,11 @@ export default function MissionControl() {
                   <div className="group p-4 rounded-xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 hover:border-purple-500 dark:hover:border-purple-400 transition-all cursor-pointer hover:shadow-lg">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30">
-                        <FileText className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                        <FileText className="h-5 w-5 text-purple-800 dark:text-purple-400" />
                       </div>
                       <h4 className="font-semibold text-slate-900 dark:text-white group-hover:text-purple-500 transition-colors">Board Export</h4>
                     </div>
-                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+                    <p className="text-sm text-gray-800 dark:text-slate-300 mb-3">
                       Generate executive briefings with active scenarios and financial summaries.
                     </p>
                     <div className="flex items-center text-xs text-purple-500 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -1501,7 +1501,7 @@ export default function MissionControl() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold">12 Minutes vs. 72 Hours</h3>
-                    <p className="text-gray-600">Execution OS delivers 340x faster coordinated response</p>
+                    <p className="text-gray-800">Execution OS delivers 340x faster coordinated response</p>
                   </div>
                 </div>
                 <div className="flex gap-3">

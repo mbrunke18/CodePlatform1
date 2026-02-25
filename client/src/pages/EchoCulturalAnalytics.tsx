@@ -151,7 +151,7 @@ export default function EchoCulturalAnalytics() {
       case 'good': return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
       case 'warning': return 'bg-orange-500/20 text-orange-400 border-orange-500/30';
       case 'critical': return 'bg-red-500/20 text-red-400 border-red-500/30';
-      default: return 'bg-gray-500/20 text-gray-600 border-gray-500/30';
+      default: return 'bg-gray-500/20 text-gray-800 border-gray-500/30';
     }
   };
 
@@ -162,9 +162,9 @@ export default function EchoCulturalAnalytics() {
           
           {/* Breadcrumb Navigation */}
           <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-gray-800">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-600 hover:text-white p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-gray-800 hover:text-white p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>
@@ -253,13 +253,13 @@ export default function EchoCulturalAnalytics() {
                         </div>
                         <div className="text-2xl font-bold text-gray-900">{metric.value}%</div>
                         <Progress value={metric.value} className="h-2" />
-                        <p className="text-xs text-gray-600">{metric.description}</p>
+                        <p className="text-xs text-gray-800">{metric.description}</p>
                         
                         {/* Detailed Breakdown */}
                         <div className="grid grid-cols-2 gap-2 text-xs">
                           {Object.entries(metric.details).map(([key, value]) => (
                             <div key={key} className="flex justify-between">
-                              <span className="text-gray-600 capitalize">{key}:</span>
+                              <span className="text-gray-800 capitalize">{key}:</span>
                               <span className="text-gray-900 font-medium">{value}%</span>
                             </div>
                           ))}
@@ -307,7 +307,7 @@ export default function EchoCulturalAnalytics() {
                         <Lightbulb className="h-4 w-4 text-blue-400" />
                         <span className="font-medium text-blue-300">Recommendations</span>
                       </div>
-                      <ul className="space-y-1 text-sm text-blue-700">
+                      <ul className="space-y-1 text-sm text-blue-800">
                         <li>• Leadership visibility sessions</li>
                         <li>• Operations workload review</li>
                         <li>• Transparent decision processes</li>
@@ -331,7 +331,7 @@ export default function EchoCulturalAnalytics() {
                           </div>
                           <div>
                             <h3 className="font-semibold text-gray-900">{team.team} Team</h3>
-                            <p className="text-sm text-gray-600">{team.size} members</p>
+                            <p className="text-sm text-gray-800">{team.size} members</p>
                           </div>
                         </div>
                         <Badge variant="outline" className="bg-blue-500/20 text-blue-400 border-blue-500/30">
@@ -343,28 +343,28 @@ export default function EchoCulturalAnalytics() {
                       <div className="grid grid-cols-2 gap-4">
                         <div>
                           <div className="flex items-center justify-between text-sm mb-1">
-                            <span className="text-gray-600">Collaboration</span>
+                            <span className="text-gray-800">Collaboration</span>
                             <span className="text-emerald-400 font-medium">{team.collaboration}%</span>
                           </div>
                           <Progress value={team.collaboration} className="h-2" />
                         </div>
                         <div>
                           <div className="flex items-center justify-between text-sm mb-1">
-                            <span className="text-gray-600">Productivity</span>
+                            <span className="text-gray-800">Productivity</span>
                             <span className="text-blue-400 font-medium">{team.productivity}%</span>
                           </div>
                           <Progress value={team.productivity} className="h-2" />
                         </div>
                         <div>
                           <div className="flex items-center justify-between text-sm mb-1">
-                            <span className="text-gray-600">Retention</span>
+                            <span className="text-gray-800">Retention</span>
                             <span className="text-purple-400 font-medium">{team.retention}%</span>
                           </div>
                           <Progress value={team.retention} className="h-2" />
                         </div>
                         <div>
                           <div className="flex items-center justify-between text-sm mb-1">
-                            <span className="text-gray-600">Stress Level</span>
+                            <span className="text-gray-800">Stress Level</span>
                             <span className="text-orange-400 font-medium">{team.stress}%</span>
                           </div>
                           <Progress value={team.stress} className="h-2" />
@@ -390,9 +390,9 @@ export default function EchoCulturalAnalytics() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-center py-12">
-                    <Brain className="h-16 w-16 text-gray-600 mx-auto mb-4" />
-                    <p className="text-gray-600">Advanced cultural pattern analysis and predictive insights</p>
-                    <p className="text-sm text-gray-600 mt-2">AI-driven cultural transformation recommendations</p>
+                    <Brain className="h-16 w-16 text-gray-800 mx-auto mb-4" />
+                    <p className="text-gray-800">Advanced cultural pattern analysis and predictive insights</p>
+                    <p className="text-sm text-gray-800 mt-2">AI-driven cultural transformation recommendations</p>
                   </div>
                 </CardContent>
               </Card>
@@ -405,9 +405,9 @@ export default function EchoCulturalAnalytics() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-center py-12">
-                    <PieChart className="h-16 w-16 text-gray-600 mx-auto mb-4" />
-                    <p className="text-gray-600">Historical cultural trends and future projections</p>
-                    <p className="text-sm text-gray-600 mt-2">Multi-dimensional cultural evolution tracking</p>
+                    <PieChart className="h-16 w-16 text-gray-800 mx-auto mb-4" />
+                    <p className="text-gray-800">Historical cultural trends and future projections</p>
+                    <p className="text-sm text-gray-800 mt-2">Multi-dimensional cultural evolution tracking</p>
                   </div>
                 </CardContent>
               </Card>

@@ -176,12 +176,12 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
         <div>
           <div className="flex items-center justify-between mb-2">
             <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent flex items-center gap-3">
-              <Radio className="w-10 h-10 text-blue-600 animate-pulse" />
+              <Radio className="w-10 h-10 text-blue-800 animate-pulse" />
               Foresight Radar
             </h1>
             <div className="flex items-center gap-3">
               <Link href="/intelligence-demo">
-                <Button variant="outline" className="border-blue-500 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950" data-testid="button-try-demo">
+                <Button variant="outline" className="border-blue-500 text-blue-800 hover:bg-blue-50 dark:hover:bg-blue-950" data-testid="button-try-demo">
                   <Play className="w-4 h-4 mr-2" />
                   Try Interactive Demo
                 </Button>
@@ -192,7 +192,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
               </Badge>
             </div>
           </div>
-          <p className="text-gray-600 dark:text-slate-300 max-w-3xl">
+          <p className="text-gray-800 dark:text-slate-300 max-w-3xl">
             AI-powered continuous monitoring detects early signals of threats and opportunities before they become obvious. See what's coming so you can act first, not react late.
           </p>
         </div>
@@ -206,7 +206,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
               </div>
               <div>
                 <h4 className="font-semibold text-slate-900 dark:text-white">16 Signal Categories</h4>
-                <p className="text-sm text-gray-600 dark:text-slate-300">Monitoring competitive, market, regulatory, and operational signals</p>
+                <p className="text-sm text-gray-800 dark:text-slate-300">Monitoring competitive, market, regulatory, and operational signals</p>
               </div>
             </CardContent>
           </Card>
@@ -217,7 +217,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
               </div>
               <div>
                 <h4 className="font-semibold text-slate-900 dark:text-white">Early Warning</h4>
-                <p className="text-sm text-gray-600 dark:text-slate-300">Detect weak signals 2-6 weeks before they become obvious threats</p>
+                <p className="text-sm text-gray-800 dark:text-slate-300">Detect weak signals 2-6 weeks before they become obvious threats</p>
               </div>
             </CardContent>
           </Card>
@@ -228,7 +228,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
               </div>
               <div>
                 <h4 className="font-semibold text-slate-900 dark:text-white">AI Pattern Recognition</h4>
-                <p className="text-sm text-gray-600 dark:text-slate-300">Oracle engine identifies opportunities others miss</p>
+                <p className="text-sm text-gray-800 dark:text-slate-300">Oracle engine identifies opportunities others miss</p>
               </div>
             </CardContent>
           </Card>
@@ -299,14 +299,14 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                           {/* Tooltip */}
                           <div className="absolute hidden group-hover:block z-50 bg-white dark:bg-slate-800 p-3 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 min-w-64 top-6 left-0">
                             <div className="font-semibold text-sm mb-1">{signal.title}</div>
-                            <div className="text-xs text-gray-600 dark:text-slate-300 mb-2">{signal.description}</div>
+                            <div className="text-xs text-gray-800 dark:text-slate-300 mb-2">{signal.description}</div>
                             <div className="flex items-center gap-2 text-xs">
                               <Badge variant="outline">{signal.confidence}% confidence</Badge>
                               <Badge variant={signal.impact === 'critical' ? 'destructive' : 'secondary'}>
                                 {signal.impact}
                               </Badge>
                             </div>
-                            <p className="text-xs text-blue-600 dark:text-blue-400 mt-2">Click to investigate →</p>
+                            <p className="text-xs text-blue-800 dark:text-blue-400 mt-2">Click to investigate →</p>
                           </div>
                         </div>
                       );
@@ -329,7 +329,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <AlertTriangle className="w-5 h-5 text-amber-600" />
+                      <AlertTriangle className="w-5 h-5 text-[#C9A84C]" />
                       Weak Signals Detected
                       <Badge variant="outline" className="ml-2">{weakSignals.length}</Badge>
                     </CardTitle>
@@ -356,10 +356,10 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                               {signal.impact}
                             </Badge>
                           </div>
-                          <p className="text-sm text-gray-600 dark:text-slate-300 mb-3">
+                          <p className="text-sm text-gray-800 dark:text-slate-300 mb-3">
                             {signal.description}
                           </p>
-                          <div className="flex items-center gap-4 text-xs text-gray-600 dark:text-slate-300">
+                          <div className="flex items-center gap-4 text-xs text-gray-800 dark:text-slate-300">
                             <span className="flex items-center gap-1">
                               <TrendingUp className="w-3 h-3" />
                               {signal.confidence}% confidence
@@ -414,10 +414,10 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                               {pattern.accuracy}% accurate
                             </Badge>
                           </div>
-                          <p className="text-sm text-gray-600 dark:text-slate-300 mb-2">
+                          <p className="text-sm text-gray-800 dark:text-slate-300 mb-2">
                             {pattern.description}
                           </p>
-                          <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-slate-300">
+                          <div className="flex items-center gap-4 text-sm text-gray-800 dark:text-slate-300">
                             <div className="flex items-center gap-1">
                               <TrendingUp className="w-4 h-4" />
                               <span>{pattern.trend}</span>
@@ -458,17 +458,17 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                         <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                           Continuous Monitoring Active
                         </h3>
-                        <p className="text-sm text-gray-600 dark:text-slate-300">
+                        <p className="text-sm text-gray-800 dark:text-slate-300">
                           Scanning 16 intelligence signal categories in real-time
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-8">
                       <div className="text-center">
-                        <div className="text-3xl font-bold text-amber-600 dark:text-amber-400">
+                        <div className="text-3xl font-bold text-[#C9A84C] dark:text-amber-400">
                           {weakSignals.length}
                         </div>
-                        <div className="text-xs text-gray-600 dark:text-slate-300 uppercase">
+                        <div className="text-xs text-gray-800 dark:text-slate-300 uppercase">
                           Weak Signals
                         </div>
                       </div>
@@ -476,7 +476,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                         <div className="text-3xl font-bold text-violet-600 dark:text-violet-400">
                           {oraclePatterns.length}
                         </div>
-                        <div className="text-xs text-gray-600 dark:text-slate-300 uppercase">
+                        <div className="text-xs text-gray-800 dark:text-slate-300 uppercase">
                           Patterns
                         </div>
                       </div>
@@ -507,12 +507,12 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                   <Link href="/triggers">
                     <Card className="cursor-pointer hover:border-blue-500 hover:shadow-md transition-all" data-testid="config-thresholds">
                       <CardContent className="p-6 text-center">
-                        <Database className="w-8 h-8 mx-auto mb-3 text-blue-600" />
+                        <Database className="w-8 h-8 mx-auto mb-3 text-blue-800" />
                         <h4 className="font-semibold mb-1">Monitoring Thresholds</h4>
                         <p className="text-sm text-muted-foreground mb-3">
                           Set custom alert thresholds for each signal category
                         </p>
-                        <Button variant="ghost" size="sm" className="text-blue-600">
+                        <Button variant="ghost" size="sm" className="text-blue-800">
                           Configure <ArrowRight className="w-4 h-4 ml-1" />
                         </Button>
                       </CardContent>
@@ -521,12 +521,12 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                   <Link href="/integrations">
                     <Card className="cursor-pointer hover:border-purple-500 hover:shadow-md transition-all" data-testid="config-sources">
                       <CardContent className="p-6 text-center">
-                        <Grid3X3 className="w-8 h-8 mx-auto mb-3 text-purple-600" />
+                        <Grid3X3 className="w-8 h-8 mx-auto mb-3 text-purple-800" />
                         <h4 className="font-semibold mb-1">Data Sources</h4>
                         <p className="text-sm text-muted-foreground mb-3">
                           Connect and manage enterprise data sources
                         </p>
-                        <Button variant="ghost" size="sm" className="text-purple-600">
+                        <Button variant="ghost" size="sm" className="text-purple-800">
                           Configure <ArrowRight className="w-4 h-4 ml-1" />
                         </Button>
                       </CardContent>
@@ -535,12 +535,12 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                   <Link href="/triggers">
                     <Card className="cursor-pointer hover:border-amber-500 hover:shadow-md transition-all" data-testid="config-notifications">
                       <CardContent className="p-6 text-center">
-                        <AlertTriangle className="w-8 h-8 mx-auto mb-3 text-amber-600" />
+                        <AlertTriangle className="w-8 h-8 mx-auto mb-3 text-[#C9A84C]" />
                         <h4 className="font-semibold mb-1">Alert Settings</h4>
                         <p className="text-sm text-muted-foreground mb-3">
                           Configure notification preferences and escalation
                         </p>
-                        <Button variant="ghost" size="sm" className="text-amber-600">
+                        <Button variant="ghost" size="sm" className="text-[#C9A84C]">
                           Configure <ArrowRight className="w-4 h-4 ml-1" />
                         </Button>
                       </CardContent>
@@ -559,7 +559,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
         <DialogContent className="max-w-lg" data-testid="dialog-investigate-signal">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2" data-testid="dialog-title-investigate">
-              <AlertTriangle className="w-5 h-5 text-amber-600" />
+              <AlertTriangle className="w-5 h-5 text-[#C9A84C]" />
               Signal Investigation
             </DialogTitle>
             <DialogDescription>
@@ -576,20 +576,20 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-slate-50 dark:bg-slate-800 p-3 rounded-lg">
                   <div className="text-xs text-muted-foreground uppercase">Confidence</div>
-                  <div className="text-xl font-bold text-blue-600">{selectedSignal.confidence}%</div>
+                  <div className="text-xl font-bold text-blue-800">{selectedSignal.confidence}%</div>
                 </div>
                 <div className="bg-slate-50 dark:bg-slate-800 p-3 rounded-lg">
                   <div className="text-xs text-muted-foreground uppercase">Timeline</div>
-                  <div className="text-xl font-bold text-amber-600">{selectedSignal.timeline}</div>
+                  <div className="text-xl font-bold text-[#C9A84C]">{selectedSignal.timeline}</div>
                 </div>
               </div>
 
               <div className="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
                 <div className="flex items-center gap-2 mb-2">
-                  <Lightbulb className="w-4 h-4 text-blue-600" />
+                  <Lightbulb className="w-4 h-4 text-blue-800" />
                   <span className="font-semibold text-sm">Recommended Action</span>
                 </div>
-                <p className="text-sm text-gray-600 dark:text-slate-300">
+                <p className="text-sm text-gray-800 dark:text-slate-300">
                   {selectedSignal.suggestedPlaybook 
                     ? `Activate the "${selectedSignal.suggestedPlaybook}" playbook to address this signal before it escalates.`
                     : 'Review related playbooks to determine the best response strategy.'}
@@ -635,11 +635,11 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                 </div>
                 <div className="bg-slate-50 dark:bg-slate-800 p-3 rounded-lg text-center">
                   <div className="text-xs text-muted-foreground uppercase">Signals</div>
-                  <div className="text-xl font-bold text-blue-600">{selectedPattern.signals}</div>
+                  <div className="text-xl font-bold text-blue-800">{selectedPattern.signals}</div>
                 </div>
                 <div className="bg-slate-50 dark:bg-slate-800 p-3 rounded-lg text-center">
                   <div className="text-xs text-muted-foreground uppercase">Trend</div>
-                  <div className="text-sm font-semibold text-green-600">{selectedPattern.trend}</div>
+                  <div className="text-sm font-semibold text-emerald-700">{selectedPattern.trend}</div>
                 </div>
               </div>
 
@@ -648,7 +648,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                   <Lightbulb className="w-4 h-4 text-violet-600" />
                   <span className="font-semibold text-sm">Oracle Recommendation</span>
                 </div>
-                <p className="text-sm text-gray-600 dark:text-slate-300">
+                <p className="text-sm text-gray-800 dark:text-slate-300">
                   {selectedPattern.recommendation}
                 </p>
               </div>

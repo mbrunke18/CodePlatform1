@@ -390,9 +390,9 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
           
           {/* Breadcrumb Navigation */}
           <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-gray-800">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-600 hover:text-white p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-gray-800 hover:text-white p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>
@@ -433,11 +433,11 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900">Setup Progress</h3>
-                  <p className="text-sm text-gray-600">Complete all sections to enable full strategic execution capabilities</p>
+                  <p className="text-sm text-gray-800">Complete all sections to enable full strategic execution capabilities</p>
                 </div>
                 <div className="text-right">
                   <div className="text-3xl font-bold text-indigo-400">{Math.round(progressPercent)}%</div>
-                  <div className="text-sm text-gray-600">Complete</div>
+                  <div className="text-sm text-gray-800">Complete</div>
                 </div>
               </div>
               <Progress value={progressPercent} className="h-3 mb-4" />
@@ -488,7 +488,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-gray-900">Department Structure</h2>
-                  <p className="text-sm text-gray-600">Define your organization's departments and reporting structure</p>
+                  <p className="text-sm text-gray-800">Define your organization's departments and reporting structure</p>
                 </div>
                 <Button onClick={() => setIsDepartmentDialogOpen(true)} data-testid="button-add-department">
                   <Plus className="h-4 w-4 mr-2" />
@@ -503,26 +503,26 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                       <div className="flex items-start justify-between">
                         <div>
                           <h3 className="font-semibold text-gray-900">{dept.name}</h3>
-                          <p className="text-sm text-gray-600 mt-1">{dept.description}</p>
+                          <p className="text-sm text-gray-800 mt-1">{dept.description}</p>
                         </div>
                         <div className="flex gap-1">
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-600 hover:text-white">
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-800 hover:text-white">
                             <Edit className="h-4 w-4" />
                           </Button>
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-600 hover:text-red-500">
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-800 hover:text-red-500">
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>
                       </div>
                       <div className="mt-4 flex items-center gap-4 text-sm">
                         {dept.headcount && (
-                          <div className="flex items-center gap-1 text-gray-600">
+                          <div className="flex items-center gap-1 text-gray-800">
                             <Users className="h-4 w-4" />
                             <span>{dept.headcount}</span>
                           </div>
                         )}
                         {dept.leaderName && (
-                          <div className="flex items-center gap-1 text-gray-600">
+                          <div className="flex items-center gap-1 text-gray-800">
                             <UserCircle className="h-4 w-4" />
                             <span>{dept.leaderName}</span>
                           </div>
@@ -539,7 +539,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-gray-900">Key Stakeholders</h2>
-                  <p className="text-sm text-gray-600">Define executives and decision-makers for playbook coordination</p>
+                  <p className="text-sm text-gray-800">Define executives and decision-makers for playbook coordination</p>
                 </div>
                 <Button onClick={() => setIsStakeholderDialogOpen(true)} data-testid="button-add-stakeholder">
                   <Plus className="h-4 w-4 mr-2" />
@@ -562,22 +562,22 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                           </div>
                         </div>
                         <div className="flex gap-1">
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-600 hover:text-white">
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-800 hover:text-white">
                             <Edit className="h-4 w-4" />
                           </Button>
                         </div>
                       </div>
                       <div className="mt-4 space-y-2">
-                        <div className="flex items-center gap-2 text-sm text-gray-600">
+                        <div className="flex items-center gap-2 text-sm text-gray-800">
                           <Mail className="h-4 w-4" />
                           <span>{sh.email}</span>
                         </div>
-                        <div className="flex items-center gap-2 text-sm text-gray-600">
+                        <div className="flex items-center gap-2 text-sm text-gray-800">
                           <Building2 className="h-4 w-4" />
                           <span>{sh.department}</span>
                         </div>
                         {sh.approvalLimit && (
-                          <div className="flex items-center gap-2 text-sm text-gray-600">
+                          <div className="flex items-center gap-2 text-sm text-gray-800">
                             <DollarSign className="h-4 w-4" />
                             <span>Approval limit: ${sh.approvalLimit.toLocaleString()}</span>
                           </div>
@@ -606,7 +606,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-gray-900">Escalation Policies</h2>
-                  <p className="text-sm text-gray-600">Define how unacknowledged alerts escalate through your organization</p>
+                  <p className="text-sm text-gray-800">Define how unacknowledged alerts escalate through your organization</p>
                 </div>
                 <Button onClick={() => setIsEscalationDialogOpen(true)} data-testid="button-add-escalation">
                   <Plus className="h-4 w-4 mr-2" />
@@ -621,16 +621,16 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                       <div className="flex items-start justify-between mb-4">
                         <div>
                           <h3 className="font-semibold text-gray-900 text-lg">{policy.name}</h3>
-                          <p className="text-sm text-gray-600 mt-1">{policy.description}</p>
+                          <p className="text-sm text-gray-800 mt-1">{policy.description}</p>
                           <Badge className="mt-2 bg-indigo-500/20 text-indigo-400 border-indigo-500/30">
                             {policy.triggerType.replace('_', ' ')}
                           </Badge>
                         </div>
                         <div className="flex gap-1">
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-600 hover:text-white">
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-800 hover:text-white">
                             <Edit className="h-4 w-4" />
                           </Button>
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-600 hover:text-red-500">
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-800 hover:text-red-500">
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>
@@ -647,13 +647,13 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                               <div className="flex-1 p-3 bg-gray-50 rounded-lg">
                                 <div className="flex items-center justify-between">
                                   <span className="font-medium text-gray-900">Level {level.level}</span>
-                                  <div className="flex items-center gap-1 text-sm text-gray-600">
+                                  <div className="flex items-center gap-1 text-sm text-gray-800">
                                     <Clock className="h-4 w-4" />
                                     <span>{level.timeoutMinutes} min</span>
                                   </div>
                                 </div>
                                 <div className="mt-2 flex items-center gap-2">
-                                  <span className="text-sm text-gray-600">Approvers:</span>
+                                  <span className="text-sm text-gray-800">Approvers:</span>
                                   {level.approvers.map((approver) => (
                                     <Badge key={approver} variant="outline" className="text-xs">
                                       {approver}
@@ -661,7 +661,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                                   ))}
                                 </div>
                                 <div className="mt-2 flex items-center gap-2">
-                                  <span className="text-sm text-gray-600">Actions:</span>
+                                  <span className="text-sm text-gray-800">Actions:</span>
                                   {level.actions.map((action) => (
                                     <Badge key={action} className="text-xs bg-blue-500/20 text-blue-400 border-blue-500/30">
                                       {action}
@@ -684,7 +684,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-gray-900">Communication Channels</h2>
-                  <p className="text-sm text-gray-600">Configure how Execution OS will notify stakeholders during activations</p>
+                  <p className="text-sm text-gray-800">Configure how Execution OS will notify stakeholders during activations</p>
                 </div>
                 <Button onClick={() => setIsChannelDialogOpen(true)} data-testid="button-add-channel">
                   <Plus className="h-4 w-4 mr-2" />
@@ -708,7 +708,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                           </div>
                           <div>
                             <h3 className="font-semibold text-gray-900">{channel.name}</h3>
-                            <p className="text-sm text-gray-600 capitalize">{channel.channelType}</p>
+                            <p className="text-sm text-gray-800 capitalize">{channel.channelType}</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-2">

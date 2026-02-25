@@ -49,7 +49,7 @@ export default function PilotMonitoring() {
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="text-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-            <p className="mt-4 text-gray-600 dark:text-slate-300">Loading monitoring dashboard...</p>
+            <p className="mt-4 text-gray-800 dark:text-slate-300">Loading monitoring dashboard...</p>
           </div>
         </div>
       </div>
@@ -63,11 +63,11 @@ export default function PilotMonitoring() {
         <StandardNav />
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="text-center py-12">
-            <AlertCircle className="w-16 h-16 text-red-600 mx-auto mb-4" />
+            <AlertCircle className="w-16 h-16 text-red-700 mx-auto mb-4" />
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
               Unable to Load Monitoring Data
             </h2>
-            <p className="text-gray-600 dark:text-slate-300">
+            <p className="text-gray-800 dark:text-slate-300">
               Please check your connection and try again. If the problem persists, contact support.
             </p>
           </div>
@@ -83,7 +83,7 @@ export default function PilotMonitoring() {
         <StandardNav />
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="text-center py-12">
-            <p className="text-gray-600 dark:text-slate-300">No monitoring data available.</p>
+            <p className="text-gray-800 dark:text-slate-300">No monitoring data available.</p>
           </div>
         </div>
       </div>
@@ -117,7 +117,7 @@ export default function PilotMonitoring() {
               System {systemHealth.status === 'healthy' ? 'Healthy' : 'Warning'}
             </Badge>
           </div>
-          <p className="text-lg text-gray-600 dark:text-slate-300">
+          <p className="text-lg text-gray-800 dark:text-slate-300">
             Real-time monitoring for Q1 2026 Early Access Program
           </p>
         </div>
@@ -127,52 +127,52 @@ export default function PilotMonitoring() {
           <Card data-testid="card-uptime">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-2">
-                <div className="text-sm text-gray-600 dark:text-slate-300">Uptime</div>
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
+                <div className="text-sm text-gray-800 dark:text-slate-300">Uptime</div>
+                <CheckCircle2 className="w-5 h-5 text-emerald-700" />
               </div>
               <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">
                 {systemHealth.uptime}%
               </div>
-              <div className="text-xs text-gray-600">Last 30 days</div>
+              <div className="text-xs text-gray-800">Last 30 days</div>
             </CardContent>
           </Card>
 
           <Card data-testid="card-response-time">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-2">
-                <div className="text-sm text-gray-600 dark:text-slate-300">Avg Response</div>
-                <Clock className="w-5 h-5 text-blue-600" />
+                <div className="text-sm text-gray-800 dark:text-slate-300">Avg Response</div>
+                <Clock className="w-5 h-5 text-blue-800" />
               </div>
               <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">
                 {systemHealth.avgResponseTime}ms
               </div>
-              <div className="text-xs text-gray-600">Target: {'<'} 200ms</div>
+              <div className="text-xs text-gray-800">Target: {'<'} 200ms</div>
             </CardContent>
           </Card>
 
           <Card data-testid="card-active-users">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-2">
-                <div className="text-sm text-gray-600 dark:text-slate-300">Active Users</div>
-                <Users className="w-5 h-5 text-purple-600" />
+                <div className="text-sm text-gray-800 dark:text-slate-300">Active Users</div>
+                <Users className="w-5 h-5 text-purple-800" />
               </div>
               <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">
                 {systemHealth.activeUsers}
               </div>
-              <div className="text-xs text-gray-600">Currently online</div>
+              <div className="text-xs text-gray-800">Currently online</div>
             </CardContent>
           </Card>
 
           <Card data-testid="card-executions">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-2">
-                <div className="text-sm text-gray-600 dark:text-slate-300">Executions</div>
+                <div className="text-sm text-gray-800 dark:text-slate-300">Executions</div>
                 <Zap className="w-5 h-5 text-cyan-600" />
               </div>
               <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">
                 {pilotMetrics.executionsCompleted}
               </div>
-              <div className="text-xs text-gray-600">Total completed</div>
+              <div className="text-xs text-gray-800">Total completed</div>
             </CardContent>
           </Card>
         </div>
@@ -182,7 +182,7 @@ export default function PilotMonitoring() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Users className="w-5 h-5 text-blue-600" />
+                <Users className="w-5 h-5 text-blue-800" />
                 Pilot Company Status
               </CardTitle>
             </CardHeader>
@@ -192,26 +192,26 @@ export default function PilotMonitoring() {
                   <div className="text-2xl font-bold text-slate-900 dark:text-white">
                     {pilotMetrics.totalPilots}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-slate-300">Total Pilots</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-300">Total Pilots</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-green-600">
+                  <div className="text-2xl font-bold text-emerald-700">
                     {pilotMetrics.activePilots}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-slate-300">Active</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-300">Active</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-gray-600">
+                  <div className="text-2xl font-bold text-gray-800">
                     {pilotMetrics.totalPilots - pilotMetrics.activePilots}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-slate-300">Onboarding</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-300">Onboarding</div>
                 </div>
               </div>
               
               <div className="space-y-3">
                 <div>
                   <div className="flex justify-between text-sm mb-1">
-                    <span className="text-gray-600 dark:text-slate-300">Adoption Rate</span>
+                    <span className="text-gray-800 dark:text-slate-300">Adoption Rate</span>
                     <span className="font-semibold text-slate-900 dark:text-white">70%</span>
                   </div>
                   <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
@@ -220,7 +220,7 @@ export default function PilotMonitoring() {
                 </div>
                 <div>
                   <div className="flex justify-between text-sm mb-1">
-                    <span className="text-gray-600 dark:text-slate-300">Average Engagement</span>
+                    <span className="text-gray-800 dark:text-slate-300">Average Engagement</span>
                     <span className="font-semibold text-slate-900 dark:text-white">85%</span>
                   </div>
                   <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
@@ -234,7 +234,7 @@ export default function PilotMonitoring() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <BarChart3 className="w-5 h-5 text-purple-600" />
+                <BarChart3 className="w-5 h-5 text-purple-800" />
                 Platform Usage
               </CardTitle>
             </CardHeader>
@@ -242,21 +242,21 @@ export default function PilotMonitoring() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
                   <div>
-                    <div className="text-sm text-gray-600 dark:text-slate-300">Scenarios Created</div>
+                    <div className="text-sm text-gray-800 dark:text-slate-300">Scenarios Created</div>
                     <div className="text-2xl font-bold text-slate-900 dark:text-white">{pilotMetrics.scenariosCreated}</div>
                   </div>
-                  <TrendingUp className="w-8 h-8 text-green-600" />
+                  <TrendingUp className="w-8 h-8 text-emerald-700" />
                 </div>
                 <div className="flex justify-between items-center">
                   <div>
-                    <div className="text-sm text-gray-600 dark:text-slate-300">Triggers Configured</div>
+                    <div className="text-sm text-gray-800 dark:text-slate-300">Triggers Configured</div>
                     <div className="text-2xl font-bold text-slate-900 dark:text-white">{pilotMetrics.triggersConfigured}</div>
                   </div>
-                  <TrendingUp className="w-8 h-8 text-blue-600" />
+                  <TrendingUp className="w-8 h-8 text-blue-800" />
                 </div>
                 <div className="flex justify-between items-center">
                   <div>
-                    <div className="text-sm text-gray-600 dark:text-slate-300">Avg Execution Time</div>
+                    <div className="text-sm text-gray-800 dark:text-slate-300">Avg Execution Time</div>
                     <div className="text-2xl font-bold text-slate-900 dark:text-white">{pilotMetrics.avgExecutionTime} min</div>
                   </div>
                   <Badge className="bg-green-600 text-gray-900">
@@ -282,13 +282,13 @@ export default function PilotMonitoring() {
                       {metric.label}
                     </div>
                     <CheckCircle2 className={`w-5 h-5 ${
-                      metric.status === 'good' ? 'text-green-600' : 'text-yellow-600'
+                      metric.status === 'good' ? 'text-emerald-700' : 'text-yellow-600'
                     }`} />
                   </div>
                   <div className="text-2xl font-bold text-slate-900 dark:text-white mb-1">
                     {metric.value}
                   </div>
-                  <div className="text-xs text-gray-600">
+                  <div className="text-xs text-gray-800">
                     Target: {metric.target}
                   </div>
                 </div>
@@ -308,7 +308,7 @@ export default function PilotMonitoring() {
                 <div key={index} className="flex items-start gap-3 p-3 bg-slate-50 dark:bg-slate-900 rounded-lg">
                   <div className="flex-shrink-0 mt-1">
                     {activity.success ? (
-                      <CheckCircle2 className="w-5 h-5 text-green-600" />
+                      <CheckCircle2 className="w-5 h-5 text-emerald-700" />
                     ) : (
                       <AlertCircle className="w-5 h-5 text-yellow-600" />
                     )}
@@ -317,11 +317,11 @@ export default function PilotMonitoring() {
                     <div className="font-semibold text-slate-900 dark:text-white text-sm">
                       {activity.pilot}
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-slate-300">
+                    <div className="text-sm text-gray-800 dark:text-slate-300">
                       {activity.action}
                     </div>
                   </div>
-                  <div className="text-xs text-gray-600 whitespace-nowrap">
+                  <div className="text-xs text-gray-800 whitespace-nowrap">
                     {activity.time}
                   </div>
                 </div>

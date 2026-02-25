@@ -107,7 +107,7 @@ export default function AIIntelligenceHub() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-gray-900">AI Intelligence Hub</h1>
-                <p className="text-sm text-gray-600">Strategic co-pilots for executive decision-making</p>
+                <p className="text-sm text-gray-800">Strategic co-pilots for executive decision-making</p>
               </div>
             </div>
             <Badge variant="outline" className="bg-green-500/10 text-green-300 border-green-500/30">
@@ -140,13 +140,13 @@ export default function AIIntelligenceHub() {
                       data-testid={`ai-module-${module.id}`}
                     >
                       <div className={`p-2 rounded-lg ${isActive ? module.bgColor : 'bg-gray-50'}`}>
-                        <Icon className={`h-5 w-5 ${isActive ? module.color : 'text-gray-600'}`} />
+                        <Icon className={`h-5 w-5 ${isActive ? module.color : 'text-gray-800'}`} />
                       </div>
                       <div className="text-center">
-                        <p className={`text-sm font-semibold ${isActive ? 'text-gray-900' : 'text-gray-600'}`}>
+                        <p className={`text-sm font-semibold ${isActive ? 'text-gray-900' : 'text-gray-800'}`}>
                           {module.name}
                         </p>
-                        <p className="text-xs text-gray-600 mt-0.5">
+                        <p className="text-xs text-gray-800 mt-0.5">
                           {module.description}
                         </p>
                       </div>

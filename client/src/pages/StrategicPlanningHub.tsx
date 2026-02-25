@@ -192,7 +192,7 @@ export default function StrategicPlanningHub() {
       case 'planning': return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
       case 'completed': return 'bg-green-500/20 text-green-300 border-green-500/30';
       case 'on-hold': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
-      default: return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
     }
   };
 
@@ -202,7 +202,7 @@ export default function StrategicPlanningHub() {
       case 'high': return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
       case 'medium': return 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30';
       case 'low': return 'bg-green-500/20 text-green-300 border-green-500/30';
-      default: return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
     }
   };
 
@@ -230,9 +230,9 @@ export default function StrategicPlanningHub() {
         
         {/* Breadcrumb Navigation */}
         <div className="mb-6">
-          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-200">
+          <div className="flex items-center gap-2 text-sm text-gray-800 dark:text-gray-200">
             <Link to="/">
-              <Button variant="ghost" size="sm" className="text-gray-600 dark:text-gray-200 hover:text-white p-1 h-auto">
+              <Button variant="ghost" size="sm" className="text-gray-800 dark:text-gray-200 hover:text-white p-1 h-auto">
                 <Home className="h-4 w-4" />
               </Button>
             </Link>
@@ -247,11 +247,11 @@ export default function StrategicPlanningHub() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Strategic Planning Hub</h1>
-            <p className="text-gray-600">Comprehensive scenario planning and strategic execution management</p>
+            <p className="text-gray-800">Comprehensive scenario planning and strategic execution management</p>
           </div>
           <div className="flex items-center gap-4">
             <Link to="/">
-              <Button variant="secondary" className="bg-gray-50 hover:bg-slate-600 text-gray-500 border-slate-600">
+              <Button variant="secondary" className="bg-gray-50 hover:bg-slate-600 text-gray-700 border-slate-600">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Dashboard
               </Button>
@@ -260,7 +260,7 @@ export default function StrategicPlanningHub() {
               <Plus className="w-4 h-4 mr-2" />
               New Scenario
             </Button>
-            <Button variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
+            <Button variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
               <Download className="w-4 w-4 mr-2" />
               Export Portfolio
             </Button>
@@ -362,13 +362,13 @@ export default function StrategicPlanningHub() {
                       </div>
                       <div className="space-y-2">
                         <div className="flex justify-between text-sm">
-                          <span className="text-slate-600 dark:text-slate-200">Progress</span>
+                          <span className="text-gray-800 dark:text-slate-200">Progress</span>
                           <span className="text-gray-900">{scenario.progress}%</span>
                         </div>
                         <Progress value={scenario.progress} className="h-2" />
                         <div className="flex justify-between text-xs">
-                          <span className="text-gray-600">Owner: {scenario.owner}</span>
-                          <span className="text-gray-600">Budget: {formatCurrency(scenario.budget)}</span>
+                          <span className="text-gray-800">Owner: {scenario.owner}</span>
+                          <span className="text-gray-800">Budget: {formatCurrency(scenario.budget)}</span>
                         </div>
                       </div>
                     </div>
@@ -390,21 +390,21 @@ export default function StrategicPlanningHub() {
                       <div className="w-2 h-2 bg-emerald-400 rounded-full" />
                       <div className="flex-1 page-background">
                         <div className="text-sm text-gray-900">Digital Transformation milestone completed</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">2 hours ago</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">2 hours ago</div>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <div className="w-2 h-2 bg-blue-400 rounded-full" />
                       <div className="flex-1 page-background">
                         <div className="text-sm text-gray-900">Market Expansion budget approved</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">1 day ago</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">1 day ago</div>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <div className="w-2 h-2 bg-amber-400 rounded-full" />
                       <div className="flex-1 page-background">
                         <div className="text-sm text-gray-900">Sustainability initiative risk review</div>
-                        <div className="text-xs text-slate-600 dark:text-slate-200">3 days ago</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">3 days ago</div>
                       </div>
                     </div>
                   </div>
@@ -419,7 +419,7 @@ export default function StrategicPlanningHub() {
             {/* Filters and Search */}
             <div className="flex items-center gap-4 bg-white p-4 rounded-lg border border-gray-200">
               <div className="flex-1 page-background relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-600 dark:text-slate-200" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-800 dark:text-slate-200" />
                 <Input
                   placeholder="Search scenarios..."
                   value={searchTerm}
@@ -469,31 +469,31 @@ export default function StrategicPlanningHub() {
                         </Badge>
                       </div>
                     </div>
-                    <p className="text-slate-600 dark:text-slate-200 text-sm">{scenario.description}</p>
+                    <p className="text-gray-800 dark:text-slate-200 text-sm">{scenario.description}</p>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
-                        <div className="text-slate-600 dark:text-slate-200">Owner</div>
+                        <div className="text-gray-800 dark:text-slate-200">Owner</div>
                         <div className="text-gray-900">{scenario.owner}</div>
                       </div>
                       <div>
-                        <div className="text-slate-600 dark:text-slate-200">Budget</div>
+                        <div className="text-gray-800 dark:text-slate-200">Budget</div>
                         <div className="text-gray-900">{formatCurrency(scenario.budget)}</div>
                       </div>
                       <div>
-                        <div className="text-slate-600 dark:text-slate-200">Timeline</div>
+                        <div className="text-gray-800 dark:text-slate-200">Timeline</div>
                         <div className="text-gray-900">{scenario.startDate} - {scenario.endDate}</div>
                       </div>
                       <div>
-                        <div className="text-slate-600 dark:text-slate-200">Progress</div>
+                        <div className="text-gray-800 dark:text-slate-200">Progress</div>
                         <div className="text-gray-900">{scenario.progress}%</div>
                       </div>
                     </div>
                     
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-slate-600 dark:text-slate-200">Overall Progress</span>
+                        <span className="text-gray-800 dark:text-slate-200">Overall Progress</span>
                         <span className="text-gray-900">{scenario.progress}%</span>
                       </div>
                       <Progress value={scenario.progress} className="h-2" />
@@ -504,10 +504,10 @@ export default function StrategicPlanningHub() {
                         <FileText className="w-4 h-4 mr-2" />
                         View Details
                       </Button>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
                         <Edit className="w-4 h-4" />
                       </Button>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
                         <Share className="w-4 h-4" />
                       </Button>
                     </div>
@@ -527,7 +527,7 @@ export default function StrategicPlanningHub() {
                     <TrendingUp className="h-5 w-5 text-emerald-400" />
                   </div>
                   <div className="text-2xl font-bold text-gray-900 mb-2">94%</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-200">Scenario completion</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-200">Scenario completion</div>
                 </CardContent>
               </Card>
 
@@ -538,7 +538,7 @@ export default function StrategicPlanningHub() {
                     <Calendar className="h-5 w-5 text-blue-400" />
                   </div>
                   <div className="text-2xl font-bold text-gray-900 mb-2">8.2</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-200">months</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-200">months</div>
                 </CardContent>
               </Card>
 
@@ -549,7 +549,7 @@ export default function StrategicPlanningHub() {
                     <DollarSign className="h-5 w-5 text-emerald-400" />
                   </div>
                   <div className="text-2xl font-bold text-gray-900 mb-2">245%</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-200">Return on investment</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-200">Return on investment</div>
                 </CardContent>
               </Card>
 
@@ -560,7 +560,7 @@ export default function StrategicPlanningHub() {
                     <AlertCircle className="h-5 w-5 text-amber-400" />
                   </div>
                   <div className="text-2xl font-bold text-gray-900 mb-2">87%</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-200">Issues prevented</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-200">Issues prevented</div>
                 </CardContent>
               </Card>
             </div>

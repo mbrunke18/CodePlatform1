@@ -49,13 +49,13 @@ const PHASE_STYLES = {
     active: 'bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 font-medium ring-1 ring-purple-300 dark:ring-purple-700',
   },
   monitor: {
-    active: 'bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 font-medium ring-1 ring-blue-300 dark:ring-blue-700',
+    active: 'bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 font-medium ring-1 ring-blue-300 dark:ring-blue-700',
   },
   execute: {
     active: 'bg-orange-100 dark:bg-orange-950 text-orange-700 dark:text-orange-300 font-medium ring-1 ring-orange-300 dark:ring-orange-700',
   },
   learn: {
-    active: 'bg-green-100 dark:bg-green-950 text-green-700 dark:text-green-300 font-medium ring-1 ring-green-300 dark:ring-green-700',
+    active: 'bg-green-100 dark:bg-green-950 text-emerald-800 dark:text-green-300 font-medium ring-1 ring-green-300 dark:ring-green-700',
   },
 } as const;
 
@@ -211,7 +211,7 @@ export default function PlaybookCustomizationWizard({
           <div className="flex justify-between items-start text-xs text-muted-foreground">
             <div>
               <div>{STEPS[currentStep - 1].name}</div>
-              <div className="flex items-center gap-1 mt-1 text-blue-600 dark:text-blue-400">
+              <div className="flex items-center gap-1 mt-1 text-blue-800 dark:text-blue-400">
                 <Lightbulb className="w-3 h-3" />
                 <span>{STEPS[currentStep - 1].aiTip}</span>
               </div>
@@ -232,7 +232,7 @@ export default function PlaybookCustomizationWizard({
             if (isCurrentPhase) {
               className += PHASE_STYLES[phase.id].active;
             } else if (isCompleted) {
-              className += 'bg-green-100 dark:bg-green-950 text-green-700 dark:text-green-300';
+              className += 'bg-green-100 dark:bg-green-950 text-emerald-800 dark:text-green-300';
             } else {
               className += 'text-muted-foreground bg-muted/50';
             }
@@ -261,7 +261,7 @@ export default function PlaybookCustomizationWizard({
                 currentStep === step.id
                   ? 'bg-primary text-primary-foreground'
                   : currentStep > step.id
-                  ? 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300'
+                  ? 'bg-green-100 dark:bg-green-900 text-emerald-800 dark:text-green-300'
                   : 'bg-muted text-muted-foreground hover:bg-muted/80'
               }`}
               data-testid={`button-step-${step.id}`}
@@ -279,7 +279,7 @@ export default function PlaybookCustomizationWizard({
           {/* Quick Tips Card */}
           <Card className="bg-blue-50 dark:bg-blue-950/30 border-blue-200 dark:border-blue-900 p-3">
             <div className="flex gap-2">
-              <Lightbulb className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+              <Lightbulb className="w-4 h-4 text-blue-800 flex-shrink-0 mt-0.5" />
               <div className="text-sm text-blue-900 dark:text-blue-100">
                 <span className="font-semibold">Pro Tip:</span> Customize each section with your organization's specific context, roles, and communication preferences for optimal execution velocity.
               </div>

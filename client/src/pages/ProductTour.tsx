@@ -282,7 +282,7 @@ function ProductTour() {
             <Clock className="w-12 h-12 text-red-400" />
           </div>
           <p className="text-2xl font-bold text-red-400">72+ Hours</p>
-          <p className="text-slate-600 dark:text-slate-200">Signal to Decision</p>
+          <p className="text-gray-800 dark:text-slate-200">Signal to Decision</p>
         </motion.div>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -294,7 +294,7 @@ function ProductTour() {
             <AlertTriangle className="w-12 h-12 text-orange-400" />
           </div>
           <p className="text-2xl font-bold text-orange-400">15+ Meetings</p>
-          <p className="text-slate-600 dark:text-slate-200">To Align Stakeholders</p>
+          <p className="text-gray-800 dark:text-slate-200">To Align Stakeholders</p>
         </motion.div>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -306,7 +306,7 @@ function ProductTour() {
             <TrendingUp className="w-12 h-12 text-yellow-400 rotate-180" />
           </div>
           <p className="text-2xl font-bold text-yellow-400">$10-50M</p>
-          <p className="text-slate-600 dark:text-slate-200">Annual Revenue at Risk</p>
+          <p className="text-gray-800 dark:text-slate-200">Annual Revenue at Risk</p>
         </motion.div>
       </div>
     </div>
@@ -336,7 +336,7 @@ function ProductTour() {
             className="text-center"
           >
             <p className="text-4xl font-bold text-blue-400">12</p>
-            <p className="text-slate-600 dark:text-slate-200">Minutes</p>
+            <p className="text-gray-800 dark:text-slate-200">Minutes</p>
           </motion.div>
           <motion.div
             initial={{ scale: 0 }}
@@ -352,7 +352,7 @@ function ProductTour() {
             className="text-center"
           >
             <p className="text-4xl font-bold text-teal-400">170</p>
-            <p className="text-slate-600 dark:text-slate-200">Playbooks</p>
+            <p className="text-gray-800 dark:text-slate-200">Playbooks</p>
           </motion.div>
         </div>
       </motion.div>
@@ -453,7 +453,7 @@ function ProductTour() {
                 <AlertTriangle className="w-8 h-8 text-red-400 flex-shrink-0" />
                 <div>
                   <p className="font-semibold text-gray-900">Competitor Acquisition Announced</p>
-                  <p className="text-slate-600 dark:text-slate-200 text-sm">TitanTech acquires Precision Components for $890M</p>
+                  <p className="text-gray-800 dark:text-slate-200 text-sm">TitanTech acquires Precision Components for $890M</p>
                 </div>
               </div>
               
@@ -493,7 +493,7 @@ function ProductTour() {
             <Timer className="w-16 h-16 text-gray-900" />
           </div>
           <p className="text-5xl font-bold text-teal-400">3,180x</p>
-          <p className="text-slate-600 dark:text-slate-200 mt-2">Faster Response</p>
+          <p className="text-gray-800 dark:text-slate-200 mt-2">Faster Response</p>
         </motion.div>
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -505,7 +505,7 @@ function ProductTour() {
             <Users className="w-16 h-16 text-gray-900" />
           </div>
           <p className="text-5xl font-bold text-blue-400">6</p>
-          <p className="text-slate-600 dark:text-slate-200 mt-2">Stakeholders Aligned</p>
+          <p className="text-gray-800 dark:text-slate-200 mt-2">Stakeholders Aligned</p>
         </motion.div>
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -517,7 +517,7 @@ function ProductTour() {
             <DollarSign className="w-16 h-16 text-gray-900" />
           </div>
           <p className="text-5xl font-bold text-purple-400">$50M+</p>
-          <p className="text-slate-600 dark:text-slate-200 mt-2">Revenue Protected</p>
+          <p className="text-gray-800 dark:text-slate-200 mt-2">Revenue Protected</p>
         </motion.div>
       </div>
     </div>
@@ -533,10 +533,10 @@ function ProductTour() {
         <div className="grid grid-cols-4 gap-4">
           <div className="col-span-1"></div>
           <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="text-center p-3 bg-gray-50 rounded-lg">
-            <p className="text-slate-600 dark:text-slate-200 text-sm">Palantir</p>
+            <p className="text-gray-800 dark:text-slate-200 text-sm">Palantir</p>
           </motion.div>
           <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="text-center p-3 bg-gray-50 rounded-lg">
-            <p className="text-slate-600 dark:text-slate-200 text-sm">Anaplan</p>
+            <p className="text-gray-800 dark:text-slate-200 text-sm">Anaplan</p>
           </motion.div>
           <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="text-center p-3 bg-gradient-to-r from-blue-600 to-teal-500 rounded-lg">
             <p className="text-gray-900 font-bold text-sm">Execution OS</p>
@@ -560,7 +560,7 @@ function ProductTour() {
               </div>
               {row.scores.map((score, j) => (
                 <div key={j} className={`p-3 rounded-lg flex items-center justify-center ${j === 2 ? 'bg-teal-500/20' : 'bg-gray-50'}`}>
-                  <p className={`text-sm ${j === 2 ? 'text-teal-400 font-medium' : 'text-gray-600'}`}>{score}</p>
+                  <p className={`text-sm ${j === 2 ? 'text-teal-400 font-medium' : 'text-gray-800'}`}>{score}</p>
                 </div>
               ))}
             </motion.div>
@@ -629,7 +629,7 @@ function ProductTour() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
-            className="text-slate-600 dark:text-slate-200 text-sm"
+            className="text-gray-800 dark:text-slate-200 text-sm"
           >
             Request a custom demo configured for your industry
           </motion.p>
@@ -712,7 +712,7 @@ function ProductTour() {
                 {currentScene.title}
               </h1>
               {currentScene.subtitle && (
-                <p className="text-2xl text-slate-600 dark:text-slate-200">{currentScene.subtitle}</p>
+                <p className="text-2xl text-gray-800 dark:text-slate-200">{currentScene.subtitle}</p>
               )}
             </motion.div>
           )}
@@ -727,7 +727,7 @@ function ProductTour() {
             transition={{ delay: 0.4 }}
             className="mb-32 max-w-3xl text-center"
           >
-            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-800 leading-relaxed">
               {currentScene.narration}
             </p>
           </motion.div>

@@ -117,9 +117,9 @@ const NOTIFICATION_CHANNELS = [
 
 const LEVEL_CONFIG: Record<number, { label: string; color: string }> = {
   1: { label: "C-Suite", color: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400" },
-  2: { label: "Executive", color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400" },
+  2: { label: "Executive", color: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400" },
   3: { label: "VP", color: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400" },
-  4: { label: "Director", color: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" },
+  4: { label: "Director", color: "bg-green-100 text-emerald-800 dark:bg-green-900/30 dark:text-green-400" },
   5: { label: "Manager", color: "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300" },
 };
 
@@ -276,7 +276,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
             <h1 className="text-3xl font-bold text-slate-900 dark:text-white" data-testid="text-page-title">
               Stakeholder Directory
             </h1>
-            <p className="text-gray-600 dark:text-slate-300 mt-1">
+            <p className="text-gray-800 dark:text-slate-300 mt-1">
               Manage your organization's stakeholders, roles, and contact information
             </p>
           </div>
@@ -295,11 +295,11 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                  <Users className="h-5 w-5 text-gray-600" />
+                  <Users className="h-5 w-5 text-gray-800" />
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white">{stats.total}</p>
-                  <p className="text-sm text-gray-600">Total Stakeholders</p>
+                  <p className="text-sm text-gray-800">Total Stakeholders</p>
                 </div>
               </div>
             </CardContent>
@@ -308,11 +308,11 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-                  <Shield className="h-5 w-5 text-purple-600" />
+                  <Shield className="h-5 w-5 text-purple-800" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-purple-600">{stats.cSuite}</p>
-                  <p className="text-sm text-gray-600">C-Suite</p>
+                  <p className="text-2xl font-bold text-purple-800">{stats.cSuite}</p>
+                  <p className="text-sm text-gray-800">C-Suite</p>
                 </div>
               </div>
             </CardContent>
@@ -321,11 +321,11 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                  <Building2 className="h-5 w-5 text-blue-600" />
+                  <Building2 className="h-5 w-5 text-blue-800" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-blue-600">{stats.executives}</p>
-                  <p className="text-sm text-gray-600">Executives</p>
+                  <p className="text-2xl font-bold text-blue-800">{stats.executives}</p>
+                  <p className="text-sm text-gray-800">Executives</p>
                 </div>
               </div>
             </CardContent>
@@ -334,11 +334,11 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                  <UserCircle className="h-5 w-5 text-green-600" />
+                  <UserCircle className="h-5 w-5 text-emerald-700" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-green-600">{stats.active}</p>
-                  <p className="text-sm text-gray-600">Active</p>
+                  <p className="text-2xl font-bold text-emerald-700">{stats.active}</p>
+                  <p className="text-sm text-gray-800">Active</p>
                 </div>
               </div>
             </CardContent>
@@ -349,7 +349,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
           <CardContent className="p-4">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-600 dark:text-slate-200" />
+                <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-800 dark:text-slate-200" />
                 <Input
                   placeholder="Search by name, role, or email..."
                   value={search}
@@ -391,9 +391,9 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
         {filteredStakeholders.length === 0 ? (
           <Card>
             <CardContent className="py-16 text-center">
-              <Users className="h-12 w-12 mx-auto mb-4 text-gray-600" />
+              <Users className="h-12 w-12 mx-auto mb-4 text-gray-800" />
               <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">No Stakeholders Found</h3>
-              <p className="text-gray-600 mb-6">Start by adding stakeholders to your directory.</p>
+              <p className="text-gray-800 mb-6">Start by adding stakeholders to your directory.</p>
               <Button onClick={handleOpenCreate} data-testid="button-add-first-stakeholder">
                 <Plus className="h-4 w-4 mr-2" />
                 Add First Stakeholder
@@ -439,7 +439,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                         <span className="font-medium">{stakeholder.role}</span>
                       </TableCell>
                       <TableCell>
-                        <span className="text-gray-600 dark:text-slate-300">{stakeholder.department}</span>
+                        <span className="text-gray-800 dark:text-slate-300">{stakeholder.department}</span>
                       </TableCell>
                       <TableCell>
                         <Badge className={levelConfig.color}>
@@ -448,12 +448,12 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                       </TableCell>
                       <TableCell>
                         <div className="space-y-1 text-sm">
-                          <div className="flex items-center gap-1 text-gray-600 dark:text-slate-300">
+                          <div className="flex items-center gap-1 text-gray-800 dark:text-slate-300">
                             <Mail className="h-3 w-3" />
                             <span className="truncate max-w-[150px]" data-testid={`text-email-${stakeholder.id}`}>{stakeholder.email}</span>
                           </div>
                           {stakeholder.phone && (
-                            <div className="flex items-center gap-1 text-gray-600">
+                            <div className="flex items-center gap-1 text-gray-800">
                               <Phone className="h-3 w-3" />
                               <span data-testid={`text-phone-${stakeholder.id}`}>{stakeholder.phone}</span>
                             </div>
@@ -473,7 +473,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                                 title={channel.label}
                                 data-testid={`badge-channel-${stakeholder.id}-${ch}`}
                               >
-                                <Icon className="h-3 w-3 text-gray-600 dark:text-slate-300" />
+                                <Icon className="h-3 w-3 text-gray-800 dark:text-slate-300" />
                               </div>
                             );
                           })}
@@ -493,7 +493,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                             variant="ghost" 
                             size="sm" 
                             onClick={() => setDeleteId(stakeholder.id)}
-                            className="text-red-600 hover:text-red-700"
+                            className="text-red-700 hover:text-red-700"
                             data-testid={`button-delete-${stakeholder.id}`}
                           >
                             <Trash2 className="h-4 w-4" />
@@ -512,7 +512,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
         <div className="mt-10 mb-8">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-              <Activity className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+              <Activity className="h-5 w-5 text-purple-800 dark:text-purple-400" />
             </div>
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Engagement Analytics</h2>
           </div>
@@ -521,13 +521,13 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
               <CardContent className="p-6">
                 <div className="flex items-start justify-between mb-3">
                   <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                    <Clock className="h-5 w-5 text-green-600 dark:text-green-400" />
+                    <Clock className="h-5 w-5 text-emerald-700 dark:text-green-400" />
                   </div>
-                  <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">94% within SLA</Badge>
+                  <Badge className="bg-green-100 text-emerald-800 dark:bg-green-900/30 dark:text-green-400">94% within SLA</Badge>
                 </div>
                 <p className="text-3xl font-bold text-slate-900 dark:text-white mb-1">3.2 minutes</p>
                 <p className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Average Response Time</p>
-                <p className="text-xs text-gray-600 dark:text-slate-400">Stakeholders acknowledge notifications within avg 3.2 min</p>
+                <p className="text-xs text-gray-800 dark:text-slate-400">Stakeholders acknowledge notifications within avg 3.2 min</p>
                 <Progress value={94} className="mt-3 h-1.5" />
               </CardContent>
             </Card>
@@ -535,13 +535,13 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
               <CardContent className="p-6">
                 <div className="flex items-start justify-between mb-3">
                   <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                    <TrendingUp className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                    <TrendingUp className="h-5 w-5 text-blue-800 dark:text-blue-400" />
                   </div>
-                  <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">All channels</Badge>
+                  <Badge className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">All channels</Badge>
                 </div>
                 <p className="text-3xl font-bold text-slate-900 dark:text-white mb-1">98.4%</p>
                 <p className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Notification Reach</p>
-                <p className="text-xs text-gray-600 dark:text-slate-400">Percentage of stakeholders successfully reached on first attempt</p>
+                <p className="text-xs text-gray-800 dark:text-slate-400">Percentage of stakeholders successfully reached on first attempt</p>
                 <Progress value={98.4} className="mt-3 h-1.5" />
               </CardContent>
             </Card>
@@ -549,13 +549,13 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
               <CardContent className="p-6">
                 <div className="flex items-start justify-between mb-3">
                   <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-                    <CheckCircle className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                    <CheckCircle className="h-5 w-5 text-purple-800 dark:text-purple-400" />
                   </div>
                   <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400">Above benchmark</Badge>
                 </div>
                 <p className="text-3xl font-bold text-slate-900 dark:text-white mb-1">92%</p>
                 <p className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Participation Rate</p>
-                <p className="text-xs text-gray-600 dark:text-slate-400">Stakeholder participation rate in practice drills</p>
+                <p className="text-xs text-gray-800 dark:text-slate-400">Stakeholder participation rate in practice drills</p>
                 <Progress value={92} className="mt-3 h-1.5" />
               </CardContent>
             </Card>
@@ -566,7 +566,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-              <Clock className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+              <Clock className="h-5 w-5 text-blue-800 dark:text-blue-400" />
             </div>
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Recent Communication Timeline</h2>
           </div>
@@ -576,10 +576,10 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                 <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-slate-700" />
                 {[
                   { date: "Feb 15, 2:14 PM", description: "Competitive Response playbook activated — 18 stakeholders notified via Slack, Email, SMS", badge: "Playbook #45", badgeClass: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400", dotClass: "bg-purple-500", icon: Zap },
-                  { date: "Feb 10, 9:30 AM", description: "Monthly practice drill completed — 92% participation, avg response 2.8 min", badge: "Drill", badgeClass: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400", dotClass: "bg-blue-500", icon: Activity },
+                  { date: "Feb 10, 9:30 AM", description: "Monthly practice drill completed — 92% participation, avg response 2.8 min", badge: "Drill", badgeClass: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400", dotClass: "bg-blue-500", icon: Activity },
                   { date: "Feb 3, 2:17 AM", description: "CRITICAL: Ransomware incident triggered — 47 stakeholders notified, all C-Suite reached in 45 sec", badge: "Emergency", badgeClass: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400", dotClass: "bg-red-500", icon: AlertTriangle },
                   { date: "Jan 28, 10:00 AM", description: "M&A integration playbook activated — 45 stakeholders coordinated across 6 departments", badge: "Playbook #12", badgeClass: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400", dotClass: "bg-indigo-500", icon: Building2 },
-                  { date: "Jan 15, 11:00 AM", description: "GDPR compliance audit response — 28 stakeholders notified, Legal team first response in 90 sec", badge: "Playbook #67", badgeClass: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400", dotClass: "bg-green-500", icon: Shield },
+                  { date: "Jan 15, 11:00 AM", description: "GDPR compliance audit response — 28 stakeholders notified, Legal team first response in 90 sec", badge: "Playbook #67", badgeClass: "bg-green-100 text-emerald-800 dark:bg-green-900/30 dark:text-green-400", dotClass: "bg-green-500", icon: Shield },
                 ].map((entry, index) => {
                   const EntryIcon = entry.icon;
                   return (
@@ -591,8 +591,8 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
-                            <EntryIcon className="h-4 w-4 text-gray-600 dark:text-slate-300" />
-                            <span className="text-sm font-semibold text-gray-500 dark:text-slate-400">{entry.date}</span>
+                            <EntryIcon className="h-4 w-4 text-gray-800 dark:text-slate-300" />
+                            <span className="text-sm font-semibold text-gray-700 dark:text-slate-400">{entry.date}</span>
                           </div>
                           <p className="text-sm text-slate-700 dark:text-slate-200">{entry.description}</p>
                         </div>
@@ -644,15 +644,15 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                         </Avatar>
                         <div>
                           <p className="font-medium text-slate-900 dark:text-white text-sm">{row.name}</p>
-                          <p className="text-xs text-gray-600 dark:text-slate-400">{row.role}</p>
+                          <p className="text-xs text-gray-800 dark:text-slate-400">{row.role}</p>
                         </div>
                       </div>
                     </TableCell>
                     {row.raci.map((value, i) => {
                       const raciConfig: Record<string, string> = {
                         R: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
-                        A: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
-                        C: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+                        A: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400",
+                        C: "bg-amber-100 text-[#C9A84C] dark:bg-amber-900/30 dark:text-amber-400",
                         I: "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300",
                       };
                       return (
@@ -669,19 +669,19 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
               <div className="flex flex-wrap gap-4 text-xs">
                 <div className="flex items-center gap-1.5">
                   <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400 text-xs px-1.5">R</Badge>
-                  <span className="text-gray-500 dark:text-slate-400">Responsible</span>
+                  <span className="text-gray-700 dark:text-slate-400">Responsible</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-xs px-1.5">A</Badge>
-                  <span className="text-gray-500 dark:text-slate-400">Accountable</span>
+                  <Badge className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400 text-xs px-1.5">A</Badge>
+                  <span className="text-gray-700 dark:text-slate-400">Accountable</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-xs px-1.5">C</Badge>
-                  <span className="text-gray-500 dark:text-slate-400">Consulted</span>
+                  <Badge className="bg-amber-100 text-[#C9A84C] dark:bg-amber-900/30 dark:text-amber-400 text-xs px-1.5">C</Badge>
+                  <span className="text-gray-700 dark:text-slate-400">Consulted</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Badge className="bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 text-xs px-1.5">I</Badge>
-                  <span className="text-gray-500 dark:text-slate-400">Informed</span>
+                  <span className="text-gray-700 dark:text-slate-400">Informed</span>
                 </div>
               </div>
             </div>

@@ -23,7 +23,7 @@ const categoryConfig = {
     bgGradient: 'from-emerald-500 to-emerald-600',
     lightBg: 'bg-gradient-to-br from-emerald-50 to-emerald-100/50 dark:from-emerald-950/40 dark:to-emerald-900/20',
     iconBg: 'bg-emerald-500',
-    textColor: 'text-emerald-600 dark:text-emerald-400',
+    textColor: 'text-emerald-700 dark:text-emerald-400',
     borderColor: 'border-emerald-200 dark:border-emerald-800/50',
     hoverBorder: 'hover:border-emerald-400 dark:hover:border-emerald-600',
     count: 58,
@@ -45,7 +45,7 @@ const categoryConfig = {
     bgGradient: 'from-blue-500 to-blue-600',
     lightBg: 'bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-blue-950/40 dark:to-blue-900/20',
     iconBg: 'bg-blue-500',
-    textColor: 'text-blue-600 dark:text-blue-400',
+    textColor: 'text-blue-800 dark:text-blue-400',
     borderColor: 'border-blue-200 dark:border-blue-800/50',
     hoverBorder: 'hover:border-blue-400 dark:hover:border-blue-600',
     count: 58,
@@ -67,7 +67,7 @@ const categoryConfig = {
     bgGradient: 'from-purple-500 to-purple-600',
     lightBg: 'bg-gradient-to-br from-purple-50 to-purple-100/50 dark:from-purple-950/40 dark:to-purple-900/20',
     iconBg: 'bg-purple-500',
-    textColor: 'text-purple-600 dark:text-purple-400',
+    textColor: 'text-purple-800 dark:text-purple-400',
     borderColor: 'border-purple-200 dark:border-purple-800/50',
     hoverBorder: 'hover:border-purple-400 dark:hover:border-purple-600',
     count: 54,
@@ -228,7 +228,7 @@ function CompoundDisruptionSection() {
             <h3 className="text-lg font-bold text-gray-900">Compound Disruption Response</h3>
             <Badge className="bg-red-500/20 text-red-400 border-red-500/30 text-[10px]">COMPOUND RESPONSE</Badge>
           </div>
-          <p className="text-gray-600 text-sm">
+          <p className="text-gray-800 text-sm">
             When disruptions cascade across domains, Execution OS activates multi-domain playbooks simultaneously. Click any scenario to explore the full response coordination.
           </p>
         </div>
@@ -248,9 +248,9 @@ function CompoundDisruptionSection() {
                   <Icon className={`h-4 w-4 ${item.iconColor}`} />
                   <div className="text-gray-900 text-sm font-semibold">{item.scenario}</div>
                 </div>
-                <ChevronDown className={`h-3.5 w-3.5 text-gray-600 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`h-3.5 w-3.5 text-gray-800 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
               </div>
-              <div className="text-gray-600 text-xs mb-2">{item.domains}</div>
+              <div className="text-gray-800 text-xs mb-2">{item.domains}</div>
               <div className="text-emerald-400 text-xs font-medium">{item.playbookCount} coordinated playbooks</div>
             </div>
           );
@@ -268,12 +268,12 @@ function CompoundDisruptionSection() {
               </div>
               <div className="flex-1">
                 <h4 className="text-lg font-bold text-gray-900 mb-1">{scenario.scenario}</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">{scenario.description}</p>
+                <p className="text-gray-800 text-sm leading-relaxed">{scenario.description}</p>
               </div>
             </div>
 
             <div className="bg-gray-50 rounded-lg p-4 mb-6 border border-gray-200">
-              <div className="text-xs text-gray-600 font-semibold uppercase tracking-wider mb-1">Trigger Example</div>
+              <div className="text-xs text-gray-800 font-semibold uppercase tracking-wider mb-1">Trigger Example</div>
               <p className="text-gray-900 text-sm font-medium">{scenario.triggerExample}</p>
             </div>
 
@@ -288,9 +288,9 @@ function CompoundDisruptionSection() {
                     <div key={j} className="flex items-center justify-between bg-gray-50 rounded-lg px-3 py-2 border border-gray-200">
                       <div className="flex-1">
                         <div className="text-gray-900 text-sm font-medium">{pb.name}</div>
-                        <div className="text-gray-600 text-xs">{pb.domain}</div>
+                        <div className="text-gray-800 text-xs">{pb.domain}</div>
                       </div>
-                      <Badge className="bg-gray-50 text-gray-600 border-slate-600 text-[10px] shrink-0">{pb.phase}</Badge>
+                      <Badge className="bg-gray-50 text-gray-800 border-slate-600 text-[10px] shrink-0">{pb.phase}</Badge>
                     </div>
                   ))}
                 </div>
@@ -308,7 +308,7 @@ function CompoundDisruptionSection() {
                       <div className={`w-4 h-4 rounded-full shrink-0 z-10 ${j === 0 ? 'bg-emerald-500 ring-2 ring-emerald-500/30' : j === scenario.timeline.length - 1 ? 'bg-emerald-300' : 'bg-emerald-400/80'}`} />
                       <div className="flex-1 min-w-0">
                         <span className="text-emerald-400 text-xs font-bold mr-2">{step.time}</span>
-                        <span className="text-gray-600 text-xs">{step.action}</span>
+                        <span className="text-gray-800 text-xs">{step.action}</span>
                       </div>
                     </div>
                   ))}
@@ -320,7 +320,7 @@ function CompoundDisruptionSection() {
                 </h5>
                 <div className="flex flex-wrap gap-1.5">
                   {scenario.stakeholders.map((s, j) => (
-                    <span key={j} className="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-50 text-gray-600 border border-gray-200">{s}</span>
+                    <span key={j} className="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-50 text-gray-800 border border-gray-200">{s}</span>
                   ))}
                 </div>
               </div>
@@ -350,7 +350,7 @@ function CompoundDisruptionSection() {
         );
       })()}
 
-      <p className="text-xs text-gray-500 mt-4 italic">
+      <p className="text-xs text-gray-700 mt-4 italic">
         Cross-domain coordination is automatic — Execution OS detects compound patterns and activates relevant playbooks across categories simultaneously.
       </p>
     </div>
@@ -417,7 +417,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                       Playbook Library
                     </h1>
                   </div>
-                  <p className="text-slate-600 dark:text-slate-200 max-w-lg">
+                  <p className="text-gray-800 dark:text-slate-200 max-w-lg">
                     {totalCount} validated strategic playbooks with outcome scoring across 9 domains. Select a category to explore.
                   </p>
                 </div>
@@ -467,7 +467,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                       <div className="space-y-1.5 mb-4">
                         {config.domains.map((domain, idx) => (
                           <div key={idx} className="flex items-center justify-between text-sm">
-                            <span className="text-gray-600 dark:text-slate-300">{domain.name}</span>
+                            <span className="text-gray-800 dark:text-slate-300">{domain.name}</span>
                             <span className="font-medium text-slate-900 dark:text-white">{domain.count}</span>
                           </div>
                         ))}
@@ -475,14 +475,14 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                       
                       <div className="pt-3 mt-3 border-t border-slate-100 dark:border-slate-800 space-y-1.5 mb-3">
                         <div className="flex items-center justify-between text-xs">
-                          <span className="text-gray-500 dark:text-slate-400">Maturity</span>
+                          <span className="text-gray-700 dark:text-slate-400">Maturity</span>
                           <span className={`font-semibold ${config.textColor}`}>{config.maturity}</span>
                         </div>
                         <div className="flex items-center justify-between text-xs">
-                          <span className="text-gray-500 dark:text-slate-400">Outcome Score</span>
+                          <span className="text-gray-700 dark:text-slate-400">Outcome Score</span>
                           <span className={`font-semibold ${config.textColor}`}>{config.avgOutcomeScore}%</span>
                         </div>
-                        <div className="text-[10px] text-gray-600 dark:text-slate-500 italic">
+                        <div className="text-[10px] text-gray-800 dark:text-slate-500 italic">
                           Validated: {config.validatedBy}
                         </div>
                       </div>
@@ -568,7 +568,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                 <div className="max-w-6xl mx-auto px-6 py-8">
                   <div className="flex items-center gap-4 mb-6 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
                     <div className="flex-1 relative max-w-sm">
-                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 dark:text-slate-200" />
+                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-800 dark:text-slate-200" />
                       <Input 
                         placeholder="Search playbooks..." 
                         className="pl-10 border-slate-200 dark:border-slate-700"
@@ -604,9 +604,9 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                   ) : playbooks.length === 0 ? (
                     <div className="text-center py-20">
                       <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-4">
-                        <Search className="h-8 w-8 text-slate-600 dark:text-slate-200" />
+                        <Search className="h-8 w-8 text-gray-800 dark:text-slate-200" />
                       </div>
-                      <p className="text-gray-600 dark:text-slate-300">No playbooks found matching your criteria.</p>
+                      <p className="text-gray-800 dark:text-slate-300">No playbooks found matching your criteria.</p>
                       <Button variant="link" onClick={() => { setSearch(""); setDomainFilter("all"); }}>
                         Clear filters
                       </Button>
@@ -658,9 +658,9 @@ function PlaybookCard({
                   playbook.status === 'draft' 
                     ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400' 
                     : playbook.status === 'ready'
-                    ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+                    ? 'bg-green-100 text-emerald-800 dark:bg-green-900/30 dark:text-green-400'
                     : playbook.status === 'active'
-                    ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
+                    ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400'
                     : 'bg-slate-100 text-slate-700 dark:bg-slate-900/30 dark:text-slate-300'
                 }`}
               >
@@ -671,7 +671,7 @@ function PlaybookCard({
               </Badge>
             )}
             {isCustom && (
-              <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-xs">
+              <Badge className="bg-amber-100 text-[#C9A84C] dark:bg-amber-900/30 dark:text-amber-400 text-xs">
                 Custom
               </Badge>
             )}
@@ -681,11 +681,11 @@ function PlaybookCard({
         <h3 className="font-semibold text-slate-900 dark:text-white mb-2 line-clamp-2 leading-snug">
           {playbook.name}
         </h3>
-        <p className="text-sm text-gray-600 dark:text-slate-300 line-clamp-2 mb-4">
+        <p className="text-sm text-gray-800 dark:text-slate-300 line-clamp-2 mb-4">
           {playbook.description}
         </p>
         
-        <div className="flex items-center gap-4 text-xs text-gray-600 mb-4">
+        <div className="flex items-center gap-4 text-xs text-gray-800 mb-4">
           {!isCustom && (
             <>
               <span className="flex items-center gap-1">
@@ -702,8 +702,8 @@ function PlaybookCard({
         </div>
         
         <div className="flex items-center gap-1.5 mb-3">
-          <span className="px-1.5 py-0.5 rounded text-[10px] font-medium bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">Validated</span>
-          <span className="px-1.5 py-0.5 rounded text-[10px] font-medium bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800">Outcome-Scored</span>
+          <span className="px-1.5 py-0.5 rounded text-[10px] font-medium bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">Validated</span>
+          <span className="px-1.5 py-0.5 rounded text-[10px] font-medium bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-400 border border-blue-200 dark:border-blue-800">Outcome-Scored</span>
         </div>
 
         <div className="flex items-center gap-2">

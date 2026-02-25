@@ -303,7 +303,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
       case 'crisis': return 'bg-red-500/20 text-red-300 border-red-500/30';
       case 'meeting': return 'bg-purple-500/20 text-purple-300 border-purple-500/30';
       case 'review': return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
-      default: return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
     }
   };
 
@@ -313,7 +313,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
       case 'high': return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
       case 'medium': return 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30';
       case 'low': return 'bg-green-500/20 text-green-300 border-green-500/30';
-      default: return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
     }
   };
 
@@ -342,7 +342,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Real-Time Collaboration Center</h1>
-            <p className="text-gray-600">Enterprise-grade team coordination and live decision management</p>
+            <p className="text-gray-800">Enterprise-grade team coordination and live decision management</p>
           </div>
           <div className="flex items-center gap-4">
             <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
@@ -365,7 +365,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                 <Users className="h-5 w-5 text-blue-400" />
               </div>
               <div className="text-2xl font-bold text-gray-900">{collaborationSessions.filter(s => s.status === 'active').length}</div>
-              <div className="text-sm text-slate-600 dark:text-slate-200">Live collaboration</div>
+              <div className="text-sm text-gray-800 dark:text-slate-200">Live collaboration</div>
             </CardContent>
           </Card>
 
@@ -376,7 +376,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                 <Activity className="h-5 w-5 text-emerald-400" />
               </div>
               <div className="text-2xl font-bold text-gray-900">{teamMembers.filter(m => m.status === 'online').length}</div>
-              <div className="text-sm text-slate-600 dark:text-slate-200">Members available</div>
+              <div className="text-sm text-gray-800 dark:text-slate-200">Members available</div>
             </CardContent>
           </Card>
 
@@ -387,7 +387,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                 <Bell className="h-5 w-5 text-purple-400" />
               </div>
               <div className="text-2xl font-bold text-gray-900">{liveUpdates.length}</div>
-              <div className="text-sm text-slate-600 dark:text-slate-200">Recent activity</div>
+              <div className="text-sm text-gray-800 dark:text-slate-200">Recent activity</div>
             </CardContent>
           </Card>
 
@@ -398,7 +398,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                 <CheckCircle className="h-5 w-5 text-emerald-400" />
               </div>
               <div className="text-2xl font-bold text-gray-900">7</div>
-              <div className="text-sm text-slate-600 dark:text-slate-200">Executive decisions</div>
+              <div className="text-sm text-gray-800 dark:text-slate-200">Executive decisions</div>
             </CardContent>
           </Card>
         </div>
@@ -433,14 +433,14 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                           <Badge className={getPriorityColor(update.priority)}>
                             {update.priority.toUpperCase()}
                           </Badge>
-                          <span className="text-sm text-slate-600 dark:text-slate-200">
+                          <span className="text-sm text-gray-800 dark:text-slate-200">
                             {new Date(update.timestamp).toLocaleTimeString()}
                           </span>
                         </div>
                       </div>
                       <h4 className="font-semibold text-gray-900 text-sm mb-1">{update.title}</h4>
-                      <p className="text-gray-600 text-sm mb-2">{update.content}</p>
-                      <div className="text-xs text-gray-600">By: {update.user}</div>
+                      <p className="text-gray-800 text-sm mb-2">{update.content}</p>
+                      <div className="text-xs text-gray-800">By: {update.user}</div>
                     </div>
                   ))}
                 </CardContent>
@@ -504,14 +504,14 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                           <Badge className={getTypeColor(session.type)}>
                             {session.type.toUpperCase()}
                           </Badge>
-                          <Badge className={session.status === 'active' ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' : 'bg-slate-500/20 text-gray-600 border-slate-500/30'}>
+                          <Badge className={session.status === 'active' ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' : 'bg-slate-500/20 text-gray-800 border-slate-500/30'}>
                             {session.status.toUpperCase()}
                           </Badge>
                         </div>
-                        <p className="text-gray-600 mb-4">{session.description}</p>
+                        <p className="text-gray-800 mb-4">{session.description}</p>
                       </div>
                       <div className="text-right">
-                        <div className="text-sm text-slate-600 dark:text-slate-200">Duration</div>
+                        <div className="text-sm text-gray-800 dark:text-slate-200">Duration</div>
                         <div className="text-gray-900 font-medium">{session.duration}</div>
                       </div>
                     </div>
@@ -532,7 +532,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                               </div>
                               <div>
                                 <div className="text-sm font-medium text-gray-900">{participant.name}</div>
-                                <div className="text-xs text-slate-600 dark:text-slate-200">{participant.role}</div>
+                                <div className="text-xs text-gray-800 dark:text-slate-200">{participant.role}</div>
                               </div>
                             </div>
                           ))}
@@ -544,7 +544,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                           <h4 className="font-semibold text-gray-900 mb-2">Agenda</h4>
                           <div className="space-y-1">
                             {session.agenda.map((item, index) => (
-                              <div key={index} className="text-sm text-gray-600 flex items-center gap-2">
+                              <div key={index} className="text-sm text-gray-800 flex items-center gap-2">
                                 <div className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
                                 {item}
                               </div>
@@ -558,7 +558,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                           <h4 className="font-semibold text-gray-900 mb-2">Decisions</h4>
                           <div className="space-y-1">
                             {session.decisions.map((decision, index) => (
-                              <div key={index} className="text-sm text-gray-600 flex items-center gap-2">
+                              <div key={index} className="text-sm text-gray-800 flex items-center gap-2">
                                 <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                                 {decision}
                               </div>
@@ -573,11 +573,11 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                         <Video className="w-4 h-4 mr-2" />
                         Join Session
                       </Button>
-                      <Button variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
+                      <Button variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
                         <FileText className="w-4 h-4 mr-2" />
                         View Notes
                       </Button>
-                      <Button variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
+                      <Button variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
                         <Share className="w-4 h-4 mr-2" />
                         Share
                       </Button>
@@ -605,8 +605,8 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                       </div>
                       <div className="flex-1 page-background">
                         <h3 className="font-semibold text-gray-900">{member.name}</h3>
-                        <p className="text-sm text-slate-600 dark:text-slate-200">{member.role}</p>
-                        <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-600 text-xs mt-1">
+                        <p className="text-sm text-gray-800 dark:text-slate-200">{member.role}</p>
+                        <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800 text-xs mt-1">
                           {member.department}
                         </Badge>
                       </div>
@@ -614,17 +614,17 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                     
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-slate-600 dark:text-slate-200">Status:</span>
+                        <span className="text-gray-800 dark:text-slate-200">Status:</span>
                         <span className="text-gray-900 capitalize">{member.status}</span>
                       </div>
                       {member.currentActivity && (
                         <div className="flex justify-between">
-                          <span className="text-slate-600 dark:text-slate-200">Activity:</span>
+                          <span className="text-gray-800 dark:text-slate-200">Activity:</span>
                           <span className="text-gray-900 text-xs">{member.currentActivity}</span>
                         </div>
                       )}
                       <div className="flex justify-between">
-                        <span className="text-slate-600 dark:text-slate-200">Timezone:</span>
+                        <span className="text-gray-800 dark:text-slate-200">Timezone:</span>
                         <span className="text-gray-900">{member.timezone}</span>
                       </div>
                     </div>
@@ -634,10 +634,10 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                         <MessageSquare className="w-4 h-4 mr-2" />
                         Message
                       </Button>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
                         <Video className="w-4 h-4" />
                       </Button>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
                         <Phone className="w-4 h-4" />
                       </Button>
                     </div>
@@ -677,14 +677,14 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                             {update.priority}
                           </Badge>
                         </div>
-                        <span className="text-xs text-slate-600 dark:text-slate-200">
+                        <span className="text-xs text-gray-800 dark:text-slate-200">
                           {new Date(update.timestamp).toLocaleTimeString()}
                         </span>
                       </div>
-                      <p className="text-gray-600 text-sm">{update.content}</p>
+                      <p className="text-gray-800 text-sm">{update.content}</p>
                       {update.relatedTo && (
                         <div className="mt-2">
-                          <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-600 dark:text-slate-200 text-xs">
+                          <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800 dark:text-slate-200 text-xs">
                             Related to: {update.relatedTo}
                           </Badge>
                         </div>
@@ -712,8 +712,8 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                       <span className="text-gray-900 font-medium">Digital Transformation Budget</span>
                       <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">APPROVED</Badge>
                     </div>
-                    <p className="text-sm text-slate-600 dark:text-slate-200">$2.5M allocated for Phase 2 implementation</p>
-                    <div className="text-xs text-gray-600 mt-1">Decided by: Chief Executive Officer</div>
+                    <p className="text-sm text-gray-800 dark:text-slate-200">$2.5M allocated for Phase 2 implementation</p>
+                    <div className="text-xs text-gray-800 mt-1">Decided by: Chief Executive Officer</div>
                   </div>
                   
                   <div className="p-3 bg-gray-50 rounded-lg">
@@ -721,8 +721,8 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                       <span className="text-gray-900 font-medium">APAC Market Expansion</span>
                       <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">APPROVED</Badge>
                     </div>
-                    <p className="text-sm text-slate-600 dark:text-slate-200">Greenlit market entry strategy</p>
-                    <div className="text-xs text-gray-600 mt-1">Decided by: VP Strategy</div>
+                    <p className="text-sm text-gray-800 dark:text-slate-200">Greenlit market entry strategy</p>
+                    <div className="text-xs text-gray-800 mt-1">Decided by: VP Strategy</div>
                   </div>
                 </CardContent>
               </Card>
@@ -740,8 +740,8 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                       <span className="text-gray-900 font-medium">Q3 Hiring Plan</span>
                       <Badge className="bg-amber-500/20 text-amber-300 border-amber-500/30">PENDING</Badge>
                     </div>
-                    <p className="text-sm text-slate-600 dark:text-slate-200">25 new positions across departments</p>
-                    <div className="text-xs text-gray-600 mt-1">Assigned to: Chief Financial Officer</div>
+                    <p className="text-sm text-gray-800 dark:text-slate-200">25 new positions across departments</p>
+                    <div className="text-xs text-gray-800 mt-1">Assigned to: Chief Financial Officer</div>
                   </div>
                   
                   <div className="p-3 bg-gray-50 rounded-lg">
@@ -749,8 +749,8 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                       <span className="text-gray-900 font-medium">Office Expansion</span>
                       <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">REVIEW</Badge>
                     </div>
-                    <p className="text-sm text-slate-600 dark:text-slate-200">Additional office space in Austin</p>
-                    <div className="text-xs text-gray-600 mt-1">Assigned to: Chief Operations Officer</div>
+                    <p className="text-sm text-gray-800 dark:text-slate-200">Additional office space in Austin</p>
+                    <div className="text-xs text-gray-800 mt-1">Assigned to: Chief Operations Officer</div>
                   </div>
                 </CardContent>
               </Card>

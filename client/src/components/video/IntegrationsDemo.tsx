@@ -36,7 +36,7 @@ export function IntegrationsDemo({ progress }: SceneProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="text-gray-500 text-lg"
+            className="text-gray-700 text-lg"
           >
             Execution OS connects to your existing tools
           </motion.p>
@@ -44,7 +44,7 @@ export function IntegrationsDemo({ progress }: SceneProps) {
 
         <div className="grid grid-cols-2 gap-8">
           <div>
-            <p className="text-gray-500 text-sm font-medium mb-4">ENTERPRISE INTEGRATIONS</p>
+            <p className="text-gray-700 text-sm font-medium mb-4">ENTERPRISE INTEGRATIONS</p>
             <div className="space-y-3">
               {integrations.map((integration, i) => (
                 <motion.div
@@ -103,10 +103,10 @@ export function IntegrationsDemo({ progress }: SceneProps) {
                       progress > action.delay ? "bg-green-500/20" : "bg-gray-100"
                     }`}>
                       <action.icon className={`w-4 h-4 ${
-                        progress > action.delay ? "text-green-400" : "text-gray-400"
+                        progress > action.delay ? "text-green-400" : "text-gray-600"
                       }`} />
                     </div>
-                    <span className={progress > action.delay ? "text-gray-900" : "text-gray-400"}>
+                    <span className={progress > action.delay ? "text-gray-900" : "text-gray-600"}>
                       {action.text}
                     </span>
                     {progress > action.delay && (
@@ -127,7 +127,7 @@ export function IntegrationsDemo({ progress }: SceneProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 2 }}
-              className="text-center text-gray-500 text-sm mt-6"
+              className="text-center text-gray-700 text-sm mt-6"
             >
               All automated. All in <span className="text-[#D4AF37] font-bold">12 minutes</span>.
             </motion.p>

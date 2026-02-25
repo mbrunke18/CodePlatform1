@@ -83,7 +83,7 @@ export function Solution({ progress }: SceneProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="mt-6 text-gray-500 text-sm max-w-lg mx-auto"
+          className="mt-6 text-gray-700 text-sm max-w-lg mx-auto"
         >
           Governance pre-defined. Decision rights clear. 50-200+ stakeholders coordinated instantly. 170 playbooks ready—including compound disruption scenarios.
         </motion.div>
@@ -106,7 +106,7 @@ export function Solution({ progress }: SceneProps) {
                 <cap.icon className="w-5 h-5 text-[#D4AF37]" />
               </div>
               <p className="text-gray-900 text-xs font-medium">{cap.label}</p>
-              <p className="text-gray-400 text-xs">{cap.desc}</p>
+              <p className="text-gray-600 text-xs">{cap.desc}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -118,7 +118,7 @@ export function Solution({ progress }: SceneProps) {
           className="mt-8 inline-flex items-center gap-3 bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-full px-6 py-3"
         >
           <span className="text-[#D4AF37] font-bold text-xl">12 minutes</span>
-          <span className="text-gray-600">from trigger to full execution</span>
+          <span className="text-gray-800">from trigger to full execution</span>
         </motion.div>
       </div>
       

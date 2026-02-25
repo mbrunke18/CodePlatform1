@@ -174,10 +174,10 @@ export default function PlaybookActivationConsole() {
           <div className="flex items-center justify-between mb-6">
             <div>
               <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
-                <Target className="h-8 w-8 text-blue-600" />
+                <Target className="h-8 w-8 text-blue-800" />
                 Pre-Activation Review
               </h1>
-              <p className="text-gray-600 dark:text-gray-300 mt-1">
+              <p className="text-gray-800 dark:text-gray-300 mt-1">
                 Review projected impact before activating playbook
               </p>
             </div>
@@ -192,12 +192,12 @@ export default function PlaybookActivationConsole() {
           <Card className="border-2 border-purple-200 dark:border-purple-800">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <PlayCircle className="h-5 w-5 text-purple-600" />
+                <PlayCircle className="h-5 w-5 text-purple-800" />
                 Playbook: {playbook?.name || 'Loading...'}
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-gray-800 dark:text-gray-400">
                 {playbook?.description || 'Strategic response playbook ready for activation.'}
               </p>
               {!isManualExecution && trigger && (
@@ -231,10 +231,10 @@ export default function PlaybookActivationConsole() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
-              <AlertTriangle className="h-8 w-8 text-red-600" />
+              <AlertTriangle className="h-8 w-8 text-red-700" />
               Execute Your Playbook
             </h1>
-            <p className="text-gray-600 dark:text-gray-300 mt-1">
+            <p className="text-gray-800 dark:text-gray-300 mt-1">
               Make the call. Rally your team. Win the moment.
             </p>
           </div>
@@ -370,27 +370,27 @@ export default function PlaybookActivationConsole() {
             <Card className="border-2 border-red-200 dark:border-red-800">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <AlertTriangle className="h-5 w-5 text-red-600" />
+                  <AlertTriangle className="h-5 w-5 text-red-700" />
                   Trigger Alert
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Trigger Name</div>
+                  <div className="text-sm text-gray-800 dark:text-gray-400">Trigger Name</div>
                   <div className="font-semibold" data-testid="text-trigger-name">{trigger.name}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Description</div>
+                  <div className="text-sm text-gray-800 dark:text-gray-400">Description</div>
                   <div className="text-sm">{trigger.description}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Current Status</div>
+                  <div className="text-sm text-gray-800 dark:text-gray-400">Current Status</div>
                   <Badge variant={trigger?.currentStatus === 'red' ? 'destructive' : 'secondary'} data-testid="badge-trigger-status">
                     {(trigger?.currentStatus || 'active').toUpperCase()}
                   </Badge>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Severity</div>
+                  <div className="text-sm text-gray-800 dark:text-gray-400">Severity</div>
                   <Badge variant={trigger.severity === 'high' || trigger.severity === 'critical' ? 'destructive' : 'default'}>
                     {trigger.severity}
                   </Badge>
@@ -402,21 +402,21 @@ export default function PlaybookActivationConsole() {
           <Card className="border-2 border-blue-200 dark:border-blue-800">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <PlayCircle className="h-5 w-5 text-blue-600" />
+                <PlayCircle className="h-5 w-5 text-blue-800" />
                 Active Playbook
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               <div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Playbook Name</div>
+                <div className="text-sm text-gray-800 dark:text-gray-400">Playbook Name</div>
                 <div className="font-semibold" data-testid="text-playbook-name">{playbook.title || playbook.name}</div>
               </div>
               <div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Description</div>
+                <div className="text-sm text-gray-800 dark:text-gray-400">Description</div>
                 <div className="text-sm">{playbook.description}</div>
               </div>
               <div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Readiness</div>
+                <div className="text-sm text-gray-800 dark:text-gray-400">Readiness</div>
                 <Badge 
                   variant={playbook.readinessState === 'green' ? 'default' : playbook.readinessState === 'yellow' ? 'secondary' : 'destructive'}
                   data-testid="badge-playbook-readiness"
@@ -425,7 +425,7 @@ export default function PlaybookActivationConsole() {
                 </Badge>
               </div>
               <div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Average Execution</div>
+                <div className="text-sm text-gray-800 dark:text-gray-400">Average Execution</div>
                 <div className="font-semibold">
                   {playbook.averageExecutionTime ? `${playbook.averageExecutionTime} minutes` : 'First execution'}
                 </div>
@@ -456,10 +456,10 @@ export default function PlaybookActivationConsole() {
           <CardHeader>
             <CardTitle className="flex items-center justify-between">
               <span className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-green-600" />
+                <CheckCircle2 className="h-5 w-5 text-emerald-700" />
                 Execution Progress
               </span>
-              <span className="text-sm font-normal text-gray-600 dark:text-gray-400">
+              <span className="text-sm font-normal text-gray-800 dark:text-gray-400">
                 {completedTasks} of {safeTasks.length} tasks completed
               </span>
             </CardTitle>
@@ -469,7 +469,7 @@ export default function PlaybookActivationConsole() {
             
             <div className="space-y-3">
               {safeTasks.length === 0 ? (
-                <div className="text-center py-8 text-gray-600 dark:text-gray-400">
+                <div className="text-center py-8 text-gray-800 dark:text-gray-400">
                   No tasks defined for this playbook
                 </div>
               ) : (
@@ -486,13 +486,13 @@ export default function PlaybookActivationConsole() {
                     data-testid={`task-item-${index}`}
                   >
                     {task.status === 'completed' ? (
-                      <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-5 w-5 text-emerald-700 mt-0.5 flex-shrink-0" />
                     ) : (
-                      <Circle className="h-5 w-5 text-gray-600 mt-0.5 flex-shrink-0" />
+                      <Circle className="h-5 w-5 text-gray-800 mt-0.5 flex-shrink-0" />
                     )}
                     <div className="flex-1 page-background">
                       <div className="font-semibold">{task.description}</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400 mt-1 flex items-center gap-3">
+                      <div className="text-sm text-gray-800 dark:text-gray-400 mt-1 flex items-center gap-3">
                         {task.assignedTo && (
                           <span className="flex items-center gap-1">
                             <Users className="h-3 w-3" />

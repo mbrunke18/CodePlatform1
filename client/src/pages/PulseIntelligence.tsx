@@ -165,9 +165,9 @@ export default function PulseIntelligence() {
       <PageLayout>
         <div className="min-h-screen bg-white flex items-center justify-center">
           <div className="text-center">
-            <Brain className="h-16 w-16 text-gray-600 mx-auto mb-4" />
+            <Brain className="h-16 w-16 text-gray-800 mx-auto mb-4" />
             <h2 className="text-xl font-semibold text-gray-900 mb-2">Intelligence Feed Unavailable</h2>
-            <p className="text-gray-600">Unable to load signal intelligence data. Please try again shortly.</p>
+            <p className="text-gray-800">Unable to load signal intelligence data. Please try again shortly.</p>
           </div>
         </div>
       </PageLayout>
@@ -205,7 +205,7 @@ export default function PulseIntelligence() {
                 </div>
                 <div>
                   <h1 className="text-2xl font-bold text-gray-900 tracking-tight">Signal-to-Action Intelligence</h1>
-                  <p className="text-gray-600 text-sm">AI-powered threat detection, analysis, and strategic response orchestration</p>
+                  <p className="text-gray-800 text-sm">AI-powered threat detection, analysis, and strategic response orchestration</p>
                 </div>
                 <OnboardingTrigger pageId="pulse-intelligence" autoStart={true} className="bg-white/10 border-white/30 text-gray-900 hover:bg-white/20" />
               </div>
@@ -273,7 +273,7 @@ export default function PulseIntelligence() {
             {/* LEFT: Signal Feed */}
             <div className="col-span-3 space-y-2">
               <div className="flex items-center justify-between mb-3">
-                <h2 className="text-sm font-semibold text-gray-600 uppercase tracking-wider">Live Signal Feed</h2>
+                <h2 className="text-sm font-semibold text-gray-800 uppercase tracking-wider">Live Signal Feed</h2>
                 <Badge variant="outline" className="bg-emerald-500/10 text-emerald-400 border-emerald-500/30 text-[10px]">
                   {feed.length} Active
                 </Badge>
@@ -310,16 +310,16 @@ export default function PulseIntelligence() {
                           </div>
                           <h3 className="text-sm font-medium text-gray-900 truncate">{item.signalName}</h3>
                           <div className="flex items-center gap-2 mt-1">
-                            <span className="text-[10px] text-gray-600">{timeAgo(item.detectedAt)}</span>
-                            <span className="text-[10px] text-gray-600">·</span>
-                            <span className="text-[10px] text-gray-600 truncate">{item.signalSource.split('+')[0].trim()}</span>
+                            <span className="text-[10px] text-gray-800">{timeAgo(item.detectedAt)}</span>
+                            <span className="text-[10px] text-gray-800">·</span>
+                            <span className="text-[10px] text-gray-800 truncate">{item.signalSource.split('+')[0].trim()}</span>
                           </div>
                           <div className="mt-1.5 flex items-center gap-1.5">
                             <DollarSign className="h-3 w-3 text-rose-400/70" />
                             <span className="text-[11px] text-rose-400/70 font-medium">{formatCurrency(item.costOfInaction.revenueAtRisk)} at risk</span>
                           </div>
                         </div>
-                        <ChevronRight className={`h-4 w-4 flex-shrink-0 mt-1 transition-colors ${isSelected ? 'text-indigo-400' : 'text-gray-600'}`} />
+                        <ChevronRight className={`h-4 w-4 flex-shrink-0 mt-1 transition-colors ${isSelected ? 'text-indigo-400' : 'text-gray-800'}`} />
                       </div>
                     </button>
                   );
@@ -332,7 +332,7 @@ export default function PulseIntelligence() {
               {selected && (
                 <>
                   <div className="flex items-center justify-between mb-1">
-                    <h2 className="text-sm font-semibold text-gray-600 uppercase tracking-wider">AI Analysis</h2>
+                    <h2 className="text-sm font-semibold text-gray-800 uppercase tracking-wider">AI Analysis</h2>
                     <div className="flex items-center gap-2">
                       <Brain className="h-3.5 w-3.5 text-indigo-400" />
                       <span className="text-xs text-indigo-400 font-medium">{Math.round(selected.aiAnalysis.confidence * 100)}% confidence</span>
@@ -349,9 +349,9 @@ export default function PulseIntelligence() {
                         <div>
                           <CardTitle className="text-lg text-gray-900">{selected.signalName}</CardTitle>
                           <div className="flex items-center gap-2 mt-1">
-                            <span className="text-xs text-gray-600">{selected.signalSource}</span>
-                            <span className="text-xs text-gray-600">·</span>
-                            <span className="text-xs text-gray-600">Detected {timeAgo(selected.detectedAt)}</span>
+                            <span className="text-xs text-gray-800">{selected.signalSource}</span>
+                            <span className="text-xs text-gray-800">·</span>
+                            <span className="text-xs text-gray-800">Detected {timeAgo(selected.detectedAt)}</span>
                           </div>
                         </div>
                       </div>
@@ -360,7 +360,7 @@ export default function PulseIntelligence() {
                       <div className="grid grid-cols-2 gap-2 mb-4">
                         {selected.dataPoints.map((dp, i) => (
                           <div key={i} className="p-2.5 bg-gray-50 rounded-md border border-gray-200">
-                            <div className="text-[10px] text-gray-600 uppercase tracking-wider">{dp.label}</div>
+                            <div className="text-[10px] text-gray-800 uppercase tracking-wider">{dp.label}</div>
                             <div className="text-sm text-gray-900 font-medium mt-0.5">{dp.value}</div>
                           </div>
                         ))}
@@ -377,7 +377,7 @@ export default function PulseIntelligence() {
                         </div>
                         <div>
                           <div className="text-xs font-semibold text-indigo-300 uppercase tracking-wider mb-1.5">AI Assessment</div>
-                          <p className="text-sm text-gray-600 leading-relaxed">{selected.aiAnalysis.summary}</p>
+                          <p className="text-sm text-gray-800 leading-relaxed">{selected.aiAnalysis.summary}</p>
                           <div className="mt-3 p-2.5 bg-indigo-500/10 rounded-md border border-indigo-500/20">
                             <div className="flex items-center gap-2">
                               <Zap className="h-4 w-4 text-indigo-400 flex-shrink-0" />
@@ -391,8 +391,8 @@ export default function PulseIntelligence() {
                               <span className="text-xs text-amber-300">{selected.aiAnalysis.timeToImpact}</span>
                             </div>
                             <div className="flex items-center gap-1.5">
-                              <Activity className="h-3.5 w-3.5 text-gray-600" />
-                              <span className="text-xs text-gray-600">Risk: {selected.aiAnalysis.riskLevel}</span>
+                              <Activity className="h-3.5 w-3.5 text-gray-800" />
+                              <span className="text-xs text-gray-800">Risk: {selected.aiAnalysis.riskLevel}</span>
                             </div>
                           </div>
                         </div>
@@ -419,9 +419,9 @@ export default function PulseIntelligence() {
                         <div>
                           <h4 className="text-gray-900 font-semibold">{selected.recommendedPlaybook.name}</h4>
                           <div className="flex items-center gap-2 mt-0.5">
-                            <span className="text-xs text-gray-600">{selected.recommendedPlaybook.domain}</span>
-                            <span className="text-xs text-gray-600">·</span>
-                            <span className="text-xs text-gray-600">{selected.recommendedPlaybook.tasksCount} pre-configured tasks</span>
+                            <span className="text-xs text-gray-800">{selected.recommendedPlaybook.domain}</span>
+                            <span className="text-xs text-gray-800">·</span>
+                            <span className="text-xs text-gray-800">{selected.recommendedPlaybook.tasksCount} pre-configured tasks</span>
                           </div>
                         </div>
                       </div>
@@ -431,7 +431,7 @@ export default function PulseIntelligence() {
                             <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
                               <span className="text-[10px] text-emerald-400 font-bold">{i + 1}</span>
                             </div>
-                            <span className="text-gray-600">{action}</span>
+                            <span className="text-gray-800">{action}</span>
                           </div>
                         ))}
                       </div>
@@ -446,7 +446,7 @@ export default function PulseIntelligence() {
               {selected && (
                 <>
                   <div className="flex items-center justify-between mb-1">
-                    <h2 className="text-sm font-semibold text-gray-600 uppercase tracking-wider">Executive Decision</h2>
+                    <h2 className="text-sm font-semibold text-gray-800 uppercase tracking-wider">Executive Decision</h2>
                     <div className="flex items-center gap-1.5">
                       <Timer className="h-3.5 w-3.5 text-amber-400" />
                       <span className="text-xs text-amber-400 font-medium">SLA: {timeUntil(selected.slaDeadline)}</span>
@@ -495,14 +495,14 @@ export default function PulseIntelligence() {
                   {/* Signal Flow Visualization */}
                   <Card className="bg-white border-gray-200">
                     <CardContent className="p-4">
-                      <div className="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-3">Signal-to-Action Flow</div>
+                      <div className="text-xs font-semibold text-gray-800 uppercase tracking-wider mb-3">Signal-to-Action Flow</div>
                       <div className="space-y-0">
                         {[
                           { label: 'Signal Detected', detail: timeAgo(selected.detectedAt), icon: <Radio className="h-3.5 w-3.5" />, color: 'text-blue-400', bgColor: 'bg-blue-500/20', done: true },
                           { label: 'AI Analysis Complete', detail: `${Math.round(selected.aiAnalysis.confidence * 100)}% confidence`, icon: <Brain className="h-3.5 w-3.5" />, color: 'text-indigo-400', bgColor: 'bg-indigo-500/20', done: true },
                           { label: 'Playbook Matched', detail: selected.recommendedPlaybook.name, icon: <Target className="h-3.5 w-3.5" />, color: 'text-emerald-400', bgColor: 'bg-emerald-500/20', done: true },
                           { label: 'Executive Decision', detail: getDecisionStatus(selected) === 'approved' ? 'Approved' : 'Awaiting approval', icon: <Shield className="h-3.5 w-3.5" />, color: getDecisionStatus(selected) === 'approved' ? 'text-emerald-400' : 'text-amber-400', bgColor: getDecisionStatus(selected) === 'approved' ? 'bg-emerald-500/20' : 'bg-amber-500/20', done: getDecisionStatus(selected) === 'approved' },
-                          { label: 'Execution Started', detail: getDecisionStatus(selected) === 'approved' ? 'In progress' : 'Pending decision', icon: <Zap className="h-3.5 w-3.5" />, color: getDecisionStatus(selected) === 'approved' ? 'text-emerald-400' : 'text-gray-600', bgColor: getDecisionStatus(selected) === 'approved' ? 'bg-emerald-500/20' : 'bg-gray-50', done: getDecisionStatus(selected) === 'approved' },
+                          { label: 'Execution Started', detail: getDecisionStatus(selected) === 'approved' ? 'In progress' : 'Pending decision', icon: <Zap className="h-3.5 w-3.5" />, color: getDecisionStatus(selected) === 'approved' ? 'text-emerald-400' : 'text-gray-800', bgColor: getDecisionStatus(selected) === 'approved' ? 'bg-emerald-500/20' : 'bg-gray-50', done: getDecisionStatus(selected) === 'approved' },
                         ].map((step, i) => (
                           <div key={i} className="flex items-start gap-3">
                             <div className="flex flex-col items-center">
@@ -512,8 +512,8 @@ export default function PulseIntelligence() {
                               {i < 4 && <div className={`w-0.5 h-6 ${step.done ? 'bg-emerald-500/30' : 'bg-gray-50'}`} />}
                             </div>
                             <div className="pb-4">
-                              <div className={`text-xs font-medium ${step.done ? 'text-gray-900' : 'text-gray-600'}`}>{step.label}</div>
-                              <div className="text-[10px] text-gray-600">{step.detail}</div>
+                              <div className={`text-xs font-medium ${step.done ? 'text-gray-900' : 'text-gray-800'}`}>{step.label}</div>
+                              <div className="text-[10px] text-gray-800">{step.detail}</div>
                             </div>
                           </div>
                         ))}
@@ -537,10 +537,10 @@ export default function PulseIntelligence() {
                         </div>
                       ) : getDecisionStatus(selected) === 'rejected' ? (
                         <div className="text-center py-2">
-                          <XCircle className="h-8 w-8 text-gray-600 mx-auto mb-2" />
-                          <div className="text-sm font-semibold text-gray-600">Action Declined</div>
-                          <div className="text-xs text-gray-600 mt-1">Signal monitored - no playbook activation</div>
-                          <Button size="sm" variant="outline" className="mt-3 border-gray-200 text-gray-600" onClick={() => handleDecision(selected.id, 'pending')}>
+                          <XCircle className="h-8 w-8 text-gray-800 mx-auto mb-2" />
+                          <div className="text-sm font-semibold text-gray-800">Action Declined</div>
+                          <div className="text-xs text-gray-800 mt-1">Signal monitored - no playbook activation</div>
+                          <Button size="sm" variant="outline" className="mt-3 border-gray-200 text-gray-800" onClick={() => handleDecision(selected.id, 'pending')}>
                             Reconsider
                           </Button>
                         </div>
@@ -557,7 +557,7 @@ export default function PulseIntelligence() {
                             </Button>
                             <Button 
                               variant="outline" 
-                              className="border-slate-600 text-gray-600 hover:bg-slate-800"
+                              className="border-slate-600 text-gray-800 hover:bg-slate-800"
                               onClick={() => handleDecision(selected.id, 'rejected')}
                             >
                               <XCircle className="h-4 w-4 mr-2" />
@@ -581,19 +581,19 @@ export default function PulseIntelligence() {
             <div className="grid grid-cols-4 gap-6 text-center">
               <div>
                 <div className="text-2xl font-bold text-gray-900">{summary?.dataPointsMonitored || 0}+</div>
-                <div className="text-xs text-gray-600">Data Points Monitored 24/7</div>
+                <div className="text-xs text-gray-800">Data Points Monitored 24/7</div>
               </div>
               <div>
                 <div className="text-2xl font-bold text-gray-900">12 min</div>
-                <div className="text-xs text-gray-600">Signal to Execution</div>
+                <div className="text-xs text-gray-800">Signal to Execution</div>
               </div>
               <div>
                 <div className="text-2xl font-bold text-gray-900">170</div>
-                <div className="text-xs text-gray-600">Pre-Built Strategic Playbooks</div>
+                <div className="text-xs text-gray-800">Pre-Built Strategic Playbooks</div>
               </div>
               <div>
                 <div className="text-2xl font-bold text-emerald-400">{formatCurrency(summary?.totalRevenueAtRisk || 0)}</div>
-                <div className="text-xs text-gray-600">Revenue Protected This Quarter</div>
+                <div className="text-xs text-gray-800">Revenue Protected This Quarter</div>
               </div>
             </div>
           </div>

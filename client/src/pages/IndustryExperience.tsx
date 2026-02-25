@@ -659,7 +659,7 @@ export default function IndustryExperience() {
               <CheckCircle2 className="h-16 w-16 text-green-400 mx-auto mb-4" />
             </motion.div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Configuration Summary</h2>
-            <p className="text-slate-600 dark:text-slate-200">Review your {industry.organization} setup before launching</p>
+            <p className="text-gray-800 dark:text-slate-200">Review your {industry.organization} setup before launching</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
@@ -669,10 +669,10 @@ export default function IndustryExperience() {
                 <h3 className="font-semibold text-gray-900">Your Playbook</h3>
               </div>
               <div className="space-y-2 text-sm">
-                <div className="flex justify-between"><span className="text-slate-600 dark:text-slate-200">Name</span><span className="text-gray-900 font-medium">{userPlaybook.name}</span></div>
-                <div className="flex justify-between"><span className="text-slate-600 dark:text-slate-200">Tasks</span><span className="text-gray-900 font-medium">{userPlaybook.tasks}{customTasks.length > 0 ? ` + ${customTasks.length} custom` : ''}</span></div>
-                <div className="flex justify-between"><span className="text-slate-600 dark:text-slate-200">Stakeholders</span><span className="text-gray-900 font-medium">{userPlaybook.stakeholders}</span></div>
-                <div className="flex justify-between"><span className="text-slate-600 dark:text-slate-200">Budget</span><span className="text-gray-900 font-medium">{userPlaybook.budget}</span></div>
+                <div className="flex justify-between"><span className="text-gray-800 dark:text-slate-200">Name</span><span className="text-gray-900 font-medium">{userPlaybook.name}</span></div>
+                <div className="flex justify-between"><span className="text-gray-800 dark:text-slate-200">Tasks</span><span className="text-gray-900 font-medium">{userPlaybook.tasks}{customTasks.length > 0 ? ` + ${customTasks.length} custom` : ''}</span></div>
+                <div className="flex justify-between"><span className="text-gray-800 dark:text-slate-200">Stakeholders</span><span className="text-gray-900 font-medium">{userPlaybook.stakeholders}</span></div>
+                <div className="flex justify-between"><span className="text-gray-800 dark:text-slate-200">Budget</span><span className="text-gray-900 font-medium">{userPlaybook.budget}</span></div>
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
@@ -685,7 +685,7 @@ export default function IndustryExperience() {
                 {enabledTriggers.map((t, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm">
                     <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                    <span className="text-gray-600">{t.name}</span>
+                    <span className="text-gray-800">{t.name}</span>
                   </div>
                 ))}
               </div>
@@ -699,13 +699,13 @@ export default function IndustryExperience() {
               <div className="space-y-2">
                 {connectedSources.map((s, i) => (
                   <div key={i} className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600">{s.name}</span>
+                    <span className="text-gray-800">{s.name}</span>
                     <span className="text-indigo-400 font-medium">{s.dataPoints.toLocaleString()} pts</span>
                   </div>
                 ))}
               </div>
               <div className="mt-3 pt-3 border-t border-white/10 flex justify-between text-sm">
-                <span className="text-slate-600 dark:text-slate-200">Total Monitoring</span>
+                <span className="text-gray-800 dark:text-slate-200">Total Monitoring</span>
                 <span className="text-gray-900 font-bold">{totalDataPoints.toLocaleString()} data points</span>
               </div>
             </motion.div>
@@ -718,8 +718,8 @@ export default function IndustryExperience() {
               <div className="space-y-2">
                 {userCustomizations.filter(c => c.value.trim()).map((c, i) => (
                   <div key={i} className="text-sm">
-                    <span className="text-slate-600 dark:text-slate-200">{c.field}: </span>
-                    <span className="text-gray-600">{c.value.slice(0, 60)}{c.value.length > 60 ? '...' : ''}</span>
+                    <span className="text-gray-800 dark:text-slate-200">{c.field}: </span>
+                    <span className="text-gray-800">{c.value.slice(0, 60)}{c.value.length > 60 ? '...' : ''}</span>
                   </div>
                 ))}
               </div>
@@ -747,19 +747,19 @@ export default function IndustryExperience() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
               <Badge className={`mb-4 ${industry.domainCategory === 'OFFENSE' ? 'bg-blue-500/20 text-blue-400' : industry.domainCategory === 'DEFENSE' ? 'bg-red-500/20 text-red-400' : 'bg-purple-500/20 text-purple-400'}`}>{industry.domainCategory} — {industry.domain}</Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">{industry.organization}</h1>
-              <p className="text-xl text-slate-600 dark:text-slate-200 mb-2">{industry.industry} Industry</p>
+              <p className="text-xl text-gray-800 dark:text-slate-200 mb-2">{industry.industry} Industry</p>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
               className="mt-8 bg-white border border-white/10 rounded-2xl p-8"
             >
-              <div className="text-sm text-gray-600 uppercase tracking-wider mb-3">Industry Scenario</div>
+              <div className="text-sm text-gray-800 uppercase tracking-wider mb-3">Industry Scenario</div>
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{industry.scenario}</h2>
-              <p className="text-lg text-slate-600 dark:text-slate-200 leading-relaxed">
+              <p className="text-lg text-gray-800 dark:text-slate-200 leading-relaxed">
                 Configure your own playbook, triggers, data sources, and customizations. Then watch your personalized execution come alive as a real signal fires.
               </p>
             </motion.div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
-              className="mt-8 flex items-center justify-center gap-6 text-sm text-gray-600 flex-wrap"
+              className="mt-8 flex items-center justify-center gap-6 text-sm text-gray-800 flex-wrap"
             >
               <span className="flex items-center gap-2"><BookOpen className="h-4 w-4 text-cyan-400" /> Playbook #{industry.playbook.number}</span>
               <span className="flex items-center gap-2"><Users className="h-4 w-4 text-blue-400" /> {industry.playbook.stakeholders.toLocaleString()} stakeholders</span>
@@ -775,7 +775,7 @@ export default function IndustryExperience() {
             <div className="text-center mb-8">
               <Badge className="mb-3 bg-cyan-500/20 text-cyan-400"><BookOpen className="h-3 w-3 mr-1" /> BUILD YOUR PLAYBOOK</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Build Your Playbook</h2>
-              <p className="text-slate-600 dark:text-slate-200">Customize your playbook for {industry.organization}</p>
+              <p className="text-gray-800 dark:text-slate-200">Customize your playbook for {industry.organization}</p>
             </div>
             {configComplete && (
               <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
@@ -786,7 +786,7 @@ export default function IndustryExperience() {
             )}
             <div className="mb-4 flex items-center gap-3">
               <Progress value={setupReadiness.percent} className="h-2 flex-1" />
-              <span className="text-xs text-slate-600 dark:text-slate-200 font-medium">{setupReadiness.percent}% ready</span>
+              <span className="text-xs text-gray-800 dark:text-slate-200 font-medium">{setupReadiness.percent}% ready</span>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
               className="bg-white border border-cyan-500/20 rounded-2xl overflow-hidden"
@@ -801,44 +801,44 @@ export default function IndustryExperience() {
               <div className="p-6 space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="pb-name" className="text-gray-600">Playbook Name</Label>
+                    <Label htmlFor="pb-name" className="text-gray-800">Playbook Name</Label>
                     <Input id="pb-name" value={userPlaybook.name}
                       onChange={e => setUserPlaybook(p => ({ ...p, name: e.target.value }))}
                       placeholder={industry.playbook.name}
                       className="bg-white/5 border-white/10 text-gray-900" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="pb-budget" className="text-gray-600">Budget</Label>
+                    <Label htmlFor="pb-budget" className="text-gray-800">Budget</Label>
                     <Input id="pb-budget" value={userPlaybook.budget}
                       onChange={e => setUserPlaybook(p => ({ ...p, budget: e.target.value }))}
                       placeholder={industry.playbook.budget}
                       className="bg-white/5 border-white/10 text-gray-900" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="pb-tasks" className="text-gray-600">Number of Tasks</Label>
+                    <Label htmlFor="pb-tasks" className="text-gray-800">Number of Tasks</Label>
                     <Input id="pb-tasks" type="number" value={userPlaybook.tasks}
                       onChange={e => setUserPlaybook(p => ({ ...p, tasks: parseInt(e.target.value) || 0 }))}
                       className="bg-white/5 border-white/10 text-gray-900" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="pb-stakeholders" className="text-gray-600">Stakeholder Count</Label>
+                    <Label htmlFor="pb-stakeholders" className="text-gray-800">Stakeholder Count</Label>
                     <Input id="pb-stakeholders" type="number" value={userPlaybook.stakeholders}
                       onChange={e => setUserPlaybook(p => ({ ...p, stakeholders: parseInt(e.target.value) || 0 }))}
                       className="bg-white/5 border-white/10 text-gray-900" />
                   </div>
                 </div>
                 <div className="border-t border-white/10 pt-6">
-                  <div className="text-xs text-gray-600 uppercase tracking-wider mb-3">Task Sequence (from template)</div>
+                  <div className="text-xs text-gray-800 uppercase tracking-wider mb-3">Task Sequence (from template)</div>
                   <div className="space-y-2 mb-4">
                     {industry.executionTasks.slice(0, 5).map((task, i) => (
                       <div key={i} className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
                         <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center text-xs text-cyan-400 font-bold">{i + 1}</div>
-                        <span className="text-sm text-gray-600 flex-1">{task.task}</span>
+                        <span className="text-sm text-gray-800 flex-1">{task.task}</span>
                         <Badge variant="outline" className="text-[10px]">{task.tool}</Badge>
                       </div>
                     ))}
                     {industry.executionTasks.length > 5 && (
-                      <div className="text-center text-xs text-slate-600 dark:text-slate-200 py-1">+ {industry.executionTasks.length - 5} more template tasks</div>
+                      <div className="text-center text-xs text-gray-800 dark:text-slate-200 py-1">+ {industry.executionTasks.length - 5} more template tasks</div>
                     )}
                   </div>
                   {customTasks.length > 0 && (
@@ -849,7 +849,7 @@ export default function IndustryExperience() {
                           <div key={i} className="flex items-center gap-3 bg-cyan-500/5 border border-cyan-500/10 rounded-lg p-3">
                             <Badge className="bg-cyan-500/20 text-cyan-400 text-[10px]">Custom</Badge>
                             <span className="text-sm text-gray-900 flex-1">{task}</span>
-                            <button onClick={() => setCustomTasks(prev => prev.filter((_, j) => j !== i))} className="text-gray-600 hover:text-red-400">
+                            <button onClick={() => setCustomTasks(prev => prev.filter((_, j) => j !== i))} className="text-gray-800 hover:text-red-400">
                               <Trash2 className="h-3.5 w-3.5" />
                             </button>
                           </div>
@@ -884,11 +884,11 @@ export default function IndustryExperience() {
             <div className="text-center mb-8">
               <Badge className="mb-3 bg-amber-500/20 text-amber-400"><Radio className="h-3 w-3 mr-1" /> CONFIGURE TRIGGERS</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Configure Your Triggers</h2>
-              <p className="text-slate-600 dark:text-slate-200">Set up conditions that activate your {industry.industry} playbook</p>
+              <p className="text-gray-800 dark:text-slate-200">Set up conditions that activate your {industry.industry} playbook</p>
             </div>
             <div className="mb-4 flex items-center gap-3">
               <Progress value={setupReadiness.percent} className="h-2 flex-1" />
-              <span className="text-xs text-slate-600 dark:text-slate-200 font-medium">{setupReadiness.percent}% ready</span>
+              <span className="text-xs text-gray-800 dark:text-slate-200 font-medium">{setupReadiness.percent}% ready</span>
             </div>
             <div className="space-y-4 mb-6">
               {userTriggers.map((trigger, i) => (
@@ -897,7 +897,7 @@ export default function IndustryExperience() {
                 >
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <Radio className={`h-5 w-5 ${trigger.enabled ? 'text-amber-400' : 'text-slate-600 dark:text-slate-200'}`} />
+                      <Radio className={`h-5 w-5 ${trigger.enabled ? 'text-amber-400' : 'text-gray-800 dark:text-slate-200'}`} />
                       {i < industry.triggers.length ? (
                         <span className="text-gray-900 font-medium">{trigger.name}</span>
                       ) : (
@@ -909,7 +909,7 @@ export default function IndustryExperience() {
                     <div className="flex items-center gap-3">
                       <Switch checked={trigger.enabled} onCheckedChange={() => setUserTriggers(prev => prev.map((t, j) => j === i ? { ...t, enabled: !t.enabled } : t))} />
                       {i >= industry.triggers.length && (
-                        <button onClick={() => setUserTriggers(prev => prev.filter((_, j) => j !== i))} className="text-gray-600 hover:text-red-400">
+                        <button onClick={() => setUserTriggers(prev => prev.filter((_, j) => j !== i))} className="text-gray-800 hover:text-red-400">
                           <Trash2 className="h-3.5 w-3.5" />
                         </button>
                       )}
@@ -917,11 +917,11 @@ export default function IndustryExperience() {
                   </div>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <span className="text-xs text-slate-600 dark:text-slate-200 block mb-1">Source</span>
-                      <span className="text-gray-600">{trigger.source}</span>
+                      <span className="text-xs text-gray-800 dark:text-slate-200 block mb-1">Source</span>
+                      <span className="text-gray-800">{trigger.source}</span>
                     </div>
                     <div>
-                      <span className="text-xs text-slate-600 dark:text-slate-200 block mb-1">Type</span>
+                      <span className="text-xs text-gray-800 dark:text-slate-200 block mb-1">Type</span>
                       <Badge variant="outline" className="text-xs">{trigger.type}</Badge>
                     </div>
                   </div>
@@ -953,7 +953,7 @@ export default function IndustryExperience() {
                           setUserTriggers(prev => [...prev, { name: 'Custom Trigger', source: 'Custom Source', type: 'Manual', enabled: true }]);
                           setNewTriggerOpen(false);
                         }}>Add</Button>
-                      <Button variant="ghost" className="text-gray-600" onClick={() => setNewTriggerOpen(false)}>Cancel</Button>
+                      <Button variant="ghost" className="text-gray-800" onClick={() => setNewTriggerOpen(false)}>Cancel</Button>
                     </div>
                   </div>
                 </motion.div>
@@ -976,11 +976,11 @@ export default function IndustryExperience() {
             <div className="text-center mb-8">
               <Badge className="mb-3 bg-indigo-500/20 text-indigo-400"><Database className="h-3 w-3 mr-1" /> CONNECT DATA SOURCES</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Connect Your Data Sources</h2>
-              <p className="text-slate-600 dark:text-slate-200">Link the systems that power {industry.organization}'s intelligence</p>
+              <p className="text-gray-800 dark:text-slate-200">Link the systems that power {industry.organization}'s intelligence</p>
             </div>
             <div className="mb-4 flex items-center gap-3">
               <Progress value={setupReadiness.percent} className="h-2 flex-1" />
-              <span className="text-xs text-slate-600 dark:text-slate-200 font-medium">{setupReadiness.percent}% ready</span>
+              <span className="text-xs text-gray-800 dark:text-slate-200 font-medium">{setupReadiness.percent}% ready</span>
             </div>
             <div className="bg-white border border-indigo-500/20 rounded-2xl p-5 mb-4">
               <div className="flex items-center justify-between">
@@ -989,7 +989,7 @@ export default function IndustryExperience() {
                   <span className="text-gray-900 font-medium">Data Intelligence Hub</span>
                 </div>
                 <div className="flex items-center gap-4 text-sm">
-                  <span className="text-slate-600 dark:text-slate-200">{connectedSources.length}/{userDataSources.length} connected</span>
+                  <span className="text-gray-800 dark:text-slate-200">{connectedSources.length}/{userDataSources.length} connected</span>
                   <span className="text-indigo-400 font-bold">{totalDataPoints.toLocaleString()} data points</span>
                 </div>
               </div>
@@ -1001,7 +1001,7 @@ export default function IndustryExperience() {
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
-                      <Workflow className={`h-5 w-5 ${source.connected ? 'text-indigo-400' : 'text-slate-600 dark:text-slate-200'}`} />
+                      <Workflow className={`h-5 w-5 ${source.connected ? 'text-indigo-400' : 'text-gray-800 dark:text-slate-200'}`} />
                       {i < industry.dataSources.length ? (
                         <span className="text-sm font-medium text-gray-900">{source.name}</span>
                       ) : (
@@ -1010,7 +1010,7 @@ export default function IndustryExperience() {
                           className="bg-white/5 border-white/10 text-gray-900 h-8 text-sm w-48" placeholder="Source name" />
                       )}
                     </div>
-                    <button onClick={() => setUserDataSources(prev => prev.filter((_, j) => j !== i))} className="text-gray-600 hover:text-red-400">
+                    <button onClick={() => setUserDataSources(prev => prev.filter((_, j) => j !== i))} className="text-gray-800 hover:text-red-400">
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>
                   </div>
@@ -1025,7 +1025,7 @@ export default function IndustryExperience() {
                           <div className="w-1.5 h-1.5 rounded-full bg-green-500" /> Connected
                         </span>
                       ) : (
-                        <span className="text-xs text-gray-600">Disconnected</span>
+                        <span className="text-xs text-gray-800">Disconnected</span>
                       )}
                     </div>
                     {source.connected && (
@@ -1068,11 +1068,11 @@ export default function IndustryExperience() {
             <div className="text-center mb-8">
               <Badge className="mb-3 bg-purple-500/20 text-purple-400"><Sliders className="h-3 w-3 mr-1" /> CUSTOMIZE CONFIGURATION</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Customize Your Configuration</h2>
-              <p className="text-slate-600 dark:text-slate-200">Fine-tune each setting for {industry.organization}</p>
+              <p className="text-gray-800 dark:text-slate-200">Fine-tune each setting for {industry.organization}</p>
             </div>
             <div className="mb-4 flex items-center gap-3">
               <Progress value={setupReadiness.percent} className="h-2 flex-1" />
-              <span className="text-xs text-slate-600 dark:text-slate-200 font-medium">{setupReadiness.percent}% ready</span>
+              <span className="text-xs text-gray-800 dark:text-slate-200 font-medium">{setupReadiness.percent}% ready</span>
             </div>
             {configComplete && (
               <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
@@ -1089,14 +1089,14 @@ export default function IndustryExperience() {
                   <div className="flex items-center justify-between mb-2">
                     <Label className="text-gray-900 font-medium">{custom.field}</Label>
                     {i >= industry.customizations.length && (
-                      <button onClick={() => setUserCustomizations(prev => prev.filter((_, j) => j !== i))} className="text-gray-600 hover:text-red-400">
+                      <button onClick={() => setUserCustomizations(prev => prev.filter((_, j) => j !== i))} className="text-gray-800 hover:text-red-400">
                         <Trash2 className="h-3.5 w-3.5" />
                       </button>
                     )}
                   </div>
                   {i < industry.customizations.length && (
-                    <div className="text-xs text-gray-600 mb-2">
-                      Default: <span className="text-slate-600 dark:text-slate-200">{industry.customizations[i].before}</span> → <span className="text-purple-400">{industry.customizations[i].after}</span>
+                    <div className="text-xs text-gray-800 mb-2">
+                      Default: <span className="text-gray-800 dark:text-slate-200">{industry.customizations[i].before}</span> → <span className="text-purple-400">{industry.customizations[i].after}</span>
                     </div>
                   )}
                   <Textarea value={custom.value}
@@ -1147,7 +1147,7 @@ export default function IndustryExperience() {
                 SIGNAL DETECTED
               </motion.div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">The Trigger Fires</h2>
-              <p className="text-slate-600 dark:text-slate-200">Your {industry.industry} trigger has detected a critical event</p>
+              <p className="text-gray-800 dark:text-slate-200">Your {industry.industry} trigger has detected a critical event</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ delay: 0.3, duration: 0.6 }}
               className="bg-white border border-red-500/30 rounded-2xl overflow-hidden"
@@ -1163,28 +1163,28 @@ export default function IndustryExperience() {
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">{industry.signal.name}</h3>
-                <p className="text-slate-600 dark:text-slate-200 mb-6 leading-relaxed">{industry.signal.detail}</p>
+                <p className="text-gray-800 dark:text-slate-200 mb-6 leading-relaxed">{industry.signal.detail}</p>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="bg-white/5 rounded-lg p-3 text-center">
                     <Eye className="h-5 w-5 text-blue-400 mx-auto mb-1" />
-                    <div className="text-xs text-gray-600">Source</div>
+                    <div className="text-xs text-gray-800">Source</div>
                     <div className="text-sm text-gray-900 font-medium">{industry.signal.source}</div>
                   </div>
                   <div className="bg-white/5 rounded-lg p-3 text-center">
                     <BookOpen className="h-5 w-5 text-cyan-400 mx-auto mb-1" />
-                    <div className="text-xs text-gray-600">Your Playbook</div>
+                    <div className="text-xs text-gray-800">Your Playbook</div>
                     <div className="text-sm text-gray-900 font-medium">{userPlaybook.name}</div>
                     {userPlaybook.name !== industry.playbook.name && <Badge className="mt-1 bg-cyan-500/20 text-cyan-400 text-[8px]">Custom</Badge>}
                   </div>
                   <div className="bg-white/5 rounded-lg p-3 text-center">
                     <Bell className="h-5 w-5 text-amber-400 mx-auto mb-1" />
-                    <div className="text-xs text-gray-600">Stakeholders Ready</div>
+                    <div className="text-xs text-gray-800">Stakeholders Ready</div>
                     <div className="text-sm text-gray-900 font-medium">{userPlaybook.stakeholders.toLocaleString()} identified</div>
                   </div>
                 </div>
                 {enabledTriggers.length > 0 && (
                   <div className="mt-4 pt-4 border-t border-white/10">
-                    <div className="text-xs text-gray-600 mb-2">Your Active Triggers</div>
+                    <div className="text-xs text-gray-800 mb-2">Your Active Triggers</div>
                     <div className="flex flex-wrap gap-2">
                       {enabledTriggers.map((t, i) => (
                         <Badge key={i} variant="outline" className="text-xs text-amber-400 border-amber-500/20">{t.name}</Badge>
@@ -1203,7 +1203,7 @@ export default function IndustryExperience() {
             <div className="text-center mb-8">
               <Badge className="mb-3 bg-purple-500/20 text-purple-400"><Brain className="h-3 w-3 mr-1" /> AI ANALYSIS</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">AI Analyzes the Situation</h2>
-              <p className="text-slate-600 dark:text-slate-200">GPT-4o processes {totalDataPoints.toLocaleString()} data points from your connected sources</p>
+              <p className="text-gray-800 dark:text-slate-200">GPT-4o processes {totalDataPoints.toLocaleString()} data points from your connected sources</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}
@@ -1219,7 +1219,7 @@ export default function IndustryExperience() {
                       className="flex items-start gap-3 bg-white/5 rounded-lg p-3"
                     >
                       <Lightbulb className="h-4 w-4 text-amber-400 mt-0.5 shrink-0" />
-                      <span className="text-sm text-gray-600">{insight}</span>
+                      <span className="text-sm text-gray-800">{insight}</span>
                     </motion.div>
                   ))}
                 </div>
@@ -1231,7 +1231,7 @@ export default function IndustryExperience() {
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">AI Confidence</h3>
                   <div className="flex items-end gap-4 mb-4">
                     <div className="text-5xl font-bold text-purple-400">96%</div>
-                    <div className="text-sm text-slate-600 dark:text-slate-200 pb-2">recommendation confidence</div>
+                    <div className="text-sm text-gray-800 dark:text-slate-200 pb-2">recommendation confidence</div>
                   </div>
                   <div className="h-3 bg-gray-50 rounded-full overflow-hidden">
                     <motion.div initial={{ width: 0 }} animate={{ width: '96%' }} transition={{ delay: 0.8, duration: 1.5 }}
@@ -1242,7 +1242,7 @@ export default function IndustryExperience() {
                   className="bg-white border border-cyan-500/20 rounded-2xl p-6"
                 >
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">AI Recommendation</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
+                  <p className="text-sm text-gray-800 leading-relaxed">
                     "Activate <span className="text-gray-900 font-semibold">{userPlaybook.name}</span> immediately. 
                     {userPlaybook.stakeholders.toLocaleString()} stakeholders identified, {userPlaybook.tasks}{customTasks.length > 0 ? ` + ${customTasks.length} custom` : ''} tasks pre-configured, {userPlaybook.budget} budget pre-approved."
                   </p>
@@ -1258,7 +1258,7 @@ export default function IndustryExperience() {
             <div className="text-center mb-8">
               <Badge className="mb-3 bg-indigo-500/20 text-indigo-400"><Shield className="h-3 w-3 mr-1" /> HUMAN-AI PARTNERSHIP</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Leadership Makes the Call</h2>
-              <p className="text-slate-600 dark:text-slate-200">AI recommends. The executive decides. Always.</p>
+              <p className="text-gray-800 dark:text-slate-200">AI recommends. The executive decides. Always.</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
               className="bg-white border border-indigo-500/30 rounded-2xl p-8"
@@ -1269,12 +1269,12 @@ export default function IndustryExperience() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-gray-900">{industry.organization}</h3>
-                  <p className="text-slate-600 dark:text-slate-200">{industry.industry} — {industry.domain}</p>
+                  <p className="text-gray-800 dark:text-slate-200">{industry.industry} — {industry.domain}</p>
                 </div>
               </div>
               <div className="bg-indigo-950/30 border border-indigo-500/10 rounded-xl p-5 mb-6">
                 <div className="text-xs text-indigo-400 uppercase tracking-wider mb-2">Decision Required</div>
-                <p className="text-gray-600">
+                <p className="text-gray-800">
                   Activate <span className="text-gray-900 font-semibold">{userPlaybook.name}</span> with {userPlaybook.stakeholders.toLocaleString()} stakeholders, 
                   {' '}{userPlaybook.tasks}{customTasks.length > 0 ? ` + ${customTasks.length} custom` : ''} pre-configured tasks, and {userPlaybook.budget} pre-approved budget?
                 </p>
@@ -1282,15 +1282,15 @@ export default function IndustryExperience() {
               <div className="grid grid-cols-3 gap-4 mb-6">
                 <div className="bg-white/5 rounded-lg p-3 text-center">
                   <div className="text-lg font-bold text-cyan-400">{userPlaybook.tasks + customTasks.length}</div>
-                  <div className="text-xs text-gray-600">Tasks Ready</div>
+                  <div className="text-xs text-gray-800">Tasks Ready</div>
                 </div>
                 <div className="bg-white/5 rounded-lg p-3 text-center">
                   <div className="text-lg font-bold text-blue-400">{userPlaybook.stakeholders.toLocaleString()}</div>
-                  <div className="text-xs text-gray-600">Stakeholders Mapped</div>
+                  <div className="text-xs text-gray-800">Stakeholders Mapped</div>
                 </div>
                 <div className="bg-white/5 rounded-lg p-3 text-center">
                   <div className="text-lg font-bold text-green-400">{userPlaybook.budget}</div>
-                  <div className="text-xs text-gray-600">Budget Pre-Approved</div>
+                  <div className="text-xs text-gray-800">Budget Pre-Approved</div>
                 </div>
               </div>
               <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.2 }}
@@ -1301,7 +1301,7 @@ export default function IndustryExperience() {
               </motion.div>
             </motion.div>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }}
-              className="text-center text-sm text-gray-600 mt-6"
+              className="text-center text-sm text-gray-800 mt-6"
             >
               Every activation requires human approval. Execution OS accelerates the process — humans retain full decision authority.
             </motion.p>
@@ -1314,7 +1314,7 @@ export default function IndustryExperience() {
             <div className="text-center mb-6">
               <Badge className="mb-3 bg-green-500/20 text-green-400"><Zap className="h-3 w-3 mr-1" /> EXECUTE PHASE</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">12-Minute Execution in Progress</h2>
-              <p className="text-slate-600 dark:text-slate-200">Watch as tasks auto-create, stakeholders coordinate, and systems activate</p>
+              <p className="text-gray-800 dark:text-slate-200">Watch as tasks auto-create, stakeholders coordinate, and systems activate</p>
             </div>
             <div className="grid grid-cols-5 gap-4">
               <div className="col-span-3 bg-white border border-green-500/20 rounded-2xl p-5">
@@ -1334,12 +1334,12 @@ export default function IndustryExperience() {
                       <motion.div key={i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: isActive ? 1 : 0.25, x: isActive ? 0 : -20 }}
                         className={`flex items-center gap-3 p-2.5 rounded-lg ${isCurrent ? 'bg-green-500/10 ring-1 ring-green-500/20' : ''}`}
                       >
-                        <div className="w-12 text-right font-mono text-xs text-gray-600">{task.time}</div>
+                        <div className="w-12 text-right font-mono text-xs text-gray-800">{task.time}</div>
                         <div className={`w-5 h-5 rounded-full flex items-center justify-center ${isActive ? 'bg-green-500/20' : 'bg-white/5'}`}>
                           <CheckCircle2 className={`h-3 w-3 ${isActive ? 'text-green-400' : 'text-slate-700'}`} />
                         </div>
                         <div className="flex-1">
-                          <div className={`text-sm font-medium ${isActive ? 'text-gray-900' : 'text-slate-600 dark:text-slate-200'}`}>{task.task}</div>
+                          <div className={`text-sm font-medium ${isActive ? 'text-gray-900' : 'text-gray-800 dark:text-slate-200'}`}>{task.task}</div>
                         </div>
                         {isCustom && <Badge className="bg-cyan-500/20 text-cyan-400 text-[8px]">Custom</Badge>}
                         <Badge variant="outline" className={`text-[10px] ${isActive ? '' : 'opacity-30'}`}>{task.tool}</Badge>
@@ -1358,7 +1358,7 @@ export default function IndustryExperience() {
                       >
                         <div>
                           <div className="text-xs text-gray-900 font-medium">{s.name}</div>
-                          <div className="text-[10px] text-gray-600">{s.role}</div>
+                          <div className="text-[10px] text-gray-800">{s.role}</div>
                         </div>
                         {i <= activationStep && (
                           <div className="flex items-center gap-1">
@@ -1375,14 +1375,14 @@ export default function IndustryExperience() {
                   <div className="space-y-3">
                     <div>
                       <div className="flex justify-between text-xs mb-1">
-                        <span className="text-slate-600 dark:text-slate-200">Tasks</span>
+                        <span className="text-gray-800 dark:text-slate-200">Tasks</span>
                         <span className="text-green-400">{Math.min(activationStep + 1, allExecutionTasks.length)}/{allExecutionTasks.length}</span>
                       </div>
                       <Progress value={((activationStep + 1) / allExecutionTasks.length) * 100} className="h-2" />
                     </div>
                     <div>
                       <div className="flex justify-between text-xs mb-1">
-                        <span className="text-slate-600 dark:text-slate-200">Stakeholders</span>
+                        <span className="text-gray-800 dark:text-slate-200">Stakeholders</span>
                         <span className="text-blue-400">{Math.min(activationStep + 1, industry.stakeholders.length)}/{industry.stakeholders.length}</span>
                       </div>
                       <Progress value={((Math.min(activationStep + 1, industry.stakeholders.length)) / industry.stakeholders.length) * 100} className="h-2" />
@@ -1400,7 +1400,7 @@ export default function IndustryExperience() {
             <div className="text-center mb-8">
               <Badge className="mb-3 bg-blue-500/20 text-blue-400"><MessageSquare className="h-3 w-3 mr-1" /> WAR ROOM</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Command Center — Live</h2>
-              <p className="text-slate-600 dark:text-slate-200">{industry.organization} — Real-time coordination across {userPlaybook.stakeholders.toLocaleString()} stakeholders</p>
+              <p className="text-gray-800 dark:text-slate-200">{industry.organization} — Real-time coordination across {userPlaybook.stakeholders.toLocaleString()} stakeholders</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
@@ -1410,7 +1410,7 @@ export default function IndustryExperience() {
                   <span className="text-xs text-green-400 font-medium">OPERATIONAL</span>
                 </div>
                 <div className="text-2xl font-bold text-gray-900">{allExecutionTasks.length}</div>
-                <div className="text-xs text-gray-600">Tasks Executing</div>
+                <div className="text-xs text-gray-800">Tasks Executing</div>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
                 className="bg-white border border-blue-500/20 rounded-xl p-4">
@@ -1419,7 +1419,7 @@ export default function IndustryExperience() {
                   <span className="text-xs text-blue-400 font-medium">COORDINATED</span>
                 </div>
                 <div className="text-2xl font-bold text-gray-900">{userPlaybook.stakeholders.toLocaleString()}</div>
-                <div className="text-xs text-gray-600">Stakeholders Aligned</div>
+                <div className="text-xs text-gray-800">Stakeholders Aligned</div>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
                 className="bg-white border border-amber-500/20 rounded-xl p-4">
@@ -1428,7 +1428,7 @@ export default function IndustryExperience() {
                   <span className="text-xs text-amber-400 font-medium">ELAPSED</span>
                 </div>
                 <div className="text-2xl font-bold text-gray-900">11:47</div>
-                <div className="text-xs text-gray-600">Total Execution Time</div>
+                <div className="text-xs text-gray-800">Total Execution Time</div>
               </motion.div>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
@@ -1445,8 +1445,8 @@ export default function IndustryExperience() {
                   <motion.div key={i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 + i * 0.3 }}
                     className={`border-l-2 ${item.color} pl-4 py-2`}
                   >
-                    <p className="text-sm text-gray-600">{item.msg}</p>
-                    <span className="text-xs text-slate-600 dark:text-slate-200">{item.time}</span>
+                    <p className="text-sm text-gray-800">{item.msg}</p>
+                    <span className="text-xs text-gray-800 dark:text-slate-200">{item.time}</span>
                   </motion.div>
                 ))}
               </div>
@@ -1460,22 +1460,22 @@ export default function IndustryExperience() {
             <div className="text-center mb-8">
               <Badge className="mb-3 bg-green-500/20 text-green-400"><Award className="h-3 w-3 mr-1" /> OUTCOMES</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Execution Results</h2>
-              <p className="text-slate-600 dark:text-slate-200">The measurable impact of your {industry.industry} playbook</p>
+              <p className="text-gray-800 dark:text-slate-200">The measurable impact of your {industry.industry} playbook</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {industry.outcomes.map((outcome, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 + i * 0.15 }}
                   className="bg-white border border-green-500/20 rounded-2xl p-6"
                 >
-                  <h4 className="text-sm text-slate-600 dark:text-slate-200 mb-3">{outcome.metric}</h4>
+                  <h4 className="text-sm text-gray-800 dark:text-slate-200 mb-3">{outcome.metric}</h4>
                   <div className="flex items-center gap-4">
                     <div className="flex-1">
-                      <div className="text-xs text-gray-600 mb-1">Before Execution OS</div>
+                      <div className="text-xs text-gray-800 mb-1">Before Execution OS</div>
                       <div className="text-lg font-semibold text-red-400 line-through decoration-red-500/50">{outcome.before}</div>
                     </div>
                     <ArrowRight className="h-5 w-5 text-green-400 shrink-0" />
                     <div className="flex-1">
-                      <div className="text-xs text-gray-600 mb-1">With Execution OS</div>
+                      <div className="text-xs text-gray-800 mb-1">With Execution OS</div>
                       <div className="text-lg font-semibold text-green-400">{outcome.after}</div>
                     </div>
                   </div>
@@ -1491,7 +1491,7 @@ export default function IndustryExperience() {
             <div className="text-center mb-8">
               <Badge className="mb-3 bg-indigo-500/20 text-indigo-400"><Lightbulb className="h-3 w-3 mr-1" /> ADVANCE PHASE</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Institutional Learning</h2>
-              <p className="text-slate-600 dark:text-slate-200">Every execution makes {industry.organization} smarter</p>
+              <p className="text-gray-800 dark:text-slate-200">Every execution makes {industry.organization} smarter</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
               className="bg-white border border-indigo-500/20 rounded-2xl p-8 mb-8"
@@ -1500,7 +1500,7 @@ export default function IndustryExperience() {
                 <Brain className="h-6 w-6 text-indigo-400" />
                 <h3 className="text-lg font-semibold text-gray-900">AI-Generated Playbook Refinement</h3>
               </div>
-              <p className="text-gray-600 leading-relaxed">{industry.lesson}</p>
+              <p className="text-gray-800 leading-relaxed">{industry.lesson}</p>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
               className="grid grid-cols-3 gap-4 mb-8"
@@ -1508,23 +1508,23 @@ export default function IndustryExperience() {
               <div className="bg-white border border-cyan-500/20 rounded-xl p-4 text-center">
                 <BarChart3 className="h-6 w-6 text-cyan-400 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-gray-900">170</div>
-                <div className="text-xs text-gray-600">Total Playbooks</div>
+                <div className="text-xs text-gray-800">Total Playbooks</div>
               </div>
               <div className="bg-white border border-purple-500/20 rounded-xl p-4 text-center">
                 <Brain className="h-6 w-6 text-purple-400 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-gray-900">94%</div>
-                <div className="text-xs text-gray-600">AI Accuracy</div>
+                <div className="text-xs text-gray-800">AI Accuracy</div>
               </div>
               <div className="bg-white border border-green-500/20 rounded-xl p-4 text-center">
                 <Timer className="h-6 w-6 text-green-400 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-gray-900">&lt;12 min</div>
-                <div className="text-xs text-gray-600">Avg. Execution</div>
+                <div className="text-xs text-gray-800">Avg. Execution</div>
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}
               className="text-center space-y-4"
             >
-              <p className="text-slate-600 dark:text-slate-200">
+              <p className="text-gray-800 dark:text-slate-200">
                 You've just experienced the full IDEA Framework — from IDENTIFY through ADVANCE — for {industry.organization}.
               </p>
               <div className="flex items-center justify-center gap-4">
@@ -1554,11 +1554,11 @@ export default function IndustryExperience() {
         <div className="max-w-7xl mx-auto px-4 pt-6 pb-4">
           <div className="flex items-center justify-between mb-2">
             <Link href="/industry-demos">
-              <Button variant="ghost" className="text-gray-600 hover:text-white text-sm">
+              <Button variant="ghost" className="text-gray-800 hover:text-white text-sm">
                 <ArrowLeft className="h-4 w-4 mr-1" /> Industry Scenarios
               </Button>
             </Link>
-            <div className="flex items-center gap-3 text-sm text-gray-600">
+            <div className="flex items-center gap-3 text-sm text-gray-800">
               <span>{stage + 1}/{STAGES.length}</span>
               <span className="text-gray-900 font-medium">{currentStage.label}</span>
             </div>

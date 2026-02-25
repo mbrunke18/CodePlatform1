@@ -58,12 +58,12 @@ export function FakePlaybookCard({ title, domain, tasks, type, delay = 0, isActi
         </div>
         <div className="flex-1 min-w-0">
           <h4 className="text-gray-900 font-medium text-sm truncate">{title}</h4>
-          <p className="text-gray-500 text-xs">{domain}</p>
+          <p className="text-gray-700 text-xs">{domain}</p>
         </div>
       </div>
       
       <div className="mt-3 flex items-center justify-between text-xs">
-        <span className="text-gray-400">{tasks} tasks</span>
+        <span className="text-gray-600">{tasks} tasks</span>
         <span className={color.text}>Ready</span>
       </div>
     </motion.div>

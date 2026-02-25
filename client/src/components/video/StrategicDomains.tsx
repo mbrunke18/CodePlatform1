@@ -35,7 +35,7 @@ export function StrategicDomains({ progress }: SceneProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="text-gray-500 text-lg"
+            className="text-gray-700 text-lg"
           >
             Complete coverage across offense, defense, and special operations
           </motion.p>
@@ -104,7 +104,7 @@ export function StrategicDomains({ progress }: SceneProps) {
           className="text-center bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-xl p-4"
         >
           <p className="text-[#D4AF37] font-bold text-xl">170 Pre-Built Playbooks</p>
-          <p className="text-gray-500 text-sm">Ready to customize and deploy in minutes</p>
+          <p className="text-gray-700 text-sm">Ready to customize and deploy in minutes</p>
         </motion.div>
       </div>
       

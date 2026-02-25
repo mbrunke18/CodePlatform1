@@ -96,9 +96,9 @@ export default function WorkspaceAdvance() {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-gray-600 hover:text-poise-gold cursor-pointer">Execution OS One™</span>
+              <span className="text-gray-800 hover:text-poise-gold cursor-pointer">Execution OS One™</span>
             </Link>
-            <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200" />
+            <ChevronRight className="h-4 w-4 text-gray-800 dark:text-slate-200" />
             <span className="text-poise-gold font-medium">ADVANCE</span>
           </nav>
 
@@ -115,7 +115,7 @@ export default function WorkspaceAdvance() {
                     Execution OS Retrospect™
                   </Badge>
                 </div>
-                <p className="text-gray-600 dark:text-slate-300 mt-1">
+                <p className="text-gray-800 dark:text-slate-300 mt-1">
                   Learn, improve, and strengthen organizational resilience
                 </p>
               </div>
@@ -141,7 +141,7 @@ export default function WorkspaceAdvance() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-slate-900 dark:text-white">IDEA Framework Progress</h3>
-                <span className="text-sm text-gray-600">Phase 4 of 4 - Continuous Loop</span>
+                <span className="text-sm text-gray-800">Phase 4 of 4 - Continuous Loop</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex-1 flex items-center gap-2">
@@ -151,21 +151,21 @@ export default function WorkspaceAdvance() {
                       <span className="text-sm text-poise-gold">IDENTIFY</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-gray-600" />
+                  <ArrowRight className="h-4 w-4 text-gray-800" />
                   <Link href="/workspaces/detect">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-poise-teal/10 hover:bg-poise-teal/20 cursor-pointer transition-colors">
                       <Radar className="h-4 w-4 text-poise-teal" />
                       <span className="text-sm text-poise-teal">DETECT</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-gray-600" />
+                  <ArrowRight className="h-4 w-4 text-gray-800" />
                   <Link href="/workspaces/execute">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-poise-teal/10 hover:bg-poise-teal/20 cursor-pointer transition-colors">
                       <Compass className="h-4 w-4 text-poise-teal" />
                       <span className="text-sm text-poise-teal">EXECUTE</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-gray-600" />
+                  <ArrowRight className="h-4 w-4 text-gray-800" />
                   <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-poise-gold/20 border-2 border-poise-gold">
                     <TrendingUp className="h-4 w-4 text-poise-gold" />
                     <span className="text-sm font-medium text-poise-gold">ADVANCE</span>
@@ -184,7 +184,7 @@ export default function WorkspaceAdvance() {
                     <metric.icon className={`h-5 w-5 ${metric.color}`} />
                   </div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white">{metric.value}</p>
-                  <p className="text-xs text-gray-600">{metric.label}</p>
+                  <p className="text-xs text-gray-800">{metric.label}</p>
                 </CardContent>
               </Card>
             ))}
@@ -199,7 +199,7 @@ export default function WorkspaceAdvance() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">Continuous Learning Loop</h3>
-                  <p className="text-gray-600">Every execution makes your playbooks smarter and your team faster</p>
+                  <p className="text-gray-800">Every execution makes your playbooks smarter and your team faster</p>
                 </div>
               </div>
             </CardContent>
@@ -217,10 +217,10 @@ export default function WorkspaceAdvance() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap mb-1">
                       <h4 className="font-semibold text-slate-900 dark:text-white">5-tier stakeholder hierarchy reduced notification fatigue by 41%</h4>
-                      <Badge className="bg-blue-500/20 text-blue-600 border-blue-500/30">Pattern</Badge>
+                      <Badge className="bg-blue-500/20 text-blue-800 border-blue-500/30">Pattern</Badge>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-sm text-gray-600 dark:text-slate-300">Confidence: 89%</span>
+                      <span className="text-sm text-gray-800 dark:text-slate-300">Confidence: 89%</span>
                       <Progress value={89} className="w-24 h-1.5" />
                     </div>
                   </div>
@@ -236,10 +236,10 @@ export default function WorkspaceAdvance() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap mb-1">
                       <h4 className="font-semibold text-slate-900 dark:text-white">Auto-isolation rules cut cyber incident damage by 78%</h4>
-                      <Badge className="bg-emerald-500/20 text-emerald-600 border-emerald-500/30">Automation</Badge>
+                      <Badge className="bg-emerald-500/20 text-emerald-700 border-emerald-500/30">Automation</Badge>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-sm text-gray-600 dark:text-slate-300">Confidence: 96%</span>
+                      <span className="text-sm text-gray-800 dark:text-slate-300">Confidence: 96%</span>
                       <Progress value={96} className="w-24 h-1.5" />
                     </div>
                   </div>
@@ -258,7 +258,7 @@ export default function WorkspaceAdvance() {
                       <Badge className="bg-poise-gold/20 text-poise-gold border-poise-gold/30">Financial</Badge>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-sm text-gray-600 dark:text-slate-300">Confidence: 87%</span>
+                      <span className="text-sm text-gray-800 dark:text-slate-300">Confidence: 87%</span>
                       <Progress value={87} className="w-24 h-1.5" />
                     </div>
                   </div>
@@ -283,9 +283,9 @@ export default function WorkspaceAdvance() {
                           <h3 className="font-semibold text-slate-900 dark:text-white group-hover:text-poise-gold transition-colors">
                             {tool.title}
                           </h3>
-                          <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200 group-hover:text-poise-gold transition-colors" />
+                          <ChevronRight className="h-4 w-4 text-gray-800 dark:text-slate-200 group-hover:text-poise-gold transition-colors" />
                         </div>
-                        <p className="text-sm text-gray-600 dark:text-slate-300 mt-1">
+                        <p className="text-sm text-gray-800 dark:text-slate-300 mt-1">
                           {tool.description}
                         </p>
                         <Badge variant="outline" className="mt-3 text-xs">
@@ -309,7 +309,7 @@ export default function WorkspaceAdvance() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 dark:text-white">Ready to apply learnings?</h3>
-                    <p className="text-sm text-gray-600 dark:text-slate-300">
+                    <p className="text-sm text-gray-800 dark:text-slate-300">
                       Update your playbooks with new insights and start the cycle again
                     </p>
                   </div>

@@ -142,7 +142,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
               <TrendingUp className="h-6 w-6 text-blue-400" />
               <h3 className="text-xl font-bold text-gray-900">{message.primary}</h3>
             </div>
-            <p className="text-blue-700 text-sm">{message.secondary}</p>
+            <p className="text-blue-800 text-sm">{message.secondary}</p>
             <Badge variant="outline" className="bg-blue-600/20 text-blue-300 border-blue-500/50">
               {metrics.name} | {message.focus}
             </Badge>
@@ -152,7 +152,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
           <div className="space-y-4">
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Company Size (Employees)</span>
+                <span className="text-gray-800">Company Size (Employees)</span>
                 <span className="text-gray-900 font-semibold">{companySize.toLocaleString()}</span>
               </div>
               <Slider
@@ -168,7 +168,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
 
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Current Crisis Response Time (Hours)</span>
+                <span className="text-gray-800">Current Crisis Response Time (Hours)</span>
                 <span className="text-gray-900 font-semibold">{currentCrisisResponse}h</span>
               </div>
               <Slider
@@ -186,15 +186,15 @@ export default function InteractiveROICalculator({ persona = 'general', industry
           {/* Coordination Time Savings Highlight */}
           <div className="bg-gradient-to-r   rounded-lg p-4 border-2 border-green-500/50">
             <div className="text-center space-y-2">
-              <div className="text-sm text-gray-600 font-medium">Coordination Time Savings</div>
+              <div className="text-sm text-gray-800 font-medium">Coordination Time Savings</div>
               <div className="flex items-center justify-center gap-4">
                 <div>
-                  <div className="text-sm text-gray-500">Industry Standard</div>
+                  <div className="text-sm text-gray-700">Industry Standard</div>
                   <div className="text-3xl font-bold text-red-400">72 hours</div>
                 </div>
-                <div className="text-2xl text-gray-600">→</div>
+                <div className="text-2xl text-gray-800">→</div>
                 <div>
-                  <div className="text-sm text-gray-500">M Execution</div>
+                  <div className="text-sm text-gray-700">M Execution</div>
                   <div className="text-3xl font-bold text-green-400">12 minutes</div>
                 </div>
               </div>
@@ -210,7 +210,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
             <div className="bg-blue-950/50 rounded-lg p-4 border border-blue-500/30">
               <div className="flex items-center gap-2 mb-1">
                 <Clock className="h-4 w-4 text-blue-400" />
-                <span className="text-xs text-gray-500">Decision Velocity</span>
+                <span className="text-xs text-gray-700">Decision Velocity</span>
               </div>
               <div className="text-2xl font-bold text-green-400">{mResponseMinutes} min</div>
               <div className="text-xs text-blue-300 mt-1">
@@ -221,7 +221,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
             <div className="bg-green-950/50 rounded-lg p-4 border border-green-500/30">
               <div className="flex items-center gap-2 mb-1">
                 <DollarSign className="h-4 w-4 text-green-400" />
-                <span className="text-xs text-gray-500">Annual Savings</span>
+                <span className="text-xs text-gray-700">Annual Savings</span>
               </div>
               <div className="text-2xl font-bold text-gray-900">
                 ${(annualCostSavings / 1000000).toFixed(2)}M
@@ -234,7 +234,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
             <div className="bg-purple-950/50 rounded-lg p-4 border border-purple-500/30">
               <div className="flex items-center gap-2 mb-1">
                 <Target className="h-4 w-4 text-purple-400" />
-                <span className="text-xs text-gray-500">ROI</span>
+                <span className="text-xs text-gray-700">ROI</span>
               </div>
               <div className="text-2xl font-bold text-gray-900">{roi.toFixed(0)}%</div>
               <div className="text-xs text-purple-300 mt-1">
@@ -245,7 +245,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
             <div className="bg-orange-950/50 rounded-lg p-4 border border-orange-500/30">
               <div className="flex items-center gap-2 mb-1">
                 <Users className="h-4 w-4 text-orange-400" />
-                <span className="text-xs text-gray-500">Risk Reduction</span>
+                <span className="text-xs text-gray-700">Risk Reduction</span>
               </div>
               <div className="text-2xl font-bold text-gray-900">
                 {(complianceRiskReduction * 100).toFixed(0)}%
@@ -259,7 +259,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
           {/* Summary */}
           <div className="bg-gradient-to-r from-blue-600/20 to-teal-600/20 rounded-lg p-4 border border-blue-500/30">
             <h4 className="text-gray-900 font-semibold mb-2 text-sm">🏈 Championship Execution Through Preparation</h4>
-            <ul className="text-xs text-gray-600 space-y-1">
+            <ul className="text-xs text-gray-800 space-y-1">
               <li>• <strong className="text-green-400">{mResponseMinutes}-minute playbook execution</strong> vs {currentCrisisResponse}-hour industry standard</li>
               <li>• {annualTimeSavings.toFixed(0)} hours saved annually across {averageCrisesPerYear} scenarios</li>
               <li>• ${(annualCostSavings / 1000000).toFixed(2)}M cost avoidance from rapid decision velocity</li>

@@ -186,7 +186,7 @@ export default function OneClickDemo() {
       case 'blocker': return <AlertCircle className="h-4 w-4 text-red-400" />;
       case 'resolved': return <Zap className="h-4 w-4 text-amber-400" />;
       case 'complete': return <Shield className="h-4 w-4 text-emerald-400" />;
-      default: return <FileText className="h-4 w-4 text-gray-600" />;
+      default: return <FileText className="h-4 w-4 text-gray-800" />;
     }
   };
 
@@ -218,7 +218,7 @@ export default function OneClickDemo() {
               See Execution OS in Action
             </h1>
             
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-800 mb-8 max-w-2xl mx-auto">
               Watch a critical data breach get detected, coordinated across 8 executives, 
               and fully contained in 12 minutes instead of 17 days.
             </p>
@@ -227,19 +227,19 @@ export default function OneClickDemo() {
               <Card className="bg-gray-50 border-gray-200">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl font-bold text-red-400 mb-2">2.4M</div>
-                  <div className="text-sm text-gray-600">Customers Impacted</div>
+                  <div className="text-sm text-gray-800">Customers Impacted</div>
                 </CardContent>
               </Card>
               <Card className="bg-gray-50 border-gray-200">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl font-bold text-amber-400 mb-2">$50M</div>
-                  <div className="text-sm text-gray-600">Potential Fine</div>
+                  <div className="text-sm text-gray-800">Potential Fine</div>
                 </CardContent>
               </Card>
               <Card className="bg-gray-50 border-gray-200">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl font-bold text-green-400 mb-2">12 min</div>
-                  <div className="text-sm text-gray-600">Target Response Time</div>
+                  <div className="text-sm text-gray-800">Target Response Time</div>
                 </CardContent>
               </Card>
             </div>
@@ -254,7 +254,7 @@ export default function OneClickDemo() {
               Start Live Demo
             </Button>
             
-            <p className="text-sm text-gray-600 mt-4">
+            <p className="text-sm text-gray-800 mt-4">
               15-second accelerated simulation of 12-minute response
             </p>
           </div>
@@ -284,7 +284,7 @@ export default function OneClickDemo() {
             <div className="flex items-center gap-4">
               <div className="text-right">
                 <div className="text-3xl font-mono font-bold text-gray-900">{formatDisplayTime(displayTime)}</div>
-                <div className="text-xs text-gray-600">Elapsed Time</div>
+                <div className="text-xs text-gray-800">Elapsed Time</div>
               </div>
               
               <div className="flex gap-2">
@@ -311,7 +311,7 @@ export default function OneClickDemo() {
           {/* Progress Bar */}
           <div className="mt-3">
             <Progress value={Math.min(progress, 100)} className="h-2" />
-            <div className="flex justify-between text-xs text-gray-600 mt-1">
+            <div className="flex justify-between text-xs text-gray-800 mt-1">
               <span>0:00</span>
               <span>Target: 12:00</span>
             </div>
@@ -332,7 +332,7 @@ export default function OneClickDemo() {
                     <Zap className="h-5 w-5 text-amber-400" />
                     Live Execution Feed
                   </h3>
-                  <Badge variant="outline" className="bg-transparent text-gray-600">
+                  <Badge variant="outline" className="bg-transparent text-gray-800">
                     {completedTasks}/{tasks.length} Tasks
                   </Badge>
                 </div>
@@ -352,7 +352,7 @@ export default function OneClickDemo() {
                         {getTaskIcon(task.type)}
                         <div className="flex-1">
                           <div className="text-sm text-gray-900">{task.title}</div>
-                          <div className="text-xs text-gray-600">{task.stakeholder}</div>
+                          <div className="text-xs text-gray-800">{task.stakeholder}</div>
                         </div>
                         {task.completed && (
                           <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0" />
@@ -399,7 +399,7 @@ export default function OneClickDemo() {
                         )}
                         <div>
                           <div className="text-sm text-gray-900">{stakeholder.name}</div>
-                          <div className="text-xs text-gray-600">{stakeholder.role}</div>
+                          <div className="text-xs text-gray-800">{stakeholder.role}</div>
                         </div>
                       </div>
                       {stakeholder.acknowledged && (
@@ -424,19 +424,19 @@ export default function OneClickDemo() {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-blue-400">{completedTasks}</div>
-                    <div className="text-xs text-gray-600">Tasks Complete</div>
+                    <div className="text-xs text-gray-800">Tasks Complete</div>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-green-400">{acknowledgedCount}</div>
-                    <div className="text-xs text-gray-600">Stakeholders Active</div>
+                    <div className="text-xs text-gray-800">Stakeholders Active</div>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-amber-400">$500K</div>
-                    <div className="text-xs text-gray-600">Budget Released</div>
+                    <div className="text-xs text-gray-800">Budget Released</div>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-purple-400">2.4M</div>
-                    <div className="text-xs text-gray-600">Customers Notified</div>
+                    <div className="text-xs text-gray-800">Customers Notified</div>
                   </div>
                 </div>
               </CardContent>
@@ -455,26 +455,26 @@ export default function OneClickDemo() {
               </div>
               
               <h2 className="text-3xl font-bold text-gray-900 mb-2">Breach Contained in 12 Minutes</h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-800 mb-6">
                 Traditional response time: 17 days. Execution OS response: 12 minutes.
               </p>
               
               <div className="grid md:grid-cols-4 gap-4 mb-8">
                 <div className="bg-gray-50 rounded-lg p-4">
                   <div className="text-3xl font-bold text-green-400">340X</div>
-                  <div className="text-sm text-gray-600">Faster Response</div>
+                  <div className="text-sm text-gray-800">Faster Response</div>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-4">
                   <div className="text-3xl font-bold text-blue-400">$47M</div>
-                  <div className="text-sm text-gray-600">Fine Avoided</div>
+                  <div className="text-sm text-gray-800">Fine Avoided</div>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-4">
                   <div className="text-3xl font-bold text-amber-400">47</div>
-                  <div className="text-sm text-gray-600">Tasks Coordinated</div>
+                  <div className="text-sm text-gray-800">Tasks Coordinated</div>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-4">
                   <div className="text-3xl font-bold text-purple-400">8</div>
-                  <div className="text-sm text-gray-600">Executives Aligned</div>
+                  <div className="text-sm text-gray-800">Executives Aligned</div>
                 </div>
               </div>
               

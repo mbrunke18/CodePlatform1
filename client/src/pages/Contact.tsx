@@ -83,7 +83,7 @@ export default function Contact() {
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900" data-testid="heading-early-access">
             Request Early Access Interview
           </h1>
-          <p className="text-xl text-blue-700 max-w-3xl mx-auto mb-6">
+          <p className="text-xl text-blue-800 max-w-3xl mx-auto mb-6">
             Join an exclusive group of 10 Fortune 1000 companies transforming strategic execution through Execution OS' 90-day validation partnership.
           </p>
           <div className="flex items-center justify-center gap-8 text-sm text-blue-300">
@@ -115,28 +115,28 @@ export default function Contact() {
               <CardContent>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-5 w-5 text-emerald-700 flex-shrink-0 mt-0.5" />
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white">Full Platform Access</div>
                       <p className="text-sm text-slate-700 dark:text-slate-300">Complete 7-component ecosystem during validation period</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-5 w-5 text-emerald-700 flex-shrink-0 mt-0.5" />
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white">Strategic Implementation</div>
                       <p className="text-sm text-slate-700 dark:text-slate-300">Dedicated support for 3-5 critical scenarios</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-5 w-5 text-emerald-700 flex-shrink-0 mt-0.5" />
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white">First-Mover Advantage</div>
                       <p className="text-sm text-slate-700 dark:text-slate-300">Category leadership in Executive Decision Operations</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-5 w-5 text-emerald-700 flex-shrink-0 mt-0.5" />
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white">Risk-Free Validation</div>
                       <p className="text-sm text-slate-700 dark:text-slate-300">Prove ROI in your context before full commitment</p>
@@ -344,10 +344,10 @@ export default function Contact() {
             Reach out directly or learn more about program structure and success metrics.
           </p>
           <div className="flex flex-wrap justify-center gap-6 mb-8">
-            <a href="mailto:martinbrunke@executeiq.io" className="text-lg font-medium text-blue-600 dark:text-blue-400 hover:underline">
+            <a href="mailto:martinbrunke@executeiq.io" className="text-lg font-medium text-blue-800 dark:text-blue-400 hover:underline">
               martinbrunke@executeiq.io
             </a>
-            <a href="https://www.executeiq.io" target="_blank" rel="noopener noreferrer" className="text-lg font-medium text-blue-600 dark:text-blue-400 hover:underline">
+            <a href="https://www.executeiq.io" target="_blank" rel="noopener noreferrer" className="text-lg font-medium text-blue-800 dark:text-blue-400 hover:underline">
               www.executeiq.io
             </a>
           </div>

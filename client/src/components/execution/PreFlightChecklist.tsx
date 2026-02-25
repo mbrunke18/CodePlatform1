@@ -167,7 +167,7 @@ export function PreFlightChecklist({ executionPlanId, organizationId, onReadyCha
           {result.canProceed ? (
             <>
               <CheckCircle2 className="h-5 w-5 text-green-500" />
-              <span className="font-medium text-green-700 dark:text-green-400" data-testid="status-ready">
+              <span className="font-medium text-emerald-800 dark:text-green-400" data-testid="status-ready">
                 Ready for Activation
               </span>
             </>

@@ -54,14 +54,14 @@ export default function FounderStory() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-full text-sm font-medium mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-[#C9A84C] dark:text-amber-300 rounded-full text-sm font-medium mb-6">
                 <User className="h-4 w-4" />
                 Meet the Founder
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6">
                 The Story Behind Execution OS
               </h1>
-              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-800 dark:text-slate-300 max-w-3xl mx-auto">
                 20 years of Fortune 500 experience. 5 years coaching major college football. 
                 One mission: eliminate the chaos between strategy and execution.
               </p>
@@ -81,22 +81,22 @@ export default function FounderStory() {
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/10 to-transparent" />
                 <div className="text-center relative z-10">
                   <div className="w-20 h-20 rounded-full bg-amber-500/20 dark:bg-amber-400/20 flex items-center justify-center mx-auto mb-4">
-                    <Play className="h-10 w-10 text-amber-600 dark:text-amber-400" />
+                    <Play className="h-10 w-10 text-[#C9A84C] dark:text-amber-400" />
                   </div>
-                  <span className="text-4xl font-bold text-amber-600 dark:text-amber-400">90</span>
-                  <span className="text-lg text-amber-600/70 dark:text-amber-400/70 ml-2">seconds</span>
+                  <span className="text-4xl font-bold text-[#C9A84C] dark:text-amber-400">90</span>
+                  <span className="text-lg text-[#C9A84C]/70 dark:text-amber-400/70 ml-2">seconds</span>
                 </div>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
                   Quick Intro
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300 mb-6">
+                <p className="text-gray-800 dark:text-slate-300 mb-6">
                   The 72-hour problem, the football insight, and why Execution OS exists. 
                   Perfect for a quick overview.
                 </p>
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-gray-600 dark:text-slate-300">
+                  <div className="flex items-center gap-2 text-gray-800 dark:text-slate-300">
                     <Clock className="h-4 w-4" />
                     <span className="text-sm">~90 seconds</span>
                   </div>
@@ -122,22 +122,22 @@ export default function FounderStory() {
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-500/10 to-transparent" />
                 <div className="text-center relative z-10">
                   <div className="w-20 h-20 rounded-full bg-emerald-500/20 dark:bg-emerald-400/20 flex items-center justify-center mx-auto mb-4">
-                    <Play className="h-10 w-10 text-emerald-600 dark:text-emerald-400" />
+                    <Play className="h-10 w-10 text-emerald-700 dark:text-emerald-400" />
                   </div>
-                  <span className="text-4xl font-bold text-emerald-600 dark:text-emerald-400">3:30</span>
-                  <span className="text-lg text-emerald-600/70 dark:text-emerald-400/70 ml-2">minutes</span>
+                  <span className="text-4xl font-bold text-emerald-700 dark:text-emerald-400">3:30</span>
+                  <span className="text-lg text-emerald-700/70 dark:text-emerald-400/70 ml-2">minutes</span>
                 </div>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
                   The Full Story
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300 mb-6">
+                <p className="text-gray-800 dark:text-slate-300 mb-6">
                   The complete narrative: McKinsey research, Fortune 500 experiences, 
                   the IDEA framework, and the vision for strategic execution.
                 </p>
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-gray-600 dark:text-slate-300">
+                  <div className="flex items-center gap-2 text-gray-800 dark:text-slate-300">
                     <Clock className="h-4 w-4" />
                     <span className="text-sm">~3:30 minutes</span>
                   </div>
@@ -169,7 +169,7 @@ export default function FounderStory() {
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white text-center md:text-left">
                   Martin Brunke
                 </h3>
-                <p className="text-amber-600 dark:text-amber-400 font-medium text-center md:text-left">
+                <p className="text-[#C9A84C] dark:text-amber-400 font-medium text-center md:text-left">
                   Founder & CEO
                 </p>
               </div>
@@ -200,12 +200,12 @@ export default function FounderStory() {
                 <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
                   The Unique Perspective
                 </h4>
-                <p className="text-slate-600 dark:text-slate-300 mb-4">
+                <p className="text-gray-800 dark:text-slate-300 mb-4">
                   After 20 years navigating crises, transformations, and strategic initiatives 
                   across gaming, automotive, financial services, aerospace, and pharma—and 5 years 
                   coaching major college football—Martin saw a pattern that no one was solving.
                 </p>
-                <p className="text-slate-600 dark:text-slate-300">
+                <p className="text-gray-800 dark:text-slate-300">
                   <span className="font-semibold text-slate-900 dark:text-white">The insight:</span> In football, 
                   you'd never run a play without practicing it. But in business, organizations improvise 
                   their most critical moments. Execution OS brings the discipline of championship execution 
@@ -224,9 +224,9 @@ export default function FounderStory() {
           >
             <blockquote className="text-2xl md:text-3xl font-light text-slate-700 dark:text-slate-300 italic max-w-4xl mx-auto">
               "Strategy is 10% of the work. Execution is 90%. 
-              <span className="text-amber-600 dark:text-amber-400 font-medium"> Execution OS is built for the 90%.</span>"
+              <span className="text-[#C9A84C] dark:text-amber-400 font-medium"> Execution OS is built for the 90%.</span>"
             </blockquote>
-            <p className="text-gray-600 dark:text-slate-300 mt-4">— Martin Brunke</p>
+            <p className="text-gray-800 dark:text-slate-300 mt-4">— Martin Brunke</p>
           </motion.div>
         </div>
       </main>

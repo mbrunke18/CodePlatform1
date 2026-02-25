@@ -132,10 +132,10 @@ export default function StandardNav() {
       className="flex items-center gap-3 py-2 cursor-pointer hover:bg-gray-50 focus:bg-gray-50"
       data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
     >
-      <link.icon className="h-4 w-4 text-gray-500 flex-shrink-0" />
+      <link.icon className="h-4 w-4 text-gray-700 flex-shrink-0" />
       <div className="flex-1">
         <div className="font-medium text-sm text-gray-900">{link.label}</div>
-        <span className="text-xs text-gray-500">{link.description}</span>
+        <span className="text-xs text-gray-700">{link.description}</span>
       </div>
     </DropdownMenuItem>
   );
@@ -152,7 +152,7 @@ export default function StandardNav() {
         {sections.map((section, sIdx) => (
           <div key={section.heading}>
             {sIdx > 0 && <DropdownMenuSeparator className="bg-gray-100" />}
-            <DropdownMenuLabel className="text-[11px] uppercase tracking-wider text-gray-400 font-semibold px-3 pt-2 pb-1">
+            <DropdownMenuLabel className="text-[11px] uppercase tracking-wider text-gray-600 font-semibold px-3 pt-2 pb-1">
               {section.heading}
             </DropdownMenuLabel>
             {section.links.map(renderNavItem)}
@@ -185,7 +185,7 @@ export default function StandardNav() {
             {!isHomePage && (
               <button
                 onClick={handleBack}
-                className="flex items-center gap-1 px-2 py-1.5 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors text-sm"
+                className="flex items-center gap-1 px-2 py-1.5 text-gray-800 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors text-sm"
                 data-testid="nav-back-button"
               >
                 <ArrowLeft className="h-4 w-4" />
@@ -227,13 +227,13 @@ export default function StandardNav() {
             ) : isAuthenticated && user ? (
               <div className="flex items-center gap-2">
                 <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-lg">
-                  <User className="h-4 w-4 text-gray-500" />
+                  <User className="h-4 w-4 text-gray-700" />
                   <span className="text-sm text-gray-700">{user.firstName || user.email?.split('@')[0]}</span>
                 </div>
                 <Button
                   variant="ghost"
                   onClick={logout}
-                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 h-9 px-3"
+                  className="text-gray-800 hover:text-gray-900 hover:bg-gray-100 h-9 px-3"
                   data-testid="nav-logout"
                 >
                   <LogOut className="h-4 w-4 xl:mr-1.5" />
@@ -244,7 +244,7 @@ export default function StandardNav() {
               <Button
                 variant="ghost"
                 onClick={login}
-                className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 h-9 px-3"
+                className="text-gray-800 hover:text-gray-900 hover:bg-gray-100 h-9 px-3"
                 data-testid="nav-login"
               >
                 <LogIn className="h-4 w-4 xl:mr-1.5" />
@@ -263,7 +263,7 @@ export default function StandardNav() {
               <Compass className="h-4 w-4" />
             </Button>
             <button
-              className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+              className="p-2 text-gray-800 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               data-testid="nav-mobile-menu-toggle"
             >
@@ -299,7 +299,7 @@ export default function StandardNav() {
                           : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
                       }`}
                     >
-                      <link.icon className="h-4 w-4 text-gray-500" />
+                      <link.icon className="h-4 w-4 text-gray-700" />
                       {link.label}
                     </button>
                   ))}
@@ -333,7 +333,7 @@ export default function StandardNav() {
                   onClick={() => navigateTo(link.path)}
                   className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                 >
-                  <link.icon className="h-4 w-4 text-gray-500" />
+                  <link.icon className="h-4 w-4 text-gray-700" />
                   {link.label}
                 </button>
               ))}
@@ -347,7 +347,7 @@ export default function StandardNav() {
                   onClick={() => navigateTo(link.path)}
                   className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                 >
-                  <link.icon className="h-4 w-4 text-gray-500" />
+                  <link.icon className="h-4 w-4 text-gray-700" />
                   {link.label}
                 </button>
               ))}
@@ -357,14 +357,14 @@ export default function StandardNav() {
               {isAuthenticated && user ? (
                 <div className="flex items-center justify-between px-3 py-2">
                   <div className="flex items-center gap-2">
-                    <User className="h-4 w-4 text-gray-500" />
+                    <User className="h-4 w-4 text-gray-700" />
                     <span className="text-sm text-gray-700">{user.firstName || user.email}</span>
                   </div>
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={logout}
-                    className="text-gray-600 hover:text-gray-900"
+                    className="text-gray-800 hover:text-gray-900"
                     data-testid="nav-mobile-signout"
                   >
                     Sign Out
@@ -374,7 +374,7 @@ export default function StandardNav() {
                 <Button
                   variant="ghost"
                   onClick={login}
-                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 w-full justify-center h-10"
+                  className="text-gray-800 hover:text-gray-900 hover:bg-gray-100 w-full justify-center h-10"
                   data-testid="nav-mobile-signin"
                 >
                   <LogIn className="h-4 w-4 mr-2" />

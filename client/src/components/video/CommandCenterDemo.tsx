@@ -50,7 +50,7 @@ export function CommandCenterDemo({ progress }: SceneProps) {
             <span className="text-[#D4AF37] font-mono font-bold">
               {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
             </span>
-            <span className="text-gray-500 text-sm">/ 12:00</span>
+            <span className="text-gray-700 text-sm">/ 12:00</span>
           </motion.div>
         </div>
 
@@ -60,9 +60,9 @@ export function CommandCenterDemo({ progress }: SceneProps) {
           transition={{ delay: 0.2 }}
           className="flex items-center justify-center gap-6 mb-4 bg-gradient-to-r from-green-500/10 via-transparent to-green-500/10 rounded-lg p-2"
         >
-          <p className="text-gray-600 text-sm">Real-time visibility:</p>
+          <p className="text-gray-800 text-sm">Real-time visibility:</p>
           <span className="text-green-400 text-sm font-medium">Every stakeholder • Every task • Every decision</span>
-          <p className="text-gray-500 text-sm">|</p>
+          <p className="text-gray-700 text-sm">|</p>
           <span className="text-[#D4AF37] text-sm font-medium">No more "who's doing what?"</span>
         </motion.div>
 
@@ -73,7 +73,7 @@ export function CommandCenterDemo({ progress }: SceneProps) {
                 <Activity className="w-4 h-4 text-[#00A8A8]" />
                 Execution Tasks
               </h3>
-              <span className="text-gray-500 text-sm">{completedTasks}/5 complete</span>
+              <span className="text-gray-700 text-sm">{completedTasks}/5 complete</span>
             </div>
             
             <div className="space-y-2">
@@ -102,17 +102,17 @@ export function CommandCenterDemo({ progress }: SceneProps) {
                         className="w-3 h-3 border-2 border-white border-t-transparent rounded-full"
                       />
                     ) : (
-                      <span className="text-gray-400 text-xs">{i + 1}</span>
+                      <span className="text-gray-600 text-xs">{i + 1}</span>
                     )}
                   </div>
                   <div className="flex-1">
-                    <p className={i < completedTasks ? "text-gray-500 line-through" : "text-gray-900"}>
+                    <p className={i < completedTasks ? "text-gray-700 line-through" : "text-gray-900"}>
                       {task.name}
                     </p>
                   </div>
-                  <span className="text-gray-400 text-xs">{task.owner}</span>
+                  <span className="text-gray-600 text-xs">{task.owner}</span>
                   <span className={`text-xs font-mono ${
-                    i < completedTasks ? "text-green-400" : "text-gray-400"
+                    i < completedTasks ? "text-green-400" : "text-gray-600"
                   }`}>
                     {task.time}
                   </span>
@@ -146,7 +146,7 @@ export function CommandCenterDemo({ progress }: SceneProps) {
                     </div>
                     <div className="flex-1">
                       <p className="text-gray-900 text-sm">{member.name}</p>
-                      <p className="text-gray-400 text-xs">{member.role}</p>
+                      <p className="text-gray-600 text-xs">{member.role}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -163,7 +163,7 @@ export function CommandCenterDemo({ progress }: SceneProps) {
                 <AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5" />
                 <div>
                   <p className="text-amber-400 text-sm font-medium">Decision Required</p>
-                  <p className="text-gray-500 text-xs mt-1">Approve customer communication?</p>
+                  <p className="text-gray-700 text-xs mt-1">Approve customer communication?</p>
                 </div>
               </div>
             </motion.div>

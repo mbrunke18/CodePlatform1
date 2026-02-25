@@ -64,7 +64,7 @@ export function Problem({ progress }: SceneProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="text-lg md:text-xl text-gray-600 text-center mb-8"
+          className="text-lg md:text-xl text-gray-800 text-center mb-8"
         >
           Every Fortune 1000 company faces these problems. No infrastructure existed to solve them.
         </motion.p>
@@ -88,7 +88,7 @@ export function Problem({ progress }: SceneProps) {
                 </div>
                 <h3 className="text-gray-900 font-bold text-sm">{problem.title}</h3>
               </div>
-              <p className="text-gray-600 text-xs leading-relaxed mb-3">{problem.pain}</p>
+              <p className="text-gray-800 text-xs leading-relaxed mb-3">{problem.pain}</p>
               <div 
                 className="mt-auto rounded-lg p-3"
                 style={{ backgroundColor: `${problem.color}10`, border: `1px solid ${problem.borderColor}` }}
@@ -97,7 +97,7 @@ export function Problem({ progress }: SceneProps) {
                   <DollarSign className="w-3.5 h-3.5" style={{ color: problem.color }} />
                   <span className="text-xs font-bold" style={{ color: problem.color }}>{problem.cost}</span>
                 </div>
-                <p className="text-gray-500 text-xs">{problem.costDetail}</p>
+                <p className="text-gray-700 text-xs">{problem.costDetail}</p>
               </div>
             </motion.div>
           ))}
@@ -107,7 +107,7 @@ export function Problem({ progress }: SceneProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2 }}
-          className="text-lg text-gray-500 text-center"
+          className="text-lg text-gray-700 text-center"
         >
           Strategy-execution gap costs Fortune 500 companies <span className="text-red-400 font-bold">$900B annually</span>.
         </motion.p>

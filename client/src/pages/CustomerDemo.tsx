@@ -329,7 +329,7 @@ export default function CustomerDemo() {
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2" data-testid="heading-customer-demo">
               Execute Strategy at the Speed of Disruption
             </h1>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-800">
               From strategic event to coordinated response in 12 minutes. Success favors the prepared.
             </p>
           </div>
@@ -363,7 +363,7 @@ export default function CustomerDemo() {
                     variant="ghost"
                     size="sm"
                     onClick={() => { setManualMode(true); setIsPlaying(false); }}
-                    className={`text-sm ${manualMode ? 'text-emerald-400' : 'text-gray-600'}`}
+                    className={`text-sm ${manualMode ? 'text-emerald-400' : 'text-gray-800'}`}
                     data-testid="button-manual-mode"
                   >
                     Manual Mode
@@ -372,7 +372,7 @@ export default function CustomerDemo() {
                     variant="ghost"
                     size="sm"
                     onClick={handleReset}
-                    className="text-gray-600"
+                    className="text-gray-800"
                     data-testid="button-reset-demo"
                   >
                     <RotateCcw className="h-4 w-4" />
@@ -381,14 +381,14 @@ export default function CustomerDemo() {
                 
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-gray-600">Speed:</span>
+                    <span className="text-xs text-gray-800">Speed:</span>
                     {[1, 2, 4].map((speed) => (
                       <Button
                         key={speed}
                         variant="ghost"
                         size="sm"
                         onClick={() => setPlaybackSpeed(speed)}
-                        className={`text-xs px-2 ${playbackSpeed === speed ? 'text-emerald-400 bg-emerald-500/20' : 'text-gray-600'}`}
+                        className={`text-xs px-2 ${playbackSpeed === speed ? 'text-emerald-400 bg-emerald-500/20' : 'text-gray-800'}`}
                         data-testid={`button-speed-${speed}x`}
                       >
                         {speed}x
@@ -397,11 +397,11 @@ export default function CustomerDemo() {
                   </div>
                   
                   <div className="flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-lg">
-                    <Clock className="h-4 w-4 text-gray-600" />
+                    <Clock className="h-4 w-4 text-gray-800" />
                     <span className="text-gray-900 font-mono text-sm">
                       {Math.floor(elapsedTime / 60)}:{(elapsedTime % 60).toString().padStart(2, '0')}
                     </span>
-                    <span className="text-gray-600 text-xs">/ 3:00</span>
+                    <span className="text-gray-800 text-xs">/ 3:00</span>
                   </div>
                 </div>
               </div>
@@ -424,7 +424,7 @@ export default function CustomerDemo() {
                 className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   idx === currentStageIndex
                     ? `${stage.phaseColor} text-gray-900`
-                    : 'bg-gray-50 text-gray-600 hover:bg-slate-700'
+                    : 'bg-gray-50 text-gray-800 hover:bg-slate-700'
                 }`}
                 data-testid={`button-stage-${idx}`}
               >
@@ -442,7 +442,7 @@ export default function CustomerDemo() {
                       <Badge className={`${currentStage.phaseColor} text-gray-900`}>
                         {currentStage.phase}
                       </Badge>
-                      <span className="text-gray-600 text-sm">
+                      <span className="text-gray-800 text-sm">
                         {currentStage.beat} — {currentStageIndex + 1} of {IDEA_STORY.length}
                       </span>
                     </div>
@@ -453,7 +453,7 @@ export default function CustomerDemo() {
                           size="sm"
                           onClick={handlePrevStage}
                           disabled={currentStageIndex === 0}
-                          className="text-gray-600"
+                          className="text-gray-800"
                           data-testid="button-prev-stage"
                         >
                           ← Back
@@ -469,7 +469,7 @@ export default function CustomerDemo() {
                             setShowConfetti(true);
                             setTimeout(() => setShowConfetti(false), 5000);
                           }}
-                          className="text-gray-600"
+                          className="text-gray-800"
                           data-testid="button-skip-to-end"
                         >
                           <SkipForward className="h-4 w-4 mr-1" />
@@ -501,7 +501,7 @@ export default function CustomerDemo() {
                           <p className={`text-lg ${currentStage.color} mb-3`}>
                             {currentStage.subtitle}
                           </p>
-                          <p className="text-gray-600 leading-relaxed">
+                          <p className="text-gray-800 leading-relaxed">
                             {currentStage.description}
                           </p>
                         </div>
@@ -511,7 +511,7 @@ export default function CustomerDemo() {
                         {currentStage.metrics.map((metric, idx) => (
                           <div key={idx} className="bg-gray-50 rounded-lg p-4 text-center">
                             <div className="text-2xl font-bold text-gray-900 mb-1">{metric.value}</div>
-                            <div className="text-xs text-gray-600">{metric.label}</div>
+                            <div className="text-xs text-gray-800">{metric.label}</div>
                           </div>
                         ))}
                       </div>
@@ -528,7 +528,7 @@ export default function CustomerDemo() {
                               <Badge variant="outline" className="text-xs border-blue-500/50 text-blue-300 flex-shrink-0">
                                 {win.role}
                               </Badge>
-                              <span className="text-gray-600">{win.benefit}</span>
+                              <span className="text-gray-800">{win.benefit}</span>
                             </div>
                           ))}
                         </div>
@@ -547,7 +547,7 @@ export default function CustomerDemo() {
                                 <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
                                 <div>
                                   <span className="text-gray-900">{item.domain}:</span>{' '}
-                                  <span className="text-gray-600">{item.defaults}</span>
+                                  <span className="text-gray-800">{item.defaults}</span>
                                 </div>
                               </div>
                             ))}
@@ -569,7 +569,7 @@ export default function CustomerDemo() {
                           <div className="bg-emerald-900/30 border border-emerald-500/30 rounded-lg p-4 text-center">
                             <CheckCircle2 className="h-8 w-8 text-emerald-400 mx-auto mb-2" />
                             <p className="text-emerald-400 font-medium text-lg">Success Favors the Prepared</p>
-                            <p className="text-gray-600 text-sm">From signal to coordinated action: 12 minutes vs 72 hours</p>
+                            <p className="text-gray-800 text-sm">From signal to coordinated action: 12 minutes vs 72 hours</p>
                           </div>
                           
                           {/* Pilot Program Options */}
@@ -578,23 +578,23 @@ export default function CustomerDemo() {
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                               <div className="p-3 bg-emerald-900/30 rounded-lg border border-emerald-500/30">
                                 <div className="text-sm font-medium text-gray-900 mb-1">90-Day Pilot</div>
-                                <div className="text-xs text-gray-600 mb-2">5 playbooks, 25 users</div>
+                                <div className="text-xs text-gray-800 mb-2">5 playbooks, 25 users</div>
                                 <div className="text-emerald-400 text-sm font-medium">$75K</div>
                                 <div className="text-xs text-emerald-400/70">100% credited to Year 1</div>
                               </div>
                               <div className="p-3 bg-gray-50 rounded-lg border border-slate-600">
                                 <div className="text-sm font-medium text-gray-900 mb-1">Enterprise</div>
-                                <div className="text-xs text-gray-600 mb-2">Single domain</div>
+                                <div className="text-xs text-gray-800 mb-2">Single domain</div>
                                 <div className="text-blue-400 text-sm font-medium">$250K/yr</div>
                               </div>
                               <div className="p-3 bg-gray-50 rounded-lg border border-blue-500/30">
                                 <div className="text-sm font-medium text-gray-900 mb-1">Enterprise Plus</div>
-                                <div className="text-xs text-gray-600 mb-2">Multi-domain</div>
+                                <div className="text-xs text-gray-800 mb-2">Multi-domain</div>
                                 <div className="text-blue-400 text-sm font-medium">$450K/yr</div>
                               </div>
                               <div className="p-3 bg-violet-900/30 rounded-lg border border-violet-500/30">
                                 <div className="text-sm font-medium text-gray-900 mb-1">Global</div>
-                                <div className="text-xs text-gray-600 mb-2">All 170 playbooks</div>
+                                <div className="text-xs text-gray-800 mb-2">All 170 playbooks</div>
                                 <div className="text-violet-400 text-sm font-medium">Custom</div>
                                 <div className="text-xs text-violet-400/70">$750K-$1.5M/yr</div>
                               </div>
@@ -613,7 +613,7 @@ export default function CustomerDemo() {
                             <Button
                               onClick={() => setLocation('/playbook-library')}
                               variant="outline"
-                              className="flex-1 border-slate-600 text-gray-600"
+                              className="flex-1 border-slate-600 text-gray-800"
                               data-testid="button-explore-playbooks"
                             >
                               <BookOpen className="mr-2 h-4 w-4" />
@@ -646,7 +646,7 @@ export default function CustomerDemo() {
                         </div>
                         <div>
                           <div className="text-sm font-medium text-gray-900">{item.title}: <span className="text-emerald-400">{item.value}</span></div>
-                          <div className="text-xs text-gray-600">{item.description}</div>
+                          <div className="text-xs text-gray-800">{item.description}</div>
                         </div>
                       </div>
                     ))}
@@ -677,7 +677,7 @@ export default function CustomerDemo() {
                             <div className={`w-2 h-2 rounded-full ${isAcknowledged ? 'bg-emerald-400' : 'bg-slate-600'}`} />
                             <div className="flex-1 min-w-0">
                               <div className="text-sm font-medium text-gray-900 truncate">{stakeholder.name}</div>
-                              <div className="text-xs text-gray-600 truncate">{stakeholder.role}</div>
+                              <div className="text-xs text-gray-800 truncate">{stakeholder.role}</div>
                             </div>
                             {isAcknowledged && <CheckCircle2 className="h-4 w-4 text-emerald-400 flex-shrink-0" />}
                           </div>
@@ -686,7 +686,7 @@ export default function CustomerDemo() {
                     </div>
                     <div className="mt-3 pt-3 border-t border-gray-200">
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Acknowledged</span>
+                        <span className="text-gray-800">Acknowledged</span>
                         <span className="text-gray-900 font-medium">{acknowledgedStakeholders.length} / {STAKEHOLDER_ACKNOWLEDGMENTS.length}</span>
                       </div>
                       <Progress value={(acknowledgedStakeholders.length / STAKEHOLDER_ACKNOWLEDGMENTS.length) * 100} className="h-2 mt-2" />
@@ -707,15 +707,15 @@ export default function CustomerDemo() {
                   <div className="space-y-3">
                     <div className="p-3 bg-gray-50 rounded-lg">
                       <div className="text-sm font-medium text-gray-900 mb-1">90-Day Proof of Concept</div>
-                      <div className="text-xs text-gray-600">Single domain, 20 playbooks, 1 live execution</div>
+                      <div className="text-xs text-gray-800">Single domain, 20 playbooks, 1 live execution</div>
                     </div>
                     <div className="p-3 bg-gray-50 rounded-lg">
                       <div className="text-sm font-medium text-gray-900 mb-1">Domain Pilot</div>
-                      <div className="text-xs text-gray-600">Full domain, all playbooks, 3 live executions</div>
+                      <div className="text-xs text-gray-800">Full domain, all playbooks, 3 live executions</div>
                     </div>
                     <div className="p-3 bg-violet-900/30 border border-violet-500/30 rounded-lg">
                       <div className="text-sm font-medium text-gray-900 mb-1">Enterprise Pilot</div>
-                      <div className="text-xs text-gray-600">All 170 playbooks, dedicated success manager</div>
+                      <div className="text-xs text-gray-800">All 170 playbooks, dedicated success manager</div>
                     </div>
                   </div>
                 </CardContent>

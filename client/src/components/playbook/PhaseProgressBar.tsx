@@ -66,7 +66,7 @@ export function PhaseProgressBar({
   return (
     <div className="space-y-3" data-testid="phase-progress-full">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-sm font-medium text-gray-600 dark:text-slate-300">IDEA Framework Progress</span>
+        <span className="text-sm font-medium text-gray-800 dark:text-slate-300">IDEA Framework Progress</span>
       </div>
       
       <div className="space-y-2">
@@ -84,10 +84,10 @@ export function PhaseProgressBar({
               <div className="flex items-center gap-2">
                 <div className={`w-2 h-2 rounded-full ${phase.color}`} />
                 <span className={`text-sm font-semibold ${phase.textColor}`}>{phase.name}</span>
-                <span className="text-xs text-slate-600 dark:text-slate-200 italic hidden sm:inline">{phase.tagline}</span>
+                <span className="text-xs text-gray-800 dark:text-slate-200 italic hidden sm:inline">{phase.tagline}</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-medium text-gray-600 dark:text-slate-300">{phase.score}%</span>
+                <span className="text-xs font-medium text-gray-800 dark:text-slate-300">{phase.score}%</span>
                 {phase.score === 100 ? (
                   <CheckCircle className="h-3.5 w-3.5 text-green-500" />
                 ) : phase.score > 0 ? (

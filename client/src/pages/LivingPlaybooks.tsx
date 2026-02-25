@@ -79,10 +79,10 @@ export default function LivingPlaybooks() {
         {/* Header */}
         <div>
           <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent mb-2 flex items-center gap-3">
-            <Brain className="w-10 h-10 text-blue-600" />
+            <Brain className="w-10 h-10 text-blue-800" />
             Living Playbooks
           </h1>
-          <p className="text-gray-600 dark:text-slate-300">
+          <p className="text-gray-800 dark:text-slate-300">
             Self-learning strategic playbooks that evolve with every execution through AI-powered analysis
           </p>
         </div>
@@ -91,7 +91,7 @@ export default function LivingPlaybooks() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <Card className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/50 dark:to-blue-900/50 border-blue-200 dark:border-blue-800">
             <CardContent className="p-6 text-center">
-              <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+              <div className="text-4xl font-bold text-blue-800 dark:text-blue-400 mb-1">
                 170
               </div>
               <div className="text-sm text-slate-700 dark:text-slate-300">Living Playbooks</div>
@@ -107,7 +107,7 @@ export default function LivingPlaybooks() {
           </Card>
           <Card className="bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950/50 dark:to-emerald-900/50 border-emerald-200 dark:border-emerald-800">
             <CardContent className="p-6 text-center">
-              <div className="text-4xl font-bold text-emerald-600 dark:text-emerald-400 mb-1">
+              <div className="text-4xl font-bold text-emerald-700 dark:text-emerald-400 mb-1">
                 91%
               </div>
               <div className="text-sm text-slate-700 dark:text-slate-300">Avg Success Rate</div>
@@ -152,19 +152,19 @@ export default function LivingPlaybooks() {
                   {/* Metrics */}
                   <div className="grid grid-cols-3 gap-4">
                     <div>
-                      <div className="text-xs text-gray-600 dark:text-slate-300 mb-1">Activations</div>
+                      <div className="text-xs text-gray-800 dark:text-slate-300 mb-1">Activations</div>
                       <div className="text-2xl font-bold text-slate-900 dark:text-white">
                         {playbook.activations}
                       </div>
                     </div>
                     <div>
-                      <div className="text-xs text-gray-600 dark:text-slate-300 mb-1">Success Rate</div>
-                      <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
+                      <div className="text-xs text-gray-800 dark:text-slate-300 mb-1">Success Rate</div>
+                      <div className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">
                         {playbook.successRate}%
                       </div>
                     </div>
                     <div>
-                      <div className="text-xs text-gray-600 dark:text-slate-300 mb-1">Last Improved</div>
+                      <div className="text-xs text-gray-800 dark:text-slate-300 mb-1">Last Improved</div>
                       <div className="text-sm font-semibold text-slate-700 dark:text-slate-300">
                         {playbook.lastImproved}
                       </div>
@@ -180,7 +180,7 @@ export default function LivingPlaybooks() {
                     <ul className="space-y-2">
                       {playbook.improvements.map((improvement, index) => (
                         <li key={index} className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
-                          <TrendingUp className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                          <TrendingUp className="w-4 h-4 text-emerald-700 flex-shrink-0 mt-0.5" />
                           <span>{improvement}</span>
                         </li>
                       ))}
@@ -216,28 +216,28 @@ export default function LivingPlaybooks() {
                   <span className="text-2xl font-bold">1</span>
                 </div>
                 <h4 className="font-semibold mb-1">Execute</h4>
-                <p className="text-sm text-blue-600">Playbook activated for real scenario</p>
+                <p className="text-sm text-blue-800">Playbook activated for real scenario</p>
               </div>
               <div>
                 <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mb-3">
                   <span className="text-2xl font-bold">2</span>
                 </div>
                 <h4 className="font-semibold mb-1">Capture</h4>
-                <p className="text-sm text-blue-600">AI analyzes execution data and outcomes</p>
+                <p className="text-sm text-blue-800">AI analyzes execution data and outcomes</p>
               </div>
               <div>
                 <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mb-3">
                   <span className="text-2xl font-bold">3</span>
                 </div>
                 <h4 className="font-semibold mb-1">Learn</h4>
-                <p className="text-sm text-blue-600">Generate improvement recommendations</p>
+                <p className="text-sm text-blue-800">Generate improvement recommendations</p>
               </div>
               <div>
                 <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mb-3">
                   <span className="text-2xl font-bold">4</span>
                 </div>
                 <h4 className="font-semibold mb-1">Evolve</h4>
-                <p className="text-sm text-blue-600">Playbook auto-updates for next execution</p>
+                <p className="text-sm text-blue-800">Playbook auto-updates for next execution</p>
               </div>
             </div>
           </CardContent>

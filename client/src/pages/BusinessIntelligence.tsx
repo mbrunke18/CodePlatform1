@@ -22,9 +22,9 @@ import {
 
 export default function BusinessIntelligence() {
   const executiveMetrics = [
-    { title: "Revenue Growth", value: "$127.5M", change: "+23.5%", trend: "up", color: "text-green-600" },
-    { title: "Market Share", value: "34.2%", change: "+5.7%", trend: "up", color: "text-blue-600" },
-    { title: "Operational Efficiency", value: "94.8%", change: "+12.3%", trend: "up", color: "text-purple-600" },
+    { title: "Revenue Growth", value: "$127.5M", change: "+23.5%", trend: "up", color: "text-emerald-700" },
+    { title: "Market Share", value: "34.2%", change: "+5.7%", trend: "up", color: "text-blue-800" },
+    { title: "Operational Efficiency", value: "94.8%", change: "+12.3%", trend: "up", color: "text-purple-800" },
     { title: "Customer Satisfaction", value: "4.8/5", change: "+0.3", trend: "up", color: "text-orange-600" }
   ];
 
@@ -71,11 +71,11 @@ export default function BusinessIntelligence() {
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Business Intelligence Center</h1>
-                <p className="text-gray-600 dark:text-gray-300">Executive Analytics & Competitive Intelligence</p>
+                <p className="text-gray-800 dark:text-gray-300">Executive Analytics & Competitive Intelligence</p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              <Badge variant="outline" className="text-green-600 border-green-500/50">
+              <Badge variant="outline" className="text-emerald-700 border-green-500/50">
                 <TrendingUp className="w-3 h-3 mr-1" />
                 Market Leading
               </Badge>
@@ -91,7 +91,7 @@ export default function BusinessIntelligence() {
               <Card key={index} className="bg-white/90 dark:bg-slate-800/90 backdrop-blur">
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-400">{metric.title}</CardTitle>
+                    <CardTitle className="text-sm font-medium text-gray-800 dark:text-gray-400">{metric.title}</CardTitle>
                     {metric.trend === 'up' ? 
                       <ArrowUpRight className="w-4 h-4 text-green-500" /> : 
                       <ArrowDownRight className="w-4 h-4 text-red-500" />
@@ -129,9 +129,9 @@ export default function BusinessIntelligence() {
                         </Badge>
                       </div>
                       <div className="space-y-2 text-sm">
-                        <div className="text-green-600">✓ Strength: {comp.strength}</div>
-                        <div className="text-red-600">✗ Weakness: {comp.weakness}</div>
-                        <div className="text-blue-600 font-medium">Our Advantage: {comp.ourAdvantage}</div>
+                        <div className="text-emerald-700">✓ Strength: {comp.strength}</div>
+                        <div className="text-red-700">✗ Weakness: {comp.weakness}</div>
+                        <div className="text-blue-800 font-medium">Our Advantage: {comp.ourAdvantage}</div>
                       </div>
                     </div>
                   ))}
@@ -153,10 +153,10 @@ export default function BusinessIntelligence() {
                     <div key={index} className="space-y-2">
                       <div className="flex items-center justify-between text-sm">
                         <span className="font-medium text-gray-900 dark:text-white">{kpi.kpi}</span>
-                        <span className="text-gray-600 dark:text-gray-400">{kpi.current} / {kpi.target}</span>
+                        <span className="text-gray-800 dark:text-gray-400">{kpi.current} / {kpi.target}</span>
                       </div>
                       <Progress value={kpi.progress} className="h-3" />
-                      <div className="text-xs text-gray-600 text-right">{kpi.progress}% of target achieved</div>
+                      <div className="text-xs text-gray-800 text-right">{kpi.progress}% of target achieved</div>
                     </div>
                   ))}
                 </div>

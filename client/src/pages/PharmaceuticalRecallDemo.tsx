@@ -82,7 +82,7 @@ export default function PharmaceuticalRecallDemo() {
               <div className="text-center mb-8">
                 <Heart className="w-16 h-16 text-red-400 mx-auto mb-4" />
                 <h2 className="text-3xl font-bold text-gray-900 mb-3">{pharmaDemoData.crisis.title}</h2>
-                <p className="text-xl text-red-600">{pharmaDemoData.crisis.subtitle}</p>
+                <p className="text-xl text-red-700">{pharmaDemoData.crisis.subtitle}</p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
@@ -113,7 +113,7 @@ export default function PharmaceuticalRecallDemo() {
 
                 <div className="p-6 bg-white rounded-lg border border-red-800/30">
                   <h3 className="font-bold text-gray-900 mb-4">What Happened (May-June 2024)</h3>
-                  <ul className="space-y-2 text-sm text-red-600">
+                  <ul className="space-y-2 text-sm text-red-700">
                     <li>• Week 1-3: Internal investigation</li>
                     <li>• Week 4 (May): Quietly notified wholesalers only</li>
                     <li className="text-red-400 font-semibold">• Week 5: 91-year-old patient takes defective capsules</li>
@@ -165,13 +165,13 @@ export default function PharmaceuticalRecallDemo() {
 
               <div className="mb-8">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-red-600">AI Confidence Level</span>
+                  <span className="text-red-700">AI Confidence Level</span>
                   <span className="text-2xl font-bold text-red-400">{detectionProgress}%</span>
                 </div>
                 <Progress value={detectionProgress} className="h-3" />
                 {detectionProgress >= 92 && (
                   <div className="mt-4 p-4 bg-red-950/50 border border-red-600 rounded-lg">
-                    <p className="text-red-600 font-semibold">
+                    <p className="text-red-700 font-semibold">
                       ⚠️ ALERT: Class I recall criteria detected - Reasonable probability of serious adverse health consequences or death
                     </p>
                   </div>
@@ -226,21 +226,21 @@ export default function PharmaceuticalRecallDemo() {
                         <Card className="p-6 bg-red-950/30 border-red-700">
                           <div className="text-red-300 text-sm mb-2">Tier 1: Decision Makers</div>
                           <div className="text-3xl font-bold text-gray-900 mb-3">{pharmaDemoData.stakeholderTiers.tier1.count}</div>
-                          <div className="text-xs text-red-600">
+                          <div className="text-xs text-red-700">
                             {pharmaDemoData.stakeholderTiers.tier1.members.join(", ")}
                           </div>
                         </Card>
                         <Card className="p-6 bg-red-950/30 border-red-700">
                           <div className="text-red-300 text-sm mb-2">Tier 2: Execution Teams</div>
                           <div className="text-3xl font-bold text-gray-900 mb-3">{pharmaDemoData.stakeholderTiers.tier2.count}</div>
-                          <div className="text-xs text-red-600">
+                          <div className="text-xs text-red-700">
                             {pharmaDemoData.stakeholderTiers.tier2.members.join(", ")}
                           </div>
                         </Card>
                         <Card className="p-6 bg-red-950/30 border-red-700">
                           <div className="text-red-300 text-sm mb-2">Tier 3: Public Notification</div>
                           <div className="text-3xl font-bold text-gray-900 mb-3">{pharmaDemoData.stakeholderTiers.tier3.count}</div>
-                          <div className="text-xs text-red-600">
+                          <div className="text-xs text-red-700">
                             {pharmaDemoData.stakeholderTiers.tier3.members.join(", ")}
                           </div>
                         </Card>
@@ -272,7 +272,7 @@ export default function PharmaceuticalRecallDemo() {
               <div className="text-center mb-8">
                 <Heart className="w-16 h-16 text-green-400 mx-auto mb-4" />
                 <h2 className="text-3xl font-bold text-gray-900 mb-3">A Life Saved</h2>
-                <p className="text-xl text-green-700">The patient never received the deadly capsules</p>
+                <p className="text-xl text-emerald-800">The patient never received the deadly capsules</p>
               </div>
 
               <ROIComparison

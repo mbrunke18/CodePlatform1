@@ -68,7 +68,7 @@ export function Validation({ progress }: SceneProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="text-base md:text-lg text-gray-500 text-center mb-2 max-w-2xl mx-auto"
+          className="text-base md:text-lg text-gray-700 text-center mb-2 max-w-2xl mx-auto"
         >
           The world's top consulting and technology firms all confirm the same gap.
         </motion.p>
@@ -77,7 +77,7 @@ export function Validation({ progress }: SceneProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="text-sm text-gray-400 text-center mb-6"
+          className="text-sm text-gray-600 text-center mb-6"
         >
           17 independent reports from 15 firms. One conclusion: enterprises need execution infrastructure to operationalize AI.
         </motion.p>
@@ -116,7 +116,7 @@ export function Validation({ progress }: SceneProps) {
               className="bg-gray-50 border border-gray-200 rounded-xl p-4"
             >
               <div className="text-indigo-400 font-bold text-sm mb-2">{q.firm}</div>
-              <p className="text-gray-600 text-xs italic leading-relaxed">"{q.quote}"</p>
+              <p className="text-gray-800 text-xs italic leading-relaxed">"{q.quote}"</p>
               <div className="mt-2 text-emerald-400 text-xs">→ Execution OS delivers this</div>
             </motion.div>
           ))}
@@ -126,7 +126,7 @@ export function Validation({ progress }: SceneProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.5 }}
-          className="text-sm text-gray-500 text-center mt-6"
+          className="text-sm text-gray-700 text-center mt-6"
         >
           <span className="text-indigo-400 font-semibold">15 firms. 17 reports.</span> Every one points at the gap Execution OS fills.
         </motion.p>

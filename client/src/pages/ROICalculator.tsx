@@ -162,7 +162,7 @@ export default function ROICalculator() {
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
               Calculate Your Strategic Velocity ROI
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-6">
+            <p className="text-xl text-gray-800 max-w-2xl mx-auto mb-6">
               See how Execution OS transforms coordination time from 72 hours to 12 minutes—and what that means for your bottom line.
             </p>
             
@@ -172,17 +172,17 @@ export default function ROICalculator() {
                 <div className="flex items-center justify-center gap-8 flex-wrap">
                   <div className="text-center">
                     <div className="text-3xl font-bold text-emerald-400">10.3%</div>
-                    <p className="text-sm text-gray-600">Revenue/Employee Growth</p>
-                    <p className="text-xs text-gray-600">Organizations that improved agility</p>
+                    <p className="text-sm text-gray-800">Revenue/Employee Growth</p>
+                    <p className="text-xs text-gray-800">Organizations that improved agility</p>
                   </div>
-                  <div className="text-2xl text-gray-600">vs</div>
+                  <div className="text-2xl text-gray-800">vs</div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-red-400">3.5%</div>
-                    <p className="text-sm text-gray-600">Revenue/Employee Growth</p>
-                    <p className="text-xs text-gray-600">Organizations that didn't improve</p>
+                    <p className="text-sm text-gray-800">Revenue/Employee Growth</p>
+                    <p className="text-xs text-gray-800">Organizations that didn't improve</p>
                   </div>
                 </div>
-                <p className="text-center text-sm text-gray-600 mt-4">
+                <p className="text-center text-sm text-gray-800 mt-4">
                   Source: 2025 Business Agility Report (244 organizations)
                 </p>
               </CardContent>
@@ -201,7 +201,7 @@ export default function ROICalculator() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-2">
-                    <Label className="text-gray-600">Company Size</Label>
+                    <Label className="text-gray-800">Company Size</Label>
                     <Select 
                       value={inputs.companySize} 
                       onValueChange={(v) => setInputs({...inputs, companySize: v})}
@@ -218,7 +218,7 @@ export default function ROICalculator() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-gray-600">Industry</Label>
+                    <Label className="text-gray-800">Industry</Label>
                     <Select 
                       value={inputs.industry} 
                       onValueChange={(v) => setInputs({...inputs, industry: v})}
@@ -235,7 +235,7 @@ export default function ROICalculator() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-gray-600">Annual Revenue</Label>
+                    <Label className="text-gray-800">Annual Revenue</Label>
                     <div className="flex items-center gap-4">
                       <Slider
                         value={[Math.log10(inputs.annualRevenue)]}
@@ -263,8 +263,8 @@ export default function ROICalculator() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-2">
-                    <Label className="text-gray-600">Strategic Events per Year</Label>
-                    <div className="text-xs text-gray-600 mb-2">
+                    <Label className="text-gray-800">Strategic Events per Year</Label>
+                    <div className="text-xs text-gray-800 mb-2">
                       Crises, competitive responses, market entries, M&A, regulatory changes
                     </div>
                     <div className="flex items-center gap-4">
@@ -284,8 +284,8 @@ export default function ROICalculator() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-gray-600">Average Response Time (Hours)</Label>
-                    <div className="text-xs text-gray-600 mb-2">
+                    <Label className="text-gray-800">Average Response Time (Hours)</Label>
+                    <div className="text-xs text-gray-800 mb-2">
                       Time from event detection to coordinated response execution
                     </div>
                     <div className="flex items-center gap-4">
@@ -305,7 +305,7 @@ export default function ROICalculator() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-gray-600">Executives Involved per Event</Label>
+                    <Label className="text-gray-800">Executives Involved per Event</Label>
                     <div className="flex items-center gap-4">
                       <Slider
                         value={[inputs.executivesInvolved]}
@@ -323,7 +323,7 @@ export default function ROICalculator() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-gray-600">Average Executive Compensation</Label>
+                    <Label className="text-gray-800">Average Executive Compensation</Label>
                     <div className="flex items-center gap-4">
                       <Slider
                         value={[inputs.avgExecutiveSalary]}
@@ -352,7 +352,7 @@ export default function ROICalculator() {
                     <div className="text-6xl font-bold text-green-400 mb-2">
                       {calculations.roi.toFixed(0)}%
                     </div>
-                    <div className="text-xl text-gray-600">Annual ROI</div>
+                    <div className="text-xl text-gray-800">Annual ROI</div>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4 mb-6">
@@ -360,13 +360,13 @@ export default function ROICalculator() {
                       <div className="text-2xl font-bold text-gray-900">
                         {formatCurrency(calculations.totalAnnualValue)}
                       </div>
-                      <div className="text-sm text-gray-600">Total Annual Value</div>
+                      <div className="text-sm text-gray-800">Total Annual Value</div>
                     </div>
                     <div className="bg-gray-50 rounded-lg p-4 text-center">
                       <div className="text-2xl font-bold text-gray-900">
                         {calculations.paybackMonths.toFixed(1)} mo
                       </div>
-                      <div className="text-sm text-gray-600">Payback Period</div>
+                      <div className="text-sm text-gray-800">Payback Period</div>
                     </div>
                   </div>
 
@@ -393,33 +393,33 @@ export default function ROICalculator() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-800 leading-relaxed">
                     Based on your profile as a {COMPANY_SIZES[inputs.companySize]?.label} organization in the {INDUSTRY_MULTIPLIERS[inputs.industry]?.label} sector, Execution OS can deliver an estimated {formatCurrency(calculations.totalAnnualValue)} in annual value by reducing strategic response time from {inputs.avgResponseTimeHours} hours to under 2 hours — a {calculations.speedImprovement}X improvement in execution velocity that directly impacts competitive positioning and risk exposure.
                   </p>
 
                   <div className="space-y-3 mt-4">
                     <div className="flex items-start gap-3">
                       <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
-                      <span className="text-gray-600">Save {formatNumber(Math.round(calculations.timeSavedHoursPerYear))} executive hours annually — equivalent to {Math.round(calculations.timeSavedHoursPerYear / 2080)} full-time senior leaders redeployed to growth initiatives</span>
+                      <span className="text-gray-800">Save {formatNumber(Math.round(calculations.timeSavedHoursPerYear))} executive hours annually — equivalent to {Math.round(calculations.timeSavedHoursPerYear / 2080)} full-time senior leaders redeployed to growth initiatives</span>
                     </div>
                     <div className="flex items-start gap-3">
                       <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
-                      <span className="text-gray-600">Protect {formatCurrency(calculations.revenueProtected)} in at-risk revenue through faster competitive and market response</span>
+                      <span className="text-gray-800">Protect {formatCurrency(calculations.revenueProtected)} in at-risk revenue through faster competitive and market response</span>
                     </div>
                     <div className="flex items-start gap-3">
                       <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
-                      <span className="text-gray-600">Achieve full payback in {calculations.paybackMonths.toFixed(1)} months with a {calculations.roi.toFixed(0)}% first-year ROI</span>
+                      <span className="text-gray-800">Achieve full payback in {calculations.paybackMonths.toFixed(1)} months with a {calculations.roi.toFixed(0)}% first-year ROI</span>
                     </div>
                     <div className="flex items-start gap-3">
                       <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
-                      <span className="text-gray-600">Reduce compliance exposure by {formatCurrency(calculations.complianceRiskReduction)} through automated regulatory response coordination</span>
+                      <span className="text-gray-800">Reduce compliance exposure by {formatCurrency(calculations.complianceRiskReduction)} through automated regulatory response coordination</span>
                     </div>
                   </div>
 
                   <div className="flex gap-3 pt-4 border-t border-gray-200">
                     <Button
                       variant="outline"
-                      className="flex-1 border-slate-600 text-gray-600 hover:bg-slate-800"
+                      className="flex-1 border-slate-600 text-gray-800 hover:bg-slate-800"
                       onClick={() => toast({ title: "Coming Soon", description: "Report download will be available shortly." })}
                     >
                       <Download className="h-4 w-4 mr-2" />
@@ -427,7 +427,7 @@ export default function ROICalculator() {
                     </Button>
                     <Button
                       variant="outline"
-                      className="flex-1 border-slate-600 text-gray-600 hover:bg-slate-800"
+                      className="flex-1 border-slate-600 text-gray-800 hover:bg-slate-800"
                       onClick={() => toast({ title: "Coming Soon", description: "Share functionality will be available shortly." })}
                     >
                       <Send className="h-4 w-4 mr-2" />
@@ -458,7 +458,7 @@ export default function ROICalculator() {
                     <div className="bg-green-950/30 rounded-lg p-4 border border-green-500/20">
                       <div className="text-sm text-green-400 mb-1">With Execution OS</div>
                       <div className="text-2xl font-bold text-gray-900">~2 hours</div>
-                      <div className="text-xs text-gray-600">12 min decision + 90 min execution</div>
+                      <div className="text-xs text-gray-800">12 min decision + 90 min execution</div>
                     </div>
                   </div>
                 </CardContent>
@@ -478,7 +478,7 @@ export default function ROICalculator() {
                       <Clock className="h-5 w-5 text-blue-400" />
                       <div>
                         <div className="text-gray-900">Executive Time Saved</div>
-                        <div className="text-xs text-gray-600">
+                        <div className="text-xs text-gray-800">
                           {formatNumber(Math.round(calculations.timeSavedHoursPerYear))} hours/year
                         </div>
                       </div>
@@ -493,7 +493,7 @@ export default function ROICalculator() {
                       <DollarSign className="h-5 w-5 text-green-400" />
                       <div>
                         <div className="text-gray-900">Revenue Protected</div>
-                        <div className="text-xs text-gray-600">
+                        <div className="text-xs text-gray-800">
                           From faster competitive response
                         </div>
                       </div>
@@ -508,7 +508,7 @@ export default function ROICalculator() {
                       <Shield className="h-5 w-5 text-amber-400" />
                       <div>
                         <div className="text-gray-900">Compliance Risk Reduction</div>
-                        <div className="text-xs text-gray-600">
+                        <div className="text-xs text-gray-800">
                           Faster regulatory response
                         </div>
                       </div>
@@ -542,13 +542,13 @@ export default function ROICalculator() {
                     <table className="w-full text-sm">
                       <thead>
                         <tr className="border-b border-gray-200">
-                          <th className="text-left text-gray-600 pb-3 pr-4">Metric</th>
-                          <th className="text-center text-gray-600 pb-3 px-2">Your Org</th>
-                          <th className="text-center text-gray-600 pb-3 px-2">Industry Avg</th>
+                          <th className="text-left text-gray-800 pb-3 pr-4">Metric</th>
+                          <th className="text-center text-gray-800 pb-3 px-2">Your Org</th>
+                          <th className="text-center text-gray-800 pb-3 px-2">Industry Avg</th>
                           <th className="text-center text-green-400 pb-3 pl-2">Execution OS Target</th>
                         </tr>
                       </thead>
-                      <tbody className="text-gray-600">
+                      <tbody className="text-gray-800">
                         <tr className="border-b border-gray-200">
                           <td className="py-3 pr-4 text-gray-900">Avg Response Time</td>
                           <td className="py-3 px-2 text-center text-red-400 font-semibold">{inputs.avgResponseTimeHours}h</td>
@@ -579,7 +579,7 @@ export default function ROICalculator() {
                 </CardContent>
               </Card>
 
-              <div className="text-xs text-gray-600 text-center">
+              <div className="text-xs text-gray-800 text-center">
                 * Calculations are estimates based on industry benchmarks and your inputs.
                 Actual results may vary. Contact us for a detailed analysis.
               </div>
@@ -594,7 +594,7 @@ export default function ROICalculator() {
                 <h2 className="text-3xl font-bold text-gray-900 mb-3">
                   Ready to See This in Action?
                 </h2>
-                <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                <p className="text-lg text-gray-800 mb-8 max-w-2xl mx-auto">
                   Join our founding partner program and experience the strategic velocity difference firsthand.
                 </p>
 
@@ -618,7 +618,7 @@ export default function ROICalculator() {
                   </Button>
                 </div>
 
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-800">
                   Founding Partner Pilot: $75K, 100% credited to Year 1
                 </p>
               </CardContent>

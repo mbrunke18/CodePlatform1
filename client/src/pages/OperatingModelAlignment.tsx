@@ -262,7 +262,7 @@ function RadarChart({ scores, targetScores }: { scores: Record<OperatingModelEle
           fill="none"
           stroke="currentColor"
           strokeOpacity={0.1}
-          className="text-slate-600 dark:text-slate-200"
+          className="text-gray-800 dark:text-slate-200"
         />
       ))}
       
@@ -277,7 +277,7 @@ function RadarChart({ scores, targetScores }: { scores: Record<OperatingModelEle
             y2={point.y}
             stroke="currentColor"
             strokeOpacity={0.1}
-            className="text-slate-600 dark:text-slate-200"
+            className="text-gray-800 dark:text-slate-200"
           />
         );
       })}
@@ -317,7 +317,7 @@ function RadarChart({ scores, targetScores }: { scores: Record<OperatingModelEle
               height={24}
             >
               <div className="flex items-center justify-center w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800">
-                <Icon className="w-3 h-3 text-gray-600 dark:text-slate-300" />
+                <Icon className="w-3 h-3 text-gray-800 dark:text-slate-300" />
               </div>
             </foreignObject>
           </g>
@@ -788,8 +788,8 @@ export default function OperatingModelAlignment() {
                                 <span className="text-sm w-24 shrink-0">{element}</span>
                                 <Progress value={score} className="flex-1 h-2" data-testid={`progress-${elementId}`} />
                                 <span className={`text-sm font-medium w-12 text-right ${
-                                  score >= 80 ? 'text-green-600' :
-                                  score >= 60 ? 'text-amber-600' : 'text-red-600'
+                                  score >= 80 ? 'text-emerald-700' :
+                                  score >= 60 ? 'text-[#C9A84C]' : 'text-red-700'
                                 }`} data-testid={`score-${elementId}`}>
                                   {score}%
                                 </span>
@@ -904,7 +904,7 @@ export default function OperatingModelAlignment() {
                                 <CardContent className="p-4">
                                   <div className="flex items-center gap-3 mb-3">
                                     <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
-                                      <Icon className="w-5 h-5 text-amber-600" />
+                                      <Icon className="w-5 h-5 text-[#C9A84C]" />
                                     </div>
                                     <div>
                                       <h4 className="font-medium">{element}</h4>

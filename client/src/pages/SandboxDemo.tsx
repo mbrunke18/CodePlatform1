@@ -530,13 +530,13 @@ export default function SandboxDemo() {
   const renderDomainSelection = () => (
     <div className="space-y-8">
       <div className="text-center">
-        <Badge className="mb-4 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
+        <Badge className="mb-4 bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
           Step 1 of 6: IDENTIFY Phase
         </Badge>
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
           What strategic challenge do you want to prepare for?
         </h2>
-        <p className="text-lg text-gray-600 dark:text-slate-300">
+        <p className="text-lg text-gray-800 dark:text-slate-300">
           Select a domain to build your personalized playbook
         </p>
       </div>
@@ -565,7 +565,7 @@ export default function SandboxDemo() {
                   <IconComponent className="h-6 w-6" style={{ color: domain.color }} />
                 </div>
                 <h3 className="font-bold text-slate-900 dark:text-white mb-2">{domain.name}</h3>
-                <p className="text-sm text-gray-600 dark:text-slate-300 mb-3">{domain.description}</p>
+                <p className="text-sm text-gray-800 dark:text-slate-300 mb-3">{domain.description}</p>
                 <Badge 
                   variant="outline" 
                   className="text-xs"
@@ -590,7 +590,7 @@ export default function SandboxDemo() {
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
           Configure Your {config.domainName} Playbook
         </h2>
-        <p className="text-lg text-gray-600 dark:text-slate-300">
+        <p className="text-lg text-gray-800 dark:text-slate-300">
           Set up your team, decision tree, escalation paths, and communications
         </p>
       </div>
@@ -632,7 +632,7 @@ export default function SandboxDemo() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Building2 className="h-5 w-5 text-blue-600" />
+                  <Building2 className="h-5 w-5 text-blue-800" />
                   Organization Details
                 </CardTitle>
               </CardHeader>
@@ -666,7 +666,7 @@ export default function SandboxDemo() {
                 <div>
                   <div className="flex justify-between mb-2">
                     <Label>Pre-Approved Budget</Label>
-                    <span className="text-lg font-bold text-green-600">${(config.budgetPreApproved / 1000).toFixed(0)}K</span>
+                    <span className="text-lg font-bold text-emerald-700">${(config.budgetPreApproved / 1000).toFixed(0)}K</span>
                   </div>
                   <Slider
                     value={[config.budgetPreApproved]}
@@ -684,7 +684,7 @@ export default function SandboxDemo() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Clock className="h-5 w-5 text-amber-600" />
+                  <Clock className="h-5 w-5 text-[#C9A84C]" />
                   Response Timing
                 </CardTitle>
               </CardHeader>
@@ -692,7 +692,7 @@ export default function SandboxDemo() {
                 <div>
                   <div className="flex justify-between mb-2">
                     <Label>Target Response Time</Label>
-                    <span className="text-lg font-bold text-amber-600">{config.responseTimeTarget} min</span>
+                    <span className="text-lg font-bold text-[#C9A84C]">{config.responseTimeTarget} min</span>
                   </div>
                   <Slider
                     value={[config.responseTimeTarget]}
@@ -705,17 +705,17 @@ export default function SandboxDemo() {
                   />
                 </div>
                 <div className="p-4 bg-amber-50 dark:bg-amber-950/30 rounded-lg">
-                  <p className="text-sm text-amber-700 dark:text-amber-400">
+                  <p className="text-sm text-[#C9A84C] dark:text-amber-400">
                     <strong>Industry Average:</strong> {TIMING_BENCHMARKS.INDUSTRY_AVERAGE.decisionTime} hours
                   </p>
-                  <p className="text-sm font-bold text-amber-600 mt-1">
+                  <p className="text-sm font-bold text-[#C9A84C] mt-1">
                     You'll be {Math.round((TIMING_BENCHMARKS.INDUSTRY_AVERAGE.decisionTime * 60) / config.responseTimeTarget)}X faster
                   </p>
                 </div>
                 <div className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
                   <div>
                     <Label className="text-sm">AI-Assisted Drafting</Label>
-                    <p className="text-xs text-gray-600">Auto-generate documents</p>
+                    <p className="text-xs text-gray-800">Auto-generate documents</p>
                   </div>
                   <Switch
                     checked={config.aiAssistEnabled}
@@ -730,7 +730,7 @@ export default function SandboxDemo() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Users className="h-5 w-5 text-purple-600" />
+                <Users className="h-5 w-5 text-purple-800" />
                 Response Team ({config.stakeholders.length} selected)
               </CardTitle>
               <CardDescription>Select stakeholders to include in the coordinated response</CardDescription>
@@ -756,7 +756,7 @@ export default function SandboxDemo() {
                       }}
                       data-testid={`stakeholder-${stakeholder.id}`}
                     >
-                      <Icon className={`h-6 w-6 mb-2 ${isSelected ? 'text-purple-600' : 'text-slate-600 dark:text-slate-200'}`} />
+                      <Icon className={`h-6 w-6 mb-2 ${isSelected ? 'text-purple-800' : 'text-gray-800 dark:text-slate-200'}`} />
                       <span className="text-sm font-medium text-center">{stakeholder.label}</span>
                       <Badge variant="outline" className="mt-1 text-xs">L{stakeholder.level}</Badge>
                     </div>
@@ -769,7 +769,7 @@ export default function SandboxDemo() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Bell className="h-5 w-5 text-blue-600" />
+                <Bell className="h-5 w-5 text-blue-800" />
                 Notification Channels
               </CardTitle>
             </CardHeader>
@@ -891,7 +891,7 @@ export default function SandboxDemo() {
                           }}
                           className="w-20"
                         />
-                        <span className="text-sm text-gray-600">min</span>
+                        <span className="text-sm text-gray-800">min</span>
                       </div>
                     </div>
                   </div>
@@ -962,7 +962,7 @@ export default function SandboxDemo() {
                           }}
                           className="w-20"
                         />
-                        <span className="text-sm text-gray-600">min timeout</span>
+                        <span className="text-sm text-gray-800">min timeout</span>
                       </div>
                       <Input
                         value={level.action}
@@ -975,7 +975,7 @@ export default function SandboxDemo() {
                       />
                     </div>
                     {index < config.escalationPath.length - 1 && (
-                      <ChevronDown className="h-5 w-5 text-slate-600 dark:text-slate-200" />
+                      <ChevronDown className="h-5 w-5 text-gray-800 dark:text-slate-200" />
                     )}
                   </div>
                 ))}
@@ -1000,7 +1000,7 @@ export default function SandboxDemo() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Send className="h-5 w-5 text-blue-600" />
+                <Send className="h-5 w-5 text-blue-800" />
                 Communication Templates
               </CardTitle>
               <CardDescription>Pre-configure messages that go out automatically</CardDescription>
@@ -1065,7 +1065,7 @@ export default function SandboxDemo() {
                   </div>
                 </div>
               ))}
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-800">
                 <strong>Variables:</strong> {'{domain}'}, {'{severity}'}, {'{task}'}, {'{duration}'}, {'{stakeholder}'}
               </p>
             </CardContent>
@@ -1076,7 +1076,7 @@ export default function SandboxDemo() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <PieChart className="h-5 w-5 text-green-600" />
+                <PieChart className="h-5 w-5 text-emerald-700" />
                 Budget Allocation
               </CardTitle>
               <CardDescription>
@@ -1091,12 +1091,12 @@ export default function SandboxDemo() {
                   <div key={category.id} className="space-y-2">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <Icon className="h-4 w-4 text-gray-600" />
+                        <Icon className="h-4 w-4 text-gray-800" />
                         <Label className="font-medium">{category.label}</Label>
                       </div>
                       <div className="text-right">
-                        <span className="font-bold text-green-600">${(amount / 1000).toFixed(0)}K</span>
-                        <span className="text-sm text-gray-600 ml-2">({budgetBreakdown[category.id]}%)</span>
+                        <span className="font-bold text-emerald-700">${(amount / 1000).toFixed(0)}K</span>
+                        <span className="text-sm text-gray-800 ml-2">({budgetBreakdown[category.id]}%)</span>
                       </div>
                     </div>
                     <Slider
@@ -1114,12 +1114,12 @@ export default function SandboxDemo() {
               <div className="p-4 bg-slate-50 dark:bg-slate-800 rounded-lg mt-4">
                 <div className="flex justify-between items-center">
                   <span className="font-medium">Total Allocation</span>
-                  <span className={`font-bold ${Object.values(budgetBreakdown).reduce((a, b) => a + b, 0) === 100 ? 'text-green-600' : 'text-amber-600'}`}>
+                  <span className={`font-bold ${Object.values(budgetBreakdown).reduce((a, b) => a + b, 0) === 100 ? 'text-emerald-700' : 'text-[#C9A84C]'}`}>
                     {Object.values(budgetBreakdown).reduce((a, b) => a + b, 0)}%
                   </span>
                 </div>
                 {Object.values(budgetBreakdown).reduce((a, b) => a + b, 0) !== 100 && (
-                  <p className="text-xs text-amber-600 mt-1">Adjust allocations to total 100%</p>
+                  <p className="text-xs text-[#C9A84C] mt-1">Adjust allocations to total 100%</p>
                 )}
               </div>
             </CardContent>
@@ -1130,7 +1130,7 @@ export default function SandboxDemo() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Plug className="h-5 w-5 text-purple-600" />
+                <Plug className="h-5 w-5 text-purple-800" />
                 Enterprise Integrations
               </CardTitle>
               <CardDescription>Connect Execution OS to your existing tools for seamless execution</CardDescription>
@@ -1158,19 +1158,19 @@ export default function SandboxDemo() {
                       <div className="flex items-center justify-between mb-2">
                         <span className="font-medium">{integration.label}</span>
                         {isEnabled ? (
-                          <CircleCheck className="h-5 w-5 text-green-600" />
+                          <CircleCheck className="h-5 w-5 text-emerald-700" />
                         ) : (
-                          <CircleX className="h-5 w-5 text-gray-600" />
+                          <CircleX className="h-5 w-5 text-gray-800" />
                         )}
                       </div>
-                      <p className="text-sm text-gray-600">{integration.description}</p>
+                      <p className="text-sm text-gray-800">{integration.description}</p>
                       <Badge variant="outline" className="mt-2 text-xs">{integration.category.toUpperCase()}</Badge>
                     </div>
                   );
                 })}
               </div>
               <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-950/30 rounded-lg">
-                <p className="text-sm text-blue-700 dark:text-blue-400">
+                <p className="text-sm text-blue-800 dark:text-blue-400">
                   <strong>{enabledIntegrations.length} integrations enabled.</strong> When triggered, Execution OS will automatically create tasks in Jira, send alerts via Slack, and update ServiceNow tickets.
                 </p>
               </div>
@@ -1182,7 +1182,7 @@ export default function SandboxDemo() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <BarChart3 className="h-5 w-5 text-blue-600" />
+                <BarChart3 className="h-5 w-5 text-blue-800" />
                 Success Metrics & KPIs
               </CardTitle>
               <CardDescription>Define measurable targets to track playbook effectiveness</CardDescription>
@@ -1193,7 +1193,7 @@ export default function SandboxDemo() {
                   <div className="flex items-start justify-between mb-3">
                     <div>
                       <h4 className="font-medium">{metric.label}</h4>
-                      <p className="text-sm text-gray-600">{metric.description}</p>
+                      <p className="text-sm text-gray-800">{metric.description}</p>
                     </div>
                     <Badge variant="outline">{metric.unit}</Badge>
                   </div>
@@ -1208,14 +1208,14 @@ export default function SandboxDemo() {
                       className="flex-1"
                       data-testid={`slider-kpi-${metric.id}`}
                     />
-                    <span className="font-bold text-blue-600 w-20 text-right" data-testid={`value-kpi-${metric.id}`}>
+                    <span className="font-bold text-blue-800 w-20 text-right" data-testid={`value-kpi-${metric.id}`}>
                       {successTargets[metric.id]} {metric.unit}
                     </span>
                   </div>
                 </div>
               ))}
               <div className="p-4 bg-green-50 dark:bg-green-950/30 rounded-lg">
-                <p className="text-sm text-green-700 dark:text-green-400">
+                <p className="text-sm text-emerald-800 dark:text-green-400">
                   <strong>Automated Tracking:</strong> Execution OS will measure these KPIs in real-time during execution and include them in post-action reports for continuous improvement.
                 </p>
               </div>
@@ -1235,7 +1235,7 @@ export default function SandboxDemo() {
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
           Configure Task Assignments
         </h2>
-        <p className="text-lg text-gray-600 dark:text-slate-300">
+        <p className="text-lg text-gray-800 dark:text-slate-300">
           Define tasks, assign roles, and set dependencies for your {config.domainName} response
         </p>
       </div>
@@ -1243,7 +1243,7 @@ export default function SandboxDemo() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <ListChecks className="h-5 w-5 text-purple-600" />
+            <ListChecks className="h-5 w-5 text-purple-800" />
             Execution Tasks ({tasks.length} configured)
           </CardTitle>
           <CardDescription>Tasks execute in order based on dependencies. Drag to reorder.</CardDescription>
@@ -1253,7 +1253,7 @@ export default function SandboxDemo() {
             <div key={task.id} className="p-4 border rounded-lg bg-slate-50 dark:bg-slate-800/50">
               <div className="flex items-start gap-4">
                 <div className="flex flex-col items-center">
-                  <GripVertical className="h-5 w-5 text-slate-600 dark:text-slate-200 cursor-move" />
+                  <GripVertical className="h-5 w-5 text-gray-800 dark:text-slate-200 cursor-move" />
                   <div className={`mt-2 w-8 h-8 rounded-full flex items-center justify-center text-gray-900 text-sm font-bold ${
                     task.priority === 'critical' ? 'bg-red-500' :
                     task.priority === 'high' ? 'bg-orange-500' :
@@ -1326,7 +1326,7 @@ export default function SandboxDemo() {
                           }}
                           className="w-20"
                         />
-                        <span className="text-sm text-gray-600">min</span>
+                        <span className="text-sm text-gray-800">min</span>
                       </div>
                     </div>
                     <div>
@@ -1360,7 +1360,7 @@ export default function SandboxDemo() {
                             </Badge>
                           ))
                         ) : (
-                          <Badge variant="outline" className="bg-transparent text-xs text-slate-600 dark:text-slate-200">None</Badge>
+                          <Badge variant="outline" className="bg-transparent text-xs text-gray-800 dark:text-slate-200">None</Badge>
                         )}
                       </div>
                     </div>
@@ -1416,7 +1416,7 @@ export default function SandboxDemo() {
           <div className="flex items-center justify-between">
             <div>
               <h4 className="font-bold text-slate-900 dark:text-white">Task Flow Preview</h4>
-              <p className="text-sm text-gray-600 dark:text-slate-300">
+              <p className="text-sm text-gray-800 dark:text-slate-300">
                 Total estimated time: {tasks.reduce((acc, t) => acc + t.estimatedMinutes, 0)} minutes
               </p>
             </div>
@@ -1430,7 +1430,7 @@ export default function SandboxDemo() {
                     {i + 1}
                   </div>
                   {i < Math.min(4, tasks.length - 1) && (
-                    <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200 mx-1" />
+                    <ChevronRight className="h-4 w-4 text-gray-800 dark:text-slate-200 mx-1" />
                   )}
                 </div>
               ))}
@@ -1445,7 +1445,7 @@ export default function SandboxDemo() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Users className="h-5 w-5 text-emerald-600" />
+            <Users className="h-5 w-5 text-emerald-700" />
             RACI Matrix
           </CardTitle>
           <CardDescription>Responsibility assignment for each task across stakeholders</CardDescription>
@@ -1482,7 +1482,7 @@ export default function SandboxDemo() {
                         if (isResponsible) { badge = <Badge className="bg-blue-500 text-gray-900">R</Badge>; role = 'R'; }
                         else if (isAccountable) { badge = <Badge className="bg-purple-500 text-gray-900">A</Badge>; role = 'A'; }
                         else if (isConsulted) { badge = <Badge className="bg-amber-500 text-gray-900">C</Badge>; role = 'C'; }
-                        else badge = <Badge variant="outline" className="bg-transparent text-slate-600 dark:text-slate-200">I</Badge>;
+                        else badge = <Badge variant="outline" className="bg-transparent text-gray-800 dark:text-slate-200">I</Badge>;
                         
                         return (
                           <td key={id} className="text-center p-2" data-testid={`raci-cell-${task.id}-${id}-${role}`}>{badge}</td>
@@ -1494,11 +1494,11 @@ export default function SandboxDemo() {
               </tbody>
             </table>
           </div>
-          <div className="flex gap-4 mt-4 text-xs text-gray-600">
+          <div className="flex gap-4 mt-4 text-xs text-gray-800">
             <span><Badge className="bg-blue-500 text-gray-900 mr-1">R</Badge> Responsible</span>
             <span><Badge className="bg-purple-500 text-gray-900 mr-1">A</Badge> Accountable</span>
             <span><Badge className="bg-amber-500 text-gray-900 mr-1">C</Badge> Consulted</span>
-            <span><Badge variant="outline" className="bg-transparent text-slate-600 dark:text-slate-200 mr-1">I</Badge> Informed</span>
+            <span><Badge variant="outline" className="bg-transparent text-gray-800 dark:text-slate-200 mr-1">I</Badge> Informed</span>
           </div>
         </CardContent>
       </Card>
@@ -1508,13 +1508,13 @@ export default function SandboxDemo() {
   const renderTriggerSetup = () => (
     <div className="space-y-8">
       <div className="text-center">
-        <Badge className="mb-4 bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
+        <Badge className="mb-4 bg-amber-100 text-[#C9A84C] dark:bg-amber-900/30 dark:text-amber-400">
           Step 4 of 6: DETECT Phase
         </Badge>
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
           Configure Detection & Triggers
         </h2>
-        <p className="text-lg text-gray-600 dark:text-slate-300">
+        <p className="text-lg text-gray-800 dark:text-slate-300">
           Define signal sources, thresholds, and activation rules for your {config.domainName} playbook
         </p>
       </div>
@@ -1523,7 +1523,7 @@ export default function SandboxDemo() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Network className="h-5 w-5 text-blue-600" />
+              <Network className="h-5 w-5 text-blue-800" />
               Signal Sources
             </CardTitle>
             <CardDescription>Where should Execution OS monitor for signals?</CardDescription>
@@ -1562,7 +1562,7 @@ export default function SandboxDemo() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Zap className="h-5 w-5 text-amber-600" />
+              <Zap className="h-5 w-5 text-[#C9A84C]" />
               Trigger Type
             </CardTitle>
           </CardHeader>
@@ -1585,7 +1585,7 @@ export default function SandboxDemo() {
                   data-testid={`trigger-type-${trigger.id}`}
                 >
                   <div className="font-medium text-sm">{trigger.label}</div>
-                  <div className="text-xs text-gray-600">{trigger.desc}</div>
+                  <div className="text-xs text-gray-800">{trigger.desc}</div>
                 </div>
               ))}
             </div>
@@ -1596,7 +1596,7 @@ export default function SandboxDemo() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <TrendingUp className="h-5 w-5 text-green-600" />
+            <TrendingUp className="h-5 w-5 text-emerald-700" />
             Threshold Conditions
           </CardTitle>
           <CardDescription>When these conditions are met, the specified action is triggered</CardDescription>
@@ -1604,7 +1604,7 @@ export default function SandboxDemo() {
         <CardContent className="space-y-4">
           {triggerConfig.thresholds.map((threshold, index) => (
             <div key={threshold.id} className="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
-              <span className="text-sm font-medium text-gray-600">When</span>
+              <span className="text-sm font-medium text-gray-800">When</span>
               <Input
                 value={threshold.metric}
                 onChange={(e) => {
@@ -1643,7 +1643,7 @@ export default function SandboxDemo() {
                 className="w-24"
                 placeholder="Value"
               />
-              <span className="text-sm font-medium text-gray-600">then</span>
+              <span className="text-sm font-medium text-gray-800">then</span>
               <Select 
                 value={threshold.action}
                 onValueChange={(v: 'alert' | 'activate' | 'escalate') => {
@@ -1702,7 +1702,7 @@ export default function SandboxDemo() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5 text-red-600" />
+              <AlertTriangle className="h-5 w-5 text-red-700" />
               Severity Level
             </CardTitle>
           </CardHeader>
@@ -1735,7 +1735,7 @@ export default function SandboxDemo() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Shield className="h-5 w-5 text-blue-600" />
+              <Shield className="h-5 w-5 text-blue-800" />
               Activation Controls
             </CardTitle>
           </CardHeader>
@@ -1743,7 +1743,7 @@ export default function SandboxDemo() {
             <div className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
               <div>
                 <Label className="text-sm">Require Confirmation</Label>
-                <p className="text-xs text-gray-600">Human must approve activation</p>
+                <p className="text-xs text-gray-800">Human must approve activation</p>
               </div>
               <Switch
                 checked={triggerConfig.confirmationRequired}
@@ -1754,7 +1754,7 @@ export default function SandboxDemo() {
             <div className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
               <div>
                 <Label className="text-sm">Auto-Activate on Timeout</Label>
-                <p className="text-xs text-gray-600">If no response in 5 min</p>
+                <p className="text-xs text-gray-800">If no response in 5 min</p>
               </div>
               <Switch
                 checked={triggerConfig.autoActivate}
@@ -1769,7 +1769,7 @@ export default function SandboxDemo() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <GitBranch className="h-5 w-5 text-purple-600" />
+            <GitBranch className="h-5 w-5 text-purple-800" />
             Scenario Branching
           </CardTitle>
           <CardDescription>Different response paths based on trigger severity - actions are pre-configured for each level</CardDescription>
@@ -1797,8 +1797,8 @@ export default function SandboxDemo() {
                 <div className="grid md:grid-cols-3 gap-2">
                   {branch.actions.map((action, i) => (
                     <div key={i} className="flex items-center gap-2 text-sm">
-                      <CheckCircle2 className={`h-4 w-4 ${triggerConfig.severity === branch.severity ? 'text-green-600' : 'text-gray-600'}`} />
-                      <span className={triggerConfig.severity === branch.severity ? '' : 'text-slate-600 dark:text-slate-200'}>{action}</span>
+                      <CheckCircle2 className={`h-4 w-4 ${triggerConfig.severity === branch.severity ? 'text-emerald-700' : 'text-gray-800'}`} />
+                      <span className={triggerConfig.severity === branch.severity ? '' : 'text-gray-800 dark:text-slate-200'}>{action}</span>
                     </div>
                   ))}
                 </div>
@@ -1826,7 +1826,7 @@ export default function SandboxDemo() {
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
           {simulationComplete ? 'Response Coordinated!' : 'Running Your Personalized Simulation...'}
         </h2>
-        <p className="text-lg text-gray-600 dark:text-slate-300">
+        <p className="text-lg text-gray-800 dark:text-slate-300">
           {config.companyName || 'Your organization'} responding to {config.domainName} scenario
         </p>
       </div>
@@ -1836,7 +1836,7 @@ export default function SandboxDemo() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
-                <Timer className="h-6 w-6 text-purple-600" />
+                <Timer className="h-6 w-6 text-purple-800" />
                 <span className="text-lg font-semibold">Execution Progress</span>
               </div>
               <Badge variant={simulationComplete ? "default" : "secondary"} className={simulationComplete ? "bg-green-600" : ""}>
@@ -1844,7 +1844,7 @@ export default function SandboxDemo() {
               </Badge>
             </div>
             <Progress value={simulationProgress} className="h-3 mb-2" />
-            <div className="flex justify-between text-sm text-gray-600">
+            <div className="flex justify-between text-sm text-gray-800">
               <span>Target: {config.responseTimeTarget} min</span>
               <span>{Math.round(simulationProgress)}% complete</span>
             </div>
@@ -1854,26 +1854,26 @@ export default function SandboxDemo() {
         <div className="grid md:grid-cols-4 gap-4 mb-6">
           <Card className="bg-slate-50 dark:bg-slate-800">
             <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-purple-600">{config.stakeholders.length}</div>
-              <div className="text-xs text-gray-600">Stakeholders</div>
+              <div className="text-2xl font-bold text-purple-800">{config.stakeholders.length}</div>
+              <div className="text-xs text-gray-800">Stakeholders</div>
             </CardContent>
           </Card>
           <Card className="bg-slate-50 dark:bg-slate-800">
             <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-blue-600">{tasks.length}</div>
-              <div className="text-xs text-gray-600">Tasks</div>
+              <div className="text-2xl font-bold text-blue-800">{tasks.length}</div>
+              <div className="text-xs text-gray-800">Tasks</div>
             </CardContent>
           </Card>
           <Card className="bg-slate-50 dark:bg-slate-800">
             <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-amber-600">{config.decisionPoints.length}</div>
-              <div className="text-xs text-gray-600">Decisions</div>
+              <div className="text-2xl font-bold text-[#C9A84C]">{config.decisionPoints.length}</div>
+              <div className="text-xs text-gray-800">Decisions</div>
             </CardContent>
           </Card>
           <Card className="bg-slate-50 dark:bg-slate-800">
             <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-green-600">${(config.budgetPreApproved/1000).toFixed(0)}K</div>
-              <div className="text-xs text-gray-600">Budget</div>
+              <div className="text-2xl font-bold text-emerald-700">${(config.budgetPreApproved/1000).toFixed(0)}K</div>
+              <div className="text-xs text-gray-800">Budget</div>
             </CardContent>
           </Card>
         </div>
@@ -1881,7 +1881,7 @@ export default function SandboxDemo() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <FileText className="h-5 w-5 text-blue-600" />
+              <FileText className="h-5 w-5 text-blue-800" />
               Live Execution Log
             </CardTitle>
           </CardHeader>
@@ -1904,30 +1904,30 @@ export default function SandboxDemo() {
                       : 'bg-slate-50 dark:bg-slate-800'
                   }`}
                 >
-                  <div className="min-w-16 font-mono text-sm font-bold text-gray-600 dark:text-slate-300">
+                  <div className="min-w-16 font-mono text-sm font-bold text-gray-800 dark:text-slate-300">
                     {event.time}
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      {event.type === 'complete' && <CheckCircle2 className="h-4 w-4 text-green-600" />}
-                      {event.type === 'trigger' && <AlertTriangle className="h-4 w-4 text-red-600" />}
-                      {event.type === 'ai' && <Sparkles className="h-4 w-4 text-blue-600" />}
+                      {event.type === 'complete' && <CheckCircle2 className="h-4 w-4 text-emerald-700" />}
+                      {event.type === 'trigger' && <AlertTriangle className="h-4 w-4 text-red-700" />}
+                      {event.type === 'ai' && <Sparkles className="h-4 w-4 text-blue-800" />}
                       {event.type === 'task' && <ListChecks className="h-4 w-4 text-indigo-600" />}
-                      {event.type === 'decision' && <GitBranch className="h-4 w-4 text-purple-600" />}
-                      {event.type === 'stakeholder' && <Users className="h-4 w-4 text-emerald-600" />}
-                      {event.type === 'escalation' && <ArrowUpRight className="h-4 w-4 text-amber-600" />}
-                      <span className={`font-medium ${event.type === 'complete' ? 'text-green-700 dark:text-green-400' : ''}`}>
+                      {event.type === 'decision' && <GitBranch className="h-4 w-4 text-purple-800" />}
+                      {event.type === 'stakeholder' && <Users className="h-4 w-4 text-emerald-700" />}
+                      {event.type === 'escalation' && <ArrowUpRight className="h-4 w-4 text-[#C9A84C]" />}
+                      <span className={`font-medium ${event.type === 'complete' ? 'text-emerald-800 dark:text-green-400' : ''}`}>
                         {event.event}
                       </span>
                     </div>
-                    <p className="text-xs text-gray-600 dark:text-slate-300 mt-1 italic">
+                    <p className="text-xs text-gray-800 dark:text-slate-300 mt-1 italic">
                       {EVENT_EXPLANATIONS[event.type]}
                     </p>
                   </div>
                 </div>
               ))}
               {simulationEvents.length === 0 && (
-                <div className="text-center py-8 text-gray-600">
+                <div className="text-center py-8 text-gray-800">
                   <Timer className="h-8 w-8 mx-auto mb-2 animate-pulse" />
                   <p>Initializing simulation...</p>
                 </div>
@@ -1945,13 +1945,13 @@ export default function SandboxDemo() {
     return (
       <div className="space-y-8">
         <div className="text-center">
-          <Badge className="mb-4 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+          <Badge className="mb-4 bg-green-100 text-emerald-800 dark:bg-green-900/30 dark:text-green-400">
             Step 6 of 6: Results
           </Badge>
           <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
             Your Personalized ROI Analysis
           </h2>
-          <p className="text-lg text-gray-600 dark:text-slate-300">
+          <p className="text-lg text-gray-800 dark:text-slate-300">
             Based on your complete {config.domainName} playbook configuration
           </p>
         </div>
@@ -1992,7 +1992,7 @@ export default function SandboxDemo() {
             <AccordionItem value="response-team" className="border rounded-lg bg-white dark:bg-slate-900">
               <AccordionTrigger className="px-4 py-3 hover:no-underline">
                 <div className="flex items-center gap-2">
-                  <Users className="h-5 w-5 text-purple-600" />
+                  <Users className="h-5 w-5 text-purple-800" />
                   <span className="font-semibold">Response Team</span>
                   <Badge variant="secondary" className="ml-2">{config.stakeholders.length}</Badge>
                 </div>
@@ -2008,7 +2008,7 @@ export default function SandboxDemo() {
                       </div>
                     ) : null;
                   })}
-                  <p className="text-xs text-gray-600 mt-2 italic">
+                  <p className="text-xs text-gray-800 mt-2 italic">
                     All team members will be notified via {config.notificationChannels.join(', ')} when triggered.
                   </p>
                 </div>
@@ -2037,7 +2037,7 @@ export default function SandboxDemo() {
                       <Badge variant="outline" className="text-xs">{task.estimatedMinutes}m</Badge>
                     </div>
                   ))}
-                  <p className="text-xs text-gray-600 mt-2 italic">
+                  <p className="text-xs text-gray-800 mt-2 italic">
                     Tasks are assigned based on role and executed in parallel where dependencies allow.
                   </p>
                 </div>
@@ -2049,7 +2049,7 @@ export default function SandboxDemo() {
             <AccordionItem value="trigger-config" className="border rounded-lg bg-white dark:bg-slate-900">
               <AccordionTrigger className="px-4 py-3 hover:no-underline">
                 <div className="flex items-center gap-2">
-                  <Zap className="h-5 w-5 text-amber-600" />
+                  <Zap className="h-5 w-5 text-[#C9A84C]" />
                   <span className="font-semibold">Trigger Configuration</span>
                   <Badge variant={triggerConfig.severity === 'critical' ? 'destructive' : 'secondary'} className="ml-2">
                     {triggerConfig.severity.toUpperCase()}
@@ -2059,7 +2059,7 @@ export default function SandboxDemo() {
               <AccordionContent className="px-4 pb-4">
                 <div className="space-y-3">
                   <div>
-                    <p className="text-xs font-medium text-gray-600 mb-1">Signal Sources</p>
+                    <p className="text-xs font-medium text-gray-800 mb-1">Signal Sources</p>
                     <div className="flex flex-wrap gap-1">
                       {triggerConfig.signalSources.map(source => (
                         <Badge key={source} variant="outline" className="text-xs">{source}</Badge>
@@ -2067,7 +2067,7 @@ export default function SandboxDemo() {
                     </div>
                   </div>
                   <div>
-                    <p className="text-xs font-medium text-gray-600 mb-1">Thresholds</p>
+                    <p className="text-xs font-medium text-gray-800 mb-1">Thresholds</p>
                     <div className="space-y-1">
                       {triggerConfig.thresholds.map((t) => {
                         const opText = t.operator === 'greater' ? '>' : t.operator === 'less' ? '<' : t.operator === 'equals' ? '=' : 'contains';
@@ -2080,7 +2080,7 @@ export default function SandboxDemo() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
-                    <span className="text-gray-600">Auto-activate:</span>
+                    <span className="text-gray-800">Auto-activate:</span>
                     <Badge variant={triggerConfig.autoActivate ? 'default' : 'secondary'}>
                       {triggerConfig.autoActivate ? 'Yes' : 'No'}
                     </Badge>
@@ -2109,7 +2109,7 @@ export default function SandboxDemo() {
                     </div>
                     <div className="flex-1">
                       <div className="font-medium">{dp.name}</div>
-                      <div className="text-xs text-gray-600">Approver: {approver} | Timeout: {dp.autoApproveTimeout}min</div>
+                      <div className="text-xs text-gray-800">Approver: {approver} | Timeout: {dp.autoApproveTimeout}min</div>
                     </div>
                   </div>
                 );
@@ -2134,7 +2134,7 @@ export default function SandboxDemo() {
                   </div>
                   <div className="flex-1">
                     <div className="font-medium">{level.role}</div>
-                    <div className="text-xs text-gray-600">{level.timeoutMinutes}min → {level.action}</div>
+                    <div className="text-xs text-gray-800">{level.timeoutMinutes}min → {level.action}</div>
                   </div>
                 </div>
               ))}
@@ -2168,7 +2168,7 @@ export default function SandboxDemo() {
                 <div className="text-5xl font-bold text-green-400 mb-2">
                   ${(roi.totalValue / 1000).toFixed(0)}K+
                 </div>
-                <div className="text-xl text-gray-600 mb-6">Estimated Annual Value</div>
+                <div className="text-xl text-gray-800 mb-6">Estimated Annual Value</div>
                 <Button 
                   size="lg" 
                   className="bg-white text-slate-900 hover:bg-slate-100"
@@ -2184,7 +2184,7 @@ export default function SandboxDemo() {
         </Card>
 
         <div className="text-center">
-          <p className="text-gray-600 dark:text-slate-300 mb-4">
+          <p className="text-gray-800 dark:text-slate-300 mb-4">
             Ready to see Execution OS with your real scenarios?
           </p>
           <div className="flex justify-center gap-4">
@@ -2248,8 +2248,8 @@ export default function SandboxDemo() {
                       isActive 
                         ? 'bg-blue-600 text-gray-900' 
                         : isComplete 
-                        ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
-                        : 'bg-slate-100 text-gray-600 dark:bg-slate-800'
+                        ? 'bg-green-100 text-emerald-800 dark:bg-green-900/30 dark:text-green-400'
+                        : 'bg-slate-100 text-gray-800 dark:bg-slate-800'
                     }`}
                   >
                     {isComplete ? (

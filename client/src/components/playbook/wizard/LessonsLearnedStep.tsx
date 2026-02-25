@@ -27,7 +27,7 @@ export default function LessonsLearnedStep({ data, onChange, playbook }: Lessons
         <Card className="p-4 bg-green-50 dark:bg-green-950 border-green-200 dark:border-green-800">
           <div className="flex items-center justify-between mb-2">
             <h4 className="font-semibold text-sm">Historical Performance</h4>
-            <span className="text-2xl font-bold text-green-700 dark:text-green-300">
+            <span className="text-2xl font-bold text-emerald-800 dark:text-green-300">
               {(playbook.historicalSuccessRate * 100).toFixed(0)}%
             </span>
           </div>

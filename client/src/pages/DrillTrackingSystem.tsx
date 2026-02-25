@@ -189,7 +189,7 @@ export default function DrillTrackingSystem() {
         <Card data-testid="card-total-drills">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Drills</CardTitle>
-            <PlayCircle className="h-4 w-4 text-blue-600" />
+            <PlayCircle className="h-4 w-4 text-blue-800" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{simulations.length}</div>
@@ -215,7 +215,7 @@ export default function DrillTrackingSystem() {
         <Card data-testid="card-participants">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Active Participants</CardTitle>
-            <Users className="h-4 w-4 text-green-600" />
+            <Users className="h-4 w-4 text-emerald-700" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -232,7 +232,7 @@ export default function DrillTrackingSystem() {
         <Card data-testid="card-readiness-score">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Readiness Score</CardTitle>
-            <TrendingUp className="h-4 w-4 text-blue-600" />
+            <TrendingUp className="h-4 w-4 text-blue-800" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">

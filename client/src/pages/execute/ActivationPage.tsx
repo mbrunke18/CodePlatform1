@@ -58,7 +58,7 @@ export default function ActivationPage() {
               <Card>
                 <CardContent className="pt-6">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-green-600">{avgRating}%</div>
+                    <div className="text-3xl font-bold text-emerald-700">{avgRating}%</div>
                     <div className="text-sm text-muted-foreground mt-1">Avg Success Rating</div>
                   </div>
                 </CardContent>
@@ -66,7 +66,7 @@ export default function ActivationPage() {
               <Card>
                 <CardContent className="pt-6">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-blue-600">
+                    <div className="text-3xl font-bold text-blue-800">
                       {new Set(activations.map(a => a.domainName)).size}
                     </div>
                     <div className="text-sm text-muted-foreground mt-1">Domains Covered</div>
@@ -76,7 +76,7 @@ export default function ActivationPage() {
               <Card>
                 <CardContent className="pt-6">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-purple-600">
+                    <div className="text-3xl font-bold text-purple-800">
                       {activations.filter(a => (a.successRating || 0) >= 90).length}
                     </div>
                     <div className="text-sm text-muted-foreground mt-1">High-Performance (90+)</div>

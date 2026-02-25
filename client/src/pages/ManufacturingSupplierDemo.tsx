@@ -273,7 +273,7 @@ export default function ManufacturingSupplierDemo() {
               <div className="text-center mb-8">
                 <TrendingUp className="w-16 h-16 text-green-400 mx-auto mb-4" />
                 <h2 className="text-3xl font-bold text-gray-900 mb-3">$450M Production Saved</h2>
-                <p className="text-xl text-green-700">2-day pause vs 30-day production halt</p>
+                <p className="text-xl text-emerald-800">2-day pause vs 30-day production halt</p>
               </div>
 
               <ROIComparison

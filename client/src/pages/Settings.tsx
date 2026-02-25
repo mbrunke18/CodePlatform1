@@ -76,10 +76,10 @@ export default function SettingsPage() {
   });
 
   const systemStatus = [
-    { service: "AI Intelligence Modules", status: "Active", uptime: "99.97%", color: "text-green-600" },
-    { service: "Crisis Response Systems", status: "Ready", uptime: "99.99%", color: "text-green-600" },
-    { service: "Database Performance", status: "Optimal", uptime: "99.95%", color: "text-green-600" },
-    { service: "WebSocket Connections", status: "Connected", uptime: "99.92%", color: "text-green-600" }
+    { service: "AI Intelligence Modules", status: "Active", uptime: "99.97%", color: "text-emerald-700" },
+    { service: "Crisis Response Systems", status: "Ready", uptime: "99.99%", color: "text-emerald-700" },
+    { service: "Database Performance", status: "Optimal", uptime: "99.95%", color: "text-emerald-700" },
+    { service: "WebSocket Connections", status: "Connected", uptime: "99.92%", color: "text-emerald-700" }
   ];
 
   const enterpriseFeatures = [
@@ -121,9 +121,9 @@ export default function SettingsPage() {
         <div className="p-8">
           {/* Breadcrumb Navigation */}
           <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-gray-800">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-800 dark:hover:text-white p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-gray-800 hover:text-gray-800 dark:hover:text-white p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>
@@ -142,7 +142,7 @@ export default function SettingsPage() {
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white">System Management</h1>
-                <p className="text-gray-600 dark:text-gray-300">Enterprise Platform Administration & Configuration</p>
+                <p className="text-gray-800 dark:text-gray-300">Enterprise Platform Administration & Configuration</p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
@@ -152,7 +152,7 @@ export default function SettingsPage() {
                   Dashboard
                 </Button>
               </Link>
-              <Badge variant="outline" className="text-green-600 border-green-500/50">
+              <Badge variant="outline" className="text-emerald-700 border-green-500/50">
                 <CheckCircle className="w-3 h-3 mr-1" />
                 All Systems Operational
               </Badge>
@@ -207,7 +207,7 @@ export default function SettingsPage() {
                           <CheckCircle className="w-5 h-5 text-green-500" />
                           <div>
                             <h4 className="font-semibold text-gray-900 dark:text-white">{service.service}</h4>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">Uptime: {service.uptime}</p>
+                            <p className="text-sm text-gray-800 dark:text-gray-400">Uptime: {service.uptime}</p>
                           </div>
                         </div>
                         <Badge variant="default" className="bg-green-600">
@@ -248,16 +248,16 @@ export default function SettingsPage() {
                   <div className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                        <div className="text-2xl font-bold text-blue-600">1,247</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400">Active Users</div>
+                        <div className="text-2xl font-bold text-blue-800">1,247</div>
+                        <div className="text-sm text-gray-800 dark:text-gray-400">Active Users</div>
                       </div>
                       <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                        <div className="text-2xl font-bold text-green-600">94%</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400">Platform Adoption</div>
+                        <div className="text-2xl font-bold text-emerald-700">94%</div>
+                        <div className="text-sm text-gray-800 dark:text-gray-400">Platform Adoption</div>
                       </div>
                       <div className="p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
-                        <div className="text-2xl font-bold text-purple-600">47</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400">Admin Users</div>
+                        <div className="text-2xl font-bold text-purple-800">47</div>
+                        <div className="text-sm text-gray-800 dark:text-gray-400">Admin Users</div>
                       </div>
                     </div>
 
@@ -300,7 +300,7 @@ export default function SettingsPage() {
                               <Badge variant="destructive">Critical</Badge>
                             )}
                           </div>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">{feature.description}</p>
+                          <p className="text-sm text-gray-800 dark:text-gray-400">{feature.description}</p>
                         </div>
                         <div className="flex items-center space-x-3">
                           <Switch 
@@ -365,7 +365,7 @@ export default function SettingsPage() {
                       <div className="flex items-center justify-between">
                         <div>
                           <h4 className="font-medium text-gray-900 dark:text-white">Two-Factor Authentication</h4>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">Require 2FA for all admin users</p>
+                          <p className="text-sm text-gray-800 dark:text-gray-400">Require 2FA for all admin users</p>
                         </div>
                         <Switch defaultChecked data-testid="switch-2fa-required" />
                       </div>
@@ -373,7 +373,7 @@ export default function SettingsPage() {
                       <div className="flex items-center justify-between">
                         <div>
                           <h4 className="font-medium text-gray-900 dark:text-white">Audit Logging</h4>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">Log all user actions and system events</p>
+                          <p className="text-sm text-gray-800 dark:text-gray-400">Log all user actions and system events</p>
                         </div>
                         <Switch defaultChecked data-testid="switch-audit-logging" />
                       </div>
@@ -381,7 +381,7 @@ export default function SettingsPage() {
                       <div className="flex items-center justify-between">
                         <div>
                           <h4 className="font-medium text-gray-900 dark:text-white">Advanced Encryption</h4>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">AES-256 encryption for sensitive data</p>
+                          <p className="text-sm text-gray-800 dark:text-gray-400">AES-256 encryption for sensitive data</p>
                         </div>
                         <Switch defaultChecked disabled />
                       </div>
@@ -518,7 +518,7 @@ export default function SettingsPage() {
                           <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
                             <strong>Demo Title:</strong> {scenariosData.scenarios.find((s: any) => s.id === selectedScenario)?.title}
                           </p>
-                          <p className="text-xs text-gray-600 dark:text-gray-400">
+                          <p className="text-xs text-gray-800 dark:text-gray-400">
                             Each scenario includes realistic organizational data, executive briefings, strategic action items, AI intelligence modules, and crisis response workflows tailored for Fortune 500 leadership demonstrations.
                           </p>
                         </div>
@@ -554,7 +554,7 @@ export default function SettingsPage() {
                       </Button>
                     </div>
 
-                    <div className="text-xs text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                    <div className="text-xs text-gray-800 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
                       <strong>Note:</strong> This action will completely replace all organizations, users, scenarios, tasks, and AI intelligence data with the Golden Demo dataset. This is intended for sales presentations and demonstrations only.
                     </div>
                   </div>

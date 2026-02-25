@@ -60,7 +60,7 @@ export default function EnergyGridFailureDemo() {
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
             Energy Grid Crisis Demo
           </h1>
-          <p className="text-xl text-amber-700 mb-2">
+          <p className="text-xl text-[#C9A84C] mb-2">
             {energyDemoData.crisis.subtitle}
           </p>
           <p className="text-sm text-amber-300 max-w-3xl mx-auto">
@@ -82,7 +82,7 @@ export default function EnergyGridFailureDemo() {
                 <Badge variant="outline" className="mb-4 text-amber-300 border-amber-500">
                   {energyDemoData.organization.industry}
                 </Badge>
-                <p className="text-amber-700 mb-6">{energyDemoData.organization.description}</p>
+                <p className="text-[#C9A84C] mb-6">{energyDemoData.organization.description}</p>
                 <div className="grid md:grid-cols-4 gap-6 mt-6">
                   <div>
                     <div className="text-3xl font-bold text-amber-400">{energyDemoData.organization.stats.revenue}</div>
@@ -112,21 +112,21 @@ export default function EnergyGridFailureDemo() {
                 </div>
                 <div className="flex-1 page-background">
                   <h3 className="text-2xl font-bold mb-2 text-gray-900">The Crisis Event</h3>
-                  <p className="text-lg text-gray-600 mb-4">{energyDemoData.crisis.description}</p>
+                  <p className="text-lg text-gray-800 mb-4">{energyDemoData.crisis.description}</p>
                   <div className="grid md:grid-cols-3 gap-4 mt-4">
                     <div className="bg-gray-50 p-4 rounded border border-red-500/30">
                       <Users className="h-5 w-5 text-amber-400 mb-2" />
-                      <div className="text-sm text-gray-600 mb-1">Scope</div>
+                      <div className="text-sm text-gray-800 mb-1">Scope</div>
                       <div className="text-lg font-bold text-gray-900">{energyDemoData.crisis.impactMetrics.scope}</div>
                     </div>
                     <div className="bg-gray-50 p-4 rounded border border-red-500/30">
                       <Clock className="h-5 w-5 text-orange-400 mb-2" />
-                      <div className="text-sm text-gray-600 mb-1">Response Window</div>
+                      <div className="text-sm text-gray-800 mb-1">Response Window</div>
                       <div className="text-lg font-bold text-gray-900">{energyDemoData.crisis.impactMetrics.timeWindow}</div>
                     </div>
                     <div className="bg-gray-50 p-4 rounded border border-red-500/30">
                       <DollarSign className="h-5 w-5 text-red-400 mb-2" />
-                      <div className="text-sm text-gray-600 mb-1">Financial Impact</div>
+                      <div className="text-sm text-gray-800 mb-1">Financial Impact</div>
                       <div className="text-lg font-bold text-gray-900">{energyDemoData.crisis.impactMetrics.financialImpact}</div>
                     </div>
                   </div>
@@ -154,13 +154,13 @@ export default function EnergyGridFailureDemo() {
                   </h3>
                 </div>
               </div>
-              <p className="text-amber-700 mb-4">
+              <p className="text-[#C9A84C] mb-4">
                 Pre-configured emergency response coordinating federal agencies (DoE, FEMA, DHS), 247 substations, 
                 47 critical hospitals, and 2,500 field personnel for rapid grid stabilization.
               </p>
               <div className="bg-white p-4 rounded">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-amber-700">Preparedness Score</span>
+                  <span className="text-sm text-[#C9A84C]">Preparedness Score</span>
                   <span className="text-2xl font-bold text-amber-400">{energyDemoData.playbook.preparednessScore}%</span>
                 </div>
                 <Progress value={energyDemoData.playbook.preparednessScore} className="mt-2 h-2" />
@@ -201,7 +201,7 @@ export default function EnergyGridFailureDemo() {
               <h2 className="text-3xl font-bold mb-4 text-gray-900">
                 AI Grid Monitoring Detects Cascading Failure Risk
               </h2>
-              <p className="text-lg text-red-600 mb-4">
+              <p className="text-lg text-red-700 mb-4">
                 2:15 PM - Multiple AI intelligence systems detect heat wave triggering transformer stress across 247 substations. 
                 Pattern recognition identifies cascading failure risk at 96% confidence.
               </p>
@@ -210,7 +210,7 @@ export default function EnergyGridFailureDemo() {
                   <AlertTriangle className="h-6 w-6 text-red-400 animate-pulse" />
                   <div>
                     <p className="font-bold text-gray-900">NERC Category 3 Emergency Criteria Met</p>
-                    <p className="text-sm text-red-600">
+                    <p className="text-sm text-red-700">
                       Cascading failures imminent - Playbook #082 activation recommended
                     </p>
                   </div>
@@ -251,7 +251,7 @@ export default function EnergyGridFailureDemo() {
               <h2 className="text-3xl font-bold mb-4 text-gray-900">
                 3-Hour Coordinated Response Across 2,500 Stakeholders
               </h2>
-              <p className="text-lg text-amber-700 mb-4">
+              <p className="text-lg text-[#C9A84C] mb-4">
                 Watch Execution OS orchestrate grid stabilization across 247 substations, 47 hospitals, federal agencies, 
                 and 2,500 field personnel—executing load shedding and emergency repairs in parallel.
               </p>
@@ -286,7 +286,7 @@ export default function EnergyGridFailureDemo() {
                   <h3 className="text-2xl font-bold text-center mb-4 text-gray-900">
                     Grid Stabilized - Crisis Resolved
                   </h3>
-                  <p className="text-center text-green-700 mb-6">
+                  <p className="text-center text-emerald-800 mb-6">
                     All 247 substations stable • 47 hospitals uninterrupted • Zero casualties • 
                     $450M infrastructure preserved through coordinated response
                   </p>
@@ -296,25 +296,25 @@ export default function EnergyGridFailureDemo() {
                   <Card className="p-6 bg-white border-amber-500">
                     <div className="text-center">
                       <Users className="h-8 w-8 text-amber-400 mx-auto mb-2" />
-                      <div className="text-sm text-gray-600 mb-1">Tier 1: Crisis Command</div>
+                      <div className="text-sm text-gray-800 mb-1">Tier 1: Crisis Command</div>
                       <div className="text-3xl font-bold text-gray-900">{energyDemoData.stakeholderTiers.tier1.count}</div>
-                      <div className="text-xs text-gray-600 mt-2">{energyDemoData.stakeholderTiers.tier1.description}</div>
+                      <div className="text-xs text-gray-800 mt-2">{energyDemoData.stakeholderTiers.tier1.description}</div>
                     </div>
                   </Card>
                   <Card className="p-6 bg-white border-orange-500">
                     <div className="text-center">
                       <Activity className="h-8 w-8 text-orange-400 mx-auto mb-2" />
-                      <div className="text-sm text-gray-600 mb-1">Tier 2: Field Execution</div>
+                      <div className="text-sm text-gray-800 mb-1">Tier 2: Field Execution</div>
                       <div className="text-3xl font-bold text-gray-900">{energyDemoData.stakeholderTiers.tier2.count}</div>
-                      <div className="text-xs text-gray-600 mt-2">{energyDemoData.stakeholderTiers.tier2.description}</div>
+                      <div className="text-xs text-gray-800 mt-2">{energyDemoData.stakeholderTiers.tier2.description}</div>
                     </div>
                   </Card>
                   <Card className="p-6 bg-white border-red-500">
                     <div className="text-center">
                       <ShieldAlert className="h-8 w-8 text-red-400 mx-auto mb-2" />
-                      <div className="text-sm text-gray-600 mb-1">Tier 3: Network</div>
+                      <div className="text-sm text-gray-800 mb-1">Tier 3: Network</div>
                       <div className="text-3xl font-bold text-gray-900">{energyDemoData.stakeholderTiers.tier3.count}+</div>
-                      <div className="text-xs text-gray-600 mt-2">{energyDemoData.stakeholderTiers.tier3.description}</div>
+                      <div className="text-xs text-gray-800 mt-2">{energyDemoData.stakeholderTiers.tier3.description}</div>
                     </div>
                   </Card>
                 </div>
@@ -343,7 +343,7 @@ export default function EnergyGridFailureDemo() {
                 <h2 className="text-4xl font-bold mb-4 text-gray-900">
                   $2.5B Economic Loss Prevented + Lives Saved
                 </h2>
-                <p className="text-xl text-green-700">
+                <p className="text-xl text-emerald-800">
                   Zero uncontrolled outages • All hospitals protected • Grid stabilized in 3 hours vs 3-5 day blackout
                 </p>
               </div>
@@ -372,7 +372,7 @@ export default function EnergyGridFailureDemo() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="font-semibold text-red-400 mb-2">❌ Traditional Coordination</h4>
-                  <ul className="text-sm text-gray-600 space-y-1">
+                  <ul className="text-sm text-gray-800 space-y-1">
                     <li>• 3-5 days of sequential phone trees and approvals</li>
                     <li>• Grid cascades into uncontrolled blackout during delays</li>
                     <li>• 8.2M customers without power for 36-72 hours</li>
@@ -382,7 +382,7 @@ export default function EnergyGridFailureDemo() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-green-400 mb-2">✓ Execution OS Coordination</h4>
-                  <ul className="text-sm text-gray-600 space-y-1">
+                  <ul className="text-sm text-gray-800 space-y-1">
                     <li>• 3-hour coordinated response across 2,500 stakeholders</li>
                     <li>• Controlled load shedding prevents cascading failures</li>
                     <li>• Zero uncontrolled outages - managed rotating schedule</li>

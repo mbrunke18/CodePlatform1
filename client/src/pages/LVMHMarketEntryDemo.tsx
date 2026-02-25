@@ -117,7 +117,7 @@ export default function LVMHMarketEntryDemo() {
                   <Target className="w-8 h-8 text-purple-400 flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-gray-900 mb-2">Strategic Execution, Not Crisis Response</h3>
-                    <p className="text-purple-600 leading-relaxed">
+                    <p className="text-purple-800 leading-relaxed">
                       This isn't a crisis—it's a strategic offensive move. China's luxury market rebounds 47%, creating 
                       a 90-day window to capture market leadership. But coordinating 10 brands (Louis Vuitton, Dior, Fendi, 
                       Givenchy, Celine, Loewe, Loro Piana, Rimowa, Berluti, Kenzo) across 15 cities traditionally takes 

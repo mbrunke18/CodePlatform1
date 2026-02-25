@@ -43,9 +43,9 @@ function KPICard({
   trend?: string;
 }) {
   const statusColors = {
-    good: 'text-emerald-600 dark:text-emerald-400',
-    warning: 'text-amber-600 dark:text-amber-400',
-    critical: 'text-red-600 dark:text-red-400'
+    good: 'text-emerald-700 dark:text-emerald-400',
+    warning: 'text-[#C9A84C] dark:text-amber-400',
+    critical: 'text-red-700 dark:text-red-400'
   };
 
   return (
@@ -53,8 +53,8 @@ function KPICard({
       <StatusDot status={status} />
       <div>
         <div className={`text-lg sm:text-2xl font-bold ${statusColors[status]}`}>{value}</div>
-        <div className="text-xs sm:text-xs text-gray-600 dark:text-slate-300">{label}</div>
-        {trend && <div className="text-xs text-gray-600 dark:text-slate-300 hidden sm:block">{trend}</div>}
+        <div className="text-xs sm:text-xs text-gray-800 dark:text-slate-300">{label}</div>
+        {trend && <div className="text-xs text-gray-800 dark:text-slate-300 hidden sm:block">{trend}</div>}
       </div>
     </div>
   );
@@ -87,20 +87,20 @@ function PhaseCard({
     blue: {
       border: 'border-blue-200 dark:border-blue-800 hover:border-blue-400 dark:hover:border-blue-600',
       iconBg: 'bg-blue-100 dark:bg-blue-900/50',
-      iconColor: 'text-blue-600 dark:text-blue-400',
-      badge: 'bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300'
+      iconColor: 'text-blue-800 dark:text-blue-400',
+      badge: 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300'
     },
     emerald: {
       border: 'border-emerald-200 dark:border-emerald-800 hover:border-emerald-400 dark:hover:border-emerald-600',
       iconBg: 'bg-emerald-100 dark:bg-emerald-900/50',
-      iconColor: 'text-emerald-600 dark:text-emerald-400',
+      iconColor: 'text-emerald-700 dark:text-emerald-400',
       badge: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300'
     },
     amber: {
       border: 'border-amber-200 dark:border-amber-800 hover:border-amber-400 dark:hover:border-amber-600',
       iconBg: 'bg-amber-100 dark:bg-amber-900/50',
-      iconColor: 'text-amber-600 dark:text-amber-400',
-      badge: 'bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-300'
+      iconColor: 'text-[#C9A84C] dark:text-amber-400',
+      badge: 'bg-amber-100 text-[#C9A84C] dark:bg-amber-900/50 dark:text-amber-300'
     }
   };
 
@@ -119,16 +119,16 @@ function PhaseCard({
                 <Badge className={`${c.badge} text-xs sm:text-xs font-bold`}>{phase}</Badge>
               </div>
             </div>
-            <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200" />
+            <ChevronRight className="h-4 w-4 text-gray-800 dark:text-slate-200" />
           </div>
           <CardTitle className="text-sm sm:text-lg text-slate-900 dark:text-white">{title}</CardTitle>
-          <p className="text-xs sm:text-sm text-gray-600 dark:text-slate-300 line-clamp-2">{description}</p>
+          <p className="text-xs sm:text-sm text-gray-800 dark:text-slate-300 line-clamp-2">{description}</p>
         </CardHeader>
         <CardContent className="p-3 sm:p-6 pt-0 sm:pt-0">
           <div className="space-y-1 sm:space-y-2">
             {metrics.map((metric, i) => (
               <div key={i} className="flex justify-between items-center">
-                <span className="text-xs sm:text-sm text-gray-600 dark:text-slate-300">{metric.label}</span>
+                <span className="text-xs sm:text-sm text-gray-800 dark:text-slate-300">{metric.label}</span>
                 <span className={`text-xs sm:text-sm font-semibold ${metric.highlight ? c.iconColor : 'text-slate-900 dark:text-white'}`}>
                   {metric.value}
                 </span>
@@ -161,7 +161,7 @@ function ActivityItem({
   const colors = {
     alert: 'text-amber-500 bg-amber-100 dark:bg-amber-900/30',
     activation: 'text-blue-500 bg-blue-100 dark:bg-blue-900/30',
-    update: 'text-gray-600 bg-slate-100 dark:bg-slate-800',
+    update: 'text-gray-800 bg-slate-100 dark:bg-slate-800',
     success: 'text-emerald-500 bg-emerald-100 dark:bg-emerald-900/30'
   };
 
@@ -176,7 +176,7 @@ function ActivityItem({
       <div className="flex-1 min-w-0">
         <p className="text-sm font-medium text-slate-900 dark:text-white truncate">{title}</p>
         <div className="flex items-center gap-2 mt-0.5">
-          <span className="text-xs text-gray-600 dark:text-slate-300">{time}</span>
+          <span className="text-xs text-gray-800 dark:text-slate-300">{time}</span>
           {status && (
             <Badge variant="outline" className="text-xs py-0 h-5">{status}</Badge>
           )}
@@ -250,21 +250,21 @@ export default function Dashboard() {
                     'bg-red-100 dark:bg-red-900/30'
                   }`}>
                     <Shield className={`h-5 w-5 sm:h-6 sm:w-6 ${
-                      overallStatus === 'good' ? 'text-emerald-600 dark:text-emerald-400' :
-                      overallStatus === 'warning' ? 'text-amber-600 dark:text-amber-400' : 
-                      'text-red-600 dark:text-red-400'
+                      overallStatus === 'good' ? 'text-emerald-700 dark:text-emerald-400' :
+                      overallStatus === 'warning' ? 'text-[#C9A84C] dark:text-amber-400' : 
+                      'text-red-700 dark:text-red-400'
                     }`} />
                   </div>
                   <div>
                     <h1 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white">Strategic Command Center</h1>
                     <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-0.5">
                       <StatusDot status={overallStatus} />
-                      <span className="text-xs sm:text-sm text-gray-600 dark:text-slate-300">
+                      <span className="text-xs sm:text-sm text-gray-800 dark:text-slate-300">
                         {overallStatus === 'good' ? 'All Systems Operational' :
                          overallStatus === 'warning' ? 'Attention Required' : 'Action Needed'}
                       </span>
-                      <span className="text-xs text-slate-600 dark:text-slate-200 hidden sm:inline">•</span>
-                      <span className="text-xs sm:text-xs text-gray-600 dark:text-slate-300">
+                      <span className="text-xs text-gray-800 dark:text-slate-200 hidden sm:inline">•</span>
+                      <span className="text-xs sm:text-xs text-gray-800 dark:text-slate-300">
                         {isConnected ? 'Live' : 'Reconnecting...'}
                       </span>
                     </div>
@@ -437,11 +437,11 @@ export default function Dashboard() {
                   <Link href="/try-demo">
                     <Button variant="outline" className="w-full justify-start h-auto py-3" data-testid="button-run-demo">
                       <div className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mr-3">
-                        <Zap className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                        <Zap className="h-4 w-4 text-blue-800 dark:text-blue-400" />
                       </div>
                       <div className="text-left">
                         <div className="font-medium text-sm">Run Live Demo</div>
-                        <div className="text-xs text-gray-600 dark:text-slate-300">Experience a 12-min activation</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-300">Experience a 12-min activation</div>
                       </div>
                     </Button>
                   </Link>
@@ -449,11 +449,11 @@ export default function Dashboard() {
                   <Link href="/playbook-library">
                     <Button variant="outline" className="w-full justify-start h-auto py-3" data-testid="button-browse-playbooks">
                       <div className="w-8 h-8 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mr-3">
-                        <Target className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                        <Target className="h-4 w-4 text-purple-800 dark:text-purple-400" />
                       </div>
                       <div className="text-left">
                         <div className="font-medium text-sm">Browse Playbooks</div>
-                        <div className="text-xs text-gray-600 dark:text-slate-300">170 strategic templates</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-300">170 strategic templates</div>
                       </div>
                     </Button>
                   </Link>
@@ -461,11 +461,11 @@ export default function Dashboard() {
                   <Link href="/triggers-management">
                     <Button variant="outline" className="w-full justify-start h-auto py-3" data-testid="button-configure-triggers">
                       <div className="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mr-3">
-                        <Radio className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                        <Radio className="h-4 w-4 text-[#C9A84C] dark:text-amber-400" />
                       </div>
                       <div className="text-left">
                         <div className="font-medium text-sm">Configure Triggers</div>
-                        <div className="text-xs text-gray-600 dark:text-slate-300">Set up AI monitoring</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-300">Set up AI monitoring</div>
                       </div>
                     </Button>
                   </Link>
@@ -473,11 +473,11 @@ export default function Dashboard() {
                   <Link href="/preparedness-report">
                     <Button variant="outline" className="w-full justify-start h-auto py-3" data-testid="button-view-report">
                       <div className="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mr-3">
-                        <TrendingUp className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                        <TrendingUp className="h-4 w-4 text-emerald-700 dark:text-emerald-400" />
                       </div>
                       <div className="text-left">
                         <div className="font-medium text-sm">Preparedness Report</div>
-                        <div className="text-xs text-gray-600 dark:text-slate-300">Full readiness analysis</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-300">Full readiness analysis</div>
                       </div>
                     </Button>
                   </Link>
@@ -487,7 +487,7 @@ export default function Dashboard() {
           </div>
 
           {/* Footer */}
-          <p className="text-center text-xs text-gray-600 dark:text-slate-300 pt-2">
+          <p className="text-center text-xs text-gray-800 dark:text-slate-300 pt-2">
             Data refreshes automatically • Last updated just now
           </p>
         </div>

@@ -93,7 +93,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
-              className="text-xl md:text-2xl text-gray-600"
+              className="text-xl md:text-2xl text-gray-800"
             >
               A market opens. A threat emerges. A transformation begins.
             </motion.p>
@@ -108,7 +108,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
-              className="text-lg text-gray-600 mb-4"
+              className="text-lg text-gray-800 mb-4"
             >
               Most organizations?
             </motion.p>
@@ -131,7 +131,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
-              className="text-lg text-gray-600 mb-6"
+              className="text-lg text-gray-800 mb-6"
             >
               Execution OS: 170 playbooks for offense, defense, and special teams.
             </motion.p>
@@ -174,7 +174,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
-              className="text-xl text-gray-600"
+              className="text-xl text-gray-800"
             >
               Seize opportunities. Protect value. Drive transformation.
             </motion.p>
@@ -240,7 +240,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
-              className="text-xl md:text-2xl text-gray-600 mb-6"
+              className="text-xl md:text-2xl text-gray-800 mb-6"
             >
               Two companies. Same opportunity.
             </motion.p>
@@ -252,12 +252,12 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
             >
               <div className="text-center">
                 <div className="text-4xl font-bold text-red-500">72 hrs</div>
-                <div className="text-sm text-gray-600">Company A</div>
+                <div className="text-sm text-gray-800">Company A</div>
               </div>
-              <div className="text-gray-600">vs</div>
+              <div className="text-gray-800">vs</div>
               <div className="text-center">
                 <div className="text-4xl font-bold text-emerald-400">?</div>
-                <div className="text-sm text-gray-600">Company B</div>
+                <div className="text-sm text-gray-800">Company B</div>
               </div>
             </motion.div>
           </div>
@@ -275,7 +275,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
             >
               <div className="text-center opacity-50">
                 <div className="text-4xl font-bold text-red-500 line-through">72 hrs</div>
-                <div className="text-sm text-gray-600">Still scheduling</div>
+                <div className="text-sm text-gray-800">Still scheduling</div>
               </div>
               <ArrowRight className="h-8 w-8 text-emerald-400" />
               <div className="text-center">
@@ -294,7 +294,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
-              className="text-xl text-gray-600 mb-4"
+              className="text-xl text-gray-800 mb-4"
             >
               First movers don't wait for meetings.
             </motion.p>
@@ -335,7 +335,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3, delay: 0.4 }}
               className="mb-6"
             >
-              <span className="text-lg text-gray-600">
+              <span className="text-lg text-gray-800">
                 The Strategic Execution Operating System.
               </span>
             </motion.div>
@@ -375,7 +375,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.5 }}
-              className="text-lg text-gray-600 mt-4"
+              className="text-lg text-gray-800 mt-4"
             >
               Average time to coordinate a strategic response.
             </motion.p>
@@ -398,7 +398,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.5 }}
-              className="text-lg text-gray-600 mt-4"
+              className="text-lg text-gray-800 mt-4"
             >
               Execution OS.
             </motion.p>
@@ -426,7 +426,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.6 }}
-              className="text-lg text-gray-600"
+              className="text-lg text-gray-800"
             >
               170 playbooks. Instant coordination.
               <br />Whether you're playing offense, defense, or changing the game.
@@ -453,7 +453,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3, delay: 0.3 }}
               className="mb-2"
             >
-              <span className="text-lg text-gray-600 uppercase tracking-widest">
+              <span className="text-lg text-gray-800 uppercase tracking-widest">
                 Strategic Execution
               </span>
             </motion.div>
@@ -464,7 +464,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3, delay: 0.5 }}
               className="mb-6"
             >
-              <span className="text-lg text-gray-600 uppercase tracking-widest">
+              <span className="text-lg text-gray-800 uppercase tracking-widest">
                 Operating System
               </span>
             </motion.div>
@@ -550,7 +550,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onClick={restart}
-            className="ml-4 flex items-center gap-2 text-gray-600 hover:text-white transition-colors"
+            className="ml-4 flex items-center gap-2 text-gray-800 hover:text-white transition-colors"
             data-testid={`button-replay-${version}`}
           >
             <RotateCcw className="h-4 w-4" />
@@ -566,14 +566,14 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
             setCurrentScene(totalScenes - 1);
             setHasCompleted(true);
           }}
-          className="absolute bottom-8 right-8 text-gray-600 hover:text-white text-sm transition-colors"
+          className="absolute bottom-8 right-8 text-gray-800 hover:text-white text-sm transition-colors"
           data-testid={`button-skip-${version}`}
         >
           Skip
         </button>
       )}
       
-      <div className="absolute top-4 left-4 text-gray-600 text-sm">
+      <div className="absolute top-4 left-4 text-gray-800 text-sm">
         30-Second Spot: {getTitle()}
       </div>
     </div>

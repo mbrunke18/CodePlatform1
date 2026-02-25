@@ -93,7 +93,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
                 data-testid={`template-trigger-${index}`}
               >
                 <p className="text-sm font-medium text-white">{template.name}</p>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-700 mt-1">
                   {template.signal} {template.operator === 'lt' ? '<' : '>'} {template.threshold}
                 </p>
               </button>
@@ -134,7 +134,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
                   onChange={(e) => setNewTrigger({ ...newTrigger, signal: e.target.value })}
                   className="bg-gray-50 border-slate-600 text-gray-900 mt-2"
                 />
-                <p className="text-xs text-gray-600 mt-1">What metric or event should AI monitor?</p>
+                <p className="text-xs text-gray-800 mt-1">What metric or event should AI monitor?</p>
               </div>
 
               <div>
@@ -204,7 +204,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
                   className="mt-3"
                   data-testid="slider-confidence-weight"
                 />
-                <p className="text-xs text-gray-600 mt-1">How reliable is this signal? (prevents false positives)</p>
+                <p className="text-xs text-gray-800 mt-1">How reliable is this signal? (prevents false positives)</p>
               </div>
             </div>
 
@@ -247,7 +247,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
                             {priorityConfig?.label || trigger.priority}
                           </Badge>
                         </div>
-                        <div className="text-sm text-gray-500 space-y-1">
+                        <div className="text-sm text-gray-700 space-y-1">
                           <p className="font-mono">
                             {trigger.signal} {operatorConfig?.label.split(' ')[0]} {trigger.threshold}
                           </p>

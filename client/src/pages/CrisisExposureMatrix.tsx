@@ -111,7 +111,7 @@ export default function CrisisExposureMatrix() {
         <Card className="bg-blue-50 dark:bg-blue-950/30 border-blue-200 dark:border-blue-800">
           <CardHeader>
             <CardTitle className="text-blue-900 dark:text-blue-100">90-Day Onboarding Strategy</CardTitle>
-            <CardDescription className="text-blue-700 dark:text-blue-300">
+            <CardDescription className="text-blue-800 dark:text-blue-300">
               Don't try to prepare for all 170 playbooks at once. Start with your Top 10 Critical threats.
             </CardDescription>
           </CardHeader>

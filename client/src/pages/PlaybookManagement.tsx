@@ -59,23 +59,23 @@ import {
 import type { Playbook } from "@shared/schema";
 
 const CATEGORY_CONFIG = {
-  offense: { label: "Offense", icon: Target, color: "text-emerald-600", bg: "bg-emerald-100 dark:bg-emerald-900/30" },
-  defense: { label: "Defense", icon: Shield, color: "text-blue-600", bg: "bg-blue-100 dark:bg-blue-900/30" },
-  special_teams: { label: "Special Teams", icon: Zap, color: "text-purple-600", bg: "bg-purple-100 dark:bg-purple-900/30" },
+  offense: { label: "Offense", icon: Target, color: "text-emerald-700", bg: "bg-emerald-100 dark:bg-emerald-900/30" },
+  defense: { label: "Defense", icon: Shield, color: "text-blue-800", bg: "bg-blue-100 dark:bg-blue-900/30" },
+  special_teams: { label: "Special Teams", icon: Zap, color: "text-purple-800", bg: "bg-purple-100 dark:bg-purple-900/30" },
 };
 
 const STATUS_CONFIG = {
   draft: { label: "Draft", color: "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300" },
-  ready: { label: "Ready", color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400" },
-  active: { label: "Active", color: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" },
-  archived: { label: "Archived", color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400" },
+  ready: { label: "Ready", color: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400" },
+  active: { label: "Active", color: "bg-green-100 text-emerald-800 dark:bg-green-900/30 dark:text-green-400" },
+  archived: { label: "Archived", color: "bg-amber-100 text-[#C9A84C] dark:bg-amber-900/30 dark:text-amber-400" },
 };
 
 const PRIORITY_CONFIG = {
   critical: { label: "Critical", color: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400" },
   high: { label: "High", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
-  medium: { label: "Medium", color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400" },
-  low: { label: "Low", color: "bg-slate-100 text-gray-600 dark:bg-slate-800 dark:text-slate-300" },
+  medium: { label: "Medium", color: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400" },
+  low: { label: "Low", color: "bg-slate-100 text-gray-800 dark:bg-slate-800 dark:text-slate-300" },
 };
 
 export default function PlaybookManagement() {
@@ -153,7 +153,7 @@ export default function PlaybookManagement() {
             <h1 className="text-3xl font-bold text-slate-900 dark:text-white" data-testid="text-page-title">
               Playbook Management
             </h1>
-            <p className="text-gray-600 dark:text-slate-300 mt-1">
+            <p className="text-gray-800 dark:text-slate-300 mt-1">
               Create, customize, and manage your organization's strategic playbooks
             </p>
           </div>
@@ -172,11 +172,11 @@ export default function PlaybookManagement() {
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                  <FileText className="h-5 w-5 text-gray-600 dark:text-slate-300" />
+                  <FileText className="h-5 w-5 text-gray-800 dark:text-slate-300" />
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white">{stats.total}</p>
-                  <p className="text-sm text-gray-600">Total Playbooks</p>
+                  <p className="text-sm text-gray-800">Total Playbooks</p>
                 </div>
               </div>
             </CardContent>
@@ -185,11 +185,11 @@ export default function PlaybookManagement() {
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                  <CheckCircle className="h-5 w-5 text-green-600" />
+                  <CheckCircle className="h-5 w-5 text-emerald-700" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-green-600">{stats.active}</p>
-                  <p className="text-sm text-gray-600">Active</p>
+                  <p className="text-2xl font-bold text-emerald-700">{stats.active}</p>
+                  <p className="text-sm text-gray-800">Active</p>
                 </div>
               </div>
             </CardContent>
@@ -198,11 +198,11 @@ export default function PlaybookManagement() {
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                  <Play className="h-5 w-5 text-blue-600" />
+                  <Play className="h-5 w-5 text-blue-800" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-blue-600">{stats.ready}</p>
-                  <p className="text-sm text-gray-600">Ready</p>
+                  <p className="text-2xl font-bold text-blue-800">{stats.ready}</p>
+                  <p className="text-sm text-gray-800">Ready</p>
                 </div>
               </div>
             </CardContent>
@@ -211,11 +211,11 @@ export default function PlaybookManagement() {
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                  <Edit className="h-5 w-5 text-gray-600" />
+                  <Edit className="h-5 w-5 text-gray-800" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-gray-600">{stats.draft}</p>
-                  <p className="text-sm text-gray-600">Drafts</p>
+                  <p className="text-2xl font-bold text-gray-800">{stats.draft}</p>
+                  <p className="text-sm text-gray-800">Drafts</p>
                 </div>
               </div>
             </CardContent>
@@ -226,7 +226,7 @@ export default function PlaybookManagement() {
           <CardContent className="p-4">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-600 dark:text-slate-200" />
+                <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-800 dark:text-slate-200" />
                 <Input
                   placeholder="Search playbooks..."
                   value={search}
@@ -276,11 +276,11 @@ export default function PlaybookManagement() {
         ) : filteredPlaybooks.length === 0 ? (
           <Card>
             <CardContent className="py-16 text-center">
-              <FileText className="h-12 w-12 mx-auto mb-4 text-gray-600 dark:text-slate-400" />
+              <FileText className="h-12 w-12 mx-auto mb-4 text-gray-800 dark:text-slate-400" />
               <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">
                 {playbooks.length === 0 ? "No Playbooks Yet" : "No Matching Playbooks"}
               </h3>
-              <p className="text-gray-600 mb-6 max-w-md mx-auto">
+              <p className="text-gray-800 mb-6 max-w-md mx-auto">
                 {playbooks.length === 0 
                   ? "Create your first playbook to start building your strategic response library."
                   : "Try adjusting your search or filter criteria."}
@@ -323,11 +323,11 @@ export default function PlaybookManagement() {
                       <TableCell>
                         <div className="flex items-center gap-3">
                           <div className={`p-2 rounded-lg ${categoryConfig?.bg || 'bg-slate-100 dark:bg-slate-800'}`}>
-                            <CategoryIcon className={`h-4 w-4 ${categoryConfig?.color || 'text-gray-600'}`} />
+                            <CategoryIcon className={`h-4 w-4 ${categoryConfig?.color || 'text-gray-800'}`} />
                           </div>
                           <div>
                             <p className="font-medium text-slate-900 dark:text-white">{playbook.name}</p>
-                            <p className="text-sm text-gray-600 truncate max-w-xs">{playbook.domain}</p>
+                            <p className="text-sm text-gray-800 truncate max-w-xs">{playbook.domain}</p>
                           </div>
                         </div>
                       </TableCell>
@@ -348,15 +348,15 @@ export default function PlaybookManagement() {
                       </TableCell>
                       <TableCell className="text-right">
                         {playbook.totalBudget ? (
-                          <span className="text-gray-600 dark:text-slate-300" data-testid={`text-budget-${playbook.id}`}>
+                          <span className="text-gray-800 dark:text-slate-300" data-testid={`text-budget-${playbook.id}`}>
                             ${Number(playbook.totalBudget).toLocaleString()}
                           </span>
                         ) : (
-                          <span className="text-slate-600 dark:text-slate-200" data-testid={`text-budget-${playbook.id}`}>-</span>
+                          <span className="text-gray-800 dark:text-slate-200" data-testid={`text-budget-${playbook.id}`}>-</span>
                         )}
                       </TableCell>
                       <TableCell className="text-right">
-                        <span className="text-gray-600 dark:text-slate-300" data-testid={`text-uses-${playbook.id}`}>
+                        <span className="text-gray-800 dark:text-slate-300" data-testid={`text-uses-${playbook.id}`}>
                           {playbook.timesUsed || 0}
                         </span>
                       </TableCell>
@@ -391,7 +391,7 @@ export default function PlaybookManagement() {
                             </DropdownMenuItem>
                             <DropdownMenuItem 
                               onClick={() => setDeleteId(playbook.id)}
-                              className="text-red-600 focus:text-red-600"
+                              className="text-red-700 focus:text-red-600"
                               data-testid={`menu-delete-${playbook.id}`}
                             >
                               <Trash2 className="h-4 w-4 mr-2" />

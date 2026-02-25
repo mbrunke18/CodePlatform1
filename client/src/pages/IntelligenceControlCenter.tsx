@@ -122,7 +122,7 @@ export default function IntelligenceControlCenter() {
               </div>
               <h1 className="text-2xl font-bold text-gray-900" data-testid="page-title">Intelligence Control Center</h1>
             </div>
-            <p className="text-gray-600">Real-time strategic intelligence and AI-powered pattern detection</p>
+            <p className="text-gray-800">Real-time strategic intelligence and AI-powered pattern detection</p>
           </div>
           
           <div className="flex items-center gap-3">
@@ -139,7 +139,7 @@ export default function IntelligenceControlCenter() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Data Points Monitored</p>
+                  <p className="text-sm text-gray-800">Data Points Monitored</p>
                   <p className="text-2xl font-bold text-gray-900" data-testid="value-data-points">92+</p>
                 </div>
                 <Activity className="h-8 w-8 text-blue-400 opacity-50" />
@@ -150,7 +150,7 @@ export default function IntelligenceControlCenter() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Signal Categories</p>
+                  <p className="text-sm text-gray-800">Signal Categories</p>
                   <p className="text-2xl font-bold text-gray-900" data-testid="value-signal-categories">16</p>
                 </div>
                 <Layers className="h-8 w-8 text-purple-400 opacity-50" />
@@ -161,7 +161,7 @@ export default function IntelligenceControlCenter() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Weak Signals</p>
+                  <p className="text-sm text-gray-800">Weak Signals</p>
                   <p className="text-2xl font-bold text-gray-900" data-testid="value-weak-signals">{dynamicStatus?.weakSignalsDetected ?? 0}</p>
                 </div>
                 <AlertCircle className="h-8 w-8 text-amber-400 opacity-50" />
@@ -172,7 +172,7 @@ export default function IntelligenceControlCenter() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Active Patterns</p>
+                  <p className="text-sm text-gray-800">Active Patterns</p>
                   <p className="text-2xl font-bold text-gray-900">{dynamicStatus?.oraclePatternsActive ?? 0}</p>
                 </div>
                 <TrendingUp className="h-8 w-8 text-green-400 opacity-50" />
@@ -202,7 +202,7 @@ export default function IntelligenceControlCenter() {
                           </div>
                           <div>
                             <CardTitle className="text-lg text-gray-900">{module.title}</CardTitle>
-                            <CardDescription className="text-gray-600 text-sm">
+                            <CardDescription className="text-gray-800 text-sm">
                               {module.description}
                             </CardDescription>
                           </div>
@@ -218,12 +218,12 @@ export default function IntelligenceControlCenter() {
                       <div className="flex items-center justify-between">
                         <div className="flex flex-wrap gap-2">
                           {module.features.slice(0, 3).map((feature, idx) => (
-                            <span key={idx} className="text-xs text-gray-600 bg-gray-50 px-2 py-1 rounded">
+                            <span key={idx} className="text-xs text-gray-800 bg-gray-50 px-2 py-1 rounded">
                               {feature}
                             </span>
                           ))}
                         </div>
-                        <ChevronRight className="h-5 w-5 text-gray-600" />
+                        <ChevronRight className="h-5 w-5 text-gray-800" />
                       </div>
                     </CardContent>
                   </Card>
@@ -243,9 +243,9 @@ export default function IntelligenceControlCenter() {
                 </div>
                 <div className="flex-1">
                   <p className="font-medium text-gray-900">Launch AI Co-Pilots</p>
-                  <p className="text-sm text-gray-600">Strategic decision support</p>
+                  <p className="text-sm text-gray-800">Strategic decision support</p>
                 </div>
-                <ArrowRight className="h-4 w-4 text-gray-600" />
+                <ArrowRight className="h-4 w-4 text-gray-800" />
               </CardContent>
             </Card>
           </Link>
@@ -258,9 +258,9 @@ export default function IntelligenceControlCenter() {
                 </div>
                 <div className="flex-1">
                   <p className="font-medium text-gray-900">Configure Signals</p>
-                  <p className="text-sm text-gray-600">Manage data sources</p>
+                  <p className="text-sm text-gray-800">Manage data sources</p>
                 </div>
-                <ArrowRight className="h-4 w-4 text-gray-600" />
+                <ArrowRight className="h-4 w-4 text-gray-800" />
               </CardContent>
             </Card>
           </Link>
@@ -273,9 +273,9 @@ export default function IntelligenceControlCenter() {
                 </div>
                 <div className="flex-1">
                   <p className="font-medium text-gray-900">Set Up Triggers</p>
-                  <p className="text-sm text-gray-600">Automate responses</p>
+                  <p className="text-sm text-gray-800">Automate responses</p>
                 </div>
-                <ArrowRight className="h-4 w-4 text-gray-600" />
+                <ArrowRight className="h-4 w-4 text-gray-800" />
               </CardContent>
             </Card>
           </Link>

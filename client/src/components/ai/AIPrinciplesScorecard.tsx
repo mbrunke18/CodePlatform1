@@ -96,10 +96,10 @@ export const FOUNDATIONAL_AI_PRINCIPLES: AIPrincipleScore[] = [
 ];
 
 function getScoreColor(score: number): string {
-  if (score >= 90) return 'text-emerald-600 dark:text-emerald-400';
-  if (score >= 80) return 'text-blue-600 dark:text-blue-400';
+  if (score >= 90) return 'text-emerald-700 dark:text-emerald-400';
+  if (score >= 80) return 'text-blue-800 dark:text-blue-400';
   if (score >= 70) return 'text-yellow-600 dark:text-yellow-400';
-  return 'text-red-600 dark:text-red-400';
+  return 'text-red-700 dark:text-red-400';
 }
 
 function getProgressColor(score: number): string {
@@ -158,7 +158,7 @@ export function AIPrinciplesScorecard({
                 className={`text-base font-bold px-3 py-1 ${
                   overallScore >= 90 
                     ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300' 
-                    : 'bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300'
+                    : 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300'
                 }`}
               >
                 {overallScore}%
