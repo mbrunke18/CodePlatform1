@@ -88,30 +88,46 @@ export async function setupAuth(app: Express) {
     verified(null, user);
   };
 
+  const registeredDomains: string[] = [];
+
   for (const domain of process.env.REPLIT_DOMAINS.split(",")) {
+    const trimmed = domain.trim();
     const strategy = new Strategy(
       {
-        name: `replitauth:${domain}`,
+        name: `replitauth:${trimmed}`,
         config,
         scope: "openid email profile offline_access",
-        callbackURL: `https://${domain}/api/callback`,
+        callbackURL: `https://${trimmed}/api/callback`,
       },
       verify,
     );
     passport.use(strategy);
+    registeredDomains.push(trimmed);
+  }
+
+  // Helper: find the best matching strategy for a given hostname,
+  // falling back to the first registered domain if no exact match.
+  function resolveStrategy(hostname: string): string {
+    if (registeredDomains.includes(hostname)) {
+      return `replitauth:${hostname}`;
+    }
+    // Try prefix match (same Repl ID, different TLD like repl.co vs replit.dev)
+    const replId = hostname.split(".")[0];
+    const match = registeredDomains.find(d => d.startsWith(replId));
+    return `replitauth:${match || registeredDomains[0]}`;
   }
 
   passport.serializeUser((user: Express.User, cb) => cb(null, user));
   passport.deserializeUser((user: Express.User, cb) => cb(null, user));
 
   app.get("/api/login", (req, res, next) => {
-    passport.authenticate(`replitauth:${req.hostname}`, {
+    passport.authenticate(resolveStrategy(req.hostname), {
       prompt: "login consent",
     })(req, res, next);
   });
 
   app.get("/api/callback", (req, res, next) => {
-    passport.authenticate(`replitauth:${req.hostname}`, {
+    passport.authenticate(resolveStrategy(req.hostname), {
       successReturnToOrRedirect: "/",
       failureRedirect: "/api/login",
     })(req, res, next);
