@@ -1240,12 +1240,12 @@ export default function RoleExperience() {
                 placeholder="Add a custom data source..."
                 className="bg-white/5 border-white/10 text-gray-900 flex-1"
                 onKeyDown={e => { if (e.key === 'Enter' && newDataSourceName.trim()) {
-                  setUserDataSources(prev => [...prev, { name: newDataSourceName.trim(), connected: false, dataPoints: Math.floor(Math.random() * 5000) + 500 }]);
+                  setUserDataSources(prev => [...prev, { name: newDataSourceName.trim(), connected: false, dataPoints: 0 }]);
                   setNewDataSourceName('');
                 }}} />
               <Button variant="outline" className="border-indigo-500/30 text-indigo-400"
                 onClick={() => { if (newDataSourceName.trim()) {
-                  setUserDataSources(prev => [...prev, { name: newDataSourceName.trim(), connected: false, dataPoints: Math.floor(Math.random() * 5000) + 500 }]);
+                  setUserDataSources(prev => [...prev, { name: newDataSourceName.trim(), connected: false, dataPoints: 0 }]);
                   setNewDataSourceName('');
                 }}}>
                 <Plus className="h-4 w-4 mr-1" /> Add Data Source
