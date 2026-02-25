@@ -65,27 +65,65 @@ import { eq, desc, sql, like, and, asc, count } from 'drizzle-orm';
 import { db } from './db';
 
 // Helper function to get authenticated user ID from session
-function getUserId(req: any): string {
+function getUserId(req: any): string | undefined {
   // Get user ID from authenticated session
   if (req.isAuthenticated() && req.user?.claims?.sub) {
     return req.user.claims.sub;
   }
-  // Fallback to demo user for development/public routes
-  return '7cd941d8-5c5f-461e-87ea-9d2b1d81cb59';
+  // No fallback to demo user - unauthenticated requests return undefined
+  return undefined;
+}
+
+// Helper to get org ID for a user
+async function getOrgIdForUser(userId: string): Promise<string | undefined> {
+  const orgs = await storage.getUserOrganizations(userId);
+  return orgs[0]?.id;
+}
+
+// Middleware to require authentication and validate org access
+async function requireOrgAccess(req: any, res: any, next: any) {
+  if (!req.isAuthenticated()) {
+    return res.status(401).json({ message: "Unauthorized - Please sign in" });
+  }
+
+  const userId = getUserId(req);
+  if (!userId) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
+  const orgId = await getOrgIdForUser(userId);
+  if (!orgId) {
+    return res.status(403).json({ message: "Forbidden - User has no organization" });
+  }
+
+  // If orgId is provided in params or query, validate it
+  const requestedOrgId = req.params.orgId || req.params.organizationId || req.query.organizationId || req.body.organizationId;
+  if (requestedOrgId && requestedOrgId !== orgId) {
+    return res.status(403).json({ message: "Forbidden - Insufficient permissions for this organization" });
+  }
+
+  req.userId = userId;
+  req.orgId = orgId;
+  next();
 }
 
 // Middleware to require authentication
 function requireAuth(req: any, res: any, next: any) {
-  if (!req.isAuthenticated()) {
+  const userId = getUserId(req);
+  if (!userId) {
     return res.status(401).json({ message: "Unauthorized - Please sign in" });
   }
-  req.userId = getUserId(req);
+  req.userId = userId;
   next();
 }
 
 // Middleware for optional authentication (public access with optional session)
-function optionalAuth(req: any, res: any, next: any) {
-  req.userId = getUserId(req);
+async function optionalAuth(req: any, res: any, next: any) {
+  const userId = getUserId(req);
+  req.userId = userId;
+  if (userId) {
+    req.orgId = await getOrgIdForUser(userId);
+  }
   next();
 }
 
@@ -3055,7 +3093,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Ensure organizationId is a valid UUID format or use demo data
       const validOrgId = organizationId === 'test' || !organizationId ? 
-        'ec61b8f6-7d87-41fd-9969-cb990ed0b10b' : organizationId;
+        req.orgId : organizationId;
       
       const aiMetrics = await storage.generatePulseMetricsWithAI(validOrgId);
       
@@ -3111,7 +3149,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Ensure organizationId is a valid UUID format or use demo data
       const validOrgId = organizationId === 'test' || !organizationId ? 
-        'ec61b8f6-7d87-41fd-9969-cb990ed0b10b' : organizationId;
+        req.orgId : organizationId;
       
       const aiOpportunities = await storage.generateNovaOpportunitiesWithAI(validOrgId);
       
@@ -4156,8 +4194,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post('/api/what-if-scenarios', async (req: any, res) => {
     try {
-      const userId = '7cd941d8-5c5f-461e-87ea-9d2b1d81cb59'; // Valid user from database
-      const orgId = 'ebe6af05-772b-4107-9c5a-9b5bf55c5833';
+      const userId = req.userId; // Valid user from database
+      const orgId = req.orgId;
       
       const validated = insertWhatIfScenarioSchema.parse({
         ...req.body,
@@ -5211,7 +5249,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   // === CUSTOMER CONFIGURATION APIs ===
   
   // --- Custom Triggers CRUD ---
-  app.get('/api/config/triggers', optionalAuth, async (req: any, res) => {
+  app.get('/api/config/triggers', requireOrgAccess, async (req: any, res) => {
     try {
       const organizationId = req.query.organizationId as string | undefined;
       const triggers = await storage.getCustomTriggers(organizationId);
@@ -5222,7 +5260,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.post('/api/config/triggers', optionalAuth, async (req: any, res) => {
+  app.post('/api/config/triggers', requireOrgAccess, async (req: any, res) => {
     try {
       const triggerData = req.body;
       const trigger = await storage.createCustomTrigger(triggerData);
@@ -5233,7 +5271,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.patch('/api/config/triggers/:id', optionalAuth, async (req: any, res) => {
+  app.patch('/api/config/triggers/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       const updates = req.body;
@@ -5245,7 +5283,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.delete('/api/config/triggers/:id', optionalAuth, async (req: any, res) => {
+  app.delete('/api/config/triggers/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       await storage.deleteCustomTrigger(id);
@@ -5257,7 +5295,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // --- Departments CRUD ---
-  app.get('/api/config/departments', optionalAuth, async (req: any, res) => {
+  app.get('/api/config/departments', requireOrgAccess, async (req: any, res) => {
     try {
       const organizationId = req.query.organizationId as string | undefined;
       const departments = await storage.getDepartments(organizationId);
@@ -5268,7 +5306,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.post('/api/config/departments', optionalAuth, async (req: any, res) => {
+  app.post('/api/config/departments', requireOrgAccess, async (req: any, res) => {
     try {
       const department = await storage.createDepartment(req.body);
       res.json({ success: true, department, message: 'Department created successfully' });
@@ -5278,7 +5316,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.patch('/api/config/departments/:id', optionalAuth, async (req: any, res) => {
+  app.patch('/api/config/departments/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       const department = await storage.updateDepartment(id, req.body);
@@ -5289,7 +5327,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.delete('/api/config/departments/:id', optionalAuth, async (req: any, res) => {
+  app.delete('/api/config/departments/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       await storage.deleteDepartment(id);
@@ -5301,7 +5339,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // --- Escalation Policies CRUD ---
-  app.get('/api/config/escalation-policies', optionalAuth, async (req: any, res) => {
+  app.get('/api/config/escalation-policies', requireOrgAccess, async (req: any, res) => {
     try {
       const organizationId = req.query.organizationId as string | undefined;
       const policies = await storage.getEscalationPolicies(organizationId);
@@ -5312,7 +5350,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.post('/api/config/escalation-policies', optionalAuth, async (req: any, res) => {
+  app.post('/api/config/escalation-policies', requireOrgAccess, async (req: any, res) => {
     try {
       const policy = await storage.createEscalationPolicy(req.body);
       res.json({ success: true, policy, message: 'Escalation policy created successfully' });
@@ -5322,7 +5360,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.patch('/api/config/escalation-policies/:id', optionalAuth, async (req: any, res) => {
+  app.patch('/api/config/escalation-policies/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       const policy = await storage.updateEscalationPolicy(id, req.body);
@@ -5333,7 +5371,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.delete('/api/config/escalation-policies/:id', optionalAuth, async (req: any, res) => {
+  app.delete('/api/config/escalation-policies/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       await storage.deleteEscalationPolicy(id);
@@ -5345,7 +5383,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // --- Communication Channels CRUD ---
-  app.get('/api/config/communication-channels', optionalAuth, async (req: any, res) => {
+  app.get('/api/config/communication-channels', requireOrgAccess, async (req: any, res) => {
     try {
       const organizationId = req.query.organizationId as string | undefined;
       const channels = await storage.getCommunicationChannels(organizationId);
@@ -5356,7 +5394,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.post('/api/config/communication-channels', optionalAuth, async (req: any, res) => {
+  app.post('/api/config/communication-channels', requireOrgAccess, async (req: any, res) => {
     try {
       const channel = await storage.createCommunicationChannel(req.body);
       res.json({ success: true, channel, message: 'Communication channel created successfully' });
@@ -5366,7 +5404,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.patch('/api/config/communication-channels/:id', optionalAuth, async (req: any, res) => {
+  app.patch('/api/config/communication-channels/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       const channel = await storage.updateCommunicationChannel(id, req.body);
@@ -5377,7 +5415,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.delete('/api/config/communication-channels/:id', optionalAuth, async (req: any, res) => {
+  app.delete('/api/config/communication-channels/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       await storage.deleteCommunicationChannel(id);
@@ -5389,7 +5427,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // --- Success Metrics CRUD ---
-  app.get('/api/config/success-metrics', optionalAuth, async (req: any, res) => {
+  app.get('/api/config/success-metrics', requireOrgAccess, async (req: any, res) => {
     try {
       const organizationId = req.query.organizationId as string | undefined;
       const metrics = await storage.getSuccessMetricsConfig(organizationId);
@@ -5400,7 +5438,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.post('/api/config/success-metrics', optionalAuth, async (req: any, res) => {
+  app.post('/api/config/success-metrics', requireOrgAccess, async (req: any, res) => {
     try {
       const metric = await storage.createSuccessMetric(req.body);
       res.json({ success: true, metric, message: 'Success metric created successfully' });
@@ -5410,7 +5448,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.patch('/api/config/success-metrics/:id', optionalAuth, async (req: any, res) => {
+  app.patch('/api/config/success-metrics/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       const metric = await storage.updateSuccessMetric(id, req.body);
@@ -5421,7 +5459,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.delete('/api/config/success-metrics/:id', optionalAuth, async (req: any, res) => {
+  app.delete('/api/config/success-metrics/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       await storage.deleteSuccessMetric(id);
@@ -5433,7 +5471,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // --- Organization Setup Progress ---
-  app.get('/api/config/setup-progress/:organizationId', optionalAuth, async (req: any, res) => {
+  app.get('/api/config/setup-progress/:organizationId', requireOrgAccess, async (req: any, res) => {
     try {
       const { organizationId } = req.params;
       const progress = await storage.getOrganizationSetupProgress(organizationId);
@@ -5444,7 +5482,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.post('/api/config/setup-progress', optionalAuth, async (req: any, res) => {
+  app.post('/api/config/setup-progress', requireOrgAccess, async (req: any, res) => {
     try {
       const progress = await storage.upsertOrganizationSetupProgress(req.body);
       res.json({ success: true, progress, message: 'Setup progress updated successfully' });
@@ -6640,7 +6678,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
 
   app.post('/api/signals/live/ingest', async (req, res) => {
     try {
-      const organizationId = req.body?.organizationId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833';
+      const organizationId = req.body?.req.orgId;
       const result = await liveSignalIngestionService.runIngestionCycle(organizationId);
       res.json({ success: true, ...result });
     } catch (err) {
@@ -6649,7 +6687,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   app.post('/api/signals/live/start', (req, res) => {
-    const organizationId = req.body?.organizationId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833';
+    const organizationId = req.body?.req.orgId;
     const intervalMinutes = req.body?.intervalMinutes || 15;
     liveSignalIngestionService.start(organizationId, intervalMinutes);
     res.json({ success: true, status: liveSignalIngestionService.getStatus() });
@@ -6662,7 +6700,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
 
   // Start live signal ingestion automatically
   setTimeout(() => {
-    liveSignalIngestionService.start('ebe6af05-772b-4107-9c5a-9b5bf55c5833', 15);
+    if (req.orgId) liveSignalIngestionService.start(req.orgId, 15);
   }, 5000);
   console.log('✅ Live Signal Ingestion API registered (auto-start in 5s)');
 
@@ -6779,7 +6817,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   console.log('   → /api/practice-drills - Fire drill simulation system');
 
   // ===== PLAYBOOK ACTIVATION ENDPOINTS =====
-  app.post('/api/playbook-library/:playbookId/activate', optionalAuth, async (req: any, res) => {
+  app.post('/api/playbook-library/:playbookId/activate', requireOrgAccess, async (req: any, res) => {
     try {
       const { playbookId } = req.params;
       const { scenarioId } = req.body;
@@ -6796,7 +6834,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.get('/api/execution/:executionId/progress', optionalAuth, async (req: any, res) => {
+  app.get('/api/execution/:executionId/progress', requireOrgAccess, async (req: any, res) => {
     try {
       const { executionId } = req.params;
       const { getExecutionProgress } = await import('./services/PlaybookExecutor');
@@ -6809,7 +6847,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // ===== ROI METRICS ENDPOINTS =====
-  app.post('/api/roi/calculate', optionalAuth, async (req: any, res) => {
+  app.post('/api/roi/calculate', requireOrgAccess, async (req: any, res) => {
     try {
       const { calculateROI } = await import('./services/ROICalculator');
       const roi = calculateROI(req.body);
@@ -6820,7 +6858,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.get('/api/roi/report', optionalAuth, async (req: any, res) => {
+  app.get('/api/roi/report', requireOrgAccess, async (req: any, res) => {
     try {
       const { generateROIReport } = await import('./services/ROICalculator');
       const mockHistory = Array(12).fill(null).map(() => ({
@@ -6836,7 +6874,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // ===== INTEGRATION HOOK - SLACK =====
-  app.post('/api/integrations/slack/send', optionalAuth, async (req: any, res) => {
+  app.post('/api/integrations/slack/send', requireOrgAccess, async (req: any, res) => {
     try {
       const { channelId, message, metadata } = req.body;
       
@@ -6893,7 +6931,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   console.log('📡 Registering Execution Plan Sync API endpoints...');
 
   // --- Export Templates ---
-  app.get('/api/sync/templates', optionalAuth, async (req: any, res) => {
+  app.get('/api/sync/templates', requireOrgAccess, async (req: any, res) => {
     try {
       const { organizationId } = req.query;
       const templates = await storage.getExportTemplates(organizationId as string);
@@ -6904,7 +6942,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.get('/api/sync/templates/:id', optionalAuth, async (req: any, res) => {
+  app.get('/api/sync/templates/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const template = await storage.getExportTemplate(req.params.id);
       if (!template) {
@@ -6916,7 +6954,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.post('/api/sync/templates', optionalAuth, async (req: any, res) => {
+  app.post('/api/sync/templates', requireOrgAccess, async (req: any, res) => {
     try {
       const template = await storage.createExportTemplate({
         ...req.body,
@@ -6929,7 +6967,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.patch('/api/sync/templates/:id', optionalAuth, async (req: any, res) => {
+  app.patch('/api/sync/templates/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const template = await storage.updateExportTemplate(req.params.id, req.body);
       res.json(template);
@@ -6938,7 +6976,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.delete('/api/sync/templates/:id', optionalAuth, async (req: any, res) => {
+  app.delete('/api/sync/templates/:id', requireOrgAccess, async (req: any, res) => {
     try {
       await storage.deleteExportTemplate(req.params.id);
       res.status(204).send();
@@ -6948,7 +6986,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // --- Sync Records ---
-  app.get('/api/sync/records', optionalAuth, async (req: any, res) => {
+  app.get('/api/sync/records', requireOrgAccess, async (req: any, res) => {
     try {
       const { executionInstanceId } = req.query;
       const records = await storage.getSyncRecords(executionInstanceId as string);
@@ -6958,7 +6996,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.get('/api/sync/records/:id', optionalAuth, async (req: any, res) => {
+  app.get('/api/sync/records/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const record = await storage.getSyncRecord(req.params.id);
       if (!record) {
@@ -6971,7 +7009,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Export execution plan to external platform
-  app.post('/api/sync/export', optionalAuth, async (req: any, res) => {
+  app.post('/api/sync/export', requireOrgAccess, async (req: any, res) => {
     try {
       const { executionInstanceId, templateId, integrationId } = req.body;
       
@@ -7003,7 +7041,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Trigger sync for a sync record
-  app.post('/api/sync/records/:id/sync', optionalAuth, async (req: any, res) => {
+  app.post('/api/sync/records/:id/sync', requireOrgAccess, async (req: any, res) => {
     try {
       const { direction = 'pull' } = req.body;
       
@@ -7020,7 +7058,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Delete sync record
-  app.delete('/api/sync/records/:id', optionalAuth, async (req: any, res) => {
+  app.delete('/api/sync/records/:id', requireOrgAccess, async (req: any, res) => {
     try {
       await storage.deleteSyncRecord(req.params.id);
       res.status(204).send();
@@ -7030,7 +7068,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Start a new sync operation
-  app.post('/api/sync/start', optionalAuth, async (req: any, res) => {
+  app.post('/api/sync/start', requireOrgAccess, async (req: any, res) => {
     try {
       const { integrationId, platform, executionInstanceId, organizationId } = req.body;
       
@@ -7066,7 +7104,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // --- Document Templates ---
-  app.get('/api/documents/templates', optionalAuth, async (req: any, res) => {
+  app.get('/api/documents/templates', requireOrgAccess, async (req: any, res) => {
     try {
       const { organizationId, playbookId } = req.query;
       const templates = await storage.getDocumentTemplates(
@@ -7079,7 +7117,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.get('/api/documents/templates/:id', optionalAuth, async (req: any, res) => {
+  app.get('/api/documents/templates/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const template = await storage.getDocumentTemplate(req.params.id);
       if (!template) {
@@ -7091,7 +7129,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.post('/api/documents/templates', optionalAuth, async (req: any, res) => {
+  app.post('/api/documents/templates', requireOrgAccess, async (req: any, res) => {
     try {
       const template = await storage.createDocumentTemplate({
         ...req.body,
@@ -7104,7 +7142,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.patch('/api/documents/templates/:id', optionalAuth, async (req: any, res) => {
+  app.patch('/api/documents/templates/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const template = await storage.updateDocumentTemplate(req.params.id, req.body);
       res.json(template);
@@ -7113,7 +7151,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.delete('/api/documents/templates/:id', optionalAuth, async (req: any, res) => {
+  app.delete('/api/documents/templates/:id', requireOrgAccess, async (req: any, res) => {
     try {
       await storage.deleteDocumentTemplate(req.params.id);
       res.status(204).send();
@@ -7123,7 +7161,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // --- Generated Documents ---
-  app.get('/api/documents/generated', optionalAuth, async (req: any, res) => {
+  app.get('/api/documents/generated', requireOrgAccess, async (req: any, res) => {
     try {
       const { executionInstanceId, templateId } = req.query;
       const documents = await storage.getGeneratedDocuments(
@@ -7136,7 +7174,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.get('/api/documents/generated/:id', optionalAuth, async (req: any, res) => {
+  app.get('/api/documents/generated/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const document = await storage.getGeneratedDocument(req.params.id);
       if (!document) {
@@ -7148,7 +7186,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.post('/api/documents/generate', optionalAuth, async (req: any, res) => {
+  app.post('/api/documents/generate', requireOrgAccess, async (req: any, res) => {
     try {
       const { templateId, executionInstanceId, variables } = req.body;
       
@@ -7183,7 +7221,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.post('/api/documents/generated/:id/approve', optionalAuth, async (req: any, res) => {
+  app.post('/api/documents/generated/:id/approve', requireOrgAccess, async (req: any, res) => {
     try {
       const document = await storage.approveGeneratedDocument(req.params.id, req.userId);
       res.json(document);
@@ -7192,7 +7230,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.post('/api/documents/generated/:id/reject', optionalAuth, async (req: any, res) => {
+  app.post('/api/documents/generated/:id/reject', requireOrgAccess, async (req: any, res) => {
     try {
       const { reason } = req.body;
       const document = await storage.rejectGeneratedDocument(req.params.id, reason);
@@ -7203,7 +7241,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // --- Pre-Approved Resources ---
-  app.get('/api/resources/pre-approved', optionalAuth, async (req: any, res) => {
+  app.get('/api/resources/pre-approved', requireOrgAccess, async (req: any, res) => {
     try {
       const { organizationId, playbookId } = req.query;
       const resources = await storage.getPreApprovedResources(
@@ -7216,7 +7254,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.get('/api/resources/pre-approved/:id', optionalAuth, async (req: any, res) => {
+  app.get('/api/resources/pre-approved/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const resource = await storage.getPreApprovedResource(req.params.id);
       if (!resource) {
@@ -7228,7 +7266,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.post('/api/resources/pre-approved', optionalAuth, async (req: any, res) => {
+  app.post('/api/resources/pre-approved', requireOrgAccess, async (req: any, res) => {
     try {
       const resource = await storage.createPreApprovedResource(req.body);
       res.status(201).json(resource);
@@ -7238,7 +7276,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.patch('/api/resources/pre-approved/:id', optionalAuth, async (req: any, res) => {
+  app.patch('/api/resources/pre-approved/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const resource = await storage.updatePreApprovedResource(req.params.id, req.body);
       res.json(resource);
@@ -7247,7 +7285,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.delete('/api/resources/pre-approved/:id', optionalAuth, async (req: any, res) => {
+  app.delete('/api/resources/pre-approved/:id', requireOrgAccess, async (req: any, res) => {
     try {
       await storage.deletePreApprovedResource(req.params.id);
       res.status(204).send();
@@ -7256,7 +7294,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.post('/api/resources/pre-approved/:id/activate', optionalAuth, async (req: any, res) => {
+  app.post('/api/resources/pre-approved/:id/activate', requireOrgAccess, async (req: any, res) => {
     try {
       const resource = await storage.activatePreApprovedResource(req.params.id);
       res.json(resource);
@@ -7266,7 +7304,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // --- Enterprise Integrations ---
-  app.get('/api/enterprise-integrations', optionalAuth, async (req: any, res) => {
+  app.get('/api/enterprise-integrations', requireOrgAccess, async (req: any, res) => {
     try {
       const { organizationId } = req.query;
       const integrations = await storage.getEnterpriseIntegrations(organizationId as string);
@@ -7276,7 +7314,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.get('/api/enterprise-integrations/:id', optionalAuth, async (req: any, res) => {
+  app.get('/api/enterprise-integrations/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const integration = await storage.getEnterpriseIntegration(req.params.id);
       if (!integration) {
@@ -7288,7 +7326,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.post('/api/enterprise-integrations', optionalAuth, async (req: any, res) => {
+  app.post('/api/enterprise-integrations', requireOrgAccess, async (req: any, res) => {
     try {
       const integration = await storage.createEnterpriseIntegration({
         ...req.body,
@@ -7301,7 +7339,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.patch('/api/enterprise-integrations/:id', optionalAuth, async (req: any, res) => {
+  app.patch('/api/enterprise-integrations/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const integration = await storage.updateEnterpriseIntegration(req.params.id, req.body);
       res.json(integration);
@@ -7310,7 +7348,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.delete('/api/enterprise-integrations/:id', optionalAuth, async (req: any, res) => {
+  app.delete('/api/enterprise-integrations/:id', requireOrgAccess, async (req: any, res) => {
     try {
       await storage.deleteEnterpriseIntegration(req.params.id);
       res.status(204).send();
@@ -7320,7 +7358,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Test integration connection
-  app.post('/api/enterprise-integrations/:id/test', optionalAuth, async (req: any, res) => {
+  app.post('/api/enterprise-integrations/:id/test', requireOrgAccess, async (req: any, res) => {
     try {
       const integration = await storage.getEnterpriseIntegration(req.params.id);
       if (!integration) {
@@ -7360,7 +7398,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Get available sync platforms
-  app.get('/api/sync/platforms', optionalAuth, async (req: any, res) => {
+  app.get('/api/sync/platforms', requireOrgAccess, async (req: any, res) => {
     res.json([
       { id: 'jira', name: 'Jira', icon: 'jira', description: 'Atlassian Jira Software' },
       { id: 'asana', name: 'Asana', icon: 'asana', description: 'Asana Project Management' },
@@ -7371,7 +7409,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // --- Document Template Engine ---
-  app.get('/api/documents/template-types', optionalAuth, async (req: any, res) => {
+  app.get('/api/documents/template-types', requireOrgAccess, async (req: any, res) => {
     try {
       const { documentTemplateEngine } = await import('./services/DocumentTemplateEngine');
       const templates = documentTemplateEngine.getAvailableTemplates();
@@ -7381,7 +7419,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.get('/api/documents/template-types/:type/variables', optionalAuth, async (req: any, res) => {
+  app.get('/api/documents/template-types/:type/variables', requireOrgAccess, async (req: any, res) => {
     try {
       const { documentTemplateEngine } = await import('./services/DocumentTemplateEngine');
       const variables = documentTemplateEngine.getTemplateVariables(req.params.type as any);
@@ -7391,7 +7429,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.post('/api/documents/generate-from-type', optionalAuth, async (req: any, res) => {
+  app.post('/api/documents/generate-from-type', requireOrgAccess, async (req: any, res) => {
     try {
       const { templateType, variables, executionInstanceId, scenarioId, organizationId } = req.body;
       
@@ -7413,7 +7451,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // --- File Export Service ---
-  app.get('/api/export/execution/:executionInstanceId', optionalAuth, async (req: any, res) => {
+  app.get('/api/export/execution/:executionInstanceId', requireOrgAccess, async (req: any, res) => {
     try {
       const { format = 'csv' } = req.query;
       
@@ -7439,7 +7477,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.get('/api/export/formats', optionalAuth, async (req: any, res) => {
+  app.get('/api/export/formats', requireOrgAccess, async (req: any, res) => {
     res.json([
       { id: 'csv', name: 'CSV', description: 'Comma-separated values for Excel/Sheets', icon: 'file-spreadsheet' },
       { id: 'xlsx', name: 'Excel (XML)', description: 'SpreadsheetML format', icon: 'file-spreadsheet' },
@@ -7456,7 +7494,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   const { executionPreApprovedResources } = await import('@shared/schema');
   
   // Get all pre-approved resources for organization
-  app.get('/api/pre-approved-resources', optionalAuth, async (req: any, res) => {
+  app.get('/api/pre-approved-resources', requireOrgAccess, async (req: any, res) => {
     try {
       const organizationId = req.query.organizationId || req.userId;
       
@@ -7476,7 +7514,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Create new pre-approved resource
-  app.post('/api/pre-approved-resources', optionalAuth, async (req: any, res) => {
+  app.post('/api/pre-approved-resources', requireOrgAccess, async (req: any, res) => {
     try {
       const resourceData = {
         ...req.body,
@@ -7500,7 +7538,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Get single pre-approved resource
-  app.get('/api/pre-approved-resources/:id', optionalAuth, async (req: any, res) => {
+  app.get('/api/pre-approved-resources/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       
@@ -7523,7 +7561,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Update pre-approved resource
-  app.patch('/api/pre-approved-resources/:id', optionalAuth, async (req: any, res) => {
+  app.patch('/api/pre-approved-resources/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       
@@ -7547,7 +7585,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Delete pre-approved resource
-  app.delete('/api/pre-approved-resources/:id', optionalAuth, async (req: any, res) => {
+  app.delete('/api/pre-approved-resources/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       
@@ -7570,7 +7608,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Activate a pre-approved resource (track usage)
-  app.post('/api/pre-approved-resources/:id/activate', optionalAuth, async (req: any, res) => {
+  app.post('/api/pre-approved-resources/:id/activate', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       
@@ -7603,7 +7641,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   // One-click activation flow
 
   // Get pre-flight check results
-  app.get('/api/execution/preflight/:executionPlanId', optionalAuth, async (req: any, res) => {
+  app.get('/api/execution/preflight/:executionPlanId', requireOrgAccess, async (req: any, res) => {
     try {
       const { executionPlanId } = req.params;
       const organizationId = req.query.organizationId || req.userId;
@@ -7625,7 +7663,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Activate playbook - one-click execution
-  app.post('/api/execution/activate', optionalAuth, async (req: any, res) => {
+  app.post('/api/execution/activate', requireOrgAccess, async (req: any, res) => {
     try {
       const { 
         organizationId, 
@@ -7669,7 +7707,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Get activation status
-  app.get('/api/execution/status/:executionInstanceId', optionalAuth, async (req: any, res) => {
+  app.get('/api/execution/status/:executionInstanceId', requireOrgAccess, async (req: any, res) => {
     try {
       const { executionInstanceId } = req.params;
 
@@ -7691,7 +7729,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Stakeholder acknowledgment
-  app.post('/api/execution/acknowledge/:executionInstanceId', optionalAuth, async (req: any, res) => {
+  app.post('/api/execution/acknowledge/:executionInstanceId', requireOrgAccess, async (req: any, res) => {
     try {
       const { executionInstanceId } = req.params;
       const userId = req.userId;
@@ -7725,9 +7763,9 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   const { decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertDecisionLogSchema } = await import('@shared/schema');
 
   // Get all decision trees for an organization
-  app.get('/api/decision-trees', optionalAuth, async (req: any, res) => {
+  app.get('/api/decision-trees', requireOrgAccess, async (req: any, res) => {
     try {
-      const organizationId = req.query.organizationId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833';
+      const organizationId = req.orgId;
       
       const trees = await db.select()
         .from(decisionTrees)
@@ -7742,7 +7780,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Get a single decision tree
-  app.get('/api/decision-trees/:id', optionalAuth, async (req: any, res) => {
+  app.get('/api/decision-trees/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       
@@ -7762,13 +7800,13 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Create a new decision tree
-  app.post('/api/decision-trees', optionalAuth, async (req: any, res) => {
+  app.post('/api/decision-trees', requireOrgAccess, async (req: any, res) => {
     try {
       const data = req.body;
       
       const [newTree] = await db.insert(decisionTrees)
         .values({
-          organizationId: data.organizationId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833',
+          organizationId: req.orgId,
           name: data.name,
           scenario: data.scenario,
           domain: data.domain,
@@ -7786,7 +7824,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Update a decision tree
-  app.patch('/api/decision-trees/:id', optionalAuth, async (req: any, res) => {
+  app.patch('/api/decision-trees/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       const data = req.body;
@@ -7807,9 +7845,9 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Get decision log for an organization
-  app.get('/api/decision-log', optionalAuth, async (req: any, res) => {
+  app.get('/api/decision-log', requireOrgAccess, async (req: any, res) => {
     try {
-      const organizationId = req.query.organizationId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833';
+      const organizationId = req.orgId;
       
       const logs = await db.select()
         .from(decisionLog)
@@ -7825,13 +7863,13 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Log a decision
-  app.post('/api/decision-log', optionalAuth, async (req: any, res) => {
+  app.post('/api/decision-log', requireOrgAccess, async (req: any, res) => {
     try {
       const data = req.body;
       
       const [newLog] = await db.insert(decisionLog)
         .values({
-          organizationId: data.organizationId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833',
+          organizationId: req.orgId,
           decisionTreeId: data.decisionTreeId,
           scenario: data.scenario,
           question: data.question,
@@ -7851,9 +7889,9 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Get decision velocity metrics (aggregate stats)
-  app.get('/api/decision-velocity/metrics', optionalAuth, async (req: any, res) => {
+  app.get('/api/decision-velocity/metrics', requireOrgAccess, async (req: any, res) => {
     try {
-      const organizationId = req.query.organizationId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833';
+      const organizationId = req.orgId;
       
       const logs = await db.select()
         .from(decisionLog)
@@ -7904,9 +7942,9 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   } = await import('@shared/schema');
 
   // Get all execution instances for an organization
-  app.get('/api/execution-runs', optionalAuth, async (req: any, res) => {
+  app.get('/api/execution-runs', requireOrgAccess, async (req: any, res) => {
     try {
-      const organizationId = req.query.organizationId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833';
+      const organizationId = req.orgId;
       
       const runs = await db.select()
         .from(executionInstances)
@@ -7922,7 +7960,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Get a single execution run with all tasks
-  app.get('/api/execution-runs/:id', optionalAuth, async (req: any, res) => {
+  app.get('/api/execution-runs/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       
@@ -7956,7 +7994,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Launch a new execution run from a plan
-  app.post('/api/execution-runs', optionalAuth, async (req: any, res) => {
+  app.post('/api/execution-runs', requireOrgAccess, async (req: any, res) => {
     try {
       const { executionPlanId, scenarioId, organizationId, triggeredBy, triggerData } = req.body;
       
@@ -7965,7 +8003,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
         .values({
           executionPlanId,
           scenarioId,
-          organizationId: organizationId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833',
+          organizationId: req.orgId,
           triggeredBy: triggeredBy || req.userId,
           triggerData,
           status: 'running',
@@ -8001,7 +8039,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Update a task's status within an execution run
-  app.patch('/api/execution-runs/:runId/tasks/:taskId', optionalAuth, async (req: any, res) => {
+  app.patch('/api/execution-runs/:runId/tasks/:taskId', requireOrgAccess, async (req: any, res) => {
     try {
       const { runId, taskId } = req.params;
       const { status, notes, outcome } = req.body;
@@ -8137,9 +8175,9 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Get execution coordination metrics
-  app.get('/api/execution-coordination/metrics', optionalAuth, async (req: any, res) => {
+  app.get('/api/execution-coordination/metrics', requireOrgAccess, async (req: any, res) => {
     try {
-      const organizationId = req.query.organizationId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833';
+      const organizationId = req.orgId;
       
       const runs = await db.select()
         .from(executionInstances)
@@ -8169,9 +8207,9 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Document Templates CRUD
-  app.get('/api/document-templates', optionalAuth, async (req: any, res) => {
+  app.get('/api/document-templates', requireOrgAccess, async (req: any, res) => {
     try {
-      const organizationId = req.query.organizationId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833';
+      const organizationId = req.orgId;
       
       const templates = await db.select()
         .from(documentTemplates)
@@ -8184,11 +8222,11 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  app.post('/api/document-templates', optionalAuth, async (req: any, res) => {
+  app.post('/api/document-templates', requireOrgAccess, async (req: any, res) => {
     try {
       const [template] = await db.insert(documentTemplates)
         .values({
-          organizationId: req.body.organizationId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833',
+          organizationId: req.orgId,
           name: req.body.name,
           category: req.body.category,
           domain: req.body.domain,
@@ -8206,7 +8244,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Populate a template with scenario context
-  app.post('/api/document-templates/:id/populate', optionalAuth, async (req: any, res) => {
+  app.post('/api/document-templates/:id/populate', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       const { context } = req.body; // Key-value pairs for merge fields
@@ -8246,9 +8284,9 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   const { strategicObjectives } = await import('@shared/schema');
 
   // Get all strategic objectives for an organization
-  app.get('/api/strategic-objectives', optionalAuth, async (req: any, res) => {
+  app.get('/api/strategic-objectives', requireOrgAccess, async (req: any, res) => {
     try {
-      const organizationId = req.query.organizationId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833';
+      const organizationId = req.orgId;
       
       const objectives = await db.select()
         .from(strategicObjectives)
@@ -8263,7 +8301,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Get a single strategic objective
-  app.get('/api/strategic-objectives/:id', optionalAuth, async (req: any, res) => {
+  app.get('/api/strategic-objectives/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       
@@ -8283,11 +8321,11 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Create a new strategic objective
-  app.post('/api/strategic-objectives', optionalAuth, async (req: any, res) => {
+  app.post('/api/strategic-objectives', requireOrgAccess, async (req: any, res) => {
     try {
       const [objective] = await db.insert(strategicObjectives)
         .values({
-          organizationId: req.body.organizationId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833',
+          organizationId: req.orgId,
           name: req.body.name,
           description: req.body.description,
           targetDate: req.body.targetDate,
@@ -8310,7 +8348,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Update a strategic objective
-  app.patch('/api/strategic-objectives/:id', optionalAuth, async (req: any, res) => {
+  app.patch('/api/strategic-objectives/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       
@@ -8334,7 +8372,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // Delete a strategic objective
-  app.delete('/api/strategic-objectives/:id', optionalAuth, async (req: any, res) => {
+  app.delete('/api/strategic-objectives/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const { id } = req.params;
       

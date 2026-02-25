@@ -92,14 +92,20 @@ interface DataFlow {
   transformations: string[];
 }
 
+import { queryClient } from "@/lib/queryClient";
 import PageLayout from '@/components/layout/PageLayout';
+import { useToast } from "@/hooks/use-toast";
+import { useCustomer } from '@/contexts/CustomerContext';
 
 export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
-  const [activeTab, setActiveTab] = useState('dashboard');
+  const { toast } = useToast();
+  const [integrations, setIntegrations] = useState<Integration[]>([]);
+  const [apiEndpoints, setApiEndpoints] = useState<APIEndpoint[]>([]);
+  const [dataFlows, setDataFlows] = useState<DataFlow[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterCategory, setFilterCategory] = useState('all');
   
-  // Fetch connected integrations from API (use correct endpoint)
+  const [activeTab, setActiveTab] = useState('dashboard');
   const { data: connectedIntegrations, isLoading: integrationsLoading } = useQuery<any[]>({
     queryKey: ['/api/enterprise-integrations'],
   });
@@ -108,9 +114,62 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
   const safeIntegrations = connectedIntegrations ?? [];
   
   // Local state for integrations (initialized from API or defaults)
-  const [integrations, setIntegrations] = useState<Integration[]>([]);
-  const [apiEndpoints, setApiEndpoints] = useState<APIEndpoint[]>([]);
-  const [dataFlows, setDataFlows] = useState<DataFlow[]>([]);
+  const { organization } = useCustomer();
+  const organizationId = organization?.id;
+
+  const handleConnect = async (vendor: string) => {
+    if (!organizationId) {
+      toast({
+        title: "Configuration Error",
+        description: "Organization context not found. Please try again.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/oauth/${vendor}/authorize?organizationId=${organizationId}`);
+      const data = await response.json();
+      if (data.authUrl) {
+        window.location.href = data.authUrl;
+      } else {
+        throw new Error(data.error || "Failed to get authorization URL");
+      }
+    } catch (error) {
+      toast({
+        title: "Connection Failed",
+        description: error instanceof Error ? error.message : "Unknown error",
+        variant: "destructive"
+      });
+    }
+  };
+
+  const handleDisconnect = async (integrationId: string) => {
+    try {
+      const response = await fetch('/api/oauth/disconnect', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ integrationId }),
+      });
+      
+      if (response.ok) {
+        toast({
+          title: "Disconnected",
+          description: "Integration has been disconnected successfully.",
+        });
+        queryClient.invalidateQueries({ queryKey: ['/api/enterprise-integrations'] });
+        queryClient.invalidateQueries({ queryKey: [`/api/oauth/status?organizationId=${organizationId}`] });
+      } else {
+        throw new Error("Failed to disconnect");
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to disconnect integration.",
+        variant: "destructive"
+      });
+    }
+  };
   
   // Calculate system metrics from connected integrations
   const systemMetrics = {
@@ -727,81 +786,98 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
 
             {/* Integrations Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {filteredIntegrations.map((integration) => (
-                <Card key={integration.id} className="bg-white border-gray-200 hover:bg-slate-800/50 transition-all duration-300">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-gray-900 flex items-center gap-3">
-                        <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                          <Globe className="w-5 h-5 text-gray-900" />
-                        </div>
-                        {integration.name}
-                      </CardTitle>
-                      <div className="flex items-center gap-2">
-                        <Badge className={getStatusColor(integration.status)}>
-                          {integration.status.toUpperCase()}
-                        </Badge>
-                        <Badge className={getCategoryColor(integration.category)}>
-                          {integration.category.toUpperCase()}
-                        </Badge>
-                      </div>
-                    </div>
-                    <p className="text-gray-800 dark:text-slate-200 text-sm">{integration.description}</p>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    
-                    {/* Metrics */}
-                    <div className="grid grid-cols-2 gap-4 text-sm">
-                      <div>
-                        <div className="text-gray-800 dark:text-slate-200">Health</div>
-                        <div className="text-gray-900 font-medium">{integration.health}%</div>
-                      </div>
-                      <div>
-                        <div className="text-gray-800 dark:text-slate-200">Response Time</div>
-                        <div className="text-gray-900 font-medium">{integration.responseTime}ms</div>
-                      </div>
-                      <div>
-                        <div className="text-gray-800 dark:text-slate-200">Daily Requests</div>
-                        <div className="text-gray-900 font-medium">{formatNumber(integration.dailyRequests)}</div>
-                      </div>
-                      <div>
-                        <div className="text-gray-800 dark:text-slate-200">Error Rate</div>
-                        <div className="text-gray-900 font-medium">{(integration.errorRate * 100).toFixed(2)}%</div>
-                      </div>
-                    </div>
+                  {filteredIntegrations.map((integration) => {
+                    const isConnected = integration.status === 'active';
+                    return (
+                      <Card key={integration.id} className="bg-white border-gray-200 hover:bg-slate-800/50 transition-all duration-300">
+                        <CardHeader>
+                          <div className="flex items-center justify-between">
+                            <CardTitle className="text-gray-900 flex items-center gap-3">
+                              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                                <Globe className="w-5 h-5 text-gray-900" />
+                              </div>
+                              {integration.name}
+                            </CardTitle>
+                            <div className="flex items-center gap-2">
+                              <Badge className={getStatusColor(integration.status)}>
+                                {integration.status.toUpperCase()}
+                              </Badge>
+                              <Badge className={getCategoryColor(integration.category)}>
+                                {integration.category.toUpperCase()}
+                              </Badge>
+                            </div>
+                          </div>
+                          <p className="text-gray-800 dark:text-slate-200 text-sm">{integration.description}</p>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                          
+                          {/* Metrics */}
+                          <div className="grid grid-cols-2 gap-4 text-sm">
+                            <div>
+                              <div className="text-gray-800 dark:text-slate-200">Health</div>
+                              <div className="text-gray-900 font-medium">{integration.health}%</div>
+                            </div>
+                            <div>
+                              <div className="text-gray-800 dark:text-slate-200">Response Time</div>
+                              <div className="text-gray-900 font-medium">{integration.responseTime}ms</div>
+                            </div>
+                            <div>
+                              <div className="text-gray-800 dark:text-slate-200">Daily Requests</div>
+                              <div className="text-gray-900 font-medium">{formatNumber(integration.dailyRequests)}</div>
+                            </div>
+                            <div>
+                              <div className="text-gray-800 dark:text-slate-200">Error Rate</div>
+                              <div className="text-gray-900 font-medium">{(integration.errorRate * 100).toFixed(2)}%</div>
+                            </div>
+                          </div>
 
-                    {/* Features */}
-                    <div>
-                      <div className="text-sm font-semibold text-gray-900 mb-2">Features</div>
-                      <div className="flex flex-wrap gap-2">
-                        {integration.features.slice(0, 3).map((feature, index) => (
-                          <Badge key={index} variant="outline" className="bg-transparent border-slate-600 text-gray-800 text-xs">
-                            {feature}
-                          </Badge>
-                        ))}
-                        {integration.features.length > 3 && (
-                          <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800 text-xs">
-                            +{integration.features.length - 3} more
-                          </Badge>
-                        )}
-                      </div>
-                    </div>
-                    
-                    <div className="flex gap-2">
-                      <Button size="sm" className="flex-1 bg-blue-600 hover:bg-blue-700">
-                        <Settings className="w-4 h-4 mr-2" />
-                        Configure
-                      </Button>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
-                        <Monitor className="w-4 h-4" />
-                      </Button>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
-                        <FileText className="w-4 h-4" />
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                          {/* Features */}
+                          <div>
+                            <div className="text-sm font-semibold text-gray-900 mb-2">Features</div>
+                            <div className="flex flex-wrap gap-2">
+                              {integration.features.slice(0, 3).map((feature, index) => (
+                                <Badge key={index} variant="outline" className="bg-transparent border-slate-600 text-gray-800 text-xs">
+                                  {feature}
+                                </Badge>
+                              ))}
+                              {integration.features.length > 3 && (
+                                <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800 text-xs">
+                                  +{integration.features.length - 3} more
+                                </Badge>
+                              )}
+                            </div>
+                          </div>
+                          
+                          <div className="flex gap-2">
+                            {isConnected ? (
+                              <>
+                                <Button size="sm" className="flex-1 bg-blue-600 hover:bg-blue-700">
+                                  <Settings className="w-4 h-4 mr-2" />
+                                  Configure
+                                </Button>
+                                <Button size="sm" variant="destructive" onClick={() => handleDisconnect(integration.id)}>
+                                  <Trash2 className="w-4 h-4 mr-2" />
+                                  Disconnect
+                                </Button>
+                              </>
+                            ) : (
+                              <Button 
+                                size="sm" 
+                                className="flex-1 bg-emerald-600 hover:bg-emerald-700"
+                                onClick={() => handleConnect(integration.provider.toLowerCase().includes('slack') ? 'slack' : 'jira')}
+                              >
+                                <Plus className="w-4 h-4 mr-2" />
+                                Connect
+                              </Button>
+                            )}
+                            <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
+                              <Monitor className="w-4 h-4" />
+                            </Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
             </div>
           </TabsContent>
 

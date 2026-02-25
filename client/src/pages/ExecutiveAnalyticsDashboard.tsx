@@ -85,199 +85,29 @@ export default function ExecutiveAnalyticsDashboard() {
   });
 
   useEffect(() => {
-    // Load executive metrics
-    const metrics: ExecutiveMetric[] = [
-      {
-        id: 'revenue',
-        name: 'Quarterly Revenue',
-        value: '$2.85M',
-        change: '+12.4%',
-        trend: 'up',
-        category: 'Financial',
-        description: 'Total revenue for current quarter vs previous quarter',
-        benchmark: 'Industry avg: +8.2%'
-      },
-      {
-        id: 'profit-margin',
-        name: 'Profit Margin',
-        value: '18.7%',
-        change: '+2.1%',
-        trend: 'up',
-        category: 'Financial',
-        description: 'Net profit margin improvement through operational efficiency',
-        benchmark: 'Industry avg: 15.3%'
-      },
-      {
-        id: 'customer-acquisition',
-        name: 'Customer Acquisition',
-        value: '1,247',
-        change: '+23.6%',
-        trend: 'up',
-        category: 'Growth',
-        description: 'New customers acquired this quarter',
-        benchmark: 'Target: 1,200'
-      },
-      {
-        id: 'customer-retention',
-        name: 'Customer Retention',
-        value: '94.2%',
-        change: '+1.8%',
-        trend: 'up',
-        category: 'Growth',
-        description: 'Customer retention rate improvement',
-        benchmark: 'Industry avg: 89.5%'
-      },
-      {
-        id: 'employee-satisfaction',
-        name: 'Employee Satisfaction',
-        value: '87.5%',
-        change: '+5.2%',
-        trend: 'up',
-        category: 'Operations',
-        description: 'Employee satisfaction survey results',
-        benchmark: 'Target: 85%'
-      },
-      {
-        id: 'market-share',
-        name: 'Market Share',
-        value: '23.8%',
-        change: '+3.4%',
-        trend: 'up',
-        category: 'Market',
-        description: 'Market share growth in core segments',
-        benchmark: 'Competitor avg: 18.2%'
-      },
-      {
-        id: 'operational-efficiency',
-        name: 'Operational Efficiency',
-        value: '92.1%',
-        change: '+4.7%',
-        trend: 'up',
-        category: 'Operations',
-        description: 'Overall operational efficiency rating',
-        benchmark: 'Target: 90%'
-      },
-      {
-        id: 'innovation-index',
-        name: 'Innovation Index',
-        value: '8.3/10',
-        change: '+0.6',
-        trend: 'up',
-        category: 'Innovation',
-        description: 'Innovation capability and R&D effectiveness',
-        benchmark: 'Industry avg: 7.1/10'
+    const fetchData = async () => {
+      try {
+        const [metricsRes, velocityRes] = await Promise.all([
+          fetch('/api/dashboard/metrics'),
+          fetch('/api/decision-velocity/metrics')
+        ]);
+
+        if (metricsRes.ok) {
+          const metricsData = await metricsRes.json();
+          if (metricsData.success) {
+            if (metricsData.executiveMetrics) setExecutiveMetrics(metricsData.executiveMetrics);
+            if (metricsData.performanceInsights) setPerformanceInsights(metricsData.performanceInsights);
+            if (metricsData.departmentData) setDepartmentData(metricsData.departmentData);
+            if (metricsData.realTimeData) setRealTimeData(metricsData.realTimeData);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching executive dashboard data:', error);
       }
-    ];
+    };
 
-    const insights: PerformanceInsight[] = [
-      {
-        id: 'insight-1',
-        title: 'Digital Transformation ROI Acceleration',
-        category: 'achievement',
-        priority: 'high',
-        description: 'Digital transformation initiatives have exceeded ROI projections by 34%, delivering $1.2M additional value.',
-        actionRequired: false,
-        impact: '$1.2M additional value',
-        recommendations: ['Accelerate Phase 2 implementation', 'Expand to additional business units', 'Document best practices'],
-        confidence: 94
-      },
-      {
-        id: 'insight-2',
-        title: 'Supply Chain Optimization Opportunity',
-        category: 'opportunity',
-        priority: 'medium',
-        description: 'AI analysis identifies 18% cost reduction potential through supplier consolidation and logistics optimization.',
-        actionRequired: true,
-        impact: '$450K annual savings',
-        recommendations: ['Conduct supplier assessment', 'Implement logistics AI', 'Negotiate volume discounts'],
-        confidence: 87
-      },
-      {
-        id: 'insight-3',
-        title: 'Customer Acquisition Cost Trend',
-        category: 'alert',
-        priority: 'medium',
-        description: 'Customer acquisition costs have increased 15% due to competitive market conditions and ad spend inflation.',
-        actionRequired: true,
-        impact: '+$47 per acquisition',
-        recommendations: ['Optimize marketing channels', 'Improve conversion funnels', 'Explore referral programs'],
-        confidence: 91
-      },
-      {
-        id: 'insight-4',
-        title: 'Team Productivity Surge',
-        category: 'achievement',
-        priority: 'low',
-        description: 'Implementation of new collaboration tools has increased team productivity by 28% across all departments.',
-        actionRequired: false,
-        impact: '28% productivity increase',
-        recommendations: ['Share success metrics', 'Expand tool rollout', 'Recognition program'],
-        confidence: 96
-      }
-    ];
-
-    const departments: DepartmentPerformance[] = [
-      {
-        department: 'Sales',
-        performance: 112,
-        budget: 2400000,
-        headcount: 24,
-        kpis: [
-          { name: 'Revenue Target', value: 112, target: 100, trend: 'up' },
-          { name: 'Pipeline Health', value: 134, target: 120, trend: 'up' },
-          { name: 'Conversion Rate', value: 98, target: 100, trend: 'stable' }
-        ]
-      },
-      {
-        department: 'Marketing',
-        performance: 108,
-        budget: 1800000,
-        headcount: 18,
-        kpis: [
-          { name: 'Lead Generation', value: 124, target: 110, trend: 'up' },
-          { name: 'Brand Awareness', value: 103, target: 105, trend: 'stable' },
-          { name: 'Campaign ROI', value: 156, target: 130, trend: 'up' }
-        ]
-      },
-      {
-        department: 'Product',
-        performance: 95,
-        budget: 3200000,
-        headcount: 32,
-        kpis: [
-          { name: 'Feature Delivery', value: 87, target: 95, trend: 'down' },
-          { name: 'Quality Score', value: 94, target: 90, trend: 'up' },
-          { name: 'User Satisfaction', value: 104, target: 100, trend: 'up' }
-        ]
-      },
-      {
-        department: 'Operations',
-        performance: 104,
-        budget: 1600000,
-        headcount: 28,
-        kpis: [
-          { name: 'Efficiency Rating', value: 108, target: 100, trend: 'up' },
-          { name: 'Cost Control', value: 96, target: 98, trend: 'stable' },
-          { name: 'Process Optimization', value: 118, target: 110, trend: 'up' }
-        ]
-      }
-    ];
-
-    setExecutiveMetrics(metrics);
-    setPerformanceInsights(insights);
-    setDepartmentData(departments);
-
-    // Update real-time data every 30 seconds
-    const interval = setInterval(() => {
-      setRealTimeData(prev => ({
-        activeUsers: prev.activeUsers + Math.floor(Math.random() * 20 - 10),
-        revenue: prev.revenue + Math.floor(Math.random() * 10000 - 5000),
-        conversionRate: +(prev.conversionRate + (Math.random() * 0.2 - 0.1)).toFixed(2),
-        customerSat: +(prev.customerSat + (Math.random() * 1 - 0.5)).toFixed(1),
-        systemHealth: +(prev.systemHealth + (Math.random() * 0.5 - 0.25)).toFixed(1)
-      }));
-    }, 30000);
-
+    fetchData();
+    const interval = setInterval(fetchData, 30000);
     return () => clearInterval(interval);
   }, []);
 

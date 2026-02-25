@@ -622,7 +622,9 @@ export default function IntegrationConnections() {
   });
 
   const handleConnect = async (integrationKey: string, connectionType: string) => {
-    if (connectionType === 'oauth' && (integrationKey === 'jira' || integrationKey === 'slack')) {
+    if (connectionType === 'oauth' && integrationKey === 'jira') {
+      window.location.href = `/api/integrations/jira/auth?orgId=${organizationId}`;
+    } else if (connectionType === 'oauth' && (integrationKey === 'jira_legacy' || integrationKey === 'slack')) {
       setConnectingId(integrationKey);
       try {
         const res = await fetch(`/api/oauth/${integrationKey}/authorize?organizationId=${organizationId}`, { credentials: 'include' });

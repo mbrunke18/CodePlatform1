@@ -95,38 +95,44 @@ class DynamicStrategySimulator {
     }, 5000);
   }
 
-  private updateReadinessScore() {
-    const variance = (Math.random() * 2 - 1) * 0.5;
-    this.readinessScore = Math.max(70, Math.min(95, this.readinessScore + variance));
-    
-    Object.keys(this.metrics).forEach(key => {
-      const change = (Math.random() * 2 - 1) * 2;
-      this.metrics[key as keyof ReadinessMetrics] = Math.max(60, Math.min(100, this.metrics[key as keyof ReadinessMetrics] + change));
-    });
+  private async updateReadinessScore() {
+    try {
+      const response = await fetch('/api/dashboard/metrics');
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success && data.readinessScore) {
+          this.readinessScore = data.readinessScore;
+          // Map backend metrics to simulator metrics if available
+          if (data.metrics) {
+            this.metrics = {
+              foresight: data.metrics.foresight || this.metrics.foresight,
+              velocity: data.metrics.velocity || this.metrics.velocity,
+              agility: data.metrics.agility || this.metrics.agility,
+              learning: data.metrics.learning || this.metrics.learning,
+              adaptability: data.metrics.adaptability || this.metrics.adaptability
+            };
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching readiness score:', error);
+    }
 
     this.invalidateQueries();
   }
 
-  private detectWeakSignals() {
-    const signalTypes = [
-      { type: 'regulatory', confidence: 73, timeline: '3-6 months', impact: 'high' },
-      { type: 'competitor', confidence: 61, timeline: '1-2 months', impact: 'medium' },
-      { type: 'technology', confidence: 85, timeline: '6-12 months', impact: 'high' },
-      { type: 'market', confidence: 67, timeline: '2-4 weeks', impact: 'low' },
-      { type: 'supply chain', confidence: 79, timeline: '1-3 months', impact: 'critical' }
-    ];
-
-    if (Math.random() > 0.7) {
-      const signalTemplate = signalTypes[Math.floor(Math.random() * signalTypes.length)];
-      const signal: WeakSignal = {
-        ...signalTemplate,
-        timestamp: new Date(),
-        id: Math.random().toString(36).substr(2, 9)
-      };
-      
-      this.weakSignals.push(signal);
-      this.alertNewSignal(signal);
-      this.invalidateQueries();
+  private async detectWeakSignals() {
+    try {
+      const response = await fetch('/api/dynamic-strategy/weak-signals');
+      if (response.ok) {
+        const data = await response.json();
+        if (Array.isArray(data)) {
+          this.weakSignals = data;
+          this.invalidateQueries();
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching weak signals:', error);
     }
   }
 
@@ -147,48 +153,18 @@ class DynamicStrategySimulator {
     }, 30000);
   }
 
-  private detectPatterns() {
-    const patterns: OraclePattern[] = [
-      {
-        type: 'Regulatory shift',
-        confidence: Math.floor(60 + Math.random() * 30),
-        impact: ['high', 'medium', 'critical'][Math.floor(Math.random() * 3)],
-        timeline: ['1-3 months', '3-6 months', '6-12 months'][Math.floor(Math.random() * 3)],
-        recommendations: [
-          'Pre-load compliance playbook',
-          'Schedule legal briefing',
-          'Run simulation exercise'
-        ]
-      },
-      {
-        type: 'Market disruption',
-        confidence: Math.floor(50 + Math.random() * 40),
-        impact: ['high', 'medium', 'low'][Math.floor(Math.random() * 3)],
-        timeline: ['2-4 weeks', '1-2 months', '2-3 months'][Math.floor(Math.random() * 3)],
-        recommendations: [
-          'Review competitor responses',
-          'Update pricing strategy',
-          'Prepare customer communications'
-        ]
-      },
-      {
-        type: 'Supply chain risk',
-        confidence: Math.floor(70 + Math.random() * 25),
-        impact: 'critical',
-        timeline: '1-4 weeks',
-        recommendations: [
-          'Identify alternate suppliers',
-          'Increase inventory buffers',
-          'Alert operations teams'
-        ]
+  private async detectPatterns() {
+    try {
+      const response = await fetch('/api/dynamic-strategy/oracle-patterns');
+      if (response.ok) {
+        const data = await response.json();
+        if (Array.isArray(data)) {
+          this.oraclePatterns = data;
+          this.invalidateQueries();
+        }
       }
-    ];
-
-    if (Math.random() > 0.6) {
-      const pattern = patterns[Math.floor(Math.random() * patterns.length)];
-      this.oraclePatterns.push(pattern);
-      this.alertPattern(pattern);
-      this.invalidateQueries();
+    } catch (error) {
+      console.error('Error fetching oracle patterns:', error);
     }
   }
 

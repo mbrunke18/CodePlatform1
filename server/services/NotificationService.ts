@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer';
+import sgMail from '@sendgrid/mail';
 import { db } from '../db';
 import { notifications, users } from '@shared/schema';
 import { eq } from 'drizzle-orm';
@@ -16,34 +16,25 @@ interface DeliveryResponse {
 }
 
 class NotificationService {
-  private transporter: nodemailer.Transporter | null = null;
+  private sendgridEnabled = false;
 
   constructor() {
-    this.initializeTransporter();
+    this.initializeSendGrid();
   }
 
-  private initializeTransporter() {
-    const smtpHost = process.env.SMTP_HOST;
-    const smtpUser = process.env.SMTP_USER;
-    const smtpPass = process.env.SMTP_PASS;
+  private initializeSendGrid() {
+    const apiKey = process.env.SENDGRID_API_KEY;
 
-    if (smtpHost && smtpUser && smtpPass) {
+    if (apiKey) {
       try {
-        this.transporter = nodemailer.createTransport({
-          host: smtpHost,
-          port: parseInt(process.env.SMTP_PORT || '587'),
-          secure: process.env.SMTP_SECURE === 'true',
-          auth: {
-            user: smtpUser,
-            pass: smtpPass,
-          },
-        });
-        console.log('✓ Email transporter initialized');
+        sgMail.setApiKey(apiKey);
+        this.sendgridEnabled = true;
+        console.log('✓ SendGrid initialized');
       } catch (error) {
-        console.warn('Failed to initialize email transporter:', error);
+        console.warn('Failed to initialize SendGrid:', error);
       }
     } else {
-      console.log('ℹ Email credentials not configured - notifications will be logged only');
+      console.log('ℹ SendGrid API key not configured - email notifications will be simulated');
     }
   }
 
@@ -128,7 +119,7 @@ class NotificationService {
     recipient: any
   ): Promise<NotificationDeliveryResult> {
     try {
-      if (!this.transporter) {
+      if (!this.sendgridEnabled) {
         console.log(`[SIMULATED EMAIL] To: ${recipient.email}`);
         console.log(`[SIMULATED EMAIL] Subject: ${notification.title}`);
         console.log(`[SIMULATED EMAIL] Message: ${notification.message}`);
@@ -149,17 +140,17 @@ class NotificationService {
 
       const htmlContent = this.renderEmailTemplate(notification);
 
-      await this.transporter.sendMail({
-        from: process.env.SMTP_FROM || '"ExecuteIQ" <alerts@poise.app>',
+      await sgMail.send({
         to: recipient.email,
+        from: 'mbrunke@vaughnmartin.com',
         subject: notification.title,
         html: htmlContent,
       });
 
-      console.log(`✓ Email sent to ${recipient.email}`);
+      console.log(`✓ Email sent to ${recipient.email} via SendGrid`);
       return { channel: 'email', success: true };
     } catch (error: any) {
-      console.error('Email delivery error:', error);
+      console.error('Email delivery error (SendGrid):', error);
       return {
         channel: 'email',
         success: false,

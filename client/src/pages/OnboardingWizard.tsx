@@ -44,6 +44,15 @@ const ONBOARDING_STEPS = [
     borderColor: 'border-blue-500/30',
   },
   {
+    id: 'integrations',
+    title: 'Integrations',
+    description: 'Connect your project tracking and communication tools',
+    icon: Zap,
+    color: 'text-purple-500',
+    bgColor: 'bg-purple-500/10',
+    borderColor: 'border-purple-500/30',
+  },
+  {
     id: 'triggers',
     title: 'Trigger Configuration',
     description: 'Set up intelligence monitoring thresholds',
@@ -87,6 +96,12 @@ export default function OnboardingWizard() {
     primaryContact: '',
     primaryEmail: '',
   });
+
+  // Integrations data
+  const [integrationsData, setIntegrationsData] = useState({
+    projectTracking: 'jira',
+    communication: 'slack',
+  });
   
   // Trigger data
   const [triggerData, setTriggerData] = useState({
@@ -126,6 +141,7 @@ export default function OnboardingWizard() {
         currentStep: currentStep,
         completedSteps: Array.from(completedSteps),
         orgData,
+        integrationsData,
         triggerData,
         playbookData,
         metricsData,
@@ -141,6 +157,16 @@ export default function OnboardingWizard() {
     mutationFn: async () => {
       // Save all configuration data
       const promises = [
+        // Update organization info
+        apiRequest('PATCH', '/api/organizations/current', {
+          industry: orgData.industry,
+          size: parseInt(orgData.employeeCount) || 0,
+          settings: {
+            integrations: integrationsData,
+            triggers: triggerData,
+            playbooks: playbookData
+          }
+        }).catch(() => {}),
         // Save departments
         ...orgData.departments.map(dept => 
           apiRequest('POST', '/api/config/departments', { name: dept, description: `${dept} department` }).catch(() => {})
@@ -195,7 +221,7 @@ export default function OnboardingWizard() {
     saveProgressMutation.mutate({
       step: ONBOARDING_STEPS[currentStep].id,
       completed: true,
-      data: currentStep === 0 ? orgData : currentStep === 1 ? triggerData : currentStep === 2 ? playbookData : metricsData,
+      data: currentStep === 0 ? orgData : currentStep === 1 ? integrationsData : currentStep === 2 ? triggerData : currentStep === 3 ? playbookData : metricsData,
     });
     
     if (currentStep < ONBOARDING_STEPS.length - 1) {
@@ -364,8 +390,102 @@ export default function OnboardingWizard() {
               </div>
             )}
 
-            {/* Step 2: Trigger Configuration */}
+            {/* Step 2: Integrations */}
             {currentStep === 1 && (
+              <div className="space-y-6">
+                <div className="space-y-4">
+                  <Label className="text-gray-900 font-semibold">What do you use for project tracking?</Label>
+                  <Select value={integrationsData.projectTracking} onValueChange={(v) => setIntegrationsData({ ...integrationsData, projectTracking: v })}>
+                    <SelectTrigger className="bg-gray-50 border-gray-200">
+                      <SelectValue placeholder="Select tool" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="jira">Jira (OAuth 2.0)</SelectItem>
+                      <SelectItem value="azure-devops">Azure DevOps (Coming Soon)</SelectItem>
+                      <SelectItem value="asana">Asana (Coming Soon)</SelectItem>
+                      <SelectItem value="monday">Monday.com (Coming Soon)</SelectItem>
+                      <SelectItem value="linear">Linear (Coming Soon)</SelectItem>
+                      <SelectItem value="shortcut">Shortcut (Coming Soon)</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-4 pt-4">
+                  <Label className="text-gray-900 font-semibold">What do you use for communication?</Label>
+                  <Select value={integrationsData.communication} onValueChange={(v) => setIntegrationsData({ ...integrationsData, communication: v })}>
+                    <SelectTrigger className="bg-gray-50 border-gray-200">
+                      <SelectValue placeholder="Select tool" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="slack">Slack (OAuth 2.0)</SelectItem>
+                      <SelectItem value="teams">Microsoft Teams (Coming Soon)</SelectItem>
+                      <SelectItem value="google-chat">Google Chat (Coming Soon)</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="pt-6 border-t border-gray-200 space-y-4">
+                  <h3 className="font-semibold text-gray-900">Connect Integrations</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Card className="bg-gray-50 border-gray-200">
+                      <CardContent className="p-4 flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-blue-500/10 rounded flex items-center justify-center">
+                            <Layers className="h-5 w-5 text-blue-500" />
+                          </div>
+                          <div>
+                            <p className="font-medium text-gray-900">Jira</p>
+                            <p className="text-xs text-gray-800">Project tracking</p>
+                          </div>
+                        </div>
+                        <Button 
+                          size="sm" 
+                          variant="outline"
+                          onClick={() => {
+                            const orgId = (existingProgress as any)?.organizationId || 'current';
+                            window.location.href = `/api/integrations/jira/auth?orgId=${orgId}`;
+                          }}
+                        >
+                          Connect
+                        </Button>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="bg-gray-50 border-gray-200">
+                      <CardContent className="p-4 flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-pink-500/10 rounded flex items-center justify-center">
+                            <Bell className="h-5 w-5 text-pink-500" />
+                          </div>
+                          <div>
+                            <p className="font-medium text-gray-900">Slack</p>
+                            <p className="text-xs text-gray-800">Team communication</p>
+                          </div>
+                        </div>
+                        <Button 
+                          size="sm" 
+                          variant="outline"
+                          onClick={() => {
+                            const orgId = (existingProgress as any)?.organizationId || 'current';
+                            window.location.href = `/api/integrations/slack/auth?orgId=${orgId}`;
+                          }}
+                        >
+                          Connect
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </div>
+                  <p className="text-xs text-gray-800 italic text-center">
+                    You can also skip these and connect them later in the Integration Hub.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Step 3: Trigger Configuration */}
+            {currentStep === 2 && (
               <div className="space-y-6">
                 <p className="text-gray-800 mb-4">
                   Configure the thresholds that will trigger strategic alerts and playbook recommendations.

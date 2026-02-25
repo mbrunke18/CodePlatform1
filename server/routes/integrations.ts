@@ -85,6 +85,11 @@ const activatePlaybookSchema = z.object({
   })
 });
 
+// Atlassian OAuth constants
+const JIRA_CLIENT_ID = process.env.JIRA_CLIENT_ID;
+const JIRA_CLIENT_SECRET = process.env.JIRA_CLIENT_SECRET;
+const JIRA_CALLBACK_URL = process.env.JIRA_CALLBACK_URL || 'https://' + process.env.REPL_SLUG + '.' + process.env.REPL_OWNER + '.repl.co/api/integrations/jira/callback';
+
 /**
  * Data Integration Management Routes
  */
@@ -236,6 +241,107 @@ router.get('/health', (req, res) => {
   } catch (error) {
     console.error('Error checking integration health:', error);
     res.status(500).json({ message: 'Health check failed' });
+  }
+});
+
+// Jira OAuth 2.0 Flow
+router.get('/jira/auth', requireAuth, (req, res) => {
+  if (!JIRA_CLIENT_ID) {
+    return res.status(500).json({ error: 'Jira OAuth not configured on server (JIRA_CLIENT_ID missing)' });
+  }
+
+  const state = encodeURIComponent(JSON.stringify({
+    orgId: req.query.orgId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833', // Default to demo org if not provided, but T001 should handle this
+    userId: req.userId
+  }));
+
+  const scopes = [
+    'read:jira-user',
+    'read:jira-work',
+    'write:jira-work',
+    'manage:jira-project',
+    'manage:jira-configuration',
+    'offline_access'
+  ].join(' ');
+
+  const authUrl = `https://auth.atlassian.com/authorize?audience=api.atlassian.com&client_id=${JIRA_CLIENT_ID}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(JIRA_CALLBACK_URL)}&state=${state}&response_type=code&prompt=consent`;
+
+  res.redirect(authUrl);
+});
+
+router.get('/jira/callback', async (req, res) => {
+  const { code, state } = req.query;
+
+  if (!code) {
+    return res.status(400).send('No code provided');
+  }
+
+  try {
+    const { orgId, userId } = JSON.parse(decodeURIComponent(state as string));
+
+    // Exchange code for token
+    const tokenResponse = await fetch('https://auth.atlassian.com/oauth/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        grant_type: 'authorization-code',
+        client_id: JIRA_CLIENT_ID,
+        client_secret: JIRA_CLIENT_SECRET,
+        code,
+        redirect_uri: JIRA_CALLBACK_URL,
+      }),
+    });
+
+    const tokenData = await tokenResponse.json();
+
+    if (!tokenResponse.ok) {
+      throw new Error(tokenData.error_description || tokenData.error || 'Failed to exchange code for token');
+    }
+
+    // Get Cloud ID
+    const cloudResponse = await fetch('https://api.atlassian.com/oauth/token/accessible-resources', {
+      headers: {
+        Authorization: `Bearer ${tokenData.access_token}`,
+        Accept: 'application/json',
+      },
+    });
+
+    const cloudData = await cloudResponse.json();
+    const primaryResource = cloudData[0]; // Take the first accessible resource for now
+
+    if (!primaryResource) {
+      throw new Error('No accessible Jira resources found');
+    }
+
+    // Store integration
+    await integrationManager.connectIntegration({
+      organizationId: orgId,
+      name: `Jira (${primaryResource.name})`,
+      integrationType: 'jira',
+      vendor: 'jira',
+      credentials: {
+        type: 'oauth',
+        data: {
+          access_token: tokenData.access_token,
+          refresh_token: tokenData.refresh_token,
+          expires_in: tokenData.expires_in,
+          cloudId: primaryResource.id,
+          cloudUrl: primaryResource.url,
+          api_url: `https://api.atlassian.com/ex/jira/${primaryResource.id}`
+        }
+      },
+      configuration: {
+        cloudId: primaryResource.id,
+        cloudUrl: primaryResource.url,
+        resourceName: primaryResource.name
+      }
+    });
+
+    // Redirect back to integrations page
+    res.redirect('/setup/integrations?connected=jira');
+  } catch (error) {
+    console.error('Jira OAuth callback error:', error);
+    res.status(500).send(`Authentication failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 });
 

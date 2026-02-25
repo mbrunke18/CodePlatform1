@@ -111,162 +111,25 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
   });
 
   useEffect(() => {
-    // Generate sample audit logs
-    const generateAuditLogs = (): AuditLog[] => {
-      const actions = [
-        'User Login', 'User Logout', 'Document Access', 'Configuration Change',
-        'Data Export', 'Permission Grant', 'System Backup', 'Password Reset',
-        'Resource Creation', 'Resource Deletion', 'API Access', 'Report Generation'
-      ];
-      
-      const resources = [
-        'Strategic Planning Hub', 'Crisis Response Center', 'AI Intelligence',
-        'Executive Dashboard', 'User Management', 'System Configuration',
-        'Financial Data', 'Customer Database', 'API Gateway', 'Security Settings'
-      ];
-      
-      const users = [
-        'Executive User', 'Strategic Lead', 'Operations Manager',
-        'Finance Lead', 'Technology Lead', 'System Admin',
-        'API Service', 'Background Process'
-      ];
-
-      return Array.from({ length: 50 }, (_, i) => ({
-        id: `log-${i + 1}`,
-        timestamp: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000).toISOString(),
-        user: users[Math.floor(Math.random() * users.length)],
-        action: actions[Math.floor(Math.random() * actions.length)],
-        resource: resources[Math.floor(Math.random() * resources.length)],
-        resourceId: `res-${Math.floor(Math.random() * 1000)}`,
-        category: ['authentication', 'data_access', 'configuration', 'decision', 'system', 'security'][Math.floor(Math.random() * 6)] as any,
-        severity: ['low', 'medium', 'high', 'critical'][Math.floor(Math.random() * 4)] as any,
-        outcome: ['success', 'failure', 'warning'][Math.floor(Math.random() * 3)] as any,
-        ipAddress: `192.168.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`,
-        userAgent: 'Mozilla/5.0 (compatible; M/1.0)',
-        details: `Audit log entry for ${actions[Math.floor(Math.random() * actions.length)]} operation`,
-        metadata: {
-          sessionId: `sess-${Math.random().toString(36).substr(2, 9)}`,
-          requestId: `req-${Math.random().toString(36).substr(2, 9)}`,
-          geolocation: ['San Francisco, CA', 'New York, NY', 'Austin, TX', 'London, UK'][Math.floor(Math.random() * 4)],
-          duration: Math.floor(Math.random() * 5000)
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/audit-logs');
+        if (response.ok) {
+          const data = await response.json();
+          if (data.success) {
+            if (data.auditLogs) setAuditLogs(data.auditLogs);
+            if (data.securityEvents) setSecurityEvents(data.securityEvents);
+            if (data.complianceReports) setComplianceReports(data.complianceReports);
+            if (data.metrics) setMetrics(data.metrics);
+          }
         }
-      }));
+      } catch (error) {
+        console.error('Error fetching audit logs:', error);
+      }
     };
 
-    const securityEvents: SecurityEvent[] = [
-      {
-        id: 'sec-001',
-        type: 'failed_login',
-        severity: 'medium',
-        timestamp: new Date(Date.now() - 3600000).toISOString(),
-        user: 'Unknown User',
-        description: 'Multiple failed login attempts from suspicious IP address',
-        status: 'investigating',
-        riskScore: 65,
-        affectedResources: ['Authentication System'],
-        recommendations: ['Monitor IP address', 'Consider temporary IP block', 'Review authentication logs']
-      },
-      {
-        id: 'sec-002',
-        type: 'data_export',
-        severity: 'high',
-        timestamp: new Date(Date.now() - 7200000).toISOString(),
-        user: 'Strategic Lead',
-        description: 'Large data export outside normal business hours',
-        status: 'resolved',
-        riskScore: 75,
-        affectedResources: ['Strategic Planning Data', 'Market Analysis Reports'],
-        recommendations: ['Verify export authorization', 'Review data classification', 'Update access policies']
-      },
-      {
-        id: 'sec-003',
-        type: 'privilege_escalation',
-        severity: 'critical',
-        timestamp: new Date(Date.now() - 10800000).toISOString(),
-        user: 'Unknown Service Account',
-        description: 'Unauthorized attempt to escalate system privileges',
-        status: 'detected',
-        riskScore: 90,
-        affectedResources: ['System Configuration', 'User Management'],
-        recommendations: ['Immediate investigation required', 'Review service account permissions', 'Audit system access']
-      }
-    ];
-
-    const complianceReports: ComplianceReport[] = [
-      {
-        id: 'comp-001',
-        reportType: 'SOX Compliance Review',
-        period: 'Q1 2024',
-        generatedDate: new Date().toISOString(),
-        status: 'approved',
-        findings: [
-          {
-            category: 'Access Controls',
-            count: 3,
-            severity: 'medium',
-            details: ['Privileged access review needed', 'Role segregation improvements', 'Access certification overdue']
-          },
-          {
-            category: 'Data Protection',
-            count: 1,
-            severity: 'low',
-            details: ['Encryption key rotation schedule']
-          }
-        ],
-        compliance: [
-          {
-            framework: 'SOX',
-            score: 96.5,
-            requirements: [
-              { requirement: 'Internal Controls', status: 'compliant', evidence: 'Monthly access reviews documented' },
-              { requirement: 'Data Integrity', status: 'compliant', evidence: 'Automated data validation in place' },
-              { requirement: 'Audit Trail', status: 'compliant', evidence: 'Comprehensive logging implemented' }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'comp-002',
-        reportType: 'GDPR Privacy Assessment',
-        period: 'Q1 2024',
-        generatedDate: new Date(Date.now() - 86400000).toISOString(),
-        status: 'reviewed',
-        findings: [
-          {
-            category: 'Data Processing',
-            count: 2,
-            severity: 'medium',
-            details: ['Update privacy notices', 'Data retention policy review']
-          }
-        ],
-        compliance: [
-          {
-            framework: 'GDPR',
-            score: 94.2,
-            requirements: [
-              { requirement: 'Lawful Basis', status: 'compliant', evidence: 'Privacy policy updated' },
-              { requirement: 'Data Subject Rights', status: 'partial', evidence: 'Automated deletion in progress' },
-              { requirement: 'Data Protection Impact Assessment', status: 'compliant', evidence: 'DPIA completed for AI systems' }
-            ]
-          }
-        ]
-      }
-    ];
-
-    setAuditLogs(generateAuditLogs());
-    setSecurityEvents(securityEvents);
-    setComplianceReports(complianceReports);
-
-    // Update metrics in real-time
-    const interval = setInterval(() => {
-      setMetrics(prev => ({
-        ...prev,
-        totalLogs: prev.totalLogs + Math.floor(Math.random() * 5),
-        dailyLogins: prev.dailyLogins + Math.floor(Math.random() * 3),
-        failedAttempts: prev.failedAttempts + Math.floor(Math.random() * 2)
-      }));
-    }, 30000);
-
+    fetchData();
+    const interval = setInterval(fetchData, 30000);
     return () => clearInterval(interval);
   }, []);
 

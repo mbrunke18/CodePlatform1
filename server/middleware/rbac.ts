@@ -15,8 +15,7 @@ export async function getUserRole(userId: string, organizationId: string): Promi
     const user = await db.select().from(users).where(eq(users.id, userId)).limit(1);
     if (!user.length) return 'viewer'; // Default to viewer if no user record
     
-    // For now, treat all authenticated users as executors, demo user as admin
-    if (userId === '7cd941d8-5c5f-461e-87ea-9d2b1d81cb59') return 'admin';
+    // For now, treat all authenticated users as executors
     return 'executor';
   } catch (error) {
     log.error({ error }, 'Error fetching user role');
@@ -57,9 +56,6 @@ export async function enforceRole(
  * Verify organization access
  */
 export async function verifyOrgAccess(userId: string, requestedOrgId: string): Promise<boolean> {
-  // Demo user has access to all orgs
-  if (userId === '7cd941d8-5c5f-461e-87ea-9d2b1d81cb59') return true;
-  
   try {
     const user = await db.select().from(users).where(eq(users.id, userId)).limit(1);
     if (!user.length) return false;

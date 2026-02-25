@@ -280,16 +280,18 @@ function DataPointRow({
   existingTrigger?: any;
   isToggling?: boolean;
 }) {
+  const { data: signalStatus } = useQuery<any>({
+    queryKey: ['/api/dynamic-strategy/status']
+  });
+
   const isActive = existingTrigger?.isActive ?? false;
-  const currentValue = dataPoint.metricType === 'percentage' 
-    ? `${Math.floor(Math.random() * 100)}%`
+
+  const currentValue = signalStatus?.metrics?.[dataPoint.id] || 
+    (dataPoint.metricType === 'percentage' 
+    ? '0%'
     : dataPoint.metricType === 'currency'
-    ? `$${(Math.random() * 10000000).toLocaleString()}`
-    : dataPoint.metricType === 'count'
-    ? Math.floor(Math.random() * 100).toString()
-    : dataPoint.metricType === 'boolean'
-    ? (Math.random() > 0.5 ? 'Yes' : 'No')
-    : Math.floor(Math.random() * 100).toString();
+    ? '$0'
+    : '0');
 
   const handleToggle = (checked: boolean) => {
     onQuickToggle(dataPoint, category, checked, existingTrigger?.id);

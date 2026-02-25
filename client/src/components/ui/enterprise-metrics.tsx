@@ -59,8 +59,8 @@ export function LiveEnterpriseMetrics({ organizationId = "demo", className = "" 
               value: parseFloat(m.value),
               displayValue: m.value,
               unit: m.unit,
-              change: Math.random() * 5 - 2.5, // Simulated change for demo
-              trend: Math.random() > 0.3 ? 'up' : 'down',
+              change: m.change || 0,
+              trend: m.trend || 'stable',
               benchmarkPercentile: m.metadata?.benchmarkPercentile || 85,
               confidence: m.metadata?.confidence || 0.9,
               lastUpdate: new Date(m.timestamp),

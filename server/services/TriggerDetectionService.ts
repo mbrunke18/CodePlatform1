@@ -34,8 +34,8 @@ export class TriggerDetectionService {
     this.alertCallbacks.forEach((cb) => cb(alert));
   }
 
-  async checkForTriggers(): Promise<TriggerAlert[]> {
-    const deals = await this.salesforceService.getDeals();
+  async checkForTriggers(organizationId?: string): Promise<TriggerAlert[]> {
+    const deals = await this.salesforceService.getDeals(organizationId);
     const alerts: TriggerAlert[] = [];
 
     for (const deal of deals) {

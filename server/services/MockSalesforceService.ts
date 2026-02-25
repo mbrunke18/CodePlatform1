@@ -1,4 +1,7 @@
 
+import { liveIntegrationDispatcher } from './LiveIntegrationDispatcher';
+import { SalesforceAdapter, SalesforceOpportunity } from './integrations/adapters/SalesforceAdapter';
+
 export interface OpportunityData {
   id: string;
   accountName: string;
@@ -144,14 +147,54 @@ export class MockSalesforceService {
     return triggers;
   }
 
-  async getDeals(): Promise<OpportunityData[]> {
+  async getDeals(organizationId?: string): Promise<OpportunityData[]> {
+    if (organizationId) {
+      const activeIntegrations = await liveIntegrationDispatcher.getActiveIntegrations(organizationId);
+      const sfIntegration = activeIntegrations.find(i => i.vendor === 'salesforce');
+      
+      if (sfIntegration) {
+        const adapter = new SalesforceAdapter();
+        try {
+          const sfOpps = await adapter.fetchOpportunities({
+            accessToken: sfIntegration.accessToken,
+            config: sfIntegration.config
+          });
+          return sfOpps.map(opp => this.mapSalesforceToMock(opp));
+        } catch (error) {
+          console.error('Failed to fetch real Salesforce deals, falling back to mock:', error);
+        }
+      }
+    }
     return new Promise((resolve) => {
       setTimeout(() => resolve(this.opportunities), 100);
     });
   }
 
-  async getDealsAtRisk(): Promise<OpportunityData[]> {
-    const deals = await this.getDeals();
+  private mapSalesforceToMock(sfOpp: SalesforceOpportunity): OpportunityData {
+    const lastActivity = sfOpp.LastActivityDate ? new Date(sfOpp.LastActivityDate) : new Date();
+    const diffTime = Math.abs(new Date().getTime() - lastActivity.getTime());
+    const lastActivityDaysAgo = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    return {
+      id: sfOpp.Id,
+      accountName: sfOpp.Account?.Name || 'Unknown Account',
+      accountId: sfOpp.AccountId,
+      dealName: sfOpp.Name,
+      amount: sfOpp.Amount || 0,
+      probability: sfOpp.Probability || 0,
+      closeDate: sfOpp.CloseDate,
+      stage: sfOpp.StageName,
+      budgetApprovalStatus: sfOpp.Budget_Approval_Status__c || 'N/A',
+      engagementScore: sfOpp.Engagement_Score__c || 50,
+      lastActivityDaysAgo,
+      contractCompressionRisk: sfOpp.Contract_Compression_Risk__c || 0,
+      keyContactEngagement: 0.5, // Defaulting as not always available
+      executiveVisibility: sfOpp.Executive_Visibility__c || 0.5,
+    };
+  }
+
+  async getDealsAtRisk(organizationId?: string): Promise<OpportunityData[]> {
+    const deals = await this.getDeals(organizationId);
     return deals.filter((opp) => {
       const riskScore = this.calculateDealRiskScore(opp);
       return riskScore > 60;

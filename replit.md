@@ -141,6 +141,28 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
   - A record: `@` → `34.111.179.208` (DNS-only / grey cloud, NOT proxied)
   - TXT record: `@` → `replit-verify=3bd53afc-ff4f-401b-9e3d-b367791ef629`
 
+## Production Readiness Status
+
+### Phase 1 — Completed
+- **Tenant Isolation:** `getOrgIdForUser()` helper + `requireOrgAccess` middleware added to `server/routes.ts`. All hardcoded demo org UUIDs replaced with session-derived lookups. Unauthenticated requests cannot access protected routes.
+- **Email Delivery:** `server/services/NotificationService.ts` now uses `@sendgrid/mail` (SENDGRID_API_KEY from env). Default FROM: `mbrunke@vaughnmartin.com`. Falls back to console logging in dev.
+- **Real Metrics:** `dynamicStrategySimulator.ts`, `enterprise-metrics.tsx`, `ExecutiveAnalyticsDashboard.tsx`, `SignalIntelligenceHub.tsx`, `AuditLoggingCenter.tsx` — all Math.random() simulation replaced with real DB-backed API calls.
+
+### Phase 2 — Completed
+- **Integration Adapter Pattern:** `server/services/integrations/IntegrationAdapter.ts` — base interface with `StandardTaskPayload`, `StandardNotificationPayload`, `AdapterResult`. Adapters in `server/services/integrations/adapters/`.
+- **Jira Adapter + OAuth:** `JiraAdapter.ts` + `/api/integrations/jira/auth` + `/api/integrations/jira/callback`. Stores encrypted tokens in `enterpriseIntegrations` table.
+- **Slack Adapter + OAuth:** `SlackAdapter.ts` + `/api/oauth/slack/authorize` + `/api/oauth/slack/callback`. Block Kit messages. Connected in `IntegrationHub.tsx`.
+- **Salesforce Adapter (Real):** `SalesforceAdapter.ts` replaces `MockSalesforceService.ts` when credentials present. Falls back to mock for demo. `TriggerDetectionService` passes `organizationId`.
+- **ServiceNow Adapter:** `ServiceNowAdapter.ts` — Table API, supports OAuth2 + Basic Auth, creates incidents/change requests on playbook activation.
+- **Customer Onboarding Flow:** `OnboardingWizard.tsx` updated with Integration Selection step — project tracking + communication tool dropdowns, real OAuth connect buttons for Jira/Slack, "Coming Soon" badges for future adapters.
+
+### What Still Needs to Be Done (Deferred)
+- Admin panel for org/user management (deferred by user)
+- Enterprise SSO (Azure AD / Okta) — requires senior developer
+- Microsoft Teams, Azure DevOps, HubSpot, Google Workspace, Outlook adapters — next wave
+- SOC 2 compliance — requires compliance vendor (Vanta/Drata)
+- Stripe billing — deferred; manual invoicing for early customers
+
 ## Key File Locations
 - `client/src/components/ExecuteIQLogo.tsx` — Execution OS product logo (arrow icon + wordmark)
 - `client/src/components/VaughnMartinLogo.tsx` — VaughnMartin company logo (V-icon + Cormorant wordmark)
