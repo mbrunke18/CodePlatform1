@@ -42,7 +42,7 @@ import { BrandStamp } from "@/components/BrandStamp";
 interface Integration {
   id: string;
   name: string;
-  category: 'crm' | 'erp' | 'analytics' | 'communication' | 'security' | 'productivity' | 'financial' | 'project-tracking' | 'ppm' | 'itsm' | 'documentation' | 'source-control';
+  category: 'project-tracking' | 'communication' | 'crm' | 'itsm' | 'documentation' | 'source-control';
   comingSoon?: boolean;
   status: 'active' | 'inactive' | 'error' | 'pending';
   description: string;
@@ -209,7 +209,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
       {
         id: 'int-002',
         name: 'Microsoft 365',
-        category: 'productivity',
+        category: 'communication',
         status: 'active',
         description: 'Office productivity suite and collaboration platform',
         provider: 'Microsoft',
@@ -230,7 +230,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
       {
         id: 'int-003',
         name: 'AWS Infrastructure',
-        category: 'analytics',
+        category: 'itsm',
         status: 'active',
         description: 'Cloud infrastructure monitoring and resource management',
         provider: 'Amazon Web Services',
@@ -272,7 +272,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
       {
         id: 'int-005',
         name: 'Okta Identity',
-        category: 'security',
+        category: 'itsm',
         status: 'active',
         description: 'Identity and access management platform',
         provider: 'Okta',
@@ -293,7 +293,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
       {
         id: 'int-006',
         name: 'QuickBooks Financial',
-        category: 'financial',
+        category: 'crm',
         status: 'active',
         description: 'Financial data and accounting integration',
         provider: 'Intuit',
@@ -335,7 +335,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
       {
         id: 'int-008',
         name: 'Google Workspace',
-        category: 'productivity',
+        category: 'communication',
         status: 'active',
         description: 'Google Calendar, Drive, Gmail integration for triggers and coordination',
         provider: 'Google',
@@ -398,7 +398,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
       {
         id: 'int-011',
         name: 'Workday HCM',
-        category: 'financial',
+        category: 'project-tracking',
         status: 'active',
         description: 'Human capital management and financial planning integration',
         provider: 'Workday',
@@ -419,7 +419,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
       {
         id: 'int-012',
         name: 'Microsoft Active Directory',
-        category: 'security',
+        category: 'itsm',
         status: 'active',
         description: 'Enterprise identity and access management',
         provider: 'Microsoft',
@@ -564,21 +564,21 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
         configuration: { syncFrequency: '15 minutes', dataMapping: ['sheets', 'projects', 'resources', 'reports'] }
       },
       {
-        id: 'int-030', name: 'Planview Enterprise One', category: 'ppm', status: 'pending', comingSoon: true,
+        id: 'int-030', name: 'Planview Enterprise One', category: 'project-tracking', status: 'pending', comingSoon: true,
         description: 'Enterprise portfolio and program management for strategic alignment', provider: 'Planview', version: '18.0',
         lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
         features: ['Portfolio Management', 'Resource Capacity', 'Demand Management', 'Financial Planning', 'Roadmaps'],
         configuration: { syncFrequency: '30 minutes', dataMapping: ['portfolios', 'programs', 'projects', 'resources'] }
       },
       {
-        id: 'int-031', name: 'Broadcom Clarity PPM', category: 'ppm', status: 'pending', comingSoon: true,
+        id: 'int-031', name: 'Broadcom Clarity PPM', category: 'project-tracking', status: 'pending', comingSoon: true,
         description: 'Enterprise portfolio management with AI-driven project intelligence', provider: 'Broadcom', version: '16.2',
         lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
         features: ['Portfolio Governance', 'Resource Optimization', 'Financial Tracking', 'Risk Management', 'Time Tracking'],
         configuration: { syncFrequency: '30 minutes', dataMapping: ['portfolios', 'projects', 'timesheets', 'risks'] }
       },
       {
-        id: 'int-032', name: 'Microsoft Project', category: 'ppm', status: 'pending', comingSoon: true,
+        id: 'int-032', name: 'Microsoft Project', category: 'project-tracking', status: 'pending', comingSoon: true,
         description: 'Microsoft enterprise project and portfolio management', provider: 'Microsoft', version: '2024',
         lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
         features: ['Project Plans', 'Resource Management', 'Portfolio Views', 'Reporting', 'Roadmaps'],
@@ -592,7 +592,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
         configuration: { syncFrequency: '15 minutes', dataMapping: ['projects', 'tasks', 'folders', 'reports'] }
       },
       {
-        id: 'int-034', name: 'Planisware', category: 'ppm', status: 'pending', comingSoon: true,
+        id: 'int-034', name: 'Planisware', category: 'project-tracking', status: 'pending', comingSoon: true,
         description: 'PPM platform for complex R&D and engineering portfolios', provider: 'Planisware', version: '7.0',
         lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
         features: ['Portfolio Simulation', 'Resource Forecasting', 'Stage-Gate', 'Financial Planning', 'Risk Modeling'],
@@ -757,15 +757,9 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case 'crm': return 'bg-blue-100 text-blue-700 border-blue-300';
-      case 'erp': return 'bg-purple-100 text-purple-700 border-purple-300';
-      case 'analytics': return 'bg-emerald-100 text-emerald-700 border-emerald-300';
-      case 'communication': return 'bg-pink-100 text-pink-700 border-pink-300';
-      case 'security': return 'bg-red-100 text-red-700 border-red-300';
-      case 'productivity': return 'bg-amber-100 text-amber-700 border-amber-300';
-      case 'financial': return 'bg-indigo-100 text-indigo-700 border-indigo-300';
       case 'project-tracking': return 'bg-violet-100 text-violet-700 border-violet-300';
-      case 'ppm': return 'bg-cyan-100 text-cyan-700 border-cyan-300';
+      case 'communication': return 'bg-pink-100 text-pink-700 border-pink-300';
+      case 'crm': return 'bg-blue-100 text-blue-700 border-blue-300';
       case 'itsm': return 'bg-orange-100 text-orange-700 border-orange-300';
       case 'documentation': return 'bg-teal-100 text-teal-700 border-teal-300';
       case 'source-control': return 'bg-gray-100 text-gray-700 border-gray-300';
@@ -975,18 +969,12 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Categories</SelectItem>
-                  <SelectItem value="project-tracking">Project Tracking</SelectItem>
-                  <SelectItem value="ppm">Portfolio & Program Mgmt</SelectItem>
+                  <SelectItem value="project-tracking">Project / Issue Tracking</SelectItem>
                   <SelectItem value="communication">Communication</SelectItem>
                   <SelectItem value="crm">CRM</SelectItem>
                   <SelectItem value="itsm">IT Service Management</SelectItem>
                   <SelectItem value="documentation">Documentation</SelectItem>
                   <SelectItem value="source-control">Source Control</SelectItem>
-                  <SelectItem value="productivity">Productivity</SelectItem>
-                  <SelectItem value="security">Security</SelectItem>
-                  <SelectItem value="analytics">Analytics</SelectItem>
-                  <SelectItem value="financial">Financial</SelectItem>
-                  <SelectItem value="erp">ERP</SelectItem>
                 </SelectContent>
               </Select>
             </div>
