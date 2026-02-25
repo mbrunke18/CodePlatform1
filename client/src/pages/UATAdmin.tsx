@@ -151,7 +151,7 @@ export default function UATAdmin() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...data,
-          id: `uat-${Date.now()}-${Math.random().toString(36).substr(2, 9)}` // Generate UAT user ID
+          id: `uat-${Date.now()}` // Generate UAT user ID
         })
       });
       return response.json();
@@ -183,7 +183,8 @@ export default function UATAdmin() {
 
   // Generate secure credentials
   const generateCredentials = () => {
-    const randomPassword = Math.random().toString(36).slice(-12) + Math.random().toString(36).slice(-12).toUpperCase() + '123!';
+    const timestamp = Date.now().toString(36);
+    const randomPassword = timestamp + timestamp.toUpperCase() + '123!';
     setUserFormData(prev => ({ ...prev, password: randomPassword }));
   };
 

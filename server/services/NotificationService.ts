@@ -1,4 +1,4 @@
-import sgMail from '@sendgrid/mail';
+import { Resend } from 'resend';
 import { db } from '../db';
 import { notifications, users } from '@shared/schema';
 import { eq } from 'drizzle-orm';
@@ -16,25 +16,24 @@ interface DeliveryResponse {
 }
 
 class NotificationService {
-  private sendgridEnabled = false;
+  private resend: Resend | null = null;
 
   constructor() {
-    this.initializeSendGrid();
+    this.initializeResend();
   }
 
-  private initializeSendGrid() {
-    const apiKey = process.env.SENDGRID_API_KEY;
+  private initializeResend() {
+    const apiKey = process.env.RESEND_API_KEY;
 
     if (apiKey) {
       try {
-        sgMail.setApiKey(apiKey);
-        this.sendgridEnabled = true;
-        console.log('✓ SendGrid initialized');
+        this.resend = new Resend(apiKey);
+        console.log('✓ Resend initialized');
       } catch (error) {
-        console.warn('Failed to initialize SendGrid:', error);
+        console.warn('Failed to initialize Resend:', error);
       }
     } else {
-      console.log('ℹ SendGrid API key not configured - email notifications will be simulated');
+      console.log('ℹ RESEND_API_KEY not configured - email notifications will be simulated');
     }
   }
 
@@ -119,7 +118,7 @@ class NotificationService {
     recipient: any
   ): Promise<NotificationDeliveryResult> {
     try {
-      if (!this.sendgridEnabled) {
+      if (!this.resend) {
         console.log(`[SIMULATED EMAIL] To: ${recipient.email}`);
         console.log(`[SIMULATED EMAIL] Subject: ${notification.title}`);
         console.log(`[SIMULATED EMAIL] Message: ${notification.message}`);
@@ -140,17 +139,17 @@ class NotificationService {
 
       const htmlContent = this.renderEmailTemplate(notification);
 
-      await sgMail.send({
+      await this.resend.emails.send({
+        from: 'noreply@executeiq.io',
         to: recipient.email,
-        from: 'mbrunke@vaughnmartin.com',
         subject: notification.title,
         html: htmlContent,
       });
 
-      console.log(`✓ Email sent to ${recipient.email} via SendGrid`);
+      console.log(`✓ Email sent to ${recipient.email} via Resend`);
       return { channel: 'email', success: true };
     } catch (error: any) {
-      console.error('Email delivery error (SendGrid):', error);
+      console.error('Email delivery error (Resend):', error);
       return {
         channel: 'email',
         success: false,

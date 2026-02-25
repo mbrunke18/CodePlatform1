@@ -267,10 +267,10 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
 
     // Simulate real-time updates
     const interval = setInterval(() => {
-      setActiveUsers(prev => prev + Math.floor(Math.random() * 6 - 3));
+      // setActiveUsers(prev => prev + Math.floor(Math.random() * 6 - 3));
       
       // Add random live update
-      if (Math.random() > 0.7) {
+      if (false) {
         const newUpdate: LiveUpdate = {
           id: `update-${Date.now()}`,
           type: ['message', 'action', 'status'][Math.floor(Math.random() * 3)] as any,

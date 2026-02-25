@@ -107,6 +107,48 @@ async function requireOrgAccess(req: any, res: any, next: any) {
   next();
 }
 
+/**
+ * Middleware factory to enforce role-based access control.
+ * If user has no role, they are treated as read-only.
+ */
+function requireRole(...allowedRoles: string[]) {
+  return async (req: any, res: any, next: any) => {
+    if (!req.isAuthenticated()) {
+      return res.status(401).json({ message: "Unauthorized - Please sign in" });
+    }
+
+    const userId = getUserId(req);
+    if (!userId) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+
+    try {
+      const userRole = await storage.getUserRole(userId);
+      
+      // If user has no role assigned, they are read-only
+      if (!userRole) {
+        return res.status(403).json({ 
+          message: "Forbidden - Role required for this action. Your current access is read-only." 
+        });
+      }
+
+      const roleName = userRole.name.toLowerCase();
+      const isAllowed = allowedRoles.some(role => role.toLowerCase() === roleName);
+
+      if (!isAllowed) {
+        return res.status(403).json({ 
+          message: `Forbidden - This action requires one of the following roles: ${allowedRoles.join(", ")}` 
+        });
+      }
+
+      next();
+    } catch (error) {
+      console.error("Error in requireRole middleware:", error);
+      res.status(500).json({ message: "Internal server error during role validation" });
+    }
+  };
+}
+
 // Middleware to require authentication
 function requireAuth(req: any, res: any, next: any) {
   const userId = getUserId(req);
@@ -1051,10 +1093,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       const role = await storage.getUserRole(userId);
+      
+      const orgs = await storage.getUserOrganizations(user.id);
+      const needsOnboarding = orgs.length > 0 ? !orgs[0].onboardingCompleted : true;
+
       res.json({
         ...user,
         role: role?.name || null,
         initials: `${user.firstName?.[0] || ''}${user.lastName?.[0] || ''}`.toUpperCase(),
+        needsOnboarding
       });
     } catch (error) {
       console.error("Error fetching user:", error);
@@ -1793,7 +1840,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // POST create new playbook (custom or customized from template)
-  app.post('/api/playbooks', async (req: any, res) => {
+  app.post('/api/playbooks', requireRole('admin', 'strategist'), async (req: any, res) => {
     try {
       const { playbooks, insertPlaybookSchema } = await import('@shared/schema');
       
@@ -1918,7 +1965,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // DELETE playbook
-  app.delete('/api/playbooks/:id', async (req: any, res) => {
+  app.delete('/api/playbooks/:id', requireRole('admin'), async (req: any, res) => {
     try {
       const { id } = req.params;
       const { playbooks } = await import('@shared/schema');
@@ -2055,65 +2102,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       if (scenarioId) {
         if (!uuidRegex.test(scenarioId)) {
-          // Return comprehensive 20-task demo set for non-UUID scenario IDs (demo mode)
-          return res.json([
-            // PREPARE Phase (5 tasks)
-            { id: 'demo-s1', title: 'Trigger Detection', description: 'AI monitoring system detects strategic trigger threshold breach', status: 'completed', priority: 'critical', phase: 'PREPARE', owner: 'AI Monitoring', estimatedMinutes: 1, businessValue: 5000, isDemo: true },
-            { id: 'demo-s2', title: 'Situation Assessment', description: 'Evaluate scope, impact and urgency of the strategic trigger', status: 'completed', priority: 'critical', phase: 'PREPARE', owner: 'Strategy Team', estimatedMinutes: 3, businessValue: 8000, isDemo: true },
-            { id: 'demo-s3', title: 'Playbook Selection', description: 'Match trigger to optimal response playbook from library', status: 'completed', priority: 'critical', phase: 'PREPARE', owner: 'ExecuteIQ Platform', estimatedMinutes: 1, businessValue: 12000, isDemo: true },
-            { id: 'demo-s4', title: 'Resource Pre-staging', description: 'Prepare documents, templates, and communication drafts', status: 'completed', priority: 'high', phase: 'PREPARE', owner: 'Document Engine', estimatedMinutes: 2, businessValue: 4000, isDemo: true },
-            { id: 'demo-s5', title: 'Team Activation', description: 'Alert response team leads and confirm availability', status: 'completed', priority: 'high', phase: 'PREPARE', owner: 'Operations', estimatedMinutes: 2, businessValue: 6000, isDemo: true },
-            // EXECUTE Phase (8 tasks)
-            { id: 'demo-s6', title: 'Jira Project Creation', description: 'Auto-create project with pre-assigned tasks and dependencies', status: 'completed', priority: 'critical', phase: 'EXECUTE', owner: 'Integration Layer', estimatedMinutes: 1, businessValue: 15000, isDemo: true },
-            { id: 'demo-s7', title: 'Budget Unlock', description: 'Activate pre-approved emergency budget ($250K)', status: 'completed', priority: 'critical', phase: 'EXECUTE', owner: 'Finance System', estimatedMinutes: 1, businessValue: 250000, isDemo: true },
-            { id: 'demo-s8', title: 'Stakeholder Notification', description: 'Multi-channel notification to 47 key stakeholders', status: 'completed', priority: 'high', phase: 'EXECUTE', owner: 'Communications', estimatedMinutes: 2, businessValue: 8000, isDemo: true },
-            { id: 'demo-s9', title: 'War Room Activation', description: 'Stand up virtual war room with real-time collaboration', status: 'completed', priority: 'high', phase: 'EXECUTE', owner: 'Collaboration', estimatedMinutes: 1, businessValue: 5000, isDemo: true },
-            { id: 'demo-s10', title: 'External Communications', description: 'Deploy pre-approved press release and customer messaging', status: 'in_progress', priority: 'high', phase: 'EXECUTE', owner: 'PR Team', estimatedMinutes: 5, businessValue: 50000, isDemo: true },
-            { id: 'demo-s11', title: 'Customer Outreach', description: 'Proactive outreach to top 20 enterprise customers', status: 'in_progress', priority: 'high', phase: 'EXECUTE', owner: 'Account Managers', estimatedMinutes: 10, businessValue: 75000, isDemo: true },
-            { id: 'demo-s12', title: 'Regulatory Filing', description: 'Submit required regulatory notifications', status: 'in_progress', priority: 'medium', phase: 'EXECUTE', owner: 'Legal', estimatedMinutes: 15, businessValue: 25000, isDemo: true },
-            { id: 'demo-s13', title: 'Partner Coordination', description: 'Align ecosystem partners on joint response strategy', status: 'pending', priority: 'medium', phase: 'EXECUTE', owner: 'Partnerships', estimatedMinutes: 20, businessValue: 35000, isDemo: true },
-            // MONITOR Phase (4 tasks)
-            { id: 'demo-s14', title: 'Real-time KPI Tracking', description: 'Monitor execution velocity and stakeholder response rates', status: 'pending', priority: 'high', phase: 'MONITOR', owner: 'Analytics', estimatedMinutes: 30, businessValue: 10000, isDemo: true },
-            { id: 'demo-s15', title: 'Sentiment Analysis', description: 'Track social media and news sentiment in real-time', status: 'pending', priority: 'medium', phase: 'MONITOR', owner: 'Intelligence', estimatedMinutes: 30, businessValue: 8000, isDemo: true },
-            { id: 'demo-s16', title: 'Stakeholder Alignment Check', description: 'Verify all stakeholders aligned on response trajectory', status: 'pending', priority: 'medium', phase: 'MONITOR', owner: 'Leadership', estimatedMinutes: 15, businessValue: 12000, isDemo: true },
-            { id: 'demo-s17', title: 'Risk Threshold Monitoring', description: 'Track emerging risks and escalation triggers', status: 'pending', priority: 'medium', phase: 'MONITOR', owner: 'Risk Team', estimatedMinutes: 20, businessValue: 20000, isDemo: true },
-            // LEARN Phase (3 tasks)
-            { id: 'demo-s18', title: 'Performance Metrics Collection', description: 'Gather comprehensive KPIs for outcome analysis', status: 'pending', priority: 'medium', phase: 'LEARN', owner: 'Analytics', estimatedMinutes: 25, businessValue: 8000, isDemo: true },
-            { id: 'demo-s19', title: 'Lessons Learned Documentation', description: 'Capture insights and recommendations for institutional memory', status: 'pending', priority: 'low', phase: 'LEARN', owner: 'Strategy Team', estimatedMinutes: 30, businessValue: 15000, isDemo: true },
-            { id: 'demo-s20', title: 'Playbook Refinement', description: 'Update playbook with execution learnings for future use', status: 'pending', priority: 'low', phase: 'LEARN', owner: 'Strategy Team', estimatedMinutes: 45, businessValue: 25000, isDemo: true }
-          ]);
+          // Return empty response for non-UUID scenario IDs in production
+          return res.status(404).json({ error: 'No tasks found', data: [] });
         }
         const scenarioTasks = await storage.getTasksByScenario(scenarioId);
         res.json(scenarioTasks);
       } else if (playbookId) {
         if (!uuidRegex.test(playbookId)) {
-          // Return comprehensive 20-task demo set for non-UUID playbook IDs (demo mode)
-          return res.json([
-            // PREPARE Phase (5 tasks)
-            { id: 'demo-p1', title: 'Trigger Validation', description: 'Confirm trigger conditions met threshold for activation', status: 'completed', priority: 'critical', phase: 'PREPARE', owner: 'AI System', estimatedMinutes: 1, businessValue: 5000, isDemo: true },
-            { id: 'demo-p2', title: 'Playbook Initialization', description: 'Initialize 12-minute execution sequence', status: 'completed', priority: 'critical', phase: 'PREPARE', owner: 'ExecuteIQ Platform', estimatedMinutes: 1, businessValue: 10000, isDemo: true },
-            { id: 'demo-p3', title: 'Decision Tree Activation', description: 'Load pre-configured decision pathways for scenario', status: 'completed', priority: 'high', phase: 'PREPARE', owner: 'Strategy Engine', estimatedMinutes: 1, businessValue: 8000, isDemo: true },
-            { id: 'demo-p4', title: 'Stakeholder Matrix Load', description: 'Identify and stage all stakeholder contacts', status: 'completed', priority: 'high', phase: 'PREPARE', owner: 'CRM Integration', estimatedMinutes: 1, businessValue: 6000, isDemo: true },
-            { id: 'demo-p5', title: 'Communication Templates Staging', description: 'Pre-position approved messaging templates', status: 'completed', priority: 'high', phase: 'PREPARE', owner: 'Document Engine', estimatedMinutes: 1, businessValue: 4000, isDemo: true },
-            // EXECUTE Phase (8 tasks)
-            { id: 'demo-p6', title: 'Jira Project Creation', description: 'Auto-create project structure with 47 tasks assigned', status: 'completed', priority: 'critical', phase: 'EXECUTE', owner: 'Integration Layer', estimatedMinutes: 1, businessValue: 15000, isDemo: true },
-            { id: 'demo-p7', title: 'Budget Unlock', description: 'Activate pre-approved $250K emergency allocation', status: 'completed', priority: 'critical', phase: 'EXECUTE', owner: 'Finance System', estimatedMinutes: 1, businessValue: 250000, isDemo: true },
-            { id: 'demo-p8', title: 'Team Notification - Slack', description: 'Alert response team via Slack channels', status: 'completed', priority: 'high', phase: 'EXECUTE', owner: 'Communications', estimatedMinutes: 1, businessValue: 3000, isDemo: true },
-            { id: 'demo-p9', title: 'Team Notification - Teams', description: 'Alert response team via Microsoft Teams', status: 'completed', priority: 'high', phase: 'EXECUTE', owner: 'Communications', estimatedMinutes: 1, businessValue: 3000, isDemo: true },
-            { id: 'demo-p10', title: 'Executive Briefing Dispatch', description: 'Send executive summary to C-suite', status: 'in_progress', priority: 'high', phase: 'EXECUTE', owner: 'Executive Office', estimatedMinutes: 2, businessValue: 20000, isDemo: true },
-            { id: 'demo-p11', title: 'Customer Communication', description: 'Deploy customer notification via CRM', status: 'in_progress', priority: 'high', phase: 'EXECUTE', owner: 'Customer Success', estimatedMinutes: 3, businessValue: 50000, isDemo: true },
-            { id: 'demo-p12', title: 'Partner Alert', description: 'Notify ecosystem partners of strategic event', status: 'in_progress', priority: 'medium', phase: 'EXECUTE', owner: 'Partnerships', estimatedMinutes: 2, businessValue: 15000, isDemo: true },
-            { id: 'demo-p13', title: 'Media Response Staging', description: 'Prepare press statements for potential inquiries', status: 'pending', priority: 'medium', phase: 'EXECUTE', owner: 'PR Team', estimatedMinutes: 5, businessValue: 25000, isDemo: true },
-            // MONITOR Phase (4 tasks)
-            { id: 'demo-p14', title: 'Command Center Activation', description: 'Initialize real-time monitoring dashboard', status: 'pending', priority: 'high', phase: 'MONITOR', owner: 'Operations', estimatedMinutes: 1, businessValue: 8000, isDemo: true },
-            { id: 'demo-p15', title: 'KPI Tracking Initialization', description: 'Begin tracking execution velocity metrics', status: 'pending', priority: 'medium', phase: 'MONITOR', owner: 'Analytics', estimatedMinutes: 2, businessValue: 5000, isDemo: true },
-            { id: 'demo-p16', title: 'Stakeholder Response Monitoring', description: 'Track acknowledgment rates across channels', status: 'pending', priority: 'medium', phase: 'MONITOR', owner: 'Communications', estimatedMinutes: 10, businessValue: 10000, isDemo: true },
-            { id: 'demo-p17', title: 'Risk Signal Monitoring', description: 'Watch for escalation triggers or new signals', status: 'pending', priority: 'medium', phase: 'MONITOR', owner: 'Intelligence', estimatedMinutes: 15, businessValue: 12000, isDemo: true },
-            // LEARN Phase (3 tasks)
-            { id: 'demo-p18', title: 'Execution Metrics Capture', description: 'Record time-to-activation and completion rates', status: 'pending', priority: 'medium', phase: 'LEARN', owner: 'Analytics', estimatedMinutes: 10, businessValue: 8000, isDemo: true },
-            { id: 'demo-p19', title: 'Outcome Documentation', description: 'Document business outcomes and value delivered', status: 'pending', priority: 'low', phase: 'LEARN', owner: 'Strategy Team', estimatedMinutes: 20, businessValue: 15000, isDemo: true },
-            { id: 'demo-p20', title: 'Playbook Enhancement', description: 'Apply learnings to improve playbook for next activation', status: 'pending', priority: 'low', phase: 'LEARN', owner: 'Strategy Team', estimatedMinutes: 30, businessValue: 30000, isDemo: true }
-          ]);
+          // Return empty response for non-UUID playbook IDs in production
+          return res.status(404).json({ error: 'No tasks found', data: [] });
         }
         const playbookTasks = await storage.getTasksByScenario(playbookId);
         res.json(playbookTasks);
@@ -2124,21 +2121,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const userId = getUserId(req);
         const userTasks = await storage.getRecentTasks(userId);
         
-        // Return comprehensive demo tasks if no real tasks exist (for demo mode)
+        // Return empty response if no real tasks exist
         if (!userTasks || userTasks.length === 0) {
-          return res.json([
-            // Recent activity tasks showing 4-phase methodology
-            { id: 'demo-task-1', title: 'Competitor Analysis Complete', description: 'Comprehensive competitive landscape assessment', status: 'completed', priority: 'high', phase: 'PREPARE', owner: 'Strategy Team', estimatedMinutes: 30, businessValue: 25000, isDemo: true },
-            { id: 'demo-task-2', title: 'Executive Alignment Session', description: 'C-suite briefing on strategic positioning', status: 'completed', priority: 'critical', phase: 'PREPARE', owner: 'Executive Office', estimatedMinutes: 45, businessValue: 50000, isDemo: true },
-            { id: 'demo-task-3', title: 'Market Entry Playbook Activation', description: 'Initiated coordinated market response', status: 'completed', priority: 'critical', phase: 'EXECUTE', owner: 'ExecuteIQ Platform', estimatedMinutes: 12, businessValue: 150000, isDemo: true },
-            { id: 'demo-task-4', title: 'Stakeholder Communications Deployed', description: 'Multi-channel notification to 127 stakeholders', status: 'completed', priority: 'high', phase: 'EXECUTE', owner: 'Communications', estimatedMinutes: 5, businessValue: 35000, isDemo: true },
-            { id: 'demo-task-5', title: 'Partner Ecosystem Coordination', description: 'Align strategic partners on joint response', status: 'in_progress', priority: 'high', phase: 'EXECUTE', owner: 'Partnerships', estimatedMinutes: 20, businessValue: 75000, isDemo: true },
-            { id: 'demo-task-6', title: 'Real-time Performance Monitoring', description: 'Track execution velocity and stakeholder response', status: 'in_progress', priority: 'high', phase: 'MONITOR', owner: 'Analytics', estimatedMinutes: 60, businessValue: 20000, isDemo: true },
-            { id: 'demo-task-7', title: 'Risk Signal Detection', description: 'Monitor emerging risks and escalation triggers', status: 'in_progress', priority: 'medium', phase: 'MONITOR', owner: 'Intelligence', estimatedMinutes: 30, businessValue: 40000, isDemo: true },
-            { id: 'demo-task-8', title: 'Customer Feedback Collection', description: 'Gather real-time customer sentiment data', status: 'pending', priority: 'medium', phase: 'MONITOR', owner: 'Customer Success', estimatedMinutes: 25, businessValue: 15000, isDemo: true },
-            { id: 'demo-task-9', title: 'Execution Metrics Documentation', description: 'Record KPIs and outcome measurements', status: 'pending', priority: 'medium', phase: 'LEARN', owner: 'Analytics', estimatedMinutes: 20, businessValue: 10000, isDemo: true },
-            { id: 'demo-task-10', title: 'Lessons Learned Synthesis', description: 'Compile insights for institutional memory', status: 'pending', priority: 'low', phase: 'LEARN', owner: 'Strategy Team', estimatedMinutes: 45, businessValue: 25000, isDemo: true }
-          ]);
+          return res.json([]);
         }
         res.json(userTasks);
       }
@@ -6698,9 +6683,9 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     res.json({ success: true, status: liveSignalIngestionService.getStatus() });
   });
 
-  // Start live signal ingestion automatically
+  // Start live signal ingestion automatically (server-level startup, no request context)
   setTimeout(() => {
-    if (req.orgId) liveSignalIngestionService.start(req.orgId, 15);
+    liveSignalIngestionService.start('system', 15);
   }, 5000);
   console.log('✅ Live Signal Ingestion API registered (auto-start in 5s)');
 
@@ -6817,11 +6802,11 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   console.log('   → /api/practice-drills - Fire drill simulation system');
 
   // ===== PLAYBOOK ACTIVATION ENDPOINTS =====
-  app.post('/api/playbook-library/:playbookId/activate', requireOrgAccess, async (req: any, res) => {
+  app.post('/api/playbook-library/:playbookId/activate', requireRole('admin', 'executive'), requireOrgAccess, async (req: any, res) => {
     try {
       const { playbookId } = req.params;
       const { scenarioId } = req.body;
-      const organizationId = req.userId || 'demo-org';
+      const organizationId = req.orgId;
       
       const { activatePlaybook } = await import('./services/PlaybookExecutor');
       const executionPlanId = req.body.executionPlanId || playbookId;

@@ -46,7 +46,7 @@ export default function PlaybookActivationConsole() {
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [notes, setNotes] = useState("");
   const [executionStatus, setExecutionStatus] = useState<'pending' | 'active' | 'paused' | 'completed'>('pending');
-  const [executionId] = useState(`exec-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`);
+  const [executionId] = useState(`exec-${Date.now()}`);
 
   // Fetch trigger details (skip for manual executions)
   const isManualExecution = params?.triggerId === 'manual';

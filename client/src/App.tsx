@@ -176,12 +176,29 @@ import { ExecutiveTestimonialOverlay } from "./components/demo/ExecutiveTestimon
 import { SplitScreenComparison } from "./components/demo/SplitScreenComparison";
 import { ScrollToTop } from "./components/ScrollToTop";
 
+import { useAuth } from "./hooks/useAuth";
+
 function PageLoader() {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <Loader2 className="h-8 w-8 animate-spin text-primary" />
     </div>
   );
+}
+
+function OnboardingGuard({ children }: { children: React.ReactNode }) {
+  const { isAuthenticated, needsOnboarding, isLoading } = useAuth();
+  const [location, setLocation] = useLocation();
+
+  useEffect(() => {
+    if (!isLoading && isAuthenticated && needsOnboarding && location !== "/onboarding") {
+      setLocation("/onboarding");
+    }
+  }, [isAuthenticated, needsOnboarding, isLoading, location, setLocation]);
+
+  if (isLoading) return <PageLoader />;
+  
+  return <>{children}</>;
 }
 
 function Redirect({ to }: { to: string }) {
@@ -205,15 +222,16 @@ function Router() {
     <DemoTimelineProvider defaultDuration={720000} defaultSpeedMultiplier={20}>
       <DemoControllerProvider>
         <ScrollToTop />
-        <Suspense fallback={<PageLoader />}>
-        <Switch>
-        <Route path="/" component={Homepage} />
-        <Route path="/home" component={Homepage} />
-        <Route path="/mission-control" component={MissionControl} />
-        <Route path="/workspaces/identify" component={WorkspaceIdentify} />
-        <Route path="/workspaces/detect" component={WorkspaceDetect} />
-        <Route path="/workspaces/execute" component={WorkspaceExecute} />
-        <Route path="/workspaces/advance" component={WorkspaceAdvance} />
+        <OnboardingGuard>
+          <Suspense fallback={<PageLoader />}>
+            <Switch>
+            <Route path="/" component={Homepage} />
+            <Route path="/home" component={Homepage} />
+            <Route path="/mission-control" component={MissionControl} />
+            <Route path="/workspaces/identify" component={WorkspaceIdentify} />
+            <Route path="/workspaces/detect" component={WorkspaceDetect} />
+            <Route path="/workspaces/execute" component={WorkspaceExecute} />
+            <Route path="/workspaces/advance" component={WorkspaceAdvance} />
 
         {/* IDENTIFY Phase */}
         <Route path="/identify/playbooks" component={PlaybooksLibraryPage} />
@@ -442,6 +460,7 @@ function Router() {
         <Route component={NotFound} />
         </Switch>
         </Suspense>
+        </OnboardingGuard>
       </DemoControllerProvider>
     </DemoTimelineProvider>
   );

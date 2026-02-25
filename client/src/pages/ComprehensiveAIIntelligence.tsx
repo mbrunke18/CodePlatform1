@@ -120,21 +120,21 @@ export default function ComprehensiveAIIntelligence() {
         const pulseResponse = await fetch('/api/pulse/generate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ organizationId: 'ec61b8f6-7d87-41fd-9969-cb990ed0b10b' })
+          body: JSON.stringify({ organizationId: undefined })
         });
         const pulseData = await pulseResponse.json();
 
         const novaResponse = await fetch('/api/nova/generate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ organizationId: 'ec61b8f6-7d87-41fd-9969-cb990ed0b10b' })
+          body: JSON.stringify({ organizationId: undefined })
         });
         const novaData = await novaResponse.json();
 
         const prismResponse = await fetch('/api/prism/generate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ organizationId: 'ec61b8f6-7d87-41fd-9969-cb990ed0b10b' })
+          body: JSON.stringify({ organizationId: undefined })
         });
         const prismData = await prismResponse.json();
 
@@ -306,6 +306,7 @@ export default function ComprehensiveAIIntelligence() {
 
     // Real-time updates every 30 seconds
     const interval = setInterval(() => {
+      /*
       setSystemMetrics(prev => ({
         ...prev,
         totalProcessingPower: +(prev.totalProcessingPower + (Math.random() * 2 - 1)).toFixed(1),
@@ -313,6 +314,7 @@ export default function ComprehensiveAIIntelligence() {
         accuracyRate: +(prev.accuracyRate + (Math.random() * 0.5 - 0.25)).toFixed(1),
         systemHealth: +(prev.systemHealth + (Math.random() * 0.3 - 0.15)).toFixed(1)
       }));
+      */
     }, 30000);
 
     return () => clearInterval(interval);
@@ -346,7 +348,7 @@ export default function ComprehensiveAIIntelligence() {
         fetch(`/api/${module}/generate`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ organizationId: 'ec61b8f6-7d87-41fd-9969-cb990ed0b10b' })
+          body: JSON.stringify({ organizationId: undefined })
         })
       );
 

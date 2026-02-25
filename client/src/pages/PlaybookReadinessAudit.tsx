@@ -78,26 +78,17 @@ const generateMockPlaybooks = (): PlaybookReadiness[] => {
     const nameIndex = (i - 1) % playbookNames.length;
     const domainIndex = Math.floor((i - 1) / 20) % domains.length;
     
-    const triggerCoverage = Math.floor(Math.random() * 40) + 60;
-    const stakeholderReadiness = Math.floor(Math.random() * 50) + 50;
-    const practiceFrequency = Math.floor(Math.random() * 60) + 40;
-    const outcomeConfidence = Math.floor(Math.random() * 45) + 55;
-    const overallScore = Math.round((triggerCoverage + stakeholderReadiness + practiceFrequency + outcomeConfidence) / 4);
+    const triggerCoverage = 0;
+    const stakeholderReadiness = 0;
+    const practiceFrequency = 0;
+    const outcomeConfidence = 0;
+    const overallScore = 0;
     
-    let tier: PlaybookReadiness['tier'];
-    if (overallScore >= 80) tier = 'combat-ready';
-    else if (overallScore >= 60) tier = 'practice-needed';
-    else if (overallScore >= 40) tier = 'setup-required';
-    else tier = 'not-configured';
+    let tier: PlaybookReadiness['tier'] = 'not-configured';
 
-    const recommendations: string[] = [];
-    if (triggerCoverage < 70) recommendations.push('Configure additional trigger conditions');
-    if (stakeholderReadiness < 70) recommendations.push('Update stakeholder contact information');
-    if (practiceFrequency < 50) recommendations.push('Schedule practice drill');
-    if (outcomeConfidence < 60) recommendations.push('Review decision tree accuracy');
+    const recommendations: string[] = ['Complete initial setup'];
 
-    const daysAgo = Math.floor(Math.random() * 180);
-    const lastDrill = daysAgo < 90 ? new Date(Date.now() - daysAgo * 24 * 60 * 60 * 1000).toISOString() : null;
+    const lastDrill = null;
 
     playbooks.push({
       id: `playbook-${i}`,
@@ -111,8 +102,8 @@ const generateMockPlaybooks = (): PlaybookReadiness[] => {
       practiceFrequency,
       outcomeConfidence,
       lastDrillDate: lastDrill,
-      drillsCompleted: Math.floor(Math.random() * 12),
-      stakeholderCount: Math.floor(Math.random() * 30) + 10,
+      drillsCompleted: 0,
+      stakeholderCount: 0,
       tier,
       recommendations
     });

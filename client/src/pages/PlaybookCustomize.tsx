@@ -330,7 +330,7 @@ interface PlaybookFormData {
   certificationRequirements: string;
 }
 
-function generateId() { return Math.random().toString(36).substring(2, 11); }
+function generateId() { return Date.now().toString(36); }
 
 function getSmartDefaults(domain: string, category: string) {
   const isDefense = category === 'defense';

@@ -251,7 +251,7 @@ router.get('/jira/auth', requireAuth, (req, res) => {
   }
 
   const state = encodeURIComponent(JSON.stringify({
-    orgId: req.query.orgId || 'ebe6af05-772b-4107-9c5a-9b5bf55c5833', // Default to demo org if not provided, but T001 should handle this
+    orgId: req.query.orgId,
     userId: req.userId
   }));
 

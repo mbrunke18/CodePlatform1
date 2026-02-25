@@ -48,13 +48,25 @@ function updateUserSession(user: any, tokens: any) {
 }
 
 async function upsertUser(claims: any) {
-  await storage.upsertUser({
+  const user = await storage.upsertUser({
     id: claims["sub"],
     email: claims["email"],
     firstName: claims["first_name"],
     lastName: claims["last_name"],
     profileImageUrl: claims["profile_image_url"],
   });
+
+  // Auto-create organization if user has none
+  const userOrgs = await storage.getUserOrganizations(user.id);
+  if (userOrgs.length === 0) {
+    const orgName = claims["name"] || (claims["email"] ? claims["email"].split('@')[0] : 'My Organization');
+    await storage.createOrganization({
+      name: orgName,
+      description: "My Organization",
+      ownerId: user.id,
+      onboardingCompleted: false,
+    });
+  }
 }
 
 export async function setupAuth(app: Express) {

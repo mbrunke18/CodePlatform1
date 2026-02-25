@@ -8,6 +8,7 @@ export interface AuthUser {
   profileImageUrl?: string;
   role?: string;
   initials: string;
+  needsOnboarding: boolean;
 }
 
 export function useAuth() {
@@ -18,6 +19,7 @@ export function useAuth() {
   });
 
   const isAuthenticated = !!user && !error;
+  const needsOnboarding = user?.needsOnboarding || false;
 
   const login = () => {
     window.location.href = '/api/login';
@@ -31,6 +33,7 @@ export function useAuth() {
     user: user || null,
     isLoading,
     isAuthenticated,
+    needsOnboarding,
     login,
     logout,
   };

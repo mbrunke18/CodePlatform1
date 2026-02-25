@@ -156,7 +156,18 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **ServiceNow Adapter:** `ServiceNowAdapter.ts` — Table API, supports OAuth2 + Basic Auth, creates incidents/change requests on playbook activation.
 - **Customer Onboarding Flow:** `OnboardingWizard.tsx` updated with Integration Selection step — project tracking + communication tool dropdowns, real OAuth connect buttons for Jira/Slack, "Coming Soon" badges for future adapters.
 
+### Phase 3 — Completed (Customer Onboarding Readiness)
+- **Server Crash Fixed:** `setTimeout` in `routes.ts` that referenced `req` out of scope replaced with `liveSignalIngestionService.start('system', 15)` — no more startup crashes.
+- **Auto-Org Creation:** `server/replitAuth.ts` now auto-creates an organization on first login if the user has none. Uses OIDC `name`/`email` claim. Sets `onboardingCompleted: false`.
+- **Onboarding Route Guard:** `useAuth` hook exposes `needsOnboarding`; `OnboardingGuard` in `App.tsx` redirects new users to `/onboarding` automatically. Completing the wizard sets `onboardingCompleted: true` and unlocks the dashboard.
+- **Transactional Email (Resend):** `server/services/NotificationService.ts` uses `resend` npm package and `RESEND_API_KEY`. Falls back to console logging when key is absent. FROM: `noreply@executeiq.io`.
+- **Math.random() Removed:** 14 non-demo production pages cleaned of randomized data. New customers see zero/empty states; no fake numbers.
+- **Demo Data Fallbacks Removed:** `server/routes.ts` no longer returns `'demo-org'` fallback or demo task blocks (`demo-s1`…`demo-s20`). Hardcoded org UUIDs removed from client pages. `/api/demo/` prefix routes intentionally preserved.
+- **Role Enforcement:** `requireRole(...allowedRoles)` middleware added to `server/routes.ts`. Applied to `POST /api/playbooks` (admin/strategist), `DELETE /api/playbooks/:id` (admin), and playbook activation (admin/executive). Backed by `storage.getUserRole()`.
+
 ### What Still Needs to Be Done (Deferred)
+- **RESEND_API_KEY** — user must add this env var to activate real email delivery
+- **Jira/Slack OAuth credentials** — user must register apps in Atlassian + Slack dev portals and set `JIRA_CLIENT_ID`, `JIRA_CLIENT_SECRET`, `SLACK_CLIENT_ID`, `SLACK_CLIENT_SECRET` env vars
 - Admin panel for org/user management (deferred by user)
 - Enterprise SSO (Azure AD / Okta) — requires senior developer
 - Microsoft Teams, Azure DevOps, HubSpot, Google Workspace, Outlook adapters — next wave

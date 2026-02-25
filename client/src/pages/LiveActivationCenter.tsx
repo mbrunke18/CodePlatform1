@@ -428,14 +428,14 @@ export default function LiveActivationCenter() {
         setStakeholders(prev => prev.map(st => st.id === s.id ? { ...st, status: 'notifying' } : st));
       }, notifyDelay);
 
-      const notifiedDelay = notifyDelay + 1500 + Math.random() * 2000;
+      const notifiedDelay = notifyDelay + 1500;
       const t2 = setTimeout(() => {
         setStakeholders(prev => prev.map(st => st.id === s.id ? { ...st, status: 'notified' } : st));
         addActivity('system', `Notification sent to ${s.name} (${s.title}) via ${CHANNELS[i % CHANNELS.length]}`);
       }, notifiedDelay);
 
       const ackBase = totalTime * 1000 / (stakeholderCount + 2);
-      const ackDelay = notifiedDelay + 3000 + (ackBase * 0.3) + Math.random() * ackBase * 0.8;
+      const ackDelay = notifiedDelay + 3000 + (ackBase * 0.3);
       const responseTime = Math.floor((ackDelay - notifiedDelay) / 1000);
       const t3 = setTimeout(() => {
         setStakeholders(prev => prev.map(st => st.id === s.id ? { ...st, status: 'acknowledged', responseTime } : st));
@@ -472,7 +472,7 @@ export default function LiveActivationCenter() {
         setTasks(prev => prev.map(t => t.id === task.id ? { ...t, status: 'in_progress' } : t));
       }, startDelay);
 
-      const completeDelay = startDelay + 3000 + Math.random() * 5000;
+      const completeDelay = startDelay + 3000;
       const t2 = setTimeout(() => {
         setTasks(prev => prev.map(t => t.id === task.id ? { ...t, status: 'completed' } : t));
         addActivity('task', `Task: ${task.name} — COMPLETED`);

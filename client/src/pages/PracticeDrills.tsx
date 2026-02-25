@@ -160,7 +160,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
     completeDrillMutation.mutate({
       drillId,
       data: {
-        timeToComplete: Math.floor(Math.random() * 20) + 5, // Simulated time
+        timeToComplete: 12, // Standard target time
         participantsFeedback: success ? 'excellent' : 'needs_improvement',
         bottlenecks: success ? [] : ['Communication delays', 'Resource allocation'],
         successRate: success ? 95 : 65,

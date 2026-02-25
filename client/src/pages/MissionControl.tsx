@@ -167,10 +167,10 @@ export default function MissionControl() {
   const signalSummary: SignalStatus[] = SIGNAL_CATEGORIES.map(cat => ({
     category: cat.id,
     name: cat.shortName,
-    activeCount: Math.floor(Math.random() * 5) + 1,
-    warningCount: Math.floor(Math.random() * 3),
-    criticalCount: cat.id === 'competitive' || cat.id === 'regulatory' ? 1 : 0,
-    status: cat.id === 'competitive' ? 'critical' : cat.id === 'regulatory' ? 'warning' : 'healthy'
+    activeCount: 0,
+    warningCount: 0,
+    criticalCount: 0,
+    status: 'healthy'
   }));
 
   const playbookSummary: PlaybookSummary[] = Object.values(STRATEGIC_DOMAINS).map(domain => ({
@@ -178,7 +178,7 @@ export default function MissionControl() {
     name: domain.name,
     category: domain.category as 'offense' | 'defense' | 'special-teams',
     count: domain.playbookCount,
-    readyCount: Math.floor(domain.playbookCount * 0.85),
+    readyCount: 0,
     icon: domain.icon,
     color: domain.color
   }));
@@ -298,7 +298,7 @@ export default function MissionControl() {
     let progress = 0;
     const startTime = Date.now();
     const progressInterval = setInterval(() => {
-      progress += Math.floor(Math.random() * 15) + 5;
+      progress += 10;
       if (progress >= 100) {
         progress = 100;
         clearInterval(progressInterval);

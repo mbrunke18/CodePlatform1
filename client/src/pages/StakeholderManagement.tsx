@@ -123,7 +123,7 @@ const LEVEL_CONFIG: Record<number, { label: string; color: string }> = {
   5: { label: "Manager", color: "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300" },
 };
 
-const generateId = () => Math.random().toString(36).substring(2, 11);
+const generateId = () => Date.now().toString(36);
 
 const DEFAULT_STAKEHOLDERS: Stakeholder[] = [
   { id: '1', name: 'Sarah Chen', email: 'sarah.chen@company.com', phone: '+1 (555) 100-0001', role: 'CEO', department: 'Executive', level: 1, responsibility: 'Final decision authority, external communications approval', notificationChannels: ['email', 'phone', 'sms'], isBackup: false, isActive: true },

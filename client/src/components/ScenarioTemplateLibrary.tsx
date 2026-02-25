@@ -235,7 +235,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
         name: formData.name || `${selectedTemplate.name} - ${new Date().toLocaleDateString()}`,
         title: formData.name || `${selectedTemplate.name} - ${new Date().toLocaleDateString()}`,
         description: formData.description || selectedTemplate.description,
-        organizationId: "ec61b8f6-7d87-41fd-9969-cb990ed0b10b", // Use correct organization ID
+        organizationId: organizationId, // Use correct organization ID
         type: selectedTemplate.category,
         ...formData // Include all collected form data
       }

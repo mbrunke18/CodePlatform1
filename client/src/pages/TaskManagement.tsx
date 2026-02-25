@@ -119,7 +119,7 @@ const APPROVAL_TYPES = [
   { value: "board", label: "Board approval" }
 ];
 
-const generateId = () => Math.random().toString(36).substring(2, 11);
+const generateId = () => Date.now().toString(36);
 
 // Convert library template to playbook task format
 const templateToTask = (template: TaskTemplate): Task => ({
