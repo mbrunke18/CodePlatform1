@@ -508,7 +508,14 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
         configuration: { syncFrequency: '10 minutes', dataMapping: ['tickets', 'users', 'organizations'] }
       },
       {
-        id: 'int-023', name: 'Confluence', category: 'documentation', status: 'pending', comingSoon: true,
+        id: 'int-023', name: 'SharePoint', category: 'documentation', status: 'pending', comingSoon: true,
+        description: 'Microsoft enterprise document management and collaboration platform', provider: 'Microsoft', version: '2024',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Document Libraries', 'Team Sites', 'Intranet', 'Workflows', 'Search'],
+        configuration: { syncFrequency: 'hourly', dataMapping: ['sites', 'documents', 'lists', 'pages'] }
+      },
+      {
+        id: 'int-023b', name: 'Confluence', category: 'documentation', status: 'pending', comingSoon: true,
         description: 'Team knowledge base and documentation wiki', provider: 'Atlassian', version: '8.0',
         lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
         features: ['Pages', 'Spaces', 'Templates', 'Version History', 'Permissions'],
