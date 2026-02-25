@@ -42,7 +42,7 @@ import { BrandStamp } from "@/components/BrandStamp";
 interface Integration {
   id: string;
   name: string;
-  category: 'crm' | 'erp' | 'analytics' | 'communication' | 'security' | 'productivity' | 'financial' | 'project-tracking' | 'itsm' | 'documentation' | 'source-control';
+  category: 'crm' | 'erp' | 'analytics' | 'communication' | 'security' | 'productivity' | 'financial' | 'project-tracking' | 'ppm' | 'itsm' | 'documentation' | 'source-control';
   comingSoon?: boolean;
   status: 'active' | 'inactive' | 'error' | 'pending';
   description: string;
@@ -548,6 +548,83 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
         lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
         features: ['Repos', 'Pull Requests', 'Pipelines', 'Deployments', 'Jira Integration'],
         configuration: { syncFrequency: 'real-time', dataMapping: ['repos', 'pull_requests', 'pipelines'] }
+      },
+      {
+        id: 'int-029', name: 'Smartsheet', category: 'ppm', status: 'pending', comingSoon: true,
+        description: 'Enterprise work management and portfolio visibility platform', provider: 'Smartsheet', version: '2.0',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Sheets', 'Portfolio Rollup', 'Resource Management', 'Dashboards', 'Automations'],
+        configuration: { syncFrequency: '15 minutes', dataMapping: ['sheets', 'projects', 'resources', 'reports'] }
+      },
+      {
+        id: 'int-030', name: 'Planview Enterprise One', category: 'ppm', status: 'pending', comingSoon: true,
+        description: 'Enterprise portfolio and program management for strategic alignment', provider: 'Planview', version: '18.0',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Portfolio Management', 'Resource Capacity', 'Demand Management', 'Financial Planning', 'Roadmaps'],
+        configuration: { syncFrequency: '30 minutes', dataMapping: ['portfolios', 'programs', 'projects', 'resources'] }
+      },
+      {
+        id: 'int-031', name: 'Broadcom Clarity PPM', category: 'ppm', status: 'pending', comingSoon: true,
+        description: 'Enterprise portfolio management with AI-driven project intelligence', provider: 'Broadcom', version: '16.2',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Portfolio Governance', 'Resource Optimization', 'Financial Tracking', 'Risk Management', 'Time Tracking'],
+        configuration: { syncFrequency: '30 minutes', dataMapping: ['portfolios', 'projects', 'timesheets', 'risks'] }
+      },
+      {
+        id: 'int-032', name: 'Microsoft Project', category: 'ppm', status: 'pending', comingSoon: true,
+        description: 'Microsoft enterprise project and portfolio management', provider: 'Microsoft', version: '2024',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Project Plans', 'Resource Management', 'Portfolio Views', 'Reporting', 'Roadmaps'],
+        configuration: { syncFrequency: '30 minutes', dataMapping: ['projects', 'tasks', 'resources', 'portfolios'] }
+      },
+      {
+        id: 'int-033', name: 'Wrike', category: 'ppm', status: 'pending', comingSoon: true,
+        description: 'Collaborative work management and project portfolio platform', provider: 'Wrike', version: '4.0',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Projects', 'Tasks', 'Portfolio Dashboards', 'Resource Management', 'Time Tracking'],
+        configuration: { syncFrequency: '15 minutes', dataMapping: ['projects', 'tasks', 'folders', 'reports'] }
+      },
+      {
+        id: 'int-034', name: 'Planisware', category: 'ppm', status: 'pending', comingSoon: true,
+        description: 'PPM platform for complex R&D and engineering portfolios', provider: 'Planisware', version: '7.0',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Portfolio Simulation', 'Resource Forecasting', 'Stage-Gate', 'Financial Planning', 'Risk Modeling'],
+        configuration: { syncFrequency: 'hourly', dataMapping: ['portfolios', 'projects', 'resources', 'gates'] }
+      },
+      {
+        id: 'int-035', name: 'BMC Helix ITSM', category: 'itsm', status: 'pending', comingSoon: true,
+        description: 'AI-powered enterprise ITSM and digital service management platform', provider: 'BMC', version: '23.3',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Incident Management', 'Change Management', 'Problem Management', 'CMDB', 'AI Operations'],
+        configuration: { syncFrequency: 'real-time', dataMapping: ['incidents', 'changes', 'problems', 'assets'] }
+      },
+      {
+        id: 'int-036', name: 'Freshservice', category: 'itsm', status: 'pending', comingSoon: true,
+        description: 'Cloud-native ITSM platform with AI-powered service automation', provider: 'Freshworks', version: '2.0',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Incident Management', 'Service Catalog', 'Asset Management', 'Change Management', 'Analytics'],
+        configuration: { syncFrequency: '10 minutes', dataMapping: ['tickets', 'assets', 'changes', 'releases'] }
+      },
+      {
+        id: 'int-037', name: 'Ivanti Neurons', category: 'itsm', status: 'pending', comingSoon: true,
+        description: 'Intelligent ITSM and unified endpoint management platform', provider: 'Ivanti', version: '2024.1',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['ITSM', 'Endpoint Management', 'Self-Service', 'Discovery', 'AI Automation'],
+        configuration: { syncFrequency: '15 minutes', dataMapping: ['incidents', 'devices', 'requests', 'changes'] }
+      },
+      {
+        id: 'int-038', name: 'Cherwell (Ivanti)', category: 'itsm', status: 'pending', comingSoon: true,
+        description: 'Flexible ITSM platform with no-code configuration capabilities', provider: 'Ivanti', version: '10.4',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Incident', 'Problem', 'Change', 'Service Catalog', 'CMDB'],
+        configuration: { syncFrequency: '15 minutes', dataMapping: ['incidents', 'problems', 'changes', 'configuration_items'] }
+      },
+      {
+        id: 'int-039', name: 'ManageEngine ServiceDesk Plus', category: 'itsm', status: 'pending', comingSoon: true,
+        description: 'ITSM suite with built-in asset and project management capabilities', provider: 'ManageEngine', version: '14.3',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Help Desk', 'Asset Management', 'Change Management', 'Project Management', 'Analytics'],
+        configuration: { syncFrequency: '15 minutes', dataMapping: ['requests', 'assets', 'changes', 'projects'] }
       }
     ];
 
@@ -681,6 +758,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
       case 'productivity': return 'bg-amber-100 text-amber-700 border-amber-300';
       case 'financial': return 'bg-indigo-100 text-indigo-700 border-indigo-300';
       case 'project-tracking': return 'bg-violet-100 text-violet-700 border-violet-300';
+      case 'ppm': return 'bg-cyan-100 text-cyan-700 border-cyan-300';
       case 'itsm': return 'bg-orange-100 text-orange-700 border-orange-300';
       case 'documentation': return 'bg-teal-100 text-teal-700 border-teal-300';
       case 'source-control': return 'bg-gray-100 text-gray-700 border-gray-300';
@@ -891,6 +969,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                 <SelectContent>
                   <SelectItem value="all">All Categories</SelectItem>
                   <SelectItem value="project-tracking">Project Tracking</SelectItem>
+                  <SelectItem value="ppm">Portfolio & Program Mgmt</SelectItem>
                   <SelectItem value="communication">Communication</SelectItem>
                   <SelectItem value="crm">CRM</SelectItem>
                   <SelectItem value="itsm">IT Service Management</SelectItem>
