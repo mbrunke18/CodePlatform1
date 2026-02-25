@@ -97,8 +97,9 @@ async function requireOrgAccess(req: any, res: any, next: any) {
   }
 
   // If orgId is provided in params or query, validate it
+  // "default" is treated as a placeholder meaning "use the user's own org"
   const requestedOrgId = req.params.orgId || req.params.organizationId || req.query.organizationId || req.body.organizationId;
-  if (requestedOrgId && requestedOrgId !== orgId) {
+  if (requestedOrgId && requestedOrgId !== 'default' && requestedOrgId !== orgId) {
     return res.status(403).json({ message: "Forbidden - Insufficient permissions for this organization" });
   }
 
@@ -5588,8 +5589,8 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   // --- Organization Setup Progress ---
   app.get('/api/config/setup-progress/:organizationId', requireOrgAccess, async (req: any, res) => {
     try {
-      const { organizationId } = req.params;
-      const progress = await storage.getOrganizationSetupProgress(organizationId);
+      const orgId = req.orgId;
+      const progress = await storage.getOrganizationSetupProgress(orgId);
       res.json(progress || { departmentsConfigured: false, executivesConfigured: false, approvalChainsConfigured: false, escalationPoliciesConfigured: false, communicationChannelsConfigured: false });
     } catch (error) {
       console.error('Error fetching setup progress:', error);
@@ -5599,11 +5600,21 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
 
   app.post('/api/config/setup-progress', requireOrgAccess, async (req: any, res) => {
     try {
-      const progress = await storage.upsertOrganizationSetupProgress(req.body);
+      const progress = await storage.upsertOrganizationSetupProgress({ ...req.body, organizationId: req.orgId });
       res.json({ success: true, progress, message: 'Setup progress updated successfully' });
     } catch (error: any) {
       console.error('Error updating setup progress:', error);
       res.status(400).json({ error: 'Failed to update setup progress', details: error.message });
+    }
+  });
+
+  app.patch('/api/config/setup-progress/:organizationId', requireOrgAccess, async (req: any, res) => {
+    try {
+      const progress = await storage.upsertOrganizationSetupProgress({ ...req.body, organizationId: req.orgId });
+      res.json({ success: true, progress, message: 'Setup progress saved' });
+    } catch (error: any) {
+      console.error('Error saving setup progress:', error);
+      res.status(400).json({ error: 'Failed to save setup progress', details: error.message });
     }
   });
 
