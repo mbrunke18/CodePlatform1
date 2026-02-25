@@ -550,7 +550,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
         configuration: { syncFrequency: 'real-time', dataMapping: ['repos', 'pull_requests', 'pipelines'] }
       },
       {
-        id: 'int-029', name: 'Smartsheet', category: 'ppm', status: 'pending', comingSoon: true,
+        id: 'int-029', name: 'Smartsheet', category: 'project-tracking', status: 'pending', comingSoon: true,
         description: 'Enterprise work management and portfolio visibility platform', provider: 'Smartsheet', version: '2.0',
         lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
         features: ['Sheets', 'Portfolio Rollup', 'Resource Management', 'Dashboards', 'Automations'],
@@ -578,7 +578,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
         configuration: { syncFrequency: '30 minutes', dataMapping: ['projects', 'tasks', 'resources', 'portfolios'] }
       },
       {
-        id: 'int-033', name: 'Wrike', category: 'ppm', status: 'pending', comingSoon: true,
+        id: 'int-033', name: 'Wrike', category: 'project-tracking', status: 'pending', comingSoon: true,
         description: 'Collaborative work management and project portfolio platform', provider: 'Wrike', version: '4.0',
         lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
         features: ['Projects', 'Tasks', 'Portfolio Dashboards', 'Resource Management', 'Time Tracking'],
