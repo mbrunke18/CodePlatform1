@@ -1202,6 +1202,68 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  app.put('/api/organizations/:id', isAuthenticated, requireRole('admin'), async (req: any, res) => {
+    try {
+      const { id } = req.params;
+      const userId = getUserId(req);
+      const updateData = req.body;
+
+      const existing = await db.select().from(organizations).where(eq(organizations.id, id)).limit(1);
+      if (existing.length === 0) {
+        return res.status(404).json({ error: 'Organization not found' });
+      }
+
+      const updated = await db.update(organizations)
+        .set({ ...updateData, updatedAt: new Date() })
+        .where(eq(organizations.id, id))
+        .returning();
+
+      await storage.createActivity({
+        userId,
+        action: `updated organization settings`,
+        entityType: 'organization',
+        entityId: id,
+      });
+
+      res.json(updated[0]);
+    } catch (error) {
+      console.error('Error updating organization:', error);
+      res.status(500).json({ error: 'Failed to update organization' });
+    }
+  });
+
+  app.post('/api/budgets/approve', isAuthenticated, requireRole('executive', 'admin'), async (req: any, res) => {
+    try {
+      const userId = getUserId(req);
+      const { playbookId, amount, currency = 'USD', notes } = req.body;
+
+      if (!playbookId || !amount) {
+        return res.status(400).json({ error: 'playbookId and amount are required' });
+      }
+
+      await storage.createActivity({
+        userId,
+        action: `approved budget of ${currency} ${amount} for playbook ${playbookId}`,
+        entityType: 'budget',
+        entityId: playbookId,
+      });
+
+      res.json({
+        success: true,
+        approved: true,
+        playbookId,
+        amount,
+        currency,
+        approvedBy: userId,
+        approvedAt: new Date().toISOString(),
+        notes: notes || null,
+      });
+    } catch (error) {
+      console.error('Error approving budget:', error);
+      res.status(500).json({ error: 'Failed to approve budget' });
+    }
+  });
+
   // ============================================
   // ONBOARDING JOURNEY API ROUTES
   // ============================================

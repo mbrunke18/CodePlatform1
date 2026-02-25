@@ -104,7 +104,7 @@ export default function ExplorePage() {
               <Button
                 size="lg"
                 className="bg-[#0A0F2E] hover:bg-[#1a2040] !text-white px-10 py-6 text-lg font-semibold rounded-lg gap-3"
-                onClick={() => { (window.top || window).location.href = '/api/login'; }}
+                onClick={() => { try { (window.top || window).location.href = '/api/login'; } catch { window.open('/api/login', '_blank'); } }}
               >
                 <LogIn className="h-5 w-5" />
                 Sign In to Explore
