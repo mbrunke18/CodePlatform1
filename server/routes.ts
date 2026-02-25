@@ -1092,14 +1092,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ message: "User not found" });
       }
 
-      const role = await storage.getUserRole(userId);
-      
+      let role = null;
+      try {
+        const userRole = await storage.getUserRole(userId);
+        role = userRole?.name || null;
+      } catch {
+        // Role lookup failure must never block login
+      }
+
       const orgs = await storage.getUserOrganizations(user.id);
       const needsOnboarding = orgs.length > 0 ? !orgs[0].onboardingCompleted : true;
 
       res.json({
         ...user,
-        role: role?.name || null,
+        role,
         initials: `${user.firstName?.[0] || ''}${user.lastName?.[0] || ''}`.toUpperCase(),
         needsOnboarding
       });
@@ -6970,12 +6976,12 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   app.get('/api/roi/report', requireOrgAccess, async (req: any, res) => {
     try {
       const { generateROIReport } = await import('./services/ROICalculator');
-      const mockHistory = Array(12).fill(null).map(() => ({
-        timeToActivateMinutes: Math.random() * 8 + 2,
-        stakeholdersReached: Math.random() * 100 + 50,
+      const emptyHistory = Array(12).fill(null).map(() => ({
+        timeToActivateMinutes: 0,
+        stakeholdersReached: 0,
       }));
       
-      const report = generateROIReport(mockHistory);
+      const report = generateROIReport(emptyHistory);
       res.json(report);
     } catch (error) {
       res.status(500).json({ error: 'Failed to generate report' });

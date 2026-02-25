@@ -22,11 +22,7 @@ export function useAuth() {
   const needsOnboarding = user?.needsOnboarding || false;
 
   const login = () => {
-    try {
-      (window.top || window).location.href = '/api/login';
-    } catch {
-      window.open('/api/login', '_blank');
-    }
+    window.location.href = '/api/login';
   };
 
   const logout = () => {
