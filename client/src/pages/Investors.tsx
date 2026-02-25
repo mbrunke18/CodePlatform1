@@ -7,6 +7,7 @@ import {
   BarChart3, Award, Globe, Play, FileText, Calendar
 } from "lucide-react";
 import { Link } from "wouter";
+import { BrandStamp } from "@/components/BrandStamp";
 
 const scenarioComparisons = [
   {

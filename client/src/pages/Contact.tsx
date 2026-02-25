@@ -14,6 +14,7 @@ import PageLayout from "@/components/layout/PageLayout";
 import { updatePageMetadata } from "@/lib/seo";
 import { CheckCircle2, Shield, Zap, Target } from "lucide-react";
 import { useLocation } from "wouter";
+import { BrandStamp } from "@/components/BrandStamp";
 
 const earlyAccessSchema = z.object({
   firstName: z.string().min(1, "First name required"),
@@ -77,6 +78,7 @@ export default function Contact() {
       {/* Hero Section */}
       <section className="py-16 px-6 text-gray-900">
         <div className="max-w-5xl mx-auto text-center">
+          <BrandStamp variant="dual" size="md" className="mb-8" />
           <Badge className="mb-4 bg-purple-600 text-gray-900 border-0 text-base px-6 py-2" data-testid="badge-early-access">
             Q1 2026 Pilot Program
           </Badge>

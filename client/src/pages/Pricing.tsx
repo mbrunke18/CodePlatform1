@@ -18,6 +18,7 @@ import { useLocation } from "wouter";
 import { useEffect } from "react";
 import { updatePageMetadata } from "@/lib/seo";
 import StandardNav from "@/components/layout/StandardNav";
+import { BrandStamp } from "@/components/BrandStamp";
 
 export default function Pricing() {
   const [, setLocation] = useLocation();
@@ -38,6 +39,7 @@ export default function Pricing() {
       {/* Hero */}
       <section className="py-20 px-6 text-gray-900">
         <div className="max-w-5xl mx-auto text-center">
+          <BrandStamp variant="dual" size="md" className="mb-8" />
           <Badge className="mb-6 bg-cyan-500 text-gray-900 border-0 text-lg px-6 py-2" data-testid="badge-pricing">
             Enterprise Pricing
           </Badge>

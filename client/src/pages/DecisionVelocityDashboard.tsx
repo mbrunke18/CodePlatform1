@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import { Clock, CheckCircle, TrendingUp, Trophy, ArrowRight, Zap, Target, Users, Loader2 } from "lucide-react";
 import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
+import { BrandStamp } from "@/components/BrandStamp";
 
 function formatDecisionType(type: string): string {
   return type
@@ -83,6 +84,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
       
       <div className="container mx-auto px-4 py-20">
         <div className="text-center mb-12">
+          <BrandStamp variant="dual" size="md" className="mb-8" />
           <Badge className="mb-4 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
             <Zap className="h-3 w-3 mr-1" />
             Decision Velocity Tracking

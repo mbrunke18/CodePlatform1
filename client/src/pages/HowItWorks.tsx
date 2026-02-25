@@ -16,6 +16,7 @@ import {
   Play
 } from "lucide-react";
 import { useLocation } from "wouter";
+import { BrandStamp } from "@/components/BrandStamp";
 
 export default function HowItWorks() {
   const [, setLocation] = useLocation();
@@ -144,6 +145,7 @@ export default function HowItWorks() {
       <div className="relative overflow-hidden bg-white border-b border-gray-100">
         <div className="container mx-auto px-6 py-20 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
+            <BrandStamp variant="dual" size="md" className="mb-8" />
             <Badge className="mb-6 bg-poise-gold/10 text-poise-gold border-poise-gold/30 text-sm px-4 py-2">
               The IDEA Framework™
             </Badge>

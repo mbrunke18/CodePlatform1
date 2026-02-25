@@ -36,6 +36,7 @@ import {
   Database,
   FileText
 } from 'lucide-react';
+import { BrandStamp } from "@/components/BrandStamp";
 
 interface AIModule {
   id: string;
@@ -487,6 +488,7 @@ export default function ComprehensiveAIIntelligence() {
                           <div className="text-sm font-medium text-gray-900">{module.performance}%</div>
                           <Progress value={module.performance} className="w-16 h-2" />
                         </div>
+                        <BrandStamp variant="dual" size="md" className="mb-8" />
                         <Badge className={getStatusColor(module.status)}>
                           {module.status.toUpperCase()}
                         </Badge>

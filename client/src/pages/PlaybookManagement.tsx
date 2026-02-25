@@ -35,6 +35,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { BrandStamp } from "@/components/BrandStamp";
 
 import {
   Plus,
@@ -332,6 +333,7 @@ export default function PlaybookManagement() {
                         </div>
                       </TableCell>
                       <TableCell>
+                        <BrandStamp variant="dual" size="md" className="mb-8" />
                         <Badge variant="outline" className={categoryConfig?.color}>
                           {categoryConfig?.label || 'Uncategorized'}
                         </Badge>

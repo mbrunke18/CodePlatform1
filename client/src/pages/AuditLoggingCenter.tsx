@@ -31,6 +31,7 @@ import {
   Monitor,
   Key
 } from 'lucide-react';
+import { BrandStamp } from "@/components/BrandStamp";
 
 interface AuditLog {
   id: string;
@@ -321,6 +322,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
             <p className="text-gray-800">Comprehensive activity logging, security monitoring, and compliance tracking</p>
           </div>
           <div className="flex items-center gap-4">
+            <BrandStamp variant="dual" size="md" className="mb-8" />
             <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
               <Shield className="w-4 h-4 mr-2" />
               Compliance: {metrics.complianceScore}%

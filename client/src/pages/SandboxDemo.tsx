@@ -15,6 +15,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
 import { useLocation } from "wouter";
+import { BrandStamp } from "@/components/BrandStamp";
 import { 
   ArrowRight, 
   ArrowLeft, 
@@ -530,6 +531,7 @@ export default function SandboxDemo() {
   const renderDomainSelection = () => (
     <div className="space-y-8">
       <div className="text-center">
+        <BrandStamp variant="dual" size="md" className="mb-8" />
         <Badge className="mb-4 bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
           Step 1 of 6: IDENTIFY Phase
         </Badge>

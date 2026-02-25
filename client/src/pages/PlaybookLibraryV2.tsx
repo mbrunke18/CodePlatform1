@@ -12,6 +12,7 @@ import { useLocation } from "wouter";
 import { Search, Plus, Eye, Copy, Edit, Target, Shield, Zap, Clock, Users, Star, MoreHorizontal, ArrowLeft, ChevronRight, BookOpen, ChevronDown, AlertTriangle, Brain, Network, ArrowRight } from "lucide-react";
 import type { Playbook } from "@shared/schema";
 import { useCustomer } from "@/contexts/CustomerContext";
+import { BrandStamp } from "@/components/BrandStamp";
 
 const categoryConfig = {
   offense: {
@@ -226,6 +227,7 @@ function CompoundDisruptionSection() {
         <div>
           <div className="flex items-center gap-3 mb-1">
             <h3 className="text-lg font-bold text-gray-900">Compound Disruption Response</h3>
+            <BrandStamp variant="dual" size="md" className="mb-8" />
             <Badge className="bg-red-500/20 text-red-400 border-red-500/30 text-[10px]">COMPOUND RESPONSE</Badge>
           </div>
           <p className="text-gray-800 text-sm">

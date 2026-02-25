@@ -22,6 +22,7 @@ import {
   CheckCircle,
   Clock
 } from 'lucide-react';
+import { BrandStamp } from "@/components/BrandStamp";
 
 export default function VCPresentations() {
   const investmentHighlights = [
@@ -136,6 +137,7 @@ export default function VCPresentations() {
               </div>
             </div>
             <div className="flex items-center space-x-3">
+              <BrandStamp variant="dual" size="md" className="mb-8" />
               <Badge variant="outline" className="text-yellow-600 border-yellow-500/50">
                 <Star className="w-3 h-3 mr-1" />
                 Series B Ready

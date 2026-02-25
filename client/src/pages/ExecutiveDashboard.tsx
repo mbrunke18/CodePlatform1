@@ -33,6 +33,7 @@ import {
 import { Link } from 'wouter';
 import { format } from 'date-fns';
 import { queryClient } from '@/lib/queryClient';
+import { BrandStamp } from "@/components/BrandStamp";
 
 function StatusIndicator({ status }: { status: 'good' | 'warning' | 'critical' }) {
   const config = {

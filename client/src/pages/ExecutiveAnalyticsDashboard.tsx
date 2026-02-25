@@ -32,6 +32,7 @@ import {
   ArrowLeft,
   Home
 } from 'lucide-react';
+import { BrandStamp } from "@/components/BrandStamp";
 
 interface ExecutiveMetric {
   id: string;
@@ -528,6 +529,7 @@ export default function ExecutiveAnalyticsDashboard() {
                       <div className="flex-1 page-background">
                         <div className="flex items-center gap-3 mb-2">
                           <h3 className="text-lg font-semibold text-gray-900">{insight.title}</h3>
+                          <BrandStamp variant="dual" size="md" className="mb-8" />
                           <Badge className={getInsightColor(insight.category)}>
                             {insight.category.toUpperCase()}
                           </Badge>

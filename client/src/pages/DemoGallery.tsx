@@ -21,6 +21,7 @@ import {
   Shield,
   Globe
 } from 'lucide-react';
+import { BrandStamp } from "@/components/BrandStamp";
 
 const demos = [
   {
@@ -164,6 +165,7 @@ export default function DemoGallery() {
           
           {/* Header */}
           <div className="text-center mb-8">
+            <BrandStamp variant="dual" size="md" className="mb-8" />
             <Badge className="mb-4 bg-poise-teal/20 text-poise-teal border-poise-teal/30">
               Experience Execution OS
             </Badge>

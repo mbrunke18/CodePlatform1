@@ -25,6 +25,7 @@ import {
   ArrowLeft,
   Home
 } from 'lucide-react';
+import { BrandStamp } from "@/components/BrandStamp";
 
 export default function NovaInnovations() {
   const [selectedPipeline, setSelectedPipeline] = useState('discovery');
@@ -219,6 +220,7 @@ export default function NovaInnovations() {
                     Dashboard
                   </Button>
                 </Link>
+                <BrandStamp variant="dual" size="md" className="mb-8" />
                 <Badge variant="secondary" className="bg-purple-700 text-purple-800 border-purple-600" data-testid="ai-discovery-badge">
                   <Rocket className="h-4 w-4 mr-2" />
                   AI DISCOVERY

@@ -25,6 +25,7 @@ import {
   Sparkles,
   Printer
 } from 'lucide-react';
+import { BrandStamp } from "@/components/BrandStamp";
 
 const reportTypes = [
   {
@@ -409,6 +410,7 @@ export default function ExecutiveSummaryGenerator() {
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-700 dark:text-slate-400">Report Type</span>
+                        <BrandStamp variant="dual" size="md" className="mb-8" />
                         <Badge variant="outline" className="text-xs">{selectedReportInfo?.label}</Badge>
                       </div>
                       <div className="flex justify-between">

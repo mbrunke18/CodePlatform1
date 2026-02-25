@@ -25,6 +25,7 @@ import demoScriptContent from '@/data/ExecuteIQ-Demo-Script-3min.md?raw';
 import whyNowContent from '@/data/ExecuteIQ-WhyNow-SlideContent.md?raw';
 import competitiveMoatContent from '@/data/ExecuteIQ-Competitive-Moat-TalkingPoints.md?raw';
 import checklistContent from '@/data/ExecuteIQ-PreRoadshow-Checklist.md?raw';
+import { BrandStamp } from "@/components/BrandStamp";
 
 const KEY_STATS = [
   { label: "Response Time", value: "72h → 12min", color: "text-emerald-400" },
@@ -166,6 +167,7 @@ export default function RoadshowResources() {
       
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="text-center mb-8">
+          <BrandStamp variant="dual" size="md" className="mb-8" />
           <Badge className="bg-purple-500 text-gray-900 mb-4">
             Internal Resources
           </Badge>

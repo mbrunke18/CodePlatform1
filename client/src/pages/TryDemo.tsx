@@ -48,6 +48,7 @@ import {
   ShoppingCart,
   ExternalLink
 } from 'lucide-react';
+import { BrandStamp } from "@/components/BrandStamp";
 import { SiSlack, SiJira, SiSalesforce, SiNotion } from 'react-icons/si';
 
 type Phase = 'select' | 'chaos' | 'identify' | 'detect' | 'execute' | 'advance' | 'complete';
@@ -483,6 +484,7 @@ export default function TryDemo() {
         <div ref={contentRef} className="max-w-6xl mx-auto px-4 md:px-6">
           {/* Header */}
           <div className="text-center mb-8">
+            <BrandStamp variant="dual" size="md" className="mb-8" />
             <Badge className="mb-4 bg-gradient-to-r from-amber-500/20 to-emerald-500/20 text-amber-300 border-amber-500/30">
               Y Combinator Demo
             </Badge>

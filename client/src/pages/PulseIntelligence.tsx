@@ -32,6 +32,7 @@ import {
   Cpu,
   Scale
 } from 'lucide-react';
+import { BrandStamp } from "@/components/BrandStamp";
 
 interface FeedItem {
   id: string;
@@ -274,6 +275,7 @@ export default function PulseIntelligence() {
             <div className="col-span-3 space-y-2">
               <div className="flex items-center justify-between mb-3">
                 <h2 className="text-sm font-semibold text-gray-800 uppercase tracking-wider">Live Signal Feed</h2>
+                <BrandStamp variant="dual" size="md" className="mb-8" />
                 <Badge variant="outline" className="bg-emerald-500/10 text-emerald-400 border-emerald-500/30 text-[10px]">
                   {feed.length} Active
                 </Badge>

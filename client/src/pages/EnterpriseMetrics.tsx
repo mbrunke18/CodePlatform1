@@ -21,6 +21,7 @@ import {
   Crown,
   Briefcase
 } from 'lucide-react';
+import { BrandStamp } from "@/components/BrandStamp";
 
 export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) {
   const enterpriseKPIs = [
@@ -80,6 +81,7 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
               </div>
             </div>
             <div className="flex items-center space-x-3">
+              <BrandStamp variant="dual" size="md" className="mb-8" />
               <Badge variant="outline" className="text-emerald-700 border-green-500/50">
                 <CheckCircle className="w-3 h-3 mr-1" />
                 Enterprise Ready

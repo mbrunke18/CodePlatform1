@@ -33,6 +33,7 @@ import {
   Building2,
   Loader2
 } from "lucide-react";
+import { BrandStamp } from "@/components/BrandStamp";
 
 type Step = "setup" | "configure" | "ready" | "executing" | "complete";
 
@@ -293,6 +294,7 @@ export default function PilotDemo() {
       <main className="container mx-auto px-4 py-12 pt-24">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
+            <BrandStamp variant="dual" size="md" className="mb-8" />
             <Badge className="mb-4 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
               Pilot Demo
             </Badge>

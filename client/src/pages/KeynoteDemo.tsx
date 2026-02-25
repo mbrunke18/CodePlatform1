@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { BrandStamp } from "@/components/BrandStamp";
 
 interface FeedItem {
   id: string;

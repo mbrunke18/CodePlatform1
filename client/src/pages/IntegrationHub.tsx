@@ -37,6 +37,7 @@ import {
   Search,
   Filter
 } from 'lucide-react';
+import { BrandStamp } from "@/components/BrandStamp";
 
 interface Integration {
   id: string;
@@ -534,6 +535,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
             <p className="text-gray-800">Connect 10-15 enterprise systems to create platform lock-in and prohibitive switching costs</p>
           </div>
           <div className="flex items-center gap-4">
+            <BrandStamp variant="dual" size="md" className="mb-8" />
             <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
               <Activity className="w-4 h-4 mr-2" />
               System Health: {systemMetrics.systemHealth}%

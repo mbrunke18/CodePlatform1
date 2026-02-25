@@ -5,6 +5,7 @@ import { Clock, Zap, Briefcase, ArrowRight, Play, Building2, Sparkles, FileText,
 import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
+import { BrandStamp } from "@/components/BrandStamp";
 
 export default function DemoRouter() {
   const [, setLocation] = useLocation();
@@ -76,6 +77,7 @@ export default function DemoRouter() {
         <div className="max-w-3xl mx-auto px-6 py-16 md:py-20">
           {/* Header */}
           <div className="text-center mb-10">
+            <BrandStamp variant="dual" size="md" className="mb-8" />
             <Badge className="mb-4 bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
               Interactive Experience
             </Badge>

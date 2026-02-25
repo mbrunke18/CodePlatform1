@@ -38,6 +38,7 @@ import StandardNav from '@/components/layout/StandardNav';
 import Footer from '@/components/layout/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 import Confetti from 'react-confetti';
+import { BrandStamp } from "@/components/BrandStamp";
 
 const DEMO_DURATION = 180;
 
@@ -313,6 +314,7 @@ export default function InvestorDemo() {
       <main className="flex-1 py-8">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-6">
+            <BrandStamp variant="dual" size="md" className="mb-8" />
             <Badge className="bg-purple-500 text-gray-900 mb-3">
               Investor Demo — Market Creation Story
             </Badge>

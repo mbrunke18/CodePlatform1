@@ -27,6 +27,7 @@ import {
   Plus
 } from 'lucide-react';
 import { LEADERSHIP_CAPABILITIES } from '@shared/constants/framework';
+import { BrandStamp } from "@/components/BrandStamp";
 
 const capabilityIcons: Record<string, any> = {
   foresight: Telescope,

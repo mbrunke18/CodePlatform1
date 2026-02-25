@@ -3,6 +3,7 @@ import PlatformVisual from '@/components/marketing/PlatformVisual';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Play } from 'lucide-react';
 import { useLocation } from 'wouter';
+import { BrandStamp } from "@/components/BrandStamp";
 
 export default function PlatformOverview() {
   const [, setLocation] = useLocation();

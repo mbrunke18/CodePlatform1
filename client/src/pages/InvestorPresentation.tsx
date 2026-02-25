@@ -30,6 +30,7 @@ import {
   Bot,
   Layers
 } from 'lucide-react';
+import { BrandStamp } from "@/components/BrandStamp";
 
 function InvestorPresentation() {
   const [, setLocation] = useLocation();

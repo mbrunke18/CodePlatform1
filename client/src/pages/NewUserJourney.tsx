@@ -18,6 +18,7 @@ import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SIGNAL_CATEGORIES } from '@shared/intelligence-signals';
+import { BrandStamp } from "@/components/BrandStamp";
 import { 
   Rocket,
   Building2,
@@ -349,6 +350,7 @@ export default function NewUserJourney() {
               </div>
             </div>
             <div className="flex items-center gap-3">
+              <BrandStamp variant="dual" size="md" className="mb-8" />
               <Badge variant="outline" className="bg-transparent text-gray-800 border-slate-600">
                 Step {state.step + 1} of {STEPS.length}
               </Badge>

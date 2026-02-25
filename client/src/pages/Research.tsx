@@ -25,6 +25,7 @@ import { Link } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
 import { useEffect } from "react";
 import { updatePageMetadata } from "@/lib/seo";
+import { BrandStamp } from "@/components/BrandStamp";
 
 export default function Research() {
   useEffect(() => {
@@ -43,6 +44,7 @@ export default function Research() {
       {/* Hero Section */}
       <section className="py-20 px-6 text-gray-900">
         <div className="max-w-5xl mx-auto text-center">
+          <BrandStamp variant="dual" size="md" className="mb-8" />
           <Badge className="mb-6 bg-primary text-gray-900 border-0">
             <BarChart3 className="w-4 h-4 mr-2" />
             Industry Research

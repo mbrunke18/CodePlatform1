@@ -39,6 +39,7 @@ import {
   FileText,
   MessageSquare
 } from 'lucide-react';
+import { BrandStamp } from "@/components/BrandStamp";
 
 interface Scene {
   id: string;
@@ -441,6 +442,7 @@ function ProductTour() {
                   <p className="text-sm text-gray-900/80">Chief Strategy Officer</p>
                 </div>
               </div>
+              <BrandStamp variant="dual" size="md" className="mb-8" />
               <Badge className="bg-red-500 text-gray-900 animate-pulse">
                 <AlertTriangle className="w-3 h-3 mr-1" />
                 CRITICAL SIGNAL

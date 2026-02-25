@@ -27,6 +27,7 @@ import { useLocation } from 'wouter';
 import { useToast } from '@/hooks/use-toast';
 import StandardNav from '@/components/layout/StandardNav';
 import Footer from '@/components/layout/Footer';
+import { BrandStamp } from "@/components/BrandStamp";
 
 interface ROIInputs {
   companySize: string;
@@ -155,6 +156,7 @@ export default function ROICalculator() {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
+            <BrandStamp variant="dual" size="md" className="mb-8" />
             <Badge className="mb-4 bg-green-500/20 text-green-400 border-green-500/30">
               <Calculator className="h-4 w-4 mr-2" />
               ROI Calculator

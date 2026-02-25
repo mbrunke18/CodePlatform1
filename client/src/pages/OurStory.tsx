@@ -13,6 +13,7 @@ import {
   Quote
 } from "lucide-react";
 import { useLocation } from "wouter";
+import { BrandStamp } from "@/components/BrandStamp";
 
 function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useRef(null);

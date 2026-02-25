@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'wouter';
 import { useDynamicStrategy } from '@/contexts/DynamicStrategyContext';
+import { BrandStamp } from "@/components/BrandStamp";
 
 function StatusDot({ status }: { status: 'good' | 'warning' | 'critical' }) {
   const colors = {
@@ -226,6 +227,7 @@ export default function Dashboard() {
           
           {/* Hero Banner - Deterministic Strategic Execution */}
           <div className="text-center py-4 sm:py-6">
+            <BrandStamp variant="icon" size="sm" className="mb-3 opacity-70" />
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 leading-tight">
               From 72 Hours to 12 Minutes.{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400">

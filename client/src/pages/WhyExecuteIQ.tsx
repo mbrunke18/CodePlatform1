@@ -28,6 +28,7 @@ import { Link } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
 import { useEffect } from "react";
+import { BrandStamp } from "@/components/BrandStamp";
 import { updatePageMetadata } from "@/lib/seo";
 
 export default function WhyExecuteIQ() {
@@ -47,6 +48,7 @@ export default function WhyExecuteIQ() {
       {/* Hero Section */}
       <section className="py-16 md:py-24 px-6 text-gray-900">
         <div className="max-w-5xl mx-auto text-center">
+          <BrandStamp variant="dual" size="md" className="mb-8" />
           <Badge className="mb-6 bg-amber-500 text-gray-900 border-0">
             <BarChart3 className="w-4 h-4 mr-2" />
             2026 Research Consensus

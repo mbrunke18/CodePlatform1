@@ -28,6 +28,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'wouter';
 import { io, Socket } from 'socket.io-client';
+import { BrandStamp } from "@/components/BrandStamp";
 import { ROLE_OVERLAYS, INDUSTRY_OVERLAYS } from '@/data/activationPersonalization';
 import type { RoleOverlay, IndustryOverlay } from '@/data/activationPersonalization';
 import PageLayout from '@/components/layout/PageLayout';
@@ -628,6 +629,7 @@ export default function LiveActivationCenter() {
                   {isSelected && (
                     <div className={cn('absolute top-3 right-3 w-3 h-3 rounded-full', colors.solid)} />
                   )}
+                  <BrandStamp variant="dual" size="md" className="mb-8" />
                   <Badge className={cn('mb-4 text-xs font-semibold tracking-wider', colors.bg, colors.text, 'border-0')}>
                     {pb.category}
                   </Badge>

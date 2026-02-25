@@ -20,6 +20,7 @@ import {
   Rocket,
   Play
 } from "lucide-react";
+import { BrandStamp } from "@/components/BrandStamp";
 
 interface IndustryDemo {
   id: string;
@@ -204,6 +205,7 @@ export default function IndustryDemosHub() {
                   <div className="text-xs text-gray-700">{demo.industry}</div>
                 </div>
               </div>
+              <BrandStamp variant="dual" size="md" className="mb-8" />
               <Badge className={`text-[10px] border ${categoryBadge(demo.type)}`}>
                 {demo.type}
               </Badge>

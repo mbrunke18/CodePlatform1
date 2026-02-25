@@ -35,6 +35,7 @@ import {
 import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
 import { Link } from "wouter";
+import { BrandStamp } from "@/components/BrandStamp";
 
 type Domain = "offense" | "defense" | "special_teams";
 type Phase = "select-domain" | "questions" | "results";
@@ -300,6 +301,7 @@ export default function ReadinessAssessment() {
         <section className="py-16 md:py-24 px-6">
           <div className="max-w-4xl mx-auto space-y-10">
             <div className="text-center">
+              <BrandStamp variant="dual" size="md" className="mb-8" />
               <Badge className="mb-4 bg-teal-500/20 text-teal-400 border-teal-500/30">
                 <Clock className="w-4 h-4 mr-2" />
                 5-Minute Diagnostic

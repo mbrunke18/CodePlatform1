@@ -7,6 +7,7 @@ import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
 import FounderStoryIntro from "@/components/marketing/FounderStoryIntro";
 import FounderStoryFull from "@/components/marketing/FounderStoryFull";
+import { BrandStamp } from "@/components/BrandStamp";
 
 export default function FounderStory() {
   const [activeVideo, setActiveVideo] = useState<"none" | "intro" | "full">("none");

@@ -27,6 +27,7 @@ import { useLocation } from 'wouter';
 import StandardNav from '@/components/layout/StandardNav';
 import Footer from '@/components/layout/Footer';
 import { useToast } from '@/hooks/use-toast';
+import { BrandStamp } from "@/components/BrandStamp";
 
 interface ExportSection {
   id: string;
@@ -150,6 +151,7 @@ export default function BoardExport() {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
+            <BrandStamp variant="dual" size="md" className="mb-8" />
             <Badge className="mb-4 bg-purple-500/20 text-purple-400 border-purple-500/30">
               <FileText className="h-4 w-4 mr-2" />
               Board-Ready Export

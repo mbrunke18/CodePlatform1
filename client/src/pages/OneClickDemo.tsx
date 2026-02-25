@@ -28,6 +28,7 @@ import {
 } from 'lucide-react';
 import Confetti from 'react-confetti';
 import { useLocation } from 'wouter';
+import { BrandStamp } from "@/components/BrandStamp";
 import StandardNav from '@/components/layout/StandardNav';
 import Footer from '@/components/layout/Footer';
 
@@ -209,6 +210,7 @@ export default function OneClickDemo() {
         
         <div className="container mx-auto px-4 py-20">
           <div className="max-w-4xl mx-auto text-center">
+            <BrandStamp variant="dual" size="md" className="mb-8" />
             <Badge className="mb-6 bg-red-500/20 text-red-400 border-red-500/30 text-sm px-4 py-1">
               <AlertCircle className="h-4 w-4 mr-2" />
               Live Interactive Demo

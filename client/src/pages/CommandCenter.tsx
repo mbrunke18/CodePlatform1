@@ -37,6 +37,7 @@ import {
   X
 } from 'lucide-react';
 import PageLayout from '@/components/layout/PageLayout';
+import { BrandStamp } from "@/components/BrandStamp";
 
 interface CoordinationEvent {
   id: string;
