@@ -59,7 +59,7 @@ const phaseDetails = [
   },
   {
     id: 'identify',
-    title: 'Phase 3: IDENTIFY (Execution OS Playbook™)',
+    title: 'Phase 3: IDENTIFY — VaughnMartin Playbook™',
     duration: 'Days 30-45',
     objective: 'Build your strategic playbook portfolio',
     activities: [
@@ -74,7 +74,7 @@ const phaseDetails = [
   },
   {
     id: 'detect',
-    title: 'Phase 4: DETECT (Execution OS Signal™)',
+    title: 'Phase 4: DETECT — VaughnMartin Signal™',
     duration: 'Days 45-60',
     objective: 'Activate AI-powered monitoring and alerting',
     activities: [
@@ -89,7 +89,7 @@ const phaseDetails = [
   },
   {
     id: 'execute',
-    title: 'Phase 5: EXECUTE (Execution OS Compass™)',
+    title: 'Phase 5: EXECUTE — VaughnMartin Compass™',
     duration: 'Days 60-75',
     objective: 'Prove 12-minute coordinated response capability',
     activities: [
@@ -103,7 +103,7 @@ const phaseDetails = [
   },
   {
     id: 'advance',
-    title: 'Phase 6: ADVANCE (Execution OS Retrospect™)',
+    title: 'Phase 6: ADVANCE — VaughnMartin Retrospect™',
     duration: 'Days 75-90',
     objective: 'Capture learning and refine for continuous improvement',
     activities: [

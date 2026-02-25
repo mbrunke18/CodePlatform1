@@ -21,6 +21,7 @@ import {
   Award,
   FileText
 } from 'lucide-react';
+import { SubBrandLabel } from "@/components/SubBrandLabel";
 
 const workspaceTools = [
   {
@@ -112,7 +113,7 @@ export default function WorkspaceAdvance() {
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Retrospect Lab</h1>
                   <Badge className="bg-poise-gold/20 text-poise-gold border-poise-gold/30">
-                    Execution OS Retrospect™
+                    <SubBrandLabel name="Retrospect™" />
                   </Badge>
                 </div>
                 <p className="text-gray-800 dark:text-slate-300 mt-1">

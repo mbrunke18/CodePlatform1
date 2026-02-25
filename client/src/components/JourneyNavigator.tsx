@@ -15,6 +15,7 @@ import {
   ChevronRight,
   Clock
 } from 'lucide-react';
+import { SubBrandLabel, isSubBrand } from "@/components/SubBrandLabel";
 
 interface JourneyPhase {
   id: string;
@@ -67,7 +68,7 @@ const journeyPhases: JourneyPhase[] = [
     id: 'identify',
     number: 3,
     name: 'IDENTIFY',
-    subtitle: 'Execution OS Playbook™',
+    subtitle: 'Playbook™',
     description: 'Select playbooks, map stakeholders, and establish your strategic readiness baseline',
     timeline: 'Days 30-45',
     workspace: 'Playbook Factory',
@@ -82,7 +83,7 @@ const journeyPhases: JourneyPhase[] = [
     id: 'detect',
     number: 4,
     name: 'DETECT',
-    subtitle: 'Execution OS Signal™',
+    subtitle: 'Signal™',
     description: 'Configure AI-powered trigger monitoring and alert routing',
     timeline: 'Days 45-60',
     workspace: 'Signal Ops',
@@ -97,7 +98,7 @@ const journeyPhases: JourneyPhase[] = [
     id: 'execute',
     number: 5,
     name: 'EXECUTE',
-    subtitle: 'Execution OS Compass™',
+    subtitle: 'Compass™',
     description: 'Run practice drills and prove 12-minute response capability',
     timeline: 'Days 60-75',
     workspace: 'Compass Command',
@@ -112,7 +113,7 @@ const journeyPhases: JourneyPhase[] = [
     id: 'advance',
     number: 6,
     name: 'ADVANCE',
-    subtitle: 'Execution OS Retrospect™',
+    subtitle: 'Retrospect™',
     description: 'Capture lessons learned and refine playbooks for continuous improvement',
     timeline: 'Days 75-90',
     workspace: 'Retrospect Lab',
@@ -173,7 +174,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
               <Badge className={`${current.bgColor} ${current.color} border-0`}>
                 {current.name}
               </Badge>
-              <span className="text-sm text-gray-600">{current.subtitle}</span>
+              <span className="text-sm text-gray-600">{isSubBrand(current.subtitle) ? <SubBrandLabel name={current.subtitle} size={13} /> : current.subtitle}</span>
             </div>
           </CardContent>
         </Card>

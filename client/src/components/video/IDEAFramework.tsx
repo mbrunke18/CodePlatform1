@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
 import { NarrationBox } from "./NarrationBox";
 import { ClipboardList, Radar, Play, TrendingUp, ArrowRight, LayoutDashboard } from "lucide-react";
+import { SubBrandLabel } from "@/components/SubBrandLabel";
 
 interface SceneProps {
   progress: number;
@@ -12,7 +13,7 @@ const phases = [
   { 
     id: "identify", 
     name: "IDENTIFY", 
-    module: "Execution OS Playbook™",
+    module: "Playbook™",
     icon: ClipboardList, 
     color: "#3B82F6",
     description: "Build your playbook library",
@@ -21,7 +22,7 @@ const phases = [
   { 
     id: "detect", 
     name: "DETECT", 
-    module: "Execution OS Signal™",
+    module: "Signal™",
     icon: Radar, 
     color: "#10B981",
     description: "AI detects triggers",
@@ -30,7 +31,7 @@ const phases = [
   { 
     id: "execute", 
     name: "EXECUTE", 
-    module: "Execution OS Compass™",
+    module: "Compass™",
     icon: Play, 
     color: "#F59E0B",
     description: "Coordinated response",
@@ -39,7 +40,7 @@ const phases = [
   { 
     id: "advance", 
     name: "ADVANCE", 
-    module: "Execution OS Retrospect™",
+    module: "Retrospect™",
     icon: TrendingUp, 
     color: "#8B5CF6",
     description: "Capture learning",
@@ -90,7 +91,7 @@ export function IDEAFramework({ progress }: SceneProps) {
                   <phase.icon className="w-7 h-7" style={{ color: phase.color }} />
                 </div>
                 <p className="text-gray-900 font-bold text-lg text-center">{phase.name}</p>
-                <p className="text-xs text-center mt-1" style={{ color: phase.color }}>{phase.module}</p>
+                <p className="text-xs text-center mt-1 flex items-center justify-center" style={{ color: phase.color }}><SubBrandLabel name={phase.module} size={11} /></p>
                 <p className="text-gray-700 text-xs text-center mt-2 max-w-[120px]">{phase.description}</p>
                 <motion.p 
                   initial={{ opacity: 0 }}

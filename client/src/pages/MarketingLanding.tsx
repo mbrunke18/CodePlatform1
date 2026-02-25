@@ -29,6 +29,7 @@ import CreateScenarioButton from "@/components/scenario/CreateScenarioButton";
 import DemoWelcomeScreen from "@/components/demo/DemoWelcomeScreen";
 import ExecutionTimelineDemo from "@/components/demo/ExecutionTimelineDemo";
 import InteractiveROICalculator from "@/components/demo/InteractiveROICalculator";
+import { SubBrandLabel } from "@/components/SubBrandLabel";
 
 export default function MarketingLanding() {
   const [, setLocation] = useLocation();
@@ -133,28 +134,28 @@ export default function MarketingLanding() {
                 <div className="grid md:grid-cols-4 gap-4 text-left">
                   <div className="bg-violet-500/20 rounded-lg p-4 border border-violet-400/30">
                     <Badge className="mb-2 bg-violet-500 text-gray-900 border-0 text-xs">IDENTIFY</Badge>
-                    <div className="text-violet-200 font-bold text-lg mb-1">Execution OS Playbook™</div>
+                    <div className="text-violet-200 font-bold text-lg mb-1"><SubBrandLabel name="Playbook™" /></div>
                     <p className="text-violet-100/80 text-xs">
                       170 pre-built playbooks across 9 strategic domains. Build your depth chart before events hit.
                     </p>
                   </div>
                   <div className="bg-blue-500/20 rounded-lg p-4 border border-blue-400/30">
                     <Badge className="mb-2 bg-blue-500 text-gray-900 border-0 text-xs">DETECT</Badge>
-                    <div className="text-blue-800 font-bold text-lg mb-1">Execution OS Signal™</div>
+                    <div className="text-blue-800 font-bold text-lg mb-1"><SubBrandLabel name="Signal™" /></div>
                     <p className="text-blue-800/80 text-xs">
                       AI-powered monitoring across 216 data points. Detect threats and opportunities before competitors.
                     </p>
                   </div>
                   <div className="bg-emerald-500/20 rounded-lg p-4 border border-emerald-400/30">
                     <Badge className="mb-2 bg-emerald-500 text-gray-900 border-0 text-xs">EXECUTE</Badge>
-                    <div className="text-emerald-200 font-bold text-lg mb-1">Execution OS Compass™</div>
+                    <div className="text-emerald-200 font-bold text-lg mb-1"><SubBrandLabel name="Compass™" /></div>
                     <p className="text-emerald-100/80 text-xs">
                       12-minute coordinated execution. Stakeholders, budgets, and actions—automatically orchestrated.
                     </p>
                   </div>
                   <div className="bg-amber-500/20 rounded-lg p-4 border border-amber-400/30">
                     <Badge className="mb-2 bg-amber-500 text-gray-900 border-0 text-xs">ADVANCE</Badge>
-                    <div className="text-[#C9A84C] font-bold text-lg mb-1">Execution OS Retrospect™</div>
+                    <div className="text-[#C9A84C] font-bold text-lg mb-1"><SubBrandLabel name="Retrospect™" /></div>
                     <p className="text-[#C9A84C]/80 text-xs">
                       Capture lessons, refine playbooks. Every execution makes your organization smarter.
                     </p>

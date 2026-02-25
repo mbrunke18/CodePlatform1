@@ -38,6 +38,7 @@ import {
 } from 'lucide-react';
 import PageLayout from '@/components/layout/PageLayout';
 import { BrandStamp } from "@/components/BrandStamp";
+import { SubBrandLabel } from "@/components/SubBrandLabel";
 
 interface CoordinationEvent {
   id: string;
@@ -286,7 +287,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
             <div className="max-w-2xl">
               <div className="flex items-center gap-2 mb-3">
                 <Badge className="bg-poise-teal/20 text-poise-teal border border-poise-teal/40 text-xs font-semibold">
-                  Execution OS Compass™
+                  <SubBrandLabel name="Compass™" />
                 </Badge>
                 <Badge variant="outline" className="border-slate-600 text-gray-800 text-xs">
                   <Clock className="w-3 h-3 mr-1" />

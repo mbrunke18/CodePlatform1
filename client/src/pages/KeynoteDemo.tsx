@@ -12,6 +12,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { BrandStamp } from "@/components/BrandStamp";
+import { SubBrandLabel } from "@/components/SubBrandLabel";
 
 interface FeedItem {
   id: string;
@@ -772,10 +773,10 @@ export default function KeynoteDemo() {
 
         <div className="grid grid-cols-4 gap-6 max-w-6xl w-full">
           {[
-            { phase: 'IDENTIFY', subtitle: 'Execution OS Playbook', icon: BookOpen, color: 'from-blue-600 to-blue-800', border: 'border-blue-500/30', items: ['170 strategic playbooks', '9 domains: Offense, Defense, Special Teams', 'Customizable task sequences', 'Pre-approved budget allocation', 'Role-based stakeholder mapping'] },
-            { phase: 'DETECT', subtitle: 'Execution OS Signal', icon: Radio, color: 'from-amber-600 to-amber-800', border: 'border-amber-500/30', items: ['AI-powered signal monitoring', '100+ data points tracked', 'Pattern recognition engine', 'Early warning dashboard', 'Human-triggered activation'] },
-            { phase: 'EXECUTE', subtitle: 'Execution OS Compass', icon: Zap, color: 'from-green-600 to-green-800', border: 'border-green-500/30', items: ['12-minute coordination', '30+ enterprise integrations', 'Automated task creation', 'War room orchestration', 'Real-time stakeholder tracking'] },
-            { phase: 'ADVANCE', subtitle: 'Execution OS Retrospect', icon: TrendingUp, color: 'from-purple-600 to-purple-800', border: 'border-purple-500/30', items: ['Institutional learning', 'AI-powered outcome analysis', 'Playbook refinement', 'Performance benchmarking', 'Continuous improvement loop'] },
+            { phase: 'IDENTIFY', subtitle: 'Playbook™', icon: BookOpen, color: 'from-blue-600 to-blue-800', border: 'border-blue-500/30', items: ['170 strategic playbooks', '9 domains: Offense, Defense, Special Teams', 'Customizable task sequences', 'Pre-approved budget allocation', 'Role-based stakeholder mapping'] },
+            { phase: 'DETECT', subtitle: 'Signal™', icon: Radio, color: 'from-amber-600 to-amber-800', border: 'border-amber-500/30', items: ['AI-powered signal monitoring', '100+ data points tracked', 'Pattern recognition engine', 'Early warning dashboard', 'Human-triggered activation'] },
+            { phase: 'EXECUTE', subtitle: 'Compass™', icon: Zap, color: 'from-green-600 to-green-800', border: 'border-green-500/30', items: ['12-minute coordination', '30+ enterprise integrations', 'Automated task creation', 'War room orchestration', 'Real-time stakeholder tracking'] },
+            { phase: 'ADVANCE', subtitle: 'Retrospect™', icon: TrendingUp, color: 'from-purple-600 to-purple-800', border: 'border-purple-500/30', items: ['Institutional learning', 'AI-powered outcome analysis', 'Playbook refinement', 'Performance benchmarking', 'Continuous improvement loop'] },
           ].map((phase, i) => (
             <motion.div
               key={i}
@@ -787,7 +788,7 @@ export default function KeynoteDemo() {
               <div className={`bg-gradient-to-br ${phase.color} p-6 text-center`}>
                 <phase.icon className="h-10 w-10 text-gray-900 mx-auto mb-3" />
                 <h3 className="text-2xl font-bold text-gray-900">{phase.phase}</h3>
-                <p className="text-gray-900/70 text-sm">{phase.subtitle}</p>
+                <p className="text-gray-900/70 text-sm flex items-center justify-center gap-1"><SubBrandLabel name={phase.subtitle} size={12} /></p>
               </div>
               <div className="p-5 space-y-2">
                 {phase.items.map((item, j) => (

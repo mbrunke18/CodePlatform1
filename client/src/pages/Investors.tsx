@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 import { BrandStamp } from "@/components/BrandStamp";
+import { SubBrandLabel } from "@/components/SubBrandLabel";
 
 const scenarioComparisons = [
   {
@@ -406,7 +407,7 @@ export default function Investors() {
                     {phase.phase[0]}
                   </div>
                   <p className="text-gray-900 font-bold mb-1">{phase.phase}</p>
-                  <p className="text-[#D4AF37] text-xs mb-2">{phase.module}</p>
+                  <p className="text-[#D4AF37] text-xs mb-2 flex items-center justify-center"><SubBrandLabel name={phase.module} size={11} /></p>
                   <p className="text-gray-900/50 text-xs">{phase.desc}</p>
                 </div>
               ))}

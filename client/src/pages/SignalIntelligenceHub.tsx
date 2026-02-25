@@ -58,6 +58,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'wouter';
 import { SIGNAL_CATEGORIES, type SignalCategory, type DataPoint } from '@shared/intelligence-signals';
+import { SubBrandLabel } from "@/components/SubBrandLabel";
 
 const iconMap: Record<string, any> = {
   Swords, TrendingUp, DollarSign, Scale, Truck, Heart, Users, Cpu, 
@@ -1307,7 +1308,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <Badge className="bg-poise-teal/20 text-poise-teal dark:bg-poise-teal/30 dark:text-poise-teal border border-poise-teal/40 text-xs font-semibold">
-                    Execution OS Signal™
+                    <SubBrandLabel name="Signal™" />
                   </Badge>
                   <Badge variant="outline" className="border-poise-gold/40 text-poise-gold text-xs">
                     DETECT Phase

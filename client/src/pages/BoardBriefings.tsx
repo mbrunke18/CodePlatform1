@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { FileText, Download, Calendar, CheckCircle, TrendingUp, Award, AlertTriangle, Brain, Target, Clock, Zap } from 'lucide-react';
+import { SubBrandLabel } from "@/components/SubBrandLabel";
 
 const demoBriefings = [
   {
@@ -319,7 +320,7 @@ export default function BoardBriefings() {
               AI-Generated Strategic Recommendations
             </CardTitle>
             <Badge className="bg-purple-600/20 text-purple-400 border border-purple-500/40 text-xs font-semibold">
-              Execution OS Retrospect™
+              <SubBrandLabel name="Retrospect™" />
             </Badge>
           </div>
           <CardDescription>Data-driven recommendations based on cross-functional intelligence analysis</CardDescription>

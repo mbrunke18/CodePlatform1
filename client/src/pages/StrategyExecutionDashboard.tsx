@@ -352,7 +352,7 @@ export default function StrategyExecutionDashboard() {
                     <Telescope className="h-5 w-5 text-emerald-500" />
                     Emerging Signals
                   </CardTitle>
-                  <CardDescription>Early warnings detected by Execution OS Signal</CardDescription>
+                  <CardDescription>Early warnings detected by VaughnMartin Signal™</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
