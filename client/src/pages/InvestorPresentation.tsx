@@ -82,7 +82,7 @@ function InvestorPresentation() {
           <span className="font-semibold text-gray-900">Martin Brunke</span>
           <span>, Founder & CEO</span>
           <span className="mx-2">|</span>
-          <span className="text-teal-400">martinbrunke@executeiq.io</span>
+          <span className="text-teal-400">mbrunke@vaughnmartin.com</span>
         </div>
       </div>
     ),
@@ -749,7 +749,7 @@ function InvestorPresentation() {
         </p>
         <div className="flex items-center gap-4 text-gray-800">
           <Mail className="w-5 h-5 text-teal-400" />
-          <span className="text-teal-400 font-medium">martinbrunke@executeiq.io</span>
+          <span className="text-teal-400 font-medium">mbrunke@vaughnmartin.com</span>
           <span className="mx-2">|</span>
           <span className="text-teal-400 font-medium">executeiq.io</span>
         </div>

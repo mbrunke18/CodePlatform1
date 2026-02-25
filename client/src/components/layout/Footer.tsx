@@ -190,10 +190,10 @@ export default function Footer() {
                 www.executeiq.io
               </a>
               <a 
-                href="mailto:martinbrunke@executeiq.io"
+                href="mailto:mbrunke@vaughnmartin.com"
                 className="text-sm text-slate-300 hover:text-white transition-colors"
               >
-                martinbrunke@executeiq.io
+                mbrunke@vaughnmartin.com
               </a>
               <button 
                 onClick={() => navigateTo('/try-demo')}

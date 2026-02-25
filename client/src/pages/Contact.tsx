@@ -346,8 +346,8 @@ export default function Contact() {
             Reach out directly or learn more about program structure and success metrics.
           </p>
           <div className="flex flex-wrap justify-center gap-6 mb-8">
-            <a href="mailto:martinbrunke@executeiq.io" className="text-lg font-medium text-blue-800 dark:text-blue-400 hover:underline">
-              martinbrunke@executeiq.io
+            <a href="mailto:mbrunke@vaughnmartin.com" className="text-lg font-medium text-blue-800 dark:text-blue-400 hover:underline">
+              mbrunke@vaughnmartin.com
             </a>
             <a href="https://www.executeiq.io" target="_blank" rel="noopener noreferrer" className="text-lg font-medium text-blue-800 dark:text-blue-400 hover:underline">
               www.executeiq.io
