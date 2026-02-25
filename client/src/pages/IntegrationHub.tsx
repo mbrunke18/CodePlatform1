@@ -42,7 +42,8 @@ import { BrandStamp } from "@/components/BrandStamp";
 interface Integration {
   id: string;
   name: string;
-  category: 'crm' | 'erp' | 'analytics' | 'communication' | 'security' | 'productivity' | 'financial';
+  category: 'crm' | 'erp' | 'analytics' | 'communication' | 'security' | 'productivity' | 'financial' | 'project-tracking' | 'itsm' | 'documentation' | 'source-control';
+  comingSoon?: boolean;
   status: 'active' | 'inactive' | 'error' | 'pending';
   description: string;
   provider: string;
@@ -313,7 +314,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
       {
         id: 'int-007',
         name: 'Jira Project Management',
-        category: 'productivity',
+        category: 'project-tracking',
         status: 'active',
         description: 'Agile project management and execution plan tracking',
         provider: 'Atlassian',
@@ -376,7 +377,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
       {
         id: 'int-010',
         name: 'ServiceNow ITSM',
-        category: 'productivity',
+        category: 'itsm',
         status: 'active',
         description: 'IT Service Management and workflow orchestration',
         provider: 'ServiceNow',
@@ -435,6 +436,118 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
           syncFrequency: '5 minutes',
           dataMapping: ['users', 'groups', 'organizational_units', 'policies']
         }
+      },
+      {
+        id: 'int-013', name: 'Azure DevOps', category: 'project-tracking', status: 'pending', comingSoon: true,
+        description: 'Microsoft project tracking, pipelines, and work item management', provider: 'Microsoft', version: '2024',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Work Items', 'Boards', 'Pipelines', 'Repos', 'Test Plans'],
+        configuration: { syncFrequency: 'real-time', dataMapping: ['work_items', 'pipelines', 'repos'] }
+      },
+      {
+        id: 'int-014', name: 'Asana', category: 'project-tracking', status: 'pending', comingSoon: true,
+        description: 'Work management and project tracking platform', provider: 'Asana', version: '2.0',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Tasks', 'Projects', 'Portfolios', 'Goals', 'Workload'],
+        configuration: { syncFrequency: 'real-time', dataMapping: ['tasks', 'projects', 'portfolios'] }
+      },
+      {
+        id: 'int-015', name: 'Monday.com', category: 'project-tracking', status: 'pending', comingSoon: true,
+        description: 'Work OS for project and team management', provider: 'Monday.com', version: '2.0',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Boards', 'Items', 'Automations', 'Dashboards', 'Integrations'],
+        configuration: { syncFrequency: 'real-time', dataMapping: ['boards', 'items', 'updates'] }
+      },
+      {
+        id: 'int-016', name: 'Linear', category: 'project-tracking', status: 'pending', comingSoon: true,
+        description: 'Modern issue tracking and project management for engineering teams', provider: 'Linear', version: '1.0',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Issues', 'Cycles', 'Projects', 'Roadmaps', 'Triage'],
+        configuration: { syncFrequency: 'real-time', dataMapping: ['issues', 'cycles', 'projects'] }
+      },
+      {
+        id: 'int-017', name: 'Shortcut', category: 'project-tracking', status: 'pending', comingSoon: true,
+        description: 'Collaborative project management for software teams', provider: 'Shortcut', version: '1.0',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Stories', 'Epics', 'Sprints', 'Roadmap', 'Reports'],
+        configuration: { syncFrequency: 'real-time', dataMapping: ['stories', 'epics', 'iterations'] }
+      },
+      {
+        id: 'int-018', name: 'Microsoft Teams', category: 'communication', status: 'pending', comingSoon: true,
+        description: 'Enterprise communication, meetings, and collaboration platform', provider: 'Microsoft', version: '2.0',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Channels', 'Meetings', 'Chat', 'Apps', 'File Sharing'],
+        configuration: { syncFrequency: 'real-time', dataMapping: ['messages', 'channels', 'meetings'] }
+      },
+      {
+        id: 'int-019', name: 'Google Chat', category: 'communication', status: 'pending', comingSoon: true,
+        description: 'Google Workspace messaging and collaboration', provider: 'Google', version: '1.0',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Spaces', 'Direct Messages', 'Bots', 'Threads', 'File Sharing'],
+        configuration: { syncFrequency: 'real-time', dataMapping: ['messages', 'spaces', 'threads'] }
+      },
+      {
+        id: 'int-020', name: 'Microsoft Dynamics 365', category: 'crm', status: 'pending', comingSoon: true,
+        description: 'Enterprise CRM and ERP platform for sales, service, and operations', provider: 'Microsoft', version: '2024',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Sales', 'Customer Service', 'Field Service', 'Marketing', 'Finance'],
+        configuration: { syncFrequency: '15 minutes', dataMapping: ['accounts', 'contacts', 'opportunities', 'cases'] }
+      },
+      {
+        id: 'int-021', name: 'Jira Service Management', category: 'itsm', status: 'pending', comingSoon: true,
+        description: 'ITSM, incident management, and service desk', provider: 'Atlassian', version: '5.0',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Incidents', 'Service Requests', 'Change Management', 'SLAs', 'Knowledge Base'],
+        configuration: { syncFrequency: 'real-time', dataMapping: ['incidents', 'requests', 'changes', 'problems'] }
+      },
+      {
+        id: 'int-022', name: 'Zendesk', category: 'itsm', status: 'pending', comingSoon: true,
+        description: 'Customer service and IT support ticketing platform', provider: 'Zendesk', version: '2.0',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Tickets', 'Help Center', 'Automation', 'Reporting', 'AI Agents'],
+        configuration: { syncFrequency: '10 minutes', dataMapping: ['tickets', 'users', 'organizations'] }
+      },
+      {
+        id: 'int-023', name: 'Confluence', category: 'documentation', status: 'pending', comingSoon: true,
+        description: 'Team knowledge base and documentation wiki', provider: 'Atlassian', version: '8.0',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Pages', 'Spaces', 'Templates', 'Version History', 'Permissions'],
+        configuration: { syncFrequency: 'hourly', dataMapping: ['pages', 'spaces', 'attachments'] }
+      },
+      {
+        id: 'int-024', name: 'Notion', category: 'documentation', status: 'pending', comingSoon: true,
+        description: 'All-in-one workspace for notes, docs, and project wikis', provider: 'Notion', version: '2.0',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Pages', 'Databases', 'Templates', 'AI', 'Collaboration'],
+        configuration: { syncFrequency: 'hourly', dataMapping: ['pages', 'databases', 'blocks'] }
+      },
+      {
+        id: 'int-025', name: 'GitHub', category: 'source-control', status: 'pending', comingSoon: true,
+        description: 'Version control, code collaboration, and DevOps platform', provider: 'GitHub', version: '3.0',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Repositories', 'Pull Requests', 'Issues', 'Actions', 'Security'],
+        configuration: { syncFrequency: 'real-time', dataMapping: ['repos', 'pull_requests', 'issues', 'actions'] }
+      },
+      {
+        id: 'int-026', name: 'GitLab', category: 'source-control', status: 'pending', comingSoon: true,
+        description: 'Complete DevSecOps platform with source control and CI/CD', provider: 'GitLab', version: '16.0',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Repos', 'Merge Requests', 'CI/CD', 'Security', 'Monitoring'],
+        configuration: { syncFrequency: 'real-time', dataMapping: ['projects', 'merge_requests', 'pipelines'] }
+      },
+      {
+        id: 'int-027', name: 'Azure Repos', category: 'source-control', status: 'pending', comingSoon: true,
+        description: 'Microsoft Git repositories within Azure DevOps', provider: 'Microsoft', version: '2024',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Git Repos', 'Pull Requests', 'Branch Policies', 'Code Review', 'History'],
+        configuration: { syncFrequency: 'real-time', dataMapping: ['repos', 'pull_requests', 'commits'] }
+      },
+      {
+        id: 'int-028', name: 'Bitbucket', category: 'source-control', status: 'pending', comingSoon: true,
+        description: 'Atlassian Git solution with Jira integration', provider: 'Atlassian', version: '8.0',
+        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Repos', 'Pull Requests', 'Pipelines', 'Deployments', 'Jira Integration'],
+        configuration: { syncFrequency: 'real-time', dataMapping: ['repos', 'pull_requests', 'pipelines'] }
       }
     ];
 
@@ -560,14 +673,18 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case 'crm': return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
-      case 'erp': return 'bg-purple-500/20 text-purple-300 border-purple-500/30';
-      case 'analytics': return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
-      case 'communication': return 'bg-pink-500/20 text-pink-300 border-pink-500/30';
-      case 'security': return 'bg-red-500/20 text-red-300 border-red-500/30';
-      case 'productivity': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
-      case 'financial': return 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30';
-      default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
+      case 'crm': return 'bg-blue-100 text-blue-700 border-blue-300';
+      case 'erp': return 'bg-purple-100 text-purple-700 border-purple-300';
+      case 'analytics': return 'bg-emerald-100 text-emerald-700 border-emerald-300';
+      case 'communication': return 'bg-pink-100 text-pink-700 border-pink-300';
+      case 'security': return 'bg-red-100 text-red-700 border-red-300';
+      case 'productivity': return 'bg-amber-100 text-amber-700 border-amber-300';
+      case 'financial': return 'bg-indigo-100 text-indigo-700 border-indigo-300';
+      case 'project-tracking': return 'bg-violet-100 text-violet-700 border-violet-300';
+      case 'itsm': return 'bg-orange-100 text-orange-700 border-orange-300';
+      case 'documentation': return 'bg-teal-100 text-teal-700 border-teal-300';
+      case 'source-control': return 'bg-gray-100 text-gray-700 border-gray-300';
+      default: return 'bg-slate-100 text-gray-700 border-slate-300';
     }
   };
 
@@ -773,13 +890,17 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Categories</SelectItem>
-                  <SelectItem value="crm">CRM</SelectItem>
-                  <SelectItem value="erp">ERP</SelectItem>
-                  <SelectItem value="analytics">Analytics</SelectItem>
+                  <SelectItem value="project-tracking">Project Tracking</SelectItem>
                   <SelectItem value="communication">Communication</SelectItem>
-                  <SelectItem value="security">Security</SelectItem>
+                  <SelectItem value="crm">CRM</SelectItem>
+                  <SelectItem value="itsm">IT Service Management</SelectItem>
+                  <SelectItem value="documentation">Documentation</SelectItem>
+                  <SelectItem value="source-control">Source Control</SelectItem>
                   <SelectItem value="productivity">Productivity</SelectItem>
+                  <SelectItem value="security">Security</SelectItem>
+                  <SelectItem value="analytics">Analytics</SelectItem>
                   <SelectItem value="financial">Financial</SelectItem>
+                  <SelectItem value="erp">ERP</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -860,6 +981,10 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                                   Disconnect
                                 </Button>
                               </>
+                            ) : integration.comingSoon ? (
+                              <Button size="sm" disabled className="flex-1 bg-gray-100 text-gray-500 border border-gray-300 cursor-not-allowed">
+                                Coming Soon
+                              </Button>
                             ) : (
                               <Button 
                                 size="sm" 
