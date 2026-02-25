@@ -9,7 +9,7 @@ interface SceneProps {
 
 export function Intro({ progress }: SceneProps) {
   return (
-    <div className="relative w-full h-full bg-gradient-to-br from-[#1A2B3D] via-[#0f1a26] to-[#0a0a0f] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-full bg-gradient-to-b from-gray-50 to-white flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         {[...Array(20)].map((_, i) => (
           <motion.div
@@ -74,7 +74,7 @@ export function Intro({ progress }: SceneProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
-          className="text-xl md:text-2xl text-white/70 max-w-xl mx-auto"
+          className="text-xl md:text-2xl text-gray-600 max-w-xl mx-auto"
         >
           17 independent reports from 15 major firms confirm: execution infrastructure is the enterprise bottleneck.
         </motion.p>
@@ -94,19 +94,19 @@ export function Intro({ progress }: SceneProps) {
           transition={{ delay: 1.5 }}
           className="mt-6 flex flex-wrap justify-center gap-3 text-xs"
         >
-          <span className="px-3 py-1 bg-white/5 border border-white/20 rounded-full text-white/60">
+          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-500">
             M&A Integration
           </span>
-          <span className="px-3 py-1 bg-white/5 border border-white/20 rounded-full text-white/60">
+          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-500">
             Crisis Response
           </span>
-          <span className="px-3 py-1 bg-white/5 border border-white/20 rounded-full text-white/60">
+          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-500">
             Compound Disruption
           </span>
-          <span className="px-3 py-1 bg-white/5 border border-white/20 rounded-full text-white/60">
+          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-500">
             Competitive Moves
           </span>
-          <span className="px-3 py-1 bg-white/5 border border-white/20 rounded-full text-white/60">
+          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-500">
             Regulatory Changes
           </span>
         </motion.div>
@@ -115,7 +115,7 @@ export function Intro({ progress }: SceneProps) {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 2 }}
-          className="mt-8 pt-6 border-t border-white/10"
+          className="mt-8 pt-6 border-t border-gray-200"
         >
           <p className="text-[#D4AF37] text-2xl font-bold">Trigger to Execution in 12 Minutes</p>
           <p className="text-[#00A8A8] text-sm mt-2">170 playbooks • 9 strategic domains • 50-200+ stakeholders coordinated</p>

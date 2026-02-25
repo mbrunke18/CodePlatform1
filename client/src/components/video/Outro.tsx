@@ -11,7 +11,7 @@ interface SceneProps {
 
 export function Outro({ progress }: SceneProps) {
   return (
-    <div className="relative w-full h-full bg-gradient-to-br from-[#1A2B3D] via-[#0f1a26] to-[#0a0a0f] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-full bg-gradient-to-b from-gray-50 to-white flex items-center justify-center overflow-hidden">
       <motion.div
         className="absolute inset-0"
         animate={{
@@ -68,7 +68,7 @@ export function Outro({ progress }: SceneProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
-          className="text-lg text-white/60 mb-4"
+          className="text-lg text-gray-500 mb-4"
         >
           From strategic trigger to coordinated execution in 12 minutes.
         </motion.p>
@@ -114,7 +114,7 @@ export function Outro({ progress }: SceneProps) {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white/10 hover:bg-white/20 text-white font-medium px-8 py-4 rounded-full flex items-center gap-3 border border-white/20"
+              className="bg-gray-100 hover:bg-gray-100 text-white font-medium px-8 py-4 rounded-full flex items-center gap-3 border border-gray-200"
             >
               <Calendar className="w-5 h-5" />
               Start Pilot
@@ -126,17 +126,17 @@ export function Outro({ progress }: SceneProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.8 }}
-          className="mt-10 pt-6 border-t border-white/10"
+          className="mt-10 pt-6 border-t border-gray-200"
         >
-          <p className="text-white/50 text-xs uppercase tracking-wider mb-3">Investor Ready</p>
+          <p className="text-gray-500 text-xs uppercase tracking-wider mb-3">Investor Ready</p>
           <div className="flex items-center justify-center gap-6 text-sm">
             <span className="text-[#D4AF37]">18-month head start</span>
-            <span className="text-white/30">•</span>
+            <span className="text-gray-400">•</span>
             <span className="text-[#00A8A8]">170 playbooks</span>
-            <span className="text-white/30">•</span>
-            <span className="text-white">17 reports validate the gap</span>
+            <span className="text-gray-400">•</span>
+            <span className="text-gray-900">17 reports validate the gap</span>
           </div>
-          <p className="text-white/40 text-xs mt-4">
+          <p className="text-gray-400 text-xs mt-4">
             $13-20B TAM • Fortune 1000 target • Compound disruption ready
           </p>
         </motion.div>

@@ -17,7 +17,7 @@ const metrics = [
 
 export function MetricsDemo({ progress }: SceneProps) {
   return (
-    <div className="relative w-full h-full bg-gradient-to-br from-[#1A2B3D] via-[#0f1a26] to-[#0a0a0f] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-full bg-gradient-to-b from-gray-50 to-white flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 opacity-30">
         {[...Array(50)].map((_, i) => (
           <motion.div
@@ -44,12 +44,12 @@ export function MetricsDemo({ progress }: SceneProps) {
         >
           <div className="text-center">
             <p className="text-red-400 text-4xl font-bold line-through opacity-60">Days</p>
-            <p className="text-white/40 text-sm">Traditional Response</p>
+            <p className="text-gray-400 text-sm">Traditional Response</p>
           </div>
           <ArrowRight className="w-8 h-8 text-[#D4AF37]" />
           <div className="text-center">
             <p className="text-[#D4AF37] text-4xl font-bold">Minutes</p>
-            <p className="text-white/40 text-sm">With Execution OS</p>
+            <p className="text-gray-400 text-sm">With Execution OS</p>
           </div>
         </motion.div>
 
@@ -60,7 +60,7 @@ export function MetricsDemo({ progress }: SceneProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 + i * 0.15 }}
-              className="bg-white/5 border border-white/10 rounded-xl p-4 text-center"
+              className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center"
             >
               <motion.div
                 initial={{ scale: 0 }}
@@ -83,7 +83,7 @@ export function MetricsDemo({ progress }: SceneProps) {
               </motion.p>
               
               <p className="text-white font-medium text-xs mb-1">{metric.label}</p>
-              <p className="text-white/40 text-xs">{metric.subtext}</p>
+              <p className="text-gray-400 text-xs">{metric.subtext}</p>
             </motion.div>
           ))}
         </div>
@@ -94,20 +94,20 @@ export function MetricsDemo({ progress }: SceneProps) {
           transition={{ delay: 1.3 }}
           className="mt-8 text-center"
         >
-          <p className="text-white/50 text-sm mb-2">Validated by 17 independent reports from 15 leading firms</p>
+          <p className="text-gray-500 text-sm mb-2">Validated by 17 independent reports from 15 leading firms</p>
           <div className="flex items-center justify-center gap-4 flex-wrap">
             <span className="text-[#D4AF37] font-medium">McKinsey</span>
-            <span className="text-white/30">•</span>
+            <span className="text-gray-400">•</span>
             <span className="text-[#00A8A8] font-medium">IBM</span>
-            <span className="text-white/30">•</span>
+            <span className="text-gray-400">•</span>
             <span className="text-white font-medium">BCG</span>
-            <span className="text-white/30">•</span>
+            <span className="text-gray-400">•</span>
             <span className="text-purple-400 font-medium">Deloitte</span>
-            <span className="text-white/30">•</span>
+            <span className="text-gray-400">•</span>
             <span className="text-sky-400 font-medium">Microsoft</span>
-            <span className="text-white/30">•</span>
+            <span className="text-gray-400">•</span>
             <span className="text-emerald-400 font-medium">Google Cloud</span>
-            <span className="text-white/30">•</span>
+            <span className="text-gray-400">•</span>
             <span className="text-amber-400 font-medium">+ 9 more</span>
           </div>
         </motion.div>

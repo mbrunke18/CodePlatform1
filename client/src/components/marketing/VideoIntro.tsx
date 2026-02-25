@@ -79,8 +79,8 @@ export default function VideoIntro({ onComplete, onSkip }: VideoIntroProps) {
   const overallPercent = (overallProgress / totalDuration) * 100;
 
   return (
-    <div className="fixed inset-0 z-[100] bg-[#0a0a0f] text-white overflow-hidden">
-      <div className="absolute inset-0 bg-[#0a0a0f]">
+    <div className="fixed inset-0 z-[100] bg-white text-gray-900 overflow-hidden">
+      <div className="absolute inset-0 bg-white">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentScene}
@@ -99,7 +99,7 @@ export default function VideoIntro({ onComplete, onSkip }: VideoIntroProps) {
         onClick={onSkip}
         variant="ghost"
         size="lg"
-        className="fixed top-6 right-6 z-[110] text-white/70 hover:text-white hover:bg-white/10 gap-2 text-lg"
+        className="fixed top-6 right-6 z-[110] text-gray-500 hover:text-gray-900 hover:bg-gray-100 gap-2 text-lg"
       >
         <SkipForward className="w-5 h-5" />
         Skip to Site
@@ -113,12 +113,12 @@ export default function VideoIntro({ onComplete, onSkip }: VideoIntroProps) {
               key={scene.id}
               className={`h-1 rounded-full transition-all ${
                 idx === currentScene ? "bg-[#D4AF37] w-4" : 
-                idx < currentScene ? "bg-[#D4AF37]/50 w-1.5" : "bg-white/20 w-1.5"
+                idx < currentScene ? "bg-[#D4AF37]/50 w-1.5" : "bg-gray-100 w-1.5"
               }`}
             />
           ))}
         </div>
-        <span className="text-xs text-white/40 font-mono ml-1">
+        <span className="text-xs text-gray-400 font-mono ml-1">
           {Math.floor(overallProgress / 1000)}s
         </span>
       </div>
@@ -128,7 +128,7 @@ export default function VideoIntro({ onComplete, onSkip }: VideoIntroProps) {
         variant="ghost"
         size="sm"
         onClick={() => setIsMuted(!isMuted)}
-        className="absolute bottom-4 right-4 z-30 text-white/40 hover:text-white hover:bg-white/10 opacity-40 hover:opacity-100 transition-opacity h-8 w-8 p-0"
+        className="absolute bottom-4 right-4 z-30 text-gray-400 hover:text-gray-900 hover:bg-gray-100 opacity-40 hover:opacity-100 transition-opacity h-8 w-8 p-0"
       >
         {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
       </Button>

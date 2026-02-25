@@ -28,10 +28,10 @@ export function FakeRoleAssignment({ name, role, task, avatar, delay = 0, status
       initial={{ opacity: 0, x: -30 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay, duration: 0.4 }}
-      className="bg-white/5 border border-white/10 rounded-lg p-4 flex items-center gap-4"
+      className="bg-gray-50 border border-gray-200 rounded-lg p-4 flex items-center gap-4"
     >
       <div className="relative">
-        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1A2B3D] to-[#2a3b4d] flex items-center justify-center text-lg font-bold text-white">
+        <div className="w-12 h-12 rounded-full bg-poise-navy flex items-center justify-center text-lg font-bold text-white">
           {avatar}
         </div>
         <motion.div
@@ -50,10 +50,10 @@ export function FakeRoleAssignment({ name, role, task, avatar, delay = 0, status
       
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2">
-          <h4 className="text-white font-medium text-sm">{name}</h4>
+          <h4 className="text-gray-900 font-medium text-sm">{name}</h4>
           <span className="text-[#D4AF37] text-xs">{role}</span>
         </div>
-        <p className="text-white/50 text-xs truncate">{task}</p>
+        <p className="text-gray-500 text-xs truncate">{task}</p>
       </div>
 
       <motion.div

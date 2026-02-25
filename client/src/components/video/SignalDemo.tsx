@@ -20,7 +20,7 @@ export function SignalDemo({ progress }: SceneProps) {
   const showTrigger = progress > 0.7;
 
   return (
-    <div className="relative w-full h-full bg-gradient-to-br from-[#1A2B3D] via-[#0f1a26] to-[#0a0a0f] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-full bg-gradient-to-b from-gray-50 to-white flex items-center justify-center overflow-hidden">
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.1, 0.3] }}
@@ -40,17 +40,17 @@ export function SignalDemo({ progress }: SceneProps) {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex items-center justify-center gap-8 mb-6 bg-white/5 rounded-xl p-3"
+          className="flex items-center justify-center gap-8 mb-6 bg-gray-50 rounded-xl p-3"
         >
           <div className="flex items-center gap-2">
             <Clock className="w-4 h-4 text-[#D4AF37]" />
-            <span className="text-white/70 text-sm">Without Execution OS:</span>
+            <span className="text-gray-600 text-sm">Without Execution OS:</span>
             <span className="text-red-400 font-bold">Days to notice</span>
           </div>
-          <div className="w-px h-6 bg-white/20" />
+          <div className="w-px h-6 bg-gray-100" />
           <div className="flex items-center gap-2">
             <Zap className="w-4 h-4 text-[#00A8A8]" />
-            <span className="text-white/70 text-sm">With Execution OS:</span>
+            <span className="text-gray-600 text-sm">With Execution OS:</span>
             <span className="text-[#00A8A8] font-bold">Real-time detection</span>
           </div>
         </motion.div>
@@ -66,7 +66,7 @@ export function SignalDemo({ progress }: SceneProps) {
                 <Radar className="w-5 h-5 text-[#00A8A8]" />
               </motion.div>
               <div>
-                <TextPunch text="Signal Intelligence" size="sm" className="text-white" />
+                <TextPunch text="Signal Intelligence" size="sm" className="text-gray-900" />
                 <p className="text-[#00A8A8] text-xs">Monitoring 50+ data sources</p>
               </div>
             </div>
@@ -78,17 +78,17 @@ export function SignalDemo({ progress }: SceneProps) {
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: i < detectedCount ? 1 : 0, x: i < detectedCount ? 0 : -30 }}
                   transition={{ delay: 0.3 + i * 0.3 }}
-                  className={`bg-white/5 border rounded-lg p-3 ${
+                  className={`bg-gray-50 border rounded-lg p-3 ${
                     signal.severity === "high" ? "border-red-500/50" :
-                    signal.severity === "medium" ? "border-amber-500/50" : "border-white/20"
+                    signal.severity === "medium" ? "border-amber-500/50" : "border-gray-200"
                   }`}
                 >
                   <div className="flex items-start gap-3">
-                    <Globe className="w-4 h-4 text-white/40 mt-1 flex-shrink-0" />
+                    <Globe className="w-4 h-4 text-gray-400 mt-1 flex-shrink-0" />
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between">
                         <span className="text-xs text-[#00A8A8]">{signal.source}</span>
-                        <span className="text-xs text-white/40">{signal.time}</span>
+                        <span className="text-xs text-gray-400">{signal.time}</span>
                       </div>
                       <p className="text-white text-xs mt-1 truncate">{signal.message}</p>
                       <span className="text-[#D4AF37] text-xs font-medium">{signal.impact}</span>

@@ -51,7 +51,7 @@ export function IDEAFramework({ progress }: SceneProps) {
   const activePhase = Math.min(Math.floor(progress * 4), 3);
 
   return (
-    <div className="relative w-full h-full bg-gradient-to-br from-[#1A2B3D] via-[#0f1a26] to-[#0a0a0f] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-full bg-gradient-to-b from-gray-50 to-white flex items-center justify-center overflow-hidden">
       <div className="relative z-10 max-w-6xl mx-auto px-8 w-full">
         <div className="text-center mb-12">
           <motion.p
@@ -61,7 +61,7 @@ export function IDEAFramework({ progress }: SceneProps) {
           >
             The IDEA Framework™
           </motion.p>
-          <TextPunch text="Four Phases. One System." size="lg" className="text-white" />
+          <TextPunch text="Four Phases. One System." size="lg" className="text-gray-900" />
         </div>
 
         <div className="flex items-center justify-center gap-4">
@@ -76,8 +76,8 @@ export function IDEAFramework({ progress }: SceneProps) {
               <motion.div
                 className={`relative p-6 rounded-2xl border-2 transition-all duration-500 ${
                   i <= activePhase 
-                    ? "bg-white/10 border-opacity-100" 
-                    : "bg-white/5 border-opacity-30"
+                    ? "bg-gray-100 border-opacity-100" 
+                    : "bg-gray-50 border-opacity-30"
                 }`}
                 style={{ borderColor: i <= activePhase ? phase.color : "rgba(255,255,255,0.1)" }}
                 animate={i === activePhase ? { scale: [1, 1.05, 1] } : {}}
@@ -89,9 +89,9 @@ export function IDEAFramework({ progress }: SceneProps) {
                 >
                   <phase.icon className="w-7 h-7" style={{ color: phase.color }} />
                 </div>
-                <p className="text-white font-bold text-lg text-center">{phase.name}</p>
+                <p className="text-gray-900 font-bold text-lg text-center">{phase.name}</p>
                 <p className="text-xs text-center mt-1" style={{ color: phase.color }}>{phase.module}</p>
-                <p className="text-white/50 text-xs text-center mt-2 max-w-[120px]">{phase.description}</p>
+                <p className="text-gray-500 text-xs text-center mt-2 max-w-[120px]">{phase.description}</p>
                 <motion.p 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: i <= activePhase ? 1 : 0 }}
@@ -122,14 +122,14 @@ export function IDEAFramework({ progress }: SceneProps) {
           transition={{ delay: 1.5 }}
           className="mt-10 flex flex-col items-center"
         >
-          <div className="flex items-center gap-3 bg-white/5 border border-[#D4AF37]/30 rounded-xl px-5 py-3">
+          <div className="flex items-center gap-3 bg-gray-50 border border-[#D4AF37]/30 rounded-xl px-5 py-3">
             <LayoutDashboard className="w-5 h-5 text-[#D4AF37]" />
             <div>
-              <p className="text-white text-sm font-medium">Execution OS One™</p>
-              <p className="text-white/50 text-xs">Unified command center for all 4 phases</p>
+              <p className="text-gray-900 text-sm font-medium">Execution OS One™</p>
+              <p className="text-gray-500 text-xs">Unified command center for all 4 phases</p>
             </div>
           </div>
-          <p className="text-center text-white/60 text-lg mt-4">
+          <p className="text-center text-gray-500 text-lg mt-4">
             "That's the <span className="text-[#D4AF37] font-bold">IDEA</span>."
           </p>
         </motion.div>

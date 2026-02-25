@@ -53,17 +53,17 @@ export function FakePlaybookCard({ title, domain, tasks, type, delay = 0, isActi
       )}
       
       <div className="flex items-start gap-3">
-        <div className={`w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center ${color.text}`}>
+        <div className={`w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center ${color.text}`}>
           <Icon className="w-5 h-5" />
         </div>
         <div className="flex-1 min-w-0">
-          <h4 className="text-white font-medium text-sm truncate">{title}</h4>
-          <p className="text-white/50 text-xs">{domain}</p>
+          <h4 className="text-gray-900 font-medium text-sm truncate">{title}</h4>
+          <p className="text-gray-500 text-xs">{domain}</p>
         </div>
       </div>
       
       <div className="mt-3 flex items-center justify-between text-xs">
-        <span className="text-white/40">{tasks} tasks</span>
+        <span className="text-gray-400">{tasks} tasks</span>
         <span className={color.text}>Ready</span>
       </div>
     </motion.div>

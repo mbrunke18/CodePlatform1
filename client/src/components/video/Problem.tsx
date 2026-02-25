@@ -40,7 +40,7 @@ const threeProblems = [
 
 export function Problem({ progress }: SceneProps) {
   return (
-    <div className="relative w-full h-full bg-gradient-to-br from-[#1a0a0a] via-[#0f0505] to-[#0a0a0f] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-full bg-white flex items-center justify-center overflow-hidden">
       <motion.div
         className="absolute inset-0 opacity-20"
         animate={{
@@ -64,7 +64,7 @@ export function Problem({ progress }: SceneProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="text-lg md:text-xl text-white/70 text-center mb-8"
+          className="text-lg md:text-xl text-gray-600 text-center mb-8"
         >
           Every Fortune 1000 company faces these problems. No infrastructure existed to solve them.
         </motion.p>
@@ -76,7 +76,7 @@ export function Problem({ progress }: SceneProps) {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 + i * 0.3 }}
-              className="bg-white/5 rounded-xl p-5 flex flex-col"
+              className="bg-gray-50 rounded-xl p-5 flex flex-col"
               style={{ borderLeft: `3px solid ${problem.color}` }}
             >
               <div className="flex items-center gap-3 mb-3">
@@ -86,9 +86,9 @@ export function Problem({ progress }: SceneProps) {
                 >
                   <problem.icon className="w-5 h-5" style={{ color: problem.color }} />
                 </div>
-                <h3 className="text-white font-bold text-sm">{problem.title}</h3>
+                <h3 className="text-gray-900 font-bold text-sm">{problem.title}</h3>
               </div>
-              <p className="text-white/70 text-xs leading-relaxed mb-3">{problem.pain}</p>
+              <p className="text-gray-600 text-xs leading-relaxed mb-3">{problem.pain}</p>
               <div 
                 className="mt-auto rounded-lg p-3"
                 style={{ backgroundColor: `${problem.color}10`, border: `1px solid ${problem.borderColor}` }}
@@ -97,7 +97,7 @@ export function Problem({ progress }: SceneProps) {
                   <DollarSign className="w-3.5 h-3.5" style={{ color: problem.color }} />
                   <span className="text-xs font-bold" style={{ color: problem.color }}>{problem.cost}</span>
                 </div>
-                <p className="text-white/50 text-xs">{problem.costDetail}</p>
+                <p className="text-gray-500 text-xs">{problem.costDetail}</p>
               </div>
             </motion.div>
           ))}
@@ -107,7 +107,7 @@ export function Problem({ progress }: SceneProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2 }}
-          className="text-lg text-white/60 text-center"
+          className="text-lg text-gray-500 text-center"
         >
           Strategy-execution gap costs Fortune 500 companies <span className="text-red-400 font-bold">$900B annually</span>.
         </motion.p>

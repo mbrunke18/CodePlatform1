@@ -28,15 +28,15 @@ export function IntegrationsDemo({ progress }: SceneProps) {
   const activeIntegration = Math.min(Math.floor(progress * 6), 5);
 
   return (
-    <div className="relative w-full h-full bg-gradient-to-br from-[#1A2B3D] via-[#0f1a26] to-[#0a0a0f] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-full bg-gradient-to-b from-gray-50 to-white flex items-center justify-center overflow-hidden">
       <div className="relative z-10 max-w-5xl mx-auto px-8 w-full">
         <div className="text-center mb-10">
-          <TextPunch text="Seamless Integration" size="lg" className="text-white mb-4" />
+          <TextPunch text="Seamless Integration" size="lg" className="text-gray-900 mb-4" />
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="text-white/60 text-lg"
+            className="text-gray-500 text-lg"
           >
             Execution OS connects to your existing tools
           </motion.p>
@@ -44,7 +44,7 @@ export function IntegrationsDemo({ progress }: SceneProps) {
 
         <div className="grid grid-cols-2 gap-8">
           <div>
-            <p className="text-white/50 text-sm font-medium mb-4">ENTERPRISE INTEGRATIONS</p>
+            <p className="text-gray-500 text-sm font-medium mb-4">ENTERPRISE INTEGRATIONS</p>
             <div className="space-y-3">
               {integrations.map((integration, i) => (
                 <motion.div
@@ -52,8 +52,8 @@ export function IntegrationsDemo({ progress }: SceneProps) {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4 + i * 0.15 }}
-                  className={`flex items-center gap-4 bg-white/5 border rounded-lg p-4 transition-all ${
-                    i < activeIntegration ? "border-green-500/50" : "border-white/10"
+                  className={`flex items-center gap-4 bg-gray-50 border rounded-lg p-4 transition-all ${
+                    i < activeIntegration ? "border-green-500/50" : "border-gray-200"
                   }`}
                 >
                   <div 
@@ -88,7 +88,7 @@ export function IntegrationsDemo({ progress }: SceneProps) {
           </div>
 
           <div className="flex flex-col justify-center">
-            <div className="bg-white/5 border border-[#D4AF37]/30 rounded-xl p-6">
+            <div className="bg-gray-50 border border-[#D4AF37]/30 rounded-xl p-6">
               <p className="text-[#D4AF37] font-bold text-lg mb-4">Automatic Actions</p>
               <div className="space-y-4">
                 {actions.map((action, i) => (
@@ -100,13 +100,13 @@ export function IntegrationsDemo({ progress }: SceneProps) {
                     className="flex items-center gap-3"
                   >
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                      progress > action.delay ? "bg-green-500/20" : "bg-white/10"
+                      progress > action.delay ? "bg-green-500/20" : "bg-gray-100"
                     }`}>
                       <action.icon className={`w-4 h-4 ${
-                        progress > action.delay ? "text-green-400" : "text-white/40"
+                        progress > action.delay ? "text-green-400" : "text-gray-400"
                       }`} />
                     </div>
-                    <span className={progress > action.delay ? "text-white" : "text-white/40"}>
+                    <span className={progress > action.delay ? "text-gray-900" : "text-gray-400"}>
                       {action.text}
                     </span>
                     {progress > action.delay && (
@@ -127,7 +127,7 @@ export function IntegrationsDemo({ progress }: SceneProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 2 }}
-              className="text-center text-white/60 text-sm mt-6"
+              className="text-center text-gray-500 text-sm mt-6"
             >
               All automated. All in <span className="text-[#D4AF37] font-bold">12 minutes</span>.
             </motion.p>

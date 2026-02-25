@@ -17,7 +17,7 @@ const capabilities = [
 
 export function Solution({ progress }: SceneProps) {
   return (
-    <div className="relative w-full h-full bg-gradient-to-br from-[#1A2B3D] via-[#0f1a26] to-[#0a0a0f] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-full bg-gradient-to-b from-gray-50 to-white flex items-center justify-center overflow-hidden">
       <motion.div
         className="absolute inset-0"
         initial={{ opacity: 0 }}
@@ -83,7 +83,7 @@ export function Solution({ progress }: SceneProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="mt-6 text-white/60 text-sm max-w-lg mx-auto"
+          className="mt-6 text-gray-500 text-sm max-w-lg mx-auto"
         >
           Governance pre-defined. Decision rights clear. 50-200+ stakeholders coordinated instantly. 170 playbooks ready—including compound disruption scenarios.
         </motion.div>
@@ -102,11 +102,11 @@ export function Solution({ progress }: SceneProps) {
               transition={{ delay: 1.4 + i * 0.1 }}
               className="text-center"
             >
-              <div className="w-10 h-10 mx-auto mb-2 rounded-lg bg-white/5 flex items-center justify-center">
+              <div className="w-10 h-10 mx-auto mb-2 rounded-lg bg-gray-50 flex items-center justify-center">
                 <cap.icon className="w-5 h-5 text-[#D4AF37]" />
               </div>
               <p className="text-white text-xs font-medium">{cap.label}</p>
-              <p className="text-white/40 text-xs">{cap.desc}</p>
+              <p className="text-gray-400 text-xs">{cap.desc}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -118,7 +118,7 @@ export function Solution({ progress }: SceneProps) {
           className="mt-8 inline-flex items-center gap-3 bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-full px-6 py-3"
         >
           <span className="text-[#D4AF37] font-bold text-xl">12 minutes</span>
-          <span className="text-white/70">from trigger to full execution</span>
+          <span className="text-gray-600">from trigger to full execution</span>
         </motion.div>
       </div>
       

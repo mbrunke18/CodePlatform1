@@ -27,15 +27,15 @@ export function StrategicDomains({ progress }: SceneProps) {
   const visibleCount = Math.min(Math.floor(progress * 10) + 1, 9);
 
   return (
-    <div className="relative w-full h-full bg-gradient-to-br from-[#1A2B3D] via-[#0f1a26] to-[#0a0a0f] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-full bg-gradient-to-b from-gray-50 to-white flex items-center justify-center overflow-hidden">
       <div className="relative z-10 max-w-5xl mx-auto px-8 w-full">
         <div className="text-center mb-10">
-          <TextPunch text="9 Strategic Domains" size="xl" className="text-white mb-4" />
+          <TextPunch text="9 Strategic Domains" size="xl" className="text-gray-900 mb-4" />
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="text-white/60 text-lg"
+            className="text-gray-500 text-lg"
           >
             Complete coverage across offense, defense, and special operations
           </motion.p>
@@ -54,7 +54,7 @@ export function StrategicDomains({ progress }: SceneProps) {
                   className="bg-green-500/10 border border-green-500/30 rounded-lg p-3 flex items-center gap-3"
                 >
                   <domain.icon className="w-5 h-5 text-green-400" />
-                  <span className="text-white text-sm">{domain.name}</span>
+                  <span className="text-gray-900 text-sm">{domain.name}</span>
                 </motion.div>
               ))}
             </div>
@@ -72,7 +72,7 @@ export function StrategicDomains({ progress }: SceneProps) {
                   className="bg-red-500/10 border border-red-500/30 rounded-lg p-3 flex items-center gap-3"
                 >
                   <domain.icon className="w-5 h-5 text-red-400" />
-                  <span className="text-white text-sm">{domain.name}</span>
+                  <span className="text-gray-900 text-sm">{domain.name}</span>
                 </motion.div>
               ))}
             </div>
@@ -90,7 +90,7 @@ export function StrategicDomains({ progress }: SceneProps) {
                   className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-3 flex items-center gap-3"
                 >
                   <domain.icon className="w-5 h-5 text-purple-400" />
-                  <span className="text-white text-sm">{domain.name}</span>
+                  <span className="text-gray-900 text-sm">{domain.name}</span>
                 </motion.div>
               ))}
             </div>
@@ -104,7 +104,7 @@ export function StrategicDomains({ progress }: SceneProps) {
           className="text-center bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-xl p-4"
         >
           <p className="text-[#D4AF37] font-bold text-xl">170 Pre-Built Playbooks</p>
-          <p className="text-white/60 text-sm">Ready to customize and deploy in minutes</p>
+          <p className="text-gray-500 text-sm">Ready to customize and deploy in minutes</p>
         </motion.div>
       </div>
       
