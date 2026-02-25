@@ -116,8 +116,8 @@ export default function StandardNav() {
     <button
       className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1.5 ${
         highlighted
-          ? 'text-poise-gold hover:text-amber-600 hover:bg-amber-50'
-          : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+          ? 'text-poise-gold hover:text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-900/20'
+          : 'text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
       }`}
       data-testid={`nav-${label.toLowerCase().replace(/\s+/g, '-')}-dropdown`}
     >
@@ -130,13 +130,13 @@ export default function StandardNav() {
     <DropdownMenuItem
       key={link.path + link.label}
       onClick={() => navigateTo(link.path)}
-      className="flex items-center gap-3 py-2 cursor-pointer hover:bg-gray-50 focus:bg-gray-50"
+      className="flex items-center gap-3 py-2 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 focus:bg-gray-50 dark:focus:bg-gray-800"
       data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
     >
-      <link.icon className="h-4 w-4 text-gray-700 flex-shrink-0" />
+      <link.icon className="h-4 w-4 text-gray-600 dark:text-gray-400 flex-shrink-0" />
       <div className="flex-1">
-        <div className="font-medium text-sm text-gray-900">{link.label}</div>
-        <span className="text-xs text-gray-700">{link.description}</span>
+        <div className="font-medium text-sm text-gray-900 dark:text-gray-100">{link.label}</div>
+        <span className="text-xs text-gray-600 dark:text-gray-400">{link.description}</span>
       </div>
     </DropdownMenuItem>
   );
@@ -148,12 +148,12 @@ export default function StandardNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="w-72 max-h-[80vh] overflow-y-auto bg-white border border-gray-200 shadow-lg rounded-xl p-1"
+        className="w-72 max-h-[80vh] overflow-y-auto bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-lg rounded-xl p-1"
       >
         {sections.map((section, sIdx) => (
           <div key={section.heading}>
-            {sIdx > 0 && <DropdownMenuSeparator className="bg-gray-100" />}
-            <DropdownMenuLabel className="text-[11px] uppercase tracking-wider text-gray-600 font-semibold px-3 pt-2 pb-1">
+            {sIdx > 0 && <DropdownMenuSeparator className="bg-gray-100 dark:bg-gray-700" />}
+            <DropdownMenuLabel className="text-[11px] uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold px-3 pt-2 pb-1">
               {section.heading}
             </DropdownMenuLabel>
             {section.links.map(renderNavItem)}
@@ -170,7 +170,7 @@ export default function StandardNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="w-72 bg-white border border-gray-200 shadow-lg rounded-xl p-1"
+        className="w-72 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-lg rounded-xl p-1"
       >
         {links.map(renderNavItem)}
       </DropdownMenuContent>
@@ -178,7 +178,7 @@ export default function StandardNav() {
   );
 
   return (
-    <nav className="border-b border-gray-200 bg-white shadow-sm sticky top-0 z-50">
+    <nav className="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
 
@@ -186,7 +186,7 @@ export default function StandardNav() {
             {!isHomePage && (
               <button
                 onClick={handleBack}
-                className="flex items-center gap-1 px-2 py-1.5 text-gray-800 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors text-sm"
+                className="flex items-center gap-1 px-2 py-1.5 text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors text-sm"
                 data-testid="nav-back-button"
               >
                 <ArrowLeft className="h-4 w-4" />
@@ -220,21 +220,21 @@ export default function StandardNav() {
               <>
                 <Button
                   onClick={() => navigateTo("/mission-control")}
-                  className="bg-gradient-to-r from-poise-teal to-cyan-600 hover:from-cyan-600 hover:to-poise-teal text-gray-900 font-semibold h-9 px-4 shadow-md shadow-poise-teal/20"
+                  className="bg-gradient-to-r from-poise-teal to-cyan-600 hover:from-cyan-600 hover:to-poise-teal text-white font-semibold h-9 px-4 shadow-md shadow-poise-teal/20"
                   data-testid="nav-open-platform"
                 >
                   <Compass className="h-4 w-4 mr-1.5" />
                   Open Platform
                 </Button>
                 <div className="flex items-center gap-2">
-                  <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-lg">
-                    <User className="h-4 w-4 text-gray-700" />
-                    <span className="text-sm text-gray-700">{user.firstName || user.email?.split('@')[0]}</span>
+                  <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                    <User className="h-4 w-4 text-gray-600 dark:text-gray-400" />
+                    <span className="text-sm text-gray-800 dark:text-gray-200">{user.firstName || user.email?.split('@')[0]}</span>
                   </div>
                   <Button
                     variant="ghost"
                     onClick={logout}
-                    className="text-gray-800 hover:text-gray-900 hover:bg-gray-100 h-9 px-3"
+                    className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 h-9 px-3"
                     data-testid="nav-logout"
                   >
                     <LogOut className="h-4 w-4 xl:mr-1.5" />
@@ -247,7 +247,7 @@ export default function StandardNav() {
                 <Button
                   variant="outline"
                   onClick={() => navigateTo("/explore")}
-                  className="border-gray-300 text-gray-700 hover:bg-gray-50 h-9 px-4 font-medium"
+                  className="border-gray-400 dark:border-gray-500 text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 h-9 px-4 font-medium"
                   data-testid="nav-explore"
                 >
                   <Eye className="h-4 w-4 mr-1.5" />
@@ -255,7 +255,7 @@ export default function StandardNav() {
                 </Button>
                 <Button
                   onClick={() => navigateTo("/contact")}
-                  className="bg-[#0A0F2E] hover:bg-[#1a2040] text-white h-9 px-4 font-semibold"
+                  className="bg-[#0A0F2E] hover:bg-[#1a2040] dark:bg-white dark:hover:bg-gray-100 text-white dark:text-[#0A0F2E] h-9 px-4 font-semibold"
                   data-testid="nav-start-pilot"
                 >
                   Start Pilot
@@ -263,7 +263,7 @@ export default function StandardNav() {
                 <Button
                   variant="ghost"
                   onClick={login}
-                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 h-9 px-3"
+                  className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 h-9 px-3"
                   data-testid="nav-login"
                 >
                   <LogIn className="h-4 w-4 mr-1" />
@@ -278,14 +278,14 @@ export default function StandardNav() {
               <Button
                 onClick={() => navigateTo("/mission-control")}
                 size="sm"
-                className="bg-gradient-to-r from-poise-teal to-cyan-600 text-gray-900"
+                className="bg-gradient-to-r from-poise-teal to-cyan-600 text-white"
                 data-testid="nav-mobile-open-platform"
               >
                 <Compass className="h-4 w-4" />
               </Button>
             )}
             <button
-              className="p-2 text-gray-800 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+              className="p-2 text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               data-testid="nav-mobile-menu-toggle"
             >
@@ -295,12 +295,12 @@ export default function StandardNav() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-gray-100 animate-in slide-in-from-top-2 duration-200 max-h-[80vh] overflow-y-auto bg-white">
+          <div className="lg:hidden py-4 border-t border-gray-100 dark:border-gray-700 animate-in slide-in-from-top-2 duration-200 max-h-[80vh] overflow-y-auto bg-white dark:bg-gray-900">
             <div className="flex flex-col gap-1">
               {isAuthenticated && user ? (
                 <Button
                   onClick={() => navigateTo("/mission-control")}
-                  className="bg-gradient-to-r from-poise-teal to-cyan-600 text-gray-900 w-full justify-center h-12 text-base font-semibold"
+                  className="bg-gradient-to-r from-poise-teal to-cyan-600 text-white w-full justify-center h-12 text-base font-semibold"
                   data-testid="nav-mobile-open-platform"
                 >
                   <Compass className="h-5 w-5 mr-2" />
@@ -311,7 +311,7 @@ export default function StandardNav() {
                   <Button
                     onClick={() => navigateTo("/explore")}
                     variant="outline"
-                    className="w-full justify-center h-12 text-base font-medium border-gray-300 text-gray-700"
+                    className="w-full justify-center h-12 text-base font-medium border-gray-400 dark:border-gray-500 text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800"
                     data-testid="nav-mobile-explore"
                   >
                     <Eye className="h-5 w-5 mr-2" />
@@ -319,7 +319,7 @@ export default function StandardNav() {
                   </Button>
                   <Button
                     onClick={() => navigateTo("/contact")}
-                    className="w-full justify-center h-12 text-base font-semibold bg-[#0A0F2E] hover:bg-[#1a2040] text-white"
+                    className="w-full justify-center h-12 text-base font-semibold bg-[#0A0F2E] hover:bg-[#1a2040] dark:bg-white dark:hover:bg-gray-100 text-white dark:text-[#0A0F2E]"
                     data-testid="nav-mobile-start-pilot"
                   >
                     Start Pilot Program
@@ -327,7 +327,7 @@ export default function StandardNav() {
                   <Button
                     variant="ghost"
                     onClick={login}
-                    className="w-full justify-center h-10 text-sm text-gray-600"
+                    className="w-full justify-center h-10 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                     data-testid="nav-mobile-login"
                   >
                     <LogIn className="h-4 w-4 mr-2" />
@@ -336,7 +336,7 @@ export default function StandardNav() {
                 </div>
               )}
 
-              <div className="border-t border-gray-100 my-3" />
+              <div className="border-t border-gray-100 dark:border-gray-700 my-3" />
 
               {productSections.map((section) => (
                 <div key={section.heading}>
@@ -347,18 +347,18 @@ export default function StandardNav() {
                       onClick={() => navigateTo(link.path)}
                       className={`w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 ${
                         isActivePath(link.path)
-                          ? 'text-poise-navy bg-gray-100 font-medium'
-                          : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
+                          ? 'text-poise-navy dark:text-white bg-gray-100 dark:bg-gray-800 font-medium'
+                          : 'text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
                       }`}
                     >
-                      <link.icon className="h-4 w-4 text-gray-700" />
+                      <link.icon className="h-4 w-4 text-gray-600 dark:text-gray-400" />
                       {link.label}
                     </button>
                   ))}
                 </div>
               ))}
 
-              <div className="border-t border-gray-100 my-3" />
+              <div className="border-t border-gray-100 dark:border-gray-700 my-3" />
 
               {experienceSections.map((section) => (
                 <div key={section.heading}>
@@ -367,7 +367,7 @@ export default function StandardNav() {
                     <button
                       key={link.path + link.label}
                       onClick={() => navigateTo(link.path)}
-                      className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                      className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
                     >
                       <link.icon className="h-4 w-4 text-poise-gold" />
                       {link.label}
@@ -376,47 +376,47 @@ export default function StandardNav() {
                 </div>
               ))}
 
-              <div className="border-t border-gray-100 my-3" />
+              <div className="border-t border-gray-100 dark:border-gray-700 my-3" />
 
               <p className="px-4 py-2 text-xs text-poise-teal uppercase tracking-wide font-semibold">Platform</p>
               {platformLinks.map((link) => (
                 <button
                   key={link.path}
                   onClick={() => navigateTo(link.path)}
-                  className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                  className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
-                  <link.icon className="h-4 w-4 text-gray-700" />
+                  <link.icon className="h-4 w-4 text-gray-600 dark:text-gray-400" />
                   {link.label}
                 </button>
               ))}
 
-              <div className="border-t border-gray-100 my-3" />
+              <div className="border-t border-gray-100 dark:border-gray-700 my-3" />
 
               <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide font-semibold">Investors</p>
               {investorsLinks.map((link) => (
                 <button
                   key={link.path}
                   onClick={() => navigateTo(link.path)}
-                  className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                  className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
-                  <link.icon className="h-4 w-4 text-gray-700" />
+                  <link.icon className="h-4 w-4 text-gray-600 dark:text-gray-400" />
                   {link.label}
                 </button>
               ))}
 
-              <div className="border-t border-gray-100 my-3" />
+              <div className="border-t border-gray-100 dark:border-gray-700 my-3" />
 
               {isAuthenticated && user ? (
                 <div className="flex items-center justify-between px-3 py-2">
                   <div className="flex items-center gap-2">
-                    <User className="h-4 w-4 text-gray-700" />
-                    <span className="text-sm text-gray-700">{user.firstName || user.email}</span>
+                    <User className="h-4 w-4 text-gray-600 dark:text-gray-400" />
+                    <span className="text-sm text-gray-800 dark:text-gray-200">{user.firstName || user.email}</span>
                   </div>
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={logout}
-                    className="text-gray-800 hover:text-gray-900"
+                    className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white"
                     data-testid="nav-mobile-signout"
                   >
                     Sign Out
