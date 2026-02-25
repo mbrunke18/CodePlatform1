@@ -108,6 +108,7 @@ const OnboardingWizard = lazy(() => import("./pages/OnboardingWizard"));
 const NewUserJourney = lazy(() => import("./pages/NewUserJourney"));
 const CompetitivePositioning = lazy(() => import("./pages/CompetitivePositioning"));
 const PilotProgram = lazy(() => import("./pages/PilotProgram"));
+const ExplorePage = lazy(() => import("./pages/ExplorePage"));
 const FounderStory = lazy(() => import("./pages/FounderStory"));
 const ExecuteIQVideo = lazy(() => import("./pages/ExecuteIQVideo"));
 const ROICalculator = lazy(() => import("./pages/ROICalculator"));
@@ -328,6 +329,7 @@ function Router() {
         {renderRoutes(["/investors", "/for-investors"], Investors)}
         <Route path="/competitive-positioning" component={CompetitivePositioning} />
         <Route path="/pilot-program" component={PilotProgram} />
+        <Route path="/explore" component={ExplorePage} />
         {renderRoutes(["/contact", "/early-access"], Contact)}
 
         {/* Playbooks & Triggers */}

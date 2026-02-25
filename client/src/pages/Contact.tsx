@@ -57,18 +57,33 @@ export default function Contact() {
   });
 
   const onSubmit = async (data: EarlyAccessForm) => {
-    console.log("Early Access Request:", data);
-    
-    toast({
-      title: "Request Received!",
-      description: "Thank you for your interest. Our team will contact you within 48 hours to schedule your executive interview.",
-    });
+    try {
+      const res = await fetch('/api/pilot/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
 
-    form.reset();
-    
-    setTimeout(() => {
-      setLocation("/");
-    }, 3000);
+      if (!res.ok) throw new Error('Submission failed');
+
+      toast({
+        title: "Application Received!",
+        description: "Creating your account now — you'll be redirected to set up your workspace.",
+      });
+
+      form.reset();
+
+      // Redirect to login to begin the real onboarding experience
+      setTimeout(() => {
+        window.location.href = '/api/login';
+      }, 1500);
+    } catch {
+      toast({
+        title: "Submission Failed",
+        description: "Please try again or email us at mbrunke@vaughnmartin.com",
+        variant: "destructive",
+      });
+    }
   };
 
   return (

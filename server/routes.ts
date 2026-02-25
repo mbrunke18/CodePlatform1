@@ -1385,6 +1385,68 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Mark onboarding complete — uses session org (no body required)
+  app.post('/api/onboarding/complete', isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = getUserId(req);
+      if (!userId) return res.status(401).json({ error: 'Authentication required' });
+
+      const orgId = await getOrgIdForUser(userId);
+      if (!orgId) return res.status(404).json({ error: 'No organization found' });
+
+      await db.update(organizations)
+        .set({ onboardingCompleted: true, updatedAt: new Date() })
+        .where(eq(organizations.id, orgId));
+
+      res.json({ success: true });
+    } catch (err: any) {
+      console.error('Error completing onboarding:', err);
+      res.status(500).json({ error: 'Failed to complete onboarding' });
+    }
+  });
+
+  // Seed sample data for a new org — a few signals and one pre-built playbook association
+  app.post('/api/onboarding/seed-demo-data', isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = getUserId(req);
+      if (!userId) return res.status(401).json({ error: 'Authentication required' });
+
+      const orgId = await getOrgIdForUser(userId);
+      if (!orgId) return res.status(404).json({ error: 'No organization found' });
+
+      // Grab 3 playbooks from the global library
+      const samplePlaybooks = await db.select().from(playbookLibrary).limit(3);
+
+      // Create strategic scenarios linked to those playbooks for the user's org
+      const scenarioInserts = samplePlaybooks.map((pb, i) => ({
+        organizationId: orgId,
+        createdBy: userId,
+        name: pb.name,
+        title: pb.name,
+        description: pb.description || `Sample scenario for ${pb.name}`,
+        type: pb.strategicCategory || 'competitive_threat',
+        status: 'draft',
+        impact: (i === 0 ? 'high' : 'medium') as 'high' | 'medium',
+      }));
+
+      const inserted = [];
+      for (const scenario of scenarioInserts) {
+        try {
+          const [s] = await db.insert(strategicScenarios).values(scenario).returning();
+          inserted.push(s);
+        } catch {
+          // skip if already exists
+        }
+      }
+
+      console.log(`[Seed] Created ${inserted.length} sample scenarios for org ${orgId}`);
+      res.json({ success: true, seeded: { scenarios: inserted.length } });
+    } catch (err: any) {
+      console.error('Error seeding demo data:', err);
+      res.status(500).json({ error: 'Failed to seed demo data' });
+    }
+  });
+
   // ============================================
   // END ONBOARDING JOURNEY API ROUTES
   // ============================================

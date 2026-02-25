@@ -1,6 +1,9 @@
 import { Router } from 'express';
 import sgMail from '@sendgrid/mail';
 import { z } from 'zod';
+import { db } from '../db';
+import { pilotApplications } from '../../shared/schema';
+import { Resend } from 'resend';
 
 const router = Router();
 
@@ -277,6 +280,71 @@ function generateEmailHTML(trigger: typeof TRIGGER_SCENARIOS[string], playbook: 
 </html>
 `;
 }
+
+const pilotApplicationSchema = z.object({
+  firstName: z.string().min(1),
+  lastName: z.string().min(1),
+  email: z.string().email(),
+  company: z.string().min(1),
+  title: z.string().min(1),
+  companySize: z.string().min(1),
+  primaryChallenge: z.string().min(10),
+  scenariosOfInterest: z.string().min(5),
+});
+
+router.post('/apply', async (req, res) => {
+  try {
+    const validation = pilotApplicationSchema.safeParse(req.body);
+    if (!validation.success) {
+      return res.status(400).json({ error: 'Invalid form data', details: validation.error.errors });
+    }
+
+    const data = validation.data;
+
+    // Save to database
+    const [application] = await db.insert(pilotApplications).values({
+      ...data,
+      status: 'pending',
+    }).returning();
+
+    // Send notification email to VaughnMartin team
+    const resendKey = process.env.RESEND_API_KEY;
+    if (resendKey) {
+      try {
+        const resend = new Resend(resendKey);
+        await resend.emails.send({
+          from: 'noreply@executeiq.io',
+          to: 'mbrunke@vaughnmartin.com',
+          subject: `New Pilot Application — ${data.company} (${data.firstName} ${data.lastName})`,
+          html: `
+            <h2>New Pilot Program Application</h2>
+            <table style="border-collapse:collapse;width:100%">
+              <tr><td style="padding:8px;border:1px solid #e2e8f0"><strong>Name</strong></td><td style="padding:8px;border:1px solid #e2e8f0">${data.firstName} ${data.lastName}</td></tr>
+              <tr><td style="padding:8px;border:1px solid #e2e8f0"><strong>Email</strong></td><td style="padding:8px;border:1px solid #e2e8f0">${data.email}</td></tr>
+              <tr><td style="padding:8px;border:1px solid #e2e8f0"><strong>Company</strong></td><td style="padding:8px;border:1px solid #e2e8f0">${data.company}</td></tr>
+              <tr><td style="padding:8px;border:1px solid #e2e8f0"><strong>Title</strong></td><td style="padding:8px;border:1px solid #e2e8f0">${data.title}</td></tr>
+              <tr><td style="padding:8px;border:1px solid #e2e8f0"><strong>Company Size</strong></td><td style="padding:8px;border:1px solid #e2e8f0">${data.companySize}</td></tr>
+              <tr><td style="padding:8px;border:1px solid #e2e8f0"><strong>Primary Challenge</strong></td><td style="padding:8px;border:1px solid #e2e8f0">${data.primaryChallenge}</td></tr>
+              <tr><td style="padding:8px;border:1px solid #e2e8f0"><strong>Scenarios of Interest</strong></td><td style="padding:8px;border:1px solid #e2e8f0">${data.scenariosOfInterest}</td></tr>
+            </table>
+            <p style="margin-top:16px;color:#64748b">Application ID: ${application.id}<br>Received: ${new Date().toLocaleString()}</p>
+          `,
+        });
+        console.log(`✓ Pilot application notification sent for ${data.company}`);
+      } catch (emailErr) {
+        console.error('Failed to send pilot application notification email:', emailErr);
+      }
+    } else {
+      console.log('[PILOT APPLICATION] RESEND_API_KEY not set — email notification skipped');
+      console.log(`New pilot application from: ${data.firstName} ${data.lastName} <${data.email}> at ${data.company}`);
+    }
+
+    res.json({ success: true, applicationId: application.id });
+  } catch (err: any) {
+    console.error('Pilot application error:', err);
+    res.status(500).json({ error: 'Failed to save application' });
+  }
+});
 
 router.post('/execute', async (req, res) => {
   try {

@@ -1,7 +1,7 @@
 # VaughnMartin — Execution Operating System
 
 ## Overview
-VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 companies, designed to eliminate the time organizations spend organizing after strategic events by automating project creation, task assignment, document staging, and budget allocation within 12 minutes of a trigger. It integrates AI-driven trigger monitoring with a library of 170 strategic playbooks across 9 domains. Operating on the IDEA Framework™ (IDENTIFY, DETECT, EXECUTE, ADVANCE), it fosters a human-AI partnership — AI handles monitoring, pattern detection, and recommendations; human executives retain ultimate decision-making authority. Positioned as "The Execution Infrastructure Enterprises Are Missing."
+VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 companies. Its primary purpose is to automate project creation, task assignment, document staging, and budget allocation within 12 minutes of a strategic trigger. This platform aims to eliminate organizational lag after strategic events. It integrates AI-driven trigger monitoring with a library of 170 strategic playbooks across 9 domains. Operating on the IDEA Framework™ (IDENTIFY, DETECT, EXECUTE, ADVANCE), it fosters a human-AI partnership where AI handles monitoring, pattern detection, and recommendations, while human executives retain ultimate decision-making authority. The project's vision is to become "The Execution Infrastructure Enterprises Are Missing."
 
 ## User Preferences
 - Preferred communication style: Simple, everyday language
@@ -11,183 +11,33 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - All text must be clearly and boldly readable — medium weight minimum, deep navy or dark gray
 - Brand placement and visual memory is a priority — logo should appear on every key page
 
-## Branding Rules (CRITICAL)
-- **Company:** VaughnMartin | **Product:** Execution OS (internal code identifiers like `ExecuteIQLogo` are NOT renamed)
-- **ExecuteIQLogo** variants: `full`, `icon-only`, `text-only` | colors: `navy` (light bg), `white` (dark bg)
-- **VaughnMartinLogo** variants: `full`, `icon-only` | colors: `dark`, `light`
-- **BrandStamp** component: reusable brand placement unit with variants `dual`, `logo`, `icon`, `watermark`
-- **Logo placement rule:** `color="navy"` on white/light backgrounds; `color="white"` on dark/navy backgrounds
-- **Footer** (`bg-poise-navy`) intentionally stays dark — `ExecuteIQLogo color="white"` inside it
-- **Nav** (`StandardNav`) uses `color="navy"` logo on white background
-- Do NOT rename internal code identifiers (ExecuteIQLogo, routes, function names)
+## System Architecture
 
-## Theme & Colors (CRITICAL)
-- **Default theme:** Fully light mode — pure white `#ffffff` backgrounds everywhere
-- **Dark mode:** Supported via localStorage / `.dark` class; dark: prefixed variants preserved
-- **Light mode rule:** ALL page section backgrounds forced to pure white. Only `bg-poise-navy` (nav/footer) intentionally stays dark
-- **Text in light mode:** Deep navy `#0A0F2E` for headings, `#1e2340` for body, `#374151` for captions
-- **Text in dark containers:** `text-white` is correct ONLY inside `bg-poise-navy` or equivalent dark elements
-- **Brand palette:**
-  - Gold: `#C9A84C` / `#D4AF37` — used in accents, labels, metrics (NEVER as background)
-  - Teal/Emerald: `#2B8A6E` — positive outcomes, highlights
-  - Midnight Navy: `#0A0F2E` — headings, primary text, dark containers
-  - Off-white: `#F0EDE4` — legacy warm ivory (now replaced with pure white)
+**UI/UX Decisions:**
+- **Default Theme:** Fully light mode with pure white backgrounds. Dark mode is supported via localStorage.
+- **Color Palette:** Features gold (`#C9A84C`), teal/emerald (`#2B8A6E`), midnight navy (`#0A0F2E`), and off-white (`#F0EDE4` - now pure white). Gold is reserved for accents, labels, and metrics, never as a background.
+- **Typography:** Global base font-weight 500. Headings are font-weight 700 in midnight navy. A specific text color scale is enforced, avoiding light gray variants. Custom utility classes define text styles for titles, subtitles, body, captions, and labels.
+- **Branding:** Uses `VaughnMartin` (company) and `Execution OS` (product). Specific logo variants (`full`, `icon-only`, `text-only`) and color rules (`navy` on light, `white` on dark) are defined. A `BrandStamp` component is used for consistent brand placement across pages.
+- **Navigation:** Streamlined 5-item navigation with a "More" dropdown and CTAs for "Try Demo" and "Start Pilot."
+- **Layout:** `PageLayout` component wraps all pages, incorporating a `StandardNav` header and `Footer`.
+- **Homepage Video Intro:** A 13-scene video intro (`VideoIntro.tsx`) plays on every homepage load, designed with white/gray backgrounds and specific progress dot styling.
 
-## Typography System (CRITICAL)
-- **Global base (index.css):** `body` font-weight 500; `p, li, span, div` all font-weight 500 by default
-- **Headings h1–h6:** `font-weight: 700`, `color: #0A0F2E` (midnight navy)
-- **Text color scale:**
-  - `text-gray-900` — primary headings and critical labels
-  - `text-gray-800` — body text (standard paragraphs, descriptions)
-  - `text-gray-700` — secondary/supporting text
-  - `text-gray-600` — muted/caption text (minimum for readable content)
-  - NEVER use `text-gray-400/300/200/100` or `text-slate-300/200/100` — too light
-- **Design system utility classes:**
-  - `.text-title` — Barlow Condensed 800, navy, uppercase
-  - `.text-subtitle` — semibold, dark navy `#1e2340`
-  - `.text-body` — medium, dark navy `#1e2340`, line-height 1.7
-  - `.text-caption` — medium, `#374151`
-  - `.text-label` — Barlow Condensed 700, gold, uppercase tracking-widest
-  - `.text-gold` — gold `#C9A84C`, bold
-  - `.text-navy` — midnight `#0A0F2E`, bold
-  - `.text-teal` — `#2B8A6E`, semibold
-  - `.text-strong-body` — navy `#1e2340`, semibold, line-height 1.7
-  - `.text-readable-muted` — `#374151`, medium
-
-## UI/UX Architecture
-
-**Navigation:**
-- Streamlined 5-item nav with a "More" dropdown
-- CTAs: "Try Demo" and "Start Pilot"
-- `StandardNav` on white background with `ExecuteIQLogo color="navy"`
-
-**Layout:**
-- `PageLayout` component wraps all pages with `StandardNav` header and `Footer`
-- `BrandStamp` component placed at top of hero section on every major page
-
-**Video Intro (Homepage):**
-- `VideoIntro.tsx` → 13 scenes → always plays on every Homepage load (no sessionStorage guard)
-- All 13 scenes use white/gray-50 backgrounds
-- Timer logic uses `useRef` for elapsed time — `nextScene()` is called directly from `setInterval`, NOT inside `setProgress()` state updater (critical: prevents React cross-component state update violation)
-- Progress dots: gold (`bg-[#D4AF37]`) for active/past, `bg-gray-300` for inactive (NOT `bg-white`)
-- Outro "Start Pilot" button: visible on white background
-- NarrationBox: white frosted card
-
-**Brand Placement:**
-- `BrandStamp` component at `client/src/components/BrandStamp.tsx`
-- Placed in 45+ pages: all marketing, investor, demo, and product dashboard pages
-- Pattern: `<BrandStamp variant="dual" size="md" className="mb-8" />` above the first `<Badge>` in every hero section
-- Dashboard pages: `<BrandStamp variant="icon" size="sm" />` in content header area
-
-## IDEA Framework Phases
-- **IDENTIFY (VaughnMartin Playbook™):** Build and customize playbooks from 170 templates across 9 strategic domains
-- **DETECT (VaughnMartin Signal™):** AI-powered pattern matching, competitive intelligence aggregation, early warning dashboards, human-triggered playbook activation
-- **EXECUTE (VaughnMartin Compass™):** Orchestrates coordinated responses within 12 minutes, pre-approved budgets, enterprise integrations, Command Center management
-- **ADVANCE (VaughnMartin Retrospect™):** Institutional learning, AI-powered outcome analysis, playbook refinement suggestions
-
-## Strategic Domains (170 Playbooks)
-- **OFFENSE:** Market Entry, M&A, Product Launch
-- **DEFENSE:** Crisis Response, Cyber Incident, Regulatory Change
-- **SPECIAL TEAMS:** Digital Transformation, Competitive Response, AI Governance
-
-## Key Features
-- **Executive Summary Generator:** One-click AI-powered reports (Strategic Overview, Crisis Readiness, Competitive Intelligence, Transformation Progress). Configurable by industry/org/timeframe
-- **New User Journey:** 7-step guided onboarding
-- **Enterprise Task Library:** 42 pre-defined tasks by IDEA phases and 9 functional areas
-- **Execution Plan Sync:** `ExecutionPlanSyncService` for bi-directional sync, `DocumentTemplateEngine` for auto-generating documents, `FileExportService`
-- **Live Signal Ingestion:** Real-time signal monitoring from 16 categories, auto-persisted to DB
-- **Pilot Demo:** Full trigger-to-execution loop with real email notifications, command center timeline, pre-built scenarios
-
-## System Design
-
-**Frontend:**
-- React 18, TypeScript, Vite
-- Radix UI + shadcn/ui component library
-- Tailwind CSS (darkMode: `["class"]`)
-- TanStack Query v5 (object form only: `useQuery({ queryKey: [...] })`)
-- Wouter for routing
-- React Hook Form + Zod validation
-- Framer Motion for animations
-- Lucide React icons + react-icons/si for brand logos
-
-**Backend:**
-- Node.js + Express.js + TypeScript
-- PostgreSQL (Neon serverless) via Drizzle ORM
-- Socket.IO WebSocket server for real-time collaboration
-- Background job queue (PostgreSQL-backed) for async AI tasks
-- Live Signal Ingestion service (15-min cycles)
-
-**Authentication:**
-- Replit OIDC with Passport.js
-- Session management via PostgreSQL
-- `javascript_log_in_with_replit` integration installed
-
-**AI Services:**
-- OpenAI GPT-4o via `javascript_openai_ai_integrations` (v2.0.0 installed)
-- Used for: pulse analysis, risk assessment, executive summaries, opportunity detection
-
-**Email:**
-- SendGrid integration installed (`sendgrid==1.0.0`)
+**Technical Implementations:**
+- **Frontend:** Built with React 18, TypeScript, Vite, Radix UI + shadcn/ui, Tailwind CSS, TanStack Query v5, Wouter for routing, React Hook Form + Zod for validation, Framer Motion for animations, and Lucide React/react-icons for icons.
+- **Backend:** Developed using Node.js, Express.js, TypeScript.
+- **Database:** PostgreSQL (Neon serverless) managed with Drizzle ORM.
+- **Real-time:** Socket.IO WebSocket server for real-time collaboration.
+- **Asynchronous Tasks:** PostgreSQL-backed background job queue for async AI tasks.
+- **Live Signal Ingestion:** A service for real-time signal monitoring operating in 15-minute cycles.
+- **Authentication:** Replit OIDC with Passport.js for session management.
+- **AI Services:** Integrates OpenAI GPT-4o for pulse analysis, risk assessment, executive summaries, and opportunity detection.
+- **Email:** SendGrid integration for email notifications.
+- **IDEA Framework:** The system supports the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE) with features like Playbook customization, AI-powered pattern matching, coordinated response orchestration, and outcome analysis.
+- **Key Features:** Includes an Executive Summary Generator, a 7-step New User Journey, an Enterprise Task Library, Execution Plan Sync, and a Pilot Demo showcasing the full trigger-to-execution loop.
 
 ## External Dependencies
 - **AI:** OpenAI GPT-4o
 - **Database:** Neon PostgreSQL
-- **Auth:** Replit OIDC
+- **Authentication:** Replit OIDC
 - **Email:** SendGrid
-- **Enterprise Integrations (webhook endpoints registered):** Salesforce, HubSpot, ServiceNow, Jira, Slack, Microsoft Teams, Google Workspace, Outlook/Exchange, AWS CloudWatch, Workday, Okta, Microsoft Active Directory
-
-## Domain Configuration
-- **executeiq.io** — verified in Replit; DNS pending in Cloudflare
-  - A record: `@` → `34.111.179.208` (DNS-only / grey cloud, NOT proxied)
-  - TXT record: `@` → `replit-verify=3bd53afc-ff4f-401b-9e3d-b367791ef629`
-
-## Production Readiness Status
-
-### Phase 1 — Completed
-- **Tenant Isolation:** `getOrgIdForUser()` helper + `requireOrgAccess` middleware added to `server/routes.ts`. All hardcoded demo org UUIDs replaced with session-derived lookups. Unauthenticated requests cannot access protected routes.
-- **Email Delivery:** `server/services/NotificationService.ts` now uses `@sendgrid/mail` (SENDGRID_API_KEY from env). Default FROM: `mbrunke@vaughnmartin.com`. Falls back to console logging in dev.
-- **Real Metrics:** `dynamicStrategySimulator.ts`, `enterprise-metrics.tsx`, `ExecutiveAnalyticsDashboard.tsx`, `SignalIntelligenceHub.tsx`, `AuditLoggingCenter.tsx` — all Math.random() simulation replaced with real DB-backed API calls.
-
-### Phase 2 — Completed
-- **Integration Adapter Pattern:** `server/services/integrations/IntegrationAdapter.ts` — base interface with `StandardTaskPayload`, `StandardNotificationPayload`, `AdapterResult`. Adapters in `server/services/integrations/adapters/`.
-- **Jira Adapter + OAuth:** `JiraAdapter.ts` + `/api/integrations/jira/auth` + `/api/integrations/jira/callback`. Stores encrypted tokens in `enterpriseIntegrations` table.
-- **Slack Adapter + OAuth:** `SlackAdapter.ts` + `/api/oauth/slack/authorize` + `/api/oauth/slack/callback`. Block Kit messages. Connected in `IntegrationHub.tsx`.
-- **Salesforce Adapter (Real):** `SalesforceAdapter.ts` replaces `MockSalesforceService.ts` when credentials present. Falls back to mock for demo. `TriggerDetectionService` passes `organizationId`.
-- **ServiceNow Adapter:** `ServiceNowAdapter.ts` — Table API, supports OAuth2 + Basic Auth, creates incidents/change requests on playbook activation.
-- **Customer Onboarding Flow:** `OnboardingWizard.tsx` updated with Integration Selection step — project tracking + communication tool dropdowns, real OAuth connect buttons for Jira/Slack, "Coming Soon" badges for future adapters.
-
-### Phase 3 — Completed (Customer Onboarding Readiness)
-- **Server Crash Fixed:** `setTimeout` in `routes.ts` that referenced `req` out of scope replaced with `liveSignalIngestionService.start('system', 15)` — no more startup crashes.
-- **Auto-Org Creation:** `server/replitAuth.ts` now auto-creates an organization on first login if the user has none. Uses OIDC `name`/`email` claim. Sets `onboardingCompleted: false`.
-- **Onboarding Route Guard:** `useAuth` hook exposes `needsOnboarding`; `OnboardingGuard` in `App.tsx` redirects new users to `/onboarding` automatically. Completing the wizard sets `onboardingCompleted: true` and unlocks the dashboard.
-- **Transactional Email (Resend):** `server/services/NotificationService.ts` uses `resend` npm package and `RESEND_API_KEY`. Falls back to console logging when key is absent. FROM: `noreply@executeiq.io`.
-- **Math.random() Removed:** 14 non-demo production pages cleaned of randomized data. New customers see zero/empty states; no fake numbers.
-- **Demo Data Fallbacks Removed:** `server/routes.ts` no longer returns `'demo-org'` fallback or demo task blocks (`demo-s1`…`demo-s20`). Hardcoded org UUIDs removed from client pages. `/api/demo/` prefix routes intentionally preserved.
-- **Role Enforcement:** `requireRole(...allowedRoles)` middleware added to `server/routes.ts`. Applied to `POST /api/playbooks` (admin/strategist), `DELETE /api/playbooks/:id` (admin), and playbook activation (admin/executive). Backed by `storage.getUserRole()`.
-
-### What Still Needs to Be Done (Deferred)
-- **RESEND_API_KEY** — user must add this env var to activate real email delivery
-- **Jira/Slack OAuth credentials** — user must register apps in Atlassian + Slack dev portals and set `JIRA_CLIENT_ID`, `JIRA_CLIENT_SECRET`, `SLACK_CLIENT_ID`, `SLACK_CLIENT_SECRET` env vars
-- Admin panel for org/user management (deferred by user)
-- Enterprise SSO (Azure AD / Okta) — requires senior developer
-- Microsoft Teams, Azure DevOps, HubSpot, Google Workspace, Outlook adapters — next wave
-- SOC 2 compliance — requires compliance vendor (Vanta/Drata)
-- Stripe billing — deferred; manual invoicing for early customers
-
-## Key File Locations
-- `client/src/components/ExecuteIQLogo.tsx` — Execution OS product logo (arrow icon + wordmark)
-- `client/src/components/VaughnMartinLogo.tsx` — VaughnMartin company logo (V-icon + Cormorant wordmark)
-- `client/src/components/BrandStamp.tsx` — Reusable brand placement component (NEW)
-- `client/src/components/marketing/VideoIntro.tsx` — Homepage cinematic intro (13 scenes)
-- `client/src/components/video/` — All 13 individual video scene components (white backgrounds)
-- `client/src/components/layout/StandardNav.tsx` — Main navigation (white bg, navy logo)
-- `client/src/components/layout/Footer.tsx` — Footer (bg-poise-navy, white logo — intentionally dark)
-- `client/src/index.css` — Global styles, brand colors, typography system, light/dark mode
-- `shared/schema.ts` — All Drizzle ORM models and Zod insert schemas
-- `server/storage.ts` — Storage interface and CRUD operations
-- `server/routes.ts` — All API routes (thin, delegates to storage)
-
-## Database Operations
-- **Never write SQL migrations manually** — use `npm run db:push`
-- If data-loss warning appears: `npm run db:push --force`
-- Schema changes: add to `shared/schema.ts` first, then update `server/storage.ts`
+- **Enterprise Integrations:** Salesforce, HubSpot, ServiceNow, Jira, Slack, Microsoft Teams, Google Workspace, Outlook/Exchange, AWS CloudWatch, Workday, Okta, Microsoft Active Directory

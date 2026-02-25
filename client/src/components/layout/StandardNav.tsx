@@ -77,6 +77,7 @@ export default function StandardNav() {
       heading: "Live Demos",
       links: [
         { label: "Try Demo", path: "/try-demo", icon: Rocket, description: "Full trigger-to-execution experience" },
+        { label: "Explore the Platform", path: "/explore", icon: Compass, description: "Sign in and experience as a real customer" },
       ],
     },
   ];

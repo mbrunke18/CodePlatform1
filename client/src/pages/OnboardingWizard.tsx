@@ -30,7 +30,8 @@ import {
   ArrowRight,
   Rocket,
   Settings,
-  AlertTriangle
+  AlertTriangle,
+  Database,
 } from 'lucide-react';
 
 const ONBOARDING_STEPS = [
@@ -86,6 +87,7 @@ export default function OnboardingWizard() {
   const [, setLocation] = useLocation();
   const [currentStep, setCurrentStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
+  const [seedSampleData, setSeedSampleData] = useState(false);
   
   // Organization data
   const [orgData, setOrgData] = useState({
@@ -193,13 +195,27 @@ export default function OnboardingWizard() {
       ];
       
       await Promise.all(promises);
+
+      // Mark onboarding complete — this sets onboardingCompleted: true on the org
+      await apiRequest('POST', '/api/onboarding/complete', {}).catch(() => {});
+
       return { success: true };
     },
-    onSuccess: () => {
+    onSuccess: async () => {
+      if (seedSampleData) {
+        try {
+          await apiRequest('POST', '/api/onboarding/seed-demo-data', {});
+        } catch {
+          // non-fatal
+        }
+      }
       toast({
         title: 'Onboarding Complete!',
-        description: 'Your Execution OS platform is now configured and ready to use.',
+        description: seedSampleData
+          ? 'Your workspace is set up with sample data. Welcome to Execution OS!'
+          : 'Your Execution OS platform is configured and ready to use.',
       });
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/user'] });
       setLocation('/dashboard');
     },
     onError: () => {
@@ -819,6 +835,34 @@ export default function OnboardingWizard() {
             )}
           </CardContent>
         </Card>
+
+        {/* Seed data toggle — shown only on final step */}
+        {currentStep === ONBOARDING_STEPS.length - 1 && (
+          <Card className="bg-blue-50 border-blue-200">
+            <CardContent className="p-4">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Database className="h-5 w-5 text-blue-600" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="font-semibold text-gray-900 text-sm">Pre-populate with sample data</div>
+                      <div className="text-gray-600 text-xs mt-0.5">
+                        Add 3 sample scenarios to your workspace so you can explore the platform immediately. You can delete them anytime.
+                      </div>
+                    </div>
+                    <Switch
+                      checked={seedSampleData}
+                      onCheckedChange={setSeedSampleData}
+                      className="ml-4 flex-shrink-0"
+                    />
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
         {/* Navigation Buttons */}
         <div className="flex justify-between">

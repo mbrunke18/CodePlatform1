@@ -6098,3 +6098,25 @@ export interface StakeholderMapping {
   escalationPriority: number;
   notificationPreferences: NotificationChannel[];
 }
+
+// Pilot Applications
+export const pilotApplications = pgTable('pilot_applications', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  firstName: text('first_name').notNull(),
+  lastName: text('last_name').notNull(),
+  email: text('email').notNull(),
+  company: text('company').notNull(),
+  title: text('title').notNull(),
+  companySize: text('company_size').notNull(),
+  primaryChallenge: text('primary_challenge').notNull(),
+  scenariosOfInterest: text('scenarios_of_interest').notNull(),
+  status: text('status').default('pending'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const insertPilotApplicationSchema = createInsertSchema(pilotApplications).omit({
+  id: true,
+  createdAt: true,
+});
+export type InsertPilotApplication = z.infer<typeof insertPilotApplicationSchema>;
+export type PilotApplication = typeof pilotApplications.$inferSelect;
