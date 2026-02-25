@@ -213,56 +213,77 @@ export default function StandardNav() {
             {renderFlatDropdown("Investors", investorsLinks, true)}
           </div>
 
-          <div className="hidden lg:flex items-center gap-3">
-            <Button
-              onClick={() => navigateTo("/mission-control")}
-              className="bg-gradient-to-r from-poise-teal to-cyan-600 hover:from-cyan-600 hover:to-poise-teal text-gray-900 font-semibold h-9 px-4 shadow-md shadow-poise-teal/20"
-              data-testid="nav-open-platform"
-            >
-              <Compass className="h-4 w-4 mr-1.5" />
-              Open Platform
-            </Button>
-
+          <div className="hidden lg:flex items-center gap-2">
             {isLoading ? (
-              <div className="h-9 w-20 bg-gray-100 animate-pulse rounded-lg" />
+              <div className="h-9 w-48 bg-gray-100 animate-pulse rounded-lg" />
             ) : isAuthenticated && user ? (
-              <div className="flex items-center gap-2">
-                <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-lg">
-                  <User className="h-4 w-4 text-gray-700" />
-                  <span className="text-sm text-gray-700">{user.firstName || user.email?.split('@')[0]}</span>
+              <>
+                <Button
+                  onClick={() => navigateTo("/mission-control")}
+                  className="bg-gradient-to-r from-poise-teal to-cyan-600 hover:from-cyan-600 hover:to-poise-teal text-gray-900 font-semibold h-9 px-4 shadow-md shadow-poise-teal/20"
+                  data-testid="nav-open-platform"
+                >
+                  <Compass className="h-4 w-4 mr-1.5" />
+                  Open Platform
+                </Button>
+                <div className="flex items-center gap-2">
+                  <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-lg">
+                    <User className="h-4 w-4 text-gray-700" />
+                    <span className="text-sm text-gray-700">{user.firstName || user.email?.split('@')[0]}</span>
+                  </div>
+                  <Button
+                    variant="ghost"
+                    onClick={logout}
+                    className="text-gray-800 hover:text-gray-900 hover:bg-gray-100 h-9 px-3"
+                    data-testid="nav-logout"
+                  >
+                    <LogOut className="h-4 w-4 xl:mr-1.5" />
+                    <span className="hidden xl:inline">Sign Out</span>
+                  </Button>
                 </div>
+              </>
+            ) : (
+              <>
+                <Button
+                  variant="outline"
+                  onClick={() => navigateTo("/explore")}
+                  className="border-gray-300 text-gray-700 hover:bg-gray-50 h-9 px-4 font-medium"
+                  data-testid="nav-explore"
+                >
+                  <Eye className="h-4 w-4 mr-1.5" />
+                  Explore
+                </Button>
+                <Button
+                  onClick={() => navigateTo("/contact")}
+                  className="bg-[#0A0F2E] hover:bg-[#1a2040] text-white h-9 px-4 font-semibold"
+                  data-testid="nav-start-pilot"
+                >
+                  Start Pilot
+                </Button>
                 <Button
                   variant="ghost"
-                  onClick={logout}
-                  className="text-gray-800 hover:text-gray-900 hover:bg-gray-100 h-9 px-3"
-                  data-testid="nav-logout"
+                  onClick={login}
+                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 h-9 px-3"
+                  data-testid="nav-login"
                 >
-                  <LogOut className="h-4 w-4 xl:mr-1.5" />
-                  <span className="hidden xl:inline">Sign Out</span>
+                  <LogIn className="h-4 w-4 mr-1" />
+                  Sign In
                 </Button>
-              </div>
-            ) : (
-              <Button
-                variant="ghost"
-                onClick={login}
-                className="text-gray-800 hover:text-gray-900 hover:bg-gray-100 h-9 px-3"
-                data-testid="nav-login"
-              >
-                <LogIn className="h-4 w-4 xl:mr-1.5" />
-                <span className="hidden xl:inline">Sign In</span>
-              </Button>
+              </>
             )}
           </div>
 
           <div className="flex lg:hidden items-center gap-2">
-            <Button
-              onClick={() => navigateTo("/mission-control")}
-              size="sm"
-              className="bg-gradient-to-r from-poise-teal to-cyan-600 text-gray-900"
-              data-testid="nav-mobile-open-platform"
-            >
-              <Compass className="h-4 w-4" />
-            </Button>
+            {isAuthenticated && user && (
+              <Button
+                onClick={() => navigateTo("/mission-control")}
+                size="sm"
+                className="bg-gradient-to-r from-poise-teal to-cyan-600 text-gray-900"
+                data-testid="nav-mobile-open-platform"
+              >
+                <Compass className="h-4 w-4" />
+              </Button>
+            )}
             <button
               className="p-2 text-gray-800 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -276,14 +297,44 @@ export default function StandardNav() {
         {mobileMenuOpen && (
           <div className="lg:hidden py-4 border-t border-gray-100 animate-in slide-in-from-top-2 duration-200 max-h-[80vh] overflow-y-auto bg-white">
             <div className="flex flex-col gap-1">
-              <Button
-                onClick={() => navigateTo("/mission-control")}
-                className="bg-gradient-to-r from-poise-teal to-cyan-600 text-gray-900 w-full justify-center h-12 text-base font-semibold"
-                data-testid="nav-mobile-open-platform"
-              >
-                <Compass className="h-5 w-5 mr-2" />
-                Open Platform
-              </Button>
+              {isAuthenticated && user ? (
+                <Button
+                  onClick={() => navigateTo("/mission-control")}
+                  className="bg-gradient-to-r from-poise-teal to-cyan-600 text-gray-900 w-full justify-center h-12 text-base font-semibold"
+                  data-testid="nav-mobile-open-platform"
+                >
+                  <Compass className="h-5 w-5 mr-2" />
+                  Open Platform
+                </Button>
+              ) : (
+                <div className="flex flex-col gap-2 px-1">
+                  <Button
+                    onClick={() => navigateTo("/explore")}
+                    variant="outline"
+                    className="w-full justify-center h-12 text-base font-medium border-gray-300 text-gray-700"
+                    data-testid="nav-mobile-explore"
+                  >
+                    <Eye className="h-5 w-5 mr-2" />
+                    Explore the Platform
+                  </Button>
+                  <Button
+                    onClick={() => navigateTo("/contact")}
+                    className="w-full justify-center h-12 text-base font-semibold bg-[#0A0F2E] hover:bg-[#1a2040] text-white"
+                    data-testid="nav-mobile-start-pilot"
+                  >
+                    Start Pilot Program
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    onClick={login}
+                    className="w-full justify-center h-10 text-sm text-gray-600"
+                    data-testid="nav-mobile-login"
+                  >
+                    <LogIn className="h-4 w-4 mr-2" />
+                    Sign In
+                  </Button>
+                </div>
+              )}
 
               <div className="border-t border-gray-100 my-3" />
 
