@@ -160,18 +160,20 @@ export default function HowItWorks() {
             {/* Visual Phase Flow */}
             <div className="flex items-center justify-center gap-2 md:gap-4 mt-12 flex-wrap">
               {phases.map((phase, index) => (
-                <div key={phase.name} className="flex items-center">
-                  <div className={`w-12 h-12 md:w-16 md:h-16 rounded-xl bg-gradient-to-br ${phase.bgGradient} flex items-center justify-center shadow-lg`}>
-                    <phase.icon className="h-6 w-6 md:h-8 md:w-8 text-gray-900" />
+                <div key={phase.name} className="flex items-center gap-2 md:gap-4">
+                  <div className="flex flex-col items-center gap-2">
+                    <div className={`w-14 h-14 md:w-20 md:h-20 rounded-xl bg-gradient-to-br ${phase.bgGradient} flex items-center justify-center shadow-lg`}>
+                      <phase.icon className="h-7 w-7 md:h-9 md:w-9 text-white" />
+                    </div>
+                    <span className="text-xs md:text-sm font-bold text-gray-800 tracking-wide uppercase">{phase.name}</span>
                   </div>
                   {index < phases.length - 1 && (
-                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-gray-600 mx-1 md:mx-2" />
+                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-gray-500 mb-5" />
                   )}
                 </div>
               ))}
-              <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-gray-600 mx-1 md:mx-2 rotate-180 hidden md:block" />
             </div>
-            <p className="text-sm text-gray-700 mt-4">Continuous cycle — ADVANCE feeds back into IDENTIFY</p>
+            <p className="text-sm text-gray-700 mt-4 font-medium">Continuous cycle — ADVANCE feeds back into IDENTIFY</p>
           </div>
         </div>
       </div>
