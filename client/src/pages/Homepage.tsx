@@ -43,20 +43,10 @@ import Footer from "@/components/layout/Footer";
 import VideoIntro from "@/components/marketing/VideoIntro";
 import PlatformVisual from "@/components/marketing/PlatformVisual";
 
-const INTRO_SEEN_KEY = "executeiq_intro_seen_session";
-
 export default function Homepage() {
   const [, setLocation] = useLocation();
   const [showAllQuotes, setShowAllQuotes] = useState(false);
-  const [showIntro, setShowIntro] = useState(() => {
-    if (typeof window === "undefined") return true;
-    const hasSeenIntro = sessionStorage.getItem(INTRO_SEEN_KEY);
-    if (!hasSeenIntro) {
-      sessionStorage.setItem(INTRO_SEEN_KEY, "true");
-      return true;
-    }
-    return false;
-  });
+  const [showIntro, setShowIntro] = useState(true);
 
   const handleSkipIntro = () => {
     setShowIntro(false);

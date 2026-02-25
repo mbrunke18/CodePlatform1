@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
 import { NarrationBox } from "./NarrationBox";
 import { ArrowRight, Calendar } from "lucide-react";
+import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { Link } from "wouter";
 
 interface SceneProps {
@@ -43,7 +44,7 @@ export function Outro({ progress }: SceneProps) {
               transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-xl font-bold text-[#D4AF37]">EIQ</span>
+              <ExecuteIQLogo variant="icon-only" width={36} color="navy" />
             </div>
           </div>
         </motion.div>
@@ -52,7 +53,7 @@ export function Outro({ progress }: SceneProps) {
           text="Execution OS" 
           size="2xl" 
           delay={0.3}
-          className="text-white mb-4"
+          className="text-gray-900 mb-4"
         />
 
         <motion.p
@@ -114,7 +115,7 @@ export function Outro({ progress }: SceneProps) {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gray-100 hover:bg-gray-100 text-white font-medium px-8 py-4 rounded-full flex items-center gap-3 border border-gray-200"
+              className="bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium px-8 py-4 rounded-full flex items-center gap-3 border border-gray-200"
             >
               <Calendar className="w-5 h-5" />
               Start Pilot

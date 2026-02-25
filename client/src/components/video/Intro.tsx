@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { TextPunch } from "./TextPunch";
 import { NarrationBox } from "./NarrationBox";
+import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 
 interface SceneProps {
   progress: number;
@@ -58,7 +59,7 @@ export function Intro({ progress }: SceneProps) {
               transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-2xl font-bold text-[#D4AF37]">EIQ</span>
+              <ExecuteIQLogo variant="icon-only" width={40} color="navy" />
             </div>
           </div>
         </motion.div>
@@ -67,7 +68,7 @@ export function Intro({ progress }: SceneProps) {
           text="Execution Infrastructure" 
           size="2xl" 
           delay={0.5}
-          className="text-white mb-4"
+          className="text-gray-900 mb-4"
         />
         
         <motion.p
