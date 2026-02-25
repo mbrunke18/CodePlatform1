@@ -68,7 +68,7 @@ export default function ExecutiveSuite() {
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center">
-                <Crown className="w-7 h-7 text-white" />
+                <Crown className="w-7 h-7 text-gray-900" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Executive Command Center</h1>
@@ -80,7 +80,7 @@ export default function ExecutiveSuite() {
                 <CheckCircle className="w-3 h-3 mr-1" />
                 All Systems Operational
               </Badge>
-              <Badge className="bg-purple-600 text-white">
+              <Badge className="bg-purple-600 text-gray-900">
                 Executive Access
               </Badge>
             </div>
@@ -213,15 +213,15 @@ export default function ExecutiveSuite() {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Button className="h-16 bg-red-600 hover:bg-red-700 text-white" data-testid="button-emergency-activation">
+                <Button className="h-16 bg-red-600 hover:bg-red-700 text-gray-900" data-testid="button-emergency-activation">
                   <AlertCircle className="w-5 h-5 mr-2" />
                   Emergency Crisis Activation
                 </Button>
-                <Button className="h-16 bg-blue-600 hover:bg-blue-700 text-white" data-testid="button-strategic-intelligence">
+                <Button className="h-16 bg-blue-600 hover:bg-blue-700 text-gray-900" data-testid="button-strategic-intelligence">
                   <Brain className="w-5 h-5 mr-2" />
                   AI Strategic Intelligence
                 </Button>
-                <Button className="h-16 bg-green-600 hover:bg-green-700 text-white" data-testid="button-board-presentation">
+                <Button className="h-16 bg-green-600 hover:bg-green-700 text-gray-900" data-testid="button-board-presentation">
                   <Briefcase className="w-5 h-5 mr-2" />
                   Generate Board Presentation
                 </Button>

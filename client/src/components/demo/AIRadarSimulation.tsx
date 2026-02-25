@@ -88,8 +88,8 @@ export default function AIRadarSimulation({
   return (
     <div className="space-y-6">
       <div className="text-center mb-6">
-        <h2 className="text-3xl font-bold text-white mb-2">{title}</h2>
-        <p className="text-xl text-blue-200">{subtitle}</p>
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">{title}</h2>
+        <p className="text-xl text-blue-700">{subtitle}</p>
       </div>
 
       {/* Main Confidence Meter */}
@@ -97,7 +97,7 @@ export default function AIRadarSimulation({
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <Activity className={`h-5 w-5 ${isMonitoring ? 'animate-pulse text-green-500' : 'text-blue-400'}`} />
-            <h3 className="font-semibold text-white">AI Trigger Monitoring</h3>
+            <h3 className="font-semibold text-gray-900">AI Trigger Monitoring</h3>
           </div>
           <Badge variant={triggered ? 'destructive' : isMonitoring ? 'default' : 'outline'} data-testid="badge-monitoring">
             {triggered ? '🚨 TRIGGERED' : isMonitoring ? '● Live' : '○ Inactive'}
@@ -131,15 +131,15 @@ export default function AIRadarSimulation({
         <Card className="p-6 bg-red-950/50 border-red-500 border-2 animate-pulse" data-testid="card-trigger-alert">
           <div className="flex items-start gap-4">
             <div className="p-2 bg-red-500 rounded-full">
-              <AlertTriangle className="h-6 w-6 text-white" />
+              <AlertTriangle className="h-6 w-6 text-gray-900" />
             </div>
             <div className="flex-1">
-              <h4 className="font-bold text-lg mb-1 text-white">Playbook {playbookId} Recommended</h4>
-              <p className="text-sm text-red-200 mb-3">
+              <h4 className="font-bold text-lg mb-1 text-gray-900">Playbook {playbookId} Recommended</h4>
+              <p className="text-sm text-red-600 mb-3">
                 {playbookName}
               </p>
               <div className="bg-white p-3 rounded border border-red-800/30">
-                <p className="text-xs font-mono text-red-200">
+                <p className="text-xs font-mono text-red-600">
                   <TrendingDown className="inline h-3 w-3 mr-1" />
                   Confidence: {confidence.toFixed(1)}% | Playbook activation recommended
                 </p>

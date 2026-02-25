@@ -60,7 +60,7 @@ export default function ManufacturingSupplierDemo() {
                 onClick={() => setCurrentAct(act.id as DemoAct)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                   currentAct === act.id
-                    ? "bg-orange-600 text-white"
+                    ? "bg-orange-600 text-gray-900"
                     : "text-orange-300 hover:bg-orange-950/50"
                 }`}
                 data-testid={`button-act-${act.id}`}
@@ -81,38 +81,38 @@ export default function ManufacturingSupplierDemo() {
             <Card className="p-8 bg-white border-orange-800/30">
               <div className="text-center mb-8">
                 <Cpu className="w-16 h-16 text-orange-400 mx-auto mb-4" />
-                <h2 className="text-3xl font-bold text-white mb-3">{manufacturingDemoData.crisis.title}</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">{manufacturingDemoData.crisis.title}</h2>
                 <p className="text-xl text-orange-200">{manufacturingDemoData.crisis.subtitle}</p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div className="p-6 bg-orange-950/30 rounded-lg border border-orange-800/30">
-                  <h3 className="font-bold text-white mb-4 flex items-center gap-2">
+                  <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                     <AlertTriangle className="w-5 h-5 text-orange-400" />
                     The Crisis
                   </h3>
                   <div className="space-y-3 text-sm">
                     <div>
                       <div className="text-orange-300 mb-1">Organization</div>
-                      <div className="text-white font-semibold">Toyota Motor Corporation</div>
+                      <div className="text-gray-900 font-semibold">Toyota Motor Corporation</div>
                     </div>
                     <div>
                       <div className="text-orange-300 mb-1">Component</div>
-                      <div className="text-white">Critical Semiconductor Chips</div>
+                      <div className="text-gray-900">Critical Semiconductor Chips</div>
                     </div>
                     <div>
                       <div className="text-orange-300 mb-1">Impact</div>
-                      <div className="text-white">50,000 chip shortage discovered</div>
+                      <div className="text-gray-900">50,000 chip shortage discovered</div>
                     </div>
                     <div>
                       <div className="text-orange-300 mb-1">At Risk</div>
-                      <div className="text-white font-bold">10,000 vehicles ($500M production)</div>
+                      <div className="text-gray-900 font-bold">10,000 vehicles ($500M production)</div>
                     </div>
                   </div>
                 </div>
 
                 <div className="p-6 bg-white rounded-lg border border-orange-800/30">
-                  <h3 className="font-bold text-white mb-4">Traditional Response (30 Days)</h3>
+                  <h3 className="font-bold text-gray-900 mb-4">Traditional Response (30 Days)</h3>
                   <ul className="space-y-2 text-sm text-orange-200">
                     <li>• Day 1-2: Assess which suppliers affected</li>
                     <li>• Day 3: Discover 50,000 chip shortage</li>
@@ -129,7 +129,7 @@ export default function ManufacturingSupplierDemo() {
                 <div className="flex items-start gap-4">
                   <ShieldAlert className="w-8 h-8 text-orange-400 flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-bold text-white mb-2">Just-In-Time Manufacturing Needs Just-In-Time Coordination</h3>
+                    <h3 className="font-bold text-gray-900 mb-2">Just-In-Time Manufacturing Needs Just-In-Time Coordination</h3>
                     <p className="text-orange-100 leading-relaxed">
                       Toyota pioneered Just-In-Time manufacturing to eliminate waste. But when suppliers fail, coordination still takes 
                       <strong> 30 days</strong> of meetings, emails, and qualification delays. Execution OS brings Just-In-Time principles to 
@@ -144,7 +144,7 @@ export default function ManufacturingSupplierDemo() {
                 <Button
                   size="lg"
                   onClick={() => setCurrentAct("detection")}
-                  className="bg-orange-600 hover:bg-orange-700 text-white px-8"
+                  className="bg-orange-600 hover:bg-orange-700 text-gray-900 px-8"
                   data-testid="button-start-demo"
                 >
                   Begin Crisis Simulation
@@ -159,7 +159,7 @@ export default function ManufacturingSupplierDemo() {
         {currentAct === "detection" && (
           <div className="max-w-6xl mx-auto space-y-8">
             <Card className="p-8 bg-white border-orange-800/30">
-              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <ShieldAlert className="w-8 h-8 text-orange-400" />
                 Supply Chain AI Detects Critical Supplier Failure
               </h2>
@@ -192,7 +192,7 @@ export default function ManufacturingSupplierDemo() {
                   <Button
                     size="lg"
                     onClick={() => setCurrentAct("coordination")}
-                    className="bg-orange-600 hover:bg-orange-700 text-white px-8"
+                    className="bg-orange-600 hover:bg-orange-700 text-gray-900 px-8"
                     data-testid="button-activate-playbook"
                   >
                     Activate Playbook #019 - Supplier Failure
@@ -208,7 +208,7 @@ export default function ManufacturingSupplierDemo() {
         {currentAct === "coordination" && (
           <div className="max-w-6xl mx-auto space-y-8">
             <Card className="p-8 bg-white border-orange-800/30">
-              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <Clock className="w-8 h-8 text-orange-400" />
                 4-Hour Coordinated Response Across 158 Stakeholders
               </h2>
@@ -226,21 +226,21 @@ export default function ManufacturingSupplierDemo() {
                       <>
                         <Card className="p-6 bg-orange-950/30 border-orange-700">
                           <div className="text-orange-300 text-sm mb-2">Tier 1: Decision Makers</div>
-                          <div className="text-3xl font-bold text-white mb-3">{manufacturingDemoData.stakeholderTiers.tier1.count}</div>
+                          <div className="text-3xl font-bold text-gray-900 mb-3">{manufacturingDemoData.stakeholderTiers.tier1.count}</div>
                           <div className="text-xs text-orange-200">
                             {manufacturingDemoData.stakeholderTiers.tier1.members.join(", ")}
                           </div>
                         </Card>
                         <Card className="p-6 bg-orange-950/30 border-orange-700">
                           <div className="text-orange-300 text-sm mb-2">Tier 2: Execution Teams</div>
-                          <div className="text-3xl font-bold text-white mb-3">{manufacturingDemoData.stakeholderTiers.tier2.count}</div>
+                          <div className="text-3xl font-bold text-gray-900 mb-3">{manufacturingDemoData.stakeholderTiers.tier2.count}</div>
                           <div className="text-xs text-orange-200">
                             {manufacturingDemoData.stakeholderTiers.tier2.members.join(", ")}
                           </div>
                         </Card>
                         <Card className="p-6 bg-orange-950/30 border-orange-700">
                           <div className="text-orange-300 text-sm mb-2">Tier 3: External Partners</div>
-                          <div className="text-3xl font-bold text-white mb-3">{manufacturingDemoData.stakeholderTiers.tier3.count}</div>
+                          <div className="text-3xl font-bold text-gray-900 mb-3">{manufacturingDemoData.stakeholderTiers.tier3.count}</div>
                           <div className="text-xs text-orange-200">
                             {manufacturingDemoData.stakeholderTiers.tier3.members.join(", ")}
                           </div>
@@ -253,7 +253,7 @@ export default function ManufacturingSupplierDemo() {
                     <Button
                       size="lg"
                       onClick={() => setCurrentAct("outcome")}
-                      className="bg-green-600 hover:bg-green-700 text-white px-8"
+                      className="bg-green-600 hover:bg-green-700 text-gray-900 px-8"
                       data-testid="button-view-outcome"
                     >
                       View Impact & ROI
@@ -272,8 +272,8 @@ export default function ManufacturingSupplierDemo() {
             <Card className="p-8 bg-white border-green-800/30">
               <div className="text-center mb-8">
                 <TrendingUp className="w-16 h-16 text-green-400 mx-auto mb-4" />
-                <h2 className="text-3xl font-bold text-white mb-3">$450M Production Saved</h2>
-                <p className="text-xl text-green-200">2-day pause vs 30-day production halt</p>
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">$450M Production Saved</h2>
+                <p className="text-xl text-green-700">2-day pause vs 30-day production halt</p>
               </div>
 
               <ROIComparison

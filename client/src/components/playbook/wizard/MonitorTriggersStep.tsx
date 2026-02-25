@@ -91,7 +91,7 @@ export default function MonitorTriggersStep({ data, onChange, playbook }: Monito
   const getSignalIcon = (type: string) => {
     const signalType = SIGNAL_TYPES.find(t => t.value === type);
     const Icon = signalType?.icon || Radio;
-    const color = signalType?.color || 'text-slate-300';
+    const color = signalType?.color || 'text-gray-600';
     return <Icon className={`h-4 w-4 ${color}`} />;
   };
 

@@ -179,7 +179,7 @@ export default function DecisionTreeBuilder() {
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center shrink-0">
-                <BookOpen className="h-6 w-6 text-white" />
+                <BookOpen className="h-6 w-6 text-gray-900" />
               </div>
               <div>
                 <h3 className="font-bold text-blue-900 dark:text-blue-200 text-xl mb-2">
@@ -227,7 +227,7 @@ export default function DecisionTreeBuilder() {
                 onChange={(e) => setScenario(e.target.value)}
                 data-testid="input-scenario"
               />
-              <p className="text-xs text-slate-300 mt-1">
+              <p className="text-xs text-gray-600 mt-1">
                 What situation triggers this decision?
               </p>
             </div>
@@ -377,7 +377,7 @@ export default function DecisionTreeBuilder() {
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 rounded-full ${buttonColors[index % buttonColors.length]} text-white flex items-center justify-center font-bold`}>
+                    <div className={`w-10 h-10 rounded-full ${buttonColors[index % buttonColors.length]} text-gray-900 flex items-center justify-center font-bold`}>
                       {optionLetters[index]}
                     </div>
                     <Input 
@@ -455,7 +455,7 @@ export default function DecisionTreeBuilder() {
                       rows={3}
                       className="bg-white dark:bg-slate-800"
                     />
-                    <p className="text-xs text-slate-300 mt-1">
+                    <p className="text-xs text-gray-600 mt-1">
                       Decision criteria help executives choose fast
                     </p>
                   </div>

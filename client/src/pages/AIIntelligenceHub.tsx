@@ -103,10 +103,10 @@ export default function AIIntelligenceHub() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="p-2 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg">
-                <Brain className="h-5 w-5 text-white" />
+                <Brain className="h-5 w-5 text-gray-900" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-white">AI Intelligence Hub</h1>
+                <h1 className="text-xl font-bold text-gray-900">AI Intelligence Hub</h1>
                 <p className="text-sm text-gray-600">Strategic co-pilots for executive decision-making</p>
               </div>
             </div>
@@ -143,7 +143,7 @@ export default function AIIntelligenceHub() {
                         <Icon className={`h-5 w-5 ${isActive ? module.color : 'text-gray-600'}`} />
                       </div>
                       <div className="text-center">
-                        <p className={`text-sm font-semibold ${isActive ? 'text-white' : 'text-gray-600'}`}>
+                        <p className={`text-sm font-semibold ${isActive ? 'text-gray-900' : 'text-gray-600'}`}>
                           {module.name}
                         </p>
                         <p className="text-xs text-gray-600 mt-0.5">

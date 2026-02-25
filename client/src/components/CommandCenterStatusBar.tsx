@@ -89,7 +89,7 @@ export function CommandCenterStatusBar() {
             </div>
           </div>
 
-          <div className="text-slate-300 text-xs">
+          <div className="text-gray-600 text-xs">
             Last updated: {new Date(status.lastUpdated).toLocaleTimeString()}
           </div>
         </div>

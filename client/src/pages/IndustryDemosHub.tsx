@@ -200,8 +200,8 @@ export default function IndustryDemosHub() {
                   <DemoIcon className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="font-bold text-white">{demo.title}</div>
-                  <div className="text-xs text-gray-200">{demo.industry}</div>
+                  <div className="font-bold text-gray-900">{demo.title}</div>
+                  <div className="text-xs text-gray-500">{demo.industry}</div>
                 </div>
               </div>
               <Badge className={`text-[10px] border ${categoryBadge(demo.type)}`}>
@@ -211,35 +211,35 @@ export default function IndustryDemosHub() {
 
             <div className="space-y-3 mb-4">
               <div>
-                <div className="text-[10px] uppercase tracking-wider text-gray-300 mb-1">Scenario</div>
-                <div className="text-sm font-medium text-white">{demo.scenario}</div>
+                <div className="text-[10px] uppercase tracking-wider text-gray-600 mb-1">Scenario</div>
+                <div className="text-sm font-medium text-gray-900">{demo.scenario}</div>
               </div>
               <div>
-                <div className="text-[10px] uppercase tracking-wider text-gray-300 mb-1">Organization</div>
-                <div className="text-sm text-gray-300">{demo.organization}</div>
+                <div className="text-[10px] uppercase tracking-wider text-gray-600 mb-1">Organization</div>
+                <div className="text-sm text-gray-600">{demo.organization}</div>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-3 border-t border-white/10 pt-3 mb-4">
               <div>
-                <div className="text-[10px] uppercase tracking-wider text-gray-300 mb-0.5">Coordination Speed</div>
-                <div className="text-sm font-semibold text-white">{demo.timeSaved}</div>
+                <div className="text-[10px] uppercase tracking-wider text-gray-600 mb-0.5">Coordination Speed</div>
+                <div className="text-sm font-semibold text-gray-900">{demo.timeSaved}</div>
               </div>
               <div>
-                <div className="text-[10px] uppercase tracking-wider text-gray-300 mb-0.5">Value Impact</div>
+                <div className="text-[10px] uppercase tracking-wider text-gray-600 mb-0.5">Value Impact</div>
                 <div className="text-sm font-semibold text-emerald-400">{demo.valueSaved}</div>
               </div>
               <div>
-                <div className="text-[10px] uppercase tracking-wider text-gray-300 mb-0.5">Stakeholders</div>
-                <div className="text-sm text-white">{demo.stakeholders.toLocaleString()}</div>
+                <div className="text-[10px] uppercase tracking-wider text-gray-600 mb-0.5">Stakeholders</div>
+                <div className="text-sm text-gray-900">{demo.stakeholders.toLocaleString()}</div>
               </div>
               <div>
-                <div className="text-[10px] uppercase tracking-wider text-gray-300 mb-0.5">Impact Scope</div>
-                <div className="text-sm text-white">{demo.impact}</div>
+                <div className="text-[10px] uppercase tracking-wider text-gray-600 mb-0.5">Impact Scope</div>
+                <div className="text-sm text-gray-900">{demo.impact}</div>
               </div>
             </div>
 
-            <div className="flex items-center justify-between text-xs text-gray-300">
+            <div className="flex items-center justify-between text-xs text-gray-600">
               <span className="flex items-center gap-1"><Play className="w-3 h-3" />{demo.playbook}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -251,7 +251,7 @@ export default function IndustryDemosHub() {
 
   return (
     <PageLayout>
-      <div className="min-h-screen bg-white text-white">
+      <div className="min-h-screen bg-white text-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-16">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
@@ -260,10 +260,10 @@ export default function IndustryDemosHub() {
                 Industry Scenarios
               </h1>
             </div>
-            <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-6">
+            <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto mb-6">
               See Execution OS coordinate strategic execution across industries — from market entry opportunities to crisis response.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm text-gray-300">
+            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm text-gray-600">
               <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-blue-400" /> Offense & Defense</span>
               <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-emerald-400" /> 12-minute coordination</span>
               <span className="flex items-center gap-1.5"><DollarSign className="w-4 h-4 text-amber-400" /> Real enterprise impact</span>
@@ -277,7 +277,7 @@ export default function IndustryDemosHub() {
               <h2 className="text-xl font-bold">Strategic Opportunities</h2>
               <Badge className="bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs">OFFENSE</Badge>
             </div>
-            <p className="text-sm text-gray-200 mb-6 max-w-4xl">
+            <p className="text-sm text-gray-500 mb-6 max-w-4xl">
               When opportunities emerge — market shifts, competitive windows, strategic launches — 12-minute coordination enables your organization to execute while competitors are still scheduling meetings.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -291,7 +291,7 @@ export default function IndustryDemosHub() {
               <h2 className="text-xl font-bold">Crisis Response</h2>
               <Badge className="bg-red-500/10 text-red-400 border border-red-500/20 text-xs">DEFENSE</Badge>
             </div>
-            <p className="text-sm text-gray-200 mb-6 max-w-4xl">
+            <p className="text-sm text-gray-500 mb-6 max-w-4xl">
               When crises hit — ransomware, recalls, supplier failures — traditional coordination takes days. Execution OS compresses response to minutes, protecting value before the situation escalates.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -302,31 +302,31 @@ export default function IndustryDemosHub() {
           <Card className="bg-white border-gray-200 p-8">
             <div className="text-center max-w-3xl mx-auto">
               <h3 className="text-xl font-bold mb-3">The Detection-Execution Gap</h3>
-              <p className="text-gray-200 mb-6">
+              <p className="text-gray-500 mb-6">
                 Every industry has invested billions in AI for detection. But when action is needed, coordination still happens at email speed. Execution OS bridges that gap.
               </p>
               <div className="grid grid-cols-3 gap-4 mb-8">
                 <div>
                   <div className="text-2xl font-bold text-red-400 mb-1">48-72 hrs</div>
-                  <div className="text-xs text-gray-300">Traditional coordination</div>
+                  <div className="text-xs text-gray-600">Traditional coordination</div>
                 </div>
                 <div className="flex items-center justify-center">
                   <ArrowRight className="w-6 h-6 text-gray-600" />
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-emerald-400 mb-1">12 min</div>
-                  <div className="text-xs text-gray-300">Execution OS coordination</div>
+                  <div className="text-xs text-gray-600">Execution OS coordination</div>
                 </div>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link href="/activation">
-                  <Button size="lg" className="bg-emerald-600 hover:bg-emerald-500 text-white px-8">
+                  <Button size="lg" className="bg-emerald-600 hover:bg-emerald-500 text-gray-900 px-8">
                     <Zap className="w-5 h-5 mr-2" />
                     Try Live Activation
                   </Button>
                 </Link>
                 <Link href="/playbooks">
-                  <Button size="lg" variant="outline" className="border-gray-200 text-gray-300 hover:bg-gray-800 px-8">
+                  <Button size="lg" variant="outline" className="border-gray-200 text-gray-600 hover:bg-gray-800 px-8">
                     Explore 170 Playbooks
                   </Button>
                 </Link>

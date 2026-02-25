@@ -71,14 +71,14 @@ function InvestorPresentation() {
         <div className="inline-block px-5 py-2 rounded-full bg-teal-500/20 border border-teal-500/40 text-teal-300 text-sm font-semibold mb-8">
           10.3% revenue impact within 12 months
         </div>
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+        <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
           The Strategic Execution OS<br />for Fortune 1000
         </h1>
-        <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mb-12">
+        <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mb-12">
           170 pre-built playbooks that transform enterprise response from 72 hours to 12 minutes
         </p>
-        <div className="flex items-center gap-2 text-slate-300 text-lg">
-          <span className="font-semibold text-white">Martin Brunke</span>
+        <div className="flex items-center gap-2 text-gray-600 text-lg">
+          <span className="font-semibold text-gray-900">Martin Brunke</span>
           <span>, Founder & CEO</span>
           <span className="mx-2">|</span>
           <span className="text-teal-400">martinbrunke@executeiq.io</span>
@@ -89,15 +89,15 @@ function InvestorPresentation() {
     () => (
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">The Problem</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-10 text-center max-w-4xl">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-10 text-center max-w-4xl">
           30% of strategic value is lost to execution gaps.
         </h2>
         <div className="grid md:grid-cols-2 gap-10 max-w-5xl w-full">
           <div className="space-y-4">
-            <p className="text-slate-200 text-lg leading-relaxed">
+            <p className="text-gray-600 text-lg leading-relaxed">
               When a strategic trigger hits — a competitor launches, regulations shift, a cyber threat emerges — enterprises descend into coordination chaos.
             </p>
-            <p className="text-slate-200 text-lg leading-relaxed">
+            <p className="text-gray-600 text-lg leading-relaxed">
               Teams scramble across Slack, email, and ad-hoc meetings. Playbooks don't exist. Stakeholders aren't pre-identified. Budgets aren't pre-approved. The result: 72+ hours of fumbling while value evaporates.
             </p>
           </div>
@@ -110,8 +110,8 @@ function InvestorPresentation() {
             ].map((s, i) => (
               <div key={i} className="bg-white border border-gray-200 rounded-xl p-5">
                 <div className="text-2xl font-bold text-teal-400">{s.value}</div>
-                <div className="text-white font-medium">{s.label}</div>
-                <div className="text-slate-300 text-sm">{s.sub}</div>
+                <div className="text-gray-900 font-medium">{s.label}</div>
+                <div className="text-gray-600 text-sm">{s.sub}</div>
               </div>
             ))}
           </div>
@@ -122,7 +122,7 @@ function InvestorPresentation() {
     () => (
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">The Cost</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center max-w-4xl">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center max-w-4xl">
           Slow coordination is a $20M+ problem per incident.
         </h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl w-full">
@@ -133,8 +133,8 @@ function InvestorPresentation() {
           ].map((c, i) => (
             <div key={i} className={`bg-white border ${c.color} rounded-xl p-8 text-center`}>
               <div className="flex justify-center mb-4">{c.icon}</div>
-              <div className="text-3xl font-bold text-white mb-2">{c.value}</div>
-              <div className="text-slate-200 font-medium mb-1">{c.label}</div>
+              <div className="text-3xl font-bold text-gray-900 mb-2">{c.value}</div>
+              <div className="text-gray-600 font-medium mb-1">{c.label}</div>
               <div className="text-gray-500 text-sm">{c.sub}</div>
             </div>
           ))}
@@ -145,7 +145,7 @@ function InvestorPresentation() {
     () => (
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">The Solution</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center">
           Execution OS: The IDEA Framework™
         </h2>
         <div className="grid md:grid-cols-4 gap-6 max-w-5xl w-full mb-8">
@@ -157,19 +157,19 @@ function InvestorPresentation() {
           ].map((p, i) => (
             <div key={i} className="bg-white border border-gray-200 rounded-xl overflow-hidden">
               <div className={`bg-gradient-to-b ${p.color} p-4 flex items-center gap-3`}>
-                <span className="text-3xl font-black text-white/90">{p.letter}</span>
+                <span className="text-3xl font-black text-gray-900/90">{p.letter}</span>
                 <div>
-                  <div className="text-white font-bold text-sm">{p.name}</div>
-                  <div className="text-white/80">{p.icon}</div>
+                  <div className="text-gray-900 font-bold text-sm">{p.name}</div>
+                  <div className="text-gray-900/80">{p.icon}</div>
                 </div>
               </div>
               <div className="p-4">
-                <p className="text-slate-200 text-sm leading-relaxed">{p.desc}</p>
+                <p className="text-gray-600 text-sm leading-relaxed">{p.desc}</p>
               </div>
             </div>
           ))}
         </div>
-        <p className="text-slate-300 text-center">
+        <p className="text-gray-600 text-center">
           <span className="text-teal-400 font-semibold">170 playbooks</span> ready to deploy across <span className="text-teal-400 font-semibold">9 strategic domains</span>.
         </p>
       </div>
@@ -178,7 +178,7 @@ function InvestorPresentation() {
     () => (
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">The Transformation</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center">
           Same trigger. Different outcome.
         </h2>
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl w-full">
@@ -190,7 +190,7 @@ function InvestorPresentation() {
               {['T+0: Signal detected by random employee', 'T+4h: Escalated via email chain', 'T+12h: Leadership aware', 'T+24h: War room assembled', 'T+48h: Response plan drafted', 'T+72h: First coordinated action'].map((t, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-red-500 mt-2 shrink-0" />
-                  <span className="text-slate-200 text-sm">{t}</span>
+                  <span className="text-gray-600 text-sm">{t}</span>
                 </div>
               ))}
               <div className="mt-4 p-3 bg-red-900/40 rounded-lg text-red-300 font-semibold text-center">
@@ -206,7 +206,7 @@ function InvestorPresentation() {
               {['T+0: AI detects signal automatically', 'T+2m: Playbook matched with 94% confidence', 'T+4m: Stakeholders notified, tasks assigned', 'T+8m: Budget pre-approved, resources staged', 'T+12m: Full coordinated response active', 'T+24h: Post-action review, playbook refined'].map((t, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-teal-500 mt-2 shrink-0" />
-                  <span className="text-slate-200 text-sm">{t}</span>
+                  <span className="text-gray-600 text-sm">{t}</span>
                 </div>
               ))}
               <div className="mt-4 p-3 bg-teal-900/40 rounded-lg text-teal-300 font-semibold text-center">
@@ -221,7 +221,7 @@ function InvestorPresentation() {
     () => (
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">The Platform</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center">
           170 playbooks across three domains
         </h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl w-full">
@@ -231,7 +231,7 @@ function InvestorPresentation() {
               <h3 className="text-xl font-bold text-green-400">OFFENSE</h3>
               <span className="ml-auto text-2xl font-bold text-green-400">58</span>
             </div>
-            <ul className="space-y-2 text-slate-200 text-sm">
+            <ul className="space-y-2 text-gray-600 text-sm">
               {['Market expansion', 'Product launches', 'M&A integration', 'Competitive response', 'Revenue acceleration', 'Partnership activation'].map((item, i) => (
                 <li key={i} className="flex items-center gap-2"><ArrowRight className="w-3 h-3 text-green-500 shrink-0" />{item}</li>
               ))}
@@ -243,7 +243,7 @@ function InvestorPresentation() {
               <h3 className="text-xl font-bold text-red-400">DEFENSE</h3>
               <span className="ml-auto text-2xl font-bold text-red-400">58</span>
             </div>
-            <ul className="space-y-2 text-slate-200 text-sm">
+            <ul className="space-y-2 text-gray-600 text-sm">
               {['Crisis management', 'Cybersecurity response', 'Regulatory compliance', 'Reputation protection', 'Supply chain disruption', 'Legal & litigation'].map((item, i) => (
                 <li key={i} className="flex items-center gap-2"><ArrowRight className="w-3 h-3 text-red-500 shrink-0" />{item}</li>
               ))}
@@ -255,7 +255,7 @@ function InvestorPresentation() {
               <h3 className="text-xl font-bold text-purple-400">SPECIAL TEAMS</h3>
               <span className="ml-auto text-2xl font-bold text-purple-400">54</span>
             </div>
-            <ul className="space-y-2 text-slate-200 text-sm">
+            <ul className="space-y-2 text-gray-600 text-sm">
               {['Digital transformation', 'Culture change', 'Talent acquisition', 'ESG & sustainability', 'Innovation pipeline', 'Board governance'].map((item, i) => (
                 <li key={i} className="flex items-center gap-2"><ArrowRight className="w-3 h-3 text-purple-500 shrink-0" />{item}</li>
               ))}
@@ -268,12 +268,12 @@ function InvestorPresentation() {
     () => (
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">Market Opportunity</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center">
           $13-20B TAM growing 15-20% annually
         </h2>
         <div className="grid md:grid-cols-2 gap-10 max-w-5xl w-full">
           <div>
-            <h3 className="text-xl font-bold text-white mb-4">Market Breakdown</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Market Breakdown</h3>
             <div className="space-y-3">
               {[
                 { label: 'TAM', value: '$13-20B', desc: 'Strategic execution software' },
@@ -282,14 +282,14 @@ function InvestorPresentation() {
               ].map((m, i) => (
                 <div key={i} className="bg-white border border-gray-200 rounded-lg p-4 flex items-center gap-4">
                   <span className="text-teal-400 font-bold text-sm w-12">{m.label}</span>
-                  <span className="text-white font-bold text-lg">{m.value}</span>
-                  <span className="text-slate-300 text-sm ml-auto">{m.desc}</span>
+                  <span className="text-gray-900 font-bold text-lg">{m.value}</span>
+                  <span className="text-gray-600 text-sm ml-auto">{m.desc}</span>
                 </div>
               ))}
             </div>
           </div>
           <div>
-            <h3 className="text-xl font-bold text-white mb-4">Why Now?</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Why Now?</h3>
             <div className="space-y-3">
               {[
                 'Disruptions now compound and cascade — single-domain response is obsolete',
@@ -301,7 +301,7 @@ function InvestorPresentation() {
                 '"Predict-and-act is dead" — enterprises need response infrastructure',
                 '88% use AI, but only 1/3 scaling across enterprise (McKinsey State of AI)',
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3 text-slate-200">
+                <div key={i} className="flex items-start gap-3 text-gray-600">
                   <CheckCircle2 className="w-5 h-5 text-teal-400 mt-0.5 shrink-0" />
                   <span>{item}</span>
                 </div>
@@ -315,10 +315,10 @@ function InvestorPresentation() {
     () => (
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">The Paradigm Shift</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center max-w-4xl">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center max-w-4xl">
           From Prediction to Preparation
         </h2>
-        <p className="text-slate-300 text-center max-w-3xl mb-10">
+        <p className="text-gray-600 text-center max-w-3xl mb-10">
           There is no data on the future. What enterprises need is execution infrastructure built before the moment arrives.
         </p>
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl w-full mb-10">
@@ -329,7 +329,7 @@ function InvestorPresentation() {
               {['Assumes stable, linear environment', 'Ad-hoc response teams assembled after the fact', '72-hour coordination loops', 'Knowledge lost when people leave', 'Same cost, same scramble, every time'].map((t, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-red-500 mt-2 shrink-0" />
-                  <span className="text-slate-300 text-sm">{t}</span>
+                  <span className="text-gray-600 text-sm">{t}</span>
                 </div>
               ))}
             </div>
@@ -341,7 +341,7 @@ function InvestorPresentation() {
               {['Built for compound, cascading disruptions', 'Pre-built playbooks with decision rights mapped', '12-minute coordinated execution', 'Institutional intelligence that compounds', 'Each response makes the next one faster'].map((t, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-teal-500 mt-2 shrink-0" />
-                  <span className="text-slate-300 text-sm">{t}</span>
+                  <span className="text-gray-600 text-sm">{t}</span>
                 </div>
               ))}
             </div>
@@ -356,7 +356,7 @@ function InvestorPresentation() {
             <div key={i} className="bg-white border border-gray-200 rounded-xl p-4 text-center">
               <div className="text-gray-600 text-xs font-semibold uppercase">{m.from}</div>
               <div className="text-teal-400 font-bold my-1">→ {m.to}</div>
-              <div className="text-slate-300 text-xs">{m.desc}</div>
+              <div className="text-gray-600 text-xs">{m.desc}</div>
             </div>
           ))}
         </div>
@@ -367,7 +367,7 @@ function InvestorPresentation() {
     () => (
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">Competitive Landscape</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center max-w-4xl">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center max-w-4xl">
           No one owns strategic execution infrastructure.
         </h2>
         <div className="grid md:grid-cols-5 gap-4 max-w-5xl w-full">
@@ -378,7 +378,7 @@ function InvestorPresentation() {
             { name: 'Palantir', type: 'Data Analytics', has: 'Data analysis', missing: 'No playbooks, no coordination, no execution', color: 'border-gray-200' },
           ].map((c, i) => (
             <div key={i} className={`bg-white border ${c.color} rounded-xl p-4`}>
-              <div className="text-white font-bold text-sm mb-1">{c.name}</div>
+              <div className="text-gray-900 font-bold text-sm mb-1">{c.name}</div>
               <div className="text-gray-500 text-xs mb-3">{c.type}</div>
               <div className="text-green-400 text-xs mb-1">✓ {c.has}</div>
               <div className="text-red-400 text-xs">✗ {c.missing}</div>
@@ -400,7 +400,7 @@ function InvestorPresentation() {
     () => (
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">Business Model</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center">
           Enterprise SaaS with land-and-expand
         </h2>
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl w-full mb-10">
@@ -411,12 +411,12 @@ function InvestorPresentation() {
           ].map((t, i) => (
             <div key={i} className={`rounded-xl p-6 ${t.highlight ? 'bg-teal-950/40 border-2 border-teal-500/50' : 'bg-white border border-gray-200'}`}>
               {t.highlight && <div className="text-teal-400 text-xs font-bold uppercase mb-2">TARGET</div>}
-              <div className="text-white font-bold text-lg">{t.tier}</div>
+              <div className="text-gray-900 font-bold text-lg">{t.tier}</div>
               <div className="text-3xl font-bold text-teal-400 my-2">{t.price}</div>
-              <div className="text-slate-300 text-sm mb-4">{t.desc}</div>
+              <div className="text-gray-600 text-sm mb-4">{t.desc}</div>
               <ul className="space-y-2">
                 {t.features.map((f, j) => (
-                  <li key={j} className="text-slate-200 text-sm flex items-center gap-2">
+                  <li key={j} className="text-gray-600 text-sm flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-teal-500 shrink-0" />{f}
                   </li>
                 ))}
@@ -433,7 +433,7 @@ function InvestorPresentation() {
           ].map((m, i) => (
             <div key={i} className="text-center">
               <div className="text-2xl font-bold text-teal-400">{m.value}</div>
-              <div className="text-slate-300 text-sm">{m.label}</div>
+              <div className="text-gray-600 text-sm">{m.label}</div>
             </div>
           ))}
         </div>
@@ -443,15 +443,15 @@ function InvestorPresentation() {
     () => (
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">Traction & Validation</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center">
           Built, validated, ready to scale.
         </h2>
         <div className="grid md:grid-cols-2 gap-10 max-w-5xl w-full mb-10">
           <div>
-            <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2"><Rocket className="w-5 h-5 text-teal-400" /> Product Built</h3>
+            <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><Rocket className="w-5 h-5 text-teal-400" /> Product Built</h3>
             <div className="space-y-3">
               {['170 playbooks developed and tested', 'IDEA Framework™ fully implemented', 'AI signal detection engine live', 'Enterprise-grade security & compliance', 'Integration layer (Slack, Teams, ServiceNow)'].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 text-slate-200">
+                <div key={i} className="flex items-center gap-3 text-gray-600">
                   <CheckCircle2 className="w-5 h-5 text-green-400 shrink-0" />
                   <span>{item}</span>
                 </div>
@@ -459,10 +459,10 @@ function InvestorPresentation() {
             </div>
           </div>
           <div>
-            <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2"><Target className="w-5 h-5 text-teal-400" /> Market Validation</h3>
+            <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><Target className="w-5 h-5 text-teal-400" /> Market Validation</h3>
             <div className="space-y-3">
               {['F500 executive interviews confirm pain point', 'Advisory board of Fortune 1000 CxOs', 'LOIs from 3 enterprise prospects', 'Pilot program designed and ready', 'Strategic partnerships in development'].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 text-slate-200">
+                <div key={i} className="flex items-center gap-3 text-gray-600">
                   <CheckCircle2 className="w-5 h-5 text-green-400 shrink-0" />
                   <span>{item}</span>
                 </div>
@@ -478,7 +478,7 @@ function InvestorPresentation() {
           ].map((s, i) => (
             <div key={i} className="text-center bg-white border border-gray-200 rounded-xl p-6">
               <div className="text-3xl font-bold text-teal-400">{s.value}</div>
-              <div className="text-slate-300 text-sm">{s.label}</div>
+              <div className="text-gray-600 text-sm">{s.label}</div>
             </div>
           ))}
         </div>
@@ -488,26 +488,26 @@ function InvestorPresentation() {
     () => (
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">Platform Vision</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center">
           The Agentic Execution Layer
         </h2>
-        <p className="text-lg text-slate-300 max-w-3xl text-center mb-10">
+        <p className="text-lg text-gray-600 max-w-3xl text-center mb-10">
           AI agents are getting faster. Human coordination isn't. We sit in the middle.
         </p>
         <div className="grid grid-cols-3 gap-6 max-w-4xl w-full mb-10">
           <div className="text-center p-6 bg-white border border-blue-500/30 rounded-xl">
             <Bot className="w-8 h-8 text-blue-400 mx-auto mb-3" />
-            <div className="text-white font-bold mb-1">AI Agents</div>
+            <div className="text-gray-900 font-bold mb-1">AI Agents</div>
             <div className="text-gray-600 text-sm">Detect threats, surface insights, monitor signals</div>
           </div>
           <div className="text-center p-6 bg-indigo-900/40 border border-teal-500/40 rounded-xl">
             <Layers className="w-8 h-8 text-teal-400 mx-auto mb-3" />
             <div className="text-teal-300 font-bold mb-1">Execution OS</div>
-            <div className="text-slate-300 text-sm">Activate playbooks, coordinate roles, track execution</div>
+            <div className="text-gray-600 text-sm">Activate playbooks, coordinate roles, track execution</div>
           </div>
           <div className="text-center p-6 bg-white border border-amber-500/30 rounded-xl">
             <Users className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-            <div className="text-white font-bold mb-1">Human Leaders</div>
+            <div className="text-gray-900 font-bold mb-1">Human Leaders</div>
             <div className="text-gray-600 text-sm">Decide response, approve action, own outcomes</div>
           </div>
         </div>
@@ -519,13 +519,13 @@ function InvestorPresentation() {
           ].map((t, i) => (
             <div key={i} className={`bg-white border ${t.color} rounded-xl p-5`}>
               <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold ${t.badge} mb-3`}>{t.tier}</span>
-              <div className="text-white font-bold mb-1">{t.title}</div>
-              <p className="text-slate-300 text-sm">{t.desc}</p>
+              <div className="text-gray-900 font-bold mb-1">{t.title}</div>
+              <p className="text-gray-600 text-sm">{t.desc}</p>
             </div>
           ))}
         </div>
         <div className="bg-gradient-to-r   rounded-xl p-5 border border-teal-500/20 max-w-4xl w-full text-center">
-          <p className="text-slate-200 text-sm italic">
+          <p className="text-gray-600 text-sm italic">
             "Execution infrastructure for humans" → <span className="text-teal-400 font-semibold not-italic">Execution infrastructure for the agentic enterprise</span>
           </p>
           <p className="text-gray-600 text-xs mt-2">New category. No direct competitor.</p>
@@ -536,19 +536,19 @@ function InvestorPresentation() {
     () => (
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">Team</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center">
           Built by someone who's lived this problem.
         </h2>
         <div className="max-w-4xl w-full">
           <div className="bg-white border border-gray-200 rounded-xl p-8 mb-8">
             <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="w-24 h-24 bg-gradient-to-br from-teal-500 to-blue-600 rounded-2xl flex items-center justify-center shrink-0">
-                <Users className="w-12 h-12 text-white" />
+                <Users className="w-12 h-12 text-gray-900" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-white mb-1">Martin Brunke</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-1">Martin Brunke</h3>
                 <p className="text-teal-400 font-medium mb-4">Founder & CEO</p>
-                <div className="space-y-3 text-slate-200">
+                <div className="space-y-3 text-gray-600">
                   <div className="flex items-start gap-3">
                     <Building2 className="w-5 h-5 text-teal-400 mt-0.5 shrink-0" />
                     <span><strong>20+ years</strong> Fortune 500 leadership — Ford, Toyota, Lockheed Martin, Boyd Gaming, Churchill Downs, Charles Schwab</span>
@@ -565,7 +565,7 @@ function InvestorPresentation() {
               </div>
             </div>
           </div>
-          <div className="bg-white border border-teal-500/20 rounded-xl p-6 italic text-slate-200 text-lg text-center">
+          <div className="bg-white border border-teal-500/20 rounded-xl p-6 italic text-gray-600 text-lg text-center">
             "I've seen this problem from the coaching box and the boardroom. When the signal hits, you either have a playbook or you're improvising. Fortune 1000 companies are still improvising."
           </div>
         </div>
@@ -575,7 +575,7 @@ function InvestorPresentation() {
     () => (
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">Go-to-Market</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center">
           Land with Defense, expand across domains.
         </h2>
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl w-full mb-10">
@@ -586,14 +586,14 @@ function InvestorPresentation() {
           ].map((p, i) => (
             <div key={i} className={`bg-white border ${p.color} rounded-xl p-6`}>
               <div className="text-teal-400 font-bold text-sm mb-1">{p.phase}</div>
-              <div className="text-white font-bold text-lg mb-1">{p.title}</div>
-              <div className="text-slate-300 text-sm mb-3">{p.target}</div>
-              <p className="text-slate-200 text-sm">{p.desc}</p>
+              <div className="text-gray-900 font-bold text-lg mb-1">{p.title}</div>
+              <div className="text-gray-600 text-sm mb-3">{p.target}</div>
+              <p className="text-gray-600 text-sm">{p.desc}</p>
             </div>
           ))}
         </div>
         <div className="max-w-4xl w-full">
-          <h3 className="text-white font-bold mb-4 text-center">Target Verticals</h3>
+          <h3 className="text-gray-900 font-bold mb-4 text-center">Target Verticals</h3>
           <div className="flex gap-3 flex-wrap justify-center">
             {[
               { name: 'Financial Services', pct: '35%' },
@@ -604,7 +604,7 @@ function InvestorPresentation() {
             ].map((v, i) => (
               <div key={i} className="bg-white border border-gray-200 rounded-lg px-4 py-2 flex items-center gap-2">
                 <span className="text-teal-400 font-bold">{v.pct}</span>
-                <span className="text-slate-200 text-sm">{v.name}</span>
+                <span className="text-gray-600 text-sm">{v.name}</span>
               </div>
             ))}
           </div>
@@ -615,7 +615,7 @@ function InvestorPresentation() {
     () => (
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">Path to Scale</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center">
           $100M+ ARR in 5 years.
         </h2>
         <div className="max-w-5xl w-full mb-10">
@@ -629,8 +629,8 @@ function InvestorPresentation() {
             ].map((y, i) => (
               <div key={i} className="bg-white border border-gray-200 rounded-xl p-4 text-center">
                 <div className="text-teal-400 font-bold text-sm mb-2">{y.year}</div>
-                <div className="text-2xl font-bold text-white mb-1">{y.arr}</div>
-                <div className="text-slate-300 text-xs">{y.customers} customers</div>
+                <div className="text-2xl font-bold text-gray-900 mb-1">{y.arr}</div>
+                <div className="text-gray-600 text-xs">{y.customers} customers</div>
                 <div className="text-gray-500 text-xs">{y.focus}</div>
               </div>
             ))}
@@ -638,7 +638,7 @@ function InvestorPresentation() {
         </div>
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl w-full">
           <div>
-            <h3 className="text-white font-bold mb-3">Unit Economics</h3>
+            <h3 className="text-gray-900 font-bold mb-3">Unit Economics</h3>
             <div className="space-y-2">
               {[
                 { label: 'Target ACV', value: '$750K' },
@@ -648,14 +648,14 @@ function InvestorPresentation() {
                 { label: 'LTV:CAC', value: '>10:1' },
               ].map((e, i) => (
                 <div key={i} className="flex justify-between text-sm">
-                  <span className="text-slate-300">{e.label}</span>
+                  <span className="text-gray-600">{e.label}</span>
                   <span className="text-teal-400 font-semibold">{e.value}</span>
                 </div>
               ))}
             </div>
           </div>
           <div>
-            <h3 className="text-white font-bold mb-3">Exit Potential</h3>
+            <h3 className="text-gray-900 font-bold mb-3">Exit Potential</h3>
             <div className="space-y-2">
               {[
                 { label: 'Strategic acquirers', value: 'ServiceNow, Palantir, SAP' },
@@ -664,8 +664,8 @@ function InvestorPresentation() {
                 { label: 'Comparable exits', value: '$5-15B valuations' },
               ].map((e, i) => (
                 <div key={i} className="flex justify-between text-sm">
-                  <span className="text-slate-300">{e.label}</span>
-                  <span className="text-slate-200 font-medium">{e.value}</span>
+                  <span className="text-gray-600">{e.label}</span>
+                  <span className="text-gray-600 font-medium">{e.value}</span>
                 </div>
               ))}
             </div>
@@ -677,12 +677,12 @@ function InvestorPresentation() {
     () => (
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-teal-400 font-semibold text-sm uppercase tracking-widest mb-3">The Ask</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center">
           Raising $2M Pre-Seed
         </h2>
         <div className="grid md:grid-cols-2 gap-10 max-w-5xl w-full">
           <div>
-            <h3 className="text-white font-bold text-lg mb-6">Use of Funds</h3>
+            <h3 className="text-gray-900 font-bold text-lg mb-6">Use of Funds</h3>
             <div className="space-y-4">
               {[
                 { label: 'Engineering', pct: 50, color: 'bg-teal-500' },
@@ -692,8 +692,8 @@ function InvestorPresentation() {
               ].map((f, i) => (
                 <div key={i}>
                   <div className="flex justify-between text-sm mb-1">
-                    <span className="text-slate-200">{f.label}</span>
-                    <span className="text-white font-bold">{f.pct}%</span>
+                    <span className="text-gray-600">{f.label}</span>
+                    <span className="text-gray-900 font-bold">{f.pct}%</span>
                   </div>
                   <div className="w-full bg-gray-50 rounded-full h-3">
                     <div className={`${f.color} h-3 rounded-full`} style={{ width: `${f.pct}%` }} />
@@ -703,7 +703,7 @@ function InvestorPresentation() {
             </div>
           </div>
           <div>
-            <h3 className="text-white font-bold text-lg mb-6">18-Month Milestones</h3>
+            <h3 className="text-gray-900 font-bold text-lg mb-6">18-Month Milestones</h3>
             <div className="space-y-4">
               {[
                 { month: 'Month 1-6', milestone: 'Hire core engineering team. Ship v2 with enterprise SSO and advanced AI.' },
@@ -713,7 +713,7 @@ function InvestorPresentation() {
               ].map((m, i) => (
                 <div key={i} className="flex gap-4">
                   <div className="text-teal-400 font-bold text-sm whitespace-nowrap w-24 shrink-0">{m.month}</div>
-                  <p className="text-slate-200 text-sm">{m.milestone}</p>
+                  <p className="text-gray-600 text-sm">{m.milestone}</p>
                 </div>
               ))}
             </div>
@@ -725,9 +725,9 @@ function InvestorPresentation() {
     () => (
       <div className="flex flex-col items-center justify-center h-full text-center px-4">
         <div className="w-20 h-20 bg-gradient-to-br from-teal-500 to-blue-600 rounded-2xl flex items-center justify-center mb-8">
-          <Zap className="w-10 h-10 text-white" />
+          <Zap className="w-10 h-10 text-gray-900" />
         </div>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 max-w-4xl">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 max-w-4xl">
           The strategic execution OS Fortune 1000 is missing.
         </h2>
         <div className="grid grid-cols-4 gap-6 max-w-3xl w-full my-10">
@@ -739,14 +739,14 @@ function InvestorPresentation() {
           ].map((s, i) => (
             <div key={i} className="text-center">
               <div className="text-3xl font-bold text-teal-400">{s.value}</div>
-              <div className="text-slate-300 text-sm">{s.label}</div>
+              <div className="text-gray-600 text-sm">{s.label}</div>
             </div>
           ))}
         </div>
-        <p className="text-xl text-slate-200 max-w-2xl mb-10 italic">
+        <p className="text-xl text-gray-600 max-w-2xl mb-10 italic">
           "Every consultancy is writing about this problem. Execution OS has the product."
         </p>
-        <div className="flex items-center gap-4 text-slate-300">
+        <div className="flex items-center gap-4 text-gray-600">
           <Mail className="w-5 h-5 text-teal-400" />
           <span className="text-teal-400 font-medium">martinbrunke@executeiq.io</span>
           <span className="mx-2">|</span>
@@ -780,11 +780,11 @@ function InvestorPresentation() {
             size="sm"
             onClick={goToPrev}
             disabled={currentSlide === 0}
-            className="text-slate-300 hover:text-white disabled:opacity-30"
+            className="text-gray-600 hover:text-white disabled:opacity-30"
           >
             <ChevronLeft className="w-5 h-5" />
           </Button>
-          <span className="text-slate-300 text-sm font-mono min-w-[80px] text-center">
+          <span className="text-gray-600 text-sm font-mono min-w-[80px] text-center">
             {currentSlide + 1} / {totalSlides}
           </span>
           <Button
@@ -792,7 +792,7 @@ function InvestorPresentation() {
             size="sm"
             onClick={goToNext}
             disabled={currentSlide === totalSlides - 1}
-            className="text-slate-300 hover:text-white disabled:opacity-30"
+            className="text-gray-600 hover:text-white disabled:opacity-30"
           >
             <ChevronRight className="w-5 h-5" />
           </Button>
@@ -812,7 +812,7 @@ function InvestorPresentation() {
           variant="ghost"
           size="sm"
           onClick={toggleFullscreen}
-          className="text-slate-300 hover:text-white"
+          className="text-gray-600 hover:text-white"
         >
           {isFullscreen ? <Minimize2 className="w-5 h-5" /> : <Maximize2 className="w-5 h-5" />}
         </Button>

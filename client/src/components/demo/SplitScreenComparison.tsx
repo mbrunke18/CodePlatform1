@@ -275,7 +275,7 @@ export function SplitScreenComparison() {
                   <Badge variant="outline" className="bg-red-600/20 text-red-300 border-red-500/50">
                     Traditional Response
                   </Badge>
-                  <h3 className="text-lg font-bold text-red-100 mt-2">{data.traditionalState}</h3>
+                  <h3 className="text-lg font-bold text-red-500 mt-2">{data.traditionalState}</h3>
                 </div>
                 <AlertTriangle className="h-8 w-8 text-red-400 animate-pulse" />
               </div>
@@ -286,7 +286,7 @@ export function SplitScreenComparison() {
                   <div key={idx} className="bg-black/30 rounded-lg p-3 border border-red-500/20">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-2xl font-bold text-red-100">{metric.traditional.value}</p>
+                        <p className="text-2xl font-bold text-red-500">{metric.traditional.value}</p>
                         <p className="text-xs text-red-300">{metric.traditional.sublabel}</p>
                       </div>
                       <TrendingDown className="h-5 w-5 text-red-400" />
@@ -300,7 +300,7 @@ export function SplitScreenComparison() {
                 <p className="text-xs font-semibold text-red-300 mb-2">Executive Pressure</p>
                 <div className="space-y-1">
                   {data.executivePressure.traditional.map((item, idx) => (
-                    <p key={idx} className="text-xs text-red-200/90">{item}</p>
+                    <p key={idx} className="text-xs text-red-600/90">{item}</p>
                   ))}
                 </div>
               </div>
@@ -316,7 +316,7 @@ export function SplitScreenComparison() {
                   <Badge variant="outline" className="bg-blue-600/20 text-blue-300 border-blue-500/50">
                     Execution OS Response
                   </Badge>
-                  <h3 className="text-lg font-bold text-blue-100 mt-2">{data.mState}</h3>
+                  <h3 className="text-lg font-bold text-blue-600 mt-2">{data.mState}</h3>
                 </div>
                 {currentStep === 5 ? (
                   <CheckCircle className="h-8 w-8 text-green-400 animate-pulse" />
@@ -331,7 +331,7 @@ export function SplitScreenComparison() {
                   <div key={idx} className="bg-black/30 rounded-lg p-3 border border-blue-500/20">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-2xl font-bold text-blue-100">{metric.m.value}</p>
+                        <p className="text-2xl font-bold text-blue-600">{metric.m.value}</p>
                         <p className="text-xs text-blue-300">{metric.m.sublabel}</p>
                       </div>
                       <TrendingUp className="h-5 w-5 text-green-400" />
@@ -345,7 +345,7 @@ export function SplitScreenComparison() {
                 <p className="text-xs font-semibold text-blue-300 mb-2">Executive Confidence</p>
                 <div className="space-y-1">
                   {data.executivePressure.m.map((item, idx) => (
-                    <p key={idx} className="text-xs text-blue-200/90">{item}</p>
+                    <p key={idx} className="text-xs text-blue-700/90">{item}</p>
                   ))}
                 </div>
               </div>
@@ -356,8 +356,8 @@ export function SplitScreenComparison() {
         {/* Progress indicator */}
         <div className="px-6 py-3 bg-white border-t border-gray-200">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-xs text-gray-200">Crisis Response Progress: {data.title}</p>
-            <p className="text-xs font-mono text-gray-200">Step {currentStep + 1} / 6</p>
+            <p className="text-xs text-gray-500">Crisis Response Progress: {data.title}</p>
+            <p className="text-xs font-mono text-gray-500">Step {currentStep + 1} / 6</p>
           </div>
           <Progress value={((currentStep + 1) / 6) * 100} className="h-1" />
         </div>

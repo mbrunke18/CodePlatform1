@@ -87,7 +87,7 @@ export default function ExecuteIQVideo() {
 
   return (
     <PageLayout>
-    <div className="min-h-screen bg-[#0a0a0f] text-white overflow-hidden">
+    <div className="min-h-screen bg-[#0a0a0f] text-gray-900 overflow-hidden">
       <div className="relative w-full h-screen">
         <AnimatePresence mode="wait">
           <motion.div
@@ -130,8 +130,8 @@ export default function ExecuteIQVideo() {
                     <span className="text-xl font-bold text-[#D4AF37]">EIQ</span>
                   </div>
                 </div>
-                <h2 className="text-3xl font-bold text-white mb-2">Execution OS</h2>
-                <p className="text-white/60">Strategic Execution OS</p>
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">Execution OS</h2>
+                <p className="text-gray-900/60">Strategic Execution OS</p>
               </motion.div>
               
               <Button
@@ -143,7 +143,7 @@ export default function ExecuteIQVideo() {
                 Watch Video
               </Button>
               
-              <p className="text-white/40 text-sm mt-4">
+              <p className="text-gray-900/40 text-sm mt-4">
                 {Math.floor(totalDuration / 1000)} seconds • {SCENES.length} scenes
               </p>
             </div>
@@ -152,7 +152,7 @@ export default function ExecuteIQVideo() {
 
         <div className="absolute top-4 left-4 z-30">
           <div className="bg-black/40 backdrop-blur-sm rounded-lg px-3 py-1.5 text-sm">
-            <span className="text-white/60">Scene {currentScene + 1}/{SCENES.length}:</span>
+            <span className="text-gray-900/60">Scene {currentScene + 1}/{SCENES.length}:</span>
             <span className="text-[#D4AF37] ml-2 font-medium">{SCENES[currentScene].label}</span>
           </div>
         </div>
@@ -185,7 +185,7 @@ export default function ExecuteIQVideo() {
                 variant="ghost"
                 size="icon"
                 onClick={restart}
-                className="text-white hover:bg-white/10"
+                className="text-gray-900 hover:bg-white/10"
               >
                 <RotateCcw className="w-5 h-5" />
               </Button>
@@ -194,7 +194,7 @@ export default function ExecuteIQVideo() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsPlaying(!isPlaying)}
-                className="text-white hover:bg-white/10"
+                className="text-gray-900 hover:bg-white/10"
               >
                 {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
               </Button>
@@ -204,7 +204,7 @@ export default function ExecuteIQVideo() {
                 size="icon"
                 onClick={nextScene}
                 disabled={currentScene >= SCENES.length - 1}
-                className="text-white hover:bg-white/10 disabled:opacity-30"
+                className="text-gray-900 hover:bg-white/10 disabled:opacity-30"
               >
                 <SkipForward className="w-5 h-5" />
               </Button>
@@ -213,13 +213,13 @@ export default function ExecuteIQVideo() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsMuted(!isMuted)}
-                className="text-white hover:bg-white/10"
+                className="text-gray-900 hover:bg-white/10"
               >
                 {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
               </Button>
             </div>
 
-            <div className="text-sm text-white/60 font-mono min-w-[80px] text-right">
+            <div className="text-sm text-gray-900/60 font-mono min-w-[80px] text-right">
               {Math.floor(overallProgress / 1000)}s / {Math.floor(totalDuration / 1000)}s
             </div>
           </div>

@@ -269,7 +269,7 @@ export default function PlaybookActivationConsole() {
 
         {/* Execution Timer & Status */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card className="bg-gradient-to-br from-red-500 to-orange-600 text-white">
+          <Card className="bg-gradient-to-br from-red-500 to-orange-600 text-gray-900">
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-medium flex items-center gap-2">
                 <Clock className="h-4 w-4" />
@@ -286,7 +286,7 @@ export default function PlaybookActivationConsole() {
             </CardContent>
           </Card>
 
-          <Card className={isOnTrack ? 'bg-gradient-to-br from-green-500 to-emerald-600 text-white' : 'bg-gradient-to-br from-yellow-500 to-amber-600 text-white'}>
+          <Card className={isOnTrack ? 'bg-gradient-to-br from-green-500 to-emerald-600 text-gray-900' : 'bg-gradient-to-br from-yellow-500 to-amber-600 text-gray-900'}>
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-medium flex items-center gap-2">
                 <Target className="h-4 w-4" />
@@ -303,7 +303,7 @@ export default function PlaybookActivationConsole() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-blue-500 to-cyan-600 text-white">
+          <Card className="bg-gradient-to-br from-blue-500 to-cyan-600 text-gray-900">
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-medium flex items-center gap-2">
                 <Zap className="h-4 w-4" />
@@ -333,7 +333,7 @@ export default function PlaybookActivationConsole() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-purple-500 to-pink-600 text-white">
+          <Card className="bg-gradient-to-br from-purple-500 to-pink-600 text-gray-900">
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-medium flex items-center gap-2">
                 <Trophy className="h-4 w-4" />
@@ -576,7 +576,7 @@ export default function PlaybookActivationConsole() {
         {/* Success Message */}
         {executionStatus === 'completed' && (
           <>
-            <Card className="bg-gradient-to-br from-green-500 to-emerald-600 text-white border-0">
+            <Card className="bg-gradient-to-br from-green-500 to-emerald-600 text-gray-900 border-0">
               <CardContent className="pt-6">
                 <div className="text-center space-y-3">
                   <Trophy className="h-16 w-16 mx-auto" />

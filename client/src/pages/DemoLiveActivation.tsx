@@ -429,7 +429,7 @@ function DemoLiveActivation() {
   };
 
   return (
-    <div className="page-background min-h-screen bg-white text-white">
+    <div className="page-background min-h-screen bg-white text-gray-900">
       <DemoNavHeader title="Execution OS Live Activation Demo" showBackButton={true} />
       <div className="pt-20 p-8">
       {/* Confetti Celebration */}
@@ -451,7 +451,7 @@ function DemoLiveActivation() {
               Execution OS Live Activation Demo
             </h1>
             <div className="flex items-center gap-3 mb-2">
-              <Badge className="bg-green-600 text-white px-4 py-2 text-sm" data-testid="badge-human-in-loop">
+              <Badge className="bg-green-600 text-gray-900 px-4 py-2 text-sm" data-testid="badge-human-in-loop">
                 <Shield className="w-4 h-4 mr-2 inline" />
                 Human-in-the-Loop Activation
               </Badge>
@@ -465,7 +465,7 @@ function DemoLiveActivation() {
               onClick={resetDemo}
               variant="outline"
               size="lg"
-              className="text-lg text-white border-slate-600 hover:bg-slate-800"
+              className="text-lg text-gray-900 border-slate-600 hover:bg-slate-800"
               data-testid="button-reset-demo"
             >
               <RefreshCw className="mr-2 h-5 w-5" />
@@ -475,7 +475,7 @@ function DemoLiveActivation() {
               <Button
                 onClick={startDemoActivation}
                 size="lg"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-xl px-8 py-6"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-gray-900 text-xl px-8 py-6"
                 data-testid="button-start-demo"
               >
                 <Play className="mr-2 h-6 w-6" />
@@ -524,7 +524,7 @@ function DemoLiveActivation() {
                 <p className="text-slate-600 dark:text-slate-300 text-lg mb-6">
                   Click "Begin Activation" above to start the 12-minute live demonstration
                 </p>
-                <div className="flex items-center justify-center gap-4 text-sm text-slate-300 dark:text-slate-300">
+                <div className="flex items-center justify-center gap-4 text-sm text-gray-600 dark:text-slate-300">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
                     <span>Real-time coordination</span>
@@ -555,7 +555,7 @@ function DemoLiveActivation() {
                   <h2 className="text-3xl font-bold text-red-900 dark:text-red-100" data-testid="text-scenario-title">
                     {DEMO_SCENARIO.title}
                   </h2>
-                  <Badge className="bg-red-600 text-white text-lg px-4 py-2">ACTIVE</Badge>
+                  <Badge className="bg-red-600 text-gray-900 text-lg px-4 py-2">ACTIVE</Badge>
                 </div>
                 <p className="text-xl text-slate-700 dark:text-slate-300 mb-3" data-testid="text-playbook-name">
                   Playbook: {DEMO_SCENARIO.playbook}
@@ -576,7 +576,7 @@ function DemoLiveActivation() {
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-                  <Info className="w-6 h-6 text-white" />
+                  <Info className="w-6 h-6 text-gray-900" />
                 </div>
               </div>
               <div className="flex-1 page-background">
@@ -675,7 +675,7 @@ function DemoLiveActivation() {
                         <div className={`text-xs ${isAcknowledged ? 'text-green-600 dark:text-green-400' : 'text-slate-600 dark:text-slate-300'} truncate`}>
                           {stakeholder.role}
                         </div>
-                        <div className="text-xs text-slate-300 dark:text-slate-300 truncate">
+                        <div className="text-xs text-gray-600 dark:text-slate-300 truncate">
                           {stakeholder.department}
                         </div>
                       </div>
@@ -730,7 +730,7 @@ function DemoLiveActivation() {
                     <div className="text-6xl font-bold text-green-400 mb-2" data-testid="text-final-time">
                       {finalMetrics.coordinationTime}
                     </div>
-                    <div className="text-xl text-slate-300">Coordination Time</div>
+                    <div className="text-xl text-gray-600">Coordination Time</div>
                   </CardContent>
                 </Card>
 
@@ -740,7 +740,7 @@ function DemoLiveActivation() {
                     <div className="text-6xl font-bold text-blue-400 mb-2" data-testid="text-final-acks">
                       {finalMetrics.stakeholdersAcknowledged}/{finalMetrics.stakeholdersNotified}
                     </div>
-                    <div className="text-xl text-slate-300">Acknowledged</div>
+                    <div className="text-xl text-gray-600">Acknowledged</div>
                   </CardContent>
                 </Card>
 
@@ -750,7 +750,7 @@ function DemoLiveActivation() {
                     <div className="text-6xl font-bold text-purple-400 mb-2" data-testid="text-final-rate">
                       {finalMetrics.acknowledgmentRate}%
                     </div>
-                    <div className="text-xl text-slate-300">Success Rate</div>
+                    <div className="text-xl text-gray-600">Success Rate</div>
                   </CardContent>
                 </Card>
 
@@ -760,7 +760,7 @@ function DemoLiveActivation() {
                     <div className="text-6xl font-bold text-yellow-400 mb-2" data-testid="text-final-avg">
                       {finalMetrics.averageResponseTime} min
                     </div>
-                    <div className="text-xl text-slate-300">Avg Response</div>
+                    <div className="text-xl text-gray-600">Avg Response</div>
                   </CardContent>
                 </Card>
               </div>
@@ -781,7 +781,7 @@ function DemoLiveActivation() {
                         48-72h
                       </div>
                       <div className="text-xl text-slate-600 dark:text-slate-200">Traditional coordination</div>
-                      <div className="text-lg text-slate-300 mt-2">Email chains, meetings, delays</div>
+                      <div className="text-lg text-gray-600 mt-2">Email chains, meetings, delays</div>
                     </div>
 
                     {/* Arrow */}
@@ -812,7 +812,7 @@ function DemoLiveActivation() {
                     <div className="text-5xl font-bold text-blue-400 mb-3" data-testid="text-time-saved">
                       {finalMetrics.timeSavedHours.toFixed(1)} hours
                     </div>
-                    <div className="text-2xl text-slate-300">Time Saved</div>
+                    <div className="text-2xl text-gray-600">Time Saved</div>
                   </CardContent>
                 </Card>
 
@@ -822,7 +822,7 @@ function DemoLiveActivation() {
                     <div className="text-5xl font-bold text-green-400 mb-3" data-testid="text-value-saved">
                       ${finalMetrics.valueSaved.toLocaleString()}
                     </div>
-                    <div className="text-2xl text-slate-300">Executive Time Value</div>
+                    <div className="text-2xl text-gray-600">Executive Time Value</div>
                   </CardContent>
                 </Card>
 
@@ -832,7 +832,7 @@ function DemoLiveActivation() {
                     <div className="text-5xl font-bold text-purple-400 mb-3" data-testid="text-velocity">
                       {finalMetrics.velocityMultiplier}x Faster
                     </div>
-                    <div className="text-2xl text-slate-300">Strategic Velocity</div>
+                    <div className="text-2xl text-gray-600">Strategic Velocity</div>
                   </CardContent>
                 </Card>
               </div>
@@ -841,7 +841,7 @@ function DemoLiveActivation() {
               <div className="flex justify-center gap-6">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-2xl px-12 py-8"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-gray-900 text-2xl px-12 py-8"
                   data-testid="button-new-demo"
                   onClick={resetDemo}
                 >
@@ -995,7 +995,7 @@ function DemoLiveActivation() {
                   <Activity className="h-8 w-8 text-blue-400" />
                   Execution Timeline - What's Happening
                 </span>
-                <Badge variant="outline" className="text-lg px-4 py-2 text-white border-slate-500">
+                <Badge variant="outline" className="text-lg px-4 py-2 text-gray-900 border-slate-500">
                   Live
                 </Badge>
               </CardTitle>
@@ -1070,7 +1070,7 @@ function DemoLiveActivation() {
                   <CheckCircle2 className="h-8 w-8 text-green-400" />
                   Live Acknowledgment Feed
                 </span>
-                <Badge variant="outline" className="text-lg px-4 py-2 text-white border-slate-500">
+                <Badge variant="outline" className="text-lg px-4 py-2 text-gray-900 border-slate-500">
                   Real-time
                 </Badge>
               </CardTitle>

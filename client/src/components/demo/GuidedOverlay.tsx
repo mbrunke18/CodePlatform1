@@ -227,7 +227,7 @@ export default function GuidedOverlay() {
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
               {/* Demo Info */}
-              <div className="flex items-center gap-2 text-white">
+              <div className="flex items-center gap-2 text-gray-900">
                 <Badge variant="outline" className="bg-blue-600/20 text-blue-300 border-blue-500/50">
                   LIVE DEMO
                 </Badge>
@@ -243,7 +243,7 @@ export default function GuidedOverlay() {
                   variant="ghost" 
                   onClick={prevScene}
                   disabled={state.currentScene === 0}
-                  className="text-white hover:bg-white/10"
+                  className="text-gray-900 hover:bg-white/10"
                   data-testid="demo-prev-btn"
                 >
                   <SkipBack className="h-4 w-4" />
@@ -253,7 +253,7 @@ export default function GuidedOverlay() {
                   size="sm" 
                   variant="ghost"
                   onClick={state.isPaused ? resumeDemo : pauseDemo}
-                  className="text-white hover:bg-white/10"
+                  className="text-gray-900 hover:bg-white/10"
                   data-testid="demo-play-pause-btn"
                 >
                   {state.isPaused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}
@@ -264,7 +264,7 @@ export default function GuidedOverlay() {
                   variant="ghost"
                   onClick={nextScene}
                   disabled={state.currentScene >= state.totalScenes - 1}
-                  className="text-white hover:bg-white/10"
+                  className="text-gray-900 hover:bg-white/10"
                   data-testid="demo-next-btn"
                 >
                   <SkipForward className="h-4 w-4" />
@@ -277,7 +277,7 @@ export default function GuidedOverlay() {
                   size="sm" 
                   variant="ghost"
                   onClick={togglePresentationMode}
-                  className="text-white hover:bg-white/10"
+                  className="text-gray-900 hover:bg-white/10"
                   data-testid="demo-presentation-mode-btn"
                 >
                   {state.presentationMode ? <Minimize className="h-4 w-4" /> : <Maximize className="h-4 w-4" />}
@@ -287,7 +287,7 @@ export default function GuidedOverlay() {
                   size="sm" 
                   variant="ghost"
                   onClick={toggleSpeech}
-                  className={`text-white hover:bg-white/10 ${speechEnabled ? 'bg-blue-600/30' : ''}`}
+                  className={`text-gray-900 hover:bg-white/10 ${speechEnabled ? 'bg-blue-600/30' : ''}`}
                   data-testid="demo-speech-toggle-btn"
                   title={speechEnabled ? 'Disable narration audio' : 'Enable narration audio'}
                 >
@@ -298,7 +298,7 @@ export default function GuidedOverlay() {
                   size="sm" 
                   variant="ghost"
                   onClick={stopDemo}
-                  className="text-white hover:bg-white/10 hover:text-red-400"
+                  className="text-gray-900 hover:bg-white/10 hover:text-red-400"
                   data-testid="demo-stop-btn"
                 >
                   <X className="h-4 w-4" />
@@ -334,23 +334,23 @@ export default function GuidedOverlay() {
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0">
                   <div className={`w-10 h-10 rounded-md flex items-center justify-center ${isSpeaking && speechEnabled ? 'bg-blue-600 animate-pulse' : 'bg-blue-600/60'}`}>
-                    <Volume2 className={`h-5 w-5 text-white ${isSpeaking && speechEnabled ? 'animate-pulse' : ''}`} />
+                    <Volume2 className={`h-5 w-5 text-gray-900 ${isSpeaking && speechEnabled ? 'animate-pulse' : ''}`} />
                   </div>
                 </div>
                 
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-sm font-bold text-white">
+                    <h3 className="text-sm font-bold text-gray-900">
                       {currentSceneData.title}
                     </h3>
                     {speechEnabled && (
-                      <Badge className="bg-green-600/80 text-white text-xs">
+                      <Badge className="bg-green-600/80 text-gray-900 text-xs">
                         🔊 Audio On
                       </Badge>
                     )}
                   </div>
                   
-                  <p className="text-white text-sm leading-relaxed">
+                  <p className="text-gray-900 text-sm leading-relaxed">
                     {currentSceneData.narration}
                   </p>
                   
@@ -376,9 +376,9 @@ export default function GuidedOverlay() {
             <CardContent className="p-8 overflow-y-auto max-h-[90vh]">
               <div className="text-center mb-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Settings className="h-8 w-8 text-white" />
+                  <Settings className="h-8 w-8 text-gray-900" />
                 </div>
-                <h2 className="text-2xl font-bold text-white mb-2">
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">
                   {currentSceneData.title}
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300 text-base">
@@ -391,15 +391,15 @@ export default function GuidedOverlay() {
                   <Button
                     key={option.id}
                     onClick={() => makeDecision(option.id)}
-                    className="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white p-4 h-auto text-left justify-start transition-all duration-300 transform hover:scale-105"
+                    className="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-gray-900 p-4 h-auto text-left justify-start transition-all duration-300 transform hover:scale-105"
                     data-testid={`decision-option-${option.id}`}
                   >
                     <div className="space-y-1.5 w-full">
                       <div className="font-bold text-base">{option.label}</div>
-                      <div className="text-xs text-blue-100 opacity-90 leading-snug">
+                      <div className="text-xs text-blue-600 opacity-90 leading-snug">
                         {option.description}
                       </div>
-                      <div className="text-xs text-blue-200 opacity-75 font-medium">
+                      <div className="text-xs text-blue-700 opacity-75 font-medium">
                         Click to continue with {option.focus} focus →
                       </div>
                     </div>
@@ -419,7 +419,7 @@ export default function GuidedOverlay() {
         >
           <Card className="bg-white border-blue-500/50 shadow-2xl backdrop-blur-md">
             <CardContent className="p-4">
-              <h4 className="text-white font-semibold mb-3">Demo Scenes</h4>
+              <h4 className="text-gray-900 font-semibold mb-3">Demo Scenes</h4>
               <div className="space-y-2 max-h-64 overflow-y-auto">
                 {hybridDemoScenarios.map((scene, index) => (
                   <Button

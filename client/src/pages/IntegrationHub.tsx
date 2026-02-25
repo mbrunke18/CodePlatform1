@@ -487,14 +487,14 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'active': return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
-      case 'inactive': return 'bg-slate-500/20 text-slate-300 border-slate-500/30';
+      case 'inactive': return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
       case 'error': return 'bg-red-500/20 text-red-300 border-red-500/30';
       case 'pending': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
       case 'running': return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
-      case 'stopped': return 'bg-slate-500/20 text-slate-300 border-slate-500/30';
+      case 'stopped': return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
       case 'deprecated': return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
       case 'maintenance': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
-      default: return 'bg-slate-500/20 text-slate-300 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
     }
   };
 
@@ -507,7 +507,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
       case 'security': return 'bg-red-500/20 text-red-300 border-red-500/30';
       case 'productivity': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
       case 'financial': return 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30';
-      default: return 'bg-slate-500/20 text-slate-300 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
     }
   };
 
@@ -530,8 +530,8 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
         {/* Ecosystem Connectors Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-2">Ecosystem Connectors</h1>
-            <p className="text-slate-300">Connect 10-15 enterprise systems to create platform lock-in and prohibitive switching costs</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Ecosystem Connectors</h1>
+            <p className="text-gray-600">Connect 10-15 enterprise systems to create platform lock-in and prohibitive switching costs</p>
           </div>
           <div className="flex items-center gap-4">
             <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
@@ -550,10 +550,10 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Integrations</h3>
+                <h3 className="font-semibold text-gray-900">Integrations</h3>
                 <Globe className="h-5 w-5 text-blue-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{systemMetrics.totalIntegrations}</div>
+              <div className="text-2xl font-bold text-gray-900">{systemMetrics.totalIntegrations}</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Total connected</div>
             </CardContent>
           </Card>
@@ -561,10 +561,10 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Active</h3>
+                <h3 className="font-semibold text-gray-900">Active</h3>
                 <CheckCircle className="h-5 w-5 text-emerald-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{systemMetrics.activeConnections}</div>
+              <div className="text-2xl font-bold text-gray-900">{systemMetrics.activeConnections}</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Connections live</div>
             </CardContent>
           </Card>
@@ -572,10 +572,10 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">API Calls</h3>
+                <h3 className="font-semibold text-gray-900">API Calls</h3>
                 <Zap className="h-5 w-5 text-purple-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{formatNumber(systemMetrics.dailyApiCalls)}</div>
+              <div className="text-2xl font-bold text-gray-900">{formatNumber(systemMetrics.dailyApiCalls)}</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Today</div>
             </CardContent>
           </Card>
@@ -583,10 +583,10 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Health</h3>
+                <h3 className="font-semibold text-gray-900">Health</h3>
                 <Activity className="h-5 w-5 text-emerald-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{systemMetrics.systemHealth}%</div>
+              <div className="text-2xl font-bold text-gray-900">{systemMetrics.systemHealth}%</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Overall status</div>
             </CardContent>
           </Card>
@@ -594,10 +594,10 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Data Flows</h3>
+                <h3 className="font-semibold text-gray-900">Data Flows</h3>
                 <Database className="h-5 w-5 text-amber-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{systemMetrics.dataFlows}</div>
+              <div className="text-2xl font-bold text-gray-900">{systemMetrics.dataFlows}</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Active pipelines</div>
             </CardContent>
           </Card>
@@ -605,10 +605,10 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Error Rate</h3>
+                <h3 className="font-semibold text-gray-900">Error Rate</h3>
                 <AlertTriangle className="h-5 w-5 text-red-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{(systemMetrics.errorRate * 100).toFixed(2)}%</div>
+              <div className="text-2xl font-bold text-gray-900">{(systemMetrics.errorRate * 100).toFixed(2)}%</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Last 24h</div>
             </CardContent>
           </Card>
@@ -631,7 +631,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
               {/* Top Integrations */}
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
                     <BarChart3 className="h-5 w-5" />
                     Top Performing Integrations
                   </CardTitle>
@@ -641,15 +641,15 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                     <div key={integration.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                          <Globe className="w-5 h-5 text-white" />
+                          <Globe className="w-5 h-5 text-gray-900" />
                         </div>
                         <div>
-                          <div className="font-semibold text-white">{integration.name}</div>
+                          <div className="font-semibold text-gray-900">{integration.name}</div>
                           <div className="text-xs text-slate-600 dark:text-slate-200">{formatNumber(integration.dailyRequests)} requests today</div>
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="text-sm font-medium text-white">{integration.health}%</div>
+                        <div className="text-sm font-medium text-gray-900">{integration.health}%</div>
                         <Badge className={getStatusColor(integration.status)}>
                           {integration.status}
                         </Badge>
@@ -662,7 +662,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
               {/* Recent Activity */}
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
                     <Clock className="h-5 w-5" />
                     Recent API Activity
                   </CardTitle>
@@ -678,9 +678,9 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                           {new Date(endpoint.lastCalled).toLocaleTimeString()}
                         </span>
                       </div>
-                      <h4 className="font-semibold text-white text-sm mb-1">{endpoint.name}</h4>
-                      <p className="text-slate-300 text-xs mb-2">{endpoint.path}</p>
-                      <div className="flex justify-between text-xs text-slate-300">
+                      <h4 className="font-semibold text-gray-900 text-sm mb-1">{endpoint.name}</h4>
+                      <p className="text-gray-600 text-xs mb-2">{endpoint.path}</p>
+                      <div className="flex justify-between text-xs text-gray-600">
                         <span>{formatNumber(endpoint.requests24h)} calls</span>
                         <span>{endpoint.averageResponse}ms avg</span>
                         <span>{endpoint.successRate}% success</span>
@@ -703,11 +703,11 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                   placeholder="Search integrations..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 bg-gray-50 border-slate-600 text-white"
+                  className="pl-10 bg-gray-50 border-slate-600 text-gray-900"
                 />
               </div>
               <Select value={filterCategory} onValueChange={setFilterCategory}>
-                <SelectTrigger className="w-48 bg-gray-50 border-slate-600 text-white">
+                <SelectTrigger className="w-48 bg-gray-50 border-slate-600 text-gray-900">
                   <SelectValue placeholder="Category" />
                 </SelectTrigger>
                 <SelectContent>
@@ -729,9 +729,9 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                 <Card key={integration.id} className="bg-white border-gray-200 hover:bg-slate-800/50 transition-all duration-300">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-white flex items-center gap-3">
+                      <CardTitle className="text-gray-900 flex items-center gap-3">
                         <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                          <Globe className="w-5 h-5 text-white" />
+                          <Globe className="w-5 h-5 text-gray-900" />
                         </div>
                         {integration.name}
                       </CardTitle>
@@ -752,33 +752,33 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
                         <div className="text-slate-600 dark:text-slate-200">Health</div>
-                        <div className="text-white font-medium">{integration.health}%</div>
+                        <div className="text-gray-900 font-medium">{integration.health}%</div>
                       </div>
                       <div>
                         <div className="text-slate-600 dark:text-slate-200">Response Time</div>
-                        <div className="text-white font-medium">{integration.responseTime}ms</div>
+                        <div className="text-gray-900 font-medium">{integration.responseTime}ms</div>
                       </div>
                       <div>
                         <div className="text-slate-600 dark:text-slate-200">Daily Requests</div>
-                        <div className="text-white font-medium">{formatNumber(integration.dailyRequests)}</div>
+                        <div className="text-gray-900 font-medium">{formatNumber(integration.dailyRequests)}</div>
                       </div>
                       <div>
                         <div className="text-slate-600 dark:text-slate-200">Error Rate</div>
-                        <div className="text-white font-medium">{(integration.errorRate * 100).toFixed(2)}%</div>
+                        <div className="text-gray-900 font-medium">{(integration.errorRate * 100).toFixed(2)}%</div>
                       </div>
                     </div>
 
                     {/* Features */}
                     <div>
-                      <div className="text-sm font-semibold text-white mb-2">Features</div>
+                      <div className="text-sm font-semibold text-gray-900 mb-2">Features</div>
                       <div className="flex flex-wrap gap-2">
                         {integration.features.slice(0, 3).map((feature, index) => (
-                          <Badge key={index} variant="outline" className="bg-transparent border-slate-600 text-slate-300 text-xs">
+                          <Badge key={index} variant="outline" className="bg-transparent border-slate-600 text-gray-600 text-xs">
                             {feature}
                           </Badge>
                         ))}
                         {integration.features.length > 3 && (
-                          <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-300 text-xs">
+                          <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-600 text-xs">
                             +{integration.features.length - 3} more
                           </Badge>
                         )}
@@ -790,10 +790,10 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                         <Settings className="w-4 h-4 mr-2" />
                         Configure
                       </Button>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
                         <Monitor className="w-4 h-4" />
                       </Button>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
                         <FileText className="w-4 h-4" />
                       </Button>
                     </div>
@@ -811,13 +811,13 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                   <table className="w-full">
                     <thead className="bg-gray-50 border-b border-gray-200">
                       <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">Endpoint</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">Method</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">Integration</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">Requests (24h)</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">Success Rate</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">Avg Response</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">Status</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Endpoint</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Method</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Integration</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Requests (24h)</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Success Rate</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Avg Response</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Status</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-700">
@@ -825,7 +825,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                         <tr key={endpoint.id} className="hover:bg-slate-800/30">
                           <td className="px-6 py-4">
                             <div>
-                              <div className="text-sm font-medium text-white">{endpoint.name}</div>
+                              <div className="text-sm font-medium text-gray-900">{endpoint.name}</div>
                               <div className="text-xs text-slate-600 dark:text-slate-200 font-mono">{endpoint.path}</div>
                             </div>
                           </td>
@@ -834,10 +834,10 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                               {endpoint.method}
                             </Badge>
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                             {endpoint.integration}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                             {formatNumber(endpoint.requests24h)}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm">
@@ -845,7 +845,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                               {endpoint.successRate}%
                             </span>
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                             {endpoint.averageResponse}ms
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
@@ -871,15 +871,15 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1 page-background">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-lg font-semibold text-white">{flow.name}</h3>
+                          <h3 className="text-lg font-semibold text-gray-900">{flow.name}</h3>
                           <Badge className={getStatusColor(flow.status)}>
                             {flow.status.toUpperCase()}
                           </Badge>
-                          <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-300">
+                          <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-600">
                             {flow.type.replace('_', ' ').toUpperCase()}
                           </Badge>
                         </div>
-                        <div className="flex items-center gap-4 text-sm text-slate-300">
+                        <div className="flex items-center gap-4 text-sm text-gray-600">
                           <div className="flex items-center gap-2">
                             <Database className="w-4 h-4 text-blue-400" />
                             {flow.source}
@@ -893,18 +893,18 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                       </div>
                       <div className="text-right">
                         <div className="text-sm text-slate-600 dark:text-slate-200">Records Processed</div>
-                        <div className="text-2xl font-bold text-white">{formatNumber(flow.recordsProcessed)}</div>
+                        <div className="text-2xl font-bold text-gray-900">{formatNumber(flow.recordsProcessed)}</div>
                       </div>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                       <div>
                         <div className="text-sm text-slate-600 dark:text-slate-200">Frequency</div>
-                        <div className="text-white font-medium">{flow.frequency}</div>
+                        <div className="text-gray-900 font-medium">{flow.frequency}</div>
                       </div>
                       <div>
                         <div className="text-sm text-slate-600 dark:text-slate-200">Last Run</div>
-                        <div className="text-white font-medium">{new Date(flow.lastRun).toLocaleString()}</div>
+                        <div className="text-gray-900 font-medium">{new Date(flow.lastRun).toLocaleString()}</div>
                       </div>
                       <div>
                         <div className="text-sm text-slate-600 dark:text-slate-200">Error Count</div>
@@ -914,7 +914,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                       </div>
                       <div>
                         <div className="text-sm text-slate-600 dark:text-slate-200">Transformations</div>
-                        <div className="text-white font-medium">{flow.transformations.length}</div>
+                        <div className="text-gray-900 font-medium">{flow.transformations.length}</div>
                       </div>
                     </div>
                     
@@ -923,11 +923,11 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                         <Monitor className="w-4 h-4 mr-2" />
                         Monitor
                       </Button>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
                         <Settings className="w-4 h-4 mr-2" />
                         Configure
                       </Button>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
                         {flow.status === 'running' ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                       </Button>
                     </div>
@@ -943,10 +943,10 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
               <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-white">Uptime</h3>
+                    <h3 className="font-semibold text-gray-900">Uptime</h3>
                     <Activity className="h-5 w-5 text-emerald-400" />
                   </div>
-                  <div className="text-2xl font-bold text-white mb-2">99.9%</div>
+                  <div className="text-2xl font-bold text-gray-900 mb-2">99.9%</div>
                   <div className="text-sm text-slate-600 dark:text-slate-200">Last 30 days</div>
                 </CardContent>
               </Card>
@@ -954,10 +954,10 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
               <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-white">Throughput</h3>
+                    <h3 className="font-semibold text-gray-900">Throughput</h3>
                     <Zap className="h-5 w-5 text-blue-400" />
                   </div>
-                  <div className="text-2xl font-bold text-white mb-2">1.2K/s</div>
+                  <div className="text-2xl font-bold text-gray-900 mb-2">1.2K/s</div>
                   <div className="text-sm text-slate-600 dark:text-slate-200">Requests per second</div>
                 </CardContent>
               </Card>
@@ -965,10 +965,10 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
               <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-white">Latency</h3>
+                    <h3 className="font-semibold text-gray-900">Latency</h3>
                     <Clock className="h-5 w-5 text-purple-400" />
                   </div>
-                  <div className="text-2xl font-bold text-white mb-2">234ms</div>
+                  <div className="text-2xl font-bold text-gray-900 mb-2">234ms</div>
                   <div className="text-sm text-slate-600 dark:text-slate-200">P95 response time</div>
                 </CardContent>
               </Card>
@@ -976,10 +976,10 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
               <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-white">Data Volume</h3>
+                    <h3 className="font-semibold text-gray-900">Data Volume</h3>
                     <Database className="h-5 w-5 text-amber-400" />
                   </div>
-                  <div className="text-2xl font-bold text-white mb-2">2.3TB</div>
+                  <div className="text-2xl font-bold text-gray-900 mb-2">2.3TB</div>
                   <div className="text-sm text-slate-600 dark:text-slate-200">Processed today</div>
                 </CardContent>
               </Card>

@@ -89,7 +89,7 @@ export function PlaybookDemo({ progress }: SceneProps) {
             </div>
             <div className="w-px h-8 bg-gray-100" />
             <div className="text-center">
-              <p className="text-2xl font-bold text-white">2,400+</p>
+              <p className="text-2xl font-bold text-gray-900">2,400+</p>
               <p className="text-xs text-gray-500">Pre-built Tasks</p>
             </div>
             <div className="w-px h-8 bg-gray-100" />

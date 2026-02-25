@@ -45,7 +45,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
       {/* Completion Overview */}
       <Card className="border-blue-500/30 bg-gradient-to-r  ">
         <CardHeader>
-          <CardTitle className="text-white flex items-center gap-2">
+          <CardTitle className="text-gray-900 flex items-center gap-2">
             <Sparkles className="h-6 w-6 text-purple-400" />
             Scenario Readiness Assessment
           </CardTitle>
@@ -53,7 +53,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
         <CardContent className="space-y-4">
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-white font-medium">Overall Completion</span>
+              <span className="text-gray-900 font-medium">Overall Completion</span>
               <span className="text-2xl font-bold text-purple-400">{Math.round(completionScore)}%</span>
             </div>
             <Progress value={completionScore} className="h-3" />
@@ -63,23 +63,23 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
             <div className="bg-white rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Users className="h-4 w-4 text-blue-400" />
-                <span className="text-sm text-gray-200">Stakeholders</span>
+                <span className="text-sm text-gray-500">Stakeholders</span>
               </div>
-              <p className="text-2xl font-bold text-white">{stakeholderCount}</p>
+              <p className="text-2xl font-bold text-gray-900">{stakeholderCount}</p>
             </div>
             <div className="bg-white rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Bell className="h-4 w-4 text-purple-400" />
-                <span className="text-sm text-gray-200">Triggers</span>
+                <span className="text-sm text-gray-500">Triggers</span>
               </div>
-              <p className="text-2xl font-bold text-white">{triggerCount}</p>
+              <p className="text-2xl font-bold text-gray-900">{triggerCount}</p>
             </div>
             <div className="bg-white rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <BarChart3 className="h-4 w-4 text-green-400" />
-                <span className="text-sm text-gray-200">Metrics</span>
+                <span className="text-sm text-gray-500">Metrics</span>
               </div>
-              <p className="text-2xl font-bold text-white">{metricCount}</p>
+              <p className="text-2xl font-bold text-gray-900">{metricCount}</p>
             </div>
           </div>
         </CardContent>
@@ -88,7 +88,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
       {/* Readiness Checklist */}
       <Card className="border-gray-200">
         <CardHeader>
-          <CardTitle className="text-white">Readiness Checklist</CardTitle>
+          <CardTitle className="text-gray-900">Readiness Checklist</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
@@ -106,8 +106,8 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
                   ) : (
                     <AlertTriangle className="h-5 w-5 text-yellow-400 flex-shrink-0" />
                   )}
-                  <Icon className={`h-4 w-4 ${check.met ? 'text-green-400' : 'text-gray-300'}`} />
-                  <span className={`flex-1 ${check.met ? 'text-white' : 'text-gray-200'}`}>
+                  <Icon className={`h-4 w-4 ${check.met ? 'text-green-400' : 'text-gray-600'}`} />
+                  <span className={`flex-1 ${check.met ? 'text-gray-900' : 'text-gray-500'}`}>
                     {check.label}
                   </span>
                   {check.met && (
@@ -125,7 +125,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
               <Clock className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
               <div>
                 <p className="text-sm font-semibold text-blue-300">Estimated Execution Velocity</p>
-                <p className="text-xs text-gray-200 mt-1">
+                <p className="text-xs text-gray-500 mt-1">
                   {readinessScore >= 80 ? (
                     <>
                       <span className="text-green-400 font-semibold">12-minute coordination ready</span> - Your scenario has all critical elements for rapid execution.
@@ -149,7 +149,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
       {/* AI Recommendations */}
       <Card className="border-purple-500/30 bg-purple-950/20">
         <CardHeader>
-          <CardTitle className="text-white flex items-center gap-2">
+          <CardTitle className="text-gray-900 flex items-center gap-2">
             <Sparkles className="h-5 w-5 text-purple-400" />
             AI Recommendations
           </CardTitle>
@@ -159,40 +159,40 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
             {!hasExecutiveSponsor && (
               <div className="flex items-start gap-2">
                 <span className="text-purple-400 mt-0.5">•</span>
-                <p className="text-gray-300">
-                  <strong className="text-white">Add Executive Sponsor:</strong> Critical for decision authority and rapid approvals
+                <p className="text-gray-600">
+                  <strong className="text-gray-900">Add Executive Sponsor:</strong> Critical for decision authority and rapid approvals
                 </p>
               </div>
             )}
             {!hasAccountableOwner && (
               <div className="flex items-start gap-2">
                 <span className="text-purple-400 mt-0.5">•</span>
-                <p className="text-gray-300">
-                  <strong className="text-white">Assign Accountable Owner:</strong> Essential for coordinated execution
+                <p className="text-gray-600">
+                  <strong className="text-gray-900">Assign Accountable Owner:</strong> Essential for coordinated execution
                 </p>
               </div>
             )}
             {triggerCount < 2 && (
               <div className="flex items-start gap-2">
                 <span className="text-purple-400 mt-0.5">•</span>
-                <p className="text-gray-300">
-                  <strong className="text-white">Add More Triggers:</strong> Multiple signals improve detection accuracy
+                <p className="text-gray-600">
+                  <strong className="text-gray-900">Add More Triggers:</strong> Multiple signals improve detection accuracy
                 </p>
               </div>
             )}
             {!hasKeyMetrics && (
               <div className="flex items-start gap-2">
                 <span className="text-purple-400 mt-0.5">•</span>
-                <p className="text-gray-300">
-                  <strong className="text-white">Mark Key Metrics:</strong> Identify primary success indicators for focus
+                <p className="text-gray-600">
+                  <strong className="text-gray-900">Mark Key Metrics:</strong> Identify primary success indicators for focus
                 </p>
               </div>
             )}
             {stakeholderCount < 3 && (
               <div className="flex items-start gap-2">
                 <span className="text-purple-400 mt-0.5">•</span>
-                <p className="text-gray-300">
-                  <strong className="text-white">Add Cross-functional Stakeholders:</strong> Most scenarios require 3-7 stakeholders
+                <p className="text-gray-600">
+                  <strong className="text-gray-900">Add Cross-functional Stakeholders:</strong> Most scenarios require 3-7 stakeholders
                 </p>
               </div>
             )}

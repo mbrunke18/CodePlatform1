@@ -201,7 +201,7 @@ export default function CrisisResponseCenter() {
       case 'high': return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
       case 'medium': return 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30';
       case 'low': return 'bg-green-500/20 text-green-300 border-green-500/30';
-      default: return 'bg-gray-500/20 text-gray-300 border-gray-500/30';
+      default: return 'bg-gray-500/20 text-gray-600 border-gray-500/30';
     }
   };
 
@@ -230,19 +230,19 @@ export default function CrisisResponseCenter() {
             <span>/</span>
             <span>Crisis Management</span>
             <span>/</span>
-            <span className="text-white">Crisis Response Center</span>
+            <span className="text-gray-900">Crisis Response Center</span>
           </div>
         </div>
 
         {/* Crisis Response Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-2">Crisis Response Command Center</h1>
-            <p className="text-slate-300">Enterprise-grade crisis management with 15+ response protocols</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Crisis Response Command Center</h1>
+            <p className="text-gray-600">Enterprise-grade crisis management with 15+ response protocols</p>
           </div>
           <div className="flex items-center gap-4">
             <Link to="/">
-              <Button variant="secondary" className="bg-gray-50 hover:bg-slate-600 text-slate-100 border-slate-600">
+              <Button variant="secondary" className="bg-gray-50 hover:bg-slate-600 text-gray-500 border-slate-600">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Dashboard
               </Button>
@@ -267,10 +267,10 @@ export default function CrisisResponseCenter() {
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Readiness Level</h3>
+                <h3 className="font-semibold text-gray-900">Readiness Level</h3>
                 <Shield className="h-5 w-5 text-emerald-400" />
               </div>
-              <div className="text-2xl font-bold text-white mb-2">{systemStatus.readinessLevel}%</div>
+              <div className="text-2xl font-bold text-gray-900 mb-2">{systemStatus.readinessLevel}%</div>
               <Progress value={systemStatus.readinessLevel} className="h-2" />
             </CardContent>
           </Card>
@@ -278,10 +278,10 @@ export default function CrisisResponseCenter() {
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Response Teams</h3>
+                <h3 className="font-semibold text-gray-900">Response Teams</h3>
                 <Users className="h-5 w-5 text-blue-400" />
               </div>
-              <div className="text-2xl font-bold text-white mb-2">{systemStatus.responseTeamsActive}</div>
+              <div className="text-2xl font-bold text-gray-900 mb-2">{systemStatus.responseTeamsActive}</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Teams Active</div>
             </CardContent>
           </Card>
@@ -289,10 +289,10 @@ export default function CrisisResponseCenter() {
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Protocols Ready</h3>
+                <h3 className="font-semibold text-gray-900">Protocols Ready</h3>
                 <FileText className="h-5 w-5 text-purple-400" />
               </div>
-              <div className="text-2xl font-bold text-white mb-2">{systemStatus.protocolsReady}</div>
+              <div className="text-2xl font-bold text-gray-900 mb-2">{systemStatus.protocolsReady}</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Response Templates</div>
             </CardContent>
           </Card>
@@ -300,10 +300,10 @@ export default function CrisisResponseCenter() {
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Last Drill</h3>
+                <h3 className="font-semibold text-gray-900">Last Drill</h3>
                 <Clock className="h-5 w-5 text-amber-400" />
               </div>
-              <div className="text-2xl font-bold text-white mb-2">8</div>
+              <div className="text-2xl font-bold text-gray-900 mb-2">8</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">days ago</div>
             </CardContent>
           </Card>
@@ -326,7 +326,7 @@ export default function CrisisResponseCenter() {
               {/* Active Situations */}
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
                     <Activity className="h-5 w-5" />
                     Active Situations <span data-testid="crisis-active-counter">({activeCrises.length} Active)</span>
                   </CardTitle>
@@ -335,7 +335,7 @@ export default function CrisisResponseCenter() {
                   {activeCrises.map((crisis) => (
                     <div key={crisis.id} className="p-4 bg-gray-50 rounded-lg border border-slate-600/50" data-testid={crisis.template === 'Supply Chain Disruption' ? 'crisis-card-supply-chain' : `crisis-card-${crisis.id}`}>
                       <div className="flex items-center justify-between mb-3">
-                        <h4 className="font-semibold text-white">{crisis.template}</h4>
+                        <h4 className="font-semibold text-gray-900">{crisis.template}</h4>
                         <Badge className={getSeverityColor(crisis.severity)}>
                           {getSeverityIcon(crisis.severity)}
                           {crisis.severity.toUpperCase()}
@@ -344,10 +344,10 @@ export default function CrisisResponseCenter() {
                       <div className="space-y-2">
                         <div className="flex justify-between text-sm">
                           <span className="text-slate-600 dark:text-slate-200">Progress</span>
-                          <span className="text-white">{crisis.progress}%</span>
+                          <span className="text-gray-900">{crisis.progress}%</span>
                         </div>
                         <Progress value={crisis.progress} className="h-2" />
-                        <div className="text-xs text-slate-300">Phase: {crisis.currentPhase}</div>
+                        <div className="text-xs text-gray-600">Phase: {crisis.currentPhase}</div>
                       </div>
                     </div>
                   ))}
@@ -357,7 +357,7 @@ export default function CrisisResponseCenter() {
               {/* Quick Actions */}
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
                     <Zap className="h-5 w-5" />
                     Emergency Quick Actions
                   </CardTitle>
@@ -391,7 +391,7 @@ export default function CrisisResponseCenter() {
                 <Card key={template.id} className="bg-white border-gray-200 hover:bg-slate-800/50 transition-all duration-300">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-white text-lg">{template.name}</CardTitle>
+                      <CardTitle className="text-gray-900 text-lg">{template.name}</CardTitle>
                       <Badge className={getSeverityColor(template.severity)}>
                         {getSeverityIcon(template.severity)}
                         {template.severity.toUpperCase()}
@@ -403,15 +403,15 @@ export default function CrisisResponseCenter() {
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
                         <span className="text-slate-600 dark:text-slate-200">Category:</span>
-                        <span className="text-white">{template.category}</span>
+                        <span className="text-gray-900">{template.category}</span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-slate-600 dark:text-slate-200">Activation:</span>
-                        <span className="text-white">{template.activationTime}</span>
+                        <span className="text-gray-900">{template.activationTime}</span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-slate-600 dark:text-slate-200">Stakeholders:</span>
-                        <span className="text-white">{template.stakeholders.length}</span>
+                        <span className="text-gray-900">{template.stakeholders.length}</span>
                       </div>
                     </div>
                     
@@ -420,7 +420,7 @@ export default function CrisisResponseCenter() {
                         <FileText className="w-4 h-4 mr-2" />
                         View Details
                       </Button>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
                         <Play className="w-4 h-4 mr-2" />
                         Activate
                       </Button>
@@ -439,7 +439,7 @@ export default function CrisisResponseCenter() {
                   <Card key={crisis.id} className="bg-white border-gray-200">
                     <CardHeader>
                       <div className="flex items-center justify-between">
-                        <CardTitle className="text-white">{crisis.template}</CardTitle>
+                        <CardTitle className="text-gray-900">{crisis.template}</CardTitle>
                         <div className="flex items-center gap-3">
                           <Badge className={getSeverityColor(crisis.severity)}>
                             {getSeverityIcon(crisis.severity)}
@@ -454,7 +454,7 @@ export default function CrisisResponseCenter() {
                     <CardContent className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div>
-                          <h4 className="font-semibold text-white mb-2">Timeline</h4>
+                          <h4 className="font-semibold text-gray-900 mb-2">Timeline</h4>
                           <div className="text-sm space-y-1">
                             <div className="text-slate-600 dark:text-slate-200">Started: {crisis.startTime}</div>
                             <div className="text-slate-600 dark:text-slate-200">Phase: {crisis.currentPhase}</div>
@@ -463,10 +463,10 @@ export default function CrisisResponseCenter() {
                         </div>
                         
                         <div>
-                          <h4 className="font-semibold text-white mb-2">Assigned Team</h4>
+                          <h4 className="font-semibold text-gray-900 mb-2">Assigned Team</h4>
                           <div className="space-y-1">
                             {crisis.assignedTeam.map((team, index) => (
-                              <Badge key={index} variant="outline" className="bg-transparent border-slate-600 text-slate-300">
+                              <Badge key={index} variant="outline" className="bg-transparent border-slate-600 text-gray-600">
                                 {team}
                               </Badge>
                             ))}
@@ -474,10 +474,10 @@ export default function CrisisResponseCenter() {
                         </div>
                         
                         <div>
-                          <h4 className="font-semibold text-white mb-2">Next Actions</h4>
+                          <h4 className="font-semibold text-gray-900 mb-2">Next Actions</h4>
                           <div className="space-y-1">
                             {crisis.nextActions.map((action, index) => (
-                              <div key={index} className="text-sm text-slate-300 flex items-center gap-2">
+                              <div key={index} className="text-sm text-gray-600 flex items-center gap-2">
                                 <div className="w-2 h-2 bg-amber-400 rounded-full" />
                                 {action}
                               </div>
@@ -491,7 +491,7 @@ export default function CrisisResponseCenter() {
                           <CheckCircle className="w-4 h-4 mr-2" />
                           Update Status
                         </Button>
-                        <Button variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
+                        <Button variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
                           <FileText className="w-4 h-4 mr-2" />
                           View Full Report
                         </Button>
@@ -508,7 +508,7 @@ export default function CrisisResponseCenter() {
               <Card className="bg-white border-gray-200">
                 <CardContent className="p-12 text-center">
                   <CheckCircle className="h-16 w-16 text-emerald-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-white mb-2">No Active Crises</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">No Active Crises</h3>
                   <p className="text-slate-600 dark:text-slate-200">All systems operational. Crisis response protocols ready.</p>
                 </CardContent>
               </Card>
@@ -519,7 +519,7 @@ export default function CrisisResponseCenter() {
           <TabsContent value="protocols" className="space-y-6">
             <Alert className="border-amber-500/30 bg-amber-500/10">
               <AlertTriangle className="h-4 w-4" />
-              <AlertDescription className="text-amber-200">
+              <AlertDescription className="text-amber-700">
                 Crisis response protocols are regularly updated based on industry best practices and regulatory requirements.
               </AlertDescription>
             </Alert>
@@ -527,19 +527,19 @@ export default function CrisisResponseCenter() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white">Communication Protocols</CardTitle>
+                  <CardTitle className="text-gray-900">Communication Protocols</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span className="text-white">Emergency Notification Chain</span>
+                    <span className="text-gray-900">Emergency Notification Chain</span>
                     <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">ACTIVE</Badge>
                   </div>
                   <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span className="text-white">Media Response Guidelines</span>
+                    <span className="text-gray-900">Media Response Guidelines</span>
                     <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">ACTIVE</Badge>
                   </div>
                   <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span className="text-white">Stakeholder Updates</span>
+                    <span className="text-gray-900">Stakeholder Updates</span>
                     <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">ACTIVE</Badge>
                   </div>
                 </CardContent>
@@ -547,19 +547,19 @@ export default function CrisisResponseCenter() {
 
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white">Response Procedures</CardTitle>
+                  <CardTitle className="text-gray-900">Response Procedures</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span className="text-white">Incident Assessment</span>
+                    <span className="text-gray-900">Incident Assessment</span>
                     <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">READY</Badge>
                   </div>
                   <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span className="text-white">Resource Mobilization</span>
+                    <span className="text-gray-900">Resource Mobilization</span>
                     <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">READY</Badge>
                   </div>
                   <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span className="text-white">Recovery Planning</span>
+                    <span className="text-gray-900">Recovery Planning</span>
                     <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">READY</Badge>
                   </div>
                 </CardContent>
@@ -573,10 +573,10 @@ export default function CrisisResponseCenter() {
               <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-white">Response Time</h3>
+                    <h3 className="font-semibold text-gray-900">Response Time</h3>
                     <Clock className="h-5 w-5 text-blue-400" />
                   </div>
-                  <div className="text-2xl font-bold text-white mb-2">12 min</div>
+                  <div className="text-2xl font-bold text-gray-900 mb-2">12 min</div>
                   <div className="text-sm text-slate-600 dark:text-slate-200">Average activation</div>
                 </CardContent>
               </Card>
@@ -584,10 +584,10 @@ export default function CrisisResponseCenter() {
               <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-white">Recovery Rate</h3>
+                    <h3 className="font-semibold text-gray-900">Recovery Rate</h3>
                     <TrendingUp className="h-5 w-5 text-emerald-400" />
                   </div>
-                  <div className="text-2xl font-bold text-white mb-2">96%</div>
+                  <div className="text-2xl font-bold text-gray-900 mb-2">96%</div>
                   <div className="text-sm text-slate-600 dark:text-slate-200">Successful resolution</div>
                 </CardContent>
               </Card>
@@ -595,10 +595,10 @@ export default function CrisisResponseCenter() {
               <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-white">Team Readiness</h3>
+                    <h3 className="font-semibold text-gray-900">Team Readiness</h3>
                     <Users className="h-5 w-5 text-purple-400" />
                   </div>
-                  <div className="text-2xl font-bold text-white mb-2">100%</div>
+                  <div className="text-2xl font-bold text-gray-900 mb-2">100%</div>
                   <div className="text-sm text-slate-600 dark:text-slate-200">Teams certified</div>
                 </CardContent>
               </Card>
@@ -606,10 +606,10 @@ export default function CrisisResponseCenter() {
               <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-white">Drills Completed</h3>
+                    <h3 className="font-semibold text-gray-900">Drills Completed</h3>
                     <BarChart3 className="h-5 w-5 text-amber-400" />
                   </div>
-                  <div className="text-2xl font-bold text-white mb-2">24</div>
+                  <div className="text-2xl font-bold text-gray-900 mb-2">24</div>
                   <div className="text-sm text-slate-600 dark:text-slate-200">This quarter</div>
                 </CardContent>
               </Card>

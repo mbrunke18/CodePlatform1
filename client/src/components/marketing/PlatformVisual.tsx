@@ -221,7 +221,7 @@ export default function PlatformVisual() {
                 >
                   <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${phase.color}`} />
                   <div className="flex items-center gap-2 mb-3">
-                    <span className={`w-7 h-7 rounded-lg ${phase.bgColor} text-white flex items-center justify-center text-sm font-bold`}>
+                    <span className={`w-7 h-7 rounded-lg ${phase.bgColor} text-gray-900 flex items-center justify-center text-sm font-bold`}>
                       {phase.letter}
                     </span>
                     <span className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wide">

@@ -62,7 +62,7 @@ export function Solution({ progress }: SceneProps) {
           text="Execution OS" 
           size="2xl" 
           delay={0.5}
-          className="text-white mb-4"
+          className="text-gray-900 mb-4"
         />
 
         <motion.div
@@ -71,7 +71,7 @@ export function Solution({ progress }: SceneProps) {
           transition={{ delay: 1 }}
           className="space-y-1"
         >
-          <p className="text-2xl md:text-3xl text-white/90 font-light">
+          <p className="text-2xl md:text-3xl text-gray-900/90 font-light">
             Trigger-to-Execution Orchestration
           </p>
           <p className="text-lg text-[#00A8A8]">
@@ -105,7 +105,7 @@ export function Solution({ progress }: SceneProps) {
               <div className="w-10 h-10 mx-auto mb-2 rounded-lg bg-gray-50 flex items-center justify-center">
                 <cap.icon className="w-5 h-5 text-[#D4AF37]" />
               </div>
-              <p className="text-white text-xs font-medium">{cap.label}</p>
+              <p className="text-gray-900 text-xs font-medium">{cap.label}</p>
               <p className="text-gray-400 text-xs">{cap.desc}</p>
             </motion.div>
           ))}

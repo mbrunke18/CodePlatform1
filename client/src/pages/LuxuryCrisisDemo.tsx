@@ -138,7 +138,7 @@ export default function LuxuryCrisisDemo() {
             <Card className="p-8 bg-blue-50 dark:bg-blue-950 border-blue-500 border-2">
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-blue-500 rounded-full">
-                  <Award className="h-6 w-6 text-white" />
+                  <Award className="h-6 w-6 text-gray-900" />
                 </div>
                 <div className="flex-1 page-background">
                   <h3 className="text-2xl font-bold mb-2">

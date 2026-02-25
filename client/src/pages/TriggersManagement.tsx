@@ -366,30 +366,30 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
           
           {/* Breadcrumb Navigation */}
           <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-200">
+            <div className="flex items-center gap-2 text-sm text-gray-500">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-200 hover:text-white p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-gray-500 hover:text-white p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>
               <span>/</span>
               <span>Crisis Management</span>
               <span>/</span>
-              <span className="text-white">Triggers Management</span>
+              <span className="text-gray-900">Triggers Management</span>
             </div>
           </div>
 
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 rounded-lg">
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-gray-900 p-6 rounded-lg">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                  <Zap className="w-7 h-7 text-white" />
+                  <Zap className="w-7 h-7 text-gray-900" />
                 </div>
                 <div>
                   <h1 className="text-3xl font-bold" data-testid="triggers-page-title">Executive Trigger Dashboard</h1>
-                  <p className="text-blue-100 mt-1">Define YOUR conditions • AI monitors 24/7 • Execute playbooks when triggers fire</p>
-                  <p className="text-blue-200 mt-1 text-sm">You define what matters, AI co-pilot handles the monitoring and execution speed</p>
+                  <p className="text-blue-600 mt-1">Define YOUR conditions • AI monitors 24/7 • Execute playbooks when triggers fire</p>
+                  <p className="text-blue-700 mt-1 text-sm">You define what matters, AI co-pilot handles the monitoring and execution speed</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -401,16 +401,16 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                   <Plus className="h-4 w-4 mr-2" />
                   Create Custom Trigger
                 </Button>
-                <OnboardingTrigger pageId="triggers-management" autoStart={true} className="bg-white/10 border-white/30 text-white hover:bg-white/20" />
+                <OnboardingTrigger pageId="triggers-management" autoStart={true} className="bg-white/10 border-white/30 text-gray-900 hover:bg-white/20" />
                 <Link to="/">
-                  <Button variant="secondary" className="bg-blue-700 hover:bg-blue-800 text-blue-100 border-blue-600">
+                  <Button variant="secondary" className="bg-blue-700 hover:bg-blue-800 text-blue-600 border-blue-600">
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Dashboard
                   </Button>
                 </Link>
                 <div className="text-right">
                   <div className="text-3xl font-bold">{triggeredCount}</div>
-                  <div className="text-blue-100">Active Alerts</div>
+                  <div className="text-blue-600">Active Alerts</div>
                 </div>
               </div>
             </div>
@@ -566,7 +566,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                 {isLoading && (
                   <Card>
                     <CardContent className="p-12 text-center">
-                      <div className="text-gray-300">Loading triggers...</div>
+                      <div className="text-gray-600">Loading triggers...</div>
                     </CardContent>
                   </Card>
                 )}
@@ -584,7 +584,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                 {!isLoading && !isError && filteredTriggers.length === 0 && (
                   <Card>
                     <CardContent className="p-12 text-center">
-                      <Target className="h-12 w-12 text-gray-200 mx-auto mb-4" />
+                      <Target className="h-12 w-12 text-gray-500 mx-auto mb-4" />
                       <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">No Triggers Found</h3>
                       <p className="text-gray-600 dark:text-gray-200 mb-4">
                         {allTriggers.length === 0 
@@ -631,13 +631,13 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
 
                         <div className="flex items-center space-x-6">
                           <div className="text-center">
-                            <div className="text-sm text-gray-300">Threshold</div>
+                            <div className="text-sm text-gray-600">Threshold</div>
                             <div className="font-bold">{rawData?.conditions?.operator || '≥'} {rawData?.conditions?.value || trigger.thresholdValue}</div>
                           </div>
                           
                           {/* Enable/Disable Toggle */}
                           <div className="flex items-center space-x-2">
-                            <Label htmlFor={`trigger-toggle-${trigger.id}`} className="text-sm text-gray-300">
+                            <Label htmlFor={`trigger-toggle-${trigger.id}`} className="text-sm text-gray-600">
                               {trigger.status === 'paused' ? 'Disabled' : 'Enabled'}
                             </Label>
                             <Switch
@@ -695,19 +695,19 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                             </div>
                             <div className="space-y-1 text-xs">
                               <div className="flex justify-between">
-                                <span className="text-slate-300">Field:</span>
+                                <span className="text-gray-600">Field:</span>
                                 <span className="font-mono text-slate-700 dark:text-slate-300">{rawData.conditions?.field || 'N/A'}</span>
                               </div>
                               <div className="flex justify-between">
-                                <span className="text-slate-300">Operator:</span>
+                                <span className="text-gray-600">Operator:</span>
                                 <span className="font-mono text-slate-700 dark:text-slate-300">{rawData.conditions?.operator || 'N/A'}</span>
                               </div>
                               <div className="flex justify-between">
-                                <span className="text-slate-300">Value:</span>
+                                <span className="text-gray-600">Value:</span>
                                 <span className="font-mono text-slate-700 dark:text-slate-300">{rawData.conditions?.value}</span>
                               </div>
                               <div className="flex justify-between">
-                                <span className="text-slate-300">Logic:</span>
+                                <span className="text-gray-600">Logic:</span>
                                 <span className="font-mono text-slate-700 dark:text-slate-300">{rawData.conditions?.logic || 'single'}</span>
                               </div>
                             </div>
@@ -743,15 +743,15 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                             </div>
                             <div className="space-y-1 text-xs">
                               <div className="flex justify-between">
-                                <span className="text-slate-300">Category:</span>
+                                <span className="text-gray-600">Category:</span>
                                 <Badge variant="outline" className="text-xs capitalize">{rawData.category}</Badge>
                               </div>
                               <div className="flex justify-between">
-                                <span className="text-slate-300">Type:</span>
+                                <span className="text-gray-600">Type:</span>
                                 <span className="font-mono text-slate-700 dark:text-slate-300">{rawData.triggerType}</span>
                               </div>
                               <div className="flex justify-between">
-                                <span className="text-slate-300">Alert Level:</span>
+                                <span className="text-gray-600">Alert Level:</span>
                                 <Badge variant={rawData.alertThreshold === 'red' ? 'destructive' : rawData.alertThreshold === 'yellow' ? 'default' : 'secondary'} className="text-xs">
                                   {rawData.alertThreshold}
                                 </Badge>
@@ -864,12 +864,12 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                                   {trigger.dataSource.status}
                                 </Badge>
                               </div>
-                              <div className="text-xs text-gray-300">
+                              <div className="text-xs text-gray-600">
                                 Refresh: {trigger.dataSource.refreshRate}s | Last: {trigger.dataSource.lastUpdate}
                               </div>
                             </div>
                             {trigger.dataSource.endpoint && (
-                              <div className="text-xs text-gray-300 mt-1 truncate">
+                              <div className="text-xs text-gray-600 mt-1 truncate">
                                 {trigger.dataSource.endpoint}
                               </div>
                             )}
@@ -929,8 +929,8 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                       {trigger.status === 'active' && (
                         <div className="mt-4">
                           <div className="flex items-center justify-between">
-                            <span className="text-xs text-gray-300">Progress to threshold</span>
-                            <span className="text-xs text-gray-300">
+                            <span className="text-xs text-gray-600">Progress to threshold</span>
+                            <span className="text-xs text-gray-600">
                               {Math.round((Number(trigger.currentValue) / Number(trigger.thresholdValue)) * 100)}%
                             </span>
                           </div>

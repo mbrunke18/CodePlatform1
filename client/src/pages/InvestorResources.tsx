@@ -37,9 +37,9 @@ export default function InvestorResources() {
       <StandardNav />
 
       {/* Hero Section */}
-      <section className="py-20 px-6 text-white">
+      <section className="py-20 px-6 text-gray-900">
         <div className="max-w-5xl mx-auto text-center">
-          <Badge className="mb-6 bg-blue-500 text-white border-0">
+          <Badge className="mb-6 bg-blue-500 text-gray-900 border-0">
             Investor Overview
           </Badge>
           
@@ -47,11 +47,11 @@ export default function InvestorResources() {
             We're Creating a New Category
           </h1>
           
-          <p className="text-xl md:text-2xl text-blue-100 mb-4 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-blue-600 mb-4 max-w-3xl mx-auto">
             <span className="font-bold">Strategic Execution Operating System (SEOS)</span>
           </p>
           
-          <p className="text-lg text-blue-200 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-blue-700 mb-8 max-w-2xl mx-auto">
             What Salesforce did for customer relationships, Execution OS does for strategic execution.
           </p>
 
@@ -63,7 +63,7 @@ export default function InvestorResources() {
               </Button>
             </Link>
             <Link href="/demo-selector">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-transparent">
+              <Button size="lg" variant="outline" className="border-white text-gray-900 hover:bg-white/10 bg-transparent">
                 Watch Demo
               </Button>
             </Link>
@@ -374,7 +374,7 @@ export default function InvestorResources() {
           <Card className="border-2 border-primary/30">
             <CardContent className="p-8">
               <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-3xl font-bold shrink-0">
+                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-gray-900 text-3xl font-bold shrink-0">
                   MB
                 </div>
                 <div>
@@ -398,12 +398,12 @@ export default function InvestorResources() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-6 text-white">
+      <section className="py-16 px-6 text-gray-900">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">
             Ready to Learn More?
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <p className="text-xl text-blue-600 mb-8">
             See Execution OS in action and explore the category-defining opportunity.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
@@ -414,17 +414,17 @@ export default function InvestorResources() {
               </Button>
             </Link>
             <Link href="/demo-selector">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-transparent">
+              <Button size="lg" variant="outline" className="border-white text-gray-900 hover:bg-white/10 bg-transparent">
                 Watch Demo
               </Button>
             </Link>
             <Link href="/contact">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-transparent">
+              <Button size="lg" variant="outline" className="border-white text-gray-900 hover:bg-white/10 bg-transparent">
                 Contact Martin
               </Button>
             </Link>
             <a href="mailto:martinbrunke@executeiq.io">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-transparent">
+              <Button size="lg" variant="outline" className="border-white text-gray-900 hover:bg-white/10 bg-transparent">
                 martinbrunke@executeiq.io
               </Button>
             </a>

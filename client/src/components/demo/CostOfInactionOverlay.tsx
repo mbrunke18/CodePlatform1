@@ -56,9 +56,9 @@ export function CostOfInactionOverlay() {
               <div className="p-3 bg-red-600/30 rounded-lg">
                 <AlertTriangle className="h-8 w-8 text-red-400 animate-pulse" />
               </div>
-              <h2 className="text-3xl font-bold text-red-100">Every Day You Wait...</h2>
+              <h2 className="text-3xl font-bold text-red-500">Every Day You Wait...</h2>
             </div>
-            <p className="text-xl text-red-200/90">The cost of traditional crisis response adds up</p>
+            <p className="text-xl text-red-600/90">The cost of traditional crisis response adds up</p>
           </div>
 
           {/* Counter */}
@@ -80,7 +80,7 @@ export function CostOfInactionOverlay() {
                 </div>
                 <div>
                   <p className="text-red-300 text-sm">Revenue at Risk</p>
-                  <p className="text-2xl font-bold text-red-100">${totalRevenueLost}</p>
+                  <p className="text-2xl font-bold text-red-500">${totalRevenueLost}</p>
                   <p className="text-xs text-red-400 mt-1">From delayed crisis responses</p>
                 </div>
               </div>
@@ -93,7 +93,7 @@ export function CostOfInactionOverlay() {
                 </div>
                 <div>
                   <p className="text-red-300 text-sm">Market Share Lost</p>
-                  <p className="text-2xl font-bold text-red-100">{totalMarketShareLost}%</p>
+                  <p className="text-2xl font-bold text-red-500">{totalMarketShareLost}%</p>
                   <p className="text-xs text-red-400 mt-1">To faster-moving competitors</p>
                 </div>
               </div>
@@ -106,7 +106,7 @@ export function CostOfInactionOverlay() {
                 </div>
                 <div>
                   <p className="text-red-300 text-sm">Executive Hours Wasted</p>
-                  <p className="text-2xl font-bold text-red-100">{totalHoursWasted}</p>
+                  <p className="text-2xl font-bold text-red-500">{totalHoursWasted}</p>
                   <p className="text-xs text-red-400 mt-1">In reactive crisis coordination</p>
                 </div>
               </div>
@@ -119,7 +119,7 @@ export function CostOfInactionOverlay() {
                 </div>
                 <div>
                   <p className="text-red-300 text-sm">Opportunities Missed</p>
-                  <p className="text-2xl font-bold text-red-100">{elapsedDays * 3}</p>
+                  <p className="text-2xl font-bold text-red-500">{elapsedDays * 3}</p>
                   <p className="text-xs text-red-400 mt-1">Competitive advantages lost forever</p>
                 </div>
               </div>
@@ -128,7 +128,7 @@ export function CostOfInactionOverlay() {
 
           {/* Bottom Message */}
           <div className="bg-red-600/20 rounded-lg p-4 border border-red-500/30">
-            <p className="text-center text-red-100 text-lg font-semibold">
+            <p className="text-center text-red-500 text-lg font-semibold">
               Your competitors aren't waiting. Neither should you.
             </p>
           </div>

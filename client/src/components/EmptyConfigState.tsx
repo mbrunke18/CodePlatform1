@@ -120,7 +120,7 @@ export function QuickSetupBanner() {
           </div>
           <div>
             <h3 className="font-semibold text-white">Complete Your Setup</h3>
-            <p className="text-sm text-slate-300">Configure Execution OS for your organization in under 30 minutes</p>
+            <p className="text-sm text-gray-600">Configure Execution OS for your organization in under 30 minutes</p>
           </div>
         </div>
         <Link href="/onboarding">

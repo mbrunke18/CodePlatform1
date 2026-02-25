@@ -275,9 +275,9 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
       case 'data_access': return 'bg-purple-500/20 text-purple-300 border-purple-500/30';
       case 'configuration': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
       case 'decision': return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
-      case 'system': return 'bg-slate-500/20 text-slate-300 border-slate-500/30';
+      case 'system': return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
       case 'security': return 'bg-red-500/20 text-red-300 border-red-500/30';
-      default: return 'bg-slate-500/20 text-slate-300 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
     }
   };
 
@@ -287,7 +287,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
       case 'high': return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
       case 'medium': return 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30';
       case 'low': return 'bg-green-500/20 text-green-300 border-green-500/30';
-      default: return 'bg-slate-500/20 text-slate-300 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
     }
   };
 
@@ -296,7 +296,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
       case 'success': return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
       case 'failure': return 'bg-red-500/20 text-red-300 border-red-500/30';
       case 'warning': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
-      default: return 'bg-slate-500/20 text-slate-300 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
     }
   };
 
@@ -317,8 +317,8 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
         {/* Audit Logging Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-2">Enterprise Audit & Compliance Center</h1>
-            <p className="text-slate-300">Comprehensive activity logging, security monitoring, and compliance tracking</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Enterprise Audit & Compliance Center</h1>
+            <p className="text-gray-600">Comprehensive activity logging, security monitoring, and compliance tracking</p>
           </div>
           <div className="flex items-center gap-4">
             <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
@@ -337,10 +337,10 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Total Logs</h3>
+                <h3 className="font-semibold text-gray-900">Total Logs</h3>
                 <FileText className="h-5 w-5 text-blue-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{metrics.totalLogs.toLocaleString()}</div>
+              <div className="text-2xl font-bold text-gray-900">{metrics.totalLogs.toLocaleString()}</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">All time</div>
             </CardContent>
           </Card>
@@ -348,10 +348,10 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Security Events</h3>
+                <h3 className="font-semibold text-gray-900">Security Events</h3>
                 <AlertTriangle className="h-5 w-5 text-amber-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{metrics.securityEvents}</div>
+              <div className="text-2xl font-bold text-gray-900">{metrics.securityEvents}</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">This month</div>
             </CardContent>
           </Card>
@@ -359,10 +359,10 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Compliance</h3>
+                <h3 className="font-semibold text-gray-900">Compliance</h3>
                 <CheckCircle className="h-5 w-5 text-emerald-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{metrics.complianceScore}%</div>
+              <div className="text-2xl font-bold text-gray-900">{metrics.complianceScore}%</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Overall score</div>
             </CardContent>
           </Card>
@@ -370,10 +370,10 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">System Health</h3>
+                <h3 className="font-semibold text-gray-900">System Health</h3>
                 <Activity className="h-5 w-5 text-emerald-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{metrics.systemHealth}%</div>
+              <div className="text-2xl font-bold text-gray-900">{metrics.systemHealth}%</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Uptime</div>
             </CardContent>
           </Card>
@@ -381,10 +381,10 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Daily Logins</h3>
+                <h3 className="font-semibold text-gray-900">Daily Logins</h3>
                 <Users className="h-5 w-5 text-purple-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{metrics.dailyLogins}</div>
+              <div className="text-2xl font-bold text-gray-900">{metrics.dailyLogins}</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Today</div>
             </CardContent>
           </Card>
@@ -392,10 +392,10 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Failed Attempts</h3>
+                <h3 className="font-semibold text-gray-900">Failed Attempts</h3>
                 <Lock className="h-5 w-5 text-red-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{metrics.failedAttempts}</div>
+              <div className="text-2xl font-bold text-gray-900">{metrics.failedAttempts}</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Today</div>
             </CardContent>
           </Card>
@@ -418,7 +418,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
               {/* Recent Activity */}
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
                     <Clock className="h-5 w-5" />
                     Recent Activity
                   </CardTitle>
@@ -439,9 +439,9 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                           {new Date(log.timestamp).toLocaleString()}
                         </span>
                       </div>
-                      <h4 className="font-semibold text-white text-sm mb-1">{log.action}</h4>
-                      <p className="text-slate-300 text-sm mb-2">{log.details}</p>
-                      <div className="text-xs text-slate-300">
+                      <h4 className="font-semibold text-gray-900 text-sm mb-1">{log.action}</h4>
+                      <p className="text-gray-600 text-sm mb-2">{log.details}</p>
+                      <div className="text-xs text-gray-600">
                         User: {log.user} | Resource: {log.resource}
                       </div>
                     </div>
@@ -452,7 +452,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
               {/* Security Alerts */}
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
                     <Shield className="h-5 w-5" />
                     Security Alerts
                   </CardTitle>
@@ -465,13 +465,13 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                           {event.severity.toUpperCase()}
                         </Badge>
                         <div className="text-right">
-                          <div className="text-sm font-medium text-white">Risk: {event.riskScore}%</div>
+                          <div className="text-sm font-medium text-gray-900">Risk: {event.riskScore}%</div>
                           <div className="text-xs text-slate-600 dark:text-slate-200">{event.status}</div>
                         </div>
                       </div>
-                      <h4 className="font-semibold text-white text-sm mb-1">{event.type.replace('_', ' ')}</h4>
-                      <p className="text-slate-300 text-sm mb-2">{event.description}</p>
-                      <div className="text-xs text-slate-300">
+                      <h4 className="font-semibold text-gray-900 text-sm mb-1">{event.type.replace('_', ' ')}</h4>
+                      <p className="text-gray-600 text-sm mb-2">{event.description}</p>
+                      <div className="text-xs text-gray-600">
                         User: {event.user} | {new Date(event.timestamp).toLocaleString()}
                       </div>
                     </div>
@@ -492,11 +492,11 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                   placeholder="Search logs..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 bg-gray-50 border-slate-600 text-white"
+                  className="pl-10 bg-gray-50 border-slate-600 text-gray-900"
                 />
               </div>
               <Select value={filterCategory} onValueChange={setFilterCategory}>
-                <SelectTrigger className="w-48 bg-gray-50 border-slate-600 text-white">
+                <SelectTrigger className="w-48 bg-gray-50 border-slate-600 text-gray-900">
                   <SelectValue placeholder="Category" />
                 </SelectTrigger>
                 <SelectContent>
@@ -510,7 +510,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 </SelectContent>
               </Select>
               <Select value={filterSeverity} onValueChange={setFilterSeverity}>
-                <SelectTrigger className="w-40 bg-gray-50 border-slate-600 text-white">
+                <SelectTrigger className="w-40 bg-gray-50 border-slate-600 text-gray-900">
                   <SelectValue placeholder="Severity" />
                 </SelectTrigger>
                 <SelectContent>
@@ -530,28 +530,28 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                   <table className="w-full">
                     <thead className="bg-gray-50 border-b border-gray-200">
                       <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">Timestamp</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">User</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">Action</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">Resource</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">Category</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">Outcome</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">Actions</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Timestamp</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">User</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Action</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Resource</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Category</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Outcome</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Actions</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-700">
                       {filteredLogs.slice(0, 20).map((log) => (
                         <tr key={log.id} className="hover:bg-slate-800/30">
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-300">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
                             {new Date(log.timestamp).toLocaleString()}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                             {log.user}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                             {log.action}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-300">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
                             {log.resource}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
@@ -565,7 +565,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                             </Badge>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm">
-                            <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
+                            <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
                               <Eye className="w-4 h-4" />
                             </Button>
                           </td>
@@ -587,28 +587,28 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1 page-background">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-lg font-semibold text-white">{event.type.replace('_', ' ').toUpperCase()}</h3>
+                          <h3 className="text-lg font-semibold text-gray-900">{event.type.replace('_', ' ').toUpperCase()}</h3>
                           <Badge className={getSeverityColor(event.severity)}>
                             {event.severity.toUpperCase()}
                           </Badge>
-                          <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-300">
+                          <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-600">
                             {event.status.replace('_', ' ').toUpperCase()}
                           </Badge>
                         </div>
-                        <p className="text-slate-300 mb-4">{event.description}</p>
+                        <p className="text-gray-600 mb-4">{event.description}</p>
                       </div>
                       <div className="text-right">
                         <div className="text-sm text-slate-600 dark:text-slate-200">Risk Score</div>
-                        <div className="text-2xl font-bold text-white">{event.riskScore}%</div>
+                        <div className="text-2xl font-bold text-gray-900">{event.riskScore}%</div>
                       </div>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <div className="text-sm font-semibold text-white mb-2">Affected Resources</div>
+                        <div className="text-sm font-semibold text-gray-900 mb-2">Affected Resources</div>
                         <div className="space-y-1">
                           {event.affectedResources.map((resource, index) => (
-                            <div key={index} className="text-sm text-slate-300 flex items-center gap-2">
+                            <div key={index} className="text-sm text-gray-600 flex items-center gap-2">
                               <Database className="w-4 h-4 text-blue-400" />
                               {resource}
                             </div>
@@ -617,10 +617,10 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                       </div>
                       
                       <div>
-                        <div className="text-sm font-semibold text-white mb-2">Recommendations</div>
+                        <div className="text-sm font-semibold text-gray-900 mb-2">Recommendations</div>
                         <div className="space-y-1">
                           {event.recommendations.map((rec, index) => (
-                            <div key={index} className="text-sm text-slate-300 flex items-center gap-2">
+                            <div key={index} className="text-sm text-gray-600 flex items-center gap-2">
                               <Target className="w-4 h-4 text-emerald-400" />
                               {rec}
                             </div>
@@ -630,7 +630,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                     </div>
                     
                     <div className="mt-4 pt-4 border-t border-gray-200 flex items-center justify-between">
-                      <div className="text-xs text-slate-300">
+                      <div className="text-xs text-gray-600">
                         User: {event.user} | Detected: {new Date(event.timestamp).toLocaleString()}
                       </div>
                       <div className="flex gap-2">
@@ -638,7 +638,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                           <Eye className="w-4 h-4 mr-2" />
                           Investigate
                         </Button>
-                        <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
+                        <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
                           Mark Resolved
                         </Button>
                       </div>
@@ -656,7 +656,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 <Card key={report.id} className="bg-white border-gray-200">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-white">{report.reportType}</CardTitle>
+                      <CardTitle className="text-gray-900">{report.reportType}</CardTitle>
                       <Badge className={report.status === 'approved' ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' : 'bg-amber-500/20 text-amber-300 border-amber-500/30'}>
                         {report.status.toUpperCase()}
                       </Badge>
@@ -666,30 +666,30 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       <div>
                         <div className="text-sm text-slate-600 dark:text-slate-200">Period</div>
-                        <div className="text-white font-medium">{report.period}</div>
+                        <div className="text-gray-900 font-medium">{report.period}</div>
                       </div>
                       <div>
                         <div className="text-sm text-slate-600 dark:text-slate-200">Generated</div>
-                        <div className="text-white font-medium">{new Date(report.generatedDate).toLocaleDateString()}</div>
+                        <div className="text-gray-900 font-medium">{new Date(report.generatedDate).toLocaleDateString()}</div>
                       </div>
                       <div>
                         <div className="text-sm text-slate-600 dark:text-slate-200">Overall Score</div>
-                        <div className="text-white font-medium">{report.compliance[0]?.score}%</div>
+                        <div className="text-gray-900 font-medium">{report.compliance[0]?.score}%</div>
                       </div>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-white mb-3">Findings</h4>
+                      <h4 className="font-semibold text-gray-900 mb-3">Findings</h4>
                       <div className="space-y-2">
                         {report.findings.map((finding, index) => (
                           <div key={index} className="p-3 bg-gray-50 rounded-lg">
                             <div className="flex items-center justify-between mb-2">
-                              <span className="font-medium text-white">{finding.category}</span>
+                              <span className="font-medium text-gray-900">{finding.category}</span>
                               <Badge className={getSeverityColor(finding.severity)}>
                                 {finding.count} {finding.severity.toUpperCase()}
                               </Badge>
                             </div>
-                            <div className="text-sm text-slate-300">
+                            <div className="text-sm text-gray-600">
                               {finding.details.join(', ')}
                             </div>
                           </div>
@@ -702,7 +702,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                         <Download className="w-4 h-4 mr-2" />
                         Download Report
                       </Button>
-                      <Button variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
                         <Eye className="w-4 h-4 mr-2" />
                         View Details
                       </Button>
@@ -719,10 +719,10 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
               <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-white">Log Volume</h3>
+                    <h3 className="font-semibold text-gray-900">Log Volume</h3>
                     <BarChart3 className="h-5 w-5 text-blue-400" />
                   </div>
-                  <div className="text-2xl font-bold text-white mb-2">2,847</div>
+                  <div className="text-2xl font-bold text-gray-900 mb-2">2,847</div>
                   <div className="text-sm text-slate-600 dark:text-slate-200">Logs today</div>
                 </CardContent>
               </Card>
@@ -730,10 +730,10 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
               <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-white">Security Score</h3>
+                    <h3 className="font-semibold text-gray-900">Security Score</h3>
                     <Shield className="h-5 w-5 text-emerald-400" />
                   </div>
-                  <div className="text-2xl font-bold text-white mb-2">94.2%</div>
+                  <div className="text-2xl font-bold text-gray-900 mb-2">94.2%</div>
                   <div className="text-sm text-slate-600 dark:text-slate-200">Overall security</div>
                 </CardContent>
               </Card>
@@ -741,10 +741,10 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
               <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-white">Response Time</h3>
+                    <h3 className="font-semibold text-gray-900">Response Time</h3>
                     <Clock className="h-5 w-5 text-purple-400" />
                   </div>
-                  <div className="text-2xl font-bold text-white mb-2">1.2s</div>
+                  <div className="text-2xl font-bold text-gray-900 mb-2">1.2s</div>
                   <div className="text-sm text-slate-600 dark:text-slate-200">Average response</div>
                 </CardContent>
               </Card>
@@ -752,10 +752,10 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
               <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-white">Threat Detection</h3>
+                    <h3 className="font-semibold text-gray-900">Threat Detection</h3>
                     <TrendingUp className="h-5 w-5 text-emerald-400" />
                   </div>
-                  <div className="text-2xl font-bold text-white mb-2">99.7%</div>
+                  <div className="text-2xl font-bold text-gray-900 mb-2">99.7%</div>
                   <div className="text-sm text-slate-600 dark:text-slate-200">Detection rate</div>
                 </CardContent>
               </Card>

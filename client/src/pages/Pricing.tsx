@@ -36,18 +36,18 @@ export default function Pricing() {
       <StandardNav />
 
       {/* Hero */}
-      <section className="py-20 px-6 text-white">
+      <section className="py-20 px-6 text-gray-900">
         <div className="max-w-5xl mx-auto text-center">
-          <Badge className="mb-6 bg-cyan-500 text-white border-0 text-lg px-6 py-2" data-testid="badge-pricing">
+          <Badge className="mb-6 bg-cyan-500 text-gray-900 border-0 text-lg px-6 py-2" data-testid="badge-pricing">
             Enterprise Pricing
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white" data-testid="heading-pricing">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900" data-testid="heading-pricing">
             Built for Fortune 1000
           </h1>
-          <p className="text-2xl text-blue-100 mb-4">
+          <p className="text-2xl text-blue-600 mb-4">
             Transparent, value-based pricing for enterprise decision velocity
           </p>
-          <p className="text-lg text-blue-200 max-w-3xl mx-auto">
+          <p className="text-lg text-blue-700 max-w-3xl mx-auto">
             Execution OS is purpose-built for large enterprises executing complex strategic decisions. Our pricing reflects the platform's ability to deliver 360x faster execution and preserve millions in revenue.
           </p>
         </div>
@@ -158,7 +158,7 @@ export default function Pricing() {
               <Button 
                 size="lg" 
                 onClick={() => setLocation("/contact")}
-                className="w-full bg-green-600 hover:bg-green-700 text-white text-lg py-6"
+                className="w-full bg-green-600 hover:bg-green-700 text-gray-900 text-lg py-6"
                 data-testid="button-apply-early-access"
               >
                 Apply for Founding Partner Pilot <ArrowRight className="ml-2 h-5 w-5" />
@@ -188,7 +188,7 @@ export default function Pricing() {
             <Card className="border-2 border-blue-200 dark:border-blue-800" data-testid="card-tier-enterprise">
               <CardHeader className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30">
                 <div className="text-center">
-                  <Badge className="mb-3 bg-blue-600 text-white">Enterprise</Badge>
+                  <Badge className="mb-3 bg-blue-600 text-gray-900">Enterprise</Badge>
                   <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">1,000-5,000 employees</div>
                   <div className="flex items-baseline justify-center gap-2 mb-1">
                     <div className="text-5xl font-bold text-slate-900 dark:text-white">$250K</div>
@@ -224,7 +224,7 @@ export default function Pricing() {
                   </li>
                 </ul>
                 <Button 
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-gray-900"
                   onClick={() => setLocation("/contact")}
                   data-testid="button-enterprise-tier"
                 >
@@ -236,11 +236,11 @@ export default function Pricing() {
             {/* Enterprise Plus Tier */}
             <Card className="border-2 border-purple-500 dark:border-purple-600 shadow-xl relative" data-testid="card-tier-enterprise-plus">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <Badge className="bg-purple-600 text-white px-4 py-1 text-sm">Most Popular</Badge>
+                <Badge className="bg-purple-600 text-gray-900 px-4 py-1 text-sm">Most Popular</Badge>
               </div>
               <CardHeader className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30">
                 <div className="text-center">
-                  <Badge className="mb-3 bg-purple-600 text-white">Enterprise Plus</Badge>
+                  <Badge className="mb-3 bg-purple-600 text-gray-900">Enterprise Plus</Badge>
                   <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">5,000-15,000 employees</div>
                   <div className="flex items-baseline justify-center gap-2 mb-1">
                     <div className="text-5xl font-bold text-slate-900 dark:text-white">$450K</div>
@@ -276,7 +276,7 @@ export default function Pricing() {
                   </li>
                 </ul>
                 <Button 
-                  className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+                  className="w-full bg-purple-600 hover:bg-purple-700 text-gray-900"
                   onClick={() => setLocation("/contact")}
                   data-testid="button-enterprise-plus-tier"
                 >
@@ -289,7 +289,7 @@ export default function Pricing() {
             <Card className="border-2 border-slate-300 dark:border-slate-700" data-testid="card-tier-global">
               <CardHeader className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-800/50">
                 <div className="text-center">
-                  <Badge className="mb-3 bg-gray-50 text-white">Global</Badge>
+                  <Badge className="mb-3 bg-gray-50 text-gray-900">Global</Badge>
                   <div className="text-sm text-slate-600 dark:text-slate-300 mb-2">15,000+ employees</div>
                   <div className="flex items-baseline justify-center gap-2 mb-1">
                     <div className="text-4xl font-bold text-slate-900 dark:text-white">Custom</div>
@@ -455,16 +455,16 @@ export default function Pricing() {
       </section>
 
       {/* Value Justification - NEW SECTION */}
-      <section className="py-20 px-6 text-white">
+      <section className="py-20 px-6 text-gray-900">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-amber-500 text-white text-base px-4 py-2">
+            <Badge className="mb-4 bg-amber-500 text-gray-900 text-base px-4 py-2">
               Value Justification
             </Badge>
-            <h2 className="text-4xl font-bold mb-4 text-white">
+            <h2 className="text-4xl font-bold mb-4 text-gray-900">
               One Event Pays for Years of Execution OS
             </h2>
-            <p className="text-xl text-blue-200 max-w-3xl mx-auto">
+            <p className="text-xl text-blue-700 max-w-3xl mx-auto">
               A single prevented crisis or captured opportunity delivers multiples of your annual investment
             </p>
           </div>
@@ -474,8 +474,8 @@ export default function Pricing() {
               <CardContent className="p-6">
                 <Shield className="h-10 w-10 text-red-400 mb-4" />
                 <div className="text-sm font-semibold text-red-300 mb-2">Single Crisis Prevented</div>
-                <div className="text-4xl font-bold text-white mb-2">$5-50M</div>
-                <div className="text-sm text-blue-200">in value protected</div>
+                <div className="text-4xl font-bold text-gray-900 mb-2">$5-50M</div>
+                <div className="text-sm text-blue-700">in value protected</div>
               </CardContent>
             </Card>
 
@@ -483,8 +483,8 @@ export default function Pricing() {
               <CardContent className="p-6">
                 <TrendingUp className="h-10 w-10 text-green-400 mb-4" />
                 <div className="text-sm font-semibold text-green-300 mb-2">Market Opportunity Won</div>
-                <div className="text-4xl font-bold text-white mb-2">$10-100M</div>
-                <div className="text-sm text-blue-200">in new revenue captured</div>
+                <div className="text-4xl font-bold text-gray-900 mb-2">$10-100M</div>
+                <div className="text-sm text-blue-700">in new revenue captured</div>
               </CardContent>
             </Card>
 
@@ -492,8 +492,8 @@ export default function Pricing() {
               <CardContent className="p-6">
                 <Zap className="h-10 w-10 text-amber-400 mb-4" />
                 <div className="text-sm font-semibold text-amber-300 mb-2">Product Launch Acceleration</div>
-                <div className="text-4xl font-bold text-white mb-2">$5-20M</div>
-                <div className="text-sm text-blue-200">in time-to-market value</div>
+                <div className="text-4xl font-bold text-gray-900 mb-2">$5-20M</div>
+                <div className="text-sm text-blue-700">in time-to-market value</div>
               </CardContent>
             </Card>
 
@@ -501,8 +501,8 @@ export default function Pricing() {
               <CardContent className="p-6">
                 <Users className="h-10 w-10 text-purple-400 mb-4" />
                 <div className="text-sm font-semibold text-purple-300 mb-2">M&A Integration Synergy</div>
-                <div className="text-4xl font-bold text-white mb-2">$50-200M</div>
-                <div className="text-sm text-blue-200">in synergy capture</div>
+                <div className="text-4xl font-bold text-gray-900 mb-2">$50-200M</div>
+                <div className="text-sm text-blue-700">in synergy capture</div>
               </CardContent>
             </Card>
 
@@ -510,8 +510,8 @@ export default function Pricing() {
               <CardContent className="p-6">
                 <Building2 className="h-10 w-10 text-cyan-400 mb-4" />
                 <div className="text-sm font-semibold text-cyan-300 mb-2">Decision Velocity Improvement</div>
-                <div className="text-4xl font-bold text-white mb-2">$500K-1M</div>
-                <div className="text-sm text-blue-200">per year in better execution</div>
+                <div className="text-4xl font-bold text-gray-900 mb-2">$500K-1M</div>
+                <div className="text-sm text-blue-700">per year in better execution</div>
               </CardContent>
             </Card>
 
@@ -519,15 +519,15 @@ export default function Pricing() {
               <CardContent className="p-6">
                 <FileText className="h-10 w-10 text-blue-400 mb-4" />
                 <div className="text-sm font-semibold text-blue-300 mb-2">Compliance Automation</div>
-                <div className="text-4xl font-bold text-white mb-2">$100-300K</div>
-                <div className="text-sm text-blue-200">per year in risk reduction</div>
+                <div className="text-4xl font-bold text-gray-900 mb-2">$100-300K</div>
+                <div className="text-sm text-blue-700">per year in risk reduction</div>
               </CardContent>
             </Card>
           </div>
 
           <div className="text-center">
-            <p className="text-lg text-blue-200 max-w-3xl mx-auto">
-              <span className="font-semibold text-white">The math is simple:</span> Your $250K-$1.5M annual investment pays for itself with a single successful response. Everything after that is pure value creation.
+            <p className="text-lg text-blue-700 max-w-3xl mx-auto">
+              <span className="font-semibold text-gray-900">The math is simple:</span> Your $250K-$1.5M annual investment pays for itself with a single successful response. Everything after that is pure value creation.
             </p>
           </div>
         </div>
@@ -634,19 +634,19 @@ export default function Pricing() {
             </Card>
           </div>
 
-          <Card className="max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-cyan-600 text-white">
+          <Card className="max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-cyan-600 text-gray-900">
             <CardContent className="p-8">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
-                  <div className="text-sm font-semibold text-blue-100 mb-2">Total Annual Value</div>
+                  <div className="text-sm font-semibold text-blue-600 mb-2">Total Annual Value</div>
                   <div className="text-6xl font-bold mb-2">$39.6M</div>
-                  <div className="text-blue-100 mb-4">
+                  <div className="text-blue-600 mb-4">
                     Average customer captures $39.6M in value annually through Execution OS
                   </div>
                   <div className="bg-white/10 rounded-lg p-4 border border-white/20">
-                    <div className="text-sm text-blue-100 mb-1">Return on Investment</div>
+                    <div className="text-sm text-blue-600 mb-1">Return on Investment</div>
                     <div className="text-3xl font-bold">79x ROI</div>
-                    <div className="text-sm text-blue-100 mt-1">Get $79 for every $1 invested</div>
+                    <div className="text-sm text-blue-600 mt-1">Get $79 for every $1 invested</div>
                   </div>
                 </div>
                 <div className="space-y-3 text-blue-50">
@@ -684,7 +684,7 @@ export default function Pricing() {
             <Button 
               size="lg" 
               onClick={() => setLocation("/contact")}
-              className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-10 py-6"
+              className="bg-blue-600 hover:bg-blue-700 text-gray-900 text-lg px-10 py-6"
               data-testid="button-apply-now"
             >
               Apply for Founding Partner Pilot <ArrowRight className="ml-2 h-5 w-5" />

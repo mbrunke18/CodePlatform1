@@ -68,7 +68,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
             <Lightbulb className="h-5 w-5 text-purple-400 mt-0.5" />
             <div>
               <p className="text-sm text-purple-300 font-medium">AI Recommendation</p>
-              <p className="text-xs text-gray-200 mt-1">
+              <p className="text-xs text-gray-500 mt-1">
                 Start with a template scenario to get industry-standard defaults, then customize for your business.
                 Most customers only need to customize 20-30% of fields.
               </p>
@@ -80,7 +80,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
       {/* Basic Information */}
       <div className="space-y-4">
         <div>
-          <Label htmlFor="name" className="text-white flex items-center gap-2">
+          <Label htmlFor="name" className="text-gray-900 flex items-center gap-2">
             Scenario Name <Badge variant="outline" className="text-xs">Required</Badge>
           </Label>
           <Input
@@ -89,34 +89,34 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
             placeholder="e.g., Supply Chain Disruption - Asia Pacific"
             value={data.name}
             onChange={(e) => onChange({ name: e.target.value })}
-            className="bg-gray-50 border-slate-600 text-white mt-2"
+            className="bg-gray-50 border-slate-600 text-gray-900 mt-2"
           />
-          <p className="text-xs text-gray-300 mt-1">Use clear, descriptive names that your team will recognize</p>
+          <p className="text-xs text-gray-600 mt-1">Use clear, descriptive names that your team will recognize</p>
         </div>
 
         <div>
-          <Label htmlFor="description" className="text-white">Brief Description</Label>
+          <Label htmlFor="description" className="text-gray-900">Brief Description</Label>
           <Textarea
             id="description"
             data-testid="textarea-scenario-description"
             placeholder="What is this scenario about?"
             value={data.description}
             onChange={(e) => onChange({ description: e.target.value })}
-            className="bg-gray-50 border-slate-600 text-white mt-2 min-h-[80px]"
+            className="bg-gray-50 border-slate-600 text-gray-900 mt-2 min-h-[80px]"
           />
         </div>
       </div>
 
       {/* Strategic Framing - Standardized Options */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+        <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
           <Target className="h-5 w-5 text-blue-400" />
           Strategic Framing
         </h3>
 
         {/* Scenario Type - Visual Cards */}
         <div>
-          <Label className="text-white flex items-center gap-2 mb-3">
+          <Label className="text-gray-900 flex items-center gap-2 mb-3">
             Scenario Type <Badge variant="outline" className="text-xs">Required</Badge>
           </Label>
           <div className="grid md:grid-cols-2 gap-3">
@@ -136,11 +136,11 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <Icon className={`h-5 w-5 ${isSelected ? 'text-blue-400' : type.color}`} />
-                    <span className={`font-semibold ${isSelected ? 'text-blue-300' : 'text-white'}`}>
+                    <span className={`font-semibold ${isSelected ? 'text-blue-300' : 'text-gray-900'}`}>
                       {type.label}
                     </span>
                   </div>
-                  <p className="text-xs text-gray-200">{type.description}</p>
+                  <p className="text-xs text-gray-500">{type.description}</p>
                 </button>
               );
             })}
@@ -149,7 +149,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
 
         {/* Mission/Objective */}
         <div>
-          <Label htmlFor="mission" className="text-white flex items-center gap-2">
+          <Label htmlFor="mission" className="text-gray-900 flex items-center gap-2">
             Mission/Objective <Badge variant="outline" className="text-xs">Required</Badge>
           </Label>
           <Input
@@ -158,19 +158,19 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
             placeholder="e.g., Maintain 95% fulfillment rate during supplier disruptions"
             value={data.mission}
             onChange={(e) => onChange({ mission: e.target.value })}
-            className="bg-gray-50 border-slate-600 text-white mt-2"
+            className="bg-gray-50 border-slate-600 text-gray-900 mt-2"
           />
-          <p className="text-xs text-gray-300 mt-1">Clear, measurable objective this scenario should achieve</p>
+          <p className="text-xs text-gray-600 mt-1">Clear, measurable objective this scenario should achieve</p>
         </div>
 
         {/* Time Horizon - Dropdown */}
         <div>
-          <Label className="text-white flex items-center gap-2 mb-2">
+          <Label className="text-gray-900 flex items-center gap-2 mb-2">
             <Clock className="h-4 w-4" />
             Time Horizon <Badge variant="outline" className="text-xs">Required</Badge>
           </Label>
           <Select value={data.timeHorizon} onValueChange={(value) => onChange({ timeHorizon: value })}>
-            <SelectTrigger className="bg-gray-50 border-slate-600 text-white" data-testid="select-time-horizon">
+            <SelectTrigger className="bg-gray-50 border-slate-600 text-gray-900" data-testid="select-time-horizon">
               <SelectValue placeholder="Select time horizon" />
             </SelectTrigger>
             <SelectContent>
@@ -178,7 +178,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
                 <SelectItem key={option.value} value={option.value}>
                   <div>
                     <div className="font-medium">{option.label}</div>
-                    <div className="text-xs text-gray-300">{option.description}</div>
+                    <div className="text-xs text-gray-600">{option.description}</div>
                   </div>
                 </SelectItem>
               ))}
@@ -188,14 +188,14 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
 
         {/* Business Impact Category */}
         <div>
-          <Label className="text-white flex items-center gap-2 mb-2">
+          <Label className="text-gray-900 flex items-center gap-2 mb-2">
             Business Impact Category <Badge variant="outline" className="text-xs">Required</Badge>
           </Label>
           <Select 
             value={data.businessImpactCategory} 
             onValueChange={(value) => onChange({ businessImpactCategory: value })}
           >
-            <SelectTrigger className="bg-gray-50 border-slate-600 text-white" data-testid="select-business-impact">
+            <SelectTrigger className="bg-gray-50 border-slate-600 text-gray-900" data-testid="select-business-impact">
               <SelectValue placeholder="Select primary impact" />
             </SelectTrigger>
             <SelectContent>
@@ -203,7 +203,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
                 <SelectItem key={option.value} value={option.value}>
                   <div>
                     <div className="font-medium">{option.label}</div>
-                    <div className="text-xs text-gray-300">{option.description}</div>
+                    <div className="text-xs text-gray-600">{option.description}</div>
                   </div>
                 </SelectItem>
               ))}
@@ -214,31 +214,31 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
 
       {/* Optional: Organizational Context */}
       <details className="border border-gray-200 rounded-lg p-4 bg-white">
-        <summary className="cursor-pointer text-white font-medium">
+        <summary className="cursor-pointer text-gray-900 font-medium">
           Advanced: Organizational Context (Optional)
         </summary>
         <div className="mt-4 space-y-4">
           <div>
-            <Label htmlFor="businessUnit" className="text-white">Primary Business Unit</Label>
+            <Label htmlFor="businessUnit" className="text-gray-900">Primary Business Unit</Label>
             <Input
               id="businessUnit"
               data-testid="input-business-unit"
               placeholder="e.g., Supply Chain Operations"
               value={data.primaryBusinessUnit}
               onChange={(e) => onChange({ primaryBusinessUnit: e.target.value })}
-              className="bg-gray-50 border-slate-600 text-white mt-2"
+              className="bg-gray-50 border-slate-600 text-gray-900 mt-2"
             />
           </div>
 
           <div>
-            <Label htmlFor="narrativeContext" className="text-white">Additional Context</Label>
+            <Label htmlFor="narrativeContext" className="text-gray-900">Additional Context</Label>
             <Textarea
               id="narrativeContext"
               data-testid="textarea-narrative"
               placeholder="Provide additional background, history, or relevant context..."
               value={data.narrativeContext}
               onChange={(e) => onChange({ narrativeContext: e.target.value })}
-              className="bg-gray-50 border-slate-600 text-white mt-2 min-h-[100px]"
+              className="bg-gray-50 border-slate-600 text-gray-900 mt-2 min-h-[100px]"
             />
           </div>
         </div>

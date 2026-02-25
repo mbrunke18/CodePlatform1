@@ -110,8 +110,8 @@ export default function PilotMonitoring() {
             </h1>
             <Badge className={`text-base px-4 py-2 ${
               systemHealth.status === 'healthy' 
-                ? 'bg-green-600 text-white' 
-                : 'bg-yellow-600 text-white'
+                ? 'bg-green-600 text-gray-900' 
+                : 'bg-yellow-600 text-gray-900'
             }`} data-testid="badge-system-status">
               <Activity className="w-4 h-4 mr-2" />
               System {systemHealth.status === 'healthy' ? 'Healthy' : 'Warning'}
@@ -133,7 +133,7 @@ export default function PilotMonitoring() {
               <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">
                 {systemHealth.uptime}%
               </div>
-              <div className="text-xs text-slate-300">Last 30 days</div>
+              <div className="text-xs text-gray-600">Last 30 days</div>
             </CardContent>
           </Card>
 
@@ -146,7 +146,7 @@ export default function PilotMonitoring() {
               <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">
                 {systemHealth.avgResponseTime}ms
               </div>
-              <div className="text-xs text-slate-300">Target: {'<'} 200ms</div>
+              <div className="text-xs text-gray-600">Target: {'<'} 200ms</div>
             </CardContent>
           </Card>
 
@@ -159,7 +159,7 @@ export default function PilotMonitoring() {
               <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">
                 {systemHealth.activeUsers}
               </div>
-              <div className="text-xs text-slate-300">Currently online</div>
+              <div className="text-xs text-gray-600">Currently online</div>
             </CardContent>
           </Card>
 
@@ -172,7 +172,7 @@ export default function PilotMonitoring() {
               <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">
                 {pilotMetrics.executionsCompleted}
               </div>
-              <div className="text-xs text-slate-300">Total completed</div>
+              <div className="text-xs text-gray-600">Total completed</div>
             </CardContent>
           </Card>
         </div>
@@ -201,7 +201,7 @@ export default function PilotMonitoring() {
                   <div className="text-sm text-gray-600 dark:text-slate-300">Active</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-slate-300">
+                  <div className="text-2xl font-bold text-gray-600">
                     {pilotMetrics.totalPilots - pilotMetrics.activePilots}
                   </div>
                   <div className="text-sm text-gray-600 dark:text-slate-300">Onboarding</div>
@@ -259,7 +259,7 @@ export default function PilotMonitoring() {
                     <div className="text-sm text-gray-600 dark:text-slate-300">Avg Execution Time</div>
                     <div className="text-2xl font-bold text-slate-900 dark:text-white">{pilotMetrics.avgExecutionTime} min</div>
                   </div>
-                  <Badge className="bg-green-600 text-white">
+                  <Badge className="bg-green-600 text-gray-900">
                     Target: 12 min
                   </Badge>
                 </div>
@@ -288,7 +288,7 @@ export default function PilotMonitoring() {
                   <div className="text-2xl font-bold text-slate-900 dark:text-white mb-1">
                     {metric.value}
                   </div>
-                  <div className="text-xs text-slate-300">
+                  <div className="text-xs text-gray-600">
                     Target: {metric.target}
                   </div>
                 </div>
@@ -321,7 +321,7 @@ export default function PilotMonitoring() {
                       {activity.action}
                     </div>
                   </div>
-                  <div className="text-xs text-slate-300 whitespace-nowrap">
+                  <div className="text-xs text-gray-600 whitespace-nowrap">
                     {activity.time}
                   </div>
                 </div>

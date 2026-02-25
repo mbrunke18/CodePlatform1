@@ -118,19 +118,19 @@ export default function CrisisExposureMatrix() {
           <CardContent className="text-blue-900 dark:text-blue-100">
             <div className="space-y-2 text-sm">
               <div className="flex items-start gap-2">
-                <div className="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">1</div>
+                <div className="bg-red-500 text-gray-900 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">1</div>
                 <div>
                   <strong>Days 1-30:</strong> Run your Crisis Exposure Matrix workshop with our Crisis Architects
                 </div>
               </div>
               <div className="flex items-start gap-2">
-                <div className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">2</div>
+                <div className="bg-orange-500 text-gray-900 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">2</div>
                 <div>
                   <strong>Days 31-90:</strong> Get your Top 10 Critical playbooks to 95%+ readiness
                 </div>
               </div>
               <div className="flex items-start gap-2">
-                <div className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">3</div>
+                <div className="bg-blue-500 text-gray-900 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">3</div>
                 <div>
                   <strong>Ongoing:</strong> Build out remaining playbooks with quarterly readiness sprints
                 </div>

@@ -164,16 +164,16 @@ export default function ScenarioVarianceAlert({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-lg bg-amber-500 animate-pulse">
-              <Bell className="w-5 h-5 text-white" />
+              <Bell className="w-5 h-5 text-gray-900" />
             </div>
             <div>
               <CardTitle className="text-lg flex items-center gap-2">
                 Scenario Variance Alerts
                 {criticalCount > 0 && (
-                  <Badge className="bg-red-500 text-white">{criticalCount} Critical</Badge>
+                  <Badge className="bg-red-500 text-gray-900">{criticalCount} Critical</Badge>
                 )}
                 {warningCount > 0 && (
-                  <Badge className="bg-amber-500 text-white">{warningCount} Warning</Badge>
+                  <Badge className="bg-amber-500 text-gray-900">{warningCount} Warning</Badge>
                 )}
               </CardTitle>
               <p className="text-xs text-gray-600 dark:text-slate-300">
@@ -214,7 +214,7 @@ export default function ScenarioVarianceAlert({
                       {alert.variance > 0 ? '+' : ''}{alert.variance}% variance
                     </Badge>
                   </div>
-                  <div className="flex items-center gap-1 text-xs text-slate-300">
+                  <div className="flex items-center gap-1 text-xs text-gray-600">
                     <Clock className="w-3 h-3" />
                     {alert.detectedAt}
                   </div>
@@ -222,11 +222,11 @@ export default function ScenarioVarianceAlert({
 
                 <div className="grid grid-cols-2 gap-4 mb-3 text-sm">
                   <div>
-                    <span className="text-slate-300">Baseline:</span>
+                    <span className="text-gray-600">Baseline:</span>
                     <span className="ml-2 font-medium">{alert.baseline}</span>
                   </div>
                   <div>
-                    <span className="text-slate-300">Current:</span>
+                    <span className="text-gray-600">Current:</span>
                     <span className={`ml-2 font-medium ${
                       alert.severity === 'critical' ? 'text-red-600' : 'text-amber-600'
                     }`}>
@@ -237,7 +237,7 @@ export default function ScenarioVarianceAlert({
 
                 {alert.affectedPlaybooks.length > 0 && (
                   <div className="mb-2">
-                    <span className="text-xs text-slate-300">Affected Playbooks: </span>
+                    <span className="text-xs text-gray-600">Affected Playbooks: </span>
                     <span className="text-xs font-medium">{alert.affectedPlaybooks.join(', ')}</span>
                   </div>
                 )}
@@ -271,7 +271,7 @@ export default function ScenarioVarianceAlert({
                       {alert.severity === 'critical' && !alert.escalatedTo && (
                         <Button 
                           size="sm"
-                          className="bg-red-600 hover:bg-red-700 text-white"
+                          className="bg-red-600 hover:bg-red-700 text-gray-900"
                           onClick={() => handleEscalate(alert)}
                           data-testid={`button-escalate-${alert.id}`}
                         >

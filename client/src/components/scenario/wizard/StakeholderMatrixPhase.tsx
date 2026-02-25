@@ -24,7 +24,7 @@ const INFLUENCE_LEVELS = [
   { value: 'critical', label: 'Critical', color: 'text-red-400' },
   { value: 'high', label: 'High', color: 'text-orange-400' },
   { value: 'medium', label: 'Medium', color: 'text-yellow-400' },
-  { value: 'low', label: 'Low', color: 'text-gray-200' },
+  { value: 'low', label: 'Low', color: 'text-gray-500' },
 ];
 
 export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMatrixPhaseProps) {
@@ -72,7 +72,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
               <Shield className="h-5 w-5 text-yellow-400 mt-0.5" />
               <div>
                 <p className="text-sm text-yellow-300 font-medium">Required Roles Missing</p>
-                <p className="text-xs text-gray-200 mt-1">
+                <p className="text-xs text-gray-500 mt-1">
                   Every scenario needs an <strong>Executive Sponsor</strong> (decision authority) and 
                   an <strong>Accountable Owner</strong> (execution lead) for 12-minute activation.
                 </p>
@@ -85,38 +85,38 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
       {/* Add Stakeholder Form */}
       <Card className="border-blue-500/30 bg-white">
         <CardContent className="p-6">
-          <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
+          <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2 mb-4">
             <Plus className="h-5 w-5 text-blue-400" />
             Add Stakeholder
           </h3>
 
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="stakeholder-name" className="text-white">Name *</Label>
+              <Label htmlFor="stakeholder-name" className="text-gray-900">Name *</Label>
               <Input
                 id="stakeholder-name"
                 data-testid="input-stakeholder-name"
                 placeholder="e.g., Sarah Chen"
                 value={newStakeholder.name}
                 onChange={(e) => setNewStakeholder({ ...newStakeholder, name: e.target.value })}
-                className="bg-gray-50 border-slate-600 text-white mt-2"
+                className="bg-gray-50 border-slate-600 text-gray-900 mt-2"
               />
             </div>
 
             <div>
-              <Label htmlFor="stakeholder-title" className="text-white">Title *</Label>
+              <Label htmlFor="stakeholder-title" className="text-gray-900">Title *</Label>
               <Input
                 id="stakeholder-title"
                 data-testid="input-stakeholder-title"
                 placeholder="e.g., COO"
                 value={newStakeholder.title}
                 onChange={(e) => setNewStakeholder({ ...newStakeholder, title: e.target.value })}
-                className="bg-gray-50 border-slate-600 text-white mt-2"
+                className="bg-gray-50 border-slate-600 text-gray-900 mt-2"
               />
             </div>
 
             <div>
-              <Label htmlFor="stakeholder-email" className="text-white">Email</Label>
+              <Label htmlFor="stakeholder-email" className="text-gray-900">Email</Label>
               <Input
                 id="stakeholder-email"
                 data-testid="input-stakeholder-email"
@@ -124,17 +124,17 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
                 placeholder="e.g., sarah.chen@company.com"
                 value={newStakeholder.email}
                 onChange={(e) => setNewStakeholder({ ...newStakeholder, email: e.target.value })}
-                className="bg-gray-50 border-slate-600 text-white mt-2"
+                className="bg-gray-50 border-slate-600 text-gray-900 mt-2"
               />
             </div>
 
             <div>
-              <Label htmlFor="stakeholder-role" className="text-white">Role *</Label>
+              <Label htmlFor="stakeholder-role" className="text-gray-900">Role *</Label>
               <Select 
                 value={newStakeholder.role} 
                 onValueChange={(value: any) => setNewStakeholder({ ...newStakeholder, role: value })}
               >
-                <SelectTrigger className="bg-gray-50 border-slate-600 text-white mt-2" data-testid="select-stakeholder-role">
+                <SelectTrigger className="bg-gray-50 border-slate-600 text-gray-900 mt-2" data-testid="select-stakeholder-role">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -146,7 +146,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
                           <Icon className="h-4 w-4" />
                           <div>
                             <div className="font-medium">{role.label}</div>
-                            <div className="text-xs text-gray-300">{role.description}</div>
+                            <div className="text-xs text-gray-600">{role.description}</div>
                           </div>
                         </div>
                       </SelectItem>
@@ -157,12 +157,12 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
             </div>
 
             <div>
-              <Label htmlFor="stakeholder-influence" className="text-white">Influence Level</Label>
+              <Label htmlFor="stakeholder-influence" className="text-gray-900">Influence Level</Label>
               <Select 
                 value={newStakeholder.influenceLevel} 
                 onValueChange={(value: any) => setNewStakeholder({ ...newStakeholder, influenceLevel: value })}
               >
-                <SelectTrigger className="bg-gray-50 border-slate-600 text-white mt-2" data-testid="select-influence-level">
+                <SelectTrigger className="bg-gray-50 border-slate-600 text-gray-900 mt-2" data-testid="select-influence-level">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -184,7 +184,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
                   className="rounded border-slate-600"
                   data-testid="checkbox-executive-sponsor"
                 />
-                <span className="text-sm text-white">Executive Sponsor</span>
+                <span className="text-sm text-gray-900">Executive Sponsor</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer">
                 <input
@@ -194,7 +194,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
                   className="rounded border-slate-600"
                   data-testid="checkbox-accountable-owner"
                 />
-                <span className="text-sm text-white">Accountable Owner</span>
+                <span className="text-sm text-gray-900">Accountable Owner</span>
               </label>
             </div>
           </div>
@@ -202,7 +202,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
           <Button
             onClick={addStakeholder}
             disabled={!newStakeholder.name || !newStakeholder.title}
-            className="mt-4 bg-blue-600 hover:bg-blue-700 text-white"
+            className="mt-4 bg-blue-600 hover:bg-blue-700 text-gray-900"
             data-testid="button-add-stakeholder"
           >
             <Plus className="h-4 w-4 mr-2" />
@@ -214,7 +214,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
       {/* Stakeholder List */}
       {data.stakeholders && data.stakeholders.length > 0 && (
         <div>
-          <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
+          <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2 mb-4">
             <Users className="h-5 w-5 text-blue-400" />
             Stakeholder Matrix ({data.stakeholders.length})
           </h3>
@@ -232,7 +232,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
                           <RoleIcon className="h-4 w-4 text-blue-400" />
-                          <h4 className="font-semibold text-white">{stakeholder.name}</h4>
+                          <h4 className="font-semibold text-gray-900">{stakeholder.name}</h4>
                           {stakeholder.isExecutiveSponsor && (
                             <Badge className="bg-purple-600/20 text-purple-300 border-purple-500/50 text-xs">
                               <Crown className="h-3 w-3 mr-1" />
@@ -246,14 +246,14 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
                             </Badge>
                           )}
                         </div>
-                        <div className="text-sm text-gray-200 space-y-1">
+                        <div className="text-sm text-gray-500 space-y-1">
                           <p>{stakeholder.title}</p>
                           {stakeholder.email && <p className="text-xs">{stakeholder.email}</p>}
                           <div className="flex items-center gap-3 mt-2">
                             <Badge variant="outline" className="text-xs">
                               {roleConfig?.label || stakeholder.role}
                             </Badge>
-                            <span className={`text-xs ${influenceConfig?.color || 'text-gray-200'}`}>
+                            <span className={`text-xs ${influenceConfig?.color || 'text-gray-500'}`}>
                               {influenceConfig?.label || stakeholder.influenceLevel} Influence
                             </span>
                           </div>

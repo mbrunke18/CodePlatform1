@@ -96,7 +96,7 @@ export default function WorkspaceAdvance() {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-slate-300 hover:text-poise-gold cursor-pointer">Execution OS One™</span>
+              <span className="text-gray-600 hover:text-poise-gold cursor-pointer">Execution OS One™</span>
             </Link>
             <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200" />
             <span className="text-poise-gold font-medium">ADVANCE</span>
@@ -106,7 +106,7 @@ export default function WorkspaceAdvance() {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
             <div className="flex items-center gap-4">
               <div className="p-4 rounded-2xl bg-gradient-to-br from-poise-gold to-amber-500 shadow-lg shadow-poise-gold/30">
-                <TrendingUp className="h-8 w-8 text-white" />
+                <TrendingUp className="h-8 w-8 text-gray-900" />
               </div>
               <div>
                 <div className="flex items-center gap-3">
@@ -141,7 +141,7 @@ export default function WorkspaceAdvance() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-slate-900 dark:text-white">IDEA Framework Progress</h3>
-                <span className="text-sm text-slate-300">Phase 4 of 4 - Continuous Loop</span>
+                <span className="text-sm text-gray-600">Phase 4 of 4 - Continuous Loop</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex-1 flex items-center gap-2">
@@ -151,21 +151,21 @@ export default function WorkspaceAdvance() {
                       <span className="text-sm text-poise-gold">IDENTIFY</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-slate-300" />
+                  <ArrowRight className="h-4 w-4 text-gray-600" />
                   <Link href="/workspaces/detect">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-poise-teal/10 hover:bg-poise-teal/20 cursor-pointer transition-colors">
                       <Radar className="h-4 w-4 text-poise-teal" />
                       <span className="text-sm text-poise-teal">DETECT</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-slate-300" />
+                  <ArrowRight className="h-4 w-4 text-gray-600" />
                   <Link href="/workspaces/execute">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-poise-teal/10 hover:bg-poise-teal/20 cursor-pointer transition-colors">
                       <Compass className="h-4 w-4 text-poise-teal" />
                       <span className="text-sm text-poise-teal">EXECUTE</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-slate-300" />
+                  <ArrowRight className="h-4 w-4 text-gray-600" />
                   <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-poise-gold/20 border-2 border-poise-gold">
                     <TrendingUp className="h-4 w-4 text-poise-gold" />
                     <span className="text-sm font-medium text-poise-gold">ADVANCE</span>
@@ -184,7 +184,7 @@ export default function WorkspaceAdvance() {
                     <metric.icon className={`h-5 w-5 ${metric.color}`} />
                   </div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white">{metric.value}</p>
-                  <p className="text-xs text-slate-300">{metric.label}</p>
+                  <p className="text-xs text-gray-600">{metric.label}</p>
                 </CardContent>
               </Card>
             ))}

@@ -40,7 +40,7 @@ export function DemoStrategicAlert() {
                 Primary Supplier Financial Distress - AcmeParts Inc
               </span>
             </div>
-            <Badge className="bg-red-600 text-white">CRITICAL</Badge>
+            <Badge className="bg-red-600 text-gray-900">CRITICAL</Badge>
           </div>
         </AlertDescription>
       </Alert>
@@ -94,12 +94,12 @@ export function DemoActiveStrategicCard() {
               </CardTitle>
             </div>
             <div className="flex gap-2">
-              <Badge className="bg-red-600 text-white">CRITICAL</Badge>
+              <Badge className="bg-red-600 text-gray-900">CRITICAL</Badge>
               <Badge variant="outline" className="border-orange-500 text-orange-700 dark:text-orange-300">
                 Supply Chain
               </Badge>
               {isActivated && (
-                <Badge className="bg-green-600 text-white">
+                <Badge className="bg-green-600 text-gray-900">
                   <Zap className="h-3 w-3 mr-1" />
                   PLAYBOOK ACTIVE
                 </Badge>
@@ -217,7 +217,7 @@ export function DemoActiveStrategicCard() {
         )}
         
         {!isActivated && sceneId === 'decision-activation' && (
-          <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white" size="lg" data-testid="demo-activate-playbook-btn">
+          <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-gray-900" size="lg" data-testid="demo-activate-playbook-btn">
             <Play className="h-5 w-5 mr-2" />
             Activate Supply Chain Disruption Playbook SCM-001
           </Button>

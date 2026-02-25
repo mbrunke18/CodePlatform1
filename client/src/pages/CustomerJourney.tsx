@@ -140,7 +140,7 @@ export default function CustomerJourney() {
           
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-slate-300 hover:text-poise-teal cursor-pointer">Execution OS One™</span>
+              <span className="text-gray-600 hover:text-poise-teal cursor-pointer">Execution OS One™</span>
             </Link>
             <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200" />
             <span className="text-poise-teal font-medium">Execution OS North Star™</span>
@@ -164,7 +164,7 @@ export default function CustomerJourney() {
                 <CardContent className="p-6">
                   <div className="text-3xl font-bold text-poise-teal mb-1">{metric.value}</div>
                   <div className="font-medium text-slate-900 dark:text-white mb-1">{metric.label}</div>
-                  <div className="text-xs text-slate-300">{metric.description}</div>
+                  <div className="text-xs text-gray-600">{metric.description}</div>
                 </CardContent>
               </Card>
             ))}
@@ -218,7 +218,7 @@ export default function CustomerJourney() {
                                     <div className="font-medium text-slate-900 dark:text-white group-hover:text-poise-teal transition-colors">
                                       {activity.name}
                                     </div>
-                                    <div className="text-xs text-slate-300">{activity.description}</div>
+                                    <div className="text-xs text-gray-600">{activity.description}</div>
                                   </div>
                                 </div>
                               </Link>
@@ -277,7 +277,7 @@ export default function CustomerJourney() {
               </p>
               <div className="flex justify-center gap-4">
                 <Link href="/pilot-program">
-                  <Button className="bg-poise-teal hover:bg-cyan-600 text-white">
+                  <Button className="bg-poise-teal hover:bg-cyan-600 text-gray-900">
                     Start Pilot Program
                   </Button>
                 </Link>

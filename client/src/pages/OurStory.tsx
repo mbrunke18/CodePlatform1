@@ -34,12 +34,12 @@ function AnimatedSection({ children, className = "" }: { children: React.ReactNo
 function PullQuote({ children, author }: { children: React.ReactNode; author?: string }) {
   return (
     <div className="relative my-16 py-8">
-      <Quote className="absolute -top-2 left-0 h-12 w-12 text-blue-200 dark:text-blue-800" />
+      <Quote className="absolute -top-2 left-0 h-12 w-12 text-blue-700 dark:text-blue-800" />
       <blockquote className="text-2xl md:text-3xl font-medium text-slate-800 dark:text-slate-200 italic pl-8 md:pl-12 leading-relaxed">
         {children}
       </blockquote>
       {author && (
-        <p className="mt-4 pl-8 md:pl-12 text-slate-300 dark:text-slate-300 font-medium">— {author}</p>
+        <p className="mt-4 pl-8 md:pl-12 text-gray-600 dark:text-slate-300 font-medium">— {author}</p>
       )}
     </div>
   );
@@ -101,7 +101,7 @@ function MetricCard({ value, label, color = "blue" }: { value: string; label: st
   };
 
   return (
-    <div className={`bg-gradient-to-br ${colorClasses[color]} rounded-2xl p-6 text-white text-center`}>
+    <div className={`bg-gradient-to-br ${colorClasses[color]} rounded-2xl p-6 text-gray-900 text-center`}>
       <div className="text-4xl md:text-5xl font-bold">{value}</div>
       <div className="text-sm md:text-base opacity-90 mt-1">{label}</div>
     </div>
@@ -127,7 +127,7 @@ export default function OurStory() {
       <StandardNav />
       
       {/* Hero Section - Clean and Impactful */}
-      <div className="relative bg-white text-white overflow-hidden">
+      <div className="relative bg-white text-gray-900 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br  via-transparent " />
         
         <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
@@ -144,7 +144,7 @@ export default function OurStory() {
                 Years of Preparation.
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto">
               How one coach's championship methodology became the execution engine for Fortune 1000 companies.
             </p>
           </motion.div>
@@ -327,7 +327,7 @@ export default function OurStory() {
               ].map((company, i) => (
                 <div key={i} className="text-center p-4 bg-slate-100 dark:bg-slate-800/50 rounded-xl">
                   <div className="text-lg font-bold text-slate-800 dark:text-white">{company.name}</div>
-                  <div className="text-xs text-slate-300">{company.desc}</div>
+                  <div className="text-xs text-gray-600">{company.desc}</div>
                 </div>
               ))}
             </div>
@@ -372,7 +372,7 @@ export default function OurStory() {
       </div>
 
       {/* CTA Section */}
-      <div className=" text-white py-20">
+      <div className=" text-gray-900 py-20">
         <div className="container mx-auto px-6">
           <motion.div 
             className="max-w-3xl mx-auto text-center"
@@ -386,14 +386,14 @@ export default function OurStory() {
                 Are You?
               </span>
             </h2>
-            <p className="text-xl text-slate-300 mb-10">
+            <p className="text-xl text-gray-600 mb-10">
               Replace reactive scrambles with coordinated precision. See how Execution OS transforms 
               strategic response from 72 hours to 12 minutes.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button 
                 onClick={() => setLocation("/demo/live-activation")}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg w-full sm:w-auto"
+                className="bg-blue-600 hover:bg-blue-700 text-gray-900 px-8 py-6 text-lg w-full sm:w-auto"
                 data-testid="button-watch-demo"
               >
                 <Play className="h-5 w-5 mr-2" />
@@ -402,7 +402,7 @@ export default function OurStory() {
               <Button 
                 onClick={() => setLocation("/how-it-works")}
                 variant="outline"
-                className="border-slate-500 text-white hover:bg-slate-800 px-8 py-6 text-lg w-full sm:w-auto"
+                className="border-slate-500 text-gray-900 hover:bg-slate-800 px-8 py-6 text-lg w-full sm:w-auto"
                 data-testid="button-how-it-works"
               >
                 See How It Works
@@ -414,11 +414,11 @@ export default function OurStory() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-white text-white py-12">
+      <footer className="bg-white text-gray-900 py-12">
         <div className="container mx-auto px-6 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-              <span className="text-white font-bold text-lg">Execution OS</span>
+              <span className="text-gray-900 font-bold text-lg">Execution OS</span>
             </div>
             <span className="font-bold text-lg">Strategic Execution OS</span>
           </div>
@@ -437,7 +437,7 @@ export default function OurStory() {
       >
         <Button 
           onClick={() => setLocation("/contact")}
-          className="bg-blue-600 hover:bg-blue-700 text-white shadow-2xl shadow-blue-500/25 px-6 py-3 rounded-full"
+          className="bg-blue-600 hover:bg-blue-700 text-gray-900 shadow-2xl shadow-blue-500/25 px-6 py-3 rounded-full"
           data-testid="button-sticky-cta"
         >
           Request Demo

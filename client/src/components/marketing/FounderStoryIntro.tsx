@@ -338,7 +338,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   transition={{ duration: 0.5, delay: 0.8 }}
                   className="mt-4"
                 >
-                  <span className="text-xl md:text-2xl text-slate-300 italic">
+                  <span className="text-xl md:text-2xl text-gray-600 italic">
                     "That's how long it takes."
                   </span>
                 </motion.div>
@@ -354,7 +354,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6"
+                  className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-6"
                 >
                   That's how long it takes most Fortune 500 companies to respond to a crisis.
                 </motion.p>
@@ -388,7 +388,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-xl md:text-2xl text-slate-300 mb-8"
+                  className="text-xl md:text-2xl text-gray-600 mb-8"
                 >
                   I spent 20 years inside Fortune 500 companies watching this happen.
                 </motion.p>
@@ -414,7 +414,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                       className="flex flex-col items-center p-3 bg-gray-50 border border-gray-200 rounded-lg"
                     >
                       <company.icon className="h-6 w-6 text-amber-400 mb-2" />
-                      <span className="text-sm text-slate-300">{company.name}</span>
+                      <span className="text-sm text-gray-600">{company.name}</span>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -446,7 +446,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
-                  className="text-xl md:text-2xl text-slate-300 mb-6"
+                  className="text-xl md:text-2xl text-gray-600 mb-6"
                 >
                   I kept thinking—in football, we'd never run a play without practicing it first.
                 </motion.p>
@@ -454,7 +454,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 1.2 }}
-                  className="text-2xl md:text-4xl font-bold text-white"
+                  className="text-2xl md:text-4xl font-bold text-gray-900"
                 >
                   But in business?
                 </motion.p>
@@ -478,7 +478,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="text-xl text-slate-300 mb-4"
+                  className="text-xl text-gray-600 mb-4"
                 >
                   That's why I built
                 </motion.p>
@@ -488,13 +488,13 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
                   className="mb-8"
                 >
-                  <span className="text-6xl md:text-8xl font-bold text-white">Execution OS</span>
+                  <span className="text-6xl md:text-8xl font-bold text-gray-900">Execution OS</span>
                 </motion.div>
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 1 }}
-                  className="text-xl md:text-2xl text-slate-300 mb-6"
+                  className="text-xl md:text-2xl text-gray-600 mb-6"
                 >
                   170 playbooks across every scenario you'll face
                 </motion.p>
@@ -531,7 +531,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   className="flex items-center justify-center gap-3 mb-6"
                 >
                   <Clock className="h-8 w-8 text-emerald-400" />
-                  <span className="text-xl text-slate-300">From signal to coordinated execution</span>
+                  <span className="text-xl text-gray-600">From signal to coordinated execution</span>
                 </motion.div>
                 <motion.div
                   initial={{ scale: 0.5, opacity: 0 }}
@@ -550,7 +550,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 1.5 }}
-                  className="text-lg md:text-xl text-slate-300"
+                  className="text-lg md:text-xl text-gray-600"
                 >
                   One click to activate. Roles assigned. Teams moving in parallel.
                 </motion.p>
@@ -566,7 +566,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-xl md:text-2xl text-slate-300 mb-8"
+                  className="text-xl md:text-2xl text-gray-600 mb-8"
                 >
                   This isn't about working harder.
                 </motion.p>
@@ -574,7 +574,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.8 }}
-                  className="text-2xl md:text-4xl font-bold text-white mb-6"
+                  className="text-2xl md:text-4xl font-bold text-gray-900 mb-6"
                 >
                   It's about executing with discipline—
                 </motion.p>
@@ -598,7 +598,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="text-xl text-slate-300 mb-6"
+                  className="text-xl text-gray-600 mb-6"
                 >
                   The companies that figure this out first don't just survive.
                 </motion.p>
@@ -606,7 +606,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.5, type: "spring" }}
-                  className="text-4xl md:text-6xl font-bold text-white mb-10"
+                  className="text-4xl md:text-6xl font-bold text-gray-900 mb-10"
                 >
                   They dominate.
                 </motion.p>
@@ -640,7 +640,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                     <Button 
                       size="lg"
                       variant="outline"
-                      className="px-8 py-6 text-lg border-slate-600 text-slate-300 hover:bg-slate-800"
+                      className="px-8 py-6 text-lg border-slate-600 text-gray-600 hover:bg-slate-800"
                     >
                       <Briefcase className="mr-2 h-5 w-5" />
                       Full Story
@@ -672,7 +672,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                 variant="ghost"
                 size="sm"
                 onClick={togglePlayPause}
-                className="text-slate-300 hover:text-white"
+                className="text-gray-600 hover:text-white"
               >
                 {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
               </Button>
@@ -680,7 +680,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                 variant="ghost"
                 size="sm"
                 onClick={restart}
-                className="text-slate-300 hover:text-white"
+                className="text-gray-600 hover:text-white"
               >
                 <RotateCcw className="h-5 w-5" />
               </Button>
@@ -688,7 +688,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                 variant={isMuted ? "default" : "ghost"}
                 size="sm"
                 onClick={toggleMute}
-                className={isMuted ? "bg-amber-500 hover:bg-amber-400 text-black animate-pulse" : "text-slate-300 hover:text-white"}
+                className={isMuted ? "bg-amber-500 hover:bg-amber-400 text-black animate-pulse" : "text-gray-600 hover:text-white"}
               >
                 {ttsLoading ? (
                   <Loader2 className="h-5 w-5 animate-spin" />
@@ -703,7 +703,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
               </Button>
             </div>
 
-            <div className="text-slate-300 text-sm">
+            <div className="text-gray-600 text-sm">
               {currentScene + 1} / {totalScenes}
             </div>
 
@@ -712,7 +712,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                 variant="ghost"
                 size="sm"
                 onClick={onSkip}
-                className="text-slate-300 hover:text-white gap-2"
+                className="text-gray-600 hover:text-white gap-2"
               >
                 <SkipForward className="h-4 w-4" />
                 Skip

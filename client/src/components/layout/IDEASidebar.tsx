@@ -173,7 +173,7 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
         
         {isAuthenticated && user ? (
           <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-poise-gold to-poise-teal flex items-center justify-center text-white text-sm font-medium">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-poise-gold to-poise-teal flex items-center justify-center text-gray-900 text-sm font-medium">
               {user.initials || user.firstName?.charAt(0).toUpperCase() || 'U'}
             </div>
             <div className="flex-1 min-w-0">

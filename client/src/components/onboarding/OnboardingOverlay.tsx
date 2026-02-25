@@ -120,11 +120,11 @@ export default function OnboardingOverlay() {
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-3">
                 <div className={`w-10 h-10 ${phaseColor} rounded-lg flex items-center justify-center`}>
-                  <PhaseIcon className="h-5 w-5 text-white" />
+                  <PhaseIcon className="h-5 w-5 text-gray-900" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="text-white font-semibold text-lg" data-testid="onboarding-title">
+                    <h3 className="text-gray-900 font-semibold text-lg" data-testid="onboarding-title">
                       {currentStep.title}
                     </h3>
                     {currentStep.phase && (
@@ -188,7 +188,7 @@ export default function OnboardingOverlay() {
                 <Button
                   size="sm"
                   onClick={nextStep}
-                  className="bg-blue-600 hover:bg-blue-700 text-white"
+                  className="bg-blue-600 hover:bg-blue-700 text-gray-900"
                   data-testid="onboarding-next"
                 >
                   {state.currentStep >= steps.length - 1 ? 'Done' : 'Next'}

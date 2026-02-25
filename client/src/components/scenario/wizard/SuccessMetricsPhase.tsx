@@ -90,7 +90,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
                 data-testid={`template-metric-${index}`}
               >
                 <p className="text-sm font-medium text-white">{template.name}</p>
-                <p className="text-xs text-gray-200 mt-1">
+                <p className="text-xs text-gray-500 mt-1">
                   Target: {template.target} {template.unit}
                 </p>
               </button>
@@ -102,32 +102,32 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
       {/* Add Metric Form */}
       <Card className="border-blue-500/30 bg-white">
         <CardContent className="p-6">
-          <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
+          <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2 mb-4">
             <Plus className="h-5 w-5 text-blue-400" />
             Define Success Metric
           </h3>
 
           <div className="space-y-4">
             <div>
-              <Label htmlFor="metric-name" className="text-white">Metric Name *</Label>
+              <Label htmlFor="metric-name" className="text-gray-900">Metric Name *</Label>
               <Input
                 id="metric-name"
                 data-testid="input-metric-name"
                 placeholder="e.g., Time to Full Stakeholder Coordination"
                 value={newMetric.name}
                 onChange={(e) => setNewMetric({ ...newMetric, name: e.target.value })}
-                className="bg-gray-50 border-slate-600 text-white mt-2"
+                className="bg-gray-50 border-slate-600 text-gray-900 mt-2"
               />
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="metric-category" className="text-white">Metric Category *</Label>
+                <Label htmlFor="metric-category" className="text-gray-900">Metric Category *</Label>
                 <Select 
                   value={newMetric.category} 
                   onValueChange={(value: any) => setNewMetric({ ...newMetric, category: value })}
                 >
-                  <SelectTrigger className="bg-gray-50 border-slate-600 text-white mt-2" data-testid="select-metric-category">
+                  <SelectTrigger className="bg-gray-50 border-slate-600 text-gray-900 mt-2" data-testid="select-metric-category">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -139,7 +139,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
                             <Icon className="h-4 w-4" />
                             <div>
                               <div className="font-medium">{cat.label}</div>
-                              <div className="text-xs text-gray-300">{cat.description}</div>
+                              <div className="text-xs text-gray-600">{cat.description}</div>
                             </div>
                           </div>
                         </SelectItem>
@@ -150,12 +150,12 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
               </div>
 
               <div>
-                <Label htmlFor="metric-unit" className="text-white">Measurement Unit *</Label>
+                <Label htmlFor="metric-unit" className="text-gray-900">Measurement Unit *</Label>
                 <Select 
                   value={newMetric.measurementUnit} 
                   onValueChange={(value) => setNewMetric({ ...newMetric, measurementUnit: value })}
                 >
-                  <SelectTrigger className="bg-gray-50 border-slate-600 text-white mt-2" data-testid="select-measurement-unit">
+                  <SelectTrigger className="bg-gray-50 border-slate-600 text-gray-900 mt-2" data-testid="select-measurement-unit">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -169,29 +169,29 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
               </div>
 
               <div>
-                <Label htmlFor="metric-baseline" className="text-white">Baseline Value</Label>
+                <Label htmlFor="metric-baseline" className="text-gray-900">Baseline Value</Label>
                 <Input
                   id="metric-baseline"
                   data-testid="input-baseline-value"
                   placeholder="Current performance"
                   value={newMetric.baselineValue}
                   onChange={(e) => setNewMetric({ ...newMetric, baselineValue: e.target.value })}
-                  className="bg-gray-50 border-slate-600 text-white mt-2"
+                  className="bg-gray-50 border-slate-600 text-gray-900 mt-2"
                 />
-                <p className="text-xs text-gray-300 mt-1">Where are you today?</p>
+                <p className="text-xs text-gray-600 mt-1">Where are you today?</p>
               </div>
 
               <div>
-                <Label htmlFor="metric-target" className="text-white">Target Value *</Label>
+                <Label htmlFor="metric-target" className="text-gray-900">Target Value *</Label>
                 <Input
                   id="metric-target"
                   data-testid="input-target-value"
                   placeholder="Goal to achieve"
                   value={newMetric.targetValue}
                   onChange={(e) => setNewMetric({ ...newMetric, targetValue: e.target.value })}
-                  className="bg-gray-50 border-slate-600 text-white mt-2"
+                  className="bg-gray-50 border-slate-600 text-gray-900 mt-2"
                 />
-                <p className="text-xs text-gray-300 mt-1">What defines success?</p>
+                <p className="text-xs text-gray-600 mt-1">What defines success?</p>
               </div>
             </div>
 
@@ -204,7 +204,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
                 className="rounded border-slate-600"
                 data-testid="checkbox-key-metric"
               />
-              <label htmlFor="is-key-metric" className="text-sm text-white cursor-pointer">
+              <label htmlFor="is-key-metric" className="text-sm text-gray-900 cursor-pointer">
                 This is a key success metric (primary indicator)
               </label>
             </div>
@@ -212,7 +212,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
             <Button
               onClick={addMetric}
               disabled={!newMetric.name || !newMetric.targetValue}
-              className="bg-blue-600 hover:bg-blue-700 text-white"
+              className="bg-blue-600 hover:bg-blue-700 text-gray-900"
               data-testid="button-add-metric"
             >
               <Plus className="h-4 w-4 mr-2" />
@@ -225,7 +225,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
       {/* Metrics List */}
       {data.metrics && data.metrics.length > 0 && (
         <div>
-          <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
+          <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2 mb-4">
             <BarChart3 className="h-5 w-5 text-blue-400" />
             Success Metrics ({data.metrics.length})
           </h3>
@@ -243,19 +243,19 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
                           <CategoryIcon className="h-4 w-4 text-blue-400" />
-                          <h4 className="font-semibold text-white">{metric.name}</h4>
+                          <h4 className="font-semibold text-gray-900">{metric.name}</h4>
                           {metric.isKeyMetric && (
                             <Badge className="bg-yellow-600/20 text-yellow-300 border-yellow-500/50 text-xs">
                               Key Metric
                             </Badge>
                           )}
                         </div>
-                        <div className="text-sm text-gray-200 space-y-1">
+                        <div className="text-sm text-gray-500 space-y-1">
                           <p>
-                            <span className="text-gray-300">Category:</span> {categoryConfig?.label}
+                            <span className="text-gray-600">Category:</span> {categoryConfig?.label}
                           </p>
                           <p>
-                            <span className="text-gray-300">Baseline:</span> {metric.baselineValue || 'Not set'} {unitLabel} →{' '}
+                            <span className="text-gray-600">Baseline:</span> {metric.baselineValue || 'Not set'} {unitLabel} →{' '}
                             <span className="text-green-400 font-semibold">Target: {metric.targetValue} {unitLabel}</span>
                           </p>
                         </div>

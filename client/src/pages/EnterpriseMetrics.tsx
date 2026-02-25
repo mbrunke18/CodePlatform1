@@ -72,7 +72,7 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
-                <Building className="w-7 h-7 text-white" />
+                <Building className="w-7 h-7 text-gray-900" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Enterprise Metrics Center</h1>
@@ -84,7 +84,7 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
                 <CheckCircle className="w-3 h-3 mr-1" />
                 Enterprise Ready
               </Badge>
-              <Badge className="bg-orange-600 text-white">
+              <Badge className="bg-orange-600 text-gray-900">
                 Fortune 1000
               </Badge>
             </div>
@@ -188,19 +188,19 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <Button className="h-16 bg-blue-600 hover:bg-blue-700 text-white" data-testid="button-system-health">
+                <Button className="h-16 bg-blue-600 hover:bg-blue-700 text-gray-900" data-testid="button-system-health">
                   <Activity className="w-5 h-5 mr-2" />
                   System Health Check
                 </Button>
-                <Button className="h-16 bg-green-600 hover:bg-green-700 text-white" data-testid="button-scale-resources">
+                <Button className="h-16 bg-green-600 hover:bg-green-700 text-gray-900" data-testid="button-scale-resources">
                   <TrendingUp className="w-5 h-5 mr-2" />
                   Scale Resources
                 </Button>
-                <Button className="h-16 bg-purple-600 hover:bg-purple-700 text-white" data-testid="button-security-audit">
+                <Button className="h-16 bg-purple-600 hover:bg-purple-700 text-gray-900" data-testid="button-security-audit">
                   <Shield className="w-5 h-5 mr-2" />
                   Security Audit
                 </Button>
-                <Button className="h-16 bg-orange-600 hover:bg-orange-700 text-white" data-testid="button-performance-optimization">
+                <Button className="h-16 bg-orange-600 hover:bg-orange-700 text-gray-900" data-testid="button-performance-optimization">
                   <Zap className="w-5 h-5 mr-2" />
                   Optimize Performance
                 </Button>

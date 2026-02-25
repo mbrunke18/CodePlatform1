@@ -61,7 +61,7 @@ export function Validation({ progress }: SceneProps) {
         <TextPunch
           text="17 Reports. One Conclusion."
           size="xl"
-          className="text-white mb-2 text-center"
+          className="text-gray-900 mb-2 text-center"
         />
 
         <motion.p

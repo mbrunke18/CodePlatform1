@@ -215,7 +215,7 @@ export default function StandardNav() {
           <div className="hidden lg:flex items-center gap-3">
             <Button
               onClick={() => navigateTo("/mission-control")}
-              className="bg-gradient-to-r from-poise-teal to-cyan-600 hover:from-cyan-600 hover:to-poise-teal text-white font-semibold h-9 px-4 shadow-md shadow-poise-teal/20"
+              className="bg-gradient-to-r from-poise-teal to-cyan-600 hover:from-cyan-600 hover:to-poise-teal text-gray-900 font-semibold h-9 px-4 shadow-md shadow-poise-teal/20"
               data-testid="nav-open-platform"
             >
               <Compass className="h-4 w-4 mr-1.5" />
@@ -257,7 +257,7 @@ export default function StandardNav() {
             <Button
               onClick={() => navigateTo("/mission-control")}
               size="sm"
-              className="bg-gradient-to-r from-poise-teal to-cyan-600 text-white"
+              className="bg-gradient-to-r from-poise-teal to-cyan-600 text-gray-900"
               data-testid="nav-mobile-open-platform"
             >
               <Compass className="h-4 w-4" />
@@ -277,7 +277,7 @@ export default function StandardNav() {
             <div className="flex flex-col gap-1">
               <Button
                 onClick={() => navigateTo("/mission-control")}
-                className="bg-gradient-to-r from-poise-teal to-cyan-600 text-white w-full justify-center h-12 text-base font-semibold"
+                className="bg-gradient-to-r from-poise-teal to-cyan-600 text-gray-900 w-full justify-center h-12 text-base font-semibold"
                 data-testid="nav-mobile-open-platform"
               >
                 <Compass className="h-5 w-5 mr-2" />

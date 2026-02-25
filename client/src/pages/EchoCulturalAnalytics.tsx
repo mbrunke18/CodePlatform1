@@ -171,7 +171,7 @@ export default function EchoCulturalAnalytics() {
               <span>/</span>
               <span>AI Intelligence</span>
               <span>/</span>
-              <span className="text-white">Echo Cultural Analytics</span>
+              <span className="text-gray-900">Echo Cultural Analytics</span>
             </div>
           </div>
 
@@ -189,7 +189,7 @@ export default function EchoCulturalAnalytics() {
           </Card>
 
           {/* Header */}
-          <div className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white p-6 rounded-lg">
+          <div className="bg-gradient-to-r from-teal-600 to-cyan-600 text-gray-900 p-6 rounded-lg">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <Users className="h-10 w-10" />
@@ -201,7 +201,7 @@ export default function EchoCulturalAnalytics() {
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <OnboardingTrigger pageId="echo-cultural" autoStart={true} className="bg-white/10 border-white/30 text-white hover:bg-white/20" />
+                <OnboardingTrigger pageId="echo-cultural" autoStart={true} className="bg-white/10 border-white/30 text-gray-900 hover:bg-white/20" />
                 <Link to="/">
                   <Button variant="secondary" className="bg-teal-700 hover:bg-teal-800 text-teal-100 border-teal-600" data-testid="back-to-dashboard">
                     <ArrowLeft className="h-4 w-4 mr-2" />
@@ -212,7 +212,7 @@ export default function EchoCulturalAnalytics() {
                   <Brain className="h-4 w-4 mr-2" />
                   AI INSIGHTS
                 </Badge>
-                <Button variant="secondary" className="bg-cyan-600 hover:bg-cyan-700 text-white" data-testid="generate-report-button">
+                <Button variant="secondary" className="bg-cyan-600 hover:bg-cyan-700 text-gray-900" data-testid="generate-report-button">
                   <BarChart3 className="h-4 w-4 mr-2" />
                   Culture Report
                 </Button>
@@ -246,12 +246,12 @@ export default function EchoCulturalAnalytics() {
                     <CardContent>
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
-                          <h3 className="font-semibold text-white">{metric.name}</h3>
+                          <h3 className="font-semibold text-gray-900">{metric.name}</h3>
                           <span className={`text-sm font-medium ${metric.change >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
                             {metric.change >= 0 ? '+' : ''}{metric.change}%
                           </span>
                         </div>
-                        <div className="text-2xl font-bold text-white">{metric.value}%</div>
+                        <div className="text-2xl font-bold text-gray-900">{metric.value}%</div>
                         <Progress value={metric.value} className="h-2" />
                         <p className="text-xs text-gray-600">{metric.description}</p>
                         
@@ -260,7 +260,7 @@ export default function EchoCulturalAnalytics() {
                           {Object.entries(metric.details).map(([key, value]) => (
                             <div key={key} className="flex justify-between">
                               <span className="text-gray-600 capitalize">{key}:</span>
-                              <span className="text-white font-medium">{value}%</span>
+                              <span className="text-gray-900 font-medium">{value}%</span>
                             </div>
                           ))}
                         </div>
@@ -307,7 +307,7 @@ export default function EchoCulturalAnalytics() {
                         <Lightbulb className="h-4 w-4 text-blue-400" />
                         <span className="font-medium text-blue-300">Recommendations</span>
                       </div>
-                      <ul className="space-y-1 text-sm text-blue-200">
+                      <ul className="space-y-1 text-sm text-blue-700">
                         <li>• Leadership visibility sessions</li>
                         <li>• Operations workload review</li>
                         <li>• Transparent decision processes</li>
@@ -330,7 +330,7 @@ export default function EchoCulturalAnalytics() {
                             <Users className="h-5 w-5 text-blue-400" />
                           </div>
                           <div>
-                            <h3 className="font-semibold text-white">{team.team} Team</h3>
+                            <h3 className="font-semibold text-gray-900">{team.team} Team</h3>
                             <p className="text-sm text-gray-600">{team.size} members</p>
                           </div>
                         </div>
@@ -386,7 +386,7 @@ export default function EchoCulturalAnalytics() {
             <TabsContent value="insights" className="space-y-6">
               <Card className="border-gray-200 bg-white backdrop-blur-sm">
                 <CardHeader>
-                  <CardTitle className="text-white">AI-Powered Cultural Insights</CardTitle>
+                  <CardTitle className="text-gray-900">AI-Powered Cultural Insights</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-center py-12">
@@ -401,7 +401,7 @@ export default function EchoCulturalAnalytics() {
             <TabsContent value="trends" className="space-y-6">
               <Card className="border-gray-200 bg-white backdrop-blur-sm">
                 <CardHeader>
-                  <CardTitle className="text-white">Cultural Trend Analysis</CardTitle>
+                  <CardTitle className="text-gray-900">Cultural Trend Analysis</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-center py-12">

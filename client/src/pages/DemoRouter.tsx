@@ -79,10 +79,10 @@ export default function DemoRouter() {
             <Badge className="mb-4 bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
               Interactive Experience
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4" data-testid="heading-demo-router">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" data-testid="heading-demo-router">
               Experience Execution OS
             </h1>
-            <p className="text-xl text-slate-200">
+            <p className="text-xl text-gray-600">
               Choose the demo that fits your schedule
             </p>
           </div>
@@ -94,14 +94,14 @@ export default function DemoRouter() {
                 <Sparkles className="h-5 w-5 text-blue-400" />
               </div>
               <div className="flex-1">
-                <p className="text-white font-medium mb-1">Recommended for executives</p>
-                <p className="text-sm text-slate-200 mb-3">
+                <p className="text-gray-900 font-medium mb-1">Recommended for executives</p>
+                <p className="text-sm text-gray-600 mb-3">
                   See how Execution OS delivers 12-minute coordinated response with predictive AI and role-specific wins.
                 </p>
                 <Button
                   onClick={() => setLocation('/customer-demo')}
                   size="sm"
-                  className="bg-blue-600 hover:bg-blue-700 text-white"
+                  className="bg-blue-600 hover:bg-blue-700 text-gray-900"
                   data-testid="button-recommended-demo"
                 >
                   <Play className="h-4 w-4 mr-1.5" />
@@ -118,8 +118,8 @@ export default function DemoRouter() {
                 <TrendingUp className="h-5 w-5 text-purple-400" />
               </div>
               <div className="flex-1">
-                <p className="text-white font-medium mb-1">NEW: Predictive Intelligence</p>
-                <p className="text-sm text-slate-200">
+                <p className="text-gray-900 font-medium mb-1">NEW: Predictive Intelligence</p>
+                <p className="text-sm text-gray-600">
                   Execution OS forecasts trigger probabilities 90 days out. Run what-if scenarios. Know which playbooks you'll need before you need them.
                 </p>
               </div>
@@ -140,28 +140,28 @@ export default function DemoRouter() {
                   <CardContent className="p-5 md:p-6 flex items-center gap-4 md:gap-6">
                     {/* Icon */}
                     <div className={`p-3 md:p-4 rounded-2xl bg-gradient-to-br ${demo.color} flex-shrink-0`}>
-                      <IconComponent className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                      <IconComponent className="h-6 w-6 md:h-8 md:w-8 text-gray-900" />
                     </div>
                     
                     {/* Content */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 md:gap-3 mb-1 flex-wrap">
-                        <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+                        <h3 className="text-lg md:text-xl font-bold text-gray-900 group-hover:text-emerald-400 transition-colors">
                           {demo.title}
                         </h3>
-                        <Badge className={`${demo.badgeColor} text-white text-xs`}>
+                        <Badge className={`${demo.badgeColor} text-gray-900 text-xs`}>
                           {demo.badge}
                         </Badge>
                       </div>
-                      <p className="text-slate-200 mb-2 text-sm md:text-base line-clamp-2">{demo.description}</p>
-                      <div className="flex items-center gap-2 text-sm text-slate-300">
+                      <p className="text-gray-600 mb-2 text-sm md:text-base line-clamp-2">{demo.description}</p>
+                      <div className="flex items-center gap-2 text-sm text-gray-600">
                         <Clock className="h-4 w-4" />
                         <span>{demo.duration}</span>
                       </div>
                     </div>
                     
                     {/* Arrow */}
-                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-slate-300 group-hover:text-white group-hover:translate-x-1 transition-all flex-shrink-0" />
+                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-gray-600 group-hover:text-white group-hover:translate-x-1 transition-all flex-shrink-0" />
                   </CardContent>
                 </Card>
               );
@@ -170,13 +170,13 @@ export default function DemoRouter() {
 
           {/* Alternative Path */}
           <div className="text-center mb-10">
-            <p className="text-slate-300 mb-4">
+            <p className="text-gray-600 mb-4">
               Want to explore on your own?
             </p>
             <Button
               variant="outline"
               onClick={() => setLocation('/playbook-library')}
-              className="text-slate-300 border-gray-200 hover:bg-slate-800"
+              className="text-gray-600 border-gray-200 hover:bg-slate-800"
               data-testid="button-explore-playbooks"
             >
               Browse 170 Playbooks →
@@ -191,8 +191,8 @@ export default function DemoRouter() {
                   <FileText className="h-5 w-5 text-purple-400" />
                 </div>
                 <div>
-                  <p className="text-white font-medium">Investor?</p>
-                  <p className="text-sm text-slate-200">Locked demo, FAQ, and roadshow materials</p>
+                  <p className="text-gray-900 font-medium">Investor?</p>
+                  <p className="text-sm text-gray-600">Locked demo, FAQ, and roadshow materials</p>
                 </div>
               </div>
               <div className="flex gap-2 w-full sm:w-auto">

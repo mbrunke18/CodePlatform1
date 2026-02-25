@@ -60,7 +60,7 @@ export default function PharmaceuticalRecallDemo() {
                 onClick={() => setCurrentAct(act.id as DemoAct)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                   currentAct === act.id
-                    ? "bg-red-600 text-white"
+                    ? "bg-red-600 text-gray-900"
                     : "text-red-300 hover:bg-red-950/50"
                 }`}
                 data-testid={`button-act-${act.id}`}
@@ -81,39 +81,39 @@ export default function PharmaceuticalRecallDemo() {
             <Card className="p-8 bg-white border-red-800/30">
               <div className="text-center mb-8">
                 <Heart className="w-16 h-16 text-red-400 mx-auto mb-4" />
-                <h2 className="text-3xl font-bold text-white mb-3">{pharmaDemoData.crisis.title}</h2>
-                <p className="text-xl text-red-200">{pharmaDemoData.crisis.subtitle}</p>
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">{pharmaDemoData.crisis.title}</h2>
+                <p className="text-xl text-red-600">{pharmaDemoData.crisis.subtitle}</p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div className="p-6 bg-red-950/30 rounded-lg border border-red-800/30">
-                  <h3 className="font-bold text-white mb-4 flex items-center gap-2">
+                  <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                     <AlertTriangle className="w-5 h-5 text-red-400" />
                     The Crisis
                   </h3>
                   <div className="space-y-3 text-sm">
                     <div>
                       <div className="text-red-300 mb-1">Organization</div>
-                      <div className="text-white font-semibold">Glenmark Pharmaceuticals</div>
+                      <div className="text-gray-900 font-semibold">Glenmark Pharmaceuticals</div>
                     </div>
                     <div>
                       <div className="text-red-300 mb-1">Product</div>
-                      <div className="text-white">Potassium Chloride Capsules</div>
+                      <div className="text-gray-900">Potassium Chloride Capsules</div>
                     </div>
                     <div>
                       <div className="text-red-300 mb-1">Defect</div>
-                      <div className="text-white">Capsules failed to dissolve - potentially deadly</div>
+                      <div className="text-gray-900">Capsules failed to dissolve - potentially deadly</div>
                     </div>
                     <div>
                       <div className="text-red-300 mb-1">Scale</div>
-                      <div className="text-white font-bold">47 Million Units Recalled</div>
+                      <div className="text-gray-900 font-bold">47 Million Units Recalled</div>
                     </div>
                   </div>
                 </div>
 
                 <div className="p-6 bg-white rounded-lg border border-red-800/30">
-                  <h3 className="font-bold text-white mb-4">What Happened (May-June 2024)</h3>
-                  <ul className="space-y-2 text-sm text-red-200">
+                  <h3 className="font-bold text-gray-900 mb-4">What Happened (May-June 2024)</h3>
+                  <ul className="space-y-2 text-sm text-red-600">
                     <li>• Week 1-3: Internal investigation</li>
                     <li>• Week 4 (May): Quietly notified wholesalers only</li>
                     <li className="text-red-400 font-semibold">• Week 5: 91-year-old patient takes defective capsules</li>
@@ -128,8 +128,8 @@ export default function PharmaceuticalRecallDemo() {
                 <div className="flex items-start gap-4">
                   <ShieldAlert className="w-8 h-8 text-red-400 flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-bold text-white mb-2">The Detection-Execution Gap</h3>
-                    <p className="text-red-100 leading-relaxed">
+                    <h3 className="font-bold text-gray-900 mb-2">The Detection-Execution Gap</h3>
+                    <p className="text-red-500 leading-relaxed">
                       Glenmark had the technology to detect the dissolution problem. But coordinating 2,052 stakeholders 
                       across FDA, wholesalers, pharmacies, and patients took <strong>6 weeks</strong>. In that gap, 
                       a patient died. This demo shows how Execution OS would have compressed that 6-week coordination into 12 minutes,
@@ -143,7 +143,7 @@ export default function PharmaceuticalRecallDemo() {
                 <Button
                   size="lg"
                   onClick={() => setCurrentAct("detection")}
-                  className="bg-red-600 hover:bg-red-700 text-white px-8"
+                  className="bg-red-600 hover:bg-red-700 text-gray-900 px-8"
                   data-testid="button-start-demo"
                 >
                   Begin Crisis Simulation
@@ -158,20 +158,20 @@ export default function PharmaceuticalRecallDemo() {
         {currentAct === "detection" && (
           <div className="max-w-6xl mx-auto space-y-8">
             <Card className="p-8 bg-white border-red-800/30">
-              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <ShieldAlert className="w-8 h-8 text-red-400" />
                 AI Quality Monitoring Detects Critical Failure
               </h2>
 
               <div className="mb-8">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-red-200">AI Confidence Level</span>
+                  <span className="text-red-600">AI Confidence Level</span>
                   <span className="text-2xl font-bold text-red-400">{detectionProgress}%</span>
                 </div>
                 <Progress value={detectionProgress} className="h-3" />
                 {detectionProgress >= 92 && (
                   <div className="mt-4 p-4 bg-red-950/50 border border-red-600 rounded-lg">
-                    <p className="text-red-200 font-semibold">
+                    <p className="text-red-600 font-semibold">
                       ⚠️ ALERT: Class I recall criteria detected - Reasonable probability of serious adverse health consequences or death
                     </p>
                   </div>
@@ -191,7 +191,7 @@ export default function PharmaceuticalRecallDemo() {
                   <Button
                     size="lg"
                     onClick={() => setCurrentAct("coordination")}
-                    className="bg-red-600 hover:bg-red-700 text-white px-8"
+                    className="bg-red-600 hover:bg-red-700 text-gray-900 px-8"
                     data-testid="button-activate-playbook"
                   >
                     Activate Playbook #095 - Product Recall
@@ -207,7 +207,7 @@ export default function PharmaceuticalRecallDemo() {
         {currentAct === "coordination" && (
           <div className="max-w-6xl mx-auto space-y-8">
             <Card className="p-8 bg-white border-red-800/30">
-              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <Clock className="w-8 h-8 text-red-400" />
                 12-Minute Coordinated Response Across 2,052 Stakeholders
               </h2>
@@ -225,22 +225,22 @@ export default function PharmaceuticalRecallDemo() {
                       <>
                         <Card className="p-6 bg-red-950/30 border-red-700">
                           <div className="text-red-300 text-sm mb-2">Tier 1: Decision Makers</div>
-                          <div className="text-3xl font-bold text-white mb-3">{pharmaDemoData.stakeholderTiers.tier1.count}</div>
-                          <div className="text-xs text-red-200">
+                          <div className="text-3xl font-bold text-gray-900 mb-3">{pharmaDemoData.stakeholderTiers.tier1.count}</div>
+                          <div className="text-xs text-red-600">
                             {pharmaDemoData.stakeholderTiers.tier1.members.join(", ")}
                           </div>
                         </Card>
                         <Card className="p-6 bg-red-950/30 border-red-700">
                           <div className="text-red-300 text-sm mb-2">Tier 2: Execution Teams</div>
-                          <div className="text-3xl font-bold text-white mb-3">{pharmaDemoData.stakeholderTiers.tier2.count}</div>
-                          <div className="text-xs text-red-200">
+                          <div className="text-3xl font-bold text-gray-900 mb-3">{pharmaDemoData.stakeholderTiers.tier2.count}</div>
+                          <div className="text-xs text-red-600">
                             {pharmaDemoData.stakeholderTiers.tier2.members.join(", ")}
                           </div>
                         </Card>
                         <Card className="p-6 bg-red-950/30 border-red-700">
                           <div className="text-red-300 text-sm mb-2">Tier 3: Public Notification</div>
-                          <div className="text-3xl font-bold text-white mb-3">{pharmaDemoData.stakeholderTiers.tier3.count}</div>
-                          <div className="text-xs text-red-200">
+                          <div className="text-3xl font-bold text-gray-900 mb-3">{pharmaDemoData.stakeholderTiers.tier3.count}</div>
+                          <div className="text-xs text-red-600">
                             {pharmaDemoData.stakeholderTiers.tier3.members.join(", ")}
                           </div>
                         </Card>
@@ -252,7 +252,7 @@ export default function PharmaceuticalRecallDemo() {
                     <Button
                       size="lg"
                       onClick={() => setCurrentAct("outcome")}
-                      className="bg-green-600 hover:bg-green-700 text-white px-8"
+                      className="bg-green-600 hover:bg-green-700 text-gray-900 px-8"
                       data-testid="button-view-outcome"
                     >
                       View Impact & ROI
@@ -271,8 +271,8 @@ export default function PharmaceuticalRecallDemo() {
             <Card className="p-8 bg-white border-green-800/30">
               <div className="text-center mb-8">
                 <Heart className="w-16 h-16 text-green-400 mx-auto mb-4" />
-                <h2 className="text-3xl font-bold text-white mb-3">A Life Saved</h2>
-                <p className="text-xl text-green-200">The patient never received the deadly capsules</p>
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">A Life Saved</h2>
+                <p className="text-xl text-green-700">The patient never received the deadly capsules</p>
               </div>
 
               <ROIComparison

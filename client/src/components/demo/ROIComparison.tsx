@@ -29,7 +29,7 @@ export default function ROIComparison({ traditional, vexor, bottomLine }: ROICom
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <Turtle className="h-5 w-5 text-red-400" />
-              <h3 className="font-bold text-lg text-white">{traditional.label}</h3>
+              <h3 className="font-bold text-lg text-gray-900">{traditional.label}</h3>
             </div>
             <Badge variant="destructive">{traditional.duration}</Badge>
           </div>
@@ -45,7 +45,7 @@ export default function ROIComparison({ traditional, vexor, bottomLine }: ROICom
 
             <div className="border-b border-red-800/30 pb-3">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-red-200 flex items-center gap-1">
+                <span className="text-sm text-red-600 flex items-center gap-1">
                   <TrendingDown className="h-4 w-4" />
                   Outcome
                 </span>
@@ -56,7 +56,7 @@ export default function ROIComparison({ traditional, vexor, bottomLine }: ROICom
             </div>
 
             <div className="bg-white p-3 rounded border border-red-800/30">
-              <p className="text-xs font-semibold mb-2 text-red-200">The Impact:</p>
+              <p className="text-xs font-semibold mb-2 text-red-600">The Impact:</p>
               <ul className="text-xs space-y-1 text-red-300">
                 {traditional.points.map((point, idx) => (
                   <li key={idx}>• {point}</li>
@@ -71,7 +71,7 @@ export default function ROIComparison({ traditional, vexor, bottomLine }: ROICom
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <Zap className="h-5 w-5 text-green-400" />
-              <h3 className="font-bold text-lg text-white">{vexor.label}</h3>
+              <h3 className="font-bold text-lg text-gray-900">{vexor.label}</h3>
             </div>
             <Badge className="bg-green-600">{vexor.duration}</Badge>
           </div>
@@ -87,7 +87,7 @@ export default function ROIComparison({ traditional, vexor, bottomLine }: ROICom
 
             <div className="border-b border-green-800/30 pb-3">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-green-200 flex items-center gap-1">
+                <span className="text-sm text-green-700 flex items-center gap-1">
                   <TrendingUp className="h-4 w-4" />
                   Outcome
                 </span>
@@ -98,7 +98,7 @@ export default function ROIComparison({ traditional, vexor, bottomLine }: ROICom
             </div>
 
             <div className="bg-white p-3 rounded border border-green-800/30">
-              <p className="text-xs font-semibold mb-2 text-green-200">The Benefits:</p>
+              <p className="text-xs font-semibold mb-2 text-green-700">The Benefits:</p>
               <ul className="text-xs space-y-1 text-green-300">
                 {vexor.points.map((point, idx) => (
                   <li key={idx}>• {point}</li>
@@ -113,8 +113,8 @@ export default function ROIComparison({ traditional, vexor, bottomLine }: ROICom
       <Card className="p-6 bg-gradient-to-r   border-blue-500">
         <div className="text-center">
           <div className="text-sm text-blue-300 mb-2">Bottom Line</div>
-          <div className="text-3xl font-bold text-white mb-2">{bottomLine.value}</div>
-          <div className="text-sm text-blue-200">{bottomLine.metric}</div>
+          <div className="text-3xl font-bold text-gray-900 mb-2">{bottomLine.value}</div>
+          <div className="text-sm text-blue-700">{bottomLine.metric}</div>
         </div>
       </Card>
     </div>

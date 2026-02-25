@@ -86,7 +86,7 @@ const getReportTypeBadgeColor = (reportType: string) => {
     case 'risk_assessment': return 'bg-red-500/20 text-red-300 border-red-500/30';
     case 'regulatory_update': return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
     case 'technology_trends': return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
-    default: return 'bg-slate-500/20 text-slate-300 border-slate-500/30';
+    default: return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
   }
 };
 
@@ -322,7 +322,7 @@ export default function ComprehensiveAIIntelligence() {
       case 'operational': return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
       case 'processing': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
       case 'offline': return 'bg-red-500/20 text-red-300 border-red-500/30';
-      default: return 'bg-slate-500/20 text-slate-300 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
     }
   };
 
@@ -332,7 +332,7 @@ export default function ComprehensiveAIIntelligence() {
       case 'high': return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
       case 'medium': return 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30';
       case 'low': return 'bg-green-500/20 text-green-300 border-green-500/30';
-      default: return 'bg-slate-500/20 text-slate-300 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
     }
   };
 
@@ -367,8 +367,8 @@ export default function ComprehensiveAIIntelligence() {
         {/* AI Intelligence Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-2">AI Intelligence Command Center</h1>
-            <p className="text-slate-300">Comprehensive AI-powered organizational intelligence and strategic insights</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">AI Intelligence Command Center</h1>
+            <p className="text-gray-600">Comprehensive AI-powered organizational intelligence and strategic insights</p>
           </div>
           <div className="flex items-center gap-4">
             <Button 
@@ -383,7 +383,7 @@ export default function ComprehensiveAIIntelligence() {
               )}
               Generate Intelligence
             </Button>
-            <Button variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
+            <Button variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
               <Download className="w-4 h-4 mr-2" />
               Export Reports
             </Button>
@@ -395,10 +395,10 @@ export default function ComprehensiveAIIntelligence() {
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Processing Power</h3>
+                <h3 className="font-semibold text-gray-900">Processing Power</h3>
                 <Cpu className="h-5 w-5 text-blue-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{systemMetrics.totalProcessingPower}%</div>
+              <div className="text-2xl font-bold text-gray-900">{systemMetrics.totalProcessingPower}%</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">System utilization</div>
             </CardContent>
           </Card>
@@ -406,10 +406,10 @@ export default function ComprehensiveAIIntelligence() {
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Active Modules</h3>
+                <h3 className="font-semibold text-gray-900">Active Modules</h3>
                 <Brain className="h-5 w-5 text-emerald-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{systemMetrics.activeModules}</div>
+              <div className="text-2xl font-bold text-gray-900">{systemMetrics.activeModules}</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">AI systems online</div>
             </CardContent>
           </Card>
@@ -417,10 +417,10 @@ export default function ComprehensiveAIIntelligence() {
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Daily Insights</h3>
+                <h3 className="font-semibold text-gray-900">Daily Insights</h3>
                 <Eye className="h-5 w-5 text-purple-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{systemMetrics.dailyInsights}</div>
+              <div className="text-2xl font-bold text-gray-900">{systemMetrics.dailyInsights}</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Generated today</div>
             </CardContent>
           </Card>
@@ -428,10 +428,10 @@ export default function ComprehensiveAIIntelligence() {
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Accuracy Rate</h3>
+                <h3 className="font-semibold text-gray-900">Accuracy Rate</h3>
                 <Target className="h-5 w-5 text-emerald-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{systemMetrics.accuracyRate}%</div>
+              <div className="text-2xl font-bold text-gray-900">{systemMetrics.accuracyRate}%</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Prediction accuracy</div>
             </CardContent>
           </Card>
@@ -439,10 +439,10 @@ export default function ComprehensiveAIIntelligence() {
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">System Health</h3>
+                <h3 className="font-semibold text-gray-900">System Health</h3>
                 <Activity className="h-5 w-5 text-emerald-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{systemMetrics.systemHealth}%</div>
+              <div className="text-2xl font-bold text-gray-900">{systemMetrics.systemHealth}%</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Overall health</div>
             </CardContent>
           </Card>
@@ -465,7 +465,7 @@ export default function ComprehensiveAIIntelligence() {
               {/* Module Status Overview */}
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
                     <Brain className="h-5 w-5" />
                     AI Module Status
                   </CardTitle>
@@ -478,13 +478,13 @@ export default function ComprehensiveAIIntelligence() {
                           {module.icon}
                         </div>
                         <div>
-                          <div className="font-semibold text-white">{module.name}</div>
+                          <div className="font-semibold text-gray-900">{module.name}</div>
                           <div className="text-xs text-slate-600 dark:text-slate-200">Updated: {module.lastUpdate}</div>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
                         <div className="text-right">
-                          <div className="text-sm font-medium text-white">{module.performance}%</div>
+                          <div className="text-sm font-medium text-gray-900">{module.performance}%</div>
                           <Progress value={module.performance} className="w-16 h-2" />
                         </div>
                         <Badge className={getStatusColor(module.status)}>
@@ -499,7 +499,7 @@ export default function ComprehensiveAIIntelligence() {
               {/* Recent Intelligence Activity */}
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
                     <Clock className="h-5 w-5" />
                     Recent Intelligence Activity
                   </CardTitle>
@@ -509,21 +509,21 @@ export default function ComprehensiveAIIntelligence() {
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
                       <div className="flex-1 page-background">
-                        <div className="text-sm text-white">Pulse Intelligence generated performance metrics</div>
+                        <div className="text-sm text-gray-900">Pulse Intelligence generated performance metrics</div>
                         <div className="text-xs text-slate-600 dark:text-slate-200">Real-time • Confidence: 96.4%</div>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <div className="w-2 h-2 bg-blue-400 rounded-full" />
                       <div className="flex-1 page-background">
-                        <div className="text-sm text-white">Nova identified breakthrough innovation opportunity</div>
+                        <div className="text-sm text-gray-900">Nova identified breakthrough innovation opportunity</div>
                         <div className="text-xs text-slate-600 dark:text-slate-200">2 min ago • Impact: $750K potential</div>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <div className="w-2 h-2 bg-purple-400 rounded-full" />
                       <div className="flex-1 page-background">
-                        <div className="text-sm text-white">Prism completed strategic market analysis</div>
+                        <div className="text-sm text-gray-900">Prism completed strategic market analysis</div>
                         <div className="text-xs text-slate-600 dark:text-slate-200">5 min ago • Market opportunity: $2.3M</div>
                       </div>
                     </div>
@@ -540,7 +540,7 @@ export default function ComprehensiveAIIntelligence() {
                 <Card key={module.id} className="bg-white border-gray-200 hover:bg-slate-800/50 transition-all duration-300">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-white flex items-center gap-3">
+                      <CardTitle className="text-gray-900 flex items-center gap-3">
                         <div className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg">
                           {module.icon}
                         </div>
@@ -558,28 +558,28 @@ export default function ComprehensiveAIIntelligence() {
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
                         <div className="text-slate-600 dark:text-slate-200">Performance</div>
-                        <div className="text-white font-medium">{module.performance}%</div>
+                        <div className="text-gray-900 font-medium">{module.performance}%</div>
                       </div>
                       <div>
                         <div className="text-slate-600 dark:text-slate-200">Accuracy</div>
-                        <div className="text-white font-medium">{module.metrics.accuracy}%</div>
+                        <div className="text-gray-900 font-medium">{module.metrics.accuracy}%</div>
                       </div>
                       <div>
                         <div className="text-slate-600 dark:text-slate-200">Processing</div>
-                        <div className="text-white font-medium">{module.metrics.processingTime}</div>
+                        <div className="text-gray-900 font-medium">{module.metrics.processingTime}</div>
                       </div>
                       <div>
                         <div className="text-slate-600 dark:text-slate-200">Confidence</div>
-                        <div className="text-white font-medium">{module.metrics.confidence}%</div>
+                        <div className="text-gray-900 font-medium">{module.metrics.confidence}%</div>
                       </div>
                     </div>
 
                     {/* Capabilities */}
                     <div>
-                      <div className="text-sm font-semibold text-white mb-2">Capabilities</div>
+                      <div className="text-sm font-semibold text-gray-900 mb-2">Capabilities</div>
                       <div className="flex flex-wrap gap-2">
                         {module.capabilities.map((capability, index) => (
-                          <Badge key={index} variant="outline" className="bg-transparent border-slate-600 text-slate-300 text-xs">
+                          <Badge key={index} variant="outline" className="bg-transparent border-slate-600 text-gray-600 text-xs">
                             {capability}
                           </Badge>
                         ))}
@@ -594,7 +594,7 @@ export default function ComprehensiveAIIntelligence() {
                           View Details
                         </Button>
                       </Link>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
                         <Settings className="w-4 h-4" />
                       </Button>
                     </div>
@@ -613,28 +613,28 @@ export default function ComprehensiveAIIntelligence() {
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1 page-background">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-lg font-semibold text-white">{report.title}</h3>
+                          <h3 className="text-lg font-semibold text-gray-900">{report.title}</h3>
                           <Badge className={getPriorityColor(report.priority)}>
                             {report.priority.toUpperCase()}
                           </Badge>
-                          <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-300">
+                          <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-600">
                             {report.module}
                           </Badge>
                         </div>
-                        <p className="text-slate-300 mb-4">{report.summary}</p>
+                        <p className="text-gray-600 mb-4">{report.summary}</p>
                       </div>
                       <div className="text-right">
                         <div className="text-sm text-slate-600 dark:text-slate-200">Confidence</div>
-                        <div className="text-xl font-bold text-white">{report.confidence}%</div>
+                        <div className="text-xl font-bold text-gray-900">{report.confidence}%</div>
                       </div>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <div className="text-sm font-semibold text-white mb-2">Key Findings</div>
+                        <div className="text-sm font-semibold text-gray-900 mb-2">Key Findings</div>
                         <div className="space-y-1">
                           {report.keyFindings.map((finding, index) => (
-                            <div key={index} className="text-sm text-slate-300 flex items-start gap-2">
+                            <div key={index} className="text-sm text-gray-600 flex items-start gap-2">
                               <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
                               {finding}
                             </div>
@@ -643,10 +643,10 @@ export default function ComprehensiveAIIntelligence() {
                       </div>
                       
                       <div>
-                        <div className="text-sm font-semibold text-white mb-2">Recommendations</div>
+                        <div className="text-sm font-semibold text-gray-900 mb-2">Recommendations</div>
                         <div className="space-y-1">
                           {report.recommendations.map((rec, index) => (
-                            <div key={index} className="text-sm text-slate-300 flex items-start gap-2">
+                            <div key={index} className="text-sm text-gray-600 flex items-start gap-2">
                               <Target className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
                               {rec}
                             </div>
@@ -656,7 +656,7 @@ export default function ComprehensiveAIIntelligence() {
                     </div>
                     
                     <div className="mt-4 pt-4 border-t border-gray-200 flex items-center justify-between">
-                      <div className="text-xs text-slate-300">
+                      <div className="text-xs text-gray-600">
                         Generated: {new Date(report.timestamp).toLocaleString()}
                       </div>
                       <div className="flex gap-2">
@@ -664,7 +664,7 @@ export default function ComprehensiveAIIntelligence() {
                           <Eye className="w-4 h-4 mr-2" />
                           Full Report
                         </Button>
-                        <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
+                        <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
                           <Share className="w-4 h-4 mr-2" />
                           Share
                         </Button>
@@ -679,7 +679,7 @@ export default function ComprehensiveAIIntelligence() {
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <Database className="h-5 w-5 text-blue-400" />
-                <h2 className="text-xl font-semibold text-white">Intelligence Reports from Database</h2>
+                <h2 className="text-xl font-semibold text-gray-900">Intelligence Reports from Database</h2>
               </div>
 
               {dbReportsLoading ? (
@@ -707,7 +707,7 @@ export default function ComprehensiveAIIntelligence() {
                     <Card key={report.id} className="bg-white border-gray-200">
                       <CardHeader>
                         <div className="flex items-center justify-between">
-                          <CardTitle className="text-white flex items-center gap-3">
+                          <CardTitle className="text-gray-900 flex items-center gap-3">
                             <FileText className="h-5 w-5 text-blue-400" />
                             {report.title}
                           </CardTitle>
@@ -717,18 +717,18 @@ export default function ComprehensiveAIIntelligence() {
                         </div>
                       </CardHeader>
                       <CardContent className="space-y-4">
-                        <p className="text-slate-300 text-sm">{report.executiveSummary}</p>
+                        <p className="text-gray-600 text-sm">{report.executiveSummary}</p>
 
                         <div className="flex items-center gap-6">
                           <div className="flex-1">
                             <div className="flex items-center justify-between mb-1">
                               <span className="text-xs text-slate-600 dark:text-slate-200">Confidence</span>
-                              <span className="text-xs font-medium text-white">{Math.round(report.confidence * 100)}%</span>
+                              <span className="text-xs font-medium text-gray-900">{Math.round(report.confidence * 100)}%</span>
                             </div>
                             <Progress value={report.confidence * 100} className="h-2" />
                           </div>
                           <div className="text-sm text-slate-600 dark:text-slate-200">
-                            <span className="font-medium text-white">{Array.isArray(report.findings) ? report.findings.length : 0}</span> findings
+                            <span className="font-medium text-gray-900">{Array.isArray(report.findings) ? report.findings.length : 0}</span> findings
                           </div>
                         </div>
                       </CardContent>
@@ -738,7 +738,7 @@ export default function ComprehensiveAIIntelligence() {
               ) : (
                 <Card className="bg-white border-gray-200">
                   <CardContent className="p-8 text-center">
-                    <Database className="h-12 w-12 mx-auto mb-3 text-slate-300" />
+                    <Database className="h-12 w-12 mx-auto mb-3 text-gray-600" />
                     <p className="text-slate-600 dark:text-slate-200">No intelligence reports found in the database.</p>
                   </CardContent>
                 </Card>
@@ -750,7 +750,7 @@ export default function ComprehensiveAIIntelligence() {
           <TabsContent value="insights" className="space-y-6">
             <Alert className="border-blue-500/30 bg-blue-500/10">
               <Brain className="h-4 w-4" />
-              <AlertDescription className="text-blue-200">
+              <AlertDescription className="text-blue-700">
                 Live insights are generated in real-time from all AI modules. Refresh automatically every 30 seconds.
               </AlertDescription>
             </Alert>
@@ -759,7 +759,7 @@ export default function ComprehensiveAIIntelligence() {
               {aiModules.filter(m => m.insights.length > 0).map((module) => (
                 <Card key={module.id} className="bg-white border-gray-200">
                   <CardHeader>
-                    <CardTitle className="text-white flex items-center gap-2">
+                    <CardTitle className="text-gray-900 flex items-center gap-2">
                       {module.icon}
                       {module.name} Insights
                     </CardTitle>
@@ -780,7 +780,7 @@ export default function ComprehensiveAIIntelligence() {
           <TabsContent value="configuration" className="space-y-6">
             <Card className="bg-white border-gray-200">
               <CardHeader>
-                <CardTitle className="text-white">AI System Configuration</CardTitle>
+                <CardTitle className="text-gray-900">AI System Configuration</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

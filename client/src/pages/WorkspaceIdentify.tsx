@@ -94,7 +94,7 @@ export default function WorkspaceIdentify() {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-slate-300 hover:text-poise-gold cursor-pointer">Execution OS One™</span>
+              <span className="text-gray-600 hover:text-poise-gold cursor-pointer">Execution OS One™</span>
             </Link>
             <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200" />
             <span className="text-poise-gold font-medium">IDENTIFY</span>
@@ -104,7 +104,7 @@ export default function WorkspaceIdentify() {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
             <div className="flex items-center gap-4">
               <div className="p-4 rounded-2xl bg-gradient-to-br from-poise-gold to-amber-500 shadow-lg shadow-poise-gold/30">
-                <ClipboardList className="h-8 w-8 text-white" />
+                <ClipboardList className="h-8 w-8 text-gray-900" />
               </div>
               <div>
                 <div className="flex items-center gap-3">
@@ -139,7 +139,7 @@ export default function WorkspaceIdentify() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-slate-900 dark:text-white">IDEA Framework Progress</h3>
-                <span className="text-sm text-slate-300">Phase 1 of 4</span>
+                <span className="text-sm text-gray-600">Phase 1 of 4</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex-1 flex items-center gap-2">
@@ -147,22 +147,22 @@ export default function WorkspaceIdentify() {
                     <ClipboardList className="h-4 w-4 text-poise-gold" />
                     <span className="text-sm font-medium text-poise-gold">IDENTIFY</span>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-slate-300" />
+                  <ArrowRight className="h-4 w-4 text-gray-600" />
                   <Link href="/workspaces/detect">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-poise-teal/10 cursor-pointer transition-colors">
-                      <span className="text-sm text-slate-300">DETECT</span>
+                      <span className="text-sm text-gray-600">DETECT</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-slate-300" />
+                  <ArrowRight className="h-4 w-4 text-gray-600" />
                   <Link href="/workspaces/execute">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-poise-teal/10 cursor-pointer transition-colors">
-                      <span className="text-sm text-slate-300">EXECUTE</span>
+                      <span className="text-sm text-gray-600">EXECUTE</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-slate-300" />
+                  <ArrowRight className="h-4 w-4 text-gray-600" />
                   <Link href="/workspaces/advance">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-poise-gold/10 cursor-pointer transition-colors">
-                      <span className="text-sm text-slate-300">ADVANCE</span>
+                      <span className="text-sm text-gray-600">ADVANCE</span>
                     </div>
                   </Link>
                 </div>
@@ -296,7 +296,7 @@ export default function WorkspaceIdentify() {
                   </div>
                 </div>
                 <Link href="/workspaces/detect">
-                  <Button className="bg-poise-teal hover:bg-cyan-600 text-white">
+                  <Button className="bg-poise-teal hover:bg-cyan-600 text-gray-900">
                     Go to DETECT
                     <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>

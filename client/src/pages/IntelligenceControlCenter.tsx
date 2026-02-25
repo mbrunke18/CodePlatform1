@@ -118,11 +118,11 @@ export default function IntelligenceControlCenter() {
           <div>
             <div className="flex items-center gap-3 mb-2">
               <div className="p-2 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg">
-                <Radio className="h-5 w-5 text-white" />
+                <Radio className="h-5 w-5 text-gray-900" />
               </div>
-              <h1 className="text-2xl font-bold text-white" data-testid="page-title">Intelligence Control Center</h1>
+              <h1 className="text-2xl font-bold text-gray-900" data-testid="page-title">Intelligence Control Center</h1>
             </div>
-            <p className="text-slate-200">Real-time strategic intelligence and AI-powered pattern detection</p>
+            <p className="text-gray-600">Real-time strategic intelligence and AI-powered pattern detection</p>
           </div>
           
           <div className="flex items-center gap-3">
@@ -139,8 +139,8 @@ export default function IntelligenceControlCenter() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-slate-200">Data Points Monitored</p>
-                  <p className="text-2xl font-bold text-white" data-testid="value-data-points">92+</p>
+                  <p className="text-sm text-gray-600">Data Points Monitored</p>
+                  <p className="text-2xl font-bold text-gray-900" data-testid="value-data-points">92+</p>
                 </div>
                 <Activity className="h-8 w-8 text-blue-400 opacity-50" />
               </div>
@@ -150,8 +150,8 @@ export default function IntelligenceControlCenter() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-slate-200">Signal Categories</p>
-                  <p className="text-2xl font-bold text-white" data-testid="value-signal-categories">16</p>
+                  <p className="text-sm text-gray-600">Signal Categories</p>
+                  <p className="text-2xl font-bold text-gray-900" data-testid="value-signal-categories">16</p>
                 </div>
                 <Layers className="h-8 w-8 text-purple-400 opacity-50" />
               </div>
@@ -161,8 +161,8 @@ export default function IntelligenceControlCenter() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-slate-200">Weak Signals</p>
-                  <p className="text-2xl font-bold text-white" data-testid="value-weak-signals">{dynamicStatus?.weakSignalsDetected ?? 0}</p>
+                  <p className="text-sm text-gray-600">Weak Signals</p>
+                  <p className="text-2xl font-bold text-gray-900" data-testid="value-weak-signals">{dynamicStatus?.weakSignalsDetected ?? 0}</p>
                 </div>
                 <AlertCircle className="h-8 w-8 text-amber-400 opacity-50" />
               </div>
@@ -172,8 +172,8 @@ export default function IntelligenceControlCenter() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-slate-200">Active Patterns</p>
-                  <p className="text-2xl font-bold text-white">{dynamicStatus?.oraclePatternsActive ?? 0}</p>
+                  <p className="text-sm text-gray-600">Active Patterns</p>
+                  <p className="text-2xl font-bold text-gray-900">{dynamicStatus?.oraclePatternsActive ?? 0}</p>
                 </div>
                 <TrendingUp className="h-8 w-8 text-green-400 opacity-50" />
               </div>
@@ -183,7 +183,7 @@ export default function IntelligenceControlCenter() {
 
         {/* Intelligence Modules Grid */}
         <div className="space-y-4" data-testid="section-modules">
-          <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+          <h2 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
             <Brain className="h-5 w-5 text-purple-400" />
             Intelligence Modules
           </h2>
@@ -201,8 +201,8 @@ export default function IntelligenceControlCenter() {
                             <Icon className={`h-6 w-6 ${colors.text}`} />
                           </div>
                           <div>
-                            <CardTitle className="text-lg text-white">{module.title}</CardTitle>
-                            <CardDescription className="text-slate-200 text-sm">
+                            <CardTitle className="text-lg text-gray-900">{module.title}</CardTitle>
+                            <CardDescription className="text-gray-600 text-sm">
                               {module.description}
                             </CardDescription>
                           </div>
@@ -218,12 +218,12 @@ export default function IntelligenceControlCenter() {
                       <div className="flex items-center justify-between">
                         <div className="flex flex-wrap gap-2">
                           {module.features.slice(0, 3).map((feature, idx) => (
-                            <span key={idx} className="text-xs text-slate-300 bg-gray-50 px-2 py-1 rounded">
+                            <span key={idx} className="text-xs text-gray-600 bg-gray-50 px-2 py-1 rounded">
                               {feature}
                             </span>
                           ))}
                         </div>
-                        <ChevronRight className="h-5 w-5 text-slate-300" />
+                        <ChevronRight className="h-5 w-5 text-gray-600" />
                       </div>
                     </CardContent>
                   </Card>
@@ -242,10 +242,10 @@ export default function IntelligenceControlCenter() {
                   <Brain className="h-5 w-5 text-purple-400" />
                 </div>
                 <div className="flex-1">
-                  <p className="font-medium text-white">Launch AI Co-Pilots</p>
-                  <p className="text-sm text-slate-200">Strategic decision support</p>
+                  <p className="font-medium text-gray-900">Launch AI Co-Pilots</p>
+                  <p className="text-sm text-gray-600">Strategic decision support</p>
                 </div>
-                <ArrowRight className="h-4 w-4 text-slate-300" />
+                <ArrowRight className="h-4 w-4 text-gray-600" />
               </CardContent>
             </Card>
           </Link>
@@ -257,10 +257,10 @@ export default function IntelligenceControlCenter() {
                   <Radio className="h-5 w-5 text-blue-400" />
                 </div>
                 <div className="flex-1">
-                  <p className="font-medium text-white">Configure Signals</p>
-                  <p className="text-sm text-slate-200">Manage data sources</p>
+                  <p className="font-medium text-gray-900">Configure Signals</p>
+                  <p className="text-sm text-gray-600">Manage data sources</p>
                 </div>
-                <ArrowRight className="h-4 w-4 text-slate-300" />
+                <ArrowRight className="h-4 w-4 text-gray-600" />
               </CardContent>
             </Card>
           </Link>
@@ -272,10 +272,10 @@ export default function IntelligenceControlCenter() {
                   <Bell className="h-5 w-5 text-amber-400" />
                 </div>
                 <div className="flex-1">
-                  <p className="font-medium text-white">Set Up Triggers</p>
-                  <p className="text-sm text-slate-200">Automate responses</p>
+                  <p className="font-medium text-gray-900">Set Up Triggers</p>
+                  <p className="text-sm text-gray-600">Automate responses</p>
                 </div>
-                <ArrowRight className="h-4 w-4 text-slate-300" />
+                <ArrowRight className="h-4 w-4 text-gray-600" />
               </CardContent>
             </Card>
           </Link>

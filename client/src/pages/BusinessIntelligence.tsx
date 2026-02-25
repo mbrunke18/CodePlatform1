@@ -67,7 +67,7 @@ export default function BusinessIntelligence() {
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
-                <BarChart3 className="w-7 h-7 text-white" />
+                <BarChart3 className="w-7 h-7 text-gray-900" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Business Intelligence Center</h1>
@@ -79,7 +79,7 @@ export default function BusinessIntelligence() {
                 <TrendingUp className="w-3 h-3 mr-1" />
                 Market Leading
               </Badge>
-              <Badge className="bg-green-600 text-white">
+              <Badge className="bg-green-600 text-gray-900">
                 Executive BI
               </Badge>
             </div>
@@ -177,19 +177,19 @@ export default function BusinessIntelligence() {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <Button className="h-14 bg-blue-600 hover:bg-blue-700 text-white" data-testid="button-market-analysis">
+                <Button className="h-14 bg-blue-600 hover:bg-blue-700 text-gray-900" data-testid="button-market-analysis">
                   <Globe className="w-5 h-5 mr-2" />
                   Market Analysis
                 </Button>
-                <Button className="h-14 bg-green-600 hover:bg-green-700 text-white" data-testid="button-financial-modeling">
+                <Button className="h-14 bg-green-600 hover:bg-green-700 text-gray-900" data-testid="button-financial-modeling">
                   <DollarSign className="w-5 h-5 mr-2" />
                   Financial Modeling
                 </Button>
-                <Button className="h-14 bg-purple-600 hover:bg-purple-700 text-white" data-testid="button-competitive-intel">
+                <Button className="h-14 bg-purple-600 hover:bg-purple-700 text-gray-900" data-testid="button-competitive-intel">
                   <Target className="w-5 h-5 mr-2" />
                   Competitive Intel
                 </Button>
-                <Button className="h-14 bg-orange-600 hover:bg-orange-700 text-white" data-testid="button-executive-report">
+                <Button className="h-14 bg-orange-600 hover:bg-orange-700 text-gray-900" data-testid="button-executive-report">
                   <Briefcase className="w-5 h-5 mr-2" />
                   Executive Report
                 </Button>

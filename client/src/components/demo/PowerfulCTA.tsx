@@ -36,10 +36,10 @@ export function PowerfulCTA() {
         <div className="p-6 space-y-4 max-w-3xl">
           {/* Main CTA */}
           <div className="text-center space-y-3">
-            <h3 className="text-2xl font-bold text-white">
+            <h3 className="text-2xl font-bold text-gray-900">
               Ready to Transform Your Crisis Response?
             </h3>
-            <p className="text-lg text-blue-200">
+            <p className="text-lg text-blue-700">
               Schedule your personalized war room workshop and activate your executive triggers within 48 hours
             </p>
           </div>
@@ -51,7 +51,7 @@ export function PowerfulCTA() {
               return (
                 <div key={index} className="flex items-center gap-2">
                   <Icon className={`h-5 w-5 ${point.color}`} />
-                  <span className="text-sm text-blue-100">{point.text}</span>
+                  <span className="text-sm text-blue-600">{point.text}</span>
                 </div>
               );
             })}
@@ -61,7 +61,7 @@ export function PowerfulCTA() {
           <div className="flex items-center gap-4 justify-center">
             <Button 
               size="lg"
-              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-6 text-lg shadow-lg hover:shadow-emerald-500/50 transition-all duration-200"
+              className="bg-emerald-600 hover:bg-emerald-700 text-gray-900 font-bold px-8 py-6 text-lg shadow-lg hover:shadow-emerald-500/50 transition-all duration-200"
               data-testid="cta-schedule-workshop"
             >
               <Calendar className="h-5 w-5 mr-2" />
@@ -72,7 +72,7 @@ export function PowerfulCTA() {
             <Button 
               size="lg"
               variant="outline"
-              className="border-blue-500 text-blue-200 hover:bg-blue-900/50 px-8 py-6 text-lg"
+              className="border-blue-500 text-blue-700 hover:bg-blue-900/50 px-8 py-6 text-lg"
               data-testid="cta-contact-sales"
             >
               Contact Executive Sales
@@ -98,7 +98,7 @@ export function PowerfulCTA() {
           {/* Social Proof */}
           <div className="text-center pt-4 border-t border-blue-500/30">
             <p className="text-sm text-blue-300">
-              Trusted by <span className="font-bold text-blue-200">127 Fortune 1000 companies</span> protecting 
+              Trusted by <span className="font-bold text-blue-700">127 Fortune 1000 companies</span> protecting 
               <span className="font-bold text-emerald-400"> $47B</span> in combined annual revenue
             </p>
           </div>

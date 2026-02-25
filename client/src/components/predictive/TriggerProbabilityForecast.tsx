@@ -146,16 +146,16 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
   const getTrendIcon = (trend: string) => {
     if (trend === 'increasing') return <TrendingUp className="w-4 h-4 text-red-500" />;
     if (trend === 'decreasing') return <TrendingDown className="w-4 h-4 text-emerald-500" />;
-    return <Minus className="w-4 h-4 text-slate-300" />;
+    return <Minus className="w-4 h-4 text-gray-600" />;
   };
 
   if (allForecasts.length === 0) {
     return (
       <Card className="border-dashed border-2 border-slate-300 dark:border-slate-700">
         <CardContent className="p-6 text-center">
-          <Brain className="w-12 h-12 text-slate-200 mx-auto mb-3" />
+          <Brain className="w-12 h-12 text-gray-600 mx-auto mb-3" />
           <p className="text-gray-600 dark:text-slate-300">No triggers configured for forecasting</p>
-          <p className="text-sm text-slate-300 mt-1">Add triggers to see AI-powered probability predictions</p>
+          <p className="text-sm text-gray-600 mt-1">Add triggers to see AI-powered probability predictions</p>
         </CardContent>
       </Card>
     );
@@ -167,11 +167,11 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="p-2 rounded-lg bg-gradient-to-br from-purple-500 to-blue-600">
-              <Sparkles className="w-5 h-5 text-white" />
+              <Sparkles className="w-5 h-5 text-gray-900" />
             </div>
             <div>
               <CardTitle className="text-lg">Trigger Probability Forecast</CardTitle>
-              <p className="text-xs text-slate-300">
+              <p className="text-xs text-gray-600">
                 Showing top {displayedCount} of {totalTriggers} triggers ranked by 30-day probability
               </p>
             </div>
@@ -218,7 +218,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
                 </div>
                 <div className="flex items-center gap-2">
                   <Badge variant="outline" className="text-xs">{forecast.category}</Badge>
-                  <span className="text-xs text-slate-300">
+                  <span className="text-xs text-gray-600">
                     Confidence: {forecast.confidenceScore}%
                   </span>
                   <span className="text-xs text-purple-600 dark:text-purple-400">
@@ -227,18 +227,18 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
                 </div>
               </div>
               <div className="text-right flex items-center gap-2">
-                <div className="flex items-center gap-1 text-xs text-slate-300">
+                <div className="flex items-center gap-1 text-xs text-gray-600">
                   <Clock className="w-3 h-3" />
                   Updated {forecast.lastUpdated}
                 </div>
-                {isExpanded ? <ChevronUp className="w-4 h-4 text-purple-500" /> : <ChevronDown className="w-4 h-4 text-slate-200" />}
+                {isExpanded ? <ChevronUp className="w-4 h-4 text-purple-500" /> : <ChevronDown className="w-4 h-4 text-gray-600" />}
               </div>
             </div>
 
             <div className="grid grid-cols-3 gap-3 mb-3">
               <div className={`rounded-lg p-3 text-center ${getProbabilityBg(forecast.probability30Days)}`}>
                 <div className="flex items-center justify-center gap-1 mb-1">
-                  <Calendar className="w-3 h-3 text-slate-300" />
+                  <Calendar className="w-3 h-3 text-gray-600" />
                   <span className="text-xs font-medium text-gray-600 dark:text-slate-300">30 Days</span>
                 </div>
                 <div className={`text-2xl font-bold ${getProbabilityColor(forecast.probability30Days)}`}>
@@ -251,7 +251,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
               </div>
               <div className={`rounded-lg p-3 text-center ${getProbabilityBg(forecast.probability60Days)}`}>
                 <div className="flex items-center justify-center gap-1 mb-1">
-                  <Calendar className="w-3 h-3 text-slate-300" />
+                  <Calendar className="w-3 h-3 text-gray-600" />
                   <span className="text-xs font-medium text-gray-600 dark:text-slate-300">60 Days</span>
                 </div>
                 <div className={`text-2xl font-bold ${getProbabilityColor(forecast.probability60Days)}`}>
@@ -264,7 +264,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
               </div>
               <div className={`rounded-lg p-3 text-center ${getProbabilityBg(forecast.probability90Days)}`}>
                 <div className="flex items-center justify-center gap-1 mb-1">
-                  <Calendar className="w-3 h-3 text-slate-300" />
+                  <Calendar className="w-3 h-3 text-gray-600" />
                   <span className="text-xs font-medium text-gray-600 dark:text-slate-300">90 Days</span>
                 </div>
                 <div className={`text-2xl font-bold ${getProbabilityColor(forecast.probability90Days)}`}>

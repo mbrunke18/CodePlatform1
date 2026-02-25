@@ -63,7 +63,7 @@ export function IntegrationsDemo({ progress }: SceneProps) {
                     <integration.icon className="w-5 h-5" style={{ color: integration.color }} />
                   </div>
                   <div className="flex-1">
-                    <p className="text-white font-medium">{integration.name}</p>
+                    <p className="text-gray-900 font-medium">{integration.name}</p>
                     {i < activeIntegration && (
                       <motion.p
                         initial={{ opacity: 0 }}

@@ -159,10 +159,10 @@ export default function ROICalculator() {
               <Calculator className="h-4 w-4 mr-2" />
               ROI Calculator
             </Badge>
-            <h1 className="text-4xl font-bold text-white mb-4">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
               Calculate Your Strategic Velocity ROI
             </h1>
-            <p className="text-xl text-slate-200 max-w-2xl mx-auto mb-6">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-6">
               See how Execution OS transforms coordination time from 72 hours to 12 minutes—and what that means for your bottom line.
             </p>
             
@@ -172,17 +172,17 @@ export default function ROICalculator() {
                 <div className="flex items-center justify-center gap-8 flex-wrap">
                   <div className="text-center">
                     <div className="text-3xl font-bold text-emerald-400">10.3%</div>
-                    <p className="text-sm text-slate-200">Revenue/Employee Growth</p>
-                    <p className="text-xs text-slate-200">Organizations that improved agility</p>
+                    <p className="text-sm text-gray-600">Revenue/Employee Growth</p>
+                    <p className="text-xs text-gray-600">Organizations that improved agility</p>
                   </div>
-                  <div className="text-2xl text-slate-200">vs</div>
+                  <div className="text-2xl text-gray-600">vs</div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-red-400">3.5%</div>
-                    <p className="text-sm text-slate-200">Revenue/Employee Growth</p>
-                    <p className="text-xs text-slate-200">Organizations that didn't improve</p>
+                    <p className="text-sm text-gray-600">Revenue/Employee Growth</p>
+                    <p className="text-xs text-gray-600">Organizations that didn't improve</p>
                   </div>
                 </div>
-                <p className="text-center text-sm text-slate-200 mt-4">
+                <p className="text-center text-sm text-gray-600 mt-4">
                   Source: 2025 Business Agility Report (244 organizations)
                 </p>
               </CardContent>
@@ -194,19 +194,19 @@ export default function ROICalculator() {
             <div className="space-y-6">
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
                     <Building2 className="h-5 w-5 text-blue-400" />
                     Your Organization
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-2">
-                    <Label className="text-slate-200">Company Size</Label>
+                    <Label className="text-gray-600">Company Size</Label>
                     <Select 
                       value={inputs.companySize} 
                       onValueChange={(v) => setInputs({...inputs, companySize: v})}
                     >
-                      <SelectTrigger className="bg-gray-50 border-gray-200 text-white" data-testid="select-company-size">
+                      <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900" data-testid="select-company-size">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -218,12 +218,12 @@ export default function ROICalculator() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-slate-200">Industry</Label>
+                    <Label className="text-gray-600">Industry</Label>
                     <Select 
                       value={inputs.industry} 
                       onValueChange={(v) => setInputs({...inputs, industry: v})}
                     >
-                      <SelectTrigger className="bg-gray-50 border-gray-200 text-white" data-testid="select-industry">
+                      <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900" data-testid="select-industry">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -235,7 +235,7 @@ export default function ROICalculator() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-slate-200">Annual Revenue</Label>
+                    <Label className="text-gray-600">Annual Revenue</Label>
                     <div className="flex items-center gap-4">
                       <Slider
                         value={[Math.log10(inputs.annualRevenue)]}
@@ -246,7 +246,7 @@ export default function ROICalculator() {
                         className="flex-1"
                         data-testid="slider-revenue"
                       />
-                      <span className="text-white font-mono w-20 text-right">
+                      <span className="text-gray-900 font-mono w-20 text-right">
                         {formatCurrency(inputs.annualRevenue)}
                       </span>
                     </div>
@@ -256,15 +256,15 @@ export default function ROICalculator() {
 
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
                     <AlertTriangle className="h-5 w-5 text-amber-400" />
                     Current State
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-2">
-                    <Label className="text-slate-200">Strategic Events per Year</Label>
-                    <div className="text-xs text-slate-200 mb-2">
+                    <Label className="text-gray-600">Strategic Events per Year</Label>
+                    <div className="text-xs text-gray-600 mb-2">
                       Crises, competitive responses, market entries, M&A, regulatory changes
                     </div>
                     <div className="flex items-center gap-4">
@@ -277,15 +277,15 @@ export default function ROICalculator() {
                         className="flex-1"
                         data-testid="slider-events"
                       />
-                      <span className="text-white font-mono w-16 text-right">
+                      <span className="text-gray-900 font-mono w-16 text-right">
                         {inputs.strategicEventsPerYear}
                       </span>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-slate-200">Average Response Time (Hours)</Label>
-                    <div className="text-xs text-slate-200 mb-2">
+                    <Label className="text-gray-600">Average Response Time (Hours)</Label>
+                    <div className="text-xs text-gray-600 mb-2">
                       Time from event detection to coordinated response execution
                     </div>
                     <div className="flex items-center gap-4">
@@ -298,14 +298,14 @@ export default function ROICalculator() {
                         className="flex-1"
                         data-testid="slider-response-time"
                       />
-                      <span className="text-white font-mono w-20 text-right">
+                      <span className="text-gray-900 font-mono w-20 text-right">
                         {inputs.avgResponseTimeHours}h
                       </span>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-slate-200">Executives Involved per Event</Label>
+                    <Label className="text-gray-600">Executives Involved per Event</Label>
                     <div className="flex items-center gap-4">
                       <Slider
                         value={[inputs.executivesInvolved]}
@@ -316,14 +316,14 @@ export default function ROICalculator() {
                         className="flex-1"
                         data-testid="slider-executives"
                       />
-                      <span className="text-white font-mono w-16 text-right">
+                      <span className="text-gray-900 font-mono w-16 text-right">
                         {inputs.executivesInvolved}
                       </span>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-slate-200">Average Executive Compensation</Label>
+                    <Label className="text-gray-600">Average Executive Compensation</Label>
                     <div className="flex items-center gap-4">
                       <Slider
                         value={[inputs.avgExecutiveSalary]}
@@ -334,7 +334,7 @@ export default function ROICalculator() {
                         className="flex-1"
                         data-testid="slider-salary"
                       />
-                      <span className="text-white font-mono w-20 text-right">
+                      <span className="text-gray-900 font-mono w-20 text-right">
                         {formatCurrency(inputs.avgExecutiveSalary)}
                       </span>
                     </div>
@@ -352,21 +352,21 @@ export default function ROICalculator() {
                     <div className="text-6xl font-bold text-green-400 mb-2">
                       {calculations.roi.toFixed(0)}%
                     </div>
-                    <div className="text-xl text-slate-200">Annual ROI</div>
+                    <div className="text-xl text-gray-600">Annual ROI</div>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div className="bg-gray-50 rounded-lg p-4 text-center">
-                      <div className="text-2xl font-bold text-white">
+                      <div className="text-2xl font-bold text-gray-900">
                         {formatCurrency(calculations.totalAnnualValue)}
                       </div>
-                      <div className="text-sm text-slate-200">Total Annual Value</div>
+                      <div className="text-sm text-gray-600">Total Annual Value</div>
                     </div>
                     <div className="bg-gray-50 rounded-lg p-4 text-center">
-                      <div className="text-2xl font-bold text-white">
+                      <div className="text-2xl font-bold text-gray-900">
                         {calculations.paybackMonths.toFixed(1)} mo
                       </div>
-                      <div className="text-sm text-slate-200">Payback Period</div>
+                      <div className="text-sm text-gray-600">Payback Period</div>
                     </div>
                   </div>
 
@@ -387,39 +387,39 @@ export default function ROICalculator() {
               {/* Executive Summary */}
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
                     <Target className="h-5 w-5 text-cyan-400" />
                     Your Custom ROI Analysis
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <p className="text-slate-200 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed">
                     Based on your profile as a {COMPANY_SIZES[inputs.companySize]?.label} organization in the {INDUSTRY_MULTIPLIERS[inputs.industry]?.label} sector, Execution OS can deliver an estimated {formatCurrency(calculations.totalAnnualValue)} in annual value by reducing strategic response time from {inputs.avgResponseTimeHours} hours to under 2 hours — a {calculations.speedImprovement}X improvement in execution velocity that directly impacts competitive positioning and risk exposure.
                   </p>
 
                   <div className="space-y-3 mt-4">
                     <div className="flex items-start gap-3">
                       <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
-                      <span className="text-slate-200">Save {formatNumber(Math.round(calculations.timeSavedHoursPerYear))} executive hours annually — equivalent to {Math.round(calculations.timeSavedHoursPerYear / 2080)} full-time senior leaders redeployed to growth initiatives</span>
+                      <span className="text-gray-600">Save {formatNumber(Math.round(calculations.timeSavedHoursPerYear))} executive hours annually — equivalent to {Math.round(calculations.timeSavedHoursPerYear / 2080)} full-time senior leaders redeployed to growth initiatives</span>
                     </div>
                     <div className="flex items-start gap-3">
                       <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
-                      <span className="text-slate-200">Protect {formatCurrency(calculations.revenueProtected)} in at-risk revenue through faster competitive and market response</span>
+                      <span className="text-gray-600">Protect {formatCurrency(calculations.revenueProtected)} in at-risk revenue through faster competitive and market response</span>
                     </div>
                     <div className="flex items-start gap-3">
                       <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
-                      <span className="text-slate-200">Achieve full payback in {calculations.paybackMonths.toFixed(1)} months with a {calculations.roi.toFixed(0)}% first-year ROI</span>
+                      <span className="text-gray-600">Achieve full payback in {calculations.paybackMonths.toFixed(1)} months with a {calculations.roi.toFixed(0)}% first-year ROI</span>
                     </div>
                     <div className="flex items-start gap-3">
                       <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
-                      <span className="text-slate-200">Reduce compliance exposure by {formatCurrency(calculations.complianceRiskReduction)} through automated regulatory response coordination</span>
+                      <span className="text-gray-600">Reduce compliance exposure by {formatCurrency(calculations.complianceRiskReduction)} through automated regulatory response coordination</span>
                     </div>
                   </div>
 
                   <div className="flex gap-3 pt-4 border-t border-gray-200">
                     <Button
                       variant="outline"
-                      className="flex-1 border-slate-600 text-slate-200 hover:bg-slate-800"
+                      className="flex-1 border-slate-600 text-gray-600 hover:bg-slate-800"
                       onClick={() => toast({ title: "Coming Soon", description: "Report download will be available shortly." })}
                     >
                       <Download className="h-4 w-4 mr-2" />
@@ -427,7 +427,7 @@ export default function ROICalculator() {
                     </Button>
                     <Button
                       variant="outline"
-                      className="flex-1 border-slate-600 text-slate-200 hover:bg-slate-800"
+                      className="flex-1 border-slate-600 text-gray-600 hover:bg-slate-800"
                       onClick={() => toast({ title: "Coming Soon", description: "Share functionality will be available shortly." })}
                     >
                       <Send className="h-4 w-4 mr-2" />
@@ -441,7 +441,7 @@ export default function ROICalculator() {
               <Card className="bg-white border-gray-200">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                    <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
                       <Zap className="h-5 w-5 text-amber-400" />
                       Speed Improvement
                     </h3>
@@ -453,12 +453,12 @@ export default function ROICalculator() {
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-red-950/30 rounded-lg p-4 border border-red-500/20">
                       <div className="text-sm text-red-400 mb-1">Current Response</div>
-                      <div className="text-2xl font-bold text-white">{inputs.avgResponseTimeHours} hours</div>
+                      <div className="text-2xl font-bold text-gray-900">{inputs.avgResponseTimeHours} hours</div>
                     </div>
                     <div className="bg-green-950/30 rounded-lg p-4 border border-green-500/20">
                       <div className="text-sm text-green-400 mb-1">With Execution OS</div>
-                      <div className="text-2xl font-bold text-white">~2 hours</div>
-                      <div className="text-xs text-slate-200">12 min decision + 90 min execution</div>
+                      <div className="text-2xl font-bold text-gray-900">~2 hours</div>
+                      <div className="text-xs text-gray-600">12 min decision + 90 min execution</div>
                     </div>
                   </div>
                 </CardContent>
@@ -467,7 +467,7 @@ export default function ROICalculator() {
               {/* Value Breakdown */}
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
                     <TrendingUp className="h-5 w-5 text-blue-400" />
                     Value Breakdown
                   </CardTitle>
@@ -477,8 +477,8 @@ export default function ROICalculator() {
                     <div className="flex items-center gap-3">
                       <Clock className="h-5 w-5 text-blue-400" />
                       <div>
-                        <div className="text-white">Executive Time Saved</div>
-                        <div className="text-xs text-slate-200">
+                        <div className="text-gray-900">Executive Time Saved</div>
+                        <div className="text-xs text-gray-600">
                           {formatNumber(Math.round(calculations.timeSavedHoursPerYear))} hours/year
                         </div>
                       </div>
@@ -492,8 +492,8 @@ export default function ROICalculator() {
                     <div className="flex items-center gap-3">
                       <DollarSign className="h-5 w-5 text-green-400" />
                       <div>
-                        <div className="text-white">Revenue Protected</div>
-                        <div className="text-xs text-slate-200">
+                        <div className="text-gray-900">Revenue Protected</div>
+                        <div className="text-xs text-gray-600">
                           From faster competitive response
                         </div>
                       </div>
@@ -507,8 +507,8 @@ export default function ROICalculator() {
                     <div className="flex items-center gap-3">
                       <Shield className="h-5 w-5 text-amber-400" />
                       <div>
-                        <div className="text-white">Compliance Risk Reduction</div>
-                        <div className="text-xs text-slate-200">
+                        <div className="text-gray-900">Compliance Risk Reduction</div>
+                        <div className="text-xs text-gray-600">
                           Faster regulatory response
                         </div>
                       </div>
@@ -520,7 +520,7 @@ export default function ROICalculator() {
 
                   <div className="border-t border-gray-200 pt-4 mt-4">
                     <div className="flex items-center justify-between">
-                      <div className="text-lg text-white font-semibold">Total Annual Value</div>
+                      <div className="text-lg text-gray-900 font-semibold">Total Annual Value</div>
                       <div className="text-2xl font-bold text-green-400">
                         {formatCurrency(calculations.totalAnnualValue)}
                       </div>
@@ -532,7 +532,7 @@ export default function ROICalculator() {
               {/* Industry Benchmarks */}
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
                     <BarChart3 className="h-5 w-5 text-purple-400" />
                     Industry Benchmarks
                   </CardTitle>
@@ -542,33 +542,33 @@ export default function ROICalculator() {
                     <table className="w-full text-sm">
                       <thead>
                         <tr className="border-b border-gray-200">
-                          <th className="text-left text-slate-300 pb-3 pr-4">Metric</th>
-                          <th className="text-center text-slate-300 pb-3 px-2">Your Org</th>
-                          <th className="text-center text-slate-300 pb-3 px-2">Industry Avg</th>
+                          <th className="text-left text-gray-600 pb-3 pr-4">Metric</th>
+                          <th className="text-center text-gray-600 pb-3 px-2">Your Org</th>
+                          <th className="text-center text-gray-600 pb-3 px-2">Industry Avg</th>
                           <th className="text-center text-green-400 pb-3 pl-2">Execution OS Target</th>
                         </tr>
                       </thead>
-                      <tbody className="text-slate-200">
+                      <tbody className="text-gray-600">
                         <tr className="border-b border-gray-200">
-                          <td className="py-3 pr-4 text-white">Avg Response Time</td>
+                          <td className="py-3 pr-4 text-gray-900">Avg Response Time</td>
                           <td className="py-3 px-2 text-center text-red-400 font-semibold">{inputs.avgResponseTimeHours}h</td>
                           <td className="py-3 px-2 text-center text-amber-400">72h</td>
                           <td className="py-3 pl-2 text-center text-green-400 font-semibold">~2h</td>
                         </tr>
                         <tr className="border-b border-gray-200">
-                          <td className="py-3 pr-4 text-white">Coordination Cost</td>
+                          <td className="py-3 pr-4 text-gray-900">Coordination Cost</td>
                           <td className="py-3 px-2 text-center text-red-400 font-semibold">{formatCurrency(calculations.currentCoordinationCostPerYear)}</td>
                           <td className="py-3 px-2 text-center text-amber-400">{formatCurrency(2400000)}</td>
                           <td className="py-3 pl-2 text-center text-green-400 font-semibold">{formatCurrency(calculations.mCoordinationCostPerYear)}</td>
                         </tr>
                         <tr className="border-b border-gray-200">
-                          <td className="py-3 pr-4 text-white">Events Per Year</td>
+                          <td className="py-3 pr-4 text-gray-900">Events Per Year</td>
                           <td className="py-3 px-2 text-center font-semibold">{inputs.strategicEventsPerYear}</td>
                           <td className="py-3 px-2 text-center text-amber-400">18</td>
                           <td className="py-3 pl-2 text-center text-green-400 font-semibold">All covered</td>
                         </tr>
                         <tr>
-                          <td className="py-3 pr-4 text-white">Executive Hours Wasted</td>
+                          <td className="py-3 pr-4 text-gray-900">Executive Hours Wasted</td>
                           <td className="py-3 px-2 text-center text-red-400 font-semibold">{formatNumber(Math.round(calculations.currentTotalExecutiveHoursPerYear))}h</td>
                           <td className="py-3 px-2 text-center text-amber-400">{formatNumber(10368)}h</td>
                           <td className="py-3 pl-2 text-center text-green-400 font-semibold">{formatNumber(Math.round(calculations.mTotalExecutiveHoursPerYear))}h</td>
@@ -579,7 +579,7 @@ export default function ROICalculator() {
                 </CardContent>
               </Card>
 
-              <div className="text-xs text-slate-300 text-center">
+              <div className="text-xs text-gray-600 text-center">
                 * Calculations are estimates based on industry benchmarks and your inputs.
                 Actual results may vary. Contact us for a detailed analysis.
               </div>
@@ -591,17 +591,17 @@ export default function ROICalculator() {
             <Card className="bg-gradient-to-r  border-blue-500/30 overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-indigo-500/10 to-purple-500/5" />
               <CardContent className="p-10 text-center relative z-10">
-                <h2 className="text-3xl font-bold text-white mb-3">
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">
                   Ready to See This in Action?
                 </h2>
-                <p className="text-lg text-slate-200 mb-8 max-w-2xl mx-auto">
+                <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
                   Join our founding partner program and experience the strategic velocity difference firsthand.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8"
+                    className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-gray-900 px-8"
                     onClick={() => setLocation('/contact')}
                   >
                     Start Your 90-Day Pilot

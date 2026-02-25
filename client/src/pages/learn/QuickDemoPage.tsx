@@ -379,7 +379,7 @@ export default function QuickDemoPage() {
       case 'jira': return <SiJira className="h-4 w-4 text-[#0052CC]" />;
       case 'teams': return <Users className="h-4 w-4 text-[#6264A7]" />;
       case 'salesforce': return <SiSalesforce className="h-4 w-4 text-[#00A1E0]" />;
-      case 'notion': return <SiNotion className="h-4 w-4 text-white" />;
+      case 'notion': return <SiNotion className="h-4 w-4 text-gray-900" />;
       default: return <Zap className="h-4 w-4 text-emerald-400" />;
     }
   };
@@ -411,7 +411,7 @@ export default function QuickDemoPage() {
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
                         <div className={`p-3 rounded-xl bg-gradient-to-br ${scenario.color}`}>
-                          <IconComponent className="h-6 w-6 text-white" />
+                          <IconComponent className="h-6 w-6 text-gray-900" />
                         </div>
                         <div className="flex-1">
                           <h3 className="text-lg font-bold group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors mb-1">
@@ -564,7 +564,7 @@ export default function QuickDemoPage() {
                         <p className="font-medium">Chaos. Confusion. Costly delays.</p>
                       </div>
                       <Button
-                        className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold py-6"
+                        className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-gray-900 font-semibold py-6"
                         onClick={moveToPrepared}
                       >
                         <Sparkles className="mr-2 h-5 w-5" />
@@ -583,7 +583,7 @@ export default function QuickDemoPage() {
           <>
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <Badge className={`bg-gradient-to-r ${selectedScenario.color} text-white`}>
+                <Badge className={`bg-gradient-to-r ${selectedScenario.color} text-gray-900`}>
                   {selectedScenario.name}
                 </Badge>
                 <span className="text-sm text-muted-foreground">
@@ -683,7 +683,7 @@ export default function QuickDemoPage() {
                         </p>
                       </div>
 
-                      <Button className="w-full bg-violet-600 hover:bg-violet-700 text-white" onClick={completeIdentify}>
+                      <Button className="w-full bg-violet-600 hover:bg-violet-700 text-gray-900" onClick={completeIdentify}>
                         Playbook Ready - Continue to Detection
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -732,7 +732,7 @@ export default function QuickDemoPage() {
                         </p>
                       </div>
 
-                      <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 text-lg font-semibold" onClick={completeDetect}>
+                      <Button className="w-full bg-blue-600 hover:bg-blue-700 text-gray-900 py-6 text-lg font-semibold" onClick={completeDetect}>
                         <Play className="mr-2 h-5 w-5" />
                         Activate Playbook
                       </Button>
@@ -813,7 +813,7 @@ export default function QuickDemoPage() {
                           <p className="text-muted-foreground">
                             Execution OS captures what worked and suggests playbook improvements for next time.
                           </p>
-                          <Button className="w-full bg-amber-600 hover:bg-amber-700 text-white" onClick={completeAdvance}>
+                          <Button className="w-full bg-amber-600 hover:bg-amber-700 text-gray-900" onClick={completeAdvance}>
                             <Sparkles className="mr-2 h-4 w-4" />
                             Generate Insights
                           </Button>
@@ -878,7 +878,7 @@ export default function QuickDemoPage() {
 
                       <div className="space-y-3">
                         <Button
-                          className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white py-6 text-lg font-semibold"
+                          className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-gray-900 py-6 text-lg font-semibold"
                           onClick={() => {
                             setLocation('/try-demo');
                             window.scrollTo({ top: 0, left: 0, behavior: 'instant' });

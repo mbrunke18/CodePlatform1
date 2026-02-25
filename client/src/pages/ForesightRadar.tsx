@@ -202,7 +202,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
           <Card className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/50 dark:to-blue-900/30 border-blue-200 dark:border-blue-800">
             <CardContent className="p-4 flex items-start gap-3">
               <div className="bg-blue-500 rounded-lg p-2">
-                <Eye className="w-5 h-5 text-white" />
+                <Eye className="w-5 h-5 text-gray-900" />
               </div>
               <div>
                 <h4 className="font-semibold text-slate-900 dark:text-white">16 Signal Categories</h4>
@@ -213,7 +213,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
           <Card className="bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950/50 dark:to-amber-900/30 border-amber-200 dark:border-amber-800">
             <CardContent className="p-4 flex items-start gap-3">
               <div className="bg-amber-500 rounded-lg p-2">
-                <Target className="w-5 h-5 text-white" />
+                <Target className="w-5 h-5 text-gray-900" />
               </div>
               <div>
                 <h4 className="font-semibold text-slate-900 dark:text-white">Early Warning</h4>
@@ -224,7 +224,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
           <Card className="bg-gradient-to-br from-violet-50 to-violet-100 dark:from-violet-950/50 dark:to-violet-900/30 border-violet-200 dark:border-violet-800">
             <CardContent className="p-4 flex items-start gap-3">
               <div className="bg-violet-500 rounded-lg p-2">
-                <Lightbulb className="w-5 h-5 text-white" />
+                <Lightbulb className="w-5 h-5 text-gray-900" />
               </div>
               <div>
                 <h4 className="font-semibold text-slate-900 dark:text-white">AI Pattern Recognition</h4>
@@ -272,7 +272,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                     {/* Center Icon */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="bg-blue-600 dark:bg-blue-500 rounded-full p-6 shadow-xl">
-                        <Eye className="w-12 h-12 text-white" />
+                        <Eye className="w-12 h-12 text-gray-900" />
                       </div>
                     </div>
 
@@ -359,7 +359,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                           <p className="text-sm text-gray-600 dark:text-slate-300 mb-3">
                             {signal.description}
                           </p>
-                          <div className="flex items-center gap-4 text-xs text-slate-300 dark:text-slate-300">
+                          <div className="flex items-center gap-4 text-xs text-gray-600 dark:text-slate-300">
                             <span className="flex items-center gap-1">
                               <TrendingUp className="w-3 h-3" />
                               {signal.confidence}% confidence
@@ -452,7 +452,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
                       <div className="bg-green-500 rounded-full p-3">
-                        <Radio className="w-6 h-6 text-white animate-pulse" />
+                        <Radio className="w-6 h-6 text-gray-900 animate-pulse" />
                       </div>
                       <div>
                         <h3 className="text-lg font-bold text-slate-900 dark:text-white">

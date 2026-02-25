@@ -326,7 +326,7 @@ function ProductTour() {
           }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <span className="text-5xl font-bold text-white">Execution OS</span>
+          <span className="text-5xl font-bold text-gray-900">Execution OS</span>
         </motion.div>
         <div className="flex items-center justify-center gap-8 mt-8">
           <motion.div 
@@ -397,7 +397,7 @@ function ProductTour() {
             style={{ backgroundColor: `rgba(var(--${config.color}-500), 0.2)` }}
           >
             <div className={`w-32 h-32 rounded-full bg-gradient-to-br from-${config.color}-400 to-${config.color}-600 flex items-center justify-center`}>
-              <Icon className="w-16 h-16 text-white" />
+              <Icon className="w-16 h-16 text-gray-900" />
             </div>
           </motion.div>
           
@@ -412,7 +412,7 @@ function ProductTour() {
                   className="flex items-center gap-3 bg-gray-50 rounded-lg p-4"
                 >
                   <CheckCircle2 className={`w-5 h-5 text-${config.color}-400`} />
-                  <span className="text-white font-medium">{item}</span>
+                  <span className="text-gray-900 font-medium">{item}</span>
                 </motion.div>
               ))}
             </div>
@@ -434,14 +434,14 @@ function ProductTour() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                  <span className="font-bold text-white">SC</span>
+                  <span className="font-bold text-gray-900">SC</span>
                 </div>
                 <div>
-                  <p className="font-semibold text-white">Sarah Chen</p>
-                  <p className="text-sm text-white/80">Chief Strategy Officer</p>
+                  <p className="font-semibold text-gray-900">Sarah Chen</p>
+                  <p className="text-sm text-gray-900/80">Chief Strategy Officer</p>
                 </div>
               </div>
-              <Badge className="bg-red-500 text-white animate-pulse">
+              <Badge className="bg-red-500 text-gray-900 animate-pulse">
                 <AlertTriangle className="w-3 h-3 mr-1" />
                 CRITICAL SIGNAL
               </Badge>
@@ -452,7 +452,7 @@ function ProductTour() {
               <div className="flex items-start gap-4 p-4 bg-red-500/10 rounded-lg border border-red-500/30">
                 <AlertTriangle className="w-8 h-8 text-red-400 flex-shrink-0" />
                 <div>
-                  <p className="font-semibold text-white">Competitor Acquisition Announced</p>
+                  <p className="font-semibold text-gray-900">Competitor Acquisition Announced</p>
                   <p className="text-slate-600 dark:text-slate-200 text-sm">TitanTech acquires Precision Components for $890M</p>
                 </div>
               </div>
@@ -469,7 +469,7 @@ function ProductTour() {
                     <div className="w-8 h-8 bg-teal-500/20 rounded-full flex items-center justify-center">
                       <CheckCircle2 className="w-4 h-4 text-teal-400" />
                     </div>
-                    <span className="text-sm text-white">{role}</span>
+                    <span className="text-sm text-gray-900">{role}</span>
                   </motion.div>
                 ))}
               </div>
@@ -490,7 +490,7 @@ function ProductTour() {
           className="text-center"
         >
           <div className="w-32 h-32 mx-auto bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center mb-4">
-            <Timer className="w-16 h-16 text-white" />
+            <Timer className="w-16 h-16 text-gray-900" />
           </div>
           <p className="text-5xl font-bold text-teal-400">3,180x</p>
           <p className="text-slate-600 dark:text-slate-200 mt-2">Faster Response</p>
@@ -502,7 +502,7 @@ function ProductTour() {
           className="text-center"
         >
           <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mb-4">
-            <Users className="w-16 h-16 text-white" />
+            <Users className="w-16 h-16 text-gray-900" />
           </div>
           <p className="text-5xl font-bold text-blue-400">6</p>
           <p className="text-slate-600 dark:text-slate-200 mt-2">Stakeholders Aligned</p>
@@ -514,7 +514,7 @@ function ProductTour() {
           className="text-center"
         >
           <div className="w-32 h-32 mx-auto bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mb-4">
-            <DollarSign className="w-16 h-16 text-white" />
+            <DollarSign className="w-16 h-16 text-gray-900" />
           </div>
           <p className="text-5xl font-bold text-purple-400">$50M+</p>
           <p className="text-slate-600 dark:text-slate-200 mt-2">Revenue Protected</p>
@@ -539,7 +539,7 @@ function ProductTour() {
             <p className="text-slate-600 dark:text-slate-200 text-sm">Anaplan</p>
           </motion.div>
           <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="text-center p-3 bg-gradient-to-r from-blue-600 to-teal-500 rounded-lg">
-            <p className="text-white font-bold text-sm">Execution OS</p>
+            <p className="text-gray-900 font-bold text-sm">Execution OS</p>
           </motion.div>
           
           {[
@@ -556,11 +556,11 @@ function ProductTour() {
               className="contents"
             >
               <div className="p-3 bg-gray-50 rounded-lg flex items-center">
-                <p className="text-white text-sm">{row.label}</p>
+                <p className="text-gray-900 text-sm">{row.label}</p>
               </div>
               {row.scores.map((score, j) => (
                 <div key={j} className={`p-3 rounded-lg flex items-center justify-center ${j === 2 ? 'bg-teal-500/20' : 'bg-gray-50'}`}>
-                  <p className={`text-sm ${j === 2 ? 'text-teal-400 font-medium' : 'text-slate-300'}`}>{score}</p>
+                  <p className={`text-sm ${j === 2 ? 'text-teal-400 font-medium' : 'text-gray-600'}`}>{score}</p>
                 </div>
               ))}
             </motion.div>
@@ -580,7 +580,7 @@ function ProductTour() {
         <motion.div 
           className="w-24 h-24 mx-auto mb-8 bg-gradient-to-br from-blue-500 to-teal-500 rounded-2xl flex items-center justify-center"
         >
-          <span className="text-4xl font-bold text-white">Execution OS</span>
+          <span className="text-4xl font-bold text-gray-900">Execution OS</span>
         </motion.div>
         <div className="space-y-6">
           <motion.div
@@ -590,7 +590,7 @@ function ProductTour() {
           >
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-white px-8 py-6 text-lg"
+              className="bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-gray-900 px-8 py-6 text-lg"
               onClick={() => setLocation('/executive-simulation')}
               data-testid="button-try-simulation"
             >
@@ -607,7 +607,7 @@ function ProductTour() {
             <Button 
               variant="outline" 
               size="lg"
-              className="bg-transparent text-white border-slate-500 hover:bg-slate-800"
+              className="bg-transparent text-gray-900 border-slate-500 hover:bg-slate-800"
               onClick={() => setLocation('/scenario-library')}
               data-testid="button-explore-playbooks"
             >
@@ -617,7 +617,7 @@ function ProductTour() {
             <Button 
               variant="outline" 
               size="lg"
-              className="bg-transparent text-white border-slate-500 hover:bg-slate-800"
+              className="bg-transparent text-gray-900 border-slate-500 hover:bg-slate-800"
               onClick={() => setLocation('/foresight-radar')}
               data-testid="button-see-radar"
             >
@@ -676,7 +676,7 @@ function ProductTour() {
       <Button
         variant="ghost"
         size="icon"
-        className="absolute top-4 right-4 z-50 text-white/70 hover:text-white hover:bg-white/10"
+        className="absolute top-4 right-4 z-50 text-gray-900/70 hover:text-white hover:bg-white/10"
         onClick={() => setLocation('/')}
         data-testid="button-close-tour"
       >
@@ -708,7 +708,7 @@ function ProductTour() {
               >
                 Scene {currentSceneIndex + 1} of {TOUR_SCENES.length}
               </Badge>
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
+              <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-4">
                 {currentScene.title}
               </h1>
               {currentScene.subtitle && (
@@ -727,7 +727,7 @@ function ProductTour() {
             transition={{ delay: 0.4 }}
             className="mb-32 max-w-3xl text-center"
           >
-            <p className="text-xl md:text-2xl text-slate-300 leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed">
               {currentScene.narration}
             </p>
           </motion.div>
@@ -751,7 +751,7 @@ function ProductTour() {
                 size="icon"
                 onClick={goToPrevScene}
                 disabled={currentSceneIndex === 0}
-                className="text-white/70 hover:text-white hover:bg-white/10 disabled:opacity-30"
+                className="text-gray-900/70 hover:text-white hover:bg-white/10 disabled:opacity-30"
                 data-testid="button-prev-scene"
               >
                 <SkipBack className="w-5 h-5" />
@@ -761,7 +761,7 @@ function ProductTour() {
                 variant="ghost"
                 size="icon"
                 onClick={togglePlay}
-                className="w-12 h-12 text-white hover:bg-white/10 rounded-full"
+                className="w-12 h-12 text-gray-900 hover:bg-white/10 rounded-full"
                 data-testid="button-play-pause"
               >
                 {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
@@ -772,7 +772,7 @@ function ProductTour() {
                 size="icon"
                 onClick={goToNextScene}
                 disabled={currentSceneIndex === TOUR_SCENES.length - 1}
-                className="text-white/70 hover:text-white hover:bg-white/10 disabled:opacity-30"
+                className="text-gray-900/70 hover:text-white hover:bg-white/10 disabled:opacity-30"
                 data-testid="button-next-scene"
               >
                 <SkipForward className="w-5 h-5" />
@@ -782,14 +782,14 @@ function ProductTour() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsMuted(!isMuted)}
-                className="text-white/70 hover:text-white hover:bg-white/10"
+                className="text-gray-900/70 hover:text-white hover:bg-white/10"
                 data-testid="button-mute"
               >
                 {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
               </Button>
             </div>
 
-            <div className="flex items-center gap-2 text-white/70 text-sm">
+            <div className="flex items-center gap-2 text-gray-900/70 text-sm">
               <span>{getCurrentTime()}</span>
               <span>/</span>
               <span>{formatTime(totalDuration)}</span>

@@ -121,7 +121,7 @@ export default function FluxAdaptations() {
               <span>/</span>
               <span>AI Intelligence</span>
               <span>/</span>
-              <span className="text-white">Flux Adaptations</span>
+              <span className="text-gray-900">Flux Adaptations</span>
             </div>
           </div>
 
@@ -139,7 +139,7 @@ export default function FluxAdaptations() {
           </Card>
 
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-4 rounded-lg flex-shrink-0">
+          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-gray-900 p-4 rounded-lg flex-shrink-0">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <TrendingUp className="h-10 w-10" />
@@ -147,22 +147,22 @@ export default function FluxAdaptations() {
                   <h1 className="text-3xl font-bold" data-testid="flux-title">
                     Flux Adaptations
                   </h1>
-                  <p className="text-blue-100">Dynamic adaptation strategies and change management intelligence</p>
+                  <p className="text-blue-600">Dynamic adaptation strategies and change management intelligence</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <OnboardingTrigger pageId="flux-adaptations" autoStart={true} className="bg-white/10 border-white/30 text-white hover:bg-white/20" />
+                <OnboardingTrigger pageId="flux-adaptations" autoStart={true} className="bg-white/10 border-white/30 text-gray-900 hover:bg-white/20" />
                 <Link to="/">
-                  <Button variant="secondary" className="bg-blue-700 hover:bg-blue-800 text-blue-100 border-blue-600" data-testid="back-to-dashboard">
+                  <Button variant="secondary" className="bg-blue-700 hover:bg-blue-800 text-blue-600 border-blue-600" data-testid="back-to-dashboard">
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Dashboard
                   </Button>
                 </Link>
-                <Badge variant="secondary" className="bg-blue-700 text-blue-100 border-blue-600" data-testid="ai-powered-badge">
+                <Badge variant="secondary" className="bg-blue-700 text-blue-600 border-blue-600" data-testid="ai-powered-badge">
                   <Brain className="h-4 w-4 mr-2" />
                   AI POWERED
                 </Badge>
-                <Button variant="secondary" className="bg-cyan-600 hover:bg-cyan-700 text-white" data-testid="generate-strategy-button">
+                <Button variant="secondary" className="bg-cyan-600 hover:bg-cyan-700 text-gray-900" data-testid="generate-strategy-button">
                   <Lightbulb className="h-4 w-4 mr-2" />
                   Generate New Strategy
                 </Button>
@@ -194,7 +194,7 @@ export default function FluxAdaptations() {
                                 </div>
                               </div>
                               <div>
-                                <h3 className="font-semibold text-white">{strategy.name}</h3>
+                                <h3 className="font-semibold text-gray-900">{strategy.name}</h3>
                                 <p className="text-sm text-gray-600 capitalize">{strategy.category} • {strategy.timeline}</p>
                               </div>
                             </div>
@@ -209,7 +209,7 @@ export default function FluxAdaptations() {
                           </div>
                         </CardHeader>
                         <CardContent className="space-y-4">
-                          <p className="text-sm text-gray-300">{strategy.description}</p>
+                          <p className="text-sm text-gray-600">{strategy.description}</p>
                           
                           <div className="grid grid-cols-2 gap-4">
                             <div>
@@ -229,10 +229,10 @@ export default function FluxAdaptations() {
                           </div>
 
                           <div>
-                            <h4 className="text-sm font-medium text-white mb-2">Expected Outcomes:</h4>
+                            <h4 className="text-sm font-medium text-gray-900 mb-2">Expected Outcomes:</h4>
                             <ul className="space-y-1">
                               {strategy.outcomes.map((outcome, index) => (
-                                <li key={index} className="flex items-center gap-2 text-sm text-gray-300">
+                                <li key={index} className="flex items-center gap-2 text-sm text-gray-600">
                                   <ArrowRight className="h-3 w-3 text-blue-400" />
                                   {outcome}
                                 </li>
@@ -267,11 +267,11 @@ export default function FluxAdaptations() {
                       <div className="space-y-4">
                         <div className="p-4 bg-blue-950/30 rounded-lg border border-blue-500/30">
                           <p className="text-blue-300 font-medium mb-2">Prioritization Recommendation</p>
-                          <p className="text-blue-200 text-sm">Focus on Financial Flexibility Framework first - high impact with low effort, providing foundation for other adaptations.</p>
+                          <p className="text-blue-700 text-sm">Focus on Financial Flexibility Framework first - high impact with low effort, providing foundation for other adaptations.</p>
                         </div>
                         <div className="p-4 bg-green-950/30 rounded-lg border border-green-500/30">
                           <p className="text-green-300 font-medium mb-2">Synergy Opportunity</p>
-                          <p className="text-green-200 text-sm">Digital Transformation and Workforce Evolution strategies can be executed in parallel for 25% efficiency gain.</p>
+                          <p className="text-green-700 text-sm">Digital Transformation and Workforce Evolution strategies can be executed in parallel for 25% efficiency gain.</p>
                         </div>
                         <div className="p-4 bg-orange-950/30 rounded-lg border border-orange-500/30">
                           <p className="text-orange-300 font-medium mb-2">Risk Mitigation</p>
@@ -284,7 +284,7 @@ export default function FluxAdaptations() {
               ) : (
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
-                    <CardTitle className="text-white">Strategy Analytics & Performance</CardTitle>
+                    <CardTitle className="text-gray-900">Strategy Analytics & Performance</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-center py-12">

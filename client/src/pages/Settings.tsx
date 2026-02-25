@@ -138,7 +138,7 @@ export default function SettingsPage() {
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-gradient-to-r from-teal-500 to-blue-600 rounded-xl flex items-center justify-center">
-                <Settings className="w-7 h-7 text-white" />
+                <Settings className="w-7 h-7 text-gray-900" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white">System Management</h1>
@@ -156,7 +156,7 @@ export default function SettingsPage() {
                 <CheckCircle className="w-3 h-3 mr-1" />
                 All Systems Operational
               </Badge>
-              <Badge className="bg-teal-600 text-white">
+              <Badge className="bg-teal-600 text-gray-900">
                 Admin Access
               </Badge>
             </div>
@@ -529,7 +529,7 @@ export default function SettingsPage() {
                       <Button 
                         onClick={() => resetDemoMutation.mutate()}
                         disabled={resetDemoMutation.isPending || scenariosLoading}
-                        className="flex-1 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white h-12"
+                        className="flex-1 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-gray-900 h-12"
                         data-testid="button-reset-demo-scenario"
                       >
                         {resetDemoMutation.isPending ? (
@@ -573,19 +573,19 @@ export default function SettingsPage() {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <Button className="h-16 bg-blue-600 hover:bg-blue-700 text-white" data-testid="button-backup-system">
+                <Button className="h-16 bg-blue-600 hover:bg-blue-700 text-gray-900" data-testid="button-backup-system">
                   <Database className="w-5 h-5 mr-2" />
                   System Backup
                 </Button>
-                <Button className="h-16 bg-green-600 hover:bg-green-700 text-white" data-testid="button-performance-optimization">
+                <Button className="h-16 bg-green-600 hover:bg-green-700 text-gray-900" data-testid="button-performance-optimization">
                   <Zap className="w-5 h-5 mr-2" />
                   Optimize Performance
                 </Button>
-                <Button className="h-16 bg-purple-600 hover:bg-purple-700 text-white" data-testid="button-security-scan">
+                <Button className="h-16 bg-purple-600 hover:bg-purple-700 text-gray-900" data-testid="button-security-scan">
                   <Shield className="w-5 h-5 mr-2" />
                   Security Scan
                 </Button>
-                <Button className="h-16 bg-orange-600 hover:bg-orange-700 text-white" data-testid="button-generate-reports">
+                <Button className="h-16 bg-orange-600 hover:bg-orange-700 text-gray-900" data-testid="button-generate-reports">
                   <BarChart3 className="w-5 h-5 mr-2" />
                   Generate Reports
                 </Button>

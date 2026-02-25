@@ -154,7 +154,7 @@ export default function PrismInsights() {
               <span>/</span>
               <span>AI Intelligence</span>
               <span>/</span>
-              <span className="text-white">Prism Insights</span>
+              <span className="text-gray-900">Prism Insights</span>
             </div>
           </div>
 
@@ -172,7 +172,7 @@ export default function PrismInsights() {
           </Card>
 
           {/* Header */}
-          <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-6 rounded-lg">
+          <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-gray-900 p-6 rounded-lg">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <Layers className="h-10 w-10" />
@@ -180,22 +180,22 @@ export default function PrismInsights() {
                   <h1 className="text-3xl font-bold" data-testid="prism-title">
                     Prism Insights
                   </h1>
-                  <p className="text-purple-100">Multi-dimensional strategic analysis and decision support intelligence</p>
+                  <p className="text-purple-600">Multi-dimensional strategic analysis and decision support intelligence</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <OnboardingTrigger pageId="prism-insights" autoStart={true} className="bg-white/10 border-white/30 text-white hover:bg-white/20" />
+                <OnboardingTrigger pageId="prism-insights" autoStart={true} className="bg-white/10 border-white/30 text-gray-900 hover:bg-white/20" />
                 <Link to="/">
-                  <Button variant="secondary" className="bg-purple-700 hover:bg-purple-800 text-purple-100 border-purple-600" data-testid="back-to-dashboard">
+                  <Button variant="secondary" className="bg-purple-700 hover:bg-purple-800 text-purple-600 border-purple-600" data-testid="back-to-dashboard">
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Dashboard
                   </Button>
                 </Link>
-                <Badge variant="secondary" className="bg-purple-700 text-purple-100 border-purple-600" data-testid="ai-analysis-badge">
+                <Badge variant="secondary" className="bg-purple-700 text-purple-600 border-purple-600" data-testid="ai-analysis-badge">
                   <Brain className="h-4 w-4 mr-2" />
                   AI ANALYSIS
                 </Badge>
-                <Button variant="secondary" className="bg-pink-600 hover:bg-pink-700 text-white" data-testid="generate-report-button">
+                <Button variant="secondary" className="bg-pink-600 hover:bg-pink-700 text-gray-900" data-testid="generate-report-button">
                   <Download className="h-4 w-4 mr-2" />
                   Generate Report
                 </Button>
@@ -245,7 +245,7 @@ export default function PrismInsights() {
                             {insight.icon}
                           </div>
                           <div>
-                            <h3 className="text-xl font-semibold text-white">{insight.title}</h3>
+                            <h3 className="text-xl font-semibold text-gray-900">{insight.title}</h3>
                             <p className="text-gray-600 capitalize">{insight.dimension} Analysis • {insight.timeframe}</p>
                           </div>
                         </div>
@@ -255,23 +255,23 @@ export default function PrismInsights() {
                           </Badge>
                           <div className="text-right">
                             <div className="text-sm text-gray-600">Confidence</div>
-                            <div className="text-lg font-bold text-white">{insight.confidence}%</div>
+                            <div className="text-lg font-bold text-gray-900">{insight.confidence}%</div>
                           </div>
                         </div>
                       </div>
                     </CardHeader>
                     <CardContent className="space-y-6">
-                      <p className="text-gray-300">{insight.description}</p>
+                      <p className="text-gray-600">{insight.description}</p>
                       
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <div>
-                          <h4 className="font-semibold text-white mb-3 flex items-center gap-2">
+                          <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
                             <Lightbulb className="h-4 w-4 text-yellow-400" />
                             Key Insights
                           </h4>
                           <ul className="space-y-2">
                             {insight.insights.map((item, index) => (
-                              <li key={index} className="flex items-start gap-2 text-sm text-gray-300">
+                              <li key={index} className="flex items-start gap-2 text-sm text-gray-600">
                                 <div className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
                                 {item}
                               </li>
@@ -280,13 +280,13 @@ export default function PrismInsights() {
                         </div>
                         
                         <div>
-                          <h4 className="font-semibold text-white mb-3 flex items-center gap-2">
+                          <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
                             <Target className="h-4 w-4 text-green-400" />
                             Strategic Recommendations
                           </h4>
                           <ul className="space-y-2">
                             {insight.recommendations.map((item, index) => (
-                              <li key={index} className="flex items-start gap-2 text-sm text-gray-300">
+                              <li key={index} className="flex items-start gap-2 text-sm text-gray-600">
                                 <div className="w-1.5 h-1.5 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
                                 {item}
                               </li>
@@ -326,11 +326,11 @@ export default function PrismInsights() {
                   <div className="space-y-4">
                     <div className="p-4 bg-purple-950/30 rounded-lg border border-purple-500/30">
                       <p className="text-purple-300 font-medium mb-2">Strategic Convergence</p>
-                      <p className="text-purple-200 text-sm">Market positioning and financial modeling show 87% alignment, suggesting coordinated execution will maximize impact.</p>
+                      <p className="text-purple-700 text-sm">Market positioning and financial modeling show 87% alignment, suggesting coordinated execution will maximize impact.</p>
                     </div>
                     <div className="p-4 bg-green-950/30 rounded-lg border border-green-500/30">
                       <p className="text-green-300 font-medium mb-2">Optimization Opportunity</p>
-                      <p className="text-green-200 text-sm">Operational efficiency improvements can fund 73% of strategic market expansion with neutral cash flow impact.</p>
+                      <p className="text-green-700 text-sm">Operational efficiency improvements can fund 73% of strategic market expansion with neutral cash flow impact.</p>
                     </div>
                     <div className="p-4 bg-orange-950/30 rounded-lg border border-orange-500/30">
                       <p className="text-orange-300 font-medium mb-2">Risk-Adjusted Prioritization</p>

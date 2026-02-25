@@ -239,10 +239,10 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
   ];
 
   const severityColors = {
-    critical: 'bg-red-500 text-white',
-    high: 'bg-orange-500 text-white',
-    medium: 'bg-amber-500 text-white',
-    low: 'bg-blue-500 text-white'
+    critical: 'bg-red-500 text-gray-900',
+    high: 'bg-orange-500 text-gray-900',
+    medium: 'bg-amber-500 text-gray-900',
+    low: 'bg-blue-500 text-gray-900'
   };
 
   // Fetch ROI metrics
@@ -292,10 +292,10 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                   {currentTime.toLocaleTimeString()}
                 </Badge>
               </div>
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
                 Command Center
               </h1>
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
                 Your organization's nerve center for strategic execution. When a critical event is detected, 
                 Execution OS coordinates your entire response — tasks, teams, documents, budgets, and integrations — 
                 in under 12 minutes.
@@ -342,10 +342,10 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 <div className="relative shrink-0">
                   <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-white/10 flex items-center justify-center border-2 sm:border-4 border-white/30">
                     <div className="text-center">
-                      <div className="text-xl sm:text-3xl font-bold text-white" data-testid="text-countdown-time">
+                      <div className="text-xl sm:text-3xl font-bold text-gray-900" data-testid="text-countdown-time">
                         {formatTime(demoExecution.elapsedSeconds, true)}
                       </div>
-                      <div className="text-xs text-white/70">remaining</div>
+                      <div className="text-xs text-gray-900/70">remaining</div>
                     </div>
                   </div>
                   {demoExecution.active && (
@@ -354,17 +354,17 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-2 mb-1">
-                    <Rocket className="w-4 h-4 sm:w-5 sm:h-5 text-white shrink-0" />
-                    <h2 className="text-base sm:text-xl font-bold text-white truncate">
+                    <Rocket className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900 shrink-0" />
+                    <h2 className="text-base sm:text-xl font-bold text-gray-900 truncate">
                       {demoExecution.scenario}
                     </h2>
                     {demoExecution.active ? (
-                      <Badge className="bg-green-500 text-white animate-pulse text-xs">LIVE</Badge>
+                      <Badge className="bg-green-500 text-gray-900 animate-pulse text-xs">LIVE</Badge>
                     ) : (
-                      <Badge className="bg-emerald-500 text-white text-xs">COMPLETED</Badge>
+                      <Badge className="bg-emerald-500 text-gray-900 text-xs">COMPLETED</Badge>
                     )}
                   </div>
-                  <p className="text-white/80 text-xs sm:text-sm truncate">
+                  <p className="text-gray-900/80 text-xs sm:text-sm truncate">
                     {demoExecution.active 
                       ? `Phase: ${EXECUTION_PHASES[demoExecution.phase]?.name}`
                       : 'All phases finished successfully'}
@@ -374,18 +374,18 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
               <div className="flex flex-wrap items-center gap-2 sm:gap-4 lg:gap-6">
                 <div className="grid grid-cols-3 gap-2 sm:flex sm:items-center sm:gap-4 flex-1 sm:flex-initial">
                   <div className="text-center px-2 sm:px-3 py-1.5 sm:py-2 bg-white/10 rounded-lg">
-                    <div className="text-base sm:text-xl font-bold text-white">{demoExecution.completedTasks.length}</div>
-                    <div className="text-xs text-white/70">Tasks Done</div>
+                    <div className="text-base sm:text-xl font-bold text-gray-900">{demoExecution.completedTasks.length}</div>
+                    <div className="text-xs text-gray-900/70">Tasks Done</div>
                   </div>
                   <div className="text-center px-2 sm:px-3 py-1.5 sm:py-2 bg-white/10 rounded-lg">
                     <div className="text-base sm:text-xl font-bold text-emerald-300" data-testid="text-roi-value">
                       ${(demoExecution.accumulatedValue / 1000).toFixed(0)}K
                     </div>
-                    <div className="text-xs text-white/70">Value</div>
+                    <div className="text-xs text-gray-900/70">Value</div>
                   </div>
                   <div className="text-center px-2 sm:px-3 py-1.5 sm:py-2 bg-white/10 rounded-lg">
-                    <div className="text-base sm:text-xl font-bold text-white">8</div>
-                    <div className="text-xs text-white/70">Teams</div>
+                    <div className="text-base sm:text-xl font-bold text-gray-900">8</div>
+                    <div className="text-xs text-gray-900/70">Teams</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-1">
@@ -394,7 +394,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                       key={speed.value}
                       size="sm"
                       variant={demoSpeed === speed.value ? "secondary" : "ghost"}
-                      className={`h-7 sm:h-8 px-2 sm:px-3 text-xs ${demoSpeed === speed.value ? "bg-white text-violet-600" : "text-white hover:bg-white/20"}`}
+                      className={`h-7 sm:h-8 px-2 sm:px-3 text-xs ${demoSpeed === speed.value ? "bg-white text-violet-600" : "text-gray-900 hover:bg-white/20"}`}
                       onClick={() => setDemoSpeed(speed.value)}
                       data-testid={`button-speed-${speed.value}x`}
                     >
@@ -419,7 +419,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 return (
                   <div key={phase.id} className="flex-1" data-testid={`phase-progress-${phase.id}`}>
                     <div className="flex items-center justify-between mb-1">
-                      <span className={`text-xs font-medium ${isActive ? 'text-white' : 'text-white/60'}`}>
+                      <span className={`text-xs font-medium ${isActive ? 'text-gray-900' : 'text-gray-900/60'}`}>
                         {phase.icon} <span className="hidden sm:inline">{phase.name}</span>
                         <span className="sm:hidden">{phase.name.split(' ')[0]}</span>
                       </span>
@@ -442,10 +442,10 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
               <div className="mt-4 pt-4 border-t border-white/20">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <Activity className="w-4 h-4 text-white/70" />
-                    <span className="text-xs font-medium text-white/70 uppercase tracking-wide">Live Activity Feed</span>
+                    <Activity className="w-4 h-4 text-gray-900/70" />
+                    <span className="text-xs font-medium text-gray-900/70 uppercase tracking-wide">Live Activity Feed</span>
                   </div>
-                  <span className="text-xs text-white/60">{demoExecution.completedTasks.length} of 20 tasks</span>
+                  <span className="text-xs text-gray-900/60">{demoExecution.completedTasks.length} of 20 tasks</span>
                 </div>
                 <div className="max-h-24 overflow-y-auto scrollbar-thin scrollbar-thumb-white/20">
                   <div className="flex flex-wrap gap-2">
@@ -455,7 +455,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                       .map((task, idx) => (
                       <div 
                         key={task.id}
-                        className={`flex items-center gap-2 px-3 py-1.5 bg-white/10 rounded-full text-xs text-white whitespace-nowrap ${
+                        className={`flex items-center gap-2 px-3 py-1.5 bg-white/10 rounded-full text-xs text-gray-900 whitespace-nowrap ${
                           idx === 0 ? 'animate-pulse ring-2 ring-white/30' : ''
                         }`}
                         data-testid={`live-task-${task.id}`}
@@ -481,29 +481,29 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-4 sm:gap-6">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/20 flex items-center justify-center shrink-0">
-                  <Trophy className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+                  <Trophy className="w-8 h-8 sm:w-10 sm:h-10 text-gray-900" />
                 </div>
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-1">
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">
                     Execution Complete
                   </h2>
-                  <p className="text-white/80 text-sm sm:text-base">
+                  <p className="text-gray-900/80 text-sm sm:text-base">
                     {demoExecution.scenario} — coordinated response delivered in under 12 minutes
                   </p>
                 </div>
               </div>
               <div className="flex flex-wrap items-center gap-3 sm:gap-6">
                 <div className="text-center px-3 sm:px-4 py-2 bg-white/10 rounded-lg">
-                  <div className="text-2xl sm:text-3xl font-bold text-white">{demoExecution.completedTasks.length}</div>
-                  <div className="text-xs text-white/70">Tasks</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-gray-900">{demoExecution.completedTasks.length}</div>
+                  <div className="text-xs text-gray-900/70">Tasks</div>
                 </div>
                 <div className="text-center px-3 sm:px-4 py-2 bg-white/10 rounded-lg">
                   <div className="text-2xl sm:text-3xl font-bold text-emerald-200">${(demoExecution.accumulatedValue / 1000).toFixed(0)}K</div>
-                  <div className="text-xs text-white/70">Value</div>
+                  <div className="text-xs text-gray-900/70">Value</div>
                 </div>
                 <div className="text-center px-3 sm:px-4 py-2 bg-white/10 rounded-lg">
-                  <div className="text-2xl sm:text-3xl font-bold text-white">8</div>
-                  <div className="text-xs text-white/70">Teams</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-gray-900">8</div>
+                  <div className="text-xs text-gray-900/70">Teams</div>
                 </div>
                 <Button
                   size="lg"
@@ -534,7 +534,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
             </div>
             <Button 
               onClick={() => setShowScenarioLauncher(!showScenarioLauncher)}
-              className="bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white shrink-0"
+              className="bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-gray-900 shrink-0"
               data-testid="button-launch-scenario"
             >
               <PlayCircle className="w-4 h-4 mr-2" />
@@ -576,7 +576,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                           <span className="flex items-center gap-1"><Users className="w-3 h-3" /> {scenario.teams} teams</span>
                           <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3" /> {scenario.tasks} tasks</span>
                         </div>
-                        <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-blue-500 transition-colors" />
+                        <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-blue-500 transition-colors" />
                       </div>
                     </button>
                   ))}
@@ -619,7 +619,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                     <Button 
                       size="lg" 
                       onClick={launchDemoExecution}
-                      className="bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white px-8"
+                      className="bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-gray-900 px-8"
                       data-testid="button-launch-demo"
                     >
                       <Rocket className="w-4 h-4 mr-2" />
@@ -687,7 +687,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                           </div>
                           <Button 
                             size="sm" 
-                            className="w-full mt-2 bg-gradient-to-r from-blue-600 to-violet-600 text-white"
+                            className="w-full mt-2 bg-gradient-to-r from-blue-600 to-violet-600 text-gray-900"
                             onClick={() => launchDemoExecution()}
                           >
                             <Rocket className="w-3 h-3 mr-1.5" />
@@ -788,7 +788,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                           </p>
                           <div className="flex items-center gap-2 mt-1">
                             <span className="text-xs text-gray-600">{alert.source}</span>
-                            <span className="text-xs text-slate-300">·</span>
+                            <span className="text-xs text-gray-600">·</span>
                             <span className="text-xs text-gray-600">{alert.time}</span>
                           </div>
                         </div>
@@ -820,7 +820,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                             <span className="text-xs font-semibold text-blue-600">3 available</span>
                           </div>
                           <div className="flex gap-2 mt-2">
-                            <Button size="sm" className="flex-1 bg-gradient-to-r from-blue-600 to-violet-600 text-white text-xs"
+                            <Button size="sm" className="flex-1 bg-gradient-to-r from-blue-600 to-violet-600 text-gray-900 text-xs"
                               onClick={() => launchDemoExecution()}>
                               <Rocket className="w-3 h-3 mr-1" />
                               Activate Response

@@ -97,7 +97,7 @@ export default function WorkspaceExecute() {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-slate-300 hover:text-poise-teal cursor-pointer">Execution OS One™</span>
+              <span className="text-gray-600 hover:text-poise-teal cursor-pointer">Execution OS One™</span>
             </Link>
             <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-200" />
             <span className="text-poise-teal font-medium">EXECUTE</span>
@@ -107,7 +107,7 @@ export default function WorkspaceExecute() {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
             <div className="flex items-center gap-4">
               <div className="p-4 rounded-2xl bg-gradient-to-br from-poise-teal to-cyan-500 shadow-lg shadow-poise-teal/30">
-                <Compass className="h-8 w-8 text-white" />
+                <Compass className="h-8 w-8 text-gray-900" />
               </div>
               <div>
                 <div className="flex items-center gap-3">
@@ -123,7 +123,7 @@ export default function WorkspaceExecute() {
             </div>
             <div className="flex gap-3">
               <Link href="/mission-control">
-                <Button className="bg-poise-teal hover:bg-cyan-600 text-white">
+                <Button className="bg-poise-teal hover:bg-cyan-600 text-gray-900">
                   <Compass className="h-4 w-4 mr-2" />
                   Open Command Center
                 </Button>
@@ -142,7 +142,7 @@ export default function WorkspaceExecute() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-slate-900 dark:text-white">IDEA Framework Progress</h3>
-                <span className="text-sm text-slate-300">Phase 3 of 4</span>
+                <span className="text-sm text-gray-600">Phase 3 of 4</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex-1 flex items-center gap-2">
@@ -152,22 +152,22 @@ export default function WorkspaceExecute() {
                       <span className="text-sm text-poise-gold">IDENTIFY</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-slate-300" />
+                  <ArrowRight className="h-4 w-4 text-gray-600" />
                   <Link href="/workspaces/detect">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-poise-teal/10 hover:bg-poise-teal/20 cursor-pointer transition-colors">
                       <Radar className="h-4 w-4 text-poise-teal" />
                       <span className="text-sm text-poise-teal">DETECT</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-slate-300" />
+                  <ArrowRight className="h-4 w-4 text-gray-600" />
                   <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-poise-teal/20 border-2 border-poise-teal">
                     <Compass className="h-4 w-4 text-poise-teal" />
                     <span className="text-sm font-medium text-poise-teal">EXECUTE</span>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-slate-300" />
+                  <ArrowRight className="h-4 w-4 text-gray-600" />
                   <Link href="/workspaces/advance">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-poise-gold/10 cursor-pointer transition-colors">
-                      <span className="text-sm text-slate-300">ADVANCE</span>
+                      <span className="text-sm text-gray-600">ADVANCE</span>
                     </div>
                   </Link>
                 </div>
@@ -184,7 +184,7 @@ export default function WorkspaceExecute() {
                     <metric.icon className={`h-5 w-5 ${metric.color}`} />
                   </div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white">{metric.value}</p>
-                  <p className="text-xs text-slate-300">{metric.label}</p>
+                  <p className="text-xs text-gray-600">{metric.label}</p>
                 </CardContent>
               </Card>
             ))}

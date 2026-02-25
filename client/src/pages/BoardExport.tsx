@@ -154,10 +154,10 @@ export default function BoardExport() {
               <FileText className="h-4 w-4 mr-2" />
               Board-Ready Export
             </Badge>
-            <h1 className="text-4xl font-bold text-white mb-4">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
               Executive Briefing Generator
             </h1>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Generate comprehensive board-ready reports showing strategic readiness, 
               active scenarios, and response metrics—in one click.
             </p>
@@ -168,16 +168,16 @@ export default function BoardExport() {
             <div className="space-y-6">
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
                     <Building2 className="h-5 w-5 text-blue-400" />
                     Report Configuration
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-2">
-                    <Label className="text-slate-300">Export Format</Label>
+                    <Label className="text-gray-600">Export Format</Label>
                     <Select value={exportFormat} onValueChange={(v: 'pdf' | 'pptx' | 'docx') => setExportFormat(v)}>
-                      <SelectTrigger className="bg-gray-50 border-gray-200 text-white" data-testid="select-format">
+                      <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900" data-testid="select-format">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -189,14 +189,14 @@ export default function BoardExport() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-slate-300">Report Period</Label>
-                    <div className="text-white bg-gray-50 rounded-md px-3 py-2 border border-gray-200">
+                    <Label className="text-gray-600">Report Period</Label>
+                    <div className="text-gray-900 bg-gray-50 rounded-md px-3 py-2 border border-gray-200">
                       {SAMPLE_DATA.quarter}
                     </div>
                   </div>
 
                   <div className="pt-4 border-t border-gray-200">
-                    <Label className="text-slate-300 mb-3 block">Include Sections</Label>
+                    <Label className="text-gray-600 mb-3 block">Include Sections</Label>
                     <div className="space-y-3">
                       {sections.map((section) => (
                         <div 
@@ -213,12 +213,12 @@ export default function BoardExport() {
                           <div className="flex-1">
                             <Label 
                               htmlFor={section.id}
-                              className="text-white cursor-pointer flex items-center gap-2"
+                              className="text-gray-900 cursor-pointer flex items-center gap-2"
                             >
-                              <span className="text-slate-200">{section.icon}</span>
+                              <span className="text-gray-600">{section.icon}</span>
                               {section.label}
                             </Label>
-                            <div className="text-xs text-slate-300">{section.description}</div>
+                            <div className="text-xs text-gray-600">{section.description}</div>
                           </div>
                         </div>
                       ))}
@@ -254,15 +254,15 @@ export default function BoardExport() {
                 <CardHeader className="border-b border-gray-200">
                   <div className="flex items-center justify-between">
                     <div>
-                      <CardTitle className="text-white flex items-center gap-2">
-                        <Eye className="h-5 w-5 text-slate-200" />
+                      <CardTitle className="text-gray-900 flex items-center gap-2">
+                        <Eye className="h-5 w-5 text-gray-600" />
                         Report Preview
                       </CardTitle>
                       <CardDescription>
                         {SAMPLE_DATA.organization} • {SAMPLE_DATA.quarter}
                       </CardDescription>
                     </div>
-                    <Badge variant="outline" className="bg-transparent text-slate-200">
+                    <Badge variant="outline" className="bg-transparent text-gray-600">
                       {sections.filter(s => s.included).length} sections selected
                     </Badge>
                   </div>
@@ -271,22 +271,22 @@ export default function BoardExport() {
                   {/* Executive Summary */}
                   {sections.find(s => s.id === 'executive_summary')?.included && (
                     <div className="space-y-4">
-                      <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                      <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
                         <Target className="h-5 w-5 text-violet-400" />
                         Executive Summary
                       </h3>
                       <div className="grid grid-cols-3 gap-4">
                         <div className="bg-gradient-to-br   rounded-lg p-4 text-center border border-green-500/20">
                           <div className="text-3xl font-bold text-green-400">{SAMPLE_DATA.executiveSummary.overallReadiness}%</div>
-                          <div className="text-sm text-slate-200">Overall Readiness</div>
+                          <div className="text-sm text-gray-600">Overall Readiness</div>
                         </div>
                         <div className="bg-gray-50 rounded-lg p-4 text-center">
                           <div className="text-3xl font-bold text-blue-400">{SAMPLE_DATA.executiveSummary.activeScenarios}</div>
-                          <div className="text-sm text-slate-200">Active Scenarios</div>
+                          <div className="text-sm text-gray-600">Active Scenarios</div>
                         </div>
                         <div className="bg-gray-50 rounded-lg p-4 text-center">
                           <div className="text-3xl font-bold text-amber-400">{SAMPLE_DATA.executiveSummary.avgResponseTime}</div>
-                          <div className="text-sm text-slate-200">Avg Response Time</div>
+                          <div className="text-sm text-gray-600">Avg Response Time</div>
                         </div>
                       </div>
                     </div>
@@ -295,7 +295,7 @@ export default function BoardExport() {
                   {/* Active Scenarios */}
                   {sections.find(s => s.id === 'active_scenarios')?.included && (
                     <div className="space-y-4 pt-4 border-t border-gray-200">
-                      <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                      <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
                         <AlertTriangle className="h-5 w-5 text-amber-400" />
                         Active Scenarios
                       </h3>
@@ -313,9 +313,9 @@ export default function BoardExport() {
                               }>
                                 {scenario.severity}
                               </Badge>
-                              <span className="text-white">{scenario.name}</span>
+                              <span className="text-gray-900">{scenario.name}</span>
                             </div>
-                            <div className="flex items-center gap-4 text-sm text-slate-200">
+                            <div className="flex items-center gap-4 text-sm text-gray-600">
                               <span>{scenario.stakeholders} stakeholders</span>
                               <Badge variant="outline">{scenario.status}</Badge>
                             </div>
@@ -328,22 +328,22 @@ export default function BoardExport() {
                   {/* Response Metrics */}
                   {sections.find(s => s.id === 'response_metrics')?.included && (
                     <div className="space-y-4 pt-4 border-t border-gray-200">
-                      <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                      <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
                         <Clock className="h-5 w-5 text-blue-400" />
                         Response Metrics
                       </h3>
                       <div className="grid grid-cols-3 gap-3">
                         <div className="bg-gray-50 rounded-lg p-3 text-center">
-                          <div className="text-xl font-bold text-white">{SAMPLE_DATA.responseMetrics.avgDecisionTime}</div>
-                          <div className="text-xs text-slate-300">Avg Decision Time</div>
+                          <div className="text-xl font-bold text-gray-900">{SAMPLE_DATA.responseMetrics.avgDecisionTime}</div>
+                          <div className="text-xs text-gray-600">Avg Decision Time</div>
                         </div>
                         <div className="bg-gray-50 rounded-lg p-3 text-center">
-                          <div className="text-xl font-bold text-white">{SAMPLE_DATA.responseMetrics.avgExecutionTime}</div>
-                          <div className="text-xs text-slate-300">Avg Execution Time</div>
+                          <div className="text-xl font-bold text-gray-900">{SAMPLE_DATA.responseMetrics.avgExecutionTime}</div>
+                          <div className="text-xs text-gray-600">Avg Execution Time</div>
                         </div>
                         <div className="bg-gray-50 rounded-lg p-3 text-center">
                           <div className="text-xl font-bold text-green-400">{SAMPLE_DATA.responseMetrics.stakeholderResponseRate}%</div>
-                          <div className="text-xs text-slate-300">Response Rate</div>
+                          <div className="text-xs text-gray-600">Response Rate</div>
                         </div>
                       </div>
                     </div>
@@ -352,27 +352,27 @@ export default function BoardExport() {
                   {/* Financial Summary */}
                   {sections.find(s => s.id === 'financial_summary')?.included && (
                     <div className="space-y-4 pt-4 border-t border-gray-200">
-                      <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                      <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
                         <DollarSign className="h-5 w-5 text-green-400" />
                         Financial Summary
                       </h3>
                       <div className="grid grid-cols-2 gap-3">
                         <div className="bg-gray-50 rounded-lg p-3">
-                          <div className="text-sm text-slate-200 mb-1">Revenue Protected</div>
+                          <div className="text-sm text-gray-600 mb-1">Revenue Protected</div>
                           <div className="text-2xl font-bold text-green-400">{formatCurrency(SAMPLE_DATA.financialSummary.revenueProtected)}</div>
                         </div>
                         <div className="bg-gray-50 rounded-lg p-3">
-                          <div className="text-sm text-slate-200 mb-1">Cost Avoided</div>
+                          <div className="text-sm text-gray-600 mb-1">Cost Avoided</div>
                           <div className="text-2xl font-bold text-green-400">{formatCurrency(SAMPLE_DATA.financialSummary.costAvoided)}</div>
                         </div>
                         <div className="bg-gray-50 rounded-lg p-3">
-                          <div className="text-sm text-slate-200 mb-1">Budget Utilization</div>
+                          <div className="text-sm text-gray-600 mb-1">Budget Utilization</div>
                           <div className="text-2xl font-bold text-blue-400">
                             {formatCurrency(SAMPLE_DATA.financialSummary.budgetUsed)} / {formatCurrency(SAMPLE_DATA.financialSummary.budgetAllocated)}
                           </div>
                         </div>
                         <div className="bg-gradient-to-br   rounded-lg p-3 border border-green-500/20">
-                          <div className="text-sm text-slate-200 mb-1">Quarterly ROI</div>
+                          <div className="text-sm text-gray-600 mb-1">Quarterly ROI</div>
                           <div className="text-2xl font-bold text-green-400">{SAMPLE_DATA.financialSummary.roiThisQuarter}%</div>
                         </div>
                       </div>
@@ -382,7 +382,7 @@ export default function BoardExport() {
                   {/* Playbook Readiness */}
                   {sections.find(s => s.id === 'playbook_readiness')?.included && (
                     <div className="space-y-4 pt-4 border-t border-gray-200">
-                      <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                      <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
                         <Shield className="h-5 w-5 text-purple-400" />
                         Playbook Readiness by Domain
                       </h3>
@@ -393,13 +393,13 @@ export default function BoardExport() {
                             className="flex items-center justify-between p-2 bg-gray-50 rounded"
                           >
                             <div className="flex items-center gap-3">
-                              <span className="text-white text-sm">{domain.domain}</span>
-                              <Badge variant="outline" className="bg-transparent text-xs text-slate-200">
+                              <span className="text-gray-900 text-sm">{domain.domain}</span>
+                              <Badge variant="outline" className="bg-transparent text-xs text-gray-600">
                                 {domain.playbooks} playbooks
                               </Badge>
                             </div>
                             <div className="flex items-center gap-3">
-                              <span className="text-xs text-slate-300">Drill: {domain.lastDrill}</span>
+                              <span className="text-xs text-gray-600">Drill: {domain.lastDrill}</span>
                               <Badge className={
                                 domain.readiness >= 90 ? 'bg-green-500/20 text-green-400' :
                                 domain.readiness >= 80 ? 'bg-blue-500/20 text-blue-400' :
@@ -417,7 +417,7 @@ export default function BoardExport() {
                   {/* Recommendations */}
                   {sections.find(s => s.id === 'recommendations')?.included && (
                     <div className="space-y-4 pt-4 border-t border-gray-200">
-                      <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                      <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
                         <Zap className="h-5 w-5 text-amber-400" />
                         Recommendations
                       </h3>
@@ -436,9 +436,9 @@ export default function BoardExport() {
                                 }>
                                   {rec.priority} Priority
                                 </Badge>
-                                <div className="text-white text-sm">{rec.recommendation}</div>
+                                <div className="text-gray-900 text-sm">{rec.recommendation}</div>
                               </div>
-                              <div className="text-right text-xs text-slate-300">
+                              <div className="text-right text-xs text-gray-600">
                                 <div>{rec.owner}</div>
                                 <div>{rec.dueDate}</div>
                               </div>

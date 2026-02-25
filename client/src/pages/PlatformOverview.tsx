@@ -24,7 +24,7 @@ export default function PlatformOverview() {
               <Button
                 size="lg"
                 onClick={() => setLocation('/try-demo')}
-                className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8 py-6 text-lg"
+                className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-gray-900 px-8 py-6 text-lg"
               >
                 <Play className="mr-2 h-5 w-5" />
                 Try Interactive Demo

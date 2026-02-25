@@ -170,7 +170,7 @@ export default function AgilityAssessment() {
                 <CheckCircle className="h-4 w-4 mr-2" />
                 Assessment Complete
               </Badge>
-              <h1 className="text-4xl font-bold text-white mb-4">
+              <h1 className="text-4xl font-bold text-gray-900 mb-4">
                 Your Agility Score
               </h1>
             </div>
@@ -194,43 +194,43 @@ export default function AgilityAssessment() {
 
                 <div className="grid md:grid-cols-3 gap-6 mb-8">
                   <div className="bg-gray-50 rounded-lg p-6" data-testid="result-current-growth">
-                    <div className="text-3xl font-bold text-white mb-2">{revenueImpact.currentGrowth}%</div>
-                    <p className="text-slate-200 text-sm">Estimated Current Revenue/Employee Growth</p>
+                    <div className="text-3xl font-bold text-gray-900 mb-2">{revenueImpact.currentGrowth}%</div>
+                    <p className="text-gray-600 text-sm">Estimated Current Revenue/Employee Growth</p>
                   </div>
                   <div className="bg-emerald-900/30 rounded-lg p-6 border border-emerald-500/30" data-testid="result-potential-growth">
                     <div className="text-3xl font-bold text-emerald-400 mb-2">+{revenueImpact.potentialGrowth}%</div>
-                    <p className="text-slate-200 text-sm">Potential Additional Growth with Execution OS</p>
+                    <p className="text-gray-600 text-sm">Potential Additional Growth with Execution OS</p>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-6" data-testid="result-benchmark">
                     <div className="text-3xl font-bold text-amber-400 mb-2">10.3%</div>
-                    <p className="text-slate-200 text-sm">Top Performer Benchmark (BAI 2025)</p>
+                    <p className="text-gray-600 text-sm">Top Performer Benchmark (BAI 2025)</p>
                   </div>
                 </div>
 
                 <Card className="bg-gray-50 border-gray-200 mb-8">
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-4">What This Means</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">What This Means</h3>
                     {score < 60 ? (
                       <div className="text-left space-y-3">
-                        <p className="text-slate-300">
+                        <p className="text-gray-600">
                           Your organization is likely taking <span className="text-red-400 font-semibold">longer than 3.8 years</span> to see meaningful agility improvements.
                         </p>
-                        <p className="text-slate-300">
+                        <p className="text-gray-600">
                           Based on the 2025 BAI Report, organizations at your level see approximately <span className="text-amber-400 font-semibold">{revenueImpact.currentGrowth}% revenue per employee growth</span>.
                         </p>
-                        <p className="text-slate-300">
+                        <p className="text-gray-600">
                           With Execution OS, you could close the gap to top performers and capture an additional <span className="text-emerald-400 font-semibold">{revenueImpact.potentialGrowth}% growth potential</span>.
                         </p>
                       </div>
                     ) : (
                       <div className="text-left space-y-3">
-                        <p className="text-slate-300">
+                        <p className="text-gray-600">
                           You're performing <span className="text-emerald-400 font-semibold">above industry average</span>. Your organization is making progress on agility.
                         </p>
-                        <p className="text-slate-300">
+                        <p className="text-gray-600">
                           However, there's still room to reach the <span className="text-emerald-400 font-semibold">10.3% benchmark</span> that top performers achieve.
                         </p>
-                        <p className="text-slate-300">
+                        <p className="text-gray-600">
                           Execution OS can help you close the remaining gap with <span className="text-emerald-400 font-semibold">pre-staged playbooks and 12-minute execution</span>.
                         </p>
                       </div>
@@ -252,7 +252,7 @@ export default function AgilityAssessment() {
                     size="lg"
                     onClick={() => setLocation('/contact')}
                     variant="outline"
-                    className="border-slate-600 text-white hover:bg-slate-800"
+                    className="border-slate-600 text-gray-900 hover:bg-slate-800"
                     data-testid="button-get-consultation"
                   >
                     Get Expert Consultation
@@ -262,7 +262,7 @@ export default function AgilityAssessment() {
               </CardContent>
             </Card>
 
-            <div className="text-center text-slate-300 text-sm">
+            <div className="text-center text-gray-600 text-sm">
               Based on data from the 2025 Business Agility Report across 244 organizations
             </div>
           </div>
@@ -284,16 +284,16 @@ export default function AgilityAssessment() {
               <BarChart3 className="h-4 w-4 mr-2" />
               Agility Assessment
             </Badge>
-            <h1 className="text-3xl font-bold text-white mb-2">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
               Where Does Your Organization Stand?
             </h1>
-            <p className="text-slate-200">
+            <p className="text-gray-600">
               Answer 5 questions to benchmark against 244 organizations from the 2025 Business Agility Report
             </p>
           </div>
 
           <div className="mb-8">
-            <div className="flex justify-between text-sm text-slate-200 mb-2">
+            <div className="flex justify-between text-sm text-gray-600 mb-2">
               <span>Question {currentQuestion + 1} of {QUESTIONS.length}</span>
               <span>{Math.round(progress)}% Complete</span>
             </div>
@@ -302,10 +302,10 @@ export default function AgilityAssessment() {
 
           <Card className="bg-white border-gray-200" data-testid="card-question">
             <CardHeader>
-              <CardTitle className="text-xl text-white">
+              <CardTitle className="text-xl text-gray-900">
                 {currentQ.question}
               </CardTitle>
-              <p className="text-sm text-slate-200 mt-2">
+              <p className="text-sm text-gray-600 mt-2">
                 {currentQ.context}
               </p>
             </CardHeader>
@@ -334,7 +334,7 @@ export default function AgilityAssessment() {
                     />
                     <Label 
                       htmlFor={option.value} 
-                      className="flex-1 cursor-pointer text-slate-200"
+                      className="flex-1 cursor-pointer text-gray-600"
                       data-testid={`label-${option.value}`}
                     >
                       {option.label}
@@ -348,7 +348,7 @@ export default function AgilityAssessment() {
                   variant="outline"
                   onClick={handleBack}
                   disabled={currentQuestion === 0}
-                  className="border-gray-200 text-slate-300 hover:bg-slate-800"
+                  className="border-gray-200 text-gray-600 hover:bg-slate-800"
                   data-testid="button-back"
                 >
                   <ArrowLeft className="mr-2 h-4 w-4" />

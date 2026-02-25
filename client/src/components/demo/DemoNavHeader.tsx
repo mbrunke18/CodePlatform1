@@ -49,7 +49,7 @@ export default function DemoNavHeader({
               />
               <div className="hidden md:block">
                 <span className="text-xl font-bold tracking-tight" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                  <span className="text-white">Execute</span>
+                  <span className="text-gray-900">Execute</span>
                   <span className="text-poise-gold">IQ</span>
                 </span>
                 <div className="text-poise-teal text-xs">Strategic Execution OS</div>
@@ -57,7 +57,7 @@ export default function DemoNavHeader({
             </button>
             
             <div className="hidden md:flex items-center gap-2 text-sm text-poise-teal">
-              <span className="text-white/50">/</span>
+              <span className="text-gray-900/50">/</span>
               <span>{title}</span>
             </div>
           </div>
@@ -69,7 +69,7 @@ export default function DemoNavHeader({
                 variant="ghost"
                 size="sm"
                 onClick={handleBack}
-                className="text-white hover:bg-white/10"
+                className="text-gray-900 hover:bg-white/10"
                 data-testid="button-back"
               >
                 <ArrowLeft className="h-4 w-4 mr-2" />

@@ -34,7 +34,7 @@ export function MetricsDemo({ progress }: SceneProps) {
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-8 w-full">
-        <TextPunch text="Measurable Results" size="xl" className="text-white text-center mb-6" />
+        <TextPunch text="Measurable Results" size="xl" className="text-gray-900 text-center mb-6" />
 
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -82,7 +82,7 @@ export function MetricsDemo({ progress }: SceneProps) {
                 {metric.value}
               </motion.p>
               
-              <p className="text-white font-medium text-xs mb-1">{metric.label}</p>
+              <p className="text-gray-900 font-medium text-xs mb-1">{metric.label}</p>
               <p className="text-gray-400 text-xs">{metric.subtext}</p>
             </motion.div>
           ))}
@@ -100,7 +100,7 @@ export function MetricsDemo({ progress }: SceneProps) {
             <span className="text-gray-400">•</span>
             <span className="text-[#00A8A8] font-medium">IBM</span>
             <span className="text-gray-400">•</span>
-            <span className="text-white font-medium">BCG</span>
+            <span className="text-gray-900 font-medium">BCG</span>
             <span className="text-gray-400">•</span>
             <span className="text-purple-400 font-medium">Deloitte</span>
             <span className="text-gray-400">•</span>

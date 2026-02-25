@@ -313,7 +313,7 @@ export default function DemoGallery() {
                       <h3 className="font-semibold text-slate-900 dark:text-white group-hover:text-poise-teal transition-colors mb-1">
                         {demo.title}
                       </h3>
-                      <p className="text-xs text-slate-300 mb-2">{demo.industry}</p>
+                      <p className="text-xs text-gray-600 mb-2">{demo.industry}</p>
                       <p className="text-sm text-gray-600 dark:text-slate-300">
                         {demo.description}
                       </p>
@@ -328,12 +328,12 @@ export default function DemoGallery() {
           <Card className="bg-white border border-gray-200 border-0">
             <CardContent className="p-8 text-center">
               <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Strategic Execution?</h3>
-              <p className="text-slate-300 mb-6 max-w-xl mx-auto">
+              <p className="text-gray-600 mb-6 max-w-xl mx-auto">
                 Join Fortune 1000 companies achieving 12-minute coordinated response with Execution OS
               </p>
               <div className="flex justify-center gap-4 flex-wrap">
                 <Link href="/pilot-demo">
-                  <Button size="lg" className="bg-poise-teal hover:bg-cyan-500 text-white font-semibold">
+                  <Button size="lg" className="bg-poise-teal hover:bg-cyan-500 text-gray-900 font-semibold">
                     <Play className="h-4 w-4 mr-2" />
                     Try Interactive Demo
                   </Button>
@@ -345,7 +345,7 @@ export default function DemoGallery() {
                   </Button>
                 </Link>
               </div>
-              <p className="text-sm text-slate-300 mt-4">
+              <p className="text-sm text-gray-600 mt-4">
                 Q1 2026 Founding Partner Program • 90-day validation • $75K (100% credited to Year 1)
               </p>
             </CardContent>

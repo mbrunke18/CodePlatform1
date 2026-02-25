@@ -303,7 +303,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
       case 'crisis': return 'bg-red-500/20 text-red-300 border-red-500/30';
       case 'meeting': return 'bg-purple-500/20 text-purple-300 border-purple-500/30';
       case 'review': return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
-      default: return 'bg-slate-500/20 text-slate-300 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
     }
   };
 
@@ -313,7 +313,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
       case 'high': return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
       case 'medium': return 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30';
       case 'low': return 'bg-green-500/20 text-green-300 border-green-500/30';
-      default: return 'bg-slate-500/20 text-slate-300 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-gray-600 border-slate-500/30';
     }
   };
 
@@ -341,8 +341,8 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
         {/* Collaboration Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-2">Real-Time Collaboration Center</h1>
-            <p className="text-slate-300">Enterprise-grade team coordination and live decision management</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Real-Time Collaboration Center</h1>
+            <p className="text-gray-600">Enterprise-grade team coordination and live decision management</p>
           </div>
           <div className="flex items-center gap-4">
             <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
@@ -361,10 +361,10 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Active Sessions</h3>
+                <h3 className="font-semibold text-gray-900">Active Sessions</h3>
                 <Users className="h-5 w-5 text-blue-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{collaborationSessions.filter(s => s.status === 'active').length}</div>
+              <div className="text-2xl font-bold text-gray-900">{collaborationSessions.filter(s => s.status === 'active').length}</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Live collaboration</div>
             </CardContent>
           </Card>
@@ -372,10 +372,10 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Team Online</h3>
+                <h3 className="font-semibold text-gray-900">Team Online</h3>
                 <Activity className="h-5 w-5 text-emerald-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{teamMembers.filter(m => m.status === 'online').length}</div>
+              <div className="text-2xl font-bold text-gray-900">{teamMembers.filter(m => m.status === 'online').length}</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Members available</div>
             </CardContent>
           </Card>
@@ -383,10 +383,10 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Live Updates</h3>
+                <h3 className="font-semibold text-gray-900">Live Updates</h3>
                 <Bell className="h-5 w-5 text-purple-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{liveUpdates.length}</div>
+              <div className="text-2xl font-bold text-gray-900">{liveUpdates.length}</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Recent activity</div>
             </CardContent>
           </Card>
@@ -394,10 +394,10 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
           <Card className="bg-white border-gray-200">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Decisions Today</h3>
+                <h3 className="font-semibold text-gray-900">Decisions Today</h3>
                 <CheckCircle className="h-5 w-5 text-emerald-400" />
               </div>
-              <div className="text-2xl font-bold text-white">7</div>
+              <div className="text-2xl font-bold text-gray-900">7</div>
               <div className="text-sm text-slate-600 dark:text-slate-200">Executive decisions</div>
             </CardContent>
           </Card>
@@ -420,7 +420,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
               {/* Real-Time Activity Feed */}
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
                     <Activity className="h-5 w-5" />
                     Live Activity Stream
                   </CardTitle>
@@ -438,9 +438,9 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                           </span>
                         </div>
                       </div>
-                      <h4 className="font-semibold text-white text-sm mb-1">{update.title}</h4>
-                      <p className="text-slate-300 text-sm mb-2">{update.content}</p>
-                      <div className="text-xs text-slate-300">By: {update.user}</div>
+                      <h4 className="font-semibold text-gray-900 text-sm mb-1">{update.title}</h4>
+                      <p className="text-gray-600 text-sm mb-2">{update.content}</p>
+                      <div className="text-xs text-gray-600">By: {update.user}</div>
                     </div>
                   ))}
                 </CardContent>
@@ -449,7 +449,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
               {/* Quick Communication */}
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
                     <MessageSquare className="h-5 w-5" />
                     Quick Communication
                   </CardTitle>
@@ -461,7 +461,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                       value={newMessage}
                       onChange={(e) => setNewMessage(e.target.value)}
                       onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-                      className="bg-gray-50 border-slate-600 text-white"
+                      className="bg-gray-50 border-slate-600 text-gray-900"
                     />
                     <Button onClick={sendMessage} className="bg-blue-600 hover:bg-blue-700">
                       <Send className="w-4 h-4" />
@@ -500,38 +500,38 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1 page-background">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-lg font-semibold text-white">{session.title}</h3>
+                          <h3 className="text-lg font-semibold text-gray-900">{session.title}</h3>
                           <Badge className={getTypeColor(session.type)}>
                             {session.type.toUpperCase()}
                           </Badge>
-                          <Badge className={session.status === 'active' ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' : 'bg-slate-500/20 text-slate-300 border-slate-500/30'}>
+                          <Badge className={session.status === 'active' ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' : 'bg-slate-500/20 text-gray-600 border-slate-500/30'}>
                             {session.status.toUpperCase()}
                           </Badge>
                         </div>
-                        <p className="text-slate-300 mb-4">{session.description}</p>
+                        <p className="text-gray-600 mb-4">{session.description}</p>
                       </div>
                       <div className="text-right">
                         <div className="text-sm text-slate-600 dark:text-slate-200">Duration</div>
-                        <div className="text-white font-medium">{session.duration}</div>
+                        <div className="text-gray-900 font-medium">{session.duration}</div>
                       </div>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       <div>
-                        <h4 className="font-semibold text-white mb-2">Participants</h4>
+                        <h4 className="font-semibold text-gray-900 mb-2">Participants</h4>
                         <div className="space-y-2">
                           {session.participants.map((participant) => (
                             <div key={participant.id} className="flex items-center gap-3">
                               <div className="relative">
                                 <Avatar className="h-8 w-8">
-                                  <AvatarFallback className="bg-gray-50 text-white text-xs">
+                                  <AvatarFallback className="bg-gray-50 text-gray-900 text-xs">
                                     {participant.name.split(' ').map(n => n[0]).join('')}
                                   </AvatarFallback>
                                 </Avatar>
                                 <div className={`absolute -bottom-1 -right-1 w-3 h-3 ${getStatusColor(participant.status)} rounded-full border border-gray-200`} />
                               </div>
                               <div>
-                                <div className="text-sm font-medium text-white">{participant.name}</div>
+                                <div className="text-sm font-medium text-gray-900">{participant.name}</div>
                                 <div className="text-xs text-slate-600 dark:text-slate-200">{participant.role}</div>
                               </div>
                             </div>
@@ -541,10 +541,10 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                       
                       {session.agenda && (
                         <div>
-                          <h4 className="font-semibold text-white mb-2">Agenda</h4>
+                          <h4 className="font-semibold text-gray-900 mb-2">Agenda</h4>
                           <div className="space-y-1">
                             {session.agenda.map((item, index) => (
-                              <div key={index} className="text-sm text-slate-300 flex items-center gap-2">
+                              <div key={index} className="text-sm text-gray-600 flex items-center gap-2">
                                 <div className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
                                 {item}
                               </div>
@@ -555,10 +555,10 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                       
                       {session.decisions && (
                         <div>
-                          <h4 className="font-semibold text-white mb-2">Decisions</h4>
+                          <h4 className="font-semibold text-gray-900 mb-2">Decisions</h4>
                           <div className="space-y-1">
                             {session.decisions.map((decision, index) => (
-                              <div key={index} className="text-sm text-slate-300 flex items-center gap-2">
+                              <div key={index} className="text-sm text-gray-600 flex items-center gap-2">
                                 <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                                 {decision}
                               </div>
@@ -573,11 +573,11 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                         <Video className="w-4 h-4 mr-2" />
                         Join Session
                       </Button>
-                      <Button variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
                         <FileText className="w-4 h-4 mr-2" />
                         View Notes
                       </Button>
-                      <Button variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
                         <Share className="w-4 h-4 mr-2" />
                         Share
                       </Button>
@@ -597,16 +597,16 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                     <div className="flex items-center gap-4 mb-4">
                       <div className="relative">
                         <Avatar className="h-12 w-12">
-                          <AvatarFallback className="bg-gray-50 text-white">
+                          <AvatarFallback className="bg-gray-50 text-gray-900">
                             {member.name.split(' ').map(n => n[0]).join('')}
                           </AvatarFallback>
                         </Avatar>
                         <div className={`absolute -bottom-1 -right-1 w-4 h-4 ${getStatusColor(member.status)} rounded-full border-2 border-gray-200`} />
                       </div>
                       <div className="flex-1 page-background">
-                        <h3 className="font-semibold text-white">{member.name}</h3>
+                        <h3 className="font-semibold text-gray-900">{member.name}</h3>
                         <p className="text-sm text-slate-600 dark:text-slate-200">{member.role}</p>
-                        <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-300 text-xs mt-1">
+                        <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-600 text-xs mt-1">
                           {member.department}
                         </Badge>
                       </div>
@@ -615,17 +615,17 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
                         <span className="text-slate-600 dark:text-slate-200">Status:</span>
-                        <span className="text-white capitalize">{member.status}</span>
+                        <span className="text-gray-900 capitalize">{member.status}</span>
                       </div>
                       {member.currentActivity && (
                         <div className="flex justify-between">
                           <span className="text-slate-600 dark:text-slate-200">Activity:</span>
-                          <span className="text-white text-xs">{member.currentActivity}</span>
+                          <span className="text-gray-900 text-xs">{member.currentActivity}</span>
                         </div>
                       )}
                       <div className="flex justify-between">
                         <span className="text-slate-600 dark:text-slate-200">Timezone:</span>
-                        <span className="text-white">{member.timezone}</span>
+                        <span className="text-gray-900">{member.timezone}</span>
                       </div>
                     </div>
                     
@@ -634,10 +634,10 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                         <MessageSquare className="w-4 h-4 mr-2" />
                         Message
                       </Button>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
                         <Video className="w-4 h-4" />
                       </Button>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-600 hover:bg-slate-700">
                         <Phone className="w-4 h-4" />
                       </Button>
                     </div>
@@ -651,7 +651,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
           <TabsContent value="messages" className="space-y-6">
             <Card className="bg-white border-gray-200">
               <CardHeader>
-                <CardTitle className="text-white">Live Communication Feed</CardTitle>
+                <CardTitle className="text-gray-900">Live Communication Feed</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex gap-2 mb-4">
@@ -660,7 +660,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                     value={newMessage}
                     onChange={(e) => setNewMessage(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-                    className="bg-gray-50 border-slate-600 text-white"
+                    className="bg-gray-50 border-slate-600 text-gray-900"
                   />
                   <Button onClick={sendMessage} className="bg-blue-600 hover:bg-blue-700">
                     <Send className="w-4 h-4" />
@@ -672,7 +672,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                     <div key={update.id} className="p-4 bg-gray-50 rounded-lg">
                       <div className="flex items-start justify-between mb-2">
                         <div className="flex items-center gap-2">
-                          <span className="font-medium text-white text-sm">{update.user}</span>
+                          <span className="font-medium text-gray-900 text-sm">{update.user}</span>
                           <Badge className={getPriorityColor(update.priority)}>
                             {update.priority}
                           </Badge>
@@ -681,7 +681,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                           {new Date(update.timestamp).toLocaleTimeString()}
                         </span>
                       </div>
-                      <p className="text-slate-300 text-sm">{update.content}</p>
+                      <p className="text-gray-600 text-sm">{update.content}</p>
                       {update.relatedTo && (
                         <div className="mt-2">
                           <Badge variant="outline" className="bg-transparent border-slate-600 text-slate-600 dark:text-slate-200 text-xs">
@@ -701,7 +701,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
                     <Target className="h-5 w-5" />
                     Today's Decisions
                   </CardTitle>
@@ -709,27 +709,27 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                 <CardContent className="space-y-3">
                   <div className="p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-white font-medium">Digital Transformation Budget</span>
+                      <span className="text-gray-900 font-medium">Digital Transformation Budget</span>
                       <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">APPROVED</Badge>
                     </div>
                     <p className="text-sm text-slate-600 dark:text-slate-200">$2.5M allocated for Phase 2 implementation</p>
-                    <div className="text-xs text-slate-300 mt-1">Decided by: Chief Executive Officer</div>
+                    <div className="text-xs text-gray-600 mt-1">Decided by: Chief Executive Officer</div>
                   </div>
                   
                   <div className="p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-white font-medium">APAC Market Expansion</span>
+                      <span className="text-gray-900 font-medium">APAC Market Expansion</span>
                       <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">APPROVED</Badge>
                     </div>
                     <p className="text-sm text-slate-600 dark:text-slate-200">Greenlit market entry strategy</p>
-                    <div className="text-xs text-slate-300 mt-1">Decided by: VP Strategy</div>
+                    <div className="text-xs text-gray-600 mt-1">Decided by: VP Strategy</div>
                   </div>
                 </CardContent>
               </Card>
 
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-gray-900 flex items-center gap-2">
                     <Clock className="h-5 w-5" />
                     Pending Decisions
                   </CardTitle>
@@ -737,20 +737,20 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                 <CardContent className="space-y-3">
                   <div className="p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-white font-medium">Q3 Hiring Plan</span>
+                      <span className="text-gray-900 font-medium">Q3 Hiring Plan</span>
                       <Badge className="bg-amber-500/20 text-amber-300 border-amber-500/30">PENDING</Badge>
                     </div>
                     <p className="text-sm text-slate-600 dark:text-slate-200">25 new positions across departments</p>
-                    <div className="text-xs text-slate-300 mt-1">Assigned to: Chief Financial Officer</div>
+                    <div className="text-xs text-gray-600 mt-1">Assigned to: Chief Financial Officer</div>
                   </div>
                   
                   <div className="p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-white font-medium">Office Expansion</span>
+                      <span className="text-gray-900 font-medium">Office Expansion</span>
                       <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">REVIEW</Badge>
                     </div>
                     <p className="text-sm text-slate-600 dark:text-slate-200">Additional office space in Austin</p>
-                    <div className="text-xs text-slate-300 mt-1">Assigned to: Chief Operations Officer</div>
+                    <div className="text-xs text-gray-600 mt-1">Assigned to: Chief Operations Officer</div>
                   </div>
                 </CardContent>
               </Card>

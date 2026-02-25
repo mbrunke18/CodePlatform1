@@ -90,7 +90,7 @@ export function SignalDemo({ progress }: SceneProps) {
                         <span className="text-xs text-[#00A8A8]">{signal.source}</span>
                         <span className="text-xs text-gray-400">{signal.time}</span>
                       </div>
-                      <p className="text-white text-xs mt-1 truncate">{signal.message}</p>
+                      <p className="text-gray-900 text-xs mt-1 truncate">{signal.message}</p>
                       <span className="text-[#D4AF37] text-xs font-medium">{signal.impact}</span>
                     </div>
                   </div>
@@ -114,7 +114,7 @@ export function SignalDemo({ progress }: SceneProps) {
                     <AlertCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
                   </motion.div>
                   <p className="text-red-400 font-bold text-xl mb-2">TRIGGER DETECTED</p>
-                  <p className="text-white text-sm mb-4">Competitor acquisition matches playbook criteria</p>
+                  <p className="text-gray-900 text-sm mb-4">Competitor acquisition matches playbook criteria</p>
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

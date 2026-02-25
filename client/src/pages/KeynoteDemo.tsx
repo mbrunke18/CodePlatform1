@@ -112,7 +112,7 @@ function ActivationTimeline() {
               <Icon className={`h-5 w-5 ${isActive ? s.color : 'text-gray-600'}`} />
             </div>
             <div className="flex-1">
-              <div className={`font-semibold text-sm ${isActive ? 'text-white' : 'text-gray-600'}`}>{s.label}</div>
+              <div className={`font-semibold text-sm ${isActive ? 'text-gray-900' : 'text-gray-600'}`}>{s.label}</div>
               <div className={`text-xs ${isActive ? 'text-slate-600 dark:text-slate-200' : 'text-slate-700'}`}>{s.detail}</div>
             </div>
             {isCurrent && (
@@ -182,7 +182,7 @@ export default function KeynoteDemo() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="text-7xl font-bold text-white mb-6 tracking-tight"
+          className="text-7xl font-bold text-gray-900 mb-6 tracking-tight"
         >
           Strategic Execution Is <span className="text-red-500">Broken</span>
         </motion.h1>
@@ -209,7 +209,7 @@ export default function KeynoteDemo() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 0.8 }}
-          className="text-2xl text-slate-300 mt-16 max-w-3xl"
+          className="text-2xl text-gray-600 mt-16 max-w-3xl"
         >
           Fortune 1000 companies lose billions every year because they can't move fast enough when it matters most.
         </motion.p>
@@ -225,7 +225,7 @@ export default function KeynoteDemo() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="text-7xl font-bold text-white mb-4 tracking-tight"
+          className="text-7xl font-bold text-gray-900 mb-4 tracking-tight"
         >
           The <span className="text-red-500">$4.7 Trillion</span> Problem
         </motion.h1>
@@ -276,7 +276,7 @@ export default function KeynoteDemo() {
           <div className="relative inline-flex items-center justify-center">
             <div className="absolute inset-0 w-32 h-32 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 blur-2xl opacity-30 animate-pulse" />
             <div className="relative w-28 h-28 rounded-full bg-gradient-to-br from-indigo-600 to-cyan-600 flex items-center justify-center">
-              <Layers className="h-14 w-14 text-white" />
+              <Layers className="h-14 w-14 text-gray-900" />
             </div>
           </div>
         </motion.div>
@@ -284,7 +284,7 @@ export default function KeynoteDemo() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="text-8xl font-bold text-white mb-4 tracking-tight"
+          className="text-8xl font-bold text-gray-900 mb-4 tracking-tight"
         >
           Execution OS
         </motion.h1>
@@ -304,7 +304,7 @@ export default function KeynoteDemo() {
           transition={{ delay: 1.4, duration: 0.8 }}
           className="text-2xl text-slate-600 dark:text-slate-200 max-w-4xl mb-16 leading-relaxed"
         >
-          From signal detection to full organizational response in <span className="text-white font-semibold">12 minutes</span> — not 72 hours.
+          From signal detection to full organizational response in <span className="text-gray-900 font-semibold">12 minutes</span> — not 72 hours.
           <br />170 pre-built playbooks. 9 strategic domains. AI-powered execution.
         </motion.p>
         <motion.div
@@ -321,8 +321,8 @@ export default function KeynoteDemo() {
           ].map((item, i) => (
             <div key={i} className="text-center">
               <item.icon className="h-8 w-8 text-indigo-400 mx-auto mb-2" />
-              <div className="text-3xl font-bold text-white">{item.value}</div>
-              <div className="text-sm text-slate-300">{item.label}</div>
+              <div className="text-3xl font-bold text-gray-900">{item.value}</div>
+              <div className="text-sm text-gray-600">{item.label}</div>
             </div>
           ))}
         </motion.div>
@@ -341,7 +341,7 @@ export default function KeynoteDemo() {
             <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 rounded-full bg-red-500" />
             LIVE SIGNAL DETECTED
           </div>
-          <h2 className="text-5xl font-bold text-white mb-4">Signal Intelligence Feed</h2>
+          <h2 className="text-5xl font-bold text-gray-900 mb-4">Signal Intelligence Feed</h2>
           <p className="text-xl text-slate-600 dark:text-slate-200">Real-time monitoring across 16 categories and 100+ data points</p>
         </motion.div>
 
@@ -358,18 +358,18 @@ export default function KeynoteDemo() {
                   <Radio className="h-6 w-6 text-red-500" />
                 </motion.div>
                 <span className="text-red-400 font-semibold text-lg">CRITICAL SIGNAL</span>
-                <span className="text-slate-300 mx-2">|</span>
+                <span className="text-gray-600 mx-2">|</span>
                 <span className="text-slate-600 dark:text-slate-200 text-sm">
                   {signal ? new Date(signal.detectedAt).toLocaleString() : 'Just Now'}
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-xs text-slate-300">SEVERITY</span>
-                <span className="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">CRITICAL</span>
+                <span className="text-xs text-gray-600">SEVERITY</span>
+                <span className="bg-red-500 text-gray-900 text-xs font-bold px-3 py-1 rounded-full">CRITICAL</span>
               </div>
             </div>
             <div className="p-8">
-              <h3 className="text-3xl font-bold text-white mb-3">
+              <h3 className="text-3xl font-bold text-gray-900 mb-3">
                 {signal?.signalName || 'Competitor Product Launch Detected'}
               </h3>
               <p className="text-lg text-slate-600 dark:text-slate-200 mb-8 leading-relaxed">
@@ -391,7 +391,7 @@ export default function KeynoteDemo() {
                   >
                     <item.icon className={`h-6 w-6 ${item.color} mx-auto mb-2`} />
                     <div className={`text-xl font-bold ${item.color}`}>{item.value}</div>
-                    <div className="text-xs text-slate-300 mt-1">{item.label}</div>
+                    <div className="text-xs text-gray-600 mt-1">{item.label}</div>
                   </motion.div>
                 ))}
               </div>
@@ -408,7 +408,7 @@ export default function KeynoteDemo() {
             <Brain className="h-4 w-4" />
             AI ANALYSIS ENGINE
           </div>
-          <h2 className="text-5xl font-bold text-white mb-4">AI Analyzes the Threat</h2>
+          <h2 className="text-5xl font-bold text-gray-900 mb-4">AI Analyzes the Threat</h2>
           <p className="text-xl text-slate-600 dark:text-slate-200">GPT-4o processes the signal against your organizational context</p>
         </motion.div>
 
@@ -421,7 +421,7 @@ export default function KeynoteDemo() {
           <div className="bg-white border border-purple-500/20 rounded-2xl p-8">
             <div className="flex items-center gap-3 mb-6">
               <Brain className="h-8 w-8 text-purple-400" />
-              <h3 className="text-xl font-semibold text-white">Key Insights</h3>
+              <h3 className="text-xl font-semibold text-gray-900">Key Insights</h3>
             </div>
             <div className="space-y-4">
               {(signal?.aiAnalysis?.keyInsights || [
@@ -438,7 +438,7 @@ export default function KeynoteDemo() {
                   className="flex items-start gap-3 bg-white/5 rounded-lg p-4"
                 >
                   <Lightbulb className="h-5 w-5 text-amber-400 mt-0.5 shrink-0" />
-                  <span className="text-slate-300 text-sm">{insight}</span>
+                  <span className="text-gray-600 text-sm">{insight}</span>
                 </motion.div>
               ))}
             </div>
@@ -451,7 +451,7 @@ export default function KeynoteDemo() {
               transition={{ delay: 0.6, duration: 0.6 }}
               className="bg-white border border-purple-500/20 rounded-2xl p-8"
             >
-              <h3 className="text-lg font-semibold text-white mb-4">AI Confidence Score</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">AI Confidence Score</h3>
               <div className="flex items-end gap-4">
                 <div className="text-6xl font-bold text-purple-400">
                   <CountUp end={signal?.aiConfidence || 94} suffix="%" />
@@ -476,7 +476,7 @@ export default function KeynoteDemo() {
               transition={{ delay: 0.9, duration: 0.6 }}
               className="bg-white border border-amber-500/20 rounded-2xl p-8"
             >
-              <h3 className="text-lg font-semibold text-white mb-4">Cost of Inaction</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Cost of Inaction</h3>
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { label: 'Revenue at Risk', value: signal?.costOfInaction?.revenueAtRisk || '$12.5M', color: 'text-red-400' },
@@ -486,7 +486,7 @@ export default function KeynoteDemo() {
                 ].map((item, i) => (
                   <div key={i} className="bg-white/5 rounded-lg p-3 text-center">
                     <div className={`text-xl font-bold ${item.color}`}>{item.value}</div>
-                    <div className="text-xs text-slate-300">{item.label}</div>
+                    <div className="text-xs text-gray-600">{item.label}</div>
                   </div>
                 ))}
               </div>
@@ -503,7 +503,7 @@ export default function KeynoteDemo() {
             <BookOpen className="h-4 w-4" />
             PLAYBOOK MATCHED
           </div>
-          <h2 className="text-5xl font-bold text-white mb-4">The Right Playbook, Instantly</h2>
+          <h2 className="text-5xl font-bold text-gray-900 mb-4">The Right Playbook, Instantly</h2>
           <p className="text-xl text-slate-600 dark:text-slate-200">AI selects from 170 pre-built playbooks across 9 strategic domains</p>
         </motion.div>
 
@@ -517,19 +517,19 @@ export default function KeynoteDemo() {
             <div className="bg-gradient-to-r   border-b border-cyan-500/20 px-8 py-5 flex items-center justify-between">
               <div>
                 <span className="text-cyan-400 text-sm font-medium">RECOMMENDED PLAYBOOK</span>
-                <h3 className="text-2xl font-bold text-white mt-1">
+                <h3 className="text-2xl font-bold text-gray-900 mt-1">
                   {signal?.aiAnalysis?.recommendedPlaybook || 'Competitive Response - Product Counter-Strategy'}
                 </h3>
               </div>
               <div className="text-right">
-                <span className="text-slate-300 text-xs">PLAYBOOK</span>
+                <span className="text-gray-600 text-xs">PLAYBOOK</span>
                 <div className="text-3xl font-bold text-cyan-400">#{signal?.aiAnalysis?.playbookNumber || '47'}</div>
               </div>
             </div>
             <div className="p-8">
               <div className="grid grid-cols-3 gap-8 mb-8">
                 <div>
-                  <h4 className="text-sm text-slate-300 mb-3 uppercase tracking-wider">Pre-Configured Actions</h4>
+                  <h4 className="text-sm text-gray-600 mb-3 uppercase tracking-wider">Pre-Configured Actions</h4>
                   <div className="space-y-2">
                     {['Competitive analysis brief', 'Pricing adjustment proposal', 'Customer retention outreach', 'Product roadmap acceleration', 'Sales enablement update', 'Partner communication plan'].map((action, i) => (
                       <motion.div
@@ -537,7 +537,7 @@ export default function KeynoteDemo() {
                         initial={{ opacity: 0, x: -15 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.8 + i * 0.1 }}
-                        className="flex items-center gap-2 text-sm text-slate-300"
+                        className="flex items-center gap-2 text-sm text-gray-600"
                       >
                         <CheckCircle2 className="h-4 w-4 text-green-500" />
                         {action}
@@ -546,7 +546,7 @@ export default function KeynoteDemo() {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-sm text-slate-300 mb-3 uppercase tracking-wider">Stakeholders Auto-Notified</h4>
+                  <h4 className="text-sm text-gray-600 mb-3 uppercase tracking-wider">Stakeholders Auto-Notified</h4>
                   <div className="space-y-2">
                     {['CEO - Jennifer Park', 'CMO - Lisa Anderson', 'VP Sales - Ryan Davis', 'VP Product - Laura Lewis', 'Head of Strategy - Patricia Wright', 'Director of Pricing - Amanda Jackson'].map((person, i) => (
                       <motion.div
@@ -554,7 +554,7 @@ export default function KeynoteDemo() {
                         initial={{ opacity: 0, x: -15 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 1 + i * 0.1 }}
-                        className="flex items-center gap-2 text-sm text-slate-300"
+                        className="flex items-center gap-2 text-sm text-gray-600"
                       >
                         <Users className="h-4 w-4 text-blue-400" />
                         {person}
@@ -563,7 +563,7 @@ export default function KeynoteDemo() {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-sm text-slate-300 mb-3 uppercase tracking-wider">Enterprise Integrations</h4>
+                  <h4 className="text-sm text-gray-600 mb-3 uppercase tracking-wider">Enterprise Integrations</h4>
                   <div className="space-y-2">
                     {[
                       { name: 'Jira - 24 tasks auto-created', icon: '📋' },
@@ -578,7 +578,7 @@ export default function KeynoteDemo() {
                         initial={{ opacity: 0, x: -15 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 1.2 + i * 0.1 }}
-                        className="flex items-center gap-2 text-sm text-slate-300"
+                        className="flex items-center gap-2 text-sm text-gray-600"
                       >
                         <span>{item.icon}</span>
                         {item.name}
@@ -595,7 +595,7 @@ export default function KeynoteDemo() {
                   { label: 'Target Completion', value: '< 12 Minutes', color: 'text-amber-400' },
                 ].map((item, i) => (
                   <div key={i} className="text-center bg-white/5 rounded-xl p-4">
-                    <div className="text-xs text-slate-300 mb-1">{item.label}</div>
+                    <div className="text-xs text-gray-600 mb-1">{item.label}</div>
                     <div className={`text-lg font-bold ${item.color}`}>{item.value}</div>
                   </div>
                 ))}
@@ -613,7 +613,7 @@ export default function KeynoteDemo() {
             <Shield className="h-4 w-4" />
             HUMAN-AI PARTNERSHIP
           </div>
-          <h2 className="text-5xl font-bold text-white mb-4">AI Recommends. You Decide.</h2>
+          <h2 className="text-5xl font-bold text-gray-900 mb-4">AI Recommends. You Decide.</h2>
           <p className="text-xl text-slate-600 dark:text-slate-200">The executive retains full decision authority. Always.</p>
         </motion.div>
 
@@ -626,21 +626,21 @@ export default function KeynoteDemo() {
           <div className="bg-white border border-indigo-500/30 rounded-2xl p-10">
             <div className="flex items-center gap-6 mb-8">
               <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center">
-                <Brain className="h-8 w-8 text-white" />
+                <Brain className="h-8 w-8 text-gray-900" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-white">AI Recommendation</h3>
+                <h3 className="text-2xl font-bold text-gray-900">AI Recommendation</h3>
                 <p className="text-slate-600 dark:text-slate-200">Based on analysis of 847 data points</p>
               </div>
               <div className="ml-auto text-right">
                 <div className="text-4xl font-bold text-green-400">94%</div>
-                <div className="text-xs text-slate-300">Confidence</div>
+                <div className="text-xs text-gray-600">Confidence</div>
               </div>
             </div>
 
             <div className="bg-indigo-950/30 border border-indigo-500/10 rounded-xl p-6 mb-8">
-              <p className="text-lg text-slate-300 leading-relaxed">
-                "Activate <span className="text-white font-semibold">Competitive Response Playbook #47</span> immediately.
+              <p className="text-lg text-gray-600 leading-relaxed">
+                "Activate <span className="text-gray-900 font-semibold">Competitive Response Playbook #47</span> immediately.
                 Delay beyond 48 hours increases revenue exposure from $12.5M to $28.3M.
                 Pre-approved budget of $250K covers initial counter-strategy. 28 stakeholders
                 identified and ready for notification."
@@ -649,9 +649,9 @@ export default function KeynoteDemo() {
 
             <div className="flex items-center justify-between p-6 bg-white/5 rounded-xl">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-slate-600 flex items-center justify-center text-white font-semibold text-lg">JP</div>
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-slate-600 flex items-center justify-center text-gray-900 font-semibold text-lg">JP</div>
                 <div>
-                  <div className="text-white font-semibold">Jennifer Park, CEO</div>
+                  <div className="text-gray-900 font-semibold">Jennifer Park, CEO</div>
                   <div className="text-slate-600 dark:text-slate-200 text-sm">Decision Authority</div>
                 </div>
               </div>
@@ -673,7 +673,7 @@ export default function KeynoteDemo() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 0.8 }}
-          className="text-lg text-slate-300 mt-8 max-w-2xl text-center"
+          className="text-lg text-gray-600 mt-8 max-w-2xl text-center"
         >
           Every playbook activation requires human approval. AI accelerates the process — humans make the final call.
         </motion.p>
@@ -688,7 +688,7 @@ export default function KeynoteDemo() {
               <Zap className="h-4 w-4" />
               LIVE ACTIVATION
             </div>
-            <h2 className="text-5xl font-bold text-white mb-3">12-Minute Execution</h2>
+            <h2 className="text-5xl font-bold text-gray-900 mb-3">12-Minute Execution</h2>
             <p className="text-lg text-slate-600 dark:text-slate-200">Watch the full organizational response unfold in real-time</p>
           </motion.div>
 
@@ -701,7 +701,7 @@ export default function KeynoteDemo() {
                 className="bg-white border border-green-500/20 rounded-2xl p-6 h-full"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-white">Execution Timeline</h3>
+                  <h3 className="text-lg font-semibold text-gray-900">Execution Timeline</h3>
                   <div className="flex items-center gap-2">
                     <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 rounded-full bg-green-500" />
                     <span className="text-green-400 text-sm font-medium">LIVE</span>
@@ -718,7 +718,7 @@ export default function KeynoteDemo() {
                 transition={{ delay: 0.5, duration: 0.6 }}
                 className="bg-white border border-blue-500/20 rounded-2xl p-6"
               >
-                <h3 className="text-lg font-semibold text-white mb-4">Coordination Metrics</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Coordination Metrics</h3>
                 <div className="grid grid-cols-2 gap-4">
                   {[
                     { label: 'Stakeholders', value: '28/30', color: 'text-blue-400' },
@@ -728,7 +728,7 @@ export default function KeynoteDemo() {
                   ].map((m, i) => (
                     <div key={i} className="bg-white/5 rounded-lg p-3 text-center">
                       <div className={`text-2xl font-bold ${m.color}`}>{m.value}</div>
-                      <div className="text-xs text-slate-300">{m.label}</div>
+                      <div className="text-xs text-gray-600">{m.label}</div>
                     </div>
                   ))}
                 </div>
@@ -740,7 +740,7 @@ export default function KeynoteDemo() {
                 transition={{ delay: 0.7, duration: 0.6 }}
                 className="bg-white border border-amber-500/20 rounded-2xl p-6"
               >
-                <h3 className="text-lg font-semibold text-white mb-4">Integration Activity</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Integration Activity</h3>
                 <div className="space-y-3">
                   {[
                     { tool: 'Jira', status: '24 tasks created', color: 'text-blue-400' },
@@ -750,7 +750,7 @@ export default function KeynoteDemo() {
                     { tool: 'Microsoft Teams', status: 'Briefing live', color: 'text-indigo-400' },
                   ].map((item, i) => (
                     <div key={i} className="flex items-center justify-between bg-white/5 rounded-lg p-3">
-                      <span className="text-sm text-white font-medium">{item.tool}</span>
+                      <span className="text-sm text-gray-900 font-medium">{item.tool}</span>
                       <span className={`text-xs ${item.color}`}>{item.status}</span>
                     </div>
                   ))}
@@ -765,7 +765,7 @@ export default function KeynoteDemo() {
     idea: (
       <div className="flex flex-col items-center justify-center min-h-screen px-8">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center mb-12">
-          <h2 className="text-5xl font-bold text-white mb-4">The IDEA Framework</h2>
+          <h2 className="text-5xl font-bold text-gray-900 mb-4">The IDEA Framework</h2>
           <p className="text-xl text-slate-600 dark:text-slate-200">Four phases of continuous strategic execution</p>
         </motion.div>
 
@@ -784,13 +784,13 @@ export default function KeynoteDemo() {
               className={`bg-white ${phase.border} border rounded-2xl overflow-hidden`}
             >
               <div className={`bg-gradient-to-br ${phase.color} p-6 text-center`}>
-                <phase.icon className="h-10 w-10 text-white mx-auto mb-3" />
-                <h3 className="text-2xl font-bold text-white">{phase.phase}</h3>
-                <p className="text-white/70 text-sm">{phase.subtitle}</p>
+                <phase.icon className="h-10 w-10 text-gray-900 mx-auto mb-3" />
+                <h3 className="text-2xl font-bold text-gray-900">{phase.phase}</h3>
+                <p className="text-gray-900/70 text-sm">{phase.subtitle}</p>
               </div>
               <div className="p-5 space-y-2">
                 {phase.items.map((item, j) => (
-                  <div key={j} className="flex items-center gap-2 text-sm text-slate-300">
+                  <div key={j} className="flex items-center gap-2 text-sm text-gray-600">
                     <CheckCircle2 className="h-3.5 w-3.5 text-green-500 shrink-0" />
                     {item}
                   </div>
@@ -808,8 +808,8 @@ export default function KeynoteDemo() {
         >
           {['IDENTIFY', 'DETECT', 'EXECUTE', 'ADVANCE'].map((phase, i) => (
             <div key={i} className="flex items-center gap-3">
-              <div className="bg-white/10 rounded-full px-4 py-2 text-sm text-white font-medium">{phase}</div>
-              {i < 3 && <ArrowRight className="h-4 w-4 text-slate-300" />}
+              <div className="bg-white/10 rounded-full px-4 py-2 text-sm text-gray-900 font-medium">{phase}</div>
+              {i < 3 && <ArrowRight className="h-4 w-4 text-gray-600" />}
             </div>
           ))}
         </motion.div>
@@ -823,7 +823,7 @@ export default function KeynoteDemo() {
             <Award className="h-4 w-4" />
             PROVEN RESULTS
           </div>
-          <h2 className="text-5xl font-bold text-white mb-4">The Transformation</h2>
+          <h2 className="text-5xl font-bold text-gray-900 mb-4">The Transformation</h2>
           <p className="text-xl text-slate-600 dark:text-slate-200">Before Execution OS</p>
         </motion.div>
 
@@ -849,7 +849,7 @@ export default function KeynoteDemo() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-center justify-between bg-red-950/30 rounded-lg p-4">
                     <div>
-                      <div className="text-white font-medium">{item.metric}</div>
+                      <div className="text-gray-900 font-medium">{item.metric}</div>
                       <div className="text-red-300/60 text-xs">{item.detail}</div>
                     </div>
                     <div className="text-red-400 font-bold text-lg">{item.value}</div>
@@ -878,7 +878,7 @@ export default function KeynoteDemo() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-center justify-between bg-green-950/30 rounded-lg p-4">
                     <div>
-                      <div className="text-white font-medium">{item.metric}</div>
+                      <div className="text-gray-900 font-medium">{item.metric}</div>
                       <div className="text-green-300/60 text-xs">{item.detail}</div>
                     </div>
                     <div className="text-green-400 font-bold text-lg">{item.value}</div>
@@ -902,8 +902,8 @@ export default function KeynoteDemo() {
             ].map((item, i) => (
               <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
                 <div className={`text-4xl font-bold ${item.color} mb-1`}>{item.value}</div>
-                <div className="text-white text-sm font-medium">{item.detail}</div>
-                <div className="text-slate-300 text-xs mt-1">{item.label}</div>
+                <div className="text-gray-900 text-sm font-medium">{item.detail}</div>
+                <div className="text-gray-600 text-xs mt-1">{item.label}</div>
               </div>
             ))}
           </motion.div>
@@ -922,7 +922,7 @@ export default function KeynoteDemo() {
           <div className="relative inline-flex items-center justify-center">
             <div className="absolute inset-0 w-36 h-36 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 blur-3xl opacity-30 animate-pulse" />
             <div className="relative w-32 h-32 rounded-full bg-gradient-to-br from-indigo-600 to-cyan-600 flex items-center justify-center">
-              <Rocket className="h-16 w-16 text-white" />
+              <Rocket className="h-16 w-16 text-gray-900" />
             </div>
           </div>
         </motion.div>
@@ -931,7 +931,7 @@ export default function KeynoteDemo() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="text-7xl font-bold text-white mb-6 tracking-tight"
+          className="text-7xl font-bold text-gray-900 mb-6 tracking-tight"
         >
           Ready to Execute?
         </motion.h1>
@@ -954,7 +954,7 @@ export default function KeynoteDemo() {
         >
           <Button
             size="lg"
-            className="bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white px-10 py-7 text-xl rounded-xl shadow-lg shadow-indigo-500/20"
+            className="bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-gray-900 px-10 py-7 text-xl rounded-xl shadow-lg shadow-indigo-500/20"
             onClick={() => window.open('/pilot-program', '_blank')}
           >
             <Rocket className="h-6 w-6 mr-3" />
@@ -963,7 +963,7 @@ export default function KeynoteDemo() {
           <Button
             size="lg"
             variant="outline"
-            className="border-white/20 text-white hover:bg-white/10 px-10 py-7 text-xl rounded-xl"
+            className="border-white/20 text-gray-900 hover:bg-white/10 px-10 py-7 text-xl rounded-xl"
             onClick={() => window.open('/try-demo', '_blank')}
           >
             <Play className="h-6 w-6 mr-3" />
@@ -984,8 +984,8 @@ export default function KeynoteDemo() {
           ].map((item, i) => (
             <div key={i} className="text-center">
               <item.icon className="h-8 w-8 text-indigo-400 mx-auto mb-2" />
-              <div className="text-white text-sm font-medium">{item.label}</div>
-              <div className="text-slate-300 text-xs">{item.detail}</div>
+              <div className="text-gray-900 text-sm font-medium">{item.label}</div>
+              <div className="text-gray-600 text-xs">{item.detail}</div>
             </div>
           ))}
         </motion.div>
@@ -1050,21 +1050,21 @@ export default function KeynoteDemo() {
                   <div className="flex items-center gap-4">
                     <button
                       onClick={(e) => { e.stopPropagation(); prev(); }}
-                      className="text-white/50 hover:text-white transition-colors cursor-pointer"
+                      className="text-gray-900/50 hover:text-white transition-colors cursor-pointer"
                     >
                       <ChevronLeft className="h-5 w-5" />
                     </button>
-                    <span className="text-white/70 text-sm font-medium">
+                    <span className="text-gray-900/70 text-sm font-medium">
                       {stage + 1} / {STAGES.length} — {currentStage.label}
                     </span>
                     <button
                       onClick={(e) => { e.stopPropagation(); next(); }}
-                      className="text-white/50 hover:text-white transition-colors cursor-pointer"
+                      className="text-gray-900/50 hover:text-white transition-colors cursor-pointer"
                     >
                       <ChevronRight className="h-5 w-5" />
                     </button>
                   </div>
-                  <div className="flex items-center gap-4 text-white/40 text-xs">
+                  <div className="flex items-center gap-4 text-gray-900/40 text-xs">
                     <span>Click or → to advance</span>
                     <span>← to go back</span>
                     <span>F for fullscreen</span>

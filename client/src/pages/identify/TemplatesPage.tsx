@@ -33,7 +33,7 @@ export default function TemplatesPage() {
               <CardHeader className="pb-3">
                 <div className="flex items-center gap-3">
                   <div className={`w-10 h-10 rounded-lg ${template.color} flex items-center justify-center`}>
-                    <FileText className="w-5 h-5 text-white" />
+                    <FileText className="w-5 h-5 text-gray-900" />
                   </div>
                   <div>
                     <CardTitle className="text-base">{template.name}</CardTitle>

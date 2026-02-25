@@ -266,9 +266,9 @@ export default function FutureReadinessDashboard() {
                 <ScrollArea className="h-[500px]">
                   <div className="space-y-4">
                     {signalsLoading ? (
-                      <p className="text-center text-slate-300">Loading signals...</p>
+                      <p className="text-center text-gray-600">Loading signals...</p>
                     ) : weakSignals.length === 0 ? (
-                      <p className="text-center text-slate-300">No weak signals detected</p>
+                      <p className="text-center text-gray-600">No weak signals detected</p>
                     ) : (
                       weakSignals.map((signal) => (
                         <Card key={signal.id} className="border-l-4 border-l-orange-500">
@@ -285,7 +285,7 @@ export default function FutureReadinessDashboard() {
                                 <p className="text-sm text-gray-600 dark:text-slate-300 mb-3">
                                   {signal.description}
                                 </p>
-                                <div className="flex items-center gap-4 text-xs text-slate-300">
+                                <div className="flex items-center gap-4 text-xs text-gray-600">
                                   <span className="flex items-center gap-1">
                                     <BarChart3 className="h-3 w-3" />
                                     Confidence: {parseFloat(signal.confidence).toFixed(0)}%
@@ -326,9 +326,9 @@ export default function FutureReadinessDashboard() {
                 <ScrollArea className="h-[500px]">
                   <div className="space-y-4">
                     {patternsLoading ? (
-                      <p className="text-center text-slate-300">Loading patterns...</p>
+                      <p className="text-center text-gray-600">Loading patterns...</p>
                     ) : oraclePatterns.length === 0 ? (
-                      <p className="text-center text-slate-300">No oracle patterns detected</p>
+                      <p className="text-center text-gray-600">No oracle patterns detected</p>
                     ) : (
                       oraclePatterns.map((pattern) => (
                         <Card key={pattern.id} className="border-l-4 border-l-purple-500">
@@ -343,7 +343,7 @@ export default function FutureReadinessDashboard() {
                                 <p className="text-sm text-gray-600 dark:text-slate-300 mb-3">
                                   {pattern.description}
                                 </p>
-                                <div className="flex items-center gap-4 text-xs text-slate-300">
+                                <div className="flex items-center gap-4 text-xs text-gray-600">
                                   <span className="flex items-center gap-1">
                                     <BarChart3 className="h-3 w-3" />
                                     Confidence: {parseFloat(pattern.confidence).toFixed(0)}%
@@ -382,9 +382,9 @@ export default function FutureReadinessDashboard() {
                 <ScrollArea className="h-[500px]">
                   <div className="space-y-3">
                     {activityLoading ? (
-                      <p className="text-center text-slate-300">Loading activity...</p>
+                      <p className="text-center text-gray-600">Loading activity...</p>
                     ) : activityFeed.length === 0 ? (
-                      <p className="text-center text-slate-300">No recent activity</p>
+                      <p className="text-center text-gray-600">No recent activity</p>
                     ) : (
                       activityFeed.map((event, idx) => (
                         <div key={event.id}>
@@ -398,7 +398,7 @@ export default function FutureReadinessDashboard() {
                             <div className="flex-1 pb-4">
                               <div className="flex items-center justify-between mb-1">
                                 <h4 className="font-medium">{event.title}</h4>
-                                <span className="text-xs text-slate-300">
+                                <span className="text-xs text-gray-600">
                                   {format(new Date(event.timestamp), 'PPp')}
                                 </span>
                               </div>

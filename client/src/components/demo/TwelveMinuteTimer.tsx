@@ -97,17 +97,17 @@ export default function TwelveMinuteTimer({
   return (
     <div className="space-y-6">
       <div className="text-center mb-4">
-        <h2 className="text-3xl font-bold text-white mb-2">{title}</h2>
-        <p className="text-xl text-blue-200">{subtitle}</p>
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">{title}</h2>
+        <p className="text-xl text-blue-700">{subtitle}</p>
       </div>
 
       <Card className="p-4 bg-gradient-to-br   border-blue-800/30 max-w-md mx-auto">
         <div className="flex items-center justify-center gap-4">
           <Clock className={`h-5 w-5 text-blue-400 ${isRunning ? 'animate-pulse' : ''}`} />
-          <div className="text-4xl font-bold text-white" data-testid="text-timer">
+          <div className="text-4xl font-bold text-gray-900" data-testid="text-timer">
             {timelineState.formattedTime}
           </div>
-          <span className="text-sm text-blue-200">
+          <span className="text-sm text-blue-700">
             {completed ? '✓ Complete' : 'Coordinating...'}
           </span>
         </div>
@@ -137,7 +137,7 @@ export default function TwelveMinuteTimer({
                     : 'bg-gray-300 dark:bg-gray-700'
                 }`}>
                   {isActive && (
-                    <div className="text-white">
+                    <div className="text-gray-900">
                       {getIcon(event.icon)}
                     </div>
                   )}

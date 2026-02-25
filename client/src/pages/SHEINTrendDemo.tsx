@@ -48,7 +48,7 @@ export default function SHEINTrendDemo() {
                 onClick={() => goToAct(act.id as DemoAct)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                   currentAct === act.id
-                    ? "bg-pink-600 text-white"
+                    ? "bg-pink-600 text-gray-900"
                     : "text-pink-300 hover:bg-pink-950/50"
                 }`}
                 data-testid={`button-act-${act.id}`}
@@ -69,38 +69,38 @@ export default function SHEINTrendDemo() {
             <Card className="p-8 bg-white border-pink-800/30">
               <div className="text-center mb-8">
                 <TrendingUp className="w-16 h-16 text-pink-400 mx-auto mb-4" />
-                <h2 className="text-3xl font-bold text-white mb-3">{sheinTrendDemoData.crisis.title}</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">{sheinTrendDemoData.crisis.title}</h2>
                 <p className="text-xl text-pink-200">{sheinTrendDemoData.crisis.subtitle}</p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div className="p-6 bg-pink-950/30 rounded-lg border border-pink-800/30">
-                  <h3 className="font-bold text-white mb-4 flex items-center gap-2">
+                  <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                     <TrendingUp className="w-5 h-5 text-pink-400" />
                     The Opportunity
                   </h3>
                   <div className="space-y-3 text-sm">
                     <div>
                       <div className="text-pink-300 mb-1">Viral Trend</div>
-                      <div className="text-white font-semibold">Cottage Core Renaissance - 47M TikTok views in 18 hours</div>
+                      <div className="text-gray-900 font-semibold">Cottage Core Renaissance - 47M TikTok views in 18 hours</div>
                     </div>
                     <div>
                       <div className="text-pink-300 mb-1">Market Opportunity</div>
-                      <div className="text-white">$180M revenue, 21-day lifecycle</div>
+                      <div className="text-gray-900">$180M revenue, 21-day lifecycle</div>
                     </div>
                     <div>
                       <div className="text-pink-300 mb-1">Strategic Move</div>
-                      <div className="text-white">200 SKUs • 5,000 suppliers • 7-day launch</div>
+                      <div className="text-gray-900">200 SKUs • 5,000 suppliers • 7-day launch</div>
                     </div>
                     <div>
                       <div className="text-pink-300 mb-1">First-Mover Advantage</div>
-                      <div className="text-white font-bold">65% market share if launched in 7 days</div>
+                      <div className="text-gray-900 font-bold">65% market share if launched in 7 days</div>
                     </div>
                   </div>
                 </div>
 
                 <div className="p-6 bg-white rounded-lg border border-pink-800/30">
-                  <h3 className="font-bold text-white mb-4">Traditional Coordination Timeline</h3>
+                  <h3 className="font-bold text-gray-900 mb-4">Traditional Coordination Timeline</h3>
                   <ul className="space-y-2 text-sm text-pink-200">
                     <li>• Day 1-2: Design teams start planning independently</li>
                     <li>• Day 2-3: Supplier coordination meetings drag on</li>
@@ -116,7 +116,7 @@ export default function SHEINTrendDemo() {
                 <div className="flex items-start gap-4">
                   <Target className="w-8 h-8 text-pink-400 flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-bold text-white mb-2">Speed = Market Share in Fast Fashion</h3>
+                    <h3 className="font-bold text-gray-900 mb-2">Speed = Market Share in Fast Fashion</h3>
                     <p className="text-pink-100 leading-relaxed">
                       SHEIN's AI detected the Cottage Core trend instantly. But coordinating 5,847 stakeholders (180 designers, 
                       5,000 suppliers, logistics, marketing) traditionally takes <strong>48-72 hours</strong>—enough time for 
@@ -130,17 +130,17 @@ export default function SHEINTrendDemo() {
               <div className="grid md:grid-cols-3 gap-4 mb-8">
                 <div className="p-4 bg-pink-950/30 rounded-lg border border-pink-800/30 text-center">
                   <Users className="w-8 h-8 text-pink-400 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white">5,847</div>
+                  <div className="text-2xl font-bold text-gray-900">5,847</div>
                   <div className="text-sm text-pink-300">Stakeholders Coordinated</div>
                 </div>
                 <div className="p-4 bg-pink-950/30 rounded-lg border border-pink-800/30 text-center">
                   <Zap className="w-8 h-8 text-pink-400 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white">12 Minutes</div>
+                  <div className="text-2xl font-bold text-gray-900">12 Minutes</div>
                   <div className="text-sm text-pink-300">Full Coordination</div>
                 </div>
                 <div className="p-4 bg-pink-950/30 rounded-lg border border-pink-800/30 text-center">
                   <DollarSign className="w-8 h-8 text-pink-400 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white">$108M</div>
+                  <div className="text-2xl font-bold text-gray-900">$108M</div>
                   <div className="text-sm text-pink-300">Additional Revenue</div>
                 </div>
               </div>
@@ -149,7 +149,7 @@ export default function SHEINTrendDemo() {
                 <Button
                   size="lg"
                   onClick={() => goToAct("detection")}
-                  className="bg-pink-600 hover:bg-pink-700 text-white px-8 py-6 text-lg"
+                  className="bg-pink-600 hover:bg-pink-700 text-gray-900 px-8 py-6 text-lg"
                   data-testid="button-begin-simulation"
                 >
                   <Play className="w-5 h-5 mr-2" />
@@ -165,7 +165,7 @@ export default function SHEINTrendDemo() {
         {currentAct === "detection" && (
           <div className="max-w-6xl mx-auto space-y-8">
             <Card className="p-8 bg-white border-pink-800/30">
-              <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
                 <Target className="w-8 h-8 text-pink-400" />
                 Act 2: AI Trend Detection
               </h2>
@@ -177,7 +177,7 @@ export default function SHEINTrendDemo() {
                 <div className="flex items-center gap-3">
                   <CheckCircle className="h-6 w-6 text-pink-400 animate-pulse" />
                   <div>
-                    <p className="font-bold text-white">Viral Trend Criteria Met</p>
+                    <p className="font-bold text-gray-900">Viral Trend Criteria Met</p>
                     <p className="text-sm text-pink-200">
                       First-mover window open - Playbook #146 (Trend Capitalization) recommended
                     </p>
@@ -198,7 +198,7 @@ export default function SHEINTrendDemo() {
               <Button
                 size="lg"
                 onClick={() => goToAct("coordination")}
-                className="gap-2 bg-pink-600 hover:bg-pink-700 text-white"
+                className="gap-2 bg-pink-600 hover:bg-pink-700 text-gray-900"
                 data-testid="button-activate-playbook"
               >
                 <TrendingUp className="h-5 w-5" />
@@ -215,7 +215,7 @@ export default function SHEINTrendDemo() {
         {currentAct === "coordination" && (
           <div className="max-w-6xl mx-auto space-y-8">
             <Card className="p-8 bg-white border-pink-800/30">
-              <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
                 <Zap className="w-8 h-8 text-pink-400" />
                 Act 3: 12-Minute Coordinated Execution
               </h2>
@@ -227,24 +227,24 @@ export default function SHEINTrendDemo() {
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="p-6 bg-pink-950/30 rounded-lg border border-pink-800/30">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center text-white font-bold">1</div>
-                    <h3 className="font-bold text-white">Design Teams</h3>
+                    <div className="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center text-gray-900 font-bold">1</div>
+                    <h3 className="font-bold text-gray-900">Design Teams</h3>
                   </div>
                   <p className="text-sm text-pink-200 mb-2">180 designers begin creating 200 SKUs using AI trend insights</p>
                   <div className="text-2xl font-bold text-pink-400">180 Designers</div>
                 </div>
                 <div className="p-6 bg-pink-950/30 rounded-lg border border-pink-800/30">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center text-white font-bold">2</div>
-                    <h3 className="font-bold text-white">Supplier Network</h3>
+                    <div className="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center text-gray-900 font-bold">2</div>
+                    <h3 className="font-bold text-gray-900">Supplier Network</h3>
                   </div>
                   <p className="text-sm text-pink-200 mb-2">5,000 suppliers receive production orders, 3,200 begin manufacturing</p>
                   <div className="text-2xl font-bold text-pink-400">5,000 Suppliers</div>
                 </div>
                 <div className="p-6 bg-pink-950/30 rounded-lg border border-pink-800/30">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center text-white font-bold">3</div>
-                    <h3 className="font-bold text-white">Marketing Launch</h3>
+                    <div className="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center text-gray-900 font-bold">3</div>
+                    <h3 className="font-bold text-gray-900">Marketing Launch</h3>
                   </div>
                   <p className="text-sm text-pink-200 mb-2">2,300 TikTok influencers engaged, campaign ready for day-7 launch</p>
                   <div className="text-2xl font-bold text-pink-400">667 Specialists</div>
@@ -263,7 +263,7 @@ export default function SHEINTrendDemo() {
                 <Button
                   size="lg"
                   onClick={() => goToAct("outcome")}
-                  className="gap-2 bg-pink-600 hover:bg-pink-700 text-white"
+                  className="gap-2 bg-pink-600 hover:bg-pink-700 text-gray-900"
                   data-testid="button-view-outcome"
                 >
                   <TrendingUp className="h-5 w-5" />
@@ -279,7 +279,7 @@ export default function SHEINTrendDemo() {
           <div className="max-w-6xl mx-auto space-y-8">
             <Card className="p-8 bg-white border-pink-800/30 text-center">
               <TrendingUp className="w-16 h-16 text-pink-400 mx-auto mb-4" />
-              <h2 className="text-3xl font-bold text-white mb-3">
+              <h2 className="text-3xl font-bold text-gray-900 mb-3">
                 $108M Additional Revenue Through First-Mover Velocity
               </h2>
               <p className="text-xl text-pink-200 mb-6">
@@ -314,7 +314,7 @@ export default function SHEINTrendDemo() {
                 Replay Demo
               </Button>
               <Link href="/industry-demos">
-                <Button className="bg-pink-600 hover:bg-pink-700 text-white" data-testid="button-all-demos">
+                <Button className="bg-pink-600 hover:bg-pink-700 text-gray-900" data-testid="button-all-demos">
                   View All Industry Demos
                 </Button>
               </Link>

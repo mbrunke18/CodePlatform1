@@ -205,7 +205,7 @@ export default function LivingPlaybooks() {
         </div>
 
         {/* How It Works */}
-        <Card className="bg-gradient-to-r from-blue-600 to-violet-600 text-white border-0">
+        <Card className="bg-gradient-to-r from-blue-600 to-violet-600 text-gray-900 border-0">
           <CardHeader>
             <CardTitle className="text-2xl">How Self-Learning Works</CardTitle>
           </CardHeader>
@@ -216,28 +216,28 @@ export default function LivingPlaybooks() {
                   <span className="text-2xl font-bold">1</span>
                 </div>
                 <h4 className="font-semibold mb-1">Execute</h4>
-                <p className="text-sm text-blue-100">Playbook activated for real scenario</p>
+                <p className="text-sm text-blue-600">Playbook activated for real scenario</p>
               </div>
               <div>
                 <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mb-3">
                   <span className="text-2xl font-bold">2</span>
                 </div>
                 <h4 className="font-semibold mb-1">Capture</h4>
-                <p className="text-sm text-blue-100">AI analyzes execution data and outcomes</p>
+                <p className="text-sm text-blue-600">AI analyzes execution data and outcomes</p>
               </div>
               <div>
                 <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mb-3">
                   <span className="text-2xl font-bold">3</span>
                 </div>
                 <h4 className="font-semibold mb-1">Learn</h4>
-                <p className="text-sm text-blue-100">Generate improvement recommendations</p>
+                <p className="text-sm text-blue-600">Generate improvement recommendations</p>
               </div>
               <div>
                 <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mb-3">
                   <span className="text-2xl font-bold">4</span>
                 </div>
                 <h4 className="font-semibold mb-1">Evolve</h4>
-                <p className="text-sm text-blue-100">Playbook auto-updates for next execution</p>
+                <p className="text-sm text-blue-600">Playbook auto-updates for next execution</p>
               </div>
             </div>
           </CardContent>

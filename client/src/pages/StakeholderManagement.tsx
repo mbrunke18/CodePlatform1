@@ -299,7 +299,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white">{stats.total}</p>
-                  <p className="text-sm text-slate-300">Total Stakeholders</p>
+                  <p className="text-sm text-gray-600">Total Stakeholders</p>
                 </div>
               </div>
             </CardContent>
@@ -312,7 +312,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-purple-600">{stats.cSuite}</p>
-                  <p className="text-sm text-slate-300">C-Suite</p>
+                  <p className="text-sm text-gray-600">C-Suite</p>
                 </div>
               </div>
             </CardContent>
@@ -325,7 +325,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-blue-600">{stats.executives}</p>
-                  <p className="text-sm text-slate-300">Executives</p>
+                  <p className="text-sm text-gray-600">Executives</p>
                 </div>
               </div>
             </CardContent>
@@ -338,7 +338,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-green-600">{stats.active}</p>
-                  <p className="text-sm text-slate-300">Active</p>
+                  <p className="text-sm text-gray-600">Active</p>
                 </div>
               </div>
             </CardContent>
@@ -391,9 +391,9 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
         {filteredStakeholders.length === 0 ? (
           <Card>
             <CardContent className="py-16 text-center">
-              <Users className="h-12 w-12 mx-auto mb-4 text-slate-300" />
+              <Users className="h-12 w-12 mx-auto mb-4 text-gray-600" />
               <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">No Stakeholders Found</h3>
-              <p className="text-slate-300 mb-6">Start by adding stakeholders to your directory.</p>
+              <p className="text-gray-600 mb-6">Start by adding stakeholders to your directory.</p>
               <Button onClick={handleOpenCreate} data-testid="button-add-first-stakeholder">
                 <Plus className="h-4 w-4 mr-2" />
                 Add First Stakeholder
@@ -453,7 +453,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                             <span className="truncate max-w-[150px]" data-testid={`text-email-${stakeholder.id}`}>{stakeholder.email}</span>
                           </div>
                           {stakeholder.phone && (
-                            <div className="flex items-center gap-1 text-slate-300">
+                            <div className="flex items-center gap-1 text-gray-600">
                               <Phone className="h-3 w-3" />
                               <span data-testid={`text-phone-${stakeholder.id}`}>{stakeholder.phone}</span>
                             </div>

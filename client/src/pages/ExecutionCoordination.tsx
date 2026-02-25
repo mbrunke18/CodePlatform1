@@ -184,7 +184,7 @@ export default function ExecutionCoordination() {
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-2">
             <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center">
-              <Zap className="h-6 w-6 text-white" />
+              <Zap className="h-6 w-6 text-gray-900" />
             </div>
             <div>
               <h1 className="text-3xl font-bold text-slate-900 dark:text-white" data-testid="page-title">
@@ -249,7 +249,7 @@ export default function ExecutionCoordination() {
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-4">
                 <div className={`w-16 h-16 ${currentStyle.icon} rounded-full flex items-center justify-center`}>
-                  <Zap className="h-8 w-8 text-white" />
+                  <Zap className="h-8 w-8 text-gray-900" />
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white mb-1">
@@ -261,7 +261,7 @@ export default function ExecutionCoordination() {
                 </div>
               </div>
               <div className="text-center md:text-right">
-                <p className="text-sm text-slate-300 mb-1">The Mindset:</p>
+                <p className="text-sm text-gray-600 mb-1">The Mindset:</p>
                 <p className={`text-lg font-semibold ${currentStyle.text}`}>
                   "Comfortable. Confident. Prepared."
                 </p>
@@ -276,7 +276,7 @@ export default function ExecutionCoordination() {
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               <div>
                 <div className="flex items-center gap-2 mb-2">
-                  <Badge className="bg-emerald-500 text-white animate-pulse">LIVE</Badge>
+                  <Badge className="bg-emerald-500 text-gray-900 animate-pulse">LIVE</Badge>
                   <span className="text-2xl font-bold text-slate-900 dark:text-white" data-testid="text-scenario">
                     {sampleExecution.scenario}
                   </span>
@@ -291,19 +291,19 @@ export default function ExecutionCoordination() {
                   <div className="text-3xl font-bold text-emerald-600" data-testid="text-completion">
                     {completionPercent}%
                   </div>
-                  <div className="text-sm text-slate-300">Complete</div>
+                  <div className="text-sm text-gray-600">Complete</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-blue-600" data-testid="text-elapsed">
                     {elapsedMinutes}m
                   </div>
-                  <div className="text-sm text-slate-300">Elapsed</div>
+                  <div className="text-sm text-gray-600">Elapsed</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-amber-600">
                     ~{Math.max(0, 45 - elapsedMinutes)}m
                   </div>
-                  <div className="text-sm text-slate-300">Remaining</div>
+                  <div className="text-sm text-gray-600">Remaining</div>
                 </div>
               </div>
             </div>
@@ -323,7 +323,7 @@ export default function ExecutionCoordination() {
                 <div className="text-2xl font-bold text-slate-900 dark:text-white" data-testid="metric-completed">
                   {sampleExecution.completedTasks}
                 </div>
-                <div className="text-sm text-slate-300">Completed</div>
+                <div className="text-sm text-gray-600">Completed</div>
               </div>
             </CardContent>
           </Card>
@@ -337,7 +337,7 @@ export default function ExecutionCoordination() {
                 <div className="text-2xl font-bold text-slate-900 dark:text-white">
                   {sampleExecution.phases.flatMap(p => p.tasks).filter(t => t.status === 'in_progress').length}
                 </div>
-                <div className="text-sm text-slate-300">In Progress</div>
+                <div className="text-sm text-gray-600">In Progress</div>
               </div>
             </CardContent>
           </Card>
@@ -351,7 +351,7 @@ export default function ExecutionCoordination() {
                 <div className="text-2xl font-bold text-slate-900 dark:text-white">
                   12
                 </div>
-                <div className="text-sm text-slate-300">Stakeholders</div>
+                <div className="text-sm text-gray-600">Stakeholders</div>
               </div>
             </CardContent>
           </Card>
@@ -365,7 +365,7 @@ export default function ExecutionCoordination() {
                 <div className="text-2xl font-bold text-slate-900 dark:text-white">
                   45m
                 </div>
-                <div className="text-sm text-slate-300">Target Time</div>
+                <div className="text-sm text-gray-600">Target Time</div>
               </div>
             </CardContent>
           </Card>
@@ -397,7 +397,7 @@ export default function ExecutionCoordination() {
                         <div className="flex items-center gap-3">
                           <div className={`w-8 h-8 rounded-full flex items-center justify-center ${phaseComplete ? 'bg-emerald-500' : 'bg-slate-200 dark:bg-slate-700'}`}>
                             {phaseComplete ? (
-                              <CheckCircle className="h-5 w-5 text-white" />
+                              <CheckCircle className="h-5 w-5 text-gray-900" />
                             ) : (
                               <span className="text-sm font-bold text-gray-600 dark:text-slate-300">{phaseIndex + 1}</span>
                             )}
@@ -438,7 +438,7 @@ export default function ExecutionCoordination() {
                                   <div className="font-medium text-slate-900 dark:text-white">
                                     {task.title}
                                   </div>
-                                  <div className="text-sm text-slate-300">
+                                  <div className="text-sm text-gray-600">
                                     {task.assignee} • {task.role}
                                     {task.isParallel && (
                                       <Badge variant="outline" className="ml-2 text-xs">Parallel</Badge>
@@ -479,7 +479,7 @@ export default function ExecutionCoordination() {
           <TabsContent value="roles">
             <Card>
               <CardContent className="p-6">
-                <p className="text-slate-300 text-center py-8">
+                <p className="text-gray-600 text-center py-8">
                   Role-based view coming soon - see tasks grouped by assignee
                 </p>
               </CardContent>
@@ -489,7 +489,7 @@ export default function ExecutionCoordination() {
           <TabsContent value="dependencies">
             <Card>
               <CardContent className="p-6">
-                <p className="text-slate-300 text-center py-8">
+                <p className="text-gray-600 text-center py-8">
                   Dependency graph coming soon - visualize task dependencies and critical path
                 </p>
               </CardContent>

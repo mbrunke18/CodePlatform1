@@ -186,11 +186,11 @@ export default function CrisisDetail() {
     <PageLayout>
       <div className="flex-1 page-background overflow-auto" data-testid="crisis-detail-page">
         {/* Header */}
-        <div className="bg-gradient-to-r from-red-600 to-orange-600 text-white p-6">
+        <div className="bg-gradient-to-r from-red-600 to-orange-600 text-gray-900 p-6">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center justify-between mb-4">
               <Link href="/crisis">
-                <Button variant="ghost" className="text-white hover:bg-white/20">
+                <Button variant="ghost" className="text-gray-900 hover:bg-white/20">
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Back to Crisis Center
                 </Button>
@@ -198,15 +198,15 @@ export default function CrisisDetail() {
               <div className="flex items-center gap-3">
                 <Badge 
                   variant={getStatusBadgeVariant(crisis.status)} 
-                  className="bg-white/20 text-white border-white/30"
+                  className="bg-white/20 text-gray-900 border-white/30"
                 >
                   {crisis.status.toUpperCase()}
                 </Badge>
-                <Button variant="ghost" className="text-white hover:bg-white/20">
+                <Button variant="ghost" className="text-gray-900 hover:bg-white/20">
                   <Share2 className="w-4 h-4 mr-2" />
                   Share
                 </Button>
-                <Button variant="ghost" className="text-white hover:bg-white/20">
+                <Button variant="ghost" className="text-gray-900 hover:bg-white/20">
                   <Download className="w-4 h-4 mr-2" />
                   Export
                 </Button>
@@ -215,10 +215,10 @@ export default function CrisisDetail() {
             
             <div className="space-y-2">
               <h1 className="text-3xl font-bold">{crisis.title}</h1>
-              <p className="text-red-100 text-lg">
+              <p className="text-red-500 text-lg">
                 {organization?.name || 'Organization'} • Crisis Response Protocol
               </p>
-              <div className="flex items-center gap-4 text-sm text-red-100">
+              <div className="flex items-center gap-4 text-sm text-red-500">
                 <div className="flex items-center gap-1">
                   <Calendar className="w-4 h-4" />
                   Created {new Date(crisis.createdAt).toLocaleDateString()}

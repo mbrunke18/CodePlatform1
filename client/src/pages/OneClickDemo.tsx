@@ -186,7 +186,7 @@ export default function OneClickDemo() {
       case 'blocker': return <AlertCircle className="h-4 w-4 text-red-400" />;
       case 'resolved': return <Zap className="h-4 w-4 text-amber-400" />;
       case 'complete': return <Shield className="h-4 w-4 text-emerald-400" />;
-      default: return <FileText className="h-4 w-4 text-slate-200" />;
+      default: return <FileText className="h-4 w-4 text-gray-600" />;
     }
   };
 
@@ -214,11 +214,11 @@ export default function OneClickDemo() {
               Live Interactive Demo
             </Badge>
             
-            <h1 className="text-5xl font-bold text-white mb-6">
+            <h1 className="text-5xl font-bold text-gray-900 mb-6">
               See Execution OS in Action
             </h1>
             
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
               Watch a critical data breach get detected, coordinated across 8 executives, 
               and fully contained in 12 minutes instead of 17 days.
             </p>
@@ -227,19 +227,19 @@ export default function OneClickDemo() {
               <Card className="bg-gray-50 border-gray-200">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl font-bold text-red-400 mb-2">2.4M</div>
-                  <div className="text-sm text-slate-200">Customers Impacted</div>
+                  <div className="text-sm text-gray-600">Customers Impacted</div>
                 </CardContent>
               </Card>
               <Card className="bg-gray-50 border-gray-200">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl font-bold text-amber-400 mb-2">$50M</div>
-                  <div className="text-sm text-slate-200">Potential Fine</div>
+                  <div className="text-sm text-gray-600">Potential Fine</div>
                 </CardContent>
               </Card>
               <Card className="bg-gray-50 border-gray-200">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl font-bold text-green-400 mb-2">12 min</div>
-                  <div className="text-sm text-slate-200">Target Response Time</div>
+                  <div className="text-sm text-gray-600">Target Response Time</div>
                 </CardContent>
               </Card>
             </div>
@@ -247,14 +247,14 @@ export default function OneClickDemo() {
             <Button 
               size="lg" 
               onClick={startDemo}
-              className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-12 py-6 text-xl rounded-xl shadow-2xl shadow-blue-500/30 transition-all hover:scale-105"
+              className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-gray-900 px-12 py-6 text-xl rounded-xl shadow-2xl shadow-blue-500/30 transition-all hover:scale-105"
               data-testid="button-start-demo"
             >
               <Play className="h-6 w-6 mr-3" />
               Start Live Demo
             </Button>
             
-            <p className="text-sm text-slate-300 mt-4">
+            <p className="text-sm text-gray-600 mt-4">
               15-second accelerated simulation of 12-minute response
             </p>
           </div>
@@ -278,13 +278,13 @@ export default function OneClickDemo() {
               <Badge className={`${demoState === 'complete' ? 'bg-green-500/20 text-green-400 border-green-500/30' : 'bg-red-500/20 text-red-400 border-red-500/30 animate-pulse'}`}>
                 {demoState === 'complete' ? 'CONTAINED' : 'ACTIVE INCIDENT'}
               </Badge>
-              <span className="text-white font-semibold">{DEMO_SCENARIO.name}</span>
+              <span className="text-gray-900 font-semibold">{DEMO_SCENARIO.name}</span>
             </div>
             
             <div className="flex items-center gap-4">
               <div className="text-right">
-                <div className="text-3xl font-mono font-bold text-white">{formatDisplayTime(displayTime)}</div>
-                <div className="text-xs text-slate-200">Elapsed Time</div>
+                <div className="text-3xl font-mono font-bold text-gray-900">{formatDisplayTime(displayTime)}</div>
+                <div className="text-xs text-gray-600">Elapsed Time</div>
               </div>
               
               <div className="flex gap-2">
@@ -311,7 +311,7 @@ export default function OneClickDemo() {
           {/* Progress Bar */}
           <div className="mt-3">
             <Progress value={Math.min(progress, 100)} className="h-2" />
-            <div className="flex justify-between text-xs text-slate-300 mt-1">
+            <div className="flex justify-between text-xs text-gray-600 mt-1">
               <span>0:00</span>
               <span>Target: 12:00</span>
             </div>
@@ -328,11 +328,11 @@ export default function OneClickDemo() {
             <Card className="bg-white border-gray-200">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                  <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
                     <Zap className="h-5 w-5 text-amber-400" />
                     Live Execution Feed
                   </h3>
-                  <Badge variant="outline" className="bg-transparent text-slate-200">
+                  <Badge variant="outline" className="bg-transparent text-gray-600">
                     {completedTasks}/{tasks.length} Tasks
                   </Badge>
                 </div>
@@ -351,8 +351,8 @@ export default function OneClickDemo() {
                       <div className="flex items-start gap-3">
                         {getTaskIcon(task.type)}
                         <div className="flex-1">
-                          <div className="text-sm text-white">{task.title}</div>
-                          <div className="text-xs text-slate-300">{task.stakeholder}</div>
+                          <div className="text-sm text-gray-900">{task.title}</div>
+                          <div className="text-xs text-gray-600">{task.stakeholder}</div>
                         </div>
                         {task.completed && (
                           <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0" />
@@ -371,7 +371,7 @@ export default function OneClickDemo() {
             <Card className="bg-white border-gray-200">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                  <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
                     <Users className="h-5 w-5 text-blue-400" />
                     Stakeholder Status
                   </h3>
@@ -398,8 +398,8 @@ export default function OneClickDemo() {
                           <div className="h-4 w-4 rounded-full border-2 border-slate-600" />
                         )}
                         <div>
-                          <div className="text-sm text-white">{stakeholder.name}</div>
-                          <div className="text-xs text-slate-300">{stakeholder.role}</div>
+                          <div className="text-sm text-gray-900">{stakeholder.name}</div>
+                          <div className="text-xs text-gray-600">{stakeholder.role}</div>
                         </div>
                       </div>
                       {stakeholder.acknowledged && (
@@ -416,7 +416,7 @@ export default function OneClickDemo() {
             {/* Live Metrics */}
             <Card className="bg-white border-gray-200">
               <CardContent className="p-4 space-y-4">
-                <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
                   <TrendingUp className="h-5 w-5 text-emerald-400" />
                   Live Metrics
                 </h3>
@@ -424,19 +424,19 @@ export default function OneClickDemo() {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-blue-400">{completedTasks}</div>
-                    <div className="text-xs text-slate-300">Tasks Complete</div>
+                    <div className="text-xs text-gray-600">Tasks Complete</div>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-green-400">{acknowledgedCount}</div>
-                    <div className="text-xs text-slate-300">Stakeholders Active</div>
+                    <div className="text-xs text-gray-600">Stakeholders Active</div>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-amber-400">$500K</div>
-                    <div className="text-xs text-slate-300">Budget Released</div>
+                    <div className="text-xs text-gray-600">Budget Released</div>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-purple-400">2.4M</div>
-                    <div className="text-xs text-slate-300">Customers Notified</div>
+                    <div className="text-xs text-gray-600">Customers Notified</div>
                   </div>
                 </div>
               </CardContent>
@@ -454,27 +454,27 @@ export default function OneClickDemo() {
                 </div>
               </div>
               
-              <h2 className="text-3xl font-bold text-white mb-2">Breach Contained in 12 Minutes</h2>
-              <p className="text-slate-300 mb-6">
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">Breach Contained in 12 Minutes</h2>
+              <p className="text-gray-600 mb-6">
                 Traditional response time: 17 days. Execution OS response: 12 minutes.
               </p>
               
               <div className="grid md:grid-cols-4 gap-4 mb-8">
                 <div className="bg-gray-50 rounded-lg p-4">
                   <div className="text-3xl font-bold text-green-400">340X</div>
-                  <div className="text-sm text-slate-200">Faster Response</div>
+                  <div className="text-sm text-gray-600">Faster Response</div>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-4">
                   <div className="text-3xl font-bold text-blue-400">$47M</div>
-                  <div className="text-sm text-slate-200">Fine Avoided</div>
+                  <div className="text-sm text-gray-600">Fine Avoided</div>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-4">
                   <div className="text-3xl font-bold text-amber-400">47</div>
-                  <div className="text-sm text-slate-200">Tasks Coordinated</div>
+                  <div className="text-sm text-gray-600">Tasks Coordinated</div>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-4">
                   <div className="text-3xl font-bold text-purple-400">8</div>
-                  <div className="text-sm text-slate-200">Executives Aligned</div>
+                  <div className="text-sm text-gray-600">Executives Aligned</div>
                 </div>
               </div>
               

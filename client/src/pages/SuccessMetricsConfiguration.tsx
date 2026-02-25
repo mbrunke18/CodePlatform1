@@ -266,21 +266,21 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
               <span>/</span>
               <span>Configuration</span>
               <span>/</span>
-              <span className="text-white">Success Metrics</span>
+              <span className="text-gray-900">Success Metrics</span>
             </div>
           </div>
 
           {/* Header */}
-          <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white p-6 rounded-lg">
+          <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-gray-900 p-6 rounded-lg">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                  <Target className="w-7 h-7 text-white" />
+                  <Target className="w-7 h-7 text-gray-900" />
                 </div>
                 <div>
                   <h1 className="text-3xl font-bold" data-testid="success-metrics-title">Success Metrics Configuration</h1>
-                  <p className="text-amber-100 mt-1">Define YOUR success criteria and KPIs</p>
-                  <p className="text-amber-200 mt-1 text-sm">Track progress toward your strategic goals with custom metrics</p>
+                  <p className="text-amber-700 mt-1">Define YOUR success criteria and KPIs</p>
+                  <p className="text-amber-700 mt-1 text-sm">Track progress toward your strategic goals with custom metrics</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -293,7 +293,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                   Add Metric
                 </Button>
                 <Link to="/">
-                  <Button variant="secondary" className="bg-amber-700 hover:bg-amber-800 text-amber-100 border-amber-600">
+                  <Button variant="secondary" className="bg-amber-700 hover:bg-amber-800 text-amber-700 border-amber-600">
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Dashboard
                   </Button>
@@ -315,11 +315,11 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                       </div>
                     </div>
                     <div className="absolute -right-2 -top-2 w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center">
-                      <TrendingUp className="h-5 w-5 text-white" />
+                      <TrendingUp className="h-5 w-5 text-gray-900" />
                     </div>
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-white">Future Readiness Index™</h2>
+                    <h2 className="text-2xl font-bold text-gray-900">Future Readiness Index™</h2>
                     <p className="text-gray-600 mt-1">Your organization's strategic preparedness score</p>
                     <div className="mt-4 flex items-center gap-4">
                       <div>
@@ -363,7 +363,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                           <TypeIcon className={`h-5 w-5 ${typeInfo.color}`} />
                         </div>
                         <div>
-                          <CardTitle className="text-white text-lg">{metric.name}</CardTitle>
+                          <CardTitle className="text-gray-900 text-lg">{metric.name}</CardTitle>
                           <CardDescription className="text-gray-600 text-sm">
                             {metric.description}
                           </CardDescription>
@@ -388,7 +388,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                     <div className="grid grid-cols-3 gap-4 text-center">
                       <div className="p-2 bg-gray-50 rounded-lg">
                         <div className="text-xs text-gray-600">Baseline</div>
-                        <div className="text-lg font-semibold text-gray-300">
+                        <div className="text-lg font-semibold text-gray-600">
                           {metric.baselineValue}{metric.unit === '%' || metric.unit === 'minutes' ? '' : ' '}{metric.unit}
                         </div>
                       </div>

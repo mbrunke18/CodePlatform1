@@ -544,7 +544,7 @@ export default function LiveActivationCenter() {
   if (!activationId) {
     return (
       <PageLayout>
-      <div className="min-h-screen bg-white text-white">
+      <div className="min-h-screen bg-white text-gray-900">
         <div className="max-w-6xl mx-auto px-6 py-10 md:py-16">
           <div className="mb-8">
             <Link href="/" className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-300 transition-colors">
@@ -560,13 +560,13 @@ export default function LiveActivationCenter() {
                     {roleOverlay ? `${contextLabel} Perspective` : `${contextLabel} Industry`}
                   </span>
                 </div>
-                <p className="text-sm text-gray-300">{contextPerspective}</p>
+                <p className="text-sm text-gray-600">{contextPerspective}</p>
               </div>
 
               {industryOverlay && (
                 <div className="px-4 pb-3 border-t border-emerald-500/10 pt-3">
                   <div className="text-[10px] uppercase tracking-wider text-gray-600 mb-2">Scenario</div>
-                  <div className="text-sm font-medium text-white mb-1">{industryOverlay.scenario}</div>
+                  <div className="text-sm font-medium text-gray-900 mb-1">{industryOverlay.scenario}</div>
                   <div className="text-xs text-gray-600">{industryOverlay.organization}</div>
                 </div>
               )}
@@ -576,7 +576,7 @@ export default function LiveActivationCenter() {
                   <div className="text-[10px] uppercase tracking-wider text-gray-600 mb-2">Your Priority Actions</div>
                   <div className="space-y-1">
                     {roleOverlay.yourActions.map((action, i) => (
-                      <div key={i} className="flex items-center gap-2 text-xs text-gray-300">
+                      <div key={i} className="flex items-center gap-2 text-xs text-gray-600">
                         <CheckCircle2 className="w-3 h-3 text-emerald-400 flex-shrink-0" />
                         {action}
                       </div>
@@ -634,7 +634,7 @@ export default function LiveActivationCenter() {
                   <div className={cn('mb-4', colors.text)}>
                     {getPlaybookIcon(pb.icon)}
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">{pb.name}</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{pb.name}</h3>
                   <p className="text-sm text-gray-600 mb-6 leading-relaxed">{pb.description}</p>
                   <div className="flex items-center gap-4 text-xs text-gray-600">
                     <span className="flex items-center gap-1">
@@ -688,7 +688,7 @@ export default function LiveActivationCenter() {
               disabled={activateMutation.isPending}
               className={cn(
                 'text-lg px-12 py-7 font-bold tracking-wide rounded-xl transition-all duration-300',
-                'bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/20',
+                'bg-emerald-600 hover:bg-emerald-500 text-gray-900 shadow-lg shadow-emerald-600/20',
                 'disabled:opacity-50'
               )}
             >
@@ -727,7 +727,7 @@ export default function LiveActivationCenter() {
 
     return (
       <PageLayout>
-      <div className="min-h-screen bg-white text-white p-6 overflow-y-auto">
+      <div className="min-h-screen bg-white text-gray-900 p-6 overflow-y-auto">
         <div className="max-w-4xl mx-auto py-8 md:py-12">
           <div className="text-center mb-10">
             <div className="w-20 h-20 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-6 animate-[pulse_2s_ease-in-out_infinite]">
@@ -737,12 +737,12 @@ export default function LiveActivationCenter() {
             <p className="text-gray-600 mb-4 text-lg">All stakeholders aligned and tasks executed successfully.</p>
             {industryOverlay && (
               <div className="mb-4 text-sm text-gray-600">
-                <span className="text-white font-medium">{industryOverlay.scenario}</span> — {industryOverlay.organization}
+                <span className="text-gray-900 font-medium">{industryOverlay.scenario}</span> — {industryOverlay.organization}
               </div>
             )}
             {roleOverlay && (
               <div className="mb-4 text-sm text-gray-600">
-                Viewed as <span className="text-white font-medium">{roleOverlay.label}</span>
+                Viewed as <span className="text-gray-900 font-medium">{roleOverlay.label}</span>
               </div>
             )}
             <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-lg px-4 py-2">
@@ -773,7 +773,7 @@ export default function LiveActivationCenter() {
           <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
             <div className="flex items-center gap-2 mb-5">
               <FileText className="w-5 h-5 text-blue-400" />
-              <h2 className="text-lg font-bold text-white">Executive After-Action Brief</h2>
+              <h2 className="text-lg font-bold text-gray-900">Executive After-Action Brief</h2>
               <Badge className="text-[10px] border-0 bg-blue-500/10 text-blue-400 font-semibold ml-auto">AUTO-GENERATED</Badge>
             </div>
 
@@ -785,7 +785,7 @@ export default function LiveActivationCenter() {
                     {getPlaybookIcon(activePlaybook?.icon || 'shield')}
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-white">{activePlaybook?.name}</div>
+                    <div className="text-sm font-semibold text-gray-900">{activePlaybook?.name}</div>
                     <Badge className={cn('text-[10px] border-0 mt-1', getCategoryColor(activePlaybook?.category || 'OFFENSE').bg, getCategoryColor(activePlaybook?.category || 'OFFENSE').text)}>
                       {activePlaybook?.category}
                     </Badge>
@@ -819,8 +819,8 @@ export default function LiveActivationCenter() {
                 <div className="space-y-1.5 mb-4">
                   {tier1Stakeholders.map(s => (
                     <div key={s.id} className="flex items-center gap-2">
-                      <div className={cn('w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0', s.color)}>{s.initials}</div>
-                      <span className="text-xs text-gray-300 flex-1 truncate">{s.name} — {s.title}</span>
+                      <div className={cn('w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-gray-900 flex-shrink-0', s.color)}>{s.initials}</div>
+                      <span className="text-xs text-gray-600 flex-1 truncate">{s.name} — {s.title}</span>
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
                     </div>
                   ))}
@@ -830,8 +830,8 @@ export default function LiveActivationCenter() {
                 <div className="space-y-1.5 mb-4">
                   {tier2Stakeholders.map(s => (
                     <div key={s.id} className="flex items-center gap-2">
-                      <div className={cn('w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0', s.color)}>{s.initials}</div>
-                      <span className="text-xs text-gray-300 flex-1 truncate">{s.name} — {s.title}</span>
+                      <div className={cn('w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-gray-900 flex-shrink-0', s.color)}>{s.initials}</div>
+                      <span className="text-xs text-gray-600 flex-1 truncate">{s.name} — {s.title}</span>
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
                     </div>
                   ))}
@@ -885,7 +885,7 @@ export default function LiveActivationCenter() {
             <div className="bg-white border border-cyan-500/20 rounded-xl p-6 mb-8">
               <div className="flex items-center gap-2 mb-4">
                 <Zap className="w-5 h-5 text-cyan-400" />
-                <h2 className="text-lg font-bold text-white">Live Integration Results</h2>
+                <h2 className="text-lg font-bold text-gray-900">Live Integration Results</h2>
                 <Badge className="text-[10px] border-0 bg-cyan-500/20 text-cyan-300 ml-auto">REAL DATA</Badge>
               </div>
               {liveDispatchResults.jira?.filter((r: any) => r.success).length > 0 && (
@@ -896,7 +896,7 @@ export default function LiveActivationCenter() {
                       <div key={i} className="flex items-center gap-2 text-sm">
                         <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" />
                         <span className="text-blue-400 font-mono text-xs">{r.detail?.key}</span>
-                        <span className="text-gray-300 text-xs">{r.detail?.taskName}</span>
+                        <span className="text-gray-600 text-xs">{r.detail?.taskName}</span>
                         {r.detail?.url && (
                           <a href={r.detail.url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-gray-600 hover:text-blue-400 ml-auto">View</a>
                         )}
@@ -910,7 +910,7 @@ export default function LiveActivationCenter() {
                   <h3 className="text-xs font-bold tracking-wider text-gray-600 mb-2 uppercase">Slack Notifications</h3>
                   <div className="flex items-center gap-2 text-sm">
                     <CheckCircle2 className="w-3.5 h-3.5 text-purple-400 flex-shrink-0" />
-                    <span className="text-gray-300 text-xs">Activation alert sent to Slack workspace</span>
+                    <span className="text-gray-600 text-xs">Activation alert sent to Slack workspace</span>
                   </div>
                 </div>
               )}
@@ -926,7 +926,7 @@ export default function LiveActivationCenter() {
             <Button
               size="lg"
               onClick={runAnother}
-              className="bg-emerald-600 hover:bg-emerald-500 text-white px-10 py-6 text-lg rounded-xl w-full sm:w-auto"
+              className="bg-emerald-600 hover:bg-emerald-500 text-gray-900 px-10 py-6 text-lg rounded-xl w-full sm:w-auto"
             >
               Run Another Demo
             </Button>
@@ -934,7 +934,7 @@ export default function LiveActivationCenter() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-gray-200 text-gray-300 hover:bg-gray-800 hover:text-white px-10 py-6 text-lg rounded-xl w-full"
+                className="border-gray-200 text-gray-600 hover:bg-gray-800 hover:text-white px-10 py-6 text-lg rounded-xl w-full"
               >
                 Back to Execution OS
               </Button>
@@ -952,7 +952,7 @@ export default function LiveActivationCenter() {
 
   return (
     <PageLayout>
-    <div className="min-h-screen bg-white text-white">
+    <div className="min-h-screen bg-white text-gray-900">
       <div className="border-b border-gray-200 bg-white backdrop-blur-sm sticky top-0 z-30">
         <div className="max-w-[1800px] mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2 md:gap-4 min-w-0">
@@ -974,7 +974,7 @@ export default function LiveActivationCenter() {
           </div>
           <div className="flex items-center gap-2 md:gap-4">
             <div className="flex items-center gap-2 md:gap-3">
-              <div className="flex items-center gap-1.5 text-gray-300 font-mono text-sm md:text-lg">
+              <div className="flex items-center gap-1.5 text-gray-600 font-mono text-sm md:text-lg">
                 <Clock className="w-4 h-4 text-gray-600" />
                 {formatElapsed(simulatedSeconds)}
               </div>
@@ -1016,7 +1016,7 @@ export default function LiveActivationCenter() {
           <Card className="bg-white border-gray-200">
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
-                <CardTitle className="text-sm font-semibold text-gray-300 flex items-center gap-2">
+                <CardTitle className="text-sm font-semibold text-gray-600 flex items-center gap-2">
                   <Users className="w-4 h-4 text-blue-400" /> Stakeholder Coordination
                 </CardTitle>
                 <span className="text-xs text-emerald-400 font-mono">{acknowledgedCount}/{stakeholders.length} acknowledged</span>
@@ -1034,12 +1034,12 @@ export default function LiveActivationCenter() {
                     ? 'bg-blue-500/5 border-blue-500/20'
                     : 'bg-gray-50 border-gray-200'
                 )}>
-                  <div className={cn('w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0', s.color)}>
+                  <div className={cn('w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-gray-900 flex-shrink-0', s.color)}>
                     {s.initials}
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium text-white truncate">{s.name}</span>
+                      <span className="text-sm font-medium text-gray-900 truncate">{s.name}</span>
                       <Badge variant="outline" className="text-[10px] px-1.5 py-0 border-gray-200 text-gray-600">
                         Tier {s.tier}
                       </Badge>
@@ -1082,7 +1082,7 @@ export default function LiveActivationCenter() {
           <Card className="bg-white border-gray-200">
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
-                <CardTitle className="text-sm font-semibold text-gray-300 flex items-center gap-2">
+                <CardTitle className="text-sm font-semibold text-gray-600 flex items-center gap-2">
                   <Target className="w-4 h-4 text-blue-400" /> Execution Tasks
                 </CardTitle>
                 <span className="text-xs text-emerald-400 font-mono">{completedTaskCount}/{tasks.length} complete</span>
@@ -1115,7 +1115,7 @@ export default function LiveActivationCenter() {
                               <span className={cn(
                                 'text-sm truncate',
                                 task.status === 'completed' ? 'text-gray-600' :
-                                task.status === 'in_progress' ? 'text-white' : 'text-gray-600'
+                                task.status === 'in_progress' ? 'text-gray-900' : 'text-gray-600'
                               )}>{task.name}</span>
                               {isYourTask && (
                                 <Badge className="text-[8px] px-1 py-0 bg-amber-500/20 text-amber-400 border-0 flex-shrink-0">YOU</Badge>
@@ -1153,7 +1153,7 @@ export default function LiveActivationCenter() {
                   />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-3xl font-bold font-mono text-white">{formatElapsed(simulatedSeconds)}</span>
+                  <span className="text-3xl font-bold font-mono text-gray-900">{formatElapsed(simulatedSeconds)}</span>
                   <span className="text-[10px] text-gray-600">EXECUTION TIME</span>
                 </div>
               </div>
@@ -1187,7 +1187,7 @@ export default function LiveActivationCenter() {
         <div className="md:col-span-2 lg:col-span-1 space-y-3">
           <Card className="bg-white border-gray-200 h-full flex flex-col">
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-semibold text-gray-300 flex items-center gap-2">
+              <CardTitle className="text-sm font-semibold text-gray-600 flex items-center gap-2">
                 <Activity className="w-4 h-4 text-emerald-400" /> Live Activity Feed
               </CardTitle>
             </CardHeader>

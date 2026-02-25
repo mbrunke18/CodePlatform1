@@ -75,15 +75,15 @@ export default function Contact() {
       <div className="page-background min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
 
       {/* Hero Section */}
-      <section className="py-16 px-6 text-white">
+      <section className="py-16 px-6 text-gray-900">
         <div className="max-w-5xl mx-auto text-center">
-          <Badge className="mb-4 bg-purple-600 text-white border-0 text-base px-6 py-2" data-testid="badge-early-access">
+          <Badge className="mb-4 bg-purple-600 text-gray-900 border-0 text-base px-6 py-2" data-testid="badge-early-access">
             Q1 2026 Pilot Program
           </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white" data-testid="heading-early-access">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900" data-testid="heading-early-access">
             Request Early Access Interview
           </h1>
-          <p className="text-xl text-blue-200 max-w-3xl mx-auto mb-6">
+          <p className="text-xl text-blue-700 max-w-3xl mx-auto mb-6">
             Join an exclusive group of 10 Fortune 1000 companies transforming strategic execution through Execution OS' 90-day validation partnership.
           </p>
           <div className="flex items-center justify-center gap-8 text-sm text-blue-300">
@@ -317,7 +317,7 @@ export default function Contact() {
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full bg-purple-600 hover:bg-purple-700 text-white text-lg py-6"
+                      className="w-full bg-purple-600 hover:bg-purple-700 text-gray-900 text-lg py-6"
                       data-testid="button-submit-early-access"
                     >
                       Submit Early Access Request

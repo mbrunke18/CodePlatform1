@@ -124,7 +124,7 @@ function OverallReadinessCard({ readinessData }: { readinessData: any }) {
   const scoreColor = score >= 80 ? 'text-green-600' : score >= 60 ? 'text-amber-600' : 'text-red-600';
   
   return (
-    <Card className=" text-white border-0">
+    <Card className=" text-gray-900 border-0">
       <CardHeader className="pb-2">
         <CardTitle className="flex items-center gap-2 text-lg">
           <Shield className="w-5 h-5" />
@@ -135,7 +135,7 @@ function OverallReadinessCard({ readinessData }: { readinessData: any }) {
         <div className="flex items-center justify-between">
           <div className="text-center">
             <div className={`text-5xl font-bold ${scoreColor}`}>{score}%</div>
-            <div className="text-xs text-slate-200 mt-1">Overall Score</div>
+            <div className="text-xs text-gray-600 mt-1">Overall Score</div>
           </div>
           <div className="flex-1 ml-6 space-y-2">
             <div className="flex justify-between text-xs">

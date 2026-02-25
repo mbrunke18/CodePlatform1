@@ -197,7 +197,7 @@ export default function PlaybookReadinessAudit() {
     <div className="page-background min-h-screen">
       <StandardNav />
       
-      <div className="bg-gradient-to-r from-blue-600 via-violet-600 to-purple-600 text-white py-12">
+      <div className="bg-gradient-to-r from-blue-600 via-violet-600 to-purple-600 text-gray-900 py-12">
         <div className="max-w-7xl mx-auto px-8">
           <div className="flex items-center justify-between">
             <div>
@@ -207,14 +207,14 @@ export default function PlaybookReadinessAudit() {
                   Playbook Readiness Audit
                 </h1>
               </div>
-              <p className="text-blue-100 text-lg max-w-2xl">
+              <p className="text-blue-600 text-lg max-w-2xl">
                 Assess preparedness across your 170 strategic playbooks. Identify gaps, 
                 schedule drills, and ensure your organization is ready to execute.
               </p>
             </div>
             <div className="hidden lg:flex items-center gap-4">
-              <OnboardingTrigger pageId="playbook-readiness" autoStart={true} className="bg-white/10 border-white/30 text-white hover:bg-white/20" />
-              <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/20" data-testid="button-export">
+              <OnboardingTrigger pageId="playbook-readiness" autoStart={true} className="bg-white/10 border-white/30 text-gray-900 hover:bg-white/20" />
+              <Button variant="outline" className="bg-transparent border-white/30 text-gray-900 hover:bg-white/20" data-testid="button-export">
                 <Download className="h-4 w-4 mr-2" />
                 Export Report
               </Button>
@@ -240,7 +240,7 @@ export default function PlaybookReadinessAudit() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between mb-2">
                     <TierIcon className={`h-6 w-6 ${config.textColor}`} />
-                    <Badge className={`${config.color} text-white`}>
+                    <Badge className={`${config.color} text-gray-900`}>
                       {percentage}%
                     </Badge>
                   </div>
@@ -411,25 +411,25 @@ export default function PlaybookReadinessAudit() {
                           <div className="text-lg font-bold text-blue-600 dark:text-blue-400">
                             {playbook.triggerCoverage}%
                           </div>
-                          <div className="text-xs text-slate-300">Triggers</div>
+                          <div className="text-xs text-gray-600">Triggers</div>
                         </div>
                         <div className="text-center">
                           <div className="text-lg font-bold text-violet-600 dark:text-violet-400">
                             {playbook.stakeholderReadiness}%
                           </div>
-                          <div className="text-xs text-slate-300">Stakeholders</div>
+                          <div className="text-xs text-gray-600">Stakeholders</div>
                         </div>
                         <div className="text-center">
                           <div className="text-lg font-bold text-amber-600 dark:text-amber-400">
                             {playbook.practiceFrequency}%
                           </div>
-                          <div className="text-xs text-slate-300">Practice</div>
+                          <div className="text-xs text-gray-600">Practice</div>
                         </div>
                         <div className="text-center">
                           <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">
                             {playbook.outcomeConfidence}%
                           </div>
-                          <div className="text-xs text-slate-300">Confidence</div>
+                          <div className="text-xs text-gray-600">Confidence</div>
                         </div>
                       </div>
 
@@ -437,7 +437,7 @@ export default function PlaybookReadinessAudit() {
                         <div className={`text-2xl font-bold ${config.textColor}`}>
                           {playbook.overallScore}%
                         </div>
-                        <div className="text-xs text-slate-300">Overall</div>
+                        <div className="text-xs text-gray-600">Overall</div>
                       </div>
 
                       <div className="flex items-center gap-2">
@@ -463,7 +463,7 @@ export default function PlaybookReadinessAudit() {
                   {playbook.recommendations.length > 0 && (
                     <div className="mt-3 pt-3 border-t border-slate-200 dark:border-slate-700">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-xs font-semibold text-slate-300">Recommendations:</span>
+                        <span className="text-xs font-semibold text-gray-600">Recommendations:</span>
                         {playbook.recommendations.map((rec, idx) => (
                           <Badge key={idx} variant="secondary" className="text-xs">
                             {rec}

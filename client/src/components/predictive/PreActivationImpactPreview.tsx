@@ -144,7 +144,7 @@ export default function PreActivationImpactPreview({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-lg bg-blue-600">
-              <Target className="w-6 h-6 text-white" />
+              <Target className="w-6 h-6 text-gray-900" />
             </div>
             <div>
               <CardTitle className="text-xl">Pre-Activation Impact Preview</CardTitle>
@@ -165,28 +165,28 @@ export default function PreActivationImpactPreview({
             <div className="text-2xl font-bold text-slate-900 dark:text-white">
               {formatCurrency(preview.estimatedCost)}
             </div>
-            <div className="text-xs text-slate-300">Estimated Cost</div>
+            <div className="text-xs text-gray-600">Estimated Cost</div>
           </div>
           <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-4 text-center">
             <Clock className="w-6 h-6 text-blue-600 mx-auto mb-2" />
             <div className="text-2xl font-bold text-slate-900 dark:text-white">
               {preview.estimatedDuration} min
             </div>
-            <div className="text-xs text-slate-300">Est. Duration</div>
+            <div className="text-xs text-gray-600">Est. Duration</div>
           </div>
           <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-4 text-center">
             <Users className="w-6 h-6 text-purple-600 mx-auto mb-2" />
             <div className="text-2xl font-bold text-slate-900 dark:text-white">
               {preview.stakeholdersToNotify}
             </div>
-            <div className="text-xs text-slate-300">Stakeholders</div>
+            <div className="text-xs text-gray-600">Stakeholders</div>
           </div>
           <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-4 text-center">
             <FileText className="w-6 h-6 text-amber-600 mx-auto mb-2" />
             <div className="text-2xl font-bold text-slate-900 dark:text-white">
               {preview.documentsToStage}
             </div>
-            <div className="text-xs text-slate-300">Documents</div>
+            <div className="text-xs text-gray-600">Documents</div>
           </div>
         </div>
 
@@ -211,7 +211,7 @@ export default function PreActivationImpactPreview({
               <Progress value={preview.readinessScore} className="flex-1" />
               <span className="text-lg font-bold text-emerald-600">{preview.readinessScore}%</span>
             </div>
-            <p className="text-xs text-slate-300 mt-2">
+            <p className="text-xs text-gray-600 mt-2">
               Success probability: <span className="font-semibold text-blue-600">{preview.successProbability}%</span>
             </p>
           </div>

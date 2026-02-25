@@ -176,7 +176,7 @@ export default function PlaybookManagement() {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white">{stats.total}</p>
-                  <p className="text-sm text-slate-300">Total Playbooks</p>
+                  <p className="text-sm text-gray-600">Total Playbooks</p>
                 </div>
               </div>
             </CardContent>
@@ -189,7 +189,7 @@ export default function PlaybookManagement() {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-green-600">{stats.active}</p>
-                  <p className="text-sm text-slate-300">Active</p>
+                  <p className="text-sm text-gray-600">Active</p>
                 </div>
               </div>
             </CardContent>
@@ -202,7 +202,7 @@ export default function PlaybookManagement() {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-blue-600">{stats.ready}</p>
-                  <p className="text-sm text-slate-300">Ready</p>
+                  <p className="text-sm text-gray-600">Ready</p>
                 </div>
               </div>
             </CardContent>
@@ -215,7 +215,7 @@ export default function PlaybookManagement() {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-gray-600">{stats.draft}</p>
-                  <p className="text-sm text-slate-300">Drafts</p>
+                  <p className="text-sm text-gray-600">Drafts</p>
                 </div>
               </div>
             </CardContent>
@@ -276,11 +276,11 @@ export default function PlaybookManagement() {
         ) : filteredPlaybooks.length === 0 ? (
           <Card>
             <CardContent className="py-16 text-center">
-              <FileText className="h-12 w-12 mx-auto mb-4 text-slate-300 dark:text-slate-400" />
+              <FileText className="h-12 w-12 mx-auto mb-4 text-gray-600 dark:text-slate-400" />
               <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">
                 {playbooks.length === 0 ? "No Playbooks Yet" : "No Matching Playbooks"}
               </h3>
-              <p className="text-slate-300 mb-6 max-w-md mx-auto">
+              <p className="text-gray-600 mb-6 max-w-md mx-auto">
                 {playbooks.length === 0 
                   ? "Create your first playbook to start building your strategic response library."
                   : "Try adjusting your search or filter criteria."}
@@ -327,7 +327,7 @@ export default function PlaybookManagement() {
                           </div>
                           <div>
                             <p className="font-medium text-slate-900 dark:text-white">{playbook.name}</p>
-                            <p className="text-sm text-slate-300 truncate max-w-xs">{playbook.domain}</p>
+                            <p className="text-sm text-gray-600 truncate max-w-xs">{playbook.domain}</p>
                           </div>
                         </div>
                       </TableCell>

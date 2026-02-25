@@ -51,7 +51,7 @@ export default function ExecutionTimelineDemo({
           {/* Header */}
           <div className="flex items-start justify-between">
             <div className="space-y-2">
-              <h2 className="text-2xl font-bold text-white">{plan.name}</h2>
+              <h2 className="text-2xl font-bold text-gray-900">{plan.name}</h2>
               <p className="text-gray-600 dark:text-gray-200">{plan.description}</p>
             </div>
             <div className="text-right">
@@ -73,7 +73,7 @@ export default function ExecutionTimelineDemo({
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-white text-sm">{plan.scenario}</p>
+                <p className="text-gray-900 text-sm">{plan.scenario}</p>
               </CardContent>
             </Card>
 
@@ -148,18 +148,18 @@ export default function ExecutionTimelineDemo({
             <div className={`bg-gradient-to-r ${getPhaseColor(phase.name)} p-4`}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white font-bold">
+                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-gray-900 font-bold">
                     {phaseIdx + 1}
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">{phase.name}</h3>
-                    <p className="text-white/80 text-sm">{phase.timeWindow}</p>
+                    <h3 className="text-xl font-bold text-gray-900">{phase.name}</h3>
+                    <p className="text-gray-900/80 text-sm">{phase.timeWindow}</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-white font-semibold">{phase.tasks.length} Tasks</div>
+                  <div className="text-gray-900 font-semibold">{phase.tasks.length} Tasks</div>
                   {'dependsOn' in phase && phase.dependsOn && (
-                    <div className="text-white/70 text-xs flex items-center gap-1">
+                    <div className="text-gray-900/70 text-xs flex items-center gap-1">
                       <ArrowRight className="h-3 w-3" />
                       Depends on {phase.dependsOn}
                     </div>
@@ -181,7 +181,7 @@ export default function ExecutionTimelineDemo({
                         <span className="text-blue-400 text-sm font-bold">{task.sequence}</span>
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h4 className="text-white font-semibold mb-1 leading-tight">{task.title}</h4>
+                        <h4 className="text-gray-900 font-semibold mb-1 leading-tight">{task.title}</h4>
                         <p className="text-gray-600 dark:text-gray-200 text-sm mb-2">{task.description}</p>
                         
                         {/* Expected Outcome */}
@@ -225,7 +225,7 @@ export default function ExecutionTimelineDemo({
         <CardContent className="p-6">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+              <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
                 <Timer className="h-5 w-5 text-blue-400" />
                 Execution Summary
               </h3>
@@ -239,13 +239,13 @@ export default function ExecutionTimelineDemo({
             
             <div className="grid grid-cols-3 gap-4 text-center pt-2">
               <div>
-                <div className="text-2xl font-bold text-white">
+                <div className="text-2xl font-bold text-gray-900">
                   {Object.values(plan.phases).reduce((sum, phase) => sum + phase.tasks.length, 0)}
                 </div>
                 <div className="text-xs text-gray-600 dark:text-gray-200">Total Tasks</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-white">{plan.stakeholders.length}</div>
+                <div className="text-2xl font-bold text-gray-900">{plan.stakeholders.length}</div>
                 <div className="text-xs text-gray-600 dark:text-gray-200">Stakeholders</div>
               </div>
               <div>

@@ -159,7 +159,7 @@ export default function HowItWorks() {
               {phases.map((phase, index) => (
                 <div key={phase.name} className="flex items-center">
                   <div className={`w-12 h-12 md:w-16 md:h-16 rounded-xl bg-gradient-to-br ${phase.bgGradient} flex items-center justify-center shadow-lg`}>
-                    <phase.icon className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                    <phase.icon className="h-6 w-6 md:h-8 md:w-8 text-gray-900" />
                   </div>
                   {index < phases.length - 1 && (
                     <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-gray-400 mx-1 md:mx-2" />
@@ -188,17 +188,17 @@ export default function HowItWorks() {
                 <div className={`bg-gradient-to-r ${phase.bgGradient} p-6 md:p-8`}>
                   <div className="flex items-center gap-4">
                     <div className="w-16 h-16 rounded-xl bg-white/20 backdrop-blur flex items-center justify-center">
-                      <phase.icon className="h-8 w-8 text-white" />
+                      <phase.icon className="h-8 w-8 text-gray-900" />
                     </div>
                     <div>
                       <div className="flex items-center gap-3 mb-1">
-                        <span className="text-white/70 text-sm font-medium">Phase {phase.number}</span>
-                        <Badge className="bg-white/20 text-white border-white/30 text-xs font-semibold">
+                        <span className="text-gray-900/70 text-sm font-medium">Phase {phase.number}</span>
+                        <Badge className="bg-white/20 text-gray-900 border-white/30 text-xs font-semibold">
                           {phase.moduleName}
                         </Badge>
                       </div>
-                      <h2 className="text-2xl md:text-3xl font-bold text-white">{phase.name}</h2>
-                      <p className="text-white/90 text-lg">{phase.tagline}</p>
+                      <h2 className="text-2xl md:text-3xl font-bold text-gray-900">{phase.name}</h2>
+                      <p className="text-gray-900/90 text-lg">{phase.tagline}</p>
                     </div>
                   </div>
                 </div>
@@ -351,7 +351,7 @@ export default function HowItWorks() {
             </p>
             <Button 
               onClick={() => setLocation("/north-star")}
-              className="bg-gradient-to-r from-poise-teal to-cyan-500 hover:from-cyan-500 hover:to-poise-teal text-white px-8 py-3 text-lg shadow-lg shadow-poise-teal/30"
+              className="bg-gradient-to-r from-poise-teal to-cyan-500 hover:from-cyan-500 hover:to-poise-teal text-gray-900 px-8 py-3 text-lg shadow-lg shadow-poise-teal/30"
               data-testid="button-north-star"
             >
               Launch Execution OS North Star™
@@ -405,10 +405,10 @@ export default function HowItWorks() {
               <Badge className="mb-4 bg-red-500/20 text-red-400 border-red-500/30">
                 Built for Compound Disruption
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 When Disruptions Don't Come One at a Time
               </h2>
-              <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 Compound disruptions — multidimensional, self-reinforcing events that cascade across domains — are the new normal. A cyber breach triggers regulatory action. A tariff war disrupts supply chains. Execution OS is built for coordinated, cross-domain response.
               </p>
             </div>
@@ -422,7 +422,7 @@ export default function HowItWorks() {
               ].map((item, i) => (
                 <div key={i} className={`bg-white border ${item.color} rounded-xl p-6`}>
                   <h3 className={`font-bold ${item.iconColor} mb-2`}>{item.scenario}</h3>
-                  <p className="text-slate-300 text-sm mb-3">{item.example}</p>
+                  <p className="text-gray-600 text-sm mb-3">{item.example}</p>
                   <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
                     <p className="text-xs text-gray-600 font-semibold mb-1 uppercase tracking-wider">Execution OS Response</p>
                     <p className="text-emerald-400 text-sm">{item.response}</p>
@@ -432,7 +432,7 @@ export default function HowItWorks() {
             </div>
 
             <div className="text-center">
-              <h3 className="text-xl font-bold text-white mb-6">The IDEA Framework Operationalizes Strategic Foresight</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-6">The IDEA Framework Operationalizes Strategic Foresight</h3>
               <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
                 {[
                   { principle: 'Signal-First', idea: 'IDENTIFY', desc: 'AI-powered signal detection spots compound disruption patterns before they cascade', color: 'bg-violet-500/10 border-violet-500/30', textColor: 'text-violet-400' },
@@ -445,7 +445,7 @@ export default function HowItWorks() {
                       <ArrowRight className="h-3 w-3 text-gray-500" />
                       <span className={`font-bold ${item.textColor}`}>{item.idea}</span>
                     </div>
-                    <p className="text-slate-300 text-sm">{item.desc}</p>
+                    <p className="text-gray-600 text-sm">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -469,7 +469,7 @@ export default function HowItWorks() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
               onClick={() => { window.location.href = '/try-demo'; }}
-              className="bg-poise-teal hover:bg-cyan-600 text-white px-8 py-6 text-lg"
+              className="bg-poise-teal hover:bg-cyan-600 text-gray-900 px-8 py-6 text-lg"
               data-testid="button-try-demo"
             >
               <Play className="h-5 w-5 mr-2" />

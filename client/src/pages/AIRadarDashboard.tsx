@@ -100,7 +100,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
         </div>
 
         {/* Live Status Bar */}
-        <div className=" rounded-xl p-4 text-white">
+        <div className=" rounded-xl p-4 text-gray-900">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
@@ -133,7 +133,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
           {/* Radar Visualization */}
           <Card className="lg:col-span-1 bg-white border-gray-200">
             <CardHeader className="pb-2">
-              <CardTitle className="text-white text-lg">Signal Radar</CardTitle>
+              <CardTitle className="text-gray-900 text-lg">Signal Radar</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="relative w-full aspect-square max-w-[300px] mx-auto">

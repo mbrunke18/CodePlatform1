@@ -470,7 +470,7 @@ export default function TryDemo() {
       case 'jira': return <SiJira className="h-4 w-4 text-[#0052CC]" />;
       case 'teams': return <Users className="h-4 w-4 text-[#6264A7]" />;
       case 'salesforce': return <SiSalesforce className="h-4 w-4 text-[#00A1E0]" />;
-      case 'notion': return <SiNotion className="h-4 w-4 text-white" />;
+      case 'notion': return <SiNotion className="h-4 w-4 text-gray-900" />;
       default: return <Zap className="h-4 w-4 text-emerald-400" />;
     }
   };
@@ -486,10 +486,10 @@ export default function TryDemo() {
             <Badge className="mb-4 bg-gradient-to-r from-amber-500/20 to-emerald-500/20 text-amber-300 border-amber-500/30">
               Y Combinator Demo
             </Badge>
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
               Experience Execution OS
             </h1>
-            <p className="text-lg text-slate-200">
+            <p className="text-lg text-gray-600">
               See why Fortune 1000 leaders need the Strategic Execution OS
             </p>
           </div>
@@ -498,8 +498,8 @@ export default function TryDemo() {
           {currentPhase === 'select' && (
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-white mb-2">Choose Your Crisis</h2>
-                <p className="text-slate-200">
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">Choose Your Crisis</h2>
+                <p className="text-gray-600">
                   Experience the chaos of strategic events—then see how Execution OS transforms response
                 </p>
               </div>
@@ -515,14 +515,14 @@ export default function TryDemo() {
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
                           <div className={`p-3 rounded-xl bg-gradient-to-br ${scenario.color}`}>
-                            <IconComponent className="h-6 w-6 text-white" />
+                            <IconComponent className="h-6 w-6 text-gray-900" />
                           </div>
                           <div className="flex-1">
-                            <h3 className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors mb-1">
+                            <h3 className="text-lg font-bold text-gray-900 group-hover:text-emerald-400 transition-colors mb-1">
                               {scenario.name}
                             </h3>
-                            <p className="text-sm text-slate-200 mb-2">{scenario.industry}</p>
-                            <p className="text-sm text-slate-200 mb-3">{scenario.trigger}</p>
+                            <p className="text-sm text-gray-600 mb-2">{scenario.industry}</p>
+                            <p className="text-sm text-gray-600 mb-3">{scenario.trigger}</p>
                             <div className="flex items-center gap-4 text-xs">
                               <span className="flex items-center gap-1 text-red-400">
                                 <TrendingDown className="h-3 w-3" />
@@ -530,7 +530,7 @@ export default function TryDemo() {
                               </span>
                             </div>
                           </div>
-                          <ArrowRight className="h-5 w-5 text-slate-200 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                          <ArrowRight className="h-5 w-5 text-gray-600 group-hover:text-white group-hover:translate-x-1 transition-all" />
                         </div>
                       </CardContent>
                     </Card>
@@ -541,7 +541,7 @@ export default function TryDemo() {
               {/* Industry Demos Teaser */}
               <div className="mt-8 pt-6 border-t border-gray-200">
                 <div className="text-center">
-                  <p className="text-sm text-slate-200 mb-3">
+                  <p className="text-sm text-gray-600 mb-3">
                     Want to see real company scenarios? Explore our industry deep-dives:
                   </p>
                   <div className="flex flex-wrap justify-center gap-2 mb-4">
@@ -557,13 +557,13 @@ export default function TryDemo() {
                           className="flex items-center gap-2 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg hover:border-poise-teal/50 transition-colors text-sm"
                         >
                           <IconComponent className={`h-4 w-4 ${demo.iconColor}`} />
-                          <span className="text-slate-200">{demo.organization}</span>
-                          <span className="text-xs text-slate-200">{demo.industry}</span>
+                          <span className="text-gray-600">{demo.organization}</span>
+                          <span className="text-xs text-gray-600">{demo.industry}</span>
                         </button>
                       );
                     })}
                   </div>
-                  <p className="text-xs text-slate-300 mt-2">Each scenario shows the full IDEA loop in action</p>
+                  <p className="text-xs text-gray-600 mt-2">Each scenario shows the full IDEA loop in action</p>
                 </div>
               </div>
             </div>
@@ -577,7 +577,7 @@ export default function TryDemo() {
                   <AlertTriangle className="h-3 w-3 mr-1" />
                   CRISIS IN PROGRESS
                 </Badge>
-                <Button variant="ghost" size="sm" onClick={resetDemo} className="text-slate-200 hover:text-white">
+                <Button variant="ghost" size="sm" onClick={resetDemo} className="text-gray-600 hover:text-white">
                   <XCircle className="h-4 w-4 mr-1" />
                   Exit Demo
                 </Button>
@@ -603,11 +603,11 @@ export default function TryDemo() {
                   <Card className="bg-white border-gray-200">
                     <CardContent className="p-4">
                       <div className="text-center">
-                        <p className="text-xs text-slate-200 uppercase tracking-wide mb-1">Time Elapsed</p>
-                        <p className="text-3xl font-bold text-white font-mono">
+                        <p className="text-xs text-gray-600 uppercase tracking-wide mb-1">Time Elapsed</p>
+                        <p className="text-3xl font-bold text-gray-900 font-mono">
                           {formatTime(chaosSeconds)}
                         </p>
-                        <p className="text-xs text-slate-200 mt-1">
+                        <p className="text-xs text-gray-600 mt-1">
                           Still no coordinated response
                         </p>
                       </div>
@@ -616,7 +616,7 @@ export default function TryDemo() {
 
                   <Card className="bg-white border-gray-200">
                     <CardContent className="p-4">
-                      <p className="text-xs text-slate-200 uppercase tracking-wide mb-2">Stress Level</p>
+                      <p className="text-xs text-gray-600 uppercase tracking-wide mb-2">Stress Level</p>
                       <Progress value={stressLevel} className="h-3 bg-gray-50" />
                       <p className="text-xs text-orange-400 mt-2 text-center">
                         {stressLevel < 50 ? 'Escalating' : stressLevel < 80 ? 'Critical' : 'Overwhelming'}
@@ -624,7 +624,7 @@ export default function TryDemo() {
                     </CardContent>
                   </Card>
 
-                  <div className="text-center text-xs text-slate-200 pt-2">
+                  <div className="text-center text-xs text-gray-600 pt-2">
                     <p>Industry average response time:</p>
                     <p className="text-lg font-bold text-red-400">20-72 hours</p>
                   </div>
@@ -635,7 +635,7 @@ export default function TryDemo() {
                   <Card className="bg-white border-gray-200 h-[450px] overflow-hidden">
                     <CardHeader className="border-b border-gray-200 py-3">
                       <div className="flex items-center justify-between">
-                        <CardTitle className="text-lg text-white flex items-center gap-2">
+                        <CardTitle className="text-lg text-gray-900 flex items-center gap-2">
                           <MessageSquare className="h-5 w-5 text-red-400" />
                           Incoming Messages
                         </CardTitle>
@@ -660,12 +660,12 @@ export default function TryDemo() {
                                 </div>
                                 <div className="flex-1 min-w-0">
                                   <div className="flex items-center gap-2 mb-1">
-                                    <span className="text-xs font-medium text-white">{msg.sender}</span>
-                                    <Badge variant="outline" className="text-xs py-0 h-4 bg-transparent text-slate-200 border-slate-600">
+                                    <span className="text-xs font-medium text-gray-900">{msg.sender}</span>
+                                    <Badge variant="outline" className="text-xs py-0 h-4 bg-transparent text-gray-600 border-slate-600">
                                       {msg.type}
                                     </Badge>
                                   </div>
-                                  <p className="text-sm text-slate-200 leading-snug">{msg.content}</p>
+                                  <p className="text-sm text-gray-600 leading-snug">{msg.content}</p>
                                 </div>
                               </div>
                             </div>
@@ -679,7 +679,7 @@ export default function TryDemo() {
                   {/* Action buttons */}
                   <div className="mt-4 flex gap-3">
                     {!showChaosComplete && (
-                      <Button variant="outline" onClick={skipChaos} className="flex-1 bg-transparent text-white border-slate-600 hover:bg-slate-800">
+                      <Button variant="outline" onClick={skipChaos} className="flex-1 bg-transparent text-gray-900 border-slate-600 hover:bg-slate-800">
                         Skip to Solution
                         <ChevronRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -687,11 +687,11 @@ export default function TryDemo() {
                     {showChaosComplete && (
                       <div className="flex-1 space-y-3">
                         <div className="p-4 bg-gray-50 border border-slate-600 rounded-lg text-center">
-                          <p className="text-slate-200 text-sm mb-1">This is what happens WITHOUT Execution OS</p>
-                          <p className="text-white font-medium">Chaos. Confusion. Costly delays.</p>
+                          <p className="text-gray-600 text-sm mb-1">This is what happens WITHOUT Execution OS</p>
+                          <p className="text-gray-900 font-medium">Chaos. Confusion. Costly delays.</p>
                         </div>
                         <Button 
-                          className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold py-6"
+                          className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-gray-900 font-semibold py-6"
                           onClick={moveToPrepared}
                         >
                           <Sparkles className="mr-2 h-5 w-5" />
@@ -712,14 +712,14 @@ export default function TryDemo() {
               {/* Phase Navigation */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
-                  <Badge className={`bg-gradient-to-r ${selectedScenario.color} text-white`}>
+                  <Badge className={`bg-gradient-to-r ${selectedScenario.color} text-gray-900`}>
                     {selectedScenario.name}
                   </Badge>
-                  <span className="text-sm text-slate-200">
+                  <span className="text-sm text-gray-600">
                     {formatCurrency(selectedScenario.dealValue)} at stake
                   </span>
                 </div>
-                <Button variant="ghost" size="sm" onClick={resetDemo} className="text-slate-200 hover:text-white">
+                <Button variant="ghost" size="sm" onClick={resetDemo} className="text-gray-600 hover:text-white">
                   <RefreshCw className="h-4 w-4 mr-1" />
                   Try Another Scenario
                 </Button>
@@ -748,9 +748,9 @@ export default function TryDemo() {
                         {isCompleted ? (
                           <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                         ) : (
-                          <IconComponent className={`h-4 w-4 ${isCurrent ? colors.text : 'text-slate-200'}`} />
+                          <IconComponent className={`h-4 w-4 ${isCurrent ? colors.text : 'text-gray-600'}`} />
                         )}
-                        <span className={`text-xs font-medium ${isCurrent ? 'text-white' : isCompleted ? 'text-slate-200' : 'text-slate-200'}`}>
+                        <span className={`text-xs font-medium ${isCurrent ? 'text-gray-900' : isCompleted ? 'text-gray-600' : 'text-gray-600'}`}>
                           {phase.name}
                         </span>
                       </div>
@@ -768,7 +768,7 @@ export default function TryDemo() {
                   {currentPhase === 'identify' && (
                     <Card className="bg-white border-gray-200">
                       <CardHeader>
-                        <CardTitle className="text-white flex items-center gap-2">
+                        <CardTitle className="text-gray-900 flex items-center gap-2">
                           <BookOpen className="h-5 w-5 text-violet-400" />
                           IDENTIFY: Playbook Ready
                         </CardTitle>
@@ -778,21 +778,21 @@ export default function TryDemo() {
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <div className="p-4 bg-violet-500/10 border border-violet-500/30 rounded-lg">
-                          <h4 className="text-white font-medium mb-3">Playbook: {selectedScenario.playbook}</h4>
+                          <h4 className="text-gray-900 font-medium mb-3">Playbook: {selectedScenario.playbook}</h4>
                           <div className="grid grid-cols-2 gap-3 text-sm">
-                            <div className="flex items-center gap-2 text-slate-200">
+                            <div className="flex items-center gap-2 text-gray-600">
                               <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                               12 pre-configured tasks
                             </div>
-                            <div className="flex items-center gap-2 text-slate-200">
+                            <div className="flex items-center gap-2 text-gray-600">
                               <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                               {selectedScenario.stakeholders} stakeholders mapped
                             </div>
-                            <div className="flex items-center gap-2 text-slate-200">
+                            <div className="flex items-center gap-2 text-gray-600">
                               <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                               Response templates staged
                             </div>
-                            <div className="flex items-center gap-2 text-slate-200">
+                            <div className="flex items-center gap-2 text-gray-600">
                               <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                               Budget pre-approved
                             </div>
@@ -804,13 +804,13 @@ export default function TryDemo() {
                             <Clock className="h-4 w-4" />
                             <span className="font-medium">Time to Ready: 0 minutes</span>
                           </div>
-                          <p className="text-sm text-slate-200">
+                          <p className="text-sm text-gray-600">
                             Everything was prepared BEFORE the crisis hit
                           </p>
                         </div>
 
                         <div className="p-3 bg-gray-50 rounded-lg">
-                          <p className="text-sm text-slate-200">
+                          <p className="text-sm text-gray-600">
                             <span className="text-red-400 font-medium">Without Execution OS:</span> 20-50 hours to coordinate a response team, find documents, and get budget approval.
                           </p>
                         </div>
@@ -829,7 +829,7 @@ export default function TryDemo() {
                   {currentPhase === 'detect' && (
                     <Card className="bg-white border-gray-200">
                       <CardHeader>
-                        <CardTitle className="text-white flex items-center gap-2">
+                        <CardTitle className="text-gray-900 flex items-center gap-2">
                           <Radar className="h-5 w-5 text-blue-400" />
                           DETECT: Signal Received
                         </CardTitle>
@@ -843,8 +843,8 @@ export default function TryDemo() {
                             <AlertTriangle className="h-5 w-5" />
                             <span className="font-medium">Trigger Detected</span>
                           </div>
-                          <p className="text-white">{selectedScenario.trigger}</p>
-                          <div className="mt-3 flex items-center gap-4 text-sm text-slate-200">
+                          <p className="text-gray-900">{selectedScenario.trigger}</p>
+                          <div className="mt-3 flex items-center gap-4 text-sm text-gray-600">
                             <span className="flex items-center gap-1">
                               <DollarSign className="h-4 w-4" />
                               {formatCurrency(selectedScenario.dealValue)} at risk
@@ -861,8 +861,8 @@ export default function TryDemo() {
                             <Brain className="h-5 w-5" />
                             <span className="font-medium">AI Recommendation</span>
                           </div>
-                          <p className="text-sm text-slate-200">
-                            Activate <span className="text-white font-medium">{selectedScenario.playbook}</span> playbook. 
+                          <p className="text-sm text-gray-600">
+                            Activate <span className="text-gray-900 font-medium">{selectedScenario.playbook}</span> playbook. 
                             Match confidence: <span className="text-emerald-400 font-bold">94%</span>
                           </p>
                         </div>
@@ -881,7 +881,7 @@ export default function TryDemo() {
                   {currentPhase === 'execute' && (
                     <Card className="bg-white border-gray-200">
                       <CardHeader>
-                        <CardTitle className="text-white flex items-center gap-2">
+                        <CardTitle className="text-gray-900 flex items-center gap-2">
                           <Radio className="h-5 w-5 text-emerald-400" />
                           EXECUTE: Coordinating Response
                         </CardTitle>
@@ -893,7 +893,7 @@ export default function TryDemo() {
                         {/* Timer */}
                         <div className="mb-4 p-4 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 rounded-lg text-center">
                           <p className="text-xs text-emerald-400 uppercase tracking-wide mb-1">Execution Time</p>
-                          <p className="text-4xl font-bold text-white font-mono">
+                          <p className="text-4xl font-bold text-gray-900 font-mono">
                             {formatTime(executionTimer)}
                           </p>
                           <p className="text-xs text-emerald-300 mt-1">Target: 12:00</p>
@@ -912,12 +912,12 @@ export default function TryDemo() {
                                 </div>
                                 <div className="flex-1">
                                   <div className="flex items-center gap-2">
-                                    <p className="text-white font-medium text-sm">{step.title}</p>
+                                    <p className="text-gray-900 font-medium text-sm">{step.title}</p>
                                     <div className="p-1 bg-gray-50 rounded">
                                       {getIntegrationIcon(step.integration)}
                                     </div>
                                   </div>
-                                  <p className="text-slate-200 text-xs">{step.description}</p>
+                                  <p className="text-gray-600 text-xs">{step.description}</p>
                                 </div>
                                 <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                               </div>
@@ -925,7 +925,7 @@ export default function TryDemo() {
                           })}
                           
                           {isExecuting && (
-                            <div className="flex items-center justify-center p-4 text-slate-200">
+                            <div className="flex items-center justify-center p-4 text-gray-600">
                               <div className="animate-spin rounded-full h-5 w-5 border-2 border-emerald-500 border-t-transparent mr-2" />
                               Orchestrating response...
                             </div>
@@ -938,7 +938,7 @@ export default function TryDemo() {
                   {currentPhase === 'advance' && (
                     <Card className="bg-white border-gray-200">
                       <CardHeader>
-                        <CardTitle className="text-white flex items-center gap-2">
+                        <CardTitle className="text-gray-900 flex items-center gap-2">
                           <BarChart3 className="h-5 w-5 text-amber-400" />
                           ADVANCE: Capture Learnings
                         </CardTitle>
@@ -949,7 +949,7 @@ export default function TryDemo() {
                       <CardContent className="space-y-4">
                         {!learnings ? (
                           <div className="space-y-4">
-                            <p className="text-slate-200">
+                            <p className="text-gray-600">
                               Execution OS captures what worked and suggests playbook improvements for next time.
                             </p>
                             <Button 
@@ -967,7 +967,7 @@ export default function TryDemo() {
                                 <CheckCircle2 className="h-4 w-4" />
                                 <span className="font-medium text-sm">Execution Complete</span>
                               </div>
-                              <p className="text-xs text-slate-200">
+                              <p className="text-xs text-gray-600">
                                 {formatCurrency(learnings.metrics?.dealValueProtected || 0)} protected
                               </p>
                             </div>
@@ -980,8 +980,8 @@ export default function TryDemo() {
                               <div className="space-y-2">
                                 {learnings.successPatterns?.map((pattern: any, i: number) => (
                                   <div key={i} className="p-2 bg-gray-50 rounded text-xs">
-                                    <span className="text-white font-medium">{pattern.category}:</span>
-                                    <span className="text-slate-200 ml-1">{pattern.insight}</span>
+                                    <span className="text-gray-900 font-medium">{pattern.category}:</span>
+                                    <span className="text-gray-600 ml-1">{pattern.insight}</span>
                                   </div>
                                 ))}
                               </div>
@@ -1000,22 +1000,22 @@ export default function TryDemo() {
                             <div className="inline-flex p-4 bg-emerald-500/20 rounded-full mb-4">
                               <Rocket className="h-10 w-10 text-emerald-400" />
                             </div>
-                            <h2 className="text-2xl font-bold text-white mb-2">Demo Complete</h2>
-                            <p className="text-slate-200">You just experienced the IDEA Framework in action</p>
+                            <h2 className="text-2xl font-bold text-gray-900 mb-2">Demo Complete</h2>
+                            <p className="text-gray-600">You just experienced the IDEA Framework in action</p>
                           </div>
 
                           <div className="grid grid-cols-3 gap-4 mb-6">
                             <div className="p-4 bg-gray-50 rounded-lg">
                               <p className="text-2xl font-bold text-emerald-400">12 min</p>
-                              <p className="text-xs text-slate-200">Response Time</p>
+                              <p className="text-xs text-gray-600">Response Time</p>
                             </div>
                             <div className="p-4 bg-gray-50 rounded-lg">
                               <p className="text-2xl font-bold text-emerald-400">{formatCurrency(selectedScenario?.dealValue || 0)}</p>
-                              <p className="text-xs text-slate-200">Value Protected</p>
+                              <p className="text-xs text-gray-600">Value Protected</p>
                             </div>
                             <div className="p-4 bg-gray-50 rounded-lg">
                               <p className="text-2xl font-bold text-emerald-400">98 days</p>
-                              <p className="text-xs text-slate-200">Saved (IBM 2024)</p>
+                              <p className="text-xs text-gray-600">Saved (IBM 2024)</p>
                             </div>
                           </div>
 
@@ -1032,7 +1032,7 @@ export default function TryDemo() {
                             </Button>
                             <Button 
                               variant="outline"
-                              className="w-full text-white border-slate-600 hover:bg-slate-800"
+                              className="w-full text-gray-900 border-slate-600 hover:bg-slate-800"
                               onClick={resetDemo}
                             >
                               <RefreshCw className="mr-2 h-4 w-4" />
@@ -1047,11 +1047,11 @@ export default function TryDemo() {
                         <CardHeader className="pb-4">
                           <div className="flex items-center justify-between">
                             <div>
-                              <CardTitle className="text-lg text-white flex items-center gap-2">
+                              <CardTitle className="text-lg text-gray-900 flex items-center gap-2">
                                 <Building2 className="h-5 w-5 text-poise-gold" />
                                 Explore Industry Deep-Dives
                               </CardTitle>
-                              <CardDescription className="text-slate-200">
+                              <CardDescription className="text-gray-600">
                                 See Execution OS in action across 9 industries with real company scenarios
                               </CardDescription>
                             </div>
@@ -1091,11 +1091,11 @@ export default function TryDemo() {
                                 >
                                   <div className="flex items-center gap-2 mb-1">
                                     <IconComponent className={`h-4 w-4 ${demo.iconColor}`} />
-                                    <span className="text-xs text-slate-200 uppercase">{demo.industry}</span>
+                                    <span className="text-xs text-gray-600 uppercase">{demo.industry}</span>
                                   </div>
-                                  <p className="text-xs font-medium text-white truncate">{demo.title}</p>
+                                  <p className="text-xs font-medium text-gray-900 truncate">{demo.title}</p>
                                   <div className="flex items-center justify-between mt-1">
-                                    <span className="text-xs text-slate-200">{demo.organization}</span>
+                                    <span className="text-xs text-gray-600">{demo.organization}</span>
                                     <span className={`text-xs font-semibold ${demo.type === 'offensive' ? 'text-green-400' : 'text-emerald-400'}`}>
                                       {demo.impact}
                                     </span>
@@ -1109,7 +1109,7 @@ export default function TryDemo() {
                             })}
                           </div>
                           <div className="mt-4 pt-4 border-t border-gray-200 text-center">
-                            <p className="text-xs text-slate-300">Click any scenario above to explore the full demo</p>
+                            <p className="text-xs text-gray-600">Click any scenario above to explore the full demo</p>
                           </div>
                         </CardContent>
                       </Card>
@@ -1122,19 +1122,19 @@ export default function TryDemo() {
                   {/* Value Comparison */}
                   <Card className="bg-white border-gray-200">
                     <CardHeader className="pb-2">
-                      <CardTitle className="text-sm text-white">Response Comparison</CardTitle>
+                      <CardTitle className="text-sm text-gray-900">Response Comparison</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-center">
                           <p className="text-xs text-red-400 mb-1">Traditional</p>
                           <p className="text-xl font-bold text-red-300">20-72 hrs</p>
-                          <p className="text-xs text-slate-200">Industry average</p>
+                          <p className="text-xs text-gray-600">Industry average</p>
                         </div>
                         <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-center">
                           <p className="text-xs text-emerald-400 mb-1">Execution OS</p>
                           <p className="text-xl font-bold text-emerald-300">12 min</p>
-                          <p className="text-xs text-slate-200">Guaranteed</p>
+                          <p className="text-xs text-gray-600">Guaranteed</p>
                         </div>
                       </div>
                     </CardContent>
@@ -1143,7 +1143,7 @@ export default function TryDemo() {
                   {/* Enterprise Integrations */}
                   <Card className="bg-white border-gray-200">
                     <CardHeader className="pb-2">
-                      <CardTitle className="text-sm text-white">Integrated With Your Stack</CardTitle>
+                      <CardTitle className="text-sm text-gray-900">Integrated With Your Stack</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="flex flex-wrap gap-2">
@@ -1156,7 +1156,7 @@ export default function TryDemo() {
                         ].map(({ icon: Icon, name, color }) => (
                           <div key={name} className="flex items-center gap-1.5 px-2 py-1 bg-gray-50 rounded text-xs">
                             <Icon className="h-3.5 w-3.5" style={{ color }} />
-                            <span className="text-slate-200">{name}</span>
+                            <span className="text-gray-600">{name}</span>
                           </div>
                         ))}
                       </div>
@@ -1166,20 +1166,20 @@ export default function TryDemo() {
                   {/* Research Citations */}
                   <Card className="bg-white border-gray-200">
                     <CardHeader className="pb-2">
-                      <CardTitle className="text-sm text-white">Research-Backed Claims</CardTitle>
+                      <CardTitle className="text-sm text-gray-900">Research-Backed Claims</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-2">
                       <div className="flex items-start gap-2 text-xs">
-                        <Badge variant="outline" className="text-xs shrink-0 bg-transparent text-slate-200 border-slate-600">IBM 2024</Badge>
-                        <span className="text-slate-200">98 days saved with AI/automation</span>
+                        <Badge variant="outline" className="text-xs shrink-0 bg-transparent text-gray-600 border-slate-600">IBM 2024</Badge>
+                        <span className="text-gray-600">98 days saved with AI/automation</span>
                       </div>
                       <div className="flex items-start gap-2 text-xs">
-                        <Badge variant="outline" className="text-xs shrink-0 bg-transparent text-slate-200 border-slate-600">McKinsey</Badge>
-                        <span className="text-slate-200">5-10x faster execution</span>
+                        <Badge variant="outline" className="text-xs shrink-0 bg-transparent text-gray-600 border-slate-600">McKinsey</Badge>
+                        <span className="text-gray-600">5-10x faster execution</span>
                       </div>
                       <div className="flex items-start gap-2 text-xs">
-                        <Badge variant="outline" className="text-xs shrink-0 bg-transparent text-slate-200 border-slate-600">PagerDuty</Badge>
-                        <span className="text-slate-200">3.5x faster crisis response</span>
+                        <Badge variant="outline" className="text-xs shrink-0 bg-transparent text-gray-600 border-slate-600">PagerDuty</Badge>
+                        <span className="text-gray-600">3.5x faster crisis response</span>
                       </div>
                     </CardContent>
                   </Card>
@@ -1188,8 +1188,8 @@ export default function TryDemo() {
                   <Card className="bg-gradient-to-br   border-amber-500/30">
                     <CardContent className="p-4 text-center">
                       <p className="text-4xl font-bold text-amber-400 mb-1">170</p>
-                      <p className="text-sm text-amber-200">Pre-Built Playbooks</p>
-                      <p className="text-xs text-slate-200 mt-1">Across 9 Strategic Domains</p>
+                      <p className="text-sm text-amber-700">Pre-Built Playbooks</p>
+                      <p className="text-xs text-gray-600 mt-1">Across 9 Strategic Domains</p>
                     </CardContent>
                   </Card>
                 </div>
@@ -1203,8 +1203,8 @@ export default function TryDemo() {
       <section className="bg-gradient-to-b from-backgroundborder-t border-gray-200 py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10">
-            <h2 className="text-2xl font-bold text-white mb-3">See It In Your Industry</h2>
-            <p className="text-slate-200 max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold text-gray-900 mb-3">See It In Your Industry</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
               Explore how Execution OS handles real-world scenarios across offense and defense — each demo shows the full trigger-to-execution loop.
             </p>
           </div>
@@ -1228,7 +1228,7 @@ export default function TryDemo() {
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
                       <IconComponent className={`h-5 w-5 ${demo.iconColor}`} />
-                      <span className="text-xs font-medium text-slate-200 uppercase tracking-wider">{demo.industry}</span>
+                      <span className="text-xs font-medium text-gray-600 uppercase tracking-wider">{demo.industry}</span>
                     </div>
                     <Badge variant="outline" className={`text-xs ${
                       demo.type === 'offensive' 
@@ -1238,9 +1238,9 @@ export default function TryDemo() {
                       {demo.type === 'offensive' ? 'Offense' : 'Defense'}
                     </Badge>
                   </div>
-                  <p className="text-sm font-semibold text-white mb-1">{demo.title}</p>
+                  <p className="text-sm font-semibold text-gray-900 mb-1">{demo.title}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-300">{demo.organization}</span>
+                    <span className="text-xs text-gray-600">{demo.organization}</span>
                     <span className={`text-xs font-bold ${demo.type === 'offensive' ? 'text-green-400' : 'text-emerald-400'}`}>
                       {demo.impact}
                     </span>

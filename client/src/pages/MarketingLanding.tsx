@@ -47,7 +47,7 @@ export default function MarketingLanding() {
       <StandardNav />
 
       {/* Hero Section */}
-      <section className="py-20 px-6 text-white relative overflow-hidden">
+      <section className="py-20 px-6 text-gray-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-20"></div>
         
         <div className="max-w-7xl mx-auto text-center relative z-10">
@@ -59,25 +59,25 @@ export default function MarketingLanding() {
           </div>
           {/* High-Stakes Competitive Scenario */}
           <div className="mb-8">
-            <Badge className="mb-4 bg-red-600 text-white border-0 text-sm px-4 py-1.5 animate-pulse" data-testid="badge-alert">
+            <Badge className="mb-4 bg-red-600 text-gray-900 border-0 text-sm px-4 py-1.5 animate-pulse" data-testid="badge-alert">
               ⚡ COMPETITIVE ALERT
             </Badge>
-            <h1 className="text-4xl md:text-7xl font-bold mb-6 leading-tight max-w-6xl mx-auto text-white" data-testid="heading-hero">
+            <h1 className="text-4xl md:text-7xl font-bold mb-6 leading-tight max-w-6xl mx-auto text-gray-900" data-testid="heading-hero">
               Monday 9:15 AM:<br />
               <span className="text-red-300">Your Competitor Just Launched.</span>
             </h1>
             <div className="max-w-3xl mx-auto mb-6">
               <div className="bg-red-900/30 border-2 border-red-500/50 rounded-lg p-6 mb-4">
-                <p className="text-xl md:text-2xl text-white font-semibold mb-3">
+                <p className="text-xl md:text-2xl text-gray-900 font-semibold mb-3">
                   Their product is 15% cheaper. Social sentiment is tanking. 12 deals worth $2.4M are at risk.
                 </p>
-                <p className="text-lg text-red-200">
-                  Your next board meeting? <span className="font-bold text-white">Thursday 2 PM.</span>
+                <p className="text-lg text-red-600">
+                  Your next board meeting? <span className="font-bold text-gray-900">Thursday 2 PM.</span>
                 </p>
               </div>
-              <p className="text-xl md:text-2xl text-yellow-200 font-bold">
+              <p className="text-xl md:text-2xl text-yellow-700 font-bold">
                 By then, you'll have lost market share.<br />
-                <span className="text-white">Unless you have Execution OS.</span>
+                <span className="text-gray-900">Unless you have Execution OS.</span>
               </p>
             </div>
           </div>
@@ -85,25 +85,25 @@ export default function MarketingLanding() {
           {/* Solution - Category Definition */}
           <div className="mb-10">
             <div className="max-w-5xl mx-auto mb-8">
-              <Badge className="mb-4 bg-cyan-500 text-white border-0 text-base px-6 py-2">
+              <Badge className="mb-4 bg-cyan-500 text-gray-900 border-0 text-base px-6 py-2">
                 The Strategic Execution OS
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-4">
                 Execution OS for Fortune 1000 Companies
               </h2>
-              <p className="text-xl md:text-2xl text-white mb-4 leading-relaxed">
+              <p className="text-xl md:text-2xl text-gray-900 mb-4 leading-relaxed">
                 When a strategic trigger hits—a competitor launches, regulations shift, a cyber threat emerges, or a market opportunity appears—organizations typically <span className="text-red-300">waste 20-50 hours getting organized</span>. Execution OS compresses that to <span className="text-cyan-300 font-bold">12 minutes</span>.
               </p>
-              <p className="text-lg text-slate-300 mb-4 leading-relaxed max-w-4xl mx-auto">
+              <p className="text-lg text-gray-600 mb-4 leading-relaxed max-w-4xl mx-auto">
                 Our AI monitors 216 data points across 16 intelligence categories, detecting threats and opportunities before competitors see them. When a signal breaches a threshold, Execution OS automatically activates the right playbook from our library of 170 battle-tested responses: notifying stakeholders, assigning tasks, staging documents, unlocking pre-approved budgets—all in under 12 minutes.
               </p>
-              <p className="text-lg text-slate-300 mb-4 leading-relaxed max-w-4xl mx-auto">
+              <p className="text-lg text-gray-600 mb-4 leading-relaxed max-w-4xl mx-auto">
                 We're the orchestration layer between strategy and execution. <span className="text-cyan-300">AI handles detection and coordination. Executives make the decisions.</span>
               </p>
               <p className="text-lg text-poise-gold font-semibold">
                 What used to take 72 hours now happens at championship speed.
               </p>
-              <div className="flex items-center justify-center gap-6 text-lg text-blue-100 mb-6">
+              <div className="flex items-center justify-center gap-6 text-lg text-blue-600 mb-6">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-5 w-5 text-green-400" />
                   <span>170 Strategic Playbooks</span>
@@ -123,45 +123,45 @@ export default function MarketingLanding() {
             <Card className="max-w-5xl mx-auto bg-gradient-to-br   backdrop-blur-sm border-2 border-blue-400/50">
               <CardContent className="p-6">
                 <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-white mb-2">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
                     The Execution OS Product Suite
                   </h3>
-                  <p className="text-blue-200 text-sm">
+                  <p className="text-blue-700 text-sm">
                     Four integrated modules powered by the IDEA Framework™
                   </p>
                 </div>
                 <div className="grid md:grid-cols-4 gap-4 text-left">
                   <div className="bg-violet-500/20 rounded-lg p-4 border border-violet-400/30">
-                    <Badge className="mb-2 bg-violet-500 text-white border-0 text-xs">IDENTIFY</Badge>
+                    <Badge className="mb-2 bg-violet-500 text-gray-900 border-0 text-xs">IDENTIFY</Badge>
                     <div className="text-violet-200 font-bold text-lg mb-1">Execution OS Playbook™</div>
                     <p className="text-violet-100/80 text-xs">
                       170 pre-built playbooks across 9 strategic domains. Build your depth chart before events hit.
                     </p>
                   </div>
                   <div className="bg-blue-500/20 rounded-lg p-4 border border-blue-400/30">
-                    <Badge className="mb-2 bg-blue-500 text-white border-0 text-xs">DETECT</Badge>
-                    <div className="text-blue-200 font-bold text-lg mb-1">Execution OS Signal™</div>
-                    <p className="text-blue-100/80 text-xs">
+                    <Badge className="mb-2 bg-blue-500 text-gray-900 border-0 text-xs">DETECT</Badge>
+                    <div className="text-blue-700 font-bold text-lg mb-1">Execution OS Signal™</div>
+                    <p className="text-blue-600/80 text-xs">
                       AI-powered monitoring across 216 data points. Detect threats and opportunities before competitors.
                     </p>
                   </div>
                   <div className="bg-emerald-500/20 rounded-lg p-4 border border-emerald-400/30">
-                    <Badge className="mb-2 bg-emerald-500 text-white border-0 text-xs">EXECUTE</Badge>
+                    <Badge className="mb-2 bg-emerald-500 text-gray-900 border-0 text-xs">EXECUTE</Badge>
                     <div className="text-emerald-200 font-bold text-lg mb-1">Execution OS Compass™</div>
                     <p className="text-emerald-100/80 text-xs">
                       12-minute coordinated execution. Stakeholders, budgets, and actions—automatically orchestrated.
                     </p>
                   </div>
                   <div className="bg-amber-500/20 rounded-lg p-4 border border-amber-400/30">
-                    <Badge className="mb-2 bg-amber-500 text-white border-0 text-xs">ADVANCE</Badge>
-                    <div className="text-amber-200 font-bold text-lg mb-1">Execution OS Retrospect™</div>
-                    <p className="text-amber-100/80 text-xs">
+                    <Badge className="mb-2 bg-amber-500 text-gray-900 border-0 text-xs">ADVANCE</Badge>
+                    <div className="text-amber-700 font-bold text-lg mb-1">Execution OS Retrospect™</div>
+                    <p className="text-amber-700/80 text-xs">
                       Capture lessons, refine playbooks. Every execution makes your organization smarter.
                     </p>
                   </div>
                 </div>
                 <div className="text-center mt-4">
-                  <p className="text-blue-200 text-xs">
+                  <p className="text-blue-700 text-xs">
                     Plus <span className="text-cyan-300 font-semibold">Execution OS One™</span> — the single-pane executive overview of your strategic readiness
                   </p>
                 </div>
@@ -180,7 +180,7 @@ export default function MarketingLanding() {
               <Button 
                 onClick={() => { window.location.href = '/try-demo'; }}
                 size="lg"
-                className="bg-gradient-to-r from-poise-teal to-cyan-500 hover:from-cyan-500 hover:to-poise-teal text-white font-bold text-lg px-10 py-6 shadow-2xl transform hover:scale-105 transition-all"
+                className="bg-gradient-to-r from-poise-teal to-cyan-500 hover:from-cyan-500 hover:to-poise-teal text-gray-900 font-bold text-lg px-10 py-6 shadow-2xl transform hover:scale-105 transition-all"
                 data-testid="button-try-demo"
               >
                 <Play className="mr-3 h-6 w-6" />
@@ -227,7 +227,7 @@ export default function MarketingLanding() {
                     <Badge className="bg-poise-gold/20 text-poise-gold border-poise-gold/30 font-semibold">
                       Q1 2026 Founding Partners
                     </Badge>
-                    <span className="text-white/80 text-sm">
+                    <span className="text-gray-900/80 text-sm">
                       90-day validation • $75K (100% credited to Year 1) • Only 3 slots remaining
                     </span>
                   </div>
@@ -250,7 +250,7 @@ export default function MarketingLanding() {
       <section className="py-20 px-6 bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-800">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 text-base px-6 py-2">
+            <Badge className="mb-4 bg-gradient-to-r from-blue-600 to-purple-600 text-gray-900 border-0 text-base px-6 py-2">
               Complete Platform Access
             </Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white">
@@ -268,13 +268,13 @@ export default function MarketingLanding() {
               <CardContent className="p-6">
                 <div className="flex items-start gap-4 mb-4">
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center flex-shrink-0">
-                    <Rocket className="w-6 h-6 text-white" />
+                    <Rocket className="w-6 h-6 text-gray-900" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                       Create Strategic Playbook
                     </h3>
-                    <Badge className="bg-purple-600 text-white mb-3">Start Here</Badge>
+                    <Badge className="bg-purple-600 text-gray-900 mb-3">Start Here</Badge>
                     <p className="text-sm text-gray-600 dark:text-slate-300 mb-4">
                       Build complete decision operations playbook in 5 phases: Context, Stakeholders, Triggers, Metrics, Review
                     </p>
@@ -464,16 +464,16 @@ export default function MarketingLanding() {
       </section>
 
       {/* The Four-Phase Framework */}
-      <section className="py-20 px-6 text-white">
+      <section className="py-20 px-6 text-gray-900">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-cyan-500 text-slate-900 border-0 text-base px-6 py-2" data-testid="badge-framework">
               The Core Workflow
             </Badge>
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
               IDENTIFY → DETECT → EXECUTE → ADVANCE
             </h2>
-            <p className="text-xl text-blue-200 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-blue-700 max-w-4xl mx-auto leading-relaxed">
               This is the framework that wins championships—whether in Eugene, Oregon or in Fortune 1000 boardrooms. Four phases that transform strategic intent into coordinated organizational execution.
             </p>
           </div>
@@ -483,13 +483,13 @@ export default function MarketingLanding() {
             <Card className="bg-gradient-to-br from-violet-600/20 to-purple-600/20 border-2 border-violet-500" data-testid="card-phase-identify">
               <CardContent className="p-6">
                 <div className="text-center mb-4">
-                  <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-violet-500 text-white text-2xl font-bold mb-3">
+                  <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-violet-500 text-gray-900 text-2xl font-bold mb-3">
                     I
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">IDENTIFY</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">IDENTIFY</h3>
                   <div className="text-violet-300 text-sm font-semibold mb-4">Build Your Depth Chart</div>
                 </div>
-                <p className="text-blue-100 text-sm mb-4">
+                <p className="text-blue-600 text-sm mb-4">
                   Build playbooks for scenarios you might never face. Study the competitive landscape. Define every stakeholder's role. Set trigger conditions.
                 </p>
                 <div className="bg-violet-950/30 rounded-lg p-3 border border-violet-500/30">
@@ -507,25 +507,25 @@ export default function MarketingLanding() {
             <Card className="bg-gradient-to-br from-blue-600/20 to-cyan-600/20 border-2 border-blue-500" data-testid="card-phase-detect">
               <CardContent className="p-6">
                 <div className="text-center mb-4">
-                  <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-blue-500 text-white text-2xl font-bold mb-3">
+                  <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-blue-500 text-gray-900 text-2xl font-bold mb-3">
                     D
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">DETECT</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">DETECT</h3>
                   <div className="text-blue-300 text-sm font-semibold mb-4">Monitor Signals</div>
                 </div>
-                <p className="text-blue-100 text-sm mb-4">
+                <p className="text-blue-600 text-sm mb-4">
                   AI monitors competitive signals, customer patterns, operational metrics, and market shifts. Pattern recognition spots trigger conditions in real-time.
                 </p>
                 <div className="space-y-2">
-                  <div className="flex items-start gap-2 text-xs text-blue-200">
+                  <div className="flex items-start gap-2 text-xs text-blue-700">
                     <CheckCircle2 className="h-3 w-3 text-cyan-400 mt-0.5 flex-shrink-0" />
                     <span>Competitive moves detected</span>
                   </div>
-                  <div className="flex items-start gap-2 text-xs text-blue-200">
+                  <div className="flex items-start gap-2 text-xs text-blue-700">
                     <CheckCircle2 className="h-3 w-3 text-cyan-400 mt-0.5 flex-shrink-0" />
                     <span>Customer sentiment analyzed</span>
                   </div>
-                  <div className="flex items-start gap-2 text-xs text-blue-200">
+                  <div className="flex items-start gap-2 text-xs text-blue-700">
                     <CheckCircle2 className="h-3 w-3 text-cyan-400 mt-0.5 flex-shrink-0" />
                     <span>Market triggers identified</span>
                   </div>
@@ -537,13 +537,13 @@ export default function MarketingLanding() {
             <Card className="bg-gradient-to-br from-emerald-600/20 to-green-600/20 border-2 border-emerald-500" data-testid="card-phase-execute">
               <CardContent className="p-6">
                 <div className="text-center mb-4">
-                  <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-emerald-500 text-white text-2xl font-bold mb-3">
+                  <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-emerald-500 text-gray-900 text-2xl font-bold mb-3">
                     E
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">EXECUTE</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">EXECUTE</h3>
                   <div className="text-emerald-300 text-sm font-semibold mb-4">Execute Response</div>
                 </div>
-                <p className="text-blue-100 text-sm mb-4">
+                <p className="text-blue-600 text-sm mb-4">
                   One-click playbook activation. Every stakeholder receives coordinated assignments simultaneously. No meetings. No delays. Just execution.
                 </p>
                 <div className="bg-emerald-950/30 rounded-lg p-3 border border-emerald-500/30">
@@ -560,25 +560,25 @@ export default function MarketingLanding() {
             <Card className="bg-gradient-to-br from-amber-600/20 to-orange-600/20 border-2 border-amber-500" data-testid="card-phase-advance">
               <CardContent className="p-6">
                 <div className="text-center mb-4">
-                  <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-amber-500 text-white text-2xl font-bold mb-3">
+                  <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-amber-500 text-gray-900 text-2xl font-bold mb-3">
                     A
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">ADVANCE</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">ADVANCE</h3>
                   <div className="text-amber-300 text-sm font-semibold mb-4">Review the Film</div>
                 </div>
-                <p className="text-blue-100 text-sm mb-4">
+                <p className="text-blue-600 text-sm mb-4">
                   Capture what worked. Measure performance across all 12 operating model elements. Refine playbooks. Get better every execution.
                 </p>
                 <div className="space-y-2">
-                  <div className="flex items-start gap-2 text-xs text-blue-200">
+                  <div className="flex items-start gap-2 text-xs text-blue-700">
                     <CheckCircle2 className="h-3 w-3 text-amber-400 mt-0.5 flex-shrink-0" />
                     <span>Decision outcomes documented</span>
                   </div>
-                  <div className="flex items-start gap-2 text-xs text-blue-200">
+                  <div className="flex items-start gap-2 text-xs text-blue-700">
                     <CheckCircle2 className="h-3 w-3 text-amber-400 mt-0.5 flex-shrink-0" />
                     <span>Playbooks continuously improved</span>
                   </div>
-                  <div className="flex items-start gap-2 text-xs text-blue-200">
+                  <div className="flex items-start gap-2 text-xs text-blue-700">
                     <CheckCircle2 className="h-3 w-3 text-amber-400 mt-0.5 flex-shrink-0" />
                     <span>Organization gets smarter</span>
                   </div>
@@ -590,10 +590,10 @@ export default function MarketingLanding() {
           <div className="max-w-4xl mx-auto">
             <Card className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border-2 border-cyan-500/50">
               <CardContent className="p-8 text-center">
-                <p className="text-2xl font-bold text-white mb-3">
+                <p className="text-2xl font-bold text-gray-900 mb-3">
                   Elite organizations succeed through preparation, not improvisation.
                 </p>
-                <p className="text-xl text-blue-200">
+                <p className="text-xl text-blue-700">
                   Execution OS is the orchestration layer that enables Fortune 1000 leaders to sense change early, act decisively, and mobilize across 9 strategic domains in 12 minutes instead of 72 hours.
                 </p>
               </CardContent>
@@ -606,13 +606,13 @@ export default function MarketingLanding() {
       <section className="py-20 px-6 bg-gradient-to-br dark:from-slate-950 dark:to-blue-950">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <Badge className="mb-6 bg-cyan-500 text-white border-0" data-testid="badge-scenarios">
+            <Badge className="mb-6 bg-cyan-500 text-gray-900 border-0" data-testid="badge-scenarios">
               See It In Action
             </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
               170 Strategic Playbook Library
             </h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-blue-600 mb-8 max-w-3xl mx-auto">
               Enterprise-ready playbook templates across 9 operational domains. From market dynamics to technology innovation, talent leadership to AI governance—transform any strategic initiative from a 72-hour process into a 12-minute coordinated response.
             </p>
           </div>
@@ -622,8 +622,8 @@ export default function MarketingLanding() {
               <CardContent className="pt-6 pb-6">
                 <div className="text-center">
                   <TrendingUp className="h-10 w-10 text-green-400 mx-auto mb-3" />
-                  <h3 className="text-lg font-bold text-white mb-1">Market Dynamics</h3>
-                  <p className="text-green-200 text-xs">Competitive threats & opportunities</p>
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">Market Dynamics</h3>
+                  <p className="text-green-700 text-xs">Competitive threats & opportunities</p>
                 </div>
               </CardContent>
             </Card>
@@ -632,7 +632,7 @@ export default function MarketingLanding() {
               <CardContent className="pt-6 pb-6">
                 <div className="text-center">
                   <BarChart3 className="h-10 w-10 text-emerald-400 mx-auto mb-3" />
-                  <h3 className="text-lg font-bold text-white mb-1">Financial Strategy</h3>
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">Financial Strategy</h3>
                   <p className="text-emerald-200 text-xs">Capital allocation & risk management</p>
                 </div>
               </CardContent>
@@ -642,8 +642,8 @@ export default function MarketingLanding() {
               <CardContent className="pt-6 pb-6">
                 <div className="text-center">
                   <Shield className="h-10 w-10 text-blue-400 mx-auto mb-3" />
-                  <h3 className="text-lg font-bold text-white mb-1">Operational Excellence</h3>
-                  <p className="text-blue-200 text-xs">Supply chain & process optimization</p>
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">Operational Excellence</h3>
+                  <p className="text-blue-700 text-xs">Supply chain & process optimization</p>
                 </div>
               </CardContent>
             </Card>
@@ -652,8 +652,8 @@ export default function MarketingLanding() {
               <CardContent className="pt-6 pb-6">
                 <div className="text-center">
                   <Zap className="h-10 w-10 text-purple-400 mx-auto mb-3" />
-                  <h3 className="text-lg font-bold text-white mb-1">Technology & Innovation</h3>
-                  <p className="text-purple-200 text-xs">Digital transformation & AI adoption</p>
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">Technology & Innovation</h3>
+                  <p className="text-purple-700 text-xs">Digital transformation & AI adoption</p>
                 </div>
               </CardContent>
             </Card>
@@ -662,8 +662,8 @@ export default function MarketingLanding() {
               <CardContent className="pt-6 pb-6">
                 <div className="text-center">
                   <Users className="h-10 w-10 text-amber-400 mx-auto mb-3" />
-                  <h3 className="text-lg font-bold text-white mb-1">Talent & Leadership</h3>
-                  <p className="text-amber-200 text-xs">Culture, workforce & succession</p>
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">Talent & Leadership</h3>
+                  <p className="text-amber-700 text-xs">Culture, workforce & succession</p>
                 </div>
               </CardContent>
             </Card>
@@ -672,7 +672,7 @@ export default function MarketingLanding() {
               <CardContent className="pt-6 pb-6">
                 <div className="text-center">
                   <Target className="h-10 w-10 text-pink-400 mx-auto mb-3" />
-                  <h3 className="text-lg font-bold text-white mb-1">Brand & Reputation</h3>
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">Brand & Reputation</h3>
                   <p className="text-pink-200 text-xs">PR crises & stakeholder trust</p>
                 </div>
               </CardContent>
@@ -682,7 +682,7 @@ export default function MarketingLanding() {
               <CardContent className="pt-6 pb-6">
                 <div className="text-center">
                   <Shield className="h-10 w-10 text-cyan-400 mx-auto mb-3" />
-                  <h3 className="text-lg font-bold text-white mb-1">Regulatory & Compliance</h3>
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">Regulatory & Compliance</h3>
                   <p className="text-cyan-200 text-xs">Legal, regulatory & governance</p>
                 </div>
               </CardContent>
@@ -692,7 +692,7 @@ export default function MarketingLanding() {
               <CardContent className="pt-6 pb-6">
                 <div className="text-center">
                   <Rocket className="h-10 w-10 text-indigo-400 mx-auto mb-3" />
-                  <h3 className="text-lg font-bold text-white mb-1">Market Opportunities</h3>
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">Market Opportunities</h3>
                   <p className="text-indigo-200 text-xs">M&A, expansion & new markets</p>
                 </div>
               </CardContent>
@@ -743,7 +743,7 @@ export default function MarketingLanding() {
                 </p>
                 <Button 
                   size="lg" 
-                  className="bg-cyan-600 hover:bg-cyan-500 text-white text-lg px-10 py-6"
+                  className="bg-cyan-600 hover:bg-cyan-500 text-gray-900 text-lg px-10 py-6"
                   onClick={() => setLocation("/how-it-works")}
                   data-testid="button-see-execution-demo"
                 >
@@ -778,7 +778,7 @@ export default function MarketingLanding() {
                 <div className="text-sm text-gray-600 dark:text-slate-300 mb-2">
                   Average coordination time for strategic initiatives in Fortune 1000 companies
                 </div>
-                <div className="text-xs text-slate-300 italic">Source: HBR "Why Strategy Execution Unravels" (2015), McKinsey "Decision Making in the Age of Urgency" (2023)</div>
+                <div className="text-xs text-gray-600 italic">Source: HBR "Why Strategy Execution Unravels" (2015), McKinsey "Decision Making in the Age of Urgency" (2023)</div>
               </CardContent>
             </Card>
 
@@ -789,7 +789,7 @@ export default function MarketingLanding() {
                 <div className="text-sm text-gray-600 dark:text-slate-300 mb-2">
                   Strategic initiatives that miss execution windows due to coordination delays
                 </div>
-                <div className="text-xs text-slate-300 italic">Source: Bain & Company "The Execution Premium" study (2022)</div>
+                <div className="text-xs text-gray-600 italic">Source: Bain & Company "The Execution Premium" study (2022)</div>
               </CardContent>
             </Card>
 
@@ -831,7 +831,7 @@ export default function MarketingLanding() {
             <Button 
               size="lg"
               onClick={() => { window.location.href = '/try-demo'; }}
-              className="bg-poise-teal hover:bg-cyan-500 text-white text-lg px-10 py-6 font-semibold"
+              className="bg-poise-teal hover:bg-cyan-500 text-gray-900 text-lg px-10 py-6 font-semibold"
               data-testid="button-cta-demo"
             >
               <Play className="h-5 w-5 mr-2" />

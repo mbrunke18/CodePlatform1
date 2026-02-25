@@ -93,7 +93,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
                 data-testid={`template-trigger-${index}`}
               >
                 <p className="text-sm font-medium text-white">{template.name}</p>
-                <p className="text-xs text-gray-200 mt-1">
+                <p className="text-xs text-gray-500 mt-1">
                   {template.signal} {template.operator === 'lt' ? '<' : '>'} {template.threshold}
                 </p>
               </button>
@@ -105,7 +105,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
       {/* Add Trigger Form */}
       <Card className="border-blue-500/30 bg-white">
         <CardContent className="p-6">
-          <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
+          <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2 mb-4">
             <Plus className="h-5 w-5 text-blue-400" />
             Define Monitoring Trigger
           </h3>
@@ -113,37 +113,37 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
           <div className="space-y-4">
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="trigger-name" className="text-white">Trigger Name *</Label>
+                <Label htmlFor="trigger-name" className="text-gray-900">Trigger Name *</Label>
                 <Input
                   id="trigger-name"
                   data-testid="input-trigger-name"
                   placeholder="e.g., Revenue Decline Alert"
                   value={newTrigger.name}
                   onChange={(e) => setNewTrigger({ ...newTrigger, name: e.target.value })}
-                  className="bg-gray-50 border-slate-600 text-white mt-2"
+                  className="bg-gray-50 border-slate-600 text-gray-900 mt-2"
                 />
               </div>
 
               <div>
-                <Label htmlFor="trigger-signal" className="text-white">Signal to Monitor *</Label>
+                <Label htmlFor="trigger-signal" className="text-gray-900">Signal to Monitor *</Label>
                 <Input
                   id="trigger-signal"
                   data-testid="input-trigger-signal"
                   placeholder="e.g., Monthly Revenue"
                   value={newTrigger.signal}
                   onChange={(e) => setNewTrigger({ ...newTrigger, signal: e.target.value })}
-                  className="bg-gray-50 border-slate-600 text-white mt-2"
+                  className="bg-gray-50 border-slate-600 text-gray-900 mt-2"
                 />
-                <p className="text-xs text-gray-300 mt-1">What metric or event should AI monitor?</p>
+                <p className="text-xs text-gray-600 mt-1">What metric or event should AI monitor?</p>
               </div>
 
               <div>
-                <Label htmlFor="trigger-operator" className="text-white">Condition *</Label>
+                <Label htmlFor="trigger-operator" className="text-gray-900">Condition *</Label>
                 <Select 
                   value={newTrigger.operator} 
                   onValueChange={(value: any) => setNewTrigger({ ...newTrigger, operator: value })}
                 >
-                  <SelectTrigger className="bg-gray-50 border-slate-600 text-white mt-2" data-testid="select-trigger-operator">
+                  <SelectTrigger className="bg-gray-50 border-slate-600 text-gray-900 mt-2" data-testid="select-trigger-operator">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -163,24 +163,24 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
               </div>
 
               <div>
-                <Label htmlFor="trigger-threshold" className="text-white">Threshold Value *</Label>
+                <Label htmlFor="trigger-threshold" className="text-gray-900">Threshold Value *</Label>
                 <Input
                   id="trigger-threshold"
                   data-testid="input-trigger-threshold"
                   placeholder="e.g., 85%, $10M, 30 days"
                   value={newTrigger.threshold}
                   onChange={(e) => setNewTrigger({ ...newTrigger, threshold: e.target.value })}
-                  className="bg-gray-50 border-slate-600 text-white mt-2"
+                  className="bg-gray-50 border-slate-600 text-gray-900 mt-2"
                 />
               </div>
 
               <div>
-                <Label htmlFor="trigger-priority" className="text-white">Alert Priority</Label>
+                <Label htmlFor="trigger-priority" className="text-gray-900">Alert Priority</Label>
                 <Select 
                   value={newTrigger.priority} 
                   onValueChange={(value: any) => setNewTrigger({ ...newTrigger, priority: value })}
                 >
-                  <SelectTrigger className="bg-gray-50 border-slate-600 text-white mt-2" data-testid="select-trigger-priority">
+                  <SelectTrigger className="bg-gray-50 border-slate-600 text-gray-900 mt-2" data-testid="select-trigger-priority">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -194,7 +194,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
               </div>
 
               <div>
-                <Label className="text-white">Signal Confidence: {newTrigger.confidenceWeight[0]}%</Label>
+                <Label className="text-gray-900">Signal Confidence: {newTrigger.confidenceWeight[0]}%</Label>
                 <Slider
                   value={newTrigger.confidenceWeight}
                   onValueChange={(value) => setNewTrigger({ ...newTrigger, confidenceWeight: value })}
@@ -204,14 +204,14 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
                   className="mt-3"
                   data-testid="slider-confidence-weight"
                 />
-                <p className="text-xs text-gray-300 mt-1">How reliable is this signal? (prevents false positives)</p>
+                <p className="text-xs text-gray-600 mt-1">How reliable is this signal? (prevents false positives)</p>
               </div>
             </div>
 
             <Button
               onClick={addTrigger}
               disabled={!newTrigger.name || !newTrigger.signal || !newTrigger.threshold}
-              className="bg-blue-600 hover:bg-blue-700 text-white"
+              className="bg-blue-600 hover:bg-blue-700 text-gray-900"
               data-testid="button-add-trigger"
             >
               <Plus className="h-4 w-4 mr-2" />
@@ -224,7 +224,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
       {/* Trigger List */}
       {data.triggers && data.triggers.length > 0 && (
         <div>
-          <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
+          <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2 mb-4">
             <Bell className="h-5 w-5 text-blue-400" />
             Active Triggers ({data.triggers.length})
           </h3>
@@ -242,12 +242,12 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
                           <OperatorIcon className="h-4 w-4 text-blue-400" />
-                          <h4 className="font-semibold text-white">{trigger.name}</h4>
+                          <h4 className="font-semibold text-gray-900">{trigger.name}</h4>
                           <Badge className={priorityConfig?.color}>
                             {priorityConfig?.label || trigger.priority}
                           </Badge>
                         </div>
-                        <div className="text-sm text-gray-200 space-y-1">
+                        <div className="text-sm text-gray-500 space-y-1">
                           <p className="font-mono">
                             {trigger.signal} {operatorConfig?.label.split(' ')[0]} {trigger.threshold}
                           </p>

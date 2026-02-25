@@ -585,10 +585,10 @@ export default function PlaybookCustomize() {
         <div className="flex items-center justify-between">
           <div className="cursor-pointer flex-1" onClick={() => toggleSection(id)}>
             <CardTitle className="text-lg flex items-center gap-2">
-              <Icon className="h-5 w-5 text-slate-300" />
+              <Icon className="h-5 w-5 text-gray-600" />
               {title}
               {phaseBadge && (
-                <span className={`ml-2 w-5 h-5 ${phaseBadge.color} text-white text-xs font-bold rounded flex items-center justify-center`}>
+                <span className={`ml-2 w-5 h-5 ${phaseBadge.color} text-gray-900 text-xs font-bold rounded flex items-center justify-center`}>
                   {phaseBadge.label}
                 </span>
               )}
@@ -609,7 +609,7 @@ export default function PlaybookCustomize() {
       <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
         <StandardNav />
         <div className="flex items-center justify-center h-[60vh]">
-          <div className="text-slate-300">Loading template...</div>
+          <div className="text-gray-600">Loading template...</div>
         </div>
       </div>
     );
@@ -638,7 +638,7 @@ export default function PlaybookCustomize() {
               <h1 className="text-2xl font-semibold text-slate-900 dark:text-white mb-1">
                 {isCreateMode ? "Create Playbook" : "Customize Playbook"}
               </h1>
-              <p className="text-slate-300 text-sm">
+              <p className="text-gray-600 text-sm">
                 Comprehensive strategic response configuration
               </p>
             </div>
@@ -684,7 +684,7 @@ export default function PlaybookCustomize() {
                       <h3 className="font-bold text-sm tracking-wide">{phase.label}</h3>
                       <Badge variant="secondary" className="text-xs">{filledCount}/{phaseSections.length}</Badge>
                     </div>
-                    <p className="text-xs text-slate-300 dark:text-slate-300 italic mb-2">{phase.tagline}</p>
+                    <p className="text-xs text-gray-600 dark:text-slate-300 italic mb-2">{phase.tagline}</p>
                     <p className="text-xs text-gray-600 dark:text-slate-300 line-clamp-2">{phase.description}</p>
                   </CardContent>
                 </Card>
@@ -699,7 +699,7 @@ export default function PlaybookCustomize() {
                   <div key={phase.id} className="mb-4">
                     <div className={`flex items-center gap-2 px-3 py-2 rounded-lg mb-1`}>
                       <div className={`w-2 h-2 rounded-full ${phase.color}`} />
-                      <span className="text-xs font-bold tracking-wider text-slate-300 dark:text-slate-300">{phase.label}</span>
+                      <span className="text-xs font-bold tracking-wider text-gray-600 dark:text-slate-300">{phase.label}</span>
                     </div>
                     {sections.filter(s => s.phase === phase.id).map((section) => {
                       const Icon = section.icon;
@@ -817,7 +817,7 @@ export default function PlaybookCustomize() {
                               </SelectContent>
                             </Select>
                           )} />
-                          <p className="text-xs text-slate-300 mt-1">
+                          <p className="text-xs text-gray-600 mt-1">
                             {PLAYBOOK_STATUSES.find(s => s.value === watch('status'))?.description}
                           </p>
                         </div>
@@ -972,7 +972,7 @@ export default function PlaybookCustomize() {
                                       const isSelected = channels.includes(ch.value);
                                       return (
                                         <button key={ch.value} type="button" onClick={() => field.onChange(isSelected ? channels.filter((c: string) => c !== ch.value) : [...channels, ch.value])}
-                                          className={`px-2 py-1 text-xs rounded-full border ${isSelected ? 'bg-primary text-primary-foreground' : 'bg-white dark:bg-slate-800 text-slate-300'}`}>
+                                          className={`px-2 py-1 text-xs rounded-full border ${isSelected ? 'bg-primary text-primary-foreground' : 'bg-white dark:bg-slate-800 text-gray-600'}`}>
                                           {ch.label}
                                         </button>
                                       );
@@ -1073,7 +1073,7 @@ export default function PlaybookCustomize() {
                           </div>
                         </div>
                         <div className="flex items-end">
-                          <p className="text-sm"><span className="text-slate-300">Allocated:</span> <span className="font-semibold">${totalAllocatedBudget.toLocaleString()}</span></p>
+                          <p className="text-sm"><span className="text-gray-600">Allocated:</span> <span className="font-semibold">${totalAllocatedBudget.toLocaleString()}</span></p>
                         </div>
                       </div>
                       {budgetArray.fields.length === 0 ? (
@@ -1192,7 +1192,7 @@ export default function PlaybookCustomize() {
                               const selected = (field.value || []).includes(f.value);
                               return (
                                 <button key={f.value} type="button" onClick={() => field.onChange(selected ? field.value.filter((v: string) => v !== f.value) : [...(field.value || []), f.value])}
-                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-blue-100 text-blue-700 border-blue-300' : 'bg-white dark:bg-slate-800 text-slate-300 border-slate-200'}`}>
+                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-blue-100 text-blue-700 border-blue-300' : 'bg-white dark:bg-slate-800 text-gray-600 border-slate-200'}`}>
                                   {f.label}
                                 </button>
                               );
@@ -1422,7 +1422,7 @@ export default function PlaybookCustomize() {
                               const selected = (field.value || []).includes(r.value);
                               return (
                                 <button key={r.value} type="button" onClick={() => field.onChange(selected ? field.value.filter((v: string) => v !== r.value) : [...(field.value || []), r.value])}
-                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-purple-100 text-purple-700 border-purple-300' : 'bg-white dark:bg-slate-800 text-slate-300 border-slate-200'}`}>
+                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-purple-100 text-purple-700 border-purple-300' : 'bg-white dark:bg-slate-800 text-gray-600 border-slate-200'}`}>
                                   {r.label}
                                 </button>
                               );
@@ -1528,7 +1528,7 @@ export default function PlaybookCustomize() {
       {/* STICKY SAVE BAR */}
       <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-4 px-6 z-50">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="text-sm text-slate-300">
+          <div className="text-sm text-gray-600">
             {Object.keys(errors).length > 0 && (
               <span className="text-red-500">Please fix errors before saving</span>
             )}

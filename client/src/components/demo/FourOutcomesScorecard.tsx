@@ -168,7 +168,7 @@ export default function FourOutcomesScorecard({
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
             <span>Overall Execution Score</span>
-            <Badge className={`${getScoreColor(overallScore)} text-white text-xl px-4 py-2`} data-testid="badge-overall-score">
+            <Badge className={`${getScoreColor(overallScore)} text-gray-900 text-xl px-4 py-2`} data-testid="badge-overall-score">
               {overallScore}/100
             </Badge>
           </CardTitle>

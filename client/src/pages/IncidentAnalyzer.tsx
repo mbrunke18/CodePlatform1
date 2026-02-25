@@ -536,7 +536,7 @@ export default function IncidentAnalyzer() {
                 <Brain className="w-4 h-4 mr-2" />
                 Strategic Analyzer
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
                 See How Execution OS Would Have<br className="hidden md:block" /> Transformed Your Outcome
               </h1>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -545,7 +545,7 @@ export default function IncidentAnalyzer() {
             </div>
 
             <div className="bg-white border border-gray-200 rounded-2xl p-8">
-              <h2 className="text-lg font-semibold text-white mb-6 text-center">How It Works</h2>
+              <h2 className="text-lg font-semibold text-gray-900 mb-6 text-center">How It Works</h2>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                 {[
                   { num: 1, label: "Describe", desc: "Tell us what happened", icon: FileText, color: "text-teal-400" },
@@ -558,7 +558,7 @@ export default function IncidentAnalyzer() {
                     <div className={`w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 flex items-center justify-center mx-auto mb-3`}>
                       <step.icon className={`w-5 h-5 ${step.color}`} />
                     </div>
-                    <div className="text-sm font-semibold text-white">{step.label}</div>
+                    <div className="text-sm font-semibold text-gray-900">{step.label}</div>
                     <div className="text-xs text-gray-500 mt-1">{step.desc}</div>
                   </div>
                 ))}
@@ -566,7 +566,7 @@ export default function IncidentAnalyzer() {
             </div>
 
             <div>
-              <h2 className="text-lg font-semibold text-white mb-2 text-center">Try a Preset Scenario</h2>
+              <h2 className="text-lg font-semibold text-gray-900 mb-2 text-center">Try a Preset Scenario</h2>
               <p className="text-sm text-gray-500 text-center mb-5">Select one to see the analyzer in action, or write your own below</p>
               <div className="grid md:grid-cols-3 gap-4">
                 {[
@@ -589,7 +589,7 @@ export default function IncidentAnalyzer() {
                         {preset.label}
                       </Badge>
                     </div>
-                    <h3 className="text-white font-semibold mb-1">{preset.title}</h3>
+                    <h3 className="text-gray-900 font-semibold mb-1">{preset.title}</h3>
                     <p className="text-gray-600 text-sm line-clamp-3">{preset.desc}</p>
                     <div className={`${preset.textCls} text-xs font-medium mt-3 flex items-center gap-1 group-hover:gap-2 transition-all`}>
                       Analyze this scenario <ArrowRight className="w-3 h-3" />
@@ -609,7 +609,7 @@ export default function IncidentAnalyzer() {
                 <Button
                   size="lg"
                   onClick={() => setCurrentStep(1)}
-                  className="bg-teal-500 hover:bg-teal-600 text-white gap-2 px-10 py-6 text-lg"
+                  className="bg-teal-500 hover:bg-teal-600 text-gray-900 gap-2 px-10 py-6 text-lg"
                 >
                   <FileText className="w-5 h-5" /> Describe Your Own Situation
                   <ArrowRight className="w-4 h-4" />
@@ -654,7 +654,7 @@ export default function IncidentAnalyzer() {
                 <Brain className="w-4 h-4 mr-2" />
                 Strategic Analyzer
               </Badge>
-              <h1 className="text-4xl font-bold text-white mb-3">
+              <h1 className="text-4xl font-bold text-gray-900 mb-3">
                 See How Execution OS Transforms Execution
               </h1>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -674,9 +674,9 @@ export default function IncidentAnalyzer() {
                         <div
                           className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold transition-colors ${
                             isActive
-                              ? "bg-teal-500 text-white shadow-lg shadow-teal-500/30"
+                              ? "bg-teal-500 text-gray-900 shadow-lg shadow-teal-500/30"
                               : isComplete
-                              ? "bg-emerald-500 text-white"
+                              ? "bg-emerald-500 text-gray-900"
                               : "bg-gray-50 text-gray-500"
                           }`}
                         >
@@ -719,7 +719,7 @@ export default function IncidentAnalyzer() {
         {currentStep === 1 && (
           <Card className="bg-white border-gray-200">
             <CardHeader>
-              <CardTitle className="text-white flex items-center gap-2 text-2xl">
+              <CardTitle className="text-gray-900 flex items-center gap-2 text-2xl">
                 <FileText className="w-6 h-6 text-teal-400" />
                 Describe Your Situation
               </CardTitle>
@@ -730,7 +730,7 @@ export default function IncidentAnalyzer() {
             <CardContent className="space-y-6">
               {/* Domain Selector */}
               <div className="space-y-3">
-                <Label className="text-slate-300">Strategic Domain</Label>
+                <Label className="text-gray-600">Strategic Domain</Label>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   <button
                     onClick={() => setSelectedDomain('auto')}
@@ -741,7 +741,7 @@ export default function IncidentAnalyzer() {
                     }`}
                   >
                     <Brain className={`w-6 h-6 mb-2 ${selectedDomain === 'auto' ? 'text-teal-400' : 'text-gray-500'}`} />
-                    <p className={`text-sm font-semibold ${selectedDomain === 'auto' ? 'text-teal-400' : 'text-slate-300'}`}>
+                    <p className={`text-sm font-semibold ${selectedDomain === 'auto' ? 'text-teal-400' : 'text-gray-600'}`}>
                       Let AI Detect
                     </p>
                     <p className="text-xs text-gray-500 mt-1">Auto-classify</p>
@@ -755,7 +755,7 @@ export default function IncidentAnalyzer() {
                     }`}
                   >
                     <Rocket className={`w-6 h-6 mb-2 ${selectedDomain === 'offense' ? 'text-emerald-400' : 'text-gray-500'}`} />
-                    <p className={`text-sm font-semibold ${selectedDomain === 'offense' ? 'text-emerald-400' : 'text-slate-300'}`}>
+                    <p className={`text-sm font-semibold ${selectedDomain === 'offense' ? 'text-emerald-400' : 'text-gray-600'}`}>
                       OFFENSE
                     </p>
                     <p className="text-xs text-gray-500 mt-0.5">58 Playbooks</p>
@@ -770,7 +770,7 @@ export default function IncidentAnalyzer() {
                     }`}
                   >
                     <Shield className={`w-6 h-6 mb-2 ${selectedDomain === 'defense' ? 'text-red-400' : 'text-gray-500'}`} />
-                    <p className={`text-sm font-semibold ${selectedDomain === 'defense' ? 'text-red-400' : 'text-slate-300'}`}>
+                    <p className={`text-sm font-semibold ${selectedDomain === 'defense' ? 'text-red-400' : 'text-gray-600'}`}>
                       DEFENSE
                     </p>
                     <p className="text-xs text-gray-500 mt-0.5">58 Playbooks</p>
@@ -785,7 +785,7 @@ export default function IncidentAnalyzer() {
                     }`}
                   >
                     <Settings className={`w-6 h-6 mb-2 ${selectedDomain === 'special_teams' ? 'text-purple-400' : 'text-gray-500'}`} />
-                    <p className={`text-sm font-semibold ${selectedDomain === 'special_teams' ? 'text-purple-400' : 'text-slate-300'}`}>
+                    <p className={`text-sm font-semibold ${selectedDomain === 'special_teams' ? 'text-purple-400' : 'text-gray-600'}`}>
                       SPECIAL TEAMS
                     </p>
                     <p className="text-xs text-gray-500 mt-0.5">54 Playbooks</p>
@@ -795,18 +795,18 @@ export default function IncidentAnalyzer() {
               </div>
 
               <div className="space-y-2">
-                <Label className="text-slate-300">Situation Description *</Label>
+                <Label className="text-gray-600">Situation Description *</Label>
                 <Textarea
                   rows={6}
                   placeholder={getPlaceholder(selectedDomain)}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="bg-gray-50 border-gray-200 text-white placeholder:text-slate-600 focus:border-teal-500 resize-none"
+                  className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-slate-600 focus:border-teal-500 resize-none"
                 />
               </div>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label className="text-slate-300 flex items-center gap-2">
+                  <Label className="text-gray-600 flex items-center gap-2">
                     <Building2 className="w-4 h-4 text-gray-500" />
                     Company Name (optional)
                   </Label>
@@ -814,11 +814,11 @@ export default function IncidentAnalyzer() {
                     placeholder="Acme Corp"
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
-                    className="bg-gray-50 border-gray-200 text-white placeholder:text-slate-600 focus:border-teal-500"
+                    className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-slate-600 focus:border-teal-500"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label className="text-slate-300 flex items-center gap-2">
+                  <Label className="text-gray-600 flex items-center gap-2">
                     <Mail className="w-4 h-4 text-gray-500" />
                     Email (optional)
                   </Label>
@@ -827,7 +827,7 @@ export default function IncidentAnalyzer() {
                     placeholder="exec@company.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="bg-gray-50 border-gray-200 text-white placeholder:text-slate-600 focus:border-teal-500"
+                    className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-slate-600 focus:border-teal-500"
                   />
                   <p className="text-xs text-slate-600">
                     Enter your email to receive a real notification during the simulation
@@ -839,7 +839,7 @@ export default function IncidentAnalyzer() {
                   size="lg"
                   onClick={handleAnalyze}
                   disabled={!description.trim() || isAnalyzing}
-                  className="bg-teal-500 hover:bg-teal-600 text-white gap-2 px-8"
+                  className="bg-teal-500 hover:bg-teal-600 text-gray-900 gap-2 px-8"
                 >
                   {isAnalyzing ? (
                     <>
@@ -862,7 +862,7 @@ export default function IncidentAnalyzer() {
             <Card className="bg-white border-gray-200">
               <CardHeader>
                 <div className="flex items-center justify-between flex-wrap gap-3">
-                  <CardTitle className="text-white flex items-center gap-2 text-2xl">
+                  <CardTitle className="text-gray-900 flex items-center gap-2 text-2xl">
                     <Brain className="w-6 h-6 text-teal-400" />
                     AI Analysis Results
                   </CardTitle>
@@ -891,11 +891,11 @@ export default function IncidentAnalyzer() {
                     </div>
                     <div className="flex items-center gap-3 mb-2">
                       {analysis.matched_playbook.code && (
-                        <Badge className="bg-gray-50 text-slate-300 border-gray-200 text-xs">
+                        <Badge className="bg-gray-50 text-gray-600 border-gray-200 text-xs">
                           {analysis.matched_playbook.code}
                         </Badge>
                       )}
-                      <span className="text-white font-medium">{analysis.matched_playbook.name}</span>
+                      <span className="text-gray-900 font-medium">{analysis.matched_playbook.name}</span>
                     </div>
                     <p className={`text-sm ${dc.text}`}>This playbook exists. Ready to deploy today.</p>
                   </div>
@@ -905,7 +905,7 @@ export default function IncidentAnalyzer() {
                 {analysis.situation_summary && (
                   <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
                     <h4 className="text-sm font-semibold text-teal-400 mb-2">Situation Summary</h4>
-                    <p className="text-slate-300 text-sm">{analysis.situation_summary}</p>
+                    <p className="text-gray-600 text-sm">{analysis.situation_summary}</p>
                   </div>
                 )}
 
@@ -930,7 +930,7 @@ export default function IncidentAnalyzer() {
                 {/* What Went Wrong */}
                 {analysis.whatWentWrong?.length > 0 && (
                   <div>
-                    <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
                       <AlertTriangle className="w-5 h-5 text-red-400" />
                       What Went Wrong
                     </h3>
@@ -943,7 +943,7 @@ export default function IncidentAnalyzer() {
                           <span className="bg-red-500/20 text-red-400 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
                             {i + 1}
                           </span>
-                          <p className="text-slate-300 text-sm">{item}</p>
+                          <p className="text-gray-600 text-sm">{item}</p>
                         </div>
                       ))}
                     </div>
@@ -953,14 +953,14 @@ export default function IncidentAnalyzer() {
                 {/* Root Causes (array) */}
                 {analysis.root_causes?.length > 0 && (
                   <div>
-                    <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
                       <Target className="w-5 h-5 text-amber-400" />
                       Root Causes
                     </h3>
                     <div className="grid md:grid-cols-2 gap-3">
                       {analysis.root_causes.map((cause: any, i: number) => (
                         <div key={i} className="bg-amber-950/20 border border-amber-500/20 rounded-lg p-3">
-                          <p className="text-sm font-medium text-white">{typeof cause === 'string' ? cause : cause.cause || cause.title || cause.name || cause.description}</p>
+                          <p className="text-sm font-medium text-gray-900">{typeof cause === 'string' ? cause : cause.cause || cause.title || cause.name || cause.description}</p>
                           {typeof cause !== 'string' && (cause.detail || cause.description) && (
                             <p className="text-xs text-gray-600 mt-1">{cause.detail || (cause.cause ? cause.description : '')}</p>
                           )}
@@ -976,14 +976,14 @@ export default function IncidentAnalyzer() {
                     <h4 className="text-sm font-semibold text-amber-400 mb-2 flex items-center gap-2">
                       <Target className="w-4 h-4" /> Root Cause
                     </h4>
-                    <p className="text-slate-300 text-sm">{analysis.rootCause}</p>
+                    <p className="text-gray-600 text-sm">{analysis.rootCause}</p>
                   </div>
                 )}
 
                 {/* Comparison Metrics */}
                 {analysis.comparison_metrics?.length > 0 && (
                   <div>
-                    <h3 className="text-lg font-semibold text-white mb-3">Comparison Metrics</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3">Comparison Metrics</h3>
                     <div className="overflow-x-auto rounded-xl border border-gray-200">
                       <table className="w-full">
                         <thead>
@@ -996,7 +996,7 @@ export default function IncidentAnalyzer() {
                         <tbody>
                           {analysis.comparison_metrics.map((m: any, i: number) => (
                             <tr key={i} className="border-t border-gray-200">
-                              <td className="px-4 py-3 text-sm font-medium text-slate-300">{m.metric || m.label || m.name}</td>
+                              <td className="px-4 py-3 text-sm font-medium text-gray-600">{m.metric || m.label || m.name}</td>
                               <td className="px-4 py-3 text-sm text-red-300">{m.without || m.before || m.current}</td>
                               <td className="px-4 py-3 text-sm text-teal-300">{m.with || m.after || m.improved}</td>
                             </tr>
@@ -1010,7 +1010,7 @@ export default function IncidentAnalyzer() {
                 {/* Side-by-Side Comparison */}
                 {comparisonRows?.length > 0 && (
                   <div>
-                    <h3 className="text-lg font-semibold text-white mb-3">Side-by-Side Comparison</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3">Side-by-Side Comparison</h3>
                     <div className="overflow-x-auto rounded-xl border border-gray-200">
                       <table className="w-full">
                         <thead>
@@ -1029,7 +1029,7 @@ export default function IncidentAnalyzer() {
                         <tbody>
                           {comparisonRows.map((row: any, i: number) => (
                             <tr key={i} className="border-t border-gray-200">
-                              <td className="bg-white px-4 py-3 text-sm font-medium text-slate-300">
+                              <td className="bg-white px-4 py-3 text-sm font-medium text-gray-600">
                                 {row.phase || row.label}
                               </td>
                               <td className={`${activeDomain === 'offense' ? 'bg-amber-950/10' : activeDomain === 'special_teams' ? 'bg-purple-950/10' : 'bg-red-950/10'} px-4 py-3 text-sm ${activeDomain === 'offense' ? 'text-amber-300' : activeDomain === 'special_teams' ? 'text-purple-300' : 'text-red-300'}`}>
@@ -1042,7 +1042,7 @@ export default function IncidentAnalyzer() {
                           ))}
                           {(analysis.costWithout || analysis.costWith || analysis.cost_without || analysis.cost_with) && (
                             <tr className="border-t-2 border-gray-200">
-                              <td className="bg-white px-4 py-4 text-sm font-bold text-white">
+                              <td className="bg-white px-4 py-4 text-sm font-bold text-gray-900">
                                 Total Cost
                               </td>
                               <td className={`${activeDomain === 'offense' ? 'bg-amber-950/20' : activeDomain === 'special_teams' ? 'bg-purple-950/20' : 'bg-red-950/20'} px-4 py-4 text-lg font-bold ${activeDomain === 'offense' ? 'text-amber-400' : activeDomain === 'special_teams' ? 'text-purple-400' : 'text-red-400'}`}>
@@ -1066,7 +1066,7 @@ export default function IncidentAnalyzer() {
                 size="lg"
                 onClick={handleGeneratePlaybook}
                 disabled={isGenerating}
-                className="bg-teal-500 hover:bg-teal-600 text-white gap-2 px-8"
+                className="bg-teal-500 hover:bg-teal-600 text-gray-900 gap-2 px-8"
               >
                 {isGenerating ? (
                   <>
@@ -1089,7 +1089,7 @@ export default function IncidentAnalyzer() {
             <Card className="bg-white border-gray-200">
               <CardHeader>
                 <div className="flex items-center justify-between flex-wrap gap-3">
-                  <CardTitle className="text-white flex items-center gap-2 text-2xl">
+                  <CardTitle className="text-gray-900 flex items-center gap-2 text-2xl">
                     <BookOpen className="w-6 h-6 text-teal-400" />
                     {editablePlaybook?.name || playbook?.name || "Generated Playbook"}
                   </CardTitle>
@@ -1109,7 +1109,7 @@ export default function IncidentAnalyzer() {
               <CardContent>
                 <div className="flex flex-wrap gap-3">
                   {editablePlaybook?.code && (
-                    <Badge className="bg-gray-50 text-slate-300 border-gray-200">
+                    <Badge className="bg-gray-50 text-gray-600 border-gray-200">
                       Code: {editablePlaybook.code}
                     </Badge>
                   )}
@@ -1132,7 +1132,7 @@ export default function IncidentAnalyzer() {
             {editablePlaybook?.triggerConditions?.length > 0 && (
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white text-lg flex items-center gap-2">
+                  <CardTitle className="text-gray-900 text-lg flex items-center gap-2">
                     <Zap className="w-5 h-5 text-amber-400" /> Trigger Conditions
                   </CardTitle>
                 </CardHeader>
@@ -1140,7 +1140,7 @@ export default function IncidentAnalyzer() {
                   <div className="grid md:grid-cols-2 gap-3">
                     {editablePlaybook.triggerConditions.map((tc: any, i: number) => (
                       <div key={i} className="bg-gray-50 border border-gray-200 rounded-lg p-3">
-                        <p className="text-sm font-medium text-white">{tc.condition || tc.name || tc.trigger}</p>
+                        <p className="text-sm font-medium text-gray-900">{tc.condition || tc.name || tc.trigger}</p>
                         {tc.threshold && (
                           <p className="text-xs text-amber-400 mt-1">Threshold: {tc.threshold}</p>
                         )}
@@ -1155,7 +1155,7 @@ export default function IncidentAnalyzer() {
             {editablePlaybook?.raciMatrix?.length > 0 && (
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white text-lg flex items-center gap-2">
+                  <CardTitle className="text-gray-900 text-lg flex items-center gap-2">
                     <Users className="w-5 h-5 text-blue-400" /> Stakeholder RACI Matrix
                   </CardTitle>
                 </CardHeader>
@@ -1173,7 +1173,7 @@ export default function IncidentAnalyzer() {
                       <tbody>
                         {editablePlaybook.raciMatrix.map((s: any, i: number) => (
                           <tr key={i} className="border-t border-gray-200">
-                            <td className="px-4 py-2 text-sm text-slate-300">{s.role}</td>
+                            <td className="px-4 py-2 text-sm text-gray-600">{s.role}</td>
                             <td className="px-4 py-2 text-sm">
                               {isEditing ? (
                                 <Input
@@ -1183,10 +1183,10 @@ export default function IncidentAnalyzer() {
                                     updated.raciMatrix[i].name = e.target.value;
                                     setEditablePlaybook({ ...updated });
                                   }}
-                                  className="bg-gray-50 border-slate-600 text-white h-8 text-sm"
+                                  className="bg-gray-50 border-slate-600 text-gray-900 h-8 text-sm"
                                 />
                               ) : (
-                                <span className="text-white">{s.name}</span>
+                                <span className="text-gray-900">{s.name}</span>
                               )}
                             </td>
                             <td className="px-4 py-2 text-sm text-gray-600">{s.department}</td>
@@ -1208,7 +1208,7 @@ export default function IncidentAnalyzer() {
             {editablePlaybook?.taskSequence?.length > 0 && (
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white text-lg flex items-center gap-2">
+                  <CardTitle className="text-gray-900 text-lg flex items-center gap-2">
                     <Activity className="w-5 h-5 text-emerald-400" /> Task Sequence
                   </CardTitle>
                 </CardHeader>
@@ -1219,11 +1219,11 @@ export default function IncidentAnalyzer() {
                         key={i}
                         className="bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-center gap-3"
                       >
-                        <span className="bg-gray-50 text-slate-300 rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold flex-shrink-0">
+                        <span className="bg-gray-50 text-gray-600 rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold flex-shrink-0">
                           {i + 1}
                         </span>
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-white truncate">{task.name || task.task || task.title}</p>
+                          <p className="text-sm font-medium text-gray-900 truncate">{task.name || task.task || task.title}</p>
                           <div className="flex flex-wrap gap-2 mt-1">
                             {task.owner && <span className="text-xs text-gray-500">Owner: {task.owner}</span>}
                             {task.duration && <span className="text-xs text-gray-500">Duration: {task.duration}</span>}
@@ -1246,7 +1246,7 @@ export default function IncidentAnalyzer() {
             {editablePlaybook?.preAuthorizedThresholds?.length > 0 && (
               <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white text-lg flex items-center gap-2">
+                  <CardTitle className="text-gray-900 text-lg flex items-center gap-2">
                     <Shield className="w-5 h-5 text-purple-400" /> Pre-Authorized Thresholds
                   </CardTitle>
                 </CardHeader>
@@ -1254,7 +1254,7 @@ export default function IncidentAnalyzer() {
                   <div className="grid md:grid-cols-2 gap-3">
                     {editablePlaybook.preAuthorizedThresholds.map((t: any, i: number) => (
                       <div key={i} className="bg-gray-50 border border-purple-500/20 rounded-lg p-3">
-                        <p className="text-sm font-medium text-white">{t.decision}</p>
+                        <p className="text-sm font-medium text-gray-900">{t.decision}</p>
                         <p className="text-xs text-purple-400 mt-1">Limit: {t.limit}</p>
                         <p className="text-xs text-gray-500 mt-0.5">Approver: {t.approver}</p>
                       </div>
@@ -1269,7 +1269,7 @@ export default function IncidentAnalyzer() {
                 size="lg"
                 onClick={handleRunSimulation}
                 disabled={isSimulating}
-                className="bg-teal-500 hover:bg-teal-600 text-white gap-2 px-8"
+                className="bg-teal-500 hover:bg-teal-600 text-gray-900 gap-2 px-8"
               >
                 {isSimulating ? (
                   <>
@@ -1301,14 +1301,14 @@ export default function IncidentAnalyzer() {
             {/* Elapsed Timer */}
             <div className="text-center">
               <p className="text-gray-500 text-sm uppercase tracking-wide mb-1">Elapsed Time</p>
-              <p className="text-5xl font-mono font-bold text-white">{formatTime(elapsedSeconds)}</p>
+              <p className="text-5xl font-mono font-bold text-gray-900">{formatTime(elapsedSeconds)}</p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
               {/* Stakeholder Status */}
               <Card className="bg-white border-gray-200">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-white text-lg flex items-center gap-2">
+                  <CardTitle className="text-gray-900 text-lg flex items-center gap-2">
                     <Users className="w-5 h-5 text-blue-400" /> Stakeholder Status
                   </CardTitle>
                 </CardHeader>
@@ -1321,14 +1321,14 @@ export default function IncidentAnalyzer() {
                           <div key={i} className="flex items-center gap-3 py-1.5">
                             {status === "acknowledged" ? (
                               <div className="w-3 h-3 bg-emerald-400 rounded-full flex items-center justify-center">
-                                <Check className="w-2 h-2 text-white" />
+                                <Check className="w-2 h-2 text-gray-900" />
                               </div>
                             ) : status === "notified" ? (
                               <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse" />
                             ) : (
                               <div className="w-3 h-3 bg-slate-600 rounded-full" />
                             )}
-                            <span className="text-sm text-slate-300 flex-1">{s.name || s.role || `Stakeholder ${i + 1}`}</span>
+                            <span className="text-sm text-gray-600 flex-1">{s.name || s.role || `Stakeholder ${i + 1}`}</span>
                             <span className={`text-xs ${
                               status === "acknowledged" ? "text-emerald-400" : status === "notified" ? "text-yellow-400" : "text-slate-600"
                             }`}>
@@ -1357,7 +1357,7 @@ export default function IncidentAnalyzer() {
               {/* Task Progress */}
               <Card className="bg-white border-gray-200">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-white text-lg flex items-center gap-2">
+                  <CardTitle className="text-gray-900 text-lg flex items-center gap-2">
                     <Activity className="w-5 h-5 text-emerald-400" /> Task Progress
                   </CardTitle>
                 </CardHeader>
@@ -1375,7 +1375,7 @@ export default function IncidentAnalyzer() {
                             ) : (
                               <CircleDot className="w-4 h-4 text-slate-600 flex-shrink-0" />
                             )}
-                            <span className="text-sm text-slate-300 flex-1 truncate">
+                            <span className="text-sm text-gray-600 flex-1 truncate">
                               {t.name || t.task || t.title || `Task ${i + 1}`}
                             </span>
                             <span className={`text-xs flex-shrink-0 ${
@@ -1407,14 +1407,14 @@ export default function IncidentAnalyzer() {
             {simulationComplete && (
               <div className={`${dc.darkBg} border ${dc.border} rounded-xl p-6 text-center`}>
                 <CheckCircle className="w-10 h-10 text-emerald-400 mx-auto mb-3" />
-                <h3 className="text-xl font-bold text-white mb-2">Simulation Complete</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Simulation Complete</h3>
                 <p className="text-gray-600 mb-4">
                   All stakeholders coordinated and tasks completed in {formatTime(elapsedSeconds)}
                 </p>
                 <Button
                   size="lg"
                   onClick={handleGoToReport}
-                  className="bg-teal-500 hover:bg-teal-600 text-white gap-2 px-8"
+                  className="bg-teal-500 hover:bg-teal-600 text-gray-900 gap-2 px-8"
                 >
                   <Download className="w-5 h-5" /> Download Report
                   <ArrowRight className="w-4 h-4" />
@@ -1444,7 +1444,7 @@ export default function IncidentAnalyzer() {
                 <div className="w-16 h-16 bg-teal-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <FileText className="w-8 h-8 text-teal-400" />
                 </div>
-                <h2 className="text-3xl font-bold text-white mb-2">Your Executive Report is Ready</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">Your Executive Report is Ready</h2>
                 <p className="text-gray-600 max-w-lg mx-auto">
                   Download your strategic analysis, playbook, and simulation results as professional PDF reports.
                 </p>
@@ -1471,7 +1471,7 @@ export default function IncidentAnalyzer() {
               <div className="bg-white border border-gray-200 rounded-xl p-4 text-center">
                 <BookOpen className="w-6 h-6 text-blue-400 mx-auto mb-2" />
                 <p className="text-xs text-gray-500 mb-1">Playbook Generated</p>
-                <p className="text-sm font-semibold text-white">{playbook?.name || "Custom Playbook"}</p>
+                <p className="text-sm font-semibold text-gray-900">{playbook?.name || "Custom Playbook"}</p>
               </div>
             </div>
 
@@ -1480,13 +1480,13 @@ export default function IncidentAnalyzer() {
               <Card className="bg-white border-gray-200 hover:border-teal-500/30 transition-colors cursor-pointer group">
                 <CardContent className="pt-6 text-center">
                   <Download className="w-10 h-10 text-teal-400 mx-auto mb-3 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-lg font-semibold text-white mb-2">Strategic Analysis Report</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Strategic Analysis Report</h3>
                   <p className="text-sm text-gray-600 mb-4">
                     Complete analysis with side-by-side comparison, playbook summary, and simulation results
                   </p>
                   <Button
                     onClick={generateIncidentPDF}
-                    className="bg-teal-500 hover:bg-teal-600 text-white gap-2 w-full"
+                    className="bg-teal-500 hover:bg-teal-600 text-gray-900 gap-2 w-full"
                   >
                     <Download className="w-4 h-4" /> Download Strategic Report (PDF)
                   </Button>
@@ -1496,13 +1496,13 @@ export default function IncidentAnalyzer() {
               <Card className="bg-white border-gray-200 hover:border-emerald-500/30 transition-colors cursor-pointer group">
                 <CardContent className="pt-6 text-center">
                   <FileText className="w-10 h-10 text-emerald-400 mx-auto mb-3 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-lg font-semibold text-white mb-2">Board Briefing Deck</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Board Briefing Deck</h3>
                   <p className="text-sm text-gray-600 mb-4">
                     Executive summary, risk assessment, playbook overview, and ROI projection for board presentation
                   </p>
                   <Button
                     onClick={generateBoardPDF}
-                    className="bg-emerald-500 hover:bg-emerald-600 text-white gap-2 w-full"
+                    className="bg-emerald-500 hover:bg-emerald-600 text-gray-900 gap-2 w-full"
                   >
                     <Download className="w-4 h-4" /> Download Board Briefing (PDF)
                   </Button>

@@ -257,7 +257,7 @@ export function LearnPhaseView({ playbookId, organizationId, isEditable = true }
               return (
                 <div key={timing} className="relative pl-10 pb-8" data-testid={`learn-timing-${timing}`}>
                   <div className="absolute left-2 w-5 h-5 rounded-full bg-green-500 border-4 border-white dark:border-slate-900 flex items-center justify-center">
-                    <Clock className="h-2.5 w-2.5 text-white" />
+                    <Clock className="h-2.5 w-2.5 text-gray-900" />
                   </div>
                   
                   <div className="mb-3">

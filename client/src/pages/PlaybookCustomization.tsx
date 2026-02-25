@@ -247,16 +247,16 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
               <span>/</span>
               <span>Configuration</span>
               <span>/</span>
-              <span className="text-white">Playbook Customization</span>
+              <span className="text-gray-900">Playbook Customization</span>
             </div>
           </div>
 
           {/* Header */}
-          <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white p-6 rounded-lg">
+          <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-gray-900 p-6 rounded-lg">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                  <BookOpen className="w-7 h-7 text-white" />
+                  <BookOpen className="w-7 h-7 text-gray-900" />
                 </div>
                 <div>
                   <h1 className="text-3xl font-bold" data-testid="playbook-customization-title">Playbook Customization</h1>
@@ -282,7 +282,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-600">Total Templates</p>
-                    <p className="text-2xl font-bold text-white">{templates.length}</p>
+                    <p className="text-2xl font-bold text-gray-900">{templates.length}</p>
                   </div>
                   <BookOpen className="h-8 w-8 text-emerald-500" />
                 </div>
@@ -293,7 +293,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-600">Customized</p>
-                    <p className="text-2xl font-bold text-white">3</p>
+                    <p className="text-2xl font-bold text-gray-900">3</p>
                   </div>
                   <Edit className="h-8 w-8 text-blue-500" />
                 </div>
@@ -304,7 +304,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-600">Active</p>
-                    <p className="text-2xl font-bold text-white">2</p>
+                    <p className="text-2xl font-bold text-gray-900">2</p>
                   </div>
                   <Play className="h-8 w-8 text-green-500" />
                 </div>
@@ -315,7 +315,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-600">Domains</p>
-                    <p className="text-2xl font-bold text-white">8</p>
+                    <p className="text-2xl font-bold text-gray-900">8</p>
                   </div>
                   <Target className="h-8 w-8 text-purple-500" />
                 </div>
@@ -383,7 +383,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                 <CardHeader className="pb-2">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <CardTitle className="text-white text-lg">{template.name}</CardTitle>
+                      <CardTitle className="text-gray-900 text-lg">{template.name}</CardTitle>
                       <CardDescription className="mt-1 text-gray-600 line-clamp-2">
                         {template.description}
                       </CardDescription>
@@ -432,7 +432,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
             <Card className="bg-gray-50 border-gray-200">
               <CardContent className="p-12 text-center">
                 <BookOpen className="h-12 w-12 text-gray-600 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-white mb-2">No Playbooks Found</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">No Playbooks Found</h3>
                 <p className="text-gray-600">Try adjusting your search or filter criteria</p>
               </CardContent>
             </Card>
@@ -623,13 +623,13 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                       <h4 className="font-medium text-emerald-400 mb-2">Customization Summary</h4>
                       <div className="grid grid-cols-2 gap-2 text-sm">
                         <div className="text-gray-600">Playbook Name:</div>
-                        <div className="text-white">{customName}</div>
+                        <div className="text-gray-900">{customName}</div>
                         <div className="text-gray-600">Budget Limit:</div>
-                        <div className="text-white">${parseInt(budgetLimit || '0').toLocaleString()}</div>
+                        <div className="text-gray-900">${parseInt(budgetLimit || '0').toLocaleString()}</div>
                         <div className="text-gray-600">Stakeholders:</div>
-                        <div className="text-white">{stakeholderAssignments.length} assigned</div>
+                        <div className="text-gray-900">{stakeholderAssignments.length} assigned</div>
                         <div className="text-gray-600">Approval Required:</div>
-                        <div className="text-white">{approvalRequired ? 'Yes' : 'No'}</div>
+                        <div className="text-gray-900">{approvalRequired ? 'Yes' : 'No'}</div>
                       </div>
                     </CardContent>
                   </Card>

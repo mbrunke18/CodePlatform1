@@ -235,8 +235,8 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
         <CardHeader>
           <div className="flex items-center justify-between mb-4">
             <div>
-              <CardTitle className="text-white text-2xl">Complete Scenario Definition</CardTitle>
-              <CardDescription className="text-gray-200">
+              <CardTitle className="text-gray-900 text-2xl">Complete Scenario Definition</CardTitle>
+              <CardDescription className="text-gray-500">
                 Build an actionable, executable playbook with complete situation capture
               </CardDescription>
             </div>
@@ -247,7 +247,7 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
           </div>
           
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-sm text-gray-200">
+            <div className="flex items-center justify-between text-sm text-gray-500">
               <span>Overall Progress</span>
               <span>{completedPhases.size} of {WIZARD_PHASES.length - 1} phases complete</span>
             </div>
@@ -286,17 +286,17 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
                 ) : (
                   <Circle className={`h-5 w-5 ${isCurrent ? 'text-blue-400' : 'text-gray-600'}`} />
                 )}
-                <span className={`text-sm font-semibold ${isCurrent ? 'text-blue-300' : isComplete ? 'text-green-300' : 'text-gray-200'}`}>
+                <span className={`text-sm font-semibold ${isCurrent ? 'text-blue-300' : isComplete ? 'text-green-300' : 'text-gray-500'}`}>
                   Phase {index + 1}
                 </span>
               </div>
               <div className="flex items-center gap-2 mb-1">
-                <Icon className={`h-4 w-4 ${isCurrent ? 'text-blue-400' : isComplete ? 'text-green-400' : 'text-gray-300'}`} />
-                <p className={`font-medium text-sm ${isCurrent ? 'text-white' : isComplete ? 'text-gray-300' : 'text-gray-300'}`}>
+                <Icon className={`h-4 w-4 ${isCurrent ? 'text-blue-400' : isComplete ? 'text-green-400' : 'text-gray-600'}`} />
+                <p className={`font-medium text-sm ${isCurrent ? 'text-gray-900' : isComplete ? 'text-gray-600' : 'text-gray-600'}`}>
                   {phase.label}
                 </p>
               </div>
-              <p className="text-xs text-gray-300 leading-tight">{phase.description}</p>
+              <p className="text-xs text-gray-600 leading-tight">{phase.description}</p>
             </button>
           );
         })}
@@ -311,7 +311,7 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
               return <Icon className="h-6 w-6 text-blue-400" />;
             })()}
             <div>
-              <CardTitle className="text-white">{currentPhaseConfig.label}</CardTitle>
+              <CardTitle className="text-gray-900">{currentPhaseConfig.label}</CardTitle>
               <CardDescription>{currentPhaseConfig.description}</CardDescription>
             </div>
           </div>
@@ -328,7 +328,7 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
             <Button
               variant="ghost"
               onClick={onCancel}
-              className="text-gray-200 hover:text-white"
+              className="text-gray-500 hover:text-white"
               data-testid="button-cancel-wizard"
             >
               Cancel
@@ -341,7 +341,7 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
             <Button
               variant="outline"
               onClick={handleBack}
-              className="border-slate-600 text-gray-300"
+              className="border-slate-600 text-gray-600"
               data-testid="button-wizard-back"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
@@ -356,8 +356,8 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
               className={`${
                 canProceed
                   ? 'bg-blue-600 hover:bg-blue-700'
-                  : 'bg-gray-50 text-slate-300 cursor-not-allowed'
-              } text-white`}
+                  : 'bg-gray-50 text-gray-600 cursor-not-allowed'
+              } text-gray-900`}
               data-testid="button-wizard-next"
             >
               {isCurrentPhaseComplete ? 'Continue' : 'Skip for Now'}
@@ -366,7 +366,7 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
           ) : (
             <Button
               onClick={handleComplete}
-              className="bg-green-600 hover:bg-green-700 text-white"
+              className="bg-green-600 hover:bg-green-700 text-gray-900"
               data-testid="button-complete-scenario"
             >
               <CheckCircle className="h-4 w-4 mr-2" />

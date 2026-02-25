@@ -48,7 +48,7 @@ export default function LVMHMarketEntryDemo() {
                 onClick={() => goToAct(act.id as DemoAct)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                   currentAct === act.id
-                    ? "bg-purple-600 text-white"
+                    ? "bg-purple-600 text-gray-900"
                     : "text-purple-300 hover:bg-purple-950/50"
                 }`}
                 data-testid={`button-act-${act.id}`}
@@ -69,39 +69,39 @@ export default function LVMHMarketEntryDemo() {
             <Card className="p-8 bg-white border-purple-800/30">
               <div className="text-center mb-8">
                 <Crown className="w-16 h-16 text-purple-400 mx-auto mb-4" />
-                <h2 className="text-3xl font-bold text-white mb-3">{lvmhMarketEntryDemoData.crisis.title}</h2>
-                <p className="text-xl text-purple-200">{lvmhMarketEntryDemoData.crisis.subtitle}</p>
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">{lvmhMarketEntryDemoData.crisis.title}</h2>
+                <p className="text-xl text-purple-700">{lvmhMarketEntryDemoData.crisis.subtitle}</p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div className="p-6 bg-purple-950/30 rounded-lg border border-purple-800/30">
-                  <h3 className="font-bold text-white mb-4 flex items-center gap-2">
+                  <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                     <Globe className="w-5 h-5 text-purple-400" />
                     The Opportunity
                   </h3>
                   <div className="space-y-3 text-sm">
                     <div>
                       <div className="text-purple-300 mb-1">Organization</div>
-                      <div className="text-white font-semibold">{lvmhMarketEntryDemoData.organization.name}</div>
+                      <div className="text-gray-900 font-semibold">{lvmhMarketEntryDemoData.organization.name}</div>
                     </div>
                     <div>
                       <div className="text-purple-300 mb-1">Opportunity</div>
-                      <div className="text-white">China luxury market +47% rebound</div>
+                      <div className="text-gray-900">China luxury market +47% rebound</div>
                     </div>
                     <div>
                       <div className="text-purple-300 mb-1">Strategic Move</div>
-                      <div className="text-white">10 brands • 15 cities • 47 retail locations</div>
+                      <div className="text-gray-900">10 brands • 15 cities • 47 retail locations</div>
                     </div>
                     <div>
                       <div className="text-purple-300 mb-1">Investment</div>
-                      <div className="text-white font-bold">€580M capex • €1.68B value creation</div>
+                      <div className="text-gray-900 font-bold">€580M capex • €1.68B value creation</div>
                     </div>
                   </div>
                 </div>
 
                 <div className="p-6 bg-white rounded-lg border border-purple-800/30">
-                  <h3 className="font-bold text-white mb-4">Traditional Coordination Timeline</h3>
-                  <ul className="space-y-2 text-sm text-purple-200">
+                  <h3 className="font-bold text-gray-900 mb-4">Traditional Coordination Timeline</h3>
+                  <ul className="space-y-2 text-sm text-purple-700">
                     <li>• Month 1-2: Sequential brand planning (10 brands independently)</li>
                     <li>• Month 3-4: Real estate negotiations drag out</li>
                     <li className="text-amber-400 font-semibold">• During gap: Kering and Hermès capture premium locations</li>
@@ -116,8 +116,8 @@ export default function LVMHMarketEntryDemo() {
                 <div className="flex items-start gap-4">
                   <Target className="w-8 h-8 text-purple-400 flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-bold text-white mb-2">Strategic Execution, Not Crisis Response</h3>
-                    <p className="text-purple-100 leading-relaxed">
+                    <h3 className="font-bold text-gray-900 mb-2">Strategic Execution, Not Crisis Response</h3>
+                    <p className="text-purple-600 leading-relaxed">
                       This isn't a crisis—it's a strategic offensive move. China's luxury market rebounds 47%, creating 
                       a 90-day window to capture market leadership. But coordinating 10 brands (Louis Vuitton, Dior, Fendi, 
                       Givenchy, Celine, Loewe, Loro Piana, Rimowa, Berluti, Kenzo) across 15 cities traditionally takes 
@@ -131,17 +131,17 @@ export default function LVMHMarketEntryDemo() {
               <div className="grid md:grid-cols-3 gap-4 mb-8">
                 <div className="p-4 bg-purple-950/30 rounded-lg border border-purple-800/30 text-center">
                   <Users className="w-8 h-8 text-purple-400 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white">1,267</div>
+                  <div className="text-2xl font-bold text-gray-900">1,267</div>
                   <div className="text-sm text-purple-300">Stakeholders Coordinated</div>
                 </div>
                 <div className="p-4 bg-purple-950/30 rounded-lg border border-purple-800/30 text-center">
                   <TrendingUp className="w-8 h-8 text-purple-400 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white">12 Minutes</div>
+                  <div className="text-2xl font-bold text-gray-900">12 Minutes</div>
                   <div className="text-sm text-purple-300">Full Coordination</div>
                 </div>
                 <div className="p-4 bg-purple-950/30 rounded-lg border border-purple-800/30 text-center">
                   <DollarSign className="w-8 h-8 text-purple-400 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white">€1.68B</div>
+                  <div className="text-2xl font-bold text-gray-900">€1.68B</div>
                   <div className="text-sm text-purple-300">Value Created</div>
                 </div>
               </div>
@@ -150,7 +150,7 @@ export default function LVMHMarketEntryDemo() {
                 <Button
                   size="lg"
                   onClick={() => goToAct("detection")}
-                  className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-6 text-lg"
+                  className="bg-purple-600 hover:bg-purple-700 text-gray-900 px-8 py-6 text-lg"
                   data-testid="button-begin-simulation"
                 >
                   <Play className="w-5 h-5 mr-2" />
@@ -166,11 +166,11 @@ export default function LVMHMarketEntryDemo() {
         {currentAct === "detection" && (
           <div className="max-w-6xl mx-auto space-y-8">
             <Card className="p-8 bg-white border-purple-800/30">
-              <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
                 <Target className="w-8 h-8 text-purple-400" />
                 Act 2: AI Market Intelligence Detection
               </h2>
-              <p className="text-lg text-purple-200 mb-4">
+              <p className="text-lg text-purple-700 mb-4">
                 9:00 AM Paris - LVMH AI Intelligence detects massive luxury market opportunity: China consumer spending surges 47%. 
                 Competitive window: 90 days before Kering and Hermès respond. Six AI systems recommend Playbook #145 activation.
               </p>
@@ -178,8 +178,8 @@ export default function LVMHMarketEntryDemo() {
                 <div className="flex items-center gap-3">
                   <CheckCircle className="h-6 w-6 text-purple-400 animate-pulse" />
                   <div>
-                    <p className="font-bold text-white">Strategic Opportunity Criteria Met</p>
-                    <p className="text-sm text-purple-200">
+                    <p className="font-bold text-gray-900">Strategic Opportunity Criteria Met</p>
+                    <p className="text-sm text-purple-700">
                       Market conditions optimal - Playbook #145 (Strategic Market Entry) recommended
                     </p>
                   </div>
@@ -199,7 +199,7 @@ export default function LVMHMarketEntryDemo() {
               <Button
                 size="lg"
                 onClick={() => goToAct("coordination")}
-                className="gap-2 bg-purple-600 hover:bg-purple-700 text-white"
+                className="gap-2 bg-purple-600 hover:bg-purple-700 text-gray-900"
                 data-testid="button-activate-playbook"
               >
                 <Crown className="h-5 w-5" />
@@ -216,11 +216,11 @@ export default function LVMHMarketEntryDemo() {
         {currentAct === "coordination" && (
           <div className="max-w-6xl mx-auto space-y-8">
             <Card className="p-8 bg-white border-purple-800/30">
-              <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
                 <TrendingUp className="w-8 h-8 text-purple-400" />
                 Act 3: 12-Minute Coordinated Execution
               </h2>
-              <p className="text-lg text-purple-200 mb-6">
+              <p className="text-lg text-purple-700 mb-6">
                 Execution OS coordinates all 1,267 stakeholders in 12 minutes. Bernard Arnault's decision triggers instant alignment across 
                 28 executives, 347 operational specialists, and 892 external partners—enabling simultaneous 10-brand launch.
               </p>
@@ -228,26 +228,26 @@ export default function LVMHMarketEntryDemo() {
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="p-6 bg-purple-950/30 rounded-lg border border-purple-800/30">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold">1</div>
-                    <h3 className="font-bold text-white">Executive Leadership</h3>
+                    <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-gray-900 font-bold">1</div>
+                    <h3 className="font-bold text-gray-900">Executive Leadership</h3>
                   </div>
-                  <p className="text-sm text-purple-200 mb-2">28 executives receive unified brief and approve €580M investment in 4 minutes</p>
+                  <p className="text-sm text-purple-700 mb-2">28 executives receive unified brief and approve €580M investment in 4 minutes</p>
                   <div className="text-2xl font-bold text-purple-400">28 Leaders</div>
                 </div>
                 <div className="p-6 bg-purple-950/30 rounded-lg border border-purple-800/30">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold">2</div>
-                    <h3 className="font-bold text-white">Operations Teams</h3>
+                    <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-gray-900 font-bold">2</div>
+                    <h3 className="font-bold text-gray-900">Operations Teams</h3>
                   </div>
-                  <p className="text-sm text-purple-200 mb-2">Real estate, legal, supply chain, marketing, HR executing simultaneously</p>
+                  <p className="text-sm text-purple-700 mb-2">Real estate, legal, supply chain, marketing, HR executing simultaneously</p>
                   <div className="text-2xl font-bold text-purple-400">347 Specialists</div>
                 </div>
                 <div className="p-6 bg-purple-950/30 rounded-lg border border-purple-800/30">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold">3</div>
-                    <h3 className="font-bold text-white">External Partners</h3>
+                    <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-gray-900 font-bold">3</div>
+                    <h3 className="font-bold text-gray-900">External Partners</h3>
                   </div>
-                  <p className="text-sm text-purple-200 mb-2">Developers, contractors, agencies, logistics—all activated</p>
+                  <p className="text-sm text-purple-700 mb-2">Developers, contractors, agencies, logistics—all activated</p>
                   <div className="text-2xl font-bold text-purple-400">892 Partners</div>
                 </div>
               </div>
@@ -264,7 +264,7 @@ export default function LVMHMarketEntryDemo() {
                 <Button
                   size="lg"
                   onClick={() => goToAct("outcome")}
-                  className="gap-2 bg-purple-600 hover:bg-purple-700 text-white"
+                  className="gap-2 bg-purple-600 hover:bg-purple-700 text-gray-900"
                   data-testid="button-view-outcome"
                 >
                   <Crown className="h-5 w-5" />
@@ -280,10 +280,10 @@ export default function LVMHMarketEntryDemo() {
           <div className="max-w-6xl mx-auto space-y-8">
             <Card className="p-8 bg-white border-purple-800/30 text-center">
               <Crown className="w-16 h-16 text-purple-400 mx-auto mb-4" />
-              <h2 className="text-3xl font-bold text-white mb-3">
+              <h2 className="text-3xl font-bold text-gray-900 mb-3">
                 €1.68B Value Creation Through Strategic Velocity
               </h2>
-              <p className="text-xl text-purple-200 mb-6">
+              <p className="text-xl text-purple-700 mb-6">
                 LVMH coordinates 10-brand simultaneous launch in 12 minutes, captures Golden Week timing, 
                 secures 47 premium locations, and establishes market leadership before Kering/Hermès respond.
               </p>
@@ -315,7 +315,7 @@ export default function LVMHMarketEntryDemo() {
                 Replay Demo
               </Button>
               <Link href="/industry-demos">
-                <Button className="bg-purple-600 hover:bg-purple-700 text-white" data-testid="button-all-demos">
+                <Button className="bg-purple-600 hover:bg-purple-700 text-gray-900" data-testid="button-all-demos">
                   View All Industry Demos
                 </Button>
               </Link>

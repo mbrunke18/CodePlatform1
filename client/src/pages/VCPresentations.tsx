@@ -128,7 +128,7 @@ export default function VCPresentations() {
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-xl flex items-center justify-center">
-                <Briefcase className="w-7 h-7 text-white" />
+                <Briefcase className="w-7 h-7 text-gray-900" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Investor Relations Center</h1>
@@ -140,7 +140,7 @@ export default function VCPresentations() {
                 <Star className="w-3 h-3 mr-1" />
                 Series B Ready
               </Badge>
-              <Badge className="bg-yellow-600 text-white">
+              <Badge className="bg-yellow-600 text-gray-900">
                 Investment Grade
               </Badge>
             </div>
@@ -180,7 +180,7 @@ export default function VCPresentations() {
                         <div>
                           <h4 className="font-semibold text-gray-900 dark:text-white">{material.title}</h4>
                           <p className="text-sm text-gray-600 dark:text-gray-200">{material.description}</p>
-                          <div className="flex items-center space-x-4 text-xs text-gray-300 mt-1">
+                          <div className="flex items-center space-x-4 text-xs text-gray-600 mt-1">
                             <span>{material.slides} slides</span>
                             <span>{material.duration}</span>
                             <Badge variant="outline">{material.type}</Badge>

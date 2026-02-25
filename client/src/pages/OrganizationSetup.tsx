@@ -399,16 +399,16 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               <span>/</span>
               <span>Configuration</span>
               <span>/</span>
-              <span className="text-white">Organization Setup</span>
+              <span className="text-gray-900">Organization Setup</span>
             </div>
           </div>
 
           {/* Header */}
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-6 rounded-lg">
+          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-gray-900 p-6 rounded-lg">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                  <Building2 className="w-7 h-7 text-white" />
+                  <Building2 className="w-7 h-7 text-gray-900" />
                 </div>
                 <div>
                   <h1 className="text-3xl font-bold" data-testid="org-setup-title">Organization Setup</h1>
@@ -432,7 +432,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h3 className="text-lg font-semibold text-white">Setup Progress</h3>
+                  <h3 className="text-lg font-semibold text-gray-900">Setup Progress</h3>
                   <p className="text-sm text-gray-600">Complete all sections to enable full strategic execution capabilities</p>
                 </div>
                 <div className="text-right">
@@ -444,19 +444,19 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               <div className="grid grid-cols-4 gap-4">
                 <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.departments ? 'bg-green-500/20' : 'bg-gray-50'}`}>
                   {setupProgress.departments ? <CheckCircle className="h-5 w-5 text-green-500" /> : <AlertTriangle className="h-5 w-5 text-yellow-500" />}
-                  <span className="text-sm text-white">Departments</span>
+                  <span className="text-sm text-gray-900">Departments</span>
                 </div>
                 <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.stakeholders ? 'bg-green-500/20' : 'bg-gray-50'}`}>
                   {setupProgress.stakeholders ? <CheckCircle className="h-5 w-5 text-green-500" /> : <AlertTriangle className="h-5 w-5 text-yellow-500" />}
-                  <span className="text-sm text-white">Stakeholders</span>
+                  <span className="text-sm text-gray-900">Stakeholders</span>
                 </div>
                 <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.escalation ? 'bg-green-500/20' : 'bg-gray-50'}`}>
                   {setupProgress.escalation ? <CheckCircle className="h-5 w-5 text-green-500" /> : <AlertTriangle className="h-5 w-5 text-yellow-500" />}
-                  <span className="text-sm text-white">Escalation</span>
+                  <span className="text-sm text-gray-900">Escalation</span>
                 </div>
                 <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.channels ? 'bg-green-500/20' : 'bg-gray-50'}`}>
                   {setupProgress.channels ? <CheckCircle className="h-5 w-5 text-green-500" /> : <AlertTriangle className="h-5 w-5 text-yellow-500" />}
-                  <span className="text-sm text-white">Channels</span>
+                  <span className="text-sm text-gray-900">Channels</span>
                 </div>
               </div>
             </CardContent>
@@ -487,7 +487,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
             <TabsContent value="departments" className="space-y-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-xl font-semibold text-white">Department Structure</h2>
+                  <h2 className="text-xl font-semibold text-gray-900">Department Structure</h2>
                   <p className="text-sm text-gray-600">Define your organization's departments and reporting structure</p>
                 </div>
                 <Button onClick={() => setIsDepartmentDialogOpen(true)} data-testid="button-add-department">
@@ -502,7 +502,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between">
                         <div>
-                          <h3 className="font-semibold text-white">{dept.name}</h3>
+                          <h3 className="font-semibold text-gray-900">{dept.name}</h3>
                           <p className="text-sm text-gray-600 mt-1">{dept.description}</p>
                         </div>
                         <div className="flex gap-1">
@@ -538,7 +538,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
             <TabsContent value="stakeholders" className="space-y-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-xl font-semibold text-white">Key Stakeholders</h2>
+                  <h2 className="text-xl font-semibold text-gray-900">Key Stakeholders</h2>
                   <p className="text-sm text-gray-600">Define executives and decision-makers for playbook coordination</p>
                 </div>
                 <Button onClick={() => setIsStakeholderDialogOpen(true)} data-testid="button-add-stakeholder">
@@ -553,11 +553,11 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white font-medium">
+                          <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-gray-900 font-medium">
                             {sh.name.split(' ').map(n => n[0]).join('')}
                           </div>
                           <div>
-                            <h3 className="font-semibold text-white">{sh.name}</h3>
+                            <h3 className="font-semibold text-gray-900">{sh.name}</h3>
                             <p className="text-sm text-indigo-400">{sh.role}</p>
                           </div>
                         </div>
@@ -605,7 +605,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
             <TabsContent value="escalation" className="space-y-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-xl font-semibold text-white">Escalation Policies</h2>
+                  <h2 className="text-xl font-semibold text-gray-900">Escalation Policies</h2>
                   <p className="text-sm text-gray-600">Define how unacknowledged alerts escalate through your organization</p>
                 </div>
                 <Button onClick={() => setIsEscalationDialogOpen(true)} data-testid="button-add-escalation">
@@ -620,7 +620,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                     <CardContent className="p-6">
                       <div className="flex items-start justify-between mb-4">
                         <div>
-                          <h3 className="font-semibold text-white text-lg">{policy.name}</h3>
+                          <h3 className="font-semibold text-gray-900 text-lg">{policy.name}</h3>
                           <p className="text-sm text-gray-600 mt-1">{policy.description}</p>
                           <Badge className="mt-2 bg-indigo-500/20 text-indigo-400 border-indigo-500/30">
                             {policy.triggerType.replace('_', ' ')}
@@ -646,7 +646,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                               } ring-4 ring-gray-800`}></div>
                               <div className="flex-1 p-3 bg-gray-50 rounded-lg">
                                 <div className="flex items-center justify-between">
-                                  <span className="font-medium text-white">Level {level.level}</span>
+                                  <span className="font-medium text-gray-900">Level {level.level}</span>
                                   <div className="flex items-center gap-1 text-sm text-gray-600">
                                     <Clock className="h-4 w-4" />
                                     <span>{level.timeoutMinutes} min</span>
@@ -683,7 +683,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
             <TabsContent value="channels" className="space-y-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-xl font-semibold text-white">Communication Channels</h2>
+                  <h2 className="text-xl font-semibold text-gray-900">Communication Channels</h2>
                   <p className="text-sm text-gray-600">Configure how Execution OS will notify stakeholders during activations</p>
                 </div>
                 <Button onClick={() => setIsChannelDialogOpen(true)} data-testid="button-add-channel">
@@ -707,7 +707,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                             {getChannelIcon(channel.channelType)}
                           </div>
                           <div>
-                            <h3 className="font-semibold text-white">{channel.name}</h3>
+                            <h3 className="font-semibold text-gray-900">{channel.name}</h3>
                             <p className="text-sm text-gray-600 capitalize">{channel.channelType}</p>
                           </div>
                         </div>

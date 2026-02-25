@@ -55,9 +55,9 @@ export function PeerAdoptionOverlay() {
               <div className="p-3 bg-blue-600/30 rounded-lg">
                 <Users className="h-8 w-8 text-blue-400" />
               </div>
-              <h2 className="text-3xl font-bold text-blue-100">While You're Deciding...</h2>
+              <h2 className="text-3xl font-bold text-blue-600">While You're Deciding...</h2>
             </div>
-            <p className="text-xl text-blue-200/90">Your Fortune 1000 peers are already executing</p>
+            <p className="text-xl text-blue-700/90">Your Fortune 1000 peers are already executing</p>
           </div>
 
           {/* Stats Bar */}
@@ -86,7 +86,7 @@ export function PeerAdoptionOverlay() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <TrendingUp className="h-5 w-5 text-blue-400" />
-              <p className="text-blue-200 font-semibold">Adopted in the Last 30 Days</p>
+              <p className="text-blue-700 font-semibold">Adopted in the Last 30 Days</p>
             </div>
             
             <div className="grid grid-cols-2 gap-3">
@@ -103,7 +103,7 @@ export function PeerAdoptionOverlay() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between gap-2">
-                        <p className="text-blue-100 font-semibold text-sm truncate">{company.name}</p>
+                        <p className="text-blue-600 font-semibold text-sm truncate">{company.name}</p>
                         <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0" />
                       </div>
                       <div className="flex items-center gap-2 mt-1 text-xs text-blue-300">
@@ -123,10 +123,10 @@ export function PeerAdoptionOverlay() {
           {/* Bottom Message */}
           <div className="bg-gradient-to-r from-blue-600/30 to-purple-600/30 rounded-lg p-5 border border-blue-500/40">
             <div className="text-center space-y-2">
-              <p className="text-blue-100 text-xl font-bold">
+              <p className="text-blue-600 text-xl font-bold">
                 They Had the Same Doubts You Do
               </p>
-              <p className="text-blue-200/80 text-lg">
+              <p className="text-blue-700/80 text-lg">
                 Now they're responding to crises 6x faster than their competitors
               </p>
             </div>

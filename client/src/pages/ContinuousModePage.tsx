@@ -174,13 +174,13 @@ export default function ContinuousModePage() {
                     </div>
                     <div className="flex items-center gap-6">
                       <div className="text-right">
-                        <div className="text-xs text-slate-300 dark:text-slate-300 mb-1">Last run</div>
+                        <div className="text-xs text-gray-600 dark:text-slate-300 mb-1">Last run</div>
                         <div className="text-sm font-medium text-slate-700 dark:text-slate-300">
                           {task.lastRun}
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="text-xs text-slate-300 dark:text-slate-300 mb-1">Next run</div>
+                        <div className="text-xs text-gray-600 dark:text-slate-300 mb-1">Next run</div>
                         <div className="text-sm font-medium text-slate-700 dark:text-slate-300">
                           {task.nextRun}
                         </div>
@@ -219,7 +219,7 @@ export default function ContinuousModePage() {
                         </div>
                       </div>
                     </div>
-                    <div className="text-sm text-slate-300 dark:text-slate-300">
+                    <div className="text-sm text-gray-600 dark:text-slate-300">
                       {execution.time}
                     </div>
                   </div>
@@ -230,7 +230,7 @@ export default function ContinuousModePage() {
         </div>
 
         {/* Capabilities Overview */}
-        <Card className="bg-gradient-to-r from-blue-600 to-violet-600 text-white border-0">
+        <Card className="bg-gradient-to-r from-blue-600 to-violet-600 text-gray-900 border-0">
           <CardHeader>
             <CardTitle className="text-2xl">Continuous Mode Capabilities</CardTitle>
           </CardHeader>
@@ -241,7 +241,7 @@ export default function ContinuousModePage() {
                   <Activity className="w-5 h-5" />
                   Always-On Monitoring
                 </h4>
-                <p className="text-sm text-blue-100">
+                <p className="text-sm text-blue-600">
                   24/7 scanning of intelligence signals for threats and opportunities
                 </p>
               </div>
@@ -250,7 +250,7 @@ export default function ContinuousModePage() {
                   <CheckCircle className="w-5 h-5" />
                   Automated Learning
                 </h4>
-                <p className="text-sm text-blue-100">
+                <p className="text-sm text-blue-600">
                   Self-improving playbooks after every execution
                 </p>
               </div>
@@ -259,7 +259,7 @@ export default function ContinuousModePage() {
                   <Clock className="w-5 h-5" />
                   Scheduled Operations
                 </h4>
-                <p className="text-sm text-blue-100">
+                <p className="text-sm text-blue-600">
                   Automated tasks run on smart schedules optimized for your org
                 </p>
               </div>

@@ -74,7 +74,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
               <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-green-600 to-emerald-700 flex items-center justify-center">
-                <DollarSign className="h-6 w-6 text-white" />
+                <DollarSign className="h-6 w-6 text-gray-900" />
               </div>
               <div>
                 <h1 className="text-4xl font-bold text-slate-900 dark:text-white">
@@ -324,7 +324,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                     >
                       <div className="flex items-start justify-between mb-3">
                         <div className="flex items-center gap-3">
-                          <div className="h-10 w-10 rounded-full bg-gradient-to-br from-green-600 to-emerald-600 flex items-center justify-center text-white font-bold text-lg">
+                          <div className="h-10 w-10 rounded-full bg-gradient-to-br from-green-600 to-emerald-600 flex items-center justify-center text-gray-900 font-bold text-lg">
                             #{index + 1}
                           </div>
                           <div>

@@ -83,8 +83,8 @@ export default function FinancialRansomwareDemo() {
         {currentAct === "introduction" && (
           <div className="max-w-5xl mx-auto space-y-8 animate-fade-in">
             <div className="text-center space-y-4">
-              <h2 className="text-4xl font-bold text-white">{financialDemoData.crisis.title}</h2>
-              <p className="text-xl text-blue-200">{financialDemoData.crisis.subtitle}</p>
+              <h2 className="text-4xl font-bold text-gray-900">{financialDemoData.crisis.title}</h2>
+              <p className="text-xl text-blue-700">{financialDemoData.crisis.subtitle}</p>
             </div>
 
             {/* Organization Info */}
@@ -92,8 +92,8 @@ export default function FinancialRansomwareDemo() {
               <div className="flex items-start gap-4 mb-4">
                 <Building2 className="w-6 h-6 text-blue-400 mt-1" />
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">{financialDemoData.organization.name}</h3>
-                  <p className="text-blue-200 mb-4">{financialDemoData.organization.type}</p>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{financialDemoData.organization.name}</h3>
+                  <p className="text-blue-700 mb-4">{financialDemoData.organization.type}</p>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {Object.entries(financialDemoData.organization.stats).map(([key, value]) => (
                       <div key={key}>
@@ -111,28 +111,28 @@ export default function FinancialRansomwareDemo() {
               <div className="flex items-start gap-4">
                 <AlertTriangle className="w-6 h-6 text-red-400 mt-1" />
                 <div className="flex-1 page-background">
-                  <h3 className="text-lg font-semibold text-white mb-3">The Crisis Scenario</h3>
-                  <p className="text-blue-100 mb-4 leading-relaxed">{financialDemoData.crisis.description}</p>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">The Crisis Scenario</h3>
+                  <p className="text-blue-600 mb-4 leading-relaxed">{financialDemoData.crisis.description}</p>
                   
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div className="bg-white p-4 rounded-lg border border-red-800/30">
                       <DollarSign className="w-5 h-5 text-red-400 mb-2" />
-                      <div className="text-xl font-bold text-white">{financialDemoData.crisis.impactMetrics.financialImpact}</div>
+                      <div className="text-xl font-bold text-gray-900">{financialDemoData.crisis.impactMetrics.financialImpact}</div>
                       <div className="text-sm text-red-300">At Risk</div>
                     </div>
                     <div className="bg-white p-4 rounded-lg border border-blue-800/30">
                       <Clock className="w-5 h-5 text-blue-400 mb-2" />
-                      <div className="text-xl font-bold text-white">{financialDemoData.crisis.impactMetrics.timeWindow}</div>
+                      <div className="text-xl font-bold text-gray-900">{financialDemoData.crisis.impactMetrics.timeWindow}</div>
                       <div className="text-sm text-blue-300">Response Window</div>
                     </div>
                     <div className="bg-white p-4 rounded-lg border border-blue-800/30">
                       <Users className="w-5 h-5 text-blue-400 mb-2" />
-                      <div className="text-xl font-bold text-white">{financialDemoData.crisis.impactMetrics.stakeholders}</div>
+                      <div className="text-xl font-bold text-gray-900">{financialDemoData.crisis.impactMetrics.stakeholders}</div>
                       <div className="text-sm text-blue-300">Stakeholders</div>
                     </div>
                     <div className="bg-white p-4 rounded-lg border border-red-800/30">
                       <AlertTriangle className="w-5 h-5 text-red-400 mb-2" />
-                      <div className="text-xl font-bold text-white">{financialDemoData.crisis.impactMetrics.affectedCustomers}</div>
+                      <div className="text-xl font-bold text-gray-900">{financialDemoData.crisis.impactMetrics.affectedCustomers}</div>
                       <div className="text-sm text-red-300">Affected Customers</div>
                     </div>
                   </div>
@@ -142,11 +142,11 @@ export default function FinancialRansomwareDemo() {
 
             {/* Playbook Info */}
             <Card className="bg-gradient-to-r   border-blue-800/30 p-6">
-              <h3 className="text-lg font-semibold text-white mb-4">M Playbook: {financialDemoData.playbook.id} - {financialDemoData.playbook.name}</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">M Playbook: {financialDemoData.playbook.id} - {financialDemoData.playbook.name}</h3>
               <div className="flex items-center gap-6 mb-4">
-                <div className="text-sm text-blue-200">Domain: <span className="text-white font-semibold">{financialDemoData.playbook.domain}</span></div>
-                <div className="text-sm text-blue-200">Sections: <span className="text-white font-semibold">{financialDemoData.playbook.sections}</span></div>
-                <div className="text-sm text-blue-200">
+                <div className="text-sm text-blue-700">Domain: <span className="text-gray-900 font-semibold">{financialDemoData.playbook.domain}</span></div>
+                <div className="text-sm text-blue-700">Sections: <span className="text-gray-900 font-semibold">{financialDemoData.playbook.sections}</span></div>
+                <div className="text-sm text-blue-700">
                   Preparedness: <span className="text-green-400 font-semibold">{financialDemoData.playbook.preparedness}%</span>
                 </div>
               </div>
@@ -156,7 +156,7 @@ export default function FinancialRansomwareDemo() {
               <Button
                 size="lg"
                 onClick={handleStartDemo}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg"
+                className="bg-blue-600 hover:bg-blue-700 text-gray-900 px-8 py-6 text-lg"
                 data-testid="button-start-demo"
               >
                 Begin Crisis Simulation
@@ -196,8 +196,8 @@ export default function FinancialRansomwareDemo() {
         {currentAct === "outcome" && (
           <div className="max-w-6xl mx-auto space-y-8">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-white mb-2">Crisis Contained</h2>
-              <p className="text-xl text-blue-200">Compare the traditional approach vs. Execution OS' coordinated response</p>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">Crisis Contained</h2>
+              <p className="text-xl text-blue-700">Compare the traditional approach vs. Execution OS' coordinated response</p>
             </div>
 
             <ROIComparison
@@ -210,7 +210,7 @@ export default function FinancialRansomwareDemo() {
               <Button
                 size="lg"
                 onClick={handleSeeSummary}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8"
+                className="bg-blue-600 hover:bg-blue-700 text-gray-900 px-8"
                 data-testid="button-see-summary"
               >
                 See Final Summary
@@ -227,33 +227,33 @@ export default function FinancialRansomwareDemo() {
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500/20 mb-4">
                 <CheckCircle2 className="w-10 h-10 text-green-400" />
               </div>
-              <h2 className="text-3xl font-bold text-white mb-2">Demo Complete</h2>
-              <p className="text-xl text-blue-200">Financial Services Ransomware Response</p>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">Demo Complete</h2>
+              <p className="text-xl text-blue-700">Financial Services Ransomware Response</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Card className="bg-white border-green-800/30 p-6 text-center">
                 <DollarSign className="w-8 h-8 text-green-400 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-white mb-2">{financialDemoData.roiComparison.bottomLine.value}</div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">{financialDemoData.roiComparison.bottomLine.value}</div>
                 <div className="text-sm text-green-300">Value Preserved</div>
               </Card>
 
               <Card className="bg-white border-blue-800/30 p-6 text-center">
                 <Clock className="w-8 h-8 text-blue-400 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-white mb-2">12 min</div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">12 min</div>
                 <div className="text-sm text-blue-300">Full Coordination</div>
               </Card>
 
               <Card className="bg-white border-purple-800/30 p-6 text-center">
                 <Users className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-white mb-2">{financialDemoData.crisis.impactMetrics.stakeholders}</div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">{financialDemoData.crisis.impactMetrics.stakeholders}</div>
                 <div className="text-sm text-purple-300">Stakeholders Aligned</div>
               </Card>
             </div>
 
             <Card className="bg-gradient-to-r   border-blue-800/30 p-8">
-              <h3 className="text-xl font-semibold text-white mb-4 text-center">The Execution OS Difference</h3>
-              <p className="text-blue-100 text-center leading-relaxed max-w-3xl mx-auto">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">The Execution OS Difference</h3>
+              <p className="text-blue-600 text-center leading-relaxed max-w-3xl mx-auto">
                 Your AI detected the ransomware in milliseconds. But without Execution OS, coordinating your CEO, CISO, CTO, CFO, legal counsel, Board, and regulators would take 48-72 hours of email chains and emergency meetings. In that window, a $1M incident becomes a $27M disaster. Execution OS turns instant detection into 12-minute coordinated response—we're not replacing your AI, we're the execution layer that makes it deliver ROI.
               </p>
             </Card>
@@ -272,7 +272,7 @@ export default function FinancialRansomwareDemo() {
               <Link href="/playbook-library">
                 <Button
                   size="lg"
-                  className="bg-blue-600 hover:bg-blue-700 text-white"
+                  className="bg-blue-600 hover:bg-blue-700 text-gray-900"
                   data-testid="button-explore-playbooks"
                 >
                   <Library className="w-5 h-5 mr-2" />

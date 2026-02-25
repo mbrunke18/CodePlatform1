@@ -45,9 +45,9 @@ export default function WhyExecuteIQ() {
       <StandardNav />
 
       {/* Hero Section */}
-      <section className="py-16 md:py-24 px-6 text-white">
+      <section className="py-16 md:py-24 px-6 text-gray-900">
         <div className="max-w-5xl mx-auto text-center">
-          <Badge className="mb-6 bg-amber-500 text-white border-0">
+          <Badge className="mb-6 bg-amber-500 text-gray-900 border-0">
             <BarChart3 className="w-4 h-4 mr-2" />
             2026 Research Consensus
           </Badge>
@@ -56,7 +56,7 @@ export default function WhyExecuteIQ() {
             The Infrastructure 15 Firms Say Is Missing
           </h1>
 
-          <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-10">
+          <p className="text-xl md:text-2xl text-blue-600 max-w-3xl mx-auto mb-10">
             McKinsey. IBM. BCG. Deloitte. Accenture. Microsoft. Google Cloud. World Economic Forum. Bain. Anthropic. OpenAI. PwC. Gartner. Forrester. IDC. Fifteen firms, one conclusion: enterprises need execution infrastructure.
           </p>
 
@@ -68,7 +68,7 @@ export default function WhyExecuteIQ() {
               </Button>
             </Link>
             <Link href="/research">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-transparent">
+              <Button size="lg" variant="outline" className="border-white text-gray-900 hover:bg-white/10 bg-transparent">
                 View Research
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
@@ -101,7 +101,7 @@ export default function WhyExecuteIQ() {
       <section className="py-16 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-blue-600 text-white border-0">
+            <Badge className="mb-4 bg-blue-600 text-gray-900 border-0">
               <Globe2 className="w-4 h-4 mr-2" />
               The Consensus
             </Badge>
@@ -132,7 +132,7 @@ export default function WhyExecuteIQ() {
       <section className="py-16 px-6 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-amber-500 text-white border-0">
+            <Badge className="mb-4 bg-amber-500 text-gray-900 border-0">
               <AlertTriangle className="w-4 h-4 mr-2" />
               The Gap
             </Badge>
@@ -214,10 +214,10 @@ export default function WhyExecuteIQ() {
       </section>
 
       {/* Section 3: The Solution */}
-      <section className="py-16 px-6 text-white">
+      <section className="py-16 px-6 text-gray-900">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-emerald-500 text-white border-0">
+            <Badge className="mb-4 bg-emerald-500 text-gray-900 border-0">
               <Zap className="w-4 h-4 mr-2" />
               The Solution
             </Badge>
@@ -237,29 +237,29 @@ export default function WhyExecuteIQ() {
                   <div className="w-14 h-14 mx-auto mb-4 bg-blue-500/20 rounded-2xl flex items-center justify-center">
                     <BookOpen className="h-7 w-7 text-blue-400" />
                   </div>
-                  <div className="text-3xl font-bold text-white mb-1">170</div>
-                  <p className="text-sm text-blue-200">Pre-built playbooks</p>
+                  <div className="text-3xl font-bold text-gray-900 mb-1">170</div>
+                  <p className="text-sm text-blue-700">Pre-built playbooks</p>
                 </div>
                 <div className="text-center p-6 bg-white/5 rounded-2xl border border-white/10">
                   <div className="w-14 h-14 mx-auto mb-4 bg-emerald-500/20 rounded-2xl flex items-center justify-center">
                     <Shield className="h-7 w-7 text-emerald-400" />
                   </div>
-                  <div className="text-3xl font-bold text-white mb-1">Built-in</div>
-                  <p className="text-sm text-blue-200">Governance & decision rights</p>
+                  <div className="text-3xl font-bold text-gray-900 mb-1">Built-in</div>
+                  <p className="text-sm text-blue-700">Governance & decision rights</p>
                 </div>
                 <div className="text-center p-6 bg-white/5 rounded-2xl border border-white/10">
                   <div className="w-14 h-14 mx-auto mb-4 bg-amber-500/20 rounded-2xl flex items-center justify-center">
                     <Target className="h-7 w-7 text-amber-400" />
                   </div>
-                  <div className="text-3xl font-bold text-white mb-1">Custom</div>
-                  <p className="text-sm text-blue-200">Build your own playbooks</p>
+                  <div className="text-3xl font-bold text-gray-900 mb-1">Custom</div>
+                  <p className="text-sm text-blue-700">Build your own playbooks</p>
                 </div>
                 <div className="text-center p-6 bg-white/5 rounded-2xl border border-white/10">
                   <div className="w-14 h-14 mx-auto mb-4 bg-purple-500/20 rounded-2xl flex items-center justify-center">
                     <Timer className="h-7 w-7 text-purple-400" />
                   </div>
-                  <div className="text-3xl font-bold text-white mb-1">12 min</div>
-                  <p className="text-sm text-blue-200">Trigger to execution</p>
+                  <div className="text-3xl font-bold text-gray-900 mb-1">12 min</div>
+                  <p className="text-sm text-blue-700">Trigger to execution</p>
                 </div>
               </div>
             </CardContent>
@@ -280,7 +280,7 @@ export default function WhyExecuteIQ() {
       <section className="py-16 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-purple-600 text-white border-0">
+            <Badge className="mb-4 bg-purple-600 text-gray-900 border-0">
               <Brain className="w-4 h-4 mr-2" />
               The Agentic Layer
             </Badge>
@@ -395,7 +395,7 @@ export default function WhyExecuteIQ() {
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-primary text-white border-0">
+            <Badge className="mb-4 bg-primary text-gray-900 border-0">
               <Lightbulb className="w-4 h-4 mr-2" />
               The Founder
             </Badge>
@@ -415,7 +415,7 @@ export default function WhyExecuteIQ() {
 
               <div className="flex items-center justify-between flex-wrap gap-4 pt-6 border-t border-border">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-2xl font-bold">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-gray-900 text-2xl font-bold">
                     MB
                   </div>
                   <div>
@@ -448,7 +448,7 @@ export default function WhyExecuteIQ() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/demo-selector">
-              <Button size="lg" className="bg-primary text-white hover:bg-primary/90">
+              <Button size="lg" className="bg-primary text-gray-900 hover:bg-primary/90">
                 <Play className="mr-2 h-5 w-5" />
                 Watch Demo
               </Button>

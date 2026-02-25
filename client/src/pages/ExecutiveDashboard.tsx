@@ -85,7 +85,7 @@ function MetricCard({
   const trendClasses = {
     up: 'text-emerald-600 dark:text-emerald-400',
     down: 'text-red-600 dark:text-red-400',
-    neutral: 'text-slate-300 dark:text-slate-300'
+    neutral: 'text-gray-600 dark:text-slate-300'
   };
 
   return (
@@ -98,7 +98,7 @@ function MetricCard({
           <StatusIndicator status={status} />
         </div>
         <div>
-          <div className="text-sm font-medium text-slate-300 dark:text-slate-300 mb-1">{title}</div>
+          <div className="text-sm font-medium text-gray-600 dark:text-slate-300 mb-1">{title}</div>
           <div className="flex items-baseline gap-1">
             <span className="text-3xl font-bold text-slate-900 dark:text-white">{value}</span>
             {unit && <span className="text-lg text-slate-600 dark:text-slate-300">{unit}</span>}
@@ -111,7 +111,7 @@ function MetricCard({
           </div>
         )}
         {description && (
-          <p className="text-xs text-slate-300 dark:text-slate-300">{description}</p>
+          <p className="text-xs text-gray-600 dark:text-slate-300">{description}</p>
         )}
       </CardContent>
     </Card>
@@ -251,7 +251,7 @@ export default function ExecutiveDashboard() {
                 className="bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/50" 
               />
             </div>
-            <p className="text-slate-300 dark:text-slate-300 text-sm">
+            <p className="text-gray-600 dark:text-slate-300 text-sm">
               Unified strategic command center for Execution OS
             </p>
           </div>
@@ -305,7 +305,7 @@ export default function ExecutiveDashboard() {
                       <div className={`text-6xl font-bold ${getScoreColor(friScore)}`} data-testid="text-fri-score">
                         {friScore.toFixed(1)}%
                       </div>
-                      <div className="text-sm text-slate-300 dark:text-slate-300 mt-1">Future Readiness Index™</div>
+                      <div className="text-sm text-gray-600 dark:text-slate-300 mt-1">Future Readiness Index™</div>
                     </div>
                     <div className="h-20 w-px bg-slate-200 dark:bg-slate-700" />
                     <div className="space-y-2">
@@ -381,7 +381,7 @@ export default function ExecutiveDashboard() {
                 </CardHeader>
                 <CardContent>
                   {weakSignals.length === 0 ? (
-                    <div className="text-center py-8 text-slate-300 dark:text-slate-300">
+                    <div className="text-center py-8 text-gray-600 dark:text-slate-300">
                       <Eye className="h-8 w-8 mx-auto mb-2 opacity-50" />
                       <p>No weak signals detected</p>
                       <p className="text-sm">AI is continuously monitoring</p>
@@ -395,9 +395,9 @@ export default function ExecutiveDashboard() {
                           </Badge>
                           <div className="flex-1 min-w-0">
                             <div className="font-medium text-sm text-slate-900 dark:text-white">{signal.title}</div>
-                            <p className="text-xs text-slate-300 dark:text-slate-300 truncate">{signal.description}</p>
+                            <p className="text-xs text-gray-600 dark:text-slate-300 truncate">{signal.description}</p>
                           </div>
-                          <div className="text-xs text-slate-300 dark:text-slate-300">{signal.confidence}% conf</div>
+                          <div className="text-xs text-gray-600 dark:text-slate-300">{signal.confidence}% conf</div>
                         </div>
                       ))}
                     </div>
@@ -415,7 +415,7 @@ export default function ExecutiveDashboard() {
                 </CardHeader>
                 <CardContent>
                   {oraclePatterns.length === 0 ? (
-                    <div className="text-center py-8 text-slate-300 dark:text-slate-300">
+                    <div className="text-center py-8 text-gray-600 dark:text-slate-300">
                       <Brain className="h-8 w-8 mx-auto mb-2 opacity-50" />
                       <p>No patterns detected yet</p>
                       <p className="text-sm">Oracle is learning from your data</p>
@@ -427,7 +427,7 @@ export default function ExecutiveDashboard() {
                           <TrendingUp className="h-4 w-4 text-purple-500 mt-0.5" />
                           <div className="flex-1 min-w-0">
                             <div className="font-medium text-sm text-slate-900 dark:text-white">{pattern.title}</div>
-                            <p className="text-xs text-slate-300 dark:text-slate-300 truncate">{pattern.description}</p>
+                            <p className="text-xs text-gray-600 dark:text-slate-300 truncate">{pattern.description}</p>
                           </div>
                           <Badge variant="outline">{pattern.impact} impact</Badge>
                         </div>
@@ -552,28 +552,28 @@ export default function ExecutiveDashboard() {
                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5" />
                     <div>
                       <div className="font-medium text-slate-900 dark:text-white">Add more playbooks</div>
-                      <p className="text-sm text-slate-300 dark:text-slate-300">Each configured playbook adds to your maturity score</p>
+                      <p className="text-sm text-gray-600 dark:text-slate-300">Each configured playbook adds to your maturity score</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5" />
                     <div>
                       <div className="font-medium text-slate-900 dark:text-white">Run practice drills</div>
-                      <p className="text-sm text-slate-300 dark:text-slate-300">Regular drills improve execution velocity</p>
+                      <p className="text-sm text-gray-600 dark:text-slate-300">Regular drills improve execution velocity</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5" />
                     <div>
                       <div className="font-medium text-slate-900 dark:text-white">Configure more triggers</div>
-                      <p className="text-sm text-slate-300 dark:text-slate-300">More signal sources improve detection accuracy</p>
+                      <p className="text-sm text-gray-600 dark:text-slate-300">More signal sources improve detection accuracy</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5" />
                     <div>
                       <div className="font-medium text-slate-900 dark:text-white">Review past activations</div>
-                      <p className="text-sm text-slate-300 dark:text-slate-300">Learning from history improves the learning rate</p>
+                      <p className="text-sm text-gray-600 dark:text-slate-300">Learning from history improves the learning rate</p>
                     </div>
                   </div>
                 </div>
@@ -597,15 +597,15 @@ export default function ExecutiveDashboard() {
                 <div className="grid md:grid-cols-3 gap-4">
                   <div className="text-center p-4 bg-white dark:bg-slate-900 rounded-lg border">
                     <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400">12 min</div>
-                    <div className="text-sm text-slate-300 dark:text-slate-300">Your Response Time</div>
+                    <div className="text-sm text-gray-600 dark:text-slate-300">Your Response Time</div>
                   </div>
                   <div className="text-center p-4 bg-white dark:bg-slate-900 rounded-lg border">
                     <div className="text-3xl font-bold text-slate-600 dark:text-slate-200">72 hrs</div>
-                    <div className="text-sm text-slate-300 dark:text-slate-300">Industry Average</div>
+                    <div className="text-sm text-gray-600 dark:text-slate-300">Industry Average</div>
                   </div>
                   <div className="text-center p-4 bg-white dark:bg-slate-900 rounded-lg border">
                     <div className="text-3xl font-bold text-green-600 dark:text-green-400">360x</div>
-                    <div className="text-sm text-slate-300 dark:text-slate-300">Faster Than Competitors</div>
+                    <div className="text-sm text-gray-600 dark:text-slate-300">Faster Than Competitors</div>
                   </div>
                 </div>
                 <p className="text-sm text-slate-600 dark:text-slate-300">
@@ -634,7 +634,7 @@ export default function ExecutiveDashboard() {
                     <div className="text-6xl font-bold text-emerald-600 dark:text-emerald-400" data-testid="score-preparedness">
                       {scoreValue || 0}
                     </div>
-                    <div className="text-sm text-slate-300 dark:text-slate-300 mt-2">out of 100</div>
+                    <div className="text-sm text-gray-600 dark:text-slate-300 mt-2">out of 100</div>
                   </div>
                   
                   <div className="flex-1 space-y-4">
@@ -679,7 +679,7 @@ export default function ExecutiveDashboard() {
                         <Target className="h-5 w-5 text-blue-600" />
                         <div>
                           <div className="font-medium">Configure More Playbooks</div>
-                          <p className="text-sm text-slate-300">Add playbooks from our 170-template library</p>
+                          <p className="text-sm text-gray-600">Add playbooks from our 170-template library</p>
                         </div>
                       </div>
                       <ChevronRight className="h-5 w-5 text-slate-600 dark:text-slate-200" />
@@ -691,7 +691,7 @@ export default function ExecutiveDashboard() {
                         <Activity className="h-5 w-5 text-purple-600" />
                         <div>
                           <div className="font-medium">Run Practice Drills</div>
-                          <p className="text-sm text-slate-300">Test your team's response capabilities</p>
+                          <p className="text-sm text-gray-600">Test your team's response capabilities</p>
                         </div>
                       </div>
                       <ChevronRight className="h-5 w-5 text-slate-600 dark:text-slate-200" />
@@ -703,7 +703,7 @@ export default function ExecutiveDashboard() {
                         <Radio className="h-5 w-5 text-amber-600" />
                         <div>
                           <div className="font-medium">Configure Triggers</div>
-                          <p className="text-sm text-slate-300">Set up monitoring across 16 signal categories</p>
+                          <p className="text-sm text-gray-600">Set up monitoring across 16 signal categories</p>
                         </div>
                       </div>
                       <ChevronRight className="h-5 w-5 text-slate-600 dark:text-slate-200" />
@@ -715,7 +715,7 @@ export default function ExecutiveDashboard() {
                         <Layers className="h-5 w-5 text-indigo-600" />
                         <div>
                           <div className="font-medium">Operating Model Alignment</div>
-                          <p className="text-sm text-slate-300">Map your structure to M's 170 playbooks using McKinsey's framework</p>
+                          <p className="text-sm text-gray-600">Map your structure to M's 170 playbooks using McKinsey's framework</p>
                         </div>
                       </div>
                       <ChevronRight className="h-5 w-5 text-slate-600 dark:text-slate-200" />

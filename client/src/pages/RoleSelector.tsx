@@ -140,7 +140,7 @@ const roleConfigs: RoleConfig[] = [
     playbookLabel: 'AI Governance Framework',
     category: 'SPECIAL TEAMS',
     accentColor: 'border-l-slate-400',
-    iconBg: 'bg-slate-500/15 text-slate-300'
+    iconBg: 'bg-slate-500/15 text-gray-600'
   },
   {
     id: 'cco',
@@ -189,7 +189,7 @@ const categoryBadge = (cat: string) => {
 export default function RoleSelector({ embedded }: { embedded?: boolean }) {
   return (
     <PageLayout embedded={embedded}>
-      <div className="min-h-screen bg-white text-white">
+      <div className="min-h-screen bg-white text-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-16">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
@@ -198,7 +198,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
                 Your Execution OS Workspace
               </h1>
             </div>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-6">
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-6">
               Select your role to configure Execution OS with the playbooks, signals, and dashboards most relevant to your responsibilities.
             </p>
             <div className="flex items-center justify-center gap-6 text-sm text-gray-600">
@@ -221,7 +221,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
                             <Icon className="w-5 h-5" />
                           </div>
                           <div>
-                            <div className="font-bold text-white text-lg">{config.id.toUpperCase()}</div>
+                            <div className="font-bold text-gray-900 text-lg">{config.id.toUpperCase()}</div>
                             <div className="text-sm text-gray-600">{config.title}</div>
                           </div>
                         </div>
@@ -230,7 +230,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
                         </Badge>
                       </div>
 
-                      <p className="text-sm text-gray-300 italic mb-4 min-h-[48px] leading-relaxed">
+                      <p className="text-sm text-gray-600 italic mb-4 min-h-[48px] leading-relaxed">
                         "{config.hookQuestion}"
                       </p>
 
@@ -254,12 +254,12 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
 
           <div className="mt-16 text-center">
             <Card className="bg-white border-gray-200 p-8 max-w-3xl mx-auto">
-              <h3 className="text-xl font-bold mb-3 text-white">Not sure which role to start with?</h3>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">Not sure which role to start with?</h3>
               <p className="text-gray-600 mb-6">
                 Jump straight into the Command Center — select any playbook and experience the full coordination workflow.
               </p>
               <Link href="/command-center">
-                <Button size="lg" className="bg-gradient-to-r from-poise-teal to-cyan-600 hover:from-cyan-600 hover:to-poise-teal text-white px-8">
+                <Button size="lg" className="bg-gradient-to-r from-poise-teal to-cyan-600 hover:from-cyan-600 hover:to-poise-teal text-gray-900 px-8">
                   <Compass className="w-5 h-5 mr-2" />
                   Open Command Center
                 </Button>

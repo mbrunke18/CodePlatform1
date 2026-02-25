@@ -275,7 +275,7 @@ export default function ExecutiveSummaryGenerator() {
         <div className="max-w-6xl mx-auto p-6 md:p-8">
           <div className="flex items-center gap-4 mb-8">
             <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
-              <FileText className="w-6 h-6 text-white" />
+              <FileText className="w-6 h-6 text-gray-900" />
             </div>
             <div>
               <h1 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Executive Summary Generator</h1>
@@ -369,7 +369,7 @@ export default function ExecutiveSummaryGenerator() {
                   <Button
                     onClick={() => generateMutation.mutate()}
                     disabled={generateMutation.isPending}
-                    className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-5"
+                    className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-gray-900 font-semibold py-5"
                   >
                     {generateMutation.isPending ? (
                       <>

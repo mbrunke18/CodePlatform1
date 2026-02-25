@@ -110,7 +110,7 @@ export default function LearnConfigStep({ data, onChange, playbook }: LearnConfi
   const getTypeIcon = (type: string) => {
     const itemType = LEARN_ITEM_TYPES.find(t => t.value === type);
     const Icon = itemType?.icon || FileText;
-    const color = itemType?.color || 'text-slate-300';
+    const color = itemType?.color || 'text-gray-600';
     return <Icon className={`h-4 w-4 ${color}`} />;
   };
 

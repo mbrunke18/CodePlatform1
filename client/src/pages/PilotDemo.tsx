@@ -310,9 +310,9 @@ export default function PilotDemo() {
                 <div key={s} className="flex items-center">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors ${
                     step === s 
-                      ? "bg-blue-600 text-white" 
+                      ? "bg-blue-600 text-gray-900" 
                       : ["setup", "configure", "ready", "executing", "complete"].indexOf(step) > i
-                        ? "bg-emerald-500 text-white"
+                        ? "bg-emerald-500 text-gray-900"
                         : "bg-slate-200 dark:bg-slate-700 text-gray-600"
                   }`}>
                     {["setup", "configure", "ready", "executing", "complete"].indexOf(step) > i ? (
@@ -491,7 +491,7 @@ export default function PilotDemo() {
                     variant="outline"
                     size="lg"
                     onClick={() => setStep("setup")}
-                    className="gap-2 text-white border-slate-600 hover:bg-slate-800"
+                    className="gap-2 text-gray-900 border-slate-600 hover:bg-slate-800"
                     data-testid="button-back-setup"
                   >
                     <ArrowLeft className="w-4 h-4" /> Back
@@ -581,7 +581,7 @@ export default function PilotDemo() {
                         variant="outline"
                         size="lg"
                         onClick={() => setStep("configure")}
-                        className="gap-2 text-white border-slate-600 hover:bg-slate-800"
+                        className="gap-2 text-gray-900 border-slate-600 hover:bg-slate-800"
                         data-testid="button-back-configure"
                       >
                         <ArrowLeft className="w-4 h-4" /> Back
@@ -775,7 +775,7 @@ export default function PilotDemo() {
                             <Button
                               variant="outline"
                               onClick={resetDemo}
-                              className="gap-2 text-white border-slate-600 hover:bg-slate-800"
+                              className="gap-2 text-gray-900 border-slate-600 hover:bg-slate-800"
                               data-testid="button-reset-demo"
                             >
                               <RefreshCw className="w-4 h-4" /> Run Another Demo

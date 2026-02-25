@@ -65,7 +65,7 @@ export function HeroMetricsOverlay() {
 
   return (
     <div className="fixed top-20 right-6 z-40 space-y-2" data-testid="hero-metrics-overlay">
-      <div className="text-xs font-semibold text-white/60 text-right mb-2">
+      <div className="text-xs font-semibold text-gray-900/60 text-right mb-2">
         YOUR COMPETITIVE ADVANTAGE
       </div>
       
@@ -84,14 +84,14 @@ export function HeroMetricsOverlay() {
                 <Icon className="h-5 w-5" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-xs text-white/70 font-medium truncate">
+                <div className="text-xs text-gray-900/70 font-medium truncate">
                   {metric.label}
                 </div>
                 <div className="flex items-baseline gap-2">
                   <span className={`text-lg font-bold ${metric.color}`}>
                     {metric.value}
                   </span>
-                  <span className="text-xs text-white/50">
+                  <span className="text-xs text-gray-900/50">
                     {metric.comparison}
                   </span>
                 </div>

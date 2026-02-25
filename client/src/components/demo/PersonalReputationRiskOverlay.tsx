@@ -55,9 +55,9 @@ export function PersonalReputationRiskOverlay() {
               <div className="p-3 bg-red-600/30 rounded-lg">
                 <UserX className="h-8 w-8 text-red-400" />
               </div>
-              <h2 className="text-3xl font-bold text-red-100">What They'll Ask You</h2>
+              <h2 className="text-3xl font-bold text-red-500">What They'll Ask You</h2>
             </div>
-            <p className="text-xl text-red-200/90">72 hours later, when the damage is done</p>
+            <p className="text-xl text-red-600/90">72 hours later, when the damage is done</p>
           </div>
 
           {/* Scenarios */}
@@ -74,7 +74,7 @@ export function PersonalReputationRiskOverlay() {
                 >
                   <div className="flex items-start gap-4">
                     <div className={`p-3 bg-gradient-to-br ${scenario.color} rounded-lg`}>
-                      <Icon className="h-6 w-6 text-white" />
+                      <Icon className="h-6 w-6 text-gray-900" />
                     </div>
                     <div className="flex-1 space-y-2">
                       <div className="flex items-center justify-between">
@@ -83,7 +83,7 @@ export function PersonalReputationRiskOverlay() {
                           {scenario.impact}
                         </span>
                       </div>
-                      <blockquote className="text-lg text-red-100 italic border-l-2 border-red-500/50 pl-4">
+                      <blockquote className="text-lg text-red-500 italic border-l-2 border-red-500/50 pl-4">
                         {scenario.quote}
                       </blockquote>
                     </div>
@@ -96,10 +96,10 @@ export function PersonalReputationRiskOverlay() {
           {/* Bottom Warning */}
           <div className="bg-gradient-to-r from-red-600/30 to-orange-600/30 rounded-lg p-5 border border-red-500/40">
             <div className="text-center space-y-2">
-              <p className="text-red-100 text-xl font-bold">
+              <p className="text-red-500 text-xl font-bold">
                 Your Reputation Takes Decades to Build
               </p>
-              <p className="text-red-200/80 text-lg">
+              <p className="text-red-600/80 text-lg">
                 One 72-hour delay can destroy it
               </p>
             </div>

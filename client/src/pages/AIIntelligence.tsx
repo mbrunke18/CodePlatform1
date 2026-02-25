@@ -98,7 +98,7 @@ export default function AIIntelligence() {
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-                <Brain className="w-7 h-7 text-white" />
+                <Brain className="w-7 h-7 text-gray-900" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white">AI Intelligence Center</h1>
@@ -110,7 +110,7 @@ export default function AIIntelligence() {
                 <Activity className="w-3 h-3 mr-1" />
                 All Modules Active
               </Badge>
-              <Badge className="bg-blue-600 text-white">
+              <Badge className="bg-blue-600 text-gray-900">
                 Enterprise AI
               </Badge>
             </div>
@@ -129,7 +129,7 @@ export default function AIIntelligence() {
               >
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
-                    <div className={`p-2 rounded-lg bg-gradient-to-r ${module.color} text-white`}>
+                    <div className={`p-2 rounded-lg bg-gradient-to-r ${module.color} text-gray-900`}>
                       {module.icon}
                     </div>
                     <Badge variant={module.status === 'active' ? 'default' : 'secondary'}>

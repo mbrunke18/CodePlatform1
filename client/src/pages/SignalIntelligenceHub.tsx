@@ -1639,7 +1639,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
                         className="h-auto py-4 flex flex-col items-center gap-2"
                         onClick={() => setActiveTab('triggers')}
                       >
-                        <Settings className="h-5 w-5 text-slate-300" />
+                        <Settings className="h-5 w-5 text-gray-600" />
                         <span className="text-sm">Manage Triggers</span>
                       </Button>
                     </div>
@@ -1858,7 +1858,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
                                 
                                 return (
                                   <div key={dp.id} className="p-3 flex items-start gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50">
-                                    <div className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xs font-medium text-slate-300">
+                                    <div className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xs font-medium text-gray-600">
                                       {idx + 1}
                                     </div>
                                     <div className="flex-1 min-w-0">
@@ -1868,7 +1868,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
                                           {dp.metricType}
                                         </Badge>
                                         {isActive && (
-                                          <Badge className="bg-emerald-500 text-white text-xs">
+                                          <Badge className="bg-emerald-500 text-gray-900 text-xs">
                                             Monitoring
                                           </Badge>
                                         )}
@@ -1896,7 +1896,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
                                             dp.defaultThreshold.urgency === 'high' ? 'bg-amber-500' :
                                             dp.defaultThreshold.urgency === 'medium' ? 'bg-blue-500' :
                                             'bg-slate-500'
-                                          } text-white text-xs`}
+                                          } text-gray-900 text-xs`}
                                         >
                                           {dp.defaultThreshold.urgency}
                                         </Badge>
@@ -1996,7 +1996,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
                                       </div>
                                     </div>
                                     <div className="flex items-center gap-3">
-                                      <Badge className="bg-purple-500 text-white">
+                                      <Badge className="bg-purple-500 text-gray-900">
                                         {(dataPoints as any[]).length} custom
                                       </Badge>
                                       <ChevronDown className="h-5 w-5 text-purple-500 transition-transform duration-200 group-data-[state=open]:rotate-180" />
@@ -2035,7 +2035,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
                                                 Custom
                                               </Badge>
                                               {isActive && (
-                                                <Badge className="bg-emerald-500 text-white text-xs">
+                                                <Badge className="bg-emerald-500 text-gray-900 text-xs">
                                                   Monitoring
                                                 </Badge>
                                               )}
@@ -2063,7 +2063,7 @@ export default function SignalIntelligenceHub({ embedded }: { embedded?: boolean
                                                   dp.defaultThreshold.urgency === 'high' ? 'bg-amber-500' :
                                                   dp.defaultThreshold.urgency === 'medium' ? 'bg-blue-500' :
                                                   'bg-slate-500'
-                                                } text-white text-xs`}
+                                                } text-gray-900 text-xs`}
                                               >
                                                 {dp.defaultThreshold.urgency}
                                               </Badge>

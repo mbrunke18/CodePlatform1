@@ -212,7 +212,7 @@ export function DeterministicExecutionBadge() {
       <Tooltip>
         <TooltipTrigger asChild>
           <Badge 
-            className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white border-0 cursor-help"
+            className="bg-gradient-to-r from-emerald-600 to-teal-600 text-gray-900 border-0 cursor-help"
           >
             <CheckCircle className="w-3 h-3 mr-1" />
             Deterministic Execution

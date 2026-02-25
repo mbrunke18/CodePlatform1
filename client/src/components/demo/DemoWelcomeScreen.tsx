@@ -73,13 +73,13 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
           <div className="text-center space-y-3">
             <div className="flex items-center justify-center gap-3">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-xl flex items-center justify-center">
-                <Rocket className="h-8 w-8 text-white" />
+                <Rocket className="h-8 w-8 text-gray-900" />
               </div>
             </div>
-            <h1 className="text-4xl font-bold text-white">
+            <h1 className="text-4xl font-bold text-gray-900">
               Welcome to M's Live Demo
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               See how M's elite methodology transforms 72-hour strategic coordination into 12-minute execution—the Strategic Execution Operating System in action
             </p>
           </div>
@@ -90,9 +90,9 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
               <Card key={index} className="bg-gray-50 border-gray-200">
                 <CardContent className="p-4 text-center">
                   <stat.icon className={`h-8 w-8 ${stat.color} mx-auto mb-2`} />
-                  <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
-                  <div className="text-sm font-medium text-gray-300">{stat.label}</div>
-                  <div className="text-xs text-gray-200 mt-1">{stat.comparison}</div>
+                  <div className="text-2xl font-bold text-gray-900 mb-1">{stat.value}</div>
+                  <div className="text-sm font-medium text-gray-600">{stat.label}</div>
+                  <div className="text-xs text-gray-500 mt-1">{stat.comparison}</div>
                 </CardContent>
               </Card>
             ))}
@@ -100,13 +100,13 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
 
           {/* What You'll See */}
           <div className="space-y-3">
-            <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
               <Target className="h-6 w-6 text-blue-400" />
               What You'll Experience
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {demoHighlights.map((highlight, index) => (
-                <div key={index} className="flex items-center gap-2 text-gray-300">
+                <div key={index} className="flex items-center gap-2 text-gray-600">
                   <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
                   <span>{highlight}</span>
                 </div>
@@ -116,26 +116,26 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
 
           {/* Early Access Program */}
           <div className="bg-gradient-to-r   rounded-lg p-6 border border-purple-500/30">
-            <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
               <Building2 className="h-5 w-5 text-purple-400" />
               Built for Fortune 1000 Strategic Execution
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <div>
-                <div className="text-3xl font-bold text-white mb-1">10</div>
-                <div className="text-xs text-gray-300">Pilot Program Target</div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">10</div>
+                <div className="text-xs text-gray-600">Pilot Program Target</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-white mb-1">90</div>
-                <div className="text-xs text-gray-300">Day Validation Period</div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">90</div>
+                <div className="text-xs text-gray-600">Day Validation Period</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-white mb-1">Q1</div>
-                <div className="text-xs text-gray-300">2025 Planned Launch</div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">Q1</div>
+                <div className="text-xs text-gray-600">2025 Planned Launch</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-white mb-1">100%</div>
-                <div className="text-xs text-gray-300">Risk-Free Trial</div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">100%</div>
+                <div className="text-xs text-gray-600">Risk-Free Trial</div>
               </div>
             </div>
           </div>
@@ -147,10 +147,10 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
                 <Target className="h-6 w-6 text-yellow-400" />
               </div>
               <div>
-                <p className="text-gray-300 mb-2">
-                  <strong className="text-white">Interactive Demo:</strong> Sample data shown for illustration purposes. Scenarios and workflows reflect M's design capabilities and championship-level execution methodology.
+                <p className="text-gray-600 mb-2">
+                  <strong className="text-gray-900">Interactive Demo:</strong> Sample data shown for illustration purposes. Scenarios and workflows reflect M's design capabilities and championship-level execution methodology.
                 </p>
-                <p className="text-gray-200 text-sm">
+                <p className="text-gray-500 text-sm">
                   Experience how preparation-driven execution transforms 72-hour coordination into 12-minute strategic response.
                 </p>
               </div>
@@ -158,7 +158,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
           </div>
 
           {/* Duration Info */}
-          <div className="flex items-center justify-center gap-6 text-sm text-gray-200">
+          <div className="flex items-center justify-center gap-6 text-sm text-gray-500">
             <div className="flex items-center gap-2">
               <Clock className="h-4 w-4" />
               <span>Demo Duration: 2-10 minutes (your choice)</span>
@@ -174,14 +174,14 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
             <Button
               onClick={onClose}
               variant="outline"
-              className="border-gray-600 text-gray-300 hover:bg-gray-800"
+              className="border-gray-600 text-gray-600 hover:bg-gray-800"
               data-testid="welcome-close-btn"
             >
               Maybe Later
             </Button>
             <Button 
               onClick={onStartDemo}
-              className="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold px-8 py-6 text-lg"
+              className="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-gray-900 font-semibold px-8 py-6 text-lg"
               data-testid="welcome-start-demo-btn"
             >
               <Rocket className="h-5 w-5 mr-2" />

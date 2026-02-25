@@ -353,7 +353,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.6 }}
-                  className="text-xl md:text-2xl text-slate-300 mb-6"
+                  className="text-xl md:text-2xl text-gray-600 mb-6"
                 >
                   Let me tell you something every executive knows—
                 </motion.p>
@@ -361,7 +361,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.6, delay: 1 }}
-                  className="text-xl md:text-2xl text-slate-300 mb-8"
+                  className="text-xl md:text-2xl text-gray-600 mb-8"
                 >
                   but nobody wants to admit.
                 </motion.p>
@@ -369,7 +369,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 2 }}
-                  className="text-3xl md:text-5xl font-bold text-white"
+                  className="text-3xl md:text-5xl font-bold text-gray-900"
                 >
                   Your strategy isn't the problem.
                 </motion.p>
@@ -395,7 +395,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5 }}
                   className="mb-6"
                 >
-                  <span className="text-sm uppercase tracking-widest text-slate-300">McKinsey Research</span>
+                  <span className="text-sm uppercase tracking-widest text-gray-600">McKinsey Research</span>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -409,15 +409,15 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 1 }}
-                  className="text-xl md:text-2xl text-slate-300"
+                  className="text-xl md:text-2xl text-gray-600"
                 >
-                  of strategy execution happens <span className="text-white font-semibold">outside</span> the strategy room.
+                  of strategy execution happens <span className="text-gray-900 font-semibold">outside</span> the strategy room.
                 </motion.p>
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 2 }}
-                  className="text-lg text-slate-300 mt-4"
+                  className="text-lg text-gray-600 mt-4"
                 >
                   That's where the real work is. That's where companies bleed money.
                 </motion.p>
@@ -433,7 +433,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="text-lg text-slate-300 mb-4"
+                  className="text-lg text-gray-600 mb-4"
                 >
                   The industry average for coordinating a crisis response:
                 </motion.p>
@@ -452,9 +452,9 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5, delay: 1.5 }}
                   className="flex flex-wrap justify-center gap-4"
                 >
-                  <span className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-slate-300">Conference calls</span>
-                  <span className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-slate-300">Scrambling</span>
-                  <span className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-slate-300">Waiting on decisions</span>
+                  <span className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-600">Conference calls</span>
+                  <span className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-600">Scrambling</span>
+                  <span className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-600">Waiting on decisions</span>
                 </motion.div>
               </div>
             </Scene>
@@ -471,7 +471,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   className="flex items-center justify-center gap-3 mb-6"
                 >
                   <AlertTriangle className="h-8 w-8 text-red-400" />
-                  <span className="text-lg text-slate-300">Every hour of delay costs</span>
+                  <span className="text-lg text-gray-600">Every hour of delay costs</span>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -487,7 +487,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 1.5 }}
-                  className="text-xl text-slate-300"
+                  className="text-xl text-gray-600"
                 >
                   Market opportunities vanish. Competitors move.
                 </motion.p>
@@ -503,7 +503,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.6 }}
-                  className="text-xl md:text-2xl text-slate-300 mb-8"
+                  className="text-xl md:text-2xl text-gray-600 mb-8"
                 >
                   It's not because people aren't smart.
                   <br />It's not because they don't care.
@@ -512,7 +512,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 1 }}
-                  className="text-3xl md:text-5xl font-bold text-white mb-6"
+                  className="text-3xl md:text-5xl font-bold text-gray-900 mb-6"
                 >
                   It's because they're improvising.
                 </motion.p>
@@ -538,7 +538,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-xl md:text-2xl text-slate-300 mb-8"
+                  className="text-xl md:text-2xl text-gray-600 mb-8"
                 >
                   I've been in those rooms.
                 </motion.p>
@@ -556,7 +556,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 1.8 }}
-                  className="text-xl text-slate-300"
+                  className="text-xl text-gray-600"
                 >
                   across Fortune 500 companies watching this happen.
                 </motion.p>
@@ -590,8 +590,8 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                       className="flex flex-col items-center p-4 bg-gray-50 border border-gray-200 rounded-xl"
                     >
                       <Building2 className="h-8 w-8 text-amber-400 mb-2" />
-                      <span className="text-lg font-medium text-white">{company.name}</span>
-                      <span className="text-sm text-slate-300">{company.industry}</span>
+                      <span className="text-lg font-medium text-gray-900">{company.name}</span>
+                      <span className="text-sm text-gray-600">{company.industry}</span>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -623,7 +623,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
-                  className="text-xl md:text-2xl text-slate-300 mb-4"
+                  className="text-xl md:text-2xl text-gray-600 mb-4"
                 >
                   I coached major college football for 5 years.
                 </motion.p>
@@ -631,7 +631,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.2 }}
-                  className="text-xl md:text-2xl text-white"
+                  className="text-xl md:text-2xl text-gray-900"
                 >
                   We'd never run a play without practicing it.
                   <br />Never send a team out without knowing who blocks, who catches, who makes the read.
@@ -648,7 +648,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.6 }}
-                  className="text-2xl md:text-4xl font-bold text-white mb-6"
+                  className="text-2xl md:text-4xl font-bold text-gray-900 mb-6"
                 >
                   But in business?
                 </motion.p>
@@ -656,7 +656,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.8 }}
-                  className="text-xl md:text-2xl text-slate-300 mb-6"
+                  className="text-xl md:text-2xl text-gray-600 mb-6"
                 >
                   We call it "strategic planning"—
                 </motion.p>
@@ -680,7 +680,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="text-xl text-slate-300 mb-4"
+                  className="text-xl text-gray-600 mb-4"
                 >
                   I got tired of watching it happen. So I built
                 </motion.p>
@@ -689,7 +689,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1, delay: 0.5, type: "spring" }}
                 >
-                  <span className="text-7xl md:text-9xl font-bold text-white">Execution OS</span>
+                  <span className="text-7xl md:text-9xl font-bold text-gray-900">Execution OS</span>
                 </motion.div>
                 <motion.p
                   initial={{ opacity: 0 }}
@@ -714,13 +714,13 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   className="mb-8"
                 >
                   <span className="text-6xl md:text-8xl font-bold text-emerald-400">170</span>
-                  <span className="text-2xl md:text-4xl text-slate-300 ml-4">PLAYBOOKS</span>
+                  <span className="text-2xl md:text-4xl text-gray-600 ml-4">PLAYBOOKS</span>
                 </motion.div>
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.8 }}
-                  className="text-lg text-slate-300 mb-6"
+                  className="text-lg text-gray-600 mb-6"
                 >
                   across 9 strategic domains
                 </motion.p>
@@ -754,7 +754,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="text-lg text-slate-300 mb-8"
+                  className="text-lg text-gray-600 mb-8"
                 >
                   Powered by the IDEA Framework
                 </motion.p>
@@ -774,7 +774,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                     >
                       <phase.icon className={`h-8 w-8 ${phase.color} mx-auto mb-2`} />
                       <span className={`text-3xl font-bold ${phase.color}`}>{phase.letter}</span>
-                      <p className="text-slate-300 text-sm mt-1">{phase.name}</p>
+                      <p className="text-gray-600 text-sm mt-1">{phase.name}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -792,7 +792,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.8 }}
                   className="mb-8"
                 >
-                  <span className="text-5xl md:text-7xl font-bold text-white">ONE CLICK</span>
+                  <span className="text-5xl md:text-7xl font-bold text-gray-900">ONE CLICK</span>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -813,7 +813,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 1.5 }}
-                  className="text-xl text-slate-300"
+                  className="text-xl text-gray-600"
                 >
                   Real-time visibility. Everyone knows exactly what they own.
                 </motion.p>
@@ -832,7 +832,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   className="flex items-center justify-center gap-3 mb-6"
                 >
                   <Clock className="h-8 w-8 text-emerald-400" />
-                  <span className="text-xl text-slate-300">From signal to full coordinated execution</span>
+                  <span className="text-xl text-gray-600">From signal to full coordinated execution</span>
                 </motion.div>
                 <motion.div
                   initial={{ scale: 0.5, opacity: 0 }}
@@ -863,7 +863,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="text-xl md:text-2xl text-slate-300 mb-8"
+                  className="text-xl md:text-2xl text-gray-600 mb-8"
                 >
                   Think about what's happening now.
                 </motion.p>
@@ -871,7 +871,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.8 }}
-                  className="text-2xl md:text-4xl font-bold text-white mb-6"
+                  className="text-2xl md:text-4xl font-bold text-gray-900 mb-6"
                 >
                   Crisis frequency is exploding.
                 </motion.p>
@@ -905,7 +905,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="text-xl text-slate-300 mb-6"
+                  className="text-xl text-gray-600 mb-6"
                 >
                   But here's what people miss—
                 </motion.p>
@@ -913,7 +913,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
-                  className="text-3xl md:text-5xl font-bold text-white mb-8"
+                  className="text-3xl md:text-5xl font-bold text-gray-900 mb-8"
                 >
                   This isn't just defense.
                 </motion.p>
@@ -925,17 +925,17 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                 >
                   <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4">
                     <TrendingUp className="h-8 w-8 text-emerald-400 mx-auto mb-2" />
-                    <p className="text-slate-300">Launch in 4 months vs 18</p>
+                    <p className="text-gray-600">Launch in 4 months vs 18</p>
                     <p className="text-emerald-400 text-sm mt-1">Capture the revenue</p>
                   </div>
                   <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4">
                     <Target className="h-8 w-8 text-blue-400 mx-auto mb-2" />
-                    <p className="text-slate-300">Integrate in 6 months vs 24</p>
+                    <p className="text-gray-600">Integrate in 6 months vs 24</p>
                     <p className="text-blue-400 text-sm mt-1">Capture synergies</p>
                   </div>
                   <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4">
                     <Zap className="h-8 w-8 text-amber-400 mx-auto mb-2" />
-                    <p className="text-slate-300">Move in days vs weeks</p>
+                    <p className="text-gray-600">Move in days vs weeks</p>
                     <p className="text-amber-400 text-sm mt-1">Win the market</p>
                   </div>
                 </motion.div>
@@ -951,7 +951,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="text-xl text-slate-300 mb-6"
+                  className="text-xl text-gray-600 mb-6"
                 >
                   Execution speed isn't risk mitigation.
                 </motion.p>
@@ -976,7 +976,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="text-xl text-slate-300 mb-6"
+                  className="text-xl text-gray-600 mb-6"
                 >
                   We're not building another dashboard.
                 </motion.p>
@@ -984,7 +984,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.8 }}
-                  className="text-xl text-slate-300 mb-8"
+                  className="text-xl text-gray-600 mb-8"
                 >
                   We're creating a new category.
                 </motion.p>
@@ -993,7 +993,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 1.5 }}
                 >
-                  <span className="text-3xl md:text-5xl font-bold text-white">THE STRATEGIC EXECUTION</span>
+                  <span className="text-3xl md:text-5xl font-bold text-gray-900">THE STRATEGIC EXECUTION</span>
                   <br />
                   <span className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
                     OPERATING SYSTEM
@@ -1011,7 +1011,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="text-xl text-slate-300 mb-6"
+                  className="text-xl text-gray-600 mb-6"
                 >
                   Companies that adopt this first get
                 </motion.p>
@@ -1022,13 +1022,13 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   className="mb-8"
                 >
                   <span className="text-6xl md:text-8xl font-bold text-amber-400">18</span>
-                  <span className="text-2xl md:text-4xl text-slate-300 ml-4">MONTH HEAD START</span>
+                  <span className="text-2xl md:text-4xl text-gray-600 ml-4">MONTH HEAD START</span>
                 </motion.div>
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 1.5 }}
-                  className="text-lg text-slate-300"
+                  className="text-lg text-gray-600"
                 >
                   170 playbooks, AI signal detection, the IDEA methodology—
                   <br />that can't be copied overnight.
@@ -1045,7 +1045,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="text-lg text-slate-300 mb-6"
+                  className="text-lg text-gray-600 mb-6"
                 >
                   20 years inside Fortune 500 execution. I've lived the failures. Felt the frustration.
                   <br />Built the solution I wish I'd had.
@@ -1056,7 +1056,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.6, delay: 0.8 }}
                   className="mb-8"
                 >
-                  <p className="text-xl md:text-2xl text-slate-300 mb-2">Strategy is 10%. Execution is 90%.</p>
+                  <p className="text-xl md:text-2xl text-gray-600 mb-2">Strategy is 10%. Execution is 90%.</p>
                   <p className="text-3xl md:text-4xl font-bold text-emerald-400">
                     Execution OS is built for the 90%.
                   </p>
@@ -1065,7 +1065,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 1.8 }}
-                  className="text-2xl text-white mb-10"
+                  className="text-2xl text-gray-900 mb-10"
                 >
                   Welcome. Let's get to work.
                 </motion.p>
@@ -1089,7 +1089,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                     <Button 
                       size="lg"
                       variant="outline"
-                      className="px-8 py-6 text-lg border-slate-600 text-slate-300 hover:bg-slate-800"
+                      className="px-8 py-6 text-lg border-slate-600 text-gray-600 hover:bg-slate-800"
                     >
                       <BookOpen className="mr-2 h-5 w-5" />
                       Browse Playbooks
@@ -1121,7 +1121,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                 variant="ghost"
                 size="sm"
                 onClick={togglePlayPause}
-                className="text-slate-300 hover:text-white"
+                className="text-gray-600 hover:text-white"
               >
                 {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
               </Button>
@@ -1129,7 +1129,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                 variant="ghost"
                 size="sm"
                 onClick={restart}
-                className="text-slate-300 hover:text-white"
+                className="text-gray-600 hover:text-white"
               >
                 <RotateCcw className="h-5 w-5" />
               </Button>
@@ -1137,7 +1137,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                 variant={isMuted ? "default" : "ghost"}
                 size="sm"
                 onClick={toggleMute}
-                className={isMuted ? "bg-amber-500 hover:bg-amber-400 text-black animate-pulse" : "text-slate-300 hover:text-white"}
+                className={isMuted ? "bg-amber-500 hover:bg-amber-400 text-black animate-pulse" : "text-gray-600 hover:text-white"}
               >
                 {ttsLoading ? (
                   <Loader2 className="h-5 w-5 animate-spin" />
@@ -1152,7 +1152,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
               </Button>
             </div>
 
-            <div className="text-slate-300 text-sm">
+            <div className="text-gray-600 text-sm">
               {currentScene + 1} / {totalScenes}
             </div>
 
@@ -1161,7 +1161,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                 variant="ghost"
                 size="sm"
                 onClick={onSkip}
-                className="text-slate-300 hover:text-white gap-2"
+                className="text-gray-600 hover:text-white gap-2"
               >
                 <SkipForward className="h-4 w-4" />
                 Skip

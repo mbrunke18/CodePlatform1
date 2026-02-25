@@ -304,16 +304,16 @@ export default function ReadinessAssessment() {
                 <Clock className="w-4 h-4 mr-2" />
                 5-Minute Diagnostic
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
                 How Ready Is Your Organization<br className="hidden md:block" /> to Execute Under Pressure?
               </h1>
-              <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Answer 5 targeted questions and get an instant readiness score with specific gaps and recommendations for your strategic domain.
               </p>
             </div>
 
             <div className="bg-white border border-gray-200 rounded-2xl p-8">
-              <h2 className="text-lg font-semibold text-white mb-6 text-center">How It Works</h2>
+              <h2 className="text-lg font-semibold text-gray-900 mb-6 text-center">How It Works</h2>
               <div className="grid grid-cols-3 gap-6 max-w-lg mx-auto">
                 {[
                   { num: 1, label: "Choose Domain", desc: "Select your strategic focus area", icon: Target },
@@ -324,7 +324,7 @@ export default function ReadinessAssessment() {
                     <div className="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 flex items-center justify-center mx-auto mb-3">
                       <step.icon className="w-5 h-5 text-teal-400" />
                     </div>
-                    <div className="text-sm font-semibold text-white">{step.label}</div>
+                    <div className="text-sm font-semibold text-gray-900">{step.label}</div>
                     <div className="text-xs text-gray-500 mt-1">{step.desc}</div>
                   </div>
                 ))}
@@ -332,16 +332,16 @@ export default function ReadinessAssessment() {
             </div>
 
             <div>
-              <h2 className="text-lg font-semibold text-white mb-2 text-center">Select a Strategic Domain</h2>
+              <h2 className="text-lg font-semibold text-gray-900 mb-2 text-center">Select a Strategic Domain</h2>
               <p className="text-sm text-gray-500 text-center mb-6">Choose the area you want to assess</p>
 
               <div className="mb-6 max-w-md mx-auto">
-                <Label className="text-slate-300 text-sm mb-2 block text-center">Company Name (optional)</Label>
+                <Label className="text-gray-600 text-sm mb-2 block text-center">Company Name (optional)</Label>
                 <Input
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
                   placeholder="Your organization's name"
-                  className="bg-white border-gray-200 text-white placeholder:text-slate-500 focus:border-teal-500"
+                  className="bg-white border-gray-200 text-gray-900 placeholder:text-slate-500 focus:border-teal-500"
                 />
               </div>
 
@@ -364,7 +364,7 @@ export default function ReadinessAssessment() {
                         <Badge className={`${config.bgLight} ${config.textLight} border-none mt-1`}>
                           {config.playbooks}
                         </Badge>
-                        <p className="text-slate-300 text-sm font-medium mt-3">{config.categories}</p>
+                        <p className="text-gray-600 text-sm font-medium mt-3">{config.categories}</p>
                         <p className="text-gray-500 text-sm italic mt-1">{config.tagline}</p>
                         <div className={`${config.textLight} text-xs font-medium mt-4 flex items-center justify-center gap-1 group-hover:gap-2 transition-all`}>
                           Start Assessment <ArrowRight className="w-3 h-3" />
@@ -394,13 +394,13 @@ export default function ReadinessAssessment() {
                   {(() => { const Icon = domainConfig.icon; return <Icon className="w-4 h-4 mr-2" />; })()}
                   {domainConfig.label} Assessment
                 </Badge>
-                <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
                   {companyName ? `${companyName}'s` : "Your"} {domainConfig.label} Readiness
                 </h1>
               </div>
 
               <div className="mb-8">
-                <div className="flex items-center justify-between text-sm text-slate-300 mb-2">
+                <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
                   <span>Question {currentQuestion + 1} of {questions.length}</span>
                   <span>{Math.round(((currentQuestion + 1) / questions.length) * 100)}%</span>
                 </div>
@@ -417,9 +417,9 @@ export default function ReadinessAssessment() {
                     onClick={() => setCurrentQuestion(idx)}
                     className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-colors ${
                       idx === currentQuestion
-                        ? `${domainConfig.bg} text-white shadow-lg ${domainConfig.shadow}`
+                        ? `${domainConfig.bg} text-gray-900 shadow-lg ${domainConfig.shadow}`
                         : answers[questions[idx].key]?.trim()
-                        ? "bg-emerald-500 text-white"
+                        ? "bg-emerald-500 text-gray-900"
                         : "bg-gray-50 text-gray-500 hover:bg-slate-700"
                     }`}
                   >
@@ -439,7 +439,7 @@ export default function ReadinessAssessment() {
                       <IconComponent className={`h-6 w-6 ${iconDef.color}`} />
                     </div>
                     <div className="flex-1">
-                      <CardTitle className="text-white text-xl font-semibold">
+                      <CardTitle className="text-gray-900 text-xl font-semibold">
                         {q.question}
                       </CardTitle>
                       {q.helper && (
@@ -454,7 +454,7 @@ export default function ReadinessAssessment() {
                       value={answers[q.key] || ""}
                       onChange={(e) => updateAnswer(q.key, e.target.value)}
                       placeholder={q.placeholder}
-                      className="bg-gray-50 border-gray-200 text-white placeholder:text-slate-500 focus:border-teal-500 text-lg py-6"
+                      className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-slate-500 focus:border-teal-500 text-lg py-6"
                       autoFocus
                     />
                   )}
@@ -464,7 +464,7 @@ export default function ReadinessAssessment() {
                       value={answers[q.key] || ""}
                       onChange={(e) => updateAnswer(q.key, e.target.value)}
                       placeholder={q.placeholder}
-                      className="bg-gray-50 border-gray-200 text-white placeholder:text-slate-500 focus:border-teal-500 text-lg py-6"
+                      className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-slate-500 focus:border-teal-500 text-lg py-6"
                       autoFocus
                     />
                   )}
@@ -474,7 +474,7 @@ export default function ReadinessAssessment() {
                       onChange={(e) => updateAnswer(q.key, e.target.value)}
                       placeholder={q.placeholder}
                       rows={4}
-                      className="bg-gray-50 border-gray-200 text-white placeholder:text-slate-500 focus:border-teal-500 resize-none text-lg"
+                      className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-slate-500 focus:border-teal-500 resize-none text-lg"
                       autoFocus
                     />
                   )}
@@ -483,12 +483,12 @@ export default function ReadinessAssessment() {
                       value={answers[q.key] || ""}
                       onValueChange={(val) => updateAnswer(q.key, val)}
                     >
-                      <SelectTrigger className="bg-gray-50 border-gray-200 text-white focus:border-teal-500 text-lg py-6">
+                      <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900 focus:border-teal-500 text-lg py-6">
                         <SelectValue placeholder={q.placeholder} />
                       </SelectTrigger>
                       <SelectContent className="bg-gray-50 border-gray-200">
                         {q.options!.map((opt) => (
-                          <SelectItem key={opt} value={opt} className="text-white hover:bg-slate-700">
+                          <SelectItem key={opt} value={opt} className="text-gray-900 hover:bg-slate-700">
                             {opt}
                           </SelectItem>
                         ))}
@@ -516,7 +516,7 @@ export default function ReadinessAssessment() {
                             id={`${q.key}-${opt}`}
                             className="border-slate-600 text-teal-500"
                           />
-                          <Label htmlFor={`${q.key}-${opt}`} className="text-slate-200 cursor-pointer text-base flex-1">
+                          <Label htmlFor={`${q.key}-${opt}`} className="text-gray-600 cursor-pointer text-base flex-1">
                             {opt}
                           </Label>
                         </div>
@@ -543,7 +543,7 @@ export default function ReadinessAssessment() {
                       setCurrentQuestion(currentQuestion - 1);
                     }
                   }}
-                  className="border-slate-600 text-slate-200 hover:bg-slate-800 bg-transparent"
+                  className="border-slate-600 text-gray-600 hover:bg-slate-800 bg-transparent"
                 >
                   {currentQuestion === 0 ? "Back to Domains" : "Previous"}
                 </Button>
@@ -553,7 +553,7 @@ export default function ReadinessAssessment() {
                     size="lg"
                     onClick={handleSubmit}
                     disabled={loading}
-                    className={`px-10 ${domainConfig.bg} hover:opacity-90 text-white shadow-lg ${domainConfig.shadow}`}
+                    className={`px-10 ${domainConfig.bg} hover:opacity-90 text-gray-900 shadow-lg ${domainConfig.shadow}`}
                   >
                     {loading ? (
                       <>
@@ -570,7 +570,7 @@ export default function ReadinessAssessment() {
                 ) : (
                   <Button
                     onClick={() => setCurrentQuestion(currentQuestion + 1)}
-                    className={`${domainConfig.bg} hover:opacity-90 text-white`}
+                    className={`${domainConfig.bg} hover:opacity-90 text-gray-900`}
                   >
                     {hasAnswer ? "Next Question" : "Skip"}
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -590,7 +590,7 @@ export default function ReadinessAssessment() {
                 {(() => { const Icon = domainConfig.icon; return <Icon className="w-4 h-4 mr-2" />; })()}
                 {domainConfig.label} Assessment Complete
               </Badge>
-              <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
                 {companyName ? `${companyName}'s` : "Your"} {domainConfig.label} Readiness Score
               </h1>
             </div>
@@ -624,16 +624,16 @@ export default function ReadinessAssessment() {
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <span className={`text-5xl font-bold ${domainConfig.text}`}>{result.score}</span>
-                  <span className="text-slate-300 text-sm mt-1">/100</span>
+                  <span className="text-gray-600 text-sm mt-1">/100</span>
                 </div>
               </div>
-              <Badge className={`${scoreInfo!.bg} text-white border-none px-4 py-1.5 text-sm font-semibold`}>
+              <Badge className={`${scoreInfo!.bg} text-gray-900 border-none px-4 py-1.5 text-sm font-semibold`}>
                 {scoreInfo!.label}
               </Badge>
             </div>
 
             <div className="mb-8">
-              <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                 <BarChart3 className="h-5 w-5 text-blue-400" />
                 Industry Benchmark Comparison
               </h2>
@@ -646,8 +646,8 @@ export default function ReadinessAssessment() {
                   ].map((row) => (
                     <div key={row.label}>
                       <div className="flex items-center justify-between text-sm mb-1.5">
-                        <span className="text-slate-200 font-medium">{row.label}</span>
-                        <span className="text-white font-bold">{row.value}/100</span>
+                        <span className="text-gray-600 font-medium">{row.label}</span>
+                        <span className="text-gray-900 font-bold">{row.value}/100</span>
                       </div>
                       <div className="h-3 bg-gray-50 rounded-full overflow-hidden">
                         <div
@@ -669,8 +669,8 @@ export default function ReadinessAssessment() {
                 <div className="flex items-center gap-3">
                   <AlertTriangle className={`h-6 w-6 flex-shrink-0 ${domainConfig.textLight}`} />
                   <div>
-                    <p className="text-slate-300 text-sm">{domainConfig.label} Benchmark</p>
-                    <p className="text-white text-lg font-semibold">You're {result.benchmark}</p>
+                    <p className="text-gray-600 text-sm">{domainConfig.label} Benchmark</p>
+                    <p className="text-gray-900 text-lg font-semibold">You're {result.benchmark}</p>
                   </div>
                 </div>
               </CardContent>
@@ -678,7 +678,7 @@ export default function ReadinessAssessment() {
 
             {result.gaps.length > 0 && (
               <div className="mb-8">
-                <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                   <XCircle className="h-5 w-5 text-red-400" />
                   Gaps Found ({result.gaps.length})
                 </h2>
@@ -687,7 +687,7 @@ export default function ReadinessAssessment() {
                     <Card key={i} className="bg-white border border-red-500/30">
                       <CardContent className="p-4 flex items-start gap-3">
                         <XCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
-                        <p className="text-slate-200">{gap}</p>
+                        <p className="text-gray-600">{gap}</p>
                       </CardContent>
                     </Card>
                   ))}
@@ -697,7 +697,7 @@ export default function ReadinessAssessment() {
 
             {result.gaps.length > 0 && (
               <div className="mb-8">
-                <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                   <Layers className={`h-5 w-5 ${domainConfig.textLight}`} />
                   How Execution OS Closes These Gaps
                 </h2>
@@ -732,7 +732,7 @@ export default function ReadinessAssessment() {
                             </div>
                             <div>
                               <h3 className={`font-bold ${domainConfig.textLight} text-sm tracking-wide`}>{item.title}</h3>
-                              <p className="text-slate-300 text-sm mt-1 leading-relaxed">{item.description}</p>
+                              <p className="text-gray-600 text-sm mt-1 leading-relaxed">{item.description}</p>
                             </div>
                           </div>
                         );
@@ -745,7 +745,7 @@ export default function ReadinessAssessment() {
 
             {result.recommendations.length > 0 && (
               <div className="mb-12">
-                <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                   <CheckCircle2 className="h-5 w-5 text-emerald-400" />
                   Recommendations ({result.recommendations.length})
                 </h2>
@@ -754,7 +754,7 @@ export default function ReadinessAssessment() {
                     <Card key={i} className="bg-white border border-emerald-500/30">
                       <CardContent className="p-4 flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                        <p className="text-slate-200">{rec}</p>
+                        <p className="text-gray-600">{rec}</p>
                       </CardContent>
                     </Card>
                   ))}
@@ -764,11 +764,11 @@ export default function ReadinessAssessment() {
 
             <Card className={`    border ${domainConfig.border} mb-8 overflow-hidden`}>
               <CardContent className="p-8 text-center">
-                <h2 className="text-2xl font-bold text-white mb-3 flex items-center justify-center gap-2">
+                <h2 className="text-2xl font-bold text-gray-900 mb-3 flex items-center justify-center gap-2">
                   <Rocket className={`h-6 w-6 ${domainConfig.textLight}`} />
                   Your Next Step
                 </h2>
-                <p className="text-slate-200 text-lg max-w-2xl mx-auto leading-relaxed">
+                <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
                   Based on your score of <span className={`font-bold ${domainConfig.text}`}>{result.score}/100</span>,{" "}
                   {result.score < 60
                     ? `we recommend starting with our Founding Partner Pilot — a guided 6-week engagement to close your most critical ${domainConfig.label.toLowerCase()} gaps with dedicated support.`
@@ -781,7 +781,7 @@ export default function ReadinessAssessment() {
               <Link href="/incident-analyzer">
                 <Button
                   size="lg"
-                  className={`text-lg px-10 py-7 ${domainConfig.bg} hover:opacity-90 text-white shadow-lg ${domainConfig.shadow}`}
+                  className={`text-lg px-10 py-7 ${domainConfig.bg} hover:opacity-90 text-gray-900 shadow-lg ${domainConfig.shadow}`}
                 >
                   Build Your Playbooks
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -790,7 +790,7 @@ export default function ReadinessAssessment() {
               <Link href="/roi-calculator">
                 <Button
                   size="lg"
-                  className="text-lg px-10 py-7 bg-teal-600 hover:bg-teal-700 text-white shadow-lg shadow-teal-500/25"
+                  className="text-lg px-10 py-7 bg-teal-600 hover:bg-teal-700 text-gray-900 shadow-lg shadow-teal-500/25"
                 >
                   <DollarSign className="mr-2 h-5 w-5" />
                   Calculate Your ROI
@@ -800,7 +800,7 @@ export default function ReadinessAssessment() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-lg px-10 py-7 border-slate-600 text-slate-200 hover:bg-slate-800 bg-transparent"
+                  className="text-lg px-10 py-7 border-slate-600 text-gray-600 hover:bg-slate-800 bg-transparent"
                 >
                   See Our 170 Playbooks
                 </Button>
@@ -809,7 +809,7 @@ export default function ReadinessAssessment() {
                 size="lg"
                 variant="outline"
                 onClick={handleReset}
-                className="text-lg px-10 py-7 border-slate-600 text-slate-200 hover:bg-slate-800 bg-transparent"
+                className="text-lg px-10 py-7 border-slate-600 text-gray-600 hover:bg-slate-800 bg-transparent"
               >
                 Assess Another Domain
               </Button>

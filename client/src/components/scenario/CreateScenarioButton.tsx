@@ -54,7 +54,7 @@ export default function CreateScenarioButton({
         onClick={() => setIsWizardOpen(true)}
         variant={variant}
         size={size}
-        className={`bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white ${className}`}
+        className={`bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-gray-900 ${className}`}
         data-testid="button-create-scenario"
       >
         <Rocket className="w-4 h-4 mr-2" />
@@ -67,7 +67,7 @@ export default function CreateScenarioButton({
           <DialogHeader className="px-6 pt-6 pb-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
             <DialogTitle className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
-                <Rocket className="w-6 h-6 text-white" />
+                <Rocket className="w-6 h-6 text-gray-900" />
               </div>
               Create Championship-Level Playbook
             </DialogTitle>

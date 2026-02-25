@@ -83,7 +83,7 @@ export default function OperatingModelHealthReport() {
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center">
-              <Activity className="h-6 w-6 text-white" />
+              <Activity className="h-6 w-6 text-gray-900" />
             </div>
             <div>
               <h1 className="text-4xl font-bold text-slate-900 dark:text-white">
@@ -110,9 +110,9 @@ export default function OperatingModelHealthReport() {
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-6xl font-bold text-slate-900 dark:text-white">
                     {overallScore}
-                    <span className="text-3xl text-slate-300 dark:text-slate-300">/100</span>
+                    <span className="text-3xl text-gray-600 dark:text-slate-300">/100</span>
                   </span>
-                  <Badge className={`${getHealthStatus(overallScore).color} text-white text-lg px-4 py-2`}>
+                  <Badge className={`${getHealthStatus(overallScore).color} text-gray-900 text-lg px-4 py-2`}>
                     {getHealthStatus(overallScore).label}
                   </Badge>
                 </div>
@@ -185,7 +185,7 @@ export default function OperatingModelHealthReport() {
                         <div className={`h-10 w-10 rounded-lg ${status.color} bg-opacity-10 flex items-center justify-center`}>
                           <Icon className={`h-5 w-5 ${status.textColor}`} />
                         </div>
-                        <Badge className={`${status.color} text-white`}>
+                        <Badge className={`${status.color} text-gray-900`}>
                           {score}
                         </Badge>
                       </div>
@@ -230,7 +230,7 @@ export default function OperatingModelHealthReport() {
                         <div className={`h-10 w-10 rounded-lg ${status.color} bg-opacity-10 flex items-center justify-center`}>
                           <Icon className={`h-5 w-5 ${status.textColor}`} />
                         </div>
-                        <Badge className={`${status.color} text-white`}>
+                        <Badge className={`${status.color} text-gray-900`}>
                           {score}
                         </Badge>
                       </div>
@@ -275,7 +275,7 @@ export default function OperatingModelHealthReport() {
                         <div className={`h-10 w-10 rounded-lg ${status.color} bg-opacity-10 flex items-center justify-center`}>
                           <Icon className={`h-5 w-5 ${status.textColor}`} />
                         </div>
-                        <Badge className={`${status.color} text-white`}>
+                        <Badge className={`${status.color} text-gray-900`}>
                           {score}
                         </Badge>
                       </div>

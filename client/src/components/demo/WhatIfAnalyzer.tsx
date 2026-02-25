@@ -87,11 +87,11 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
   return (
     <Card className="border-cyan-500/30 bg-gradient-to-br ">
       <CardHeader>
-        <CardTitle className="text-white flex items-center gap-2">
+        <CardTitle className="text-gray-900 flex items-center gap-2">
           <Sparkles className="h-5 w-5 text-cyan-400" />
           AI-Powered What-If Analyzer
         </CardTitle>
-        <p className="text-gray-200 text-sm">
+        <p className="text-gray-500 text-sm">
           Adjust variables to see AI-predicted outcomes for your scenario
         </p>
       </CardHeader>
@@ -99,7 +99,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
         {/* Variable Controls */}
         <div className="grid md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <Label className="text-white">
+            <Label className="text-gray-900">
               Resource Allocation: {variables.resourceAllocation[0]}%
             </Label>
             <Slider
@@ -110,11 +110,11 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
               step={5}
               data-testid="slider-resource-allocation"
             />
-            <p className="text-xs text-gray-300">Budget and team capacity allocated</p>
+            <p className="text-xs text-gray-600">Budget and team capacity allocated</p>
           </div>
 
           <div className="space-y-2">
-            <Label className="text-white">
+            <Label className="text-gray-900">
               Stakeholder Alignment: {variables.stakeholderAlignment[0]}%
             </Label>
             <Slider
@@ -125,11 +125,11 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
               step={5}
               data-testid="slider-stakeholder-alignment"
             />
-            <p className="text-xs text-gray-300">Executive and team consensus level</p>
+            <p className="text-xs text-gray-600">Executive and team consensus level</p>
           </div>
 
           <div className="space-y-2">
-            <Label className="text-white">
+            <Label className="text-gray-900">
               Market Volatility: {variables.marketVolatility[0]}%
             </Label>
             <Slider
@@ -140,11 +140,11 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
               step={5}
               data-testid="slider-market-volatility"
             />
-            <p className="text-xs text-gray-300">External market uncertainty factor</p>
+            <p className="text-xs text-gray-600">External market uncertainty factor</p>
           </div>
 
           <div className="space-y-2">
-            <Label className="text-white">
+            <Label className="text-gray-900">
               Timeline Compression: {variables.timelineCompression[0]}%
             </Label>
             <Slider
@@ -155,7 +155,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
               step={5}
               data-testid="slider-timeline-compression"
             />
-            <p className="text-xs text-gray-300">Schedule acceleration vs standard timeline</p>
+            <p className="text-xs text-gray-600">Schedule acceleration vs standard timeline</p>
           </div>
         </div>
 
@@ -163,7 +163,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
         <Button
           onClick={runAnalysis}
           disabled={isLoading}
-          className="w-full bg-cyan-600 hover:bg-cyan-700 text-white"
+          className="w-full bg-cyan-600 hover:bg-cyan-700 text-gray-900"
           data-testid="button-run-analysis"
         >
           {isLoading ? (
@@ -195,7 +195,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
                     {analysis.mostLikely.probability}% Probability
                   </Badge>
                 </div>
-                <p className="text-gray-300 text-sm">{analysis.mostLikely.description}</p>
+                <p className="text-gray-600 text-sm">{analysis.mostLikely.description}</p>
               </div>
 
               {/* Best Case */}
@@ -209,7 +209,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
                     {analysis.bestCase.probability}% Probability
                   </Badge>
                 </div>
-                <p className="text-gray-300 text-sm">{analysis.bestCase.description}</p>
+                <p className="text-gray-600 text-sm">{analysis.bestCase.description}</p>
               </div>
 
               {/* Worst Case */}
@@ -223,7 +223,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
                     {analysis.worstCase.probability}% Probability
                   </Badge>
                 </div>
-                <p className="text-gray-300 text-sm">{analysis.worstCase.description}</p>
+                <p className="text-gray-600 text-sm">{analysis.worstCase.description}</p>
               </div>
             </div>
 
@@ -236,7 +236,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
                 </h4>
                 <ul className="space-y-2">
                   {analysis.successFactors.map((factor: string, index: number) => (
-                    <li key={index} className="text-gray-300 text-sm flex items-start gap-2">
+                    <li key={index} className="text-gray-600 text-sm flex items-start gap-2">
                       <span className="text-green-400 mt-0.5">•</span>
                       {factor}
                     </li>
@@ -251,7 +251,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
                 </h4>
                 <ul className="space-y-2">
                   {analysis.risks.map((risk: string, index: number) => (
-                    <li key={index} className="text-gray-300 text-sm flex items-start gap-2">
+                    <li key={index} className="text-gray-600 text-sm flex items-start gap-2">
                       <span className="text-yellow-400 mt-0.5">•</span>
                       {risk}
                     </li>
@@ -265,7 +265,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
               <h4 className="font-semibold text-purple-300 mb-3">AI Recommendations</h4>
               <ul className="space-y-2">
                 {analysis.recommendations.map((rec: string, index: number) => (
-                  <li key={index} className="text-gray-300 text-sm flex items-start gap-2">
+                  <li key={index} className="text-gray-600 text-sm flex items-start gap-2">
                     <span className="text-purple-400 font-bold mt-0.5">{index + 1}.</span>
                     {rec}
                   </li>
@@ -273,7 +273,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
               </ul>
             </div>
 
-            <p className="text-xs text-gray-300 text-center italic">
+            <p className="text-xs text-gray-600 text-center italic">
               Analysis powered by OpenAI GPT-5 with strategic execution frameworks
             </p>
           </div>

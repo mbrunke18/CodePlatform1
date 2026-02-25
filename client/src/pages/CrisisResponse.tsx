@@ -20,19 +20,19 @@ export default function CrisisResponse() {
   return (
     <PageLayout>
       <div className="flex-1 page-background overflow-auto" data-testid="crisis-response-page">
-        <div className="bg-gradient-to-r from-red-600 to-orange-600 text-white p-8">
+        <div className="bg-gradient-to-r from-red-600 to-orange-600 text-gray-900 p-8">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-4xl font-bold mb-2">Crisis Response Center</h1>
-                <p className="text-red-100 text-lg">Immediate response protocols and emergency management systems</p>
+                <p className="text-red-500 text-lg">Immediate response protocols and emergency management systems</p>
               </div>
               <div className="text-right">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                  <Badge variant="secondary" className="bg-white/20 text-white">OPERATIONAL</Badge>
+                  <Badge variant="secondary" className="bg-white/20 text-gray-900">OPERATIONAL</Badge>
                 </div>
-                <div className="text-red-100">24/7 Crisis Monitoring Active</div>
+                <div className="text-red-500">24/7 Crisis Monitoring Active</div>
               </div>
             </div>
           </div>

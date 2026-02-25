@@ -94,7 +94,7 @@ export function CommandCenterDemo({ progress }: SceneProps) {
                     i === completedTasks ? "bg-amber-500" : "bg-gray-100"
                   }`}>
                     {i < completedTasks ? (
-                      <CheckCircle2 className="w-4 h-4 text-white" />
+                      <CheckCircle2 className="w-4 h-4 text-gray-900" />
                     ) : i === completedTasks ? (
                       <motion.div
                         animate={{ rotate: 360 }}
@@ -123,7 +123,7 @@ export function CommandCenterDemo({ progress }: SceneProps) {
 
           <div className="space-y-4">
             <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
-              <h3 className="text-white font-medium flex items-center gap-2 mb-3">
+              <h3 className="text-gray-900 font-medium flex items-center gap-2 mb-3">
                 <Users className="w-4 h-4 text-[#D4AF37]" />
                 Active Team
               </h3>

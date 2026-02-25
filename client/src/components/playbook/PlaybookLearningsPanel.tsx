@@ -185,16 +185,16 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
           {learningsLoading ? (
             <div className="flex items-center justify-center py-12">
               <div className="text-center">
-                <Brain className="h-12 w-12 text-slate-200 mx-auto mb-4 animate-pulse" />
+                <Brain className="h-12 w-12 text-gray-600 mx-auto mb-4 animate-pulse" />
                 <p className="text-gray-600 dark:text-slate-300">Loading learnings...</p>
               </div>
             </div>
           ) : safeLearnings.length === 0 ? (
             <div className="flex items-center justify-center py-12">
               <div className="text-center">
-                <Lightbulb className="h-12 w-12 text-slate-200 mx-auto mb-4" />
+                <Lightbulb className="h-12 w-12 text-gray-600 mx-auto mb-4" />
                 <p className="text-gray-600 dark:text-slate-300">No learnings captured yet</p>
-                <p className="text-sm text-slate-300 mt-2">
+                <p className="text-sm text-gray-600 mt-2">
                   Execute this playbook to start building institutional knowledge
                 </p>
               </div>
@@ -248,7 +248,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
                                 <p className="text-slate-900 dark:text-white font-medium">
                                   {learning.learning}
                                 </p>
-                                <div className="flex items-center gap-4 mt-2 text-xs text-slate-300">
+                                <div className="flex items-center gap-4 mt-2 text-xs text-gray-600">
                                   <span className="flex items-center gap-1">
                                     <Clock className="h-3 w-3" />
                                     {format(new Date(learning.extractedAt), 'PPp')}
@@ -308,9 +308,9 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
         <CardContent>
           <div className="flex items-center justify-center py-12">
             <div className="text-center">
-              <History className="h-12 w-12 text-slate-200 mx-auto mb-4" />
+              <History className="h-12 w-12 text-gray-600 mx-auto mb-4" />
               <p className="text-gray-600 dark:text-slate-300">Version tracking coming soon</p>
-              <p className="text-sm text-slate-300 mt-2">
+              <p className="text-sm text-gray-600 mt-2">
                 Playbook changes will be automatically versioned
               </p>
             </div>

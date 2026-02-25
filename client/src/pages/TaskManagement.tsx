@@ -389,7 +389,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-slate-900 dark:text-white">{stats.total}</p>
-                  <p className="text-sm text-slate-300">Total Tasks</p>
+                  <p className="text-sm text-gray-600">Total Tasks</p>
                 </div>
               </div>
             </CardContent>
@@ -402,7 +402,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-gray-600">{stats.pending}</p>
-                  <p className="text-sm text-slate-300">Pending</p>
+                  <p className="text-sm text-gray-600">Pending</p>
                 </div>
               </div>
             </CardContent>
@@ -415,7 +415,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-blue-600">{stats.inProgress}</p>
-                  <p className="text-sm text-slate-300">In Progress</p>
+                  <p className="text-sm text-gray-600">In Progress</p>
                 </div>
               </div>
             </CardContent>
@@ -428,7 +428,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-green-600">{stats.completed}</p>
-                  <p className="text-sm text-slate-300">Completed</p>
+                  <p className="text-sm text-gray-600">Completed</p>
                 </div>
               </div>
             </CardContent>
@@ -441,7 +441,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-purple-600">{stats.totalMinutes}m</p>
-                  <p className="text-sm text-slate-300">Total Duration</p>
+                  <p className="text-sm text-gray-600">Total Duration</p>
                 </div>
               </div>
             </CardContent>
@@ -484,9 +484,9 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
           {filteredTasks.length === 0 ? (
             <Card>
               <CardContent className="py-16 text-center">
-                <ListChecks className="h-12 w-12 mx-auto mb-4 text-slate-300" />
+                <ListChecks className="h-12 w-12 mx-auto mb-4 text-gray-600" />
                 <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">No Tasks Found</h3>
-                <p className="text-slate-300 mb-6">Start by creating your first execution task.</p>
+                <p className="text-gray-600 mb-6">Start by creating your first execution task.</p>
                 <Button onClick={handleOpenCreate} data-testid="button-add-first-task">
                   <Plus className="h-4 w-4 mr-2" />
                   Add Task
@@ -519,7 +519,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                               <StatusIcon className={`h-4 w-4 ${STATUS_CONFIG[task.status].color}`} />
                               <h3 className="font-semibold text-slate-900 dark:text-white">{task.title}</h3>
                             </div>
-                            <p className="text-sm text-slate-300 mb-3">{task.description}</p>
+                            <p className="text-sm text-gray-600 mb-3">{task.description}</p>
                             
                             <div className="flex flex-wrap gap-2">
                               <Badge variant="outline" className="text-xs">
@@ -628,7 +628,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                     <span className={`text-xs font-bold ${IDEA_PHASES[phase].color}`}>
                       {IDEA_PHASES[phase].label}
                     </span>
-                    <span className="text-xs text-slate-300">Add all tasks</span>
+                    <span className="text-xs text-gray-600">Add all tasks</span>
                   </Button>
                 ))}
               </div>
@@ -702,7 +702,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                             <h3 className="font-semibold text-slate-900 dark:text-white text-sm mb-1">
                               {template.title}
                             </h3>
-                            <p className="text-xs text-slate-300 mb-2 line-clamp-2">
+                            <p className="text-xs text-gray-600 mb-2 line-clamp-2">
                               {template.description}
                             </p>
                             <div className="flex flex-wrap gap-1.5">
@@ -749,9 +749,9 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
               {filteredLibraryTasks.length === 0 && (
                 <Card>
                   <CardContent className="py-12 text-center">
-                    <Library className="h-12 w-12 mx-auto mb-4 text-slate-300" />
+                    <Library className="h-12 w-12 mx-auto mb-4 text-gray-600" />
                     <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">No Tasks Found</h3>
-                    <p className="text-slate-300">Try adjusting your filters or search terms.</p>
+                    <p className="text-gray-600">Try adjusting your filters or search terms.</p>
                   </CardContent>
                 </Card>
               )}
@@ -763,7 +763,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
               <Card>
                 <CardContent className="py-16 text-center">
                   <Loader2 className="h-8 w-8 mx-auto mb-4 text-purple-500 animate-spin" />
-                  <p className="text-slate-300">Loading execution sequences...</p>
+                  <p className="text-gray-600">Loading execution sequences...</p>
                 </CardContent>
               </Card>
             ) : (
@@ -785,13 +785,13 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                           <p className="text-2xl font-bold text-purple-600">
                             {sequenceSummary?.reduce((sum, d) => sum + parseInt(d.playbookCount), 0)?.toLocaleString() ?? '0'}
                           </p>
-                          <p className="text-xs text-slate-300">Total Playbooks</p>
+                          <p className="text-xs text-gray-600">Total Playbooks</p>
                         </div>
                         <div className="text-center px-4 py-2 bg-white dark:bg-slate-900 rounded-lg border">
                           <p className="text-2xl font-bold text-indigo-600">
                             {sequenceSummary?.reduce((sum, d) => sum + parseInt(d.taskCount), 0)?.toLocaleString() ?? '0'}
                           </p>
-                          <p className="text-xs text-slate-300">Total Task Sequences</p>
+                          <p className="text-xs text-gray-600">Total Task Sequences</p>
                         </div>
                       </div>
                     </div>
@@ -833,11 +833,11 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                         </CardHeader>
                         <CardContent className="pt-0 space-y-3">
                           <div className="flex justify-between text-sm">
-                            <span className="text-slate-300 flex items-center gap-1">
+                            <span className="text-gray-600 flex items-center gap-1">
                               <BookOpen className="h-3.5 w-3.5" />
                               {playbookCount} playbooks
                             </span>
-                            <span className="text-slate-300 flex items-center gap-1">
+                            <span className="text-gray-600 flex items-center gap-1">
                               <ListChecks className="h-3.5 w-3.5" />
                               {taskCount} tasks
                             </span>
@@ -863,9 +863,9 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                 {(!sequenceSummary || sequenceSummary.length === 0) && (
                   <Card>
                     <CardContent className="py-12 text-center">
-                      <Activity className="h-12 w-12 mx-auto mb-4 text-slate-300" />
+                      <Activity className="h-12 w-12 mx-auto mb-4 text-gray-600" />
                       <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">No Execution Sequences</h3>
-                      <p className="text-slate-300">No playbook task sequences found in the database.</p>
+                      <p className="text-gray-600">No playbook task sequences found in the database.</p>
                     </CardContent>
                   </Card>
                 )}

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Volume2, VolumeX, SkipForward } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -44,8 +44,10 @@ export default function VideoIntro({ onComplete, onSkip }: VideoIntroProps) {
   const [progress, setProgress] = useState(0);
 
   const totalDuration = SCENES.reduce((acc, s) => acc + s.duration, 0);
+  const elapsed = useRef(0);
 
   const nextScene = useCallback(() => {
+    elapsed.current = 0;
     if (currentScene < SCENES.length - 1) {
       setCurrentScene(prev => prev + 1);
       setProgress(0);
@@ -59,15 +61,16 @@ export default function VideoIntro({ onComplete, onSkip }: VideoIntroProps) {
     if (!isPlaying) return;
 
     const scene = SCENES[currentScene];
+    elapsed.current = 0;
+
     const interval = setInterval(() => {
-      setProgress(prev => {
-        const next = prev + 50;
-        if (next >= scene.duration) {
-          nextScene();
-          return 0;
-        }
-        return next;
-      });
+      elapsed.current += 50;
+      if (elapsed.current >= scene.duration) {
+        clearInterval(interval);
+        nextScene();
+      } else {
+        setProgress(elapsed.current);
+      }
     }, 50);
 
     return () => clearInterval(interval);

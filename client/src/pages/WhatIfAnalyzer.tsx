@@ -197,10 +197,10 @@ const domainPresets: Record<string, { label: string; color: string; icon: any; s
 };
 
 const domainStyleMap: Record<string, { border: string; bg: string; text: string; iconText: string; btnClass: string }> = {
-  all: { border: 'border-teal-200 dark:border-teal-800', bg: 'bg-gradient-to-br from-teal-50 to-white dark:from-teal-900/20 dark:to-slate-900', text: 'text-teal-600', iconText: 'text-teal-600', btnClass: 'bg-teal-600 hover:bg-teal-700 text-white' },
-  offense: { border: 'border-emerald-200 dark:border-emerald-800', bg: 'bg-gradient-to-br from-emerald-50 to-white dark:from-emerald-900/20 dark:to-slate-900', text: 'text-emerald-600', iconText: 'text-emerald-600', btnClass: 'bg-emerald-600 hover:bg-emerald-700 text-white' },
-  defense: { border: 'border-red-200 dark:border-red-800', bg: 'bg-gradient-to-br from-red-50 to-white dark:from-red-900/20 dark:to-slate-900', text: 'text-red-600', iconText: 'text-red-600', btnClass: 'bg-red-600 hover:bg-red-700 text-white' },
-  special_teams: { border: 'border-purple-200 dark:border-purple-800', bg: 'bg-gradient-to-br from-purple-50 to-white dark:from-purple-900/20 dark:to-slate-900', text: 'text-purple-600', iconText: 'text-purple-600', btnClass: 'bg-purple-600 hover:bg-purple-700 text-white' },
+  all: { border: 'border-teal-200 dark:border-teal-800', bg: 'bg-gradient-to-br from-teal-50 to-white dark:from-teal-900/20 dark:to-slate-900', text: 'text-teal-600', iconText: 'text-teal-600', btnClass: 'bg-teal-600 hover:bg-teal-700 text-gray-900' },
+  offense: { border: 'border-emerald-200 dark:border-emerald-800', bg: 'bg-gradient-to-br from-emerald-50 to-white dark:from-emerald-900/20 dark:to-slate-900', text: 'text-emerald-600', iconText: 'text-emerald-600', btnClass: 'bg-emerald-600 hover:bg-emerald-700 text-gray-900' },
+  defense: { border: 'border-red-200 dark:border-red-800', bg: 'bg-gradient-to-br from-red-50 to-white dark:from-red-900/20 dark:to-slate-900', text: 'text-red-600', iconText: 'text-red-600', btnClass: 'bg-red-600 hover:bg-red-700 text-gray-900' },
+  special_teams: { border: 'border-purple-200 dark:border-purple-800', bg: 'bg-gradient-to-br from-purple-50 to-white dark:from-purple-900/20 dark:to-slate-900', text: 'text-purple-600', iconText: 'text-purple-600', btnClass: 'bg-purple-600 hover:bg-purple-700 text-gray-900' },
 };
 
 function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSwitchToBuilder: () => void }) {
@@ -353,7 +353,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   <VerdictIcon className={`h-8 w-8 ${verdictConfig.iconColor}`} />
                 </div>
                 <div>
-                  <Badge className={`${verdictConfig.badgeBg} text-white mb-1`}>{verdictConfig.label}</Badge>
+                  <Badge className={`${verdictConfig.badgeBg} text-gray-900 mb-1`}>{verdictConfig.label}</Badge>
                   <h3 className="text-xl font-bold text-slate-800 dark:text-white">
                     {isRecommended ? 'This change improves your execution speed'
                       : isConditional ? 'This change requires careful planning'
@@ -856,7 +856,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
               <button
                 onClick={() => { if (isComplete) setWizardStep(step); }}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                  isActive ? 'bg-blue-600 text-white shadow-md' :
+                  isActive ? 'bg-blue-600 text-gray-900 shadow-md' :
                   isComplete ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 cursor-pointer hover:bg-blue-200 dark:hover:bg-blue-900/50' :
                   'bg-slate-100 text-gray-600 dark:bg-slate-800 dark:text-slate-500'
                 }`}
@@ -1273,7 +1273,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                           onClick={() => toggleDepartment(dept)}
                           className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all ${
                             isSelected
-                              ? 'bg-blue-600 text-white shadow-sm'
+                              ? 'bg-blue-600 text-gray-900 shadow-sm'
                               : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
                           }`}
                         >
@@ -1412,7 +1412,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                   <ImpactIcon className={`h-7 w-7 ${impactConfig.iconColor}`} />
                 </div>
                 <div className="flex-1">
-                  <Badge className={`mb-2 ${impactLevel === 'high' ? 'bg-red-600' : impactLevel === 'moderate' ? 'bg-amber-600' : 'bg-green-600'} text-white`}>
+                  <Badge className={`mb-2 ${impactLevel === 'high' ? 'bg-red-600' : impactLevel === 'moderate' ? 'bg-amber-600' : 'bg-green-600'} text-gray-900`}>
                     {impactConfig.label} — Score: {analysisResult.impactScore}/100
                   </Badge>
                   <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-2">
@@ -1640,7 +1640,7 @@ export default function WhatIfAnalyzer() {
               <div className="text-center max-w-3xl mx-auto">
                 <div className="flex items-center justify-center gap-3 mb-3">
                   <div className="p-2.5 bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl">
-                    <FlaskConical className="h-7 w-7 text-white" />
+                    <FlaskConical className="h-7 w-7 text-gray-900" />
                   </div>
                   <div>
                     <div className="flex items-center gap-3">

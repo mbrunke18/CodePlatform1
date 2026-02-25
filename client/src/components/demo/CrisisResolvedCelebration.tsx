@@ -33,14 +33,14 @@ export function CrisisResolvedCelebration() {
             <div className="relative">
               <div className="absolute inset-0 bg-emerald-400 rounded-full blur-2xl opacity-50 animate-pulse"></div>
               <div className="relative w-24 h-24 bg-emerald-500 rounded-full flex items-center justify-center">
-                <CheckCircle className="h-16 w-16 text-white" strokeWidth={3} />
+                <CheckCircle className="h-16 w-16 text-gray-900" strokeWidth={3} />
               </div>
             </div>
           </div>
 
           {/* Main Message */}
           <div className="space-y-2">
-            <h2 className="text-4xl font-bold text-white">
+            <h2 className="text-4xl font-bold text-gray-900">
               Crisis Resolved!
             </h2>
             <p className="text-xl text-emerald-300">
@@ -52,19 +52,19 @@ export function CrisisResolvedCelebration() {
           <div className="grid grid-cols-3 gap-4 py-6 border-y border-emerald-500/30">
             <div className="space-y-2">
               <Zap className="h-8 w-8 text-amber-400 mx-auto" />
-              <div className="text-3xl font-bold text-white">12min</div>
+              <div className="text-3xl font-bold text-gray-900">12min</div>
               <div className="text-sm text-emerald-300">Response Time</div>
             </div>
             
             <div className="space-y-2 border-x border-emerald-500/30">
               <Trophy className="h-8 w-8 text-amber-400 mx-auto" />
-              <div className="text-3xl font-bold text-white">$12M</div>
+              <div className="text-3xl font-bold text-gray-900">$12M</div>
               <div className="text-sm text-emerald-300">Value Protected</div>
             </div>
             
             <div className="space-y-2">
               <TrendingUp className="h-8 w-8 text-amber-400 mx-auto" />
-              <div className="text-3xl font-bold text-white">71hrs</div>
+              <div className="text-3xl font-bold text-gray-900">71hrs</div>
               <div className="text-sm text-emerald-300">Time Saved</div>
             </div>
           </div>
@@ -74,7 +74,7 @@ export function CrisisResolvedCelebration() {
             <div className="text-amber-400 font-bold text-lg mb-2">
               ⚡ Competitive Advantage Secured
             </div>
-            <p className="text-amber-100 text-sm">
+            <p className="text-amber-700 text-sm">
               While your competitors are still discovering this crisis through news alerts 
               (3 days behind), you've already resolved it, protected revenue, and maintained 
               stakeholder confidence. This is executive leadership in the AI era.

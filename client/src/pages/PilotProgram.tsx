@@ -254,11 +254,11 @@ export default function PilotProgram() {
             <Badge className="mb-6 bg-emerald-600/20 text-emerald-300 border-emerald-500/30" data-testid="badge-pilot">
               Fortune 1000 Design Partner Program
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6" data-testid="heading-pilot-program">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" data-testid="heading-pilot-program">
               90-Day Pilot Program
               <span className="block text-emerald-400 mt-2">Validate Before You Commit</span>
             </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
               Prove Execution OS' 12-minute coordination claim with real activations in your environment. 
               Structured phases, measurable outcomes, and a clear path to enterprise deployment.
             </p>
@@ -267,23 +267,23 @@ export default function PilotProgram() {
             <div className="flex flex-wrap justify-center gap-6 mb-8">
               <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 text-center">
                 <div className="text-2xl font-bold text-emerald-400">$75K</div>
-                <div className="text-xs text-slate-300">Pilot Investment</div>
+                <div className="text-xs text-gray-600">Pilot Investment</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 text-center">
-                <div className="text-2xl font-bold text-white">90</div>
-                <div className="text-xs text-slate-300">Days</div>
+                <div className="text-2xl font-bold text-gray-900">90</div>
+                <div className="text-xs text-gray-600">Days</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 text-center">
-                <div className="text-2xl font-bold text-white">5</div>
-                <div className="text-xs text-slate-300">Playbooks</div>
+                <div className="text-2xl font-bold text-gray-900">5</div>
+                <div className="text-xs text-gray-600">Playbooks</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 text-center">
-                <div className="text-2xl font-bold text-white">25</div>
-                <div className="text-xs text-slate-300">Users</div>
+                <div className="text-2xl font-bold text-gray-900">25</div>
+                <div className="text-xs text-gray-600">Users</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 text-center">
-                <div className="text-2xl font-bold text-white">100%</div>
-                <div className="text-xs text-slate-300">Credit to Year 1</div>
+                <div className="text-2xl font-bold text-gray-900">100%</div>
+                <div className="text-xs text-gray-600">Credit to Year 1</div>
               </div>
             </div>
 
@@ -300,7 +300,7 @@ export default function PilotProgram() {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white/30 text-white hover:bg-white/10"
+                className="border-white/30 text-gray-900 hover:bg-white/10"
                 onClick={() => setLocation('/try-demo')}
                 data-testid="button-see-demo"
               >
@@ -330,12 +330,12 @@ export default function PilotProgram() {
                 {pilotPhases.map((phase, i) => (
                   <div key={i} className="relative" data-testid={`phase-${i}`}>
                     <div className="flex flex-col items-center">
-                      <div className={`w-12 h-12 rounded-full ${phase.color} flex items-center justify-center text-white font-bold z-10 mb-4`}>
+                      <div className={`w-12 h-12 rounded-full ${phase.color} flex items-center justify-center text-gray-900 font-bold z-10 mb-4`}>
                         {i + 1}
                       </div>
                       <Card className="w-full">
                         <CardHeader className="pb-2 text-center">
-                          <Badge className={`${phase.color} text-white mb-2`}>{phase.duration}</Badge>
+                          <Badge className={`${phase.color} text-gray-900 mb-2`}>{phase.duration}</Badge>
                           <CardTitle className="text-lg">{phase.name}</CardTitle>
                         </CardHeader>
                         <CardContent className="text-sm">
@@ -349,7 +349,7 @@ export default function PilotProgram() {
                           </ul>
                           <div className="border-t pt-3">
                             <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-1">Success Metric</div>
-                            <p className="text-xs text-slate-300 dark:text-slate-300">{phase.successMetrics}</p>
+                            <p className="text-xs text-gray-600 dark:text-slate-300">{phase.successMetrics}</p>
                           </div>
                         </CardContent>
                       </Card>
@@ -441,10 +441,10 @@ export default function PilotProgram() {
         <section className="py-16 px-6 bg-gradient-to-br  ">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-white mb-4" data-testid="heading-roi">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4" data-testid="heading-roi">
                 ROI Measurement Framework
               </h2>
-              <p className="text-lg text-blue-200">
+              <p className="text-lg text-blue-700">
                 Quantified value capture at every milestone
               </p>
             </div>
@@ -454,7 +454,7 @@ export default function PilotProgram() {
                 <table className="w-full min-w-[800px]">
                   <thead>
                     <tr className="border-b border-white/20">
-                      <th className="text-left p-4 font-semibold text-white">Value Metric</th>
+                      <th className="text-left p-4 font-semibold text-gray-900">Value Metric</th>
                       <th className="text-left p-4 font-semibold text-red-300">Before Execution OS</th>
                       <th className="text-left p-4 font-semibold text-emerald-300">With Execution OS</th>
                       <th className="text-left p-4 font-semibold text-blue-300">Calculation</th>
@@ -464,17 +464,17 @@ export default function PilotProgram() {
                   <tbody>
                     {roiCalculator.map((row, i) => (
                       <tr key={i} className="border-b border-white/10 last:border-0">
-                        <td className="p-4 text-white font-medium">{row.metric}</td>
-                        <td className="p-4 text-red-200">{row.baseline}</td>
+                        <td className="p-4 text-gray-900 font-medium">{row.metric}</td>
+                        <td className="p-4 text-red-600">{row.baseline}</td>
                         <td className="p-4 text-emerald-200">{row.withExecutionOS}</td>
-                        <td className="p-4 text-blue-200 text-sm">{row.calculation}</td>
+                        <td className="p-4 text-blue-700 text-sm">{row.calculation}</td>
                         <td className="p-4 text-amber-300 font-bold text-right">{row.value}</td>
                       </tr>
                     ))}
                   </tbody>
                   <tfoot>
                     <tr className="bg-white/10">
-                      <td colSpan={4} className="p-4 text-white font-bold text-right">Total Value per Major Event:</td>
+                      <td colSpan={4} className="p-4 text-gray-900 font-bold text-right">Total Value per Major Event:</td>
                       <td className="p-4 text-2xl font-bold text-amber-300 text-right">$60K - $2M+</td>
                     </tr>
                   </tfoot>
@@ -582,7 +582,7 @@ export default function PilotProgram() {
                 View Competitive Positioning
               </Button>
             </div>
-            <p className="text-sm text-slate-300 dark:text-slate-300 mt-6">
+            <p className="text-sm text-gray-600 dark:text-slate-300 mt-6">
               Questions? Contact us at <span className="text-blue-600 dark:text-blue-400">pilots@m-strategic.com</span>
             </p>
           </div>

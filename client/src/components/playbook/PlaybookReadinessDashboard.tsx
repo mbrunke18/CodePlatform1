@@ -146,7 +146,7 @@ export default function PlaybookReadinessDashboard({
 
   if (compact) {
     return (
-      <div className="flex items-center gap-4 p-4 text-white rounded-lg">
+      <div className="flex items-center gap-4 p-4 text-gray-900 rounded-lg">
         <div className="text-center">
           <div className={`text-3xl font-bold text-${status.color}-400`}>{overallScore}%</div>
           <div className="text-xs text-slate-600 dark:text-slate-200">Readiness</div>
@@ -154,19 +154,19 @@ export default function PlaybookReadinessDashboard({
         <div className="flex-1 grid grid-cols-4 gap-2 text-xs">
           <div className="text-center">
             <div className="text-violet-400">{score?.prepareScore ?? 0}%</div>
-            <div className="text-slate-300">IDENTIFY</div>
+            <div className="text-gray-600">IDENTIFY</div>
           </div>
           <div className="text-center">
             <div className="text-blue-400">{score?.monitorScore ?? 0}%</div>
-            <div className="text-slate-300">DETECT</div>
+            <div className="text-gray-600">DETECT</div>
           </div>
           <div className="text-center">
             <div className="text-emerald-400">{score?.executeScore ?? 0}%</div>
-            <div className="text-slate-300">EXECUTE</div>
+            <div className="text-gray-600">EXECUTE</div>
           </div>
           <div className="text-center">
             <div className="text-amber-400">{score?.learnScore ?? 0}%</div>
-            <div className="text-slate-300">ADVANCE</div>
+            <div className="text-gray-600">ADVANCE</div>
           </div>
         </div>
       </div>
@@ -175,7 +175,7 @@ export default function PlaybookReadinessDashboard({
 
   return (
     <div className="space-y-6">
-      <Card className=" text-white border-0">
+      <Card className=" text-gray-900 border-0">
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
             <CardTitle className="flex items-center gap-2 text-lg">
@@ -186,7 +186,7 @@ export default function PlaybookReadinessDashboard({
               variant="ghost" 
               size="sm" 
               onClick={() => refetch()}
-              className="text-white hover:bg-white/10"
+              className="text-gray-900 hover:bg-white/10"
               data-testid="button-refresh-readiness"
             >
               <RefreshCw className="w-4 h-4" />
@@ -278,25 +278,25 @@ export default function PlaybookReadinessDashboard({
         <CardContent>
           <div className="flex gap-1 h-4 rounded-full overflow-hidden">
             <div 
-              className="bg-violet-500 flex items-center justify-center text-xs text-white font-medium"
+              className="bg-violet-500 flex items-center justify-center text-xs text-gray-900 font-medium"
               style={{ width: `${score?.prepareWeight ?? 40}%` }}
             >
               {score?.prepareWeight ?? 40}%
             </div>
             <div 
-              className="bg-blue-500 flex items-center justify-center text-xs text-white font-medium"
+              className="bg-blue-500 flex items-center justify-center text-xs text-gray-900 font-medium"
               style={{ width: `${score?.monitorWeight ?? 20}%` }}
             >
               {score?.monitorWeight ?? 20}%
             </div>
             <div 
-              className="bg-emerald-500 flex items-center justify-center text-xs text-white font-medium"
+              className="bg-emerald-500 flex items-center justify-center text-xs text-gray-900 font-medium"
               style={{ width: `${score?.executeWeight ?? 30}%` }}
             >
               {score?.executeWeight ?? 30}%
             </div>
             <div 
-              className="bg-amber-500 flex items-center justify-center text-xs text-white font-medium"
+              className="bg-amber-500 flex items-center justify-center text-xs text-gray-900 font-medium"
               style={{ width: `${score?.learnWeight ?? 10}%` }}
             >
               {score?.learnWeight ?? 10}%

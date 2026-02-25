@@ -685,7 +685,7 @@ export default function IntegrationConnections() {
                 <Globe className="w-6 h-6 text-blue-400" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-white">Enterprise Integration Hub</h1>
+                <h1 className="text-3xl font-bold text-gray-900">Enterprise Integration Hub</h1>
                 <p className="text-gray-600 text-sm mt-0.5">Connect your enterprise stack to power real-time strategic execution across {INTEGRATIONS.length} tools</p>
               </div>
             </div>
@@ -698,7 +698,7 @@ export default function IntegrationConnections() {
                   <Globe className="w-5 h-5 text-blue-400" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">{INTEGRATIONS.length}</div>
+                  <div className="text-2xl font-bold text-gray-900">{INTEGRATIONS.length}</div>
                   <div className="text-xs text-gray-600">Total Integrations</div>
                 </div>
               </CardContent>
@@ -709,7 +709,7 @@ export default function IntegrationConnections() {
                   <CheckCircle className="w-5 h-5 text-emerald-400" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">{connectedCount}</div>
+                  <div className="text-2xl font-bold text-gray-900">{connectedCount}</div>
                   <div className="text-xs text-gray-600">Connected</div>
                 </div>
               </CardContent>
@@ -720,7 +720,7 @@ export default function IntegrationConnections() {
                   <Layers className="w-5 h-5 text-purple-400" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">{Object.keys(CATEGORY_LABELS).length}</div>
+                  <div className="text-2xl font-bold text-gray-900">{Object.keys(CATEGORY_LABELS).length}</div>
                   <div className="text-xs text-gray-600">Categories</div>
                 </div>
               </CardContent>
@@ -731,7 +731,7 @@ export default function IntegrationConnections() {
                   <Shield className="w-5 h-5 text-amber-400" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">Enterprise</div>
+                  <div className="text-2xl font-bold text-gray-900">Enterprise</div>
                   <div className="text-xs text-gray-600">Security Grade</div>
                 </div>
               </CardContent>
@@ -743,21 +743,21 @@ export default function IntegrationConnections() {
               <div className="w-12 h-12 mx-auto mb-4 bg-blue-500/20 rounded-xl flex items-center justify-center">
                 <Zap className="w-6 h-6 text-blue-400" />
               </div>
-              <h3 className="font-semibold text-white mb-2">Execution OS Orchestrates</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">Execution OS Orchestrates</h3>
               <p className="text-sm text-gray-600">Strategic playbooks trigger coordinated actions across your entire enterprise stack simultaneously</p>
             </Card>
             <Card className="p-6 bg-white border-gray-200 text-center">
               <div className="w-12 h-12 mx-auto mb-4 bg-purple-500/20 rounded-xl flex items-center justify-center">
                 <Database className="w-6 h-6 text-purple-400" />
               </div>
-              <h3 className="font-semibold text-white mb-2">Your Tools Execute</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">Your Tools Execute</h3>
               <p className="text-sm text-gray-600">Jira, Slack, Salesforce, ServiceNow, Teams, and 20+ tools carry out the operational work</p>
             </Card>
             <Card className="p-6 bg-white border-gray-200 text-center">
               <div className="w-12 h-12 mx-auto mb-4 bg-emerald-500/20 rounded-xl flex items-center justify-center">
                 <RefreshCw className="w-6 h-6 text-emerald-400" />
               </div>
-              <h3 className="font-semibold text-white mb-2">Everything Syncs</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">Everything Syncs</h3>
               <p className="text-sm text-gray-600">Bi-directional updates keep Execution OS and all your tools in perfect alignment during execution</p>
             </Card>
           </div>
@@ -770,12 +770,12 @@ export default function IntegrationConnections() {
                   value={searchTerm}
                   onChange={e => setSearchTerm(e.target.value)}
                   placeholder="Search integrations..."
-                  className="pl-10 bg-white border-gray-200 text-white placeholder:text-gray-500"
+                  className="pl-10 bg-white border-gray-200 text-gray-900 placeholder:text-gray-500"
                 />
               </div>
               <div className="flex gap-2 flex-wrap">
                 {categories.map(cat => {
-                  const catInfo = cat === 'all' ? { label: 'All', icon: Globe, color: 'text-white' } : CATEGORY_LABELS[cat];
+                  const catInfo = cat === 'all' ? { label: 'All', icon: Globe, color: 'text-gray-900' } : CATEGORY_LABELS[cat];
                   if (!catInfo) return null;
                   const isActive = activeCategory === cat;
                   return (
@@ -784,7 +784,7 @@ export default function IntegrationConnections() {
                       variant={isActive ? 'default' : 'outline'}
                       size="sm"
                       onClick={() => setActiveCategory(cat)}
-                      className={`text-xs ${isActive ? 'bg-blue-600 text-white' : 'border-gray-200 text-gray-600 hover:text-white hover:bg-gray-800'}`}
+                      className={`text-xs ${isActive ? 'bg-blue-600 text-gray-900' : 'border-gray-200 text-gray-600 hover:text-white hover:bg-gray-800'}`}
                     >
                       {catInfo.label}
                     </Button>
@@ -821,7 +821,7 @@ export default function IntegrationConnections() {
                             <Icon className={`w-5 h-5 ${config.color}`} />
                           </div>
                           <div>
-                            <h3 className="text-sm font-semibold text-white">{config.name}</h3>
+                            <h3 className="text-sm font-semibold text-gray-900">{config.name}</h3>
                             <p className="text-xs text-gray-600 mt-0.5 line-clamp-1">{config.description}</p>
                           </div>
                         </div>
@@ -862,7 +862,7 @@ export default function IntegrationConnections() {
                             <Button
                               variant="outline"
                               size="sm"
-                              className="border-gray-200 text-gray-300 hover:bg-gray-800 gap-1 text-xs h-8"
+                              className="border-gray-200 text-gray-600 hover:bg-gray-800 gap-1 text-xs h-8"
                               onClick={() => handleTest(config.key, integration!.id)}
                               disabled={testingId === config.key}
                             >
@@ -883,7 +883,7 @@ export default function IntegrationConnections() {
                         ) : (
                           <Button
                             size="sm"
-                            className="bg-blue-600 hover:bg-blue-700 text-white gap-1 text-xs h-8"
+                            className="bg-blue-600 hover:bg-blue-700 text-gray-900 gap-1 text-xs h-8"
                             onClick={() => handleConnect(config.key, config.connectionType)}
                             disabled={connectingId === config.key}
                           >
@@ -904,7 +904,7 @@ export default function IntegrationConnections() {
 
           <Card className="bg-white border-gray-200">
             <CardHeader>
-              <CardTitle className="text-white flex items-center gap-2">
+              <CardTitle className="text-gray-900 flex items-center gap-2">
                 <Zap className="w-5 h-5 text-amber-400" />
                 How Integrations Power Execution
               </CardTitle>
@@ -919,7 +919,7 @@ export default function IntegrationConnections() {
                         <Icon className={`w-4 h-4 ${config.color}`} />
                       </div>
                       <div>
-                        <h4 className="text-sm font-semibold text-white mb-1">{config.name}</h4>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-1">{config.name}</h4>
                         <p className="text-xs text-gray-600 leading-relaxed">{config.enablesDescription}</p>
                       </div>
                     </div>

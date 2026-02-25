@@ -315,11 +315,11 @@ export default function CompetitivePositioning() {
             <Badge className="mb-6 bg-blue-600/20 text-blue-300 border-blue-500/30" data-testid="badge-market-position">
               Market Position
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6" data-testid="heading-competitive-positioning">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" data-testid="heading-competitive-positioning">
               The Strategic Execution Layer
               <span className="block text-blue-400 mt-2">Category of One</span>
             </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
               Crisis tools notify. PM tools track. Execution OS executes. We're not competing with Everbridge or Jira—we own the 
               <span className="text-blue-300 font-semibold"> 20-50 hours of coordination </span> 
               that happens between alert and action.
@@ -334,7 +334,7 @@ export default function CompetitivePositioning() {
               </div>
               <div className="bg-blue-500/30 border-2 border-blue-400 rounded-lg px-6 py-3 ring-2 ring-blue-400/50">
                 <Zap className="w-5 h-5 text-blue-300 inline mr-2" />
-                <span className="text-blue-200 font-bold">Strategic Execution</span>
+                <span className="text-blue-700 font-bold">Strategic Execution</span>
                 <div className="text-xs text-blue-300 mt-1">Execution OS (Category of One)</div>
               </div>
               <div className="bg-green-500/20 border border-green-500/40 rounded-lg px-6 py-3">
@@ -357,7 +357,7 @@ export default function CompetitivePositioning() {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white/30 text-white hover:bg-white/10"
+                className="border-white/30 text-gray-900 hover:bg-white/10"
                 onClick={() => setLocation('/pilot-program')}
                 data-testid="button-pilot-program"
               >
@@ -489,7 +489,7 @@ export default function CompetitivePositioning() {
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
                             <div className={`w-10 h-10 rounded-full ${tool.color} flex items-center justify-center`}>
-                              <span className="text-white font-bold">{tool.name.charAt(0)}</span>
+                              <span className="text-gray-900 font-bold">{tool.name.charAt(0)}</span>
                             </div>
                             <div>
                               <CardTitle className="text-lg">{tool.name}</CardTitle>
@@ -522,7 +522,7 @@ export default function CompetitivePositioning() {
                         </div>
                         <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
                           <div className="text-xs font-semibold text-amber-600 dark:text-amber-400 mb-1">When They Win</div>
-                          <p className="text-xs text-slate-300 dark:text-slate-300">{tool.whenTheyWin}</p>
+                          <p className="text-xs text-gray-600 dark:text-slate-300">{tool.whenTheyWin}</p>
                         </div>
                         <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
                           <div className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 flex items-center gap-1">
@@ -544,7 +544,7 @@ export default function CompetitivePositioning() {
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
                             <div className={`w-10 h-10 rounded-full ${tool.color} flex items-center justify-center`}>
-                              <span className="text-white font-bold">{tool.name.charAt(0)}</span>
+                              <span className="text-gray-900 font-bold">{tool.name.charAt(0)}</span>
                             </div>
                             <div>
                               <CardTitle className="text-lg">{tool.name}</CardTitle>
@@ -593,7 +593,7 @@ export default function CompetitivePositioning() {
                 <div className="mb-6 bg-sky-50 dark:bg-sky-900/20 border border-sky-200 dark:border-sky-800 rounded-lg p-4">
                   <div className="flex items-start gap-3">
                     <div className="w-10 h-10 rounded-full bg-sky-500 flex items-center justify-center flex-shrink-0">
-                      <Calculator className="w-5 h-5 text-white" />
+                      <Calculator className="w-5 h-5 text-gray-900" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-sky-900 dark:text-sky-100 mb-1">Complementary, Not Competing</h3>
@@ -611,7 +611,7 @@ export default function CompetitivePositioning() {
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
                             <div className={`w-10 h-10 rounded-full ${tool.color} flex items-center justify-center`}>
-                              <span className="text-white font-bold">{tool.name.charAt(0)}</span>
+                              <span className="text-gray-900 font-bold">{tool.name.charAt(0)}</span>
                             </div>
                             <div>
                               <CardTitle className="text-lg">{tool.name}</CardTitle>
@@ -649,7 +649,7 @@ export default function CompetitivePositioning() {
                         </div>
                         <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
                           <div className="text-xs font-semibold text-sky-600 dark:text-sky-400 mb-1">Relationship with Execution OS</div>
-                          <p className="text-xs text-slate-300 dark:text-slate-300">{tool.relationship}</p>
+                          <p className="text-xs text-gray-600 dark:text-slate-300">{tool.relationship}</p>
                         </div>
                         <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
                           <div className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 flex items-center gap-1">
@@ -671,7 +671,7 @@ export default function CompetitivePositioning() {
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
                             <div className={`w-10 h-10 rounded-full ${tool.color} flex items-center justify-center`}>
-                              <span className="text-white font-bold">{tool.name.charAt(0)}</span>
+                              <span className="text-gray-900 font-bold">{tool.name.charAt(0)}</span>
                             </div>
                             <div>
                               <CardTitle className="text-lg">{tool.name}</CardTitle>
@@ -722,7 +722,7 @@ export default function CompetitivePositioning() {
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
                             <div className={`w-10 h-10 rounded-full ${tool.color} flex items-center justify-center`}>
-                              <span className="text-white font-bold">{tool.name.charAt(0)}</span>
+                              <span className="text-gray-900 font-bold">{tool.name.charAt(0)}</span>
                             </div>
                             <div>
                               <CardTitle className="text-lg">{tool.name}</CardTitle>
@@ -819,7 +819,7 @@ export default function CompetitivePositioning() {
                       <th className="text-center p-3 bg-blue-50 dark:bg-blue-900/20">
                         <div className="flex flex-col items-center">
                           <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mb-1">
-                            <span className="text-white font-bold text-xs">P</span>
+                            <span className="text-gray-900 font-bold text-xs">P</span>
                           </div>
                           <span className="text-xs font-bold text-blue-600 dark:text-blue-400">Execution OS</span>
                         </div>
@@ -832,32 +832,32 @@ export default function CompetitivePositioning() {
                         <td className="p-4 text-sm text-slate-700 dark:text-slate-300">{row.capability}</td>
                         <td className="p-3 text-center">
                           {row.crisisTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.crisisTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-200 mx-auto" />}
+                          {row.crisisTools === false && <XCircle className="w-4 h-4 text-gray-600 dark:text-slate-200 mx-auto" />}
                           {row.crisisTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
-                          {row.crisisTools === 'manual' && <span className="text-xs text-slate-300">Manual</span>}
-                          {row.crisisTools === 'native' && <span className="text-xs text-slate-300">N/A</span>}
+                          {row.crisisTools === 'manual' && <span className="text-xs text-gray-600">Manual</span>}
+                          {row.crisisTools === 'native' && <span className="text-xs text-gray-600">N/A</span>}
                         </td>
                         <td className="p-3 text-center">
                           {row.pmTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.pmTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-200 mx-auto" />}
+                          {row.pmTools === false && <XCircle className="w-4 h-4 text-gray-600 dark:text-slate-200 mx-auto" />}
                           {row.pmTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
-                          {row.pmTools === 'manual' && <span className="text-xs text-slate-300">Manual</span>}
-                          {row.pmTools === 'native' && <span className="text-xs text-slate-300">N/A</span>}
+                          {row.pmTools === 'manual' && <span className="text-xs text-gray-600">Manual</span>}
+                          {row.pmTools === 'native' && <span className="text-xs text-gray-600">N/A</span>}
                         </td>
                         <td className="p-3 text-center">
                           {row.okrTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.okrTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-200 mx-auto" />}
+                          {row.okrTools === false && <XCircle className="w-4 h-4 text-gray-600 dark:text-slate-200 mx-auto" />}
                           {row.okrTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
-                          {row.okrTools === 'manual' && <span className="text-xs text-slate-300">Manual</span>}
+                          {row.okrTools === 'manual' && <span className="text-xs text-gray-600">Manual</span>}
                         </td>
                         <td className="p-3 text-center">
                           {row.automationTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.automationTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-200 mx-auto" />}
+                          {row.automationTools === false && <XCircle className="w-4 h-4 text-gray-600 dark:text-slate-200 mx-auto" />}
                           {row.automationTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
                         </td>
                         <td className="p-3 text-center">
                           {row.planningTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.planningTools === false && <XCircle className="w-4 h-4 text-slate-300 dark:text-slate-200 mx-auto" />}
+                          {row.planningTools === false && <XCircle className="w-4 h-4 text-gray-600 dark:text-slate-200 mx-auto" />}
                           {row.planningTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
                         </td>
                         <td className="p-3 text-center bg-blue-50/50 dark:bg-blue-900/10">
@@ -917,10 +917,10 @@ export default function CompetitivePositioning() {
         <section className="py-16 px-6 bg-gradient-to-br  ">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-white mb-4" data-testid="heading-domains">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4" data-testid="heading-domains">
                 170 Playbooks Across 9 Strategic Domains
               </h2>
-              <p className="text-lg text-blue-200">
+              <p className="text-lg text-blue-700">
                 No competitor offers pre-built, executable strategic playbooks
               </p>
             </div>
@@ -934,8 +934,8 @@ export default function CompetitivePositioning() {
                   data-testid={`card-domain-${domain.name.toLowerCase().replace(/\s+/g, '-')}`}
                 >
                   <domain.icon className="w-6 h-6 text-blue-300 mx-auto mb-2" />
-                  <div className="text-xl font-bold text-white mb-1">{domain.count}</div>
-                  <div className="text-xs text-blue-200">{domain.name}</div>
+                  <div className="text-xl font-bold text-gray-900 mb-1">{domain.count}</div>
+                  <div className="text-xs text-blue-700">{domain.name}</div>
                 </div>
               ))}
             </div>
@@ -957,7 +957,7 @@ export default function CompetitivePositioning() {
         {/* The Moat */}
         <section className="py-16 px-6">
           <div className="max-w-4xl mx-auto">
-            <Card className="bg-white text-white border-0" data-testid="card-moat">
+            <Card className="bg-white text-gray-900 border-0" data-testid="card-moat">
               <CardContent className="p-8">
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-xl bg-white/10">
@@ -965,7 +965,7 @@ export default function CompetitivePositioning() {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold mb-4">The Enterprise Moat</h3>
-                    <p className="text-blue-200 mb-6">
+                    <p className="text-blue-700 mb-6">
                       Once a Fortune 1000 company has 50+ playbooks syncing to Jira with bi-directional updates, 
                       historical execution data, and months of organizational knowledge encoded in Execution OS—switching 
                       becomes nearly impossible.
