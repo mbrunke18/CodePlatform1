@@ -722,30 +722,31 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getUserRole(userId: string): Promise<Role | undefined> {
-    const user = await db.query.users.findFirst({
-      where: eq(users.id, userId),
-      with: { role: true },
-    });
-    return user?.role || undefined;
+    const result = await db
+      .select({ role: roles })
+      .from(users)
+      .leftJoin(roles, eq(users.roleId, roles.id))
+      .where(eq(users.id, userId))
+      .limit(1);
+    return result[0]?.role || undefined;
   }
 
   async getUserPermissions(userId: string): Promise<Permission[]> {
-    const user = await db.query.users.findFirst({
-      where: eq(users.id, userId),
-      with: {
-        role: {
-          with: {
-            rolePermissions: {
-              with: {
-                permission: true,
-              },
-            },
-          },
-        },
-      },
-    });
+    const userRow = await db
+      .select({ roleId: users.roleId })
+      .from(users)
+      .where(eq(users.id, userId))
+      .limit(1);
 
-    return user?.role?.rolePermissions.map(rp => rp.permission) || [];
+    if (!userRow[0]?.roleId) return [];
+
+    const perms = await db
+      .select({ permission: permissions })
+      .from(rolePermissions)
+      .innerJoin(permissions, eq(rolePermissions.permissionId, permissions.id))
+      .where(eq(rolePermissions.roleId, userRow[0].roleId));
+
+    return perms.map(p => p.permission);
   }
 
   async hasPermission(userId: string, action: string): Promise<boolean> {
