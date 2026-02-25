@@ -80,10 +80,10 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - Dashboard pages: `<BrandStamp variant="icon" size="sm" />` in content header area
 
 ## IDEA Framework Phases
-- **IDENTIFY (ExecuteIQ Playbook™):** Build and customize playbooks from 170 templates across 9 strategic domains
-- **DETECT (ExecuteIQ Signal™):** AI-powered pattern matching, competitive intelligence aggregation, early warning dashboards, human-triggered playbook activation
-- **EXECUTE (ExecuteIQ Compass™):** Orchestrates coordinated responses within 12 minutes, pre-approved budgets, enterprise integrations, Command Center management
-- **ADVANCE (ExecuteIQ Retrospect™):** Institutional learning, AI-powered outcome analysis, playbook refinement suggestions
+- **IDENTIFY (VaughnMartin Playbook™):** Build and customize playbooks from 170 templates across 9 strategic domains
+- **DETECT (VaughnMartin Signal™):** AI-powered pattern matching, competitive intelligence aggregation, early warning dashboards, human-triggered playbook activation
+- **EXECUTE (VaughnMartin Compass™):** Orchestrates coordinated responses within 12 minutes, pre-approved budgets, enterprise integrations, Command Center management
+- **ADVANCE (VaughnMartin Retrospect™):** Institutional learning, AI-powered outcome analysis, playbook refinement suggestions
 
 ## Strategic Domains (170 Playbooks)
 - **OFFENSE:** Market Entry, M&A, Product Launch

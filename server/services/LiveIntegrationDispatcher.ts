@@ -234,7 +234,7 @@ export class LiveIntegrationDispatcher {
     const blocks = [
       {
         type: 'header',
-        text: { type: 'plain_text', text: `🚀 ExecuteIQ Playbook Activated: ${playbookName}`, emoji: true },
+        text: { type: 'plain_text', text: `🚀 VaughnMartin Playbook Activated: ${playbookName}`, emoji: true },
       },
       {
         type: 'section',
@@ -270,7 +270,7 @@ export class LiveIntegrationDispatcher {
         },
         body: JSON.stringify({
           channel: channelId,
-          text: `🚀 ExecuteIQ Playbook Activated: ${playbookName}`,
+          text: `🚀 VaughnMartin Playbook Activated: ${playbookName}`,
           blocks,
         }),
       });

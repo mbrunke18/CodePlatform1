@@ -23,10 +23,10 @@ export const EXECUTEIQ_BRAND = {
     textMuted: '#94A3B8'
   },
   modules: {
-    identify: { name: 'ExecuteIQ Playbook™', description: 'Build and customize strategic playbooks' },
-    detect: { name: 'ExecuteIQ Signal™', description: 'AI-powered signal monitoring and detection' },
-    execute: { name: 'ExecuteIQ Compass™', description: 'Coordinated response and execution' },
-    advance: { name: 'ExecuteIQ Retrospect™', description: 'Institutional learning and improvement' },
+    identify: { name: 'VaughnMartin Playbook™', description: 'Build and customize strategic playbooks' },
+    detect: { name: 'VaughnMartin Signal™', description: 'AI-powered signal monitoring and detection' },
+    execute: { name: 'VaughnMartin Compass™', description: 'Coordinated response and execution' },
+    advance: { name: 'VaughnMartin Retrospect™', description: 'Institutional learning and improvement' },
     executive: { name: 'ExecuteIQ One™', description: 'Single-pane executive view' }
   }
 } as const;
@@ -87,7 +87,7 @@ export const IDEA_PHASES = {
   IDENTIFY: {
     id: 'identify',
     name: 'IDENTIFY',
-    moduleName: 'ExecuteIQ Playbook™',
+    moduleName: 'VaughnMartin Playbook™',
     subtitle: 'Build Your Playbook Library',
     description: 'Map your operating model to execution playbooks. Pre-stage responses across 9 strategic domains. Know who does what before anything happens.',
     icon: 'ClipboardList',
@@ -111,7 +111,7 @@ export const IDEA_PHASES = {
   DETECT: {
     id: 'detect',
     name: 'DETECT',
-    moduleName: 'ExecuteIQ Signal™',
+    moduleName: 'VaughnMartin Signal™',
     subtitle: 'Monitor Signals',
     description: 'AI-powered monitoring spots signals early. Real-time triggers across market, competitive, and regulatory landscapes. Intelligence reports, not surprises.',
     icon: 'Radar',
@@ -135,7 +135,7 @@ export const IDEA_PHASES = {
   EXECUTE: {
     id: 'execute',
     name: 'EXECUTE',
-    moduleName: 'ExecuteIQ Compass™',
+    moduleName: 'VaughnMartin Compass™',
     subtitle: 'Coordinate Response',
     description: 'Coordinated action in minutes, not days. 10x faster execution with everyone aligned.',
     icon: 'Play',
@@ -159,7 +159,7 @@ export const IDEA_PHASES = {
   ADVANCE: {
     id: 'advance',
     name: 'ADVANCE',
-    moduleName: 'ExecuteIQ Retrospect™',
+    moduleName: 'VaughnMartin Retrospect™',
     subtitle: 'Capture Learning',
     description: 'Every execution makes you stronger. Automated retrospectives capture what worked. Institutional knowledge compounds, not walks out the door.',
     icon: 'TrendingUp',

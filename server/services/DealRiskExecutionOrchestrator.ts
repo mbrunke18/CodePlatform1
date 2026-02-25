@@ -51,7 +51,7 @@ export class DealRiskExecutionOrchestrator {
     timeline.push({
       timestamp: this.formatTime(startTime),
       action: 'Trigger detected - parsing risk indicators',
-      system: 'ExecuteIQ Signal',
+      system: 'VaughnMartin Signal',
       status: 'completed',
       duration: 15,
     });
