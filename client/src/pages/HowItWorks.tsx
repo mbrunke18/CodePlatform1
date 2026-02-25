@@ -239,7 +239,7 @@ export default function HowItWorks() {
         {/* 12-Minute Timeline Breakdown */}
         <div className="max-w-4xl mx-auto mt-20 mb-16">
           <div className="text-center mb-10">
-            <Badge className="mb-4 bg-emerald-600/20 text-emerald-400 border-emerald-500/30">
+            <Badge className="mb-4 bg-emerald-100 text-emerald-700 border-emerald-300">
               The 12-Minute Proof Point
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
@@ -294,7 +294,7 @@ export default function HowItWorks() {
         {/* Agentic Execution Layer - Stack Positioning */}
         <div className="max-w-4xl mx-auto mt-20 mb-8">
           <div className="text-center mb-10">
-            <Badge className="mb-4 bg-purple-600/20 text-purple-400 border-purple-500/30">
+            <Badge className="mb-4 bg-purple-100 text-purple-700 border-purple-300">
               Where Execution OS Sits
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
@@ -406,7 +406,7 @@ export default function HowItWorks() {
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4 bg-red-500/20 text-red-400 border-red-500/30">
+              <Badge className="mb-4 bg-red-100 text-red-700 border-red-300">
                 Built for Compound Disruption
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -419,10 +419,10 @@ export default function HowItWorks() {
 
             <div className="grid md:grid-cols-2 gap-6 mb-12">
               {[
-                { scenario: 'Cyber + Regulatory', example: 'Data breach triggers GDPR penalties and SEC disclosure requirements simultaneously', response: 'Multi-domain coordination across legal, security, compliance, and communications', color: 'border-red-500/30', iconColor: 'text-red-400' },
-                { scenario: 'Geopolitical + Supply Chain', example: 'Tariff escalation impacts critical supplier in affected region', response: 'Cross-functional response coordinating procurement, operations, and finance', color: 'border-amber-500/30', iconColor: 'text-amber-400' },
-                { scenario: 'Climate + Operations', example: 'Weather event causes facility shutdown with cascading customer impact', response: 'Parallel workstreams across facilities, logistics, customer success, and PR', color: 'border-blue-500/30', iconColor: 'text-blue-400' },
-                { scenario: 'AI + Workforce', example: 'Automation announcement triggers union response and media attention', response: 'Integrated stakeholder management across HR, legal, communications, and executive team', color: 'border-purple-500/30', iconColor: 'text-purple-400' },
+                { scenario: 'Cyber + Regulatory', example: 'Data breach triggers GDPR penalties and SEC disclosure requirements simultaneously', response: 'Multi-domain coordination across legal, security, compliance, and communications', color: 'border-red-300', iconColor: 'text-red-700' },
+                { scenario: 'Geopolitical + Supply Chain', example: 'Tariff escalation impacts critical supplier in affected region', response: 'Cross-functional response coordinating procurement, operations, and finance', color: 'border-amber-300', iconColor: 'text-amber-700' },
+                { scenario: 'Climate + Operations', example: 'Weather event causes facility shutdown with cascading customer impact', response: 'Parallel workstreams across facilities, logistics, customer success, and PR', color: 'border-blue-300', iconColor: 'text-blue-700' },
+                { scenario: 'AI + Workforce', example: 'Automation announcement triggers union response and media attention', response: 'Integrated stakeholder management across HR, legal, communications, and executive team', color: 'border-purple-300', iconColor: 'text-purple-700' },
               ].map((item, i) => (
                 <div key={i} className={`bg-white border ${item.color} rounded-xl p-6`}>
                   <h3 className={`font-bold ${item.iconColor} mb-2`}>{item.scenario}</h3>
