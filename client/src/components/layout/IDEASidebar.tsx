@@ -75,12 +75,12 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
             <span className="text-xl">{phase.icon}</span>
             <div className="text-left">
               <div className={cn(
-                'font-semibold text-sm  bg-clip-text text-transparent',
+                'font-semibold text-sm bg-gradient-to-r bg-clip-text text-transparent',
                 phase.color
               )}>
                 {phase.label}
               </div>
-              <div className="text-xs text-muted-foreground opacity-70">
+              <div className="text-xs text-gray-600 dark:text-slate-400 font-medium">
                 {phase.tagline}
               </div>
             </div>
@@ -102,8 +102,8 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
                   'flex items-center gap-2.5 px-3 py-2 rounded-md text-sm transition-all duration-150',
                   'hover:bg-white/10 dark:hover:bg-white/5',
                   isItemActive(item.path)
-                    ? 'bg-white/15 dark:bg-white/10 font-medium'
-                    : 'text-muted-foreground hover:text-foreground'
+                    ? 'bg-white/15 dark:bg-white/10 font-medium text-gray-900 dark:text-white'
+                    : 'text-gray-700 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white'
                 )}
                 onClick={() => setIsMobileOpen(false)}
               >
@@ -128,19 +128,19 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
             <h1 className="font-bold text-lg leading-tight group-hover:text-poise-gold transition-colors">
               Execution OS One™
             </h1>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-gray-600 dark:text-slate-400 font-medium">
               Strategic Execution OS
             </p>
           </div>
         </Link>
-        <div className="mt-3 flex items-center gap-1 text-xs text-muted-foreground">
-          <span className="px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400">Identify</span>
+        <div className="mt-3 flex items-center gap-1 text-xs text-gray-500 dark:text-slate-400">
+          <span className="px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-400 font-medium">Identify</span>
           <span>→</span>
-          <span className="px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-400">Detect</span>
+          <span className="px-1.5 py-0.5 rounded bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-400 font-medium">Detect</span>
           <span>→</span>
-          <span className="px-1.5 py-0.5 rounded bg-orange-500/20 text-orange-400">Execute</span>
+          <span className="px-1.5 py-0.5 rounded bg-orange-100 dark:bg-orange-500/20 text-orange-700 dark:text-orange-400 font-medium">Execute</span>
           <span>→</span>
-          <span className="px-1.5 py-0.5 rounded bg-green-500/20 text-green-400">Advance</span>
+          <span className="px-1.5 py-0.5 rounded bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-400 font-medium">Advance</span>
         </div>
       </div>
 
@@ -156,7 +156,7 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
         <div className="flex items-center gap-2">
           <Link 
             href="/"
-            className="flex-1 flex items-center gap-2 px-3 py-2 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors"
+            className="flex-1 flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-white/10 transition-colors"
           >
             <Home className="h-4 w-4" />
             <span>Home</span>
