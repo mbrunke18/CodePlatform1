@@ -341,8 +341,8 @@ export default function NewUserJourney() {
         <div className="max-w-5xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-none bg-[#C9A84C] flex items-center justify-center">
-                <span className="text-[#0A0F2E] font-bold text-[10px] uppercase tracking-tighter">ExOS</span>
+              <div className="w-10 h-10 rounded-none bg-[#0A0F2E] flex items-center justify-center border-b-2 border-[#C9A84C]">
+                <span className="text-[#C9A84C] font-bold text-[10px] uppercase tracking-tighter">ExOS</span>
               </div>
               <div>
                 <h1 className="text-sm font-bold text-[#0A0F2E] uppercase tracking-widest">Execution OS Onboarding</h1>

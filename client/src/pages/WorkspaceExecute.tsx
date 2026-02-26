@@ -161,8 +161,8 @@ export default function WorkspaceExecute() {
                   </Link>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/20 border-2 border-[#C9A84C] shadow-sm shadow-[#C9A84C]/20">
-                    <Compass className="h-4 w-4 text-[#C9A84C]" />
-                    <span className="text-sm font-bold text-[#C9A84C]">EXECUTE</span>
+                    <Compass className="h-4 w-4 text-[#0A0F2E]" />
+                    <span className="text-sm font-bold text-[#0A0F2E]">EXECUTE</span>
                   </div>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/advance">

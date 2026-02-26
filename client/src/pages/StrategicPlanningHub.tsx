@@ -189,7 +189,7 @@ export default function StrategicPlanningHub() {
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'critical': return 'bg-red-500/10 text-red-500 border-red-500/20';
+      case 'critical': return 'bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-[#C9A84C] border-[#0A0F2E]/20';
       case 'high': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
       case 'medium': return 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20';
       case 'low': return 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30';

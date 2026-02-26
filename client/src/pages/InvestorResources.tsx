@@ -324,7 +324,7 @@ export default function InvestorResources() {
                       { cap: "Sync to existing PM tools", crisis: false, pm: "N/A", vm: true },
                       { cap: "Institutional learning loop", crisis: false, pm: false, vm: true },
                     ].map((r, i) => (
-                      <tr key={i} className="border-b border-[#E8E4DC] hover:bg-slate-50/50 transition-colors">
+                      <tr key={i} className="border-b border-[#E8E4DC] hover:bg-[#F8F7F4]/50 transition-colors">
                         <td className="py-4 px-6 font-medium text-[#0A0F2E]">{r.cap}</td>
                         <td className="py-4 px-4 text-center">
                           {typeof r.crisis === 'boolean' ? (r.crisis ? <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mx-auto" /> : <span className="text-[#0A0F2E]/20">—</span>) : r.crisis}

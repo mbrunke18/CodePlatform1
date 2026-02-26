@@ -561,7 +561,7 @@ export default function TryDemo() {
                           <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
                             <demo.icon className="h-4 w-4 text-white" />
                           </div>
-                          <div style={{ display:"inline-flex", alignItems:"center", gap:5, background: demo.type === 'offensive' ? "rgba(43,138,110,0.12)" : "rgba(201,168,76,0.12)", color: demo.type === 'offensive' ? "#3BAF8A" : "#C9A84C", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>
+                          <div style={{ display:"inline-flex", alignItems:"center", gap:5, background: demo.type === 'offensive' ? "rgba(43,138,110,0.12)" : "rgba(201,168,76,0.12)", color: demo.type === 'offensive' ? "#2B8A6E" : "#C9A84C", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>
                             {demo.type}
                           </div>
                         </div>
@@ -722,7 +722,7 @@ export default function TryDemo() {
               {/* Phase Navigation */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
-                  <Badge className={`bg-gradient-to-r ${selectedScenario.color} text-gray-900`}>
+                  <Badge className={`bg-gradient-to-r ${selectedScenario.color} text-white`}>
                     {selectedScenario.name}
                   </Badge>
                   <span className="text-sm text-gray-800">

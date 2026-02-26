@@ -118,7 +118,7 @@ export default function FutureReadinessDashboard() {
   const getScoreColor = (score: number) => {
     if (score >= 80) return 'text-[#2B8A6E]';
     if (score >= 60) return 'text-[#C9A84C]';
-    return 'text-red-600';
+    return 'text-[#dc2626]';
   };
 
   const getUrgencyBadgeVariant = (urgency: string): "default" | "secondary" | "destructive" | "outline" => {

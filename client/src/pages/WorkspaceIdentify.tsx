@@ -210,7 +210,7 @@ export default function WorkspaceIdentify() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h4 className="font-semibold text-[#0A0F2E] dark:text-white">M&A Integration Playbook #12</h4>
-                      <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30" style={{ background: "#2B8A6E", color: "white" }}>Active</Badge>
+                      <Badge className="bg-[#2B8A6E] text-white border-none">Active</Badge>
                     </div>
                     <p className="text-sm text-[#6B7280] dark:text-white/60 mt-0.5">Updated 2 hours ago by Sarah Chen</p>
                   </div>
@@ -244,7 +244,7 @@ export default function WorkspaceIdentify() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Product Launch Playbook #45</h4>
-                      <Badge className="bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30" style={{ background: "#C9A84C", color: "#0A0F2E" }}>In Review</Badge>
+                      <Badge className="bg-[#C9A84C] text-[#0A0F2E] border-none font-bold">In Review</Badge>
                     </div>
                     <p className="text-sm text-[#6B7280] dark:text-white/60 mt-0.5">Draft review pending from 3 stakeholders</p>
                   </div>

@@ -550,17 +550,17 @@ function DemoLiveActivation() {
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <AlertCircle className="h-12 w-12 text-red-700 dark:text-red-400 flex-shrink-0 mt-1" />
-              <div className="flex-1 page-background">
+              <div className="flex-1">
                 <div className="flex items-center justify-between mb-2">
                   <h2 className="text-3xl font-bold text-red-900 dark:text-red-100" data-testid="text-scenario-title">
                     {DEMO_SCENARIO.title}
                   </h2>
-                  <Badge className="bg-red-600 text-gray-900 text-lg px-4 py-2">ACTIVE</Badge>
+                  <Badge className="bg-red-600 text-white text-lg px-4 py-2">ACTIVE</Badge>
                 </div>
-                <p className="text-xl text-slate-700 dark:text-slate-300 mb-3" data-testid="text-playbook-name">
+                <p className="text-xl text-red-800 dark:text-red-200 mb-3" data-testid="text-playbook-name">
                   Playbook: {DEMO_SCENARIO.playbook}
                 </p>
-                <p className="text-lg text-gray-800 dark:text-slate-300" data-testid="text-scenario-description">
+                <p className="text-lg text-red-700 dark:text-red-300" data-testid="text-scenario-description">
                   {DEMO_SCENARIO.description}
                 </p>
               </div>
@@ -579,7 +579,7 @@ function DemoLiveActivation() {
                   <Info className="w-6 h-6 text-gray-900" />
                 </div>
               </div>
-              <div className="flex-1 page-background">
+              <div className="flex-1">
                 <h3 className="font-semibold text-lg mb-2 text-[#0A0F2E] dark:text-white">
                   ✨ Augmented Execution in Action
                 </h3>

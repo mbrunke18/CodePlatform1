@@ -32,14 +32,14 @@ const features = [
     title: 'DETECT — Signal Intelligence',
     description: 'See AI-powered monitoring detect competitive threats, regulatory shifts, and market opportunities in real time.',
     color: 'text-[#0A0F2E]',
-    bg: 'bg-[#0A0F2E]/10',
+    bg: 'bg-[#C9A84C]/10',
   },
   {
     icon: Target,
     title: 'EXECUTE — 12-Minute Coordination',
     description: 'From trigger detection to full team mobilization in under 12 minutes — the platform enforces this standard.',
     color: 'text-[#C9A84C]',
-    bg: 'bg-[#C9A84C]/10',
+    bg: 'bg-[#0A0F2E]/10',
   },
   {
     icon: BarChart3,

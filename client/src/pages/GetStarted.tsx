@@ -29,6 +29,12 @@ const WHAT_YOU_GET = [
   { icon: Shield, label: "Crisis Response Center", desc: "Pre-wired playbooks for every threat scenario" },
 ];
 
+const ICON_STYLES = [
+  { bg: "#0A0F2E", color: "#C9A84C" },
+  { bg: "#2B8A6E", color: "#fff" },
+  { bg: "rgba(201,168,76,0.12)", color: "#C9A84C" },
+];
+
 const STEPS = [
   { num: "01", label: "Sign In", desc: "Use your existing account — no new password needed" },
   { num: "02", label: "Set Up Your Org", desc: "2-minute setup: name, industry, key departments" },
@@ -145,8 +151,8 @@ export default function GetStarted() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1, background: BORDER }}>
             {WHAT_YOU_GET.map((item, i) => (
               <div key={i} style={{ background: "#fff", padding: "32px 28px", display: "flex", alignItems: "flex-start", gap: 16 }}>
-                <div style={{ width: 40, height: 40, background: `rgba(43,138,110,0.08)`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <item.icon size={18} style={{ color: TEAL }} />
+                <div style={{ width: 40, height: 40, background: ICON_STYLES[i % 3].bg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <item.icon size={18} style={{ color: ICON_STYLES[i % 3].color }} />
                 </div>
                 <div>
                   <div style={{ fontSize: 14, fontWeight: 700, color: NAVY, marginBottom: 4 }}>{item.label}</div>

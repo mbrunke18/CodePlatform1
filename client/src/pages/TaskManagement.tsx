@@ -903,7 +903,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                               <span>Task Coverage</span>
                               <span>{taskCount} / {playbookCount * 8}</span>
                             </div>
-                            <div className="h-2 w-full bg-slate-100 dark:bg-[#141B45] rounded-none overflow-hidden">
+                            <div className="h-2 w-full bg-[#E8E4DC] dark:bg-[#141B45] rounded-none overflow-hidden">
                               <div
                                 className={`h-full rounded-none transition-all ${progressColor}`}
                                 style={{ width: `${coverage}%` }}

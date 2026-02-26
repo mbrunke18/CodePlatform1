@@ -474,15 +474,15 @@ export default function IntegrationsPage() {
                 />
               </div>
 
-              <div className="bg-[#0A0F2E] border border-white/10 rounded-none p-4">
-                <div className="flex items-start gap-3">
-                  <AlertCircle className="w-5 h-5 text-red-700 mt-0.5" />
-                  <div className="text-sm text-white">
-                    <p className="font-medium mb-1">Secure Connection</p>
-                    <p className="text-white/60">Your credentials are encrypted and stored securely. They are only used to authenticate with {selectedIntegration?.name}.</p>
-                  </div>
+            <div className="bg-[#0A0F2E] border border-white/10 rounded-none p-4">
+              <div className="flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 text-[#C9A84C] mt-0.5" />
+                <div className="text-sm text-white">
+                  <p className="font-medium mb-1">Secure Connection</p>
+                  <p className="text-white/60">Your credentials are encrypted and stored securely. They are only used to authenticate with {selectedIntegration?.name}.</p>
                 </div>
               </div>
+            </div>
             </div>
 
             <DialogFooter>

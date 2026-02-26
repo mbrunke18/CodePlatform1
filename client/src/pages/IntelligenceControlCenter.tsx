@@ -141,7 +141,9 @@ export default function IntelligenceControlCenter() {
                   <p className="text-sm text-[#6B7280]">Data Points Monitored</p>
                   <p className="text-2xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="value-data-points">92+</p>
                 </div>
-                <Activity className="h-8 w-8 text-[#0A0F2E] opacity-10" />
+                <div style={{ width: 40, height: 40, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <Activity className="h-5 w-5 text-[#C9A84C]" />
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -152,7 +154,9 @@ export default function IntelligenceControlCenter() {
                   <p className="text-sm text-[#6B7280]">Signal Categories</p>
                   <p className="text-2xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="value-signal-categories">16</p>
                 </div>
-                <Layers className="h-8 w-8 text-[#0A0F2E] opacity-10" />
+                <div style={{ width: 40, height: 40, background: "#2B8A6E", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <Layers className="h-5 w-5 text-white" />
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -163,7 +167,9 @@ export default function IntelligenceControlCenter() {
                   <p className="text-sm text-[#6B7280]">Weak Signals</p>
                   <p className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="value-weak-signals">{dynamicStatus?.weakSignalsDetected ?? 0}</p>
                 </div>
-                <AlertCircle className="h-8 w-8 text-[#C9A84C] opacity-20" />
+                <div style={{ width: 40, height: 40, background: "rgba(201,168,76,0.12)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <AlertCircle className="h-5 w-5 text-[#C9A84C]" />
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -174,7 +180,9 @@ export default function IntelligenceControlCenter() {
                   <p className="text-sm text-[#6B7280]">Active Patterns</p>
                   <p className="text-2xl font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{dynamicStatus?.oraclePatternsActive ?? 0}</p>
                 </div>
-                <TrendingUp className="h-8 w-8 text-[#2B8A6E] opacity-20" />
+                <div style={{ width: 40, height: 40, background: "#2B8A6E", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <TrendingUp className="h-5 w-5 text-white" />
+                </div>
               </div>
               <Progress value={75} className="h-1 mt-2 [&>div]:bg-[#C9A84C]" />
             </CardContent>
@@ -197,8 +205,12 @@ export default function IntelligenceControlCenter() {
                     <CardHeader className="pb-3">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
-                          <div className={`p-2 bg-[#0A0F2E]/10 rounded-lg`}>
-                            <Icon className={`h-6 w-6 ${colors.text}`} />
+                          <div style={{
+                            width: 44, height: 44, flexShrink: 0,
+                            background: module.color === 'gold' ? 'rgba(201,168,76,0.12)' : module.color === 'teal' ? '#2B8A6E' : '#0A0F2E',
+                            display: "flex", alignItems: "center", justifyContent: "center"
+                          }}>
+                            <Icon className={`h-6 w-6 ${module.color === 'gold' ? 'text-[#C9A84C]' : 'text-white'}`} />
                           </div>
                           <div>
                             <CardTitle className="text-lg text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{module.title}</CardTitle>
@@ -238,7 +250,7 @@ export default function IntelligenceControlCenter() {
           <Link href="/ai" data-testid="link-ai-copilots">
             <Card className="bg-white border-[#E8E4DC] hover:border-[#0A0F2E]/50 transition-all cursor-pointer" data-testid="card-ai-copilots">
               <CardContent className="p-4 flex items-center gap-4">
-                <div className="p-2 bg-[#0A0F2E]/10 rounded-lg">
+                <div style={{ width: 40, height: 40, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   <Brain className="h-5 w-5 text-[#C9A84C]" />
                 </div>
                 <div className="flex-1">
@@ -253,8 +265,8 @@ export default function IntelligenceControlCenter() {
           <Link href="/signal-intelligence" data-testid="link-configure-signals">
             <Card className="bg-white border-[#E8E4DC] hover:border-[#0A0F2E]/50 transition-all cursor-pointer" data-testid="card-configure-signals">
               <CardContent className="p-4 flex items-center gap-4">
-                <div className="p-2 bg-[#0A0F2E]/10 rounded-lg">
-                  <Radio className="h-5 w-5 text-[#C9A84C]" />
+                <div style={{ width: 40, height: 40, background: "#2B8A6E", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <Radio className="h-5 w-5 text-white" />
                 </div>
                 <div className="flex-1">
                   <p className="font-medium text-[#0A0F2E]">Configure Signals</p>
@@ -268,7 +280,7 @@ export default function IntelligenceControlCenter() {
           <Link href="/triggers-management" data-testid="link-manage-triggers">
             <Card className="bg-white border-[#E8E4DC] hover:border-[#C9A84C]/50 transition-all cursor-pointer" data-testid="card-manage-triggers">
               <CardContent className="p-4 flex items-center gap-4">
-                <div className="p-2 bg-[#0A0F2E]/10 rounded-lg">
+                <div style={{ width: 40, height: 40, background: "rgba(201,168,76,0.12)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   <Bell className="h-5 w-5 text-[#C9A84C]" />
                 </div>
                 <div className="flex-1">

@@ -575,7 +575,7 @@ export default function OnboardingWizard() {
                       onChange={(e) => setTriggerData({ ...triggerData, revenueThreshold: parseInt(e.target.value) })}
                       className="bg-gray-50 border-gray-200"
                     />
-                    <p className="text-[10px] text-gray-500 italic">Trigger alert when revenue deviation exceeds this %</p>
+                    <p className="text-[10px] text-[#6B7280] italic">Trigger alert when revenue deviation exceeds this %</p>
                   </div>
                   
                   <div className="space-y-2">
@@ -598,7 +598,7 @@ export default function OnboardingWizard() {
                       onChange={(e) => setTriggerData({ ...triggerData, sentimentThreshold: parseInt(e.target.value) })}
                       className="bg-gray-50 border-gray-200"
                     />
-                    <p className="text-[10px] text-gray-500 italic">Negative sentiment spike required to trigger alert</p>
+                    <p className="text-[10px] text-[#6B7280] italic">Negative sentiment spike required to trigger alert</p>
                   </div>
                 </div>
 
@@ -750,7 +750,7 @@ export default function OnboardingWizard() {
                       <Label className="text-gray-800">Target Future Readiness Index (%)</Label>
                       <div className="flex items-center gap-4">
                         <div className="flex-1">
-                          <Progress value={metricsData.friTarget} className="h-2 bg-gray-100 [&>div]:bg-[#C9A84C]" />
+                          <Progress value={metricsData.friTarget} className="h-2 bg-[#E8E4DC] [&>div]:bg-[#C9A84C]" />
                         </div>
                         <span className="font-bold text-[#0A0F2E]">{metricsData.friTarget}%</span>
                       </div>
@@ -769,7 +769,7 @@ export default function OnboardingWizard() {
                       <Label className="text-gray-800">Target Decision Velocity (Minutes)</Label>
                       <div className="flex items-center gap-4">
                         <div className="flex-1">
-                          <Progress value={100 - (metricsData.velocityTarget / 120 * 100)} className="h-2 bg-gray-100 [&>div]:bg-[#C9A84C]" />
+                          <Progress value={100 - (metricsData.velocityTarget / 120 * 100)} className="h-2 bg-[#E8E4DC] [&>div]:bg-[#C9A84C]" />
                         </div>
                         <span className="font-bold text-[#2B8A6E]">{metricsData.velocityTarget}m</span>
                       </div>
@@ -844,7 +844,7 @@ max="120"
               <Button
                 variant="ghost"
                 onClick={() => setLocation('/dashboard')}
-                className="text-gray-500 text-xs uppercase tracking-widest font-bold rounded-none"
+                className="text-[#6B7280] text-[10px] uppercase tracking-widest font-bold rounded-none"
               >
                 Skip to Dashboard
               </Button>

@@ -258,7 +258,7 @@ export default function InvestorLanding() {
                 <div className="text-sm font-semibold text-[#0A0F2E]">Board & C-Suite</div>
               </div>
               <div className="text-center text-[#6B7280]">→</div>
-              <div className="bg-gradient-to-r from-[#0A0F2E]/20 to-[#3BAF8A]/20 border-2 border-[#C9A84C]/50 rounded-xl p-4 text-center">
+              <div className="bg-gradient-to-r from-[#0A0F2E]/20 to-[#2B8A6E]/20 border-2 border-[#C9A84C]/50 rounded-xl p-4 text-center">
                 <div className="text-xs text-[#C9A84C] font-semibold mb-1">Agentic Execution Layer</div>
                 <div className="text-sm font-bold text-[#0A0F2E]">Execution OS</div>
               </div>
@@ -435,16 +435,16 @@ export default function InvestorLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gray-50 border-gray-200 hover:border-[#C9A84C]/50 transition-all">
+              <Card className="bg-[#F8F7F4] border-[#E8E4DC] hover:border-[#C9A84C]/50 transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
-                    <FileText className="h-5 w-5 text-teal-400" />
-                    <span className="font-bold text-gray-900 text-lg">Accenture</span>
+                    <FileText className="h-5 w-5 text-[#2B8A6E]" />
+                    <span className="font-bold text-[#0A0F2E] text-lg">Accenture</span>
                   </div>
-                  <div className="text-sm text-teal-400 mb-3">New Rules of Platform Strategy</div>
+                  <div className="text-sm text-[#2B8A6E] mb-3">New Rules of Platform Strategy</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-gray-700 flex-shrink-0 mt-1" />
-                    <p className="text-gray-800 text-sm">"Reinventing platform strategy for agentic AI"</p>
+                    <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
+                    <p className="text-[#0A0F2E] text-sm">"Reinventing platform strategy for agentic AI"</p>
                   </div>
                   <p className="text-[#2B8A6E] text-sm italic">→ Execution OS is that platform</p>
                 </CardContent>
@@ -454,17 +454,17 @@ export default function InvestorLanding() {
         </section>
 
         {/* Product Architecture Visual */}
-        <section className="py-16 px-6 bg-white dark:bg-[#0A0F2E]">
+        <section className="py-16 px-6 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-8">
-              <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white">
+              <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E]">
                 Complete End-to-End Platform
               </h2>
-              <p className="text-xl text-gray-800 dark:text-slate-300 max-w-3xl mx-auto">
+              <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto">
                 From signal detection to coordinated execution in 12 minutes — the full architecture that replaces 72-hour scrambles
               </p>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700">
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E8E4DC]">
               <img
                 src={productArchitectureImg}
                 alt="Execution OS End-to-End Product Architecture — Signal Sources, AI Engine, 170 Playbooks, Execution Outputs, Command Center, and Integration Layer"
@@ -476,13 +476,13 @@ export default function InvestorLanding() {
         </section>
 
         {/* Market Opportunity */}
-        <section className="py-16 px-6 bg-slate-50 dark:bg-[#141B45]">
+        <section className="py-16 px-6 bg-[#F8F7F4]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-testid="heading-market">
+              <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E]" data-testid="heading-market">
                 Massive Market Opportunity
               </h2>
-              <p className="text-xl text-gray-800 dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-market-subtitle">
+              <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto" data-testid="text-market-subtitle">
                 Creating a new $127B software category at the intersection of strategic planning, AI intelligence, and execution automation
               </p>
             </div>
@@ -490,14 +490,14 @@ export default function InvestorLanding() {
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <Card className="border-2" data-testid="card-tam">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
+                  <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                     <Globe className="h-6 w-6 text-[#0A0F2E]" />
                     TAM (Total Addressable Market)
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-4xl font-bold text-[#0A0F2E] mb-2" data-testid="text-tam-value">$127B</div>
-                  <p className="text-gray-800 dark:text-slate-300" data-testid="text-tam-description">
+                  <p className="text-[#0A0F2E]" data-testid="text-tam-description">
                     Fortune 1000 strategic execution software spend (15% of $847B total strategic initiatives budget)
                   </p>
                 </CardContent>
@@ -505,14 +505,14 @@ export default function InvestorLanding() {
 
               <Card className="border-2" data-testid="card-sam">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
+                  <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                     <Target className="h-6 w-6 text-[#C9A84C]" />
                     SAM (Serviceable Addressable)
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-4xl font-bold text-[#C9A84C] mb-2" data-testid="text-sam-value">$38B</div>
-                  <p className="text-gray-800 dark:text-slate-300" data-testid="text-sam-description">
+                  <p className="text-[#0A0F2E]" data-testid="text-sam-description">
                     Fortune 500 + high-growth enterprises with $1B+ revenue requiring executive decision velocity
                   </p>
                 </CardContent>
@@ -520,14 +520,14 @@ export default function InvestorLanding() {
 
               <Card className="border-2" data-testid="card-som">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
+                  <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                     <Rocket className="h-6 w-6 text-[#2B8A6E]" />
                     SOM (Serviceable Obtainable)
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-4xl font-bold text-[#2B8A6E] mb-2" data-testid="text-som-value">$1.9B</div>
-                  <p className="text-gray-800 dark:text-slate-300" data-testid="text-som-description">
+                  <p className="text-[#0A0F2E]" data-testid="text-som-description">
                     5% market capture in Year 5 (50 Fortune 500 + 200 mid-market at $250K-$1.5M ACV)
                   </p>
                 </CardContent>
@@ -537,12 +537,12 @@ export default function InvestorLanding() {
             {/* Market Funnel Visualization */}
             <Card className="border-2 mb-8" data-testid="card-market-funnel">
               <CardHeader>
-                <CardTitle className="text-slate-900 dark:text-white">Market Opportunity Funnel</CardTitle>
+                <CardTitle className="text-[#0A0F2E]">Market Opportunity Funnel</CardTitle>
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={300}>
                   <BarChart data={marketFunnelData} layout="vertical">
-                    <CartesianGrid strokeDasharray="3 3" className="stroke-slate-200 dark:stroke-slate-700" />
+                    <CartesianGrid strokeDasharray="3 3" className="stroke-[#E8E4DC]" />
                     <XAxis type="number" />
                     <YAxis dataKey="name" type="category" />
                     <Tooltip 
@@ -556,44 +556,44 @@ export default function InvestorLanding() {
                     </Bar>
                   </BarChart>
                 </ResponsiveContainer>
-                <div className="mt-4 text-center text-sm text-gray-800 dark:text-slate-300">
+                <div className="mt-4 text-center text-sm text-[#0A0F2E]">
                   Progressive market capture: $127B TAM → $38B SAM → $1.9B SOM (Year 5)
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br .section-background dark:from-[#141B45] dark:to-slate-700 border-2" data-testid="card-why-now">
+            <Card className="bg-gradient-to-br .section-background border-2" data-testid="card-why-now">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white" data-testid="heading-why-now">
+                <h3 className="text-2xl font-bold mb-6 text-[#0A0F2E]" data-testid="heading-why-now">
                   Why Now? Perfect Market Timing
                 </h3>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="flex items-start gap-3" data-testid="reason-1">
                     <CheckCircle2 className="h-6 w-6 text-[#2B8A6E] flex-shrink-0 mt-1" />
                     <div>
-                      <div className="font-semibold text-slate-900 dark:text-white mb-1">AI Maturity Reached</div>
-                      <div className="text-gray-800 dark:text-slate-300">LLMs enable real-time strategic intelligence at scale (GPT-4, Claude, Gemini)</div>
+                      <div className="font-semibold text-[#0A0F2E] mb-1">AI Maturity Reached</div>
+                      <div className="text-[#0A0F2E]">LLMs enable real-time strategic intelligence at scale (GPT-4, Claude, Gemini)</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3" data-testid="reason-2">
                     <CheckCircle2 className="h-6 w-6 text-[#2B8A6E] flex-shrink-0 mt-1" />
                     <div>
-                      <div className="font-semibold text-slate-900 dark:text-white mb-1">Execution Crisis</div>
-                      <div className="text-gray-800 dark:text-slate-300">87% of strategic initiatives fail—executives desperate for execution velocity</div>
+                      <div className="font-semibold text-[#0A0F2E] mb-1">Execution Crisis</div>
+                      <div className="text-[#0A0F2E]">87% of strategic initiatives fail—executives desperate for execution velocity</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3" data-testid="reason-3">
                     <CheckCircle2 className="h-6 w-6 text-[#2B8A6E] flex-shrink-0 mt-1" />
                     <div>
-                      <div className="font-semibold text-slate-900 dark:text-white mb-1">Remote Work Complexity</div>
-                      <div className="text-gray-800 dark:text-slate-300">Distributed teams make coordination harder—need automated orchestration</div>
+                      <div className="font-semibold text-[#0A0F2E] mb-1">Remote Work Complexity</div>
+                      <div className="text-[#0A0F2E]">Distributed teams make coordination harder—need automated orchestration</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3" data-testid="reason-4">
                     <CheckCircle2 className="h-6 w-6 text-[#2B8A6E] flex-shrink-0 mt-1" />
                     <div>
-                      <div className="font-semibold text-slate-900 dark:text-white mb-1">Competitive Velocity</div>
-                      <div className="text-gray-800 dark:text-slate-300">Market windows shrinking from months to days—speed is survival</div>
+                      <div className="font-semibold text-[#0A0F2E] mb-1">Competitive Velocity</div>
+                      <div className="text-[#0A0F2E]">Market windows shrinking from months to days—speed is survival</div>
                     </div>
                   </div>
                 </div>
@@ -603,121 +603,121 @@ export default function InvestorLanding() {
         </section>
 
         {/* Agentic AI Convergence */}
-        <section className="py-16 px-6 bg-white text-gray-900">
+        <section className="py-16 px-6 bg-white text-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-10">
               <Badge className="mb-4 bg-[#2B8A6E] text-white border-0 text-sm px-4 py-1.5">
                 Last 6 Months
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-4">
                 12 Guides. 9 Firms. One Conclusion.
               </h2>
-              <p className="text-lg text-gray-800 max-w-3xl mx-auto mb-6">
+              <p className="text-lg text-[#0A0F2E] max-w-3xl mx-auto mb-6">
                 The entire agentic AI landscape — from McKinsey to AWS to WEF — published in the last 6-8 months, all pointing at the same gap Execution OS fills.
               </p>
               <div className="flex items-center justify-center gap-8 mb-8">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-[#2B8A6E]">12</div>
-                  <div className="text-gray-800 text-sm">Guides</div>
+                  <div className="text-[#0A0F2E] text-sm">Guides</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-[#2B8A6E]">9</div>
-                  <div className="text-gray-800 text-sm">Firms</div>
+                  <div className="text-[#0A0F2E] text-sm">Firms</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-[#2B8A6E]">6 mo</div>
-                  <div className="text-gray-800 text-sm">Published</div>
+                  <div className="text-[#0A0F2E] text-sm">Published</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-[#2B8A6E]">1</div>
-                  <div className="text-gray-800 text-sm">Conclusion</div>
+                  <div className="text-[#0A0F2E] text-sm">Conclusion</div>
                 </div>
               </div>
             </div>
 
             <div className="grid md:grid-cols-3 gap-4 mb-8">
-              <div className="bg-gray-50 border border-[#0A0F2E]/30 rounded-xl p-5">
+              <div className="bg-[#F8F7F4] border border-[#0A0F2E]/30 rounded-xl p-5">
                 <div className="text-[#0A0F2E] font-bold text-sm mb-3 uppercase tracking-wider">Strategy</div>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-800"><span className="text-gray-900 font-medium">McKinsey</span> — State of AI reality check</span>
+                    <span className="text-[#0A0F2E]"><span className="text-[#0A0F2E] font-medium">McKinsey</span> — State of AI reality check</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-800"><span className="text-gray-900 font-medium">PwC</span> — Making AI agents accretive to P&L</span>
+                    <span className="text-[#0A0F2E]"><span className="text-[#0A0F2E] font-medium">PwC</span> — Making AI agents accretive to P&L</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-800"><span className="text-gray-900 font-medium">McKinsey</span> — The Agentic AI Opportunity</span>
+                    <span className="text-[#0A0F2E]"><span className="text-[#0A0F2E] font-medium">McKinsey</span> — The Agentic AI Opportunity</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-800"><span className="text-gray-900 font-medium">Accenture</span> — Six Insights for AI ROI</span>
+                    <span className="text-[#0A0F2E]"><span className="text-[#0A0F2E] font-medium">Accenture</span> — Six Insights for AI ROI</span>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gray-50 border border-[#2B8A6E]/30 rounded-xl p-5">
+              <div className="bg-[#F8F7F4] border border-[#2B8A6E]/30 rounded-xl p-5">
                 <div className="text-[#2B8A6E] font-bold text-sm mb-3 uppercase tracking-wider">Build</div>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-800"><span className="text-gray-900 font-medium">AWS</span> — Rise of Autonomous Agents</span>
+                    <span className="text-[#0A0F2E]"><span className="text-[#0A0F2E] font-medium">AWS</span> — Rise of Autonomous Agents</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-800"><span className="text-gray-900 font-medium">Bain</span> — Foundations for Agentic AI</span>
+                    <span className="text-[#0A0F2E]"><span className="text-[#0A0F2E] font-medium">Bain</span> — Foundations for Agentic AI</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-800"><span className="text-gray-900 font-medium">IBM</span> — Agentic AI Operating Model</span>
+                    <span className="text-[#0A0F2E]"><span className="text-[#0A0F2E] font-medium">IBM</span> — Agentic AI Operating Model</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-800"><span className="text-gray-900 font-medium">Deloitte</span> — Agentic Enterprise 2028</span>
+                    <span className="text-[#0A0F2E]"><span className="text-[#0A0F2E] font-medium">Deloitte</span> — Agentic Enterprise 2028</span>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gray-50 border border-amber-500/30 rounded-xl p-5">
-                <div className="text-amber-400 font-bold text-sm mb-3 uppercase tracking-wider">Leadership</div>
+              <div className="bg-[#F8F7F4] border border-[#C9A84C]/30 rounded-xl p-5">
+                <div className="text-[#C9A84C] font-bold text-sm mb-3 uppercase tracking-wider">Leadership</div>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-800"><span className="text-gray-900 font-medium">BCG</span> — Machines That Manage Themselves</span>
+                    <span className="text-[#0A0F2E]"><span className="text-[#0A0F2E] font-medium">BCG</span> — Machines That Manage Themselves</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-800"><span className="text-gray-900 font-medium">McKinsey</span> — The Agentic Organization</span>
+                    <span className="text-[#0A0F2E]"><span className="text-[#0A0F2E] font-medium">McKinsey</span> — The Agentic Organization</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-800"><span className="text-gray-900 font-medium">WEF</span> — AI Agents in Action</span>
+                    <span className="text-[#0A0F2E]"><span className="text-[#0A0F2E] font-medium">WEF</span> — AI Agents in Action</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-800"><span className="text-gray-900 font-medium">McKinsey</span> — Seizing the Agentic AI Advantage</span>
+                    <span className="text-[#0A0F2E]"><span className="text-[#0A0F2E] font-medium">McKinsey</span> — Seizing the Agentic AI Advantage</span>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="p-5 bg-[#2B8A6E]/15 border border-[#2B8A6E]/50 rounded-lg text-center">
-              <p className="text-[#3BAF8A] font-semibold mb-1">Every firm is consulting on the problem. Execution OS built the product.</p>
-              <p className="text-gray-800 text-sm">170 playbooks, 9 strategic domains, pre-defined governance — ready today.</p>
+              <p className="text-[#2B8A6E] font-semibold mb-1">Every firm is consulting on the problem. Execution OS built the product.</p>
+              <p className="text-[#0A0F2E] text-sm">170 playbooks, 9 strategic domains, pre-defined governance — ready today.</p>
             </div>
           </div>
         </section>
 
         {/* Competitive Moat */}
-        <section className="py-16 px-6 bg-white dark:bg-[#0A0F2E]">
+        <section className="py-16 px-6 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-testid="heading-moat">
+              <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E]" data-testid="heading-moat">
                 Defensible Competitive Moat
               </h2>
-              <p className="text-xl text-gray-800 dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-moat-subtitle">
+              <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto" data-testid="text-moat-subtitle">
                 Multi-layered advantages that compound over time, creating winner-take-most dynamics
               </p>
             </div>
@@ -725,16 +725,16 @@ export default function InvestorLanding() {
             <div className="grid md:grid-cols-2 gap-8">
               <Card className="border-2" data-testid="card-moat-ecosystem">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
-                    <Shield className="h-6 w-6 text-primary" />
+                  <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
+                    <Shield className="h-6 w-6 text-[#2B8A6E]" />
                     Complete 7-Component Ecosystem
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-800 dark:text-slate-300 mb-4">
+                  <p className="text-[#0A0F2E] mb-4">
                     Competitors offer point solutions (BI tools, project management, chatbots). Execution OS integrates entire strategic execution workflow—massive switching costs once embedded.
                   </p>
-                  <div className="text-sm font-semibold text-primary" data-testid="text-moat-ecosystem-advantage">
+                  <div className="text-sm font-semibold text-[#2B8A6E]" data-testid="text-moat-ecosystem-advantage">
                     Advantage: 18-24 month integration lead vs. competitors
                   </div>
                 </CardContent>
@@ -742,16 +742,16 @@ export default function InvestorLanding() {
 
               <Card className="border-2" data-testid="card-moat-memory">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
+                  <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                     <Lightbulb className="h-6 w-6 text-[#C9A84C]" />
                     Institutional Memory Network Effects
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-800 dark:text-slate-300 mb-4">
+                  <p className="text-[#0A0F2E] mb-4">
                     AI learns from every decision across all customers (anonymized). More customers = smarter recommendations = higher retention. Data moat compounds quarterly.
                   </p>
-                  <div className="text-sm font-semibold text-primary" data-testid="text-moat-memory-advantage">
+                  <div className="text-sm font-semibold text-[#2B8A6E]" data-testid="text-moat-memory-advantage">
                     Advantage: Data flywheel creates 10x better AI vs. new entrants
                   </div>
                 </CardContent>
@@ -759,16 +759,16 @@ export default function InvestorLanding() {
 
               <Card className="border-2" data-testid="card-moat-templates">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
+                  <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                     <Network className="h-6 w-6 text-[#0A0F2E]" />
                     Template Library Network Effects
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-800 dark:text-slate-300 mb-4">
+                  <p className="text-[#0A0F2E] mb-4">
                     Start with 13+ templates, grows to 500+ as customers contribute. More templates = more use cases = more customers. Self-reinforcing growth loop.
                   </p>
-                  <div className="text-sm font-semibold text-primary" data-testid="text-moat-templates-advantage">
+                  <div className="text-sm font-semibold text-[#2B8A6E]" data-testid="text-moat-templates-advantage">
                     Advantage: Content moat—competitors can't replicate library scale
                   </div>
                 </CardContent>
@@ -776,16 +776,16 @@ export default function InvestorLanding() {
 
               <Card className="border-2" data-testid="card-moat-category">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
+                  <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                     <Rocket className="h-6 w-6 text-[#2B8A6E]" />
                     Category Leadership
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-800 dark:text-slate-300 mb-4">
+                  <p className="text-[#0A0F2E] mb-4">
                     First mover defining "Strategic Execution Operating System" category (like Salesforce for CRM). Category creators capture 76% of market value (Gartner research).
                   </p>
-                  <div className="text-sm font-semibold text-primary" data-testid="text-moat-category-advantage">
+                  <div className="text-sm font-semibold text-[#2B8A6E]" data-testid="text-moat-category-advantage">
                     Advantage: Brand moat—"Execution OS" becomes verb for strategic execution
                   </div>
                 </CardContent>
@@ -795,17 +795,17 @@ export default function InvestorLanding() {
         </section>
 
         {/* Future Positioning Visual */}
-        <section className="py-16 px-6 bg-slate-50 dark:bg-[#141B45]">
+        <section className="py-16 px-6 bg-[#F8F7F4]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-8">
-              <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white">
+              <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E]">
                 Built for Today. Positioned for Tomorrow.
               </h2>
-              <p className="text-xl text-gray-800 dark:text-slate-300 max-w-3xl mx-auto">
+              <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto">
                 Selling pain relief today while building the operating layer for the AI era — infrastructure that evolves with every customer
               </p>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700">
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E8E4DC]">
               <img
                 src={futurePositioningImg}
                 alt="Execution OS Future Positioning — Phase 1: Today's execution infrastructure, Phase 2: Tomorrow's AI operating layer"
@@ -817,13 +817,13 @@ export default function InvestorLanding() {
         </section>
 
         {/* Business Model */}
-        <section className="py-16 px-6 bg-white dark:bg-[#0A0F2E]">
+        <section className="py-16 px-6 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E] dark:text-white" data-testid="heading-model">
+              <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E]" data-testid="heading-model">
                 High-Margin SaaS Business Model
               </h2>
-              <p className="text-xl text-[#0A0F2E] dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-model-subtitle">
+              <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto" data-testid="text-model-subtitle">
                 Enterprise pricing with expansion revenue and sticky product-led growth
               </p>
             </div>
@@ -831,15 +831,15 @@ export default function InvestorLanding() {
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <Card className="border-[#E8E4DC] border-2" data-testid="card-pricing-enterprise">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-[#0A0F2E] dark:text-white">
+                  <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                     <DollarSign className="h-6 w-6 text-[#2B8A6E]" />
                     Enterprise
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-3xl font-bold text-[#2B8A6E] mb-2" data-testid="text-price-enterprise">$250K</div>
-                  <div className="text-sm text-[#0A0F2E] dark:text-slate-300 mb-4">Annual Contract Value</div>
-                  <ul className="space-y-2 text-sm text-[#0A0F2E] dark:text-slate-300">
+                  <div className="text-sm text-[#0A0F2E] mb-4">Annual Contract Value</div>
+                  <ul className="space-y-2 text-sm text-[#0A0F2E]">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
                       Single domain
@@ -858,15 +858,15 @@ export default function InvestorLanding() {
 
               <Card className="border-[#E8E4DC] border-2" data-testid="card-pricing-team">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-[#0A0F2E] dark:text-white">
+                  <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                     <Users className="h-6 w-6 text-[#0A0F2E]" />
                     Enterprise Plus
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-3xl font-bold text-[#0A0F2E] mb-2" data-testid="text-price-team">$450K</div>
-                  <div className="text-sm text-[#0A0F2E] dark:text-slate-300 mb-4">Annual Contract Value</div>
-                  <ul className="space-y-2 text-sm text-[#0A0F2E] dark:text-slate-300">
+                  <div className="text-sm text-[#0A0F2E] mb-4">Annual Contract Value</div>
+                  <ul className="space-y-2 text-sm text-[#0A0F2E]">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-[#0A0F2E]" />
                       Multi-domain
@@ -885,15 +885,15 @@ export default function InvestorLanding() {
 
               <Card className="border-[#C9A84C] border-2" data-testid="card-pricing-executive">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-[#0A0F2E] dark:text-white">
+                  <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                     <TrendingUp className="h-6 w-6 text-[#C9A84C]" />
                     Global
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-3xl font-bold text-[#C9A84C] mb-2" data-testid="text-price-executive">$750K-$1.5M</div>
-                  <div className="text-sm text-[#0A0F2E] dark:text-slate-300 mb-4">Custom Annual Contract</div>
-                  <ul className="space-y-2 text-sm text-[#0A0F2E] dark:text-slate-300">
+                  <div className="text-sm text-[#0A0F2E] mb-4">Custom Annual Contract</div>
+                  <ul className="space-y-2 text-sm text-[#0A0F2E]">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-[#C9A84C]" />
                       Multi-region orchestration
@@ -911,32 +911,32 @@ export default function InvestorLanding() {
               </Card>
             </div>
 
-            <Card className="bg-[#F8F7F4] dark:from-[#141B45] dark:to-slate-700 border-[#E8E4DC] border-2" data-testid="card-expansion">
+            <Card className="bg-[#F8F7F4] border-[#E8E4DC] border-2" data-testid="card-expansion">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-6 text-[#0A0F2E] dark:text-white" data-testid="heading-expansion">
+                <h3 className="text-2xl font-bold mb-6 text-[#0A0F2E]" data-testid="heading-expansion">
                   Expansion Revenue Streams
                 </h3>
                 <div className="grid md:grid-cols-3 gap-6">
                   <div data-testid="expansion-1">
                     <div className="flex items-center gap-2 mb-2">
                       <BarChart3 className="h-5 w-5 text-[#2B8A6E]" />
-                      <div className="font-semibold text-[#0A0F2E] dark:text-white">Integration Marketplace</div>
+                      <div className="font-semibold text-[#0A0F2E]">Integration Marketplace</div>
                     </div>
-                    <div className="text-[#0A0F2E] dark:text-slate-300">20% rev-share on third-party integrations (Salesforce, Jira, Slack)</div>
+                    <div className="text-[#0A0F2E]">20% rev-share on third-party integrations (Salesforce, Jira, Slack)</div>
                   </div>
                   <div data-testid="expansion-2">
                     <div className="flex items-center gap-2 mb-2">
                       <Zap className="h-5 w-5 text-[#0A0F2E]" />
-                      <div className="font-semibold text-[#0A0F2E] dark:text-white">Premium Templates</div>
+                      <div className="font-semibold text-[#0A0F2E]">Premium Templates</div>
                     </div>
-                    <div className="text-[#0A0F2E] dark:text-slate-300">Industry-specific playbooks ($5K-$50K per template pack)</div>
+                    <div className="text-[#0A0F2E]">Industry-specific playbooks ($5K-$50K per template pack)</div>
                   </div>
                   <div data-testid="expansion-3">
                     <div className="flex items-center gap-2 mb-2">
                       <Lock className="h-5 w-5 text-[#C9A84C]" />
-                      <div className="font-semibold text-[#0A0F2E] dark:text-white">Advisory Services</div>
+                      <div className="font-semibold text-[#0A0F2E]">Advisory Services</div>
                     </div>
-                    <div className="text-[#0A0F2E] dark:text-slate-300">Strategic workshops ($50K-$200K per engagement)</div>
+                    <div className="text-[#0A0F2E]">Strategic workshops ($50K-$200K per engagement)</div>
                   </div>
                 </div>
               </CardContent>
@@ -945,13 +945,13 @@ export default function InvestorLanding() {
         </section>
 
         {/* Unit Economics */}
-        <section className="py-16 px-6 bg-[#F8F7F4] dark:bg-[#141B45]">
+        <section className="py-16 px-6 bg-[#F8F7F4]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E] dark:text-white" data-testid="heading-economics">
+              <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E]" data-testid="heading-economics">
                 Best-in-Class Unit Economics
               </h2>
-              <p className="text-xl text-[#0A0F2E] dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-economics-subtitle">
+              <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto" data-testid="text-economics-subtitle">
                 High LTV, low CAC, exceptional retention—SaaS metrics investors love
               </p>
             </div>
@@ -959,7 +959,7 @@ export default function InvestorLanding() {
             <div className="grid md:grid-cols-4 gap-6">
               <Card className="border-[#E8E4DC] border-2" data-testid="card-ltv-cac">
                 <CardContent className="pt-6">
-                  <div className="text-sm text-[#0A0F2E] dark:text-slate-300 mb-2">LTV:CAC Ratio</div>
+                  <div className="text-sm text-[#0A0F2E] mb-2">LTV:CAC Ratio</div>
                   <div className="text-4xl font-bold text-[#2B8A6E] mb-1" data-testid="text-ltv-cac">8.4:1</div>
                   <div className="text-xs text-[#0A0F2E]">Target: &gt;3:1 (Exceptional)</div>
                 </CardContent>
@@ -967,7 +967,7 @@ export default function InvestorLanding() {
 
               <Card className="border-[#E8E4DC] border-2" data-testid="card-payback">
                 <CardContent className="pt-6">
-                  <div className="text-sm text-[#0A0F2E] dark:text-slate-300 mb-2">CAC Payback</div>
+                  <div className="text-sm text-[#0A0F2E] mb-2">CAC Payback</div>
                   <div className="text-4xl font-bold text-[#0A0F2E] mb-1" data-testid="text-payback">7 months</div>
                   <div className="text-xs text-[#0A0F2E]">Target: &lt;12mo (Excellent)</div>
                 </CardContent>
@@ -975,7 +975,7 @@ export default function InvestorLanding() {
 
               <Card className="border-[#E8E4DC] border-2" data-testid="card-ndr">
                 <CardContent className="pt-6">
-                  <div className="text-sm text-[#0A0F2E] dark:text-slate-300 mb-2">Net Dollar Retention</div>
+                  <div className="text-sm text-[#0A0F2E] mb-2">Net Dollar Retention</div>
                   <div className="text-4xl font-bold text-[#C9A84C] mb-1" data-testid="text-ndr">142%</div>
                   <div className="text-xs text-[#0A0F2E]">Target: &gt;120% (Best-in-class)</div>
                 </CardContent>
@@ -983,7 +983,7 @@ export default function InvestorLanding() {
 
               <Card className="border-[#E8E4DC] border-2" data-testid="card-gross-margin">
                 <CardContent className="pt-6">
-                  <div className="text-sm text-[#0A0F2E] dark:text-slate-300 mb-2">Gross Margin</div>
+                  <div className="text-sm text-[#0A0F2E] mb-2">Gross Margin</div>
                   <div className="text-4xl font-bold text-[#0A0F2E] mb-1" data-testid="text-gross-margin">87%</div>
                   <div className="text-xs text-[#0A0F2E]">Target: &gt;80% (Premium SaaS)</div>
                 </CardContent>
@@ -993,12 +993,12 @@ export default function InvestorLanding() {
             {/* LTV:CAC Trend Chart */}
             <Card className="border-[#E8E4DC] border-2 mt-8" data-testid="card-ltv-cac-trend">
               <CardHeader>
-                <CardTitle className="text-[#0A0F2E] dark:text-white">LTV:CAC Ratio Growth Trajectory</CardTitle>
+                <CardTitle className="text-[#0A0F2E]">LTV:CAC Ratio Growth Trajectory</CardTitle>
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={350}>
                   <LineChart data={ltvCacTrendData}>
-                    <CartesianGrid strokeDasharray="3 3" className="stroke-[#E8E4DC] dark:stroke-slate-700" />
+                    <CartesianGrid strokeDasharray="3 3" className="stroke-[#E8E4DC]" />
                     <XAxis dataKey="year" />
                     <YAxis yAxisId="left" />
                     <YAxis yAxisId="right" orientation="right" />
@@ -1011,7 +1011,7 @@ export default function InvestorLanding() {
                     <Line yAxisId="right" type="monotone" dataKey="cac" stroke="#C9A84C" strokeWidth={2} name="CAC ($K)" />
                   </LineChart>
                 </ResponsiveContainer>
-                <div className="mt-4 text-center text-sm text-[#0A0F2E] dark:text-slate-300">
+                <div className="mt-4 text-center text-sm text-[#0A0F2E]">
                   LTV:CAC improving from 3.2:1 (Y1) to 8.4:1 (Y5) as scale economics kick in
                 </div>
               </CardContent>
@@ -1020,7 +1020,7 @@ export default function InvestorLanding() {
             {/* ROI Breakdown Chart */}
             <Card className="border-[#E8E4DC] border-2 mt-8" data-testid="card-roi-breakdown">
               <CardHeader>
-                <CardTitle className="text-[#0A0F2E] dark:text-white">$12.4M Annual ROI Breakdown</CardTitle>
+                <CardTitle className="text-[#0A0F2E]">$12.4M Annual ROI Breakdown</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-col md:flex-row gap-8 items-center">
@@ -1052,27 +1052,27 @@ export default function InvestorLanding() {
                     <div>
                       <div className="flex items-center gap-2 mb-2">
                         <div className="w-4 h-4 rounded bg-[#2B8A6E]"></div>
-                        <div className="font-semibold text-[#0A0F2E] dark:text-white">Cost Savings: $7.2M</div>
+                        <div className="font-semibold text-[#0A0F2E]">Cost Savings: $7.2M</div>
                       </div>
-                      <div className="text-sm text-[#0A0F2E] dark:text-slate-300">
+                      <div className="text-sm text-[#0A0F2E]">
                         Eliminated coordination delays, reduced strategic initiative failures
                       </div>
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-2">
                         <div className="w-4 h-4 rounded bg-[#0A0F2E]"></div>
-                        <div className="font-semibold text-[#0A0F2E] dark:text-white">Time Recovery: $3.4M</div>
+                        <div className="font-semibold text-[#0A0F2E]">Time Recovery: $3.4M</div>
                       </div>
-                      <div className="text-sm text-[#0A0F2E] dark:text-slate-300">
+                      <div className="text-sm text-[#0A0F2E]">
                         342 hours saved monthly, valued at executive time rates
                       </div>
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-2">
                         <div className="w-4 h-4 rounded bg-[#C9A84C]"></div>
-                        <div className="font-semibold text-[#0A0F2E] dark:text-white">Risk Mitigation: $1.8M</div>
+                        <div className="font-semibold text-[#0A0F2E]">Risk Mitigation: $1.8M</div>
                       </div>
-                      <div className="text-sm text-[#0A0F2E] dark:text-slate-300">
+                      <div className="text-sm text-[#0A0F2E]">
                         Prevented strategic missteps through AI-powered early warnings
                       </div>
                     </div>

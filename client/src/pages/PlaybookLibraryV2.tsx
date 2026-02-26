@@ -247,7 +247,7 @@ function CompoundDisruptionSection() {
             const scenarioColor = item.scenario.includes("Cyber") ? TEAL : item.scenario.includes("Geopolitical") ? GOLD : item.scenario.includes("Climate") ? TEAL : item.scenario.includes("AI") ? GOLD : NAVY;
             const categoryColor = item.scenario.includes("Cyber") ? TEAL : item.scenario.includes("Geopolitical") ? GOLD : item.scenario.includes("Climate") ? TEAL : item.scenario.includes("AI") ? GOLD : NAVY;
             const isOffense = item.domains.includes("Financial") || item.scenario.includes("AI");
-            const isDefense = item.scenario.includes("Cyber") || item.scenario.includes("Climate");
+            const isDefense = item.domains.includes("Crisis") || item.scenario.includes("Regulatory") || item.scenario.includes("Cyber") || item.scenario.includes("Climate");
             const indicatorColor = isOffense ? TEAL : isDefense ? NAVY : GOLD;
             return (
               <div
@@ -267,7 +267,7 @@ function CompoundDisruptionSection() {
                   <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} style={{ color: MUTED }} />
                 </div>
                 <div style={{ color: MUTED }} className="text-xs mb-2">{item.domains}</div>
-                <div className="text-xs font-semibold" style={{ color: categoryColor }}>{item.playbookCount} coordinated playbooks</div>
+                <div className="text-xs font-semibold" style={{ color: indicatorColor }}>{item.playbookCount} coordinated playbooks</div>
               </div>
             );
           })}
@@ -277,7 +277,7 @@ function CompoundDisruptionSection() {
           const scenario = compoundScenarios[expandedScenario];
           const Icon = scenario.icon;
           const isOffense = scenario.domains.includes("Financial") || scenario.scenario.includes("AI");
-          const isDefense = scenario.scenario.includes("Cyber") || scenario.scenario.includes("Climate");
+          const isDefense = scenario.domains.includes("Crisis") || scenario.scenario.includes("Regulatory") || scenario.scenario.includes("Cyber") || scenario.scenario.includes("Climate");
           const indicatorColor = isOffense ? TEAL : isDefense ? NAVY : GOLD;
           return (
             <div className="mt-5 rounded-xl border bg-[#F8F7F4]/50 p-6 animate-in fade-in slide-in-from-top-2 duration-300" style={{ borderColor: BORDER }}>

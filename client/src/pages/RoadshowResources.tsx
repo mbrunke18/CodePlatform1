@@ -184,7 +184,7 @@ export default function RoadshowResources() {
           <h1 className="text-5xl font-light mb-6" style={CG} data-testid="heading-roadshow">
             Roadshow Preparation
           </h1>
-          <p className="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="text-[#6B7280] text-lg leading-relaxed max-w-2xl mx-auto">
             Complete investor materials and strategic talking points. Premium resources for executive-level presentations.
           </p>
         </div>
@@ -320,7 +320,7 @@ export default function RoadshowResources() {
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               <div>
                 <h3 className="text-2xl font-light mb-2" style={CG}>Executive Reference Guide</h3>
-                <p className="text-gray-400 text-sm">Deployment strategy for high-stakes investor interactions</p>
+                <p className="text-[#6B7280] text-sm">Deployment strategy for high-stakes investor interactions</p>
               </div>
               <div className="flex flex-wrap justify-center gap-3">
                 {[

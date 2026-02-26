@@ -46,7 +46,7 @@ function StatusIndicator({ status }: { status: 'good' | 'warning' | 'critical' }
   const config = {
     good: { bg: 'bg-[#2B8A6E]', className: 'text-[#2B8A6E]', label: 'Healthy' },
     warning: { bg: 'bg-[#C9A84C]', className: 'text-[#C9A84C]', label: 'Attention' },
-    critical: { bg: 'bg-red-600', className: 'text-red-600', label: 'Critical' }
+    critical: { bg: 'bg-[#dc2626]', className: 'text-[#dc2626]', label: 'Critical' }
   };
   const c = config[status];
   
@@ -80,7 +80,7 @@ function MetricCard({
   const statusBorders = {
     good: 'border-l-[#2B8A6E]',
     warning: 'border-l-[#C9A84C]',
-    critical: 'border-l-red-600'
+    critical: 'border-l-[#dc2626]'
   };
 
   const trendIcons = {

@@ -181,7 +181,7 @@ export default function PlatformOverview() {
                       <div>
                         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
                           <div style={{ width: 20, height: 1.5, background: step.color, flexShrink: 0 }} />
-                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: step.color === "#0A0F2E" ? "#C9A84C" : step.color }}>{step.badge}</span>
+                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: step.color }}>{step.badge}</span>
                         </div>
                         <h3 className="text-xl font-bold" style={{ color: "#0A0F2E" }}>{step.headline}</h3>
                         <p className="text-sm text-[#6B7280]">{step.sub}</p>

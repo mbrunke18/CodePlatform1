@@ -477,11 +477,11 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                             return (
                               <div 
                                 key={ch} 
-                                className="w-6 h-6 rounded bg-slate-100 flex items-center justify-center"
+                                className="w-6 h-6 rounded-none bg-[#F8F7F4] flex items-center justify-center border border-[#E8E4DC]"
                                 title={channel.label}
                                 data-testid={`badge-channel-${stakeholder.id}-${ch}`}
                               >
-                                <Icon className="h-3 w-3 text-gray-800" />
+                                <Icon className="h-3 w-3 text-[#0A0F2E]" />
                               </div>
                             );
                           })}
@@ -534,7 +534,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                 </div>
                 <p style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E", lineHeight: 1 }} className="mb-1">3.2 minutes</p>
                 <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Average Response Time</p>
-                <p className="text-xs text-gray-500 mt-2">Stakeholders acknowledge notifications within avg 3.2 min</p>
+                <p className="text-xs text-[#6B7280] mt-2">Stakeholders acknowledge notifications within avg 3.2 min</p>
                 <Progress value={94} className="mt-4 h-1.5" />
               </CardContent>
             </Card>
@@ -660,7 +660,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                         R: "bg-[#0A0F2E]/10 text-[#0A0F2E]",
                         A: "bg-[#0A0F2E]/10 text-[#0A0F2E]",
                         C: "bg-[#C9A84C]/10 text-[#C9A84C]",
-                        I: "bg-slate-100 text-slate-700",
+                        I: "bg-[#F8F7F4] text-[#0A0F2E] border border-[#E8E4DC]",
                       };
                       return (
                         <TableCell key={i} className="text-center">
@@ -687,7 +687,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                   <span className="text-gray-700">Consulted</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Badge className="bg-slate-100 text-slate-700 dark:bg-[#141B45] dark:text-slate-300 text-xs px-1.5">I</Badge>
+                  <Badge className="bg-[#F8F7F4] text-[#0A0F2E] dark:bg-[#141B45] dark:text-slate-300 text-xs px-1.5 border border-[#E8E4DC]">I</Badge>
                   <span className="text-gray-700 dark:text-slate-400">Informed</span>
                 </div>
               </div>

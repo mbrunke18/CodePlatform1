@@ -197,7 +197,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
     switch (outcome) {
       case 'successful': return <CheckCircle className="h-5 w-5 text-[#2B8A6E]" />;
       case 'partially_successful': return <AlertCircle className="h-5 w-5 text-[#C9A84C]" />;
-      case 'failed': return <AlertCircle className="h-5 w-5 text-red-500" />;
+      case 'failed': return <AlertCircle className="h-5 w-5 text-[#0A0F2E] dark:text-[#C9A84C]" />;
       default: return <AlertCircle className="h-5 w-5 text-[#6B7280]" />;
     }
   };

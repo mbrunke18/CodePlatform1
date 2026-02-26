@@ -167,7 +167,7 @@ function InvestorPresentation() {
             { letter: 'I', name: 'IDENTIFY', desc: 'AI watches 847+ signals across news, regulatory, market, and threat feeds', icon: <Eye className="w-6 h-6" />, color: 'from-[#0A0F2E] to-[#141B45]' },
             { letter: 'D', name: 'DETECT', desc: 'Match signals to playbooks with confidence scoring and stakeholder mapping', icon: <Brain className="w-6 h-6" />, color: 'from-[#0A0F2E] to-[#141B45]' },
             { letter: 'E', name: 'EXECUTE', desc: 'One-click activation. 12-minute full mobilization. Pre-approved budgets deployed.', icon: <Zap className="w-6 h-6" />, color: 'from-[#C9A84C] to-[#DFC178]' },
-            { letter: 'A', name: 'ADVANCE', desc: 'Learn from every activation. AI refines playbooks. Institutional knowledge captured.', icon: <TrendingUp className="w-6 h-6" />, color: 'from-[#2B8A6E] to-[#3BAF8A]' },
+            { letter: 'A', name: 'ADVANCE', desc: 'Learn from every activation. AI refines playbooks. Institutional knowledge captured.', icon: <TrendingUp className="w-6 h-6" />, color: 'from-[#2B8A6E] to-[#256B56]' },
           ].map((p, i) => (
             <div key={i} className="bg-white border border-[#E8E4DC] rounded-xl overflow-hidden">
               <div className={`bg-gradient-to-b ${p.color} p-4 flex items-center gap-3`}>
@@ -709,7 +709,7 @@ function InvestorPresentation() {
                     <span className="text-[#6B7280]">{f.label}</span>
                     <span className="text-[#0A0F2E] font-bold">{f.pct}%</span>
                   </div>
-                  <div className="w-full bg-gray-50 rounded-full h-3">
+                  <div className="w-full bg-[#F8F7F4] rounded-full h-3">
                     <div className={`${f.color} h-3 rounded-full`} style={{ width: `${f.pct}%` }} />
                   </div>
                 </div>

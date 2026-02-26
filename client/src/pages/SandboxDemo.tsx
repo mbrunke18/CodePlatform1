@@ -605,31 +605,31 @@ export default function SandboxDemo() {
 
       <Tabs value={configTab} onValueChange={setConfigTab} className="w-full">
         <TabsList className="grid w-full grid-cols-7 mb-6">
-          <TabsTrigger value="team" className="flex items-center gap-1 text-xs">
+          <TabsTrigger value="team" className="flex items-center gap-1 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">
             <Users className="h-4 w-4" />
             <span className="hidden lg:inline">Team</span>
           </TabsTrigger>
-          <TabsTrigger value="budget" className="flex items-center gap-1 text-xs">
+          <TabsTrigger value="budget" className="flex items-center gap-1 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">
             <PieChart className="h-4 w-4" />
             <span className="hidden lg:inline">Budget</span>
           </TabsTrigger>
-          <TabsTrigger value="integrations" className="flex items-center gap-1 text-xs">
+          <TabsTrigger value="integrations" className="flex items-center gap-1 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">
             <Plug className="h-4 w-4" />
             <span className="hidden lg:inline">Integrations</span>
           </TabsTrigger>
-          <TabsTrigger value="decisions" className="flex items-center gap-1 text-xs">
+          <TabsTrigger value="decisions" className="flex items-center gap-1 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">
             <GitBranch className="h-4 w-4" />
             <span className="hidden lg:inline">Decisions</span>
           </TabsTrigger>
-          <TabsTrigger value="escalation" className="flex items-center gap-1 text-xs">
+          <TabsTrigger value="escalation" className="flex items-center gap-1 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">
             <ArrowUpRight className="h-4 w-4" />
             <span className="hidden lg:inline">Escalation</span>
           </TabsTrigger>
-          <TabsTrigger value="comms" className="flex items-center gap-1 text-xs">
+          <TabsTrigger value="comms" className="flex items-center gap-1 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">
             <Send className="h-4 w-4" />
             <span className="hidden lg:inline">Comms</span>
           </TabsTrigger>
-          <TabsTrigger value="metrics" className="flex items-center gap-1 text-xs">
+          <TabsTrigger value="metrics" className="flex items-center gap-1 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">
             <BarChart3 className="h-4 w-4" />
             <span className="hidden lg:inline">KPIs</span>
           </TabsTrigger>
@@ -1965,32 +1965,32 @@ export default function SandboxDemo() {
         </div>
 
         <div className="grid md:grid-cols-4 gap-6">
-          <Card className="bg-gradient-to-br from-[#0A0F2E] to-[#141B45] text-gray-900">
+          <Card className="bg-gradient-to-br from-[#0A0F2E] to-[#141B45] text-white">
             <CardContent className="p-6 text-center">
-              <Zap className="h-8 w-8 mx-auto mb-2 opacity-80" />
-              <div className="text-4xl font-bold mb-1">{roi.speedMultiplier}X</div>
-              <div className="text-sm opacity-80">Faster Than Industry</div>
+              <Zap className="h-8 w-8 mx-auto mb-2 opacity-80 text-white" />
+              <div className="text-4xl font-bold mb-1 text-white">{roi.speedMultiplier}X</div>
+              <div className="text-sm opacity-80 text-white">Faster Than Industry</div>
             </CardContent>
           </Card>
-          <Card className="bg-gradient-to-br from-green-500 to-green-600 text-gray-900">
+          <Card className="bg-gradient-to-br from-[#2B8A6E] to-[#3BAF8A] text-white">
             <CardContent className="p-6 text-center">
               <Clock className="h-8 w-8 mx-auto mb-2 opacity-80" />
-              <div className="text-4xl font-bold mb-1">{roi.hoursSaved}</div>
-              <div className="text-sm opacity-80">Hours Saved Per Event</div>
+              <div className="text-4xl font-bold mb-1 text-white">{roi.hoursSaved}</div>
+              <div className="text-sm opacity-80 text-white">Hours Saved Per Event</div>
             </CardContent>
           </Card>
-          <Card className="bg-gradient-to-br from-[#0A0F2E] to-[#141B45] text-gray-900">
+          <Card className="bg-gradient-to-br from-[#0A0F2E] to-[#141B45] text-white">
             <CardContent className="p-6 text-center">
               <DollarSign className="h-8 w-8 mx-auto mb-2 opacity-80" />
-              <div className="text-4xl font-bold mb-1">${(roi.coordinationCostSaved / 1000).toFixed(0)}K</div>
-              <div className="text-sm opacity-80">Coordination Savings</div>
+              <div className="text-4xl font-bold mb-1 text-white">${(roi.coordinationCostSaved / 1000).toFixed(0)}K</div>
+              <div className="text-sm opacity-80 text-white">Coordination Savings</div>
             </CardContent>
           </Card>
-          <Card className="bg-gradient-to-br from-amber-500 to-amber-600 text-gray-900">
+          <Card className="bg-gradient-to-br from-[#C9A84C] to-[#DFC178] text-white">
             <CardContent className="p-6 text-center">
               <Shield className="h-8 w-8 mx-auto mb-2 opacity-80" />
-              <div className="text-4xl font-bold mb-1">{roi.riskReduction}%</div>
-              <div className="text-sm opacity-80">Risk Reduction</div>
+              <div className="text-4xl font-bold mb-1 text-white">{roi.riskReduction}%</div>
+              <div className="text-sm opacity-80 text-white">Risk Reduction</div>
             </CardContent>
           </Card>
         </div>

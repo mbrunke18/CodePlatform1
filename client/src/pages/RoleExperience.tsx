@@ -103,7 +103,7 @@ const ROLES: Record<string, RoleData> = {
   },
   ciso: {
     id: 'ciso', title: 'Chief Information Security Officer', name: 'Robert Kim', company: 'Meridian Financial Group',
-    icon: Shield, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#0A0F2E]',
+    icon: Shield, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#141B45]',
     scenario: 'Ransomware Attack — Production Systems Compromised at 2:17 AM',
     domain: 'Cybersecurity Incident', domainCategory: 'DEFENSE',
     playbook: { number: '31', name: 'Critical Incident Response — Ransomware', tasks: 28, stakeholders: 30, budget: '$350K' },
@@ -215,7 +215,7 @@ const ROLES: Record<string, RoleData> = {
   },
   cfo: {
     id: 'cfo', title: 'Chief Financial Officer', name: 'Sarah Chen', company: 'Meridian Financial Group',
-    icon: DollarSign, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#2B8A6E]',
+    icon: DollarSign, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#141B45]',
     scenario: 'Regulatory Change — New SEC Climate Disclosure Requirements',
     domain: 'Regulatory Compliance', domainCategory: 'DEFENSE',
     playbook: { number: '58', name: 'Regulatory Compliance — Financial Reporting', tasks: 32, stakeholders: 22, budget: '$180K' },

@@ -371,8 +371,8 @@ export default function PlaybookReadinessAudit() {
           {filteredPlaybooks.slice(0, 20).map((playbook) => {
             const config = tierConfig[playbook.tier];
             const TierIcon = config.icon;
-            const isOffense = playbook.domain.includes("Market") || playbook.domain.includes("Growth");
-            const isDefense = playbook.domain.includes("Crisis") || playbook.domain.includes("Regulatory");
+            const isOffense = playbook.domain.includes("Market") || playbook.domain.includes("Growth") || playbook.domain.includes("Expansion") || playbook.domain.includes("Partnerships");
+            const isDefense = playbook.domain.includes("Crisis") || playbook.domain.includes("Regulatory") || playbook.domain.includes("Resilience") || playbook.domain.includes("Compliance");
             const indicatorColor = isOffense ? TEAL : isDefense ? NAVY : GOLD;
             
             return (

@@ -213,7 +213,7 @@ export default function WorkspaceAdvance() {
               <CardContent className="p-4">
                 <div className="flex items-center gap-4">
                   <div className="p-2 rounded-lg bg-[#2B8A6E]/10">
-                    <Lightbulb className="h-5 w-5 text-[#2B8A6E] dark:text-white" />
+                    <Lightbulb className="h-5 w-5 text-[#2B8A6E] dark:text-[#2B8A6E]" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap mb-1">

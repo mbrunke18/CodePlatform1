@@ -68,7 +68,7 @@ export default function MarketingLanding() {
               <span className="text-[#C9A84C] italic">Your Competitor Just Launched.</span>
             </h1>
             <div className="max-w-4xl mx-auto mb-10">
-              <div className="bg-white/5 border-l-4 border-[#0A0F2E] p-8 mb-8 backdrop-blur-sm">
+              <div className="bg-white/5 border-l-4 border-[#C9A84C] p-8 mb-8 backdrop-blur-sm">
                 <p className="text-xl md:text-3xl text-white font-medium mb-4 leading-relaxed">
                   Their product is 15% cheaper. Social sentiment is tanking. 12 deals worth $2.4M are at risk.
                 </p>

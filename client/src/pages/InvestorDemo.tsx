@@ -327,14 +327,14 @@ export default function InvestorDemo() {
           </div>
 
           {/* Playback Controls */}
-          <Card className="bg-white border-gray-200 mb-6">
+          <Card className="bg-white border-[#E8E4DC] mb-6">
             <CardContent className="p-4">
               <div className="flex items-center justify-between flex-wrap gap-4">
                 <div className="flex items-center gap-3">
                   {!isPlaying ? (
                     <Button
                       onClick={() => { setManualMode(false); setIsPlaying(true); }}
-                      className="bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white font-bold"
+                      className="bg-[#2B8A6E] hover:bg-[#2B8A6E] text-white font-bold"
                       data-testid="button-play-demo"
                     >
                       <Play className="h-4 w-4 mr-2" />
@@ -427,8 +427,8 @@ export default function InvestorDemo() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 space-y-6">
-              <Card className="bg-white border-gray-200">
-                <CardHeader className="border-b border-gray-200 pb-4">
+              <Card className="bg-white border-[#E8E4DC]">
+                <CardHeader className="border-b border-[#E8E4DC] pb-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <Badge className={`${currentStage.phaseColor} text-white font-bold`}>
@@ -544,10 +544,10 @@ export default function InvestorDemo() {
                         <div className="bg-[#2B8A6E]/15 border border-[#2B8A6E]/30 rounded-lg p-4 mb-4">
                           <div className="flex items-center gap-2 mb-3">
                             <GitBranch className="h-4 w-4 text-[#2B8A6E]" />
-                            <span className="font-medium text-gray-900">{currentStage.pmSync.title}</span>
+                            <span className="font-medium text-[#0A0F2E]">{currentStage.pmSync.title}</span>
                             <div className="flex gap-1 ml-auto">
                               {currentStage.pmSync.platforms.map((p, idx) => (
-                                <Badge key={idx} variant="outline" className="text-xs border-[#2B8A6E]/50 text-[#3BAF8A]">
+                                <Badge key={idx} variant="outline" className="text-xs border-[#2B8A6E]/50 text-[#2B8A6E]">
                                   {p}
                                 </Badge>
                               ))}
@@ -557,7 +557,7 @@ export default function InvestorDemo() {
                             {currentStage.pmSync.actions.map((action, idx) => (
                               <div key={idx} className="flex items-center gap-2 text-sm">
                                 <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" />
-                                <span className="text-gray-800">{action}</span>
+                                <span className="text-[#0A0F2E]">{action}</span>
                               </div>
                             ))}
                           </div>
@@ -567,7 +567,7 @@ export default function InvestorDemo() {
                       {!isComplete ? (
                         <Button
                           onClick={handleNextStage}
-                          className="w-full bg-[#2B8A6E] hover:bg-[#256B56] text-gray-900 py-6 text-lg"
+                          className="w-full bg-[#2B8A6E] hover:bg-[#256B56] text-[#0A0F2E] py-6 text-lg"
                           data-testid="button-next-stage"
                         >
                           {currentStageIndex === IDEA_STORY.length - 2 ? 'Complete Story' : 'Next Beat'}
@@ -578,7 +578,7 @@ export default function InvestorDemo() {
                           <div className="bg-[#2B8A6E]/15 border border-[#2B8A6E]/30 rounded-lg p-4 text-center">
                             <CheckCircle2 className="h-8 w-8 text-[#2B8A6E] mx-auto mb-2" />
                             <p className="text-[#2B8A6E] font-medium">Story Complete</p>
-                            <p className="text-gray-800 text-sm">From signal to coordinated action: 12 minutes vs 72 hours</p>
+                            <p className="text-[#0A0F2E] text-sm">From signal to coordinated action: 12 minutes vs 72 hours</p>
                           </div>
                           <div className="flex gap-3">
                             <Button
@@ -611,7 +611,7 @@ export default function InvestorDemo() {
               {/* Enterprise Moat */}
               <Card className="bg-gradient-to-br border-[#C9A84C]/30">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-gray-900 flex items-center gap-2">
+                  <CardTitle className="text-lg text-[#0A0F2E] flex items-center gap-2">
                     <Lock className="h-5 w-5 text-[#C9A84C]" />
                     Enterprise Moat
                   </CardTitle>
@@ -624,8 +624,8 @@ export default function InvestorDemo() {
                           <item.icon className="h-4 w-4 text-[#C9A84C]" />
                         </div>
                         <div>
-                          <div className="text-sm font-medium text-gray-900">{item.title}</div>
-                          <div className="text-xs text-gray-800">{item.description}</div>
+                          <div className="text-sm font-medium text-[#0A0F2E]">{item.title}</div>
+                          <div className="text-xs text-[#0A0F2E]">{item.description}</div>
                         </div>
                       </div>
                     ))}
@@ -635,9 +635,9 @@ export default function InvestorDemo() {
 
               {/* Stakeholder Response - only show during EXECUTE */}
               {currentStageIndex >= 3 && (
-                <Card className="bg-white border-gray-200">
+                <Card className="bg-white border-[#E8E4DC]">
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-lg text-gray-900 flex items-center gap-2">
+                    <CardTitle className="text-lg text-[#0A0F2E] flex items-center gap-2">
                       <Users className="h-5 w-5 text-[#0A0F2E]" />
                       Live Stakeholder Response
                     </CardTitle>
@@ -650,23 +650,23 @@ export default function InvestorDemo() {
                           <div 
                             key={idx}
                             className={`p-2 rounded-lg flex items-center gap-2 transition-all ${
-                              isAcknowledged ? 'bg-[#2B8A6E]/15' : 'bg-gray-50'
+                              isAcknowledged ? 'bg-[#2B8A6E]/15' : 'bg-[#F8F7F4]'
                             }`}
                           >
-                            <div className={`w-2 h-2 rounded-full ${isAcknowledged ? 'bg-[#2B8A6E]' : 'bg-slate-600'}`} />
+                            <div className={`w-2 h-2 rounded-full ${isAcknowledged ? 'bg-[#2B8A6E]' : 'bg-[#6B7280]'}`} />
                             <div className="flex-1 min-w-0">
-                              <div className="text-sm font-medium text-gray-900 truncate">{stakeholder.name}</div>
-                              <div className="text-xs text-gray-800 truncate">{stakeholder.role}</div>
+                              <div className="text-sm font-medium text-[#0A0F2E] truncate">{stakeholder.name}</div>
+                              <div className="text-xs text-[#0A0F2E] truncate">{stakeholder.role}</div>
                             </div>
                             {isAcknowledged && <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] flex-shrink-0" />}
                           </div>
                         );
                       })}
                     </div>
-                    <div className="mt-3 pt-3 border-t border-gray-200">
+                    <div className="mt-3 pt-3 border-t border-[#E8E4DC]">
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-800">Acknowledged</span>
-                        <span className="text-gray-900 font-medium">{acknowledgedStakeholders.length} / {STAKEHOLDER_ACKNOWLEDGMENTS.length}</span>
+                        <span className="text-[#0A0F2E]">Acknowledged</span>
+                        <span className="text-[#0A0F2E] font-medium">{acknowledgedStakeholders.length} / {STAKEHOLDER_ACKNOWLEDGMENTS.length}</span>
                       </div>
                       <Progress value={(acknowledgedStakeholders.length / STAKEHOLDER_ACKNOWLEDGMENTS.length) * 100} className="h-2 mt-2" />
                     </div>
@@ -675,9 +675,9 @@ export default function InvestorDemo() {
               )}
 
               {/* Investment Metrics */}
-              <Card className="bg-white border-gray-200">
+              <Card className="bg-white border-[#E8E4DC]">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-gray-900 flex items-center gap-2">
+                  <CardTitle className="text-lg text-[#0A0F2E] flex items-center gap-2">
                     <LineChart className="h-5 w-5 text-[#2B8A6E]" />
                     Investment Thesis
                   </CardTitle>
@@ -685,19 +685,19 @@ export default function InvestorDemo() {
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-gray-800">TAM</span>
-                      <span className="text-sm font-medium text-gray-900">$15B+</span>
+                      <span className="text-sm text-[#0A0F2E]">TAM</span>
+                      <span className="text-sm font-medium text-[#0A0F2E]">$15B+</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-gray-800">Target ACV</span>
-                      <span className="text-sm font-medium text-gray-900">$250K-$1.5M</span>
+                      <span className="text-sm text-[#0A0F2E]">Target ACV</span>
+                      <span className="text-sm font-medium text-[#0A0F2E]">$250K-$1.5M</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-gray-800">Beachhead</span>
-                      <span className="text-sm font-medium text-gray-900">Gaming & Hospitality</span>
+                      <span className="text-sm text-[#0A0F2E]">Beachhead</span>
+                      <span className="text-sm font-medium text-[#0A0F2E]">Gaming & Hospitality</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-gray-800">Category</span>
+                      <span className="text-sm text-[#0A0F2E]">Category</span>
                       <span className="text-sm font-medium text-[#2B8A6E]">Category Creator</span>
                     </div>
                   </div>

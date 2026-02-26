@@ -221,7 +221,7 @@ const QUESTION_ICONS = [
 
 function getScoreColor(score: number) {
   if (score <= 30) return { color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]", badgeText: "text-white", label: "Critical", ring: "stroke-[#0A0F2E]" };
-  if (score <= 50) return { color: "text-[#C9A84C]", bg: "bg-[#C9A84C]", badgeText: "text-[#0A0F2E]", label: "At Risk", ring: "stroke-[#C9A84C]" };
+  if (score <= 50) return { color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]", badgeText: "text-white", label: "At Risk", ring: "stroke-[#0A0F2E]" };
   if (score <= 70) return { color: "text-[#C9A84C]", bg: "bg-[#C9A84C]", badgeText: "text-[#0A0F2E]", label: "Needs Improvement", ring: "stroke-[#C9A84C]" };
   if (score <= 85) return { color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]", badgeText: "text-white", label: "Good", ring: "stroke-[#2B8A6E]" };
   return { color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]", badgeText: "text-white", label: "Excellent", ring: "stroke-[#2B8A6E]" };

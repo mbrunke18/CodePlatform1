@@ -251,9 +251,9 @@ export default function NFLLearningDashboard() {
                       const playbook = libraryData.playbooks.find((p: any) => p.id === suggestion.playbookId);
                       
                       const severityColors = {
-                        high: 'bg-red-500/12 text-red-500',
-                        medium: `bg-[${GOLD}]/12 text-[${GOLD}]`,
-                        low: `bg-[${NAVY}]/12 text-[${NAVY}]`,
+                        high: 'bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-[#C9A84C]',
+                        medium: `bg-[#C9A84C]/12 text-[#C9A84C]`,
+                        low: `bg-[#0A0F2E]/12 text-[#0A0F2E]`,
                       };
 
                       return (

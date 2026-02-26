@@ -38,7 +38,7 @@ function getEffectivenessColor(effectiveness: string): string {
     case 'high': return 'text-[#0A0F2E]';
     case 'moderate': return 'text-[#C9A84C]';
     case 'low': return 'text-[#C9A84C]';
-    case 'poor': return 'text-red-600';
+    case 'poor': return 'text-[#dc2626]';
     default: return 'text-[#0A0F2E]';
   }
 }
