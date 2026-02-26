@@ -31,10 +31,13 @@ import {
   Settings,
   BarChart3,
   Layers,
+  ArrowRight,
+  Lock,
 } from 'lucide-react';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 import PageLayout from '@/components/layout/PageLayout';
+import { useAuth } from '@/hooks/useAuth';
 import { PhaseProgressBar } from '@/components/playbook/PhaseProgressBar';
 import { PreparePhaseView } from '@/components/playbook/PreparePhaseView';
 import { MonitorPhaseView } from '@/components/playbook/MonitorPhaseView';
@@ -42,6 +45,14 @@ import { LearnPhaseView } from '@/components/playbook/LearnPhaseView';
 import { AIPrinciplesScorecard, DeterministicExecutionBadge } from '@/components/ai/AIPrinciplesScorecard';
 import { ExecutionCommandCenter } from '@/components/execution/ExecutionCommandCenter';
 import { PhaseSLASummary } from '@/components/playbook/PhaseSLASummary';
+
+const SAMPLE_PLAYBOOK_IDS = [
+  "3dfecf58-e93c-4a3b-b712-f2a9d4a77ed0",
+  "9d192969-a025-4d66-8aee-f71f237983a2",
+  "f522bf40-c8fa-484a-9d7c-e0be01f10744",
+  "3998652e-169e-407f-91f1-cbade5394659",
+  "2e32847a-0358-4f82-a182-f0e2ed63d447",
+];
 
 const SEVERITY_COLORS = {
   critical: 'bg-red-50 text-red-700',
@@ -55,6 +66,8 @@ export default function PlaybookDetail() {
   const [, setLocation] = useLocation();
   const [activeTab, setActiveTab] = useState('overview');
   const { toast } = useToast();
+  const { isAuthenticated } = useAuth();
+  const isSampleView = SAMPLE_PLAYBOOK_IDS.includes(id || "") && !isAuthenticated;
 
   const { data: organizations = [] } = useQuery<any[]>({
     queryKey: ['/api/organizations'],
@@ -295,56 +308,82 @@ export default function PlaybookDetail() {
 
             <aside className="space-y-6">
               <div style={{ border: `1px solid ${BORDER}`, padding: 32, background: "#fff", textAlign: "center" }}>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED, marginBottom: 24 }}>Readiness Score</div>
-                <div style={{ ...CG, fontSize: 64, fontWeight: 600, color: overallScore >= 80 ? TEAL : overallScore >= 50 ? GOLD : "#EF4444", lineHeight: 1, marginBottom: 8 }}>
-                  {overallScore}%
-                </div>
-                <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: MUTED, marginBottom: 32 }}>
-                  {overallScore >= 80 ? 'Combat Ready' : 'Optimization Required'}
-                </div>
-                
-                <div className="space-y-3">
-                  <AlertDialog>
-                    <AlertDialogTrigger asChild>
+                {isSampleView ? (
+                  <div>
+                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 12 }}>Free Sample Preview</div>
+                    <div style={{ ...CG, fontSize: 15, fontWeight: 600, color: NAVY, marginBottom: 8, lineHeight: 1.4 }}>
+                      165 more playbooks are waiting for your team
+                    </div>
+                    <p style={{ fontSize: 12, color: MUTED, marginBottom: 24, lineHeight: 1.6 }}>
+                      Access the full library, activate playbooks in real-time, and run practice drills with your executive team.
+                    </p>
+                    <Button
+                      style={{ width: "100%", background: GOLD, color: NAVY, height: 54, fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 10 }}
+                      onClick={() => window.location.href = "/api/login"}
+                    >
+                      <Zap className="h-4 w-4 mr-2" />
+                      Start Free Trial
+                    </Button>
+                    <Button
+                      variant="outline"
+                      style={{ width: "100%", border: `1.5px solid ${BORDER}`, color: NAVY, background: "transparent", height: 44, fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}
+                      onClick={() => setLocation("/pilot-program")}
+                    >
+                      Request Pilot Access
+                    </Button>
+                  </div>
+                ) : (
+                  <div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED, marginBottom: 24 }}>Readiness Score</div>
+                    <div style={{ ...CG, fontSize: 64, fontWeight: 600, color: overallScore >= 80 ? TEAL : overallScore >= 50 ? GOLD : "#EF4444", lineHeight: 1, marginBottom: 8 }}>
+                      {overallScore}%
+                    </div>
+                    <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: MUTED, marginBottom: 32 }}>
+                      {overallScore >= 80 ? 'Combat Ready' : 'Optimization Required'}
+                    </div>
+                    <div className="space-y-3">
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                          <Button
+                            style={{ width: "100%", background: NAVY, color: "#fff", height: 54, fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}
+                            disabled={!canActivate || activatePlaybookMutation.isPending}
+                            data-testid="button-activate"
+                          >
+                            <Zap className="h-4 w-4 mr-2" />
+                            Activate Playbook
+                          </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent style={{ borderRadius: 0, border: `1px solid ${GOLD}` }}>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle style={{ ...CG, fontSize: 24, color: NAVY }}>Confirm Activation</AlertDialogTitle>
+                            <AlertDialogDescription style={{ color: MUTED }}>
+                              This will initiate the 12-minute execution window. All stakeholders will
+                              be notified, tasks will be created, and budgets will be unlocked.
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter>
+                            <AlertDialogCancel style={{ borderRadius: 0 }}>Cancel</AlertDialogCancel>
+                            <AlertDialogAction
+                              onClick={() => activatePlaybookMutation.mutate()}
+                              style={{ background: NAVY, color: "#fff", borderRadius: 0 }}
+                            >
+                              Initiate Execution
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
                       <Button
-                        style={{ width: "100%", background: NAVY, color: "#fff", height: 54, fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}
-                        disabled={!canActivate || activatePlaybookMutation.isPending}
-                        data-testid="button-activate"
+                        variant="outline"
+                        style={{ width: "100%", border: `1.5px solid ${BORDER}`, color: NAVY, background: "transparent", height: 54, fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}
+                        onClick={() => startDrillMutation.mutate()}
+                        disabled={startDrillMutation.isPending}
                       >
-                        <Zap className="h-4 w-4 mr-2" />
-                        Activate Playbook
+                        <Play className="h-4 w-4 mr-2" />
+                        Practice Drill
                       </Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent style={{ borderRadius: 0, border: `1px solid ${GOLD}` }}>
-                      <AlertDialogHeader>
-                        <AlertDialogTitle style={{ ...CG, fontSize: 24, color: NAVY }}>Confirm Activation</AlertDialogTitle>
-                        <AlertDialogDescription style={{ color: MUTED }}>
-                          This will initiate the 12-minute execution window. All stakeholders will
-                          be notified, tasks will be created, and budgets will be unlocked.
-                        </AlertDialogDescription>
-                      </AlertDialogHeader>
-                      <AlertDialogFooter>
-                        <AlertDialogCancel style={{ borderRadius: 0 }}>Cancel</AlertDialogCancel>
-                        <AlertDialogAction
-                          onClick={() => activatePlaybookMutation.mutate()}
-                          style={{ background: NAVY, color: "#fff", borderRadius: 0 }}
-                        >
-                          Initiate Execution
-                        </AlertDialogAction>
-                      </AlertDialogFooter>
-                    </AlertDialogContent>
-                  </AlertDialog>
-
-                  <Button
-                    variant="outline"
-                    style={{ width: "100%", border: `1.5px solid ${BORDER}`, color: NAVY, background: "transparent", height: 54, fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}
-                    onClick={() => startDrillMutation.mutate()}
-                    disabled={startDrillMutation.isPending}
-                  >
-                    <Play className="h-4 w-4 mr-2" />
-                    Practice Drill
-                  </Button>
-                </div>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div style={{ border: `1px solid ${BORDER}`, padding: 32, background: NAVY, color: "#fff" }}>
@@ -365,6 +404,47 @@ export default function PlaybookDetail() {
               </div>
             </aside>
           </div>
+          {isSampleView && (
+            <div style={{ background: NAVY, padding: "64px 48px", marginTop: 0 }}>
+              <div className="max-w-3xl mx-auto text-center">
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>
+                  VaughnMartin · Execution OS
+                </div>
+                <div style={{ ...CG, fontSize: "clamp(28px,4vw,40px)", fontWeight: 600, color: "#fff", lineHeight: 1.15, marginBottom: 16 }}>
+                  You just read one playbook.<br />
+                  <em style={{ color: GOLD }}>165 more are protecting your competitors.</em>
+                </div>
+                <p style={{ fontSize: 15, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: 40, maxWidth: 560, margin: "0 auto 40px" }}>
+                  Every playbook in the Execution OS library is built from 20+ years of Fortune 500 transformation. 
+                  Your team can be execution-ready in 12 minutes — not 12 weeks.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button
+                    style={{ background: GOLD, color: NAVY, height: 56, paddingLeft: 36, paddingRight: 36, fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", borderRadius: 0 }}
+                    onClick={() => window.location.href = "/api/login"}
+                  >
+                    <Zap className="h-4 w-4 mr-2" />
+                    Start Free Trial — Full Access
+                  </Button>
+                  <Button
+                    style={{ background: "transparent", color: "#fff", height: 56, paddingLeft: 36, paddingRight: 36, fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", borderRadius: 0, border: "1.5px solid rgba(255,255,255,0.25)" }}
+                    onClick={() => setLocation("/pilot-program")}
+                  >
+                    Request Enterprise Pilot
+                    <ArrowRight className="h-4 w-4 ml-2" />
+                  </Button>
+                </div>
+                <div className="flex items-center justify-center gap-8 mt-12 flex-wrap">
+                  {["170 Playbooks", "9 Strategic Domains", "12-Minute Execution", "Fortune 1000 Ready"].map((item) => (
+                    <div key={item} className="flex items-center gap-2">
+                      <CheckCircle2 className="h-3.5 w-3.5" style={{ color: GOLD }} />
+                      <span style={{ fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "0.05em" }}>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </PageLayout>

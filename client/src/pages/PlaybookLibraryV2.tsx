@@ -35,43 +35,12 @@ const URGENCY_FILTERS = [
   { id: "standard", label: "Standard", count: 46 },
 ];
 
-const PUBLIC_TEASERS = [
-  {
-    num: 47,
-    title: "Q4 Revenue Miss — Board Response",
-    meta: "Earnings · Investor comms · Board deck",
-    domain: "Financial Response",
-    domainId: "financial",
-    time: "11m 03s",
-    urgency: "critical",
-  },
-  {
-    num: 112,
-    title: "Competitor Product Launch Response",
-    meta: "Market intel · Pricing · Sales enablement",
-    domain: "Competitive Intelligence",
-    domainId: "competitive",
-    time: "9m 42s",
-    urgency: "critical",
-  },
-  {
-    num: 31,
-    title: "Regulatory Change Compliance Response",
-    meta: "Legal review · Policy update · Training",
-    domain: "Regulatory & Compliance",
-    domainId: "regulatory",
-    time: "10m 18s",
-    urgency: "high",
-  },
-  {
-    num: 88,
-    title: "Executive Leadership Transition",
-    meta: "Succession · Communications · Stability plan",
-    domain: "Talent & Organization",
-    domainId: "talent",
-    time: "11m 55s",
-    urgency: "critical",
-  },
+const SAMPLE_PLAYBOOK_IDS = [
+  "3dfecf58-e93c-4a3b-b712-f2a9d4a77ed0", // CEO Sudden Departure
+  "9d192969-a025-4d66-8aee-f71f237983a2", // Competitor Product Launch (Breakthrough Innovation)
+  "f522bf40-c8fa-484a-9d7c-e0be01f10744", // Data Privacy Violation (GDPR/CCPA)
+  "3998652e-169e-407f-91f1-cbade5394659", // Activist Investor Campaign
+  "2e32847a-0358-4f82-a182-f0e2ed63d447", // Social Media Firestorm
 ];
 
 const DOMAIN_DB_MAP: Record<string, string[]> = {
@@ -387,10 +356,14 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
     );
   });
 
-  const publicTeasers = PUBLIC_TEASERS.filter((p) => {
-    if (activeDomain !== "all" && p.domainId !== activeDomain) return false;
-    if (activeUrgency !== "all" && p.urgency !== activeUrgency) return false;
-    if (search && !p.title.toLowerCase().includes(search.toLowerCase())) return false;
+  const samplePlaybooks = (templates || []).filter((t) => SAMPLE_PLAYBOOK_IDS.includes(t.id));
+
+  const publicTeasers = samplePlaybooks.filter((p) => {
+    if (activeDomain !== "all") {
+      const mapped = DOMAIN_DB_MAP[activeDomain] || [];
+      if (!mapped.some((d) => (p.domain || "").toLowerCase().includes(d.toLowerCase()))) return false;
+    }
+    if (search && !p.name?.toLowerCase().includes(search.toLowerCase()) && !p.description?.toLowerCase().includes(search.toLowerCase())) return false;
     return true;
   });
 
@@ -557,25 +530,45 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#E8E4DC]">
-                {publicTeasers.map((pb) => (
-                  <tr key={pb.num} className="bg-white hover:bg-[#F8F7F4] transition-colors group cursor-pointer" onClick={() => !isAuthenticated && (window.location.href = "/api/login")}>
+                {publicTeasers.length === 0 && (templates || []).length === 0 ? (
+                  [1,2,3,4,5].map((i) => (
+                    <tr key={i} className="bg-white animate-pulse">
+                      <td className="px-4 py-4"><div className="h-5 w-8 bg-gray-100 rounded" /></td>
+                      <td className="px-4 py-4"><div className="h-4 w-48 bg-gray-100 rounded" /></td>
+                      <td className="px-4 py-4 hidden md:table-cell"><div className="h-4 w-24 bg-gray-100 rounded" /></td>
+                      <td className="px-4 py-4 hidden lg:table-cell"><div className="h-4 w-16 bg-gray-100 rounded" /></td>
+                      <td className="px-4 py-4 hidden sm:table-cell"><div className="h-5 w-16 bg-gray-100 rounded" /></td>
+                      <td className="px-4 py-4" />
+                    </tr>
+                  ))
+                ) : publicTeasers.map((pb, idx) => (
+                  <tr
+                    key={pb.id}
+                    className="bg-white hover:bg-[#F8F7F4] transition-colors group cursor-pointer"
+                    onClick={() => setLocation(`/playbook-library/${pb.id}`)}
+                  >
                     <td className="px-4 py-4">
-                      <span style={{ ...CG, fontSize: 20, color: GOLD, fontWeight: 600 }}>{pb.num}</span>
+                      <span style={{ ...CG, fontSize: 20, color: GOLD, fontWeight: 600 }}>{idx + 1}</span>
                     </td>
                     <td className="px-4 py-4">
-                      <div style={{ fontWeight: 600, color: NAVY }}>{pb.title}</div>
-                      <div style={{ fontSize: 11, color: MUTED, marginTop: 2 }}>{pb.meta}</div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span style={{ fontWeight: 600, color: NAVY }}>{pb.name}</span>
+                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "2px 7px", background: "rgba(201,168,76,0.12)", color: GOLD, border: `1px solid rgba(201,168,76,0.3)` }}>
+                          Free Preview
+                        </span>
+                      </div>
+                      <div style={{ fontSize: 11, color: MUTED, marginTop: 2 }}>{pb.description?.slice(0, 80)}{(pb.description?.length || 0) > 80 ? "…" : ""}</div>
                     </td>
                     <td className="px-4 py-4 hidden md:table-cell">
                       <span style={{ fontSize: 10, padding: "3px 8px", background: "white", color: NAVY, fontWeight: 700, textTransform: "uppercase", border: `1px solid ${BORDER}` }}>
-                        {pb.domain}
+                        {pb.domain || pb.category || "General"}
                       </span>
                     </td>
                     <td className="px-4 py-4 hidden lg:table-cell">
-                      <span style={{ color: TEAL, fontWeight: 600, fontSize: 12 }}>{pb.time}</span>
+                      <span style={{ color: TEAL, fontWeight: 600, fontSize: 12 }}>~{pb.avgResponseTimeSeconds ? Math.round(pb.avgResponseTimeSeconds / 60) : 12}m</span>
                     </td>
                     <td className="px-4 py-4 hidden sm:table-cell">
-                      <UrgencyBadge urgency={pb.urgency} />
+                      <UrgencyBadge urgency="critical" />
                     </td>
                     <td className="px-4 py-4 text-right">
                       <Button variant="ghost" size="sm" className="h-8 w-8 p-0 rounded-full hover:bg-[#0A0F2E] hover:text-white">
@@ -587,10 +580,10 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
 
                 <tr style={{ background: OFF }}>
                   <td colSpan={6} className="px-4 py-6 text-center">
-                    <div className="flex items-center justify-center gap-4">
+                    <div className="flex items-center justify-center gap-4 flex-wrap">
                       <Lock className="h-4 w-4" style={{ color: "#6B7280" }} />
                       <span style={{ fontSize: 13, color: NAVY }}>
-                        <strong>+ {activeDomainInfo.count - publicTeasers.length} more playbooks</strong> — sign in with Google or GitHub to unlock the full library
+                        <strong>+ {Math.max(0, (activeDomainInfo?.count || 170) - publicTeasers.length)} more playbooks</strong> — sign in to unlock the full library
                       </span>
                       <Button
                         size="sm"
