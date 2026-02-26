@@ -80,7 +80,7 @@ interface PlaybookDef {
 
 const AVATAR_COLORS = [
   'bg-[#0A0F2E]', 'bg-[#2B8A6E]', 'bg-[#0A0F2E]', 'bg-[#C9A84C]',
-  'bg-[#EF4444]', 'bg-[#2B8A6E]', 'bg-[#0A0F2E]', 'bg-[#C9A84C]',
+  'bg-red-600', 'bg-[#2B8A6E]', 'bg-[#0A0F2E]', 'bg-[#C9A84C]',
   'bg-[#2B8A6E]', 'bg-[#DFC178]'
 ];
 
@@ -217,7 +217,7 @@ function getCategoryColor(category: string) {
     case 'OFFENSE': return { bg: 'bg-[#2B8A6E]/10', text: 'text-[#2B8A6E]', border: 'border-[#2B8A6E]/30', ring: 'ring-[#2B8A6E]', solid: 'bg-[#2B8A6E]' };
     case 'DEFENSE': return { bg: 'bg-[#0A0F2E]/10', text: 'text-[#0A0F2E]', border: 'border-[#0A0F2E]/30', ring: 'ring-[#0A0F2E]', solid: 'bg-[#0A0F2E]' };
     case 'SPECIAL TEAMS': return { bg: 'bg-[#C9A84C]/10', text: 'text-[#C9A84C]', border: 'border-[#C9A84C]/30', ring: 'ring-[#C9A84C]', solid: 'bg-[#C9A84C]' };
-    default: return { bg: 'bg-gray-500/10', text: 'text-gray-800', border: 'border-gray-500/30', ring: 'ring-gray-500', solid: 'bg-gray-500' };
+    default: return { bg: 'bg-black/5', text: 'text-gray-700', border: 'border-black/10', ring: 'ring-black/20', solid: 'bg-black/20' };
   }
 }
 

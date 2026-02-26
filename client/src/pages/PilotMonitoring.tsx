@@ -26,17 +26,17 @@ export default function PilotMonitoring() {
   }, []);
 
   // Fetch real-time data from backend
-  const { data: systemHealth, isLoading: healthLoading, isError: healthError } = useQuery({
+  const { data: systemHealth, isLoading: healthLoading, isError: healthError } = useQuery<any>({
     queryKey: ['/api/pilot-monitoring/system-health'],
     refetchInterval: 30000, // Refresh every 30 seconds
   });
 
-  const { data: pilotMetrics, isLoading: metricsLoading, isError: metricsError } = useQuery({
+  const { data: pilotMetrics, isLoading: metricsLoading, isError: metricsError } = useQuery<any>({
     queryKey: ['/api/pilot-monitoring/pilot-metrics'],
     refetchInterval: 60000, // Refresh every minute
   });
 
-  const { data: recentActivity, isLoading: activityLoading, isError: activityError } = useQuery({
+  const { data: recentActivity, isLoading: activityLoading, isError: activityError } = useQuery<any[]>({
     queryKey: ['/api/pilot-monitoring/recent-activity'],
     refetchInterval: 30000, // Refresh every 30 seconds
   });
@@ -110,8 +110,8 @@ export default function PilotMonitoring() {
             </h1>
             <Badge className={`text-base px-4 py-2 ${
               systemHealth.status === 'healthy' 
-                ? 'bg-[#2B8A6E] text-gray-900' 
-                : 'bg-yellow-600 text-gray-900'
+                ? 'bg-[#2B8A6E] text-white' 
+                : 'bg-[#C9A84C] text-[#0A0F2E]'
             }`} data-testid="badge-system-status">
               <Activity className="w-4 h-4 mr-2" />
               System {systemHealth.status === 'healthy' ? 'Healthy' : 'Warning'}

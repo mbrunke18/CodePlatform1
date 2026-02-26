@@ -119,7 +119,7 @@ function PhaseCard({
             {metrics.map((m, i) => (
               <div key={i} className="p-2 sm:p-3 rounded-none bg-[#F8F7F4] border border-[#E8E4DC]">
                 <div className="text-[10px] font-bold tracking-widest uppercase text-[#6B7280]">{m.label}</div>
-                <div style={{ ...CG, fontSize: "18px", fontWeight: 600, color: m.highlight ? c.accent : NAVY }}>{m.value}</div>
+                <div style={{ ...CG, fontSize: "18px", fontWeight: 600, color: m.highlight ? GOLD : NAVY }}>{m.value}</div>
               </div>
             ))}
           </div>
@@ -271,7 +271,7 @@ export default function Dashboard() {
                 <CardContent className="p-0">
                   <div className="divide-y divide-[#E8E4DC]">
                     <div className="p-4 flex items-start gap-4 hover:bg-[#F8F7F4] transition-colors">
-                      <div style={{ width: 8, height: 8, borderRadius: "50%", background: GOLD, marginTop: 6 }} />
+                      <div style={{ width: 8, height: 8, borderRadius: "50%", background: TEAL, marginTop: 6 }} />
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-sm font-semibold text-[#0A0F2E]">Weak signal detected</span>
@@ -281,7 +281,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                     <div className="p-4 flex items-start gap-4 hover:bg-[#F8F7F4] transition-colors">
-                      <div style={{ width: 8, height: 8, borderRadius: "50%", background: GOLD, marginTop: 6 }} />
+                      <div style={{ width: 8, height: 8, borderRadius: "50%", background: NAVY, marginTop: 6 }} />
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-sm font-semibold text-[#0A0F2E]">Playbook activated</span>

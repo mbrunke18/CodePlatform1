@@ -125,7 +125,7 @@ export default function ManufacturingSupplierDemo() {
                 </div>
               </div>
 
-              <div className="bg-[#0A0F2E] border border-[#C9A84C] rounded-lg p-6 mb-8">
+              <div className="bg-white/5 border border-[#C9A84C]/50 rounded-lg p-6 mb-8">
                 <div className="flex items-start gap-4">
                   <ShieldAlert className="w-8 h-8 text-[#C9A84C] flex-shrink-0 mt-1" />
                   <div>

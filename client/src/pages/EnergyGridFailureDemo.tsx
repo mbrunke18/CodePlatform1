@@ -135,7 +135,7 @@ export default function EnergyGridFailureDemo() {
             </Card>
 
             {/* Playbook */}
-            <Card className="p-8 bg-[#0A0F2E] border-[#C9A84C] border-2">
+            <Card className="p-8 bg-white/5 border-[#C9A84C]/50 border-2">
               <div className="flex items-center gap-4 mb-4">
                 <div className="p-3 bg-[#C9A84C] rounded-full">
                   <ShieldAlert className="h-6 w-6 text-[#0A0F2E]" />
@@ -367,7 +367,7 @@ export default function EnergyGridFailureDemo() {
               bottomLine={energyDemoData.roiComparison.bottomLine}
             />
 
-            <Card className="p-8 bg-[#0A0F2E] border-[#C9A84C] border-2">
+            <Card className="p-8 bg-white/5 border-[#C9A84C]/50 border-2">
               <h3 className="text-2xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Execution OS Difference</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>

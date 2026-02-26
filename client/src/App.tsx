@@ -109,6 +109,7 @@ const OnboardingWizard = lazy(() => import("./pages/OnboardingWizard"));
 const NewUserJourney = lazy(() => import("./pages/NewUserJourney"));
 const CompetitivePositioning = lazy(() => import("./pages/CompetitivePositioning"));
 const PilotProgram = lazy(() => import("./pages/PilotProgram"));
+const GetStarted = lazy(() => import("./pages/GetStarted"));
 const ExplorePage = lazy(() => import("./pages/ExplorePage"));
 const FounderStory = lazy(() => import("./pages/FounderStory"));
 const ExecuteIQVideo = lazy(() => import("./pages/ExecuteIQVideo"));
@@ -339,7 +340,8 @@ function Router() {
         <Route path="/organization-setup" component={OrganizationSetup} />
         <Route path="/playbook-customization" component={PlaybookCustomization} />
         <Route path="/success-metrics" component={SuccessMetricsConfiguration} />
-        {renderRoutes(["/onboarding", "/setup", "/get-started"], OnboardingWizard)}
+        <Route path="/get-started" component={GetStarted} />
+        {renderRoutes(["/onboarding", "/setup"], OnboardingWizard)}
         {renderRoutes(["/new-user-journey", "/start", "/welcome", "/journey", "/experience"], NewUserJourney)}
         <Route path="/preparedness-report" component={PreparednessReport} />
         <Route path="/drill-tracking" component={DrillTrackingSystem} />

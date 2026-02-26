@@ -74,8 +74,8 @@ const workspaceTools = [
     description: "Assess your organization's strategic readiness score",
     path: "/preparedness-report",
     icon: Shield,
-    color: "text-red-600",
-    bgColor: "bg-red-600/10",
+    color: "text-[#0A0F2E]",
+    bgColor: "bg-[#0A0F2E]/10",
     stats: "Readiness scoring"
   }
 ];

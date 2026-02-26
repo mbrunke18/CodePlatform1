@@ -40,8 +40,8 @@ const workspaceTools = [
     description: "Rapid response protocols for critical situations",
     path: "/crisis",
     icon: AlertTriangle,
-    color: "text-red-600",
-    bgColor: "bg-red-600/10",
+    color: "text-[#0A0F2E]",
+    bgColor: "bg-[#0A0F2E]/10",
     stats: "Emergency protocols"
   },
   {

@@ -71,7 +71,7 @@ const metrics = [
     description: "What companies pay for slow response",
     source: "IBM Cost of a Data Breach 2024",
     icon: Shield,
-    color: "text-red-500"
+    color: "text-red-600"
   },
   { 
     value: "98 days", 

@@ -207,21 +207,20 @@ export default function IntegrationsPage() {
           </Card>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="p-6 border-[#E8E4DC] bg-white">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-[#6B7280]">Connected</p>
-                <p className="text-2xl font-bold text-[#0A0F2E]">
-                  {connectedIntegrations.filter(i => i.status === 'active').length}
-                </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="p-6 border-[#E8E4DC] bg-white">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-[#6B7280]">Connected</p>
+                  <p className="text-2xl font-bold text-[#0A0F2E]">
+                    {connectedIntegrations.filter(i => i.status === 'active').length}
+                  </p>
+                </div>
+                <div className="w-12 h-12 bg-[#2B8A6E]/10 rounded-lg flex items-center justify-center">
+                  <CheckCircle2 className="w-6 h-6 text-[#2B8A6E]" />
+                </div>
               </div>
-              <div className={`w-12 h-12 bg-[${TEAL}]/10 rounded-lg flex items-center justify-center`}>
-                <CheckCircle2 className={`w-6 h-6 text-[${TEAL}]`} />
-              </div>
-            </div>
-          </Card>
+            </Card>
 
           <Card className="p-6 border-[#E8E4DC] bg-white">
             <div className="flex items-center justify-between">
@@ -275,7 +274,7 @@ export default function IntegrationsPage() {
                         {Icon && <Icon className="w-6 h-6" />}
                       </div>
                       {connected ? (
-                        <Badge variant="outline" className={`bg-[${TEAL}]/10 text-[${TEAL}] border-[${TEAL}]/20`}>
+                        <Badge variant="outline" className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20">
                           <CheckCircle2 className="w-3 h-3 mr-1" />
                           Connected
                         </Badge>
@@ -284,7 +283,7 @@ export default function IntegrationsPage() {
                           Coming Soon
                         </Badge>
                       ) : (
-                        <Badge variant="outline" className={`bg-[${GOLD_LT}]/10 text-[${GOLD}] border-[${GOLD_LT}]/20`}>
+                        <Badge variant="outline" className="bg-[#DFC178]/10 text-[#C9A84C] border-[#DFC178]/20">
                           <Circle className="w-3 h-3 mr-1" />
                           Available
                         </Badge>
@@ -366,7 +365,7 @@ export default function IntegrationsPage() {
                       <div className={`w-12 h-12 rounded-none flex items-center justify-center ${colorClass}`}>
                         {Icon && <Icon className="w-6 h-6" />}
                       </div>
-                      <Badge variant="outline" className={`bg-[${TEAL}]/10 text-[${TEAL}] border-[${TEAL}]/20 rounded-none`}>
+                      <Badge variant="outline" className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20 rounded-none">
                         <CheckCircle2 className="w-3 h-3 mr-1" />
                         Active
                       </Badge>

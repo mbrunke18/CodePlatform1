@@ -317,8 +317,8 @@ export default function ExecutiveSimulationDemo() {
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
-      case 'critical': return 'bg-red-600 text-white';
-      case 'high': return 'bg-orange-600 text-white';
+      case 'critical': return 'bg-[#0A0F2E] text-white';
+      case 'high': return 'bg-[#C9A84C] text-[#0A0F2E]';
       case 'medium': return 'bg-[#C9A84C] text-[#0A0F2E]';
       case 'low': return 'bg-[#0A0F2E] text-white';
       default: return 'bg-[#6B7280] text-white';
@@ -495,10 +495,10 @@ export default function ExecutiveSimulationDemo() {
                   <div>
                     <div className="flex justify-between text-sm mb-1">
                       <span className="text-white/80">Traditional Approach</span>
-                      <span className="text-red-600">48-72 hours</span>
+                      <span className="text-[#0A0F2E]">48-72 hours</span>
                     </div>
                     <div className="h-3 bg-white/5 rounded-full overflow-hidden">
-                      <div className="h-full bg-red-600/50 rounded-full" style={{ width: '100%' }}></div>
+                      <div className="h-full bg-[#0A0F2E]/50 rounded-full" style={{ width: '100%' }}></div>
                     </div>
                   </div>
                   <div>
@@ -578,14 +578,14 @@ export default function ExecutiveSimulationDemo() {
         {/* Critical Alert Overlay */}
         {showCriticalAlert && criticalSignal && (
           <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4" data-testid="overlay-critical-alert">
-            <Card className="max-w-2xl w-full border-2 border-red-500 bg-white animate-pulse">
-              <CardHeader className="bg-red-500/20 border-b border-red-500/30">
+            <Card className="max-w-2xl w-full border-2 border-[#0A0F2E] bg-white animate-pulse">
+              <CardHeader className="bg-[#0A0F2E]/20 border-b border-[#0A0F2E]/30">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-red-500 rounded-xl flex items-center justify-center animate-pulse">
-                    <AlertTriangle className="w-7 h-7 text-gray-900" />
+                  <div className="w-12 h-12 bg-[#0A0F2E] rounded-xl flex items-center justify-center animate-pulse">
+                    <AlertTriangle className="w-7 h-7 text-[#C9A84C]" />
                   </div>
                   <div>
-                    <Badge className="bg-red-500 text-gray-900 mb-1">CRITICAL SIGNAL DETECTED</Badge>
+                    <Badge className="bg-[#0A0F2E] text-white mb-1">CRITICAL SIGNAL DETECTED</Badge>
                     <CardTitle className="text-xl text-gray-900">{criticalSignal.title}</CardTitle>
                   </div>
                 </div>
@@ -609,9 +609,9 @@ export default function ExecutiveSimulationDemo() {
                   </p>
                 </div>
               </CardContent>
-              <CardFooter className="border-t border-gray-200 bg-gray-50">
+              <CardFooter className="border-t border-[#E8E4DC] dark:border-white/10 bg-[#F8F7F4] dark:bg-white/5">
                 <Button 
-                  className="w-full bg-red-600 hover:bg-red-700 text-gray-900"
+                  className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white"
                   onClick={handleAcknowledgeAlert}
                   data-testid="button-acknowledge-alert"
                 >
@@ -629,8 +629,8 @@ export default function ExecutiveSimulationDemo() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
-                  <Avatar className="w-10 h-10 border-2 border-teal-500">
-                    <AvatarFallback className="bg-teal-600 text-gray-900 font-bold">SC</AvatarFallback>
+                  <Avatar className="w-10 h-10 border-2 border-[#2B8A6E]">
+                    <AvatarFallback className="bg-[#2B8A6E] text-white font-bold">SC</AvatarFallback>
                   </Avatar>
                   <div>
                     <p className="font-semibold text-slate-900 dark:text-white text-sm">{COMPANY_PROFILE.persona}</p>
@@ -638,8 +638,8 @@ export default function ExecutiveSimulationDemo() {
                   </div>
                 </div>
                 <Separator orientation="vertical" className="h-8" />
-                <Badge variant="outline" className="text-xs text-gray-800 border-slate-600">
-                  <CircleDot className="w-3 h-3 mr-1 text-green-500" />
+                <Badge variant="outline" className="text-[#0A0F2E] dark:text-white border-[#E8E4DC] dark:border-white/10">
+                  <CircleDot className="w-3 h-3 mr-1 text-[#2B8A6E]" />
                   Simulation Active
                 </Badge>
               </div>
@@ -679,7 +679,7 @@ export default function ExecutiveSimulationDemo() {
         </div>
 
         {/* Phase Indicator */}
-        <div className="bg-gradient-to-r from-[#0A0F2E] to-[#3BAF8A] text-gray-900 py-2">
+        <div className="bg-[#0A0F2E] text-white py-2">
             <div className="container mx-auto px-4">
               <div className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2">

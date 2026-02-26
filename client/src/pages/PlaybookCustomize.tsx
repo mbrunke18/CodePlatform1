@@ -613,7 +613,7 @@ export default function PlaybookCustomize() {
 
   if (isLoading && !isCreateMode) {
     return (
-      <div className="min-h-screen bg-slate-50 dark:bg-[#0A0F2E]">
+      <div className="min-h-screen bg-[#F8F7F4] ">
         <StandardNav />
         <div className="flex items-center justify-center h-[60vh]">
           <div className="text-gray-800">Loading template...</div>
@@ -623,7 +623,7 @@ export default function PlaybookCustomize() {
   }
   
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#0A0F2E]">
+    <div className="min-h-screen bg-[#F8F7F4] ">
       <StandardNav />
       
       <div className="pt-20 pb-32">
@@ -684,7 +684,7 @@ export default function PlaybookCustomize() {
                 return !!values;
               }).length;
               return (
-                <Card key={phase.id} className="border-slate-200 dark:border-slate-800 overflow-hidden" data-testid={`phase-card-${phase.id}`}>
+                <Card key={phase.id} className="border-[#E8E4DC]  overflow-hidden" data-testid={`phase-card-${phase.id}`}>
                   <div className={`h-1.5 ${phase.color}`} />
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between mb-1">
@@ -740,7 +740,7 @@ export default function PlaybookCustomize() {
               
               {/* BASIC INFO */}
               <section id="basic" className="scroll-mt-24">
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] ">
                   <SectionHeader id="basic" title="Basic Information" icon={FileText} />
                   {expandedSections.basic && (
                     <CardContent className="space-y-4">
@@ -788,14 +788,14 @@ export default function PlaybookCustomize() {
                                 <SelectValue>
                                   <span className="flex items-center gap-2">
                                     <span className={`w-2 h-2 rounded-full ${
-                                      field.value === 'draft' ? 'bg-yellow-500' :
-                                      field.value === 'ready' ? 'bg-green-500' :
+                                      field.value === 'draft' ? 'bg-[#C9A84C]' :
+                                      field.value === 'ready' ? 'bg-[#2B8A6E]' :
                                       field.value === 'active' ? 'bg-[#0A0F2E]' : 'bg-slate-400'
                                     }`} />
                                     <span className={`font-medium ${
-                                      field.value === 'draft' ? 'text-yellow-600 dark:text-yellow-400' :
-                                      field.value === 'ready' ? 'text-[#2B8A6E] dark:text-green-400' :
-                                      field.value === 'active' ? 'text-[#0A0F2E] dark:text-[#0A0F2E]' : 'text-gray-800'
+                                      field.value === 'draft' ? 'text-[#C9A84C]' :
+                                      field.value === 'ready' ? 'text-[#2B8A6E]' :
+                                      field.value === 'active' ? 'text-[#0A0F2E]' : 'text-gray-800'
                                     }`}>
                                       {PLAYBOOK_STATUSES.find(s => s.value === field.value)?.label || 'Draft'}
                                     </span>
@@ -807,14 +807,14 @@ export default function PlaybookCustomize() {
                                   <SelectItem key={s.value} value={s.value}>
                                     <span className="flex items-center gap-2">
                                       <span className={`w-2 h-2 rounded-full ${
-                                        s.value === 'draft' ? 'bg-yellow-500' :
-                                        s.value === 'ready' ? 'bg-green-500' :
+                                        s.value === 'draft' ? 'bg-[#C9A84C]' :
+                                        s.value === 'ready' ? 'bg-[#2B8A6E]' :
                                         s.value === 'active' ? 'bg-[#0A0F2E]' : 'bg-slate-400'
                                       }`} />
                                       <span className={`${
-                                        s.value === 'draft' ? 'text-yellow-600 dark:text-yellow-400' :
-                                        s.value === 'ready' ? 'text-[#2B8A6E] dark:text-green-400' :
-                                        s.value === 'active' ? 'text-[#0A0F2E] dark:text-[#0A0F2E]' : 'text-gray-800'
+                                        s.value === 'draft' ? 'text-[#C9A84C]' :
+                                        s.value === 'ready' ? 'text-[#2B8A6E]' :
+                                        s.value === 'active' ? 'text-[#0A0F2E]' : 'text-gray-800'
                                       }`}>
                                         {s.label}
                                       </span>
@@ -836,7 +836,7 @@ export default function PlaybookCustomize() {
               
               {/* TRIGGERS */}
               <section id="triggers" className="scroll-mt-24">
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] ">
                   <SectionHeader id="triggers" title="Trigger Conditions" icon={AlertTriangle} description="Signals that activate this playbook">
                     <Button type="button" variant="outline" size="sm" onClick={() => triggersArray.append({ id: generateId(), description: "", source: "manual", severity: "warning", autoActivate: false })} data-testid="button-add-trigger">
                       <Plus className="mr-1.5 h-4 w-4" />Add
@@ -845,14 +845,14 @@ export default function PlaybookCustomize() {
                   {expandedSections.triggers && (
                     <CardContent>
                       {triggersArray.fields.length === 0 ? (
-                        <div className="text-center py-8 text-gray-800 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No triggers defined</div>
+                        <div className="text-center py-8 text-gray-800  text-sm border-2 border-dashed rounded-lg">No triggers defined</div>
                       ) : (
                         <div className="space-y-3">
                           {triggersArray.fields.map((field, index) => (
-                            <div key={field.id} className="p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg space-y-3" data-testid={`trigger-item-${index}`}>
+                            <div key={field.id} className="p-3 bg-[#F8F7F4]  rounded-lg space-y-3" data-testid={`trigger-item-${index}`}>
                               <div className="flex gap-2">
                                 <Input {...register(`triggerConditions.${index}.description`)} placeholder="Trigger description..." className="flex-1" />
-                                <Button type="button" variant="ghost" size="sm" onClick={() => triggersArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
+                                <Button type="button" variant="ghost" size="sm" onClick={() => triggersArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 " /></Button>
                               </div>
                               <div className="grid grid-cols-3 gap-2">
                                 <Controller name={`triggerConditions.${index}.source`} control={control} render={({ field }) => (
@@ -885,7 +885,7 @@ export default function PlaybookCustomize() {
               
               {/* ESCALATION */}
               <section id="escalation" className="scroll-mt-24">
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] ">
                   <SectionHeader id="escalation" title="Escalation Paths" icon={ArrowUpRight} description="When and how to escalate issues">
                     <Button type="button" variant="outline" size="sm" onClick={() => escalationArray.append({ id: generateId(), triggerCondition: "no_response", escalateTo: "", backupContact: "", timeToEscalate: 30, notificationChannels: ["email", "phone"] })}>
                       <Plus className="mr-1.5 h-4 w-4" />Add
@@ -894,14 +894,14 @@ export default function PlaybookCustomize() {
                   {expandedSections.escalation && (
                     <CardContent>
                       {escalationArray.fields.length === 0 ? (
-                        <div className="text-center py-8 text-gray-800 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No escalation paths</div>
+                        <div className="text-center py-8 text-gray-800  text-sm border-2 border-dashed rounded-lg">No escalation paths</div>
                       ) : (
                         <div className="space-y-3">
                           {escalationArray.fields.map((field, index) => (
-                            <div key={field.id} className="p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg space-y-3">
+                            <div key={field.id} className="p-3 bg-[#F8F7F4]  rounded-lg space-y-3">
                               <div className="flex justify-between items-center">
                                 <Badge variant="outline">Path {index + 1}</Badge>
-                                <Button type="button" variant="ghost" size="sm" onClick={() => escalationArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
+                                <Button type="button" variant="ghost" size="sm" onClick={() => escalationArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 " /></Button>
                               </div>
                               <div className="grid grid-cols-2 gap-2">
                                 <Controller name={`escalationPaths.${index}.triggerCondition`} control={control} render={({ field }) => (
@@ -940,7 +940,7 @@ export default function PlaybookCustomize() {
               
               {/* STAKEHOLDERS */}
               <section id="stakeholders" className="scroll-mt-24">
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] ">
                   <SectionHeader id="stakeholders" title="Stakeholders" icon={Users} description="Team roles and notifications">
                     <Button type="button" variant="outline" size="sm" onClick={() => stakeholdersArray.append({ role: "", userId: "", responsibility: "", notificationChannels: ["email"], isBackup: false })}>
                       <Plus className="mr-1.5 h-4 w-4" />Add
@@ -949,11 +949,11 @@ export default function PlaybookCustomize() {
                   {expandedSections.stakeholders && (
                     <CardContent>
                       {stakeholdersArray.fields.length === 0 ? (
-                        <div className="text-center py-8 text-gray-800 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No stakeholders</div>
+                        <div className="text-center py-8 text-gray-800  text-sm border-2 border-dashed rounded-lg">No stakeholders</div>
                       ) : (
                         <div className="space-y-3">
                           {stakeholdersArray.fields.map((field, index) => (
-                            <div key={field.id} className="p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg space-y-3">
+                            <div key={field.id} className="p-3 bg-[#F8F7F4]  rounded-lg space-y-3">
                               <div className="flex gap-2">
                                 <Controller name={`stakeholders.${index}.role`} control={control} render={({ field }) => (
                                   <Select value={field.value} onValueChange={field.onChange}>
@@ -968,7 +968,7 @@ export default function PlaybookCustomize() {
                                   )} />
                                   <Label className="text-xs">Backup</Label>
                                 </div>
-                                <Button type="button" variant="ghost" size="sm" onClick={() => stakeholdersArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
+                                <Button type="button" variant="ghost" size="sm" onClick={() => stakeholdersArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 " /></Button>
                               </div>
                               <Input {...register(`stakeholders.${index}.responsibility`)} placeholder="Responsibility..." />
                               <div className="flex gap-1 flex-wrap">
@@ -979,7 +979,7 @@ export default function PlaybookCustomize() {
                                       const isSelected = channels.includes(ch.value);
                                       return (
                                         <button key={ch.value} type="button" onClick={() => field.onChange(isSelected ? channels.filter((c: string) => c !== ch.value) : [...channels, ch.value])}
-                                          className={`px-2 py-1 text-xs rounded-full border ${isSelected ? 'bg-primary text-primary-foreground' : 'bg-white dark:bg-[#141B45] text-gray-800'}`}>
+                                          className={`px-2 py-1 text-xs rounded-full border ${isSelected ? 'bg-primary text-primary-foreground' : 'bg-white  text-gray-800'}`}>
                                           {ch.label}
                                         </button>
                                       );
@@ -998,7 +998,7 @@ export default function PlaybookCustomize() {
 
               {/* EXECUTION STEPS */}
               <section id="steps" className="scroll-mt-24">
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] ">
                   <SectionHeader id="steps" title="Execution Steps" icon={Clock} description="Workflow with dependencies and approvals">
                     <Button type="button" variant="outline" size="sm" onClick={() => stepsArray.append({ id: generateId(), order: stepsArray.fields.length + 1, title: "", description: "", ownerId: "", timeTargetMinutes: 30, isParallel: false, dependsOn: [], approvalRequired: "none", approvalNotes: "", deliverables: "" })}>
                       <Plus className="mr-1.5 h-4 w-4" />Add
@@ -1007,11 +1007,11 @@ export default function PlaybookCustomize() {
                   {expandedSections.steps && (
                     <CardContent>
                       {stepsArray.fields.length === 0 ? (
-                        <div className="text-center py-8 text-gray-800 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No steps</div>
+                        <div className="text-center py-8 text-gray-800  text-sm border-2 border-dashed rounded-lg">No steps</div>
                       ) : (
                         <div className="space-y-3">
                           {stepsArray.fields.map((field, index) => (
-                            <div key={field.id} className="p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg space-y-3">
+                            <div key={field.id} className="p-3 bg-[#F8F7F4]  rounded-lg space-y-3">
                               <div className="flex gap-2 items-start">
                                 <Badge variant="outline" className="shrink-0 w-7 h-7 flex items-center justify-center">{index + 1}</Badge>
                                 <div className="flex-1 space-y-2">
@@ -1050,7 +1050,7 @@ export default function PlaybookCustomize() {
                                   </div>
                                   <Input {...register(`executionSteps.${index}.deliverables`)} placeholder="Deliverables..." />
                                 </div>
-                                <Button type="button" variant="ghost" size="sm" onClick={() => stepsArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
+                                <Button type="button" variant="ghost" size="sm" onClick={() => stepsArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 " /></Button>
                               </div>
                             </div>
                           ))}
@@ -1063,7 +1063,7 @@ export default function PlaybookCustomize() {
               
               {/* BUDGET */}
               <section id="budget" className="scroll-mt-24">
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] ">
                   <SectionHeader id="budget" title="Budget Allocation" icon={DollarSign} description="Pre-approved spending">
                     <Button type="button" variant="outline" size="sm" onClick={() => budgetArray.append({ id: generateId(), category: "personnel", amount: 0, preApproved: false, approvalThreshold: 50000, notes: "" })}>
                       <Plus className="mr-1.5 h-4 w-4" />Add
@@ -1075,7 +1075,7 @@ export default function PlaybookCustomize() {
                         <div>
                           <Label className="text-sm">Total Budget</Label>
                           <div className="flex items-center gap-1 mt-1">
-                            <span className="text-gray-800 dark:text-slate-200">$</span>
+                            <span className="text-gray-800 ">$</span>
                             <Input type="number" {...register('totalBudget', { valueAsNumber: true })} placeholder="0" />
                           </div>
                         </div>
@@ -1084,11 +1084,11 @@ export default function PlaybookCustomize() {
                         </div>
                       </div>
                       {budgetArray.fields.length === 0 ? (
-                        <div className="text-center py-6 text-gray-800 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No budget lines</div>
+                        <div className="text-center py-6 text-gray-800  text-sm border-2 border-dashed rounded-lg">No budget lines</div>
                       ) : (
                         <div className="space-y-2">
                           {budgetArray.fields.map((field, index) => (
-                            <div key={field.id} className="flex gap-2 items-center p-2 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg">
+                            <div key={field.id} className="flex gap-2 items-center p-2 bg-[#F8F7F4]  rounded-lg">
                               <Controller name={`budgetAllocations.${index}.category`} control={control} render={({ field }) => (
                                 <Select value={field.value} onValueChange={field.onChange}>
                                   <SelectTrigger className="w-40"><SelectValue /></SelectTrigger>
@@ -1096,7 +1096,7 @@ export default function PlaybookCustomize() {
                                 </Select>
                               )} />
                               <div className="flex items-center gap-1 w-28">
-                                <span className="text-gray-800 dark:text-slate-200 text-sm">$</span>
+                                <span className="text-gray-800  text-sm">$</span>
                                 <Input type="number" {...register(`budgetAllocations.${index}.amount`, { valueAsNumber: true })} placeholder="Amount" />
                               </div>
                               <div className="flex items-center gap-1">
@@ -1106,7 +1106,7 @@ export default function PlaybookCustomize() {
                                 <Label className="text-xs flex items-center gap-1"><Lock className="h-3 w-3" />Pre-approved</Label>
                               </div>
                               <Input {...register(`budgetAllocations.${index}.notes`)} placeholder="Notes" className="flex-1" />
-                              <Button type="button" variant="ghost" size="sm" onClick={() => budgetArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
+                              <Button type="button" variant="ghost" size="sm" onClick={() => budgetArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 " /></Button>
                             </div>
                           ))}
                         </div>
@@ -1118,7 +1118,7 @@ export default function PlaybookCustomize() {
               
               {/* BUSINESS IMPACT */}
               <section id="impact" className="scroll-mt-24">
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] ">
                   <SectionHeader id="impact" title="Business Impact" icon={TrendingUp} description="Expected value from execution">
                     <Button type="button" variant="outline" size="sm" onClick={() => impactArray.append({ id: generateId(), type: "revenue_protection", estimatedValue: 0, valueUnit: "USD", description: "", measurementMethod: "" })}>
                       <Plus className="mr-1.5 h-4 w-4" />Add
@@ -1127,11 +1127,11 @@ export default function PlaybookCustomize() {
                   {expandedSections.impact && (
                     <CardContent>
                       {impactArray.fields.length === 0 ? (
-                        <div className="text-center py-6 text-gray-800 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No impact metrics</div>
+                        <div className="text-center py-6 text-gray-800  text-sm border-2 border-dashed rounded-lg">No impact metrics</div>
                       ) : (
                         <div className="space-y-2">
                           {impactArray.fields.map((field, index) => (
-                            <div key={field.id} className="p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg space-y-2">
+                            <div key={field.id} className="p-3 bg-[#F8F7F4]  rounded-lg space-y-2">
                               <div className="flex gap-2">
                                 <Controller name={`businessImpacts.${index}.type`} control={control} render={({ field }) => (
                                   <Select value={field.value} onValueChange={field.onChange}>
@@ -1140,11 +1140,11 @@ export default function PlaybookCustomize() {
                                   </Select>
                                 )} />
                                 <div className="flex items-center gap-1 w-32">
-                                  <span className="text-gray-800 dark:text-slate-200">$</span>
+                                  <span className="text-gray-800 ">$</span>
                                   <Input type="number" {...register(`businessImpacts.${index}.estimatedValue`, { valueAsNumber: true })} placeholder="Value" />
                                 </div>
                                 <Input {...register(`businessImpacts.${index}.description`)} placeholder="Description" className="flex-1" />
-                                <Button type="button" variant="ghost" size="sm" onClick={() => impactArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
+                                <Button type="button" variant="ghost" size="sm" onClick={() => impactArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 " /></Button>
                               </div>
                               <Input {...register(`businessImpacts.${index}.measurementMethod`)} placeholder="How will this be measured?" />
                             </div>
@@ -1158,7 +1158,7 @@ export default function PlaybookCustomize() {
               
               {/* COMPLIANCE */}
               <section id="compliance" className="scroll-mt-24">
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] ">
                   <SectionHeader id="compliance" title="Compliance & Regulatory" icon={Scale} description="Legal and regulatory requirements">
                     <Button type="button" variant="outline" size="sm" onClick={() => complianceArray.append({ id: generateId(), framework: "", requirement: "", notes: "" })}>
                       <Plus className="mr-1.5 h-4 w-4" />Add Requirement
@@ -1199,7 +1199,7 @@ export default function PlaybookCustomize() {
                               const selected = (field.value || []).includes(f.value);
                               return (
                                 <button key={f.value} type="button" onClick={() => field.onChange(selected ? field.value.filter((v: string) => v !== f.value) : [...(field.value || []), f.value])}
-                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-[#F8F7F4] text-[#0A0F2E] border-[#0A0F2E]' : 'bg-white dark:bg-[#141B45] text-gray-800 border-slate-200'}`}>
+                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-[#F8F7F4] text-[#0A0F2E] border-[#0A0F2E]' : 'bg-white  text-gray-800 border-[#E8E4DC]'}`}>
                                   {f.label}
                                 </button>
                               );
@@ -1211,7 +1211,7 @@ export default function PlaybookCustomize() {
                         <div className="space-y-2">
                           <Label className="text-sm font-medium">Specific Requirements</Label>
                           {complianceArray.fields.map((field, index) => (
-                            <div key={field.id} className="flex gap-2 p-2 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg">
+                            <div key={field.id} className="flex gap-2 p-2 bg-[#F8F7F4]  rounded-lg">
                               <Controller name={`complianceRequirements.${index}.framework`} control={control} render={({ field }) => (
                                 <Select value={field.value} onValueChange={field.onChange}>
                                   <SelectTrigger className="w-36"><SelectValue placeholder="Framework" /></SelectTrigger>
@@ -1219,7 +1219,7 @@ export default function PlaybookCustomize() {
                                 </Select>
                               )} />
                               <Input {...register(`complianceRequirements.${index}.requirement`)} placeholder="Requirement" className="flex-1" />
-                              <Button type="button" variant="ghost" size="sm" onClick={() => complianceArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
+                              <Button type="button" variant="ghost" size="sm" onClick={() => complianceArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 " /></Button>
                             </div>
                           ))}
                         </div>
@@ -1231,7 +1231,7 @@ export default function PlaybookCustomize() {
               
               {/* RISK ASSESSMENT */}
               <section id="risk" className="scroll-mt-24">
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] ">
                   <SectionHeader id="risk" title="Risk Assessment" icon={Shield} description="Risk scoring and exposure" />
                   {expandedSections.risk && (
                     <CardContent className="space-y-4">
@@ -1248,7 +1248,7 @@ export default function PlaybookCustomize() {
                         <div>
                           <Label className="text-sm font-medium">Max Financial Exposure</Label>
                           <div className="flex items-center gap-1 mt-1.5">
-                            <span className="text-gray-800 dark:text-slate-200">$</span>
+                            <span className="text-gray-800 ">$</span>
                             <Input type="number" {...register('maxFinancialExposure', { valueAsNumber: true })} placeholder="0" />
                           </div>
                         </div>
@@ -1278,24 +1278,24 @@ export default function PlaybookCustomize() {
               
               {/* EXTERNAL COMMUNICATIONS */}
               <section id="communications" className="scroll-mt-24">
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] ">
                   <SectionHeader id="communications" title="External Communications" icon={Megaphone} description="Press, investor, and board notifications" />
                   {expandedSections.communications && (
                     <CardContent className="space-y-4">
                       <div className="grid grid-cols-3 gap-4">
-                        <div className="flex items-center gap-3 p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg">
+                        <div className="flex items-center gap-3 p-3 bg-[#F8F7F4]  rounded-lg">
                           <Controller name="pressResponseRequired" control={control} render={({ field }) => (
                             <Switch checked={field.value} onCheckedChange={field.onChange} />
                           )} />
                           <Label className="text-sm">Press/Media Response Required</Label>
                         </div>
-                        <div className="flex items-center gap-3 p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg">
+                        <div className="flex items-center gap-3 p-3 bg-[#F8F7F4]  rounded-lg">
                           <Controller name="investorNotificationRequired" control={control} render={({ field }) => (
                             <Switch checked={field.value} onCheckedChange={field.onChange} />
                           )} />
                           <Label className="text-sm">Investor Notification</Label>
                         </div>
-                        <div className="flex items-center gap-3 p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg">
+                        <div className="flex items-center gap-3 p-3 bg-[#F8F7F4]  rounded-lg">
                           <Controller name="boardNotificationRequired" control={control} render={({ field }) => (
                             <Switch checked={field.value} onCheckedChange={field.onChange} />
                           )} />
@@ -1323,7 +1323,7 @@ export default function PlaybookCustomize() {
               
               {/* DEPENDENCIES */}
               <section id="dependencies" className="scroll-mt-24">
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] ">
                   <SectionHeader id="dependencies" title="Dependencies & Resources" icon={Link2} description="External vendors, systems, and resources">
                     <Button type="button" variant="outline" size="sm" onClick={() => dependenciesArray.append({ id: generateId(), type: "vendor", name: "", contactInfo: "", criticality: "medium", notes: "" })}>
                       <Plus className="mr-1.5 h-4 w-4" />Add
@@ -1332,11 +1332,11 @@ export default function PlaybookCustomize() {
                   {expandedSections.dependencies && (
                     <CardContent>
                       {dependenciesArray.fields.length === 0 ? (
-                        <div className="text-center py-6 text-gray-800 dark:text-slate-200 text-sm border-2 border-dashed rounded-lg">No dependencies</div>
+                        <div className="text-center py-6 text-gray-800  text-sm border-2 border-dashed rounded-lg">No dependencies</div>
                       ) : (
                         <div className="space-y-2">
                           {dependenciesArray.fields.map((field, index) => (
-                            <div key={field.id} className="p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg space-y-2">
+                            <div key={field.id} className="p-3 bg-[#F8F7F4]  rounded-lg space-y-2">
                               <div className="flex gap-2">
                                 <Controller name={`dependencies.${index}.type`} control={control} render={({ field }) => (
                                   <Select value={field.value} onValueChange={field.onChange}>
@@ -1356,7 +1356,7 @@ export default function PlaybookCustomize() {
                                     </SelectContent>
                                   </Select>
                                 )} />
-                                <Button type="button" variant="ghost" size="sm" onClick={() => dependenciesArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
+                                <Button type="button" variant="ghost" size="sm" onClick={() => dependenciesArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 " /></Button>
                               </div>
                               <div className="grid grid-cols-2 gap-2">
                                 <Input {...register(`dependencies.${index}.contactInfo`)} placeholder="Contact info" />
@@ -1373,7 +1373,7 @@ export default function PlaybookCustomize() {
               
               {/* GOVERNANCE */}
               <section id="governance" className="scroll-mt-24">
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] ">
                   <SectionHeader id="governance" title="Governance & Versioning" icon={Settings} description="Ownership and review schedule" />
                   {expandedSections.governance && (
                     <CardContent className="space-y-4">
@@ -1417,7 +1417,7 @@ export default function PlaybookCustomize() {
               
               {/* GEOGRAPHIC SCOPE */}
               <section id="geographic" className="scroll-mt-24">
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] ">
                   <SectionHeader id="geographic" title="Geographic Scope" icon={Globe} description="Regions and jurisdictions" />
                   {expandedSections.geographic && (
                     <CardContent className="space-y-4">
@@ -1429,7 +1429,7 @@ export default function PlaybookCustomize() {
                               const selected = (field.value || []).includes(r.value);
                               return (
                                 <button key={r.value} type="button" onClick={() => field.onChange(selected ? field.value.filter((v: string) => v !== r.value) : [...(field.value || []), r.value])}
-                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]' : 'bg-white dark:bg-[#141B45] text-gray-800 border-slate-200'}`}>
+                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]' : 'bg-white  text-gray-800 border-[#E8E4DC]'}`}>
                                   {r.label}
                                 </button>
                               );
@@ -1454,7 +1454,7 @@ export default function PlaybookCustomize() {
               
               {/* READINESS & TRAINING */}
               <section id="readiness" className="scroll-mt-24">
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] ">
                   <SectionHeader id="readiness" title="Readiness & Training" icon={GraduationCap} description="Drills and team preparation" />
                   {expandedSections.readiness && (
                     <CardContent className="space-y-4">
@@ -1492,7 +1492,7 @@ export default function PlaybookCustomize() {
 
               {/* SUCCESS METRICS */}
               <section id="metrics" className="scroll-mt-24">
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] ">
                   <SectionHeader id="metrics" title="Success Metrics" icon={Target} description="How success will be measured">
                     <Button type="button" variant="outline" size="sm" onClick={() => customMetricsArray.append({ name: "", target: "" })}>
                       <Plus className="mr-1.5 h-4 w-4" />Add Metric
@@ -1517,7 +1517,7 @@ export default function PlaybookCustomize() {
                             <div key={field.id} className="flex gap-2">
                               <Input {...register(`successMetrics.customMetrics.${index}.name`)} placeholder="Metric name" className="flex-1" />
                               <Input {...register(`successMetrics.customMetrics.${index}.target`)} placeholder="Target" className="w-32" />
-                              <Button type="button" variant="ghost" size="sm" onClick={() => customMetricsArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
+                              <Button type="button" variant="ghost" size="sm" onClick={() => customMetricsArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 " /></Button>
                             </div>
                           ))}
                         </div>
@@ -1533,7 +1533,7 @@ export default function PlaybookCustomize() {
       </div>
       
       {/* STICKY SAVE BAR */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-[#0A0F2E] border-t border-slate-200 dark:border-slate-800 py-4 px-6 z-50">
+      <div className="fixed bottom-0 left-0 right-0 bg-white  border-t border-[#E8E4DC]  py-4 px-6 z-50">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="text-sm text-gray-800">
             {Object.keys(errors).length > 0 && (

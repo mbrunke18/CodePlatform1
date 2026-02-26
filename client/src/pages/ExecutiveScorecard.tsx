@@ -24,7 +24,7 @@ function StatusIndicator({ status }: { status: 'good' | 'warning' | 'critical' }
   const config = {
     good: { bg: 'bg-[#2B8A6E]', className: 'text-[#2B8A6E]', label: 'Healthy' },
     warning: { bg: 'bg-[#C9A84C]', className: 'text-[#C9A84C]', label: 'Attention' },
-    critical: { bg: 'bg-red-600', className: 'text-red-600', label: 'Critical' }
+    critical: { bg: 'bg-[#0A0F2E]', className: 'text-[#0A0F2E]', label: 'Critical' }
   };
   const c = config[status];
   
@@ -60,7 +60,7 @@ function MetricCard({
   const statusBorders = {
     good: 'border-l-[#2B8A6E]',
     warning: 'border-l-[#C9A84C]',
-    critical: 'border-l-red-600'
+    critical: 'border-l-[#0A0F2E]'
   };
 
   const trendIcons = {
@@ -72,7 +72,7 @@ function MetricCard({
 
   const trendClasses = {
     up: 'text-[#2B8A6E]',
-    down: 'text-red-600',
+    down: 'text-[#0A0F2E]',
     neutral: 'text-[#6B7280] dark:text-white/60'
   };
 
@@ -158,6 +158,10 @@ export default function ExecutiveScorecard() {
     scoreValue >= 80 && activeCount >= 5 ? 'good' :
     scoreValue >= 60 || activeCount >= 3 ? 'warning' : 'critical';
 
+  const statusBg = 
+    overallStatus === 'good' ? 'bg-[#2B8A6E]' :
+    overallStatus === 'warning' ? 'bg-[#C9A84C]' : 'bg-[#0A0F2E]';
+
   return (
     <PageLayout>
       <div className="max-w-6xl mx-auto space-y-6 p-6">
@@ -183,10 +187,7 @@ export default function ExecutiveScorecard() {
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div className="flex items-center gap-6 flex-wrap">
                 <div className="flex items-center gap-3">
-                  <div className={`w-3 h-3 rounded-full ${
-                    overallStatus === 'good' ? 'bg-[#2B8A6E]' :
-                    overallStatus === 'warning' ? 'bg-[#C9A84C]' : 'bg-red-600'
-                  }`} />
+                  <div className={`w-3 h-3 rounded-full ${statusBg}`} />
                   <div>
                     <div className="text-xs text-[#6B7280] dark:text-white/60 uppercase tracking-wide">System Status</div>
                     <div className="text-[#0A0F2E] dark:text-white font-semibold">

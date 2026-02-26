@@ -1,4 +1,5 @@
 import { useLocation } from 'wouter';
+import { useAuth } from '@/hooks/useAuth';
 import PageLayout from '@/components/layout/PageLayout';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -256,7 +257,7 @@ export default function PilotProgram() {
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-6" data-testid="heading-pilot-program">
               90-Day Pilot Program
-              <span className="block text-[#2B8A6E] mt-2">Validate Before You Commit</span>
+              <span className="block text-[#C9A84C] mt-2">Validate Before You Commit</span>
             </h1>
             <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto mb-8">
               Prove Execution OS' 12-minute coordination claim with real activations in your environment. 
@@ -438,44 +439,44 @@ export default function PilotProgram() {
         </section>
 
         {/* ROI Measurement Framework */}
-        <section className="py-16 px-6 bg-gradient-to-br  ">
+        <section className="py-16 px-6 bg-[#0A0F2E]">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4" data-testid="heading-roi">
+              <h2 className="text-3xl font-bold text-white mb-4" data-testid="heading-roi">
                 ROI Measurement Framework
               </h2>
-              <p className="text-lg text-[#0A0F2E]">
+              <p className="text-lg text-white/70">
                 Quantified value capture at every milestone
               </p>
             </div>
 
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20" data-testid="card-roi-framework">
+            <Card className="bg-white/5 backdrop-blur-sm border-white/10" data-testid="card-roi-framework">
               <CardContent className="p-0 overflow-x-auto">
                 <table className="w-full min-w-[800px]">
                   <thead>
-                    <tr className="border-b border-white/20">
-                      <th className="text-left p-4 font-semibold text-gray-900">Value Metric</th>
-                      <th className="text-left p-4 font-semibold text-red-300">Before Execution OS</th>
+                    <tr className="border-b border-white/10">
+                      <th className="text-left p-4 font-semibold text-white">Value Metric</th>
+                      <th className="text-left p-4 font-semibold text-red-400">Before Execution OS</th>
                       <th className="text-left p-4 font-semibold text-[#3BAF8A]">With Execution OS</th>
-                      <th className="text-left p-4 font-semibold text-slate-300">Calculation</th>
-                      <th className="text-right p-4 font-semibold text-amber-300">Value Captured</th>
+                      <th className="text-left p-4 font-semibold text-white/70">Calculation</th>
+                      <th className="text-right p-4 font-semibold text-[#C9A84C]">Value Captured</th>
                     </tr>
                   </thead>
                   <tbody>
                     {roiCalculator.map((row, i) => (
-                      <tr key={i} className="border-b border-white/10 last:border-0">
-                        <td className="p-4 text-gray-900 font-medium">{row.metric}</td>
-                        <td className="p-4 text-red-700">{row.baseline}</td>
+                      <tr key={i} className="border-b border-white/5 last:border-0">
+                        <td className="p-4 text-white font-medium">{row.metric}</td>
+                        <td className="p-4 text-red-400/80">{row.baseline}</td>
                         <td className="p-4 text-[#BBF7D0]">{row.withExecutionOS}</td>
-                        <td className="p-4 text-[#0A0F2E] text-sm">{row.calculation}</td>
-                        <td className="p-4 text-amber-300 font-bold text-right">{row.value}</td>
+                        <td className="p-4 text-white/60 text-sm">{row.calculation}</td>
+                        <td className="p-4 text-[#C9A84C] font-bold text-right">{row.value}</td>
                       </tr>
                     ))}
                   </tbody>
                   <tfoot>
-                    <tr className="bg-white/10">
-                      <td colSpan={4} className="p-4 text-gray-900 font-bold text-right">Total Value per Major Event:</td>
-                      <td className="p-4 text-2xl font-bold text-amber-300 text-right">$60K - $2M+</td>
+                    <tr className="bg-white/5">
+                      <td colSpan={4} className="p-4 text-white font-bold text-right">Total Value per Major Event:</td>
+                      <td className="p-4 text-2xl font-bold text-[#C9A84C] text-right">$60K - $2M+</td>
                     </tr>
                   </tfoot>
                 </table>

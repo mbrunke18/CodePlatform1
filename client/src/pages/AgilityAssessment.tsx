@@ -99,7 +99,7 @@ const getScoreCategory = (score: number) => {
   if (score >= 60) return { label: "Above Average", color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]/20" };
   if (score >= 40) return { label: "Industry Average", color: "text-[#C9A84C]", bg: "bg-[#C9A84C]/20" };
   if (score >= 20) return { label: "Below Average", color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]/20" };
-  return { label: "Significant Opportunity", color: "text-red-600", bg: "bg-red-600/20" };
+  return { label: "Significant Opportunity", color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]/20" };
 };
 
 export default function AgilityAssessment() {

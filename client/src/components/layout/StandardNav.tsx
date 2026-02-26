@@ -75,10 +75,11 @@ export default function StandardNav() {
       ],
     },
     {
-      heading: "Live Demos",
+      heading: "Access",
       links: [
-        { label: "Try Demo", path: "/try-demo", icon: Rocket, description: "Full trigger-to-execution experience" },
-        { label: "Explore the Platform", path: "/explore", icon: Compass, description: "Sign in and experience as a real customer" },
+        { label: "Try Demo", path: "/try-demo", icon: Rocket, description: "Scripted simulation — no login required" },
+        { label: "Start Free Trial", path: "/get-started", icon: LogIn, description: "Sign in and use the real live platform" },
+        { label: "Pilot Program", path: "/pilot-program", icon: Target, description: "Guided 12-week enterprise deployment" },
       ],
     },
   ];
@@ -248,22 +249,29 @@ export default function StandardNav() {
                 <Button
                   variant="outline"
                   onClick={() => navigateTo("/try-demo")}
-                  className="border-gray-400 dark:border-gray-500 text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 h-9 px-4 font-medium"
+                  className="border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 h-9 px-4 font-medium text-sm"
                   data-testid="nav-try-demo"
                 >
                   Try Demo
                 </Button>
                 <Button
-                  onClick={() => navigateTo("/contact")}
-                  className="bg-[#0A0F2E] hover:bg-[#1a2040] dark:bg-white dark:hover:bg-gray-100 !text-white dark:!text-[#0A0F2E] h-9 px-4 font-semibold"
-                  data-testid="nav-start-pilot"
+                  onClick={() => navigateTo("/get-started")}
+                  className="bg-[#C9A84C] hover:bg-[#DFC178] !text-[#0A0F2E] h-9 px-4 font-semibold text-sm"
+                  data-testid="nav-free-trial"
                 >
-                  Start Pilot
+                  Start Free Trial
+                </Button>
+                <Button
+                  onClick={() => navigateTo("/pilot-program")}
+                  className="bg-[#0A0F2E] hover:bg-[#141B45] dark:bg-white dark:hover:bg-gray-100 !text-white dark:!text-[#0A0F2E] h-9 px-4 font-semibold text-sm"
+                  data-testid="nav-pilot-program"
+                >
+                  Pilot Program
                 </Button>
                 <Button
                   variant="ghost"
                   onClick={login}
-                  className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 h-9 px-3"
+                  className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 h-9 px-3 text-sm"
                   data-testid="nav-login"
                 >
                   <LogIn className="h-4 w-4 mr-1" />
@@ -309,25 +317,33 @@ export default function StandardNav() {
               ) : (
                 <div className="flex flex-col gap-2 px-1">
                   <Button
-                    onClick={() => navigateTo("/explore")}
+                    onClick={() => navigateTo("/try-demo")}
                     variant="outline"
-                    className="w-full justify-center h-12 text-base font-medium border-gray-400 dark:border-gray-500 text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800"
-                    data-testid="nav-mobile-explore"
+                    className="w-full justify-center h-11 text-sm font-medium border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
+                    data-testid="nav-mobile-try-demo"
                   >
-                    <Eye className="h-5 w-5 mr-2" />
-                    Explore the Platform
+                    <Rocket className="h-4 w-4 mr-2" />
+                    Try Demo
                   </Button>
                   <Button
-                    onClick={() => navigateTo("/contact")}
-                    className="w-full justify-center h-12 text-base font-semibold bg-[#0A0F2E] hover:bg-[#1a2040] dark:bg-white dark:hover:bg-gray-100 !text-white dark:!text-[#0A0F2E]"
-                    data-testid="nav-mobile-start-pilot"
+                    onClick={() => navigateTo("/get-started")}
+                    className="w-full justify-center h-11 text-sm font-semibold bg-[#C9A84C] hover:bg-[#DFC178] !text-[#0A0F2E]"
+                    data-testid="nav-mobile-free-trial"
                   >
-                    Start Pilot Program
+                    <LogIn className="h-4 w-4 mr-2" />
+                    Start Free Trial
+                  </Button>
+                  <Button
+                    onClick={() => navigateTo("/pilot-program")}
+                    className="w-full justify-center h-11 text-sm font-semibold bg-[#0A0F2E] hover:bg-[#141B45] !text-white"
+                    data-testid="nav-mobile-pilot-program"
+                  >
+                    Pilot Program
                   </Button>
                   <Button
                     variant="ghost"
                     onClick={login}
-                    className="w-full justify-center h-10 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="w-full justify-center h-9 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                     data-testid="nav-mobile-login"
                   >
                     <LogIn className="h-4 w-4 mr-2" />

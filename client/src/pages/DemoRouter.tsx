@@ -59,12 +59,12 @@ export default function DemoRouter() {
       duration: '10-15 minutes',
       description: 'See Execution OS configured for your industry: Financial Services, Healthcare, Manufacturing, Retail, Energy, and Luxury.',
       icon: Building2,
-      color: 'from-amber-500 to-orange-500',
-      borderColor: 'border-amber-500/30 hover:border-amber-500',
-      iconBg: 'bg-amber-500/20',
+      color: 'from-[#0A0F2E] to-[#C9A84C]',
+      borderColor: 'border-[#C9A84C]/30 hover:border-[#C9A84C]',
+      iconBg: 'bg-[#C9A84C]/20',
       path: '/industry-demos',
       badge: '6 Industries',
-      badgeColor: 'bg-amber-500',
+      badgeColor: 'bg-[#C9A84C]',
       recommended: false
     }
   ];

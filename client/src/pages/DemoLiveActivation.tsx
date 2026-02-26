@@ -465,7 +465,7 @@ function DemoLiveActivation() {
               onClick={resetDemo}
               variant="outline"
               size="lg"
-              className="text-lg text-gray-900 border-slate-600 hover:bg-[#141B45]"
+              className="text-lg text-[#0A0F2E] border-[#0A0F2E] hover:bg-[#0A0F2E]/5"
               data-testid="button-reset-demo"
             >
               <RefreshCw className="mr-2 h-5 w-5" />

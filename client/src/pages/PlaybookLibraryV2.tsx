@@ -558,7 +558,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
               </thead>
               <tbody className="divide-y divide-[#E8E4DC]">
                 {publicTeasers.map((pb) => (
-                  <tr key={pb.num} className="bg-white hover:bg-[#F8F7F4] transition-colors group">
+                  <tr key={pb.num} className="bg-white hover:bg-[#F8F7F4] transition-colors group cursor-pointer" onClick={() => !isAuthenticated && (window.location.href = "/api/login")}>
                     <td className="px-4 py-4">
                       <span style={{ ...CG, fontSize: 20, color: GOLD, fontWeight: 600 }}>{pb.num}</span>
                     </td>
@@ -567,7 +567,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                       <div style={{ fontSize: 11, color: MUTED, marginTop: 2 }}>{pb.meta}</div>
                     </td>
                     <td className="px-4 py-4 hidden md:table-cell">
-                      <span style={{ fontSize: 10, padding: "3px 8px", background: "#f0f0f0", color: NAVY, fontWeight: 700, textTransform: "uppercase" }}>
+                      <span style={{ fontSize: 10, padding: "3px 8px", background: "white", color: NAVY, fontWeight: 700, textTransform: "uppercase", border: `1px solid ${BORDER}` }}>
                         {pb.domain}
                       </span>
                     </td>
@@ -578,21 +578,9 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                       <UrgencyBadge urgency={pb.urgency} />
                     </td>
                     <td className="px-4 py-4 text-right">
-                      <button
-                        onClick={() => {
-                          if (isAuthenticated) {
-                            const match = searchFiltered.find((t) => t.domain === pb.domain);
-                            if (match) setLocation(`/playbooks/${match.id}/preview`);
-                            else setLocation("/playbooks");
-                          } else {
-                            window.location.href = "/api/login";
-                          }
-                        }}
-                        style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: NAVY }}
-                        className="hover:text-[#C9A84C] transition-colors whitespace-nowrap"
-                      >
-                        View →
-                      </button>
+                      <Button variant="ghost" size="sm" className="h-8 w-8 p-0 rounded-full hover:bg-[#0A0F2E] hover:text-white">
+                        <ArrowRight className="h-4 w-4" />
+                      </Button>
                     </td>
                   </tr>
                 ))}
@@ -608,6 +596,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                         size="sm"
                         onClick={() => window.location.href = "/api/login"}
                         style={{ background: NAVY, color: "#fff", borderRadius: 0, fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}
+                        className="hover:bg-[#141B45]"
                       >
                         Sign In to Access
                       </Button>
@@ -633,7 +622,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                     onClick={() => setLocation(`/playbooks/${pb.id}/preview`)}
                   >
                     <div className="flex items-start justify-between gap-2 mb-2">
-                      <span style={{ fontSize: 10, padding: "2px 6px", background: "#f0f0f0", color: NAVY, fontWeight: 700, textTransform: "uppercase" }}>
+                      <span style={{ fontSize: 10, padding: "2px 6px", background: "white", color: NAVY, fontWeight: 700, textTransform: "uppercase", border: `1px solid ${BORDER}` }}>
                         {pb.domain || "General"}
                       </span>
                       <span style={{ color: GOLD, fontSize: 12, fontWeight: 600 }} className="whitespace-nowrap">~{pb.avgResponseTimeSeconds ? Math.round(pb.avgResponseTimeSeconds / 60) : 12}m</span>
@@ -641,7 +630,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                     <h3 style={{ color: NAVY }} className="text-sm font-semibold leading-snug mb-1 line-clamp-2">{pb.name}</h3>
                     <p style={{ color: MUTED }} className="text-xs line-clamp-2">{pb.description}</p>
                     <div className="flex items-center gap-1 mt-3">
-                      <span style={{ fontSize: 10, fontWeight: 700, padding: "2px 6px", background: "rgba(43,138,110,0.1)", color: TEAL, textTransform: "uppercase" }}>Validated</span>
+                      <span style={{ fontSize: 10, fontWeight: 700, padding: "2px 6px", background: "rgba(43,138,110,0.1)", color: TEAL, textTransform: "uppercase", border: `1px solid rgba(43,138,110,0.2)` }}>Validated</span>
                       <ChevronRight className="h-3.5 w-3.5 ml-auto" style={{ color: MUTED }} />
                     </div>
                   </div>

@@ -150,7 +150,7 @@ export default function CrisisDetail() {
     return (
       <PageLayout>
         <div className="text-center py-24 bg-[#F8F7F4]">
-          <AlertTriangle className="h-16 w-16 text-red-500 mx-auto mb-6" />
+          <AlertTriangle className="h-16 w-16 text-[#C9A84C] mx-auto mb-6" />
           <h2 style={CG} className="text-3xl font-bold mb-4 text-[#0A0F2E]">Crisis Not Found</h2>
           <p className="text-[#6B7280] mb-8 max-w-md mx-auto">The requested crisis scenario could not be found or has been archived.</p>
           <Link href="/crisis">
@@ -176,8 +176,8 @@ export default function CrisisDetail() {
   const getPriorityStyle = (priority: string) => {
     switch (priority.toLowerCase()) {
       case 'high': return 'text-red-600 bg-red-50 font-bold';
-      case 'medium': return `text-[${GOLD}] bg-[${GOLD}]/5 font-bold`;
-      case 'low': return `text-[${TEAL}] bg-[${TEAL}]/5 font-bold`;
+      case 'medium': return `text-[#C9A84C] bg-[#C9A84C]/5 font-bold`;
+      case 'low': return `text-[#2B8A6E] bg-[#2B8A6E]/5 font-bold`;
       default: return 'text-[#6B7280] bg-gray-50';
     }
   };
@@ -185,8 +185,8 @@ export default function CrisisDetail() {
   const getPriorityColor = (priority: string) => {
     switch (priority.toLowerCase()) {
       case 'high': return 'bg-red-100 text-red-700';
-      case 'medium': return `bg-[${GOLD}]/10 text-[${GOLD}]`;
-      case 'low': return `bg-[${TEAL}]/10 text-[${TEAL}]`;
+      case 'medium': return `bg-[#C9A84C]/10 text-[#C9A84C]`;
+      case 'low': return `bg-[#2B8A6E]/10 text-[#2B8A6E]`;
       default: return 'bg-gray-100 text-gray-700';
     }
   };

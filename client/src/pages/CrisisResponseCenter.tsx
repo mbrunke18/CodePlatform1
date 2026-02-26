@@ -250,7 +250,7 @@ export default function CrisisResponseCenter() {
                   <Shield className="w-4 h-4" />
                   All Systems Ready
                 </div>
-                <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-bold h-14 rounded-none text-sm tracking-widest" size="lg">
+                <Button className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold h-14 rounded-none text-sm tracking-widest" size="lg">
                   <AlertTriangle className="w-5 h-5 mr-3" />
                   EMERGENCY ACTIVATION
                 </Button>
@@ -319,7 +319,7 @@ export default function CrisisResponseCenter() {
                       <div key={crisis.id} className="p-8 bg-[#F8F7F4] border border-[#E8E4DC]" data-testid={crisis.template === 'Supply Chain Disruption' ? 'crisis-card-supply-chain' : `crisis-card-${crisis.id}`}>
                         <div className="flex items-center justify-between mb-6">
                           <h4 style={CG} className="text-2xl font-bold text-[#0A0F2E]">{crisis.template}</h4>
-                          <span style={{ ...getSeverityBadgeStyle(crisis.severity), fontSize:10, fontWeight:800, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"4px 12px" }}>
+                          <span style={getSeverityBadgeStyle(crisis.severity)} className="text-[10px] font-extrabold tracking-widest uppercase px-3 py-1">
                             {crisis.severity}
                           </span>
                         </div>
@@ -382,7 +382,7 @@ export default function CrisisResponseCenter() {
                       <span style={{ background: OFF, border: "1px solid #E8E4DC", padding: "4px 8px", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>
                         {template.category}
                       </span>
-                      <span style={{ ...getSeverityBadgeStyle(template.severity), fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>
+                      <span style={getSeverityBadgeStyle(template.severity)} className="text-[9px] font-bold tracking-widest uppercase px-2.5 py-0.5">
                         {template.severity}
                       </span>
                     </div>
@@ -421,7 +421,7 @@ export default function CrisisResponseCenter() {
                       <div>
                         <div className="flex items-center gap-3 mb-2">
                           <h3 className="text-2xl font-bold text-[#0A0F2E]">{crisis.template}</h3>
-                          <span style={{ background: "rgba(239,68,68,0.12)", color: "#EF4444", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px" }}>
+                          <span className="bg-[#0A0F2E]/10 text-[#0A0F2E] text-[9px] font-bold tracking-widest uppercase px-2.5 py-1">
                             ACTIVE INCIDENT
                           </span>
                         </div>

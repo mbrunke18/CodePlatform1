@@ -56,7 +56,7 @@ const TRIGGER_SCENARIOS = [
     name: "Competitor Product Launch",
     description: "A major competitor announces a new product in your category",
     icon: Target,
-    color: "text-red-500",
+    color: "text-red-600",
     bgColor: "bg-red-50 dark:bg-red-950/30",
     sampleSignal: "TechCorp announces AI-powered enterprise solution competing directly with your flagship product"
   },
@@ -65,8 +65,8 @@ const TRIGGER_SCENARIOS = [
     name: "Regulatory Change",
     description: "New compliance requirements affecting your industry",
     icon: Shield,
-    color: "text-amber-500",
-    bgColor: "bg-amber-50 dark:bg-amber-950/30",
+    color: "text-[#C9A84C]",
+    bgColor: "bg-[#C9A84C]/10",
     sampleSignal: "SEC announces new AI disclosure requirements for financial services effective Q2 2026"
   },
   {
@@ -75,7 +75,7 @@ const TRIGGER_SCENARIOS = [
     description: "Strategic window opens for market expansion",
     icon: TrendingUp,
     color: "text-[#2B8A6E]",
-    bgColor: "bg-[#F0F9F6] dark:bg-[#2B8A6E]/15",
+    bgColor: "bg-[#2B8A6E]/10",
     sampleSignal: "European Union announces $2B digital transformation fund for enterprise software adoption"
   },
   {
@@ -83,8 +83,8 @@ const TRIGGER_SCENARIOS = [
     name: "Crisis Response",
     description: "Security breach or operational crisis detected",
     icon: AlertTriangle,
-    color: "text-orange-500",
-    bgColor: "bg-orange-50 dark:bg-orange-950/30",
+    color: "text-red-600",
+    bgColor: "bg-red-50 dark:bg-red-950/30",
     sampleSignal: "Unusual network activity detected - potential data exfiltration attempt from internal systems"
   }
 ];

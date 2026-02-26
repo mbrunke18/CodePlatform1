@@ -193,8 +193,8 @@ export default function DealRiskDemo() {
                   }`}
                 >
                   <div className={`p-2 rounded-lg ${
-                    isCurrent ? `bg-[${phase.color}]` : isCompleted ? 'bg-[#2B8A6E]' : 'bg-white/5'
-                  }`} style={{ backgroundColor: isCurrent ? phase.color : undefined }}>
+                    isCurrent ? `bg-[#C9A84C]` : isCompleted ? 'bg-[#2B8A6E]' : 'bg-white/5'
+                  }`}>
                     {isCompleted ? (
                       <CheckCircle2 className="h-5 w-5 text-[#0A0F2E]" />
                     ) : (
@@ -450,7 +450,7 @@ export default function DealRiskDemo() {
                           </h4>
                           <div className="space-y-2">
                             {learnings.playbookImprovements?.map((improvement: any, i: number) => (
-                              <div key={i} className="p-3 bg-white/5 rounded-lg">
+                              <div key={i} className="p-3 bg-white/5 rounded-lg border border-white/10">
                                 <div className="flex items-center justify-between mb-1">
                                   <span className="text-white text-sm font-medium">{improvement.title}</span>
                                   <Badge className={improvement.priority === 'high' ? 'bg-red-500/20 text-red-400' : 'bg-[#DFC178]/20 text-[#DFC178]'}>

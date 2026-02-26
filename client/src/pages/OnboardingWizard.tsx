@@ -294,27 +294,27 @@ export default function OnboardingWizard() {
         {/* Progress Header */}
         <Card className="bg-white border-[#E8E4DC] rounded-none">
           <CardContent className="pt-8">
-            <div className="flex items-center justify-between mb-8">
-              <div className="flex items-center gap-4">
-                <div style={{ width: 48, height: 48, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <StepIcon className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <h2 style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#0A0F2E" }}>{currentStepInfo.title}</h2>
-                  <p className="text-sm text-[#6B7280]">{currentStepInfo.description}</p>
-                </div>
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-4">
+              <div style={{ width: 48, height: 48, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <StepIcon className="h-6 w-6 text-white" />
               </div>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>
-                Step {currentStep + 1} of {ONBOARDING_STEPS.length}
+              <div>
+                <h2 style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#0A0F2E" }}>{currentStepInfo.title}</h2>
+                <p className="text-sm text-[#6B7280]">{currentStepInfo.description}</p>
               </div>
             </div>
-            
-            <div className="w-full bg-[#E8E4DC] h-1.5 mb-8 overflow-hidden">
-              <div 
-                className="bg-[#C9A84C] h-full transition-all duration-500" 
-                style={{ width: `${progress}%` }} 
-              />
+            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>
+              Step {currentStep + 1} of {ONBOARDING_STEPS.length}
             </div>
+          </div>
+          
+          <div className="w-full bg-[#E8E4DC] h-1.5 mb-8 overflow-hidden">
+            <div 
+              className="bg-[#C9A84C] h-full transition-all duration-500 [&>div]:bg-[#C9A84C]" 
+              style={{ width: `${progress}%` }} 
+            />
+          </div>
             
             {/* Step indicators */}
             <div className="flex justify-between">
@@ -744,7 +744,7 @@ export default function OnboardingWizard() {
                       <Label className="text-gray-800">Target Future Readiness Index (%)</Label>
                       <div className="flex items-center gap-4">
                         <div className="flex-1">
-                          <Progress value={metricsData.friTarget} className="h-2 bg-gray-100" />
+                          <Progress value={metricsData.friTarget} className="h-2 bg-gray-100 [&>div]:bg-[#C9A84C]" />
                         </div>
                         <span className="font-bold text-[#0A0F2E]">{metricsData.friTarget}%</span>
                       </div>
@@ -763,7 +763,7 @@ export default function OnboardingWizard() {
                       <Label className="text-gray-800">Target Decision Velocity (Minutes)</Label>
                       <div className="flex items-center gap-4">
                         <div className="flex-1">
-                          <Progress value={100 - (metricsData.velocityTarget / 120 * 100)} className="h-2 bg-gray-100" />
+                          <Progress value={100 - (metricsData.velocityTarget / 120 * 100)} className="h-2 bg-gray-100 [&>div]:bg-[#C9A84C]" />
                         </div>
                         <span className="font-bold text-[#2B8A6E]">{metricsData.velocityTarget}m</span>
                       </div>

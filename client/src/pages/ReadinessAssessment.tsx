@@ -220,8 +220,8 @@ const QUESTION_ICONS = [
 ];
 
 function getScoreColor(score: number) {
-  if (score <= 30) return { color: "text-red-600", bg: "bg-red-600", label: "Critical", ring: "stroke-red-600" };
-  if (score <= 50) return { color: "text-orange-600", bg: "bg-orange-600", label: "At Risk", ring: "stroke-orange-600" };
+  if (score <= 30) return { color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]", label: "Critical", ring: "stroke-[#0A0F2E]" };
+  if (score <= 50) return { color: "text-[#C9A84C]", bg: "bg-[#C9A84C]", label: "At Risk", ring: "stroke-[#C9A84C]" };
   if (score <= 70) return { color: "text-[#C9A84C]", bg: "bg-[#C9A84C]", label: "Needs Improvement", ring: "stroke-[#C9A84C]" };
   if (score <= 85) return { color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]", label: "Good", ring: "stroke-[#2B8A6E]" };
   return { color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]", label: "Excellent", ring: "stroke-[#2B8A6E]" };

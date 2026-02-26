@@ -528,19 +528,19 @@ export default function AdvancedAnalytics() {
                       </div>
                       
                       <div className="text-center">
-                        <div className="text-sm text-gray-800 dark:text-slate-200 mb-1">Top Quartile</div>
-                        <div className="text-2xl font-bold text-amber-300">
+                        <div className="text-sm text-[#6B7280] mb-1">Top Quartile</div>
+                        <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                           {benchmark.metric.includes('Cost') || benchmark.metric.includes('Revenue') ? 
                             formatCurrency(benchmark.topQuartile) : benchmark.topQuartile.toLocaleString()}
                         </div>
-                        <div className="text-xs text-amber-400">
+                        <div className="text-xs text-[#C9A84C]">
                           Target performance
                         </div>
                       </div>
                       
                       <div className="text-center">
-                        <div className="text-sm text-gray-800 dark:text-slate-200 mb-1">Improvement Potential</div>
-                        <div className="text-2xl font-bold text-[#3BAF8A]">
+                        <div className="text-sm text-[#6B7280] mb-1">Improvement Potential</div>
+                        <div className="text-2xl font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                           {benchmark.metric.includes('Cost') || benchmark.metric.includes('Revenue') ? 
                             formatCurrency(benchmark.improvementPotential) : benchmark.improvementPotential.toLocaleString()}
                         </div>
@@ -557,14 +557,14 @@ export default function AdvancedAnalytics() {
 
           {/* Scenario Analysis */}
           <TabsContent value="scenarios" className="space-y-6">
-            <Card className="bg-white border-gray-200">
+            <Card className="bg-white border-[#E8E4DC]">
               <CardHeader>
-                <CardTitle className="text-gray-900">Monte Carlo Business Scenarios</CardTitle>
+                <CardTitle className="text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Monte Carlo Business Scenarios</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-center text-gray-800 dark:text-slate-200 py-12">
-                  <BarChart3 className="h-16 w-16 mx-auto mb-4" />
-                  <p>Advanced Monte Carlo simulations and sensitivity analysis</p>
+                <div className="text-center text-[#6B7280] py-12">
+                  <BarChart3 className="h-16 w-16 mx-auto mb-4 text-[#C9A84C]" />
+                  <p className="text-[#0A0F2E] font-medium">Advanced Monte Carlo simulations and sensitivity analysis</p>
                   <p className="text-sm">10,000+ scenario iterations with probability distributions</p>
                 </div>
               </CardContent>

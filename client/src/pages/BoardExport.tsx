@@ -310,7 +310,7 @@ export default function BoardExport() {
                           >
                             <div className="flex items-center gap-3">
                               <Badge className={
-                                scenario.severity === 'High' ? 'bg-red-600/10 text-red-600 border-red-600/20' :
+                                scenario.severity === 'High' ? 'bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20' :
                                 scenario.severity === 'Medium' ? 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20' :
                                 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20'
                               }>
@@ -433,7 +433,7 @@ export default function BoardExport() {
                             <div className="flex items-start justify-between">
                               <div>
                                 <Badge className={
-                                  rec.priority === 'High' ? 'bg-red-500/10 text-red-500 mb-2' :
+                                  rec.priority === 'High' ? 'bg-[#0A0F2E]/10 text-[#0A0F2E] mb-2' :
                                   rec.priority === 'Medium' ? 'bg-[#C9A84C]/10 text-[#C9A84C] mb-2' :
                                   'bg-[#2B8A6E]/10 text-[#2B8A6E] mb-2'
                                 }>

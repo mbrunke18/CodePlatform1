@@ -448,7 +448,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                   <div className="text-sm text-gray-800">Complete</div>
                 </div>
               </div>
-              <Progress value={progressPercent} className="h-3 mb-4" />
+              <Progress value={progressPercent} className="h-3 mb-4 [&>div]:bg-[#C9A84C]" />
               <div className="grid grid-cols-4 gap-4">
                 <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.departments ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/20'}`}>
                   {setupProgress.departments ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />}

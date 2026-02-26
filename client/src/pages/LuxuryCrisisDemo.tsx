@@ -135,7 +135,7 @@ export default function LuxuryCrisisDemo() {
             </Card>
 
             {/* The Playbook */}
-            <Card className="p-8 bg-[#0A0F2E] border-[#C9A84C] border-2">
+            <Card className="p-8 bg-white/5 border-[#C9A84C]/50 border-2">
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-[#C9A84C] rounded-full">
                   <Award className="h-6 w-6 text-[#0A0F2E]" />

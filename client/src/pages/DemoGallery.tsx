@@ -129,7 +129,7 @@ const industryDemos = [
     path: "/industry-demos",
     industry: "Financial Services",
     icon: Shield,
-    color: "text-red-500"
+    color: "text-red-600"
   },
   {
     id: "market-entry",

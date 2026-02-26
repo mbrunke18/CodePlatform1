@@ -284,14 +284,14 @@ export default function BoardBriefings() {
                 key={decision.title}
                 className={`border rounded-lg p-4 space-y-2 bg-[#F8F7F4] dark:bg-white/5 ${
                   decision.priority === 'High'
-                    ? 'border-l-4 border-l-red-600 border-[#E8E4DC] dark:border-white/10'
+                    ? 'border-l-4 border-l-[#0A0F2E] border-[#E8E4DC] dark:border-white/10'
                     : 'border-l-4 border-l-[#C9A84C] border-[#E8E4DC] dark:border-white/10'
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <h3 className="font-semibold text-[#0A0F2E] dark:text-white">{decision.title}</h3>
                   <Badge className={
-                    decision.status === 'Pending Vote' ? 'bg-red-600/10 text-red-600 border-red-600/20' :
+                    decision.status === 'Pending Vote' ? 'bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20' :
                     decision.status === 'Under Review' ? 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20' :
                     'bg-[#0A0F2E]/10 text-[#0A0F2E] dark:bg-white/10 dark:text-white border-none'
                   }>{decision.status}</Badge>
@@ -302,7 +302,7 @@ export default function BoardBriefings() {
                     Due: {decision.due}
                   </span>
                   <Badge variant="outline" className={
-                    decision.priority === 'High' ? 'border-red-600/30 text-red-600' : 'border-[#C9A84C]/30 text-[#C9A84C]'
+                    decision.priority === 'High' ? 'border-[#0A0F2E]/30 text-[#0A0F2E]' : 'border-[#C9A84C]/30 text-[#C9A84C]'
                   }>{decision.priority} Priority</Badge>
                 </div>
               </div>

@@ -186,7 +186,7 @@ export default function InvestorLanding() {
                     </div>
                     <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">The Coordination Chaos</h3>
                     <p className="text-sm text-[#0A0F2E] mb-2">50-200+ stakeholders. No system to coordinate them.</p>
-                    <p className="text-xs text-[#C9A84C]">$4.88M avg breach cost. 35% higher without pre-defined teams.</p>
+                    <p className="text-xs text-[#C9A84C] font-semibold">$4.88M avg breach cost. 35% higher without pre-defined teams.</p>
                   </div>
                   <div className="border-t border-[#E8E4DC] pt-4">
                     <div className="flex items-center gap-2 mb-2">
@@ -212,7 +212,7 @@ export default function InvestorLanding() {
                     </div>
                     <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">The Institutional Amnesia</h3>
                     <p className="text-sm text-[#0A0F2E] mb-2">Knowledge walks out the door. Same scramble every time.</p>
-                    <p className="text-xs text-[#C9A84C]">3.5 disruptions per 2 years. Same $4.88M cost repeated.</p>
+                    <p className="text-xs text-[#C9A84C] font-semibold">3.5 disruptions per 2 years. Same $4.88M cost repeated.</p>
                   </div>
                   <div className="border-t border-[#E8E4DC] pt-4">
                     <div className="flex items-center gap-2 mb-2">

@@ -61,6 +61,7 @@ const DEMO_SCENARIO = {
   playbook: 'SEC-001: Data Breach Incident Response',
   targetTime: 720, // 12 minutes in seconds for display, but we'll accelerate
   demoSpeed: 15, // Demo runs in 15 seconds for demo purposes
+  accentColor: '#2B8A6E',
 };
 
 const STAKEHOLDERS: Stakeholder[] = [
@@ -273,37 +274,37 @@ export default function OneClickDemo() {
       {showConfetti && <Confetti recycle={false} numberOfPieces={500} />}
       
       {/* Header */}
-      <div className="bg-white border-b border-[#E8E4DC] sticky top-0 z-10">
+      <div className="bg-[#0A0F2E] border-b border-[#E8E4DC] sticky top-0 z-10">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <Badge className={`${demoState === 'complete' ? 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30' : 'bg-red-500/20 text-red-400 border-red-500/30 animate-pulse'}`}>
+              <Badge className={`${demoState === 'complete' ? 'bg-[#2B8A6E] text-white' : 'bg-red-600 text-white animate-pulse'}`}>
                 {demoState === 'complete' ? 'CONTAINED' : 'ACTIVE INCIDENT'}
               </Badge>
-              <span className="text-[#0A0F2E] font-semibold">{DEMO_SCENARIO.name}</span>
+              <span className="text-white font-semibold">{DEMO_SCENARIO.name}</span>
             </div>
             
             <div className="flex items-center gap-4">
               <div className="text-right">
                 <div className="text-3xl font-mono font-bold text-[#C9A84C]">{formatDisplayTime(displayTime)}</div>
-                <div className="text-xs text-gray-800">Elapsed Time</div>
+                <div className="text-xs text-white/70">Elapsed Time</div>
               </div>
               
               <div className="flex gap-2">
                 {demoState === 'running' && (
-                  <Button variant="outline" size="sm" onClick={pauseDemo} data-testid="button-pause-demo">
+                  <Button variant="outline" size="sm" onClick={pauseDemo} className="border-white/20 text-white hover:bg-white/10" data-testid="button-pause-demo">
                     <Pause className="h-4 w-4" />
                   </Button>
                 )}
                 {demoState === 'paused' && (
-                  <Button variant="outline" size="sm" onClick={resumeDemo} data-testid="button-resume-demo">
+                  <Button variant="outline" size="sm" onClick={resumeDemo} className="border-white/20 text-white hover:bg-white/10" data-testid="button-resume-demo">
                     <Play className="h-4 w-4" />
                   </Button>
                 )}
-                <Button variant="outline" size="sm" onClick={resetDemo} data-testid="button-reset-demo">
+                <Button variant="outline" size="sm" onClick={resetDemo} className="border-white/20 text-white hover:bg-white/10" data-testid="button-reset-demo">
                   <RotateCcw className="h-4 w-4" />
                 </Button>
-                <Button variant="ghost" size="sm" onClick={resetDemo} data-testid="button-close-demo">
+                <Button variant="ghost" size="sm" onClick={resetDemo} className="text-white hover:bg-white/10" data-testid="button-close-demo">
                   <X className="h-4 w-4" />
                 </Button>
               </div>
@@ -312,8 +313,8 @@ export default function OneClickDemo() {
           
           {/* Progress Bar */}
           <div className="mt-3">
-            <Progress value={Math.min(progress, 100)} className="h-2" />
-            <div className="flex justify-between text-xs text-gray-800 mt-1">
+            <Progress value={Math.min(progress, 100)} className="h-2 [&>div]:bg-[#C9A84C]" />
+            <div className="flex justify-between text-xs text-white/70 mt-1">
               <span>0:00</span>
               <span>Target: 12:00</span>
             </div>
@@ -416,29 +417,29 @@ export default function OneClickDemo() {
             </Card>
 
             {/* Live Metrics */}
-            <Card className="bg-white border-gray-200">
+            <Card className="bg-[#0A0F2E]/5 border-[#E8E4DC]">
               <CardContent className="p-4 space-y-4">
-                <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-[#0A0F2E] flex items-center gap-2">
                   <TrendingUp className="h-5 w-5 text-[#2B8A6E]" />
                   Live Metrics
                 </h3>
                 
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="bg-gray-50 rounded-lg p-3 text-center">
+                  <div className="bg-white border border-[#E8E4DC] rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-[#0A0F2E]">{completedTasks}</div>
-                    <div className="text-xs text-gray-800">Tasks Complete</div>
+                    <div className="text-sm text-[#0A0F2E]/70 font-medium">Tasks</div>
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-3 text-center">
+                  <div className="bg-white border border-[#E8E4DC] rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-[#2B8A6E]">{acknowledgedCount}</div>
-                    <div className="text-xs text-gray-800">Stakeholders Active</div>
+                    <div className="text-sm text-[#0A0F2E]/70 font-medium">Stakeholders</div>
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-3 text-center">
+                  <div className="bg-white border border-[#E8E4DC] rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-[#2B8A6E]">$500K</div>
-                    <div className="text-xs text-gray-800">Budget Released</div>
+                    <div className="text-sm text-[#0A0F2E]/70 font-medium">Budget</div>
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-3 text-center">
+                  <div className="bg-white border border-[#E8E4DC] rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-[#C9A84C]">2.4M</div>
-                    <div className="text-xs text-gray-800">Customers Notified</div>
+                    <div className="text-sm text-[#0A0F2E]/70 font-medium">Customers</div>
                   </div>
                 </div>
               </CardContent>

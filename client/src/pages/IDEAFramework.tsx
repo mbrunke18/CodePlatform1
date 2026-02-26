@@ -231,14 +231,14 @@ export default function IDEAFramework() {
                     <div className="flex flex-col gap-2">
                       <Badge
                         className="self-start px-3 py-1 text-xs font-semibold border-0 rounded-none"
-                        style={{ background: `${TEAL}18`, color: TEAL }}
+                        style={{ background: `${TEAL}22`, color: TEAL }}
                       >
                         <Cpu className="w-3 h-3 mr-1.5" />
                         {phase.aiRole}
                       </Badge>
                       <Badge
                         className="self-start px-3 py-1 text-xs font-semibold border-0 rounded-none"
-                        style={{ background: `${GOLD}18`, color: GOLD }}
+                        style={{ background: `${GOLD}22`, color: GOLD }}
                       >
                         <HeartHandshake className="w-3 h-3 mr-1.5" />
                         {phase.humanRole}
@@ -260,7 +260,7 @@ export default function IDEAFramework() {
 
                     <div className="grid sm:grid-cols-2 gap-6">
                       {/* AI Role */}
-                      <div className="rounded-none border border-[#3BAF8A]/20 bg-[#3BAF8A]/5 p-5">
+                      <div className="rounded-none border border-[#2B8A6E]/20 bg-[#2B8A6E]/5 p-5">
                         <div className="flex items-center gap-2 mb-4">
                           <Cpu className="h-4 w-4" style={{ color: TEAL }} />
                           <span className="text-xs font-bold tracking-widest uppercase" style={{ color: TEAL }}>
@@ -278,7 +278,7 @@ export default function IDEAFramework() {
                       </div>
 
                       {/* Human Role */}
-                      <div className="rounded-none border border-[#DFC178]/20 bg-[#DFC178]/5 p-5">
+                      <div className="rounded-none border border-[#C9A84C]/20 bg-[#C9A84C]/5 p-5">
                         <div className="flex items-center gap-2 mb-4">
                           <HeartHandshake className="h-4 w-4" style={{ color: GOLD }} />
                           <span className="text-xs font-bold tracking-widest uppercase" style={{ color: GOLD }}>

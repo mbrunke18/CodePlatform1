@@ -268,9 +268,9 @@ export default function ProductTour() {
           className="text-center"
         >
           <div className="w-24 h-24 mx-auto bg-[#0A0F2E]/10 rounded-none flex items-center justify-center mb-4">
-            <Clock className="w-12 h-12 text-red-600" />
+            <Clock className="w-12 h-12 text-[#0A0F2E]" />
           </div>
-          <p className="text-2xl font-bold text-red-600">72+ Hours</p>
+          <p className="text-2xl font-bold text-[#0A0F2E]">72+ Hours</p>
           <p className="text-[#0A0F2E] font-medium">Signal to Decision</p>
         </motion.div>
         <motion.div 
@@ -280,9 +280,9 @@ export default function ProductTour() {
           className="text-center"
         >
           <div className="w-24 h-24 mx-auto bg-[#0A0F2E]/10 rounded-none flex items-center justify-center mb-4">
-            <AlertTriangle className="w-12 h-12 text-red-600" />
+            <AlertTriangle className="w-12 h-12 text-[#0A0F2E]" />
           </div>
-          <p className="text-2xl font-bold text-red-600">15+ Meetings</p>
+          <p className="text-2xl font-bold text-[#0A0F2E]">15+ Meetings</p>
           <p className="text-[#0A0F2E] font-medium">To Align Stakeholders</p>
         </motion.div>
         <motion.div 
@@ -292,9 +292,9 @@ export default function ProductTour() {
           className="text-center"
         >
           <div className="w-24 h-24 mx-auto bg-[#0A0F2E]/10 rounded-none flex items-center justify-center mb-4">
-            <TrendingUp className="w-12 h-12 text-red-600 rotate-180" />
+            <TrendingUp className="w-12 h-12 text-[#0A0F2E] rotate-180" />
           </div>
-          <p className="text-2xl font-bold text-red-600">$10-50M</p>
+          <p className="text-2xl font-bold text-[#0A0F2E]">$10-50M</p>
           <p className="text-[#0A0F2E] font-medium">Annual Revenue at Risk</p>
         </motion.div>
       </div>
@@ -580,10 +580,10 @@ export default function ProductTour() {
           >
             <Button 
               size="lg" 
-              className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold px-12 py-8 text-sm rounded-none uppercase tracking-[0.2em] shadow-xl"
+              className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] px-12 py-8 rounded-none font-bold uppercase tracking-[0.2em] text-xs shadow-xl transition-all hover:scale-105"
               onClick={() => setLocation('/try-demo')}
             >
-              <Play className="w-5 h-5 mr-3" />
+              <Play className="mr-3 h-5 w-5" />
               Try Interactive Demo
             </Button>
           </motion.div>
@@ -596,7 +596,7 @@ export default function ProductTour() {
             <Button 
               variant="outline" 
               size="lg"
-              className="bg-white text-[#0A0F2E] border-[#0A0F2E] hover:bg-slate-50 font-bold uppercase tracking-widest text-[10px] px-8 rounded-none h-14"
+              className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none px-8 py-6 uppercase tracking-widest text-[10px] font-bold transition-all"
               onClick={() => setLocation('/playbook-library')}
             >
               <BookOpen className="w-4 h-4 mr-2" />
@@ -605,7 +605,7 @@ export default function ProductTour() {
             <Button 
               variant="outline" 
               size="lg"
-              className="bg-white text-[#0A0F2E] border-[#0A0F2E] hover:bg-slate-50 font-bold uppercase tracking-widest text-[10px] px-8 rounded-none h-14"
+              className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none px-8 py-6 uppercase tracking-widest text-[10px] font-bold transition-all"
               onClick={() => setLocation('/contact')}
             >
               Contact Sales

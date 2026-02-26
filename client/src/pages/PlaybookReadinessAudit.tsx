@@ -236,7 +236,7 @@ export default function PlaybookReadinessAudit() {
             return (
               <Card 
                 key={tier} 
-                className={`${config.bgColor} ${config.borderColor} border border-[#E8E4DC] cursor-pointer hover:shadow-md transition-all`}
+                className={`${config.bgColor} ${config.borderColor} border cursor-pointer hover:shadow-md transition-all`}
                 onClick={() => setSelectedTier(tier)}
                 data-testid={`tier-card-${tier}`}
               >
@@ -388,7 +388,7 @@ export default function PlaybookReadinessAudit() {
                           <h3 className="font-bold text-[#0A0F2E] text-lg" style={CG}>
                             #{playbook.playbookNumber} - {playbook.name}
                           </h3>
-                          <Badge variant="outline" className={`${config.textColor} border-${config.textColor}/20 bg-${config.textColor}/5`}>
+                          <Badge variant="outline" className={`${config.textColor} border-current bg-current/5`}>
                             {config.label}
                           </Badge>
                         </div>

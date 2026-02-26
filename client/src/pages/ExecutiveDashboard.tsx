@@ -61,6 +61,7 @@ function StatusIndicator({ status }: { status: 'good' | 'warning' | 'critical' }
 function MetricCard({ 
   title, 
   value, 
+  unit,
   trend,
   trendDirection,
   status,
@@ -69,6 +70,7 @@ function MetricCard({
 }: {
   title: string;
   value: string | number;
+  unit?: string;
   trend?: string;
   trendDirection?: 'up' | 'down' | 'neutral';
   status: 'good' | 'warning' | 'critical';
@@ -106,7 +108,7 @@ function MetricCard({
         <div>
           <div className="text-[10px] font-bold tracking-widest uppercase text-[#6B7280] mb-1">{title}</div>
           <div className="flex items-baseline gap-1">
-            <span style={{ ...CG, fontSize: "32px", fontWeight: 600, color: NAVY }}>{value}</span>
+            <span style={{ ...CG, fontSize: "32px", fontWeight: 600, color: NAVY }}>{value}{unit}</span>
           </div>
         </div>
         {trend && trendDirection && TrendIcon && (

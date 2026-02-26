@@ -226,7 +226,7 @@ const SUCCESS_METRICS = [
 const SCENARIO_BRANCHES = [
   { severity: "critical", label: "Critical - Full Activation", color: "bg-red-500", actions: ["Immediate full team mobilization", "All escalation paths active", "Board notification triggered"] },
   { severity: "high", label: "High - Elevated Response", color: "bg-[#C9A84C]", actions: ["Core team activation", "Management notification", "External counsel on standby"] },
-  { severity: "medium", label: "Medium - Monitoring Mode", color: "bg-[#C9A84C]/50", actions: ["Primary owner notified", "Situation monitoring enabled", "Escalation paths ready"] },
+  { severity: "medium", label: "Medium - Monitoring Mode", color: "bg-[#C9A84C]", actions: ["Primary owner notified", "Situation monitoring enabled", "Escalation paths ready"] },
   { severity: "low", label: "Low - Awareness Only", color: "bg-[#0A0F2E]", actions: ["Log for tracking", "Weekly digest inclusion", "No immediate action required"] },
 ];
 
@@ -532,7 +532,7 @@ export default function SandboxDemo() {
     <div className="space-y-8">
       <div className="text-center">
         <BrandStamp variant="dual" size="md" className="mb-8" />
-        <Badge className="mb-4 bg-[#0A0F2E]/10 text-[#0A0F2E]">
+        <Badge className="mb-4 bg-[#0A0F2E] text-white">
           Step 1 of 6: IDENTIFY Phase
         </Badge>
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">

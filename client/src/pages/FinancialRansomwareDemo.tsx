@@ -141,7 +141,7 @@ export default function FinancialRansomwareDemo() {
             </Card>
 
             {/* Playbook Info */}
-            <Card className="bg-[#0A0F2E] border-[#C9A84C] border-2 p-6">
+            <Card className="bg-white/5 border-[#C9A84C]/50 border-2 p-6">
               <h3 className="text-lg font-semibold text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Playbook: {financialDemoData.playbook.id} - {financialDemoData.playbook.name}</h3>
               <div className="flex items-center gap-6 mb-4">
                 <div className="text-sm text-white/60">Domain: <span className="text-white font-semibold">{financialDemoData.playbook.domain}</span></div>
@@ -253,7 +253,7 @@ export default function FinancialRansomwareDemo() {
               </Card>
             </div>
 
-            <Card className="bg-[#0A0F2E] border-[#C9A84C] border-2 p-8">
+            <Card className="bg-white/5 border-[#C9A84C]/50 border-2 p-8">
               <h3 className="text-xl font-semibold text-white mb-4 text-center" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Execution OS Difference</h3>
               <p className="text-white/80 text-center leading-relaxed max-w-3xl mx-auto">
                 Your AI detected the ransomware in milliseconds. But without Execution OS, coordinating your CEO, CISO, CTO, CFO, legal counsel, Board, and regulators would take 48-72 hours of email chains and emergency meetings. In that window, a $1M incident becomes a $27M disaster. Execution OS turns instant detection into 12-minute coordinated response—we're not replacing your AI, we're the execution layer that makes it deliver ROI.

@@ -106,8 +106,8 @@ const INDUSTRY_DEMOS: IndustryDemo[] = [
   { id: 'lvmh', title: 'Strategic Market Entry', industry: 'Luxury', icon: Crown, iconColor: 'text-[#C9A84C]', bgColor: 'bg-[#0A0F2E]/30', organization: 'LVMH', impact: '€1.68B value', route: '/lvmh-demo', type: 'offensive' },
   { id: 'shein', title: 'Viral Trend Response', industry: 'Fashion', icon: TrendingUp, iconColor: 'text-[#C9A84C]', bgColor: 'bg-[#0A0F2E]/30', organization: 'SHEIN', impact: '$108M revenue', route: '/shein-demo', type: 'offensive' },
   { id: 'spacex', title: 'Launch Acceleration', industry: 'Aerospace', icon: Rocket, iconColor: 'text-[#2B8A6E]', bgColor: 'bg-[#0A0F2E]/30', organization: 'SpaceX', impact: '$47M value', route: '/spacex-demo', type: 'offensive' },
-  { id: 'financial', title: 'Ransomware Response', industry: 'Finance', icon: Shield, iconColor: 'text-[#0A0F2E]', bgColor: 'bg-gray-50', organization: 'LoanDepot', impact: '$22M saved', route: '/financial-demo', type: 'defensive' },
-  { id: 'pharma', title: 'Class I Recall', industry: 'Pharma', icon: Pill, iconColor: 'text-red-400', bgColor: 'bg-red-900/30', organization: 'Glenmark', impact: 'Lives saved', route: '/pharma-demo', type: 'defensive' },
+  { id: 'financial', title: 'Ransomware Response', industry: 'Finance', icon: Shield, iconColor: 'text-[#0A0F2E]', bgColor: 'bg-white', organization: 'LoanDepot', impact: '$22M saved', route: '/financial-demo', type: 'defensive' },
+  { id: 'pharma', title: 'Class I Recall', industry: 'Pharma', icon: Pill, iconColor: 'text-red-400', bgColor: 'bg-[#0A0F2E]/30', organization: 'Glenmark', impact: 'Lives saved', route: '/pharma-demo', type: 'defensive' },
   { id: 'manufacturing', title: 'Supplier Crisis', industry: 'Automotive', icon: Factory, iconColor: 'text-[#C9A84C]', bgColor: 'bg-[#0A0F2E]/30', organization: 'Toyota', impact: '$450M saved', route: '/manufacturing-demo', type: 'defensive' },
   { id: 'retail', title: 'Food Contamination', industry: 'Retail', icon: ShoppingCart, iconColor: 'text-[#2B8A6E]', bgColor: 'bg-[#2B8A6E]/30', organization: 'Walmart', impact: '$245M + lives', route: '/retail-demo', type: 'defensive' },
   { id: 'energy', title: 'Grid Failure', industry: 'Energy', icon: Zap, iconColor: 'text-[#C9A84C]', bgColor: 'bg-[#0A0F2E]/30', organization: 'Pacific Grid', impact: '$2.5B saved', route: '/energy-demo', type: 'defensive' },
@@ -198,7 +198,7 @@ const SCENARIOS: Scenario[] = [
     name: 'Deal at Risk',
     industry: 'Sales & Revenue',
     icon: DollarSign,
-    color: 'from-[#2B8A6E] to-[#3BAF8A]',
+    color: 'from-[#2B8A6E] to-[#2B8A6E]',
     borderColor: 'border-[#2B8A6E]/50',
     trigger: 'Customer requests accelerated timeline on $5M deal',
     playbook: 'Deal Risk Response',
@@ -483,11 +483,11 @@ export default function TryDemo() {
 
   const getIntegrationIcon = (integration: string) => {
     switch (integration) {
-      case 'slack': return <SiSlack className="h-4 w-4 text-[#4A154B]" />;
-      case 'jira': return <SiJira className="h-4 w-4 text-[#0052CC]" />;
-      case 'teams': return <Users className="h-4 w-4 text-[#6264A7]" />;
-      case 'salesforce': return <SiSalesforce className="h-4 w-4 text-[#00A1E0]" />;
-      case 'notion': return <SiNotion className="h-4 w-4 text-gray-900" />;
+      case 'slack': return <SiSlack className="h-4 w-4 text-[#0A0F2E]" />;
+      case 'jira': return <SiJira className="h-4 w-4 text-[#0A0F2E]" />;
+      case 'teams': return <Users className="h-4 w-4 text-[#0A0F2E]" />;
+      case 'salesforce': return <SiSalesforce className="h-4 w-4 text-[#0A0F2E]" />;
+      case 'notion': return <SiNotion className="h-4 w-4 text-[#0A0F2E]" />;
       default: return <Zap className="h-4 w-4 text-[#2B8A6E]" />;
     }
   };

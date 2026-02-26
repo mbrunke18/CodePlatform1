@@ -318,21 +318,22 @@ export default function SettingsPage() {
                           <div className="flex items-center space-x-3 mb-2">
                             <h4 className="font-semibold text-[#0A0F2E]">{feature.name}</h4>
                             {feature.critical && (
-                              <Badge variant="default" className="bg-red-600 text-white">Critical</Badge>
-                            )}
-                          </div>
-                          <p className="text-sm text-gray-800">{feature.description}</p>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <Switch 
-                            checked={feature.enabled}
-                            disabled={feature.critical}
-                            data-testid={`switch-${feature.name.toLowerCase().replace(/\s+/g, '-')}`}
-                          />
-                          <Badge variant={feature.enabled ? 'default' : 'secondary'} className={feature.enabled ? 'bg-[#2B8A6E] text-white' : ''}>
-                            {feature.enabled ? 'Enabled' : 'Disabled'}
-                          </Badge>
-                        </div>
+                            <Badge variant="default" className="bg-red-600 text-white">Critical</Badge>
+                        )}
+                      </div>
+                      <p className="text-sm text-gray-800">{feature.description}</p>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Switch 
+                        checked={feature.enabled}
+                        disabled={feature.critical}
+                        data-testid={`switch-${feature.name.toLowerCase().replace(/\s+/g, '-')}`}
+                        className="data-[state=checked]:bg-[#2B8A6E]"
+                      />
+                      <Badge variant={feature.enabled ? 'default' : 'secondary'} className={feature.enabled ? 'bg-[#2B8A6E] text-white' : 'bg-black/5 text-gray-700'}>
+                        {feature.enabled ? 'Enabled' : 'Disabled'}
+                      </Badge>
+                    </div>
                       </div>
                     ))}
                   </div>

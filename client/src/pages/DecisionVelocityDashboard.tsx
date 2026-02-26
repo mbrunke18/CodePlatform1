@@ -294,7 +294,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
                         <p className="text-sm text-[#6B7280]">{decision.decisionDescription}</p>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Badge variant={getOutcomeBadgeVariant(decision.actualOutcome)} className={`rounded-none ${decision.actualOutcome === 'successful' ? 'bg-[#2B8A6E] text-white' : ''}`}>
+                        <Badge className={`rounded-none ${decision.actualOutcome === 'successful' ? 'bg-[#2B8A6E] text-white' : ''}`}>
                           {formatOutcome(decision.actualOutcome)}
                         </Badge>
                         {decision.effectiveness && (

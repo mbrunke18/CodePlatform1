@@ -277,44 +277,44 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
 
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <Card className="bg-gray-50 border-gray-200">
+            <Card className="bg-white border-[#E8E4DC]">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gray-800">Total Templates</p>
+                    <p className="text-sm text-[#6B7280]">Total Templates</p>
                     <p className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{templates.length}</p>
                   </div>
                   <BookOpen className="h-8 w-8 text-[#0A0F2E]" />
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-gray-50 border-gray-200">
+            <Card className="bg-white border-[#E8E4DC]">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gray-800">Customized</p>
+                    <p className="text-sm text-[#6B7280]">Customized</p>
                     <p className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>3</p>
                   </div>
                   <Edit className="h-8 w-8 text-[#2B8A6E]" />
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-gray-50 border-gray-200">
+            <Card className="bg-white border-[#E8E4DC]">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gray-800">Active</p>
+                    <p className="text-sm text-[#6B7280]">Active</p>
                     <p className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>2</p>
                   </div>
                   <Play className="h-8 w-8 text-[#2B8A6E]" />
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-gray-50 border-gray-200">
+            <Card className="bg-white border-[#E8E4DC]">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gray-800">Domains</p>
+                    <p className="text-sm text-[#6B7280]">Domains</p>
                     <p className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>8</p>
                   </div>
                   <Target className="h-8 w-8 text-[#0A0F2E]" />
@@ -326,17 +326,17 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
           {/* Search and Filter */}
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-800" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#6B7280]" />
               <Input 
                 placeholder="Search playbook templates..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 bg-gray-50 border-gray-200"
+                className="pl-10 bg-white border-[#E8E4DC]"
                 data-testid="input-search-playbooks"
               />
             </div>
             <Select value={selectedDomain} onValueChange={setSelectedDomain}>
-              <SelectTrigger className="w-48 bg-gray-50 border-gray-200">
+              <SelectTrigger className="w-48 bg-white border-[#E8E4DC]">
                 <Filter className="h-4 w-4 mr-2" />
                 <SelectValue placeholder="All Domains" />
               </SelectTrigger>
@@ -379,12 +379,12 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
           {/* Playbook Templates Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredTemplates.map((template: PlaybookTemplate) => (
-              <Card key={template.id} className="bg-gray-50 border-gray-200 hover:border-[#C9A84C]/50 transition-all">
+              <Card key={template.id} className="bg-white border-[#E8E4DC] hover:border-[#C9A84C]/50 transition-all">
                 <CardHeader className="pb-2">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <CardTitle className="text-gray-900 text-lg" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{template.name}</CardTitle>
-                      <CardDescription className="mt-1 text-gray-800 line-clamp-2">
+                      <CardTitle className="text-[#0A0F2E] text-lg" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{template.name}</CardTitle>
+                      <CardDescription className="mt-1 text-[#6B7280] line-clamp-2">
                         {template.description}
                       </CardDescription>
                     </div>
@@ -401,15 +401,15 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                   </div>
                   
                   <div className="grid grid-cols-3 gap-2 text-sm">
-                    <div className="flex items-center gap-1 text-gray-800">
+                    <div className="flex items-center gap-1 text-[#0A0F2E]">
                       <Clock className="h-4 w-4 text-[#2B8A6E]" />
                       <span>{template.estimatedDuration}</span>
                     </div>
-                    <div className="flex items-center gap-1 text-gray-800">
+                    <div className="flex items-center gap-1 text-[#0A0F2E]">
                       <Users className="h-4 w-4 text-[#2B8A6E]" />
                       <span>{template.stakeholderCount}</span>
                     </div>
-                    <div className="flex items-center gap-1 text-gray-800">
+                    <div className="flex items-center gap-1 text-[#0A0F2E]">
                       <Target className="h-4 w-4 text-[#2B8A6E]" />
                       <span>{template.tasks} tasks</span>
                     </div>
