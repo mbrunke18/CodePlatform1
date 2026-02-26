@@ -192,7 +192,7 @@ export default function VCPresentations() {
                 {pitchMaterials.map((material, index) => (
                   <div key={index} className="flex items-center justify-between p-5 bg-white border border-[#E8E4DC] group hover:border-[#C9A84C] transition-colors">
                     <div className="flex items-center space-x-4">
-                      <div className="w-10 h-10 bg-[#F8F7F4] flex items-center justify-center group-hover:bg-[#0A0F2E] transition-colors">
+                      <div className="w-10 h-10 bg-[#F8F7F4] flex items-center justify-center group-hover:bg-[#0A0F2E] group-hover:text-white transition-colors">
                         {material.icon}
                       </div>
                       <div>

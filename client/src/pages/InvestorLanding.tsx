@@ -606,7 +606,7 @@ export default function InvestorLanding() {
         <section className="py-16 px-6 bg-white text-gray-900">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-10">
-              <Badge className="mb-4 bg-[#2B8A6E] text-gray-900 border-0 text-sm px-4 py-1.5">
+              <Badge className="mb-4 bg-[#2B8A6E] text-white border-0 text-sm px-4 py-1.5">
                 Last 6 Months
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">

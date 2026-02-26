@@ -819,7 +819,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                         variant={isSelected ? "default" : "outline"}
                         size="sm"
                         onClick={() => handleToggleChannel(channel.id)}
-                        className={isSelected ? "bg-[#0A0F2E] hover:bg-[#0A0F2E]" : ""}
+                        className={isSelected ? "bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white" : ""}
                         data-testid={`button-channel-${channel.id}`}
                       >
                         <Icon className="h-4 w-4 mr-1" />

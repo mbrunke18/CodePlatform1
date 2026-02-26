@@ -178,7 +178,7 @@ export default function DemoRouter() {
             <Button
               variant="outline"
               onClick={() => setLocation('/playbook-library')}
-              className="text-gray-800 border-gray-200 hover:bg-[#141B45]"
+              className="text-gray-800 border-gray-200 hover:bg-[#141B45] hover:text-white"
               data-testid="button-explore-playbooks"
             >
               Browse 170 Playbooks →

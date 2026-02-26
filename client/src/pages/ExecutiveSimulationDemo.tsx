@@ -667,7 +667,7 @@ export default function ExecutiveSimulationDemo() {
                   variant="outline" 
                   size="sm"
                   onClick={resetSimulation}
-                  className="text-gray-900 border-slate-600 hover:bg-[#141B45]"
+                  className="text-gray-900 border-slate-600 hover:bg-[#141B45] hover:text-white"
                   data-testid="button-reset-simulation"
                 >
                   <RotateCcw className="w-4 h-4 mr-1" />
@@ -862,7 +862,7 @@ export default function ExecutiveSimulationDemo() {
                         {signal.actionRequired && phase === 'playbook_selection' && (
                           <Button 
                             size="sm" 
-                            className="bg-[#0A0F2E] hover:bg-[#0A0F2E]"
+                            className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white"
                             onClick={() => handleSelectPlaybook('competitor-ma-response')}
                             data-testid="button-respond-signal"
                           >

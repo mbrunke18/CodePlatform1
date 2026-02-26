@@ -2292,7 +2292,7 @@ export default function SandboxDemo() {
               <Button
                 onClick={handleNext}
                 disabled={!canProceed()}
-                className="bg-[#0A0F2E] hover:bg-[#0A0F2E]"
+                className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white"
                 data-testid="button-next"
               >
                 {currentStep === 'triggers' ? 'Run Simulation' : 'Continue'}

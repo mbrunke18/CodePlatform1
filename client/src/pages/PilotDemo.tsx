@@ -487,7 +487,7 @@ export default function PilotDemo() {
                     variant="outline"
                     size="lg"
                     onClick={() => setStep("setup")}
-                    className="gap-2 text-gray-900 border-slate-600 hover:bg-[#141B45]"
+                    className="gap-2 text-gray-900 border-slate-600 hover:bg-[#141B45] hover:text-white hover:border-[#141B45]"
                     data-testid="button-back-setup"
                   >
                     <ArrowLeft className="w-4 h-4" /> Back
@@ -577,7 +577,7 @@ export default function PilotDemo() {
                         variant="outline"
                         size="lg"
                         onClick={() => setStep("configure")}
-                        className="gap-2 text-gray-900 border-slate-600 hover:bg-[#141B45]"
+                        className="gap-2 text-gray-900 border-slate-600 hover:bg-[#141B45] hover:text-white hover:border-[#141B45]"
                         data-testid="button-back-configure"
                       >
                         <ArrowLeft className="w-4 h-4" /> Back
@@ -771,7 +771,7 @@ export default function PilotDemo() {
                             <Button
                               variant="outline"
                               onClick={resetDemo}
-                              className="gap-2 text-gray-900 border-slate-600 hover:bg-[#141B45]"
+                              className="gap-2 text-gray-900 border-slate-600 hover:bg-[#141B45] hover:text-white hover:border-[#141B45]"
                               data-testid="button-reset-demo"
                             >
                               <RefreshCw className="w-4 h-4" /> Run Another Demo

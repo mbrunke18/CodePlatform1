@@ -259,7 +259,7 @@ export default function PilotMonitoring() {
                     <div className="text-sm text-gray-800 dark:text-slate-300">Avg Execution Time</div>
                     <div className="text-2xl font-bold text-slate-900 dark:text-white">{pilotMetrics.avgExecutionTime} min</div>
                   </div>
-                  <Badge className="bg-[#2B8A6E] text-gray-900">
+                  <Badge className="bg-[#2B8A6E] text-white">
                     Target: 12 min
                   </Badge>
                 </div>

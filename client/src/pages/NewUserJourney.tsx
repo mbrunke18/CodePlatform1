@@ -1287,7 +1287,7 @@ export default function NewUserJourney() {
                 size="lg"
                 onClick={handleNext}
                 disabled={!canProceed()}
-                className="bg-[#0A0F2E] hover:bg-[#0A0F2E] min-w-[160px]"
+                className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white min-w-[160px]"
                 data-testid="button-next"
               >
                 Continue

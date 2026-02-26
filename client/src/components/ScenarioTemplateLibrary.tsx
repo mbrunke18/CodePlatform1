@@ -387,7 +387,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
               variant="outline" 
               size="sm"
               onClick={() => setShowAiSuggestions(!showAiSuggestions)}
-              className="border-[#C9A84C] text-[#C9A84C] hover:bg-[#0A0F2E]"
+              className="border-[#C9A84C] text-[#C9A84C] hover:bg-[#0A0F2E] hover:text-white"
             >
               <Brain className="h-4 w-4 mr-1" />
               AI Assist

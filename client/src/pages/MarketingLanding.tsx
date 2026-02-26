@@ -258,7 +258,7 @@ export default function MarketingLanding() {
             {/* 2. AI Intelligence (5 Modules) */}
             <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-ai-intelligence">
               <CardContent className="p-8">
-                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] transition-colors">
+                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] group-hover:text-white transition-colors">
                   <Brain className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
                 </div>
                 <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">AI Intelligence Layer</h3>
@@ -274,7 +274,7 @@ export default function MarketingLanding() {
             {/* 3. 24/7 Monitoring */}
             <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-monitoring">
               <CardContent className="p-8">
-                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] transition-colors">
+                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] group-hover:text-white transition-colors">
                   <Radio className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
                 </div>
                 <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">24/7 Monitoring System</h3>
@@ -290,7 +290,7 @@ export default function MarketingLanding() {
             {/* 4. Playbook Library */}
             <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-scenarios">
               <CardContent className="p-8">
-                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] transition-colors">
+                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] group-hover:text-white transition-colors">
                   <FileText className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
                 </div>
                 <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">Playbook Library</h3>
@@ -306,7 +306,7 @@ export default function MarketingLanding() {
             {/* 5. What-If Analyzer */}
             <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-what-if">
               <CardContent className="p-8">
-                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] transition-colors">
+                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] group-hover:text-white transition-colors">
                   <Layers className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
                 </div>
                 <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">What-If Analyzer</h3>
@@ -322,7 +322,7 @@ export default function MarketingLanding() {
             {/* 6. Command Center */}
             <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-command-center">
               <CardContent className="p-8">
-                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] transition-colors">
+                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] group-hover:text-white transition-colors">
                   <Shield className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
                 </div>
                 <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">Executive Command Center</h3>

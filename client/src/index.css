@@ -886,3 +886,73 @@ html:not(.dark) [class*="border-zinc-9"] {
   height: 2px;
   background: linear-gradient(90deg, var(--exos-gold), transparent);
 }
+
+/* ========================================
+   BRAND CONTRAST ENFORCEMENT
+   Uses [class~="..."] attribute selectors for reliable Tailwind class matching.
+   These rules set default text/icon color on brand backgrounds.
+   Any explicit Tailwind text-* class on the same element overrides these
+   because Tailwind classes are generated after this block.
+   ======================================== */
+
+/* Navy & dark navy → white text and white SVG icons (via currentColor) */
+[class~="bg-[#0A0F2E]"],
+[class*=" bg-[#0A0F2E]"],
+[class~="bg-[#141B45]"],
+[class*=" bg-[#141B45]"] {
+  color: #ffffff;
+}
+
+/* Teal → white text and icons */
+[class~="bg-[#2B8A6E]"],
+[class*=" bg-[#2B8A6E]"],
+[class~="bg-[#237A5F]"],
+[class*=" bg-[#237A5F]"] {
+  color: #ffffff;
+}
+
+/* Gold → dark navy text (gold is a light accent color) */
+[class~="bg-[#C9A84C]"],
+[class*=" bg-[#C9A84C]"],
+[class~="bg-[#DFC178]"],
+[class*=" bg-[#DFC178]"] {
+  color: #0A0F2E;
+}
+
+/* Inline style navy backgrounds → white text for all children */
+[style*="background: #0A0F2E"],
+[style*="background:#0A0F2E"],
+[style*="background-color: #0A0F2E"],
+[style*="background-color:#0A0F2E"] {
+  color: #ffffff;
+}
+[style*="background: #0A0F2E"] *,
+[style*="background:#0A0F2E"] * {
+  --inherited-bg: navy;
+}
+
+/* Cards on dark sections: semi-transparent white overlays get white text */
+[style*="background: #0A0F2E"] [class*="bg-white/"],
+[style*="background:#0A0F2E"] [class*="bg-white/"] {
+  color: #ffffff;
+}
+
+/* Buttons with brand backgrounds — !important so they override shadcn defaults */
+button[class~="bg-[#0A0F2E]"],
+button[class*=" bg-[#0A0F2E]"],
+button[class~="bg-[#141B45]"],
+button[class*=" bg-[#141B45]"] {
+  color: #ffffff !important;
+}
+
+button[class~="bg-[#2B8A6E]"],
+button[class*=" bg-[#2B8A6E]"] {
+  color: #ffffff !important;
+}
+
+button[class~="bg-[#C9A84C]"],
+button[class*=" bg-[#C9A84C]"],
+button[class~="bg-[#DFC178]"],
+button[class*=" bg-[#DFC178]"] {
+  color: #0A0F2E !important;
+}

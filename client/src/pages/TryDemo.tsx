@@ -878,7 +878,7 @@ export default function TryDemo() {
                         </div>
 
                         <Button 
-                          className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] py-6 text-lg font-semibold"
+                          className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white py-6 text-lg font-semibold"
                           onClick={completeDetect}
                         >
                           <Play className="mr-2 h-5 w-5" />
@@ -963,7 +963,7 @@ export default function TryDemo() {
                               Execution OS captures what worked and suggests playbook improvements for next time.
                             </p>
                             <Button 
-                              className="w-full bg-[#0A0F2E] hover:bg-[#141B45]"
+                              className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white"
                               onClick={completeAdvance}
                             >
                               <Sparkles className="mr-2 h-4 w-4" />

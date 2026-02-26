@@ -290,13 +290,13 @@ export default function PlaybookReadinessDashboard({
               {score?.monitorWeight ?? 20}%
             </div>
             <div 
-              className="bg-[#2B8A6E] flex items-center justify-center text-xs text-gray-900 font-medium"
+              className="bg-[#2B8A6E] flex items-center justify-center text-xs text-white font-medium"
               style={{ width: `${score?.executeWeight ?? 30}%` }}
             >
               {score?.executeWeight ?? 30}%
             </div>
             <div 
-              className="bg-amber-500 flex items-center justify-center text-xs text-gray-900 font-medium"
+              className="bg-amber-500 flex items-center justify-center text-xs text-white font-medium"
               style={{ width: `${score?.learnWeight ?? 10}%` }}
             >
               {score?.learnWeight ?? 10}%

@@ -676,7 +676,7 @@ export default function IncidentAnalyzer() {
                             isActive
                               ? "bg-teal-500 text-gray-900 shadow-lg shadow-teal-500/30"
                               : isComplete
-                              ? "bg-[#2B8A6E] text-gray-900"
+                              ? "bg-[#2B8A6E] text-white"
                               : "bg-gray-50 text-gray-700"
                           }`}
                         >
@@ -1502,7 +1502,7 @@ export default function IncidentAnalyzer() {
                   </p>
                   <Button
                     onClick={generateBoardPDF}
-                    className="bg-[#2B8A6E] hover:bg-[#2B8A6E] text-gray-900 gap-2 w-full"
+                    className="bg-[#2B8A6E] hover:bg-[#2B8A6E] text-white gap-2 w-full"
                   >
                     <Download className="w-4 h-4" /> Download Board Briefing (PDF)
                   </Button>
