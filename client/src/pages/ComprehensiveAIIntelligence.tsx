@@ -483,7 +483,7 @@ export default function ComprehensiveAIIntelligence() {
                   {aiModules.map((module) => (
                     <div key={module.id} className="flex items-center justify-between p-3 bg-[#F8F7F4] rounded-lg">
                       <div className="flex items-center gap-3">
-                        <div className="p-2 bg-[#0A0F2E] rounded-lg">
+                        <div className="p-2 bg-[#0A0F2E]/10 rounded-lg">
                           {module.icon}
                         </div>
                         <div>

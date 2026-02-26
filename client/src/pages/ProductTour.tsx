@@ -528,7 +528,7 @@ export default function ProductTour() {
           <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="text-center p-3 bg-white border border-[#E8E4DC] rounded-none">
             <p className="text-[#0A0F2E] font-bold text-[9px] uppercase tracking-widest">Anaplan</p>
           </motion.div>
-          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="text-center p-3 bg-[#0A0F2E] rounded-none shadow-lg">
+          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="text-center p-3 bg-[#0A0F2E]/10 rounded-none shadow-lg">
             <p className="text-[#C9A84C] font-bold text-[9px] uppercase tracking-widest">Execution OS</p>
           </motion.div>
           

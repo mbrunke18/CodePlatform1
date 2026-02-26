@@ -160,7 +160,7 @@ export default function PrismInsights() {
           {/* ROI Value Context */}
           <Card className="mb-4 bg-[#0A0F2E]/5 border-[#E8E4DC]" data-testid="prism-roi-context">
             <CardContent className="p-3 flex items-center gap-3">
-              <div className="p-2 bg-[#0A0F2E] rounded-lg">
+              <div className="p-2 bg-[#0A0F2E]/10 rounded-lg">
                 <Layers className="h-5 w-5 text-[#C9A84C]" />
               </div>
               <div>

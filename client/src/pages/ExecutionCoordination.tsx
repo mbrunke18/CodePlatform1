@@ -188,7 +188,7 @@ export default function ExecutionCoordination() {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-12 h-12 bg-[#0A0F2E] rounded-none flex items-center justify-center">
+            <div className="w-12 h-12 bg-[#0A0F2E]/10 rounded-lg flex items-center justify-center">
               <Zap className="h-6 w-6 text-[#C9A84C]" />
             </div>
             <div>
@@ -484,7 +484,7 @@ export default function ExecutionCoordination() {
         <Card className="bg-white border border-[#E8E4DC] rounded-none shadow-sm">
           <CardContent className="p-8">
             <div className="flex items-start gap-6">
-              <div className="w-12 h-12 bg-[#0A0F2E] rounded-none flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 bg-[#0A0F2E]/10 rounded-lg flex items-center justify-center flex-shrink-0">
                 <Clock className="h-6 w-6 text-[#C9A84C]" />
               </div>
               <div>

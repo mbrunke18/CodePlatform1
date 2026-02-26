@@ -146,9 +146,14 @@ export default function HowItWorks() {
                 </div>
               </div>
               <div className={index % 2 === 1 ? "md:order-1" : ""}>
-                 <div style={{ width: "100%", aspectRatio: "4/3", background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
-                    <div style={{ position: "absolute", inset: 0, opacity: 0.1, backgroundImage: "radial-gradient(#DFC178 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
-                    <phase.icon className="h-24 w-24 text-[#DFC178] opacity-20" />
+                 <div style={{ width: "100%", aspectRatio: "4/3", background: "#0A0F2E", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", position: "relative", gap: 16 }}>
+                    <div style={{ position: "absolute", inset: 0, opacity: 0.08, backgroundImage: "radial-gradient(#DFC178 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+                    <phase.icon className="h-20 w-20 text-[#DFC178] opacity-60 relative z-10" />
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4, position: "relative", zIndex: 10 }}>
+                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>Phase {phase.number}</span>
+                      <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 600, color: "#fff" }}>{phase.name}</span>
+                      <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#C9A84C" }}>{phase.moduleName}</span>
+                    </div>
                  </div>
               </div>
             </div>

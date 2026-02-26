@@ -115,7 +115,7 @@ export default function IntelligenceControlCenter() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <div className="p-2 bg-[#0A0F2E] rounded-lg">
+              <div className="p-2 bg-[#0A0F2E]/10 rounded-lg">
                 <Radio className="h-5 w-5 text-[#C9A84C]" />
               </div>
               <h1 className="text-2xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="page-title">Intelligence Control Center</h1>
@@ -195,7 +195,7 @@ export default function IntelligenceControlCenter() {
                     <CardHeader className="pb-3">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
-                          <div className={`p-2 bg-[#0A0F2E] rounded-lg`}>
+                          <div className={`p-2 bg-[#0A0F2E]/10 rounded-lg`}>
                             <Icon className={`h-6 w-6 ${colors.text}`} />
                           </div>
                           <div>
@@ -236,7 +236,7 @@ export default function IntelligenceControlCenter() {
           <Link href="/ai" data-testid="link-ai-copilots">
             <Card className="bg-white border-[#E8E4DC] hover:border-[#0A0F2E]/50 transition-all cursor-pointer" data-testid="card-ai-copilots">
               <CardContent className="p-4 flex items-center gap-4">
-                <div className="p-2 bg-[#0A0F2E] rounded-lg">
+                <div className="p-2 bg-[#0A0F2E]/10 rounded-lg">
                   <Brain className="h-5 w-5 text-[#C9A84C]" />
                 </div>
                 <div className="flex-1">
@@ -251,7 +251,7 @@ export default function IntelligenceControlCenter() {
           <Link href="/signal-intelligence" data-testid="link-configure-signals">
             <Card className="bg-white border-[#E8E4DC] hover:border-[#0A0F2E]/50 transition-all cursor-pointer" data-testid="card-configure-signals">
               <CardContent className="p-4 flex items-center gap-4">
-                <div className="p-2 bg-[#0A0F2E] rounded-lg">
+                <div className="p-2 bg-[#0A0F2E]/10 rounded-lg">
                   <Radio className="h-5 w-5 text-[#C9A84C]" />
                 </div>
                 <div className="flex-1">
@@ -266,7 +266,7 @@ export default function IntelligenceControlCenter() {
           <Link href="/triggers-management" data-testid="link-manage-triggers">
             <Card className="bg-white border-[#E8E4DC] hover:border-[#C9A84C]/50 transition-all cursor-pointer" data-testid="card-manage-triggers">
               <CardContent className="p-4 flex items-center gap-4">
-                <div className="p-2 bg-[#0A0F2E] rounded-lg">
+                <div className="p-2 bg-[#0A0F2E]/10 rounded-lg">
                   <Bell className="h-5 w-5 text-[#C9A84C]" />
                 </div>
                 <div className="flex-1">

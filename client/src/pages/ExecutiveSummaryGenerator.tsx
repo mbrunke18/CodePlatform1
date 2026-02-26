@@ -383,8 +383,8 @@ export default function ExecutiveSummaryGenerator() {
                   <Button
                     onClick={() => generateMutation.mutate()}
                     disabled={generateMutation.isPending}
-                    style={{ background: NAVY, height: 52 }}
-                    className="w-full text-white font-bold uppercase tracking-widest text-[11px]"
+                    style={{ background: NAVY, height: 52, color: "#fff" }}
+                    className="w-full font-bold uppercase tracking-widest text-[11px]"
                   >
                     {generateMutation.isPending ? (
                       <>

@@ -313,7 +313,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                         <div className="text-[10px] uppercase tracking-wider text-[#6B7280]">Current FRI</div>
                       </div>
                     </div>
-                    <div className="absolute -right-2 -top-2 w-10 h-10 rounded-full bg-[#0A0F2E] flex items-center justify-center">
+                    <div className="absolute -right-2 -top-2 w-10 h-10 rounded-full bg-[#0A0F2E]/10 flex items-center justify-center">
                       <TrendingUp className="h-5 w-5 text-[#C9A84C]" />
                     </div>
                   </div>

@@ -193,7 +193,7 @@ export default function RoadshowResources() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-[#0A0F2E] flex items-center justify-center">
+            <div className="w-10 h-10 bg-[#0A0F2E]/10 rounded-lg flex items-center justify-center">
               <Zap className="h-5 w-5 text-[#C9A84C]" />
             </div>
             <h2 className="text-2xl font-light text-[#0A0F2E]" style={CG}>
