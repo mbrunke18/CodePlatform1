@@ -216,7 +216,7 @@ export default function BoardBriefings() {
                         <h3 className="font-semibold text-[#0A0F2E] dark:text-white" data-testid={`text-briefing-title-${briefing.id}`}>{briefing.title}</h3>
                         <Badge variant="outline" className="border-[#0A0F2E]/30 text-[#0A0F2E] dark:border-white/20 dark:text-white">{briefing.briefingType}</Badge>
                         {briefing.timeToDecision && (
-                          <Badge variant="secondary" className="bg-[#C9A84C]/20 text-[#C9A84C] border-none">{briefing.timeToDecision}</Badge>
+                          <Badge variant="secondary" className="bg-[#C9A84C]/10 text-[#C9A84C] border-none">{briefing.timeToDecision}</Badge>
                         )}
                         {briefing.reviewed && (
                           <CheckCircle className="h-5 w-5 text-[#2B8A6E]" />

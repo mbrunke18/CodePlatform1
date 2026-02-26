@@ -109,14 +109,14 @@ export default function FinancialRansomwareDemo() {
             {/* Crisis Scenario */}
             <Card className="bg-white/5 border-white/10 p-6">
               <div className="flex items-start gap-4">
-                <AlertTriangle className="w-6 h-6 text-red-400 mt-1" />
+                <AlertTriangle className="w-6 h-6 text-[#C9A84C] mt-1" />
                 <div className="flex-1">
                   <h3 className="text-lg font-semibold text-white mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Crisis Scenario</h3>
                   <p className="text-white/80 mb-4 leading-relaxed">{financialDemoData.crisis.description}</p>
                   
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div className="bg-white/5 p-4 rounded-lg border border-white/10">
-                      <DollarSign className="w-5 h-5 text-red-400 mb-2" />
+                      <DollarSign className="w-5 h-5 text-[#C9A84C] mb-2" />
                       <div className="text-xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{financialDemoData.crisis.impactMetrics.financialImpact}</div>
                       <div className="text-sm text-white/40">At Risk</div>
                     </div>
@@ -131,7 +131,7 @@ export default function FinancialRansomwareDemo() {
                       <div className="text-sm text-white/40">Stakeholders</div>
                     </div>
                     <div className="bg-white/5 p-4 rounded-lg border border-white/10">
-                      <AlertTriangle className="w-5 h-5 text-red-400 mb-2" />
+                      <AlertTriangle className="w-5 h-5 text-[#C9A84C] mb-2" />
                       <div className="text-xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{financialDemoData.crisis.impactMetrics.affectedCustomers}</div>
                       <div className="text-sm text-white/40">Affected Customers</div>
                     </div>

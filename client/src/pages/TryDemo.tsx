@@ -1110,8 +1110,8 @@ export default function TryDemo() {
                                       {demo.impact}
                                     </span>
                                   </div>
-                                  <div className="mt-2 flex items-center gap-1 text-xs text-[#2B8A6E] opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <span>Explore</span>
+                                  <div className="mt-2 flex items-center gap-1 text-[#2B8A6E] opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <span className="text-[10px] font-medium">Explore</span>
                                     <ExternalLink className="h-2.5 w-2.5" />
                                   </div>
                                 </button>

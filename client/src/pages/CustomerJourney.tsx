@@ -154,14 +154,14 @@ export default function CustomerJourney() {
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-2 mb-4">
               <div className="h-[1px] w-7 bg-[#C9A84C]" />
-              <span className="text-[#C9A84C] text-[9px] font-bold uppercase tracking-[0.2em]">Execution OS North Star™</span>
+              <span className="text-[#C9A84C] text-[9px] font-bold uppercase tracking-[0.2em]">The Customer Lifecycle</span>
               <div className="h-[1px] w-7 bg-[#C9A84C]" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-4" style={CG}>
-              Your Path to Strategic Excellence
+              From Strategy to <span className="text-[#C9A84C]">Execution Mastery</span>
             </h1>
-            <p className="text-xl text-[#6B7280] max-w-3xl mx-auto">
-              From discovery to continuous value, your roadmap to 12-minute strategic response
+            <p className="text-xl text-[#6B7280] max-w-3xl mx-auto font-medium">
+              Our 4-phase transformation model for modern enterprise operating systems.
             </p>
           </div>
 

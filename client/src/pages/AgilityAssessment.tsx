@@ -95,11 +95,11 @@ const QUESTIONS: Question[] = [
 ];
 
 const getScoreCategory = (score: number) => {
-  if (score >= 80) return { label: "Agility Leader", color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]/20" };
-  if (score >= 60) return { label: "Above Average", color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]/20" };
-  if (score >= 40) return { label: "Industry Average", color: "text-[#C9A84C]", bg: "bg-[#C9A84C]/20" };
-  if (score >= 20) return { label: "Below Average", color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]/20" };
-  return { label: "Significant Opportunity", color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]/20" };
+  if (score >= 80) return { label: "Agility Leader", color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]/10" };
+  if (score >= 60) return { label: "Above Average", color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]/10" };
+  if (score >= 40) return { label: "Industry Average", color: "text-[#C9A84C]", bg: "bg-[#C9A84C]/10" };
+  if (score >= 20) return { label: "Below Average", color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]/10" };
+  return { label: "Significant Opportunity", color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]/10" };
 };
 
 export default function AgilityAssessment() {
@@ -166,7 +166,7 @@ export default function AgilityAssessment() {
         <div className="container mx-auto px-4 py-12">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4 bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
+              <Badge className="mb-4 bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30">
                 <CheckCircle className="h-4 w-4 mr-2" />
                 Assessment Complete
               </Badge>
@@ -281,7 +281,7 @@ export default function AgilityAssessment() {
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8">
-            <Badge className="mb-4 bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30">
+            <Badge className="mb-4 bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/30">
               <BarChart3 className="h-4 w-4 mr-2" />
               Agility Assessment
             </Badge>

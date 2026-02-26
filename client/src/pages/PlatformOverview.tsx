@@ -181,7 +181,7 @@ export default function PlatformOverview() {
                       <div>
                         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
                           <div style={{ width: 20, height: 1.5, background: step.color, flexShrink: 0 }} />
-                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: step.color }}>{step.badge}</span>
+                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: step.color === "#0A0F2E" ? "#141B45" : step.color }}>{step.badge}</span>
                         </div>
                         <h3 className="text-xl font-bold" style={{ color: "#0A0F2E" }}>{step.headline}</h3>
                         <p className="text-sm text-[#6B7280]">{step.sub}</p>
@@ -198,7 +198,7 @@ export default function PlatformOverview() {
                         <ul className="space-y-2">
                           {step.aiRole.map((a, j) => (
                             <li key={j} className="flex items-start gap-2 text-sm text-[#6B7280]">
-                              <CheckCircle2 className="h-3.5 w-3.5 shrink-0 mt-0.5" style={{ color: "#0A0F2E" }} />
+                              <CheckCircle2 className="h-3.5 w-3.5 shrink-0 mt-0.5" style={{ color: "#2B8A6E" }} />
                               {a}
                             </li>
                           ))}

@@ -181,7 +181,7 @@ const industryDemos: IndustryDemo[] = [
 
 const categoryBadge = (cat: string) => {
   if (cat === 'OFFENSE') return 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20';
-  if (cat === 'DEFENSE') return 'bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20';
+  if (cat === 'DEFENSE') return 'bg-[#0A0F2E]/10 text-[#141B45] border-[#0A0F2E]/20';
   return 'bg-[#C9A84C]/10 text-[#0A0F2E] border-[#C9A84C]/20';
 };
 

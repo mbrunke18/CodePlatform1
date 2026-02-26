@@ -148,7 +148,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
   const getSeverityColor = (severity: string) => {
     switch (severity) {
       case 'critical': return 'bg-red-500/10 text-red-600 border-red-500/20';
-      case 'high': return 'bg-red-500/5 text-red-500 border-red-500/10';
+      case 'high': return 'bg-red-500/10 text-red-600 border-red-500/20';
       case 'medium': return 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20';
       case 'low': return 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20';
       default: return 'bg-black/5 text-gray-700 border-black/10';

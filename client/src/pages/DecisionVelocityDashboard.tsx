@@ -38,7 +38,7 @@ function getEffectivenessColor(effectiveness: string): string {
     case 'high': return 'text-[#0A0F2E]';
     case 'moderate': return 'text-[#C9A84C]';
     case 'low': return 'text-[#C9A84C]';
-    case 'poor': return 'text-[#ef4444]';
+    case 'poor': return 'text-[#C9A84C]';
     default: return 'text-[#0A0F2E]';
   }
 }
@@ -187,17 +187,17 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
                   Before Execution OS
                 </h3>
                 <div className="space-y-3">
-                  <div className="flex justify-between items-center p-3 bg-[#ef4444]/5 rounded-none border border-[#ef4444]/10">
+                  <div className="flex justify-between items-center p-3 bg-[#C9A84C]/5 rounded-none border border-[#C9A84C]/10">
                     <span className="text-sm font-medium text-[#0A0F2E]">Avg Decision Confidence</span>
-                    <span className="text-lg font-bold text-[#ef4444]" style={CG}>45%</span>
+                    <span className="text-lg font-bold text-[#C9A84C]" style={CG}>45%</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-[#ef4444]/5 rounded-none border border-[#ef4444]/10">
+                  <div className="flex justify-between items-center p-3 bg-[#C9A84C]/5 rounded-none border border-[#C9A84C]/10">
                     <span className="text-sm font-medium text-[#0A0F2E]">Decisions Per Quarter</span>
-                    <span className="text-lg font-bold text-[#ef4444]" style={CG}>11</span>
+                    <span className="text-lg font-bold text-[#C9A84C]" style={CG}>11</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-[#ef4444]/5 rounded-none border border-[#ef4444]/10">
+                  <div className="flex justify-between items-center p-3 bg-[#C9A84C]/5 rounded-none border border-[#C9A84C]/10">
                     <span className="text-sm font-medium text-[#0A0F2E]">Success Rate</span>
-                    <span className="text-lg font-bold text-[#ef4444]" style={CG}>47%</span>
+                    <span className="text-lg font-bold text-[#C9A84C]" style={CG}>47%</span>
                   </div>
                 </div>
               </div>

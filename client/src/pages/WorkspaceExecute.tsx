@@ -129,7 +129,7 @@ export default function WorkspaceExecute() {
                 </Button>
               </Link>
               <Link href="/practice-drills">
-                <Button variant="outline" className="border-[#C9A84C]/50 text-[#C9A84C] hover:bg-[#C9A84C]/10">
+                <Button variant="outline" className="border-[#C9A84C]/20 text-[#C9A84C] hover:bg-[#C9A84C]/5">
                   <Play className="h-4 w-4 mr-2" />
                   Run Drill
                 </Button>
@@ -224,7 +224,7 @@ export default function WorkspaceExecute() {
                   <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> Jan 28</span>
                 </div>
                 <Link href="/mission-control">
-                  <Button size="sm" variant="outline" className="border-[#C9A84C]/50 text-[#C9A84C] hover:bg-[#C9A84C]/10">
+                  <Button size="sm" variant="outline" className="border-[#C9A84C]/20 text-[#C9A84C] hover:bg-[#C9A84C]/5">
                     View Details <ChevronRight className="h-3.5 w-3.5 ml-1" />
                   </Button>
                 </Link>
@@ -246,7 +246,7 @@ export default function WorkspaceExecute() {
                   <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> Feb 15</span>
                 </div>
                 <Link href="/mission-control">
-                  <Button size="sm" variant="outline" className="border-[#C9A84C]/50 text-[#C9A84C] hover:bg-[#C9A84C]/10">
+                  <Button size="sm" variant="outline" className="border-[#C9A84C]/20 text-[#C9A84C] hover:bg-[#C9A84C]/5">
                     View Details <ChevronRight className="h-3.5 w-3.5 ml-1" />
                   </Button>
                 </Link>

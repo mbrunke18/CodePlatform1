@@ -318,7 +318,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                       const distance = 25 + (index * 8);
                       const x = 50 + distance * Math.cos((angle * Math.PI) / 180);
                       const y = 50 + distance * Math.sin((angle * Math.PI) / 180);
-                      const color = signal.impact === 'critical' ? "#ef4444" : signal.impact === 'high' ? GOLD : TEAL;
+                      const color = signal.impact === 'critical' ? GOLD : signal.impact === 'high' ? GOLD : TEAL;
                       
                       return (
                         <div
@@ -374,8 +374,8 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                             letterSpacing: "0.1em", 
                             textTransform: "uppercase", 
                             padding: "2px 8px",
-                            background: signal.impact === 'critical' ? 'rgba(239,68,68,0.1)' : 'rgba(201,168,76,0.1)',
-                            color: signal.impact === 'critical' ? '#ef4444' : GOLD
+                            background: signal.impact === 'critical' ? 'rgba(201,168,76,0.1)' : 'rgba(201,168,76,0.1)',
+                            color: signal.impact === 'critical' ? GOLD : GOLD
                           }}>
                             {signal.impact}
                           </span>

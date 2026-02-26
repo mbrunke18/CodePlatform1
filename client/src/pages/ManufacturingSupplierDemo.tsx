@@ -88,7 +88,7 @@ export default function ManufacturingSupplierDemo() {
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div className="p-6 bg-white/5 rounded-lg border border-white/10">
                   <h3 className="font-bold text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                    <AlertTriangle className="w-5 h-5 text-red-400" />
+                    <AlertTriangle className="w-5 h-5 text-[#C9A84C]" />
                     The Crisis
                   </h3>
                   <div className="space-y-3 text-sm">
@@ -119,8 +119,8 @@ export default function ManufacturingSupplierDemo() {
                     <li>• Day 4-5: Emergency meetings to find alternatives</li>
                     <li>• Week 2: Alternative supplier can't meet quality specs</li>
                     <li>• Week 3: Engineering scrambles to re-qualify parts</li>
-                    <li className="text-red-400 font-semibold">• Week 4: Production lines shut down</li>
-                    <li className="text-red-400 font-bold">• Month 2: Customers buying from competitors</li>
+                    <li className="text-[#C9A84C] font-semibold">• Week 4: Production lines shut down</li>
+                    <li className="text-[#C9A84C] font-bold">• Month 2: Customers buying from competitors</li>
                   </ul>
                 </div>
               </div>
@@ -171,8 +171,8 @@ export default function ManufacturingSupplierDemo() {
                 </div>
                 <Progress value={detectionProgress} className="h-3 bg-white/10 [&>div]:bg-[#C9A84C]" />
                 {detectionProgress >= 89 && (
-                  <div className="mt-4 p-4 bg-red-900/20 border border-red-500 rounded-lg">
-                    <p className="text-red-400 font-semibold">
+                  <div className="mt-4 p-4 bg-[#0A0F2E] border border-[#C9A84C] rounded-lg">
+                    <p className="text-[#C9A84C] font-semibold">
                       ⚠️ ALERT: Critical supplier failure detected - 10,000 vehicle production at risk ($500M)
                     </p>
                   </div>

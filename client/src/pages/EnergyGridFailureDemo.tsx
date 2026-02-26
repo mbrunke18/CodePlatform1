@@ -97,7 +97,7 @@ export default function EnergyGridFailureDemo() {
                     <div className="text-sm text-white/60">Coverage Area</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-red-400" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{energyDemoData.organization.stats.facilities}</div>
+                    <div className="text-3xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{energyDemoData.organization.stats.facilities}</div>
                     <div className="text-sm text-white/60">Substations</div>
                   </div>
                 </div>
@@ -105,10 +105,10 @@ export default function EnergyGridFailureDemo() {
             </Card>
 
             {/* Crisis Event */}
-            <Card className="p-8 bg-white/5 border-white/10 border-red-500/50">
+            <Card className="p-8 bg-white/5 border-white/10 border-[#C9A84C]/50">
               <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 bg-red-900/50 rounded-full">
-                  <AlertTriangle className="h-8 w-8 text-red-400" />
+                <div className="p-3 bg-[#0A0F2E] rounded-full">
+                  <AlertTriangle className="h-8 w-8 text-[#C9A84C]" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold mb-2 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Crisis Event</h3>
@@ -125,7 +125,7 @@ export default function EnergyGridFailureDemo() {
                       <div className="text-lg font-bold text-white">{energyDemoData.crisis.impactMetrics.timeWindow}</div>
                     </div>
                     <div className="bg-white/5 p-4 rounded border border-white/10">
-                      <DollarSign className="h-5 w-5 text-red-400 mb-2" />
+                      <DollarSign className="h-5 w-5 text-[#C9A84C] mb-2" />
                       <div className="text-sm text-white/60 mb-1">Financial Impact</div>
                       <div className="text-lg font-bold text-white">{energyDemoData.crisis.impactMetrics.financialImpact}</div>
                     </div>
@@ -196,8 +196,8 @@ export default function EnergyGridFailureDemo() {
         {/* ACT 1: AI Detection */}
         {currentAct === "detection" && (
           <div className="space-y-8 animate-in fade-in duration-500">
-            <Card className="p-8 bg-white/5 border-white/10 border-red-500/50">
-              <Activity className="h-12 w-12 text-red-400 mb-4" />
+            <Card className="p-8 bg-white/5 border-white/10 border-[#C9A84C]/50">
+              <Activity className="h-12 w-12 text-[#C9A84C] mb-4" />
               <h2 className="text-3xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 AI Grid Monitoring Detects Cascading Failure Risk
               </h2>
@@ -205,9 +205,9 @@ export default function EnergyGridFailureDemo() {
                 2:15 PM - Multiple AI intelligence systems detect heat wave triggering transformer stress across 247 substations. 
                 Pattern recognition identifies cascading failure risk at 96% confidence.
               </p>
-              <div className="mt-6 p-4 bg-red-900/20 border border-red-500 rounded">
+              <div className="mt-6 p-4 bg-[#0A0F2E] border border-[#C9A84C] rounded">
                 <div className="flex items-center gap-3">
-                  <AlertTriangle className="h-6 w-6 text-red-400 animate-pulse" />
+                  <AlertTriangle className="h-6 w-6 text-[#C9A84C] animate-pulse" />
                   <div>
                     <p className="font-bold text-white">NERC Category 3 Emergency Criteria Met</p>
                     <p className="text-sm text-white/60">
@@ -309,9 +309,9 @@ export default function EnergyGridFailureDemo() {
                       <div className="text-xs text-white/40 mt-2">{energyDemoData.stakeholderTiers.tier2.description}</div>
                     </div>
                   </Card>
-                  <Card className="p-6 bg-white/5 border-white/10 border-red-500/30">
+                  <Card className="p-6 bg-white/5 border-white/10 border-[#C9A84C]/30">
                     <div className="text-center">
-                      <ShieldAlert className="h-8 w-8 text-red-400 mx-auto mb-2" />
+                      <ShieldAlert className="h-8 w-8 text-[#C9A84C] mx-auto mb-2" />
                       <div className="text-sm text-white/60 mb-1">Tier 3: Network</div>
                       <div className="text-3xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{energyDemoData.stakeholderTiers.tier3.count}+</div>
                       <div className="text-xs text-white/40 mt-2">{energyDemoData.stakeholderTiers.tier3.description}</div>
@@ -371,7 +371,7 @@ export default function EnergyGridFailureDemo() {
               <h3 className="text-2xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Execution OS Difference</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="font-semibold text-red-400 mb-2">❌ Traditional Coordination</h4>
+                  <h4 className="font-semibold text-[#C9A84C] mb-2">❌ Traditional Coordination</h4>
                   <ul className="text-sm text-white/60 space-y-1">
                     <li>• 3-5 days of sequential phone trees and approvals</li>
                     <li>• Grid cascades into uncontrolled blackout during delays</li>

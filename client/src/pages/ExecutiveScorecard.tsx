@@ -211,9 +211,9 @@ export default function ExecutiveScorecard() {
                   </div>
                 </div>
               </div>
-              <Link href="/command-center">
-                <Button variant="outline" size="sm" className="border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5">
-                  Open Command Center
+              <Link href="/workspaces/execute">
+                <Button variant="outline" size="sm" className="border-[#0A0F2E]/20 text-[#0A0F2E] hover:bg-[#0A0F2E]/5 dark:text-white dark:border-white/20">
+                  Open Workspace
                   <ChevronRight className="h-4 w-4 ml-1" />
                 </Button>
               </Link>

@@ -48,7 +48,7 @@ export default function PilotMonitoring() {
         <StandardNav />
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0A0F2E] mx-auto"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#C9A84C] mx-auto"></div>
             <p className="mt-4 text-gray-800 dark:text-slate-300">Loading monitoring dashboard...</p>
           </div>
         </div>

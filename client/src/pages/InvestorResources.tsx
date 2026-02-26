@@ -90,78 +90,81 @@ export default function InvestorResources() {
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* The Problem */}
-            <Card className="border-[#E8E4DC] bg-white shadow-sm">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-[#0A0F2E]" style={CG}>
-                  <Clock className="h-6 w-6" />
+            <Card className="border-[#E8E4DC] bg-white shadow-xl hover:shadow-2xl transition-all">
+              <CardHeader className="border-b border-[#E8E4DC] pb-6">
+                <CardTitle className="flex items-center gap-3 text-[#0A0F2E]" style={CG}>
+                  <div className="p-2 bg-[#0A0F2E]/5 rounded-lg">
+                    <Clock className="h-6 w-6 text-[#0A0F2E]" />
+                  </div>
                   The Problem: 72-Hour Gap
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-[#6B7280]">
-                  When significant strategic events occur, most organizations experience:
+              <CardContent className="p-8 space-y-6">
+                <p className="text-[#0A0F2E] font-medium leading-relaxed">
+                  When significant strategic events occur, most organizations experience a chaotic "fumble" period:
                 </p>
-                <ul className="space-y-2 text-sm text-[#6B7280]">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#0A0F2E] font-bold w-16 shrink-0">0-4 hrs:</span>
-                    <span>Discovery and initial confusion</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#0A0F2E] font-bold w-16 shrink-0">4-12 hrs:</span>
-                    <span>Ad-hoc calls to identify who should be involved</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#0A0F2E] font-bold w-16 shrink-0">12-24 hrs:</span>
-                    <span>Scramble to find relevant documents and data</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#0A0F2E] font-bold w-16 shrink-0">24-48 hrs:</span>
-                    <span>Debate about authority, budget, and approach</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#0A0F2E] font-bold w-16 shrink-0">48-72 hrs:</span>
-                    <span>Finally begin coordinated response</span>
-                  </li>
-                </ul>
-                <p className="text-[#0A0F2E] font-bold pt-2 border-t border-[#E8E4DC] mt-4">
-                  This is how every Fortune 500 operates today.
-                </p>
+                <div className="space-y-4">
+                  {[
+                    { time: '0-4 hrs', label: 'Discovery and initial confusion' },
+                    { time: '4-12 hrs', label: 'Ad-hoc calls to identify who should be involved' },
+                    { time: '12-24 hrs', label: 'Scramble to find relevant documents and data' },
+                    { time: '24-48 hrs', label: 'Debate about authority, budget, and approach' },
+                    { time: '48-72 hrs', label: 'Finally begin coordinated response' },
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-4">
+                      <div className="w-20 shrink-0 text-[10px] font-bold text-[#0A0F2E] uppercase tracking-widest bg-[#0A0F2E]/5 py-1 px-2 rounded text-center border border-[#0A0F2E]/10">
+                        {item.time}
+                      </div>
+                      <div className="text-sm text-[#6B7280] font-medium">{item.label}</div>
+                    </div>
+                  ))}
+                </div>
+                <div className="pt-6 border-t border-[#E8E4DC] mt-6 text-center">
+                  <Badge className="bg-[#0A0F2E] text-white font-bold text-[10px] uppercase tracking-widest py-1 px-3">
+                    Every Fortune 500 operates this way today.
+                  </Badge>
+                </div>
               </CardContent>
             </Card>
 
             {/* The Solution */}
-            <Card className="border-[#E8E4DC] bg-white shadow-sm">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-[#2B8A6E]" style={CG}>
-                  <Zap className="h-6 w-6" />
+            <Card className="border-[#C9A84C]/30 bg-white shadow-xl hover:shadow-2xl transition-all relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#C9A84C]/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+              <CardHeader className="border-b border-[#E8E4DC] pb-6">
+                <CardTitle className="flex items-center gap-3 text-[#2B8A6E]" style={CG}>
+                  <div className="p-2 bg-[#2B8A6E]/10 rounded-lg">
+                    <Zap className="h-6 w-6 text-[#2B8A6E]" />
+                  </div>
                   Solution: 12-Minute Activation
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-[#6B7280]">
+              <CardContent className="p-8 space-y-6">
+                <p className="text-[#0A0F2E] font-medium leading-relaxed">
                   Execution OS fundamentally changes the operating model:
                 </p>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 shrink-0" />
-                    <span className="text-[#0A0F2E]">Signal detected → Pre-configured monitoring triggers alert</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 shrink-0" />
-                    <span className="text-[#0A0F2E]">Playbook activates → Pre-staged, pre-assigned, pre-approved</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 shrink-0" />
-                    <span className="text-[#0A0F2E]">Tasks deploy → Auto-created in Jira/ServiceNow/Asana</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 shrink-0" />
-                    <span className="text-[#0A0F2E]">Teams execute → Clear ownership, no ambiguity</span>
-                  </li>
-                </ul>
-                <div className="pt-4 p-4 bg-[#2B8A6E]/5 rounded-lg text-center border border-[#2B8A6E]/10">
-                  <p className="text-3xl font-bold text-[#2B8A6E]" style={CG}>12 minutes</p>
-                  <p className="text-xs font-bold uppercase tracking-widest text-[#6B7280]">Coordinated response underway</p>
+                <div className="space-y-4">
+                  {[
+                    { text: 'Signal detected', sub: 'Pre-configured monitoring triggers alert' },
+                    { text: 'Playbook activates', sub: 'Pre-staged, pre-assigned, pre-approved' },
+                    { text: 'Tasks deploy', sub: 'Auto-created in Jira/ServiceNow/Asana' },
+                    { text: 'Teams execute', sub: 'Clear ownership, no ambiguity' },
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-3">
+                      <div className="mt-1 p-0.5 bg-[#2B8A6E]/10 rounded-full">
+                        <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] shrink-0" />
+                      </div>
+                      <div>
+                        <div className="text-sm text-[#0A0F2E] font-bold">{item.text}</div>
+                        <div className="text-[11px] text-[#6B7280] font-medium leading-tight">{item.sub}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="pt-6 border-t border-[#E8E4DC] mt-6">
+                  <div className="bg-[#C9A84C] text-[#0A0F2E] p-4 rounded-lg text-center shadow-lg">
+                    <p className="text-4xl font-bold" style={CG}>12 minutes</p>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em]">Coordinated response underway</p>
+                  </div>
                 </div>
               </CardContent>
             </Card>

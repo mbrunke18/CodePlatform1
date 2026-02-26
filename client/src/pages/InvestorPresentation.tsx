@@ -123,7 +123,7 @@ function InvestorPresentation() {
               { value: '95% / 16%', label: 'CSOs: AI will reshape priorities — but few reimagining', sub: 'Deloitte 2026 CSO Survey' },
             ].map((s, i) => (
               <div key={i} className="bg-white border border-[#E8E4DC] rounded-xl p-5">
-                <div className="text-2xl font-bold text-[#2B8A6E]">{s.value}</div>
+                <div className="text-2xl font-bold text-[#C9A84C]">{s.value}</div>
                 <div className="text-[#0A0F2E] font-medium">{s.label}</div>
                 <div className="text-[#6B7280] text-sm">{s.sub}</div>
               </div>

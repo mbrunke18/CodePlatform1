@@ -88,7 +88,7 @@ export default function PharmaceuticalRecallDemo() {
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div className="p-6 bg-white/5 rounded-lg border border-white/10">
                   <h3 className="font-bold text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                    <AlertTriangle className="w-5 h-5 text-red-400" />
+                    <AlertTriangle className="w-5 h-5 text-[#C9A84C]" />
                     The Crisis
                   </h3>
                   <div className="space-y-3 text-sm">
@@ -116,8 +116,8 @@ export default function PharmaceuticalRecallDemo() {
                   <ul className="space-y-2 text-sm text-white/60">
                     <li>• Week 1-3: Internal investigation</li>
                     <li>• Week 4 (May): Quietly notified wholesalers only</li>
-                    <li className="text-red-400 font-semibold">• Week 5: 91-year-old patient takes defective capsules</li>
-                    <li className="text-red-400 font-bold">• Week 5: Patient dies from lethal potassium levels</li>
+                    <li className="text-[#C9A84C] font-semibold">• Week 5: 91-year-old patient takes defective capsules</li>
+                    <li className="text-[#C9A84C] font-bold">• Week 5: Patient dies from lethal potassium levels</li>
                     <li>• Week 6 (June): Public announcement</li>
                     <li className="text-white/40">• Family learns weeks later medication killed their loved one</li>
                   </ul>
@@ -170,8 +170,8 @@ export default function PharmaceuticalRecallDemo() {
                 </div>
                 <Progress value={detectionProgress} className="h-3 bg-white/10 [&>div]:bg-[#C9A84C]" />
                 {detectionProgress >= 92 && (
-                  <div className="mt-4 p-4 bg-red-900/20 border border-red-500 rounded-lg">
-                    <p className="text-red-400 font-semibold">
+                  <div className="mt-4 p-4 bg-[#0A0F2E] border border-[#C9A84C] rounded-lg">
+                    <p className="text-[#C9A84C] font-semibold">
                       ⚠️ ALERT: Class I recall criteria detected - Reasonable probability of serious adverse health consequences or death
                     </p>
                   </div>

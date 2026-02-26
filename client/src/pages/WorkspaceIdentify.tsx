@@ -127,7 +127,7 @@ export default function WorkspaceIdentify() {
                 </Button>
               </Link>
               <Link href="/playbook-customize/new">
-                <Button variant="outline" className="border-[#2B8A6E]/50 text-[#2B8A6E] hover:bg-[#2B8A6E]/10">
+                <Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] hover:bg-[#0A0F2E]/5 dark:text-white dark:border-white/20">
                   <Sparkles className="h-4 w-4 mr-2" />
                   Create New
                 </Button>

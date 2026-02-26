@@ -607,29 +607,31 @@ export default function OnboardingWizard() {
                   <div className="space-y-3">
                     <div className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200">
                       <div className="flex items-center gap-3">
-                        <Target className="h-5 w-5 text-[#0A0F2E]" />
+                        <Target className="h-5 w-5 text-[#2B8A6E]" />
                         <div>
                           <p className="text-sm font-medium text-gray-900">Competitor Monitoring</p>
-                          <p className="text-xs text-gray-500">Scan filings, news, and releases</p>
+                          <p className="text-xs text-[#6B7280]">Scan filings, news, and releases</p>
                         </div>
                       </div>
                       <Switch 
                         checked={triggerData.competitorAlertEnabled}
                         onCheckedChange={(v) => setTriggerData({ ...triggerData, competitorAlertEnabled: v })}
+                        className="data-[state=checked]:bg-[#2B8A6E]"
                       />
                     </div>
 
                     <div className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200">
                       <div className="flex items-center gap-3">
-                        <Shield className="h-5 w-5 text-[#2B8A6E]" />
+                        <Shield className="h-5 w-5 text-[#0A0F2E]" />
                         <div>
                           <p className="text-sm font-medium text-gray-900">Regulatory Scanning</p>
-                          <p className="text-xs text-gray-500">Track legislative and regulatory shifts</p>
+                          <p className="text-xs text-[#6B7280]">Track legislative and regulatory shifts</p>
                         </div>
                       </div>
                       <Switch 
                         checked={triggerData.regulatoryAlertEnabled}
                         onCheckedChange={(v) => setTriggerData({ ...triggerData, regulatoryAlertEnabled: v })}
+                        className="data-[state=checked]:bg-[#2B8A6E]"
                       />
                     </div>
 
@@ -638,12 +640,13 @@ export default function OnboardingWizard() {
                         <Bell className="h-5 w-5 text-[#C9A84C]" />
                         <div>
                           <p className="text-sm font-medium text-gray-900">Media Sentiment Radar</p>
-                          <p className="text-xs text-gray-500">Real-time public perception tracking</p>
+                          <p className="text-xs text-[#6B7280]">Real-time public perception tracking</p>
                         </div>
                       </div>
                       <Switch 
                         checked={triggerData.mediaAlertEnabled}
                         onCheckedChange={(v) => setTriggerData({ ...triggerData, mediaAlertEnabled: v })}
+                        className="data-[state=checked]:bg-[#2B8A6E]"
                       />
                     </div>
                   </div>
@@ -670,7 +673,7 @@ export default function OnboardingWizard() {
                         className={`p-3 border cursor-pointer flex items-center justify-between ${
                           playbookData.selectedPlaybooks.includes(playbook)
                             ? 'bg-[#0A0F2E]/5 border-[#0A0F2E]'
-                            : 'bg-white border-gray-200 hover:border-gray-300'
+                            : 'bg-white border-gray-200 hover:border-[#DFC178]'
                         }`}
                         onClick={() => {
                           if (playbookData.selectedPlaybooks.includes(playbook)) {
@@ -682,7 +685,7 @@ export default function OnboardingWizard() {
                       >
                         <span className="text-sm font-medium">{playbook}</span>
                         {playbookData.selectedPlaybooks.includes(playbook) && (
-                          <CheckCircle className="h-4 w-4 text-[#0A0F2E]" />
+                          <CheckCircle className="h-4 w-4 text-[#2B8A6E]" />
                         )}
                       </div>
                     ))}
@@ -725,12 +728,13 @@ export default function OnboardingWizard() {
                     <Zap className="h-5 w-5 text-[#C9A84C]" />
                     <div>
                       <p className="text-sm font-bold text-[#0A0F2E]">Auto-Escalation Engine</p>
-                      <p className="text-xs text-gray-500">Automatically escalate if response SLAs are breached</p>
+                      <p className="text-xs text-[#6B7280]">Automatically escalate if response SLAs are breached</p>
                     </div>
                   </div>
                   <Switch 
                     checked={playbookData.autoEscalationEnabled}
                     onCheckedChange={(v) => setPlaybookData({ ...playbookData, autoEscalationEnabled: v })}
+                    className="data-[state=checked]:bg-[#2B8A6E]"
                   />
                 </div>
               </div>
@@ -790,7 +794,7 @@ max="120"
                           className={`p-4 border text-center cursor-pointer font-bold text-[10px] uppercase tracking-widest ${
                             metricsData.reviewCadence === cadence
                               ? 'bg-[#0A0F2E] text-white border-[#0A0F2E]'
-                              : 'bg-white text-gray-400 border-gray-200 hover:border-gray-300'
+                              : 'bg-white text-[#6B7280] border-gray-200 hover:border-[#DFC178]'
                           }`}
                           onClick={() => setMetricsData({ ...metricsData, reviewCadence: cadence as any })}
                         >

@@ -477,11 +477,11 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                             return (
                               <div 
                                 key={ch} 
-                                className="w-6 h-6 rounded bg-slate-100 dark:bg-[#141B45] flex items-center justify-center"
+                                className="w-6 h-6 rounded bg-slate-100 flex items-center justify-center"
                                 title={channel.label}
                                 data-testid={`badge-channel-${stakeholder.id}-${ch}`}
                               >
-                                <Icon className="h-3 w-3 text-gray-800 dark:text-slate-300" />
+                                <Icon className="h-3 w-3 text-gray-800" />
                               </div>
                             );
                           })}

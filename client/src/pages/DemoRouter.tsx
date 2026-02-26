@@ -78,7 +78,7 @@ export default function DemoRouter() {
           {/* Header */}
           <div className="text-center mb-10">
             <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="mb-4 bg-[#2B8A6E]/20 text-[#3BAF8A] border-[#2B8A6E]/30">
+            <Badge className="mb-4 bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
               Interactive Experience
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" data-testid="heading-demo-router">
@@ -151,7 +151,7 @@ export default function DemoRouter() {
                         <h3 className="text-lg md:text-xl font-bold text-gray-900 group-hover:text-[#2B8A6E] transition-colors">
                           {demo.title}
                         </h3>
-                        <Badge className={`${demo.badgeColor} text-gray-900 text-xs`}>
+                        <Badge className={`${demo.badgeColor} text-white text-xs`}>
                           {demo.badge}
                         </Badge>
                       </div>
@@ -163,7 +163,7 @@ export default function DemoRouter() {
                     </div>
                     
                     {/* Arrow */}
-                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-gray-800 group-hover:text-white group-hover:translate-x-1 transition-all flex-shrink-0" />
+                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-gray-800 group-hover:text-[#0A0F2E] group-hover:translate-x-1 transition-all flex-shrink-0" />
                   </CardContent>
                 </Card>
               );

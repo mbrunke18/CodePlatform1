@@ -118,7 +118,7 @@ export default function FutureReadinessDashboard() {
   const getScoreColor = (score: number) => {
     if (score >= 80) return 'text-[#2B8A6E]';
     if (score >= 60) return 'text-[#C9A84C]';
-    return 'text-[#ef4444]';
+    return 'text-[#C9A84C]';
   };
 
   const getUrgencyBadgeVariant = (urgency: string): "default" | "secondary" | "destructive" | "outline" => {
@@ -132,7 +132,7 @@ export default function FutureReadinessDashboard() {
 
   const getImpactIcon = (impact: string) => {
     switch (impact) {
-      case 'high': return <ArrowUpRight className="h-4 w-4 text-[#ef4444]" />;
+      case 'high': return <ArrowUpRight className="h-4 w-4 text-[#C9A84C]" />;
       case 'medium': return <TrendingUp className="h-4 w-4 text-[#C9A84C]" />;
       default: return <Activity className="h-4 w-4 text-[#0A0F2E]" />;
     }

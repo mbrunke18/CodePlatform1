@@ -226,8 +226,8 @@ const SUCCESS_METRICS = [
 const SCENARIO_BRANCHES = [
   { severity: "critical", label: "Critical - Full Activation", color: "bg-red-600", actions: ["Immediate full team mobilization", "All escalation paths active", "Board notification triggered"] },
   { severity: "high", label: "High - Elevated Response", color: "bg-[#C9A84C]", actions: ["Core team activation", "Management notification", "External counsel on standby"] },
-  { severity: "medium", label: "Medium - Monitoring Mode", color: "bg-[#C9A84C]", actions: ["Primary owner notified", "Situation monitoring enabled", "Escalation paths ready"] },
-    { severity: "low", label: "Low - Awareness Only", color: "bg-[#0A0F2E]", actions: ["Log for tracking", "Weekly digest inclusion", "No immediate action required"] },
+  { severity: "medium", label: "Medium - Monitoring Mode", color: "bg-[#2B8A6E]", actions: ["Primary owner notified", "Situation monitoring enabled", "Escalation paths ready"] },
+  { severity: "low", label: "Low - Awareness Only", color: "bg-[#0A0F2E]", actions: ["Log for tracking", "Weekly digest inclusion", "No immediate action required"] },
 ];
 
 const STAKEHOLDER_COLORS: Record<number, string> = {

@@ -321,11 +321,11 @@ export default function DealRiskDemo() {
                       {typedPipeline.deals.filter((d: any) => d.riskScore > 60).map((deal: any) => (
                         <div 
                           key={deal.id}
-                          className="p-4 bg-red-900/20 border border-red-500 rounded-lg"
+                          className="p-4 bg-[#0A0F2E] border border-[#C9A84C] rounded-lg"
                         >
                           <div className="flex items-center justify-between mb-2">
                             <span className="text-white font-medium">{deal.dealName}</span>
-                            <Badge className="bg-red-500/20 text-red-400">
+                            <Badge className="bg-[#C9A84C]/20 text-[#C9A84C]">
                               {deal.riskScore}% Risk
                             </Badge>
                           </div>
@@ -337,7 +337,7 @@ export default function DealRiskDemo() {
                             <span>{deal.triggers.length} triggers</span>
                           </div>
                           <Button 
-                            className="w-full bg-red-800 hover:bg-red-900 font-bold"
+                            className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white border border-[#C9A84C] font-bold"
                             onClick={() => executeTriggerMutation.mutate(deal.id)}
                           >
                             <AlertTriangle className="mr-2 h-4 w-4" />
@@ -453,7 +453,7 @@ export default function DealRiskDemo() {
                               <div key={i} className="p-3 bg-white/5 rounded-lg border border-white/10">
                                 <div className="flex items-center justify-between mb-1">
                                   <span className="text-white text-sm font-medium">{improvement.title}</span>
-                                  <Badge className={improvement.priority === 'high' ? 'bg-red-500/20 text-red-400' : 'bg-[#DFC178]/20 text-[#DFC178]'}>
+                                  <Badge className={improvement.priority === 'high' ? 'bg-[#C9A84C]/20 text-[#C9A84C]' : 'bg-[#DFC178]/20 text-[#DFC178]'}>
                                     {improvement.priority}
                                   </Badge>
                                 </div>

@@ -211,7 +211,7 @@ export default function MissionControl() {
                       <CardTitle style={{ ...CG, fontSize: "24px", color: NAVY }}>Active Telemetry Hub</CardTitle>
                     </div>
                     {pendingTriggers.length > 0 && (
-                      <Badge style={{ background: "rgba(239,68,68,0.1)", color: "#ef4444", border: "1px solid rgba(239,68,68,0.2)" }} className="px-3 py-1 font-bold rounded-none">
+                      <Badge style={{ background: "rgba(201,168,76,0.1)", color: "#C9A84C", border: "1px solid rgba(201,168,76,0.2)" }} className="px-3 py-1 font-bold rounded-none">
                         {pendingTriggers.length} CRITICAL EVENTS
                       </Badge>
                     )}

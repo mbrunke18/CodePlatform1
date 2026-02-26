@@ -106,7 +106,7 @@ export default function LVMHMarketEntryDemo() {
                     <li>• Month 1-2: Sequential brand planning (10 brands independently)</li>
                     <li>• Month 3-4: Real estate negotiations drag out</li>
                     <li className="text-[#C9A84C] font-semibold">• During gap: Kering and Hermès capture premium locations</li>
-                    <li className="text-red-400 font-bold">• During gap: Golden Week launch window missed</li>
+                    <li className="text-[#C9A84C] font-bold">• During gap: Golden Week launch window missed</li>
                     <li>• Month 5-6: Fragmented launches begin</li>
                     <li className="text-white/40">• Result: €420M opportunity cost + market leadership lost</li>
                   </ul>

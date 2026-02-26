@@ -392,29 +392,28 @@ export default function SettingsPage() {
                       </div>
                     </div>
 
-                    <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <div>
-                          <h4 className="font-medium text-gray-900 dark:text-white">Two-Factor Authentication</h4>
-                          <p className="text-sm text-gray-800 dark:text-gray-400">Require 2FA for all admin users</p>
+                          <h4 className="font-medium text-gray-900">Two-Factor Authentication</h4>
+                          <p className="text-sm text-gray-800">Require 2FA for all admin users</p>
                         </div>
-                        <Switch defaultChecked data-testid="switch-2fa-required" />
+                        <Switch defaultChecked data-testid="switch-2fa-required" className="data-[state=checked]:bg-[#2B8A6E]" />
                       </div>
                       
                       <div className="flex items-center justify-between">
                         <div>
-                          <h4 className="font-medium text-gray-900 dark:text-white">Audit Logging</h4>
-                          <p className="text-sm text-gray-800 dark:text-gray-400">Log all user actions and system events</p>
+                          <h4 className="font-medium text-gray-900">Audit Logging</h4>
+                          <p className="text-sm text-gray-800">Log all user actions and system events</p>
                         </div>
-                        <Switch defaultChecked data-testid="switch-audit-logging" />
+                        <Switch defaultChecked data-testid="switch-audit-logging" className="data-[state=checked]:bg-[#2B8A6E]" />
                       </div>
 
                       <div className="flex items-center justify-between">
                         <div>
-                          <h4 className="font-medium text-gray-900 dark:text-white">Advanced Encryption</h4>
-                          <p className="text-sm text-gray-800 dark:text-gray-400">AES-256 encryption for sensitive data</p>
+                          <h4 className="font-medium text-gray-900">Advanced Encryption</h4>
+                          <p className="text-sm text-gray-800">AES-256 encryption for sensitive data</p>
                         </div>
-                        <Switch defaultChecked disabled />
+                        <Switch defaultChecked disabled className="data-[state=checked]:bg-[#2B8A6E]" />
                       </div>
                     </div>
                   </div>
@@ -452,17 +451,17 @@ export default function SettingsPage() {
                     </div>
 
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-gray-900 dark:text-white">Available Integrations</h4>
+                      <h4 className="font-semibold text-gray-900">Available Integrations</h4>
                       <div className="space-y-3">
-                        <Button className="w-full justify-start" variant="outline" data-testid="button-integrate-slack">
+                        <Button className="w-full justify-start border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]" variant="outline" data-testid="button-integrate-slack">
                           <Building2 className="w-4 h-4 mr-2" />
                           Slack Workspace
                         </Button>
-                        <Button className="w-full justify-start" variant="outline" data-testid="button-integrate-jira">
+                        <Button className="w-full justify-start border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]" variant="outline" data-testid="button-integrate-jira">
                           <Target className="w-4 h-4 mr-2" />
                           Jira Project Management
                         </Button>
-                        <Button className="w-full justify-start" variant="outline" data-testid="button-integrate-tableau">
+                        <Button className="w-full justify-start border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]" variant="outline" data-testid="button-integrate-tableau">
                           <BarChart3 className="w-4 h-4 mr-2" />
                           Tableau Analytics
                         </Button>

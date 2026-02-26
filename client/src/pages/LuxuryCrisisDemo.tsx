@@ -105,13 +105,12 @@ export default function LuxuryCrisisDemo() {
               </div>
             </Card>
 
-            {/* The Scenario */}
             <Card className="p-8 bg-white/5 border-white/10">
               <div className="flex items-start gap-4 mb-6">
                 <div className="p-3 bg-[#0A0F2E] rounded-full">
-                  <Target className="h-6 w-6 text-red-400" />
+                  <Target className="h-6 w-6 text-[#C9A84C]" />
                 </div>
-                <div>
+                <div className="flex-1">
                   <h3 className="text-2xl font-bold mb-2 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Crisis Event</h3>
                   <p className="text-lg text-white/80 mb-4">
                     {crisisScenario.triggerEvent}
@@ -119,7 +118,7 @@ export default function LuxuryCrisisDemo() {
                   <div className="grid md:grid-cols-3 gap-4 mt-4">
                     <div className="bg-white/5 p-4 rounded border border-white/10">
                       <div className="text-sm text-white/60 mb-1">Financial Impact</div>
-                      <div className="text-2xl font-bold text-red-400">{crisisScenario.financialImpact}</div>
+                      <div className="text-2xl font-bold text-[#C9A84C]">{crisisScenario.financialImpact}</div>
                     </div>
                     <div className="bg-white/5 p-4 rounded border border-white/10">
                       <div className="text-sm text-white/60 mb-1">Response Window</div>

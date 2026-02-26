@@ -143,10 +143,10 @@ export default function VCPresentations() {
                 <div>
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-7 h-[1px] bg-[#C9A84C]"></div>
-                    <span className="text-[9px] uppercase tracking-[0.2em] text-[#C9A84C] font-bold">VaughnMartin Executive</span>
+                    <span className="text-[9px] uppercase tracking-[0.2em] text-[#C9A84C] font-bold">VaughnMartin Executive Presentation</span>
                   </div>
-                  <h1 className="text-4xl md:text-5xl font-light mb-2" style={CG}>Investor Relations Center</h1>
-                  <p className="text-gray-400 text-lg max-w-xl">Series B Presentation Materials & Financial Projections</p>
+                  <h1 className="text-4xl md:text-5xl font-bold mb-2 text-white" style={CG}>Investor Relations Center</h1>
+                  <p className="text-[#DFC178] text-lg max-w-xl font-medium">Series B Presentation Materials & Financial Projections</p>
                 </div>
               </div>
               <div className="flex items-center space-x-4">

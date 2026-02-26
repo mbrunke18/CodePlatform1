@@ -221,7 +221,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
   const getProgressColor = (progress: number) => {
     if (progress >= 80) return 'bg-[#2B8A6E]';
     if (progress >= 50) return 'bg-[#C9A84C]';
-    return 'bg-destructive';
+    return 'bg-[#0A0F2E]';
   };
   
   const handleAddMetric = () => {

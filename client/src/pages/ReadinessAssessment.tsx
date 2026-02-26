@@ -66,9 +66,9 @@ const DOMAIN_CONFIG = {
     categories: "Market Entry \u2022 M&A \u2022 Product Launch",
     tagline: "How fast can you capture opportunities?",
     bg: "bg-[#2B8A6E]",
-    bgLight: "bg-[#2B8A6E]/20",
+    bgLight: "bg-[#2B8A6E]/10",
     text: "text-[#2B8A6E]",
-    textLight: "text-[#3BAF8A]",
+    textLight: "text-[#2B8A6E]",
     border: "border-[#2B8A6E]/30",
     borderHover: "hover:border-[#2B8A6E]/60",
     shadow: "shadow-[#2B8A6E]/25",
@@ -82,9 +82,9 @@ const DOMAIN_CONFIG = {
     categories: "Crisis \u2022 Cyber \u2022 Regulatory",
     tagline: "How ready are you to contain threats?",
     bg: "bg-[#0A0F2E]",
-    bgLight: "bg-[#0A0F2E]/20",
+    bgLight: "bg-[#0A0F2E]/10",
     text: "text-[#0A0F2E]",
-    textLight: "text-white",
+    textLight: "text-[#0A0F2E]",
     border: "border-[#0A0F2E]/30",
     borderHover: "hover:border-[#C9A84C]/60",
     shadow: "shadow-[#0A0F2E]/25",
@@ -98,9 +98,9 @@ const DOMAIN_CONFIG = {
     categories: "Digital Transformation \u2022 AI Governance",
     tagline: "How effectively do you execute change?",
     bg: "bg-[#C9A84C]",
-    bgLight: "bg-[#C9A84C]/20",
+    bgLight: "bg-[#C9A84C]/10",
     text: "text-[#C9A84C]",
-    textLight: "text-[#DFC178]",
+    textLight: "text-[#C9A84C]",
     border: "border-[#C9A84C]/30",
     borderHover: "hover:border-[#C9A84C]/60",
     shadow: "shadow-[#C9A84C]/25",
@@ -305,7 +305,7 @@ export default function ReadinessAssessment() {
           <div className="max-w-4xl mx-auto space-y-10 relative z-10">
             <div className="text-center">
               <BrandStamp variant="dual" size="md" className="mb-8" />
-              <Badge className="mb-4 bg-[#2B8A6E]/20 text-[#3BAF8A] border-[#2B8A6E]/30">
+              <Badge className="mb-4 bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30">
                 <Clock className="w-4 h-4 mr-2" />
                 5-Minute Diagnostic
               </Badge>
@@ -361,17 +361,17 @@ export default function ReadinessAssessment() {
                     >
                       <div className="text-center">
                         <div className={`w-16 h-16 rounded-2xl ${config.bgLight} flex items-center justify-center mx-auto mb-3`}>
-                          <IconComponent className={`h-8 w-8 ${config.textLight}`} />
+                          <IconComponent className={`h-8 w-8 text-[#C9A84C]`} />
                         </div>
-                        <h3 className={`text-xl font-bold ${config.textLight} mb-1`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                        <h3 className={`text-xl font-bold text-white mb-1`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                           {config.label}
                         </h3>
-                        <Badge className={`${config.bgLight} ${config.textLight} border-none mt-1`}>
+                        <Badge className={`${config.bgLight} ${config.text} border-none mt-1`}>
                           {config.playbooks}
                         </Badge>
                         <p className="text-white/80 text-sm font-medium mt-3">{config.categories}</p>
                         <p className="text-white/60 text-sm italic mt-1">{config.tagline}</p>
-                        <div className={`${config.textLight} text-xs font-medium mt-4 flex items-center justify-center gap-1 group-hover:gap-2 transition-all`}>
+                        <div className={`text-[#C9A84C] text-xs font-medium mt-4 flex items-center justify-center gap-1 group-hover:gap-2 transition-all`}>
                           Start Assessment <ArrowRight className="w-3 h-3" />
                         </div>
                       </div>
@@ -443,7 +443,7 @@ export default function ReadinessAssessment() {
                     <div className={`w-12 h-12 rounded-xl ${iconDef.bg} flex items-center justify-center`}>
                       <IconComponent className={`h-6 w-6 ${iconDef.color}`} />
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 text-left">
                       <CardTitle className="text-[#0A0F2E] dark:text-white text-xl font-semibold" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                         {q.question}
                       </CardTitle>
@@ -586,7 +586,7 @@ export default function ReadinessAssessment() {
                 {(() => { const Icon = domainConfig.icon; return <Icon className="w-4 h-4 mr-2" />; })()}
                 {domainConfig.label} Assessment Complete
               </Badge>
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+              <h1 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 {companyName ? `${companyName}'s` : "Your"} {domainConfig.label} Readiness Score
               </h1>
             </div>

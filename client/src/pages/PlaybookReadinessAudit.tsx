@@ -144,7 +144,7 @@ const tierConfig = {
     icon: AlertTriangle
   },
   'not-configured': {
-    label: 'Not Configured',
+    label: 'Not Configured Status',
     color: 'bg-[#0A0F2E]',
     textColor: 'text-[#0A0F2E]',
     bgColor: 'bg-[#0A0F2E]/5',

@@ -449,11 +449,11 @@ export default function OneClickDemo() {
 
         {/* Completion Card */}
         {demoState === 'complete' && (
-          <Card className="mt-6 bg-gradient-to-r   border-green-500/30">
+          <Card className="mt-6 border-[#2B8A6E]/30">
             <CardContent className="p-8 text-center">
               <div className="flex justify-center mb-4">
-                <div className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center">
-                  <Shield className="h-10 w-10 text-green-400" />
+                <div className="w-20 h-20 rounded-full bg-[#2B8A6E]/20 flex items-center justify-center">
+                  <Shield className="h-10 w-10 text-[#2B8A6E]" />
                 </div>
               </div>
               

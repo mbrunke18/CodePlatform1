@@ -265,7 +265,7 @@ export default function DemoGallery() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
             {filteredDemos.filter(d => !d.featured).map((demo) => (
               <Link key={demo.id} href={demo.path}>
-                <Card className="h-full hover:shadow-lg transition-all cursor-pointer group">
+                <Card className="h-full hover:shadow-lg transition-all cursor-pointer group border border-slate-200">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <div className={`p-3 rounded-xl ${demo.bgColor}`}>
@@ -282,7 +282,7 @@ export default function DemoGallery() {
                           {demo.description}
                         </p>
                         <div className="flex items-center gap-2 flex-wrap">
-                          <Badge variant="outline" className="text-xs">
+                          <Badge variant="outline" className="text-xs border-slate-300">
                             <Clock className="h-3 w-3 mr-1" />
                             {demo.duration}
                           </Badge>

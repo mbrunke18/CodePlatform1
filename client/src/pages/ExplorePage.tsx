@@ -188,7 +188,7 @@ export default function ExplorePage() {
                 <ul className="space-y-3 mb-8">
                   {['Instant access', 'Full feature set', 'Sample data available', 'No commitment'].map(item => (
                     <li key={item} className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-[#6B7280]">
-                      <ChevronRight className="h-4 w-4 text-[#2B8A6E]" />
+                      <ChevronRight className="h-4 w-4 text-[#C9A84C]" />
                       {item}
                     </li>
                   ))}

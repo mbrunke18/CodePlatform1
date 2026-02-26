@@ -87,11 +87,11 @@ export default function InvestorLanding() {
               Category-Defining Opportunity
             </Badge>
             
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight max-w-5xl mx-auto bg-gradient-to-r from-white via-[#EDD98A] to-[#C9A84C] bg-clip-text text-transparent" data-testid="heading-hero">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight max-w-5xl mx-auto text-white" data-testid="heading-hero">
               The Salesforce Moment for Strategic Execution
             </h1>
             
-            <p className="text-2xl md:text-3xl text-[#EDD98A] font-semibold mb-6" data-testid="text-tagline">
+            <p className="text-2xl md:text-3xl text-[#C9A84C] font-semibold mb-6" data-testid="text-tagline">
               The Agentic Execution Layer for Fortune 1000
             </p>
             

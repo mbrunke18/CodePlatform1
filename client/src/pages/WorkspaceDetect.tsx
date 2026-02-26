@@ -95,7 +95,7 @@ export default function WorkspaceDetect() {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-[#0A0F2E] dark:text-white/60 hover:text-[#0A0F2E] cursor-pointer">Execution OS One™</span>
+              <span className="text-[#0A0F2E] dark:text-white/60 hover:text-[#C9A84C] cursor-pointer">Execution OS One™</span>
             </Link>
             <ChevronRight className="h-4 w-4 text-[#0A0F2E] dark:text-white/40" />
             <span className="text-[#0A0F2E] dark:text-white font-medium">DETECT</span>
@@ -126,7 +126,7 @@ export default function WorkspaceDetect() {
                 </Button>
               </Link>
               <Link href="/triggers-management">
-                <Button variant="outline" className="border-[#0A0F2E]/50 text-[#0A0F2E] hover:bg-[#0A0F2E]/10">
+                <Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] hover:bg-[#0A0F2E]/5 dark:text-white dark:border-white/20">
                   <Target className="h-4 w-4 mr-2" />
                   Configure Triggers
                 </Button>
@@ -156,13 +156,13 @@ export default function WorkspaceDetect() {
                   </div>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/execute">
-                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/10 hover:bg-[#C9A84C]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(201, 168, 76, 0.3)" }}>
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/10 hover:bg-[#C9A84C]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(201, 168, 76, 0.2)" }}>
                       <span className="text-sm text-[#C9A84C]">EXECUTE</span>
                     </div>
                   </Link>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/advance">
-                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43, 138, 110, 0.3)" }}>
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43, 138, 110, 0.2)" }}>
                       <span className="text-sm text-[#2B8A6E]">ADVANCE</span>
                     </div>
                   </Link>

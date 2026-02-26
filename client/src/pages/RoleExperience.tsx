@@ -159,7 +159,7 @@ const ROLES: Record<string, RoleData> = {
   },
   cmo: {
     id: 'cmo', title: 'Chief Marketing Officer', name: 'Lisa Anderson', company: 'Meridian Financial Group',
-    icon: TrendingUp, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#2B8A6E]',
+    icon: TrendingUp, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#141B45]',
     scenario: 'Competitive Response — Major Competitor Launches Rival Product',
     domain: 'Competitive Response', domainCategory: 'OFFENSE',
     playbook: { number: '47', name: 'Competitive Response — Product Counter-Strategy', tasks: 24, stakeholders: 28, budget: '$250K' },

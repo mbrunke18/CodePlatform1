@@ -318,10 +318,10 @@ export default function ExecutiveSimulationDemo() {
   const getSeverityColor = (severity: string) => {
     switch (severity) {
       case 'critical': return 'bg-[#0A0F2E] text-white';
-      case 'high': return 'bg-[#C9A84C] text-[#0A0F2E]';
-      case 'medium': return 'bg-[#C9A84C] text-[#0A0F2E]';
-      case 'low': return 'bg-[#0A0F2E] text-white';
-      default: return 'bg-[#6B7280] text-white';
+      case 'high': return 'bg-[#C9A84C]/20 text-[#C9A84C]';
+      case 'medium': return 'bg-[#C9A84C]/10 text-[#C9A84C]';
+      case 'low': return 'bg-[#0A0F2E]/10 text-[#0A0F2E]';
+      default: return 'bg-[#6B7280]/10 text-[#6B7280]';
     }
   };
 
@@ -480,7 +480,7 @@ export default function ExecutiveSimulationDemo() {
                 <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 text-center border border-[#E8E4DC] dark:border-white/10">
                   <Users className="w-8 h-8 text-[#0A0F2E] dark:text-[#C9A84C] mx-auto mb-2" />
                   <p className="text-3xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>6</p>
-                  <p classNamePrefix="text-[#6B7280] dark:text-white/60 text-sm">Stakeholders Aligned</p>
+                  <p className="text-[#6B7280] dark:text-white/60 text-sm">Stakeholders Aligned</p>
                 </div>
                 <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 text-center border border-[#E8E4DC] dark:border-white/10">
                   <CheckCircle2 className="w-8 h-8 text-[#2B8A6E] mx-auto mb-2" />

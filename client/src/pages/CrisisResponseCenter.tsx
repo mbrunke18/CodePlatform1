@@ -213,11 +213,11 @@ export default function CrisisResponseCenter() {
 
   const getSeverityIcon = (severity: string) => {
     switch (severity) {
-      case 'critical': return <AlertTriangle className="h-4 w-4" />;
-      case 'high': return <AlertCircle className="h-4 w-4" />;
-      case 'medium': return <Clock className="h-4 w-4" />;
-      case 'low': return <CheckCircle className="h-4 w-4" />;
-      default: return <Activity className="h-4 w-4" />;
+      case 'critical': return <AlertTriangle className="h-4 w-4 text-red-700" />;
+      case 'high': return <AlertCircle className="h-4 w-4 text-[#C9A84C]" />;
+      case 'medium': return <Clock className="h-4 w-4 text-[#2B8A6E]" />;
+      case 'low': return <CheckCircle className="h-4 w-4 text-[#6B7280]" />;
+      default: return <Activity className="h-4 w-4 text-[#6B7280]" />;
     }
   };
 

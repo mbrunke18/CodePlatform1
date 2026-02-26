@@ -196,7 +196,7 @@ export default function Investors() {
             
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/try-demo">
-                <Button className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold px-8 h-12">
+                <Button className="bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold px-8 h-12">
                   <Play className="w-4 h-4 mr-2" />
                   Watch Demo
                 </Button>

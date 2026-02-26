@@ -91,7 +91,7 @@ export default function MarketingLanding() {
               <Button 
                 onClick={() => { window.location.href = '/try-demo'; }}
                 size="lg"
-                className="bg-[#0A0F2E] border border-white/20 hover:bg-[#141B45] text-white font-bold uppercase tracking-widest text-sm px-12 py-8 rounded-none shadow-2xl transition-all"
+                className="bg-[#C9A84C] border border-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold uppercase tracking-widest text-sm px-12 py-8 rounded-none shadow-2xl transition-all"
                 data-testid="button-try-demo"
               >
                 <Play className="mr-3 h-4 w-4" />
@@ -101,7 +101,7 @@ export default function MarketingLanding() {
               <Button 
                 onClick={() => setLocation("/contact")}
                 size="lg"
-                className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold uppercase tracking-widest text-sm px-12 py-8 rounded-none shadow-2xl transition-all"
+                className="bg-transparent border border-white/20 hover:bg-white/10 text-white font-bold uppercase tracking-widest text-sm px-12 py-8 rounded-none shadow-2xl transition-all"
                 data-testid="button-start-pilot"
               >
                 Start Pilot Program

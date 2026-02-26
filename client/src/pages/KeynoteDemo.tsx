@@ -192,7 +192,7 @@ export default function KeynoteDemo() {
           className="text-7xl font-bold text-[#0A0F2E] mb-6 tracking-tight"
           style={CG}
         >
-          Strategic Execution Is <span className="text-[#0A0F2E]">Broken</span>
+          Strategic Execution Is <span className="text-[#C9A84C]">Broken</span>
         </motion.h1>
         <motion.div
           initial={{ opacity: 0 }}

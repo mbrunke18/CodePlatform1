@@ -88,7 +88,7 @@ export default function RetailFoodSafetyDemo() {
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div className="p-6 bg-white/5 rounded-lg border border-white/10">
                   <h3 className="font-bold text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                    <AlertTriangle className="w-5 h-5 text-red-400" />
+                    <AlertTriangle className="w-5 h-5 text-[#C9A84C]" />
                     The Crisis
                   </h3>
                   <div className="space-y-3 text-sm">
@@ -116,8 +116,8 @@ export default function RetailFoodSafetyDemo() {
                   <ul className="space-y-2 text-sm text-white/60">
                     <li>• Week 1: QA detects contamination, internal investigation</li>
                     <li>• Week 1 End: Quietly notify wholesalers only</li>
-                    <li className="text-red-400 font-semibold">• During gap: 50+ customers consume contaminated lettuce</li>
-                    <li className="text-red-400 font-bold">• During gap: Hospitalizations begin</li>
+                    <li className="text-[#C9A84C] font-semibold">• During gap: 50+ customers consume contaminated lettuce</li>
+                    <li className="text-[#C9A84C] font-bold">• During gap: Hospitalizations begin</li>
                     <li>• Week 2: Public recall finally announced</li>
                     <li className="text-white/40">• Month 1-2: $200M in lawsuits, FDA warning letter</li>
                   </ul>
@@ -189,8 +189,8 @@ export default function RetailFoodSafetyDemo() {
                 </div>
                 <Progress value={detectionProgress} className="h-3 bg-white/10 [&>div]:bg-[#C9A84C]" />
                 {detectionProgress >= 88 && (
-                  <div className="mt-4 p-4 bg-red-900/20 border border-red-500 rounded-lg">
-                    <p className="text-red-400 font-semibold">
+                  <div className="mt-4 p-4 bg-[#0A0F2E] border border-[#C9A84C] rounded-lg">
+                    <p className="text-[#C9A84C] font-semibold">
                       ⚠️ ALERT: Class I recall criteria detected - Food contamination + wide distribution = immediate action required
                     </p>
                   </div>
@@ -347,7 +347,7 @@ export default function RetailFoodSafetyDemo() {
                 <h3 className="font-bold text-white mb-4 text-center text-xl" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Execution OS Difference</h3>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-semibold text-red-400 mb-3">Traditional Crisis Response</h4>
+                    <h4 className="font-semibold text-[#C9A84C] mb-3">Traditional Crisis Response</h4>
                     <ul className="space-y-2 text-sm text-white/60">
                       <li>• 7 days of email chains and staged notifications</li>
                       <li>• 50+ customers hospitalized</li>

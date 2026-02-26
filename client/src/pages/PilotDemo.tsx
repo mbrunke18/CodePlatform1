@@ -365,8 +365,8 @@ export default function PilotDemo() {
                     </div>
 
                     <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 rounded-lg p-4 border border-[#0A0F2E] dark:border-[#0A0F2E]">
-                      <h4 className="font-medium text-[#0A0F2E] dark:text-[#C9A84C]/20 mb-2">What happens next:</h4>
-                      <ul className="text-sm text-[#0A0F2E] dark:text-slate-300 space-y-1">
+                      <h4 className="font-medium text-[#C9A84C] mb-2">What happens next:</h4>
+                      <ul className="text-sm text-white dark:text-slate-300 space-y-1">
                         <li>1. You'll pick a trigger scenario (competitor move, crisis, etc.)</li>
                         <li>2. You'll select a playbook to execute</li>
                         <li>3. Watch the 12-minute activation happen in real-time</li>

@@ -191,7 +191,7 @@ export default function PlaybookCommand() {
               {!isAuthenticated ? (
                 <div className="text-center py-4">
                   <p className="text-gray-800 mb-4">Sign in to execute this playbook</p>
-                  <Button onClick={login} data-testid="button-login">
+                  <Button onClick={() => login()} data-testid="button-login">
                     Sign In
                   </Button>
                 </div>
@@ -236,7 +236,7 @@ export default function PlaybookCommand() {
             <CardContent className="space-y-4">
               {Array.isArray(playbook.tier1Stakeholders) && playbook.tier1Stakeholders.length > 0 && (
                 <div>
-                  <Badge className="bg-red-500/10 text-red-500 mb-2 border-red-500/20">Tier 1 - Immediate</Badge>
+                  <Badge className="bg-[#0A0F2E] text-white mb-2 border-white/10">Tier 1 - Immediate</Badge>
                   <p className="text-sm text-gray-800">{(playbook.tier1Stakeholders as string[]).join(", ")}</p>
                 </div>
               )}

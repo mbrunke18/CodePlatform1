@@ -407,11 +407,9 @@ html:not(.dark) .min-h-screen:not(.bg-poise-navy) {
 
 /* ================================================================
    LIGHT MODE — TEXT CONTRAST SYSTEM
-   Light text converted to readable dark navy on white backgrounds.
-   White text restored for: nav/footer + colored accent elements.
+   Explicitly light text classes adjusted for readability on white.
+   NOTE: text-white is NOT overridden — it is intentional on dark backgrounds.
    ================================================================ */
-
-html:not(.dark) .text-white { color: #0A0F2E !important; }
 html:not(.dark) .text-slate-50,
 html:not(.dark) .text-slate-100 { color: #1C2455 !important; }
 html:not(.dark) .text-slate-200 { color: #2C3060 !important; }

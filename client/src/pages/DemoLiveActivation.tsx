@@ -447,16 +447,16 @@ function DemoLiveActivation() {
       <div className="max-w-7xl mx-auto mb-8">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h1 className="text-5xl font-bold mb-2" data-testid="demo-title">
+            <h1 className="text-5xl font-bold mb-2 text-[#0A0F2E]" data-testid="demo-title">
               Execution OS Live Activation Demo
             </h1>
             <div className="flex items-center gap-3 mb-2">
-              <Badge className="bg-[#2B8A6E] text-white px-4 py-2 text-sm" data-testid="badge-human-in-loop">
+              <Badge className="bg-[#2B8A6E] text-white px-4 py-2 text-sm border-none" data-testid="badge-human-in-loop">
                 <Shield className="w-4 h-4 mr-2 inline" />
                 Human-in-the-Loop Activation
               </Badge>
             </div>
-            <p className="text-2xl text-gray-800 dark:text-slate-300">
+            <p className="text-2xl text-gray-800">
               Real-time Strategic Coordination
             </p>
           </div>
@@ -495,7 +495,7 @@ function DemoLiveActivation() {
                 <span className="text-6xl">{DEMO_SCENARIO.emoji}</span>
                 {DEMO_SCENARIO.title}
               </CardTitle>
-              <p className="text-center text-slate-700 dark:text-slate-300 text-xl mt-4">
+              <p className="text-center text-slate-700 text-xl mt-4">
                 {DEMO_SCENARIO.description}
               </p>
             </CardHeader>
@@ -506,25 +506,25 @@ function DemoLiveActivation() {
                   <div className="text-3xl font-bold text-[#C9A84C] mb-2" data-testid="text-stakeholder-count">
                     {STAKEHOLDER_ROSTER.length}
                   </div>
-                  <div className="text-gray-800 dark:text-slate-300 text-lg">Stakeholders</div>
+                  <div className="text-gray-800 text-lg">Stakeholders</div>
                 </div>
                 <div className="text-center p-6 bg-[#0A0F2E]/5 rounded-lg border border-[#E8E4DC]">
                   <Clock className="h-12 w-12 text-[#0A0F2E] mx-auto mb-3" />
                   <div className="text-3xl font-bold text-[#C9A84C] mb-2">~12 min</div>
-                  <div className="text-gray-800 dark:text-slate-300 text-lg">Duration</div>
+                  <div className="text-gray-800 text-lg">Duration</div>
                 </div>
                 <div className="text-center p-6 bg-[#0A0F2E]/5 rounded-lg border border-[#E8E4DC]">
                   <DollarSign className="h-12 w-12 text-[#0A0F2E] mx-auto mb-3" />
                   <div className="text-3xl font-bold text-[#C9A84C] mb-2">{DEMO_SCENARIO.valueProp}</div>
-                  <div className="text-gray-800 dark:text-slate-300 text-lg">Value Created</div>
+                  <div className="text-gray-800 text-lg">Value Created</div>
                 </div>
               </div>
 
               <div className="text-center">
-                <p className="text-gray-800 dark:text-slate-300 text-lg mb-6">
+                <p className="text-gray-800 text-lg mb-6">
                   Click "Begin Activation" above to start the 12-minute live demonstration
                 </p>
-            <div className="flex items-center justify-center gap-4 text-sm text-gray-800 dark:text-slate-300">
+            <div className="flex items-center justify-center gap-4 text-sm text-gray-800">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 bg-[#0A0F2E] rounded-full"></div>
                 <span>Real-time coordination</span>
@@ -534,7 +534,7 @@ function DemoLiveActivation() {
                 <span>Live acknowledgments</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-[#0A0F2E] rounded-full"></div>
+                <div className="w-3 h-3 bg-[#C9A84C] rounded-full"></div>
                 <span>Before/after metrics</span>
               </div>
             </div>

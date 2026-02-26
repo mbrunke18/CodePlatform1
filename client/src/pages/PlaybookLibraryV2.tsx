@@ -245,6 +245,7 @@ function CompoundDisruptionSection() {
             const Icon = item.icon;
             const isExpanded = expandedScenario === i;
             const scenarioColor = item.scenario.includes("Cyber") ? TEAL : item.scenario.includes("Geopolitical") ? GOLD : item.scenario.includes("Climate") ? TEAL : item.scenario.includes("AI") ? GOLD : NAVY;
+            const categoryColor = item.scenario.includes("Cyber") ? TEAL : item.scenario.includes("Geopolitical") ? GOLD : item.scenario.includes("Climate") ? TEAL : item.scenario.includes("AI") ? GOLD : NAVY;
             return (
               <div
                 key={i}
@@ -263,7 +264,7 @@ function CompoundDisruptionSection() {
                   <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} style={{ color: MUTED }} />
                 </div>
                 <div style={{ color: MUTED }} className="text-xs mb-2">{item.domains}</div>
-                <div className="text-xs text-[#2B8A6E] font-semibold">{item.playbookCount} coordinated playbooks</div>
+                <div className="text-xs font-semibold" style={{ color: categoryColor }}>{item.playbookCount} coordinated playbooks</div>
               </div>
             );
           })}
@@ -437,6 +438,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                         background: isActive ? "white" : "transparent",
                         transition: "all 0.2s"
                       }}
+                      className="hover:border-[#DFC178]"
                     >
                       {chip}
                     </button>

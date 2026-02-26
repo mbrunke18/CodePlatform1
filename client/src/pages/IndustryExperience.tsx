@@ -102,7 +102,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
   },
   'shein-trend': {
     id: 'shein-trend', title: 'Viral Trend Capitalization', organization: 'SHEIN (Global Fashion Marketplace)',
-    industry: 'Fast Fashion', icon: TrendingUp, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#2B8A6E]',
+    industry: 'Fast Fashion', icon: TrendingUp, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#141B45]',
     scenario: 'TikTok Cottage Core Trend — 200 SKUs Designed, Manufactured & Listed in 7 Days',
     domain: 'Product Launch', domainCategory: 'OFFENSE',
     playbook: { number: '146', name: 'Trend Capitalization — Viral Response', tasks: 38, stakeholders: 5847, budget: '$2.4M' },
