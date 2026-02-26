@@ -689,7 +689,7 @@ export default function TryDemo() {
                   {/* Action buttons */}
                   <div className="mt-4 flex gap-3">
                     {!showChaosComplete && (
-                      <Button variant="outline" onClick={skipChaos} className="flex-1 bg-transparent text-gray-900 border-slate-600 hover:bg-[#141B45]">
+                      <Button variant="outline" onClick={skipChaos} className="flex-1 bg-transparent text-[#0A0F2E] border-[#E8E4DC] hover:bg-[#141B45] hover:text-white hover:border-[#141B45]">
                         Skip to Solution
                         <ChevronRight className="ml-2 h-4 w-4" />
                       </Button>

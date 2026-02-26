@@ -598,12 +598,12 @@ export default function ComprehensiveAIIntelligence() {
                     {/* Action Buttons */}
                     <div className="flex gap-2">
                       <Link to={`/${module.id}`} className="flex-1">
-                        <Button size="sm" className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E]">
+                        <Button size="sm" className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white">
                           <Eye className="w-4 h-4 mr-2" />
                           View Details
                         </Button>
                       </Link>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-[#141B45]">
+                      <Button size="sm" variant="outline" className="bg-transparent border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#141B45] hover:text-white hover:border-[#141B45]">
                         <Settings className="w-4 h-4" />
                       </Button>
                     </div>

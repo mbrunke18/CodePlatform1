@@ -304,7 +304,7 @@ export default function PrismInsights() {
                           <BarChart3 className="h-4 w-4 mr-2" />
                           View Data
                         </Button>
-                        <Button size="sm" className="flex-1 bg-[#0A0F2E] hover:bg-[#0A0F2E]">
+                        <Button size="sm" className="flex-1 bg-[#0A0F2E] hover:bg-[#141B45] text-white">
                           <Download className="h-4 w-4 mr-2" />
                           Export Report
                         </Button>

@@ -942,7 +942,7 @@ export default function ExecutiveSimulationDemo() {
                       </div>
                     </CardContent>
                     <CardFooter className="bg-[#F8F7F4] dark:bg-[#0A0F2E]/30">
-                      <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E]" data-testid="button-activate-playbook">
+                      <Button className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white" data-testid="button-activate-playbook">
                         <Rocket className="w-4 h-4 mr-2" />
                         Activate This Playbook
                       </Button>

@@ -335,7 +335,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
                     <span className="font-medium">Smart Suggestions</span>
                   </div>
                   <p className="text-sm text-gray-600">AI recommends templates based on your organization's risk profile</p>
-                  <Button size="sm" className="mt-2 bg-[#0A0F2E] hover:bg-[#0A0F2E]">
+                  <Button size="sm" className="mt-2 bg-[#0A0F2E] hover:bg-[#141B45] text-white">
                     Generate Suggestions
                   </Button>
                 </CardContent>

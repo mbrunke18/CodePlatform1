@@ -683,7 +683,7 @@ export default function QuickDemoPage() {
                         </p>
                       </div>
 
-                      <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900" onClick={completeIdentify}>
+                      <Button className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white" onClick={completeIdentify}>
                         Playbook Ready - Continue to Detection
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -732,7 +732,7 @@ export default function QuickDemoPage() {
                         </p>
                       </div>
 
-                      <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900 py-6 text-lg font-semibold" onClick={completeDetect}>
+                      <Button className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white py-6 text-lg font-semibold" onClick={completeDetect}>
                         <Play className="mr-2 h-5 w-5" />
                         Activate Playbook
                       </Button>

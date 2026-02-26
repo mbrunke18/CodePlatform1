@@ -787,7 +787,7 @@ export default function UnifiedEnterprisePlatform() {
                         <div className="text-xs text-gray-800 dark:text-slate-200">Due in 45 days • High Priority</div>
                       </div>
                     </div>
-                    <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-xs">
+                    <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white text-xs">
                       <Calendar className="h-3 w-3 mr-1" />
                       View Full Timeline
                     </Button>
@@ -820,7 +820,7 @@ export default function UnifiedEnterprisePlatform() {
                         <span className="text-orange-400 font-bold">89%</span>
                       </div>
                     </div>
-                    <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-xs">
+                    <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white text-xs">
                       <Users className="h-3 w-3 mr-1" />
                       Manage Stakeholders
                     </Button>
@@ -917,7 +917,7 @@ export default function UnifiedEnterprisePlatform() {
                         <span className="text-[#0A0F2E] font-bold">{collaborationData.liveSessions}</span>
                       </div>
                       <div className="grid grid-cols-2 gap-2 mt-4">
-                        <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-xs">
+                        <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white text-xs">
                           <MessageSquare className="h-3 w-3 mr-1" />
                           War Room
                         </Button>
@@ -998,7 +998,7 @@ export default function UnifiedEnterprisePlatform() {
                         <AlertTriangle className="h-4 w-4 mr-2" />
                         Emergency Broadcast
                       </Button>
-                      <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E]">
+                      <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white">
                         <Users className="h-4 w-4 mr-2" />
                         Team Assembly
                       </Button>
@@ -1006,7 +1006,7 @@ export default function UnifiedEnterprisePlatform() {
                         <CheckCircle className="h-4 w-4 mr-2" />
                         Status Update
                       </Button>
-                      <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E]">
+                      <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white">
                         <Calendar className="h-4 w-4 mr-2" />
                         Schedule Meeting
                       </Button>
@@ -1407,7 +1407,7 @@ export default function UnifiedEnterprisePlatform() {
                         <div className="text-xs text-gray-800 dark:text-slate-200">Daily updates</div>
                       </div>
                     </div>
-                    <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-xs">
+                    <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white text-xs">
                       <TrendingUp className="h-3 w-3 mr-1" />
                       View Analysis
                     </Button>
@@ -1445,7 +1445,7 @@ export default function UnifiedEnterprisePlatform() {
                         <Progress value={12.7} className="h-1" />
                       </div>
                     </div>
-                    <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-xs">
+                    <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white text-xs">
                       <Users className="h-3 w-3 mr-1" />
                       Customer Insights
                     </Button>
@@ -1548,7 +1548,7 @@ export default function UnifiedEnterprisePlatform() {
                         <div className="text-gray-800 dark:text-slate-200">Supply chain efficiency +7% • 12 minutes ago</div>
                       </div>
                     </div>
-                    <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-xs">
+                    <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white text-xs">
                       <Activity className="h-3 w-3 mr-1" />
                       View All Alerts
                     </Button>
@@ -1712,7 +1712,7 @@ export default function UnifiedEnterprisePlatform() {
                         <div className="text-xs text-gray-800 dark:text-slate-200">Technology trend analysis</div>
                       </div>
                     </div>
-                    <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-xs">
+                    <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white text-xs">
                       <Target className="h-3 w-3 mr-1" />
                       Strategic Settings
                     </Button>
@@ -1871,7 +1871,7 @@ export default function UnifiedEnterprisePlatform() {
                         <AlertTriangle className="h-4 w-4 mr-2" />
                         Crisis Mode
                       </Button>
-                      <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E]">
+                      <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white">
                         <Target className="h-4 w-4 mr-2" />
                         Strategic Session
                       </Button>
@@ -1879,7 +1879,7 @@ export default function UnifiedEnterprisePlatform() {
                         <CheckCircle className="h-4 w-4 mr-2" />
                         Operations Review
                       </Button>
-                      <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E]">
+                      <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white">
                         <Brain className="h-4 w-4 mr-2" />
                         AI Insights
                       </Button>

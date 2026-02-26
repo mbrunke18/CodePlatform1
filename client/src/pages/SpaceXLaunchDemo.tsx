@@ -310,11 +310,11 @@ export default function SpaceXLaunchDemo() {
             />
 
             <div className="flex justify-center gap-4">
-              <Button onClick={resetDemo} variant="outline" className="border-[#0A0F2E] text-[#3BAF8A] hover:bg-[#0A0F2E]" data-testid="button-replay">
+              <Button onClick={resetDemo} variant="outline" className="border-[#0A0F2E] text-[#3BAF8A] hover:bg-[#0A0F2E] hover:text-white" data-testid="button-replay">
                 Replay Demo
               </Button>
               <Link href="/industry-demos">
-                <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900" data-testid="button-all-demos">
+                <Button className="bg-[#0A0F2E] hover:bg-[#141B45] text-white" data-testid="button-all-demos">
                   View All Industry Demos
                 </Button>
               </Link>
