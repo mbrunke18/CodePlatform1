@@ -65,7 +65,7 @@ const features = [
 ];
 
 const steps = [
-  { step: '01', label: 'Sign in', description: 'Use your existing account or create one instantly' },
+  { step: '01', label: 'Sign in', description: 'Continue with Google, GitHub, or Apple — instant access' },
   { step: '02', label: 'Set up your workspace', description: 'Walk through a 7-step configuration wizard in under 5 minutes' },
   { step: '03', label: 'Explore with sample data', description: 'Opt in to pre-populate your workspace so you can see the platform in action' },
   { step: '04', label: 'Activate a playbook', description: 'Pick a scenario, launch it, and experience the full execution loop' },

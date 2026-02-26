@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, ClipboardCheck, FlaskConical } from "lucide-react";
+import { SiGoogle, SiGithub, SiApple } from "react-icons/si";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { useLocation } from "wouter";
 import { useAuth } from "@/hooks/useAuth";
@@ -78,7 +79,7 @@ export default function StandardNav() {
       heading: "Access",
       links: [
         { label: "Try Demo", path: "/try-demo", icon: Rocket, description: "Scripted simulation — no login required" },
-        { label: "Start Free Trial", path: "/get-started", icon: LogIn, description: "Sign in and use the real live platform" },
+        { label: "Start Free Trial", path: "/get-started", icon: LogIn, description: "Sign in with Google or GitHub — live platform" },
         { label: "Pilot Program", path: "/pilot-program", icon: Target, description: "Guided 12-week enterprise deployment" },
       ],
     },
@@ -274,8 +275,12 @@ export default function StandardNav() {
                   className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 h-9 px-3 text-sm"
                   data-testid="nav-login"
                 >
-                  <LogIn className="h-4 w-4 mr-1" />
-                  Sign In
+                  <span className="flex items-center gap-1.5">
+                    <SiGoogle className="h-3 w-3 opacity-70" />
+                    <SiGithub className="h-3.5 w-3.5 opacity-70" />
+                    <SiApple className="h-3.5 w-3.5 opacity-70" />
+                    <span className="ml-0.5">Sign In</span>
+                  </span>
                 </Button>
               </>
             )}
@@ -346,8 +351,12 @@ export default function StandardNav() {
                     className="w-full justify-center h-9 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                     data-testid="nav-mobile-login"
                   >
-                    <LogIn className="h-4 w-4 mr-2" />
-                    Sign In
+                    <span className="flex items-center gap-1.5">
+                      <SiGoogle className="h-3 w-3 opacity-70" />
+                      <SiGithub className="h-3.5 w-3.5 opacity-70" />
+                      <SiApple className="h-3.5 w-3.5 opacity-70" />
+                      <span className="ml-0.5">Sign In</span>
+                    </span>
                   </Button>
                 </div>
               )}
@@ -445,8 +454,12 @@ export default function StandardNav() {
                   className="text-gray-800 hover:text-gray-900 hover:bg-gray-100 w-full justify-center h-10"
                   data-testid="nav-mobile-signin"
                 >
-                  <LogIn className="h-4 w-4 mr-2" />
-                  Sign In
+                  <span className="flex items-center gap-1.5">
+                    <SiGoogle className="h-3 w-3 opacity-70" />
+                    <SiGithub className="h-3.5 w-3.5 opacity-70" />
+                    <SiApple className="h-3.5 w-3.5 opacity-70" />
+                    <span className="ml-0.5">Sign In</span>
+                  </span>
                 </Button>
               )}
             </div>

@@ -597,7 +597,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                     <div className="flex items-center justify-center gap-4">
                       <Lock className="h-4 w-4" style={{ color: "#6B7280" }} />
                       <span style={{ fontSize: 13, color: NAVY }}>
-                        <strong>+ {activeDomainInfo.count - publicTeasers.length} more playbooks</strong> — sign in to unlock the full library
+                        <strong>+ {activeDomainInfo.count - publicTeasers.length} more playbooks</strong> — sign in with Google or GitHub to unlock the full library
                       </span>
                       <Button
                         size="sm"

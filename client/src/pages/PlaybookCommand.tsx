@@ -195,7 +195,8 @@ export default function PlaybookCommand() {
             <div className="pt-4 border-t">
               {!isAuthenticated ? (
                 <div className="text-center py-4">
-                  <p className="text-gray-800 mb-4">Sign in to execute this playbook</p>
+                  <p className="text-gray-800 mb-1">Sign in to execute this playbook</p>
+                  <p className="text-sm text-[#6B7280] mb-4">Continue with Google, GitHub, or Apple</p>
                   <Button onClick={() => login()} data-testid="button-login">
                     Sign In
                   </Button>

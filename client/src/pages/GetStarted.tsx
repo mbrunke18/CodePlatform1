@@ -36,7 +36,7 @@ const ICON_STYLES = [
 ];
 
 const STEPS = [
-  { num: "01", label: "Sign In", desc: "Use your existing account — no new password needed" },
+  { num: "01", label: "Sign In", desc: "Continue with Google, GitHub, or Apple — no password needed" },
   { num: "02", label: "Set Up Your Org", desc: "2-minute setup: name, industry, key departments" },
   { num: "03", label: "Pick Your Playbooks", desc: "Choose the 3–5 most relevant to your role" },
   { num: "04", label: "Run the Platform", desc: "Real signals, real AI, real execution — fully live" },
