@@ -302,7 +302,7 @@ export default function PilotDemo() {
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-center mb-8">
             <div className="flex items-center gap-2">
-              {["setup", "configure", "ready", "executing", "complete"].map((s, i) => (
+                      {["setup", "configure", "ready", "executing", "complete"].map((s, i) => (
                 <div key={s} className="flex items-center">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors ${
                     step === s 

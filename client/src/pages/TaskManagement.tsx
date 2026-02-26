@@ -96,7 +96,7 @@ const STAKEHOLDER_ROLES = [
 ];
 
 const PRIORITY_CONFIG = {
-  critical: { label: "Critical", color: "bg-red-600 text-white rounded-none" },
+  critical: { label: "Critical", color: "bg-destructive text-destructive-foreground rounded-none" },
   high: { label: "High", color: "bg-[#0A0F2E] text-white rounded-none" },
   medium: { label: "Medium", color: "bg-[#DFC178] text-[#0A0F2E] rounded-none" },
   low: { label: "Low", color: "bg-[#F8F7F4] text-gray-800 rounded-none" },
@@ -106,7 +106,7 @@ const STATUS_CONFIG = {
   pending: { label: "Pending", icon: Circle, color: "text-gray-800" },
   in_progress: { label: "In Progress", icon: Timer, color: "text-[#0A0F2E]" },
   completed: { label: "Completed", icon: CheckCircle2, color: "text-[#2B8A6E]" },
-  blocked: { label: "Blocked", icon: AlertTriangle, color: "text-red-600" },
+  blocked: { label: "Blocked", icon: AlertTriangle, color: "text-destructive" },
 };
 
 const APPROVAL_TYPES = [

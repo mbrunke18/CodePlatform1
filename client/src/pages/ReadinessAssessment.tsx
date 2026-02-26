@@ -601,7 +601,7 @@ export default function ReadinessAssessment() {
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="8"
-                    className="text-slate-800"
+                    className="text-[#E8E4DC] dark:text-white/10"
                   />
                   <circle
                     cx="60"
@@ -620,7 +620,7 @@ export default function ReadinessAssessment() {
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <span className={`text-5xl font-bold ${domainConfig.text}`}>{result.score}</span>
-                  <span className="text-gray-800 text-sm mt-1">/100</span>
+                  <span className="text-[#6B7280] dark:text-white/60 text-sm mt-1">/100</span>
                 </div>
               </div>
               <Badge className={`${scoreInfo!.bg} ${scoreInfo!.badgeText} border-none px-4 py-1.5 text-sm font-semibold`}>
@@ -629,23 +629,23 @@ export default function ReadinessAssessment() {
             </div>
 
             <div className="mb-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <BarChart3 className="h-5 w-5 text-[#0A0F2E]" />
+              <h2 className="text-xl font-bold text-[#0A0F2E] dark:text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <BarChart3 className="h-5 w-5 text-[#C9A84C]" />
                 Industry Benchmark Comparison
               </h2>
-              <Card className={`bg-white border ${domainConfig.border}`}>
+              <Card className={`bg-white dark:bg-white/5 border ${domainConfig.border}`}>
                 <CardContent className="p-6 space-y-5">
                   {[
                     { label: companyName || "Your Score", value: result.score, color: domainConfig.bg },
-                    { label: "Fortune 500 Average", value: selectedDomain === "offense" ? 62 : selectedDomain === "defense" ? 54 : 48, color: "bg-slate-500" },
-                    { label: "Execution OS Clients", value: selectedDomain === "offense" ? 84 : selectedDomain === "defense" ? 78 : 75, color: "bg-teal-500" },
+                    { label: "Fortune 500 Average", value: selectedDomain === "offense" ? 62 : selectedDomain === "defense" ? 54 : 48, color: "bg-[#6B7280]" },
+                    { label: "Execution OS Clients", value: selectedDomain === "offense" ? 84 : selectedDomain === "defense" ? 78 : 75, color: "bg-[#2B8A6E]" },
                   ].map((row) => (
                     <div key={row.label}>
                       <div className="flex items-center justify-between text-sm mb-1.5">
-                        <span className="text-gray-800 font-medium">{row.label}</span>
-                        <span className="text-gray-900 font-bold">{row.value}/100</span>
+                        <span className="text-[#0A0F2E] dark:text-white font-medium">{row.label}</span>
+                        <span className="text-[#0A0F2E] dark:text-white font-bold">{row.value}/100</span>
                       </div>
-                      <div className="h-3 bg-gray-50 rounded-full overflow-hidden">
+                      <div className="h-3 bg-[#E8E4DC] dark:bg-white/10 rounded-full overflow-hidden">
                         <div
                           className={`h-full rounded-full ${row.color} transition-all duration-700`}
                           style={{ width: `${row.value}%` }}
@@ -653,7 +653,7 @@ export default function ReadinessAssessment() {
                       </div>
                     </div>
                   ))}
-                  <p className="text-sm text-teal-400 font-medium pt-2 border-t border-gray-200">
+                  <p className="text-[#2B8A6E] font-medium pt-2 border-t border-[#E8E4DC] dark:border-white/10">
                     Execution OS clients score {Math.round((((selectedDomain === "offense" ? 84 : selectedDomain === "defense" ? 78 : 75) / (selectedDomain === "offense" ? 62 : selectedDomain === "defense" ? 54 : 48)) - 1) * 100)}% higher than Fortune 500 average
                   </p>
                 </CardContent>
@@ -674,16 +674,16 @@ export default function ReadinessAssessment() {
 
             {result.gaps.length > 0 && (
               <div className="mb-8">
-                <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <XCircle className="h-5 w-5 text-red-400" />
+                <h2 className="text-xl font-bold text-[#0A0F2E] dark:text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <XCircle className="h-5 w-5 text-red-600" />
                   Gaps Found ({result.gaps.length})
                 </h2>
                 <div className="space-y-3">
                   {result.gaps.map((gap, i) => (
-                    <Card key={i} className="bg-white border border-red-500/30">
+                    <Card key={i} className="bg-white dark:bg-white/5 border border-red-600/30">
                       <CardContent className="p-4 flex items-start gap-3">
-                        <XCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
-                        <p className="text-gray-800">{gap}</p>
+                        <XCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
+                        <p className="text-[#0A0F2E] dark:text-white">{gap}</p>
                       </CardContent>
                     </Card>
                   ))}
@@ -693,11 +693,11 @@ export default function ReadinessAssessment() {
 
             {result.gaps.length > 0 && (
               <div className="mb-8">
-                <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <h2 className="text-xl font-bold text-[#0A0F2E] dark:text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   <Layers className={`h-5 w-5 ${domainConfig.textLight}`} />
                   How Execution OS Closes These Gaps
                 </h2>
-                <Card className={`    border ${domainConfig.border} overflow-hidden`}>
+                <Card className={`bg-white dark:bg-white/5 border ${domainConfig.border} overflow-hidden`}>
                   <CardContent className="p-6">
                     <div className="space-y-5">
                       {[
@@ -722,13 +722,13 @@ export default function ReadinessAssessment() {
                       ].map((item) => {
                         const StepIcon = item.icon;
                         return (
-                          <div key={item.step} className={`flex items-start gap-4 p-4 rounded-xl bg-gray-50 border ${domainConfig.border}`}>
-                            <div className={`w-10 h-10 rounded-lg ${domainConfig.bgLight} flex items-center justify-center flex-shrink-0`}>
-                              <StepIcon className={`h-5 w-5 ${domainConfig.textLight}`} />
+                          <div key={item.step} className={`flex items-start gap-4 p-4 rounded-xl bg-[#F8F7F4] dark:bg-white/5 border ${domainConfig.border}`}>
+                            <div className={`w-10 h-10 rounded-lg ${domainConfig.bg} flex items-center justify-center flex-shrink-0 shadow-sm`}>
+                              <StepIcon className="w-5 h-5 text-white" />
                             </div>
                             <div>
-                              <h3 className={`font-bold ${domainConfig.textLight} text-sm tracking-wide`}>{item.title}</h3>
-                              <p className="text-gray-800 text-sm mt-1 leading-relaxed">{item.description}</p>
+                              <h4 className="font-bold text-[#0A0F2E] dark:text-white mb-1">{item.title}</h4>
+                              <p className="text-sm text-[#6B7280] dark:text-white/60 leading-relaxed">{item.description}</p>
                             </div>
                           </div>
                         );

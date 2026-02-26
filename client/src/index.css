@@ -56,8 +56,8 @@
   --card-foreground: hsl(232, 67%, 11%);
   --popover: hsl(0, 0%, 100%);
   --popover-foreground: hsl(232, 67%, 11%);
-  --primary: hsl(38, 52%, 55%);
-  --primary-foreground: hsl(232, 67%, 11%);
+  --primary: hsl(232, 67%, 11%);
+  --primary-foreground: hsl(0, 0%, 100%);
   --secondary: hsl(232, 30%, 96%);
   --secondary-foreground: hsl(232, 55%, 18%);
   --muted: hsl(220, 14%, 96%);
@@ -99,8 +99,8 @@
   --card-foreground: hsl(40, 24%, 91%);
   --popover: hsl(233, 60%, 14%);
   --popover-foreground: hsl(40, 24%, 91%);
-  --primary: hsl(38, 52%, 55%);
-  --primary-foreground: hsl(232, 67%, 11%);
+  --primary: hsl(232, 67%, 11%);
+  --primary-foreground: hsl(0, 0%, 100%);
   --secondary: hsl(232, 50%, 20%);
   --secondary-foreground: hsl(40, 20%, 88%);
   --muted: hsl(232, 42%, 18%);
@@ -895,43 +895,65 @@ html:not(.dark) [class*="border-zinc-9"] {
    because Tailwind classes are generated after this block.
    ======================================== */
 
-/* Navy & dark navy → white text and white SVG icons (via currentColor) */
+/* ── DARK BACKGROUND CONTRAST ENFORCEMENT ─────────────────────────────── */
+
+/* Navy containers: inherit white text */
 [class~="bg-[#0A0F2E]"],
-[class*=" bg-[#0A0F2E]"],
 [class~="bg-[#141B45]"],
-[class*=" bg-[#141B45]"] {
+[class~="bg-[#0A0F2E]/50"], [class~="bg-[#0A0F2E]/60"],
+[class~="bg-[#0A0F2E]/70"], [class~="bg-[#0A0F2E]/80"],
+[class~="bg-[#0A0F2E]/90"] {
   color: #ffffff;
 }
 
-/* Teal → white text and icons */
+/* Teal containers: inherit white text */
 [class~="bg-[#2B8A6E]"],
-[class*=" bg-[#2B8A6E]"],
 [class~="bg-[#237A5F]"],
-[class*=" bg-[#237A5F]"] {
+[class~="bg-[#2B8A6E]/50"], [class~="bg-[#2B8A6E]/60"],
+[class~="bg-[#2B8A6E]/70"], [class~="bg-[#2B8A6E]/80"],
+[class~="bg-[#2B8A6E]/90"] {
   color: #ffffff;
 }
 
-/* Gold → dark navy text (gold is a light accent color) */
+/* Gold containers: dark navy text */
 [class~="bg-[#C9A84C]"],
-[class*=" bg-[#C9A84C]"],
-[class~="bg-[#DFC178]"],
-[class*=" bg-[#DFC178]"] {
+[class~="bg-[#DFC178]"] {
   color: #0A0F2E;
 }
 
-/* Inline style navy backgrounds → white text for all children */
+/* Force SVG icons to white inside navy/teal containers — overrides explicit text-gray-* classes */
+[class~="bg-[#0A0F2E]"] svg,
+[class~="bg-[#141B45]"] svg,
+[class~="bg-[#0A0F2E]/60"] svg,
+[class~="bg-[#0A0F2E]/70"] svg,
+[class~="bg-[#0A0F2E]/80"] svg,
+[class~="bg-[#0A0F2E]/90"] svg,
+[class~="bg-[#2B8A6E]"] svg,
+[class~="bg-[#237A5F]"] svg {
+  color: #ffffff !important;
+}
+
+/* Inline style navy/teal backgrounds → white text */
 [style*="background: #0A0F2E"],
 [style*="background:#0A0F2E"],
 [style*="background-color: #0A0F2E"],
-[style*="background-color:#0A0F2E"] {
+[style*="background-color:#0A0F2E"],
+[style*="background: #141B45"],
+[style*="background:#141B45"],
+[style*="background: #2B8A6E"],
+[style*="background:#2B8A6E"] {
   color: #ffffff;
 }
-[style*="background: #0A0F2E"] *,
-[style*="background:#0A0F2E"] * {
-  --inherited-bg: navy;
+
+/* SVG icons inside inline-style dark backgrounds */
+[style*="background: #0A0F2E"] svg,
+[style*="background:#0A0F2E"] svg,
+[style*="background: #141B45"] svg,
+[style*="background: #2B8A6E"] svg {
+  color: #ffffff !important;
 }
 
-/* Cards on dark sections: semi-transparent white overlays get white text */
+/* Cards on dark sections: semi-transparent white overlays keep white text */
 [style*="background: #0A0F2E"] [class*="bg-white/"],
 [style*="background:#0A0F2E"] [class*="bg-white/"] {
   color: #ffffff;

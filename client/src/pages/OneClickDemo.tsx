@@ -185,7 +185,7 @@ export default function OneClickDemo() {
     switch (type) {
       case 'ai': return <Bot className="h-4 w-4 text-[#0A0F2E]" />;
       case 'approval': return <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />;
-      case 'blocker': return <AlertCircle className="h-4 w-4 text-red-400" />;
+      case 'blocker': return <AlertCircle className="h-4 w-4 text-red-600" />;
       case 'resolved': return <Zap className="h-4 w-4 text-[#C9A84C]" />;
       case 'complete': return <Shield className="h-4 w-4 text-[#2B8A6E]" />;
       default: return <FileText className="h-4 w-4 text-gray-800" />;

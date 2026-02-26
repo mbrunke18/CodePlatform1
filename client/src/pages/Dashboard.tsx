@@ -34,7 +34,7 @@ function StatusDot({ status }: { status: 'good' | 'warning' | 'critical' }) {
   const colors = {
     good: 'bg-[#2B8A6E]',
     warning: 'bg-[#C9A84C]',
-    critical: 'bg-red-500'
+    critical: 'bg-[#ef4444]'
   };
   return <div className={`w-2.5 h-2.5 rounded-full ${colors[status]} animate-pulse`} />;
 }
@@ -53,7 +53,7 @@ function KPICard({
   const statusColors = {
     good: 'text-[#2B8A6E]',
     warning: 'text-[#C9A84C]',
-    critical: 'text-red-700'
+    critical: 'text-[#ef4444]'
   };
 
   return (

@@ -80,7 +80,7 @@ interface PlaybookDef {
 
 const AVATAR_COLORS = [
   'bg-[#0A0F2E]', 'bg-[#2B8A6E]', 'bg-[#0A0F2E]', 'bg-[#C9A84C]',
-  'bg-red-600', 'bg-[#2B8A6E]', 'bg-[#0A0F2E]', 'bg-[#C9A84C]',
+  'bg-[#0A0F2E]', 'bg-[#2B8A6E]', 'bg-[#0A0F2E]', 'bg-[#C9A84C]',
   'bg-[#2B8A6E]', 'bg-[#DFC178]'
 ];
 

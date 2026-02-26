@@ -198,8 +198,8 @@ const compoundScenarios = [
 function UrgencyBadge({ urgency }: { urgency: string }) {
   if (urgency === "critical") {
     return (
-      <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(239, 68, 68, 0.12)", color: "#EF4444", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px" }}>
-        <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+      <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(10, 15, 46, 0.12)", color: "#0A0F2E", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px" }}>
+        <span className="w-2 h-2 rounded-full bg-[#0A0F2E] animate-pulse" />
         Critical
       </span>
     );
@@ -244,7 +244,7 @@ function CompoundDisruptionSection() {
           {compoundScenarios.map((item, i) => {
             const Icon = item.icon;
             const isExpanded = expandedScenario === i;
-            const scenarioColor = item.scenario.includes("Cyber") ? TEAL : item.scenario.includes("Geopolitical") ? GOLD : item.scenario.includes("Climate") ? TEAL : NAVY;
+            const scenarioColor = item.scenario.includes("Cyber") ? TEAL : item.scenario.includes("Geopolitical") ? GOLD : item.scenario.includes("Climate") ? TEAL : item.scenario.includes("AI") ? GOLD : NAVY;
             return (
               <div
                 key={i}
@@ -272,7 +272,7 @@ function CompoundDisruptionSection() {
         {expandedScenario !== null && (() => {
           const scenario = compoundScenarios[expandedScenario];
           const Icon = scenario.icon;
-          const scenarioColor = scenario.scenario.includes("Cyber") ? TEAL : scenario.scenario.includes("Geopolitical") ? GOLD : scenario.scenario.includes("Climate") ? TEAL : NAVY;
+          const scenarioColor = scenario.scenario.includes("Cyber") ? TEAL : scenario.scenario.includes("Geopolitical") ? GOLD : scenario.scenario.includes("Climate") ? TEAL : scenario.scenario.includes("AI") ? GOLD : NAVY;
           return (
             <div className="mt-5 rounded-xl border bg-[#F8F7F4]/50 p-6 animate-in fade-in slide-in-from-top-2 duration-300" style={{ borderColor: BORDER }}>
               <div className="flex items-start gap-4 mb-6">

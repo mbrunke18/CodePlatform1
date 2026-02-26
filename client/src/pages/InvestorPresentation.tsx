@@ -251,15 +251,15 @@ function InvestorPresentation() {
               ))}
             </ul>
           </div>
-          <div className="bg-white border border-red-500/30 rounded-xl p-8">
+          <div className="bg-white border border-[#0A0F2E]/30 rounded-xl p-8">
             <div className="flex items-center gap-3 mb-4">
-              <Shield className="w-6 h-6 text-red-500" />
-              <h3 className="text-xl font-bold text-red-500">DEFENSE</h3>
-              <span className="ml-auto text-2xl font-bold text-red-500">58</span>
+              <Shield className="w-6 h-6 text-[#0A0F2E]" />
+              <h3 className="text-xl font-bold text-[#0A0F2E]">DEFENSE</h3>
+              <span className="ml-auto text-2xl font-bold text-[#0A0F2E]">58</span>
             </div>
             <ul className="space-y-2 text-[#0A0F2E] text-sm">
               {['Crisis management', 'Cybersecurity response', 'Regulatory compliance', 'Reputation protection', 'Supply chain disruption', 'Legal & litigation'].map((item, i) => (
-                <li key={i} className="flex items-center gap-2"><ArrowRight className="w-3 h-3 text-red-500 shrink-0" />{item}</li>
+                <li key={i} className="flex items-center gap-2"><ArrowRight className="w-3 h-3 text-[#0A0F2E] shrink-0" />{item}</li>
               ))}
             </ul>
           </div>
@@ -336,13 +336,13 @@ function InvestorPresentation() {
           There is no data on the future. What enterprises need is execution infrastructure built before the moment arrives.
         </p>
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl w-full mb-10">
-          <div className="bg-red-950/30 border border-red-500/30 rounded-xl p-8">
-            <h3 className="text-xl font-bold text-red-500 mb-2">The Dead Model</h3>
+          <div className="bg-[#0A0F2E]/10 border border-[#0A0F2E]/30 rounded-xl p-8">
+            <h3 className="text-xl font-bold text-[#0A0F2E] mb-2">The Dead Model</h3>
             <p className="text-[#0A0F2E] text-sm mb-4">Predict → Plan → Execute</p>
             <div className="space-y-3">
               {['Assumes stable, linear environment', 'Ad-hoc response teams assembled after the fact', '72-hour coordination loops', 'Knowledge lost when people leave', 'Same cost, same scramble, every time'].map((t, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <div className="w-2 h-2 rounded-full bg-red-500 mt-2 shrink-0" />
+                  <div className="w-2 h-2 rounded-full bg-[#0A0F2E] mt-2 shrink-0" />
                   <span className="text-[#0A0F2E] text-sm">{t}</span>
                 </div>
               ))}

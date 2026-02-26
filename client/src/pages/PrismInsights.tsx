@@ -116,9 +116,9 @@ export default function PrismInsights() {
 
   const getColorClasses = (color: string) => {
     const colors = {
-      teal: 'text-[#2B8A6E] bg-[#2B8A6E]/10 border-[#2B8A6E]/30',
-      navy: 'text-[#0A0F2E] bg-[#0A0F2E]/10 border-[#0A0F2E]/30',
-      gold: 'text-[#C9A84C] bg-[#C9A84C]/10 border-[#C9A84C]/30'
+      teal: 'text-[#2B8A6E] bg-[#2B8A6E]/10 border-[#2B8A6E]/20',
+      navy: 'text-[#0A0F2E] bg-[#0A0F2E]/10 border-[#0A0F2E]/20',
+      gold: 'text-[#C9A84C] bg-[#C9A84C]/10 border-[#C9A84C]/20'
     };
     return colors[color as keyof typeof colors] || colors.navy;
   };

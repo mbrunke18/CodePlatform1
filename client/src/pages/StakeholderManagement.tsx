@@ -400,9 +400,9 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
           <Card>
             <CardContent className="py-16 text-center">
               <Users className="h-12 w-12 mx-auto mb-4 text-gray-800" />
-              <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">No Stakeholders Found</h3>
+              <h3 className="text-lg font-medium text-[#0A0F2E] mb-2">No Stakeholders Found</h3>
               <p className="text-gray-800 mb-6">Start by adding stakeholders to your directory.</p>
-              <Button onClick={handleOpenCreate} data-testid="button-add-first-stakeholder">
+              <Button onClick={handleOpenCreate} className="bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none" data-testid="button-add-first-stakeholder">
                 <Plus className="h-4 w-4 mr-2" />
                 Add First Stakeholder
               </Button>
@@ -436,9 +436,9 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                             </AvatarFallback>
                           </Avatar>
                           <div>
-                            <p className="font-medium text-slate-900 dark:text-white">{stakeholder.name}</p>
+                            <p className="font-medium text-[#0A0F2E]">{stakeholder.name}</p>
                             {stakeholder.isBackup && (
-                              <Badge variant="outline" className="text-xs">Backup</Badge>
+                              <Badge variant="outline" className="text-xs rounded-none border-[#E8E4DC]">Backup</Badge>
                             )}
                           </div>
                         </div>
@@ -456,7 +456,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                       </TableCell>
                       <TableCell>
                         <div className="space-y-1 text-sm">
-                          <div className="flex items-center gap-1 text-gray-800 dark:text-slate-300">
+                          <div className="flex items-center gap-1 text-gray-800">
                             <Mail className="h-3 w-3" />
                             <span className="truncate max-w-[150px]" data-testid={`text-email-${stakeholder.id}`}>{stakeholder.email}</span>
                           </div>

@@ -221,7 +221,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
   const getProgressColor = (progress: number) => {
     if (progress >= 80) return 'bg-[#2B8A6E]';
     if (progress >= 50) return 'bg-[#C9A84C]';
-    return 'bg-red-600';
+    return 'bg-destructive';
   };
   
   const handleAddMetric = () => {
@@ -270,7 +270,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
           </div>
 
           {/* Header */}
-          <div className="bg-[#0A0F2E] text-white p-6 rounded-lg border border-[#E8E4DC]">
+          <div className="bg-[#0A0F2E] text-white p-6 rounded-none border border-[#E8E4DC]">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
@@ -408,13 +408,13 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                     <div>
                       <div className="flex justify-between text-xs uppercase tracking-wider mb-1">
                         <span className="text-[#6B7280]">Progress</span>
-                        <span className={progress >= 80 ? 'text-[#2B8A6E]' : progress >= 50 ? 'text-[#C9A84C]' : 'text-red-600'}>
+                        <span className={progress >= 80 ? 'text-[#2B8A6E]' : progress >= 50 ? 'text-[#C9A84C]' : 'text-destructive'}>
                           {progress.toFixed(0)}%
                         </span>
                       </div>
                       <div className="h-2 bg-[#F8F7F4] rounded-full overflow-hidden">
                         <div 
-                          className={`h-full ${getProgressColor(progress)} transition-all [&>div]:bg-[#C9A84C]`}
+                          className={`h-full ${getProgressColor(progress)} transition-all`}
                           style={{ width: `${progress}%` }}
                         />
                       </div>

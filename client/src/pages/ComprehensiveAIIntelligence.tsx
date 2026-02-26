@@ -82,11 +82,11 @@ interface DatabaseIntelligenceReport {
 
 const getReportTypeBadgeColor = (reportType: string) => {
   switch (reportType) {
-    case 'market_analysis': return 'bg-[#0A0F2E]/20 text-[#0A0F2E] border-[#0A0F2E]/30';
-    case 'competitive_intelligence': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
-    case 'risk_assessment': return 'bg-red-500/20 text-red-600 border-red-500/30';
-    case 'regulatory_update': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
-    case 'technology_trends': return 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30';
+    case 'market_analysis': return 'bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20';
+    case 'competitive_intelligence': return 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20';
+    case 'risk_assessment': return 'bg-red-500/10 text-red-600 border-red-500/20';
+    case 'regulatory_update': return 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20';
+    case 'technology_trends': return 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20';
     default: return 'bg-black/5 text-gray-700 border-black/10';
   }
 };

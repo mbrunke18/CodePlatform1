@@ -195,7 +195,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-16">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <Users className="w-8 h-8 text-poise-teal" />
+              <Users className="w-8 h-8 text-[#2B8A6E]" />
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
                 Your Execution OS Workspace
               </h1>

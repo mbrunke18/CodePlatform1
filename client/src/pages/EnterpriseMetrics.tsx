@@ -81,7 +81,7 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
                 </div>
               </div>
               <div className="relative z-10 flex items-center gap-3">
-                <Badge variant="outline" className="text-[#2B8A6E] border-[#2B8A6E]/50 bg-[#2B8A6E]/5">
+                <Badge variant="outline" className="text-[#2B8A6E] border-[#2B8A6E]/30 bg-[#2B8A6E]/10">
                   <CheckCircle className="w-3 h-3 mr-1" />
                   Enterprise Ready
                 </Badge>

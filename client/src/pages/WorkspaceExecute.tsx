@@ -112,7 +112,7 @@ export default function WorkspaceExecute() {
               <div>
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Compass Command</h1>
-                  <Badge className="bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30" style={{ background: "#C9A84C", color: "#0A0F2E" }}>
+                  <Badge className="bg-[#C9A84C] text-[#0A0F2E] border-none px-3 py-1 font-bold">
                     <SubBrandLabel name="Compass™" />
                   </Badge>
                 </div>

@@ -115,6 +115,7 @@ const generateMockPlaybooks = (): PlaybookReadiness[] => {
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
 const TEAL = "#2B8A6E";
+const BORDER = "#E8E4DC";
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 const tierConfig = {

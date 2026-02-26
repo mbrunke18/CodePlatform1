@@ -40,27 +40,27 @@ export default function CrisisExposureMatrix() {
     title, 
     description, 
     scenarios, 
-    color,
+    className,
     icon: Icon 
   }: { 
     title: string; 
     description: string; 
     scenarios: any[]; 
-    color: string;
+    className: string;
     icon: any;
   }) => (
-    <Card className={`${color} border-2`} data-testid={`card-${title.toLowerCase().replace(' ', '-')}`}>
+    <Card className={`${className} border-2 rounded-none`} data-testid={`card-${title.toLowerCase().replace(' ', '-')}`}>
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Icon className="h-5 w-5" />
-            <CardTitle className="text-lg">{title}</CardTitle>
+            <CardTitle style={CG} className="text-2xl font-bold">{title}</CardTitle>
           </div>
-          <Badge variant="outline" className="text-lg font-bold border-[#E8E4DC] text-[#0A0F2E]" data-testid={`badge-count-${title.toLowerCase().replace(' ', '-')}`}>
+          <Badge variant="outline" className="text-lg font-bold border-[#E8E4DC] text-[#0A0F2E] rounded-none" data-testid={`badge-count-${title.toLowerCase().replace(' ', '-')}`}>
             {scenarios.length}
           </Badge>
         </div>
-        <CardDescription>{description}</CardDescription>
+        <CardDescription className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">{description}</CardDescription>
       </CardHeader>
       <CardContent>
         {scenarios.length === 0 ? (
@@ -189,7 +189,7 @@ export default function CrisisExposureMatrix() {
               title="Important"
               description="High Impact, Lower Likelihood - Strategic preparation"
               scenarios={important}
-              color="bg-white border-[#E8E4DC] hover:border-[#DFC178]/50"
+              className="bg-white border-[#E8E4DC] hover:border-[#DFC178]/50"
               icon={Shield}
             />
 
@@ -198,7 +198,7 @@ export default function CrisisExposureMatrix() {
               title="Critical Priority"
               description="High Impact, High Likelihood - Immediate focus"
               scenarios={critical}
-              color="bg-red-50 border-red-700/20 hover:border-red-700/50"
+              className="bg-red-50 border-red-700/20 hover:border-red-700/50"
               icon={AlertTriangle}
             />
 
@@ -207,7 +207,7 @@ export default function CrisisExposureMatrix() {
               title="Low Priority"
               description="Lower Impact, Lower Likelihood - Operational tasks"
               scenarios={low}
-              color="bg-white border-[#E8E4DC] hover:border-[#6B7280]/50"
+              className="bg-white border-[#E8E4DC] hover:border-[#6B7280]/50"
               icon={Target}
             />
 
@@ -216,7 +216,7 @@ export default function CrisisExposureMatrix() {
               title="Monitor Closely"
               description="Lower Impact, High Likelihood - Reactive protocols"
               scenarios={monitor}
-              color="bg-white border-[#E8E4DC] hover:border-[#C9A84C]/50"
+              className="bg-white border-[#E8E4DC] hover:border-[#C9A84C]/50"
               icon={TrendingUp}
             />
           </div>

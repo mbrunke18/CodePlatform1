@@ -109,7 +109,7 @@ export default function WorkspaceDetect() {
               <div>
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Signal Ops</h1>
-                  <Badge className="bg-[#0A0F2E]/20 text-[#0A0F2E] border-[#0A0F2E]/30" style={{ background: "#0A0F2E", color: "white" }}>
+                  <Badge className="bg-[#0A0F2E] text-white border-none px-3 py-1">
                     <SubBrandLabel name="Signal™" />
                   </Badge>
                 </div>

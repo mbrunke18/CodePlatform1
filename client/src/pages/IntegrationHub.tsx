@@ -779,107 +779,83 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
     return matchesSearch && matchesCategory;
   });
 
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+  const NAVY = "#0A0F2E";
+  const GOLD = "#C9A84C";
+  const TEAL = "#2B8A6E";
+
   return (
     <PageLayout embedded={embedded}>
-      <div className="flex-1 page-background overflow-y-auto p-8 space-y-8">
-        
-        {/* Ecosystem Connectors Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-[#0A0F2E] mb-2">Ecosystem Connectors</h1>
-            <p className="text-[#6B7280]">Connect 10-15 enterprise systems to create platform lock-in and prohibitive switching costs</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30">
-              <Activity className="w-4 h-4 mr-2" />
-              System Health: {systemMetrics.systemHealth}%
-            </Badge>
-            <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none px-6 font-bold text-[10px] tracking-widest uppercase">
-              <Plus className="w-4 h-4 mr-2" />
-              Add Integration
-            </Button>
+      <div className="flex-1 bg-[#F8F7F4] overflow-y-auto" data-testid="integration-hub">
+        {/* Navy Hero Section */}
+        <div style={{ background: NAVY, padding: "80px 48px", position: "relative", overflow: "hidden", minHeight: 360 }}>
+          <div style={{ 
+            position: "absolute", 
+            inset: 0, 
+            backgroundImage: "radial-gradient(#C9A84C 0.5px, transparent 0.5px)", 
+            backgroundSize: "32px 32px",
+            opacity: 0.1
+          }} />
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+              <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase" as const, color: GOLD }}>Connected Ecosystem</span>
+            </div>
+            <div className="flex items-end justify-between gap-12">
+              <div className="max-w-3xl">
+                <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(48px,6vw,72px)", lineHeight: 1, color: "#fff", marginBottom: 24 }}>
+                  Integration <em style={{ fontStyle: "italic", color: "#DFC178" }}>Hub</em>
+                </h1>
+                <p className="text-white/60 text-xl leading-relaxed max-w-2xl">ExecuteIQ orchestrates your entire enterprise stack through bi-directional strategic synchronization.</p>
+              </div>
+              <div className="flex flex-col items-end gap-4 min-w-[280px]">
+                <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(43,138,110,0.2)", color:TEAL, fontSize:10, fontWeight:800, letterSpacing:"0.2em", textTransform:"uppercase" as const, padding:"6px 16px", border: `1px solid ${TEAL}` }}>
+                  <Activity className="w-4 h-4" />
+                  System Health: {systemMetrics.systemHealth}%
+                </div>
+                <Button className="w-full bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold h-14 rounded-none text-sm tracking-widest" size="lg">
+                  <Plus className="w-5 h-5 mr-3" />
+                  ADD INTEGRATION
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* System Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
-          <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-bold text-[10px] uppercase tracking-widest text-[#0A0F2E]">Integrations</h3>
-                <Globe className="h-5 w-5 text-[#C9A84C]" />
-              </div>
-              <div className="text-2xl font-bold text-[#0A0F2E]">{systemMetrics.totalIntegrations}</div>
-              <div className="text-[10px] text-[#6B7280] font-bold uppercase tracking-widest">Total connected</div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-bold text-[10px] uppercase tracking-widest text-[#0A0F2E]">Active</h3>
-                <CheckCircle className="h-5 w-5 text-[#2B8A6E]" />
-              </div>
-              <div className="text-2xl font-bold text-[#0A0F2E]">{systemMetrics.activeConnections}</div>
-              <div className="text-[10px] text-[#6B7280] font-bold uppercase tracking-widest">Connections live</div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-bold text-[10px] uppercase tracking-widest text-[#0A0F2E]">API Calls</h3>
-                <Zap className="h-5 w-5 text-[#C9A84C]" />
-              </div>
-              <div className="text-2xl font-bold text-[#0A0F2E]">{formatNumber(systemMetrics.dailyApiCalls)}</div>
-              <div className="text-[10px] text-[#6B7280] font-bold uppercase tracking-widest">Today</div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-bold text-[10px] uppercase tracking-widest text-[#0A0F2E]">Health</h3>
-                <Activity className="h-5 w-5 text-[#2B8A6E]" />
-              </div>
-              <div className="text-2xl font-bold text-[#0A0F2E]">{systemMetrics.systemHealth}%</div>
-              <div className="text-[10px] text-[#6B7280] font-bold uppercase tracking-widest">Overall status</div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-bold text-[10px] uppercase tracking-widest text-[#0A0F2E]">Data Flows</h3>
-                <Database className="h-5 w-5 text-[#C9A84C]" />
-              </div>
-              <div className="text-2xl font-bold text-[#0A0F2E]">{systemMetrics.dataFlows}</div>
-              <div className="text-[10px] text-[#6B7280] font-bold uppercase tracking-widest">Active pipelines</div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-bold text-[10px] uppercase tracking-widest text-[#0A0F2E]">Error Rate</h3>
-                <AlertTriangle className="h-5 w-5 text-red-500" />
-              </div>
-              <div className="text-2xl font-bold text-[#0A0F2E]">{(systemMetrics.errorRate * 100).toFixed(2)}%</div>
-              <div className="text-[10px] text-[#6B7280] font-bold uppercase tracking-widest">Last 24h</div>
-            </CardContent>
-          </Card>
+        {/* Stats Grid */}
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", background: "white", borderBottom:"1px solid #E8E4DC" }}>
+          <div style={{ padding:32, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: GOLD, lineHeight: 1 }}>{systemMetrics.totalIntegrations}</div>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>Total Modules</div>
+          </div>
+          <div style={{ padding:32, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: GOLD, lineHeight: 1 }}>{systemMetrics.activeConnections}</div>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>Active Syncs</div>
+          </div>
+          <div style={{ padding:32, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: GOLD, lineHeight: 1 }}>{(systemMetrics.dailyApiCalls / 1000).toFixed(1)}k</div>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>Daily Signals</div>
+          </div>
+          <div style={{ padding:32 }}>
+            <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: GOLD, lineHeight: 1 }}>{systemMetrics.errorRate}%</div>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>Sync Latency</div>
+          </div>
         </div>
 
-        {/* Main Integration Tabs */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="bg-white border border-[#E8E4DC] rounded-none">
-            <TabsTrigger value="dashboard" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E] rounded-none font-bold text-[10px] uppercase tracking-widest">Dashboard</TabsTrigger>
-            <TabsTrigger value="integrations" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E] rounded-none font-bold text-[10px] uppercase tracking-widest">Integrations</TabsTrigger>
-            <TabsTrigger value="apis" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E] rounded-none font-bold text-[10px] uppercase tracking-widest">API Endpoints</TabsTrigger>
-            <TabsTrigger value="dataflows" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E] rounded-none font-bold text-[10px] uppercase tracking-widest">Data Flows</TabsTrigger>
-            <TabsTrigger value="monitoring" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E] rounded-none font-bold text-[10px] uppercase tracking-widest">Monitoring</TabsTrigger>
-          </TabsList>
+        <div className="p-12 max-w-7xl mx-auto space-y-12">
+          {/* Main Integration Tabs */}
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-12">
+            <TabsList className="bg-transparent border-b border-[#E8E4DC] rounded-none h-auto p-0 gap-12">
+              {['dashboard', 'integrations', 'apis', 'dataflows', 'monitoring'].map((tab) => (
+                <TabsTrigger 
+                  key={tab}
+                  value={tab} 
+                  className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-[#C9A84C] data-[state=active]:text-[#0A0F2E] rounded-none px-0 py-5 text-[10px] font-bold tracking-[0.25em] uppercase text-[#6B7280]"
+                >
+                  {tab === 'apis' ? 'API Endpoints' : tab === 'dataflows' ? 'Data Flows' : tab}
+                </TabsTrigger>
+              ))}
+            </TabsList>
 
           {/* Dashboard */}
           <TabsContent value="dashboard" className="space-y-6">

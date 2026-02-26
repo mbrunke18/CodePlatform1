@@ -46,7 +46,7 @@ function StatusIndicator({ status }: { status: 'good' | 'warning' | 'critical' }
   const config = {
     good: { bg: 'bg-[#2B8A6E]', className: 'text-[#2B8A6E]', label: 'Healthy' },
     warning: { bg: 'bg-[#C9A84C]', className: 'text-[#C9A84C]', label: 'Attention' },
-    critical: { bg: 'bg-red-500', className: 'text-red-700', label: 'Critical' }
+    critical: { bg: 'bg-[#ef4444]', className: 'text-[#ef4444]', label: 'Critical' }
   };
   const c = config[status];
   
@@ -80,7 +80,7 @@ function MetricCard({
   const statusBorders = {
     good: 'border-l-[#2B8A6E]',
     warning: 'border-l-[#C9A84C]',
-    critical: 'border-l-red-500'
+    critical: 'border-l-[#ef4444]'
   };
 
   const trendIcons = {
@@ -92,7 +92,7 @@ function MetricCard({
 
   const trendClasses = {
     up: 'text-[#2B8A6E]',
-    down: 'text-red-700',
+    down: 'text-[#ef4444]',
     neutral: 'text-[#6B7280]'
   };
 
@@ -223,7 +223,7 @@ export default function ExecutiveDashboard() {
   const getScoreColor = (score: number) => {
     if (score >= 80) return 'text-[#2B8A6E]';
     if (score >= 60) return 'text-[#C9A84C]';
-    return 'text-red-700';
+    return 'text-[#ef4444]';
   };
 
   const organizationId = organizations[0]?.id || 'demo-org-1';

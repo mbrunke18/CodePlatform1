@@ -390,7 +390,7 @@ export default function KeynoteDemo() {
                 {[
                   { label: 'Category', value: signal?.signalCategory?.toUpperCase() || 'COMPETITIVE', icon: Crosshair, color: 'text-[#0A0F2E]' },
                   { label: 'AI Confidence', value: `${signal?.aiConfidence || 94}%`, icon: Brain, color: 'text-[#C9A84C]' },
-                  { label: 'Revenue at Risk', value: signal?.costOfInaction?.revenueAtRisk || '$12.5M', icon: DollarSign, color: 'text-red-600' },
+                  { label: 'Revenue at Risk', value: signal?.costOfInaction?.revenueAtRisk || '$12.5M', icon: DollarSign, color: 'text-[#0A0F2E]' },
                   { label: 'Source', value: signal?.source || 'Market Intelligence', icon: Eye, color: 'text-[#2B8A6E]' },
                 ].map((item, i) => (
                   <motion.div
@@ -492,7 +492,7 @@ export default function KeynoteDemo() {
               <h3 className="text-sm font-bold text-[#0A0F2E]/60 uppercase tracking-widest mb-4">Cost of Inaction</h3>
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { label: 'Revenue at Risk', value: signal?.costOfInaction?.revenueAtRisk || '$12.5M', color: 'text-red-600' },
+                  { label: 'Revenue at Risk', value: signal?.costOfInaction?.revenueAtRisk || '$12.5M', color: 'text-[#0A0F2E]' },
                   { label: 'Pipeline Impact', value: signal?.costOfInaction?.pipelineImpact || '$34.2M', color: 'text-[#0A0F2E]' },
                   { label: 'Time Decay', value: signal?.costOfInaction?.timeDecay || '-$420K/day', color: 'text-[#C9A84C]' },
                   { label: 'Competitor Edge', value: signal?.costOfInaction?.competitorAdvantage || '18 months', color: 'text-[#2B8A6E]' },

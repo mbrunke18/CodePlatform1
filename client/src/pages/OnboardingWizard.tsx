@@ -311,7 +311,7 @@ export default function OnboardingWizard() {
           
           <div className="w-full bg-[#E8E4DC] h-1.5 mb-8 overflow-hidden">
             <div 
-              className="bg-[#C9A84C] h-full transition-all duration-500 [&>div]:bg-[#C9A84C]" 
+              className="bg-[#C9A84C] h-full transition-all duration-500" 
               style={{ width: `${progress}%` }} 
             />
           </div>

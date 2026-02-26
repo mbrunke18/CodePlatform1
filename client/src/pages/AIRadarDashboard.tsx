@@ -147,10 +147,10 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                 
                 {/* Cross lines */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-full h-px bg-[#F8F7F4]" />
+                  <div className="w-full h-px bg-[#E8E4DC]/20" />
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-px h-full bg-[#F8F7F4]" />
+                  <div className="w-px h-full bg-[#E8E4DC]/20" />
                 </div>
                 
                 {/* Radar sweep */}
@@ -229,7 +229,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
           <div className="lg:col-span-2 space-y-4">
             {/* Key Metrics */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <Card className={`${criticalTriggers.length > 0 ? 'border-red-500 bg-red-50' : 'border-[#2B8A6E] bg-[#2B8A6E]/5'}`} data-testid="card-threat-level">
+              <Card className={`${criticalTriggers.length > 0 ? 'border-red-500 bg-red-50' : 'border-[#2B8A6E]/30 bg-[#2B8A6E]/5'}`} data-testid="card-threat-level">
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between">
                     <div>

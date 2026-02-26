@@ -176,8 +176,8 @@ export default function CrisisDetail() {
   const getPriorityStyle = (priority: string) => {
     switch (priority.toLowerCase()) {
       case 'high': return 'text-red-700 bg-red-50 font-bold';
-      case 'medium': return `text-[#C9A84C] bg-[#C9A84C]/5 font-bold`;
-      case 'low': return `text-[#2B8A6E] bg-[#2B8A6E]/5 font-bold`;
+      case 'medium': return `text-[#C9A84C] bg-[#C9A84C]/10 font-bold`;
+      case 'low': return `text-[#2B8A6E] bg-[#2B8A6E]/10 font-bold`;
       default: return 'text-[#6B7280] bg-gray-50';
     }
   };
@@ -369,11 +369,11 @@ export default function CrisisDetail() {
               ))}
             </TabsList>
 
-            <TabsContent value="overview" className="space-y-6">
-              <Card>
+            <TabsContent value="overview" className="space-y-6 mt-8">
+              <Card className="rounded-none border-[#E8E4DC]">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <FileText className="h-5 w-5" />
+                  <CardTitle style={CG} className="flex items-center gap-2 text-2xl text-[#0A0F2E]">
+                    <FileText className="h-5 w-5 text-[#C9A84C]" />
                     Crisis Description
                   </CardTitle>
                 </CardHeader>
@@ -387,10 +387,10 @@ export default function CrisisDetail() {
               </Card>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <Card>
+                <Card className="rounded-none border-[#E8E4DC]">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Building2 className="h-5 w-5" />
+                    <CardTitle style={CG} className="text-2xl font-bold flex items-center gap-2 text-[#0A0F2E]">
+                      <Building2 className="h-5 w-5 text-[#C9A84C]" />
                       Organization Details
                     </CardTitle>
                   </CardHeader>
@@ -414,17 +414,17 @@ export default function CrisisDetail() {
                   </CardContent>
                 </Card>
 
-                <Card>
+                <Card className="rounded-none border-[#E8E4DC]">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <BarChart3 className="h-5 w-5" />
+                    <CardTitle style={CG} className="flex items-center gap-2 text-2xl text-[#0A0F2E]">
+                      <BarChart3 className="h-5 w-5 text-[#2B8A6E]" />
                       Impact Metrics
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span className="text-sm font-medium text-[#0A0F2E]">Severity Level</span>
-                      <Badge variant="destructive" className="bg-red-600 text-white">HIGH</Badge>
+                      <Badge variant="destructive" className="bg-red-700 text-white rounded-none">HIGH</Badge>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm font-medium text-[#0A0F2E]">Response Time</span>
@@ -510,11 +510,11 @@ export default function CrisisDetail() {
               )}
             </TabsContent>
 
-            <TabsContent value="timeline" className="space-y-4">
-              <Card>
+            <TabsContent value="timeline" className="space-y-4 mt-8">
+              <Card className="rounded-none border-[#E8E4DC]">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Clock className="h-5 w-5" />
+                  <CardTitle style={CG} className="flex items-center gap-2 text-2xl text-[#0A0F2E]">
+                    <Clock className="h-5 w-5 text-[#C9A84C]" />
                     Crisis Timeline
                   </CardTitle>
                 </CardHeader>

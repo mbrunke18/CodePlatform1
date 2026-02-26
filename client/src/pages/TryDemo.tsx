@@ -741,7 +741,7 @@ export default function TryDemo() {
                   const isCompleted = completedPhases.includes(phase.id);
                   const isCurrent = currentPhase === phase.id;
                   const IconComponent = phase.icon;
-                  const colors = PHASE_COLORS[phase.color] || PHASE_COLORS.emerald;
+                  const colors = PHASE_COLORS[phase.color] || PHASE_COLORS.teal;
                   
                   return (
                     <div 

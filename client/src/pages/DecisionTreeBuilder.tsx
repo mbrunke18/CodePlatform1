@@ -142,10 +142,10 @@ export default function DecisionTreeBuilder() {
   const weighInRoles = ['General Counsel', 'Chief Communications Officer', 'CISO', 'CFO', 'COO', 'CTO'];
   const optionLetters = ['A', 'B', 'C', 'D', 'E', 'F'];
   const optionColors = [
-    'border-[#2B8A6E]/20 bg-[#2B8A6E]/5',
-    'border-[#0A0F2E]/20 bg-[#0A0F2E]/5',
-    'border-[#C9A84C]/20 bg-[#C9A84C]/5',
-    'border-[#DFC178]/20 bg-[#DFC178]/5',
+    'border-[#2B8A6E]/30 bg-[#2B8A6E]/5',
+    'border-[#0A0F2E]/30 bg-[#0A0F2E]/5',
+    'border-[#C9A84C]/30 bg-[#C9A84C]/5',
+    'border-[#DFC178]/30 bg-[#DFC178]/5',
     'border-[#E8E4DC] bg-white',
     'border-[#E8E4DC] bg-[#F8F7F4]',
   ];

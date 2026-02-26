@@ -121,7 +121,7 @@ export default function ExecutiveAnalyticsDashboard() {
   const getTrendIcon = (trend: string) => {
     switch (trend) {
       case 'up': return <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />;
-      case 'down': return <TrendingDown className="h-4 w-4 text-red-500" />;
+      case 'down': return <TrendingDown className="h-4 w-4 text-[#ef4444]" />;
       default: return <Activity className="h-4 w-4 text-[#C9A84C]" />;
     }
   };
@@ -130,7 +130,7 @@ export default function ExecutiveAnalyticsDashboard() {
     switch (category) {
       case 'achievement': return 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-none rounded-none';
       case 'opportunity': return 'bg-[#0A0F2E]/10 text-[#0A0F2E] border-none rounded-none';
-      case 'risk': return 'bg-red-500/10 text-red-700 border-none rounded-none';
+      case 'risk': return 'bg-[#ef4444]/10 text-[#ef4444] border-none rounded-none';
       case 'alert': return 'bg-[#C9A84C]/10 text-[#C9A84C] border-none rounded-none';
       default: return 'bg-gray-100 text-[#6B7280] border-none rounded-none';
     }
@@ -138,7 +138,7 @@ export default function ExecutiveAnalyticsDashboard() {
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'critical': return 'bg-red-500 text-white border-none rounded-none';
+      case 'critical': return 'bg-[#ef4444] text-white border-none rounded-none';
       case 'high': return 'bg-[#C9A84C] text-[#0A0F2E] border-none rounded-none';
       case 'medium': return 'bg-[#C9A84C] text-[#0A0F2E] border-none rounded-none';
       case 'low': return 'bg-[#2B8A6E] text-white border-none rounded-none';
@@ -283,7 +283,7 @@ export default function ExecutiveAnalyticsDashboard() {
                       {getTrendIcon(metric.trend)}
                     </div>
                     <div className="text-2xl font-bold text-[#0A0F2E] mb-2" style={CG}>{metric.value}</div>
-                    <div className={`text-[10px] font-bold uppercase tracking-widest mb-2 ${metric.trend === 'up' ? 'text-[#2B8A6E]' : metric.trend === 'down' ? 'text-red-500' : 'text-[#C9A84C]'}`}>
+                    <div className={`text-[10px] font-bold uppercase tracking-widest mb-2 ${metric.trend === 'up' ? 'text-[#2B8A6E]' : metric.trend === 'down' ? 'text-[#ef4444]' : 'text-[#C9A84C]'}`}>
                       {metric.change} vs period
                     </div>
                     <div className="text-xs text-[#6B7280]">{metric.description}</div>

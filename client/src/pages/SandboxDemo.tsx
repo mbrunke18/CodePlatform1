@@ -227,8 +227,14 @@ const SCENARIO_BRANCHES = [
   { severity: "critical", label: "Critical - Full Activation", color: "bg-red-600", actions: ["Immediate full team mobilization", "All escalation paths active", "Board notification triggered"] },
   { severity: "high", label: "High - Elevated Response", color: "bg-[#C9A84C]", actions: ["Core team activation", "Management notification", "External counsel on standby"] },
   { severity: "medium", label: "Medium - Monitoring Mode", color: "bg-[#C9A84C]", actions: ["Primary owner notified", "Situation monitoring enabled", "Escalation paths ready"] },
-  { severity: "low", label: "Low - Awareness Only", color: "bg-[#0A0F2E]", actions: ["Log for tracking", "Weekly digest inclusion", "No immediate action required"] },
+    { severity: "low", label: "Low - Awareness Only", color: "bg-[#0A0F2E]", actions: ["Log for tracking", "Weekly digest inclusion", "No immediate action required"] },
 ];
+
+const STAKEHOLDER_COLORS: Record<number, string> = {
+  1: "text-[#0A0F2E]",
+  2: "text-[#C9A84C]",
+  3: "text-[#2B8A6E]",
+};
 
 // Map library task owners to demo stakeholder IDs
 const OWNER_TO_STAKEHOLDER: Record<string, string> = {
@@ -1481,9 +1487,9 @@ export default function SandboxDemo() {
                         
                         let badge = null;
                         let role = 'I';
-                        if (isResponsible) { badge = <Badge className="bg-[#0A0F2E] text-white">R</Badge>; role = 'R'; }
+                        if (isResponsible) { badge = <Badge className="bg-[#2B8A6E] text-white">R</Badge>; role = 'R'; }
                         else if (isAccountable) { badge = <Badge className="bg-[#0A0F2E] text-white">A</Badge>; role = 'A'; }
-                        else if (isConsulted) { badge = <Badge className="bg-amber-500 text-gray-900">C</Badge>; role = 'C'; }
+                        else if (isConsulted) { badge = <Badge className="bg-[#C9A84C] text-[#0A0F2E]">C</Badge>; role = 'C'; }
                         else badge = <Badge variant="outline" className="bg-transparent text-gray-800 dark:text-slate-200">I</Badge>;
                         
                         return (
@@ -1497,9 +1503,9 @@ export default function SandboxDemo() {
             </table>
           </div>
           <div className="flex gap-4 mt-4 text-xs text-gray-800">
-            <span><Badge className="bg-[#0A0F2E] text-white mr-1">R</Badge> Responsible</span>
+            <span><Badge className="bg-[#2B8A6E] text-white mr-1">R</Badge> Responsible</span>
             <span><Badge className="bg-[#0A0F2E] text-white mr-1">A</Badge> Accountable</span>
-            <span><Badge className="bg-amber-500 text-gray-900 mr-1">C</Badge> Consulted</span>
+            <span><Badge className="bg-[#C9A84C] text-[#0A0F2E] mr-1">C</Badge> Consulted</span>
             <span><Badge variant="outline" className="bg-transparent text-gray-800 dark:text-slate-200 mr-1">I</Badge> Informed</span>
           </div>
         </CardContent>
@@ -2001,15 +2007,16 @@ export default function SandboxDemo() {
               </AccordionTrigger>
               <AccordionContent className="px-4 pb-4">
                 <div className="space-y-2">
-                  {config.stakeholders.map(id => {
-                    const s = STAKEHOLDER_OPTIONS.find(opt => opt.id === id);
-                    return s ? (
-                      <div key={id} className="flex items-center gap-2 text-sm p-2 rounded bg-slate-50 dark:bg-[#141B45]">
-                        <Badge variant="outline" className="text-xs">L{s.level}</Badge>
-                        <span>{s.label}</span>
-                      </div>
-                    ) : null;
-                  })}
+                    {config.stakeholders.map(id => {
+                      const s = STAKEHOLDER_OPTIONS.find(opt => opt.id === id);
+                      const colorClass = s ? STAKEHOLDER_COLORS[s.level as 1|2|3] : "text-gray-800";
+                      return s ? (
+                        <div key={id} className="flex items-center gap-2 text-sm p-2 rounded bg-slate-50 dark:bg-[#141B45]">
+                          <Badge variant="outline" className={`text-xs ${colorClass} border-current`}>L{s.level}</Badge>
+                          <span>{s.label}</span>
+                        </div>
+                      ) : null;
+                    })}
                   <p className="text-xs text-gray-800 mt-2 italic">
                     All team members will be notified via {config.notificationChannels.join(', ')} when triggered.
                   </p>
@@ -2032,8 +2039,8 @@ export default function SandboxDemo() {
                   {tasks.map((task) => (
                     <div key={task.id} className="flex items-center gap-2 text-sm p-2 rounded bg-slate-50 dark:bg-[#141B45]">
                       <div className={`w-2 h-2 rounded-full flex-shrink-0 ${
-                        task.priority === 'critical' ? 'bg-red-500' :
-                        task.priority === 'high' ? 'bg-orange-500' : 'bg-[#0A0F2E]'
+                        task.priority === 'critical' ? 'bg-red-600' :
+                        task.priority === 'high' ? 'bg-[#C9A84C]' : 'bg-[#0A0F2E]'
                       }`} />
                       <span className="flex-1">{task.name}</span>
                       <Badge variant="outline" className="text-xs">{task.estimatedMinutes}m</Badge>

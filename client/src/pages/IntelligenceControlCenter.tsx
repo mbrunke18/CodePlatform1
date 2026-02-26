@@ -100,9 +100,9 @@ export default function IntelligenceControlCenter() {
 
   const getColorClasses = (color: string) => {
     const colors: Record<string, { bg: string; border: string; text: string; badge: string }> = {
-      gold: { bg: ' ', border: 'border-[#C9A84C]/30 hover:border-[#C9A84C]/50', text: 'text-[#C9A84C]', badge: 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/30' },
-      navy: { bg: ' ', border: 'border-[#0A0F2E]/30 hover:border-[#0A0F2E]/50', text: 'text-[#0A0F2E]', badge: 'bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/30' },
-      teal: { bg: ' ', border: 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]/50', text: 'text-[#2B8A6E]', badge: 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30' },
+      gold: { bg: ' ', border: 'border-[#C9A84C]/20 hover:border-[#C9A84C]/40', text: 'text-[#C9A84C]', badge: 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20' },
+      navy: { bg: ' ', border: 'border-[#0A0F2E]/10 hover:border-[#0A0F2E]/30', text: 'text-[#0A0F2E]', badge: 'bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20' },
+      teal: { bg: ' ', border: 'border-[#2B8A6E]/20 hover:border-[#2B8A6E]/40', text: 'text-[#2B8A6E]', badge: 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20' },
     };
     return colors[color] || colors.navy;
   };

@@ -318,7 +318,7 @@ export default function SettingsPage() {
                           <div className="flex items-center space-x-3 mb-2">
                             <h4 className="font-semibold text-[#0A0F2E]">{feature.name}</h4>
                             {feature.critical && (
-                            <Badge variant="default" className="bg-red-600 text-white rounded-none">Critical</Badge>
+                            <Badge variant="destructive" className="rounded-none">Critical</Badge>
                         )}
                       </div>
                       <p className="text-sm text-gray-800">{feature.description}</p>

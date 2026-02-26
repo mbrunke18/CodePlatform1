@@ -43,11 +43,11 @@ const STEP_LABELS = ["Describe", "Analyze", "Playbook", "Simulate", "Report"];
 function domainColors(domain: string) {
   switch (domain) {
     case "offense":
-      return { bg: "bg-[#2B8A6E]/20", text: "text-[#2B8A6E]", border: "border-[#2B8A6E]/30", darkBg: "bg-[#2B8A6E]/15", label: "OFFENSE", realityBg: "bg-[#C9A84C]/10", realityBorder: "border-[#C9A84C]/20" };
+      return { bg: "bg-[#2B8A6E]/10", text: "text-[#2B8A6E]", border: "border-[#2B8A6E]/20", darkBg: "bg-[#2B8A6E]/15", label: "OFFENSE", realityBg: "bg-[#C9A84C]/10", realityBorder: "border-[#C9A84C]/20" };
     case "special_teams":
-      return { bg: "bg-[#C9A84C]/20", text: "text-[#C9A84C]", border: "border-[#C9A84C]/30", darkBg: "bg-[#C9A84C]/30", label: "SPECIAL TEAMS", realityBg: "bg-[#0A0F2E]/10", realityBorder: "border-[#0A0F2E]/20" };
+      return { bg: "bg-[#C9A84C]/10", text: "text-[#C9A84C]", border: "border-[#C9A84C]/20", darkBg: "bg-[#C9A84C]/30", label: "SPECIAL TEAMS", realityBg: "bg-[#0A0F2E]/10", realityBorder: "border-[#0A0F2E]/20" };
     default:
-      return { bg: "bg-red-500/20", text: "text-red-600", border: "border-red-500/30", darkBg: "bg-red-500/5", label: "DEFENSE", realityBg: "bg-red-500/5", realityBorder: "border-red-500/20" };
+      return { bg: "bg-red-500/10", text: "text-red-600", border: "border-red-500/20", darkBg: "bg-red-500/5", label: "DEFENSE", realityBg: "bg-red-500/5", realityBorder: "border-red-500/20" };
   }
 }
 

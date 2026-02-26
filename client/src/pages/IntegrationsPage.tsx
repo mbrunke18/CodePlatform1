@@ -61,10 +61,7 @@ const categoryColors = {
   crm: "bg-[#141B45]/10 text-[#141B45]",
 };
 
-const NAVY = "#0A0F2E";
-const GOLD = "#C9A84C";
-const TEAL = "#2B8A6E";
-const GOLD_LT = "#DFC178";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 export default function IntegrationsPage() {
   const { toast } = useToast();
@@ -167,270 +164,286 @@ export default function IntegrationsPage() {
 
   return (
     <PageLayout>
-      <div className="space-y-8">
-        {/* Header */}
-        <div>
-          <Badge className="mb-4 bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20">
-            Enterprise Integrations
-          </Badge>
-          <h1 className="text-3xl font-bold tracking-tight text-[#0A0F2E]">
-            Execution OS Orchestrates Your Stack
-          </h1>
-          <p className="mt-2 text-lg text-[#6B7280]">
-            Execution OS doesn't replace your workflow tools — it coordinates them. When a playbook 
-            activates, Execution OS tells each system exactly what to do.
-          </p>
+      <div className="flex-1 bg-[#F8F7F4] overflow-y-auto" data-testid="integrations-page">
+        {/* Navy Hero Section */}
+        <div style={{ background: "#0A0F2E", padding: "80px 48px", position: "relative", overflow: "hidden", minHeight: 360 }}>
+          <div style={{ 
+            position: "absolute", 
+            inset: 0, 
+            backgroundImage: "radial-gradient(#C9A84C 0.5px, transparent 0.5px)", 
+            backgroundSize: "32px 32px",
+            opacity: 0.1
+          }} />
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+              <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Enterprise Infrastructure</span>
+            </div>
+            <div className="max-w-3xl">
+              <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(48px,6vw,72px)", lineHeight: 1, color: "#fff", marginBottom: 24 }}>
+                Execution OS <em style={{ fontStyle: "italic", color: "#DFC178" }}>Orchestration</em>
+              </h1>
+              <p className="text-white/60 text-xl leading-relaxed max-w-2xl">
+                Execution OS doesn't replace your workflow tools — it coordinates them. When a playbook 
+                activates, Execution OS tells each system exactly what to do.
+              </p>
+            </div>
+          </div>
         </div>
 
-        {/* Integration Philosophy */}
-        <div className="grid md:grid-cols-3 gap-6">
-          <Card className="p-6 text-center border-[#E8E4DC] bg-white">
-            <div className="w-12 h-12 mx-auto mb-4 bg-[#0A0F2E]/10 rounded-xl flex items-center justify-center">
-              <Zap className="w-6 h-6 text-[#0A0F2E]" />
-            </div>
-            <h3 className="font-semibold text-[#0A0F2E] mb-2">Execution OS Orchestrates</h3>
-            <p className="text-sm text-[#6B7280]">Strategic playbooks trigger coordinated actions across your entire stack</p>
-          </Card>
-          <Card className="p-6 text-center border-[#E8E4DC] bg-white">
-            <div className="w-12 h-12 mx-auto mb-4 bg-[#C9A84C]/10 rounded-xl flex items-center justify-center">
-              <Database className="w-6 h-6 text-[#C9A84C]" />
-            </div>
-            <h3 className="font-semibold text-[#0A0F2E] mb-2">Tools Execute</h3>
-            <p className="text-sm text-[#6B7280]">ServiceNow, Jira, Slack, and Teams carry out the operational work</p>
-          </Card>
-          <Card className="p-6 text-center border-[#E8E4DC] bg-white">
-            <div className="w-12 h-12 mx-auto mb-4 bg-[#2B8A6E]/10 rounded-xl flex items-center justify-center">
-              <CheckCircle2 className="w-6 h-6 text-[#2B8A6E]" />
-            </div>
-            <h3 className="font-semibold text-[#0A0F2E] mb-2">Everything Syncs</h3>
-            <p className="text-sm text-[#6B7280]">Bi-directional updates keep Execution OS and your tools in perfect alignment</p>
-          </Card>
-        </div>
+        <div className="p-12 max-w-7xl mx-auto space-y-12">
+          {/* Integration Philosophy */}
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="p-8 rounded-none border-[#E8E4DC] bg-white shadow-sm hover:border-[#C9A84C] transition-colors">
+              <div className="w-14 h-14 mb-6 bg-[#0A0F2E]/5 rounded-none flex items-center justify-center">
+                <Zap className="w-7 h-7 text-[#0A0F2E]" />
+              </div>
+              <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">Poise Orchestrates</h3>
+              <p className="text-sm text-[#6B7280] leading-relaxed">Strategic playbooks trigger coordinated actions across your entire enterprise stack.</p>
+            </Card>
+            <Card className="p-8 rounded-none border-[#E8E4DC] bg-white shadow-sm hover:border-[#C9A84C] transition-colors">
+              <div className="w-14 h-14 mb-6 bg-[#C9A84C]/5 rounded-none flex items-center justify-center">
+                <Database className="w-7 h-7 text-[#C9A84C]" />
+              </div>
+              <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">Tools Execute</h3>
+              <p className="text-sm text-[#6B7280] leading-relaxed">ServiceNow, Jira, Slack, and Teams carry out the operational work directed by Poise.</p>
+            </Card>
+            <Card className="p-8 rounded-none border-[#E8E4DC] bg-white shadow-sm hover:border-[#C9A84C] transition-colors">
+              <div className="w-14 h-14 mb-6 bg-[#2B8A6E]/5 rounded-none flex items-center justify-center">
+                <CheckCircle2 className="w-7 h-7 text-[#2B8A6E]" />
+              </div>
+              <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">Everything Syncs</h3>
+              <p className="text-sm text-[#6B7280] leading-relaxed">Bi-directional updates keep Execution OS and your tools in perfect strategic alignment.</p>
+            </Card>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="p-6 border-[#E8E4DC] bg-white">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="p-8 border-[#E8E4DC] bg-white rounded-none shadow-sm">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-[#6B7280]">Connected</p>
-                  <p className="text-2xl font-bold text-[#0A0F2E]">
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280] mb-1">Connected</p>
+                  <p style={CG} className="text-4xl font-bold text-[#0A0F2E]">
                     {connectedIntegrations.filter(i => i.status === 'active').length}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-[#2B8A6E]/10 rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-[#2B8A6E]/10 rounded-none flex items-center justify-center">
                   <CheckCircle2 className="w-6 h-6 text-[#2B8A6E]" />
                 </div>
               </div>
             </Card>
 
-          <Card className="p-6 border-[#E8E4DC] bg-white">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-[#6B7280]">Available</p>
-                <p className="text-2xl font-bold text-[#0A0F2E]">
-                  {marketplace.filter(i => i.status === 'available').length}
-                </p>
+            <Card className="p-8 border-[#E8E4DC] bg-white rounded-none shadow-sm">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280] mb-1">Available</p>
+                  <p style={CG} className="text-4xl font-bold text-[#0A0F2E]">
+                    {marketplace.filter(i => i.status === 'available').length}
+                  </p>
+                </div>
+                <div className="w-12 h-12 bg-[#C9A84C]/10 rounded-none flex items-center justify-center">
+                  <Cloud className="w-6 h-6 text-[#C9A84C]" />
+                </div>
               </div>
-              <div className="w-12 h-12 bg-[#C9A84C]/10 rounded-lg flex items-center justify-center">
-                <Cloud className="w-6 h-6 text-[#C9A84C]" />
+            </Card>
+
+            <Card className="p-8 border-[#E8E4DC] bg-white rounded-none shadow-sm">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280] mb-1">Coming Soon</p>
+                  <p style={CG} className="text-4xl font-bold text-[#0A0F2E]">
+                    {marketplace.filter(i => i.status === 'coming_soon').length}
+                  </p>
+                </div>
+                <div className="w-12 h-12 bg-[#0A0F2E]/10 rounded-none flex items-center justify-center">
+                  <Zap className="w-6 h-6 text-[#0A0F2E]" />
+                </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          </div>
 
-          <Card className="p-6 border-[#E8E4DC] bg-white">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-[#6B7280]">Coming Soon</p>
-                <p className="text-2xl font-bold text-[#0A0F2E]">
-                  {marketplace.filter(i => i.status === 'coming_soon').length}
-                </p>
-              </div>
-              <div className="w-12 h-12 bg-[#0A0F2E]/10 rounded-lg flex items-center justify-center">
-                <Zap className="w-6 h-6 text-[#0A0F2E]" />
-              </div>
-            </div>
-          </Card>
-        </div>
+          {/* Integration Categories */}
+          <Tabs defaultValue="all" className="w-full space-y-12">
+            <TabsList className="bg-transparent border-b border-[#E8E4DC] rounded-none h-auto p-0 gap-12">
+              <TabsTrigger value="all" data-testid="tab-all" className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-[#C9A84C] data-[state=active]:text-[#0A0F2E] rounded-none px-0 py-5 text-[10px] font-bold tracking-[0.25em] uppercase text-[#6B7280]">All Integrations</TabsTrigger>
+              <TabsTrigger value="connected" data-testid="tab-connected" className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-[#C9A84C] data-[state=active]:text-[#0A0F2E] rounded-none px-0 py-5 text-[10px] font-bold tracking-[0.25em] uppercase text-[#6B7280]">Connected</TabsTrigger>
+              <TabsTrigger value="available" data-testid="tab-available" className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-[#C9A84C] data-[state=active]:text-[#0A0F2E] rounded-none px-0 py-5 text-[10px] font-bold tracking-[0.25em] uppercase text-[#6B7280]">Available</TabsTrigger>
+            </TabsList>
 
-        {/* Integration Categories */}
-        <Tabs defaultValue="all" className="w-full">
-          <TabsList className="bg-white border border-[#E8E4DC] rounded-none">
-            <TabsTrigger value="all" data-testid="tab-all" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E] rounded-none">All Integrations</TabsTrigger>
-            <TabsTrigger value="connected" data-testid="tab-connected" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E] rounded-none">Connected</TabsTrigger>
-            <TabsTrigger value="available" data-testid="tab-available" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E] rounded-none">Available</TabsTrigger>
-          </TabsList>
+            <TabsContent value="all" className="mt-0">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {marketplace.map((integration) => {
+                  const connected = isConnected(integration.id);
+                  const connectedData = getConnectedIntegration(integration.id);
+                  const Icon = categoryIcons[integration.category as keyof typeof categoryIcons];
+                  const colorClass = categoryColors[integration.category as keyof typeof categoryColors];
 
-          <TabsContent value="all" className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {marketplace.map((integration) => {
-                const connected = isConnected(integration.id);
-                const connectedData = getConnectedIntegration(integration.id);
-                const Icon = categoryIcons[integration.category as keyof typeof categoryIcons];
-                const colorClass = categoryColors[integration.category as keyof typeof categoryColors];
-
-                return (
-                  <Card key={integration.id} className="p-6 hover:shadow-lg transition-shadow border-[#E8E4DC] bg-white" data-testid={`card-integration-${integration.id}`}>
-                    <div className="flex items-start justify-between mb-4">
-                      <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${colorClass}`}>
-                        {Icon && <Icon className="w-6 h-6" />}
+                  return (
+                    <Card key={integration.id} className="p-8 hover:shadow-lg transition-shadow border-[#E8E4DC] bg-white rounded-none" data-testid={`card-integration-${integration.id}`}>
+                      <div className="flex items-start justify-between mb-6">
+                        <div className={`w-14 h-14 rounded-none flex items-center justify-center ${colorClass}`}>
+                          {Icon && <Icon className="w-7 h-7" />}
+                        </div>
+                        {connected ? (
+                          <Badge variant="outline" className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20 rounded-none px-3 py-1 text-[9px] font-bold tracking-widest uppercase">
+                            CONNECTED
+                          </Badge>
+                        ) : integration.status === 'coming_soon' ? (
+                          <Badge variant="outline" className="bg-[#F8F7F4] text-[#6B7280] border-[#E8E4DC] rounded-none px-3 py-1 text-[9px] font-bold tracking-widest uppercase">
+                            COMING SOON
+                          </Badge>
+                        ) : (
+                          <Badge variant="outline" className="bg-[#DFC178]/10 text-[#C9A84C] border-[#DFC178]/20 rounded-none px-3 py-1 text-[9px] font-bold tracking-widest uppercase">
+                            AVAILABLE
+                          </Badge>
+                        )}
                       </div>
+
+                      <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">
+                        {integration.name}
+                      </h3>
+                      <p className="text-sm text-[#6B7280] mb-8 leading-relaxed line-clamp-2">
+                        {integration.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2 mb-8">
+                        {integration.capabilities.slice(0, 3).map((capability) => (
+                          <Badge key={capability} variant="secondary" className="text-[9px] font-bold tracking-widest uppercase bg-[#F8F7F4] text-[#0A0F2E] rounded-none px-2 py-0.5 border border-[#E8E4DC]">
+                            {capability.replace(/_/g, ' ')}
+                          </Badge>
+                        ))}
+                      </div>
+
                       {connected ? (
-                        <Badge variant="outline" className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20">
-                          <CheckCircle2 className="w-3 h-3 mr-1" />
-                          Connected
-                        </Badge>
-                      ) : integration.status === 'coming_soon' ? (
-                        <Badge variant="outline" className="bg-[#F8F7F4] text-[#6B7280] border-[#E8E4DC]">
-                          Coming Soon
-                        </Badge>
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between text-[10px] font-bold tracking-widest uppercase text-[#6B7280] border-b border-[#F8F7F4] pb-2">
+                            <span>Status</span>
+                            <span className="text-[#0A0F2E]">{connectedData?.status}</span>
+                          </div>
+                          <div className="flex gap-3">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="flex-1 border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] rounded-none font-bold text-[10px] tracking-widest uppercase h-10"
+                              data-testid={`button-settings-${integration.id}`}
+                            >
+                              <Settings className="w-3.5 h-3.5 mr-2" />
+                              Settings
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] rounded-none font-bold text-[10px] tracking-widest uppercase h-10"
+                              onClick={() => connectedData && handleDisconnect(connectedData.id)}
+                              data-testid={`button-disconnect-${integration.id}`}
+                            >
+                              Disconnect
+                            </Button>
+                          </div>
+                        </div>
+                      ) : integration.status === 'available' ? (
+                        <Button
+                          className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none font-bold text-[10px] tracking-widest uppercase h-12"
+                          onClick={() => handleConnect(integration)}
+                          data-testid={`button-connect-${integration.id}`}
+                        >
+                          <Zap className="w-4 h-4 mr-2" />
+                          Connect
+                        </Button>
                       ) : (
-                        <Badge variant="outline" className="bg-[#DFC178]/10 text-[#C9A84C] border-[#DFC178]/20">
-                          <Circle className="w-3 h-3 mr-1" />
-                          Available
-                        </Badge>
+                        <Button className="w-full bg-[#F8F7F4] text-[#6B7280] rounded-none font-bold text-[10px] tracking-widest uppercase h-12" disabled data-testid={`button-coming-soon-${integration.id}`}>
+                          Coming Soon
+                        </Button>
                       )}
-                    </div>
+                    </Card>
+                  );
+                })}
+              </div>
+            </TabsContent>
 
-                    <h3 className="text-lg font-semibold text-[#0A0F2E] mb-2">
-                      {integration.name}
-                    </h3>
-                    <p className="text-sm text-[#6B7280] mb-4">
-                      {integration.description}
-                    </p>
+            <TabsContent value="connected" className="mt-0">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {marketplace.filter(i => isConnected(i.id)).map((integration) => {
+                  const Icon = categoryIcons[integration.category as keyof typeof categoryIcons];
+                  const colorClass = categoryColors[integration.category as keyof typeof categoryColors];
+                  const connectedData = getConnectedIntegration(integration.id);
 
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {integration.capabilities.slice(0, 3).map((capability) => (
-                        <Badge key={capability} variant="secondary" className="text-xs bg-[#F8F7F4] text-[#0A0F2E]">
-                          {capability.replace(/_/g, ' ')}
+                  return (
+                    <Card key={integration.id} className="p-8 rounded-none border-[#E8E4DC] bg-white shadow-sm">
+                      <div className="flex items-start justify-between mb-6">
+                        <div className={`w-14 h-14 rounded-none flex items-center justify-center ${colorClass}`}>
+                          {Icon && <Icon className="w-7 h-7" />}
+                        </div>
+                        <Badge variant="outline" className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20 rounded-none px-3 py-1 text-[9px] font-bold tracking-widest uppercase">
+                          ACTIVE
                         </Badge>
-                      ))}
-                    </div>
-
-                    {connected ? (
-                      <div className="space-y-2">
-                        <div className="flex items-center justify-between text-xs text-[#6B7280]">
-                          <span>Status:</span>
-                          <span className="font-medium">{connectedData?.status}</span>
-                        </div>
-                        <div className="flex gap-2">
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="flex-1 border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]"
-                            data-testid={`button-settings-${integration.id}`}
-                          >
-                            <Settings className="w-4 h-4 mr-1" />
-                            Settings
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]"
-                            onClick={() => connectedData && handleDisconnect(connectedData.id)}
-                            data-testid={`button-disconnect-${integration.id}`}
-                          >
-                            Disconnect
-                          </Button>
-                        </div>
                       </div>
-                    ) : integration.status === 'available' ? (
-                      <Button
-                        className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45]"
-                        onClick={() => handleConnect(integration)}
-                        data-testid={`button-connect-${integration.id}`}
-                      >
+
+                      <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">
+                        {integration.name}
+                      </h3>
+                      <p className="text-sm text-[#6B7280] mb-8 leading-relaxed">
+                        {integration.description}
+                      </p>
+
+                      <div className="flex gap-3">
+                        <Button size="sm" variant="outline" className="flex-1 border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] rounded-none font-bold text-[10px] tracking-widest uppercase h-10">
+                          <Settings className="w-3.5 h-3.5 mr-2" />
+                          Settings
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] rounded-none font-bold text-[10px] tracking-widest uppercase h-10"
+                          onClick={() => connectedData && handleDisconnect(connectedData.id)}
+                        >
+                          Disconnect
+                        </Button>
+                      </div>
+                    </Card>
+                  );
+                })}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="available" className="mt-0">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {marketplace.filter(i => !isConnected(i.id) && i.status === 'available').map((integration) => {
+                  const Icon = categoryIcons[integration.category as keyof typeof categoryIcons];
+                  const colorClass = categoryColors[integration.category as keyof typeof categoryColors];
+
+                  return (
+                    <Card key={integration.id} className="p-8 rounded-none border-[#E8E4DC] bg-white shadow-sm">
+                      <div className="flex items-start justify-between mb-6">
+                        <div className={`w-14 h-14 rounded-none flex items-center justify-center ${colorClass}`}>
+                          {Icon && <Icon className="w-7 h-7" />}
+                        </div>
+                        <Badge variant="outline" className="bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20 rounded-none px-3 py-1 text-[9px] font-bold tracking-widest uppercase">
+                          AVAILABLE
+                        </Badge>
+                      </div>
+
+                      <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">
+                        {integration.name}
+                      </h3>
+                      <p className="text-sm text-[#6B7280] mb-8 leading-relaxed">
+                        {integration.description}
+                      </p>
+
+                      <Button className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none font-bold text-[10px] tracking-widest uppercase h-12" onClick={() => handleConnect(integration)}>
                         <Zap className="w-4 h-4 mr-2" />
                         Connect
                       </Button>
-                    ) : (
-                      <Button className="w-full bg-[#F8F7F4] text-[#6B7280]" disabled data-testid={`button-coming-soon-${integration.id}`}>
-                        Coming Soon
-                      </Button>
-                    )}
-                  </Card>
-                );
-              })}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="connected" className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {marketplace.filter(i => isConnected(i.id)).map((integration) => {
-                const Icon = categoryIcons[integration.category as keyof typeof categoryIcons];
-                const colorClass = categoryColors[integration.category as keyof typeof categoryColors];
-                const connectedData = getConnectedIntegration(integration.id);
-
-                return (
-                  <Card key={integration.id} className="p-6 rounded-none">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className={`w-12 h-12 rounded-none flex items-center justify-center ${colorClass}`}>
-                        {Icon && <Icon className="w-6 h-6" />}
-                      </div>
-                      <Badge variant="outline" className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20 rounded-none">
-                        <CheckCircle2 className="w-3 h-3 mr-1" />
-                        Active
-                      </Badge>
-                    </div>
-
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {integration.name}
-                    </h3>
-                    <p className="text-sm text-gray-800 mb-4">
-                      {integration.description}
-                    </p>
-
-                    <div className="flex gap-2">
-                      <Button size="sm" variant="outline" className="flex-1">
-                        <Settings className="w-4 h-4 mr-1" />
-                        Settings
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        onClick={() => connectedData && handleDisconnect(connectedData.id)}
-                      >
-                        Disconnect
-                      </Button>
-                    </div>
-                  </Card>
-                );
-              })}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="available" className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {marketplace.filter(i => !isConnected(i.id) && i.status === 'available').map((integration) => {
-                const Icon = categoryIcons[integration.category as keyof typeof categoryIcons];
-                const colorClass = categoryColors[integration.category as keyof typeof categoryColors];
-
-                return (
-                  <Card key={integration.id} className="p-6 rounded-none">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className={`w-12 h-12 rounded-none flex items-center justify-center ${colorClass}`}>
-                        {Icon && <Icon className="w-6 h-6" />}
-                      </div>
-                      <Badge variant="outline" className="bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20 rounded-none">
-                        Available
-                      </Badge>
-                    </div>
-
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {integration.name}
-                    </h3>
-                    <p className="text-sm text-gray-800 mb-4">
-                      {integration.description}
-                    </p>
-
-                    <Button className="w-full" onClick={() => handleConnect(integration)}>
-                      <Zap className="w-4 h-4 mr-2" />
-                      Connect
-                    </Button>
-                  </Card>
-                );
-              })}
-            </div>
-          </TabsContent>
-        </Tabs>
+                    </Card>
+                  );
+                })}
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </div>
+    </PageLayout>
+  );
+}
 
         {/* Connection Dialog */}
         <Dialog open={isConnecting} onOpenChange={setIsConnecting}>

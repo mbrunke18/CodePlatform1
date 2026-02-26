@@ -71,7 +71,7 @@ const metrics = [
     description: "What companies pay for slow response",
     source: "IBM Cost of a Data Breach 2024",
     icon: Shield,
-    color: "text-red-600"
+    color: "text-[#0A0F2E]"
   },
   { 
     value: "98 days", 
@@ -98,7 +98,7 @@ const industryProblems = [
     description: "Digital transformation projects that don't meet objectives",
     source: "Bain & Company 2024",
     icon: Target,
-    color: "text-red-600"
+    color: "text-[#0A0F2E]"
   },
   {
     value: "75%",
@@ -168,7 +168,7 @@ const milestones = [
 export default function Investors() {
   return (
     <PageLayout>
-      <div className="min-h-screen bg-[#0A0F2E] relative overflow-hidden">
+      <div className="min-h-screen bg-white relative overflow-hidden">
         {/* Gold dot grid overlay */}
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
         
@@ -185,12 +185,12 @@ export default function Investors() {
               <div className="h-[1px] w-7 bg-[#C9A84C]" />
             </div>
             
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h1 className="text-4xl md:text-6xl font-bold text-[#0A0F2E] mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               The Strategic Execution OS for
               <span className="text-[#C9A84C]"> Fortune 1000</span>
             </h1>
             
-            <p className="text-xl text-white/70 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-[#0A0F2E]/70 max-w-3xl mx-auto mb-8">
               Execution OS transforms how enterprises respond to strategic events—achieving 10x faster execution with 12-minute playbook activation while keeping humans in control.
             </p>
             
@@ -202,7 +202,7 @@ export default function Investors() {
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 h-12 px-8 bg-transparent">
+                <Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] hover:bg-[#0A0F2E]/10 h-12 px-8 bg-transparent">
                   <Calendar className="w-4 h-4 mr-2 text-[#C9A84C]" />
                   Schedule Meeting
                 </Button>
@@ -216,7 +216,7 @@ export default function Investors() {
             transition={{ delay: 0.1 }}
             className="mb-20"
           >
-            <h2 className="text-2xl font-bold text-white text-center mb-8">Market Validation</h2>
+            <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-8">Market Validation</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {metrics.map((metric, i) => (
                 <motion.div
@@ -224,14 +224,14 @@ export default function Investors() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 + i * 0.1 }}
-                  className="bg-white/5 border border-white/10 rounded-xl p-6 text-center"
+                  className="bg-white border border-[#0A0F2E]/10 rounded-xl p-6 text-center shadow-sm"
                 >
-                  <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-white/5 flex items-center justify-center">
+                  <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-[#0A0F2E]/5 flex items-center justify-center">
                     <metric.icon className={`w-5 h-5 ${metric.color}`} />
                   </div>
                   <p className={`text-3xl font-bold mb-1 ${metric.color}`}>{metric.value}</p>
-                  <p className="text-white font-medium text-sm mb-1">{metric.label}</p>
-                  <p className="text-white/50 text-xs mb-2">{metric.description}</p>
+                  <p className="text-[#0A0F2E] font-medium text-sm mb-1">{metric.label}</p>
+                  <p className="text-[#0A0F2E]/50 text-xs mb-2">{metric.description}</p>
                   <p className="text-[#2B8A6E] text-xs font-medium">{metric.source}</p>
                 </motion.div>
               ))}
@@ -244,8 +244,8 @@ export default function Investors() {
             transition={{ delay: 0.2 }}
             className="mb-20"
           >
-            <h2 className="text-2xl font-bold text-white text-center mb-3">The Problem We Solve</h2>
-            <p className="text-white/50 text-center text-sm mb-8">Strategic execution fails at massive scale</p>
+            <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-3">The Problem We Solve</h2>
+            <p className="text-[#0A0F2E]/50 text-center text-sm mb-8">Strategic execution fails at massive scale</p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {industryProblems.map((problem, i) => (
                 <motion.div
@@ -253,15 +253,15 @@ export default function Investors() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + i * 0.1 }}
-                  className="bg-[#0A0F2E]/10 border border-[#0A0F2E]/20 rounded-xl p-6 text-center"
+                  className="bg-white border border-[#0A0F2E]/10 rounded-xl p-6 text-center shadow-sm"
                 >
-                  <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-[#0A0F2E]/20 flex items-center justify-center">
+                  <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-[#0A0F2E]/5 flex items-center justify-center">
                     <problem.icon className={`w-5 h-5 text-[#0A0F2E]`} />
                   </div>
                   <p className={`text-3xl font-bold mb-1 text-[#0A0F2E]`}>{problem.value}</p>
-                  <p className="text-white font-medium text-sm mb-1">{problem.label}</p>
-                  <p className="text-white/50 text-xs mb-2">{problem.description}</p>
-                  <p className="text-white/40 text-xs">{problem.source}</p>
+                  <p className="text-[#0A0F2E] font-medium text-sm mb-1">{problem.label}</p>
+                  <p className="text-[#0A0F2E]/50 text-xs mb-2">{problem.description}</p>
+                  <p className="text-[#0A0F2E]/40 text-xs">{problem.source}</p>
                 </motion.div>
               ))}
             </div>
@@ -273,8 +273,8 @@ export default function Investors() {
             transition={{ delay: 0.25 }}
             className="mb-20"
           >
-            <h2 className="text-2xl font-bold text-white text-center mb-3">Proven Across Critical Scenarios</h2>
-            <p className="text-white/50 text-center text-sm mb-8">Same situations. Radically different outcomes.</p>
+            <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-3">Proven Across Critical Scenarios</h2>
+            <p className="text-[#0A0F2E]/50 text-center text-sm mb-8">Same situations. Radically different outcomes.</p>
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               {scenarioComparisons.map((scenario, i) => (
                 <motion.div
@@ -282,13 +282,13 @@ export default function Investors() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + i * 0.1 }}
-                  className="bg-white/5 border border-white/10 rounded-xl p-6"
+                  className="bg-white border border-[#0A0F2E]/10 rounded-xl p-6 shadow-sm"
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <span className="text-3xl">{scenario.icon}</span>
                     <div>
-                      <h3 className="text-white font-bold">{scenario.title}</h3>
-                      <p className="text-white/40 text-xs">{scenario.industry}</p>
+                      <h3 className="text-[#0A0F2E] font-bold">{scenario.title}</h3>
+                      <p className="text-[#0A0F2E]/40 text-xs">{scenario.industry}</p>
                     </div>
                     <span className={`ml-auto text-xs font-semibold px-2 py-1 rounded-full ${
                       scenario.type === 'offense' 
@@ -313,18 +313,18 @@ export default function Investors() {
                   </div>
                   
                   <div className="flex items-center gap-2 mb-3">
-                    <div className="flex-1 h-2 bg-white/5 rounded-full overflow-hidden">
+                    <div className="flex-1 h-2 bg-[#0A0F2E]/5 rounded-full overflow-hidden">
                       <div className="h-full bg-[#0A0F2E] rounded-full" style={{ width: '100%' }} />
                     </div>
                     <span className="text-[#2B8A6E] font-bold text-sm whitespace-nowrap">{scenario.speedup} faster</span>
-                    <div className="w-6 h-2 bg-white/5 rounded-full overflow-hidden">
+                    <div className="w-6 h-2 bg-[#0A0F2E]/5 rounded-full overflow-hidden">
                       <div className="h-full bg-[#2B8A6E] rounded-full" style={{ width: '100%' }} />
                     </div>
                   </div>
                   
                   <div className="space-y-1">
                     {scenario.proofPoints.map((point, j) => (
-                      <p key={j} className="text-white/50 text-xs flex items-start gap-1.5">
+                      <p key={j} className="text-[#0A0F2E]/50 text-xs flex items-start gap-1.5">
                         <CheckCircle className="w-3 h-3 text-[#2B8A6E] flex-shrink-0 mt-0.5" />
                         {point}
                       </p>
@@ -351,9 +351,9 @@ export default function Investors() {
             transition={{ delay: 0.35 }}
             className="mb-20"
           >
-            <h2 className="text-2xl font-bold text-white text-center mb-3">Complete End-to-End Platform</h2>
-            <p className="text-white/50 text-center text-sm mb-8">From signal detection to coordinated execution in 12 minutes</p>
-            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+            <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-3">Complete End-to-End Platform</h2>
+            <p className="text-[#0A0F2E]/50 text-center text-sm mb-8">From signal detection to coordinated execution in 12 minutes</p>
+            <div className="rounded-2xl overflow-hidden border border-[#0A0F2E]/10 shadow-2xl">
               <img
                 src={productArchitectureImg}
                 alt="Execution OS End-to-End Product Architecture — Signal Sources, AI Engine, 170 Playbooks, Execution Outputs, Command Center, and Integration Layer"
@@ -369,7 +369,7 @@ export default function Investors() {
             transition={{ delay: 0.4 }}
             className="mb-20"
           >
-            <h2 className="text-2xl font-bold text-white text-center mb-8">Competitive Advantages</h2>
+            <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-8">Competitive Advantages</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {competitiveAdvantages.map((advantage, i) => (
                 <motion.div
@@ -377,15 +377,15 @@ export default function Investors() {
                   initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4 + i * 0.1 }}
-                  className="bg-white/5 border border-white/10 rounded-xl p-6"
+                  className="bg-white border border-[#0A0F2E]/10 rounded-xl p-6 shadow-sm"
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-xl bg-[#C9A84C]/10 flex items-center justify-center flex-shrink-0">
                       <advantage.icon className="w-6 h-6 text-[#C9A84C]" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-white mb-2">{advantage.title}</h3>
-                      <p className="text-white/60 text-sm">{advantage.description}</p>
+                      <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">{advantage.title}</h3>
+                      <p className="text-[#0A0F2E]/60 text-sm">{advantage.description}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -397,9 +397,9 @@ export default function Investors() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="mb-20 bg-white/5 border border-white/10 rounded-2xl p-8"
+            className="mb-20 bg-white border border-[#0A0F2E]/10 rounded-2xl p-8 shadow-sm"
           >
-            <h2 className="text-2xl font-bold text-white text-center mb-8">The IDEA Framework</h2>
+            <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-8">The IDEA Framework</h2>
             <div className="grid md:grid-cols-4 gap-4">
               {[
                 { phase: "IDENTIFY", module: "Playbook™", desc: "Build and customize strategic playbooks", color: "bg-[#C9A84C]" },
@@ -408,12 +408,12 @@ export default function Investors() {
                 { phase: "ADVANCE", module: "Retrospect™", desc: "Institutional learning", color: "bg-[#C9A84C]" },
               ].map((phase, i) => (
                 <div key={i} className="text-center">
-                  <div className={`w-12 h-12 mx-auto mb-3 rounded-full ${phase.color} flex items-center justify-center text-black font-bold text-lg`}>
+                  <div className={`w-12 h-12 mx-auto mb-3 rounded-full ${phase.color} flex items-center justify-center text-white font-bold text-lg shadow-sm`}>
                     {phase.phase[0]}
                   </div>
-                  <p className="text-white font-bold mb-1">{phase.phase}</p>
+                  <p className="text-[#0A0F2E] font-bold mb-1">{phase.phase}</p>
                   <p className="text-[#C9A84C] text-xs mb-2 flex items-center justify-center"><SubBrandLabel name={phase.module} size={11} /></p>
-                  <p className="text-white/50 text-xs">{phase.desc}</p>
+                  <p className="text-[#0A0F2E]/50 text-xs">{phase.desc}</p>
                 </div>
               ))}
             </div>
@@ -425,9 +425,9 @@ export default function Investors() {
             transition={{ delay: 0.55 }}
             className="mb-20"
           >
-            <h2 className="text-2xl font-bold text-white text-center mb-3">Built for Today. Positioned for Tomorrow.</h2>
-            <p className="text-white/50 text-center text-sm mb-8">Selling pain relief today while building the operating layer for the AI era</p>
-            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+            <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-3">Built for Today. Positioned for Tomorrow.</h2>
+            <p className="text-[#0A0F2E]/50 text-center text-sm mb-8">Selling pain relief today while building the operating layer for the AI era</p>
+            <div className="rounded-2xl overflow-hidden border border-[#0A0F2E]/10 shadow-2xl">
               <img
                 src={futurePositioningImg}
                 alt="Execution OS Future Positioning — Phase 1: Today's execution infrastructure, Phase 2: Tomorrow's AI operating layer"
@@ -443,12 +443,12 @@ export default function Investors() {
             transition={{ delay: 0.6 }}
             className="mb-20"
           >
-            <h2 className="text-2xl font-bold text-white text-center mb-8">Product Roadmap</h2>
+            <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-8">Product Roadmap</h2>
             <div className="grid md:grid-cols-3 gap-6">
               {milestones.map((milestone, i) => (
-                <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-6">
+                <div key={i} className="bg-white border border-[#0A0F2E]/10 rounded-xl p-6 shadow-sm">
                   <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium mb-4 ${
-                    i === 0 ? "bg-green-500/20 text-green-400" :
+                    i === 0 ? "bg-[#2B8A6E]/20 text-[#2B8A6E]" :
                     i === 1 ? "bg-[#C9A84C]/20 text-[#C9A84C]" :
                     "bg-[#2B8A6E]/20 text-[#2B8A6E]"
                   }`}>
@@ -457,8 +457,8 @@ export default function Investors() {
                   </div>
                   <ul className="space-y-2">
                     {milestone.items.map((item, j) => (
-                      <li key={j} className="flex items-start gap-2 text-sm text-white/70">
-                        <CheckCircle className={`w-4 h-4 flex-shrink-0 mt-0.5 ${i === 0 ? "text-green-400" : "text-white/30"}`} />
+                      <li key={j} className="flex items-start gap-2 text-sm text-[#0A0F2E]/70">
+                        <CheckCircle className={`w-4 h-4 flex-shrink-0 mt-0.5 ${i === 0 ? "text-[#2B8A6E]" : "text-[#0A0F2E]/30"}`} />
                         {item}
                       </li>
                     ))}
@@ -472,29 +472,29 @@ export default function Investors() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
-            className="mb-20 bg-white/5 border border-white/10 rounded-2xl p-8"
+            className="mb-20 bg-white border border-[#0A0F2E]/10 rounded-2xl p-8 shadow-sm"
           >
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <h2 className="text-2xl font-bold text-white mb-4">Target Market</h2>
+                <h2 className="text-2xl font-bold text-[#0A0F2E] mb-4">Target Market</h2>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <Globe className="w-5 h-5 text-[#C9A84C]" />
-                    <span className="text-white">Fortune 1000 enterprises</span>
+                    <span className="text-[#0A0F2E]">Fortune 1000 enterprises</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Building className="w-5 h-5 text-[#2B8A6E]" />
-                    <span className="text-white">Complex, multi-domain organizations</span>
+                    <span className="text-[#0A0F2E]">Complex, multi-domain organizations</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Users className="w-5 h-5 text-[#C9A84C]" />
-                    <span className="text-white">C-suite and strategic leadership teams</span>
+                    <span className="text-[#0A0F2E]">C-suite and strategic leadership teams</span>
                   </div>
                 </div>
               </div>
-              <div className="bg-[#C9A84C]/10 border border-[#D4AF37]/30 rounded-xl p-6">
+              <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-xl p-6 shadow-sm">
                 <p className="text-[#C9A84C] font-bold text-lg mb-2">Why Now?</p>
-                <ul className="space-y-2 text-white/70 text-sm">
+                <ul className="space-y-2 text-[#0A0F2E]/70 text-sm">
                   <li>• AI disruption accelerating strategic uncertainty</li>
                   <li>• Regulatory windows shrinking globally</li>
                   <li>• Remote work fragmented institutional knowledge</li>
@@ -510,10 +510,10 @@ export default function Investors() {
             transition={{ delay: 0.8 }}
             className="text-center"
           >
-            <h2 className="text-2xl font-bold text-white mb-6">Ready to Learn More?</h2>
+            <h2 className="text-2xl font-bold text-[#0A0F2E] mb-6">Ready to Learn More?</h2>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/try-demo">
-                <Button className="bg-[#C9A84C] hover:bg-[#c9a432] text-black font-semibold px-8 h-12">
+                <Button className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-semibold px-8 h-12">
                   <Play className="w-4 h-4 mr-2" />
                   Interactive Demo
                 </Button>
@@ -525,14 +525,14 @@ export default function Investors() {
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 h-12 px-8 bg-transparent">
+                <Button variant="outline" className="border-[#0A0F2E]/30 text-[#0A0F2E] hover:bg-[#0A0F2E]/10 h-12 px-8 bg-transparent">
                   <Calendar className="w-4 h-4 mr-2" />
                   Schedule Call
                 </Button>
               </Link>
             </div>
             
-            <p className="text-white/40 text-sm mt-8">
+            <p className="text-[#0A0F2E]/40 text-sm mt-8">
               Execution OS • Strategic Execution OS • Execute Decisions at Scale
             </p>
           </motion.div>
@@ -541,21 +541,21 @@ export default function Investors() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
-            className="mt-20 pt-12 border-t border-white/10"
+            className="mt-20 pt-12 border-t border-[#0A0F2E]/10"
           >
-            <h3 className="text-sm font-semibold text-white/60 mb-6 text-center">Research Sources & Citations</h3>
+            <h3 className="text-sm font-semibold text-[#0A0F2E]/60 mb-6 text-center">Research Sources & Citations</h3>
             <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
               {researchCitations.map((citation) => (
-                <div key={citation.id} className="text-xs text-white/40 p-3 bg-white/5 rounded-lg">
-                  <span className="text-white/60 font-medium">[{citation.id}]</span>{' '}
+                <div key={citation.id} className="text-xs text-[#0A0F2E]/40 p-3 bg-[#0A0F2E]/5 rounded-lg">
+                  <span className="text-[#0A0F2E]/60 font-medium">[{citation.id}]</span>{' '}
                   <span className="text-[#2B8A6E]">{citation.source}</span>{' '}
                   <span className="italic">"{citation.title}"</span>{' '}
                   <span>({citation.year})</span>
-                  <p className="mt-1 text-white/30">{citation.finding}</p>
+                  <p className="mt-1 text-[#0A0F2E]/30">{citation.finding}</p>
                 </div>
               ))}
             </div>
-            <p className="text-center text-white/30 text-xs mt-6">
+            <p className="text-center text-[#0A0F2E]/30 text-xs mt-6">
               All statistics sourced from publicly available industry research. Execution OS internal metrics (12-minute activation) based on platform capabilities.
             </p>
           </motion.div>
