@@ -84,9 +84,9 @@ const DOMAIN_CONFIG = {
     bg: "bg-[#0A0F2E]",
     bgLight: "bg-[#0A0F2E]/20",
     text: "text-[#0A0F2E]",
-    textLight: "text-[#C9A84C]",
+    textLight: "text-white",
     border: "border-[#0A0F2E]/30",
-    borderHover: "hover:border-[#0A0F2E]/60",
+    borderHover: "hover:border-[#C9A84C]/60",
     shadow: "shadow-[#0A0F2E]/25",
     ring: "stroke-[#0A0F2E]",
   },
@@ -220,11 +220,11 @@ const QUESTION_ICONS = [
 ];
 
 function getScoreColor(score: number) {
-  if (score <= 30) return { color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]", label: "Critical", ring: "stroke-[#0A0F2E]" };
-  if (score <= 50) return { color: "text-[#C9A84C]", bg: "bg-[#C9A84C]", label: "At Risk", ring: "stroke-[#C9A84C]" };
-  if (score <= 70) return { color: "text-[#C9A84C]", bg: "bg-[#C9A84C]", label: "Needs Improvement", ring: "stroke-[#C9A84C]" };
-  if (score <= 85) return { color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]", label: "Good", ring: "stroke-[#2B8A6E]" };
-  return { color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]", label: "Excellent", ring: "stroke-[#2B8A6E]" };
+  if (score <= 30) return { color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]", badgeText: "text-white", label: "Critical", ring: "stroke-[#0A0F2E]" };
+  if (score <= 50) return { color: "text-[#C9A84C]", bg: "bg-[#C9A84C]", badgeText: "text-[#0A0F2E]", label: "At Risk", ring: "stroke-[#C9A84C]" };
+  if (score <= 70) return { color: "text-[#C9A84C]", bg: "bg-[#C9A84C]", badgeText: "text-[#0A0F2E]", label: "Needs Improvement", ring: "stroke-[#C9A84C]" };
+  if (score <= 85) return { color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]", badgeText: "text-white", label: "Good", ring: "stroke-[#2B8A6E]" };
+  return { color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]", badgeText: "text-white", label: "Excellent", ring: "stroke-[#2B8A6E]" };
 }
 
 export default function ReadinessAssessment() {
@@ -623,7 +623,7 @@ export default function ReadinessAssessment() {
                   <span className="text-gray-800 text-sm mt-1">/100</span>
                 </div>
               </div>
-              <Badge className={`${scoreInfo!.bg} text-gray-900 border-none px-4 py-1.5 text-sm font-semibold`}>
+              <Badge className={`${scoreInfo!.bg} ${scoreInfo!.badgeText} border-none px-4 py-1.5 text-sm font-semibold`}>
                 {scoreInfo!.label}
               </Badge>
             </div>

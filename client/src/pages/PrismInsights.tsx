@@ -126,7 +126,7 @@ export default function PrismInsights() {
   const getImpactColor = (impact: string) => {
     switch (impact) {
       case 'critical': return 'bg-red-500/20 text-red-600 border-red-500/30';
-      case 'high': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
+      case 'high': return 'bg-red-500/20 text-red-600 border-red-500/30';
       case 'medium': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
       case 'low': return 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30';
       default: return 'bg-black/5 text-gray-700 border-black/10';
@@ -214,22 +214,22 @@ export default function PrismInsights() {
 
             <TabsContent value={selectedDimension} className="space-y-6">
               {/* Analysis Tools Bar */}
-              <div className="flex items-center justify-between bg-white p-4 rounded-lg border border-gray-200">
+              <div className="flex items-center justify-between bg-white p-4 rounded-lg border border-[#E8E4DC]">
                 <div className="flex items-center gap-4">
-                  <Button variant="outline" size="sm">
+                  <Button variant="outline" size="sm" className="border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#0A0F2E]/5">
                     <Filter className="h-4 w-4 mr-2" />
                     Filter
                   </Button>
-                  <Button variant="outline" size="sm">
+                  <Button variant="outline" size="sm" className="border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#0A0F2E]/5">
                     <Search className="h-4 w-4 mr-2" />
                     Deep Dive
                   </Button>
-                  <Button variant="outline" size="sm">
+                  <Button variant="outline" size="sm" className="border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#0A0F2E]/5">
                     <Eye className="h-4 w-4 mr-2" />
                     Visualize
                   </Button>
                 </div>
-                <div className="text-sm text-gray-800">
+                <div className="text-sm text-[#0A0F2E]">
                   {filteredInsights.length} insights • Last updated: 2 minutes ago
                 </div>
               </div>
@@ -237,7 +237,7 @@ export default function PrismInsights() {
               {/* Insights Grid */}
               <div className="space-y-6">
                 {filteredInsights.map((insight) => (
-                  <Card key={insight.id} className="border-gray-200 bg-white backdrop-blur-sm hover:border-[#C9A84C]/30 transition-colors" data-testid={`insight-${insight.id}`}>
+                  <Card key={insight.id} className="border-[#E8E4DC] bg-white backdrop-blur-sm hover:border-[#C9A84C]/30 transition-colors" data-testid={`insight-${insight.id}`}>
                     <CardHeader>
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
@@ -245,8 +245,8 @@ export default function PrismInsights() {
                             {insight.icon}
                           </div>
                           <div>
-                            <h3 className="text-xl font-semibold text-gray-900">{insight.title}</h3>
-                            <p className="text-gray-800 capitalize">{insight.dimension} Analysis • {insight.timeframe}</p>
+                            <h3 className="text-xl font-semibold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{insight.title}</h3>
+                            <p className="text-[#6B7280] capitalize">{insight.dimension} Analysis • {insight.timeframe}</p>
                           </div>
                         </div>
                         <div className="flex flex-col gap-2">
@@ -254,18 +254,18 @@ export default function PrismInsights() {
                             {insight.impact.toUpperCase()} IMPACT
                           </Badge>
                           <div className="text-right">
-                            <div className="text-sm text-gray-800">Confidence</div>
-                            <div className="text-lg font-bold text-gray-900">{insight.confidence}%</div>
+                            <div className="text-sm text-[#6B7280]">Confidence</div>
+                            <div className="text-lg font-bold text-[#0A0F2E]">{insight.confidence}%</div>
                           </div>
                         </div>
                       </div>
                     </CardHeader>
                     <CardContent className="space-y-6">
-                      <p className="text-gray-800">{insight.description}</p>
+                      <p className="text-[#0A0F2E]">{insight.description}</p>
                       
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <div>
-                          <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                          <h4 className="font-semibold text-[#0A0F2E] mb-3 flex items-center gap-2">
                             <Lightbulb className="h-4 w-4 text-[#C9A84C]" />
                             Key Insights
                           </h4>
@@ -280,7 +280,7 @@ export default function PrismInsights() {
                         </div>
                         
                         <div>
-                          <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                          <h4 className="font-semibold text-[#0A0F2E] mb-3 flex items-center gap-2">
                             <Target className="h-4 w-4 text-[#2B8A6E]" />
                             Strategic Recommendations
                           </h4>
@@ -295,12 +295,12 @@ export default function PrismInsights() {
                         </div>
                       </div>
 
-                      <div className="flex gap-3 pt-4 border-t border-gray-200">
-                        <Button size="sm" variant="outline" className="flex-1">
+                      <div className="flex gap-3 pt-4 border-t border-[#E8E4DC]">
+                        <Button size="sm" variant="outline" className="flex-1 border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#0A0F2E]/5">
                           <Eye className="h-4 w-4 mr-2" />
                           Deep Dive Analysis
                         </Button>
-                        <Button size="sm" variant="outline" className="flex-1">
+                        <Button size="sm" variant="outline" className="flex-1 border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#0A0F2E]/5">
                           <BarChart3 className="h-4 w-4 mr-2" />
                           View Data
                         </Button>
@@ -315,9 +315,9 @@ export default function PrismInsights() {
               </div>
 
               {/* AI Summary */}
-              <Card className="border-[#0A0F2E]/30 bg-[#0A0F2E]/30 backdrop-blur-sm">
+              <Card className="border-[#0A0F2E]/30 bg-[#0A0F2E]/5 backdrop-blur-sm">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-[#C9A84C]">
+                  <CardTitle className="flex items-center gap-2 text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     <Brain className="h-5 w-5" />
                     Cross-Dimensional AI Summary
                   </CardTitle>

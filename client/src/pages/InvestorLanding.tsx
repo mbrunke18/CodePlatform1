@@ -136,108 +136,108 @@ export default function InvestorLanding() {
         <section className="py-16 px-6 text-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-6 bg-red-600/20 text-red-500 border border-red-500/30 text-sm px-4 py-1.5">
+              <Badge className="mb-6 bg-[#0A0F2E]/20 text-[#0A0F2E] border border-[#0A0F2E]/30 text-sm px-4 py-1.5">
                 <AlertTriangle className="h-4 w-4 mr-2 inline" />
                 Market Problem
               </Badge>
               <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E]">
-                Three Enterprise Problems Worth $847B
-              </h2>
-              <p className="text-xl text-[#0A0F2E] max-w-4xl mx-auto">
-                Fortune 1000 companies face these three problems every time a strategic moment hits. No infrastructure existed to solve them—until Execution OS.
-              </p>
-            </div>
+              Three Enterprise Problems Worth $847B
+            </h2>
+            <p className="text-xl text-[#0A0F2E] max-w-4xl mx-auto">
+              Fortune 1000 companies face these three problems every time a strategic moment hits. No infrastructure existed to solve them—until Execution OS.
+            </p>
+          </div>
 
-            <div className="grid md:grid-cols-3 gap-6 mb-10">
-              <Card className="bg-white border border-[#E8E4DC] hover:border-red-500/40 transition-all">
-                <CardContent className="p-6">
-                  <div className="mb-4">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="p-2 rounded-lg bg-red-500/10">
-                        <Zap className="h-5 w-5 text-red-500" />
-                      </div>
-                      <span className="text-xs font-semibold text-red-500 uppercase tracking-wider">Problem 1</span>
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
+            <Card className="bg-white border border-[#E8E4DC] hover:border-[#0A0F2E]/40 transition-all shadow-sm">
+              <CardContent className="p-6">
+                <div className="mb-4">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2 rounded-lg bg-[#0A0F2E]/10">
+                      <Zap className="h-5 w-5 text-[#0A0F2E]" />
                     </div>
-                    <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">The Execution Gap</h3>
-                    <p className="text-sm text-[#0A0F2E] mb-2">20-72 hours to even begin acting when strategic moments hit</p>
-                    <p className="text-xs text-red-500">$136K/hour delayed (IBM). $5-50M M&A synergy erosion.</p>
+                    <span className="text-xs font-semibold text-[#0A0F2E] uppercase tracking-wider">Problem 1</span>
                   </div>
-                  <div className="border-t border-[#E8E4DC] pt-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] flex-shrink-0" />
-                      <span className="text-sm text-[#2B8A6E] font-semibold">Solution</span>
-                    </div>
-                    <p className="text-sm text-[#0A0F2E] mb-3">Pre-built infrastructure activates in 12 minutes</p>
-                    <div className="bg-[#2B8A6E]/10 rounded-lg px-3 py-2 text-center">
-                      <span className="text-[#2B8A6E] font-bold text-lg">72 hrs → 12 min</span>
-                    </div>
+                  <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">The Execution Gap</h3>
+                  <p className="text-sm text-[#0A0F2E] mb-2 leading-relaxed">20-72 hours to even begin acting when strategic moments hit</p>
+                  <p className="text-xs text-[#0A0F2E] font-medium">$136K/hour delayed (IBM). $5-50M M&A synergy erosion.</p>
+                </div>
+                <div className="border-t border-[#E8E4DC] pt-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] flex-shrink-0" />
+                    <span className="text-sm text-[#2B8A6E] font-semibold">Solution</span>
                   </div>
-                </CardContent>
-              </Card>
+                  <p className="text-sm text-[#0A0F2E] mb-3">Pre-built infrastructure activates in 12 minutes</p>
+                  <div className="bg-[#2B8A6E]/10 rounded-lg px-3 py-2 text-center border border-[#2B8A6E]/20">
+                    <span className="text-[#2B8A6E] font-bold text-lg">72 hrs → 12 min</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
-              <Card className="bg-white border border-[#E8E4DC] hover:border-[#C9A84C]/40 transition-all">
-                <CardContent className="p-6">
-                  <div className="mb-4">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="p-2 rounded-lg bg-[#C9A84C]/10">
-                        <Users className="h-5 w-5 text-[#C9A84C]" />
-                      </div>
-                      <span className="text-xs font-semibold text-[#C9A84C] uppercase tracking-wider">Problem 2</span>
+            <Card className="bg-white border border-[#E8E4DC] hover:border-[#C9A84C]/40 transition-all shadow-sm">
+              <CardContent className="p-6">
+                <div className="mb-4">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2 rounded-lg bg-[#C9A84C]/10">
+                      <Users className="h-5 w-5 text-[#C9A84C]" />
                     </div>
-                    <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">The Coordination Chaos</h3>
-                    <p className="text-sm text-[#0A0F2E] mb-2">50-200+ stakeholders. No system to coordinate them.</p>
-                    <p className="text-xs text-[#C9A84C] font-semibold">$4.88M avg breach cost. 35% higher without pre-defined teams.</p>
+                    <span className="text-xs font-semibold text-[#C9A84C] uppercase tracking-wider">Problem 2</span>
                   </div>
-                  <div className="border-t border-[#E8E4DC] pt-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] flex-shrink-0" />
-                      <span className="text-sm text-[#2B8A6E] font-semibold">Solution</span>
-                    </div>
-                    <p className="text-sm text-[#0A0F2E] mb-3">Pre-mapped accountability, instant notification, real-time tracking</p>
-                    <div className="bg-[#2B8A6E]/10 rounded-lg px-3 py-2 text-center">
-                      <span className="text-[#2B8A6E] font-bold text-lg">35% cost reduction</span>
-                    </div>
+                  <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">The Coordination Chaos</h3>
+                  <p className="text-sm text-[#0A0F2E] mb-2 leading-relaxed">50-200+ stakeholders. No system to coordinate them.</p>
+                  <p className="text-xs text-[#C9A84C] font-semibold">$4.88M avg breach cost. 35% higher without pre-defined teams.</p>
+                </div>
+                <div className="border-t border-[#E8E4DC] pt-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] flex-shrink-0" />
+                    <span className="text-sm text-[#2B8A6E] font-semibold">Solution</span>
                   </div>
-                </CardContent>
-              </Card>
+                  <p className="text-sm text-[#0A0F2E] mb-3">Pre-mapped accountability, instant notification, real-time tracking</p>
+                  <div className="bg-[#2B8A6E]/10 rounded-lg px-3 py-2 text-center border border-[#2B8A6E]/20">
+                    <span className="text-[#2B8A6E] font-bold text-lg">35% cost reduction</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
-              <Card className="bg-white border border-[#E8E4DC] hover:border-[#C9A84C]/40 transition-all">
-                <CardContent className="p-6">
-                  <div className="mb-4">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="p-2 rounded-lg bg-[#C9A84C]/10">
-                        <Brain className="h-5 w-5 text-[#C9A84C]" />
-                      </div>
-                      <span className="text-xs font-semibold text-[#C9A84C] uppercase tracking-wider">Problem 3</span>
+            <Card className="bg-white border border-[#E8E4DC] hover:border-[#C9A84C]/40 transition-all shadow-sm">
+              <CardContent className="p-6">
+                <div className="mb-4">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2 rounded-lg bg-[#C9A84C]/10">
+                      <Brain className="h-5 w-5 text-[#C9A84C]" />
                     </div>
-                    <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">The Institutional Amnesia</h3>
-                    <p className="text-sm text-[#0A0F2E] mb-2">Knowledge walks out the door. Same scramble every time.</p>
-                    <p className="text-xs text-[#C9A84C] font-semibold">3.5 disruptions per 2 years. Same $4.88M cost repeated.</p>
+                    <span className="text-xs font-semibold text-[#C9A84C] uppercase tracking-wider">Problem 3</span>
                   </div>
-                  <div className="border-t border-[#E8E4DC] pt-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] flex-shrink-0" />
-                      <span className="text-sm text-[#2B8A6E] font-semibold">Solution</span>
-                    </div>
-                    <p className="text-sm text-[#0A0F2E] mb-3">AI-powered learning loop. Playbooks that improve automatically.</p>
-                    <div className="bg-[#2B8A6E]/10 rounded-lg px-3 py-2 text-center">
-                      <span className="text-[#2B8A6E] font-bold text-lg">Compounding intelligence</span>
-                    </div>
+                  <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">The Institutional Amnesia</h3>
+                  <p className="text-sm text-[#0A0F2E] mb-2 leading-relaxed">Knowledge walks out the door. Same scramble every time.</p>
+                  <p className="text-xs text-[#C9A84C] font-semibold">3.5 disruptions per 2 years. Same $4.88M cost repeated.</p>
+                </div>
+                <div className="border-t border-[#E8E4DC] pt-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] flex-shrink-0" />
+                    <span className="text-sm text-[#2B8A6E] font-semibold">Solution</span>
                   </div>
-                </CardContent>
-              </Card>
-            </div>
+                  <p className="text-sm text-[#0A0F2E] mb-3">AI-powered learning loop. Playbooks that improve automatically.</p>
+                  <div className="bg-[#2B8A6E]/10 rounded-lg px-3 py-2 text-center border border-[#2B8A6E]/20">
+                    <span className="text-[#2B8A6E] font-bold text-lg">Compounding intelligence</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
             <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl px-6 py-4 text-center">
               <p className="text-[#0A0F2E]">
-                <span className="text-[#0A0F2E] font-semibold">Execution OS at $250K-$750K/year</span> vs. one incident costing <span className="text-red-500 font-semibold">$5-50M</span>. <span className="text-[#2B8A6E] font-semibold">Payback on first use.</span>
+                <span className="text-[#0A0F2E] font-semibold">Execution OS at $250K-$750K/year</span> vs. one incident costing <span className="text-[#0A0F2E] font-semibold">$5-50M</span>. <span className="text-[#2B8A6E] font-semibold">Payback on first use.</span>
               </p>
             </div>
           </div>
         </section>
 
         {/* Agentic Execution Layer */}
-        <section className="py-16 px-6 bg-gradient-to-br  text-[#0A0F2E]">
+        <section className="py-16 px-6 text-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <Badge className="mb-6 bg-[#C9A84C]/20 text-[#C9A84C] border border-[#C9A84C]/30 text-sm px-4 py-1.5">

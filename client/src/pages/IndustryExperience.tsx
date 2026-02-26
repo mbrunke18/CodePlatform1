@@ -997,20 +997,20 @@ export default function IndustryExperience() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               {userDataSources.map((source, i) => (
                 <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.1 + i * 0.1 }}
-                  className={`bg-white border rounded-xl p-5 ${source.connected ? 'border-green-500/20' : 'border-white/10'}`}
+                  className={`bg-white border rounded-none p-5 ${source.connected ? 'border-[#2B8A6E]/20' : 'border-[#E8E4DC]'}`}
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
-                      <Workflow className={`h-5 w-5 ${source.connected ? 'text-[#C9A84C]' : 'text-gray-800 dark:text-slate-200'}`} />
+                      <Workflow className={`h-5 w-5 ${source.connected ? 'text-[#C9A84C]' : 'text-[#0A0F2E]'}`} />
                       {i < industry.dataSources.length ? (
-                        <span className="text-sm font-medium text-gray-900">{source.name}</span>
+                        <span className="text-sm font-medium text-[#0A0F2E]">{source.name}</span>
                       ) : (
                         <Input value={source.name}
                           onChange={e => setUserDataSources(prev => prev.map((d, j) => j === i ? { ...d, name: e.target.value } : d))}
-                          className="bg-white/5 border-white/10 text-gray-900 h-8 text-sm w-48" placeholder="Source name" />
+                          className="bg-[#F8F7F4] border-[#E8E4DC] text-[#0A0F2E] h-8 text-sm w-48" placeholder="Source name" />
                       )}
                     </div>
-                    <button onClick={() => setUserDataSources(prev => prev.filter((_, j) => j !== i))} className="text-gray-800 hover:text-red-400">
+                    <button onClick={() => setUserDataSources(prev => prev.filter((_, j) => j !== i))} className="text-[#0A0F2E] hover:text-red-600">
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>
                   </div>
@@ -1019,13 +1019,13 @@ export default function IndustryExperience() {
                       <Switch checked={source.connected} onCheckedChange={() => handleToggleDataSource(i)} />
                       {connectingIdx === i ? (
                         <motion.span animate={{ opacity: [0.5, 1, 0.5] }} transition={{ repeat: Infinity, duration: 1 }}
-                          className="text-xs text-amber-400">Connecting...</motion.span>
+                          className="text-xs text-[#C9A84C]">Connecting...</motion.span>
                       ) : source.connected ? (
-                        <span className="flex items-center gap-1 text-xs text-green-400">
-                          <div className="w-1.5 h-1.5 rounded-full bg-green-500" /> Connected
+                        <span className="flex items-center gap-1 text-xs text-[#2B8A6E]">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" /> Connected
                         </span>
                       ) : (
-                        <span className="text-xs text-gray-800">Disconnected</span>
+                        <span className="text-xs text-[#6B7280]">Disconnected</span>
                       )}
                     </div>
                     {source.connected && (
@@ -1038,12 +1038,12 @@ export default function IndustryExperience() {
             <div className="flex gap-2 mb-6">
               <Input value={newDataSourceName} onChange={e => setNewDataSourceName(e.target.value)}
                 placeholder="Add a custom data source..."
-                className="bg-white/5 border-white/10 text-gray-900 flex-1"
+                className="bg-[#F8F7F4] border-[#E8E4DC] text-[#0A0F2E] flex-1"
                 onKeyDown={e => { if (e.key === 'Enter' && newDataSourceName.trim()) {
                   setUserDataSources(prev => [...prev, { name: newDataSourceName.trim(), connected: false, dataPoints: 0 }]);
                   setNewDataSourceName('');
                 }}} />
-              <Button variant="outline" className="border-[#E8E4DC] text-[#0A0F2E]"
+              <Button variant="outline" className="border-[#E8E4DC] text-[#0A0F2E] rounded-none"
                 onClick={() => { if (newDataSourceName.trim()) {
                   setUserDataSources(prev => [...prev, { name: newDataSourceName.trim(), connected: false, dataPoints: 0 }]);
                   setNewDataSourceName('');
@@ -1052,10 +1052,10 @@ export default function IndustryExperience() {
               </Button>
             </div>
             <div className="flex justify-between">
-              <Button variant="outline" onClick={prev} className="border-white/20 text-gray-900">
+              <Button variant="outline" onClick={prev} className="border-[#E8E4DC] text-[#0A0F2E] rounded-none">
                 <ArrowLeft className="h-4 w-4 mr-2" /> Back
               </Button>
-              <Button onClick={next} disabled={connectedSources.length === 0} className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] text-gray-900 px-8">
+              <Button onClick={next} disabled={connectedSources.length === 0} className="bg-[#0A0F2E] hover:bg-[#141B45] text-white rounded-none px-8">
                 Next: Customize <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
             </div>
@@ -1066,37 +1066,37 @@ export default function IndustryExperience() {
         return (
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-8">
-              <Badge className="mb-3 bg-[#0A0F2E]/20 text-[#0A0F2E]"><Sliders className="h-3 w-3 mr-1" /> CUSTOMIZE CONFIGURATION</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Customize Your Configuration</h2>
-              <p className="text-gray-800 dark:text-slate-200">Fine-tune each setting for {industry.organization}</p>
+              <Badge className="mb-3 bg-[#0A0F2E]/10 text-[#0A0F2E] border-0 rounded-none"><Sliders className="h-3 w-3 mr-1" /> CUSTOMIZE CONFIGURATION</Badge>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2">Customize Your Configuration</h2>
+              <p className="text-[#6B7280]">Fine-tune each setting for {industry.organization}</p>
             </div>
             <div className="mb-4 flex items-center gap-3">
-              <Progress value={setupReadiness.percent} className="h-2 flex-1" />
-              <span className="text-xs text-gray-800 dark:text-slate-200 font-medium">{setupReadiness.percent}% ready</span>
+              <Progress value={setupReadiness.percent} className="h-2 flex-1 [&>div]:bg-[#C9A84C]" />
+              <span className="text-xs text-[#0A0F2E] font-medium">{setupReadiness.percent}% ready</span>
             </div>
             {configComplete && (
               <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-                className="mb-6 bg-green-500/10 border border-green-500/20 rounded-xl p-3 text-center">
-                <CheckCircle2 className="h-4 w-4 text-green-400 inline mr-2" />
-                <span className="text-sm text-green-400 font-medium">Configuration Complete — Ready to launch execution</span>
+                className="mb-6 bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-none p-3 text-center">
+                <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] inline mr-2" />
+                <span className="text-sm text-[#2B8A6E] font-medium">Configuration Complete — Ready to launch execution</span>
               </motion.div>
             )}
             <div className="space-y-4 mb-6">
               {userCustomizations.map((custom, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.08 }}
-                  className="bg-white border border-[#C9A84C]/20 rounded-xl p-5"
+                  className="bg-white border border-[#E8E4DC] rounded-none p-5"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <Label className="text-gray-900 font-medium">{custom.field}</Label>
+                    <Label className="text-[#0A0F2E] font-medium">{custom.field}</Label>
                     {i >= industry.customizations.length && (
-                      <button onClick={() => setUserCustomizations(prev => prev.filter((_, j) => j !== i))} className="text-gray-800 hover:text-red-400">
+                      <button onClick={() => setUserCustomizations(prev => prev.filter((_, j) => j !== i))} className="text-[#0A0F2E] hover:text-red-600">
                         <Trash2 className="h-3.5 w-3.5" />
                       </button>
                     )}
                   </div>
                   {i < industry.customizations.length && (
-                    <div className="text-xs text-gray-800 mb-2">
-                      Default: <span className="text-gray-800 dark:text-slate-200">{industry.customizations[i].before}</span> → <span className="text-[#C9A84C]">{industry.customizations[i].after}</span>
+                    <div className="text-xs text-[#6B7280] mb-2">
+                      Default: <span className="text-[#0A0F2E]">{industry.customizations[i].before}</span> → <span className="text-[#C9A84C]">{industry.customizations[i].after}</span>
                     </div>
                   )}
                   <Textarea value={custom.value}

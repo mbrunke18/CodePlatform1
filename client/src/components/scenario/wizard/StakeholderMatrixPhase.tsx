@@ -202,7 +202,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
           <Button
             onClick={addStakeholder}
             disabled={!newStakeholder.name || !newStakeholder.title}
-            className="mt-4 bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900"
+            className="mt-4 bg-[#0A0F2E] hover:bg-[#141B45] text-white"
             data-testid="button-add-stakeholder"
           >
             <Plus className="h-4 w-4 mr-2" />

@@ -51,8 +51,8 @@ const IDEA_STORY = [
     phase: "IDENTIFY",
     phaseColor: "bg-[#2B8A6E]",
     icon: AlertTriangle,
-    color: "text-red-500",
-    bgColor: "bg-red-500/10",
+    color: "text-[#0A0F2E]",
+    bgColor: "bg-[#0A0F2E]/10",
     time: 0,
     description: "McKinsey research: Even high-performing companies lose 30% of their strategy's value in execution. For Fortune 500, that's $270M-$900M annually. The gap isn't intelligence—it's coordination. When a strategic event hits, teams spend 20-50 hours just getting organized.",
     investorHighlight: "This is a $15B+ market opportunity. No one owns the execution layer between strategy consulting and project management.",
@@ -509,14 +509,14 @@ export default function InvestorDemo() {
                         </div>
                       </div>
                       
-                      <div className="grid grid-cols-3 gap-4 mb-6">
-                        {currentStage.metrics.map((metric, idx) => (
-                          <div key={idx} className={`rounded-lg p-4 text-center ${currentStage.phase === 'PROBLEM' ? 'bg-red-50' : 'bg-[#F8F7F4]'}`}>
-                            <div className={`text-2xl font-bold mb-1 ${currentStage.phase === 'PROBLEM' ? 'text-red-600' : 'text-[#0A0F2E]'}`}>{metric.value}</div>
-                            <div className="text-xs text-[#6B7280]">{metric.label}</div>
-                          </div>
-                        ))}
-                      </div>
+          <div className="grid grid-cols-3 gap-4 mb-6">
+            {currentStage.metrics.map((metric, idx) => (
+              <div key={idx} className={`rounded-lg p-4 text-center bg-[#F8F7F4]`}>
+                <div className={`text-2xl font-bold mb-1 text-[#0A0F2E]`}>{metric.value}</div>
+                <div className="text-xs text-[#6B7280]">{metric.label}</div>
+              </div>
+            ))}
+          </div>
 
                       {/* Smart Defaults Panel */}
                       {currentStage.smartDefaults && (
@@ -583,7 +583,7 @@ export default function InvestorDemo() {
                           <div className="flex gap-3">
                             <Button
                               onClick={() => setLocation('/customer-demo')}
-                              className="flex-1 bg-[#0A0F2E] hover:bg-[#0A0F2E]"
+                              className="flex-1 bg-[#0A0F2E] hover:bg-[#141B45] text-white"
                               data-testid="button-customer-demo"
                             >
                               <Users className="mr-2 h-4 w-4" />

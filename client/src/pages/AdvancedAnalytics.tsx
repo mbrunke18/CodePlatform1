@@ -400,7 +400,7 @@ export default function AdvancedAnalytics() {
                                   {(driver.significance * 100).toFixed(0)}% Significance
                                 </div>
                               </div>
-                              <Progress value={driver.significance * 100} className="w-20 h-2" />
+                              <Progress value={driver.significance * 100} className="w-20 h-2 [&>div]:bg-[#C9A84C]" />
                             </div>
                           </div>
                         ))}

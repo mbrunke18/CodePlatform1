@@ -75,7 +75,7 @@ function raciColor(r: string) {
 function priorityColor(p: string) {
   switch (p?.toLowerCase()) {
     case "critical": return "bg-red-500/20 text-red-600 border-red-500/30";
-    case "high": return "bg-red-500/10 text-red-500 border-red-500/20";
+    case "high": return "bg-red-500/20 text-red-600 border-red-500/30";
     case "medium": return "bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30";
     case "low": return "bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30";
     default: return "bg-black/5 text-gray-700 border-black/10";
@@ -295,7 +295,7 @@ export default function IncidentAnalyzer() {
     doc.setFontSize(28);
     doc.text("Execution OS", 105, 50, { align: "center" });
     doc.setFontSize(14);
-    doc.setTextColor(94, 234, 212);
+    doc.setTextColor(201, 168, 76); // #C9A84C
     doc.text("Strategic Analysis Report", 105, 65, { align: "center" });
     doc.setFontSize(10);
     doc.setTextColor(148, 163, 184);
@@ -316,12 +316,12 @@ export default function IncidentAnalyzer() {
 
     let y = 40 + descLines.length * 6 + 10;
     if (analysis?.domain) {
-      doc.setTextColor(94, 234, 212);
+      doc.setTextColor(43, 138, 110); // #2B8A6E
       doc.text(`Domain: ${analysis.domain.toUpperCase()}`, 20, y);
       y += 10;
     }
     if (analysis?.incidentType || analysis?.incident_type) {
-      doc.setTextColor(94, 234, 212);
+      doc.setTextColor(201, 168, 76); // #C9A84C
       doc.text(`Type: ${analysis.incidentType || analysis.incident_type}`, 20, y);
       y += 10;
     }
@@ -331,7 +331,7 @@ export default function IncidentAnalyzer() {
       y += 10;
     }
     if (analysis?.timeToCoordination) {
-      doc.setTextColor(251, 191, 36);
+      doc.setTextColor(201, 168, 76); // #C9A84C
       doc.text(`Time to Coordination: ${analysis.timeToCoordination}`, 20, y);
       y += 10;
     }
@@ -373,8 +373,8 @@ export default function IncidentAnalyzer() {
           row.without || row.yourReality || "",
           row.with || row.withExecutionOS || "",
         ]),
-        styles: { fillColor: [30, 41, 59], textColor: [226, 232, 240], fontSize: 9 },
-        headStyles: { fillColor: [51, 65, 85], textColor: [255, 255, 255] },
+        styles: { fillColor: [10, 15, 46], textColor: [226, 232, 240], fontSize: 9 }, // #0A0F2E
+        headStyles: { fillColor: [20, 27, 69], textColor: [255, 255, 255] }, // #141B45
         alternateRowStyles: { fillColor: [15, 23, 42] },
       });
     }
@@ -387,7 +387,7 @@ export default function IncidentAnalyzer() {
       doc.setFontSize(16);
       doc.text("Playbook Summary", 20, 25);
       doc.setFontSize(11);
-      doc.setTextColor(94, 234, 212);
+      doc.setTextColor(201, 168, 76); // #C9A84C
       doc.text(`Name: ${playbook.name || "Generated Playbook"}`, 20, 40);
       doc.text(`Code: ${playbook.code || "N/A"}`, 20, 50);
       doc.text(`Domain: ${playbook.domain || "N/A"}`, 20, 60);
@@ -401,7 +401,7 @@ export default function IncidentAnalyzer() {
       doc.setFontSize(16);
       doc.text("Simulation Results", 20, 25);
       doc.setFontSize(11);
-      doc.setTextColor(94, 234, 212);
+      doc.setTextColor(201, 168, 76); // #C9A84C
       doc.text(`Elapsed Time: ${formatTime(elapsedSeconds)}`, 20, 40);
       doc.text(`Status: ${simulationData.status || "Completed"}`, 20, 50);
     }
@@ -417,7 +417,7 @@ export default function IncidentAnalyzer() {
     doc.setFontSize(28);
     doc.text("Execution OS", 105, 50, { align: "center" });
     doc.setFontSize(16);
-    doc.setTextColor(94, 234, 212);
+    doc.setTextColor(201, 168, 76); // #C9A84C
     doc.text("Board Briefing Deck", 105, 65, { align: "center" });
     doc.setFontSize(10);
     doc.setTextColor(148, 163, 184);
@@ -439,7 +439,7 @@ export default function IncidentAnalyzer() {
     doc.text(summaryLines, 20, 40);
 
     let y = 40 + summaryLines.length * 6 + 15;
-    doc.setTextColor(94, 234, 212);
+    doc.setTextColor(201, 168, 76); // #C9A84C
     doc.setFontSize(14);
     doc.text("Key Findings", 20, y);
     y += 10;
@@ -474,7 +474,7 @@ export default function IncidentAnalyzer() {
     doc.setFontSize(18);
     doc.text("Playbook Overview", 20, 25);
     doc.setFontSize(11);
-    doc.setTextColor(94, 234, 212);
+    doc.setTextColor(201, 168, 76); // #C9A84C
     if (playbook) {
       doc.text(`Playbook: ${playbook.name || "Generated"}`, 20, 40);
       doc.text(`Tasks: ${playbook.taskSequence?.length || 0}`, 20, 50);

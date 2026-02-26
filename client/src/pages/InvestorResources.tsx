@@ -92,7 +92,7 @@ export default function InvestorResources() {
             {/* The Problem */}
             <Card className="border-[#E8E4DC] bg-white shadow-sm">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-red-600" style={CG}>
+                <CardTitle className="flex items-center gap-2 text-[#0A0F2E]" style={CG}>
                   <Clock className="h-6 w-6" />
                   The Problem: 72-Hour Gap
                 </CardTitle>
@@ -103,23 +103,23 @@ export default function InvestorResources() {
                 </p>
                 <ul className="space-y-2 text-sm text-[#6B7280]">
                   <li className="flex items-start gap-2">
-                    <span className="text-red-600 font-bold w-16 shrink-0">0-4 hrs:</span>
+                    <span className="text-[#0A0F2E] font-bold w-16 shrink-0">0-4 hrs:</span>
                     <span>Discovery and initial confusion</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-red-600 font-bold w-16 shrink-0">4-12 hrs:</span>
+                    <span className="text-[#0A0F2E] font-bold w-16 shrink-0">4-12 hrs:</span>
                     <span>Ad-hoc calls to identify who should be involved</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-red-600 font-bold w-16 shrink-0">12-24 hrs:</span>
+                    <span className="text-[#0A0F2E] font-bold w-16 shrink-0">12-24 hrs:</span>
                     <span>Scramble to find relevant documents and data</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-red-600 font-bold w-16 shrink-0">24-48 hrs:</span>
+                    <span className="text-[#0A0F2E] font-bold w-16 shrink-0">24-48 hrs:</span>
                     <span>Debate about authority, budget, and approach</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-red-600 font-bold w-16 shrink-0">48-72 hrs:</span>
+                    <span className="text-[#0A0F2E] font-bold w-16 shrink-0">48-72 hrs:</span>
                     <span>Finally begin coordinated response</span>
                   </li>
                 </ul>
@@ -324,13 +324,13 @@ export default function InvestorResources() {
                       <tr key={i} className="border-b border-[#E8E4DC] hover:bg-slate-50/50 transition-colors">
                         <td className="py-4 px-6 font-medium text-[#0A0F2E]">{r.cap}</td>
                         <td className="py-4 px-4 text-center">
-                          {typeof r.crisis === 'boolean' ? (r.crisis ? <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mx-auto" /> : <span className="text-red-400">—</span>) : r.crisis}
+                          {typeof r.crisis === 'boolean' ? (r.crisis ? <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mx-auto" /> : <span className="text-[#0A0F2E]/20">—</span>) : r.crisis}
                         </td>
                         <td className="py-4 px-4 text-center">
-                          {typeof r.pm === 'boolean' ? (r.pm ? <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mx-auto" /> : <span className="text-red-400">—</span>) : r.pm}
+                          {typeof r.pm === 'boolean' ? (r.pm ? <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mx-auto" /> : <span className="text-[#0A0F2E]/20">—</span>) : r.pm}
                         </td>
                         <td className="py-4 px-4 text-center bg-[#C9A84C]/5">
-                          {typeof r.vm === 'boolean' ? (r.vm ? <CheckCircle2 className="h-4 w-4 text-[#C9A84C] mx-auto" /> : <span className="text-red-400">—</span>) : <span className="font-bold text-[#C9A84C]">{r.vm}</span>}
+                          {typeof r.vm === 'boolean' ? (r.vm ? <CheckCircle2 className="h-4 w-4 text-[#C9A84C] mx-auto" /> : <span className="text-[#0A0F2E]/20">—</span>) : <span className="font-bold text-[#C9A84C]">{r.vm}</span>}
                         </td>
                       </tr>
                     ))}

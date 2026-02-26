@@ -328,7 +328,7 @@ export default function SettingsPage() {
                         checked={feature.enabled}
                         disabled={feature.critical}
                         data-testid={`switch-${feature.name.toLowerCase().replace(/\s+/g, '-')}`}
-                        className="data-[state=checked]:bg-[#2B8A6E]"
+                        className="data-[state=checked]:bg-[#2B8A6E] [&>span]:bg-white"
                       />
                       <Badge variant={feature.enabled ? 'default' : 'secondary'} className={feature.enabled ? 'bg-[#2B8A6E] text-white rounded-none' : 'bg-black/5 text-gray-700 rounded-none'}>
                         {feature.enabled ? 'Enabled' : 'Disabled'}

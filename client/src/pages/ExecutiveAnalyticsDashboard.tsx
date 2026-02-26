@@ -129,7 +129,7 @@ export default function ExecutiveAnalyticsDashboard() {
   const getInsightColor = (category: string) => {
     switch (category) {
       case 'achievement': return 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-none rounded-none';
-      case 'opportunity': return 'bg-[#141B45]/10 text-[#141B45] border-none rounded-none';
+      case 'opportunity': return 'bg-[#0A0F2E]/10 text-[#0A0F2E] border-none rounded-none';
       case 'risk': return 'bg-red-500/10 text-red-700 border-none rounded-none';
       case 'alert': return 'bg-[#C9A84C]/10 text-[#C9A84C] border-none rounded-none';
       default: return 'bg-gray-100 text-[#6B7280] border-none rounded-none';

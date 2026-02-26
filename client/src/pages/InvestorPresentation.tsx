@@ -141,7 +141,7 @@ function InvestorPresentation() {
         </h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl w-full">
           {[
-            { icon: <AlertTriangle className="w-8 h-8 text-red-500" />, value: '$22-50M', label: 'Average cost per ransomware incident', sub: 'IBM Security 2025', color: 'border-red-500/30' },
+            { icon: <AlertTriangle className="w-8 h-8 text-[#0A0F2E]" />, value: '$22-50M', label: 'Average cost per ransomware incident', sub: 'IBM Security 2025', color: 'border-[#0A0F2E]/30' },
             { icon: <Zap className="w-8 h-8 text-[#2B8A6E]" />, value: '340x', label: 'Faster with Execution OS', sub: '72 hours → 12 minutes', color: 'border-[#2B8A6E]/30' },
             { icon: <DollarSign className="w-8 h-8 text-[#2B8A6E]" />, value: '$21-33M', label: 'Value created per crisis averted', sub: 'Revenue protection + opportunity capture', color: 'border-[#2B8A6E]/30' },
           ].map((c, i) => (
@@ -196,18 +196,18 @@ function InvestorPresentation() {
           Same trigger. Different outcome.
         </h2>
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl w-full">
-          <div className="bg-red-950/30 border border-red-500/30 rounded-xl p-8">
-            <h3 className="text-xl font-bold text-red-500 mb-6 flex items-center gap-2">
+          <div className="bg-[#0A0F2E]/10 border border-[#0A0F2E]/20 rounded-xl p-8">
+            <h3 className="text-xl font-bold text-[#0A0F2E] mb-6 flex items-center gap-2">
               <AlertTriangle className="w-5 h-5" /> Without Execution OS
             </h3>
             <div className="space-y-4">
               {['T+0: Signal detected by random employee', 'T+4h: Escalated via email chain', 'T+12h: Leadership aware', 'T+24h: War room assembled', 'T+48h: Response plan drafted', 'T+72h: First coordinated action'].map((t, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <div className="w-2 h-2 rounded-full bg-red-500 mt-2 shrink-0" />
+                  <div className="w-2 h-2 rounded-full bg-[#0A0F2E] mt-2 shrink-0" />
                   <span className="text-[#0A0F2E] text-sm">{t}</span>
                 </div>
               ))}
-              <div className="mt-4 p-3 bg-red-900/40 rounded-lg text-red-100 font-semibold text-center">
+              <div className="mt-4 p-3 bg-[#0A0F2E]/20 rounded-lg text-[#0A0F2E] font-semibold text-center">
                 Result: $22-50M in damage
               </div>
             </div>

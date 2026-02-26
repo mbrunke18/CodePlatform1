@@ -133,10 +133,10 @@ export default function SimulationStudio() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'running': return `bg-[${TEAL}]/12 text-[${TEAL}]`;
-      case 'completed': return `bg-[${NAVY}]/12 text-[${NAVY}]`;
+      case 'running': return `bg-[#2B8A6E]/12 text-[#2B8A6E]`;
+      case 'completed': return `bg-[#0A0F2E]/12 text-[#0A0F2E]`;
       case 'cancelled': return 'bg-red-500/12 text-red-500';
-      default: return `bg-[${BORDER}] text-[${MUTED}]`;
+      default: return `bg-[#E8E4DC] text-[#6B7280]`;
     }
   };
 

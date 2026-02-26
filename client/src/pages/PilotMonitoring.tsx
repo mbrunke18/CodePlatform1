@@ -44,7 +44,7 @@ export default function PilotMonitoring() {
   // Show loading state while initial data loads
   if (healthLoading || metricsLoading || activityLoading) {
     return (
-      <div className="page-background min-h-screen bg-slate-50 dark:bg-[#0A0F2E]">
+      <div className="page-background min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
         <StandardNav />
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="text-center py-12">
@@ -59,7 +59,7 @@ export default function PilotMonitoring() {
   // Show error state if any queries failed
   if (healthError || metricsError || activityError) {
     return (
-      <div className="page-background min-h-screen bg-slate-50 dark:bg-[#0A0F2E]">
+      <div className="page-background min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
         <StandardNav />
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="text-center py-12">
@@ -79,7 +79,7 @@ export default function PilotMonitoring() {
   // Guard against undefined data
   if (!systemHealth || !pilotMetrics || !recentActivity) {
     return (
-      <div className="page-background min-h-screen bg-slate-50 dark:bg-[#0A0F2E]">
+      <div className="page-background min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
         <StandardNav />
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="text-center py-12">
@@ -98,7 +98,7 @@ export default function PilotMonitoring() {
   ];
 
   return (
-    <div className="page-background min-h-screen bg-slate-50 dark:bg-[#0A0F2E]">
+    <div className="page-background min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
       <StandardNav />
 
       <div className="max-w-7xl mx-auto px-6 py-8">

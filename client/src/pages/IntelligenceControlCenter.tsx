@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
 import { useQuery } from '@tanstack/react-query';
 import { 
   Radio, 
@@ -175,6 +176,7 @@ export default function IntelligenceControlCenter() {
                 </div>
                 <TrendingUp className="h-8 w-8 text-[#2B8A6E] opacity-20" />
               </div>
+              <Progress value={75} className="h-1 mt-2 [&>div]:bg-[#C9A84C]" />
             </CardContent>
           </Card>
         </div>

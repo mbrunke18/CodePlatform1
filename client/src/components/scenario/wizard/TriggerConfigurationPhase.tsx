@@ -211,7 +211,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
             <Button
               onClick={addTrigger}
               disabled={!newTrigger.name || !newTrigger.signal || !newTrigger.threshold}
-              className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900"
+              className="bg-[#0A0F2E] hover:bg-[#141B45] text-white"
               data-testid="button-add-trigger"
             >
               <Plus className="h-4 w-4 mr-2" />

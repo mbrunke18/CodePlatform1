@@ -355,7 +355,7 @@ export default function CrisisResponseCenter() {
                   <CardContent className="px-0 pb-0 space-y-4">
                     <Button className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] font-bold h-16 rounded-none justify-between px-8 text-xs tracking-[0.2em]">
                       ACTIVATE CRISIS PROTOCOL
-                      <AlertTriangle className="w-5 h-5 text-red-500" />
+                      <AlertTriangle className="w-5 h-5 text-red-600" />
                     </Button>
                     <Button variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] font-bold h-16 rounded-none justify-between px-8 text-xs tracking-[0.2em]">
                       ASSEMBLE RESPONSE TEAM

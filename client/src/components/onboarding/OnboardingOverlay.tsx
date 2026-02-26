@@ -188,7 +188,7 @@ export default function OnboardingOverlay() {
                 <Button
                   size="sm"
                   onClick={nextStep}
-                  className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900"
+                  className="bg-[#0A0F2E] hover:bg-[#141B45] text-white"
                   data-testid="onboarding-next"
                 >
                   {state.currentStep >= steps.length - 1 ? 'Done' : 'Next'}

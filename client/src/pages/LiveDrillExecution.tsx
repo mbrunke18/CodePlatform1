@@ -275,7 +275,7 @@ export default function LiveDrillExecution() {
                           </div>
                         </div>
                         {status === 'active' && (
-                          <Badge variant="default" className="bg-green-600">
+                          <Badge variant="default" className="bg-[#2B8A6E]">
                             <Activity className="h-3 w-3 mr-1 animate-pulse" />
                             NOW
                           </Badge>
@@ -386,7 +386,7 @@ export default function LiveDrillExecution() {
                 size="lg"
                 onClick={handleCompleteDrill}
                 disabled={completeDrillMutation.isPending}
-                className="bg-green-600 hover:bg-green-700"
+                className="bg-[#2B8A6E] hover:bg-[#237A5F]"
                 data-testid="button-complete-drill"
               >
                 <CheckCircle className="h-5 w-5 mr-2" />

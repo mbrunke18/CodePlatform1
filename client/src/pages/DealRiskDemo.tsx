@@ -216,7 +216,7 @@ export default function DealRiskDemo() {
           })}
         </div>
 
-        <Progress value={getPhaseProgress()} className="mb-8 h-2 bg-white/10" />
+        <Progress value={getPhaseProgress()} className="mb-8 h-2 bg-white/10 [&>div]:bg-[#C9A84C]" />
 
         <div className="grid lg:grid-cols-2 gap-8">
           <div className="space-y-6">
@@ -337,7 +337,7 @@ export default function DealRiskDemo() {
                             <span>{deal.triggers.length} triggers</span>
                           </div>
                           <Button 
-                            className="w-full bg-red-600 hover:bg-red-700 font-bold"
+                            className="w-full bg-red-800 hover:bg-red-900 font-bold"
                             onClick={() => executeTriggerMutation.mutate(deal.id)}
                           >
                             <AlertTriangle className="mr-2 h-4 w-4" />

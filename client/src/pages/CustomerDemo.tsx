@@ -344,7 +344,7 @@ export default function CustomerDemo() {
                   {!isPlaying ? (
                     <Button
                       onClick={() => { setManualMode(false); setIsPlaying(true); }}
-                      className="bg-[#2B8A6E] text-white hover:bg-[#3BAF8A]"
+                      className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"
                       data-testid="button-play-demo"
                     >
                       <Play className="h-4 w-4 mr-2" />

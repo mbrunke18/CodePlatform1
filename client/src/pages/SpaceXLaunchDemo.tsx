@@ -48,7 +48,7 @@ export default function SpaceXLaunchDemo() {
                 onClick={() => goToAct(act.id as DemoAct)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                   currentAct === act.id
-                    ? "bg-[#0A0F2E] text-gray-900"
+                    ? "bg-[#0A0F2E] text-white"
                     : "text-[#3BAF8A] hover:bg-[#0A0F2E]/50"
                 }`}
                 data-testid={`button-act-${act.id}`}
@@ -149,7 +149,7 @@ export default function SpaceXLaunchDemo() {
                 <Button
                   size="lg"
                   onClick={() => goToAct("detection")}
-                  className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900 px-8 py-6 text-lg"
+                  className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white px-8 py-6 text-lg"
                   data-testid="button-begin-simulation"
                 >
                   <Play className="w-5 h-5 mr-2" />
@@ -198,7 +198,7 @@ export default function SpaceXLaunchDemo() {
               <Button
                 size="lg"
                 onClick={() => goToAct("coordination")}
-                className="gap-2 bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900"
+                className="gap-2 bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white"
                 data-testid="button-activate-playbook"
               >
                 <Rocket className="h-5 w-5" />
@@ -225,29 +225,29 @@ export default function SpaceXLaunchDemo() {
               </p>
 
               <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div className="p-6 bg-[#0A0F2E]/30 rounded-lg border border-[#0A0F2E]/30">
+                <div className="p-6 bg-white/10 rounded-lg border border-white/20">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-[#0A0F2E] flex items-center justify-center text-gray-900 font-bold">1</div>
-                    <h3 className="font-bold text-gray-900">Mission Leadership</h3>
+                    <div className="w-10 h-10 rounded-full bg-[#C9A84C] flex items-center justify-center text-[#0A0F2E] font-bold">1</div>
+                    <h3 className="font-bold text-white">Mission Leadership</h3>
                   </div>
-                  <p className="text-sm text-[#0A0F2E] mb-2">34 executives approve 3-day acceleration, initiate FAA expedited review</p>
-                  <div className="text-2xl font-bold text-[#0A0F2E]">34 Leaders</div>
+                  <p className="text-sm text-white/80 mb-2">34 executives approve 3-day acceleration, initiate FAA expedited review</p>
+                  <div className="text-2xl font-bold text-[#C9A84C]">34 Leaders</div>
                 </div>
-                <div className="p-6 bg-[#0A0F2E]/30 rounded-lg border border-[#0A0F2E]/30">
+                <div className="p-6 bg-white/10 rounded-lg border border-white/20">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-[#0A0F2E] flex items-center justify-center text-gray-900 font-bold">2</div>
-                    <h3 className="font-bold text-gray-900">Operations Teams</h3>
+                    <div className="w-10 h-10 rounded-full bg-[#C9A84C] flex items-center justify-center text-[#0A0F2E] font-bold">2</div>
+                    <h3 className="font-bold text-white">Operations Teams</h3>
                   </div>
-                  <p className="text-sm text-[#0A0F2E] mb-2">Ground crews, vehicle processing, payload, fueling—all accelerated by 72 hours</p>
-                  <div className="text-2xl font-bold text-[#0A0F2E]">813 Specialists</div>
+                  <p className="text-sm text-white/80 mb-2">Ground crews, vehicle processing, payload, fueling—all accelerated by 72 hours</p>
+                  <div className="text-2xl font-bold text-[#C9A84C]">813 Specialists</div>
                 </div>
-                <div className="p-6 bg-[#0A0F2E]/30 rounded-lg border border-[#0A0F2E]/30">
+                <div className="p-6 bg-white/10 rounded-lg border border-white/20">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-[#0A0F2E] flex items-center justify-center text-gray-900 font-bold">3</div>
-                    <h3 className="font-bold text-gray-900">External Partners</h3>
+                    <div className="w-10 h-10 rounded-full bg-[#C9A84C] flex items-center justify-center text-[#0A0F2E] font-bold">3</div>
+                    <h3 className="font-bold text-white">External Partners</h3>
                   </div>
-                  <p className="text-sm text-[#0A0F2E] mb-2">FAA, Space Force, Range Control, airspace—all coordinated</p>
-                  <div className="text-2xl font-bold text-[#0A0F2E]">1,000 Partners</div>
+                  <p className="text-sm text-white/80 mb-2">FAA, Space Force, Range Control, airspace—all coordinated</p>
+                  <div className="text-2xl font-bold text-[#C9A84C]">1,000 Partners</div>
                 </div>
               </div>
             </Card>
@@ -263,7 +263,7 @@ export default function SpaceXLaunchDemo() {
                 <Button
                   size="lg"
                   onClick={() => goToAct("outcome")}
-                  className="gap-2 bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900"
+                  className="gap-2 bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white"
                   data-testid="button-view-outcome"
                 >
                   <Rocket className="h-5 w-5" />

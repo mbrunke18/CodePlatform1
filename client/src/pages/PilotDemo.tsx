@@ -56,8 +56,8 @@ const TRIGGER_SCENARIOS = [
     name: "Competitor Product Launch",
     description: "A major competitor announces a new product in your category",
     icon: Target,
-    color: "text-red-600",
-    bgColor: "bg-red-50 dark:bg-red-950/30",
+    color: "text-[#2B8A6E]",
+    bgColor: "bg-[#2B8A6E]/10",
     sampleSignal: "TechCorp announces AI-powered enterprise solution competing directly with your flagship product"
   },
   {
@@ -289,7 +289,7 @@ export default function PilotDemo() {
   const canProceedToReady = selectedTrigger && selectedPlaybook;
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#0A0F2E]">
+    <div className="min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
       <StandardNav />
       
       <PageHero

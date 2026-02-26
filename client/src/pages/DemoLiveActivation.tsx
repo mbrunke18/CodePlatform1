@@ -429,7 +429,7 @@ function DemoLiveActivation() {
   };
 
   return (
-    <div className="page-background min-h-screen bg-white text-gray-900">
+    <div className="page-background min-h-screen bg-[#F8F7F4] text-gray-900">
       <DemoNavHeader title="Execution OS Live Activation Demo" showBackButton={true} />
       <div className="pt-20 p-8">
       {/* Confetti Celebration */}

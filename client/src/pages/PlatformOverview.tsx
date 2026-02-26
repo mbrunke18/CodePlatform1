@@ -64,7 +64,7 @@ const timelineSteps = [
       "Approves external communications before release",
       "Escalates or deprioritizes based on ground truth",
     ],
-    color: "#2B8A6E",
+    color: "#0A0F2E",
     badge: "EXECUTE",
   },
   {
@@ -83,7 +83,7 @@ const timelineSteps = [
       "Communicates status to board and leadership",
       "All response now operational — organization coordinated",
     ],
-    color: "#0A0F2E",
+    color: "#2B8A6E",
     badge: "ADVANCE",
   },
 ];
@@ -133,7 +133,7 @@ export default function PlatformOverview() {
               </div>
               <div className="flex flex-col gap-2 shrink-0">
                 <div className="flex items-center gap-3 text-sm text-[#6B7280]">
-                  <span className="w-2 h-2 rounded-full bg-[#2B8A6E]" />
+                  <span className="w-2 h-2 rounded-full bg-[#0A0F2E]" />
                   AI handles signal monitoring and execution orchestration
                 </div>
                 <div className="flex items-center gap-3 text-sm text-[#6B7280]">
@@ -163,7 +163,7 @@ export default function PlatformOverview() {
             </div>
 
             <div className="space-y-0 relative">
-              <div className="absolute left-[23px] md:left-[47px] top-8 bottom-8 w-0.5 bg-gradient-to-b from-[#2B8A6E] via-[#C9A84C] to-[#0A0F2E] rounded-full" />
+              <div className="absolute left-[23px] md:left-[47px] top-8 bottom-8 w-0.5 bg-gradient-to-b from-[#0A0F2E] via-[#C9A84C] to-[#2B8A6E] rounded-full" />
 
               {timelineSteps.map((step, i) => (
                 <div key={i} className="relative flex gap-6 md:gap-10 mb-8">
@@ -192,13 +192,13 @@ export default function PlatformOverview() {
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="p-4" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
                         <div className="flex items-center gap-2 mb-3">
-                          <Cpu className="h-3.5 w-3.5" style={{ color: "#2B8A6E" }} />
-                          <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: "#2B8A6E" }}>AI Role</span>
+                          <Cpu className="h-3.5 w-3.5" style={{ color: "#0A0F2E" }} />
+                          <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: "#0A0F2E" }}>AI Role</span>
                         </div>
                         <ul className="space-y-2">
                           {step.aiRole.map((a, j) => (
                             <li key={j} className="flex items-start gap-2 text-sm text-[#6B7280]">
-                              <CheckCircle2 className="h-3.5 w-3.5 shrink-0 mt-0.5" style={{ color: "#2B8A6E" }} />
+                              <CheckCircle2 className="h-3.5 w-3.5 shrink-0 mt-0.5" style={{ color: "#0A0F2E" }} />
                               {a}
                             </li>
                           ))}
@@ -245,8 +245,8 @@ export default function PlatformOverview() {
                   key={name}
                   className="border border-[#E8E4DC] bg-white p-6 hover:border-[#0A0F2E] transition-colors"
                 >
-                  <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
-                    <Icon className="h-4 w-4 text-white" />
+                  <div style={{ width: 32, height: 32, background: "#C9A84C", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
+                    <Icon className="h-4 w-4 text-[#0A0F2E]" />
                   </div>
                   <div className="text-sm font-semibold text-[#0A0F2E] mb-1">{name}</div>
                   <div className="text-xs text-[#6B7280] leading-relaxed">{desc}</div>

@@ -136,10 +136,10 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
             </CardContent>
           </Card>
 
-          <Card className="bg-red-50 dark:bg-red-950/20 border-2 border-red-200 dark:border-red-800">
+          <Card className="bg-[#0A0F2E]/5 dark:bg-[#0A0F2E]/10 border-2 border-[#0A0F2E]/30">
             <CardHeader className="pb-3">
-              <CardDescription className="text-red-700 dark:text-red-300">Net ROI</CardDescription>
-              <CardTitle className="text-4xl font-bold text-red-700 dark:text-red-300" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="text-net-roi">
+              <CardDescription className="text-[#0A0F2E] dark:text-[#C9A84C]">Net ROI</CardDescription>
+              <CardTitle className="text-4xl font-bold text-[#0A0F2E] dark:text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="text-net-roi">
                 {Math.round(((totalAnnualValue * 1000000 - 120000) / 120000) * 100).toLocaleString()}%
               </CardTitle>
             </CardHeader>
@@ -184,16 +184,16 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
 
               <div className="bg-[#0A0F2E]/5 dark:bg-[#0A0F2E]/10 rounded-lg p-6 border-2 border-[#0A0F2E]/30">
                 <div className="flex items-center gap-2 mb-3">
-                  <Shield className="h-5 w-5 text-[#0A0F2E] dark:text-[#C9A84C]" />
-                  <h3 className="font-semibold text-lg text-[#0A0F2E] dark:text-[#C9A84C]">Risk Management</h3>
+                  <Shield className="h-5 w-5 text-[#C9A84C]" />
+                  <h3 className="font-semibold text-lg text-[#C9A84C]">Risk Management</h3>
                 </div>
-                <div className="text-3xl font-bold text-[#0A0F2E] dark:text-[#C9A84C] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="text-defensive-value">
+                <div className="text-3xl font-bold text-[#C9A84C] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="text-defensive-value">
                   ${defensiveValue.toFixed(0)}M
                 </div>
                 <p className="text-sm text-[#6B7280] mb-4">
                   Risk mitigation, compliance, crisis response
                 </p>
-                <div className="space-y-1 text-xs text-[#0A0F2E] dark:text-[#C9A84C]">
+                <div className="space-y-1 text-xs text-[#C9A84C]">
                   {scenarioData.filter(s => s.category === 'defensive').map(s => (
                     <div key={s.id} className="flex justify-between">
                       <span>{s.title}</span>
@@ -373,18 +373,18 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
               <CardContent>
                 <div className="grid md:grid-cols-2 gap-6">
                   {/* Traditional Approach */}
-                  <div className="bg-red-50 dark:bg-red-950/20 rounded-lg p-6 border-2 border-red-200 dark:border-red-800">
-                    <h3 className="text-xl font-bold text-red-900 dark:text-red-100 mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                      ❌ Traditional Approach
+                  <div className="bg-[#0A0F2E]/5 dark:bg-[#0A0F2E]/10 rounded-lg p-6 border-2 border-[#0A0F2E]/30">
+                    <h3 className="text-xl font-bold text-[#0A0F2E] dark:text-[#C9A84C] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                      Traditional Approach
                     </h3>
                     <div className="space-y-4">
                       <div>
-                        <div className="text-sm text-red-700 dark:text-red-300 mb-1">Average Response Time</div>
-                        <div className="text-2xl font-bold text-red-900 dark:text-red-100" style={{ fontFamily: "'Cormorant Garamond', serif" }}>72 hours</div>
+                        <div className="text-sm text-[#0A0F2E] dark:text-[#C9A84C] mb-1">Average Response Time</div>
+                        <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>72 hours</div>
                       </div>
                       <div>
-                        <div className="text-sm text-red-700 dark:text-red-300 mb-1">Decision Process</div>
-                        <ul className="text-sm text-red-800 dark:text-red-200 space-y-1">
+                        <div className="text-sm text-[#0A0F2E] dark:text-[#C9A84C] mb-1">Decision Process</div>
+                        <ul className="text-sm text-[#6B7280] space-y-1">
                           <li>• Emergency meetings to assemble team</li>
                           <li>• Debate response strategies</li>
                           <li>• Delayed decision-making</li>
@@ -393,11 +393,11 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                         </ul>
                       </div>
                       <div>
-                        <div className="text-sm text-red-700 dark:text-red-300 mb-1">Annual Cost Impact</div>
-                        <div className="text-xl font-bold text-red-900 dark:text-red-100" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                        <div className="text-sm text-[#0A0F2E] dark:text-[#C9A84C] mb-1">Annual Cost Impact</div>
+                        <div className="text-xl font-bold text-[#0A0F2E] dark:text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                           ${totalAnnualValue.toFixed(0)}M+ in losses
                         </div>
-                        <div className="text-xs text-red-700 dark:text-red-300 mt-1">
+                        <div className="text-xs text-[#6B7280] mt-1">
                           Revenue loss, inefficiencies, missed opportunities
                         </div>
                       </div>

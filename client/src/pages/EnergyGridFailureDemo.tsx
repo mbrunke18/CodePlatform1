@@ -163,7 +163,7 @@ export default function EnergyGridFailureDemo() {
                   <span className="text-sm text-white/60">Preparedness Score</span>
                   <span className="text-2xl font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{energyDemoData.playbook.preparednessScore}%</span>
                 </div>
-                <Progress value={energyDemoData.playbook.preparednessScore} className="mt-2 h-2 bg-white/10" />
+                <Progress value={energyDemoData.playbook.preparednessScore} className="mt-2 h-2 bg-white/10 [&>div]:bg-[#C9A84C]" />
               </div>
             </Card>
 

@@ -292,23 +292,23 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
       },
       {
         id: 'int-006',
-        name: 'QuickBooks Financial',
-        category: 'crm',
+        name: 'ServiceNow',
+        category: 'itsm',
         status: 'active',
-        description: 'Financial data and accounting integration',
-        provider: 'Intuit',
-        version: '3.0',
+        description: 'Enterprise IT service management, incident routing, and workflow automation',
+        provider: 'ServiceNow',
+        version: 'Tokyo',
         lastSync: new Date(Date.now() - 480000).toISOString(),
-        health: 94,
-        endpoints: 28,
-        dailyRequests: 2789,
-        monthlyRequests: 78901,
-        errorRate: 0.02,
-        responseTime: 234,
-        features: ['Invoices', 'Payments', 'Expenses', 'Reports', 'Tax Tracking'],
+        health: 97,
+        endpoints: 54,
+        dailyRequests: 7823,
+        monthlyRequests: 234690,
+        errorRate: 0.008,
+        responseTime: 198,
+        features: ['Incident Management', 'Task Routing', 'Bi-directional Sync', 'Resolution Tracking', 'CMDB'],
         configuration: {
-          syncFrequency: 'hourly',
-          dataMapping: ['transactions', 'customers', 'vendors', 'items']
+          syncFrequency: 'real-time',
+          dataMapping: ['incidents', 'tasks', 'approvals', 'users', 'assets']
         }
       },
       {
@@ -711,7 +711,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
       {
         id: 'flow-002',
         name: 'Financial Reporting Sync',
-        source: 'QuickBooks Financial',
+        source: 'ServiceNow',
         destination: 'Strategic Planning',
         type: 'scheduled',
         frequency: 'daily at 9:00 AM',
@@ -1184,7 +1184,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                       </div>
                       <div>
                         <div className="text-sm text-[#6B7280]">Error Count</div>
-                        <div className={`font-medium ${flow.errorCount === 0 ? 'text-[#2B8A6E]' : 'text-red-600'}`}>
+                        <div className={`font-medium ${flow.errorCount === 0 ? 'text-[#2B8A6E]' : 'text-red-700'}`}>
                           {flow.errorCount}
                         </div>
                       </div>

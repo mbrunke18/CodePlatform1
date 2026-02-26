@@ -103,15 +103,15 @@ interface IndustryDemo {
 }
 
 const INDUSTRY_DEMOS: IndustryDemo[] = [
-  { id: 'lvmh', title: 'Strategic Market Entry', industry: 'Luxury', icon: Crown, iconColor: 'text-[#C9A84C]', bgColor: 'bg-[#0A0F2E]/30', organization: 'LVMH', impact: '€1.68B value', route: '/lvmh-demo', type: 'offensive' },
-  { id: 'shein', title: 'Viral Trend Response', industry: 'Fashion', icon: TrendingUp, iconColor: 'text-[#C9A84C]', bgColor: 'bg-[#0A0F2E]/30', organization: 'SHEIN', impact: '$108M revenue', route: '/shein-demo', type: 'offensive' },
-  { id: 'spacex', title: 'Launch Acceleration', industry: 'Aerospace', icon: Rocket, iconColor: 'text-[#2B8A6E]', bgColor: 'bg-[#0A0F2E]/30', organization: 'SpaceX', impact: '$47M value', route: '/spacex-demo', type: 'offensive' },
-  { id: 'financial', title: 'Ransomware Response', industry: 'Finance', icon: Shield, iconColor: 'text-[#0A0F2E]', bgColor: 'bg-white', organization: 'LoanDepot', impact: '$22M saved', route: '/financial-demo', type: 'defensive' },
-  { id: 'pharma', title: 'Class I Recall', industry: 'Pharma', icon: Pill, iconColor: 'text-red-400', bgColor: 'bg-[#0A0F2E]/30', organization: 'Glenmark', impact: 'Lives saved', route: '/pharma-demo', type: 'defensive' },
-  { id: 'manufacturing', title: 'Supplier Crisis', industry: 'Automotive', icon: Factory, iconColor: 'text-[#C9A84C]', bgColor: 'bg-[#0A0F2E]/30', organization: 'Toyota', impact: '$450M saved', route: '/manufacturing-demo', type: 'defensive' },
-  { id: 'retail', title: 'Food Contamination', industry: 'Retail', icon: ShoppingCart, iconColor: 'text-[#2B8A6E]', bgColor: 'bg-[#2B8A6E]/30', organization: 'Walmart', impact: '$245M + lives', route: '/retail-demo', type: 'defensive' },
-  { id: 'energy', title: 'Grid Failure', industry: 'Energy', icon: Zap, iconColor: 'text-[#C9A84C]', bgColor: 'bg-[#0A0F2E]/30', organization: 'Pacific Grid', impact: '$2.5B saved', route: '/energy-demo', type: 'defensive' },
-  { id: 'luxury-crisis', title: 'Revenue Collapse', industry: 'Luxury', icon: Building2, iconColor: 'text-[#C9A84C]', bgColor: 'bg-[#0A0F2E]/30', organization: 'LVMH', impact: '€280M preserved', route: '/luxury-demo', type: 'defensive' },
+  { id: 'lvmh', title: 'Strategic Market Entry', industry: 'Luxury', icon: Crown, iconColor: 'text-[#C9A84C]', bgColor: 'bg-white/5', organization: 'LVMH', impact: '€1.68B value', route: '/lvmh-demo', type: 'offensive' },
+  { id: 'shein', title: 'Viral Trend Response', industry: 'Fashion', icon: TrendingUp, iconColor: 'text-[#C9A84C]', bgColor: 'bg-white/5', organization: 'SHEIN', impact: '$108M revenue', route: '/shein-demo', type: 'offensive' },
+  { id: 'spacex', title: 'Launch Acceleration', industry: 'Aerospace', icon: Rocket, iconColor: 'text-[#2B8A6E]', bgColor: 'bg-white/5', organization: 'SpaceX', impact: '$47M value', route: '/spacex-demo', type: 'offensive' },
+  { id: 'financial', title: 'Ransomware Response', industry: 'Finance', icon: Shield, iconColor: 'text-[#0A0F2E]', bgColor: 'bg-white/5', organization: 'LoanDepot', impact: '$22M saved', route: '/financial-demo', type: 'defensive' },
+  { id: 'pharma', title: 'Class I Recall', industry: 'Pharma', icon: Pill, iconColor: 'text-red-600', bgColor: 'bg-white/5', organization: 'Glenmark', impact: 'Lives saved', route: '/pharma-demo', type: 'defensive' },
+  { id: 'manufacturing', title: 'Supplier Crisis', industry: 'Automotive', icon: Factory, iconColor: 'text-[#C9A84C]', bgColor: 'bg-white/5', organization: 'Toyota', impact: '$450M saved', route: '/manufacturing-demo', type: 'defensive' },
+  { id: 'retail', title: 'Food Contamination', industry: 'Retail', icon: ShoppingCart, iconColor: 'text-[#2B8A6E]', bgColor: 'bg-white/5', organization: 'Walmart', impact: '$245M + lives', route: '/retail-demo', type: 'defensive' },
+  { id: 'energy', title: 'Grid Failure', industry: 'Energy', icon: Zap, iconColor: 'text-[#C9A84C]', bgColor: 'bg-white/5', organization: 'Pacific Grid', impact: '$2.5B saved', route: '/energy-demo', type: 'defensive' },
+  { id: 'luxury-crisis', title: 'Revenue Collapse', industry: 'Luxury', icon: Building2, iconColor: 'text-[#C9A84C]', bgColor: 'bg-white/5', organization: 'LVMH', impact: '€280M preserved', route: '/luxury-demo', type: 'defensive' },
 ];
 
 const SCENARIOS: Scenario[] = [
@@ -120,8 +120,8 @@ const SCENARIOS: Scenario[] = [
     name: 'Ransomware Attack',
     industry: 'Cybersecurity',
     icon: Shield,
-    color: 'from-red-500 to-[#141B45]',
-    borderColor: 'border-red-500/50',
+    color: 'from-[#0A0F2E] to-[#141B45]',
+    borderColor: 'border-[#E8E4DC]',
     trigger: 'Unusual network activity detected at 2:47 AM',
     playbook: 'Cyber Incident Response',
     dealValue: 4880000,
@@ -146,8 +146,8 @@ const SCENARIOS: Scenario[] = [
     name: 'Competitor Launch',
     industry: 'Competitive Response',
     icon: Target,
-    color: 'from-[#0A0F2E] to-[#141B45]',
-    borderColor: 'border-[#C9A84C]/50',
+    color: 'bg-[#2B8A6E]',
+    borderColor: 'border-[#2B8A6E]/50',
     trigger: 'Major competitor announces product in your category',
     playbook: 'Competitive Response',
     dealValue: 47000000,
@@ -172,7 +172,7 @@ const SCENARIOS: Scenario[] = [
     name: 'SEC Investigation',
     industry: 'Compliance',
     icon: Scale,
-    color: 'from-[#C9A84C] to-[#DFC178]',
+    color: 'bg-[#C9A84C]',
     borderColor: 'border-[#C9A84C]/50',
     trigger: 'SEC enforcement notice received',
     playbook: 'Regulatory Response',
@@ -198,7 +198,7 @@ const SCENARIOS: Scenario[] = [
     name: 'Deal at Risk',
     industry: 'Sales & Revenue',
     icon: DollarSign,
-    color: 'from-[#2B8A6E] to-[#2B8A6E]',
+    color: 'bg-[#2B8A6E]',
     borderColor: 'border-[#2B8A6E]/50',
     trigger: 'Customer requests accelerated timeline on $5M deal',
     playbook: 'Deal Risk Response',
@@ -241,12 +241,12 @@ const PHASE_COLORS: Record<string, { bg: string; border: string; text: string }>
   teal: { bg: 'bg-[#2B8A6E]/20', border: 'border-[#2B8A6E]', text: 'text-[#2B8A6E]' },
   navy: { bg: 'bg-[#0A0F2E]/20', border: 'border-[#0A0F2E]', text: 'text-[#0A0F2E]' },
   gold: { bg: 'bg-[#C9A84C]/20', border: 'border-[#C9A84C]', text: 'text-[#C9A84C]' },
-  red: { bg: 'bg-red-500/20', border: 'border-red-500', text: 'text-red-400' },
+  red: { bg: 'bg-red-500/20', border: 'border-red-500', text: 'text-red-600' },
 };
 
 const URGENCY_COLORS: Record<string, string> = {
-  critical: 'bg-red-500/20 border-red-500 text-red-300',
-  high: 'bg-[#C9A84C]/20 border-[#C9A84C] text-[#DFC178]',
+  critical: 'bg-red-500/20 border-red-500 text-red-600',
+  high: 'bg-[#C9A84C]/20 border-[#C9A84C] text-[#C9A84C]',
   medium: 'bg-[#C9A84C]/10 border-[#C9A84C]/50 text-[#C9A84C]',
 };
 
@@ -826,7 +826,7 @@ export default function TryDemo() {
                         </div>
 
                         <Button 
-                          className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E]"
+                          className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white"
                           onClick={completeIdentify}
                         >
                           Playbook Ready - Continue to Detection

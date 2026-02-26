@@ -200,9 +200,9 @@ export default function UATAdmin() {
 
   return (
     <PageLayout>
-      <div className="page-background min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div className="page-background min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
         {/* Header */}
-        <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-6">
+        <div className="bg-white dark:bg-white/5 border-b border-[#E8E4DC] dark:border-white/10 p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 bg-[#0A0F2E] rounded-lg flex items-center justify-center">
@@ -228,19 +228,19 @@ export default function UATAdmin() {
         <div className="p-6">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full" data-testid="uat-tabs">
             <TabsList className="grid w-full grid-cols-4 mb-6 bg-white dark:bg-white/5 border border-[#E8E4DC] dark:border-white/10">
-              <TabsTrigger value="provision" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white flex items-center gap-2" data-testid="tab-provision">
+              <TabsTrigger value="provision" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] flex items-center gap-2" data-testid="tab-provision">
                 <Plus className="h-4 w-4" />
                 Provision
               </TabsTrigger>
-              <TabsTrigger value="monitor" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white flex items-center gap-2" data-testid="tab-monitor">
+              <TabsTrigger value="monitor" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] flex items-center gap-2" data-testid="tab-monitor">
                 <Database className="h-4 w-4" />
                 Monitor
               </TabsTrigger>
-              <TabsTrigger value="validate" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white flex items-center gap-2" data-testid="tab-validate">
+              <TabsTrigger value="validate" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] flex items-center gap-2" data-testid="tab-validate">
                 <Check className="h-4 w-4" />
                 Validate
               </TabsTrigger>
-              <TabsTrigger value="scenarios" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white flex items-center gap-2" data-testid="tab-scenarios">
+              <TabsTrigger value="scenarios" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] flex items-center gap-2" data-testid="tab-scenarios">
                 <PlayCircle className="h-4 w-4" />
                 UAT Scenarios
               </TabsTrigger>

@@ -278,13 +278,13 @@ export default function PlaybookReadinessDashboard({
         <CardContent>
           <div className="flex gap-1 h-4 rounded-full overflow-hidden">
             <div 
-              className="bg-[#0A0F2E] flex items-center justify-center text-xs text-gray-900 font-medium"
+              className="bg-[#0A0F2E] flex items-center justify-center text-xs text-white font-medium"
               style={{ width: `${score?.prepareWeight ?? 40}%` }}
             >
               {score?.prepareWeight ?? 40}%
             </div>
             <div 
-              className="bg-[#0A0F2E] flex items-center justify-center text-xs text-gray-900 font-medium"
+              className="bg-[#0A0F2E] flex items-center justify-center text-xs text-white font-medium"
               style={{ width: `${score?.monitorWeight ?? 20}%` }}
             >
               {score?.monitorWeight ?? 20}%

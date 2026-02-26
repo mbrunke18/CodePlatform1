@@ -187,15 +187,15 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
                   Before Execution OS
                 </h3>
                 <div className="space-y-3">
-                  <div className="flex justify-between items-center p-3 bg-red-50 rounded-none border border-red-100">
+                  <div className="flex justify-between items-center p-3 bg-red-50/50 rounded-none border border-red-100">
                     <span className="text-sm font-medium text-[#0A0F2E]">Avg Decision Confidence</span>
                     <span className="text-lg font-bold text-red-700" style={CG}>45%</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-red-50 rounded-none border border-red-100">
+                  <div className="flex justify-between items-center p-3 bg-red-50/50 rounded-none border border-red-100">
                     <span className="text-sm font-medium text-[#0A0F2E]">Decisions Per Quarter</span>
                     <span className="text-lg font-bold text-red-700" style={CG}>11</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-red-50 rounded-none border border-red-100">
+                  <div className="flex justify-between items-center p-3 bg-red-50/50 rounded-none border border-red-100">
                     <span className="text-sm font-medium text-[#0A0F2E]">Success Rate</span>
                     <span className="text-lg font-bold text-red-700" style={CG}>47%</span>
                   </div>

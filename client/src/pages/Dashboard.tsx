@@ -281,7 +281,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                     <div className="p-4 flex items-start gap-4 hover:bg-[#F8F7F4] transition-colors">
-                      <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#141B45", marginTop: 6 }} />
+                      <div style={{ width: 8, height: 8, borderRadius: "50%", background: NAVY, marginTop: 6 }} />
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-sm font-semibold text-[#0A0F2E]">Playbook activated</span>

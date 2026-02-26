@@ -227,7 +227,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
       case 'low': return 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30';
       case 'medium': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
       case 'high': return 'bg-red-500/20 text-red-400 border-red-500/30';
-      default: return 'bg-gray-500/20 text-gray-800 border-gray-500/30';
+      default: return 'bg-[#6B7280]/20 text-[#0A0F2E] border-[#E8E4DC]';
     }
   };
 

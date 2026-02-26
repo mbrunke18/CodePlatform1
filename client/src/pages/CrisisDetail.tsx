@@ -175,7 +175,7 @@ export default function CrisisDetail() {
 
   const getPriorityStyle = (priority: string) => {
     switch (priority.toLowerCase()) {
-      case 'high': return 'text-red-600 bg-red-50 font-bold';
+      case 'high': return 'text-red-700 bg-red-50 font-bold';
       case 'medium': return `text-[#C9A84C] bg-[#C9A84C]/5 font-bold`;
       case 'low': return `text-[#2B8A6E] bg-[#2B8A6E]/5 font-bold`;
       default: return 'text-[#6B7280] bg-gray-50';
@@ -184,7 +184,7 @@ export default function CrisisDetail() {
 
   const getPriorityColor = (priority: string) => {
     switch (priority.toLowerCase()) {
-      case 'high': return 'bg-red-100 text-red-700';
+      case 'high': return 'bg-red-50 text-red-700';
       case 'medium': return `bg-[#C9A84C]/10 text-[#C9A84C]`;
       case 'low': return `bg-[#2B8A6E]/10 text-[#2B8A6E]`;
       default: return 'bg-gray-100 text-gray-700';
@@ -436,7 +436,7 @@ export default function CrisisDetail() {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm font-medium text-[#0A0F2E]">Est. Financial Impact</span>
-                      <span className="text-sm font-semibold text-red-600">$2.4M+</span>
+                      <span className="text-sm font-semibold text-red-700">$2.4M+</span>
                     </div>
                   </CardContent>
                 </Card>

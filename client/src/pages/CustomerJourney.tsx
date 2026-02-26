@@ -49,10 +49,10 @@ const phaseDetails = [
     duration: 'Days 1-30',
     objective: 'Configure your organization and connect your ecosystem',
     activities: [
-      { name: 'Organization Setup', path: '/organization-setup', description: 'Configure company profile, departments, and roles' },
-      { name: 'Invite Team Members', path: '/stakeholder-management', description: 'Onboard key stakeholders and assign roles' },
-      { name: 'Connect Integrations', path: '/integrations', description: 'Link Jira, Slack, ServiceNow, and other tools' },
-      { name: 'Complete Onboarding', path: '/onboarding', description: 'Guided wizard for initial configuration' }
+      { name: 'Organization Setup', path: '/setup/organization', description: 'Configure company profile, departments, and roles' },
+      { name: 'Invite Team Members', path: '/setup/stakeholders', description: 'Onboard key stakeholders and assign roles' },
+      { name: 'Connect Integrations', path: '/setup/integrations', description: 'Link Jira, Slack, ServiceNow, and other tools' },
+      { name: 'Complete Onboarding', path: '/setup/wizard', description: 'Guided wizard for initial configuration' }
     ],
     deliverables: ['Organization profile complete', 'SSO/authentication configured', 'Core team invited', 'Primary integrations connected'],
     integrations: ['Jira', 'Slack', 'Microsoft Teams', 'ServiceNow', 'Okta/SSO']
@@ -63,11 +63,11 @@ const phaseDetails = [
     duration: 'Days 30-45',
     objective: 'Build your strategic playbook portfolio',
     activities: [
-      { name: 'Browse Playbook Library', path: '/playbooks', description: 'Explore 170 playbooks across 9 strategic domains' },
-      { name: 'Select Priority Playbooks', path: '/workspaces/identify', description: 'Choose playbooks aligned to your strategic priorities' },
-      { name: 'Map Stakeholders', path: '/stakeholder-management', description: 'Assign accountability for each playbook' },
-      { name: 'Customize Playbooks', path: '/playbook-customization', description: 'Tailor tasks, timelines, and resources' },
-      { name: 'Establish Readiness Baseline', path: '/preparedness-report', description: 'Measure your strategic readiness score' }
+      { name: 'Browse Playbook Library', path: '/identify/playbooks', description: 'Explore 170 playbooks across 9 strategic domains' },
+      { name: 'Select Priority Playbooks', path: '/identify/workspaces', description: 'Choose playbooks aligned to your strategic priorities' },
+      { name: 'Map Stakeholders', path: '/setup/stakeholders', description: 'Assign accountability for each playbook' },
+      { name: 'Customize Playbooks', path: '/identify/customize', description: 'Tailor tasks, timelines, and resources' },
+      { name: 'Establish Readiness Baseline', path: '/identify/readiness', description: 'Measure your strategic readiness score' }
     ],
     deliverables: ['5-10 priority playbooks configured', 'Stakeholder matrix complete', 'Task assignments finalized', 'Readiness baseline established'],
     integrations: ['Document repositories', 'HRIS systems', 'Knowledge bases']
@@ -78,11 +78,11 @@ const phaseDetails = [
     duration: 'Days 45-60',
     objective: 'Activate AI-powered monitoring and alerting',
     activities: [
-      { name: 'Signal Ops Workspace', path: '/workspaces/detect', description: 'Central hub for signal monitoring' },
-      { name: 'Configure Triggers', path: '/triggers-management', description: 'Set up trigger conditions and thresholds' },
-      { name: 'Tune AI Detection', path: '/ai-radar', description: 'Calibrate AI signal recognition' },
-      { name: 'Set Alert Routing', path: '/signal-intelligence', description: 'Define notification channels and escalation paths' },
-      { name: 'Connect Signal Sources', path: '/integrations', description: 'Link news feeds, market data, and internal systems' }
+      { name: 'Signal Ops Workspace', path: '/detect/workspaces', description: 'Central hub for signal monitoring' },
+      { name: 'Configure Triggers', path: '/detect/triggers', description: 'Set up trigger conditions and thresholds' },
+      { name: 'Tune AI Detection', path: '/detect/radar', description: 'Calibrate AI signal recognition' },
+      { name: 'Set Alert Routing', path: '/detect/intelligence', description: 'Define notification channels and escalation paths' },
+      { name: 'Connect Signal Sources', path: '/setup/integrations', description: 'Link news feeds, market data, and internal systems' }
     ],
     deliverables: ['Trigger catalogue published', 'AI thresholds calibrated', 'Alert routing tested', 'Signal coverage verified'],
     integrations: ['News APIs', 'Market data feeds', 'SIEM platforms', 'Social listening tools']
@@ -93,10 +93,10 @@ const phaseDetails = [
     duration: 'Days 60-75',
     objective: 'Prove 12-minute coordinated response capability',
     activities: [
-      { name: 'Compass Command', path: '/workspaces/execute', description: 'Execution coordination center' },
-      { name: 'Run Practice Drills', path: '/practice-drills', description: 'Simulate trigger scenarios with your team' },
-      { name: 'Test Command Center', path: '/command-center', description: 'Verify real-time coordination capabilities' },
-      { name: 'Execute Live Response', path: '/command-center', description: 'Respond to first real trigger' }
+      { name: 'Compass Command', path: '/execute/workspaces', description: 'Execution coordination center' },
+      { name: 'Run Practice Drills', path: '/execute/drills', description: 'Simulate trigger scenarios with your team' },
+      { name: 'Test Command Center', path: '/execute/command', description: 'Verify real-time coordination capabilities' },
+      { name: 'Execute Live Response', path: '/execute/command', description: 'Respond to first real trigger' }
     ],
     deliverables: ['3+ practice drills completed', 'Command center staffed', '12-minute SLA demonstrated', 'First live response executed'],
     integrations: ['Task management (Jira/Asana)', 'Communications (Slack/Teams)', 'Document automation']
@@ -107,11 +107,11 @@ const phaseDetails = [
     duration: 'Days 75-90',
     objective: 'Capture learning and refine for continuous improvement',
     activities: [
-      { name: 'Retrospect Lab', path: '/workspaces/advance', description: 'Institutional learning hub' },
-      { name: 'Conduct Retrospective', path: '/lessons-management', description: 'Analyze execution and capture insights' },
-      { name: 'Refine Playbooks', path: '/playbook-customization', description: 'Update playbooks based on lessons learned' },
-      { name: 'Measure Decision Velocity', path: '/executive-dashboard', description: 'Track improvement metrics' },
-      { name: 'Executive Readout', path: '/board-export', description: 'Generate board-ready summary' }
+      { name: 'Retrospect Lab', path: '/advance/workspaces', description: 'Institutional learning hub' },
+      { name: 'Conduct Retrospective', path: '/advance/lessons', description: 'Analyze execution and capture insights' },
+      { name: 'Refine Playbooks', path: '/identify/customize', description: 'Update playbooks based on lessons learned' },
+      { name: 'Measure Decision Velocity', path: '/advance/velocity', description: 'Track improvement metrics' },
+      { name: 'Executive Readout', path: '/advance/export', description: 'Generate board-ready summary' }
     ],
     deliverables: ['First retrospective complete', 'Playbook refinements documented', 'Decision velocity baseline', 'Executive report delivered'],
     integrations: ['BI/Analytics platforms', 'Knowledge management systems']
@@ -122,10 +122,10 @@ const phaseDetails = [
     duration: 'Ongoing',
     objective: 'Scale adoption and maximize strategic impact',
     activities: [
-      { name: 'Execution OS One™ Dashboard', path: '/mission-control', description: 'Executive overview of strategic readiness' },
-      { name: 'Expand Playbook Coverage', path: '/playbooks', description: 'Add playbooks for new strategic domains' },
-      { name: 'Track Organizational Maturity', path: '/operating-model', description: 'Monitor maturity progression' },
-      { name: 'Quarterly Strategy Reviews', path: '/executive-dashboard', description: 'Regular strategic health checks' }
+      { name: 'Execution OS One™ Dashboard', path: '/dashboard', description: 'Executive overview of strategic readiness' },
+      { name: 'Expand Playbook Coverage', path: '/identify/playbooks', description: 'Add playbooks for new strategic domains' },
+      { name: 'Track Organizational Maturity', path: '/advance/maturity', description: 'Monitor maturity progression' },
+      { name: 'Quarterly Strategy Reviews', path: '/advance/reviews', description: 'Regular strategic health checks' }
     ],
     deliverables: ['Cross-team adoption', 'Quarterly review cadence', 'Maturity advancement', 'ROI realization tracked'],
     integrations: ['ERP systems', 'CRM platforms', 'Forecasting tools']
@@ -144,7 +144,7 @@ export default function CustomerJourney() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           
           <nav className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest mb-8">
-            <Link href="/mission-control">
+            <Link href="/dashboard">
               <span className="text-[#6B7280] hover:text-[#2B8A6E] cursor-pointer">Execution OS One™</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-[#6B7280]" />

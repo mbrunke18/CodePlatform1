@@ -374,7 +374,8 @@ export default function PlaybookReadinessAudit() {
             return (
               <Card 
                 key={playbook.id} 
-                className={`border border-[#E8E4DC] bg-white border-l-4 border-l-[${config.textColor}] hover:shadow-md transition-all`}
+                className={`border border-[#E8E4DC] bg-white border-l-4 hover:shadow-md transition-all`}
+                style={{ borderLeftColor: config.textColor === 'text-[#2B8A6E]' ? TEAL : config.textColor === 'text-[#C9A84C]' ? GOLD : NAVY }}
                 data-testid={`playbook-card-${playbook.playbookNumber}`}
               >
                 <CardContent className="py-4">

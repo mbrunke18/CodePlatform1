@@ -371,10 +371,10 @@ export default function IntegrationsPage() {
                       </Badge>
                     </div>
 
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
                       {integration.name}
                     </h3>
-                    <p className="text-sm text-gray-800 dark:text-gray-200 mb-4">
+                    <p className="text-sm text-gray-800 mb-4">
                       {integration.description}
                     </p>
 
@@ -414,10 +414,10 @@ export default function IntegrationsPage() {
                       </Badge>
                     </div>
 
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
                       {integration.name}
                     </h3>
-                    <p className="text-sm text-gray-800 dark:text-gray-200 mb-4">
+                    <p className="text-sm text-gray-800 mb-4">
                       {integration.description}
                     </p>
 
@@ -465,12 +465,12 @@ export default function IntegrationsPage() {
                 />
               </div>
 
-              <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 border border-[#0A0F2E] dark:border-[#0A0F2E] rounded-lg p-4">
+              <div className="bg-[#0A0F2E] border border-white/10 rounded-none p-4">
                 <div className="flex items-start gap-3">
-                  <AlertCircle className="w-5 h-5 text-[#0A0F2E] dark:text-[#0A0F2E] mt-0.5" />
-                  <div className="text-sm text-[#0A0F2E] dark:text-[#DFC178]">
+                  <AlertCircle className="w-5 h-5 text-red-700 mt-0.5" />
+                  <div className="text-sm text-white">
                     <p className="font-medium mb-1">Secure Connection</p>
-                    <p>Your credentials are encrypted and stored securely. They are only used to authenticate with {selectedIntegration?.name}.</p>
+                    <p className="text-white/60">Your credentials are encrypted and stored securely. They are only used to authenticate with {selectedIntegration?.name}.</p>
                   </div>
                 </div>
               </div>

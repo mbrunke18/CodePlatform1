@@ -387,7 +387,7 @@ export default function NavigationBar() {
                   <div className="space-y-3 pt-6 border-t border-slate-200">
                     <Button
                       variant="outline"
-                      className="w-full border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E]"
+                      className="w-full border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white"
                     >
                       Sign In
                     </Button>

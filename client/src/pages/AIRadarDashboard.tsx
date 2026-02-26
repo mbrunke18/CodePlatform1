@@ -276,6 +276,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                     </div>
                     <Zap className="h-8 w-8 text-[#C9A84C]" />
                   </div>
+                  <Progress value={85} className="h-1 mt-2 [&>div]:bg-[#C9A84C]" />
                 </CardContent>
               </Card>
             </div>

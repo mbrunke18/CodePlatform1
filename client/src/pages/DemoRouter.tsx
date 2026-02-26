@@ -17,7 +17,7 @@ export default function DemoRouter() {
       duration: '6 minutes',
       description: 'See predictive AI, what-if scenarios, and 12-minute execution. Role-specific wins for CEO, COO, CISO, and more.',
       icon: Users,
-      color: 'from-[#0A0F2E] to-[#3BAF8A]',
+      color: 'from-[#0A0F2E] to-[#2B8A6E]',
       borderColor: 'border-[#0A0F2E]/30 hover:border-[#0A0F2E]',
       iconBg: 'bg-[#0A0F2E]/20',
       path: '/customer-demo',
@@ -31,7 +31,7 @@ export default function DemoRouter() {
       duration: '3 minutes',
       description: 'See a playbook activate and tasks deploy in real-time. Perfect for a quick overview.',
       icon: Zap,
-      color: 'from-[#2B8A6E] to-[#3BAF8A]',
+      color: 'from-[#2B8A6E] to-[#DFC178]',
       borderColor: 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]',
       iconBg: 'bg-[#2B8A6E]/20',
       path: '/demo/live-activation',
@@ -90,7 +90,7 @@ export default function DemoRouter() {
           </div>
 
           {/* Recommended Callout */}
-          <div className="mb-8 p-4 bg-gradient-to-r   border border-[#0A0F2E]/30 rounded-xl">
+          <div className="mb-8 p-4 bg-[#0A0F2E]/5 border border-[#0A0F2E]/30 rounded-xl">
             <div className="flex items-start gap-4">
               <div className="p-2 bg-[#0A0F2E]/20 rounded-lg">
                 <Sparkles className="h-5 w-5 text-[#0A0F2E]" />
@@ -103,7 +103,7 @@ export default function DemoRouter() {
                 <Button
                   onClick={() => setLocation('/customer-demo')}
                   size="sm"
-                  className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900"
+                  className="bg-[#0A0F2E] hover:bg-[#141B45] text-white"
                   data-testid="button-recommended-demo"
                 >
                   <Play className="h-4 w-4 mr-1.5" />
@@ -114,7 +114,7 @@ export default function DemoRouter() {
           </div>
 
           {/* AI-Native Differentiator */}
-          <div className="mb-8 p-4 bg-gradient-to-r   border border-[#C9A84C]/30 rounded-xl">
+          <div className="mb-8 p-4 bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-xl">
             <div className="flex items-start gap-4">
               <div className="p-2 bg-[#C9A84C]/20 rounded-lg">
                 <TrendingUp className="h-5 w-5 text-[#C9A84C]" />
@@ -141,8 +141,8 @@ export default function DemoRouter() {
                 >
                   <CardContent className="p-5 md:p-6 flex items-center gap-4 md:gap-6">
                     {/* Icon */}
-                    <div className={`p-3 md:p-4 rounded-2xl bg-gradient-to-br ${demo.color} flex-shrink-0`}>
-                      <IconComponent className="h-6 w-6 md:h-8 md:w-8 text-gray-900" />
+                    <div className={`p-3 md:p-4 rounded-2xl bg-[#0A0F2E] flex-shrink-0`}>
+                      <IconComponent className="h-6 w-6 md:h-8 md:w-8 text-white" />
                     </div>
                     
                     {/* Content */}

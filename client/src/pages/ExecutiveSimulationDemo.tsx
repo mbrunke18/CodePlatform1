@@ -349,10 +349,10 @@ export default function ExecutiveSimulationDemo() {
         <div className="min-h-screen flex items-center justify-center p-6">
           <Card className="max-w-3xl w-full border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5" data-testid="card-simulation-intro">
             <CardHeader className="text-center pb-2">
-              <div className="w-20 h-20 mx-auto mb-6 bg-[#0A0F2E] dark:bg-[#C9A84C] rounded-2xl flex items-center justify-center">
-                <Briefcase className="w-10 h-10 text-white dark:text-[#0A0F2E]" />
+              <div className="w-20 h-20 mx-auto mb-6 bg-[#0A0F2E] rounded-2xl flex items-center justify-center">
+                <Briefcase className="w-10 h-10 text-white" />
               </div>
-              <Badge className="mx-auto mb-4 bg-[#0A0F2E]/10 text-[#0A0F2E] dark:bg-[#C9A84C]/20 dark:text-[#C9A84C] border-none">
+              <Badge className="mx-auto mb-4 bg-[#0A0F2E]/10 text-[#0A0F2E] border-none">
                 Executive Simulation
               </Badge>
               <CardTitle className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
@@ -495,7 +495,7 @@ export default function ExecutiveSimulationDemo() {
                   <div>
                     <div className="flex justify-between text-sm mb-1">
                       <span className="text-white/80">Traditional Approach</span>
-                      <span className="text-[#0A0F2E]">48-72 hours</span>
+                      <span className="text-[#C9A84C]">48-72 hours</span>
                     </div>
                     <div className="h-3 bg-white/5 rounded-full overflow-hidden">
                       <div className="h-full bg-[#0A0F2E]/50 rounded-full" style={{ width: '100%' }}></div>
@@ -896,7 +896,7 @@ export default function ExecutiveSimulationDemo() {
                     <CardHeader>
                       <div className="flex items-center justify-between">
                         <div>
-                          <Badge className="mb-2 bg-[#0A0F2E] text-gray-900">RECOMMENDED</Badge>
+                          <Badge className="mb-2 bg-[#0A0F2E] text-white">RECOMMENDED</Badge>
                           <CardTitle className="text-xl">Competitor M&A Response Protocol</CardTitle>
                           <CardDescription>Comprehensive response framework for competitor acquisition events</CardDescription>
                         </div>

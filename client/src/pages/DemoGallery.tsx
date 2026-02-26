@@ -252,12 +252,12 @@ export default function DemoGallery() {
 
           {/* Filter Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">
-            <TabsList className="bg-slate-100">
-              <TabsTrigger value="all">All Demos</TabsTrigger>
-              <TabsTrigger value="interactive">Interactive</TabsTrigger>
-              <TabsTrigger value="presentation">Presentations</TabsTrigger>
-              <TabsTrigger value="executives">For Executives</TabsTrigger>
-              <TabsTrigger value="investors">For Investors</TabsTrigger>
+            <TabsList className="bg-[#0A0F2E]/5">
+              <TabsTrigger value="all" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">All Demos</TabsTrigger>
+              <TabsTrigger value="interactive" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">Interactive</TabsTrigger>
+              <TabsTrigger value="presentation" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">Presentations</TabsTrigger>
+              <TabsTrigger value="executives" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">For Executives</TabsTrigger>
+              <TabsTrigger value="investors" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">For Investors</TabsTrigger>
             </TabsList>
           </Tabs>
 

@@ -46,7 +46,7 @@ export default function MarketingLanding() {
       <StandardNav />
 
       {/* Hero Section */}
-      <section className="py-24 px-6 text-[#0A0F2E] relative overflow-hidden bg-[#0A0F2E]">
+      <section className="py-24 px-6 text-white relative overflow-hidden bg-[#0A0F2E]">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyMDEsMTY4LDc2LDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-30"></div>
         
         <div className="max-w-7xl mx-auto text-center relative z-10">
@@ -125,26 +125,26 @@ export default function MarketingLanding() {
               Execution OS for Fortune 1000 Companies
             </h2>
             <p className="text-xl md:text-2xl text-[#6B7280] mb-8 leading-relaxed font-light">
-              When a strategic trigger hits—a competitor launches, regulations shift, or a market opportunity appears—organizations typically <span className="text-[#0A0F2E] font-medium">waste 20-50 hours getting organized</span>. Execution OS compresses that to <span className="text-[#2B8A6E] font-bold underline decoration-[#C9A84C] underline-offset-8">12 minutes</span>.
+              When a strategic trigger hits—a competitor launches, regulations shift, or a market opportunity appears—organizations typically <span className="text-[#0A0F2E] font-medium">waste 20-50 hours getting organized</span>. Execution OS compresses that to <span className="text-[#C9A84C] font-bold underline decoration-[#C9A84C] underline-offset-8">12 minutes</span>.
             </p>
             <p className="text-lg text-[#6B7280] mb-8 leading-relaxed max-w-4xl mx-auto">
               Our AI monitors 216 data points across 16 intelligence categories, detecting threats and opportunities before competitors see them. When a signal breaches a threshold, Execution OS automatically activates the right playbook: notifying stakeholders, assigning tasks, and unlocking pre-approved budgets—all in under 12 minutes.
             </p>
             <p className="text-lg text-[#0A0F2E] mb-10 leading-relaxed max-w-4xl mx-auto font-medium">
-              We're the orchestration layer between strategy and execution. <span className="text-[#2B8A6E]">AI handles detection and coordination. Executives make the decisions.</span>
+              We're the orchestration layer between strategy and execution. <span className="text-[#C9A84C]">AI handles detection and coordination. Executives make the decisions.</span>
             </p>
             
             <div className="flex flex-wrap items-center justify-center gap-10 text-[10px] uppercase tracking-widest font-bold text-[#C9A84C]">
               <div className="flex items-center gap-3">
-                <CheckCircle2 className="h-5 w-5 text-[#2B8A6E]" />
+                <CheckCircle2 className="h-5 w-5 text-[#C9A84C]" />
                 <span>170 Strategic Playbooks</span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle2 className="h-5 w-5 text-[#2B8A6E]" />
+                <CheckCircle2 className="h-5 w-5 text-[#C9A84C]" />
                 <span>5 AI Intelligence Modules</span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle2 className="h-5 w-5 text-[#2B8A6E]" />
+                <CheckCircle2 className="h-5 w-5 text-[#C9A84C]" />
                 <span>24/7 Monitoring</span>
               </div>
             </div>
@@ -170,7 +170,7 @@ export default function MarketingLanding() {
                   </p>
                 </div>
                 <div className="bg-white p-6 border border-[#E8E4DC] hover:border-[#2B8A6E] transition-colors">
-                  <Badge className="mb-4 bg-[#2B8A6E] text-white border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Detect</Badge>
+                  <Badge className="mb-4 bg-[#0A0F2E] text-white border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Detect</Badge>
                   <div className="text-[#0A0F2E] font-serif text-xl mb-3"><SubBrandLabel name="Signal™" /></div>
                   <p className="text-[#6B7280] text-sm leading-relaxed">
                     AI-powered monitoring across 216 data points. Detect threats and opportunities before competitors.
@@ -184,7 +184,7 @@ export default function MarketingLanding() {
                   </p>
                 </div>
                 <div className="bg-white p-6 border border-[#E8E4DC] hover:border-[#2B8A6E] transition-colors">
-                  <Badge className="mb-4 bg-[#2B8A6E] text-white border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Advance</Badge>
+                  <Badge className="mb-4 bg-[#0A0F2E] text-white border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Advance</Badge>
                   <div className="text-[#0A0F2E] font-serif text-xl mb-3"><SubBrandLabel name="Retrospect™" /></div>
                   <p className="text-[#6B7280] text-sm leading-relaxed">
                     Capture lessons, refine playbooks. Every execution makes your organization smarter.
@@ -192,8 +192,8 @@ export default function MarketingLanding() {
                 </div>
               </div>
               <div className="text-center mt-10">
-                <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.3em]">
-                  Plus <span className="text-[#2B8A6E] font-bold">Execution OS One™</span> — Single-pane executive overview
+                <p className="text-[#6B7280] text-[10px] font-bold uppercase tracking-[0.3em]">
+                  Plus <span className="text-[#C9A84C] font-bold">Execution OS One™</span> — Single-pane executive overview
                 </p>
               </div>
             </CardContent>
@@ -256,7 +256,7 @@ export default function MarketingLanding() {
             </Card>
 
             {/* 2. AI Intelligence (5 Modules) */}
-            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#C9A84C] transition-all duration-300 group" data-testid="card-ai-intelligence">
+            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-ai-intelligence">
               <CardContent className="p-8">
                 <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] transition-colors">
                   <Brain className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
@@ -272,7 +272,7 @@ export default function MarketingLanding() {
             </Card>
 
             {/* 3. 24/7 Monitoring */}
-            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#C9A84C] transition-all duration-300 group" data-testid="card-monitoring">
+            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-monitoring">
               <CardContent className="p-8">
                 <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] transition-colors">
                   <Radio className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
@@ -288,7 +288,7 @@ export default function MarketingLanding() {
             </Card>
 
             {/* 4. Playbook Library */}
-            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#C9A84C] transition-all duration-300 group" data-testid="card-scenarios">
+            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-scenarios">
               <CardContent className="p-8">
                 <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] transition-colors">
                   <FileText className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
@@ -304,7 +304,7 @@ export default function MarketingLanding() {
             </Card>
 
             {/* 5. What-If Analyzer */}
-            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#C9A84C] transition-all duration-300 group" data-testid="card-what-if">
+            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-what-if">
               <CardContent className="p-8">
                 <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] transition-colors">
                   <Layers className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
@@ -320,7 +320,7 @@ export default function MarketingLanding() {
             </Card>
 
             {/* 6. Command Center */}
-            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#C9A84C] transition-all duration-300 group" data-testid="card-command-center">
+            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-command-center">
               <CardContent className="p-8">
                 <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] transition-colors">
                   <Shield className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />

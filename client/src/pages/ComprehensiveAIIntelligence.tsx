@@ -85,7 +85,7 @@ const getReportTypeBadgeColor = (reportType: string) => {
     case 'market_analysis': return 'bg-[#0A0F2E]/20 text-[#0A0F2E] border-[#0A0F2E]/30';
     case 'competitive_intelligence': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
     case 'risk_assessment': return 'bg-red-500/20 text-red-600 border-red-500/30';
-    case 'regulatory_update': return 'bg-orange-500/20 text-orange-600 border-orange-500/30';
+    case 'regulatory_update': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
     case 'technology_trends': return 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30';
     default: return 'bg-black/5 text-gray-700 border-black/10';
   }
@@ -332,7 +332,7 @@ export default function ComprehensiveAIIntelligence() {
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case 'critical': return 'bg-red-500/20 text-red-600 border-red-500/30';
-      case 'high': return 'bg-orange-500/20 text-orange-600 border-orange-500/30';
+      case 'high': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
       case 'medium': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
       case 'low': return 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30';
       default: return 'bg-black/5 text-gray-700 border-black/10';
@@ -521,6 +521,7 @@ export default function ComprehensiveAIIntelligence() {
                         <div className="text-sm text-[#0A0F2E]">Pulse Intelligence generated performance metrics</div>
                         <div className="text-xs text-[#6B7280]">Real-time • Confidence: 96.4%</div>
                       </div>
+                      <Progress value={96.4} className="w-12 h-1 [&>div]:bg-[#C9A84C]" />
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC] rounded-lg">
                       <div className="w-2 h-2 bg-[#0A0F2E] rounded-full" />
@@ -546,11 +547,11 @@ export default function ComprehensiveAIIntelligence() {
           <TabsContent value="modules" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
               {aiModules.map((module) => (
-                <Card key={module.id} className="bg-white border-gray-200 hover:bg-[#141B45]/50 transition-all duration-300">
+                <Card key={module.id} className="bg-white border-[#E8E4DC] hover:bg-[#0A0F2E]/5 transition-all duration-300">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-gray-900 flex items-center gap-3">
-                        <div className="p-2 bg-gradient-to-r from-[#0A0F2E] to-[#141B45] rounded-lg">
+                      <CardTitle className="text-[#0A0F2E] flex items-center gap-3">
+                        <div className="p-2 bg-[#0A0F2E] rounded-lg">
                           {module.icon}
                         </div>
                         {module.name}
@@ -559,36 +560,36 @@ export default function ComprehensiveAIIntelligence() {
                         {module.status.toUpperCase()}
                       </Badge>
                     </div>
-                    <p className="text-gray-800 dark:text-slate-200 text-sm">{module.description}</p>
+                    <p className="text-[#6B7280] text-sm">{module.description}</p>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     
                     {/* Performance Metrics */}
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
-                        <div className="text-gray-800 dark:text-slate-200">Performance</div>
-                        <div className="text-gray-900 font-medium">{module.performance}%</div>
+                        <div className="text-[#6B7280]">Performance</div>
+                        <div className="text-[#0A0F2E] font-medium">{module.performance}%</div>
                       </div>
                       <div>
-                        <div className="text-gray-800 dark:text-slate-200">Accuracy</div>
-                        <div className="text-gray-900 font-medium">{module.metrics.accuracy}%</div>
+                        <div className="text-[#6B7280]">Accuracy</div>
+                        <div className="text-[#0A0F2E] font-medium">{module.metrics.accuracy}%</div>
                       </div>
                       <div>
-                        <div className="text-gray-800 dark:text-slate-200">Processing</div>
-                        <div className="text-gray-900 font-medium">{module.metrics.processingTime}</div>
+                        <div className="text-[#6B7280]">Processing</div>
+                        <div className="text-[#0A0F2E] font-medium">{module.metrics.processingTime}</div>
                       </div>
                       <div>
-                        <div className="text-gray-800 dark:text-slate-200">Confidence</div>
-                        <div className="text-gray-900 font-medium">{module.metrics.confidence}%</div>
+                        <div className="text-[#6B7280]">Confidence</div>
+                        <div className="text-[#0A0F2E] font-medium">{module.metrics.confidence}%</div>
                       </div>
                     </div>
 
                     {/* Capabilities */}
                     <div>
-                      <div className="text-sm font-semibold text-gray-900 mb-2">Capabilities</div>
+                      <div className="text-sm font-semibold text-[#0A0F2E] mb-2">Capabilities</div>
                       <div className="flex flex-wrap gap-2">
                         {module.capabilities.map((capability, index) => (
-                          <Badge key={index} variant="outline" className="bg-transparent border-slate-600 text-gray-800 text-xs">
+                          <Badge key={index} variant="outline" className="bg-transparent border-[#E8E4DC] text-[#6B7280] text-xs">
                             {capability}
                           </Badge>
                         ))}

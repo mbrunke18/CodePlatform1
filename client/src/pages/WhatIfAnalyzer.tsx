@@ -197,8 +197,8 @@ const domainPresets: Record<string, { label: string; color: string; icon: any; s
 };
 
 const domainStyleMap: Record<string, { border: string; bg: string; text: string; iconText: string; btnClass: string }> = {
-  all: { border: 'border-[#2B8A6E]/30 dark:border-[#2B8A6E]/50', bg: 'bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10', text: 'text-[#2B8A6E]', iconText: 'text-[#2B8A6E]', btnClass: 'bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white' },
-  offense: { border: 'border-[#2B8A6E]/30 dark:border-[#2B8A6E]/50', bg: 'bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10', text: 'text-[#2B8A6E]', iconText: 'text-[#2B8A6E]', btnClass: 'bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white' },
+  all: { border: 'border-[#2B8A6E]/30 dark:border-[#2B8A6E]/50', bg: 'bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10', text: 'text-[#2B8A6E]', iconText: 'text-[#2B8A6E]', btnClass: 'bg-[#0A0F2E] hover:bg-[#141B45] text-white' },
+  offense: { border: 'border-[#2B8A6E]/30 dark:border-[#2B8A6E]/50', bg: 'bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10', text: 'text-[#2B8A6E]', iconText: 'text-[#2B8A6E]', btnClass: 'bg-[#0A0F2E] hover:bg-[#141B45] text-white' },
   defense: { border: 'border-[#C9A84C]/30 dark:border-[#C9A84C]/50', bg: 'bg-[#C9A84C]/5 dark:bg-[#C9A84C]/10', text: 'text-[#C9A84C]', iconText: 'text-[#C9A84C]', btnClass: 'bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E]' },
   special_teams: { border: 'border-[#C9A84C]/30 dark:border-[#C9A84C]/50', bg: 'bg-[#C9A84C]/5 dark:bg-[#C9A84C]/10', text: 'text-[#C9A84C]', iconText: 'text-[#C9A84C]', btnClass: 'bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E]' },
 };
@@ -421,7 +421,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
             </Card>
           )}
 
-          <Card className="border-teal-200 dark:border-teal-800 bg-gradient-to-br from-[#2B8A6E] to-white dark:from-[#2B8A6E]/20 dark:to-[#0A0F2E]">
+          <Card className="border-[#2B8A6E]/30 dark:border-[#2B8A6E]/50 bg-gradient-to-br from-[#2B8A6E]/10 to-white dark:from-[#2B8A6E]/20 dark:to-[#0A0F2E]">
             <CardHeader className="pb-3 border-b border-[#E8E4DC] dark:border-white/10">
               <CardTitle className="text-base flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 <Shield className="h-5 w-5 text-[#2B8A6E]" />

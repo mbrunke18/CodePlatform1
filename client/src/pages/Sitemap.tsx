@@ -177,7 +177,7 @@ export default function Sitemap() {
                 <div className="text-white/60 text-[10px] uppercase tracking-widest font-bold">Live Interactive Demos</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-[#0A0F2E] mb-2">10</div>
+                <div className="text-4xl font-bold text-[#C9A84C] mb-2">10</div>
                 <div className="text-white/60 text-[10px] uppercase tracking-widest font-bold">Industry Demos</div>
               </div>
               <div>
@@ -185,7 +185,7 @@ export default function Sitemap() {
                 <div className="text-white/60 text-[10px] uppercase tracking-widest font-bold">Strategic Playbooks</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-[#0A0F2E] mb-2">70+</div>
+                <div className="text-4xl font-bold text-[#C9A84C] mb-2">70+</div>
                 <div className="text-white/60 text-[10px] uppercase tracking-widest font-bold">Total Pages</div>
               </div>
             </div>

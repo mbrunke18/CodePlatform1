@@ -212,7 +212,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
             <Button
               onClick={addMetric}
               disabled={!newMetric.name || !newMetric.targetValue}
-              className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900"
+              className="bg-[#0A0F2E] hover:bg-[#141B45] text-white"
               data-testid="button-add-metric"
             >
               <Plus className="h-4 w-4 mr-2" />

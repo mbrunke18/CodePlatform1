@@ -146,6 +146,7 @@ export default function Homepage() {
             <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
               <a
                 href="/api/login"
+                target="_top"
                 style={{ display: "inline-block", background: GOLD, color: NAVY, fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "16px 36px", textDecoration: "none", transition: "all 0.25s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = GOLD_LIGHT; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
@@ -536,6 +537,7 @@ export default function Homepage() {
             <div style={{ display: "flex", alignItems: "center", gap: 20, justifyContent: "center" }}>
               <a
                 href="/api/login"
+                target="_top"
                 style={{ display: "inline-block", background: GOLD, color: NAVY, fontSize: 13, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "18px 44px", textDecoration: "none", transition: "all 0.25s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = GOLD_LIGHT; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}

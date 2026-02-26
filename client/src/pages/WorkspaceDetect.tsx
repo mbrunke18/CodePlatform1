@@ -109,7 +109,7 @@ export default function WorkspaceDetect() {
               <div>
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Signal Ops</h1>
-                  <Badge className="bg-[#0A0F2E]/20 text-[#0A0F2E] dark:text-[#C9A84C] border-[#0A0F2E]/30" style={{ background: "#0A0F2E", color: "white" }}>
+                  <Badge className="bg-[#0A0F2E]/20 text-[#0A0F2E] border-[#0A0F2E]/30" style={{ background: "#0A0F2E", color: "white" }}>
                     <SubBrandLabel name="Signal™" />
                   </Badge>
                 </div>
@@ -126,7 +126,7 @@ export default function WorkspaceDetect() {
                 </Button>
               </Link>
               <Link href="/triggers-management">
-                <Button variant="outline" className="border-[#0A0F2E]/50 dark:border-[#C9A84C]/50 text-[#0A0F2E] dark:text-[#C9A84C] hover:bg-[#0A0F2E]/10 dark:hover:bg-[#C9A84C]/10">
+                <Button variant="outline" className="border-[#0A0F2E]/50 text-[#0A0F2E] hover:bg-[#0A0F2E]/10">
                   <Target className="h-4 w-4 mr-2" />
                   Configure Triggers
                 </Button>
@@ -144,25 +144,25 @@ export default function WorkspaceDetect() {
               <div className="flex items-center gap-4">
                 <div className="flex-1 flex items-center gap-2">
                   <Link href="/workspaces/identify">
-                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors">
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43, 138, 110, 0.2)" }}>
                       <ClipboardList className="h-4 w-4 text-[#2B8A6E]" />
                       <span className="text-sm text-[#2B8A6E]">IDENTIFY</span>
                     </div>
                   </Link>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#0A0F2E] border-2 border-[#0A0F2E] shadow-sm shadow-[#0A0F2E]/20 dark:border-[#C9A84C] dark:bg-[#C9A84C]/10">
-                    <Radar className="h-4 w-4 text-white dark:text-[#C9A84C]" />
-                    <span className="text-sm font-bold text-white dark:text-[#C9A84C]">DETECT</span>
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#0A0F2E] border-2 border-[#0A0F2E] shadow-sm shadow-[#0A0F2E]/20">
+                    <Radar className="h-4 w-4 text-white" />
+                    <span className="text-sm font-bold text-white">DETECT</span>
                   </div>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/execute">
-                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/10 hover:bg-[#C9A84C]/20 cursor-pointer transition-colors">
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/10 hover:bg-[#C9A84C]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(201, 168, 76, 0.3)" }}>
                       <span className="text-sm text-[#C9A84C]">EXECUTE</span>
                     </div>
                   </Link>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/advance">
-                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors">
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43, 138, 110, 0.3)" }}>
                       <span className="text-sm text-[#2B8A6E]">ADVANCE</span>
                     </div>
                   </Link>
@@ -257,7 +257,7 @@ export default function WorkspaceDetect() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             {workspaceTools.map((tool) => (
               <Link key={tool.path + tool.title} href={tool.path}>
-                <Card className={`border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 h-full hover:shadow-lg transition-all cursor-pointer group ${tool.featured ? 'border-2 border-[#0A0F2E]/50 dark:border-[#C9A84C]/50' : ''}`}>
+                <Card className={`border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 h-full hover:shadow-lg transition-all cursor-pointer group ${tool.featured ? 'border-2 border-[#0A0F2E]/50' : ''}`}>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <div className={`p-3 rounded-xl ${tool.bgColor}`}>
@@ -265,10 +265,10 @@ export default function WorkspaceDetect() {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between">
-                          <h3 className="font-semibold text-[#0A0F2E] dark:text-white group-hover:text-[#0A0F2E] dark:group-hover:text-[#C9A84C] transition-colors">
+                          <h3 className="font-semibold text-[#0A0F2E] dark:text-white group-hover:text-[#0A0F2E] transition-colors">
                             {tool.title}
                           </h3>
-                          <ChevronRight className="h-4 w-4 text-[#6B7280] group-hover:text-[#0A0F2E] dark:group-hover:text-[#C9A84C] transition-colors" />
+                          <ChevronRight className="h-4 w-4 text-[#6B7280] group-hover:text-[#0A0F2E] transition-colors" />
                         </div>
                         <p className="text-sm text-[#6B7280] dark:text-white/60 mt-1">
                           {tool.description}

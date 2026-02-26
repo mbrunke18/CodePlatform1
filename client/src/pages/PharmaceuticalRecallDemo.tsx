@@ -168,7 +168,7 @@ export default function PharmaceuticalRecallDemo() {
                   <span className="text-white/60">AI Confidence Level</span>
                   <span className="text-2xl font-bold text-[#C9A84C]">{detectionProgress}%</span>
                 </div>
-                <Progress value={detectionProgress} className="h-3 bg-white/10" />
+                <Progress value={detectionProgress} className="h-3 bg-white/10 [&>div]:bg-[#C9A84C]" />
                 {detectionProgress >= 92 && (
                   <div className="mt-4 p-4 bg-red-900/20 border border-red-500 rounded-lg">
                     <p className="text-red-400 font-semibold">

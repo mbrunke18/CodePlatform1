@@ -571,7 +571,7 @@ export default function PlaybookCustomize() {
   const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
   const PHASE_BADGES: Record<string, { label: string; color: string }> = {
-    identify: { label: 'I', color: "#2B8A6E" },
+    identification: { label: 'I', color: "#2B8A6E" },
     detect: { label: 'D', color: "#0A0F2E" },
     execute: { label: 'E', color: "#C9A84C" },
     advance: { label: 'A', color: "#2B8A6E" },

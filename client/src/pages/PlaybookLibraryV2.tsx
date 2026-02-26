@@ -250,7 +250,7 @@ function CompoundDisruptionSection() {
                 key={i}
                 style={{ 
                   border: `1px solid ${isExpanded ? GOLD : BORDER}`,
-                  background: isExpanded ? "rgba(201,168,76,0.03)" : "rgba(0,0,0,0.02)"
+                  background: isExpanded ? "rgba(201,168,76,0.03)" : "rgba(10,15,46,0.02)"
                 }}
                 className={`rounded-lg p-4 cursor-pointer transition-all duration-200 hover:border-[#DFC178]`}
                 onClick={() => setExpandedScenario(isExpanded ? null : i)}
@@ -303,7 +303,7 @@ function CompoundDisruptionSection() {
                           <div style={{ color: NAVY }} className="text-sm font-medium">{pb.name}</div>
                           <div style={{ color: MUTED }} className="text-xs">{pb.domain}</div>
                         </div>
-                        <span style={{ background: "rgba(0,0,0,0.05)", color: MUTED, borderColor: BORDER }} className="ml-2 px-2 py-0.5 rounded text-[10px] font-bold border">{pb.phase}</span>
+                        <span style={{ background: "rgba(10,15,46,0.05)", color: MUTED, borderColor: BORDER }} className="ml-2 px-2 py-0.5 rounded text-[10px] font-bold border">{pb.phase}</span>
                       </div>
                     ))}
                   </div>
@@ -418,9 +418,9 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                   Built from 20+ years of Fortune 500 transformation. Filter by domain, urgency, or trigger type.
                 </p>
               </div>
-              <div className="flex flex-wrap gap-2 max-w-sm">
+                  <div className="flex flex-wrap gap-2 max-w-sm">
                 {["All Domains", "Financial", "Competitive", "Regulatory", "Crisis", "M&A"].map((chip, i) => {
-                  const id = i === 0 ? "all" : ["all","financial","competitive","regulatory","crisis","ma"][i];
+                  const id = ["all","financial","competitive","regulatory","crisis","ma"][i];
                   const isActive = activeDomain === id;
                   return (
                     <button

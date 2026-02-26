@@ -152,9 +152,9 @@ export default function EchoCulturalAnalytics() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'excellent': return `bg-[${TEAL}]/12 text-[${TEAL}] border-[${TEAL}]/30`;
-      case 'good': return `bg-[${NAVY}]/12 text-[${NAVY}] border-[${NAVY}]/30`;
-      case 'warning': return `bg-[${GOLD}]/12 text-[${GOLD}] border-[${GOLD}]/30`;
+      case 'excellent': return `bg-[#2B8A6E]/12 text-[#2B8A6E] border-[#2B8A6E]/30`;
+      case 'good': return `bg-[#0A0F2E]/12 text-[#0A0F2E] border-[#0A0F2E]/30`;
+      case 'warning': return `bg-[#C9A84C]/12 text-[#C9A84C] border-[#C9A84C]/30`;
       case 'critical': return 'bg-red-500/12 text-red-500 border-red-500/30';
       default: return 'bg-gray-500/12 text-gray-800 border-gray-500/30';
     }
@@ -184,7 +184,7 @@ export default function EchoCulturalAnalytics() {
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-6">
                 <div style={{ width:64, height:64, background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <Users className={`h-10 w-10 text-[${GOLD}]`} />
+                  <Users className="h-10 w-10 text-[#C9A84C]" />
                 </div>
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>

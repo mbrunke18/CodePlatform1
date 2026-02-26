@@ -206,13 +206,13 @@ export default function OneClickDemo() {
   // Idle state - show the start button
   if (demoState === 'idle' && !isFullscreen) {
     return (
-      <div className="min-h-screen bg-gradient-to-br ">
+      <div className="min-h-screen bg-[#F8F7F4]">
         <StandardNav />
         
         <div className="container mx-auto px-4 py-20">
           <div className="max-w-4xl mx-auto text-center">
             <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="mb-6 bg-red-500/20 text-red-400 border-red-500/30 text-sm px-4 py-1">
+            <Badge className="mb-6 bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/30 text-sm px-4 py-1">
               <AlertCircle className="h-4 w-4 mr-2" />
               Live Interactive Demo
             </Badge>
@@ -227,19 +227,19 @@ export default function OneClickDemo() {
             </p>
 
             <div className="grid md:grid-cols-3 gap-6 mb-12">
-              <Card className="bg-gray-50 border-gray-200">
+              <Card className="bg-white border-[#E8E4DC]">
                 <CardContent className="p-6 text-center">
-                  <div className="text-4xl font-bold text-red-500 mb-2">2.4M</div>
+                  <div className="text-4xl font-bold text-red-600 mb-2">2.4M</div>
                   <div className="text-sm text-gray-800">Customers Impacted</div>
                 </CardContent>
               </Card>
-              <Card className="bg-gray-50 border-gray-200">
+              <Card className="bg-white border-[#E8E4DC]">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl font-bold text-[#C9A84C] mb-2">$50M</div>
                   <div className="text-sm text-gray-800">Potential Fine</div>
                 </CardContent>
               </Card>
-              <Card className="bg-gray-50 border-gray-200">
+              <Card className="bg-white border-[#E8E4DC]">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl font-bold text-[#2B8A6E] mb-2">12 min</div>
                   <div className="text-sm text-gray-800">Target Response Time</div>
@@ -270,11 +270,11 @@ export default function OneClickDemo() {
 
   // Running/Paused/Complete state - fullscreen demo view
   return (
-    <div className="fixed inset-0 bg-white z-50 overflow-auto">
+    <div className="fixed inset-0 bg-[#F8F7F4] z-50 overflow-auto">
       {showConfetti && <Confetti recycle={false} numberOfPieces={500} />}
       
       {/* Header */}
-      <div className="bg-[#0A0F2E] border-b border-[#E8E4DC] sticky top-0 z-10">
+      <div className="bg-[#0A0F2E] border-b border-white/10 sticky top-0 z-10">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">

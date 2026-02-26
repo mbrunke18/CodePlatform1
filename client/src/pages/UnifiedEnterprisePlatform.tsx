@@ -177,21 +177,22 @@ export default function UnifiedEnterprisePlatform() {
           </div>
 
           {/* Header */}
-          <div className="bg-gradient-to-r from-primary to-[#3BAF8A] text-gray-900 p-3 rounded-lg flex-shrink-0">
-            <div className="flex items-center justify-between">
+          <div className="bg-[#0A0F2E] text-white p-3 rounded-lg flex-shrink-0 relative overflow-hidden">
+            <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 2px 2px, rgba(201,168,76,0.1) 1px, transparent 0)", backgroundSize: "24px 24px" }} />
+            <div className="relative z-10 flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <LayoutDashboard className="h-10 w-10" />
+                <LayoutDashboard className="h-10 w-10 text-[#C9A84C]" />
                 <div>
                   <h1 className="text-2xl font-bold" data-testid="platform-title">
                     Execution OS Executive Command Center
                   </h1>
-                  <p className="text-primary-foreground/80">Where Strategy Meets Velocity™ - 12-Minute Execution Platform</p>
+                  <p className="text-white/80">Where Strategy Meets Velocity™ - 12-Minute Execution Platform</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <Link to="/hybrid-demo">
                   <Button 
-                    className="bg-gradient-to-r from-[#0A0F2E] to-[#3BAF8A] hover:from-[#0A0F2E] hover:to-[#3BAF8A] text-gray-900 font-semibold shadow-lg hover:shadow-xl transition-all" 
+                    className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold shadow-lg hover:shadow-xl transition-all" 
                     data-testid="try-live-demo-btn"
                   >
                     <Play className="h-4 w-4 mr-2" />
@@ -199,13 +200,13 @@ export default function UnifiedEnterprisePlatform() {
                   </Button>
                 </Link>
                 <Link to="/">
-                  <Button variant="secondary" className="bg-primary/70 hover:bg-primary text-primary-foreground border-primary" data-testid="back-to-dashboard">
+                  <Button variant="outline" className="bg-white/5 hover:bg-white/10 text-white border-white/20" data-testid="back-to-dashboard">
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Dashboard
                   </Button>
                 </Link>
-                <Badge variant="secondary" className="bg-primary/70 text-primary-foreground border-primary" data-testid="system-status">
-                  <div className="w-2 h-2 bg-primary-foreground rounded-full mr-2 animate-pulse"></div>
+                <Badge variant="outline" className="bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30" data-testid="system-status">
+                  <div className="w-2 h-2 bg-[#C9A84C] rounded-full mr-2 animate-pulse"></div>
                   ALL SYSTEMS OPERATIONAL
                 </Badge>
               </div>
@@ -214,7 +215,7 @@ export default function UnifiedEnterprisePlatform() {
 
           {/* 4-Step IDEA Framework - Core Methodology */}
           <div className="grid grid-cols-4 gap-3 flex-shrink-0">
-            <Card className="border-[#0A0F2E]/30 bg-gradient-to-br hover:border-[#0A0F2E]/50 transition-all">
+            <Card className="border-[#0A0F2E]/30 bg-white hover:border-[#0A0F2E]/50 transition-all shadow-none">
               <CardHeader className="p-3">
                 <div className="flex items-center gap-2">
                   <Eye className="h-5 w-5 text-[#0A0F2E]" />
@@ -236,7 +237,7 @@ export default function UnifiedEnterprisePlatform() {
               </CardContent>
             </Card>
 
-            <Card className="border-[#C9A84C]/30 bg-gradient-to-br hover:border-[#C9A84C]/50 transition-all">
+            <Card className="border-[#C9A84C]/30 bg-white hover:border-[#C9A84C]/50 transition-all shadow-none">
               <CardHeader className="p-3">
                 <div className="flex items-center gap-2">
                   <Target className="h-5 w-5 text-[#C9A84C]" />
@@ -258,7 +259,7 @@ export default function UnifiedEnterprisePlatform() {
               </CardContent>
             </Card>
 
-            <Card className="border-[#2B8A6E]/30 bg-gradient-to-br hover:border-[#2B8A6E]/50 transition-all">
+            <Card className="border-[#2B8A6E]/30 bg-white hover:border-[#2B8A6E]/50 transition-all shadow-none">
               <CardHeader className="p-3">
                 <div className="flex items-center gap-2">
                   <Zap className="h-5 w-5 text-[#2B8A6E]" />
@@ -280,7 +281,7 @@ export default function UnifiedEnterprisePlatform() {
               </CardContent>
             </Card>
 
-            <Card className="border-[#C9A84C]/30 bg-gradient-to-br hover:border-[#C9A84C]/50 transition-all">
+            <Card className="border-[#C9A84C]/30 bg-white hover:border-[#C9A84C]/50 transition-all shadow-none">
               <CardHeader className="p-3">
                 <div className="flex items-center gap-2">
                   <BookOpen className="h-5 w-5 text-[#C9A84C]" />
@@ -304,51 +305,51 @@ export default function UnifiedEnterprisePlatform() {
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full flex-1 flex flex-col min-h-0">
-            <TabsList className="grid w-full grid-cols-4 lg:grid-cols-8 xl:grid-cols-10 gap-1 p-1 bg-muted rounded-lg flex-shrink-0">
-              <TabsTrigger value="overview" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-overview">
+            <TabsList className="grid w-full grid-cols-4 lg:grid-cols-8 xl:grid-cols-10 gap-1 p-1 bg-[#F8F7F4] border border-[#E8E4DC] rounded-lg flex-shrink-0">
+              <TabsTrigger value="overview" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-overview">
                 <BarChart3 className="h-4 w-4" />
                 Overview
               </TabsTrigger>
-              <TabsTrigger value="crisis" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-crisis">
+              <TabsTrigger value="crisis" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-crisis">
                 <AlertTriangle className="h-4 w-4" />
                 Executive Playbooks
               </TabsTrigger>
-              <TabsTrigger value="strategic" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-strategic">
+              <TabsTrigger value="strategic" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-strategic">
                 <Target className="h-4 w-4" />
                 Strategic Planning
               </TabsTrigger>
-              <TabsTrigger value="templates" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-templates">
+              <TabsTrigger value="templates" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-templates">
                 <BookOpen className="h-4 w-4" />
                 Scenario Templates
               </TabsTrigger>
-              <TabsTrigger value="ai-intelligence" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-ai">
+              <TabsTrigger value="ai-intelligence" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-ai">
                 <Brain className="h-4 w-4" />
                 AI Intelligence
               </TabsTrigger>
-              <TabsTrigger value="collaboration" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-collaboration">
+              <TabsTrigger value="collaboration" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-collaboration">
                 <Users className="h-4 w-4" />
                 Collaboration
               </TabsTrigger>
-              <TabsTrigger value="audit" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-audit">
+              <TabsTrigger value="audit" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-audit">
                 <Shield className="h-4 w-4" />
                 Audit & Compliance
-                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]">V3</Badge>
+                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30">V3</Badge>
               </TabsTrigger>
-              <TabsTrigger value="integrations" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-integrations">
+              <TabsTrigger value="integrations" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-integrations">
                 <Network className="h-4 w-4" />
                 Integrations
-                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]">V3</Badge>
+                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30">V3</Badge>
               </TabsTrigger>
-              <TabsTrigger value="analytics" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-analytics">
+              <TabsTrigger value="analytics" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-analytics">
                 <PieChart className="h-4 w-4" />
                 Advanced Analytics
-                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]">V2</Badge>
+                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30">V2</Badge>
               </TabsTrigger>
-              <TabsTrigger value="scenario-triggers" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-triggers">
+              <TabsTrigger value="scenario-triggers" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-triggers">
                 <Zap className="h-4 w-4" />
                 Scenario Triggers
               </TabsTrigger>
-              <TabsTrigger value="c-suite-copilot" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-copilot">
+              <TabsTrigger value="c-suite-copilot" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-copilot">
                 <Command className="h-4 w-4" />
                 C-Suite Co-pilot
               </TabsTrigger>
@@ -357,20 +358,21 @@ export default function UnifiedEnterprisePlatform() {
             <TabsContent value="overview" className="flex-1 overflow-y-auto p-3 space-y-3" data-testid="overview-content">
               
               {/* V1 Core Loop Banner */}
-              <div className="bg-gradient-to-r from-[#0A0F2E] via-[#C9A84C]/10 to-[#3BAF8A] dark:from-[#0A0F2E]/20 dark:via-[#C9A84C]/10 dark:to-[#3BAF8A]/20 rounded-lg border-2 border-[#0A0F2E] dark:border-[#0A0F2E] p-4 mb-4">
-                <div className="flex items-center justify-between">
+              <div className="bg-[#0A0F2E] text-white rounded-lg border-2 border-[#C9A84C]/30 p-4 mb-4 relative overflow-hidden">
+                <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 2px 2px, rgba(201,168,76,0.05) 1px, transparent 0)", backgroundSize: "32px 32px" }} />
+                <div className="relative z-10 flex items-center justify-between">
                   <div>
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Identify → Detect → Execute → Advance</h2>
-                    <p className="text-sm text-gray-700 dark:text-gray-300">
+                    <h2 className="text-xl font-bold mb-2">Identify → Detect → Execute → Advance</h2>
+                    <p className="text-sm text-white/70">
                       Build playbooks from 80+ templates. AI watches your triggers 24/7. Execute in 12 minutes when conditions hit.
                     </p>
                   </div>
                   <div className="flex gap-2">
                     <Link to="/scenarios">
-                      <Button variant="outline" size="sm" data-testid="button-browse-templates">Browse Templates</Button>
+                      <Button variant="outline" size="sm" className="bg-white/5 border-white/20 text-white hover:bg-white/10" data-testid="button-browse-templates">Browse Templates</Button>
                     </Link>
                     <Link to="/what-if-analyzer">
-                      <Button size="sm" data-testid="button-practice-scenarios">Practice Scenarios</Button>
+                      <Button size="sm" className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]" data-testid="button-practice-scenarios">Practice Scenarios</Button>
                     </Link>
                   </div>
                 </div>
@@ -858,7 +860,7 @@ export default function UnifiedEnterprisePlatform() {
                         <Progress value={94} className="h-1" />
                       </div>
                     </div>
-                    <Button className="w-full bg-green-600 hover:bg-green-700 text-xs">
+                    <Button className="w-full bg-[#2B8A6E] hover:bg-[#237A5F] text-xs">
                       <TrendingUp className="h-3 w-3 mr-1" />
                       View Details
                     </Button>
@@ -1002,7 +1004,7 @@ export default function UnifiedEnterprisePlatform() {
                         <Users className="h-4 w-4 mr-2" />
                         Team Assembly
                       </Button>
-                      <Button className="bg-green-600 hover:bg-green-700">
+                      <Button className="bg-[#2B8A6E] hover:bg-[#237A5F]">
                         <CheckCircle className="h-4 w-4 mr-2" />
                         Status Update
                       </Button>
@@ -1292,7 +1294,7 @@ export default function UnifiedEnterprisePlatform() {
                         <Progress value={98} className="h-1" />
                       </div>
                     </div>
-                    <Button className="w-full bg-green-600 hover:bg-green-700 text-xs">
+                    <Button className="w-full bg-[#2B8A6E] hover:bg-[#237A5F] text-xs">
                       <Activity className="h-3 w-3 mr-1" />
                       View Dashboard
                     </Button>
@@ -1478,7 +1480,7 @@ export default function UnifiedEnterprisePlatform() {
                         <span className="text-orange-400 font-bold">267%</span>
                       </div>
                     </div>
-                    <Button className="w-full bg-green-600 hover:bg-green-700 text-xs">
+                    <Button className="w-full bg-[#2B8A6E] hover:bg-[#237A5F] text-xs">
                       <DollarSign className="h-3 w-3 mr-1" />
                       Financial Reports
                     </Button>
@@ -1654,7 +1656,7 @@ export default function UnifiedEnterprisePlatform() {
                         <div className="text-xs text-gray-800 dark:text-slate-200">Budget variance &gt;15%</div>
                       </div>
                     </div>
-                    <Button className="w-full bg-green-600 hover:bg-green-700 text-xs">
+                    <Button className="w-full bg-[#2B8A6E] hover:bg-[#237A5F] text-xs">
                       <DollarSign className="h-3 w-3 mr-1" />
                       Manage Financial Triggers
                     </Button>
@@ -1875,7 +1877,7 @@ export default function UnifiedEnterprisePlatform() {
                         <Target className="h-4 w-4 mr-2" />
                         Strategic Session
                       </Button>
-                      <Button className="bg-green-600 hover:bg-green-700">
+                      <Button className="bg-[#2B8A6E] hover:bg-[#237A5F]">
                         <CheckCircle className="h-4 w-4 mr-2" />
                         Operations Review
                       </Button>

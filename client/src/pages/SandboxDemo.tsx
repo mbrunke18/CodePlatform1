@@ -224,7 +224,7 @@ const SUCCESS_METRICS = [
 ];
 
 const SCENARIO_BRANCHES = [
-  { severity: "critical", label: "Critical - Full Activation", color: "bg-red-500", actions: ["Immediate full team mobilization", "All escalation paths active", "Board notification triggered"] },
+  { severity: "critical", label: "Critical - Full Activation", color: "bg-red-600", actions: ["Immediate full team mobilization", "All escalation paths active", "Board notification triggered"] },
   { severity: "high", label: "High - Elevated Response", color: "bg-[#C9A84C]", actions: ["Core team activation", "Management notification", "External counsel on standby"] },
   { severity: "medium", label: "Medium - Monitoring Mode", color: "bg-[#C9A84C]", actions: ["Primary owner notified", "Situation monitoring enabled", "Escalation paths ready"] },
   { severity: "low", label: "Low - Awareness Only", color: "bg-[#0A0F2E]", actions: ["Log for tracking", "Weekly digest inclusion", "No immediate action required"] },
@@ -1481,8 +1481,8 @@ export default function SandboxDemo() {
                         
                         let badge = null;
                         let role = 'I';
-                        if (isResponsible) { badge = <Badge className="bg-[#0A0F2E] text-gray-900">R</Badge>; role = 'R'; }
-                        else if (isAccountable) { badge = <Badge className="bg-[#0A0F2E] text-gray-900">A</Badge>; role = 'A'; }
+                        if (isResponsible) { badge = <Badge className="bg-[#0A0F2E] text-white">R</Badge>; role = 'R'; }
+                        else if (isAccountable) { badge = <Badge className="bg-[#0A0F2E] text-white">A</Badge>; role = 'A'; }
                         else if (isConsulted) { badge = <Badge className="bg-amber-500 text-gray-900">C</Badge>; role = 'C'; }
                         else badge = <Badge variant="outline" className="bg-transparent text-gray-800 dark:text-slate-200">I</Badge>;
                         
@@ -1497,8 +1497,8 @@ export default function SandboxDemo() {
             </table>
           </div>
           <div className="flex gap-4 mt-4 text-xs text-gray-800">
-            <span><Badge className="bg-[#0A0F2E] text-gray-900 mr-1">R</Badge> Responsible</span>
-            <span><Badge className="bg-[#0A0F2E] text-gray-900 mr-1">A</Badge> Accountable</span>
+            <span><Badge className="bg-[#0A0F2E] text-white mr-1">R</Badge> Responsible</span>
+            <span><Badge className="bg-[#0A0F2E] text-white mr-1">A</Badge> Accountable</span>
             <span><Badge className="bg-amber-500 text-gray-900 mr-1">C</Badge> Consulted</span>
             <span><Badge variant="outline" className="bg-transparent text-gray-800 dark:text-slate-200 mr-1">I</Badge> Informed</span>
           </div>
@@ -1793,7 +1793,7 @@ export default function SandboxDemo() {
                   <div className={`w-4 h-4 rounded-full ${branch.color}`} />
                   <span className="font-semibold">{branch.label}</span>
                   {triggerConfig.severity === branch.severity && (
-                    <Badge className="bg-[#0A0F2E] text-gray-900 ml-auto">Active Path</Badge>
+                    <Badge className="bg-[#0A0F2E] text-white ml-auto">Active Path</Badge>
                   )}
                 </div>
                 <div className="grid md:grid-cols-3 gap-2">
@@ -1841,7 +1841,7 @@ export default function SandboxDemo() {
                 <Timer className="h-6 w-6 text-[#C9A84C]" />
                 <span className="text-lg font-semibold">Execution Progress</span>
               </div>
-              <Badge variant={simulationComplete ? "default" : "secondary"} className={simulationComplete ? "bg-green-600" : ""}>
+              <Badge variant={simulationComplete ? "default" : "secondary"} className={simulationComplete ? "bg-[#2B8A6E]" : ""}>
                 {simulationComplete ? 'Complete' : 'In Progress'}
               </Badge>
             </div>
@@ -2248,7 +2248,7 @@ export default function SandboxDemo() {
                   <div 
                     className={`flex items-center gap-2 px-3 py-2 rounded-full transition-all whitespace-nowrap ${
                       isActive 
-                        ? 'bg-[#0A0F2E] text-gray-900' 
+                        ? 'bg-[#0A0F2E] text-white' 
                         : isComplete 
                         ? 'bg-green-100 text-[#2B8A6E] dark:bg-green-900/30 dark:text-green-400'
                         : 'bg-slate-100 text-gray-800 dark:bg-[#141B45]'

@@ -223,7 +223,7 @@ export default function MissionControl() {
                       {pendingTriggers.map((trigger) => (
                         <div key={trigger.id} className="p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-[#F8F7F4]/30 transition-colors">
                           <div className="flex items-start gap-4">
-                            <div style={{ width: 40, height: 40, background: "#141B45", borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                            <div style={{ width: 40, height: 40, background: NAVY, borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                               <AlertTriangle className="h-5 w-5 text-white" />
                             </div>
                             <div>

@@ -121,6 +121,12 @@ export async function setupAuth(app: Express) {
   passport.deserializeUser((user: Express.User, cb) => cb(null, user));
 
   app.get("/api/login", (req, res, next) => {
+    // Store returnTo so user lands back on the right page after OAuth
+    if (req.query.returnTo && typeof req.query.returnTo === 'string') {
+      (req.session as any).returnTo = req.query.returnTo;
+    } else if (!(req.session as any).returnTo) {
+      (req.session as any).returnTo = "/mission-control";
+    }
     passport.authenticate(resolveStrategy(req.hostname), {
       prompt: "login consent",
     })(req, res, next);
@@ -128,7 +134,7 @@ export async function setupAuth(app: Express) {
 
   app.get("/api/callback", (req, res, next) => {
     passport.authenticate(resolveStrategy(req.hostname), {
-      successReturnToOrRedirect: "/",
+      successReturnToOrRedirect: "/mission-control",
       failureRedirect: "/api/login",
     })(req, res, next);
   });

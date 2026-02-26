@@ -98,7 +98,7 @@ const industryProblems = [
     description: "Digital transformation projects that don't meet objectives",
     source: "Bain & Company 2024",
     icon: Target,
-    color: "text-red-400"
+    color: "text-red-600"
   },
   {
     value: "75%",
@@ -106,7 +106,7 @@ const industryProblems = [
     description: "Mergers that fail to deliver expected value",
     source: "Fortune/NYU 2024",
     icon: DollarSign,
-    color: "text-orange-400"
+    color: "text-[#C9A84C]"
   },
   {
     value: "$2.3T",
@@ -114,7 +114,7 @@ const industryProblems = [
     description: "Cost of failed digital transformation efforts",
     source: "Taylor & Francis 2024",
     icon: Globe,
-    color: "text-yellow-400"
+    color: "text-[#C9A84C]"
   },
   {
     value: "75%",
@@ -253,12 +253,12 @@ export default function Investors() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + i * 0.1 }}
-                  className="bg-red-500/5 border border-red-500/20 rounded-xl p-6 text-center"
+                  className="bg-[#0A0F2E]/10 border border-[#0A0F2E]/20 rounded-xl p-6 text-center"
                 >
-                  <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-red-500/10 flex items-center justify-center">
-                    <problem.icon className={`w-5 h-5 ${problem.color}`} />
+                  <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-[#0A0F2E]/20 flex items-center justify-center">
+                    <problem.icon className={`w-5 h-5 text-[#0A0F2E]`} />
                   </div>
-                  <p className={`text-3xl font-bold mb-1 ${problem.color}`}>{problem.value}</p>
+                  <p className={`text-3xl font-bold mb-1 text-[#0A0F2E]`}>{problem.value}</p>
                   <p className="text-white font-medium text-sm mb-1">{problem.label}</p>
                   <p className="text-white/50 text-xs mb-2">{problem.description}</p>
                   <p className="text-white/40 text-xs">{problem.source}</p>
@@ -293,17 +293,17 @@ export default function Investors() {
                     <span className={`ml-auto text-xs font-semibold px-2 py-1 rounded-full ${
                       scenario.type === 'offense' 
                         ? 'bg-[#2B8A6E]/20 text-[#2B8A6E] border border-[#2B8A6E]/30' 
-                        : 'bg-red-500/20 text-red-400 border border-red-500/30'
+                        : 'bg-[#0A0F2E]/20 text-[#0A0F2E] border border-[#0A0F2E]/30'
                     }`}>
                       {scenario.type === 'offense' ? 'OFFENSE' : 'DEFENSE'}
                     </span>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-3 mb-4">
-                    <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3">
-                      <p className="text-red-400/60 text-xs mb-1">Without Execution OS</p>
-                      <p className="text-red-400 font-bold text-lg">{scenario.traditional.time}</p>
-                      <p className="text-red-400/60 text-xs mt-1">{scenario.traditional.cost}</p>
+                    <div className="bg-[#0A0F2E]/10 border border-[#0A0F2E]/20 rounded-lg p-3">
+                      <p className="text-[#0A0F2E]/60 text-xs mb-1">Without Execution OS</p>
+                      <p className="text-[#0A0F2E] font-bold text-lg">{scenario.traditional.time}</p>
+                      <p className="text-[#0A0F2E]/60 text-xs mt-1">{scenario.traditional.cost}</p>
                     </div>
                     <div className="bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-lg p-3">
                       <p className="text-[#2B8A6E]/60 text-xs mb-1">With Execution OS</p>
@@ -314,11 +314,11 @@ export default function Investors() {
                   
                   <div className="flex items-center gap-2 mb-3">
                     <div className="flex-1 h-2 bg-white/5 rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-full" style={{ width: '100%' }} />
+                      <div className="h-full bg-[#0A0F2E] rounded-full" style={{ width: '100%' }} />
                     </div>
                     <span className="text-[#2B8A6E] font-bold text-sm whitespace-nowrap">{scenario.speedup} faster</span>
                     <div className="w-6 h-2 bg-white/5 rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A] rounded-full" style={{ width: '100%' }} />
+                      <div className="h-full bg-[#2B8A6E] rounded-full" style={{ width: '100%' }} />
                     </div>
                   </div>
                   

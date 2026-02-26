@@ -230,7 +230,7 @@ export default function ProactiveRadar() {
         <Button 
           onClick={() => scanMutation.mutate()}
           disabled={scanMutation.isPending}
-          className="bg-[#0A0F2E] hover:bg-[#0A0F2E]"
+          className="bg-[#0A0F2E] hover:bg-[#141B45] text-white"
           data-testid="button-manual-scan"
         >
           {scanMutation.isPending ? (

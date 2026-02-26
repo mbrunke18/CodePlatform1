@@ -134,7 +134,7 @@ export default function FutureReadinessDashboard() {
     switch (impact) {
       case 'high': return <ArrowUpRight className="h-4 w-4 text-red-500" />;
       case 'medium': return <TrendingUp className="h-4 w-4 text-[#C9A84C]" />;
-      default: return <Activity className="h-4 w-4 text-[#141B45]" />;
+      default: return <Activity className="h-4 w-4 text-[#0A0F2E]" />;
     }
   };
 

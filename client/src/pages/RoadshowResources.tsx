@@ -119,19 +119,19 @@ function MarkdownRenderer({ content }: { content: string }) {
           return <p key={idx} className="font-bold text-[#0A0F2E] my-3">{line.slice(2, -2)}</p>;
         }
         if (line.startsWith('> ')) {
-          return <blockquote key={idx} className="border-l-4 border-[#C9A84C] pl-6 my-6 text-[#141B45] italic bg-[#F8F7F4] py-4">{line.slice(2)}</blockquote>;
+          return <blockquote key={idx} className="border-l-4 border-[#C9A84C] pl-6 my-6 text-[#0A0F2E] italic bg-[#F8F7F4] py-4">{line.slice(2)}</blockquote>;
         }
         if (line.startsWith('- [ ] ')) {
-          return <div key={idx} className="flex items-start gap-3 my-2 text-[#141B45]"><div className="w-4 h-4 border border-[#E8E4DC] mt-1 shrink-0"></div><span>{line.slice(6)}</span></div>;
+          return <div key={idx} className="flex items-start gap-3 my-2 text-[#0A0F2E]"><div className="w-4 h-4 border border-[#E8E4DC] mt-1 shrink-0"></div><span>{line.slice(6)}</span></div>;
         }
         if (line.startsWith('- ')) {
-          return <li key={idx} className="text-[#141B45] ml-4 my-2 list-none flex items-center gap-2"><span className="w-1.5 h-1.5 bg-[#C9A84C] shrink-0"></span>{line.slice(2)}</li>;
+          return <li key={idx} className="text-[#0A0F2E] ml-4 my-2 list-none flex items-center gap-2"><span className="w-1.5 h-1.5 bg-[#C9A84C] shrink-0"></span>{line.slice(2)}</li>;
         }
         if (line.startsWith('| ') && line.includes(' | ')) {
           const cells = line.split(' | ').map(c => c.replace(/^\||\|$/g, '').trim());
           const isHeader = lines[idx + 1]?.includes('---');
           return (
-            <div key={idx} className={`grid gap-4 py-3 border-b border-[#E8E4DC] ${isHeader ? 'font-bold text-[#0A0F2E] bg-[#F8F7F4]' : 'text-[#141B45]'}`} style={{ gridTemplateColumns: `repeat(${cells.length}, minmax(0, 1fr))` }}>
+            <div key={idx} className={`grid gap-4 py-3 border-b border-[#E8E4DC] ${isHeader ? 'font-bold text-[#0A0F2E] bg-[#F8F7F4]' : 'text-[#0A0F2E]'}`} style={{ gridTemplateColumns: `repeat(${cells.length}, minmax(0, 1fr))` }}>
               {cells.map((cell, i) => <div key={i} className="text-sm px-2">{cell}</div>)}
             </div>
           );
@@ -149,7 +149,7 @@ function MarkdownRenderer({ content }: { content: string }) {
           .replace(/\*\*(.*?)\*\*/g, '<strong class="text-[#0A0F2E]">$1</strong>')
           .replace(/\*(.*?)\*/g, '<em>$1</em>')
           .replace(/`(.*?)`/g, '<code class="bg-[#F8F7F4] px-1.5 py-0.5 rounded text-[#2B8A6E] font-mono text-xs">$1</code>');
-        return <p key={idx} className="text-[#141B45] my-2 leading-relaxed" dangerouslySetInnerHTML={{ __html: formattedLine }} />;
+        return <p key={idx} className="text-[#0A0F2E] my-2 leading-relaxed" dangerouslySetInnerHTML={{ __html: formattedLine }} />;
       })}
     </div>
   );
@@ -330,7 +330,7 @@ export default function RoadshowResources() {
                   { label: "Moat Analysis", target: "Competitive Moat" }
                 ].map((item, i) => (
                   <div key={i} className="px-4 py-2 border border-white/10 bg-white/5 flex items-center gap-3">
-                    <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">{item.label}</span>
+                    <span className="text-[10px] uppercase tracking-widest text-[#6B7280] font-bold">{item.label}</span>
                     <ArrowRight className="w-3 h-3 text-[#C9A84C]" />
                     <span className="text-xs font-bold text-[#C9A84C]">{item.target}</span>
                   </div>

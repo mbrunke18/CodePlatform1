@@ -244,54 +244,54 @@ export default function PilotProgram() {
 
   return (
     <PageLayout>
-      <div className="bg-gradient-to-br from-slate-50 via-white to-[#141B45] dark:from-slate-950 dark:via-slate-900 dark:to-[#141B45]">
+      <div className="bg-[#F8F7F4] dark:bg-[#0A0F2E]">
         
         {/* Hero Section */}
-        <section className="py-16 px-6 bg-gradient-to-br ">
+        <section className="py-16 px-6 bg-[#0A0F2E]">
           <div className="max-w-6xl mx-auto text-center">
-            <div className="inline-block px-6 py-4 rounded-2xl border border-slate-600/50 backdrop-blur-sm mb-6">
+            <div className="inline-block px-6 py-4 rounded-2xl border border-white/10 backdrop-blur-sm mb-6">
               <ExecuteIQLogo width={240} variant="full" color="white" showTagline={true} />
             </div>
-            <Badge className="mb-6 bg-[#2B8A6E]/20 text-[#3BAF8A] border-[#2B8A6E]/30" data-testid="badge-pilot">
+            <Badge className="mb-6 bg-[#2B8A6E] text-white border-[#2B8A6E]/30" data-testid="badge-pilot">
               Fortune 1000 Design Partner Program
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-6" data-testid="heading-pilot-program">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6" data-testid="heading-pilot-program">
               90-Day Pilot Program
               <span className="block text-[#C9A84C] mt-2">Validate Before You Commit</span>
             </h1>
-            <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
               Prove Execution OS' 12-minute coordination claim with real activations in your environment. 
               Structured phases, measurable outcomes, and a clear path to enterprise deployment.
             </p>
             
             {/* Key Stats */}
             <div className="flex flex-wrap justify-center gap-6 mb-8">
-              <div className="bg-[#0A0F2E]/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-[#E8E4DC]">
-                <div className="text-2xl font-bold text-[#2B8A6E]">$75K</div>
-                <div className="text-xs text-[#0A0F2E]">Pilot Investment</div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-white/10">
+                <div className="text-2xl font-bold text-[#3BAF8A]">$75K</div>
+                <div className="text-xs text-white/70">Pilot Investment</div>
               </div>
-              <div className="bg-[#0A0F2E]/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-[#E8E4DC]">
-                <div className="text-2xl font-bold text-[#0A0F2E]">90</div>
-                <div className="text-xs text-[#0A0F2E]">Days</div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-white/10">
+                <div className="text-2xl font-bold text-white">90</div>
+                <div className="text-xs text-white/70">Days</div>
               </div>
-              <div className="bg-[#0A0F2E]/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-[#E8E4DC]">
-                <div className="text-2xl font-bold text-[#0A0F2E]">5</div>
-                <div className="text-xs text-[#0A0F2E]">Playbooks</div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-white/10">
+                <div className="text-2xl font-bold text-white">5</div>
+                <div className="text-xs text-white/70">Playbooks</div>
               </div>
-              <div className="bg-[#0A0F2E]/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-[#E8E4DC]">
-                <div className="text-2xl font-bold text-[#0A0F2E]">25</div>
-                <div className="text-xs text-[#0A0F2E]">Users</div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-white/10">
+                <div className="text-2xl font-bold text-white">25</div>
+                <div className="text-xs text-white/70">Users</div>
               </div>
-              <div className="bg-[#0A0F2E]/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-[#E8E4DC]">
-                <div className="text-2xl font-bold text-[#0A0F2E]">100%</div>
-                <div className="text-xs text-[#0A0F2E]">Credit to Year 1</div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-white/10">
+                <div className="text-2xl font-bold text-white">100%</div>
+                <div className="text-xs text-white/70">Credit to Year 1</div>
               </div>
             </div>
 
             <div className="flex flex-wrap justify-center gap-4">
               <Button 
                 size="lg" 
-                className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"
+                className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]"
                 onClick={() => setLocation('/contact')}
                 data-testid="button-apply-pilot"
               >
@@ -301,7 +301,7 @@ export default function PilotProgram() {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E]/5"
+                className="border-white/20 text-white hover:bg-white/10"
                 onClick={() => setLocation('/try-demo')}
                 data-testid="button-see-demo"
               >
@@ -424,7 +424,7 @@ export default function PilotProgram() {
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-2">
                           <h3 className="font-semibold text-slate-900 dark:text-white">{candidate.criteria}</h3>
-                          <Badge variant={candidate.importance === 'Required' ? 'default' : 'outline'} className={candidate.importance === 'Required' ? 'bg-[#0A0F2E]' : ''}>
+                          <Badge variant={candidate.importance === 'Required' ? 'default' : 'outline'} className={candidate.importance === 'Required' ? 'bg-[#0A0F2E] text-white' : ''}>
                             {candidate.importance}
                           </Badge>
                         </div>

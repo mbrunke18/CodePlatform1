@@ -24,15 +24,15 @@ const features = [
     icon: Zap,
     title: 'DETECT — Signal Intelligence',
     description: 'See AI-powered monitoring detect competitive threats, regulatory shifts, and market opportunities in real time.',
-    color: 'text-[#C9A84C]',
-    bg: 'bg-[#C9A84C]/10',
+    color: 'text-[#0A0F2E]',
+    bg: 'bg-[#0A0F2E]/10',
   },
   {
     icon: Target,
     title: 'EXECUTE — Playbook Activation',
     description: 'Browse 170 pre-built playbooks and activate a coordinated response across your org within 12 minutes.',
-    color: 'text-[#0A0F2E]',
-    bg: 'bg-[#0A0F2E]/10',
+    color: 'text-[#C9A84C]',
+    bg: 'bg-[#C9A84C]/10',
   },
   {
     icon: BarChart3,
@@ -122,7 +122,7 @@ export default function ExplorePage() {
               </Button>
             </div>
 
-            <p className="mt-6 text-[10px] text-slate-400 uppercase tracking-widest font-bold">
+            <p className="mt-6 text-[10px] text-[#6B7280] uppercase tracking-widest font-bold">
               No credit card required. Your workspace is private and under your control.
             </p>
           </div>
@@ -145,7 +145,7 @@ export default function ExplorePage() {
                   </div>
                   <div>
                     <div className="font-bold text-[#0A0F2E] mb-1 uppercase tracking-widest text-[10px]">{s.label}</div>
-                    <div className="text-slate-500 text-sm leading-relaxed">{s.description}</div>
+                    <div className="text-[#6B7280] text-sm leading-relaxed">{s.description}</div>
                   </div>
                 </div>
               ))}

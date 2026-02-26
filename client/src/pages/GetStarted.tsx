@@ -51,7 +51,7 @@ export default function GetStarted() {
     if (isAuthenticated) {
       setLocation("/mission-control");
     } else {
-      login();
+      login("/mission-control");
     }
   };
 

@@ -112,7 +112,7 @@ export default function WorkspaceAdvance() {
               <div>
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Retrospect Lab</h1>
-                  <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30" style={{ background: "#2B8A6E", color: "white" }}>
+                  <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30" style={{ background: "#2B8A6E", color: "white", padding: "4px 12px" }}>
                     <SubBrandLabel name="Retrospect™" />
                   </Badge>
                 </div>
@@ -147,21 +147,21 @@ export default function WorkspaceAdvance() {
               <div className="flex items-center gap-4">
                 <div className="flex-1 flex items-center gap-2">
                   <Link href="/workspaces/identify">
-                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors">
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43, 138, 110, 0.2)" }}>
                       <ClipboardList className="h-4 w-4 text-[#2B8A6E]" />
                       <span className="text-sm text-[#2B8A6E]">IDENTIFY</span>
                     </div>
                   </Link>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/detect">
-                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#0A0F2E]/10 hover:bg-[#0A0F2E]/20 cursor-pointer transition-colors">
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#0A0F2E]/10 hover:bg-[#0A0F2E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(10, 15, 46, 0.2)" }}>
                       <Radar className="h-4 w-4 text-[#0A0F2E]" />
                       <span className="text-sm text-[#0A0F2E]">DETECT</span>
                     </div>
                   </Link>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/execute">
-                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/10 hover:bg-[#C9A84C]/20 cursor-pointer transition-colors">
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/10 hover:bg-[#C9A84C]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(201, 168, 76, 0.2)" }}>
                       <Compass className="h-4 w-4 text-[#C9A84C]" />
                       <span className="text-sm text-[#C9A84C]">EXECUTE</span>
                     </div>

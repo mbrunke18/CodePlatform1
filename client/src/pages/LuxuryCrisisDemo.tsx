@@ -108,7 +108,7 @@ export default function LuxuryCrisisDemo() {
             {/* The Scenario */}
             <Card className="p-8 bg-white/5 border-white/10">
               <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 bg-red-900/50 rounded-full">
+                <div className="p-3 bg-[#0A0F2E] rounded-full">
                   <Target className="h-6 w-6 text-red-400" />
                 </div>
                 <div>

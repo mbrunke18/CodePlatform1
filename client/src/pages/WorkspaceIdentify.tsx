@@ -18,7 +18,8 @@ import {
   Lightbulb,
   Shield,
   Rocket,
-  Globe
+  Globe,
+  Radar
 } from 'lucide-react';
 import { SubBrandLabel } from "@/components/SubBrandLabel";
 
@@ -149,19 +150,20 @@ export default function WorkspaceIdentify() {
                   </div>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/detect">
-                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#0A0F2E]/10 hover:bg-[#0A0F2E]/20 cursor-pointer transition-colors">
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#0A0F2E]/10 hover:bg-[#0A0F2E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(10, 15, 46, 0.2)" }}>
+                      <Radar className="h-4 w-4 text-[#0A0F2E]" />
                       <span className="text-sm text-[#0A0F2E]">DETECT</span>
                     </div>
                   </Link>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/execute">
-                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/10 hover:bg-[#C9A84C]/20 cursor-pointer transition-colors">
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/10 hover:bg-[#C9A84C]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(201, 168, 76, 0.2)" }}>
                       <span className="text-sm text-[#C9A84C]">EXECUTE</span>
                     </div>
                   </Link>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/advance">
-                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors">
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43, 138, 110, 0.2)" }}>
                       <span className="text-sm text-[#2B8A6E]">ADVANCE</span>
                     </div>
                   </Link>
@@ -192,8 +194,12 @@ export default function WorkspaceIdentify() {
             ))}
           </div>
 
-          {/* Recent Playbook Activity */}
-          <h2 className="text-xl font-bold text-[#0A0F2E] dark:text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Recent Playbook Activity</h2>
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <h2 className="text-xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Recent Playbook Activity</h2>
+                <Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-none text-xs">Live Update</Badge>
+              </div>
+            </CardHeader>
           <div className="space-y-3 mb-8">
             <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow border-l-4 border-l-[#2B8A6E]">
               <CardContent className="p-4">
@@ -204,7 +210,7 @@ export default function WorkspaceIdentify() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h4 className="font-semibold text-[#0A0F2E] dark:text-white">M&A Integration Playbook #12</h4>
-                      <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">Active</Badge>
+                      <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30" style={{ background: "#2B8A6E", color: "white" }}>Active</Badge>
                     </div>
                     <p className="text-sm text-[#6B7280] dark:text-white/60 mt-0.5">Updated 2 hours ago by Sarah Chen</p>
                   </div>
@@ -221,7 +227,7 @@ export default function WorkspaceIdentify() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Crisis Response Playbook #31</h4>
-                      <Badge className="bg-red-600/20 text-red-700 border-red-600/30">Triggered</Badge>
+                      <Badge className="bg-red-600/20 text-red-700 border-red-600/30" style={{ background: "red", color: "white" }}>Triggered</Badge>
                     </div>
                     <p className="text-sm text-[#6B7280] dark:text-white/60 mt-0.5">Activated Feb 3 via automated trigger</p>
                   </div>
@@ -238,7 +244,7 @@ export default function WorkspaceIdentify() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Product Launch Playbook #45</h4>
-                      <Badge className="bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30">In Review</Badge>
+                      <Badge className="bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30" style={{ background: "#C9A84C", color: "#0A0F2E" }}>In Review</Badge>
                     </div>
                     <p className="text-sm text-[#6B7280] dark:text-white/60 mt-0.5">Draft review pending from 3 stakeholders</p>
                   </div>

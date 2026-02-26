@@ -91,7 +91,7 @@ export default function PlaybookCommand() {
       <>
         <StandardNav />
         <main className="max-w-4xl mx-auto px-6 py-16 text-center">
-          <AlertTriangle className="h-12 w-12 mx-auto text-amber-500 mb-4" />
+          <AlertTriangle className="h-12 w-12 mx-auto text-[#C9A84C] mb-4" />
           <h1 className="text-2xl font-bold mb-2">Playbook Not Found</h1>
           <p className="text-gray-800 mb-6">The requested playbook could not be located.</p>
           <Button onClick={() => setLocation("/playbooks")}>

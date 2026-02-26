@@ -106,7 +106,7 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
                       <span className="text-[#6B7280]">Target: {kpi.target}</span>
                       <span className={kpi.color}>{kpi.progress}%</span>
                     </div>
-                    <Progress value={kpi.progress} className="h-2" />
+                    <Progress value={kpi.progress} className="h-2 [&>div]:bg-[#C9A84C]" />
                   </div>
                 </CardContent>
               </Card>

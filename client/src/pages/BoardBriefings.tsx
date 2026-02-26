@@ -126,7 +126,7 @@ export default function BoardBriefings() {
             Automated executive reports with evidence traceability for board presentations
           </p>
         </div>
-        <Button className="bg-[#0A0F2E] dark:bg-[#C9A84C] text-white dark:text-[#0A0F2E] hover:opacity-90" data-testid="button-generate-briefing" style={{ background: "#0A0F2E" }}>
+        <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]" data-testid="button-generate-briefing">
           <FileText className="h-4 w-4 mr-2" />
           Generate New Briefing
         </Button>
@@ -394,7 +394,7 @@ export default function BoardBriefings() {
                       <div className="flex items-center gap-2">
                         <h3 className="font-semibold text-[#0A0F2E] dark:text-white" data-testid={`text-report-title-${report.id}`}>{report.title}</h3>
                         <Badge variant="outline" className="border-[#0A0F2E]/30 text-[#0A0F2E] dark:border-white/20 dark:text-white">{report.reportType}</Badge>
-                        <Badge className="bg-[#0A0F2E] dark:bg-[#C9A84C] text-white dark:text-[#0A0F2E]">{report.reportingPeriod}</Badge>
+                        <Badge className="bg-[#0A0F2E] text-white border-none">{report.reportingPeriod}</Badge>
                         {report.approvedBy && (
                           <CheckCircle className="h-5 w-5 text-[#2B8A6E]" />
                         )}
@@ -410,10 +410,10 @@ export default function BoardBriefings() {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                      <Button size="sm" className="bg-[#0A0F2E] dark:bg-[#C9A84C] text-white dark:text-[#0A0F2E] hover:opacity-90" data-testid={`button-view-report-${report.id}`} style={{ background: "#0A0F2E" }}>
+                      <Button size="sm" className="bg-[#0A0F2E] text-white hover:bg-[#141B45]" data-testid={`button-view-report-${report.id}`}>
                         View Report
                       </Button>
-                      <Button size="sm" variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] dark:border-white/20 dark:text-white hover:bg-[#0A0F2E]/5 dark:hover:bg-white/5" data-testid={`button-export-report-${report.id}`} style={{ color: "#0A0F2E" }}>
+                      <Button size="sm" variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] hover:bg-[#0A0F2E]/5" data-testid={`button-export-report-${report.id}`}>
                         <Download className="h-4 w-4 mr-2" />
                         Export
                       </Button>

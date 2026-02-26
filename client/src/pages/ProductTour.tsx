@@ -267,8 +267,8 @@ export default function ProductTour() {
           transition={{ delay: 0.3 }}
           className="text-center"
         >
-          <div className="w-24 h-24 mx-auto bg-[#0A0F2E]/10 rounded-none flex items-center justify-center mb-4">
-            <Clock className="w-12 h-12 text-[#0A0F2E]" />
+          <div className="w-24 h-24 mx-auto bg-[#C9A84C]/10 rounded-none flex items-center justify-center mb-4">
+            <Clock className="w-12 h-12 text-[#C9A84C]" />
           </div>
           <p className="text-2xl font-bold text-[#0A0F2E]">72+ Hours</p>
           <p className="text-[#0A0F2E] font-medium">Signal to Decision</p>
@@ -279,8 +279,8 @@ export default function ProductTour() {
           transition={{ delay: 0.5 }}
           className="text-center"
         >
-          <div className="w-24 h-24 mx-auto bg-[#0A0F2E]/10 rounded-none flex items-center justify-center mb-4">
-            <AlertTriangle className="w-12 h-12 text-[#0A0F2E]" />
+          <div className="w-24 h-24 mx-auto bg-[#C9A84C]/10 rounded-none flex items-center justify-center mb-4">
+            <AlertTriangle className="w-12 h-12 text-[#C9A84C]" />
           </div>
           <p className="text-2xl font-bold text-[#0A0F2E]">15+ Meetings</p>
           <p className="text-[#0A0F2E] font-medium">To Align Stakeholders</p>
@@ -291,8 +291,8 @@ export default function ProductTour() {
           transition={{ delay: 0.7 }}
           className="text-center"
         >
-          <div className="w-24 h-24 mx-auto bg-[#0A0F2E]/10 rounded-none flex items-center justify-center mb-4">
-            <TrendingUp className="w-12 h-12 text-[#0A0F2E] rotate-180" />
+          <div className="w-24 h-24 mx-auto bg-[#C9A84C]/10 rounded-none flex items-center justify-center mb-4">
+            <TrendingUp className="w-12 h-12 text-[#C9A84C] rotate-180" />
           </div>
           <p className="text-2xl font-bold text-[#0A0F2E]">$10-50M</p>
           <p className="text-[#0A0F2E] font-medium">Annual Revenue at Risk</p>
@@ -454,9 +454,9 @@ export default function ProductTour() {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 1 + i * 0.1 }}
-                    className="flex items-center gap-2 bg-slate-50 border border-[#E8E4DC] rounded-none p-3"
+                    className="flex items-center gap-2 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none p-3"
                   >
-                    <div className="w-8 h-8 bg-[#0A0F2E]/5 border border-[#E8E4DC] rounded-none flex items-center justify-center">
+                    <div className="w-8 h-8 bg-[#C9A84C]/5 border border-[#E8E4DC] rounded-none flex items-center justify-center">
                       <CheckCircle2 className="w-4 h-4 text-[#2B8A6E]" />
                     </div>
                     <span className="text-sm text-[#0A0F2E] font-bold uppercase tracking-widest text-[9px]">{role}</span>
@@ -491,8 +491,8 @@ export default function ProductTour() {
           transition={{ delay: 0.5 }}
           className="text-center"
         >
-          <div className="w-24 h-24 mx-auto bg-[#0A0F2E] rounded-none flex items-center justify-center mb-4">
-            <Users className="w-12 h-12 text-white" />
+          <div className="w-24 h-24 mx-auto bg-[#C9A84C] rounded-none flex items-center justify-center mb-4">
+            <Users className="w-12 h-12 text-[#0A0F2E]" />
           </div>
           <p className="text-5xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>6</p>
           <p className="text-[#0A0F2E] font-bold uppercase tracking-widest text-[10px] mt-2">Stakeholders Aligned</p>

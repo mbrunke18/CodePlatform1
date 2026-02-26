@@ -151,11 +151,11 @@ type CategoryKey = 'offense' | 'defense' | 'special_teams';
 
 const statusConfig = {
   pending: { color: 'bg-[#F8F7F4] text-[#6B7280]', icon: Circle, label: 'Pending' },
-  blocked: { color: 'bg-red-600/10 text-red-600', icon: AlertCircle, label: 'Blocked' },
+  blocked: { color: 'bg-red-700/10 text-red-700', icon: AlertCircle, label: 'Blocked' },
   ready: { color: 'bg-[#0A0F2E] text-white', icon: Play, label: 'Ready' },
   in_progress: { color: 'bg-[#C9A84C]/10 text-[#C9A84C]', icon: Pause, label: 'In Progress' },
   completed: { color: 'bg-[#2B8A6E]/10 text-[#2B8A6E]', icon: CheckCircle, label: 'Completed' },
-  failed: { color: 'bg-red-600/10 text-red-600', icon: AlertCircle, label: 'Failed' },
+  failed: { color: 'bg-red-700/10 text-red-700', icon: AlertCircle, label: 'Failed' },
 };
 
 const NAVY = "#0A0F2E";
@@ -492,7 +492,7 @@ export default function ExecutionCoordination() {
                   Industry Comparison
                 </h3>
                 <p className="text-[#6B7280] leading-relaxed">
-                  Without Poise, this coordinated response would take <span className="font-bold text-red-600">72 hours to decide + 2 weeks to execute</span>. 
+                  Without Poise, this coordinated response would take <span className="font-bold text-red-700">72 hours to decide + 2 weeks to execute</span>. 
                   With Poise, you're on track to complete in <span className="font-bold text-[#2B8A6E]">~45 minutes total</span>.
                 </p>
               </div>

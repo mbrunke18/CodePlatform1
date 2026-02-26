@@ -86,7 +86,7 @@ export default function ContinuousModePage() {
               <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Always-On Intelligence</span>
             </div>
             <h1 className="text-4xl font-bold text-[#0A0F2E] mb-2 flex items-center gap-3" style={CG}>
-              <Activity className="w-10 h-10 text-[#0A0F2E]" />
+              <Activity className="w-10 h-10 text-[#0A0F2E] dark:text-[#C9A84C]" />
               Continuous Operations Mode
             </h1>
             <p className="text-[#6B7280]">

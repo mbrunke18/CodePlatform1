@@ -21,8 +21,13 @@ export function useAuth() {
   const isAuthenticated = !!user && !error;
   const needsOnboarding = user?.needsOnboarding || false;
 
-  const login = () => {
-    window.location.href = '/api/login';
+  const login = (returnTo?: string) => {
+    const url = returnTo ? `/api/login?returnTo=${encodeURIComponent(returnTo)}` : '/api/login';
+    try {
+      (window.top || window).location.href = url;
+    } catch {
+      window.location.href = url;
+    }
   };
 
   const logout = () => {

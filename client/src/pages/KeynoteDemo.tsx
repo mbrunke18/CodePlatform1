@@ -76,7 +76,7 @@ function CountUp({ end, duration = 2000, prefix = '', suffix = '' }: { end: numb
 function ActivationTimeline() {
   const [step, setStep] = useState(0);
   const steps = [
-    { time: '0:00', label: 'Signal Detected', detail: 'AI identifies competitive threat', icon: Radio, color: 'text-red-600' },
+    { time: '0:00', label: 'Signal Detected', detail: 'AI identifies competitive threat', icon: Radio, color: 'text-[#0A0F2E]' },
     { time: '0:30', label: 'Playbook Matched', detail: 'Competitive Response #47 selected', icon: BookOpen, color: 'text-[#C9A84C]' },
     { time: '1:00', label: 'Stakeholders Notified', detail: '28 executives via Slack, Email, Teams', icon: Users, color: 'text-[#0A0F2E]' },
     { time: '2:00', label: 'War Room Created', detail: '#war-room-competitive-2024 live', icon: Shield, color: 'text-[#0A0F2E]' },
@@ -183,7 +183,7 @@ export default function KeynoteDemo() {
     opening: (
       <div className="flex flex-col items-center justify-center min-h-screen text-center px-8 bg-white">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
-          <AlertTriangle className="h-20 w-20 text-red-600 mx-auto mb-8" />
+          <AlertTriangle className="h-20 w-20 text-[#0A0F2E] mx-auto mb-8" />
         </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -192,7 +192,7 @@ export default function KeynoteDemo() {
           className="text-7xl font-bold text-[#0A0F2E] mb-6 tracking-tight"
           style={CG}
         >
-          Strategic Execution Is <span className="text-red-600">Broken</span>
+          Strategic Execution Is <span className="text-[#0A0F2E]">Broken</span>
         </motion.h1>
         <motion.div
           initial={{ opacity: 0 }}
@@ -227,7 +227,7 @@ export default function KeynoteDemo() {
     cost: (
       <div className="flex flex-col items-center justify-center min-h-screen text-center px-8 bg-white">
         <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }}>
-          <DollarSign className="h-20 w-20 text-red-600 mx-auto mb-8" />
+          <DollarSign className="h-20 w-20 text-[#0A0F2E] mx-auto mb-8" />
         </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -236,7 +236,7 @@ export default function KeynoteDemo() {
           className="text-7xl font-bold text-[#0A0F2E] mb-4 tracking-tight"
           style={CG}
         >
-          The <span className="text-red-600">$4.7 Trillion</span> Problem
+          The <span className="text-[#0A0F2E]">$4.7 Trillion</span> Problem
         </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}
@@ -253,7 +253,7 @@ export default function KeynoteDemo() {
           className="grid grid-cols-4 gap-8 max-w-6xl"
         >
           {[
-            { icon: Clock, value: '3-5 days', label: 'Average response time to competitive threats', color: 'text-red-600', bg: 'bg-red-50' },
+            { icon: Clock, value: '3-5 days', label: 'Average response time to competitive threats', color: 'text-[#0A0F2E]', bg: 'bg-[#F8F7F4]' },
             { icon: Users, value: '30+', label: 'Stakeholders to coordinate per strategic event', color: 'text-[#0A0F2E]', bg: 'bg-[#F8F7F4]' },
             { icon: FileText, value: '47', label: 'Documents manually created per activation', color: 'text-[#C9A84C]', bg: 'bg-[#C9A84C]/5' },
             { icon: DollarSign, value: '$2.4M', label: 'Average cost per day of delayed response', color: 'text-[#2B8A6E]', bg: 'bg-[#2B8A6E]/5' },
@@ -348,8 +348,8 @@ export default function KeynoteDemo() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 bg-red-50 text-red-600 border border-red-100 px-4 py-2 rounded-full text-sm font-medium mb-6 shadow-sm">
-            <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 rounded-full bg-red-600" />
+          <div className="inline-flex items-center gap-2 bg-[#0A0F2E]/10 text-[#0A0F2E] border border-[#0A0F2E]/20 px-4 py-2 rounded-full text-sm font-medium mb-6 shadow-sm">
+            <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 rounded-full bg-[#0A0F2E]" />
             LIVE SIGNAL DETECTED
           </div>
           <h2 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={CG}>Signal Intelligence Feed</h2>
@@ -376,7 +376,7 @@ export default function KeynoteDemo() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-white/60 uppercase tracking-widest">Severity</span>
-                <span className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">CRITICAL</span>
+                <span className="bg-[#0A0F2E] text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20">CRITICAL</span>
               </div>
             </div>
             <div className="p-8">

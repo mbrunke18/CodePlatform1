@@ -816,8 +816,8 @@ export default function LiveActivationCenter() {
                 <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-3 uppercase">Phase Breakdown</h3>
                 <div className="space-y-2">
                   {[
-                    { label: 'Immediate', count: tasks.filter(t => t.phase === 'IMMEDIATE').length, color: 'text-red-400' },
-                    { label: 'Secondary', count: tasks.filter(t => t.phase === 'SECONDARY').length, color: 'text-amber-400' },
+                    { label: 'Immediate', count: tasks.filter(t => t.phase === 'IMMEDIATE').length, color: 'text-[#2B8A6E]' },
+                    { label: 'Secondary', count: tasks.filter(t => t.phase === 'SECONDARY').length, color: 'text-[#C9A84C]' },
                     { label: 'Follow Up', count: tasks.filter(t => t.phase === 'FOLLOW_UP').length, color: 'text-[#0A0F2E]' },
                   ].map(p => (
                     <div key={p.label} className="flex items-center justify-between text-sm">

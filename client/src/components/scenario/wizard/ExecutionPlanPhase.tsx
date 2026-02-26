@@ -303,7 +303,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
               <Button
                 onClick={addTask}
                 disabled={!newTask.title || !newTask.assignedRole}
-                className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E]"
+                className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white"
                 data-testid="button-add-task"
               >
                 <Plus className="h-4 w-4 mr-2" />

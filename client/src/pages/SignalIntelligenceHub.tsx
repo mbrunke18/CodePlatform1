@@ -57,7 +57,8 @@ import {
   Sparkles,
   Brain,
   Timer,
-  Radar
+  Radar,
+  Grid3X3
 } from 'lucide-react';
 import { Link } from 'wouter';
 import { SIGNAL_CATEGORIES, type SignalCategory, type DataPoint } from '@shared/intelligence-signals';

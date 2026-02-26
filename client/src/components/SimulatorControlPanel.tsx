@@ -50,7 +50,7 @@ export function SimulatorControlPanel() {
                 onClick={start}
                 variant="default"
                 size="sm"
-                className="bg-[#0A0F2E] hover:bg-[#0A0F2E]"
+                className="bg-[#0A0F2E] hover:bg-[#141B45] text-white"
                 data-testid="btn-start-simulator"
               >
                 <Play className="h-4 w-4 mr-1" />
