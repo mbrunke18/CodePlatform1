@@ -411,7 +411,7 @@ export default function ReadinessAssessment() {
                 </div>
                 <Progress
                   value={((currentQuestion + 1) / questions.length) * 100}
-                  className="h-2 bg-[#E8E4DC] dark:bg-white/5"
+                  className="h-2 bg-[#E8E4DC] dark:bg-white/5 [&>div]:bg-[#C9A84C]"
                 />
               </div>
 

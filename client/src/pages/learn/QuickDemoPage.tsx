@@ -136,10 +136,10 @@ const SCENARIOS: Scenario[] = [
 
 const PHASES = [
   { id: 'chaos' as Phase, name: 'THE CHAOS', icon: AlertTriangle, color: 'red' },
-  { id: 'identify' as Phase, name: 'IDENTIFY', icon: BookOpen, color: 'violet' },
-  { id: 'detect' as Phase, name: 'DETECT', icon: Radar, color: 'blue' },
-  { id: 'execute' as Phase, name: 'EXECUTE', icon: Radio, color: 'emerald' },
-  { id: 'advance' as Phase, name: 'ADVANCE', icon: BarChart3, color: 'amber' },
+  { id: 'identify' as Phase, name: 'IDENTIFY', icon: BookOpen, color: 'gold' },
+  { id: 'detect' as Phase, name: 'DETECT', icon: Radar, color: 'navy' },
+  { id: 'execute' as Phase, name: 'EXECUTE', icon: Radio, color: 'teal' },
+  { id: 'advance' as Phase, name: 'ADVANCE', icon: BarChart3, color: 'gold' },
 ];
 
 const MESSAGE_ICONS: Record<string, any> = {
@@ -151,10 +151,9 @@ const MESSAGE_ICONS: Record<string, any> = {
 };
 
 const PHASE_COLORS: Record<string, { bg: string; border: string; text: string }> = {
-  violet: { bg: 'bg-[#C9A84C]/20', border: 'border-[#C9A84C]', text: 'text-[#C9A84C]' },
-  blue: { bg: 'bg-[#0A0F2E]/20', border: 'border-[#0A0F2E]', text: 'text-[#0A0F2E]' },
-  emerald: { bg: 'bg-[#2B8A6E]/20', border: 'border-[#2B8A6E]', text: 'text-[#2B8A6E]' },
-  amber: { bg: 'bg-amber-500/20', border: 'border-amber-500', text: 'text-amber-400' },
+  gold: { bg: 'bg-[#C9A84C]/20', border: 'border-[#C9A84C]', text: 'text-[#C9A84C]' },
+  navy: { bg: 'bg-[#0A0F2E]/20', border: 'border-[#0A0F2E]', text: 'text-[#0A0F2E]' },
+  teal: { bg: 'bg-[#2B8A6E]/20', border: 'border-[#2B8A6E]', text: 'text-[#2B8A6E]' },
   red: { bg: 'bg-red-500/20', border: 'border-red-500', text: 'text-red-400' },
 };
 
@@ -390,7 +389,7 @@ export default function QuickDemoPage() {
         {currentPhase === 'select' && (
           <>
             <div className="text-center mb-8">
-              <Badge className="mb-4 bg-gradient-to-r from-[#C9A84C]/20 to-[#2B8A6E]/20 text-amber-300 border-amber-500/30">
+              <Badge className="mb-4 bg-gradient-to-r from-[#C9A84C]/20 to-[#2B8A6E]/20 text-[#C9A84C] border-[#C9A84C]/30">
                 5-Minute Interactive Demo
               </Badge>
               <h1 className="text-3xl font-bold mb-2">Experience Execution OS</h1>

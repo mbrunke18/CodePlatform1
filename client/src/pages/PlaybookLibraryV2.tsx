@@ -246,6 +246,9 @@ function CompoundDisruptionSection() {
             const isExpanded = expandedScenario === i;
             const scenarioColor = item.scenario.includes("Cyber") ? TEAL : item.scenario.includes("Geopolitical") ? GOLD : item.scenario.includes("Climate") ? TEAL : item.scenario.includes("AI") ? GOLD : NAVY;
             const categoryColor = item.scenario.includes("Cyber") ? TEAL : item.scenario.includes("Geopolitical") ? GOLD : item.scenario.includes("Climate") ? TEAL : item.scenario.includes("AI") ? GOLD : NAVY;
+            const isOffense = item.domains.includes("Financial") || item.scenario.includes("AI");
+            const isDefense = item.scenario.includes("Cyber") || item.scenario.includes("Climate");
+            const indicatorColor = isOffense ? TEAL : isDefense ? NAVY : GOLD;
             return (
               <div
                 key={i}
@@ -258,7 +261,7 @@ function CompoundDisruptionSection() {
               >
                 <div className="flex items-center justify-between mb-1">
                   <div className="flex items-center gap-2">
-                    <Icon className="h-4 w-4" style={{ color: scenarioColor }} />
+                    <Icon className="h-4 w-4" style={{ color: indicatorColor }} />
                     <div className="text-sm font-semibold" style={{ color: NAVY }}>{item.scenario}</div>
                   </div>
                   <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} style={{ color: MUTED }} />
@@ -273,12 +276,14 @@ function CompoundDisruptionSection() {
         {expandedScenario !== null && (() => {
           const scenario = compoundScenarios[expandedScenario];
           const Icon = scenario.icon;
-          const scenarioColor = scenario.scenario.includes("Cyber") ? TEAL : scenario.scenario.includes("Geopolitical") ? GOLD : scenario.scenario.includes("Climate") ? TEAL : scenario.scenario.includes("AI") ? GOLD : NAVY;
+          const isOffense = scenario.domains.includes("Financial") || scenario.scenario.includes("AI");
+          const isDefense = scenario.scenario.includes("Cyber") || scenario.scenario.includes("Climate");
+          const indicatorColor = isOffense ? TEAL : isDefense ? NAVY : GOLD;
           return (
             <div className="mt-5 rounded-xl border bg-[#F8F7F4]/50 p-6 animate-in fade-in slide-in-from-top-2 duration-300" style={{ borderColor: BORDER }}>
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-10 h-10 rounded-lg bg-white border flex items-center justify-center shrink-0" style={{ borderColor: BORDER }}>
-                  <Icon className="h-5 w-5" style={{ color: scenarioColor }} />
+                  <Icon className="h-5 w-5" style={{ color: indicatorColor }} />
                 </div>
                 <div className="flex-1">
                   <h4 style={{ ...CG, color: NAVY }} className="text-base font-bold mb-1">{scenario.scenario}</h4>

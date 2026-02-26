@@ -21,6 +21,13 @@ import {
 
 const features = [
   {
+    icon: Shield,
+    title: 'IDENTIFY — Playbook Depth Chart',
+    description: 'Build your strategic arsenal. Browse 170 pre-built playbooks across 9 domains — ready to deploy instantly.',
+    color: 'text-[#2B8A6E]',
+    bg: 'bg-[#2B8A6E]/10',
+  },
+  {
     icon: Zap,
     title: 'DETECT — Signal Intelligence',
     description: 'See AI-powered monitoring detect competitive threats, regulatory shifts, and market opportunities in real time.',
@@ -29,22 +36,22 @@ const features = [
   },
   {
     icon: Target,
-    title: 'EXECUTE — Playbook Activation',
-    description: 'Browse 170 pre-built playbooks and activate a coordinated response across your org within 12 minutes.',
+    title: 'EXECUTE — 12-Minute Coordination',
+    description: 'From trigger detection to full team mobilization in under 12 minutes — the platform enforces this standard.',
     color: 'text-[#C9A84C]',
     bg: 'bg-[#C9A84C]/10',
   },
   {
     icon: BarChart3,
-    title: 'ADVANCE — Live Analytics',
-    description: 'Track execution velocity, decision timing, and stakeholder coverage across every activation.',
+    title: 'ADVANCE — Outcome tracking',
+    description: 'Every execution feeds back into your playbooks. AI suggests refinements. Your organization gets smarter.',
     color: 'text-[#2B8A6E]',
     bg: 'bg-[#2B8A6E]/10',
   },
   {
     icon: Bell,
-    title: 'Real Email Notifications',
-    description: 'Activate a playbook and your stakeholders get a real-time email with their assigned tasks and actions.',
+    title: 'Real-Time Orchestration',
+    description: 'Activate a playbook and your stakeholders get instant notifications with their assigned tasks and contextual briefs.',
     color: 'text-[#0A0F2E]',
     bg: 'bg-[#0A0F2E]/10',
   },
@@ -54,13 +61,6 @@ const features = [
     description: 'Manage your response team, track task completion, and coordinate across functions in real time.',
     color: 'text-[#C9A84C]',
     bg: 'bg-[#C9A84C]/10',
-  },
-  {
-    icon: Clock,
-    title: '12-Minute Activation',
-    description: 'From trigger detection to full team mobilization in under 12 minutes — the platform enforces this standard.',
-    color: 'text-[#2B8A6E]',
-    bg: 'bg-[#2B8A6E]/10',
   },
 ];
 
@@ -106,7 +106,7 @@ export default function ExplorePage() {
               <Button
                 size="lg"
                 className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-10 py-8 text-sm font-bold rounded-none gap-3 uppercase tracking-widest"
-                onClick={() => { try { (window.top || window).location.href = '/api/login'; } catch { window.open('/api/login', '_blank'); } }}
+                onClick={() => { window.location.href = '/api/login'; }}
               >
                 <LogIn className="h-4 w-4" />
                 Sign In to Explore
@@ -195,7 +195,7 @@ export default function ExplorePage() {
                 </ul>
                 <Button
                   className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white rounded-none font-bold uppercase tracking-widest text-[10px] h-12"
-                  onClick={() => { (window.top || window).location.href = '/api/login'; }}
+                  onClick={() => { window.location.href = '/api/login'; }}
                 >
                   <LogIn className="h-4 w-4 mr-2" />
                   Sign In to Explore

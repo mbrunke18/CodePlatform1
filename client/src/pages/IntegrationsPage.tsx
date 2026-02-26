@@ -55,10 +55,10 @@ const categoryIcons = {
 
 const categoryColors = {
   project_management: "bg-[#0A0F2E]/10 text-[#0A0F2E]",
-  communication: "bg-[#DFC178]/10 text-[#C9A84C]",
+  communication: "bg-[#C9A84C]/10 text-[#C9A84C]",
   scheduling: "bg-[#2B8A6E]/10 text-[#2B8A6E]",
   directory: "bg-[#C9A84C]/10 text-[#0A0F2E]",
-  crm: "bg-[#141B45]/10 text-[#141B45]",
+  crm: "bg-[#0A0F2E]/10 text-[#0A0F2E]",
 };
 
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
@@ -440,10 +440,6 @@ export default function IntegrationsPage() {
             </TabsContent>
           </Tabs>
         </div>
-      </div>
-    </PageLayout>
-  );
-}
 
         {/* Connection Dialog */}
         <Dialog open={isConnecting} onOpenChange={setIsConnecting}>

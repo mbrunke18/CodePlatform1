@@ -147,7 +147,7 @@ export default function SettingsPage() {
                   Dashboard
                 </Button>
               </Link>
-              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#3BAF8A", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#2B8A6E", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>
                 <CheckCircle className="w-3 h-3 mr-1" />
                 All Systems Operational
               </div>
@@ -500,7 +500,7 @@ export default function SettingsPage() {
                             <SelectValue placeholder="Choose a Fortune 500 crisis scenario..." />
                           </SelectTrigger>
                           <SelectContent>
-                            {!scenariosLoading && scenariosData?.scenarios?.map((scenario: any) => (
+                            {!scenariosLoading && scenariosData?.scenarios && (scenariosData.scenarios as any[]).map((scenario: any) => (
                               <SelectItem key={scenario.id} value={scenario.id}>
                                 {scenario.name}
                               </SelectItem>

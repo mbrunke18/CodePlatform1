@@ -160,10 +160,10 @@ const IDEA_STORY = [
     title: "One Click. 12 Minutes. Everyone Aligned.",
     subtitle: "Execution OS handles the coordination so you handle the crisis",
     phase: "EXECUTE",
-    phaseColor: "bg-[#2B8A6E]",
+    phaseColor: "bg-[#C9A84C]",
     icon: Zap,
-    color: "text-[#2B8A6E]",
-    bgColor: "bg-[#2B8A6E]/20",
+    color: "text-[#C9A84C]",
+    bgColor: "bg-[#C9A84C]/20",
     time: 120,
     description: "When you activate a playbook, Execution OS instantly notifies all stakeholders, creates tasks in your existing PM tools (Jira, Asana, etc.), stages all documents, and unlocks pre-approved budgets. Your team sees their role-specific dashboard—they know exactly what to do.",
     roleWins: [

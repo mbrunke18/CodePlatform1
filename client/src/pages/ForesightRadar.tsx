@@ -318,7 +318,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                       const distance = 25 + (index * 8);
                       const x = 50 + distance * Math.cos((angle * Math.PI) / 180);
                       const y = 50 + distance * Math.sin((angle * Math.PI) / 180);
-                      const color = signal.impact === 'critical' ? GOLD : signal.impact === 'high' ? GOLD : TEAL;
+                      const color = signal.impact === 'critical' ? '#dc2626' : signal.impact === 'high' ? GOLD : TEAL;
                       
                       return (
                         <div
@@ -374,8 +374,8 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                             letterSpacing: "0.1em", 
                             textTransform: "uppercase", 
                             padding: "2px 8px",
-                            background: signal.impact === 'critical' ? 'rgba(201,168,76,0.1)' : 'rgba(201,168,76,0.1)',
-                            color: signal.impact === 'critical' ? GOLD : GOLD
+                            background: signal.impact === 'critical' ? 'rgba(220,38,38,0.1)' : 'rgba(201,168,76,0.1)',
+                            color: signal.impact === 'critical' ? '#dc2626' : GOLD
                           }}>
                             {signal.impact}
                           </span>
@@ -485,7 +485,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                     </div>
                     <div style={{ padding: 16, background: OFF, border: "1px solid #E8E4DC" }}>
                       <div style={{ fontSize: 9, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" }}>Impact</div>
-                      <div style={{ fontSize: 20, fontWeight: 600, color: selectedSignal.impact === 'critical' ? '#ef4444' : GOLD }}>{selectedSignal.impact.toUpperCase()}</div>
+                      <div style={{ fontSize: 20, fontWeight: 600, color: selectedSignal.impact === 'critical' ? '#dc2626' : GOLD }}>{selectedSignal.impact.toUpperCase()}</div>
                     </div>
                   </div>
                   <div className="pt-8 flex gap-4">

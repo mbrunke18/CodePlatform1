@@ -298,7 +298,7 @@ export default function AgilityAssessment() {
               <span>Question {currentQuestion + 1} of {QUESTIONS.length}</span>
               <span>{Math.round(progress)}% Complete</span>
             </div>
-            <Progress value={progress} className="h-2 bg-[#E8E4DC] dark:bg-white/10" />
+            <Progress value={progress} className="h-2 bg-[#E8E4DC] dark:bg-white/10 [&>div]:bg-[#C9A84C]" />
           </div>
 
           <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10" data-testid="card-question">

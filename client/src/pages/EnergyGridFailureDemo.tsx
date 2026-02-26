@@ -323,7 +323,7 @@ export default function EnergyGridFailureDemo() {
                   <Button
                     size="lg"
                     onClick={() => goToAct("outcome")}
-                    className="gap-2 bg-[#2B8A6E] text-white hover:bg-[#3BAF8A]"
+                    className="gap-2 bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]"
                     data-testid="button-view-outcome"
                   >
                     View ROI Outcome

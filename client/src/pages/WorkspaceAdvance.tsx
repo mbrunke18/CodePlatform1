@@ -100,7 +100,7 @@ export default function WorkspaceAdvance() {
               <span className="text-[#0A0F2E] dark:text-white/60 hover:text-[#C9A84C] cursor-pointer">Execution OS One™</span>
             </Link>
             <ChevronRight className="h-4 w-4 text-[#0A0F2E] dark:text-white/40" />
-            <span className="text-[#C9A84C] font-medium">ADVANCE</span>
+            <span className="text-[#2B8A6E] font-medium">ADVANCE</span>
           </nav>
 
           {/* Header */}
@@ -222,7 +222,7 @@ export default function WorkspaceAdvance() {
                     </div>
                     <div className="flex items-center gap-3">
                       <span className="text-sm text-[#6B7280] dark:text-white/60">Confidence: 89%</span>
-                      <Progress value={89} className="w-24 h-1.5" />
+                      <Progress value={89} className="w-24 h-1.5 [&>div]:bg-[#C9A84C]" />
                     </div>
                   </div>
                 </div>
@@ -241,7 +241,7 @@ export default function WorkspaceAdvance() {
                     </div>
                     <div className="flex items-center gap-3">
                       <span className="text-sm text-[#6B7280] dark:text-white/60">Confidence: 96%</span>
-                      <Progress value={96} className="w-24 h-1.5" />
+                      <Progress value={96} className="w-24 h-1.5 [&>div]:bg-[#C9A84C]" />
                     </div>
                   </div>
                 </div>
@@ -260,7 +260,7 @@ export default function WorkspaceAdvance() {
                     </div>
                     <div className="flex items-center gap-3">
                       <span className="text-sm text-[#6B7280] dark:text-white/60">Confidence: 87%</span>
-                      <Progress value={87} className="w-24 h-1.5" />
+                      <Progress value={87} className="w-24 h-1.5 [&>div]:bg-[#C9A84C]" />
                     </div>
                   </div>
                 </div>

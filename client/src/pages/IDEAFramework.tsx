@@ -145,7 +145,7 @@ export default function IDEAFramework() {
             left: 0, 
             right: 0, 
             bottom: 0, 
-            backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", 
+            backgroundImage: "linear-gradient(rgba(201,168,76,0.1) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.1) 1px,transparent 1px)", 
             backgroundSize: "44px 44px" 
           }} />
           <div className="max-w-5xl mx-auto text-center relative z-10">

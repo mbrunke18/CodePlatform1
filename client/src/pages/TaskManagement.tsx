@@ -837,13 +837,13 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                         </p>
                       </div>
                       <div className="flex gap-4">
-                        <div className="text-center px-4 py-2 bg-white dark:bg-[#0A0F2E] rounded-lg border">
+                        <div className="text-center px-4 py-2 bg-white dark:bg-[#0A0F2E] rounded-none border">
                           <p className="text-2xl font-bold text-[#C9A84C]">
                             {sequenceSummary?.reduce((sum, d) => sum + parseInt(d.playbookCount), 0)?.toLocaleString() ?? '0'}
                           </p>
                           <p className="text-xs text-gray-800">Total Playbooks</p>
                         </div>
-                        <div className="text-center px-4 py-2 bg-white dark:bg-[#0A0F2E] rounded-lg border">
+                        <div className="text-center px-4 py-2 bg-white dark:bg-[#0A0F2E] rounded-none border">
                           <p className="text-2xl font-bold text-[#0A0F2E]">
                             {sequenceSummary?.reduce((sum, d) => sum + parseInt(d.taskCount), 0)?.toLocaleString() ?? '0'}
                           </p>
@@ -872,7 +872,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                         <CardHeader className="pb-3">
                           <div className="flex items-start justify-between">
                             <div className="flex items-center gap-3">
-                              <div className={`p-2 rounded-lg ${iconBg}`}>
+                              <div className={`p-2 rounded-none ${iconBg}`}>
                                 <DomainIcon className={`h-5 w-5 ${iconColor}`} />
                               </div>
                               <div>
@@ -903,9 +903,9 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                               <span>Task Coverage</span>
                               <span>{taskCount} / {playbookCount * 8}</span>
                             </div>
-                            <div className="h-2 w-full bg-slate-100 dark:bg-[#141B45] rounded-full overflow-hidden">
+                            <div className="h-2 w-full bg-slate-100 dark:bg-[#141B45] rounded-none overflow-hidden">
                               <div
-                                className={`h-full rounded-full transition-all ${progressColor}`}
+                                className={`h-full rounded-none transition-all ${progressColor}`}
                                 style={{ width: `${coverage}%` }}
                               />
                             </div>
@@ -1049,7 +1049,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
 
               <div className="space-y-2">
                 <Label>Dependencies (Tasks that must complete first)</Label>
-                <div className="grid grid-cols-2 gap-2 p-3 border rounded-lg max-h-40 overflow-y-auto">
+                <div className="grid grid-cols-2 gap-2 p-3 border rounded-none max-h-40 overflow-y-auto">
                   {tasks.filter(t => t.id !== editingTask?.id).map(task => (
                     <div key={task.id} className="flex items-center gap-2">
                       <Switch

@@ -295,7 +295,7 @@ export default function RetailFoodSafetyDemo() {
                     <Button
                       size="lg"
                       onClick={() => setCurrentAct("outcome")}
-                      className="bg-[#2B8A6E] text-white hover:bg-[#3BAF8A] px-8"
+                      className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8"
                       data-testid="button-view-outcome"
                     >
                       View ROI Outcome

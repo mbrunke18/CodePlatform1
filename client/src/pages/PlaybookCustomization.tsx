@@ -222,11 +222,16 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
     setStakeholderAssignments(stakeholderAssignments.filter((_, i) => i !== index));
   };
   
-  const getComplexityColor = (complexity: string) => {
+  const getComplexityColor = (complexity: string, category: string) => {
+    const isOffense = category === 'market' || category === 'growth';
+    const isDefense = category === 'crisis' || category === 'regulatory';
+    const color = isOffense ? "#2B8A6E" : isDefense ? "#0A0F2E" : "#C9A84C";
+    const contrastColor = isOffense ? "white" : isDefense ? "white" : "#0A0F2E";
+    
     switch (complexity) {
-      case 'low': return 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30';
-      case 'medium': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
-      case 'high': return 'bg-[#0A0F2E]/20 text-white border-white/10';
+      case 'low': return `bg-white border-[#E8E4DC] text-[${color}]`;
+      case 'medium': return `bg-[${color}]/10 text-[${color}] border-[${color}]/20`;
+      case 'high': return `bg-[${color}] text-[${contrastColor}] border-none`;
       default: return 'bg-black/5 text-gray-700 border-[#E8E4DC]';
     }
   };
@@ -392,7 +397,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex flex-wrap gap-2">
-                    <Badge className={getComplexityColor(template.complexity)}>
+                    <Badge className={getComplexityColor(template.complexity, template.category)}>
                       {template.complexity} complexity
                     </Badge>
                     <Badge variant="outline" className="text-[#0A0F2E] border-[#E8E4DC]">

@@ -104,6 +104,11 @@ export default function PlaybookCommand() {
     );
   }
 
+  const isOffense = playbook.primaryExecutiveRole?.toLowerCase().includes('sales') || playbook.primaryExecutiveRole?.toLowerCase().includes('marketing') || playbook.primaryExecutiveRole?.toLowerCase().includes('growth');
+  const isDefense = playbook.primaryExecutiveRole?.toLowerCase().includes('security') || playbook.primaryExecutiveRole?.toLowerCase().includes('risk') || playbook.primaryExecutiveRole?.toLowerCase().includes('legal') || playbook.primaryExecutiveRole?.toLowerCase().includes('compliance');
+  const badgeColor = isOffense ? "#2B8A6E" : isDefense ? "#0A0F2E" : "#C9A84C";
+  const badgeBg = isOffense ? "rgba(43, 138, 110, 0.1)" : isDefense ? "rgba(10, 15, 46, 0.1)" : "rgba(201, 168, 76, 0.1)";
+
   return (
     <>
       <StandardNav />
@@ -133,7 +138,7 @@ export default function PlaybookCommand() {
                 )}
               </div>
               {playbook.playbookNumber && (
-                <Badge variant="outline" className="text-lg px-3 py-1">
+                <Badge variant="outline" className="text-lg px-3 py-1" style={{ color: badgeColor, backgroundColor: badgeBg, borderColor: badgeColor }}>
                   #{playbook.playbookNumber}
                 </Badge>
               )}

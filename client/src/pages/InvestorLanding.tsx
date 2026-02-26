@@ -820,26 +820,26 @@ export default function InvestorLanding() {
         <section className="py-16 px-6 bg-white dark:bg-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-testid="heading-model">
+              <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E] dark:text-white" data-testid="heading-model">
                 High-Margin SaaS Business Model
               </h2>
-              <p className="text-xl text-gray-800 dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-model-subtitle">
+              <p className="text-xl text-[#0A0F2E] dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-model-subtitle">
                 Enterprise pricing with expansion revenue and sticky product-led growth
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <Card className="border-2" data-testid="card-pricing-enterprise">
+              <Card className="border-[#E8E4DC] border-2" data-testid="card-pricing-enterprise">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
+                  <CardTitle className="flex items-center gap-2 text-[#0A0F2E] dark:text-white">
                     <DollarSign className="h-6 w-6 text-[#2B8A6E]" />
                     Enterprise
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-3xl font-bold text-[#2B8A6E] mb-2" data-testid="text-price-enterprise">$250K</div>
-                  <div className="text-sm text-gray-800 dark:text-slate-300 mb-4">Annual Contract Value</div>
-                  <ul className="space-y-2 text-sm text-gray-800 dark:text-slate-300">
+                  <div className="text-sm text-[#0A0F2E] dark:text-slate-300 mb-4">Annual Contract Value</div>
+                  <ul className="space-y-2 text-sm text-[#0A0F2E] dark:text-slate-300">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
                       Single domain
@@ -856,17 +856,17 @@ export default function InvestorLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="border-2" data-testid="card-pricing-team">
+              <Card className="border-[#E8E4DC] border-2" data-testid="card-pricing-team">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
+                  <CardTitle className="flex items-center gap-2 text-[#0A0F2E] dark:text-white">
                     <Users className="h-6 w-6 text-[#0A0F2E]" />
                     Enterprise Plus
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-3xl font-bold text-[#0A0F2E] mb-2" data-testid="text-price-team">$450K</div>
-                  <div className="text-sm text-gray-800 dark:text-slate-300 mb-4">Annual Contract Value</div>
-                  <ul className="space-y-2 text-sm text-gray-800 dark:text-slate-300">
+                  <div className="text-sm text-[#0A0F2E] dark:text-slate-300 mb-4">Annual Contract Value</div>
+                  <ul className="space-y-2 text-sm text-[#0A0F2E] dark:text-slate-300">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-[#0A0F2E]" />
                       Multi-domain
@@ -883,17 +883,17 @@ export default function InvestorLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="border-2" data-testid="card-pricing-executive">
+              <Card className="border-[#C9A84C] border-2" data-testid="card-pricing-executive">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
+                  <CardTitle className="flex items-center gap-2 text-[#0A0F2E] dark:text-white">
                     <TrendingUp className="h-6 w-6 text-[#C9A84C]" />
                     Global
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-3xl font-bold text-[#C9A84C] mb-2" data-testid="text-price-executive">$750K-$1.5M</div>
-                  <div className="text-sm text-gray-800 dark:text-slate-300 mb-4">Custom Annual Contract</div>
-                  <ul className="space-y-2 text-sm text-gray-800 dark:text-slate-300">
+                  <div className="text-sm text-[#0A0F2E] dark:text-slate-300 mb-4">Custom Annual Contract</div>
+                  <ul className="space-y-2 text-sm text-[#0A0F2E] dark:text-slate-300">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-[#C9A84C]" />
                       Multi-region orchestration
@@ -911,32 +911,32 @@ export default function InvestorLanding() {
               </Card>
             </div>
 
-            <Card className="bg-gradient-to-br from-green-50 to-[#141B45] dark:from-[#141B45] dark:to-slate-700 border-2" data-testid="card-expansion">
+            <Card className="bg-[#F8F7F4] dark:from-[#141B45] dark:to-slate-700 border-[#E8E4DC] border-2" data-testid="card-expansion">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white" data-testid="heading-expansion">
+                <h3 className="text-2xl font-bold mb-6 text-[#0A0F2E] dark:text-white" data-testid="heading-expansion">
                   Expansion Revenue Streams
                 </h3>
                 <div className="grid md:grid-cols-3 gap-6">
                   <div data-testid="expansion-1">
                     <div className="flex items-center gap-2 mb-2">
                       <BarChart3 className="h-5 w-5 text-[#2B8A6E]" />
-                      <div className="font-semibold text-slate-900 dark:text-white">Integration Marketplace</div>
+                      <div className="font-semibold text-[#0A0F2E] dark:text-white">Integration Marketplace</div>
                     </div>
-                    <div className="text-gray-800 dark:text-slate-300">20% rev-share on third-party integrations (Salesforce, Jira, Slack)</div>
+                    <div className="text-[#0A0F2E] dark:text-slate-300">20% rev-share on third-party integrations (Salesforce, Jira, Slack)</div>
                   </div>
                   <div data-testid="expansion-2">
                     <div className="flex items-center gap-2 mb-2">
                       <Zap className="h-5 w-5 text-[#0A0F2E]" />
-                      <div className="font-semibold text-slate-900 dark:text-white">Premium Templates</div>
+                      <div className="font-semibold text-[#0A0F2E] dark:text-white">Premium Templates</div>
                     </div>
-                    <div className="text-gray-800 dark:text-slate-300">Industry-specific playbooks ($5K-$50K per template pack)</div>
+                    <div className="text-[#0A0F2E] dark:text-slate-300">Industry-specific playbooks ($5K-$50K per template pack)</div>
                   </div>
                   <div data-testid="expansion-3">
                     <div className="flex items-center gap-2 mb-2">
                       <Lock className="h-5 w-5 text-[#C9A84C]" />
-                      <div className="font-semibold text-slate-900 dark:text-white">Advisory Services</div>
+                      <div className="font-semibold text-[#0A0F2E] dark:text-white">Advisory Services</div>
                     </div>
-                    <div className="text-gray-800 dark:text-slate-300">Strategic workshops ($50K-$200K per engagement)</div>
+                    <div className="text-[#0A0F2E] dark:text-slate-300">Strategic workshops ($50K-$200K per engagement)</div>
                   </div>
                 </div>
               </CardContent>
@@ -945,65 +945,65 @@ export default function InvestorLanding() {
         </section>
 
         {/* Unit Economics */}
-        <section className="py-16 px-6 bg-slate-50 dark:bg-[#141B45]">
+        <section className="py-16 px-6 bg-[#F8F7F4] dark:bg-[#141B45]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-testid="heading-economics">
+              <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E] dark:text-white" data-testid="heading-economics">
                 Best-in-Class Unit Economics
               </h2>
-              <p className="text-xl text-gray-800 dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-economics-subtitle">
+              <p className="text-xl text-[#0A0F2E] dark:text-slate-300 max-w-3xl mx-auto" data-testid="text-economics-subtitle">
                 High LTV, low CAC, exceptional retention—SaaS metrics investors love
               </p>
             </div>
 
             <div className="grid md:grid-cols-4 gap-6">
-              <Card className="border-2" data-testid="card-ltv-cac">
+              <Card className="border-[#E8E4DC] border-2" data-testid="card-ltv-cac">
                 <CardContent className="pt-6">
-                  <div className="text-sm text-gray-800 dark:text-slate-300 mb-2">LTV:CAC Ratio</div>
+                  <div className="text-sm text-[#0A0F2E] dark:text-slate-300 mb-2">LTV:CAC Ratio</div>
                   <div className="text-4xl font-bold text-[#2B8A6E] mb-1" data-testid="text-ltv-cac">8.4:1</div>
-                  <div className="text-xs text-gray-800">Target: &gt;3:1 (Exceptional)</div>
+                  <div className="text-xs text-[#0A0F2E]">Target: &gt;3:1 (Exceptional)</div>
                 </CardContent>
               </Card>
 
-              <Card className="border-2" data-testid="card-payback">
+              <Card className="border-[#E8E4DC] border-2" data-testid="card-payback">
                 <CardContent className="pt-6">
-                  <div className="text-sm text-gray-800 dark:text-slate-300 mb-2">CAC Payback</div>
+                  <div className="text-sm text-[#0A0F2E] dark:text-slate-300 mb-2">CAC Payback</div>
                   <div className="text-4xl font-bold text-[#0A0F2E] mb-1" data-testid="text-payback">7 months</div>
-                  <div className="text-xs text-gray-800">Target: &lt;12mo (Excellent)</div>
+                  <div className="text-xs text-[#0A0F2E]">Target: &lt;12mo (Excellent)</div>
                 </CardContent>
               </Card>
 
-              <Card className="border-2" data-testid="card-ndr">
+              <Card className="border-[#E8E4DC] border-2" data-testid="card-ndr">
                 <CardContent className="pt-6">
-                  <div className="text-sm text-gray-800 dark:text-slate-300 mb-2">Net Dollar Retention</div>
+                  <div className="text-sm text-[#0A0F2E] dark:text-slate-300 mb-2">Net Dollar Retention</div>
                   <div className="text-4xl font-bold text-[#C9A84C] mb-1" data-testid="text-ndr">142%</div>
-                  <div className="text-xs text-gray-800">Target: &gt;120% (Best-in-class)</div>
+                  <div className="text-xs text-[#0A0F2E]">Target: &gt;120% (Best-in-class)</div>
                 </CardContent>
               </Card>
 
-              <Card className="border-2" data-testid="card-gross-margin">
+              <Card className="border-[#E8E4DC] border-2" data-testid="card-gross-margin">
                 <CardContent className="pt-6">
-                  <div className="text-sm text-gray-800 dark:text-slate-300 mb-2">Gross Margin</div>
+                  <div className="text-sm text-[#0A0F2E] dark:text-slate-300 mb-2">Gross Margin</div>
                   <div className="text-4xl font-bold text-[#0A0F2E] mb-1" data-testid="text-gross-margin">87%</div>
-                  <div className="text-xs text-gray-800">Target: &gt;80% (Premium SaaS)</div>
+                  <div className="text-xs text-[#0A0F2E]">Target: &gt;80% (Premium SaaS)</div>
                 </CardContent>
               </Card>
             </div>
 
             {/* LTV:CAC Trend Chart */}
-            <Card className="border-2 mt-8" data-testid="card-ltv-cac-trend">
+            <Card className="border-[#E8E4DC] border-2 mt-8" data-testid="card-ltv-cac-trend">
               <CardHeader>
-                <CardTitle className="text-slate-900 dark:text-white">LTV:CAC Ratio Growth Trajectory</CardTitle>
+                <CardTitle className="text-[#0A0F2E] dark:text-white">LTV:CAC Ratio Growth Trajectory</CardTitle>
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={350}>
                   <LineChart data={ltvCacTrendData}>
-                    <CartesianGrid strokeDasharray="3 3" className="stroke-slate-200 dark:stroke-slate-700" />
+                    <CartesianGrid strokeDasharray="3 3" className="stroke-[#E8E4DC] dark:stroke-slate-700" />
                     <XAxis dataKey="year" />
                     <YAxis yAxisId="left" />
                     <YAxis yAxisId="right" orientation="right" />
                     <Tooltip 
-                      contentStyle={{ backgroundColor: 'rgba(15, 23, 42, 0.9)', border: 'none', borderRadius: '8px', color: 'white' }}
+                      contentStyle={{ backgroundColor: '#0A0F2E', border: 'none', borderRadius: '8px', color: 'white' }}
                     />
                     <Legend />
                     <Line yAxisId="left" type="monotone" dataKey="ratio" stroke="#2B8A6E" strokeWidth={3} name="LTV:CAC Ratio" dot={{ fill: '#2B8A6E', r: 6 }} />
@@ -1011,16 +1011,16 @@ export default function InvestorLanding() {
                     <Line yAxisId="right" type="monotone" dataKey="cac" stroke="#C9A84C" strokeWidth={2} name="CAC ($K)" />
                   </LineChart>
                 </ResponsiveContainer>
-                <div className="mt-4 text-center text-sm text-gray-800 dark:text-slate-300">
+                <div className="mt-4 text-center text-sm text-[#0A0F2E] dark:text-slate-300">
                   LTV:CAC improving from 3.2:1 (Y1) to 8.4:1 (Y5) as scale economics kick in
                 </div>
               </CardContent>
             </Card>
 
             {/* ROI Breakdown Chart */}
-            <Card className="border-2 mt-8" data-testid="card-roi-breakdown">
+            <Card className="border-[#E8E4DC] border-2 mt-8" data-testid="card-roi-breakdown">
               <CardHeader>
-                <CardTitle className="text-slate-900 dark:text-white">$12.4M Annual ROI Breakdown</CardTitle>
+                <CardTitle className="text-[#0A0F2E] dark:text-white">$12.4M Annual ROI Breakdown</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-col md:flex-row gap-8 items-center">
@@ -1034,7 +1034,7 @@ export default function InvestorLanding() {
                           labelLine={false}
                           label={({ name, value }) => `${name}: $${value}M`}
                           outerRadius={100}
-                          fill="#8884d8"
+                          fill="#C9A84C"
                           dataKey="value"
                         >
                           {roiBreakdownData.map((entry, index) => (
@@ -1043,7 +1043,7 @@ export default function InvestorLanding() {
                         </Pie>
                         <Tooltip 
                           formatter={(value: number) => `$${value}M`}
-                          contentStyle={{ backgroundColor: 'rgba(15, 23, 42, 0.9)', border: 'none', borderRadius: '8px', color: 'white' }}
+                          contentStyle={{ backgroundColor: '#0A0F2E', border: 'none', borderRadius: '8px', color: 'white' }}
                         />
                       </PieChart>
                     </ResponsiveContainer>
@@ -1051,28 +1051,28 @@ export default function InvestorLanding() {
                   <div className="flex-1 space-y-4">
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-4 h-4 rounded" style={{ backgroundColor: '#2B8A6E' }}></div>
-                        <div className="font-semibold text-slate-900 dark:text-white">Cost Savings: $7.2M</div>
+                        <div className="w-4 h-4 rounded bg-[#2B8A6E]"></div>
+                        <div className="font-semibold text-[#0A0F2E] dark:text-white">Cost Savings: $7.2M</div>
                       </div>
-                      <div className="text-sm text-gray-800 dark:text-slate-300">
+                      <div className="text-sm text-[#0A0F2E] dark:text-slate-300">
                         Eliminated coordination delays, reduced strategic initiative failures
                       </div>
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-4 h-4 rounded" style={{ backgroundColor: '#0A0F2E' }}></div>
-                        <div className="font-semibold text-slate-900 dark:text-white">Time Recovery: $3.4M</div>
+                        <div className="w-4 h-4 rounded bg-[#0A0F2E]"></div>
+                        <div className="font-semibold text-[#0A0F2E] dark:text-white">Time Recovery: $3.4M</div>
                       </div>
-                      <div className="text-sm text-gray-800 dark:text-slate-300">
+                      <div className="text-sm text-[#0A0F2E] dark:text-slate-300">
                         342 hours saved monthly, valued at executive time rates
                       </div>
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-4 h-4 rounded" style={{ backgroundColor: '#C9A84C' }}></div>
-                        <div className="font-semibold text-slate-900 dark:text-white">Risk Mitigation: $1.8M</div>
+                        <div className="w-4 h-4 rounded bg-[#C9A84C]"></div>
+                        <div className="font-semibold text-[#0A0F2E] dark:text-white">Risk Mitigation: $1.8M</div>
                       </div>
-                      <div className="text-sm text-gray-800 dark:text-slate-300">
+                      <div className="text-sm text-[#0A0F2E] dark:text-slate-300">
                         Prevented strategic missteps through AI-powered early warnings
                       </div>
                     </div>
@@ -1084,19 +1084,19 @@ export default function InvestorLanding() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-6 bg-gradient-to-br from-primary  text-gray-900">
+        <section className="py-20 px-6 bg-[#0A0F2E] text-white">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6" data-testid="heading-cta">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white" data-testid="heading-cta">
               Join Us in Creating a New Software Category
             </h2>
-            <p className="text-xl mb-8 text-[#0A0F2E]" data-testid="text-cta-description">
+            <p className="text-xl mb-8 text-white/80" data-testid="text-cta-description">
               Execution OS is defining the Strategic Execution Operating System category—a $127B market opportunity with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button
                 size="lg"
                 onClick={() => setLocation("/executive-demo-walkthrough")}
-                className="bg-white text-slate-900 hover:bg-slate-100"
+                className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"
                 data-testid="button-cta-demo"
               >
                 <Rocket className="mr-2 h-5 w-5" />
@@ -1106,7 +1106,7 @@ export default function InvestorLanding() {
                 size="lg"
                 variant="outline"
                 onClick={() => setLocation("/dashboard")}
-                className="border-white text-gray-900 hover:bg-white/10"
+                className="border-white/20 text-white hover:bg-white/10"
                 data-testid="button-cta-dashboard"
               >
                 Explore Dashboard

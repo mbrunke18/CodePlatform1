@@ -701,25 +701,25 @@ export default function ExecutiveSimulationDemo() {
         {/* Main Content */}
         <div className="container mx-auto px-4 py-6">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-            <TabsList className="grid grid-cols-4 w-full max-w-2xl mx-auto bg-gray-50 border border-gray-200" data-testid="tabs-main-navigation">
-              <TabsTrigger value="radar" className="flex items-center gap-2 data-[state=active]:bg-gray-50 data-[state=active]:text-gray-900 text-gray-800" data-testid="tab-radar">
+            <TabsList className="grid grid-cols-4 w-full max-w-2xl mx-auto bg-[#0A0F2E]/5 border border-[#E8E4DC] dark:bg-white/5 dark:border-white/10" data-testid="tabs-main-navigation">
+              <TabsTrigger value="radar" className="flex items-center gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white dark:data-[state=active]:bg-[#C9A84C] dark:data-[state=active]:text-[#0A0F2E]" data-testid="tab-radar">
                 <Radio className="w-4 h-4" />
                 Radar
               </TabsTrigger>
-              <TabsTrigger value="signals" className="flex items-center gap-2 data-[state=active]:bg-gray-50 data-[state=active]:text-gray-900 text-gray-800" data-testid="tab-signals">
+              <TabsTrigger value="signals" className="flex items-center gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white dark:data-[state=active]:bg-[#C9A84C] dark:data-[state=active]:text-[#0A0F2E]" data-testid="tab-signals">
                 <AlertTriangle className="w-4 h-4" />
                 Signals
                 {signals.filter(s => s.actionRequired).length > 0 && (
-                  <Badge className="ml-1 bg-red-500 text-gray-900 h-5 w-5 p-0 flex items-center justify-center text-xs">
+                  <Badge className="ml-1 bg-red-600 text-white h-5 w-5 p-0 flex items-center justify-center text-xs">
                     {signals.filter(s => s.actionRequired).length}
                   </Badge>
                 )}
               </TabsTrigger>
-              <TabsTrigger value="playbooks" className="flex items-center gap-2 data-[state=active]:bg-gray-50 data-[state=active]:text-gray-900 text-gray-800" data-testid="tab-playbooks">
+              <TabsTrigger value="playbooks" className="flex items-center gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white dark:data-[state=active]:bg-[#C9A84C] dark:data-[state=active]:text-[#0A0F2E]" data-testid="tab-playbooks">
                 <FileText className="w-4 h-4" />
                 Playbooks
               </TabsTrigger>
-              <TabsTrigger value="command" className="flex items-center gap-2 data-[state=active]:bg-gray-50 data-[state=active]:text-gray-900 text-gray-800" data-testid="tab-command">
+              <TabsTrigger value="command" className="flex items-center gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white dark:data-[state=active]:bg-[#C9A84C] dark:data-[state=active]:text-[#0A0F2E]" data-testid="tab-command">
                 <Radio className="w-4 h-4" />
                 Command
               </TabsTrigger>
@@ -730,22 +730,22 @@ export default function ExecutiveSimulationDemo() {
               <div className="grid lg:grid-cols-3 gap-6">
                 {/* Main Radar Display */}
                 <div className="lg:col-span-2">
-                  <Card className="border-slate-200 dark:border-slate-800">
+                  <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5">
                     <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <Radio className="w-5 h-5 text-[#0A0F2E]" />
+                      <CardTitle className="flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                        <Radio className="w-5 h-5 text-[#0A0F2E] dark:text-[#C9A84C]" />
                         Foresight Radar
                       </CardTitle>
-                      <CardDescription>Real-time intelligence monitoring across 12 signal sources</CardDescription>
+                      <CardDescription className="text-[#6B7280] dark:text-white/60">Real-time intelligence monitoring across 12 signal sources</CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <div className="aspect-square max-w-md mx-auto relative bg-slate-100 dark:bg-[#141B45] rounded-full flex items-center justify-center">
-                        <div className="absolute inset-4 border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-full"></div>
-                        <div className="absolute inset-12 border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-full"></div>
-                        <div className="absolute inset-20 border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-full"></div>
+                      <div className="aspect-square max-w-md mx-auto relative bg-[#F8F7F4] dark:bg-[#141B45] rounded-full flex items-center justify-center">
+                        <div className="absolute inset-4 border-2 border-dashed border-[#E8E4DC] dark:border-white/10 rounded-full"></div>
+                        <div className="absolute inset-12 border-2 border-dashed border-[#E8E4DC] dark:border-white/10 rounded-full"></div>
+                        <div className="absolute inset-20 border-2 border-dashed border-[#E8E4DC] dark:border-white/10 rounded-full"></div>
                         
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-4 h-4 bg-[#0A0F2E] rounded-full animate-ping"></div>
+                          <div className="w-4 h-4 bg-[#0A0F2E] dark:bg-[#C9A84C] rounded-full animate-ping"></div>
                         </div>
                         
                         {signals.map((signal, index) => {
@@ -758,9 +758,9 @@ export default function ExecutiveSimulationDemo() {
                             <div 
                               key={signal.id}
                               className={`absolute w-4 h-4 rounded-full ${
-                                signal.severity === 'critical' ? 'bg-red-500 animate-pulse' :
-                                signal.severity === 'high' ? 'bg-orange-500' :
-                                signal.severity === 'medium' ? 'bg-yellow-500' : 'bg-[#0A0F2E]'
+                                signal.severity === 'critical' ? 'bg-red-600 animate-pulse' :
+                                signal.severity === 'high' ? 'bg-[#C9A84C]' :
+                                signal.severity === 'medium' ? 'bg-[#C9A84C]/60' : 'bg-[#0A0F2E]'
                               }`}
                               style={{ 
                                 transform: `translate(${x}px, ${y}px)`,
@@ -773,8 +773,8 @@ export default function ExecutiveSimulationDemo() {
                         })}
 
                         <div className="text-center z-10">
-                          <p className="text-2xl font-bold text-slate-900 dark:text-white">{signals.length}</p>
-                          <p className="text-xs text-gray-800 dark:text-slate-300">Active Signals</p>
+                          <p className="text-2xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{signals.length}</p>
+                          <p className="text-xs text-[#6B7280] dark:text-white/60">Active Signals</p>
                         </div>
                       </div>
                     </CardContent>
@@ -782,9 +782,9 @@ export default function ExecutiveSimulationDemo() {
                 </div>
 
                 {/* Team Status */}
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-base">
+                    <CardTitle className="flex items-center gap-2 text-base" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                       <Users className="w-5 h-5 text-[#C9A84C]" />
                       Executive Team
                     </CardTitle>
@@ -793,24 +793,24 @@ export default function ExecutiveSimulationDemo() {
                     <ScrollArea className="h-80">
                       <div className="space-y-3">
                         {TEAM_MEMBERS.map(member => (
-                          <div key={member.id} className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-[#141B45] transition-colors">
-                            <Avatar className="w-10 h-10">
+                          <div key={member.id} className="flex items-center gap-3 p-2 rounded-lg hover:bg-[#F8F7F4] dark:hover:bg-[#141B45] transition-colors">
+                            <Avatar className="w-10 h-10 border border-[#E8E4DC] dark:border-white/10">
                               <AvatarFallback className={`text-sm font-bold ${
-                                member.status === 'available' ? 'bg-green-100 text-[#2B8A6E]' :
-                                member.status === 'busy' ? 'bg-amber-100 text-[#C9A84C]' :
-                                'bg-slate-100 text-gray-800'
+                                member.status === 'available' ? 'bg-[#2B8A6E]/10 text-[#2B8A6E]' :
+                                member.status === 'busy' ? 'bg-[#C9A84C]/10 text-[#C9A84C]' :
+                                'bg-[#6B7280]/10 text-[#6B7280]'
                               }`}>
                                 {member.avatar}
                               </AvatarFallback>
                             </Avatar>
                             <div className="flex-1 min-w-0">
-                              <p className="font-medium text-sm text-slate-900 dark:text-white truncate">{member.name}</p>
-                              <p className="text-xs text-gray-800 dark:text-slate-300">{member.role}</p>
+                              <p className="font-medium text-sm text-[#0A0F2E] dark:text-white truncate">{member.name}</p>
+                              <p className="text-xs text-[#6B7280] dark:text-white/60 truncate">{member.role}</p>
                             </div>
                             <div className={`w-2 h-2 rounded-full ${
-                              member.status === 'available' ? 'bg-green-500' :
-                              member.status === 'busy' ? 'bg-amber-500' :
-                              'bg-slate-300'
+                              member.status === 'available' ? 'bg-[#2B8A6E]' :
+                              member.status === 'busy' ? 'bg-[#C9A84C]' :
+                              'bg-[#6B7280]'
                             }`}></div>
                           </div>
                         ))}
@@ -827,10 +827,10 @@ export default function ExecutiveSimulationDemo() {
                 {signals.map(signal => (
                   <Card 
                     key={signal.id} 
-                    className={`border-l-4 ${
-                      signal.severity === 'critical' ? 'border-l-red-500 bg-red-50 dark:bg-red-950/20' :
-                      signal.severity === 'high' ? 'border-l-orange-500' :
-                      signal.severity === 'medium' ? 'border-l-yellow-500' : 'border-l-[#0A0F2E]'
+                    className={`border-l-4 bg-white dark:bg-white/5 ${
+                      signal.severity === 'critical' ? 'border-l-red-600 bg-red-50/50 dark:bg-red-950/20' :
+                      signal.severity === 'high' ? 'border-l-[#C9A84C]' :
+                      signal.severity === 'medium' ? 'border-l-[#C9A84C]/60' : 'border-l-[#0A0F2E]'
                     }`}
                     data-testid={`card-signal-${signal.id}`}
                   >
@@ -838,14 +838,14 @@ export default function ExecutiveSimulationDemo() {
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex items-start gap-3">
                           <div className={`p-2 rounded-lg ${
-                            signal.severity === 'critical' ? 'bg-red-100 dark:bg-red-900/30' :
-                            signal.severity === 'high' ? 'bg-orange-100 dark:bg-orange-900/30' :
+                            signal.severity === 'critical' ? 'bg-red-100/50 dark:bg-red-900/30' :
+                            signal.severity === 'high' ? 'bg-[#C9A84C]/10 dark:bg-[#C9A84C]/10' :
                             'bg-[#F8F7F4] dark:bg-[#0A0F2E]/30'
                           }`}>
                             <signal.icon className={`w-5 h-5 ${
-                              signal.severity === 'critical' ? 'text-red-700' :
-                              signal.severity === 'high' ? 'text-orange-600' :
-                              'text-[#0A0F2E]'
+                              signal.severity === 'critical' ? 'text-red-600' :
+                              signal.severity === 'high' ? 'text-[#C9A84C]' :
+                              'text-[#0A0F2E] dark:text-[#C9A84C]'
                             }`} />
                           </div>
                           <div>
@@ -853,16 +853,16 @@ export default function ExecutiveSimulationDemo() {
                               <Badge className={getSeverityColor(signal.severity)}>
                                 {signal.severity.toUpperCase()}
                               </Badge>
-                              <span className="text-xs text-gray-800">{signal.source}</span>
+                              <span className="text-xs text-[#6B7280] dark:text-white/60">{signal.source}</span>
                             </div>
-                            <h3 className="font-semibold text-slate-900 dark:text-white">{signal.title}</h3>
-                            <p className="text-sm text-gray-800 dark:text-slate-300 mt-1">{signal.description}</p>
+                            <h3 className="font-semibold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{signal.title}</h3>
+                            <p className="text-sm text-[#6B7280] dark:text-white/60 mt-1">{signal.description}</p>
                           </div>
                         </div>
                         {signal.actionRequired && phase === 'playbook_selection' && (
                           <Button 
                             size="sm" 
-                            className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white"
+                            className="bg-[#0A0F2E] hover:bg-[#0A0F2E]/90 dark:bg-[#C9A84C] dark:hover:bg-[#C9A84C]/90 text-white dark:text-[#0A0F2E]"
                             onClick={() => handleSelectPlaybook('competitor-ma-response')}
                             data-testid="button-respond-signal"
                           >
@@ -881,68 +881,68 @@ export default function ExecutiveSimulationDemo() {
             <TabsContent value="playbooks" className="space-y-6">
               {phase === 'playbook_selection' ? (
                 <div className="space-y-4">
-                  <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4">
-                    <p className="text-amber-800 dark:text-amber-200 flex items-center gap-2">
+                  <div className="bg-[#C9A84C]/10 dark:bg-[#C9A84C]/10 border border-[#C9A84C]/20 dark:border-[#C9A84C]/20 rounded-lg p-4">
+                    <p className="text-[#0A0F2E] dark:text-[#C9A84C] flex items-center gap-2">
                       <Zap className="w-5 h-5" />
                       <strong>Execution OS Recommendation:</strong> Based on the detected signal, the following playbook is recommended
                     </p>
                   </div>
                   
                   <Card 
-                    className="border-2 border-[#0A0F2E] bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 cursor-pointer hover:shadow-lg transition-all"
+                    className="border-2 border-[#C9A84C] bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 cursor-pointer hover:shadow-lg transition-all"
                     onClick={() => handleSelectPlaybook('competitor-ma-response')}
                     data-testid="card-recommended-playbook"
                   >
                     <CardHeader>
                       <div className="flex items-center justify-between">
                         <div>
-                          <Badge className="mb-2 bg-[#0A0F2E] text-white">RECOMMENDED</Badge>
-                          <CardTitle className="text-xl">Competitor M&A Response Protocol</CardTitle>
-                          <CardDescription>Comprehensive response framework for competitor acquisition events</CardDescription>
+                          <Badge className="mb-2 bg-[#C9A84C] text-[#0A0F2E] border-none font-bold">RECOMMENDED</Badge>
+                          <CardTitle className="text-xl text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Competitor M&A Response Protocol</CardTitle>
+                          <CardDescription className="text-white/60">Comprehensive response framework for competitor acquisition events</CardDescription>
                         </div>
                         <div className="text-right">
-                          <p className="text-sm text-gray-800">Est. Coordination Time</p>
-                          <p className="text-2xl font-bold text-[#0A0F2E]">12 min</p>
+                          <p className="text-sm text-white/60">Est. Coordination Time</p>
+                          <p className="text-2xl font-bold text-[#C9A84C]">12 min</p>
                         </div>
                       </div>
                     </CardHeader>
                     <CardContent>
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
-                          <h4 className="font-semibold text-sm text-slate-700 dark:text-slate-300 mb-2">Key Actions</h4>
-                          <ul className="space-y-1 text-sm text-gray-800 dark:text-slate-300">
+                          <h4 className="font-semibold text-sm text-[#C9A84C] mb-2">Key Actions</h4>
+                          <ul className="space-y-1 text-sm text-white/80">
                             <li className="flex items-center gap-2">
-                              <CheckCircle2 className="w-4 h-4 text-green-500" />
+                              <CheckCircle2 className="w-4 h-4 text-[#2B8A6E]" />
                               Executive team mobilization
                             </li>
                             <li className="flex items-center gap-2">
-                              <CheckCircle2 className="w-4 h-4 text-green-500" />
+                              <CheckCircle2 className="w-4 h-4 text-[#2B8A6E]" />
                               Supply chain impact assessment
                             </li>
                             <li className="flex items-center gap-2">
-                              <CheckCircle2 className="w-4 h-4 text-green-500" />
+                              <CheckCircle2 className="w-4 h-4 text-[#2B8A6E]" />
                               Competitive positioning analysis
                             </li>
                             <li className="flex items-center gap-2">
-                              <CheckCircle2 className="w-4 h-4 text-green-500" />
+                              <CheckCircle2 className="w-4 h-4 text-[#2B8A6E]" />
                               Customer retention activation
                             </li>
                           </ul>
                         </div>
                         <div>
-                          <h4 className="font-semibold text-sm text-slate-700 dark:text-slate-300 mb-2">Stakeholders</h4>
+                          <h4 className="font-semibold text-sm text-[#C9A84C] mb-2">Stakeholders</h4>
                           <div className="flex flex-wrap gap-2">
-                            <Badge variant="outline" className="text-gray-800 border-slate-600">CFO</Badge>
-                            <Badge variant="outline" className="text-gray-800 border-slate-600">CMO</Badge>
-                            <Badge variant="outline" className="text-gray-800 border-slate-600">VP Ops</Badge>
-                            <Badge variant="outline" className="text-gray-800 border-slate-600">Legal</Badge>
-                            <Badge variant="outline" className="text-gray-800 border-slate-600">VP Sales</Badge>
+                            <Badge variant="outline" className="text-white border-white/20">CFO</Badge>
+                            <Badge variant="outline" className="text-white border-white/20">CMO</Badge>
+                            <Badge variant="outline" className="text-white border-white/20">VP Ops</Badge>
+                            <Badge variant="outline" className="text-white border-white/20">Legal</Badge>
+                            <Badge variant="outline" className="text-white border-white/20">VP Sales</Badge>
                           </div>
                         </div>
                       </div>
                     </CardContent>
-                    <CardFooter className="bg-[#F8F7F4] dark:bg-[#0A0F2E]/30">
-                      <Button className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white" data-testid="button-activate-playbook">
+                    <CardFooter className="bg-white/5 dark:bg-[#0A0F2E]/30">
+                      <Button className="w-full bg-[#C9A84C] hover:bg-[#C9A84C]/90 text-[#0A0F2E] font-bold" data-testid="button-activate-playbook">
                         <Rocket className="w-4 h-4 mr-2" />
                         Activate This Playbook
                       </Button>
@@ -951,49 +951,49 @@ export default function ExecutiveSimulationDemo() {
                 </div>
               ) : phase === 'team_coordination' ? (
                 <div className="space-y-6">
-                  <Card className="border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950/20">
+                  <Card className="border-[#2B8A6E]/20 dark:border-[#2B8A6E]/20 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/10">
                     <CardHeader>
                       <div className="flex items-center gap-3">
                         <CheckCircle2 className="w-8 h-8 text-[#2B8A6E]" />
                         <div>
-                          <CardTitle>Playbook Activated: Competitor M&A Response</CardTitle>
-                          <CardDescription>Team notifications sent. Review actions below and launch execution.</CardDescription>
+                          <CardTitle className="text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Playbook Activated: Competitor M&A Response</CardTitle>
+                          <CardDescription className="text-[#6B7280] dark:text-white/60">Team notifications sent. Review actions below and launch execution.</CardDescription>
                         </div>
                       </div>
                     </CardHeader>
                   </Card>
 
-                  <Card>
+                  <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5">
                     <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
+                      <CardTitle className="flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                         <Target className="w-5 h-5 text-[#C9A84C]" />
                         Coordinated Action Plan
                       </CardTitle>
-                      <CardDescription>{playbookActions.length} actions across {new Set(playbookActions.map(a => a.department)).size} departments</CardDescription>
+                      <CardDescription className="text-[#6B7280] dark:text-white/60">{playbookActions.length} actions across {new Set(playbookActions.map(a => a.department)).size} departments</CardDescription>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-3">
                         {playbookActions.map((action, index) => (
                           <div 
                             key={action.id} 
-                            className="flex items-center gap-4 p-3 bg-white dark:bg-[#141B45] rounded-lg"
+                            className="flex items-center gap-4 p-3 bg-[#F8F7F4] dark:bg-[#141B45] rounded-lg border border-[#E8E4DC] dark:border-white/5"
                             data-testid={`action-${action.id}`}
                           >
-                            <div className="w-8 h-8 bg-slate-200 dark:bg-[#141B45] rounded-full flex items-center justify-center text-sm font-bold text-gray-800 dark:text-slate-300">
+                            <div className="w-8 h-8 bg-[#0A0F2E] dark:bg-[#C9A84C] rounded-full flex items-center justify-center text-sm font-bold text-white dark:text-[#0A0F2E]">
                               {index + 1}
                             </div>
                             <div className="flex-1">
-                              <p className="font-medium text-slate-900 dark:text-white">{action.name}</p>
-                              <p className="text-sm text-gray-800">{action.assignee} • {action.department}</p>
+                              <p className="font-medium text-[#0A0F2E] dark:text-white">{action.name}</p>
+                              <p className="text-sm text-[#6B7280] dark:text-white/60">{action.assignee} • {action.department}</p>
                             </div>
-                            <Badge variant="outline" className="text-gray-800 border-slate-600">{action.duration}</Badge>
+                            <Badge variant="outline" className="text-[#6B7280] dark:text-white/60 border-[#E8E4DC] dark:border-white/20">{action.duration}</Badge>
                           </div>
                         ))}
                       </div>
                     </CardContent>
                     <CardFooter>
                       <Button 
-                        className="w-full bg-gradient-to-r from-[#0A0F2E] to-[#3BAF8A] hover:from-[#0A0F2E] hover:to-[#3BAF8A]"
+                        className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E]/90 dark:bg-[#C9A84C] dark:hover:bg-[#C9A84C]/90 text-white dark:text-[#0A0F2E] font-bold"
                         onClick={handleLaunchExecution}
                         data-testid="button-launch-execution"
                       >
@@ -1015,29 +1015,29 @@ export default function ExecutiveSimulationDemo() {
             <TabsContent value="command" className="space-y-6">
               {(phase === 'execution' || phase === 'monitoring') ? (
                 <div className="space-y-6">
-                  <Card className="border-[#0A0F2E] dark:border-[#0A0F2E]">
-                    <CardHeader className="bg-gradient-to-r from-[#0A0F2E] to-[#3BAF8A] text-gray-900 rounded-t-lg">
+                  <Card className="border-[#0A0F2E] dark:border-[#C9A84C]">
+                    <CardHeader className="bg-[#0A0F2E] dark:bg-[#C9A84C] text-white dark:text-[#0A0F2E] rounded-t-lg">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <Radio className="w-6 h-6" />
                           <div>
-                            <CardTitle className="text-gray-900">Command Center Active</CardTitle>
-                            <CardDescription className="text-[#0A0F2E]">Coordinating response in real-time</CardDescription>
+                            <CardTitle className="text-white dark:text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Command Center Active</CardTitle>
+                            <CardDescription className="text-white/60 dark:text-[#0A0F2E]/60">Coordinating response in real-time</CardDescription>
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="text-[#0A0F2E] text-sm">Elapsed Time</p>
+                          <p className="text-white/60 dark:text-[#0A0F2E]/60 text-sm">Elapsed Time</p>
                           <p className="text-2xl font-mono font-bold">{formatTime(elapsedTime)}</p>
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent className="p-6">
+                    <CardContent className="p-6 bg-white dark:bg-white/5">
                       <div className="mb-6">
                         <div className="flex justify-between text-sm mb-2">
-                          <span className="text-gray-800 dark:text-slate-300">Overall Progress</span>
-                          <span className="font-medium text-slate-900 dark:text-white">{completedActions}/{playbookActions.length} Actions Complete</span>
+                          <span className="text-[#6B7280] dark:text-white/60">Overall Progress</span>
+                          <span className="font-medium text-[#0A0F2E] dark:text-white">{completedActions}/{playbookActions.length} Actions Complete</span>
                         </div>
-                        <Progress value={progressPercent} className="h-3" />
+                        <Progress value={progressPercent} className="h-3 bg-[#E8E4DC] dark:bg-white/5 [&>div]:bg-[#C9A84C]" />
                       </div>
 
                       <div className="space-y-3">
@@ -1045,9 +1045,9 @@ export default function ExecutiveSimulationDemo() {
                           <div 
                             key={action.id} 
                             className={`flex items-center gap-4 p-4 rounded-lg border ${
-                              action.status === 'completed' ? 'bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800' :
-                              action.status === 'in_progress' ? 'bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 border-[#0A0F2E] dark:border-[#0A0F2E]' :
-                              'bg-white dark:bg-[#141B45] border-slate-200 dark:border-slate-700'
+                              action.status === 'completed' ? 'bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10 border-[#2B8A6E]/20' :
+                              action.status === 'in_progress' ? 'bg-[#0A0F2E]/5 dark:bg-[#C9A84C]/5 border-[#0A0F2E]/20 dark:border-[#C9A84C]/20' :
+                              'bg-[#F8F7F4] dark:bg-[#141B45] border-[#E8E4DC] dark:border-white/5'
                             }`}
                             data-testid={`execution-action-${action.id}`}
                           >
@@ -1056,18 +1056,18 @@ export default function ExecutiveSimulationDemo() {
                             </div>
                             <div className="flex-1">
                               <p className={`font-medium ${
-                                action.status === 'completed' ? 'text-[#2B8A6E] dark:text-green-400' :
-                                action.status === 'in_progress' ? 'text-[#0A0F2E] dark:text-[#0A0F2E]' :
-                                'text-slate-700 dark:text-slate-300'
+                                action.status === 'completed' ? 'text-[#2B8A6E]' :
+                                action.status === 'in_progress' ? 'text-[#0A0F2E] dark:text-[#C9A84C]' :
+                                'text-[#0A0F2E] dark:text-white'
                               }`}>
                                 {action.name}
                               </p>
-                              <p className="text-sm text-gray-800">{action.assignee} • {action.department}</p>
+                              <p className="text-sm text-[#6B7280] dark:text-white/60">{action.assignee} • {action.department}</p>
                             </div>
                             <Badge variant="outline" className={
-                              action.status === 'completed' ? 'border-green-500 text-[#2B8A6E]' :
-                              action.status === 'in_progress' ? 'border-[#0A0F2E] text-[#0A0F2E]' :
-                              ''
+                              action.status === 'completed' ? 'border-[#2B8A6E] text-[#2B8A6E]' :
+                              action.status === 'in_progress' ? 'border-[#0A0F2E] text-[#0A0F2E] dark:border-[#C9A84C] dark:text-[#C9A84C]' :
+                              'text-[#6B7280] dark:text-white/60 border-[#E8E4DC] dark:border-white/20'
                             }>
                               {action.status === 'completed' ? 'Done' : 
                                action.status === 'in_progress' ? 'Running' : 
@@ -1081,8 +1081,8 @@ export default function ExecutiveSimulationDemo() {
                 </div>
               ) : (
                 <div className="text-center py-12">
-                  <Radio className="w-12 h-12 text-gray-800 dark:text-slate-200 mx-auto mb-4" />
-                  <p className="text-gray-800 dark:text-slate-300">Command Center activates when a playbook is launched</p>
+                  <Radio className="w-12 h-12 text-[#6B7280] dark:text-white/60 mx-auto mb-4" />
+                  <p className="text-[#6B7280] dark:text-white/60">Command Center activates when a playbook is launched</p>
                 </div>
               )}
             </TabsContent>

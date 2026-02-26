@@ -37,7 +37,7 @@ type Phase = 'identify' | 'detect' | 'execute' | 'advance';
 const PHASES = [
   { id: 'identify' as Phase, name: 'IDENTIFY', icon: BookOpen, color: '#C9A84C' },
   { id: 'detect' as Phase, name: 'DETECT', icon: Radar, color: '#C9A84C' },
-  { id: 'execute' as Phase, name: 'EXECUTE', icon: Radio, color: '#2B8A6E' },
+  { id: 'execute' as Phase, name: 'EXECUTE', icon: Radio, color: '#C9A84C' },
   { id: 'advance' as Phase, name: 'ADVANCE', icon: BarChart3, color: '#C9A84C' },
 ];
 

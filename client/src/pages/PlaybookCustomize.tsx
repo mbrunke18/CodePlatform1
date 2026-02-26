@@ -576,6 +576,10 @@ export default function PlaybookCustomize() {
     execute: { label: 'E', color: "#C9A84C" },
     advance: { label: 'A', color: "#2B8A6E" },
   };
+
+  const isOffense = watch("category") === 'offense';
+  const isDefense = watch("category") === 'defense';
+  const indicatorColor = isOffense ? TEAL : isDefense ? NAVY : GOLD;
   
   const SECTION_TO_PHASE: Record<string, string> = {
     basic: 'identify', stakeholders: 'identify', dependencies: 'identify', 
@@ -634,7 +638,7 @@ export default function PlaybookCustomize() {
               Back
             </Button>
             {template && (
-              <Badge variant="outline" className="text-xs">
+              <Badge variant="outline" className="text-xs" style={{ color: indicatorColor, borderColor: indicatorColor, backgroundColor: `${indicatorColor}10` }}>
                 Based on: {template.name}
               </Badge>
             )}

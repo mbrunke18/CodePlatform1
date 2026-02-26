@@ -131,14 +131,14 @@ export default function ExecutiveAnalyticsDashboard() {
       case 'achievement': return 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-none rounded-none';
       case 'opportunity': return 'bg-[#0A0F2E]/10 text-[#0A0F2E] border-none rounded-none';
       case 'risk': return 'bg-[#C9A84C]/10 text-[#C9A84C] border-none rounded-none';
-      case 'alert': return 'bg-[#C9A84C]/10 text-[#C9A84C] border-none rounded-none';
+      case 'alert': return 'bg-red-600/10 text-red-600 border-none rounded-none';
       default: return 'bg-gray-100 text-[#6B7280] border-none rounded-none';
     }
   };
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'critical': return 'bg-[#C9A84C] text-[#0A0F2E] border-none rounded-none';
+      case 'critical': return 'bg-red-600 text-white border-none rounded-none';
       case 'high': return 'bg-[#C9A84C] text-[#0A0F2E] border-none rounded-none';
       case 'medium': return 'bg-[#C9A84C] text-[#0A0F2E] border-none rounded-none';
       case 'low': return 'bg-[#2B8A6E] text-white border-none rounded-none';

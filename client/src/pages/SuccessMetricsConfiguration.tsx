@@ -273,11 +273,11 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
           <div className="bg-[#0A0F2E] text-white p-6 rounded-none border border-[#E8E4DC]">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-white/10 rounded-none flex items-center justify-center">
                   <Target className="w-7 h-7 text-[#C9A84C]" />
                 </div>
                 <div>
-                  <h1 className="text-3xl font-bold" data-testid="success-metrics-title">Success Metrics Configuration</h1>
+                  <h1 style={{...CG}} className="text-3xl font-bold" data-testid="success-metrics-title">Success Metrics Configuration</h1>
                   <p className="text-[#DFC178] mt-1">Define YOUR success criteria and KPIs</p>
                   <p className="text-[#DFC178] mt-1 text-sm opacity-80">Track progress toward your strategic goals with custom metrics</p>
                 </div>
@@ -307,13 +307,13 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-6">
                   <div className="relative">
-                    <div className="w-32 h-32 rounded-full border-8 border-[#C9A84C]/20 flex items-center justify-center bg-[#F8F7F4]">
+                    <div className="w-32 h-32 rounded-none border-8 border-[#C9A84C]/20 flex items-center justify-center bg-[#F8F7F4]">
                       <div className="text-center">
                         <div style={{...CG}} className="text-4xl font-bold text-[#0A0F2E]">{overallFRI.toFixed(1)}%</div>
                         <div className="text-[10px] uppercase tracking-wider text-[#6B7280]">Current FRI</div>
                       </div>
                     </div>
-                    <div className="absolute -right-2 -top-2 w-10 h-10 rounded-full bg-[#C9A84C] flex items-center justify-center">
+                    <div className="absolute -right-2 -top-2 w-10 h-10 rounded-none bg-[#C9A84C] flex items-center justify-center">
                       <TrendingUp className="h-5 w-5 text-[#0A0F2E]" />
                     </div>
                   </div>
@@ -332,16 +332,21 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                     </div>
                   </div>
                 </div>
-                <div className="w-64">
-                  <div className="flex justify-between text-xs uppercase tracking-wider mb-2">
-                    <span className="text-[#6B7280]">Progress to Target</span>
-                    <span className="text-[#0A0F2E] font-bold">{friProgress.toFixed(0)}%</span>
+                  <div className="w-64">
+                    <div className="flex justify-between text-xs uppercase tracking-wider mb-2">
+                      <span className="text-[#6B7280]">Progress to Target</span>
+                      <span className="text-[#0A0F2E] font-bold">{friProgress.toFixed(0)}%</span>
+                    </div>
+                    <div className="h-2 bg-[#F8F7F4] overflow-hidden">
+                      <div 
+                        className="bg-[#C9A84C] h-full transition-all duration-500" 
+                        style={{ width: `${friProgress}%` }} 
+                      />
+                    </div>
+                    <p className="text-xs text-[#6B7280] mt-2">
+                      {friProgress >= 100 ? 'Target achieved!' : `${(friTarget - overallFRI).toFixed(1)}% remaining to target`}
+                    </p>
                   </div>
-                  <Progress value={friProgress} className="h-2 [&>div]:bg-[#C9A84C]" />
-                  <p className="text-xs text-[#6B7280] mt-2">
-                    {friProgress >= 100 ? 'Target achieved!' : `${(friTarget - overallFRI).toFixed(1)}% remaining to target`}
-                  </p>
-                </div>
               </div>
             </CardContent>
           </Card>
@@ -358,7 +363,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                   <CardHeader className="pb-2">
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center bg-[#F8F7F4]`}>
+                        <div className="w-10 h-10 rounded-none flex items-center justify-center bg-[#F8F7F4]">
                           <TypeIcon className={`h-5 w-5 ${typeInfo.color}`} />
                         </div>
                         <div>
@@ -385,7 +390,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="grid grid-cols-3 gap-4 text-center">
-                      <div className="p-2 bg-[#F8F7F4] rounded-lg">
+                      <div className="p-2 bg-[#F8F7F4] rounded-none border border-[#E8E4DC]">
                         <div className="text-[10px] uppercase tracking-wider text-[#6B7280]">Baseline</div>
                         <div className="text-lg font-semibold text-[#6B7280]">
                           {metric.baselineValue}{metric.unit === '%' || metric.unit === 'minutes' ? '' : ' '}{metric.unit}
@@ -412,7 +417,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                           {progress.toFixed(0)}%
                         </span>
                       </div>
-                      <div className="h-2 bg-[#F8F7F4] rounded-full overflow-hidden">
+                      <div className="h-2 bg-[#F8F7F4] overflow-hidden">
                         <div 
                           className={`h-full ${getProgressColor(progress)} transition-all`}
                           style={{ width: `${progress}%` }}

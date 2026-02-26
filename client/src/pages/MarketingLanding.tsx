@@ -125,7 +125,7 @@ export default function MarketingLanding() {
               Execution OS for Fortune 1000 Companies
             </h2>
             <p className="text-xl md:text-2xl text-[#6B7280] mb-8 leading-relaxed font-light">
-              When a strategic trigger hits—a competitor launches, regulations shift, or a market opportunity appears—organizations typically <span className="text-[#0A0F2E] font-medium">waste 20-50 hours getting organized</span>. Execution OS compresses that to <span className="text-[#C9A84C] font-bold underline decoration-[#C9A84C] underline-offset-8">12 minutes</span>.
+              When a strategic trigger hits—a competitor launches, regulations shift, or a market opportunity appears—organizations typically <span className="text-[#0A0F2E] font-medium uppercase tracking-widest text-[11px]">waste 20-50 hours getting organized</span>. Execution OS compresses that to <span className="text-[#C9A84C] font-bold underline decoration-[#C9A84C] underline-offset-8">12 minutes</span>.
             </p>
             <p className="text-lg text-[#6B7280] mb-8 leading-relaxed max-w-4xl mx-auto">
               Our AI monitors 216 data points across 16 intelligence categories, detecting threats and opportunities before competitors see them. When a signal breaches a threshold, Execution OS automatically activates the right playbook: notifying stakeholders, assigning tasks, and unlocking pre-approved budgets—all in under 12 minutes.

@@ -38,9 +38,9 @@ export default function ApprovalSuccess() {
           )}
           
           <div className="space-y-3 text-[11px] text-[#6B7280] font-bold uppercase tracking-widest">
-            <p className="flex items-center gap-3"><CheckCircle className="w-3 h-3 text-[#2B8A6E]" /> Your approval has been processed</p>
+            <p className="flex items-center gap-3"><CheckCircle className="w-3 h-3 text-[#2B8A6E]" /> Your action has been processed</p>
             <p className="flex items-center gap-3"><CheckCircle className="w-3 h-3 text-[#2B8A6E]" /> Stakeholders have been notified</p>
-            <p className="flex items-center gap-3"><CheckCircle className="w-3 h-3 text-[#2B8A6E]" /> Execution will begin shortly</p>
+            <p className="flex items-center gap-3"><CheckCircle className="w-3 h-3 text-[#2B8A6E]" /> Execution sequence updated</p>
           </div>
 
           <Button 

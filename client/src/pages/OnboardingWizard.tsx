@@ -531,8 +531,8 @@ export default function OnboardingWizard() {
                     <Card className="bg-gray-50 border-gray-200 rounded-none">
                       <CardContent className="p-4 flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-[#C9A84C]/10 rounded-none flex items-center justify-center">
-                            <Bell className="h-5 w-5 text-[#C9A84C]" />
+                          <div className="w-10 h-10 bg-[#0A0F2E]/10 rounded-none flex items-center justify-center">
+                            <Bell className="h-5 w-5 text-[#0A0F2E]" />
                           </div>
                           <div>
                             <p className="font-medium text-gray-900">Slack</p>

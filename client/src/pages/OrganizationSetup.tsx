@@ -415,7 +415,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
             }} />
             <div className="relative z-10 flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-white/10 rounded-none flex items-center justify-center">
                   <Building2 className="w-7 h-7 text-[#DFC178]" />
                 </div>
                 <div>
@@ -449,24 +449,22 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                 </div>
               </div>
               <Progress value={progressPercent} className="h-3 mb-4 [&>div]:bg-[#C9A84C]" />
-              <div className="grid grid-cols-4 gap-4">
-                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.departments ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/20'}`}>
+                <div className={`flex items-center gap-2 p-3 rounded-none ${setupProgress.departments ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/20'}`}>
                   {setupProgress.departments ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />}
                   <span className="text-sm text-gray-900">Departments</span>
                 </div>
-                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.stakeholders ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/20'}`}>
+                <div className={`flex items-center gap-2 p-3 rounded-none ${setupProgress.stakeholders ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/20'}`}>
                   {setupProgress.stakeholders ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />}
                   <span className="text-sm text-gray-900">Stakeholders</span>
                 </div>
-                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.escalation ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/20'}`}>
+                <div className={`flex items-center gap-2 p-3 rounded-none ${setupProgress.escalation ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/20'}`}>
                   {setupProgress.escalation ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />}
                   <span className="text-sm text-gray-900">Escalation</span>
                 </div>
-                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.channels ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/20'}`}>
+                <div className={`flex items-center gap-2 p-3 rounded-none ${setupProgress.channels ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/20'}`}>
                   {setupProgress.channels ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />}
                   <span className="text-sm text-gray-900">Channels</span>
                 </div>
-              </div>
             </CardContent>
           </Card>
 
@@ -561,7 +559,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-[#0A0F2E] flex items-center justify-center text-white font-medium">
+                          <div className="w-10 h-10 rounded-none bg-[#0A0F2E] flex items-center justify-center text-white font-medium">
                             {sh.name.split(' ').map(n => n[0]).join('')}
                           </div>
                           <div>
@@ -649,10 +647,10 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                         <div className="space-y-4">
                           {policy.levels.map((level, idx) => (
                             <div key={level.level} className="relative flex items-start gap-4 pl-8">
-                              <div className={`absolute left-2 w-4 h-4 rounded-full ${
+                              <div className={`absolute left-2 w-4 h-4 rounded-none ${
                                 idx === 0 ? 'bg-[#2B8A6E]' : idx === 1 ? 'bg-[#C9A84C]' : 'bg-red-500'
                               } ring-4 ring-gray-800`}></div>
-                              <div className="flex-1 p-3 bg-gray-50 rounded-lg">
+                              <div className="flex-1 p-3 bg-gray-50 rounded-none">
                                 <div className="flex items-center justify-between">
                                   <span className="font-medium text-gray-900">Level {level.level}</span>
                                   <div className="flex items-center gap-1 text-sm text-gray-800">
@@ -706,7 +704,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
-                          <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                          <div className={`w-10 h-10 rounded-none flex items-center justify-center ${
                             channel.channelType === 'email' ? 'bg-[#0A0F2E]/10 text-[#0A0F2E]' :
                             channel.channelType === 'slack' ? 'bg-[#2B8A6E]/10 text-[#2B8A6E]' :
                             channel.channelType === 'teams' ? 'bg-[#0A0F2E]/10 text-[#0A0F2E]' :

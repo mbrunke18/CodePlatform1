@@ -34,7 +34,7 @@ function StatusDot({ status }: { status: 'good' | 'warning' | 'critical' }) {
   const colors = {
     good: 'bg-[#2B8A6E]',
     warning: 'bg-[#C9A84C]',
-    critical: 'bg-[#C9A84C]'
+    critical: 'bg-red-600'
   };
   return <div className={`w-2.5 h-2.5 rounded-full ${colors[status]} animate-pulse`} />;
 }
@@ -53,7 +53,7 @@ function KPICard({
   const statusColors = {
     good: 'text-[#2B8A6E]',
     warning: 'text-[#C9A84C]',
-    critical: 'text-[#C9A84C]'
+    critical: 'text-red-600'
   };
 
   return (
@@ -188,7 +188,7 @@ export default function Dashboard() {
                 </h1>
               </div>
               
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-4 flex gap-8 items-center rounded-none">
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-4 flex gap-8 items-center rounded-none shadow-[0_0_20px_rgba(201,168,76,0.1)]">
                 <KPICard 
                   label="Execution Score" 
                   value={`${scoreValue}%`} 
