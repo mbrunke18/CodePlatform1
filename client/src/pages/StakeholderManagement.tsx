@@ -370,7 +370,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                 <select
                   value={levelFilter}
                   onChange={(e) => setLevelFilter(e.target.value)}
-                  className="px-3 py-2 border rounded-md bg-white dark:bg-slate-900 text-sm"
+                  className="px-3 py-2 border rounded-md bg-white dark:bg-[#0A0F2E] text-sm"
                   data-testid="select-level-filter"
                 >
                   <option value="all">All Levels</option>
@@ -383,7 +383,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                 <select
                   value={departmentFilter}
                   onChange={(e) => setDepartmentFilter(e.target.value)}
-                  className="px-3 py-2 border rounded-md bg-white dark:bg-slate-900 text-sm"
+                  className="px-3 py-2 border rounded-md bg-white dark:bg-[#0A0F2E] text-sm"
                   data-testid="select-department-filter"
                 >
                   <option value="all">All Departments</option>
@@ -477,7 +477,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                             return (
                               <div 
                                 key={ch} 
-                                className="w-6 h-6 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center"
+                                className="w-6 h-6 rounded bg-slate-100 dark:bg-[#141B45] flex items-center justify-center"
                                 title={channel.label}
                                 data-testid={`badge-channel-${stakeholder.id}-${ch}`}
                               >
@@ -592,7 +592,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                   return (
                     <div
                       key={index}
-                      className={`relative pl-12 pb-8 last:pb-0 ${index % 2 === 0 ? 'bg-slate-50/50 dark:bg-slate-800/20' : ''} rounded-lg p-4 pl-12`}
+                      className={`relative pl-12 pb-8 last:pb-0 ${index % 2 === 0 ? 'bg-slate-50/50 dark:bg-[#141B45]/20' : ''} rounded-lg p-4 pl-12`}
                     >
                       <div className={`absolute left-2.5 top-5 w-3.5 h-3.5 rounded-full ${entry.dotClass} border-2 border-white dark:border-slate-900 z-10`} />
                       <div className="flex items-start justify-between gap-4">
@@ -687,7 +687,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                   <span className="text-gray-700">Consulted</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Badge className="bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 text-xs px-1.5">I</Badge>
+                  <Badge className="bg-slate-100 text-slate-700 dark:bg-[#141B45] dark:text-slate-300 text-xs px-1.5">I</Badge>
                   <span className="text-gray-700 dark:text-slate-400">Informed</span>
                 </div>
               </div>

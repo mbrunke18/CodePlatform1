@@ -289,7 +289,7 @@ export default function PilotDemo() {
   const canProceedToReady = selectedTrigger && selectedPlaybook;
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0A0F2E]">
       <StandardNav />
       
       <PageHero
@@ -487,7 +487,7 @@ export default function PilotDemo() {
                     variant="outline"
                     size="lg"
                     onClick={() => setStep("setup")}
-                    className="gap-2 text-gray-900 border-slate-600 hover:bg-slate-800"
+                    className="gap-2 text-gray-900 border-slate-600 hover:bg-[#141B45]"
                     data-testid="button-back-setup"
                   >
                     <ArrowLeft className="w-4 h-4" /> Back
@@ -523,7 +523,7 @@ export default function PilotDemo() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
-                    <div className="bg-slate-100 dark:bg-slate-800/50 rounded-lg p-6 space-y-4">
+                    <div className="bg-slate-100 dark:bg-[#141B45]/50 rounded-lg p-6 space-y-4">
                       <div className="flex items-start gap-4">
                         <div className="bg-blue-100 dark:bg-[#0A0F2E]/30 p-2 rounded-lg">
                           <Mail className="w-5 h-5 text-[#0A0F2E] dark:text-[#0A0F2E]" />
@@ -577,7 +577,7 @@ export default function PilotDemo() {
                         variant="outline"
                         size="lg"
                         onClick={() => setStep("configure")}
-                        className="gap-2 text-gray-900 border-slate-600 hover:bg-slate-800"
+                        className="gap-2 text-gray-900 border-slate-600 hover:bg-[#141B45]"
                         data-testid="button-back-configure"
                       >
                         <ArrowLeft className="w-4 h-4" /> Back
@@ -646,7 +646,7 @@ export default function PilotDemo() {
                               ? "bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 border-[#0A0F2E] dark:border-[#0A0F2E]"
                               : event.status === "complete"
                                 ? "bg-[#F0F9F6]/50 dark:bg-[#2B8A6E]/15 border-[#2B8A6E] dark:border-[#2B8A6E]"
-                                : "bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700"
+                                : "bg-slate-50 dark:bg-[#141B45]/50 border-slate-200 dark:border-slate-700"
                           }`}
                           data-testid={`event-${event.type}`}
                         >
@@ -743,7 +743,7 @@ export default function PilotDemo() {
                             </div>
                           </div>
 
-                          <div className="bg-white/50 dark:bg-slate-800/50 rounded-lg p-4 mb-6">
+                          <div className="bg-white/50 dark:bg-[#141B45]/50 rounded-lg p-4 mb-6">
                             <h4 className="font-semibold text-slate-900 dark:text-white mb-3 text-center">
                               Value Created in This Demo
                             </h4>
@@ -771,7 +771,7 @@ export default function PilotDemo() {
                             <Button
                               variant="outline"
                               onClick={resetDemo}
-                              className="gap-2 text-gray-900 border-slate-600 hover:bg-slate-800"
+                              className="gap-2 text-gray-900 border-slate-600 hover:bg-[#141B45]"
                               data-testid="button-reset-demo"
                             >
                               <RefreshCw className="w-4 h-4" /> Run Another Demo

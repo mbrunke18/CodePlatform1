@@ -677,7 +677,7 @@ export default function TryDemo() {
                   {/* Action buttons */}
                   <div className="mt-4 flex gap-3">
                     {!showChaosComplete && (
-                      <Button variant="outline" onClick={skipChaos} className="flex-1 bg-transparent text-gray-900 border-slate-600 hover:bg-slate-800">
+                      <Button variant="outline" onClick={skipChaos} className="flex-1 bg-transparent text-gray-900 border-slate-600 hover:bg-[#141B45]">
                         Skip to Solution
                         <ChevronRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -894,7 +894,7 @@ export default function TryDemo() {
                           <p className="text-4xl font-bold text-gray-900 font-mono">
                             {formatTime(executionTimer)}
                           </p>
-                          <p className="text-xs text-emerald-300 mt-1">Target: 12:00</p>
+                          <p className="text-xs text-[#3BAF8A] mt-1">Target: 12:00</p>
                         </div>
 
                         <div className="space-y-3">
@@ -1030,7 +1030,7 @@ export default function TryDemo() {
                             </Button>
                             <Button 
                               variant="outline"
-                              className="w-full text-gray-900 border-slate-600 hover:bg-slate-800"
+                              className="w-full text-gray-900 border-slate-600 hover:bg-[#141B45]"
                               onClick={resetDemo}
                             >
                               <RefreshCw className="mr-2 h-4 w-4" />
@@ -1131,7 +1131,7 @@ export default function TryDemo() {
                         </div>
                         <div className="p-3 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-lg text-center">
                           <p className="text-xs text-[#2B8A6E] mb-1">Execution OS</p>
-                          <p className="text-xl font-bold text-emerald-300">12 min</p>
+                          <p className="text-xl font-bold text-[#3BAF8A]">12 min</p>
                           <p className="text-xs text-gray-800">Guaranteed</p>
                         </div>
                       </div>

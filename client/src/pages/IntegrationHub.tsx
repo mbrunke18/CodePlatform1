@@ -1099,7 +1099,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                     </thead>
                     <tbody className="divide-y divide-slate-700">
                       {apiEndpoints.map((endpoint) => (
-                        <tr key={endpoint.id} className="hover:bg-slate-800/30">
+                        <tr key={endpoint.id} className="hover:bg-[#141B45]/30">
                           <td className="px-6 py-4">
                             <div>
                               <div className="text-sm font-medium text-gray-900">{endpoint.name}</div>
@@ -1200,11 +1200,11 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                         <Monitor className="w-4 h-4 mr-2" />
                         Monitor
                       </Button>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-[#141B45]">
                         <Settings className="w-4 h-4 mr-2" />
                         Configure
                       </Button>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-[#141B45]">
                         {flow.status === 'running' ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                       </Button>
                     </div>

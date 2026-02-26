@@ -454,7 +454,7 @@ export default function InvestorLanding() {
         </section>
 
         {/* Product Architecture Visual */}
-        <section className="py-16 px-6 bg-white dark:bg-slate-900">
+        <section className="py-16 px-6 bg-white dark:bg-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-8">
               <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white">
@@ -476,7 +476,7 @@ export default function InvestorLanding() {
         </section>
 
         {/* Market Opportunity */}
-        <section className="py-16 px-6 bg-slate-50 dark:bg-slate-800">
+        <section className="py-16 px-6 bg-slate-50 dark:bg-[#141B45]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-testid="heading-market">
@@ -562,7 +562,7 @@ export default function InvestorLanding() {
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br .section-background dark:from-slate-800 dark:to-slate-700 border-2" data-testid="card-why-now">
+            <Card className="bg-gradient-to-br .section-background dark:from-[#141B45] dark:to-slate-700 border-2" data-testid="card-why-now">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white" data-testid="heading-why-now">
                   Why Now? Perfect Market Timing
@@ -704,14 +704,14 @@ export default function InvestorLanding() {
             </div>
 
             <div className="p-5 bg-[#2B8A6E]/15 border border-[#2B8A6E]/50 rounded-lg text-center">
-              <p className="text-emerald-300 font-semibold mb-1">Every firm is consulting on the problem. Execution OS built the product.</p>
+              <p className="text-[#3BAF8A] font-semibold mb-1">Every firm is consulting on the problem. Execution OS built the product.</p>
               <p className="text-gray-800 text-sm">170 playbooks, 9 strategic domains, pre-defined governance — ready today.</p>
             </div>
           </div>
         </section>
 
         {/* Competitive Moat */}
-        <section className="py-16 px-6 bg-white dark:bg-slate-900">
+        <section className="py-16 px-6 bg-white dark:bg-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-testid="heading-moat">
@@ -795,7 +795,7 @@ export default function InvestorLanding() {
         </section>
 
         {/* Future Positioning Visual */}
-        <section className="py-16 px-6 bg-slate-50 dark:bg-slate-800">
+        <section className="py-16 px-6 bg-slate-50 dark:bg-[#141B45]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-8">
               <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white">
@@ -817,7 +817,7 @@ export default function InvestorLanding() {
         </section>
 
         {/* Business Model */}
-        <section className="py-16 px-6 bg-white dark:bg-slate-900">
+        <section className="py-16 px-6 bg-white dark:bg-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-testid="heading-model">
@@ -911,7 +911,7 @@ export default function InvestorLanding() {
               </Card>
             </div>
 
-            <Card className="bg-gradient-to-br from-green-50 to-[#141B45] dark:from-slate-800 dark:to-slate-700 border-2" data-testid="card-expansion">
+            <Card className="bg-gradient-to-br from-green-50 to-[#141B45] dark:from-[#141B45] dark:to-slate-700 border-2" data-testid="card-expansion">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white" data-testid="heading-expansion">
                   Expansion Revenue Streams
@@ -945,7 +945,7 @@ export default function InvestorLanding() {
         </section>
 
         {/* Unit Economics */}
-        <section className="py-16 px-6 bg-slate-50 dark:bg-slate-800">
+        <section className="py-16 px-6 bg-slate-50 dark:bg-[#141B45]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white" data-testid="heading-economics">

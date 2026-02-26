@@ -750,7 +750,7 @@ export default function IncidentAnalyzer() {
                     onClick={() => setSelectedDomain('offense')}
                     className={`relative rounded-xl border p-4 text-left transition-all ${
                       selectedDomain === 'offense'
-                        ? 'bg-[#2B8A6E]/10 border-[#2B8A6E]/50 ring-1 ring-emerald-500/30'
+                        ? 'bg-[#2B8A6E]/10 border-[#2B8A6E]/50 ring-1 ring-[#2B8A6E]/30'
                         : 'bg-gray-50 border-gray-200 hover:border-slate-600'
                     }`}
                   >
@@ -1326,7 +1326,7 @@ export default function IncidentAnalyzer() {
                             ) : status === "notified" ? (
                               <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse" />
                             ) : (
-                              <div className="w-3 h-3 bg-slate-600 rounded-full" />
+                              <div className="w-3 h-3 bg-[#6B7280] rounded-full" />
                             )}
                             <span className="text-sm text-gray-800 flex-1">{s.name || s.role || `Stakeholder ${i + 1}`}</span>
                             <span className={`text-xs ${
@@ -1427,7 +1427,7 @@ export default function IncidentAnalyzer() {
                 <Button
                   variant="outline"
                   onClick={handleGoToReport}
-                  className="text-gray-800 border-gray-200 hover:bg-slate-800 hover:text-white"
+                  className="text-gray-800 border-gray-200 hover:bg-[#141B45] hover:text-white"
                 >
                   Skip to Report
                 </Button>
@@ -1515,7 +1515,7 @@ export default function IncidentAnalyzer() {
                 variant="outline"
                 size="lg"
                 onClick={handleReset}
-                className="text-gray-800 border-gray-200 hover:bg-slate-800 hover:text-white gap-2"
+                className="text-gray-800 border-gray-200 hover:bg-[#141B45] hover:text-white gap-2"
               >
                 <RefreshCw className="w-4 h-4" /> Start New Analysis
               </Button>
@@ -1526,7 +1526,7 @@ export default function IncidentAnalyzer() {
         {/* Validation Banner */}
         <div className="max-w-4xl mx-auto mb-12 px-6">
           <div className="bg-gradient-to-r   border border-[#2B8A6E]/40 rounded-xl p-6 text-center">
-            <p className="text-emerald-300 font-semibold mb-2">
+            <p className="text-[#3BAF8A] font-semibold mb-2">
               McKinsey, BCG, Bain, Deloitte, PwC, and 10 more firms all published 2025-2026 guides confirming the execution infrastructure gap.
             </p>
             <p className="text-gray-800 text-sm">

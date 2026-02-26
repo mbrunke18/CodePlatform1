@@ -465,7 +465,7 @@ function DemoLiveActivation() {
               onClick={resetDemo}
               variant="outline"
               size="lg"
-              className="text-lg text-gray-900 border-slate-600 hover:bg-slate-800"
+              className="text-lg text-gray-900 border-slate-600 hover:bg-[#141B45]"
               data-testid="button-reset-demo"
             >
               <RefreshCw className="mr-2 h-5 w-5" />
@@ -630,7 +630,7 @@ function DemoLiveActivation() {
 
       {/* Stakeholder Roster Grid - Who's Being Coordinated */}
       {executionId && demoPhase !== 'complete' && (
-        <Card className="max-w-7xl mx-auto mb-8 bg-slate-50 dark:bg-slate-800/50 border-slate-300 dark:border-slate-700">
+        <Card className="max-w-7xl mx-auto mb-8 bg-slate-50 dark:bg-[#141B45]/50 border-slate-300 dark:border-slate-700">
           <CardHeader>
             <CardTitle className="flex items-center justify-between text-3xl text-slate-900 dark:text-white">
               <span className="flex items-center gap-2">
@@ -663,7 +663,7 @@ function DemoLiveActivation() {
                     className={`p-3 rounded-lg border transition-all ${
                       isAcknowledged 
                         ? 'bg-green-100 border-green-500 dark:bg-green-900/30 dark:border-green-500/70 animate-pulse' 
-                        : priorityColors[stakeholder.priority as keyof typeof priorityColors] || 'border-slate-400 bg-slate-100 dark:border-slate-600 dark:bg-slate-700/30'
+                        : priorityColors[stakeholder.priority as keyof typeof priorityColors] || 'border-slate-400 bg-slate-100 dark:border-slate-600 dark:bg-[#141B45]/30'
                     }`}
                     data-testid={`stakeholder-${stakeholder.id}`}
                   >

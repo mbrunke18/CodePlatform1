@@ -344,7 +344,7 @@ export default function InvestorDemo() {
                     <Button
                       onClick={() => setIsPlaying(false)}
                       variant="outline"
-                      className="border-slate-600 text-gray-900 hover:bg-slate-800"
+                      className="border-slate-600 text-gray-900 hover:bg-[#141B45]"
                       data-testid="button-pause-demo"
                     >
                       <Pause className="h-4 w-4 mr-2" />
@@ -416,7 +416,7 @@ export default function InvestorDemo() {
                 className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   idx === currentStageIndex
                     ? `${stage.phaseColor} text-gray-900`
-                    : 'bg-gray-50 text-gray-800 hover:bg-slate-700'
+                    : 'bg-gray-50 text-gray-800 hover:bg-[#141B45]'
                 }`}
                 data-testid={`button-stage-${idx}`}
               >
@@ -547,7 +547,7 @@ export default function InvestorDemo() {
                             <span className="font-medium text-gray-900">{currentStage.pmSync.title}</span>
                             <div className="flex gap-1 ml-auto">
                               {currentStage.pmSync.platforms.map((p, idx) => (
-                                <Badge key={idx} variant="outline" className="text-xs border-[#2B8A6E]/50 text-emerald-300">
+                                <Badge key={idx} variant="outline" className="text-xs border-[#2B8A6E]/50 text-[#3BAF8A]">
                                   {p}
                                 </Badge>
                               ))}

@@ -44,7 +44,7 @@ export default function PilotMonitoring() {
   // Show loading state while initial data loads
   if (healthLoading || metricsLoading || activityLoading) {
     return (
-      <div className="page-background min-h-screen bg-slate-50 dark:bg-slate-950">
+      <div className="page-background min-h-screen bg-slate-50 dark:bg-[#0A0F2E]">
         <StandardNav />
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="text-center py-12">
@@ -59,7 +59,7 @@ export default function PilotMonitoring() {
   // Show error state if any queries failed
   if (healthError || metricsError || activityError) {
     return (
-      <div className="page-background min-h-screen bg-slate-50 dark:bg-slate-950">
+      <div className="page-background min-h-screen bg-slate-50 dark:bg-[#0A0F2E]">
         <StandardNav />
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="text-center py-12">
@@ -79,7 +79,7 @@ export default function PilotMonitoring() {
   // Guard against undefined data
   if (!systemHealth || !pilotMetrics || !recentActivity) {
     return (
-      <div className="page-background min-h-screen bg-slate-50 dark:bg-slate-950">
+      <div className="page-background min-h-screen bg-slate-50 dark:bg-[#0A0F2E]">
         <StandardNav />
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="text-center py-12">
@@ -98,7 +98,7 @@ export default function PilotMonitoring() {
   ];
 
   return (
-    <div className="page-background min-h-screen bg-slate-50 dark:bg-slate-950">
+    <div className="page-background min-h-screen bg-slate-50 dark:bg-[#0A0F2E]">
       <StandardNav />
 
       <div className="max-w-7xl mx-auto px-6 py-8">
@@ -214,7 +214,7 @@ export default function PilotMonitoring() {
                     <span className="text-gray-800 dark:text-slate-300">Adoption Rate</span>
                     <span className="font-semibold text-slate-900 dark:text-white">70%</span>
                   </div>
-                  <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                  <div className="w-full bg-slate-200 dark:bg-[#141B45] rounded-full h-2">
                     <div className="bg-green-600 h-2 rounded-full" style={{ width: '70%' }}></div>
                   </div>
                 </div>
@@ -223,7 +223,7 @@ export default function PilotMonitoring() {
                     <span className="text-gray-800 dark:text-slate-300">Average Engagement</span>
                     <span className="font-semibold text-slate-900 dark:text-white">85%</span>
                   </div>
-                  <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                  <div className="w-full bg-slate-200 dark:bg-[#141B45] rounded-full h-2">
                     <div className="bg-[#0A0F2E] h-2 rounded-full" style={{ width: '85%' }}></div>
                   </div>
                 </div>
@@ -305,7 +305,7 @@ export default function PilotMonitoring() {
           <CardContent>
             <div className="space-y-3">
               {recentActivity.map((activity, index) => (
-                <div key={index} className="flex items-start gap-3 p-3 bg-slate-50 dark:bg-slate-900 rounded-lg">
+                <div key={index} className="flex items-start gap-3 p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg">
                   <div className="flex-shrink-0 mt-1">
                     {activity.success ? (
                       <CheckCircle2 className="w-5 h-5 text-[#2B8A6E]" />

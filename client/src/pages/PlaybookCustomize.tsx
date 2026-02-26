@@ -613,7 +613,7 @@ export default function PlaybookCustomize() {
 
   if (isLoading && !isCreateMode) {
     return (
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#0A0F2E]">
         <StandardNav />
         <div className="flex items-center justify-center h-[60vh]">
           <div className="text-gray-800">Loading template...</div>
@@ -623,7 +623,7 @@ export default function PlaybookCustomize() {
   }
   
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0A0F2E]">
       <StandardNav />
       
       <div className="pt-20 pb-32">
@@ -722,7 +722,7 @@ export default function PlaybookCustomize() {
                           className={`w-full flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-left text-sm transition-colors ${
                             isActive 
                               ? 'bg-primary text-primary-foreground' 
-                              : 'text-gray-800 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+                              : 'text-gray-800 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#141B45]'
                           }`}
                           data-testid={`nav-${section.id}`}
                         >
@@ -849,7 +849,7 @@ export default function PlaybookCustomize() {
                       ) : (
                         <div className="space-y-3">
                           {triggersArray.fields.map((field, index) => (
-                            <div key={field.id} className="p-3 bg-slate-50 dark:bg-slate-900 rounded-lg space-y-3" data-testid={`trigger-item-${index}`}>
+                            <div key={field.id} className="p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg space-y-3" data-testid={`trigger-item-${index}`}>
                               <div className="flex gap-2">
                                 <Input {...register(`triggerConditions.${index}.description`)} placeholder="Trigger description..." className="flex-1" />
                                 <Button type="button" variant="ghost" size="sm" onClick={() => triggersArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
@@ -898,7 +898,7 @@ export default function PlaybookCustomize() {
                       ) : (
                         <div className="space-y-3">
                           {escalationArray.fields.map((field, index) => (
-                            <div key={field.id} className="p-3 bg-slate-50 dark:bg-slate-900 rounded-lg space-y-3">
+                            <div key={field.id} className="p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg space-y-3">
                               <div className="flex justify-between items-center">
                                 <Badge variant="outline">Path {index + 1}</Badge>
                                 <Button type="button" variant="ghost" size="sm" onClick={() => escalationArray.remove(index)}><Trash2 className="h-4 w-4 text-gray-800 dark:text-slate-200" /></Button>
@@ -953,7 +953,7 @@ export default function PlaybookCustomize() {
                       ) : (
                         <div className="space-y-3">
                           {stakeholdersArray.fields.map((field, index) => (
-                            <div key={field.id} className="p-3 bg-slate-50 dark:bg-slate-900 rounded-lg space-y-3">
+                            <div key={field.id} className="p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg space-y-3">
                               <div className="flex gap-2">
                                 <Controller name={`stakeholders.${index}.role`} control={control} render={({ field }) => (
                                   <Select value={field.value} onValueChange={field.onChange}>
@@ -979,7 +979,7 @@ export default function PlaybookCustomize() {
                                       const isSelected = channels.includes(ch.value);
                                       return (
                                         <button key={ch.value} type="button" onClick={() => field.onChange(isSelected ? channels.filter((c: string) => c !== ch.value) : [...channels, ch.value])}
-                                          className={`px-2 py-1 text-xs rounded-full border ${isSelected ? 'bg-primary text-primary-foreground' : 'bg-white dark:bg-slate-800 text-gray-800'}`}>
+                                          className={`px-2 py-1 text-xs rounded-full border ${isSelected ? 'bg-primary text-primary-foreground' : 'bg-white dark:bg-[#141B45] text-gray-800'}`}>
                                           {ch.label}
                                         </button>
                                       );
@@ -1011,7 +1011,7 @@ export default function PlaybookCustomize() {
                       ) : (
                         <div className="space-y-3">
                           {stepsArray.fields.map((field, index) => (
-                            <div key={field.id} className="p-3 bg-slate-50 dark:bg-slate-900 rounded-lg space-y-3">
+                            <div key={field.id} className="p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg space-y-3">
                               <div className="flex gap-2 items-start">
                                 <Badge variant="outline" className="shrink-0 w-7 h-7 flex items-center justify-center">{index + 1}</Badge>
                                 <div className="flex-1 space-y-2">
@@ -1088,7 +1088,7 @@ export default function PlaybookCustomize() {
                       ) : (
                         <div className="space-y-2">
                           {budgetArray.fields.map((field, index) => (
-                            <div key={field.id} className="flex gap-2 items-center p-2 bg-slate-50 dark:bg-slate-900 rounded-lg">
+                            <div key={field.id} className="flex gap-2 items-center p-2 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg">
                               <Controller name={`budgetAllocations.${index}.category`} control={control} render={({ field }) => (
                                 <Select value={field.value} onValueChange={field.onChange}>
                                   <SelectTrigger className="w-40"><SelectValue /></SelectTrigger>
@@ -1131,7 +1131,7 @@ export default function PlaybookCustomize() {
                       ) : (
                         <div className="space-y-2">
                           {impactArray.fields.map((field, index) => (
-                            <div key={field.id} className="p-3 bg-slate-50 dark:bg-slate-900 rounded-lg space-y-2">
+                            <div key={field.id} className="p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg space-y-2">
                               <div className="flex gap-2">
                                 <Controller name={`businessImpacts.${index}.type`} control={control} render={({ field }) => (
                                   <Select value={field.value} onValueChange={field.onChange}>
@@ -1199,7 +1199,7 @@ export default function PlaybookCustomize() {
                               const selected = (field.value || []).includes(f.value);
                               return (
                                 <button key={f.value} type="button" onClick={() => field.onChange(selected ? field.value.filter((v: string) => v !== f.value) : [...(field.value || []), f.value])}
-                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-blue-100 text-[#0A0F2E] border-[#0A0F2E]' : 'bg-white dark:bg-slate-800 text-gray-800 border-slate-200'}`}>
+                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-blue-100 text-[#0A0F2E] border-[#0A0F2E]' : 'bg-white dark:bg-[#141B45] text-gray-800 border-slate-200'}`}>
                                   {f.label}
                                 </button>
                               );
@@ -1211,7 +1211,7 @@ export default function PlaybookCustomize() {
                         <div className="space-y-2">
                           <Label className="text-sm font-medium">Specific Requirements</Label>
                           {complianceArray.fields.map((field, index) => (
-                            <div key={field.id} className="flex gap-2 p-2 bg-slate-50 dark:bg-slate-900 rounded-lg">
+                            <div key={field.id} className="flex gap-2 p-2 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg">
                               <Controller name={`complianceRequirements.${index}.framework`} control={control} render={({ field }) => (
                                 <Select value={field.value} onValueChange={field.onChange}>
                                   <SelectTrigger className="w-36"><SelectValue placeholder="Framework" /></SelectTrigger>
@@ -1283,19 +1283,19 @@ export default function PlaybookCustomize() {
                   {expandedSections.communications && (
                     <CardContent className="space-y-4">
                       <div className="grid grid-cols-3 gap-4">
-                        <div className="flex items-center gap-3 p-3 bg-slate-50 dark:bg-slate-900 rounded-lg">
+                        <div className="flex items-center gap-3 p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg">
                           <Controller name="pressResponseRequired" control={control} render={({ field }) => (
                             <Switch checked={field.value} onCheckedChange={field.onChange} />
                           )} />
                           <Label className="text-sm">Press/Media Response Required</Label>
                         </div>
-                        <div className="flex items-center gap-3 p-3 bg-slate-50 dark:bg-slate-900 rounded-lg">
+                        <div className="flex items-center gap-3 p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg">
                           <Controller name="investorNotificationRequired" control={control} render={({ field }) => (
                             <Switch checked={field.value} onCheckedChange={field.onChange} />
                           )} />
                           <Label className="text-sm">Investor Notification</Label>
                         </div>
-                        <div className="flex items-center gap-3 p-3 bg-slate-50 dark:bg-slate-900 rounded-lg">
+                        <div className="flex items-center gap-3 p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg">
                           <Controller name="boardNotificationRequired" control={control} render={({ field }) => (
                             <Switch checked={field.value} onCheckedChange={field.onChange} />
                           )} />
@@ -1336,7 +1336,7 @@ export default function PlaybookCustomize() {
                       ) : (
                         <div className="space-y-2">
                           {dependenciesArray.fields.map((field, index) => (
-                            <div key={field.id} className="p-3 bg-slate-50 dark:bg-slate-900 rounded-lg space-y-2">
+                            <div key={field.id} className="p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg space-y-2">
                               <div className="flex gap-2">
                                 <Controller name={`dependencies.${index}.type`} control={control} render={({ field }) => (
                                   <Select value={field.value} onValueChange={field.onChange}>
@@ -1429,7 +1429,7 @@ export default function PlaybookCustomize() {
                               const selected = (field.value || []).includes(r.value);
                               return (
                                 <button key={r.value} type="button" onClick={() => field.onChange(selected ? field.value.filter((v: string) => v !== r.value) : [...(field.value || []), r.value])}
-                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]' : 'bg-white dark:bg-slate-800 text-gray-800 border-slate-200'}`}>
+                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]' : 'bg-white dark:bg-[#141B45] text-gray-800 border-slate-200'}`}>
                                   {r.label}
                                 </button>
                               );
@@ -1533,7 +1533,7 @@ export default function PlaybookCustomize() {
       </div>
       
       {/* STICKY SAVE BAR */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-4 px-6 z-50">
+      <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-[#0A0F2E] border-t border-slate-200 dark:border-slate-800 py-4 px-6 z-50">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="text-sm text-gray-800">
             {Object.keys(errors).length > 0 && (

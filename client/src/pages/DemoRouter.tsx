@@ -78,7 +78,7 @@ export default function DemoRouter() {
           {/* Header */}
           <div className="text-center mb-10">
             <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="mb-4 bg-[#2B8A6E]/20 text-emerald-300 border-[#2B8A6E]/30">
+            <Badge className="mb-4 bg-[#2B8A6E]/20 text-[#3BAF8A] border-[#2B8A6E]/30">
               Interactive Experience
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" data-testid="heading-demo-router">
@@ -178,7 +178,7 @@ export default function DemoRouter() {
             <Button
               variant="outline"
               onClick={() => setLocation('/playbook-library')}
-              className="text-gray-800 border-gray-200 hover:bg-slate-800"
+              className="text-gray-800 border-gray-200 hover:bg-[#141B45]"
               data-testid="button-explore-playbooks"
             >
               Browse 170 Playbooks →

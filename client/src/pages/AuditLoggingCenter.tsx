@@ -138,7 +138,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
       case 'authentication': return 'bg-[#0A0F2E]/20 text-blue-300 border-[#0A0F2E]/30';
       case 'data_access': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
       case 'configuration': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
-      case 'decision': return 'bg-[#2B8A6E]/20 text-emerald-300 border-[#2B8A6E]/30';
+      case 'decision': return 'bg-[#2B8A6E]/20 text-[#3BAF8A] border-[#2B8A6E]/30';
       case 'system': return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
       case 'security': return 'bg-red-500/20 text-red-300 border-red-500/30';
       default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
@@ -157,7 +157,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
 
   const getOutcomeColor = (outcome: string) => {
     switch (outcome) {
-      case 'success': return 'bg-[#2B8A6E]/20 text-emerald-300 border-[#2B8A6E]/30';
+      case 'success': return 'bg-[#2B8A6E]/20 text-[#3BAF8A] border-[#2B8A6E]/30';
       case 'failure': return 'bg-red-500/20 text-red-300 border-red-500/30';
       case 'warning': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
       default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
@@ -186,7 +186,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
           </div>
           <div className="flex items-center gap-4">
             <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="bg-[#2B8A6E]/20 text-emerald-300 border-[#2B8A6E]/30">
+            <Badge className="bg-[#2B8A6E]/20 text-[#3BAF8A] border-[#2B8A6E]/30">
               <Shield className="w-4 h-4 mr-2" />
               Compliance: {metrics.complianceScore}%
             </Badge>
@@ -406,7 +406,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                     </thead>
                     <tbody className="divide-y divide-slate-700">
                       {filteredLogs.slice(0, 20).map((log) => (
-                        <tr key={log.id} className="hover:bg-slate-800/30">
+                        <tr key={log.id} className="hover:bg-[#141B45]/30">
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                             {new Date(log.timestamp).toLocaleString()}
                           </td>
@@ -430,7 +430,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                             </Badge>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm">
-                            <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
+                            <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-[#141B45]">
                               <Eye className="w-4 h-4" />
                             </Button>
                           </td>
@@ -503,7 +503,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                           <Eye className="w-4 h-4 mr-2" />
                           Investigate
                         </Button>
-                        <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
+                        <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-[#141B45]">
                           Mark Resolved
                         </Button>
                       </div>
@@ -522,7 +522,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <CardTitle className="text-gray-900">{report.reportType}</CardTitle>
-                      <Badge className={report.status === 'approved' ? 'bg-[#2B8A6E]/20 text-emerald-300 border-[#2B8A6E]/30' : 'bg-amber-500/20 text-amber-300 border-amber-500/30'}>
+                      <Badge className={report.status === 'approved' ? 'bg-[#2B8A6E]/20 text-[#3BAF8A] border-[#2B8A6E]/30' : 'bg-amber-500/20 text-amber-300 border-amber-500/30'}>
                         {report.status.toUpperCase()}
                       </Badge>
                     </div>
@@ -567,7 +567,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                         <Download className="w-4 h-4 mr-2" />
                         Download Report
                       </Button>
-                      <Button variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
+                      <Button variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-[#141B45]">
                         <Eye className="w-4 h-4 mr-2" />
                         View Details
                       </Button>

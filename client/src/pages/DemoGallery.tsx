@@ -160,7 +160,7 @@ export default function DemoGallery() {
 
   return (
     <PageLayout>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-[#141B45]/30 dark:from-poise-navy dark:to-slate-900">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-[#141B45]/30 dark:from-poise-navy dark:to-[#0A0F2E]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           
           {/* Header */}
@@ -252,7 +252,7 @@ export default function DemoGallery() {
 
           {/* Filter Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">
-            <TabsList className="bg-slate-100 dark:bg-slate-800">
+            <TabsList className="bg-slate-100 dark:bg-[#141B45]">
               <TabsTrigger value="all">All Demos</TabsTrigger>
               <TabsTrigger value="interactive">Interactive</TabsTrigger>
               <TabsTrigger value="presentation">Presentations</TabsTrigger>

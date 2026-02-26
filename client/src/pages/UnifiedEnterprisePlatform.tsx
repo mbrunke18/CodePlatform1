@@ -413,7 +413,7 @@ export default function UnifiedEnterprisePlatform() {
                     <CardTitle className="flex items-center gap-2 text-gray-900">
                       <Zap className="h-6 w-6 text-[#2B8A6E]" />
                       Decision Velocity Dashboard
-                      <Badge variant="outline" className="bg-[#2B8A6E]/20 text-emerald-300 border-[#2B8A6E]/50 ml-2">
+                      <Badge variant="outline" className="bg-[#2B8A6E]/20 text-[#3BAF8A] border-[#2B8A6E]/50 ml-2">
                         INFRASTRUCTURE MODE
                       </Badge>
                     </CardTitle>

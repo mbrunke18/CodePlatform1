@@ -837,13 +837,13 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                         </p>
                       </div>
                       <div className="flex gap-4">
-                        <div className="text-center px-4 py-2 bg-white dark:bg-slate-900 rounded-lg border">
+                        <div className="text-center px-4 py-2 bg-white dark:bg-[#0A0F2E] rounded-lg border">
                           <p className="text-2xl font-bold text-[#C9A84C]">
                             {sequenceSummary?.reduce((sum, d) => sum + parseInt(d.playbookCount), 0)?.toLocaleString() ?? '0'}
                           </p>
                           <p className="text-xs text-gray-800">Total Playbooks</p>
                         </div>
-                        <div className="text-center px-4 py-2 bg-white dark:bg-slate-900 rounded-lg border">
+                        <div className="text-center px-4 py-2 bg-white dark:bg-[#0A0F2E] rounded-lg border">
                           <p className="text-2xl font-bold text-[#0A0F2E]">
                             {sequenceSummary?.reduce((sum, d) => sum + parseInt(d.taskCount), 0)?.toLocaleString() ?? '0'}
                           </p>
@@ -903,7 +903,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                               <span>Task Coverage</span>
                               <span>{taskCount} / {playbookCount * 8}</span>
                             </div>
-                            <div className="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                            <div className="h-2 w-full bg-slate-100 dark:bg-[#141B45] rounded-full overflow-hidden">
                               <div
                                 className={`h-full rounded-full transition-all ${progressColor}`}
                                 style={{ width: `${coverage}%` }}

@@ -162,21 +162,6 @@ export default function WhyExecuteIQ() {
         </div>
       </section>
 
-
-          <Card className="bg-gradient-to-r from-red-500/10 to-orange-500/10 border-red-500/30">
-            <CardContent className="p-8 text-center">
-              <Clock className="h-12 w-12 text-red-500 mx-auto mb-4" />
-              <p className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-                Result: 72 hours to coordinate what should take minutes.
-              </p>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Without execution infrastructure, every strategic moment is handled ad-hoc—no matter how talented the team.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
       {/* Section 3: The Solution */}
       <section className="py-20 px-12 bg-white">
         <div className="max-w-5xl mx-auto">

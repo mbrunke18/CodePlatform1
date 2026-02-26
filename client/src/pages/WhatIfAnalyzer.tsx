@@ -421,7 +421,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
             </Card>
           )}
 
-          <Card className="border-teal-200 dark:border-teal-800 bg-gradient-to-br from-[#2B8A6E] to-white dark:from-[#2B8A6E]/20 dark:to-slate-900">
+          <Card className="border-teal-200 dark:border-teal-800 bg-gradient-to-br from-[#2B8A6E] to-white dark:from-[#2B8A6E]/20 dark:to-[#0A0F2E]">
             <CardHeader className="pb-3 border-b border-[#E8E4DC] dark:border-white/10">
               <CardTitle className="text-base flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 <Shield className="h-5 w-5 text-[#2B8A6E]" />
@@ -851,14 +851,14 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
           return (
             <div key={step} className="flex items-center">
               {i > 0 && (
-                <div className={`w-8 sm:w-12 h-0.5 ${isComplete ? 'bg-[#2B8A6E]' : 'bg-slate-200 dark:bg-slate-700'}`} />
+                <div className={`w-8 sm:w-12 h-0.5 ${isComplete ? 'bg-[#2B8A6E]' : 'bg-slate-200 dark:bg-[#141B45]'}`} />
               )}
               <button
                 onClick={() => { if (isComplete) setWizardStep(step); }}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
                   isActive ? 'bg-[#0A0F2E] text-white shadow-md' :
                   isComplete ? 'bg-[#2B8A6E] text-white border-[#2B8A6E] shadow-sm' :
-                  'bg-slate-100 text-gray-800 dark:bg-slate-800 dark:text-slate-500'
+                  'bg-slate-100 text-gray-800 dark:bg-[#141B45] dark:text-slate-500'
                 }`}
               >
                 {isComplete ? <CheckCircle2 className="h-3.5 w-3.5" /> : <span>{step}</span>}
@@ -898,7 +898,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                     <button
                       key={key}
                       onClick={() => loadTemplate(key)}
-                      className={`p-3 rounded-lg border-2 text-left transition-all hover:shadow-md ${isActive ? borderMap[color] : 'border-transparent bg-slate-50 dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600'}`}
+                      className={`p-3 rounded-lg border-2 text-left transition-all hover:shadow-md ${isActive ? borderMap[color] : 'border-transparent bg-slate-50 dark:bg-[#141B45] hover:border-slate-300 dark:hover:border-slate-600'}`}
                     >
                       <div className={`p-1.5 ${iconBg[color]} rounded-md inline-block mb-1.5`}>
                         <Icon className={`h-4 w-4 ${iconColor[color]}`} />
@@ -1055,7 +1055,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                     </Button>
                   </div>
 
-                  <div className="flex items-center gap-2 text-sm text-gray-800 dark:text-slate-300 bg-white dark:bg-slate-800 p-3 rounded-md border border-slate-200 dark:border-slate-700">
+                  <div className="flex items-center gap-2 text-sm text-gray-800 dark:text-slate-300 bg-white dark:bg-[#141B45] p-3 rounded-md border border-slate-200 dark:border-slate-700">
                     <span className="font-medium text-slate-800 dark:text-white">{selectedVariable.label}</span>
                     <Select value={conditionOperator} onValueChange={setConditionOperator}>
                       <SelectTrigger className="w-44 h-8 text-xs">
@@ -1106,7 +1106,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
               )}
 
               {showCustomVariable && (
-                <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg space-y-3 border border-dashed border-slate-300 dark:border-slate-600">
+                <div className="p-4 bg-slate-50 dark:bg-[#141B45]/50 rounded-lg space-y-3 border border-dashed border-slate-300 dark:border-slate-600">
                   <div className="flex items-center justify-between mb-1">
                     <Label className="text-sm font-semibold">Custom Variable</Label>
                     <Button variant="ghost" size="sm" onClick={() => setShowCustomVariable(false)}>
@@ -1274,7 +1274,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                           className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all ${
                             isSelected
                               ? 'bg-[#0A0F2E] text-white shadow-sm'
-                              : 'bg-slate-100 dark:bg-slate-800 text-gray-800 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                              : 'bg-slate-100 dark:bg-[#141B45] text-gray-800 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-[#141B45]'
                           }`}
                         >
                           {isSelected && <span className="mr-1">✓</span>}
@@ -1321,7 +1321,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                     ))}
                   </div>
                   {resources.map((resource) => (
-                    <div key={resource.id} className="p-3 bg-slate-50 dark:bg-slate-800 rounded border space-y-2">
+                    <div key={resource.id} className="p-3 bg-slate-50 dark:bg-[#141B45] rounded border space-y-2">
                       <div className="flex items-center justify-between">
                         <Select value={resource.type} onValueChange={(value: any) => updateResource(resource.id, 'type', value)}>
                           <SelectTrigger className="w-32"><SelectValue /></SelectTrigger>
@@ -1364,7 +1364,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                     ))}
                   </div>
                   {stakeholders.map((stakeholder) => (
-                    <div key={stakeholder.id} className="p-3 bg-slate-50 dark:bg-slate-800 rounded border space-y-2">
+                    <div key={stakeholder.id} className="p-3 bg-slate-50 dark:bg-[#141B45] rounded border space-y-2">
                       <div className="flex items-center gap-2">
                         <Input placeholder="Name" value={stakeholder.name} onChange={(e) => updateStakeholder(stakeholder.id, 'name', e.target.value)} className="flex-1" />
                         <Button variant="ghost" size="sm" onClick={() => removeStakeholder(stakeholder.id)}><Trash2 className="h-4 w-4" /></Button>
@@ -1444,7 +1444,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                       <span className="text-sm font-medium text-teal-600">With Execution OS</span>
                       <span className="text-sm font-bold text-teal-600">{analysisResult.decisionVelocityMetrics.ourTime} min</span>
                     </div>
-                    <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-3">
+                    <div className="w-full bg-slate-100 dark:bg-[#141B45] rounded-full h-3">
                       <div className="bg-teal-500 h-3 rounded-full" style={{ width: `${Math.max(5, (analysisResult.decisionVelocityMetrics.ourTime / analysisResult.decisionVelocityMetrics.industryAverage) * 100)}%` }} />
                     </div>
                   </div>
@@ -1453,8 +1453,8 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                       <span className="text-sm font-medium text-gray-800">Industry Average</span>
                       <span className="text-sm font-bold text-gray-800">{industryHrs} hours</span>
                     </div>
-                    <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-3">
-                      <div className="bg-slate-300 dark:bg-slate-600 h-3 rounded-full w-full" />
+                    <div className="w-full bg-slate-100 dark:bg-[#141B45] rounded-full h-3">
+                      <div className="bg-slate-300 dark:bg-[#6B7280] h-3 rounded-full w-full" />
                     </div>
                   </div>
                   <div className="bg-teal-50 dark:bg-teal-900/20 rounded-lg p-3 text-center">
@@ -1476,7 +1476,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
               <CardContent>
                 <div className="space-y-2">
                   {analysisResult.triggeredAlerts.map(alert => (
-                    <div key={alert.id} className="flex items-center justify-between p-2.5 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                    <div key={alert.id} className="flex items-center justify-between p-2.5 bg-slate-50 dark:bg-[#141B45] rounded-lg">
                       <div className="flex items-center gap-2.5">
                         <div className={`w-2 h-2 rounded-full flex-shrink-0 ${alert.severity === 'high' ? 'bg-red-500' : alert.severity === 'medium' ? 'bg-amber-500' : 'bg-[#2B8A6E]'}`} />
                         <span className="font-medium text-sm text-slate-700 dark:text-slate-200">{alert.name}</span>
@@ -1489,7 +1489,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
             </Card>
           </div>
 
-          <Card className="border-teal-200 dark:border-teal-800 bg-gradient-to-br from-[#2B8A6E]/50 to-white dark:from-[#2B8A6E]/10 dark:to-slate-900">
+          <Card className="border-teal-200 dark:border-teal-800 bg-gradient-to-br from-[#2B8A6E]/50 to-white dark:from-[#2B8A6E]/10 dark:to-[#0A0F2E]">
             <CardHeader className="pb-3">
               <CardTitle className="text-base flex items-center gap-2">
                 <Zap className="h-5 w-5 text-teal-600" />
@@ -1502,7 +1502,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                 <div className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-2">Playbooks That Activate</div>
                 <div className="space-y-2">
                   {analysisResult.recommendedPlaybooks.map((playbook, idx) => (
-                    <div key={playbook.id} className="flex items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg border border-teal-100 dark:border-teal-900/30">
+                    <div key={playbook.id} className="flex items-center gap-3 p-3 bg-white dark:bg-[#141B45] rounded-lg border border-teal-100 dark:border-teal-900/30">
                       <div className="w-7 h-7 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center flex-shrink-0">
                         <span className="text-xs font-bold text-teal-600">{idx + 1}</span>
                       </div>
@@ -1529,7 +1529,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                 <div className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-2">Teams Mobilized Simultaneously</div>
                 <div className="flex flex-wrap gap-2">
                   {analysisResult.teamsInvolved.map((team, idx) => (
-                    <div key={idx} className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-slate-800 rounded-full border border-slate-200 dark:border-slate-700">
+                    <div key={idx} className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-[#141B45] rounded-full border border-slate-200 dark:border-slate-700">
                       <Users className="h-3 w-3 text-[#C9A84C]" />
                       <span className="text-sm font-medium text-slate-700 dark:text-slate-200">{team.name}</span>
                     </div>
@@ -1575,7 +1575,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                 </div>
                 <Badge variant="outline" className="text-[#2B8A6E]">{analysisResult.confidenceLevel}%</Badge>
               </div>
-              <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+              <div className="w-full bg-slate-200 dark:bg-[#141B45] rounded-full h-2">
                 <div className="bg-[#0A0F2E] h-2 rounded-full transition-all" style={{ width: `${analysisResult.confidenceLevel}%` }} />
               </div>
               <p className="text-xs text-gray-700 mt-1.5">
@@ -1632,7 +1632,7 @@ export default function WhatIfAnalyzer() {
 
   return (
     <PageLayout>
-      <div className="flex-1 page-background overflow-auto bg-gradient-to-br from-slate-50 to-navy-50 dark:from-slate-900 dark:to-slate-800 p-6 sm:p-8">
+      <div className="flex-1 page-background overflow-auto bg-gradient-to-br from-slate-50 to-navy-50 dark:from-[#0A0F2E] dark:to-[#141B45] p-6 sm:p-8">
         <div className="max-w-5xl mx-auto space-y-8">
 
           {viewMode === 'choose' && (
@@ -1660,7 +1660,7 @@ export default function WhatIfAnalyzer() {
               <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
                 <button
                   onClick={() => setViewMode('quick')}
-                  className="group text-left p-6 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 hover:border-navy-400 dark:hover:border-navy-500 hover:shadow-xl transition-all duration-200"
+                  className="group text-left p-6 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-[#141B45]/50 hover:border-navy-400 dark:hover:border-navy-500 hover:shadow-xl transition-all duration-200"
                 >
                   <div className="flex items-center gap-3 mb-3">
                     <div className="p-2.5 bg-navy-100 dark:bg-navy-900/30 rounded-xl group-hover:bg-navy-200 dark:group-hover:bg-navy-900/50 transition-colors">
@@ -1696,7 +1696,7 @@ export default function WhatIfAnalyzer() {
 
                 <button
                   onClick={() => setViewMode('builder')}
-                  className="group text-left p-6 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 hover:border-gold-400 dark:hover:border-gold-500 hover:shadow-xl transition-all duration-200"
+                  className="group text-left p-6 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-[#141B45]/50 hover:border-gold-400 dark:hover:border-gold-500 hover:shadow-xl transition-all duration-200"
                 >
                   <div className="flex items-center gap-3 mb-3">
                     <div className="p-2.5 bg-gold-100 dark:bg-gold-900/30 rounded-xl group-hover:bg-gold-200 dark:group-hover:bg-gold-900/50 transition-colors">

@@ -67,7 +67,7 @@ const CATEGORY_CONFIG = {
 };
 
 const STATUS_CONFIG = {
-  draft: { label: "Draft", color: "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300" },
+  draft: { label: "Draft", color: "bg-slate-100 text-slate-700 dark:bg-[#141B45] dark:text-slate-300" },
   ready: { label: "Ready", color: "bg-[#2B8A6E]/12 text-[#3BAF8A]" },
   active: { label: "Active", color: "bg-[#C9A84C]/12 text-[#C9A84C]" },
   archived: { label: "Archived", color: "bg-amber-100 text-[#C9A84C] dark:bg-amber-900/30 dark:text-amber-400" },
@@ -77,7 +77,7 @@ const PRIORITY_CONFIG = {
   critical: { label: "Critical", color: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400" },
   high: { label: "High", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
   medium: { label: "Medium", color: "bg-blue-100 text-[#0A0F2E] dark:bg-[#0A0F2E]/30 dark:text-[#0A0F2E]" },
-  low: { label: "Low", color: "bg-slate-100 text-gray-800 dark:bg-slate-800 dark:text-slate-300" },
+  low: { label: "Low", color: "bg-slate-100 text-gray-800 dark:bg-[#141B45] dark:text-slate-300" },
 };
 
 export default function PlaybookManagement() {
@@ -248,7 +248,7 @@ export default function PlaybookManagement() {
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="px-3 py-2 border rounded-md bg-white dark:bg-slate-900 text-sm"
+                  className="px-3 py-2 border rounded-md bg-white dark:bg-[#0A0F2E] text-sm"
                   data-testid="select-status-filter"
                 >
                   <option value="all">All Status</option>
@@ -260,7 +260,7 @@ export default function PlaybookManagement() {
                 <select
                   value={categoryFilter}
                   onChange={(e) => setCategoryFilter(e.target.value)}
-                  className="px-3 py-2 border rounded-md bg-white dark:bg-slate-900 text-sm"
+                  className="px-3 py-2 border rounded-md bg-white dark:bg-[#0A0F2E] text-sm"
                   data-testid="select-category-filter"
                 >
                   <option value="all">All Categories</option>
@@ -277,8 +277,8 @@ export default function PlaybookManagement() {
           <Card>
             <CardContent className="py-12 text-center">
               <div className="animate-pulse space-y-3">
-                <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded w-1/3 mx-auto"></div>
-                <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded w-1/2 mx-auto"></div>
+                <div className="h-4 bg-slate-200 dark:bg-[#141B45] rounded w-1/3 mx-auto"></div>
+                <div className="h-4 bg-slate-200 dark:bg-[#141B45] rounded w-1/2 mx-auto"></div>
               </div>
             </CardContent>
           </Card>
@@ -326,12 +326,12 @@ export default function PlaybookManagement() {
                   return (
                     <TableRow 
                       key={playbook.id} 
-                      className="cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50"
+                      className="cursor-pointer hover:bg-slate-50 dark:hover:bg-[#141B45]/50"
                       data-testid={`row-playbook-${playbook.id}`}
                     >
                       <TableCell>
                         <div className="flex items-center gap-3">
-                          <div className={`p-2 rounded-lg ${categoryConfig?.bg || 'bg-slate-100 dark:bg-slate-800'}`}>
+                          <div className={`p-2 rounded-lg ${categoryConfig?.bg || 'bg-slate-100 dark:bg-[#141B45]'}`}>
                             <CategoryIcon className={`h-4 w-4 ${categoryConfig?.color || 'text-gray-800'}`} />
                           </div>
                           <div>

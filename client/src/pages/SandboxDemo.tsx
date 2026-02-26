@@ -714,7 +714,7 @@ export default function SandboxDemo() {
                     You'll be {Math.round((TIMING_BENCHMARKS.INDUSTRY_AVERAGE.decisionTime * 60) / config.responseTimeTarget)}X faster
                   </p>
                 </div>
-                <div className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                <div className="flex items-center justify-between p-3 bg-slate-50 dark:bg-[#141B45] rounded-lg">
                   <div>
                     <Label className="text-sm">AI-Assisted Drafting</Label>
                     <p className="text-xs text-gray-800">Auto-generate documents</p>
@@ -748,7 +748,7 @@ export default function SandboxDemo() {
                       className={`flex flex-col items-center p-4 rounded-lg border cursor-pointer transition-all ${
                         isSelected 
                           ? 'bg-[#0A0F2E] border-[#C9A84C] dark:bg-[#C9A84C]/30 dark:border-[#C9A84C]' 
-                          : 'hover:bg-slate-50 dark:hover:bg-slate-800'
+                          : 'hover:bg-slate-50 dark:hover:bg-[#141B45]'
                       }`}
                       onClick={() => {
                         const newStakeholders = isSelected
@@ -814,7 +814,7 @@ export default function SandboxDemo() {
             </CardHeader>
             <CardContent className="space-y-4">
               {config.decisionPoints.map((dp, index) => (
-                <div key={dp.id} className="p-4 border rounded-lg bg-slate-50 dark:bg-slate-800/50">
+                <div key={dp.id} className="p-4 border rounded-lg bg-slate-50 dark:bg-[#141B45]/50">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-full bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 flex items-center justify-center text-[#0A0F2E] font-bold">
@@ -1113,7 +1113,7 @@ export default function SandboxDemo() {
                   </div>
                 );
               })}
-              <div className="p-4 bg-slate-50 dark:bg-slate-800 rounded-lg mt-4">
+              <div className="p-4 bg-slate-50 dark:bg-[#141B45] rounded-lg mt-4">
                 <div className="flex justify-between items-center">
                   <span className="font-medium">Total Allocation</span>
                   <span className={`font-bold ${Object.values(budgetBreakdown).reduce((a, b) => a + b, 0) === 100 ? 'text-[#2B8A6E]' : 'text-[#C9A84C]'}`}>
@@ -1147,7 +1147,7 @@ export default function SandboxDemo() {
                       className={`p-4 border rounded-lg cursor-pointer transition-all ${
                         isEnabled 
                           ? 'bg-[#0A0F2E] border-[#C9A84C] dark:bg-[#C9A84C]/30 dark:border-[#C9A84C]' 
-                          : 'hover:bg-slate-50 dark:hover:bg-slate-800'
+                          : 'hover:bg-slate-50 dark:hover:bg-[#141B45]'
                       }`}
                       onClick={() => {
                         const newIntegrations = isEnabled
@@ -1191,7 +1191,7 @@ export default function SandboxDemo() {
             </CardHeader>
             <CardContent className="space-y-6">
               {SUCCESS_METRICS.map((metric) => (
-                <div key={metric.id} className="p-4 border rounded-lg bg-slate-50 dark:bg-slate-800/50">
+                <div key={metric.id} className="p-4 border rounded-lg bg-slate-50 dark:bg-[#141B45]/50">
                   <div className="flex items-start justify-between mb-3">
                     <div>
                       <h4 className="font-medium">{metric.label}</h4>
@@ -1252,7 +1252,7 @@ export default function SandboxDemo() {
         </CardHeader>
         <CardContent className="space-y-4">
           {tasks.map((task, index) => (
-            <div key={task.id} className="p-4 border rounded-lg bg-slate-50 dark:bg-slate-800/50">
+            <div key={task.id} className="p-4 border rounded-lg bg-slate-50 dark:bg-[#141B45]/50">
               <div className="flex items-start gap-4">
                 <div className="flex flex-col items-center">
                   <GripVertical className="h-5 w-5 text-gray-800 dark:text-slate-200 cursor-move" />
@@ -1472,7 +1472,7 @@ export default function SandboxDemo() {
                   const dependencyRoles = tasks.filter(t => task.dependencies.includes(t.id)).map(t => t.assignedRole);
                   
                   return (
-                    <tr key={task.id} className="border-b hover:bg-slate-50 dark:hover:bg-slate-800/50" data-testid={`raci-row-${task.id}`}>
+                    <tr key={task.id} className="border-b hover:bg-slate-50 dark:hover:bg-[#141B45]/50" data-testid={`raci-row-${task.id}`}>
                       <td className="p-2 font-medium">{task.name}</td>
                       {config.stakeholders.slice(0, 5).map(id => {
                         const isResponsible = task.assignedRole === id;
@@ -1540,7 +1540,7 @@ export default function SandboxDemo() {
                     className={`p-3 rounded-lg border cursor-pointer transition-all ${
                       isSelected 
                         ? 'bg-[#0A0F2E] border-[#0A0F2E] dark:bg-[#0A0F2E]/30 dark:border-[#0A0F2E]' 
-                        : 'hover:bg-slate-50 dark:hover:bg-slate-800'
+                        : 'hover:bg-slate-50 dark:hover:bg-[#141B45]'
                     }`}
                     onClick={() => {
                       const newSources = isSelected
@@ -1581,7 +1581,7 @@ export default function SandboxDemo() {
                   className={`p-3 rounded-lg border cursor-pointer transition-all ${
                     triggerConfig.triggerType === trigger.id
                       ? 'bg-amber-50 border-amber-300 dark:bg-amber-950/30 dark:border-amber-700'
-                      : 'hover:bg-slate-50 dark:hover:bg-slate-800'
+                      : 'hover:bg-slate-50 dark:hover:bg-[#141B45]'
                   }`}
                   onClick={() => setTriggerConfig({ ...triggerConfig, triggerType: trigger.id })}
                   data-testid={`trigger-type-${trigger.id}`}
@@ -1605,7 +1605,7 @@ export default function SandboxDemo() {
         </CardHeader>
         <CardContent className="space-y-4">
           {triggerConfig.thresholds.map((threshold, index) => (
-            <div key={threshold.id} className="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
+            <div key={threshold.id} className="flex items-center gap-4 p-4 bg-slate-50 dark:bg-[#141B45]/50 rounded-lg">
               <span className="text-sm font-medium text-gray-800">When</span>
               <Input
                 value={threshold.metric}
@@ -1721,7 +1721,7 @@ export default function SandboxDemo() {
                   className={`p-3 rounded-lg border cursor-pointer transition-all text-center ${
                     triggerConfig.severity === sev.id
                       ? 'ring-2 ring-offset-2 ring-blue-500'
-                      : 'hover:bg-slate-50 dark:hover:bg-slate-800'
+                      : 'hover:bg-slate-50 dark:hover:bg-[#141B45]'
                   }`}
                   onClick={() => setTriggerConfig({ ...triggerConfig, severity: sev.id })}
                   data-testid={`severity-${sev.id}`}
@@ -1742,7 +1742,7 @@ export default function SandboxDemo() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+            <div className="flex items-center justify-between p-3 bg-slate-50 dark:bg-[#141B45] rounded-lg">
               <div>
                 <Label className="text-sm">Require Confirmation</Label>
                 <p className="text-xs text-gray-800">Human must approve activation</p>
@@ -1753,7 +1753,7 @@ export default function SandboxDemo() {
                 data-testid="switch-confirmation-required"
               />
             </div>
-            <div className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+            <div className="flex items-center justify-between p-3 bg-slate-50 dark:bg-[#141B45] rounded-lg">
               <div>
                 <Label className="text-sm">Auto-Activate on Timeout</Label>
                 <p className="text-xs text-gray-800">If no response in 5 min</p>
@@ -1783,7 +1783,7 @@ export default function SandboxDemo() {
                 key={branch.severity}
                 className={`p-4 border rounded-lg transition-all cursor-pointer ${
                   triggerConfig.severity === branch.severity 
-                    ? 'ring-2 ring-blue-500 bg-slate-50 dark:bg-slate-800/50' 
+                    ? 'ring-2 ring-blue-500 bg-slate-50 dark:bg-[#141B45]/50' 
                     : 'opacity-60 hover:opacity-80'
                 }`}
                 onClick={() => setTriggerConfig({ ...triggerConfig, severity: branch.severity })}
@@ -1854,25 +1854,25 @@ export default function SandboxDemo() {
         </Card>
 
         <div className="grid md:grid-cols-4 gap-4 mb-6">
-          <Card className="bg-slate-50 dark:bg-slate-800">
+          <Card className="bg-slate-50 dark:bg-[#141B45]">
             <CardContent className="p-4 text-center">
               <div className="text-2xl font-bold text-[#C9A84C]">{config.stakeholders.length}</div>
               <div className="text-xs text-gray-800">Stakeholders</div>
             </CardContent>
           </Card>
-          <Card className="bg-slate-50 dark:bg-slate-800">
+          <Card className="bg-slate-50 dark:bg-[#141B45]">
             <CardContent className="p-4 text-center">
               <div className="text-2xl font-bold text-[#0A0F2E]">{tasks.length}</div>
               <div className="text-xs text-gray-800">Tasks</div>
             </CardContent>
           </Card>
-          <Card className="bg-slate-50 dark:bg-slate-800">
+          <Card className="bg-slate-50 dark:bg-[#141B45]">
             <CardContent className="p-4 text-center">
               <div className="text-2xl font-bold text-[#C9A84C]">{config.decisionPoints.length}</div>
               <div className="text-xs text-gray-800">Decisions</div>
             </CardContent>
           </Card>
-          <Card className="bg-slate-50 dark:bg-slate-800">
+          <Card className="bg-slate-50 dark:bg-[#141B45]">
             <CardContent className="p-4 text-center">
               <div className="text-2xl font-bold text-[#2B8A6E]">${(config.budgetPreApproved/1000).toFixed(0)}K</div>
               <div className="text-xs text-gray-800">Budget</div>
@@ -1903,7 +1903,7 @@ export default function SandboxDemo() {
                       ? 'bg-[#0A0F2E] dark:bg-[#C9A84C]/30'
                       : event.type === 'task'
                       ? 'bg-[#0A0F2E] dark:bg-[#0A0F2E]/30'
-                      : 'bg-slate-50 dark:bg-slate-800'
+                      : 'bg-slate-50 dark:bg-[#141B45]'
                   }`}
                 >
                   <div className="min-w-16 font-mono text-sm font-bold text-gray-800 dark:text-slate-300">
@@ -1991,7 +1991,7 @@ export default function SandboxDemo() {
 
         <div className="grid md:grid-cols-3 gap-6">
           <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="response-team" className="border rounded-lg bg-white dark:bg-slate-900">
+            <AccordionItem value="response-team" className="border rounded-lg bg-white dark:bg-[#0A0F2E]">
               <AccordionTrigger className="px-4 py-3 hover:no-underline">
                 <div className="flex items-center gap-2">
                   <Users className="h-5 w-5 text-[#C9A84C]" />
@@ -2004,7 +2004,7 @@ export default function SandboxDemo() {
                   {config.stakeholders.map(id => {
                     const s = STAKEHOLDER_OPTIONS.find(opt => opt.id === id);
                     return s ? (
-                      <div key={id} className="flex items-center gap-2 text-sm p-2 rounded bg-slate-50 dark:bg-slate-800">
+                      <div key={id} className="flex items-center gap-2 text-sm p-2 rounded bg-slate-50 dark:bg-[#141B45]">
                         <Badge variant="outline" className="text-xs">L{s.level}</Badge>
                         <span>{s.label}</span>
                       </div>
@@ -2019,7 +2019,7 @@ export default function SandboxDemo() {
           </Accordion>
 
           <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="execution-tasks" className="border rounded-lg bg-white dark:bg-slate-900">
+            <AccordionItem value="execution-tasks" className="border rounded-lg bg-white dark:bg-[#0A0F2E]">
               <AccordionTrigger className="px-4 py-3 hover:no-underline">
                 <div className="flex items-center gap-2">
                   <ListChecks className="h-5 w-5 text-[#0A0F2E]" />
@@ -2030,7 +2030,7 @@ export default function SandboxDemo() {
               <AccordionContent className="px-4 pb-4">
                 <div className="space-y-2">
                   {tasks.map((task) => (
-                    <div key={task.id} className="flex items-center gap-2 text-sm p-2 rounded bg-slate-50 dark:bg-slate-800">
+                    <div key={task.id} className="flex items-center gap-2 text-sm p-2 rounded bg-slate-50 dark:bg-[#141B45]">
                       <div className={`w-2 h-2 rounded-full flex-shrink-0 ${
                         task.priority === 'critical' ? 'bg-red-500' :
                         task.priority === 'high' ? 'bg-orange-500' : 'bg-[#0A0F2E]'
@@ -2048,7 +2048,7 @@ export default function SandboxDemo() {
           </Accordion>
 
           <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="trigger-config" className="border rounded-lg bg-white dark:bg-slate-900">
+            <AccordionItem value="trigger-config" className="border rounded-lg bg-white dark:bg-[#0A0F2E]">
               <AccordionTrigger className="px-4 py-3 hover:no-underline">
                 <div className="flex items-center gap-2">
                   <Zap className="h-5 w-5 text-[#C9A84C]" />
@@ -2074,7 +2074,7 @@ export default function SandboxDemo() {
                       {triggerConfig.thresholds.map((t) => {
                         const opText = t.operator === 'greater' ? '>' : t.operator === 'less' ? '<' : t.operator === 'equals' ? '=' : 'contains';
                         return (
-                          <div key={t.id} className="text-sm p-2 rounded bg-slate-50 dark:bg-slate-800">
+                          <div key={t.id} className="text-sm p-2 rounded bg-slate-50 dark:bg-[#141B45]">
                             {t.metric} {opText} {t.value} → <Badge variant="outline" className="text-xs">{t.action}</Badge>
                           </div>
                         );
@@ -2232,7 +2232,7 @@ export default function SandboxDemo() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950">
+    <div className="min-h-screen bg-white dark:bg-[#0A0F2E]">
       <StandardNav />
 
       <div className="py-12 px-6">
@@ -2251,7 +2251,7 @@ export default function SandboxDemo() {
                         ? 'bg-[#0A0F2E] text-gray-900' 
                         : isComplete 
                         ? 'bg-green-100 text-[#2B8A6E] dark:bg-green-900/30 dark:text-green-400'
-                        : 'bg-slate-100 text-gray-800 dark:bg-slate-800'
+                        : 'bg-slate-100 text-gray-800 dark:bg-[#141B45]'
                     }`}
                   >
                     {isComplete ? (
@@ -2263,7 +2263,7 @@ export default function SandboxDemo() {
                   </div>
                   {index < steps.length - 1 && (
                     <div className={`w-6 h-0.5 mx-1 ${
-                      isComplete ? 'bg-green-400' : 'bg-slate-200 dark:bg-slate-700'
+                      isComplete ? 'bg-green-400' : 'bg-slate-200 dark:bg-[#141B45]'
                     }`} />
                   )}
                 </div>

@@ -492,13 +492,13 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
-                <div className="text-center p-4 bg-white dark:bg-slate-900 rounded-lg">
+                <div className="text-center p-4 bg-white dark:bg-[#0A0F2E] rounded-lg">
                   <p className="text-3xl font-bold text-[#2B8A6E]">
                     {dynamicStatus?.readinessScore?.toFixed(1) || '—'}%
                   </p>
                   <p className="text-xs text-muted-foreground">Readiness Score</p>
                 </div>
-                <div className="text-center p-4 bg-white dark:bg-slate-900 rounded-lg">
+                <div className="text-center p-4 bg-white dark:bg-[#0A0F2E] rounded-lg">
                   <p className="text-3xl font-bold text-[#0A0F2E]">{totalDataPoints}</p>
                   <p className="text-xs text-muted-foreground">Data Points</p>
                 </div>

@@ -86,7 +86,7 @@ const getReportTypeBadgeColor = (reportType: string) => {
     case 'competitive_intelligence': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
     case 'risk_assessment': return 'bg-red-500/20 text-red-300 border-red-500/30';
     case 'regulatory_update': return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
-    case 'technology_trends': return 'bg-[#2B8A6E]/20 text-emerald-300 border-[#2B8A6E]/30';
+    case 'technology_trends': return 'bg-[#2B8A6E]/20 text-[#3BAF8A] border-[#2B8A6E]/30';
     default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
   }
 };
@@ -322,7 +322,7 @@ export default function ComprehensiveAIIntelligence() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'operational': return 'bg-[#2B8A6E]/20 text-emerald-300 border-[#2B8A6E]/30';
+      case 'operational': return 'bg-[#2B8A6E]/20 text-[#3BAF8A] border-[#2B8A6E]/30';
       case 'processing': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
       case 'offline': return 'bg-red-500/20 text-red-300 border-red-500/30';
       default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
@@ -541,7 +541,7 @@ export default function ComprehensiveAIIntelligence() {
           <TabsContent value="modules" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
               {aiModules.map((module) => (
-                <Card key={module.id} className="bg-white border-gray-200 hover:bg-slate-800/50 transition-all duration-300">
+                <Card key={module.id} className="bg-white border-gray-200 hover:bg-[#141B45]/50 transition-all duration-300">
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <CardTitle className="text-gray-900 flex items-center gap-3">
@@ -598,7 +598,7 @@ export default function ComprehensiveAIIntelligence() {
                           View Details
                         </Button>
                       </Link>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-[#141B45]">
                         <Settings className="w-4 h-4" />
                       </Button>
                     </div>
@@ -668,7 +668,7 @@ export default function ComprehensiveAIIntelligence() {
                           <Eye className="w-4 h-4 mr-2" />
                           Full Report
                         </Button>
-                        <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
+                        <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-[#141B45]">
                           <Share className="w-4 h-4 mr-2" />
                           Share
                         </Button>

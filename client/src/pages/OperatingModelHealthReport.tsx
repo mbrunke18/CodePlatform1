@@ -77,7 +77,7 @@ export default function OperatingModelHealthReport() {
   const needsAttentionCount = Object.values(elementHealthScores).filter(s => s < 60).length;
 
   return (
-    <div className="page-background min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+    <div className="page-background min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-[#0A0F2E] dark:to-[#141B45]">
       <div className="container mx-auto px-6 py-8">
         {/* Header */}
         <div className="mb-8">
@@ -97,7 +97,7 @@ export default function OperatingModelHealthReport() {
         </div>
 
         {/* Overall Health Score */}
-        <Card className="mb-8 border-2 shadow-lg bg-white dark:bg-slate-800">
+        <Card className="mb-8 border-2 shadow-lg bg-white dark:bg-[#141B45]">
           <CardHeader>
             <CardTitle className="text-2xl">Organization Readiness Score</CardTitle>
             <CardDescription>
@@ -177,7 +177,7 @@ export default function OperatingModelHealthReport() {
                 return (
                   <Card 
                     key={element.id} 
-                    className="hover:shadow-lg transition-shadow duration-200 bg-white dark:bg-slate-800"
+                    className="hover:shadow-lg transition-shadow duration-200 bg-white dark:bg-[#141B45]"
                     data-testid={`card-element-${element.id.toLowerCase().replace(' ', '-')}`}
                   >
                     <CardHeader>
@@ -222,7 +222,7 @@ export default function OperatingModelHealthReport() {
                 return (
                   <Card 
                     key={element.id} 
-                    className="hover:shadow-lg transition-shadow duration-200 bg-white dark:bg-slate-800"
+                    className="hover:shadow-lg transition-shadow duration-200 bg-white dark:bg-[#141B45]"
                     data-testid={`card-strong-${element.id.toLowerCase().replace(' ', '-')}`}
                   >
                     <CardHeader>
@@ -267,7 +267,7 @@ export default function OperatingModelHealthReport() {
                 return (
                   <Card 
                     key={element.id} 
-                    className="hover:shadow-lg transition-shadow duration-200 bg-white dark:bg-slate-800 border-red-200 dark:border-red-900"
+                    className="hover:shadow-lg transition-shadow duration-200 bg-white dark:bg-[#141B45] border-red-200 dark:border-red-900"
                     data-testid={`card-focus-${element.id.toLowerCase().replace(' ', '-')}`}
                   >
                     <CardHeader>
@@ -310,7 +310,7 @@ export default function OperatingModelHealthReport() {
         </Tabs>
 
         {/* Recommendations Section */}
-        <Card className="bg-gradient-to-br from-[#0A0F2E] to-[#141B45] dark:from-slate-800 dark:to-slate-900 border-2">
+        <Card className="bg-gradient-to-br from-[#0A0F2E] to-[#141B45] dark:from-[#141B45] dark:to-[#0A0F2E] border-2">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
               <TrendingUp className="h-6 w-6 text-[#0A0F2E]" />
@@ -322,7 +322,7 @@ export default function OperatingModelHealthReport() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="bg-white dark:bg-slate-800 rounded-lg p-4 border-l-4 border-red-500">
+              <div className="bg-white dark:bg-[#141B45] rounded-lg p-4 border-l-4 border-red-500">
                 <div className="flex items-start gap-3">
                   <AlertCircle className="h-5 w-5 text-red-700 mt-0.5 flex-shrink-0" />
                   <div>
@@ -338,7 +338,7 @@ export default function OperatingModelHealthReport() {
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-slate-800 rounded-lg p-4 border-l-4 border-yellow-500">
+              <div className="bg-white dark:bg-[#141B45] rounded-lg p-4 border-l-4 border-yellow-500">
                 <div className="flex items-start gap-3">
                   <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5 flex-shrink-0" />
                   <div>
@@ -354,7 +354,7 @@ export default function OperatingModelHealthReport() {
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-slate-800 rounded-lg p-4 border-l-4 border-green-500">
+              <div className="bg-white dark:bg-[#141B45] rounded-lg p-4 border-l-4 border-green-500">
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="h-5 w-5 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
                   <div>

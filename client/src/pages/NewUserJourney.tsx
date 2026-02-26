@@ -366,18 +366,19 @@ export default function NewUserJourney() {
             </div>
           </div>
           
-                          <div className={`
-                            h-1 transition-all flex-1
-                            ${isCurrent ? 'bg-[#C9A84C]' : ''}
-                            ${isCompleted ? 'bg-[#2B8A6E]' : ''}
-                            ${!isCurrent && !isCompleted ? 'bg-[#E8E4DC]' : ''}
-                          `} />
-                        </div>
-                      );
-                    })}
-                  </div>
-            </div>
+          <div className="flex gap-1 mt-2">
+            {STEPS.map((_, idx) => {
+              const isCurrent = idx === state.step;
+              const isCompleted = idx < state.step;
+              return (
+                <div key={idx} className="flex-1">
+                  <div className={`h-1 transition-all w-full ${isCurrent ? 'bg-[#C9A84C]' : ''} ${isCompleted ? 'bg-[#2B8A6E]' : ''} ${!isCurrent && !isCompleted ? 'bg-[#E8E4DC]' : ''}`} />
+                </div>
+              );
+            })}
           </div>
+        </div>
+      </div>
 
       <div className="pt-32 pb-24 px-6">
         <div className="max-w-4xl mx-auto">

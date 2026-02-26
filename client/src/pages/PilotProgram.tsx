@@ -35,7 +35,7 @@ const pilotPhases = [
     phase: 'Phase 0',
     name: 'Readiness & Setup',
     duration: 'Weeks 1-2',
-    color: 'bg-slate-600',
+    color: 'bg-[#6B7280]',
     activities: [
       'Executive sponsor alignment session',
       'Integration setup (Jira, Slack/Teams)',
@@ -251,7 +251,7 @@ export default function PilotProgram() {
             <div className="inline-block px-6 py-4 rounded-2xl border border-slate-600/50 backdrop-blur-sm mb-6">
               <ExecuteIQLogo width={240} variant="full" color="white" showTagline={true} />
             </div>
-            <Badge className="mb-6 bg-[#2B8A6E]/20 text-emerald-300 border-[#2B8A6E]/30" data-testid="badge-pilot">
+            <Badge className="mb-6 bg-[#2B8A6E]/20 text-[#3BAF8A] border-[#2B8A6E]/30" data-testid="badge-pilot">
               Fortune 1000 Design Partner Program
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-6" data-testid="heading-pilot-program">
@@ -325,7 +325,7 @@ export default function PilotProgram() {
 
             {/* Timeline Visual */}
             <div className="relative mb-12">
-              <div className="absolute left-0 right-0 top-1/2 h-1 bg-slate-200 dark:bg-slate-700 -translate-y-1/2 hidden md:block"></div>
+              <div className="absolute left-0 right-0 top-1/2 h-1 bg-slate-200 dark:bg-[#141B45] -translate-y-1/2 hidden md:block"></div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 {pilotPhases.map((phase, i) => (
                   <div key={i} className="relative" data-testid={`phase-${i}`}>
@@ -362,7 +362,7 @@ export default function PilotProgram() {
         </section>
 
         {/* What's Included */}
-        <section className="py-16 px-6 bg-slate-100 dark:bg-slate-900/50">
+        <section className="py-16 px-6 bg-slate-100 dark:bg-[#0A0F2E]/50">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-inclusions">
@@ -417,7 +417,7 @@ export default function PilotProgram() {
                 <Card key={i} className="hover:shadow-lg transition-shadow" data-testid={`card-candidate-${i}`}>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">
+                      <div className="p-2 rounded-lg bg-slate-100 dark:bg-[#141B45]">
                         <candidate.icon className="w-5 h-5 text-gray-800 dark:text-slate-300" />
                       </div>
                       <div className="flex-1">
@@ -456,7 +456,7 @@ export default function PilotProgram() {
                     <tr className="border-b border-white/20">
                       <th className="text-left p-4 font-semibold text-gray-900">Value Metric</th>
                       <th className="text-left p-4 font-semibold text-red-300">Before Execution OS</th>
-                      <th className="text-left p-4 font-semibold text-emerald-300">With Execution OS</th>
+                      <th className="text-left p-4 font-semibold text-[#3BAF8A]">With Execution OS</th>
                       <th className="text-left p-4 font-semibold text-blue-300">Calculation</th>
                       <th className="text-right p-4 font-semibold text-amber-300">Value Captured</th>
                     </tr>
@@ -466,7 +466,7 @@ export default function PilotProgram() {
                       <tr key={i} className="border-b border-white/10 last:border-0">
                         <td className="p-4 text-gray-900 font-medium">{row.metric}</td>
                         <td className="p-4 text-red-700">{row.baseline}</td>
-                        <td className="p-4 text-emerald-200">{row.withExecutionOS}</td>
+                        <td className="p-4 text-[#BBF7D0]">{row.withExecutionOS}</td>
                         <td className="p-4 text-[#0A0F2E] text-sm">{row.calculation}</td>
                         <td className="p-4 text-amber-300 font-bold text-right">{row.value}</td>
                       </tr>
@@ -498,7 +498,7 @@ export default function PilotProgram() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {conversionTerms.map((term, i) => (
-                <Card key={i} className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 border-2 border-[#2B8A6E] dark:border-[#2B8A6E] hover:border-[#2B8A6E] dark:hover:border-[#2B8A6E] transition-colors" data-testid={`card-term-${i}`}>
+                <Card key={i} className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-[#141B45] dark:to-[#0A0F2E] border-2 border-[#2B8A6E] dark:border-[#2B8A6E] hover:border-[#2B8A6E] dark:hover:border-[#2B8A6E] transition-colors" data-testid={`card-term-${i}`}>
                   <CardContent className="p-6 text-center">
                     <div className="p-3 rounded-xl bg-[#F0F9F6] dark:bg-[#2B8A6E]/15 inline-block mb-4">
                       <term.icon className="w-6 h-6 text-[#2B8A6E] dark:text-[#2B8A6E]" />
@@ -513,7 +513,7 @@ export default function PilotProgram() {
         </section>
 
         {/* Success Stories Preview */}
-        <section className="py-16 px-6 bg-slate-100 dark:bg-slate-900/50">
+        <section className="py-16 px-6 bg-slate-100 dark:bg-[#0A0F2E]/50">
           <div className="max-w-4xl mx-auto">
             <Card className="overflow-hidden" data-testid="card-success-preview">
               <CardContent className="p-8">

@@ -170,8 +170,8 @@ export default function PlaybookDetail() {
     return (
       <PageLayout>
         <div className="container mx-auto p-6 animate-pulse">
-          <div className="h-8 w-64 bg-slate-200 dark:bg-slate-800 rounded mb-4" />
-          <div className="h-48 bg-slate-200 dark:bg-slate-800 rounded" />
+          <div className="h-8 w-64 bg-slate-200 dark:bg-[#141B45] rounded mb-4" />
+          <div className="h-48 bg-slate-200 dark:bg-[#141B45] rounded" />
         </div>
       </PageLayout>
     );

@@ -10,8 +10,8 @@ export default function NotFound() {
   return (
     <div className="flex flex-col min-h-screen">
       <StandardNav variant="default" />
-      <div className="page-background flex-1 w-full flex items-center justify-center bg-gray-50 dark:bg-slate-950">
-        <Card className="w-full max-w-md mx-4 dark:bg-slate-900 dark:border-slate-800">
+      <div className="page-background flex-1 w-full flex items-center justify-center bg-gray-50 dark:bg-[#0A0F2E]">
+        <Card className="w-full max-w-md mx-4 dark:bg-[#0A0F2E] dark:border-slate-800">
           <CardContent className="pt-6">
             <div className="flex mb-4 gap-2">
               <AlertCircle className="h-8 w-8 text-red-500" />
@@ -25,7 +25,7 @@ export default function NotFound() {
             <div className="flex gap-3">
               <Button
                 onClick={() => setLocation('/')}
-                className="flex-1 bg-white dark:bg-slate-100 text-gray-900 dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200"
+                className="flex-1 bg-white dark:bg-slate-100 text-gray-900 dark:text-slate-900 hover:bg-[#141B45] dark:hover:bg-slate-200"
               >
                 <Home className="mr-2 h-4 w-4" />
                 Go Home
@@ -33,7 +33,7 @@ export default function NotFound() {
               <Button
                 onClick={() => window.history.back()}
                 variant="outline"
-                className="flex-1 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+                className="flex-1 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-[#141B45]"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Go Back
