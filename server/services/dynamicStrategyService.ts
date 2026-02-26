@@ -206,38 +206,49 @@ export class DynamicStrategyService {
       { type: "supply_chain", confidence: 79, timeline: "1-3 months", impact: "critical" },
     ];
 
-    // Randomly detect signals (in production, this would be real AI analysis)
-    if (Math.random() > 0.7) {
-      const signal = signalTypes[Math.floor(Math.random() * signalTypes.length)];
-      
-      const [newSignal] = await db
-        .insert(weakSignals)
-        .values({
-          organizationId,
-          signalType: signal.type,
-          description: `Potential ${signal.type} shift detected requiring strategic attention`,
-          confidence: signal.confidence.toString(),
-          timeline: signal.timeline,
-          impact: signal.impact,
-          source: "AI Pattern Detection",
-          status: "active",
-        })
-        .returning();
+    // Only create a signal if no signal was created in the last 12 hours for this org
+    const twelveHoursAgo = new Date(Date.now() - 12 * 60 * 60 * 1000);
+    const recentSignals = await db
+      .select({ id: weakSignals.id })
+      .from(weakSignals)
+      .where(and(
+        eq(weakSignals.organizationId, organizationId),
+        gte(weakSignals.detectedAt, twelveHoursAgo),
+      ))
+      .limit(1);
 
-      // Log activity
-      await this.logActivity(organizationId, {
-        eventType: "weak_signal",
-        title: `New weak signal detected: ${signal.type}`,
-        description: `${signal.confidence}% confidence, ${signal.timeline} timeline`,
-        severity: signal.impact === "critical" ? "critical" : "warning",
-        relatedEntityType: "signal",
-        relatedEntityId: newSignal.id,
-      });
-
-      return [newSignal];
+    if (recentSignals.length > 0) {
+      return [];
     }
 
-    return [];
+    // Rotate signal type based on hour-of-day to stay deterministic
+    const hourIndex = new Date().getUTCHours() % signalTypes.length;
+    const signal = signalTypes[hourIndex];
+
+    const [newSignal] = await db
+      .insert(weakSignals)
+      .values({
+        organizationId,
+        signalType: signal.type,
+        description: `Potential ${signal.type} shift detected requiring strategic attention`,
+        confidence: signal.confidence.toString(),
+        timeline: signal.timeline,
+        impact: signal.impact,
+        source: "AI Pattern Detection",
+        status: "active",
+      })
+      .returning();
+
+    await this.logActivity(organizationId, {
+      eventType: "weak_signal",
+      title: `New weak signal detected: ${signal.type}`,
+      description: `${signal.confidence}% confidence, ${signal.timeline} timeline`,
+      severity: signal.impact === "critical" ? "critical" : "warning",
+      relatedEntityType: "signal",
+      relatedEntityId: newSignal.id,
+    });
+
+    return [newSignal];
   }
 
   /**
@@ -257,69 +268,85 @@ export class DynamicStrategyService {
       .orderBy(desc(weakSignals.detectedAt))
       .limit(10);
 
-    if (activeSignals.length < 2) return []; // Need multiple signals to detect patterns
+    if (activeSignals.length < 3) return []; // Need at least 3 signals to detect meaningful patterns
 
-    // In production, use AI to analyze signal correlations
-    // For now, simulate pattern detection
-    if (Math.random() > 0.6) {
-      const patternTypes = [
-        {
-          type: "regulatory_shift",
-          description: "Emerging regulatory changes detected across multiple signals",
-          impact: "high",
-        },
-        {
-          type: "market_disruption",
-          description: "Convergence of market trends suggesting potential disruption",
-          impact: "critical",
-        },
-        {
-          type: "supply_chain_risk",
-          description: "Multiple supply chain vulnerabilities identified",
-          impact: "high",
-        },
-      ];
+    // Only create a pattern if none was created in the last 24 hours
+    const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+    const recentPatterns = await db
+      .select({ id: oraclePatterns.id })
+      .from(oraclePatterns)
+      .where(and(
+        eq(oraclePatterns.organizationId, organizationId),
+        gte(oraclePatterns.createdAt, twentyFourHoursAgo),
+      ))
+      .limit(1);
 
-      const pattern = patternTypes[Math.floor(Math.random() * patternTypes.length)];
-      const confidence = Math.floor(60 + Math.random() * 30);
-
-      const recommendations = [
-        "Pre-load relevant compliance playbooks",
-        "Schedule executive briefing session",
-        "Run simulation exercise with key stakeholders",
-        "Review and update affected playbooks",
-      ];
-
-      const [newPattern] = await db
-        .insert(oraclePatterns)
-        .values({
-          organizationId,
-          patternType: pattern.type,
-          description: pattern.description,
-          confidence: confidence.toString(),
-          impact: pattern.impact,
-          timeline: "2-4 months",
-          recommendations,
-          affectedScenarios: [],
-          evidenceSignals: activeSignals.slice(0, 3).map((s) => s.id),
-          status: "detected",
-        })
-        .returning();
-
-      // Log activity
-      await this.logActivity(organizationId, {
-        eventType: "pattern_detected",
-        title: `M Oracle: ${pattern.type} detected`,
-        description: `${confidence}% confidence, ${pattern.impact} impact`,
-        severity: pattern.impact === "critical" ? "critical" : "warning",
-        relatedEntityType: "pattern",
-        relatedEntityId: newPattern.id,
-      });
-
-      return [newPattern];
+    if (recentPatterns.length > 0) {
+      return [];
     }
 
-    return [];
+    // Determine pattern type based on the dominant signal category present
+    const signalTypeCounts: Record<string, number> = {};
+    for (const s of activeSignals) {
+      signalTypeCounts[s.signalType] = (signalTypeCounts[s.signalType] || 0) + 1;
+    }
+    const dominantType = Object.entries(signalTypeCounts).sort((a, b) => b[1] - a[1])[0][0];
+
+    const patternTypes = [
+      {
+        type: "regulatory_shift",
+        description: "Emerging regulatory changes detected across multiple signals",
+        impact: "high",
+      },
+      {
+        type: "market_disruption",
+        description: "Convergence of market trends suggesting potential disruption",
+        impact: "critical",
+      },
+      {
+        type: "supply_chain_risk",
+        description: "Multiple supply chain vulnerabilities identified",
+        impact: "high",
+      },
+    ];
+
+    const patternMatch = patternTypes.find(p => p.type.includes(dominantType)) || patternTypes[0];
+    const pattern = patternMatch;
+    const confidence = Math.min(95, 50 + activeSignals.length * 5);
+
+    const recommendations = [
+      "Pre-load relevant compliance playbooks",
+      "Schedule executive briefing session",
+      "Run simulation exercise with key stakeholders",
+      "Review and update affected playbooks",
+    ];
+
+    const [newPattern] = await db
+      .insert(oraclePatterns)
+      .values({
+        organizationId,
+        patternType: pattern.type,
+        description: pattern.description,
+        confidence: confidence.toString(),
+        impact: pattern.impact,
+        timeline: "2-4 months",
+        recommendations,
+        affectedScenarios: [],
+        evidenceSignals: activeSignals.slice(0, 3).map((s) => s.id),
+        status: "detected",
+      })
+      .returning();
+
+    await this.logActivity(organizationId, {
+      eventType: "pattern_detected",
+      title: `Oracle: ${pattern.type} detected`,
+      description: `${confidence}% confidence, ${pattern.impact} impact`,
+      severity: pattern.impact === "critical" ? "critical" : "warning",
+      relatedEntityType: "pattern",
+      relatedEntityId: newPattern.id,
+    });
+
+    return [newPattern];
   }
 
   /**

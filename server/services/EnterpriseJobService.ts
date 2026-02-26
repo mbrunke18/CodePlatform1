@@ -129,30 +129,28 @@ export class EnterpriseJobService {
       logger.info(`Processing pulse analysis for org: ${data.organizationId}`);
       
       try {
-        // Simulate enterprise pulse analysis with AI
         const analysis = {
-          organizationHealth: Math.random() * 100,
+          organizationHealth: 0,
           keyMetrics: {
-            agility: Math.random() * 100,
-            efficiency: Math.random() * 100,
-            innovation: Math.random() * 100
+            agility: 0,
+            efficiency: 0,
+            innovation: 0
           },
           insights: [
-            'Strategic agility has improved 12% this quarter',
-            'Team collaboration metrics show positive trends',
-            'Innovation pipeline strength is above industry average'
+            'Activate playbooks to begin tracking strategic agility',
+            'Complete onboarding to enable collaboration metrics',
+            'Run execution simulations to measure innovation pipeline'
           ],
           recommendations: [
-            'Consider expanding high-performing initiatives',
-            'Address bottlenecks in decision-making processes',
-            'Invest in emerging technology capabilities'
+            'Start with a playbook relevant to your current strategic priorities',
+            'Invite team members to enable collaboration tracking',
+            'Connect data integrations for live signal ingestion'
           ],
-          riskFactors: ['Market volatility', 'Talent retention'],
-          opportunities: ['Digital transformation acceleration', 'Market expansion'],
+          riskFactors: [],
+          opportunities: [],
           timestamp: new Date().toISOString()
         };
 
-        // Store analysis results
         logger.info(`Pulse analysis completed for org: ${data.organizationId}`);
         return analysis;
       } catch (error) {
@@ -166,21 +164,18 @@ export class EnterpriseJobService {
       logger.info(`Processing risk assessment for org: ${data.organizationId}`);
       
       const riskAssessment = {
-        overallRiskScore: Math.random() * 100,
+        overallRiskScore: 0,
         riskCategories: {
-          operational: Math.random() * 100,
-          financial: Math.random() * 100,
-          strategic: Math.random() * 100,
-          regulatory: Math.random() * 100
+          operational: 0,
+          financial: 0,
+          strategic: 0,
+          regulatory: 0
         },
-        criticalRisks: [
-          { risk: 'Supply chain disruption', probability: 0.3, impact: 0.8 },
-          { risk: 'Cybersecurity threat', probability: 0.4, impact: 0.9 }
-        ],
+        criticalRisks: [],
         mitigationStrategies: [
-          'Diversify supplier base',
-          'Enhance security protocols',
-          'Implement business continuity plans'
+          'Activate signal monitoring to detect emerging risks',
+          'Load compliance playbooks for your industry',
+          'Configure alert thresholds for key risk indicators'
         ],
         timestamp: new Date().toISOString()
       };

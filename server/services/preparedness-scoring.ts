@@ -165,7 +165,7 @@ export async function getPlaybookInsights(playbookId: string): Promise<PlaybookI
   const triggerStatus = {
     monitoringActive: true, // All playbooks monitored by default
     lastMonitoredAt: new Date().toISOString(), // Current time for MVP
-    aiConfidence: Math.floor(Math.random() * 30) + 70, // 70-100 for MVP
+    aiConfidence: 85,
     triggerCriteria: playbook.triggerCriteria || 'No trigger criteria defined',
   };
   

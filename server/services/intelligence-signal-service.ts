@@ -161,7 +161,7 @@ class IntelligenceSignalService {
         mediumCount: 0,
         lowCount: 0,
         lastUpdated: now,
-        healthScore: Math.floor(Math.random() * 30) + 70
+        healthScore: 0
       }));
 
       return {
@@ -187,13 +187,13 @@ class IntelligenceSignalService {
           categoryId: cat.id,
           categoryName: cat.name,
           status: 'active' as const,
-          activeAlerts: Math.floor(Math.random() * 3),
+          activeAlerts: 0,
           criticalCount: 0,
           highCount: 0,
           mediumCount: 0,
           lowCount: 0,
           lastUpdated: now,
-          healthScore: Math.floor(Math.random() * 30) + 70
+          healthScore: 0
         })),
         recentAlerts: [],
         weakSignals: []
