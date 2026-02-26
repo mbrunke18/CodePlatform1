@@ -336,7 +336,7 @@ export default function Investors() {
             <div className="text-center">
               <Link href="/try-demo">
                 <Button
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A] text-[#0A0F2E] font-semibold rounded-xl hover:opacity-90 transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-semibold rounded-xl transition-all"
                 >
                   <Play className="w-4 h-4" />
                   Experience the Interactive Scenario Demo

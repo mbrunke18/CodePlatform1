@@ -467,7 +467,7 @@ export default function PilotProgram() {
                       <tr key={i} className="border-b border-white/5 last:border-0">
                         <td className="p-4 text-white font-medium">{row.metric}</td>
                         <td className="p-4 text-red-400/80">{row.baseline}</td>
-                        <td className="p-4 text-[#BBF7D0]">{row.withExecutionOS}</td>
+                        <td className="p-4 text-[#3BAF8A]">{row.withExecutionOS}</td>
                         <td className="p-4 text-white/60 text-sm">{row.calculation}</td>
                         <td className="p-4 text-[#C9A84C] font-bold text-right">{row.value}</td>
                       </tr>

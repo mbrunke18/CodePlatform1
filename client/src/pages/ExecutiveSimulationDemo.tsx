@@ -460,7 +460,7 @@ export default function ExecutiveSimulationDemo() {
                 <Award className="w-10 h-10 text-white" />
               </div>
               <Badge className="mx-auto mb-4 bg-[#2B8A6E]/10 text-[#2B8A6E] border-none">
-                Simulation Complete
+                COMPLETE
               </Badge>
               <CardTitle className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 Response Successfully Coordinated

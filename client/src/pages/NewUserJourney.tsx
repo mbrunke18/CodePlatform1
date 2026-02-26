@@ -1254,7 +1254,7 @@ export default function NewUserJourney() {
                 <Button
                   size="lg"
                   onClick={handleNext}
-                  className="bg-gradient-to-r from-green-600 to-[#2B8A6E] hover:from-green-700 hover:to-[#256B56] min-w-[220px]"
+                  className="bg-[#2B8A6E] hover:bg-[#256B56] min-w-[220px] rounded-none font-bold uppercase tracking-widest text-xs"
                   data-testid="button-enter-platform"
                 >
                   <Rocket className="h-4 w-4 mr-2" />
@@ -1267,7 +1267,7 @@ export default function NewUserJourney() {
                 size="lg"
                 onClick={handleNext}
                 disabled={!canProceed() || completeJourneyMutation.isPending}
-                className="bg-[#2B8A6E] hover:bg-[#237A5F] min-w-[200px]"
+                className="bg-[#2B8A6E] hover:bg-[#256B56] min-w-[200px] rounded-none font-bold uppercase tracking-widest text-xs shadow-xl"
                 data-testid="button-complete"
               >
                 {completeJourneyMutation.isPending ? (
@@ -1287,7 +1287,7 @@ export default function NewUserJourney() {
                 size="lg"
                 onClick={handleNext}
                 disabled={!canProceed()}
-                className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white min-w-[160px]"
+                className="bg-[#0A0F2E] hover:bg-[#141B45] text-white min-w-[160px] rounded-none font-bold uppercase tracking-widest text-xs"
                 data-testid="button-next"
               >
                 Continue

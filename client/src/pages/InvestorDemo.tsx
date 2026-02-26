@@ -199,6 +199,7 @@ const IDEA_STORY = [
     smartDefaults: null,
     pmSync: null
   }
+
 ];
 
 const STAKEHOLDER_ACKNOWLEDGMENTS = [

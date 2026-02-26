@@ -103,7 +103,7 @@ export default function InvestorLanding() {
               <Button 
                 size="lg"
                 onClick={() => setLocation("/executive-demo-walkthrough")}
-                className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#EDD98A] font-bold"
+                className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"
                 data-testid="button-see-demo"
               >
                 <Rocket className="mr-2 h-5 w-5" />

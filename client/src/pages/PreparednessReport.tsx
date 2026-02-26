@@ -70,13 +70,13 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
         <Card className="border border-[#E8E4DC] bg-white shadow-sm overflow-hidden">
           <div className="h-2 bg-[#0A0F2E]"></div>
           <CardHeader>
-            <CardTitle style={CG} className="text-2xl">Current Preparedness Score</CardTitle>
+            <CardTitle style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-2xl">Current Preparedness Score</CardTitle>
             <CardDescription className="font-medium">Your overall crisis readiness rating</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-12">
               <div className="text-center">
-                <div className="text-8xl font-bold" style={{ ...CG, color: GOLD }} data-testid="score-main">
+                <div className="text-8xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif", color: "#C9A84C" }} data-testid="score-main">
                   {scoreData.score}
                 </div>
                 <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mt-2">out of 100 points</div>
@@ -147,7 +147,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
               <CardContent className="space-y-8">
                 <div className="grid grid-cols-3 gap-8">
                   <div className="text-center p-6 bg-[#F8F7F4] rounded border border-[#E8E4DC]">
-                    <div className="text-4xl font-bold" style={{ ...CG, color: NAVY }} data-testid="industry-avg">
+                    <div className="text-4xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif", color: "#0A0F2E" }} data-testid="industry-avg">
                       {scoreData.industryBenchmark}
                     </div>
                     <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mt-2">Industry Average</div>
@@ -155,7 +155,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
                   </div>
 
                   <div className="text-center p-6 bg-[#2B8A6E]/5 rounded border border-[#2B8A6E]/20">
-                    <div className="text-4xl font-bold text-[#2B8A6E]" style={CG} data-testid="percentile">
+                    <div className="text-4xl font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="percentile">
                       {scoreData.peerPercentile}
                     </div>
                     <div className="text-[10px] uppercase tracking-wider font-bold text-[#2B8A6E] mt-2">Percentile Rank</div>
@@ -163,7 +163,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
                   </div>
 
                   <div className="text-center p-6 bg-[#C9A84C]/5 rounded border border-[#C9A84C]/20">
-                    <div className="text-4xl font-bold text-[#C9A84C]" style={CG} data-testid="delta">
+                    <div className="text-4xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="delta">
                       {Math.abs(scoreData.score - scoreData.industryBenchmark)}
                     </div>
                     <div className="text-[10px] uppercase tracking-wider font-bold text-[#C9A84C] mt-2">Points {scoreData.score > scoreData.industryBenchmark ? 'Above' : 'Below'} Average</div>
@@ -266,7 +266,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
                           {new Date(entry.calculatedAt).toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}
                         </div>
                         <div className="flex items-center gap-6">
-                          <div className="text-2xl font-bold" style={{ ...CG, color: NAVY }}>{entry.score}</div>
+                          <div className="text-2xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif", color: "#0A0F2E" }}>{entry.score}</div>
                           {entry.scoreDelta !== 0 && (
                             <Badge className={`border-none font-bold ${entry.scoreDelta > 0 ? 'bg-[#2B8A6E] text-white' : 'bg-[#0A0F2E] text-white'}`}>
                               {entry.scoreDelta > 0 ? '+' : ''}{entry.scoreDelta}

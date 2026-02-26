@@ -562,14 +562,6 @@ export default function PlaybookCustomize() {
     setExpandedSections(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const NAVY = "#0A0F2E";
-  const GOLD = "#C9A84C";
-  const TEAL = "#2B8A6E";
-  const OFF = "#F8F7F4";
-  const BORDER = "#E8E4DC";
-  const MUTED = "#6B7280";
-  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
-
   const PHASE_BADGES: Record<string, { label: string; color: string }> = {
     identify: { label: 'I', color: "#2B8A6E" },
     detect: { label: 'D', color: "#0A0F2E" },

@@ -371,27 +371,7 @@ export default function SettingsPage() {
                         These settings affect platform-wide authentication and data protection. Any changes will be logged in the permanent audit trail.
                       </p>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-3">
-                        <Label htmlFor="session-timeout">Session Timeout (minutes)</Label>
-                        <Input 
-                          id="session-timeout" 
-                          type="number" 
-                          defaultValue="60"
-                          data-testid="input-session-timeout"
-                        />
-                      </div>
-                      <div className="space-y-3">
-                        <Label htmlFor="max-attempts">Max Login Attempts</Label>
-                        <Input 
-                          id="max-attempts" 
-                          type="number" 
-                          defaultValue="5"
-                          data-testid="input-max-login-attempts"
-                        />
-                      </div>
-                    </div>
-
+                    <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <div>
                           <h4 className="font-medium text-gray-900">Two-Factor Authentication</h4>
@@ -500,24 +480,24 @@ export default function SettingsPage() {
                             <SelectValue placeholder="Choose a Fortune 500 crisis scenario..." />
                           </SelectTrigger>
                           <SelectContent>
-                            {!scenariosLoading && scenariosData?.scenarios && (scenariosData.scenarios as any[]).map((scenario: any) => (
+                            {(!scenariosLoading && scenariosData && Array.isArray(scenariosData)) ? (scenariosData as any[]).map((scenario: any) => (
                               <SelectItem key={scenario.id} value={scenario.id}>
                                 {scenario.name}
                               </SelectItem>
-                            ))}
+                            )) : null}
                           </SelectContent>
                         </Select>
                       </div>
                     </div>
 
-                    {scenariosData?.scenarios && (
+                    {scenariosData && Array.isArray(scenariosData) ? (
                       <div className="bg-[#F8F7F4] p-6 rounded-none border border-[#E8E4DC]">
                         <h3 className="text-lg font-semibold text-[#0A0F2E] mb-4">Selected Scenario Preview</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                           <div className="space-y-2">
                             <div className="flex items-center text-sm text-gray-800">
                               <Building2 className="w-4 h-4 mr-2 text-[#0A0F2E]" />
-                              <span><strong>Scenario:</strong> {scenariosData.scenarios.find((s: any) => s.id === selectedScenario)?.name}</span>
+                              <span><strong>Scenario:</strong> {(scenariosData as any[]).find((s: any) => s.id === selectedScenario)?.name}</span>
                             </div>
                             <div className="flex items-center text-sm text-gray-800">
                               <AlertTriangle className="w-4 h-4 mr-2 text-red-600" />
@@ -546,14 +526,14 @@ export default function SettingsPage() {
 
                         <div className="bg-white p-4 rounded-none border border-[#E8E4DC]">
                           <p className="text-sm text-gray-800 mb-3">
-                            <strong>Demo Title:</strong> {scenariosData.scenarios.find((s: any) => s.id === selectedScenario)?.title}
+                            <strong>Demo Title:</strong> {(scenariosData as any[]).find((s: any) => s.id === selectedScenario)?.title}
                           </p>
                           <p className="text-xs text-gray-800">
                             Each scenario includes realistic organizational data, executive briefings, strategic action items, AI intelligence modules, and crisis response workflows tailored for Fortune 500 leadership demonstrations.
                           </p>
                         </div>
                       </div>
-                    )}
+                    ) : null}
 
                     <div className="flex flex-col sm:flex-row gap-4">
                       <Button 

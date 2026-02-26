@@ -147,38 +147,38 @@ export default function CrisisExposureMatrix() {
               </CardDescription>
             </CardHeader>
             <CardContent className="p-10 pt-4 relative z-10">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="bg-[#C9A84C] text-[#0A0F2E] rounded-none w-8 h-8 flex items-center justify-center flex-shrink-0 text-xs font-black">01</div>
-                    <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/40">Phase One</span>
-                  </div>
-                  <p className="text-white/80 text-sm leading-relaxed">
-                    <strong className="text-white block mb-1">Days 1-30: Discovery</strong>
-                    Run your Crisis Exposure Matrix workshop with our Senior Crisis Architects.
-                  </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="bg-[#C9A84C] text-[#0A0F2E] rounded-none w-8 h-8 flex items-center justify-center flex-shrink-0 text-xs font-black">01</div>
+                  <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/40">Phase One</span>
                 </div>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="bg-[#2B8A6E] text-white rounded-none w-8 h-8 flex items-center justify-center flex-shrink-0 text-xs font-black">02</div>
-                    <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/40">Phase Two</span>
-                  </div>
-                  <p className="text-white/80 text-sm leading-relaxed">
-                    <strong className="text-white block mb-1">Days 31-90: Hardening</strong>
-                    Get your Top 10 Critical playbooks to 95%+ readiness level.
-                  </p>
-                </div>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="bg-[#DFC178] text-[#0A0F2E] rounded-none w-8 h-8 flex items-center justify-center flex-shrink-0 text-xs font-black">03</div>
-                    <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/40">Phase Three</span>
-                  </div>
-                  <p className="text-white/80 text-sm leading-relaxed">
-                    <strong className="text-white block mb-1">Ongoing: Optimization</strong>
-                    Build out remaining playbooks with quarterly readiness sprints.
-                  </p>
-                </div>
+                <p className="text-white/80 text-sm leading-relaxed">
+                  <strong className="text-white block mb-1">Days 1-30: Discovery</strong>
+                  Run your Crisis Exposure Matrix workshop with our Senior Crisis Architects.
+                </p>
               </div>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="bg-[#2B8A6E] text-white rounded-none w-8 h-8 flex items-center justify-center flex-shrink-0 text-xs font-black">02</div>
+                  <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/40">Phase Two</span>
+                </div>
+                <p className="text-white/80 text-sm leading-relaxed">
+                  <strong className="text-white block mb-1">Days 31-90: Hardening</strong>
+                  Get your Top 10 Critical playbooks to 95%+ readiness level.
+                </p>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="bg-[#DFC178] text-[#0A0F2E] rounded-none w-8 h-8 flex items-center justify-center flex-shrink-0 text-xs font-black">03</div>
+                  <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/40">Phase Three</span>
+                </div>
+                <p className="text-white/80 text-sm leading-relaxed">
+                  <strong className="text-white block mb-1">Ongoing: Optimization</strong>
+                  Build out remaining playbooks with quarterly readiness sprints.
+                </p>
+              </div>
+            </div>
             </CardContent>
           </Card>
 

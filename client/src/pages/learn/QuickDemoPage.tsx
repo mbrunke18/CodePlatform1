@@ -45,8 +45,8 @@ const SCENARIOS: Scenario[] = [
     name: 'Ransomware Attack',
     industry: 'Cybersecurity',
     icon: Shield,
-    color: 'from-red-500 to-orange-500',
-    borderColor: 'border-red-500/50',
+    color: 'from-red-600 to-red-800',
+    borderColor: 'border-red-600/50',
     trigger: 'Unusual network activity detected at 2:47 AM',
     playbook: 'Cyber Incident Response',
     dealValue: 4880000,
@@ -91,8 +91,8 @@ const SCENARIOS: Scenario[] = [
     name: 'SEC Investigation',
     industry: 'Compliance',
     icon: Scale,
-    color: 'from-amber-500 to-yellow-500',
-    borderColor: 'border-amber-500/50',
+    color: 'from-[#C9A84C] to-[#DFC178]',
+    borderColor: 'border-[#C9A84C]/50',
     trigger: 'SEC enforcement notice received',
     playbook: 'Regulatory Response',
     dealValue: 120000000,
@@ -154,13 +154,13 @@ const PHASE_COLORS: Record<string, { bg: string; border: string; text: string }>
   gold: { bg: 'bg-[#C9A84C]/20', border: 'border-[#C9A84C]', text: 'text-[#C9A84C]' },
   navy: { bg: 'bg-[#0A0F2E]/20', border: 'border-[#0A0F2E]', text: 'text-[#0A0F2E]' },
   teal: { bg: 'bg-[#2B8A6E]/20', border: 'border-[#2B8A6E]', text: 'text-[#2B8A6E]' },
-  red: { bg: 'bg-red-500/20', border: 'border-red-500', text: 'text-red-400' },
+  red: { bg: 'bg-red-600/20', border: 'border-red-600', text: 'text-red-600' },
 };
 
 const URGENCY_COLORS: Record<string, string> = {
-  critical: 'bg-red-500/20 border-red-500 text-red-300',
-  high: 'bg-orange-500/20 border-orange-500 text-orange-300',
-  medium: 'bg-yellow-500/20 border-yellow-500 text-yellow-300',
+  critical: 'bg-red-600/20 border-red-600 text-red-700',
+  high: 'bg-orange-500/20 border-orange-500 text-orange-700',
+  medium: 'bg-yellow-500/20 border-yellow-500 text-yellow-700',
 };
 
 export default function QuickDemoPage() {
@@ -600,7 +600,7 @@ export default function QuickDemoPage() {
                 const isCompleted = completedPhases.includes(phase.id);
                 const isCurrent = currentPhase === phase.id;
                 const IconComponent = phase.icon;
-                const colors = PHASE_COLORS[phase.color] || PHASE_COLORS.emerald;
+                const colors = PHASE_COLORS[phase.color] || PHASE_COLORS.navy;
 
                 return (
                   <div

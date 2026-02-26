@@ -403,7 +403,7 @@ export default function FutureReadinessDashboard() {
                         <div key={event.id}>
                           <div className="flex gap-4">
                             <div className="flex flex-col items-center">
-                              <div className="h-2 w-2 rounded-full bg-[#2B8A6E] mt-2" />
+                              <div className="h-2 w-2 rounded-none bg-[#2B8A6E] mt-2" />
                               {idx < activityFeed.length - 1 && (
                                 <div className="w-px h-full bg-[#E8E4DC] mt-2" />
                               )}

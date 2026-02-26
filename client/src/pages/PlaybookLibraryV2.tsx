@@ -222,38 +222,30 @@ function UrgencyBadge({ urgency }: { urgency: string }) {
 
 function CompoundDisruptionSection() {
   const [expandedScenario, setExpandedScenario] = useState<number | null>(null);
-  const NAVY = "#0A0F2E";
-  const GOLD = "#C9A84C";
-  const TEAL = "#2B8A6E";
-  const BORDER = "#E8E4DC";
-  const MUTED = "#6B7280";
-  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
   return (
-    <div className="mt-12 border rounded-xl overflow-hidden" style={{ borderColor: BORDER }}>
-      <div className="px-6 py-4 flex items-center gap-3 border-b" style={{ background: "rgba(10, 15, 46, 0.02)", borderColor: BORDER }}>
-        <Zap className="h-4 w-4" style={{ color: GOLD }} />
-        <span className="text-sm font-bold uppercase tracking-wide" style={{ color: NAVY }}>Compound Disruption Response</span>
-        <Badge style={{ background: "rgba(43,138,110,0.1)", color: TEAL }} className="border-0 text-[10px]">MULTI-DOMAIN</Badge>
+    <div className="mt-12 border rounded-xl overflow-hidden" style={{ borderColor: "#E8E4DC" }}>
+      <div className="px-6 py-4 flex items-center gap-3 border-b" style={{ background: "rgba(10, 15, 46, 0.02)", borderColor: "#E8E4DC" }}>
+        <Zap className="h-4 w-4" style={{ color: "#C9A84C" }} />
+        <span className="text-sm font-bold uppercase tracking-wide" style={{ color: "#0A0F2E" }}>Compound Disruption Response</span>
+        <Badge style={{ background: "rgba(43,138,110,0.1)", color: "#2B8A6E" }} className="border-0 text-[10px]">MULTI-DOMAIN</Badge>
       </div>
       <div className="p-6 bg-white">
-        <p className="text-sm mb-5" style={{ color: MUTED }}>
+        <p className="text-sm mb-5" style={{ color: "#6B7280" }}>
           When disruptions cascade across domains, Execution OS activates multi-domain playbooks simultaneously. Click any scenario to explore the full response.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {compoundScenarios.map((item, i) => {
             const Icon = item.icon;
             const isExpanded = expandedScenario === i;
-            const scenarioColor = item.scenario.includes("Cyber") ? TEAL : item.scenario.includes("Geopolitical") ? GOLD : item.scenario.includes("Climate") ? TEAL : item.scenario.includes("AI") ? GOLD : NAVY;
-            const categoryColor = item.scenario.includes("Cyber") ? TEAL : item.scenario.includes("Geopolitical") ? GOLD : item.scenario.includes("Climate") ? TEAL : item.scenario.includes("AI") ? GOLD : NAVY;
             const isOffense = item.domains.includes("Financial") || item.scenario.includes("AI");
             const isDefense = item.domains.includes("Crisis") || item.scenario.includes("Regulatory") || item.scenario.includes("Cyber") || item.scenario.includes("Climate");
-            const indicatorColor = isOffense ? TEAL : isDefense ? NAVY : GOLD;
+            const indicatorColor = isOffense ? "#2B8A6E" : isDefense ? "#0A0F2E" : "#C9A84C";
             return (
               <div
                 key={i}
                 style={{ 
-                  border: `1px solid ${isExpanded ? GOLD : BORDER}`,
+                  border: `1px solid ${isExpanded ? "#C9A84C" : "#E8E4DC"}`,
                   background: isExpanded ? "rgba(201,168,76,0.03)" : "rgba(10,15,46,0.02)"
                 }}
                 className={`rounded-lg p-4 cursor-pointer transition-all duration-200 hover:border-[#DFC178]`}
@@ -262,11 +254,11 @@ function CompoundDisruptionSection() {
                 <div className="flex items-center justify-between mb-1">
                   <div className="flex items-center gap-2">
                     <Icon className="h-4 w-4" style={{ color: indicatorColor }} />
-                    <div className="text-sm font-semibold" style={{ color: NAVY }}>{item.scenario}</div>
+                    <div className="text-sm font-semibold" style={{ color: "#0A0F2E" }}>{item.scenario}</div>
                   </div>
-                  <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} style={{ color: MUTED }} />
+                  <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} style={{ color: "#6B7280" }} />
                 </div>
-                <div style={{ color: MUTED }} className="text-xs mb-2">{item.domains}</div>
+                <div style={{ color: "#6B7280" }} className="text-xs mb-2">{item.domains}</div>
                 <div className="text-xs font-semibold" style={{ color: indicatorColor }}>{item.playbookCount} coordinated playbooks</div>
               </div>
             );
@@ -278,69 +270,70 @@ function CompoundDisruptionSection() {
           const Icon = scenario.icon;
           const isOffense = scenario.domains.includes("Financial") || scenario.scenario.includes("AI");
           const isDefense = scenario.domains.includes("Crisis") || scenario.scenario.includes("Regulatory") || scenario.scenario.includes("Cyber") || scenario.scenario.includes("Climate");
-          const indicatorColor = isOffense ? TEAL : isDefense ? NAVY : GOLD;
+          const indicatorColor = isOffense ? "#2B8A6E" : isDefense ? "#0A0F2E" : "#C9A84C";
+          const CG = { fontFamily: "'Cormorant Garamond', serif" };
           return (
-            <div className="mt-5 rounded-xl border bg-[#F8F7F4]/50 p-6 animate-in fade-in slide-in-from-top-2 duration-300" style={{ borderColor: BORDER }}>
+            <div className="mt-5 rounded-xl border bg-[#F8F7F4]/50 p-6 animate-in fade-in slide-in-from-top-2 duration-300" style={{ borderColor: "#E8E4DC" }}>
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-10 h-10 rounded-lg bg-white border flex items-center justify-center shrink-0" style={{ borderColor: BORDER }}>
+                <div className="w-10 h-10 rounded-lg bg-white border flex items-center justify-center shrink-0" style={{ borderColor: "#E8E4DC" }}>
                   <Icon className="h-5 w-5" style={{ color: indicatorColor }} />
                 </div>
                 <div className="flex-1">
-                  <h4 style={{ ...CG, color: NAVY }} className="text-base font-bold mb-1">{scenario.scenario}</h4>
-                  <p style={{ color: MUTED }} className="text-sm leading-relaxed">{scenario.description}</p>
+                  <h4 style={{ ...CG, color: "#0A0F2E" }} className="text-base font-bold mb-1">{scenario.scenario}</h4>
+                  <p style={{ color: "#6B7280" }} className="text-sm leading-relaxed">{scenario.description}</p>
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg p-4 mb-5 border" style={{ borderColor: BORDER }}>
-                <div style={{ color: MUTED }} className="text-xs font-semibold uppercase tracking-wider mb-1">Trigger Example</div>
-                <p style={{ color: NAVY }} className="text-sm font-medium">{scenario.triggerExample}</p>
+              <div className="bg-white rounded-lg p-4 mb-5 border" style={{ borderColor: "#E8E4DC" }}>
+                <div style={{ color: "#6B7280" }} className="text-xs font-semibold uppercase tracking-wider mb-1">Trigger Example</div>
+                <p style={{ color: "#0A0F2E" }} className="text-sm font-medium">{scenario.triggerExample}</p>
               </div>
 
               <div className="grid lg:grid-cols-2 gap-6 mb-5">
                 <div>
-                  <h5 style={{ color: NAVY }} className="text-sm font-bold mb-3 flex items-center gap-2">
-                    <BookOpen className="h-4 w-4" style={{ color: TEAL }} />
+                  <h5 style={{ color: "#0A0F2E" }} className="text-sm font-bold mb-3 flex items-center gap-2">
+                    <BookOpen className="h-4 w-4" style={{ color: "#2B8A6E" }} />
                     Activated Playbooks ({scenario.playbookCount})
                   </h5>
                   <div className="space-y-2">
                     {scenario.playbooks.map((pb, j) => (
-                      <div key={j} className="flex items-center justify-between bg-white rounded-lg px-3 py-2 border" style={{ borderColor: BORDER }}>
+                      <div key={j} className="flex items-center justify-between bg-white rounded-lg px-3 py-2 border" style={{ borderColor: "#E8E4DC" }}>
                         <div className="flex-1">
-                          <div style={{ color: NAVY }} className="text-sm font-medium">{pb.name}</div>
-                          <div style={{ color: MUTED }} className="text-xs">{pb.domain}</div>
+                          <div style={{ color: "#0A0F2E" }} className="text-sm font-medium">{pb.name}</div>
+                          <div style={{ color: "#6B7280" }} className="text-xs">{pb.domain}</div>
                         </div>
-                        <span style={{ background: "rgba(10,15,46,0.05)", color: MUTED, borderColor: BORDER }} className="ml-2 px-2 py-0.5 rounded text-[10px] font-bold border">{pb.phase}</span>
+                        <span style={{ background: "rgba(10,15,46,0.05)", color: "#6B7280", borderColor: "#E8E4DC" }} className="ml-2 px-2 py-0.5 rounded text-[10px] font-bold border">{pb.phase}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <h5 style={{ color: NAVY }} className="text-sm font-bold mb-3 flex items-center gap-2">
-                    <Clock className="h-4 w-4" style={{ color: TEAL }} />
+                  <h5 style={{ color: "#0A0F2E" }} className="text-sm font-bold mb-3 flex items-center gap-2">
+                    <Clock className="h-4 w-4" style={{ color: "#2B8A6E" }} />
                     12-Minute Execution Timeline
                   </h5>
                   <div className="space-y-0 relative">
-                    <div className="absolute left-[7px] top-3 bottom-3 w-0.5 rounded-full" style={{ background: `linear-gradient(to bottom, ${TEAL}, rgba(43,138,110,0.1))` }} />
+                    <div className="absolute left-[7px] top-3 bottom-3 w-0.5 rounded-full" style={{ background: `linear-gradient(to bottom, #2B8A6E, rgba(43,138,110,0.1))` }} />
                     {scenario.timeline.map((step, j) => (
                       <div key={j} className="flex items-start gap-3 py-1.5 relative">
-                        <div className={`w-4 h-4 rounded-full shrink-0 z-10`} style={{ background: j === 0 ? TEAL : `rgba(43,138,110, ${0.7 - (j * 0.1)})` }} />
+                        <div className={`w-4 h-4 rounded-full shrink-0 z-10`} style={{ background: j === 0 ? "#2B8A6E" : `rgba(43,138,110, ${0.7 - (j * 0.1)})` }} />
                         <div className="flex-1 min-w-0">
-                          <span style={{ color: TEAL }} className="text-xs font-bold mr-2">{step.time}</span>
-                          <span style={{ color: MUTED }} className="text-xs">{step.action}</span>
+                          <span style={{ color: "#2B8A6E" }} className="text-xs font-bold mr-2">{step.time}</span>
+                          <span style={{ color: "#6B7280" }} className="text-xs">{step.action}</span>
                         </div>
                       </div>
                     ))}
                   </div>
 
                   <div className="mt-4">
-                    <h5 style={{ color: NAVY }} className="text-sm font-bold mb-3 flex items-center gap-2">
-                      <Users className="h-4 w-4" style={{ color: TEAL }} />
+                    <h5 style={{ color: "#0A0F2E" }} className="text-sm font-bold mb-3 flex items-center gap-2">
+                      <Users className="h-4 w-4" style={{ color: "#2B8A6E" }} />
                       Stakeholders ({scenario.stakeholders.length})
                     </h5>
                     <div className="flex flex-wrap gap-1.5">
                       {scenario.stakeholders.map((s, j) => (
-                        <span key={j} style={{ background: "white", color: NAVY, borderColor: BORDER }} className="px-2.5 py-1 rounded-full text-xs font-medium border">{s}</span>
+                        <span key={j} style={{ background: "white", color: "#0A0F2E", borderColor: "#E8E4DC" }} className="px-2.5 py-1 rounded-full text-xs font-medium border">{s}</span>
                       ))}
                     </div>
                   </div>
@@ -348,8 +341,8 @@ function CompoundDisruptionSection() {
               </div>
 
               <div style={{ background: "rgba(43,138,110,0.05)", borderColor: "rgba(43,138,110,0.2)" }} className="border rounded-lg p-4 flex items-center gap-3">
-                <ArrowRight className="h-4 w-4 shrink-0" style={{ color: TEAL }} />
-                <p style={{ color: NAVY }} className="text-sm">
+                <ArrowRight className="h-4 w-4 shrink-0" style={{ color: "#2B8A6E" }} />
+                <p style={{ color: "#0A0F2E" }} className="text-sm">
                   All {scenario.playbookCount} playbooks activate simultaneously with pre-mapped decision rights — no sequential handoffs, no coordination meetings, no time lost.
                 </p>
               </div>
@@ -368,12 +361,6 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
   const [search, setSearch] = useState("");
   const { isAuthenticated } = useAuth();
 
-  const NAVY = "#0A0F2E";
-  const GOLD = "#C9A84C";
-  const TEAL = "#2B8A6E";
-  const OFF = "#F8F7F4";
-  const BORDER = "#E8E4DC";
-  const MUTED = "#6B7280";
   const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
   const { data: templates } = useQuery<Playbook[]>({
@@ -408,19 +395,19 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
       {!embedded && <StandardNav />}
 
       {!embedded && (
-        <div style={{ background: OFF, borderBottom: `1px solid ${BORDER}` }}>
+        <div style={{ background: "#F8F7F4", borderBottom: `1px solid #E8E4DC` }}>
           <div className="max-w-6xl mx-auto px-6 pt-24 pb-10">
             <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-12">
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="w-7 h-[2px]" style={{ background: GOLD }} />
-                  <span style={{ color: GOLD, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>170 Playbooks · 9 Domains</span>
+                  <div className="w-7 h-[2px]" style={{ background: "#C9A84C" }} />
+                  <span style={{ color: "#C9A84C", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>170 Playbooks · 9 Domains</span>
                 </div>
-                <h1 style={{ ...CG, color: NAVY }} className="text-4xl md:text-5xl font-semibold mb-3 leading-tight">
+                <h1 style={{ ...CG, color: "#0A0F2E" }} className="text-4xl md:text-5xl font-semibold mb-3 leading-tight">
                   A Playbook for Every<br />
-                  <em className="italic" style={{ color: GOLD }}>Strategic Scenario</em>
+                  <em className="italic" style={{ color: "#C9A84C" }}>Strategic Scenario</em>
                 </h1>
-                <p style={{ color: MUTED }} className="text-base max-w-lg">
+                <p style={{ color: "#6B7280" }} className="text-base max-w-lg">
                   Built from 20+ years of Fortune 500 transformation. Filter by domain, urgency, or trigger type.
                 </p>
               </div>
@@ -438,8 +425,8 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                         fontWeight: 700,
                         textTransform: "uppercase",
                         letterSpacing: "0.05em",
-                        border: `1px solid ${isActive ? GOLD : BORDER}`,
-                        color: isActive ? GOLD : NAVY,
+                        border: `1px solid ${isActive ? "#C9A84C" : "#E8E4DC"}`,
+                        color: isActive ? "#C9A84C" : "#0A0F2E",
                         background: isActive ? "white" : "transparent",
                         transition: "all 0.2s"
                       }}

@@ -190,8 +190,8 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
         <div className="bg-white min-h-screen p-8">
           <div className="max-w-7xl mx-auto">
             <div className="animate-pulse space-y-4">
-              <div className="h-12 bg-[#F8F7F4] rounded"></div>
-              <div className="h-64 bg-[#F8F7F4] rounded"></div>
+              <div className="h-12 bg-[#F8F7F4] rounded-none"></div>
+              <div className="h-64 bg-[#F8F7F4] rounded-none"></div>
             </div>
           </div>
         </div>
@@ -278,26 +278,26 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
             <TabsContent value="radar">
               <div className="grid grid-cols-12 gap-12">
                 <div className="col-span-8">
-                  <div style={{ position: "relative", width: "100%", aspectRatio: "1/1", maxWidth: "700px", margin: "0 auto", background: "#F8F7F4", borderRadius: "50%", border: "1px solid #E8E4DC" }}>
+                  <div style={{ position: "relative", width: "100%", aspectRatio: "1/1", maxWidth: "700px", margin: "0 auto", background: "#F8F7F4", borderRadius: 0, border: "1px solid #E8E4DC" }}>
                     {/* Radar Circles */}
                     {[1, 2, 3].map((i) => (
                       <div key={i} style={{ 
                         position: "absolute", 
                         inset: `${i * 15}%`, 
                         border: "1px solid rgba(10,15,46,0.08)", 
-                        borderRadius: "50%" 
+                        borderRadius: 0 
                       }} />
                     ))}
                     
                     {/* Center Icon */}
                     <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <div style={{ width: 80, height: 80, background: "#141B45", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 12px 24px rgba(10,15,46,0.2)" }}>
+                      <div style={{ width: 80, height: 80, background: "#141B45", borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 12px 24px rgba(10,15,46,0.2)" }}>
                         <Radar className="w-10 h-10 text-white" />
                       </div>
                     </div>
 
                     {/* Scan Line */}
-                    <div style={{ position: "absolute", inset: 0, borderRadius: "50%", overflow: "hidden" }}>
+                    <div style={{ position: "absolute", inset: 0, borderRadius: 0, overflow: "hidden" }}>
                       <div 
                         className="animate-[spin_6s_linear_infinite]"
                         style={{ 
@@ -333,8 +333,8 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                           }}
                           onClick={() => handleInvestigateSignal(signal)}
                         >
-                          <div style={{ width: 12, height: 12, background: color, borderRadius: "50%", position: "relative", zIndex: 10 }}>
-                            <div className="animate-ping" style={{ position: "absolute", inset: 0, background: color, borderRadius: "50%", opacity: 0.5 }} />
+                          <div style={{ width: 12, height: 12, background: color, borderRadius: 0, position: "relative", zIndex: 10 }}>
+                            <div className="animate-ping" style={{ position: "absolute", inset: 0, background: color, borderRadius: 0, opacity: 0.5 }} />
                           </div>
                           
                           {/* Tooltip */}

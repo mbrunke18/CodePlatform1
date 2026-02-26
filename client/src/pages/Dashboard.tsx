@@ -36,7 +36,7 @@ function StatusDot({ status }: { status: 'good' | 'warning' | 'critical' }) {
     warning: 'bg-[#C9A84C]',
     critical: 'bg-[#dc2626]'
   };
-  return <div className={`w-2.5 h-2.5 rounded-full ${colors[status]} animate-pulse`} />;
+  return <div className={`w-2.5 h-2.5 rounded-none ${colors[status]} animate-pulse`} />;
 }
 
 function KPICard({ 
@@ -271,7 +271,7 @@ export default function Dashboard() {
                 <CardContent className="p-0">
                   <div className="divide-y divide-[#E8E4DC]">
                     <div className="p-4 flex items-start gap-4 hover:bg-[#F8F7F4] transition-colors">
-                      <div style={{ width: 8, height: 8, borderRadius: "50%", background: TEAL, marginTop: 6 }} />
+                      <div style={{ width: 8, height: 8, borderRadius: 0, background: TEAL, marginTop: 6 }} />
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-sm font-semibold text-[#0A0F2E]">Weak signal detected</span>
@@ -281,7 +281,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                     <div className="p-4 flex items-start gap-4 hover:bg-[#F8F7F4] transition-colors">
-                      <div style={{ width: 8, height: 8, borderRadius: "50%", background: NAVY, marginTop: 6 }} />
+                      <div style={{ width: 8, height: 8, borderRadius: 0, background: NAVY, marginTop: 6 }} />
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-sm font-semibold text-[#0A0F2E]">Playbook activated</span>
@@ -347,14 +347,14 @@ export default function Dashboard() {
                     <div className="flex justify-between items-center">
                       <span className="text-xs text-white/60">AI Intelligence Core</span>
                       <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" />
+                        <div className="w-1.5 h-1.5 rounded-none bg-[#2B8A6E]" />
                         <span className="text-[10px] font-bold text-[#2B8A6E] uppercase">Operational</span>
                       </div>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-xs text-white/60">Execution Engine</span>
                       <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" />
+                        <div className="w-1.5 h-1.5 rounded-none bg-[#2B8A6E]" />
                         <span className="text-[10px] font-bold text-[#2B8A6E] uppercase">Active</span>
                       </div>
                     </div>

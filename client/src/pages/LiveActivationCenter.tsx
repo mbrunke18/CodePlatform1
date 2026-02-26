@@ -556,47 +556,58 @@ export default function LiveActivationCenter() {
 
   if (!activationId) {
     return (
-      <PageLayout>
-      <div className="min-h-screen bg-white text-gray-900">
-        <div className="max-w-6xl mx-auto px-6 py-10 md:py-16">
-          <div className="mb-8">
-            <Link href="/" className="inline-flex items-center gap-2 text-sm text-gray-800 hover:text-gray-300 transition-colors">
-              <ArrowLeft className="w-4 h-4" /> Back to Execution OS
-            </Link>
-          </div>
-          {(roleOverlay || industryOverlay) && (
-            <div className="mb-8 rounded-xl border border-[#2B8A6E]/20 bg-[#2B8A6E]/5 overflow-hidden">
-              <div className="p-4 pb-3">
-                <div className="flex items-center gap-2 mb-1">
-                  <Target className="w-4 h-4 text-[#2B8A6E]" />
-                  <span className="text-sm font-semibold text-[#2B8A6E]">
+      <PageLayout embedded={embedded}>
+        <div className="min-h-screen bg-[#F8F7F4] text-gray-900 p-6">
+          <div className="max-w-6xl mx-auto py-10 md:py-16">
+            <div className="mb-8">
+              <Link href="/dashboard" className="inline-flex items-center gap-2 text-sm text-[#0A0F2E] font-bold hover:text-[#C9A84C] transition-colors">
+                <ArrowLeft className="w-4 h-4" /> Back to Dashboard
+              </Link>
+            </div>
+            
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-8 w-[2px] bg-[#C9A84C]"></div>
+              <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-[#C9A84C]">Mission Control</span>
+              <h1 className="text-4xl font-bold ml-4 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                Select Playbook to <em className="italic text-[#C9A84C]">Activate</em>
+              </h1>
+            </div>
+
+            {(roleOverlay || industryOverlay) && (
+              <div className="mb-8 rounded-xl border border-[#E8E4DC] bg-white p-6 shadow-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <Target className="w-5 h-5 text-[#2B8A6E]" />
+                  <span className="text-lg font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     {roleOverlay ? `${contextLabel} Perspective` : `${contextLabel} Industry`}
                   </span>
                 </div>
-                <p className="text-sm text-gray-800">{contextPerspective}</p>
-              </div>
+                <p className="text-sm text-[#6B7280] leading-relaxed mb-6">{contextPerspective}</p>
 
-              {industryOverlay && (
-                <div className="px-4 pb-3 border-t border-[#2B8A6E]/10 pt-3">
-                  <div className="text-[10px] uppercase tracking-wider text-gray-800 mb-2">Scenario</div>
-                  <div className="text-sm font-medium text-gray-900 mb-1">{industryOverlay.scenario}</div>
-                  <div className="text-xs text-gray-800">{industryOverlay.organization}</div>
-                </div>
-              )}
+                <div className="grid md:grid-cols-2 gap-6">
+                  {industryOverlay && (
+                    <div className="p-4 rounded-lg bg-[#F8F7F4] border border-[#E8E4DC]">
+                      <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mb-2">Target Scenario</div>
+                      <div className="text-sm font-bold text-[#0A0F2E] mb-1">{industryOverlay.scenario}</div>
+                      <div className="text-xs text-[#6B7280]">{industryOverlay.organization}</div>
+                    </div>
+                  )}
 
-              {roleOverlay && (
-                <div className="px-4 pb-3 border-t border-[#2B8A6E]/10 pt-3">
-                  <div className="text-[10px] uppercase tracking-wider text-gray-800 mb-2">Your Priority Actions</div>
-                  <div className="space-y-1">
-                    {roleOverlay.yourActions.map((action, i) => (
-                      <div key={i} className="flex items-center gap-2 text-xs text-gray-800">
-                        <CheckCircle2 className="w-3 h-3 text-[#2B8A6E] flex-shrink-0" />
-                        {action}
+                  {roleOverlay && (
+                    <div className="p-4 rounded-lg bg-[#F8F7F4] border border-[#E8E4DC]">
+                      <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mb-2">Priority Executive Actions</div>
+                      <div className="space-y-2">
+                        {roleOverlay.yourActions.map((action, i) => (
+                          <div key={i} className="flex items-center gap-2 text-xs font-bold text-[#0A0F2E]">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#2B8A6E] flex-shrink-0" />
+                            {action}
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  )}
                 </div>
-              )}
+              </div>
+            )}
 
               {activeKpis && (
                 <div className="px-4 pb-4 border-t border-[#2B8A6E]/10 pt-3">
@@ -632,34 +643,35 @@ export default function LiveActivationCenter() {
                   onClick={() => setSelectedPlaybook(pb.key)}
                   className={cn(
                     'relative text-left rounded-xl border-2 p-6 transition-all duration-300 cursor-pointer',
-                    'bg-white hover:bg-gray-800/80',
+                    'bg-white group hover:border-[#DFC178] shadow-sm',
                     isSelected
-                      ? `${colors.border} ring-2 ${colors.ring} shadow-lg`
-                      : 'border-gray-200 hover:border-gray-700'
+                      ? `border-[#C9A84C] ring-4 ring-[#C9A84C]/10`
+                      : 'border-[#E8E4DC]'
                   )}
                 >
                   {isSelected && (
-                    <div className={cn('absolute top-3 right-3 w-3 h-3 rounded-full', colors.solid)} />
+                    <div className={cn('absolute top-3 right-3 w-4 h-4 rounded-full flex items-center justify-center bg-[#C9A84C] text-[#0A0F2E]')}>
+                      <CheckCircle2 className="w-3 h-3" />
+                    </div>
                   )}
-                  <BrandStamp variant="dual" size="md" className="mb-8" />
-                  <Badge className={cn('mb-4 text-xs font-semibold tracking-wider', colors.bg, colors.text, 'border-0')}>
+                  <Badge className={cn('mb-4 text-[10px] font-bold tracking-wider px-2 py-0.5 border-none', colors.solid, 'text-white')}>
                     {pb.category}
                   </Badge>
                   <div className={cn('mb-4', colors.text)}>
                     {getPlaybookIcon(pb.icon)}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{pb.name}</h3>
-                  <p className="text-sm text-gray-800 mb-6 leading-relaxed">{pb.description}</p>
-                  <div className="flex items-center gap-4 text-xs text-gray-800">
-                    <span className="flex items-center gap-1">
-                      <Users className="w-3.5 h-3.5" /> {pb.stakeholderCount} stakeholders
+                  <h3 className="text-xl font-bold text-[#0A0F2E] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{pb.name}</h3>
+                  <p className="text-sm text-[#6B7280] mb-6 leading-relaxed">{pb.description}</p>
+                  <div className="flex items-center gap-4 text-xs font-bold text-[#6B7280]">
+                    <span className="flex items-center gap-1.5">
+                      <Users className="w-4 h-4 text-[#0A0F2E]" /> {pb.stakeholderCount} stakeholders
                     </span>
-                    <span className="flex items-center gap-1">
-                      <Target className="w-3.5 h-3.5" /> {pb.taskCount} tasks
+                    <span className="flex items-center gap-1.5">
+                      <Target className="w-4 h-4 text-[#0A0F2E]" /> {pb.taskCount} tasks
                     </span>
                   </div>
-                  <div className="mt-3 text-xs text-gray-800 flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5" /> {pb.duration}
+                  <div className="mt-3 text-xs font-bold text-[#2B8A6E] flex items-center gap-1.5">
+                    <Clock className="w-4 h-4" /> {pb.duration}
                   </div>
                 </button>
               );

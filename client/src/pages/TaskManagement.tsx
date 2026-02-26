@@ -863,9 +863,9 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                     const isDefense = /regulatory|brand|compliance|legal/i.test(domain.domainName);
                     const isOffense = /market|growth|revenue|sales/i.test(domain.domainName);
                     const DomainIcon = isDefense ? Shield : isOffense ? Target : Zap;
-                    const iconColor = isDefense ? "text-[#0A0F2E]" : isOffense ? "text-orange-600" : "text-[#C9A84C]";
-                    const iconBg = isDefense ? "bg-[#F8F7F4] dark:bg-[#0A0F2E]/30" : isOffense ? "bg-orange-100 dark:bg-orange-900/30" : "bg-[#0A0F2E] dark:bg-[#C9A84C]/30";
-                    const progressColor = coverage >= 80 ? "bg-green-500" : coverage >= 50 ? "bg-yellow-500" : "bg-red-500";
+                    const iconColor = isDefense ? "text-[#0A0F2E]" : isOffense ? "text-[#2B8A6E]" : "text-[#C9A84C]";
+                    const iconBg = isDefense ? "bg-[#F8F7F4] dark:bg-[#0A0F2E]/30" : isOffense ? "bg-[#2B8A6E]/15 dark:bg-[#2B8A6E]/30" : "bg-[#0A0F2E] dark:bg-[#C9A84C]/30";
+                    const progressColor = coverage >= 80 ? "bg-[#2B8A6E]" : coverage >= 50 ? "bg-[#C9A84C]" : "bg-red-500";
                     
                     return (
                       <Card key={domain.domainName} className="hover:shadow-md transition-shadow">

@@ -373,12 +373,12 @@ export default function LiveDrillExecution() {
         </div>
 
         {/* Complete Drill Button */}
-        <Card className="border-2 border-green-600 dark:border-green-400">
+        <Card className="border-2 border-[#2B8A6E] rounded-none shadow-xl">
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="font-semibold text-lg">Ready to complete drill?</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="font-serif text-2xl text-[#0A0F2E]">Ready to complete drill?</h3>
+                <p className="text-sm text-[#6B7280] font-light">
                   Your performance will be recorded and analyzed
                 </p>
               </div>
@@ -386,7 +386,7 @@ export default function LiveDrillExecution() {
                 size="lg"
                 onClick={handleCompleteDrill}
                 disabled={completeDrillMutation.isPending}
-                className="bg-[#2B8A6E] hover:bg-[#237A5F]"
+                className="bg-[#2B8A6E] hover:bg-[#256B56] rounded-none font-bold uppercase tracking-widest text-xs px-8"
                 data-testid="button-complete-drill"
               >
                 <CheckCircle className="h-5 w-5 mr-2" />

@@ -136,7 +136,7 @@ export default function IDEAFramework() {
 
   return (
     <PageLayout>
-      <div>
+      <div className="bg-white min-h-screen">
         {/* Hero — dark navy */}
         <section style={{ background: NAVY, position: "relative" }} className="pt-24 pb-16 px-6">
           <div style={{ 

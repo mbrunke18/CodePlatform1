@@ -206,8 +206,8 @@ export default function CrisisResponseCenter() {
       case 'critical': return { background: "rgba(239,68,68,0.12)", color: "#EF4444" };
       case 'high': return { background: "rgba(201,168,76,0.12)", color: "#C9A84C" };
       case 'medium': return { background: "rgba(43,138,110,0.12)", color: "#2B8A6E" };
-      case 'low': return { background: "rgba(0,0,0,0.05)", color: "#6B7280" };
-      default: return { background: "rgba(0,0,0,0.05)", color: "#6B7280" };
+      case 'low': return { background: "#F8F7F4", color: "#6B7280" };
+      default: return { background: "#F8F7F4", color: "#6B7280" };
     }
   };
 

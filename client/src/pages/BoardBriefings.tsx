@@ -319,9 +319,9 @@ export default function BoardBriefings() {
               <Brain className="h-5 w-5 text-[#C9A84C]" />
               AI-Generated Strategic Recommendations
             </CardTitle>
-            <Badge className="bg-[#0A0F2E]/10 text-[#0A0F2E] dark:bg-[#C9A84C]/20 dark:text-[#C9A84C] border-none text-xs font-semibold">
-              <SubBrandLabel name="Retrospect™" />
-            </Badge>
+            <div className="text-xs text-[#0A0F2E] dark:text-white font-bold bg-[#C9A84C]/20 px-2 py-0.5 rounded">
+              RETROSPECT™
+            </div>
           </div>
           <CardDescription className="text-[#6B7280] dark:text-white/60">Data-driven recommendations based on cross-functional intelligence analysis</CardDescription>
         </CardHeader>

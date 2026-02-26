@@ -52,7 +52,7 @@ function StatusIndicator({ status }: { status: 'good' | 'warning' | 'critical' }
   
   return (
     <div className="flex items-center gap-2">
-      <div className={`w-2 h-2 rounded-full ${c.bg} rounded-none`} />
+      <div className={`w-2 h-2 ${c.bg} rounded-none`} />
       <span className={`text-[10px] font-bold uppercase tracking-widest ${c.className}`}>{c.label}</span>
     </div>
   );

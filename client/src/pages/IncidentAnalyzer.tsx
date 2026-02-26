@@ -903,9 +903,9 @@ export default function IncidentAnalyzer() {
 
                 {/* Situation Summary */}
                 {analysis.situation_summary && (
-                  <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
-                    <h4 className="text-sm font-semibold text-teal-400 mb-2">Situation Summary</h4>
-                    <p className="text-gray-800 text-sm">{analysis.situation_summary}</p>
+                  <div className="bg-white border border-[#E8E4DC] rounded-xl p-4">
+                    <h4 className="text-sm font-semibold text-[#2B8A6E] mb-2">Situation Summary</h4>
+                    <p className="text-[#0A0F2E] text-sm">{analysis.situation_summary}</p>
                   </div>
                 )}
 
@@ -919,10 +919,10 @@ export default function IncidentAnalyzer() {
                     </div>
                   )}
                   {analysis.timeToCoordination && (
-                    <div className="bg-amber-950/30 border border-amber-500/20 rounded-xl p-5 text-center">
-                      <Clock className="w-8 h-8 text-amber-400 mx-auto mb-2" />
+                    <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/20 rounded-xl p-5 text-center">
+                      <Clock className="w-8 h-8 text-[#C9A84C] mx-auto mb-2" />
                       <p className="text-sm text-gray-800 mb-1">Time to Coordination</p>
-                      <p className="text-2xl font-bold text-amber-400">{analysis.timeToCoordination}</p>
+                      <p className="text-2xl font-bold text-[#C9A84C]">{analysis.timeToCoordination}</p>
                     </div>
                   )}
                 </div>
@@ -954,12 +954,12 @@ export default function IncidentAnalyzer() {
                 {analysis.root_causes?.length > 0 && (
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                      <Target className="w-5 h-5 text-amber-400" />
+                      <Target className="w-5 h-5 text-[#C9A84C]" />
                       Root Causes
                     </h3>
                     <div className="grid md:grid-cols-2 gap-3">
                       {analysis.root_causes.map((cause: any, i: number) => (
-                        <div key={i} className="bg-amber-950/20 border border-amber-500/20 rounded-lg p-3">
+                        <div key={i} className="bg-[#C9A84C]/5 border border-[#C9A84C]/20 rounded-lg p-3">
                           <p className="text-sm font-medium text-gray-900">{typeof cause === 'string' ? cause : cause.cause || cause.title || cause.name || cause.description}</p>
                           {typeof cause !== 'string' && (cause.detail || cause.description) && (
                             <p className="text-xs text-gray-800 mt-1">{cause.detail || (cause.cause ? cause.description : '')}</p>
@@ -972,8 +972,8 @@ export default function IncidentAnalyzer() {
 
                 {/* Root Cause (single) */}
                 {analysis.rootCause && !analysis.root_causes && (
-                  <div className="bg-amber-950/20 border border-amber-500/30 rounded-xl p-4">
-                    <h4 className="text-sm font-semibold text-amber-400 mb-2 flex items-center gap-2">
+                  <div className="bg-[#C9A84C]/5 border border-[#C9A84C]/20 rounded-xl p-4">
+                    <h4 className="text-sm font-semibold text-[#C9A84C] mb-2 flex items-center gap-2">
                       <Target className="w-4 h-4" /> Root Cause
                     </h4>
                     <p className="text-gray-800 text-sm">{analysis.rootCause}</p>
@@ -990,15 +990,15 @@ export default function IncidentAnalyzer() {
                           <tr className="bg-gray-50">
                             <th className="px-4 py-3 text-left text-xs font-semibold text-gray-800 uppercase">Metric</th>
                             <th className="px-4 py-3 text-left text-xs font-semibold text-red-400 uppercase">Without</th>
-                            <th className="px-4 py-3 text-left text-xs font-semibold text-teal-400 uppercase">With Execution OS</th>
+                            <th className="px-4 py-3 text-left text-xs font-semibold text-[#2B8A6E] uppercase">With Execution OS</th>
                           </tr>
                         </thead>
                         <tbody>
                           {analysis.comparison_metrics.map((m: any, i: number) => (
                             <tr key={i} className="border-t border-gray-200">
                               <td className="px-4 py-3 text-sm font-medium text-gray-800">{m.metric || m.label || m.name}</td>
-                              <td className="px-4 py-3 text-sm text-red-300">{m.without || m.before || m.current}</td>
-                              <td className="px-4 py-3 text-sm text-teal-300">{m.with || m.after || m.improved}</td>
+                              <td className="px-4 py-3 text-sm text-red-400">{m.without || m.before || m.current}</td>
+                              <td className="px-4 py-3 text-sm text-[#2B8A6E]">{m.with || m.after || m.improved}</td>
                             </tr>
                           ))}
                         </tbody>
@@ -1066,7 +1066,7 @@ export default function IncidentAnalyzer() {
                 size="lg"
                 onClick={handleGeneratePlaybook}
                 disabled={isGenerating}
-                className="bg-teal-500 hover:bg-teal-600 text-gray-900 gap-2 px-8"
+                className="bg-[#0A0F2E] hover:bg-[#141B45] text-white gap-2 px-8"
               >
                 {isGenerating ? (
                   <>
@@ -1090,14 +1090,14 @@ export default function IncidentAnalyzer() {
               <CardHeader>
                 <div className="flex items-center justify-between flex-wrap gap-3">
                   <CardTitle className="text-gray-900 flex items-center gap-2 text-2xl">
-                    <BookOpen className="w-6 h-6 text-teal-400" />
+                    <BookOpen className="w-6 h-6 text-[#2B8A6E]" />
                     {editablePlaybook?.name || playbook?.name || "Generated Playbook"}
                   </CardTitle>
                   <button
                     onClick={() => setIsEditing(!isEditing)}
                     className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                       isEditing
-                        ? "bg-amber-500/20 text-amber-400 border border-amber-500/30"
+                        ? "bg-[#C9A84C]/20 text-[#C9A84C] border border-[#C9A84C]/30"
                         : "bg-gray-50 text-gray-800 hover:text-white border border-gray-200"
                     }`}
                   >
@@ -1133,7 +1133,7 @@ export default function IncidentAnalyzer() {
               <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-gray-900 text-lg flex items-center gap-2">
-                    <Zap className="w-5 h-5 text-amber-400" /> Trigger Conditions
+                    <Zap className="w-5 h-5 text-[#C9A84C]" /> Trigger Conditions
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -1142,7 +1142,7 @@ export default function IncidentAnalyzer() {
                       <div key={i} className="bg-gray-50 border border-gray-200 rounded-lg p-3">
                         <p className="text-sm font-medium text-gray-900">{tc.condition || tc.name || tc.trigger}</p>
                         {tc.threshold && (
-                          <p className="text-xs text-amber-400 mt-1">Threshold: {tc.threshold}</p>
+                          <p className="text-xs text-[#C9A84C] mt-1">Threshold: {tc.threshold}</p>
                         )}
                       </div>
                     ))}
@@ -1464,9 +1464,9 @@ export default function IncidentAnalyzer() {
                 <p className="text-sm font-semibold text-[#2B8A6E]">{analysis?.estimatedImpact || "Significant"}</p>
               </div>
               <div className="bg-white border border-gray-200 rounded-xl p-4 text-center">
-                <Clock className="w-6 h-6 text-amber-400 mx-auto mb-2" />
+                <Clock className="w-6 h-6 text-[#C9A84C] mx-auto mb-2" />
                 <p className="text-xs text-gray-700 mb-1">Coordination Time</p>
-                <p className="text-sm font-semibold text-amber-400">{formatTime(elapsedSeconds)}</p>
+                <p className="text-sm font-semibold text-[#C9A84C]">{formatTime(elapsedSeconds)}</p>
               </div>
               <div className="bg-white border border-gray-200 rounded-xl p-4 text-center">
                 <BookOpen className="w-6 h-6 text-[#0A0F2E] mx-auto mb-2" />
@@ -1477,16 +1477,16 @@ export default function IncidentAnalyzer() {
 
             {/* Download Buttons */}
             <div className="grid sm:grid-cols-2 gap-4">
-              <Card className="bg-white border-gray-200 hover:border-teal-500/30 transition-colors cursor-pointer group">
+              <Card className="bg-white border-gray-200 hover:border-[#0A0F2E]/30 transition-colors cursor-pointer group">
                 <CardContent className="pt-6 text-center">
-                  <Download className="w-10 h-10 text-teal-400 mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                  <Download className="w-10 h-10 text-[#0A0F2E] mx-auto mb-3 group-hover:scale-110 transition-transform" />
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Strategic Analysis Report</h3>
                   <p className="text-sm text-gray-800 mb-4">
                     Complete analysis with side-by-side comparison, playbook summary, and simulation results
                   </p>
                   <Button
                     onClick={generateIncidentPDF}
-                    className="bg-teal-500 hover:bg-teal-600 text-gray-900 gap-2 w-full"
+                    className="bg-[#0A0F2E] hover:bg-[#141B45] text-white gap-2 w-full"
                   >
                     <Download className="w-4 h-4" /> Download Strategic Report (PDF)
                   </Button>

@@ -431,7 +431,7 @@ export default function ProductTour() {
                 </div>
               </div>
               <BrandStamp variant="dual" size="md" />
-              <Badge className="bg-red-600 text-white animate-pulse rounded-none border-0 uppercase text-[9px] tracking-widest font-bold px-3 py-1">
+          <Badge className="bg-red-600 text-white animate-pulse rounded-none border-0 uppercase text-[9px] tracking-widest font-bold px-3 py-1">
                 <AlertTriangle className="w-3 h-3 mr-1" />
                 CRITICAL SIGNAL
               </Badge>

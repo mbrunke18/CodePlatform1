@@ -113,7 +113,7 @@ export default function WorkspaceAdvance() {
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Retrospect Lab</h1>
                   <Badge className="bg-[#2B8A6E] text-white border-none px-3 py-1">
-                    <SubBrandLabel name="Retrospect™" />
+                    ADVANCE
                   </Badge>
                 </div>
                 <p className="text-[#6B7280] dark:text-white/60 mt-1">

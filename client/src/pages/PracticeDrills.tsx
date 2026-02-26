@@ -231,7 +231,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-4xl font-bold" style={{ ...CG, color: GOLD }} data-testid="stat-total-drills">
+                  <div className="text-4xl font-bold" style={{ ...CG, color: "#C9A84C" }} data-testid="stat-total-drills">
                     {drills.length}
                   </div>
                   <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mt-1">Total Drills</div>
@@ -247,7 +247,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-4xl font-bold" style={{ ...CG, color: GOLD }} data-testid="stat-completion-time">
+                  <div className="text-4xl font-bold" style={{ ...CG, color: "#C9A84C" }} data-testid="stat-completion-time">
                     {avgCompletionTime}m
                   </div>
                   <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mt-1">Avg. Completion</div>
@@ -263,7 +263,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-4xl font-bold" style={{ ...CG, color: GOLD }} data-testid="stat-success-rate">
+                  <div className="text-4xl font-bold" style={{ ...CG, color: "#C9A84C" }} data-testid="stat-success-rate">
                     {avgSuccessRate}%
                   </div>
                   <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mt-1">Success Rate</div>
@@ -279,7 +279,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-4xl font-bold" style={{ ...CG, color: GOLD }} data-testid="stat-upcoming">
+                  <div className="text-4xl font-bold" style={{ ...CG, color: "#C9A84C" }} data-testid="stat-upcoming">
                     {upcomingDrills.length}
                   </div>
                   <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mt-1">Upcoming</div>
@@ -711,7 +711,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                         </div>
                         <div className="flex items-center gap-1">
                           {item.trend === "up" && (
-                            <Badge variant="outline" className="text-[#2B8A6E] border-green-300 dark:border-green-700 bg-green-50 dark:bg-green-950/30">
+                            <Badge variant="outline" className="text-[#2B8A6E] border-[#2B8A6E]/30 bg-[#2B8A6E]/5 rounded-none uppercase text-[9px] font-bold tracking-widest px-3">
                               <ArrowUp className="h-3 w-3 mr-1" />
                               Up
                             </Badge>

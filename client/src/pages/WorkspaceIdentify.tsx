@@ -111,7 +111,7 @@ export default function WorkspaceIdentify() {
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Playbook Factory</h1>
                   <Badge className="bg-[#2B8A6E] text-white border-none px-3 py-1">
-                    <SubBrandLabel name="Playbook™" />
+                    IDENTIFY
                   </Badge>
                 </div>
                 <p className="text-[#6B7280] dark:text-white/60 mt-1">
@@ -197,7 +197,7 @@ export default function WorkspaceIdentify() {
             <CardHeader>
               <div className="flex items-center gap-3">
                 <h2 className="text-xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Recent Playbook Activity</h2>
-                <Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-none text-xs">Live Update</Badge>
+                <Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-none text-xs">IDENTIFY</Badge>
               </div>
             </CardHeader>
           <div className="space-y-3 mb-8">

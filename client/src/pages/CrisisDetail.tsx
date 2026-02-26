@@ -169,7 +169,7 @@ export default function CrisisDetail() {
       case 'active': return { background: "rgba(239,68,68,0.12)", color: "#EF4444" };
       case 'monitoring': return { background: "rgba(201,168,76,0.12)", color: "#C9A84C" };
       case 'resolved': return { background: "rgba(43,138,110,0.12)", color: "#2B8A6E" };
-      default: return { background: "rgba(0,0,0,0.05)", color: "#6B7280" };
+      default: return { background: "#F8F7F4", color: "#6B7280" };
     }
   };
 
@@ -178,7 +178,7 @@ export default function CrisisDetail() {
       case 'high': return 'text-red-700 bg-red-50 font-bold';
       case 'medium': return `text-[#C9A84C] bg-[#C9A84C]/10 font-bold`;
       case 'low': return `text-[#2B8A6E] bg-[#2B8A6E]/10 font-bold`;
-      default: return 'text-[#6B7280] bg-gray-50';
+      default: return 'text-[#6B7280] bg-[#F8F7F4]';
     }
   };
 
@@ -187,7 +187,7 @@ export default function CrisisDetail() {
       case 'high': return 'bg-red-50 text-red-700';
       case 'medium': return `bg-[#C9A84C]/10 text-[#C9A84C]`;
       case 'low': return `bg-[#2B8A6E]/10 text-[#2B8A6E]`;
-      default: return 'bg-gray-100 text-gray-700';
+      default: return 'bg-[#F8F7F4] text-gray-700';
     }
   };
 

@@ -326,14 +326,14 @@ export default function MissionControl() {
                     <div className="flex justify-between items-center">
                       <span className="text-xs text-white/60">Oracle AI Core</span>
                       <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" />
+                        <div className="w-1.5 h-1.5 rounded-none bg-[#2B8A6E]" />
                         <span className="text-[10px] font-bold text-[#2B8A6E] uppercase">Operational</span>
                       </div>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-xs text-white/60">Telemetry Mesh</span>
                       <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" />
+                        <div className="w-1.5 h-1.5 rounded-none bg-[#2B8A6E]" />
                         <span className="text-[10px] font-bold text-[#2B8A6E] uppercase">Synchronized</span>
                       </div>
                     </div>

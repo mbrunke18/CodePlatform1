@@ -1017,7 +1017,7 @@ export default function KeynoteDemo() {
                 size="icon" 
                 onClick={prev} 
                 disabled={stage === 0}
-                className="bg-white/10 border-white/20 hover:bg-white/20 text-[#0A0F2E]"
+                className="bg-black/5 border-black/10 hover:bg-black/10 text-[#0A0F2E] pointer-events-auto"
               >
                 <ChevronLeft className="h-6 w-6" />
               </Button>
@@ -1026,7 +1026,7 @@ export default function KeynoteDemo() {
                 size="icon" 
                 onClick={next} 
                 disabled={stage === STAGES.length - 1}
-                className="bg-white/10 border-white/20 hover:bg-white/20 text-[#0A0F2E]"
+                className="bg-black/5 border-black/10 hover:bg-black/10 text-[#0A0F2E] pointer-events-auto"
               >
                 <ChevronRight className="h-6 w-6" />
               </Button>

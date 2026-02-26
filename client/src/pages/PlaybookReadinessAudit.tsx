@@ -194,9 +194,9 @@ export default function PlaybookReadinessAudit() {
     <div className="page-background min-h-screen bg-[#F8F7F4]">
       <StandardNav />
       
-      <div style={{ background: NAVY }} className="relative text-white py-16 overflow-hidden">
+      <div style={{ background: "#0A0F2E" }} className="relative text-white py-16 overflow-hidden">
         {/* Gold dot grid overlay */}
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(${GOLD} 1px, transparent 1px)`, backgroundSize: '20px 20px' }}></div>
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(#C9A84C 1px, transparent 1px)`, backgroundSize: '20px 20px' }}></div>
         
         <div className="max-w-7xl mx-auto px-8 relative z-10">
           <div className="flex items-center justify-between">
@@ -207,7 +207,7 @@ export default function PlaybookReadinessAudit() {
               </div>
               <div className="flex items-center gap-3 mb-3">
                 <Shield className="h-8 w-8 text-[#C9A84C]" />
-                <h1 className="text-4xl font-bold" style={CG} data-testid="page-title">
+                <h1 className="text-4xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="page-title">
                   Playbook Readiness Audit
                 </h1>
               </div>
@@ -248,7 +248,7 @@ export default function PlaybookReadinessAudit() {
                       {percentage}%
                     </Badge>
                   </div>
-                  <div className="text-4xl font-bold mb-1" style={{ ...CG, color: GOLD }}>
+                  <div className="text-4xl font-bold mb-1" style={{ fontFamily: "'Cormorant Garamond', serif", color: "#C9A84C" }}>
                     {count}
                   </div>
                   <div className="text-xs uppercase tracking-wider font-semibold text-[#6B7280]">
@@ -262,7 +262,7 @@ export default function PlaybookReadinessAudit() {
 
         <Card className="border border-[#E8E4DC] bg-white shadow-sm" data-testid="card-overall-readiness">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2" style={CG}>
+            <CardTitle className="flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               <TrendingUp className="h-5 w-5 text-[#0A0F2E]" />
               Overall Readiness Score
             </CardTitle>
@@ -273,7 +273,7 @@ export default function PlaybookReadinessAudit() {
           <CardContent>
             <div className="flex items-center gap-8">
               <div className="text-center">
-                <div className="text-7xl font-bold" style={{ ...CG, color: GOLD }}>
+                <div className="text-7xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif", color: "#C9A84C" }}>
                   {stats.averageScore}%
                 </div>
                 <div className="text-sm text-[#6B7280] mt-2 font-medium">
@@ -390,7 +390,7 @@ export default function PlaybookReadinessAudit() {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <h3 className="font-bold text-[#0A0F2E] text-lg" style={CG}>
+                          <h3 className="font-bold text-[#0A0F2E] text-lg" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                             #{playbook.playbookNumber} - {playbook.name}
                           </h3>
                           <Badge variant="outline" className={`${config.textColor} border-current bg-current/5`}>
@@ -416,25 +416,25 @@ export default function PlaybookReadinessAudit() {
                     <div className="flex items-center gap-6">
                       <div className="hidden lg:flex items-center gap-6">
                         <div className="text-center">
-                          <div className="text-xl font-bold text-[#0A0F2E]" style={CG}>
+                          <div className="text-xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                             {playbook.triggerCoverage}%
                           </div>
                           <div className="text-[10px] uppercase tracking-wider text-[#6B7280] font-bold">Triggers</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-xl font-bold text-[#0A0F2E]" style={CG}>
+                          <div className="text-xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                             {playbook.stakeholderReadiness}%
                           </div>
                           <div className="text-[10px] uppercase tracking-wider text-[#6B7280] font-bold">Stakeholders</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-xl font-bold text-[#C9A84C]" style={CG}>
+                          <div className="text-xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                             {playbook.practiceFrequency}%
                           </div>
                           <div className="text-[10px] uppercase tracking-wider text-[#6B7280] font-bold">Practice</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-xl font-bold text-[#2B8A6E]" style={CG}>
+                          <div className="text-xl font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                             {playbook.outcomeConfidence}%
                           </div>
                           <div className="text-[10px] uppercase tracking-wider text-[#6B7280] font-bold">Confidence</div>
@@ -442,7 +442,7 @@ export default function PlaybookReadinessAudit() {
                       </div>
 
                       <div className="text-center px-6 border-l border-[#E8E4DC]">
-                        <div className="text-3xl font-bold" style={{ ...CG, color: GOLD }}>
+                        <div className="text-3xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif", color: "#C9A84C" }}>
                           {playbook.overallScore}%
                         </div>
                         <div className="text-[10px] uppercase tracking-wider text-[#6B7280] font-bold">Overall</div>
@@ -498,11 +498,11 @@ export default function PlaybookReadinessAudit() {
         )}
 
         <Card className="bg-[#0A0F2E] text-white overflow-hidden relative border-none">
-          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(${GOLD} 1px, transparent 1px)`, backgroundSize: '20px 20px' }}></div>
+          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(#C9A84C 1px, transparent 1px)`, backgroundSize: '20px 20px' }}></div>
           <CardContent className="py-10 relative z-10">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-2xl font-bold mb-2" style={CG}>
+                <h3 className="text-2xl font-bold mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   Ready to improve readiness?
                 </h3>
                 <p className="text-gray-400 font-medium">

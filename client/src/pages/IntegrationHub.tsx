@@ -964,7 +964,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                         <CardHeader>
                           <div className="flex items-center justify-between mb-4">
                             <CardTitle className="text-[#0A0F2E] flex items-center gap-3 font-bold uppercase tracking-wider text-sm">
-                              <div className="w-10 h-10 bg-[#0A0F2E] rounded-none flex items-center justify-center">
+                              <div className={`w-10 h-10 rounded-none flex items-center justify-center ${integration.category === 'communication' ? 'bg-[#C9A84C]' : integration.category === 'project-tracking' ? 'bg-[#0A0F2E]' : 'bg-[#2B8A6E]'}`}>
                                 <Globe className="w-5 h-5 text-white" />
                               </div>
                               {integration.name}
@@ -1237,6 +1237,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
             </div>
           </TabsContent>
         </Tabs>
+      </div>
       </div>
     </PageLayout>
   );

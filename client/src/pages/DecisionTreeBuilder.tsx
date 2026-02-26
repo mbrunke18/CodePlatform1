@@ -146,10 +146,10 @@ export default function DecisionTreeBuilder() {
     'border-[#0A0F2E]/30 bg-[#0A0F2E]/5',
     'border-[#C9A84C]/30 bg-[#C9A84C]/5',
     'border-[#DFC178]/30 bg-[#DFC178]/5',
-    'border-[#E8E4DC] bg-white',
+    'border-[#141B45]/30 bg-[#141B45]/5',
     'border-[#E8E4DC] bg-[#F8F7F4]',
   ];
-  const buttonColors = ['bg-[#2B8A6E]', 'bg-[#0A0F2E]', 'bg-[#C9A84C]', 'bg-[#DFC178]', 'bg-[#6B7280]', 'bg-[#141B45]'];
+  const buttonColors = ['bg-[#2B8A6E]', 'bg-[#0A0F2E]', 'bg-[#C9A84C]', 'bg-[#DFC178]', 'bg-[#141B45]', 'bg-[#3BAF8A]'];
 
   const NAVY = "#0A0F2E";
   const GOLD = "#C9A84C";
